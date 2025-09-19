@@ -4,6 +4,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 import { useSettingsStore } from './src/state/useSettingsStore';
 import { useThreadsStore } from './src/state/useThreadsStore';
+import { useImagesStore } from './src/state/useImagesStore';
 import { ensureDeviceId } from './src/lib/deviceId';
 import { MODELS_URL, SUPABASE_ANON_KEY } from './src/config/endpoints';
 
@@ -14,6 +15,9 @@ export default function App() {
 
   const hydrateThreads = useThreadsStore(s => s.hydrate);
   const threadsHydrated = useThreadsStore(s => s.hydrated);
+
+  const hydrateImages = useImagesStore(s => s.hydrate);
+  const imagesHydrated = useImagesStore(s => s.hydrated);
 
   const [deviceIdReady, setDeviceIdReady] = useState(false);
   const [modelsLoaded, setModelsLoaded] = useState(false); // NEW
@@ -26,6 +30,7 @@ export default function App() {
     })();
     hydrateSettings();
     hydrateThreads();
+    hydrateImages();
 
     // --- Fetch models (non-blocking; flips modelsLoaded when done) ---
     (async () => {
@@ -54,7 +59,7 @@ export default function App() {
     })();
   }, []);
 
-  const ready = settingsHydrated && threadsHydrated && deviceIdReady && modelsLoaded;
+  const ready = settingsHydrated && threadsHydrated && imagesHydrated && deviceIdReady && modelsLoaded;
 
   if (!ready) return null; // simple loader; optional spinner
 

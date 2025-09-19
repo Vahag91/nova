@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const KEY_THREADS = 'threads_v1';
 const KEY_SETTINGS = 'settings_v1';
 const KEY_DEVICE_ID = 'device_id_v1';
+const KEY_IMAGES = 'images_v1';
 
 export const Storage = {
   // Threads
@@ -55,5 +56,14 @@ export const Storage = {
       console.error('Storage.getOrCreateDeviceId: Error:', error);
       throw error;
     }
+  },
+
+  // Images
+  async loadImages() {
+    try { const raw = await AsyncStorage.getItem(KEY_IMAGES); return raw ? JSON.parse(raw) : []; }
+    catch { return []; }
+  },
+  async saveImages(jobs) {
+    try { await AsyncStorage.setItem(KEY_IMAGES, JSON.stringify(jobs)); } catch {}
   },
 };

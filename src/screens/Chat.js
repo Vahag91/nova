@@ -1,6 +1,6 @@
 // app/src/screens/Chat.jsx
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { View, Text, StyleSheet, AppState, TouchableOpacity, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, Text, StyleSheet, AppState, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
