@@ -18,16 +18,32 @@ export function streamChat({
     headers.Authorization = `Bearer ${SUPABASE_ANON_KEY}`;
   }
 
+  // Map to OpenAI format
+  const outMessages = messages.map((m) => {
+    // if already an array (vision parts), pass through
+    if (Array.isArray(m.content)) return { role: m.role, content: m.content };
+
+    // if you add your own 'imageUrls' field to messages:
+    if (Array.isArray(m.imageUrls) && m.imageUrls.length) {
+      const parts = [];
+      if (m.content) parts.push({ type: 'text', text: m.content });
+      for (const url of m.imageUrls) parts.push({ type: 'image_url', image_url: { url } });
+      return { role: m.role, content: parts };
+    }
+
+    // plain text
+    return { role: m.role, content: m.content ?? '' };
+  });
+
   const client = new SSEClient(CHAT_PROXY_URL, {
     method: 'POST',
     headers,
     body: {
       model,
       temperature,
-      // Send only role & content
-      messages: messages.map(m => ({ role: m.role, content: m.content })),
+      messages: outMessages,
       tools: [],
-      capabilities: { supportsImages:false, supportsAudio:false, supportsVideo:false },
+      capabilities: { supportsImages: true, supportsAudio: false, supportsVideo: false }, // <- stop telling the model "no images"
     },
     onEvent: (evt) => {
       if (evt?.type === 'token' && typeof evt.delta === 'string') { onToken?.(evt.delta); return; }

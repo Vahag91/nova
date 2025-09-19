@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 import { useSettingsStore } from './src/state/useSettingsStore';
 import { useThreadsStore } from './src/state/useThreadsStore';
@@ -58,8 +59,10 @@ export default function App() {
   if (!ready) return null; // simple loader; optional spinner
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <DrawerNavigator />
-    </GestureHandlerRootView>
+    <KeyboardProvider statusBarTranslucent>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <DrawerNavigator />
+      </GestureHandlerRootView>
+    </KeyboardProvider>
   );
 }

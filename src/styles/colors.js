@@ -23,7 +23,7 @@ export const colors = {
   error: '#ef4444',               // Red
   
   // Message bubble colors
-  userBubble: '#3b82f6',          // User message background
+  userBubble: '#2a2a2a',          // User message background (dark grey)
   assistantBubble: '#2a2a2a',     // Assistant message background
   userText: '#ffffff',            // User message text
   assistantText: '#ffffff',       // Assistant message text

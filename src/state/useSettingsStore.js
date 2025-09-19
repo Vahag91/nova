@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
-import { DEFAULT_MODELS } from '../config/models';
+import DEFAULT_MODELS from '../config/models';
 
 const SETTINGS_V2 = 'settings.v2';
 const SETTINGS_V1 = 'settings.v1'; // legacy (global temperature only)
