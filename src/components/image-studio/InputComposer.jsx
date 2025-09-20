@@ -12,9 +12,15 @@ const InputComposer = memo(({
   onGenerate,
   onClearPrompt,
   onOpenSettings,
+  onModeChange,
+  currentMode = 'text2img',
   maxLength = 4000,
   placeholder = "Describe your image...",
   disabled = false,
+  // Expose dropdown state and button ref to parent
+  showModeMenu,
+  onShowModeMenu,
+  plusButtonRef,
 }) => {
   const handlePromptChange = useCallback((text) => {
     onPromptChange?.(text);
@@ -28,55 +34,83 @@ const InputComposer = memo(({
     onOpenSettings?.();
   }, [onOpenSettings]);
 
+  const handlePlusPress = useCallback(() => {
+    onShowModeMenu?.(true);
+  }, [onShowModeMenu]);
+
+  const handleModeSelect = useCallback((mode) => {
+    onModeChange?.(mode);
+  }, [onModeChange]);
+
+  const handleCloseMenu = useCallback(() => {
+    onShowModeMenu?.(false);
+  }, [onShowModeMenu]);
+
   return (
     <View style={styles.composer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          value={prompt}
-          onChangeText={handlePromptChange}
-          placeholder={placeholder}
-          placeholderTextColor="#9CA3AF"
-          style={styles.input}
-          maxLength={maxLength}
-          multiline={false}
-          returnKeyType="send"
-          onSubmitEditing={onGenerate}
-          editable={!disabled}
-          accessibilityLabel="Image description input"
-          accessibilityHint="Enter a description of the image you want to generate"
-        />
-        {prompt.length > 0 && (
+        <View style={styles.inputContainer}>
+          <TextInput
+            value={prompt}
+            onChangeText={handlePromptChange}
+            placeholder={placeholder}
+            placeholderTextColor="#9CA3AF"
+            style={styles.input}
+            maxLength={maxLength}
+            multiline={false}
+            returnKeyType="send"
+            onSubmitEditing={onGenerate}
+            editable={!disabled}
+            accessibilityLabel="Image description input"
+            accessibilityHint="Enter a description of the image you want to generate"
+          />
+          {prompt.length > 0 && (
+            <Pressable 
+              onPress={handleClearPrompt} 
+              style={styles.clearButton}
+              accessibilityLabel="Clear input"
+            >
+              <Text style={styles.clearIcon}>✕</Text>
+            </Pressable>
+          )}
+        </View>
+        <Text style={styles.charCounter}>
+          {prompt.length}/{maxLength}
+        </Text>
+        <View style={styles.iconGroup}>
+        <View
+          ref={plusButtonRef}
+          collapsable={false}        // important for Android measurement
+          style={{ borderRadius: 8 }} // optional
+        >
           <Pressable 
-            onPress={handleClearPrompt} 
-            style={styles.clearButton}
-            accessibilityLabel="Clear input"
+            style={[
+              styles.iconBtn,
+              currentMode !== 'text2img' && styles.activeIconBtn
+            ]} 
+            onPress={handlePlusPress} 
+            hitSlop={8}
+            accessibilityLabel="Select generation mode"
           >
-            <Text style={styles.clearIcon}>✕</Text>
+            <Text style={[
+              styles.iconTxt,
+              currentMode !== 'text2img' && styles.activeIconTxt
+            ]}>
+              {currentMode === 'text2img' ? '➕' : '🎯'}
+            </Text>
           </Pressable>
-        )}
+        </View>
+          <Pressable 
+            style={styles.iconBtn} 
+            onPress={handleOpenSettings} 
+            hitSlop={8}
+            accessibilityLabel="Open settings"
+          >
+            <Text style={styles.iconTxt}>⚙️</Text>
+          </Pressable>
+        </View>
+        
+        {/* ModeMenu moved to root level in ImagesStudio.js */}
       </View>
-      <Text style={styles.charCounter}>
-        {prompt.length}/{maxLength}
-      </Text>
-      <View style={styles.iconGroup}>
-        <Pressable 
-          style={styles.iconBtn} 
-          onPress={() => { /* future: add reference */ }} 
-          hitSlop={8}
-          accessibilityLabel="Add reference image"
-        >
-          <Text style={styles.iconTxt}>➕</Text>
-        </Pressable>
-        <Pressable 
-          style={styles.iconBtn} 
-          onPress={handleOpenSettings} 
-          hitSlop={8}
-          accessibilityLabel="Open settings"
-        >
-          <Text style={styles.iconTxt}>⚙️</Text>
-        </Pressable>
-      </View>
-    </View>
   );
 });
 
@@ -133,6 +167,13 @@ const styles = {
   iconTxt: {
     fontSize: 22,
     color: '#9CA3AF',
+  },
+  activeIconBtn: {
+    backgroundColor: 'rgba(0, 224, 199, 0.1)',
+    borderRadius: 8,
+  },
+  activeIconTxt: {
+    color: '#00E0C7',
   },
 };
 

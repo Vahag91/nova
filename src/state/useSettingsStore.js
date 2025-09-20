@@ -51,7 +51,37 @@ export const useSettingsStore = create((set, get) => ({
   },
 
   // registry
-  setModels: (models) => set({ models }),
+  setModels: (models) => {
+    console.log('🔄 [STORE] Setting models:', Object.keys(models || {}));
+    set({ models });
+  },
+  
+  // Force refresh models from server
+  forceRefreshModels: async () => {
+    try {
+      console.log('🔄 [STORE] Force refreshing models...');
+      
+      // Clear AsyncStorage cache first
+      try {
+        await AsyncStorage.removeItem(SETTINGS_V2);
+        await AsyncStorage.removeItem(SETTINGS_V1);
+        console.log('🗑️ [STORE] Cleared AsyncStorage cache');
+      } catch (e) {
+        console.warn('⚠️ [STORE] Failed to clear cache:', e);
+      }
+      
+      const { fetchModels } = await import('../api/models');
+      const incoming = await fetchModels();
+      if (incoming && Object.keys(incoming).length > 0) {
+        console.log('✅ [STORE] Force refresh successful:', Object.keys(incoming));
+        set({ models: incoming });
+        return true;
+      }
+    } catch (error) {
+      console.error('❌ [STORE] Force refresh failed:', error);
+    }
+    return false;
+  },
 
   // compute the effective temperature for a given model
   getEffectiveTemp: (modelKey) => {

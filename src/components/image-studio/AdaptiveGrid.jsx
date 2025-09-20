@@ -1,43 +1,32 @@
-import React, { useState, useCallback, useMemo, memo } from 'react';
-import { View } from 'react-native';
+import React, { memo, useMemo } from 'react';
+import { View, useWindowDimensions } from 'react-native';
 
-const AdaptiveGrid = memo(({ items, renderTile, gap = 12 }) => {
-  const [containerWidth, setContainerWidth] = useState(0);
-  
-  const onLayout = useCallback((e) => {
-    setContainerWidth(e.nativeEvent.layout.width);
-  }, []);
+const AdaptiveGrid = memo(({ items, renderTile, gap = 12, horizontalPadding = 16 }) => {
+  const { width: screenW } = useWindowDimensions();
+  const containerW = Math.max(0, screenW - horizontalPadding * 2); // match ScrollView content padding
 
-  const gridConfig = useMemo(() => {
-    if (items.length === 0) return { columns: 1, itemWidth: 0 };
-    if (items.length === 1) return { columns: 1, itemWidth: containerWidth };
-    if (items.length <= 4) return { columns: 2, itemWidth: (containerWidth - gap) / 2 };
-    return { columns: 2, itemWidth: (containerWidth - gap) / 2 };
-  }, [items.length, containerWidth, gap]);
-
-  if (containerWidth === 0) {
-    return <View onLayout={onLayout} style={styles.gridContainer} />;
-  }
+  const { columns, itemW } = useMemo(() => {
+    if (!containerW) return { columns: 1, itemW: 0 };
+    if (items.length <= 1) return { columns: 1, itemW: containerW };
+    // 2-col layout for 2+ items (your current logic)
+    const cols = 2;
+    const itemWidth = (containerW - gap * (cols - 1)) / cols;
+    return { columns: cols, itemW: Math.floor(itemWidth) }; // prevent fractional pixels
+  }, [containerW, items.length, gap]);
 
   return (
-    <View onLayout={onLayout} style={styles.gridContainer}>
+    <View style={styles.gridContainer}>
       {items.map((item, index) => {
-        const isLastInRow = (index + 1) % gridConfig.columns === 0;
-        const isLastRow = index >= items.length - gridConfig.columns;
-        
+        const isLastInRow = (index + 1) % columns === 0;
+        const isLastRow = index >= items.length - columns;
+        const style = {
+          width: itemW,
+          marginRight: isLastInRow ? 0 : gap,
+          marginBottom: isLastRow ? 0 : gap,
+        };
         return (
-          <View
-            key={item.id}
-            style={[
-              styles.gridItem,
-              {
-                width: gridConfig.itemWidth,
-                marginRight: isLastInRow ? 0 : gap,
-                marginBottom: isLastRow ? 0 : gap,
-              }
-            ]}
-          >
-            {renderTile(item, index, { width: gridConfig.itemWidth, height: gridConfig.itemWidth })}
+          <View key={item.id ?? index} style={[styles.gridItem, style]}>
+            {renderTile(item, index, { width: itemW, height: itemW })}
           </View>
         );
       })}
@@ -49,7 +38,8 @@ const styles = {
   gridContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
   gridItem: {
     marginBottom: 12,

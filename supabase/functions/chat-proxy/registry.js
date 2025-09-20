@@ -56,22 +56,22 @@ export const MODELS = {
     display: { name: "FLUX.1 schnell", group: "Runware" },
     temperatureSupported: false,
   },
-  "runware-qwen-image": {
+  "runware-flux-canny": {
     provider: "runware",
     kind: "image",
     caps: { visionInput: false, imageGen: true, audioIn: false, audioOut: false },
     context: 0,
-    price: { in: 0, out: 0.0058 },
-    display: { name: "Qwen-Image", group: "Runware" },
+    price: { in: 0, out: 0.0038 },
+    display: { name: "FLUX.1 Canny", group: "Runware" },
     temperatureSupported: false,
   },
-  "runware-gemini-flash": {
+  "runware-sdxl-civitai": {
     provider: "runware",
     kind: "image",
     caps: { visionInput: false, imageGen: true, audioIn: false, audioOut: false },
     context: 0,
-    price: { in: 0, out: 0.039 },
-    display: { name: "Gemini Flash 2.5", group: "Runware" },
+    price: { in: 0, out: 0.0025 },
+    display: { name: "SDXL (Civitai)", group: "Runware" },
     temperatureSupported: false,
   },
 

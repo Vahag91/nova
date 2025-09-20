@@ -62,6 +62,7 @@ const OptimizedImage = memo(({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  
 
   const handleLoad = useCallback(() => {
     setLoading(false);

@@ -9,26 +9,46 @@ function extFromMeta(meta) {
 }
 
 export async function toLocalPath(source) {
-  if (!source) return '';
-  
-  // data URI → write to file
-  if (source.startsWith('data:image/')) {
-    const [meta, b64] = source.split(',');
-    const ext = extFromMeta(meta);
-    const path = `${CACHE_DIR}/img_${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
-    await RNFS.writeFile(path, b64, 'base64');
-    return `file://${path}`;
+  if (!source) {
+    console.warn('🔄 [DOWNLOADER] Empty source provided to toLocalPath');
+    return '';
   }
   
-  // http(s) → download (lazy download - call this when user opens image)
-  if (/^https?:\/\//i.test(source)) {
-    const path = `${CACHE_DIR}/img_${Date.now()}_${Math.random().toString(36).slice(2)}.jpg`;
-    await RNFS.downloadFile({ fromUrl: source, toFile: path }).promise;
-    return `file://${path}`;
+  try {
+    // data URI → write to file
+    if (source.startsWith('data:image/')) {
+      const [meta, b64] = source.split(',');
+      if (!b64) {
+        console.warn('🔄 [DOWNLOADER] Invalid data URI format');
+        return source;
+      }
+      const ext = extFromMeta(meta);
+      const path = `${CACHE_DIR}/img_${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
+      await RNFS.writeFile(path, b64, 'base64');
+      console.log('✅ [DOWNLOADER] Data URI saved to:', path);
+      return `file://${path}`;
+    }
+    
+    // http(s) → download (lazy download - call this when user opens image)
+    if (/^https?:\/\//i.test(source)) {
+      const path = `${CACHE_DIR}/img_${Date.now()}_${Math.random().toString(36).slice(2)}.jpg`;
+      const result = await RNFS.downloadFile({ fromUrl: source, toFile: path }).promise;
+      if (result.statusCode === 200) {
+        console.log('✅ [DOWNLOADER] HTTP URL downloaded to:', path);
+        return `file://${path}`;
+      } else {
+        console.warn('🔄 [DOWNLOADER] Download failed:', result.statusCode);
+        return source;
+      }
+    }
+    
+    // already file://
+    console.log('✅ [DOWNLOADER] Already local file:', source);
+    return source;
+  } catch (error) {
+    console.error('❌ [DOWNLOADER] Error in toLocalPath:', error);
+    return source; // fallback to original
   }
-  
-  // already file://
-  return source;
 }
 
 export async function deleteLocalFile(filePath) {

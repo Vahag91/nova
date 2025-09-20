@@ -12,13 +12,19 @@ const GenerateButton = memo(({
   disabled = false,
   busy = false,
   modelName = 'gpt-image-1',
+  actualModelName = null, // The model that will actually be used
+  modelChanged = false, // Whether the model was auto-selected
   animatedValue,
+  onAdvancedParams,
 }) => {
   return (
     <View style={styles.ctaContainer}>
       <Animated.View style={{ transform: [{ scale: animatedValue || 1 }] }}>
         <Pressable
-          onPress={onPress}
+          onPress={() => {
+            console.log('🎯 [BUTTON] Generate button pressed, disabled:', disabled, 'busy:', busy);
+            onPress?.();
+          }}
           disabled={disabled}
           style={styles.cta}
           accessibilityLabel={busy ? "Generating image" : "Generate image"}
@@ -31,12 +37,34 @@ const GenerateButton = memo(({
             </View>
           ) : (
             <>
-              <Text style={styles.ctaText}>{modelName}</Text>
+              <View style={styles.modelInfo}>
+                <Text style={styles.ctaText}>
+                  {actualModelName || modelName}
+                </Text>
+                {modelChanged && actualModelName && (
+                  <Text style={styles.modelChangedText}>
+                    (was {modelName})
+                  </Text>
+                )}
+              </View>
               <Text style={styles.ctaArrow}>↑</Text>
             </>
           )}
         </Pressable>
       </Animated.View>
+      
+      {/* Advanced Parameters Button */}
+      {/* {onAdvancedParams && !busy && (
+        <Pressable
+          onPress={onAdvancedParams}
+          style={styles.advancedButton}
+          accessibilityLabel="Advanced parameters"
+          accessibilityHint="Tap to configure advanced generation parameters"
+        >
+          <Text style={styles.advancedIcon}>⚙️</Text>
+          <Text style={styles.advancedText}>Advanced</Text>
+        </Pressable>
+      )} */}
     </View>
   );
 });
@@ -70,16 +98,49 @@ const styles = {
     fontSize: 16,
     fontFamily: 'Lato-Bold',
   },
+  modelInfo: {
+    alignItems: 'center',
+  },
   ctaText: {
     color: '#000000',
     fontWeight: '600',
     fontSize: 18,
     fontFamily: 'Lato-Bold',
   },
+  modelChangedText: {
+    color: '#000000',
+    fontWeight: '400',
+    fontSize: 12,
+    fontFamily: 'Lato-Regular',
+    opacity: 0.7,
+    marginTop: 2,
+  },
   ctaArrow: {
     color: '#000000',
     fontWeight: '600',
     fontSize: 22,
+  },
+  advancedButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#374151',
+    gap: 6,
+  },
+  advancedIcon: {
+    fontSize: 16,
+  },
+  advancedText: {
+    color: '#9CA3AF',
+    fontWeight: '600',
+    fontSize: 14,
+    fontFamily: 'Lato-Bold',
   },
 };
 

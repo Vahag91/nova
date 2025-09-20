@@ -51,22 +51,20 @@ export default function Settings() {
   const [filter, setFilter] = useState('');
   const [debouncedFilter, setDebouncedFilter] = useState('');
 
-  // Fetch once; guard redundant updates
+  // Fetch models and force refresh to get latest from server
   useEffect(() => {
     const ac = new AbortController();
     (async () => {
       try {
+        console.log('🔄 [SETTINGS] Fetching models from server...');
         const incoming = await fetchModels({ signal: ac.signal });
         
         if (incoming && typeof incoming === 'object' && Object.keys(incoming).length > 0) {
-          const current = useSettingsStore.getState().models;
-          const same =
-            Object.keys(incoming).length === Object.keys(current || {}).length &&
-            JSON.stringify(incoming) === JSON.stringify(current || {});
-          if (!same) {
-            setModels(incoming);
-          }
+          console.log('✅ [SETTINGS] Received models from server:', Object.keys(incoming));
+          // Always update models to ensure we get the latest from server
+          setModels(incoming);
         } else {
+          console.log('⚠️ [SETTINGS] No models from server, using defaults');
           // Ensure we have default models if fetch fails
           const current = useSettingsStore.getState().models;
           if (!current || Object.keys(current).length === 0) {
@@ -74,7 +72,7 @@ export default function Settings() {
           }
         }
       } catch (error) {
-        console.error('Settings - error fetching models:', error);
+        console.error('❌ [SETTINGS] Error fetching models:', error);
         // Fallback to defaults on error
         const current = useSettingsStore.getState().models;
         if (!current || Object.keys(current).length === 0) {

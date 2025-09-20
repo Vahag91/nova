@@ -5,8 +5,10 @@ import {
   Pressable,
   Modal,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import ModelGuidance from './ModelGuidance';
 
 const SettingsModal = memo(({
   visible,
@@ -16,9 +18,9 @@ const SettingsModal = memo(({
   model,
   onModelChange,
   imageModels = [],
+  mode = 'text2img',
 }) => {
   const insets = useSafeAreaInsets();
-console.log(model,"model");
 
   const handleClose = useCallback(() => {
     onClose?.();
@@ -34,11 +36,11 @@ console.log(model,"model");
 
   // Auto-adjust size when model changes to ensure compatibility
   useEffect(() => {
-    const isQwenOrGemini = model === 'runware-qwen-image' || model === 'runware-gemini-flash';
+    const isSDXL = model === 'runware-sdxl-civitai';
     const currentPixels = parseInt(size.split('x')[0]) * parseInt(size.split('x')[1]);
     
-    // If current size exceeds 1M pixels for Qwen/Gemini, adjust to 1024x1024
-    if (isQwenOrGemini && currentPixels > 1048576) {
+    // If current size exceeds 1M pixels for SDXL, adjust to 1024x1024
+    if (isSDXL && currentPixels > 1048576) {
       onSizeChange?.('1024x1024');
     }
   }, [model, size, onSizeChange]);
@@ -67,10 +69,10 @@ console.log(model,"model");
         <View style={styles.rowInline}>
           {(() => {
             // Model-specific size options
-            const isQwenOrGemini = model === 'runware-qwen-image' || model === 'runware-gemini-flash';
-            const availableSizes = isQwenOrGemini 
-              ? ['512x512', '1024x1024']  // Limited to 1M pixels max
-              : ['512x512', '1024x1024', '1024x1536', '1536x1024'];  // Full options
+            const isSDXL = model === 'runware-sdxl-civitai';
+            const availableSizes = isSDXL 
+              ? ['512x512', '1024x1024']  // SDXL: Limited to 1M pixels max
+              : ['512x512', '1024x1024', '1024x1536', '1536x1024', '1280x1280'];  // FLUX: Full options up to 2M pixels
             
             return availableSizes.map((s) => {
               const sel = size === s;
@@ -109,6 +111,8 @@ console.log(model,"model");
             );
           })}
         </View>
+
+        <ModelGuidance model={model} mode={mode} />
 
         <Pressable onPress={handleClose} style={styles.sheetClose}>
           <Text style={styles.sheetCloseText}>Done</Text>
