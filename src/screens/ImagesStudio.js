@@ -17,7 +17,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Haptic from 'react-native-haptic-feedback';
 import { useImagesStore } from '../state/useImagesStore';
 import { useSettingsStore } from '../state/useSettingsStore';
+import SvgIcon from '../components/SvgIcon';
 import { fetchModels } from '../api/models';
+import { launchImageLibrary } from 'react-native-image-picker';
 import '../utils/testImageGeneration'; // Import test functions for dev
 import {
   ImageCard,
@@ -28,10 +30,7 @@ import {
   SettingsModal,
   ImageViewer,
   ErrorDisplay,
-  // ModeSelector, // DISABLED - using dropdown in InputComposer now
   AdvancedParams,
-  ImageUpload,
-  ModeMenu,
 } from '../components/image-studio';
 
 // ---------- helpers ----------
@@ -61,8 +60,12 @@ export default function ImagesStudio({ navigation, route }) {
   const [advancedParams, setAdvancedParams] = useState({});
   const [advancedParamsOpen, setAdvancedParamsOpen] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
-  const [showModeMenu, setShowModeMenu] = useState(false);
   const plusButtonRef = useRef(null);
+  
+  // Multi-select state
+  const [isSelectionMode, setIsSelectionMode] = useState(false);
+  const [selectedImages, setSelectedImages] = useState(new Set());
+  const [showBatchActions, setShowBatchActions] = useState(false);
   
   // Track actual model being used (for auto-selection feedback)
   const [actualModel, setActualModel] = useState(null);
@@ -209,46 +212,106 @@ export default function ImagesStudio({ navigation, route }) {
   }, []);
 
   const confirmDelete = useCallback(() => {
-    if (!deleteConfirm) {
-      console.log('❌ [IMAGES] No delete confirmation found');
-      return;
-    }
+    if (!deleteConfirm) return;
     
-    console.log('🗑️ [IMAGES] Confirming delete:', deleteConfirm.type, deleteConfirm);
-    
-    if (deleteConfirm.type === 'image') {
-      console.log('🗑️ [IMAGES] Deleting image:', deleteConfirm.image.id, 'from job:', deleteConfirm.image.jobId);
+    // Check if we have a custom onConfirm handler (for multi-select)
+    if (deleteConfirm.onConfirm) {
+      deleteConfirm.onConfirm();
+    } else if (deleteConfirm.type === 'image') {
       deleteImage(deleteConfirm.image.jobId, deleteConfirm.image.id);
-      console.log('✅ [IMAGES] Image deletion completed');
+      setDeleteConfirm(null);
     } else if (deleteConfirm.type === 'job') {
-      console.log('🗑️ [IMAGES] Deleting job:', deleteConfirm.job.id);
       deleteJob(deleteConfirm.job.id);
-      console.log('✅ [IMAGES] Job deletion completed');
+      setDeleteConfirm(null);
     }
-    
-    setDeleteConfirm(null);
   }, [deleteConfirm, deleteImage, deleteJob]);
 
   const cancelDelete = useCallback(() => {
     setDeleteConfirm(null);
   }, []);
 
+  // Multi-select functionality
+  const toggleSelectionMode = useCallback(() => {
+    setIsSelectionMode(!isSelectionMode);
+    setSelectedImages(new Set());
+    setShowBatchActions(false);
+  }, [isSelectionMode]);
+
+  const toggleImageSelection = useCallback((imageId) => {
+    const newSelected = new Set(selectedImages);
+    if (newSelected.has(imageId)) {
+      newSelected.delete(imageId);
+    } else {
+      newSelected.add(imageId);
+    }
+    setSelectedImages(newSelected);
+    setShowBatchActions(newSelected.size > 0);
+  }, [selectedImages]);
+
+  const selectAllImages = useCallback(() => {
+    const allImageIds = new Set(images.map(img => img.id));
+    setSelectedImages(allImageIds);
+    setShowBatchActions(true);
+  }, [images]);
+
+  const clearSelection = useCallback(() => {
+    setSelectedImages(new Set());
+    setShowBatchActions(false);
+  }, []);
+
+  const deleteSelectedImages = useCallback(() => {
+    if (selectedImages.size === 0) return;
+    
+    // Get unique job IDs from selected images (same approach as deleteSelectedJobs)
+    const jobIds = new Set();
+    selectedImages.forEach(imageId => {
+      const image = images.find(img => img.id === imageId);
+      if (image) {
+        jobIds.add(image.jobId);
+      }
+    });
+    
+    setDeleteConfirm({
+      title: 'Delete Images',
+      message: `Are you sure you want to delete ${jobIds.size} job(s) and all their images? This action cannot be undone.`,
+      onConfirm: () => {
+        jobIds.forEach(jobId => {
+          deleteJob(jobId);
+        });
+        clearSelection();
+        setIsSelectionMode(false);
+        setDeleteConfirm(null);
+      }
+    });
+  }, [selectedImages, images, deleteJob]);
+
+
+
   const images = useMemo(() => {
     const done = (jobs || []).filter((j) => j?.status === 'done');
-    const result = done.flatMap((j, jdx) =>
-      (j.images || [])
-        .map((img, idx) => ({
-          ...img,
-          id: img?.id || `${j.id || 'job'}:${jdx}:${idx}`,
-          jobId: j.id, // Add jobId to each image
-          url: normalizeImageUri(img?.url),
-          prompt: j.prompt,
-          size: j.size || '1024x1024',
-          model: j.model,
-        }))
-        .filter((img) => !!img.url) // Filter out empty URLs
-    );
-    console.log('🖼️ [IMAGES] Computed images with jobIds:', result.map(img => ({ id: img.id, jobId: img.jobId })));
+    
+    const result = done.flatMap((j, jdx) => {
+      return (j.images || [])
+        .map((img, idx) => {
+          const normalizedUrl = normalizeImageUri(img?.url);
+          // Ensure unique ID by combining job ID with image ID
+          const uniqueId = img?.id ? `${j.id}:${img.id}` : `${j.id || 'job'}:${jdx}:${idx}`;
+          const processedImg = {
+            ...img,
+            id: uniqueId,
+            jobId: j.id, // Add jobId to each image
+            url: normalizedUrl,
+            originalUrl: img?.url, // Preserve original URL for re-caching
+            prompt: j.prompt,
+            size: j.size || '1024x1024',
+            model: j.model,
+          };
+          
+          return processedImg;
+        })
+        .filter((img) => !!img.url);
+    });
+    
     return result;
   }, [jobs]);
 
@@ -424,6 +487,32 @@ export default function ImagesStudio({ navigation, route }) {
     onGenerate();
   }, [onGenerate]);
 
+  const handleOpenPhotoGallery = useCallback(() => {
+    const options = {
+      mediaType: 'photo',
+      includeBase64: true,
+      maxHeight: 2048,
+      maxWidth: 2048,
+      quality: 0.8,
+    };
+
+    launchImageLibrary(options, (response) => {
+      if (response.didCancel || response.errorMessage) {
+        return;
+      }
+
+      const asset = response.assets?.[0];
+      if (asset) {
+        // Convert to base64 data URI
+        const base64DataUri = `data:image/jpeg;base64,${asset.base64}`;
+        
+        // Set as seed image and switch to img2img mode
+        setSeedImage(base64DataUri);
+        setMode('img2img');
+      }
+    });
+  }, [setSeedImage, setMode]);
+
   const openImageExternally = useCallback((url) => {
     if (isHttp(url)) Linking.openURL(url).catch(() => { });
   }, []);
@@ -495,17 +584,32 @@ export default function ImagesStudio({ navigation, route }) {
 
   // ---------- tile renderer ----------
   const renderTile = useCallback((item, _index, tileStyle) => {
+    const isSelected = selectedImages.has(item.id);
+    
     return (
       <ImageCard
         item={item}
         style={tileStyle}
-        onPress={() => setViewer({ open: true, uri: item.url })}
-        onLongPress={showTileActions}
+        onPress={() => {
+          if (isSelectionMode) {
+            toggleImageSelection(item.id);
+          } else {
+            setViewer({ open: true, uri: item.url });
+          }
+        }}
+        onLongPress={() => {
+          if (!isSelectionMode) {
+            showTileActions();
+          }
+        }}
         onDelete={handleDeleteImage}
         isGenerating={item.status === 'generating'}
+        isSelectionMode={isSelectionMode}
+        isSelected={isSelected}
+        onToggleSelection={() => toggleImageSelection(item.id)}
       />
     );
-  }, [showTileActions, handleDeleteImage]);
+  }, [showTileActions, handleDeleteImage, isSelectionMode, selectedImages, toggleImageSelection]);
 
   // ---------- UI ----------
   return (
@@ -517,15 +621,67 @@ export default function ImagesStudio({ navigation, route }) {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Text style={styles.logo}>🎨</Text>
+          <View style={styles.iconContainer}>
+            <SvgIcon name="studio" size={28} color="#8A42FF" />
+          </View>
           <Text style={styles.title}>Studio</Text>
         </View>
         <View style={styles.headerRight}>
-          <Pressable onPress={() => navigation.goBack()} hitSlop={8}>
-            <Text style={styles.close}>✕</Text>
+          {images.length > 0 && (
+            <Pressable
+              style={[
+                styles.headerButton,
+                isSelectionMode && styles.headerButtonActive
+              ]}
+              onPress={toggleSelectionMode}
+              hitSlop={8}
+              accessibilityLabel={isSelectionMode ? "Exit selection mode" : "Select images"}
+            >
+              <SvgIcon 
+                name="copygrey" 
+                size={24} 
+                color={isSelectionMode ? "#8A42FF" : "#FFFFFF"} 
+              />
+            </Pressable>
+          )}
+          <Pressable 
+            onPress={() => navigation.goBack()} 
+            hitSlop={12}
+            style={styles.closeButton}
+          >
+            <SvgIcon name="close" size={24} color="#FFFFFF" />
           </Pressable>
         </View>
       </View>
+
+      {/* Batch Actions Bar */}
+      {isSelectionMode && showBatchActions && (
+        <View style={styles.batchActionsBar}>
+          <View style={styles.batchActionsLeft}>
+            <Text style={styles.batchActionsText}>
+              {selectedImages.size} selected
+            </Text>
+            <Pressable
+              style={styles.batchActionButton}
+              onPress={selectAllImages}
+              hitSlop={8}
+            >
+              <Text style={styles.batchActionButtonText}>Select All</Text>
+            </Pressable>
+          </View>
+          <View style={styles.batchActionsRight}>
+            <Pressable
+              style={[styles.batchActionButton, styles.deleteButton]}
+              onPress={deleteSelectedImages}
+              hitSlop={8}
+            >
+              <Text style={[styles.batchActionButtonText, styles.deleteButtonText]}>
+                Delete Images
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      )}
 
       {/* Gallery */}
       <ScrollView 
@@ -535,7 +691,7 @@ export default function ImagesStudio({ navigation, route }) {
         accessibilityLabel="Generated images gallery"
       >
         {images.length > 0 ? (
-          <AdaptiveGrid items={images} renderTile={renderTile} horizontalPadding={16} />
+          <AdaptiveGrid items={images} renderTile={renderTile} horizontalPadding={20} />
         ) : (
           <View style={styles.empty}>
             <Text style={styles.emptyIcon}>🖼️</Text>
@@ -547,26 +703,7 @@ export default function ImagesStudio({ navigation, route }) {
 
       {/* Footer */}
       <View style={[styles.footer, { paddingBottom: Math.max(insets.bottom, 16) }]}>
-        {/* Mode Selector - DISABLED (using dropdown in InputComposer now) */}
-        {/* <ModeSelector
-          mode={mode}
-          onModeChange={setMode}
-          disabled={busy}
-        /> */}
 
-        {/* Image Upload for Image to Image Mode */}
-        {mode === 'img2img' && (
-          <View style={styles.uploadSection}>
-            <ImageUpload
-              label="Seed Image"
-              imageUri={seedImage}
-              onImageSelected={setSeedImage}
-              onRemoveImage={() => setSeedImage('')}
-              required={true}
-              disabled={busy}
-            />
-          </View>
-        )}
 
         <InputComposer
           prompt={prompt}
@@ -577,9 +714,10 @@ export default function ImagesStudio({ navigation, route }) {
           onModeChange={setMode}
           currentMode={mode}
           disabled={busy}
-          showModeMenu={showModeMenu}
-          onShowModeMenu={setShowModeMenu}
           plusButtonRef={plusButtonRef}
+          selectedImageUri={mode === 'img2img' ? seedImage : null}
+          onRemoveSelectedImage={() => setSeedImage('')}
+          onOpenPhotoGallery={handleOpenPhotoGallery}
         />
 
         {/* Progress Bar */}
@@ -607,17 +745,30 @@ export default function ImagesStudio({ navigation, route }) {
           </View>
         )}
 
-        {/* Generate Button */}
-        <GenerateButton
-          onPress={onGenerate}
-          disabled={!canGenerate}
-          busy={busy}
-          modelName={models?.[model]?.display?.name || model}
-          actualModelName={actualModel ? (models?.[actualModel]?.display?.name || actualModel) : null}
-          modelChanged={modelChanged}
-          animatedValue={buttonScale}
-          onAdvancedParams={() => setAdvancedParamsOpen(true)}
-        />
+        {/* Generate Button and Settings */}
+        <View style={styles.generateSection}>
+          <GenerateButton
+            onPress={onGenerate}
+            disabled={!canGenerate}
+            busy={busy}
+            modelName={models?.[model]?.display?.name || model}
+            actualModelName={actualModel ? (models?.[actualModel]?.display?.name || actualModel) : null}
+            modelChanged={modelChanged}
+            animatedValue={buttonScale}
+            onAdvancedParams={() => setAdvancedParamsOpen(true)}
+            style={styles.generateButtonFlex}
+          />
+          
+          {/* Settings Button */}
+          <Pressable
+            style={styles.settingsButton}
+            onPress={() => setSettingsOpen(true)}
+            hitSlop={8}
+            accessibilityLabel="Open settings"
+          >
+            <SvgIcon name="settings" size={20} color="#FFFFFF" />
+          </Pressable>
+        </View>
       </View>
 
       {/* Settings Modal */}
@@ -648,17 +799,8 @@ export default function ImagesStudio({ navigation, route }) {
         onParamsChange={setAdvancedParams}
       />
 
-      {/* ModeMenu rendered at root level for proper positioning */}
-      <ModeMenu
-        visible={showModeMenu}
-        onClose={() => setShowModeMenu(false)}
-        currentMode={mode}
-        onModeSelect={setMode}
-        buttonRef={plusButtonRef}
-      />
 
       {/* Delete Confirmation Dialog */}
-      {console.log('🎭 [IMAGES] Modal render check - deleteConfirm:', !!deleteConfirm, deleteConfirm)}
       <Modal
         visible={!!deleteConfirm}
         transparent
@@ -667,6 +809,9 @@ export default function ImagesStudio({ navigation, route }) {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
+            <View style={styles.modalIcon}>
+              <Text style={styles.modalIconText}>🗑️</Text>
+            </View>
             <Text style={styles.modalTitle}>{deleteConfirm?.title}</Text>
             <Text style={styles.modalMessage}>{deleteConfirm?.message}</Text>
             <View style={styles.modalButtons}>
@@ -701,145 +846,292 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 16,
-    borderBottomWidth: 1,
+    paddingVertical: 12,
+    borderBottomWidth: 0.3,
     borderBottomColor: '#374151',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   headerLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: 12,
+    flex: 1,
   },
-  logo: {
-    fontSize: 32,
-    color: '#00E0C7',
-    fontFamily: 'Lato-Bold',
+  iconContainer: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
-    fontSize: 32,
+    // fontSize: Math.min(32, useWindowDimensions().width * 0.08),
+    fontSize: 28,
     fontWeight: '700',
     color: '#F9FAFB',
     fontFamily: 'Lato-Bold',
+    letterSpacing: 0.5,
   },
   headerRight: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 16,
   },
-  close: {
-    fontSize: 22,
-    color: '#9CA3AF',
+  closeButton: {
+    width: 44,
+    height: 44,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerButton: {
+    width: 44,
+    height: 44,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerButtonActive: {
+    // No background or border for clean look
+  },
+  batchActionsBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    backgroundColor: '#1F2937',
+    borderBottomWidth: 1,
+    borderBottomColor: '#374151',
+  },
+  batchActionsLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
+  },
+  batchActionsRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  batchActionsText: {
+    color: '#F9FAFB',
+    fontSize: 14,
+    fontWeight: '600',
     fontFamily: 'Lato-Bold',
+  },
+  batchActionButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    backgroundColor: 'rgba(156, 163, 175, 0.1)',
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: 'rgba(156, 163, 175, 0.2)',
+  },
+  batchActionButtonText: {
+    color: '#F9FAFB',
+    fontSize: 12,
+    fontWeight: '600',
+    fontFamily: 'Lato-Bold',
+  },
+  deleteButton: {
+    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+    borderColor: 'rgba(239, 68, 68, 0.3)',
+  },
+  deleteButtonText: {
+    color: '#EF4444',
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    paddingHorizontal: 24,
+    paddingVertical: 20,
   },
   modalContent: {
     backgroundColor: '#1F2937',
-    borderRadius: 16,
-    padding: 24,
+    borderRadius: 24,
+    paddingHorizontal: 32,
+    paddingVertical: 36,
     width: '100%',
-    maxWidth: 400,
+    maxWidth: 380,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.4,
+    shadowRadius: 24,
+    elevation: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(156, 163, 175, 0.1)',
+  },
+  modalIcon: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+    borderWidth: 2,
+    borderColor: 'rgba(239, 68, 68, 0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  modalIconText: {
+    fontSize: 28,
   },
   modalTitle: {
     color: '#F9FAFB',
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: '700',
-    marginBottom: 12,
+    marginBottom: 8,
     textAlign: 'center',
+    fontFamily: 'Lato-Bold',
+    letterSpacing: -0.5,
   },
   modalMessage: {
     color: '#D1D5DB',
     fontSize: 16,
     lineHeight: 24,
-    marginBottom: 24,
+    marginBottom: 36,
     textAlign: 'center',
+    fontFamily: 'Lato-Regular',
+    opacity: 0.9,
   },
   modalButtons: {
     flexDirection: 'row',
-    gap: 12,
+    gap: 16,
   },
   modalButton: {
     flex: 1,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 16,
     alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
   },
   modalButtonCancel: {
-    backgroundColor: '#374151',
+    backgroundColor: 'rgba(156, 163, 175, 0.08)',
+    borderColor: 'rgba(156, 163, 175, 0.2)',
   },
   modalButtonDelete: {
-    backgroundColor: '#DC2626',
+    backgroundColor: 'rgba(239, 68, 68, 0.12)',
+    borderColor: 'rgba(239, 68, 68, 0.4)',
   },
   modalButtonTextCancel: {
-    color: '#F9FAFB',
+    color: '#9CA3AF',
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: 'Lato-Bold',
+    letterSpacing: 0.2,
   },
   modalButtonTextDelete: {
-    color: '#FFFFFF',
+    color: '#EF4444',
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: 'Lato-Bold',
+    letterSpacing: 0.2,
   },
   scroll: {
     flex: 1,
   },
   content: {
-    padding: 16,
-    paddingBottom: 120,
+    paddingHorizontal: 20,
+    paddingTop: 24,
+    paddingBottom: 140,
   },
   empty: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 60,
-    gap: 8,
+    paddingVertical: 80,
+    paddingHorizontal: 32,
+    gap: 16,
   },
   emptyIcon: {
-    fontSize: 48,
+    fontSize: 64,
+    opacity: 0.6,
   },
   emptyTitle: {
     color: '#F9FAFB',
     fontWeight: '700',
-    fontSize: 20,
+    fontSize: 24,
     fontFamily: 'Lato-Bold',
+    textAlign: 'center',
+    marginBottom: 8,
   },
   emptyHint: {
     color: '#9CA3AF',
     fontSize: 16,
     fontFamily: 'Lato-Regular',
+    textAlign: 'center',
+    lineHeight: 24,
   },
   footer: {
-    padding: 16,
-    borderTopWidth: 1,
+    paddingVertical: 14,
+    borderTopWidth: 0.4,
     borderTopColor: '#374151',
     backgroundColor: '#000000',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    marginTop:10,
   },
   uploadSection: {
-    marginBottom: 16,
+    marginBottom: 20,
   },
   modelChangeNotification: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#1F2937',
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
-    borderLeftWidth: 3,
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    marginBottom: 16,
+    borderLeftWidth: 4,
     borderLeftColor: '#00E0C7',
+    shadowColor: '#00E0C7',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
   },
   modelChangeIcon: {
-    fontSize: 16,
-    marginRight: 8,
+    fontSize: 18,
+    marginRight: 12,
   },
   modelChangeText: {
     color: '#F9FAFB',
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: 'Lato-Regular',
     flex: 1,
+    lineHeight: 20,
+  },
+  generateSection: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    gap: 8,
+    height: 48,
+    marginTop: 12,
+  },
+  generateButtonFlex: {
+    flex: 0.9,
+    marginTop: 0,
+  },
+  settingsButton: {
+    flex: 0.14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(156, 163, 175, 0.1)',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(156, 163, 175, 0.2)',
   },
 });

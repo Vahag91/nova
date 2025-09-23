@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
   Image,
 } from 'react-native';
-import OptimizedImage from './OptimizedImage';
+import { cacheToFile } from '../../lib/imageUtils';
 
 const ImageCard = memo(({ 
   item, 
@@ -15,6 +15,9 @@ const ImageCard = memo(({
   onLongPress,
   onDelete,
   isGenerating = false,
+  isSelectionMode = false,
+  isSelected = false,
+  onToggleSelection,
 }) => {
   const [uri, setUri] = useState(item.url);
   
@@ -23,45 +26,71 @@ const ImageCard = memo(({
   }, [item, onPress]);
 
   const handleLongPress = useCallback(() => {
-    console.log('🎯 [CARD] Long press detected for item:', item.id);
     onLongPress?.(item);
   }, [item, onLongPress]);
 
   const handleImageLoad = useCallback(() => {
-    console.log('✅ [CARD] Image loaded successfully:', {
-      itemId: item.id,
-      uri: uri.slice(0, 80),
-      urlType: uri.startsWith('data:') ? 'data-uri' : uri.startsWith('file://') ? 'local-file' : 'remote-url'
-    });
-  }, [uri, item.id]);
+    // Image loaded successfully
+  }, []);
 
-  const handleImageError = useCallback(() => {
-    console.warn('🖼️ [CARD] Image failed to load:', {
-      uri: uri.slice(0, 80),
-      fullUri: uri,
-      itemId: item.id,
-      itemUrl: item.url
-    });
+  const handleImageError = useCallback(async (error) => {
+    // Try to re-cache the image if it's a local file that failed
+    if (uri?.startsWith('file://')) {
+      try {
+        // Try to re-download from original URL if available
+        const originalUrl = item.originalUrl || item.url;
+        if (originalUrl && /^https?:\/\//i.test(originalUrl)) {
+          const newUri = await cacheToFile(originalUrl);
+          if (newUri && newUri !== originalUrl) {
+            setUri(newUri);
+            return;
+          }
+        }
+      } catch (reCacheError) {
+        // Silent re-cache failure
+      }
+    }
+    
     // One retry with a cache buster only for http URLs
     if (/^https?:\/\//i.test(uri) && !/[?&]t=/.test(uri)) {
       const retryUri = uri + (uri.includes('?') ? '&' : '?') + 't=' + Date.now();
-      console.log('🖼️ [CARD] Retrying with cache buster:', retryUri.slice(0, 80));
       setUri(retryUri);
     }
-  }, [uri, item.id, item.url]);
+  }, [uri, item.id, item.originalUrl, item.url]);
 
   return (
     <Pressable
-      style={[styles.card, style]}
+      style={[
+        styles.card, 
+        style,
+        isSelectionMode && styles.cardSelectionMode,
+        isSelected && styles.cardSelected
+      ]}
       onPress={handlePress}
       onLongPress={handleLongPress}
       android_ripple={{ color: '#374151' }}
       accessibilityLabel="Generated image"
-      accessibilityHint="Double tap to view full screen, long press for options"
+      accessibilityHint={isSelectionMode ? "Tap to select/deselect" : "Double tap to view full screen, long press for options"}
     >
+      {/* Selection checkbox */}
+      {isSelectionMode && (
+        <View style={[
+          styles.selectionCheckbox,
+          isSelected && styles.selectionCheckboxSelected
+        ]}>
+          {isSelected && (
+            <Text style={styles.selectionCheckmark}>✓</Text>
+          )}
+        </View>
+      )}
+      
       <Image
         source={{ uri }}
-        style={styles.image}
+        style={[
+          styles.image,
+          isSelectionMode && styles.imageSelectionMode,
+          isSelected && styles.imageSelected
+        ]}
         resizeMode="cover"
         onLoad={handleImageLoad}
         onError={handleImageError}
@@ -110,6 +139,44 @@ const styles = {
     color: '#00E0C7',
     fontSize: 12,
     fontWeight: '600',
+  },
+  // Selection mode styles
+  cardSelectionMode: {
+    borderWidth: 2,
+    borderColor: 'transparent',
+  },
+  cardSelected: {
+    borderColor: '#8A42FF',
+    backgroundColor: 'rgba(139, 66, 255, 0.1)',
+  },
+  selectionCheckbox: {
+    position: 'absolute',
+    top: 8,
+    left: 8,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    borderWidth: 2,
+    borderColor: '#9CA3AF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+  },
+  selectionCheckboxSelected: {
+    backgroundColor: '#8A42FF',
+    borderColor: '#8A42FF',
+  },
+  selectionCheckmark: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  imageSelectionMode: {
+    opacity: 1,
+  },
+  imageSelected: {
+    opacity: 0.8,
   },
 };
 

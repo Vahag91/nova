@@ -1,10 +1,12 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import {
   View,
   Text,
   TextInput,
   Pressable,
+  Image,
 } from 'react-native';
+import SvgIcon from '../SvgIcon';
 
 const InputComposer = memo(({
   prompt,
@@ -17,11 +19,19 @@ const InputComposer = memo(({
   maxLength = 4000,
   placeholder = "Describe your image...",
   disabled = false,
-  // Expose dropdown state and button ref to parent
-  showModeMenu,
-  onShowModeMenu,
+  // Expose button ref to parent
   plusButtonRef,
+  // Auto-expanding input settings
+  minInputHeight = 40,
+  maxInputHeight = 120,
+  // Selected image for img2img mode
+  selectedImageUri,
+  onRemoveSelectedImage,
+  // Photo gallery selection
+  onOpenPhotoGallery,
 }) => {
+  // Auto-expanding input state
+  const [isExpanded, setIsExpanded] = useState(false);
   const handlePromptChange = useCallback((text) => {
     onPromptChange?.(text);
   }, [onPromptChange]);
@@ -35,145 +45,186 @@ const InputComposer = memo(({
   }, [onOpenSettings]);
 
   const handlePlusPress = useCallback(() => {
-    onShowModeMenu?.(true);
-  }, [onShowModeMenu]);
+    onOpenPhotoGallery?.();
+  }, [onOpenPhotoGallery]);
 
-  const handleModeSelect = useCallback((mode) => {
-    onModeChange?.(mode);
-  }, [onModeChange]);
-
-  const handleCloseMenu = useCallback(() => {
-    onShowModeMenu?.(false);
-  }, [onShowModeMenu]);
+  // Handle content size changes for responsive height
+  const handleContentSizeChange = useCallback((event) => {
+    const { height } = event.nativeEvent.contentSize;
+    if (height && height > 0) {
+      // Just track if we're expanded, don't control the height
+      setIsExpanded(height > minInputHeight);
+    }
+  }, [minInputHeight]);
 
   return (
-    <View style={styles.composer}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            value={prompt}
-            onChangeText={handlePromptChange}
-            placeholder={placeholder}
-            placeholderTextColor="#9CA3AF"
-            style={styles.input}
-            maxLength={maxLength}
-            multiline={false}
-            returnKeyType="send"
-            onSubmitEditing={onGenerate}
-            editable={!disabled}
-            accessibilityLabel="Image description input"
-            accessibilityHint="Enter a description of the image you want to generate"
-          />
-          {prompt.length > 0 && (
-            <Pressable 
-              onPress={handleClearPrompt} 
-              style={styles.clearButton}
-              accessibilityLabel="Clear input"
+    <View style={[
+      styles.composer,
+      isExpanded && styles.composerExpanded
+    ]}>
+      {/* Selected Image Preview (for img2img mode) */}
+      {selectedImageUri && (
+        <View style={styles.selectedImageContainer}>
+          <View style={styles.selectedImagePreview}>
+            <Image 
+              source={{ uri: selectedImageUri }} 
+              style={styles.selectedImage}
+              resizeMode="cover"
+            />
+            <Pressable
+              style={styles.selectedImageRemoveButton}
+              onPress={onRemoveSelectedImage}
+              disabled={disabled}
             >
-              <Text style={styles.clearIcon}>✕</Text>
+              <Text style={styles.selectedImageRemoveIcon}>✕</Text>
             </Pressable>
-          )}
+          </View>
         </View>
-        <Text style={styles.charCounter}>
-          {prompt.length}/{maxLength}
-        </Text>
-        <View style={styles.iconGroup}>
+      )}
+
+      {/* Input field with clear button and camera icon */}
+      <View style={styles.inputContainer}>
+        {/* Text input */}
+        <TextInput
+          value={prompt}
+          onChangeText={handlePromptChange}
+          placeholder={placeholder}
+          placeholderTextColor="#9CA3AF"
+          style={[
+            styles.input,
+            {
+              maxHeight: maxInputHeight,
+            }
+          ]}
+          maxLength={maxLength}
+          multiline={true}
+          returnKeyType="send"
+          onSubmitEditing={onGenerate}
+          editable={!disabled}
+          onContentSizeChange={handleContentSizeChange}
+          textAlignVertical={isExpanded ? "top" : "center"}
+          accessibilityLabel="Image description input"
+          accessibilityHint="Enter a description of the image you want to generate"
+        />
+        
+        {/* Camera icon on the right */}
         <View
           ref={plusButtonRef}
-          collapsable={false}        // important for Android measurement
-          style={{ borderRadius: 8 }} // optional
+          collapsable={false}
+          style={{ borderRadius: 8 }}
         >
-          <Pressable 
-            style={[
-              styles.iconBtn,
-              currentMode !== 'text2img' && styles.activeIconBtn
-            ]} 
-            onPress={handlePlusPress} 
+          <Pressable
+            style={styles.cameraButtonRight}
+            onPress={handlePlusPress}
             hitSlop={8}
-            accessibilityLabel="Select generation mode"
+            accessibilityLabel="Open photo gallery"
           >
-            <Text style={[
-              styles.iconTxt,
-              currentMode !== 'text2img' && styles.activeIconTxt
-            ]}>
-              {currentMode === 'text2img' ? '➕' : '🎯'}
-            </Text>
-          </Pressable>
-        </View>
-          <Pressable 
-            style={styles.iconBtn} 
-            onPress={handleOpenSettings} 
-            hitSlop={8}
-            accessibilityLabel="Open settings"
-          >
-            <Text style={styles.iconTxt}>⚙️</Text>
+            <SvgIcon name="photo" size={20} color="#FFFFFF" />
           </Pressable>
         </View>
         
-        {/* ModeMenu moved to root level in ImagesStudio.js */}
+        {/* Clear button on the right */}
+        {prompt.length > 0 && (
+          <Pressable
+            onPress={handleClearPrompt}
+            style={styles.clearButtonRight}
+            accessibilityLabel="Clear input"
+          >
+            <SvgIcon name="close" size={18} color="#9CA3AF" />
+          </Pressable>
+        )}
       </View>
+
+
+      {/* ModeMenu moved to root level in ImagesStudio.js */}
+    </View>
   );
 });
 
 const styles = {
   composer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'column',
     backgroundColor: '#1E1E1E',
-    borderWidth: 0,
+    // borderWidth: 1,
+    borderColor: '#374151',
     borderRadius: 12,
-    padding: 8,
-    marginBottom: 8,
+    padding: 12,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  composerExpanded: {
+    paddingVertical: 12,
   },
   inputContainer: {
-    flex: 1,
+    width: '100%',
+    marginBottom: 6,
     flexDirection: 'row',
     alignItems: 'center',
   },
   input: {
     flex: 1,
     color: '#F9FAFB',
-    fontSize: 16,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
+    fontSize: 15,
+    lineHeight: 20,
+    paddingVertical: 2,
+    paddingRight: 8,
     fontFamily: 'Lato-Regular',
+    minHeight: 32,
+    textAlignVertical: 'center',
+    backgroundColor: 'transparent',
   },
-  clearButton: {
-    padding: 4,
-    marginRight: 8,
-  },
-  clearIcon: {
-    color: '#9CA3AF',
-    fontSize: 16,
-  },
-  charCounter: {
-    color: '#6B7280',
-    fontSize: 12,
-    marginRight: 8,
-    minWidth: 60,
-    textAlign: 'right',
-  },
-  iconGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 0,
-  },
-  iconBtn: {
+  cameraButtonRight: {
     padding: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'transparent',
-    borderWidth: 0,
+    marginLeft: 8,
   },
-  iconTxt: {
-    fontSize: 22,
-    color: '#9CA3AF',
+  clearButtonRight: {
+    padding: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 8,
   },
   activeIconBtn: {
-    backgroundColor: 'rgba(0, 224, 199, 0.1)',
-    borderRadius: 8,
+    backgroundColor: 'rgba(0, 224, 199, 0.15)',
   },
   activeIconTxt: {
     color: '#00E0C7',
+  },
+  selectedImageContainer: {
+    marginBottom: 8,
+  },
+  selectedImagePreview: {
+    position: 'relative',
+    borderRadius: 8,
+    overflow: 'hidden',
+    backgroundColor: '#1E1E1E',
+    borderWidth: 1,
+    borderColor: '#374151',
+    alignSelf: 'flex-start',
+  },
+  selectedImage: {
+    width: 80,
+    height: 80,
+  },
+  selectedImageRemoveButton: {
+    position: 'absolute',
+    top: 4,
+    right: 4,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    borderRadius: 10,
+    width: 20,
+    height: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  selectedImageRemoveIcon: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '800',
   },
 };
 

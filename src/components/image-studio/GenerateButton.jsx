@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   Animated,
 } from 'react-native';
+import SvgIcon from '../SvgIcon';
 
 const GenerateButton = memo(({
   onPress,
@@ -16,9 +17,10 @@ const GenerateButton = memo(({
   modelChanged = false, // Whether the model was auto-selected
   animatedValue,
   onAdvancedParams,
+  style, // Allow custom styling
 }) => {
   return (
-    <View style={styles.ctaContainer}>
+    <View style={[styles.ctaContainer, style]}>
       <Animated.View style={{ transform: [{ scale: animatedValue || 1 }] }}>
         <Pressable
           onPress={() => {
@@ -32,7 +34,7 @@ const GenerateButton = memo(({
         >
           {busy ? (
             <View style={styles.ctaLoading}>
-              <ActivityIndicator color="#000000" size="small" />
+              <ActivityIndicator color="#FFFFFF" size="small" />
               <Text style={styles.ctaLoadingText}>Generating...</Text>
             </View>
           ) : (
@@ -47,7 +49,7 @@ const GenerateButton = memo(({
                   </Text>
                 )}
               </View>
-              <Text style={styles.ctaArrow}>↑</Text>
+              <SvgIcon name="stars" size={22} color="#FFFFFF" />
             </>
           )}
         </Pressable>
@@ -77,11 +79,11 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#00E0C7',
+    backgroundColor: '#8A42FF',
     borderRadius: 12,
     paddingVertical: 12,
     gap: 8,
-    shadowColor: '#00E0C7',
+    shadowColor: '#8A42FF',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
@@ -93,7 +95,7 @@ const styles = {
     gap: 8,
   },
   ctaLoadingText: {
-    color: '#000000',
+    color: '#FFFFFF',
     fontWeight: '600',
     fontSize: 16,
     fontFamily: 'Lato-Bold',
@@ -102,23 +104,18 @@ const styles = {
     alignItems: 'center',
   },
   ctaText: {
-    color: '#000000',
+    color: '#FFFFFF',
     fontWeight: '600',
     fontSize: 18,
     fontFamily: 'Lato-Bold',
   },
   modelChangedText: {
-    color: '#000000',
+    color: '#FFFFFF',
     fontWeight: '400',
     fontSize: 12,
     fontFamily: 'Lato-Regular',
-    opacity: 0.7,
+    opacity: 0.8,
     marginTop: 2,
-  },
-  ctaArrow: {
-    color: '#000000',
-    fontWeight: '600',
-    fontSize: 22,
   },
   advancedButton: {
     flexDirection: 'row',

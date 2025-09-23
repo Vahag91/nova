@@ -1,32 +1,27 @@
-import React, { memo, useMemo } from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import React, { memo } from 'react';
+import { View, Dimensions } from 'react-native';
 
 const AdaptiveGrid = memo(({ items, renderTile, gap = 12, horizontalPadding = 16 }) => {
-  const { width: screenW } = useWindowDimensions();
-  const containerW = Math.max(0, screenW - horizontalPadding * 2); // match ScrollView content padding
-
-  const { columns, itemW } = useMemo(() => {
-    if (!containerW) return { columns: 1, itemW: 0 };
-    if (items.length <= 1) return { columns: 1, itemW: containerW };
-    // 2-col layout for 2+ items (your current logic)
-    const cols = 2;
-    const itemWidth = (containerW - gap * (cols - 1)) / cols;
-    return { columns: cols, itemW: Math.floor(itemWidth) }; // prevent fractional pixels
-  }, [containerW, items.length, gap]);
+  const screenWidth = Dimensions.get('window').width;
+  const containerWidth = screenWidth - (horizontalPadding * 2);
+  const itemWidth = (containerWidth - gap) / 2; // 2 columns with gap between
 
   return (
     <View style={styles.gridContainer}>
       {items.map((item, index) => {
-        const isLastInRow = (index + 1) % columns === 0;
-        const isLastRow = index >= items.length - columns;
+        const isLastInRow = (index + 1) % 2 === 0;
+        const isLastRow = index >= items.length - 2;
         const style = {
-          width: itemW,
+          width: itemWidth,
           marginRight: isLastInRow ? 0 : gap,
           marginBottom: isLastRow ? 0 : gap,
         };
+        // Create a unique key that combines item.id, jobId, and index to ensure uniqueness
+        const uniqueKey = `${item.id || 'unknown'}-${item.jobId || 'nojob'}-${index}`;
+        
         return (
-          <View key={item.id ?? index} style={[styles.gridItem, style]}>
-            {renderTile(item, index, { width: itemW, height: itemW })}
+          <View key={uniqueKey} style={[styles.gridItem, style]}>
+            {renderTile(item, index, { width: itemWidth, height: itemWidth })}
           </View>
         );
       })}

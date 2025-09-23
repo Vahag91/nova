@@ -165,7 +165,7 @@ export default function Composer({
               ]}
               editable={!streaming && !offline}
               multiline
-              // onContentSizeChange={handleContentSizeChange}
+              onContentSizeChange={handleContentSizeChange}
               maxLength={maxLength}
               autoCorrect
               autoCapitalize="sentences"

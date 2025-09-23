@@ -1,4 +1,3 @@
-export { default as OptimizedImage } from './OptimizedImage';
 export { default as ImageCard } from './ImageCard';
 export { default as AdaptiveGrid } from './AdaptiveGrid';
 export { default as ProgressBar } from './ProgressBar';
@@ -7,7 +6,5 @@ export { default as GenerateButton } from './GenerateButton';
 export { default as SettingsModal } from './SettingsModal';
 export { default as ImageViewer } from './ImageViewer';
 export { default as ErrorDisplay } from './ErrorDisplay';
-export { default as ModeSelector } from './ModeSelector';
 export { default as AdvancedParams } from './AdvancedParams';
 export { default as ImageUpload } from './ImageUpload';
-export { default as ModeMenu } from './ModeMenu';

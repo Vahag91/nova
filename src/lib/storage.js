@@ -60,10 +60,19 @@ export const Storage = {
 
   // Images
   async loadImages() {
-    try { const raw = await AsyncStorage.getItem(KEY_IMAGES); return raw ? JSON.parse(raw) : []; }
-    catch { return []; }
+    try { 
+      const raw = await AsyncStorage.getItem(KEY_IMAGES); 
+      return raw ? JSON.parse(raw) : [];
+    }
+    catch (error) { 
+      return []; 
+    }
   },
   async saveImages(jobs) {
-    try { await AsyncStorage.setItem(KEY_IMAGES, JSON.stringify(jobs)); } catch {}
+    try { 
+      await AsyncStorage.setItem(KEY_IMAGES, JSON.stringify(jobs));
+    } catch (error) {
+      // Silent save failure
+    }
   },
 };
