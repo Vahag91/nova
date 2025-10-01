@@ -1,15 +1,14 @@
-// useThreadsStore.js
+// state/useThreadsStore.js
 import { create } from 'zustand';
 import { Storage } from '../lib/storage';
+import { throttledSave } from '../lib/throttledSave';
 import { newThread } from './types';
 
-// Helper: bump updatedAt and persist
 function bump(arr, id, patch = {}) {
   return arr.map(t => t.id === id ? { ...t, ...patch, updatedAt: Date.now() } : t);
 }
 
 export const useThreadsStore = create((set, get) => ({
-  // ===== persisted (normal) =====
   threads: [],
   activeThreadId: null,
   hydrated: false,
@@ -38,7 +37,7 @@ export const useThreadsStore = create((set, get) => ({
         return {
           ...t,
           messages: [...(t.messages || []), message],
-          updatedAt: Date.now(),
+          updatedAt: message.createdAt, // Use message timestamp, not current time
         };
       });
       Storage.saveThreads(next);
@@ -53,13 +52,15 @@ export const useThreadsStore = create((set, get) => ({
         for (let i = msgs.length - 1; i >= 0; i--) {
           if (msgs[i].role === 'assistant') {
             const prev = msgs[i].content || '';
-            msgs[i] = { ...msgs[i], content: updater(prev) };
+            const newContent = updater(prev);
+            if (prev !== newContent) msgs[i] = { ...msgs[i], content: newContent };
             break;
           }
         }
-        return { ...t, messages: msgs, updatedAt: Date.now() };
+        const updatedThread = { ...t, messages: msgs, updatedAt: Date.now() };
+        throttledSave.queueSave(threadId, updatedThread);
+        return updatedThread;
       });
-      Storage.saveThreads(next);
       return { threads: next };
     });
   },
@@ -72,14 +73,14 @@ export const useThreadsStore = create((set, get) => ({
   },
   pinThread: (id, pinned) => {
     set((state) => {
-      const next = bump(state.threads, id, { pinned: !!pinned });
+      const next = state.threads.map(t => t.id === id ? { ...t, pinned: !!pinned } : t);
       Storage.saveThreads(next);
       return { threads: next };
     });
   },
   renameThread: (id, title) => {
     set((state) => {
-      const next = bump(state.threads, id, { title });
+      const next = state.threads.map(t => t.id === id ? { ...t, title } : t);
       Storage.saveThreads(next);
       return { threads: next };
     });
@@ -99,13 +100,13 @@ export const useThreadsStore = create((set, get) => ({
     set({ threads: [], activeThreadId: null });
   },
 
-  // ===== PRIVATE (ephemeral, never persisted) =====
+  // ===== PRIVATE =====
   privateActive: false,
-  privateThread: null, // { ...thread, isPrivate:true }
+  privateThread: null,
 
   startPrivate: (model) => {
     const t = newThread({ title: 'Private chat', model, system: null });
-    t.isPrivate = true; // marker
+    t.isPrivate = true;
     set({ privateActive: true, privateThread: t });
   },
   endPrivate: () => set({ privateActive: false, privateThread: null }),
@@ -115,11 +116,7 @@ export const useThreadsStore = create((set, get) => ({
       const t = state.privateThread;
       if (!state.privateActive || !t) return {};
       return {
-        privateThread: {
-          ...t,
-          messages: [...(t.messages || []), message],
-          updatedAt: Date.now(),
-        }
+        privateThread: { ...t, messages: [...(t.messages || []), message], updatedAt: Date.now() }
       };
     });
   },
@@ -135,7 +132,44 @@ export const useThreadsStore = create((set, get) => ({
           break;
         }
       }
-      return { privateThread: { ...t, messages: msgs, updatedAt: Date.now() } };
+      const updatedThread = { ...t, messages: msgs, updatedAt: Date.now() };
+      throttledSave.queueSave(t.id, updatedThread);
+      return { privateThread: updatedThread };
     });
+  },
+
+  forceSaveThread: (threadId) => {
+    const state = get();
+    const thread = state.threads.find(t => t.id === threadId) || state.privateThread;
+    if (thread) throttledSave.immediateSave(threadId, thread);
+  },
+
+  // ✅ Accepts metaPatch so summary cadence stays accurate
+  setThreadSummary: (threadId, summary, metaPatch) => set(state => {
+    const next = state.threads.map(t => {
+      if (t.id !== threadId) return t;
+      const nonSystemCount = (t.messages || []).filter(m => m.role !== 'system').length;
+      return {
+        ...t,
+        summary,
+        summaryUpdatedAt: metaPatch?.summaryUpdatedAt ?? Date.now(),
+        meta: {
+          ...t.meta,
+          summaryLastMsgCount: metaPatch?.summaryLastMsgCount ?? nonSystemCount,
+        },
+        updatedAt: Date.now(),
+      };
+    });
+    Storage.saveThreads(next);
+    return { threads: next };
+  }),
+
+  // Insert content callback (used by images studio)
+  insertToChatCallback: null,
+  setInsertToChatCallback: (callback) => set({ insertToChatCallback: callback }),
+  clearInsertToChatCallback: () => set({ insertToChatCallback: null }),
+  insertToChat: (content) => {
+    const state = get();
+    if (state.insertToChatCallback) state.insertToChatCallback(content);
   },
 }));

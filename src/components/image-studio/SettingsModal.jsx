@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ModelGuidance from './ModelGuidance';
+import SvgIcon from '../SvgIcon';
 
 const SettingsModal = memo(({
   visible,
@@ -63,7 +64,13 @@ const SettingsModal = memo(({
     >
       <Pressable style={styles.sheetBackdrop} onPress={handleClose} />
       <View style={[styles.sheet, { paddingBottom: Math.max(insets.bottom, 12) }]}>
-        <Text style={styles.sheetTitle}>Settings</Text>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.sheetTitle}>Settings</Text>
+          <Pressable onPress={handleClose} style={styles.closeButton}>
+            <SvgIcon name="close" size={20} color="#9CA3AF" />
+          </Pressable>
+        </View>
 
         <Text style={styles.sheetLabel}>Size</Text>
         <View style={styles.rowInline}>
@@ -125,72 +132,83 @@ const SettingsModal = memo(({
 const styles = {
   sheetBackdrop: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.7)',
   },
   sheet: {
     position: 'absolute',
-    left: 10,
-    right: 10,
-    bottom: 10,
+    left: 16,
+    right: 16,
+    bottom: 16,
     backgroundColor: '#1E1E1E',
-    borderRadius: 16,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: '#374151',
-    padding: 12,
+    padding: 20,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 16,
   },
   sheetTitle: {
     color: '#F9FAFB',
-    fontWeight: '800',
+    fontWeight: '600',
     fontSize: 16,
-    marginBottom: 8,
     fontFamily: 'Lato-Bold',
   },
+  closeButton: {
+    padding: 4,
+  },
   sheetLabel: {
-    color: '#9CA3AF',
-    fontWeight: '700',
-    marginBottom: 6,
+    color: '#F9FAFB',
+    fontWeight: '600',
+    fontSize: 14,
+    marginBottom: 8,
     fontFamily: 'Lato-Bold',
   },
   rowInline: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: 10,
+    marginBottom: 16,
   },
   chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     paddingVertical: 8,
     borderWidth: 1,
     borderColor: '#374151',
-    borderRadius: 999,
-    backgroundColor: '#1E1E1E',
+    borderRadius: 8,
+    backgroundColor: 'transparent',
   },
   chipSel: {
-    borderColor: '#00e0c6',
-    backgroundColor: '#00e0c618',
+    borderColor: '#8A42FF',
+    backgroundColor: 'rgba(138, 66, 255, 0.15)',
   },
   chipText: {
-    fontSize: 12,
+    fontSize: 13,
     color: '#F9FAFB',
     fontWeight: '600',
     fontFamily: 'Lato-Bold',
   },
   chipTextSel: {
-    color: '#00e0c6',
-    fontWeight: '800',
+    color: '#8A42FF',
+    fontWeight: '600',
   },
   sheetClose: {
-    alignSelf: 'flex-end',
-    marginTop: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 10,
-    backgroundColor: '#00E0C7',
+    alignSelf: 'center',
+    marginTop: 8,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 8,
+    backgroundColor: '#8A42FF',
   },
   sheetCloseText: {
-    color: '#000000',
-    fontWeight: '800',
+    color: '#FFFFFF',
+    fontWeight: '600',
+    fontSize: 14,
     fontFamily: 'Lato-Bold',
   },
 };

@@ -1,7 +1,6 @@
 import { IMAGES_PROXY_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 
 export async function createImages({ prompt, model = 'gpt-image-1', size = '1024x1024', n = 2 }) {
-  console.log('🖼️ [API] createImages called with:', { prompt, model, size, n });
   
   // Validate input
   if (!prompt || typeof prompt !== 'string' || prompt.trim().length === 0) {
@@ -15,9 +14,7 @@ export async function createImages({ prompt, model = 'gpt-image-1', size = '1024
   };
   if (__DEV__ && SUPABASE_ANON_KEY) {
     headers.Authorization = `Bearer ${SUPABASE_ANON_KEY}`;
-    console.log('🔑 [API] Added authorization header');
   } else {
-    console.log('⚠️ [API] No authorization header added (DEV:', __DEV__, 'KEY:', !!SUPABASE_ANON_KEY, ')');
   }
 
   const requestBody = { 
@@ -47,6 +44,5 @@ export async function createImages({ prompt, model = 'gpt-image-1', size = '1024
   }
   
   const json = await res.json();
-  console.log('✅ [API] Success response:', json);
   return json; // { status, prompt, model, size, images: [{id,url,index}] }
 }

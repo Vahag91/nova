@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, memo } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,22 +6,20 @@ import {
   ScrollView,
   Pressable,
   Linking,
-  useWindowDimensions,
   Image,
+  Dimensions,
 } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Haptic from 'react-native-haptic-feedback';
+import Animated, { Easing, FadeIn } from 'react-native-reanimated';
 import { colors } from '../../styles/colors';
 
 /** Normalize common model quirks so lists render cleanly */
 function preprocess(md) {
   let s = String(md || '');
-  // "1 **Title** — ..." -> "1. **Title** — ..."
   s = s.replace(/(^|\n)\s*(\d+)\s+\*\*([^*]+)\*\*/g, (_, a, n, t) => `${a}${n}. **${t}**`);
-  // ensure blank line before lists
   s = s.replace(/([^\n])\n([*-] |\d+\.)/g, (_m, a, b) => `${a}\n\n${b}`);
-  // task box symbols so it renders without raw HTML
   s = s.replace(/\n([-*] )\[x\]\s/gi, '\n$1☑︎ ');
   s = s.replace(/\n([-*] )\[ \]\s/g,  '\n$1☐ ');
   return s;
@@ -45,38 +43,50 @@ function CodeBlock({ language, content }) {
   );
 }
 
-/** Framed responsive image */
-function ImageRenderer({ uri, alt }) {
-  const { width } = useWindowDimensions();
-  const maxW = Math.min(width - 100, 560);
-  return (
-    <View style={mdStyles.imageFrame}>
-      <Image
-        source={{ uri }}
-        accessibilityLabel={alt || 'image'}
-        resizeMode="cover"
-        style={{ width: maxW, height: maxW * 0.6, backgroundColor: colors.surface }}
-      />
-    </View>
-  );
-}
+/** Pure image inside markdown: consistent width & aspect */
+const ImageRenderer = memo(function ImageRenderer({ uri, alt }) {
+  const screenW = Dimensions.get('window').width; // match bubbles
+  const H_PAD = 32;
+  const IMAGE_MAX_W = 280;  // Reduced from 380 to 280
+  const lockedWRef = React.useRef(Math.min(screenW - H_PAD * 2, IMAGE_MAX_W));
+  const [ratio, setRatio] = React.useState(16 / 9);
 
-export default function MarkdownContent({ text, isUser }) {
+  return (
+    <Image
+      source={{ uri }}
+      accessibilityLabel={alt || 'image'}
+      resizeMode="contain"
+      onLoad={(e) => {
+        const s = e?.nativeEvent?.source;
+        if (s?.width && s?.height) {
+          const r = s.width / s.height;
+          if (isFinite(r) && r > 0) setRatio(r);
+        }
+      }}
+      style={{
+        width: lockedWRef.current,
+        aspectRatio: ratio,
+        alignSelf: 'center',
+        borderRadius: 10,
+      }}
+      fadeDuration={200}
+    />
+  );
+}, (prev, next) => prev.uri === next.uri);
+
+function MarkdownContentImpl({ text, isUser, animateOnMount = false, streaming = false }) {
   const cleaned = useMemo(() => preprocess(text), [text]);
 
   const rules = useMemo(() => ({
-    // Fenced code -> pretty block + copy
     fence: (node) => {
       const lang = ((node.info || '').trim().split(/\s+/)[0] || '').toLowerCase();
       return <CodeBlock key={node.key} language={lang} content={node.content} />;
     },
-    // Inline code
     code_inline: (node) => (
       <Text key={node.key} style={isUser ? userStyles.code_inline : assistantStyles.code_inline}>
         {node.content}
       </Text>
     ),
-    // Callouts: > [!TIP]/[!WARNING]/[!NOTE]
     blockquote: (node, children) => {
       const first = String(node?.children?.[0]?.children?.[0]?.content || node?.children?.[0]?.content || '').toUpperCase();
       let tone = 'note';
@@ -85,13 +95,11 @@ export default function MarkdownContent({ text, isUser }) {
       const style = [base.blockquote, tone === 'warn' && base.blockquoteWarn, tone === 'tip' && base.blockquoteTip];
       return <View key={node.key} style={style}>{children}</View>;
     },
-    // Tables never clip; they scroll
     table: (node, children) => (
       <ScrollView key={node.key} horizontal showsHorizontalScrollIndicator={false} style={base.tableScroll} contentContainerStyle={{ flexDirection: 'row' }}>
         <View style={base.table}>{children}</View>
       </ScrollView>
     ),
-    // Wikipedia -> chip; others -> underline link
     link: (node, children) => {
       const url = node?.attributes?.href || '';
       const isWiki = /wikipedia\.org/i.test(url);
@@ -109,13 +117,11 @@ export default function MarkdownContent({ text, isUser }) {
         </Pressable>
       );
     },
-    // Responsive images
     image: (node) => {
       const uri = node?.attributes?.src;
       if (!uri) return null;
       return <ImageRenderer key={node.key} uri={uri} alt={node?.attributes?.alt || ''} />;
     },
-    // Task list items -> checkbox + content
     list_item: (node, children) => {
       const firstChild = node?.children?.[0];
       const raw = firstChild?.content || '';
@@ -139,14 +145,30 @@ export default function MarkdownContent({ text, isUser }) {
     },
   }), [isUser]);
 
+  const container = animateOnMount
+    ? { entering: FadeIn.duration(180).easing(Easing.out(Easing.cubic)) }
+    : null;
+
   return (
-    <Markdown rules={rules} style={isUser ? userStyles : assistantStyles} onLinkPress={(url) => url && Linking.openURL(url).catch(() => {})}>
-      {cleaned}
-    </Markdown>
+    <Animated.View {...(container || {})}>
+      <Markdown rules={rules} style={isUser ? userStyles : assistantStyles} onLinkPress={(url) => url && Linking.openURL(url).catch(() => {})}>
+        {cleaned}
+      </Markdown>
+    </Animated.View>
   );
 }
 
-/* ---------- Theme tuned for Chat-style lists & headings ---------- */
+const MarkdownContent = memo(
+  MarkdownContentImpl,
+  (prev, next) =>
+    prev.text === next.text &&
+    prev.isUser === next.isUser &&
+    prev.streaming === next.streaming &&
+    prev.animateOnMount === next.animateOnMount
+);
+export default MarkdownContent;
+
+/* ---------- Theme (unchanged) ---------- */
 const base = {
   body: { fontSize: 16, lineHeight: 24, color: colors.text },
   text: { color: colors.text, fontSize: 16, lineHeight: 24 },
@@ -206,7 +228,6 @@ const userStyles = StyleSheet.create({
   code_inline: { ...base.code_inline, backgroundColor: colors.primaryDark, color: colors.userText },
 });
 
-/* Chips, images, checkboxes */
 const mdStyles = StyleSheet.create({
   liRow: { flexDirection: 'row', gap: 8, flexWrap: 'wrap', alignItems: 'flex-start' },
   checkbox: { width: 16, height: 16, borderRadius: 3, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center', marginTop: 4, marginRight: 6 },
@@ -214,7 +235,6 @@ const mdStyles = StyleSheet.create({
   checkboxChecked: { backgroundColor: colors.primary },
   chip: { paddingHorizontal: 8, paddingVertical: 2, borderRadius: 999, backgroundColor: colors.surfaceElevated, borderWidth: 1, borderColor: colors.border, alignSelf: 'baseline', marginLeft: 6 },
   chipText: { fontSize: 11, color: colors.textSecondary, fontWeight: '600' },
-  imageFrame: { borderWidth: 1, borderColor: colors.border, borderRadius: 10, overflow: 'hidden', alignSelf: 'flex-start', marginVertical: 6 },
 });
 
 const codeStyles = StyleSheet.create({

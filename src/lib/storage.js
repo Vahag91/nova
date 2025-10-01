@@ -8,11 +8,21 @@ const KEY_IMAGES = 'images_v1';
 export const Storage = {
   // Threads
   async loadThreads() {
-    try { const raw = await AsyncStorage.getItem(KEY_THREADS); return raw ? JSON.parse(raw) : []; }
+    try {
+      const raw = await AsyncStorage.getItem(KEY_THREADS);
+      const arr = raw ? JSON.parse(raw) : [];
+      // Filter out empty threads (no user/assistant messages)
+      return Array.isArray(arr) ? arr.filter(t => Array.isArray(t?.messages) && t.messages.some(m => m.role === 'user' || m.role === 'assistant')) : [];
+    }
     catch { return []; }
   },
   async saveThreads(threads) {
-    try { await AsyncStorage.setItem(KEY_THREADS, JSON.stringify(threads)); } catch {}
+    try {
+      const filtered = Array.isArray(threads)
+        ? threads.filter(t => Array.isArray(t?.messages) && t.messages.some(m => m.role === 'user' || m.role === 'assistant'))
+        : [];
+      await AsyncStorage.setItem(KEY_THREADS, JSON.stringify(filtered));
+    } catch {}
   },
   async replaceThread(thread) {
     const all = await this.loadThreads();

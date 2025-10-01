@@ -99,13 +99,6 @@ export async function createRunwareImages({
   }
 
   const result = await res.json();
-  console.log('✅ [RUNWARE] Generation successful:', {
-    provider: result.provider,
-    status: result.status,
-    imagesCount: result.images?.length || 0,
-    model: result.model,
-    size: result.size
-  });
   
   return result; // { provider, status, prompt, model, size, images:[{id,url,index}] }
 }

@@ -35,6 +35,15 @@ export function streamChat({
     return { role: m.role, content: m.content ?? '' };
   });
 
+  // Track if onDone has been called to prevent double calls
+  let doneCalled = false;
+  const safeOnDone = () => {
+    if (!doneCalled) {
+      doneCalled = true;
+      onDone?.();
+    }
+  };
+
   const client = new SSEClient(CHAT_PROXY_URL, {
     method: 'POST',
     headers,
@@ -47,7 +56,7 @@ export function streamChat({
     },
     onEvent: (evt) => {
       if (evt?.type === 'token' && typeof evt.delta === 'string') { onToken?.(evt.delta); return; }
-      if (evt?.type === 'done') { onDone?.(); return; }
+      if (evt?.type === 'done') { safeOnDone(); return; }
       if (evt?.type === 'error') { onError?.(evt); return; }
 
       // Fallback for raw OpenAI passthrough
@@ -56,7 +65,7 @@ export function streamChat({
     },
     onOpen: () => {},
     onError: (e) => onError?.(e),
-    onClose: () => onDone?.(),
+    onClose: () => safeOnDone(), // Use safeOnDone to prevent double calls
     retryDelays: [1500, 3000, 5000],
     heartbeatInterval: 15000,
     timeoutMs: 60000,

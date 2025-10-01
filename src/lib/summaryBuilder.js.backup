@@ -1,0 +1,210 @@
+// lib/summaryBuilder.js
+
+// Rough token estimator (~4 chars/token). Good enough for budget.
+const estTok = (s = '') => Math.ceil((s.length || 0) / 4);
+
+const MAX_BULLETS = 10;
+const MAX_SUMMARY_TOKENS = 200; // ~800 chars
+
+// Build a fresh summary from the last 50 messages only
+export function buildFreshSummaryFromLast50(thread) {
+  const msgs = (thread.messages || []).filter(m => m.role !== 'system');
+  const last50 = msgs.slice(-50);
+
+  // 🔍 DEBUG: Summary building details
+  console.log('📋 BUILDING SUMMARY:');
+  console.log(`• Thread messages: ${msgs.length}`);
+  console.log(`• Last 50 messages: ${last50.length}`);
+
+  // Extract essentials: goals, key facts (numbers, names, IDs), constraints, decisions, artifacts (images), next steps.
+  const bullets = [];
+
+  // Collect items while scanning last50 newest→oldest
+  for (let i = last50.length - 1; i >= 0; i--) {
+    const m = last50[i];
+
+    // 1) multimodal facts
+    if (Array.isArray(m.content)) {
+      const imgFacts = extractImageFacts(m);
+      for (const f of imgFacts) {
+        if (bullets.length < MAX_BULLETS) bullets.push(f);
+      }
+      continue;
+    }
+
+    // 2) text mining (very lightweight heuristics)
+    const text = m.content || '';
+    if (!text) continue;
+
+    if (/\b(total|amount|price|sum|invoice|order|id|#)\b/i.test(text)) {
+      bullets.push(`Key figure: ${shorten(text)}`);
+    } else if (/prefer|need|must|should|constraint|limit|deadline/i.test(text)) {
+      bullets.push(`Constraint: ${shorten(text)}`);
+    } else if (/let's|we will|decide|decision|plan|next step|do this/i.test(text)) {
+      bullets.push(`Decision/Next: ${shorten(text)}`);
+    }
+
+    if (bullets.length >= MAX_BULLETS) break;
+  }
+
+  console.log(`• Extracted bullets: ${bullets.length}`);
+
+  // Deduplicate-ish & clean
+  const cleaned = dedupeAndTrim(bullets).slice(0, MAX_BULLETS);
+
+  // Enforce token limit by dropping from the end
+  let body = cleaned.join('\n• ');
+  while (estTok(body) > MAX_SUMMARY_TOKENS && cleaned.length > 0) {
+    cleaned.pop();
+    body = cleaned.join('\n• ');
+  }
+
+  const finalSummary = body ? `• ${body}` : '';
+  const summaryTokens = estTok(finalSummary);
+  
+  console.log(`• Final summary: ${summaryTokens} tokens (${finalSummary.length} chars)`);
+  if (finalSummary) {
+    console.log(`• Summary preview: ${finalSummary.substring(0, 100)}...`);
+  }
+
+  return finalSummary;
+}
+
+// Merge: next wins over prev; keep ≤10 bullets and token budget
+export function mergeSummaries(prev, next) {
+  const p = splitBullets(prev);
+  const n = splitBullets(next);
+
+  console.log(`🔄 MERGING SUMMARIES:`);
+  console.log(`• Previous: ${p.length} bullets`);
+  console.log(`• Next: ${n.length} bullets`);
+
+  const merged = dedupeAndTrim([...n, ...p]).slice(0, MAX_BULLETS);
+
+  let body = merged.join('\n• ');
+  while (estTok(body) > MAX_SUMMARY_TOKENS && merged.length > 0) {
+    merged.pop();
+    body = merged.join('\n• ');
+  }
+
+  const result = body ? `• ${body}` : '';
+  console.log(`• Merged result: ${estTok(result)} tokens (${result.length} chars)`);
+
+  return result;
+}
+
+// Turn a multimodal message into 1–2 short bullets (from its text part)
+export function extractImageFacts(msg) {
+  if (!Array.isArray(msg?.content)) return [];
+
+  const text = msg.content.find(p => p.type === 'text')?.text || '';
+  const facts = [];
+  if (text) {
+    facts.push(`Image noted: ${shorten(text)}`);
+  }
+
+  return facts.slice(0, 2);
+}
+
+// === Summary refresh policy ===
+export function shouldUpdateSummary(thread) {
+  const msgs = (thread.messages || []).filter(m => m.role !== 'system');
+  const messageCount = msgs.length;
+
+  // Update if no summary exists
+  if (!thread.summary) {
+    console.log('📋 SUMMARY CHECK: No summary exists, will create new one');
+    return true;
+  }
+
+  // Update if we've added 50+ messages since last summary update
+  const lastSummaryCount = thread.meta?.summaryLastMsgCount ?? 0;
+  const messagesSinceUpdate = messageCount - lastSummaryCount;
+  
+  console.log('📋 SUMMARY CHECK:');
+  console.log(`• Current messages: ${messageCount}`);
+  console.log(`• Last summary at: ${lastSummaryCount} messages`);
+  console.log(`• Messages since update: ${messagesSinceUpdate}`);
+  
+  // Fix: If summaryLastMsgCount is 0 but we have messages, the summary was created incorrectly
+  // Force an update to fix the tracking
+  if (lastSummaryCount === 0 && messageCount > 0) {
+    console.log(`• Should update: YES (fixing incorrect summaryLastMsgCount: 0)`);
+    return true;
+  }
+  
+  console.log(`• Should update: ${messagesSinceUpdate >= 50 ? 'YES' : 'NO'}`);
+  return messagesSinceUpdate >= 50;
+}
+
+// Pure helper that computes the new thread object with updated summary + meta
+export function updateThreadSummary(thread, newSummary) {
+  const nonSystemCount = (thread.messages || []).filter(m => m.role !== 'system').length;
+  return {
+    ...thread,
+    summary: newSummary,
+    summaryUpdatedAt: Date.now(),
+    meta: {
+      ...thread.meta,
+      summaryLastMsgCount: nonSystemCount,
+    },
+  };
+}
+
+// Ensure summary is up to date (build from last 50 if needed)
+// setThreadSummary is assumed to accept (id, summary, metaLike)
+// Extra args are harmless in JS if the store ignores them.
+export async function ensureSummaryIfNeeded(thread, setThreadSummary) {
+  console.log('🔧 ENSURE SUMMARY CALLED:');
+  console.log(`• Thread ID: ${thread.id}`);
+  console.log(`• Has existing summary: ${!!thread.summary}`);
+  
+  if (!shouldUpdateSummary(thread)) {
+    console.log('• No update needed, using existing summary');
+    return thread.summary;
+  }
+
+  console.log('• Building/updating summary...');
+  const freshSummary = buildFreshSummaryFromLast50(thread);
+  const mergedSummary = thread.summary
+    ? mergeSummaries(thread.summary, freshSummary)
+    : freshSummary;
+
+  if (mergedSummary && setThreadSummary) {
+    const nonSystemCount = (thread.messages || []).filter(m => m.role !== 'system').length;
+    console.log(`• Saving summary with ${nonSystemCount} total messages`);
+    setThreadSummary(thread.id, mergedSummary, {
+      summaryLastMsgCount: nonSystemCount,
+      summaryUpdatedAt: Date.now(),
+    });
+  }
+
+  console.log('✅ Summary process complete');
+  return mergedSummary;
+}
+
+// helpers
+function splitBullets(s = '') {
+  return s
+    .split('\n')
+    .map(x => x.replace(/^•\s?/, '').trim())
+    .filter(Boolean);
+}
+
+function dedupeAndTrim(arr) {
+  const seen = new Set();
+  const out = [];
+  for (const a of arr) {
+    const key = a.toLowerCase();
+    if (!seen.has(key)) {
+      seen.add(key);
+      out.push(a.length > 220 ? a.slice(0, 217) + '...' : a);
+    }
+  }
+  return out;
+}
+
+function shorten(text, max = 140) {
+  const t = (text || '').replace(/\s+/g, ' ').trim();
+  return t.length > max ? t.slice(0, max - 3) + '...' : t;
+}

@@ -46,12 +46,10 @@ async function uploadImageIfNeeded(imageData: string, headers: any, signal: Abor
         const uploadedImage = uploadData.find(d => d.taskType === "imageUpload");
         
         if (uploadedImage?.imageUUID) {
-          console.log("✅ [RUNWARE] Image uploaded successfully, UUID:", uploadedImage.imageUUID);
           return { uuid: uploadedImage.imageUUID };
         } else {
           console.error("❌ [RUNWARE] No imageUUID returned from upload:", uploadJson);
           if (attempt < maxRetries) {
-            console.log(`🔄 [RUNWARE] Retrying upload in ${(attempt + 1) * 1000}ms...`);
             await new Promise(resolve => setTimeout(resolve, (attempt + 1) * 1000));
             continue;
           }
@@ -64,7 +62,6 @@ async function uploadImageIfNeeded(imageData: string, headers: any, signal: Abor
       
       // If it's a server error and we have retries left, wait and retry
       if (uploadResp.status >= 500 && attempt < maxRetries) {
-        console.log(`🔄 [RUNWARE] Retrying upload in ${(attempt + 1) * 1000}ms...`);
         await new Promise(resolve => setTimeout(resolve, (attempt + 1) * 1000));
         continue;
       }
@@ -75,7 +72,6 @@ async function uploadImageIfNeeded(imageData: string, headers: any, signal: Abor
       console.error(`❌ [RUNWARE] Upload error (attempt ${attempt + 1}):`, error);
       
       if (attempt < maxRetries) {
-        console.log(`🔄 [RUNWARE] Retrying upload in ${(attempt + 1) * 1000}ms...`);
         await new Promise(resolve => setTimeout(resolve, (attempt + 1) * 1000));
         continue;
       }
@@ -224,36 +220,6 @@ function maxPixelsFor(modelKey: string) {
     );
   }
   
-  console.log("🔍 [RUNWARE] Model selection:", {
-    requestedModel,
-    mode,
-    selectedModel: modelKey,
-    resolvedModelKey,
-    modelChanged: requestedModel !== modelKey,
-    dimensions: `${width}x${height}`,
-    totalPixels: total,
-    maxPixels: maxPx
-  });
-  
-  console.log("🔍 [RUNWARE] Raw prompt value:", body?.prompt);
-  console.log("🔍 [RUNWARE] Trimmed prompt:", prompt);
-  console.log("🔍 [RUNWARE] Mode:", mode);
-
-  console.log("🔍 [RUNWARE] Parsed parameters:", {
-    prompt: prompt.substring(0, 100) + (prompt.length > 100 ? "..." : ""),
-    modelKey,
-    sizeParam,
-    mode,
-    hasNegativePrompt: !!negativePrompt,
-    advancedParams: {
-      seedImage: !!body?.seedImage,
-      maskImage: !!body?.maskImage,
-      strength: body?.strength,
-      outpaint: body?.outpaint,
-      guideImage: !!body?.guideImage,
-      CFGScale: body?.CFGScale,
-    }
-  });
   
   // For advanced modes, prompt might be optional
   // Only require prompt for text2img mode

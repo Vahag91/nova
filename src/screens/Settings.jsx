@@ -56,15 +56,12 @@ export default function Settings() {
     const ac = new AbortController();
     (async () => {
       try {
-        console.log('🔄 [SETTINGS] Fetching models from server...');
         const incoming = await fetchModels({ signal: ac.signal });
         
         if (incoming && typeof incoming === 'object' && Object.keys(incoming).length > 0) {
-          console.log('✅ [SETTINGS] Received models from server:', Object.keys(incoming));
           // Always update models to ensure we get the latest from server
           setModels(incoming);
         } else {
-          console.log('⚠️ [SETTINGS] No models from server, using defaults');
           // Ensure we have default models if fetch fails
           const current = useSettingsStore.getState().models;
           if (!current || Object.keys(current).length === 0) {
@@ -267,8 +264,8 @@ export default function Settings() {
       getItemLayout={getItemLayout}
       ListHeaderComponent={ListHeader}
       ListFooterComponent={ListFooter}
-      style={{ backgroundColor: colors.background }}
-      contentContainerStyle={{ paddingBottom: 12, backgroundColor: colors.background }}
+      style={{ backgroundColor: '#000000' }}
+      contentContainerStyle={{ paddingBottom: 12, backgroundColor: '#000000' }}
       // IMPORTANT: no sticky headers, no nested lists, no extra ScrollView
     />
   );

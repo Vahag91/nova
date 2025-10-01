@@ -55,10 +55,6 @@ export async function uploadImage(fileOrUri: { uri: string; type?: string; name?
     }
     
     const j = await res.json();
-    console.log('✅ [UPLOAD] Upload successful:', {
-      imageUUID: j.imageUUID,
-      responseSize: JSON.stringify(j).length
-    });
     return j.imageUUID as string;
   } catch (error) {
     console.error('❌ [UPLOAD] Upload error:', {

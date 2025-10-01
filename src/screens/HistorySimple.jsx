@@ -1,47 +1,117 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import {
-  View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, TextInput,
+  View, Text, StyleSheet, SectionList, TouchableOpacity, TextInput, Alert,
 } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
+import { RectButton } from 'react-native-gesture-handler';
+import Animated, { FadeIn } from 'react-native-reanimated';
 import Haptic from 'react-native-haptic-feedback';
 import { useThreadsStore } from '../state/useThreadsStore';
-import { betterPreview, formatRelative } from '../lib/format';
+import { betterPreview } from '../lib/format';
 import { colors } from '../styles/colors';
+import SvgIcon from '../components/SvgIcon';
+
+// --- month/year helpers ---
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+function formatMonthYear(ts) {
+  const d = new Date(ts || Date.now());
+  return `${MONTHS_FULL[d.getMonth()]} ${d.getFullYear()}`;
+}
+function formatRowDate(ts) {
+  const d = new Date(ts || Date.now());
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mm = String(d.getMinutes()).padStart(2, '0');
+  return `${MONTHS[d.getMonth()]} ${d.getDate()} • ${hh}:${mm}`;
+}
+
+// Extract clean preview text from summary
+function cleanPreview(summary) {
+  if (!summary) return '';
+  
+  // Split by bullets and get first meaningful line
+  const lines = summary
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line.startsWith('•'))
+    .map(line => line.replace(/^•\s*/, ''));
+  
+  if (lines.length === 0) return summary.trim();
+  
+  // Get first line and remove common prefixes
+  let text = lines[0]
+    .replace(/^Topic:\s*/i, '')
+    .replace(/^Image noted:\s*/i, '')
+    .replace(/^Key figure:\s*/i, '')
+    .replace(/^Constraint:\s*/i, '')
+    .replace(/^Decision\/Next:\s*/i, '')
+    .replace(/^Identity:\s*/i, '')
+    .replace(/^Safety:\s*/i, '')
+    .trim();
+  
+  // Remove "(refer back with...)" type suffixes
+  text = text.replace(/\s*\(refer back.*?\)\.?$/i, '');
+  
+  return text || 'New chat';
+}
 
 export default function HistorySimple({ navigation }) {
-  console.log('HistorySimple rendering...');
-  
   const threads = useThreadsStore(s => s.threads);
-  const activeThreadId = useThreadsStore(s => s.activeThreadId);
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const renameThread = useThreadsStore(s => s.renameThread);
   const deleteThread = useThreadsStore(s => s.deleteThread);
-  const pinThread = useThreadsStore(s => s.pinThread);
 
   const [busyId, setBusyId] = useState(null);
   const [q, setQ] = useState('');
 
-  // Sort: pinned first, then recent
+  // Swipe row refs
+  const rowRefs = useRef(new Map());
+  const closeRow = (id) => { const r = rowRefs.current.get(id); r?.close?.(); };
+  const closeAllExcept = (id) => rowRefs.current.forEach((r, k) => { if (k !== id) r?.close?.(); });
+
+  // Sort: recent first (no pinning)
   const sorted = useMemo(() => {
     const arr = [...threads];
-    arr.sort((a,b) => {
-      const pa = a.pinned ? 1 : 0, pb = b.pinned ? 1 : 0;
-      if (pa !== pb) return pb - pa; // pinned first
-      return (b.updatedAt || 0) - (a.updatedAt || 0);
-    });
+    arr.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
     return arr;
   }, [threads]);
 
-  // Filter by search
+  // Filter by search (topic/preview only) and hide empty threads
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    if (!needle) return sorted;
-    return sorted.filter(t => {
-      const title = (t.title || '').toLowerCase();
-      const preview = betterPreview(t.messages).toLowerCase();
-      return title.includes(needle) || preview.includes(needle);
+    const nonEmpty = sorted.filter(t => Array.isArray(t?.messages) && t.messages.some(m => m.role === 'user' || m.role === 'assistant'));
+    if (!needle) return nonEmpty;
+    return nonEmpty.filter(t => {
+      const rawPreview = t.summary?.trim() || betterPreview(t.messages);
+      const preview = (t.summary ? cleanPreview(rawPreview) : rawPreview).toLowerCase();
+      return preview.includes(needle);
     });
   }, [sorted, q]);
+
+  // Build sections by Month Year (descending)
+  const sections = useMemo(() => {
+    const map = new Map(); // key "YYYY-MM" -> array
+    for (const t of filtered) {
+      const ts = t.updatedAt || t.createdAt || 0;
+      const d = new Date(ts);
+      const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+      if (!map.has(key)) map.set(key, []);
+      map.get(key).push(t);
+    }
+    const keys = Array.from(map.keys()).sort((a, b) => b.localeCompare(a));
+    return keys.map(k => {
+      const items = map.get(k) || [];
+      items.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+      const sampleTs = items[0]?.updatedAt || Date.now();
+      return {
+        title: formatMonthYear(sampleTs),
+        key: `section-${k}`,
+        data: items,
+      };
+    });
+  }, [filtered]);
 
   function openThread(t) {
     Haptic.trigger('impactLight');
@@ -56,6 +126,7 @@ export default function HistorySimple({ navigation }) {
     navigation?.navigate?.('Chat');
   }
 
+  // iOS prompt; simple fallback elsewhere
   function onRename(t) {
     Haptic.trigger('selection');
     if (typeof Alert.prompt === 'function') {
@@ -63,106 +134,130 @@ export default function HistorySimple({ navigation }) {
         'Rename chat',
         'Enter a new title',
         [
-          { text: 'Cancel', style: 'cancel' },
-          { text: 'Save', onPress: (val) => { if (val?.trim()) renameThread(t.id, val.trim()); } },
+          { text: 'Cancel', style: 'cancel', onPress: () => closeRow(t.id) },
+          { text: 'Save', onPress: (val) => { if (val?.trim()) renameThread(t.id, val.trim()); closeRow(t.id); } },
         ],
         'plain-text',
         t.title,
       );
     } else {
       renameThread(t.id, (t.title || 'Chat') + ' *');
+      closeRow(t.id);
     }
   }
 
-  function onDelete(t) {
-    Haptic.trigger('impactMedium');
-    Alert.alert(
-      'Delete chat?',
-      `"${t.title || 'Untitled'}" will be deleted.`,
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Delete', style: 'destructive', onPress: async () => {
-            try {
-              setBusyId(t.id);
-              deleteThread(t.id);
-            } finally {
-              setBusyId(null);
-            }
-          }
-        },
-      ]
-    );
+  // immediate delete (no modal)
+  function deleteNow(t) {
+    if (busyId === t.id) return;
+    Haptic.trigger('impactHeavy');
+    setBusyId(t.id);
+    try {
+      deleteThread(t.id);
+    } finally {
+      setBusyId(null);
+      closeRow(t.id);
+    }
   }
 
-  const renderItem = ({ item: t }) => {
-    const isActive = t.id === activeThreadId;
-
-    return (
-      <TouchableOpacity
-        onPress={() => openThread(t)}
-        onLongPress={() => onRename(t)}
-        style={[styles.row, isActive && styles.active]}
+  // Right actions: Delete (only)
+  const renderRightActions = (t /* , progress, dragX */) => (
+    <Animated.View
+      entering={FadeIn.duration(120).springify().damping(18)}
+      style={styles.rightActions}
+    >
+      <RectButton
+        style={styles.deleteBtn}
+        onPress={() => deleteNow(t)}
+        enabled={busyId !== t.id}
       >
-        <View style={styles.rowMain}>
-          <Text style={styles.title} numberOfLines={1}>{t.title || 'Untitled'}</Text>
-          <Text style={styles.preview} numberOfLines={1}>{betterPreview(t.messages)}</Text>
+        <View style={styles.actionContentCol}>
+          {busyId === t.id ? (
+            <Text style={styles.deleteBtnText}>...</Text>
+          ) : (
+            <>
+              <SvgIcon name="trash" size={18} color="#FFFFFF" />
+              <Text style={styles.deleteBtnText}>Delete</Text>
+            </>
+          )}
         </View>
-        <View style={styles.rowMeta}>
-          <Text style={styles.time}>{formatRelative(t.updatedAt || Date.now())}</Text>
-          <View style={styles.actions}>
-            <TouchableOpacity onPress={() => {
-              Haptic.trigger('selection');
-              pinThread(t.id, !t.pinned);
-              if (!t.title?.startsWith('📌') && !t.pinned) {
-                renameThread(t.id, `📌 ${t.title || 'Chat'}`);
-              } else if (t.title?.startsWith('📌')) {
-                renameThread(t.id, t.title.replace(/^📌\s*/, ''));
-              }
-            }} hitSlop={{top:8,bottom:8,left:8,right:8}}>
-              <Text style={styles.action}>{t.pinned ? '📌' : '📍'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => onRename(t)} hitSlop={{top:8,bottom:8,left:8,right:8}}>
-              <Text style={styles.action}>✏️</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => onDelete(t)} disabled={busyId === t.id} hitSlop={{top:8,bottom:8,left:8,right:8}}>
-              <Text style={[styles.action, styles.trash]}>{busyId === t.id ? '…' : '🗑️'}</Text>
-            </TouchableOpacity>
+      </RectButton>
+    </Animated.View>
+  );
+
+  const renderItem = ({ item: t }) => {
+    const rawPreview = t.summary?.trim() || betterPreview(t.messages);
+    const preview = t.summary ? cleanPreview(rawPreview) : rawPreview;
+    return (
+      <Swipeable
+        ref={(ref) => { ref ? rowRefs.current.set(t.id, ref) : rowRefs.current.delete(t.id); }}
+        friction={1.1}
+        rightThreshold={56}
+        overshootRight
+        overshootFriction={6}
+        enableTrackpadTwoFingerGesture
+        onSwipeableWillOpen={() => closeAllExcept(t.id)}
+        // full left swipe → RIGHT actions → delete
+        onSwipeableOpen={(dir) => { if (dir === 'right') deleteNow(t); }}
+        renderRightActions={(progress, dragX) => renderRightActions(t, progress, dragX)}
+      >
+        <TouchableOpacity
+          onPress={() => openThread(t)}
+          onLongPress={() => onRename(t)}
+          activeOpacity={0.85}
+          style={styles.row}
+        >
+          <View style={styles.rowCard}>
+            <View style={styles.rowContent}>
+              <View style={styles.rowMain}>
+                <Text style={styles.topic} numberOfLines={2}>{preview || 'New chat'}</Text>
+              </View>
+              <View style={styles.rowRight}>
+                <Text style={styles.time}>{formatRowDate(t.updatedAt)}</Text>
+              </View>
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </Swipeable>
     );
   };
 
+  const renderSectionHeader = ({ section }) => (
+    <View style={styles.sectionHeader}>
+      <Text style={styles.sectionTitle}>{section.title}</Text>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
-      <View style={styles.headerWrap}>
-        <Text style={styles.header}>History</Text>
+      <View style={styles.searchWrap}>
+        <SvgIcon name="search" size={18} color="#888888" style={styles.searchIcon} />
         <TextInput
           value={q}
           onChangeText={setQ}
-          placeholder="Search chats…"
-          placeholderTextColor="#9CA3AF"
+          placeholder="Search"
+          placeholderTextColor="#666666"
           style={styles.search}
         />
-        <TouchableOpacity onPress={onNew} style={styles.newBtn}>
-          <Text style={styles.newBtnText}>+ New</Text>
-        </TouchableOpacity>
+        {q?.length > 0 && (
+          <TouchableOpacity onPress={() => setQ('')} accessibilityLabel="Clear search" style={{ paddingLeft: 8 }}>
+            <SvgIcon name="clear" size={18} color="#888888" />
+          </TouchableOpacity>
+        )}
       </View>
 
-      <FlatList
-        data={filtered}
+      <SectionList
+        sections={sections}
         keyExtractor={(t) => t.id}
         renderItem={renderItem}
-        ItemSeparatorComponent={() => <View style={styles.sep} />}
-        style={{ backgroundColor: colors.background }}
-        contentContainerStyle={filtered.length ? null : styles.emptyWrap}
+        renderSectionHeader={renderSectionHeader}
+        stickySectionHeadersEnabled
+        style={{ backgroundColor: '#000000' }}
+        contentContainerStyle={sections.length ? undefined : styles.emptyWrap}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Text style={styles.emptyTitle}>No chats yet</Text>
-            <Text style={styles.emptyText}>Start your first conversation.</Text>
-            <TouchableOpacity onPress={onNew} style={[styles.newBtn, { marginTop: 12 }]}>
-              <Text style={styles.newBtnText}>Start chat</Text>
+            <Text style={styles.emptyTitle}>No results found</Text>
+            <TouchableOpacity onPress={onNew} style={styles.startBtn}>
+              <Text style={styles.startBtnText}>Start a new chat</Text>
             </TouchableOpacity>
           </View>
         }
@@ -172,37 +267,85 @@ export default function HistorySimple({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container:{ flex:1, backgroundColor: colors.background },
-  headerWrap:{
-    flexDirection:'row', alignItems:'center', gap:8,
-    paddingHorizontal:12, paddingTop:14, paddingBottom:8,
-    backgroundColor: colors.surface, borderBottomWidth:1, borderBottomColor: colors.border
+  container:{ flex:1, backgroundColor: '#000000' },
+
+  searchWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    marginTop: 16,
+    marginBottom: 8,
+    backgroundColor: '#1C1C1E',
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
   },
-  header:{ fontSize:22, fontWeight:'700', color: colors.text },
-  search:{
-    flex:1, marginLeft:8, borderWidth:1, borderColor: colors.border,
-    backgroundColor: colors.inputBackground, borderRadius:10, paddingHorizontal:10, paddingVertical:6,
-    fontSize:14, color: colors.inputText
+  searchIcon: { marginRight: 8 },
+  search:{ flex: 1, fontSize: 16, color: colors.text, padding: 0 },
+
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 14,
+    paddingBottom: 6,
+    backgroundColor: '#000000',
   },
-  newBtn:{ backgroundColor: colors.primary, paddingHorizontal:12, paddingVertical:8, borderRadius:10 },
-  newBtnText:{ color: colors.buttonText, fontWeight:'600' },
+  sectionTitle: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: colors.textSecondary,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  row:{ 
+    paddingHorizontal: 16, 
+    paddingVertical: 8, 
+    backgroundColor: '#000000',
+  },
+  rowCard: {
+    backgroundColor: colors.surface,
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  rowContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  rowMain:{ flex: 1, marginRight: 16 },
+  topic:{ fontSize: 14, fontWeight: '500', color: colors.text, lineHeight: 20 },
 
-  row:{ paddingHorizontal:16, paddingVertical:12, backgroundColor: colors.surface },
-  active:{ backgroundColor: colors.primary + '20' },
-  rowMain:{ marginBottom:6 },
-  title:{ fontSize:16, fontWeight:'600', color: colors.text },
-  preview:{ fontSize:13, color: colors.textSecondary, marginTop:2 },
-
-  rowMeta:{ flexDirection:'row', alignItems:'center', justifyContent:'space-between' },
-  time:{ fontSize:12, color: colors.textMuted },
-  actions:{ flexDirection:'row', gap:10 },
-  action:{ fontSize:16, color: colors.textMuted },
-  trash:{ color: colors.error },
-
-  sep:{ height:1, backgroundColor: colors.border },
+  rowRight: { alignItems: 'flex-end', minWidth: 80 },
+  time:{ fontSize: 12, color: colors.textMuted },
 
   emptyWrap:{ flexGrow:1, justifyContent:'center', alignItems:'center', padding:24 },
   empty:{ alignItems:'center' },
   emptyTitle:{ fontSize:18, fontWeight:'700', color: colors.text },
-  emptyText:{ fontSize:14, color: colors.textSecondary, marginTop:4 },
+  startBtn:{ backgroundColor: colors.primary, paddingHorizontal: 20, paddingVertical: 12, borderRadius: 10, marginTop: 16 },
+  startBtnText:{ color: colors.buttonText, fontWeight:'600', fontSize: 16 },
+
+  // Right actions (Delete)
+  rightActions: {
+    height: '100%',
+    width: 96,
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    paddingRight: 16,
+    paddingVertical: 8, // match row vertical padding so the red action matches card height
+  },
+  deleteBtn: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#FF3B30',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10, // match rowCard radius
+  },
+  actionContentCol: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
+  },
+  deleteBtnText: { color: '#FFFFFF', fontWeight: '600', fontSize: 12, marginTop: 2 },
 });

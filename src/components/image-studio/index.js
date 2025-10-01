@@ -4,6 +4,7 @@ export { default as ProgressBar } from './ProgressBar';
 export { default as InputComposer } from './InputComposer';
 export { default as GenerateButton } from './GenerateButton';
 export { default as SettingsModal } from './SettingsModal';
+export { default as ModelMenu } from './ModelMenu';
 export { default as ImageViewer } from './ImageViewer';
 export { default as ErrorDisplay } from './ErrorDisplay';
 export { default as AdvancedParams } from './AdvancedParams';

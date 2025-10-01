@@ -25,7 +25,6 @@ export async function toLocalPath(source) {
       const ext = extFromMeta(meta);
       const path = `${CACHE_DIR}/img_${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
       await RNFS.writeFile(path, b64, 'base64');
-      console.log('✅ [DOWNLOADER] Data URI saved to:', path);
       return `file://${path}`;
     }
     
@@ -34,7 +33,6 @@ export async function toLocalPath(source) {
       const path = `${CACHE_DIR}/img_${Date.now()}_${Math.random().toString(36).slice(2)}.jpg`;
       const result = await RNFS.downloadFile({ fromUrl: source, toFile: path }).promise;
       if (result.statusCode === 200) {
-        console.log('✅ [DOWNLOADER] HTTP URL downloaded to:', path);
         return `file://${path}`;
       } else {
         console.warn('🔄 [DOWNLOADER] Download failed:', result.statusCode);
@@ -43,7 +41,6 @@ export async function toLocalPath(source) {
     }
     
     // already file://
-    console.log('✅ [DOWNLOADER] Already local file:', source);
     return source;
   } catch (error) {
     console.error('❌ [DOWNLOADER] Error in toLocalPath:', error);

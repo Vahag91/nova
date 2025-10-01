@@ -24,7 +24,6 @@ const GenerateButton = memo(({
       <Animated.View style={{ transform: [{ scale: animatedValue || 1 }] }}>
         <Pressable
           onPress={() => {
-            console.log('🎯 [BUTTON] Generate button pressed, disabled:', disabled, 'busy:', busy);
             onPress?.();
           }}
           disabled={disabled}
@@ -38,19 +37,10 @@ const GenerateButton = memo(({
               <Text style={styles.ctaLoadingText}>Generating...</Text>
             </View>
           ) : (
-            <>
-              <View style={styles.modelInfo}>
-                <Text style={styles.ctaText}>
-                  {actualModelName || modelName}
-                </Text>
-                {modelChanged && actualModelName && (
-                  <Text style={styles.modelChangedText}>
-                    (was {modelName})
-                  </Text>
-                )}
-              </View>
-              <SvgIcon name="stars" size={22} color="#FFFFFF" />
-            </>
+            <View style={styles.ctaContent}>
+              <Text style={styles.ctaText}>Generate</Text>
+              <SvgIcon name="stars" size={20} color="#FFFFFF" />
+            </View>
           )}
         </Pressable>
       </Animated.View>
@@ -82,12 +72,17 @@ const styles = {
     backgroundColor: '#8A42FF',
     borderRadius: 12,
     paddingVertical: 12,
-    gap: 8,
+    paddingHorizontal: 16,
     shadowColor: '#8A42FF',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 3,
+  },
+  ctaContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   ctaLoading: {
     flexDirection: 'row',
@@ -100,22 +95,11 @@ const styles = {
     fontSize: 16,
     fontFamily: 'Lato-Bold',
   },
-  modelInfo: {
-    alignItems: 'center',
-  },
   ctaText: {
     color: '#FFFFFF',
     fontWeight: '600',
     fontSize: 18,
     fontFamily: 'Lato-Bold',
-  },
-  modelChangedText: {
-    color: '#FFFFFF',
-    fontWeight: '400',
-    fontSize: 12,
-    fontFamily: 'Lato-Regular',
-    opacity: 0.8,
-    marginTop: 2,
   },
   advancedButton: {
     flexDirection: 'row',

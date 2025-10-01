@@ -1,564 +1,436 @@
 // app/src/screens/Chat.jsx
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { View, Text, StyleSheet, AppState, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
+import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import Reanimated, { useAnimatedKeyboard, useAnimatedStyle, useSharedValue, useDerivedValue, withTiming, Easing, KeyboardState } from 'react-native-reanimated';
 import NetInfo from '@react-native-community/netinfo';
+import { launchImageLibrary } from 'react-native-image-picker';
+
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { newUserMessage, newAssistantMessage } from '../state/types';
 import { streamChat } from '../api/streamChat';
-import { generateImage } from '../api/generateImage';
 import { ensureDeviceId } from '../lib/deviceId';
 import { mapProxyError } from '../lib/errors';
-import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import MessageList from '../components/chat/MessageList';
-import Composer from '../components/chat/Composer';
+import TestInput from '../components/chat/TestInput';
+import VoiceOverlay from '../components/chat/VoiceOverlay';
+import SuggestionCards from '../components/chat/SuggestionCards';
 import { colors } from '../styles/colors';
-
+import { appendStream, getStream, clearStream } from '../lib/streamingBuffer';
+import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
+import { buildPayload } from '../lib/payloadBuilder';
+import { useVoiceInput } from '../hooks/useVoiceInput';
 
 export default function Chat({ navigation }) {
-  // normal store
+  // Stores
   const threads = useThreadsStore(s => s.threads);
   const activeThreadId = useThreadsStore(s => s.activeThreadId);
+  const hydrated = useThreadsStore(s => s.hydrated);
+  const hydrate = useThreadsStore(s => s.hydrate);
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const addMessage = useThreadsStore(s => s.addMessage);
   const updateLastAssistantContent = useThreadsStore(s => s.updateLastAssistantContent);
+  const forceSaveThread = useThreadsStore(s => s.forceSaveThread);
+  const setThreadSummary = useThreadsStore(s => s.setThreadSummary);
+  const setInsertToChatCallback = useThreadsStore(s => s.setInsertToChatCallback);
+  const clearInsertToChatCallback = useThreadsStore(s => s.clearInsertToChatCallback);
 
-  // private store
   const isPrivate = useThreadsStore(s => s.privateActive);
   const privateThread = useThreadsStore(s => s.privateThread);
-  const startPrivate = useThreadsStore(s => s.startPrivate);
   const endPrivate = useThreadsStore(s => s.endPrivate);
   const addPrivateMessage = useThreadsStore(s => s.addPrivateMessage);
   const updateLastAssistantContentPrivate = useThreadsStore(s => s.updateLastAssistantContentPrivate);
 
-  // settings
+  // Settings
   const model = useSettingsStore(s => s.model);
-  const models = useSettingsStore(s => s.models);
   const getEffectiveTemp = useSettingsStore(s => s.getEffectiveTemp);
   const temperature = getEffectiveTemp(model);
 
-  // ensure at least one normal thread
-  useEffect(() => {
-    if (!isPrivate && !threads.length) {
-      const t = createThread({ title: 'New chat', model });
-      setActiveThread(t.id);
-    }
-  }, [threads.length, isPrivate]);
+  // Local
+  const messageListRef = useRef(null);
+  const didInitialScrollRef = useRef(false);
 
-  const normalActive = useMemo(
-    () => threads.find(t => t.id === activeThreadId) || null,
+  const normalActive = useMemo(() =>
+    threads.find(t => t.id === activeThreadId) || null,
     [threads, activeThreadId]
   );
-
-  // pick active thread based on mode
   const activeThread = isPrivate ? privateThread : normalActive;
 
   const [input, setInput] = useState('');
+  const [attachments, setAttachments] = useState([]);
   const [error, setError] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [offline, setOffline] = useState(false);
+  const [streamingMsgId, setStreamingMsgId] = useState(null);
+  const [forceCollapseInput, setForceCollapseInput] = useState(false);
+  const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
+  const [voiceText, setVoiceText] = useState('');
   const abortRef = useRef(null);
 
-  // network
+  const messagesNoSystem = useMemo(
+    () => (activeThread?.messages || []).filter(m => m.role !== 'system'),
+    [activeThread?.messages]
+  );
+
+  // Voice: manual stop => send once
+  const dbg = (...args) => console.log('[chat-voice]', ...args);
+
+  const onFinalText = useCallback((text) => {
+    const t = (text || '').trim();
+    dbg('onFinalText', { incoming: text, trimmed: t });
+    if (!t) return;
+    setVoiceText(t);
+  }, []);
+
+  const onPartialText = useCallback((text) => {
+    dbg('onPartialText', text);
+    setVoiceText(text || '');
+  }, []);
+  
+  const onErrorText = useCallback((msg) => {
+    console.log('🎤 Chat.onErrorText called with:', msg);
+    setError(msg);
+  }, []);
+  
+  console.log('🎤 Chat - initializing useVoiceInput hook');
+  const { isRecording, start: startVoice, stop: stopVoice } = useVoiceInput({
+    onPartialText,
+    onFinalText,
+    onErrorText,
+    // locale: 'en-US'
+  });
+  
+  console.log('🎤 Chat - useVoiceInput hook returned:', { 
+    isRecording, 
+    hasStartVoice: !!startVoice, 
+    hasStopVoice: !!stopVoice 
+  });
+
+  // Hydrate & ensure thread
+  useEffect(() => { if (!hydrated) hydrate(); }, [hydrated, hydrate]);
+  useEffect(() => {
+    if (hydrated && !isPrivate && !threads.length) {
+      const t = createThread({ title: 'New chat', model });
+      setActiveThread(t.id);
+    }
+  }, [hydrated, threads.length, isPrivate, createThread, setActiveThread, model]);
+
+  // Scroll management
+  useEffect(() => { didInitialScrollRef.current = false; }, [activeThread?.id]);
+  useEffect(() => {
+    if (!activeThread?.messages?.length || didInitialScrollRef.current) return;
+    requestAnimationFrame(() => {
+      messageListRef.current?.scrollToBottom(false);
+      setTimeout(() => messageListRef.current?.scrollToBottom(false), 0);
+    });
+    didInitialScrollRef.current = true;
+  }, [activeThread?.messages?.length, activeThread?.id]);
+  const nudgeToBottom = useCallback(() => requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true)), []);
+
+  // Keyboard animation
+  const keyboard = useAnimatedKeyboard();
+  const GAP = 6;
+  const kTranslate = useSharedValue(0);
+  const kGap = useSharedValue(0);
+  useDerivedValue(() => {
+    const h = keyboard.height.value;
+    const isClosing = keyboard.state.value === KeyboardState.CLOSING;
+    const duration = isClosing ? 240 : 40;
+    kTranslate.value = withTiming(-h, { duration, easing: Easing.out(Easing.cubic) });
+    kGap.value = withTiming(h > 0 ? GAP : 0, { duration, easing: Easing.out(Easing.cubic) });
+  });
+  const animatedContentStyle = useAnimatedStyle(() => ({ transform: [{ translateY: kTranslate.value }] }));
+  const animatedFooterStyle = useAnimatedStyle(() => ({ transform: [{ translateY: kTranslate.value + kGap.value }] }));
+
+  // Network
   useEffect(() => {
     const sub = NetInfo.addEventListener(s =>
-      setOffline(!(s.isConnected && s.isInternetReachable)));
+      setOffline(!(s.isConnected && s.isInternetReachable))
+    );
     return () => sub && sub();
   }, []);
 
-  // abort on background
+  // App background: stop stream + voice
   useEffect(() => {
     const sub = AppState.addEventListener('change', s => {
+      console.log('🎤 Chat - App state changed to:', s);
       if (s !== 'active' && abortRef.current) {
-        abortRef.current.abort();
-        setStreaming(false);
+        console.log('🎤 Chat - App backgrounded, stopping stream');
+        abortRef.current.abort(); abortRef.current = null; setStreaming(false);
+      }
+      if (s !== 'active' && isRecording) {
+        console.log('🎤 Chat - App backgrounded, stopping voice recording');
+        stopVoice();
       }
     });
     return () => sub.remove();
-  }, []);
+  }, [stopVoice, isRecording]);
 
-  // cleanup private on unmount
+  // Track voice recording state changes
   useEffect(() => {
-    return () => { if (useThreadsStore.getState().privateActive) endPrivate(); };
+    console.log('🎤 Chat - Voice recording state changed to:', isRecording);
+  }, [isRecording]);
+
+  // Cleanup on unmount
+  useEffect(() => () => {
+    if (useThreadsStore.getState().privateActive) endPrivate();
+    clearInsertToChatCallback();
+  }, [clearInsertToChatCallback, endPrivate]);
+
+  useEffect(() => () => {
+    if (abortRef.current) { abortRef.current.abort(); abortRef.current = null; }
   }, []);
 
-  async function onSend() {
+  useEffect(() => {
+    if (forceCollapseInput) {
+      const t = setTimeout(() => setForceCollapseInput(false), 200);
+      return () => clearTimeout(t);
+    }
+  }, [forceCollapseInput]);
+
+  // Attachments
+  function addPickedAssets(assets = []) {
+    const normalized = assets
+      .filter(a => a?.uri && a?.type)
+      .map((a, idx) => ({
+        id: `${Date.now()}_${idx}_${Math.random().toString(36).slice(2, 7)}`,
+        uri: a.uri, type: a.type, base64: a.base64 || null,
+      }));
+    if (!normalized.length) return;
+    setAttachments(prev => {
+      const seen = new Set(prev.map(p => p.uri));
+      const merged = [...prev];
+      for (const n of normalized) if (!seen.has(n.uri)) { merged.push(n); seen.add(n.uri); }
+      return merged;
+    });
+  }
+  const onOpenCameraPress = useCallback(() => {
+    launchImageLibrary(
+      { mediaType: 'photo', includeBase64: true, selectionLimit: 2, maxWidth: 500, maxHeight: 500, quality: 0.52 },
+      (response) => {
+        if (response?.didCancel) return;
+        if (response?.errorCode || response?.errorMessage) {
+          Alert.alert('Image picker error', response?.errorMessage || response?.errorCode);
+          return;
+        }
+        addPickedAssets(response?.assets || []);
+      }
+    );
+  }, []);
+  const onRemoveAttachment = useCallback((att) => {
+    setAttachments(prev => prev.filter(a => a.id !== att.id));
+  }, []);
+
+  // ==== Send flow ====
+  async function onSend(overrideText) {
+    console.log('🎤 Chat.onSend called with overrideText:', overrideText, 'current input:', input);
     setError('');
-    const text = input.trim();
-    if (!text || !activeThread) return;
+    const textRaw = typeof overrideText === 'string' ? overrideText : input;
+    const text = (textRaw || '').trim();
+    console.log('🎤 Chat.onSend - final text to send:', text);
+    const hasText = !!text;
+    const hasImages = attachments.length > 0;
+    if (!hasText && !hasImages) return;
+    if (!activeThread) return;
 
     const MAX_CHARS = 16000;
-    if (text.length > MAX_CHARS) { setError(`Message too long (${text.length}). Limit is ${MAX_CHARS}.`); return; }
-
-    const u = newUserMessage(text);
-    const a = newAssistantMessage();
-
-    // Update UI state first
-    if (isPrivate) {
-      addPrivateMessage(u);
-      addPrivateMessage(a);
-    } else {
-      addMessage(activeThread.id, u);
-      addMessage(activeThread.id, a);
+    if (text.length > MAX_CHARS) {
+      setError(`Message too long (${text.length}). Limit is ${MAX_CHARS}.`);
+      return;
     }
 
-    // Build payload for API (limit to last 20 messages to avoid payload too large)
-    const recentMessages = (activeThread?.messages || []).slice(-20);
-    const baseMessages = [...recentMessages, u, a];
-    
-    // Debug: Log payload size and check for large messages
-    const payloadSize = JSON.stringify(baseMessages).length;
-    const largeMessages = baseMessages.filter(m => m.content && m.content.length > 1000);
-    console.log('Payload size:', payloadSize, 'bytes, Messages:', baseMessages.length);
-    if (largeMessages.length > 0) {
-      console.log('Large messages found:', largeMessages.map(m => ({ id: m.id, size: m.content.length })));
-    }
+    const mmParts = [
+      ...(hasText ? [{ type: 'text', text }] : []),
+      ...attachments.filter(a => a.base64 && a.type).map(a => ({
+        type: 'image_url', image_url: { url: `data:${a.type};base64,${a.base64}` }
+      })),
+    ];
+    const mUser = { role: 'user', content: mmParts.length ? mmParts : text };
 
-    setInput('');
+    const mdImages = attachments.map(a => `![photo](${a.uri})`).join('\n');
+    const displayMd = [mdImages, text].filter(Boolean).join('\n\n');
+    const u = newUserMessage(displayMd); u.mm = mmParts;
+
+    const a = newAssistantMessage(); const assistantId = a.id;
+
+    if (isPrivate) { addPrivateMessage(u); addPrivateMessage(a); }
+    else { addMessage(activeThread.id, u); addMessage(activeThread.id, a); }
+    setStreamingMsgId(assistantId);
+    requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
+
+    // reset composer
+    setInput(''); setAttachments([]); setForceCollapseInput(true);
+
+    const threadForContext = { ...activeThread, messages: [ ...(activeThread.messages || []), mUser ] };
+    await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
+    const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
+    const modelForThisSend = hasImages ? 'gpt-4o' : model;
+
     setStreaming(true);
-
     const deviceId = await ensureDeviceId();
-    const controller = new AbortController();
-    abortRef.current = controller;
+    const controller = new AbortController(); abortRef.current = controller;
 
     streamChat({
-      model,
-      messages: baseMessages.filter(m => m.type === 'text'),
+      model: modelForThisSend,
+      messages: payload,
       deviceId,
       temperature,
       signal: controller.signal,
-      secretMode: isPrivate,
-      onToken: (chunk) => {
-        if (typeof chunk !== 'string') return;
-        if (isPrivate) {
-          updateLastAssistantContentPrivate(prev => prev + chunk);
-        } else {
-          updateLastAssistantContent(activeThread.id, prev => prev + chunk);
-        }
+      onToken: (chunk) => { if (typeof chunk === 'string') appendStream(assistantId, chunk); },
+      onDone: () => {
+        setStreaming(false); abortRef.current = null;
+        const full = getStream(assistantId);
+        if (isPrivate) updateLastAssistantContentPrivate(() => full);
+        else updateLastAssistantContent(activeThread.id, () => full);
+        clearStream(assistantId); setStreamingMsgId(null);
+        if (!isPrivate) forceSaveThread(activeThread.id);
       },
-      onDone: () => { setStreaming(false); abortRef.current = null; },
       onError: (err) => {
         setStreaming(false); abortRef.current = null;
-        if (err?.code === 'RATE_LIMIT' && typeof err?.retryAfter === 'number') {
-          setError(`Rate limited. Try again in ~${Math.ceil(err.retryAfter)}s.`);
-        } else {
-          const pretty = mapProxyError(err);
-          setError(pretty.message);
-        }
+        clearStream(assistantId); setStreamingMsgId(null);
+        const pretty = mapProxyError(err); setError(pretty.message);
       },
-    });
-  }
-
-  async function onCreateImagesPress() {
-    const text = (input || '').trim();
-    if (!text) return;
-    setError('');
-    setStreaming(true);
-
-    const deviceId = await ensureDeviceId();
-    const u = newUserMessage(text);
-    const a = newAssistantMessage(); // will hold the image markdown
-    if (isPrivate) { 
-      addPrivateMessage(u); 
-      addPrivateMessage(a); 
-    } else { 
-      addMessage(activeThread.id, u); 
-      addMessage(activeThread.id, a); 
-    }
-
-    const controller = new AbortController();
-    abortRef.current = controller;
-
-    generateImage({
-      prompt: text,
-      deviceId,
-      size: '1024x1024',
-      signal: controller.signal,
-      onImage: (url) => {
-        // simple: embed markdown so your Markdown renderer shows it nicely
-        const md = `![generated image](${url})`;
-        if (isPrivate) updateLastAssistantContentPrivate(() => md);
-        else updateLastAssistantContent(activeThread.id, () => md);
-      },
-      onDone: () => { 
-        setStreaming(false); 
-        abortRef.current = null; 
-        setInput(''); 
-      },
-      onError: (err) => {
-        setStreaming(false); 
-        abortRef.current = null;
-        setError('Image generation failed');
-        console.log(err);
-      },
-    });
-  }
-
-  async function onOpenCameraPress() {
-    // 1) acquire image (picker/camera) => get base64 or upload to URL
-    const options = {
-      mediaType: 'photo',
-      includeBase64: true,
-      maxHeight: 2000,
-      maxWidth: 2000,
-    };
-
-    launchImageLibrary(options, (response) => {
-      if (response.didCancel || response.error) {
-        return;
-      }
-
-      const asset = response.assets?.[0];
-      if (!asset) return;
-
-      const base64 = asset.base64;
-      const url = `data:${asset.type};base64,${base64}`;
-      const text = input.trim();
-
-      // 2) Display: show the user's message with the image markdown
-      const displayMd = `${url ? `![photo](${url})\n\n` : ''}${text}`;
-      const u = newUserMessage(displayMd);
-      const a = newAssistantMessage();
-
-      if (isPrivate) { 
-        addPrivateMessage(u); 
-        addPrivateMessage(a); 
-      } else { 
-        addMessage(activeThread.id, u); 
-        addMessage(activeThread.id, a); 
-      }
-
-      // 3) Build a model-ready message with parts
-      const mUser = {
-        role: 'user',
-        content: [
-          ...(text ? [{ type: 'text', text }] : []),
-          ...(url ? [{ type: 'image_url', image_url: { url } }] : []),
-        ],
-      };
-
-      const recent = (activeThread?.messages || []).slice(-20)
-        // rebuild role/content for the rest of the history as plain text
-        .map(m => ({ role: m.role, content: m.content || '' }));
-
-      setInput('');
-      setStreaming(true);
-
-      const deviceId = ensureDeviceId();
-      const controller = new AbortController();
-      abortRef.current = controller;
-
-      streamChat({
-        model: 'gpt-4o', // Use vision-capable model
-        messages: [...recent, mUser],   // <— include the parts message here
-        deviceId,
-        temperature,
-        signal: controller.signal,
-        secretMode: isPrivate,
-        onToken: (chunk) => {
-          if (typeof chunk !== 'string') return;
-          if (isPrivate) updateLastAssistantContentPrivate(prev => prev + chunk);
-          else updateLastAssistantContent(activeThread.id, prev => prev + chunk);
-        },
-        onDone: () => { setStreaming(false); abortRef.current = null; },
-        onError: (err) => { setStreaming(false); abortRef.current = null; setError(mapProxyError(err).message); },
-      });
     });
   }
 
   function onStop() {
-    console.log('Stop button pressed, abortRef.current:', abortRef.current);
-    if (abortRef.current) { 
-      abortRef.current.abort(); 
-      abortRef.current = null; 
-      setStreaming(false);
-      console.log('Streaming stopped');
-    } else {
-      console.log('No abort controller found');
+    console.log('🎤 Chat.onStop called, isRecording:', isRecording, 'streaming:', !!abortRef.current);
+    if (abortRef.current) {
+      console.log('🎤 Chat.onStop - stopping stream');
+      abortRef.current.abort(); abortRef.current = null; setStreaming(false);
+      if (streamingMsgId) clearStream(streamingMsgId); setStreamingMsgId(null);
+    }
+    if (isRecording) {
+      console.log('🎤 Chat.onStop - stopping voice recording');
+      stopVoice();
     }
   }
 
-  function onRetry() {
-    if (!activeThread) return;
-    const lastUser = [...(activeThread.messages || [])].reverse().find(m => m.role === 'user');
-    if (!lastUser) return;
-    setInput(lastUser.content);
-  }
-
-  function onRetryFromHere(message) { setInput(message.content || ''); }
-
+  function onRetryFromHere(message) { setInput(message?.content || ''); }
   function onInsertImagesMarkdown(md) {
-    console.log('💬 [CHAT] onInsertImagesMarkdown called with markdown:', md);
-    console.log('💬 [CHAT] Current state:', { isPrivate, activeThreadId: activeThread?.id });
-    
     const a = newAssistantMessage(md);
-    console.log('💬 [CHAT] Created assistant message:', a);
-    
-    if (isPrivate) {
-      console.log('💬 [CHAT] Adding to private messages');
-      addPrivateMessage(a);
-    } else if (activeThread?.id) {
-      console.log('💬 [CHAT] Adding to thread:', activeThread.id);
-      addMessage(activeThread.id, a);
-    } else {
-      console.log('💬 [CHAT] No valid target for message insertion');
-    }
+    if (isPrivate) addPrivateMessage(a);
+    else if (activeThread?.id) addMessage(activeThread.id, a);
+    requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
   }
 
-  if (!activeThread) {
-    return <View style={styles.container}><Text>Loading…</Text></View>;
+  if (!activeThread) return <View style={styles.container}><Text>Loading…</Text></View>;
+  if (!hydrated) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}><Text style={styles.headerTitle}>Loading...</Text></View>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{ color: colors.textSecondary }}>Loading chat...</Text>
+        </View>
+      </View>
+    );
   }
-
-  const modelDisplayName = models?.[model]?.display?.name || model;
-  const currentTemp = getEffectiveTemp(model);
 
   return (
-    <KeyboardAvoidingView 
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
-    >
+    <View style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={{ flex: 1 }}>
-      {isPrivate && (
-        <View style={styles.privateBanner}>
-          <Text style={styles.privateBannerText}>Private chat • not in History • removed on exit</Text>
-        </View>
-      )}
-
-      {/* File Upload Banner */}
-      {/* <View style={styles.fileUploadBanner}>
-        <View style={styles.fileUploadContent}>
-          <View style={styles.fileUploadLeft}>
-            <Text style={styles.fileUploadIcon}>📎</Text>
-            <View>
-              <Text style={styles.fileUploadTitle}>Upload and analyze</Text>
-              <Text style={styles.fileUploadSubtitle}>Files</Text>
+          {isPrivate && (
+            <View style={styles.privateBanner}>
+              <Text style={styles.privateBannerText}>Private chat • not in History • removed on exit</Text>
             </View>
-            <Text style={styles.fileUploadFolderIcon}>📁</Text>
-          </View>
-          <TouchableOpacity style={styles.fileUploadButton}>
-            <Text style={styles.fileUploadButtonText}>Try →</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.fileUploadClose}>
-            <Text style={styles.fileUploadCloseText}>×</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.fileUploadDots}>
-          <View style={styles.fileUploadDot} />
-          <View style={styles.fileUploadDot} />
-          <View style={styles.fileUploadDot} />
-          <View style={styles.fileUploadDot} />
-          <View style={styles.fileUploadDot} />
-        </View>
-      </View> */}
+          )}
 
-      {offline && (
-        <View style={{margin:16,padding:10,borderRadius:8,backgroundColor: colors.warning + '20',borderWidth:1,borderColor: colors.warning}}>
-          <Text style={{color: colors.warning,fontSize:12}}>You're offline. Messages can't be sent.</Text>
-        </View>
-      )}
+          {offline && (
+            <View style={{margin:16,padding:10,borderRadius:8,backgroundColor: colors.warning + '20',borderWidth:1,borderColor: colors.warning}}>
+              <Text style={{color: colors.warning,fontSize:12}}>You're offline. Messages can't be sent.</Text>
+            </View>
+          )}
 
-      {!!error && (
-        <View style={styles.error}>
-          <Text style={{color: colors.error, fontSize: 14, fontWeight: '500'}}>{error}</Text>
-        </View>
-      )}
+          {!!error && (
+            <View style={styles.error}>
+              <Text style={{color: colors.error, fontSize: 14, fontWeight: '500'}}>{error}</Text>
+            </View>
+          )}
 
-      {/* Optional preset banner */}
-      {(() => {
-        const systemMsg = (activeThread.messages || []).find(m => m.role === 'system');
-        return systemMsg && (
-          <View style={{marginHorizontal:16, marginTop:8, marginBottom:4, padding:8, borderRadius:10, backgroundColor: colors.primary + '20', borderWidth:1, borderColor: colors.primary}}>
-            <Text style={{fontSize:12, color: colors.primary, fontWeight:'700'}}>
-              Preset: {activeThread.title || 'Assistant'}
-            </Text>
-            {!!activeThread.model && (
-              <Text style={{fontSize:12, color: colors.primary, marginTop:2}}>
-                Model: {activeThread.model}
-              </Text>
-            )}
-          </View>
-        );
-      })()}
+          {(!activeThread?.messages || activeThread.messages.length === 0) ? (
+            <Reanimated.View style={[{ flex: 1 }, animatedContentStyle]}>
+              <View style={styles.emptyState}>
+                <View style={styles.emptyStateIcon}><Text style={styles.emptyStateIconText}>💬</Text></View>
+                <Text style={styles.emptyStateTitle}>{isPrivate ? 'Private Chat' : 'How can I help?'}</Text>
+                <Text style={styles.emptyStateSubtitle}>{isPrivate ? 'This chat will not appear in your chat history' : 'Start a conversation with AI'}</Text>
+                {!isPrivate && <SuggestionCards onSuggestionPress={(s) => setInput(s.title)} />}
+              </View>
+            </Reanimated.View>
+          ) : (
+            <Reanimated.View style={[{ flex: 1 }, animatedContentStyle]}>
+              <MessageList
+                ref={messageListRef}
+                messages={messagesNoSystem}
+                streaming={streaming}
+                streamingMessageId={streamingMsgId}
+                onRetryFromHere={onRetryFromHere}
+                threadKey={activeThread.id}
+              />
+            </Reanimated.View>
+          )}
 
-      {/* Empty State */}
-      {(!activeThread?.messages || activeThread.messages.length === 0) && (
-        <View style={styles.emptyState}>
-          <View style={styles.emptyStateIcon}>
-            <Text style={styles.emptyStateIconText}>💬</Text>
-          </View>
-          <Text style={styles.emptyStateTitle}>
-            {isPrivate ? 'Private Chat' : 'AI Chat'}
-          </Text>
-          <Text style={styles.emptyStateSubtitle}>
-            {isPrivate 
-              ? 'This chat will not appear in your chat history'
-              : 'Start a conversation with AI'
-            }
-          </Text>
-        </View>
-      )}
-
-      <MessageList
-        messages={(activeThread.messages || []).filter(m => m.role !== 'system')}
-        streaming={streaming}
-        onRetryFromHere={onRetryFromHere}
-      />
-
-
-      <Composer
-        value={input}
-        onChange={setInput}
-        onSend={onSend}
-        onStop={onStop}
-        onCreateImagesPress={() => {
-          console.log('💬 [CHAT] onCreateImagesPress called');
-          console.log('💬 [CHAT] Navigating to ImagesStudio with:', { 
-            seedPrompt: input,
-            hasOnInsertToChat: !!onInsertImagesMarkdown 
-          });
-          navigation.navigate('ImagesStudio', { 
-            seedPrompt: input,
-            onInsertToChat: onInsertImagesMarkdown 
-          });
-        }}
-        onOpenCameraPress={onOpenCameraPress}
-        streaming={streaming}
-        offline={offline}
-      />
+          <Reanimated.View style={animatedFooterStyle}>
+            <TestInput
+              value={input}
+              onChange={setInput}
+              onSend={onSend}
+              onStop={onStop}
+              onCreateImagesPress={() => { setInsertToChatCallback(onInsertImagesMarkdown); navigation.navigate('ImagesStudio', { seedPrompt: input }); }}
+              onOpenCameraPress={onOpenCameraPress}
+              onClipboardPress={() => {}}
+              onMicPress={() => {
+                dbg('onMicPress tapped', { isRecording });
+                if (isRecording) {
+                  dbg('onMicPress stopping voice');
+                  stopVoice();
+                  setShowVoiceOverlay(false);
+                } else {
+                  dbg('onMicPress starting voice');
+                  setInput('');
+                  startVoice();
+                  setShowVoiceOverlay(true);
+                  setVoiceText('');
+                }
+              }}
+              streaming={streaming}
+              offline={offline}
+              maxLength={16000}
+              attachments={attachments}
+              onRemoveAttachment={onRemoveAttachment}
+              forceCollapsed={forceCollapseInput || isRecording}
+              isRecording={isRecording}
+            />
+            <VoiceOverlay
+              visible={showVoiceOverlay}
+              isRecording={isRecording}
+              transcript={voiceText}
+              onInsert={() => {
+                setShowVoiceOverlay(false);
+                if (isRecording) stopVoice();
+                if (voiceText?.trim()) setInput(voiceText.trim());
+              }}
+              onClose={() => {
+                setShowVoiceOverlay(false);
+                if (isRecording) stopVoice();
+              }}
+            />
+          </Reanimated.View>
         </View>
       </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{ flex:1, backgroundColor: colors.background },
-  privateBanner:{ 
-    marginHorizontal:13, 
-    marginTop:6, 
-    padding:6, 
-    borderRadius:6, 
-    backgroundColor: colors.privateBackground, 
-    borderWidth:1, 
-    borderColor: colors.privateBorder 
-  },
+  container:{ flex:1, backgroundColor: '#000000' },
+  privateBanner:{ marginHorizontal:13, marginTop:6, padding:6, borderRadius:6, backgroundColor: colors.privateBackground, borderWidth:1, borderColor: colors.privateBorder },
   privateBannerText:{ fontSize:11, color: colors.privateText },
-  error:{ 
-    backgroundColor: colors.error + '20', 
-    padding:10, 
-    borderRadius:10, 
-    margin:13, 
-    borderLeftWidth:3, 
-    borderLeftColor: colors.error 
-  },
-  fileUploadBanner: {
-    marginHorizontal: 13,
-    marginTop: 6,
-    backgroundColor: '#10B981',
-    borderRadius: 10,
-    padding: 13,
-    position: 'relative',
-  },
-  fileUploadContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  fileUploadLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-  },
-  fileUploadIcon: {
-    fontSize: 16,
-    marginRight: 10,
-  },
-  fileUploadTitle: {
-    fontSize: 12,
-    color: '#065F46',
-    fontWeight: '500',
-  },
-  fileUploadSubtitle: {
-    fontSize: 15,
-    color: '#065F46',
-    fontWeight: '700',
-  },
-  fileUploadFolderIcon: {
-    fontSize: 16,
-    marginLeft: 6,
-  },
-  fileUploadButton: {
-    backgroundColor: colors.surface,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 6,
-  },
-  fileUploadButtonText: {
-    color: colors.text,
-    fontSize: 11,
-    fontWeight: '600',
-  },
-  fileUploadClose: {
-    position: 'absolute',
-    top: 6,
-    right: 6,
-    width: 19,
-    height: 19,
-    borderRadius: 10,
-    backgroundColor: colors.surface,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  fileUploadCloseText: {
-    color: colors.text,
-    fontSize: 13,
-    fontWeight: 'bold',
-  },
-  fileUploadDots: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 6,
-    gap: 3,
-  },
-  fileUploadDot: {
-    width: 5,
-    height: 5,
-    borderRadius: 2,
-    backgroundColor: colors.surface + '60',
-  },
-  emptyState: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 26,
-    paddingVertical: 51,
-  },
-  emptyStateIcon: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: colors.surface,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 19,
-  },
-  emptyStateIconText: {
-    fontSize: 26,
-  },
-  emptyStateTitle: {
-    fontSize: 21,
-    fontWeight: '700',
-    color: colors.text,
-    marginBottom: 6,
-    textAlign: 'center',
-  },
-  emptyStateSubtitle: {
-    fontSize: 14,
-    color: colors.textSecondary,
-    textAlign: 'center',
-    lineHeight: 20,
-  },
+  error:{ backgroundColor: colors.error + '20', padding:10, borderRadius:10, margin:13, borderLeftWidth:3, borderLeftColor: colors.error },
+  emptyState:{ flex:1, alignItems:'center', justifyContent:'center', paddingHorizontal:16, paddingVertical:40 },
+  emptyStateIcon:{ width:64, height:64, borderRadius:32, backgroundColor: colors.surface, alignItems:'center', justifyContent:'center', marginBottom:19 },
+  emptyStateIconText:{ fontSize:26 },
+  emptyStateTitle:{ fontSize:21, fontWeight:'700', color: colors.text, marginBottom:6, textAlign:'center' },
+  emptyStateSubtitle:{ fontSize:14, color: colors.textSecondary, textAlign:'center', lineHeight:20 },
 });

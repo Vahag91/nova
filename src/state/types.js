@@ -29,4 +29,7 @@ export const newThread = ({title='Untitled', model='gpt-4o-mini', system=null} =
   model,
   system,                 // preset system prompt (optional)
   messages: [],
+  summary: '',            // running summary of last 50 messages
+  summaryUpdatedAt: 0,    // timestamp when summary was last updated
+  pinned: false,          // pinned threads appear first in list
 });

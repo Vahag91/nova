@@ -29,6 +29,10 @@ const InputComposer = memo(({
   onRemoveSelectedImage,
   // Photo gallery selection
   onOpenPhotoGallery,
+  // Model information
+  currentModel,
+  modelChanged,
+  originalModel,
 }) => {
   // Auto-expanding input state
   const [isExpanded, setIsExpanded] = useState(false);
@@ -107,6 +111,22 @@ const InputComposer = memo(({
           accessibilityHint="Enter a description of the image you want to generate"
         />
         
+        {/* Model selector on the left */}
+        <Pressable
+          style={styles.modelButton}
+          onPress={onOpenSettings}
+          hitSlop={8}
+          accessibilityLabel="Open model settings"
+          accessibilityHint="Tap to change model and settings"
+        >
+          <Text style={styles.modelButtonText}>
+            {currentModel || 'Model'}
+          </Text>
+          {modelChanged && (
+            <Text style={styles.modelChangedDot}>•</Text>
+          )}
+        </Pressable>
+
         {/* Camera icon on the right */}
         <View
           ref={plusButtonRef}
@@ -119,7 +139,7 @@ const InputComposer = memo(({
             hitSlop={8}
             accessibilityLabel="Open photo gallery"
           >
-            <SvgIcon name="photo" size={20} color="#FFFFFF" />
+            <SvgIcon name="photo" size={24} color="#FFFFFF" />
           </Pressable>
         </View>
         
@@ -145,7 +165,6 @@ const styles = {
   composer: {
     flexDirection: 'column',
     backgroundColor: '#1E1E1E',
-    // borderWidth: 1,
     borderColor: '#374151',
     borderRadius: 12,
     padding: 12,
@@ -176,8 +195,31 @@ const styles = {
     textAlignVertical: 'center',
     backgroundColor: 'transparent',
   },
+  modelButton: {
+    padding: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 8,
+    backgroundColor: 'rgba(156, 163, 175, 0.1)',
+    borderRadius: 8,
+    minWidth: 60,
+    maxWidth: 100,
+  },
+  modelButtonText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '600',
+    fontFamily: 'Lato-Bold',
+    textAlign: 'center',
+  },
+  modelChangedDot: {
+    color: '#8A42FF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: -2,
+  },
   cameraButtonRight: {
-    padding: 8,
+    padding: 4,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 8,

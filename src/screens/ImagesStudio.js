@@ -13,6 +13,16 @@ import {
   Modal,
   Alert,
 } from 'react-native';
+import { useThreadsStore } from '../state/useThreadsStore';
+import Reanimated, {
+  useAnimatedKeyboard,
+  useAnimatedStyle,
+  useSharedValue,
+  useDerivedValue,
+  withTiming,
+  Easing,
+  KeyboardState,
+} from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Haptic from 'react-native-haptic-feedback';
 import { useImagesStore } from '../state/useImagesStore';
@@ -20,14 +30,13 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import SvgIcon from '../components/SvgIcon';
 import { fetchModels } from '../api/models';
 import { launchImageLibrary } from 'react-native-image-picker';
-import '../utils/testImageGeneration'; // Import test functions for dev
 import {
   ImageCard,
   AdaptiveGrid,
   ProgressBar,
   InputComposer,
   GenerateButton,
-  SettingsModal,
+  ModelMenu,
   ImageViewer,
   ErrorDisplay,
   AdvancedParams,
@@ -42,7 +51,33 @@ const isHttp = (url) => /^https?:\/\//i.test(url);
 // ---------- Screen ----------
 export default function ImagesStudio({ navigation, route }) {
   const insets = useSafeAreaInsets();
-  const { seedPrompt = '', onInsertToChat } = route?.params || {};
+  const { seedPrompt = '' } = route?.params || {};
+  
+  // Get the insert to chat callback from global store instead of navigation params
+  const insertToChat = useThreadsStore(s => s.insertToChat);
+  
+  // Keyboard animation
+  const keyboard = useAnimatedKeyboard();
+  const GAP = 24; // space between keyboard and footer
+  const kTranslate = useSharedValue(0);  // animated -height
+  const kGap = useSharedValue(0);        // animated gap 0 ↔ GAP
+
+  useDerivedValue(() => {
+    const h = keyboard.height.value;
+    const isClosing = keyboard.state.value === KeyboardState.CLOSING;
+    const duration = isClosing ? 240 :40; // tiny extra time on close feels better
+
+    // animate the main offset
+    kTranslate.value = withTiming(-h, {
+      duration,
+      easing: Easing.out(Easing.cubic),
+    });
+    // animate the tiny gap so it never snaps at the end
+    kGap.value = withTiming(h > 0 ? GAP : 0, {
+      duration,
+      easing: Easing.out(Easing.cubic),
+    });
+  });
   
   // State
   const [prompt, setPrompt] = useState(seedPrompt || '');
@@ -50,7 +85,7 @@ export default function ImagesStudio({ navigation, route }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [viewer, setViewer] = useState({ open: false, uri: '' });
-  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [modelMenuOpen, setModelMenuOpen] = useState(false);
   const [generationProgress, setGenerationProgress] = useState(0);
   const [retryCount, setRetryCount] = useState(0);
   
@@ -110,12 +145,6 @@ export default function ImagesStudio({ navigation, route }) {
     setActualModel(bestModel);
     setModelChanged(isModelChanged);
     
-    console.log('🔍 [SCREEN] Model compatibility check:', {
-      mode,
-      selectedModel: model,
-      bestModel,
-      isModelChanged
-    });
   }, [mode, model, getBestModelForMode]);
   
   // Animation refs
@@ -135,15 +164,11 @@ export default function ImagesStudio({ navigation, route }) {
 
   // Computed values
   const imageModels = useMemo(() => {
-    console.log('🔍 [IMAGES] Computing imageModels from:', Object.keys(models || {}));
     const list = Object.entries(models || {}).filter(([, v]) => v?.caps?.imageGen);
-    console.log('🔍 [IMAGES] Filtered image models:', list.map(([key]) => key));
     if (!list.length) {
-      console.log('⚠️ [IMAGES] No image models found, using fallback');
       return [{ key: 'runware-flux-dev', display: { name: 'FLUX.1 dev' }, provider: 'runware' }];
     }
     const result = list.map(([key, v]) => ({ key, display: v.display || { name: key }, provider: v.provider }));
-    console.log('✅ [IMAGES] Final imageModels:', result.map(m => m.key));
     return result;
   }, [models]);
 
@@ -160,11 +185,9 @@ export default function ImagesStudio({ navigation, route }) {
     const ac = new AbortController();
     (async () => {
       try {
-        console.log('🔄 [IMAGES] Fetching latest models from server...');
         const incoming = await fetchModels({ signal: ac.signal });
         
         if (incoming && typeof incoming === 'object' && Object.keys(incoming).length > 0) {
-          console.log('✅ [IMAGES] Received models from server:', Object.keys(incoming));
           setModels(incoming);
         }
       } catch (error) {
@@ -174,35 +197,19 @@ export default function ImagesStudio({ navigation, route }) {
     return () => ac.abort();
   }, [setModels]);
 
-  // Debug function to check image URLs
-  const debugImages = useCallback(() => {
-    console.log('🔍 [DEBUG] Current images state:');
-    images.forEach((img, i) => {
-      console.log(`  Image ${i + 1}:`, {
-        id: img.id,
-        url: img.url?.substring(0, 100),
-        urlType: img.url?.startsWith('data:') ? 'data-uri' : img.url?.startsWith('file://') ? 'local-file' : 'remote-url',
-        jobId: img.jobId,
-        status: jobs.find(j => j.id === img.jobId)?.status
-      });
-    });
-  }, [images, jobs]);
 
   // Delete handlers
   const handleDeleteImage = useCallback((image) => {
-    console.log('🗑️ [IMAGES] Delete image requested:', image);
     const confirmData = {
       type: 'image',
       image,
       title: 'Delete Image',
       message: 'Are you sure you want to delete this image? This action cannot be undone.',
     };
-    console.log('🗑️ [IMAGES] Setting delete confirm:', confirmData);
     setDeleteConfirm(confirmData);
   }, []);
 
   const handleDeleteJob = useCallback((job) => {
-    console.log('🗑️ [IMAGES] Delete job requested:', job);
     setDeleteConfirm({
       type: 'job',
       job,
@@ -322,35 +329,13 @@ export default function ImagesStudio({ navigation, route }) {
     return false;
   })();
 
-  // Debug canGenerate
-  useEffect(() => {
-    console.log('🔍 [SCREEN] canGenerate check:', {
-      busy,
-      mode,
-      promptLength: prompt.trim().length,
-      hasSeedImage: !!seedImage,
-      canGenerate
-    });
-  }, [busy, mode, prompt, seedImage, canGenerate]);
 
   // ---------- actions ----------
   const onGenerate = useCallback(async () => {
-    console.log('🎯 [SCREEN] onGenerate called, canGenerate:', canGenerate);
     if (!canGenerate) {
-      console.log('❌ [SCREEN] Generation blocked - canGenerate is false');
       return;
     }
     
-      console.log('🎯 [SCREEN] Starting image generation:', {
-        mode,
-        selectedModel: model,
-        actualModel: actualModel || model,
-        modelChanged: !!modelChanged,
-        prompt: prompt?.substring(0, 100) + (prompt?.length > 100 ? '...' : ''),
-        size,
-        hasSeedImage: !!seedImage,
-        advancedParams: Object.keys(advancedParams).length > 0
-      });
     
     setError('');
     setBusy(true);
@@ -402,7 +387,6 @@ export default function ImagesStudio({ navigation, route }) {
         outputQuality: advancedParams.outputQuality || 95,
       };
       
-      console.log('🎯 [SCREEN] Base parameters prepared:', baseParams);
 
 
       let result;
@@ -412,10 +396,6 @@ export default function ImagesStudio({ navigation, route }) {
           seedImage,
           strength: advancedParams.strength || 0.85,
         };
-        console.log('🔄 [SCREEN] Executing img2img with params:', {
-          ...img2imgParams,
-          seedImage: !!img2imgParams.seedImage
-        });
         result = await runImg2Img(img2imgParams);
       } else {
         // text2img
@@ -444,17 +424,9 @@ export default function ImagesStudio({ navigation, route }) {
         useNativeDriver: false,
       }).start();
       
-      console.log('✅ [SCREEN] Generation completed successfully:', {
-        mode,
-        model,
-        resultId: result?.id,
-        imagesCount: result?.images?.length || 0,
-        modelSelection: result?.modelSelection
-      });
       
       // Log model selection info for debugging
       if (result?.modelSelection?.changed) {
-        console.log('🔄 [SCREEN] Model was auto-selected:', result.modelSelection.reason);
       }
       
       Haptic.trigger('notificationSuccess');
@@ -525,17 +497,14 @@ export default function ImagesStudio({ navigation, route }) {
       ``,
       `![image](${url})`,
     ].join('\n');
-    onInsertToChat?.(md);
+    insertToChat(md);
     navigation.goBack();
-  }, [onInsertToChat, navigation]);
+  }, [insertToChat, navigation]);
 
   const showTileActions = useCallback((item) => {
-    console.log('🎯 [IMAGES] showTileActions called for item:', item);
     const url = item?.url;
     const job = jobs.find(j => j.id === item.jobId);
     const hasMultipleImages = job?.images?.length > 1;
-    
-    console.log('🎯 [IMAGES] Job found:', job?.id, 'hasMultipleImages:', hasMultipleImages);
     
     const options = [
       'Insert to chat', 
@@ -546,19 +515,14 @@ export default function ImagesStudio({ navigation, route }) {
       'Cancel'
     ].filter(Boolean);
     
-    console.log('🎯 [IMAGES] Action sheet options:', options);
-    
     const handler = (ix) => {
       const label = options[ix];
-      console.log('🎯 [IMAGES] Action selected:', label, 'for item:', item.id);
       if (label === 'Insert to chat') insertAsMarkdown(item);
       else if (label === 'Open in browser') openImageExternally(url);
       else if (label === 'Make variations') setPrompt(`${prompt.trim()} — variation of previous image`);
       else if (label === 'Delete') {
-        console.log('🎯 [IMAGES] Calling handleDeleteImage with:', item);
         handleDeleteImage(item);
       } else if (label === 'Delete all from this generation') {
-        console.log('🎯 [IMAGES] Calling handleDeleteJob with:', job);
         handleDeleteJob(job);
       }
     };
@@ -569,7 +533,6 @@ export default function ImagesStudio({ navigation, route }) {
       );
     } else {
       // Android fallback: use Alert
-      console.log('🎯 [IMAGES] Android fallback - showing Alert');
       Alert.alert(
         'Image Options',
         'What would you like to do with this image?',
@@ -581,6 +544,14 @@ export default function ImagesStudio({ navigation, route }) {
       );
     }
   }, [insertAsMarkdown, openImageExternally, prompt, handleDeleteImage, handleDeleteJob, jobs]);
+
+  const animatedContentStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: kTranslate.value }],
+  }));
+
+  const animatedFooterStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: kTranslate.value + kGap.value }],
+  }));
 
   // ---------- tile renderer ----------
   const renderTile = useCallback((item, _index, tileStyle) => {
@@ -599,7 +570,7 @@ export default function ImagesStudio({ navigation, route }) {
         }}
         onLongPress={() => {
           if (!isSelectionMode) {
-            showTileActions();
+            showTileActions(item);
           }
         }}
         onDelete={handleDeleteImage}
@@ -613,11 +584,8 @@ export default function ImagesStudio({ navigation, route }) {
 
   // ---------- UI ----------
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
-    >
+    <View style={styles.container}>
+      <View style={styles.keyboardAvoidingView}>
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
@@ -661,23 +629,21 @@ export default function ImagesStudio({ navigation, route }) {
             <Text style={styles.batchActionsText}>
               {selectedImages.size} selected
             </Text>
-            <Pressable
-              style={styles.batchActionButton}
-              onPress={selectAllImages}
-              hitSlop={8}
-            >
-              <Text style={styles.batchActionButtonText}>Select All</Text>
-            </Pressable>
           </View>
           <View style={styles.batchActionsRight}>
             <Pressable
-              style={[styles.batchActionButton, styles.deleteButton]}
+              style={styles.selectAllButton}
+              onPress={selectAllImages}
+              hitSlop={8}
+            >
+              <Text style={styles.selectAllButtonText}>Select All</Text>
+            </Pressable>
+            <Pressable
+              style={styles.deleteButton}
               onPress={deleteSelectedImages}
               hitSlop={8}
             >
-              <Text style={[styles.batchActionButtonText, styles.deleteButtonText]}>
-                Delete Images
-              </Text>
+              <Text style={styles.deleteButtonText}>Delete</Text>
             </Pressable>
           </View>
         </View>
@@ -686,23 +652,34 @@ export default function ImagesStudio({ navigation, route }) {
       {/* Gallery */}
       <ScrollView 
         style={styles.scroll} 
-        contentContainerStyle={styles.content} 
+        contentContainerStyle={[
+          styles.content,
+          isSelectionMode && showBatchActions && styles.contentWithBatchActions
+        ]} 
         showsVerticalScrollIndicator={false}
         accessibilityLabel="Generated images gallery"
       >
-        {images.length > 0 ? (
-          <AdaptiveGrid items={images} renderTile={renderTile} horizontalPadding={20} />
-        ) : (
-          <View style={styles.empty}>
-            <Text style={styles.emptyIcon}>🖼️</Text>
-            <Text style={styles.emptyTitle}>No images yet</Text>
-            <Text style={styles.emptyHint}>Describe your image below and tap Generate.</Text>
-          </View>
-        )}
+        <Reanimated.View style={animatedContentStyle}>
+          {images.length > 0 ? (
+            <AdaptiveGrid items={images} renderTile={renderTile} horizontalPadding={20} />
+          ) : (
+            <View style={styles.empty}>
+              <Text style={styles.emptyIcon}>🖼️</Text>
+              <Text style={styles.emptyTitle}>No images yet</Text>
+              <Text style={styles.emptyHint}>Describe your image below and tap Generate.</Text>
+            </View>
+          )}
+        </Reanimated.View>
       </ScrollView>
 
       {/* Footer */}
-      <View style={[styles.footer, { paddingBottom: Math.max(insets.bottom, 16) }]}>
+      <Reanimated.View
+        style={[
+          styles.footer,
+          { paddingBottom: Math.max(insets.bottom, 16) },
+          animatedFooterStyle,
+        ]}
+      >
 
 
         <InputComposer
@@ -710,7 +687,7 @@ export default function ImagesStudio({ navigation, route }) {
           onPromptChange={(text) => { setPrompt(text); if (error) setError(''); }}
           onGenerate={onGenerate}
           onClearPrompt={() => setPrompt('')}
-          onOpenSettings={() => setSettingsOpen(true)}
+          onOpenSettings={() => setModelMenuOpen(true)}
           onModeChange={setMode}
           currentMode={mode}
           disabled={busy}
@@ -718,6 +695,10 @@ export default function ImagesStudio({ navigation, route }) {
           selectedImageUri={mode === 'img2img' ? seedImage : null}
           onRemoveSelectedImage={() => setSeedImage('')}
           onOpenPhotoGallery={handleOpenPhotoGallery}
+          // Model information for display
+          currentModel={actualModel ? (models?.[actualModel]?.display?.name || actualModel) : (models?.[model]?.display?.name || model)}
+          modelChanged={modelChanged}
+          originalModel={models?.[model]?.display?.name || model}
         />
 
         {/* Progress Bar */}
@@ -759,28 +740,17 @@ export default function ImagesStudio({ navigation, route }) {
             style={styles.generateButtonFlex}
           />
           
-          {/* Settings Button */}
-          <Pressable
-            style={styles.settingsButton}
-            onPress={() => setSettingsOpen(true)}
-            hitSlop={8}
-            accessibilityLabel="Open settings"
-          >
-            <SvgIcon name="settings" size={20} color="#FFFFFF" />
-          </Pressable>
         </View>
-      </View>
+      </Reanimated.View>
 
-      {/* Settings Modal */}
-        <SettingsModal
-          visible={settingsOpen}
-          onClose={() => setSettingsOpen(false)}
-          size={size}
-          onSizeChange={setSize}
+      {/* Model Menu */}
+        <ModelMenu
+          visible={modelMenuOpen}
+          onClose={() => setModelMenuOpen(false)}
           model={model}
           onModelChange={setModel}
           imageModels={imageModels}
-          mode={mode}
+          buttonRef={plusButtonRef}
         />
 
       {/* Image Viewer */}
@@ -809,20 +779,17 @@ export default function ImagesStudio({ navigation, route }) {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <View style={styles.modalIcon}>
-              <Text style={styles.modalIconText}>🗑️</Text>
-            </View>
             <Text style={styles.modalTitle}>{deleteConfirm?.title}</Text>
             <Text style={styles.modalMessage}>{deleteConfirm?.message}</Text>
             <View style={styles.modalButtons}>
               <Pressable
-                style={[styles.modalButton, styles.modalButtonCancel]}
+                style={styles.modalButtonCancel}
                 onPress={cancelDelete}
               >
                 <Text style={styles.modalButtonTextCancel}>Cancel</Text>
               </Pressable>
               <Pressable
-                style={[styles.modalButton, styles.modalButtonDelete]}
+                style={styles.modalButtonDelete}
                 onPress={confirmDelete}
               >
                 <Text style={styles.modalButtonTextDelete}>Delete</Text>
@@ -831,7 +798,8 @@ export default function ImagesStudio({ navigation, route }) {
           </View>
         </View>
       </Modal>
-    </KeyboardAvoidingView>
+      </View>
+    </View>
   );
 }
 
@@ -840,6 +808,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000000',
+  },
+  keyboardAvoidingView: {
+    flex: 1,
     paddingTop: 44,
   },
   header: {
@@ -878,19 +849,22 @@ const styles = StyleSheet.create({
   headerRight: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
+    justifyContent: 'flex-end',
+    gap: 12,
   },
   closeButton: {
     width: 44,
     height: 44,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 22,
   },
   headerButton: {
     width: 44,
     height: 44,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 22,
   },
   headerButtonActive: {
     // No background or border for clean look
@@ -899,16 +873,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    backgroundColor: '#1F2937',
-    borderBottomWidth: 1,
-    borderBottomColor: '#374151',
+    paddingHorizontal: 24,
+    paddingVertical: 6,
   },
   batchActionsLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
   },
   batchActionsRight: {
     flexDirection: 'row',
@@ -917,126 +887,102 @@ const styles = StyleSheet.create({
   },
   batchActionsText: {
     color: '#F9FAFB',
+    fontSize: 15,
+    fontWeight: '600',
+    fontFamily: 'Lato-Bold',
+  },
+  selectAllButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  selectAllButtonText: {
+    color: '#F9FAFB',
     fontSize: 14,
     fontWeight: '600',
     fontFamily: 'Lato-Bold',
   },
-  batchActionButton: {
+  deleteButton: {
     paddingHorizontal: 12,
     paddingVertical: 6,
-    backgroundColor: 'rgba(156, 163, 175, 0.1)',
-    borderRadius: 6,
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: 'rgba(156, 163, 175, 0.2)',
-  },
-  batchActionButtonText: {
-    color: '#F9FAFB',
-    fontSize: 12,
-    fontWeight: '600',
-    fontFamily: 'Lato-Bold',
-  },
-  deleteButton: {
-    backgroundColor: 'rgba(239, 68, 68, 0.1)',
     borderColor: 'rgba(239, 68, 68, 0.3)',
   },
   deleteButtonText: {
     color: '#EF4444',
+    fontSize: 14,
+    fontWeight: '600',
+    fontFamily: 'Lato-Bold',
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 24,
-    paddingVertical: 20,
+    paddingHorizontal: 20,
   },
   modalContent: {
-    backgroundColor: '#1F2937',
-    borderRadius: 24,
-    paddingHorizontal: 32,
-    paddingVertical: 36,
+    backgroundColor: '#1E1E1E',
+    borderRadius: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
     width: '100%',
-    maxWidth: 380,
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 12 },
-    shadowOpacity: 0.4,
-    shadowRadius: 24,
-    elevation: 12,
+    maxWidth: 320,
     borderWidth: 1,
-    borderColor: 'rgba(156, 163, 175, 0.1)',
-  },
-  modalIcon: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: 'rgba(239, 68, 68, 0.1)',
-    borderWidth: 2,
-    borderColor: 'rgba(239, 68, 68, 0.2)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    marginBottom: 20,
-  },
-  modalIconText: {
-    fontSize: 28,
+    borderColor: '#374151',
   },
   modalTitle: {
     color: '#F9FAFB',
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 8,
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 6,
     textAlign: 'center',
     fontFamily: 'Lato-Bold',
-    letterSpacing: -0.5,
   },
   modalMessage: {
-    color: '#D1D5DB',
-    fontSize: 16,
-    lineHeight: 24,
-    marginBottom: 36,
+    color: '#9CA3AF',
+    fontSize: 13,
+    lineHeight: 18,
+    marginBottom: 20,
     textAlign: 'center',
     fontFamily: 'Lato-Regular',
-    opacity: 0.9,
   },
   modalButtons: {
     flexDirection: 'row',
-    gap: 16,
-  },
-  modalButton: {
-    flex: 1,
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    borderRadius: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 4,
+    gap: 10,
   },
   modalButtonCancel: {
-    backgroundColor: 'rgba(156, 163, 175, 0.08)',
-    borderColor: 'rgba(156, 163, 175, 0.2)',
+    flex: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#374151',
   },
   modalButtonDelete: {
-    backgroundColor: 'rgba(239, 68, 68, 0.12)',
-    borderColor: 'rgba(239, 68, 68, 0.4)',
+    flex: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#EF4444',
   },
   modalButtonTextCancel: {
     color: '#9CA3AF',
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: '600',
     fontFamily: 'Lato-Bold',
-    letterSpacing: 0.2,
   },
   modalButtonTextDelete: {
-    color: '#EF4444',
-    fontSize: 16,
+    color: '#FFFFFF',
+    fontSize: 13,
     fontWeight: '600',
     fontFamily: 'Lato-Bold',
-    letterSpacing: 0.2,
   },
   scroll: {
     flex: 1,
@@ -1045,6 +991,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 24,
     paddingBottom: 140,
+  },
+  contentWithBatchActions: {
+    paddingTop: 8,
   },
   empty: {
     alignItems: 'center',
@@ -1122,16 +1071,34 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   generateButtonFlex: {
-    flex: 0.9,
+    flex: 1,
     marginTop: 0,
   },
-  settingsButton: {
-    flex: 0.14,
+  modelNameContainer: {
+    flex: 0.3,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(156, 163, 175, 0.1)',
     borderRadius: 12,
     borderWidth: 1,
     borderColor: 'rgba(156, 163, 175, 0.2)',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+  },
+  modelNameText: {
+    color: '#F9FAFB',
+    fontSize: 14,
+    fontWeight: '600',
+    fontFamily: 'Lato-Bold',
+    textAlign: 'center',
+  },
+  modelChangedIndicator: {
+    color: '#9CA3AF',
+    fontSize: 10,
+    fontWeight: '400',
+    fontFamily: 'Lato-Regular',
+    textAlign: 'center',
+    marginTop: 2,
+    opacity: 0.8,
   },
 });

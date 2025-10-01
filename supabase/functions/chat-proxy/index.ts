@@ -126,16 +126,81 @@ Deno.serve(async (req: Request) => {
     return new Response("Bad Request: prompt required for image models", { status: 400, headers: CORS_HEADERS });
   }
 
-  // Size limits (only for chat models)
+  // Vision model guard
+  const hasAnyImage = Array.isArray(body.messages)
+    && body.messages.some((m: any) => Array.isArray(m?.content)
+      && m.content.some((p: any) => p?.type === 'image_url' && p?.image_url?.url));
+
+  if (hasAnyImage && model.kind === 'chat' && (model.caps?.visionInput === false)) {
+    return sseError("MODEL_NOT_VISION", "Selected model does not support images", 400);
+  }
+
+  // ---- Size limits (chat) ----
   if (model.kind === 'chat') {
     const MAX_MSGS = 100;
-    if (body.messages.length > MAX_MSGS) {
+    if (!Array.isArray(body.messages) || body.messages.length > MAX_MSGS) {
       return new Response("Too many messages", { status: 400, headers: CORS_HEADERS });
     }
-    
-    // Quick size check without expensive JSON.stringify
-    const totalChars = body.messages.reduce((sum, msg) => sum + (msg.content?.length || 0), 0);
-    if (totalChars > 20000) {
+
+    // Text-only cap (keeps previous behavior)
+    const MAX_TEXT_ONLY_CHARS = 20_000;
+
+    // Image-specific limits (tune as you like)
+    const MAX_IMAGES_TOTAL = 8;
+    const MAX_IMAGE_DATAURL_CHARS = 3_000_000;   // ~2.25MB base64 per image
+    const MAX_ALL_DATAURL_CHARS = 12_000_000;    // ~9MB total base64 across images
+    const MAX_TEXT_WHEN_IMAGES = 30_000;         // allow a bit more text when images present
+
+    let textChars = 0;
+    let dataUrlChars = 0;
+    let imageCount = 0;
+    let hasImages = false;
+
+    const countPart = (part: any) => {
+      if (part?.type === 'text' && typeof part.text === 'string') {
+        textChars += part.text.length;
+      } else if (part?.type === 'image_url') {
+        const url = String(part?.image_url?.url || '');
+        if (url) {
+          hasImages = true;
+          imageCount += 1;
+          // If it's a data URL, include the base64 char length in budget checks
+          if (/^data:image\//i.test(url)) {
+            dataUrlChars += url.length;
+            if (url.length > MAX_IMAGE_DATAURL_CHARS) {
+              return sseError("IMAGE_TOO_LARGE", "Image data URL too large", 413, { limit: MAX_IMAGE_DATAURL_CHARS });
+            }
+          }
+        }
+      }
+      return null;
+    };
+
+    for (const msg of body.messages) {
+      const c = msg?.content;
+      if (typeof c === 'string') {
+        // legacy text-only content
+        textChars += c.length;
+      } else if (Array.isArray(c)) {
+        for (const p of c) {
+          const maybeErr = countPart(p);
+          if (maybeErr) return maybeErr;
+        }
+      } else if (c != null) {
+        return new Response("Bad Request: invalid content", { status: 400, headers: CORS_HEADERS });
+      }
+    }
+
+    if (imageCount > MAX_IMAGES_TOTAL) {
+      return sseError("TOO_MANY_IMAGES", "Too many images in request", 400, { limit: MAX_IMAGES_TOTAL });
+    }
+    if (dataUrlChars > MAX_ALL_DATAURL_CHARS) {
+      return sseError("IMAGES_TOO_LARGE", "Total image data too large", 413, { limit: MAX_ALL_DATAURL_CHARS });
+    }
+
+    // Apply text caps depending on whether images are present
+    const textCap = hasImages ? MAX_TEXT_WHEN_IMAGES : MAX_TEXT_ONLY_CHARS;
+    if (textChars > textCap) {
       return new Response("Payload too large", { status: 413, headers: CORS_HEADERS });
     }
   }
