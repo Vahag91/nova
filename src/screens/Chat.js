@@ -74,37 +74,40 @@ export default function Chat({ navigation }) {
   );
 
   // Voice: manual stop => send once
-  const dbg = (...args) => console.log('[chat-voice]', ...args);
 
   const onFinalText = useCallback((text) => {
     const t = (text || '').trim();
-    dbg('onFinalText', { incoming: text, trimmed: t });
+    console.log('🎤 Chat: onFinalText received', { 
+      text: t, 
+      length: t.length, 
+      timestamp: Date.now() 
+    });
     if (!t) return;
     setVoiceText(t);
   }, []);
 
   const onPartialText = useCallback((text) => {
-    dbg('onPartialText', text);
+    console.log('🎤 Chat: onPartialText received', { 
+      text: text || '', 
+      length: (text || '').length, 
+      timestamp: Date.now() 
+    });
     setVoiceText(text || '');
   }, []);
   
   const onErrorText = useCallback((msg) => {
-    console.log('🎤 Chat.onErrorText called with:', msg);
+    console.log('🎤 Chat: onErrorText received', { 
+      error: msg, 
+      timestamp: Date.now() 
+    });
     setError(msg);
   }, []);
   
-  console.log('🎤 Chat - initializing useVoiceInput hook');
   const { isRecording, start: startVoice, stop: stopVoice } = useVoiceInput({
     onPartialText,
     onFinalText,
     onErrorText,
     // locale: 'en-US'
-  });
-  
-  console.log('🎤 Chat - useVoiceInput hook returned:', { 
-    isRecording, 
-    hasStartVoice: !!startVoice, 
-    hasStopVoice: !!stopVoice 
   });
 
   // Hydrate & ensure thread
@@ -160,17 +163,12 @@ export default function Chat({ navigation }) {
         abortRef.current.abort(); abortRef.current = null; setStreaming(false);
       }
       if (s !== 'active' && isRecording) {
-        console.log('🎤 Chat - App backgrounded, stopping voice recording');
         stopVoice();
       }
     });
     return () => sub.remove();
   }, [stopVoice, isRecording]);
 
-  // Track voice recording state changes
-  useEffect(() => {
-    console.log('🎤 Chat - Voice recording state changed to:', isRecording);
-  }, [isRecording]);
 
   // Cleanup on unmount
   useEffect(() => () => {
@@ -302,7 +300,6 @@ export default function Chat({ navigation }) {
       if (streamingMsgId) clearStream(streamingMsgId); setStreamingMsgId(null);
     }
     if (isRecording) {
-      console.log('🎤 Chat.onStop - stopping voice recording');
       stopVoice();
     }
   }
@@ -381,18 +378,29 @@ export default function Chat({ navigation }) {
               onOpenCameraPress={onOpenCameraPress}
               onClipboardPress={() => {}}
               onMicPress={() => {
-                dbg('onMicPress tapped', { isRecording });
+                const startTime = performance.now();
+                console.log('🎤 Chat: Mic button pressed', { 
+                  isRecording, 
+                  showVoiceOverlay, 
+                  timestamp: Date.now() 
+                });
+                
                 if (isRecording) {
-                  dbg('onMicPress stopping voice');
+                  console.log('🎤 Chat: Stopping voice recording');
                   stopVoice();
                   setShowVoiceOverlay(false);
                 } else {
-                  dbg('onMicPress starting voice');
+                  console.log('🎤 Chat: Starting voice recording');
                   setInput('');
                   startVoice();
                   setShowVoiceOverlay(true);
                   setVoiceText('');
                 }
+                
+                const duration = performance.now() - startTime;
+                console.log('🎤 Chat: Mic button action completed', { 
+                  duration: duration.toFixed(2) + 'ms' 
+                });
               }}
               streaming={streaming}
               offline={offline}
@@ -407,13 +415,32 @@ export default function Chat({ navigation }) {
               isRecording={isRecording}
               transcript={voiceText}
               onInsert={() => {
+                const startTime = performance.now();
+                console.log('🎤 Chat: VoiceOverlay onInsert called', { 
+                  voiceText: voiceText?.trim(), 
+                  isRecording, 
+                  timestamp: Date.now() 
+                });
                 setShowVoiceOverlay(false);
                 if (isRecording) stopVoice();
                 if (voiceText?.trim()) setInput(voiceText.trim());
+                const duration = performance.now() - startTime;
+                console.log('🎤 Chat: VoiceOverlay onInsert completed', { 
+                  duration: duration.toFixed(2) + 'ms' 
+                });
               }}
               onClose={() => {
+                const startTime = performance.now();
+                console.log('🎤 Chat: VoiceOverlay onClose called', { 
+                  isRecording, 
+                  timestamp: Date.now() 
+                });
                 setShowVoiceOverlay(false);
                 if (isRecording) stopVoice();
+                const duration = performance.now() - startTime;
+                console.log('🎤 Chat: VoiceOverlay onClose completed', { 
+                  duration: duration.toFixed(2) + 'ms' 
+                });
               }}
             />
           </Reanimated.View>

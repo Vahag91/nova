@@ -27,15 +27,21 @@ export function useVoiceInput({
   const partialCbRef = useRef(onPartialText);
   const finalCbRef = useRef(onFinalText);
   const errCbRef = useRef(onErrorText);
-
-  const log = (...args) => console.log('[voice-input]', ...args);
+  
+  // Debug refs
+  const debugStartTime = useRef(0);
+  const debugEventCount = useRef(0);
 
   useEffect(() => { partialCbRef.current = onPartialText; }, [onPartialText]);
   useEffect(() => { finalCbRef.current = onFinalText; }, [onFinalText]);
   useEffect(() => { errCbRef.current = onErrorText; }, [onErrorText]);
 
   const resetBuffers = () => {
-    log('resetBuffers() called', { buffer: bufferRef.current, partial: partialRef.current });
+    console.log('🎤 useVoiceInput: Resetting buffers', { 
+      bufferLength: bufferRef.current.length, 
+      partialLength: partialRef.current.length,
+      timestamp: Date.now()
+    });
     bufferRef.current = '';
     partialRef.current = '';
     partialCbRef.current?.('');
@@ -43,10 +49,14 @@ export function useVoiceInput({
 
   const appendFinal = (t) => {
     const s = (t || '').trim();
-    log('appendFinal()', { incoming: t, trimmed: s, beforeBuffer: bufferRef.current });
     if (!s) return;
+    console.log('🎤 useVoiceInput: Appending final text', { 
+      newText: s, 
+      bufferBefore: bufferRef.current,
+      bufferAfter: bufferRef.current ? bufferRef.current + ' ' + s : s,
+      timestamp: Date.now()
+    });
     bufferRef.current = bufferRef.current ? bufferRef.current + ' ' + s : s;
-    log('appendFinal() updated buffer', bufferRef.current);
   };
 
   const emitFinal = (overrideText) => {
@@ -54,35 +64,48 @@ export function useVoiceInput({
       ? overrideText
       : (bufferRef.current || partialRef.current);
     const finalText = (candidate || '').trim();
-    log('emitFinal()', { overrideText, candidate, finalText });
+    console.log('🎤 useVoiceInput: Emitting final text', { 
+      finalText, 
+      overrideText, 
+      bufferLength: bufferRef.current.length,
+      partialLength: partialRef.current.length,
+      timestamp: Date.now()
+    });
     resetBuffers();
     if (finalText) finalCbRef.current?.(finalText);
-    else log('emitFinal() nothing to emit');
   };
 
   const askAndroidPerm = async () => {
     if (Platform.OS !== 'android') return true;
-    log('askAndroidPerm() requesting RECORD_AUDIO');
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.RECORD_AUDIO
     );
-    log('askAndroidPerm() result', granted);
     return granted === PermissionsAndroid.RESULTS.GRANTED;
   };
 
   const safeStart = useCallback(async () => {
+    const startTime = performance.now();
+    console.log('🎤 useVoiceInput: Starting voice recognition', { locale, timestamp: Date.now() });
+    
     try {
-      log('safeStart() Voice.start invoked', { locale });
-      await Voice.start(locale || undefined); // supported signature
+      await Voice.start(locale || undefined);
+      const duration = performance.now() - startTime;
+      console.log('🎤 useVoiceInput: Voice.start() completed', { duration: duration.toFixed(2) + 'ms' });
+      
       setIsRecording(true);
       isRecordingRef.current = true;
       resetBuffers();
-      log('safeStart() success');
     } catch (e) {
+      const duration = performance.now() - startTime;
       const msg = e?.message || String(e);
-      log('safeStart() error', msg, e);
+      console.log('🎤 useVoiceInput: Voice.start() failed', { 
+        error: msg, 
+        duration: duration.toFixed(2) + 'ms',
+        timestamp: Date.now()
+      });
+      
       if (/already started/i.test(msg)) {
-        log('safeStart() detected existing session, marking recording active');
+        console.log('🎤 useVoiceInput: Voice already started, setting recording state');
         setIsRecording(true);
         isRecordingRef.current = true;
         return;
@@ -92,89 +115,152 @@ export function useVoiceInput({
   }, [locale]);
 
   const scheduleRestart = () => {
-    if (!wantRef.current) {
-      log('scheduleRestart() skipped because wantRef is false');
+    console.log('🎤 useVoiceInput: scheduleRestart called', {
+      wantRecording: wantRef.current,
+      isRestarting: restartingRef.current,
+      isRecording,
+      timestamp: Date.now()
+    });
+    
+    if (!wantRef.current || restartingRef.current || isRecording) {
+      console.log('🎤 useVoiceInput: Restart skipped', {
+        reason: !wantRef.current ? 'not wanted' : restartingRef.current ? 'already restarting' : 'still recording'
+      });
       return;
     }
-    if (restartingRef.current) {
-      log('scheduleRestart() already scheduled, skipping');
-      return;
-    }
-    if (isRecording) {
-      log('scheduleRestart() skipped because engine already recording');
-      return;
-    }
-    log('scheduleRestart() scheduling restart');
+    
     restartingRef.current = true;
+    console.log('🎤 useVoiceInput: Scheduling restart in 150ms');
     setTimeout(async () => {
-      log('scheduleRestart() timeout fired', { want: wantRef.current, isRecording });
       restartingRef.current = false;
       if (wantRef.current && !isRecording) {
+        console.log('🎤 useVoiceInput: Executing scheduled restart');
         await safeStart();
+      } else {
+        console.log('🎤 useVoiceInput: Scheduled restart cancelled', {
+          wantRecording: wantRef.current,
+          isRecording
+        });
       }
     }, 150);
   };
 
   const start = useCallback(async () => {
-    log('start() requested');
+    const startTime = performance.now();
+    console.log('🎤 useVoiceInput: start() called', { timestamp: Date.now() });
+    
     if (!(await askAndroidPerm())) {
+      console.log('🎤 useVoiceInput: Android permission denied');
       errCbRef.current?.('Microphone permission denied');
-      log('start() permission denied');
       return;
     }
+    
     resetBuffers();
     wantRef.current = true;
-    log('start() calling safeStart');
     await safeStart();
+    
+    const duration = performance.now() - startTime;
+    console.log('🎤 useVoiceInput: start() completed', { duration: duration.toFixed(2) + 'ms' });
   }, [safeStart]);
 
   const stop = useCallback(async () => {
-    log('stop() requested');
+    const startTime = performance.now();
+    console.log('🎤 useVoiceInput: stop() called', { timestamp: Date.now() });
+    
     wantRef.current = false;
     isStoppingRef.current = true;
-    try { await Voice.stop(); log('stop() Voice.stop success'); } catch (err) { log('stop() Voice.stop error', err); }
+    
+    try { 
+      await Voice.stop(); 
+      const duration = performance.now() - startTime;
+      console.log('🎤 useVoiceInput: Voice.stop() completed', { duration: duration.toFixed(2) + 'ms' });
+    } catch (err) {
+      console.log('🎤 useVoiceInput: Voice.stop() failed', { error: err.message });
+    }
+    
     setIsRecording(false);
     isRecordingRef.current = false;
-    // if OS doesn't deliver a final result after stop, emit whatever we have
-    setTimeout(() => { isStoppingRef.current = false; emitFinal(); }, 200);
+    
+    console.log('🎤 useVoiceInput: Scheduling final emit in 200ms');
+    setTimeout(() => { 
+      isStoppingRef.current = false; 
+      emitFinal(); 
+    }, 200);
   }, []);
 
   const cancel = useCallback(async () => {
-    log('cancel() requested');
+    const startTime = performance.now();
+    console.log('🎤 useVoiceInput: cancel() called', { timestamp: Date.now() });
+    
     wantRef.current = false;
     isStoppingRef.current = true;
-    try { await Voice.cancel(); log('cancel() Voice.cancel success'); } catch (err) { log('cancel() Voice.cancel error', err); }
+    
+    try { 
+      await Voice.cancel(); 
+      const duration = performance.now() - startTime;
+      console.log('🎤 useVoiceInput: Voice.cancel() completed', { duration: duration.toFixed(2) + 'ms' });
+    } catch (err) {
+      console.log('🎤 useVoiceInput: Voice.cancel() failed', { error: err.message });
+    }
+    
     setIsRecording(false);
     isRecordingRef.current = false;
     resetBuffers();
-    setTimeout(() => { isStoppingRef.current = false; }, 150);
+    
+    console.log('🎤 useVoiceInput: Scheduling cleanup in 150ms');
+    setTimeout(() => { 
+      isStoppingRef.current = false; 
+    }, 150);
   }, []);
 
   // Bind events ONCE
   useEffect(() => {
-    log('hook useEffect binding Voice listeners');
     Voice.onSpeechStart = () => {
-      log('Voice.onSpeechStart fired');
+      debugEventCount.current++;
+      console.log('🎤 useVoiceInput: onSpeechStart event', { 
+        eventCount: debugEventCount.current,
+        timestamp: Date.now() 
+      });
       setIsRecording(true);
       isRecordingRef.current = true;
       resetBuffers();
     };
+    
     Voice.onSpeechEnd = () => {
-      log('Voice.onSpeechEnd fired');
+      debugEventCount.current++;
+      console.log('🎤 useVoiceInput: onSpeechEnd event', { 
+        eventCount: debugEventCount.current,
+        wantRecording: wantRef.current,
+        timestamp: Date.now() 
+      });
       setIsRecording(false);
       isRecordingRef.current = false;
-      // iOS frequently ends on short silence; keep going while user wants it
       if (wantRef.current) scheduleRestart();
     };
+    
     Voice.onSpeechPartialResults = (e) => {
+      debugEventCount.current++;
       const t = (e?.value && e.value[0]) || '';
-      log('Voice.onSpeechPartialResults', t, e?.value);
+      console.log('🎤 useVoiceInput: onSpeechPartialResults event', { 
+        eventCount: debugEventCount.current,
+        partialText: t,
+        textLength: t.length,
+        timestamp: Date.now() 
+      });
       partialRef.current = t;
       partialCbRef.current?.(t);
     };
+    
     Voice.onSpeechResults = (e) => {
+      debugEventCount.current++;
       const t = (e?.value && e.value[0]) || '';
-      log('Voice.onSpeechResults', t, e?.value);
+      console.log('🎤 useVoiceInput: onSpeechResults event', { 
+        eventCount: debugEventCount.current,
+        finalText: t,
+        textLength: t.length,
+        wantRecording: wantRef.current,
+        timestamp: Date.now() 
+      });
       appendFinal(t);
       const aggregated = bufferRef.current;
       emitFinal(aggregated);
@@ -182,26 +268,42 @@ export function useVoiceInput({
       isRecordingRef.current = false;
       if (wantRef.current) scheduleRestart();
     };
+    
     Voice.onSpeechError = (e) => {
+      debugEventCount.current++;
       const msg = e?.error?.message || 'Speech error';
-      log('Voice.onSpeechError', msg, e);
       const already = /already started/i.test(msg);
       const noMatch = /no match/i.test(msg);
+      
+      console.log('🎤 useVoiceInput: onSpeechError event', { 
+        eventCount: debugEventCount.current,
+        error: msg,
+        isStopping: isStoppingRef.current,
+        alreadyStarted: already,
+        noMatch: noMatch,
+        wantRecording: wantRef.current,
+        timestamp: Date.now() 
+      });
+      
       if (isStoppingRef.current) {
-        log('onSpeechError: suppressing because manual stop/cancel in progress');
+        console.log('🎤 useVoiceInput: Ignoring error during stop');
         return;
       }
+      
       if (already) {
-        log('onSpeechError: already started -> mark recording and return');
+        console.log('🎤 useVoiceInput: Voice already started, setting recording state');
         setIsRecording(true);
         isRecordingRef.current = true;
         return;
       }
-      // Swallow harmless no-match and attempt a single restart if user still wants it
+      
       if (noMatch) {
+        console.log('🎤 useVoiceInput: No match error, scheduling restart if needed');
         if (wantRef.current && !isRecordingRef.current) scheduleRestart();
         return;
       }
+      
+      console.log('🎤 useVoiceInput: Handling speech error');
       setIsRecording(false);
       isRecordingRef.current = false;
       if (wantRef.current) {
@@ -213,13 +315,11 @@ export function useVoiceInput({
     };
 
     return () => {
-      log('cleanup removing Voice listeners');
       try { Voice.stop(); } catch {}
       try { Voice.destroy(); } catch {}
       Voice.removeAllListeners();
     };
   }, []);
 
-  log('hook ready', { locale });
   return { isRecording, partial: partialRef.current, start, stop, cancel };
 }

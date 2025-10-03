@@ -1,6 +1,6 @@
 // app/src/components/chat/TestInput.jsx
 import React, { useMemo, useState, useEffect } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, withRepeat, Easing } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import { colors } from '../../styles/colors';
@@ -27,8 +27,22 @@ const MinusIcon = ({ color, size = 24 }) => (
     <Path d="M240-440v-80h480v80H240Z"/>
   </Svg>
 );
+const PaletteIcon = ({ color = "#8A2BE2", size = 24 }) => (
+  <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
+    <Path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 32.5-156t88-127Q256-817 330-848.5T488-880q80 0 151 27.5t124.5 76q53.5 48.5 85 115T880-518q0 115-70 176.5T640-280h-74q-9 0-12.5 5t-3.5 11q0 12 15 34.5t15 51.5q0 50-27.5 74T480-80Zm0-400Zm-220 40q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm120-160q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm200 0q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm120 160q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17ZM480-160q9 0 14.5-5t5.5-13q0-14-15-33t-15-57q0-42 29-67t71-25h70q66 0 113-38.5T800-518q0-121-92.5-201.5T488-800q-136 0-232 93t-96 227q0 133 93.5 226.5T480-160Z"/>
+  </Svg>
+);
+const CameraIcon = ({ color = "#00BCD4", size = 24 }) => (
+  <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
+    <Path d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z"/>
+  </Svg>
+);
+const ExploreIcon = ({ color = "#FF9800", size = 24 }) => (
+  <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
+    <Path d="m300-300 280-80 80-280-280 80-80 280Zm180-120q-25 0-42.5-17.5T420-480q0-25 17.5-42.5T480-540q25 0 42.5 17.5T540-480q0 25-17.5 42.5T480-420Zm0 340q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Zm0-320Z"/>
+  </Svg>
+);
 
-function formatSecs(s) { const m = Math.floor(s/60), sec = s%60; return `${m}:${String(sec).padStart(2,'0')}`; }
 
 function TestInput({
   value, onChange, onSend, onStop,
@@ -40,8 +54,18 @@ function TestInput({
   maxLength=4000, minInputHeight=40, maxInputHeight=140,
   forceCollapsed=false, isRecording=false,
 }) {
+  const MENU_ITEM_HEIGHT = 52;
+  const MENU_VISIBLE_HEIGHT = MENU_ITEM_HEIGHT * 3 + 2; // 3 items + 2 dividers
+  const MENU_EXTRA_OFFSET_Y = 36; // raise menu a bit higher above button
+  const MENU_Y_OFFSET = MENU_VISIBLE_HEIGHT + MENU_EXTRA_OFFSET_Y;
   const [expanded, setExpanded] = useState(false);
   const expandAnim = useSharedValue(0);
+  const [renderMenu, setRenderMenu] = useState(false);
+  const plusRef = React.useRef(null);
+  const wrapperRef = React.useRef(null);
+  const [anchor, setAnchor] = useState(null);
+  const win = Dimensions.get('window');
+  const [wrapperRect, setWrapperRect] = useState({ x: 0, y: 0, width: win.width, height: win.height });
   const [inputHeight, setInputHeight] = useState(minInputHeight);
   const [isExpanded, setIsExpanded] = useState(false);
   const [keyboardVisible, setKeyboardVisible] = useState(false);
@@ -50,18 +74,32 @@ function TestInput({
   // timer during recording
   const [recSecs, setRecSecs] = useState(0);
   useEffect(() => {
+    console.log('🎤 TestInput: Recording timer effect triggered', { 
+      isRecording, 
+      recSecs, 
+      timestamp: Date.now() 
+    });
     let id;
-    if (isRecording) { setRecSecs(0); id = setInterval(() => setRecSecs(s => s+1), 1000); }
-    return () => id && clearInterval(id);
+    if (isRecording) { 
+      console.log('🎤 TestInput: Starting recording timer');
+      setRecSecs(0); 
+      id = setInterval(() => {
+        setRecSecs(s => {
+          console.log('🎤 TestInput: Recording timer tick', { seconds: s + 1 });
+          return s + 1;
+        });
+      }, 1000); 
+    } else {
+      console.log('🎤 TestInput: Stopping recording timer');
+    }
+    return () => {
+      if (id) {
+        console.log('🎤 TestInput: Clearing recording timer');
+        clearInterval(id);
+      }
+    };
   }, [isRecording]);
 
-  // pulsing mic
-  const pulse = useSharedValue(0);
-  useEffect(() => {
-    if (isRecording) pulse.value = withRepeat(withTiming(1, { duration: 900, easing: Easing.inOut(Easing.quad) }), -1, true);
-    else pulse.value = withTiming(0, { duration: 150 });
-  }, [isRecording, pulse]);
-  const micWrapStyle = useAnimatedStyle(() => ({ transform: [{ scale: 1 + pulse.value * 0.08 }], shadowOpacity: 0.25 + pulse.value * 0.25 }));
 
   // keyboard
   useEffect(() => {
@@ -69,12 +107,19 @@ function TestInput({
     const h = Keyboard.addListener('keyboardDidHide', () => setKeyboardVisible(false));
     return () => { s?.remove(); h?.remove(); };
   }, []);
+  // measure wrapper rect
+  const measureWrapper = () => wrapperRef.current?.measureInWindow((x, y, w, h) => setWrapperRect({ x, y, width: w, height: h }));
+  useEffect(() => {
+    measureWrapper();
+    const sub = Dimensions.addEventListener?.('change', measureWrapper);
+    return () => sub?.remove?.();
+  }, []);
   useEffect(() => {
     if (Platform.OS === 'ios') paddingAnim.value = withTiming(keyboardVisible ? 16 : 24, { duration: 250, easing: Easing.out(Easing.quad) });
   }, [keyboardVisible, paddingAnim]);
 
   useEffect(() => { if (forceCollapsed && expanded) setExpanded(false); }, [forceCollapsed, expanded]);
-  useEffect(() => { expandAnim.value = withTiming(expanded ? 1 : 0, { duration: 180, easing: Easing.out(Easing.quad) }); }, [expanded, expandAnim]);
+  useEffect(() => { expandAnim.value = withTiming(expanded ? 1 : 0, { duration: 220, easing: Easing.out(Easing.cubic) }); }, [expanded, expandAnim]);
 
   const canSend = useMemo(() => {
     const hasText = !!(value && value.trim().length > 0);
@@ -84,12 +129,47 @@ function TestInput({
 
   const showCounter = useMemo(() => value && value.length >= Math.max(0, maxLength - 300), [value, maxLength]);
 
-  const actionsAnimatedStyle = useAnimatedStyle(() => ({ height: expandAnim.value * 56, opacity: expandAnim.value }));
+  const backdropAnimatedStyle = useAnimatedStyle(() => ({ opacity: expandAnim.value }));
+  const popoverAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: expandAnim.value,
+    transform: [
+      { translateY: (1 - expandAnim.value) * 8 },
+      { scale: 0.96 + 0.04 * expandAnim.value },
+    ],
+  }));
   const paddingAnimatedStyle = useAnimatedStyle(() => ({ paddingBottom: Platform.OS === 'ios' ? paddingAnim.value : 16 }));
 
-  const toggleActions = () => setExpanded(v => !v);
+  const measureAnchor = () => {
+    if (plusRef.current?.measureInWindow) {
+      plusRef.current.measureInWindow((x, y, w, h) => {
+        setAnchor({ x, y, width: w, height: h });
+      });
+    }
+  };
+
+  const toggleActions = () => {
+    if (expanded) {
+      setExpanded(false);
+      setTimeout(() => setRenderMenu(false), 240);
+    } else {
+      requestAnimationFrame(() => {
+        measureAnchor();
+        setRenderMenu(true);
+        setExpanded(true);
+      });
+    }
+  };
   const handleSend = () => { if (canSend) onSend(); };
-  const handleStop = () => { if (streaming && onStop) onStop(); else if (isRecording) onMicPress?.(); };
+  const handleStop = () => { 
+    console.log('🎤 TestInput: Stop button pressed', { 
+      streaming, 
+      isRecording, 
+      hasOnStop: !!onStop,
+      timestamp: Date.now() 
+    });
+    if (streaming && onStop) onStop(); 
+    else if (isRecording) onMicPress?.(); 
+  };
 
   const handleContentSizeChange = (e) => {
     const h = e.nativeEvent.contentSize?.height;
@@ -98,18 +178,84 @@ function TestInput({
     setInputHeight(newH); setIsExpanded(newH > minInputHeight);
   };
 
-  const onMicTap = () => { if (!offline) onMicPress?.(); };
+  const onMicTap = () => { 
+    console.log('🎤 TestInput: Mic button tapped', { 
+      offline, 
+      isRecording, 
+      timestamp: Date.now() 
+    });
+    if (!offline) onMicPress?.(); 
+  };
 
   return (
-    <Animated.View style={[styles.wrapper, paddingAnimatedStyle]}>
-      <Animated.View style={[styles.quickActionsContainer, actionsAnimatedStyle]} pointerEvents={expanded ? 'auto' : 'none'}>
-        <View style={styles.quickActionsRow}>
-          <ActionChip label="Create images" icon="🖼️" onPress={onCreateImagesPress} />
-          <ActionChip label="Open camera"  icon="📷" onPress={onOpenCameraPress} />
-          <ActionChip label="Search"       icon="🔍" onPress={onSearchPress} />
-          <ActionChip label="Clipboard"    icon="📋" onPress={onClipboardPress} />
-        </View>
-      </Animated.View>
+    <Animated.View ref={wrapperRef} onLayout={measureWrapper} style={[styles.wrapper, paddingAnimatedStyle]}>
+      {renderMenu && (
+        <>
+          <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, backdropAnimatedStyle]}>
+            <TouchableOpacity 
+              activeOpacity={1} 
+              onPress={toggleActions} 
+              style={StyleSheet.absoluteFill}
+            />
+          </Animated.View>
+          {/* Anchored popover */}
+          {anchor && (
+          <Animated.View pointerEvents="box-none" style={[styles.popoverContainer, popoverAnimatedStyle, {
+              bottom: MENU_Y_OFFSET - 112,
+              left: Math.max(8, Math.min(anchor.x - wrapperRect.x + anchor.width / 2 - 140, wrapperRect.width - 280 - 8)),
+              width: 280,
+            }]}> 
+              <View style={styles.menuBox}>
+                <TouchableOpacity 
+                  style={styles.menuItem} 
+                  onPress={() => { toggleActions(); onCreateImagesPress?.(); }} 
+                  accessibilityRole="button" 
+                  accessibilityLabel="Create images"
+                  activeOpacity={0.9}
+                >
+                  <View style={[styles.menuIconContainer, styles.iconViolet]}>
+                    <PaletteIcon color="#8A2BE2" size={24} />
+                  </View>
+                  <View style={styles.menuTextContainer}>
+                    <Text style={styles.menuLabel} numberOfLines={1}>Create Images</Text>
+                    <Text style={styles.menuSubLabel} numberOfLines={1}>Generate AI artwork</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                  style={styles.menuItem} 
+                  onPress={() => { toggleActions(); onOpenCameraPress?.(); }} 
+                  accessibilityRole="button" 
+                  accessibilityLabel="Open camera"
+                  activeOpacity={0.9}
+                >
+                  <View style={[styles.menuIconContainer, styles.iconCyan]}>
+                    <CameraIcon color="#00BCD4" size={24} />
+                  </View>
+                  <View style={styles.menuTextContainer}>
+                    <Text style={styles.menuLabel} numberOfLines={1}>Camera</Text>
+                    <Text style={styles.menuSubLabel} numberOfLines={1}>Take or select photos</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                  style={[styles.menuItem, styles.menuItemLast]} 
+                  onPress={() => { toggleActions(); onSearchPress?.(); }} 
+                  accessibilityRole="button" 
+                  accessibilityLabel="Search"
+                  activeOpacity={0.9}
+                >
+                  <View style={[styles.menuIconContainer, styles.iconOrange]}>
+                    <ExploreIcon color="#FF9800" size={24} />
+                  </View>
+                  <View style={styles.menuTextContainer}>
+                    <Text style={styles.menuLabel} numberOfLines={1}>Search</Text>
+                    <Text style={styles.menuSubLabel} numberOfLines={1}>Find information</Text>
+                  </View>
+                </TouchableOpacity>
+            </View>
+          </Animated.View>
+          )}
+        </>
+      )}
 
       <View style={styles.inputContainer}>
         {attachments?.length > 0 && (
@@ -129,7 +275,7 @@ function TestInput({
           <TextInput
             value={value}
             onChangeText={onChange}
-            placeholder={isRecording ? 'Listening…' : placeholder}
+            placeholder={placeholder}
             placeholderTextColor={colors.placeholder}
             style={[styles.input, { maxHeight: maxInputHeight }]}
             editable={!streaming && !offline && !isRecording}
@@ -154,30 +300,23 @@ function TestInput({
 
         <View style={styles.iconsRow}>
           <View style={styles.leftControls}>
-            <TouchableOpacity onPress={toggleActions} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={expanded ? 'Hide quick actions' : 'Show quick actions'}>
+            <TouchableOpacity ref={plusRef} onPress={toggleActions} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={expanded ? 'Hide quick actions' : 'Show quick actions'}>
               {expanded ? <MinusIcon color="#FFFFFF" size={18} /> : <AddIcon color="#FFFFFF" size={18} />}
             </TouchableOpacity>
           </View>
 
           <View style={styles.rightControls}>
-            <TouchableOpacity style={[styles.iconButton, (offline || isRecording) && styles.iconDisabled]} onPress={onClipboardPress} disabled={offline || isRecording} accessibilityRole="button" accessibilityLabel="Paste from clipboard">
-              <Text style={styles.iconText}>📋</Text>
+            <TouchableOpacity
+              style={[styles.micButton, offline && styles.iconDisabled]}
+              onPress={onMicTap}
+              onPressIn={onMicHoldStart}
+              onPressOut={onMicHoldEnd}
+              disabled={offline}
+              accessibilityRole="button"
+              accessibilityLabel="Start voice input"
+            >
+              <MicIcon color="#8E8E93" size={18} />
             </TouchableOpacity>
-
-            <Animated.View style={[styles.micWrap, micWrapStyle]}>
-              <TouchableOpacity
-                style={[styles.micButton, isRecording && styles.micRecording, offline && styles.iconDisabled]}
-                onPress={onMicTap}
-                onPressIn={onMicHoldStart}
-                onPressOut={onMicHoldEnd}
-                disabled={offline}
-                accessibilityRole="button"
-                accessibilityLabel={isRecording ? 'Stop recording' : 'Start voice input'}
-              >
-                <MicIcon color={isRecording ? '#FFFFFF' : '#8E8E93'} size={18} />
-                {isRecording && <View style={styles.redDot} />}
-              </TouchableOpacity>
-            </Animated.View>
 
             {!streaming ? (
               <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? 'Offline' : 'Send message'}>
@@ -194,8 +333,6 @@ function TestInput({
         <View style={styles.metaRow}>
           {offline ? (
             <Text style={styles.metaOffline}>Offline</Text>
-          ) : isRecording ? (
-            <Text style={styles.metaRecording}>Listening… {formatSecs(recSecs)}</Text>
           ) : streaming ? (
             <Text style={styles.metaStreaming}>Streaming…</Text>
           ) : showCounter ? (
@@ -219,12 +356,66 @@ function ActionChip({ icon, label, onPress, accessibilityLabel }) {
 const THUMB = 48;
 
 const styles = StyleSheet.create({
-  wrapper: { backgroundColor: '#000000', borderTopWidth: 1, borderTopColor: colors.border, paddingHorizontal: 12, paddingTop: 8 },
-  quickActionsContainer: { overflow: 'hidden', marginBottom: 8 },
+  wrapper: { backgroundColor: '#000000', borderTopWidth: 1, borderTopColor: colors.border, paddingHorizontal: 12, paddingTop: 8, position: 'relative' },
+  quickActionsContainer: { overflow: 'hidden', marginBottom: 8, borderRadius: 14, backgroundColor: '#1E1E1E', borderWidth: 1, borderColor: colors.border },
   quickActionsRow: { flexDirection: 'row', paddingHorizontal: 4, gap: 8 },
-  actionChip: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 16, borderWidth: 1, borderColor: colors.border, gap: 6 },
-  actionChipIcon: { fontSize: 16 },
-  actionChipText: { fontSize: 12, color: colors.text, fontFamily: 'Lato-Regular' },
+  // Professional popover menu styles - matching Tailwind design
+  backdrop: { backgroundColor: 'rgba(0,0,0,0.2)', zIndex: 998 },
+  popoverContainer: { position: 'absolute', zIndex: 1000, elevation: 50, padding: 16 },
+  menuBox: { 
+    backgroundColor: 'rgba(0,0,0,0.75)', // more transparent black
+    borderWidth: 1, 
+    borderColor: 'rgba(255,255,255,0.15)', // subtle light border
+    borderRadius: 24, // rounded-2xl
+    overflow: 'hidden', 
+    shadowColor: '#000', 
+    shadowOpacity: 0.8, 
+    shadowRadius: 30, 
+    shadowOffset: { width: 0, height: 10 },
+    elevation: 20,
+    padding: 8 // p-2
+  },
+  menuItem: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    paddingHorizontal: 12, 
+    paddingVertical: 12, // p-3
+    backgroundColor: 'transparent',
+    borderRadius: 16, // rounded-xl
+    marginBottom: 4 // space-y-1
+  },
+  menuItemLast: {
+    marginBottom: 0 // no margin on last item
+  },
+  menuIconContainer: {
+    width: 40, // w-10
+    height: 40, // h-10
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16 // mr-4
+  },
+  iconViolet: {
+    // No background
+  },
+  iconCyan: {
+    // No background
+  },
+  iconOrange: {
+    // No background
+  },
+  menuTextContainer: { flex: 1 },
+  menuLabel: { 
+    color: '#E0E0E0', // text-dark
+    fontSize: 15, 
+    fontWeight: '600', 
+    fontFamily: 'Lato-Bold',
+    marginBottom: 2
+  },
+  menuSubLabel: { 
+    color: '#A0A0A0', // text-secondary-dark
+    fontSize: 13, 
+    fontFamily: 'Lato-Regular' 
+  },
 
   inputContainer: { backgroundColor: '#1C1C1E', padding: 16, borderRadius: 24, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 8 },
 
@@ -247,10 +438,7 @@ const styles = StyleSheet.create({
   iconButton: { padding: 6 },
   iconDisabled: { opacity: 0.5 },
 
-  micWrap: { borderRadius: 18, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowRadius: 6 },
-  micButton: { padding: 6, borderRadius: 18, backgroundColor: '#1F1F1F', borderWidth: 1, borderColor: colors.border, position: 'relative' },
-  micRecording: { backgroundColor: '#EA4335', borderColor: '#EA4335' },
-  redDot: { position: 'absolute', top: 4, right: 4, width: 6, height: 6, borderRadius: 3, backgroundColor: '#FFFFFF' },
+  micButton: { padding: 6, borderRadius: 18, backgroundColor: '#1F1F1F', borderWidth: 1, borderColor: colors.border },
 
   sendButton: { width: 32, height: 32, borderRadius: 16, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
   sendButtonActive: { width: 32, height: 32, borderRadius: 16, backgroundColor: '#007AFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
