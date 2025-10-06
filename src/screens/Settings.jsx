@@ -12,6 +12,7 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { APP_VERSION } from '../config/appInfo';
 import { colors } from '../styles/colors';
+import { useTranslation } from 'react-i18next';
 
 function ModelRow({ item, active, onPress }) {
   const caps = item.caps || {};
@@ -33,6 +34,7 @@ function ModelRow({ item, active, onPress }) {
 }
 
 export default function Settings() {
+  const { t } = useTranslation();
   const model = useSettingsStore(s => s.model);
   const setModel = useSettingsStore(s => s.setModel);
   const temperature = useSettingsStore(s => s.temperature);           // global default (fallback)
@@ -69,7 +71,6 @@ export default function Settings() {
           }
         }
       } catch (error) {
-        console.error('❌ [SETTINGS] Error fetching models:', error);
         // Fallback to defaults on error
         const current = useSettingsStore.getState().models;
         if (!current || Object.keys(current).length === 0) {
@@ -114,7 +115,6 @@ export default function Settings() {
 
       return rows;
     } catch (error) {
-      console.error('Settings - error computing flatRows:', error);
       return [];
     }
   }, [models, debouncedFilter]);
@@ -147,14 +147,14 @@ export default function Settings() {
   // ---- List header and footer (static content) ----
   const ListHeader = (
     <>
-      <View style={styles.header}><Text style={styles.headerText}>Settings</Text></View>
+      <View style={styles.header}><Text style={styles.headerText}>{t('settings.title')}</Text></View>
 
       <View style={styles.block}>
-        <Text style={styles.blockTitle}>Model</Text>
+        <Text style={styles.blockTitle}>{t('settings.model')}</Text>
         <TextInput
           value={filter}
           onChangeText={setFilter}
-          placeholder="Search models…"
+          placeholder={t('settings.searchPlaceholder')}
           placeholderTextColor="#9CA3AF"
           style={styles.search}
         />
@@ -166,9 +166,9 @@ export default function Settings() {
     <>
       {/* Temperature for the CURRENT model */}
       <View style={styles.block}>
-        <Text style={styles.blockTitle}>Temperature for current model</Text>
+        <Text style={styles.blockTitle}>{t('settings.temperatureForCurrentModel')}</Text>
         <Text style={styles.helper}>
-          {hasCustom ? `Custom for ${model}` : `Using default ${temperature.toFixed(2)}`}
+          {hasCustom ? t('settings.customFor', { model }) : t('settings.usingDefault', { temperature: temperature.toFixed(2) })}
         </Text>
 
         <View style={{ paddingHorizontal: 6, paddingTop: 6 }}>
@@ -189,7 +189,7 @@ export default function Settings() {
           <Text style={styles.value}>{effectiveTemp.toFixed(2)}</Text>
           {hasCustom && (
             <TouchableOpacity onPress={() => clearModelTemp(model)} style={styles.linkBtn}>
-              <Text style={styles.linkBtnText}>Reset to default</Text>
+              <Text style={styles.linkBtnText}>{t('settings.resetToDefault')}</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -218,17 +218,17 @@ export default function Settings() {
 
       {/* Danger zone */}
       <View style={styles.block}>
-        <Text style={styles.blockTitle}>Danger zone</Text>
+        <Text style={styles.blockTitle}>{t('settings.dangerZone')}</Text>
         <TouchableOpacity onPress={onClearAll} style={styles.clearBtn}>
-          <Text style={styles.clearBtnText}>Clear all chats & settings</Text>
+          <Text style={styles.clearBtnText}>{t('settings.clearAllChatsAndSettings')}</Text>
         </TouchableOpacity>
       </View>
 
       {/* About */}
       <View style={styles.block}>
-        <Text style={styles.blockTitle}>About</Text>
-        <Text style={styles.about}>Version {APP_VERSION}</Text>
-        <Text style={styles.aboutLink}>Privacy Policy</Text>
+        <Text style={styles.blockTitle}>{t('settings.about')}</Text>
+        <Text style={styles.about}>{t('settings.version', { version: APP_VERSION })}</Text>
+        <Text style={styles.aboutLink}>{t('settings.privacyPolicy')}</Text>
       </View>
     </>
   );

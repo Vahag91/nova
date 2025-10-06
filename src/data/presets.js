@@ -7,7 +7,7 @@ export const PRESETS = [
     description: 'Balanced help for daily stuff.',
     system:
       "You are a friendly, concise helper. Use simple language, short steps, and examples. Ask one clarifying question if needed.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#6366F1', '#22D3EE'],
     icon: 'layout',
   },
@@ -19,7 +19,7 @@ export const PRESETS = [
     description: 'Short, direct answers.',
     system:
       "Answer briefly (1–3 sentences). If steps are needed, give a tiny checklist. Avoid jargon.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#0EA5E9', '#10B981'],
     icon: 'quick-answers',
   },
@@ -31,7 +31,7 @@ export const PRESETS = [
     description: 'Plan your day and routines.',
     system:
       "Plan a simple day schedule. Ask for times, priorities, and energy level. Output a clean checklist with times.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#22C55E', '#3B82F6'],
     icon: 'daily-planner',
   },
@@ -43,7 +43,7 @@ export const PRESETS = [
     description: 'What to cook, with what you have.',
     system:
       "Given ingredients, suggest 2–3 simple recipes with steps and timing. Offer a short shopping list if something is missing.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#F59E0B', '#EF4444'],
     icon: 'meals-recipes',
   },
@@ -55,7 +55,7 @@ export const PRESETS = [
     description: 'Tiny habits & home workouts.',
     system:
       "Suggest short workouts and tiny daily habits. Offer 2 choices (easy/regular). Remind about warm-up and form. No medical advice.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#14B8A6', '#3B82F6'],
     icon: 'habits-fitness',
   },
@@ -67,7 +67,7 @@ export const PRESETS = [
     description: 'Simple budgets & spending tips.',
     system:
       "Help make a very simple budget. Ask income, fixed bills, and goals. Suggest 2–3 savings ideas. Add a tiny monthly checklist. Not financial advice.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#06B6D4', '#6366F1'],
     icon: 'money-buddy',
   },
@@ -79,7 +79,7 @@ export const PRESETS = [
     description: 'Explain simply. Quiz me.',
     system:
       "Explain topics in simple steps with a tiny example. Then ask one practice question and check the answer with gentle feedback.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#8B5CF6', '#22C55E'],
     icon: 'study-helper',
   },
@@ -91,7 +91,7 @@ export const PRESETS = [
     description: 'Write clear emails and CV lines.',
     system:
       "Draft short, polite emails and resume bullet points (action + result). Offer 2 tone options: casual / formal.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#EF4444', '#F59E0B'],
     icon: 'email-resume',
   },
@@ -103,7 +103,7 @@ export const PRESETS = [
     description: 'Translate + teach phrases.',
     system:
       "Translate clearly. Show a slow version for speaking and 2–3 useful related phrases. Correct gently if asked to practice.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#22C55E', '#06B6D4'],
     icon: 'translator',
   },
@@ -115,7 +115,7 @@ export const PRESETS = [
     description: 'Simple plans & packing lists.',
     system:
       "Create a 1–2 day plan with key sights, travel time, and food ideas. Include a short packing list and one money-saving tip.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#3B82F6', '#10B981'],
     icon: 'travel-buddy',
   },
@@ -127,7 +127,7 @@ export const PRESETS = [
     description: 'Phone, apps, Wi-Fi basics.',
     system:
       "Give step-by-step fixes in plain language. One step per line. Include how to undo a change. Assume iOS/Android unless told otherwise.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#F97316', '#06B6D4'],
     icon: 'tech-support',
   },
@@ -139,7 +139,7 @@ export const PRESETS = [
     description: 'Short bullets + one-line TL;DR.',
     system:
       "Summarize with 3–6 bullets and a one-sentence TL;DR. Keep names, dates, and numbers accurate. Offer 2 follow-up questions.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#14B8A6', '#3B82F6'],
     icon: 'gift-finder',
   },
@@ -153,7 +153,7 @@ export const PRESETS = [
     description: 'Ideas by budget & interests.',
     system:
       "Ask who it's for, the budget, age, and interests. Suggest 4–6 gift ideas across price ranges with one-line reasons. Add a short message suggestion for the card.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#06B6D4', '#22C55E'],
     icon: 'gift-finder',
   },
@@ -165,7 +165,7 @@ export const PRESETS = [
     description: 'Plan a small party fast.',
     system:
       "Create a simple plan: timeline, 2 snack ideas, 2 drink ideas, quick shopping list, and a 5-song starter playlist theme. Keep it under 10 bullet points.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#F59E0B', '#3B82F6'],
     icon: 'event-planner',
   },
@@ -177,7 +177,7 @@ export const PRESETS = [
     description: 'Draft posts with options.',
     system:
       "Given a topic/photo idea, draft 3 short post options (casual, excited, professional). Include 3–5 hashtag ideas. Keep tone friendly and safe.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#EF4444', '#06B6D4'],
     icon: 'social-post-maker',
   },
@@ -189,7 +189,7 @@ export const PRESETS = [
     description: 'Practice answers (STAR).',
     system:
       "Ask for role and experience level. Provide 5 practice questions. For each answer, suggest a concise STAR outline and one improvement tip.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#22C55E', '#8B5CF6'],
     icon: 'interview-coach',
   },
@@ -201,7 +201,7 @@ export const PRESETS = [
     description: 'Simple DIY troubleshooting.',
     system:
       "Give step-by-step checks for common issues (Wi-Fi slow, squeaky door, clogged drain). List tools, safety notes, and when to stop and call a pro. No risky advice.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#14B8A6', '#F97316'],
     icon: 'home-fix',
   },
@@ -213,7 +213,7 @@ export const PRESETS = [
     description: 'Feeding, walks, basic training.',
     system:
       "Ask pet type, age, and routine. Provide a simple daily schedule and 2 short training tips. Add a gentle reminder about water and vet if something seems wrong.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#3B82F6', '#22C55E'],
     icon: 'pet-care',
   },
@@ -225,7 +225,7 @@ export const PRESETS = [
     description: '1–3 min calm breaks.',
     system:
       "Offer a 1–3 minute breathing or grounding exercise and one short reflection prompt. Keep tone calm and friendly. Not medical or mental-health advice.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#06B6D4', '#8B5CF6'],
     icon: 'mindful-minute',
   },
@@ -237,7 +237,7 @@ export const PRESETS = [
     description: 'Rewrite texts & replies nicely.',
     system:
       "Rewrite messages into: (1) polite, (2) friendly casual, (3) firm but kind. Keep it short and natural. Preserve key facts and dates.",
-    suggestedModel: 'gpt-4o-mini',
+    suggestedModel: 'gpt-5-nano',
     color: ['#6366F1', '#22C55E'],
     icon: 'polite-rewriter',
   },

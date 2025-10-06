@@ -25,16 +25,8 @@ export async function createRunwareImages({
   outputFormat = 'JPG',
   outputQuality = 95,
 }) {
-  console.log('🎨 [RUNWARE] Starting image generation:', {
-    mode,
-    model,
-    prompt: prompt?.substring(0, 100) + (prompt?.length > 100 ? '...' : ''),
-    hasSeedImage: !!seedImage,
-    hasMaskImage: !!maskImage,
-    hasGuideImage: !!guideImage,
-    strength,
-    size
-  });
+  // Starting image generation:
+
   // For advanced modes, prompt might be optional
   if (!prompt || !prompt.trim()) {
     if (mode === 'text2img') {
@@ -73,28 +65,15 @@ export async function createRunwareImages({
     outputQuality,
   };
 
-  console.log('📤 [RUNWARE] Sending request to:', IMAGES_RUNWARE_URL);
-  console.log('📤 [RUNWARE] Request body size:', JSON.stringify(requestBody).length, 'bytes');
   
   const res = await fetch(IMAGES_RUNWARE_URL, {
     method: 'POST',
     headers,
     body: JSON.stringify(requestBody),
   });
-  
-  console.log('📥 [RUNWARE] Response received:', {
-    status: res.status,
-    statusText: res.statusText,
-    headers: Object.fromEntries(res.headers.entries())
-  });
 
   if (!res.ok) {
     const txt = await res.text().catch(()=> 'Image generation failed');
-    console.error('❌ [RUNWARE] Request failed:', {
-      status: res.status,
-      statusText: res.statusText,
-      error: txt
-    });
     throw new Error(txt || 'Image generation failed');
   }
 

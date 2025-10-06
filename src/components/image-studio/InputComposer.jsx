@@ -7,6 +7,7 @@ import {
   Image,
 } from 'react-native';
 import SvgIcon from '../SvgIcon';
+import { useTranslation } from 'react-i18next';
 
 const InputComposer = memo(({
   prompt,
@@ -17,7 +18,7 @@ const InputComposer = memo(({
   onModeChange,
   currentMode = 'text2img',
   maxLength = 4000,
-  placeholder = "Describe your image...",
+  placeholder,
   disabled = false,
   // Expose button ref to parent
   plusButtonRef,
@@ -34,6 +35,7 @@ const InputComposer = memo(({
   modelChanged,
   originalModel,
 }) => {
+  const { t } = useTranslation();
   // Auto-expanding input state
   const [isExpanded, setIsExpanded] = useState(false);
   const handlePromptChange = useCallback((text) => {
@@ -92,7 +94,7 @@ const InputComposer = memo(({
         <TextInput
           value={prompt}
           onChangeText={handlePromptChange}
-          placeholder={placeholder}
+          placeholder={placeholder || t('imagesStudio.describeImagePlaceholder')}
           placeholderTextColor="#9CA3AF"
           style={[
             styles.input,
@@ -107,8 +109,8 @@ const InputComposer = memo(({
           editable={!disabled}
           onContentSizeChange={handleContentSizeChange}
           textAlignVertical={isExpanded ? "top" : "center"}
-          accessibilityLabel="Image description input"
-          accessibilityHint="Enter a description of the image you want to generate"
+          accessibilityLabel={t('imagesStudio.imageDescriptionInput')}
+          accessibilityHint={t('imagesStudio.imageDescriptionHint')}
         />
         
         {/* Model selector on the left */}
@@ -116,11 +118,11 @@ const InputComposer = memo(({
           style={styles.modelButton}
           onPress={onOpenSettings}
           hitSlop={8}
-          accessibilityLabel="Open model settings"
-          accessibilityHint="Tap to change model and settings"
+          accessibilityLabel={t('imagesStudio.openModelSettings')}
+          accessibilityHint={t('imagesStudio.modelSettingsHint')}
         >
           <Text style={styles.modelButtonText}>
-            {currentModel || 'Model'}
+            {currentModel || t('settings.model')}
           </Text>
           {modelChanged && (
             <Text style={styles.modelChangedDot}>•</Text>
@@ -137,7 +139,7 @@ const InputComposer = memo(({
             style={styles.cameraButtonRight}
             onPress={handlePlusPress}
             hitSlop={8}
-            accessibilityLabel="Open photo gallery"
+            accessibilityLabel={t('imagesStudio.openPhotoGallery')}
           >
             <SvgIcon name="photo" size={24} color="#FFFFFF" />
           </Pressable>
@@ -148,7 +150,7 @@ const InputComposer = memo(({
           <Pressable
             onPress={handleClearPrompt}
             style={styles.clearButtonRight}
-            accessibilityLabel="Clear input"
+            accessibilityLabel={t('imagesStudio.clearInput')}
           >
             <SvgIcon name="close" size={18} color="#9CA3AF" />
           </Pressable>

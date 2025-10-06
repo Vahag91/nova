@@ -8,7 +8,6 @@ const ensureCacheDir = async () => {
       await RNFS.mkdir(RNFS.CachesDirectoryPath);
     }
   } catch (error) {
-    console.warn('Failed to ensure cache directory:', error);
   }
 };
 

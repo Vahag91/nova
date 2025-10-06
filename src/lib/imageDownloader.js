@@ -10,7 +10,6 @@ function extFromMeta(meta) {
 
 export async function toLocalPath(source) {
   if (!source) {
-    console.warn('🔄 [DOWNLOADER] Empty source provided to toLocalPath');
     return '';
   }
   
@@ -19,7 +18,6 @@ export async function toLocalPath(source) {
     if (source.startsWith('data:image/')) {
       const [meta, b64] = source.split(',');
       if (!b64) {
-        console.warn('🔄 [DOWNLOADER] Invalid data URI format');
         return source;
       }
       const ext = extFromMeta(meta);
@@ -35,7 +33,6 @@ export async function toLocalPath(source) {
       if (result.statusCode === 200) {
         return `file://${path}`;
       } else {
-        console.warn('🔄 [DOWNLOADER] Download failed:', result.statusCode);
         return source;
       }
     }
@@ -43,7 +40,6 @@ export async function toLocalPath(source) {
     // already file://
     return source;
   } catch (error) {
-    console.error('❌ [DOWNLOADER] Error in toLocalPath:', error);
     return source; // fallback to original
   }
 }
@@ -55,7 +51,6 @@ export async function deleteLocalFile(filePath) {
     const localPath = filePath.replace('file://', '');
     await RNFS.unlink(localPath);
   } catch (error) {
-    console.warn('Failed to delete local file:', filePath, error);
   }
 }
 
@@ -70,6 +65,5 @@ export async function cleanupOldImages(maxAge = 7 * 24 * 60 * 60 * 1000) { // 7 
       }
     }
   } catch (error) {
-    console.warn('Failed to cleanup old images:', error);
   }
 }

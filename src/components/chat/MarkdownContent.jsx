@@ -14,6 +14,7 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import Haptic from 'react-native-haptic-feedback';
 import Animated, { Easing, FadeIn } from 'react-native-reanimated';
 import { colors } from '../../styles/colors';
+import { useTranslation } from 'react-i18next';
 
 /** Normalize common model quirks so lists render cleanly */
 function preprocess(md) {
@@ -27,13 +28,14 @@ function preprocess(md) {
 
 /** Copyable code block with horizontal scroll */
 function CodeBlock({ language, content }) {
+  const { t } = useTranslation();
   const copy = () => { Clipboard.setString(content || ''); Haptic.trigger('notificationSuccess'); };
   return (
     <View style={codeStyles.wrap}>
       <View style={codeStyles.header}>
         <Text style={codeStyles.lang}>{language || 'code'}</Text>
-        <Pressable onPress={copy} hitSlop={8} accessibilityLabel="Copy code">
-          <Text style={codeStyles.copy}>Copy</Text>
+        <Pressable onPress={copy} hitSlop={8} accessibilityLabel={t('chat.copyCode')}>
+          <Text style={codeStyles.copy}>{t('chat.copyCode')}</Text>
         </Pressable>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={codeStyles.scroller}>

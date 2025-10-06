@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  KeyboardAvoidingView,
   Platform,
   ScrollView,
   ActionSheetIOS,
@@ -14,6 +13,7 @@ import {
   Alert,
 } from 'react-native';
 import { useThreadsStore } from '../state/useThreadsStore';
+import { useTranslation } from 'react-i18next';
 import Reanimated, {
   useAnimatedKeyboard,
   useAnimatedStyle,
@@ -50,12 +50,13 @@ const isHttp = (url) => /^https?:\/\//i.test(url);
 
 // ---------- Screen ----------
 export default function ImagesStudio({ navigation, route }) {
+  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const { seedPrompt = '' } = route?.params || {};
-  
+
   // Get the insert to chat callback from global store instead of navigation params
   const insertToChat = useThreadsStore(s => s.insertToChat);
-  
+
   // Keyboard animation
   const keyboard = useAnimatedKeyboard();
   const GAP = 24; // space between keyboard and footer
@@ -65,7 +66,7 @@ export default function ImagesStudio({ navigation, route }) {
   useDerivedValue(() => {
     const h = keyboard.height.value;
     const isClosing = keyboard.state.value === KeyboardState.CLOSING;
-    const duration = isClosing ? 240 :40; // tiny extra time on close feels better
+    const duration = isClosing ? 240 : 40; // tiny extra time on close feels better
 
     // animate the main offset
     kTranslate.value = withTiming(-h, {
@@ -78,7 +79,7 @@ export default function ImagesStudio({ navigation, route }) {
       easing: Easing.out(Easing.cubic),
     });
   });
-  
+
   // State
   const [prompt, setPrompt] = useState(seedPrompt || '');
   const [size, setSize] = useState('1024x1024');
@@ -88,7 +89,7 @@ export default function ImagesStudio({ navigation, route }) {
   const [modelMenuOpen, setModelMenuOpen] = useState(false);
   const [generationProgress, setGenerationProgress] = useState(0);
   const [retryCount, setRetryCount] = useState(0);
-  
+
   // Mode state
   const [mode, setMode] = useState('text2img');
   const [seedImage, setSeedImage] = useState('');
@@ -96,40 +97,40 @@ export default function ImagesStudio({ navigation, route }) {
   const [advancedParamsOpen, setAdvancedParamsOpen] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const plusButtonRef = useRef(null);
-  
+
   // Multi-select state
   const [isSelectionMode, setIsSelectionMode] = useState(false);
   const [selectedImages, setSelectedImages] = useState(new Set());
   const [showBatchActions, setShowBatchActions] = useState(false);
-  
+
   // Track actual model being used (for auto-selection feedback)
   const [actualModel, setActualModel] = useState(null);
   const [modelChanged, setModelChanged] = useState(false);
-  
+
   // Model capabilities mapping (should match the backend)
   const MODEL_CAPABILITIES = {
-    'runware-flux-dev':      { text2img: true, img2img: true },
-    'runware-flux-schnell':  { text2img: true, img2img: true },
-    'runware-flux-canny':    { text2img: false, img2img: true }, // canny is for img2img
-    'runware-sdxl-civitai':  { text2img: true, img2img: true },
+    'runware-flux-dev': { text2img: true, img2img: true },
+    'runware-flux-schnell': { text2img: true, img2img: true },
+    'runware-flux-canny': { text2img: false, img2img: true }, // canny is for img2img
+    'runware-sdxl-civitai': { text2img: true, img2img: true },
   };
-  
+
   // Get the best model for a specific mode
   const getBestModelForMode = useCallback((mode, preferredModel) => {
     const capableModels = Object.keys(MODEL_CAPABILITIES).filter(
       modelKey => MODEL_CAPABILITIES[modelKey]?.[mode]
     );
-    
+
     // If preferred model supports the mode, use it
     if (preferredModel && capableModels.includes(preferredModel)) {
       return preferredModel;
     }
-    
+
     // Otherwise, use the first capable model (prefer FLUX models)
     const fluxModels = capableModels.filter(m => m.includes('flux'));
     return fluxModels[0] || capableModels[0] || "runware-flux-dev";
   }, []);
-  
+
   // Check model compatibility when mode or model changes
   useEffect(() => {
     if (mode === 'text2img') {
@@ -138,15 +139,15 @@ export default function ImagesStudio({ navigation, route }) {
       setModelChanged(false);
       return;
     }
-    
+
     const bestModel = getBestModelForMode(mode, model);
     const isModelChanged = bestModel !== model;
-    
+
     setActualModel(bestModel);
     setModelChanged(isModelChanged);
-    
+
   }, [mode, model, getBestModelForMode]);
-  
+
   // Animation refs
   const progressAnim = useRef(new Animated.Value(0)).current;
   const buttonScale = useRef(new Animated.Value(1)).current;
@@ -173,7 +174,7 @@ export default function ImagesStudio({ navigation, route }) {
   }, [models]);
 
   const [model, setModel] = useState(imageModels[0]?.key || 'runware-flux-dev');
-  
+
   useEffect(() => {
     if (imageModels.length > 0 && !imageModels.find((m) => m.key === model)) {
       setModel(imageModels[0].key);
@@ -186,12 +187,11 @@ export default function ImagesStudio({ navigation, route }) {
     (async () => {
       try {
         const incoming = await fetchModels({ signal: ac.signal });
-        
+
         if (incoming && typeof incoming === 'object' && Object.keys(incoming).length > 0) {
           setModels(incoming);
         }
       } catch (error) {
-        console.error('❌ [IMAGES] Error fetching models:', error);
       }
     })();
     return () => ac.abort();
@@ -203,24 +203,24 @@ export default function ImagesStudio({ navigation, route }) {
     const confirmData = {
       type: 'image',
       image,
-      title: 'Delete Image',
-      message: 'Are you sure you want to delete this image? This action cannot be undone.',
+      title: t('imagesStudio.deleteConfirmTitle'),
+      message: t('imagesStudio.deleteConfirmMessage'),
     };
     setDeleteConfirm(confirmData);
-  }, []);
+  }, [t]);
 
   const handleDeleteJob = useCallback((job) => {
     setDeleteConfirm({
       type: 'job',
       job,
-      title: 'Delete All Images',
-      message: `Are you sure you want to delete all ${job.images?.length || 0} images from this generation? This action cannot be undone.`,
+      title: t('imagesStudio.deleteConfirmTitle'),
+      message: t('imagesStudio.deleteConfirmMessage'),
     });
-  }, []);
+  }, [t]);
 
   const confirmDelete = useCallback(() => {
     if (!deleteConfirm) return;
-    
+
     // Check if we have a custom onConfirm handler (for multi-select)
     if (deleteConfirm.onConfirm) {
       deleteConfirm.onConfirm();
@@ -268,7 +268,7 @@ export default function ImagesStudio({ navigation, route }) {
 
   const deleteSelectedImages = useCallback(() => {
     if (selectedImages.size === 0) return;
-    
+
     // Get unique job IDs from selected images (same approach as deleteSelectedJobs)
     const jobIds = new Set();
     selectedImages.forEach(imageId => {
@@ -277,10 +277,10 @@ export default function ImagesStudio({ navigation, route }) {
         jobIds.add(image.jobId);
       }
     });
-    
+
     setDeleteConfirm({
-      title: 'Delete Images',
-      message: `Are you sure you want to delete ${jobIds.size} job(s) and all their images? This action cannot be undone.`,
+      title: t('imagesStudio.deleteSelectedConfirmTitle'),
+      message: t('imagesStudio.deleteSelectedConfirmMessage', { count: jobIds.size }),
       onConfirm: () => {
         jobIds.forEach(jobId => {
           deleteJob(jobId);
@@ -296,7 +296,7 @@ export default function ImagesStudio({ navigation, route }) {
 
   const images = useMemo(() => {
     const done = (jobs || []).filter((j) => j?.status === 'done');
-    
+
     const result = done.flatMap((j, jdx) => {
       return (j.images || [])
         .map((img, idx) => {
@@ -313,12 +313,12 @@ export default function ImagesStudio({ navigation, route }) {
             size: j.size || '1024x1024',
             model: j.model,
           };
-          
+
           return processedImg;
         })
         .filter((img) => !!img.url);
     });
-    
+
     return result;
   }, [jobs]);
 
@@ -335,16 +335,14 @@ export default function ImagesStudio({ navigation, route }) {
     if (!canGenerate) {
       return;
     }
-    
-    
     setError('');
     setBusy(true);
     setGenerationProgress(0);
     clearFailed();
     setRetryCount(0);
-    
+
     Haptic.trigger('selection');
-    
+
     // Animate button press
     Animated.sequence([
       Animated.timing(buttonScale, {
@@ -375,7 +373,7 @@ export default function ImagesStudio({ navigation, route }) {
     try {
       // Use the actual model that will be used (auto-selected if needed)
       const modelToUse = actualModel || model;
-      
+
       const baseParams = {
         prompt: mode === 'text2img' ? prompt.trim() : (prompt.trim() || '__BLANK__'),
         model: modelToUse,
@@ -386,7 +384,7 @@ export default function ImagesStudio({ navigation, route }) {
         outputFormat: advancedParams.outputFormat || 'JPG',
         outputQuality: advancedParams.outputQuality || 95,
       };
-      
+
 
 
       let result;
@@ -400,12 +398,8 @@ export default function ImagesStudio({ navigation, route }) {
       } else {
         // text2img
         if (!prompt.trim()) {
-          throw new Error('Please enter a prompt for text-to-image generation');
+          throw new Error(t('imagesStudio.enterPrompt'));
         }
-        console.log('🎨 [SCREEN] Executing text2img with params:', {
-          ...baseParams,
-          prompt: prompt.trim()
-        });
         result = await createJob({
           prompt: prompt.trim(),
           model: modelToUse,
@@ -414,7 +408,7 @@ export default function ImagesStudio({ navigation, route }) {
           mode: 'text2img',
         });
       }
-      
+
       // Complete progress
       clearInterval(progressInterval);
       setGenerationProgress(100);
@@ -423,29 +417,23 @@ export default function ImagesStudio({ navigation, route }) {
         duration: 300,
         useNativeDriver: false,
       }).start();
-      
-      
+
+
       // Log model selection info for debugging
       if (result?.modelSelection?.changed) {
       }
-      
+
       Haptic.trigger('notificationSuccess');
-      
+
       // Reset progress after delay
       setTimeout(() => {
         setGenerationProgress(0);
         progressAnim.setValue(0);
       }, 2000);
-      
+
     } catch (e) {
       clearInterval(progressInterval);
-      console.error('❌ [SCREEN] Generation failed:', {
-        mode,
-        model,
-        error: e?.message || e?.toString(),
-        stack: e?.stack?.split('\n')[0]
-      });
-      setError(String(e?.message || 'Image generation failed'));
+      setError(String(e?.message || t('imagesStudio.imageGenerationFailed')));
       setGenerationProgress(0);
       progressAnim.setValue(0);
       Haptic.trigger('notificationError');
@@ -477,7 +465,7 @@ export default function ImagesStudio({ navigation, route }) {
       if (asset) {
         // Convert to base64 data URI
         const base64DataUri = `data:image/jpeg;base64,${asset.base64}`;
-        
+
         // Set as seed image and switch to img2img mode
         setSeedImage(base64DataUri);
         setMode('img2img');
@@ -491,38 +479,38 @@ export default function ImagesStudio({ navigation, route }) {
 
   const insertAsMarkdown = useCallback(({ prompt: p, url }) => {
     const md = [
-      `Here is the image for:`,
+      t('imagesStudio.insertMarkdownHeader'),
       ``,
-      `> ${p || 'Generated image'}`,
+      `> ${p || t('imagesStudio.generatedImage')}`,
       ``,
       `![image](${url})`,
     ].join('\n');
     insertToChat(md);
     navigation.goBack();
-  }, [insertToChat, navigation]);
+  }, [insertToChat, navigation, t]);
 
   const showTileActions = useCallback((item) => {
     const url = item?.url;
     const job = jobs.find(j => j.id === item.jobId);
     const hasMultipleImages = job?.images?.length > 1;
-    
+
     const options = [
-      'Insert to chat', 
-      isHttp(url) ? 'Open in browser' : null, 
-      'Make variations', 
-      'Delete',
-      hasMultipleImages ? 'Delete all from this generation' : null,
-      'Cancel'
+      t('imagesStudio.insertToChat'),
+      isHttp(url) ? t('imagesStudio.openInBrowser') : null,
+      t('imagesStudio.makeVariations'),
+      t('imagesStudio.delete'),
+      hasMultipleImages ? t('imagesStudio.deleteAllFromGeneration') : null,
+      t('common.cancel')
     ].filter(Boolean);
-    
+
     const handler = (ix) => {
       const label = options[ix];
-      if (label === 'Insert to chat') insertAsMarkdown(item);
-      else if (label === 'Open in browser') openImageExternally(url);
-      else if (label === 'Make variations') setPrompt(`${prompt.trim()} — variation of previous image`);
-      else if (label === 'Delete') {
+      if (label === t('imagesStudio.insertToChat')) insertAsMarkdown(item);
+      else if (label === t('imagesStudio.openInBrowser')) openImageExternally(url);
+      else if (label === t('imagesStudio.makeVariations')) setPrompt(`${prompt.trim()} ${t('imagesStudio.variationSuffix')}`);
+      else if (label === t('imagesStudio.delete')) {
         handleDeleteImage(item);
-      } else if (label === 'Delete all from this generation') {
+      } else if (label === t('imagesStudio.deleteAllFromGeneration')) {
         handleDeleteJob(job);
       }
     };
@@ -534,16 +522,16 @@ export default function ImagesStudio({ navigation, route }) {
     } else {
       // Android fallback: use Alert
       Alert.alert(
-        'Image Options',
-        'What would you like to do with this image?',
+        t('imagesStudio.imageOptionsTitle'),
+        t('imagesStudio.imageOptionsMessage'),
         options.map((option, index) => ({
           text: option,
           onPress: () => handler(index),
-          style: option === 'Cancel' ? 'cancel' : 'default',
+          style: option === t('common.cancel') ? 'cancel' : 'default',
         }))
       );
     }
-  }, [insertAsMarkdown, openImageExternally, prompt, handleDeleteImage, handleDeleteJob, jobs]);
+  }, [insertAsMarkdown, openImageExternally, prompt, handleDeleteImage, handleDeleteJob, jobs, t]);
 
   const animatedContentStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: kTranslate.value }],
@@ -556,7 +544,7 @@ export default function ImagesStudio({ navigation, route }) {
   // ---------- tile renderer ----------
   const renderTile = useCallback((item, _index, tileStyle) => {
     const isSelected = selectedImages.has(item.id);
-    
+
     return (
       <ImageCard
         item={item}
@@ -586,164 +574,167 @@ export default function ImagesStudio({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={styles.keyboardAvoidingView}>
-      {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <View style={styles.iconContainer}>
-            <SvgIcon name="studio" size={28} color="#8A42FF" />
+        {/* Header */}
+        <View style={styles.header}>
+          <View style={styles.headerLeft}>
+            <View style={styles.iconContainer}>
+              <SvgIcon name="studio" size={28} color="#8A42FF" />
+            </View>
+            <Text style={styles.title}>{t('imagesStudio.title')}</Text>
           </View>
-          <Text style={styles.title}>Studio</Text>
-        </View>
-        <View style={styles.headerRight}>
-          {images.length > 0 && (
+          <View style={styles.headerRight}>
+            {images.length > 0 && (
+              <Pressable
+                style={[
+                  styles.headerButton,
+                  isSelectionMode && styles.headerButtonActive
+                ]}
+                onPress={toggleSelectionMode}
+                hitSlop={8}
+                accessibilityLabel={isSelectionMode ? t('imagesStudio.exitSelectionMode') : t('imagesStudio.selectImages')}
+              >
+                <SvgIcon
+                  name="copygrey"
+                  size={24}
+                  color={isSelectionMode ? "#8A42FF" : "#FFFFFF"}
+                />
+              </Pressable>
+            )}
             <Pressable
-              style={[
-                styles.headerButton,
-                isSelectionMode && styles.headerButtonActive
-              ]}
-              onPress={toggleSelectionMode}
-              hitSlop={8}
-              accessibilityLabel={isSelectionMode ? "Exit selection mode" : "Select images"}
+              onPress={() => navigation.goBack()}
+              hitSlop={12}
+              style={styles.closeButton}
             >
-              <SvgIcon 
-                name="copygrey" 
-                size={24} 
-                color={isSelectionMode ? "#8A42FF" : "#FFFFFF"} 
-              />
+              <SvgIcon name="close" size={24} color="#FFFFFF" />
             </Pressable>
+          </View>
+        </View>
+
+        {/* Batch Actions Bar */}
+        {isSelectionMode && showBatchActions && (
+          <View style={styles.batchActionsBar}>
+            <View style={styles.batchActionsLeft}>
+              <Text style={styles.batchActionsText}>
+                {selectedImages.size} {t('imagesStudio.selectedCount')}
+              </Text>
+            </View>
+            <View style={styles.batchActionsRight}>
+              <Pressable
+                style={styles.selectAllButton}
+                onPress={selectAllImages}
+                hitSlop={8}
+              >
+                <Text style={styles.selectAllButtonText}>{t('imagesStudio.selectAll')}</Text>
+              </Pressable>
+              <Pressable
+                style={styles.deleteButton}
+                onPress={deleteSelectedImages}
+                hitSlop={8}
+              >
+                <Text style={styles.deleteButtonText}>{t('imagesStudio.delete')}</Text>
+              </Pressable>
+            </View>
+          </View>
+        )}
+
+        {/* Gallery */}
+        <ScrollView
+          style={styles.scroll}
+          contentContainerStyle={[
+            styles.content,
+            isSelectionMode && showBatchActions && styles.contentWithBatchActions
+          ]}
+          showsVerticalScrollIndicator={false}
+          accessibilityLabel={t('imagesStudio.generatedImagesGallery')}
+        >
+          <Reanimated.View style={animatedContentStyle}>
+            {images.length > 0 ? (
+              <AdaptiveGrid items={images} renderTile={renderTile} horizontalPadding={20} />
+            ) : (
+              <View style={styles.empty}>
+                <Text style={styles.emptyIcon}>🖼️</Text>
+                <Text style={styles.emptyTitle}>{t('imagesStudio.noImagesYet')}</Text>
+                <Text style={styles.emptyHint}>{t('imagesStudio.describeImageHint')}</Text>
+              </View>
+            )}
+          </Reanimated.View>
+        </ScrollView>
+
+        {/* Footer */}
+        <Reanimated.View
+          style={[
+            styles.footer,
+            { paddingBottom: Math.max(insets.bottom, 16) },
+            animatedFooterStyle,
+          ]}
+        >
+
+
+          <InputComposer
+            prompt={prompt}
+            onPromptChange={(text) => { setPrompt(text); if (error) setError(''); }}
+            onGenerate={onGenerate}
+            onClearPrompt={() => setPrompt('')}
+            onOpenSettings={() => setModelMenuOpen(true)}
+            onModeChange={setMode}
+            currentMode={mode}
+            disabled={busy}
+            plusButtonRef={plusButtonRef}
+            selectedImageUri={mode === 'img2img' ? seedImage : null}
+            onRemoveSelectedImage={() => setSeedImage('')}
+            onOpenPhotoGallery={handleOpenPhotoGallery}
+            // Model information for display
+            currentModel={actualModel ? (models?.[actualModel]?.display?.name || actualModel) : (models?.[model]?.display?.name || model)}
+            modelChanged={modelChanged}
+            originalModel={models?.[model]?.display?.name || model}
+          />
+
+          {/* Progress Bar */}
+          {busy && generationProgress > 0 && (
+            <ProgressBar
+              progress={generationProgress}
+              animatedValue={progressAnim}
+            />
           )}
-          <Pressable 
-            onPress={() => navigation.goBack()} 
-            hitSlop={12}
-            style={styles.closeButton}
-          >
-            <SvgIcon name="close" size={24} color="#FFFFFF" />
-          </Pressable>
-        </View>
-      </View>
 
-      {/* Batch Actions Bar */}
-      {isSelectionMode && showBatchActions && (
-        <View style={styles.batchActionsBar}>
-          <View style={styles.batchActionsLeft}>
-            <Text style={styles.batchActionsText}>
-              {selectedImages.size} selected
-            </Text>
-          </View>
-          <View style={styles.batchActionsRight}>
-            <Pressable
-              style={styles.selectAllButton}
-              onPress={selectAllImages}
-              hitSlop={8}
-            >
-              <Text style={styles.selectAllButtonText}>Select All</Text>
-            </Pressable>
-            <Pressable
-              style={styles.deleteButton}
-              onPress={deleteSelectedImages}
-              hitSlop={8}
-            >
-              <Text style={styles.deleteButtonText}>Delete</Text>
-            </Pressable>
-          </View>
-        </View>
-      )}
+          {/* Error Display */}
+          <ErrorDisplay
+            error={error}
+            retryCount={retryCount}
+            onRetry={handleRetry}
+          />
 
-      {/* Gallery */}
-      <ScrollView 
-        style={styles.scroll} 
-        contentContainerStyle={[
-          styles.content,
-          isSelectionMode && showBatchActions && styles.contentWithBatchActions
-        ]} 
-        showsVerticalScrollIndicator={false}
-        accessibilityLabel="Generated images gallery"
-      >
-        <Reanimated.View style={animatedContentStyle}>
-          {images.length > 0 ? (
-            <AdaptiveGrid items={images} renderTile={renderTile} horizontalPadding={20} />
-          ) : (
-            <View style={styles.empty}>
-              <Text style={styles.emptyIcon}>🖼️</Text>
-              <Text style={styles.emptyTitle}>No images yet</Text>
-              <Text style={styles.emptyHint}>Describe your image below and tap Generate.</Text>
+          {/* Model Change Notification */}
+          {modelChanged && actualModel && (
+            <View style={styles.modelChangeNotification}>
+              <Text style={styles.modelChangeIcon}>🔄</Text>
+              <Text style={styles.modelChangeText}>
+                {t('imagesStudio.autoSelectedModel', {
+                  model: models?.[actualModel]?.display?.name || actualModel,
+                  mode
+                })}
+              </Text>
             </View>
           )}
-        </Reanimated.View>
-      </ScrollView>
 
-      {/* Footer */}
-      <Reanimated.View
-        style={[
-          styles.footer,
-          { paddingBottom: Math.max(insets.bottom, 16) },
-          animatedFooterStyle,
-        ]}
-      >
+          {/* Generate Button and Settings */}
+          <View style={styles.generateSection}>
+            <GenerateButton
+              onPress={onGenerate}
+              disabled={!canGenerate}
+              busy={busy}
+              modelName={models?.[model]?.display?.name || model}
+              actualModelName={actualModel ? (models?.[actualModel]?.display?.name || actualModel) : null}
+              modelChanged={modelChanged}
+              animatedValue={buttonScale}
+              onAdvancedParams={() => setAdvancedParamsOpen(true)}
+              style={styles.generateButtonFlex}
+            />
 
-
-        <InputComposer
-          prompt={prompt}
-          onPromptChange={(text) => { setPrompt(text); if (error) setError(''); }}
-          onGenerate={onGenerate}
-          onClearPrompt={() => setPrompt('')}
-          onOpenSettings={() => setModelMenuOpen(true)}
-          onModeChange={setMode}
-          currentMode={mode}
-          disabled={busy}
-          plusButtonRef={plusButtonRef}
-          selectedImageUri={mode === 'img2img' ? seedImage : null}
-          onRemoveSelectedImage={() => setSeedImage('')}
-          onOpenPhotoGallery={handleOpenPhotoGallery}
-          // Model information for display
-          currentModel={actualModel ? (models?.[actualModel]?.display?.name || actualModel) : (models?.[model]?.display?.name || model)}
-          modelChanged={modelChanged}
-          originalModel={models?.[model]?.display?.name || model}
-        />
-
-        {/* Progress Bar */}
-        {busy && generationProgress > 0 && (
-          <ProgressBar
-            progress={generationProgress}
-            animatedValue={progressAnim}
-          />
-        )}
-
-        {/* Error Display */}
-        <ErrorDisplay
-          error={error}
-          retryCount={retryCount}
-          onRetry={handleRetry}
-        />
-
-        {/* Model Change Notification */}
-        {modelChanged && actualModel && (
-          <View style={styles.modelChangeNotification}>
-            <Text style={styles.modelChangeIcon}>🔄</Text>
-            <Text style={styles.modelChangeText}>
-              Auto-selected {models?.[actualModel]?.display?.name || actualModel} for {mode} mode
-            </Text>
           </View>
-        )}
+        </Reanimated.View>
 
-        {/* Generate Button and Settings */}
-        <View style={styles.generateSection}>
-          <GenerateButton
-            onPress={onGenerate}
-            disabled={!canGenerate}
-            busy={busy}
-            modelName={models?.[model]?.display?.name || model}
-            actualModelName={actualModel ? (models?.[actualModel]?.display?.name || actualModel) : null}
-            modelChanged={modelChanged}
-            animatedValue={buttonScale}
-            onAdvancedParams={() => setAdvancedParamsOpen(true)}
-            style={styles.generateButtonFlex}
-          />
-          
-        </View>
-      </Reanimated.View>
-
-      {/* Model Menu */}
+        {/* Model Menu */}
         <ModelMenu
           visible={modelMenuOpen}
           onClose={() => setModelMenuOpen(false)}
@@ -753,51 +744,51 @@ export default function ImagesStudio({ navigation, route }) {
           buttonRef={plusButtonRef}
         />
 
-      {/* Image Viewer */}
-      <ImageViewer
-        visible={viewer.open}
-        imageUri={viewer.uri}
-        onClose={() => setViewer({ open: false, uri: '' })}
-      />
+        {/* Image Viewer */}
+        <ImageViewer
+          visible={viewer.open}
+          imageUri={viewer.uri}
+          onClose={() => setViewer({ open: false, uri: '' })}
+        />
 
-      {/* Advanced Parameters Modal */}
-      <AdvancedParams
-        visible={advancedParamsOpen}
-        onClose={() => setAdvancedParamsOpen(false)}
-        mode={mode}
-        params={advancedParams}
-        onParamsChange={setAdvancedParams}
-      />
+        {/* Advanced Parameters Modal */}
+        <AdvancedParams
+          visible={advancedParamsOpen}
+          onClose={() => setAdvancedParamsOpen(false)}
+          mode={mode}
+          params={advancedParams}
+          onParamsChange={setAdvancedParams}
+        />
 
 
-      {/* Delete Confirmation Dialog */}
-      <Modal
-        visible={!!deleteConfirm}
-        transparent
-        animationType="fade"
-        onRequestClose={cancelDelete}
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>{deleteConfirm?.title}</Text>
-            <Text style={styles.modalMessage}>{deleteConfirm?.message}</Text>
-            <View style={styles.modalButtons}>
-              <Pressable
-                style={styles.modalButtonCancel}
-                onPress={cancelDelete}
-              >
-                <Text style={styles.modalButtonTextCancel}>Cancel</Text>
-              </Pressable>
-              <Pressable
-                style={styles.modalButtonDelete}
-                onPress={confirmDelete}
-              >
-                <Text style={styles.modalButtonTextDelete}>Delete</Text>
-              </Pressable>
+        {/* Delete Confirmation Dialog */}
+        <Modal
+          visible={!!deleteConfirm}
+          transparent
+          animationType="fade"
+          onRequestClose={cancelDelete}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>{deleteConfirm?.title}</Text>
+              <Text style={styles.modalMessage}>{deleteConfirm?.message}</Text>
+              <View style={styles.modalButtons}>
+                <Pressable
+                  style={styles.modalButtonCancel}
+                  onPress={cancelDelete}
+                >
+                  <Text style={styles.modalButtonTextCancel}>{t('common.cancel')}</Text>
+                </Pressable>
+                <Pressable
+                  style={styles.modalButtonDelete}
+                  onPress={confirmDelete}
+                >
+                  <Text style={styles.modalButtonTextDelete}>{t('common.delete')}</Text>
+                </Pressable>
+              </View>
             </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
       </View>
     </View>
   );
@@ -818,8 +809,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 12,
-    borderBottomWidth: 0.3,
-    borderBottomColor: '#374151',
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -1023,15 +1012,13 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingVertical: 14,
-    borderTopWidth: 0.4,
-    borderTopColor: '#374151',
     backgroundColor: '#000000',
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-    marginTop:10,
+    marginTop: 10,
   },
   uploadSection: {
     marginBottom: 20,

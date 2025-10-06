@@ -7,6 +7,7 @@ import Haptic from 'react-native-haptic-feedback';
 import { PRESETS } from '../data/presets';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
+import { useTranslation } from 'react-i18next';
 
 // system message shape (matches your message schema)
 function newSystemMessage(text) {
@@ -23,11 +24,13 @@ function newSystemMessage(text) {
 }
 
 export default function Assistants({ navigation }) {
+  const { t } = useTranslation();
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const addMessage = useThreadsStore(s => s.addMessage);
   const currentModel = useSettingsStore(s => s.model);
 
+  
   async function usePreset(preset) {
     try {
       Haptic.trigger('impactLight');
@@ -43,7 +46,7 @@ export default function Assistants({ navigation }) {
       
       navigation?.navigate?.('Chat');
     } catch (e) {
-      console.log('usePreset error', e);
+      // Error handling
     }
   }
 
@@ -73,25 +76,47 @@ export default function Assistants({ navigation }) {
 
   function getTagColors(category) {
     switch (category) {
+      case 'Everyday':
+        return { fg: '#FFFFFF', bg: '#0EA5E9', border: 'rgba(56,189,248,0.4)' }; // sky blue
+      case 'Life':
+        return { fg: '#FFFFFF', bg: '#D946EF', border: 'rgba(232,121,249,0.4)' }; // fuchsia
+      case 'Health':
+        return { fg: '#FFFFFF', bg: '#10B981', border: 'rgba(52,211,153,0.4)' }; // emerald
+      case 'School & Work':
+        return { fg: '#000000', bg: '#F59E0B', border: 'rgba(251,191,36,0.4)' }; // amber
       case 'Coding':
-        return { fg: '#7DD3FC', bg: 'rgba(12,74,110,0.5)' }; // sky-300 on sky-900/50
-      case 'Education':
-        return { fg: '#6EE7B7', bg: 'rgba(6,78,59,0.5)' };   // emerald
-      case 'Analysis':
-        return { fg: '#A5B4FC', bg: 'rgba(30,58,138,0.5)' }; // indigo
-      case 'Writing':
-        return { fg: '#FCD34D', bg: 'rgba(120,53,15,0.5)' }; // amber
-      case 'Business':
-        return { fg: '#F0ABFC', bg: 'rgba(134,25,143,0.5)' }; // fuchsia
+        return { fg: '#FFFFFF', bg: '#6366F1', border: 'rgba(129,140,248,0.4)' }; // indigo
+      case 'Creative':
+        return { fg: '#FFFFFF', bg: '#8B5CF6', border: 'rgba(167,139,250,0.4)' }; // purple
       default:
-        return { fg: '#CBD5E1', bg: 'rgba(15,23,42,0.5)' };  // slate
+        return { fg: '#FFFFFF', bg: '#64748B', border: 'rgba(148,163,184,0.4)' }; // slate
     }
   }
 
+  // Internal categories use raw values for filtering; we localize only for display
   const categories = useMemo(() => {
     const set = new Set(PRESETS.map(p => p.category || 'General'));
     return ['All', ...Array.from(set)];
   }, []);
+
+  const categoryKeyOf = (name) => {
+    switch (name) {
+      case 'Everyday': return 'everyday';
+      case 'Life': return 'life';
+      case 'Health': return 'health';
+      case 'School & Work': return 'schoolWork';
+      case 'Coding': return 'coding';
+      case 'Creative': return 'creative';
+      case 'General': return 'general';
+      case 'All': return 'all';
+      default: return String(name || '').toLowerCase();
+    }
+  };
+  const labelForCategory = (name) => {
+    if (name === 'All') return t('assistants.categoryAll');
+    const key = categoryKeyOf(name);
+    return t(`assistants.categories.${key}`, { defaultValue: name });
+  };
 
   const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -113,8 +138,8 @@ export default function Assistants({ navigation }) {
             </Defs>
             <Rect x={-24} y={-24} width="130%" height="150%" rx={28} fill="url(#assist_intro)" />
           </Svg>
-          <Text style={styles.headerTitle}>Assistants</Text>
-          <Text style={styles.headerSubtitle}>Curated AI specialists ready for coding, writing, analysis, planning, and more.</Text>
+          <Text style={styles.headerTitle}>{t('assistants.title')}</Text>
+          <Text style={styles.headerSubtitle}>{t('assistants.subtitle')}</Text>
         </View>
         <ScrollView
           horizontal
@@ -123,13 +148,25 @@ export default function Assistants({ navigation }) {
         >
           {categories.map(cat => {
             const isActive = cat === selectedCategory;
+            const colors = cat !== 'All' ? getTagColors(cat) : null;
             return (
               <TouchableOpacity
                 key={cat}
-                style={[styles.categoryChip, isActive && styles.categoryChipActive]}
+                style={[
+                  styles.categoryChip, 
+                  isActive && colors && {
+                    backgroundColor: colors.bg,
+                    borderColor: colors.border,
+                  },
+                  isActive && !colors && styles.categoryChipActive
+                ]}
                 onPress={() => setSelectedCategory(cat)}
               >
-                <Text style={[styles.categoryChipText, isActive && styles.categoryChipTextActive]} numberOfLines={1}>{cat}</Text>
+                <Text style={[
+                  styles.categoryChipText, 
+                  isActive && colors && { color: colors.fg },
+                  isActive && !colors && styles.categoryChipTextActive
+                ]} numberOfLines={1}>{labelForCategory(cat)}</Text>
               </TouchableOpacity>
             );
           })}
@@ -154,14 +191,17 @@ export default function Assistants({ navigation }) {
                 </View>
               </View>
               <View style={styles.cardBody}>
-                <Text style={styles.cardTitle}>{preset.name}</Text>
-                <Text style={styles.cardDesc}>{preset.description}</Text>
+                <Text style={styles.cardTitle}>{t(`assistants.presets.${preset.id}.name`, { defaultValue: preset.name })}</Text>
+                <Text style={styles.cardDesc}>{t(`assistants.presets.${preset.id}.description`, { defaultValue: preset.description })}</Text>
               </View>
               {preset?.category ? (() => {
                 const tag = getTagColors(preset.category);
                 return (
-                  <View style={[styles.tag, { backgroundColor: tag.bg }]}> 
-                    <Text style={[styles.tagText, { color: tag.fg }]}>{preset.category}</Text>
+                  <View style={[styles.tag, { 
+                    backgroundColor: tag.bg,
+                    borderColor: tag.border,
+                  }]}> 
+                    <Text style={[styles.tagText, { color: tag.fg }]}>{labelForCategory(preset.category)}</Text>
                   </View>
                 );
               })() : null}
@@ -210,6 +250,11 @@ const styles = StyleSheet.create({
     borderColor: '#2B2F40',
     marginRight: 8,
     marginBottom: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
   },
   categoryChipActive: {
     backgroundColor: '#1F2937',
@@ -218,9 +263,10 @@ const styles = StyleSheet.create({
   categoryChipText: {
     color: '#9CA3AF',
     fontSize: 13,
-    fontWeight: '600',
+    fontWeight: '700',
     textAlign: 'center',
-    fontFamily: 'Lato-Regular',
+    fontFamily: 'Lato-Bold',
+    letterSpacing: 0.3,
   },
   categoryChipTextActive: {
     color: '#F9FAFB',
@@ -249,6 +295,23 @@ const styles = StyleSheet.create({
   cardBody: { flex: 1 },
   cardTitle: { fontSize: 17, fontWeight: '700', color: 'rgba(249,250,251,0.95)', fontFamily: 'Lato-Bold' },
   cardDesc: { fontSize: 13, color: '#9CA3AF', marginTop: 6, fontFamily: 'Lato-Regular' },
-  tag: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, alignSelf: 'flex-start' },
-  tagText: { fontSize: 12, fontWeight: '600', fontFamily: 'Lato-Bold' },
+  tag: { 
+    paddingHorizontal: 10, 
+    paddingVertical: 5, 
+    borderRadius: 999, 
+    alignSelf: 'flex-start',
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.15,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  tagText: { 
+    fontSize: 9, 
+    fontWeight: '800', 
+    fontFamily: 'Lato-Bold',
+    letterSpacing: 0.4,
+    textTransform: 'uppercase',
+  },
 });

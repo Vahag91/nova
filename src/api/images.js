@@ -4,7 +4,6 @@ export async function createImages({ prompt, model = 'gpt-image-1', size = '1024
   
   // Validate input
   if (!prompt || typeof prompt !== 'string' || prompt.trim().length === 0) {
-    console.error('❌ [API] Prompt validation failed:', { prompt, type: typeof prompt });
     throw new Error('Prompt is required');
   }
 
@@ -24,9 +23,6 @@ export async function createImages({ prompt, model = 'gpt-image-1', size = '1024
       n: Math.max(1, Math.min(n, 4)) // Ensure n is between 1 and 4
   };
   
-  console.log('📤 [API] Making request to:', IMAGES_PROXY_URL);
-  console.log('📤 [API] Request headers:', headers);
-  console.log('📤 [API] Request body:', requestBody);
 
   const res = await fetch(IMAGES_PROXY_URL, {
     method: 'POST',
@@ -34,12 +30,9 @@ export async function createImages({ prompt, model = 'gpt-image-1', size = '1024
     body: JSON.stringify(requestBody),
   });
   
-  console.log('📥 [API] Response status:', res.status, res.statusText);
-  console.log('📥 [API] Response headers:', Object.fromEntries(res.headers.entries()));
   
   if (!res.ok) {
     const txt = await res.text().catch(()=> 'Image generation failed');
-    console.error('❌ [API] Request failed:', { status: res.status, statusText: res.statusText, body: txt });
     throw new Error(txt || 'Image generation failed');
   }
   

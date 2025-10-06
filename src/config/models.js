@@ -1,11 +1,14 @@
 const DEFAULT_MODELS = {
-  'gpt-4o': { provider:'openai', kind:'chat', caps:{visionInput:true, imageGen:false, audioIn:true, audioOut:false}, display:{name:'GPT-4o', group:'OpenAI'}, temperatureSupported: true },
-  'gpt-4o-mini': { provider:'openai', kind:'chat', caps:{visionInput:false, imageGen:false, audioIn:false, audioOut:false}, display:{name:'GPT-4o mini', group:'OpenAI'}, temperatureSupported: true },
-  'gpt-4-turbo': { provider:'openai', kind:'chat', caps:{visionInput:true, imageGen:false, audioIn:false, audioOut:false}, display:{name:'GPT-4 Turbo', group:'OpenAI'}, temperatureSupported: true },
-  'gpt-3.5-turbo': { provider:'openai', kind:'chat', caps:{visionInput:false, imageGen:false, audioIn:false, audioOut:false}, display:{name:'GPT-3.5 Turbo', group:'OpenAI'}, temperatureSupported: true },
-  'claude-3-haiku':  { provider:'anthropic', kind:'chat', caps:{visionInput:false, imageGen:false, audioIn:false, audioOut:false}, display:{name:'Claude 3 Haiku', group:'Anthropic'}, temperatureSupported: true },
-  'claude-3.7-sonnet': { provider:'anthropic', kind:'chat', caps:{visionInput:true, imageGen:false, audioIn:false, audioOut:false}, display:{name:'Claude 3.7 Sonnet', group:'Anthropic'}, temperatureSupported: true },
-  'gemini-2.5-pro': { provider:'google', kind:'chat', caps:{visionInput:true, imageGen:false, audioIn:true, audioOut:false}, display:{name:'Gemini 2.5 Pro', group:'Google'}, temperatureSupported: true },
+  'gpt-5': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5', group: 'OpenAI' } },
+  'gpt-5-chat-latest': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5 Chat', group: 'OpenAI' } },
+  'gpt-5-mini': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5 mini', group: 'OpenAI' } },
+  'gpt-5-nano': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5 nano', group: 'OpenAI' } },
+  'o4-mini': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'O4 mini', group: 'OpenAI' } },
+  'gpt-4.1-mini': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-4.1 mini', group: 'OpenAI' } },
+  'gpt-4.1-nano': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-4.1 nano', group: 'OpenAI' } },
+  'claude-3-haiku': { provider: 'anthropic', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Claude 3 Haiku', group: 'Anthropic' }, temperatureSupported: true },
+  'claude-3.7-sonnet': { provider: 'anthropic', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Claude 3.7 Sonnet', group: 'Anthropic' }, temperatureSupported: true },
+  'gemini-2.5-pro': { provider: 'google', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'Gemini 2.5 Pro', group: 'Google' }, temperatureSupported: true },
 
   // --- Runware Image Models ---
   'runware-flux-dev': {

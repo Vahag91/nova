@@ -6,9 +6,10 @@ import { Swipeable } from 'react-native-gesture-handler';
 import Haptic from 'react-native-haptic-feedback';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { betterPreview, formatRelative } from '../lib/format';
+import { useTranslation } from 'react-i18next';
 
 export default function History({ navigation }) {
-  console.log('History screen rendering...');
+  const { t } = useTranslation();
   
   try {
   const threads = useThreadsStore(s => s.threads);
@@ -20,7 +21,6 @@ export default function History({ navigation }) {
   const pinThread = useThreadsStore(s => s.pinThread);
   const updateThread = useThreadsStore(s => s.updateThread);
 
-    console.log('History - threads:', threads?.length, 'activeThreadId:', activeThreadId);
 
   const [busyId, setBusyId] = useState(null);
   const [q, setQ] = useState('');
@@ -55,7 +55,7 @@ export default function History({ navigation }) {
 
   function onNew() {
     Haptic.trigger('impactLight');
-    const t = createThread({ title: 'New chat' });
+    const t = createThread({ title: t('history.newChat') });
     setActiveThread(t.id);
     navigation?.navigate?.('Chat');
   }
@@ -64,29 +64,29 @@ export default function History({ navigation }) {
     Haptic.trigger('selection');
     if (typeof Alert.prompt === 'function') {
       Alert.prompt(
-        'Rename chat',
-        'Enter a new title',
+        t('history.renameChat'),
+        t('history.enterNewTitle'),
         [
-          { text: 'Cancel', style: 'cancel' },
-          { text: 'Save', onPress: (val) => { if (val?.trim()) renameThread(t.id, val.trim()); } },
+          { text: t('common.cancel'), style: 'cancel' },
+          { text: t('common.save'), onPress: (val) => { if (val?.trim()) renameThread(t.id, val.trim()); } },
         ],
         'plain-text',
         t.title,
       );
     } else {
-      renameThread(t.id, (t.title || 'Chat') + ' *');
+      renameThread(t.id, (t.title || t('navigation.chat')) + ' *');
     }
   }
 
   function onDelete(t) {
     Haptic.trigger('impactMedium');
     Alert.alert(
-      'Delete chat?',
-      `"${t.title || 'Untitled'}" will be deleted.`,
+      t('history.deleteChat'),
+      t('history.deleteChatMessage', { title: t.title || t('history.untitled') }),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Delete', style: 'destructive', onPress: async () => {
+          text: t('common.delete'), style: 'destructive', onPress: async () => {
             try {
               setBusyId(t.id);
               deleteThread(t.id);
@@ -108,14 +108,14 @@ export default function History({ navigation }) {
           style={[styles.swipeBtn, styles.renameBtn]}
           onPress={() => onRename(t)}
         >
-          <Text style={styles.swipeTxt}>Rename</Text>
+          <Text style={styles.swipeTxt}>{t('history.rename')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.swipeBtn, styles.deleteBtn]}
           onPress={() => onDelete(t)}
           disabled={busyId === t.id}
         >
-          <Text style={styles.swipeTxt}>{busyId === t.id ? '…' : 'Delete'}</Text>
+          <Text style={styles.swipeTxt}>{busyId === t.id ? '…' : t('common.delete')}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -128,13 +128,13 @@ export default function History({ navigation }) {
             Haptic.trigger('selection');
             pinThread(t.id, !t.pinned);
             if (!t.title?.startsWith('📌') && !t.pinned) {
-              renameThread(t.id, `📌 ${t.title || 'Chat'}`);
+              renameThread(t.id, `📌 ${t.title || t('navigation.chat')}`);
             } else if (t.title?.startsWith('📌')) {
               renameThread(t.id, t.title.replace(/^📌\s*/, ''));
             }
           }}
         >
-          <Text style={styles.swipeTxt}>{t.pinned ? 'Unpin' : 'Pin'}</Text>
+          <Text style={styles.swipeTxt}>{t.pinned ? t('history.unpin') : t('history.pin')}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -147,7 +147,7 @@ export default function History({ navigation }) {
           style={[styles.row, isActive && styles.active]}
         >
           <View style={styles.rowMain}>
-            <Text style={styles.title} numberOfLines={1}>{t.title || 'Untitled'}</Text>
+            <Text style={styles.title} numberOfLines={1}>{t.title || t('history.untitled')}</Text>
             <Text style={styles.preview} numberOfLines={1}>{betterPreview(t.messages)}</Text>
           </View>
           <View style={styles.rowMeta}>
@@ -169,16 +169,16 @@ export default function History({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.headerWrap}>
-        <Text style={styles.header}>History</Text>
+        <Text style={styles.header}>{t('navigation.history')}</Text>
         <TextInput
           value={q}
           onChangeText={setQ}
-          placeholder="Search chats…"
+          placeholder={t('history.searchPlaceholder')}
           placeholderTextColor="#9CA3AF"
           style={styles.search}
         />
         <TouchableOpacity onPress={onNew} style={styles.newBtn}>
-          <Text style={styles.newBtnText}>+ New</Text>
+          <Text style={styles.newBtnText}>{t('history.new')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -190,10 +190,10 @@ export default function History({ navigation }) {
         contentContainerStyle={filtered.length ? null : styles.emptyWrap}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Text style={styles.emptyTitle}>No chats yet</Text>
-            <Text style={styles.emptyText}>Start your first conversation.</Text>
+            <Text style={styles.emptyTitle}>{t('history.noChatsYet')}</Text>
+            <Text style={styles.emptyText}>{t('history.startFirstConversation')}</Text>
             <TouchableOpacity onPress={onNew} style={[styles.newBtn, { marginTop: 12 }]}>
-              <Text style={styles.newBtnText}>Start chat</Text>
+              <Text style={styles.newBtnText}>{t('history.startChat')}</Text>
             </TouchableOpacity>
           </View>
         }
@@ -201,14 +201,13 @@ export default function History({ navigation }) {
     </View>
   );
   } catch (error) {
-    console.error('History screen error:', error);
     return (
       <View style={styles.container}>
         <View style={styles.headerWrap}>
-          <Text style={styles.header}>History</Text>
+          <Text style={styles.header}>{t('navigation.history')}</Text>
         </View>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ fontSize: 16, color: '#666' }}>Error loading history</Text>
+          <Text style={{ fontSize: 16, color: '#666' }}>{t('history.errorLoadingHistory')}</Text>
           <Text style={{ fontSize: 14, color: '#999', marginTop: 8 }}>{error?.message}</Text>
         </View>
       </View>

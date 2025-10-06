@@ -3,11 +3,15 @@ import { CHAT_PROXY_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 import { SSEClient } from '../lib/SSEClient';
 
 export function streamChat({
-  model, messages, deviceId, temperature = 0.7,
-  onToken, onDone, onError, signal,
-  secretMode = false, // NEW: header hint for the proxy
+  model,
+  messages,
+  deviceId,
+  onToken,
+  onDone,
+  onError,
+  signal,
+  secretMode = false,
 }) {
-  // Build headers (add anon key only for local dev serve)
   const headers = {
     'Content-Type': 'application/json',
     'x-client-id': deviceId,
@@ -18,54 +22,49 @@ export function streamChat({
     headers.Authorization = `Bearer ${SUPABASE_ANON_KEY}`;
   }
 
-  // Map to OpenAI format
+  // Keep using the app's chat-style message shape; the proxy converts to Responses `input`.
   const outMessages = messages.map((m) => {
-    // if already an array (vision parts), pass through
     if (Array.isArray(m.content)) return { role: m.role, content: m.content };
 
-    // if you add your own 'imageUrls' field to messages:
+    // Optional convenience: when message has imageUrls[], convert to multimodal parts
     if (Array.isArray(m.imageUrls) && m.imageUrls.length) {
       const parts = [];
-      if (m.content) parts.push({ type: 'text', text: m.content });
-      for (const url of m.imageUrls) parts.push({ type: 'image_url', image_url: { url } });
+      if (m.content) parts.push({ type: 'text', text: m.content }); // proxy remaps -> input_text
+      for (const url of m.imageUrls) parts.push({ type: 'image_url', image_url: { url } }); // -> input_image
       return { role: m.role, content: parts };
     }
 
-    // plain text
     return { role: m.role, content: m.content ?? '' };
   });
 
-  // Track if onDone has been called to prevent double calls
   let doneCalled = false;
-  const safeOnDone = () => {
-    if (!doneCalled) {
-      doneCalled = true;
-      onDone?.();
-    }
-  };
+  const safeOnDone = () => { if (!doneCalled) { doneCalled = true; onDone?.(); } };
 
   const client = new SSEClient(CHAT_PROXY_URL, {
     method: 'POST',
     headers,
     body: {
       model,
-      temperature,
       messages: outMessages,
       tools: [],
-      capabilities: { supportsImages: true, supportsAudio: false, supportsVideo: false }, // <- stop telling the model "no images"
+      capabilities: { supportsImages: true, supportsAudio: false, supportsVideo: false },
+      // NOTE: no temperature anywhere
     },
     onEvent: (evt) => {
+      // Proxy-normalized events
       if (evt?.type === 'token' && typeof evt.delta === 'string') { onToken?.(evt.delta); return; }
       if (evt?.type === 'done') { safeOnDone(); return; }
       if (evt?.type === 'error') { onError?.(evt); return; }
 
-      // Fallback for raw OpenAI passthrough
-      const fallback = evt?.choices?.[0]?.delta?.content;
-      if (typeof fallback === 'string') onToken?.(fallback);
+      // Extra fallbacks (if proxy ever passes raw OpenAI events)
+      const maybe = evt?.output_text_delta || evt?.delta;
+      if (typeof maybe === 'string') { onToken?.(maybe); return; }
+      const cc = evt?.choices?.[0]?.delta?.content; // old Chat Completions fallback
+      if (typeof cc === 'string') onToken?.(cc);
     },
     onOpen: () => {},
     onError: (e) => onError?.(e),
-    onClose: () => safeOnDone(), // Use safeOnDone to prevent double calls
+    onClose: () => safeOnDone(),
     retryDelays: [1500, 3000, 5000],
     heartbeatInterval: 15000,
     timeoutMs: 60000,

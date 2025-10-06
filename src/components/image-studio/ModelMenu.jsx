@@ -10,6 +10,7 @@ import {
   Easing,
   Dimensions,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 const EDGE_MARGIN = 16;           // min distance from screen edge
 const MAX_MENU_WIDTH = 220;
@@ -18,6 +19,7 @@ const ITEM_HEIGHT = 48;
 const ELEVATION = 12;
 
 const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = [], buttonRef }) => {
+  const { t } = useTranslation();
   const [rendered, setRendered] = useState(false);
   const [anchor, setAnchor] = useState(null);
   const { width: winW, height: winH } = Dimensions.get('window');
@@ -177,7 +179,7 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
         <View style={[styles.menu, { maxHeight: MAX_MENU_HEIGHT }]}>
           {/* Title */}
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Choose Model</Text>
+            <Text style={styles.title}>{t('modelSelector.title')}</Text>
           </View>
           
           {imageModels.map((m, idx) => {

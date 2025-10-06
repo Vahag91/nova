@@ -1,9 +1,10 @@
 // app/src/components/chat/TestInput.jsx
 import React, { useMemo, useState, useEffect } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, withRepeat, Easing } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, withRepeat, withDelay, useDerivedValue, withSpring, interpolate, Easing } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import { colors } from '../../styles/colors';
+import { useTranslation } from 'react-i18next';
 
 const noop = () => {};
 
@@ -47,19 +48,25 @@ const ExploreIcon = ({ color = "#FF9800", size = 24 }) => (
 function TestInput({
   value, onChange, onSend, onStop,
   streaming, offline=false,
-  placeholder='Message Agarka...',
+  placeholder,
   onCreateImagesPress=noop, onOpenCameraPress=noop, onSearchPress=noop, onClipboardPress=noop,
   onMicPress=noop, onMicHoldStart=noop, onMicHoldEnd=noop,
   attachments=[], onRemoveAttachment=noop,
   maxLength=4000, minInputHeight=40, maxInputHeight=140,
   forceCollapsed=false, isRecording=false,
 }) {
+  const { t } = useTranslation();
   const MENU_ITEM_HEIGHT = 52;
   const MENU_VISIBLE_HEIGHT = MENU_ITEM_HEIGHT * 3 + 2; // 3 items + 2 dividers
   const MENU_EXTRA_OFFSET_Y = 36; // raise menu a bit higher above button
   const MENU_Y_OFFSET = MENU_VISIBLE_HEIGHT + MENU_EXTRA_OFFSET_Y;
-  const [expanded, setExpanded] = useState(false);
-  const expandAnim = useSharedValue(0);
+  const ANIMATION_DURATION = 300;
+  const SPRING_CONFIG = {
+    duration: 1200,
+    overshootClamping: true,
+    dampingRatio: 0.8,
+  };
+  const isOpen = useSharedValue(false);
   const [renderMenu, setRenderMenu] = useState(false);
   const plusRef = React.useRef(null);
   const wrapperRef = React.useRef(null);
@@ -74,27 +81,15 @@ function TestInput({
   // timer during recording
   const [recSecs, setRecSecs] = useState(0);
   useEffect(() => {
-    console.log('🎤 TestInput: Recording timer effect triggered', { 
-      isRecording, 
-      recSecs, 
-      timestamp: Date.now() 
-    });
     let id;
     if (isRecording) { 
-      console.log('🎤 TestInput: Starting recording timer');
       setRecSecs(0); 
       id = setInterval(() => {
-        setRecSecs(s => {
-          console.log('🎤 TestInput: Recording timer tick', { seconds: s + 1 });
-          return s + 1;
-        });
+        setRecSecs(s => s + 1);
       }, 1000); 
-    } else {
-      console.log('🎤 TestInput: Stopping recording timer');
     }
     return () => {
       if (id) {
-        console.log('🎤 TestInput: Clearing recording timer');
         clearInterval(id);
       }
     };
@@ -118,8 +113,7 @@ function TestInput({
     if (Platform.OS === 'ios') paddingAnim.value = withTiming(keyboardVisible ? 16 : 24, { duration: 250, easing: Easing.out(Easing.quad) });
   }, [keyboardVisible, paddingAnim]);
 
-  useEffect(() => { if (forceCollapsed && expanded) setExpanded(false); }, [forceCollapsed, expanded]);
-  useEffect(() => { expandAnim.value = withTiming(expanded ? 1 : 0, { duration: 220, easing: Easing.out(Easing.cubic) }); }, [expanded, expandAnim]);
+  useEffect(() => { if (forceCollapsed && isOpen.value) isOpen.value = false; }, [forceCollapsed, isOpen]);
 
   const canSend = useMemo(() => {
     const hasText = !!(value && value.trim().length > 0);
@@ -129,13 +123,44 @@ function TestInput({
 
   const showCounter = useMemo(() => value && value.length >= Math.max(0, maxLength - 300), [value, maxLength]);
 
-  const backdropAnimatedStyle = useAnimatedStyle(() => ({ opacity: expandAnim.value }));
+  const backdropAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: isOpen.value ? withTiming(1, { duration: ANIMATION_DURATION }) : withTiming(0, { duration: ANIMATION_DURATION }),
+    zIndex: isOpen.value
+      ? 1
+      : withDelay(ANIMATION_DURATION, withTiming(-1, { duration: 0 })),
+  }));
+
+  // Animated style for the plus icon rotation
+  const plusIconStyle = useAnimatedStyle(() => {
+    const rotateValue = isOpen.value ? '45deg' : '0deg';
+    return {
+      transform: [{ rotate: withTiming(rotateValue, { duration: ANIMATION_DURATION }) }],
+    };
+  });
+
+  // Menu item animation generator
+  const getMenuItemStyle = (index) => {
+    return useAnimatedStyle(() => {
+      const delay = index * 50; // Stagger delay for each item
+      const scaleValue = isOpen.value ? 1 : 0;
+      const translateValue = isOpen.value ? 0 : 20;
+      
+      return {
+        opacity: withDelay(delay, withTiming(scaleValue, { duration: 200 })),
+        transform: [
+          { translateY: withDelay(delay, withSpring(translateValue, SPRING_CONFIG)) },
+          { scale: withDelay(delay, withSpring(scaleValue, SPRING_CONFIG)) },
+        ],
+      };
+    });
+  };
+
+  const menuItem1Style = getMenuItemStyle(0);
+  const menuItem2Style = getMenuItemStyle(1);
+  const menuItem3Style = getMenuItemStyle(2);
+
   const popoverAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: expandAnim.value,
-    transform: [
-      { translateY: (1 - expandAnim.value) * 8 },
-      { scale: 0.96 + 0.04 * expandAnim.value },
-    ],
+    opacity: isOpen.value ? withTiming(1, { duration: ANIMATION_DURATION }) : withTiming(0, { duration: ANIMATION_DURATION }),
   }));
   const paddingAnimatedStyle = useAnimatedStyle(() => ({ paddingBottom: Platform.OS === 'ios' ? paddingAnim.value : 16 }));
 
@@ -148,25 +173,22 @@ function TestInput({
   };
 
   const toggleActions = () => {
-    if (expanded) {
-      setExpanded(false);
-      setTimeout(() => setRenderMenu(false), 240);
+    if (isOpen.value) {
+      isOpen.value = false;
+      setTimeout(() => setRenderMenu(false), ANIMATION_DURATION);
     } else {
       requestAnimationFrame(() => {
         measureAnchor();
         setRenderMenu(true);
-        setExpanded(true);
+        // Add a small delay before starting the animation to prevent UI flip
+        setTimeout(() => {
+          isOpen.value = true;
+        }, 50);
       });
     }
   };
   const handleSend = () => { if (canSend) onSend(); };
   const handleStop = () => { 
-    console.log('🎤 TestInput: Stop button pressed', { 
-      streaming, 
-      isRecording, 
-      hasOnStop: !!onStop,
-      timestamp: Date.now() 
-    });
     if (streaming && onStop) onStop(); 
     else if (isRecording) onMicPress?.(); 
   };
@@ -179,11 +201,6 @@ function TestInput({
   };
 
   const onMicTap = () => { 
-    console.log('🎤 TestInput: Mic button tapped', { 
-      offline, 
-      isRecording, 
-      timestamp: Date.now() 
-    });
     if (!offline) onMicPress?.(); 
   };
 
@@ -199,61 +216,73 @@ function TestInput({
             />
           </Animated.View>
           {/* Anchored popover */}
-          {anchor && (
+          {anchor && (() => {
+            const menuWidth = wrapperRect.width ;
+            const halfMenuWidth = menuWidth / 2;
+            return (
           <Animated.View pointerEvents="box-none" style={[styles.popoverContainer, popoverAnimatedStyle, {
-              bottom: MENU_Y_OFFSET - 112,
-              left: Math.max(8, Math.min(anchor.x - wrapperRect.x + anchor.width / 2 - 140, wrapperRect.width - 280 - 8)),
-              width: 280,
-            }]}> 
+              bottom: MENU_Y_OFFSET - 64,
+              left: Math.max(8, Math.min(anchor.x - wrapperRect.x + anchor.width / 2 - halfMenuWidth, wrapperRect.width - menuWidth - 8)),
+              width: menuWidth,
+            }]}>
               <View style={styles.menuBox}>
-                <TouchableOpacity 
-                  style={styles.menuItem} 
-                  onPress={() => { toggleActions(); onCreateImagesPress?.(); }} 
-                  accessibilityRole="button" 
-                  accessibilityLabel="Create images"
-                  activeOpacity={0.9}
-                >
-                  <View style={[styles.menuIconContainer, styles.iconViolet]}>
-                    <PaletteIcon color="#8A2BE2" size={24} />
-                  </View>
-                  <View style={styles.menuTextContainer}>
-                    <Text style={styles.menuLabel} numberOfLines={1}>Create Images</Text>
-                    <Text style={styles.menuSubLabel} numberOfLines={1}>Generate AI artwork</Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                  style={styles.menuItem} 
-                  onPress={() => { toggleActions(); onOpenCameraPress?.(); }} 
-                  accessibilityRole="button" 
-                  accessibilityLabel="Open camera"
-                  activeOpacity={0.9}
-                >
-                  <View style={[styles.menuIconContainer, styles.iconCyan]}>
-                    <CameraIcon color="#00BCD4" size={24} />
-                  </View>
-                  <View style={styles.menuTextContainer}>
-                    <Text style={styles.menuLabel} numberOfLines={1}>Camera</Text>
-                    <Text style={styles.menuSubLabel} numberOfLines={1}>Take or select photos</Text>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                  style={[styles.menuItem, styles.menuItemLast]} 
-                  onPress={() => { toggleActions(); onSearchPress?.(); }} 
-                  accessibilityRole="button" 
-                  accessibilityLabel="Search"
-                  activeOpacity={0.9}
-                >
-                  <View style={[styles.menuIconContainer, styles.iconOrange]}>
-                    <ExploreIcon color="#FF9800" size={24} />
-                  </View>
-                  <View style={styles.menuTextContainer}>
-                    <Text style={styles.menuLabel} numberOfLines={1}>Search</Text>
-                    <Text style={styles.menuSubLabel} numberOfLines={1}>Find information</Text>
-                  </View>
-                </TouchableOpacity>
+                <Animated.View style={menuItem1Style}>
+                  <TouchableOpacity 
+                    style={styles.menuItem} 
+                    onPress={() => { toggleActions(); onCreateImagesPress?.(); }} 
+                    accessibilityRole="button" 
+                    accessibilityLabel={t('chat.createImages')}
+                    activeOpacity={0.9}
+                  >
+                    <View style={[styles.menuIconContainer, styles.iconViolet]}>
+                      <PaletteIcon color="#8A2BE2" size={28} />
+                    </View>
+                    <View style={styles.menuTextContainer}>
+                      <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.createImages')}</Text>
+                      <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.generateAiArtwork')}</Text>
+                    </View>
+                  </TouchableOpacity>
+                </Animated.View>
+                
+                <Animated.View style={menuItem2Style}>
+                  <TouchableOpacity 
+                    style={styles.menuItem} 
+                    onPress={() => { toggleActions(); onOpenCameraPress?.(); }} 
+                    accessibilityRole="button" 
+                    accessibilityLabel={t('chat.camera')}
+                    activeOpacity={0.9}
+                  >
+                    <View style={[styles.menuIconContainer, styles.iconCyan]}>
+                      <CameraIcon color="#00BCD4" size={28} />
+                    </View>
+                    <View style={styles.menuTextContainer}>
+                      <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.camera')}</Text>
+                      <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.takeOrSelectPhotos')}</Text>
+                    </View>
+                  </TouchableOpacity>
+                </Animated.View>
+                
+                <Animated.View style={menuItem3Style}>
+                  <TouchableOpacity 
+                    style={[styles.menuItem, styles.menuItemLast]} 
+                    onPress={() => { toggleActions(); onSearchPress?.(); }} 
+                    accessibilityRole="button" 
+                    accessibilityLabel={t('chat.search')}
+                    activeOpacity={0.9}
+                  >
+                    <View style={[styles.menuIconContainer, styles.iconOrange]}>
+                      <ExploreIcon color="#FF9800" size={28} />
+                    </View>
+                    <View style={styles.menuTextContainer}>
+                      <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.search')}</Text>
+                      <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.findInformation')}</Text>
+                    </View>
+                  </TouchableOpacity>
+                </Animated.View>
             </View>
           </Animated.View>
-          )}
+            );
+          })()}
         </>
       )}
 
@@ -263,7 +292,7 @@ function TestInput({
             {attachments.map((a, idx) => (
               <View key={a.id || `${a.uri}-${idx}`} style={styles.thumbWrap}>
                 <Image source={{ uri: a.uri }} style={styles.thumb} />
-                <TouchableOpacity onPress={() => onRemoveAttachment(a, idx)} style={styles.thumbRemove} accessibilityLabel="Remove image" hitSlop={{ top:6, bottom:6, left:6, right:6 }}>
+                <TouchableOpacity onPress={() => onRemoveAttachment(a, idx)} style={styles.thumbRemove} accessibilityLabel={t('chat.removeImage')} hitSlop={{ top:6, bottom:6, left:6, right:6 }}>
                   <Text style={styles.thumbRemoveText}>✕</Text>
                 </TouchableOpacity>
               </View>
@@ -275,7 +304,7 @@ function TestInput({
           <TextInput
             value={value}
             onChangeText={onChange}
-            placeholder={placeholder}
+            placeholder={placeholder || t('chat.messagePlaceholder')}
             placeholderTextColor={colors.placeholder}
             style={[styles.input, { maxHeight: maxInputHeight }]}
             editable={!streaming && !offline && !isRecording}
@@ -288,11 +317,11 @@ function TestInput({
             selectionColor={colors.primary}
             underlineColorAndroid="transparent"
             textAlignVertical={isExpanded ? 'top' : 'center'}
-            accessibilityLabel="Message input"
+            accessibilityLabel={t('chat.messageInput')}
             scrollEnabled={inputHeight >= maxInputHeight}
           />
           {value?.length > 0 && (
-            <TouchableOpacity onPress={() => onChange('')} accessibilityLabel="Clear input" style={{ position: 'absolute', right: 6, top: 6, padding: 6 }}>
+            <TouchableOpacity onPress={() => onChange('')} accessibilityLabel={t('chat.clearInput')} style={{ position: 'absolute', right: 6, top: 6, padding: 6 }}>
               <Svg height={18} width={18} viewBox="0 -960 960 960" fill="#8E8E93"><Path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></Svg>
             </TouchableOpacity>
           )}
@@ -300,8 +329,10 @@ function TestInput({
 
         <View style={styles.iconsRow}>
           <View style={styles.leftControls}>
-            <TouchableOpacity ref={plusRef} onPress={toggleActions} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={expanded ? 'Hide quick actions' : 'Show quick actions'}>
-              {expanded ? <MinusIcon color="#FFFFFF" size={18} /> : <AddIcon color="#FFFFFF" size={18} />}
+            <TouchableOpacity ref={plusRef} onPress={toggleActions} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={isOpen.value ? t('chat.hideQuickActions') : t('chat.showQuickActions')}>
+              <Animated.View style={plusIconStyle}>
+                <AddIcon color="#FFFFFF" size={18} />
+              </Animated.View>
             </TouchableOpacity>
           </View>
 
@@ -309,22 +340,24 @@ function TestInput({
             <TouchableOpacity
               style={[styles.micButton, offline && styles.iconDisabled]}
               onPress={onMicTap}
+              onLongPress={onMicTap}
               onPressIn={onMicHoldStart}
               onPressOut={onMicHoldEnd}
               disabled={offline}
               accessibilityRole="button"
-              accessibilityLabel="Start voice input"
+              accessibilityLabel={t('chat.startVoiceInput')}
+              delayLongPress={500}
             >
               <MicIcon color="#8E8E93" size={18} />
             </TouchableOpacity>
 
             {!streaming ? (
-              <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? 'Offline' : 'Send message'}>
+              <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? t('chat.offline') : t('chat.sendMessage')}>
                 <SendIcon color={canSend && !isRecording ? '#FFFFFF' : '#000000'} size={18} />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel="Stop">
-                <Text style={styles.stopButtonText}>Stop</Text>
+              <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel={t('chat.stop')}>
+                <Text style={styles.stopButtonText}>{t('chat.stop')}</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -356,14 +389,14 @@ function ActionChip({ icon, label, onPress, accessibilityLabel }) {
 const THUMB = 48;
 
 const styles = StyleSheet.create({
-  wrapper: { backgroundColor: '#000000', borderTopWidth: 1, borderTopColor: colors.border, paddingHorizontal: 12, paddingTop: 8, position: 'relative' },
+  wrapper: { backgroundColor: '#000000', paddingHorizontal: 12, paddingTop: 8, position: 'relative' },
   quickActionsContainer: { overflow: 'hidden', marginBottom: 8, borderRadius: 14, backgroundColor: '#1E1E1E', borderWidth: 1, borderColor: colors.border },
   quickActionsRow: { flexDirection: 'row', paddingHorizontal: 4, gap: 8 },
   // Professional popover menu styles - matching Tailwind design
   backdrop: { backgroundColor: 'rgba(0,0,0,0.2)', zIndex: 998 },
-  popoverContainer: { position: 'absolute', zIndex: 1000, elevation: 50, padding: 16 },
+  popoverContainer: { position: 'absolute', zIndex: 1000, elevation: 50, padding: 12 },
   menuBox: { 
-    backgroundColor: 'rgba(0,0,0,0.75)', // more transparent black
+    backgroundColor: 'rgba(10, 9, 9, 0.75)', // more transparent black
     borderWidth: 1, 
     borderColor: 'rgba(255,255,255,0.15)', // subtle light border
     borderRadius: 24, // rounded-2xl
@@ -373,26 +406,26 @@ const styles = StyleSheet.create({
     shadowRadius: 30, 
     shadowOffset: { width: 0, height: 10 },
     elevation: 20,
-    padding: 8 // p-2
+    padding: 10 // p-2
   },
   menuItem: { 
     flexDirection: 'row', 
     alignItems: 'center', 
-    paddingHorizontal: 12, 
-    paddingVertical: 12, // p-3
+    paddingHorizontal: 16, 
+    paddingVertical: 7,
     backgroundColor: 'transparent',
-    borderRadius: 16, // rounded-xl
-    marginBottom: 4 // space-y-1
+    borderRadius: 18,
+    marginBottom: 4
   },
   menuItemLast: {
     marginBottom: 0 // no margin on last item
   },
   menuIconContainer: {
-    width: 40, // w-10
-    height: 40, // h-10
+    width: 48,
+    height: 48,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 16 // mr-4
+    marginRight: 20
   },
   iconViolet: {
     // No background
@@ -405,23 +438,23 @@ const styles = StyleSheet.create({
   },
   menuTextContainer: { flex: 1 },
   menuLabel: { 
-    color: '#E0E0E0', // text-dark
-    fontSize: 15, 
+    color: '#E0E0E0',
+    fontSize: 17, 
     fontWeight: '600', 
-    fontFamily: 'Lato-Bold',
-    marginBottom: 2
+    fontFamily: 'Lato-BoldItalic',
+    marginBottom: 3
   },
   menuSubLabel: { 
-    color: '#A0A0A0', // text-secondary-dark
-    fontSize: 13, 
+    color: '#A0A0A0',
+    fontSize: 14, 
     fontFamily: 'Lato-Regular' 
   },
 
   inputContainer: { backgroundColor: '#1C1C1E', padding: 16, borderRadius: 24, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 8 },
 
   thumbRow: { marginBottom: 8 },
-  thumbWrap: { width: THUMB, height: THUMB, borderRadius: 10, marginRight: 6, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
-  thumb: { width: '100%', height: '100%' },
+  thumbWrap: { width: THUMB, height: THUMB, borderRadius: 10, marginRight: 6, borderWidth: 1, borderColor: colors.border },
+  thumb: { width: '100%', height: '100%', borderRadius: 9 },
   thumbRemove: { position: 'absolute', top: -6, right: -6, backgroundColor: '#000000CC', width: 18, height: 18, borderRadius: 9, alignItems: 'center', justifyContent: 'center' },
   thumbRemoveText: { color: '#fff', fontSize: 11, fontWeight: '700' },
 

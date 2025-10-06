@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { colors } from '../../styles/colors';
+import { useTranslation } from 'react-i18next';
 
 // SVG Icon Components
 const StoryIcon = ({ color, size = 28 }) => (
@@ -44,33 +45,34 @@ const renderIcon = (iconType, color) => {
 };
 
 const SuggestionCards = ({ onSuggestionPress }) => {
+  const { t } = useTranslation();
   const suggestions = [
     {
       id: 'write-story',
       icon: 'story',
-      title: 'Write a creative story',
-      subtitle: 'about a magical adventure',
+      title: t('chat.suggestions.writeStory'),
+      subtitle: t('chat.suggestions.writeStorySubtitle'),
       color: '#D16D6A'
     },
     {
       id: 'travel-plan',
       icon: 'travel',
-      title: 'Plan a travel itinerary',
-      subtitle: 'for an amazing vacation',
+      title: t('chat.suggestions.planTravel'),
+      subtitle: t('chat.suggestions.planTravelSubtitle'),
       color: '#EA33F7'
     },
     {
       id: 'explain-concept',
       icon: 'concept',
-      title: 'Explain this concept',
-      subtitle: 'in simple terms',
+      title: t('chat.suggestions.explainConcept'),
+      subtitle: t('chat.suggestions.explainConceptSubtitle'),
       color: '#75FB4C'
     },
     {
       id: 'plan-day',
       icon: 'calendar',
-      title: 'Plan my day',
-      subtitle: 'with productivity tips',
+      title: t('chat.suggestions.planDay'),
+      subtitle: t('chat.suggestions.planDaySubtitle'),
       color: '#8C1AF6'
     }
   ];

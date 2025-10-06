@@ -1,9 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { colors } from '../../styles/colors';
+import { useTranslation } from 'react-i18next';
 
 export default function DaySeparator({ date, text, system = false }) {
-  const label = text || new Date(date).toLocaleDateString(undefined, {
+  const { i18n } = useTranslation();
+  const lang = (i18n?.language || 'en').split('-')[0];
+  const locale = lang === 'ja' ? 'ja-JP' : 'en-US';
+
+  const label = text || new Date(date).toLocaleDateString(locale, {
     weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
   });
   return (

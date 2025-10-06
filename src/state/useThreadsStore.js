@@ -20,7 +20,7 @@ export const useThreadsStore = create((set, get) => ({
       hydrated: true,
     });
   },
-  createThread: ({ title = 'Untitled', model = 'gpt-4o-mini', system = null } = {}) => {
+  createThread: ({ title = 'Untitled', model = 'gpt-5-nano', system = null } = {}) => {
     const t = newThread({ title, model, system });
     set(state => {
       const threads = [t, ...state.threads];

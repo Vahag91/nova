@@ -1,29 +1,49 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import {
   View, Text, StyleSheet, SectionList, TouchableOpacity, TextInput, Alert,
 } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import { RectButton } from 'react-native-gesture-handler';
-import Animated, { FadeIn } from 'react-native-reanimated';
+import Animated, { 
+  FadeIn, 
+  useSharedValue, 
+  useAnimatedStyle, 
+  withRepeat, 
+  withTiming, 
+  Easing 
+} from 'react-native-reanimated';
 import Haptic from 'react-native-haptic-feedback';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { betterPreview } from '../lib/format';
 import { colors } from '../styles/colors';
 import SvgIcon from '../components/SvgIcon';
+import { useTranslation } from 'react-i18next';
 
-// --- month/year helpers ---
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
-function formatMonthYear(ts) {
+// Date formatting helpers (locale-aware)
+function formatMonthYear(ts, locale, lang) {
   const d = new Date(ts || Date.now());
-  return `${MONTHS_FULL[d.getMonth()]} ${d.getFullYear()}`;
+  // Explicit Japanese format to avoid missing ICU data
+  if (lang === 'ja') return `${d.getFullYear()}年${d.getMonth() + 1}月`;
+  try {
+    return d.toLocaleDateString(locale || undefined, { year: 'numeric', month: 'long' });
+  } catch {
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+  }
 }
-function formatRowDate(ts) {
+function formatRowDate(ts, locale, lang) {
   const d = new Date(ts || Date.now());
   const hh = String(d.getHours()).padStart(2, '0');
   const mm = String(d.getMinutes()).padStart(2, '0');
-  return `${MONTHS[d.getMonth()]} ${d.getDate()} • ${hh}:${mm}`;
+  if (lang === 'ja') return `${d.getMonth() + 1}月${d.getDate()}日・${hh}:${mm}`;
+  try {
+    const datePart = d.toLocaleDateString(locale || undefined, { month: 'short', day: 'numeric' });
+    const timePart = d.toLocaleTimeString(locale || undefined, { hour: '2-digit', minute: '2-digit' });
+    return `${datePart} • ${timePart}`;
+  } catch {
+    return `${d.getMonth() + 1}/${d.getDate()} • ${hh}:${mm}`;
+  }
 }
 
 // Extract clean preview text from summary
@@ -57,6 +77,9 @@ function cleanPreview(summary) {
 }
 
 export default function HistorySimple({ navigation }) {
+  const { t, i18n } = useTranslation();
+  const lang = (i18n?.language || 'en').split('-')[0];
+  const locale = lang === 'ja' ? 'ja-JP' : 'en-US';
   const threads = useThreadsStore(s => s.threads);
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
@@ -65,6 +88,23 @@ export default function HistorySimple({ navigation }) {
 
   const [busyId, setBusyId] = useState(null);
   const [q, setQ] = useState('');
+
+  // Pulse animation for New Chat button
+  const pulseAnim = useSharedValue(0);
+  
+  useEffect(() => {
+    pulseAnim.value = withRepeat(
+      withTiming(1, { duration: 1500, easing: Easing.inOut(Easing.sin) }),
+      -1,
+      true
+    );
+  }, []);
+
+  const pulseStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: 1 + pulseAnim.value * 0.1 }],
+    shadowOpacity: 0.3 + pulseAnim.value * 0.4,
+    shadowRadius: 8 + pulseAnim.value * 8,
+  }));
 
   // Swipe row refs
   const rowRefs = useRef(new Map());
@@ -106,43 +146,43 @@ export default function HistorySimple({ navigation }) {
       items.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
       const sampleTs = items[0]?.updatedAt || Date.now();
       return {
-        title: formatMonthYear(sampleTs),
+        title: formatMonthYear(sampleTs, locale, lang),
         key: `section-${k}`,
         data: items,
       };
     });
-  }, [filtered]);
+  }, [filtered, locale, lang]);
 
-  function openThread(t) {
+function openThread(thread) {
     Haptic.trigger('impactLight');
-    setActiveThread(t.id);
+  setActiveThread(thread.id);
     navigation?.navigate?.('Chat');
   }
 
   function onNew() {
     Haptic.trigger('impactLight');
-    const t = createThread({ title: 'New chat' });
-    setActiveThread(t.id);
+    const th = createThread({ title: t('history.newChat') });
+    setActiveThread(th.id);
     navigation?.navigate?.('Chat');
   }
 
   // iOS prompt; simple fallback elsewhere
-  function onRename(t) {
+function onRename(thread) {
     Haptic.trigger('selection');
     if (typeof Alert.prompt === 'function') {
       Alert.prompt(
-        'Rename chat',
-        'Enter a new title',
+        t('history.renameChat'),
+        t('history.enterNewTitle'),
         [
-          { text: 'Cancel', style: 'cancel', onPress: () => closeRow(t.id) },
-          { text: 'Save', onPress: (val) => { if (val?.trim()) renameThread(t.id, val.trim()); closeRow(t.id); } },
+          { text: t('common.cancel'), style: 'cancel', onPress: () => closeRow(thread.id) },
+          { text: t('common.save'), onPress: (val) => { if (val?.trim()) renameThread(thread.id, val.trim()); closeRow(thread.id); } },
         ],
         'plain-text',
-        t.title,
+      thread.title,
       );
     } else {
-      renameThread(t.id, (t.title || 'Chat') + ' *');
-      closeRow(t.id);
+    renameThread(thread.id, (thread.title || t('navigation.chat')) + ' *');
+    closeRow(thread.id);
     }
   }
 
@@ -160,23 +200,23 @@ export default function HistorySimple({ navigation }) {
   }
 
   // Right actions: Delete (only)
-  const renderRightActions = (t /* , progress, dragX */) => (
+  const renderRightActions = (thread /* , progress, dragX */) => (
     <Animated.View
       entering={FadeIn.duration(120).springify().damping(18)}
       style={styles.rightActions}
     >
       <RectButton
         style={styles.deleteBtn}
-        onPress={() => deleteNow(t)}
-        enabled={busyId !== t.id}
+        onPress={() => deleteNow(thread)}
+        enabled={busyId !== thread.id}
       >
         <View style={styles.actionContentCol}>
-          {busyId === t.id ? (
+          {busyId === thread.id ? (
             <Text style={styles.deleteBtnText}>...</Text>
           ) : (
             <>
               <SvgIcon name="trash" size={18} color="#FFFFFF" />
-              <Text style={styles.deleteBtnText}>Delete</Text>
+              <Text style={styles.deleteBtnText}>{t('common.delete')}</Text>
             </>
           )}
         </View>
@@ -184,35 +224,35 @@ export default function HistorySimple({ navigation }) {
     </Animated.View>
   );
 
-  const renderItem = ({ item: t }) => {
-    const rawPreview = t.summary?.trim() || betterPreview(t.messages);
-    const preview = t.summary ? cleanPreview(rawPreview) : rawPreview;
+const renderItem = ({ item: thread }) => {
+  const rawPreview = thread.summary?.trim() || betterPreview(thread.messages);
+  const preview = thread.summary ? cleanPreview(rawPreview) : rawPreview;
     return (
       <Swipeable
-        ref={(ref) => { ref ? rowRefs.current.set(t.id, ref) : rowRefs.current.delete(t.id); }}
+      ref={(ref) => { ref ? rowRefs.current.set(thread.id, ref) : rowRefs.current.delete(thread.id); }}
         friction={1.1}
         rightThreshold={56}
         overshootRight
         overshootFriction={6}
         enableTrackpadTwoFingerGesture
-        onSwipeableWillOpen={() => closeAllExcept(t.id)}
+      onSwipeableWillOpen={() => closeAllExcept(thread.id)}
         // full left swipe → RIGHT actions → delete
-        onSwipeableOpen={(dir) => { if (dir === 'right') deleteNow(t); }}
-        renderRightActions={(progress, dragX) => renderRightActions(t, progress, dragX)}
+      onSwipeableOpen={(dir) => { if (dir === 'right') deleteNow(thread); }}
+      renderRightActions={(progress, dragX) => renderRightActions(thread, progress, dragX)}
       >
         <TouchableOpacity
-          onPress={() => openThread(t)}
-          onLongPress={() => onRename(t)}
+        onPress={() => openThread(thread)}
+        onLongPress={() => onRename(thread)}
           activeOpacity={0.85}
           style={styles.row}
         >
           <View style={styles.rowCard}>
             <View style={styles.rowContent}>
               <View style={styles.rowMain}>
-                <Text style={styles.topic} numberOfLines={2}>{preview || 'New chat'}</Text>
+              <Text style={styles.topic} numberOfLines={2}>{preview || t('history.newChat')}</Text>
               </View>
               <View style={styles.rowRight}>
-                <Text style={styles.time}>{formatRowDate(t.updatedAt)}</Text>
+              <Text style={styles.time}>{formatRowDate(thread.updatedAt, locale, lang)}</Text>
               </View>
             </View>
           </View>
@@ -234,12 +274,12 @@ export default function HistorySimple({ navigation }) {
         <TextInput
           value={q}
           onChangeText={setQ}
-          placeholder="Search"
+          placeholder={t('history.search')}
           placeholderTextColor="#666666"
           style={styles.search}
         />
         {q?.length > 0 && (
-          <TouchableOpacity onPress={() => setQ('')} accessibilityLabel="Clear search" style={{ paddingLeft: 8 }}>
+          <TouchableOpacity onPress={() => setQ('')} accessibilityLabel={t('history.clearSearch')} style={{ paddingLeft: 8 }}>
             <SvgIcon name="clear" size={18} color="#888888" />
           </TouchableOpacity>
         )}
@@ -252,16 +292,27 @@ export default function HistorySimple({ navigation }) {
         renderSectionHeader={renderSectionHeader}
         stickySectionHeadersEnabled
         style={{ backgroundColor: '#000000' }}
-        contentContainerStyle={sections.length ? undefined : styles.emptyWrap}
+        contentContainerStyle={sections.length ? { paddingBottom: 100 } : styles.emptyWrap}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Text style={styles.emptyTitle}>No results found</Text>
+            <Text style={styles.emptyTitle}>{t('history.noResults')}</Text>
             <TouchableOpacity onPress={onNew} style={styles.startBtn}>
-              <Text style={styles.startBtnText}>Start a new chat</Text>
+              <Text style={styles.startBtnText}>{t('history.startNewChat')}</Text>
             </TouchableOpacity>
           </View>
         }
       />
+      {/* Fixed New Chat Button at Bottom */}
+      <View style={styles.newChatButtonContainer}>
+        <AnimatedTouchable 
+          onPress={onNew} 
+          style={[styles.newChatButton, pulseStyle]}
+          activeOpacity={0.8}
+        >
+          <SvgIcon name="plus" size={20} color="#FFFFFF" />
+          <Text style={styles.newChatButtonText}>{t('history.newChat')}</Text>
+        </AnimatedTouchable>
+      </View>
     </View>
   );
 }
@@ -300,23 +351,21 @@ const styles = StyleSheet.create({
   },
   row:{ 
     paddingHorizontal: 16, 
-    paddingVertical: 8, 
+    paddingVertical: 4, 
     backgroundColor: '#000000',
   },
   rowCard: {
     backgroundColor: colors.surface,
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    borderWidth: 1,
-    borderColor: colors.border,
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
   },
   rowContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   rowMain:{ flex: 1, marginRight: 16 },
-  topic:{ fontSize: 14, fontWeight: '500', color: colors.text, lineHeight: 20 },
+  topic:{ fontSize: 17, fontWeight: '500', color: colors.text, lineHeight: 22 },
 
   rowRight: { alignItems: 'flex-end', minWidth: 80 },
-  time:{ fontSize: 12, color: colors.textMuted },
+  time:{ fontSize: 13, color: colors.textMuted },
 
   emptyWrap:{ flexGrow:1, justifyContent:'center', alignItems:'center', padding:24 },
   empty:{ alignItems:'center' },
@@ -331,7 +380,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'stretch',
     paddingRight: 16,
-    paddingVertical: 8, // match row vertical padding so the red action matches card height
+    paddingVertical: 4, // match row vertical padding so the red action matches card height
   },
   deleteBtn: {
     height: '100%',
@@ -339,7 +388,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF3B30',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10, // match rowCard radius
+    borderRadius: 12, // match rowCard radius
   },
   actionContentCol: {
     flexDirection: 'column',
@@ -348,4 +397,38 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   deleteBtnText: { color: '#FFFFFF', fontWeight: '600', fontSize: 12, marginTop: 2 },
+
+  // Fixed New Chat Button
+  newChatButtonContainer: {
+    position: 'absolute',
+    bottom: 10,
+    left: 0,
+    right: 0,
+    paddingHorizontal: 20,
+    paddingBottom: 24,
+    paddingTop: 12,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  },
+  newChatButton: {
+    backgroundColor: colors.primary,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 48,
+    borderRadius: 24,
+    gap: 10,
+    alignSelf: 'center',
+    shadowColor: colors.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  newChatButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '700',
+    fontFamily: 'Lato-Bold',
+  },
 });

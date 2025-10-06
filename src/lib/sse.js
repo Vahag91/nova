@@ -19,10 +19,8 @@ export async function readSSE(stream, onEvent) {
       if (!payload || payload === '[DONE]') continue;
       try {
         const evt = JSON.parse(payload);
-        console.log('SSE Parser: Successfully parsed event:', evt);
         onEvent?.(evt);
       } catch (e) {
-        console.log('SSE Parser: Failed to parse payload:', payload, 'Error:', e.message);
         /* ignore partial fragments */
       }
     }

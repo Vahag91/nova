@@ -7,8 +7,6 @@ import {
   FlatList,
   Modal,
   StyleSheet,
-  Animated,
-  Easing,
   Platform,
   Dimensions,
   TextInput,
@@ -18,28 +16,41 @@ import Haptic from 'react-native-haptic-feedback';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
 import SvgIcon from './SvgIcon';
+import { useTranslation } from 'react-i18next';
+
+// 🔁 Reanimated
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withSpring,
+  withSequence,
+  Easing,
+  runOnJS,
+  FadeIn,
+  FadeInDown,
+} from 'react-native-reanimated';
 
 export default function ModelSelector() {
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   // store
   const models = useSettingsStore(s => s.models);
   const modelKey = useSettingsStore(s => s.model);
   const setModel = useSettingsStore(s => s.setModel);
-console.log(models,"models");
-console.log(modelKey,"modelKey");
 
   // ui
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // anims
-  const overlay = useRef(new Animated.Value(0)).current;     // 0..1
-  const dropY = useRef(new Animated.Value(-36)).current;   // translateY
-  const sheetFade = useRef(new Animated.Value(0)).current;     // 0..1
-  const sheetScale = useRef(new Animated.Value(0.985)).current; // subtle scale-in
-  const rotateArrow = useRef(new Animated.Value(0)).current;     // 0 closed, 1 open
-  const triggerScale = useRef(new Animated.Value(1)).current;    // trigger button scale
+  // reanimated shared values
+  const overlay = useSharedValue(0);       // 0..1
+  const dropY = useSharedValue(-36);       // translateY
+  const sheetScale = useSharedValue(0.985);
+  const sheetProgress = useSharedValue(0); // 0..1 (use for opacity / content)
+  const rotateArrow = useSharedValue(0);   // 0 closed, 1 open
+  const triggerScale = useSharedValue(1);  // trigger micro-bounce
 
   const listRef = useRef(null);
 
@@ -52,37 +63,36 @@ console.log(modelKey,"modelKey");
     };
   }, [models, modelKey]);
 
-  // build + group (more "pro" look with headers per provider)
+  // build + group
   const sections = useMemo(() => {
     if (!models || Object.keys(models).length === 0) {
-      return [{ type: 'empty', id: 'empty', message: 'No models available' }];
+      return [{ type: 'empty', id: 'empty', message: t('modelSelector.noModelsAvailable') }];
     }
 
     const toRow = ([key, info]) => ({
       key,
       name: info?.display?.name || key,
-      desc: descriptionFor(key, info),
+      desc: t(`models.${key}`, { defaultValue: descriptionFor(key, info) }),
       icon: glyphFor(info?.provider, key),
-      labels: labelsFor(key),
+      labels: labelsFor(key, t),
       provider: (info?.provider || 'other').toLowerCase(),
     });
 
-    // Filter by model kind (only show chat models) and search query
     let filteredModels = Object.entries(models)
-      .filter(([key, info]) => info?.kind === 'chat') // Only show chat models
+      .filter(([_, info]) => info?.kind === 'chat')
       .map(toRow);
-    
+
     if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      filteredModels = filteredModels.filter(model =>
-        model.name.toLowerCase().includes(query) ||
-        model.desc.toLowerCase().includes(query) ||
-        model.provider.includes(query)
+      const q = searchQuery.toLowerCase();
+      filteredModels = filteredModels.filter(m =>
+        m.name.toLowerCase().includes(q) ||
+        m.desc.toLowerCase().includes(q) ||
+        m.provider.includes(q)
       );
     }
 
     if (filteredModels.length === 0) {
-      return [{ type: 'empty', id: 'empty', message: `No models found for "${searchQuery}"` }];
+      return [{ type: 'empty', id: 'empty', message: t('modelSelector.noModelsFound') }];
     }
 
     const order = ['openai', 'anthropic', 'google', 'xai', 'other'];
@@ -95,7 +105,7 @@ console.log(modelKey,"modelKey");
     const out = [];
     order.forEach(p => {
       const set = grouped[p];
-      if (set && set.length) {
+      if (set?.length) {
         out.push({ type: 'header', id: `hdr-${p}`, title: titleForProvider(p) });
         set.forEach(row => out.push({ type: 'row', ...row }));
       }
@@ -103,97 +113,84 @@ console.log(modelKey,"modelKey");
     return out;
   }, [models, searchQuery]);
 
-  // open / close
+  // —— Animations ——
+  const scrollToSelected = useCallback(() => {
+    const idx = sections.findIndex(r => r.type === 'row' && r.key === modelKey);
+    if (idx >= 0) setTimeout(() => listRef.current?.scrollToIndex({ index: idx, animated: true, viewPosition: 0.5 }), 60);
+  }, [sections, modelKey]);
+
   const runOpen = useCallback(() => {
-    // Trigger button micro-interaction
-    Animated.sequence([
-      Animated.timing(triggerScale, {
-        toValue: 0.96,
-        duration: 80,
-        useNativeDriver: true,
-      }),
-      Animated.spring(triggerScale, {
-        toValue: 1,
-        tension: 300,
-        friction: 8,
-        useNativeDriver: true,
-      }),
-    ]).start();
+    // trigger micro interaction
+    triggerScale.value = withSequence(
+      withTiming(0.96, { duration: 80, easing: Easing.out(Easing.cubic) }),
+      withSpring(1, { damping: 12, stiffness: 280 })
+    );
 
     setOpen(true);
-    requestAnimationFrame(() => {
-      Animated.parallel([
-        Animated.timing(overlay, { toValue: 1, duration: 200, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
-        Animated.spring(dropY, { toValue: 0, damping: 12, stiffness: 150, mass: 0.8, useNativeDriver: true }),
-        Animated.timing(sheetFade, { toValue: 1, duration: 180, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
-        Animated.timing(sheetScale, { toValue: 1, duration: 220, easing: Easing.out(Easing.back(1.1)), useNativeDriver: true }),
-        Animated.timing(rotateArrow, { toValue: 1, duration: 200, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
-      ]).start(() => {
-        const idx = sections.findIndex(r => r.type === 'row' && r.key === modelKey);
-        if (idx >= 0) setTimeout(() => listRef.current?.scrollToIndex({ index: idx, animated: true, viewPosition: 0.5 }), 50);
-      });
+    // animate in
+    overlay.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.cubic) });
+    dropY.value = withSpring(0, { damping: 14, stiffness: 160, mass: 0.9 });
+    sheetScale.value = withTiming(1, { duration: 220, easing: Easing.out(Easing.cubic) });
+    sheetProgress.value = withTiming(1, { duration: 180, easing: Easing.out(Easing.cubic) }, (finished) => {
+      if (finished) runOnJS(scrollToSelected)();
     });
+    rotateArrow.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.cubic) });
+
     Haptic.trigger('selection');
-  }, [overlay, dropY, sheetFade, sheetScale, rotateArrow, triggerScale, sections, modelKey]);
+  }, [overlay, dropY, sheetScale, sheetProgress, rotateArrow, triggerScale, scrollToSelected]);
 
   const runClose = useCallback(() => {
-    setSearchQuery(''); // Clear search when closing
-    Animated.parallel([
-      Animated.timing(overlay, { toValue: 0, duration: 160, easing: Easing.in(Easing.cubic), useNativeDriver: true }),
-      Animated.timing(dropY, { toValue: -36, duration: 200, easing: Easing.in(Easing.back(1.2)), useNativeDriver: true }),
-      Animated.timing(sheetFade, { toValue: 0, duration: 140, easing: Easing.in(Easing.cubic), useNativeDriver: true }),
-      Animated.timing(sheetScale, { toValue: 0.985, duration: 180, easing: Easing.in(Easing.cubic), useNativeDriver: true }),
-      Animated.timing(rotateArrow, { toValue: 0, duration: 160, easing: Easing.in(Easing.cubic), useNativeDriver: true }),
-    ]).start(({ finished }) => finished && setOpen(false));
-  }, [overlay, dropY, sheetFade, sheetScale, rotateArrow]);
+    setSearchQuery('');
+    // animate out
+    overlay.value = withTiming(0, { duration: 160, easing: Easing.in(Easing.cubic) }, (finished) => {
+      if (finished) runOnJS(setOpen)(false);
+    });
+    dropY.value = withTiming(-36, { duration: 200, easing: Easing.in(Easing.cubic) });
+    sheetScale.value = withTiming(0.985, { duration: 180, easing: Easing.in(Easing.cubic) });
+    sheetProgress.value = withTiming(0, { duration: 140, easing: Easing.in(Easing.cubic) });
+    rotateArrow.value = withTiming(0, { duration: 160, easing: Easing.in(Easing.cubic) });
+  }, [overlay, dropY, sheetScale, sheetProgress, rotateArrow]);
 
-  const onPick = useCallback((key) => {
-    if (key !== modelKey) {
-      Haptic.trigger('notificationSuccess');
-      setModel(key);
-    } else {
-      Haptic.trigger('selection');
-    }
-    runClose();
-  }, [setModel, modelKey, runClose]);
+  // —— Animated styles ——
+  const triggerStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: triggerScale.value }],
+  }));
 
-  const arrowStyle = {
-    transform: [{ rotate: rotateArrow.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '180deg'] }) }],
-  };
+  const arrowStyle = useAnimatedStyle(() => ({
+    transform: [{ rotate: `${rotateArrow.value * 180}deg` }],
+  }));
 
-  // render
+  const overlayStyle = useAnimatedStyle(() => ({
+    opacity: overlay.value,
+  }));
+
+  const panelStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: dropY.value }, { scale: sheetScale.value }],
+    opacity: sheetProgress.value,
+  }));
+
+  // —— render —— //
   const renderItem = ({ item, index }) => {
     if (item.type === 'empty') {
       return (
-        <View style={styles.emptyState}>
-          <Text style={styles.emptyIcon}>🔍</Text>
-          <Text style={styles.emptyTitle}>No models found</Text>
-          <Text style={styles.emptyMessage}>{item.message}</Text>
-        </View>
+        <Animated.View entering={FadeIn.duration(180)}>
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyIcon}>🔍</Text>
+            <Text style={styles.emptyTitle}>{t('modelSelector.noModelsFound')}</Text>
+            <Text style={styles.emptyMessage}>{item.message}</Text>
+          </View>
+        </Animated.View>
       );
     }
 
     if (item.type === 'header') {
-      // subtle section label with animation
-      const headerDelay = index * 30;
-      const headerStyle = {
-        opacity: sheetFade.interpolate({
-          inputRange: [0, 0.3, 1],
-          outputRange: [0, 0, 1],
-          extrapolate: 'clamp',
-        }),
-        transform: [{
-          translateY: sheetFade.interpolate({
-            inputRange: [0, 0.3, 1],
-            outputRange: [10, 10, 0],
-            extrapolate: 'clamp',
-          }),
-        }],
-      };
-
       return (
-        <Animated.View key={item.id} style={[styles.sectionHeader, headerStyle]}>
-          <Text style={styles.sectionTitle}>{item.title}</Text>
+        <Animated.View
+          key={item.id}
+          entering={FadeInDown.delay(index * 30).duration(180)}
+          style={styles.sectionHeader}
+        >
+          <Text style={styles.sectionTitle}>{t(`providers.${item.title.toLowerCase()}`, { defaultValue: item.title })}</Text>
         </Animated.View>
       );
     }
@@ -202,34 +199,16 @@ console.log(modelKey,"modelKey");
     const next = sections[index + 1];
     const showDivider = next && next.type === 'row';
 
-    // Staggered animation for rows
-    const rowDelay = index * 40;
-    const rowStyle = {
-      opacity: sheetFade.interpolate({
-        inputRange: [0, 0.2 + rowDelay / 1000, 0.4 + rowDelay / 1000, 1],
-        outputRange: [0, 0, 0.3, 1],
-        extrapolate: 'clamp',
-      }),
-      transform: [{
-        translateY: sheetFade.interpolate({
-          inputRange: [0, 0.2 + rowDelay / 1000, 0.4 + rowDelay / 1000, 1],
-          outputRange: [15, 15, 5, 0],
-          extrapolate: 'clamp',
-        }),
-      }, {
-        scale: sheetFade.interpolate({
-          inputRange: [0, 0.2 + rowDelay / 1000, 0.4 + rowDelay / 1000, 1],
-          outputRange: [0.95, 0.95, 0.98, 1],
-          extrapolate: 'clamp',
-        }),
-      }],
-    };
-
     return (
-      <Animated.View style={rowStyle}>
+      <Animated.View entering={FadeInDown.delay(index * 40).duration(220)}>
         <Pressable
-          onPress={() => onPick(item.key)}
-          android_ripple={{ color: colors.border }}
+          onPress={() => {
+            if (item.key !== modelKey) Haptic.trigger('notificationSuccess');
+            else Haptic.trigger('selection');
+            setModel(item.key);
+            runClose();
+          }}
+          android_ripple={{ color: '#1A1A1D' }}
           style={({ pressed }) => [
             styles.cardRow,
             selected && styles.cardRowSelected,
@@ -237,8 +216,8 @@ console.log(modelKey,"modelKey");
           ]}
           accessibilityRole="menuitem"
           accessibilityState={{ selected }}
-          accessibilityLabel={`${item.name} model`}
-          accessibilityHint={selected ? "Currently selected model" : `Select ${item.name} model`}
+          accessibilityLabel={t('modelSelector.modelLabel', { name: item.name })}
+          accessibilityHint={selected ? t('modelSelector.currentlySelected') : t('modelSelector.selectHint', { name: item.name })}
         >
           <SvgIcon name={item.icon} size={22} color={colors.textSecondary} />
 
@@ -250,8 +229,21 @@ console.log(modelKey,"modelKey");
               {!!item.labels?.length && (
                 <View style={styles.badgeWrap}>
                   {item.labels.map(lbl => (
-                    <View key={lbl} style={[styles.badge, lbl === 'NEW' && styles.badgeNew, lbl === 'BEST' && styles.badgeBest]}>
-                      <Text style={[styles.badgeText, lbl === 'NEW' && styles.badgeTextNew, lbl === 'BEST' && styles.badgeTextBest]}>
+                    <View
+                      key={lbl}
+                      style={[
+                        styles.badge,
+                        lbl === 'NEW' && styles.badgeNew,
+                        lbl === 'BEST' && styles.badgeBest,
+                      ]}
+                    >
+                      <Text
+                        style={[
+                          styles.badgeText,
+                          lbl === 'NEW' && styles.badgeTextNew,
+                          lbl === 'BEST' && styles.badgeTextBest,
+                        ]}
+                      >
                         {lbl}
                       </Text>
                     </View>
@@ -264,7 +256,7 @@ console.log(modelKey,"modelKey");
             </Text>
           </View>
 
-          {selected ? <Text style={styles.check}>✓</Text> : null}
+          {selected ? <SvgIcon name="check" size={18} color={colors.primary} /> : null}
         </Pressable>
 
         {showDivider && <View style={styles.divider} />}
@@ -277,24 +269,26 @@ console.log(modelKey,"modelKey");
   return (
     <>
       {/* Trigger pill */}
-      <Animated.View style={{ transform: [{ scale: triggerScale }] }}>
+      <Animated.View style={triggerStyle}>
         <Pressable
           style={styles.trigger}
           onPress={runOpen}
           accessibilityRole="button"
-          accessibilityLabel={`Current model: ${current.name}. Tap to change model.`}
-          accessibilityHint="Opens model selection menu"
+          accessibilityLabel={t('modelSelector.currentModel', { name: current.name })}
+          accessibilityHint={t('modelSelector.openHint')}
         >
-          <SvgIcon name={current.icon} size={18} color={colors.textSecondary} />
+          <SvgIcon name={current.icon} size={22} color={colors.textSecondary} />
           <Text numberOfLines={1} style={styles.triggerText}>{current.name}</Text>
-          <Animated.Text style={[styles.triggerArrow, arrowStyle]}>▾</Animated.Text>
+          <Animated.View style={[styles.arrowContainer, arrowStyle]}>
+            <SvgIcon name="chevron-down" size={20} color={colors.textSecondary} />
+          </Animated.View>
         </Pressable>
       </Animated.View>
 
       {/* Modal */}
       <Modal transparent visible={open} statusBarTranslucent animationType="none" onRequestClose={runClose}>
         {/* Overlay */}
-        <Animated.View style={[styles.overlay, { opacity: overlay }]}>
+        <Animated.View style={[styles.overlay, overlayStyle]}>
           <Pressable style={StyleSheet.absoluteFill} onPress={runClose} />
         </Animated.View>
 
@@ -304,37 +298,38 @@ console.log(modelKey,"modelKey");
             styles.panel,
             {
               marginTop: insets.top + 56,
-              maxHeight: Math.min(Dimensions.get('window').height * 0.8, 620),
-              transform: [{ translateY: dropY }, { scale: sheetScale }],
-              opacity: sheetFade,
+              maxHeight: Math.min(Dimensions.get('window').height * 0.7, 520),
             },
+            panelStyle,
           ]}
           accessibilityRole="dialog"
           accessibilityViewIsModal
           importantForAccessibility="yes"
         >
-          {/* Panel header */}
-          <View style={styles.panelHeader}>
-            <Text style={styles.panelTitle}>Choose a model</Text>
-            <Pressable hitSlop={10} onPress={runClose}>
-              <Text style={styles.close}>✕</Text>
-            </Pressable>
-          </View>
+           {/* Header with close */}
+           <View style={styles.panelHeader}>
+             <View style={styles.panelHeaderRow}>
+               <Text style={styles.panelTitle}>{t('modelSelector.title')}</Text>
+               <Pressable hitSlop={10} onPress={runClose} accessibilityLabel={t('modelSelector.closeLabel')}>
+                 <Text style={styles.close}>✕</Text>
+               </Pressable>
+             </View>
+           </View>
 
           {/* Search input */}
           <View style={styles.searchContainer}>
             <Text style={styles.searchIcon}>🔍</Text>
             <TextInput
               style={styles.searchInput}
-              placeholder="Search models..."
+              placeholder={t('modelSelector.searchPlaceholder')}
               placeholderTextColor={colors.textSecondary}
               value={searchQuery}
               onChangeText={setSearchQuery}
               autoCorrect={false}
               autoCapitalize="none"
               returnKeyType="search"
-              accessibilityLabel="Search models"
-              accessibilityHint="Type to filter available models"
+              accessibilityLabel={t('modelSelector.searchLabel')}
+              accessibilityHint={t('modelSelector.searchHint')}
             />
             {searchQuery.length > 0 && (
               <Pressable onPress={() => setSearchQuery('')} style={styles.clearButton}>
@@ -365,18 +360,21 @@ console.log(modelKey,"modelKey");
 function glyphFor(provider, key) {
   const p = (provider || '').toLowerCase();
   const k = String(key || '').toLowerCase();
-
   if (/openai/.test(p) || /gpt/i.test(k)) return 'gpt';
   if (/anthropic/.test(p) || /claude/i.test(k)) return 'claude';
   if (/google/.test(p) || /gemini/i.test(k)) return 'gemini';
   if (/xai/.test(p) || /grok/i.test(k)) return 'grok';
-
-  return 'gpt'; // default fallback
+  return 'gpt';
 }
 function descriptionFor(key, info) {
   const map = {
-    'gpt-4o': 'Most powerful AI model',
-    'gpt-4o-mini': 'Fast for everyday tasks',
+    'gpt-5': 'Flagship general intelligence',
+    'gpt-5-chat-latest': 'Flagship chat model (great streaming)',
+    'gpt-5-mini': 'Fast, lower-cost GPT-5 tier',
+    'gpt-5-nano': 'Ultra-cheap micro model for simple tasks',
+    'o4-mini': 'Efficient reasoning model with strong quality',
+    'gpt-4.1-mini': 'Compact GPT-4.1 family model',
+    'gpt-4.1-nano': 'Tiny GPT-4.1 model for quick replies',
     'claude-3-haiku': 'Fast and efficient model',
     'claude-3.7-sonnet': 'Advanced reasoning model',
     'gemini-2.5-pro': "Google's best model",
@@ -384,15 +382,23 @@ function descriptionFor(key, info) {
   };
   return map[key] || `${info?.provider || 'AI'} model`;
 }
-function labelsFor(key) {
+
+function labelsFor(key, t) {
   const map = {
-    'gpt-4o': ['NEW', 'BEST'],
-    'gpt-4o-mini': ['NEW'],
+    'gpt-5': ['NEW', 'BEST'],
+    'gpt-5-chat-latest': ['NEW', 'BEST'],
+    'gpt-5-mini': ['NEW'],
+    'gpt-5-nano': ['NEW'],
+    'o4-mini': ['NEW'],
+    'gpt-4.1-mini': [],
+    'gpt-4.1-nano': [],
     'claude-3.7-sonnet': ['NEW'],
     'grok-4': ['NEW'],
   };
+
   return map[key] || [];
 }
+
 function titleForProvider(p) {
   if (p === 'openai') return 'OpenAI';
   if (p === 'anthropic') return 'Anthropic';
@@ -408,16 +414,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    paddingHorizontal: 14,
-    paddingVertical: Platform.OS === 'ios' ? 8 : 6,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
+    paddingHorizontal: 12,
+    paddingVertical: Platform.OS === 'ios' ? 10 : 8,
     alignSelf: 'flex-start',
+    backgroundColor: colors.surface,
+    borderRadius: 14,
+    marginBottom: 14,
   },
   triggerText: { maxWidth: 160, fontSize: 14, fontWeight: '700', color: colors.text },
-  triggerArrow: { fontSize: 12, color: colors.textSecondary },
+  arrowContainer: { backgroundColor: colors.surface, borderRadius: 10, padding: 2 },
 
   /* overlay */
   overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.5)' },
@@ -425,14 +430,14 @@ const styles = StyleSheet.create({
   /* panel */
   panel: {
     alignSelf: 'center',
-    width: '94%',
-    maxWidth: 460,
-    backgroundColor: colors.surface,
-    borderRadius: 20,
+    width: '90%',
+    maxWidth: 380,
+    backgroundColor: '#0D0D0F',
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: colors.border,
-    // enhanced shadow
+    borderWidth: 0,
+    // shadow
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 20 },
     shadowRadius: 32,
@@ -440,17 +445,14 @@ const styles = StyleSheet.create({
     elevation: 24,
   },
   panelHeader: {
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 8,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: colors.border,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: colors.surface,
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 12,
+    borderBottomWidth: 0,
+    backgroundColor: '#0D0D0F',
   },
-  panelTitle: { fontSize: 14, fontWeight: '800', color: colors.text, letterSpacing: 0.2 },
+   panelHeaderRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+   panelTitle: { fontSize: 14, fontWeight: '800', color: colors.text, letterSpacing: 0.2 },
   close: { fontSize: 18, color: colors.text },
 
   /* search */
@@ -461,23 +463,20 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    backgroundColor: colors.surfaceElevated,
+    backgroundColor: '#1A1A1D',
     borderRadius: 12,
-    borderWidth: 1,
-    borderColor: colors.border,
+    borderWidth: 0,
   },
   searchIcon: { fontSize: 16, color: colors.textSecondary, marginRight: 8 },
-  searchInput: {
-    flex: 1,
-    fontSize: 14,
-    color: colors.text,
-    paddingVertical: 4,
-  },
+  searchInput: { flex: 1, fontSize: 14, color: colors.text, paddingVertical: 4 },
   clearButton: { padding: 4 },
   clearIcon: { fontSize: 14, color: colors.textSecondary },
 
   /* section header */
-  sectionHeader: { paddingHorizontal: 16, paddingTop: 12, paddingBottom: 6, backgroundColor: colors.surface },
+  sectionHeader: {
+    paddingHorizontal: 16, paddingTop: 12, paddingBottom: 6,
+    backgroundColor: '#0D0D0F', flexDirection: 'row', alignItems: 'center', gap: 8,
+  },
   sectionTitle: {
     fontSize: 11, fontWeight: '800', letterSpacing: 0.6,
     color: colors.textSecondary, textTransform: 'uppercase',
@@ -488,30 +487,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 14,
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
     paddingVertical: 12,
-    backgroundColor: colors.surface,
-    marginHorizontal: 8,
-    marginVertical: 2,
+    backgroundColor: 'transparent',
+    marginHorizontal: 6,
+    marginVertical: 3,
     borderRadius: 12,
-    borderWidth: 1,
-    borderColor: 'transparent',
   },
   cardRowSelected: {
-    backgroundColor: colors.surfaceElevated,
-    borderColor: colors.primary + '20',
+    backgroundColor: '#1A1A1D',
     shadowColor: colors.primary,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
     shadowOpacity: 0.1,
     elevation: 4,
   },
-  cardRowPressed: {
-    backgroundColor: colors.surfaceElevated,
-    transform: [{ scale: 0.98 }],
-  },
+  cardRowPressed: { backgroundColor: '#1A1A1D', transform: [{ scale: 0.98 }] },
 
-  divider: { height: StyleSheet.hairlineWidth, backgroundColor: colors.border, marginLeft: 48, marginRight: 8 },
+  divider: { height: StyleSheet.hairlineWidth, backgroundColor: '#2D2D30', marginLeft: 48, marginRight: 8 },
 
   titleBar: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 2 },
   rowTitle: { fontSize: 16, fontWeight: '700', color: colors.text },
@@ -519,41 +512,21 @@ const styles = StyleSheet.create({
   rowDesc: { fontSize: 13, color: colors.textSecondary },
   rowDescSel: { color: colors.text },
 
-  check: { fontSize: 18, color: colors.primary, fontWeight: '800', marginLeft: 8 },
-
   /* chips */
   badgeWrap: { flexDirection: 'row', gap: 6, flexShrink: 0 },
   badge: {
     paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999,
     backgroundColor: colors.surfaceElevated, borderWidth: 1, borderColor: colors.border,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowRadius: 2,
-    shadowOpacity: 0.1,
-    elevation: 2,
+    shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowRadius: 2, shadowOpacity: 0.1, elevation: 2,
   },
-  badgeNew: {
-    backgroundColor: colors.primary + '20',
-    borderColor: colors.primary,
-    shadowColor: colors.primary,
-    shadowOpacity: 0.2,
-  },
-  badgeBest: {
-    backgroundColor: '#6366F120',
-    borderColor: '#6366F1',
-    shadowColor: '#6366F1',
-    shadowOpacity: 0.2,
-  },
+  badgeNew: { backgroundColor: colors.primary + '20', borderColor: colors.primary, shadowColor: colors.primary, shadowOpacity: 0.2 },
+  badgeBest: { backgroundColor: '#6366F120', borderColor: '#6366F1', shadowColor: '#6366F1', shadowOpacity: 0.2 },
   badgeText: { fontSize: 10, fontWeight: '800', textTransform: 'uppercase', color: colors.textSecondary, letterSpacing: 0.5 },
   badgeTextNew: { color: colors.primary },
   badgeTextBest: { color: '#6366F1' },
 
-  /* empty state */
-  emptyState: {
-    alignItems: 'center',
-    paddingVertical: 40,
-    paddingHorizontal: 20,
-  },
+  /* empty */
+  emptyState: { alignItems: 'center', paddingVertical: 40, paddingHorizontal: 20 },
   emptyIcon: { fontSize: 32, marginBottom: 12, opacity: 0.6 },
   emptyTitle: { fontSize: 16, fontWeight: '600', color: colors.text, marginBottom: 4 },
   emptyMessage: { fontSize: 14, color: colors.textSecondary, textAlign: 'center', lineHeight: 20 },

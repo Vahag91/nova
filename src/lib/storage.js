@@ -50,20 +50,13 @@ export const Storage = {
   // DeviceId
   async getOrCreateDeviceId(makeId) {
     try {
-      console.log('Storage.getOrCreateDeviceId: Starting...');
       let id = await AsyncStorage.getItem(KEY_DEVICE_ID);
-      console.log('Storage.getOrCreateDeviceId: Existing ID:', id);
       if (!id) {
-        console.log('Storage.getOrCreateDeviceId: Creating new ID...');
         id = makeId();
-        console.log('Storage.getOrCreateDeviceId: Generated ID:', id);
         await AsyncStorage.setItem(KEY_DEVICE_ID, id);
-        console.log('Storage.getOrCreateDeviceId: Saved to storage');
       }
-      console.log('Storage.getOrCreateDeviceId: Returning ID:', id);
       return id;
     } catch (error) {
-      console.error('Storage.getOrCreateDeviceId: Error:', error);
       throw error;
     }
   },

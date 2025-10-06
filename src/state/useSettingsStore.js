@@ -9,7 +9,7 @@ export const useSettingsStore = create((set, get) => ({
   hydrated: false,
 
   // current selection
-  model: 'gpt-4o-mini',
+  model: 'gpt-5-nano',
 
   // GLOBAL default temperature (fallback)
   temperature: 0.7, // keeps old name so old code still works
@@ -64,7 +64,6 @@ export const useSettingsStore = create((set, get) => ({
         await AsyncStorage.removeItem(SETTINGS_V2);
         await AsyncStorage.removeItem(SETTINGS_V1);
       } catch (e) {
-        console.warn('⚠️ [STORE] Failed to clear cache:', e);
       }
       
       const { fetchModels } = await import('../api/models');
@@ -74,7 +73,6 @@ export const useSettingsStore = create((set, get) => ({
         return true;
       }
     } catch (error) {
-      console.error('❌ [STORE] Force refresh failed:', error);
     }
     return false;
   },
@@ -106,7 +104,7 @@ export const useSettingsStore = create((set, get) => ({
       if (raw2) {
         const data = JSON.parse(raw2);
         set({
-          model: data.model ?? 'gpt-4o-mini',
+          model: data.model ?? 'gpt-5-nano',
           temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
           perModelTemp: data.perModelTemp || {},
         });
@@ -119,7 +117,7 @@ export const useSettingsStore = create((set, get) => ({
       if (raw1) {
         const data = JSON.parse(raw1);
         set({
-          model: data.model ?? 'gpt-4o-mini',
+          model: data.model ?? 'gpt-5-nano',
           temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
           perModelTemp: {},
         });
@@ -140,7 +138,7 @@ export const useSettingsStore = create((set, get) => ({
       await AsyncStorage.removeItem(SETTINGS_V1);
     } catch {}
     set({
-      model: 'gpt-4o-mini',
+      model: 'gpt-5-nano',
       temperature: 0.7,
       perModelTemp: {},
       // keep models as-is

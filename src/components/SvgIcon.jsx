@@ -176,6 +176,15 @@ export default function SvgIcon({ name, size = 16, color = '#666', style }) {
             />
           </Svg>
         );
+      case 'copy':
+        return (
+          <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
+            <Path 
+              d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z" 
+              fill={color}
+            />
+          </Svg>
+        );
       case 'copygrey':
         return (
           <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
@@ -369,6 +378,30 @@ export default function SvgIcon({ name, size = 16, color = '#666', style }) {
         return (
           <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
             <Path d="M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm0-240Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm40-360q17 0 28.5-11.5T520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480Z" fill={color} />
+          </Svg>
+        );
+      case 'plus':
+        return (
+          <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
+            <Path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" fill={color} />
+          </Svg>
+        );
+      case 'menu':
+        return (
+          <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
+            <Path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" fill={color} />
+          </Svg>
+        );
+      case 'chevron-down':
+        return (
+          <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
+            <Path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" fill={color} />
+          </Svg>
+        );
+      case 'check':
+        return (
+          <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
+            <Path d="M382-240 154-468l56-56 172 172 368-368 56 56-424 424Z" fill={color} />
           </Svg>
         );
       default:

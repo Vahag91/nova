@@ -20,8 +20,10 @@ import { appendStream, getStream, clearStream } from '../lib/streamingBuffer';
 import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
 import { buildPayload } from '../lib/payloadBuilder';
 import { useVoiceInput } from '../hooks/useVoiceInput';
+import { useTranslation } from 'react-i18next';
 
 export default function Chat({ navigation }) {
+  const { t } = useTranslation();
   // Stores
   const threads = useThreadsStore(s => s.threads);
   const activeThreadId = useThreadsStore(s => s.activeThreadId);
@@ -46,7 +48,7 @@ export default function Chat({ navigation }) {
   const model = useSettingsStore(s => s.model);
   const getEffectiveTemp = useSettingsStore(s => s.getEffectiveTemp);
   const temperature = getEffectiveTemp(model);
-
+console.log('model', model);
   // Local
   const messageListRef = useRef(null);
   const didInitialScrollRef = useRef(false);
@@ -77,29 +79,15 @@ export default function Chat({ navigation }) {
 
   const onFinalText = useCallback((text) => {
     const t = (text || '').trim();
-    console.log('🎤 Chat: onFinalText received', { 
-      text: t, 
-      length: t.length, 
-      timestamp: Date.now() 
-    });
     if (!t) return;
     setVoiceText(t);
   }, []);
 
   const onPartialText = useCallback((text) => {
-    console.log('🎤 Chat: onPartialText received', { 
-      text: text || '', 
-      length: (text || '').length, 
-      timestamp: Date.now() 
-    });
     setVoiceText(text || '');
   }, []);
   
   const onErrorText = useCallback((msg) => {
-    console.log('🎤 Chat: onErrorText received', { 
-      error: msg, 
-      timestamp: Date.now() 
-    });
     setError(msg);
   }, []);
   
@@ -114,8 +102,8 @@ export default function Chat({ navigation }) {
   useEffect(() => { if (!hydrated) hydrate(); }, [hydrated, hydrate]);
   useEffect(() => {
     if (hydrated && !isPrivate && !threads.length) {
-      const t = createThread({ title: 'New chat', model });
-      setActiveThread(t.id);
+      const th = createThread({ title: t('history.newChat'), model });
+      setActiveThread(th.id);
     }
   }, [hydrated, threads.length, isPrivate, createThread, setActiveThread, model]);
 
@@ -157,9 +145,7 @@ export default function Chat({ navigation }) {
   // App background: stop stream + voice
   useEffect(() => {
     const sub = AppState.addEventListener('change', s => {
-      console.log('🎤 Chat - App state changed to:', s);
       if (s !== 'active' && abortRef.current) {
-        console.log('🎤 Chat - App backgrounded, stopping stream');
         abortRef.current.abort(); abortRef.current = null; setStreaming(false);
       }
       if (s !== 'active' && isRecording) {
@@ -209,7 +195,7 @@ export default function Chat({ navigation }) {
       (response) => {
         if (response?.didCancel) return;
         if (response?.errorCode || response?.errorMessage) {
-          Alert.alert('Image picker error', response?.errorMessage || response?.errorCode);
+          Alert.alert(t('chat.imagePickerErrorTitle'), response?.errorMessage || response?.errorCode);
           return;
         }
         addPickedAssets(response?.assets || []);
@@ -222,11 +208,9 @@ export default function Chat({ navigation }) {
 
   // ==== Send flow ====
   async function onSend(overrideText) {
-    console.log('🎤 Chat.onSend called with overrideText:', overrideText, 'current input:', input);
     setError('');
     const textRaw = typeof overrideText === 'string' ? overrideText : input;
     const text = (textRaw || '').trim();
-    console.log('🎤 Chat.onSend - final text to send:', text);
     const hasText = !!text;
     const hasImages = attachments.length > 0;
     if (!hasText && !hasImages) return;
@@ -234,7 +218,7 @@ export default function Chat({ navigation }) {
 
     const MAX_CHARS = 16000;
     if (text.length > MAX_CHARS) {
-      setError(`Message too long (${text.length}). Limit is ${MAX_CHARS}.`);
+      setError(t('chat.messageTooLong', { length: text.length, limit: MAX_CHARS }));
       return;
     }
 
@@ -263,7 +247,7 @@ export default function Chat({ navigation }) {
     const threadForContext = { ...activeThread, messages: [ ...(activeThread.messages || []), mUser ] };
     await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
     const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
-    const modelForThisSend = hasImages ? 'gpt-4o' : model;
+    const modelForThisSend = model;
 
     setStreaming(true);
     const deviceId = await ensureDeviceId();
@@ -293,9 +277,7 @@ export default function Chat({ navigation }) {
   }
 
   function onStop() {
-    console.log('🎤 Chat.onStop called, isRecording:', isRecording, 'streaming:', !!abortRef.current);
     if (abortRef.current) {
-      console.log('🎤 Chat.onStop - stopping stream');
       abortRef.current.abort(); abortRef.current = null; setStreaming(false);
       if (streamingMsgId) clearStream(streamingMsgId); setStreamingMsgId(null);
     }
@@ -303,7 +285,6 @@ export default function Chat({ navigation }) {
       stopVoice();
     }
   }
-
   function onRetryFromHere(message) { setInput(message?.content || ''); }
   function onInsertImagesMarkdown(md) {
     const a = newAssistantMessage(md);
@@ -312,13 +293,13 @@ export default function Chat({ navigation }) {
     requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
   }
 
-  if (!activeThread) return <View style={styles.container}><Text>Loading…</Text></View>;
+  if (!activeThread) return <View style={styles.container}><Text>{t('chat.loading')}</Text></View>;
   if (!hydrated) {
     return (
       <View style={styles.container}>
-        <View style={styles.header}><Text style={styles.headerTitle}>Loading...</Text></View>
+        <View style={styles.header}><Text style={styles.headerTitle}>{t('chat.loading')}</Text></View>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ color: colors.textSecondary }}>Loading chat...</Text>
+          <Text style={{ color: colors.textSecondary }}>{t('chat.loadingChat')}</Text>
         </View>
       </View>
     );
@@ -328,15 +309,9 @@ export default function Chat({ navigation }) {
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={{ flex: 1 }}>
-          {isPrivate && (
-            <View style={styles.privateBanner}>
-              <Text style={styles.privateBannerText}>Private chat • not in History • removed on exit</Text>
-            </View>
-          )}
-
           {offline && (
             <View style={{margin:16,padding:10,borderRadius:8,backgroundColor: colors.warning + '20',borderWidth:1,borderColor: colors.warning}}>
-              <Text style={{color: colors.warning,fontSize:12}}>You're offline. Messages can't be sent.</Text>
+              <Text style={{color: colors.warning,fontSize:12}}>{t('chat.offlineBanner')}</Text>
             </View>
           )}
 
@@ -350,8 +325,8 @@ export default function Chat({ navigation }) {
             <Reanimated.View style={[{ flex: 1 }, animatedContentStyle]}>
               <View style={styles.emptyState}>
                 <View style={styles.emptyStateIcon}><Text style={styles.emptyStateIconText}>💬</Text></View>
-                <Text style={styles.emptyStateTitle}>{isPrivate ? 'Private Chat' : 'How can I help?'}</Text>
-                <Text style={styles.emptyStateSubtitle}>{isPrivate ? 'This chat will not appear in your chat history' : 'Start a conversation with AI'}</Text>
+                <Text style={styles.emptyStateTitle}>{isPrivate ? t('chat.privateTitle') : t('chat.emptyTitle')}</Text>
+                <Text style={styles.emptyStateSubtitle}>{isPrivate ? t('chat.privateSubtitle') : t('chat.emptySubtitle')}</Text>
                 {!isPrivate && <SuggestionCards onSuggestionPress={(s) => setInput(s.title)} />}
               </View>
             </Reanimated.View>
@@ -378,29 +353,15 @@ export default function Chat({ navigation }) {
               onOpenCameraPress={onOpenCameraPress}
               onClipboardPress={() => {}}
               onMicPress={() => {
-                const startTime = performance.now();
-                console.log('🎤 Chat: Mic button pressed', { 
-                  isRecording, 
-                  showVoiceOverlay, 
-                  timestamp: Date.now() 
-                });
-                
                 if (isRecording) {
-                  console.log('🎤 Chat: Stopping voice recording');
                   stopVoice();
                   setShowVoiceOverlay(false);
                 } else {
-                  console.log('🎤 Chat: Starting voice recording');
                   setInput('');
                   startVoice();
                   setShowVoiceOverlay(true);
                   setVoiceText('');
                 }
-                
-                const duration = performance.now() - startTime;
-                console.log('🎤 Chat: Mic button action completed', { 
-                  duration: duration.toFixed(2) + 'ms' 
-                });
               }}
               streaming={streaming}
               offline={offline}
@@ -415,32 +376,13 @@ export default function Chat({ navigation }) {
               isRecording={isRecording}
               transcript={voiceText}
               onInsert={() => {
-                const startTime = performance.now();
-                console.log('🎤 Chat: VoiceOverlay onInsert called', { 
-                  voiceText: voiceText?.trim(), 
-                  isRecording, 
-                  timestamp: Date.now() 
-                });
                 setShowVoiceOverlay(false);
                 if (isRecording) stopVoice();
                 if (voiceText?.trim()) setInput(voiceText.trim());
-                const duration = performance.now() - startTime;
-                console.log('🎤 Chat: VoiceOverlay onInsert completed', { 
-                  duration: duration.toFixed(2) + 'ms' 
-                });
               }}
               onClose={() => {
-                const startTime = performance.now();
-                console.log('🎤 Chat: VoiceOverlay onClose called', { 
-                  isRecording, 
-                  timestamp: Date.now() 
-                });
                 setShowVoiceOverlay(false);
                 if (isRecording) stopVoice();
-                const duration = performance.now() - startTime;
-                console.log('🎤 Chat: VoiceOverlay onClose completed', { 
-                  duration: duration.toFixed(2) + 'ms' 
-                });
               }}
             />
           </Reanimated.View>
@@ -452,8 +394,6 @@ export default function Chat({ navigation }) {
 
 const styles = StyleSheet.create({
   container:{ flex:1, backgroundColor: '#000000' },
-  privateBanner:{ marginHorizontal:13, marginTop:6, padding:6, borderRadius:6, backgroundColor: colors.privateBackground, borderWidth:1, borderColor: colors.privateBorder },
-  privateBannerText:{ fontSize:11, color: colors.privateText },
   error:{ backgroundColor: colors.error + '20', padding:10, borderRadius:10, margin:13, borderLeftWidth:3, borderLeftColor: colors.error },
   emptyState:{ flex:1, alignItems:'center', justifyContent:'center', paddingHorizontal:16, paddingVertical:40 },
   emptyStateIcon:{ width:64, height:64, borderRadius:32, backgroundColor: colors.surface, alignItems:'center', justifyContent:'center', marginBottom:19 },

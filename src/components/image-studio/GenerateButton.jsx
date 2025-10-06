@@ -7,6 +7,7 @@ import {
   Animated,
 } from 'react-native';
 import SvgIcon from '../SvgIcon';
+import { useTranslation } from 'react-i18next';
 
 const GenerateButton = memo(({
   onPress,
@@ -19,6 +20,7 @@ const GenerateButton = memo(({
   onAdvancedParams,
   style, // Allow custom styling
 }) => {
+  const { t } = useTranslation();
   return (
     <View style={[styles.ctaContainer, style]}>
       <Animated.View style={{ transform: [{ scale: animatedValue || 1 }] }}>
@@ -28,17 +30,17 @@ const GenerateButton = memo(({
           }}
           disabled={disabled}
           style={styles.cta}
-          accessibilityLabel={busy ? "Generating image" : "Generate image"}
-          accessibilityHint="Tap to generate an image based on your description"
+          accessibilityLabel={busy ? t('imagesStudio.generating') : t('imagesStudio.generate')}
+          accessibilityHint={t('imagesStudio.generateImageHint')}
         >
           {busy ? (
             <View style={styles.ctaLoading}>
               <ActivityIndicator color="#FFFFFF" size="small" />
-              <Text style={styles.ctaLoadingText}>Generating...</Text>
+              <Text style={styles.ctaLoadingText}>{t('imagesStudio.generating')}</Text>
             </View>
           ) : (
             <View style={styles.ctaContent}>
-              <Text style={styles.ctaText}>Generate</Text>
+              <Text style={styles.ctaText}>{t('imagesStudio.generate')}</Text>
               <SvgIcon name="stars" size={20} color="#FFFFFF" />
             </View>
           )}

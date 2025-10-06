@@ -10,9 +10,11 @@ import Settings from '../screens/Settings.jsx';
 import ImagesStudio from '../screens/ImagesStudio';
 import ModelSelector from '../components/ModelSelector';
 import SvgIcon from '../components/SvgIcon';
+import CustomDrawerContent from './CustomDrawerContent';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
+import { useTranslation } from 'react-i18next';
 
 const Drawer = createDrawerNavigator();
 
@@ -38,14 +40,18 @@ function ChatHeaderRight() {
 
   return (
     <TouchableOpacity 
-      style={[
-        {paddingHorizontal:10, paddingVertical:6}
-      ]}
+      style={{
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+        backgroundColor: isPrivate ? colors.primary : colors.surface,
+        borderRadius: 14,
+        marginBottom: 14,
+      }}
       onPress={handlePrivateChat}
     >
       <SvgIcon 
         name="lock" 
-        size={20} 
+        size={22} 
         color="#FFFFFF" 
       />
     </TouchableOpacity>
@@ -54,13 +60,14 @@ function ChatHeaderRight() {
 
 // Header right component for new chat button
 function HistoryHeaderRight({ navigation }) {
+  const { t } = useTranslation();
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
 
   const handleNewChat = () => {
     Haptic.trigger('impactLight');
-    const t = createThread({ title: 'New chat' });
-    setActiveThread(t.id);
+    const th = createThread({ title: t('history.newChat') });
+    setActiveThread(th.id);
     navigation?.navigate?.('Chat');
   };
 
@@ -78,49 +85,71 @@ function HistoryHeaderRight({ navigation }) {
 }
 
 export default function DrawerNavigator() {
+  const { t } = useTranslation();
   return (
     <NavigationContainer>
       <Drawer.Navigator 
         initialRouteName="Chat"
+        drawerContent={(props) => <CustomDrawerContent {...props} />}
         screenOptions={{
           headerStyle: {
             backgroundColor: '#000000',
+            borderBottomWidth: 0,
           },
           headerTintColor: colors.text,
           headerTitleStyle: {
             color: colors.text,
+            fontFamily: 'Lato-Bold',
           },
           drawerStyle: {
-            backgroundColor: '#000000',
+            backgroundColor: colors.background,
+            width: 280,
           },
-          drawerActiveTintColor: colors.primary,
+          drawerActiveTintColor: colors.accent,
           drawerInactiveTintColor: colors.textSecondary,
+          drawerType: 'slide',
+          swipeEnabled: true,
+          swipeEdgeWidth: 50,
         }}
       >
         <Drawer.Screen 
           name="Chat" 
           component={Chat}
-          options={{
+          options={({ navigation }) => ({
             headerTitle: () => <ChatHeaderCenter />,
             headerRight: () => <ChatHeaderRight />,
-          }}
+            headerLeft: () => (
+              <TouchableOpacity 
+                style={{
+                  paddingHorizontal: 12,
+                  paddingVertical: 8,
+                  backgroundColor: colors.surface,
+                  borderRadius: 14,
+                  marginBottom: 14,
+                }}
+                onPress={() => navigation.toggleDrawer()}
+              >
+                <SvgIcon name="menu" size={22} color={colors.text} />
+              </TouchableOpacity>
+            ),
+          })}
         />
         <Drawer.Screen 
           name="History" 
           component={History}
           options={({ navigation }) => ({
-            headerTitle: 'Chats History',
+            headerTitle: t('navigation.history'),
             headerRight: () => <HistoryHeaderRight navigation={navigation} />,
           })}
         />
-        <Drawer.Screen name="Assistants" component={Assistants} />
-        <Drawer.Screen name="Settings" component={Settings} />
+        <Drawer.Screen name="Assistants" component={Assistants} options={{ title: t('navigation.assistants') }} />
+        <Drawer.Screen name="Settings" component={Settings} options={{ title: t('navigation.settings') }} />
         <Drawer.Screen 
           name="ImagesStudio" 
           component={ImagesStudio}
           options={{
             headerShown: false, // Hide navigation header completely
-            drawerItemStyle: { display: 'none' }, // Hide from drawer menu
+            title: t('navigation.imagesStudio'),
           }}
         />
       </Drawer.Navigator>

@@ -5,14 +5,6 @@ import { SUPABASE_BASE, SUPABASE_ANON_KEY } from '../config/endpoints';
 export async function uploadImage(fileOrUri: { uri: string; type?: string; name?: string } | Blob | string): Promise<string> {
   const url = `${SUPABASE_BASE}/functions/v1/image-upload`;
   
-  console.log('📤 [UPLOAD] Starting image upload:', {
-    url,
-    type: typeof fileOrUri,
-    isString: typeof fileOrUri === 'string',
-    isBlob: fileOrUri instanceof Blob,
-    hasUri: !!(fileOrUri as any)?.uri
-  });
-  
   let body;
   if (typeof fileOrUri === 'string') {
     // Handle data URI or base64 string
@@ -27,7 +19,6 @@ export async function uploadImage(fileOrUri: { uri: string; type?: string; name?
 
 
   try {
-    console.log('📤 [UPLOAD] Sending upload request...');
     const res = await fetch(url, {
       method: 'POST',
       headers: { 
@@ -37,31 +28,14 @@ export async function uploadImage(fileOrUri: { uri: string; type?: string; name?
       body: JSON.stringify(body),
     });
     
-    console.log('📥 [UPLOAD] Upload response:', {
-      status: res.status,
-      statusText: res.statusText,
-      ok: res.ok
-    });
-    
-    
     if (!res.ok) {
       const errorText = await res.text().catch(() => 'Upload failed');
-      console.error('❌ [UPLOAD] Upload failed:', {
-        status: res.status,
-        statusText: res.statusText,
-        error: errorText
-      });
       throw new Error(`Upload failed: ${res.status} ${errorText}`);
     }
     
     const j = await res.json();
     return j.imageUUID as string;
   } catch (error) {
-    console.error('❌ [UPLOAD] Upload error:', {
-      message: error?.message,
-      type: error?.constructor?.name,
-      stack: error?.stack?.split('\n')[0]
-    });
     throw error;
   }
 }

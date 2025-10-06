@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { Storage } from '../lib/storage';
-import { createImages } from '../api/images';            // existing OpenAI/DALL·E function
-import { createRunwareImages } from '../api/runware';    // NEW
+import { createImages } from '../api/images';
+import { createRunwareImages } from '../api/runware';
 import { toLocalPath, deleteLocalFile } from '../lib/imageDownloader';
 import { normalizeImageUri, cacheToFile, cleanupCorruptedCache } from '../lib/imageUtils';
 import RNFS from 'react-native-fs';
@@ -65,7 +65,6 @@ export const useImagesStore = create((set, get) => ({
                 }
               }
             } catch (error) {
-              console.warn('Failed to validate image file:', img.url, error);
             }
           }
         }
@@ -225,7 +224,6 @@ export const useImagesStore = create((set, get) => ({
             createdAt: Date.now() 
           });
         } catch (error) {
-          console.warn('Failed to auto-insert image to thread:', error);
         }
       }
       

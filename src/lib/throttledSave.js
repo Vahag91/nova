@@ -23,7 +23,6 @@ function flushQueue() {
       return Storage.saveThreads(finalThreads);
     })
     .catch(error => {
-      console.error('ThrottledSave: Error flushing queue:', error);
     })
     .finally(() => {
       saveTimer = null; // Reset timer after flush
@@ -54,7 +53,6 @@ export const throttledSave = {
         return Storage.saveThreads(finalThreads);
       })
       .catch(error => {
-        console.error('ThrottledSave: Error during immediate save:', error);
       });
   },
   // For testing/debugging

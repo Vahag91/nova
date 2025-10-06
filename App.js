@@ -7,6 +7,7 @@ import { useThreadsStore } from './src/state/useThreadsStore';
 import { useImagesStore } from './src/state/useImagesStore';
 import { ensureDeviceId } from './src/lib/deviceId';
 import { MODELS_URL, SUPABASE_ANON_KEY } from './src/config/endpoints';
+import './src/i18n';
 
 
 export default function App() {
@@ -26,7 +27,6 @@ export default function App() {
   useEffect(() => {
     (async () => {
       const deviceId = await ensureDeviceId();
-      console.log('Device ID:', deviceId);
       setDeviceIdReady(true);
     })();
     hydrateSettings();
@@ -43,17 +43,14 @@ export default function App() {
         });
         if (r.ok) {
           const json = await r.json();
-          console.log('App - models API response:', json);
           // The API might return models directly or in a models property
           const modelsData = json?.models || json;
           if (modelsData && typeof modelsData === 'object') {
             setModels(modelsData);
           }
         } else {
-          console.log('Models fetch failed:', r.status);
         }
       } catch (e) {
-        console.log('Models fetch error:', e?.message);
       } finally {
         setModelsLoaded(true);
       }

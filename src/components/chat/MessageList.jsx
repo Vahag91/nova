@@ -3,6 +3,7 @@ import React, {
   forwardRef, useImperativeHandle
 } from 'react';
 import { View, StyleSheet, FlatList, Platform, TouchableOpacity } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import Reanimated, { FadeInDown, FadeOutDown } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import MessageBubble from './MessageBubble';
@@ -43,6 +44,7 @@ const MessageListCore = function MessageList({
   threadKey,
 }, ref) {
   const listRef = useRef(null);
+  const { t } = useTranslation();
 
   const [showJump, setShowJump] = useState(false);
 
@@ -236,7 +238,7 @@ const MessageListCore = function MessageList({
                 autoPinRef.current = true;
                 setShowJump(false);
               }}
-              accessibilityLabel="Scroll to latest message"
+              accessibilityLabel={t('chat.scrollToLatest')}
             >
               <Svg width={20} height={20} viewBox="0 -960 960 960" style={styles.arrowIcon}>
                 <Path

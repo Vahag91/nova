@@ -7,19 +7,19 @@ import Reanimated, {
   withTiming,
   withRepeat,
   withSpring,
+  withDelay,
   Easing,
   cancelAnimation,
-  runOnJS,
 } from 'react-native-reanimated';
 import Svg, { Defs, LinearGradient, Stop, Rect } from 'react-native-svg';
 import SvgIcon from '../SvgIcon';
 import { colors } from '../../styles/colors';
+import { useTranslation } from 'react-i18next';
 
 const BAR_COUNT = 18;
 
 // Smooth + gated behavior
 const PHASE_MS = 2400;
-const BASELINE = 0;         // no motion when silent
 const SPEAK_ENERGY = 0.54;  // modest amplitude while speaking
 const RISE_MS = 160;        // gentle ramp up
 const FALL_MS = 650;        // smooth fall after silence
@@ -39,6 +39,7 @@ function WaveBar({ i, phase, energy, offsets, centers }) {
 }
 
 export default function VoiceOverlay({ visible, isRecording, transcript, onInsert, onClose }) {
+  const { t } = useTranslation();
   const { height: screenH } = useWindowDimensions();
 
   // mount/unmount for exit anim
@@ -56,6 +57,14 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
   const overlayOpacity = useSharedValue(0);
   const sheetOffset = useSharedValue(480);
   const micPulse = useSharedValue(0);
+  const isOpen = useSharedValue(false);
+
+  // Spring config matching menu animation
+  const SPRING_CONFIG = {
+    duration: 1200,
+    overshootClamping: true,
+    dampingRatio: 0.8,
+  };
 
   // wave drivers (single envelope)
   const phase = useSharedValue(0);
@@ -92,12 +101,17 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
     if (visible) {
       overlayOpacity.value = withTiming(1, { duration: 220, easing: Easing.out(Easing.cubic) });
       sheetOffset.value = withSpring(0, { damping: 22, stiffness: 180, mass: 0.9, overshootClamping: true });
+      // Delay opening animation slightly
+      setTimeout(() => {
+        isOpen.value = true;
+      }, 50);
       micPulse.value = withRepeat(
         withTiming(1, { duration: 1200, easing: Easing.inOut(Easing.sin) }), 
         -1, 
         true
       );
     } else {
+      isOpen.value = false;
       overlayOpacity.value = withTiming(0, { duration: 220, easing: Easing.in(Easing.cubic) });
       sheetOffset.value = withTiming(480, { duration: 280, easing: Easing.in(Easing.cubic) });
       cancelAnimation(micPulse);
@@ -221,11 +235,33 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
     shadowRadius: 8 + micPulse.value * 10,
   }), [micPulse]);
 
+  // Staggered animations for different elements
+  const getElementStyle = (index) => {
+    return useAnimatedStyle(() => {
+      const delay = index * 60;
+      const scaleValue = isOpen.value ? 1 : 0;
+      const translateValue = isOpen.value ? 0 : 30;
+      
+      return {
+        opacity: withDelay(delay, withTiming(scaleValue, { duration: 200 })),
+        transform: [
+          { translateY: withDelay(delay, withSpring(translateValue, SPRING_CONFIG)) },
+          { scale: withDelay(delay, withSpring(scaleValue, SPRING_CONFIG)) },
+        ],
+      };
+    });
+  };
+
+  const titleStyle = getElementStyle(0);
+  const micStyle = getElementStyle(1);
+  const waveStyle = getElementStyle(2);
+  const buttonStyle = getElementStyle(3);
+
   const titleText = useMemo(() => {
-    const t = transcript?.trim();
-    if (t?.length) return t;
-    return isRecording ? 'Listening…' : 'Start recording…';
-  }, [transcript, isRecording]);
+    const txt = transcript?.trim();
+    if (txt?.length) return txt;
+    return isRecording ? t('chat.listening') : t('chat.startRecording');
+  }, [transcript, isRecording, t]);
 
   if (!render) return null;
 
@@ -245,12 +281,12 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
 
         <View style={styles.handle} />
 
-        <TouchableOpacity style={styles.closeBtn} onPress={onClose} accessibilityLabel="Close recorder">
+        <TouchableOpacity style={styles.closeBtn} onPress={onClose} accessibilityLabel={t('chat.closeRecorder')}>
           <SvgIcon name="clear" size={18} color={colors.textSecondary} />
         </TouchableOpacity>
 
         <View style={styles.content}>
-          <View style={[styles.titleWrap, { maxHeight: screenH * 0.4 }]}>
+          <Reanimated.View style={[styles.titleWrap, { maxHeight: screenH * 0.4 }, titleStyle]}>
             <ScrollView
               style={styles.titleScroll}
               contentContainerStyle={styles.titleScrollContent}
@@ -261,15 +297,15 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
                 {titleText}
               </Text>
             </ScrollView>
-          </View>
+          </Reanimated.View>
 
-          <Reanimated.View style={[styles.micWrap, micWrapStyle]}>
+          <Reanimated.View style={[styles.micWrap, micWrapStyle, micStyle]}>
             <View style={styles.micCircle}>
               <SvgIcon name="mic" size={32} color="#FFFFFF" />
             </View>
           </Reanimated.View>
 
-          <View style={styles.waveRow}>
+          <Reanimated.View style={[styles.waveRow, waveStyle]}>
             {Array.from({ length: BAR_COUNT }).map((_, i) => (
               <WaveBar 
                 key={i} 
@@ -280,17 +316,19 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
                 centers={centers} 
               />
             ))}
-          </View>
+          </Reanimated.View>
         </View>
 
-        <TouchableOpacity
-          style={[styles.insertBtn, !transcript?.trim()?.length && styles.insertDisabled]}
-          onPress={onInsert}
-          disabled={!transcript?.trim()?.length}
-          accessibilityLabel="Insert transcript"
-        >
-          <Text style={styles.insertText}>Insert</Text>
-        </TouchableOpacity>
+        <Reanimated.View style={buttonStyle}>
+          <TouchableOpacity
+            style={[styles.insertBtn, !transcript?.trim()?.length && styles.insertDisabled]}
+            onPress={onInsert}
+            disabled={!transcript?.trim()?.length}
+            accessibilityLabel={t('chat.insertTranscript')}
+          >
+            <Text style={styles.insertText}>{t('chat.insertTranscript')}</Text>
+          </TouchableOpacity>
+        </Reanimated.View>
       </Reanimated.View>
     </Reanimated.View>
   );

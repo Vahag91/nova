@@ -184,7 +184,6 @@ export class SSEClient {
   }
 
   _log(...args) {
-    if (this.opts.log) console.log('[SSEClient]', ...args);
   }
 }
 

@@ -7,6 +7,7 @@ import TypingDots from './TypingDots';
 import SvgIcon from '../SvgIcon';
 import StreamingText from './StreamingText';
 import { colors } from '../../styles/colors';
+import { useTranslation } from 'react-i18next';
 
 // --- replace your old image helpers with these ---
 const IMG_TAG_RE = /!\[[^\]]*\]\(([^)]+)\)/g;
@@ -109,6 +110,7 @@ const MessageBubble = memo(function MessageBubble({
   streaming = false,
   streamingMessageId,
 }) {
+  const { t } = useTranslation();
   const radius = 18;
 
   const cornerStyle = useMemo(() => (
@@ -296,24 +298,24 @@ const MessageBubble = memo(function MessageBubble({
           <TouchableOpacity
             style={({ pressed }) => [styles.actionButton, pressed && styles.actionButtonPressed]}
             onPress={onCopy}
-            accessibilityLabel="Copy message"
-            accessibilityHint="Copy this message to clipboard"
+            accessibilityLabel={t('chat.copyMessage')}
+            accessibilityHint={t('chat.copyMessageHint')}
           >
             <SvgIcon name="copy" size={18} color={colors.textSecondary} />
           </TouchableOpacity>
           <TouchableOpacity
             style={({ pressed }) => [styles.actionButton, pressed && styles.actionButtonPressed]}
             onPress={onShare}
-            accessibilityLabel="Share message"
-            accessibilityHint="Share this message"
+            accessibilityLabel={t('chat.shareMessage')}
+            accessibilityHint={t('chat.shareMessageHint')}
           >
             <SvgIcon name="share" size={18} color={colors.textSecondary} />
           </TouchableOpacity>
           <TouchableOpacity
             style={({ pressed }) => [styles.actionButton, pressed && styles.actionButtonPressed]}
             onPress={onRegenerate}
-            accessibilityLabel="Regenerate response"
-            accessibilityHint="Generate a new response"
+            accessibilityLabel={t('chat.regenerateResponse')}
+            accessibilityHint={t('chat.regenerateResponseHint')}
           >
             <SvgIcon name="repeat" size={18} color={colors.textSecondary} />
           </TouchableOpacity>
@@ -325,7 +327,7 @@ const MessageBubble = memo(function MessageBubble({
         <View style={styles.failedRow}>
           <TouchableOpacity style={styles.retryChip} onPress={onRegenerate}>
             <SvgIcon name="repeat" size={16} color={colors.textSecondary} />
-            <Text style={styles.retryText}>Retry</Text>
+            <Text style={styles.retryText}>{t('chat.regenerateResponse')}</Text>
           </TouchableOpacity>
         </View>
       )}

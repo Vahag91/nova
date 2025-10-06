@@ -18,6 +18,7 @@ export const colors = {
   // Accent colors
   primary: '#3b82f6',             // Blue accent
   primaryDark: '#2563eb',         // Darker blue
+  accent: '#3b82f6',              // Main accent (cyan/blue)
   success: '#10b981',             // Green
   warning: '#f59e0b',             // Orange
   error: '#ef4444',               // Red
@@ -44,7 +45,7 @@ export const colors = {
   headerBorder: '#333333',        // Header border
   
   // Private mode colors
-  privateBackground: '#1e3a8a',   // Private mode background
-  privateBorder: '#3b82f6',       // Private mode border
-  privateText: '#ffffff',         // Private mode text
+  privateBackground: '#1a1a1a',   // Private mode background
+  privateBorder: '#333333',       // Private mode border
+  privateText: '#a0a0a0',         // Private mode text
 };
