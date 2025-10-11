@@ -24,6 +24,7 @@ export default function App() {
   const [deviceIdReady, setDeviceIdReady] = useState(false);
   const [modelsLoaded, setModelsLoaded] = useState(false); // NEW
 
+
   useEffect(() => {
     (async () => {
       const deviceId = await ensureDeviceId();
@@ -47,6 +48,7 @@ export default function App() {
           const modelsData = json?.models || json;
           if (modelsData && typeof modelsData === 'object') {
             setModels(modelsData);
+            console.log('models', modelsData);
           }
         } else {
         }

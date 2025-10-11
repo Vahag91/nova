@@ -94,8 +94,7 @@ export default function ModelSelector() {
     if (filteredModels.length === 0) {
       return [{ type: 'empty', id: 'empty', message: t('modelSelector.noModelsFound') }];
     }
-
-    const order = ['openai', 'anthropic', 'google', 'xai', 'other'];
+    const order = ['openai', 'anthropic', 'google', 'xai', 'deepseek', 'other'];
     const grouped = filteredModels.reduce((acc, r) => {
       (acc[r.provider] = acc[r.provider] || []).push(r);
       return acc;
@@ -205,6 +204,7 @@ export default function ModelSelector() {
           onPress={() => {
             if (item.key !== modelKey) Haptic.trigger('notificationSuccess');
             else Haptic.trigger('selection');
+            
             setModel(item.key);
             runClose();
           }}
@@ -364,6 +364,7 @@ function glyphFor(provider, key) {
   if (/anthropic/.test(p) || /claude/i.test(k)) return 'claude';
   if (/google/.test(p) || /gemini/i.test(k)) return 'gemini';
   if (/xai/.test(p) || /grok/i.test(k)) return 'grok';
+  if (/deepseek/.test(p) || /deepseek/i.test(k)) return 'deepseek';
   return 'gpt';
 }
 function descriptionFor(key, info) {
@@ -377,7 +378,7 @@ function descriptionFor(key, info) {
     'gpt-4.1-nano': 'Tiny GPT-4.1 model for quick replies',
     'claude-3-haiku': 'Fast and efficient model',
     'claude-3.7-sonnet': 'Advanced reasoning model',
-    'gemini-2.5-pro': "Google's best model",
+    'gemini-2.5-Flash': "Google's best model",
     'gemini-2.0-flash': 'Fast model with great reasoning',
   };
   return map[key] || `${info?.provider || 'AI'} model`;
@@ -394,6 +395,9 @@ function labelsFor(key, t) {
     'gpt-4.1-nano': [],
     'claude-3.7-sonnet': ['NEW'],
     'grok-4': ['NEW'],
+    'gemini-2.5-flash': ['NEW'],
+    'gemini-2.0-flash': ['NEW'],
+
   };
 
   return map[key] || [];
@@ -404,6 +408,7 @@ function titleForProvider(p) {
   if (p === 'anthropic') return 'Anthropic';
   if (p === 'google') return 'Google';
   if (p === 'xai') return 'xAI';
+  if (p === 'deepseek') return 'DeepSeek';
   return 'Other';
 }
 

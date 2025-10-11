@@ -10,8 +10,8 @@ import MessageBubble from './MessageBubble';
 import DaySeparator from './DaySeparator';
 import { colors } from '../../styles/colors';
 
-const BOTTOM_GAP = 16; // small, consistent
-const NEAR_BOTTOM_PAD_RATIO = 0.12; // 12% viewport
+const BOTTOM_GAP = 16;
+const NEAR_BOTTOM_PAD_RATIO = 0.12;
 
 function toDayKey(d) {
   const dt = new Date(d);
@@ -48,19 +48,16 @@ const MessageListCore = function MessageList({
 
   const [showJump, setShowJump] = useState(false);
 
-  // Track “am I near bottom?” and user drag state
   const isAtBottomRef = useRef(true);
   const userDraggingRef = useRef(false);
-  const autoPinRef = useRef(true); // when true and near bottom, we will autoscroll on content changes
+  const autoPinRef = useRef(true);
   const manualScrollRequestRef = useRef(false);
   const scrollTimeoutRef = useRef(null);
 
-  // Compute streaming tail (assistant placeholder)
   const streamingTail = useMemo(() => {
     if (!streaming) return null;
     const last = messages[messages.length - 1];
     if (last?.role === 'assistant' && last?.id === streamingMessageId) return last;
-    // fallback scan
     for (let i = messages.length - 1; i >= 0; i--) {
       const m = messages[i];
       if (m?.role === 'assistant' && m?.id === streamingMessageId) return m;
@@ -68,7 +65,6 @@ const MessageListCore = function MessageList({
     return null;
   }, [messages, streaming, streamingMessageId]);
 
-  // Merge tail into the main data so it lays out naturally
   const data = useMemo(() => {
     const base = streamingTail
       ? messages.filter(m => m?.id !== streamingTail.id).concat([streamingTail])
@@ -78,7 +74,6 @@ const MessageListCore = function MessageList({
 
   const keyExtractor = useCallback((it) => it.id, []);
 
-  // Footer grouping: determine if the streaming item starts a new group
   const lastRenderable = data.length ? data[data.length - 1] : null;
   const footerFirstInGroup =
     !lastRenderable ||
@@ -108,7 +103,6 @@ const MessageListCore = function MessageList({
     scrollToBottomIfNeeded: () => scrollToBottomIfNeeded(true),
   }), [scrollToBottom, scrollToBottomIfNeeded]);
 
-  // Basic near-bottom detection & Jump button logic
   const handleScroll = useCallback((e) => {
     const { layoutMeasurement, contentOffset, contentSize } = e.nativeEvent;
     const pad = layoutMeasurement.height * NEAR_BOTTOM_PAD_RATIO;
@@ -117,7 +111,6 @@ const MessageListCore = function MessageList({
     if (!userDraggingRef.current && isAtBottom) {
       autoPinRef.current = true;
     }
-    // Show jump only when user is away from bottom
     setShowJump(!isAtBottom);
   }, []);
 
@@ -143,12 +136,10 @@ const MessageListCore = function MessageList({
     setShowJump(!isAtBottom);
   }, []);
 
-  // Auto-pin to bottom when content grows *and* we are near bottom
   const onContentSizeChange = useCallback(() => {
     scrollToBottomIfNeeded(false);
   }, [scrollToBottomIfNeeded]);
 
-  // Reset on thread change
   useEffect(() => {
     isAtBottomRef.current = true;
     autoPinRef.current = true;
@@ -158,7 +149,6 @@ const MessageListCore = function MessageList({
       clearTimeout(scrollTimeoutRef.current);
       scrollTimeoutRef.current = null;
     }
-    // Optionally jump to bottom when switching threads
     requestAnimationFrame(() => scrollToBottom(false));
   }, [threadKey, scrollToBottom]);
 
@@ -166,19 +156,16 @@ const MessageListCore = function MessageList({
     if (item?.type === 'day') return <DaySeparator date={item.date} />;
     if (item.role === 'system') return <DaySeparator system text={item.content} />;
 
-    // Compute grouping inline against `data`
-    const role = item.role;
-    // find prev/next non-day
     let j = index - 1; let prevMsg = null;
     while (j >= 0) { if (!data[j]?.type) { prevMsg = data[j]; break; } j--; }
     j = index + 1; let nextMsg = null;
     while (j < data.length) { if (!data[j]?.type) { nextMsg = data[j]; break; } j++; }
 
+    const role = item.role;
     const isFirstInGroup = !prevMsg || prevMsg.role !== role;
     const isLastInGroup  = !nextMsg || nextMsg.role !== role;
 
-    // If this is the streaming tail, pass streaming props so MessageBubble can show its StreamingText
-    const isStreamingItem = streamingTail && item.id === streamingTail.id;
+    const isStreamingItem = streaming && (item.id === streamingMessageId);
 
     return (
       <MessageBubble
@@ -189,7 +176,7 @@ const MessageListCore = function MessageList({
         onRetryFromHere={onRetryFromHere}
         showMeta={isLastInGroup}
         streaming={!!isStreamingItem}
-        streamingMessageId={isStreamingItem ? streamingMessageId : undefined}
+        streamingMessageId={streamingMessageId}
       />
     );
   };

@@ -1,4 +1,3 @@
-// app/src/screens/Chat.jsx
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import Reanimated, { useAnimatedKeyboard, useAnimatedStyle, useSharedValue, useDerivedValue, withTiming, Easing, KeyboardState } from 'react-native-reanimated';
@@ -15,6 +14,7 @@ import MessageList from '../components/chat/MessageList';
 import TestInput from '../components/chat/TestInput';
 import VoiceOverlay from '../components/chat/VoiceOverlay';
 import SuggestionCards from '../components/chat/SuggestionCards';
+import AssistantHeader from '../components/chat/AssistantHeader';
 import { colors } from '../styles/colors';
 import { appendStream, getStream, clearStream } from '../lib/streamingBuffer';
 import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
@@ -24,6 +24,8 @@ import { useTranslation } from 'react-i18next';
 
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
+  
+
   // Stores
   const threads = useThreadsStore(s => s.threads);
   const activeThreadId = useThreadsStore(s => s.activeThreadId);
@@ -32,6 +34,7 @@ export default function Chat({ navigation }) {
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const addMessage = useThreadsStore(s => s.addMessage);
+  const removeMessage = useThreadsStore(s => s.removeMessage);
   const updateLastAssistantContent = useThreadsStore(s => s.updateLastAssistantContent);
   const forceSaveThread = useThreadsStore(s => s.forceSaveThread);
   const setThreadSummary = useThreadsStore(s => s.setThreadSummary);
@@ -45,19 +48,23 @@ export default function Chat({ navigation }) {
   const updateLastAssistantContentPrivate = useThreadsStore(s => s.updateLastAssistantContentPrivate);
 
   // Settings
-  const model = useSettingsStore(s => s.model);
-  const getEffectiveTemp = useSettingsStore(s => s.getEffectiveTemp);
-  const temperature = getEffectiveTemp(model);
-console.log('model', model);
+  const globalModel = useSettingsStore(s => s.model);      // global fallback
+  const modelsMap   = useSettingsStore(s => s.models);     // registry with caps
+  // console.log('model', globalModel);
+
   // Local
   const messageListRef = useRef(null);
   const didInitialScrollRef = useRef(false);
 
-  const normalActive = useMemo(() =>
-    threads.find(t => t.id === activeThreadId) || null,
+  const normalActive = useMemo(
+    () => threads.find(t => t.id === activeThreadId) || null,
     [threads, activeThreadId]
   );
   const activeThread = isPrivate ? privateThread : normalActive;
+
+  // IMPORTANT: prioritize global model (user's current selection) over thread's model
+  const activeModelKey = globalModel || activeThread?.model;
+  const activeModelCaps = modelsMap?.[activeModelKey]?.caps || {};
 
   const [input, setInput] = useState('');
   const [attachments, setAttachments] = useState([]);
@@ -68,44 +75,43 @@ console.log('model', model);
   const [forceCollapseInput, setForceCollapseInput] = useState(false);
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
+  const [webSearchNext, setWebSearchNext] = useState(false); // per-message web search
   const abortRef = useRef(null);
+  const appStateRef = useRef(AppState.currentState); // Track if app is in background
+
 
   const messagesNoSystem = useMemo(
     () => (activeThread?.messages || []).filter(m => m.role !== 'system'),
     [activeThread?.messages]
   );
 
-  // Voice: manual stop => send once
+  // Check if chat is empty (no user/assistant messages)
+  const isChatEmpty = messagesNoSystem.length === 0;
+  
+  // Check if this is an assistant thread (has system message)
+  const isAssistantThread = activeThread?.messages?.some(m => m.role === 'system');
 
+  // Voice: manual stop => send once
   const onFinalText = useCallback((text) => {
     const t = (text || '').trim();
     if (!t) return;
     setVoiceText(t);
   }, []);
-
-  const onPartialText = useCallback((text) => {
-    setVoiceText(text || '');
-  }, []);
-  
-  const onErrorText = useCallback((msg) => {
-    setError(msg);
-  }, []);
-  
-  const { isRecording, start: startVoice, stop: stopVoice } = useVoiceInput({
-    onPartialText,
-    onFinalText,
-    onErrorText,
-    // locale: 'en-US'
-  });
+  const onPartialText = useCallback((text) => { setVoiceText(text || ''); }, []);
+  const onErrorText = useCallback((msg) => { setError(msg); }, []);
+  const { isRecording, start: startVoice, stop: stopVoice } = useVoiceInput({ onPartialText, onFinalText, onErrorText });
 
   // Hydrate & ensure thread
-  useEffect(() => { if (!hydrated) hydrate(); }, [hydrated, hydrate]);
+  useEffect(() => { 
+    if (!hydrated) hydrate(); 
+  }, [hydrated, hydrate]);
+  
   useEffect(() => {
     if (hydrated && !isPrivate && !threads.length) {
-      const th = createThread({ title: t('history.newChat'), model });
+      const th = createThread({ title: t('history.newChat'), model: globalModel });
       setActiveThread(th.id);
     }
-  }, [hydrated, threads.length, isPrivate, createThread, setActiveThread, model]);
+  }, [hydrated, threads.length, isPrivate, createThread, setActiveThread, globalModel, t]);
 
   // Scroll management
   useEffect(() => { didInitialScrollRef.current = false; }, [activeThread?.id]);
@@ -142,26 +148,31 @@ console.log('model', model);
     return () => sub && sub();
   }, []);
 
-  // App background: stop stream + voice
+  // App background: track state + stop voice recording (streaming continues until OS kills it)
   useEffect(() => {
-    const sub = AppState.addEventListener('change', s => {
-      if (s !== 'active' && abortRef.current) {
-        abortRef.current.abort(); abortRef.current = null; setStreaming(false);
-      }
-      if (s !== 'active' && isRecording) {
+    const handleAppStateChange = (nextAppState) => {
+      appStateRef.current = nextAppState; // Track current app state
+      
+      // Stop voice recording when backgrounded (mic access will be lost anyway)
+      if (nextAppState !== 'active' && isRecording) {
+        console.log('[CHAT] 📱 App backgrounded - stopping voice recording');
         stopVoice();
       }
-    });
+      
+      if (nextAppState !== 'active') {
+        console.log('[CHAT] 📱 App backgrounded - streaming will continue until OS terminates it');
+      }
+    };
+    
+    const sub = AppState.addEventListener('change', handleAppStateChange);
     return () => sub.remove();
   }, [stopVoice, isRecording]);
-
 
   // Cleanup on unmount
   useEffect(() => () => {
     if (useThreadsStore.getState().privateActive) endPrivate();
     clearInsertToChatCallback();
   }, [clearInsertToChatCallback, endPrivate]);
-
   useEffect(() => () => {
     if (abortRef.current) { abortRef.current.abort(); abortRef.current = null; }
   }, []);
@@ -201,20 +212,29 @@ console.log('model', model);
         addPickedAssets(response?.assets || []);
       }
     );
-  }, []);
+  }, [t]);
   const onRemoveAttachment = useCallback((att) => {
     setAttachments(prev => prev.filter(a => a.id !== att.id));
   }, []);
 
   // ==== Send flow ====
   async function onSend(overrideText) {
+    const sendStartTime = Date.now();
+    
     setError('');
     const textRaw = typeof overrideText === 'string' ? overrideText : input;
     const text = (textRaw || '').trim();
     const hasText = !!text;
     const hasImages = attachments.length > 0;
+    
     if (!hasText && !hasImages) return;
     if (!activeThread) return;
+
+    // If user added images but the model can't see images, bail early with a clear message
+    if (hasImages && !activeModelCaps.visionInput) {
+      setError(`The selected model (${modelsMap?.[activeModelKey]?.display?.name || activeModelKey}) does not support images.`);
+      return;
+    }
 
     const MAX_CHARS = 16000;
     if (text.length > MAX_CHARS) {
@@ -235,51 +255,147 @@ console.log('model', model);
     const u = newUserMessage(displayMd); u.mm = mmParts;
 
     const a = newAssistantMessage(); const assistantId = a.id;
+    // Set initial assistant activity based on context
+    try {
+      const initialActivity = hasImages
+        ? t('chat.activityAnalyzingImages', 'Analyzing images…')
+        : (webSearchNext ? t('chat.activitySearching', 'Searching…') : t('chat.activityThinking', 'Thinking…'));
+      a.meta = { ...(a.meta || {}), activity: initialActivity };
+    } catch {}
 
     if (isPrivate) { addPrivateMessage(u); addPrivateMessage(a); }
     else { addMessage(activeThread.id, u); addMessage(activeThread.id, a); }
     setStreamingMsgId(assistantId);
     requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
 
-    // reset composer
+    // reset composer (but leave webSearchNext until send completion)
     setInput(''); setAttachments([]); setForceCollapseInput(true);
 
     const threadForContext = { ...activeThread, messages: [ ...(activeThread.messages || []), mUser ] };
     await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
     const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
-    const modelForThisSend = model;
 
     setStreaming(true);
     const deviceId = await ensureDeviceId();
     const controller = new AbortController(); abortRef.current = controller;
 
     streamChat({
-      model: modelForThisSend,
+      model: activeModelKey,             // ✅ per-thread model
       messages: payload,
       deviceId,
-      temperature,
+      // temperature: (optional) wire later if you want per-model temps
+      allowWebSearch: webSearchNext,
+      webSearchConfig: { recencyDays: 30 },
       signal: controller.signal,
-      onToken: (chunk) => { if (typeof chunk === 'string') appendStream(assistantId, chunk); },
+      onToken: (chunk) => { 
+        if (typeof chunk === 'string') {
+          // console.log('[CHAT] 📩 Token:', chunk.substring(0, 30)); // ✅ Uncomment for debug
+          appendStream(assistantId, chunk);
+        }
+      },
       onDone: () => {
-        setStreaming(false); abortRef.current = null;
+        console.log('[CHAT] ✅ onDone fired - message complete'); // ✅ TEST LOG
+        
+        // 1. FIRST: Get the full content from stream buffer
         const full = getStream(assistantId);
+        console.log('[CHAT] 📝 Final content length:', full?.length || 0); // ✅ TEST LOG
+        
+        // 2. SECOND: Update the message content in store (synchronous)
         if (isPrivate) updateLastAssistantContentPrivate(() => full);
         else updateLastAssistantContent(activeThread.id, () => full);
-        clearStream(assistantId); setStreamingMsgId(null);
+        
+        // 3. THIRD: Clear streaming state (this triggers re-render)
+        setStreaming(false); 
+        abortRef.current = null;
+        setStreamingMsgId(null);  // Now message has content, so no typing dots!
+        
+        // 4. FINALLY: Cleanup and save
+        clearStream(assistantId);
         if (!isPrivate) forceSaveThread(activeThread.id);
+        setWebSearchNext(false); // reset after a successful send
       },
       onError: (err) => {
-        setStreaming(false); abortRef.current = null;
-        clearStream(assistantId); setStreamingMsgId(null);
-        const pretty = mapProxyError(err); setError(pretty.message);
+        console.log('[CHAT] ❌ onError fired:', err.code, err.message); // ✅ TEST LOG
+        
+        // Check if error happened while app was backgrounded
+        const wasBackgrounded = appStateRef.current !== 'active';
+        const isOSTermination = err.code === 0 || err.code === 'NETWORK'; // HTTP 0 or network error
+        
+        // 1. FIRST: Save any partial content from stream buffer
+        const partial = getStream(assistantId);
+        if (partial && partial.trim().length > 0) {
+          console.log('[CHAT] 💾 Saving partial on error:', partial.substring(0, 50));
+          if (isPrivate) updateLastAssistantContentPrivate(() => partial);
+          else {
+            updateLastAssistantContent(activeThread.id, () => partial);
+            forceSaveThread(activeThread.id);
+          }
+        } else if (!partial || partial.trim().length === 0) {
+          // No content - remove empty message
+          console.log('[CHAT] 🗑️ Removing empty assistant message (error before tokens)');
+          if (!isPrivate && activeThread?.id) {
+            removeMessage(activeThread.id, assistantId);
+          }
+        }
+        
+        // 2. SECOND: Clear streaming state
+        setStreaming(false); 
+        abortRef.current = null;
+        setStreamingMsgId(null);
+        
+        // 3. FINALLY: Cleanup and conditionally show error
+        clearStream(assistantId);
+        
+        // Only show error if NOT caused by OS backgrounding
+        if (wasBackgrounded && isOSTermination) {
+          console.log('[CHAT] 🔕 Error silenced - was backgrounded, OS killed connection');
+          // Don't show error to user - this is expected behavior on iOS/Android
+        } else {
+          // Real error - show to user
+          const pretty = mapProxyError(err); 
+          setError(pretty.message);
+        }
+        
+        // keep webSearchNext as-is so user can retry
       },
     });
   }
 
   function onStop() {
     if (abortRef.current) {
-      abortRef.current.abort(); abortRef.current = null; setStreaming(false);
-      if (streamingMsgId) clearStream(streamingMsgId); setStreamingMsgId(null);
+      console.log('[CHAT] 🛑 User stopped streaming'); // ✅ LOG
+      
+      // Handle partial content or remove empty message
+      if (streamingMsgId) {
+        const partial = getStream(streamingMsgId);
+        if (partial && partial.trim().length > 0) {
+          // Has content - save it
+          console.log('[CHAT] 💾 Saving partial content:', partial.substring(0, 50)); // ✅ LOG
+          if (isPrivate) {
+            updateLastAssistantContentPrivate(() => partial);
+          } else {
+            updateLastAssistantContent(activeThread.id, () => partial);
+            forceSaveThread(activeThread.id); // ✅ Save thread with partial content
+          }
+        } else {
+          // No content - remove the empty assistant message to prevent typing dots
+          console.log('[CHAT] 🗑️ Removing empty assistant message'); // ✅ LOG
+          if (isPrivate) {
+            // For private threads, we need to handle this differently since there's no remove method
+            // Just clear the streaming state - the empty message will show but won't have typing dots
+            console.log('[CHAT] ⚠️ Private thread - cannot remove empty message, will show empty');
+          } else if (activeThread?.id) {
+            // Remove the empty assistant message from normal thread
+            removeMessage(activeThread.id, streamingMsgId);
+          }
+        }
+        clearStream(streamingMsgId);
+        setStreamingMsgId(null);
+      }
+      
+      abortRef.current.abort(); 
+      abortRef.current = null; 
+      setStreaming(false);
     }
     if (isRecording) {
       stopVoice();
@@ -321,14 +437,18 @@ console.log('model', model);
             </View>
           )}
 
-          {(!activeThread?.messages || activeThread.messages.length === 0) ? (
+          {isChatEmpty ? (
             <Reanimated.View style={[{ flex: 1 }, animatedContentStyle]}>
-              <View style={styles.emptyState}>
-                <View style={styles.emptyStateIcon}><Text style={styles.emptyStateIconText}>💬</Text></View>
-                <Text style={styles.emptyStateTitle}>{isPrivate ? t('chat.privateTitle') : t('chat.emptyTitle')}</Text>
-                <Text style={styles.emptyStateSubtitle}>{isPrivate ? t('chat.privateSubtitle') : t('chat.emptySubtitle')}</Text>
-                {!isPrivate && <SuggestionCards onSuggestionPress={(s) => setInput(s.title)} />}
-              </View>
+              {isAssistantThread ? (
+                <AssistantHeader thread={activeThread} showOnlyWhenEmpty />
+              ) : (
+                <View style={styles.emptyState}>
+                  <View style={styles.emptyStateIcon}><Text style={styles.emptyStateIconText}>💬</Text></View>
+                  <Text style={styles.emptyStateTitle}>{isPrivate ? t('chat.privateTitle') : t('chat.emptyTitle')}</Text>
+                  <Text style={styles.emptyStateSubtitle}>{isPrivate ? t('chat.privateSubtitle') : t('chat.emptySubtitle')}</Text>
+                  {!isPrivate && <SuggestionCards onSuggestionPress={(s) => setInput(s.title)} />}
+                </View>
+              )}
             </Reanimated.View>
           ) : (
             <Reanimated.View style={[{ flex: 1 }, animatedContentStyle]}>
@@ -351,7 +471,9 @@ console.log('model', model);
               onStop={onStop}
               onCreateImagesPress={() => { setInsertToChatCallback(onInsertImagesMarkdown); navigation.navigate('ImagesStudio', { seedPrompt: input }); }}
               onOpenCameraPress={onOpenCameraPress}
+              onSearchPress={() => setWebSearchNext(v => !v)}
               onClipboardPress={() => {}}
+              webSearchEnabled={webSearchNext}
               onMicPress={() => {
                 if (isRecording) {
                   stopVoice();
@@ -370,6 +492,7 @@ console.log('model', model);
               onRemoveAttachment={onRemoveAttachment}
               forceCollapsed={forceCollapseInput || isRecording}
               isRecording={isRecording}
+              navigation={navigation}
             />
             <VoiceOverlay
               visible={showVoiceOverlay}
@@ -401,3 +524,4 @@ const styles = StyleSheet.create({
   emptyStateTitle:{ fontSize:21, fontWeight:'700', color: colors.text, marginBottom:6, textAlign:'center' },
   emptyStateSubtitle:{ fontSize:14, color: colors.textSecondary, textAlign:'center', lineHeight:20 },
 });
+

@@ -98,7 +98,6 @@ i18n
     supportedLngs: SUPPORTED,
     nonExplicitSupportedLngs: true,
     lowerCaseLng: false, // keep case for script/region tags (e.g., es-MX, fr-CA, zh-Hans)
-    debug: __DEV__,
     interpolation: { escapeValue: false },
     returnNull: false,
   });

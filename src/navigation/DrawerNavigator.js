@@ -1,13 +1,14 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 import Haptic from 'react-native-haptic-feedback';
 import Chat from '../screens/Chat';
 import History from '../screens/HistorySimple';
 import Assistants from '../screens/Assistants';
 import Settings from '../screens/Settings.jsx';
 import ImagesStudio from '../screens/ImagesStudio';
+import PaywallScreen from '../components/PaywallScreen';
 import ModelSelector from '../components/ModelSelector';
 import SvgIcon from '../components/SvgIcon';
 import CustomDrawerContent from './CustomDrawerContent';
@@ -18,8 +19,35 @@ import { useTranslation } from 'react-i18next';
 
 const Drawer = createDrawerNavigator();
 
-// Header center component for model dropdown
+// Header center component for model dropdown or assistant name
 function ChatHeaderCenter() {
+  const threads = useThreadsStore(s => s.threads);
+  const activeThreadId = useThreadsStore(s => s.activeThreadId);
+  const isPrivate = useThreadsStore(s => s.privateActive);
+  
+  // Find active thread
+  const activeThread = threads.find(t => t.id === activeThreadId);
+  
+  // Check if this is an assistant thread (has system message)
+  const systemMsg = activeThread?.messages?.find(m => m.role === 'system');
+  
+  // If assistant thread, show assistant name instead of model selector
+  if (systemMsg && !isPrivate) {
+    return (
+      <View style={{ paddingHorizontal: 8 }}>
+        <Text style={{ 
+          fontSize: 16, 
+          fontWeight: '700', 
+          color: colors.text,
+          fontFamily: 'Lato-Bold',
+        }}>
+          {activeThread?.title || 'Assistant'}
+        </Text>
+      </View>
+    );
+  }
+  
+  // Normal chat - show model selector
   return <ModelSelector />;
 }
 
@@ -150,6 +178,25 @@ export default function DrawerNavigator() {
           options={{
             headerShown: false, // Hide navigation header completely
             title: t('navigation.imagesStudio'),
+          }}
+        />
+        <Drawer.Screen 
+          name="PaywallScreen" 
+          component={({ navigation }) => (
+            <PaywallScreen
+              onClose={() => navigation.goBack()}
+              onRestore={() => {
+                console.log('Restore pressed');
+              }}
+              onContinue={(data) => {
+                console.log('Continue pressed:', data);
+                navigation.goBack();
+              }}
+            />
+          )}
+          options={{
+            headerShown: false, // Hide navigation header completely
+            title: 'Paywall',
           }}
         />
       </Drawer.Navigator>

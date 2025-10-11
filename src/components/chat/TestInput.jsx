@@ -1,7 +1,6 @@
-// app/src/components/chat/TestInput.jsx
 import React, { useMemo, useState, useEffect } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, withRepeat, withDelay, useDerivedValue, withSpring, interpolate, Easing } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, withDelay, useDerivedValue, withSpring, Easing } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
@@ -18,14 +17,19 @@ const MicIcon = ({ color, size = 24 }) => (
     <Path d="M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm0-240Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm40-360q17 0 28.5-11.5T520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480Z"/>
   </Svg>
 );
+const StopIcon = ({ color, size = 24 }) => (
+  <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
+    <Path d="M320-320h320v-320H320v320ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+  </Svg>
+);
+const TestIcon = ({ color, size = 24 }) => (
+  <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
+    <Path d="M320-280q17 0 28.5-11.5T360-320q0-17-11.5-28.5T320-360q-17 0-28.5 11.5T280-320q0 17 11.5 28.5T320-280Zm0-160q17 0 28.5-11.5T360-480q0-17-11.5-28.5T320-520q-17 0-28.5 11.5T280-480q0 17 11.5 28.5T320-440Zm0-160q17 0 28.5-11.5T360-640q0-17-11.5-28.5T320-680q-17 0-28.5 11.5T280-640q0 17 11.5 28.5T320-600Zm160 320q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm0-160q17 0 28.5-11.5T520-480q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480q0 17 11.5 28.5T480-440Zm0-160q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm160 320q17 0 28.5-11.5T680-320q0-17-11.5-28.5T640-360q-17 0-28.5 11.5T600-320q0 17 11.5 28.5T640-280Zm0-160q17 0 28.5-11.5T680-480q0-17-11.5-28.5T640-520q-17 0-28.5 11.5T600-480q0 17 11.5 28.5T640-440Zm0-160q17 0 28.5-11.5T680-640q0-17-11.5-28.5T640-680q-17 0-28.5 11.5T600-640q0 17 11.5 28.5T640-600ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
+  </Svg>
+);
 const AddIcon = ({ color, size = 24 }) => (
   <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
     <Path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
-  </Svg>
-);
-const MinusIcon = ({ color, size = 24 }) => (
-  <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
-    <Path d="M240-440v-80h480v80H240Z"/>
   </Svg>
 );
 const PaletteIcon = ({ color = "#8A2BE2", size = 24 }) => (
@@ -44,29 +48,29 @@ const ExploreIcon = ({ color = "#FF9800", size = 24 }) => (
   </Svg>
 );
 
-
 function TestInput({
   value, onChange, onSend, onStop,
   streaming, offline=false,
   placeholder,
   onCreateImagesPress=noop, onOpenCameraPress=noop, onSearchPress=noop, onClipboardPress=noop,
   onMicPress=noop, onMicHoldStart=noop, onMicHoldEnd=noop,
+  navigation,
   attachments=[], onRemoveAttachment=noop,
   maxLength=4000, minInputHeight=40, maxInputHeight=140,
   forceCollapsed=false, isRecording=false,
+  webSearchEnabled=false, // NEW: web search toggle state
 }) {
   const { t } = useTranslation();
+  
+
   const MENU_ITEM_HEIGHT = 52;
-  const MENU_VISIBLE_HEIGHT = MENU_ITEM_HEIGHT * 3 + 2; // 3 items + 2 dividers
-  const MENU_EXTRA_OFFSET_Y = 36; // raise menu a bit higher above button
+  const MENU_VISIBLE_HEIGHT = MENU_ITEM_HEIGHT * 3 + 2;
+  const MENU_EXTRA_OFFSET_Y = 36;
   const MENU_Y_OFFSET = MENU_VISIBLE_HEIGHT + MENU_EXTRA_OFFSET_Y;
   const ANIMATION_DURATION = 300;
-  const SPRING_CONFIG = {
-    duration: 1200,
-    overshootClamping: true,
-    dampingRatio: 0.8,
-  };
+  const SPRING_CONFIG = { duration: 1200, overshootClamping: true, dampingRatio: 0.8 };
   const isOpen = useSharedValue(false);
+  const webSearchTextVisible = useSharedValue(webSearchEnabled);
   const [renderMenu, setRenderMenu] = useState(false);
   const plusRef = React.useRef(null);
   const wrapperRef = React.useRef(null);
@@ -84,17 +88,10 @@ function TestInput({
     let id;
     if (isRecording) { 
       setRecSecs(0); 
-      id = setInterval(() => {
-        setRecSecs(s => s + 1);
-      }, 1000); 
+      id = setInterval(() => setRecSecs(s => s + 1), 1000);
     }
-    return () => {
-      if (id) {
-        clearInterval(id);
-      }
-    };
+    return () => { if (id) clearInterval(id); };
   }, [isRecording]);
-
 
   // keyboard
   useEffect(() => {
@@ -114,6 +111,13 @@ function TestInput({
   }, [keyboardVisible, paddingAnim]);
 
   useEffect(() => { if (forceCollapsed && isOpen.value) isOpen.value = false; }, [forceCollapsed, isOpen]);
+  
+  useEffect(() => {
+    webSearchTextVisible.value = withTiming(webSearchEnabled ? 1 : 0, { 
+      duration: 250, 
+      easing: Easing.out(Easing.quad) 
+    });
+  }, [webSearchEnabled, webSearchTextVisible]);
 
   const canSend = useMemo(() => {
     const hasText = !!(value && value.trim().length > 0);
@@ -124,32 +128,23 @@ function TestInput({
   const showCounter = useMemo(() => value && value.length >= Math.max(0, maxLength - 300), [value, maxLength]);
 
   const backdropAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: isOpen.value ? withTiming(1, { duration: ANIMATION_DURATION }) : withTiming(0, { duration: ANIMATION_DURATION }),
-    zIndex: isOpen.value
-      ? 1
-      : withDelay(ANIMATION_DURATION, withTiming(-1, { duration: 0 })),
+    opacity: isOpen.value,
+    zIndex: isOpen.value ? 1 : -1,
   }));
 
-  // Animated style for the plus icon rotation
-  const plusIconStyle = useAnimatedStyle(() => {
-    const rotateValue = isOpen.value ? '45deg' : '0deg';
-    return {
-      transform: [{ rotate: withTiming(rotateValue, { duration: ANIMATION_DURATION }) }],
-    };
-  });
+  const plusIconStyle = useAnimatedStyle(() => ({
+    transform: [{ rotate: isOpen.value ? '45deg' : '0deg' }],
+  }));
 
-  // Menu item animation generator
   const getMenuItemStyle = (index) => {
     return useAnimatedStyle(() => {
-      const delay = index * 50; // Stagger delay for each item
       const scaleValue = isOpen.value ? 1 : 0;
       const translateValue = isOpen.value ? 0 : 20;
-      
       return {
-        opacity: withDelay(delay, withTiming(scaleValue, { duration: 200 })),
+        opacity: scaleValue,
         transform: [
-          { translateY: withDelay(delay, withSpring(translateValue, SPRING_CONFIG)) },
-          { scale: withDelay(delay, withSpring(scaleValue, SPRING_CONFIG)) },
+          { translateY: translateValue },
+          { scale: scaleValue },
         ],
       };
     });
@@ -163,12 +158,18 @@ function TestInput({
     opacity: isOpen.value ? withTiming(1, { duration: ANIMATION_DURATION }) : withTiming(0, { duration: ANIMATION_DURATION }),
   }));
   const paddingAnimatedStyle = useAnimatedStyle(() => ({ paddingBottom: Platform.OS === 'ios' ? paddingAnim.value : 16 }));
+  
+  const webSearchTextAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: webSearchTextVisible.value,
+    transform: [
+      { scaleX: webSearchTextVisible.value },
+      { translateX: webSearchTextVisible.value === 1 ? 0 : -10 }
+    ],
+  }));
 
   const measureAnchor = () => {
     if (plusRef.current?.measureInWindow) {
-      plusRef.current.measureInWindow((x, y, w, h) => {
-        setAnchor({ x, y, width: w, height: h });
-      });
+      plusRef.current.measureInWindow((x, y, w, h) => setAnchor({ x, y, width: w, height: h }));
     }
   };
 
@@ -180,10 +181,7 @@ function TestInput({
       requestAnimationFrame(() => {
         measureAnchor();
         setRenderMenu(true);
-        // Add a small delay before starting the animation to prevent UI flip
-        setTimeout(() => {
-          isOpen.value = true;
-        }, 50);
+        setTimeout(() => { isOpen.value = true; }, 50);
       });
     }
   };
@@ -192,17 +190,13 @@ function TestInput({
     if (streaming && onStop) onStop(); 
     else if (isRecording) onMicPress?.(); 
   };
-
   const handleContentSizeChange = (e) => {
     const h = e.nativeEvent.contentSize?.height;
     if (!h) return;
     const newH = Math.max(minInputHeight, Math.min(h, maxInputHeight));
     setInputHeight(newH); setIsExpanded(newH > minInputHeight);
   };
-
-  const onMicTap = () => { 
-    if (!offline) onMicPress?.(); 
-  };
+  const onMicTap = () => { if (!offline) onMicPress?.(); };
 
   return (
     <Animated.View ref={wrapperRef} onLayout={measureWrapper} style={[styles.wrapper, paddingAnimatedStyle]}>
@@ -215,72 +209,72 @@ function TestInput({
               style={StyleSheet.absoluteFill}
             />
           </Animated.View>
-          {/* Anchored popover */}
+
           {anchor && (() => {
             const menuWidth = wrapperRect.width ;
             const halfMenuWidth = menuWidth / 2;
             return (
-          <Animated.View pointerEvents="box-none" style={[styles.popoverContainer, popoverAnimatedStyle, {
-              bottom: MENU_Y_OFFSET - 64,
-              left: Math.max(8, Math.min(anchor.x - wrapperRect.x + anchor.width / 2 - halfMenuWidth, wrapperRect.width - menuWidth - 8)),
-              width: menuWidth,
-            }]}>
-              <View style={styles.menuBox}>
-                <Animated.View style={menuItem1Style}>
-                  <TouchableOpacity 
-                    style={styles.menuItem} 
-                    onPress={() => { toggleActions(); onCreateImagesPress?.(); }} 
-                    accessibilityRole="button" 
-                    accessibilityLabel={t('chat.createImages')}
-                    activeOpacity={0.9}
-                  >
-                    <View style={[styles.menuIconContainer, styles.iconViolet]}>
-                      <PaletteIcon color="#8A2BE2" size={28} />
-                    </View>
-                    <View style={styles.menuTextContainer}>
-                      <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.createImages')}</Text>
-                      <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.generateAiArtwork')}</Text>
-                    </View>
-                  </TouchableOpacity>
-                </Animated.View>
-                
-                <Animated.View style={menuItem2Style}>
-                  <TouchableOpacity 
-                    style={styles.menuItem} 
-                    onPress={() => { toggleActions(); onOpenCameraPress?.(); }} 
-                    accessibilityRole="button" 
-                    accessibilityLabel={t('chat.camera')}
-                    activeOpacity={0.9}
-                  >
-                    <View style={[styles.menuIconContainer, styles.iconCyan]}>
-                      <CameraIcon color="#00BCD4" size={28} />
-                    </View>
-                    <View style={styles.menuTextContainer}>
-                      <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.camera')}</Text>
-                      <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.takeOrSelectPhotos')}</Text>
-                    </View>
-                  </TouchableOpacity>
-                </Animated.View>
-                
-                <Animated.View style={menuItem3Style}>
-                  <TouchableOpacity 
-                    style={[styles.menuItem, styles.menuItemLast]} 
-                    onPress={() => { toggleActions(); onSearchPress?.(); }} 
-                    accessibilityRole="button" 
-                    accessibilityLabel={t('chat.search')}
-                    activeOpacity={0.9}
-                  >
-                    <View style={[styles.menuIconContainer, styles.iconOrange]}>
-                      <ExploreIcon color="#FF9800" size={28} />
-                    </View>
-                    <View style={styles.menuTextContainer}>
-                      <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.search')}</Text>
-                      <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.findInformation')}</Text>
-                    </View>
-                  </TouchableOpacity>
-                </Animated.View>
-            </View>
-          </Animated.View>
+              <Animated.View pointerEvents="box-none" style={[styles.popoverContainer, popoverAnimatedStyle, {
+                bottom: (MENU_ITEM_HEIGHT * 3 + 2) + 36 - 64,
+                left: Math.max(8, Math.min(anchor.x - wrapperRect.x + anchor.width / 2 - halfMenuWidth, wrapperRect.width - menuWidth - 8)),
+                width: menuWidth,
+              }]}>
+                <View style={styles.menuBox}>
+                  <Animated.View style={menuItem1Style}>
+                    <TouchableOpacity 
+                      style={styles.menuItem} 
+                      onPress={() => { toggleActions(); onCreateImagesPress?.(); }} 
+                      accessibilityRole="button" 
+                      accessibilityLabel={'Create images'}
+                      activeOpacity={0.9}
+                    >
+                      <View style={[styles.menuIconContainer, styles.iconViolet]}>
+                        <PaletteIcon color="#8A2BE2" size={28} />
+                      </View>
+                      <View style={styles.menuTextContainer}>
+                        <Text style={styles.menuLabel} numberOfLines={1}>Create images</Text>
+                        <Text style={styles.menuSubLabel} numberOfLines={1}>Generate AI artwork</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </Animated.View>
+                  
+                  <Animated.View style={menuItem2Style}>
+                    <TouchableOpacity 
+                      style={styles.menuItem} 
+                      onPress={() => { toggleActions(); onOpenCameraPress?.(); }} 
+                      accessibilityRole="button" 
+                      accessibilityLabel={'Camera'}
+                      activeOpacity={0.9}
+                    >
+                      <View style={[styles.menuIconContainer, styles.iconCyan]}>
+                        <CameraIcon color="#00BCD4" size={28} />
+                      </View>
+                      <View style={styles.menuTextContainer}>
+                        <Text style={styles.menuLabel} numberOfLines={1}>Camera</Text>
+                        <Text style={styles.menuSubLabel} numberOfLines={1}>Take or select photos</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </Animated.View>
+                  
+                  <Animated.View style={menuItem3Style}>
+                    <TouchableOpacity 
+                      style={[styles.menuItem, styles.menuItemLast]} 
+                      onPress={() => { toggleActions(); onSearchPress?.(); }} 
+                      accessibilityRole="button" 
+                      accessibilityLabel={'Search the web'}
+                      activeOpacity={0.9}
+                    >
+                      <View style={[styles.menuIconContainer, styles.iconOrange]}>
+                        <ExploreIcon color="#FF9800" size={28} />
+                      </View>
+                      <View style={styles.menuTextContainer}>
+                        <Text style={styles.menuLabel} numberOfLines={1}>Web search</Text>
+                        <Text style={styles.menuSubLabel} numberOfLines={1}>Find recent info</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </Animated.View>
+                </View>
+              </Animated.View>
             );
           })()}
         </>
@@ -292,7 +286,7 @@ function TestInput({
             {attachments.map((a, idx) => (
               <View key={a.id || `${a.uri}-${idx}`} style={styles.thumbWrap}>
                 <Image source={{ uri: a.uri }} style={styles.thumb} />
-                <TouchableOpacity onPress={() => onRemoveAttachment(a, idx)} style={styles.thumbRemove} accessibilityLabel={t('chat.removeImage')} hitSlop={{ top:6, bottom:6, left:6, right:6 }}>
+                <TouchableOpacity onPress={() => onRemoveAttachment(a, idx)} style={styles.thumbRemove} accessibilityLabel={'Remove image'} hitSlop={{ top:6, bottom:6, left:6, right:6 }}>
                   <Text style={styles.thumbRemoveText}>✕</Text>
                 </TouchableOpacity>
               </View>
@@ -304,7 +298,7 @@ function TestInput({
           <TextInput
             value={value}
             onChangeText={onChange}
-            placeholder={placeholder || t('chat.messagePlaceholder')}
+            placeholder={'Message'}
             placeholderTextColor={colors.placeholder}
             style={[styles.input, { maxHeight: maxInputHeight }]}
             editable={!streaming && !offline && !isRecording}
@@ -317,11 +311,11 @@ function TestInput({
             selectionColor={colors.primary}
             underlineColorAndroid="transparent"
             textAlignVertical={isExpanded ? 'top' : 'center'}
-            accessibilityLabel={t('chat.messageInput')}
+            accessibilityLabel={'Message input'}
             scrollEnabled={inputHeight >= maxInputHeight}
           />
           {value?.length > 0 && (
-            <TouchableOpacity onPress={() => onChange('')} accessibilityLabel={t('chat.clearInput')} style={{ position: 'absolute', right: 6, top: 6, padding: 6 }}>
+            <TouchableOpacity onPress={() => onChange('')} accessibilityLabel={'Clear input'} style={{ position: 'absolute', right: 6, top: 6, padding: 6 }}>
               <Svg height={18} width={18} viewBox="0 -960 960 960" fill="#8E8E93"><Path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></Svg>
             </TouchableOpacity>
           )}
@@ -329,35 +323,66 @@ function TestInput({
 
         <View style={styles.iconsRow}>
           <View style={styles.leftControls}>
-            <TouchableOpacity ref={plusRef} onPress={toggleActions} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={isOpen.value ? t('chat.hideQuickActions') : t('chat.showQuickActions')}>
+            <TouchableOpacity ref={plusRef} onPress={toggleActions} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={'Quick actions'}>
               <Animated.View style={plusIconStyle}>
                 <AddIcon color="#FFFFFF" size={18} />
               </Animated.View>
             </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[styles.webSearchToggle, offline && styles.iconDisabled]}
+              onPress={() => { if (!offline) onSearchPress?.(); }}
+              disabled={offline}
+              accessibilityRole="button"
+              accessibilityLabel={webSearchEnabled ? 'Disable web search' : 'Enable web search'}
+            >
+              <ExploreIcon 
+                color={webSearchEnabled ? "#007AFF" : "#FFFFFF"} 
+                size={18} 
+              />
+              {webSearchEnabled && (
+                <Animated.View style={webSearchTextAnimatedStyle}>
+                  <Text style={styles.webSearchText}>Web Search</Text>
+                </Animated.View>
+              )}
+            </TouchableOpacity>
           </View>
 
           <View style={styles.rightControls}>
+            {/* Test Paywall Button */}
+            {navigation && (
+              <TouchableOpacity
+                style={[styles.testButton, offline && styles.iconDisabled]}
+                onPress={() => navigation.navigate('PaywallScreen')}
+                disabled={offline}
+                accessibilityRole="button"
+                accessibilityLabel={'Test Paywall'}
+              >
+                <TestIcon color="#FF6B6B" size={16} />
+              </TouchableOpacity>
+            )}
+
             <TouchableOpacity
               style={[styles.micButton, offline && styles.iconDisabled]}
-              onPress={onMicTap}
-              onLongPress={onMicTap}
+              onPress={() => { if (!offline) onMicPress?.(); }}
+              onLongPress={() => { if (!offline) onMicPress?.(); }}
               onPressIn={onMicHoldStart}
               onPressOut={onMicHoldEnd}
               disabled={offline}
               accessibilityRole="button"
-              accessibilityLabel={t('chat.startVoiceInput')}
+              accessibilityLabel={'Start voice input'}
               delayLongPress={500}
             >
-              <MicIcon color="#8E8E93" size={18} />
+              <MicIcon color="#FFFFFF" size={18} />
             </TouchableOpacity>
 
             {!streaming ? (
-              <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? t('chat.offline') : t('chat.sendMessage')}>
+              <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? 'Offline' : 'Send message'}>
                 <SendIcon color={canSend && !isRecording ? '#FFFFFF' : '#000000'} size={18} />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel={t('chat.stop')}>
-                <Text style={styles.stopButtonText}>{t('chat.stop')}</Text>
+              <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel={'Stop'}>
+                <StopIcon color="#FFFFFF" size={22} />
               </TouchableOpacity>
             )}
           </View>
@@ -366,9 +391,7 @@ function TestInput({
         <View style={styles.metaRow}>
           {offline ? (
             <Text style={styles.metaOffline}>Offline</Text>
-          ) : streaming ? (
-            <Text style={styles.metaStreaming}>Streaming…</Text>
-          ) : showCounter ? (
+          ) : showCounter && !streaming ? (
             <Text style={styles.metaCounter}>{(value || '').length}/{maxLength}</Text>
           ) : null}
         </View>
@@ -377,36 +400,24 @@ function TestInput({
   );
 }
 
-function ActionChip({ icon, label, onPress, accessibilityLabel }) {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.actionChip} accessibilityRole="button" accessibilityLabel={accessibilityLabel || label} hitSlop={{ top:6, bottom:6, left:6, right:6 }}>
-      <Text style={styles.actionChipIcon}>{icon}</Text>
-      <Text style={styles.actionChipText}>{label}</Text>
-    </TouchableOpacity>
-  );
-}
-
 const THUMB = 48;
 
 const styles = StyleSheet.create({
   wrapper: { backgroundColor: '#000000', paddingHorizontal: 12, paddingTop: 8, position: 'relative' },
-  quickActionsContainer: { overflow: 'hidden', marginBottom: 8, borderRadius: 14, backgroundColor: '#1E1E1E', borderWidth: 1, borderColor: colors.border },
-  quickActionsRow: { flexDirection: 'row', paddingHorizontal: 4, gap: 8 },
-  // Professional popover menu styles - matching Tailwind design
   backdrop: { backgroundColor: 'rgba(0,0,0,0.2)', zIndex: 998 },
   popoverContainer: { position: 'absolute', zIndex: 1000, elevation: 50, padding: 12 },
   menuBox: { 
-    backgroundColor: 'rgba(10, 9, 9, 0.75)', // more transparent black
+    backgroundColor: 'rgba(10, 9, 9, 0.75)',
     borderWidth: 1, 
-    borderColor: 'rgba(255,255,255,0.15)', // subtle light border
-    borderRadius: 24, // rounded-2xl
-    overflow: 'hidden', 
+    borderColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 24,
+    overflow: 'hidden',
     shadowColor: '#000', 
     shadowOpacity: 0.8, 
     shadowRadius: 30, 
     shadowOffset: { width: 0, height: 10 },
     elevation: 20,
-    padding: 10 // p-2
+    padding: 10
   },
   menuItem: { 
     flexDirection: 'row', 
@@ -417,40 +428,20 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     marginBottom: 4
   },
-  menuItemLast: {
-    marginBottom: 0 // no margin on last item
-  },
-  menuIconContainer: {
-    width: 48,
-    height: 48,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 20
-  },
-  iconViolet: {
-    // No background
-  },
-  iconCyan: {
-    // No background
-  },
-  iconOrange: {
-    // No background
-  },
+  menuItemLast: { marginBottom: 0 },
+  menuIconContainer: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center', marginRight: 20 },
+  iconViolet: {},
+  iconCyan: {},
+  iconOrange: {},
   menuTextContainer: { flex: 1 },
-  menuLabel: { 
-    color: '#E0E0E0',
-    fontSize: 17, 
-    fontWeight: '600', 
-    fontFamily: 'Lato-BoldItalic',
-    marginBottom: 3
-  },
-  menuSubLabel: { 
-    color: '#A0A0A0',
-    fontSize: 14, 
-    fontFamily: 'Lato-Regular' 
-  },
+  menuLabel: { color: '#E0E0E0', fontSize: 17, fontWeight: '600', fontFamily: 'Lato-BoldItalic', marginBottom: 3 },
+  menuSubLabel: { color: '#A0A0A0', fontSize: 14, fontFamily: 'Lato-Regular' },
 
-  inputContainer: { backgroundColor: '#1C1C1E', padding: 16, borderRadius: 24, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 8 },
+  inputContainer: { backgroundColor: '#1C1C1E',
+    //  padding: 16,
+     paddingVertical:12,
+     paddingHorizontal:16,
+      borderRadius: 24, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 8 },
 
   thumbRow: { marginBottom: 8 },
   thumbWrap: { width: THUMB, height: THUMB, borderRadius: 10, marginRight: 6, borderWidth: 1, borderColor: colors.border },
@@ -462,23 +453,40 @@ const styles = StyleSheet.create({
   input: { fontSize: 16, color: colors.text, fontFamily: 'Lato-Regular', paddingHorizontal: 0, paddingVertical: 8, textAlignVertical: 'top', includeFontPadding: false, minHeight: 40 },
 
   iconsRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 0 },
-  leftControls: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  leftControls: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   rightControls: { flexDirection: 'row', alignItems: 'center', gap: 8 },
 
   plusButton: { backgroundColor: '#2C2C2E', width: 32, height: 32, borderRadius: 16, justifyContent: 'center', alignItems: 'center' },
+  webSearchToggle: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    backgroundColor: '#2C2C2E', 
+    minWidth: 32,
+    height: 32,
+    paddingHorizontal: 8, 
+    borderRadius: 16, 
+    marginLeft: 4,
+    justifyContent: 'center'
+  },
+  webSearchText: { 
+    color: '#007AFF', 
+    fontSize: 12, 
+    fontFamily: 'Lato-Regular', 
+    marginLeft: 6 
+  },
   disabledBtn: { opacity: 0.5 },
 
   iconButton: { padding: 6 },
   iconDisabled: { opacity: 0.5 },
 
-  micButton: { padding: 6, borderRadius: 18, backgroundColor: '#1F1F1F', borderWidth: 1, borderColor: colors.border },
+  micButton: { width: 32, height: 32, borderRadius: 16, backgroundColor: '#1F1F1F', borderWidth: 1, borderColor: colors.border, justifyContent: 'center', alignItems: 'center' },
+  testButton: { width: 28, height: 28, borderRadius: 14, backgroundColor: '#1F1F1F', borderWidth: 1, borderColor: '#FF6B6B', justifyContent: 'center', alignItems: 'center', marginRight: 4 },
 
   sendButton: { width: 32, height: 32, borderRadius: 16, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
   sendButtonActive: { width: 32, height: 32, borderRadius: 16, backgroundColor: '#007AFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
   sendButtonDisabled: { backgroundColor: '#FFFFFF', opacity: 0.5 },
 
-  stopButton: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 16, backgroundColor: colors.error, justifyContent: 'center', alignItems: 'center' },
-  stopButtonText: { fontSize: 12, color: '#FFFFFF', fontFamily: 'Lato-Bold' },
+  stopButton: { width: 32, height: 32, borderRadius: 16, backgroundColor: colors.error, justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
 
   metaRow: { alignItems: 'flex-end' },
   metaOffline: { fontSize: 11, color: colors.warning, fontFamily: 'Lato-Regular' },

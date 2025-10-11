@@ -1,4 +1,3 @@
-// state/useThreadsStore.js
 import { create } from 'zustand';
 import { Storage } from '../lib/storage';
 import { throttledSave } from '../lib/throttledSave';
@@ -12,6 +11,13 @@ export const useThreadsStore = create((set, get) => ({
   threads: [],
   activeThreadId: null,
   hydrated: false,
+  
+  // Performance monitoring
+  _debug: {
+    lastUpdate: null,
+    updateCount: 0,
+    renderTime: null
+  },
   hydrate: async () => {
     const threads = await Storage.loadThreads();
     set({
@@ -20,12 +26,16 @@ export const useThreadsStore = create((set, get) => ({
       hydrated: true,
     });
   },
+  // TIP: if you want to default to the new OpenAI chat model everywhere, change model below.
   createThread: ({ title = 'Untitled', model = 'gpt-5-nano', system = null } = {}) => {
     const t = newThread({ title, model, system });
     set(state => {
       const threads = [t, ...state.threads];
       Storage.saveThreads(threads);
-      return { threads, activeThreadId: t.id };
+      return { 
+        threads, 
+        activeThreadId: t.id
+      };
     });
     return t;
   },
@@ -37,7 +47,21 @@ export const useThreadsStore = create((set, get) => ({
         return {
           ...t,
           messages: [...(t.messages || []), message],
-          updatedAt: message.createdAt, // Use message timestamp, not current time
+          updatedAt: message.createdAt,
+        };
+      });
+      Storage.saveThreads(next);
+      return { threads: next };
+    });
+  },
+  removeMessage: (threadId, messageId) => {
+    set(state => {
+      const next = state.threads.map(t => {
+        if (t.id !== threadId) return t;
+        return {
+          ...t,
+          messages: (t.messages || []).filter(m => m.id !== messageId),
+          updatedAt: Date.now(),
         };
       });
       Storage.saveThreads(next);
@@ -144,7 +168,6 @@ export const useThreadsStore = create((set, get) => ({
     if (thread) throttledSave.immediateSave(threadId, thread);
   },
 
-  // ✅ Accepts metaPatch so summary cadence stays accurate
   setThreadSummary: (threadId, summary, metaPatch) => set(state => {
     const next = state.threads.map(t => {
       if (t.id !== threadId) return t;
@@ -164,7 +187,6 @@ export const useThreadsStore = create((set, get) => ({
     return { threads: next };
   }),
 
-  // Insert content callback (used by images studio)
   insertToChatCallback: null,
   setInsertToChatCallback: (callback) => set({ insertToChatCallback: callback }),
   clearInsertToChatCallback: () => set({ insertToChatCallback: null }),

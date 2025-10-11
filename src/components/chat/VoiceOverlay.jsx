@@ -42,6 +42,8 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
   const { t } = useTranslation();
   const { height: screenH } = useWindowDimensions();
 
+
+
   // mount/unmount for exit anim
   const [render, setRender] = useState(visible);
   useEffect(() => {

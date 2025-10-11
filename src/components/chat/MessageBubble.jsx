@@ -3,29 +3,30 @@ import { View, Text, StyleSheet, TouchableOpacity, ActionSheetIOS, Platform, Ale
 import Clipboard from '@react-native-clipboard/clipboard';
 import Haptic from 'react-native-haptic-feedback';
 import MarkdownContent from './MarkdownContent';
-import TypingDots from './TypingDots';
 import SvgIcon from '../SvgIcon';
 import StreamingText from './StreamingText';
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
 
-// --- replace your old image helpers with these ---
-const IMG_TAG_RE = /!\[[^\]]*\]\(([^)]+)\)/g;
+// --- image helpers (stable, no global regex side-effects) ---
+const IMG_TAG_RE = /!\[[^\]]*\]\(([^)]+)\)/;        // non-global: safe for .test()
 
 function extractImageUrisAll(md = '') {
   const out = [];
+  const re = /!\[[^\]]*\]\(([^)]+)\)/g;             // local /g instance: safe per-call
   let m;
-  while ((m = IMG_TAG_RE.exec(md))) out.push(m[1]);
+  while ((m = re.exec(md))) out.push(m[1]);
   return out;
 }
 
 function stripImageMd(md = '') {
-  return md.replace(IMG_TAG_RE, '').replace(/\n{3,}/g, '\n\n').trim();
+  return md.replace(/!\[[^\]]*\]\(([^)]+)\)/g, '').replace(/\n{3,}/g, '\n\n').trim();
 }
 
 function isImagesOnly(md = '') {
   if (!md || typeof md !== 'string') return false;
-  if (!IMG_TAG_RE.test(md)) return false;
+  const hasImg = IMG_TAG_RE.test(md);
+  if (!hasImg) return false;
   const leftover = stripImageMd(md).replace(/```[\s\S]*?```/g, '').trim();
   return leftover.length === 0;
 }
@@ -244,50 +245,39 @@ const MessageBubble = memo(function MessageBubble({
             );
           })()
         ) : (
-          // ASSISTANT SIDE
+          // ASSISTANT SIDE (unified)
           (() => {
-            if (streamingMessageId === message.id) {
-              return (
-                <StreamingText
-                  messageId={message.id}
-                  base={message.content}
-                  streaming
-                />
-              );
-            } else if (isPureImages) {
-              // Same: delegate to MarkdownContent for consistent sizing
-              return (
-                <MarkdownContent text={message.content} isUser={isUser} animateOnMount />
-              );
-            } else {
-              return (
-                <TouchableOpacity activeOpacity={0.92} onPress={Keyboard.dismiss} onLongPress={showSheet} delayLongPress={180}>
-                  <View
-                    style={[
-                      styles.assistantTextContainer,
-                      streamingMessageId === message.id && styles.assistantTight
-                    ]}
-                  >
-                    {(message.content && message.content.trim().length > 0)
-                      ? <MarkdownContent text={message.content} isUser={false} animateOnMount />
-                      : <TypingDots color={colors.textSecondary} />
-                    }
-                    {showMeta && (
-                      <View style={styles.metaRow}>
-                        {!!model && (
-                          <View style={styles.modelTag}><Text style={styles.modelText}>{model}</Text></View>
-                        )}
-                        {!!status && (
-                          <Text style={styles.metaTime}>
-                            {status === 'pending' ? 'Sending…' : status === 'failed' ? 'Failed' : 'Sent'}
-                          </Text>
-                        )}
-                      </View>
-                    )}
-                  </View>
-                </TouchableOpacity>
-              );
-            }
+            const isStreamingThis = streamingMessageId === message.id;
+            return (
+              <TouchableOpacity activeOpacity={0.92} onPress={Keyboard.dismiss} onLongPress={showSheet} delayLongPress={180}>
+                <View
+                  style={[
+                    styles.assistantTextContainer,
+                    isStreamingThis && styles.assistantTight
+                  ]}
+                  accessibilityLiveRegion="polite"
+                >
+                  <StreamingText
+                    messageId={message.id}
+                    base={message.content}
+                    streaming={isStreamingThis}
+                    activityText={message?.meta?.activity}
+                  />
+                  {showMeta && (
+                    <View style={styles.metaRow}>
+                      {!!model && (
+                        <View style={styles.modelTag}><Text style={styles.modelText}>{model}</Text></View>
+                      )}
+                      {!!status && (
+                        <Text style={styles.metaTime}>
+                          {status === 'pending' ? 'Sending…' : status === 'failed' ? 'Failed' : 'Sent'}
+                        </Text>
+                      )}
+                    </View>
+                  )}
+                </View>
+              </TouchableOpacity>
+            );
           })()
         )}
       </View>

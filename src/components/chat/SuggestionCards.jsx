@@ -46,6 +46,7 @@ const renderIcon = (iconType, color) => {
 
 const SuggestionCards = ({ onSuggestionPress }) => {
   const { t } = useTranslation();
+
   const suggestions = [
     {
       id: 'write-story',

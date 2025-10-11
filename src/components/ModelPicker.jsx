@@ -13,6 +13,7 @@ function groupByProvider(modelsObj) {
   Object.values(groups).forEach(arr => arr.sort((a,b) => (a.display?.name || a.key).localeCompare(b.display?.name || b.key)));
   return groups;
 }
+
 export default function ModelPicker({ onSelected }) {
   const models = useSettingsStore(s => s.models);
   const currentModel = useSettingsStore(s => s.model);

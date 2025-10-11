@@ -1,3 +1,4 @@
+// src/state/useSettingsStore.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import DEFAULT_MODELS from '../config/models';
@@ -10,14 +11,21 @@ export const useSettingsStore = create((set, get) => ({
 
   // current selection
   model: 'gpt-5-nano',
+  
+  // Performance monitoring
+  _debug: {
+    lastUpdate: null,
+    updateCount: 0,
+    renderTime: null
+  },
 
   // GLOBAL default temperature (fallback)
-  temperature: 0.7, // keeps old name so old code still works
+  temperature: 0.7,
 
-  // NEW: per-model overrides
-  perModelTemp: {},                 // { [modelKey]: number }
+  // per-model overrides
+  perModelTemp: {}, // { [modelKey]: number }
 
-  // model registry (loaded from server, fallback local)
+  // model registry (server-provided, fallback to local defaults)
   models: DEFAULT_MODELS,
 
   // ---------- actions ----------
@@ -25,7 +33,6 @@ export const useSettingsStore = create((set, get) => ({
     set({ model });
     get().save();
   },
-
   // keep old API (global default)
   setTemperature: (t) => {
     set({ temperature: t });
@@ -51,29 +58,40 @@ export const useSettingsStore = create((set, get) => ({
   },
 
   // registry
-  setModels: (models) => {
-    set({ models });
+  setModels: (incoming) => {
+    // Merge server models (left wins) over local defaults for easy rollout.
+    const merged = { ...DEFAULT_MODELS, ...(incoming || {}) };
+    set({ models: merged });
+
+    // If current model is missing (e.g., renamed upstream), fall back gracefully.
+    const cur = get().model;
+    if (!merged[cur]) {
+      set({ model: 'gpt-5-nano' });
+      get().save();
+    }
   },
-  
+
   // Force refresh models from server
   forceRefreshModels: async () => {
     try {
-      
-      // Clear AsyncStorage cache first
+      // Clear only settings cache, not the actual registry module.
       try {
         await AsyncStorage.removeItem(SETTINGS_V2);
         await AsyncStorage.removeItem(SETTINGS_V1);
-      } catch (e) {
-      }
-      
-      const { fetchModels } = await import('../api/models');
+      } catch {}
+
+      const { fetchModels } = await import('../api/models'); // you already call MODELS_URL elsewhere
       const incoming = await fetchModels();
       if (incoming && Object.keys(incoming).length > 0) {
-        set({ models: incoming });
+        const merged = { ...DEFAULT_MODELS, ...incoming };
+        set({ models: merged });
+
+        // guard current selection
+        const cur = get().model;
+        if (!merged[cur]) set({ model: 'gpt-5-nano' });
         return true;
       }
-    } catch (error) {
-    }
+    } catch {}
     return false;
   },
 
