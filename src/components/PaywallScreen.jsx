@@ -11,10 +11,9 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-
+import SvgIcon from './SvgIcon';
 // Custom SVG Icons
 const CloseIcon = ({ color = '#FFFFFF', size = 24 }) => (
     <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
@@ -28,12 +27,6 @@ const PerplexityIcon = ({ color = '#EA33F7', size = 24 }) => (
     </Svg>
 );
 
-const ClaudeIcon = ({ color = '#F19E39', size = 24 }) => (
-    <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
-        <Path d="M331-651 211-771l57-57 120 120-57 57Zm149-95v-170h80v170h-80Zm291 535L651-331l57-57 120 120-57 57Zm-63-440-57-57 120-120 57 57-120 120Zm38 171v-80h170v80H746ZM205-92 92-205q-12-12-12-28t12-28l363-364q35-35 85-35t85 35q35 35 35 85t-35 85L261-92q-12 12-28 12t-28-12Zm279-335-14.5-14-14.5-14-14-14-14-14 28 28 29 28ZM233-176l251-251-57-56-250 250 56 57Z" />
-    </Svg>
-);
-
 const CreateImagesIcon = ({ color = '#75FB4C', size = 24 }) => (
     <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
         <Path d="M280-240v-480h80v480h-80ZM440-80v-800h80v800h-80ZM120-400v-160h80v160h-80Zm480 160v-480h80v480h-80Zm160-160v-160h80v160h-80Z" />
@@ -43,12 +36,6 @@ const CreateImagesIcon = ({ color = '#75FB4C', size = 24 }) => (
 const SearchWebIcon = ({ color = '#75FBFD', size = 24 }) => (
     <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
         <Path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-7-.5-14.5T799-507q-5 29-27 48t-52 19h-80q-33 0-56.5-23.5T560-520v-40H400v-80q0-33 23.5-56.5T480-720h40q0-23 12.5-40.5T563-789q-20-5-40.5-8t-42.5-3q-134 0-227 93t-93 227h200q66 0 113 47t47 113v40H400v110q20 5 39.5 7.5T480-160Z" />
-    </Svg>
-);
-
-const TalkToAIIcon = ({ color = '#FFFF55', size = 24 }) => (
-    <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
-        <Path d="m176-120-56-56 301-302-181-45 198-123-17-234 179 151 216-88-87 217 151 178-234-16-124 198-45-181-301 301Zm24-520-80-80 80-80 80 80-80 80Zm355 197 48-79 93 7-60-71 35-86-86 35-71-59 7 92-79 49 90 22 23 90Zm165 323-80-80 80-80 80 80-80 80ZM569-570Z" />
     </Svg>
 );
 
@@ -87,7 +74,7 @@ function Chip({ icon, label, tint, style, customIcon }) {
     return (
         <View style={[styles.chip, style]}>
             {customIcon ? <View style={{ marginRight: 6 }}>{customIcon}</View> : (
-                <MaterialIcons name={icon} size={16} style={{ marginRight: 6 }} color={tint} />
+                <SvgIcon name={icon} size={20} style={{ marginRight: 6 }} color={tint} />
             )}
             <Text style={styles.chipText}>{label}</Text>
         </View>
@@ -176,34 +163,37 @@ export default function PaywallScreen({
                         <View style={styles.centerWrap}>
                             <View style={styles.chipsLayer}>
                                 <Chip
-                                    icon="auto_awesome"
-                                    label="Veo3"
+                                    icon="gemini"
+                                    label="Gemini"
                                     tint={COLORS.green}
-                                    style={{ top: 18, left: '20%' }} />
+                                    style={{ top: 18, left: '18%' }} />
                                 <Chip
-                                    label="Perplexity"
+                                    icon="banana"
+                                    label="Nano Banana"
                                     tint={COLORS.purple}
-                                    style={{ top: 18, right: '10%' }}
-                                    customIcon={<PerplexityIcon color="#EA33F7" size={16} />} />
+                                    style={{ top: 18, right: '6%' }}
+                                    // customIcon={<PerplexityIcon color="#EA33F7" size={16} />} 
+                                    />
                                 <Chip
-                                    icon="chat_bubble"
+                                    icon="gpt"
                                     label="ChatGPT"
                                     tint={COLORS.teal}
-                                    style={{ top: 62, left: '26%', marginLeft: -48 }} />
+                                    style={{ top: 62, left: '22%', marginLeft: -48 }} />
                                 <Chip
+                                    icon="claude"
                                     label="Claude"
                                     tint={COLORS.orange}
                                     style={{ top: 62, right: '26%', marginRight: -48 }}
-                                    customIcon={<ClaudeIcon color="#F19E39" size={16} />} />
+                                />
                                 <Chip
-                                    icon="data_usage"
+                                    icon="grok"
                                     label="Grok 4"
                                     tint={COLORS.blue}
                                     style={{ bottom: 18, left: '18%' }} />
                                 <Chip
-                                    icon="search"
+                                    icon="deepseek"
                                     label="DeepSeek"
-                                    tint={COLORS.indigo}
+                                    tint={COLORS.blue}
                                     style={{ bottom: 18, right: '12%' }} />
                             </View>
 
@@ -248,7 +238,13 @@ export default function PaywallScreen({
 
                     {/* Yearly (Best offer) */}
                     <TouchableOpacity style={styles.bestOfferWrap} onPress={() => handleSelectPlan('yearly')} activeOpacity={0.8}>
-                        <View style={[styles.yearlyCard, { borderColor: selectedPlan === 'yearly' ? COLORS.primary : '#333' }]}>
+                        <View style={[
+                            styles.yearlyCard, 
+                            { 
+                                borderColor: selectedPlan === 'yearly' ? COLORS.primary : '#333',
+                                backgroundColor: selectedPlan === 'yearly' ? 'rgba(0, 122, 255, 0.1)' : theme.card
+                            }
+                        ]}>
                             <View style={styles.badge}><Text style={styles.badgeText}>Best offer</Text></View>
                             <View style={styles.rowSpread}>
                                 <View>
@@ -265,7 +261,14 @@ export default function PaywallScreen({
 
                     {/* Weekly */}
                     <TouchableOpacity
-                        style={[styles.weeklyCard, { backgroundColor: theme.card, borderWidth: 2, borderColor: selectedPlan === 'weekly' ? COLORS.primary : '#333' }]}
+                        style={[
+                            styles.weeklyCard, 
+                            { 
+                                backgroundColor: selectedPlan === 'weekly' ? 'rgba(0, 122, 255, 0.1)' : theme.card, 
+                                borderWidth: 2, 
+                                borderColor: selectedPlan === 'weekly' ? COLORS.primary : '#333' 
+                            }
+                        ]}
                         onPress={() => handleSelectPlan('weekly')}
                         activeOpacity={0.8}
                     >
@@ -364,13 +367,13 @@ const styles = StyleSheet.create({
         borderRadius: 999,
         backgroundColor: COLORS.cardDark,
     },
-    chipText: { color: COLORS.textDark, fontSize: 13, fontWeight: '600', fontFamily: 'Lato-Bold' },
+    chipText: { color: COLORS.textDark, fontSize: 14, fontWeight: '600', fontFamily: 'Lato-Bold' },
     centerLogo: {
         width: 80, height: 80, borderRadius: 40,
         alignItems: 'center', justifyContent: 'center',
     },
 
-    title: { fontSize: 22, fontWeight: '700', textAlign: 'center', marginBottom: 12, fontFamily: 'Lato-Bold' },
+    title: { fontSize: 22, fontWeight: '700', textAlign: 'center', marginBottom: 16, fontFamily: 'Lato-Bold' },
 
     features: { marginBottom: 26, gap: 10 },
     featureRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },

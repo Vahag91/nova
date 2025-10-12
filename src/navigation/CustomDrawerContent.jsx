@@ -281,6 +281,13 @@ export default function CustomDrawerContent(props) {
             isActive={activeRoute === 'ImagesStudio'}
             index={3}
           />
+          <MenuItem
+            icon="stars"
+            label="Onboarding"
+            routeName="IntroductionAnimationScreen"
+            isActive={activeRoute === 'IntroductionAnimationScreen'}
+            index={4}
+          />
 
           {/* Recent Chats Section */}
           {recentThreads.length > 0 && (
@@ -312,7 +319,7 @@ export default function CustomDrawerContent(props) {
             label={t('navigation.settings')}
             routeName="Settings"
             isActive={activeRoute === 'Settings'}
-            index={4}
+            index={5}
           />
         </View>
       </DrawerContentScrollView>
