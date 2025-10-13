@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import { DrawerContentScrollView, useDrawerStatus } from '@react-navigation/drawer';
 import Animated, {
   useSharedValue,
@@ -218,12 +218,15 @@ export default function CustomDrawerContent(props) {
     );
   };
 
-  const recentChatsContainerStyle = useAnimatedStyle(() => {
+  const   recentChatsContainerStyle = useAnimatedStyle(() => {
     const progress = recentChatsHeight.value;
+    const maxVisibleItems = 3;
+    const itemHeight = 46; // paddingVertical: 10, marginBottom: 4, height ~42
+    const maxHeight = maxVisibleItems * itemHeight;
     return {
       opacity: progress,
-      maxHeight: progress * 300, // Smooth height transition
-      transform: [{ translateY: (1 - progress) * -10 }], // Subtle slide up/down
+      maxHeight: progress * maxHeight,
+      transform: [{ translateY: (1 - progress) * -10 }],
     };
   });
 
@@ -304,9 +307,15 @@ export default function CustomDrawerContent(props) {
               </TouchableOpacity>
 
               <Animated.View style={[styles.recentChatsList, recentChatsContainerStyle]}>
-                {recentThreads.map((thread, idx) => (
-                  <RecentChatItem key={thread.id} thread={thread} index={idx} />
-                ))}
+                <ScrollView 
+                  style={styles.recentChatsScrollView}
+                  nestedScrollEnabled={true}
+                  showsVerticalScrollIndicator={false}
+                >
+                  {recentThreads.map((thread, idx) => (
+                    <RecentChatItem key={thread.id} thread={thread} index={idx} />
+                  ))}
+                </ScrollView>
               </Animated.View>
             </View>
           )}
@@ -333,9 +342,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   scrollContent: {
-    flex: 1,
     paddingHorizontal: 24,
     paddingTop: 12,
+    paddingBottom: 24,
   },
   logoSection: {
     flexDirection: 'row',
@@ -367,7 +376,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
   },
   mainNav: {
-    flex: 1,
     gap: 16,
   },
   bottomNav: {
@@ -446,6 +454,10 @@ const styles = StyleSheet.create({
   },
   recentChatsList: {
     overflow: 'hidden',
+    marginBottom: 8,
+  },
+  recentChatsScrollView: {
+    maxHeight: 130, // 3 items * 46px each
   },
   recentChatItem: {
     paddingVertical: 10,

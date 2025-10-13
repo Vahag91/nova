@@ -132,7 +132,6 @@ export function streamChat({
     },
     onClose: (info) => {
       // ✅ Store close info and finish appropriately
-      console.log('[STREAM] onClose fired:', info?.reason, info?.code); // ✅ ADD LOG
       closeInfo = info;
       finishIfAppropriate('close');
     },

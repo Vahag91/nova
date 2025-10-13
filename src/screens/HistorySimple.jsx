@@ -12,6 +12,7 @@ import Animated, {
   withTiming, 
   Easing 
 } from 'react-native-reanimated';
+import Svg, { Path } from 'react-native-svg';
 import Haptic from 'react-native-haptic-feedback';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { betterPreview } from '../lib/format';
@@ -309,8 +310,13 @@ const renderItem = ({ item: thread }) => {
           style={[styles.newChatButton, pulseStyle]}
           activeOpacity={0.8}
         >
-          <SvgIcon name="plus" size={20} color="#FFFFFF" />
-          <Text style={styles.newChatButtonText}>{t('history.newChat')}</Text>
+          <Svg width={18} height={18} viewBox="0 0 440 440">
+            <Path
+              d="M226 0C248.091 3.54343e-07 266 17.9086 266 40V173H400C422.091 173 440 190.909 440 213V226C440 248.091 422.091 266 400 266H266V400C266 422.091 248.091 440 226 440H213C190.909 440 173 422.091 173 400V266H40C17.9086 266 3.54389e-07 248.091 0 226V213C3.54389e-07 190.909 17.9086 173 40 173H173V40C173 17.9086 190.909 3.54389e-07 213 0H226Z"
+              fill="#FFFFFF"
+            />
+          </Svg>
+          {/* <Text style={styles.newChatButtonText}>{t('history.newChat')}</Text> */}
         </AnimatedTouchable>
       </View>
     </View>
@@ -407,16 +413,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 24,
     paddingTop: 12,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    // backgroundColor: 'rgba(0, 0, 0, 0.8)',
   },
   newChatButton: {
     backgroundColor: colors.primary,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 16,
-    paddingHorizontal: 48,
-    borderRadius: 24,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    borderRadius: 54,
     gap: 10,
     alignSelf: 'center',
     shadowColor: colors.primary,

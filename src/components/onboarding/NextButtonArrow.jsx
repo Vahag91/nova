@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { StyleSheet, Text, Animated, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MyPressable from './MyPressable';
@@ -20,24 +20,6 @@ const NextButtonArrow = ({
     outputRange: [0, 0, 0, 0, 1],
   });
 
-  // Debug animation values - reduced frequency to improve performance
-  useEffect(() => {
-    console.log(`🏹 [NextButtonArrow] Component mounted, using native driver animation`);
-    
-    let lastLogTime = 0;
-    const listener = animationController.current.addListener(({ value }) => {
-      // Only log every 500ms to reduce console spam
-      if (value >= 0.6 && Date.now() - lastLogTime > 500) {
-        console.log(`🏹 [NextButtonArrow] Native animation active, value: ${value.toFixed(3)}`);
-        lastLogTime = Date.now();
-      }
-    });
-    
-    return () => {
-      console.log(`🏹 [NextButtonArrow] Cleaning up listener`);
-      animationController.current.removeListener(listener);
-    };
-  }, [animationController]);
 
   // Transition from arrow to sign up
   const transitionAnim = arrowAnim.current.interpolate({

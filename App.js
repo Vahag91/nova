@@ -48,7 +48,6 @@ export default function App() {
           const modelsData = json?.models || json;
           if (modelsData && typeof modelsData === 'object') {
             setModels(modelsData);
-            console.log('models', modelsData);
           }
         } else {
         }

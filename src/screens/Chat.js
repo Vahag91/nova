@@ -50,7 +50,6 @@ export default function Chat({ navigation }) {
   // Settings
   const globalModel = useSettingsStore(s => s.model);      // global fallback
   const modelsMap   = useSettingsStore(s => s.models);     // registry with caps
-  // console.log('model', globalModel);
 
   // Local
   const messageListRef = useRef(null);
@@ -155,13 +154,9 @@ export default function Chat({ navigation }) {
       
       // Stop voice recording when backgrounded (mic access will be lost anyway)
       if (nextAppState !== 'active' && isRecording) {
-        console.log('[CHAT] 📱 App backgrounded - stopping voice recording');
         stopVoice();
       }
-      
-      if (nextAppState !== 'active') {
-        console.log('[CHAT] 📱 App backgrounded - streaming will continue until OS terminates it');
-      }
+
     };
     
     const sub = AppState.addEventListener('change', handleAppStateChange);
@@ -289,17 +284,13 @@ export default function Chat({ navigation }) {
       signal: controller.signal,
       onToken: (chunk) => { 
         if (typeof chunk === 'string') {
-          // console.log('[CHAT] 📩 Token:', chunk.substring(0, 30)); // ✅ Uncomment for debug
           appendStream(assistantId, chunk);
         }
       },
       onDone: () => {
-        console.log('[CHAT] ✅ onDone fired - message complete'); // ✅ TEST LOG
-        
+       
         // 1. FIRST: Get the full content from stream buffer
-        const full = getStream(assistantId);
-        console.log('[CHAT] 📝 Final content length:', full?.length || 0); // ✅ TEST LOG
-        
+        const full = getStream(assistantId);        
         // 2. SECOND: Update the message content in store (synchronous)
         if (isPrivate) updateLastAssistantContentPrivate(() => full);
         else updateLastAssistantContent(activeThread.id, () => full);
@@ -315,7 +306,6 @@ export default function Chat({ navigation }) {
         setWebSearchNext(false); // reset after a successful send
       },
       onError: (err) => {
-        console.log('[CHAT] ❌ onError fired:', err.code, err.message); // ✅ TEST LOG
         
         // Check if error happened while app was backgrounded
         const wasBackgrounded = appStateRef.current !== 'active';
@@ -324,7 +314,6 @@ export default function Chat({ navigation }) {
         // 1. FIRST: Save any partial content from stream buffer
         const partial = getStream(assistantId);
         if (partial && partial.trim().length > 0) {
-          console.log('[CHAT] 💾 Saving partial on error:', partial.substring(0, 50));
           if (isPrivate) updateLastAssistantContentPrivate(() => partial);
           else {
             updateLastAssistantContent(activeThread.id, () => partial);
@@ -332,7 +321,6 @@ export default function Chat({ navigation }) {
           }
         } else if (!partial || partial.trim().length === 0) {
           // No content - remove empty message
-          console.log('[CHAT] 🗑️ Removing empty assistant message (error before tokens)');
           if (!isPrivate && activeThread?.id) {
             removeMessage(activeThread.id, assistantId);
           }
@@ -348,7 +336,6 @@ export default function Chat({ navigation }) {
         
         // Only show error if NOT caused by OS backgrounding
         if (wasBackgrounded && isOSTermination) {
-          console.log('[CHAT] 🔕 Error silenced - was backgrounded, OS killed connection');
           // Don't show error to user - this is expected behavior on iOS/Android
         } else {
           // Real error - show to user
@@ -362,15 +349,12 @@ export default function Chat({ navigation }) {
   }
 
   function onStop() {
-    if (abortRef.current) {
-      console.log('[CHAT] 🛑 User stopped streaming'); // ✅ LOG
-      
+    if (abortRef.current) {      
       // Handle partial content or remove empty message
       if (streamingMsgId) {
         const partial = getStream(streamingMsgId);
         if (partial && partial.trim().length > 0) {
           // Has content - save it
-          console.log('[CHAT] 💾 Saving partial content:', partial.substring(0, 50)); // ✅ LOG
           if (isPrivate) {
             updateLastAssistantContentPrivate(() => partial);
           } else {
@@ -379,11 +363,9 @@ export default function Chat({ navigation }) {
           }
         } else {
           // No content - remove the empty assistant message to prevent typing dots
-          console.log('[CHAT] 🗑️ Removing empty assistant message'); // ✅ LOG
           if (isPrivate) {
             // For private threads, we need to handle this differently since there's no remove method
             // Just clear the streaming state - the empty message will show but won't have typing dots
-            console.log('[CHAT] ⚠️ Private thread - cannot remove empty message, will show empty');
           } else if (activeThread?.id) {
             // Remove the empty assistant message from normal thread
             removeMessage(activeThread.id, streamingMsgId);

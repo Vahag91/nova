@@ -45,8 +45,6 @@ const CenterNextButton = ({
   const dots = useMemo(() => [0, 1, 2, 3], []);
 
   useEffect(() => {
-    console.log(`🔧 [CenterNextButton] Setting up animation listener`);
-    
     const listener = animationController.current.addListener(({ value }) => {
       const isVisible = value >= 0.2 && value <= 0.6;
       
@@ -54,8 +52,6 @@ const CenterNextButton = ({
         (isVisible && currentOpacity.current === 0) ||
         (!isVisible && currentOpacity.current === 1)
       ) {
-        console.log(`👁️ [CenterNextButton] Visibility change: ${isVisible ? 'visible' : 'hidden'}`);
-        
         Animated.timing(opacity.current, {
           toValue: isVisible ? 1 : 0,
           duration: 480,
@@ -64,7 +60,6 @@ const CenterNextButton = ({
         currentOpacity.current = isVisible ? 1 : 0;
       }
 
-      // Update selected index with throttling to prevent excessive re-renders
       let newIndex;
       if (value >= 0.7) {
         newIndex = 3;
@@ -73,23 +68,19 @@ const CenterNextButton = ({
       } else if (value >= 0.3) {
         newIndex = 1;
       } else {
-        newIndex = 0; // Default to 0 for all values < 0.3
+        newIndex = 0;
       }
       
-      // Only update if the index actually changed (use ref to avoid stale closure)
       if (newIndex !== lastSelectedIndex.current) {
-        console.log(`🎯 [CenterNextButton] Dot index change: ${lastSelectedIndex.current} → ${newIndex} (value: ${value.toFixed(3)})`);
         lastSelectedIndex.current = newIndex;
         setSelectedIndex(newIndex);
       }
     });
 
-    // Cleanup function to remove listener
     return () => {
-      console.log(`🧹 [CenterNextButton] Cleaning up animation listener`);
       animationController.current.removeListener(listener);
     };
-  }, [animationController]); // No selectedIndex dependency - using ref to avoid stale closure
+  }, [animationController]);
 
   const topViewAnim = animationController.current.interpolate({
     inputRange: [0, 0.2, 0.4, 0.6, 0.8],

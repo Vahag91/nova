@@ -198,7 +198,6 @@ export default function DrawerNavigator() {
                 console.log('Restore pressed');
               }}
               onContinue={(data) => {
-                console.log('Continue pressed:', data);
                 navigation.goBack();
               }}
             />
