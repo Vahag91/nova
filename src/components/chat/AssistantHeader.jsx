@@ -6,21 +6,11 @@ import { colors } from '../../styles/colors';
 import { PRESETS } from '../../data/presets';
 
 export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
-  // Check if this thread has a system message (assistant thread)
-  const systemMsg = thread?.messages?.find(m => m.role === 'system');
-  if (!systemMsg) return null;
+  const fallbackCopy = {
+    title: 'Assistant unavailable',
+    description: 'We couldn’t load this assistant. Please try again.',
+  };
 
-  // Find matching preset by system prompt
-  const preset = PRESETS.find(p => p.system === systemMsg.content);
-  if (!preset) return null;
-
-  // Count user/assistant messages (exclude system messages)
-  const hasMessages = thread?.messages?.filter(m => m.role !== 'system').length > 0;
-  
-  // If showOnlyWhenEmpty is true, hide after first message
-  if (showOnlyWhenEmpty && hasMessages) return null;
-
-  // Use the same gradient system as Assistants screen
   const iconGradients = [
     { from: '#6366F1', to: '#7C3AED' }, // indigo → purple
     { from: '#0EA5E9', to: '#06B6D4' }, // sky → cyan
@@ -29,10 +19,54 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
     { from: '#F59E0B', to: '#EA580C' }, // amber → orange
   ];
 
+  const defaultGradient = iconGradients[0];
+
+  // Check if this thread has a system message (assistant thread)
+  const systemMsg = thread?.messages?.find(m => m.role === 'system');
+  if (!systemMsg) return null;
+
+  // Find matching preset by system prompt
+  const preset = PRESETS.find(p => p.system === systemMsg.content);
+  if (!preset) {
+    return (
+      <View style={styles.wrapper}>
+        <View style={styles.iconWrap}>
+          <Svg width={80} height={80} style={StyleSheet.absoluteFill}>
+            <Defs>
+              <LinearGradient id="assist_header_fallback" x1="0" y1="0" x2="1" y2="1">
+                <Stop offset="0" stopColor={defaultGradient.from} />
+                <Stop offset="1" stopColor={defaultGradient.to} />
+              </LinearGradient>
+            </Defs>
+            <Rect x={0} y={0} width={80} height={80} rx={20} fill="url(#assist_header_fallback)" />
+          </Svg>
+          <View style={styles.iconContent}>
+            <Text style={styles.iconEmoji}>🤖</Text>
+          </View>
+        </View>
+        <Text style={styles.title}>{fallbackCopy.title}</Text>
+        <Text style={styles.description}>{fallbackCopy.description}</Text>
+      </View>
+    );
+  }
+
+  // Count user/assistant messages (exclude system messages)
+  const hasMessages = thread?.messages?.filter(m => m.role !== 'system').length > 0;
+  
+  // If showOnlyWhenEmpty is true, hide after first message
+  if (showOnlyWhenEmpty && hasMessages) return null;
+
+  // Use the same gradient system as Assistants screen
   // Find the preset index to get the same gradient
   const presetIndex = PRESETS.findIndex(p => p.id === preset.id);
-  const gradient = iconGradients[presetIndex % iconGradients.length];
+  const gradient =
+    iconGradients[(presetIndex >= 0 ? presetIndex : 0) % iconGradients.length] || defaultGradient;
   const gradientId = `assist_header_${preset.id}`;
+
+  const titleText = preset.name || fallbackCopy.title;
+  const descriptionText = preset.description || fallbackCopy.description;
+  const iconEmoji = preset.emoji || '🤖';
+  const iconName = preset.icon;
 
   return (
     <View style={styles.wrapper}>
@@ -48,19 +82,19 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
           <Rect x={0} y={0} width={80} height={80} rx={20} fill={`url(#${gradientId})`} />
         </Svg>
         <View style={styles.iconContent}>
-          {preset.icon ? (
-            <SvgIcon name={preset.icon} size={32} color="#FFFFFF" />
+          {iconName ? (
+            <SvgIcon name={iconName} size={32} color="#FFFFFF" />
           ) : (
-            <Text style={styles.iconEmoji}>{preset.emoji}</Text>
+            <Text style={styles.iconEmoji}>{iconEmoji}</Text>
           )}
         </View>
       </View>
       
       {/* Title */}
-      <Text style={styles.title}>{preset.name}</Text>
+      <Text style={styles.title}>{titleText}</Text>
       
       {/* Description */}
-      <Text style={styles.description}>{preset.description}</Text>
+      <Text style={styles.description}>{descriptionText}</Text>
       
       {/* Status indicator */}
       <View style={styles.statusRow}>
@@ -137,4 +171,3 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
-

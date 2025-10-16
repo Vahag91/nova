@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 import { useSettingsStore } from './src/state/useSettingsStore';
 import { useThreadsStore } from './src/state/useThreadsStore';
 import { useImagesStore } from './src/state/useImagesStore';
 import { ensureDeviceId } from './src/lib/deviceId';
+import IntroductionAnimationScreen from './src/screens/IntroductionAnimationScreen';
 import { MODELS_URL, SUPABASE_ANON_KEY } from './src/config/endpoints';
+import GlobalErrorBoundary from './src/components/GlobalErrorBoundary';
+import OfflineBanner from './src/components/OfflineBanner'; // ← NEW
 import './src/i18n';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
   const hydrateSettings = useSettingsStore(s => s.hydrate);
@@ -22,51 +26,84 @@ export default function App() {
   const imagesHydrated = useImagesStore(s => s.hydrated);
 
   const [deviceIdReady, setDeviceIdReady] = useState(false);
-  const [modelsLoaded, setModelsLoaded] = useState(false); // NEW
-
+  const [modelsLoaded, setModelsLoaded] = useState(false);
+  const [firstLaunch, setFirstLaunch] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const deviceId = await ensureDeviceId();
+      await ensureDeviceId();
       setDeviceIdReady(true);
     })();
+
     hydrateSettings();
     hydrateThreads();
     hydrateImages();
 
-    // --- Fetch models (non-blocking; flips modelsLoaded when done) ---
+    (async () => {
+      try {
+        const v = await AsyncStorage.getItem('hasLaunched');
+        if (v === null) {
+          await AsyncStorage.setItem('hasLaunched', 'true');
+          setFirstLaunch(true);
+        } else {
+          setFirstLaunch(false);
+        }
+      } catch {
+        setFirstLaunch(false);
+      }
+    })();
+
     (async () => {
       try {
         const r = await fetch(MODELS_URL, {
-          headers: {
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-          },
+          headers: { Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
         });
         if (r.ok) {
           const json = await r.json();
-          // The API might return models directly or in a models property
           const modelsData = json?.models || json;
-          if (modelsData && typeof modelsData === 'object') {
-            setModels(modelsData);
-          }
-        } else {
+          if (modelsData && typeof modelsData === 'object') setModels(modelsData);
         }
-      } catch (e) {
+      } catch {
       } finally {
         setModelsLoaded(true);
       }
     })();
   }, []);
 
-  const ready = settingsHydrated && threadsHydrated && imagesHydrated && deviceIdReady && modelsLoaded;
+  const bootReady =
+    settingsHydrated &&
+    threadsHydrated &&
+    imagesHydrated &&
+    deviceIdReady &&
+    modelsLoaded;
 
-  if (!ready) return null; // simple loader; optional spinner
+  if (firstLaunch === null) return null;
+
+  if (firstLaunch && deviceIdReady) {
+    return (
+      <GlobalErrorBoundary>
+        <SafeAreaProvider>
+          <KeyboardProvider statusBarTranslucent>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <OfflineBanner /> {/* ← NEW */}
+              <IntroductionAnimationScreen onComplete={() => setFirstLaunch(false)} />
+            </GestureHandlerRootView>
+          </KeyboardProvider>
+        </SafeAreaProvider>
+      </GlobalErrorBoundary>
+    );
+  }
+
+  if (!bootReady) return null;
 
   return (
-    <KeyboardProvider statusBarTranslucent>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <DrawerNavigator />
-      </GestureHandlerRootView>
-    </KeyboardProvider>
+    <GlobalErrorBoundary>
+      <KeyboardProvider statusBarTranslucent>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <OfflineBanner /> 
+          <DrawerNavigator />
+        </GestureHandlerRootView>
+      </KeyboardProvider>
+    </GlobalErrorBoundary>
   );
 }

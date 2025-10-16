@@ -283,7 +283,11 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
 
         <View style={styles.handle} />
 
-        <TouchableOpacity style={styles.closeBtn} onPress={onClose} accessibilityLabel={t('chat.closeRecorder')}>
+        <TouchableOpacity
+          style={styles.closeBtn}
+          onPress={() => { try { onClose?.(); } catch {} }}
+          accessibilityLabel={t('chat.closeRecorder')}
+        >
           <SvgIcon name="clear" size={18} color={colors.textSecondary} />
         </TouchableOpacity>
 
@@ -324,7 +328,7 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
         <Reanimated.View style={buttonStyle}>
           <TouchableOpacity
             style={[styles.insertBtn, !transcript?.trim()?.length && styles.insertDisabled]}
-            onPress={onInsert}
+            onPress={() => { try { onInsert?.(); } catch {} }}
             disabled={!transcript?.trim()?.length}
             accessibilityLabel={t('chat.insertTranscript')}
           >

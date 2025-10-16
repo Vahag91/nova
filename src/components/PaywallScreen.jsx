@@ -13,6 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import MaskedViewIOS from '@react-native-masked-view/masked-view';
 import SvgIcon from './SvgIcon';
 // Custom SVG Icons
 const CloseIcon = ({ color = '#FFFFFF', size = 24 }) => (
@@ -33,9 +34,9 @@ const CreateImagesIcon = ({ color = '#75FB4C', size = 24 }) => (
     </Svg>
 );
 
-const SearchWebIcon = ({ color = '#75FBFD', size = 24 }) => (
+const SearchWebIcon = ({ color = '#5985E1', size = 24 }) => (
     <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
-        <Path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-7-.5-14.5T799-507q-5 29-27 48t-52 19h-80q-33 0-56.5-23.5T560-520v-40H400v-80q0-33 23.5-56.5T480-720h40q0-23 12.5-40.5T563-789q-20-5-40.5-8t-42.5-3q-134 0-227 93t-93 227h200q66 0 113 47t47 113v40H400v110q20 5 39.5 7.5T480-160Z" />
+        <Path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
     </Svg>
 );
 
@@ -80,6 +81,33 @@ function Chip({ icon, label, tint, style, customIcon }) {
         </View>
     );
 }
+
+function GradientText({
+  children,
+  style,
+  colors = ['#42d392', '#647eff'], // green → blue (matching HTML)
+  start = { x: 0, y: 0 },
+  end   = { x: 1, y: 0 },
+}) {
+  return (
+    <MaskedViewIOS
+      style={styles.gradientTextContainer}
+      maskElement={
+        // The mask is the text itself
+        <View style={styles.maskWrap}>
+          <Text style={[style, styles.maskText]}>{children}</Text>
+        </View>
+      }
+    >
+      {/* The gradient will show only where the text mask is */}
+      <LinearGradient colors={colors} start={start} end={end}>
+        {/* This invisible text sets the size so the gradient fits perfectly */}
+        <Text style={[style, styles.invisibleText]}>{children}</Text>
+      </LinearGradient>
+    </MaskedViewIOS>
+  );
+}
+
 
 export default function PaywallScreen({
     onClose,
@@ -203,7 +231,7 @@ export default function PaywallScreen({
                         </View>
                     </View>
 
-                    <Text style={[styles.title, { color: theme.text }]}>GPT-5, Grok 4, Veo 3</Text>
+                    <GradientText style={styles.title}>GPT-5, Grok 4, Veo 3</GradientText>
 
                     {/* Features */}
                     <View style={styles.features}>
@@ -212,7 +240,7 @@ export default function PaywallScreen({
                             <Text style={[styles.featureText, { color: theme.text }]}>Create images and videos</Text>
                         </View>
                         <View style={styles.featureRow}>
-                            <SearchWebIcon color="#75FBFD" size={20} />
+                            <SearchWebIcon color="#5985E1" size={20} />
                             <Text style={[styles.featureText, { color: theme.text }]}>Search the web with AI</Text>
                         </View>
                         <View style={styles.featureRow}>
@@ -354,7 +382,7 @@ const styles = StyleSheet.create({
     restoreText: { color: COLORS.primary, fontWeight: '500', fontSize: 13, fontFamily: 'Lato-Regular' },
 
     centerWrap: {
-        height: 160, justifyContent: 'center', alignItems: 'center', marginBottom: 16,
+        height: 160, justifyContent: 'center', alignItems: 'center', marginBottom: 6,
     },
     chipsLayer: {
         ...StyleSheet.absoluteFillObject,
@@ -373,11 +401,26 @@ const styles = StyleSheet.create({
         alignItems: 'center', justifyContent: 'center',
     },
 
-    title: { fontSize: 22, fontWeight: '700', textAlign: 'center', marginBottom: 16, fontFamily: 'Lato-Bold' },
+    title: { fontSize: 32, fontWeight: '700', textAlign: 'center', marginBottom: 16, fontFamily: 'Lato-Bold' },
+    
+    // Gradient text styles
+    gradientTextContainer: {
+        alignSelf: 'center',        // centers gradient to text width
+    },
+    maskWrap: {
+        backgroundColor: 'transparent',
+    },
+    maskText: {
+        // must be opaque so the mask is solid
+        color: '#000',              // mask color; not visible to user
+    },
+    invisibleText: {
+        opacity: 0,                 // not visible; defines gradient's layout size
+    },
 
     features: { marginBottom: 26, gap: 10 },
     featureRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-    featureText: { fontSize: 17, fontFamily: 'Lato-Regular' },
+    featureText: { fontSize: 16, fontFamily: 'Lato-Regular' },
 
     cardRow: {
         flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',

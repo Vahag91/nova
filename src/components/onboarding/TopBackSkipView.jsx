@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, Animated, StatusBar, Platform } from 'react-native';
+import { StyleSheet, Animated, StatusBar, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Svg, { Path } from 'react-native-svg';
 import MyPressable from './MyPressable';
 
 const TopBackSkipView = ({
   onBackClick,
-  onSkipClick,
   animationController,
 }) => {
   const { top } = useSafeAreaInsets();
@@ -15,10 +14,6 @@ const TopBackSkipView = ({
   const headerTranslateY = animationController.current.interpolate({
     inputRange: [0, 0.2, 0.4, 0.6, 0.8],
     outputRange: [-(58 + (marginTop ?? 0)), 0, 0, 0, 0],
-  });
-  const skipAnim = animationController.current.interpolate({
-    inputRange: [0, 0.2, 0.4, 0.6, 0.8],
-    outputRange: [0, 0, 0, 0, 80],
   });
 
   return (
@@ -33,19 +28,10 @@ const TopBackSkipView = ({
         android_ripple={{ color: 'darkgrey', borderless: true, radius: 28 }}
         onPress={() => onBackClick()}
       >
-        <Icon name="arrow-back-ios" size={24} color="black" />
+        <Svg height="24" viewBox="0 -960 960 960" width="24">
+          <Path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z" fill="#FFFFFF" />
+        </Svg>
       </MyPressable>
-
-      <Animated.View style={{ transform: [{ translateX: skipAnim }] }}>
-        <MyPressable
-          android_ripple={{ color: 'darkgrey', borderless: true, radius: 28 }}
-          onPress={() => onSkipClick()}
-        >
-          <Text style={{ color: 'black', fontFamily: 'WorkSans-Regular' }}>
-            Skip
-          </Text>
-        </MyPressable>
-      </Animated.View>
     </Animated.View>
   );
 };
@@ -55,9 +41,8 @@ const styles = StyleSheet.create({
     height: 58,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     paddingLeft: 8,
-    paddingRight: 16,
     position: 'absolute',
     top: 0,
     left: 0,

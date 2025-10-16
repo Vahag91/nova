@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView, Image } from 'react-native';
 import { DrawerContentScrollView, useDrawerStatus } from '@react-navigation/drawer';
 import Animated, {
   useSharedValue,
@@ -249,9 +249,13 @@ export default function CustomDrawerContent(props) {
         {/* Logo Section */}
         <Animated.View style={[styles.logoSection, logoAnimatedStyle]}>
           <Animated.View style={[styles.logoCircle, logoGlowStyle]}>
-            <SvgIcon name="stars" size={24} color={colors.accent} />
+            <Image 
+              source={require('../../assets/icons/appiconsvg.png')}
+              style={styles.appIcon}
+              resizeMode="contain"
+            />
           </Animated.View>
-          <Text style={styles.logoText}>AILY</Text>
+          <Text style={styles.logoText}>ChatCloud</Text>
         </Animated.View>
 
         {/* Main Navigation */}
@@ -283,13 +287,6 @@ export default function CustomDrawerContent(props) {
             routeName="ImagesStudio"
             isActive={activeRoute === 'ImagesStudio'}
             index={3}
-          />
-          <MenuItem
-            icon="stars"
-            label="Onboarding"
-            routeName="IntroductionAnimationScreen"
-            isActive={activeRoute === 'IntroductionAnimationScreen'}
-            index={4}
           />
 
           {/* Recent Chats Section */}
@@ -356,19 +353,16 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     backgroundColor: colors.background,
-    borderWidth: 2,
-    borderColor: colors.accent,
     borderRadius: 21,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: colors.accent,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.5,
-    shadowRadius: 15,
-    elevation: 8,
+  },
+  appIcon: {
+    width: 36,
+    height: 36,
   },
   logoText: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     color: colors.text,
     marginLeft: 12,

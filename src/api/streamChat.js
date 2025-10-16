@@ -140,7 +140,7 @@ export function streamChat({
     heartbeatInterval: 15000,
     timeoutMs: 60000,
     inactivityTimeoutMs: 30000,
-    log: true,  // ✅ ENABLE FOR TESTING
+    log: __DEV__ === true,  // Verbose logs only during development
   });
 
   client.start();

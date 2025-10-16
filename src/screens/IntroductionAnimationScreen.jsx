@@ -1,3 +1,4 @@
+// src/screens/IntroductionAnimationScreen.tsx (or .js)
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   StyleSheet,
@@ -6,25 +7,32 @@ import {
   Animated,
   Easing,
   StatusBar,
+  ImageBackground,
+  Image,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import {
   SplashView,
   RelaxView,
   CareView,
-  MoodDiaryView,
-  WelcomeView,
   TopBackSkipView,
   CenterNextButton,
 } from '../components/onboarding';
 
-const IntroductionAnimationScreen = () => {
-  const navigation = useNavigation();
+const IntroductionAnimationScreen = ({ onComplete }) => {
   const window = useWindowDimensions();
 
   const [currentPage, setCurrentPage] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-  // Performance monitoring removed for production
+  useEffect(() => {
+    Image.prefetch(
+      Image.resolveAssetSource(
+        require('../../assets/images/onboardingtheme.jpg')
+      ).uri
+    )
+      .then(() => setImageLoaded(true))
+      .catch(() => setImageLoaded(true));
+  }, []);
 
   const animationController = useRef(new Animated.Value(0));
   const animValue = useRef(0);
@@ -34,7 +42,6 @@ const IntroductionAnimationScreen = () => {
       animValue.current = value;
       setCurrentPage(value);
     });
-
     return () => {
       animationController.current.removeListener(listener);
     };
@@ -45,90 +52,79 @@ const IntroductionAnimationScreen = () => {
     outputRange: [window.height, 0, 0, 0, 0],
   });
 
-  const playAnimation = useCallback(
-    (toValue, duration = 1600) => {
-      Animated.timing(animationController.current, {
-        toValue,
-        duration,
-        easing: Easing.bezier(0.4, 0.0, 0.2, 1.0),
-        useNativeDriver: true,
-      }).start();
-    },
-    [],
-  );
+  const playAnimation = useCallback((toValue, duration = 1600) => {
+    Animated.timing(animationController.current, {
+      toValue,
+      duration,
+      easing: Easing.bezier(0.4, 0.0, 0.2, 1.0),
+      useNativeDriver: true,
+    }).start();
+  }, []);
 
   const onNextClick = useCallback(() => {
-    let toValue;
-    const currentValue = animValue.current;
-    
-    if (currentValue < 0.2) {
-      toValue = 0.2;
-    } else if (currentValue >= 0.2 && currentValue < 0.4) {
-      toValue = 0.4;
-    } else if (currentValue >= 0.4 && currentValue < 0.6) {
-      toValue = 0.6;
-    } else if (currentValue >= 0.6 && currentValue < 0.8) {
-      toValue = 0.8;
-    } else if (currentValue >= 0.8) {
-      navigation.goBack();
-      return;
+    const v = animValue.current;
+    if (v < 0.2) {
+      // SplashView → RelaxView
+      playAnimation(0.2);
+    } else if (v >= 0.2 && v < 0.4) {
+      // RelaxView → CareView
+      playAnimation(0.4);
+    } else if (v >= 0.4) {
+      // LAST SCREEN - call onComplete to close onboarding
+      if (onComplete) onComplete();
     }
-
-    toValue !== undefined && playAnimation(toValue);
-  }, [playAnimation, navigation]);
+  }, [playAnimation, onComplete]);
 
   const onBackClick = useCallback(() => {
-    const currentValue = animValue.current;
-    let toValue;
-    
-    if (currentValue >= 0.8) {
-      toValue = 0.6;
-    } else if (currentValue >= 0.6 && currentValue < 0.8) {
-      toValue = 0.4;
-    } else if (currentValue >= 0.4 && currentValue < 0.6) {
-      toValue = 0.2;
-    } else if (currentValue >= 0.2 && currentValue < 0.4) {
-      toValue = 0.0;
-    }
-
-    toValue !== undefined && playAnimation(toValue);
+    const v = animValue.current;
+    if (v >= 0.4) playAnimation(0.2);
+    else if (v >= 0.2) playAnimation(0.0);
   }, [playAnimation]);
 
   const onSkipClick = useCallback(() => {
-    playAnimation(0.8, 1200);
+    playAnimation(0.4, 1200);
   }, [playAnimation]);
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'rgb(245, 235, 226)' }}>
-      <StatusBar barStyle={`${currentPage > 0 ? 'dark' : 'light'}-content`} />
-      <SplashView {...{ onNextClick, animationController }} />
+    <ImageBackground
+      source={require('../../assets/images/onboardingtheme.jpg')}
+      style={[styles.bg, !imageLoaded && { backgroundColor: '#000000' }]}
+      imageStyle={styles.bgImage}
+      onLoad={() => setImageLoaded(true)}
+    >
+      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
 
-      <Animated.View
-        style={[
-          styles.scenesContainer,
-          { transform: [{ translateY: relaxTranslateY }] },
-        ]}
-      >
-        <RelaxView {...{ animationController }} />
+      <View style={styles.overlay} pointerEvents="box-none">
+        <SplashView {...{ onNextClick, animationController }} />
+        <Animated.View
+          style={[
+            styles.scenesContainer,
+            { transform: [{ translateY: relaxTranslateY }] },
+          ]}
+          pointerEvents="box-none"
+        >
+          <RelaxView {...{ animationController }} />
+          <CareView {...{ animationController }} />
+        </Animated.View>
 
-        <CareView {...{ animationController }} />
-
-        <MoodDiaryView {...{ animationController }} />
-
-        <WelcomeView {...{ animationController }} />
-      </Animated.View>
-
-      <TopBackSkipView {...{ onBackClick, onSkipClick, animationController }} />
-
-      <CenterNextButton {...{ onNextClick, animationController }} />
-    </View>
+        <TopBackSkipView {...{ onBackClick, onSkipClick, animationController }} />
+        <CenterNextButton {...{ onNextClick, animationController }} />
+      </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  bg: { flex: 1 },
+  bgImage: { objectFit: 'cover' },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'transparent',
+  },
   scenesContainer: {
     justifyContent: 'center',
     ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'transparent',
   },
 });
 

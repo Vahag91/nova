@@ -1,6 +1,6 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, withDelay, useDerivedValue, withSpring, Easing } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
@@ -61,14 +61,14 @@ function TestInput({
   webSearchEnabled = false, // NEW: web search toggle state
 }) {
   const { t } = useTranslation();
+  const safe = useCallback((fn, ...args) => {
+    if (typeof fn !== 'function') return;
+    try { fn(...args); } catch {}
+  }, []);
 
 
   const MENU_ITEM_HEIGHT = 52;
-  const MENU_VISIBLE_HEIGHT = MENU_ITEM_HEIGHT * 3 + 2;
-  const MENU_EXTRA_OFFSET_Y = 36;
-  const MENU_Y_OFFSET = MENU_VISIBLE_HEIGHT + MENU_EXTRA_OFFSET_Y;
   const ANIMATION_DURATION = 300;
-  const SPRING_CONFIG = { duration: 1200, overshootClamping: true, dampingRatio: 0.8 };
   const isOpen = useSharedValue(false);
   const webSearchTextVisible = useSharedValue(webSearchEnabled);
   const [renderMenu, setRenderMenu] = useState(false);
@@ -185,10 +185,10 @@ function TestInput({
       });
     }
   };
-  const handleSend = () => { if (canSend) onSend(); };
+  const handleSend = () => { if (canSend) safe(onSend); };
   const handleStop = () => {
-    if (streaming && onStop) onStop();
-    else if (isRecording) onMicPress?.();
+    if (streaming && onStop) safe(onStop);
+    else if (isRecording) safe(onMicPress);
   };
   const handleContentSizeChange = (e) => {
     const h = e.nativeEvent.contentSize?.height;
@@ -196,7 +196,7 @@ function TestInput({
     const newH = Math.max(minInputHeight, Math.min(h, maxInputHeight));
     setInputHeight(newH); setIsExpanded(newH > minInputHeight);
   };
-  const onMicTap = () => { if (!offline) onMicPress?.(); };
+  const onMicTap = () => { if (!offline) safe(onMicPress); };
 
   return (
     <Animated.View ref={wrapperRef} onLayout={measureWrapper} style={[styles.wrapper, paddingAnimatedStyle]}>
@@ -205,7 +205,7 @@ function TestInput({
           <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, backdropAnimatedStyle]}>
             <TouchableOpacity
               activeOpacity={1}
-              onPress={toggleActions}
+              onPress={() => safe(toggleActions)}
               style={StyleSheet.absoluteFill}
             />
           </Animated.View>
@@ -223,7 +223,7 @@ function TestInput({
                   <Animated.View style={menuItem1Style}>
                     <TouchableOpacity
                       style={styles.menuItem}
-                      onPress={() => { toggleActions(); onCreateImagesPress?.(); }}
+                      onPress={() => { safe(toggleActions); safe(onCreateImagesPress); }}
                       accessibilityRole="button"
                       accessibilityLabel={'Create images'}
                       activeOpacity={0.9}
@@ -241,7 +241,7 @@ function TestInput({
                   <Animated.View style={menuItem2Style}>
                     <TouchableOpacity
                       style={styles.menuItem}
-                      onPress={() => { toggleActions(); onOpenCameraPress?.(); }}
+                      onPress={() => { safe(toggleActions); safe(onOpenCameraPress); }}
                       accessibilityRole="button"
                       accessibilityLabel={'Camera'}
                       activeOpacity={0.9}
@@ -259,7 +259,7 @@ function TestInput({
                   <Animated.View style={menuItem3Style}>
                     <TouchableOpacity
                       style={[styles.menuItem, styles.menuItemLast]}
-                      onPress={() => { toggleActions(); onSearchPress?.(); }}
+                      onPress={() => { safe(toggleActions); safe(onSearchPress); }}
                       accessibilityRole="button"
                       accessibilityLabel={'Search the web'}
                       activeOpacity={0.9}
@@ -281,16 +281,18 @@ function TestInput({
       )}
 
       <View style={styles.inputContainer}>
-        {attachments?.length > 0 && (
+        {Array.isArray(attachments) && attachments.filter(a => a && typeof a.uri === 'string' && a.uri.length > 0).length > 0 && (
           <ScrollView horizontal style={styles.thumbRow} contentContainerStyle={{ paddingVertical: 2 }} showsHorizontalScrollIndicator={false}>
-            {attachments.map((a, idx) => (
-              <View key={a.id || `${a.uri}-${idx}`} style={styles.thumbWrap}>
-                <Image source={{ uri: a.uri }} style={styles.thumb} />
-                <TouchableOpacity onPress={() => onRemoveAttachment(a, idx)} style={styles.thumbRemove} accessibilityLabel={'Remove image'} hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}>
-                  <Text style={styles.thumbRemoveText}>✕</Text>
-                </TouchableOpacity>
-              </View>
-            ))}
+            {attachments
+              .filter(a => a && typeof a.uri === 'string' && a.uri.length > 0)
+              .map((a, idx) => (
+                <View key={a.id || `${a.uri}-${idx}`} style={styles.thumbWrap}>
+                  <Image source={{ uri: a.uri }} style={styles.thumb} />
+                  <TouchableOpacity onPress={() => safe(onRemoveAttachment, a, idx)} style={styles.thumbRemove} accessibilityLabel={'Remove image'} hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}>
+                    <Text style={styles.thumbRemoveText}>✕</Text>
+                  </TouchableOpacity>
+                </View>
+              ))}
           </ScrollView>
         )}
 
@@ -318,15 +320,15 @@ function TestInput({
             <TouchableOpacity
               onPress={() => onChange('')}
               accessibilityLabel={'Clear input'}
-              style={{ position: 'absolute', right: -14, top:4, padding: 6 }}>
+              style={{ position: 'absolute', right: -14, top: 4, padding: 6 }}>
               <Svg height={18} width={18} viewBox="0 -960 960 960" fill="#8E8E93"><Path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></Svg>
             </TouchableOpacity>
           )}
-          
+
         </View>
         <View style={styles.iconsRow}>
           <View style={styles.leftControls}>
-            <TouchableOpacity ref={plusRef} onPress={toggleActions} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={'Quick actions'}>
+            <TouchableOpacity ref={plusRef} onPress={() => safe(toggleActions)} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={'Quick actions'}>
               <Animated.View style={plusIconStyle}>
                 <AddIcon color="#FFFFFF" size={18} />
               </Animated.View>
@@ -334,7 +336,7 @@ function TestInput({
 
             <TouchableOpacity
               style={[styles.webSearchToggle, offline && styles.iconDisabled]}
-              onPress={() => { if (!offline) onSearchPress?.(); }}
+              onPress={() => { if (!offline) safe(onSearchPress); }}
               disabled={offline}
               accessibilityRole="button"
               accessibilityLabel={webSearchEnabled ? 'Disable web search' : 'Enable web search'}
@@ -352,25 +354,12 @@ function TestInput({
           </View>
 
           <View style={styles.rightControls}>
-            {/* Test Paywall Button */}
-            {navigation && (
-              <TouchableOpacity
-                style={[styles.testButton, offline && styles.iconDisabled]}
-                onPress={() => navigation.navigate('PaywallScreen')}
-                disabled={offline}
-                accessibilityRole="button"
-                accessibilityLabel={'Test Paywall'}
-              >
-                <TestIcon color="#FF6B6B" size={16} />
-              </TouchableOpacity>
-            )}
-
             <TouchableOpacity
               style={[styles.micButton, offline && styles.iconDisabled]}
-              onPress={() => { if (!offline) onMicPress?.(); }}
-              onLongPress={() => { if (!offline) onMicPress?.(); }}
-              onPressIn={onMicHoldStart}
-              onPressOut={onMicHoldEnd}
+              onPress={() => { if (!offline) safe(onMicPress); }}
+              onLongPress={() => { if (!offline) safe(onMicPress); }}
+              onPressIn={() => safe(onMicHoldStart)}
+              onPressOut={() => safe(onMicHoldEnd)}
               disabled={offline}
               accessibilityRole="button"
               accessibilityLabel={'Start voice input'}

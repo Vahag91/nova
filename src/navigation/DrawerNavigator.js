@@ -8,7 +8,6 @@ import History from '../screens/HistorySimple';
 import Assistants from '../screens/Assistants';
 import Settings from '../screens/Settings.jsx';
 import ImagesStudio from '../screens/ImagesStudio';
-import IntroductionAnimationScreen from '../screens/IntroductionAnimationScreen';
 import PaywallScreen from '../components/PaywallScreen';
 import ModelSelector from '../components/ModelSelector';
 import SvgIcon from '../components/SvgIcon';
@@ -179,14 +178,6 @@ export default function DrawerNavigator() {
           options={{
             headerShown: false, // Hide navigation header completely
             title: t('navigation.imagesStudio'),
-          }}
-        />
-        <Drawer.Screen 
-          name="IntroductionAnimationScreen" 
-          component={IntroductionAnimationScreen}
-          options={{
-            headerShown: false, // Hide navigation header completely
-            title: 'Onboarding',
           }}
         />
         <Drawer.Screen 

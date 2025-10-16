@@ -3,60 +3,128 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
   Animated,
   useWindowDimensions,
   ScrollView,
+  Image,
+  Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MyPressable from './MyPressable';
-import { AppImages } from '../../../assets';
+
+const COLORS = {
+  bg: '#0A0A10',
+  surface: 'rgba(22,22,31,0.6)',
+  surfaceSoft: 'rgba(22,22,31,0.4)',
+  primary: '#5252E0',
+  secondary: '#38B2AC',
+  textPrimary: '#F0F0F5',
+  textSecondary: '#B8B8CC',
+  textMuted: '#9A9AB0',
+  border: 'rgba(82,82,224,0.2)',
+  borderSoft: 'rgba(82,82,224,0.15)',
+  buttonBg: 'rgb(21,32,54)',
+  gold: '#FFD700',
+};
 
 const SplashView = ({ onNextClick, animationController }) => {
-  const window = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
 
   const splashTranslateY = animationController.current.interpolate({
     inputRange: [0, 0.2, 0.8],
-    outputRange: [0, -window.height, -window.height],
+    outputRange: [0, -height, -height],
   });
 
-  const introImageData = Image.resolveAssetSource(AppImages.introduction_image);
+  // responsive scales
+  const isSmall = width < 360;
+  const contentMax = Math.min(520, width - 40);
 
   return (
-    <Animated.View
-      style={{ flex: 1, transform: [{ translateY: splashTranslateY }] }}
-    >
-      <ScrollView style={{ flexGrow: 0 }} alwaysBounceVertical={false}>
-        <View>
+    <Animated.View style={{ flex: 1, transform: [{ translateY: splashTranslateY }] }}>
+      <ScrollView
+        alwaysBounceVertical={false}
+        contentContainerStyle={[styles.scrollContent, { paddingTop: Math.max(24, insets.top + 8) }]}
+      >
+        {/* Logo */}
+        <View style={styles.logoContainer}>
           <Image
-            style={{
-              width: window.width,
-              height: undefined,
-              aspectRatio: introImageData
-                ? introImageData.width / introImageData.height
-                : 357 / 470,
-            }}
-            source={AppImages.introduction_image}
+            source={require('../../../assets/icons/appiconsvg.png')}
+            style={[styles.appIcon, { width: isSmall ? 84 : 96, height: isSmall ? 84 : 96 }]}
+            resizeMode="contain"
           />
         </View>
-        <Text style={styles.title}>Clearhead</Text>
-        <Text style={styles.subtitle}>
-          Lorem ipsum dolor sit amet,consectetur{'\n'}adipiscing elit,sed do
-          eiusmod tempor{'\n'}incididunt ut labore
+
+        {/* Title + underline */}
+        <View style={[styles.titleContainer, { maxWidth: contentMax }]}>
+          <Text style={[styles.title, { fontSize: isSmall ? 30 : 34 }]} numberOfLines={1}>
+            CHAT CLOUD
+          </Text>
+          <View style={styles.titleUnderline} />
+        </View>
+
+        {/* Tagline */}
+        <Text style={[styles.subtitle, { fontSize: isSmall ? 13 : 14 }]}>
+          ENTERPRISE-GRADE AI SOLUTIONS
         </Text>
+
+        {/* Description */}
+        <View style={[styles.card, { maxWidth: contentMax }]}>
+          <Text style={[styles.description, { fontSize: isSmall ? 14 : 15, lineHeight: isSmall ? 22 : 24 }]}>
+            Empower your business with cutting-edge artificial intelligence technology designed for enterprise
+            professionals and teams.
+          </Text>
+        </View>
+
+        {/* Social proof */}
+        <View style={[styles.statsCard, { maxWidth: contentMax }]}>
+          <View style={styles.userStatsRow}>
+            <View style={styles.avatarsContainer}>
+              <Image 
+                source={require('../../../assets/icons/human1.jpg')}
+                style={[styles.avatar, styles.avatar1]}
+                resizeMode="cover"
+              />
+              <Image 
+                source={require('../../../assets/icons/human2.jpg')}
+                style={[styles.avatar, styles.avatar2, { marginLeft: -10 }]}
+                resizeMode="cover"
+              />
+              <Image 
+                source={require('../../../assets/icons/human3.jpg')}
+                style={[styles.avatar, styles.avatar3, { marginLeft: -10 }]}
+                resizeMode="cover"
+              />
+            </View>
+            <Text style={styles.statsText}>Trusted by 500k+ users</Text>
+          </View>
+
+          <View style={styles.ratingContainer}>
+            <View style={styles.starsContainer}>
+              <Text style={styles.star}>★</Text>
+              <Text style={styles.star}>★</Text>
+              <Text style={styles.star}>★</Text>
+              <Text style={styles.star}>★</Text>
+              <Text style={[styles.star, { opacity: 0.6 }]}>★</Text>
+            </View>
+            <Text style={styles.ratingText}>4.9 / 5</Text>
+          </View>
+        </View>
       </ScrollView>
 
-      <View style={[styles.footer, { paddingBottom: 8 + insets.bottom }]}>
-        <View style={styles.buttonContainer}>
-          <MyPressable
-            style={styles.button}
-            android_ripple={{ color: 'powderblue' }}
-            touchOpacity={0.6}
-            onPress={() => onNextClick()}
-          >
-            <Text style={styles.buttonText}>Let's begin</Text>
-          </MyPressable>
+      {/* Footer button */}
+      <View style={[styles.footer, { paddingBottom: Math.max(12, 8 + insets.bottom) }]}>
+        <View style={styles.buttonShadowWrapper}>
+          <View style={styles.buttonClip}>
+            <MyPressable
+              style={[styles.button, { paddingHorizontal: isSmall ? 32 : 48, height: isSmall ? 52 : 56 }]}
+              android_ripple={{ color: 'rgba(82,82,224,0.18)' }}
+              touchOpacity={0.6}
+              onPress={onNextClick}
+            >
+              <Text style={[styles.buttonText, { fontSize: isSmall ? 16 : 17 }]}>Get Started</Text>
+            </MyPressable>
+          </View>
         </View>
       </View>
     </Animated.View>
@@ -64,39 +132,195 @@ const SplashView = ({ onNextClick, animationController }) => {
 };
 
 const styles = StyleSheet.create({
+  scrollContent: {
+    paddingHorizontal: 20,
+    alignItems: 'center',
+  },
+
+  /* ---------- Header / Logo ----------- */
+  logoContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+    marginTop: 80,
+  },
+  appIcon: {
+    borderRadius: 20,
+    ...Platform.select({
+      ios: {
+        shadowColor: COLORS.primary,
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.18,
+        shadowRadius: 12,
+      },
+      android: { elevation: 6 },
+    }),
+  },
+
+  /* ---------- Title ----------- */
+  titleContainer: {
+    alignItems: 'center',
+    marginBottom: 10,
+  },
   title: {
-    color: 'black',
-    fontSize: 25,
+    color: COLORS.textPrimary,
     textAlign: 'center',
     fontFamily: 'WorkSans-Bold',
-    paddingVertical: 8,
+    fontWeight: '900',
+    letterSpacing: 1.2,
   },
+  titleUnderline: {
+    width: 56,
+    height: 4,
+    backgroundColor: COLORS.primary,
+    borderRadius: 2,
+    marginTop: 8,
+    ...Platform.select({
+      ios: {
+        shadowColor: COLORS.primary,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.35,
+        shadowRadius: 4,
+      },
+      android: { elevation: 3 },
+    }),
+  },
+
+  /* ---------- Subtitle ----------- */
   subtitle: {
-    color: 'black',
+    color: COLORS.textSecondary,
+    textAlign: 'center',
+    fontFamily: 'WorkSans-SemiBold',
+    marginBottom: 16,
+    letterSpacing: 1.1,
+  },
+
+  /* ---------- Description Card ----------- */
+  card: {
+    backgroundColor: COLORS.surface,
+    borderRadius: 16,
+    paddingVertical: 18,
+    paddingHorizontal: 18,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  description: {
+    color: '#C8C8D8',
     textAlign: 'center',
     fontFamily: 'WorkSans-Regular',
-    paddingHorizontal: 24,
   },
+
+  /* ---------- Stats Card ----------- */
+  statsCard: {
+    backgroundColor: COLORS.surfaceSoft,
+    borderRadius: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 18,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+  },
+  userStatsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  avatarsContainer: {
+    flexDirection: 'row',
+    marginRight: 10,
+  },
+  avatar: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    borderWidth: 2,
+    borderColor: COLORS.bg,
+  },
+  avatar1: {},
+  avatar2: {},
+  avatar3: {},
+  statsText: {
+    color: '#D8D8E8',
+    fontSize: 13,
+    fontWeight: '600',
+    letterSpacing: 0.2,
+    textAlign: 'center',
+  },
+
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  starsContainer: {
+    flexDirection: 'row',
+    marginRight: 8,
+  },
+  star: {
+    fontSize: 16,
+    color: COLORS.gold,
+    textShadowColor: 'rgba(255,215,0,0.35)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+    marginHorizontal: 1,
+  },
+  ratingText: {
+    color: COLORS.textMuted,
+    fontSize: 12,
+    fontWeight: '600',
+    letterSpacing: 0.3,
+  },
+
+  /* ---------- Footer Button ----------- */
   footer: {
     flexGrow: 1,
     justifyContent: 'center',
     paddingTop: 8,
   },
-  buttonContainer: {
-    borderRadius: 38,
-    overflow: 'hidden',
+
+  // OUTER: casts shadow (no clipping)
+  buttonShadowWrapper: {
     alignSelf: 'center',
+    borderRadius: 32,
+    overflow: 'visible',
+
+    // iOS shadow - matches button color
+    ...Platform.select({
+      ios: {
+        shadowColor: '#15203A',
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.5,
+        shadowRadius: 20,
+      },
+      android: {
+        elevation: 12,
+        backgroundColor: COLORS.buttonBg,
+      },
+    }),
   },
+
+  // INNER: clips ripple/contents to rounded shape
+  buttonClip: {
+    borderRadius: 32,
+    overflow: 'hidden',
+  },
+
   button: {
-    height: 58,
-    backgroundColor: 'rgb(21, 32, 54)',
-    paddingVertical: 16,
-    paddingHorizontal: 56,
+    backgroundColor: COLORS.buttonBg,
+    paddingVertical: 14,
+    paddingHorizontal: 48,
+    borderRadius: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 220,
   },
   buttonText: {
-    fontSize: 18,
-    fontFamily: 'WorkSans-Regular',
-    color: 'white',
+    fontSize: 17,
+    fontFamily: 'WorkSans-SemiBold',
+    color: '#FFFFFF',
+    letterSpacing: 0.3,
   },
 });
 

@@ -33,12 +33,14 @@
 	<string/>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to camera to take photos for AI analysis</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app needs access to photo library to select images for AI analysis</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>We need the microphone to record your voice.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>We use speech recognition to convert your voice to text.</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>We need access to your photos so you can pick images.</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>We save generated images to your photo library.</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>We use the microphone for voice input.</string>
+<key>NSSpeechRecognitionUsageDescription</key>
+<string>We transcribe your speech to text.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

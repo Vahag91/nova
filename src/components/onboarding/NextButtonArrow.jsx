@@ -1,140 +1,130 @@
-import React, { useRef } from 'react';
-import { StyleSheet, Text, Animated, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React, { useEffect, useRef, useState } from 'react';
+import { StyleSheet, View, Text, Animated } from 'react-native';
 import MyPressable from './MyPressable';
 
-const IconPressable = Animated.createAnimatedComponent(Icon);
+const NextButtonArrow = ({ onBtnPress, animationController, isAnimating = false }) => {
+  // 0 = Splash, 1 = RelaxView, 2 = CareView
+  const [phase, setPhase] = useState(0);
+  const listenerId = useRef(undefined);
+  
+  // Animation values for smooth transitions
+  const textOpacity = useRef(new Animated.Value(1)).current;
+  const textScale = useRef(new Animated.Value(1)).current;
 
-/*
- * Refactored to use scaleX instead of width animation
- * This allows useNativeDriver: true for 60fps performance
- */
-const NextButtonArrow = ({
-  onBtnPress,
-  animationController,
-}) => {
-  const arrowAnim = useRef(new Animated.Value(0));
+  useEffect(() => {
+    // read the animated value and map to a phase; no visual animations here
+    listenerId.current = animationController.current.addListener(({ value }) => {
+      const newPhase = value >= 0.4 ? 2 : value >= 0.2 ? 1 : 0;
+      
+      if (newPhase !== phase) {
+        // Animate text transition when phase changes
+        Animated.sequence([
+          Animated.parallel([
+            Animated.timing(textOpacity, {
+              toValue: 0,
+              duration: 150,
+              useNativeDriver: true,
+            }),
+            Animated.timing(textScale, {
+              toValue: 0.8,
+              duration: 150,
+              useNativeDriver: true,
+            }),
+          ]),
+          Animated.parallel([
+            Animated.timing(textOpacity, {
+              toValue: 1,
+              duration: 150,
+              useNativeDriver: true,
+            }),
+            Animated.timing(textScale, {
+              toValue: 1,
+              duration: 150,
+              useNativeDriver: true,
+            }),
+          ]),
+        ]).start();
+        
+        setPhase(newPhase);
+      }
+    });
+    return () => {
+      if (listenerId.current !== undefined) {
+        animationController.current.removeListener(listenerId.current);
+      }
+    };
+  }, [animationController, phase, textOpacity, textScale]);
 
-  arrowAnim.current = animationController.current.interpolate({
-    inputRange: [0, 0.2, 0.4, 0.6, 0.8],
-    outputRange: [0, 0, 0, 0, 1],
-  });
+  const isCircle = phase === 0;
+  const label = phase === 2 ? "Let's start" : phase === 1 ? "Continue" : null;
+  const width = phase === 2 ? 220 : phase === 1 ? 160 : 58;
 
-
-  // Transition from arrow to sign up
-  const transitionAnim = arrowAnim.current.interpolate({
-    inputRange: [0, 0.85, 1],
-    outputRange: [36, 0, 0],
-  });
-  const opacityAnim = arrowAnim.current.interpolate({
-    inputRange: [0, 0.7, 1],
-    outputRange: [0, 0, 1],
-  });
-  const iconTransitionAnim = arrowAnim.current.interpolate({
-    inputRange: [0, 0.35, 0.85, 1],
-    outputRange: [0, 0, -36, -36],
-  });
-  const iconOpacityAnim = arrowAnim.current.interpolate({
-    inputRange: [0, 0.7, 1],
-    outputRange: [1, 0, 0],
-  });
-
-  // Use scaleX instead of width for native driver support
-  const scaleXAnim = arrowAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, 4.448], // 258/58 = 4.448 (from 58px to 258px)
-  });
-
-  // Use translateY instead of marginBottom
-  const translateYAnim = arrowAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, -38], // Move up by 38px
-  });
-
-  // Border radius scale approximation (visual effect)
-  const scaleRadiusAnim = arrowAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, 0.95], // Slight scale down for visual rounded->square effect
-  });
+  // Only render when we have a label
+  if (!label) {
+    return null;
+  }
 
   return (
     <View style={styles.wrapper}>
-      <Animated.View
+      <MyPressable
+        onPress={isAnimating ? undefined : onBtnPress}
+        android_ripple={{ color: 'darkgrey' }}
+        accessibilityRole="button"
+        accessibilityLabel={label}
         style={[
-          styles.container,
-          {
-            transform: [
-              { translateY: translateYAnim },
-              { scaleX: scaleXAnim },
-              { scaleY: scaleRadiusAnim },
-            ],
-          },
+          styles.container, 
+          { 
+            width, 
+            borderRadius: isCircle ? 29 : 16,
+            opacity: isAnimating ? 0.5 : 1,
+          }
         ]}
+        disabled={isAnimating}
       >
-        <MyPressable
-          style={{ flex: 1, justifyContent: 'center' }}
-          android_ripple={{ color: 'darkgrey' }}
-          onPress={() => onBtnPress()}
-        >
-          <Animated.View
+        <View style={styles.centered}>
+          <Animated.Text 
             style={[
-              styles.signupContainer,
+              styles.label,
               {
-                opacity: opacityAnim,
-                transform: [{ translateY: transitionAnim }],
-              },
+                opacity: textOpacity,
+                transform: [{ scale: textScale }],
+              }
             ]}
           >
-            <Text style={styles.signupText}>Sign Up</Text>
-            <Icon name="arrow-forward" size={24} color="white" />
-          </Animated.View>
-
-          <IconPressable
-            style={[
-              styles.icon,
-              {
-                opacity: iconOpacityAnim,
-                transform: [{ translateY: iconTransitionAnim }],
-              },
-            ]}
-            name="arrow-forward-ios"
-            size={24}
-            color="white"
-          />
-        </MyPressable>
-      </Animated.View>
+            {label}
+          </Animated.Text>
+        </View>
+      </MyPressable>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   wrapper: {
-    height: 58,
-    width: 58,
     marginBottom: 38,
     alignItems: 'center',
     justifyContent: 'center',
   },
   container: {
     height: 58,
-    width: 58,
     backgroundColor: 'rgb(21, 32, 54)',
-    borderRadius: 40,
-    overflow: 'hidden',
+    justifyContent: 'center',
+    // subtle glow/shadow
+    shadowColor: '#5252E0',
+    shadowOpacity: 0.25,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 8,
   },
-  signupContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
+  centered: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  signupText: {
-    fontSize: 18,
-    fontFamily: 'WorkSans-Medium',
-    color: 'white',
-  },
-  icon: {
-    position: 'absolute',
-    alignSelf: 'center',
+  label: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
+    fontFamily: 'WorkSans-SemiBold',
   },
 });
 

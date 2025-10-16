@@ -1,78 +1,162 @@
-import React, { useRef } from 'react';
-import { StyleSheet, Text, Animated, useWindowDimensions } from 'react-native';
-import { AppImages } from '../../../assets';
+import React, { useMemo } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Animated,
+  useWindowDimensions,
+  Platform,
+  Image,
+} from 'react-native';
 
-const IMAGE_WIDTH = 350;
-const IMAGE_HEIGHT = 250;
+const COLORS = {
+  primary: '#009EDC',
+  text: '#E0E1E6',
+  muted: '#7A808F',
+};
+
+const PLACEHOLDER_IMG = {
+  uri: 'https://play-lh.googleusercontent.com/BHvZASibi_0asg-sDFogPs65I-Ce3eDd1Ksh2HoHva4wUA-I3GQv3-Nj-DtXSQEUlG1K',
+};
+
 
 const CareView = ({ animationController }) => {
-  const window = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
-  const careRef = useRef(null);
-
-  const slideAnim = animationController.current.interpolate({
+  const slideX = animationController.current.interpolate({
     inputRange: [0, 0.2, 0.4, 0.6, 0.8],
-    outputRange: [window.width, window.width, 0, -window.width, -window.width],
+    outputRange: [width, width, 0, -width, -width],
   });
 
-  const careEndVal = 26 * 2; // 26 being text's height (font size)
-  const careAnim = animationController.current.interpolate({
-    inputRange: [0, 0.2, 0.4, 0.6, 0.8],
-    outputRange: [careEndVal, careEndVal, 0, -careEndVal, -careEndVal],
+  const fadeIn = animationController.current.interpolate({
+    inputRange: [0.2, 0.35, 0.4],
+    outputRange: [0, 0.6, 1],
+    extrapolate: 'clamp',
   });
 
-  const imageEndVal = IMAGE_WIDTH * 4;
-  const imageAnim = animationController.current.interpolate({
-    inputRange: [0, 0.2, 0.4, 0.6, 0.8],
-    outputRange: [imageEndVal, imageEndVal, 0, -imageEndVal, -imageEndVal],
+  const leftCardTX = animationController.current.interpolate({
+    inputRange: [0.2, 0.4, 0.6],
+    outputRange: [40, 0, -30],
+    extrapolate: 'clamp',
   });
+  const rightCardTX = animationController.current.interpolate({
+    inputRange: [0.2, 0.4, 0.6],
+    outputRange: [60, 0, -40],
+    extrapolate: 'clamp',
+  });
+
+  const titleTY = animationController.current.interpolate({
+    inputRange: [0.2, 0.4],
+    outputRange: [12, 0],
+    extrapolate: 'clamp',
+  });
+
+  const CARD_W = useMemo(() => {
+    const gap = 12;
+    const max = 260;
+    return Math.min(max, (width - 32 - gap) / 2);
+  }, [width]);
+
+  const CARD_H = 260; // Increased height to fit prompt + image
 
   return (
-    <Animated.View
-      style={[styles.container, { transform: [{ translateX: slideAnim }] }]}
-    >
-      <Animated.Image
-        style={[styles.image, { transform: [{ translateX: imageAnim }] }]}
-        source={AppImages.care_image}
-      />
-      <Animated.Text
-        style={[styles.title, { transform: [{ translateX: careAnim }] }]}
-        ref={careRef}
-      >
-        Care
-      </Animated.Text>
-      <Text style={styles.subtitle}>
-        Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod
-        tempor incididunt ut labore
-      </Text>
+    <Animated.View style={[styles.root, { transform: [{ translateX: slideX }] }]}>
+      <Animated.View style={[styles.content, { opacity: fadeIn }]}>
+        <View style={styles.cardsRow}>
+          {/* CREATE */}
+          <Animated.View
+            style={[
+              styles.card,
+              { width: CARD_W, height: CARD_H, transform: [{ translateX: leftCardTX }, { rotate: '-6deg' }] },
+            ]}
+          >
+            {/* full image */}
+            <Image source={PLACEHOLDER_IMG} style={styles.fullImage} resizeMode="cover" />
+          </Animated.View>
+
+          {/* EDIT */}
+          <Animated.View
+            style={[
+              styles.card,
+              { width: CARD_W, height: CARD_H, transform: [{ translateX: rightCardTX }, { rotate: '6deg' }] },
+            ]}
+          >
+            {/* full image */}
+            <Image source={PLACEHOLDER_IMG} style={styles.fullImage} resizeMode="cover" />
+          </Animated.View>
+        </View>
+
+        <Animated.View style={[styles.heroBlock, { transform: [{ translateY: titleTY }] }]}>
+          <Text style={styles.heroTitle} numberOfLines={1}>
+            Meet <Text style={{ color: '#00F0FF' }}>Image Studio</Text>
+          </Text>
+          <Text style={styles.heroSub}>Create & edit images with AI—right inside <Text style={{ color: '#00F0FF' }}>Chat Cloud</Text>.</Text>
+        </Animated.View>
+      </Animated.View>
     </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     position: 'absolute',
-    left: 0,
-    right: 0,
+    left: 0, right: 0,
     alignItems: 'center',
-    paddingBottom: 100,
+    justifyContent: 'flex-end',
+    paddingBottom: 86,
+    paddingHorizontal: 14,
+    backgroundColor: 'transparent',
   },
-  image: {
-    maxWidth: IMAGE_WIDTH,
-    maxHeight: IMAGE_HEIGHT,
+  content: { width: '100%', alignItems: 'center' },
+  cardsRow: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 24,
   },
-  title: {
-    color: 'black',
-    fontSize: 26,
+
+  // full-bleed card
+  card: {
+    borderRadius: 16,
+    overflow: 'hidden',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOpacity: 0.22,
+        shadowRadius: 12,
+        shadowOffset: { width: 0, height: 8 },
+        backgroundColor: 'transparent',
+      },
+      android: { elevation: 6, backgroundColor: '#0B0D12' },
+    }),
+  },
+
+   // full image
+   fullImage: {
+     ...StyleSheet.absoluteFillObject,
+     position: 'absolute',
+     top: -10,
+     left: 0,
+     right: 0,
+     bottom: 0,
+   },
+
+
+  heroBlock: { width: '100%', alignItems: 'center', marginTop: 30 },
+  heroTitle: {
+    color: COLORS.text,
     textAlign: 'center',
-    fontFamily: 'WorkSans-Bold',
+    fontSize: 38,
+    fontWeight: '700',
+    letterSpacing: -1,
+    lineHeight: 56,
+    marginBottom: 16,
   },
-  subtitle: {
-    color: 'black',
+  heroSub: {
+    color: COLORS.muted,
+    fontSize: 14,
     textAlign: 'center',
-    fontFamily: 'WorkSans-Regular',
-    paddingHorizontal: 64,
-    paddingVertical: 16,
+    lineHeight: 21,
   },
 });
 

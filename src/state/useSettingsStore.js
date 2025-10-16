@@ -60,7 +60,7 @@ export const useSettingsStore = create((set, get) => ({
   // registry
   setModels: (incoming) => {
     // Merge server models (left wins) over local defaults for easy rollout.
-    const merged = { ...DEFAULT_MODELS, ...(incoming || {}) };
+    const merged = { ...DEFAULT_MODELS, ...(incoming && typeof incoming === 'object' ? incoming : {}) };
     set({ models: merged });
 
     // If current model is missing (e.g., renamed upstream), fall back gracefully.

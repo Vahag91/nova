@@ -298,7 +298,7 @@ export default function ModelSelector() {
             styles.panel,
             {
               marginTop: insets.top + 56,
-              maxHeight: Math.min(Dimensions.get('window').height * 0.7, 520),
+              maxHeight: Math.min(Dimensions.get('window').height * 0.7, 468),
             },
             panelStyle,
           ]}
@@ -316,27 +316,6 @@ export default function ModelSelector() {
              </View>
            </View>
 
-          {/* Search input */}
-          <View style={styles.searchContainer}>
-            <Text style={styles.searchIcon}>🔍</Text>
-            <TextInput
-              style={styles.searchInput}
-              placeholder={t('modelSelector.searchPlaceholder')}
-              placeholderTextColor={colors.textSecondary}
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-              autoCorrect={false}
-              autoCapitalize="none"
-              returnKeyType="search"
-              accessibilityLabel={t('modelSelector.searchLabel')}
-              accessibilityHint={t('modelSelector.searchHint')}
-            />
-            {searchQuery.length > 0 && (
-              <Pressable onPress={() => setSearchQuery('')} style={styles.clearButton}>
-                <Text style={styles.clearIcon}>✕</Text>
-              </Pressable>
-            )}
-          </View>
 
           <FlatList
             ref={listRef}
@@ -418,16 +397,16 @@ const styles = StyleSheet.create({
   trigger: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    paddingHorizontal: 12,
-    paddingVertical: Platform.OS === 'ios' ? 10 : 8,
+    gap: 7,
+    paddingHorizontal: 11,
+    paddingVertical: Platform.OS === 'ios' ? 9 : 7,
     alignSelf: 'flex-start',
     backgroundColor: colors.surface,
-    borderRadius: 14,
-    marginBottom: 14,
+    borderRadius: 13,
+    marginBottom: 13,
   },
-  triggerText: { maxWidth: 160, fontSize: 14, fontWeight: '700', color: colors.text },
-  arrowContainer: { backgroundColor: colors.surface, borderRadius: 10, padding: 2 },
+  triggerText: { maxWidth: 144, fontSize: 13, fontWeight: '700', color: colors.text },
+  arrowContainer: { backgroundColor: colors.surface, borderRadius: 9, padding: 2 },
 
   /* overlay */
   overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.5)' },
@@ -436,54 +415,56 @@ const styles = StyleSheet.create({
   panel: {
     alignSelf: 'center',
     width: '90%',
-    maxWidth: 380,
+    maxWidth: 308,
     backgroundColor: '#0D0D0F',
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
+    borderTopLeftRadius: 22,
+    borderTopRightRadius: 22,
+    borderBottomLeftRadius: 22,
+    borderBottomRightRadius: 22,
     overflow: 'hidden',
     borderWidth: 0,
     // shadow
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 20 },
-    shadowRadius: 32,
+    shadowOffset: { width: 0, height: 18 },
+    shadowRadius: 29,
     shadowOpacity: Platform.OS === 'ios' ? 0.28 : 0.32,
-    elevation: 24,
+    elevation: 22,
   },
   panelHeader: {
-    paddingHorizontal: 20,
-    paddingTop: 16,
-    paddingBottom: 12,
+    paddingHorizontal: 18,
+    paddingTop: 14,
+    paddingBottom: 11,
     borderBottomWidth: 0,
     backgroundColor: '#0D0D0F',
   },
    panelHeaderRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-   panelTitle: { fontSize: 14, fontWeight: '800', color: colors.text, letterSpacing: 0.2 },
-  close: { fontSize: 18, color: colors.text },
+   panelTitle: { fontSize: 13, fontWeight: '800', color: colors.text, letterSpacing: 0.2 },
+  close: { fontSize: 16, color: colors.text },
 
   /* search */
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: 16,
-    marginVertical: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    marginHorizontal: 14,
+    marginVertical: 11,
+    paddingHorizontal: 11,
+    paddingVertical: 7,
     backgroundColor: '#1A1A1D',
-    borderRadius: 12,
+    borderRadius: 11,
     borderWidth: 0,
   },
-  searchIcon: { fontSize: 16, color: colors.textSecondary, marginRight: 8 },
-  searchInput: { flex: 1, fontSize: 14, color: colors.text, paddingVertical: 4 },
+  searchIcon: { fontSize: 14, color: colors.textSecondary, marginRight: 7 },
+  searchInput: { flex: 1, fontSize: 13, color: colors.text, paddingVertical: 4 },
   clearButton: { padding: 4 },
-  clearIcon: { fontSize: 14, color: colors.textSecondary },
+  clearIcon: { fontSize: 13, color: colors.textSecondary },
 
   /* section header */
   sectionHeader: {
-    paddingHorizontal: 16, paddingTop: 12, paddingBottom: 6,
-    backgroundColor: '#0D0D0F', flexDirection: 'row', alignItems: 'center', gap: 8,
+    paddingHorizontal: 14, paddingTop: 11, paddingBottom: 5,
+    backgroundColor: '#0D0D0F', flexDirection: 'row', alignItems: 'center', gap: 7,
   },
   sectionTitle: {
-    fontSize: 11, fontWeight: '800', letterSpacing: 0.6,
+    fontSize: 10, fontWeight: '800', letterSpacing: 0.5,
     color: colors.textSecondary, textTransform: 'uppercase',
   },
 
@@ -491,48 +472,48 @@ const styles = StyleSheet.create({
   cardRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 14,
-    paddingHorizontal: 12,
-    paddingVertical: 12,
+    gap: 13,
+    paddingHorizontal: 11,
+    paddingVertical: 11,
     backgroundColor: 'transparent',
-    marginHorizontal: 6,
+    marginHorizontal: 5,
     marginVertical: 3,
-    borderRadius: 12,
+    borderRadius: 11,
   },
   cardRowSelected: {
     backgroundColor: '#1A1A1D',
     shadowColor: colors.primary,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
+    shadowRadius: 7,
     shadowOpacity: 0.1,
     elevation: 4,
   },
   cardRowPressed: { backgroundColor: '#1A1A1D', transform: [{ scale: 0.98 }] },
 
-  divider: { height: StyleSheet.hairlineWidth, backgroundColor: '#2D2D30', marginLeft: 48, marginRight: 8 },
+  divider: { height: StyleSheet.hairlineWidth, backgroundColor: '#2D2D30', marginLeft: 43, marginRight: 7 },
 
-  titleBar: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 2 },
-  rowTitle: { fontSize: 16, fontWeight: '700', color: colors.text },
+  titleBar: { flexDirection: 'row', alignItems: 'center', gap: 7, marginBottom: 2 },
+  rowTitle: { fontSize: 14, fontWeight: '700', color: colors.text },
   rowTitleSel: { color: colors.primary },
-  rowDesc: { fontSize: 13, color: colors.textSecondary },
+  rowDesc: { fontSize: 12, color: colors.textSecondary },
   rowDescSel: { color: colors.text },
 
   /* chips */
-  badgeWrap: { flexDirection: 'row', gap: 6, flexShrink: 0 },
+  badgeWrap: { flexDirection: 'row', gap: 5, flexShrink: 0 },
   badge: {
-    paddingHorizontal: 10, paddingVertical: 3, borderRadius: 999,
+    paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999,
     backgroundColor: colors.surfaceElevated, borderWidth: 1, borderColor: colors.border,
     shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowRadius: 2, shadowOpacity: 0.1, elevation: 2,
   },
   badgeNew: { backgroundColor: colors.primary + '20', borderColor: colors.primary, shadowColor: colors.primary, shadowOpacity: 0.2 },
   badgeBest: { backgroundColor: '#6366F120', borderColor: '#6366F1', shadowColor: '#6366F1', shadowOpacity: 0.2 },
-  badgeText: { fontSize: 10, fontWeight: '800', textTransform: 'uppercase', color: colors.textSecondary, letterSpacing: 0.5 },
+  badgeText: { fontSize: 9, fontWeight: '800', textTransform: 'uppercase', color: colors.textSecondary, letterSpacing: 0.5 },
   badgeTextNew: { color: colors.primary },
   badgeTextBest: { color: '#6366F1' },
 
   /* empty */
-  emptyState: { alignItems: 'center', paddingVertical: 40, paddingHorizontal: 20 },
-  emptyIcon: { fontSize: 32, marginBottom: 12, opacity: 0.6 },
-  emptyTitle: { fontSize: 16, fontWeight: '600', color: colors.text, marginBottom: 4 },
-  emptyMessage: { fontSize: 14, color: colors.textSecondary, textAlign: 'center', lineHeight: 20 },
+  emptyState: { alignItems: 'center', paddingVertical: 36, paddingHorizontal: 18 },
+  emptyIcon: { fontSize: 29, marginBottom: 11, opacity: 0.6 },
+  emptyTitle: { fontSize: 14, fontWeight: '600', color: colors.text, marginBottom: 4 },
+  emptyMessage: { fontSize: 13, color: colors.textSecondary, textAlign: 'center', lineHeight: 18 },
 });

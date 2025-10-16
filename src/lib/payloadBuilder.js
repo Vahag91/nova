@@ -3,7 +3,7 @@
 const estTok = (s = '') => Math.ceil((s.length || 0) / 4);
 
 // Configuration
-const IMAGE_MEMORY_LOOKBACK = 4; // Keep image context for last 4 message pairs
+const IMAGE_MEMORY_LOOKBACK = (typeof globalThis !== 'undefined' && globalThis.IMAGE_MEMORY_LOOKBACK) || 12; // Keep image context for last pairs
 
 function countMsgTokens(m) {
   if (Array.isArray(m.content)) {
@@ -137,58 +137,83 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
   const sys = thread.system ? [{ role: 'system', content: thread.system }] : [{ role: 'system', content: DEFAULT_SYSTEM }];
   const rawSummary = thread.summary ? `Context summary:\n${thread.summary}` : '';
 
+  const safeCount = (m) => {
+    try {
+      return typeof countMsgTokens === 'function' ? countMsgTokens(m) : estTok(String(m?.content ?? ''));
+    } catch {
+      return estTok(String(m?.content ?? ''));
+    }
+  };
+  const safeTrimSummary = (summaryText, room) => {
+    try {
+      return typeof trimSummaryToBudget === 'function' ? trimSummaryToBudget(summaryText, room) : summaryText.slice(0, Math.max(0, room * 4));
+    } catch {
+      return '';
+    }
+  };
+
   // Base messages
   const base = [...sys, newMsg];
-  const baseTokens = base.reduce((n, m) => n + countMsgTokens(m), 0);
+  const baseTokens = base.reduce((n, m) => n + safeCount(m), 0);
 
   // Insert summary within budget
   let payload = base;
   if (rawSummary) {
     const room = Math.max(0, tokenCap - baseTokens);
-    const trimmedSummary = trimSummaryToBudget(rawSummary, room);
+    const trimmedSummary = safeTrimSummary(rawSummary, room);
     if (trimmedSummary) payload = [...sys, { role: 'system', content: trimmedSummary }, newMsg];
   }
 
   // Optional tiny recency: prefer the REAL last pair if it had an image
   const USE_RECENCY = true;
   if (USE_RECENCY) {
-    const tokensNow = payload.reduce((n, m) => n + countMsgTokens(m), 0);
+    const tokensNow = payload.reduce((n, m) => n + safeCount(m), 0);
     const headroom = tokenCap - tokensNow;
 
     if (headroom > 256) {
       // First try to find any recent image pair (up to IMAGE_MEMORY_LOOKBACK messages back)
-      const imagePair = getLastImagePair(thread, IMAGE_MEMORY_LOOKBACK);
-      const lastPair = getLastPair(thread);
+      let imagePair = null;
+      let lastPair = null;
+      try { imagePair = typeof getLastImagePair === 'function' ? getLastImagePair(thread, IMAGE_MEMORY_LOOKBACK) : null; } catch {}
+      try { lastPair = typeof getLastPair === 'function' ? getLastPair(thread) : null; } catch {}
 
       // If we found a recent image pair OR the new message mentions an image,
       // re-insert that image exchange verbatim (roles + content), before the current user msg.
-      if (imagePair && (mentionsImageIn(newMsg) || includesImage(lastPair?.user))) {
+      const mentionsImg = (() => { try { return typeof mentionsImageIn === 'function' ? mentionsImageIn(newMsg) : false; } catch { return false; } })();
+      const lastHasImg = (() => { try { return typeof includesImage === 'function' ? includesImage(lastPair?.user) : false; } catch { return false; } })();
+      if (imagePair && (mentionsImg || lastHasImg)) {
         const candidate = [
           ...payload.slice(0, -1), // everything except the current user msg
           imagePair.user,
           ...(imagePair.assistant ? [imagePair.assistant] : []),
           newMsg
         ];
-        const candTokens = candidate.reduce((n, m) => n + countMsgTokens(m), 0);
+        const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
         if (candTokens <= tokenCap) {
           payload = candidate;
         }
       } else {
         // fallback to tiny text-only recency (your existing behavior)
-        const recency = buildRecencyContext(thread, 700);
+        let recency = '';
+        try { recency = typeof buildRecencyContext === 'function' ? buildRecencyContext(thread, 700) : ''; } catch {}
         if (recency) {
           const candidate = [
             ...payload.slice(0, -1),
             { role: 'system', content: `Recency context:\n${recency}` },
             newMsg
           ];
-          const candTokens = candidate.reduce((n, m) => n + countMsgTokens(m), 0);
+          const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
           if (candTokens <= tokenCap) payload = candidate;
         }
       }
     }
   }
 
+
+  const finalTokens = payload.reduce((n, m) => n + safeCount(m), 0);
+  if (finalTokens > tokenCap && payload.length > 2) {
+    return [payload[0], payload[payload.length - 1]];
+  }
 
   return payload;
 }

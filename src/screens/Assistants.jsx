@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import Svg, { Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
 import SvgIcon from '../components/SvgIcon';
 import { v4 as uuidv4 } from 'uuid';
@@ -30,23 +30,26 @@ export default function Assistants({ navigation }) {
   const addMessage = useThreadsStore(s => s.addMessage);
   const currentModel = useSettingsStore(s => s.model);
 
-  
   async function usePreset(preset) {
     try {
-      Haptic.trigger('impactLight');
-      // choose model: preset.suggestedModel -> current
-      const model = preset.suggestedModel || currentModel;
+      // haptics can throw on some devices; make non-fatal
+      try { Haptic.trigger('impactLight'); } catch {}
 
-      // createThread should return the new thread
-      const t = createThread({ title: preset.name, model });
+      const model = preset?.suggestedModel || currentModel;
+      const title = preset?.name || 'Assistant';
+      const sys = typeof preset?.system === 'string' ? preset.system : '';
 
-      addMessage(t.id, newSystemMessage(preset.system));
-      
-      setActiveThread(t.id);
-      
+      const tNew = createThread({ title, model });
+      if (sys) addMessage(tNew.id, newSystemMessage(sys));
+
+      setActiveThread(tNew.id);
       navigation?.navigate?.('Chat');
     } catch (e) {
-      // Error handling
+      console.warn('usePreset failed', e);
+      Alert.alert(
+        t('assistants.errorTitle') || 'Something went wrong',
+        t('assistants.errorMessage') || 'Could not start this assistant.'
+      );
     }
   }
 
@@ -77,25 +80,24 @@ export default function Assistants({ navigation }) {
   function getTagColors(category) {
     switch (category) {
       case 'Everyday':
-        return { fg: '#FFFFFF', bg: '#0EA5E9', border: 'rgba(56,189,248,0.4)' }; // sky blue
+        return { fg: '#FFFFFF', bg: '#0EA5E9', border: 'rgba(56,189,248,0.4)' };
       case 'Life':
-        return { fg: '#FFFFFF', bg: '#D946EF', border: 'rgba(232,121,249,0.4)' }; // fuchsia
+        return { fg: '#FFFFFF', bg: '#D946EF', border: 'rgba(232,121,249,0.4)' };
       case 'Health':
-        return { fg: '#FFFFFF', bg: '#10B981', border: 'rgba(52,211,153,0.4)' }; // emerald
+        return { fg: '#FFFFFF', bg: '#10B981', border: 'rgba(52,211,153,0.4)' };
       case 'School & Work':
-        return { fg: '#000000', bg: '#F59E0B', border: 'rgba(251,191,36,0.4)' }; // amber
+        return { fg: '#000000', bg: '#F59E0B', border: 'rgba(251,191,36,0.4)' };
       case 'Coding':
-        return { fg: '#FFFFFF', bg: '#6366F1', border: 'rgba(129,140,248,0.4)' }; // indigo
+        return { fg: '#FFFFFF', bg: '#6366F1', border: 'rgba(129,140,248,0.4)' };
       case 'Creative':
-        return { fg: '#FFFFFF', bg: '#8B5CF6', border: 'rgba(167,139,250,0.4)' }; // purple
+        return { fg: '#FFFFFF', bg: '#8B5CF6', border: 'rgba(167,139,250,0.4)' };
       default:
-        return { fg: '#FFFFFF', bg: '#64748B', border: 'rgba(148,163,184,0.4)' }; // slate
+        return { fg: '#FFFFFF', bg: '#64748B', border: 'rgba(148,163,184,0.4)' };
     }
   }
 
-  // Internal categories use raw values for filtering; we localize only for display
   const categories = useMemo(() => {
-    const set = new Set(PRESETS.map(p => p.category || 'General'));
+    const set = new Set((PRESETS || []).map(p => p.category || 'General'));
     return ['All', ...Array.from(set)];
   }, []);
 
@@ -174,7 +176,7 @@ export default function Assistants({ navigation }) {
 
         {filteredPresets.map((preset, idx) => (
           <TouchableOpacity 
-            key={preset.id}
+            key={preset?.id || preset?.name || String(idx)}
             style={styles.card}
             activeOpacity={0.9}
             onPress={() => usePreset(preset)}
@@ -215,9 +217,7 @@ export default function Assistants({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000000', paddingHorizontal: 16 },
-  scroll: {
-    flex: 1,
-  },
+  scroll: { flex: 1 },
   headerIntro: {
     marginBottom: 18,
     paddingVertical: 20,
@@ -227,66 +227,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(59,130,246,0.2)',
   },
-  headerIntroGlow: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
+  headerIntroGlow: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
   headerTitle: { fontSize: 24, fontWeight: '700', color: '#F9FAFB', fontFamily: 'Lato-Bold' },
   headerSubtitle: { fontSize: 14, color: 'white', marginTop: 6, lineHeight: 20, fontFamily: 'Lato-Regular' },
-  categoryBar: {
-    paddingVertical: 12,
-    paddingHorizontal: 4,
-    gap: 8,
-    alignItems: 'center',
-  },
+  categoryBar: { paddingVertical: 12, paddingHorizontal: 4, gap: 8, alignItems: 'center' },
   categoryChip: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 999,
-    borderWidth: 1,
-    borderColor: '#2B2F40',
-    marginRight: 8,
-    marginBottom: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
+    paddingHorizontal: 16, paddingVertical: 8, borderRadius: 999,
+    borderWidth: 1, borderColor: '#2B2F40', marginRight: 8, marginBottom: 8,
+    shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 2, elevation: 2,
   },
-  categoryChipActive: {
-    backgroundColor: '#1F2937',
-    borderColor: '#3B82F6',
-  },
-  categoryChipText: {
-    color: '#9CA3AF',
-    fontSize: 13,
-    fontWeight: '700',
-    textAlign: 'center',
-    fontFamily: 'Lato-Bold',
-    letterSpacing: 0.3,
-  },
-  categoryChipTextActive: {
-    color: '#F9FAFB',
-  },
+  categoryChipActive: { backgroundColor: '#1F2937', borderColor: '#3B82F6' },
+  categoryChipText: { color: '#9CA3AF', fontSize: 13, fontWeight: '700', textAlign: 'center', fontFamily: 'Lato-Bold', letterSpacing: 0.3 },
+  categoryChipTextActive: { color: '#F9FAFB' },
   card: {
-    backgroundColor: '#12141D',
-    borderWidth: 1,
-    borderColor: '#2B2F40',
-    borderRadius: 18,
-    paddingVertical: 22,
-    paddingHorizontal: 18,
-    marginBottom: 14,
-    minHeight: 100,
-    shadowColor: 'rgba(0,0,0,0.6)',
-    shadowOffset: { width: 0, height: 12 },
-    shadowOpacity: 0.35,
-    shadowRadius: 22,
-    elevation: 8,
-    overflow: 'hidden',
-    position: 'relative',
+    backgroundColor: '#12141D', borderWidth: 1, borderColor: '#2B2F40', borderRadius: 18,
+    paddingVertical: 22, paddingHorizontal: 18, marginBottom: 14, minHeight: 100,
+    shadowColor: 'rgba(0,0,0,0.6)', shadowOffset: { width: 0, height: 12 }, shadowOpacity: 0.35, shadowRadius: 22,
+    elevation: 8, overflow: 'hidden', position: 'relative',
   },
   cardRow: { flexDirection: 'row', alignItems: 'center' },
   iconWrap: { width: 48, height: 48, borderRadius: 16, justifyContent: 'center', alignItems: 'center', marginRight: 18, position: 'relative', shadowColor: 'rgba(99,102,241,0.6)', shadowOpacity: 0.5, shadowRadius: 12, shadowOffset: { width: 0, height: 6 }, elevation: 6 },
@@ -295,23 +252,7 @@ const styles = StyleSheet.create({
   cardBody: { flex: 1 },
   cardTitle: { fontSize: 17, fontWeight: '700', color: 'rgba(249,250,251,0.95)', fontFamily: 'Lato-Bold' },
   cardDesc: { fontSize: 13, color: '#9CA3AF', marginTop: 6, fontFamily: 'Lato-Regular' },
-  tag: { 
-    paddingHorizontal: 10, 
-    paddingVertical: 5, 
-    borderRadius: 999, 
-    alignSelf: 'flex-start',
-    borderWidth: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.15,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  tagText: { 
-    fontSize: 9, 
-    fontWeight: '800', 
-    fontFamily: 'Lato-Bold',
-    letterSpacing: 0.4,
-    textTransform: 'uppercase',
-  },
+  tag: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, alignSelf: 'flex-start', borderWidth: 1,
+    shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.15, shadowRadius: 2, elevation: 2 },
+  tagText: { fontSize: 9, fontWeight: '800', fontFamily: 'Lato-Bold', letterSpacing: 0.4, textTransform: 'uppercase' },
 });

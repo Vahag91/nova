@@ -22,9 +22,10 @@ import { buildPayload } from '../lib/payloadBuilder';
 import { useVoiceInput } from '../hooks/useVoiceInput';
 import { useTranslation } from 'react-i18next';
 
+import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
+
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
-  
 
   // Stores
   const threads = useThreadsStore(s => s.threads);
@@ -48,8 +49,8 @@ export default function Chat({ navigation }) {
   const updateLastAssistantContentPrivate = useThreadsStore(s => s.updateLastAssistantContentPrivate);
 
   // Settings
-  const globalModel = useSettingsStore(s => s.model);      // global fallback
-  const modelsMap   = useSettingsStore(s => s.models);     // registry with caps
+  const globalModel = useSettingsStore(s => s.model);
+  const modelsMap = useSettingsStore(s => s.models);
 
   // Local
   const messageListRef = useRef(null);
@@ -78,7 +79,6 @@ export default function Chat({ navigation }) {
   const abortRef = useRef(null);
   const appStateRef = useRef(AppState.currentState); // Track if app is in background
 
-
   const messagesNoSystem = useMemo(
     () => (activeThread?.messages || []).filter(m => m.role !== 'system'),
     [activeThread?.messages]
@@ -86,7 +86,6 @@ export default function Chat({ navigation }) {
 
   // Check if chat is empty (no user/assistant messages)
   const isChatEmpty = messagesNoSystem.length === 0;
-  
   // Check if this is an assistant thread (has system message)
   const isAssistantThread = activeThread?.messages?.some(m => m.role === 'system');
 
@@ -101,10 +100,10 @@ export default function Chat({ navigation }) {
   const { isRecording, start: startVoice, stop: stopVoice } = useVoiceInput({ onPartialText, onFinalText, onErrorText });
 
   // Hydrate & ensure thread
-  useEffect(() => { 
-    if (!hydrated) hydrate(); 
+  useEffect(() => {
+    if (!hydrated) hydrate();
   }, [hydrated, hydrate]);
-  
+
   useEffect(() => {
     if (hydrated && !isPrivate && !threads.length) {
       const th = createThread({ title: t('history.newChat'), model: globalModel });
@@ -150,15 +149,11 @@ export default function Chat({ navigation }) {
   // App background: track state + stop voice recording (streaming continues until OS kills it)
   useEffect(() => {
     const handleAppStateChange = (nextAppState) => {
-      appStateRef.current = nextAppState; // Track current app state
-      
-      // Stop voice recording when backgrounded (mic access will be lost anyway)
+      appStateRef.current = nextAppState;
       if (nextAppState !== 'active' && isRecording) {
         stopVoice();
       }
-
     };
-    
     const sub = AppState.addEventListener('change', handleAppStateChange);
     return () => sub.remove();
   }, [stopVoice, isRecording]);
@@ -195,37 +190,77 @@ export default function Chat({ navigation }) {
       return merged;
     });
   }
-  const onOpenCameraPress = useCallback(() => {
+
+  const onOpenCameraPress = useCallback(async () => {
+    const res = await ensurePhotoLibraryAccess({ write: false });
+    if (!res.ok) {
+      // Mirror the official "blocked vs denied" flow with a single user-friendly prompt
+      if (res.blocked) {
+        promptOpenSettings(
+          t('chat.imagePickerErrorTitle') || 'Photos Permission Needed',
+          t('chat.photosPermissionMessage') || 'Photo access is blocked. Please enable it in Settings.'
+        );
+      } else {
+        Alert.alert(
+          t('chat.imagePickerErrorTitle') || 'Photos Permission Needed',
+          t('chat.photosPermissionMessage') || 'Photo access is required to choose images.',
+          [
+            { text: t('common.cancel') || 'Cancel', style: 'cancel' },
+            {
+              text: t('common.allow') || 'Allow',
+              onPress: async () => {
+                const retry = await ensurePhotoLibraryAccess({ write: false });
+                if (!retry.ok && retry.blocked) {
+                  promptOpenSettings(
+                    t('chat.imagePickerErrorTitle') || 'Photos Permission Needed',
+                    t('chat.photosPermissionMessage') || 'Photo access is blocked. Please enable it in Settings.'
+                  );
+                }
+              }
+            }
+          ],
+          { cancelable: true }
+        );
+      }
+      return;
+    }
+
     launchImageLibrary(
       { mediaType: 'photo', includeBase64: true, selectionLimit: 2, maxWidth: 500, maxHeight: 500, quality: 0.52 },
       (response) => {
         if (response?.didCancel) return;
         if (response?.errorCode || response?.errorMessage) {
-          Alert.alert(t('chat.imagePickerErrorTitle'), response?.errorMessage || response?.errorCode);
+          Alert.alert(t('chat.imagePickerErrorTitle') || 'Photos Error', response?.errorMessage || response?.errorCode);
           return;
         }
-        addPickedAssets(response?.assets || []);
+        const assetsList = Array.isArray(response?.assets) ? response.assets : [];
+        if (!assetsList.length) return;
+        addPickedAssets(assetsList);
       }
     );
   }, [t]);
+
   const onRemoveAttachment = useCallback((att) => {
     setAttachments(prev => prev.filter(a => a.id !== att.id));
   }, []);
 
   // ==== Send flow ====
   async function onSend(overrideText) {
-    const sendStartTime = Date.now();
-    
+    if (offline) {
+      setError(t('chat.offlineBanner') || "You're offline. Try again when you're back online.");
+      return;
+    }
+    if (streaming) return;
+
     setError('');
     const textRaw = typeof overrideText === 'string' ? overrideText : input;
     const text = (textRaw || '').trim();
     const hasText = !!text;
     const hasImages = attachments.length > 0;
-    
+
     if (!hasText && !hasImages) return;
     if (!activeThread) return;
 
-    // If user added images but the model can't see images, bail early with a clear message
     if (hasImages && !activeModelCaps.visionInput) {
       setError(`The selected model (${modelsMap?.[activeModelKey]?.display?.name || activeModelKey}) does not support images.`);
       return;
@@ -233,9 +268,12 @@ export default function Chat({ navigation }) {
 
     const MAX_CHARS = 16000;
     if (text.length > MAX_CHARS) {
-      setError(t('chat.messageTooLong', { length: text.length, limit: MAX_CHARS }));
+      setError(t('chat.messageTooLong', { length: text.length, limit: MAX_CHARS }) || `Message too long (${text.length}/${MAX_CHARS}).`);
       return;
     }
+
+    const previousInput = input;
+    const previousAttachments = [...attachments];
 
     const mmParts = [
       ...(hasText ? [{ type: 'text', text }] : []),
@@ -249,141 +287,147 @@ export default function Chat({ navigation }) {
     const displayMd = [mdImages, text].filter(Boolean).join('\n\n');
     const u = newUserMessage(displayMd); u.mm = mmParts;
 
-    const a = newAssistantMessage(); const assistantId = a.id;
-    // Set initial assistant activity based on context
+    let assistantId = null;
+    let assistantAdded = false;
+    let composerCleared = false;
+
     try {
-      const initialActivity = hasImages
-        ? t('chat.activityAnalyzingImages', 'Analyzing images…')
-        : (webSearchNext ? t('chat.activitySearching', 'Searching…') : t('chat.activityThinking', 'Thinking…'));
-      a.meta = { ...(a.meta || {}), activity: initialActivity };
-    } catch {}
+      const a = newAssistantMessage();
+      assistantId = a.id;
+      try {
+        const initialActivity = hasImages
+          ? t('chat.activityAnalyzingImages', 'Analyzing images…')
+          : (webSearchNext ? t('chat.activitySearching', 'Searching…') : t('chat.activityThinking', 'Thinking…'));
+        a.meta = { ...(a.meta || {}), activity: initialActivity };
+      } catch { }
 
-    if (isPrivate) { addPrivateMessage(u); addPrivateMessage(a); }
-    else { addMessage(activeThread.id, u); addMessage(activeThread.id, a); }
-    setStreamingMsgId(assistantId);
-    requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
+      if (isPrivate) { addPrivateMessage(u); addPrivateMessage(a); }
+      else { addMessage(activeThread.id, u); addMessage(activeThread.id, a); }
+      setStreamingMsgId(assistantId);
+      requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
+      assistantAdded = true;
 
-    // reset composer (but leave webSearchNext until send completion)
-    setInput(''); setAttachments([]); setForceCollapseInput(true);
+      // reset composer (but leave webSearchNext until send completion)
+      setInput('');
+      setAttachments([]);
+      setForceCollapseInput(true);
+      composerCleared = true;
 
-    const threadForContext = { ...activeThread, messages: [ ...(activeThread.messages || []), mUser ] };
-    await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
-    const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
+      const threadForContext = { ...activeThread, messages: [...(activeThread.messages || []), mUser] };
+      await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
+      const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
 
-    setStreaming(true);
-    const deviceId = await ensureDeviceId();
-    const controller = new AbortController(); abortRef.current = controller;
+      setStreaming(true);
+      const deviceId = await ensureDeviceId();
+      const controller = new AbortController(); abortRef.current = controller;
 
-    streamChat({
-      model: activeModelKey,             // ✅ per-thread model
-      messages: payload,
-      deviceId,
-      // temperature: (optional) wire later if you want per-model temps
-      allowWebSearch: webSearchNext,
-      webSearchConfig: { recencyDays: 30 },
-      signal: controller.signal,
-      onToken: (chunk) => { 
-        if (typeof chunk === 'string') {
-          appendStream(assistantId, chunk);
-        }
-      },
-      onDone: () => {
-       
-        // 1. FIRST: Get the full content from stream buffer
-        const full = getStream(assistantId);        
-        // 2. SECOND: Update the message content in store (synchronous)
-        if (isPrivate) updateLastAssistantContentPrivate(() => full);
-        else updateLastAssistantContent(activeThread.id, () => full);
-        
-        // 3. THIRD: Clear streaming state (this triggers re-render)
-        setStreaming(false); 
-        abortRef.current = null;
-        setStreamingMsgId(null);  // Now message has content, so no typing dots!
-        
-        // 4. FINALLY: Cleanup and save
-        clearStream(assistantId);
-        if (!isPrivate) forceSaveThread(activeThread.id);
-        setWebSearchNext(false); // reset after a successful send
-      },
-      onError: (err) => {
-        
-        // Check if error happened while app was backgrounded
-        const wasBackgrounded = appStateRef.current !== 'active';
-        const isOSTermination = err.code === 0 || err.code === 'NETWORK'; // HTTP 0 or network error
-        
-        // 1. FIRST: Save any partial content from stream buffer
-        const partial = getStream(assistantId);
-        if (partial && partial.trim().length > 0) {
-          if (isPrivate) updateLastAssistantContentPrivate(() => partial);
-          else {
-            updateLastAssistantContent(activeThread.id, () => partial);
-            forceSaveThread(activeThread.id);
+      streamChat({
+        model: activeModelKey,
+        messages: payload,
+        deviceId,
+        allowWebSearch: webSearchNext,
+        webSearchConfig: { recencyDays: 30 },
+        signal: controller.signal,
+        onToken: (chunk) => {
+          if (typeof chunk === 'string') {
+            appendStream(assistantId, chunk);
           }
-        } else if (!partial || partial.trim().length === 0) {
-          // No content - remove empty message
-          if (!isPrivate && activeThread?.id) {
-            removeMessage(activeThread.id, assistantId);
+        },
+        onDone: () => {
+          const full = getStream(assistantId);
+          if (isPrivate) updateLastAssistantContentPrivate(() => full);
+          else updateLastAssistantContent(activeThread.id, () => full);
+          setStreaming(false);
+          abortRef.current = null;
+          setStreamingMsgId(null);
+          clearStream(assistantId);
+          if (!isPrivate) forceSaveThread(activeThread.id);
+          setWebSearchNext(false);
+        },
+        onError: (err) => {
+          const wasBackgrounded = appStateRef.current !== 'active';
+          const isOSTermination = err.code === 0 || err.code === 'NETWORK';
+          const partial = getStream(assistantId);
+
+          if (partial && partial.trim().length > 0) {
+            if (isPrivate) updateLastAssistantContentPrivate(() => partial);
+            else {
+              updateLastAssistantContent(activeThread.id, () => partial);
+              forceSaveThread(activeThread.id);
+            }
+          } else if (!partial || partial.trim().length === 0) {
+            if (!isPrivate && activeThread?.id) {
+              removeMessage(activeThread.id, assistantId);
+            }
           }
+          setStreaming(false);
+          abortRef.current = null;
+          setStreamingMsgId(null);
+          clearStream(assistantId);
+
+          if (wasBackgrounded && isOSTermination) {
+            // swallow expected background termination
+          } else {
+            const pretty = mapProxyError(err);
+            setError(pretty.message);
+          }
+        },
+      });
+    } catch (err) {
+      if (assistantAdded && assistantId) {
+        if (isPrivate) {
+          updateLastAssistantContentPrivate(() => t('chat.sendFailed') || 'Failed to send.');
+        } else if (activeThread?.id) {
+          removeMessage(activeThread.id, assistantId);
         }
-        
-        // 2. SECOND: Clear streaming state
-        setStreaming(false); 
-        abortRef.current = null;
-        setStreamingMsgId(null);
-        
-        // 3. FINALLY: Cleanup and conditionally show error
         clearStream(assistantId);
-        
-        // Only show error if NOT caused by OS backgrounding
-        if (wasBackgrounded && isOSTermination) {
-          // Don't show error to user - this is expected behavior on iOS/Android
-        } else {
-          // Real error - show to user
-          const pretty = mapProxyError(err); 
-          setError(pretty.message);
-        }
-        
-        // keep webSearchNext as-is so user can retry
-      },
-    });
+      }
+      if (composerCleared) {
+        setInput(previousInput);
+        setAttachments(previousAttachments);
+        setForceCollapseInput(false);
+      }
+      setStreaming(false);
+      abortRef.current = null;
+      setStreamingMsgId(null);
+      const pretty = mapProxyError(err);
+      setError(pretty.message || t('chat.sendFailed') || 'Failed to send.');
+    }
   }
 
   function onStop() {
-    if (abortRef.current) {      
-      // Handle partial content or remove empty message
+    if (abortRef.current) {
       if (streamingMsgId) {
         const partial = getStream(streamingMsgId);
         if (partial && partial.trim().length > 0) {
-          // Has content - save it
           if (isPrivate) {
             updateLastAssistantContentPrivate(() => partial);
           } else {
             updateLastAssistantContent(activeThread.id, () => partial);
-            forceSaveThread(activeThread.id); // ✅ Save thread with partial content
+            forceSaveThread(activeThread.id);
           }
         } else {
-          // No content - remove the empty assistant message to prevent typing dots
           if (isPrivate) {
-            // For private threads, we need to handle this differently since there's no remove method
-            // Just clear the streaming state - the empty message will show but won't have typing dots
+            // leave as empty non-typing bubble in private mode
           } else if (activeThread?.id) {
-            // Remove the empty assistant message from normal thread
             removeMessage(activeThread.id, streamingMsgId);
           }
         }
         clearStream(streamingMsgId);
         setStreamingMsgId(null);
       }
-      
-      abortRef.current.abort(); 
-      abortRef.current = null; 
+
+      abortRef.current.abort();
+      abortRef.current = null;
       setStreaming(false);
     }
     if (isRecording) {
       stopVoice();
     }
   }
+
   function onRetryFromHere(message) { setInput(message?.content || ''); }
+
   function onInsertImagesMarkdown(md) {
     const a = newAssistantMessage(md);
     if (isPrivate) addPrivateMessage(a);
@@ -408,14 +452,14 @@ export default function Chat({ navigation }) {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={{ flex: 1 }}>
           {offline && (
-            <View style={{margin:16,padding:10,borderRadius:8,backgroundColor: colors.warning + '20',borderWidth:1,borderColor: colors.warning}}>
-              <Text style={{color: colors.warning,fontSize:12}}>{t('chat.offlineBanner')}</Text>
+            <View style={{ margin: 16, padding: 10, borderRadius: 8, backgroundColor: colors.warning + '20', borderWidth: 1, borderColor: colors.warning }}>
+              <Text style={{ color: colors.warning, fontSize: 12 }}>{t('chat.offlineBanner')}</Text>
             </View>
           )}
 
           {!!error && (
             <View style={styles.error}>
-              <Text style={{color: colors.error, fontSize: 14, fontWeight: '500'}}>{error}</Text>
+              <Text style={{ color: colors.error, fontSize: 14, fontWeight: '500' }}>{error}</Text>
             </View>
           )}
 
@@ -454,15 +498,53 @@ export default function Chat({ navigation }) {
               onCreateImagesPress={() => { setInsertToChatCallback(onInsertImagesMarkdown); navigation.navigate('ImagesStudio', { seedPrompt: input }); }}
               onOpenCameraPress={onOpenCameraPress}
               onSearchPress={() => setWebSearchNext(v => !v)}
-              onClipboardPress={() => {}}
+              onClipboardPress={() => { }}
               webSearchEnabled={webSearchNext}
-              onMicPress={() => {
+              onMicPress={async () => {
                 if (isRecording) {
                   stopVoice();
                   setShowVoiceOverlay(false);
                 } else {
+                  const res = await ensureMicAndSpeech();
+                  if (!res.ok) {
+                    if (res.blocked) {
+                      promptOpenSettings(
+                        t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
+                        t('chat.voicePermissionMessage') || 'Microphone/Speech access is blocked. Please enable them in Settings.'
+                      );
+                    } else {
+                      Alert.alert(
+                        t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
+                        t('chat.voicePermissionMessage') || 'Microphone and Speech Recognition are required to use voice.',
+                        [
+                          { text: t('common.cancel') || 'Cancel', style: 'cancel' },
+                          {
+                            text: t('common.allow') || 'Allow',
+                            onPress: async () => {
+                              const retry = await ensureMicAndSpeech();
+                              if (!retry.ok && retry.blocked) {
+                                promptOpenSettings(
+                                  t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
+                                  t('chat.voicePermissionMessage') || 'Microphone/Speech access is blocked. Please enable them in Settings.'
+                                );
+                              }
+                            }
+                          }
+                        ],
+                        { cancelable: true }
+                      );
+                    }
+                    return;
+                  }
                   setInput('');
-                  startVoice();
+                  try {
+                    const started = await startVoice();
+                    if (!started) return;
+                  } catch (err) {
+                    const pretty = mapProxyError(err);
+                    setError(pretty.message || t('chat.voiceStartFailed') || 'Could not start voice.');
+                    return;
+                  }
                   setShowVoiceOverlay(true);
                   setVoiceText('');
                 }
@@ -498,12 +580,11 @@ export default function Chat({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container:{ flex:1, backgroundColor: '#000000' },
-  error:{ backgroundColor: colors.error + '20', padding:10, borderRadius:10, margin:13, borderLeftWidth:3, borderLeftColor: colors.error },
-  emptyState:{ flex:1, alignItems:'center', justifyContent:'center', paddingHorizontal:16, paddingVertical:40 },
-  emptyStateIcon:{ width:64, height:64, borderRadius:32, backgroundColor: colors.surface, alignItems:'center', justifyContent:'center', marginBottom:19 },
-  emptyStateIconText:{ fontSize:26 },
-  emptyStateTitle:{ fontSize:21, fontWeight:'700', color: colors.text, marginBottom:6, textAlign:'center' },
-  emptyStateSubtitle:{ fontSize:14, color: colors.textSecondary, textAlign:'center', lineHeight:20 },
+  container: { flex: 1, backgroundColor: '#000000' },
+  error: { backgroundColor: colors.error + '20', padding: 10, borderRadius: 10, margin: 13, borderLeftWidth: 3, borderLeftColor: colors.error },
+  emptyState: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, paddingVertical: 40 },
+  emptyStateIcon: { width: 64, height: 64, borderRadius: 32, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', marginBottom: 19 },
+  emptyStateIconText: { fontSize: 26 },
+  emptyStateTitle: { fontSize: 21, fontWeight: '700', color: colors.text, marginBottom: 6, textAlign: 'center' },
+  emptyStateSubtitle: { fontSize: 14, color: colors.textSecondary, textAlign: 'center', lineHeight: 20 },
 });
-

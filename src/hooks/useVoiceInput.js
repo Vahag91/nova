@@ -45,7 +45,8 @@ export function useVoiceInput({
   const appendFinal = (t) => {
     const s = (t || '').trim();
     if (!s) return;
-    bufferRef.current = bufferRef.current ? bufferRef.current + ' ' + s : s;
+    const next = bufferRef.current ? bufferRef.current + ' ' + s : s;
+    bufferRef.current = next.length > 8000 ? next.slice(-8000) : next;
   };
 
   const emitFinal = (overrideText) => {
@@ -57,54 +58,58 @@ export function useVoiceInput({
     if (finalText) finalCbRef.current?.(finalText);
   };
 
-  const askAndroidPerm = async () => {
-    if (Platform.OS !== 'android') return true;
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.RECORD_AUDIO
-    );
-    return granted === PermissionsAndroid.RESULTS.GRANTED;
-  };
-
   const safeStart = useCallback(async () => {
     try {
       await Voice.start(locale || undefined);
       setIsRecording(true);
       isRecordingRef.current = true;
       resetBuffers();
+      return true;
     } catch (e) {
       const msg = e?.message || String(e);
       if (/already started/i.test(msg)) {
         setIsRecording(true);
         isRecordingRef.current = true;
-        return;
+        return true;
       }
       errCbRef.current?.(msg);
+      return false;
     }
   }, [locale]);
 
   const scheduleRestart = () => {
-    if (!wantRef.current || restartingRef.current || isRecording) {
+    if (!wantRef.current || restartingRef.current || isRecordingRef.current) {
       return;
     }
     
     restartingRef.current = true;
     setTimeout(async () => {
       restartingRef.current = false;
-      if (wantRef.current && !isRecording) {
+      if (wantRef.current && !isRecordingRef.current) {
         await safeStart();
       }
     }, 150);
   };
 
   const start = useCallback(async () => {
-    if (!(await askAndroidPerm())) {
-      errCbRef.current?.('Microphone permission denied');
-      return;
+    if (Platform.OS === 'android') {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO
+        );
+        if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+          errCbRef.current?.('Microphone permission denied');
+          return false;
+        }
+      } catch {
+        errCbRef.current?.('Microphone permission denied');
+        return false;
+      }
     }
-    
+
     resetBuffers();
     wantRef.current = true;
-    await safeStart();
+    return await safeStart();
   }, [safeStart]);
 
   const stop = useCallback(async () => {
@@ -212,8 +217,8 @@ export function useVoiceInput({
 
     return () => {
       try { Voice.stop(); } catch {}
-      try { Voice.destroy(); } catch {}
-      Voice.removeAllListeners();
+      try { Voice.removeAllListeners?.(); } catch {}
+      try { Voice.destroy?.(); } catch {}
     };
   }, []);
 

@@ -189,17 +189,29 @@ export function updateThreadSummary(thread, newSummary) {
 }
 
 export async function ensureSummaryIfNeeded(thread, setThreadSummary) {
-  if (!shouldUpdateSummary(thread)) return thread.summary;
+  try {
+    if (typeof shouldUpdateSummary === 'function' && !shouldUpdateSummary(thread)) {
+      return thread.summary;
+    }
 
-  const fresh = buildFreshSummaryFromLast50(thread);
-  const merged = thread.summary ? mergeSummaries(thread.summary, fresh) : fresh;
+    const fresh = typeof buildFreshSummaryFromLast50 === 'function'
+      ? buildFreshSummaryFromLast50(thread)
+      : '';
+    const merged = (typeof mergeSummaries === 'function' && thread.summary)
+      ? mergeSummaries(thread.summary, fresh)
+      : (fresh || thread.summary || '');
 
-  if (merged && setThreadSummary) {
-    const nonSystemCount = (thread.messages || []).filter(m => m.role !== 'system').length;
-    setThreadSummary(thread.id, merged, {
-      summaryLastMsgCount: nonSystemCount,
-      summaryUpdatedAt: Date.now(),
-    });
+    if (merged && setThreadSummary) {
+      const nonSystemCount = (thread.messages || []).filter(m => m?.role !== 'system').length;
+      try {
+        setThreadSummary(thread.id, merged, {
+          summaryLastMsgCount: nonSystemCount,
+          summaryUpdatedAt: Date.now(),
+        });
+      } catch {}
+    }
+    return merged;
+  } catch {
+    return thread.summary || '';
   }
-  return merged;
 }

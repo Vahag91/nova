@@ -79,9 +79,9 @@ const SuggestionCards = ({ onSuggestionPress }) => {
   ];
 
   const handlePress = (suggestion) => {
-    if (onSuggestionPress) {
-      onSuggestionPress(suggestion);
-    }
+    try {
+      onSuggestionPress?.(suggestion);
+    } catch {}
   };
 
   return (

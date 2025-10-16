@@ -7,6 +7,21 @@ function bump(arr, id, patch = {}) {
   return arr.map(t => t.id === id ? { ...t, ...patch, updatedAt: Date.now() } : t);
 }
 
+function safeSaveThreads(threads) {
+  try {
+    const maybePromise = Storage.saveThreads(threads);
+    if (maybePromise && typeof maybePromise.then === 'function') {
+      maybePromise.catch(() => {});
+    }
+  } catch (_) {
+    // keep UI responsive on storage failures
+  }
+}
+
+function isArray(value) {
+  return Array.isArray(value);
+}
+
 export const useThreadsStore = create((set, get) => ({
   threads: [],
   activeThreadId: null,
@@ -19,7 +34,13 @@ export const useThreadsStore = create((set, get) => ({
     renderTime: null
   },
   hydrate: async () => {
-    const threads = await Storage.loadThreads();
+    let threads = [];
+    try {
+      const loaded = await Storage.loadThreads();
+      threads = isArray(loaded) ? loaded : [];
+    } catch (_) {
+      threads = [];
+    }
     set({
       threads,
       activeThreadId: threads[0]?.id ?? null,
@@ -31,7 +52,7 @@ export const useThreadsStore = create((set, get) => ({
     const t = newThread({ title, model, system });
     set(state => {
       const threads = [t, ...state.threads];
-      Storage.saveThreads(threads);
+      safeSaveThreads(threads);
       return { 
         threads, 
         activeThreadId: t.id
@@ -50,7 +71,7 @@ export const useThreadsStore = create((set, get) => ({
           updatedAt: message.createdAt,
         };
       });
-      Storage.saveThreads(next);
+      safeSaveThreads(next);
       return { threads: next };
     });
   },
@@ -64,7 +85,7 @@ export const useThreadsStore = create((set, get) => ({
           updatedAt: Date.now(),
         };
       });
-      Storage.saveThreads(next);
+      safeSaveThreads(next);
       return { threads: next };
     });
   },
@@ -91,21 +112,21 @@ export const useThreadsStore = create((set, get) => ({
   updateThread: (id, patch) => {
     set((state) => {
       const next = bump(state.threads, id, patch);
-      Storage.saveThreads(next);
+      safeSaveThreads(next);
       return { threads: next };
     });
   },
   pinThread: (id, pinned) => {
     set((state) => {
       const next = state.threads.map(t => t.id === id ? { ...t, pinned: !!pinned } : t);
-      Storage.saveThreads(next);
+      safeSaveThreads(next);
       return { threads: next };
     });
   },
   renameThread: (id, title) => {
     set((state) => {
       const next = state.threads.map(t => t.id === id ? { ...t, title } : t);
-      Storage.saveThreads(next);
+      safeSaveThreads(next);
       return { threads: next };
     });
   },
@@ -115,12 +136,14 @@ export const useThreadsStore = create((set, get) => ({
       const activeThreadId = state.activeThreadId === threadId
         ? (threads[0]?.id ?? null)
         : state.activeThreadId;
-      Storage.saveThreads(threads);
+      safeSaveThreads(threads);
       return { threads, activeThreadId };
     });
   },
   reset: async () => {
-    await Storage.saveThreads([]);
+    try {
+      await Storage.saveThreads([]);
+    } catch (_) {}
     set({ threads: [], activeThreadId: null });
   },
 
@@ -157,14 +180,13 @@ export const useThreadsStore = create((set, get) => ({
         }
       }
       const updatedThread = { ...t, messages: msgs, updatedAt: Date.now() };
-      throttledSave.queueSave(t.id, updatedThread);
       return { privateThread: updatedThread };
     });
   },
 
   forceSaveThread: (threadId) => {
     const state = get();
-    const thread = state.threads.find(t => t.id === threadId) || state.privateThread;
+    const thread = state.threads.find(t => t.id === threadId);
     if (thread) throttledSave.immediateSave(threadId, thread);
   },
 
@@ -183,7 +205,7 @@ export const useThreadsStore = create((set, get) => ({
         updatedAt: Date.now(),
       };
     });
-    Storage.saveThreads(next);
+    safeSaveThreads(next);
     return { threads: next };
   }),
 
@@ -192,6 +214,12 @@ export const useThreadsStore = create((set, get) => ({
   clearInsertToChatCallback: () => set({ insertToChatCallback: null }),
   insertToChat: (content) => {
     const state = get();
-    if (state.insertToChatCallback) state.insertToChatCallback(content);
+    if (state.insertToChatCallback) {
+      try {
+        state.insertToChatCallback(content);
+      } catch (_) {
+        // ignore insert errors from consumers
+      }
+    }
   },
 }));

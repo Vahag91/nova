@@ -6,7 +6,12 @@ export function appendStream(id, chunk) {
   if (!id || typeof chunk !== 'string' || !chunk) return;
   _buffers.set(id, (_buffers.get(id) || '') + chunk);
   const set = _listeners.get(id);
-  if (set) for (const fn of set) fn();
+  if (set && set.size) {
+    const fns = Array.from(set);
+    for (const fn of fns) {
+      try { fn(); } catch { /* swallow listener error */ }
+    }
+  }
 }
 
 export function getStream(id) { 

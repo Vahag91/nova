@@ -61,17 +61,23 @@ const styles = StyleSheet.create({
     maxHeight: IMAGE_HEIGHT,
   },
   title: {
-    color: 'black',
+    color: '#FFFFFF',
     fontSize: 26,
     textAlign: 'center',
     fontFamily: 'WorkSans-Bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.8)',
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
   },
   subtitle: {
-    color: 'black',
+    color: '#FFFFFF',
     textAlign: 'center',
     fontFamily: 'WorkSans-Regular',
     paddingHorizontal: 64,
     paddingVertical: 16,
+    textShadowColor: 'rgba(0, 0, 0, 0.8)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 3,
   },
 });
 

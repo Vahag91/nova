@@ -54,25 +54,32 @@ const MessageListCore = function MessageList({
   const manualScrollRequestRef = useRef(false);
   const scrollTimeoutRef = useRef(null);
 
+  const safeMessages = useMemo(
+    () => Array.isArray(messages)
+      ? messages.filter(m => m && typeof m === 'object' && (m.id || m.createdAt != null))
+      : [],
+    [messages]
+  );
+
   const streamingTail = useMemo(() => {
     if (!streaming) return null;
-    const last = messages[messages.length - 1];
+    const last = safeMessages[safeMessages.length - 1];
     if (last?.role === 'assistant' && last?.id === streamingMessageId) return last;
-    for (let i = messages.length - 1; i >= 0; i--) {
-      const m = messages[i];
+    for (let i = safeMessages.length - 1; i >= 0; i--) {
+      const m = safeMessages[i];
       if (m?.role === 'assistant' && m?.id === streamingMessageId) return m;
     }
     return null;
-  }, [messages, streaming, streamingMessageId]);
+  }, [safeMessages, streaming, streamingMessageId]);
 
   const data = useMemo(() => {
     const base = streamingTail
-      ? messages.filter(m => m?.id !== streamingTail.id).concat([streamingTail])
-      : messages;
+      ? safeMessages.filter(m => m?.id !== streamingTail.id).concat([streamingTail])
+      : safeMessages;
     return interleaveDaySeparators(base);
-  }, [messages, streamingTail?.id]);
+  }, [safeMessages, streamingTail?.id]);
 
-  const keyExtractor = useCallback((it) => it.id, []);
+  const keyExtractor = useCallback((it, index) => String(it?.id ?? it?.key ?? index), []);
 
   const lastRenderable = data.length ? data[data.length - 1] : null;
   const footerFirstInGroup =
@@ -152,33 +159,47 @@ const MessageListCore = function MessageList({
     requestAnimationFrame(() => scrollToBottom(false));
   }, [threadKey, scrollToBottom]);
 
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = null;
+      }
+    };
+  }, []);
+
   const renderItem = ({ item, index }) => {
     if (item?.type === 'day') return <DaySeparator date={item.date} />;
-    if (item.role === 'system') return <DaySeparator system text={item.content} />;
+    if (item?.role === 'system') return <DaySeparator system text={item.content} />;
 
     let j = index - 1; let prevMsg = null;
     while (j >= 0) { if (!data[j]?.type) { prevMsg = data[j]; break; } j--; }
     j = index + 1; let nextMsg = null;
     while (j < data.length) { if (!data[j]?.type) { nextMsg = data[j]; break; } j++; }
 
+    if (!item || typeof item !== 'object') return null;
     const role = item.role;
     const isFirstInGroup = !prevMsg || prevMsg.role !== role;
     const isLastInGroup  = !nextMsg || nextMsg.role !== role;
 
     const isStreamingItem = streaming && (item.id === streamingMessageId);
 
-    return (
-      <MessageBubble
-        message={item}
-        isUser={role === 'user'}
-        isFirstInGroup={isFirstInGroup}
-        isLastInGroup={isLastInGroup}
-        onRetryFromHere={onRetryFromHere}
-        showMeta={isLastInGroup}
-        streaming={!!isStreamingItem}
-        streamingMessageId={streamingMessageId}
-      />
-    );
+    try {
+      return (
+        <MessageBubble
+          message={item}
+          isUser={role === 'user'}
+          isFirstInGroup={isFirstInGroup}
+          isLastInGroup={isLastInGroup}
+          onRetryFromHere={onRetryFromHere}
+          showMeta={isLastInGroup}
+          streaming={!!isStreamingItem}
+          streamingMessageId={streamingMessageId}
+        />
+      );
+    } catch {
+      return null;
+    }
   };
 
   return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { StyleSheet, Text, Animated } from 'react-native';
+import { StyleSheet, Animated } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import NextButtonArrow from './NextButtonArrow';
 
@@ -32,6 +32,7 @@ const DotIndicator = ({
 const CenterNextButton = ({
   onNextClick,
   animationController,
+  isAnimating,
 }) => {
   const opacity = useRef(new Animated.Value(0));
   const currentOpacity = useRef(0);
@@ -42,11 +43,11 @@ const CenterNextButton = ({
   const { bottom } = useSafeAreaInsets();
   const paddingBottom = 16 + bottom;
 
-  const dots = useMemo(() => [0, 1, 2, 3], []);
+  const dots = useMemo(() => [0, 1], []);
 
   useEffect(() => {
     const listener = animationController.current.addListener(({ value }) => {
-      const isVisible = value >= 0.2 && value <= 0.6;
+      const isVisible = value >= 0.2 && value <= 0.8;
       
       if (
         (isVisible && currentOpacity.current === 0) ||
@@ -61,14 +62,12 @@ const CenterNextButton = ({
       }
 
       let newIndex;
-      if (value >= 0.7) {
-        newIndex = 3;
-      } else if (value >= 0.5) {
-        newIndex = 2;
-      } else if (value >= 0.3) {
-        newIndex = 1;
+      if (value >= 0.6) {
+        newIndex = 2; // CareView (last page)
+      } else if (value >= 0.2) {
+        newIndex = 1; // RelaxView (middle page)
       } else {
-        newIndex = 0;
+        newIndex = 0; // SplashView (first page)
       }
       
       if (newIndex !== lastSelectedIndex.current) {
@@ -110,19 +109,7 @@ const CenterNextButton = ({
         ))}
       </Animated.View>
 
-      <NextButtonArrow {...{ animationController }} onBtnPress={onNextClick} />
-
-      <Animated.View
-        style={[
-          styles.footerTextContainer,
-          { transform: [{ translateY: loginTextMoveAnimation }] },
-        ]}
-      >
-        <Text style={{ color: 'grey', fontFamily: 'WorkSans-Regular' }}>
-          Already have an account?{' '}
-        </Text>
-        <Text style={styles.loginText}>Login</Text>
-      </Animated.View>
+      <NextButtonArrow {...{ animationController, isAnimating }} onBtnPress={onNextClick} />
     </Animated.View>
   );
 };
