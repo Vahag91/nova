@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import {
   View,
   Text,
@@ -21,13 +21,14 @@ const GenerateButton = memo(({
   style, // Allow custom styling
 }) => {
   const { t } = useTranslation();
+  const safePress = useCallback(() => {
+    try { onPress?.(); } catch {}
+  }, [onPress]);
   return (
     <View style={[styles.ctaContainer, style]}>
       <Animated.View style={{ transform: [{ scale: animatedValue || 1 }] }}>
         <Pressable
-          onPress={() => {
-            onPress?.();
-          }}
+          onPress={safePress}
           disabled={disabled}
           style={styles.cta}
           accessibilityLabel={busy ? t('imagesStudio.generating') : t('imagesStudio.generate')}

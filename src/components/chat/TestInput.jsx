@@ -370,7 +370,7 @@ function TestInput({
 
             {!streaming ? (
               <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? 'Offline' : 'Send message'}>
-                <SendIcon color={canSend && !isRecording ? '#FFFFFF' : '#000000'} size={18} />
+                <SendIcon color={canSend && !isRecording ? '#FFFFFF' : '#000000'} size={23} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel={'Stop'}>
@@ -430,7 +430,7 @@ const styles = StyleSheet.create({
   menuSubLabel: { color: '#A0A0A0', fontSize: 14, fontFamily: 'Lato-Regular' },
 
   inputContainer: {
-    backgroundColor: '#1C1C1E',
+    backgroundColor: '#1e1e1e',
     //  padding: 16,
     paddingVertical: 12,
     paddingHorizontal: 16,

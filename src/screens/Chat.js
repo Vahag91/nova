@@ -23,6 +23,7 @@ import { useVoiceInput } from '../hooks/useVoiceInput';
 import { useTranslation } from 'react-i18next';
 
 import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
+import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
 
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
@@ -416,7 +417,6 @@ export default function Chat({ navigation }) {
         clearStream(streamingMsgId);
         setStreamingMsgId(null);
       }
-
       abortRef.current.abort();
       abortRef.current = null;
       setStreaming(false);
@@ -425,7 +425,6 @@ export default function Chat({ navigation }) {
       stopVoice();
     }
   }
-
   function onRetryFromHere(message) { setInput(message?.content || ''); }
 
   function onInsertImagesMarkdown(md) {
@@ -468,11 +467,19 @@ export default function Chat({ navigation }) {
               {isAssistantThread ? (
                 <AssistantHeader thread={activeThread} showOnlyWhenEmpty />
               ) : (
-                <View style={styles.emptyState}>
-                  <View style={styles.emptyStateIcon}><Text style={styles.emptyStateIconText}>💬</Text></View>
-                  <Text style={styles.emptyStateTitle}>{isPrivate ? t('chat.privateTitle') : t('chat.emptyTitle')}</Text>
-                  <Text style={styles.emptyStateSubtitle}>{isPrivate ? t('chat.privateSubtitle') : t('chat.emptySubtitle')}</Text>
-                  {!isPrivate && <SuggestionCards onSuggestionPress={(s) => setInput(s.title)} />}
+                <View style={[styles.emptyState, isPrivate && styles.emptyStatePrivate]}>
+                  {isPrivate ? (
+                    <>
+                      <View style={styles.emptyStateIcon}><Text style={styles.emptyStateIconText}>💬</Text></View>
+                      <Text style={styles.emptyStateTitle}>{t('chat.privateTitle')}</Text>
+                      <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
+                    </>
+                  ) : (
+                    <>
+                      <CreativeStudioBanner onPress={() => navigation.navigate('ImagesStudio')} />
+                      <SuggestionCards onSuggestionPress={(s) => setInput(s.title)} />
+                    </>
+                  )}
                 </View>
               )}
             </Reanimated.View>
@@ -582,7 +589,8 @@ export default function Chat({ navigation }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000000' },
   error: { backgroundColor: colors.error + '20', padding: 10, borderRadius: 10, margin: 13, borderLeftWidth: 3, borderLeftColor: colors.error },
-  emptyState: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16, paddingVertical: 40 },
+  emptyState: { flex: 1, alignItems: 'stretch', justifyContent: 'flex-start', paddingHorizontal: 16, paddingTop: 32, paddingBottom: 40, gap: 24 },
+  emptyStatePrivate: { alignItems: 'center', justifyContent: 'center', paddingTop: 0, paddingBottom: 40, gap: 12 },
   emptyStateIcon: { width: 64, height: 64, borderRadius: 32, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', marginBottom: 19 },
   emptyStateIconText: { fontSize: 26 },
   emptyStateTitle: { fontSize: 21, fontWeight: '700', color: colors.text, marginBottom: 6, textAlign: 'center' },

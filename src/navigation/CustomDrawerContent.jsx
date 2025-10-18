@@ -17,6 +17,8 @@ import { colors } from '../styles/colors';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { useTranslation } from 'react-i18next';
+import { betterPreview, summaryPreview } from '../lib/format';
+import SidebarCreativeStudioBanner from '../components/navigation/SidebarCreativeStudioBanner';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -25,6 +27,8 @@ export default function CustomDrawerContent(props) {
   const { t } = useTranslation();
   const activeRoute = state.routeNames[state.index];
   const drawerOpen = useDrawerStatus() === 'open';
+  const [drawerOpenTick, setDrawerOpenTick] = React.useState(0);
+  const prevDrawerState = React.useRef(drawerOpen);
   
   // Thread store
   const threads = useThreadsStore(s => s.threads);
@@ -50,6 +54,10 @@ export default function CustomDrawerContent(props) {
   useEffect(() => {
     // Toggle animations whenever the drawer opens/closes
     isOpen.value = drawerOpen ? 1 : 0;
+    if (drawerOpen && !prevDrawerState.current) {
+      setDrawerOpenTick(tick => tick + 1);
+    }
+    prevDrawerState.current = drawerOpen;
   }, [drawerOpen]);
 
   useEffect(() => {
@@ -185,15 +193,14 @@ export default function CustomDrawerContent(props) {
     const isActive = thread.id === activeThreadId;
     const chatItemAnimStyle = getMenuItemStyle(index + 4); // Offset for main menu items
 
-    // Get preview text from first user message
+    // Get preview text from summary or recent messages
     const preview = React.useMemo(() => {
-      const userMsg = thread.messages?.find(m => m.role === 'user');
-      if (!userMsg) return 'New chat';
-      const text = typeof userMsg.content === 'string' 
-        ? userMsg.content 
-        : userMsg.content?.[0]?.text || 'New chat';
-      return text.length > 30 ? text.substring(0, 30) + '...' : text;
-    }, [thread.messages]);
+      const raw = thread.summary?.trim() || betterPreview(thread.messages);
+      const resolved = thread.summary ? summaryPreview(raw) : raw;
+      const fallback = t('history.newChat');
+      const text = resolved || fallback;
+      return text.length > 40 ? `${text.slice(0, 39)}…` : text;
+    }, [thread.summary, thread.messages, t]);
 
     return (
       <AnimatedTouchable
@@ -258,8 +265,12 @@ export default function CustomDrawerContent(props) {
           <Text style={styles.logoText}>ChatCloud</Text>
         </Animated.View>
 
-        {/* Main Navigation */}
         <View style={styles.mainNav}>
+          <SidebarCreativeStudioBanner
+            onPress={() => navigateTo('ImagesStudio')}
+            style={styles.sidebarBanner}
+            restartKey={drawerOpenTick}
+          />
           <MenuItem
             icon="newchat"
             label={t('navigation.chat')}
@@ -346,7 +357,7 @@ const styles = StyleSheet.create({
   logoSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 48,
+    marginBottom: 4,
     paddingTop: 12,
   },
   logoCircle: {
@@ -371,6 +382,9 @@ const styles = StyleSheet.create({
   },
   mainNav: {
     gap: 16,
+  },
+  sidebarBanner: {
+    marginTop: 8,
   },
   bottomNav: {
     gap: 16,
@@ -483,4 +497,3 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
   },
 });
-

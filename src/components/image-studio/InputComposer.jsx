@@ -36,23 +36,27 @@ const InputComposer = memo(({
   originalModel,
 }) => {
   const { t } = useTranslation();
+  const safe = useCallback((fn, ...args) => {
+    if (typeof fn !== 'function') return;
+    try { fn(...args); } catch {}
+  }, []);
   // Auto-expanding input state
   const [isExpanded, setIsExpanded] = useState(false);
   const handlePromptChange = useCallback((text) => {
-    onPromptChange?.(text);
-  }, [onPromptChange]);
+    safe(onPromptChange, text);
+  }, [onPromptChange, safe]);
 
   const handleClearPrompt = useCallback(() => {
-    onClearPrompt?.();
-  }, [onClearPrompt]);
+    safe(onClearPrompt);
+  }, [onClearPrompt, safe]);
 
   const handleOpenSettings = useCallback(() => {
-    onOpenSettings?.();
-  }, [onOpenSettings]);
+    safe(onOpenSettings);
+  }, [onOpenSettings, safe]);
 
   const handlePlusPress = useCallback(() => {
-    onOpenPhotoGallery?.();
-  }, [onOpenPhotoGallery]);
+    safe(onOpenPhotoGallery);
+  }, [onOpenPhotoGallery, safe]);
 
   // Handle content size changes for responsive height
   const handleContentSizeChange = useCallback((event) => {
@@ -79,7 +83,7 @@ const InputComposer = memo(({
             />
             <Pressable
               style={styles.selectedImageRemoveButton}
-              onPress={onRemoveSelectedImage}
+              onPress={() => safe(onRemoveSelectedImage)}
               disabled={disabled}
             >
               <Text style={styles.selectedImageRemoveIcon}>✕</Text>
@@ -105,7 +109,7 @@ const InputComposer = memo(({
           maxLength={maxLength}
           multiline={true}
           returnKeyType="send"
-          onSubmitEditing={onGenerate}
+          onSubmitEditing={() => safe(onGenerate)}
           editable={!disabled}
           onContentSizeChange={handleContentSizeChange}
           textAlignVertical={isExpanded ? "top" : "center"}
@@ -116,7 +120,7 @@ const InputComposer = memo(({
         {/* Model selector on the left */}
         <Pressable
           style={styles.modelButton}
-          onPress={onOpenSettings}
+          onPress={handleOpenSettings}
           hitSlop={8}
           accessibilityLabel={t('imagesStudio.openModelSettings')}
           accessibilityHint={t('imagesStudio.modelSettingsHint')}

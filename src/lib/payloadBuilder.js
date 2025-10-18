@@ -151,17 +151,19 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
       return '';
     }
   };
-
-  // Base messages
   const base = [...sys, newMsg];
   const baseTokens = base.reduce((n, m) => n + safeCount(m), 0);
-
   // Insert summary within budget
   let payload = base;
   if (rawSummary) {
     const room = Math.max(0, tokenCap - baseTokens);
     const trimmedSummary = safeTrimSummary(rawSummary, room);
-    if (trimmedSummary) payload = [...sys, { role: 'system', content: trimmedSummary }, newMsg];
+    if (trimmedSummary) {
+      console.log('[AI Payload] Context summary:', trimmedSummary);
+      payload = [...sys, { role: 'system', content: trimmedSummary }, newMsg];
+    } else {
+      console.log('[AI Payload] Summary trimmed out (no room).');
+    }
   }
 
   // Optional tiny recency: prefer the REAL last pair if it had an image
@@ -190,6 +192,10 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
         ];
         const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
         if (candTokens <= tokenCap) {
+          console.log('[AI Payload] Including recent image exchange for context:', {
+            user: imagePair.user,
+            assistant: imagePair.assistant,
+          });
           payload = candidate;
         }
       } else {
@@ -203,7 +209,10 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
             newMsg
           ];
           const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
-          if (candTokens <= tokenCap) payload = candidate;
+          if (candTokens <= tokenCap) {
+            console.log('[AI Payload] Recency context:', recency);
+            payload = candidate;
+          }
         }
       }
     }
@@ -212,9 +221,11 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
 
   const finalTokens = payload.reduce((n, m) => n + safeCount(m), 0);
   if (finalTokens > tokenCap && payload.length > 2) {
+    console.log('[AI Payload] Payload exceeded token cap, falling back to system + new message only.');
     return [payload[0], payload[payload.length - 1]];
   }
 
+  console.log('[AI Payload] Final messages sent:', payload);
   return payload;
 }
 

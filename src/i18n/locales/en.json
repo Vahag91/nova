@@ -29,12 +29,18 @@
     "other": "Other"
   },
   "navigation": {
-    "chat": "Chat",
+    "chat": "New Chat",
     "history": "History",
     "assistants": "Assistants",
     "imagesStudio": "Studio",
     "settings": "Settings",
     "recentChats": "Recent Chats"
+  },
+  "drawerStudioBanner": {
+    "label": "Studio",
+    "title": "Image Studio",
+    "subtitle": "Generate, refine, and publish visual assets in one place.",
+    "cta": "Open"
   },
   "imagesStudio": {
     "title": "Studio",
@@ -213,6 +219,11 @@
     "emptySubtitle": "Start a conversation with AI",
     "privateTitle": "Private Chat",
     "privateSubtitle": "This chat will not appear in your chat history",
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Design visuals at speed.",
+      "open": "Open"
+    },
     "listening": "Listening…",
     "startRecording": "Start recording…",
     "suggestions": {

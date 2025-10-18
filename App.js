@@ -77,15 +77,15 @@ export default function App() {
     deviceIdReady &&
     modelsLoaded;
 
+    
   if (firstLaunch === null) return null;
-
   if (firstLaunch && deviceIdReady) {
     return (
       <GlobalErrorBoundary>
         <SafeAreaProvider>
           <KeyboardProvider statusBarTranslucent>
             <GestureHandlerRootView style={{ flex: 1 }}>
-              <OfflineBanner /> {/* ← NEW */}
+              <OfflineBanner />
               <IntroductionAnimationScreen onComplete={() => setFirstLaunch(false)} />
             </GestureHandlerRootView>
           </KeyboardProvider>

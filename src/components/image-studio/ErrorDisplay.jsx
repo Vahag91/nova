@@ -13,13 +13,19 @@ const ErrorDisplay = memo(({
 }) => {
   if (!error) return null;
 
+  const message = typeof error === 'string'
+    ? error
+    : String(error?.message || 'Something went wrong.');
   const canRetry = retryCount < maxRetries;
 
   return (
     <View style={styles.errorContainer}>
-      <Text style={styles.errorText}>{error}</Text>
+      <Text style={styles.errorText}>{message}</Text>
       {canRetry && onRetry && (
-        <Pressable onPress={onRetry} style={styles.retryButton}>
+        <Pressable
+          onPress={() => { try { onRetry?.(); } catch {} }}
+          style={styles.retryButton}
+        >
           <Text style={styles.retryText}>
             Retry ({maxRetries - retryCount} left)
           </Text>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import Svg, { Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
 import SvgIcon from '../SvgIcon';
 import { colors } from '../../styles/colors';
-import { PRESETS } from '../../data/presets';
+import { PRESETS, PRESET_AVATARS } from '../../data/presets';
 
 export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
   const fallbackCopy = {
@@ -30,20 +30,11 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
   if (!preset) {
     return (
       <View style={styles.wrapper}>
-        <View style={styles.iconWrap}>
-          <Svg width={80} height={80} style={StyleSheet.absoluteFill}>
-            <Defs>
-              <LinearGradient id="assist_header_fallback" x1="0" y1="0" x2="1" y2="1">
-                <Stop offset="0" stopColor={defaultGradient.from} />
-                <Stop offset="1" stopColor={defaultGradient.to} />
-              </LinearGradient>
-            </Defs>
-            <Rect x={0} y={0} width={80} height={80} rx={20} fill="url(#assist_header_fallback)" />
-          </Svg>
-          <View style={styles.iconContent}>
-            <Text style={styles.iconEmoji}>🤖</Text>
-          </View>
-        </View>
+        <Image
+          source={PRESETS[0].avatar} // Use first preset's avatar as fallback
+          style={styles.assistantPhoto}
+          resizeMode="cover"
+        />
         <Text style={styles.title}>{fallbackCopy.title}</Text>
         <Text style={styles.description}>{fallbackCopy.description}</Text>
       </View>
@@ -57,7 +48,7 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
   if (showOnlyWhenEmpty && hasMessages) return null;
 
   // Use the same gradient system as Assistants screen
-  // Find the preset index to get the same gradient
+  // Find the preset index to get the same gradient and photo
   const presetIndex = PRESETS.findIndex(p => p.id === preset.id);
   const gradient =
     iconGradients[(presetIndex >= 0 ? presetIndex : 0) % iconGradients.length] || defaultGradient;
@@ -67,28 +58,18 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
   const descriptionText = preset.description || fallbackCopy.description;
   const iconEmoji = preset.emoji || '🤖';
   const iconName = preset.icon;
+  
+  // Use the preset's avatar directly
+  const assistantPhoto = preset.avatar;
 
   return (
     <View style={styles.wrapper}>
-      {/* Icon with gradient - exact same as Assistants screen */}
-      <View style={styles.iconWrap}>
-        <Svg width={80} height={80} style={StyleSheet.absoluteFill}>
-          <Defs>
-            <LinearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
-              <Stop offset="0" stopColor={gradient.from} />
-              <Stop offset="1" stopColor={gradient.to} />
-            </LinearGradient>
-          </Defs>
-          <Rect x={0} y={0} width={80} height={80} rx={20} fill={`url(#${gradientId})`} />
-        </Svg>
-        <View style={styles.iconContent}>
-          {iconName ? (
-            <SvgIcon name={iconName} size={32} color="#FFFFFF" />
-          ) : (
-            <Text style={styles.iconEmoji}>{iconEmoji}</Text>
-          )}
-        </View>
-      </View>
+      {/* Assistant photo */}
+      <Image
+        source={assistantPhoto}
+        style={styles.assistantPhoto}
+        resizeMode="cover"
+      />
       
       {/* Title */}
       <Text style={styles.title}>{titleText}</Text>
@@ -130,6 +111,12 @@ const styles = StyleSheet.create({
   iconContent: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  assistantPhoto: {
+    width: 140,
+    height: 140,
+    borderRadius: 80,
+    marginBottom: 24,
   },
   iconEmoji: {
     fontSize: 32,

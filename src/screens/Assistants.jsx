@@ -1,27 +1,12 @@
 import React, { useMemo, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image } from 'react-native';
 import Svg, { Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
-import SvgIcon from '../components/SvgIcon';
-import { v4 as uuidv4 } from 'uuid';
 import Haptic from 'react-native-haptic-feedback';
-import { PRESETS } from '../data/presets';
+import { PRESETS, PRESET_AVATARS } from '../data/presets';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { useTranslation } from 'react-i18next';
-
-// system message shape (matches your message schema)
-function newSystemMessage(text) {
-  return {
-    id: uuidv4(),
-    role: 'system',
-    type: 'text',
-    content: text,
-    attachments: [],
-    meta: {},
-    createdAt: Date.now(),
-    job: null,
-  };
-}
+import { newSystemMessage } from '../state/types';
 
 export default function Assistants({ navigation }) {
   const { t } = useTranslation();
@@ -52,30 +37,6 @@ export default function Assistants({ navigation }) {
       );
     }
   }
-
-  const iconGradients = useMemo(() => [
-    { from: '#6366F1', to: '#7C3AED' }, // indigo → purple
-    { from: '#0EA5E9', to: '#06B6D4' }, // sky → cyan
-    { from: '#10B981', to: '#16A34A' }, // emerald → green
-    { from: '#F43F5E', to: '#DB2777' }, // rose → pink
-    { from: '#F59E0B', to: '#EA580C' }, // amber → orange
-  ], []);
-
-  const IconGradient = ({ index }) => {
-    const g = iconGradients[index % iconGradients.length];
-    const gid = `assist_icon_${index}`;
-    return (
-      <Svg width={52} height={52} style={StyleSheet.absoluteFill}>
-        <Defs>
-          <LinearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0" stopColor={g.from} />
-            <Stop offset="1" stopColor={g.to} />
-          </LinearGradient>
-        </Defs>
-        <Rect x={0} y={0} width={52} height={52} rx={18} fill={`url(#${gid})`} />
-      </Svg>
-    );
-  };
 
   function getTagColors(category) {
     switch (category) {
@@ -183,14 +144,10 @@ export default function Assistants({ navigation }) {
           >
             <View style={styles.cardRow}>
               <View style={styles.iconWrap}>
-                <IconGradient index={idx} />
-                <View style={styles.iconContent}>
-                  {preset.icon ? (
-                    <SvgIcon name={preset.icon} size={24} color="#FFFFFF" />
-                  ) : (
-                    <Text style={styles.iconEmoji}>{preset.emoji || '✨'}</Text>
-                  )}
-                </View>
+                <Image
+                  source={preset.avatar}
+                  style={styles.iconPhoto}
+                />
               </View>
               <View style={styles.cardBody}>
                 <Text style={styles.cardTitle}>{t(`assistants.presets.${preset.id}.name`, { defaultValue: preset.name })}</Text>
@@ -246,9 +203,27 @@ const styles = StyleSheet.create({
     elevation: 8, overflow: 'hidden', position: 'relative',
   },
   cardRow: { flexDirection: 'row', alignItems: 'center' },
-  iconWrap: { width: 48, height: 48, borderRadius: 16, justifyContent: 'center', alignItems: 'center', marginRight: 18, position: 'relative', shadowColor: 'rgba(99,102,241,0.6)', shadowOpacity: 0.5, shadowRadius: 12, shadowOffset: { width: 0, height: 6 }, elevation: 6 },
-  iconContent: { justifyContent: 'center', alignItems: 'center' },
-  iconEmoji: { fontSize: 20, color: '#FFFFFF' },
+  iconWrap: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    overflow: 'hidden',
+    marginRight: 18,
+    shadowColor: 'rgba(15,23,42,0.6)',
+    shadowOpacity: 0.5,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 8,
+    backgroundColor: '#0F172A',
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.18)',
+  },
+  iconPhoto: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 32,
+    resizeMode: 'cover',
+  },
   cardBody: { flex: 1 },
   cardTitle: { fontSize: 17, fontWeight: '700', color: 'rgba(249,250,251,0.95)', fontFamily: 'Lato-Bold' },
   cardDesc: { fontSize: 13, color: '#9CA3AF', marginTop: 6, fontFamily: 'Lato-Regular' },

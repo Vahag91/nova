@@ -23,6 +23,7 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
   const [rendered, setRendered] = useState(false);
   const [anchor, setAnchor] = useState(null);
   const { width: winW, height: winH } = Dimensions.get('window');
+  const safeModels = useMemo(() => Array.isArray(imageModels) ? imageModels : [], [imageModels]);
 
   // animations - smooth slide from bottom
   const backdropOpacity = useRef(new Animated.Value(0)).current;
@@ -102,9 +103,11 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
   const measureAnchor = useCallback(() => {
     if (!buttonRef?.current?.measureInWindow) return;
     requestAnimationFrame(() => {
-      buttonRef.current.measureInWindow((x, y, w, h) => {
-        setAnchor({ x, y, width: w, height: h });
-      });
+      try {
+        buttonRef.current.measureInWindow((x, y, w, h) => {
+          setAnchor({ x, y, width: w, height: h });
+        });
+      } catch {}
     });
   }, [buttonRef]);
 
@@ -115,12 +118,14 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
     return () => sub?.remove?.();
   }, [rendered, measureAnchor]);
 
-  const close = useCallback(() => onClose?.(), [onClose]);
+  const close = useCallback(() => {
+    try { onClose?.(); } catch {}
+  }, [onClose]);
 
   // placement math
   const { top, left, width: menuW, openDown, arrowLeft, estimatedH } = useMemo(() => {
     const w = Math.min(MAX_MENU_WIDTH, winW - EDGE_MARGIN * 2);
-    const estH = Math.min(MAX_MENU_HEIGHT, 8 + imageModels.length * ITEM_HEIGHT); // rough pre-layout height
+    const estH = Math.min(MAX_MENU_HEIGHT, 8 + safeModels.length * ITEM_HEIGHT); // rough pre-layout height
     const a = anchor || { x: winW / 2 - 22, y: 64, width: 44, height: 44 };
 
     const anchorMidX = a.x + a.width / 2;
@@ -137,9 +142,12 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
     const arrowX = Math.round(anchorMidX - l); // within menu box
 
     return { top: t, left: l, width: w, openDown: openDownwards, arrowLeft: arrowX, estimatedH: estH };
-  }, [anchor, imageModels.length, winW, winH]);
+  }, [anchor, safeModels.length, winW, winH]);
 
-  const onSelect = useCallback((k) => { onModelChange?.(k); close(); }, [onModelChange, close]);
+  const onSelect = useCallback((k) => {
+    try { onModelChange?.(k); } catch {}
+    close();
+  }, [onModelChange, close]);
 
 
   if (!rendered) return null;
@@ -182,9 +190,9 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
             <Text style={styles.title}>{t('modelSelector.title')}</Text>
           </View>
           
-          {imageModels.map((m, idx) => {
+          {safeModels.map((m, idx) => {
             const isSelected = m.key === model;
-            const last = idx === imageModels.length - 1;
+            const last = idx === safeModels.length - 1;
             return (
               <Pressable
                 key={m.key}

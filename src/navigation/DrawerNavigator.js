@@ -1,8 +1,32 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import { TouchableOpacity, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import {
+  TouchableOpacity,
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  Platform,
+  Modal,
+  Pressable,
+  Alert,
+  Dimensions,
+  FlatList,
+} from 'react-native';
 import Haptic from 'react-native-haptic-feedback';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withSpring,
+  withSequence,
+  Easing,
+  runOnJS,
+  FadeInDown,
+} from 'react-native-reanimated';
+
 import Chat from '../screens/Chat';
 import History from '../screens/HistorySimple';
 import Assistants from '../screens/Assistants';
@@ -16,39 +40,265 @@ import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
 import { useTranslation } from 'react-i18next';
+import { PRESETS, PRESET_AVATARS } from '../data/presets';
+import { newSystemMessage } from '../state/types';
 
 const Drawer = createDrawerNavigator();
 
-// Header center component for model dropdown or assistant name
+// Header center component for model dropdown or assistant switcher
 function ChatHeaderCenter() {
+  const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
+
   const threads = useThreadsStore(s => s.threads);
   const activeThreadId = useThreadsStore(s => s.activeThreadId);
   const isPrivate = useThreadsStore(s => s.privateActive);
-  
-  // Find active thread
-  const activeThread = threads.find(t => t.id === activeThreadId);
-  
-  // Check if this is an assistant thread (has system message)
+  const createThread = useThreadsStore(s => s.createThread);
+  const setActiveThread = useThreadsStore(s => s.setActiveThread);
+  const addMessage = useThreadsStore(s => s.addMessage);
+  const currentModel = useSettingsStore(s => s.model);
+
+  const [sheetOpen, setSheetOpen] = useState(false);
+
+  const activeThread = useMemo(
+    () => threads.find(t => t.id === activeThreadId) || null,
+    [threads, activeThreadId]
+  );
+
   const systemMsg = activeThread?.messages?.find(m => m.role === 'system');
-  
-  // If assistant thread, show assistant name instead of model selector
-  if (systemMsg && !isPrivate) {
-    return (
-      <View style={{ paddingHorizontal: 8 }}>
-        <Text style={{ 
-          fontSize: 16, 
-          fontWeight: '700', 
-          color: colors.text,
-          fontFamily: 'Lato-Bold',
-        }}>
-          {activeThread?.title || 'Assistant'}
-        </Text>
-      </View>
+
+  const preset = useMemo(() => {
+    if (!systemMsg?.content) return null;
+    return PRESETS.find(p => p.system === systemMsg.content) || null;
+  }, [systemMsg?.content]);
+
+  const isAssistantChat = !!(systemMsg && !isPrivate && preset);
+
+  const assistants = useMemo(
+    () => PRESETS.map(p => ({
+      id: p.id,
+      name: t(`assistants.presets.${p.id}.name`, { defaultValue: p.name }),
+      desc: t(`assistants.presets.${p.id}.description`, { defaultValue: p.description }),
+      avatar: p.avatar,
+      system: p.system,
+      suggestedModel: p.suggestedModel,
+    })),
+    [t]
+  );
+
+  const triggerScale = useSharedValue(1);
+  const rotateArrow = useSharedValue(0);
+  const overlayProgress = useSharedValue(0);
+  const dropY = useSharedValue(-36);
+  const sheetScale = useSharedValue(0.985);
+  const sheetOpacity = useSharedValue(0);
+
+  const triggerStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: triggerScale.value }],
+  }));
+  const arrowStyle = useAnimatedStyle(() => ({
+    transform: [{ rotate: `${rotateArrow.value * 180}deg` }],
+  }));
+  const overlayStyle = useAnimatedStyle(() => ({
+    opacity: overlayProgress.value,
+  }));
+  const panelStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: dropY.value }, { scale: sheetScale.value }],
+    opacity: sheetOpacity.value,
+  }));
+
+  const openSheet = useCallback(() => {
+    try { Haptic.trigger('selection'); } catch {}
+    triggerScale.value = withSequence(
+      withTiming(0.96, { duration: 90, easing: Easing.out(Easing.cubic) }),
+      withSpring(1, { damping: 12, stiffness: 280 })
     );
+    setSheetOpen(true);
+    overlayProgress.value = withTiming(1, { duration: 220, easing: Easing.out(Easing.cubic) });
+    dropY.value = withSpring(0, { damping: 14, stiffness: 160, mass: 0.9 });
+    sheetScale.value = withTiming(1, { duration: 220, easing: Easing.out(Easing.cubic) });
+    sheetOpacity.value = withTiming(1, { duration: 180, easing: Easing.out(Easing.cubic) });
+    rotateArrow.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.cubic) });
+  }, [dropY, overlayProgress, rotateArrow, sheetOpacity, sheetScale, triggerScale]);
+
+  const closeSheet = useCallback(() => {
+    overlayProgress.value = withTiming(0, { duration: 180, easing: Easing.in(Easing.cubic) }, (finished) => {
+      if (finished) runOnJS(setSheetOpen)(false);
+    });
+    dropY.value = withTiming(-36, { duration: 200, easing: Easing.in(Easing.cubic) });
+    sheetScale.value = withTiming(0.985, { duration: 200, easing: Easing.in(Easing.cubic) });
+    sheetOpacity.value = withTiming(0, { duration: 160, easing: Easing.in(Easing.cubic) });
+    rotateArrow.value = withTiming(0, { duration: 180, easing: Easing.in(Easing.cubic) });
+  }, [dropY, overlayProgress, rotateArrow, sheetOpacity, sheetScale]);
+
+  const handleSelectAssistant = useCallback((choice) => {
+    closeSheet();
+    if (!choice || choice.system === systemMsg?.content) return;
+    try { Haptic.trigger('impactLight'); } catch {}
+
+    try {
+      const modelKey = choice.suggestedModel || currentModel;
+      const title = t(`assistants.presets.${choice.id}.name`, { defaultValue: choice.name });
+      const sys = typeof choice.system === 'string' ? choice.system : '';
+      const nextThread = createThread({ title, model: modelKey });
+      if (sys) addMessage(nextThread.id, newSystemMessage(sys));
+      setActiveThread(nextThread.id);
+      navigation.navigate('Chat');
+    } catch (error) {
+      console.warn('assistant switch failed', error);
+      Alert.alert(
+        t('assistants.errorTitle') || 'Something went wrong',
+        t('assistants.errorMessage') || 'Could not start this assistant.'
+      );
+    }
+  }, [closeSheet, systemMsg?.content, currentModel, createThread, addMessage, setActiveThread, navigation, t]);
+
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    if (!sheetOpen || !isAssistantChat) return;
+    if (!currentPresetId) return;
+    const idx = assistants.findIndex(item => item.id === currentPresetId);
+    if (idx >= 0) {
+      const timer = setTimeout(() => {
+        listRef.current?.scrollToIndex({
+          index: idx,
+          animated: true,
+          viewPosition: 0.5,
+        });
+      }, 80);
+      return () => clearTimeout(timer);
+    }
+  }, [sheetOpen, assistants, currentPresetId, isAssistantChat]);
+
+  useEffect(() => {
+    if (!isAssistantChat && sheetOpen) {
+      setSheetOpen(false);
+      overlayProgress.value = 0;
+      sheetOpacity.value = 0;
+      rotateArrow.value = 0;
+    }
+  }, [isAssistantChat, sheetOpen, overlayProgress, rotateArrow, sheetOpacity]);
+
+  const currentPresetId = preset?.id || null;
+
+  const renderItem = useCallback(({ item, index }) => {
+    const selected = item.id === currentPresetId;
+    return (
+      <Animated.View entering={FadeInDown.delay(index * 30).duration(200)}>
+        <Pressable
+          onPress={() => handleSelectAssistant(item)}
+          android_ripple={{ color: '#1A1A1D' }}
+          style={({ pressed }) => [
+            styles.sheetRow,
+            selected && styles.sheetRowSelected,
+            pressed && styles.sheetRowPressed,
+          ]}
+        >
+          <Image source={item.avatar} style={styles.sheetRowAvatar} />
+          <View style={styles.sheetRowText}>
+            <Text numberOfLines={1} style={[styles.sheetRowTitle, selected && styles.sheetRowTitleSelected]}>
+              {item.name}
+            </Text>
+            <Text numberOfLines={2} style={[styles.sheetRowDesc, selected && styles.sheetRowDescSelected]}>
+              {item.desc}
+            </Text>
+          </View>
+          {selected ? <SvgIcon name="check" size={18} color={colors.primary} /> : null}
+        </Pressable>
+      </Animated.View>
+    );
+  }, [currentPresetId, handleSelectAssistant]);
+
+  const keyExtractor = useCallback(item => item.id, []);
+
+  if (!isAssistantChat) {
+    return <ModelSelector />;
   }
-  
-  // Normal chat - show model selector
-  return <ModelSelector />;
+
+  const assistantPhoto = preset?.avatar || PRESET_AVATARS[0];
+  const translatedName = currentPresetId
+    ? t(`assistants.presets.${currentPresetId}.name`, { defaultValue: preset?.name })
+    : null;
+  const displayName = translatedName || activeThread?.title || t('assistants.defaultTitle', 'Assistant');
+
+  return (
+    <>
+      <Animated.View style={triggerStyle}>
+        <Pressable
+          style={styles.headerPill}
+          onPress={openSheet}
+          accessibilityRole="button"
+          accessibilityLabel={displayName}
+          accessibilityHint={t('assistants.selectAssistantHint', 'Open assistant picker')}
+        >
+          <Image source={assistantPhoto} style={styles.headerPillAvatar} resizeMode="cover" />
+          <Text style={styles.headerPillText} numberOfLines={1} ellipsizeMode="tail">
+            {displayName || (activeThread?.title || t('assistants.defaultTitle', 'Assistant'))}
+          </Text>
+          <Animated.View style={[styles.headerPillChevronWrap, arrowStyle]}>
+            <SvgIcon name="chevron-down" size={18} color={colors.textSecondary} />
+          </Animated.View>
+        </Pressable>
+      </Animated.View>
+
+      <Modal
+        transparent
+        visible={sheetOpen}
+        animationType="none"
+        statusBarTranslucent
+        onRequestClose={closeSheet}
+      >
+        <Animated.View style={[styles.sheetOverlay, overlayStyle]}>
+          <Pressable style={StyleSheet.absoluteFill} onPress={closeSheet} />
+        </Animated.View>
+
+        <Animated.View
+          style={[
+            styles.sheetPanel,
+            {
+              marginTop: insets.top + 56,
+              maxHeight: Math.min(Dimensions.get('window').height * 0.7, 468),
+            },
+            panelStyle,
+          ]}
+          accessibilityRole="dialog"
+          accessibilityViewIsModal
+          importantForAccessibility="yes"
+        >
+          <View style={styles.sheetHeader}>
+            <Text style={styles.sheetTitle}>{t('assistants.selectAssistant', 'Choose assistant')}</Text>
+            <Pressable hitSlop={10} onPress={closeSheet} accessibilityLabel={t('modelSelector.closeLabel')}>
+              <Text style={styles.sheetClose}>✕</Text>
+            </Pressable>
+          </View>
+          <FlatList
+            ref={listRef}
+            data={assistants}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.sheetListContent}
+            keyboardShouldPersistTaps="handled"
+            getItemLayout={(_, index) => ({
+              length: 74,
+              offset: 74 * index,
+              index,
+            })}
+            onScrollToIndexFailed={({ index }) => {
+              requestAnimationFrame(() => {
+                listRef.current?.scrollToOffset({
+                  offset: Math.max(0, 74 * index),
+                  animated: true,
+                });
+              });
+            }}
+          />
+        </Animated.View>
+      </Modal>
+    </>
+  );
 }
 
 // Header right component for private chat button
@@ -67,20 +317,15 @@ function ChatHeaderRight() {
   };
 
   return (
-    <TouchableOpacity 
-      style={{
-        paddingHorizontal: 12,
-        paddingVertical: 8,
-        backgroundColor: isPrivate ? colors.primary : colors.surface,
-        borderRadius: 14,
-        marginBottom: 14,
-      }}
+    <TouchableOpacity
+      style={[styles.headerButton, isPrivate ? styles.headerButtonActive : styles.headerButtonNeutral]}
       onPress={handlePrivateChat}
+      activeOpacity={0.85}
     >
-      <SvgIcon 
-        name="lock" 
-        size={22} 
-        color="#FFFFFF" 
+      <SvgIcon
+        name="lock"
+        size={24}
+        color={isPrivate ? '#FFFFFF' : colors.text}
       />
     </TouchableOpacity>
   );
@@ -100,12 +345,10 @@ function HistoryHeaderRight({ navigation }) {
   };
 
   return (
-    <TouchableOpacity 
-      style={{
-        paddingHorizontal: 16,
-        paddingVertical: 6,
-      }}
+    <TouchableOpacity
+      style={styles.historyNewChatButton}
       onPress={handleNewChat}
+      activeOpacity={0.85}
     >
       <SvgIcon name="newchat" size={24} color={colors.text} />
     </TouchableOpacity>
@@ -116,7 +359,7 @@ export default function DrawerNavigator() {
   const { t } = useTranslation();
   return (
     <NavigationContainer>
-      <Drawer.Navigator 
+      <Drawer.Navigator
         initialRouteName="Chat"
         drawerContent={(props) => <CustomDrawerContent {...props} />}
         screenOptions={{
@@ -140,30 +383,25 @@ export default function DrawerNavigator() {
           swipeEdgeWidth: 50,
         }}
       >
-        <Drawer.Screen 
-          name="Chat" 
+        <Drawer.Screen
+          name="Chat"
           component={Chat}
           options={({ navigation }) => ({
             headerTitle: () => <ChatHeaderCenter />,
             headerRight: () => <ChatHeaderRight />,
             headerLeft: () => (
-              <TouchableOpacity 
-                style={{
-                  paddingHorizontal: 12,
-                  paddingVertical: 8,
-                  backgroundColor: colors.surface,
-                  borderRadius: 14,
-                  marginBottom: 14,
-                }}
+              <TouchableOpacity
+                style={[styles.headerButton, styles.headerButtonNeutral]}
+                activeOpacity={0.85}
                 onPress={() => navigation.toggleDrawer()}
               >
-                <SvgIcon name="menu" size={22} color={colors.text} />
+                <SvgIcon name="menu" size={24} color={colors.text} />
               </TouchableOpacity>
             ),
           })}
         />
-        <Drawer.Screen 
-          name="History" 
+        <Drawer.Screen
+          name="History"
           component={History}
           options={({ navigation }) => ({
             headerTitle: t('navigation.history'),
@@ -172,29 +410,29 @@ export default function DrawerNavigator() {
         />
         <Drawer.Screen name="Assistants" component={Assistants} options={{ title: t('navigation.assistants') }} />
         <Drawer.Screen name="Settings" component={Settings} options={{ title: t('navigation.settings') }} />
-        <Drawer.Screen 
-          name="ImagesStudio" 
+        <Drawer.Screen
+          name="ImagesStudio"
           component={ImagesStudio}
           options={{
-            headerShown: false, // Hide navigation header completely
+            headerShown: false,
             title: t('navigation.imagesStudio'),
           }}
         />
-        <Drawer.Screen 
-          name="PaywallScreen" 
+        <Drawer.Screen
+          name="PaywallScreen"
           component={({ navigation }) => (
             <PaywallScreen
               onClose={() => navigation.goBack()}
               onRestore={() => {
                 console.log('Restore pressed');
               }}
-              onContinue={(data) => {
+              onContinue={() => {
                 navigation.goBack();
               }}
             />
           )}
           options={{
-            headerShown: false, // Hide navigation header completely
+            headerShown: false,
             title: 'Paywall',
           }}
         />
@@ -203,4 +441,166 @@ export default function DrawerNavigator() {
   );
 }
 
-
+const styles = StyleSheet.create({
+  headerButton: {
+    height: 40,
+    minWidth: 40,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surface,
+    flexDirection: 'row',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.12,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+  },
+  headerButtonNeutral: {
+    backgroundColor: colors.surface,
+  },
+  headerButtonActive: {
+    backgroundColor: colors.primary,
+  },
+  headerPill: {
+    height: 40,
+    maxWidth: 220,
+    flexShrink: 1,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+    backgroundColor: colors.surface,
+    flexDirection: 'row',
+    alignItems: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.12,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+  },
+  headerPillAvatar: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    marginRight: 10,
+    borderWidth: 2,
+    borderColor: colors.primary + '20',
+  },
+  headerPillText: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: colors.text,
+    fontFamily: 'Lato-SemiBold',
+    letterSpacing: 0.2,
+    flexShrink: 1,
+  },
+  headerPillChevronWrap: {
+    marginLeft: 6,
+  },
+  sheetOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  sheetPanel: {
+    alignSelf: 'center',
+    width: '90%',
+    maxWidth: 308,
+    backgroundColor: '#0D0D0F',
+    borderRadius: 22,
+    overflow: 'hidden',
+    borderWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 18 },
+    shadowRadius: 29,
+    shadowOpacity: Platform.OS === 'ios' ? 0.28 : 0.32,
+    elevation: 22,
+  },
+  sheetHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 18,
+    paddingTop: 14,
+    paddingBottom: 11,
+    backgroundColor: '#0D0D0F',
+  },
+  sheetTitle: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: colors.text,
+    letterSpacing: 0.2,
+    fontFamily: 'Lato-Bold',
+  },
+  sheetClose: {
+    fontSize: 16,
+    color: colors.text,
+  },
+  sheetListContent: {
+    paddingBottom: 14,
+  },
+  sheetRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 13,
+    paddingHorizontal: 11,
+    paddingVertical: 11,
+    backgroundColor: 'transparent',
+    marginHorizontal: 5,
+    marginVertical: 3,
+    borderRadius: 11,
+  },
+  sheetRowPressed: {
+    backgroundColor: '#1A1A1D',
+    transform: [{ scale: 0.98 }],
+  },
+  sheetRowSelected: {
+    backgroundColor: '#1A1A1D',
+    shadowColor: colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 7,
+    shadowOpacity: 0.1,
+    elevation: 4,
+  },
+  sheetRowAvatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  sheetRowText: {
+    flex: 1,
+    gap: 3,
+  },
+  sheetRowTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: colors.text,
+    fontFamily: 'Lato-SemiBold',
+  },
+  sheetRowTitleSelected: {
+    color: colors.primary,
+  },
+  sheetRowDesc: {
+    fontSize: 12,
+    color: colors.textSecondary,
+    fontFamily: 'Lato-Regular',
+  },
+  sheetRowDescSelected: {
+    color: colors.text,
+  },
+  historyNewChatButton: {
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+  },
+});

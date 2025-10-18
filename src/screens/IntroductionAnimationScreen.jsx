@@ -106,7 +106,6 @@ const IntroductionAnimationScreen = ({ onComplete }) => {
           <RelaxView {...{ animationController }} />
           <CareView {...{ animationController }} />
         </Animated.View>
-
         <TopBackSkipView {...{ onBackClick, onSkipClick, animationController }} />
         <CenterNextButton {...{ onNextClick, animationController }} />
       </View>

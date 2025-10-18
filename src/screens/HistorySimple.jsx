@@ -15,7 +15,7 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 import Haptic from 'react-native-haptic-feedback';
 import { useThreadsStore } from '../state/useThreadsStore';
-import { betterPreview } from '../lib/format';
+import { betterPreview, summaryPreview } from '../lib/format';
 import { colors } from '../styles/colors';
 import SvgIcon from '../components/SvgIcon';
 import { useTranslation } from 'react-i18next';
@@ -47,36 +47,6 @@ function formatRowDate(ts, locale, lang) {
   }
 }
 
-// Extract clean preview text from summary
-function cleanPreview(summary) {
-  if (!summary) return '';
-  
-  // Split by bullets and get first meaningful line
-  const lines = summary
-    .split('\n')
-    .map(line => line.trim())
-    .filter(line => line.startsWith('•'))
-    .map(line => line.replace(/^•\s*/, ''));
-  
-  if (lines.length === 0) return summary.trim();
-  
-  // Get first line and remove common prefixes
-  let text = lines[0]
-    .replace(/^Topic:\s*/i, '')
-    .replace(/^Image noted:\s*/i, '')
-    .replace(/^Key figure:\s*/i, '')
-    .replace(/^Constraint:\s*/i, '')
-    .replace(/^Decision\/Next:\s*/i, '')
-    .replace(/^Identity:\s*/i, '')
-    .replace(/^Safety:\s*/i, '')
-    .trim();
-  
-  // Remove "(refer back with...)" type suffixes
-  text = text.replace(/\s*\(refer back.*?\)\.?$/i, '');
-  
-  return text || 'New chat';
-}
-
 export default function HistorySimple({ navigation }) {
   const { t, i18n } = useTranslation();
   const lang = (i18n?.language || 'en').split('-')[0];
@@ -86,6 +56,7 @@ export default function HistorySimple({ navigation }) {
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const renameThread = useThreadsStore(s => s.renameThread);
   const deleteThread = useThreadsStore(s => s.deleteThread);
+console.log('threads', threads);
 
   const [busyId, setBusyId] = useState(null);
   const [q, setQ] = useState('');
@@ -126,7 +97,7 @@ export default function HistorySimple({ navigation }) {
     if (!needle) return nonEmpty;
     return nonEmpty.filter(t => {
       const rawPreview = t.summary?.trim() || betterPreview(t.messages);
-      const preview = (t.summary ? cleanPreview(rawPreview) : rawPreview).toLowerCase();
+      const preview = (t.summary ? summaryPreview(rawPreview) : rawPreview).toLowerCase();
       return preview.includes(needle);
     });
   }, [sorted, q]);
@@ -227,7 +198,7 @@ function onRename(thread) {
 
 const renderItem = ({ item: thread }) => {
   const rawPreview = thread.summary?.trim() || betterPreview(thread.messages);
-  const preview = thread.summary ? cleanPreview(rawPreview) : rawPreview;
+  const preview = thread.summary ? summaryPreview(rawPreview) : rawPreview;
     return (
       <Swipeable
       ref={(ref) => { ref ? rowRefs.current.set(thread.id, ref) : rowRefs.current.delete(thread.id); }}

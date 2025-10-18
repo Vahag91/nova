@@ -22,18 +22,18 @@ const ImageCard = memo(({
   const [uri, setUri] = useState(item.url);
   
   const handlePress = useCallback(() => {
-    onPress?.(item);
+    try { onPress?.(item); } catch {}
   }, [item, onPress]);
 
   const handleLongPress = useCallback(() => {
-    onLongPress?.(item);
+    try { onLongPress?.(item); } catch {}
   }, [item, onLongPress]);
 
   const handleImageLoad = useCallback(() => {
     // Image loaded successfully
   }, []);
 
-  const handleImageError = useCallback(async (error) => {
+  const handleImageError = useCallback(async () => {
     // Try to re-cache the image if it's a local file that failed
     if (uri?.startsWith('file://')) {
       try {
@@ -50,7 +50,7 @@ const ImageCard = memo(({
         // Silent re-cache failure
       }
     }
-    
+
     // One retry with a cache buster only for http URLs
     if (/^https?:\/\//i.test(uri) && !/[?&]t=/.test(uri)) {
       const retryUri = uri + (uri.includes('?') ? '&' : '?') + 't=' + Date.now();

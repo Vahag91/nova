@@ -21,6 +21,17 @@ export const newAssistantMessage = () => ({
   createdAt: Date.now(),
 });
 
+export const newSystemMessage = (text) => ({
+  id: `msg_${Date.now()}_${Math.random().toString(36).slice(2,8)}`,
+  role: 'system',
+  type: 'text',
+  content: text,
+  attachments: [],
+  meta: {},
+  job: null,
+  createdAt: Date.now(),
+});
+
 export const newThread = ({title='Untitled', model='gpt-5-nano', system=null} = {}) => ({
   id: `thr_${Date.now()}_${Math.random().toString(36).slice(2,8)}`,
   title,

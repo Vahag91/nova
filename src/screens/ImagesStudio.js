@@ -76,10 +76,18 @@ export default function ImagesStudio({ navigation, route }) {
   useDerivedValue(() => {
     const h = keyboard.height.value;
     const isClosing = keyboard.state.value === KeyboardState.CLOSING;
-    const duration = isClosing ? 240 : 40;
+    const duration = isClosing ? 240 : 40; // tiny extra time on close feels better
 
-    kTranslate.value = withTiming(-h, { duration, easing: Easing.out(Easing.cubic) });
-    kGap.value = withTiming(h > 0 ? GAP : 0, { duration, easing: Easing.out(Easing.cubic) });
+    // animate the main offset
+    kTranslate.value = withTiming(-h, {
+      duration,
+      easing: Easing.out(Easing.cubic),
+    });
+    // animate the tiny gap so it never snaps at the end
+    kGap.value = withTiming(h > 0 ? GAP : 0, {
+      duration,
+      easing: Easing.out(Easing.cubic),
+    });
   });
 
   // State
@@ -105,18 +113,28 @@ export default function ImagesStudio({ navigation, route }) {
   const [selectedImages, setSelectedImages] = useState(new Set());
   const [showBatchActions, setShowBatchActions] = useState(false);
 
+  // Track actual model being used (for auto-selection feedback)
+  const [actualModel, setActualModel] = useState(null);
+  const [modelChanged, setModelChanged] = useState(false);
+  const safeCall = useCallback((fn, ...args) => {
+    if (typeof fn !== 'function') return;
+    try { fn(...args); } catch {}
+  }, []);
+
   // Model capabilities mapping (should match the backend)
   const MODEL_CAPABILITIES = {
     'runware-flux-dev': { text2img: true, img2img: true },
     'runware-flux-schnell': { text2img: true, img2img: true },
-    'runware-flux-canny': { text2img: false, img2img: true },
+    'runware-flux-canny': { text2img: false, img2img: true }, // canny is for img2img
     'runware-sdxl-civitai': { text2img: true, img2img: true },
   };
 
+  // Get the best model for a specific mode
   const getBestModelForMode = useCallback((mode, preferredModel) => {
     const capableModels = Object.keys(MODEL_CAPABILITIES).filter(
       modelKey => MODEL_CAPABILITIES[modelKey]?.[mode]
     );
+
     if (preferredModel && capableModels.includes(preferredModel)) {
       return preferredModel;
     }
@@ -145,7 +163,8 @@ export default function ImagesStudio({ navigation, route }) {
     if (!list.length) {
       return [{ key: 'runware-flux-dev', display: { name: 'FLUX.1 dev' }, provider: 'runware' }];
     }
-    return list.map(([key, v]) => ({ key, display: v.display || { name: key }, provider: v.provider }));
+    const result = list.map(([key, v]) => ({ key, display: v.display || { name: key }, provider: v.provider }));
+    return result;
   }, [models]);
 
   const [model, setModel] = useState(imageModels[0]?.key || 'runware-flux-dev');
@@ -156,7 +175,7 @@ export default function ImagesStudio({ navigation, route }) {
     }
   }, [imageModels, model]);
 
-  // refresh models from server on mount
+  // Force refresh models from server on mount
   useEffect(() => {
     const ac = new AbortController();
     (async () => {
@@ -165,16 +184,14 @@ export default function ImagesStudio({ navigation, route }) {
         if (incoming && typeof incoming === 'object' && Object.keys(incoming).length > 0) {
           setModels(incoming);
         }
-      } catch {
-        // silent
+      } catch (error) {
+        // silently ignore UI noise
       }
     })();
     return () => ac.abort();
   }, [setModels]);
 
   // Keep model compatible with mode
-  const [actualModel, setActualModel] = useState(null);
-  const [modelChanged, setModelChanged] = useState(false);
   useEffect(() => {
     if (mode === 'text2img') {
       setActualModel(null);
@@ -182,18 +199,20 @@ export default function ImagesStudio({ navigation, route }) {
       return;
     }
     const bestModel = getBestModelForMode(mode, model);
+    const isModelChanged = bestModel !== model;
     setActualModel(bestModel);
-    setModelChanged(bestModel !== model);
+    setModelChanged(isModelChanged);
   }, [mode, model, getBestModelForMode]);
 
   // Delete handlers
   const handleDeleteImage = useCallback((image) => {
-    setDeleteConfirm({
+    const confirmData = {
       type: 'image',
       image,
       title: t('imagesStudio.deleteConfirmTitle'),
       message: t('imagesStudio.deleteConfirmMessage'),
-    });
+    };
+    setDeleteConfirm(confirmData);
   }, [t]);
 
   const handleDeleteJob = useCallback((job) => {
@@ -208,43 +227,47 @@ export default function ImagesStudio({ navigation, route }) {
   const confirmDelete = useCallback(() => {
     if (!deleteConfirm) return;
     if (deleteConfirm.onConfirm) {
-      deleteConfirm.onConfirm();
+      safeCall(deleteConfirm.onConfirm);
     } else if (deleteConfirm.type === 'image') {
-      deleteImage(deleteConfirm.image.jobId, deleteConfirm.image.id);
+      safeCall(deleteImage, deleteConfirm.image.jobId, deleteConfirm.image.id);
       setDeleteConfirm(null);
     } else if (deleteConfirm.type === 'job') {
-      deleteJob(deleteConfirm.job.id);
+      safeCall(deleteJob, deleteConfirm.job.id);
       setDeleteConfirm(null);
     }
-  }, [deleteConfirm, deleteImage, deleteJob]);
+  }, [deleteConfirm, deleteImage, deleteJob, safeCall]);
 
   const cancelDelete = useCallback(() => {
     setDeleteConfirm(null);
   }, []);
 
-  // Multi-select
+  // Multi-select functionality
   const [images, setImages] = useState([]);
   const toggleSelectionMode = useCallback(() => {
-    setIsSelectionMode(v => !v);
+    setIsSelectionMode(!isSelectionMode);
     setSelectedImages(new Set());
     setShowBatchActions(false);
-  }, []);
+  }, [isSelectionMode]);
+
   const toggleImageSelection = useCallback((imageId) => {
-    const next = new Set(selectedImages);
-    if (next.has(imageId)) next.delete(imageId);
-    else next.add(imageId);
-    setSelectedImages(next);
-    setShowBatchActions(next.size > 0);
+    const newSelected = new Set(selectedImages);
+    if (newSelected.has(imageId)) newSelected.delete(imageId);
+    else newSelected.add(imageId);
+    setSelectedImages(newSelected);
+    setShowBatchActions(newSelected.size > 0);
   }, [selectedImages]);
+
   const selectAllImages = useCallback(() => {
     const allImageIds = new Set(images.map(img => img.id));
     setSelectedImages(allImageIds);
     setShowBatchActions(true);
   }, [images]);
+
   const clearSelection = useCallback(() => {
     setSelectedImages(new Set());
     setShowBatchActions(false);
   }, []);
+
   const deleteSelectedImages = useCallback(() => {
     if (selectedImages.size === 0) return;
     const jobIds = new Set();
@@ -257,13 +280,15 @@ export default function ImagesStudio({ navigation, route }) {
       title: t('imagesStudio.deleteSelectedConfirmTitle'),
       message: t('imagesStudio.deleteSelectedConfirmMessage', { count: jobIds.size }),
       onConfirm: () => {
-        jobIds.forEach(jobId => deleteJob(jobId));
+        jobIds.forEach(jobId => {
+          safeCall(deleteJob, jobId);
+        });
         clearSelection();
         setIsSelectionMode(false);
         setDeleteConfirm(null);
       }
     });
-  }, [selectedImages, images, deleteJob, t, clearSelection]);
+  }, [selectedImages, images, deleteJob, t, safeCall, clearSelection]);
 
   // Flatten jobs → images
   const jobsMemo = useMemo(() => jobs || [], [jobs]);
@@ -290,21 +315,6 @@ export default function ImagesStudio({ navigation, route }) {
     setImages(result);
   }, [jobsMemo]);
 
-  // mount/unmount guards for async + intervals
-  const progressIntervalRef = useRef(null);
-  const mountedRef = useRef(true);
-  useEffect(() => {
-    return () => {
-      mountedRef.current = false;
-      if (progressIntervalRef.current) {
-        clearInterval(progressIntervalRef.current);
-        progressIntervalRef.current = null;
-      }
-      // free potential big base64 ASAP
-      setSeedImage('');
-    };
-  }, []);
-
   const canGenerate = (() => {
     if (busy) return false;
     if (mode === 'text2img') return prompt.trim().length > 0;
@@ -319,19 +329,28 @@ export default function ImagesStudio({ navigation, route }) {
     setError('');
     setBusy(true);
     setGenerationProgress(0);
-    clearFailed();
+    safeCall(clearFailed);
     setRetryCount(0);
 
-    Haptic.trigger('selection');
+    try { Haptic.trigger('selection'); } catch {}
 
-    // smooth fake progress (client-side)
-    progressIntervalRef.current = setInterval(() => {
+    Animated.sequence([
+      Animated.timing(buttonScale, { toValue: 0.95, duration: 100, useNativeDriver: true }),
+      Animated.timing(buttonScale, { toValue: 1, duration: 100, useNativeDriver: true }),
+    ]).start();
+
+    const progressInterval = setInterval(() => {
       setGenerationProgress(prev => {
         const newProgress = Math.min(prev + Math.random() * 15, 90);
         Animated.timing(progressAnim, { toValue: newProgress / 100, duration: 200, useNativeDriver: false }).start();
         return newProgress;
       });
     }, 500);
+
+    const unavailableMsg = t('imagesStudio.imageGenerationUnavailable');
+    const generationUnavailable = unavailableMsg && unavailableMsg !== 'imagesStudio.imageGenerationUnavailable'
+      ? unavailableMsg
+      : 'Image generation unavailable.';
 
     try {
       const modelToUse = actualModel || model;
@@ -348,46 +367,49 @@ export default function ImagesStudio({ navigation, route }) {
       };
 
       if (mode === 'img2img') {
-        await runImg2Img({
-          ...baseParams,
-          seedImage,
-          strength: advancedParams.strength || 0.85,
-        });
+        if (typeof runImg2Img === 'function') {
+          await runImg2Img({
+            ...baseParams,
+            seedImage,
+            strength: advancedParams.strength || 0.85,
+          });
+        } else {
+          throw new Error(generationUnavailable);
+        }
       } else {
-        await createJob({
-          prompt: prompt.trim(),
-          model: modelToUse,
-          size,
-          n: 1,
-          mode: 'text2img',
-        });
+        if (typeof createJob === 'function') {
+          await createJob({
+            prompt: prompt.trim(),
+            model: modelToUse,
+            size,
+            n: 1,
+            mode: 'text2img',
+          });
+        } else {
+          throw new Error(generationUnavailable);
+        }
       }
 
-      if (progressIntervalRef.current) { clearInterval(progressIntervalRef.current); progressIntervalRef.current = null; }
-      if (!mountedRef.current) return;
-
+      clearInterval(progressInterval);
       setGenerationProgress(100);
       Animated.timing(progressAnim, { toValue: 1, duration: 300, useNativeDriver: false }).start();
-      Haptic.trigger('notificationSuccess');
+      try { Haptic.trigger('notificationSuccess'); } catch {}
 
       setTimeout(() => {
-        if (!mountedRef.current) return;
         setGenerationProgress(0);
         progressAnim.setValue(0);
       }, 2000);
 
     } catch (e) {
-      if (progressIntervalRef.current) { clearInterval(progressIntervalRef.current); progressIntervalRef.current = null; }
-      if (mountedRef.current) {
-        setError(String(e?.message || t('imagesStudio.imageGenerationFailed') || 'Generation failed'));
-      }
+      clearInterval(progressInterval);
+      setError(String(e?.message || t('imagesStudio.imageGenerationFailed')));
       setGenerationProgress(0);
       progressAnim.setValue(0);
-      Haptic.trigger('notificationError');
+      try { Haptic.trigger('notificationError'); } catch {}
     } finally {
-      if (mountedRef.current) setBusy(false);
+      setBusy(false);
     }
-  }, [canGenerate, prompt, model, size, createJob, runImg2Img, clearFailed, progressAnim, mode, actualModel, seedImage, advancedParams, t]);
+  }, [canGenerate, prompt, model, size, createJob, runImg2Img, clearFailed, buttonScale, progressAnim, mode, actualModel, seedImage, advancedParams, t, safeCall]);
 
   const handleRetry = useCallback(() => {
     setRetryCount(prev => prev + 1);
@@ -435,25 +457,23 @@ export default function ImagesStudio({ navigation, route }) {
       quality: 0.8,
     };
 
-    launchImageLibrary(options, (response) => {
-      if (response?.didCancel) return;
-      if (response?.errorMessage) {
-        Alert.alert(t('imagesStudio.photosPickerErrorTitle') || 'Photos Error', response.errorMessage);
-        return;
-      }
-      if (response?.errorCode) {
-        Alert.alert(t('imagesStudio.photosPickerErrorTitle') || 'Photos Error', String(response.errorCode));
-        return;
-      }
+    try {
+      launchImageLibrary(options, (response) => {
+        if (response?.didCancel || response?.errorMessage) {
+          return;
+        }
 
-      const asset = response.assets?.[0];
-      if (asset && asset.base64) {
-        const mime = asset.type && typeof asset.type === 'string' ? asset.type : 'image/jpeg';
-        const base64DataUri = `data:${mime};base64,${asset.base64}`;
-        setSeedImage(base64DataUri);
-        setMode('img2img');
-      }
-    });
+        const asset = Array.isArray(response?.assets) ? response.assets[0] : null;
+        if (asset && asset.base64) {
+          const mime = asset.type && typeof asset.type === 'string' ? asset.type : 'image/jpeg';
+          const base64DataUri = `data:${mime};base64,${asset.base64}`;
+          setSeedImage(base64DataUri);
+          setMode('img2img');
+        }
+      });
+    } catch (err) {
+      setError(String(err?.message || t('imagesStudio.photosPermissionMessage')));
+    }
   }, [setSeedImage, setMode, t]);
 
   const openImageExternally = useCallback((url) => {
@@ -462,15 +482,15 @@ export default function ImagesStudio({ navigation, route }) {
 
   const insertAsMarkdown = useCallback(({ prompt: p, url }) => {
     const md = [
-      t('imagesStudio.insertMarkdownHeader') || 'Generated image',
+      t('imagesStudio.insertMarkdownHeader'),
       ``,
-      `> ${p || t('imagesStudio.generatedImage') || 'Generated image'}`,
+      `> ${p || t('imagesStudio.generatedImage')}`,
       ``,
       `![image](${url})`,
     ].join('\n');
-    insertToChat(md);
-    navigation.goBack();
-  }, [insertToChat, navigation, t]);
+    safeCall(() => insertToChat(md));
+    safeCall(() => navigation?.goBack?.());
+  }, [insertToChat, navigation, t, safeCall]);
 
   const showTileActions = useCallback((item) => {
     const url = item?.url;
@@ -518,11 +538,12 @@ export default function ImagesStudio({ navigation, route }) {
   const animatedContentStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: kTranslate.value }],
   }));
+
   const animatedFooterStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: kTranslate.value + kGap.value }],
   }));
 
-  // tile renderer ----------
+  // ---------- tile renderer ----------
   const renderTile = useCallback((item, _index, tileStyle) => {
     const isSelected = selectedImages.has(item.id);
 
@@ -600,10 +621,18 @@ export default function ImagesStudio({ navigation, route }) {
               </Text>
             </View>
             <View style={styles.batchActionsRight}>
-              <Pressable style={styles.selectAllButton} onPress={selectAllImages} hitSlop={8}>
+              <Pressable
+                style={styles.selectAllButton}
+                onPress={selectAllImages}
+                hitSlop={8}
+              >
                 <Text style={styles.selectAllButtonText}>{t('imagesStudio.selectAll')}</Text>
               </Pressable>
-              <Pressable style={styles.deleteButton} onPress={deleteSelectedImages} hitSlop={8}>
+              <Pressable
+                style={styles.deleteButton}
+                onPress={deleteSelectedImages}
+                hitSlop={8}
+              >
                 <Text style={styles.deleteButtonText}>{t('imagesStudio.delete')}</Text>
               </Pressable>
             </View>
@@ -668,7 +697,11 @@ export default function ImagesStudio({ navigation, route }) {
           )}
 
           {/* Error Display */}
-          <ErrorDisplay error={error} retryCount={retryCount} onRetry={handleRetry} />
+          <ErrorDisplay
+            error={error}
+            retryCount={retryCount}
+            onRetry={handleRetry}
+          />
 
           {/* Model Change Notification */}
           {modelChanged && actualModel && (
@@ -726,16 +759,27 @@ export default function ImagesStudio({ navigation, route }) {
         />
 
         {/* Delete Confirmation Dialog */}
-        <Modal visible={!!deleteConfirm} transparent animationType="fade" onRequestClose={cancelDelete}>
+        <Modal
+          visible={!!deleteConfirm}
+          transparent
+          animationType="fade"
+          onRequestClose={cancelDelete}
+        >
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
               <Text style={styles.modalTitle}>{deleteConfirm?.title}</Text>
               <Text style={styles.modalMessage}>{deleteConfirm?.message}</Text>
               <View style={styles.modalButtons}>
-                <Pressable style={styles.modalButtonCancel} onPress={cancelDelete}>
+                <Pressable
+                  style={styles.modalButtonCancel}
+                  onPress={cancelDelete}
+                >
                   <Text style={styles.modalButtonTextCancel}>{t('common.cancel')}</Text>
                 </Pressable>
-                <Pressable style={styles.modalButtonDelete} onPress={confirmDelete}>
+                <Pressable
+                  style={styles.modalButtonDelete}
+                  onPress={confirmDelete}
+                >
                   <Text style={styles.modalButtonTextDelete}>{t('common.delete')}</Text>
                 </Pressable>
               </View>
@@ -798,6 +842,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14, backgroundColor: '#000000', shadowColor: '#000000', shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.1, shadowRadius: 4, elevation: 3, marginTop: 10,
   },
+  uploadSection: { marginBottom: 20 },
   modelChangeNotification: {
     flexDirection: 'row', alignItems: 'center', backgroundColor: '#1F2937', borderRadius: 12,
     paddingHorizontal: 16, paddingVertical: 14, marginBottom: 16, borderLeftWidth: 4, borderLeftColor: '#00E0C7',
@@ -807,4 +852,10 @@ const styles = StyleSheet.create({
   modelChangeText: { color: '#F9FAFB', fontSize: 15, fontFamily: 'Lato-Regular', flex: 1, lineHeight: 20 },
   generateSection: { flexDirection: 'row', alignItems: 'stretch', gap: 8, height: 48, marginTop: 12 },
   generateButtonFlex: { flex: 1, marginTop: 0 },
+  modelNameContainer: {
+    flex: 0.3, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(156, 163, 175, 0.1)',
+    borderRadius: 12, borderWidth: 1, borderColor: 'rgba(156, 163, 175, 0.2)', paddingVertical: 8, paddingHorizontal: 12,
+  },
+  modelNameText: { color: '#F9FAFB', fontSize: 14, fontWeight: '600', fontFamily: 'Lato-Bold', textAlign: 'center' },
+  modelChangedIndicator: { color: '#9CA3AF', fontSize: 10, fontWeight: '400', fontFamily: 'Lato-Regular', textAlign: 'center', marginTop: 2, opacity: 0.8 },
 });

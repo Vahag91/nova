@@ -1,3 +1,4 @@
+// Combined presets data with embedded avatars
 export const PRESETS = [
   {
     id: 'default',
@@ -10,6 +11,7 @@ export const PRESETS = [
     suggestedModel: 'gpt-5-nano',
     color: ['#6366F1', '#22D3EE'],
     icon: 'layout',
+    avatar: require('../../assets/images/assistants/avatar_01_896x896_q45.webp'),
   },
   {
     id: 'quick',
@@ -22,6 +24,7 @@ export const PRESETS = [
     suggestedModel: 'gpt-5-nano',
     color: ['#0EA5E9', '#10B981'],
     icon: 'quick-answers',
+    avatar: require('../../assets/images/assistants/avatar_02_896x896_q45.webp'),
   },
   {
     id: 'planner',
@@ -34,6 +37,7 @@ export const PRESETS = [
     suggestedModel: 'gpt-5-nano',
     color: ['#22C55E', '#3B82F6'],
     icon: 'daily-planner',
+    avatar: require('../../assets/images/assistants/avatar_04_640x640_q28.webp'),
   },
   {
     id: 'recipes',
@@ -42,22 +46,24 @@ export const PRESETS = [
     category: 'Life',
     description: 'What to cook, with what you have.',
     system:
-      "Given ingredients, suggest 2–3 simple recipes with steps and timing. Offer a short shopping list if something is missing.",
+      "Suggest simple recipes based on available ingredients. Include prep time, servings, and basic steps. Ask about dietary restrictions.",
     suggestedModel: 'gpt-5-nano',
     color: ['#F59E0B', '#EF4444'],
-    icon: 'meals-recipes',
+    icon: 'meals',
+    avatar: require('../../assets/images/assistants/avatar_05_896x896_q55.webp'),
   },
   {
     id: 'fitness',
     name: 'Habit & Fitness Coach',
-    emoji: '🏃',
+    emoji: '💪',
     category: 'Health',
     description: 'Tiny habits & home workouts.',
     system:
-      "Suggest short workouts and tiny daily habits. Offer 2 choices (easy/regular). Remind about warm-up and form. No medical advice.",
+      "Help build small habits and suggest quick home workouts. Focus on 5-15 minute routines. Encourage progress over perfection.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#14B8A6', '#3B82F6'],
-    icon: 'habits-fitness',
+    color: ['#10B981', '#F59E0B'],
+    icon: 'fitness',
+    avatar: require('../../assets/images/assistants/avatar_06_896x896_q20.webp'),
   },
   {
     id: 'money',
@@ -66,10 +72,11 @@ export const PRESETS = [
     category: 'Life',
     description: 'Simple budgets & spending tips.',
     system:
-      "Help make a very simple budget. Ask income, fixed bills, and goals. Suggest 2–3 savings ideas. Add a tiny monthly checklist. Not financial advice.",
+      "Help with basic budgeting, spending tracking, and saving tips. Keep advice simple and actionable. No investment advice.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#06B6D4', '#6366F1'],
-    icon: 'money-buddy',
+    color: ['#22C55E', '#10B981'],
+    icon: 'money',
+    avatar: require('../../assets/images/assistants/avatar_07_896x896_q50.webp'),
   },
   {
     id: 'study',
@@ -78,10 +85,11 @@ export const PRESETS = [
     category: 'School & Work',
     description: 'Explain simply. Quiz me.',
     system:
-      "Explain topics in simple steps with a tiny example. Then ask one practice question and check the answer with gentle feedback.",
+      "Explain concepts in simple terms with examples. Create quick quizzes and study tips. Break down complex topics step by step.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#8B5CF6', '#22C55E'],
-    icon: 'study-helper',
+    color: ['#3B82F6', '#8B5CF6'],
+    icon: 'study',
+    avatar: require('../../assets/images/assistants/avatar_08_896x896_q40.webp'),
   },
   {
     id: 'email',
@@ -90,10 +98,11 @@ export const PRESETS = [
     category: 'School & Work',
     description: 'Write clear emails and CV lines.',
     system:
-      "Draft short, polite emails and resume bullet points (action + result). Offer 2 tone options: casual / formal.",
+      "Help write professional emails, resumes, and cover letters. Keep tone appropriate and content concise. Suggest improvements.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#EF4444', '#F59E0B'],
-    icon: 'email-resume',
+    color: ['#6366F1', '#3B82F6'],
+    icon: 'email',
+    avatar: require('../../assets/images/assistants/avatar_09_896x896_q40.webp'),
   },
   {
     id: 'translator',
@@ -102,49 +111,51 @@ export const PRESETS = [
     category: 'Everyday',
     description: 'Translate + teach phrases.',
     system:
-      "Translate clearly. Show a slow version for speaking and 2–3 useful related phrases. Correct gently if asked to practice.",
+      "Translate text between languages. Explain grammar and teach common phrases. Keep explanations simple and practical.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#22C55E', '#06B6D4'],
+    color: ['#06B6D4', '#10B981'],
     icon: 'translator',
+    avatar: require('../../assets/images/assistants/avatar_10_896x896_q28.webp'),
   },
   {
     id: 'travel',
     name: 'Travel Buddy',
-    emoji: '🧳',
+    emoji: '✈️',
     category: 'Life',
     description: 'Simple plans & packing lists.',
     system:
-      "Create a 1–2 day plan with key sights, travel time, and food ideas. Include a short packing list and one money-saving tip.",
+      "Help plan trips with practical advice. Create packing lists, suggest activities, and provide travel tips. Keep it budget-friendly.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#3B82F6', '#10B981'],
-    icon: 'travel-buddy',
+    color: ['#0EA5E9', '#06B6D4'],
+    icon: 'travel',
+    avatar: require('../../assets/images/assistants/assistant_coding_1024x1024_q35.webp'),
   },
   {
     id: 'tech',
     name: 'Tech Support (Simple)',
     emoji: '🔧',
-    category: 'Everyday',
+    category: 'School & Work',
     description: 'Phone, apps, Wi-Fi basics.',
     system:
-      "Give step-by-step fixes in plain language. One step per line. Include how to undo a change. Assume iOS/Android unless told otherwise.",
+      "Help with basic tech issues: phone settings, app problems, Wi-Fi troubleshooting. Use simple language and step-by-step instructions.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#F97316', '#06B6D4'],
+    color: ['#8B5CF6', '#6366F1'],
     icon: 'tech-support',
+    avatar: require('../../assets/images/assistants/assistant_extra_1024x1024_q30.webp'),
   },
   {
     id: 'summarizer',
     name: 'TL;DR Summarizer',
-    emoji: '🗞️',
+    emoji: '📝',
     category: 'School & Work',
     description: 'Short bullets + one-line TL;DR.',
     system:
-      "Summarize with 3–6 bullets and a one-sentence TL;DR. Keep names, dates, and numbers accurate. Offer 2 follow-up questions.",
+      "Summarize long texts into key bullet points and a one-line TL;DR. Focus on main ideas and actionable insights.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#14B8A6', '#3B82F6'],
-    icon: 'gift-finder',
+    color: ['#F59E0B', '#EF4444'],
+    icon: 'summarizer',
+    avatar: require('../../assets/images/assistants/assistant_fitness_682x1024_q45.webp'),
   },
-
-  // ---- Extra fun & useful ----
   {
     id: 'gift',
     name: 'Gift Finder',
@@ -152,10 +163,11 @@ export const PRESETS = [
     category: 'Life',
     description: 'Ideas by budget & interests.',
     system:
-      "Ask who it's for, the budget, age, and interests. Suggest 4–6 gift ideas across price ranges with one-line reasons. Add a short message suggestion for the card.",
+      "Suggest gift ideas based on budget, interests, and occasion. Include where to buy and why it's a good choice.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#06B6D4', '#22C55E'],
-    icon: 'gift-finder',
+    color: ['#EF4444', '#F59E0B'],
+    icon: 'gift',
+    avatar: require('../../assets/images/assistants/assistant_meals_768x768_q30.webp'),
   },
   {
     id: 'party',
@@ -164,46 +176,50 @@ export const PRESETS = [
     category: 'Life',
     description: 'Plan a small party fast.',
     system:
-      "Create a simple plan: timeline, 2 snack ideas, 2 drink ideas, quick shopping list, and a 5-song starter playlist theme. Keep it under 10 bullet points.",
+      "Help plan small parties and events. Suggest themes, food, decorations, and activities. Keep it simple and fun.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#F59E0B', '#3B82F6'],
-    icon: 'event-planner',
+    color: ['#EC4899', '#F59E0B'],
+    icon: 'party',
+    avatar: require('../../assets/images/assistants/assistant_techsupport_1024x1024_q45.webp'),
   },
   {
     id: 'social',
     name: 'Social Post Maker',
     emoji: '📱',
-    category: 'Everyday',
+    category: 'Creative',
     description: 'Draft posts with options.',
     system:
-      "Given a topic/photo idea, draft 3 short post options (casual, excited, professional). Include 3–5 hashtag ideas. Keep tone friendly and safe.",
+      "Help create social media posts with different tone options. Suggest hashtags and engagement strategies. Keep content authentic.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#EF4444', '#06B6D4'],
-    icon: 'social-post-maker',
+    color: ['#8B5CF6', '#EC4899'],
+    icon: 'social',
+    avatar: require('../../assets/images/assistants/set2_avatar_02_1024x1024_q20.webp'),
   },
   {
     id: 'interview',
     name: 'Interview Coach',
-    emoji: '🎤',
+    emoji: '🎯',
     category: 'School & Work',
     description: 'Practice answers (STAR).',
     system:
-      "Ask for role and experience level. Provide 5 practice questions. For each answer, suggest a concise STAR outline and one improvement tip.",
+      "Help prepare for interviews using the STAR method (Situation, Task, Action, Result). Practice common questions and provide feedback.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#22C55E', '#8B5CF6'],
-    icon: 'interview-coach',
+    color: ['#10B981', '#3B82F6'],
+    icon: 'interview',
+    avatar: require('../../assets/images/assistants/set2_avatar_03_768x768_q60.webp'),
   },
   {
     id: 'homefix',
     name: 'Home Fix-It Guide',
-    emoji: '🔧',
-    category: 'Everyday',
+    emoji: '🔨',
+    category: 'Life',
     description: 'Simple DIY troubleshooting.',
     system:
-      "Give step-by-step checks for common issues (Wi-Fi slow, squeaky door, clogged drain). List tools, safety notes, and when to stop and call a pro. No risky advice.",
+      "Help with basic home repairs and maintenance. Provide step-by-step instructions and safety tips. Suggest when to call professionals.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#14B8A6', '#F97316'],
+    color: ['#F59E0B', '#22C55E'],
     icon: 'home-fix',
+    avatar: require('../../assets/images/assistants/set2_avatar_04_691x691_q60.webp'),
   },
   {
     id: 'pet',
@@ -212,10 +228,11 @@ export const PRESETS = [
     category: 'Life',
     description: 'Feeding, walks, basic training.',
     system:
-      "Ask pet type, age, and routine. Provide a simple daily schedule and 2 short training tips. Add a gentle reminder about water and vet if something seems wrong.",
+      "Provide basic pet care advice: feeding schedules, exercise routines, training tips, and health monitoring. Always recommend vet consultation for health issues.",
     suggestedModel: 'gpt-5-nano',
-    color: ['#3B82F6', '#22C55E'],
+    color: ['#10B981', '#F59E0B'],
     icon: 'pet-care',
+    avatar: require('../../assets/images/assistants/set2_avatar_05_691x691_q60.webp'),
   },
   {
     id: 'mindful',
@@ -224,10 +241,11 @@ export const PRESETS = [
     category: 'Health',
     description: '1–3 min calm breaks.',
     system:
-      "Offer a 1–3 minute breathing or grounding exercise and one short reflection prompt. Keep tone calm and friendly. Not medical or mental-health advice.",
+      "Guide short mindfulness exercises and breathing techniques. Provide quick stress relief and focus techniques. Keep sessions under 3 minutes.",
     suggestedModel: 'gpt-5-nano',
     color: ['#06B6D4', '#8B5CF6'],
     icon: 'mindful-minute',
+    avatar: require('../../assets/images/assistants/avatar_01_896x896_q45.webp'),
   },
   {
     id: 'polite',
@@ -240,5 +258,9 @@ export const PRESETS = [
     suggestedModel: 'gpt-5-nano',
     color: ['#6366F1', '#22C55E'],
     icon: 'polite-rewriter',
+    avatar: require('../../assets/images/assistants/avatar_02_896x896_q45.webp'),
   },
 ];
+
+// Legacy export for backward compatibility - now just extracts avatars from PRESETS
+export const PRESET_AVATARS = PRESETS.map(preset => preset.avatar);

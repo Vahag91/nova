@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -16,22 +16,32 @@ const AdvancedParams = memo(({
   onParamsChange,
 }) => {
   const insets = useSafeAreaInsets();
-  const [localParams, setLocalParams] = useState(params);
+  const [localParams, setLocalParams] = useState(params || {});
+  const safe = useCallback((fn, ...args) => {
+    if (typeof fn !== 'function') return;
+    try { fn(...args); } catch {}
+  }, []);
+
+  useEffect(() => {
+    if (visible) {
+      setLocalParams(params || {});
+    }
+  }, [params, visible]);
 
   const handleClose = useCallback(() => {
-    onClose?.();
-  }, [onClose]);
+    safe(onClose);
+  }, [onClose, safe]);
 
   const handleParamChange = useCallback((key, value) => {
     const newParams = { ...localParams, [key]: value };
     setLocalParams(newParams);
-    onParamsChange?.(newParams);
-  }, [localParams, onParamsChange]);
+    safe(onParamsChange, newParams);
+  }, [localParams, onParamsChange, safe]);
 
   const handleSave = useCallback(() => {
-    onParamsChange?.(localParams);
-    onClose?.();
-  }, [localParams, onParamsChange, onClose]);
+    safe(onParamsChange, localParams);
+    safe(onClose);
+  }, [localParams, onParamsChange, onClose, safe]);
 
   if (!visible) return null;
 
@@ -42,10 +52,10 @@ const AdvancedParams = memo(({
       <View style={styles.paramRow} key={key}>
         <Text style={styles.paramLabel}>{label}</Text>
         {type === 'number' ? (
-          <TextInput
-            style={styles.paramInput}
-            value={String(value)}
-            onChangeText={(text) => handleParamChange(key, parseFloat(text) || 0)}
+            <TextInput
+              style={styles.paramInput}
+              value={String(value)}
+              onChangeText={(text) => handleParamChange(key, parseFloat(text) || 0)}
             keyboardType="numeric"
             placeholder={String(options.default || '')}
             placeholderTextColor="#6B7280"
