@@ -224,6 +224,12 @@
       "title": "Design visuals at speed.",
       "open": "Open"
     },
+    "quickActions": {
+      "createImages": "Create Images",
+      "openCamera": "Open Camera",
+      "editImage": "Edit Image",
+      "startVoice": "Start Voice"
+    },
     "listening": "Listening…",
     "startRecording": "Start recording…",
     "suggestions": {

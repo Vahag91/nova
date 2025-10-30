@@ -81,7 +81,7 @@ export default function CustomDrawerContent(props) {
     });
   }, [recentChatsExpanded]);
 
-  const navigateTo = (routeName) => {
+  const navigateTo = (routeName, params) => {
     Haptic.trigger('impactLight');
     
     // If navigating to Chat, create a new thread
@@ -90,7 +90,11 @@ export default function CustomDrawerContent(props) {
       setActiveThread(t.id);
     }
     
-    navigation.navigate(routeName);
+    if (routeName === 'Studio') {
+      navigation.navigate('Studio', { screen: 'StudioHome' });
+      return;
+    }
+    navigation.navigate(routeName, params);
   };
 
   const navigateToThread = (threadId) => {
@@ -264,13 +268,13 @@ export default function CustomDrawerContent(props) {
           </Animated.View>
           <Text style={styles.logoText}>ChatCloud</Text>
         </Animated.View>
-
-        <View style={styles.mainNav}>
-          <SidebarCreativeStudioBanner
-            onPress={() => navigateTo('ImagesStudio')}
+        <SidebarCreativeStudioBanner
+            onPress={() => navigateTo('Studio', { screen: 'StudioHome' })}
             style={styles.sidebarBanner}
             restartKey={drawerOpenTick}
           />
+        <View style={styles.mainNav}>
+
           <MenuItem
             icon="newchat"
             label={t('navigation.chat')}
@@ -295,8 +299,8 @@ export default function CustomDrawerContent(props) {
           <MenuItem
             icon="studio"
             label={t('navigation.imagesStudio')}
-            routeName="ImagesStudio"
-            isActive={activeRoute === 'ImagesStudio'}
+            routeName="Studio"
+            isActive={activeRoute === 'Studio'}
             index={3}
           />
 
@@ -331,6 +335,13 @@ export default function CustomDrawerContent(props) {
 
         {/* Bottom Navigation */}
         <View style={styles.bottomNav}>
+          <MenuItem
+            icon="stars"
+            label={'Test Paywall'}
+            routeName="PaywallScreen"
+            isActive={activeRoute === 'PaywallScreen'}
+            index={4}
+          />
           <MenuItem
             icon="settings"
             label={t('navigation.settings')}
@@ -382,9 +393,10 @@ const styles = StyleSheet.create({
   },
   mainNav: {
     gap: 16,
+    marginTop: 26,
   },
   sidebarBanner: {
-    marginTop: 8,
+    marginTop: 18,
   },
   bottomNav: {
     gap: 16,

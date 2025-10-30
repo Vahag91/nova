@@ -11,6 +11,7 @@ import {
   Animated,
   Modal,
   Alert,
+  AppState,
 } from 'react-native';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useTranslation } from 'react-i18next';
@@ -47,6 +48,8 @@ import {
 // helpers
 import { normalizeImageUri } from '../lib/imageUtils';
 import { ensurePhotoLibraryAccess, promptOpenSettings } from '../lib/permissions';
+import { ensureDeviceId } from '../lib/deviceId';
+import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice';
 
 // Empty state icon component
 const EmptyImageIcon = ({ color = "#B7B7B7", size = 64 }) => (
@@ -62,7 +65,7 @@ const isHttp = (url) => /^https?:\/\//i.test(url);
 export default function ImagesStudio({ navigation, route }) {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
-  const { seedPrompt = '' } = route?.params || {};
+  const { seedPrompt = '', initialMode } = route?.params || {};
 
   // Get the insert to chat callback from global store instead of navigation params
   const insertToChat = useThreadsStore(s => s.insertToChat);
@@ -99,14 +102,21 @@ export default function ImagesStudio({ navigation, route }) {
   const [modelMenuOpen, setModelMenuOpen] = useState(false);
   const [generationProgress, setGenerationProgress] = useState(0);
   const [retryCount, setRetryCount] = useState(0);
+  // Coins
+  const [coins, setCoins] = useState(null);
+  const [coinsLoading, setCoinsLoading] = useState(false);
+  const coinsClientRef = useRef(null);
+  const deviceIdRef = useRef(null);
 
   // Mode state
-  const [mode, setMode] = useState('text2img');
+  const [mode, setMode] = useState(initialMode || 'text2img');
   const [seedImage, setSeedImage] = useState('');
   const [advancedParams, setAdvancedParams] = useState({});
   const [advancedParamsOpen, setAdvancedParamsOpen] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const plusButtonRef = useRef(null);
+
+  // (Mic icon handled by InputComposer UI; no voice integration here.)
 
   // Multi-select state
   const [isSelectionMode, setIsSelectionMode] = useState(false);
@@ -127,6 +137,7 @@ export default function ImagesStudio({ navigation, route }) {
     'runware-flux-schnell': { text2img: true, img2img: true },
     'runware-flux-canny': { text2img: false, img2img: true }, // canny is for img2img
     'runware-sdxl-civitai': { text2img: true, img2img: true },
+    'google:4@1': { text2img: true, img2img: false },
   };
 
   // Get the best model for a specific mode
@@ -155,8 +166,10 @@ export default function ImagesStudio({ navigation, route }) {
   const deleteJob = useImagesStore((s) => s.deleteJob);
   const models = useSettingsStore((s) => s.models);
   const setModels = useSettingsStore((s) => s.setModels);
-  const forceRefreshModels = useSettingsStore((s) => s.forceRefreshModels);
-
+  const handlePromptChange = useCallback((text) => {
+    setPrompt(text);
+    setError(prev => (prev ? '' : prev));
+  }, []);
   // Computed values
   const imageModels = useMemo(() => {
     const list = Object.entries(models || {}).filter(([, v]) => v?.caps?.imageGen);
@@ -190,6 +203,43 @@ export default function ImagesStudio({ navigation, route }) {
     })();
     return () => ac.abort();
   }, [setModels]);
+
+  // Setup coins client + initial fetch
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const id = await ensureDeviceId();
+        deviceIdRef.current = id;
+        const sb = createSbWithDevice(id);
+        coinsClientRef.current = sb;
+        setCoinsLoading(true);
+        const bal = await fetchBalanceByDevice(sb, id);
+        if (mounted) setCoins(bal);
+      } catch (e) {
+        if (mounted) setCoins(null);
+      } finally {
+        if (mounted) setCoinsLoading(false);
+      }
+    })();
+    return () => { mounted = false; };
+  }, []);
+
+  const refreshCoins = useCallback(async () => {
+    if (!coinsClientRef.current || !deviceIdRef.current) return;
+    try {
+      setCoinsLoading(true);
+      const bal = await fetchBalanceByDevice(coinsClientRef.current, deviceIdRef.current);
+      setCoins(bal);
+    } catch {}
+    finally { setCoinsLoading(false); }
+  }, []);
+
+  // Refresh coins when app becomes active
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (s) => { if (s === 'active') refreshCoins(); });
+    return () => sub.remove();
+  }, [refreshCoins]);
 
   // Keep model compatible with mode
   useEffect(() => {
@@ -289,6 +339,8 @@ export default function ImagesStudio({ navigation, route }) {
       }
     });
   }, [selectedImages, images, deleteJob, t, safeCall, clearSelection]);
+
+  // No voice start/overlay here; mic icon is visual only for now.
 
   // Flatten jobs → images
   const jobsMemo = useMemo(() => jobs || [], [jobs]);
@@ -670,9 +722,19 @@ export default function ImagesStudio({ navigation, route }) {
             animatedFooterStyle,
           ]}
         >
+          {/* Coins row */}
+          <View style={styles.coinsRow}>
+            <View style={styles.coinsLeft}>
+              <View style={styles.coinsDot} />
+              <Text style={styles.coinsText}>Tokens: {coinsLoading ? '…' : (coins ?? '—')}</Text>
+            </View>
+            <Pressable onPress={() => navigation.navigate('CoinStore')} style={styles.coinsBuyBtn} hitSlop={8}>
+              <Text style={styles.coinsBuyText}>Get Tokens</Text>
+            </Pressable>
+          </View>
           <InputComposer
             prompt={prompt}
-            onPromptChange={(text) => { setPrompt(text); if (error) setError(''); }}
+            onPromptChange={handlePromptChange}
             onGenerate={onGenerate}
             onClearPrompt={() => setPrompt('')}
             onOpenSettings={() => setModelMenuOpen(true)}
@@ -731,6 +793,8 @@ export default function ImagesStudio({ navigation, route }) {
             />
           </View>
         </Reanimated.View>
+
+        {/* No VoiceOverlay in ImagesStudio */}
 
         {/* Model Menu */}
         <ModelMenu
@@ -842,6 +906,15 @@ const styles = StyleSheet.create({
     paddingVertical: 14, backgroundColor: '#000000', shadowColor: '#000000', shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.1, shadowRadius: 4, elevation: 3, marginTop: 10,
   },
+  coinsRow: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    paddingHorizontal: 16, paddingBottom: 8,
+  },
+  coinsLeft: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  coinsDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: '#A594F9' },
+  coinsText: { color: '#E5E7EB', fontSize: 13 },
+  coinsBuyBtn: { paddingHorizontal: 12, paddingVertical: 6, backgroundColor: '#1A1A1A', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)' },
+  coinsBuyText: { color: '#A594F9', fontSize: 12, fontWeight: '600' },
   uploadSection: { marginBottom: 20 },
   modelChangeNotification: {
     flexDirection: 'row', alignItems: 'center', backgroundColor: '#1F2937', borderRadius: 12,

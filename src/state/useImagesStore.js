@@ -13,6 +13,7 @@ const RUNWARE_KEYS = new Set([
   'runware-flux-schnell',
   'runware-flux-canny',
   'runware-sdxl-civitai',
+  'google:4@1',
 ]);
 
 // Advanced modes now use createRunwareImages API directly

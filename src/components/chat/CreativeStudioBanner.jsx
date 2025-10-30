@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +7,8 @@ import HeroVideo from '../navigation/HeroVideo';
 
 const BACKGROUND_VIDEO = require('../../../assets/video/backgroundVideo.mp4');
 
-const CreativeStudioBanner = ({ onPress, style }) => {
+const CreativeStudioBanner = ({ onPress, style, paused = false }) => {
+  // Debuggers removed (focus on voice only)
   const { t } = useTranslation();
   const isFocused = useIsFocused();
   const [restartKey, setRestartKey] = useState(0);
@@ -34,6 +35,7 @@ const CreativeStudioBanner = ({ onPress, style }) => {
             source={BACKGROUND_VIDEO}
             restartKey={restartKey}
             enforceAspectRatio={false}
+            paused={paused}
             placeholderColor="#0B1020"
           />
          <View style={styles.overlay} />
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
     gap: 18,
   },
   textBlock: { gap: 10, maxWidth: '80%' },
-  label: { color: 'rgba(229,231,235,0.7)', fontSize: 12, fontFamily: 'Lato-Bold', letterSpacing: 2 },
+  label: { color: 'rgba(229,231,235,0.7)', fontSize: 16, fontFamily: 'Lato-Bold', letterSpacing: 0.2 },
   title: { color: '#FFFFFF', fontSize: 24, fontFamily: 'Lato-Bold', letterSpacing: 0.2 },
   cta: {
     flexDirection: 'row',
@@ -93,4 +95,5 @@ const styles = StyleSheet.create({
   ctaIconText: { color: '#FFFFFF', fontSize: 15, fontFamily: 'Lato-Bold' },
 });
 
-export default CreativeStudioBanner;
+// Ignore onPress identity changes; will re-render on i18n/navigation context changes
+export default memo(CreativeStudioBanner, () => true);

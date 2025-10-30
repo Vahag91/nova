@@ -3,7 +3,7 @@ import { IMAGES_RUNWARE_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 /**
  * createRunwareImages
  * Always 1 image, forced 512×512 server-side for now.
- * model: "runware-flux-dev" | "runware-flux-schnell" | "runware-flux-canny" | "runware-sdxl-civitai"
+ * model: "runware-flux-dev" | "runware-flux-schnell" | "runware-flux-canny" | "runware-sdxl-civitai" | "google:4@1"
  */
 export async function createRunwareImages({
   prompt,
@@ -64,8 +64,13 @@ export async function createRunwareImages({
     outputFormat,
     outputQuality,
   };
-
   
+  if (__DEV__) {
+    // eslint-disable-next-line no-console
+    console.log('[createRunwareImages] requestBody:', requestBody);
+  }
+
+
   const res = await fetch(IMAGES_RUNWARE_URL, {
     method: 'POST',
     headers,

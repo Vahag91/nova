@@ -23,6 +23,12 @@ export async function createImages({ prompt, model = 'gpt-image-1', size = '1024
       n: Math.max(1, Math.min(n, 4)) // Ensure n is between 1 and 4
   };
   
+  if (__DEV__) {
+    // Helpful during development to inspect what the proxy receives
+    // eslint-disable-next-line no-console
+    console.log('[createImages] requestBody:', requestBody);
+  }
+  
 
   const res = await fetch(IMAGES_PROXY_URL, {
     method: 'POST',

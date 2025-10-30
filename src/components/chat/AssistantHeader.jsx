@@ -1,9 +1,6 @@
-import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import Svg, { Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
-import SvgIcon from '../SvgIcon';
 import { colors } from '../../styles/colors';
-import { PRESETS, PRESET_AVATARS } from '../../data/presets';
+import { PRESETS } from '../../data/presets';
 
 export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
   const fallbackCopy = {
@@ -21,12 +18,12 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
 
   const defaultGradient = iconGradients[0];
 
-  // Check if this thread has a system message (assistant thread)
-  const systemMsg = thread?.messages?.find(m => m.role === 'system');
-  if (!systemMsg) return null;
+  // Resolve assistant persona text (prefer thread.system, fallback to a system message)
+  const systemText = thread?.system || thread?.messages?.find(m => m.role === 'system')?.content || '';
+  if (!systemText) return null;
 
   // Find matching preset by system prompt
-  const preset = PRESETS.find(p => p.system === systemMsg.content);
+  const preset = PRESETS.find(p => p.system === systemText);
   if (!preset) {
     return (
       <View style={styles.wrapper}>
@@ -52,12 +49,9 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
   const presetIndex = PRESETS.findIndex(p => p.id === preset.id);
   const gradient =
     iconGradients[(presetIndex >= 0 ? presetIndex : 0) % iconGradients.length] || defaultGradient;
-  const gradientId = `assist_header_${preset.id}`;
 
   const titleText = preset.name || fallbackCopy.title;
   const descriptionText = preset.description || fallbackCopy.description;
-  const iconEmoji = preset.emoji || '🤖';
-  const iconName = preset.icon;
   
   // Use the preset's avatar directly
   const assistantPhoto = preset.avatar;

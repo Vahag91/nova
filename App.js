@@ -13,6 +13,7 @@ import GlobalErrorBoundary from './src/components/GlobalErrorBoundary';
 import OfflineBanner from './src/components/OfflineBanner'; // ← NEW
 import './src/i18n';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SubscriptionProvider } from './src/context/SubscriptionContext';
 
 export default function App() {
   const hydrateSettings = useSettingsStore(s => s.hydrate);
@@ -83,12 +84,14 @@ export default function App() {
     return (
       <GlobalErrorBoundary>
         <SafeAreaProvider>
-          <KeyboardProvider statusBarTranslucent>
-            <GestureHandlerRootView style={{ flex: 1 }}>
-              <OfflineBanner />
-              <IntroductionAnimationScreen onComplete={() => setFirstLaunch(false)} />
-            </GestureHandlerRootView>
-          </KeyboardProvider>
+          <SubscriptionProvider>
+            <KeyboardProvider statusBarTranslucent>
+              <GestureHandlerRootView style={{ flex: 1 }}>
+                <OfflineBanner />
+                <IntroductionAnimationScreen onComplete={() => setFirstLaunch(false)} />
+              </GestureHandlerRootView>
+            </KeyboardProvider>
+          </SubscriptionProvider>
         </SafeAreaProvider>
       </GlobalErrorBoundary>
     );
@@ -98,12 +101,16 @@ export default function App() {
 
   return (
     <GlobalErrorBoundary>
-      <KeyboardProvider statusBarTranslucent>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <OfflineBanner /> 
-          <DrawerNavigator />
-        </GestureHandlerRootView>
-      </KeyboardProvider>
+      <SafeAreaProvider>
+        <SubscriptionProvider>
+          <KeyboardProvider statusBarTranslucent>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <OfflineBanner /> 
+              <DrawerNavigator />
+            </GestureHandlerRootView>
+          </KeyboardProvider>
+        </SubscriptionProvider>
+      </SafeAreaProvider>
     </GlobalErrorBoundary>
   );
 }

@@ -43,6 +43,7 @@ const MessageListCore = function MessageList({
   onRetryFromHere,
   threadKey,
 }, ref) {
+  // Debuggers removed (focus on voice only)
   const listRef = useRef(null);
   const { t } = useTranslation();
 

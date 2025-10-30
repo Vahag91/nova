@@ -43,7 +43,7 @@ export const useThreadsStore = create((set, get) => ({
     }
     set({
       threads,
-      activeThreadId: threads[0]?.id ?? null,
+      activeThreadId: null,
       hydrated: true,
     });
   },

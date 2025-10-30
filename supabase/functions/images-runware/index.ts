@@ -143,6 +143,7 @@ function maxPixelsFor(modelKey: string) {
     'runware-flux-schnell': 4,
     'runware-flux-canny':   24,
     'runware-sdxl-civitai': 30,
+    'google:4@1':           20,
   };
 
   function defaultStepsFor(modelKey: string) {
@@ -155,6 +156,7 @@ function maxPixelsFor(modelKey: string) {
     'runware-flux-schnell':  { text2img: true, img2img: true },
     'runware-flux-canny':    { text2img: false, img2img: true }, // canny is for img2img
     'runware-sdxl-civitai':  { text2img: true, img2img: true },
+    'google:4@1':            { text2img: true, img2img: false },
   } as const;
 
   // Get the best model for a specific mode
@@ -238,19 +240,34 @@ function maxPixelsFor(modelKey: string) {
     'X-API-Key': RUNWARE_API_KEY,
   };
 
-  const task: any = {
+  const numberResults = Math.max(1, Math.min(Number(body?.n ?? 1), 4));
+
+  const baseTask = {
     taskUUID: crypto.randomUUID(),
     taskType: 'imageInference',
-    model: resolvedModelKey,               // resolved earlier
+    model: resolvedModelKey,
     positivePrompt: prompt || '__BLANK__',
     ...(negativePrompt ? { negativePrompt } : {}),
-    width, height,
-    steps,
-    CFGScale: cfg,
-    outputType: body?.outputType ?? 'URL',
-    outputFormat: body?.outputFormat ?? 'JPG',
+    width,
+    height,
+    numberResults,
     outputQuality: body?.outputQuality ?? 95,
   };
+
+  const task: any = { ...baseTask };
+
+  if (modelKey === 'google:4@1') {
+    task.includeCost = true;
+    task.outputFormat = body?.outputFormat ?? 'WEBP';
+    task.outputType = Array.isArray(body?.outputType)
+      ? body.outputType
+      : [body?.outputType ?? 'URL'];
+  } else {
+    task.steps = steps;
+    task.CFGScale = cfg;
+    task.outputFormat = body?.outputFormat ?? 'JPG';
+    task.outputType = body?.outputType ?? 'URL';
+  }
 
   if (mode === 'img2img') {
     if (!body?.seedImage) return new Response('Missing seedImage', { status: 400, headers: CORS });

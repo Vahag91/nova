@@ -1,5 +1,5 @@
 // app/src/components/chat/VoiceOverlay.jsx
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState, memo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, useWindowDimensions } from 'react-native';
 import Reanimated, {
   useSharedValue,
@@ -25,6 +25,28 @@ const RISE_MS = 160;        // gentle ramp up
 const FALL_MS = 650;        // smooth fall after silence
 const SILENCE_MS = 700;     // how long without tokens = "silence"
 
+const SPRING_CONFIG = {
+  duration: 1200,
+  overshootClamping: true,
+  dampingRatio: 0.8,
+};
+
+function useEntranceAnimatedStyle(index, isOpenShared) {
+  return useAnimatedStyle(() => {
+    const delay = index * 60;
+    const open = isOpenShared.value ? 1 : 0;
+    const translateValue = open ? 0 : 30;
+
+    return {
+      opacity: withDelay(delay, withTiming(open, { duration: 200 })),
+      transform: [
+        { translateY: withDelay(delay, withSpring(translateValue, SPRING_CONFIG)) },
+        { scale: withDelay(delay, withSpring(open, SPRING_CONFIG)) },
+      ],
+    };
+  }, [isOpenShared, index]);
+}
+
 function WaveBar({ i, phase, energy, offsets, centers }) {
   const style = useAnimatedStyle(() => {
     const wave = 0.5 + 0.5 * Math.sin(phase.value + offsets[i]); // 0..1
@@ -38,7 +60,8 @@ function WaveBar({ i, phase, energy, offsets, centers }) {
   return <Reanimated.View style={[styles.waveBar, style]} />;
 }
 
-export default function VoiceOverlay({ visible, isRecording, transcript, onInsert, onClose }) {
+function VoiceOverlay({ visible, isRecording, transcript, volume = 0, onInsert, onClose }) {
+  useEffect(() => {}, []);
   const { t } = useTranslation();
   const { height: screenH } = useWindowDimensions();
 
@@ -50,8 +73,8 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
     if (visible) setRender(true);
     const EXIT_MS = 280;
     if (!visible) {
-      const t = setTimeout(() => setRender(false), EXIT_MS);
-      return () => clearTimeout(t);
+      const d = setTimeout(() => setRender(false), EXIT_MS);
+      return () => clearTimeout(d);
     }
   }, [visible]);
 
@@ -61,13 +84,6 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
   const micPulse = useSharedValue(0);
   const isOpen = useSharedValue(false);
 
-  // Spring config matching menu animation
-  const SPRING_CONFIG = {
-    duration: 1200,
-    overshootClamping: true,
-    dampingRatio: 0.8,
-  };
-
   // wave drivers (single envelope)
   const phase = useSharedValue(0);
   const energy = useSharedValue(0);
@@ -76,6 +92,15 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
   const speakingGateRef = useRef(false);
   const silenceTORef = useRef(null);
   const lastTranscript = useRef('');
+  const smoothVolumeRef = useRef(0);
+  const [smoothVolume, setSmoothVolume] = useState(0);
+
+  useEffect(() => {
+    const v = Math.max(0, Math.min(1, typeof volume === 'number' ? volume : 0));
+    smoothVolumeRef.current = smoothVolumeRef.current * 0.6 + v * 0.4;
+    const next = smoothVolumeRef.current;
+    setSmoothVolume(next);
+  }, [volume]);
 
   // precomputed arrays captured by worklets
   const pos = useMemo(() => Array.from({ length: BAR_COUNT }, (_, i) => (BAR_COUNT <= 1 ? 0 : i / (BAR_COUNT - 1))), []);
@@ -119,7 +144,7 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
       cancelAnimation(micPulse);
       micPulse.value = withTiming(0, { duration: 120 });
     }
-  }, [render, visible]);
+  }, [render, visible, overlayOpacity, sheetOffset, micPulse, isOpen]);
 
   // start/stop recording - FIXED VERSION
   useEffect(() => {
@@ -149,69 +174,65 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
         duration: 180,
         easing: Easing.out(Easing.cubic)
       });
+      smoothVolumeRef.current = 0;
+      setSmoothVolume(0);
     }
-  }, [isRecording]);
+  }, [isRecording, energy, phase]);
 
   // transcript changes → gate-based control - FIXED VERSION
   useEffect(() => {
     if (!isRecording) return;
     
-    const t = (transcript || '').trim();
+    const text = (transcript || '').trim();
+    lastTranscript.current = text;
 
-    // Ignore if nothing changed
-    if (t === lastTranscript.current) return;
-    lastTranscript.current = t;
+    const hasText = text.length > 0;
+    const volActive = smoothVolume > 0.12;
+    const speaking = hasText || volActive;
 
-    // Clear existing timeout
-    if (silenceTORef.current) { 
-      clearTimeout(silenceTORef.current); 
-    }
+    if (silenceTORef.current) { clearTimeout(silenceTORef.current); }
 
-    // If we have new text content
-    if (t.length > 0) {
-      // Set silence timeout
+    if (speaking) {
       silenceTORef.current = setTimeout(() => {
-      // Silence detected - drop to baseline
-      speakingGateRef.current = false;
-      cancelAnimation(phase);
-      phase.value = -Math.PI / 2; // park low, no sine updates
-      cancelAnimation(energy);
-      energy.value = withTiming(0, { 
-        duration: FALL_MS, 
-        easing: Easing.inOut(Easing.cubic) 
-      });
+        speakingGateRef.current = false;
+        cancelAnimation(phase);
+        phase.value = -Math.PI / 2;
+        cancelAnimation(energy);
+        energy.value = withTiming(0, {
+          duration: FALL_MS,
+          easing: Easing.inOut(Easing.cubic),
+        });
         silenceTORef.current = null;
       }, SILENCE_MS);
 
-      // If we weren't speaking before, ramp up
       if (!speakingGateRef.current) {
         speakingGateRef.current = true;
-        // start wave only now
         cancelAnimation(phase);
         phase.value = -Math.PI / 2;
         phase.value = withRepeat(
-          withTiming(phase.value + 2 * Math.PI, { 
-            duration: PHASE_MS, 
-            easing: Easing.linear 
+          withTiming(phase.value + 2 * Math.PI, {
+            duration: PHASE_MS,
+            easing: Easing.linear,
           }),
           -1,
           false
         );
-        cancelAnimation(energy);
-        energy.value = withTiming(SPEAK_ENERGY, { 
-          duration: RISE_MS, 
-          easing: Easing.out(Easing.cubic) 
-        });
       }
+
+      const target = hasText ? SPEAK_ENERGY : Math.max(SPEAK_ENERGY * 0.5, smoothVolume * 0.9);
+      cancelAnimation(energy);
+      energy.value = withTiming(target, {
+        duration: RISE_MS,
+        easing: Easing.out(Easing.cubic),
+      });
     } else {
-      // No text - ensure we're at baseline
       speakingGateRef.current = false;
       cancelAnimation(phase);
-      phase.value = -Math.PI / 2; // park low, no sine updates
+      phase.value = -Math.PI / 2;
       cancelAnimation(energy);
-      energy.value = withTiming(0, { 
-        duration: FALL_MS, 
-        easing: Easing.inOut(Easing.cubic) 
+      energy.value = withTiming(0, {
+        duration: FALL_MS,
+        easing: Easing.inOut(Easing.cubic),
       });
     }
 
@@ -221,7 +242,7 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
         clearTimeout(silenceTORef.current);
       }
     };
-  }, [transcript, isRecording]);
+  }, [transcript, smoothVolume, isRecording, energy, phase]);
 
   const wrapAnimatedStyle = useAnimatedStyle(() => ({
     backgroundColor: `rgba(0,0,0,${0.88 * overlayOpacity.value})`,
@@ -238,26 +259,10 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
   }), [micPulse]);
 
   // Staggered animations for different elements
-  const getElementStyle = (index) => {
-    return useAnimatedStyle(() => {
-      const delay = index * 60;
-      const scaleValue = isOpen.value ? 1 : 0;
-      const translateValue = isOpen.value ? 0 : 30;
-      
-      return {
-        opacity: withDelay(delay, withTiming(scaleValue, { duration: 200 })),
-        transform: [
-          { translateY: withDelay(delay, withSpring(translateValue, SPRING_CONFIG)) },
-          { scale: withDelay(delay, withSpring(scaleValue, SPRING_CONFIG)) },
-        ],
-      };
-    });
-  };
-
-  const titleStyle = getElementStyle(0);
-  const micStyle = getElementStyle(1);
-  const waveStyle = getElementStyle(2);
-  const buttonStyle = getElementStyle(3);
+  const titleStyle = useEntranceAnimatedStyle(0, isOpen);
+  const micStyle = useEntranceAnimatedStyle(1, isOpen);
+  const waveStyle = useEntranceAnimatedStyle(2, isOpen);
+  const buttonStyle = useEntranceAnimatedStyle(3, isOpen);
 
   const titleText = useMemo(() => {
     const txt = transcript?.trim();
@@ -339,6 +344,8 @@ export default function VoiceOverlay({ visible, isRecording, transcript, onInser
     </Reanimated.View>
   );
 }
+
+export default memo(VoiceOverlay);
 
 const styles = StyleSheet.create({
   wrap: { 

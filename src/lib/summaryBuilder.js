@@ -3,8 +3,9 @@
 // Rough token estimator (~4 chars/token)
 const estTok = (s = '') => Math.ceil((s.length || 0) / 4);
 
-const MAX_BULLETS = 10;
-const MAX_SUMMARY_TOKENS = 350; // allow richer context (still small)
+// Increase headroom a bit to carry more useful details
+const MAX_BULLETS = 15;
+const MAX_SUMMARY_TOKENS = 500; // allow richer context (still compact)
 const MIN_BULLETS_FOR_OK = 3;
 
 // ===== Patterns (compact but useful) =====
@@ -19,6 +20,13 @@ const KEY_FIG_RE = new RegExp([
 
 const CONSTRAINT_RE = /\b(?:must|should|need|required|limit|cap|deadline|constraint|blocked|can(?:not|'t)|won(?:not|'t))\b/i;
 const DECISION_RE   = /\b(?:let's|we (?:will|should|decided?)|decision|plan|next step|agree|choose|do this)\b/i;
+// Additional heuristics: preferences, goals/objectives, factual snippets
+const PREFERENCE_RE = /\b(?:i\s*(?:would\s*like|prefer|like|love|want|need)|i'?d\s*like|looking\s*to|aim\s*to|plan\s*to)\b/i;
+const GOAL_RE       = /\b(?:goal|objective|target)\b/i;
+const EXPERIENCE_RE = /\b\d+\s*(?:years?|yrs?)\s*(?:of\s+)?experience\b/i;
+const DURATION_RE   = /\b\d+\s*(?:min(?:s|utes)?|hours?|hrs?|h)\b/i;
+const TIME_RE       = /\b(?:\d{1,2}:\d{2}|\d{1,2}\s*(?:am|pm))\b/i;
+const DATE_RE       = /\b(?:\d{4}-\d{2}-\d{2}|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)\w*\s+\d{1,2}(?:,\s*\d{4})?)\b/i;
 
 function scrubPII(text, { keepFirstName = true } = {}) {
   if (!text) return text;
@@ -81,6 +89,24 @@ function inferTopicFromLastUser(thread) {
   return '';
 }
 
+// Earliest substantial user message becomes an Objective bullet (if helpful)
+function inferObjectiveFromFirstUser(thread) {
+  const msgs = (thread.messages || []).filter(m => m.role !== 'system');
+  for (let i = 0; i < msgs.length; i++) {
+    if (msgs[i].role === 'user') {
+      const raw = Array.isArray(msgs[i].content)
+        ? (msgs[i].content.find(p => p.type === 'text')?.text || '')
+        : (msgs[i].content || '');
+      const text = scrubPII(raw, { keepFirstName: true });
+      const clean = (text || '').replace(/\s+/g, ' ').trim();
+      if (clean && clean.length >= 18) {
+        return `Objective: ${shorten(clean, 160)}`;
+      }
+    }
+  }
+  return '';
+}
+
 // Build a fresh summary from the last 50 messages (newest→oldest scan)
 export function buildFreshSummaryFromLast50(thread) {
   const msgs = (thread.messages || []).filter(m => m.role !== 'system');
@@ -94,8 +120,40 @@ export function buildFreshSummaryFromLast50(thread) {
     const m = last50[i];
 
     if (Array.isArray(m.content)) {
-      const text = m.content.find(p => p.type === 'text')?.text || '';
-      if (text) bullets.push(`Image noted: ${shorten(scrubPII(text, { keepFirstName: true }), 160)} (refer back with "see last image").`);
+      const parts = m.content;
+      const hasImage = parts.some(p => p?.type === 'image_url');
+      const text = parts.find(p => p?.type === 'text')?.text || '';
+      if (hasImage) {
+        if (text) bullets.push(`Image noted: ${shorten(scrubPII(text, { keepFirstName: true }), 160)} (refer back with "see last image").`);
+        else bullets.push('Image noted (refer back with "see last image").');
+        continue;
+      }
+      // No image present: treat as plain text below
+      const plain = scrubPII(text, { keepFirstName: true });
+      if (!plain) continue;
+      const safePlain = safetyRewrite(plain);
+      if (safePlain !== plain) bullets.push(safePlain);
+      else if (GOAL_RE.test(plain)) {
+        bullets.push(`Goal: ${shorten(plain, 200)}`);
+      } else if (PREFERENCE_RE.test(plain)) {
+        bullets.push(`Preference: ${shorten(plain, 200)}`);
+      } else if (EXPERIENCE_RE.test(plain)) {
+        bullets.push(`Fact: ${shorten(plain, 200)}`);
+      } else if (DATE_RE.test(plain) || TIME_RE.test(plain) || DURATION_RE.test(plain)) {
+        bullets.push(`Fact: ${shorten(plain, 200)}`);
+      }
+      else if (/\bmy name is\s+[A-Za-z][A-Za-z '-]{1,40}\b/i.test(plain)) {
+        const ageMatch = plain.match(/\b(\d{1,2})\s*years?\s*old\b/i);
+        const age = ageMatch ? ` (${ageMatch[1]})` : '';
+        bullets.push(`Identity: User is ${plain.match(/\bmy name is\s+([A-Za-z][A-Za-z '-]{1,40})\b/i)?.[1] || 'unknown'}${age}.`);
+      } else if (KEY_FIG_RE.test(plain)) {
+        bullets.push(`Key figure: ${shorten(plain, 200)}`);
+      } else if (CONSTRAINT_RE.test(plain)) {
+        bullets.push(`Constraint: ${shorten(plain, 200)}`);
+      } else if (DECISION_RE.test(plain)) {
+        bullets.push(`Decision/Next: ${shorten(plain, 200)}`);
+      }
+      if (bullets.length >= MAX_BULLETS) break;
       continue;
     }
 
@@ -124,6 +182,13 @@ export function buildFreshSummaryFromLast50(thread) {
   if (bullets.length < MIN_BULLETS_FOR_OK) {
     topic = inferTopicFromLastUser(thread);
     if (topic) bullets.unshift(topic);
+  }
+
+  // Add an Objective bullet from earliest substantial user message if not present
+  const hasObjective = bullets.some(b => /^Objective:/i.test(b));
+  if (!hasObjective) {
+    const obj = inferObjectiveFromFirstUser(thread);
+    if (obj) bullets.unshift(obj);
   }
 
   const cleaned = dedupeAndTrim(bullets).slice(0, MAX_BULLETS);

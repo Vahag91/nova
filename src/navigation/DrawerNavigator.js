@@ -32,6 +32,8 @@ import History from '../screens/HistorySimple';
 import Assistants from '../screens/Assistants';
 import Settings from '../screens/Settings.jsx';
 import ImagesStudio from '../screens/ImagesStudio';
+import StudioStack from './StudioStack';
+import CoinStore from '../screens/CoinStore.jsx';
 import PaywallScreen from '../components/PaywallScreen';
 import ModelSelector from '../components/ModelSelector';
 import SvgIcon from '../components/SvgIcon';
@@ -41,7 +43,6 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { PRESETS, PRESET_AVATARS } from '../data/presets';
-import { newSystemMessage } from '../state/types';
 
 const Drawer = createDrawerNavigator();
 
@@ -55,8 +56,9 @@ function ChatHeaderCenter() {
   const activeThreadId = useThreadsStore(s => s.activeThreadId);
   const isPrivate = useThreadsStore(s => s.privateActive);
   const createThread = useThreadsStore(s => s.createThread);
+  const updateThread = useThreadsStore(s => s.updateThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
-  const addMessage = useThreadsStore(s => s.addMessage);
+  // no longer inject system message into messages; use thread.system
   const currentModel = useSettingsStore(s => s.model);
 
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -66,14 +68,14 @@ function ChatHeaderCenter() {
     [threads, activeThreadId]
   );
 
-  const systemMsg = activeThread?.messages?.find(m => m.role === 'system');
+  const systemText = activeThread?.system || activeThread?.messages?.find(m => m.role === 'system')?.content;
 
   const preset = useMemo(() => {
-    if (!systemMsg?.content) return null;
-    return PRESETS.find(p => p.system === systemMsg.content) || null;
-  }, [systemMsg?.content]);
+    if (!systemText) return null;
+    return PRESETS.find(p => p.system === systemText) || null;
+  }, [systemText]);
 
-  const isAssistantChat = !!(systemMsg && !isPrivate && preset);
+  const isAssistantChat = !!(systemText && !isPrivate && preset);
 
   const assistants = useMemo(
     () => PRESETS.map(p => ({
@@ -134,15 +136,25 @@ function ChatHeaderCenter() {
 
   const handleSelectAssistant = useCallback((choice) => {
     closeSheet();
-    if (!choice || choice.system === systemMsg?.content) return;
+    if (!choice || choice.system === systemText) return;
     try { Haptic.trigger('impactLight'); } catch {}
 
     try {
-      const modelKey = choice.suggestedModel || currentModel;
+      // App policy: assistants always use GPT-5 nano and are pinned to it
+      const modelKey = 'gpt-5-nano';
       const title = t(`assistants.presets.${choice.id}.name`, { defaultValue: choice.name });
       const sys = typeof choice.system === 'string' ? choice.system : '';
-      const nextThread = createThread({ title, model: modelKey });
-      if (sys) addMessage(nextThread.id, newSystemMessage(sys));
+      const nextThread = createThread({ title, model: modelKey, system: sys });
+      try {
+        updateThread(nextThread.id, {
+          meta: {
+            ...(nextThread.meta || {}),
+            pinnedModel: true,
+            presetId: choice?.id || null,
+            assistantName: title,
+          }
+        });
+      } catch {}
       setActiveThread(nextThread.id);
       navigation.navigate('Chat');
     } catch (error) {
@@ -152,7 +164,7 @@ function ChatHeaderCenter() {
         t('assistants.errorMessage') || 'Could not start this assistant.'
       );
     }
-  }, [closeSheet, systemMsg?.content, currentModel, createThread, addMessage, setActiveThread, navigation, t]);
+  }, [closeSheet, systemText, currentModel, createThread, setActiveThread, navigation, t]);
 
   const listRef = useRef(null);
 
@@ -411,13 +423,24 @@ export default function DrawerNavigator() {
         <Drawer.Screen name="Assistants" component={Assistants} options={{ title: t('navigation.assistants') }} />
         <Drawer.Screen name="Settings" component={Settings} options={{ title: t('navigation.settings') }} />
         <Drawer.Screen
+          name="Studio"
+          component={StudioStack}
+          options={{
+            headerShown: false,
+            title: t('navigation.imagesStudio') || 'Studio',
+          }}
+        />
+        <Drawer.Screen
           name="ImagesStudio"
           component={ImagesStudio}
           options={{
             headerShown: false,
             title: t('navigation.imagesStudio'),
+            // Hide from drawer; navigated from StudioHome
+            drawerItemStyle: { display: 'none' },
           }}
         />
+        {/** Create/Edit are children of Studio stack; no drawer entries */}
         <Drawer.Screen
           name="PaywallScreen"
           component={({ navigation }) => (

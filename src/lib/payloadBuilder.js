@@ -99,6 +99,38 @@ function getLastPair(thread) {
   return null;
 }
 
+function getLastAssistantTexts(thread, count = 2, maxCharsPer = 600) {
+  const msgs = (thread.messages || []).filter(m => m.role !== 'system');
+  const out = [];
+  for (let i = msgs.length - 1; i >= 0 && out.length < count; i--) {
+    const m = msgs[i];
+    if (m.role !== 'assistant') continue;
+    let txt = '';
+    if (Array.isArray(m.content)) {
+      txt = m.content.find(p => p.type === 'text')?.text || '';
+    } else if (typeof m.content === 'string') {
+      txt = m.content;
+    }
+    txt = (txt || '').trim();
+    if (!txt) continue;
+    if (txt.length > maxCharsPer) txt = txt.slice(0, maxCharsPer - 3) + '...';
+    out.push(txt);
+  }
+  // Return oldest first for natural reading
+  return out.reverse();
+}
+
+function isAffirmativeOrTiny(newMsg) {
+  const txt = Array.isArray(newMsg?.content)
+    ? (newMsg.content.find(p => p.type === 'text')?.text || '')
+    : (newMsg?.content || '');
+  const t = (txt || '').trim().toLowerCase();
+  if (!t) return true;
+  if (t.length <= 12) return true;
+  const YES_RE = /^(?:y|yes|yeah|yep|ok|okay|sure|do it|please do|go ahead|that works|sounds good|continue|next|proceed|right|correct|confirm|fine)[.!]?$/i;
+  return YES_RE.test(t);
+}
+
 // Small, safe recent context (last 1 Q→A), only if we have room
 function buildRecencyContext(thread, maxChars = 700) {
   const msgs = (thread.messages || []).filter(m => m.role !== 'system');
@@ -107,23 +139,12 @@ function buildRecencyContext(thread, maxChars = 700) {
   for (let i = msgs.length - 1; i >= 1; i--) {
     if (msgs[i - 1].role === 'user') {
       const u = msgs[i - 1];
-      const a = msgs[i] && msgs[i].role === 'assistant' ? msgs[i] : null;
-
       const uTxt = Array.isArray(u.content)
         ? (u.content.find(p => p.type === 'text')?.text || '')
         : (u.content || '');
-        
-      // Check if this is a markdown image message
-      const hasMarkdownImage = typeof u.content === 'string' && /!\[.*?\]\(data:image\//.test(u.content);
 
-      const aTxt = a
-        ? Array.isArray(a.content)
-          ? (a.content.find(p => p.type === 'text')?.text || '')
-          : (a.content || '')
-        : '';
-
-      let block = `U: ${uTxt}\n`;
-      if (aTxt) block += `A: ${aTxt}`;
+      // Only include the last user input to reduce repetition of assistant phrasing
+      let block = `U: ${uTxt}`;
       if (block.length > maxChars) block = block.slice(0, maxChars - 3) + '...';
       return block.trim();
     }
@@ -131,10 +152,23 @@ function buildRecencyContext(thread, maxChars = 700) {
   return '';
 }
 
-// Build payload: system + trimmed summary (+ optional tiny recency) + new message
+// Build payload: global rules + persona/default + trimmed summary (+ optional tiny recency) + new message
 export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 }) {
   const DEFAULT_SYSTEM = "You are a concise, helpful assistant. Prefer facts over speculation. If unsure, say so briefly. Use provided context faithfully.";
-  const sys = thread.system ? [{ role: 'system', content: thread.system }] : [{ role: 'system', content: DEFAULT_SYSTEM }];
+
+  const assistantName = (thread?.title || '').trim();
+  const GLOBAL_RULES = [
+    'Global rules:',
+    '- Never claim to be ChatGPT or a language model; do not mention model details (knowledge cutoff, current date) unless the user asks.',
+    `- Introduce yourself only if the user explicitly asks who you are; otherwise do not state your identity. If asked, reply: "I’m your ${assistantName || 'assistant'} in ChatCloud."`,
+    '- Do not repeat your identity in subsequent messages unless asked again.',
+    '- Skip greetings and fluff; start with the substance. Keep responses concise and actionable. Ask at most one clarifying question if the request is ambiguous.',
+  ].join('\n');
+
+  const sys = [
+    { role: 'system', content: GLOBAL_RULES },
+    thread.system ? { role: 'system', content: thread.system } : { role: 'system', content: DEFAULT_SYSTEM },
+  ];
   const rawSummary = thread.summary ? `Context summary:\n${thread.summary}` : '';
 
   const safeCount = (m) => {
@@ -212,6 +246,36 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
           if (candTokens <= tokenCap) {
             console.log('[AI Payload] Recency context:', recency);
             payload = candidate;
+          }
+        }
+      }
+      // If the new user input is low-signal (e.g., "yes"), include up to 2 prior assistant lines
+      if (isAffirmativeOrTiny(newMsg)) {
+        const assistants = getLastAssistantTexts(thread, 2, 600);
+        if (assistants.length) {
+          const recap = assistants.map(a => `A: ${a}`).join('\n');
+          const candidate = [
+            ...payload.slice(0, -1),
+            { role: 'system', content: recap },
+            newMsg,
+          ];
+          const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
+          if (candTokens <= tokenCap) {
+            console.log('[AI Payload] Assistant recap included:', assistants.map(s => s.slice(0, 120)));
+            payload = candidate;
+          } else if (assistants.length > 1) {
+            // Try with only the most recent assistant line if both won't fit
+            const recap1 = `A: ${assistants[assistants.length - 1]}`;
+            const candidate1 = [
+              ...payload.slice(0, -1),
+              { role: 'system', content: recap1 },
+              newMsg,
+            ];
+            const candTokens1 = candidate1.reduce((n, m) => n + safeCount(m), 0);
+            if (candTokens1 <= tokenCap) {
+              console.log('[AI Payload] Assistant recap (1) included:', recap1.slice(0, 120));
+              payload = candidate1;
+            }
           }
         }
       }

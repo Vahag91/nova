@@ -18,9 +18,10 @@ import AssistantHeader from '../components/chat/AssistantHeader';
 import { colors } from '../styles/colors';
 import { appendStream, getStream, clearStream } from '../lib/streamingBuffer';
 import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
-import { buildPayload } from '../lib/payloadBuilder';
+import { buildPayload, getPayloadSize } from '../lib/payloadBuilder';
 import { useVoiceInput } from '../hooks/useVoiceInput';
 import { useTranslation } from 'react-i18next';
+
 
 import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
 import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
@@ -58,13 +59,17 @@ export default function Chat({ navigation }) {
   const didInitialScrollRef = useRef(false);
 
   const normalActive = useMemo(
-    () => threads.find(t => t.id === activeThreadId) || null,
+    () => threads.find(d => d.id === activeThreadId) || null,
     [threads, activeThreadId]
   );
   const activeThread = isPrivate ? privateThread : normalActive;
 
-  // IMPORTANT: prioritize global model (user's current selection) over thread's model
-  const activeModelKey = globalModel || activeThread?.model;
+  // Model selection
+  // If this thread is an assistant with a pinned model, respect the thread's model
+  const pinnedModel = !!(activeThread?.meta && activeThread?.meta?.pinnedModel);
+  const activeModelKey = pinnedModel
+    ? (activeThread?.model || globalModel)
+    : (globalModel || activeThread?.model);
   const activeModelCaps = modelsMap?.[activeModelKey]?.caps || {};
 
   const [input, setInput] = useState('');
@@ -87,30 +92,34 @@ export default function Chat({ navigation }) {
 
   // Check if chat is empty (no user/assistant messages)
   const isChatEmpty = messagesNoSystem.length === 0;
-  // Check if this is an assistant thread (has system message)
-  const isAssistantThread = activeThread?.messages?.some(m => m.role === 'system');
+  // Check if this is an assistant thread (thread.system or legacy system message)
+  const isAssistantThread = !!(activeThread?.system) || activeThread?.messages?.some(m => m.role === 'system');
+  const showQuickSuggestions = !isPrivate && isChatEmpty && !isAssistantThread;
 
   // Voice: manual stop => send once
   const onFinalText = useCallback((text) => {
-    const t = (text || '').trim();
-    if (!t) return;
-    setVoiceText(t);
-  }, []);
-  const onPartialText = useCallback((text) => { setVoiceText(text || ''); }, []);
-  const onErrorText = useCallback((msg) => { setError(msg); }, []);
-  const { isRecording, start: startVoice, stop: stopVoice } = useVoiceInput({ onPartialText, onFinalText, onErrorText });
+    const trimmed = (text || '').trim();
+    if (!trimmed) return;
+    setVoiceText(trimmed);
+  }, [setVoiceText]);
+  const onPartialText = useCallback((text) => {
+    setVoiceText(text || '');
+  }, [setVoiceText]);
+  const { isRecording, volume, start: startVoice, stop: stopVoice } = useVoiceInput({ onPartialText, onFinalText });
 
   // Hydrate & ensure thread
   useEffect(() => {
     if (!hydrated) hydrate();
   }, [hydrated, hydrate]);
+  // No debug logging of error state
 
-  useEffect(() => {
-    if (hydrated && !isPrivate && !threads.length) {
-      const th = createThread({ title: t('history.newChat'), model: globalModel });
-      setActiveThread(th.id);
-    }
-  }, [hydrated, threads.length, isPrivate, createThread, setActiveThread, globalModel, t]);
+useEffect(() => {
+  if (!hydrated || isPrivate) return;
+  if (!activeThread) {
+    const th = createThread({ title: t('history.newChat'), model: globalModel });
+    setActiveThread(th.id);
+  }
+}, [hydrated, isPrivate, activeThread, createThread, setActiveThread, globalModel, t]);
 
   // Scroll management
   useEffect(() => { didInitialScrollRef.current = false; }, [activeThread?.id]);
@@ -122,8 +131,6 @@ export default function Chat({ navigation }) {
     });
     didInitialScrollRef.current = true;
   }, [activeThread?.messages?.length, activeThread?.id]);
-  const nudgeToBottom = useCallback(() => requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true)), []);
-
   // Keyboard animation
   const keyboard = useAnimatedKeyboard();
   const GAP = 6;
@@ -138,6 +145,8 @@ export default function Chat({ navigation }) {
   });
   const animatedContentStyle = useAnimatedStyle(() => ({ transform: [{ translateY: kTranslate.value }] }));
   const animatedFooterStyle = useAnimatedStyle(() => ({ transform: [{ translateY: kTranslate.value + kGap.value }] }));
+
+  const logAi = useCallback(() => {}, []);
 
   // Network
   useEffect(() => {
@@ -170,8 +179,8 @@ export default function Chat({ navigation }) {
 
   useEffect(() => {
     if (forceCollapseInput) {
-      const t = setTimeout(() => setForceCollapseInput(false), 200);
-      return () => clearTimeout(t);
+      const timeoutId = setTimeout(() => setForceCollapseInput(false), 200);
+      return () => clearTimeout(timeoutId);
     }
   }, [forceCollapseInput]);
 
@@ -240,6 +249,109 @@ export default function Chat({ navigation }) {
       }
     );
   }, [t]);
+
+  const activeThreadIdForInsert = activeThread?.id;
+
+  const onInsertImagesMarkdown = useCallback((md) => {
+    const a = newAssistantMessage(md);
+    if (isPrivate) addPrivateMessage(a);
+    else if (activeThreadIdForInsert) addMessage(activeThreadIdForInsert, a);
+    requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
+  }, [addMessage, addPrivateMessage, activeThreadIdForInsert, isPrivate]);
+
+  const handleCreateImagesPress = useCallback(() => {
+    setInsertToChatCallback(onInsertImagesMarkdown);
+    navigation.navigate('ImagesStudio', { seedPrompt: input });
+  }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
+
+  const handleEditImagePress = useCallback(() => {
+    setInsertToChatCallback(onInsertImagesMarkdown);
+    navigation.navigate('ImagesStudio', {
+      seedPrompt: input,
+      startMode: 'img2img',
+    });
+  }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
+
+  const handleAssistantsPress = useCallback(() => {
+    navigation.navigate('Assistants');
+  }, [navigation]);
+
+  const handleMicPress = useCallback(async () => {
+    if (isRecording) {
+      stopVoice();
+      setShowVoiceOverlay(false);
+      return;
+    }
+
+    const res = await ensureMicAndSpeech();
+    if (!res.ok) {
+      if (res.blocked) {
+        promptOpenSettings(
+          t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
+          t('chat.voicePermissionMessage') || 'Microphone/Speech access is blocked. Please enable them in Settings.'
+        );
+      } else {
+        Alert.alert(
+          t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
+          t('chat.voicePermissionMessage') || 'Microphone and Speech Recognition are required to use voice.',
+          [
+            { text: t('common.cancel') || 'Cancel', style: 'cancel' },
+            {
+              text: t('common.allow') || 'Allow',
+              onPress: async () => {
+                const retry = await ensureMicAndSpeech();
+                if (!retry.ok && retry.blocked) {
+                  promptOpenSettings(
+                    t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
+                    t('chat.voicePermissionMessage') || 'Microphone/Speech access is blocked. Please enable them in Settings.'
+                  );
+                }
+              }
+            }
+          ],
+          { cancelable: true }
+        );
+      }
+      return;
+    }
+
+    setInput('');
+    try {
+      const started = await startVoice();
+      if (!started) return;
+    } catch (err) {
+      const pretty = mapProxyError(err);
+      setError(pretty.message || t('chat.voiceStartFailed') || 'Could not start voice.');
+      return;
+    }
+    setShowVoiceOverlay(true);
+    setVoiceText('');
+  }, [isRecording, setShowVoiceOverlay, stopVoice, setInput, startVoice, setError, t, setVoiceText]);
+
+  const handleQuickSuggestionPress = useCallback((suggestion) => {
+    const id = suggestion?.id;
+    if (id === 'create-images') {
+      handleCreateImagesPress();
+      return;
+    }
+    if (id === 'open-camera') {
+      onOpenCameraPress();
+      return;
+    }
+    if (id === 'edit-image') {
+      handleEditImagePress();
+      return;
+    }
+    if (id === 'assistants') {
+      handleAssistantsPress();
+      return;
+    }
+    if (id === 'start-voice') {
+      handleMicPress();
+      return;
+    }
+    setInput(suggestion?.title || '');
+  }, [handleAssistantsPress, handleCreateImagesPress, handleEditImagePress, handleMicPress, onOpenCameraPress, setInput]);
 
   const onRemoveAttachment = useCallback((att) => {
     setAttachments(prev => prev.filter(a => a.id !== att.id));
@@ -315,8 +427,52 @@ export default function Chat({ navigation }) {
       composerCleared = true;
 
       const threadForContext = { ...activeThread, messages: [...(activeThread.messages || []), mUser] };
+      // Dev: log thread context snapshot (sanitized) before payload build
+      logAi('thread_meta', {
+        threadId: activeThread?.id,
+        title: activeThread?.title,
+        hasSystem: !!activeThread?.system,
+        pinnedModel: !!activeThread?.meta?.pinnedModel,
+        assistantName: activeThread?.meta?.assistantName || activeThread?.title,
+        presetId: activeThread?.meta?.presetId || null,
+        msgCountNoSystem: (activeThread?.messages || []).filter(m => m.role !== 'system').length,
+      });
       await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
       const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
+
+      // Classify system parts for easier debugging
+      const sys0 = payload[0]?.role === 'system' ? payload[0].content : '';
+      const sys1 = payload[1]?.role === 'system' ? payload[1].content : '';
+      const maybeExtras = payload.slice(2).filter(m => m.role === 'system').map(m => m.content);
+      logAi('context', {
+        threadId: activeThread?.id,
+        model: activeModelKey,
+        tokensEst: (() => { try { return getPayloadSize(payload); } catch { return -1; } })(),
+        systemGlobalPreview: typeof sys0 === 'string' ? sys0.slice(0, 160) : '[mm] ',
+        systemPersonaPreview: typeof sys1 === 'string' ? sys1.slice(0, 160) : '[none]',
+        extraSystemPreviews: maybeExtras.map(s => (s || '').slice(0, 160)),
+        messageCount: payload.length,
+      });
+
+      // Dedicated context size log for quick metrics
+      try {
+        const size = typeof getPayloadSize === 'function' ? getPayloadSize(payload) : -1;
+        const roles = payload.map(p => p.role);
+        logAi('context_size', {
+          tokensEst: size,
+          charsApprox: size > 0 ? size * 4 : -1,
+          roles,
+          systems: roles.filter(r => r === 'system').length,
+          users: roles.filter(r => r === 'user').length,
+          assistants: roles.filter(r => r === 'assistant').length,
+        });
+      } catch {}
+
+      logAi('request', {
+        threadId: activeThread?.id || activeThreadIdForInsert,
+        model: activeModelKey,
+        payload,
+      });
 
       setStreaming(true);
       const deviceId = await ensureDeviceId();
@@ -336,6 +492,11 @@ export default function Chat({ navigation }) {
         },
         onDone: () => {
           const full = getStream(assistantId);
+          logAi('response', {
+            threadId: activeThread?.id || activeThreadIdForInsert,
+            messageId: assistantId,
+            content: full,
+          });
           if (isPrivate) updateLastAssistantContentPrivate(() => full);
           else updateLastAssistantContent(activeThread.id, () => full);
           setStreaming(false);
@@ -346,6 +507,11 @@ export default function Chat({ navigation }) {
           setWebSearchNext(false);
         },
         onError: (err) => {
+          logAi('response_error', {
+            threadId: activeThread?.id || activeThreadIdForInsert,
+            messageId: assistantId,
+            error: err,
+          });
           const wasBackgrounded = appStateRef.current !== 'active';
           const isOSTermination = err.code === 0 || err.code === 'NETWORK';
           const partial = getStream(assistantId);
@@ -375,6 +541,10 @@ export default function Chat({ navigation }) {
         },
       });
     } catch (err) {
+      logAi('request_failed', {
+        threadId: activeThread?.id || activeThreadIdForInsert,
+        error: err,
+      });
       if (assistantAdded && assistantId) {
         if (isPrivate) {
           updateLastAssistantContentPrivate(() => t('chat.sendFailed') || 'Failed to send.');
@@ -427,20 +597,13 @@ export default function Chat({ navigation }) {
   }
   function onRetryFromHere(message) { setInput(message?.content || ''); }
 
-  function onInsertImagesMarkdown(md) {
-    const a = newAssistantMessage(md);
-    if (isPrivate) addPrivateMessage(a);
-    else if (activeThread?.id) addMessage(activeThread.id, a);
-    requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
-  }
-
   if (!activeThread) return <View style={styles.container}><Text>{t('chat.loading')}</Text></View>;
   if (!hydrated) {
     return (
       <View style={styles.container}>
         <View style={styles.header}><Text style={styles.headerTitle}>{t('chat.loading')}</Text></View>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ color: colors.textSecondary }}>{t('chat.loadingChat')}</Text>
+        <View style={styles.loadingCenter}>
+          <Text style={styles.loadingHint}>{t('chat.loadingChat')}</Text>
         </View>
       </View>
     );
@@ -449,21 +612,21 @@ export default function Chat({ navigation }) {
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{ flex: 1 }}>
+        <View style={styles.flex1}>
           {offline && (
-            <View style={{ margin: 16, padding: 10, borderRadius: 8, backgroundColor: colors.warning + '20', borderWidth: 1, borderColor: colors.warning }}>
-              <Text style={{ color: colors.warning, fontSize: 12 }}>{t('chat.offlineBanner')}</Text>
+            <View style={styles.offlineBanner}>
+              <Text style={styles.offlineText}>{t('chat.offlineBanner')}</Text>
             </View>
           )}
 
           {!!error && (
             <View style={styles.error}>
-              <Text style={{ color: colors.error, fontSize: 14, fontWeight: '500' }}>{error}</Text>
+              <Text style={styles.errorText}>{error}</Text>
             </View>
           )}
 
           {isChatEmpty ? (
-            <Reanimated.View style={[{ flex: 1 }, animatedContentStyle]}>
+            <Reanimated.View style={[styles.flex1, animatedContentStyle]}>
               {isAssistantThread ? (
                 <AssistantHeader thread={activeThread} showOnlyWhenEmpty />
               ) : (
@@ -475,16 +638,13 @@ export default function Chat({ navigation }) {
                       <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
                     </>
                   ) : (
-                    <>
-                      <CreativeStudioBanner onPress={() => navigation.navigate('ImagesStudio')} />
-                      <SuggestionCards onSuggestionPress={(s) => setInput(s.title)} />
-                    </>
+                    <CreativeStudioBanner onPress={handleCreateImagesPress} paused={showVoiceOverlay || isRecording} />
                   )}
                 </View>
               )}
             </Reanimated.View>
           ) : (
-            <Reanimated.View style={[{ flex: 1 }, animatedContentStyle]}>
+            <Reanimated.View style={[styles.flex1, animatedContentStyle]}>
               <MessageList
                 ref={messageListRef}
                 messages={messagesNoSystem}
@@ -497,65 +657,20 @@ export default function Chat({ navigation }) {
           )}
 
           <Reanimated.View style={animatedFooterStyle}>
+            {showQuickSuggestions && (
+              <SuggestionCards onSuggestionPress={handleQuickSuggestionPress} />
+            )}
             <TestInput
               value={input}
               onChange={setInput}
               onSend={onSend}
               onStop={onStop}
-              onCreateImagesPress={() => { setInsertToChatCallback(onInsertImagesMarkdown); navigation.navigate('ImagesStudio', { seedPrompt: input }); }}
+              onCreateImagesPress={handleCreateImagesPress}
               onOpenCameraPress={onOpenCameraPress}
               onSearchPress={() => setWebSearchNext(v => !v)}
               onClipboardPress={() => { }}
               webSearchEnabled={webSearchNext}
-              onMicPress={async () => {
-                if (isRecording) {
-                  stopVoice();
-                  setShowVoiceOverlay(false);
-                } else {
-                  const res = await ensureMicAndSpeech();
-                  if (!res.ok) {
-                    if (res.blocked) {
-                      promptOpenSettings(
-                        t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
-                        t('chat.voicePermissionMessage') || 'Microphone/Speech access is blocked. Please enable them in Settings.'
-                      );
-                    } else {
-                      Alert.alert(
-                        t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
-                        t('chat.voicePermissionMessage') || 'Microphone and Speech Recognition are required to use voice.',
-                        [
-                          { text: t('common.cancel') || 'Cancel', style: 'cancel' },
-                          {
-                            text: t('common.allow') || 'Allow',
-                            onPress: async () => {
-                              const retry = await ensureMicAndSpeech();
-                              if (!retry.ok && retry.blocked) {
-                                promptOpenSettings(
-                                  t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
-                                  t('chat.voicePermissionMessage') || 'Microphone/Speech access is blocked. Please enable them in Settings.'
-                                );
-                              }
-                            }
-                          }
-                        ],
-                        { cancelable: true }
-                      );
-                    }
-                    return;
-                  }
-                  setInput('');
-                  try {
-                    const started = await startVoice();
-                    if (!started) return;
-                  } catch (err) {
-                    const pretty = mapProxyError(err);
-                    setError(pretty.message || t('chat.voiceStartFailed') || 'Could not start voice.');
-                    return;
-                  }
-                  setShowVoiceOverlay(true);
-                  setVoiceText('');
-                }
-              }}
+              onMicPress={handleMicPress}
               streaming={streaming}
               offline={offline}
               maxLength={16000}
@@ -569,6 +684,7 @@ export default function Chat({ navigation }) {
               visible={showVoiceOverlay}
               isRecording={isRecording}
               transcript={voiceText}
+              volume={isRecording ? Math.max(volume || 0, 0.4) : 0}
               onInsert={() => {
                 setShowVoiceOverlay(false);
                 if (isRecording) stopVoice();
@@ -588,7 +704,13 @@ export default function Chat({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000000' },
+  flex1: { flex: 1 },
+  loadingCenter: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  loadingHint: { color: colors.textSecondary },
+  offlineBanner: { margin: 16, padding: 10, borderRadius: 8, borderWidth: 1, borderColor: colors.warning, backgroundColor: colors.warning + '20' },
+  offlineText: { color: colors.warning, fontSize: 12 },
   error: { backgroundColor: colors.error + '20', padding: 10, borderRadius: 10, margin: 13, borderLeftWidth: 3, borderLeftColor: colors.error },
+  errorText: { color: colors.error, fontSize: 14, fontWeight: '500' },
   emptyState: { flex: 1, alignItems: 'stretch', justifyContent: 'flex-start', paddingHorizontal: 16, paddingTop: 32, paddingBottom: 40, gap: 24 },
   emptyStatePrivate: { alignItems: 'center', justifyContent: 'center', paddingTop: 0, paddingBottom: 40, gap: 12 },
   emptyStateIcon: { width: 64, height: 64, borderRadius: 32, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', marginBottom: 19 },

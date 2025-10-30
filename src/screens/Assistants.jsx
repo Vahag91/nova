@@ -1,32 +1,52 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image } from 'react-native';
-import Svg, { Rect, Defs, LinearGradient, Stop } from 'react-native-svg';
 import Haptic from 'react-native-haptic-feedback';
-import { PRESETS, PRESET_AVATARS } from '../data/presets';
+import { PRESETS } from '../data/presets';
 import { useThreadsStore } from '../state/useThreadsStore';
-import { useSettingsStore } from '../state/useSettingsStore';
 import { useTranslation } from 'react-i18next';
-import { newSystemMessage } from '../state/types';
+import { useIsFocused } from '@react-navigation/native';
+import HeroVideo from '../components/navigation/HeroVideo';
+
+const HEADER_VIDEOS = [
+  require('../../assets/video/fitness.mp4'),
+  require('../../assets/video/meels.mp4'),
+];
 
 export default function Assistants({ navigation }) {
   const { t } = useTranslation();
   const createThread = useThreadsStore(s => s.createThread);
+  const updateThread = useThreadsStore(s => s.updateThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
-  const addMessage = useThreadsStore(s => s.addMessage);
-  const currentModel = useSettingsStore(s => s.model);
+  const isFocused = useIsFocused();
+  const [headerRestartKey, setHeaderRestartKey] = useState(0);
 
-  async function usePreset(preset) {
+  useEffect(() => {
+    if (isFocused) setHeaderRestartKey(k => k + 1);
+  }, [isFocused]);
+
+  async function handleUsePreset(preset) {
     try {
       // haptics can throw on some devices; make non-fatal
       try { Haptic.trigger('impactLight'); } catch {}
 
-      const model = preset?.suggestedModel || currentModel;
+      // App policy: assistants always use GPT-5 nano
+      const model = 'gpt-5-nano';
       const title = preset?.name || 'Assistant';
       const sys = typeof preset?.system === 'string' ? preset.system : '';
 
-      const tNew = createThread({ title, model });
-      if (sys) addMessage(tNew.id, newSystemMessage(sys));
-
+      const tNew = createThread({ title, model, system: sys });
+      // Pin model and persist stable metadata
+      try {
+        updateThread(tNew.id, {
+          meta: {
+            ...(tNew.meta || {}),
+            pinnedModel: true,
+            presetId: preset?.id || null,
+            assistantName: title,
+          }
+        });
+      } catch {}
+      
       setActiveThread(tNew.id);
       navigation?.navigate?.('Chat');
     } catch (e) {
@@ -90,19 +110,20 @@ export default function Assistants({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.scroll} contentContainerStyle={{ paddingVertical: 12 }}>
+      <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
         <View style={styles.headerIntro}>
-          <Svg pointerEvents="none" style={styles.headerIntroGlow}>
-            <Defs>
-              <LinearGradient id="assist_intro" x1="0" y1="1" x2="1" y2="0">
-                <Stop offset="0" stopColor="rgba(37,99,235,0.45)" />
-                <Stop offset="1" stopColor="rgba(124,58,237,0.38)" />
-              </LinearGradient>
-            </Defs>
-            <Rect x={-24} y={-24} width="130%" height="150%" rx={28} fill="url(#assist_intro)" />
-          </Svg>
-          <Text style={styles.headerTitle}>{t('assistants.title')}</Text>
-          <Text style={styles.headerSubtitle}>{t('assistants.subtitle')}</Text>
+          <HeroVideo
+            style={styles.headerVideo}
+            sources={HEADER_VIDEOS}
+            restartKey={headerRestartKey}
+            enforceAspectRatio={false}
+            placeholderColor="#10121C"
+          />
+          <View style={styles.headerOverlay} />
+          <View style={styles.headerContent}>
+            <Text style={styles.headerTitle}>{t('assistants.title')}</Text>
+            <Text style={styles.headerSubtitle}>{t('assistants.subtitle')}</Text>
+          </View>
         </View>
         <ScrollView
           horizontal
@@ -140,7 +161,7 @@ export default function Assistants({ navigation }) {
             key={preset?.id || preset?.name || String(idx)}
             style={styles.card}
             activeOpacity={0.9}
-            onPress={() => usePreset(preset)}
+            onPress={() => handleUsePreset(preset)}
           >
             <View style={styles.cardRow}>
               <View style={styles.iconWrap}>
@@ -175,18 +196,22 @@ export default function Assistants({ navigation }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#000000', paddingHorizontal: 16 },
   scroll: { flex: 1 },
+  scrollContent: { paddingVertical: 12 },
   headerIntro: {
-    marginBottom: 18,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    borderRadius: 24,
+    marginBottom: 20,
+    borderRadius: 26,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: 'rgba(59,130,246,0.2)',
+    borderColor: 'rgba(148,163,184,0.18)',
+    backgroundColor: '#10121C',
+    position: 'relative',
+    minHeight: 190,
   },
-  headerIntroGlow: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
-  headerTitle: { fontSize: 24, fontWeight: '700', color: '#F9FAFB', fontFamily: 'Lato-Bold' },
-  headerSubtitle: { fontSize: 14, color: 'white', marginTop: 6, lineHeight: 20, fontFamily: 'Lato-Regular' },
+  headerVideo: { ...StyleSheet.absoluteFillObject },
+  headerOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(12,14,26,0.54)' },
+  headerContent: { paddingHorizontal: 24, paddingVertical: 26, gap: 10 },
+  headerTitle: { fontSize: 26, fontWeight: '700', color: '#F9FAFB', fontFamily: 'Lato-Bold', letterSpacing: 0.3 },
+  headerSubtitle: { fontSize: 15, color: 'rgba(229,231,235,0.92)', lineHeight: 22, fontFamily: 'Lato-Regular' },
   categoryBar: { paddingVertical: 12, paddingHorizontal: 4, gap: 8, alignItems: 'center' },
   categoryChip: {
     paddingHorizontal: 16, paddingVertical: 8, borderRadius: 999,

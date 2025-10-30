@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback } from 'react';
+import React, { useMemo, useState, useEffect, useCallback, memo, useRef } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
@@ -60,6 +60,7 @@ function TestInput({
   forceCollapsed = false, isRecording = false,
   webSearchEnabled = false, // NEW: web search toggle state
 }) {
+  // Debuggers removed (focus on voice only)
   const { t } = useTranslation();
   const safe = useCallback((fn, ...args) => {
     if (typeof fn !== 'function') return;
@@ -77,6 +78,8 @@ function TestInput({
   const [anchor, setAnchor] = useState(null);
   const win = Dimensions.get('window');
   const [wrapperRect, setWrapperRect] = useState({ x: 0, y: 0, width: win.width, height: win.height });
+  const lastRectRef = useRef(wrapperRect);
+  useEffect(() => { lastRectRef.current = wrapperRect; }, [wrapperRect]);
   const [inputHeight, setInputHeight] = useState(minInputHeight);
   const [isExpanded, setIsExpanded] = useState(false);
   const [keyboardVisible, setKeyboardVisible] = useState(false);
@@ -100,7 +103,16 @@ function TestInput({
     return () => { s?.remove(); h?.remove(); };
   }, []);
   // measure wrapper rect
-  const measureWrapper = () => wrapperRef.current?.measureInWindow((x, y, w, h) => setWrapperRect({ x, y, width: w, height: h }));
+  const measureWrapper = () => wrapperRef.current?.measureInWindow((x, y, w, h) => {
+    const prev = lastRectRef.current || {};
+    const dx = Math.abs((prev.x ?? 0) - x);
+    const dy = Math.abs((prev.y ?? 0) - y);
+    const dw = Math.abs((prev.width ?? 0) - w);
+    const dh = Math.abs((prev.height ?? 0) - h);
+    if (dx > 0.5 || dy > 0.5 || dw > 0.5 || dh > 0.5) {
+      setWrapperRect({ x, y, width: w, height: h });
+    }
+  });
   useEffect(() => {
     measureWrapper();
     const sub = Dimensions.addEventListener?.('change', measureWrapper);
@@ -499,4 +511,21 @@ const styles = StyleSheet.create({
   metaCounter: { fontSize: 11, color: colors.textSecondary, fontFamily: 'Lato-Regular' },
 });
 
-export default TestInput;
+const areEqual = (prev, next) => {
+  if (prev.value !== next.value) return false;
+  if (prev.streaming !== next.streaming) return false;
+  if (prev.offline !== next.offline) return false;
+  if (prev.forceCollapsed !== next.forceCollapsed) return false;
+  if (prev.isRecording !== next.isRecording) return false;
+  if (prev.webSearchEnabled !== next.webSearchEnabled) return false;
+  if (prev.maxLength !== next.maxLength) return false;
+  const pA = Array.isArray(prev.attachments) ? prev.attachments : [];
+  const nA = Array.isArray(next.attachments) ? next.attachments : [];
+  if (pA.length !== nA.length) return false;
+  for (let i = 0; i < pA.length; i++) {
+    if (pA[i]?.id !== nA[i]?.id) return false;
+  }
+  return true;
+};
+
+export default memo(TestInput, areEqual);

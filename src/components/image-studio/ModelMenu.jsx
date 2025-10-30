@@ -201,7 +201,9 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
                 accessibilityRole="button"
                 accessibilityState={{ selected: isSelected }}
               >
-                <Text style={styles.itemIcon}>🖼️</Text>
+                <View style={styles.itemIcon}>
+                  <Text style={styles.itemIconGlyph}>🖼️</Text>
+                </View>
                 <View style={{ flex: 1 }}>
                   <Text numberOfLines={1} style={[styles.itemLabel, isSelected && styles.itemLabelSelected]}>
                     {m.display?.name || m.key}
@@ -212,7 +214,11 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
                     </Text>
                   )}
                 </View>
-                {isSelected ? <Text style={styles.check}>✓</Text> : null}
+                {isSelected ? (
+                  <View style={styles.checkWrap}>
+                    <Text style={styles.check}>✓</Text>
+                  </View>
+                ) : null}
               </Pressable>
             );
           })}
@@ -223,11 +229,10 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
 });
 
 const styles = StyleSheet.create({
-  backdrop: { backgroundColor: 'rgba(0,0,0,0.25)' },
+  backdrop: { backgroundColor: 'rgba(0,0,0,0.28)' },
 
   container: {
     position: 'absolute',
-    marginLeft: -38, // Move 48px to the left (20% of 240px)
   },
 
   arrow: {
@@ -235,8 +240,8 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     transform: [{ rotate: '45deg' }],
-    backgroundColor: '#1E1E1E',
-    borderColor: '#2B2F36',
+    backgroundColor: '#14121E',
+    borderColor: 'rgba(255,255,255,0.08)',
     borderLeftWidth: 1,
     borderTopWidth: 1,
   },
@@ -244,51 +249,63 @@ const styles = StyleSheet.create({
   arrowDown: { bottom: -6 },
 
   menu: {
-    backgroundColor: '#1E1E1E',
-    borderRadius: 14,
+    backgroundColor: '#14121E',
+    borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#2B2F36',
+    borderColor: 'rgba(255,255,255,0.08)',
     overflow: 'hidden',
     shadowColor: '#000',
-    shadowOpacity: 0.28,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.35,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 12 },
     elevation: ELEVATION,
   },
   titleContainer: {
-    paddingHorizontal: 14,
-    paddingVertical: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(255,255,255,0.07)',
+    borderBottomColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: 'rgba(124,92,255,0.12)',
   },
   title: {
-    color: '#9CA3AF',
+    color: '#E5E7FF',
     fontSize: 13,
-    fontWeight: '600',
+    fontWeight: '700',
     fontFamily: 'Lato-Bold',
     textAlign: 'center',
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
   },
 
   item: {
     height: ITEM_HEIGHT,
-    paddingHorizontal: 14,
+    paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: 12,
     backgroundColor: 'transparent',
   },
   itemDivider: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(255,255,255,0.07)',
+    borderBottomColor: 'rgba(255,255,255,0.06)',
   },
   itemSelected: {
-    backgroundColor: 'rgba(138, 66, 255, 0.1)',
+    backgroundColor: 'rgba(124,92,255,0.18)',
   },
-  itemIcon: { width: 20, textAlign: 'center', fontSize: 15 },
-  itemLabel: { color: '#F3F4F6', fontSize: 14, fontWeight: '600' },
-  itemLabelSelected: { color: '#8A42FF' },
-  itemSubLabel: { color: '#9CA3AF', fontSize: 11, marginTop: 2 },
-  check: { color: '#8A42FF', fontSize: 16, marginLeft: 6, fontWeight: '700' },
+  itemIcon: {
+    width: 28,
+    height: 28,
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(108,93,255,0.22)',
+  },
+  itemIconGlyph: { fontSize: 16 },
+  itemLabel: { color: '#F9FAFF', fontSize: 14, fontWeight: '700' },
+  itemLabelSelected: { color: '#D8CBFF' },
+  itemSubLabel: { color: 'rgba(229,231,235,0.7)', fontSize: 11, marginTop: 2, textTransform: 'uppercase', letterSpacing: 0.5 },
+  checkWrap: { paddingLeft: 8 },
+  check: { color: '#D8CBFF', fontSize: 16, fontWeight: '800' },
 });
 
 export default ModelMenu;

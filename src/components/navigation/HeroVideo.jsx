@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Video from 'react-native-video';
 
@@ -8,34 +8,56 @@ export default function HeroVideo({
   style,
   restartKey,
   source = DEFAULT_VIDEO,
+  sources,
   enforceAspectRatio = true,
   placeholderColor = '#0B1020',
+  // optional: pass paused from parent if you want to stop when screen not focused
+  paused = false,
 }) {
   const videoRef = useRef(null);
-  const [lastTick, setLastTick] = useState(Date.now());
+  const lastTickRef = useRef(Date.now());           // ← ref instead of state
+  const [sourceIndex, setSourceIndex] = useState(0);
+
+  const playlist = useMemo(() => {
+    if (Array.isArray(sources) && sources.length) return sources;
+    return [source || DEFAULT_VIDEO];
+  }, [source, sources]);
+
+  const bumpTick = useCallback(() => {
+    lastTickRef.current = Date.now();
+  }, []);
 
   const restart = useCallback(() => {
     try {
-      const player = videoRef.current;
-      if (player?.seek) player.seek(0);
-    } catch {}
-    setLastTick(Date.now());
-  }, []);
+      videoRef.current?.seek?.(0);
+    } catch { /* no-op */ }
+    bumpTick();
+  }, [bumpTick]);
 
+  // Watchdog: if playback stalls >6s, seek to 0
   useEffect(() => {
     const id = setInterval(() => {
-      if (Date.now() - lastTick > 6000) {
-        restart();
-      }
+      if (Date.now() - lastTickRef.current > 6000) restart();
     }, 5000);
     return () => clearInterval(id);
-  }, [lastTick, restart]);
+  }, [restart]); // ← stable, not tied to every progress tick
 
+  // Restart on key or playlist length change
   useEffect(() => {
-    if (restartKey != null) {
-      restart();
-    }
-  }, [restart, restartKey]);
+    setSourceIndex(0);
+    restart();
+  }, [restartKey, playlist.length, restart]);
+
+  // Reset index when playlist object changes
+  useEffect(() => {
+    setSourceIndex(0);
+  }, [playlist]);
+
+  // When index changes, ensure we start from 0
+  useEffect(() => {
+    try { videoRef.current?.seek?.(0); } catch {}
+    bumpTick();
+  }, [sourceIndex, bumpTick]);
 
   return (
     <View
@@ -48,27 +70,31 @@ export default function HeroVideo({
     >
       <Video
         ref={videoRef}
-        source={source}
+        source={playlist[sourceIndex] || playlist[0]}
         style={styles.video}
         resizeMode="cover"
         repeat
         muted
-        paused={false}
+        paused={paused}                 // ← keep playing unless parent pauses it
         ignoreSilentSwitch="obey"
         playInBackground={false}
         playWhenInactive={false}
-        onLoad={() => {
-          setLastTick(Date.now());
-        }}
+        onLoad={bumpTick}
+        onBuffer={bumpTick}
+        onProgress={bumpTick}           // ← no setState here; no re-render spam
         onEnd={() => {
-          restart();
+          if (playlist.length > 1) {
+            setSourceIndex(i => (i + 1) % playlist.length);
+          }
+          // if single source, let `repeat` handle the loop (no manual restart)
         }}
         onPlaybackStalled={restart}
         onError={(e) => {
           console.warn('HeroVideo error:', e?.nativeEvent);
           restart();
         }}
-        onProgress={() => setLastTick(Date.now())}
+        // Android note: if you ever see cover-cropping glitches, try:
+        // useTextureView={false}
       />
     </View>
   );
@@ -81,10 +107,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: '#0B1020',
   },
-  aspect: {
-    aspectRatio: 4 / 5,
-  },
-  video: {
-    ...StyleSheet.absoluteFillObject,
-  },
+  aspect: { aspectRatio: 4 / 5 },
+  video: { ...StyleSheet.absoluteFillObject },
 });
