@@ -11,11 +11,17 @@ import {
   Dimensions,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import SvgIcon from '../SvgIcon';
+import {
+  formatModelProvider,
+  getModelVisuals,
+  hexToRgba,
+} from '../../utils/modelVisuals';
 
 const EDGE_MARGIN = 16;           // min distance from screen edge
-const MAX_MENU_WIDTH = 220;
-const MAX_MENU_HEIGHT = 360;
-const ITEM_HEIGHT = 48;
+const MAX_MENU_WIDTH = 240;
+const MAX_MENU_HEIGHT = 320;
+const ITEM_HEIGHT = 50;
 const ELEVATION = 12;
 
 const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = [], buttonRef }) => {
@@ -192,33 +198,38 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
           
           {safeModels.map((m, idx) => {
             const isSelected = m.key === model;
+            const visuals = getModelVisuals(m.provider);
+            const providerLabel = formatModelProvider(m.provider);
             const last = idx === safeModels.length - 1;
             return (
               <Pressable
                 key={m.key}
                 onPress={() => onSelect(m.key)}
-                style={[styles.item, isSelected && styles.itemSelected, !last && styles.itemDivider]}
+                style={[
+                  styles.item,
+                  isSelected && styles.itemSelected,
+                  last && styles.itemLast,
+                ]}
                 accessibilityRole="button"
                 accessibilityState={{ selected: isSelected }}
               >
-                <View style={styles.itemIcon}>
-                  <Text style={styles.itemIconGlyph}>🖼️</Text>
-                </View>
-                <View style={{ flex: 1 }}>
-                  <Text numberOfLines={1} style={[styles.itemLabel, isSelected && styles.itemLabelSelected]}>
+                <SvgIcon
+                  name={visuals.icon}
+                  size={15}
+                  color={hexToRgba(visuals.accent, 0.85)}
+                />
+                <View style={styles.itemText}>
+                  <Text
+                    numberOfLines={1}
+                    style={[styles.itemLabel, isSelected && styles.itemLabelSelected]}
+                  >
                     {m.display?.name || m.key}
                   </Text>
-                  {!!m.provider && (
-                    <Text numberOfLines={1} style={styles.itemSubLabel}>
-                      {m.provider}
-                    </Text>
-                  )}
+                  <Text numberOfLines={1} style={styles.itemProvider}>
+                    {providerLabel}
+                  </Text>
                 </View>
-                {isSelected ? (
-                  <View style={styles.checkWrap}>
-                    <Text style={styles.check}>✓</Text>
-                  </View>
-                ) : null}
+                {isSelected ? <Text style={styles.checkGlyph}>✓</Text> : null}
               </Pressable>
             );
           })}
@@ -240,8 +251,8 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     transform: [{ rotate: '45deg' }],
-    backgroundColor: '#14121E',
-    borderColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: 'rgba(23,23,28,0.98)',
+    borderColor: 'rgba(124,92,255,0.22)',
     borderLeftWidth: 1,
     borderTopWidth: 1,
   },
@@ -249,63 +260,61 @@ const styles = StyleSheet.create({
   arrowDown: { bottom: -6 },
 
   menu: {
-    backgroundColor: '#14121E',
-    borderRadius: 16,
+    backgroundColor: 'rgba(15,16,22,0.96)',
+    borderRadius: 14,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
-    overflow: 'hidden',
+    borderColor: 'rgba(255,255,255,0.05)',
+    paddingVertical: 6,
+    paddingHorizontal: 6,
     shadowColor: '#000',
-    shadowOpacity: 0.35,
-    shadowRadius: 18,
+    shadowOpacity: 0.28,
+    shadowRadius: 16,
     shadowOffset: { width: 0, height: 12 },
     elevation: ELEVATION,
   },
   titleContainer: {
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(255,255,255,0.08)',
-    backgroundColor: 'rgba(124,92,255,0.12)',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    marginBottom: 6,
   },
   title: {
-    color: '#E5E7FF',
-    fontSize: 13,
+    color: '#E6E8FF',
+    fontSize: 11,
     fontWeight: '700',
-    fontFamily: 'Lato-Bold',
     textAlign: 'center',
     textTransform: 'uppercase',
     letterSpacing: 0.6,
+    fontFamily: 'Lato-Bold',
   },
 
   item: {
-    height: ITEM_HEIGHT,
-    paddingHorizontal: 16,
+    minHeight: ITEM_HEIGHT,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-    backgroundColor: 'transparent',
-  },
-  itemDivider: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(255,255,255,0.06)',
+    borderBottomColor: 'rgba(255,255,255,0.08)',
   },
   itemSelected: {
-    backgroundColor: 'rgba(124,92,255,0.18)',
+    backgroundColor: 'rgba(124,92,255,0.12)',
   },
-  itemIcon: {
-    width: 28,
-    height: 28,
-    borderRadius: 6,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(108,93,255,0.22)',
+  itemLast: { borderBottomWidth: 0 },
+  itemText: { flex: 1, gap: 2 },
+  itemLabel: {
+    color: '#F4F6FD',
+    fontSize: 15,
+    fontFamily: 'Lato-Bold',
+    flexShrink: 1,
   },
-  itemIconGlyph: { fontSize: 16 },
-  itemLabel: { color: '#F9FAFF', fontSize: 14, fontWeight: '700' },
-  itemLabelSelected: { color: '#D8CBFF' },
-  itemSubLabel: { color: 'rgba(229,231,235,0.7)', fontSize: 11, marginTop: 2, textTransform: 'uppercase', letterSpacing: 0.5 },
-  checkWrap: { paddingLeft: 8 },
-  check: { color: '#D8CBFF', fontSize: 16, fontWeight: '800' },
+  itemLabelSelected: { color: '#FFFFFF' },
+  itemProvider: {
+    color: 'rgba(214,220,232,0.62)',
+    fontSize: 11,
+    fontFamily: 'Lato-Regular',
+  },
+  checkGlyph: { color: '#FFFFFF', fontSize: 12, fontWeight: '700', marginLeft: 6 },
 });
 
 export default ModelMenu;

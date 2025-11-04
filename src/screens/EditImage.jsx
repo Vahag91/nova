@@ -1,20 +1,19 @@
-import React, { useMemo, useState, useEffect, useCallback } from 'react';
+import React, { useMemo, useState, useEffect, useCallback, useRef } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Pressable,
   FlatList,
-  ImageBackground,
   TextInput,
   Keyboard,
   Platform,
   ScrollView,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SvgIcon from '../components/SvgIcon';
-import { useImagesStore } from '../state/useImagesStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice';
 import { ensureDeviceId } from '../lib/deviceId';
@@ -29,11 +28,23 @@ import Reanimated, {
   Easing,
   KeyboardState,
 } from 'react-native-reanimated';
+import ModelMenu from '../components/image-studio/ModelMenu';
+import CreateImageGenerating from '../components/create-image/CreateImageGenerating';
+import { getModelVisuals, hexToRgba } from '../utils/modelVisuals';
 
 const STYLES = [
   { id: 'photoreal', name: 'Photoreal', image: require('../../assets/images/createstudio/photoreal.webp'), cost: 3, selected: true },
   { id: 'anime', name: 'Anime', image: require('../../assets/images/createstudio/anime.webp'), cost: 2 },
-  { id: 'render3d', name: '3D', image: require('../../assets/images/createstudio/3dillistration.webp'), cost: 3 },
+  { id: 'cartoon', name: 'Cartoon', image: require('../../assets/images/createstudio/cartoon.webp'), cost: 2 },
+  { id: 'sketch', name: 'Sketch', image: require('../../assets/images/createstudio/sketch.webp'), cost: 1 },
+  { id: 'cyberpunk', name: 'Cyberpunk', image: require('../../assets/images/createstudio/cyberpunk.webp'), cost: 2 },
+  { id: 'steampunk', name: 'Steampunk', image: require('../../assets/images/createstudio/steampunk.webp'), cost: 2 },
+  { id: 'illustration_3d', name: '3D Illustration', image: require('../../assets/images/createstudio/3dillistration.webp'), cost: 3 },
+  { id: 'dark_fantasy', name: 'Dark Fantasy', image: require('../../assets/images/createstudio/darkfantasy.webp'), cost: 3 },
+  { id: 'vintage_film', name: 'Vintage Film', image: require('../../assets/images/createstudio/vintage.webp'), cost: 1 },
+  { id: 'pastel', name: 'Pastel Aesthetic', image: require('../../assets/images/createstudio/pastel.webp'), cost: 1 },
+  { id: 'neon_glow', name: 'Neon Glow', image: require('../../assets/images/createstudio/neo.webp'), cost: 2 },
+  { id: 'epic_landscape', name: 'Epic Landscape', image: require('../../assets/images/createstudio/epic.webp'), cost: 3 },
 ];
 
 const STARTER_PROMPTS = [
@@ -43,18 +54,10 @@ const STARTER_PROMPTS = [
 ];
 
 const ASPECTS = [
-  { key: '1:1', size: '1024x1024' },
-  { key: '3:4', size: '768x1024' },
-  { key: '16:9', size: '1024x576' },
+  { key: '1:1', size: '1024x1024', label: 'Square', glyph: { width: 16, height: 16 } },
+  { key: '16:9', size: '1024x576', label: 'Landscape', glyph: { width: 20, height: 11 } },
+  { key: '3:4', size: '768x1024', label: 'Portrait', glyph: { width: 11, height: 20 } },
 ];
-
-function glyphActive(key) {
-  return {
-    borderColor: '#7C5CFF',
-    width: key === '3:4' ? 16 : key === '16:9' ? 24 : 20,
-    height: key === '3:4' ? 20 : key === '16:9' ? 12 : 20,
-  };
-}
 
 export default function EditImage({ navigation }) {
   const insets = useSafeAreaInsets();
@@ -85,16 +88,48 @@ export default function EditImage({ navigation }) {
     return first ? first[0] : 'runware-flux-dev';
   }, [models]);
 
-  const runImg2Img = useImagesStore(s => s.runImg2Img);
+  const imageModels = useMemo(() => {
+    const entries = Object.entries(models || {}).filter(([, v]) => v?.caps?.imageGen);
+    if (!entries.length) {
+      return [
+        {
+          key: defaultModel,
+          display: { name: defaultModel },
+          provider: 'custom',
+        },
+      ];
+    }
+    return entries.map(([key, value]) => ({
+      key,
+      display: value?.display || { name: key },
+      provider: value?.provider || 'custom',
+    }));
+  }, [models, defaultModel]);
 
+  const [selectedModel, setSelectedModel] = useState(defaultModel);
+  const [modelMenuOpen, setModelMenuOpen] = useState(false);
+  const modelButtonRef = useRef(null);
+  const selectedModelDisplay = useMemo(
+    () => imageModels.find(m => m.key === selectedModel),
+    [imageModels, selectedModel],
+  );
+  const modelVisuals = useMemo(
+    () => getModelVisuals(selectedModelDisplay?.provider),
+    [selectedModelDisplay?.provider],
+  );
+  const [generatorVisible, setGeneratorVisible] = useState(false);
+  const [generatorPayload, setGeneratorPayload] = useState(null);
   const [selectedStyle, setSelectedStyle] = useState(STYLES.find(s => s.selected)?.id || STYLES[0].id);
   const [aspect, setAspect] = useState(ASPECTS[0].key);
-  const [guidance, setGuidance] = useState(7.5);
-  const [strength, setStrength] = useState(0.85);
+  const strength = 0.85;
+  const guidance = 7.5;
   const [prompt, setPrompt] = useState('');
   const [busy, setBusy] = useState(false);
   const [imageUri, setImageUri] = useState('');
-  const [advancedOpen, setAdvancedOpen] = useState(true);
+
+  useEffect(() => {
+    setSelectedModel(defaultModel);
+  }, [defaultModel]);
 
   const headerStyle = useMemo(() => [styles.header, { paddingTop: Math.max(insets.top, 12) + 6 }], [insets.top]);
   const footerInset = Math.max(insets.bottom, 14);
@@ -115,7 +150,11 @@ export default function EditImage({ navigation }) {
   const footerStyle = useMemo(() => [styles.footer, { paddingBottom: footerInset }], [footerInset]);
   const bottomScrollPadding = useMemo(() => 56 + 10 + footerInset + 12, [footerInset]);
 
-  const selectedCost = useMemo(() => (STYLES.find(s => s.id === selectedStyle)?.cost || 2), [selectedStyle]);
+  const selectedStyleData = useMemo(
+    () => STYLES.find(s => s.id === selectedStyle),
+    [selectedStyle],
+  );
+  const selectedCost = selectedStyleData?.cost ?? 2;
   const selectedSize = useMemo(() => (ASPECTS.find(a => a.key === aspect)?.size || '1024x1024'), [aspect]);
 
   const pickImage = useCallback(async () => {
@@ -129,48 +168,69 @@ export default function EditImage({ navigation }) {
     if (asset?.uri) setImageUri(asset.uri);
   }, []);
 
-  const onGenerate = useCallback(async () => {
+  const onGenerate = useCallback(() => {
     if (!imageUri || busy) return;
     setBusy(true);
-    try {
-      await runImg2Img({
-        prompt: prompt.trim() || '__BLANK__',
-        model: defaultModel,
-        size: selectedSize,
-        seedImage: imageUri,
-        strength,
-        CFGScale: guidance,
-        outputType: 'URL',
-        outputFormat: 'JPG',
-        outputQuality: 95,
-      });
-      Keyboard.dismiss();
-      navigation.navigate('ImagesStudio');
-    } catch (e) {
-    } finally {
-      setBusy(false);
+    const basePrompt = prompt.trim();
+    const styleTag = selectedStyleData?.name ? `${selectedStyleData.name} style` : null;
+    let promptWithStyle = basePrompt;
+    if (styleTag && basePrompt) {
+      promptWithStyle = `${styleTag}, ${basePrompt}`;
+    } else if (styleTag && !basePrompt) {
+      promptWithStyle = styleTag;
     }
-  }, [imageUri, prompt, busy, runImg2Img, defaultModel, selectedSize, strength, guidance, navigation]);
+    const payload = {
+      prompt: promptWithStyle || '__BLANK__',
+      originalPrompt: basePrompt,
+      styleId: selectedStyleData?.id,
+      styleName: selectedStyleData?.name,
+      model: selectedModel,
+      size: selectedSize,
+      mode: 'img2img',
+      seedImage: imageUri,
+      strength,
+      CFGScale: guidance,
+    };
+    setGeneratorPayload(payload);
+    setGeneratorVisible(true);
+    Keyboard.dismiss();
+  }, [
+    imageUri,
+    busy,
+    prompt,
+    selectedStyleData,
+    selectedModel,
+    selectedSize,
+    strength,
+    guidance,
+  ]);
 
-  const renderStyle = useCallback(({ item }) => {
-    const selected = item.id === selectedStyle;
-    return (
-      <Pressable onPress={() => setSelectedStyle(item.id)} style={[styles.styleItem, selected && styles.styleItemSelected]}>
-        <View style={[styles.styleThumbWrap, selected && styles.styleThumbSelected]}> 
-          <Image
-            source={typeof item.image === 'number' ? item.image : { uri: item.image }}
-            style={[styles.styleThumb, styles.styleThumbImage]}
-            fadeDuration={0}
-          />
-          <View style={styles.costPill}>
-            <Text style={styles.costPillText}>{item.cost}</Text>
-            <Text style={[styles.costPillText, styles.costPillDiamond]}> ◈</Text>
+  const renderStyle = useCallback(
+    ({ item }) => {
+      const selected = item.id === selectedStyle;
+      return (
+        <Pressable
+          onPress={() => setSelectedStyle(item.id)}
+          style={[styles.styleItem, selected && styles.styleItemSelected]}
+        >
+          <View style={[styles.styleThumbWrap, selected && styles.styleThumbSelected]}>
+            <Image
+              source={typeof item.image === 'number' ? item.image : { uri: item.image }}
+              style={styles.styleThumb}
+              fadeDuration={0}
+            />
           </View>
-        </View>
-        <Text style={[styles.styleName, selected && styles.styleNameSelected]} numberOfLines={1}>{item.name}</Text>
-      </Pressable>
-    );
-  }, [selectedStyle]);
+          <Text
+            style={[styles.styleName, selected && styles.styleNameSelected]}
+            numberOfLines={1}
+          >
+            {item.name}
+          </Text>
+        </Pressable>
+      );
+    },
+    [selectedStyle],
+  );
 
   const keyStyle = useCallback((it) => it.id, []);
   const renderChip = useCallback(({ item }) => (
@@ -179,6 +239,12 @@ export default function EditImage({ navigation }) {
     </Pressable>
   ), []);
   const keyChip = useCallback((it, idx) => `${idx}-${it}` , []);
+
+  const handleGeneratorClose = useCallback(() => {
+    setGeneratorVisible(false);
+    setGeneratorPayload(null);
+    setBusy(false);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -222,10 +288,39 @@ export default function EditImage({ navigation }) {
             )}
           </View>
 
+          {/* Model selector */}
+          <View style={styles.modelWrap}>
+            <Pressable
+              ref={modelButtonRef}
+              onPress={() => setModelMenuOpen(true)}
+              style={styles.modelButton}
+              hitSlop={6}
+            >
+              <View style={styles.modelSimpleInfo}>
+                <View
+                  style={[
+                    styles.modelSimpleIcon,
+                    {
+                      borderColor: hexToRgba(modelVisuals.accent, 0.35),
+                      backgroundColor: hexToRgba(modelVisuals.accent, 0.18),
+                    },
+                  ]}
+                >
+                  <SvgIcon name={modelVisuals.icon} size={18} color="#FFFFFF" />
+                </View>
+                <Text style={styles.modelButtonName} numberOfLines={1}>
+                  {selectedModelDisplay?.display?.name || selectedModel}
+                </Text>
+              </View>
+              <View style={styles.modelButtonChevron}>
+                <SvgIcon name="chevron-down" size={16} color="rgba(255,255,255,0.9)" />
+              </View>
+            </Pressable>
+          </View>
+
           {/* Choose a Style */}
           <View style={styles.rowBetween}> 
             <Text style={styles.sectionLabel}>Choose a Style</Text>
-            <Pressable hitSlop={6}><Text style={styles.link}>Browse more</Text></Pressable>
           </View>
           <FlatList
             data={STYLES}
@@ -253,55 +348,38 @@ export default function EditImage({ navigation }) {
             removeClippedSubviews
           />
 
-          {/* Advanced */}
-          <View style={styles.advancedWrap}>
-            <Pressable style={styles.advancedHeader} onPress={() => setAdvancedOpen(o => !o)}>
-              <Text style={styles.sectionLabel}>Advanced</Text>
-            </Pressable>
-            {advancedOpen && (
-              <View style={styles.advancedContent}>
-                <Text style={styles.advLabel}>Aspect Ratio</Text>
-                <View style={styles.aspectRow}>
-                  {ASPECTS.map((a) => {
-                    const active = aspect === a.key;
-                    return (
-                      <Pressable key={a.key} onPress={() => setAspect(a.key)} style={[styles.aspectBtn, active && styles.aspectBtnActive]}>
-                        <View style={[styles.aspectGlyph, active && glyphActive(a.key)]} />
-                        <Text style={[styles.aspectText, active && styles.aspectTextActive]}>{a.key}</Text>
-                      </Pressable>
-                    );
-                  })}
-                </View>
-
-                <View style={styles.guidanceRow}>
-                  <Text style={styles.advLabel}>Strength</Text>
-                  <Text style={styles.advValue}>{strength.toFixed(2)}</Text>
-                </View>
-                <View style={styles.stepperRow}>
-                  <Pressable style={styles.stepBtn} onPress={() => setStrength(s => Math.max(0.1, +(s - 0.05).toFixed(2)))}>
-                    <Text style={styles.stepBtnText}>−</Text>
-                  </Pressable>
-                  <Pressable style={styles.stepBtn} onPress={() => setStrength(s => Math.min(1.0, +(s + 0.05).toFixed(2)))}>
-                    <Text style={styles.stepBtnText}>+</Text>
-                  </Pressable>
-                </View>
-
-                <View style={styles.guidanceRow}>
-                  <Text style={styles.advLabel}>Guidance</Text>
-                  <Text style={styles.advValue}>{guidance.toFixed(1)}</Text>
-                </View>
-                <View style={styles.stepperRow}>
-                  <Pressable style={styles.stepBtn} onPress={() => setGuidance(g => Math.max(0, +(g - 0.5).toFixed(1)))}>
-                    <Text style={styles.stepBtnText}>−</Text>
-                  </Pressable>
-                  <Pressable style={styles.stepBtn} onPress={() => setGuidance(g => Math.min(10, +(g + 0.5).toFixed(1)))}>
-                    <Text style={styles.stepBtnText}>+</Text>
-                  </Pressable>
-                </View>
-              </View>
-            )}
+          <Text style={[styles.sectionLabel, styles.mt6]}>Aspect Ratio</Text>
+          <View style={styles.aspectList}>
+            {ASPECTS.map(a => {
+              const active = aspect === a.key;
+              return (
+                <Pressable
+                  key={a.key}
+                  onPress={() => setAspect(a.key)}
+                  style={[styles.aspectCard, active && styles.aspectCardActive]}
+                >
+                  <View
+                    style={[styles.aspectGlyphWrap, active && styles.aspectGlyphWrapActive]}
+                  >
+                    <View
+                      style={[
+                        styles.aspectGlyphRect,
+                        { width: a.glyph.width, height: a.glyph.height },
+                        active && styles.aspectGlyphRectActive,
+                      ]}
+                    />
+                  </View>
+                  <Text
+                    style={[styles.aspectKey, active && styles.aspectKeyActive]}
+                    numberOfLines={1}
+                  >
+                    {a.label}
+                  </Text>
+                </Pressable>
+              );
+            })}
           </View>
-          {/* Prompt (moved below advanced) */}
+          {/* Prompt */}
           <View style={styles.promptWrap}>
             <TextInput
               style={styles.prompt}
@@ -322,10 +400,50 @@ export default function EditImage({ navigation }) {
       </ScrollView>
 
       <Reanimated.View style={[footerStyle, animatedFooterStyle]}>
-        <Pressable onPress={onGenerate} disabled={!imageUri || busy} style={[styles.generateBtn, (!imageUri || busy) && styles.generateBtnDisabled]}>
-          <Text style={styles.generateBtnText}>Generate ({selectedCost} ◈)</Text>
+        <Pressable
+          onPress={onGenerate}
+          disabled={!imageUri || busy}
+          style={[styles.generateBtn, (!imageUri || busy) && styles.generateBtnDisabled]}
+        >
+          <View style={styles.generateContent}>
+            <View style={styles.generateIconWrap}>
+              {busy ? (
+                <ActivityIndicator size="small" color="#FFFFFF" />
+              ) : (
+                <SvgIcon name="stars" size={18} color="#FFFFFF" />
+              )}
+            </View>
+            <Text style={styles.generateBtnText}>{busy ? 'Applying…' : 'Generate'}</Text>
+            <View style={styles.generateCoinsWrap}>
+              <SvgIcon
+                name="diamond"
+                size={12}
+                color={busy ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.85)'}
+              />
+              <Text
+                style={[styles.generateCoinsText, busy && { color: 'rgba(255,255,255,0.5)' }]}
+              >
+                {busy ? '…' : selectedCost}
+              </Text>
+            </View>
+          </View>
         </Pressable>
       </Reanimated.View>
+
+      <ModelMenu
+        visible={modelMenuOpen}
+        onClose={() => setModelMenuOpen(false)}
+        model={selectedModel}
+        onModelChange={setSelectedModel}
+        imageModels={imageModels}
+        buttonRef={modelButtonRef}
+      />
+
+      <CreateImageGenerating
+        visible={generatorVisible}
+        payload={generatorPayload}
+        onClose={handleGeneratorClose}
+      />
     </View>
   );
 }
@@ -341,9 +459,33 @@ const styles = StyleSheet.create({
   balanceText: { color: '#7C5CFF', fontSize: 14, fontWeight: '800' },
 
   content: { paddingHorizontal: 16, paddingTop: 16, gap: 16 },
+  modelWrap: { gap: 8 },
+  modelButton: {
+    minHeight: 60,
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#0B0B0E',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.08)',
+  },
+  modelSimpleInfo: { flexDirection: 'row', alignItems: 'center', gap: 12, flex: 1 },
+  modelSimpleIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+  },
+  modelButtonName: { color: '#FFFFFF', fontSize: 15, fontWeight: '700', flexShrink: 1 },
+  modelButtonChevron: { marginLeft: 12 },
   rowBetween: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   sectionLabel: { color: 'rgba(255,255,255,0.75)', fontSize: 14, fontWeight: '600' },
-  link: { color: '#7C5CFF', fontSize: 13, fontWeight: '700' },
+  mt6: { marginTop: 18 },
 
   uploadCard: { borderRadius: 16, backgroundColor: '#17171C', padding: 12 },
   uploadEmpty: { height: 160, borderRadius: 12, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)', alignItems: 'center', justifyContent: 'center', gap: 8 },
@@ -354,16 +496,25 @@ const styles = StyleSheet.create({
   uploadBtnText: { color: '#FFFFFF', fontSize: 14, fontWeight: '700' },
 
   stylesList: { paddingTop: 4, paddingBottom: 6, gap: 12 },
-  styleItem: { width: 128, height: 128, marginRight: 12 },
+  styleItem: { width: 140, marginRight: 12, marginBottom: 12, alignItems: 'center' },
   styleItemSelected: {},
-  styleThumbWrap: { borderRadius: 12, overflow: 'hidden', backgroundColor: '#1A1A1D', height: '100%' },
-  styleThumbSelected: { borderWidth: 2, borderColor: '#7C5CFF' },
-  styleThumb: { width: '100%', aspectRatio: 1 },
-  styleThumbImage: { borderRadius: 12 },
-  costPill: { position: 'absolute', right: 6, bottom: 6, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: 999, paddingHorizontal: 8, paddingVertical: 2 },
-  costPillText: { color: '#FFFFFF', fontSize: 11, fontWeight: '700' },
-  costPillDiamond: { color: '#7C5CFF' },
-  styleName: { color: '#FFFFFF', fontSize: 12, marginTop: 6, textAlign: 'center' },
+  styleThumbWrap: {
+    width: '100%',
+    borderRadius: 18,
+    overflow: 'hidden',
+    backgroundColor: '#11131B',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.12)',
+    height: 128,
+  },
+  styleThumbSelected: { borderColor: '#7C5CFF', borderWidth: 2 },
+  styleThumb: { width: '100%', height: '100%', borderRadius: 18, resizeMode: 'cover' },
+  styleName: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    marginTop: 8,
+    textAlign: 'center',
+  },
   styleNameSelected: { fontWeight: '800' },
 
   chip: { height: 40, paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center', borderRadius: 999, backgroundColor: '#17171C', marginRight: 10 },
@@ -374,21 +525,104 @@ const styles = StyleSheet.create({
   prompt: { minHeight: 100, borderRadius: 12, padding: 14, backgroundColor: '#17171C', color: '#FFFFFF', fontSize: 16 },
   promptClearBtn: { position: 'absolute', right: 10, top: 10, width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: 'transparent' },
 
-  advancedWrap: { marginTop: 8 },
-  advancedHeader: { paddingVertical: 10 },
-  advancedContent: { gap: 12, paddingTop: 6, paddingBottom: 4 },
-  advLabel: { color: 'rgba(255,255,255,0.75)', fontSize: 13, fontWeight: '600', marginBottom: 4 },
-  advValue: { color: '#FFFFFF', fontSize: 13, fontWeight: '700' },
-  aspectRow: { flexDirection: 'row', gap: 10 },
-  aspectBtn: { flex: 1, height: 64, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: '#17171C' },
-  aspectBtnActive: { borderWidth: 2, borderColor: '#7C5CFF' },
-  aspectGlyph: { width: 20, height: 12, borderWidth: 2, borderColor: 'rgba(255,255,255,0.5)', borderRadius: 3, marginBottom: 6 },
-  aspectText: { color: 'rgba(255,255,255,0.75)', fontSize: 12 },
-  aspectTextActive: { color: '#FFFFFF', fontWeight: '700' },
+  aspectList: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 12,
+  },
+  aspectCard: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 11,
+    backgroundColor: '#15161D',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.07)',
+    minHeight: 44,
+  },
+  aspectCardActive: {
+    borderColor: '#7C5CFF',
+    backgroundColor: 'rgba(124,92,255,0.14)',
+  },
+  aspectGlyphWrap: {
+    width: 22,
+    height: 22,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  aspectGlyphWrapActive: {},
+  aspectGlyphRect: {
+    borderWidth: 1,
+    borderRadius: 3,
+    borderColor: 'rgba(255,255,255,0.55)',
+  },
+  aspectGlyphRectActive: {
+    borderColor: '#FFFFFF',
+    backgroundColor: '#FFFFFF',
+  },
+  aspectKey: {
+    color: 'rgba(255,255,255,0.78)',
+    fontSize: 12,
+    fontWeight: '700',
+    marginLeft: 9,
+  },
+  aspectKeyActive: { color: '#FFFFFF' },
 
   scrollContent: { paddingBottom: 24 },
   footer: { position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(11,11,14,0.86)', paddingHorizontal: 16, paddingTop: 10 },
-  generateBtn: { height: 56, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: '#7C5CFF', ...Platform.select({ ios: { shadowColor: '#7C5CFF', shadowOpacity: 0.3, shadowRadius: 12, shadowOffset: { width: 0, height: 6 } }, android: { elevation: 3 } }) },
-  generateBtnDisabled: { opacity: 0.6 },
-  generateBtnText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
+  generateBtn: {
+    height: 60,
+    borderRadius: 16,
+    backgroundColor: '#7C5CFF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#7C5CFF',
+        shadowOpacity: 0.28,
+        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 10 },
+      },
+      android: { elevation: 3 },
+    }),
+  },
+  generateBtnDisabled: { opacity: 0.65 },
+  generateContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 18,
+  },
+  generateIconWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    backgroundColor: 'rgba(255,255,255,0.18)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  generateBtnText: {
+    flex: 1,
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '800',
+    letterSpacing: 0.2,
+    textAlign: 'center',
+  },
+  generateCoinsWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  generateCoinsText: {
+    color: 'rgba(255,255,255,0.82)',
+    fontSize: 13,
+    fontWeight: '700',
+  },
 });

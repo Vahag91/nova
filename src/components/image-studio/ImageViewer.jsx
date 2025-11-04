@@ -78,30 +78,43 @@ const ImageViewer = memo(({
         {/* Foreground catch to close when tapping anywhere outside actions */}
         <Pressable style={styles.overlayTouch} onPress={handleClose} />
 
-        {/* Top right icon cluster */}
-        <View style={styles.headerIconsWrap}>
-          <Pressable onPress={handleClose} hitSlop={12} style={styles.headerIconBtn} accessibilityLabel="Close">
+        {/* Top center close */}
+        <View style={styles.headerCloseWrap}>
+          <Pressable
+            onPress={handleClose}
+            hitSlop={12}
+            style={styles.headerIconBtn}
+            accessibilityLabel="Close"
+          >
             <SvgIcon name="close" size={24} color="#FFFFFF" />
           </Pressable>
         </View>
         <View style={styles.bottomBar}>
           <View style={styles.bottomRow}>
-            <Pressable onPress={handleDelete} style={styles.bottomItem} accessibilityLabel="Delete image">
-              <SvgIcon name="delete" size={28} color="#FFFFFF" />
+            <View style={styles.bottomItem}>
+              <Pressable onPress={handleDelete} style={[styles.bottomIconButton, styles.bottomIconButtonDestructive]} accessibilityLabel="Delete image">
+                <SvgIcon name="delete" size={22} color="#FFD0D0" />
+              </Pressable>
               <Text style={styles.bottomLabel}>Delete</Text>
-            </Pressable>
-            <Pressable onPress={() => {}} style={styles.bottomItem} accessibilityLabel="Edit">
-              <SvgIcon name="photo" size={28} color="#FFFFFF" />
+            </View>
+            <View style={styles.bottomItem}>
+              <Pressable onPress={() => {}} style={styles.bottomIconButton} accessibilityLabel="Edit">
+                <SvgIcon name="photo" size={22} color="#DDE4FF" />
+              </Pressable>
               <Text style={styles.bottomLabel}>Edit</Text>
-            </Pressable>
-            <Pressable onPress={handleDownload} style={styles.bottomItem} accessibilityLabel="Save">
-              <SvgIcon name="download" size={28} color="#FFFFFF" />
+            </View>
+            <View style={styles.bottomItem}>
+              <Pressable onPress={handleDownload} style={styles.bottomIconButton} accessibilityLabel="Save">
+                <SvgIcon name="download" size={22} color="#DDE4FF" />
+              </Pressable>
               <Text style={styles.bottomLabel}>Save</Text>
-            </Pressable>
-            <Pressable onPress={handleShare} style={styles.bottomItem} accessibilityLabel="Share">
-              <SvgIcon name="share-upload" size={28} color="#FFFFFF" />
+            </View>
+            <View style={styles.bottomItem}>
+              <Pressable onPress={handleShare} style={[styles.bottomIconButton, styles.bottomIconButtonPrimary]} accessibilityLabel="Share">
+                <SvgIcon name="share-upload" size={22} color="#FFFFFF" />
+              </Pressable>
               <Text style={styles.bottomLabel}>Share</Text>
-            </Pressable>
+            </View>
           </View>
         </View>
       </View>
@@ -112,7 +125,7 @@ const ImageViewer = memo(({
 const styles = {
   viewerBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.9)',
+    backgroundColor: 'rgba(11,11,14,0.95)',
   },
   viewerCenter: {
     flexGrow: 1,
@@ -124,16 +137,45 @@ const styles = {
     height: '100%',
     transform: [{ scale: 1.06 }],
   },
-  headerIconsWrap: { position: 'absolute', top: '18%', right: 12, flexDirection: 'row', gap: 12, zIndex: 3 },
-  headerIconBtn: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.4)' },
-  bottomBar: { position: 'absolute', left: 0, right: 0, bottom: '12%', paddingHorizontal: 12, backgroundColor: 'transparent' },
-  bottomRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' },
-  bottomItem: { alignItems: 'center', justifyContent: 'center', gap: 6, paddingVertical: 8 },
-  bottomLabel: { color: '#FFFFFF', fontSize: 12 },
+  headerCloseWrap: {
+    position: 'absolute',
+    top: '12%',
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    zIndex: 3,
+  },
+  headerIconBtn: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.35)',
+  },
+  bottomBar: { position: 'absolute', left: 0, right: 0, bottom: '10%', alignItems: 'center' },
+  bottomRow: { flexDirection: 'row', gap: 18, alignItems: 'center', justifyContent: 'center' },
+  bottomItem: { alignItems: 'center', gap: 6 },
+  bottomIconButton: {
+    width: 54,
+    height: 54,
+    borderRadius: 20,
+    backgroundColor: '#17171C',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomIconButtonDestructive: {
+    backgroundColor: 'rgba(103,27,36,0.85)',
+    borderColor: 'rgba(255,120,120,0.4)',
+  },
+  bottomIconButtonPrimary: {
+    backgroundColor: '#7C5CFF',
+    borderColor: 'rgba(124,92,255,0.75)',
+  },
+  bottomLabel: { color: 'rgba(255,255,255,0.75)', fontSize: 11 },
   overlayTouch: { ...StyleSheet.absoluteFillObject, zIndex: 2 },
-  actionRow: { flexDirection: 'row', gap: 24 },
-  actionBtn: { paddingHorizontal: 0, paddingVertical: 0 },
-  iconBtn: { paddingHorizontal: 6, paddingVertical: 6, alignItems: 'center', justifyContent: 'center' },
 };
 
 export default ImageViewer;

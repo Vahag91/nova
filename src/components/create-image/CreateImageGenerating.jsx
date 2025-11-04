@@ -1,16 +1,20 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Alert,
   Animated,
   Image,
   Modal,
   Pressable,
+  Share,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import SvgIcon from '../SvgIcon';
 import LinearGradient from 'react-native-linear-gradient';
 import { useImagesStore } from '../../state/useImagesStore';
 import { normalizeImageUri } from '../../lib/imageUtils';
+import { toLocalPath } from '../../lib/imageDownloader';
 
 const STEP = {
   APPLYING: 'applying',
@@ -31,14 +35,21 @@ const DEFAULT_OUTPUT = {
 
 const TRACK_WIDTH = 220;
 
-export default function CreateImageGenerating({ visible, payload, onClose }) {
+export default function CreateImageGenerating({
+  visible,
+  payload,
+  onClose,
+}) {
   const createJob = useImagesStore(s => s.createJob);
 
   const [step, setStep] = useState(STEP.APPLYING);
   const [imageUri, setImageUri] = useState(null);
   const [error, setError] = useState(null);
+  const [phaseIndex, setPhaseIndex] = useState(0);
+  const [retryCount, setRetryCount] = useState(0);
+  const [jobMeta, setJobMeta] = useState(null);
   const progress = useRef(new Animated.Value(0)).current;
-  const pulse = useRef(new Animated.Value(0)).current;
+  const spinner = useRef(new Animated.Value(0)).current;
 
   const jobPayload = useMemo(() => {
     if (!payload) return null;
@@ -61,9 +72,11 @@ export default function CreateImageGenerating({ visible, payload, onClose }) {
       setStep(STEP.APPLYING);
       setImageUri(null);
       setError(null);
+      setPhaseIndex(0);
+      setJobMeta(null);
       progress.setValue(0);
-      pulse.stopAnimation();
-      pulse.setValue(0);
+      spinner.stopAnimation();
+      spinner.setValue(0);
       return;
     }
     if (!jobPayload) return;
@@ -72,8 +85,9 @@ export default function CreateImageGenerating({ visible, payload, onClose }) {
     setStep(STEP.APPLYING);
     setImageUri(null);
     setError(null);
+    setPhaseIndex(0);
+    setJobMeta(null);
     progress.setValue(0);
-    pulse.setValue(0);
 
     const warmup = Animated.timing(progress, {
       toValue: 0.7,
@@ -82,17 +96,21 @@ export default function CreateImageGenerating({ visible, payload, onClose }) {
     });
     warmup.start();
 
-    const pulseLoop = Animated.loop(
-      Animated.timing(pulse, {
+    const spinnerLoop = Animated.loop(
+      Animated.timing(spinner, {
         toValue: 1,
-        duration: 2600,
+        duration: 2400,
         useNativeDriver: true,
       }),
     );
-    pulseLoop.start();
+    spinner.setValue(0);
+    spinnerLoop.start();
+
+    setPhaseIndex(1); // Applying style
 
     (async () => {
       try {
+        setPhaseIndex(2); // Generating
         const job = await createJob(jobPayload);
         if (cancelled) return;
 
@@ -106,6 +124,13 @@ export default function CreateImageGenerating({ visible, payload, onClose }) {
           job?.images?.[0]?.url || job?.images?.[0]?.originalUrl || null;
         const normalized = firstImage ? normalizeImageUri(firstImage) : null;
         setImageUri(normalized);
+        setJobMeta({
+          jobId: job?.id || null,
+          imageId: job?.images?.[0]?.id || null,
+          imagesCount: Array.isArray(job?.images) ? job.images.length : 1,
+          payload: jobPayload,
+        });
+        setPhaseIndex(3); // Finishing
         setStep(STEP.RESULT);
       } catch (err) {
         if (cancelled) return;
@@ -117,96 +142,162 @@ export default function CreateImageGenerating({ visible, payload, onClose }) {
     return () => {
       cancelled = true;
       warmup.stop();
-      pulseLoop.stop();
+      spinnerLoop.stop();
     };
-  }, [visible, jobPayload, createJob, progress, pulse]);
+  }, [visible, jobPayload, createJob, progress, spinner, retryCount]);
 
   const progressWidth = progress.interpolate({
     inputRange: [0, 1],
     outputRange: [0, TRACK_WIDTH],
   });
 
-  const pulseScaleOuter = pulse.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [1, 1.5, 1],
+  const spinnerRotate = spinner.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
   });
-  const pulseScaleInner = pulse.interpolate({
+  const spinnerScale = spinner.interpolate({
     inputRange: [0, 0.5, 1],
-    outputRange: [1, 1.25, 1],
-  });
-  const pulseOpacity = pulse.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [0.25, 0.9, 0.25],
+    outputRange: [0.9, 1.05, 0.9],
   });
 
   const handleClose = () => {
+    setJobMeta(null);
     try {
       onClose?.();
     } catch {}
   };
 
-  const handleSave = () => {
-    console.log('[CreateImageGenerating] save image');
+  const handleSave = async () => {
+    if (!imageUri) return;
+    try {
+      const local = await toLocalPath(imageUri);
+      await Share.share({ url: local, message: local });
+    } catch (err) {
+      Alert.alert('Could not save', 'Please try again.');
+    }
   };
 
-  const handleShare = () => {
-    console.log('[CreateImageGenerating] share image');
+  const handleShare = async () => {
+    if (!imageUri) return;
+    try {
+      await Share.share({ url: imageUri, message: imageUri });
+    } catch (err) {
+      Alert.alert('Could not share', 'Please try again.');
+    }
   };
 
-  const handleUpscale = () => {
-    console.log('[CreateImageGenerating] upscale image');
-  };
+const deleteImage = useImagesStore(s => s.deleteImage);
+const deleteJob = useImagesStore(s => s.deleteJob);
+  const handleDelete = () => {
+    if (jobMeta?.jobId) {
+      const remaining = jobMeta?.imagesCount ?? Number.POSITIVE_INFINITY;
+      try {
+        if (remaining <= 1 && deleteJob) {
+          deleteJob(jobMeta.jobId);
+        } else if (jobMeta.imageId && deleteImage) {
+          deleteImage(jobMeta.jobId, jobMeta.imageId);
+        }
+      } catch {}
+  }
+  handleClose();
+};
 
-  const styleLabel = payload?.styleName || 'your chosen style';
+const handleRetry = () => {
+  if (!payload) return;
+  setStep(STEP.APPLYING);
+  setPhaseIndex(0);
+  setError(null);
+  setImageUri(null);
+  setJobMeta(null);
+  progress.setValue(0);
+  spinner.setValue(0);
+  setRetryCount(c => c + 1);
+};
+
+  const styleLabel = typeof payload?.styleName === 'string' && payload.styleName.length
+    ? payload.styleName
+    : 'your chosen style';
+  const phases = useMemo(
+    () => [
+      { label: `Blending in ${styleLabel}`, status: phaseIndex >= 1 ? 'active' : 'pending' },
+      { label: 'Painting the scene', status: phaseIndex >= 2 ? 'active' : 'pending' },
+      { label: 'Adding final polish', status: phaseIndex >= 3 ? 'active' : 'pending' },
+    ],
+    [phaseIndex, styleLabel],
+  );
+
+  const requestedSize = jobMeta?.payload?.size || payload?.size;
+  const previewAspectRatio = useMemo(() => {
+    if (typeof requestedSize === 'string') {
+      const match = requestedSize.trim().match(/^(\d+)\s*x\s*(\d+)$/i);
+      if (match) {
+        const width = Number(match[1]);
+        const height = Number(match[2]);
+        if (width > 0 && height > 0) {
+          return width / height;
+        }
+      }
+    }
+    return 3 / 4;
+  }, [requestedSize]);
 
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={handleClose}>
       <View style={styles.root}>
         {step === STEP.APPLYING && (
           <View style={styles.applyingContainer}>
-            <LinearGradient
-              colors={['rgba(7,10,23,0.95)', 'rgba(12,31,55,0.75)', 'rgba(7,10,23,0.95)']}
-              style={styles.applyingBackground}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-            />
-
-            <View style={styles.pulseStack}>
-              <Animated.View
-                style={[
-                  styles.pulseOuter,
-                  {
-                    transform: [{ scale: pulseScaleOuter }],
-                    opacity: pulseOpacity,
-                  },
-                ]}
-              />
-              <Animated.View
-                style={[
-                  styles.pulseInner,
-                  {
-                    transform: [{ scale: pulseScaleInner }],
-                    opacity: pulseOpacity,
-                  },
-                ]}
-              />
-              <LinearGradient colors={['#7C5CFF', '#3790FF']} style={styles.pulseCore}>
-                <Text style={styles.pulseGlyph}>✺</Text>
-              </LinearGradient>
+            <View style={styles.sheet}>
+              <View style={styles.sheetHeader}>
+                <Animated.View
+                  style={[
+                    styles.spinnerTrack,
+                    { transform: [{ rotate: spinnerRotate }, { scale: spinnerScale }] },
+                  ]}
+                />
+                <View style={styles.spinnerCenter}>
+                  <Text style={styles.spinnerGlyph}>✨</Text>
+                </View>
+              </View>
+              <View style={styles.sheetBody}>
+                <Text style={styles.sheetTitle}>Crafting your vision</Text>
+                <Text style={styles.sheetSubtitle}>
+                  Brief sip of server coffee while we blend {styleLabel.toLowerCase()} into the prompt.
+                </Text>
+                <View style={styles.phaseList}>
+                  {phases.map((phase, index) => {
+                    const isActive = phaseIndex >= index + 1;
+                    return (
+                      <View key={phase.label} style={styles.phaseRow}>
+                        <View
+                          style={[
+                            styles.phaseDot,
+                            isActive && styles.phaseDotActive,
+                            phaseIndex === index ? styles.phaseDotCurrent : null,
+                          ]}
+                        />
+                        <Text
+                          style={[
+                            styles.phaseLabel,
+                            isActive && styles.phaseLabelActive,
+                            phaseIndex === index ? styles.phaseLabelCurrent : null,
+                          ]}
+                        >
+                          {phase.label}
+                        </Text>
+                      </View>
+                    );
+                  })}
+                </View>
+              </View>
+              <View style={styles.sheetFooter}>
+                <View style={styles.progressTrack}>
+                  <Animated.View style={[styles.progressFill, { width: progressWidth }]} />
+                </View>
+                <Pressable onPress={handleClose} hitSlop={8}>
+                  <Text style={styles.cancelText}>Cancel</Text>
+                </Pressable>
+              </View>
             </View>
-
-            <Text style={styles.applyTitle}>Applying {styleLabel.toLowerCase()}…</Text>
-            <Text style={styles.applySubtitle}>
-              We’re refining your prompt to match the mood you selected.
-            </Text>
-
-            <View style={styles.progressTrack}>
-              <Animated.View style={[styles.progressFill, { width: progressWidth }]} />
-            </View>
-
-            <Pressable onPress={handleClose} style={styles.cancelBtn} hitSlop={8}>
-              <Text style={styles.cancelText}>Cancel</Text>
-            </Pressable>
           </View>
         )}
 
@@ -214,61 +305,87 @@ export default function CreateImageGenerating({ visible, payload, onClose }) {
           <View style={styles.errorContainer}>
             <Text style={styles.errorTitle}>Generation failed</Text>
             <Text style={styles.errorMessage}>{error}</Text>
-            <Pressable onPress={handleClose} style={styles.errorButton} hitSlop={8}>
-              <Text style={styles.errorButtonText}>Close</Text>
-            </Pressable>
+            <View style={styles.errorActions}>
+              <Pressable onPress={handleRetry} style={[styles.errorButton, styles.errorButtonPrimary]} hitSlop={8}>
+                <Text style={styles.errorButtonPrimaryText}>Retry</Text>
+              </Pressable>
+              <Pressable onPress={handleClose} style={styles.errorButton} hitSlop={8}>
+                <Text style={styles.errorButtonText}>Close</Text>
+              </Pressable>
+            </View>
           </View>
         )}
 
         {step === STEP.RESULT && (
           <View style={styles.resultContainer}>
             <LinearGradient
-              colors={['rgba(8,13,24,0.96)', 'rgba(8,13,24,0.6)', 'rgba(8,13,24,0.96)']}
+              colors={['rgba(10,13,20,0.95)', 'rgba(9,15,22,0.85)', 'rgba(7,10,18,0.95)']}
               style={styles.resultBackground}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
             />
 
-            <Pressable
-              onPress={handleClose}
-              style={styles.closeButton}
-              hitSlop={10}
-              accessibilityRole="button"
-              accessibilityLabel="Close"
-            >
-              <Text style={styles.closeIcon}>×</Text>
-            </Pressable>
+            <View style={styles.resultContent}>
+              <Pressable
+                onPress={handleClose}
+                style={styles.closeBadge}
+                hitSlop={10}
+                accessibilityRole="button"
+                accessibilityLabel="Close"
+              >
+                <Text style={styles.closeIcon}>×</Text>
+              </Pressable>
+              <View style={[styles.previewWrap, { aspectRatio: previewAspectRatio }]}>
+                <View style={styles.previewBorder} />
+                <Image
+                  source={{ uri: imageUri || FALLBACK_IMAGE }}
+                  resizeMode="cover"
+                  style={styles.resultImage}
+                />
+              </View>
 
-            <View style={styles.resultCard}>
-              <Image
-                source={{ uri: imageUri || FALLBACK_IMAGE }}
-                resizeMode="cover"
-                style={styles.resultImage}
-              />
-            </View>
+              <View style={styles.resultMeta}>
+                <Text style={styles.resultTitle}>All finished</Text>
+                {payload?.originalPrompt ? (
+                  <Text style={styles.resultPrompt} numberOfLines={2}>
+                    “{payload.originalPrompt.trim()}”
+                  </Text>
+                ) : null}
+                <View style={styles.resultTags}>
+                  <View style={styles.tag}>
+                    <Text style={styles.tagText}>{styleLabel}</Text>
+                  </View>
+                  {payload?.size ? (
+                    <View style={styles.tag}>
+                      <Text style={styles.tagText}>{payload.size}</Text>
+                    </View>
+                  ) : null}
+                </View>
+              </View>
 
-            <View style={styles.resultActions}>
-              <Pressable
-                style={[styles.resultButton, styles.resultButtonSecondary]}
-                onPress={handleUpscale}
-                hitSlop={8}
-              >
-                <Text style={styles.resultButtonText}>Upscale ×4</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.resultButton, styles.resultButtonSecondary]}
-                onPress={handleSave}
-                hitSlop={8}
-              >
-                <Text style={styles.resultButtonText}>Save</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.resultButton, styles.resultButtonPrimary]}
-                onPress={handleShare}
-                hitSlop={8}
-              >
-                <Text style={styles.resultButtonPrimaryText}>Share</Text>
-              </Pressable>
+              <View style={styles.resultActionsRow}>
+                <Pressable
+                  style={[styles.iconButton, styles.iconButtonDestructive]}
+                  onPress={handleDelete}
+                  hitSlop={8}
+                >
+                  <SvgIcon name="delete" size={22} color="#FFD0D0" />
+                </Pressable>
+                <Pressable
+                  style={styles.iconButton}
+                  onPress={handleSave}
+                  hitSlop={8}
+                >
+                  <SvgIcon name="download" size={22} color="#DDE4FF" />
+                </Pressable>
+                <Pressable
+                  style={[styles.iconButton, styles.iconButtonPrimary]}
+                  onPress={handleShare}
+                  hitSlop={8}
+                >
+                  <SvgIcon name="share-upload" size={22} color="#FFFFFF" />
+                </Pressable>
+              </View>
             </View>
           </View>
         )}
@@ -280,88 +397,121 @@ export default function CreateImageGenerating({ visible, payload, onClose }) {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.9)',
+    backgroundColor: 'rgba(11,11,14,0.94)',
   },
   applyingContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 28,
+    paddingHorizontal: 20,
   },
-  applyingBackground: {
-    ...StyleSheet.absoluteFillObject,
+  sheet: {
+    width: '92%',
+    maxWidth: 360,
+    borderRadius: 28,
+    backgroundColor: 'rgba(23,23,28,0.95)',
+    borderWidth: 1,
+    borderColor: 'rgba(124,92,255,0.18)',
+    paddingHorizontal: 24,
+    paddingVertical: 26,
+    gap: 24,
   },
-  pulseStack: {
-    width: 220,
-    height: 220,
+  sheetHeader: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 40,
+    paddingVertical: 12,
   },
-  pulseOuter: {
+  spinnerTrack: {
+    width: 96,
+    height: 96,
+    borderRadius: 48,
+    borderWidth: 4,
+    borderColor: 'rgba(255,255,255,0.08)',
+    borderTopColor: '#7C5CFF',
+    borderRightColor: '#5F8DFF',
+  },
+  spinnerCenter: {
     position: 'absolute',
-    width: 220,
-    height: 220,
-    borderRadius: 110,
-    backgroundColor: 'rgba(124,92,255,0.25)',
-  },
-  pulseInner: {
-    position: 'absolute',
-    width: 170,
-    height: 170,
-    borderRadius: 85,
-    backgroundColor: 'rgba(55,144,255,0.18)',
-  },
-  pulseCore: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#3C96FF',
-    shadowOpacity: 0.4,
-    shadowRadius: 18,
-    shadowOffset: { width: 0, height: 12 },
+    backgroundColor: 'rgba(124,92,255,0.18)',
   },
-  pulseGlyph: {
+  spinnerGlyph: {
     color: '#FFFFFF',
-    fontSize: 40,
+    fontSize: 26,
+    fontWeight: '700',
   },
-  applyTitle: {
-    color: '#F5F7FF',
-    fontSize: 20,
+  sheetBody: {
+    gap: 18,
+  },
+  sheetTitle: {
+    color: '#F4F6FD',
+    fontSize: 18,
     fontWeight: '700',
     textAlign: 'center',
   },
-  applySubtitle: {
-    color: 'rgba(229,231,235,0.75)',
-    fontSize: 14,
+  sheetSubtitle: {
+    color: 'rgba(214,216,231,0.72)',
+    fontSize: 13,
     textAlign: 'center',
-    marginTop: 8,
-    marginBottom: 26,
+    lineHeight: 18,
+  },
+  phaseList: {
+    gap: 14,
+  },
+  phaseRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  phaseDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+  },
+  phaseDotActive: {
+    backgroundColor: '#7C5CFF',
+  },
+  phaseDotCurrent: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#96A6FF',
+  },
+  phaseLabel: {
+    color: 'rgba(214,220,232,0.6)',
+    fontSize: 13,
+    flex: 1,
+  },
+  phaseLabelActive: {
+    color: '#F4F6FD',
+  },
+  phaseLabelCurrent: {
+    color: '#D9DEFF',
+    fontWeight: '600',
+  },
+  sheetFooter: {
+    gap: 16,
+    alignItems: 'center',
   },
   progressTrack: {
-    width: TRACK_WIDTH,
+    width: '100%',
     height: 4,
     borderRadius: 999,
-    backgroundColor: 'rgba(255,255,255,0.18)',
+    backgroundColor: 'rgba(255,255,255,0.08)',
     overflow: 'hidden',
   },
   progressFill: {
     height: 4,
     borderRadius: 999,
-    backgroundColor: '#FFFFFF',
-  },
-  cancelBtn: {
-    marginTop: 28,
-    paddingHorizontal: 22,
-    paddingVertical: 12,
-    borderRadius: 999,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.18)',
+    backgroundColor: '#7C5CFF',
   },
   cancelText: {
-    color: 'rgba(255,255,255,0.7)',
+    color: 'rgba(214,220,232,0.75)',
     fontSize: 13,
     fontWeight: '600',
   },
@@ -370,7 +520,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 32,
-    backgroundColor: '#101922',
+    backgroundColor: 'rgba(11,11,14,0.96)',
     gap: 16,
   },
   errorTitle: {
@@ -384,14 +534,30 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
   },
-  errorButton: {
+  errorActions: {
+    flexDirection: 'row',
+    gap: 12,
     marginTop: 12,
+  },
+  errorButton: {
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderRadius: 12,
-    backgroundColor: '#283039',
+    backgroundColor: 'rgba(40,48,57,0.85)',
   },
   errorButtonText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  errorButtonPrimary: {
+    backgroundColor: '#7C5CFF',
+    shadowColor: '#7C5CFF',
+    shadowOpacity: 0.22,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 8 },
+  },
+  errorButtonPrimaryText: {
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '700',
@@ -399,20 +565,25 @@ const styles = StyleSheet.create({
   resultContainer: {
     flex: 1,
     paddingHorizontal: 20,
-    paddingBottom: 36,
-    justifyContent: 'flex-end',
+    paddingVertical: 24,
+    justifyContent: 'center',
   },
   resultBackground: {
     ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(11,11,14,0.96)',
   },
-  closeButton: {
-    position: 'absolute',
-    top: 32,
-    right: 24,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'rgba(0,0,0,0.35)',
+  resultContent: {
+    gap: 24,
+    alignItems: 'center',
+    width: '94%',
+    maxWidth: 560,
+    alignSelf: 'center',
+  },
+  closeBadge: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: 'rgba(0,0,0,0.4)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -421,49 +592,90 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
   },
-  resultCard: {
-    borderRadius: 28,
+  previewWrap: {
+    width: '100%',
+    maxWidth: 560,
+    alignSelf: 'center',
+    borderRadius: 32,
     overflow: 'hidden',
-    aspectRatio: 3 / 4,
-    backgroundColor: '#151C24',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    position: 'relative',
     shadowColor: '#000',
     shadowOpacity: 0.45,
     shadowRadius: 28,
-    shadowOffset: { width: 0, height: 18 },
-    alignSelf: 'center',
-    width: '82%',
+    shadowOffset: { width: 0, height: 20 },
+  },
+  previewBorder: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: 32,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.08)',
   },
   resultImage: {
     flex: 1,
   },
-  resultActions: {
-    marginTop: 28,
+  resultMeta: {
+    width: '92%',
+    alignItems: 'center',
     gap: 12,
   },
-  resultButton: {
-    height: 56,
-    borderRadius: 16,
+  resultTitle: {
+    color: '#F4F6FD',
+    fontSize: 20,
+    fontWeight: '700',
+  },
+  resultPrompt: {
+    color: 'rgba(219,225,240,0.8)',
+    fontSize: 13,
+    textAlign: 'center',
+    lineHeight: 18,
+  },
+  resultTags: {
+    flexDirection: 'row',
+    gap: 8,
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  tag: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: 'rgba(124,92,255,0.18)',
+    borderWidth: 1,
+    borderColor: 'rgba(124,92,255,0.32)',
+  },
+  tagText: {
+    color: '#D6DEFF',
+    fontSize: 11,
+    fontWeight: '600',
+    letterSpacing: 0.3,
+    textTransform: 'uppercase',
+  },
+  resultActionsRow: {
+    flexDirection: 'row',
+    gap: 18,
+    width: '68%',
+    justifyContent: 'center',
+  },
+  iconButton: {
+    width: 54,
+    height: 54,
+    borderRadius: 20,
+    backgroundColor: '#17171C',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.08)',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  resultButtonSecondary: {
-    backgroundColor: 'rgba(28,34,43,0.85)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.14)',
+  iconButtonDestructive: {
+    backgroundColor: 'rgba(110,32,38,0.85)',
+    borderColor: 'rgba(255,120,120,0.4)',
   },
-  resultButtonPrimary: {
-    backgroundColor: '#137FEC',
-  },
-  resultButtonText: {
-    color: '#E5E7EB',
-    fontWeight: '700',
-    fontSize: 15,
-  },
-  resultButtonPrimaryText: {
-    color: '#FFFFFF',
-    fontWeight: '700',
-    fontSize: 15,
+  iconButtonPrimary: {
+    backgroundColor: '#7C5CFF',
+    borderColor: 'rgba(124,92,255,0.75)',
+    shadowColor: '#7C5CFF',
+    shadowOpacity: 0.22,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 10 },
   },
 });

@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect, useCallback, useRef } from 'react';
 import {
+  ActivityIndicator,
   View,
   Text,
   StyleSheet,
@@ -31,6 +32,7 @@ import Reanimated, {
   Easing,
   KeyboardState,
 } from 'react-native-reanimated';
+import { getModelVisuals, hexToRgba } from '../utils/modelVisuals';
 
 const STYLES = [
   {
@@ -117,18 +119,10 @@ const STARTER_PROMPTS = [
 ];
 
 const ASPECTS = [
-  { key: '1:1', size: '1024x1024' },
-  { key: '3:4', size: '768x1024' },
-  { key: '16:9', size: '1024x576' },
+  { key: '1:1', size: '1024x1024', label: 'Square', glyph: { width: 16, height: 16 } },
+  { key: '16:9', size: '1024x576', label: 'Landscape', glyph: { width: 20, height: 11 } },
+  { key: '3:4', size: '768x1024', label: 'Portrait', glyph: { width: 11, height: 20 } },
 ];
-
-function getAspectGlyphActive(key) {
-  return {
-    borderColor: '#7C5CFF',
-    width: key === '3:4' ? 16 : key === '16:9' ? 24 : 20,
-    height: key === '3:4' ? 20 : key === '16:9' ? 12 : 20,
-  };
-}
 
 export default function CreateImage({ navigation }) {
   const insets = useSafeAreaInsets();
@@ -186,7 +180,6 @@ export default function CreateImage({ navigation }) {
     STYLES.find(s => s.selected)?.id || STYLES[0].id,
   );
   const [aspect, setAspect] = useState(ASPECTS[0].key);
-  const [advancedOpen, setAdvancedOpen] = useState(true);
   const [prompt, setPrompt] = useState('');
   const [busy, setBusy] = useState(false);
   const [selectedModel, setSelectedModel] = useState(defaultModel);
@@ -203,7 +196,10 @@ export default function CreateImage({ navigation }) {
     () => imageModels.find(m => m.key === selectedModel),
     [imageModels, selectedModel],
   );
-
+  const modelVisuals = useMemo(
+    () => getModelVisuals(selectedModelDisplay?.provider),
+    [selectedModelDisplay?.provider],
+  );
   const headerStyle = useMemo(
     () => [styles.header, { paddingTop: Math.max(insets.top, 12) + 6 }],
     [insets.top],
@@ -300,6 +296,7 @@ export default function CreateImage({ navigation }) {
       const selected = item.id === selectedStyle;
       return (
         <Pressable
+          key={item.id}
           onPress={() => setSelectedStyle(item.id)}
           style={[styles.styleItem, selected && styles.styleItemSelected]}
         >
@@ -331,7 +328,7 @@ export default function CreateImage({ navigation }) {
     [selectedStyle],
   );
 
-  const keyStyle = useCallback(it => it.id, []);
+  const keyStyle = useCallback((it) => it.id, []);
 
   const renderChip = useCallback(
     ({ item }) => (
@@ -344,6 +341,7 @@ export default function CreateImage({ navigation }) {
     ),
     [],
   );
+
   const keyChip = useCallback((it, idx) => `${idx}-${it}`, []);
 
   return (
@@ -387,37 +385,45 @@ export default function CreateImage({ navigation }) {
         <Reanimated.View style={[styles.content, animatedContentStyle]}>
           {/* Model selector */}
           <View style={styles.modelWrap}>
-            <Text style={styles.sectionLabel}>Model</Text>
             <Pressable
               ref={modelButtonRef}
               onPress={() => setModelMenuOpen(true)}
               style={styles.modelButton}
               hitSlop={6}
             >
-              <View style={styles.modelButtonTextWrap}>
-                <Text style={styles.modelButtonTitle} numberOfLines={1}>
+              <View style={styles.modelSimpleInfo}>
+                <View
+                  style={[
+                    styles.modelSimpleIcon,
+                    {
+                      borderColor: hexToRgba(modelVisuals.accent, 0.35),
+                      backgroundColor: hexToRgba(modelVisuals.accent, 0.18),
+                    },
+                  ]}
+                >
+                  <SvgIcon
+                    name={modelVisuals.icon}
+                    size={18}
+                    color="#FFFFFF"
+                  />
+                </View>
+                <Text style={styles.modelButtonName} numberOfLines={1}>
                   {selectedModelDisplay?.display?.name || selectedModel}
                 </Text>
-                {selectedModelDisplay?.provider ? (
-                  <Text style={styles.modelButtonSubtitle} numberOfLines={1}>
-                    {selectedModelDisplay.provider}
-                  </Text>
-                ) : null}
               </View>
-              <SvgIcon
-                name="chevron-down"
-                size={18}
-                color={'rgba(255,255,255,0.7)'}
-              />
+              <View style={styles.modelButtonChevron}>
+                <SvgIcon
+                  name="chevron-down"
+                  size={16}
+                  color="rgba(255,255,255,0.9)"
+                />
+              </View>
             </Pressable>
           </View>
 
           {/* Choose a Style */}
           <View style={styles.rowBetween}>
             <Text style={styles.sectionLabel}>Choose a Style</Text>
-            <Pressable hitSlop={6}>
-              <Text style={styles.link}>Browse more</Text>
-            </Pressable>
           </View>
           <FlatList
             data={STYLES}
@@ -430,6 +436,38 @@ export default function CreateImage({ navigation }) {
             windowSize={3}
             removeClippedSubViews
           />
+
+          <Text style={styles.aspectLabel}>Aspect Ratio</Text>
+          <View style={styles.aspectList}>
+            {ASPECTS.map(a => {
+              const active = aspect === a.key;
+              return (
+                <Pressable
+                  key={a.key}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: active }}
+                  onPress={() => setAspect(a.key)}
+                  style={[styles.aspectCard, active && styles.aspectCardActive]}
+                >
+                  <View style={[styles.aspectGlyphWrap, active && styles.aspectGlyphWrapActive]}>
+                    <View
+                      style={[
+                        styles.aspectGlyphRect,
+                        { width: a.glyph.width, height: a.glyph.height },
+                        active && styles.aspectGlyphRectActive,
+                      ]}
+                    />
+                  </View>
+                  <Text
+                    style={[styles.aspectKey, active && styles.aspectKeyActive]}
+                    numberOfLines={1}
+                  >
+                    {a.label}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
 
           {/* Starter prompts */}
           <Text style={[styles.sectionLabel, styles.mt6]}>Starter Prompts</Text>
@@ -445,51 +483,6 @@ export default function CreateImage({ navigation }) {
             removeClippedSubviews
           />
 
-          {/* Advanced */}
-          <View style={styles.advancedWrap}>
-            <Pressable
-              style={styles.advancedHeader}
-              onPress={() => setAdvancedOpen(o => !o)}
-            >
-              <Text style={styles.sectionLabel}>Advanced</Text>
-            </Pressable>
-            {advancedOpen && (
-              <View style={styles.advancedContent}>
-                <Text style={styles.advLabel}>Aspect Ratio</Text>
-                <View style={styles.aspectRow}>
-                  {ASPECTS.map(a => {
-                    const active = aspect === a.key;
-                    return (
-                      <Pressable
-                        key={a.key}
-                        onPress={() => setAspect(a.key)}
-                        style={[
-                          styles.aspectBtn,
-                          active && styles.aspectBtnActive,
-                        ]}
-                      >
-                        <View
-                          style={[
-                            styles.aspectGlyph,
-                            active && getAspectGlyphActive(a.key),
-                          ]}
-                        />
-                        <Text
-                          style={[
-                            styles.aspectText,
-                            active && styles.aspectTextActive,
-                          ]}
-                        >
-                          {a.key}
-                        </Text>
-                      </Pressable>
-                    );
-                  })}
-                </View>
-
-              </View>
-            )}
-          </View>
           {/* Prompt (moved below advanced) */}
           <View style={styles.promptWrap}>
             <TextInput
@@ -524,36 +517,42 @@ export default function CreateImage({ navigation }) {
 
       {/* Footer */}
       <Reanimated.View style={[footerStyle, animatedFooterStyle]}>
-        <View style={styles.footerButtons}>
-          <Pressable
-            onPress={() => {
-              setGeneratorPayload({
-                prompt: prompt.trim() || 'Test prompt',
-                styleId: selectedStyleData?.id,
-                styleName: selectedStyleData?.name,
-                model: selectedModel,
-                size: selectedSize,
-              });
-              setGeneratorVisible(true);
-            }}
-            style={styles.testBtn}
-            hitSlop={8}
-          >
-            <Text style={styles.testBtnText}>Preview</Text>
-          </Pressable>
-          <Pressable
-            onPress={onGenerate}
-            disabled={!prompt.trim() || busy}
-            style={[
-              styles.generateBtn,
-              (!prompt.trim() || busy) && styles.generateBtnDisabled,
-            ]}
-          >
+        <Pressable
+          onPress={onGenerate}
+          disabled={!prompt.trim() || busy}
+          style={[
+            styles.generateBtn,
+            (!prompt.trim() || busy) && styles.generateBtnDisabled,
+          ]}
+        >
+          <View style={styles.generateContent}>
+            <View style={styles.generateIconWrap}>
+              {busy ? (
+                <ActivityIndicator size="small" color="#FFFFFF" />
+              ) : (
+                <SvgIcon name="stars" size={18} color="#FFFFFF" />
+              )}
+            </View>
             <Text style={styles.generateBtnText}>
-              Generate ({selectedCost} ◈)
+              {busy ? 'Generating…' : 'Generate'}
             </Text>
-          </Pressable>
-        </View>
+            <View style={styles.generateCoinsWrap}>
+              <SvgIcon
+                name="diamond"
+                size={12}
+                color={busy ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.8)'}
+              />
+              <Text
+                style={[
+                  styles.generateCoinsText,
+                  busy && { color: 'rgba(255,255,255,0.5)' },
+                ]}
+              >
+                {busy ? '…' : selectedCost}
+              </Text>
+            </View>
+          </View>
+        </Pressable>
       </Reanimated.View>
 
       <ModelMenu
@@ -580,7 +579,7 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     paddingHorizontal: 16,
     position: 'relative',
   },
@@ -607,28 +606,46 @@ const styles = StyleSheet.create({
   balanceText: { color: '#7C5CFF', fontSize: 14, fontWeight: '800' },
 
   content: { paddingHorizontal: 16, paddingTop: 16, gap: 16 },
-  modelWrap: { gap: 10 },
+  modelWrap: { gap: 8 },
   modelButton: {
-    minHeight: 54,
-    borderRadius: 14,
-    backgroundColor: 'rgba(124,92,255,0.14)',
+    minHeight: 60,
+    borderRadius: 16,
     paddingHorizontal: 16,
     paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    backgroundColor: '#0B0B0E',
     borderWidth: 1,
-    borderColor: 'rgba(124,92,255,0.35)',
+    borderColor: 'rgba(255,255,255,0.08)',
   },
-  modelButtonTextWrap: { flex: 1, marginRight: 10 },
-  modelButtonTitle: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
-  modelButtonSubtitle: {
-    color: 'rgba(255,255,255,0.55)',
-    fontSize: 11,
-    textTransform: 'uppercase',
-    letterSpacing: 0.6,
-    marginTop: 2,
+  modelSimpleInfo: { flexDirection: 'row', alignItems: 'center', flex: 1, gap: 12 },
+  modelSimpleIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.16)',
+    backgroundColor: 'rgba(255,255,255,0.08)',
   },
+  modelButtonName: {
+    color: '#F5F7FF',
+    fontSize: 17,
+    fontFamily: 'Lato-Bold',
+    flexShrink: 1,
+  },
+  modelButtonChevron: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.06)',
+    marginLeft: 12,
+  },
+  stylesList: { paddingTop: 4, paddingBottom: 6, gap: 12 },
   rowBetween: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -641,31 +658,36 @@ const styles = StyleSheet.create({
   },
   link: { color: '#7C5CFF', fontSize: 13, fontWeight: '700' },
 
-  stylesList: { paddingTop: 4, paddingBottom: 6, gap: 12 },
-  styleItem: { width: 128, marginRight: 12 },
-  styleItemSelected: {},
   styleThumbWrap: {
     borderRadius: 18,
     overflow: 'hidden',
-    backgroundColor: '#0F172A',
+    backgroundColor: '#11131B',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.1)',
     height: 128,
     width: '100%',
-    shadowColor: 'rgba(15,23,42,0.6)',
-    shadowOpacity: 0.5,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
   },
-  styleThumbSelected: {},
+  styleItem: { width: 140, marginRight: 12, marginBottom: 12, alignItems: 'center' },
+  styleItemSelected: {},
+  styleThumbSelected: { borderWidth: 2, borderColor: '#7C5CFF' },
   styleThumb: { width: '100%', height: '100%' },
   styleThumbImage: { borderRadius: 18, resizeMode: 'cover' },
   styleName: {
     color: '#FFFFFF',
-    fontSize: 12,
-    marginTop: 6,
+    fontSize: 14,
+    marginTop: 8,
     textAlign: 'center',
   },
   styleNameSelected: { fontWeight: '800' },
+
+  aspectLabel: {
+    color: 'rgba(255,255,255,0.75)',
+    fontSize: 14,
+    fontWeight: '600',
+    marginTop: 18,
+    marginBottom: 8,
+  },
+  mt6: { marginTop: 18 },
 
   chipsList: { gap: 10 },
   chip: {
@@ -705,36 +727,54 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   promptHint: { color: 'rgba(255,255,255,0.65)', fontSize: 12 },
-
-  advancedWrap: { marginTop: 8 },
-  advancedHeader: { paddingVertical: 10 },
-  advancedContent: { gap: 12, paddingTop: 6, paddingBottom: 4 },
-  advLabel: {
-    color: 'rgba(255,255,255,0.75)',
-    fontSize: 13,
-    fontWeight: '600',
-    marginBottom: 4,
+  aspectList: {
+    width: '100%',
+    flexDirection: 'row',
+    gap: 10,
+    marginBottom: 12,
   },
-  aspectRow: { flexDirection: 'row', gap: 10 },
-  aspectBtn: {
+  aspectCard: {
     flex: 1,
-    height: 64,
-    borderRadius: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingVertical: 8,
+    paddingHorizontal: 5,
+    borderRadius: 11,
+    backgroundColor: '#15161D',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.07)',
+    minHeight: 44,
+  },
+  aspectCardActive: {
+    borderColor: '#7C5CFF',
+    backgroundColor: 'rgba(124,92,255,0.14)',
+  },
+  aspectGlyphWrap: {
+    width: 22,
+    height: 22,
+    borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#17171C',
   },
-  aspectBtnActive: { borderWidth: 2, borderColor: '#7C5CFF' },
-  aspectGlyph: {
-    width: 20,
-    height: 12,
-    borderWidth: 2,
-    borderColor: 'rgba(255,255,255,0.5)',
+  aspectGlyphWrapActive: {
+  },
+  aspectGlyphRect: {
+    borderWidth: 1,
     borderRadius: 3,
-    marginBottom: 6,
+    borderColor: 'rgba(255,255,255,0.55)',
   },
-  aspectText: { color: 'rgba(255,255,255,0.75)', fontSize: 12 },
-  aspectTextActive: { color: '#FFFFFF', fontWeight: '700' },
+  aspectGlyphRectActive: {
+    borderColor: '#FFFFFF',
+    backgroundColor: '#FFFFFF',
+  },
+  aspectKey: {
+    color: 'rgba(255,255,255,0.78)',
+    fontSize: 12,
+    fontWeight: '700',
+    marginLeft: 9,
+  },
+  aspectKeyActive: { color: '#FFFFFF' },
   outputRow: { gap: 10, marginTop: 14 },
 
   scrollContent: { paddingBottom: 24 },
@@ -746,39 +786,57 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(11,11,14,0.86)',
     paddingHorizontal: 16,
     paddingTop: 10,
+    paddingBottom: 10,
   },
   generateBtn: {
-    height: 56,
-    borderRadius: 12,
+    height: 60,
+    borderRadius: 16,
+    backgroundColor: '#7C5CFF',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#7C5CFF',
     ...Platform.select({
       ios: {
         shadowColor: '#7C5CFF',
-        shadowOpacity: 0.3,
-        shadowRadius: 12,
-        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.28,
+        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 10 },
       },
       android: { elevation: 3 },
     }),
   },
-  generateBtnDisabled: { opacity: 0.6 },
-  generateBtnText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
-  footerButtons: {
+  generateBtnDisabled: { opacity: 0.65 },
+  generateContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
-  },
-  testBtn: {
-    height: 56,
+    justifyContent: 'space-between',
+    width: '100%',
     paddingHorizontal: 18,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.25)',
+  },
+  generateIconWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    backgroundColor: 'rgba(255,255,255,0.18)',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.08)',
   },
-  testBtnText: { color: '#FFFFFF', fontSize: 14, fontWeight: '700' },
+  generateBtnText: {
+    flex: 1,
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '800',
+    letterSpacing: 0.2,
+    textAlign: 'center',
+  },
+  generateCoinsWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  generateCoinsText: {
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 13,
+    fontWeight: '700',
+  },
 });

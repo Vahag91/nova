@@ -438,6 +438,12 @@ export default function SvgIcon({ name, size = 16, color = '#666', style }) {
             <Path d="M240-40q-33 0-56.5-23.5T160-120v-440q0-33 23.5-56.5T240-640h120v80H240v440h480v-440H600v-80h120q33 0 56.5 23.5T800-560v440q0 33-23.5 56.5T720-40H240Zm200-280v-447l-64 64-56-57 160-160 160 160-56 57-64-64v447h-80Z" fill={color} />
           </Svg>
         );
+      case 'diamond':
+        return (
+          <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+            <Path d="M12 2 2 12l10 10 10-10L12 2Z" fill={color} />
+          </Svg>
+        );
       case 'delete':
         return (
           <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
