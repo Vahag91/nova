@@ -18,6 +18,7 @@ const GenerateButton = memo(({
   modelChanged = false, // Whether the model was auto-selected
   animatedValue,
   onAdvancedParams,
+  coinCost = null,
   style, // Allow custom styling
 }) => {
   const { t } = useTranslation();
@@ -34,17 +35,30 @@ const GenerateButton = memo(({
           accessibilityLabel={busy ? t('imagesStudio.generating') : t('imagesStudio.generate')}
           accessibilityHint={t('imagesStudio.generateImageHint')}
         >
-          {busy ? (
-            <View style={styles.ctaLoading}>
-              <ActivityIndicator color="#FFFFFF" size="small" />
-              <Text style={styles.ctaLoadingText}>{t('imagesStudio.generating')}</Text>
+          <View style={styles.ctaRow}>
+            <View style={styles.ctaIconWrap}>
+              {busy ? (
+                <ActivityIndicator color="#FFFFFF" size="small" />
+              ) : (
+                <SvgIcon name="stars" size={20} color="#FFFFFF" />
+              )}
             </View>
-          ) : (
-            <View style={styles.ctaContent}>
-              <Text style={styles.ctaText}>{t('imagesStudio.generate')}</Text>
-              <SvgIcon name="stars" size={20} color="#FFFFFF" />
-            </View>
-          )}
+            <Text style={[styles.ctaText, busy && styles.ctaTextBusy]}>
+              {busy ? t('imagesStudio.generating') : t('imagesStudio.generate')}
+            </Text>
+            {coinCost !== null && coinCost !== undefined && (
+              <View style={styles.coinWrap}>
+                <SvgIcon
+                  name="diamond"
+                  size={12}
+                  color={busy ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.85)'}
+                />
+                <Text style={[styles.coinText, busy && styles.coinTextBusy]}>
+                  {busy ? '…' : coinCost}
+                </Text>
+              </View>
+            )}
+          </View>
         </Pressable>
       </Animated.View>
       
@@ -82,28 +96,46 @@ const styles = {
     shadowRadius: 4,
     elevation: 3,
   },
-  ctaContent: {
+  ctaRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'space-between',
+    width: '100%',
+    columnGap: 12,
   },
-  ctaLoading: {
-    flexDirection: 'row',
+  ctaIconWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    backgroundColor: 'rgba(255,255,255,0.2)',
     alignItems: 'center',
-    gap: 8,
-  },
-  ctaLoadingText: {
-    color: '#FFFFFF',
-    fontWeight: '600',
-    fontSize: 16,
-    fontFamily: 'Lato-Bold',
+    justifyContent: 'center',
   },
   ctaText: {
     color: '#FFFFFF',
     fontWeight: '600',
     fontSize: 18,
     fontFamily: 'Lato-Bold',
+    flex: 1,
+    textAlign: 'center',
   },
+  ctaTextBusy: { color: 'rgba(255,255,255,0.85)' },
+  coinWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: 'rgba(15,15,19,0.25)',
+  },
+  coinText: {
+    color: 'rgba(255,255,255,0.9)',
+    fontSize: 13,
+    fontWeight: '700',
+    fontFamily: 'Lato-Bold',
+  },
+  coinTextBusy: { color: 'rgba(255,255,255,0.6)' },
   advancedButton: {
     flexDirection: 'row',
     alignItems: 'center',

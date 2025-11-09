@@ -25,7 +25,44 @@ export function formatModelProvider(provider) {
     .join(' ');
 }
 
-export function getModelVisuals(provider) {
+export function getModelVisuals(provider, modelKey) {
+  const key = (modelKey || '').toLowerCase();
+  if ((provider || '').toLowerCase() === 'flux-kontent') {
+    return {
+      icon: 'flux-schnell',
+      accent: '#5C6CFF',
+      tagline: 'Flux Kontent tuned for edits',
+    };
+  }
+  switch (key) {
+    case 'runware-flux-schnell':
+      return {
+        icon: 'flux-schnell',
+        accent: '#4B5BFF',
+        tagline: 'Fastest model',
+      };
+    case 'runware-flux-krea':
+      return {
+        icon: 'krea',
+        accent: '#FF7A9E',
+        tagline: 'Creative, stylized results',
+      };
+    case 'runware-qwen-image':
+      return {
+        icon: 'qwen-image',
+        accent: '#665CEE',
+        tagline: 'Balanced, high-quality results',
+      };
+    case 'google:4@1':
+      return {
+        icon: 'nano-banana',
+        accent: '#F8C95F',
+        tagline: 'Best AI image model',
+      };
+    default:
+      break;
+  }
+
   switch ((provider || '').toLowerCase()) {
     case 'runware':
       return {
@@ -59,4 +96,3 @@ export function getModelVisuals(provider) {
       };
   }
 }
-

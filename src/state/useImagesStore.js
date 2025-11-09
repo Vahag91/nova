@@ -5,20 +5,25 @@ import { createRunwareImages } from '../api/runware';
 import { toLocalPath, deleteLocalFile } from '../lib/imageDownloader';
 import { normalizeImageUri, cacheToFile, cleanupCorruptedCache } from '../lib/imageUtils';
 import RNFS from 'react-native-fs';
+import { ensureDeviceId } from '../lib/deviceId';
 import { SUPABASE_BASE, SUPABASE_ANON_KEY } from '../config/endpoints';
+import { v4 as uuidv4 } from 'uuid';
 // Advanced mode helper functions are now handled by createRunwareImages API
 
 const RUNWARE_KEYS = new Set([
-  'runware-flux-dev',
   'runware-flux-schnell',
-  'runware-flux-canny',
-  'runware-sdxl-civitai',
+  'runware-flux-krea',
+  'runware-qwen-image',
   'google:4@1',
 ]);
 
 // Advanced modes now use createRunwareImages API directly
 
 export const useImagesStore = create((set, get) => ({
+  coinsBalance: null,
+  setCoinsBalance: (balance) => {
+    set({ coinsBalance: typeof balance === 'number' ? balance : null });
+  },
   // ===== persisted (normal) =====
   jobs: [],
   hydrated: false,
@@ -38,7 +43,7 @@ export const useImagesStore = create((set, get) => ({
       id: j.id,
       chatId: j.chatId ?? null,
       prompt: j.prompt || '',
-      model: j.model || 'runware-flux-dev',
+      model: j.model || 'runware-flux-schnell',
       size: j.size || '1024x1024',
       n: j.n || 1,
       status: j.status || 'done',
@@ -87,7 +92,7 @@ export const useImagesStore = create((set, get) => ({
 
   createJob: async ({ 
     prompt, 
-    model='runware-flux-dev', 
+    model='runware-flux-schnell', 
     size='1024x1024', 
     n=1, 
     chatId=null, 
@@ -102,6 +107,12 @@ export const useImagesStore = create((set, get) => ({
     baseModel,
     ipAdapterModel,
     CFGScale,
+    scheduler,
+    includeCost,
+    checkNSFW,
+    acceleration,
+    referenceImages,
+    advancedFeatures,
     outputType='URL',
     outputFormat='JPG',
     outputQuality=95,
@@ -133,6 +144,12 @@ export const useImagesStore = create((set, get) => ({
       outputType,
       outputFormat,
       outputQuality,
+      scheduler,
+      includeCost,
+      checkNSFW,
+      acceleration,
+      referenceImages,
+      advancedFeatures,
     };
     
     set(state => ({ jobs: [job, ...state.jobs] }));
@@ -140,6 +157,15 @@ export const useImagesStore = create((set, get) => ({
     
     try {
       const isRunware = RUNWARE_KEYS.has(model);
+      let deviceIdForCoins = null;
+      if (isRunware) {
+        deviceIdForCoins = await ensureDeviceId();
+        if (!deviceIdForCoins) {
+          throw new Error('Device unavailable. Please restart the app.');
+        }
+      }
+
+      const spendJobId = isRunware ? uuidv4() : null;
       const res = isRunware
         ? await createRunwareImages({ 
             prompt, 
@@ -157,6 +183,14 @@ export const useImagesStore = create((set, get) => ({
             outputType,
             outputFormat,
             outputQuality,
+            scheduler,
+            includeCost,
+            checkNSFW,
+            acceleration,
+            referenceImages,
+            advancedFeatures,
+            deviceId: deviceIdForCoins,
+            jobId: spendJobId,
           })
         : await createImages({ prompt, model, size, n: 1 });       // existing OpenAI/DALL·E
 
@@ -205,6 +239,9 @@ export const useImagesStore = create((set, get) => ({
         size: res.size || job.size,
         updatedAt: Date.now()
       };
+      if (typeof res?.pricing?.balance === 'number') {
+        set({ coinsBalance: res.pricing.balance });
+      }
       
       set(state => ({
         jobs: state.jobs.map(j => j.id === id ? updatedJob : j)
@@ -233,7 +270,11 @@ export const useImagesStore = create((set, get) => ({
       // Provide more user-friendly error messages
       let userMessage = error?.message || error?.toString() || 'Image generation failed';
       
-      if (userMessage.includes('unknownErrorWhileReadingResults')) {
+      if (error?.code === 'restricted_content' || /restricted|nsfw|content not allowed/i.test(userMessage)) {
+        userMessage = 'Restricted content blocked by safety filters. No coins were charged.';
+      } else if (/not enough coins/i.test(userMessage)) {
+        userMessage = 'Not enough coins. Please visit the Coin Store to top up.';
+      } else if (userMessage.includes('unknownErrorWhileReadingResults')) {
         userMessage = 'Runware service is temporarily unavailable. Please try again in a moment.';
       } else if (userMessage.includes('500') || userMessage.includes('502')) {
         userMessage = 'Server error occurred. Please try again.';
@@ -346,7 +387,7 @@ export const useImagesStore = create((set, get) => ({
         updatedAt: job.updatedAt || job.createdAt || Date.now(),
         status: job.status || 'unknown',
         prompt: job.prompt || '',
-        model: job.model || 'runware-flux-dev',
+        model: job.model || 'runware-flux-schnell',
         size: job.size || '1024x1024',
         n: job.n || 1,
       }));
@@ -357,14 +398,14 @@ export const useImagesStore = create((set, get) => ({
 
   // Helper to ingest results from advanced generation modes
   _ingestResults: async (data, { mode, input }) => {
-    
-    const id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const { jobId, ...restInput } = input || {};
+    const id = jobId || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const job = {
       id,
       chatId: null,
-      prompt: input.prompt || '',
-      model: input.model || 'runware-flux-dev',
-      size: input.size || '1024x1024',
+      prompt: restInput.prompt || '',
+      model: restInput.model || 'runware-flux-schnell',
+      size: restInput.size || '1024x1024',
       n: 1,
       status: 'running',
       images: [],
@@ -372,7 +413,7 @@ export const useImagesStore = create((set, get) => ({
       createdAt: Date.now(),
       updatedAt: Date.now(),
       mode,
-      ...input,
+      ...restInput,
     };
 
     // Add to store
@@ -428,7 +469,9 @@ export const useImagesStore = create((set, get) => ({
       // Provide more user-friendly error messages
       let userMessage = error?.message || error?.toString() || 'Image generation failed';
       
-      if (userMessage.includes('unknownErrorWhileReadingResults')) {
+      if (error?.code === 'restricted_content' || /restricted|nsfw|content not allowed/i.test(userMessage)) {
+        userMessage = 'Restricted content blocked by safety filters. No coins were charged.';
+      } else if (userMessage.includes('unknownErrorWhileReadingResults')) {
         userMessage = 'Runware service is temporarily unavailable. Please try again in a moment.';
       } else if (userMessage.includes('500') || userMessage.includes('502')) {
         userMessage = 'Server error occurred. Please try again.';
@@ -455,32 +498,68 @@ export const useImagesStore = create((set, get) => ({
 
   // Advanced generation actions
   runImg2Img: async (opts) => {
-    const data = await createRunwareImages({ ...opts, mode: 'img2img' });
+    const deviceId = await ensureDeviceId();
+    if (!deviceId) throw new Error('Device unavailable. Please restart the app.');
+    const spendJobId = uuidv4();
+    const data = await createRunwareImages({ ...opts, jobId: spendJobId, deviceId, mode: 'img2img' });
+    if (typeof data?.pricing?.balance === 'number') {
+      set({ coinsBalance: data.pricing.balance });
+    }
     return get()._ingestResults(data, { mode: 'img2img', input: opts });
   },
 
   runInpaint: async (opts) => {
-    const data = await createRunwareImages({ ...opts, mode: 'inpaint' });
+    const deviceId = await ensureDeviceId();
+    if (!deviceId) throw new Error('Device unavailable. Please restart the app.');
+    const spendJobId = uuidv4();
+    const data = await createRunwareImages({ ...opts, jobId: spendJobId, deviceId, mode: 'inpaint' });
+    if (typeof data?.pricing?.balance === 'number') {
+      set({ coinsBalance: data.pricing.balance });
+    }
     return get()._ingestResults(data, { mode: 'inpaint', input: opts });
   },
 
   runOutpaint: async (opts) => {
-    const data = await createRunwareImages({ ...opts, mode: 'outpaint' });
+    const deviceId = await ensureDeviceId();
+    if (!deviceId) throw new Error('Device unavailable. Please restart the app.');
+    const spendJobId = uuidv4();
+    const data = await createRunwareImages({ ...opts, jobId: spendJobId, deviceId, mode: 'outpaint' });
+    if (typeof data?.pricing?.balance === 'number') {
+      set({ coinsBalance: data.pricing.balance });
+    }
     return get()._ingestResults(data, { mode: 'outpaint', input: opts });
   },
 
   runRedux: async (opts) => {
-    const data = await createRunwareImages({ ...opts, mode: 'redux' });
+    const deviceId = await ensureDeviceId();
+    if (!deviceId) throw new Error('Device unavailable. Please restart the app.');
+    const spendJobId = uuidv4();
+    const data = await createRunwareImages({ ...opts, jobId: spendJobId, deviceId, mode: 'redux' });
+    if (typeof data?.pricing?.balance === 'number') {
+      set({ coinsBalance: data.pricing.balance });
+    }
     return get()._ingestResults(data, { mode: 'redux', input: opts });
   },
 
   runCanny: async (opts) => {
-    const data = await createRunwareImages({ ...opts, mode: 'canny' });
+    const deviceId = await ensureDeviceId();
+    if (!deviceId) throw new Error('Device unavailable. Please restart the app.');
+    const spendJobId = uuidv4();
+    const data = await createRunwareImages({ ...opts, jobId: spendJobId, deviceId, mode: 'canny' });
+    if (typeof data?.pricing?.balance === 'number') {
+      set({ coinsBalance: data.pricing.balance });
+    }
     return get()._ingestResults(data, { mode: 'canny', input: opts });
   },
 
   runDepth: async (opts) => {
-    const data = await createRunwareImages({ ...opts, mode: 'depth' });
+    const deviceId = await ensureDeviceId();
+    if (!deviceId) throw new Error('Device unavailable. Please restart the app.');
+    const spendJobId = uuidv4();
+    const data = await createRunwareImages({ ...opts, jobId: spendJobId, deviceId, mode: 'depth' });
+    if (typeof data?.pricing?.balance === 'number') {
+      set({ coinsBalance: data.pricing.balance });
+    }
     return get()._ingestResults(data, { mode: 'depth', input: opts });
   },
 }));

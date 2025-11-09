@@ -45,6 +45,7 @@ export default function CreateImageGenerating({
   const [step, setStep] = useState(STEP.APPLYING);
   const [imageUri, setImageUri] = useState(null);
   const [error, setError] = useState(null);
+  const [errorCode, setErrorCode] = useState(null);
   const [phaseIndex, setPhaseIndex] = useState(0);
   const [retryCount, setRetryCount] = useState(0);
   const [jobMeta, setJobMeta] = useState(null);
@@ -85,6 +86,7 @@ export default function CreateImageGenerating({
     setStep(STEP.APPLYING);
     setImageUri(null);
     setError(null);
+    setErrorCode(null);
     setPhaseIndex(0);
     setJobMeta(null);
     progress.setValue(0);
@@ -135,6 +137,7 @@ export default function CreateImageGenerating({
       } catch (err) {
         if (cancelled) return;
         setError(err?.message || 'Could not generate image.');
+        setErrorCode(err?.code || null);
         setStep(STEP.ERROR);
       }
     })();
@@ -303,16 +306,26 @@ const handleRetry = () => {
 
         {step === STEP.ERROR && (
           <View style={styles.errorContainer}>
-            <Text style={styles.errorTitle}>Generation failed</Text>
+            <Text style={styles.errorTitle}>
+              {errorCode === 'restricted_content' ? 'Restricted Content' : 'Generation failed'}
+            </Text>
             <Text style={styles.errorMessage}>{error}</Text>
-            <View style={styles.errorActions}>
-              <Pressable onPress={handleRetry} style={[styles.errorButton, styles.errorButtonPrimary]} hitSlop={8}>
-                <Text style={styles.errorButtonPrimaryText}>Retry</Text>
-              </Pressable>
-              <Pressable onPress={handleClose} style={styles.errorButton} hitSlop={8}>
-                <Text style={styles.errorButtonText}>Close</Text>
-              </Pressable>
-            </View>
+            {errorCode === 'restricted_content' ? (
+              <View style={styles.errorActions}>
+                <Pressable onPress={handleClose} style={[styles.errorButton, styles.errorButtonPrimary]} hitSlop={8}>
+                  <Text style={styles.errorButtonPrimaryText}>Close</Text>
+                </Pressable>
+              </View>
+            ) : (
+              <View style={styles.errorActions}>
+                <Pressable onPress={handleRetry} style={[styles.errorButton, styles.errorButtonPrimary]} hitSlop={8}>
+                  <Text style={styles.errorButtonPrimaryText}>Retry</Text>
+                </Pressable>
+                <Pressable onPress={handleClose} style={styles.errorButton} hitSlop={8}>
+                  <Text style={styles.errorButtonText}>Close</Text>
+                </Pressable>
+              </View>
+            )}
           </View>
         )}
 

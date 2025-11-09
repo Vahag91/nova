@@ -1,6 +1,22 @@
 import React from 'react';
 import { View } from 'react-native';
-import Svg, { Path, Rect, Polyline, Line, Defs, RadialGradient, Stop } from 'react-native-svg';
+import Svg, {
+  Path,
+  Rect,
+  Polyline,
+  Line,
+  Defs,
+  RadialGradient,
+  LinearGradient,
+  Stop,
+  G,
+  ClipPath,
+  Mask,
+  Filter,
+  FeFlood,
+  FeBlend,
+  FeGaussianBlur,
+} from 'react-native-svg';
 
 export default function SvgIcon({ name, size = 16, color = '#666', style }) {
   const renderIcon = () => {
@@ -29,6 +45,207 @@ export default function SvgIcon({ name, size = 16, color = '#666', style }) {
             <Path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z" fill={color} />
           </Svg>
         );
+      case 'krea':
+        return (
+          <Svg width={size} height={size} viewBox="0 0 512 512" fill="none">
+            <Defs>
+              <ClipPath id="kreaIconClip">
+                <Path d="M0 0h16v16H0z" />
+              </ClipPath>
+            </Defs>
+            <G transform="scale(32)" clipPath="url(#kreaIconClip)">
+              <Path
+                d="M4.947.011C6.251-.08 7.401.827 7.57 2.08c.16 1.19-.655 2.34-1.879 2.61-.307.068-.647.049-.972.09-.768.09-1.483.44-2.028.989l-.007.003h-.006l-.005-.005-.002-.006.003-.012a.03.03 0 00.006-.016C2.67 4.615 2.668 3.498 2.67 2.38 2.673 1.14 3.652.103 4.947.01z"
+                fill={color}
+                fillRule="evenodd"
+                clipRule="evenodd"
+              />
+              <Path
+                d="M5.085 10.375C3.426 10.36 2.237 8.728 2.815 7.2a2.447 2.447 0 012.034-1.558c.284-.03.624-.022.897-.072 1.403-.26 2.487-1.334 2.705-2.7.049-.302.023-.664.095-.985.331-1.488 2.037-2.323 3.469-1.65a2.393 2.393 0 011.37 1.806c.025.162.034.363.025.603-.162 4.312-3.845 7.765-8.325 7.728m2.09.687a.029.029 0 01-.016-.015v-.004l.001-.004c0-.002 0-.003.002-.004l.004-.002a9.375 9.375 0 004.423-2.35c.022-.021.043-.02.062.004.199.264.408.547.575.817a7.827 7.827 0 011.187 4.214c-.062 1.259-1.114 2.273-2.443 2.28-1.175.008-2.209-.794-2.431-1.916-.054-.266-.038-.633-.082-.914a3.171 3.171 0 00-1.266-2.096l-.016-.01zm-2.487 4.901c-.999-.173-1.802-.949-1.981-1.914-.029-.2-.041-.401-.037-.603v-3.19c0-.011.003-.013.011-.006.653.58 1.34.935 2.236.993l.24.008c1.167.038 2.156.802 2.384 1.913.337 1.643-1.15 3.097-2.854 2.8h.001z"
+                fill={color}
+                fillRule="evenodd"
+                clipRule="evenodd"
+              />
+            </G>
+          </Svg>
+        );
+      case 'flux-schnell':
+        return (
+          <Svg width={size} height={size} viewBox="0 0 512 512" fill="none">
+            <Path
+              d="M0 441.237L256.213 53.333 512 441.237h-47.637l-208.171-315.84L74.048 401.195h258.603l26.432 40.042H0z"
+              fill={color}
+              fillRule="evenodd"
+              clipRule="evenodd"
+            />
+            <Path
+              d="M172.139 356.779l44.224-66.454 44.245 66.454h-88.469zm216.981 84.458L268.203 255.488h46.442l121.302 185.749H389.12zm32-192.149l45.44-68.053L512 249.088h-90.88z"
+              fill={color}
+              fillRule="evenodd"
+              clipRule="evenodd"
+            />
+          </Svg>
+        );
+      case 'qwen-image':
+        return (
+          <Svg width={size} height={size} viewBox="27.55 17.52 147.28 145.51" fill="none">
+            <Defs>
+              <RadialGradient id="qwenGradient0" cx="0" cy="0" r="1" gradientTransform="translate(100 100) rotate(90) scale(100)" gradientUnits="userSpaceOnUse">
+                <Stop offset="0" stopColor="#665CEE" />
+                <Stop offset="1" stopColor="#332E91" />
+              </RadialGradient>
+              <RadialGradient id="qwenGradient1" cx="0" cy="0" r="1" gradientTransform="translate(100 100) rotate(90) scale(100)" gradientUnits="userSpaceOnUse">
+                <Stop offset="0" stopColor="#665CEE" />
+                <Stop offset="1" stopColor="#332E91" />
+              </RadialGradient>
+            </Defs>
+            <Path
+              d="M174.82 108.75L155.38 75 165.64 57.75C166.46 56.31 166.46 54.53 165.64 53.09L155.38 35.84C154.86 34.91 153.87 34.33 152.78 34.33H114.88L106.14 19.03C105.62 18.1 104.63 17.52 103.54 17.52H83.3C82.21 17.52 81.22 18.1 80.7 19.03L61.26 52.77H41.02C39.93 52.77 38.94 53.35 38.42 54.28L28.16 71.53C27.34 72.97 27.34 74.75 28.16 76.19L45.52 107.5 36.78 122.8C35.96 124.24 35.96 126.02 36.78 127.46L47.04 144.71C47.56 145.64 48.55 146.22 49.64 146.22H87.54L96.28 161.52C96.8 162.45 97.79 163.03 98.88 163.03H119.12C120.21 163.03 121.2 162.45 121.72 161.52L141.16 127.78H158.52C159.61 127.78 160.6 127.2 161.12 126.27L171.38 109.02C172.2 107.58 172.2 105.8 171.38 104.36L174.82 108.75Z"
+              fill="url(#qwenGradient0)"
+            />
+            <Path
+              d="M119.12 163.03H98.88L87.54 144.71H49.64L61.26 126.39H80.7L38.42 55.29H61.26L83.3 19.03 93.56 37.35 83.3 55.29H161.58L151.32 72.54 170.76 106.28H151.32L141.16 88.34 101.18 163.03H119.12Z"
+              fill="#FFFFFF"
+            />
+            <Path d="M127.86 79.83H76.14L101.18 122.11 127.86 79.83Z" fill="url(#qwenGradient1)" />
+          </Svg>
+        );
+      case 'nano-banana':
+        return (
+          <Svg width={size} height={size} viewBox="0 0 65 65" fill="none">
+            <Defs>
+              <LinearGradient id="nanoBananaPaint0" x1="18.447" y1="43.42" x2="52.153" y2="15.004" gradientUnits="userSpaceOnUse">
+                <Stop offset="0" stopColor="#4893FC" />
+                <Stop offset="0.27" stopColor="#4893FC" />
+                <Stop offset="0.777" stopColor="#969DFF" />
+                <Stop offset="1" stopColor="#BD99FE" />
+              </LinearGradient>
+              <Filter id="nanoBananaFilter0" x="-19.824" y="13.152" width="39.274" height="43.217" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="2.46" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter1" x="-15.001" y="-40.257" width="84.868" height="85.688" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="11.891" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter2" x="-20.776" y="11.927" width="79.454" height="90.916" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="10.109" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter3" x="-19.845" y="15.459" width="79.731" height="81.505" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="10.109" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter4" x="29.832" y="-11.552" width="75.117" height="73.758" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="9.606" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter5" x="-38.583" y="-16.253" width="78.135" height="78.758" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="8.706" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter6" x="8.107" y="-5.966" width="78.877" height="77.539" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="7.775" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter7" x="13.587" y="-18.488" width="56.272" height="51.81" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="6.957" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter8" x="-15.526" y="-31.297" width="70.856" height="69.306" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="5.876" result="effect1_foregroundBlur" />
+              </Filter>
+              <Filter id="nanoBananaFilter9" x="-14.168" y="20.964" width="55.501" height="51.571" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <FeFlood floodOpacity="0" result="BackgroundImageFix" />
+                <FeBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <FeGaussianBlur stdDeviation="7.273" result="effect1_foregroundBlur" />
+              </Filter>
+            </Defs>
+            <Mask id="nanoBananaMask" maskUnits="userSpaceOnUse" x="0" y="0" width="65" height="65" maskType="alpha">
+              <Path
+                d="M32.447 0c.68 0 1.273.465 1.439 1.125a38.904 38.904 0 001.999 5.905c2.152 5 5.105 9.376 8.854 13.125 3.751 3.75 8.126 6.703 13.125 8.855a38.98 38.98 0 005.906 1.999c.66.166 1.124.758 1.124 1.438 0 .68-.464 1.273-1.125 1.439a38.902 38.902 0 00-5.905 1.999c-5 2.152-9.375 5.105-13.125 8.854-3.749 3.751-6.702 8.126-8.854 13.125a38.973 38.973 0 00-2 5.906 1.485 1.485 0 01-1.438 1.124c-.68 0-1.272-.464-1.438-1.125a38.913 38.913 0 00-2-5.905c-2.151-5-5.103-9.375-8.854-13.125-3.75-3.749-8.125-6.702-13.125-8.854a38.973 38.973 0 00-5.905-2A1.485 1.485 0 010 32.448c0-.68.465-1.272 1.125-1.438a38.903 38.903 0 005.905-2c5-2.151 9.376-5.104 13.125-8.854 3.75-3.749 6.703-8.125 8.855-13.125a38.972 38.972 0 001.999-5.905A1.485 1.485 0 0132.447 0z"
+                fill="#000"
+              />
+              <Path
+                d="M32.447 0c.68 0 1.273.465 1.439 1.125a38.904 38.904 0 001.999 5.905c2.152 5 5.105 9.376 8.854 13.125 3.751 3.75 8.126 6.703 13.125 8.855a38.98 38.98 0 005.906 1.999c.66.166 1.124.758 1.124 1.438 0 .68-.464 1.273-1.125 1.439a38.902 38.902 0 00-5.905 1.999c-5 2.152-9.375 5.105-13.125 8.854-3.749 3.751-6.702 8.126-8.854 13.125a38.973 38.973 0 00-2 5.906 1.485 1.485 0 01-1.438 1.124c-.68 0-1.272-.464-1.438-1.125a38.913 38.913 0 00-2-5.905c-2.151-5-5.103-9.375-8.854-13.125-3.75-3.749-8.125-6.702-13.125-8.854a38.973 38.973 0 00-5.905-2A1.485 1.485 0 010 32.448c0-.68.465-1.272 1.125-1.438a38.903 38.903 0 005.905-2c5-2.151 9.376-5.104 13.125-8.854 3.75-3.749 6.703-8.125 8.855-13.125a38.972 38.972 0 001.999-5.905 1.485 1.485 0 011.438-1.125z"
+                fill="url(#nanoBananaPaint0)"
+              />
+            </Mask>
+            <G mask="url(#nanoBananaMask)">
+              <G filter="url(#nanoBananaFilter0)">
+                <Path
+                  d="M-5.859 50.734c7.498 2.663 16.116-2.33 19.249-11.152 3.133-8.821-.406-18.131-7.904-20.794-7.498-2.663-16.116 2.33-19.25 11.151-3.132 8.822.407 18.132 7.905 20.795z"
+                  fill="#FFE432"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter1)">
+                <Path
+                  d="M27.433 21.649c10.3 0 18.651-8.535 18.651-19.062 0-10.528-8.35-19.062-18.651-19.062S8.78-7.94 8.78 2.587c0 10.527 8.35 19.062 18.652 19.062z"
+                  fill="#FC413D"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter2)">
+                <Path
+                  d="M20.184 82.608c10.753-.525 18.918-12.244 18.237-26.174-.68-13.93-9.95-24.797-20.703-24.271C6.965 32.689-1.2 44.407-.519 58.337c.681 13.93 9.95 24.797 20.703 24.271z"
+                  fill="#00B95C"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter3)">
+                <Path
+                  d="M30.954 74.181c9.014-5.485 11.427-17.976 5.389-27.9-6.038-9.925-18.241-13.524-27.256-8.04-9.015 5.486-11.428 17.977-5.39 27.902 6.04 9.924 18.242 13.523 27.257 8.038z"
+                  fill="#00B95C"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter4)">
+                <Path
+                  d="M67.391 42.993c10.132 0 18.346-7.91 18.346-17.666 0-9.757-8.214-17.667-18.346-17.667s-18.346 7.91-18.346 17.667c0 9.757 8.214 17.666 18.346 17.666z"
+                  fill="#3186FF"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter5)">
+                <Path
+                  d="M-13.065 40.944c9.33 7.094 22.959 4.869 30.442-4.972 7.483-9.84 5.987-23.569-3.343-30.663C4.704-1.786-8.924.439-16.408 10.28c-7.483 9.84-5.986 23.57 3.343 30.664z"
+                  fill="#FBBC04"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter6)">
+                <Path
+                  d="M34.74 51.43c11.135 7.656 25.896 5.524 32.968-4.764 7.073-10.287 3.779-24.832-7.357-32.488C49.215 6.52 34.455 8.654 27.382 18.94c-7.072 10.288-3.779 24.833 7.357 32.49z"
+                  fill="#3186FF"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter7)">
+                <Path
+                  d="M54.984-2.336c2.833 3.852-.808 11.34-8.131 16.727-7.324 5.387-15.557 6.631-18.39 2.78-2.833-3.853.807-11.342 8.13-16.728 7.324-5.387 15.558-6.631 18.39-2.78z"
+                  fill="#749BFF"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter8)">
+                <Path
+                  d="M31.727 16.104C43.053 5.598 46.94-8.626 40.41-15.666c-6.53-7.04-21.006-4.232-32.332 6.274s-15.214 24.73-8.683 31.77c6.53 7.04 21.006 4.232 32.332-6.274z"
+                  fill="#FC413D"
+                />
+              </G>
+              <G filter="url(#nanoBananaFilter9)">
+                <Path
+                  d="M8.51 53.838c6.732 4.818 14.46 5.55 17.262 1.636 2.802-3.915-.384-10.994-7.116-15.812-6.731-4.818-14.46-5.55-17.261-1.636-2.802 3.915.383 10.994 7.115 15.812z"
+                  fill="#FFEE48"
+                />
+              </G>
+            </G>
+          </Svg>
+        );
+      
       case 'tasks':
         return (
           <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">

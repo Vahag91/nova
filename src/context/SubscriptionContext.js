@@ -198,23 +198,6 @@ export function SubscriptionProvider({ children }) {
       }
 
       const allKeys = Object.keys(offerings.all || {});
-      console.log('[RevenueCat] offerings keys', allKeys, 'current:', offerings?.current?.identifier);
-
-      // Dev log: list each offering and its packages
-      for (const key of allKeys) {
-        const off = offerings.all[key];
-        const pkgs = off?.availablePackages || [];
-        console.log('[RevenueCat] offering', {
-          id: key,
-          isCurrent: offerings?.current?.identifier === off?.identifier,
-          packages: pkgs.map((pkg) => ({
-            pkgId: pkg?.identifier,
-            productId: pkg?.product?.identifier,
-            title: pkg?.product?.title,
-            price: pkg?.product?.priceString,
-          })),
-        });
-      }
 
       const next = { weekly: null, monthly: null, yearly: null, oneTime: null };
 
@@ -233,7 +216,6 @@ export function SubscriptionProvider({ children }) {
       // Primary paywall uses ONLY the default/current offering for subscriptions
       const def = offerings.all[OFFERING_IDS.default] || offerings.current;
       if (def) {
-        console.log('[RevenueCat] mapping subscriptions from default/current offering only');
         mapFromOffering(def);
       }
 
@@ -245,14 +227,6 @@ export function SubscriptionProvider({ children }) {
         if (!chosen) chosen = pkgs.find((p) => !(p?.product?.subscriptionPeriod)) || null;
         if (!chosen && pkgs.length > 0) {
           chosen = pkgs[0];
-          if (chosen?.product?.subscriptionPeriod) {
-            console.log('[RevenueCat] oneTime offering contains a subscription product; treating first package as one-time for separate paywall usage', {
-              pkgId: chosen?.identifier,
-              productId: chosen?.product?.identifier,
-              title: chosen?.product?.title,
-              price: chosen?.product?.priceString,
-            });
-          }
         }
         if (chosen) next.oneTime = chosen;
       }
@@ -283,12 +257,6 @@ export function SubscriptionProvider({ children }) {
           (prev.yearly?.identifier || null) === (next.yearly?.identifier || null) &&
           (prev.oneTime?.identifier || null) === (next.oneTime?.identifier || null);
         return same ? prev : next;
-      });
-      console.log('[RevenueCat] mapped packages', {
-        weekly: !!next.weekly && next.weekly.product?.priceString,
-        monthly: !!next.monthly && next.monthly.product?.priceString,
-        yearly: !!next.yearly && next.yearly.product?.priceString,
-        oneTime: !!next.oneTime && next.oneTime.product?.priceString,
       });
       return next;
     } catch (e) {

@@ -5,6 +5,7 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import Purchases from 'react-native-purchases';
 import { ensureDeviceId } from '../lib/deviceId';
 import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice';
+import { useImagesStore } from '../state/useImagesStore';
 // MaterialIcons no longer used here
 import Svg, { Path } from 'react-native-svg';
 import SvgIcon from '../components/SvgIcon';
@@ -47,6 +48,7 @@ export default function CoinStore() {
   const insets = useSafeAreaInsets();
   const dev = typeof __DEV__ !== 'undefined' && __DEV__;
   const dlog = useCallback((...args) => { if (!dev) return; try { console.log('[CoinStore]', ...args); } catch {} }, [dev]);
+  const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
   const [deviceId, setDeviceId] = useState(null);
   const [sb, setSb] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -97,12 +99,18 @@ export default function CoinStore() {
         ]);
         dlog('balance fetched', bal);
         setBalance(bal);
+        setCoinsBalance(bal);
         // Select 'coins' offering first; fall back to current
         const allKeys = offerings?.all ? Object.keys(offerings.all) : [];
         dlog('offerings keys', allKeys, 'current:', offerings?.current?.identifier);
         const coinsOffering = (offerings?.all && offerings.all.coins) || offerings?.current || null;
         const available = Array.isArray(coinsOffering?.availablePackages) ? coinsOffering.availablePackages : [];
-        dlog('using offering', coinsOffering?.identifier || '(none)', 'packages:', available.map(p => p?.identifier));
+        console.log('[CoinStore] RevenueCat packages', available.map(pkg => ({
+          pkgId: pkg?.identifier,
+          productId: pkg?.product?.identifier,
+          title: pkg?.product?.title,
+          price: pkg?.product?.priceString,
+        })));
 
         setPacks(available);
       } catch (e) {
@@ -120,6 +128,7 @@ export default function CoinStore() {
     try {
       const bal = await fetchBalanceByDevice(sb, deviceId);
       setBalance(bal);
+      setCoinsBalance(bal);
       dlog('balance refreshed', bal);
     } catch (e) {
       dlog('refresh balance error', e?.message || String(e));
@@ -235,8 +244,8 @@ export default function CoinStore() {
               packs.map((p, idx) => {
                 const prod = p?.product || p?.storeProduct || {};
                 const rawTitle = prod?.title || p?.identifier || `Pack ${idx+1}`;
-                const amountMatch = String(rawTitle).match(/\d+/);
-                const amount = amountMatch ? Number(amountMatch[0]) : null;
+                const amountDigits = String(rawTitle).replace(/[^\d]/g, '');
+                const amount = amountDigits ? Number(amountDigits) : null;
                 const price = prod?.priceString || prod?.price?.formatted || '';
                 const key = p?.identifier || prod?.identifier || String(idx);
                 const variant = idx % 3;

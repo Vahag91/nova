@@ -50,6 +50,7 @@ import { normalizeImageUri } from '../lib/imageUtils';
 import { ensurePhotoLibraryAccess, promptOpenSettings } from '../lib/permissions';
 import { ensureDeviceId } from '../lib/deviceId';
 import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice';
+import { getImageModelPrice } from '../utils/imagePricing';
 
 // Empty state icon component
 const EmptyImageIcon = ({ color = "#B7B7B7", size = 64 }) => (
@@ -98,12 +99,14 @@ export default function ImagesStudio({ navigation, route }) {
   const [size, setSize] = useState('1024x1024');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [viewer, setViewer] = useState({ open: false, uri: '' });
+  // Fullscreen viewer state (include ids so actions like delete work)
+  const [viewer, setViewer] = useState({ open: false, uri: '', id: null, jobId: null });
   const [modelMenuOpen, setModelMenuOpen] = useState(false);
   const [generationProgress, setGenerationProgress] = useState(0);
   const [retryCount, setRetryCount] = useState(0);
   // Coins
-  const [coins, setCoins] = useState(null);
+  const coins = useImagesStore(s => s.coinsBalance);
+  const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
   const [coinsLoading, setCoinsLoading] = useState(false);
   const coinsClientRef = useRef(null);
   const deviceIdRef = useRef(null);
@@ -126,6 +129,7 @@ export default function ImagesStudio({ navigation, route }) {
   // Track actual model being used (for auto-selection feedback)
   const [actualModel, setActualModel] = useState(null);
   const [modelChanged, setModelChanged] = useState(false);
+  const coinCost = useMemo(() => getImageModelPrice(actualModel || model), [actualModel, model]);
   const safeCall = useCallback((fn, ...args) => {
     if (typeof fn !== 'function') return;
     try { fn(...args); } catch {}
@@ -133,11 +137,10 @@ export default function ImagesStudio({ navigation, route }) {
 
   // Model capabilities mapping (should match the backend)
   const MODEL_CAPABILITIES = {
-    'runware-flux-dev': { text2img: true, img2img: true },
-    'runware-flux-schnell': { text2img: true, img2img: true },
-    'runware-flux-canny': { text2img: false, img2img: true }, // canny is for img2img
-    'runware-sdxl-civitai': { text2img: true, img2img: true },
-    'google:4@1': { text2img: true, img2img: false },
+    'runware-flux-schnell': { text2img: true, img2img: false },
+    'runware-flux-krea': { text2img: true, img2img: false },
+    'runware-qwen-image': { text2img: true, img2img: true },
+    'google:4@1': { text2img: true, img2img: true },
   };
 
   // Get the best model for a specific mode
@@ -150,7 +153,7 @@ export default function ImagesStudio({ navigation, route }) {
       return preferredModel;
     }
     const fluxModels = capableModels.filter(m => m.includes('flux'));
-    return fluxModels[0] || capableModels[0] || "runware-flux-dev";
+    return fluxModels[0] || capableModels[0] || "runware-qwen-image";
   }, []);
 
   // Animation refs
@@ -174,13 +177,13 @@ export default function ImagesStudio({ navigation, route }) {
   const imageModels = useMemo(() => {
     const list = Object.entries(models || {}).filter(([, v]) => v?.caps?.imageGen);
     if (!list.length) {
-      return [{ key: 'runware-flux-dev', display: { name: 'FLUX.1 dev' }, provider: 'runware' }];
+      return [{ key: 'runware-qwen-image', display: { name: 'Qwen Aura' }, provider: 'runware' }];
     }
     const result = list.map(([key, v]) => ({ key, display: v.display || { name: key }, provider: v.provider }));
     return result;
   }, [models]);
 
-  const [model, setModel] = useState(imageModels[0]?.key || 'runware-flux-dev');
+  const [model, setModel] = useState(imageModels[0]?.key || 'runware-qwen-image');
 
   useEffect(() => {
     if (imageModels.length > 0 && !imageModels.find((m) => m.key === model)) {
@@ -215,9 +218,9 @@ export default function ImagesStudio({ navigation, route }) {
         coinsClientRef.current = sb;
         setCoinsLoading(true);
         const bal = await fetchBalanceByDevice(sb, id);
-        if (mounted) setCoins(bal);
+        if (mounted) setCoinsBalance(bal);
       } catch (e) {
-        if (mounted) setCoins(null);
+        if (mounted) setCoinsBalance(null);
       } finally {
         if (mounted) setCoinsLoading(false);
       }
@@ -230,9 +233,12 @@ export default function ImagesStudio({ navigation, route }) {
     try {
       setCoinsLoading(true);
       const bal = await fetchBalanceByDevice(coinsClientRef.current, deviceIdRef.current);
-      setCoins(bal);
-    } catch {}
-    finally { setCoinsLoading(false); }
+      setCoinsBalance(bal);
+    } catch {
+      setCoinsBalance(null);
+    } finally {
+      setCoinsLoading(false);
+    }
   }, []);
 
   // Refresh coins when app becomes active
@@ -320,25 +326,28 @@ export default function ImagesStudio({ navigation, route }) {
 
   const deleteSelectedImages = useCallback(() => {
     if (selectedImages.size === 0) return;
-    const jobIds = new Set();
+    // Collect concrete (jobId, imageId) pairs to delete only selected images
+    const targets = [];
     selectedImages.forEach(imageId => {
       const image = images.find(img => img.id === imageId);
-      if (image) jobIds.add(image.jobId);
+      if (image && image.jobId) targets.push({ jobId: image.jobId, imageId: image.id });
     });
+
+    if (targets.length === 0) return;
 
     setDeleteConfirm({
       title: t('imagesStudio.deleteSelectedConfirmTitle'),
-      message: t('imagesStudio.deleteSelectedConfirmMessage', { count: jobIds.size }),
+      message: t('imagesStudio.deleteSelectedConfirmMessage', { count: targets.length }),
       onConfirm: () => {
-        jobIds.forEach(jobId => {
-          safeCall(deleteJob, jobId);
+        targets.forEach(({ jobId, imageId }) => {
+          safeCall(deleteImage, jobId, imageId);
         });
         clearSelection();
         setIsSelectionMode(false);
         setDeleteConfirm(null);
       }
     });
-  }, [selectedImages, images, deleteJob, t, safeCall, clearSelection]);
+  }, [selectedImages, images, deleteImage, t, safeCall, clearSelection]);
 
   // No voice start/overlay here; mic icon is visual only for now.
 
@@ -377,6 +386,11 @@ export default function ImagesStudio({ navigation, route }) {
   // ---------- actions ----------
   const onGenerate = useCallback(async () => {
     if (!canGenerate) return;
+    // Insufficient coins: open Coin Store instead of generating
+    if ((coins ?? 0) < (coinCost ?? 0)) {
+      try { navigation.navigate('CoinStore'); } catch {}
+      return;
+    }
 
     setError('');
     setBusy(true);
@@ -461,7 +475,7 @@ export default function ImagesStudio({ navigation, route }) {
     } finally {
       setBusy(false);
     }
-  }, [canGenerate, prompt, model, size, createJob, runImg2Img, clearFailed, buttonScale, progressAnim, mode, actualModel, seedImage, advancedParams, t, safeCall]);
+  }, [canGenerate, prompt, model, size, createJob, runImg2Img, clearFailed, buttonScale, progressAnim, mode, actualModel, seedImage, advancedParams, t, safeCall, coins, coinCost, navigation]);
 
   const handleRetry = useCallback(() => {
     setRetryCount(prev => prev + 1);
@@ -508,13 +522,11 @@ export default function ImagesStudio({ navigation, route }) {
       maxWidth: 2048,
       quality: 0.8,
     };
-
     try {
       launchImageLibrary(options, (response) => {
         if (response?.didCancel || response?.errorMessage) {
           return;
         }
-
         const asset = Array.isArray(response?.assets) ? response.assets[0] : null;
         if (asset && asset.base64) {
           const mime = asset.type && typeof asset.type === 'string' ? asset.type : 'image/jpeg';
@@ -607,7 +619,7 @@ export default function ImagesStudio({ navigation, route }) {
           if (isSelectionMode) {
             toggleImageSelection(item.id);
           } else {
-            setViewer({ open: true, uri: item.url });
+            setViewer({ open: true, uri: item.url, id: item.id, jobId: item.jobId });
           }
         }}
         onLongPress={() => {
@@ -790,6 +802,7 @@ export default function ImagesStudio({ navigation, route }) {
               animatedValue={buttonScale}
               onAdvancedParams={() => setAdvancedParamsOpen(true)}
               style={styles.generateButtonFlex}
+              coinCost={coinCost}
             />
           </View>
         </Reanimated.View>
@@ -810,7 +823,9 @@ export default function ImagesStudio({ navigation, route }) {
         <ImageViewer
           visible={viewer.open}
           imageUri={viewer.uri}
-          onClose={() => setViewer({ open: false, uri: '' })}
+          imageId={viewer.id}
+          jobId={viewer.jobId}
+          onClose={() => setViewer({ open: false, uri: '', id: null, jobId: null })}
         />
 
         {/* Advanced Parameters Modal */}

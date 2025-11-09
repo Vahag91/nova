@@ -15,13 +15,13 @@ import SvgIcon from '../SvgIcon';
 import {
   formatModelProvider,
   getModelVisuals,
-  hexToRgba,
 } from '../../utils/modelVisuals';
+import { getImageModelPrice } from '../../utils/imagePricing';
 
 const EDGE_MARGIN = 16;           // min distance from screen edge
-const MAX_MENU_WIDTH = 240;
-const MAX_MENU_HEIGHT = 320;
-const ITEM_HEIGHT = 50;
+const MAX_MENU_WIDTH = 420; // wider to properly align labels, coins and check
+const MAX_MENU_HEIGHT = 360;
+const ITEM_HEIGHT = 56;
 const ELEVATION = 12;
 
 const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = [], buttonRef }) => {
@@ -198,8 +198,9 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
           
           {safeModels.map((m, idx) => {
             const isSelected = m.key === model;
-            const visuals = getModelVisuals(m.provider);
-            const providerLabel = formatModelProvider(m.provider);
+            const visuals = getModelVisuals(m.provider, m.key);
+            const descriptor = visuals.tagline || formatModelProvider(m.provider);
+            const cost = getImageModelPrice(m.key);
             const last = idx === safeModels.length - 1;
             return (
               <Pressable
@@ -213,23 +214,32 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
                 accessibilityRole="button"
                 accessibilityState={{ selected: isSelected }}
               >
-                <SvgIcon
-                  name={visuals.icon}
-                  size={15}
-                  color={hexToRgba(visuals.accent, 0.85)}
-                />
-                <View style={styles.itemText}>
-                  <Text
-                    numberOfLines={1}
-                    style={[styles.itemLabel, isSelected && styles.itemLabelSelected]}
-                  >
-                    {m.display?.name || m.key}
-                  </Text>
-                  <Text numberOfLines={1} style={styles.itemProvider}>
-                    {providerLabel}
-                  </Text>
+                {/* Left section: icon + name + descriptor */}
+                <View style={styles.rowLeft}>
+                  <SvgIcon name={visuals.icon} size={28} color="#FFFFFF" />
+                  <View style={styles.itemText}>
+                    <Text
+                      numberOfLines={1}
+                      style={[styles.itemLabel, isSelected && styles.itemLabelSelected]}
+                    >
+                      {m.display?.name || m.key}
+                    </Text>
+                    <Text numberOfLines={1} style={styles.itemProvider}>
+                      {descriptor}
+                    </Text>
+                  </View>
                 </View>
-                {isSelected ? <Text style={styles.checkGlyph}>✓</Text> : null}
+
+                {/* Right section: coin pill + check (aligned) */}
+                <View style={styles.rowRight}>
+                  <View style={styles.coinPill}>
+                    <SvgIcon name="diamond" size={12} color="rgba(255,255,255,0.86)" />
+                    <Text style={styles.coinPillText}>{cost}</Text>
+                  </View>
+                  <View style={styles.checkWrap}>
+                    <SvgIcon name="check" size={22} color={isSelected ? '#FFFFFF' : 'transparent'} />
+                  </View>
+                </View>
               </Pressable>
             );
           })}
@@ -293,13 +303,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     gap: 12,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: 'rgba(255,255,255,0.08)',
   },
-  itemSelected: {
-    backgroundColor: 'rgba(124,92,255,0.12)',
-  },
+  rowLeft: { flexDirection: 'row', alignItems: 'center', gap: 12, flexShrink: 1, flexGrow: 1 },
+  rowRight: { flexDirection: 'row', alignItems: 'center', gap: 10, marginLeft: 10 },
+  itemSelected: {},
   itemLast: { borderBottomWidth: 0 },
   itemText: { flex: 1, gap: 2 },
   itemLabel: {
@@ -310,11 +321,26 @@ const styles = StyleSheet.create({
   },
   itemLabelSelected: { color: '#FFFFFF' },
   itemProvider: {
+    flex: 1,
     color: 'rgba(214,220,232,0.62)',
     fontSize: 11,
+    letterSpacing: 0.3,
     fontFamily: 'Lato-Regular',
+    marginRight: 8,
   },
-  checkGlyph: { color: '#FFFFFF', fontSize: 12, fontWeight: '700', marginLeft: 6 },
+  coinPill: {
+    minWidth: 56,
+    height: 26,
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    backgroundColor: 'rgba(255,255,255,0.06)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+  },
+  coinPillText: { color: '#FFFFFF', fontSize: 12, fontFamily: 'Lato-Bold' },
+  checkWrap: { width: 28, alignItems: 'center' },
 });
 
 export default ModelMenu;

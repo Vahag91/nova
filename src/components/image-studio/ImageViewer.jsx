@@ -7,6 +7,7 @@ import {
   ScrollView,
   Image as RNImage,
   StyleSheet,
+  LayoutAnimation,
 } from 'react-native';
 import { Share } from 'react-native';
 import { useImagesStore } from '../../state/useImagesStore';
@@ -19,21 +20,34 @@ const ImageViewer = memo(({
   onClose,
   imageId,
   jobId,
+  hideEdit = false,
 }) => {
   const handleClose = useCallback(() => {
     onClose?.();
   }, [onClose]);
 
-  const deleteImage = useImagesStore?.(s => s.deleteImage);
-
+  // Robust delete: if provided id doesn't match, fall back by URL
   const handleDelete = useCallback(() => {
     try {
-      if (deleteImage && jobId && imageId) {
-        deleteImage(jobId, imageId);
+      try { LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); } catch {}
+      const st = useImagesStore.getState?.();
+      const del = st?.deleteImage;
+      if (!del || !jobId) {
+        handleClose();
+        return;
       }
-    } catch (e) {}
+      let targetId = imageId;
+      if (!targetId) {
+        const job = (st.jobs || []).find(j => j.id === jobId);
+        const guess = job?.images?.find(img => img?.url === imageUri || img?.originalUrl === imageUri);
+        if (guess?.id) targetId = guess.id;
+      }
+      if (targetId) {
+        try { del(jobId, targetId); } catch {}
+      }
+    } catch {}
     handleClose();
-  }, [deleteImage, jobId, imageId, handleClose]);
+  }, [jobId, imageId, imageUri, handleClose]);
 
   const handleShare = useCallback(async () => {
     const url = imageUri;
@@ -75,8 +89,7 @@ const ImageViewer = memo(({
           />
         </ScrollView>
 
-        {/* Foreground catch to close when tapping anywhere outside actions */}
-        <Pressable style={styles.overlayTouch} onPress={handleClose} />
+        {/* Remove foreground overlay to allow bottom actions to receive touches */}
 
         {/* Top center close */}
         <View style={styles.headerCloseWrap}>
@@ -97,12 +110,14 @@ const ImageViewer = memo(({
               </Pressable>
               <Text style={styles.bottomLabel}>Delete</Text>
             </View>
-            <View style={styles.bottomItem}>
-              <Pressable onPress={() => {}} style={styles.bottomIconButton} accessibilityLabel="Edit">
-                <SvgIcon name="photo" size={22} color="#DDE4FF" />
-              </Pressable>
-              <Text style={styles.bottomLabel}>Edit</Text>
-            </View>
+            {!hideEdit && (
+              <View style={styles.bottomItem}>
+                <Pressable onPress={() => {}} style={styles.bottomIconButton} accessibilityLabel="Edit">
+                  <SvgIcon name="photo" size={22} color="#DDE4FF" />
+                </Pressable>
+                <Text style={styles.bottomLabel}>Edit</Text>
+              </View>
+            )}
             <View style={styles.bottomItem}>
               <Pressable onPress={handleDownload} style={styles.bottomIconButton} accessibilityLabel="Save">
                 <SvgIcon name="download" size={22} color="#DDE4FF" />
@@ -153,7 +168,7 @@ const styles = {
     justifyContent: 'center',
     backgroundColor: 'rgba(0,0,0,0.35)',
   },
-  bottomBar: { position: 'absolute', left: 0, right: 0, bottom: '10%', alignItems: 'center' },
+  bottomBar: { position: 'absolute', left: 0, right: 0, bottom: '10%', alignItems: 'center', zIndex: 4 },
   bottomRow: { flexDirection: 'row', gap: 18, alignItems: 'center', justifyContent: 'center' },
   bottomItem: { alignItems: 'center', gap: 6 },
   bottomIconButton: {
@@ -175,7 +190,7 @@ const styles = {
     borderColor: 'rgba(124,92,255,0.75)',
   },
   bottomLabel: { color: 'rgba(255,255,255,0.75)', fontSize: 11 },
-  overlayTouch: { ...StyleSheet.absoluteFillObject, zIndex: 2 },
+  // overlayTouch removed to avoid intercepting taps on controls
 };
 
 export default ImageViewer;

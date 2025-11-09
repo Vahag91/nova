@@ -16,6 +16,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SvgIcon from '../components/SvgIcon';
 import { useSettingsStore } from '../state/useSettingsStore';
+import { useImagesStore } from '../state/useImagesStore';
 import {
   createSbWithDevice,
   fetchBalanceByDevice,
@@ -33,6 +34,7 @@ import Reanimated, {
   KeyboardState,
 } from 'react-native-reanimated';
 import { getModelVisuals, hexToRgba } from '../utils/modelVisuals';
+import { getImageModelPrice } from '../utils/imagePricing';
 
 const STYLES = [
   {
@@ -52,7 +54,6 @@ const STYLES = [
     name: 'Photoreal',
     image: require('../../assets/images/createstudio/photoreal.webp'),
     cost: 3,
-    selected: true,
   },
   {
     id: 'sketch',
@@ -128,7 +129,8 @@ export default function CreateImage({ navigation }) {
   const insets = useSafeAreaInsets();
 
   // Balance
-  const [coins, setCoins] = useState(null);
+  const coins = useImagesStore(s => s.coinsBalance);
+  const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
   const [coinsLoading, setCoinsLoading] = useState(false);
   useEffect(() => {
     let mounted = true;
@@ -138,9 +140,9 @@ export default function CreateImage({ navigation }) {
         const sb = createSbWithDevice(id);
         setCoinsLoading(true);
         const bal = await fetchBalanceByDevice(sb, id);
-        if (mounted) setCoins(bal);
+        if (mounted) setCoinsBalance(bal);
       } catch {
-        if (mounted) setCoins(null);
+        if (mounted) setCoinsBalance(null);
       } finally {
         if (mounted) setCoinsLoading(false);
       }
@@ -155,7 +157,7 @@ export default function CreateImage({ navigation }) {
   const defaultModel = useMemo(() => {
     const entries = Object.entries(models || {});
     const first = entries.find(([, v]) => v?.caps?.imageGen);
-    return first ? first[0] : 'runware-flux-dev';
+    return first ? first[0] : 'runware-flux-schnell';
   }, [models]);
   const imageModels = useMemo(() => {
     const entries = Object.entries(models || {}).filter(([, v]) => v?.caps?.imageGen);
@@ -176,9 +178,7 @@ export default function CreateImage({ navigation }) {
   }, [models, defaultModel]);
 
   // Form state
-  const [selectedStyle, setSelectedStyle] = useState(
-    STYLES.find(s => s.selected)?.id || STYLES[0].id,
-  );
+  const [selectedStyle, setSelectedStyle] = useState(null);
   const [aspect, setAspect] = useState(ASPECTS[0].key);
   const [prompt, setPrompt] = useState('');
   const [busy, setBusy] = useState(false);
@@ -197,8 +197,8 @@ export default function CreateImage({ navigation }) {
     [imageModels, selectedModel],
   );
   const modelVisuals = useMemo(
-    () => getModelVisuals(selectedModelDisplay?.provider),
-    [selectedModelDisplay?.provider],
+    () => getModelVisuals(selectedModelDisplay?.provider, selectedModel),
+    [selectedModelDisplay?.provider, selectedModel],
   );
   const headerStyle = useMemo(
     () => [styles.header, { paddingTop: Math.max(insets.top, 12) + 6 }],
@@ -246,10 +246,10 @@ export default function CreateImage({ navigation }) {
   );
 
   const selectedStyleData = useMemo(
-    () => STYLES.find(s => s.id === selectedStyle),
+    () => (selectedStyle ? STYLES.find(s => s.id === selectedStyle) : null),
     [selectedStyle],
   );
-  const selectedCost = selectedStyleData?.cost ?? 2;
+  const selectedCost = getImageModelPrice(selectedModel);
   const selectedSize = useMemo(
     () => ASPECTS.find(a => a.key === aspect)?.size || '1024x1024',
     [aspect],
@@ -257,6 +257,11 @@ export default function CreateImage({ navigation }) {
 
   const onGenerate = useCallback(() => {
     if (!prompt.trim() || busy) return;
+    // Insufficient coins: open Coin Store instead of generating
+    if ((coins ?? 0) < (selectedCost ?? 0)) {
+      try { navigation.navigate('CoinStore'); } catch {}
+      return;
+    }
     setBusy(true);
     const basePrompt = prompt.trim();
     const styleTag = selectedStyleData?.name
@@ -268,8 +273,8 @@ export default function CreateImage({ navigation }) {
     const payload = {
       prompt: promptWithStyle,
       originalPrompt: basePrompt,
-      styleId: selectedStyleData?.id,
-      styleName: selectedStyleData?.name,
+      styleId: selectedStyleData?.id || null,
+      styleName: selectedStyleData?.name || null,
       model: selectedModel,
       size: selectedSize,
     };
@@ -282,6 +287,9 @@ export default function CreateImage({ navigation }) {
     selectedModel,
     selectedSize,
     selectedStyleData,
+    coins,
+    selectedCost,
+    navigation,
   ]);
 
   const handleGeneratorClose = useCallback(() => {
@@ -297,7 +305,9 @@ export default function CreateImage({ navigation }) {
       return (
         <Pressable
           key={item.id}
-          onPress={() => setSelectedStyle(item.id)}
+          onPress={() =>
+            setSelectedStyle(prev => (prev === item.id ? null : item.id))
+          }
           style={[styles.styleItem, selected && styles.styleItemSelected]}
         >
           <View
@@ -392,20 +402,8 @@ export default function CreateImage({ navigation }) {
               hitSlop={6}
             >
               <View style={styles.modelSimpleInfo}>
-                <View
-                  style={[
-                    styles.modelSimpleIcon,
-                    {
-                      borderColor: hexToRgba(modelVisuals.accent, 0.35),
-                      backgroundColor: hexToRgba(modelVisuals.accent, 0.18),
-                    },
-                  ]}
-                >
-                  <SvgIcon
-                    name={modelVisuals.icon}
-                    size={18}
-                    color="#FFFFFF"
-                  />
+                <View style={styles.modelSimpleIcon}>
+                  <SvgIcon name={modelVisuals.icon} size={24} color="#FFFFFF" />
                 </View>
                 <Text style={styles.modelButtonName} numberOfLines={1}>
                   {selectedModelDisplay?.display?.name || selectedModel}
@@ -579,7 +577,7 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
     position: 'relative',
   },
@@ -599,11 +597,10 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#17171C',
     borderRadius: 999,
-    paddingHorizontal: 12,
+    paddingHorizontal: 8,
   },
-  balanceText: { color: '#7C5CFF', fontSize: 14, fontWeight: '800' },
+  balanceText: { color: '#7C5CFF', fontSize: 16, fontWeight: '800' },
 
   content: { paddingHorizontal: 16, paddingTop: 16, gap: 16 },
   modelWrap: { gap: 8 },
@@ -621,14 +618,11 @@ const styles = StyleSheet.create({
   },
   modelSimpleInfo: { flexDirection: 'row', alignItems: 'center', flex: 1, gap: 12 },
   modelSimpleIcon: {
-    width: 32,
-    height: 32,
-    borderRadius: 11,
+    width: 42,
+    height: 42,
+    borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.16)',
-    backgroundColor: 'rgba(255,255,255,0.08)',
   },
   modelButtonName: {
     color: '#F5F7FF',

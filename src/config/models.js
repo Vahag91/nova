@@ -41,10 +41,9 @@ const DEFAULT_MODELS = {
   },
 
   // ===== Runware (images) =====
-  'runware-flux-dev':     { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'FLUX.1 dev',      group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
-  'runware-flux-schnell': { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'FLUX.1 schnell',  group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
-  'runware-flux-canny':   { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'FLUX.1 Canny',    group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
-  'runware-sdxl-civitai': { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'SDXL (Civitai)',  group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
+  'runware-flux-schnell': { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'Flux Schnell',    group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
+  'runware-flux-krea':    { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'Flux Krea',       group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
+  'runware-qwen-image':   { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'Qwen Aura',       group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
   'google:4@1':           { provider: 'air',     kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'Nano Banana',     group: 'AIR' },      temperatureSupported: false, meta: { size: '1024x1024' } },
 };
 

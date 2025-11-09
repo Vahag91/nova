@@ -11,10 +11,12 @@ import {
   ScrollView,
   Image,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SvgIcon from '../components/SvgIcon';
 import { useSettingsStore } from '../state/useSettingsStore';
+import { useImagesStore } from '../state/useImagesStore';
 import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice';
 import { ensureDeviceId } from '../lib/deviceId';
 import { launchImageLibrary } from 'react-native-image-picker';
@@ -30,10 +32,12 @@ import Reanimated, {
 } from 'react-native-reanimated';
 import ModelMenu from '../components/image-studio/ModelMenu';
 import CreateImageGenerating from '../components/create-image/CreateImageGenerating';
-import { getModelVisuals, hexToRgba } from '../utils/modelVisuals';
+import { getModelVisuals } from '../utils/modelVisuals';
+import { getImageModelPrice } from '../utils/imagePricing';
+import RNFS from 'react-native-fs';
 
 const STYLES = [
-  { id: 'photoreal', name: 'Photoreal', image: require('../../assets/images/createstudio/photoreal.webp'), cost: 3, selected: true },
+  { id: 'photoreal', name: 'Photoreal', image: require('../../assets/images/createstudio/photoreal.webp'), cost: 3 },
   { id: 'anime', name: 'Anime', image: require('../../assets/images/createstudio/anime.webp'), cost: 2 },
   { id: 'cartoon', name: 'Cartoon', image: require('../../assets/images/createstudio/cartoon.webp'), cost: 2 },
   { id: 'sketch', name: 'Sketch', image: require('../../assets/images/createstudio/sketch.webp'), cost: 1 },
@@ -59,11 +63,17 @@ const ASPECTS = [
   { key: '3:4', size: '768x1024', label: 'Portrait', glyph: { width: 11, height: 20 } },
 ];
 
+const IMG2IMG_MODELS = new Set([
+  'runware-qwen-image',
+  'google:4@1',
+]);
+
 export default function EditImage({ navigation }) {
   const insets = useSafeAreaInsets();
 
   // Balance
-  const [coins, setCoins] = useState(null);
+  const coins = useImagesStore(s => s.coinsBalance);
+  const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
   const [coinsLoading, setCoinsLoading] = useState(false);
   useEffect(() => {
     let mounted = true;
@@ -73,8 +83,8 @@ export default function EditImage({ navigation }) {
         const sb = createSbWithDevice(id);
         setCoinsLoading(true);
         const bal = await fetchBalanceByDevice(sb, id);
-        if (mounted) setCoins(bal);
-      } catch { if (mounted) setCoins(null); }
+        if (mounted) setCoinsBalance(bal);
+      } catch { if (mounted) setCoinsBalance(null); }
       finally { if (mounted) setCoinsLoading(false); }
     })();
     return () => { mounted = false; };
@@ -84,13 +94,21 @@ export default function EditImage({ navigation }) {
   const models = useSettingsStore(s => s.models);
   const defaultModel = useMemo(() => {
     const entries = Object.entries(models || {});
-    const first = entries.find(([, v]) => v?.caps?.imageGen);
-    return first ? first[0] : 'runware-flux-dev';
+    const firstAllowed = entries.find(([key, v]) => v?.caps?.imageGen && IMG2IMG_MODELS.has(key));
+    if (firstAllowed) return firstAllowed[0];
+    const fallback = entries.find(([, v]) => v?.caps?.imageGen);
+    return fallback ? fallback[0] : 'runware-qwen-image';
   }, [models]);
 
   const imageModels = useMemo(() => {
     const entries = Object.entries(models || {}).filter(([, v]) => v?.caps?.imageGen);
-    if (!entries.length) {
+    const filtered = entries.filter(([key]) => IMG2IMG_MODELS.has(key));
+    const effective = filtered.length
+      ? filtered
+      : IMG2IMG_MODELS.has(defaultModel) && models?.[defaultModel]
+        ? [[defaultModel, models[defaultModel]]]
+        : [];
+    if (!effective.length) {
       return [
         {
           key: defaultModel,
@@ -99,11 +117,21 @@ export default function EditImage({ navigation }) {
         },
       ];
     }
-    return entries.map(([key, value]) => ({
-      key,
-      display: value?.display || { name: key },
-      provider: value?.provider || 'custom',
-    }));
+    return effective.map(([key, value]) => {
+      const baseDisplay = value?.display || { name: key };
+      const isFluxKontent = key === 'runware-qwen-image';
+      const display = isFluxKontent
+        ? { ...baseDisplay, name: 'Flux Kontent' }
+        : baseDisplay;
+      const providerOverride = isFluxKontent
+        ? 'flux-kontent'
+        : value?.provider || 'custom';
+      return {
+        key,
+        display,
+        provider: providerOverride,
+      };
+    });
   }, [models, defaultModel]);
 
   const [selectedModel, setSelectedModel] = useState(defaultModel);
@@ -113,19 +141,24 @@ export default function EditImage({ navigation }) {
     () => imageModels.find(m => m.key === selectedModel),
     [imageModels, selectedModel],
   );
-  const modelVisuals = useMemo(
-    () => getModelVisuals(selectedModelDisplay?.provider),
-    [selectedModelDisplay?.provider],
-  );
+  const modelVisuals = useMemo(() => {
+    if (selectedModel === 'runware-qwen-image') {
+      return {
+        icon: 'flux-schnell',
+        accent: '#5C6CFF',
+        tagline: 'Flux Kontent tuned for edits',
+      };
+    }
+    return getModelVisuals(selectedModelDisplay?.provider, selectedModel);
+  }, [selectedModel, selectedModelDisplay?.provider]);
   const [generatorVisible, setGeneratorVisible] = useState(false);
   const [generatorPayload, setGeneratorPayload] = useState(null);
-  const [selectedStyle, setSelectedStyle] = useState(STYLES.find(s => s.selected)?.id || STYLES[0].id);
+  const [selectedStyle, setSelectedStyle] = useState(null);
   const [aspect, setAspect] = useState(ASPECTS[0].key);
-  const strength = 0.85;
-  const guidance = 7.5;
   const [prompt, setPrompt] = useState('');
   const [busy, setBusy] = useState(false);
   const [imageUri, setImageUri] = useState('');
+  const [imageReference, setImageReference] = useState('');
 
   useEffect(() => {
     setSelectedModel(defaultModel);
@@ -151,10 +184,10 @@ export default function EditImage({ navigation }) {
   const bottomScrollPadding = useMemo(() => 56 + 10 + footerInset + 12, [footerInset]);
 
   const selectedStyleData = useMemo(
-    () => STYLES.find(s => s.id === selectedStyle),
+    () => (selectedStyle ? STYLES.find(s => s.id === selectedStyle) : null),
     [selectedStyle],
   );
-  const selectedCost = selectedStyleData?.cost ?? 2;
+  const selectedCost = getImageModelPrice(selectedModel);
   const selectedSize = useMemo(() => (ASPECTS.find(a => a.key === aspect)?.size || '1024x1024'), [aspect]);
 
   const pickImage = useCallback(async () => {
@@ -163,13 +196,43 @@ export default function EditImage({ navigation }) {
       await promptOpenSettings();
       return;
     }
-    const res = await launchImageLibrary({ mediaType: 'photo', selectionLimit: 1, includeBase64: false });
+    const res = await launchImageLibrary({ mediaType: 'photo', selectionLimit: 1, includeBase64: true });
     const asset = res?.assets?.[0];
-    if (asset?.uri) setImageUri(asset.uri);
+    if (asset?.uri) {
+      setImageUri(asset.uri);
+      const mime = asset?.type || 'image/jpeg';
+      if (asset?.base64) {
+        setImageReference(`data:${mime};base64,${asset.base64}`);
+      } else {
+        setImageReference(asset.uri);
+      }
+    }
   }, []);
 
-  const onGenerate = useCallback(() => {
+  const ensureReferenceImage = useCallback(async () => {
+    if (!imageUri) return '';
+    if (imageReference) return imageReference;
+    try {
+      const normalized = imageUri.startsWith('file://') ? imageUri.replace('file://', '') : imageUri;
+      const base64 = await RNFS.readFile(normalized, 'base64');
+      const ext = (imageUri.match(/\.([a-z0-9]+)(?:\?|$)/i)?.[1] || 'jpg').toLowerCase();
+      const mime = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
+      const dataUri = `data:${mime};base64,${base64}`;
+      setImageReference(dataUri);
+      return dataUri;
+    } catch (error) {
+      console.warn('[EditImage] Failed to convert reference image:', error);
+      return '';
+    }
+  }, [imageUri, imageReference]);
+
+  const onGenerate = useCallback(async () => {
     if (!imageUri || busy) return;
+    // Insufficient coins: open Coin Store instead of generating
+    if ((coins ?? 0) < (selectedCost ?? 0)) {
+      try { navigation.navigate('CoinStore'); } catch {}
+      return;
+    }
     setBusy(true);
     const basePrompt = prompt.trim();
     const styleTag = selectedStyleData?.name ? `${selectedStyleData.name} style` : null;
@@ -179,18 +242,56 @@ export default function EditImage({ navigation }) {
     } else if (styleTag && !basePrompt) {
       promptWithStyle = styleTag;
     }
+    const referenceImage = await ensureReferenceImage();
+    if (!referenceImage) {
+      setBusy(false);
+      Alert.alert('Image unavailable', 'Could not access the selected photo. Please reselect it and try again.');
+      return;
+    }
+    const references = Array.from(
+      new Set(referenceImage ? [referenceImage] : []),
+    );
     const payload = {
       prompt: promptWithStyle || '__BLANK__',
       originalPrompt: basePrompt,
-      styleId: selectedStyleData?.id,
-      styleName: selectedStyleData?.name,
+      styleId: selectedStyleData?.id || null,
+      styleName: selectedStyleData?.name || null,
       model: selectedModel,
       size: selectedSize,
       mode: 'img2img',
-      seedImage: imageUri,
-      strength,
-      CFGScale: guidance,
+      outputFormat: 'JPEG',
+      outputType: ['URL'],
+      includeCost: true,
     };
+    if (!references.length) {
+      setBusy(false);
+      Alert.alert('Image unavailable', 'Could not access the selected photo. Please reselect it and try again.');
+      return;
+    }
+    if (selectedModel === 'runware-qwen-image') {
+      Object.assign(payload, {
+        steps: 28,
+        CFGScale: 2.5,
+        scheduler: 'Default',
+        checkNSFW: true,
+        referenceImages: references,
+        advancedFeatures: {
+          guidanceEndStepPercentage: 75,
+        },
+      });
+    } else if (selectedModel === 'google:4@1') {
+      Object.assign(payload, {
+        referenceImages: references,
+      });
+    } else {
+      Object.assign(payload, {
+        referenceImages: references,
+      });
+    }
+    if (__DEV__) {
+      // eslint-disable-next-line no-console
+      console.log('[EditImage] payload to generator:', payload);
+    }
     setGeneratorPayload(payload);
     setGeneratorVisible(true);
     Keyboard.dismiss();
@@ -201,8 +302,10 @@ export default function EditImage({ navigation }) {
     selectedStyleData,
     selectedModel,
     selectedSize,
-    strength,
-    guidance,
+    ensureReferenceImage,
+    coins,
+    selectedCost,
+    navigation,
   ]);
 
   const renderStyle = useCallback(
@@ -210,7 +313,9 @@ export default function EditImage({ navigation }) {
       const selected = item.id === selectedStyle;
       return (
         <Pressable
-          onPress={() => setSelectedStyle(item.id)}
+          onPress={() =>
+            setSelectedStyle(prev => (prev === item.id ? null : item.id))
+          }
           style={[styles.styleItem, selected && styles.styleItemSelected]}
         >
           <View style={[styles.styleThumbWrap, selected && styles.styleThumbSelected]}>
@@ -277,7 +382,15 @@ export default function EditImage({ navigation }) {
                 <Image source={{ uri: imageUri }} style={styles.uploadPreview} resizeMode="cover" />
                 <View style={styles.uploadActions}>
                   <Pressable style={styles.uploadBtn} onPress={pickImage}><Text style={styles.uploadBtnText}>Change</Text></Pressable>
-                  <Pressable style={styles.uploadBtn} onPress={() => setImageUri('')}><Text style={styles.uploadBtnText}>Remove</Text></Pressable>
+                  <Pressable
+                    style={styles.uploadBtn}
+                    onPress={() => {
+                      setImageUri('');
+                      setImageReference('');
+                    }}
+                  >
+                    <Text style={styles.uploadBtnText}>Remove</Text>
+                  </Pressable>
                 </View>
               </View>
             ) : (
@@ -297,16 +410,8 @@ export default function EditImage({ navigation }) {
               hitSlop={6}
             >
               <View style={styles.modelSimpleInfo}>
-                <View
-                  style={[
-                    styles.modelSimpleIcon,
-                    {
-                      borderColor: hexToRgba(modelVisuals.accent, 0.35),
-                      backgroundColor: hexToRgba(modelVisuals.accent, 0.18),
-                    },
-                  ]}
-                >
-                  <SvgIcon name={modelVisuals.icon} size={18} color="#FFFFFF" />
+                <View style={styles.modelSimpleIcon}>
+                  <SvgIcon name={modelVisuals.icon} size={24} color="#FFFFFF" />
                 </View>
                 <Text style={styles.modelButtonName} numberOfLines={1}>
                   {selectedModelDisplay?.display?.name || selectedModel}
@@ -455,8 +560,8 @@ const styles = StyleSheet.create({
   headerBackBtn: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center' },
   headerCenterAbs: { ...StyleSheet.absoluteFillObject, alignItems: 'center', justifyContent: 'center' },
   headerTitle: { color: '#FFFFFF', fontSize: 22, fontWeight: '800' },
-  balancePill: { height: 40, flexDirection: 'row', alignItems: 'center', backgroundColor: '#17171C', borderRadius: 999, paddingHorizontal: 12 },
-  balanceText: { color: '#7C5CFF', fontSize: 14, fontWeight: '800' },
+  balancePill: { height: 40, flexDirection: 'row', alignItems: 'center', borderRadius: 999, paddingHorizontal: 8 },
+  balanceText: { color: '#7C5CFF', fontSize: 16, fontWeight: '800' },
 
   content: { paddingHorizontal: 16, paddingTop: 16, gap: 16 },
   modelWrap: { gap: 8 },
@@ -474,12 +579,11 @@ const styles = StyleSheet.create({
   },
   modelSimpleInfo: { flexDirection: 'row', alignItems: 'center', gap: 12, flex: 1 },
   modelSimpleIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 12,
+    width: 42,
+    height: 42,
+    borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
   },
   modelButtonName: { color: '#FFFFFF', fontSize: 15, fontWeight: '700', flexShrink: 1 },
   modelButtonChevron: { marginLeft: 12 },

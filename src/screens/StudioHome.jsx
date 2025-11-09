@@ -7,6 +7,9 @@ import {
   Pressable,
   FlatList,
   Dimensions,
+  Platform,
+  UIManager,
+  LayoutAnimation,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +20,7 @@ import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice'
 import { ensureDeviceId } from '../lib/deviceId';
 import ImageViewer from '../components/image-studio/ImageViewer';
 import LinearGradient from 'react-native-linear-gradient';
+import { getImageModelPrice } from '../utils/imagePricing';
 
 const CARD_ASPECT = 16 / 9;
 
@@ -25,12 +29,17 @@ export default function StudioHome({ navigation }) {
   const { t } = useTranslation();
 
   // Coin balance
-  const [coins, setCoins] = useState(null);
+  const coins = useImagesStore(s => s.coinsBalance);
+  const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
   const [coinsLoading, setCoinsLoading] = useState(false);
   const coinsClientRef = useRef(null);
   const deviceIdRef = useRef(null);
+  const createCost = useMemo(() => getImageModelPrice('runware-flux-schnell'), []);
+  const editCost = useMemo(() => getImageModelPrice('runware-qwen-image'), []);
 
   useEffect(() => {
+    // Enable smooth layout animations on Android
+    try { if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) UIManager.setLayoutAnimationEnabledExperimental(true); } catch {}
     let mounted = true;
     (async () => {
       try {
@@ -40,9 +49,9 @@ export default function StudioHome({ navigation }) {
         coinsClientRef.current = sb;
         setCoinsLoading(true);
         const bal = await fetchBalanceByDevice(sb, id);
-        if (mounted) setCoins(bal);
+        if (mounted) setCoinsBalance(bal);
       } catch (e) {
-        if (mounted) setCoins(null);
+        if (mounted) setCoinsBalance(null);
       } finally {
         if (mounted) setCoinsLoading(false);
       }
@@ -56,11 +65,13 @@ export default function StudioHome({ navigation }) {
     const done = (jobs || []).filter(j => j?.status === 'done');
     const result = done.flatMap((j, jdx) => (j.images || []).map((img, idx) => {
       const normalizedUrl = normalizeImageUri(img?.url);
-      const uniqueId = img?.id ? `${j.id}:${img.id}` : `${j.id || 'job'}:${jdx}:${idx}`;
+      // Preserve the image's own id if present (it's already globally unique in the store).
+      const uniqueId = img?.id || `${j.id || 'job'}:${jdx}:${idx}`;
       return normalizedUrl ? {
         id: uniqueId,
         jobId: j.id,
         url: normalizedUrl,
+        originalUrl: img?.originalUrl || img?.url,
         prompt: j.prompt,
         size: j.size || '1024x1024',
         model: j.model,
@@ -77,7 +88,56 @@ export default function StudioHome({ navigation }) {
   }, [images]);
 
   // Viewer
-  const [viewer, setViewer] = useState({ open: false, uri: '' });
+  const [viewer, setViewer] = useState({ open: false, uri: '', id: null, jobId: null });
+
+  // Multi-select state for gallery
+  const [isSelectionMode, setIsSelectionMode] = useState(false);
+  const [selectedImages, setSelectedImages] = useState(new Set());
+  const [showBatchActions, setShowBatchActions] = useState(false);
+  const deleteImage = useImagesStore(s => s.deleteImage);
+
+  const toggleSelectionMode = useCallback(() => {
+    try { LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); } catch {}
+    setIsSelectionMode(prev => !prev);
+    setSelectedImages(new Set());
+    setShowBatchActions(false);
+  }, []);
+
+  const toggleImageSelection = useCallback((imageId) => {
+    try { LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); } catch {}
+    const next = new Set(selectedImages);
+    if (next.has(imageId)) next.delete(imageId); else next.add(imageId);
+    setSelectedImages(next);
+    setShowBatchActions(next.size > 0);
+  }, [selectedImages]);
+
+  const selectAllImages = useCallback(() => {
+    try { LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); } catch {}
+    const all = new Set(galleryItems.map(g => g.id));
+    setSelectedImages(all);
+    setShowBatchActions(all.size > 0);
+  }, [galleryItems]);
+
+  const clearSelection = useCallback(() => {
+    try { LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); } catch {}
+    setSelectedImages(new Set());
+    setShowBatchActions(false);
+  }, []);
+
+  const deleteSelectedImages = useCallback(() => {
+    if (selectedImages.size === 0) return;
+    try { LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); } catch {}
+    const targets = [];
+    selectedImages.forEach(imageId => {
+      const it = galleryItems.find(g => g.id === imageId);
+      if (it?.jobId) targets.push({ jobId: it.jobId, imageId: it.id });
+    });
+    targets.forEach(({ jobId, imageId }) => {
+      try { deleteImage(jobId, imageId); } catch {}
+    });
+    clearSelection();
+    setIsSelectionMode(false);
+  }, [selectedImages, galleryItems, deleteImage, clearSelection]);
 
   const openCreate = useCallback(() => {
     navigation.navigate('CreateImage');
@@ -89,15 +149,35 @@ export default function StudioHome({ navigation }) {
 
   const renderTile = useCallback(({ item }) => {
     const size = (Dimensions.get('window').width - 4 * 12) / 3; // 3 cols, 12 padding/gap
+    const selected = selectedImages.has(item.id);
     return (
       <Pressable
-        onPress={() => setViewer({ open: true, uri: item.url })}
+        onPress={() => {
+          if (isSelectionMode) {
+            toggleImageSelection(item.id);
+          } else {
+            setViewer({ open: true, uri: item.url, id: item.id, jobId: item.jobId });
+          }
+        }}
+        onLongPress={() => {
+          if (!isSelectionMode) {
+            setIsSelectionMode(true);
+            toggleImageSelection(item.id);
+          }
+        }}
         style={{ width: size, height: size, borderRadius: 10, overflow: 'hidden', backgroundColor: '#1A1A1D' }}
       >
         <ImageBackground source={{ uri: item.url }} style={{ flex: 1 }} resizeMode="cover" />
+        {isSelectionMode && (
+          <View style={styles.selectionOverlay}>
+            <View style={[styles.checkbox, selected && styles.checkboxSelected]}>
+              {selected && <SvgIcon name="check" size={14} color="#0B0B0E" />}
+            </View>
+          </View>
+        )}
       </Pressable>
     );
-  }, []);
+  }, [isSelectionMode, selectedImages, toggleImageSelection]);
 
   // Dynamic styles
   const headerStyle = React.useMemo(
@@ -128,15 +208,19 @@ export default function StudioHome({ navigation }) {
           <View pointerEvents="none" style={styles.headerCenterAbs}>
             <Text style={styles.headerTitle}>Studio</Text>
           </View>
+          {/* Removed top header selection icon for minimalist design */}
           <Pressable onPress={() => navigation.navigate('CoinStore')} style={styles.balancePill} hitSlop={8}>
             <Text style={styles.balanceText}>{coinsLoading ? '…' : `◈ ${coins ?? '—'}`}</Text>
           </Pressable>
         </View>
       </View>
 
+      {/* Batch actions bar removed for minimalist header controls */}
+
       {/* Body */}
       <FlatList
         contentContainerStyle={listContentStyle}
+        extraData={{ isSelectionMode, selSize: selectedImages.size }}
         ListHeaderComponent={
           <View style={styles.headerGroup}>
             {/* Create Card */}
@@ -165,7 +249,9 @@ export default function StudioHome({ navigation }) {
                   </View>
                 </View>
                 <Pressable onPress={openCreate} style={[styles.primaryBtn]} hitSlop={6}>
-                  <Text style={styles.primaryBtnText}>Describe & Generate (2 ◈)</Text>
+                  <Text style={styles.primaryBtnText}>
+                    {`Describe & Generate (${createCost} ◈)`}
+                  </Text>
                 </Pressable>
               </View>
             </View>
@@ -196,25 +282,50 @@ export default function StudioHome({ navigation }) {
                   </View>
                 </View>
                 <Pressable onPress={openEdit} style={[styles.secondaryBtn]} hitSlop={6}>
-                  <Text style={styles.secondaryBtnText}>Choose Photo</Text>
+                  <Text style={styles.secondaryBtnText}>
+                    {`Edit a Photo (${editCost} ◈)`}
+                  </Text>
                 </Pressable>
               </View>
             </View>
 
             {/* Gallery header */}
-            <Text style={styles.sectionHeader}>Gallery</Text>
+            <View style={styles.sectionHeaderRow}>
+              <Text style={styles.sectionHeader}>Gallery</Text>
+              <View style={styles.sectionActions}>
+                <Pressable
+                  onPress={() => {
+                    try { LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); } catch {}
+                    toggleSelectionMode();
+                  }}
+                  hitSlop={8}
+                  style={styles.sectionHeaderBtn}
+                  accessibilityLabel={isSelectionMode ? 'Exit selection' : 'Select images'}
+                >
+                  <SvgIcon name="copygrey" size={18} color={isSelectionMode ? '#8A42FF' : '#FFFFFF'} />
+                </Pressable>
+                <Pressable
+                  onPress={() => {
+                    if (selectedImages.size > 0) {
+                      try { LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); } catch {}
+                      deleteSelectedImages();
+                    } else if (!isSelectionMode) {
+                      toggleSelectionMode();
+                    }
+                  }}
+                  hitSlop={8}
+                  style={[styles.sectionHeaderBtn, selectedImages.size > 0 && { backgroundColor: 'rgba(220,50,50,0.2)' }]}
+                  accessibilityLabel={selectedImages.size > 0 ? 'Delete selected images' : 'Select images to delete'}
+                >
+                  <SvgIcon name="delete" size={18} color={selectedImages.size > 0 ? '#FFB0B0' : '#FFFFFF'} />
+                </Pressable>
+              </View>
+            </View>
           </View>
         }
         data={galleryItems}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <Pressable
-            onPress={() => setViewer({ open: true, uri: item.url, id: item.id, jobId: item.jobId })}
-            style={[styles.tile, tileDynamicStyle]}
-          >
-            <ImageBackground source={{ uri: item.url }} style={styles.flex1} resizeMode="cover" />
-          </Pressable>
-        )}
+        renderItem={renderTile}
         numColumns={3}
         columnWrapperStyle={styles.columnWrapper}
         ListEmptyComponent={null}
@@ -227,6 +338,7 @@ export default function StudioHome({ navigation }) {
         imageUri={viewer.uri}
         imageId={viewer.id}
         jobId={viewer.jobId}
+        hideEdit
         onClose={() => setViewer({ open: false, uri: '', id: null, jobId: null })}
       />
     </View>
@@ -245,6 +357,8 @@ const styles = StyleSheet.create({
   headerBackBtn: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center' },
   headerCenterAbs: { ...StyleSheet.absoluteFillObject, alignItems: 'center', justifyContent: 'center' },
   headerTitle: { color: '#FFFFFF', fontSize: 22, fontWeight: '800', letterSpacing: 0.3 },
+  headerButton: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center', marginRight: 8 },
+  headerButtonActive: { backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 10 },
   balancePill: {
     height: 40,
     flexDirection: 'row',
@@ -283,9 +397,56 @@ const styles = StyleSheet.create({
   secondaryBtnText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
 
   sectionHeader: { marginTop: 8, marginBottom: 8, color: '#FFFFFF', fontSize: 18, fontWeight: '800' },
+  sectionHeaderRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 8, marginBottom: 8 },
+  sectionHeaderBtn: { width: 36, height: 36, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.08)' },
+  sectionActions: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   emptyText: { color: 'rgba(255,255,255,0.65)', paddingVertical: 24 },
   listContent: { padding: 12 },
   columnWrapper: { gap: 12, marginBottom: 12 },
   headerGroup: { gap: 12 },
   tile: { borderRadius: 10, overflow: 'hidden', backgroundColor: '#1A1A1D' },
+  selectionOverlay: { position: 'absolute', top: 8, right: 8, zIndex: 2 },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255,0.85)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  checkboxSelected: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#FFFFFF',
+  },
+  batchActionsBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: 'rgba(11,11,14,0.92)'
+  },
+  batchActionsLeft: { flexDirection: 'row', alignItems: 'center' },
+  batchActionsRight: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  batchActionsText: { color: '#FFFFFF', fontSize: 13, opacity: 0.8 },
+  selectAllButton: {
+    minHeight: 36,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  selectAllButtonText: { color: '#FFFFFF', fontSize: 13, fontWeight: '700' },
+  deleteButton: {
+    minHeight: 36,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    backgroundColor: 'rgba(220,50,50,0.85)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  deleteButtonText: { color: '#FFFFFF', fontSize: 13, fontWeight: '800' },
 });
