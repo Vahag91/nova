@@ -8,6 +8,7 @@ import {
   Platform,
   Image,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 const COLORS = {
   primary: '#009EDC',
@@ -21,6 +22,7 @@ const PLACEHOLDER_IMG = {
 
 
 const CareView = ({ animationController }) => {
+  const { t } = useTranslation();
   const { width } = useWindowDimensions();
 
   const slideX = animationController.current.interpolate({
@@ -88,9 +90,12 @@ const CareView = ({ animationController }) => {
 
         <Animated.View style={[styles.heroBlock, { transform: [{ translateY: titleTY }] }]}>
           <Text style={styles.heroTitle} numberOfLines={1}>
-            Meet <Text style={{ color: '#00F0FF' }}>Image Studio</Text>
+            {t('onboarding.careView.titlePrefix')}{' '}
+            <Text style={{ color: '#00F0FF' }}>{t('onboarding.careView.titleHighlight')}</Text>
           </Text>
-          <Text style={styles.heroSub}>Create & edit images with AI—right inside <Text style={{ color: '#00F0FF' }}>Chat Cloud</Text>.</Text>
+          <Text style={styles.heroSub}>
+            {t('onboarding.careView.subtitle', { app: t('onboarding.careView.appName') })}
+          </Text>
         </Animated.View>
       </Animated.View>
     </Animated.View>

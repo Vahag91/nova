@@ -113,6 +113,15 @@ const MessageBubble = memo(function MessageBubble({
 }) {
   const { t } = useTranslation();
   const radius = 18;
+  const copyLabel = t('chat.actions.copy', { defaultValue: 'Copy' });
+  const shareLabel = t('chat.actions.share', { defaultValue: 'Share' });
+  const regenerateLabel = t('chat.actions.regenerate', { defaultValue: 'Regenerate' });
+  const retryLabel = t('chat.actions.retryFromHere', { defaultValue: 'Retry from here' });
+  const cancelLabel = t('chat.actions.cancel', { defaultValue: 'Cancel' });
+  const messageActionTitle = t('chat.messageActionTitle', { defaultValue: 'Message' });
+  const sendingLabel = t('chat.status.sending', { defaultValue: 'Sending…' });
+  const failedLabel = t('chat.status.failed', { defaultValue: 'Failed' });
+  const sentLabel = t('chat.status.sent', { defaultValue: 'Sent' });
 
   const cornerStyle = useMemo(() => (
     isUser
@@ -144,8 +153,8 @@ const MessageBubble = memo(function MessageBubble({
   };
 
   const showSheet = () => {
-    const baseUser = ['Copy', 'Retry from here', 'Cancel'];
-    const baseAi = ['Copy', 'Share', 'Regenerate', 'Cancel'];
+    const baseUser = [copyLabel, retryLabel, cancelLabel];
+    const baseAi = [copyLabel, shareLabel, regenerateLabel, cancelLabel];
     const options = isUser ? baseUser : baseAi;
     const cancelButtonIndex = options.length - 1;
 
@@ -153,17 +162,17 @@ const MessageBubble = memo(function MessageBubble({
       Haptic.trigger('selection');
       ActionSheetIOS.showActionSheetWithOptions({ options, cancelButtonIndex }, (idx) => {
         const choice = options[idx];
-        if (choice === 'Copy') onCopy();
-        else if (choice === 'Share') onShare();
-        else if (choice === 'Regenerate') onRegenerate();
-        else if (choice === 'Retry from here') onRegenerate();
+        if (choice === copyLabel) onCopy();
+        else if (choice === shareLabel) onShare();
+        else if (choice === regenerateLabel) onRegenerate();
+        else if (choice === retryLabel) onRegenerate();
       });
     } else {
-      Alert.alert('Message', undefined, [
-        { text: 'Copy', onPress: onCopy },
-        !isUser && { text: 'Share', onPress: onShare },
-        { text: isUser ? 'Retry from here' : 'Regenerate', onPress: onRegenerate },
-        { text: 'Cancel', style: 'cancel' },
+      Alert.alert(messageActionTitle, undefined, [
+        { text: copyLabel, onPress: onCopy },
+        !isUser && { text: shareLabel, onPress: onShare },
+        { text: isUser ? retryLabel : regenerateLabel, onPress: onRegenerate },
+        { text: cancelLabel, style: 'cancel' },
       ].filter(Boolean));
     }
   };
@@ -220,7 +229,7 @@ const MessageBubble = memo(function MessageBubble({
                       {showMeta && (
                         <View style={styles.metaRow}>
                           {!!model && <View style={styles.modelTag}><Text style={styles.modelText}>{model}</Text></View>}
-                          {!!status && <Text style={styles.metaTime}>{status === 'pending' ? 'Sending…' : status === 'failed' ? 'Failed' : 'Sent'}</Text>}
+                          {!!status && <Text style={styles.metaTime}>{status === 'pending' ? sendingLabel : status === 'failed' ? failedLabel : sentLabel}</Text>}
                         </View>
                       )}
                     </View>
@@ -237,7 +246,7 @@ const MessageBubble = memo(function MessageBubble({
                   {showMeta && (
                     <View style={styles.metaRow}>
                       {!!model && <View style={styles.modelTag}><Text style={styles.modelText}>{model}</Text></View>}
-                      {!!status && <Text style={styles.metaTime}>{status === 'pending' ? 'Sending…' : status === 'failed' ? 'Failed' : 'Sent'}</Text>}
+                      {!!status && <Text style={styles.metaTime}>{status === 'pending' ? sendingLabel : status === 'failed' ? failedLabel : sentLabel}</Text>}
                     </View>
                   )}
                 </View>
@@ -270,7 +279,7 @@ const MessageBubble = memo(function MessageBubble({
                       )}
                       {!!status && (
                         <Text style={styles.metaTime}>
-                          {status === 'pending' ? 'Sending…' : status === 'failed' ? 'Failed' : 'Sent'}
+                          {status === 'pending' ? sendingLabel : status === 'failed' ? failedLabel : sentLabel}
                         </Text>
                       )}
                     </View>

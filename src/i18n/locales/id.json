@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Pilih model",
-      "searchPlaceholder": "Cari model...",
-      "noModelsFound": "Tidak ada model ditemukan",
-      "noModelsAvailable": "Tidak ada model yang tersedia",
-      "currentModel": "Model saat ini: {{name}}. Ketuk untuk mengubah.",
-      "openHint": "Membuka menu pemilihan model",
-      "closeLabel": "Tutup pemilih model",
-      "searchLabel": "Cari model",
-      "searchHint": "Ketik untuk memfilter model",
-      "modelLabel": "Model {{name}}",
-      "selectHint": "Pilih {{name}}",
-      "currentlySelected": "Model yang dipilih"
+  "modelSelector": {
+    "title": "Pilih model",
+    "searchPlaceholder": "Cari model...",
+    "noModelsFound": "Model tidak ditemukan",
+    "noModelsAvailable": "Tidak ada model yang tersedia",
+    "currentModel": "Model saat ini: {{name}}. Ketuk untuk mengubah.",
+    "openHint": "Buka menu pemilih model",
+    "closeLabel": "Tutup pemilih model",
+    "searchLabel": "Cari model",
+    "searchHint": "Ketik untuk memfilter model yang tersedia",
+    "modelLabel": "Model {{name}}",
+    "selectHint": "Pilih model {{name}}",
+    "currentlySelected": "Sedang dipilih"
+  },
+  "models": {
+    "gpt-4o": "Model AI paling kuat",
+    "gpt-4o-mini": "Cepat untuk tugas harian",
+    "gpt-5": "AI serba guna paling kuat",
+    "gpt-5-chat-latest": "Dioptimalkan untuk chat dan dialog",
+    "gpt-5-mini": "GPT-5 cepat dan andal",
+    "gpt-5-nano": "Model ringan untuk tugas sederhana",
+    "o4-mini": "Model penalaran efisien",
+    "gpt-4.1-mini": "GPT-4.1 ringkas namun andal",
+    "claude-3-haiku": "Anthropic cepat dan fokus",
+    "claude-3.7-sonnet": "Penalaran halus dari Anthropic",
+    "gemini-2.5-Flash": "Model paling canggih dari Google",
+    "gemini-2.5-flash": "Model paling canggih dari Google",
+    "gemini-2.0-flash": "Google AI cepat dan presisi"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Lainnya"
+  },
+  "navigation": {
+    "chat": "Obrolan Baru",
+    "history": "Riwayat",
+    "assistants": "Asisten",
+    "imagesStudio": "Image Studio",
+    "settings": "Pengaturan",
+    "recentChats": "Obrolan Terbaru"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Buat, sempurnakan, dan publikasikan aset visual di satu tempat.",
+    "cta": "Buka"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Pilih gambar",
+    "exitSelectionMode": "Keluar dari mode pilih",
+    "selectAll": "Pilih Semua",
+    "noImagesYet": "Belum ada gambar",
+    "describeImageHint": "Jelaskan gambar di bawah lalu ketuk Buat.",
+    "generatedImagesGallery": "Galeri gambar yang dibuat",
+    "describeImagePlaceholder": "Jelaskan gambar yang kamu mau…",
+    "deleteConfirmTitle": "Hapus Gambar",
+    "deleteConfirmMessage": "Yakin ingin menghapus gambar yang dipilih? Tindakan ini tidak dapat dibatalkan.",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "generate": "Buat",
+    "generating": "Sedang membuat…",
+    "latest": "Terbaru",
+    "insertToChat": "Sisipkan ke obrolan",
+    "pleaseWait": "Harap tunggu…",
+    "processing": "Memproses...",
+    "tapToUploadImage": "Ketuk untuk mengunggah gambar",
+    "camera": "Kamera",
+    "library": "Galeri",
+    "enterPrompt": "Masukkan prompt untuk pembuatan gambar dari teks",
+    "openInBrowser": "Buka di browser",
+    "makeVariations": "Buat variasi",
+    "deleteAllFromGeneration": "Hapus semua dari generasi ini",
+    "imageOptionsTitle": "Opsi Gambar",
+    "imageOptionsMessage": "Apa yang ingin kamu lakukan dengan gambar ini?",
+    "insertMarkdownHeader": "Ini gambar untuk:",
+    "variationSuffix": "— variasi dari gambar sebelumnya",
+    "selectedCount": "dipilih",
+    "selectedCount_one": "dipilih",
+    "selectedCount_other": "dipilih",
+    "imageDescriptionInput": "Input deskripsi gambar",
+    "imageDescriptionHint": "Masukkan deskripsi gambar yang ingin kamu buat",
+    "openModelSettings": "Buka pengaturan model",
+    "modelSettingsHint": "Ketuk untuk mengganti model dan pengaturan",
+    "openPhotoGallery": "Buka galeri foto",
+    "clearInput": "Hapus input",
+    "generatedImage": "Gambar yang dibuat",
+    "autoSelectedModel": "Model {{model}} dipilih otomatis untuk mode {{mode}}",
+    "deleteSelectedConfirmTitle": "Hapus gambar",
+    "deleteSelectedConfirmMessage": "Yakin ingin menghapus gambar? Tindakan ini tidak dapat dibatalkan."
+  },
+  "imageStudio": {
+    "generateImage": "Buat gambar",
+    "generatingImage": "Sedang membuat gambar",
+    "generateImageHint": "Ketuk untuk membuat gambar berdasarkan deskripsi kamu",
+    "imageDescriptionInput": "Input deskripsi gambar",
+    "imageDescriptionHint": "Masukkan deskripsi gambar yang ingin kamu buat",
+    "openModelSettings": "Buka pengaturan model",
+    "modelSettingsHint": "Ketuk untuk mengganti model dan pengaturan",
+    "openPhotoGallery": "Buka galeri foto",
+    "clearInput": "Hapus input",
+    "generatedImage": "Gambar yang dibuat"
+  },
+  "assistants": {
+    "title": "Asisten",
+    "subtitle": "Asisten AI pilihan siap untuk coding, menulis, analisis, perencanaan, dan lainnya.",
+    "searchPlaceholder": "Cari asisten…",
+    "useAssistant": "Gunakan Asisten",
+    "selectAssistant": "Pilih asisten",
+    "description": "Deskripsi",
+    "systemPrompt": "Prompt Sistem",
+    "chooseModel": "Pilih Model",
+    "categoryAll": "Semua",
+    "categories": {
+      "everyday": "Sehari-hari",
+      "life": "Gaya hidup",
+      "health": "Kesehatan",
+      "schoolWork": "Sekolah & Kerja",
+      "coding": "Pemrograman",
+      "creative": "Kreatif",
+      "general": "Umum"
+    },
+    "presets": {
+      "default": {
+        "name": "Asisten Default",
+        "description": "Bantuan seimbang untuk kebutuhan harian."
+      },
+      "quick": {
+        "name": "Jawaban Cepat",
+        "description": "Jawaban singkat dan to the point."
+      },
+      "planner": {
+        "name": "Perencana Harian",
+        "description": "Rencanakan hari dan rutinitasmu."
+      },
+      "recipes": {
+        "name": "Resep & Masakan",
+        "description": "Masak apa dari bahan yang ada."
+      },
+      "fitness": {
+        "name": "Pelatih Kebiasaan & Fitness",
+        "description": "Kebiasaan kecil dan latihan di rumah."
+      },
+      "money": {
+        "name": "Teman Keuangan",
+        "description": "Anggaran simpel dan tips pengeluaran."
+      },
+      "study": {
+        "name": "Asisten Belajar",
+        "description": "Jelaskan dengan sederhana. Tes aku."
+      },
+      "email": {
+        "name": "Email & CV",
+        "description": "Tulis email dan CV yang jelas."
+      },
+      "translator": {
+        "name": "Penerjemah",
+        "description": "Terjemahkan + ajarkan frasa."
+      },
+      "travel": {
+        "name": "Teman Traveling",
+        "description": "Rencana simpel & daftar bawaan."
+      },
+      "tech": {
+        "name": "Bantuan Teknis (Sederhana)",
+        "description": "HP, aplikasi, Wi-Fi level dasar."
+      },
+      "summarizer": {
+        "name": "Perangkum TL;DR",
+        "description": "Poin-poin + satu kalimat ringkasan."
+      },
+      "gift": {
+        "name": "Pencari Kado",
+        "description": "Ide berdasarkan budget & minat."
+      },
+      "party": {
+        "name": "Perencana Acara (Ringan)",
+        "description": "Rencanakan acara kecil dengan cepat."
+      },
+      "social": {
+        "name": "Pembuat Postingan Sosmed",
+        "description": "Draf postingan dengan beberapa opsi."
+      },
+      "interview": {
+        "name": "Pelatih Wawancara",
+        "description": "Latihan jawaban (STAR)."
+      },
+      "homefix": {
+        "name": "Perbaikan Rumah",
+        "description": "Panduan troubleshooting sederhana."
+      },
+      "pet": {
+        "name": "Perawatan Hewan",
+        "description": "Pakan, jalan, dan latihan dasar."
+      },
+      "mindful": {
+        "name": "Momen Tenang",
+        "description": "Relaks 1–3 menit."
+      },
+      "polite": {
+        "name": "Penulis Sopan",
+        "description": "Tulis ulang dengan lebih sopan."
+      }
+    }
+  },
+  "history": {
+    "title": "Riwayat",
+    "searchPlaceholder": "Cari obrolan…",
+    "newChat": "Obrolan Baru",
+    "new": "+ Baru",
+    "search": "Cari",
+    "clearSearch": "Hapus pencarian",
+    "noChatsYet": "Belum ada obrolan",
+    "startFirstConversation": "Mulai percakapan pertamamu.",
+    "startChat": "Mulai obrolan",
+    "errorLoadingHistory": "Gagal memuat riwayat",
+    "renameChat": "Ubah nama obrolan",
+    "enterNewTitle": "Masukkan judul baru",
+    "deleteChat": "Hapus obrolan?",
+    "deleteChatMessage": "\"{{title}}\" akan dihapus.",
+    "rename": "Ubah nama",
+    "unpin": "Lepas sematan",
+    "pin": "Sematkan",
+    "untitled": "Tanpa judul"
+  },
+  "settings": {
+    "title": "Pengaturan",
+    "model": "Model",
+    "searchPlaceholder": "Cari model…",
+    "temperatureForCurrentModel": "Temperature untuk model saat ini",
+    "customFor": "Kustom untuk {{model}}",
+    "usingDefault": "Menggunakan default {{temperature}}",
+    "resetToDefault": "Kembalikan ke default",
+    "defaultTemperature": "Temperature default (cadangan)",
+    "usedByModelsWithoutOverride": "Dipakai oleh model tanpa pengaturan khusus",
+    "dangerZone": "Zona berbahaya",
+    "clearAllChatsAndSettings": "Hapus semua obrolan & pengaturan",
+    "about": "Tentang",
+    "version": "Versi {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Kebijakan Privasi",
+    "hero": {
+      "label": "Penawaran spesial",
+      "title": "Akses prioritas & tanpa batas",
+      "upgrade": "Upgrade",
+      "manage": "Kelola paket"
+    },
+    "sections": {
+      "premium": "Paket Premium",
+      "data": "Data Pengguna",
+      "support": "Dukungan & Legal"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Dapatkan Premium",
+        "subtitle": "Buka akses alat kreasi tanpa batas"
+      },
+      "premiumActive": {
+        "title": "Premium Aktif",
+        "subtitle": "Terima kasih telah mendukung ChatCloud"
+      },
+      "restore": {
+        "title": "Pulihkan pembelian",
+        "subtitle": "Gunakan jika kamu ganti perangkat"
+      },
+      "history": {
+        "title": "Kelola riwayat obrolan",
+        "subtitle": "Lihat dan hapus sesi sebelumnya"
+      },
+      "reset": {
+        "title": "Reset obrolan & preferensi",
+        "subtitle": "Hapus semua data di perangkat ini"
+      },
+      "rate": {
+        "title": "Beri rating",
+        "error": "Tidak dapat membuka halaman store."
+      },
+      "support": {
+        "title": "Dukungan",
+        "subtitle": "Hubungi kami online",
+        "error": "Tidak dapat membuka halaman kontak."
+      },
+      "privacy": {
+        "title": "Kebijakan Privasi",
+        "error": "Tidak dapat membuka kebijakan privasi."
+      },
+      "terms": {
+        "title": "Syarat Penggunaan",
+        "error": "Tidak dapat membuka syarat penggunaan."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "Audio",
+      "video": "Video"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Tidak tersedia",
+      "linkUnavailableMessage": "Tidak dapat membuka tautan ini sekarang.",
+      "restoreSuccessTitle": "Berhasil dipulihkan",
+      "restoreSuccessMessage": "Pembelianmu telah dipulihkan.",
+      "restoreErrorTitle": "Gagal memulihkan",
+      "restoreErrorMessage": "Tidak dapat memulihkan pembelian sekarang.",
+      "resetConfirmTitle": "Reset data aplikasi?",
+      "resetConfirmMessage": "Ini akan menghapus semua obrolan dan pengaturan.",
+      "resetConfirmCancel": "Batal",
+      "resetConfirmCta": "Reset"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Buat",
+    "chooseStyle": "Pilih gaya",
+    "aspectRatio": "Rasio",
+    "starterPrompts": {
+      "title": "Prompt awal",
+      "items": [
+        "foto kepala ala studio",
+        "ruang tamu modern",
+        "pantai tropis saat matahari terbenam"
+      ]
+    },
+    "promptPlaceholder": "Tulis apa yang ingin kamu lihat…",
+    "promptHint": "Contoh: 'Golden retriever dalam lighting studio'",
+    "clearText": "Hapus teks",
+    "generate": "Buat",
+    "generating": "Sedang membuat…"
+  },
+  "editImage": {
+    "headerTitle": "Edit",
+    "chooseStyle": "Pilih gaya",
+    "aspectRatio": "Rasio",
+    "starterPrompts": {
+      "title": "Prompt awal",
+      "items": [
+        "perbaiki pencahayaan",
+        "hapus latar belakang",
+        "retouch potret lembut"
+      ]
+    },
+    "promptPlaceholder": "Jelaskan editan (opsional)",
+    "clearText": "Hapus",
+    "generate": "Terapkan",
+    "generating": "Menerapkan…",
+    "upload": {
+      "choose": "Pilih foto",
+      "change": "Ganti",
+      "remove": "Hapus"
+    },
+    "imageUnavailable": {
+      "title": "Gambar tidak tersedia",
+      "message": "Tidak dapat mengakses gambar yang dipilih. Silakan pilih ulang lalu coba lagi."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Kartun"
+      },
+      "photoreal": {
+        "name": "Fotorealistik"
+      },
+      "sketch": {
+        "name": "Sketsa"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Ilustrasi 3D"
+      },
+      "dark_fantasy": {
+        "name": "Fantasi Gelap"
+      },
+      "vintage_film": {
+        "name": "Film Vintage"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Neon Glow"
+      },
+      "epic_landscape": {
+        "name": "Lanskap Epik"
+      }
+    },
+    "aspectRatios": {
+      "square": "Persegi",
+      "landscape": "Lanskap",
+      "portrait": "Potret"
     },
     "models": {
-      "gpt-4o": "Model AI paling kuat",
-      "gpt-4o-mini": "Cepat untuk tugas sehari-hari",
-      "claude-3-haiku": "Model cepat dan efisien",
-      "claude-3.7-sonnet": "Model penalaran tingkat lanjut",
-      "gemini-2.5-pro": "Model terbaik dari Google",
-      "gemini-2.0-flash": "Model cepat dengan penalaran hebat"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Kustom"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Lainnya"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Model paling cepat",
+      "runwareFluxKrea": "Hasil kreatif dan bergaya",
+      "runwareQwenImage": "Seimbang dan berkualitas tinggi",
+      "google4": "Model gambar AI terbaik",
+      "fluxKontent": "Flux Kontent disetel untuk pengeditan",
+      "runwareProvider": "Seimbang antara kualitas dan diffusion yang stabil.",
+      "airProvider": "Nano Banana dengan warna cerah menyenangkan.",
+      "googleProvider": "Google disetel untuk detail tajam.",
+      "anthropicProvider": "Pipeline Claude untuk nuansa halus.",
+      "default": "Ketuk untuk jelajahi engine yang tersedia."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "gaya yang kamu pilih",
+    "sheetTitle": "Sedang mewujudkan gambarmu",
+    "sheetSubtitle": "Sedang memadukan {{style}} ke dalam prompt.",
+    "phases": {
+      "blend": "Memadukan {{style}}",
+      "paint": "Melukis tampilan",
+      "finish": "Memberi sentuhan akhir"
     },
-    "navigation": {
-      "chat": "Chat",
-      "history": "Riwayat",
-      "assistants": "Asisten",
-      "imagesStudio": "Studio",
-      "settings": "Pengaturan",
-      "recentChats": "Chat terbaru"
-    },
-    "imagesStudio": {
-      "title": "Studio",
-      "selectImages": "Pilih gambar",
-      "exitSelectionMode": "Keluar dari mode seleksi",
-      "selectAll": "Pilih semua",
-      "noImagesYet": "Belum ada gambar",
-      "describeImageHint": "Jelaskan gambar Anda di bawah lalu ketuk \"Generate\".",
-      "generatedImagesGallery": "Galeri gambar yang dihasilkan",
-      "describeImagePlaceholder": "Jelaskan gambar yang Anda inginkan…",
-      "deleteConfirmTitle": "Hapus Gambar",
-      "deleteConfirmMessage": "Yakin ingin menghapus gambar yang dipilih? Tindakan ini tidak dapat dibatalkan.",
+    "actions": {
       "cancel": "Batal",
-      "delete": "Hapus",
-      "generate": "Generate",
-      "generating": "Menghasilkan…",
-      "latest": "Terbaru",
-      "insertToChat": "Masukkan ke chat",
-      "pleaseWait": "Harap tunggu…",
-      "processing": "Memproses...",
-      "tapToUploadImage": "Ketuk untuk mengunggah gambar",
-      "camera": "Kamera",
-      "library": "Galeri",
-      "enterPrompt": "Masukkan prompt untuk pembuatan teks-ke-gambar",
-      "openInBrowser": "Buka di browser",
-      "makeVariations": "Buat variasi",
-      "deleteAllFromGeneration": "Hapus semua dari generasi ini",
-      "imageOptionsTitle": "Opsi gambar",
-      "imageOptionsMessage": "Apa yang ingin Anda lakukan dengan gambar ini?",
-      "insertMarkdownHeader": "Berikut gambar untuk:",
-      "variationSuffix": "— variasi dari gambar sebelumnya",
-      "selectedCount": "dipilih",
-      "selectedCount_one": "dipilih",
-      "selectedCount_other": "dipilih",
-      "imageDescriptionInput": "Input deskripsi gambar",
-      "imageDescriptionHint": "Masukkan deskripsi gambar yang ingin dibuat",
-      "openModelSettings": "Buka pengaturan model",
-      "modelSettingsHint": "Ketuk untuk mengubah model dan pengaturan",
-      "openPhotoGallery": "Buka galeri foto",
-      "clearInput": "Hapus input",
-      "generatedImage": "Gambar yang dihasilkan",
-      "autoSelectedModel": "Dipilih otomatis {{model}} untuk mode {{mode}}",
-      "deleteSelectedConfirmTitle": "Hapus gambar",
-      "deleteSelectedConfirmMessage": "Yakin ingin menghapus gambar? Tindakan ini tidak dapat dibatalkan."
+      "retry": "Coba lagi",
+      "close": "Tutup"
     },
-    "imageStudio": {
-      "generateImage": "Hasilkan gambar",
-      "generatingImage": "Menghasilkan gambar",
-      "generateImageHint": "Ketuk untuk membuat gambar berdasarkan deskripsi",
-      "imageDescriptionInput": "Input deskripsi gambar",
-      "imageDescriptionHint": "Masukkan deskripsi gambar yang ingin dibuat",
-      "openModelSettings": "Buka pengaturan model",
-      "modelSettingsHint": "Ketuk untuk mengubah model dan pengaturan",
-      "openPhotoGallery": "Buka galeri foto",
-      "clearInput": "Hapus input",
-      "generatedImage": "Gambar yang dihasilkan"
+    "errors": {
+      "restrictedTitle": "Konten dibatasi",
+      "genericTitle": "Gagal membuat",
+      "genericMessage": "Tidak dapat membuat gambar."
     },
-    "assistants": {
-      "title": "Asisten",
-      "subtitle": "Spesialis AI pilihan untuk coding, penulisan, analisis, perencanaan, dan lainnya.",
-      "searchPlaceholder": "Cari asisten…",
-      "useAssistant": "Gunakan Asisten",
-      "description": "Deskripsi",
-      "systemPrompt": "Prompt sistem",
-      "chooseModel": "Pilih model",
-      "categoryAll": "Semua",
-      "categories": {
-        "everyday": "Sehari-hari",
-        "life": "Kehidupan",
-        "health": "Kesehatan",
-        "schoolWork": "Sekolah & kerja",
-        "coding": "Coding",
-        "creative": "Kreatif",
-        "general": "Umum"
-      },
-      "presets": {
-        "default": { "name": "Asisten Default", "description": "Bantuan seimbang untuk kebutuhan harian." },
-        "quick": { "name": "Jawaban Cepat", "description": "Pendek dan langsung." },
-        "planner": { "name": "Perencana Harian", "description": "Rencanakan hari dan rutinitas Anda." },
-        "recipes": { "name": "Makanan & Resep", "description": "Masak apa dengan yang ada." },
-        "fitness": { "name": "Pelatih Kebiasaan & Kebugaran", "description": "Kebiasaan kecil & latihan rumah." },
-        "money": { "name": "Teman Keuangan", "description": "Anggaran sederhana & tips pengeluaran." },
-        "study": { "name": "Pembantu Belajar", "description": "Jelaskan sederhana. Kuis saya." },
-        "email": { "name": "Email & Resume", "description": "Tulis email jelas & poin CV." },
-        "translator": { "name": "Penerjemah", "description": "Terjemahkan + pelajari frasa." },
-        "travel": { "name": "Teman Perjalanan", "description": "Rencana sederhana & daftar bawaan." },
-        "tech": { "name": "Dukungan Teknis (Sederhana)", "description": "Dasar ponsel, aplikasi, Wi-Fi." },
-        "summarizer": { "name": "Rangkuman TL;DR", "description": "Poin singkat + ringkasan satu baris." },
-        "gift": { "name": "Pencari Kado", "description": "Ide berdasarkan anggaran & minat." },
-        "party": { "name": "Perencana Acara (Lite)", "description": "Rencanakan pesta kecil dengan cepat." },
-        "social": { "name": "Pembuat Postingan Sosial", "description": "Draf postingan dengan opsi." },
-        "interview": { "name": "Pelatih Wawancara", "description": "Latih jawaban (STAR)." },
-        "homefix": { "name": "Panduan Perbaikan Rumah", "description": "Pemecahan masalah sederhana." },
-        "pet": { "name": "Teman Perawatan Hewan", "description": "Pakan, jalan-jalan, pelatihan dasar." },
-        "mindful": { "name": "Menit Mindful", "description": "Jeda tenang 1–3 menit." },
-        "polite": { "name": "Penulis Ulang Sopan", "description": "Tulis ulang teks & balasan dengan sopan." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Gagal menyimpan",
+      "shareFailedTitle": "Gagal berbagi",
+      "tryAgain": "Silakan coba lagi."
     },
-    "history": {
-      "title": "Riwayat",
-      "searchPlaceholder": "Cari chat…",
-      "newChat": "Chat baru",
-      "new": "+ Baru",
-      "search": "Cari",
-      "clearSearch": "Hapus pencarian",
-      "noChatsYet": "Belum ada chat",
-      "startFirstConversation": "Mulai percakapan pertama Anda.",
-      "startChat": "Mulai chat",
-      "errorLoadingHistory": "Kesalahan memuat riwayat",
-      "renameChat": "Ganti nama chat",
-      "enterNewTitle": "Masukkan judul baru",
-      "deleteChat": "Hapus chat?",
-      "deleteChatMessage": "\"{{title}}\" akan dihapus.",
-      "rename": "Ganti nama",
-      "unpin": "Lepas pin",
-      "pin": "Sematkan",
-      "untitled": "Tanpa judul"
+    "result": {
+      "complete": "Selesai"
     },
-    "settings": {
-      "title": "Pengaturan",
-      "model": "Model",
-      "searchPlaceholder": "Cari model…",
-      "temperatureForCurrentModel": "Temperatur untuk model saat ini",
-      "customFor": "Kustom untuk {{model}}",
-      "usingDefault": "Menggunakan default {{temperature}}",
-      "resetToDefault": "Reset ke default",
-      "defaultTemperature": "Temperatur default (cadangan)",
-      "usedByModelsWithoutOverride": "Digunakan oleh model tanpa override",
-      "dangerZone": "Zona berbahaya",
-      "clearAllChatsAndSettings": "Hapus semua chat & pengaturan",
-      "about": "Tentang",
-      "version": "Versi {{version}}",
-      "privacyPolicy": "Kebijakan privasi",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Kirim pesan ke Agarka...",
-      "createImages": "Buat Gambar",
-      "generateAiArtwork": "Buat karya seni AI",
-      "camera": "Kamera",
-      "takeOrSelectPhotos": "Ambil atau pilih foto",
-      "search": "Cari",
-      "findInformation": "Cari informasi",
-      "removeImage": "Hapus gambar",
-      "messageInput": "Input pesan",
-      "clearInput": "Hapus input",
-      "hideQuickActions": "Sembunyikan tindakan cepat",
-      "showQuickActions": "Tampilkan tindakan cepat",
-      "startVoiceInput": "Mulai input suara",
-      "sendMessage": "Kirim",
-      "offline": "Luring",
-      "stop": "Hentikan",
-      "streaming": "Streaming…",
-      "closeRecorder": "Tutup perekam",
-      "insertTranscript": "Masukkan transkrip",
-      "scrollToLatest": "Gulir ke terbaru",
-      "copyMessage": "Salin pesan",
-      "copyMessageHint": "Salin pesan ini ke papan klip",
-      "shareMessage": "Bagikan pesan",
-      "shareMessageHint": "Bagikan pesan ini",
-      "regenerateResponse": "Buat ulang respons",
-      "regenerateResponseHint": "Hasilkan respons baru",
-      "copyCode": "Salin kode",
-      "image": "gambar",
-      "loading": "Memuat…",
-      "loadingChat": "Memuat chat...",
-      "offlineBanner": "Anda sedang luring. Pesan tidak dapat dikirim.",
-      "imagePickerErrorTitle": "Kesalahan pemilih gambar",
-      "messageTooLong": "Pesan terlalu panjang ({{length}}). Batasnya {{limit}}.",
-      "emptyTitle": "Bagaimana saya bisa membantu?",
-      "emptySubtitle": "Mulai percakapan dengan AI",
-      "privateTitle": "Chat pribadi",
-      "privateSubtitle": "Chat ini tidak akan muncul di riwayat Anda",
-      "listening": "Mendengarkan…",
-      "startRecording": "Mulai merekam…",
-      "suggestions": {
-        "writeStory": "Tulis cerita kreatif",
-        "writeStorySubtitle": "tentang petualangan magis",
-        "planTravel": "Rencanakan rencana perjalanan",
-        "planTravelSubtitle": "untuk liburan yang menakjubkan",
-        "explainConcept": "Jelaskan konsep ini",
-        "explainConceptSubtitle": "dengan kata sederhana",
-        "planDay": "Rencanakan hariku",
-        "planDaySubtitle": "dengan tips produktivitas"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Memproses...",
-      "tapToUploadImage": "Ketuk untuk mengunggah gambar"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Memproses...",
-      "camera": "Kamera",
-      "library": "Galeri"
-    },
-    "common": {
-      "new": "BARU",
-      "best": "TERBAIK",
-      "cancel": "Batal",
-      "save": "Simpan",
-      "delete": "Hapus",
+    "accessibility": {
       "close": "Tutup"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Hapus",
+      "edit": "Edit",
+      "save": "Simpan",
+      "share": "Bagikan"
+    },
+    "accessibility": {
+      "close": "Tutup",
+      "delete": "Hapus gambar",
+      "edit": "Edit gambar",
+      "save": "Simpan gambar",
+      "share": "Bagikan gambar"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Buka menu",
+      "selectImages": "Pilih gambar",
+      "exitSelection": "Keluar dari mode pilih",
+      "deleteSelected": "Hapus gambar yang dipilih",
+      "selectToDelete": "Pilih gambar untuk dihapus"
+    },
+    "createCard": {
+      "title": "Buat dari teks",
+      "subtitle": "Ketik deskripsi",
+      "cta": "Deskripsikan & Buat"
+    },
+    "editCard": {
+      "title": "Edit Foto",
+      "subtitle": "Unggah & edit",
+      "cta": "Edit Foto"
+    },
+    "gallery": {
+      "title": "Galeri",
+      "empty": "Belum ada gambar",
+      "selection": {
+        "enter": "Pilih gambar",
+        "exit": "Keluar dari mode pilih",
+        "deleteSelected": "Hapus gambar yang dipilih",
+        "selectForDelete": "Pilih gambar untuk dihapus"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Kenalan dengan",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Buat & edit gambar dengan AI langsung di {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Kenalan dengan AI-mu",
+      "titleHighlight": "Asisten",
+      "subtitle": "Spesialis AI siap bantu kebutuhan harianmu",
+      "cards": [
+        {
+          "title": "Pelatih Fitness",
+          "text": "Dapatkan rencana latihan dan nutrisi sesuai tujuanmu"
+        },
+        {
+          "title": "Dokter",
+          "text": "Dapat insight kesehatan, analisis gejala, dan panduan"
+        },
+        {
+          "title": "Perawatan Hewan",
+          "text": "Tips kesehatan, latihan, dan perawatan hewan kesayangan"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "SOLUSI AI UNTUK ENTERPRISE",
+      "description": "Perkuat bisnismu dengan AI mutakhir untuk profesional dan tim.",
+      "stats": "Dipercaya 500k+ pengguna",
+      "rating": "4.9 / 5",
+      "button": "Mulai"
+    }
+  },
+  "coinStore": {
+    "title": "Dapatkan Token",
+    "loading": "Memuat toko token…",
+    "balanceLabel": "Saldo kamu saat ini",
+    "balanceValue": "{{amount}} Token",
+    "history": {
+      "link": "Riwayat Transaksi",
+      "alertTitle": "Riwayat",
+      "alertBody": "Riwayat transaksi akan segera hadir."
+    },
+    "noPacks": "Tidak ada paket token. Periksa RevenueCat offering id.",
+    "badges": {
+      "basic": "Paket Dasar",
+      "popular": "Paling Populer",
+      "value": "Paling Hemat"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} Token",
+      "defaultName": "Paket {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Jadi Premium",
+      "subtitle": "Akses & fitur tanpa batas",
+      "cta": "Upgrade"
+    },
+    "termsText": "Dengan membeli, kamu setuju dengan",
+    "termsLink": "Ketentuan Layanan",
+    "alerts": {
+      "initErrorTitle": "Gagal memulai",
+      "genericMessage": "Terjadi kesalahan.",
+      "successTitle": "Berhasil",
+      "successMessage": "Token akan segera muncul.",
+      "purchaseFailedTitle": "Pembelian gagal",
+      "unknownError": "Kesalahan tidak diketahui"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Pulihkan",
+    "restoreRestoring": "Memulihkan…",
+    "features": {
+      "create": "Buat gambar dan video",
+      "search": "Cari web dengan AI",
+      "talk": "Ngobrol alami dengan AI"
+    },
+    "freeTrial": {
+      "title": "Coba gratis",
+      "subtitle": "Coba gratis 3 hari"
+    },
+    "badge": {
+      "bestOffer": "Penawaran terbaik"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Tahunan",
+        "only": "Hanya {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Bulanan",
+        "subtitle": "Bisa batal kapan saja",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Mingguan",
+        "subtitle": "Bisa batal kapan saja",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "per minggu",
+      "perMonth": "per bulan"
+    },
+    "cta": "Lanjutkan",
+    "legal": {
+      "terms": "Ketentuan",
+      "privacy": "Privasi"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Pesan...",
+    "createImages": "Buat Gambar",
+    "generateAiArtwork": "Buat karya seni AI",
+    "camera": "Kamera",
+    "takeOrSelectPhotos": "Ambil atau pilih foto",
+    "search": "Cari",
+    "findInformation": "Cari informasi",
+    "findRecentInfo": "Cari info terbaru",
+    "removeImage": "Hapus gambar",
+    "messageInput": "Input pesan",
+    "clearInput": "Hapus input",
+    "quickActionsLabel": "Aksi cepat",
+    "hideQuickActions": "Sembunyikan aksi cepat",
+    "showQuickActions": "Tampilkan aksi cepat",
+    "startVoiceInput": "Mulai input suara",
+    "sendMessage": "Kirim pesan",
+    "offline": "Luring",
+    "stop": "Berhenti",
+    "streaming": "Mengalir…",
+    "closeRecorder": "Tutup perekam",
+    "insertTranscript": "Kirim",
+    "scrollToLatest": "Gulir ke terbaru",
+    "copyMessage": "Salin pesan",
+    "copyMessageHint": "Salin pesan ini ke clipboard",
+    "shareMessage": "Bagikan pesan",
+    "shareMessageHint": "Bagikan pesan ini",
+    "regenerateResponse": "Buat ulang jawaban",
+    "regenerateResponseHint": "Buat jawaban baru",
+    "copyCode": "Salin kode",
+    "image": "gambar",
+    "loading": "Memuat…",
+    "loadingChat": "Memuat obrolan...",
+    "offlineBanner": "Kamu sedang luring. Pesan tidak dapat dikirim.",
+    "imagePickerErrorTitle": "Gagal mengambil gambar",
+    "imagePickerErrorMessage": "Tidak dapat mengakses foto. Coba lagi.",
+    "messageTooLong": "Pesan terlalu panjang ({{length}}). Batasnya {{limit}}.",
+    "sendFailed": "Gagal mengirim.",
+    "voiceStartFailed": "Tidak dapat memulai suara.",
+    "emptyTitle": "Bisa bantu apa?",
+    "emptySubtitle": "Mulai ngobrol dengan AI",
+    "privateTitle": "Obrolan Privat",
+    "privateSubtitle": "Obrolan ini tidak muncul di riwayat",
+    "permissions": {
+      "photosTitle": "Izin Foto Diperlukan",
+      "photosMessage": "Akses foto diperlukan untuk memilih gambar.",
+      "voiceTitle": "Izin Suara Diperlukan",
+      "voiceMessage": "Mikrofon dan input suara diperlukan untuk fitur ini."
+    },
+    "activity": {
+      "analyzingImages": "Menganalisis gambar…",
+      "searching": "Mencari…",
+      "thinking": "Berpikir…"
+    },
+    "webSearch": {
+      "title": "Pencarian web",
+      "subtitle": "Cari info terbaru",
+      "label": "Pencarian web",
+      "enable": "Aktifkan pencarian web",
+      "disable": "Nonaktifkan pencarian web",
+      "toggleLabel": "Cari di web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Desain visual dengan cepat.",
+      "subtitle": "Buat, sempurnakan, dan publikasikan di satu tempat.",
+      "cta": "Buka"
+    },
+    "quickActions": {
+      "createImages": "Buat Gambar",
+      "openCamera": "Buka Kamera",
+      "editImage": "Edit Gambar",
+      "startVoice": "Mulai Suara",
+      "assistants": "Asisten"
+    },
+    "listening": "Mendengarkan…",
+    "startRecording": "Mulai merekam…",
+    "assistantHeader": {
+      "unavailableTitle": "Asisten tidak tersedia",
+      "unavailableDescription": "Kami tidak dapat memuat asisten ini. Silakan coba lagi.",
+      "ready": "Siap membantu"
+    },
+    "actions": {
+      "copy": "Salin",
+      "share": "Bagikan",
+      "regenerate": "Buat ulang",
+      "retryFromHere": "Coba lagi dari sini",
+      "cancel": "Batal"
+    },
+    "messageActionTitle": "Pesan",
+    "status": {
+      "sending": "Mengirim…",
+      "failed": "Gagal",
+      "sent": "Terkirim"
+    },
+    "suggestions": {
+      "writeStory": "Tulis cerita kreatif",
+      "writeStorySubtitle": "tentang petualangan ajaib",
+      "planTravel": "Buat rencana perjalanan",
+      "planTravelSubtitle": "untuk liburan seru",
+      "explainConcept": "Jelaskan konsep ini",
+      "explainConceptSubtitle": "dengan cara sederhana",
+      "planDay": "Rencanakan hariku",
+      "planDaySubtitle": "dengan tips produktivitas"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Memproses...",
+    "tapToUploadImage": "Ketuk untuk mengunggah gambar"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Memproses...",
+    "camera": "Kamera",
+    "library": "Galeri"
+  },
+  "common": {
+    "new": "BARU",
+    "best": "TERBAIK",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "delete": "Hapus",
+    "close": "Tutup",
+    "allow": "Izinkan"
   }
-  
+}

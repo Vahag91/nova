@@ -23,20 +23,20 @@ const SidebarCreativeStudioBanner = ({ onPress, style, restartKey }) => {
         <View style={styles.overlay} />
         <View style={styles.content}>
           <View style={styles.textColumn}>
-            {/* <Text style={styles.label}>
-              {t('drawerStudioBanner.label', { defaultValue: 'Studio' }).toUpperCase()}
-            </Text> */}
+            <Text style={styles.label}>
+              {t('sidebarStudioBanner.label', { defaultValue: 'Studio' }).toUpperCase()}
+            </Text>
             <Text style={styles.title}>
-              {t('drawerStudioBanner.title', { defaultValue: 'IMAGE STUDIO' })}
+              {t('sidebarStudioBanner.title', { defaultValue: 'IMAGE STUDIO' })}
             </Text>
             <Text style={styles.subtitle}>
-              {t('drawerStudioBanner.subtitle', { defaultValue: 'Generate, refine, and publish visual assets in one place.' })}
+              {t('sidebarStudioBanner.subtitle', { defaultValue: 'Generate, refine, and publish visual assets in one place.' })}
             </Text>
           </View>
           <View style={styles.ctaRow}>
             <View style={styles.cta}>
               <Text style={styles.ctaLabel}>
-                {t('drawerStudioBanner.cta', { defaultValue: 'Open' })}
+                {t('sidebarStudioBanner.cta', { defaultValue: 'Open' })}
               </Text>
             </View>
           </View>

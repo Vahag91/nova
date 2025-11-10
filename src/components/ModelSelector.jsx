@@ -72,7 +72,7 @@ export default function ModelSelector() {
     const toRow = ([key, info]) => ({
       key,
       name: info?.display?.name || key,
-      desc: t(`models.${key}`, { defaultValue: descriptionFor(key, info) }),
+      desc: t(`models.${key}`, { defaultValue: descriptionFor(key, info, t) }),
       icon: glyphFor(info?.provider, key),
       labels: labelsFor(key, t),
       provider: (info?.provider || 'other').toLowerCase(),
@@ -346,20 +346,24 @@ function glyphFor(provider, key) {
   if (/deepseek/.test(p) || /deepseek/i.test(k)) return 'deepseek';
   return 'gpt';
 }
-function descriptionFor(key, info) {
+function descriptionFor(key, info, t) {
+  // Try to get translation first, fallback to hardcoded map, then generic
+  const translated = t(`models.${key}`, { defaultValue: null });
+  if (translated) return translated;
+  
   const map = {
-    'gpt-5': 'Flagship general intelligence',
-    'gpt-5-chat-latest': 'Flagship chat model (great streaming)',
-    'gpt-5-mini': 'Fast, lower-cost GPT-5 tier',
-    'gpt-5-nano': 'Ultra-cheap micro model for simple tasks',
-    'o4-mini': 'Efficient reasoning model with strong quality',
-    'gpt-4.1-mini': 'Compact GPT-4.1 family model',
-    'gpt-4.1-nano': 'Tiny GPT-4.1 model for quick replies',
-    'claude-3-haiku': 'Fast and efficient model',
-    'claude-3.7-sonnet': 'Advanced reasoning model',
-    'gemini-2.5-Flash': "Google's best model",
-    'gemini-2.0-flash': 'Fast model with great reasoning',
+    'gpt-5': 'Most powerful all-purpose AI',
+    'gpt-5-chat-latest': 'Optimized for chat and dialogue',
+    'gpt-5-mini': 'Fast and reliable GPT-5',
+    'gpt-5-nano': 'Light model for simple tasks',
+    'o4-mini': 'Efficient reasoning model',
+    'gpt-4.1-mini': 'Compact, capable GPT-4.1',
+    'claude-3-haiku': 'Fast and focused Anthropic AI',
+    'claude-3.7-sonnet': 'Refined reasoning by Anthropic',
+    'gemini-2.5-Flash': "Google's most advanced model",
+    'gemini-2.0-flash': 'Quick and precise Google AI'
   };
+  
   return map[key] || `${info?.provider || 'AI'} model`;
 }
 
@@ -371,7 +375,6 @@ function labelsFor(key, t) {
     'gpt-5-nano': ['NEW'],
     'o4-mini': ['NEW'],
     'gpt-4.1-mini': [],
-    'gpt-4.1-nano': [],
     'claude-3.7-sonnet': ['NEW'],
     'grok-4': ['NEW'],
     'gemini-2.5-flash': ['NEW'],

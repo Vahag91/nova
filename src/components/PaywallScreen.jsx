@@ -16,6 +16,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaskedViewIOS from '@react-native-masked-view/masked-view';
 import SvgIcon from './SvgIcon';
 import { SubscriptionContext } from '../context/SubscriptionContext';
+import { useTranslation } from 'react-i18next';
 // Custom SVG Icons
 const CloseIcon = ({ color = '#FFFFFF', size = 24 }) => (
   <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
@@ -121,6 +122,7 @@ export default function PaywallScreen({
   } = useContext(SubscriptionContext) || {};
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
+  const { t: tr } = useTranslation();
 
   const [trialEnabled, setTrialEnabled] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('yearly');
@@ -200,7 +202,7 @@ export default function PaywallScreen({
         paddingBottom: insets.bottom,
       },
       bgOnly: { backgroundColor: theme.bg },
-      gradientBackdrop: { height: insets.top + 384 },
+      gradientBackdrop: { height: insets.top + 384, top: -insets.top },
       iconCircleBg: { backgroundColor: theme.card },
       centerLogoBg: { backgroundColor: theme.card },
       cardRowBg: { backgroundColor: theme.card },
@@ -227,6 +229,16 @@ export default function PaywallScreen({
     }),
     [insets.top, insets.bottom, theme, selectedPlan]
   );
+
+  const yearlyPrice =
+    availablePackages?.yearly?.product?.priceString || tr('paywall.plans.yearly.defaultPrice');
+  const yearlyIntro =
+    availablePackages?.yearly?.product?.introductoryPrice?.priceString ||
+    tr('paywall.plans.yearly.defaultIntroPrice');
+  const monthlyPrice =
+    availablePackages?.monthly?.product?.priceString || tr('paywall.plans.monthly.defaultPrice');
+  const weeklyPrice =
+    availablePackages?.weekly?.product?.priceString || tr('paywall.plans.weekly.defaultPrice');
 
   return (
     <View style={[styles.container, t.containerBg]}>
@@ -268,7 +280,7 @@ export default function PaywallScreen({
               </TouchableOpacity>
 
               <TouchableOpacity onPress={handleRestore} activeOpacity={0.9} disabled={!!restoring} style={[styles.restoreBtn, restoring && t.restoreDisabled]}>
-                <Text style={styles.restoreText}>{restoring ? 'Restoring…' : 'Restore'}</Text>
+              <Text style={styles.restoreText}>{restoring ? tr('paywall.restoreRestoring') : tr('paywall.restore')}</Text>
               </TouchableOpacity>
             </View>
 
@@ -306,19 +318,19 @@ export default function PaywallScreen({
             <View style={styles.featureRow}>
               <CreateImagesVideosIcon color="#F19E39" size={20} />
               <Text style={[styles.featureText, t.textPrimary]}>
-                Create images and videos
+                {tr('paywall.features.create')}
               </Text>
             </View>
             <View style={styles.featureRow}>
               <SearchWebIcon color="#5985E1" size={20} />
               <Text style={[styles.featureText, t.textPrimary]}>
-                Search the web with AI
+                {tr('paywall.features.search')}
               </Text>
             </View>
             <View style={styles.featureRow}>
               <CreateImagesIcon color="#75FB4C" size={20} />
               <Text style={[styles.featureText, t.textPrimary]}>
-                Talk naturally to AI
+                {tr('paywall.features.talk')}
               </Text>
             </View>
           </View>
@@ -327,10 +339,10 @@ export default function PaywallScreen({
           <View style={[styles.cardRow, t.cardRowBg]}>
             <View>
               <Text style={[styles.cardTitle, t.textPrimary]}>
-                Free trial
+                {tr('paywall.freeTrial.title')}
               </Text>
               <Text style={[styles.cardSubtitle, t.textSecondary]}>
-                3-day free trial
+                {tr('paywall.freeTrial.subtitle')}
               </Text>
             </View>
             <Switch
@@ -350,27 +362,23 @@ export default function PaywallScreen({
           >
             <View style={[styles.yearlyCard, t.yearlyCard]}>
               <View style={styles.badge}>
-                <Text style={styles.badgeText}>Best offer</Text>
+                <Text style={styles.badgeText}>{tr('paywall.badge.bestOffer')}</Text>
               </View>
               <View style={styles.rowSpread}>
                 <View>
                   <Text style={[styles.planTitle, t.textPrimary]}>
-                    Yearly
+                    {tr('paywall.plans.yearly.title')}
                   </Text>
                   <Text style={[styles.planSubYear, t.textPrimary]}>
-                    {availablePackages?.yearly?.product?.priceString
-                      ? `Only ${availablePackages.yearly.product.priceString}`
-                      : 'Only USD 79.99'}
+                    {tr('paywall.plans.yearly.only', { price: yearlyPrice })}
                   </Text>
                 </View>
                 <View style={styles.alignEnd}>
                   <Text style={[styles.planPrice, t.textPrimary]}>
-                    {availablePackages?.yearly?.product?.introductoryPrice?.priceString
-                      ? `${availablePackages.yearly.product.introductoryPrice.priceString}`
-                      : '$1,35'}
+                    {yearlyIntro}
                   </Text>
                   <Text style={[styles.planSub, t.textSecondary]}>
-                    per week
+                    {tr('paywall.frequency.perWeek')}
                   </Text>
                 </View>
               </View>
@@ -385,18 +393,18 @@ export default function PaywallScreen({
             <View style={styles.rowSpread}>
               <View>
                 <Text style={[styles.planTitle, t.textPrimary]}>
-                  Monthly
+                  {tr('paywall.plans.monthly.title')}
                 </Text>
                 <Text style={[styles.planSub, t.textSecondary]}>
-                  Cancel anytime
+                  {tr('paywall.plans.monthly.subtitle')}
                 </Text>
               </View>
               <View style={styles.alignEnd}>
                 <Text style={[styles.planPrice, t.textPrimary]}>
-                  {availablePackages?.monthly?.product?.priceString || 'USD 19.99'}
+                  {monthlyPrice}
                 </Text>
                 <Text style={[styles.planSub, t.textSecondary]}>
-                  per month
+                  {tr('paywall.frequency.perMonth')}
                 </Text>
               </View>
             </View>
@@ -410,18 +418,18 @@ export default function PaywallScreen({
             <View style={styles.rowSpread}>
               <View>
                 <Text style={[styles.planTitle, t.textPrimary]}>
-                  Weekly
+                  {tr('paywall.plans.weekly.title')}
                 </Text>
                 <Text style={[styles.planSub, t.textSecondary]}>
-                  Cancel anytime
+                  {tr('paywall.plans.weekly.subtitle')}
                 </Text>
               </View>
               <View style={styles.alignEnd}>
                 <Text style={[styles.planPrice, t.textPrimary]}>
-                  {availablePackages?.weekly?.product?.priceString || 'USD 9.99'}
+                  {weeklyPrice}
                 </Text>
                 <Text style={[styles.planSub, t.textSecondary]}>
-                  per week
+                  {tr('paywall.frequency.perWeek')}
                 </Text>
               </View>
             </View>
@@ -435,13 +443,13 @@ export default function PaywallScreen({
             style={styles.cta}
             onPress={handleContinue}
           >
-            <Text style={styles.ctaText}>Continue</Text>
+            <Text style={styles.ctaText}>{tr('paywall.cta')}</Text>
           </TouchableOpacity>
 
           <View style={styles.legalRow}>
             <TouchableOpacity activeOpacity={0.8}>
               <Text style={[styles.legalLink, t.textSecondary]}>
-                Terms
+                {tr('paywall.legal.terms')}
               </Text>
             </TouchableOpacity>
             <Text style={[styles.legalDivider, t.textSecondary]}>
@@ -449,7 +457,7 @@ export default function PaywallScreen({
             </Text>
             <TouchableOpacity activeOpacity={0.8}>
               <Text style={[styles.legalLink, t.textSecondary]}>
-                Privacy
+                {tr('paywall.legal.privacy')}
               </Text>
             </TouchableOpacity>
           </View>

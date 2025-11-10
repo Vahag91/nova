@@ -6,6 +6,7 @@ import Purchases from 'react-native-purchases';
 import { ensureDeviceId } from '../lib/deviceId';
 import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice';
 import { useImagesStore } from '../state/useImagesStore';
+import { useTranslation } from 'react-i18next';
 // MaterialIcons no longer used here
 import Svg, { Path } from 'react-native-svg';
 import SvgIcon from '../components/SvgIcon';
@@ -46,6 +47,7 @@ export default function CoinStore() {
   const navigation = useNavigation();
   const route = useRoute();
   const insets = useSafeAreaInsets();
+  const { t, i18n } = useTranslation();
   const dev = typeof __DEV__ !== 'undefined' && __DEV__;
   const dlog = useCallback((...args) => { if (!dev) return; try { console.log('[CoinStore]', ...args); } catch {} }, [dev]);
   const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
@@ -115,7 +117,7 @@ export default function CoinStore() {
         setPacks(available);
       } catch (e) {
         dlog('init error', e?.message || String(e));
-        Alert.alert('Init error', e?.message || String(e));
+        Alert.alert(t('coinStore.alerts.initErrorTitle'), e?.message || t('coinStore.alerts.genericMessage'));
       } finally {
         setLoading(false);
         dlog('init done');
@@ -180,11 +182,11 @@ export default function CoinStore() {
       } catch {}
 
       refreshBalanceWithPolling(); // webhook credits
-      Alert.alert('Success', 'Coins will appear shortly.');
+      Alert.alert(t('coinStore.alerts.successTitle'), t('coinStore.alerts.successMessage'));
     } catch (e) {
       if (e && e.userCancelled) return;
       dlog('purchase failed', e?.message || String(e));
-      Alert.alert('Purchase failed', (e && e.message) || 'Unknown error');
+      Alert.alert(t('coinStore.alerts.purchaseFailedTitle'), (e && e.message) || t('coinStore.alerts.unknownError'));
     } finally {
       setBuying(false);
     }
@@ -216,42 +218,57 @@ export default function CoinStore() {
         >
           <SvgIcon name="close" size={22} color={UI.textMuted} />
         </Pressable>
-        <Text style={styles.headerTitle}>Get Tokens</Text>
+        <Text style={styles.headerTitle}>{t('coinStore.title')}</Text>
         <View style={styles.headerSpacer} />
       </View>
 
       {loading ? (
         <View style={styles.centerBox}>
           <ActivityIndicator color={UI.primary} />
-          <Text style={styles.loadingHint}>Loading coin store…</Text>
+          <Text style={styles.loadingHint}>{t('coinStore.loading')}</Text>
         </View>
       ) : (
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           {/* Balance Section (no card) */}
           <View style={styles.balanceTextBlock}>
-            <Text style={styles.balanceLabel}>Your current balance is</Text>
-            <Text style={styles.balanceBig}>{`${Number(balance || 0).toLocaleString()} Tokens`}</Text>
-            <Pressable onPress={() => Alert.alert('History', 'Transaction History is coming soon.')}>
-              <Text style={styles.historyLink}>Transaction History</Text>
+            <Text style={styles.balanceLabel}>{t('coinStore.balanceLabel')}</Text>
+            <Text style={styles.balanceBig}>
+              {(() => {
+                const formattedAmount = Number(balance || 0).toLocaleString(getLocaleForNumberFormatting(i18n.language));
+                const template = t('coinStore.balanceValue', { defaultValue: '{{amount}} トークン' });
+                return template.replace('{{amount}}', formattedAmount);
+              })()}
+            </Text>
+            <Pressable onPress={() => Alert.alert(t('coinStore.history.alertTitle'), t('coinStore.history.alertBody'))}>
+              <Text style={styles.historyLink}>{t('coinStore.history.link')}</Text>
             </Pressable>
           </View>
 
           {/* Packs */}
           <View style={styles.packsList}>
             {packs.length === 0 ? (
-              <Text style={styles.muted}>No coin packs available. Check your RevenueCat offering id.</Text>
+              <Text style={styles.muted}>{t('coinStore.noPacks')}</Text>
             ) : (
               packs.map((p, idx) => {
                 const prod = p?.product || p?.storeProduct || {};
-                const rawTitle = prod?.title || p?.identifier || `Pack ${idx+1}`;
+                const rawTitle = prod?.title || p?.identifier || '';
+                const fallbackTitle = rawTitle || t('coinStore.pack.defaultName', { index: idx + 1 });
                 const amountDigits = String(rawTitle).replace(/[^\d]/g, '');
                 const amount = amountDigits ? Number(amountDigits) : null;
                 const price = prod?.priceString || prod?.price?.formatted || '';
                 const key = p?.identifier || prod?.identifier || String(idx);
                 const variant = idx % 3;
                 const tint = variant === 0 ? UI.purple : variant === 1 ? UI.blue : UI.green;
-                const badgeText = variant === 0 ? 'Basic Pack' : variant === 1 ? 'Most Popular' : 'Best Value';
+                const badgeText = variant === 0 ? t('coinStore.badges.basic') : variant === 1 ? t('coinStore.badges.popular') : t('coinStore.badges.value');
                 const subtitleStyle = variant === 1 ? styles.packSubtitleBlue : styles.packSubtitleDefault;
+                const tokensLabel = amount
+                  ? (() => {
+                      const formattedTokens = Number(amount).toLocaleString(getLocaleForNumberFormatting(i18n.language));
+                      const template = t('coinStore.pack.tokensLabel', { defaultValue: '{{tokens}} トークン' });
+                      return template.replace('{{tokens}}', formattedTokens);
+                    })()
+                  : fallbackTitle;
+                const priceLabel = price || t('coinStore.pack.unknownPrice');
                 return (
                   <Pressable key={key} onPress={() => buyPack(p)} disabled={buying}
                     style={[styles.packCard, styles.packCardSurface]}>
@@ -260,12 +277,12 @@ export default function CoinStore() {
                       <View style={styles.packLeft}>
                         <CoinIcon size={22} />
                         <View style={styles.packTextWrap}>
-                          <Text style={styles.packTitle}>{amount ? `${amount} Tokens` : rawTitle}</Text>
+                          <Text style={styles.packTitle}>{tokensLabel}</Text>
                           <Text style={subtitleStyle}>{badgeText}</Text>
                         </View>
                       </View>
                       <View style={[styles.pricePill, styles.pricePillDark]}>
-                        <Text style={[styles.priceText, { color: tint }]}>{price || '$—'}</Text>
+                        <Text style={[styles.priceText, { color: tint }]}>{priceLabel}</Text>
                       </View>
                     </View>
                   </Pressable>
@@ -275,20 +292,22 @@ export default function CoinStore() {
           </View>
 
           {/* Premium CTA */}
-          <Pressable onPress={() => navigation.navigate('PaywallScreen')} style={[styles.premiumCard, { borderColor: UI.border10, backgroundColor: UI.surface }]}>
+          <Pressable onPress={() => navigation.navigate('PaywallScreen', { returnTo: 'CoinStore' })} style={[styles.premiumCard, { borderColor: UI.border10, backgroundColor: UI.surface }]}>
             <View style={styles.premiumRow}>
               <View>
-                <Text style={styles.premiumTitle}>Go Premium</Text>
-                <Text style={styles.premiumSubtitle}>Unlimited access & features</Text>
+                <Text style={styles.premiumTitle}>{t('coinStore.premium.title')}</Text>
+                <Text style={styles.premiumSubtitle}>{t('coinStore.premium.subtitle')}</Text>
               </View>
               <View style={[styles.upgradePill, { backgroundColor: UI.primary }]}>
-                <Text style={styles.upgradePillText}>Upgrade</Text>
+                <Text style={styles.upgradePillText}>{t('coinStore.premium.cta')}</Text>
                 <ArrowRightIcon size={18} color={UI.white} />
               </View>
             </View>
           </Pressable>
 
-          <Text style={styles.termsText}>By making a purchase, you agree to our <Text style={styles.underline}>Terms of Service</Text>.</Text>
+          <Text style={styles.termsText}>
+            {t('coinStore.termsText')} <Text style={styles.underline}>{t('coinStore.termsLink')}</Text>.
+          </Text>
 
           <View style={styles.spacer28} />
         </ScrollView>
@@ -348,4 +367,46 @@ function withAlpha(hex, alpha) {
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+// Map i18n language codes to locale strings for number formatting
+function getLocaleForNumberFormatting(i18nLang) {
+  const localeMap = {
+    'ja': 'ja-JP',
+    'en': 'en-US',
+    'es': 'es-ES',
+    'es-MX': 'es-MX',
+    'fr': 'fr-FR',
+    'fr-CA': 'fr-CA',
+    'de': 'de-DE',
+    'it': 'it-IT',
+    'pt': 'pt-BR',
+    'ru': 'ru-RU',
+    'zh-Hans': 'zh-CN',
+    'zh-Hant': 'zh-TW',
+    'ko': 'ko-KR',
+    'ar': 'ar-SA',
+    'nl': 'nl-NL',
+    'pl': 'pl-PL',
+    'tr': 'tr-TR',
+    'he': 'he-IL',
+    'sv': 'sv-SE',
+    'da': 'da-DK',
+    'nb': 'nb-NO',
+    'fi': 'fi-FI',
+    'cs': 'cs-CZ',
+    'sk': 'sk-SK',
+    'uk': 'uk-UA',
+    'hr': 'hr-HR',
+    'hu': 'hu-HU',
+    'ro': 'ro-RO',
+    'el': 'el-GR',
+    'ca': 'ca-ES',
+    'vi': 'vi-VN',
+    'th': 'th-TH',
+    'id': 'id-ID',
+    'hi': 'hi-IN',
+    'ms': 'ms-MY',
+  };
+  return localeMap[i18nLang] || i18nLang || 'en-US';
 }

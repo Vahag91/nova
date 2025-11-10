@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "मॉडल चुनें",
-      "searchPlaceholder": "मॉडल खोजें...",
-      "noModelsFound": "कोई मॉडल नहीं मिला",
-      "noModelsAvailable": "कोई मॉडल उपलब्ध नहीं",
-      "currentModel": "वर्तमान मॉडल: {{name}}। बदलने के लिए टैप करें।",
-      "openHint": "मॉडल चयन मेनू खोलता है",
-      "closeLabel": "मॉडल सेलेक्टर बंद करें",
-      "searchLabel": "मॉडल खोजें",
-      "searchHint": "मॉडल फ़िल्टर करने के लिए टाइप करें",
-      "modelLabel": "{{name}} मॉडल",
-      "selectHint": "{{name}} चुनें",
-      "currentlySelected": "वर्तमान में चयनित मॉडल"
+  "modelSelector": {
+    "title": "मॉडल चुनें",
+    "searchPlaceholder": "मॉडल खोजें...",
+    "noModelsFound": "कोई मॉडल नहीं मिला",
+    "noModelsAvailable": "कोई मॉडल उपलब्ध नहीं",
+    "currentModel": "वर्तमान मॉडल: {{name}}. बदलने के लिए टैप करें.",
+    "openHint": "मॉडल चयन मेन्यू खोलता है",
+    "closeLabel": "मॉडल चयन बंद करें",
+    "searchLabel": "मॉडल खोजें",
+    "searchHint": "उपलब्ध मॉडलों को फ़िल्टर करने के लिए टाइप करें",
+    "modelLabel": "{{name}} मॉडल",
+    "selectHint": "{{name}} मॉडल चुनें",
+    "currentlySelected": "वर्तमान में चयनित"
+  },
+  "models": {
+    "gpt-4o": "सबसे शक्तिशाली AI मॉडल",
+    "gpt-4o-mini": "रोज़मर्रा के कामों के लिए तेज",
+    "gpt-5": "सबसे शक्तिशाली सर्व-उद्देश्य AI",
+    "gpt-5-chat-latest": "चैट और संवाद के लिए अनुकूलित",
+    "gpt-5-mini": "तेज़ और भरोसेमंद GPT-5",
+    "gpt-5-nano": "सरल कामों के लिए हल्का मॉडल",
+    "o4-mini": "कुशल तर्क मॉडल",
+    "gpt-4.1-mini": "कंपैक्ट और सक्षम GPT-4.1",
+    "claude-3-haiku": "तेज़ और केंद्रित Anthropic AI",
+    "claude-3.7-sonnet": "Anthropic का परिष्कृत तर्क",
+    "gemini-2.5-Flash": "Google का सबसे उन्नत मॉडल",
+    "gemini-2.5-flash": "Google का सबसे उन्नत मॉडल",
+    "gemini-2.0-flash": "तेज़ और सटीक Google AI"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "अन्य"
+  },
+  "navigation": {
+    "chat": "नई चैट",
+    "history": "इतिहास",
+    "assistants": "सहायक",
+    "imagesStudio": "Image Studio",
+    "settings": "सेटिंग्स",
+    "recentChats": "हाल की चैट"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "एक ही जगह पर विज़ुअल एसेट बनाएँ, सुधारें और प्रकाशित करें.",
+    "cta": "खोलें"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "इमेज चुनें",
+    "exitSelectionMode": "चयन मोड से बाहर निकलें",
+    "selectAll": "सभी चुनें",
+    "noImagesYet": "अभी कोई इमेज नहीं",
+    "describeImageHint": "नीचे अपनी इमेज का वर्णन करें और 'बनाएँ' टैप करें.",
+    "generatedImagesGallery": "बनी हुई इमेज गैलरी",
+    "describeImagePlaceholder": "जिस इमेज को आप चाहते हैं उसे वर्णित करें…",
+    "deleteConfirmTitle": "इमेज हटाएँ",
+    "deleteConfirmMessage": "क्या आप चुनी हुई इमेज हटाना चाहते हैं? यह क्रिया वापस नहीं की जा सकती.",
+    "cancel": "रद्द करें",
+    "delete": "हटाएँ",
+    "generate": "बनाएँ",
+    "generating": "बना रहा है…",
+    "latest": "नवीनतम",
+    "insertToChat": "चैट में जोड़ें",
+    "pleaseWait": "कृपया प्रतीक्षा करें…",
+    "processing": "प्रोसेस हो रहा है...",
+    "tapToUploadImage": "इमेज अपलोड करने के लिए टैप करें",
+    "camera": "कैमरा",
+    "library": "लाइब्रेरी",
+    "enterPrompt": "टेक्स्ट-से-इमेज के लिए प्रॉम्प्ट दर्ज करें",
+    "openInBrowser": "ब्राउज़र में खोलें",
+    "makeVariations": "वेरिएशन बनाएँ",
+    "deleteAllFromGeneration": "इस जनरेशन की सभी इमेज हटाएँ",
+    "imageOptionsTitle": "इमेज विकल्प",
+    "imageOptionsMessage": "इस इमेज के साथ आप क्या करना चाहते हैं?",
+    "insertMarkdownHeader": "यह रही इमेज:",
+    "variationSuffix": "— पिछली इमेज का वेरिएशन",
+    "selectedCount": "चुनी गई",
+    "selectedCount_one": "चुनी गई",
+    "selectedCount_other": "चुनी गई",
+    "imageDescriptionInput": "इमेज विवरण इनपुट",
+    "imageDescriptionHint": "वह विवरण लिखें जिसकी इमेज आप बनाना चाहते हैं",
+    "openModelSettings": "मॉडल सेटिंग्स खोलें",
+    "modelSettingsHint": "मॉडल और सेटिंग्स बदलने के लिए टैप करें",
+    "openPhotoGallery": "फ़ोटो गैलरी खोलें",
+    "clearInput": "इनपुट साफ़ करें",
+    "generatedImage": "बनी हुई इमेज",
+    "autoSelectedModel": "इस मोड {{mode}} के लिए {{model}} मॉडल स्वतः चुना गया",
+    "deleteSelectedConfirmTitle": "इमेज हटाएँ",
+    "deleteSelectedConfirmMessage": "क्या आप इमेज हटाना चाहते हैं? यह क्रिया वापस नहीं की जा सकती."
+  },
+  "imageStudio": {
+    "generateImage": "इमेज बनाएँ",
+    "generatingImage": "इमेज बन रही है",
+    "generateImageHint": "अपने विवरण के आधार पर इमेज बनाने के लिए टैप करें",
+    "imageDescriptionInput": "इमेज विवरण इनपुट",
+    "imageDescriptionHint": "वह विवरण लिखें जिसकी इमेज आप बनाना चाहते हैं",
+    "openModelSettings": "मॉडल सेटिंग्स खोलें",
+    "modelSettingsHint": "मॉडल और सेटिंग्स बदलने के लिए टैप करें",
+    "openPhotoGallery": "फ़ोटो गैलरी खोलें",
+    "clearInput": "इनपुट साफ़ करें",
+    "generatedImage": "बनी हुई इमेज"
+  },
+  "assistants": {
+    "title": "सहायक",
+    "subtitle": "कोडिंग, लेखन, विश्लेषण, प्लानिंग और बहुत कुछ के लिए चुने हुए AI सहायक.",
+    "searchPlaceholder": "सहायक खोजें…",
+    "useAssistant": "सहायक का उपयोग करें",
+    "selectAssistant": "सहायक चुनें",
+    "description": "विवरण",
+    "systemPrompt": "सिस्टम प्रॉम्प्ट",
+    "chooseModel": "मॉडल चुनें",
+    "categoryAll": "सभी",
+    "categories": {
+      "everyday": "दैनिक",
+      "life": "जीवनशैली",
+      "health": "स्वास्थ्य",
+      "schoolWork": "स्कूल और काम",
+      "coding": "कोडिंग",
+      "creative": "रचनात्मक",
+      "general": "सामान्य"
+    },
+    "presets": {
+      "default": {
+        "name": "डिफ़ॉल्ट सहायक",
+        "description": "रोज़मर्रा के कामों के लिए संतुलित मदद."
+      },
+      "quick": {
+        "name": "त्वरित उत्तर",
+        "description": "छोटे और सीधे जवाब."
+      },
+      "planner": {
+        "name": "डेली प्लानर",
+        "description": "अपना दिन और दिनचर्या योजना करें."
+      },
+      "recipes": {
+        "name": "भोजन व रेसिपी",
+        "description": "घर में जो है उससे क्या बनाएँ."
+      },
+      "fitness": {
+        "name": "आदत व फिटनेस कोच",
+        "description": "छोटी आदतें और होम वर्कआउट."
+      },
+      "money": {
+        "name": "पैसे वाला दोस्त",
+        "description": "सरल बजट और खर्च सलाह."
+      },
+      "study": {
+        "name": "स्टडी हेल्पर",
+        "description": "सरल समझाएँ. मुझे क्विज़ करें."
+      },
+      "email": {
+        "name": "ईमेल व रिज़्यूमे",
+        "description": "साफ-सुथरे ईमेल और CV लाइनें लिखें."
+      },
+      "translator": {
+        "name": "अनुवादक",
+        "description": "अनुवाद + वाक्यांश सिखाएँ."
+      },
+      "travel": {
+        "name": "ट्रैवल बडी",
+        "description": "सरल प्लान और पैकिंग लिस्ट."
+      },
+      "tech": {
+        "name": "टेक सपोर्ट (सिंपल)",
+        "description": "फ़ोन, ऐप, Wi-Fi की बुनियादी मदद."
+      },
+      "summarizer": {
+        "name": "TL;DR सार",
+        "description": "छोटे बिंदु + एक लाइन का सार."
+      },
+      "gift": {
+        "name": "गिफ्ट खोजक",
+        "description": "बजट और रुचि के अनुसार आइडिया."
+      },
+      "party": {
+        "name": "इवेंट प्लानर (लाइट)",
+        "description": "जल्दी छोटा इवेंट प्लान करें."
+      },
+      "social": {
+        "name": "सोशल पोस्ट मेकर",
+        "description": "पोस्ट के ड्राफ्ट कई विकल्पों के साथ."
+      },
+      "interview": {
+        "name": "इंटरव्यू कोच",
+        "description": "STAR तरीके से उत्तर की प्रैक्टिस."
+      },
+      "homefix": {
+        "name": "घर की मरम्मत",
+        "description": "सरल समस्या-समाधान गाइड."
+      },
+      "pet": {
+        "name": "पेट केयर",
+        "description": "खाना, टहलना, बेसिक ट्रेनिंग."
+      },
+      "mindful": {
+        "name": "शांत पल",
+        "description": "1–3 मिनट की शांति."
+      },
+      "polite": {
+        "name": "विनम्र री-राइटर",
+        "description": "टेक्स्ट को और नम्र बनाकर लिखें."
+      }
+    }
+  },
+  "history": {
+    "title": "इतिहास",
+    "searchPlaceholder": "चैट खोजें…",
+    "newChat": "नई चैट",
+    "new": "+ नई",
+    "search": "खोजें",
+    "clearSearch": "खोज साफ़ करें",
+    "noChatsYet": "अभी कोई चैट नहीं",
+    "startFirstConversation": "अपनी पहली बातचीत शुरू करें.",
+    "startChat": "चैट शुरू करें",
+    "errorLoadingHistory": "इतिहास लोड करने में त्रुटि",
+    "renameChat": "चैट का नाम बदलें",
+    "enterNewTitle": "नया शीर्षक दर्ज करें",
+    "deleteChat": "चैट हटाएँ?",
+    "deleteChatMessage": "\"{{title}}\" हटाई जाएगी.",
+    "rename": "नाम बदलें",
+    "unpin": "अनपिन",
+    "pin": "पिन करें",
+    "untitled": "शीर्षकहीन"
+  },
+  "settings": {
+    "title": "सेटिंग्स",
+    "model": "मॉडल",
+    "searchPlaceholder": "मॉडल खोजें…",
+    "temperatureForCurrentModel": "वर्तमान मॉडल के लिए तापमान",
+    "customFor": "{{model}} के लिए कस्टम",
+    "usingDefault": "डिफ़ॉल्ट {{temperature}} उपयोग हो रहा है",
+    "resetToDefault": "डिफ़ॉल्ट पर लौटाएँ",
+    "defaultTemperature": "डिफ़ॉल्ट तापमान (फ़ॉलबैक)",
+    "usedByModelsWithoutOverride": "ऐसे मॉडलों द्वारा उपयोग जो अलग सेटिंग नहीं रखते",
+    "dangerZone": "खतरनाक क्षेत्र",
+    "clearAllChatsAndSettings": "सभी चैट और सेटिंग्स साफ़ करें",
+    "about": "ऐप के बारे में",
+    "version": "संस्करण {{version}}{{status}}",
+    "versionPremiumSuffix": " · प्रीमियम",
+    "privacyPolicy": "गोपनीयता नीति",
+    "hero": {
+      "label": "विशेष ऑफ़र",
+      "title": "प्राथमिकता एक्सेस और बिना सीमा",
+      "upgrade": "अपग्रेड",
+      "manage": "प्लान प्रबंधित करें"
+    },
+    "sections": {
+      "premium": "प्रीमियम प्लान",
+      "data": "यूज़र डेटा",
+      "support": "सपोर्ट व कानूनी"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "प्रीमियम लें",
+        "subtitle": "अनलिमिटेड क्रिएशन टूल्स अनलॉक करें"
+      },
+      "premiumActive": {
+        "title": "प्रीमियम सक्रिय",
+        "subtitle": "ChatCloud को सपोर्ट करने के लिए धन्यवाद"
+      },
+      "restore": {
+        "title": "खरीदारी वापस लाएँ",
+        "subtitle": "डिवाइस बदलने पर इस्तेमाल करें"
+      },
+      "history": {
+        "title": "चैट इतिहास प्रबंधित करें",
+        "subtitle": "पुरानी सेशन्स देखें और हटाएँ"
+      },
+      "reset": {
+        "title": "चैट और पसंद रीसेट करें",
+        "subtitle": "इस डिवाइस का सारा डेटा हटाएँ"
+      },
+      "rate": {
+        "title": "रेट करें",
+        "error": "स्टोर पेज नहीं खोला जा सका."
+      },
+      "support": {
+        "title": "सपोर्ट",
+        "subtitle": "ऑनलाइन संपर्क करें",
+        "error": "संपर्क पेज नहीं खोला जा सका."
+      },
+      "privacy": {
+        "title": "गोपनीयता नीति",
+        "error": "गोपनीयता नीति नहीं खोली जा सकी."
+      },
+      "terms": {
+        "title": "उपयोग की शर्तें",
+        "error": "उपयोग की शर्तें नहीं खोली जा सकीं."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "ऑडियो",
+      "video": "वीडियो"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "उपलब्ध नहीं",
+      "linkUnavailableMessage": "यह लिंक अभी नहीं खोला जा सकता.",
+      "restoreSuccessTitle": "सफल",
+      "restoreSuccessMessage": "आपकी खरीदारी वापस ला दी गई है.",
+      "restoreErrorTitle": "वापस लाने में विफल",
+      "restoreErrorMessage": "अभी खरीदारी वापस नहीं ला सके.",
+      "resetConfirmTitle": "ऐप डेटा रीसेट करें?",
+      "resetConfirmMessage": "यह सभी चैट और स्थानीय सेटिंग्स हटाएगा.",
+      "resetConfirmCancel": "रद्द करें",
+      "resetConfirmCta": "रीसेट"
+    }
+  },
+  "createImage": {
+    "headerTitle": "बनाएँ",
+    "chooseStyle": "स्टाइल चुनें",
+    "aspectRatio": "आस्पेक्ट रेशियो",
+    "starterPrompts": {
+      "title": "शुरुआती प्रॉम्प्ट",
+      "items": [
+        "स्टूडियो हेडशॉट",
+        "आधुनिक लिविंग रूम",
+        "सूर्यास्त के समय ट्रॉपिकल बीच"
+      ]
+    },
+    "promptPlaceholder": "जो दिखाना है वह लिखें…",
+    "promptHint": "उदाहरण: 'स्टूडियो लाइटिंग में गोल्डन रिट्रीवर'",
+    "clearText": "टेक्स्ट साफ़ करें",
+    "generate": "बनाएँ",
+    "generating": "बना रहा है…"
+  },
+  "editImage": {
+    "headerTitle": "संपादित करें",
+    "chooseStyle": "स्टाइल चुनें",
+    "aspectRatio": "आस्पेक्ट रेशियो",
+    "starterPrompts": {
+      "title": "शुरुआती प्रॉम्प्ट",
+      "items": [
+        "लाइटिंग ठीक करें",
+        "बैकग्राउंड हटाएँ",
+        "सॉफ्ट पोर्ट्रेट रिटच"
+      ]
+    },
+    "promptPlaceholder": "संशोधन लिखें (वैकल्पिक)",
+    "clearText": "साफ़ करें",
+    "generate": "लागू करें",
+    "generating": "लागू हो रहा है…",
+    "upload": {
+      "choose": "फ़ोटो चुनें",
+      "change": "बदलें",
+      "remove": "हटाएँ"
+    },
+    "imageUnavailable": {
+      "title": "इमेज उपलब्ध नहीं",
+      "message": "चुनी हुई फ़ोटो तक पहुँचा नहीं जा सका. कृपया दोबारा चुनकर कोशिश करें."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "ऐनिमे"
+      },
+      "cartoon": {
+        "name": "कार्टून"
+      },
+      "photoreal": {
+        "name": "फ़ोटोरियल"
+      },
+      "sketch": {
+        "name": "स्केच"
+      },
+      "cyberpunk": {
+        "name": "साइबरपंक"
+      },
+      "steampunk": {
+        "name": "स्टीमपंक"
+      },
+      "illustration_3d": {
+        "name": "3D चित्रण"
+      },
+      "dark_fantasy": {
+        "name": "डार्क फ़ैंटेसी"
+      },
+      "vintage_film": {
+        "name": "विंटेज फ़िल्म"
+      },
+      "pastel": {
+        "name": "पेस्टल"
+      },
+      "neon_glow": {
+        "name": "नियोन ग्लो"
+      },
+      "epic_landscape": {
+        "name": "महाकाव्य लैंडस्केप"
+      }
+    },
+    "aspectRatios": {
+      "square": "वर्ग",
+      "landscape": "लैंडस्केप",
+      "portrait": "पोर्ट्रेट"
     },
     "models": {
-      "gpt-4o": "सबसे शक्तिशाली एआई मॉडल",
-      "gpt-4o-mini": "दैनिक कार्यों के लिए तेज़",
-      "claude-3-haiku": "तेज़ और कुशल मॉडल",
-      "claude-3.7-sonnet": "उन्नत तर्क-आधारित मॉडल",
-      "gemini-2.5-pro": "Google का श्रेष्ठ मॉडल",
-      "gemini-2.0-flash": "बेहतरीन तर्क वाला तेज़ मॉडल"
+      "fluxKontent": "Flux Kontent",
+      "custom": "कस्टम"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "अन्य"
+    "modelTaglines": {
+      "runwareFluxSchnell": "सबसे तेज़ मॉडल",
+      "runwareFluxKrea": "रचनात्मक और स्टाइलिश परिणाम",
+      "runwareQwenImage": "संतुलित, उच्च गुणवत्ता वाले परिणाम",
+      "google4": "सबसे बढ़िया AI इमेज मॉडल",
+      "fluxKontent": "एडिटिंग के लिए ट्यून किया गया Flux Kontent",
+      "runwareProvider": "टिकाऊ डिफ्यूज़न के साथ संतुलित गुणवत्ता.",
+      "airProvider": "Nano Banana से रंगीन, मज़ेदार टोन.",
+      "googleProvider": "Google से तीखे, साफ़ विवरण.",
+      "anthropicProvider": "Claude पाइपलाइन से सूक्ष्म टोन.",
+      "default": "उपलब्ध इंजन देखने के लिए टैप करें."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "आपकी चुनी हुई शैली",
+    "sheetTitle": "आपकी इमेज तैयार हो रही है",
+    "sheetSubtitle": "हम {{style}} को प्रॉम्प्ट में मिला रहे हैं.",
+    "phases": {
+      "blend": "{{style}} मिला रहे हैं",
+      "paint": "सीन बना रहे हैं",
+      "finish": "अंतिम टच दे रहे हैं"
     },
-    "navigation": {
-      "chat": "चैट",
-      "history": "इतिहास",
-      "assistants": "सहायक",
-      "imagesStudio": "स्टूडियो",
-      "settings": "सेटिंग्स",
-      "recentChats": "हाल की चैट"
-    },
-    "imagesStudio": {
-      "title": "स्टूडियो",
-      "selectImages": "छवियाँ चुनें",
-      "exitSelectionMode": "चयन मोड से बाहर निकलें",
-      "selectAll": "सभी चुनें",
-      "noImagesYet": "अभी कोई छवि नहीं",
-      "describeImageHint": "नीचे अपनी छवि का वर्णन करें और \"जेनरेट\" टैप करें।",
-      "generatedImagesGallery": "जनरेट की गई छवियों की गैलरी",
-      "describeImagePlaceholder": "जिस छवि को आप चाहते हैं उसका वर्णन करें…",
-      "deleteConfirmTitle": "छवियाँ हटाएँ",
-      "deleteConfirmMessage": "क्या आप चुनी गई छवियाँ हटाना चाहते हैं? यह क्रिया वापस नहीं ली जा सकती।",
+    "actions": {
       "cancel": "रद्द करें",
-      "delete": "हटाएँ",
-      "generate": "जेनरेट",
-      "generating": "जेनरेट हो रहा है…",
-      "latest": "नवीनतम",
-      "insertToChat": "चैट में जोड़ें",
-      "pleaseWait": "कृपया प्रतीक्षा करें…",
-      "processing": "प्रोसेस हो रहा है...",
-      "tapToUploadImage": "छवि अपलोड करने के लिए टैप करें",
-      "camera": "कैमरा",
-      "library": "लाइब्रेरी",
-      "enterPrompt": "टेक्स्ट-टू-इमेज जनरेशन के लिए प्रॉम्प्ट दर्ज करें",
-      "openInBrowser": "ब्राउज़र में खोलें",
-      "makeVariations": "वेरिएशन बनाएँ",
-      "deleteAllFromGeneration": "इस जनरेशन की सभी छवियाँ हटाएँ",
-      "imageOptionsTitle": "छवि विकल्प",
-      "imageOptionsMessage": "आप इस छवि के साथ क्या करना चाहते हैं?",
-      "insertMarkdownHeader": "इसके लिए छवि:",
-      "variationSuffix": "— पिछली छवि का रूपांतर",
-      "selectedCount": "चयनित",
-      "selectedCount_one": "चयनित",
-      "selectedCount_other": "चयनित",
-      "imageDescriptionInput": "छवि विवरण इनपुट",
-      "imageDescriptionHint": "जिस छवि को आप जनरेट करना चाहते हैं उसका विवरण दर्ज करें",
-      "openModelSettings": "मॉडल सेटिंग्स खोलें",
-      "modelSettingsHint": "मॉडल और सेटिंग्स बदलने के लिए टैप करें",
-      "openPhotoGallery": "गैलरी खोलें",
-      "clearInput": "इनपुट साफ़ करें",
-      "generatedImage": "जनरेट की गई छवि",
-      "autoSelectedModel": "मोڈ {{mode}} के लिए {{model}} स्वतः चुना गया",
-      "deleteSelectedConfirmTitle": "छवियाँ हटाएँ",
-      "deleteSelectedConfirmMessage": "क्या आप छवियाँ हटाना चाहते हैं? यह क्रिया वापस नहीं ली जा सकती।"
+      "retry": "फिर से कोशिश करें",
+      "close": "बंद करें"
     },
-    "imageStudio": {
-      "generateImage": "छवि जेनरेट करें",
-      "generatingImage": "छवि जेनरेट हो रही है",
-      "generateImageHint": "अपने विवरण के आधार पर छवि जेनरेट करने के लिए टैप करें",
-      "imageDescriptionInput": "छवि विवरण इनपुट",
-      "imageDescriptionHint": "जिस छवि को आप जनरेट करना चाहते हैं उसका विवरण दर्ज करें",
-      "openModelSettings": "मॉडल सेटिंग्स खोलें",
-      "modelSettingsHint": "मॉडल और सेटिंग्स बदलने के लिए टैप करें",
-      "openPhotoGallery": "गैलरी खोलें",
-      "clearInput": "इनपुट साफ़ करें",
-      "generatedImage": "जनरेट की गई छवि"
+    "errors": {
+      "restrictedTitle": "प्रतिबंधित सामग्री",
+      "genericTitle": "जनरेशन असफल",
+      "genericMessage": "इमेज नहीं बना सके."
     },
-    "assistants": {
-      "title": "सहायक",
-      "subtitle": "कोडिंग, लेखन, विश्लेषण, योजना आदि के लिए चुने हुए एआई विशेषज्ञ।",
-      "searchPlaceholder": "सहायक खोजें…",
-      "useAssistant": "सहायक का उपयोग करें",
-      "description": "विवरण",
-      "systemPrompt": "सिस्टम प्रॉम्प्ट",
-      "chooseModel": "मॉडल चुनें",
-      "categoryAll": "सभी",
-      "categories": {
-        "everyday": "प्रतिदिन",
-        "life": "जीवन",
-        "health": "स्वास्थ्य",
-        "schoolWork": "स्कूल और काम",
-        "coding": "कोडिंग",
-        "creative": "रचनात्मक",
-        "general": "सामान्य"
-      },
-      "presets": {
-        "default": { "name": "डिफ़ॉल्ट सहायक", "description": "दैनिक कार्यों के लिए संतुलित मदद।" },
-        "quick": { "name": "तेज़ जवाब", "description": "छोटे, सीधे जवाब।" },
-        "planner": { "name": "दैनिक योजनाकार", "description": "अपना दिन और रूटीन योजना बनाएं।" },
-        "recipes": { "name": "भोजन और रेसिपी", "description": "जो उपलब्ध है उससे क्या पकाएँ।" },
-        "fitness": { "name": "आदत एवं फिटनेस कोच", "description": "छोटी आदतें और होम-वर्कआउट।" },
-        "money": { "name": "मनी बडी", "description": "सरल बजट और खर्च सुझाव।" },
-        "study": { "name": "अध्ययन सहायक", "description": "सरलता से समझाएँ। क्विज़ कराएँ।" },
-        "email": { "name": "ईमेल और रेज़्यूमे", "description": "साफ-सुथरे ईमेल और CV बिंदु लिखें।" },
-        "translator": { "name": "अनुवादक", "description": "अनुवाद करें + वाक्यांश सीखें।" },
-        "travel": { "name": "यात्रा साथी", "description": "सरल प्लान और पैकिंग सूची।" },
-        "tech": { "name": "तकनीकी सहायता (सरल)", "description": "फ़ोन, ऐप्स, वाई-फाई की मूल बातें।" },
-        "summarizer": { "name": "TL;DR सार", "description": "छोटे बिंदु + एक पंक्ति का सार।" },
-        "gift": { "name": "उपहार खोजक", "description": "बजट और रुचियों के अनुसार विचार।" },
-        "party": { "name": "इवेंट प्लानर (लाइट)", "description": "छोटी पार्टी जल्दी से प्लान करें।" },
-        "social": { "name": "सोशल पोस्ट मेकर", "description": "विकल्पों के साथ पोस्ट ड्राफ्ट।" },
-        "interview": { "name": "साक्षात्कार कोच", "description": "STAR तरीके से उत्तरों का अभ्यास करें।" },
-        "homefix": { "name": "होम फिक्स-इट गाइड", "description": "सरल ट्रबलशूटिंग और समाधान।" },
-        "pet": { "name": "पेट केयर बडी", "description": "खुराक, टहलना, बेसिक ट्रेनिंग।" },
-        "mindful": { "name": "माइंडफुल मिनट", "description": "1–3 मिनट की शांत ब्रेक।" },
-        "polite": { "name": "शिष्ट री-राइटर", "description": "टेक्स्ट और जवाब विनम्रतापूर्वक लिखें।" }
-      }
+    "alerts": {
+      "saveFailedTitle": "सहेजा नहीं जा सका",
+      "shareFailedTitle": "साझा नहीं कर सके",
+      "tryAgain": "कृपया दोबारा कोशिश करें."
     },
-    "history": {
-      "title": "इतिहास",
-      "searchPlaceholder": "चैट खोजें…",
-      "newChat": "नई चैट",
-      "new": "+ नया",
-      "search": "खोजें",
-      "clearSearch": "खोज मिटाएँ",
-      "noChatsYet": "अभी कोई चैट नहीं",
-      "startFirstConversation": "अपनी पहली बातचीत शुरू करें।",
-      "startChat": "चैट शुरू करें",
-      "errorLoadingHistory": "इतिहास लोड करने में त्रुटि",
-      "renameChat": "चैट का नाम बदलें",
-      "enterNewTitle": "नया शीर्षक दर्ज करें",
-      "deleteChat": "चैट हटाएँ?",
-      "deleteChatMessage": "\"{{title}}\" हटा दी जाएगी।",
-      "rename": "नाम बदलें",
-      "unpin": "अनपिन",
-      "pin": "पिन करें",
-      "untitled": "शीर्षक रहित"
+    "result": {
+      "complete": "सब हो गया"
     },
-    "settings": {
-      "title": "सेटिंग्स",
-      "model": "मॉडल",
-      "searchPlaceholder": "मॉडल खोजें…",
-      "temperatureForCurrentModel": "वर्तमान मॉडल के लिए टेम्परेचर",
-      "customFor": "{{model}} के लिए कस्टम",
-      "usingDefault": "डिफ़ॉल्ट {{temperature}} का उपयोग",
-      "resetToDefault": "डिफ़ॉल्ट पर रीसेट",
-      "defaultTemperature": "डिफ़ॉल्ट टेम्परेचर (फ़ॉलबैक)",
-      "usedByModelsWithoutOverride": "ओवरराइड के बिना मॉडलों द्वारा उपयोग",
-      "dangerZone": "ख़तरे का क्षेत्र",
-      "clearAllChatsAndSettings": "सभी चैट और सेटिंग्स साफ़ करें",
-      "about": "जानकारी",
-      "version": "संस्करण {{version}}",
-      "privacyPolicy": "गोपनीयता नीति",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Agarka को संदेश...",
-      "createImages": "छवियाँ बनाएँ",
-      "generateAiArtwork": "एआई आर्टवर्क बनाएँ",
-      "camera": "कैमरा",
-      "takeOrSelectPhotos": "फोटो लें या चुनें",
-      "search": "खोजें",
-      "findInformation": "जानकारी ढूँढें",
-      "removeImage": "छवि हटाएँ",
-      "messageInput": "संदेश इनपुट",
-      "clearInput": "इनपुट साफ़ करें",
-      "hideQuickActions": "क्विक एक्शन छिपाएँ",
-      "showQuickActions": "क्विक एक्शन दिखाएँ",
-      "startVoiceInput": "वॉइस इनपुट शुरू करें",
-      "sendMessage": "भेजें",
-      "offline": "ऑफ़लाइन",
-      "stop": "रोकें",
-      "streaming": "स्ट्रीम हो रहा है…",
-      "closeRecorder": "रिकॉर्डर बंद करें",
-      "insertTranscript": "ट्रांसक्रिप्ट जोड़ें",
-      "scrollToLatest": "नवीनतम पर जाएँ",
-      "copyMessage": "संदेश कॉपी करें",
-      "copyMessageHint": "इस संदेश को क्लिपबोर्ड पर कॉपी करें",
-      "shareMessage": "संदेश साझा करें",
-      "shareMessageHint": "इस संदेश को साझा करें",
-      "regenerateResponse": "उत्तर पुनः जनरेट करें",
-      "regenerateResponseHint": "नया उत्तर जनरेट करें",
-      "copyCode": "कोड कॉपी करें",
-      "image": "छवि",
-      "loading": "लोड हो रहा है…",
-      "loadingChat": "चैट लोड हो रही है...",
-      "offlineBanner": "आप ऑफ़लाइन हैं। संदेश भेजे नहीं जा सकते।",
-      "imagePickerErrorTitle": "इमेज पिकर त्रुटि",
-      "messageTooLong": "संदेश बहुत लंबा है ({{length}})। सीमा {{limit}} है।",
-      "emptyTitle": "मैं कैसे मदद कर सकता/सकती हूँ?",
-      "emptySubtitle": "एआई के साथ बातचीत शुरू करें",
-      "privateTitle": "निजी चैट",
-      "privateSubtitle": "यह चैट आपके इतिहास में नहीं दिखेगी",
-      "listening": "सुन रहा/रही हूँ…",
-      "startRecording": "रिकॉर्डिंग शुरू हो रही है…",
-      "suggestions": {
-        "writeStory": "एक रचनात्मक कहानी लिखें",
-        "writeStorySubtitle": "एक जादुई साहसिक पर",
-        "planTravel": "यात्रा कार्यक्रम बनाएँ",
-        "planTravelSubtitle": "शानदार छुट्टियों के लिए",
-        "explainConcept": "इस अवधारणा को समझाएँ",
-        "explainConceptSubtitle": "सरल शब्दों में",
-        "planDay": "मेरा दिन प्लान करें",
-        "planDaySubtitle": "प्रोडक्टिविटी टिप्स के साथ"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "प्रोसेस हो रहा है...",
-      "tapToUploadImage": "छवि अपलोड करने के लिए टैप करें"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "प्रोसेस हो रहा है...",
-      "camera": "कैमरा",
-      "library": "लाइब्रेरी"
-    },
-    "common": {
-      "new": "नया",
-      "best": "सर्वश्रेष्ठ",
-      "cancel": "रद्द करें",
-      "save": "सहेजें",
-      "delete": "हटाएँ",
+    "accessibility": {
       "close": "बंद करें"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "हटाएँ",
+      "edit": "संपादित करें",
+      "save": "सहेजें",
+      "share": "साझा करें"
+    },
+    "accessibility": {
+      "close": "बंद करें",
+      "delete": "इमेज हटाएँ",
+      "edit": "इमेज संपादित करें",
+      "save": "इमेज सहेजें",
+      "share": "इमेज साझा करें"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "मेन्यू खोलें",
+      "selectImages": "इमेज चुनें",
+      "exitSelection": "चयन मोड से बाहर निकलें",
+      "deleteSelected": "चुनी हुई इमेज हटाएँ",
+      "selectToDelete": "हटाने के लिए इमेज चुनें"
+    },
+    "createCard": {
+      "title": "टेक्स्ट से बनाएँ",
+      "subtitle": "एक विवरण लिखें",
+      "cta": "लिखें और बनाएँ"
+    },
+    "editCard": {
+      "title": "फ़ोटो एडिट करें",
+      "subtitle": "अपलोड करें और एडिट करें",
+      "cta": "फ़ोटो एडिट करें"
+    },
+    "gallery": {
+      "title": "गैलरी",
+      "empty": "अभी कोई इमेज नहीं",
+      "selection": {
+        "enter": "इमेज चुनें",
+        "exit": "चयन मोड से बाहर निकलें",
+        "deleteSelected": "चुनी हुई इमेज हटाएँ",
+        "selectForDelete": "हटाने के लिए इमेज चुनें"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "मिलिए",
+      "titleHighlight": "Image Studio",
+      "subtitle": "{{app}} के अंदर ही AI से इमेज बनाएँ और एडिट करें.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "अपने AI से मिलिए",
+      "titleHighlight": "सहायक",
+      "subtitle": "आपकी रोज़ की ज़रूरतों के लिए तैयार AI विशेषज्ञ",
+      "cards": [
+        {
+          "title": "फिटनेस कोच",
+          "text": "आपके लक्ष्य के अनुसार वर्कआउट और न्यूट्रिशन प्लान पाएं"
+        },
+        {
+          "title": "डॉक्टर",
+          "text": "स्वास्थ्य इनसाइट, लक्षण विश्लेषण और मेडिकल गाइडेंस"
+        },
+        {
+          "title": "पेट केयर",
+          "text": "पालतू जानवरों की सेहत, ट्रेनिंग और देखभाल की सलाह"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "एंटरप्राइज़-ग्रेड AI सॉल्यूशंस",
+      "description": "पेशेवरों और टीमों के लिए बनी अत्याधुनिक AI से अपना बिज़नेस सशक्त करें.",
+      "stats": "500k+ यूज़र्स का भरोसा",
+      "rating": "4.9 / 5",
+      "button": "शुरू करें"
+    }
+  },
+  "coinStore": {
+    "title": "टोकन लें",
+    "loading": "कॉइन स्टोर लोड हो रहा है…",
+    "balanceLabel": "आपका वर्तमान बैलेंस",
+    "balanceValue": "{{amount}} टोकन",
+    "history": {
+      "link": "लेनदेन इतिहास",
+      "alertTitle": "इतिहास",
+      "alertBody": "लेनदेन इतिहास जल्द ही आ रहा है."
+    },
+    "noPacks": "कोई टोकन पैक उपलब्ध नहीं. कृपया अपने RevenueCat ऑफ़रिंग ID की जाँच करें.",
+    "badges": {
+      "basic": "बेसिक पैक",
+      "popular": "सबसे लोकप्रिय",
+      "value": "सबसे किफायती"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} टोकन",
+      "defaultName": "पैक {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "प्रीमियम लें",
+      "subtitle": "अनलिमिटेड एक्सेस और फ़ीचर्स",
+      "cta": "अपग्रेड"
+    },
+    "termsText": "खरीदारी करके आप हमारी इन शर्तों से सहमत हैं:",
+    "termsLink": "सेवा की शर्तें",
+    "alerts": {
+      "initErrorTitle": "प्रारंभ त्रुटि",
+      "genericMessage": "कुछ गड़बड़ हो गई.",
+      "successTitle": "सफल",
+      "successMessage": "टोकन थोड़ी देर में दिखेंगे.",
+      "purchaseFailedTitle": "खरीदारी विफल",
+      "unknownError": "अज्ञात त्रुटि"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "रीस्टोर",
+    "restoreRestoring": "रीस्टोर हो रहा है…",
+    "features": {
+      "create": "इमेज और वीडियो बनाएँ",
+      "search": "AI के साथ वेब खोजें",
+      "talk": "AI से स्वाभाविक बात करें"
+    },
+    "freeTrial": {
+      "title": "मुफ़्त ट्रायल",
+      "subtitle": "3 दिन का मुफ़्त ट्रायल"
+    },
+    "badge": {
+      "bestOffer": "सबसे बढ़िया ऑफ़र"
+    },
+    "plans": {
+      "yearly": {
+        "title": "वार्षिक",
+        "only": "सिर्फ {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "मासिक",
+        "subtitle": "कभी भी रद्द करें",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "साप्ताहिक",
+        "subtitle": "कभी भी रद्द करें",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "प्रति सप्ताह",
+      "perMonth": "प्रति माह"
+    },
+    "cta": "जारी रखें",
+    "legal": {
+      "terms": "शर्तें",
+      "privacy": "गोपनीयता"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "संदेश...",
+    "createImages": "इमेज बनाएँ",
+    "generateAiArtwork": "AI आर्टवर्क बनाएँ",
+    "camera": "कैमरा",
+    "takeOrSelectPhotos": "फ़ोटो लें या चुनें",
+    "search": "खोजें",
+    "findInformation": "जानकारी खोजें",
+    "findRecentInfo": "नवीनतम जानकारी खोजें",
+    "removeImage": "इमेज हटाएँ",
+    "messageInput": "संदेश इनपुट",
+    "clearInput": "इनपुट साफ़ करें",
+    "quickActionsLabel": "जल्दी वाले एक्शन",
+    "hideQuickActions": "जल्दी वाले एक्शन छुपाएँ",
+    "showQuickActions": "जल्दी वाले एक्शन दिखाएँ",
+    "startVoiceInput": "वॉइस इनपुट शुरू करें",
+    "sendMessage": "संदेश भेजें",
+    "offline": "ऑफ़लाइन",
+    "stop": "रोकें",
+    "streaming": "स्ट्रीम हो रहा है…",
+    "closeRecorder": "रिकॉर्डर बंद करें",
+    "insertTranscript": "भेजें",
+    "scrollToLatest": "नवीनतम पर स्क्रॉल करें",
+    "copyMessage": "संदेश कॉपी करें",
+    "copyMessageHint": "संदेश को क्लिपबोर्ड में कॉपी करें",
+    "shareMessage": "संदेश साझा करें",
+    "shareMessageHint": "इस संदेश को साझा करें",
+    "regenerateResponse": "जवाब फिर बनाएँ",
+    "regenerateResponseHint": "नया जवाब बनाएँ",
+    "copyCode": "कोड कॉपी करें",
+    "image": "इमेज",
+    "loading": "लोड हो रहा है…",
+    "loadingChat": "चैट लोड हो रही है...",
+    "offlineBanner": "आप ऑफ़लाइन हैं. संदेश नहीं भेजा जा सकता.",
+    "imagePickerErrorTitle": "इमेज चुनने में त्रुटि",
+    "imagePickerErrorMessage": "फ़ोटो तक पहुँच नहीं मिली. कृपया दोबारा कोशिश करें.",
+    "messageTooLong": "संदेश बहुत लंबा है ({{length}}). सीमा {{limit}} है.",
+    "sendFailed": "भेजना विफल.",
+    "voiceStartFailed": "वॉइस शुरू नहीं हो सकी.",
+    "emptyTitle": "मैं कैसे मदद करूँ?",
+    "emptySubtitle": "AI के साथ बातचीत शुरू करें",
+    "privateTitle": "निजी चैट",
+    "privateSubtitle": "यह चैट आपके इतिहास में नहीं दिखेगी",
+    "permissions": {
+      "photosTitle": "फ़ोटो की अनुमति आवश्यक",
+      "photosMessage": "इमेज चुनने के लिए फ़ोटो की पहुँच ज़रूरी है.",
+      "voiceTitle": "वॉइस की अनुमति आवश्यक",
+      "voiceMessage": "वॉइस फ़ीचर के लिए माइक्रोफोन की ज़रूरत है."
+    },
+    "activity": {
+      "analyzingImages": "इमेज का विश्लेषण हो रहा है…",
+      "searching": "खोज रहा है…",
+      "thinking": "सोच रहा है…"
+    },
+    "webSearch": {
+      "title": "वेब खोज",
+      "subtitle": "नवीनतम जानकारी खोजें",
+      "label": "वेब खोज",
+      "enable": "वेब खोज सक्षम करें",
+      "disable": "वेब खोज अक्षम करें",
+      "toggleLabel": "वेब पर खोजें"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "तेज़ी से विज़ुअल डिज़ाइन करें.",
+      "subtitle": "एक ही जगह पर बनाएँ, सुधारें और प्रकाशित करें.",
+      "cta": "खोलें"
+    },
+    "quickActions": {
+      "createImages": "इमेज बनाएँ",
+      "openCamera": "कैमरा खोलें",
+      "editImage": "इमेज एडिट करें",
+      "startVoice": "वॉइस शुरू करें",
+      "assistants": "सहायक"
+    },
+    "listening": "सुन रहा है…",
+    "startRecording": "रिकॉर्डिंग शुरू…",
+    "assistantHeader": {
+      "unavailableTitle": "सहायक उपलब्ध नहीं",
+      "unavailableDescription": "हम इस सहायक को लोड नहीं कर सके. कृपया दोबारा कोशिश करें.",
+      "ready": "मदद के लिए तैयार"
+    },
+    "actions": {
+      "copy": "कॉपी",
+      "share": "साझा करें",
+      "regenerate": "फिर बनाएँ",
+      "retryFromHere": "यहाँ से फिर कोशिश करें",
+      "cancel": "रद्द करें"
+    },
+    "messageActionTitle": "संदेश",
+    "status": {
+      "sending": "भेज रहे हैं…",
+      "failed": "विफल",
+      "sent": "भेजा गया"
+    },
+    "suggestions": {
+      "writeStory": "एक रचनात्मक कहानी लिखें",
+      "writeStorySubtitle": "एक जादुई रोमांच के बारे में",
+      "planTravel": "यात्रा का प्लान बनाएँ",
+      "planTravelSubtitle": "एक शानदार छुट्टी के लिए",
+      "explainConcept": "इस अवधारणा को समझाएँ",
+      "explainConceptSubtitle": "सरल भाषा में",
+      "planDay": "मेरा दिन प्लान करो",
+      "planDaySubtitle": "उत्पादकता टिप्स के साथ"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "प्रोसेस हो रहा है...",
+    "tapToUploadImage": "इमेज अपलोड करने के लिए टैप करें"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "प्रोसेस हो रहा है...",
+    "camera": "कैमरा",
+    "library": "लाइब्रेरी"
+  },
+  "common": {
+    "new": "नया",
+    "best": "सर्वश्रेष्ठ",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "हटाएँ",
+    "close": "बंद करें",
+    "allow": "अनुमति दें"
   }
-  
+}

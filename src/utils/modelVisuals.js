@@ -1,4 +1,7 @@
 // Shared helpers for presenting image model information.
+import i18n from '../i18n';
+
+const translate = (key, fallback) => i18n.t(key, { defaultValue: fallback });
 
 export function hexToRgba(hex, alpha) {
   if (!hex) return `rgba(124,92,255,${alpha})`;
@@ -18,7 +21,7 @@ export function hexToRgba(hex, alpha) {
 }
 
 export function formatModelProvider(provider) {
-  if (!provider) return 'Custom';
+  if (!provider) return translate('studioCommon.models.custom', 'Custom');
   return provider
     .split(/[-_]/g)
     .map(part => (part ? part[0].toUpperCase() + part.slice(1) : ''))
@@ -31,7 +34,7 @@ export function getModelVisuals(provider, modelKey) {
     return {
       icon: 'flux-schnell',
       accent: '#5C6CFF',
-      tagline: 'Flux Kontent tuned for edits',
+      tagline: translate('studioCommon.modelTaglines.fluxKontent', 'Flux Kontent tuned for edits'),
     };
   }
   switch (key) {
@@ -39,25 +42,25 @@ export function getModelVisuals(provider, modelKey) {
       return {
         icon: 'flux-schnell',
         accent: '#4B5BFF',
-        tagline: 'Fastest model',
+        tagline: translate('studioCommon.modelTaglines.runwareFluxSchnell', 'Fastest model'),
       };
     case 'runware-flux-krea':
       return {
         icon: 'krea',
         accent: '#FF7A9E',
-        tagline: 'Creative, stylized results',
+        tagline: translate('studioCommon.modelTaglines.runwareFluxKrea', 'Creative, stylized results'),
       };
     case 'runware-qwen-image':
       return {
         icon: 'qwen-image',
         accent: '#665CEE',
-        tagline: 'Balanced, high-quality results',
+        tagline: translate('studioCommon.modelTaglines.runwareQwenImage', 'Balanced, high-quality results'),
       };
     case 'google:4@1':
       return {
         icon: 'nano-banana',
         accent: '#F8C95F',
-        tagline: 'Best AI image model',
+        tagline: translate('studioCommon.modelTaglines.google4', 'Best AI image model'),
       };
     default:
       break;
@@ -68,31 +71,31 @@ export function getModelVisuals(provider, modelKey) {
       return {
         icon: 'layers',
         accent: '#7C5CFF',
-        tagline: 'Balanced quality with reliable diffusion.',
+        tagline: translate('studioCommon.modelTaglines.runwareProvider', 'Balanced quality with reliable diffusion.'),
       };
     case 'air':
       return {
         icon: 'banana',
         accent: '#F5B93E',
-        tagline: 'Nano Banana adds playful, vivid tone.',
+        tagline: translate('studioCommon.modelTaglines.airProvider', 'Nano Banana adds playful, vivid tone.'),
       };
     case 'google':
       return {
         icon: 'globe-grid',
         accent: '#3DA8FD',
-        tagline: 'Google tuned for polished details.',
+        tagline: translate('studioCommon.modelTaglines.googleProvider', 'Google tuned for polished details.'),
       };
     case 'anthropic':
       return {
         icon: 'insights',
         accent: '#8895FF',
-        tagline: 'Claude pipeline for nuanced moods.',
+        tagline: translate('studioCommon.modelTaglines.anthropicProvider', 'Claude pipeline for nuanced moods.'),
       };
     default:
       return {
         icon: 'stars',
         accent: '#6F7AFF',
-        tagline: 'Tap to explore available engines.',
+        tagline: translate('studioCommon.modelTaglines.default', 'Tap to explore available engines.'),
       };
   }
 }

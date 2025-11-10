@@ -31,7 +31,6 @@ import Chat from '../screens/Chat';
 import History from '../screens/HistorySimple';
 import Assistants from '../screens/Assistants';
 import Settings from '../screens/Settings.jsx';
-import ImagesStudio from '../screens/ImagesStudio';
 import StudioStack from './StudioStack';
 import CoinStore from '../screens/CoinStore.jsx';
 import PaywallScreen from '../components/PaywallScreen';
@@ -280,7 +279,7 @@ function ChatHeaderCenter() {
           importantForAccessibility="yes"
         >
           <View style={styles.sheetHeader}>
-            <Text style={styles.sheetTitle}>{t('assistants.selectAssistant', 'Choose assistant')}</Text>
+            <Text style={styles.sheetTitle}>{t('assistants.selectAssistant', { defaultValue: 'Choose assistant' })}</Text>
             <Pressable hitSlop={10} onPress={closeSheet} accessibilityLabel={t('modelSelector.closeLabel')}>
               <Text style={styles.sheetClose}>✕</Text>
             </Pressable>
@@ -421,39 +420,50 @@ export default function DrawerNavigator() {
           })}
         />
         <Drawer.Screen name="Assistants" component={Assistants} options={{ title: t('navigation.assistants') }} />
-        <Drawer.Screen name="Settings" component={Settings} options={{ title: t('navigation.settings') }} />
+        <Drawer.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            title: t('navigation.settings'),
+            headerTitleStyle: {
+              color: colors.text,
+              fontFamily: 'Lato-Black',
+              fontSize: 24,
+            },
+          }}
+        />
         <Drawer.Screen
           name="Studio"
           component={StudioStack}
           options={{
             headerShown: false,
-            title: t('navigation.imagesStudio') || 'Studio',
-          }}
-        />
-        <Drawer.Screen
-          name="ImagesStudio"
-          component={ImagesStudio}
-          options={{
-            headerShown: false,
-            title: t('navigation.imagesStudio'),
-            // Hide from drawer; navigated from StudioHome
-            drawerItemStyle: { display: 'none' },
+            title: t('navigation.imagesStudio') || 'Image Studio',
           }}
         />
         {/** Create/Edit are children of Studio stack; no drawer entries */}
         <Drawer.Screen
           name="PaywallScreen"
-          component={({ navigation }) => (
-            <PaywallScreen
-              onClose={() => navigation.goBack()}
-              onRestore={() => {
-                console.log('Restore pressed');
-              }}
-              onContinue={() => {
+          component={({ navigation, route }) => {
+            const returnTo = route?.params?.returnTo;
+            const goBackSafe = () => {
+              if (returnTo) {
+                navigation.navigate(returnTo);
+              } else if (navigation.canGoBack()) {
                 navigation.goBack();
-              }}
-            />
-          )}
+              } else {
+                navigation.navigate('Chat');
+              }
+            };
+            return (
+              <PaywallScreen
+                onClose={goBackSafe}
+                onRestore={() => {
+                  console.log('Restore pressed');
+                }}
+                onContinue={goBackSafe}
+              />
+            );
+          }}
           options={{
             headerShown: false,
             title: 'Paywall',

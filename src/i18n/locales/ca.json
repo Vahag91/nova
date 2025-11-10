@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Selecciona un model",
-      "searchPlaceholder": "Cerca models...",
-      "noModelsFound": "No s'han trobat models",
-      "noModelsAvailable": "No hi ha models disponibles",
-      "currentModel": "Model actual: {{name}}. Toca per canviar.",
-      "openHint": "Obre el menú de selecció de model",
-      "closeLabel": "Tanca el selector de model",
-      "searchLabel": "Cerca models",
-      "searchHint": "Escriu per filtrar els models",
-      "modelLabel": "Model {{name}}",
-      "selectHint": "Selecciona {{name}}",
-      "currentlySelected": "Model seleccionat actualment"
+  "modelSelector": {
+    "title": "Selecciona un model",
+    "searchPlaceholder": "Cerca models...",
+    "noModelsFound": "No s’han trobat models",
+    "noModelsAvailable": "No hi ha models disponibles",
+    "currentModel": "Model actual: {{name}}. Toca per canviar-lo.",
+    "openHint": "Obre el menú de selecció de model",
+    "closeLabel": "Tanca el selector de model",
+    "searchLabel": "Cerca models",
+    "searchHint": "Escriu per filtrar els models disponibles",
+    "modelLabel": "Model {{name}}",
+    "selectHint": "Selecciona el model {{name}}",
+    "currentlySelected": "Actualment seleccionat"
+  },
+  "models": {
+    "gpt-4o": "Model d’IA més potent",
+    "gpt-4o-mini": "Ràpid per a tasques diàries",
+    "gpt-5": "IA més potent i polivalent",
+    "gpt-5-chat-latest": "Optimitzat per a xat i diàleg",
+    "gpt-5-mini": "GPT-5 ràpid i fiable",
+    "gpt-5-nano": "Model lleuger per a tasques simples",
+    "o4-mini": "Model de raonament eficient",
+    "gpt-4.1-mini": "GPT-4.1 compacte i capaç",
+    "claude-3-haiku": "IA d’Anthropic ràpida i enfocada",
+    "claude-3.7-sonnet": "Raonament refinat d’Anthropic",
+    "gemini-2.5-Flash": "Model més avançat de Google",
+    "gemini-2.5-flash": "Model més avançat de Google",
+    "gemini-2.0-flash": "IA de Google ràpida i precisa"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Altres"
+  },
+  "navigation": {
+    "chat": "Xat nou",
+    "history": "Historial",
+    "assistants": "Assistents",
+    "imagesStudio": "Image Studio",
+    "settings": "Configuració",
+    "recentChats": "Xats recents"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Genera, afina i publica recursos visuals en un sol lloc.",
+    "cta": "Obrir"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Selecciona imatges",
+    "exitSelectionMode": "Surt del mode de selecció",
+    "selectAll": "Selecciona-ho tot",
+    "noImagesYet": "Encara no hi ha imatges",
+    "describeImageHint": "Descriu la imatge a sota i toca Genera.",
+    "generatedImagesGallery": "Galeria d’imatges generades",
+    "describeImagePlaceholder": "Descriu la imatge que vols…",
+    "deleteConfirmTitle": "Suprimeix imatges",
+    "deleteConfirmMessage": "Segur que vols suprimir les imatges seleccionades? Aquesta acció no es pot desfer.",
+    "cancel": "Cancel·la",
+    "delete": "Suprimeix",
+    "generate": "Genera",
+    "generating": "Generant…",
+    "latest": "Darreres",
+    "insertToChat": "Insereix al xat",
+    "pleaseWait": "Espera, si us plau…",
+    "processing": "Processant...",
+    "tapToUploadImage": "Toca per pujar una imatge",
+    "camera": "Càmera",
+    "library": "Biblioteca",
+    "enterPrompt": "Introdueix un prompt per a la generació de text a imatge",
+    "openInBrowser": "Obre al navegador",
+    "makeVariations": "Fes variacions",
+    "deleteAllFromGeneration": "Suprimeix-ho tot d’aquesta generació",
+    "imageOptionsTitle": "Opcions de la imatge",
+    "imageOptionsMessage": "Què vols fer amb aquesta imatge?",
+    "insertMarkdownHeader": "Aquesta és la imatge per a:",
+    "variationSuffix": "— variació de la imatge anterior",
+    "selectedCount": "seleccionades",
+    "selectedCount_one": "seleccionada",
+    "selectedCount_other": "seleccionades",
+    "imageDescriptionInput": "Entrada de descripció d’imatge",
+    "imageDescriptionHint": "Introdueix una descripció de la imatge que vols generar",
+    "openModelSettings": "Obre la configuració del model",
+    "modelSettingsHint": "Toca per canviar el model i la configuració",
+    "openPhotoGallery": "Obre la galeria de fotos",
+    "clearInput": "Neteja",
+    "generatedImage": "Imatge generada",
+    "autoSelectedModel": "S’ha seleccionat automàticament {{model}} per al mode {{mode}}",
+    "deleteSelectedConfirmTitle": "Suprimeix imatges",
+    "deleteSelectedConfirmMessage": "Segur que vols suprimir aquestes imatges? Aquesta acció no es pot desfer."
+  },
+  "imageStudio": {
+    "generateImage": "Genera imatge",
+    "generatingImage": "Generant imatge",
+    "generateImageHint": "Toca per generar una imatge a partir de la descripció",
+    "imageDescriptionInput": "Entrada de descripció d’imatge",
+    "imageDescriptionHint": "Introdueix la descripció de la imatge que vols generar",
+    "openModelSettings": "Obre la configuració del model",
+    "modelSettingsHint": "Toca per canviar el model i la configuració",
+    "openPhotoGallery": "Obre la galeria",
+    "clearInput": "Neteja",
+    "generatedImage": "Imatge generada"
+  },
+  "assistants": {
+    "title": "Assistents",
+    "subtitle": "Especialistes d’IA preparats per programar, escriure, analitzar, planificar i més.",
+    "searchPlaceholder": "Cerca assistents…",
+    "useAssistant": "Usa l’assistent",
+    "selectAssistant": "Tria assistent",
+    "description": "Descripció",
+    "systemPrompt": "Prompt del sistema",
+    "chooseModel": "Tria model",
+    "categoryAll": "Tots",
+    "categories": {
+      "everyday": "Dia a dia",
+      "life": "Vida",
+      "health": "Salut",
+      "schoolWork": "Estudis i feina",
+      "coding": "Programació",
+      "creative": "Creatiu",
+      "general": "General"
+    },
+    "presets": {
+      "default": {
+        "name": "Assistent per defecte",
+        "description": "Ajuda equilibrada per al dia a dia."
+      },
+      "quick": {
+        "name": "Respostes ràpides",
+        "description": "Respostes curtes i directes."
+      },
+      "planner": {
+        "name": "Planificador diari",
+        "description": "Planifica el teu dia i rutines."
+      },
+      "recipes": {
+        "name": "Àpats i receptes",
+        "description": "Què cuinar amb el que tens."
+      },
+      "fitness": {
+        "name": "Hàbits i condició física",
+        "description": "Microhàbits i entrenaments a casa."
+      },
+      "money": {
+        "name": "Assistent de diners",
+        "description": "Pressupostos simples i consells de despesa."
+      },
+      "study": {
+        "name": "Ajuda d’estudi",
+        "description": "Explica fàcil. Fes-me practicar."
+      },
+      "email": {
+        "name": "Correu i CV",
+        "description": "Escriu correus clars i línies de CV."
+      },
+      "translator": {
+        "name": "Traductor",
+        "description": "Traduir i aprendre frases."
+      },
+      "travel": {
+        "name": "Company de viatge",
+        "description": "Plans simples i llista d’equipatge."
+      },
+      "tech": {
+        "name": "Suport tècnic (simple)",
+        "description": "Telèfon, apps, Wi-Fi bàsic."
+      },
+      "summarizer": {
+        "name": "Resumidor TL;DR",
+        "description": "Punts curts + un resum d’una línia."
+      },
+      "gift": {
+        "name": "Cercador de regals",
+        "description": "Idees per pressupost i interessos."
+      },
+      "party": {
+        "name": "Planificador d’esdeveniments (lleuger)",
+        "description": "Planifica ràpid una festa petita."
+      },
+      "social": {
+        "name": "Creador de publicacions",
+        "description": "Redacta posts amb opcions."
+      },
+      "interview": {
+        "name": "Preparador d’entrevistes",
+        "description": "Practica respostes (STAR)."
+      },
+      "homefix": {
+        "name": "Guia de bricolatge",
+        "description": "Solucions senzilles a casa."
+      },
+      "pet": {
+        "name": "Cura de mascotes",
+        "description": "Alimentació, passejos, entrenament bàsic."
+      },
+      "mindful": {
+        "name": "Minut de calma",
+        "description": "Pauses tranquil·les d’1–3 min."
+      },
+      "polite": {
+        "name": "Reescriptura amable",
+        "description": "Reescriu textos i respostes educadament."
+      }
+    }
+  },
+  "history": {
+    "title": "Historial",
+    "searchPlaceholder": "Cerca xats…",
+    "newChat": "Xat nou",
+    "new": "+ Nou",
+    "search": "Cerca",
+    "clearSearch": "Neteja la cerca",
+    "noChatsYet": "Encara no hi ha xats",
+    "startFirstConversation": "Comença la teva primera conversa.",
+    "startChat": "Inicia un xat",
+    "errorLoadingHistory": "Error en carregar l’historial",
+    "renameChat": "Canvia el nom del xat",
+    "enterNewTitle": "Introdueix un nou títol",
+    "deleteChat": "Vols suprimir el xat?",
+    "deleteChatMessage": "«{{title}}» se suprimirà.",
+    "rename": "Canvia el nom",
+    "unpin": "Desfixa",
+    "pin": "Fixa",
+    "untitled": "Sense títol"
+  },
+  "settings": {
+    "title": "Configuració",
+    "model": "Model",
+    "searchPlaceholder": "Cerca models…",
+    "temperatureForCurrentModel": "Temperatura per al model actual",
+    "customFor": "Personalitzat per a {{model}}",
+    "usingDefault": "S’està usant el valor per defecte {{temperature}}",
+    "resetToDefault": "Restableix per defecte",
+    "defaultTemperature": "Temperatura per defecte (alternativa)",
+    "usedByModelsWithoutOverride": "S’utilitza en models sense personalització",
+    "dangerZone": "Zona de perill",
+    "clearAllChatsAndSettings": "Esborra tots els xats i la configuració",
+    "about": "Quant a",
+    "version": "Versió {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Política de privacitat",
+    "hero": {
+      "label": "Oferta especial",
+      "title": "Accés prioritari i sense límits",
+      "upgrade": "Actualitza",
+      "manage": "Gestiona el pla"
+    },
+    "sections": {
+      "premium": "Pla Premium",
+      "data": "Dades d’usuari",
+      "support": "Suport i aspectes legals"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Aconsegueix Premium",
+        "subtitle": "Desbloqueja eines de creació il·limitades"
+      },
+      "premiumActive": {
+        "title": "Premium actiu",
+        "subtitle": "Gràcies per donar suport a ChatCloud"
+      },
+      "restore": {
+        "title": "Restaura compres",
+        "subtitle": "Fes-ho servir si has canviat de dispositiu"
+      },
+      "history": {
+        "title": "Gestiona l’historial de xats",
+        "subtitle": "Visualitza i suprimeix sessions anteriors"
+      },
+      "reset": {
+        "title": "Restableix xats i preferències",
+        "subtitle": "Esborra totes les dades d’aquest dispositiu"
+      },
+      "rate": {
+        "title": "Valora’ns",
+        "error": "No es pot obrir la pàgina de la botiga."
+      },
+      "support": {
+        "title": "Suport",
+        "subtitle": "Contacta’ns en línia",
+        "error": "No es pot obrir la pàgina de contacte."
+      },
+      "privacy": {
+        "title": "Política de privacitat",
+        "error": "No es pot obrir la política de privacitat."
+      },
+      "terms": {
+        "title": "Termes d’ús",
+        "error": "No es poden obrir els termes d’ús."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "ÀUD",
+      "video": "VÍD"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "No disponible",
+      "linkUnavailableMessage": "No es pot obrir aquest enllaç ara mateix.",
+      "restoreSuccessTitle": "Restaurat",
+      "restoreSuccessMessage": "S’han restaurat les teves compres.",
+      "restoreErrorTitle": "No s’ha pogut restaurar",
+      "restoreErrorMessage": "No es poden restaurar les compres ara.",
+      "resetConfirmTitle": "Restablir les dades de l’app?",
+      "resetConfirmMessage": "Això elimina tots els xats i preferències locals.",
+      "resetConfirmCancel": "Cancel·la",
+      "resetConfirmCta": "Restableix"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Crea",
+    "chooseStyle": "Tria un estil",
+    "aspectRatio": "Relació d’aspecte",
+    "starterPrompts": {
+      "title": "Prompts inicials",
+      "items": [
+        "retrat d’estudi",
+        "sala d’estar moderna",
+        "platja tropical al capvespre"
+      ]
+    },
+    "promptPlaceholder": "Escriu què vols veure…",
+    "promptHint": "Exemple: «Golden retriever amb llum d’estudi»",
+    "clearText": "Neteja el text",
+    "generate": "Genera",
+    "generating": "Generant…"
+  },
+  "editImage": {
+    "headerTitle": "Edita",
+    "chooseStyle": "Tria un estil",
+    "aspectRatio": "Relació d’aspecte",
+    "starterPrompts": {
+      "title": "Prompts inicials",
+      "items": [
+        "corregeix la il·luminació",
+        "elimina el fons",
+        "retoc suau de retrat"
+      ]
+    },
+    "promptPlaceholder": "Descriu els canvis (opcional)",
+    "clearText": "Neteja el text",
+    "generate": "Genera",
+    "generating": "Aplicant…",
+    "upload": {
+      "choose": "Tria una foto",
+      "change": "Canvia",
+      "remove": "Elimina"
+    },
+    "imageUnavailable": {
+      "title": "Imatge no disponible",
+      "message": "No s’ha pogut accedir a la foto seleccionada. Torna-la a seleccionar i prova-ho de nou."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Dibuixos animats"
+      },
+      "photoreal": {
+        "name": "Fotorealista"
+      },
+      "sketch": {
+        "name": "Esbós"
+      },
+      "cyberpunk": {
+        "name": "Ciberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Il·lustració 3D"
+      },
+      "dark_fantasy": {
+        "name": "Fantasia fosca"
+      },
+      "vintage_film": {
+        "name": "Pel·lícula vintage"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Resplendor neó"
+      },
+      "epic_landscape": {
+        "name": "Paisatge èpic"
+      }
+    },
+    "aspectRatios": {
+      "square": "Quadrat",
+      "landscape": "Apaïsat",
+      "portrait": "Vertical"
     },
     "models": {
-      "gpt-4o": "El model d'IA més potent",
-      "gpt-4o-mini": "Ràpid per a tasques quotidianes",
-      "claude-3-haiku": "Model ràpid i eficient",
-      "claude-3.7-sonnet": "Model d'inferència avançada",
-      "gemini-2.5-pro": "El millor model de Google",
-      "gemini-2.0-flash": "Model ràpid amb gran raonament"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Personalitzat"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Altres"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Model més ràpid",
+      "runwareFluxKrea": "Creatiu i estilitzat",
+      "runwareQwenImage": "Qualitat alta i equilibrada",
+      "google4": "Millor model d’imatge de Google",
+      "fluxKontent": "Flux Kontent ajustat per a edició",
+      "runwareProvider": "Qualitat equilibrada amb difusió fiable.",
+      "airProvider": "Nano Banana afegeix un toc viu i juganer.",
+      "googleProvider": "Google ajustat per a detalls polits.",
+      "anthropicProvider": "Canal Claude per a ambients més matisats.",
+      "default": "Toca per explorar els motors disponibles."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "l’estil escollit",
+    "sheetTitle": "Estem creant la teva imatge",
+    "sheetSubtitle": "Un segon mentre barregem {{style}} amb el prompt.",
+    "phases": {
+      "blend": "Barrejant {{style}}",
+      "paint": "Pintant l’escena",
+      "finish": "Afegint el toc final"
     },
-    "navigation": {
-      "chat": "Xat",
-      "history": "Historial",
-      "assistants": "Assistents",
-      "imagesStudio": "Estudi",
-      "settings": "Configuració",
-      "recentChats": "Xats recents"
-    },
-    "imagesStudio": {
-      "title": "Estudi",
-      "selectImages": "Selecciona imatges",
-      "exitSelectionMode": "Surt del mode de selecció",
-      "selectAll": "Selecciona-ho tot",
-      "noImagesYet": "Encara no hi ha imatges",
-      "describeImageHint": "Descriu la teva imatge i toca «Genera».",
-      "generatedImagesGallery": "Galeria d'imatges generades",
-      "describeImagePlaceholder": "Descriu la imatge que vols…",
-      "deleteConfirmTitle": "Suprimeix imatges",
-      "deleteConfirmMessage": "Segur que vols suprimir les imatges seleccionades? Aquesta acció no es pot desfer.",
+    "actions": {
       "cancel": "Cancel·la",
-      "delete": "Suprimeix",
-      "generate": "Genera",
-      "generating": "Generant…",
-      "latest": "Darreres",
-      "insertToChat": "Insereix al xat",
-      "pleaseWait": "Si us plau, espera…",
-      "processing": "Processant...",
-      "tapToUploadImage": "Toca per pujar una imatge",
-      "camera": "Càmera",
-      "library": "Biblioteca",
-      "enterPrompt": "Introdueix una indicació per a la generació de text a imatge",
-      "openInBrowser": "Obre al navegador",
-      "makeVariations": "Fes variacions",
-      "deleteAllFromGeneration": "Suprimeix tot d’aquesta generació",
-      "imageOptionsTitle": "Opcions de la imatge",
-      "imageOptionsMessage": "Què vols fer amb aquesta imatge?",
-      "insertMarkdownHeader": "Aquí tens la imatge per a:",
-      "variationSuffix": "— variació de la imatge anterior",
-      "selectedCount": "seleccionats",
-      "selectedCount_one": "seleccionats",
-      "selectedCount_other": "seleccionats",
-      "imageDescriptionInput": "Camp de descripció de la imatge",
-      "imageDescriptionHint": "Introdueix la descripció de la imatge que vols generar",
-      "openModelSettings": "Obre la configuració del model",
-      "modelSettingsHint": "Toca per canviar el model i els ajustos",
-      "openPhotoGallery": "Obre la galeria",
-      "clearInput": "Neteja l’entrada",
-      "generatedImage": "Imatge generada",
-      "autoSelectedModel": "S’ha seleccionat automàticament {{model}} per al mode {{mode}}",
-      "deleteSelectedConfirmTitle": "Suprimeix imatges",
-      "deleteSelectedConfirmMessage": "Segur que vols suprimir imatges? Aquesta acció no es pot desfer."
+      "retry": "Torna-ho a provar",
+      "close": "Tanca"
     },
-    "imageStudio": {
-      "generateImage": "Genera imatge",
-      "generatingImage": "Generant imatge",
-      "generateImageHint": "Toca per generar una imatge segons la teva descripció",
-      "imageDescriptionInput": "Camp de descripció de la imatge",
-      "imageDescriptionHint": "Introdueix una descripció de la imatge que vols generar",
-      "openModelSettings": "Obre la configuració del model",
-      "modelSettingsHint": "Toca per canviar el model i els ajustos",
-      "openPhotoGallery": "Obre la galeria",
-      "clearInput": "Neteja l’entrada",
-      "generatedImage": "Imatge generada"
+    "errors": {
+      "restrictedTitle": "Contingut restringit",
+      "genericTitle": "No s’ha pogut generar",
+      "genericMessage": "No s’ha pogut generar la imatge."
     },
-    "assistants": {
-      "title": "Assistents",
-      "subtitle": "Especialistes d’IA seleccionats per a codificació, escriptura, anàlisi, planificació i més.",
-      "searchPlaceholder": "Cerca assistents…",
-      "useAssistant": "Usa l’assistent",
-      "description": "Descripció",
-      "systemPrompt": "Indicació del sistema",
-      "chooseModel": "Tria un model",
-      "categoryAll": "Tots",
-      "categories": {
-        "everyday": "Quotidià",
-        "life": "Vida",
-        "health": "Salut",
-        "schoolWork": "Estudis i feina",
-        "coding": "Programació",
-        "creative": "Creatiu",
-        "general": "General"
-      },
-      "presets": {
-        "default": { "name": "Assistent per defecte", "description": "Ajuda equilibrada per al dia a dia." },
-        "quick": { "name": "Respostes ràpides", "description": "Respostes curtes i directes." },
-        "planner": { "name": "Planificador diari", "description": "Planifica el teu dia i rutines." },
-        "recipes": { "name": "Àpats i receptes", "description": "Què cuinar amb el que tens." },
-        "fitness": { "name": "Hàbits i fitness", "description": "Hàbits petits i exercicis a casa." },
-        "money": { "name": "Conseller financer", "description": "Pressupostos simples i consells de despesa." },
-        "study": { "name": "Ajuda d’estudi", "description": "Explica de manera simple. Fes-me proves." },
-        "email": { "name": "Correu i currículum", "description": "Escriu correus clars i punts de CV." },
-        "translator": { "name": "Traductor", "description": "Tradueix i ensenya frases." },
-        "travel": { "name": "Company de viatge", "description": "Plans senzills i llistes d’equipatge." },
-        "tech": { "name": "Suport tècnic (bàsic)", "description": "Bàsics de mòbil, apps i Wi-Fi." },
-        "summarizer": { "name": "Resumidor TL;DR", "description": "Vinyetes curtes + un sol resum." },
-        "gift": { "name": "Cercador de regals", "description": "Idees per pressupost i interessos." },
-        "party": { "name": "Planificador d’esdeveniments (lleuger)", "description": "Organitza una festa petita ràpid." },
-        "social": { "name": "Creador de publicacions", "description": "Esborranys amb opcions." },
-        "interview": { "name": "Entrenador d’entrevistes", "description": "Practica respostes (STAR)." },
-        "homefix": { "name": "Guia de reparacions a casa", "description": "Diagnòstic i solucions senzilles." },
-        "pet": { "name": "Cura de mascotes", "description": "Alimentació, passejos i entrenament bàsic." },
-        "mindful": { "name": "Minut mindful", "description": "Pausas de calma d’1–3 min." },
-        "polite": { "name": "Reescriptura amable", "description": "Reescriu textos i respostes amb cortesia." }
-      }
+    "alerts": {
+      "saveFailedTitle": "No s’ha pogut desar",
+      "shareFailedTitle": "No s’ha pogut compartir",
+      "tryAgain": "Torna-ho a intentar."
     },
-    "history": {
-      "title": "Historial",
-      "searchPlaceholder": "Cerca xats…",
-      "newChat": "Xat nou",
-      "new": "+ Nou",
-      "search": "Cerca",
-      "clearSearch": "Neteja la cerca",
-      "noChatsYet": "Encara no hi ha xats",
-      "startFirstConversation": "Comença la teva primera conversa.",
-      "startChat": "Inicia el xat",
-      "errorLoadingHistory": "Error en carregar l’historial",
-      "renameChat": "Canvia el nom del xat",
-      "enterNewTitle": "Introdueix un títol nou",
-      "deleteChat": "Vols suprimir el xat?",
-      "deleteChatMessage": "«{{title}}» se suprimirà.",
-      "rename": "Reanomena",
-      "unpin": "Desancora",
-      "pin": "Ancora",
-      "untitled": "Sense títol"
+    "result": {
+      "complete": "Tot a punt"
     },
-    "settings": {
-      "title": "Configuració",
-      "model": "Model",
-      "searchPlaceholder": "Cerca models…",
-      "temperatureForCurrentModel": "Temperatura del model actual",
-      "customFor": "Personalitzat per a {{model}}",
-      "usingDefault": "S’usa el valor per defecte {{temperature}}",
-      "resetToDefault": "Restableix al valor per defecte",
-      "defaultTemperature": "Temperatura per defecte (recurs)",
-      "usedByModelsWithoutOverride": "Usat per models sense personalització",
-      "dangerZone": "Zona perillosa",
-      "clearAllChatsAndSettings": "Neteja tots els xats i ajustos",
-      "about": "Quant a",
-      "version": "Versió {{version}}",
-      "privacyPolicy": "Política de privacitat",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "ÀUDIO",
-        "video": "VÍDEO"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Missatge a Agarka...",
-      "createImages": "Crea imatges",
-      "generateAiArtwork": "Genera art amb IA",
-      "camera": "Càmera",
-      "takeOrSelectPhotos": "Fes o selecciona fotos",
-      "search": "Cerca",
-      "findInformation": "Cerca informació",
-      "removeImage": "Elimina la imatge",
-      "messageInput": "Camp de missatge",
-      "clearInput": "Neteja l’entrada",
-      "hideQuickActions": "Amaga accions ràpides",
-      "showQuickActions": "Mostra accions ràpides",
-      "startVoiceInput": "Inicia entrada de veu",
-      "sendMessage": "Envia",
-      "offline": "Sense connexió",
-      "stop": "Atura",
-      "streaming": "Reproduint…",
-      "closeRecorder": "Tanca la gravadora",
-      "insertTranscript": "Insereix la transcripció",
-      "scrollToLatest": "Vés al darrer missatge",
-      "copyMessage": "Copia el missatge",
-      "copyMessageHint": "Copia aquest missatge al porta-retalls",
-      "shareMessage": "Comparteix el missatge",
-      "shareMessageHint": "Comparteix aquest missatge",
-      "regenerateResponse": "Torna a generar la resposta",
-      "regenerateResponseHint": "Genera una resposta nova",
-      "copyCode": "Copia el codi",
-      "image": "imatge",
-      "loading": "Carregant…",
-      "loadingChat": "Carregant el xat...",
-      "offlineBanner": "Estàs fora de línia. No es poden enviar missatges.",
-      "imagePickerErrorTitle": "Error del selector d’imatges",
-      "messageTooLong": "Missatge massa llarg ({{length}}). El límit és {{limit}}.",
-      "emptyTitle": "En què et puc ajudar?",
-      "emptySubtitle": "Comença una conversa amb IA",
-      "privateTitle": "Xat privat",
-      "privateSubtitle": "Aquest xat no apareixerà a l’historial",
-      "listening": "Escoltant…",
-      "startRecording": "Iniciant gravació…",
-      "suggestions": {
-        "writeStory": "Escriu una història creativa",
-        "writeStorySubtitle": "sobre una aventura màgica",
-        "planTravel": "Planifica un itinerari de viatge",
-        "planTravelSubtitle": "per a unes vacances increïbles",
-        "explainConcept": "Explica aquest concepte",
-        "explainConceptSubtitle": "en termes simples",
-        "planDay": "Planifica el meu dia",
-        "planDaySubtitle": "amb consells de productivitat"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Processant...",
-      "tapToUploadImage": "Toca per pujar una imatge"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Processant...",
-      "camera": "Càmera",
-      "library": "Biblioteca"
-    },
-    "common": {
-      "new": "NOU",
-      "best": "MILLOR",
-      "cancel": "Cancel·la",
-      "save": "Desa",
-      "delete": "Suprimeix",
+    "accessibility": {
       "close": "Tanca"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Suprimeix",
+      "edit": "Edita",
+      "save": "Desa",
+      "share": "Comparteix"
+    },
+    "accessibility": {
+      "close": "Tanca",
+      "delete": "Suprimeix la imatge",
+      "edit": "Edita la imatge",
+      "save": "Desa la imatge",
+      "share": "Comparteix la imatge"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Obre el menú",
+      "selectImages": "Selecciona imatges",
+      "exitSelection": "Surt de la selecció",
+      "deleteSelected": "Suprimeix les imatges seleccionades",
+      "selectToDelete": "Selecciona imatges per suprimir"
+    },
+    "createCard": {
+      "title": "Crea des de text",
+      "subtitle": "Escriu una descripció",
+      "cta": "Descriu i genera"
+    },
+    "editCard": {
+      "title": "Edita una foto",
+      "subtitle": "Puja i edita",
+      "cta": "Editar foto"
+    },
+    "gallery": {
+      "title": "Galeria",
+      "empty": "Encara no hi ha imatges",
+      "selection": {
+        "enter": "Selecciona imatges",
+        "exit": "Surt de la selecció",
+        "deleteSelected": "Suprimeix les seleccionades",
+        "selectForDelete": "Selecciona imatges per suprimir"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Coneix",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Crea i edita imatges amb IA — dins de {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Coneix la teva IA",
+      "titleHighlight": "Assistents",
+      "subtitle": "Especialistes d’IA preparats per ajudar-te en el dia a dia",
+      "cards": [
+        {
+          "title": "Coach de fitness",
+          "text": "Entrenaments i consells de nutrició adaptats als teus objectius"
+        },
+        {
+          "title": "Doctor",
+          "text": "Informació de salut, anàlisi de símptomes i orientació mèdica"
+        },
+        {
+          "title": "Cura de mascotes",
+          "text": "Consells d’experts en salut, entrenament i benestar"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "SOLUCIONS D’IA PER A EMPRESES",
+      "description": "Impulsa el teu negoci amb IA d’última generació pensada per a professionals i equips.",
+      "stats": "Confiat per més de 500k usuaris",
+      "rating": "4,9 / 5",
+      "button": "Comença"
+    }
+  },
+  "coinStore": {
+    "title": "Aconsegueix fitxes",
+    "loading": "S’està carregant la botiga de fitxes…",
+    "balanceLabel": "El teu saldo actual és",
+    "balanceValue": "{{amount}} fitxes",
+    "history": {
+      "link": "Historial de transaccions",
+      "alertTitle": "Historial",
+      "alertBody": "L’historial de transaccions arribarà aviat."
+    },
+    "noPacks": "No hi ha paquets de fitxes disponibles. Comprova l’identificador d’oferta de RevenueCat.",
+    "badges": {
+      "basic": "Paquet bàsic",
+      "popular": "El més popular",
+      "value": "Millor preu"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} fitxes",
+      "defaultName": "Paquet {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Passa a Premium",
+      "subtitle": "Accés il·limitat i funcions completes",
+      "cta": "Actualitza"
+    },
+    "termsText": "En fer una compra, acceptes els nostres",
+    "termsLink": "Termes del servei",
+    "alerts": {
+      "initErrorTitle": "Error d’inicialització",
+      "genericMessage": "S’ha produït un error.",
+      "successTitle": "Fet",
+      "successMessage": "Les fitxes apareixeran en breu.",
+      "purchaseFailedTitle": "Compra fallida",
+      "unknownError": "Error desconegut"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Restaura",
+    "restoreRestoring": "Restaurant…",
+    "features": {
+      "create": "Crea imatges i vídeos",
+      "search": "Cerca al web amb IA",
+      "talk": "Parla de manera natural amb la IA"
+    },
+    "freeTrial": {
+      "title": "Prova gratuïta",
+      "subtitle": "Prova gratuïta de 3 dies"
+    },
+    "badge": {
+      "bestOffer": "Millor oferta"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Anual",
+        "only": "Només {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Mensual",
+        "subtitle": "Cancel·la quan vulguis",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Setmanal",
+        "subtitle": "Cancel·la quan vulguis",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "per setmana",
+      "perMonth": "per mes"
+    },
+    "cta": "Continua",
+    "legal": {
+      "terms": "Termes",
+      "privacy": "Privacitat"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Missatge...",
+    "createImages": "Crea imatges",
+    "generateAiArtwork": "Genera art amb IA",
+    "camera": "Càmera",
+    "takeOrSelectPhotos": "Fes o selecciona fotos",
+    "search": "Cerca",
+    "findInformation": "Troba informació",
+    "findRecentInfo": "Troba informació recent",
+    "removeImage": "Elimina la imatge",
+    "messageInput": "Entrada de missatge",
+    "clearInput": "Neteja",
+    "quickActionsLabel": "Accions ràpides",
+    "hideQuickActions": "Amaga les accions ràpides",
+    "showQuickActions": "Mostra les accions ràpides",
+    "startVoiceInput": "Inicia entrada de veu",
+    "sendMessage": "Envia el missatge",
+    "offline": "Fora de línia",
+    "stop": "Atura",
+    "streaming": "Reproduint…",
+    "closeRecorder": "Tanca el gravador",
+    "insertTranscript": "Envia",
+    "scrollToLatest": "Ves a l’últim missatge",
+    "copyMessage": "Copia el missatge",
+    "copyMessageHint": "Copia aquest missatge al porta-retalls",
+    "shareMessage": "Comparteix el missatge",
+    "shareMessageHint": "Comparteix aquest missatge",
+    "regenerateResponse": "Torna a generar la resposta",
+    "regenerateResponseHint": "Genera una resposta nova",
+    "copyCode": "Copia el codi",
+    "image": "imatge",
+    "loading": "Carregant…",
+    "loadingChat": "Carregant el xat...",
+    "offlineBanner": "Estàs fora de línia. No es poden enviar missatges.",
+    "imagePickerErrorTitle": "Error en seleccionar imatge",
+    "imagePickerErrorMessage": "No s’ha pogut accedir a les teves fotos. Prova-ho de nou.",
+    "messageTooLong": "Missatge massa llarg ({{length}}). El límit és {{limit}}.",
+    "sendFailed": "Error en enviar.",
+    "voiceStartFailed": "No s’ha pogut iniciar la veu.",
+    "emptyTitle": "En què puc ajudar-te?",
+    "emptySubtitle": "Comença una conversa amb IA",
+    "privateTitle": "Xat privat",
+    "privateSubtitle": "Aquest xat no apareixerà a l’historial",
+    "permissions": {
+      "photosTitle": "Cal permís per a les fotos",
+      "photosMessage": "Cal accés a les fotos per poder-ne triar.",
+      "voiceTitle": "Cal permís de micròfon",
+      "voiceMessage": "Cal micròfon i veu per fer servir aquesta funció."
+    },
+    "activity": {
+      "analyzingImages": "Analitzant imatges…",
+      "searching": "Cercant…",
+      "thinking": "Pensant…"
+    },
+    "webSearch": {
+      "title": "Cerca web",
+      "subtitle": "Troba informació recent",
+      "label": "Cerca web",
+      "enable": "Activa la cerca web",
+      "disable": "Desactiva la cerca web",
+      "toggleLabel": "Cerca al web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Dissenya visuals ràpidament.",
+      "subtitle": "Genera, retoca i publica en un sol lloc.",
+      "cta": "Obrir"
+    },
+    "quickActions": {
+      "createImages": "Crea imatges",
+      "openCamera": "Obre la càmera",
+      "editImage": "Edita imatge",
+      "startVoice": "Inicia veu",
+      "assistants": "Assistents"
+    },
+    "listening": "Escoltant…",
+    "startRecording": "Iniciant gravació…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistent no disponible",
+      "unavailableDescription": "No s’ha pogut carregar aquest assistent. Torna-ho a provar.",
+      "ready": "A punt per ajudar"
+    },
+    "actions": {
+      "copy": "Copia",
+      "share": "Comparteix",
+      "regenerate": "Torna a generar",
+      "retryFromHere": "Torna-ho a provar des d’aquí",
+      "cancel": "Cancel·la"
+    },
+    "messageActionTitle": "Missatge",
+    "status": {
+      "sending": "Enviant…",
+      "failed": "Ha fallat",
+      "sent": "Enviat"
+    },
+    "suggestions": {
+      "writeStory": "Escriu una història creativa",
+      "writeStorySubtitle": "sobre una aventura màgica",
+      "planTravel": "Planeja un viatge",
+      "planTravelSubtitle": "per a unes vacances increïbles",
+      "explainConcept": "Explica aquest concepte",
+      "explainConceptSubtitle": "amb paraules senzilles",
+      "planDay": "Planifica el meu dia",
+      "planDaySubtitle": "amb consells de productivitat"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Processant...",
+    "tapToUploadImage": "Toca per pujar imatge"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Processant...",
+    "camera": "Càmera",
+    "library": "Biblioteca"
+  },
+  "common": {
+    "new": "NOU",
+    "best": "MILLOR",
+    "cancel": "Cancel·la",
+    "save": "Desa",
+    "delete": "Suprimeix",
+    "close": "Tanca",
+    "allow": "Permet"
   }
-  
+}

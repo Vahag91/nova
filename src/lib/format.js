@@ -58,6 +58,7 @@ export function summaryPreview(summary) {
 
   let text = lines[0]
     .replace(/^Topic:\s*/i, '')
+    .replace(/^Objective:\s*/i, '')
     .replace(/^Image noted:\s*/i, '')
     .replace(/^Key figure:\s*/i, '')
     .replace(/^Constraint:\s*/i, '')

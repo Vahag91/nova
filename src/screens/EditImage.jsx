@@ -35,6 +35,7 @@ import CreateImageGenerating from '../components/create-image/CreateImageGenerat
 import { getModelVisuals } from '../utils/modelVisuals';
 import { getImageModelPrice } from '../utils/imagePricing';
 import RNFS from 'react-native-fs';
+import { useTranslation } from 'react-i18next';
 
 const STYLES = [
   { id: 'photoreal', name: 'Photoreal', image: require('../../assets/images/createstudio/photoreal.webp'), cost: 3 },
@@ -51,16 +52,16 @@ const STYLES = [
   { id: 'epic_landscape', name: 'Epic Landscape', image: require('../../assets/images/createstudio/epic.webp'), cost: 3 },
 ];
 
-const STARTER_PROMPTS = [
+const DEFAULT_STARTER_PROMPTS = [
   'fix lighting',
   'remove background',
   'soft portrait retouch',
 ];
 
 const ASPECTS = [
-  { key: '1:1', size: '1024x1024', label: 'Square', glyph: { width: 16, height: 16 } },
-  { key: '16:9', size: '1024x576', label: 'Landscape', glyph: { width: 20, height: 11 } },
-  { key: '3:4', size: '768x1024', label: 'Portrait', glyph: { width: 11, height: 20 } },
+  { key: '1:1', size: '1024x1024', labelKey: 'studioCommon.aspectRatios.square', glyph: { width: 16, height: 16 } },
+  { key: '16:9', size: '1024x576', labelKey: 'studioCommon.aspectRatios.landscape', glyph: { width: 20, height: 11 } },
+  { key: '3:4', size: '768x1024', labelKey: 'studioCommon.aspectRatios.portrait', glyph: { width: 11, height: 20 } },
 ];
 
 const IMG2IMG_MODELS = new Set([
@@ -70,6 +71,7 @@ const IMG2IMG_MODELS = new Set([
 
 export default function EditImage({ navigation }) {
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   // Balance
   const coins = useImagesStore(s => s.coinsBalance);
@@ -100,6 +102,7 @@ export default function EditImage({ navigation }) {
     return fallback ? fallback[0] : 'runware-qwen-image';
   }, [models]);
 
+  const fluxKontentName = t('studioCommon.models.fluxKontent', { defaultValue: 'Flux Kontent' });
   const imageModels = useMemo(() => {
     const entries = Object.entries(models || {}).filter(([, v]) => v?.caps?.imageGen);
     const filtered = entries.filter(([key]) => IMG2IMG_MODELS.has(key));
@@ -121,7 +124,7 @@ export default function EditImage({ navigation }) {
       const baseDisplay = value?.display || { name: key };
       const isFluxKontent = key === 'runware-qwen-image';
       const display = isFluxKontent
-        ? { ...baseDisplay, name: 'Flux Kontent' }
+        ? { ...baseDisplay, name: fluxKontentName }
         : baseDisplay;
       const providerOverride = isFluxKontent
         ? 'flux-kontent'
@@ -132,7 +135,7 @@ export default function EditImage({ navigation }) {
         provider: providerOverride,
       };
     });
-  }, [models, defaultModel]);
+  }, [models, defaultModel, fluxKontentName]);
 
   const [selectedModel, setSelectedModel] = useState(defaultModel);
   const [modelMenuOpen, setModelMenuOpen] = useState(false);
@@ -141,18 +144,33 @@ export default function EditImage({ navigation }) {
     () => imageModels.find(m => m.key === selectedModel),
     [imageModels, selectedModel],
   );
+  const fluxKontentTagline = t('studioCommon.modelTaglines.fluxKontent', { defaultValue: 'Flux Kontent tuned for edits' });
   const modelVisuals = useMemo(() => {
     if (selectedModel === 'runware-qwen-image') {
       return {
         icon: 'flux-schnell',
         accent: '#5C6CFF',
-        tagline: 'Flux Kontent tuned for edits',
+        tagline: fluxKontentTagline,
       };
     }
     return getModelVisuals(selectedModelDisplay?.provider, selectedModel);
-  }, [selectedModel, selectedModelDisplay?.provider]);
+  }, [selectedModel, selectedModelDisplay?.provider, fluxKontentTagline]);
   const [generatorVisible, setGeneratorVisible] = useState(false);
   const [generatorPayload, setGeneratorPayload] = useState(null);
+  const starterPrompts = useMemo(() => {
+    const list = t('editImage.starterPrompts.items', { returnObjects: true });
+    return Array.isArray(list) ? list : DEFAULT_STARTER_PROMPTS;
+  }, [t]);
+
+  const getStyleLabel = useCallback(
+    (style) => {
+      if (!style) return '';
+      return t(`studioCommon.styles.${style.id}.name`, {
+        defaultValue: style.name || style.id,
+      });
+    },
+    [t],
+  );
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [aspect, setAspect] = useState(ASPECTS[0].key);
   const [prompt, setPrompt] = useState('');
@@ -183,10 +201,15 @@ export default function EditImage({ navigation }) {
   const footerStyle = useMemo(() => [styles.footer, { paddingBottom: footerInset }], [footerInset]);
   const bottomScrollPadding = useMemo(() => 56 + 10 + footerInset + 12, [footerInset]);
 
-  const selectedStyleData = useMemo(
-    () => (selectedStyle ? STYLES.find(s => s.id === selectedStyle) : null),
-    [selectedStyle],
-  );
+  const selectedStyleData = useMemo(() => {
+    if (!selectedStyle) return null;
+    const style = STYLES.find(s => s.id === selectedStyle);
+    if (!style) return null;
+    return {
+      ...style,
+      name: getStyleLabel(style),
+    };
+  }, [selectedStyle, getStyleLabel]);
   const selectedCost = getImageModelPrice(selectedModel);
   const selectedSize = useMemo(() => (ASPECTS.find(a => a.key === aspect)?.size || '1024x1024'), [aspect]);
 
@@ -245,7 +268,7 @@ export default function EditImage({ navigation }) {
     const referenceImage = await ensureReferenceImage();
     if (!referenceImage) {
       setBusy(false);
-      Alert.alert('Image unavailable', 'Could not access the selected photo. Please reselect it and try again.');
+      Alert.alert(t('editImage.imageUnavailable.title'), t('editImage.imageUnavailable.message'));
       return;
     }
     const references = Array.from(
@@ -265,7 +288,7 @@ export default function EditImage({ navigation }) {
     };
     if (!references.length) {
       setBusy(false);
-      Alert.alert('Image unavailable', 'Could not access the selected photo. Please reselect it and try again.');
+      Alert.alert(t('editImage.imageUnavailable.title'), t('editImage.imageUnavailable.message'));
       return;
     }
     if (selectedModel === 'runware-qwen-image') {
@@ -311,6 +334,7 @@ export default function EditImage({ navigation }) {
   const renderStyle = useCallback(
     ({ item }) => {
       const selected = item.id === selectedStyle;
+      const label = getStyleLabel(item);
       return (
         <Pressable
           onPress={() =>
@@ -329,12 +353,12 @@ export default function EditImage({ navigation }) {
             style={[styles.styleName, selected && styles.styleNameSelected]}
             numberOfLines={1}
           >
-            {item.name}
+            {label}
           </Text>
         </Pressable>
       );
     },
-    [selectedStyle],
+    [selectedStyle, getStyleLabel],
   );
 
   const keyStyle = useCallback((it) => it.id, []);
@@ -359,7 +383,7 @@ export default function EditImage({ navigation }) {
             <SvgIcon name="chevron-left" size={22} color="#FFFFFF" />
           </Pressable>
           <View pointerEvents="none" style={styles.headerCenterAbs}>
-            <Text style={styles.headerTitle}>Edit</Text>
+            <Text style={styles.headerTitle}>{t('editImage.headerTitle')}</Text>
           </View>
           <Pressable onPress={() => navigation.navigate('CoinStore')} style={styles.balancePill} hitSlop={8}>
             <Text style={styles.balanceText}>{coinsLoading ? '…' : `◈ ${coins ?? '—'}`}</Text>
@@ -381,7 +405,7 @@ export default function EditImage({ navigation }) {
               <View>
                 <Image source={{ uri: imageUri }} style={styles.uploadPreview} resizeMode="cover" />
                 <View style={styles.uploadActions}>
-                  <Pressable style={styles.uploadBtn} onPress={pickImage}><Text style={styles.uploadBtnText}>Change</Text></Pressable>
+                  <Pressable style={styles.uploadBtn} onPress={pickImage}><Text style={styles.uploadBtnText}>{t('editImage.upload.change')}</Text></Pressable>
                   <Pressable
                     style={styles.uploadBtn}
                     onPress={() => {
@@ -389,14 +413,14 @@ export default function EditImage({ navigation }) {
                       setImageReference('');
                     }}
                   >
-                    <Text style={styles.uploadBtnText}>Remove</Text>
+                    <Text style={styles.uploadBtnText}>{t('editImage.upload.remove')}</Text>
                   </Pressable>
                 </View>
               </View>
             ) : (
               <Pressable style={styles.uploadEmpty} onPress={pickImage}>
                 <SvgIcon name="photo" size={24} color={'rgba(255,255,255,0.8)'} />
-                <Text style={styles.uploadEmptyText}>Choose Photo</Text>
+                <Text style={styles.uploadEmptyText}>{t('editImage.upload.choose')}</Text>
               </Pressable>
             )}
           </View>
@@ -424,8 +448,8 @@ export default function EditImage({ navigation }) {
           </View>
 
           {/* Choose a Style */}
-          <View style={styles.rowBetween}> 
-            <Text style={styles.sectionLabel}>Choose a Style</Text>
+          <View style={styles.rowBetween}>
+            <Text style={styles.sectionLabel}>{t('editImage.chooseStyle')}</Text>
           </View>
           <FlatList
             data={STYLES}
@@ -440,9 +464,9 @@ export default function EditImage({ navigation }) {
           />
 
           {/* Starter prompts */}
-          <Text style={[styles.sectionLabel, styles.mt6]}>Starter Prompts</Text>
+          <Text style={[styles.sectionLabel, styles.mt6]}>{t('editImage.starterPrompts.title')}</Text>
           <FlatList
-            data={STARTER_PROMPTS}
+            data={starterPrompts}
             keyExtractor={keyChip}
             renderItem={renderChip}
             horizontal
@@ -453,7 +477,7 @@ export default function EditImage({ navigation }) {
             removeClippedSubviews
           />
 
-          <Text style={[styles.sectionLabel, styles.mt6]}>Aspect Ratio</Text>
+          <Text style={[styles.sectionLabel, styles.mt6]}>{t('editImage.aspectRatio')}</Text>
           <View style={styles.aspectList}>
             {ASPECTS.map(a => {
               const active = aspect === a.key;
@@ -478,7 +502,7 @@ export default function EditImage({ navigation }) {
                     style={[styles.aspectKey, active && styles.aspectKeyActive]}
                     numberOfLines={1}
                   >
-                    {a.label}
+                    {t(a.labelKey)}
                   </Text>
                 </Pressable>
               );
@@ -488,7 +512,7 @@ export default function EditImage({ navigation }) {
           <View style={styles.promptWrap}>
             <TextInput
               style={styles.prompt}
-              placeholder="Describe edits (optional)"
+              placeholder={t('editImage.promptPlaceholder')}
               placeholderTextColor={'rgba(255,255,255,0.65)'}
               multiline
               value={prompt}
@@ -496,7 +520,7 @@ export default function EditImage({ navigation }) {
               textAlignVertical="top"
             />
             {prompt?.length > 0 && (
-              <Pressable onPress={() => setPrompt('')} style={styles.promptClearBtn} hitSlop={8} accessibilityLabel="Clear text">
+              <Pressable onPress={() => setPrompt('')} style={styles.promptClearBtn} hitSlop={8} accessibilityLabel={t('editImage.clearText')}>
                 <SvgIcon name="clear" size={18} color={'rgba(255,255,255,0.8)'} />
               </Pressable>
             )}
@@ -518,7 +542,7 @@ export default function EditImage({ navigation }) {
                 <SvgIcon name="stars" size={18} color="#FFFFFF" />
               )}
             </View>
-            <Text style={styles.generateBtnText}>{busy ? 'Applying…' : 'Generate'}</Text>
+                <Text style={styles.generateBtnText}>{busy ? t('editImage.generating') : t('editImage.generate')}</Text>
             <View style={styles.generateCoinsWrap}>
               <SvgIcon
                 name="diamond"

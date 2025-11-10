@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "모델 선택",
-      "searchPlaceholder": "모델 검색...",
-      "noModelsFound": "모델을 찾을 수 없습니다",
-      "noModelsAvailable": "사용 가능한 모델이 없습니다",
-      "currentModel": "현재 모델: {{name}}. 변경하려면 탭하세요.",
-      "openHint": "모델 선택 메뉴 열기",
-      "closeLabel": "모델 선택기 닫기",
-      "searchLabel": "모델 검색",
-      "searchHint": "모델을 필터링하려면 입력하세요",
-      "modelLabel": "{{name}} 모델",
-      "selectHint": "{{name}} 선택",
-      "currentlySelected": "현재 선택된 모델"
+  "modelSelector": {
+    "title": "모델 선택",
+    "searchPlaceholder": "모델 검색...",
+    "noModelsFound": "모델을 찾을 수 없습니다",
+    "noModelsAvailable": "사용 가능한 모델이 없습니다",
+    "currentModel": "현재 모델: {{name}}. 탭하여 변경하세요.",
+    "openHint": "모델 선택 메뉴를 엽니다",
+    "closeLabel": "모델 선택 닫기",
+    "searchLabel": "모델 검색",
+    "searchHint": "사용 가능한 모델을 필터링하려면 입력하세요",
+    "modelLabel": "{{name}} 모델",
+    "selectHint": "{{name}} 모델 선택",
+    "currentlySelected": "현재 선택된 모델"
+  },
+  "models": {
+    "gpt-4o": "가장 강력한 AI 모델",
+    "gpt-4o-mini": "일상 작업에 빠름",
+    "gpt-5": "가장 강력한 범용 AI",
+    "gpt-5-chat-latest": "채팅과 대화에 최적화",
+    "gpt-5-mini": "빠르고 신뢰할 수 있는 GPT-5",
+    "gpt-5-nano": "간단한 작업용 경량 모델",
+    "o4-mini": "효율적인 추론 모델",
+    "gpt-4.1-mini": "작지만 강력한 GPT-4.1",
+    "claude-3-haiku": "빠르고 집중된 Anthropic AI",
+    "claude-3.7-sonnet": "Anthropic의 정교한 추론",
+    "gemini-2.5-Flash": "Google의 최신 고급 모델",
+    "gemini-2.5-flash": "Google의 최신 고급 모델",
+    "gemini-2.0-flash": "빠르고 정확한 Google AI"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "기타"
+  },
+  "navigation": {
+    "chat": "새 채팅",
+    "history": "기록",
+    "assistants": "어시스턴트",
+    "imagesStudio": "Image Studio",
+    "settings": "설정",
+    "recentChats": "최근 채팅"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "이미지를 생성하고 다듬고 발행하는 한 곳.",
+    "cta": "열기"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "이미지 선택",
+    "exitSelectionMode": "선택 모드 종료",
+    "selectAll": "모두 선택",
+    "noImagesYet": "아직 이미지가 없습니다",
+    "describeImageHint": "아래에 이미지를 설명하고 ‘생성’을 탭하세요.",
+    "generatedImagesGallery": "생성된 이미지 갤러리",
+    "describeImagePlaceholder": "원하는 이미지를 설명하세요…",
+    "deleteConfirmTitle": "이미지 삭제",
+    "deleteConfirmMessage": "선택한 이미지를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "cancel": "취소",
+    "delete": "삭제",
+    "generate": "생성",
+    "generating": "생성 중…",
+    "latest": "최신",
+    "insertToChat": "채팅에 삽입",
+    "pleaseWait": "잠시만 기다려 주세요…",
+    "processing": "처리 중...",
+    "tapToUploadImage": "탭하여 이미지 업로드",
+    "camera": "카메라",
+    "library": "라이브러리",
+    "enterPrompt": "텍스트 → 이미지 생성을 위한 프롬프트를 입력하세요",
+    "openInBrowser": "브라우저에서 열기",
+    "makeVariations": "변형 만들기",
+    "deleteAllFromGeneration": "이번 생성에서 만든 것 모두 삭제",
+    "imageOptionsTitle": "이미지 옵션",
+    "imageOptionsMessage": "이 이미지로 무엇을 하시겠어요?",
+    "insertMarkdownHeader": "다음에 대한 이미지입니다:",
+    "variationSuffix": "— 이전 이미지의 변형",
+    "selectedCount": "개 선택됨",
+    "selectedCount_one": "개 선택됨",
+    "selectedCount_other": "개 선택됨",
+    "imageDescriptionInput": "이미지 설명 입력",
+    "imageDescriptionHint": "생성하고 싶은 이미지를 설명하세요",
+    "openModelSettings": "모델 설정 열기",
+    "modelSettingsHint": "탭하여 모델과 설정을 변경",
+    "openPhotoGallery": "사진 갤러리 열기",
+    "clearInput": "입력 지우기",
+    "generatedImage": "생성된 이미지",
+    "autoSelectedModel": "{{mode}} 모드용으로 {{model}} 이(가) 자동 선택되었습니다",
+    "deleteSelectedConfirmTitle": "이미지 삭제",
+    "deleteSelectedConfirmMessage": "이미지를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
+  },
+  "imageStudio": {
+    "generateImage": "이미지 생성",
+    "generatingImage": "이미지 생성 중",
+    "generateImageHint": "설명에 따라 이미지를 생성하려면 탭하세요",
+    "imageDescriptionInput": "이미지 설명 입력",
+    "imageDescriptionHint": "생성하려는 이미지를 설명하세요",
+    "openModelSettings": "모델 설정 열기",
+    "modelSettingsHint": "탭하여 모델과 설정을 변경",
+    "openPhotoGallery": "사진 갤러리 열기",
+    "clearInput": "입력 지우기",
+    "generatedImage": "생성된 이미지"
+  },
+  "assistants": {
+    "title": "어시스턴트",
+    "subtitle": "코딩, 글쓰기, 분석, 기획 등을 바로 도와줄 AI 전문가 모음.",
+    "searchPlaceholder": "어시스턴트 검색…",
+    "useAssistant": "어시스턴트 사용",
+    "selectAssistant": "어시스턴트 선택",
+    "description": "설명",
+    "systemPrompt": "시스템 프롬프트",
+    "chooseModel": "모델 선택",
+    "categoryAll": "전체",
+    "categories": {
+      "everyday": "일상",
+      "life": "라이프",
+      "health": "건강",
+      "schoolWork": "학교 & 업무",
+      "coding": "코딩",
+      "creative": "크리에이티브",
+      "general": "일반"
+    },
+    "presets": {
+      "default": {
+        "name": "기본 어시스턴트",
+        "description": "일상적인 일들을 균형 있게 도와줍니다."
+      },
+      "quick": {
+        "name": "빠른 답변",
+        "description": "짧고 직설적인 답변."
+      },
+      "planner": {
+        "name": "일일 플래너",
+        "description": "하루 일정과 루틴을 짭니다."
+      },
+      "recipes": {
+        "name": "식사 & 레시피",
+        "description": "있는 재료로 무엇을 만들지."
+      },
+      "fitness": {
+        "name": "습관 & 피트니스 코치",
+        "description": "작은 습관과 홈트레이닝."
+      },
+      "money": {
+        "name": "머니 버디",
+        "description": "간단한 예산과 소비 팁."
+      },
+      "study": {
+        "name": "공부 도우미",
+        "description": "쉽게 설명하고, 퀴즈도 냅니다."
+      },
+      "email": {
+        "name": "이메일 & 이력서",
+        "description": "깔끔한 이메일과 이력서 문장을 작성."
+      },
+      "translator": {
+        "name": "번역가",
+        "description": "번역 + 표현도 가르침."
+      },
+      "travel": {
+        "name": "여행 도우미",
+        "description": "간단한 일정과 짐 리스트."
+      },
+      "tech": {
+        "name": "기초 기술 지원",
+        "description": "폰, 앱, Wi-Fi 기본."
+      },
+      "summarizer": {
+        "name": "TL;DR 요약",
+        "description": "짧은 불릿 + 한 줄 요약."
+      },
+      "gift": {
+        "name": "선물 찾기",
+        "description": "예산과 취향에 따른 아이디어."
+      },
+      "party": {
+        "name": "이벤트 플래너 (라이트)",
+        "description": "작은 파티를 빠르게 계획."
+      },
+      "social": {
+        "name": "SNS 글쓰기",
+        "description": "여러 버전의 초안 작성."
+      },
+      "interview": {
+        "name": "면접 코치",
+        "description": "STAR 형식으로 답변 연습."
+      },
+      "homefix": {
+        "name": "집수리 가이드",
+        "description": "간단한 DIY 문제 해결."
+      },
+      "pet": {
+        "name": "반려동물 케어",
+        "description": "급여, 산책, 기본 훈련."
+      },
+      "mindful": {
+        "name": "마인드풀 1분",
+        "description": "1~3분의 짧은 휴식."
+      },
+      "polite": {
+        "name": "공손하게 다시쓰기",
+        "description": "문장과 답변을 공손하게 바꿈."
+      }
+    }
+  },
+  "history": {
+    "title": "기록",
+    "searchPlaceholder": "채팅 검색…",
+    "newChat": "새 채팅",
+    "new": "+ 새로 만들기",
+    "search": "검색",
+    "clearSearch": "검색 지우기",
+    "noChatsYet": "아직 채팅이 없습니다",
+    "startFirstConversation": "첫 대화를 시작해 보세요.",
+    "startChat": "채팅 시작",
+    "errorLoadingHistory": "기록을 불러오는 중 오류가 발생했습니다",
+    "renameChat": "채팅 이름 변경",
+    "enterNewTitle": "새 제목을 입력하세요",
+    "deleteChat": "채팅을 삭제할까요?",
+    "deleteChatMessage": "\"{{title}}\" 가 삭제됩니다.",
+    "rename": "이름 변경",
+    "unpin": "고정 해제",
+    "pin": "고정",
+    "untitled": "제목 없음"
+  },
+  "settings": {
+    "title": "설정",
+    "model": "모델",
+    "searchPlaceholder": "모델 검색…",
+    "temperatureForCurrentModel": "현재 모델의 온도",
+    "customFor": "{{model}} 전용 설정",
+    "usingDefault": "기본값 {{temperature}} 사용 중",
+    "resetToDefault": "기본값으로 재설정",
+    "defaultTemperature": "기본 온도(대체값)",
+    "usedByModelsWithoutOverride": "개별 설정이 없는 모델에서 사용",
+    "dangerZone": "위험 구역",
+    "clearAllChatsAndSettings": "모든 채팅과 설정 지우기",
+    "about": "정보",
+    "version": "버전 {{version}}{{status}}",
+    "versionPremiumSuffix": " · 프리미엄",
+    "privacyPolicy": "개인정보 처리방침",
+    "hero": {
+      "label": "특가",
+      "title": "우선 접근 & 무제한",
+      "upgrade": "업그레이드",
+      "manage": "플랜 관리"
+    },
+    "sections": {
+      "premium": "프리미엄 플랜",
+      "data": "사용자 데이터",
+      "support": "지원 & 법률"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "프리미엄 받기",
+        "subtitle": "무제한 제작 도구 해제"
+      },
+      "premiumActive": {
+        "title": "프리미엄 사용 중",
+        "subtitle": "ChatCloud를 후원해 주셔서 감사합니다"
+      },
+      "restore": {
+        "title": "구매 복원",
+        "subtitle": "기기를 변경한 경우 사용"
+      },
+      "history": {
+        "title": "채팅 기록 관리",
+        "subtitle": "이전 세션 보기 및 삭제"
+      },
+      "reset": {
+        "title": "채팅 & 환경설정 초기화",
+        "subtitle": "이 기기의 저장 데이터를 모두 삭제"
+      },
+      "rate": {
+        "title": "평가하기",
+        "error": "스토어 페이지를 열 수 없습니다."
+      },
+      "support": {
+        "title": "지원",
+        "subtitle": "온라인으로 연락",
+        "error": "지원 페이지를 열 수 없습니다."
+      },
+      "privacy": {
+        "title": "개인정보 처리방침",
+        "error": "개인정보 처리방침을 열 수 없습니다."
+      },
+      "terms": {
+        "title": "이용 약관",
+        "error": "이용 약관을 열 수 없습니다."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "사용할 수 없음",
+      "linkUnavailableMessage": "지금은 이 링크를 열 수 없습니다.",
+      "restoreSuccessTitle": "복원됨",
+      "restoreSuccessMessage": "구매가 복원되었습니다.",
+      "restoreErrorTitle": "복원 실패",
+      "restoreErrorMessage": "지금은 구매를 복원할 수 없습니다.",
+      "resetConfirmTitle": "앱 데이터를 초기화할까요?",
+      "resetConfirmMessage": "모든 채팅과 로컬 설정이 삭제됩니다.",
+      "resetConfirmCancel": "취소",
+      "resetConfirmCta": "초기화"
+    }
+  },
+  "createImage": {
+    "headerTitle": "생성",
+    "chooseStyle": "스타일 선택",
+    "aspectRatio": "화면 비율",
+    "starterPrompts": {
+      "title": "스타터 프롬프트",
+      "items": [
+        "스튜디오 헤드샷",
+        "모던 거실",
+        "석양이 있는 열대 해변"
+      ]
+    },
+    "promptPlaceholder": "보고 싶은 것을 입력…",
+    "promptHint": "예: '스튜디오 조명 아래의 골든 리트리버'",
+    "clearText": "텍스트 지우기",
+    "generate": "생성",
+    "generating": "생성 중…"
+  },
+  "editImage": {
+    "headerTitle": "편집",
+    "chooseStyle": "스타일 선택",
+    "aspectRatio": "화면 비율",
+    "starterPrompts": {
+      "title": "스타터 프롬프트",
+      "items": [
+        "조명 보정",
+        "배경 제거",
+        "부드러운 인물 리터칭"
+      ]
+    },
+    "promptPlaceholder": "편집 내용을 설명하세요 (선택)",
+    "clearText": "지우기",
+    "generate": "적용",
+    "generating": "적용 중…",
+    "upload": {
+      "choose": "사진 선택",
+      "change": "변경",
+      "remove": "삭제"
+    },
+    "imageUnavailable": {
+      "title": "이미지를 사용할 수 없음",
+      "message": "선택한 사진에 접근할 수 없습니다. 다시 선택한 후 시도하세요."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "애니메이션"
+      },
+      "cartoon": {
+        "name": "카툰"
+      },
+      "photoreal": {
+        "name": "포토리얼"
+      },
+      "sketch": {
+        "name": "스케치"
+      },
+      "cyberpunk": {
+        "name": "사이버펑크"
+      },
+      "steampunk": {
+        "name": "스팀펑크"
+      },
+      "illustration_3d": {
+        "name": "3D 일러스트"
+      },
+      "dark_fantasy": {
+        "name": "다크 판타지"
+      },
+      "vintage_film": {
+        "name": "빈티지 필름"
+      },
+      "pastel": {
+        "name": "파스텔"
+      },
+      "neon_glow": {
+        "name": "네온 글로우"
+      },
+      "epic_landscape": {
+        "name": "에픽 풍경"
+      }
+    },
+    "aspectRatios": {
+      "square": "정사각형",
+      "landscape": "가로",
+      "portrait": "세로"
     },
     "models": {
-      "gpt-4o": "가장 강력한 AI 모델",
-      "gpt-4o-mini": "일상 작업에 빠름",
-      "claude-3-haiku": "빠르고 효율적인 모델",
-      "claude-3.7-sonnet": "고급 추론 모델",
-      "gemini-2.5-pro": "Google의 최고 모델",
-      "gemini-2.0-flash": "우수한 추론의 고속 모델"
+      "fluxKontent": "Flux Kontent",
+      "custom": "사용자 지정"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "기타"
+    "modelTaglines": {
+      "runwareFluxSchnell": "가장 빠른 모델",
+      "runwareFluxKrea": "창의적이고 스타일리시한 결과",
+      "runwareQwenImage": "균형 잡힌 고품질 결과",
+      "google4": "최고급 AI 이미지 모델",
+      "fluxKontent": "편집에 맞게 튜닝된 Flux Kontent",
+      "runwareProvider": "품질과 안정적인 디퓨전에 균형.",
+      "airProvider": "Nano Banana가 생동감 있는 톤을 추가.",
+      "googleProvider": "Google이 디테일을 매끈하게 조정.",
+      "anthropicProvider": "세밀한 분위기를 위한 Claude 파이프라인.",
+      "default": "탭해서 사용 가능한 엔진 보기."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "선택한 스타일",
+    "sheetTitle": "당신의 구상을 만드는 중",
+    "sheetSubtitle": "{{style}} 를 프롬프트에 섞는 중입니다. 잠시만요.",
+    "phases": {
+      "blend": "{{style}} 블렌딩 중",
+      "paint": "장면 그리는 중",
+      "finish": "마감 처리 중"
     },
-    "navigation": {
-      "chat": "채팅",
-      "history": "기록",
-      "assistants": "어시스턴트",
-      "imagesStudio": "스튜디오",
-      "settings": "설정",
-      "recentChats": "최근 채팅"
-    },
-    "imagesStudio": {
-      "title": "스튜디오",
-      "selectImages": "이미지 선택",
-      "exitSelectionMode": "선택 모드 종료",
-      "selectAll": "모두 선택",
-      "noImagesYet": "아직 이미지가 없습니다",
-      "describeImageHint": "아래에 이미지를 설명하고 ‘생성’을 탭하세요.",
-      "generatedImagesGallery": "생성된 이미지 갤러리",
-      "describeImagePlaceholder": "원하는 이미지를 설명하세요…",
-      "deleteConfirmTitle": "이미지 삭제",
-      "deleteConfirmMessage": "선택한 이미지를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "actions": {
       "cancel": "취소",
-      "delete": "삭제",
-      "generate": "생성",
-      "generating": "생성 중…",
-      "latest": "최신",
-      "insertToChat": "채팅에 삽입",
-      "pleaseWait": "잠시만 기다려주세요…",
-      "processing": "처리 중...",
-      "tapToUploadImage": "탭하여 이미지 업로드",
-      "camera": "카메라",
-      "library": "라이브러리",
-      "enterPrompt": "텍스트→이미지 생성을 위한 프롬프트를 입력하세요",
-      "openInBrowser": "브라우저에서 열기",
-      "makeVariations": "변형 만들기",
-      "deleteAllFromGeneration": "이번 생성의 모든 항목 삭제",
-      "imageOptionsTitle": "이미지 옵션",
-      "imageOptionsMessage": "이 이미지로 무엇을 하시겠습니까?",
-      "insertMarkdownHeader": "다음에 대한 이미지:",
-      "variationSuffix": "— 이전 이미지의 변형",
-      "selectedCount": "선택됨",
-      "selectedCount_one": "선택됨",
-      "selectedCount_other": "선택됨",
-      "imageDescriptionInput": "이미지 설명 입력",
-      "imageDescriptionHint": "생성할 이미지의 설명을 입력하세요",
-      "openModelSettings": "모델 설정 열기",
-      "modelSettingsHint": "탭하여 모델과 설정 변경",
-      "openPhotoGallery": "사진 갤러리 열기",
-      "clearInput": "입력 지우기",
-      "generatedImage": "생성된 이미지",
-      "autoSelectedModel": "자동 선택됨: {{mode}} 모드에 {{model}}",
-      "deleteSelectedConfirmTitle": "이미지 삭제",
-      "deleteSelectedConfirmMessage": "이미지를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+      "retry": "다시 시도",
+      "close": "닫기"
     },
-    "imageStudio": {
-      "generateImage": "이미지 생성",
-      "generatingImage": "이미지 생성 중",
-      "generateImageHint": "설명에 따라 이미지를 생성하려면 탭하세요",
-      "imageDescriptionInput": "이미지 설명 입력",
-      "imageDescriptionHint": "생성할 이미지의 설명을 입력하세요",
-      "openModelSettings": "모델 설정 열기",
-      "modelSettingsHint": "탭하여 모델과 설정 변경",
-      "openPhotoGallery": "사진 갤러리 열기",
-      "clearInput": "입력 지우기",
-      "generatedImage": "생성된 이미지"
+    "errors": {
+      "restrictedTitle": "제한된 콘텐츠",
+      "genericTitle": "생성 실패",
+      "genericMessage": "이미지를 생성할 수 없습니다."
     },
-    "assistants": {
-      "title": "어시스턴트",
-      "subtitle": "코딩, 글쓰기, 분석, 계획 등을 위한 엄선된 AI 전문가.",
-      "searchPlaceholder": "어시스턴트 검색…",
-      "useAssistant": "어시스턴트 사용",
-      "description": "설명",
-      "systemPrompt": "시스템 프롬프트",
-      "chooseModel": "모델 선택",
-      "categoryAll": "전체",
-      "categories": {
-        "everyday": "일상",
-        "life": "생활",
-        "health": "건강",
-        "schoolWork": "학교 & 업무",
-        "coding": "코딩",
-        "creative": "크리에이티브",
-        "general": "일반"
-      },
-      "presets": {
-        "default": { "name": "기본 어시스턴트", "description": "일상에 균형 잡힌 도움." },
-        "quick": { "name": "빠른 답변", "description": "짧고 직설적인 답변." },
-        "planner": { "name": "일일 플래너", "description": "하루와 루틴을 계획하세요." },
-        "recipes": { "name": "식사 & 레시피", "description": "있는 재료로 무엇을 요리할지." },
-        "fitness": { "name": "습관 & 피트니스 코치", "description": "작은 습관 & 홈 트레이닝." },
-        "money": { "name": "머니 버디", "description": "간단한 예산과 지출 팁." },
-        "study": { "name": "학습 도우미", "description": "쉽게 설명. 퀴즈로 복습." },
-        "email": { "name": "이메일 & 이력서", "description": "명확한 이메일과 이력서 포인트." },
-        "translator": { "name": "번역가", "description": "번역 + 유용한 표현 학습." },
-        "travel": { "name": "여행 도우미", "description": "간단한 계획과 짐 리스트." },
-        "tech": { "name": "기술 지원(간단)", "description": "전화, 앱, Wi-Fi 기본." },
-        "summarizer": { "name": "TL;DR 요약", "description": "짧은 항목 + 한 줄 요약." },
-        "gift": { "name": "선물 찾기", "description": "예산과 관심사에 맞는 아이디어." },
-        "party": { "name": "이벤트 플래너(라이트)", "description": "작은 파티를 빠르게 계획." },
-        "social": { "name": "소셜 포스트 메이커", "description": "옵션과 함께 글 초안 작성." },
-        "interview": { "name": "인터뷰 코치", "description": "STAR 기법으로 연습." },
-        "homefix": { "name": "홈 수리 가이드", "description": "간단한 트러블슈팅." },
-        "pet": { "name": "반려동물 케어 도우미", "description": "급식, 산책, 기본 훈련." },
-        "mindful": { "name": "마인드풀 1분", "description": "1–3분의 짧은 휴식." },
-        "polite": { "name": "공손한 리라이터", "description": "텍스트와 답변을 공손하게 재작성." }
-      }
+    "alerts": {
+      "saveFailedTitle": "저장할 수 없습니다",
+      "shareFailedTitle": "공유할 수 없습니다",
+      "tryAgain": "다시 시도해 주세요."
     },
-    "history": {
-      "title": "기록",
-      "searchPlaceholder": "채팅 검색…",
-      "newChat": "새 채팅",
-      "new": "+ 새로 만들기",
-      "search": "검색",
-      "clearSearch": "검색 지우기",
-      "noChatsYet": "아직 채팅이 없습니다",
-      "startFirstConversation": "첫 대화를 시작하세요.",
-      "startChat": "채팅 시작",
-      "errorLoadingHistory": "기록을 불러오는 중 오류가 발생했습니다",
-      "renameChat": "채팅 이름 변경",
-      "enterNewTitle": "새 제목 입력",
-      "deleteChat": "채팅을 삭제할까요?",
-      "deleteChatMessage": "“{{title}}”이(가) 삭제됩니다.",
-      "rename": "이름 변경",
-      "unpin": "고정 해제",
-      "pin": "고정",
-      "untitled": "제목 없음"
+    "result": {
+      "complete": "완료되었습니다"
     },
-    "settings": {
-      "title": "설정",
-      "model": "모델",
-      "searchPlaceholder": "모델 검색…",
-      "temperatureForCurrentModel": "현재 모델의 온도",
-      "customFor": "{{model}} 전용 사용자 지정",
-      "usingDefault": "기본값 {{temperature}} 사용",
-      "resetToDefault": "기본값으로 재설정",
-      "defaultTemperature": "기본 온도(대체)",
-      "usedByModelsWithoutOverride": "재정의 없는 모델에서 사용됨",
-      "dangerZone": "위험 영역",
-      "clearAllChatsAndSettings": "모든 채팅 및 설정 지우기",
-      "about": "정보",
-      "version": "버전 {{version}}",
-      "privacyPolicy": "개인정보 처리방침",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Agarka에게 메시지...",
-      "createImages": "이미지 만들기",
-      "generateAiArtwork": "AI 아트워크 생성",
-      "camera": "카메라",
-      "takeOrSelectPhotos": "사진 촬영 또는 선택",
-      "search": "검색",
-      "findInformation": "정보 찾기",
-      "removeImage": "이미지 제거",
-      "messageInput": "메시지 입력",
-      "clearInput": "입력 지우기",
-      "hideQuickActions": "빠른 작업 숨기기",
-      "showQuickActions": "빠른 작업 표시",
-      "startVoiceInput": "음성 입력 시작",
-      "sendMessage": "보내기",
-      "offline": "오프라인",
-      "stop": "중지",
-      "streaming": "스트리밍…",
-      "closeRecorder": "레코더 닫기",
-      "insertTranscript": "전사 삽입",
-      "scrollToLatest": "최신으로 이동",
-      "copyMessage": "메시지 복사",
-      "copyMessageHint": "이 메시지를 클립보드에 복사",
-      "shareMessage": "메시지 공유",
-      "shareMessageHint": "이 메시지 공유",
-      "regenerateResponse": "응답 다시 생성",
-      "regenerateResponseHint": "새 응답 생성",
-      "copyCode": "코드 복사",
-      "image": "이미지",
-      "loading": "로딩…",
-      "loadingChat": "채팅 불러오는 중...",
-      "offlineBanner": "오프라인 상태입니다. 메시지를 보낼 수 없습니다.",
-      "imagePickerErrorTitle": "이미지 선택기 오류",
-      "messageTooLong": "메시지가 너무 깁니다 ({{length}}). 제한은 {{limit}}입니다.",
-      "emptyTitle": "무엇을 도와드릴까요?",
-      "emptySubtitle": "AI와 대화를 시작하세요",
-      "privateTitle": "비공개 채팅",
-      "privateSubtitle": "이 채팅은 기록에 나타나지 않습니다",
-      "listening": "청취 중…",
-      "startRecording": "녹음 시작…",
-      "suggestions": {
-        "writeStory": "창의적인 이야기 쓰기",
-        "writeStorySubtitle": "마법 같은 모험에 대해",
-        "planTravel": "여행 일정 계획",
-        "planTravelSubtitle": "멋진 휴가를 위해",
-        "explainConcept": "이 개념 설명",
-        "explainConceptSubtitle": "쉬운 표현으로",
-        "planDay": "하루 계획 세우기",
-        "planDaySubtitle": "생산성 팁과 함께"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "처리 중...",
-      "tapToUploadImage": "탭하여 이미지 업로드"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "처리 중...",
-      "camera": "카메라",
-      "library": "라이브러리"
-    },
-    "common": {
-      "new": "신규",
-      "best": "최고",
-      "cancel": "취소",
-      "save": "저장",
-      "delete": "삭제",
+    "accessibility": {
       "close": "닫기"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "삭제",
+      "edit": "편집",
+      "save": "저장",
+      "share": "공유"
+    },
+    "accessibility": {
+      "close": "닫기",
+      "delete": "이미지 삭제",
+      "edit": "이미지 편집",
+      "save": "이미지 저장",
+      "share": "이미지 공유"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "메뉴 열기",
+      "selectImages": "이미지 선택",
+      "exitSelection": "선택 종료",
+      "deleteSelected": "선택한 이미지 삭제",
+      "selectToDelete": "삭제할 이미지 선택"
+    },
+    "createCard": {
+      "title": "텍스트로 생성",
+      "subtitle": "설명을 입력하세요",
+      "cta": "설명하고 생성"
+    },
+    "editCard": {
+      "title": "사진 편집",
+      "subtitle": "업로드하고 편집",
+      "cta": "사진 편집"
+    },
+    "gallery": {
+      "title": "갤러리",
+      "empty": "아직 이미지가 없습니다",
+      "selection": {
+        "enter": "이미지 선택",
+        "exit": "선택 종료",
+        "deleteSelected": "선택 이미지 삭제",
+        "selectForDelete": "삭제할 이미지 선택"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "소개합니다",
+      "titleHighlight": "Image Studio",
+      "subtitle": "AI로 이미지를 만들고 편집 — {{app}} 안에서 바로.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "당신의 AI를 만나보세요",
+      "titleHighlight": "어시스턴트",
+      "subtitle": "일상적인 요구를 해결해 줄 특화 AI들",
+      "cards": [
+        {
+          "title": "피트니스 코치",
+          "text": "목표에 맞는 운동과 영양 조언을 받아보세요"
+        },
+        {
+          "title": "닥터",
+          "text": "건강 인사이트, 증상 분석, 필요한 조언"
+        },
+        {
+          "title": "펫 케어",
+          "text": "반려동물 건강, 훈련, 돌봄 전문가 조언"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "엔터프라이즈급 AI 솔루션",
+      "description": "기업과 팀을 위해 설계된 최첨단 인공지능으로 비즈니스를 강화하세요.",
+      "stats": "50만+ 사용자가 신뢰",
+      "rating": "4.9 / 5",
+      "button": "시작하기"
+    }
+  },
+  "coinStore": {
+    "title": "토큰 받기",
+    "loading": "코인 스토어 불러오는 중…",
+    "balanceLabel": "현재 잔액",
+    "balanceValue": "{{amount}} 토큰",
+    "history": {
+      "link": "거래 내역",
+      "alertTitle": "내역",
+      "alertBody": "거래 내역은 곧 제공됩니다."
+    },
+    "noPacks": "토큰 팩이 없습니다. RevenueCat offering ID를 확인하세요.",
+    "badges": {
+      "basic": "기본 팩",
+      "popular": "가장 인기",
+      "value": "가성비 최고"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} 토큰",
+      "defaultName": "팩 {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "프리미엄으로",
+      "subtitle": "무제한 액세스 & 기능",
+      "cta": "업그레이드"
+    },
+    "termsText": "구매를 진행하면 다음에 동의하는 것입니다:",
+    "termsLink": "이용 약관",
+    "alerts": {
+      "initErrorTitle": "초기화 오류",
+      "genericMessage": "문제가 발생했습니다.",
+      "successTitle": "성공",
+      "successMessage": "곧 토큰이 표시됩니다.",
+      "purchaseFailedTitle": "구매 실패",
+      "unknownError": "알 수 없는 오류"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "복원",
+    "restoreRestoring": "복원 중…",
+    "features": {
+      "create": "이미지와 동영상 만들기",
+      "search": "AI로 웹 검색",
+      "talk": "AI와 자연스럽게 대화"
+    },
+    "freeTrial": {
+      "title": "무료 체험",
+      "subtitle": "3일 무료 체험"
+    },
+    "badge": {
+      "bestOffer": "최고 혜택"
+    },
+    "plans": {
+      "yearly": {
+        "title": "연간",
+        "only": "단 {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "월간",
+        "subtitle": "언제든 해지 가능",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "주간",
+        "subtitle": "언제든 해지 가능",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "주당",
+      "perMonth": "월당"
+    },
+    "cta": "계속",
+    "legal": {
+      "terms": "약관",
+      "privacy": "개인정보"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "메시지...",
+    "createImages": "이미지 만들기",
+    "generateAiArtwork": "AI 아트워크 생성",
+    "camera": "카메라",
+    "takeOrSelectPhotos": "사진 찍기 또는 선택",
+    "search": "검색",
+    "findInformation": "정보 찾기",
+    "findRecentInfo": "최신 정보 찾기",
+    "removeImage": "이미지 제거",
+    "messageInput": "메시지 입력",
+    "clearInput": "입력 지우기",
+    "quickActionsLabel": "빠른 작업",
+    "hideQuickActions": "빠른 작업 숨기기",
+    "showQuickActions": "빠른 작업 표시",
+    "startVoiceInput": "음성 입력 시작",
+    "sendMessage": "메시지 보내기",
+    "offline": "오프라인",
+    "stop": "중지",
+    "streaming": "스트리밍 중…",
+    "closeRecorder": "레코더 닫기",
+    "insertTranscript": "보내기",
+    "scrollToLatest": "마지막으로 스크롤",
+    "copyMessage": "메시지 복사",
+    "copyMessageHint": "이 메시지를 클립보드에 복사",
+    "shareMessage": "메시지 공유",
+    "shareMessageHint": "이 메시지를 공유",
+    "regenerateResponse": "응답 다시 생성",
+    "regenerateResponseHint": "새 응답 생성",
+    "copyCode": "코드 복사",
+    "image": "이미지",
+    "loading": "불러오는 중…",
+    "loadingChat": "채팅 불러오는 중...",
+    "offlineBanner": "오프라인 상태입니다. 메시지를 보낼 수 없습니다.",
+    "imagePickerErrorTitle": "이미지 선택 오류",
+    "imagePickerErrorMessage": "사진에 접근할 수 없습니다. 다시 시도하세요.",
+    "messageTooLong": "메시지가 너무 깁니다 ({{length}}). 제한은 {{limit}}입니다.",
+    "sendFailed": "전송에 실패했습니다.",
+    "voiceStartFailed": "음성을 시작할 수 없습니다.",
+    "emptyTitle": "무엇을 도와드릴까요?",
+    "emptySubtitle": "AI와 대화를 시작하세요",
+    "privateTitle": "비공개 채팅",
+    "privateSubtitle": "이 채팅은 기록에 표시되지 않습니다",
+    "permissions": {
+      "photosTitle": "사진 권한 필요",
+      "photosMessage": "이미지를 선택하려면 사진 접근 권한이 필요합니다.",
+      "voiceTitle": "음성 권한 필요",
+      "voiceMessage": "음성 기능을 사용하려면 마이크와 음성 접근 권한이 필요합니다."
+    },
+    "activity": {
+      "analyzingImages": "이미지 분석 중…",
+      "searching": "검색 중…",
+      "thinking": "생각 중…"
+    },
+    "webSearch": {
+      "title": "웹 검색",
+      "subtitle": "최신 정보 찾기",
+      "label": "웹 검색",
+      "enable": "웹 검색 켜기",
+      "disable": "웹 검색 끄기",
+      "toggleLabel": "웹에서 검색"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "시각 자료를 빠르게 디자인.",
+      "subtitle": "생성, 다듬기, 발행을 한 곳에서.",
+      "cta": "열기"
+    },
+    "quickActions": {
+      "createImages": "이미지 만들기",
+      "openCamera": "카메라 열기",
+      "editImage": "이미지 편집",
+      "startVoice": "음성 시작",
+      "assistants": "어시스턴트"
+    },
+    "listening": "듣는 중…",
+    "startRecording": "녹음 시작…",
+    "assistantHeader": {
+      "unavailableTitle": "어시스턴트를 불러올 수 없음",
+      "unavailableDescription": "이 어시스턴트를 불러올 수 없습니다. 다시 시도해 주세요.",
+      "ready": "도울 준비가 되었습니다"
+    },
+    "actions": {
+      "copy": "복사",
+      "share": "공유",
+      "regenerate": "다시 생성",
+      "retryFromHere": "여기서 다시 시도",
+      "cancel": "취소"
+    },
+    "messageActionTitle": "메시지",
+    "status": {
+      "sending": "보내는 중…",
+      "failed": "실패",
+      "sent": "보냄"
+    },
+    "suggestions": {
+      "writeStory": "창의적인 이야기 쓰기",
+      "writeStorySubtitle": "마법 같은 모험에 대해",
+      "planTravel": "여행 일정 만들기",
+      "planTravelSubtitle": "멋진 휴가를 위해",
+      "explainConcept": "이 개념 설명하기",
+      "explainConceptSubtitle": "쉬운 말로",
+      "planDay": "하루 계획하기",
+      "planDaySubtitle": "생산성을 높이는 팁과 함께"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "처리 중...",
+    "tapToUploadImage": "탭하여 이미지 업로드"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "처리 중...",
+    "camera": "카메라",
+    "library": "라이브러리"
+  },
+  "common": {
+    "new": "새로",
+    "best": "베스트",
+    "cancel": "취소",
+    "save": "저장",
+    "delete": "삭제",
+    "close": "닫기",
+    "allow": "허용"
   }
-  
+}

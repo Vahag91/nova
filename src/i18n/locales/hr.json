@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Odaberite model",
-      "searchPlaceholder": "Pretraži modele...",
-      "noModelsFound": "Nema pronađenih modela",
-      "noModelsAvailable": "Nema dostupnih modela",
-      "currentModel": "Trenutni model: {{name}}. Dodirnite za promjenu.",
-      "openHint": "Otvara izbornik odabira modela",
-      "closeLabel": "Zatvori birač modela",
-      "searchLabel": "Pretraži modele",
-      "searchHint": "Upišite za filtriranje modela",
-      "modelLabel": "Model {{name}}",
-      "selectHint": "Odaberi {{name}}",
-      "currentlySelected": "Trenutno odabrani model"
+  "modelSelector": {
+    "title": "Odaberi model",
+    "searchPlaceholder": "Pretraži modele...",
+    "noModelsFound": "Nema pronađenih modela",
+    "noModelsAvailable": "Nema dostupnih modela",
+    "currentModel": "Trenutni model: {{name}}. Dodirni za promjenu.",
+    "openHint": "Otvara izbornik za odabir modela",
+    "closeLabel": "Zatvori odabir modela",
+    "searchLabel": "Pretraži modele",
+    "searchHint": "Upiši za filtriranje dostupnih modela",
+    "modelLabel": "Model {{name}}",
+    "selectHint": "Odaberi model {{name}}",
+    "currentlySelected": "Trenutno odabrano"
+  },
+  "models": {
+    "gpt-4o": "Najmoćniji AI model",
+    "gpt-4o-mini": "Brz za svakodnevne zadatke",
+    "gpt-5": "Najmoćniji višenamjenski AI",
+    "gpt-5-chat-latest": "Optimiziran za chat i dijalog",
+    "gpt-5-mini": "Brz i pouzdan GPT-5",
+    "gpt-5-nano": "Lagani model za jednostavne zadatke",
+    "o4-mini": "Učinkovit model za zaključivanje",
+    "gpt-4.1-mini": "Kompaktan i sposoban GPT-4.1",
+    "claude-3-haiku": "Brz i fokusiran Anthropic AI",
+    "claude-3.7-sonnet": "Profinjeno zaključivanje Anthropic",
+    "gemini-2.5-Flash": "Googleov najnapredniji model",
+    "gemini-2.5-flash": "Googleov najnapredniji model",
+    "gemini-2.0-flash": "Brz i precizan Google AI"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Ostalo"
+  },
+  "navigation": {
+    "chat": "Novi chat",
+    "history": "Povijest",
+    "assistants": "Asistenti",
+    "imagesStudio": "Image Studio",
+    "settings": "Postavke",
+    "recentChats": "Nedavni chatovi"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Generiraj, dotjeraj i objavi vizualne materijale na jednom mjestu.",
+    "cta": "Otvori"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Odaberi slike",
+    "exitSelectionMode": "Izađi iz odabira",
+    "selectAll": "Odaberi sve",
+    "noImagesYet": "Još nema slika",
+    "describeImageHint": "Opiši sliku ispod i dodirni Generiraj.",
+    "generatedImagesGallery": "Galerija generiranih slika",
+    "describeImagePlaceholder": "Opiši sliku koju želiš…",
+    "deleteConfirmTitle": "Izbriši slike",
+    "deleteConfirmMessage": "Jesi li siguran da želiš izbrisati odabrane slike? Ova radnja se ne može poništiti.",
+    "cancel": "Odustani",
+    "delete": "Izbriši",
+    "generate": "Generiraj",
+    "generating": "Generiram…",
+    "latest": "Najnovije",
+    "insertToChat": "Umetni u chat",
+    "pleaseWait": "Pričekaj…",
+    "processing": "Obrađujem...",
+    "tapToUploadImage": "Dodirni za prijenos slike",
+    "camera": "Kamera",
+    "library": "Galerija",
+    "enterPrompt": "Unesi prompt za generiranje slike iz teksta",
+    "openInBrowser": "Otvori u pregledniku",
+    "makeVariations": "Napravi varijacije",
+    "deleteAllFromGeneration": "Izbriši sve iz ove generacije",
+    "imageOptionsTitle": "Opcije slike",
+    "imageOptionsMessage": "Što želiš napraviti s ovom slikom?",
+    "insertMarkdownHeader": "Ovo je slika za:",
+    "variationSuffix": "— varijacija prethodne slike",
+    "selectedCount": "odabrano",
+    "selectedCount_one": "odabrano",
+    "selectedCount_other": "odabrano",
+    "imageDescriptionInput": "Unos opisa slike",
+    "imageDescriptionHint": "Unesi opis slike koju želiš generirati",
+    "openModelSettings": "Otvori postavke modela",
+    "modelSettingsHint": "Dodirni za promjenu modela i postavki",
+    "openPhotoGallery": "Otvori galeriju",
+    "clearInput": "Očisti",
+    "generatedImage": "Generirana slika",
+    "autoSelectedModel": "Automatski odabran {{model}} za način {{mode}}",
+    "deleteSelectedConfirmTitle": "Izbriši slike",
+    "deleteSelectedConfirmMessage": "Jesi li siguran da želiš izbrisati slike? Ovo se ne može poništiti."
+  },
+  "imageStudio": {
+    "generateImage": "Generiraj sliku",
+    "generatingImage": "Generiram sliku",
+    "generateImageHint": "Dodirni za generiranje slike prema opisu",
+    "imageDescriptionInput": "Unos opisa slike",
+    "imageDescriptionHint": "Unesi opis slike koju želiš generirati",
+    "openModelSettings": "Otvori postavke modela",
+    "modelSettingsHint": "Dodirni za promjenu modela i postavki",
+    "openPhotoGallery": "Otvori galeriju",
+    "clearInput": "Očisti",
+    "generatedImage": "Generirana slika"
+  },
+  "assistants": {
+    "title": "Asistenti",
+    "subtitle": "Odabrani AI stručnjaci spremni za kodiranje, pisanje, analizu, planiranje i još mnogo toga.",
+    "searchPlaceholder": "Pretraži asistente…",
+    "useAssistant": "Koristi asistenta",
+    "selectAssistant": "Odaberi asistenta",
+    "description": "Opis",
+    "systemPrompt": "Sistemski prompt",
+    "chooseModel": "Odaberi model",
+    "categoryAll": "Svi",
+    "categories": {
+      "everyday": "Svakodnevno",
+      "life": "Život",
+      "health": "Zdravlje",
+      "schoolWork": "Škola i posao",
+      "coding": "Kodiranje",
+      "creative": "Kreativno",
+      "general": "Općenito"
+    },
+    "presets": {
+      "default": {
+        "name": "Zadani asistent",
+        "description": "Uravnotežena pomoć za svakodnevne stvari."
+      },
+      "quick": {
+        "name": "Brzi odgovori",
+        "description": "Kratki i izravni odgovori."
+      },
+      "planner": {
+        "name": "Dnevni planer",
+        "description": "Isplaniraj dan i rutine."
+      },
+      "recipes": {
+        "name": "Obroci i recepti",
+        "description": "Što skuhati od onog što imaš."
+      },
+      "fitness": {
+        "name": "Navike i fitness",
+        "description": "Male navike i kućni treninzi."
+      },
+      "money": {
+        "name": "Novčani pomoćnik",
+        "description": "Jednostavni budžeti i savjeti za trošenje."
+      },
+      "study": {
+        "name": "Pomoć pri učenju",
+        "description": "Objasni jednostavno. Ispitaj me."
+      },
+      "email": {
+        "name": "Email i životopis",
+        "description": "Napiši jasne mailove i linije za CV."
+      },
+      "translator": {
+        "name": "Prevoditelj",
+        "description": "Prevedi i nauči fraze."
+      },
+      "travel": {
+        "name": "Putni asistent",
+        "description": "Jednostavni planovi i popisi za pakiranje."
+      },
+      "tech": {
+        "name": "Tehnička podrška (osnovno)",
+        "description": "Telefon, aplikacije, osnovni Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL;DR sažetak",
+        "description": "Kratke točke + jedna rečenica."
+      },
+      "gift": {
+        "name": "Tražitelj poklona",
+        "description": "Ideje prema budžetu i interesima."
+      },
+      "party": {
+        "name": "Organizator događaja (lite)",
+        "description": "Brzo isplaniraj manju zabavu."
+      },
+      "social": {
+        "name": "Kreator objava",
+        "description": "Nacrtaj objave s izborom."
+      },
+      "interview": {
+        "name": "Trener za intervju",
+        "description": "Vježbaj odgovore (STAR)."
+      },
+      "homefix": {
+        "name": "Kućni popravci",
+        "description": "Jednostavno DIY rješavanje problema."
+      },
+      "pet": {
+        "name": "Briga o ljubimcima",
+        "description": "Hranjenje, šetnja, osnovna dresura."
+      },
+      "mindful": {
+        "name": "Minuta pažljivosti",
+        "description": "1–3 minute smirenja."
+      },
+      "polite": {
+        "name": "Ljubazno prepisivanje",
+        "description": "Prepiši tekst i odgovore uljudno."
+      }
+    }
+  },
+  "history": {
+    "title": "Povijest",
+    "searchPlaceholder": "Pretraži chatove…",
+    "newChat": "Novi chat",
+    "new": "+ Novi",
+    "search": "Pretraži",
+    "clearSearch": "Očisti pretragu",
+    "noChatsYet": "Nema chatova još",
+    "startFirstConversation": "Započni svoj prvi razgovor.",
+    "startChat": "Započni chat",
+    "errorLoadingHistory": "Greška pri učitavanju povijesti",
+    "renameChat": "Preimenuj chat",
+    "enterNewTitle": "Unesi novi naslov",
+    "deleteChat": "Izbrisati chat?",
+    "deleteChatMessage": "„{{title}}” će biti izbrisan.",
+    "rename": "Preimenuj",
+    "unpin": "Otkvači",
+    "pin": "Prikvači",
+    "untitled": "Bez naslova"
+  },
+  "settings": {
+    "title": "Postavke",
+    "model": "Model",
+    "searchPlaceholder": "Pretraži modele…",
+    "temperatureForCurrentModel": "Temperatura za trenutni model",
+    "customFor": "Prilagođeno za {{model}}",
+    "usingDefault": "Koristi zadanu vrijednost {{temperature}}",
+    "resetToDefault": "Vrati na zadano",
+    "defaultTemperature": "Zadana temperatura (rezervno)",
+    "usedByModelsWithoutOverride": "Koristi se za modele bez vlastite postavke",
+    "dangerZone": "Opasna zona",
+    "clearAllChatsAndSettings": "Očisti sve chatove i postavke",
+    "about": "O aplikaciji",
+    "version": "Verzija {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Politika privatnosti",
+    "hero": {
+      "label": "Posebna ponuda",
+      "title": "Prioritetni pristup bez ograničenja",
+      "upgrade": "Nadogradi",
+      "manage": "Upravljaj planom"
+    },
+    "sections": {
+      "premium": "Premium plan",
+      "data": "Korisnički podaci",
+      "support": "Podrška i pravni"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Uzmi Premium",
+        "subtitle": "Otključaj neograničene alate za kreiranje"
+      },
+      "premiumActive": {
+        "title": "Premium aktivan",
+        "subtitle": "Hvala što podržavaš ChatCloud"
+      },
+      "restore": {
+        "title": "Vrati kupnje",
+        "subtitle": "Koristi ako si promijenio uređaj"
+      },
+      "history": {
+        "title": "Upravljaj poviješću chata",
+        "subtitle": "Pregledaj i izbriši prošle sesije"
+      },
+      "reset": {
+        "title": "Resetiraj chatove i postavke",
+        "subtitle": "Briše sve pohranjene podatke na ovom uređaju"
+      },
+      "rate": {
+        "title": "Ocijeni nas",
+        "error": "Nije moguće otvoriti trgovinu."
+      },
+      "support": {
+        "title": "Podrška",
+        "subtitle": "Kontaktiraj nas online",
+        "error": "Nije moguće otvoriti stranicu podrške."
+      },
+      "privacy": {
+        "title": "Politika privatnosti",
+        "error": "Nije moguće otvoriti politiku privatnosti."
+      },
+      "terms": {
+        "title": "Uvjeti korištenja",
+        "error": "Nije moguće otvoriti uvjete korištenja."
+      }
+    },
+    "capabilities": {
+      "text": "TEKST",
+      "image": "SLIKA",
+      "audio": "ZVUK",
+      "video": "VIDEO"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Nedostupno",
+      "linkUnavailableMessage": "Nije moguće sada otvoriti ovu poveznicu.",
+      "restoreSuccessTitle": "Vraćeno",
+      "restoreSuccessMessage": "Tvoje kupnje su vraćene.",
+      "restoreErrorTitle": "Vraćanje nije uspjelo",
+      "restoreErrorMessage": "Ne mogu sada vratiti kupnje.",
+      "resetConfirmTitle": "Resetirati podatke aplikacije?",
+      "resetConfirmMessage": "Time se brišu svi chatovi i lokalne postavke.",
+      "resetConfirmCancel": "Odustani",
+      "resetConfirmCta": "Resetiraj"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Kreiraj",
+    "chooseStyle": "Odaberi stil",
+    "aspectRatio": "Omjer stranica",
+    "starterPrompts": {
+      "title": "Početni prijedlozi",
+      "items": [
+        "portret u studiju",
+        "moderan dnevni boravak",
+        "tropska plaža u zalasku"
+      ]
+    },
+    "promptPlaceholder": "Upiši što želiš vidjeti…",
+    "promptHint": "Primjer: 'Zlatni retriver u studijskom svjetlu'",
+    "clearText": "Očisti tekst",
+    "generate": "Generiraj",
+    "generating": "Generiram…"
+  },
+  "editImage": {
+    "headerTitle": "Uredi",
+    "chooseStyle": "Odaberi stil",
+    "aspectRatio": "Omjer stranica",
+    "starterPrompts": {
+      "title": "Početni prijedlozi",
+      "items": [
+        "ispravi osvjetljenje",
+        "ukloni pozadinu",
+        "blago retuširanje portreta"
+      ]
+    },
+    "promptPlaceholder": "Opiši izmjene (neobavezno)",
+    "clearText": "Očisti",
+    "generate": "Primijeni",
+    "generating": "Primjenjujem…",
+    "upload": {
+      "choose": "Odaberi fotografiju",
+      "change": "Promijeni",
+      "remove": "Ukloni"
+    },
+    "imageUnavailable": {
+      "title": "Slika nije dostupna",
+      "message": "Nije moguće pristupiti odabranoj fotografiji. Odaberi je ponovno i pokušaj opet."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Crtić"
+      },
+      "photoreal": {
+        "name": "Fotorealistično"
+      },
+      "sketch": {
+        "name": "Skica"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D ilustracija"
+      },
+      "dark_fantasy": {
+        "name": "Mračna fantastika"
+      },
+      "vintage_film": {
+        "name": "Vintage film"
+      },
+      "pastel": {
+        "name": "Pastelno"
+      },
+      "neon_glow": {
+        "name": "Neonski sjaj"
+      },
+      "epic_landscape": {
+        "name": "Epski pejzaž"
+      }
+    },
+    "aspectRatios": {
+      "square": "Kvadrat",
+      "landscape": "Vodoravno",
+      "portrait": "Okomito"
     },
     "models": {
-      "gpt-4o": "Najmoćniji AI model",
-      "gpt-4o-mini": "Brz za svakodnevne zadatke",
-      "claude-3-haiku": "Brz i učinkovit model",
-      "claude-3.7-sonnet": "Napredni rezonirajući model",
-      "gemini-2.5-pro": "Najbolji Googleov model",
-      "gemini-2.0-flash": "Brz model s odličnim zaključivanjem"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Prilagođeno"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Ostalo"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Najbrži model",
+      "runwareFluxKrea": "Kreativni, stilizirani rezultati",
+      "runwareQwenImage": "Uravnotežena, visoka kvaliteta",
+      "google4": "Najbolji AI model za slike",
+      "fluxKontent": "Flux Kontent podešen za uređivanje",
+      "runwareProvider": "Uravnotežena kvaliteta s pouzdanom difuzijom.",
+      "airProvider": "Nano Banana daje živ i razigran ton.",
+      "googleProvider": "Google podešen za dotjerane detalje.",
+      "anthropicProvider": "Claude pipeline za profinjene stilove.",
+      "default": "Dodirni za pregled dostupnih pogona."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "odabrani stil",
+    "sheetTitle": "Stvaramo tvoju sliku",
+    "sheetSubtitle": "Trenutak strpljenja dok dodamo {{style}} u prompt.",
+    "phases": {
+      "blend": "Miješam {{style}}",
+      "paint": "Slikam scenu",
+      "finish": "Dodajem završne detalje"
     },
-    "navigation": {
-      "chat": "Razgovor",
-      "history": "Povijest",
-      "assistants": "Asistenti",
-      "imagesStudio": "Studio",
-      "settings": "Postavke",
-      "recentChats": "Nedavni razgovori"
-    },
-    "imagesStudio": {
-      "title": "Studio",
-      "selectImages": "Odaberi slike",
-      "exitSelectionMode": "Izađi iz načina odabira",
-      "selectAll": "Odaberi sve",
-      "noImagesYet": "Još nema slika",
-      "describeImageHint": "Opišite sliku dolje i dodirnite „Generiraj”.",
-      "generatedImagesGallery": "Galerija generiranih slika",
-      "describeImagePlaceholder": "Opišite sliku koju želite…",
-      "deleteConfirmTitle": "Brisanje slika",
-      "deleteConfirmMessage": "Jeste li sigurni da želite izbrisati odabrane slike? Ova se radnja ne može poništiti.",
+    "actions": {
       "cancel": "Odustani",
-      "delete": "Izbriši",
-      "generate": "Generiraj",
-      "generating": "Generiranje…",
-      "latest": "Najnovije",
-      "insertToChat": "Umetni u razgovor",
-      "pleaseWait": "Pričekajte…",
-      "processing": "Obrada...",
-      "tapToUploadImage": "Dodirnite za učitavanje slike",
-      "camera": "Kamera",
-      "library": "Galerija",
-      "enterPrompt": "Unesite prompt za generiranje teksta u sliku",
-      "openInBrowser": "Otvori u pregledniku",
-      "makeVariations": "Napravi varijacije",
-      "deleteAllFromGeneration": "Izbriši sve iz ove generacije",
-      "imageOptionsTitle": "Mogućnosti slike",
-      "imageOptionsMessage": "Što želite učiniti s ovom slikom?",
-      "insertMarkdownHeader": "Evo slike za:",
-      "variationSuffix": "— varijacija prethodne slike",
-      "selectedCount": "odabrano",
-      "selectedCount_one": "odabrano",
-      "selectedCount_other": "odabrano",
-      "imageDescriptionInput": "Unos opisa slike",
-      "imageDescriptionHint": "Unesite opis slike koju želite generirati",
-      "openModelSettings": "Otvori postavke modela",
-      "modelSettingsHint": "Dodirnite za promjenu modela i postavki",
-      "openPhotoGallery": "Otvori galeriju",
-      "clearInput": "Očisti unos",
-      "generatedImage": "Generirana slika",
-      "autoSelectedModel": "Automatski odabran {{model}} za način {{mode}}",
-      "deleteSelectedConfirmTitle": "Brisanje slika",
-      "deleteSelectedConfirmMessage": "Jeste li sigurni da želite izbrisati slike? Ova se radnja ne može poništiti."
+      "retry": "Pokušaj ponovno",
+      "close": "Zatvori"
     },
-    "imageStudio": {
-      "generateImage": "Generiraj sliku",
-      "generatingImage": "Generiranje slike",
-      "generateImageHint": "Dodirnite za generiranje slike na temelju opisa",
-      "imageDescriptionInput": "Unos opisa slike",
-      "imageDescriptionHint": "Unesite opis slike koju želite generirati",
-      "openModelSettings": "Otvori postavke modela",
-      "modelSettingsHint": "Dodirnite za promjenu modela i postavki",
-      "openPhotoGallery": "Otvori galeriju",
-      "clearInput": "Očisti unos",
-      "generatedImage": "Generirana slika"
+    "errors": {
+      "restrictedTitle": "Ograničen sadržaj",
+      "genericTitle": "Generiranje nije uspjelo",
+      "genericMessage": "Nije bilo moguće generirati sliku."
     },
-    "assistants": {
-      "title": "Asistenti",
-      "subtitle": "Pomno odabrani AI specijalisti za kodiranje, pisanje, analizu, planiranje i još mnogo toga.",
-      "searchPlaceholder": "Pretraži asistente…",
-      "useAssistant": "Koristi asistenta",
-      "description": "Opis",
-      "systemPrompt": "Sistemski prompt",
-      "chooseModel": "Odaberi model",
-      "categoryAll": "Svi",
-      "categories": {
-        "everyday": "Svakodnevno",
-        "life": "Život",
-        "health": "Zdravlje",
-        "schoolWork": "Škola i posao",
-        "coding": "Programiranje",
-        "creative": "Kreativno",
-        "general": "Općenito"
-      },
-      "presets": {
-        "default": { "name": "Zadani asistent", "description": "Uravnotežena pomoć za svakodnevne stvari." },
-        "quick": { "name": "Brzi odgovori", "description": "Kratki, izravni odgovori." },
-        "planner": { "name": "Dnevni planer", "description": "Isplanirajte dan i rutine." },
-        "recipes": { "name": "Obroci i recepti", "description": "Što skuhati s onim što imate." },
-        "fitness": { "name": "Trener navika i fitnessa", "description": "Male navike i kućne vježbe." },
-        "money": { "name": "Novčani pomagač", "description": "Jednostavni proračuni i savjeti o trošenju." },
-        "study": { "name": "Pomoć pri učenju", "description": "Objasni jednostavno. Isprobaj me." },
-        "email": { "name": "E-pošta i životopis", "description": "Pišite jasne mailove i stavke za CV." },
-        "translator": { "name": "Prevoditelj", "description": "Prevedi + nauči izraze." },
-        "travel": { "name": "Putni asistent", "description": "Jednostavni planovi i popisi za pakiranje." },
-        "tech": { "name": "Tehnička podrška (osnovno)", "description": "Osnove telefona, aplikacija i Wi-Fi-ja." },
-        "summarizer": { "name": "TL;DR sažetak", "description": "Kratke točke + jednoznačni sažetak." },
-        "gift": { "name": "Traženje poklona", "description": "Ideje prema budžetu i interesima." },
-        "party": { "name": "Planer događaja (lako)", "description": "Brzo organizirajte malu zabavu." },
-        "social": { "name": "Kreator objava", "description": "Nacrti objava s opcijama." },
-        "interview": { "name": "Trener za intervju", "description": "Vježbajte odgovore (STAR)." },
-        "homefix": { "name": "Vodič za popravke", "description": "Jednostavna dijagnostika i rješenja." },
-        "pet": { "name": "Pomoć za kućne ljubimce", "description": "Prehrana, šetnje i osnovna dresura." },
-        "mindful": { "name": "Minuta svjesnosti", "description": "1–3 min kratke pauze." },
-        "polite": { "name": "Pristojno preoblikovanje", "description": "Ljubazno prepiši tekstove i odgovore." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Nije bilo moguće spremiti",
+      "shareFailedTitle": "Nije bilo moguće podijeliti",
+      "tryAgain": "Pokušaj ponovno."
     },
-    "history": {
-      "title": "Povijest",
-      "searchPlaceholder": "Pretraži razgovore…",
-      "newChat": "Novi razgovor",
-      "new": "+ Novo",
-      "search": "Pretraži",
-      "clearSearch": "Očisti pretragu",
-      "noChatsYet": "Još nema razgovora",
-      "startFirstConversation": "Započnite svoj prvi razgovor.",
-      "startChat": "Započni razgovor",
-      "errorLoadingHistory": "Pogreška pri učitavanju povijesti",
-      "renameChat": "Preimenuj razgovor",
-      "enterNewTitle": "Unesite novi naslov",
-      "deleteChat": "Izbrisati razgovor?",
-      "deleteChatMessage": "„{{title}}” bit će izbrisan.",
-      "rename": "Preimenuj",
-      "unpin": "Odepnite",
-      "pin": "Prikvači",
-      "untitled": "Bez naslova"
+    "result": {
+      "complete": "Gotovo"
     },
-    "settings": {
-      "title": "Postavke",
-      "model": "Model",
-      "searchPlaceholder": "Pretraži modele…",
-      "temperatureForCurrentModel": "Temperatura za trenutni model",
-      "customFor": "Prilagođeno za {{model}}",
-      "usingDefault": "Koristi zadano {{temperature}}",
-      "resetToDefault": "Vrati na zadano",
-      "defaultTemperature": "Zadana temperatura (rezerva)",
-      "usedByModelsWithoutOverride": "Koristi se za modele bez prilagodbe",
-      "dangerZone": "Opasna zona",
-      "clearAllChatsAndSettings": "Obriši sve razgovore i postavke",
-      "about": "Informacije",
-      "version": "Verzija {{version}}",
-      "privacyPolicy": "Politika privatnosti",
-      "capabilities": {
-        "text": "TEKST",
-        "image": "SLIKA",
-        "audio": "ZVUK",
-        "video": "VIDEO"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Poruka za Agarku...",
-      "createImages": "Stvori slike",
-      "generateAiArtwork": "Generiraj AI umjetninu",
-      "camera": "Kamera",
-      "takeOrSelectPhotos": "Snimi ili odaberi fotografije",
-      "search": "Pretraži",
-      "findInformation": "Pronađi informacije",
-      "removeImage": "Ukloni sliku",
-      "messageInput": "Unos poruke",
-      "clearInput": "Očisti unos",
-      "hideQuickActions": "Sakrij brze radnje",
-      "showQuickActions": "Prikaži brze radnje",
-      "startVoiceInput": "Pokreni glasovni unos",
-      "sendMessage": "Pošalji",
-      "offline": "Izvan mreže",
-      "stop": "Zaustavi",
-      "streaming": "Strujanje…",
-      "closeRecorder": "Zatvori snimač",
-      "insertTranscript": "Umetni transkript",
-      "scrollToLatest": "Pomakni na najnoviju poruku",
-      "copyMessage": "Kopiraj poruku",
-      "copyMessageHint": "Kopiraj ovu poruku u međuspremnik",
-      "shareMessage": "Podijeli poruku",
-      "shareMessageHint": "Podijelite ovu poruku",
-      "regenerateResponse": "Ponovno generiraj odgovor",
-      "regenerateResponseHint": "Generiraj novi odgovor",
-      "copyCode": "Kopiraj kod",
-      "image": "slika",
-      "loading": "Učitavanje…",
-      "loadingChat": "Učitavanje razgovora...",
-      "offlineBanner": "Izvan ste mreže. Poruke se ne mogu poslati.",
-      "imagePickerErrorTitle": "Pogreška pri odabiru slike",
-      "messageTooLong": "Poruka je preduga ({{length}}). Ograničenje je {{limit}}.",
-      "emptyTitle": "Kako mogu pomoći?",
-      "emptySubtitle": "Započnite razgovor s AI-em",
-      "privateTitle": "Privatni razgovor",
-      "privateSubtitle": "Ovaj razgovor neće se pojaviti u povijesti",
-      "listening": "Slušam…",
-      "startRecording": "Pokretanje snimanja…",
-      "suggestions": {
-        "writeStory": "Napiši kreativnu priču",
-        "writeStorySubtitle": "o čarobnoj avanturi",
-        "planTravel": "Isplaniraj putni itinerar",
-        "planTravelSubtitle": "za fantastičan odmor",
-        "explainConcept": "Objasni ovaj pojam",
-        "explainConceptSubtitle": "na jednostavan način",
-        "planDay": "Isplaniraj moj dan",
-        "planDaySubtitle": "s savjetima za produktivnost"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Obrada...",
-      "tapToUploadImage": "Dodirnite za učitavanje slike"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Obrada...",
-      "camera": "Kamera",
-      "library": "Galerija"
-    },
-    "common": {
-      "new": "NOVE",
-      "best": "NAJBOLJE",
-      "cancel": "Odustani",
-      "save": "Spremi",
-      "delete": "Izbriši",
+    "accessibility": {
       "close": "Zatvori"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Izbriši",
+      "edit": "Uredi",
+      "save": "Spremi",
+      "share": "Podijeli"
+    },
+    "accessibility": {
+      "close": "Zatvori",
+      "delete": "Izbriši sliku",
+      "edit": "Uredi sliku",
+      "save": "Spremi sliku",
+      "share": "Podijeli sliku"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Otvori izbornik",
+      "selectImages": "Odaberi slike",
+      "exitSelection": "Izađi iz odabira",
+      "deleteSelected": "Izbriši odabrane slike",
+      "selectToDelete": "Odaberi slike za brisanje"
+    },
+    "createCard": {
+      "title": "Kreiraj iz teksta",
+      "subtitle": "Unesi opis",
+      "cta": "Opiši i generiraj"
+    },
+    "editCard": {
+      "title": "Uredi fotografiju",
+      "subtitle": "Prenesi i uredi",
+      "cta": "Uredi fotografiju"
+    },
+    "gallery": {
+      "title": "Galerija",
+      "empty": "Još nema slika",
+      "selection": {
+        "enter": "Odaberi slike",
+        "exit": "Izađi iz odabira",
+        "deleteSelected": "Izbriši odabrane",
+        "selectForDelete": "Odaberi slike za brisanje"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Upoznaj",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Stvaraj i uređuj slike s AI — izravno u {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Upoznaj svoj AI",
+      "titleHighlight": "Asistenti",
+      "subtitle": "Specijalizirani AI pomagači spremni za svakodnevne potrebe",
+      "cards": [
+        {
+          "title": "Fitness trener",
+          "text": "Planovi vježbanja i prehrane po tvojoj mjeri"
+        },
+        {
+          "title": "Doktor",
+          "text": "Uvid u zdravlje, analiza simptoma i smjernice"
+        },
+        {
+          "title": "Briga o ljubimcima",
+          "text": "Savjeti o zdravlju, dresuri i njezi"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "AI RJEŠENJA ZA PODUZEĆA",
+      "description": "Ojačaj svoj posao naprednom umjetnom inteligencijom za profesionalce i timove.",
+      "stats": "Vjeruje nam 500k+ korisnika",
+      "rating": "4,9 / 5",
+      "button": "Započni"
+    }
+  },
+  "coinStore": {
+    "title": "Kupi tokene",
+    "loading": "Učitavanje trgovine tokenima…",
+    "balanceLabel": "Tvoj trenutni saldo je",
+    "balanceValue": "{{amount}} tokena",
+    "history": {
+      "link": "Povijest transakcija",
+      "alertTitle": "Povijest",
+      "alertBody": "Povijest transakcija stiže uskoro."
+    },
+    "noPacks": "Nema dostupnih paketa tokena. Provjeri RevenueCat offering id.",
+    "badges": {
+      "basic": "Osnovni paket",
+      "popular": "Najpopularnije",
+      "value": "Najbolja vrijednost"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} tokena",
+      "defaultName": "Paket {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Postani Premium",
+      "subtitle": "Neograničen pristup i funkcije",
+      "cta": "Nadogradi"
+    },
+    "termsText": "Kupnjom pristaješ na naše",
+    "termsLink": "Uvjete korištenja",
+    "alerts": {
+      "initErrorTitle": "Greška inicijalizacije",
+      "genericMessage": "Nešto je pošlo po zlu.",
+      "successTitle": "Uspjeh",
+      "successMessage": "Tokeni će se uskoro pojaviti.",
+      "purchaseFailedTitle": "Kupnja nije uspjela",
+      "unknownError": "Nepoznata greška"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Vrati",
+    "restoreRestoring": "Vraćam…",
+    "features": {
+      "create": "Stvaraj slike i videozapise",
+      "search": "Pretražuj web s AI",
+      "talk": "Pričaj prirodno s AI"
+    },
+    "freeTrial": {
+      "title": "Besplatno probno razdoblje",
+      "subtitle": "3 dana besplatno"
+    },
+    "badge": {
+      "bestOffer": "Najbolja ponuda"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Godišnje",
+        "only": "Samo {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Mjesečno",
+        "subtitle": "Otkaži kad želiš",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Tjedno",
+        "subtitle": "Otkaži kad želiš",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "tjedno",
+      "perMonth": "mjesečno"
+    },
+    "cta": "Nastavi",
+    "legal": {
+      "terms": "Uvjeti",
+      "privacy": "Privatnost"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Poruka...",
+    "createImages": "Stvori slike",
+    "generateAiArtwork": "Stvori AI ilustraciju",
+    "camera": "Kamera",
+    "takeOrSelectPhotos": "Snimi ili odaberi fotografije",
+    "search": "Pretraži",
+    "findInformation": "Pronađi informacije",
+    "findRecentInfo": "Pronađi najnovije informacije",
+    "removeImage": "Ukloni sliku",
+    "messageInput": "Unos poruke",
+    "clearInput": "Očisti",
+    "quickActionsLabel": "Brze radnje",
+    "hideQuickActions": "Sakrij brze radnje",
+    "showQuickActions": "Prikaži brze radnje",
+    "startVoiceInput": "Pokreni glasovni unos",
+    "sendMessage": "Pošalji poruku",
+    "offline": "Offline",
+    "stop": "Zaustavi",
+    "streaming": "Emitiram…",
+    "closeRecorder": "Zatvori snimač",
+    "insertTranscript": "Pošalji",
+    "scrollToLatest": "Pomakni na najnovije",
+    "copyMessage": "Kopiraj poruku",
+    "copyMessageHint": "Kopiraj poruku u međuspremnik",
+    "shareMessage": "Podijeli poruku",
+    "shareMessageHint": "Podijeli ovu poruku",
+    "regenerateResponse": "Generiraj odgovor ponovno",
+    "regenerateResponseHint": "Stvori novi odgovor",
+    "copyCode": "Kopiraj kod",
+    "image": "slika",
+    "loading": "Učitavanje…",
+    "loadingChat": "Učitavanje chata...",
+    "offlineBanner": "Offline si. Poruke se ne mogu poslati.",
+    "imagePickerErrorTitle": "Greška pri odabiru slike",
+    "imagePickerErrorMessage": "Nije moguće pristupiti fotografijama. Pokušaj ponovno.",
+    "messageTooLong": "Poruka je preduga ({{length}}). Granica je {{limit}}.",
+    "sendFailed": "Slanje nije uspjelo.",
+    "voiceStartFailed": "Nije moguće pokrenuti glas.",
+    "emptyTitle": "Kako mogu pomoći?",
+    "emptySubtitle": "Započni razgovor s AI",
+    "privateTitle": "Privatni chat",
+    "privateSubtitle": "Ovaj chat se neće pojaviti u povijesti",
+    "permissions": {
+      "photosTitle": "Potrebna dozvola za fotografije",
+      "photosMessage": "Pristup fotografijama je potreban za odabir slika.",
+      "voiceTitle": "Potrebne dozvole za glas",
+      "voiceMessage": "Mikrofon i govor su potrebni za glasovnu funkciju."
+    },
+    "activity": {
+      "analyzingImages": "Analiziram slike…",
+      "searching": "Pretražujem…",
+      "thinking": "Razmišljam…"
+    },
+    "webSearch": {
+      "title": "Web pretraživanje",
+      "subtitle": "Pronađi nedavne informacije",
+      "label": "Web pretraživanje",
+      "enable": "Uključi web pretraživanje",
+      "disable": "Isključi web pretraživanje",
+      "toggleLabel": "Pretražuj web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Dizajniraj vizuale brzo.",
+      "subtitle": "Generiraj, doradi i objavi na jednom mjestu.",
+      "cta": "Otvori"
+    },
+    "quickActions": {
+      "createImages": "Stvori slike",
+      "openCamera": "Otvori kameru",
+      "editImage": "Uredi sliku",
+      "startVoice": "Pokreni glas",
+      "assistants": "Asistenti"
+    },
+    "listening": "Slušam…",
+    "startRecording": "Pokrećem snimanje…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistent nije dostupan",
+      "unavailableDescription": "Nismo mogli učitati ovaj asistent. Pokušaj ponovno.",
+      "ready": "Spreman za pomoć"
+    },
+    "actions": {
+      "copy": "Kopiraj",
+      "share": "Podijeli",
+      "regenerate": "Ponovno generiraj",
+      "retryFromHere": "Pokušaj odavde",
+      "cancel": "Odustani"
+    },
+    "messageActionTitle": "Poruka",
+    "status": {
+      "sending": "Šaljem…",
+      "failed": "Neuspješno",
+      "sent": "Poslano"
+    },
+    "suggestions": {
+      "writeStory": "Napiši kreativnu priču",
+      "writeStorySubtitle": "o magičnoj avanturi",
+      "planTravel": "Isplaniraj putovanje",
+      "planTravelSubtitle": "za nevjerojatan odmor",
+      "explainConcept": "Objasni ovaj koncept",
+      "explainConceptSubtitle": "jednostavnim riječima",
+      "planDay": "Isplaniraj moj dan",
+      "planDaySubtitle": "s savjetima za produktivnost"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Obrada...",
+    "tapToUploadImage": "Dodirni za prijenos slike"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Obrada...",
+    "camera": "Kamera",
+    "library": "Galerija"
+  },
+  "common": {
+    "new": "NOVO",
+    "best": "NAJBOLJE",
+    "cancel": "Odustani",
+    "save": "Spremi",
+    "delete": "Izbriši",
+    "close": "Zatvori",
+    "allow": "Dopusti"
   }
-  
+}

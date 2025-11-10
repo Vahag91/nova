@@ -1,25 +1,32 @@
 {
   "modelSelector": {
-    "title": "Seleccionar un modelo",
-    "searchPlaceholder": "Buscar modelos…",
+    "title": "Selecciona un modelo",
+    "searchPlaceholder": "Buscar modelos...",
     "noModelsFound": "No se encontraron modelos",
     "noModelsAvailable": "No hay modelos disponibles",
-    "currentModel": "Modelo actual: {{name}}. Toca para cambiar.",
-    "openHint": "Abrir el menú de selección de modelo",
-    "closeLabel": "Cerrar el selector de modelos",
+    "currentModel": "Modelo actual: {{name}}. Toca para cambiarlo.",
+    "openHint": "Abre el menú de selección de modelo",
+    "closeLabel": "Cerrar selector de modelo",
     "searchLabel": "Buscar modelos",
-    "searchHint": "Escribe para filtrar los modelos",
+    "searchHint": "Escribe para filtrar los modelos disponibles",
     "modelLabel": "Modelo {{name}}",
-    "selectHint": "Seleccionar {{name}}",
-    "currentlySelected": "Modelo seleccionado actualmente"
+    "selectHint": "Seleccionar modelo {{name}}",
+    "currentlySelected": "Actualmente seleccionado"
   },
   "models": {
-    "gpt-4o": "El modelo de IA más potente",
+    "gpt-4o": "Modelo de IA más potente",
     "gpt-4o-mini": "Rápido para tareas diarias",
-    "claude-3-haiku": "Modelo rápido y eficiente",
-    "claude-3.7-sonnet": "Modelo de razonamiento avanzado",
-    "gemini-2.5-pro": "El mejor modelo de Google",
-    "gemini-2.0-flash": "Modelo rápido con gran razonamiento"
+    "gpt-5": "IA todoterreno más potente",
+    "gpt-5-chat-latest": "Optimizado para chat y diálogo",
+    "gpt-5-mini": "GPT-5 rápido y confiable",
+    "gpt-5-nano": "Modelo ligero para tareas simples",
+    "o4-mini": "Modelo de razonamiento eficiente",
+    "gpt-4.1-mini": "GPT-4.1 compacto y capaz",
+    "claude-3-haiku": "IA de Anthropic rápida y enfocada",
+    "claude-3.7-sonnet": "Razonamiento refinado de Anthropic",
+    "gemini-2.5-Flash": "Modelo más avanzado de Google",
+    "gemini-2.5-flash": "Modelo más avanzado de Google",
+    "gemini-2.0-flash": "IA de Google rápida y precisa"
   },
   "providers": {
     "openai": "OpenAI",
@@ -29,108 +36,175 @@
     "other": "Otro"
   },
   "navigation": {
-    "chat": "Chat",
+    "chat": "Nuevo chat",
     "history": "Historial",
     "assistants": "Asistentes",
-    "imagesStudio": "Studio",
+    "imagesStudio": "Image Studio",
     "settings": "Ajustes",
     "recentChats": "Chats recientes"
   },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Genera, mejora y publica recursos visuales en un solo lugar.",
+    "cta": "Abrir"
+  },
   "imagesStudio": {
-    "title": "Studio",
+    "title": "Image Studio",
     "selectImages": "Seleccionar imágenes",
     "exitSelectionMode": "Salir del modo de selección",
     "selectAll": "Seleccionar todo",
     "noImagesYet": "Aún no hay imágenes",
-    "describeImageHint": "Describe tu imagen abajo y toca «Generar».",
+    "describeImageHint": "Describe tu imagen abajo y toca Generar.",
     "generatedImagesGallery": "Galería de imágenes generadas",
     "describeImagePlaceholder": "Describe la imagen que quieres…",
     "deleteConfirmTitle": "Eliminar imágenes",
-    "deleteConfirmMessage": "¿Seguro que deseas eliminar las imágenes seleccionadas? Esta acción no se puede deshacer.",
+    "deleteConfirmMessage": "¿Seguro que quieres eliminar las imágenes seleccionadas? Esta acción no se puede deshacer.",
     "cancel": "Cancelar",
     "delete": "Eliminar",
     "generate": "Generar",
     "generating": "Generando…",
-    "latest": "Últimas",
+    "latest": "Más recientes",
     "insertToChat": "Insertar en el chat",
-    "pleaseWait": "Espera, por favor…",
+    "pleaseWait": "Por favor espera…",
     "processing": "Procesando...",
     "tapToUploadImage": "Toca para subir una imagen",
     "camera": "Cámara",
-    "library": "Biblioteca",
+    "library": "Galería",
     "enterPrompt": "Introduce un prompt para la generación de texto a imagen",
     "openInBrowser": "Abrir en el navegador",
     "makeVariations": "Crear variaciones",
     "deleteAllFromGeneration": "Eliminar todo de esta generación",
-    "imageOptionsTitle": "Opciones de imagen",
-    "imageOptionsMessage": "¿Qué te gustaría hacer con esta imagen?",
+    "imageOptionsTitle": "Opciones de la imagen",
+    "imageOptionsMessage": "¿Qué quieres hacer con esta imagen?",
     "insertMarkdownHeader": "Aquí está la imagen para:",
     "variationSuffix": "— variación de la imagen anterior",
     "selectedCount": "seleccionadas",
     "selectedCount_one": "seleccionada",
     "selectedCount_other": "seleccionadas",
     "imageDescriptionInput": "Entrada de descripción de imagen",
-    "imageDescriptionHint": "Introduce una descripción de la imagen que quieres generar",
+    "imageDescriptionHint": "Escribe la descripción de la imagen que quieres generar",
     "openModelSettings": "Abrir ajustes del modelo",
-    "modelSettingsHint": "Toca para cambiar el modelo y los ajustes",
-    "openPhotoGallery": "Abrir galería de fotos",
+    "modelSettingsHint": "Toca para cambiar modelo y ajustes",
+    "openPhotoGallery": "Abrir galería",
     "clearInput": "Borrar",
     "generatedImage": "Imagen generada",
-    "autoSelectedModel": "{{model}} seleccionado automáticamente para el modo {{mode}}",
+    "autoSelectedModel": "Se seleccionó automáticamente {{model}} para el modo {{mode}}",
     "deleteSelectedConfirmTitle": "Eliminar imágenes",
     "deleteSelectedConfirmMessage": "¿Seguro que quieres eliminar las imágenes? Esta acción no se puede deshacer."
   },
   "imageStudio": {
     "generateImage": "Generar imagen",
     "generatingImage": "Generando imagen",
-    "generateImageHint": "Toca para generar una imagen a partir de tu descripción",
+    "generateImageHint": "Toca para generar una imagen según tu descripción",
     "imageDescriptionInput": "Entrada de descripción de imagen",
-    "imageDescriptionHint": "Introduce una descripción de la imagen que quieres generar",
+    "imageDescriptionHint": "Escribe la descripción de la imagen que quieres generar",
     "openModelSettings": "Abrir ajustes del modelo",
-    "modelSettingsHint": "Toca para cambiar el modelo y los ajustes",
-    "openPhotoGallery": "Abrir galería de fotos",
+    "modelSettingsHint": "Toca para cambiar modelo y ajustes",
+    "openPhotoGallery": "Abrir galería",
     "clearInput": "Borrar",
     "generatedImage": "Imagen generada"
   },
   "assistants": {
     "title": "Asistentes",
-    "subtitle": "Especialistas de IA seleccionados para programación, redacción, análisis, planificación y más.",
+    "subtitle": "Especialistas de IA listos para programar, escribir, analizar, planificar y más.",
     "searchPlaceholder": "Buscar asistentes…",
     "useAssistant": "Usar asistente",
+    "selectAssistant": "Elegir asistente",
     "description": "Descripción",
     "systemPrompt": "Prompt del sistema",
     "chooseModel": "Elegir modelo",
     "categoryAll": "Todos",
     "categories": {
-      "everyday": "Cotidiano",
+      "everyday": "Diario",
       "life": "Vida",
       "health": "Salud",
-      "schoolWork": "Escuela y Trabajo",
+      "schoolWork": "Estudio y trabajo",
       "coding": "Programación",
       "creative": "Creativo",
       "general": "General"
     },
     "presets": {
-      "default": { "name": "Asistente predeterminado", "description": "Ayuda equilibrada para el día a día." },
-      "quick": { "name": "Respuestas rápidas", "description": "Cortas y directas." },
-      "planner": { "name": "Planificador diario", "description": "Planifica tu día y rutinas." },
-      "recipes": { "name": "Comidas y recetas", "description": "Qué cocinar con lo que tienes." },
-      "fitness": { "name": "Hábitos y Fitness", "description": "Mini hábitos y rutinas en casa." },
-      "money": { "name": "Asesor de dinero", "description": "Presupuestos simples y consejos de ahorro." },
-      "study": { "name": "Ayuda de estudio", "description": "Explica sencillo. Hazme pruebas." },
-      "email": { "name": "Correo y CV", "description": "Escribe correos claros y líneas para el CV." },
-      "translator": { "name": "Traductor", "description": "Traduce y enseña frases." },
-      "travel": { "name": "Compañero de viaje", "description": "Planes simples y listas de equipaje." },
-      "tech": { "name": "Soporte técnico (básico)", "description": "Teléfono, apps y Wi-Fi básicos." },
-      "summarizer": { "name": "Resumidor TL;DR", "description": "Viñetas cortas + un TL;DR en una línea." },
-      "gift": { "name": "Buscador de regalos", "description": "Ideas por presupuesto e intereses." },
-      "party": { "name": "Planificador de eventos (lite)", "description": "Organiza rápido una fiesta pequeña." },
-      "social": { "name": "Creador de publicaciones", "description": "Borradores con opciones." },
-      "interview": { "name": "Coach de entrevistas", "description": "Practica respuestas (STAR)." },
-      "homefix": { "name": "Guía de reparaciones", "description": "Solución de problemas DIY simple." },
-      "pet": { "name": "Cuidado de mascotas", "description": "Alimentación, paseos y adiestramiento básico." },
-      "mindful": { "name": "Minuto mindful", "description": "Pausas calmadas de 1–3 min." },
-      "polite": { "name": "Reescritor amable", "description": "Reescribe textos y respuestas con cortesía." }
+      "default": {
+        "name": "Asistente por defecto",
+        "description": "Ayuda equilibrada para el día a día."
+      },
+      "quick": {
+        "name": "Respuestas rápidas",
+        "description": "Respuestas cortas y directas."
+      },
+      "planner": {
+        "name": "Planificador diario",
+        "description": "Planifica tu día y tus rutinas."
+      },
+      "recipes": {
+        "name": "Comidas y recetas",
+        "description": "Qué cocinar con lo que tienes."
+      },
+      "fitness": {
+        "name": "Hábito y fitness",
+        "description": "Pequeños hábitos y entrenos en casa."
+      },
+      "money": {
+        "name": "Asistente de dinero",
+        "description": "Presupuestos simples y consejos de gasto."
+      },
+      "study": {
+        "name": "Ayuda de estudio",
+        "description": "Explica fácil. Hazme pruebas."
+      },
+      "email": {
+        "name": "Email y CV",
+        "description": "Escribe emails claros y líneas de CV."
+      },
+      "translator": {
+        "name": "Traductor",
+        "description": "Traducir y enseñar frases."
+      },
+      "travel": {
+        "name": "Compañero de viaje",
+        "description": "Planes simples y listas de equipaje."
+      },
+      "tech": {
+        "name": "Soporte técnico (simple)",
+        "description": "Teléfono, apps, Wi-Fi básico."
+      },
+      "summarizer": {
+        "name": "Resumidor TL;DR",
+        "description": "Viñetas cortas + resumen de una línea."
+      },
+      "gift": {
+        "name": "Buscador de regalos",
+        "description": "Ideas por presupuesto e intereses."
+      },
+      "party": {
+        "name": "Planificador de eventos (lite)",
+        "description": "Planear una pequeña fiesta rápido."
+      },
+      "social": {
+        "name": "Creador de posts",
+        "description": "Borradores de publicaciones con opciones."
+      },
+      "interview": {
+        "name": "Coach de entrevista",
+        "description": "Practicar respuestas (STAR)."
+      },
+      "homefix": {
+        "name": "Guía de arreglos en casa",
+        "description": "Solución de problemas sencilla."
+      },
+      "pet": {
+        "name": "Cuidado de mascotas",
+        "description": "Comida, paseos, entrenamiento básico."
+      },
+      "mindful": {
+        "name": "Minuto consciente",
+        "description": "Pausas de calma de 1–3 min."
+      },
+      "polite": {
+        "name": "Reescritor amable",
+        "description": "Reescribe textos y respuestas de forma amable."
+      }
     }
   },
   "history": {
@@ -141,60 +215,422 @@
     "search": "Buscar",
     "clearSearch": "Borrar búsqueda",
     "noChatsYet": "Aún no hay chats",
-    "startFirstConversation": "Empieza tu primera conversación.",
+    "startFirstConversation": "Comienza tu primera conversación.",
     "startChat": "Iniciar chat",
     "errorLoadingHistory": "Error al cargar el historial",
     "renameChat": "Renombrar chat",
-    "enterNewTitle": "Introduce un nuevo título",
+    "enterNewTitle": "Ingresa un nuevo título",
     "deleteChat": "¿Eliminar chat?",
-    "deleteChatMessage": "«{{title}}» se eliminará.",
+    "deleteChatMessage": "\"{{title}}\" será eliminado.",
     "rename": "Renombrar",
-    "unpin": "Quitar fijación",
-    "pin": "Fijar",
+    "unpin": "Desanclar",
+    "pin": "Anclar",
     "untitled": "Sin título"
   },
   "settings": {
     "title": "Ajustes",
     "model": "Modelo",
     "searchPlaceholder": "Buscar modelos…",
-    "temperatureForCurrentModel": "Temperatura del modelo actual",
+    "temperatureForCurrentModel": "Temperatura para el modelo actual",
     "customFor": "Personalizado para {{model}}",
-    "usingDefault": "Usando el valor predeterminado {{temperature}}",
-    "resetToDefault": "Restablecer a predeterminado",
-    "defaultTemperature": "Temperatura predeterminada (respaldo)",
-    "usedByModelsWithoutOverride": "Usada por modelos sin anulación",
-    "dangerZone": "Zona peligrosa",
-    "clearAllChatsAndSettings": "Borrar todos los chats y ajustes",
+    "usingDefault": "Usando el valor por defecto {{temperature}}",
+    "resetToDefault": "Restablecer por defecto",
+    "defaultTemperature": "Temperatura por defecto (respaldo)",
+    "usedByModelsWithoutOverride": "Usado por modelos sin configuración propia",
+    "dangerZone": "Zona de peligro",
+    "clearAllChatsAndSettings": "Borrar chats y ajustes",
     "about": "Acerca de",
-    "version": "Versión {{version}}",
+    "version": "Versión {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
     "privacyPolicy": "Política de privacidad",
+    "hero": {
+      "label": "Oferta especial",
+      "title": "Acceso prioritario y sin límites",
+      "upgrade": "Mejorar",
+      "manage": "Gestionar plan"
+    },
+    "sections": {
+      "premium": "Plan Premium",
+      "data": "Datos del usuario",
+      "support": "Soporte y legal"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Obtener Premium",
+        "subtitle": "Desbloquea herramientas de creación ilimitadas"
+      },
+      "premiumActive": {
+        "title": "Premium activo",
+        "subtitle": "Gracias por apoyar ChatCloud"
+      },
+      "restore": {
+        "title": "Restaurar compras",
+        "subtitle": "Úsalo si cambiaste de dispositivo"
+      },
+      "history": {
+        "title": "Gestionar historial de chats",
+        "subtitle": "Ver y eliminar tus sesiones pasadas"
+      },
+      "reset": {
+        "title": "Restablecer chats y preferencias",
+        "subtitle": "Borra todos los datos guardados en este dispositivo"
+      },
+      "rate": {
+        "title": "Califícanos",
+        "error": "No se pudo abrir la página de la tienda."
+      },
+      "support": {
+        "title": "Soporte",
+        "subtitle": "Contáctanos en línea",
+        "error": "No se pudo abrir la página de contacto."
+      },
+      "privacy": {
+        "title": "Política de privacidad",
+        "error": "No se pudo abrir la política de privacidad."
+      },
+      "terms": {
+        "title": "Términos de uso",
+        "error": "No se pudieron abrir los términos de uso."
+      }
+    },
     "capabilities": {
       "text": "TXT",
       "image": "IMG",
       "audio": "AUD",
       "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "No disponible",
+      "linkUnavailableMessage": "No se puede abrir este enlace ahora.",
+      "restoreSuccessTitle": "Restaurado",
+      "restoreSuccessMessage": "Tus compras han sido restauradas.",
+      "restoreErrorTitle": "Error al restaurar",
+      "restoreErrorMessage": "No se pueden restaurar las compras ahora.",
+      "resetConfirmTitle": "¿Restablecer datos de la app?",
+      "resetConfirmMessage": "Esto elimina todos los chats y preferencias locales.",
+      "resetConfirmCancel": "Cancelar",
+      "resetConfirmCta": "Restablecer"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Crear",
+    "chooseStyle": "Elegir estilo",
+    "aspectRatio": "Relación de aspecto",
+    "starterPrompts": {
+      "title": "Prompts iniciales",
+      "items": [
+        "foto de estudio",
+        "salón moderno",
+        "playa tropical al atardecer"
+      ]
+    },
+    "promptPlaceholder": "Escribe lo que quieres ver…",
+    "promptHint": "Ejemplo: “Golden retriever con luz de estudio”",
+    "clearText": "Borrar texto",
+    "generate": "Generar",
+    "generating": "Generando…"
+  },
+  "editImage": {
+    "headerTitle": "Editar",
+    "chooseStyle": "Elegir estilo",
+    "aspectRatio": "Relación de aspecto",
+    "starterPrompts": {
+      "title": "Prompts iniciales",
+      "items": [
+        "corregir iluminación",
+        "quitar fondo",
+        "retoque suave de retrato"
+      ]
+    },
+    "promptPlaceholder": "Describe los cambios (opcional)",
+    "clearText": "Borrar texto",
+    "generate": "Generar",
+    "generating": "Aplicando…",
+    "upload": {
+      "choose": "Elegir foto",
+      "change": "Cambiar",
+      "remove": "Quitar"
+    },
+    "imageUnavailable": {
+      "title": "Imagen no disponible",
+      "message": "No se pudo acceder a la foto seleccionada. Vuelve a seleccionarla e inténtalo de nuevo."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Caricatura"
+      },
+      "photoreal": {
+        "name": "Fotorrealista"
+      },
+      "sketch": {
+        "name": "Boceto"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Ilustración 3D"
+      },
+      "dark_fantasy": {
+        "name": "Fantasía oscura"
+      },
+      "vintage_film": {
+        "name": "Película vintage"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Brillo neón"
+      },
+      "epic_landscape": {
+        "name": "Paisaje épico"
+      }
+    },
+    "aspectRatios": {
+      "square": "Cuadrado",
+      "landscape": "Horizontal",
+      "portrait": "Vertical"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Personalizado"
+    },
+    "modelTaglines": {
+      "runwareFluxSchnell": "Modelo más rápido",
+      "runwareFluxKrea": "Creativo y muy estilizado",
+      "runwareQwenImage": "Equilibrio y alta calidad",
+      "google4": "Mejor modelo de imagen de Google",
+      "fluxKontent": "Flux Kontent ajustado para ediciones",
+      "runwareProvider": "Calidad equilibrada con difusión confiable.",
+      "airProvider": "Nano Banana agrega un toque vivo y divertido.",
+      "googleProvider": "Google afinado para detalles pulidos.",
+      "anthropicProvider": "Pipeline de Claude para atmósferas matizadas.",
+      "default": "Toca para explorar los motores disponibles."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "tu estilo elegido",
+    "sheetTitle": "Creando tu imagen",
+    "sheetSubtitle": "Un sorbo rápido de café del servidor mientras mezclamos {{style}} en el prompt.",
+    "phases": {
+      "blend": "Mezclando {{style}}",
+      "paint": "Pintando la escena",
+      "finish": "Añadiendo el toque final"
+    },
+    "actions": {
+      "cancel": "Cancelar",
+      "retry": "Reintentar",
+      "close": "Cerrar"
+    },
+    "errors": {
+      "restrictedTitle": "Contenido restringido",
+      "genericTitle": "Error al generar",
+      "genericMessage": "No se pudo generar la imagen."
+    },
+    "alerts": {
+      "saveFailedTitle": "No se pudo guardar",
+      "shareFailedTitle": "No se pudo compartir",
+      "tryAgain": "Intenta de nuevo."
+    },
+    "result": {
+      "complete": "Listo"
+    },
+    "accessibility": {
+      "close": "Cerrar"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Eliminar",
+      "edit": "Editar",
+      "save": "Guardar",
+      "share": "Compartir"
+    },
+    "accessibility": {
+      "close": "Cerrar",
+      "delete": "Eliminar imagen",
+      "edit": "Editar imagen",
+      "save": "Guardar imagen",
+      "share": "Compartir imagen"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Abrir menú",
+      "selectImages": "Seleccionar imágenes",
+      "exitSelection": "Salir de la selección",
+      "deleteSelected": "Eliminar imágenes seleccionadas",
+      "selectToDelete": "Seleccionar imágenes para eliminar"
+    },
+    "createCard": {
+      "title": "Crear desde texto",
+      "subtitle": "Escribe una descripción",
+      "cta": "Describir y generar"
+    },
+    "editCard": {
+      "title": "Editar una foto",
+      "subtitle": "Sube y edita",
+      "cta": "Editar foto"
+    },
+    "gallery": {
+      "title": "Galería",
+      "empty": "Aún no hay imágenes",
+      "selection": {
+        "enter": "Seleccionar imágenes",
+        "exit": "Salir de la selección",
+        "deleteSelected": "Eliminar seleccionadas",
+        "selectForDelete": "Seleccionar imágenes para eliminar"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Te presentamos",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Crea y edita imágenes con IA — dentro de {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Conoce tu IA",
+      "titleHighlight": "Asistentes",
+      "subtitle": "Expertos de IA listos para ayudarte con tu día a día",
+      "cards": [
+        {
+          "title": "Coach de fitness",
+          "text": "Planes de entrenamiento y nutrición adaptados a tus metas"
+        },
+        {
+          "title": "Doctor",
+          "text": "Información de salud, análisis de síntomas y orientación médica"
+        },
+        {
+          "title": "Cuidado de mascotas",
+          "text": "Consejos de expertos sobre salud, entrenamiento y cuidado"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "SOLUCIONES DE IA A NIVEL EMPRESARIAL",
+      "description": "Potencia tu negocio con IA avanzada diseñada para profesionales y equipos.",
+      "stats": "Confiado por 500k+ usuarios",
+      "rating": "4,9 / 5",
+      "button": "Empezar"
+    }
+  },
+  "coinStore": {
+    "title": "Obtener tokens",
+    "loading": "Cargando tienda de tokens…",
+    "balanceLabel": "Tu saldo actual es",
+    "balanceValue": "{{amount}} tokens",
+    "history": {
+      "link": "Historial de transacciones",
+      "alertTitle": "Historial",
+      "alertBody": "El historial de transacciones llegará pronto."
+    },
+    "noPacks": "No hay paquetes de tokens disponibles. Revisa el ID de offering de RevenueCat.",
+    "badges": {
+      "basic": "Paquete básico",
+      "popular": "Más popular",
+      "value": "Mejor valor"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} tokens",
+      "defaultName": "Paquete {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Hazte Premium",
+      "subtitle": "Acceso ilimitado y funciones completas",
+      "cta": "Actualizar"
+    },
+    "termsText": "Al comprar, aceptas nuestros",
+    "termsLink": "Términos de servicio",
+    "alerts": {
+      "initErrorTitle": "Error de inicio",
+      "genericMessage": "Ocurrió un error.",
+      "successTitle": "Éxito",
+      "successMessage": "Los tokens aparecerán en breve.",
+      "purchaseFailedTitle": "Compra fallida",
+      "unknownError": "Error desconocido"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Restaurar",
+    "restoreRestoring": "Restaurando…",
+    "features": {
+      "create": "Crear imágenes y videos",
+      "search": "Buscar en la web con IA",
+      "talk": "Habla de forma natural con la IA"
+    },
+    "freeTrial": {
+      "title": "Prueba gratis",
+      "subtitle": "Prueba gratuita de 3 días"
+    },
+    "badge": {
+      "bestOffer": "Mejor oferta"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Anual",
+        "only": "Solo {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Mensual",
+        "subtitle": "Cancela cuando quieras",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Semanal",
+        "subtitle": "Cancela cuando quieras",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "por semana",
+      "perMonth": "por mes"
+    },
+    "cta": "Continuar",
+    "legal": {
+      "terms": "Términos",
+      "privacy": "Privacidad"
     }
   },
   "chat": {
-    "messagePlaceholder": "Mensaje para Agarka…",
+    "messagePlaceholder": "Mensaje...",
     "createImages": "Crear imágenes",
     "generateAiArtwork": "Generar arte con IA",
     "camera": "Cámara",
-    "takeOrSelectPhotos": "Tomar o seleccionar fotos",
+    "takeOrSelectPhotos": "Tomar o elegir fotos",
     "search": "Buscar",
-    "findInformation": "Encontrar información",
-    "removeImage": "Eliminar imagen",
+    "findInformation": "Buscar información",
+    "findRecentInfo": "Buscar info reciente",
+    "removeImage": "Quitar imagen",
     "messageInput": "Entrada de mensaje",
     "clearInput": "Borrar",
+    "quickActionsLabel": "Acciones rápidas",
     "hideQuickActions": "Ocultar acciones rápidas",
     "showQuickActions": "Mostrar acciones rápidas",
-    "startVoiceInput": "Iniciar dictado por voz",
-    "sendMessage": "Enviar",
+    "startVoiceInput": "Iniciar entrada de voz",
+    "sendMessage": "Enviar mensaje",
     "offline": "Sin conexión",
     "stop": "Detener",
     "streaming": "Transmitiendo…",
     "closeRecorder": "Cerrar grabadora",
-    "insertTranscript": "Insertar transcripción",
+    "insertTranscript": "Enviar",
     "scrollToLatest": "Ir al último mensaje",
     "copyMessage": "Copiar mensaje",
     "copyMessageHint": "Copiar este mensaje al portapapeles",
@@ -207,21 +643,74 @@
     "loading": "Cargando…",
     "loadingChat": "Cargando chat...",
     "offlineBanner": "Estás sin conexión. No se pueden enviar mensajes.",
-    "imagePickerErrorTitle": "Error del selector de imágenes",
+    "imagePickerErrorTitle": "Error al seleccionar imagen",
+    "imagePickerErrorMessage": "No se pudo acceder a tus fotos. Intenta de nuevo.",
     "messageTooLong": "Mensaje demasiado largo ({{length}}). El límite es {{limit}}.",
-    "emptyTitle": "¿En qué puedo ayudarte?",
+    "sendFailed": "Error al enviar.",
+    "voiceStartFailed": "No se pudo iniciar la voz.",
+    "emptyTitle": "¿En qué te ayudo?",
     "emptySubtitle": "Empieza una conversación con IA",
     "privateTitle": "Chat privado",
     "privateSubtitle": "Este chat no aparecerá en tu historial",
+    "permissions": {
+      "photosTitle": "Se necesita permiso de fotos",
+      "photosMessage": "Necesitamos acceso a tus fotos para elegir imágenes.",
+      "voiceTitle": "Se necesita permiso de voz",
+      "voiceMessage": "Se necesita micrófono y voz para usar la función de voz."
+    },
+    "activity": {
+      "analyzingImages": "Analizando imágenes…",
+      "searching": "Buscando…",
+      "thinking": "Pensando…"
+    },
+    "webSearch": {
+      "title": "Búsqueda web",
+      "subtitle": "Buscar info reciente",
+      "label": "Búsqueda web",
+      "enable": "Activar búsqueda web",
+      "disable": "Desactivar búsqueda web",
+      "toggleLabel": "Buscar en la web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Diseña visuales rápido.",
+      "subtitle": "Genera, edita y publica en un solo lugar.",
+      "cta": "Abrir"
+    },
+    "quickActions": {
+      "createImages": "Crear imágenes",
+      "openCamera": "Abrir cámara",
+      "editImage": "Editar imagen",
+      "startVoice": "Iniciar voz",
+      "assistants": "Asistentes"
+    },
     "listening": "Escuchando…",
     "startRecording": "Iniciando grabación…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistente no disponible",
+      "unavailableDescription": "No se pudo cargar este asistente. Intenta de nuevo.",
+      "ready": "Listo para ayudarte"
+    },
+    "actions": {
+      "copy": "Copiar",
+      "share": "Compartir",
+      "regenerate": "Regenerar",
+      "retryFromHere": "Reintentar desde aquí",
+      "cancel": "Cancelar"
+    },
+    "messageActionTitle": "Mensaje",
+    "status": {
+      "sending": "Enviando…",
+      "failed": "Falló",
+      "sent": "Enviado"
+    },
     "suggestions": {
       "writeStory": "Escribir una historia creativa",
       "writeStorySubtitle": "sobre una aventura mágica",
-      "planTravel": "Planear un itinerario de viaje",
+      "planTravel": "Planear un viaje",
       "planTravelSubtitle": "para unas vacaciones increíbles",
       "explainConcept": "Explicar este concepto",
-      "explainConceptSubtitle": "en términos sencillos",
+      "explainConceptSubtitle": "en palabras simples",
       "planDay": "Planear mi día",
       "planDaySubtitle": "con consejos de productividad"
     }
@@ -229,7 +718,7 @@
   "imageUpload": {
     "required": " *",
     "processing": "Procesando...",
-    "tapToUploadImage": "Toca para subir una imagen"
+    "tapToUploadImage": "Toca para subir imagen"
   },
   "imageGridSelector": {
     "required": " *",
@@ -243,6 +732,7 @@
     "cancel": "Cancelar",
     "save": "Guardar",
     "delete": "Eliminar",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "allow": "Permitir"
   }
 }

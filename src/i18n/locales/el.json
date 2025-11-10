@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Επιλογή μοντέλου",
-      "searchPlaceholder": "Αναζήτηση μοντέλων...",
-      "noModelsFound": "Δεν βρέθηκαν μοντέλα",
-      "noModelsAvailable": "Δεν υπάρχουν διαθέσιμα μοντέλα",
-      "currentModel": "Τρέχον μοντέλο: {{name}}. Πατήστε για αλλαγή.",
-      "openHint": "Ανοίγει το μενού επιλογής μοντέλου",
-      "closeLabel": "Κλείσιμο επιλογέα μοντέλου",
-      "searchLabel": "Αναζήτηση μοντέλων",
-      "searchHint": "Πληκτρολογήστε για φιλτράρισμα μοντέλων",
-      "modelLabel": "Μοντέλο {{name}}",
-      "selectHint": "Επιλογή {{name}}",
-      "currentlySelected": "Επιλεγμένο μοντέλο"
+  "modelSelector": {
+    "title": "Επιλογή μοντέλου",
+    "searchPlaceholder": "Αναζήτηση μοντέλων...",
+    "noModelsFound": "Δεν βρέθηκαν μοντέλα",
+    "noModelsAvailable": "Δεν υπάρχουν διαθέσιμα μοντέλα",
+    "currentModel": "Τρέχον μοντέλο: {{name}}. Πάτησε για αλλαγή.",
+    "openHint": "Ανοίγει το μενού επιλογής μοντέλου",
+    "closeLabel": "Κλείσιμο επιλογέα μοντέλου",
+    "searchLabel": "Αναζήτηση μοντέλων",
+    "searchHint": "Πληκτρολόγησε για να φιλτράρεις τα διαθέσιμα μοντέλα",
+    "modelLabel": "Μοντέλο {{name}}",
+    "selectHint": "Επιλογή μοντέλου {{name}}",
+    "currentlySelected": "Επιλεγμένο αυτή τη στιγμή"
+  },
+  "models": {
+    "gpt-4o": "Ισχυρότερο μοντέλο ΤΝ",
+    "gpt-4o-mini": "Γρήγορο για καθημερινές εργασίες",
+    "gpt-5": "Πιο ισχυρή και ευέλικτη ΤΝ",
+    "gpt-5-chat-latest": "Βελτιστοποιημένο για συνομιλία",
+    "gpt-5-mini": "Γρήγορο και αξιόπιστο GPT-5",
+    "gpt-5-nano": "Ελαφρύ μοντέλο για απλές εργασίες",
+    "o4-mini": "Αποδοτικό μοντέλο συλλογισμού",
+    "gpt-4.1-mini": "Συμπαγές, ικανό GPT-4.1",
+    "claude-3-haiku": "Γρήγορη και στοχευμένη ΤΝ Anthropic",
+    "claude-3.7-sonnet": "Εξελιγμένος συλλογισμός Anthropic",
+    "gemini-2.5-Flash": "Το πιο προηγμένο μοντέλο της Google",
+    "gemini-2.5-flash": "Το πιο προηγμένο μοντέλο της Google",
+    "gemini-2.0-flash": "Γρήγορη και ακριβής ΤΝ Google"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Άλλο"
+  },
+  "navigation": {
+    "chat": "Νέα συνομιλία",
+    "history": "Ιστορικό",
+    "assistants": "Βοηθοί",
+    "imagesStudio": "Image Studio",
+    "settings": "Ρυθμίσεις",
+    "recentChats": "Πρόσφατες συνομιλίες"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Δημιούργησε, βελτίωσε και δημοσίευσε οπτικά assets σε ένα μέρος.",
+    "cta": "Άνοιγμα"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Επιλογή εικόνων",
+    "exitSelectionMode": "Έξοδος από λειτουργία επιλογής",
+    "selectAll": "Επιλογή όλων",
+    "noImagesYet": "Δεν υπάρχουν εικόνες ακόμη",
+    "describeImageHint": "Περιέγραψε την εικόνα και πάτησε Δημιουργία.",
+    "generatedImagesGallery": "Συλλογή δημιουργημένων εικόνων",
+    "describeImagePlaceholder": "Περιέγραψε την εικόνα που θέλεις…",
+    "deleteConfirmTitle": "Διαγραφή εικόνων",
+    "deleteConfirmMessage": "Σίγουρα θέλεις να διαγράψεις τις επιλεγμένες εικόνες; Αυτή η ενέργεια δεν αναιρείται.",
+    "cancel": "Άκυρο",
+    "delete": "Διαγραφή",
+    "generate": "Δημιουργία",
+    "generating": "Δημιουργία…",
+    "latest": "Πιο πρόσφατες",
+    "insertToChat": "Εισαγωγή στη συνομιλία",
+    "pleaseWait": "Περίμενε…",
+    "processing": "Επεξεργασία...",
+    "tapToUploadImage": "Πάτησε για μεταφόρτωση εικόνας",
+    "camera": "Κάμερα",
+    "library": "Συλλογή",
+    "enterPrompt": "Πληκτρολόγησε prompt για text-to-image",
+    "openInBrowser": "Άνοιγμα στον περιηγητή",
+    "makeVariations": "Δημιουργία παραλλαγών",
+    "deleteAllFromGeneration": "Διαγραφή όλων από αυτή τη δημιουργία",
+    "imageOptionsTitle": "Επιλογές εικόνας",
+    "imageOptionsMessage": "Τι θέλεις να κάνεις με αυτή την εικόνα;",
+    "insertMarkdownHeader": "Να η εικόνα για:",
+    "variationSuffix": "— παραλλαγή προηγούμενης εικόνας",
+    "selectedCount": "επιλεγμένες",
+    "selectedCount_one": "επιλεγμένη",
+    "selectedCount_other": "επιλεγμένες",
+    "imageDescriptionInput": "Πεδίο περιγραφής εικόνας",
+    "imageDescriptionHint": "Γράψε περιγραφή της εικόνας που θέλεις να δημιουργηθεί",
+    "openModelSettings": "Άνοιγμα ρυθμίσεων μοντέλου",
+    "modelSettingsHint": "Πάτησε για αλλαγή μοντέλου και ρυθμίσεων",
+    "openPhotoGallery": "Άνοιγμα συλλογής",
+    "clearInput": "Εκκαθάριση",
+    "generatedImage": "Δημιουργημένη εικόνα",
+    "autoSelectedModel": "Επιλέχθηκε αυτόματα το {{model}} για λειτουργία {{mode}}",
+    "deleteSelectedConfirmTitle": "Διαγραφή εικόνων",
+    "deleteSelectedConfirmMessage": "Σίγουρα θέλεις να διαγράψεις αυτές τις εικόνες; Η ενέργεια δεν αναιρείται."
+  },
+  "imageStudio": {
+    "generateImage": "Δημιουργία εικόνας",
+    "generatingImage": "Δημιουργία εικόνας…",
+    "generateImageHint": "Πάτησε για να δημιουργηθεί εικόνα από την περιγραφή",
+    "imageDescriptionInput": "Πεδίο περιγραφής εικόνας",
+    "imageDescriptionHint": "Γράψε την περιγραφή της εικόνας που θέλεις",
+    "openModelSettings": "Άνοιγμα ρυθμίσεων μοντέλου",
+    "modelSettingsHint": "Πάτησε για να αλλάξεις μοντέλο και ρυθμίσεις",
+    "openPhotoGallery": "Άνοιγμα συλλογής φωτογραφιών",
+    "clearInput": "Εκκαθάριση",
+    "generatedImage": "Δημιουργημένη εικόνα"
+  },
+  "assistants": {
+    "title": "Βοηθοί",
+    "subtitle": "Επιλεγμένοι βοηθοί ΤΝ για κώδικα, γράψιμο, ανάλυση, οργάνωση και άλλα.",
+    "searchPlaceholder": "Αναζήτηση βοηθών…",
+    "useAssistant": "Χρήση βοηθού",
+    "selectAssistant": "Επιλογή βοηθού",
+    "description": "Περιγραφή",
+    "systemPrompt": "System prompt",
+    "chooseModel": "Επιλογή μοντέλου",
+    "categoryAll": "Όλα",
+    "categories": {
+      "everyday": "Καθημερινά",
+      "life": "Ζωή",
+      "health": "Υγεία",
+      "schoolWork": "Σχολείο & Εργασία",
+      "coding": "Προγραμματισμός",
+      "creative": "Δημιουργικό",
+      "general": "Γενικά"
+    },
+    "presets": {
+      "default": {
+        "name": "Προεπιλεγμένος βοηθός",
+        "description": "Ισορροπημένη βοήθεια για καθημερινές ανάγκες."
+      },
+      "quick": {
+        "name": "Γρήγορες απαντήσεις",
+        "description": "Σύντομες και άμεσες απαντήσεις."
+      },
+      "planner": {
+        "name": "Ημερήσιος προγραμματισμός",
+        "description": "Οργάνωσε την ημέρα και τις ρουτίνες σου."
+      },
+      "recipes": {
+        "name": "Γεύματα & συνταγές",
+        "description": "Τι να μαγειρέψεις με ό,τι έχεις."
+      },
+      "fitness": {
+        "name": "Άσκηση & συνήθειες",
+        "description": "Μικρές συνήθειες και ασκήσεις στο σπίτι."
+      },
+      "money": {
+        "name": "Χρήματα",
+        "description": "Απλοί προϋπολογισμοί και συμβουλές εξόδων."
+      },
+      "study": {
+        "name": "Διάβασμα",
+        "description": "Εξήγησέ το απλά. Κάνε μου κουίζ."
+      },
+      "email": {
+        "name": "Email & Βιογραφικό",
+        "description": "Γράψε καθαρά emails και γραμμές CV."
+      },
+      "translator": {
+        "name": "Μεταφραστής",
+        "description": "Μετάφραση και εκμάθηση φράσεων."
+      },
+      "travel": {
+        "name": "Ταξίδι",
+        "description": "Απλά πλάνα και λίστες αποσκευών."
+      },
+      "tech": {
+        "name": "Τεχνική υποστήριξη (απλή)",
+        "description": "Τηλέφωνο, εφαρμογές, βασικό Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL;DR",
+        "description": "Σύντομα bullets + μία περίληψη."
+      },
+      "gift": {
+        "name": "Δώρα",
+        "description": "Ιδέες ανά budget και ενδιαφέροντα."
+      },
+      "party": {
+        "name": "Οργάνωση event (lite)",
+        "description": "Γρήγορη οργάνωση μικρής συγκέντρωσης."
+      },
+      "social": {
+        "name": "Δημιουργός post",
+        "description": "Φτιάξε posts με επιλογές."
+      },
+      "interview": {
+        "name": "Συνέντευξη",
+        "description": "Προπόνηση απαντήσεων (STAR)."
+      },
+      "homefix": {
+        "name": "Επισκευές σπιτιού",
+        "description": "Απλές οδηγίες DIY."
+      },
+      "pet": {
+        "name": "Φροντίδα κατοικιδίων",
+        "description": "Τάισμα, βόλτα, βασική εκπαίδευση."
+      },
+      "mindful": {
+        "name": "Στιγμή ηρεμίας",
+        "description": "Παρ’ 1–3 λεπτά να χαλαρώσεις."
+      },
+      "polite": {
+        "name": "Ευγενική επανεγγραφή",
+        "description": "Ξαναγράψε μηνύματα πιο ευγενικά."
+      }
+    }
+  },
+  "history": {
+    "title": "Ιστορικό",
+    "searchPlaceholder": "Αναζήτηση συνομιλιών…",
+    "newChat": "Νέα συνομιλία",
+    "new": "+ Νέα",
+    "search": "Αναζήτηση",
+    "clearSearch": "Καθαρισμός αναζήτησης",
+    "noChatsYet": "Δεν υπάρχουν συνομιλίες ακόμη",
+    "startFirstConversation": "Ξεκίνησε την πρώτη σου συνομιλία.",
+    "startChat": "Έναρξη συνομιλίας",
+    "errorLoadingHistory": "Σφάλμα κατά τη φόρτωση ιστορικού",
+    "renameChat": "Μετονομασία συνομιλίας",
+    "enterNewTitle": "Γράψε νέο τίτλο",
+    "deleteChat": "Διαγραφή συνομιλίας;",
+    "deleteChatMessage": "«{{title}}» θα διαγραφεί.",
+    "rename": "Μετονομασία",
+    "unpin": "Ξεκαρφίτσωμα",
+    "pin": "Καρφίτσωμα",
+    "untitled": "Χωρίς τίτλο"
+  },
+  "settings": {
+    "title": "Ρυθμίσεις",
+    "model": "Μοντέλο",
+    "searchPlaceholder": "Αναζήτηση μοντέλων…",
+    "temperatureForCurrentModel": "Θερμοκρασία για το τρέχον μοντέλο",
+    "customFor": "Προσαρμοσμένο για {{model}}",
+    "usingDefault": "Χρήση προεπιλογής {{temperature}}",
+    "resetToDefault": "Επαναφορά προεπιλογής",
+    "defaultTemperature": "Προεπιλεγμένη θερμοκρασία (fallback)",
+    "usedByModelsWithoutOverride": "Χρησιμοποιείται από μοντέλα χωρίς δική τους ρύθμιση",
+    "dangerZone": "Ζώνη κινδύνου",
+    "clearAllChatsAndSettings": "Διαγραφή όλων των συνομιλιών & ρυθμίσεων",
+    "about": "Σχετικά",
+    "version": "Έκδοση {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Πολιτική απορρήτου",
+    "hero": {
+      "label": "Ειδική προσφορά",
+      "title": "Προτεραιότητα & χωρίς όρια",
+      "upgrade": "Αναβάθμιση",
+      "manage": "Διαχείριση πλάνου"
+    },
+    "sections": {
+      "premium": "Premium πλάνο",
+      "data": "Δεδομένα χρήστη",
+      "support": "Υποστήριξη & νομικά"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Απόκτησε Premium",
+        "subtitle": "Ξεκλείδωσε απεριόριστα εργαλεία δημιουργίας"
+      },
+      "premiumActive": {
+        "title": "Premium ενεργό",
+        "subtitle": "Ευχαριστούμε που στηρίζεις το ChatCloud"
+      },
+      "restore": {
+        "title": "Επαναφορά αγορών",
+        "subtitle": "Χρήσιμο αν άλλαξες συσκευή"
+      },
+      "history": {
+        "title": "Διαχείριση ιστορικού",
+        "subtitle": "Δες και διέγραψε παλιές συνεδρίες"
+      },
+      "reset": {
+        "title": "Επαναφορά συνομιλιών & προτιμήσεων",
+        "subtitle": "Σβήνει όλα τα τοπικά δεδομένα σε αυτή τη συσκευή"
+      },
+      "rate": {
+        "title": "Βαθμολόγησέ μας",
+        "error": "Αδυναμία ανοίγματος της σελίδας."
+      },
+      "support": {
+        "title": "Υποστήριξη",
+        "subtitle": "Επικοινώνησε μαζί μας online",
+        "error": "Αδυναμία ανοίγματος σελίδας υποστήριξης."
+      },
+      "privacy": {
+        "title": "Πολιτική απορρήτου",
+        "error": "Αδυναμία ανοίγματος πολιτικής."
+      },
+      "terms": {
+        "title": "Όροι χρήσης",
+        "error": "Αδυναμία ανοίγματος όρων."
+      }
+    },
+    "capabilities": {
+      "text": "ΚΕΙΜ",
+      "image": "ΕΙΚ",
+      "audio": "ΗΧΟΣ",
+      "video": "ΒΙΝΤΕΟ"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Μη διαθέσιμο",
+      "linkUnavailableMessage": "Αυτός ο σύνδεσμος δεν μπορεί να ανοίξει τώρα.",
+      "restoreSuccessTitle": "Επαναφέρθηκε",
+      "restoreSuccessMessage": "Οι αγορές σου επαναφέρθηκαν.",
+      "restoreErrorTitle": "Αδυναμία επαναφοράς",
+      "restoreErrorMessage": "Δεν γίνεται να επαναφερθούν οι αγορές τώρα.",
+      "resetConfirmTitle": "Επαναφορά δεδομένων εφαρμογής;",
+      "resetConfirmMessage": "Θα διαγραφούν όλες οι συνομιλίες και οι τοπικές ρυθμίσεις.",
+      "resetConfirmCancel": "Άκυρο",
+      "resetConfirmCta": "Επαναφορά"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Δημιουργία",
+    "chooseStyle": "Επιλογή στυλ",
+    "aspectRatio": "Αναλογία πλευρών",
+    "starterPrompts": {
+      "title": "Προτεινόμενα prompts",
+      "items": [
+        "πορτρέτο στούντιο",
+        "μοντέρνο σαλόνι",
+        "τροπική παραλία στο ηλιοβασίλεμα"
+      ]
+    },
+    "promptPlaceholder": "Γράψε τι θέλεις να δεις…",
+    "promptHint": "Παράδειγμα: «Golden retriever με φωτισμό στούντιο»",
+    "clearText": "Εκκαθάριση κειμένου",
+    "generate": "Δημιουργία",
+    "generating": "Δημιουργία…"
+  },
+  "editImage": {
+    "headerTitle": "Επεξεργασία",
+    "chooseStyle": "Επιλογή στυλ",
+    "aspectRatio": "Αναλογία πλευρών",
+    "starterPrompts": {
+      "title": "Προτεινόμενα prompts",
+      "items": [
+        "διόρθωση φωτισμού",
+        "αφαίρεση φόντου",
+        "απαλό ρετούς πορτρέτου"
+      ]
+    },
+    "promptPlaceholder": "Περιέγραψε τις αλλαγές (προαιρετικό)",
+    "clearText": "Εκκαθάριση",
+    "generate": "Εφαρμογή",
+    "generating": "Εφαρμογή…",
+    "upload": {
+      "choose": "Επιλογή φωτογραφίας",
+      "change": "Αλλαγή",
+      "remove": "Αφαίρεση"
+    },
+    "imageUnavailable": {
+      "title": "Η εικόνα δεν είναι διαθέσιμη",
+      "message": "Δεν ήταν δυνατή η πρόσβαση στη φωτογραφία. Δοκίμασε να την επιλέξεις ξανά."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Καρτούν"
+      },
+      "photoreal": {
+        "name": "Φωτορεαλιστικό"
+      },
+      "sketch": {
+        "name": "Σκίτσο"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D εικονογράφηση"
+      },
+      "dark_fantasy": {
+        "name": "Σκοτεινή φαντασία"
+      },
+      "vintage_film": {
+        "name": "Ρετρό φιλμ"
+      },
+      "pastel": {
+        "name": "Παステλ"
+      },
+      "neon_glow": {
+        "name": "Νέον"
+      },
+      "epic_landscape": {
+        "name": "Επικό τοπίο"
+      }
+    },
+    "aspectRatios": {
+      "square": "Τετράγωνο",
+      "landscape": "Οριζόντιο",
+      "portrait": "Κάθετο"
     },
     "models": {
-      "gpt-4o": "Το ισχυρότερο μοντέλο ΤΝ",
-      "gpt-4o-mini": "Γρήγορο για καθημερινές εργασίες",
-      "claude-3-haiku": "Γρήγορο και αποδοτικό μοντέλο",
-      "claude-3.7-sonnet": "Προηγμένο μοντέλο συλλογιστικής",
-      "gemini-2.5-pro": "Το καλύτερο μοντέλο της Google",
-      "gemini-2.0-flash": "Γρήγορο μοντέλο με εξαιρετική συλλογιστική"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Προσαρμοσμένο"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Άλλο"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Ταχύτερο μοντέλο",
+      "runwareFluxKrea": "Δημιουργικό & στιλιζαρισμένο",
+      "runwareQwenImage": "Ισορροπημένη ποιότητα",
+      "google4": "Κορυφαίο μοντέλο εικόνας Google",
+      "fluxKontent": "Flux Kontent για επεξεργασίες",
+      "runwareProvider": "Ισορροπία ποιότητας και σταθερότητας.",
+      "airProvider": "Το Nano Banana δίνει παιχνιδιάρικη ένταση.",
+      "googleProvider": "Τονισμένες λεπτομέρειες από Google.",
+      "anthropicProvider": "Claude pipeline για πιο εκφραστικά στυλ.",
+      "default": "Πάτησε για να δεις τις διαθέσιμες μηχανές."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "το επιλεγμένο στυλ",
+    "sheetTitle": "Φτιάχνουμε την εικόνα σου",
+    "sheetSubtitle": "Μισό λεπτό, ενσωματώνουμε το {{style}} στο prompt.",
+    "phases": {
+      "blend": "Ανάμειξη {{style}}",
+      "paint": "Σχεδιάζουμε τη σκηνή",
+      "finish": "Προσθήκη τελικών λεπτομερειών"
     },
-    "navigation": {
-      "chat": "Συνομιλία",
-      "history": "Ιστορικό",
-      "assistants": "Βοηθοί",
-      "imagesStudio": "Στούντιο",
-      "settings": "Ρυθμίσεις",
-      "recentChats": "Πρόσφατες συνομιλίες"
-    },
-    "imagesStudio": {
-      "title": "Στούντιο",
-      "selectImages": "Επιλογή εικόνων",
-      "exitSelectionMode": "Έξοδος από λειτουργία επιλογής",
-      "selectAll": "Επιλογή όλων",
-      "noImagesYet": "Δεν υπάρχουν ακόμη εικόνες",
-      "describeImageHint": "Περιγράψτε την εικόνα σας παρακάτω και πατήστε «Δημιουργία».",
-      "generatedImagesGallery": "Συλλογή δημιουργημένων εικόνων",
-      "describeImagePlaceholder": "Περιγράψτε την επιθυμητή εικόνα…",
-      "deleteConfirmTitle": "Διαγραφή εικόνων",
-      "deleteConfirmMessage": "Θέλετε σίγουρα να διαγράψετε τις επιλεγμένες εικόνες; Η ενέργεια δεν μπορεί να αναιρεθεί.",
+    "actions": {
       "cancel": "Άκυρο",
-      "delete": "Διαγραφή",
-      "generate": "Δημιουργία",
-      "generating": "Δημιουργία…",
-      "latest": "Πρόσφατα",
-      "insertToChat": "Εισαγωγή στη συνομιλία",
-      "pleaseWait": "Παρακαλώ περιμένετε…",
-      "processing": "Επεξεργασία...",
-      "tapToUploadImage": "Πατήστε για μεταφόρτωση εικόνας",
-      "camera": "Κάμερα",
-      "library": "Συλλογή",
-      "enterPrompt": "Εισαγάγετε προτροπή για δημιουργία κειμένου-σε-εικόνα",
-      "openInBrowser": "Άνοιγμα σε πρόγραμμα περιήγησης",
-      "makeVariations": "Δημιουργία παραλλαγών",
-      "deleteAllFromGeneration": "Διαγραφή όλων από αυτήν τη δημιουργία",
-      "imageOptionsTitle": "Επιλογές εικόνας",
-      "imageOptionsMessage": "Τι θέλετε να κάνετε με αυτήν την εικόνα;",
-      "insertMarkdownHeader": "Να η εικόνα για:",
-      "variationSuffix": "— παραλλαγή της προηγούμενης εικόνας",
-      "selectedCount": "επιλεγμένα",
-      "selectedCount_one": "επιλεγμένα",
-      "selectedCount_other": "επιλεγμένα",
-      "imageDescriptionInput": "Πεδίο περιγραφής εικόνας",
-      "imageDescriptionHint": "Εισαγάγετε περιγραφή της εικόνας που θέλετε να δημιουργήσετε",
-      "openModelSettings": "Άνοιγμα ρυθμίσεων μοντέλου",
-      "modelSettingsHint": "Πατήστε για αλλαγή μοντέλου και ρυθμίσεων",
-      "openPhotoGallery": "Άνοιγμα συλλογής",
-      "clearInput": "Καθαρισμός πεδίου",
-      "generatedImage": "Δημιουργημένη εικόνα",
-      "autoSelectedModel": "Αυτόματη επιλογή {{model}} για λειτουργία {{mode}}",
-      "deleteSelectedConfirmTitle": "Διαγραφή εικόνων",
-      "deleteSelectedConfirmMessage": "Θέλετε σίγουρα να διαγράψετε εικόνες; Η ενέργεια δεν μπορεί να αναιρεθεί."
+      "retry": "Ξανά",
+      "close": "Κλείσιμο"
     },
-    "imageStudio": {
-      "generateImage": "Δημιουργία εικόνας",
-      "generatingImage": "Δημιουργία εικόνας",
-      "generateImageHint": "Πατήστε για δημιουργία εικόνας βάσει της περιγραφής σας",
-      "imageDescriptionInput": "Πεδίο περιγραφής εικόνας",
-      "imageDescriptionHint": "Εισαγάγετε περιγραφή της εικόνας που θέλετε να δημιουργήσετε",
-      "openModelSettings": "Άνοιγμα ρυθμίσεων μοντέλου",
-      "modelSettingsHint": "Πατήστε για αλλαγή μοντέλου και ρυθμίσεων",
-      "openPhotoGallery": "Άνοιγμα συλλογής",
-      "clearInput": "Καθαρισμός πεδίου",
-      "generatedImage": "Δημιουργημένη εικόνα"
+    "errors": {
+      "restrictedTitle": "Περιορισμένο περιεχόμενο",
+      "genericTitle": "Η δημιουργία απέτυχε",
+      "genericMessage": "Δεν ήταν δυνατή η δημιουργία της εικόνας."
     },
-    "assistants": {
-      "title": "Βοηθοί",
-      "subtitle": "Επιλεγμένοι ειδικοί ΤΝ για κώδικα, συγγραφή, ανάλυση, προγραμματισμό και άλλα.",
-      "searchPlaceholder": "Αναζήτηση βοηθών…",
-      "useAssistant": "Χρήση βοηθού",
-      "description": "Περιγραφή",
-      "systemPrompt": "Συστημική προτροπή",
-      "chooseModel": "Επιλέξτε μοντέλο",
-      "categoryAll": "Όλα",
-      "categories": {
-        "everyday": "Καθημερινά",
-        "life": "Ζωή",
-        "health": "Υγεία",
-        "schoolWork": "Σχολείο & εργασία",
-        "coding": "Προγραμματισμός",
-        "creative": "Δημιουργικό",
-        "general": "Γενικά"
-      },
-      "presets": {
-        "default": { "name": "Προεπιλεγμένος βοηθός", "description": "Ισορροπημένη βοήθεια για καθημερινά θέματα." },
-        "quick": { "name": "Γρήγορες απαντήσεις", "description": "Σύντομες, άμεσες απαντήσεις." },
-        "planner": { "name": "Ημερήσιος προγραμματισμός", "description": "Οργανώστε την ημέρα και τις ρουτίνες σας." },
-        "recipes": { "name": "Γεύματα & συνταγές", "description": "Τι να μαγειρέψετε με ό,τι έχετε." },
-        "fitness": { "name": "Coach συνηθειών & άσκησης", "description": "Μικρές συνήθειες & ασκήσεις στο σπίτι." },
-        "money": { "name": "Οικονομικός βοηθός", "description": "Απλοί προϋπολογισμοί & συμβουλές δαπανών." },
-        "study": { "name": "Βοηθός μελέτης", "description": "Εξήγησε απλά. Κάνε με κουίζ." },
-        "email": { "name": "Email & βιογραφικό", "description": "Γράψτε καθαρά email και σημεία CV." },
-        "translator": { "name": "Μεταφραστής", "description": "Μεταφράστε + μάθετε φράσεις." },
-        "travel": { "name": "Ταξιδιωτικός σύντροφος", "description": "Απλά πλάνα & λίστες αποσκευών." },
-        "tech": { "name": "Τεχνική υποστήριξη (απλή)", "description": "Βασικά για τηλέφωνο, εφαρμογές και Wi-Fi." },
-        "summarizer": { "name": "Συνοπτικά TL;DR", "description": "Σύντομες κουκκίδες + σύνοψη μίας γραμμής." },
-        "gift": { "name": "Εύρεση δώρων", "description": "Ιδέες ανά προϋπολογισμό & ενδιαφέροντα." },
-        "party": { "name": "Διοργάνωση εκδήλωσης (ελαφρά)", "description": "Γρήγορη οργάνωση μικρού πάρτι." },
-        "social": { "name": "Δημιουργός αναρτήσεων", "description": "Προσχέδια αναρτήσεων με επιλογές." },
-        "interview": { "name": "Coach συνεντεύξεων", "description": "Εξασκηθείτε στις απαντήσεις (STAR)." },
-        "homefix": { "name": "Οδηγός επιδιόρθωσης σπιτιού", "description": "Απλή διάγνωση & λύσεις." },
-        "pet": { "name": "Φροντίδα κατοικιδίων", "description": "Σίτιση, βόλτες & βασική εκπαίδευση." },
-        "mindful": { "name": "Λεπτό επίγνωσης", "description": "Ήρεμες παύσεις 1–3 λεπτών." },
-        "polite": { "name": "Ευγενική αναδιατύπωση", "description": "Ξαναγράψτε κείμενα & απαντήσεις ευγενικά." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Δεν αποθηκεύτηκε",
+      "shareFailedTitle": "Δεν κοινοποιήθηκε",
+      "tryAgain": "Δοκίμασε ξανά."
     },
-    "history": {
-      "title": "Ιστορικό",
-      "searchPlaceholder": "Αναζήτηση συνομιλιών…",
-      "newChat": "Νέα συνομιλία",
-      "new": "+ Νέο",
-      "search": "Αναζήτηση",
-      "clearSearch": "Εκκαθάριση αναζήτησης",
-      "noChatsYet": "Δεν υπάρχουν ακόμα συνομιλίες",
-      "startFirstConversation": "Ξεκινήστε την πρώτη σας συνομιλία.",
-      "startChat": "Έναρξη συνομιλίας",
-      "errorLoadingHistory": "Σφάλμα φόρτωσης ιστορικού",
-      "renameChat": "Μετονομασία συνομιλίας",
-      "enterNewTitle": "Εισαγάγετε νέο τίτλο",
-      "deleteChat": "Διαγραφή συνομιλίας;",
-      "deleteChatMessage": "Το «{{title}}» θα διαγραφεί.",
-      "rename": "Μετονομασία",
-      "unpin": "Ξεκαρφίτσωμα",
-      "pin": "Καρφίτσωμα",
-      "untitled": "Χωρίς τίτλο"
+    "result": {
+      "complete": "Έτοιμο"
     },
-    "settings": {
-      "title": "Ρυθμίσεις",
-      "model": "Μοντέλο",
-      "searchPlaceholder": "Αναζήτηση μοντέλων…",
-      "temperatureForCurrentModel": "Θερμοκρασία τρέχοντος μοντέλου",
-      "customFor": "Προσαρμοσμένο για {{model}}",
-      "usingDefault": "Χρήση προεπιλογής {{temperature}}",
-      "resetToDefault": "Επαναφορά προεπιλογών",
-      "defaultTemperature": "Προεπιλεγμένη θερμοκρασία (εφεδρική)",
-      "usedByModelsWithoutOverride": "Χρησιμοποιείται από μοντέλα χωρίς αντικατάσταση",
-      "dangerZone": "Ζώνη κινδύνου",
-      "clearAllChatsAndSettings": "Διαγραφή όλων των συνομιλιών και ρυθμίσεων",
-      "about": "Σχετικά",
-      "version": "Έκδοση {{version}}",
-      "privacyPolicy": "Πολιτική απορρήτου",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Μήνυμα προς Agarka...",
-      "createImages": "Δημιουργία εικόνων",
-      "generateAiArtwork": "Δημιουργία έργου ΤΝ",
-      "camera": "Κάμερα",
-      "takeOrSelectPhotos": "Τραβήξτε ή επιλέξτε φωτογραφίες",
-      "search": "Αναζήτηση",
-      "findInformation": "Εύρεση πληροφοριών",
-      "removeImage": "Αφαίρεση εικόνας",
-      "messageInput": "Πεδίο μηνύματος",
-      "clearInput": "Καθαρισμός πεδίου",
-      "hideQuickActions": "Απόκρυψη γρήγορων ενεργειών",
-      "showQuickActions": "Εμφάνιση γρήγορων ενεργειών",
-      "startVoiceInput": "Έναρξη φωνητικής εισόδου",
-      "sendMessage": "Αποστολή",
-      "offline": "Εκτός σύνδεσης",
-      "stop": "Διακοπή",
-      "streaming": "Ροή…",
-      "closeRecorder": "Κλείσιμο εγγραφέα",
-      "insertTranscript": "Εισαγωγή απομαγνητοφώνησης",
-      "scrollToLatest": "Μετάβαση στο πιο πρόσφατο",
-      "copyMessage": "Αντιγραφή μηνύματος",
-      "copyMessageHint": "Αντιγραφή αυτού του μηνύματος στο πρόχειρο",
-      "shareMessage": "Κοινή χρήση μηνύματος",
-      "shareMessageHint": "Κοινή χρήση αυτού του μηνύματος",
-      "regenerateResponse": "Αναδημιουργία απάντησης",
-      "regenerateResponseHint": "Δημιουργία νέας απάντησης",
-      "copyCode": "Αντιγραφή κώδικα",
-      "image": "εικόνα",
-      "loading": "Φόρτωση…",
-      "loadingChat": "Φόρτωση συνομιλίας...",
-      "offlineBanner": "Είστε εκτός σύνδεσης. Δεν είναι δυνατή η αποστολή μηνυμάτων.",
-      "imagePickerErrorTitle": "Σφάλμα επιλογής εικόνας",
-      "messageTooLong": "Το μήνυμα είναι πολύ μεγάλο ({{length}}). Το όριο είναι {{limit}}.",
-      "emptyTitle": "Πώς μπορώ να βοηθήσω;",
-      "emptySubtitle": "Ξεκινήστε μια συνομιλία με ΤΝ",
-      "privateTitle": "Ιδιωτική συνομιλία",
-      "privateSubtitle": "Η συνομιλία δεν θα εμφανιστεί στο ιστορικό σας",
-      "listening": "Ακρόαση…",
-      "startRecording": "Έναρξη εγγραφής…",
-      "suggestions": {
-        "writeStory": "Γράψε μια δημιουργική ιστορία",
-        "writeStorySubtitle": "για μια μαγική περιπέτεια",
-        "planTravel": "Σχεδίασε ταξιδιωτικό πλάνο",
-        "planTravelSubtitle": "για υπέροχες διακοπές",
-        "explainConcept": "Εξήγησε αυτήν την έννοια",
-        "explainConceptSubtitle": "με απλά λόγια",
-        "planDay": "Οργάνωσε τη μέρα μου",
-        "planDaySubtitle": "με συμβουλές παραγωγικότητας"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Επεξεργασία...",
-      "tapToUploadImage": "Πατήστε για μεταφόρτωση εικόνας"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Επεξεργασία...",
-      "camera": "Κάμερα",
-      "library": "Συλλογή"
-    },
-    "common": {
-      "new": "ΝΕΟ",
-      "best": "ΚΑΛΥΤΕΡΟ",
-      "cancel": "Άκυρο",
-      "save": "Αποθήκευση",
-      "delete": "Διαγραφή",
+    "accessibility": {
       "close": "Κλείσιμο"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Διαγραφή",
+      "edit": "Επεξεργασία",
+      "save": "Αποθήκευση",
+      "share": "Κοινοποίηση"
+    },
+    "accessibility": {
+      "close": "Κλείσιμο",
+      "delete": "Διαγραφή εικόνας",
+      "edit": "Επεξεργασία εικόνας",
+      "save": "Αποθήκευση εικόνας",
+      "share": "Κοινοποίηση εικόνας"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Άνοιγμα μενού",
+      "selectImages": "Επιλογή εικόνων",
+      "exitSelection": "Έξοδος από επιλογή",
+      "deleteSelected": "Διαγραφή επιλεγμένων εικόνων",
+      "selectToDelete": "Επιλογή εικόνων για διαγραφή"
+    },
+    "createCard": {
+      "title": "Δημιουργία από κείμενο",
+      "subtitle": "Γράψε μια περιγραφή",
+      "cta": "Περιγραφή & δημιουργία"
+    },
+    "editCard": {
+      "title": "Επεξεργασία φωτογραφίας",
+      "subtitle": "Μεταφόρτωση & επεξεργασία",
+      "cta": "Επεξεργασία φωτογραφίας"
+    },
+    "gallery": {
+      "title": "Συλλογή",
+      "empty": "Δεν υπάρχουν εικόνες ακόμη",
+      "selection": {
+        "enter": "Επιλογή εικόνων",
+        "exit": "Έξοδος επιλογής",
+        "deleteSelected": "Διαγραφή επιλεγμένων",
+        "selectForDelete": "Επίλεξε εικόνες για διαγραφή"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Γνώρισε το",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Δημιούργησε & επεξεργάσου εικόνες με ΤΝ — μέσα στο {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Γνώρισε την ΤΝ σου",
+      "titleHighlight": "Βοηθοί",
+      "subtitle": "Εξειδικευμένοι βοηθοί ΤΝ έτοιμοι να σε βοηθήσουν",
+      "cards": [
+        {
+          "title": "Προπονητής γυμναστικής",
+          "text": "Πλάνα προπόνησης & διατροφής για τους στόχους σου"
+        },
+        {
+          "title": "Γιατρός",
+          "text": "Στοιχεία υγείας, συμπτώματα και καθοδήγηση"
+        },
+        {
+          "title": "Φροντίδα κατοικιδίων",
+          "text": "Συμβουλές για υγεία, εκπαίδευση και φροντίδα"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "ΛΥΣΕΙΣ ΤΝ ΓΙΑ ΕΠΙΧΕΙΡΗΣΕΙΣ",
+      "description": "Ενίσχυσε την ομάδα σου με σύγχρονη τεχνητή νοημοσύνη.",
+      "stats": "Εμπιστεύονται 500k+ χρήστες",
+      "rating": "4,9 / 5",
+      "button": "Ξεκίνα"
+    }
+  },
+  "coinStore": {
+    "title": "Αγορά tokens",
+    "loading": "Φόρτωση καταστήματος…",
+    "balanceLabel": "Τρέχον υπόλοιπο",
+    "balanceValue": "{{amount}} tokens",
+    "history": {
+      "link": "Ιστορικό συναλλαγών",
+      "alertTitle": "Ιστορικό",
+      "alertBody": "Το ιστορικό συναλλαγών έρχεται σύντομα."
+    },
+    "noPacks": "Δεν υπάρχουν διαθέσιμα πακέτα. Έλεγξε το RevenueCat offering id.",
+    "badges": {
+      "basic": "Βασικό πακέτο",
+      "popular": "Πιο δημοφιλές",
+      "value": "Καλύτερη αξία"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} tokens",
+      "defaultName": "Πακέτο {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Γίνε Premium",
+      "subtitle": "Απεριόριστη πρόσβαση & δυνατότητες",
+      "cta": "Αναβάθμιση"
+    },
+    "termsText": "Με την αγορά συμφωνείς με τους",
+    "termsLink": "Όρους χρήσης",
+    "alerts": {
+      "initErrorTitle": "Σφάλμα αρχικοποίησης",
+      "genericMessage": "Κάτι πήγε στραβά.",
+      "successTitle": "Επιτυχία",
+      "successMessage": "Τα tokens θα εμφανιστούν σύντομα.",
+      "purchaseFailedTitle": "Αποτυχία αγοράς",
+      "unknownError": "Άγνωστο σφάλμα"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Επαναφορά",
+    "restoreRestoring": "Γίνεται επαναφορά…",
+    "features": {
+      "create": "Δημιούργησε εικόνες και βίντεο",
+      "search": "Αναζήτησε στον ιστό με ΤΝ",
+      "talk": "Μίλησε φυσικά με την ΤΝ"
+    },
+    "freeTrial": {
+      "title": "Δωρεάν δοκιμή",
+      "subtitle": "3 ημέρες δωρεάν"
+    },
+    "badge": {
+      "bestOffer": "Καλύτερη προσφορά"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Ετήσιο",
+        "only": "Μόνο {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Μηνιαίο",
+        "subtitle": "Ακύρωση οποτεδήποτε",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Εβδομαδιαίο",
+        "subtitle": "Ακύρωση οποτεδήποτε",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "την εβδομάδα",
+      "perMonth": "τον μήνα"
+    },
+    "cta": "Συνέχεια",
+    "legal": {
+      "terms": "Όροι",
+      "privacy": "Απόρρητο"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Μήνυμα...",
+    "createImages": "Δημιουργία εικόνων",
+    "generateAiArtwork": "Δημιουργία AI εικόνας",
+    "camera": "Κάμερα",
+    "takeOrSelectPhotos": "Τράβα ή επίλεξε φωτογραφίες",
+    "search": "Αναζήτηση",
+    "findInformation": "Βρες πληροφορίες",
+    "findRecentInfo": "Βρες πρόσφατες πληροφορίες",
+    "removeImage": "Αφαίρεση εικόνας",
+    "messageInput": "Πεδίο μηνύματος",
+    "clearInput": "Εκκαθάριση",
+    "quickActionsLabel": "Γρήγορες ενέργειες",
+    "hideQuickActions": "Απόκρυψη γρήγορων ενεργειών",
+    "showQuickActions": "Εμφάνιση γρήγορων ενεργειών",
+    "startVoiceInput": "Έναρξη φωνητικής εισαγωγής",
+    "sendMessage": "Αποστολή",
+    "offline": "Εκτός σύνδεσης",
+    "stop": "Διακοπή",
+    "streaming": "Ροή…",
+    "closeRecorder": "Κλείσιμο εγγραφής",
+    "insertTranscript": "Αποστολή",
+    "scrollToLatest": "Κύλιση στο πιο πρόσφατο",
+    "copyMessage": "Αντιγραφή μηνύματος",
+    "copyMessageHint": "Αντιγραφή στο πρόχειρο",
+    "shareMessage": "Κοινοποίηση μηνύματος",
+    "shareMessageHint": "Κοινοποίηση αυτού του μηνύματος",
+    "regenerateResponse": "Επαναδημιουργία απάντησης",
+    "regenerateResponseHint": "Δημιουργία νέας απάντησης",
+    "copyCode": "Αντιγραφή κώδικα",
+    "image": "εικόνα",
+    "loading": "Φόρτωση…",
+    "loadingChat": "Φόρτωση συνομιλίας...",
+    "offlineBanner": "Είσαι εκτός σύνδεσης. Δεν μπορούν να σταλούν μηνύματα.",
+    "imagePickerErrorTitle": "Σφάλμα επιλογής εικόνας",
+    "imagePickerErrorMessage": "Δεν ήταν δυνατή η πρόσβαση στις φωτογραφίες. Προσπάθησε ξανά.",
+    "messageTooLong": "Το μήνυμα είναι πολύ μεγάλο ({{length}}). Το όριο είναι {{limit}}.",
+    "sendFailed": "Η αποστολή απέτυχε.",
+    "voiceStartFailed": "Δεν ήταν δυνατή η έναρξη φωνής.",
+    "emptyTitle": "Τι θες να κάνουμε;",
+    "emptySubtitle": "Ξεκίνα μια συζήτηση με ΤΝ",
+    "privateTitle": "Ιδιωτική συνομιλία",
+    "privateSubtitle": "Αυτή η συνομιλία δεν θα εμφανιστεί στο ιστορικό",
+    "permissions": {
+      "photosTitle": "Απαιτείται πρόσβαση σε φωτογραφίες",
+      "photosMessage": "Χρειάζεται πρόσβαση στις φωτογραφίες για να τις επιλέξεις.",
+      "voiceTitle": "Απαιτείται πρόσβαση στο μικρόφωνο",
+      "voiceMessage": "Χρειάζεται μικρόφωνο για χρήση φωνής."
+    },
+    "activity": {
+      "analyzingImages": "Ανάλυση εικόνων…",
+      "searching": "Αναζήτηση…",
+      "thinking": "Σκέψη…"
+    },
+    "webSearch": {
+      "title": "Αναζήτηση στον ιστό",
+      "subtitle": "Βρες πρόσφατες πληροφορίες",
+      "label": "Αναζήτηση στον ιστό",
+      "enable": "Ενεργοποίηση web search",
+      "disable": "Απενεργοποίηση web search",
+      "toggleLabel": "Αναζήτηση στο web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Φτιάξε visuals γρήγορα.",
+      "subtitle": "Δημιούργησε, βελτίωσε, δημοσίευσε σε ένα μέρος.",
+      "cta": "Άνοιγμα"
+    },
+    "quickActions": {
+      "createImages": "Δημιουργία εικόνων",
+      "openCamera": "Άνοιγμα κάμερας",
+      "editImage": "Επεξεργασία εικόνας",
+      "startVoice": "Έναρξη φωνής",
+      "assistants": "Βοηθοί"
+    },
+    "listening": "Ακρόαση…",
+    "startRecording": "Έναρξη εγγραφής…",
+    "assistantHeader": {
+      "unavailableTitle": "Ο βοηθός δεν είναι διαθέσιμος",
+      "unavailableDescription": "Δεν μπορέσαμε να φορτώσουμε αυτόν τον βοηθό. Προσπάθησε ξανά.",
+      "ready": "Έτοιμος να βοηθήσει"
+    },
+    "actions": {
+      "copy": "Αντιγραφή",
+      "share": "Κοινοποίηση",
+      "regenerate": "Επαναδημιουργία",
+      "retryFromHere": "Ξανά από εδώ",
+      "cancel": "Άκυρο"
+    },
+    "messageActionTitle": "Μήνυμα",
+    "status": {
+      "sending": "Αποστολή…",
+      "failed": "Απέτυχε",
+      "sent": "Στάλθηκε"
+    },
+    "suggestions": {
+      "writeStory": "Γράψε μια δημιουργική ιστορία",
+      "writeStorySubtitle": "για μια μαγική περιπέτεια",
+      "planTravel": "Οργάνωσε ταξίδι",
+      "planTravelSubtitle": "για τέλειες διακοπές",
+      "explainConcept": "Εξήγησε μια έννοια",
+      "explainConceptSubtitle": "με απλά λόγια",
+      "planDay": "Οργάνωσε τη μέρα μου",
+      "planDaySubtitle": "με tips παραγωγικότητας"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Επεξεργασία...",
+    "tapToUploadImage": "Πάτησε για μεταφόρτωση εικόνας"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Επεξεργασία...",
+    "camera": "Κάμερα",
+    "library": "Συλλογή"
+  },
+  "common": {
+    "new": "ΝΕΟ",
+    "best": "ΚΑΛΥΤΕΡΟ",
+    "cancel": "Άκυρο",
+    "save": "Αποθήκευση",
+    "delete": "Διαγραφή",
+    "close": "Κλείσιμο",
+    "allow": "Να επιτρέπεται"
   }
-  
+}

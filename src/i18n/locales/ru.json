@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Выберите модель",
-      "searchPlaceholder": "Поиск моделей...",
-      "noModelsFound": "Модели не найдены",
-      "noModelsAvailable": "Нет доступных моделей",
-      "currentModel": "Текущая модель: {{name}}. Нажмите, чтобы изменить.",
-      "openHint": "Открывает меню выбора модели",
-      "closeLabel": "Закрыть выбор модели",
-      "searchLabel": "Поиск моделей",
-      "searchHint": "Введите текст для фильтрации моделей",
-      "modelLabel": "Модель {{name}}",
-      "selectHint": "Выбрать {{name}}",
-      "currentlySelected": "Выбранная модель"
+  "modelSelector": {
+    "title": "Выберите модель",
+    "searchPlaceholder": "Поиск моделей...",
+    "noModelsFound": "Модели не найдены",
+    "noModelsAvailable": "Нет доступных моделей",
+    "currentModel": "Текущая модель: {{name}}. Нажмите, чтобы изменить.",
+    "openHint": "Открывает меню выбора модели",
+    "closeLabel": "Закрыть выбор модели",
+    "searchLabel": "Поиск моделей",
+    "searchHint": "Введите текст, чтобы отфильтровать доступные модели",
+    "modelLabel": "Модель {{name}}",
+    "selectHint": "Выбрать модель {{name}}",
+    "currentlySelected": "Сейчас выбрана"
+  },
+  "models": {
+    "gpt-4o": "Самая мощная модель ИИ",
+    "gpt-4o-mini": "Быстрая для повседневных задач",
+    "gpt-5": "Самый мощный универсальный ИИ",
+    "gpt-5-chat-latest": "Оптимизирована для чата и диалогов",
+    "gpt-5-mini": "Быстрый и надежный GPT-5",
+    "gpt-5-nano": "Лёгкая модель для простых задач",
+    "o4-mini": "Эффективная модель рассуждений",
+    "gpt-4.1-mini": "Компактный и способный GPT-4.1",
+    "claude-3-haiku": "Быстрый и точный ИИ от Anthropic",
+    "claude-3.7-sonnet": "Улучшенные рассуждения от Anthropic",
+    "gemini-2.5-Flash": "Самая продвинутая модель Google",
+    "gemini-2.5-flash": "Самая продвинутая модель Google",
+    "gemini-2.0-flash": "Быстрый и точный ИИ от Google"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Другое"
+  },
+  "navigation": {
+    "chat": "Новый чат",
+    "history": "История",
+    "assistants": "Ассистенты",
+    "imagesStudio": "Image Studio",
+    "settings": "Настройки",
+    "recentChats": "Недавние чаты"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Создавайте, дорабатывайте и публикуйте визуалы в одном месте.",
+    "cta": "Открыть"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Выбрать изображения",
+    "exitSelectionMode": "Выйти из режима выбора",
+    "selectAll": "Выбрать всё",
+    "noImagesYet": "Пока нет изображений",
+    "describeImageHint": "Опишите изображение ниже и нажмите «Сгенерировать».",
+    "generatedImagesGallery": "Галерея сгенерированных изображений",
+    "describeImagePlaceholder": "Опишите изображение, которое хотите…",
+    "deleteConfirmTitle": "Удалить изображения",
+    "deleteConfirmMessage": "Вы уверены, что хотите удалить выбранные изображения? Действие нельзя отменить.",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "generate": "Сгенерировать",
+    "generating": "Генерация…",
+    "latest": "Последние",
+    "insertToChat": "Вставить в чат",
+    "pleaseWait": "Пожалуйста, подождите…",
+    "processing": "Обработка...",
+    "tapToUploadImage": "Нажмите, чтобы загрузить изображение",
+    "camera": "Камера",
+    "library": "Библиотека",
+    "enterPrompt": "Введите промпт для генерации по тексту",
+    "openInBrowser": "Открыть в браузере",
+    "makeVariations": "Сделать варианты",
+    "deleteAllFromGeneration": "Удалить всё из этой генерации",
+    "imageOptionsTitle": "Параметры изображения",
+    "imageOptionsMessage": "Что вы хотите сделать с этим изображением?",
+    "insertMarkdownHeader": "Вот изображение для:",
+    "variationSuffix": " — вариант предыдущего изображения",
+    "selectedCount": "выбрано",
+    "selectedCount_one": "выбрано",
+    "selectedCount_other": "выбрано",
+    "imageDescriptionInput": "Поле описания изображения",
+    "imageDescriptionHint": "Введите описание изображения, которое хотите сгенерировать",
+    "openModelSettings": "Открыть настройки модели",
+    "modelSettingsHint": "Нажмите, чтобы изменить модель и настройки",
+    "openPhotoGallery": "Открыть фотогалерею",
+    "clearInput": "Очистить",
+    "generatedImage": "Сгенерированное изображение",
+    "autoSelectedModel": "Автоматически выбрана {{model}} для режима {{mode}}",
+    "deleteSelectedConfirmTitle": "Удалить изображения",
+    "deleteSelectedConfirmMessage": "Вы уверены, что хотите удалить изображения? Действие нельзя отменить."
+  },
+  "imageStudio": {
+    "generateImage": "Сгенерировать изображение",
+    "generatingImage": "Генерация изображения",
+    "generateImageHint": "Нажмите, чтобы сгенерировать изображение по описанию",
+    "imageDescriptionInput": "Поле описания изображения",
+    "imageDescriptionHint": "Введите описание изображения, которое хотите сгенерировать",
+    "openModelSettings": "Открыть настройки модели",
+    "modelSettingsHint": "Нажмите, чтобы изменить модель и настройки",
+    "openPhotoGallery": "Открыть галерею",
+    "clearInput": "Очистить",
+    "generatedImage": "Сгенерированное изображение"
+  },
+  "assistants": {
+    "title": "Ассистенты",
+    "subtitle": "Подобранные ИИ-специалисты для кода, текстов, анализа, планирования и многого другого.",
+    "searchPlaceholder": "Поиск ассистентов…",
+    "useAssistant": "Использовать ассистента",
+    "selectAssistant": "Выбрать ассистента",
+    "description": "Описание",
+    "systemPrompt": "Системный промпт",
+    "chooseModel": "Выбрать модель",
+    "categoryAll": "Все",
+    "categories": {
+      "everyday": "На каждый день",
+      "life": "Жизнь",
+      "health": "Здоровье",
+      "schoolWork": "Учёба и работа",
+      "coding": "Программирование",
+      "creative": "Креатив",
+      "general": "Общее"
+    },
+    "presets": {
+      "default": {
+        "name": "Стандартный ассистент",
+        "description": "Сбалансированная помощь для ежедневных задач."
+      },
+      "quick": {
+        "name": "Быстрые ответы",
+        "description": "Короткие и прямые ответы."
+      },
+      "planner": {
+        "name": "Планировщик дня",
+        "description": "Планируйте день и рутины."
+      },
+      "recipes": {
+        "name": "Блюда и рецепты",
+        "description": "Что приготовить из того, что есть."
+      },
+      "fitness": {
+        "name": "Привычки и фитнес",
+        "description": "Маленькие привычки и тренировки дома."
+      },
+      "money": {
+        "name": "Финансовый помощник",
+        "description": "Простой бюджет и советы по тратам."
+      },
+      "study": {
+        "name": "Учебный помощник",
+        "description": "Объясняет просто. Может вас опросить."
+      },
+      "email": {
+        "name": "Почта и резюме",
+        "description": "Пишет понятные письма и строки резюме."
+      },
+      "translator": {
+        "name": "Переводчик",
+        "description": "Переводит и учит фразам."
+      },
+      "travel": {
+        "name": "Путешествия",
+        "description": "Простые планы и списки вещей."
+      },
+      "tech": {
+        "name": "Техподдержка (простая)",
+        "description": "Телефон, приложения, базовый Wi-Fi."
+      },
+      "summarizer": {
+        "name": "Суммаризатор TL;DR",
+        "description": "Короткие пункты + одна строка."
+      },
+      "gift": {
+        "name": "Подбор подарка",
+        "description": "Идеи по бюджету и интересам."
+      },
+      "party": {
+        "name": "Планировщик мероприятий (лайт)",
+        "description": "Быстро организовать небольшую вечеринку."
+      },
+      "social": {
+        "name": "Посты для соцсетей",
+        "description": "Черновики постов с вариантами."
+      },
+      "interview": {
+        "name": "Тренер по интервью",
+        "description": "Тренировка ответов (STAR)."
+      },
+      "homefix": {
+        "name": "Домашний мастер",
+        "description": "Простая диагностика и советы DIY."
+      },
+      "pet": {
+        "name": "Уход за питомцами",
+        "description": "Кормление, прогулки, базовая дрессировка."
+      },
+      "mindful": {
+        "name": "Минута осознанности",
+        "description": "Паузы на 1–3 минуты."
+      },
+      "polite": {
+        "name": "Вежливый перефразировщик",
+        "description": "Переписывает текст мягче и вежливее."
+      }
+    }
+  },
+  "history": {
+    "title": "История",
+    "searchPlaceholder": "Поиск по чатам…",
+    "newChat": "Новый чат",
+    "new": "+ Новый",
+    "search": "Поиск",
+    "clearSearch": "Стереть поиск",
+    "noChatsYet": "Пока нет чатов",
+    "startFirstConversation": "Начните свой первый разговор.",
+    "startChat": "Начать чат",
+    "errorLoadingHistory": "Ошибка загрузки истории",
+    "renameChat": "Переименовать чат",
+    "enterNewTitle": "Введите новый заголовок",
+    "deleteChat": "Удалить чат?",
+    "deleteChatMessage": "«{{title}}» будет удалён.",
+    "rename": "Переименовать",
+    "unpin": "Открепить",
+    "pin": "Закрепить",
+    "untitled": "Без названия"
+  },
+  "settings": {
+    "title": "Настройки",
+    "model": "Модель",
+    "searchPlaceholder": "Поиск моделей…",
+    "temperatureForCurrentModel": "Температура для текущей модели",
+    "customFor": "Своя настройка для {{model}}",
+    "usingDefault": "Используется значение по умолчанию {{temperature}}",
+    "resetToDefault": "Сбросить по умолчанию",
+    "defaultTemperature": "Температура по умолчанию (резерв)",
+    "usedByModelsWithoutOverride": "Используется моделями без своей настройки",
+    "dangerZone": "Опасная зона",
+    "clearAllChatsAndSettings": "Удалить все чаты и настройки",
+    "about": "О приложении",
+    "version": "Версия {{version}}{{status}}",
+    "versionPremiumSuffix": " · Премиум",
+    "privacyPolicy": "Политика конфиденциальности",
+    "hero": {
+      "label": "Специальное предложение",
+      "title": "Приоритетный доступ и без лимитов",
+      "upgrade": "Обновить",
+      "manage": "Управлять планом"
+    },
+    "sections": {
+      "premium": "Премиум-план",
+      "data": "Данные пользователя",
+      "support": "Поддержка и юридическое"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Получить Премиум",
+        "subtitle": "Откройте неограниченные инструменты создания"
+      },
+      "premiumActive": {
+        "title": "Премиум активен",
+        "subtitle": "Спасибо, что поддерживаете ChatCloud"
+      },
+      "restore": {
+        "title": "Восстановить покупки",
+        "subtitle": "Используйте, если сменили устройство"
+      },
+      "history": {
+        "title": "Управление историей чатов",
+        "subtitle": "Просмотр и удаление прошлых сессий"
+      },
+      "reset": {
+        "title": "Сбросить чаты и настройки",
+        "subtitle": "Удаляет все сохранённые данные на этом устройстве"
+      },
+      "rate": {
+        "title": "Оценить",
+        "error": "Не удалось открыть страницу магазина."
+      },
+      "support": {
+        "title": "Поддержка",
+        "subtitle": "Свяжитесь с нами онлайн",
+        "error": "Не удалось открыть страницу поддержки."
+      },
+      "privacy": {
+        "title": "Политика конфиденциальности",
+        "error": "Не удалось открыть политику конфиденциальности."
+      },
+      "terms": {
+        "title": "Условия использования",
+        "error": "Не удалось открыть условия использования."
+      }
+    },
+    "capabilities": {
+      "text": "ТЕКСТ",
+      "image": "ИЗОБР",
+      "audio": "АУДИО",
+      "video": "ВИДЕО"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Недоступно",
+      "linkUnavailableMessage": "Невозможно открыть ссылку сейчас.",
+      "restoreSuccessTitle": "Восстановлено",
+      "restoreSuccessMessage": "Ваши покупки были восстановлены.",
+      "restoreErrorTitle": "Ошибка восстановления",
+      "restoreErrorMessage": "Не удалось восстановить покупки.",
+      "resetConfirmTitle": "Сбросить данные приложения?",
+      "resetConfirmMessage": "Это удалит все чаты и локальные настройки.",
+      "resetConfirmCancel": "Отмена",
+      "resetConfirmCta": "Сбросить"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Создать",
+    "chooseStyle": "Выберите стиль",
+    "aspectRatio": "Соотношение сторон",
+    "starterPrompts": {
+      "title": "Примеры промптов",
+      "items": [
+        "портрет в студии",
+        "современная гостиная",
+        "тропический пляж на закате"
+      ]
+    },
+    "promptPlaceholder": "Напишите, что хотите увидеть…",
+    "promptHint": "Например: «Золотистый ретривер в студийном свете»",
+    "clearText": "Очистить текст",
+    "generate": "Сгенерировать",
+    "generating": "Генерация…"
+  },
+  "editImage": {
+    "headerTitle": "Редактировать",
+    "chooseStyle": "Выберите стиль",
+    "aspectRatio": "Соотношение сторон",
+    "starterPrompts": {
+      "title": "Примеры промптов",
+      "items": [
+        "исправить освещение",
+        "удалить фон",
+        "мягкая ретушь портрета"
+      ]
+    },
+    "promptPlaceholder": "Опишите правки (необязательно)",
+    "clearText": "Очистить",
+    "generate": "Применить",
+    "generating": "Применение…",
+    "upload": {
+      "choose": "Выбрать фото",
+      "change": "Изменить",
+      "remove": "Удалить"
+    },
+    "imageUnavailable": {
+      "title": "Изображение недоступно",
+      "message": "Не удалось получить доступ к выбранному фото. Выберите его снова и попробуйте ещё раз."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Аниме"
+      },
+      "cartoon": {
+        "name": "Мультфильм"
+      },
+      "photoreal": {
+        "name": "Фотореализм"
+      },
+      "sketch": {
+        "name": "Эскиз"
+      },
+      "cyberpunk": {
+        "name": "Киберпанк"
+      },
+      "steampunk": {
+        "name": "Стимпанк"
+      },
+      "illustration_3d": {
+        "name": "3D-иллюстрация"
+      },
+      "dark_fantasy": {
+        "name": "Тёмное фэнтези"
+      },
+      "vintage_film": {
+        "name": "Винтажное кино"
+      },
+      "pastel": {
+        "name": "Пастель"
+      },
+      "neon_glow": {
+        "name": "Неоновое свечение"
+      },
+      "epic_landscape": {
+        "name": "Эпический пейзаж"
+      }
+    },
+    "aspectRatios": {
+      "square": "Квадрат",
+      "landscape": "Альбом",
+      "portrait": "Портрет"
     },
     "models": {
-      "gpt-4o": "Самая мощная модель ИИ",
-      "gpt-4o-mini": "Быстрая для повседневных задач",
-      "claude-3-haiku": "Быстрая и эффективная модель",
-      "claude-3.7-sonnet": "Модель для продвинутых рассуждений",
-      "gemini-2.5-pro": "Лучшая модель Google",
-      "gemini-2.0-flash": "Быстрая модель с отличными рассуждениями"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Пользовательская"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Другое"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Самая быстрая модель",
+      "runwareFluxKrea": "Креативные, стилизованные результаты",
+      "runwareQwenImage": "Сбалансированные и качественные результаты",
+      "google4": "Лучшая модель ИИ для изображений",
+      "fluxKontent": "Flux Kontent, настроенная для редактирования",
+      "runwareProvider": "Сбалансированное качество и надёжная диффузия.",
+      "airProvider": "Nano Banana добавляет игривый, яркий стиль.",
+      "googleProvider": "Google, настроенная на полировку деталей.",
+      "anthropicProvider": "Пайплайн Claude для более тонких настроений.",
+      "default": "Нажмите, чтобы посмотреть доступные движки."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "выбранный стиль",
+    "sheetTitle": "Создаём вашу идею",
+    "sheetSubtitle": "Мгновение — смешиваем {{style}} с промптом.",
+    "phases": {
+      "blend": "Смешиваем {{style}}",
+      "paint": "Рисуем сцену",
+      "finish": "Добавляем финальные штрихи"
     },
-    "navigation": {
-      "chat": "Чат",
-      "history": "История",
-      "assistants": "Ассистенты",
-      "imagesStudio": "Студия",
-      "settings": "Настройки",
-      "recentChats": "Недавние чаты"
-    },
-    "imagesStudio": {
-      "title": "Студия",
-      "selectImages": "Выбрать изображения",
-      "exitSelectionMode": "Выйти из режима выбора",
-      "selectAll": "Выбрать все",
-      "noImagesYet": "Изображений пока нет",
-      "describeImageHint": "Опишите изображение ниже и нажмите «Сгенерировать».",
-      "generatedImagesGallery": "Галерея созданных изображений",
-      "describeImagePlaceholder": "Опишите нужное изображение…",
-      "deleteConfirmTitle": "Удалить изображения",
-      "deleteConfirmMessage": "Точно удалить выбранные изображения? Это действие нельзя отменить.",
+    "actions": {
       "cancel": "Отмена",
-      "delete": "Удалить",
-      "generate": "Сгенерировать",
-      "generating": "Генерация…",
-      "latest": "Последние",
-      "insertToChat": "Вставить в чат",
-      "pleaseWait": "Пожалуйста, подождите…",
-      "processing": "Обработка...",
-      "tapToUploadImage": "Нажмите, чтобы загрузить изображение",
-      "camera": "Камера",
-      "library": "Библиотека",
-      "enterPrompt": "Введите подсказку для генерации текста в изображение",
-      "openInBrowser": "Открыть в браузере",
-      "makeVariations": "Сделать вариации",
-      "deleteAllFromGeneration": "Удалить всё из этого поколения",
-      "imageOptionsTitle": "Параметры изображения",
-      "imageOptionsMessage": "Что вы хотите сделать с этим изображением?",
-      "insertMarkdownHeader": "Изображение для:",
-      "variationSuffix": "— вариация предыдущего изображения",
-      "selectedCount": "выбрано",
-      "selectedCount_one": "выбрано",
-      "selectedCount_other": "выбрано",
-      "imageDescriptionInput": "Поле описания изображения",
-      "imageDescriptionHint": "Введите описание изображения, которое хотите сгенерировать",
-      "openModelSettings": "Открыть настройки модели",
-      "modelSettingsHint": "Нажмите, чтобы изменить модель и настройки",
-      "openPhotoGallery": "Открыть фотогалерею",
-      "clearInput": "Очистить поле",
-      "generatedImage": "Сгенерированное изображение",
-      "autoSelectedModel": "Автовыбор: {{model}} для режима {{mode}}",
-      "deleteSelectedConfirmTitle": "Удалить изображения",
-      "deleteSelectedConfirmMessage": "Точно удалить изображения? Это действие нельзя отменить."
+      "retry": "Повторить",
+      "close": "Закрыть"
     },
-    "imageStudio": {
-      "generateImage": "Сгенерировать изображение",
-      "generatingImage": "Генерация изображения",
-      "generateImageHint": "Нажмите, чтобы создать изображение по описанию",
-      "imageDescriptionInput": "Поле описания изображения",
-      "imageDescriptionHint": "Введите описание изображения, которое хотите сгенерировать",
-      "openModelSettings": "Открыть настройки модели",
-      "modelSettingsHint": "Нажмите, чтобы изменить модель и настройки",
-      "openPhotoGallery": "Открыть фотогалерею",
-      "clearInput": "Очистить поле",
-      "generatedImage": "Сгенерированное изображение"
+    "errors": {
+      "restrictedTitle": "Ограниченный контент",
+      "genericTitle": "Не удалось сгенерировать",
+      "genericMessage": "Не получилось сгенерировать изображение."
     },
-    "assistants": {
-      "title": "Ассистенты",
-      "subtitle": "Подобранные специалисты ИИ для кодинга, письма, анализа, планирования и многого другого.",
-      "searchPlaceholder": "Поиск ассистентов…",
-      "useAssistant": "Использовать ассистента",
-      "description": "Описание",
-      "systemPrompt": "Системная подсказка",
-      "chooseModel": "Выбрать модель",
-      "categoryAll": "Все",
-      "categories": {
-        "everyday": "Повседневное",
-        "life": "Жизнь",
-        "health": "Здоровье",
-        "schoolWork": "Учёба и работа",
-        "coding": "Кодинг",
-        "creative": "Креатив",
-        "general": "Общее"
-      },
-      "presets": {
-        "default": { "name": "Ассистент по умолчанию", "description": "Сбалансированная помощь на каждый день." },
-        "quick": { "name": "Быстрые ответы", "description": "Коротко и по делу." },
-        "planner": { "name": "Дневной планировщик", "description": "Планируйте день и рутины." },
-        "recipes": { "name": "Еда и рецепты", "description": "Что приготовить из того, что есть." },
-        "fitness": { "name": "Коуч по привычкам и фитнесу", "description": "Небольшие привычки и домашние тренировки." },
-        "money": { "name": "Финансовый помощник", "description": "Простой бюджет и советы по расходам." },
-        "study": { "name": "Помощник в учебе", "description": "Объясняй просто. Проверь меня." },
-        "email": { "name": "Почта и резюме", "description": "Понятные письма и пункты резюме." },
-        "translator": { "name": "Переводчик", "description": "Перевод и изучение фраз." },
-        "travel": { "name": "Путешествия", "description": "Простые планы и список вещей." },
-        "tech": { "name": "Техподдержка (просто)", "description": "Основы телефона, приложений и Wi-Fi." },
-        "summarizer": { "name": "TL;DR-суммаризатор", "description": "Короткие пункты + одно предложение итога." },
-        "gift": { "name": "Поиск подарков", "description": "Идеи по бюджету и интересам." },
-        "party": { "name": "Планировщик событий (лайт)", "description": "Быстро спланируйте небольшую вечеринку." },
-        "social": { "name": "Посты для соцсетей", "description": "Черновики постов с вариантами." },
-        "interview": { "name": "Коуч по интервью", "description": "Тренируйте ответы (STAR)." },
-        "homefix": { "name": "Гид по домашнему ремонту", "description": "Простая диагностика проблем." },
-        "pet": { "name": "Уход за питомцами", "description": "Кормление, прогулки, базовое обучение." },
-        "mindful": { "name": "Минута осознанности", "description": "Спокойные паузы на 1–3 мин." },
-        "polite": { "name": "Вежливый перефразировщик", "description": "Вежливо переписать тексты и ответы." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Не удалось сохранить",
+      "shareFailedTitle": "Не удалось поделиться",
+      "tryAgain": "Попробуйте ещё раз."
     },
-    "history": {
-      "title": "История",
-      "searchPlaceholder": "Поиск по чатам…",
-      "newChat": "Новый чат",
-      "new": "+ Новый",
-      "search": "Поиск",
-      "clearSearch": "Очистить поиск",
-      "noChatsYet": "Пока нет чатов",
-      "startFirstConversation": "Начните свой первый разговор.",
-      "startChat": "Начать чат",
-      "errorLoadingHistory": "Ошибка загрузки истории",
-      "renameChat": "Переименовать чат",
-      "enterNewTitle": "Введите новый заголовок",
-      "deleteChat": "Удалить чат?",
-      "deleteChatMessage": "«{{title}}» будет удалён.",
-      "rename": "Переименовать",
-      "unpin": "Открепить",
-      "pin": "Закрепить",
-      "untitled": "Без названия"
+    "result": {
+      "complete": "Готово"
     },
-    "settings": {
-      "title": "Настройки",
-      "model": "Модель",
-      "searchPlaceholder": "Поиск моделей…",
-      "temperatureForCurrentModel": "Температура для текущей модели",
-      "customFor": "Пользовательская для {{model}}",
-      "usingDefault": "Используется значение по умолчанию {{temperature}}",
-      "resetToDefault": "Сбросить по умолчанию",
-      "defaultTemperature": "Температура по умолчанию (резерв)",
-      "usedByModelsWithoutOverride": "Используется моделями без переопределения",
-      "dangerZone": "Опасная зона",
-      "clearAllChatsAndSettings": "Очистить все чаты и настройки",
-      "about": "О программе",
-      "version": "Версия {{version}}",
-      "privacyPolicy": "Политика конфиденциальности",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Сообщение для Agarka...",
-      "createImages": "Создать изображения",
-      "generateAiArtwork": "Сгенерировать AI-иллюстрацию",
-      "camera": "Камера",
-      "takeOrSelectPhotos": "Сделать или выбрать фото",
-      "search": "Поиск",
-      "findInformation": "Найти информацию",
-      "removeImage": "Удалить изображение",
-      "messageInput": "Поле сообщения",
-      "clearInput": "Очистить поле",
-      "hideQuickActions": "Скрыть быстрые действия",
-      "showQuickActions": "Показать быстрые действия",
-      "startVoiceInput": "Запустить голосовой ввод",
-      "sendMessage": "Отправить",
-      "offline": "Офлайн",
-      "stop": "Стоп",
-      "streaming": "Поток…",
-      "closeRecorder": "Закрыть диктофон",
-      "insertTranscript": "Вставить транскрипт",
-      "scrollToLatest": "Прокрутить к последнему",
-      "copyMessage": "Копировать сообщение",
-      "copyMessageHint": "Скопировать это сообщение в буфер обмена",
-      "shareMessage": "Поделиться сообщением",
-      "shareMessageHint": "Поделиться этим сообщением",
-      "regenerateResponse": "Сгенерировать ответ заново",
-      "regenerateResponseHint": "Создать новый ответ",
-      "copyCode": "Копировать код",
-      "image": "изображение",
-      "loading": "Загрузка…",
-      "loadingChat": "Загрузка чата...",
-      "offlineBanner": "Вы офлайн. Отправить сообщения невозможно.",
-      "imagePickerErrorTitle": "Ошибка выбора изображения",
-      "messageTooLong": "Сообщение слишком длинное ({{length}}). Лимит — {{limit}}.",
-      "emptyTitle": "Чем могу помочь?",
-      "emptySubtitle": "Начните беседу с ИИ",
-      "privateTitle": "Приватный чат",
-      "privateSubtitle": "Этот чат не появится в истории",
-      "listening": "Прослушивание…",
-      "startRecording": "Начать запись…",
-      "suggestions": {
-        "writeStory": "Написать творческий рассказ",
-        "writeStorySubtitle": "о волшебном приключении",
-        "planTravel": "Спланировать маршрут поездки",
-        "planTravelSubtitle": "для замечательного отпуска",
-        "explainConcept": "Объяснить этот концепт",
-        "explainConceptSubtitle": "простыми словами",
-        "planDay": "Спланировать мой день",
-        "planDaySubtitle": "с советами по продуктивности"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Обработка...",
-      "tapToUploadImage": "Нажмите, чтобы загрузить изображение"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Обработка...",
-      "camera": "Камера",
-      "library": "Библиотека"
-    },
-    "common": {
-      "new": "НОВИНКА",
-      "best": "ЛУЧШЕЕ",
-      "cancel": "Отмена",
-      "save": "Сохранить",
-      "delete": "Удалить",
+    "accessibility": {
       "close": "Закрыть"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Удалить",
+      "edit": "Редактировать",
+      "save": "Сохранить",
+      "share": "Поделиться"
+    },
+    "accessibility": {
+      "close": "Закрыть",
+      "delete": "Удалить изображение",
+      "edit": "Редактировать изображение",
+      "save": "Сохранить изображение",
+      "share": "Поделиться изображением"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Открыть меню",
+      "selectImages": "Выбрать изображения",
+      "exitSelection": "Выйти из выбора",
+      "deleteSelected": "Удалить выбранные изображения",
+      "selectToDelete": "Выберите изображения для удаления"
+    },
+    "createCard": {
+      "title": "Создать из текста",
+      "subtitle": "Опишите изображение",
+      "cta": "Описать и сгенерировать"
+    },
+    "editCard": {
+      "title": "Редактировать фото",
+      "subtitle": "Загрузите и измените",
+      "cta": "Редактировать фото"
+    },
+    "gallery": {
+      "title": "Галерея",
+      "empty": "Пока нет изображений",
+      "selection": {
+        "enter": "Выбрать изображения",
+        "exit": "Выйти из выбора",
+        "deleteSelected": "Удалить выбранные",
+        "selectForDelete": "Выбрать для удаления"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Познакомьтесь:",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Создавайте и редактируйте изображения с ИИ прямо в {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Познакомьтесь со своим ИИ",
+      "titleHighlight": "Ассистенты",
+      "subtitle": "Специализированные ассистенты ИИ, готовые помогать каждый день",
+      "cards": [
+        {
+          "title": "Фитнес-тренер",
+          "text": "Получайте персональные тренировки и советы по питанию"
+        },
+        {
+          "title": "Доктор",
+          "text": "Подсказки по здоровью, анализ симптомов и рекомендации"
+        },
+        {
+          "title": "Уход за питомцами",
+          "text": "Советы по здоровью, дрессировке и уходу за любимцами"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "ИИ-РЕШЕНИЯ ДЛЯ БИЗНЕСА",
+      "description": "Повышайте эффективность с помощью передового ИИ, созданного для профессионалов и команд.",
+      "stats": "Нам доверяют более 500k пользователей",
+      "rating": "4,9 / 5",
+      "button": "Начать"
+    }
+  },
+  "coinStore": {
+    "title": "Купить токены",
+    "loading": "Загрузка магазина токенов…",
+    "balanceLabel": "Ваш текущий баланс",
+    "balanceValue": "{{amount}} токенов",
+    "history": {
+      "link": "История транзакций",
+      "alertTitle": "История",
+      "alertBody": "История транзакций скоро появится."
+    },
+    "noPacks": "Нет доступных пакетов токенов. Проверьте идентификатор предложения RevenueCat.",
+    "badges": {
+      "basic": "Базовый пакет",
+      "popular": "Самый популярный",
+      "value": "Лучшая цена"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} токенов",
+      "defaultName": "Пакет {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Перейти на Премиум",
+      "subtitle": "Неограниченный доступ и функции",
+      "cta": "Обновить"
+    },
+    "termsText": "Совершая покупку, вы соглашаетесь с нашими",
+    "termsLink": "Условиями использования",
+    "alerts": {
+      "initErrorTitle": "Ошибка инициализации",
+      "genericMessage": "Что-то пошло не так.",
+      "successTitle": "Готово",
+      "successMessage": "Токены скоро появятся.",
+      "purchaseFailedTitle": "Не удалось купить",
+      "unknownError": "Неизвестная ошибка"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Восстановить",
+    "restoreRestoring": "Восстановление…",
+    "features": {
+      "create": "Создавайте изображения и видео",
+      "search": "Ищите в интернете с помощью ИИ",
+      "talk": "Общайтесь с ИИ естественно"
+    },
+    "freeTrial": {
+      "title": "Бесплатный период",
+      "subtitle": "3 дня бесплатно"
+    },
+    "badge": {
+      "bestOffer": "Лучшая цена"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Годовой",
+        "only": "Всего {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Месячный",
+        "subtitle": "Отменить можно в любой момент",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Недельный",
+        "subtitle": "Отменить можно в любой момент",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "в неделю",
+      "perMonth": "в месяц"
+    },
+    "cta": "Продолжить",
+    "legal": {
+      "terms": "Условия",
+      "privacy": "Конфиденциальность"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Сообщение...",
+    "createImages": "Создать изображения",
+    "generateAiArtwork": "Создать арт с ИИ",
+    "camera": "Камера",
+    "takeOrSelectPhotos": "Сделать или выбрать фото",
+    "search": "Поиск",
+    "findInformation": "Найти информацию",
+    "findRecentInfo": "Найти свежую информацию",
+    "removeImage": "Удалить изображение",
+    "messageInput": "Поле ввода сообщения",
+    "clearInput": "Очистить поле",
+    "quickActionsLabel": "Быстрые действия",
+    "hideQuickActions": "Скрыть быстрые действия",
+    "showQuickActions": "Показать быстрые действия",
+    "startVoiceInput": "Включить голосовой ввод",
+    "sendMessage": "Отправить сообщение",
+    "offline": "Оффлайн",
+    "stop": "Стоп",
+    "streaming": "Поток…",
+    "closeRecorder": "Закрыть запись",
+    "insertTranscript": "Отправить",
+    "scrollToLatest": "Прокрутить к последнему",
+    "copyMessage": "Копировать сообщение",
+    "copyMessageHint": "Копировать это сообщение в буфер обмена",
+    "shareMessage": "Поделиться сообщением",
+    "shareMessageHint": "Поделиться этим сообщением",
+    "regenerateResponse": "Сгенерировать ответ снова",
+    "regenerateResponseHint": "Создать новый ответ",
+    "copyCode": "Копировать код",
+    "image": "изображение",
+    "loading": "Загрузка…",
+    "loadingChat": "Загрузка чата...",
+    "offlineBanner": "Вы оффлайн. Сообщения не могут быть отправлены.",
+    "imagePickerErrorTitle": "Ошибка выбора изображения",
+    "imagePickerErrorMessage": "Не удалось получить доступ к фотографиям. Попробуйте снова.",
+    "messageTooLong": "Сообщение слишком длинное ({{length}}). Лимит — {{limit}}.",
+    "sendFailed": "Отправка не удалась.",
+    "voiceStartFailed": "Не удалось запустить голос.",
+    "emptyTitle": "Чем могу помочь?",
+    "emptySubtitle": "Начните разговор с ИИ",
+    "privateTitle": "Приватный чат",
+    "privateSubtitle": "Этот чат не появится в истории",
+    "permissions": {
+      "photosTitle": "Нужен доступ к фото",
+      "photosMessage": "Доступ к фотографиям нужен, чтобы выбирать изображения.",
+      "voiceTitle": "Нужен доступ к микрофону",
+      "voiceMessage": "Для голосового ввода нужен микрофон и распознавание речи."
+    },
+    "activity": {
+      "analyzingImages": "Анализ изображений…",
+      "searching": "Поиск…",
+      "thinking": "Обработка…"
+    },
+    "webSearch": {
+      "title": "Веб-поиск",
+      "subtitle": "Найдите актуальную информацию",
+      "label": "Веб-поиск",
+      "enable": "Включить веб-поиск",
+      "disable": "Выключить веб-поиск",
+      "toggleLabel": "Искать в интернете"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Создавайте визуалы быстро.",
+      "subtitle": "Генерируйте, дорабатывайте и публикуйте в одном месте.",
+      "cta": "Открыть"
+    },
+    "quickActions": {
+      "createImages": "Создать изображения",
+      "openCamera": "Открыть камеру",
+      "editImage": "Редактировать изображение",
+      "startVoice": "Включить голос",
+      "assistants": "Ассистенты"
+    },
+    "listening": "Слушаю…",
+    "startRecording": "Начинаю запись…",
+    "assistantHeader": {
+      "unavailableTitle": "Ассистент недоступен",
+      "unavailableDescription": "Не удалось загрузить ассистента. Попробуйте ещё раз.",
+      "ready": "Готов помочь"
+    },
+    "actions": {
+      "copy": "Копировать",
+      "share": "Поделиться",
+      "regenerate": "Сгенерировать снова",
+      "retryFromHere": "Попробовать снова отсюда",
+      "cancel": "Отмена"
+    },
+    "messageActionTitle": "Сообщение",
+    "status": {
+      "sending": "Отправка…",
+      "failed": "Ошибка",
+      "sent": "Отправлено"
+    },
+    "suggestions": {
+      "writeStory": "Написать креативную историю",
+      "writeStorySubtitle": "о волшебном приключении",
+      "planTravel": "Составить план поездки",
+      "planTravelSubtitle": "для отличного отдыха",
+      "explainConcept": "Объяснить этот концепт",
+      "explainConceptSubtitle": "простыми словами",
+      "planDay": "Запланировать мой день",
+      "planDaySubtitle": "с советами по продуктивности"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Обработка...",
+    "tapToUploadImage": "Нажмите, чтобы загрузить изображение"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Обработка...",
+    "camera": "Камера",
+    "library": "Библиотека"
+  },
+  "common": {
+    "new": "НОВОЕ",
+    "best": "ЛУЧШЕЕ",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "delete": "Удалить",
+    "close": "Закрыть",
+    "allow": "Разрешить"
   }
-  
+}

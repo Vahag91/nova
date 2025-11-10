@@ -1,7 +1,7 @@
 {
   "modelSelector": {
-    "title": "Model selecteren",
-    "searchPlaceholder": "Modellen zoeken…",
+    "title": "Model kiezen",
+    "searchPlaceholder": "Modellen zoeken...",
     "noModelsFound": "Geen modellen gevonden",
     "noModelsAvailable": "Geen modellen beschikbaar",
     "currentModel": "Huidig model: {{name}}. Tik om te wijzigen.",
@@ -9,17 +9,24 @@
     "closeLabel": "Modelkiezer sluiten",
     "searchLabel": "Modellen zoeken",
     "searchHint": "Typ om beschikbare modellen te filteren",
-    "modelLabel": "Model {{name}}",
-    "selectHint": "{{name}} selecteren",
-    "currentlySelected": "Momenteel geselecteerd model"
+    "modelLabel": "{{name}}-model",
+    "selectHint": "Selecteer {{name}}-model",
+    "currentlySelected": "Momenteel geselecteerd"
   },
   "models": {
-    "gpt-4o": "Krachtigste AI-model",
-    "gpt-4o-mini": "Snel voor dagelijkse taken",
-    "claude-3-haiku": "Snel en efficiënt model",
-    "claude-3.7-sonnet": "Geavanceerd redeneermodel",
-    "gemini-2.5-pro": "Beste model van Google",
-    "gemini-2.0-flash": "Snel model met sterk redeneervermogen"
+    "gpt-4o": "Meest krachtige AI-model",
+    "gpt-4o-mini": "Snel voor dagelijks gebruik",
+    "gpt-5": "Meest krachtige alles-in-één AI",
+    "gpt-5-chat-latest": "Geoptimaliseerd voor chat en dialoog",
+    "gpt-5-mini": "Snel en betrouwbaar GPT-5",
+    "gpt-5-nano": "Licht model voor eenvoudige taken",
+    "o4-mini": "Efficiënt redeneermodel",
+    "gpt-4.1-mini": "Compact, capabel GPT-4.1",
+    "claude-3-haiku": "Snelle en gerichte Anthropic-AI",
+    "claude-3.7-sonnet": "Verfijnd redeneren van Anthropic",
+    "gemini-2.5-Flash": "Meest geavanceerde Google-model",
+    "gemini-2.5-flash": "Meest geavanceerde Google-model",
+    "gemini-2.0-flash": "Snel en precies Google-AI"
   },
   "providers": {
     "openai": "OpenAI",
@@ -29,43 +36,49 @@
     "other": "Overig"
   },
   "navigation": {
-    "chat": "Chat",
+    "chat": "Nieuwe chat",
     "history": "Geschiedenis",
     "assistants": "Assistenten",
-    "imagesStudio": "Studio",
+    "imagesStudio": "Image Studio",
     "settings": "Instellingen",
     "recentChats": "Recente chats"
   },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Genereer, verfijn en publiceer visuele assets op één plek.",
+    "cta": "Openen"
+  },
   "imagesStudio": {
-    "title": "Studio",
+    "title": "Image Studio",
     "selectImages": "Afbeeldingen selecteren",
     "exitSelectionMode": "Selectiemodus verlaten",
     "selectAll": "Alles selecteren",
     "noImagesYet": "Nog geen afbeeldingen",
-    "describeImageHint": "Beschrijf hieronder je afbeelding en tik op ‘Genereren’.",
+    "describeImageHint": "Beschrijf hieronder je afbeelding en tik op Genereren.",
     "generatedImagesGallery": "Galerij met gegenereerde afbeeldingen",
-    "describeImagePlaceholder": "Beschrijf de gewenste afbeelding…",
+    "describeImagePlaceholder": "Beschrijf de afbeelding die je wilt…",
     "deleteConfirmTitle": "Afbeeldingen verwijderen",
-    "deleteConfirmMessage": "Weet je zeker dat je de geselecteerde afbeeldingen wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+    "deleteConfirmMessage": "Weet je zeker dat je de geselecteerde afbeeldingen wilt verwijderen? Dit kan niet ongedaan worden gemaakt.",
     "cancel": "Annuleren",
     "delete": "Verwijderen",
     "generate": "Genereren",
     "generating": "Bezig met genereren…",
-    "latest": "Nieuwste",
-    "insertToChat": "In chat invoegen",
+    "latest": "Laatste",
+    "insertToChat": "Invoegen in chat",
     "pleaseWait": "Even geduld…",
     "processing": "Bezig met verwerken...",
-    "tapToUploadImage": "Tik om een afbeelding te uploaden",
+    "tapToUploadImage": "Tik om afbeelding te uploaden",
     "camera": "Camera",
     "library": "Bibliotheek",
     "enterPrompt": "Voer een prompt in voor tekst-naar-afbeelding",
-    "openInBrowser": "In browser openen",
+    "openInBrowser": "Openen in browser",
     "makeVariations": "Variaties maken",
     "deleteAllFromGeneration": "Alles uit deze generatie verwijderen",
     "imageOptionsTitle": "Afbeeldingsopties",
     "imageOptionsMessage": "Wat wil je met deze afbeelding doen?",
     "insertMarkdownHeader": "Hier is de afbeelding voor:",
-    "variationSuffix": "— variatie op de vorige afbeelding",
+    "variationSuffix": "— variatie op vorige afbeelding",
     "selectedCount": "geselecteerd",
     "selectedCount_one": "geselecteerd",
     "selectedCount_other": "geselecteerd",
@@ -76,16 +89,16 @@
     "openPhotoGallery": "Fotogalerij openen",
     "clearInput": "Wissen",
     "generatedImage": "Gegenereerde afbeelding",
-    "autoSelectedModel": "Automatisch {{model}} gekozen voor de {{mode}}-modus",
+    "autoSelectedModel": "{{model}} automatisch geselecteerd voor modus {{mode}}",
     "deleteSelectedConfirmTitle": "Afbeeldingen verwijderen",
-    "deleteSelectedConfirmMessage": "Weet je zeker dat je afbeeldingen wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt."
+    "deleteSelectedConfirmMessage": "Weet je zeker dat je deze afbeeldingen wilt verwijderen? Dit kan niet ongedaan worden gemaakt."
   },
   "imageStudio": {
     "generateImage": "Afbeelding genereren",
     "generatingImage": "Afbeelding wordt gegenereerd",
     "generateImageHint": "Tik om een afbeelding te genereren op basis van je beschrijving",
     "imageDescriptionInput": "Invoer afbeeldingsbeschrijving",
-    "imageDescriptionHint": "Voer een beschrijving in van de afbeelding die je wilt genereren",
+    "imageDescriptionHint": "Voer de beschrijving in van de afbeelding die je wilt genereren",
     "openModelSettings": "Modelinstellingen openen",
     "modelSettingsHint": "Tik om model en instellingen te wijzigen",
     "openPhotoGallery": "Fotogalerij openen",
@@ -94,13 +107,14 @@
   },
   "assistants": {
     "title": "Assistenten",
-    "subtitle": "Geselecteerde AI-specialisten voor coderen, schrijven, analyse, planning en meer.",
+    "subtitle": "Gespecialiseerde AI-hulpen voor coderen, schrijven, analyse, planning en meer.",
     "searchPlaceholder": "Assistenten zoeken…",
     "useAssistant": "Assistent gebruiken",
+    "selectAssistant": "Assistent kiezen",
     "description": "Beschrijving",
     "systemPrompt": "Systeemprompt",
     "chooseModel": "Model kiezen",
-    "categoryAll": "Alles",
+    "categoryAll": "Alle",
     "categories": {
       "everyday": "Dagelijks",
       "life": "Leven",
@@ -111,26 +125,86 @@
       "general": "Algemeen"
     },
     "presets": {
-      "default": { "name": "Standaardassistent", "description": "Gebalanceerde hulp voor alledaagse dingen." },
-      "quick": { "name": "Snelle antwoorden", "description": "Kort en direct." },
-      "planner": { "name": "Dagplanner", "description": "Plan je dag en routines." },
-      "recipes": { "name": "Maaltijden & recepten", "description": "Wat te koken met wat je hebt." },
-      "fitness": { "name": "Gewoonten & fitnesscoach", "description": "Kleine gewoonten & thuistrainingen." },
-      "money": { "name": "Geldmaatje", "description": "Eenvoudige budgetten & spaartips." },
-      "study": { "name": "Studiehulp", "description": "Leg eenvoudig uit. Overhoor me." },
-      "email": { "name": "E-mail & cv", "description": "Schrijf duidelijke e-mails en cv-regels." },
-      "translator": { "name": "Vertaler", "description": "Vertalen + zinnen leren." },
-      "travel": { "name": "Reismaatje", "description": "Eenvoudige plannen & paklijsten." },
-      "tech": { "name": "Techsupport (simpel)", "description": "Telefoon, apps, wifi-basis." },
-      "summarizer": { "name": "TL;DR-samenvatter", "description": "Korte bullets + éénregelige TL;DR." },
-      "gift": { "name": "Cadeauzoeker", "description": "Ideeën per budget & interesses." },
-      "party": { "name": "Evenementplanner (lite)", "description": "Plan snel een klein feestje." },
-      "social": { "name": "Sociale postmaker", "description": "Conceptposts met opties." },
-      "interview": { "name": "Sollicitatiecoach", "description": "Oefen antwoorden (STAR)." },
-      "homefix": { "name": "Doe-het-zelfgids", "description": "Eenvoudige probleemoplossing." },
-      "pet": { "name": "Huisdierhulp", "description": "Voeding, uitlaten, basistraining." },
-      "mindful": { "name": "Mindful minuut", "description": "Rustpauzes van 1–3 min." },
-      "polite": { "name": "Vriendelijke herschrijver", "description": "Herschrijft teksten en reacties beleefd." }
+      "default": {
+        "name": "Standaardassistent",
+        "description": "Gebalanceerde hulp voor dagelijkse dingen."
+      },
+      "quick": {
+        "name": "Snelle antwoorden",
+        "description": "Korte, directe antwoorden."
+      },
+      "planner": {
+        "name": "Dagplanner",
+        "description": "Plan je dag en routines."
+      },
+      "recipes": {
+        "name": "Maaltijden & recepten",
+        "description": "Wat je kunt koken met wat je hebt."
+      },
+      "fitness": {
+        "name": "Gewoonte & fitnesscoach",
+        "description": "Kleine gewoonten en thuiswork-outs."
+      },
+      "money": {
+        "name": "Geldhulp",
+        "description": "Eenvoudige budgetten en uitgavetips."
+      },
+      "study": {
+        "name": "Studiehulp",
+        "description": "Leg simpel uit. Oefen met mij."
+      },
+      "email": {
+        "name": "E-mail & cv",
+        "description": "Schrijf heldere e-mails en cv-regels."
+      },
+      "translator": {
+        "name": "Vertaler",
+        "description": "Vertalen en zinnen leren."
+      },
+      "travel": {
+        "name": "Reisbuddy",
+        "description": "Eenvoudige plannen en paklijsten."
+      },
+      "tech": {
+        "name": "Technische hulp (simpel)",
+        "description": "Telefoon, apps, wifi-basis."
+      },
+      "summarizer": {
+        "name": "TL;DR-samenvatter",
+        "description": "Korte bullets + samenvatting in één zin."
+      },
+      "gift": {
+        "name": "Cadeauzoeker",
+        "description": "Ideeën op budget en interesses."
+      },
+      "party": {
+        "name": "Eventplanner (licht)",
+        "description": "Kleine party snel plannen."
+      },
+      "social": {
+        "name": "Social post maker",
+        "description": "Posts maken met opties."
+      },
+      "interview": {
+        "name": "Sollicitatiecoach",
+        "description": "Antwoorden oefenen (STAR)."
+      },
+      "homefix": {
+        "name": "Doe-het-zelf gids",
+        "description": "Eenvoudig problemen thuis oplossen."
+      },
+      "pet": {
+        "name": "Huisdierhulp",
+        "description": "Voeding, uitlaten, basistraining."
+      },
+      "mindful": {
+        "name": "Mindful moment",
+        "description": "Rustmoment van 1–3 minuten."
+      },
+      "polite": {
+        "name": "Vriendelijke herschrijver",
+        "description": "Herschrijf teksten op een nette manier."
+      }
     }
   },
   "history": {
@@ -143,11 +217,11 @@
     "noChatsYet": "Nog geen chats",
     "startFirstConversation": "Begin je eerste gesprek.",
     "startChat": "Chat starten",
-    "errorLoadingHistory": "Fout bij het laden van de geschiedenis",
+    "errorLoadingHistory": "Fout bij laden van geschiedenis",
     "renameChat": "Chat hernoemen",
     "enterNewTitle": "Voer een nieuwe titel in",
     "deleteChat": "Chat verwijderen?",
-    "deleteChatMessage": "“{{title}}” wordt verwijderd.",
+    "deleteChatMessage": "\"{{title}}\" wordt verwijderd.",
     "rename": "Hernoemen",
     "unpin": "Losmaken",
     "pin": "Vastmaken",
@@ -160,44 +234,406 @@
     "temperatureForCurrentModel": "Temperatuur voor huidig model",
     "customFor": "Aangepast voor {{model}}",
     "usingDefault": "Standaardwaarde {{temperature}} gebruiken",
-    "resetToDefault": "Terugzetten naar standaard",
+    "resetToDefault": "Standaard herstellen",
     "defaultTemperature": "Standaardtemperatuur (fallback)",
-    "usedByModelsWithoutOverride": "Gebruikt door modellen zonder override",
+    "usedByModelsWithoutOverride": "Gebruikt door modellen zonder eigen instelling",
     "dangerZone": "Gevarenzone",
     "clearAllChatsAndSettings": "Alle chats en instellingen wissen",
-    "about": "Info",
-    "version": "Versie {{version}}",
+    "about": "Over",
+    "version": "Versie {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
     "privacyPolicy": "Privacybeleid",
+    "hero": {
+      "label": "Speciale aanbieding",
+      "title": "Prioritaire toegang & geen limieten",
+      "upgrade": "Upgraden",
+      "manage": "Abonnement beheren"
+    },
+    "sections": {
+      "premium": "Premium-abonnement",
+      "data": "Gebruikersdata",
+      "support": "Support & juridisch"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Premium nemen",
+        "subtitle": "Onbeperkte creatietools ontgrendelen"
+      },
+      "premiumActive": {
+        "title": "Premium actief",
+        "subtitle": "Bedankt voor het steunen van ChatCloud"
+      },
+      "restore": {
+        "title": "Aankopen herstellen",
+        "subtitle": "Gebruik dit als je van toestel bent gewisseld"
+      },
+      "history": {
+        "title": "Chathistorie beheren",
+        "subtitle": "Bekijk en verwijder vorige sessies"
+      },
+      "reset": {
+        "title": "Chats & voorkeuren resetten",
+        "subtitle": "Verwijdert alle opgeslagen gegevens op dit toestel"
+      },
+      "rate": {
+        "title": "Beoordeel ons",
+        "error": "Kan de store-pagina niet openen."
+      },
+      "support": {
+        "title": "Support",
+        "subtitle": "Neem online contact op",
+        "error": "Kan de contactpagina niet openen."
+      },
+      "privacy": {
+        "title": "Privacybeleid",
+        "error": "Kan het privacybeleid niet openen."
+      },
+      "terms": {
+        "title": "Gebruiksvoorwaarden",
+        "error": "Kan de voorwaarden niet openen."
+      }
+    },
     "capabilities": {
       "text": "TXT",
       "image": "IMG",
       "audio": "AUD",
       "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Niet beschikbaar",
+      "linkUnavailableMessage": "Deze link kan nu niet worden geopend.",
+      "restoreSuccessTitle": "Hersteld",
+      "restoreSuccessMessage": "Je aankopen zijn hersteld.",
+      "restoreErrorTitle": "Herstellen mislukt",
+      "restoreErrorMessage": "Aankopen kunnen nu niet worden hersteld.",
+      "resetConfirmTitle": "App-gegevens resetten?",
+      "resetConfirmMessage": "Hiermee verwijder je alle chats en lokale voorkeuren.",
+      "resetConfirmCancel": "Annuleren",
+      "resetConfirmCta": "Resetten"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Maken",
+    "chooseStyle": "Kies een stijl",
+    "aspectRatio": "Beeldverhouding",
+    "starterPrompts": {
+      "title": "Startprompts",
+      "items": [
+        "studiokop",
+        "moderne woonkamer",
+        "tropisch strand bij zonsondergang"
+      ]
+    },
+    "promptPlaceholder": "Typ wat je wilt zien…",
+    "promptHint": "Voorbeeld: “Golden retriever met studiolicht”",
+    "clearText": "Tekst wissen",
+    "generate": "Genereren",
+    "generating": "Bezig met genereren…"
+  },
+  "editImage": {
+    "headerTitle": "Bewerken",
+    "chooseStyle": "Kies een stijl",
+    "aspectRatio": "Beeldverhouding",
+    "starterPrompts": {
+      "title": "Startprompts",
+      "items": [
+        "belichting verbeteren",
+        "achtergrond verwijderen",
+        "zachte portretretouche"
+      ]
+    },
+    "promptPlaceholder": "Beschrijf de bewerking (optioneel)",
+    "clearText": "Tekst wissen",
+    "generate": "Genereren",
+    "generating": "Toepassen…",
+    "upload": {
+      "choose": "Foto kiezen",
+      "change": "Wijzigen",
+      "remove": "Verwijderen"
+    },
+    "imageUnavailable": {
+      "title": "Afbeelding niet beschikbaar",
+      "message": "Kon de geselecteerde foto niet openen. Selecteer opnieuw en probeer het nog eens."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Cartoon"
+      },
+      "photoreal": {
+        "name": "Fotorealistisch"
+      },
+      "sketch": {
+        "name": "Schets"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D-illustratie"
+      },
+      "dark_fantasy": {
+        "name": "Donkere fantasy"
+      },
+      "vintage_film": {
+        "name": "Vintage film"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Neon gloed"
+      },
+      "epic_landscape": {
+        "name": "Episch landschap"
+      }
+    },
+    "aspectRatios": {
+      "square": "Vierkant",
+      "landscape": "Liggend",
+      "portrait": "Staand"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Aangepast"
+    },
+    "modelTaglines": {
+      "runwareFluxSchnell": "Snelste model",
+      "runwareFluxKrea": "Creatief en gestileerd",
+      "runwareQwenImage": "Gebalanceerd en hoge kwaliteit",
+      "google4": "Beste afbeeldingsmodel van Google",
+      "fluxKontent": "Flux Kontent afgestemd op edits",
+      "runwareProvider": "Gebalanceerde kwaliteit met betrouwbare diffusie.",
+      "airProvider": "Nano Banana geeft speelse, levendige toon.",
+      "googleProvider": "Google getuned voor verfijnde details.",
+      "anthropicProvider": "Claude-pipeline voor genuanceerde sferen.",
+      "default": "Tik om de beschikbare engines te verkennen."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "je gekozen stijl",
+    "sheetTitle": "Je beeld wordt gemaakt",
+    "sheetSubtitle": "Heel even, we mengen {{style}} in de prompt.",
+    "phases": {
+      "blend": "{{style}} mengen",
+      "paint": "Scène tekenen",
+      "finish": "Laatste details toevoegen"
+    },
+    "actions": {
+      "cancel": "Annuleren",
+      "retry": "Opnieuw",
+      "close": "Sluiten"
+    },
+    "errors": {
+      "restrictedTitle": "Beperkte inhoud",
+      "genericTitle": "Genereren mislukt",
+      "genericMessage": "Kon de afbeelding niet genereren."
+    },
+    "alerts": {
+      "saveFailedTitle": "Kon niet opslaan",
+      "shareFailedTitle": "Kon niet delen",
+      "tryAgain": "Probeer het opnieuw."
+    },
+    "result": {
+      "complete": "Klaar"
+    },
+    "accessibility": {
+      "close": "Sluiten"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Verwijderen",
+      "edit": "Bewerken",
+      "save": "Opslaan",
+      "share": "Delen"
+    },
+    "accessibility": {
+      "close": "Sluiten",
+      "delete": "Afbeelding verwijderen",
+      "edit": "Afbeelding bewerken",
+      "save": "Afbeelding opslaan",
+      "share": "Afbeelding delen"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Menu openen",
+      "selectImages": "Afbeeldingen selecteren",
+      "exitSelection": "Selectie verlaten",
+      "deleteSelected": "Geselecteerde afbeeldingen verwijderen",
+      "selectToDelete": "Afbeeldingen selecteren om te verwijderen"
+    },
+    "createCard": {
+      "title": "Maken van tekst",
+      "subtitle": "Voer een beschrijving in",
+      "cta": "Beschrijven & genereren"
+    },
+    "editCard": {
+      "title": "Foto bewerken",
+      "subtitle": "Uploaden & bewerken",
+      "cta": "Foto bewerken"
+    },
+    "gallery": {
+      "title": "Galerij",
+      "empty": "Nog geen afbeeldingen",
+      "selection": {
+        "enter": "Afbeeldingen selecteren",
+        "exit": "Selectie verlaten",
+        "deleteSelected": "Geselecteerde verwijderen",
+        "selectForDelete": "Afbeeldingen selecteren om te verwijderen"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Maak kennis met",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Maak en bewerk afbeeldingen met AI — gewoon in {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Maak kennis met je AI",
+      "titleHighlight": "Assistenten",
+      "subtitle": "Gespecialiseerde AI-experts die je dagelijks helpen",
+      "cards": [
+        {
+          "title": "Fitnesscoach",
+          "text": "Persoonlijke workouts en voedingstips"
+        },
+        {
+          "title": "Dokter",
+          "text": "Informatie over gezondheid en symptoomanalyse"
+        },
+        {
+          "title": "Huisdierhulp",
+          "text": "Advies over verzorging, training en gezondheid"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "AI-OPLOSSINGEN OP ENTERPRISE-NIVEAU",
+      "description": "Geef je bedrijf kracht met AI-technologie voor teams en professionals.",
+      "stats": "Vertrouwd door 500k+ gebruikers",
+      "rating": "4,9 / 5",
+      "button": "Aan de slag"
+    }
+  },
+  "coinStore": {
+    "title": "Tokens kopen",
+    "loading": "Tokenwinkel laden…",
+    "balanceLabel": "Je huidige saldo is",
+    "balanceValue": "{{amount}} tokens",
+    "history": {
+      "link": "Transactiegeschiedenis",
+      "alertTitle": "Geschiedenis",
+      "alertBody": "Transactiegeschiedenis komt binnenkort."
+    },
+    "noPacks": "Geen tokenpakketten beschikbaar. Controleer je RevenueCat-offer-ID.",
+    "badges": {
+      "basic": "Basispakket",
+      "popular": "Meest populair",
+      "value": "Beste waarde"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} tokens",
+      "defaultName": "Pakket {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Premium worden",
+      "subtitle": "Onbeperkte toegang & functies",
+      "cta": "Upgraden"
+    },
+    "termsText": "Door te kopen ga je akkoord met onze",
+    "termsLink": "Servicevoorwaarden",
+    "alerts": {
+      "initErrorTitle": "Initialisatiefout",
+      "genericMessage": "Er ging iets mis.",
+      "successTitle": "Gelukt",
+      "successMessage": "Tokens verschijnen zo.",
+      "purchaseFailedTitle": "Aankoop mislukt",
+      "unknownError": "Onbekende fout"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Herstellen",
+    "restoreRestoring": "Bezig met herstellen…",
+    "features": {
+      "create": "Afbeeldingen en video’s maken",
+      "search": "Met AI op het web zoeken",
+      "talk": "Natuurlijk praten met AI"
+    },
+    "freeTrial": {
+      "title": "Gratis proef",
+      "subtitle": "3 dagen gratis"
+    },
+    "badge": {
+      "bestOffer": "Beste aanbod"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Jaarlijks",
+        "only": "Slechts {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Maandelijks",
+        "subtitle": "Op elk moment opzeggen",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Wekelijks",
+        "subtitle": "Op elk moment opzeggen",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "per week",
+      "perMonth": "per maand"
+    },
+    "cta": "Doorgaan",
+    "legal": {
+      "terms": "Voorwaarden",
+      "privacy": "Privacy"
     }
   },
   "chat": {
-    "messagePlaceholder": "Bericht aan Agarka…",
+    "messagePlaceholder": "Bericht...",
     "createImages": "Afbeeldingen maken",
-    "generateAiArtwork": "AI-kunst genereren",
+    "generateAiArtwork": "AI-illustratie genereren",
     "camera": "Camera",
-    "takeOrSelectPhotos": "Foto’s maken of selecteren",
+    "takeOrSelectPhotos": "Foto maken of kiezen",
     "search": "Zoeken",
     "findInformation": "Informatie zoeken",
+    "findRecentInfo": "Recente info zoeken",
     "removeImage": "Afbeelding verwijderen",
     "messageInput": "Berichtinvoer",
     "clearInput": "Wissen",
-    "hideQuickActions": "Snelacties verbergen",
-    "showQuickActions": "Snelacties tonen",
+    "quickActionsLabel": "Snelle acties",
+    "hideQuickActions": "Snelle acties verbergen",
+    "showQuickActions": "Snelle acties tonen",
     "startVoiceInput": "Spraakinvoer starten",
-    "sendMessage": "Verzenden",
+    "sendMessage": "Bericht verzenden",
     "offline": "Offline",
-    "stop": "Stoppen",
-    "streaming": "Streamen…",
+    "stop": "Stop",
+    "streaming": "Bezig met streamen…",
     "closeRecorder": "Recorder sluiten",
-    "insertTranscript": "Transcript invoegen",
-    "scrollToLatest": "Scroll naar laatste bericht",
+    "insertTranscript": "Verzenden",
+    "scrollToLatest": "Naar laatste bericht",
     "copyMessage": "Bericht kopiëren",
-    "copyMessageHint": "Dit bericht naar het klembord kopiëren",
+    "copyMessageHint": "Dit bericht naar klembord kopiëren",
     "shareMessage": "Bericht delen",
     "shareMessageHint": "Dit bericht delen",
     "regenerateResponse": "Antwoord opnieuw genereren",
@@ -207,35 +643,88 @@
     "loading": "Laden…",
     "loadingChat": "Chat laden...",
     "offlineBanner": "Je bent offline. Berichten kunnen niet worden verzonden.",
-    "imagePickerErrorTitle": "Fout bij afbeeldingskiezer",
-    "messageTooLong": "Bericht te lang ({{length}}). De limiet is {{limit}}.",
+    "imagePickerErrorTitle": "Afbeelding kiezen mislukt",
+    "imagePickerErrorMessage": "Kon je foto’s niet openen. Probeer opnieuw.",
+    "messageTooLong": "Bericht te lang ({{length}}). Limiet is {{limit}}.",
+    "sendFailed": "Verzenden mislukt.",
+    "voiceStartFailed": "Kon spraak niet starten.",
     "emptyTitle": "Waarmee kan ik helpen?",
     "emptySubtitle": "Begin een gesprek met AI",
     "privateTitle": "Privéchat",
     "privateSubtitle": "Deze chat verschijnt niet in je geschiedenis",
+    "permissions": {
+      "photosTitle": "Toegang tot foto’s vereist",
+      "photosMessage": "Fototoegang is nodig om afbeeldingen te kiezen.",
+      "voiceTitle": "Microfoon vereist",
+      "voiceMessage": "Microfoon en spraak zijn nodig om de stemfunctie te gebruiken."
+    },
+    "activity": {
+      "analyzingImages": "Afbeeldingen analyseren…",
+      "searching": "Zoeken…",
+      "thinking": "Denken…"
+    },
+    "webSearch": {
+      "title": "Webzoekopdracht",
+      "subtitle": "Recente info vinden",
+      "label": "Webzoekopdracht",
+      "enable": "Webzoekopdracht inschakelen",
+      "disable": "Webzoekopdracht uitschakelen",
+      "toggleLabel": "Op het web zoeken"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Maak snel visuals.",
+      "subtitle": "Genereer, bewerk en publiceer op één plek.",
+      "cta": "Openen"
+    },
+    "quickActions": {
+      "createImages": "Afbeeldingen maken",
+      "openCamera": "Camera openen",
+      "editImage": "Afbeelding bewerken",
+      "startVoice": "Spraak starten",
+      "assistants": "Assistenten"
+    },
     "listening": "Luisteren…",
     "startRecording": "Opname starten…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistent niet beschikbaar",
+      "unavailableDescription": "Deze assistent kon niet worden geladen. Probeer opnieuw.",
+      "ready": "Klaar om te helpen"
+    },
+    "actions": {
+      "copy": "Kopiëren",
+      "share": "Delen",
+      "regenerate": "Opnieuw genereren",
+      "retryFromHere": "Vanaf hier opnieuw proberen",
+      "cancel": "Annuleren"
+    },
+    "messageActionTitle": "Bericht",
+    "status": {
+      "sending": "Verzenden…",
+      "failed": "Mislukt",
+      "sent": "Verzonden"
+    },
     "suggestions": {
-      "writeStory": "Schrijf een creatieve verhaallijn",
+      "writeStory": "Creatief verhaal schrijven",
       "writeStorySubtitle": "over een magisch avontuur",
-      "planTravel": "Maak een reisroute",
+      "planTravel": "Reis plannen",
       "planTravelSubtitle": "voor een geweldige vakantie",
-      "explainConcept": "Leg dit concept uit",
+      "explainConcept": "Leg dit uit",
       "explainConceptSubtitle": "in eenvoudige woorden",
-      "planDay": "Plan mijn dag",
+      "planDay": "Dag plannen",
       "planDaySubtitle": "met productiviteitstips"
     }
   },
   "imageUpload": {
     "required": " *",
-    "processing": "Bezig met verwerken...",
-    "tapToUploadImage": "Tik om een afbeelding te uploaden"
+    "processing": "Bezig…",
+    "tapToUploadImage": "Tik om afbeelding te uploaden"
   },
   "imageGridSelector": {
     "required": " *",
-    "processing": "Bezig met verwerken...",
+    "processing": "Bezig…",
     "camera": "Camera",
-    "library": "Galerij"
+    "library": "Bibliotheek"
   },
   "common": {
     "new": "NIEUW",
@@ -243,6 +732,7 @@
     "cancel": "Annuleren",
     "save": "Opslaan",
     "delete": "Verwijderen",
-    "close": "Sluiten"
+    "close": "Sluiten",
+    "allow": "Toestaan"
   }
 }

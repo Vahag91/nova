@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Vyberte model",
-      "searchPlaceholder": "Hľadať modely...",
-      "noModelsFound": "Nenašli sa žiadne modely",
-      "noModelsAvailable": "Nie sú dostupné žiadne modely",
-      "currentModel": "Aktuálny model: {{name}}. Klepnite pre zmenu.",
-      "openHint": "Otvorí ponuku výberu modelu",
-      "closeLabel": "Zavrie výber modelu",
-      "searchLabel": "Hľadať modely",
-      "searchHint": "Píšte pre filtrovanie modelov",
-      "modelLabel": "Model {{name}}",
-      "selectHint": "Vybrať {{name}}",
-      "currentlySelected": "Aktuálne vybraný model"
+  "modelSelector": {
+    "title": "Vyberte model",
+    "searchPlaceholder": "Hľadať modely...",
+    "noModelsFound": "Nenašli sa žiadne modely",
+    "noModelsAvailable": "Žiadne modely nie sú dostupné",
+    "currentModel": "Aktuálny model: {{name}}. Klepnutím zmeníte.",
+    "openHint": "Otvorí ponuku výberu modelu",
+    "closeLabel": "Zavrieť výber modelu",
+    "searchLabel": "Hľadať modely",
+    "searchHint": "Píšte pre filtrovanie dostupných modelov",
+    "modelLabel": "Model {{name}}",
+    "selectHint": "Vybrať model {{name}}",
+    "currentlySelected": "Aktuálne vybrané"
+  },
+  "models": {
+    "gpt-4o": "Najvýkonnejší AI model",
+    "gpt-4o-mini": "Rýchly na každodenné úlohy",
+    "gpt-5": "Najuniverzálnejšia a najsilnejšia AI",
+    "gpt-5-chat-latest": "Optimalizovaný na chat a dialóg",
+    "gpt-5-mini": "Rýchly a spoľahlivý GPT-5",
+    "gpt-5-nano": "Ľahký model na jednoduché úlohy",
+    "o4-mini": "Efektívny model na uvažovanie",
+    "gpt-4.1-mini": "Kompaktný a schopný GPT-4.1",
+    "claude-3-haiku": "Rýchla a zameraná AI od Anthropic",
+    "claude-3.7-sonnet": "Vylepšené uvažovanie od Anthropic",
+    "gemini-2.5-Flash": "Najpokročilejší model Googlu",
+    "gemini-2.5-flash": "Najpokročilejší model Googlu",
+    "gemini-2.0-flash": "Rýchla a presná Google AI"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Iný"
+  },
+  "navigation": {
+    "chat": "Nový chat",
+    "history": "História",
+    "assistants": "Asistenti",
+    "imagesStudio": "Image Studio",
+    "settings": "Nastavenia",
+    "recentChats": "Nedávne chaty"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Generujte, upravujte a publikujte vizuály na jednom mieste.",
+    "cta": "Otvoriť"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Vybrať obrázky",
+    "exitSelectionMode": "Ukončiť režim výberu",
+    "selectAll": "Vybrať všetko",
+    "noImagesYet": "Zatiaľ žiadne obrázky",
+    "describeImageHint": "Popíšte obrázok nižšie a klepnite na Generovať.",
+    "generatedImagesGallery": "Galéria vygenerovaných obrázkov",
+    "describeImagePlaceholder": "Popíšte obrázok, ktorý chcete…",
+    "deleteConfirmTitle": "Vymazať obrázky",
+    "deleteConfirmMessage": "Naozaj chcete vymazať vybrané obrázky? Túto akciu nemožno vrátiť.",
+    "cancel": "Zrušiť",
+    "delete": "Vymazať",
+    "generate": "Generovať",
+    "generating": "Generujem…",
+    "latest": "Najnovšie",
+    "insertToChat": "Vložiť do chatu",
+    "pleaseWait": "Prosím, čakajte…",
+    "processing": "Spracúva sa...",
+    "tapToUploadImage": "Klepnutím nahráte obrázok",
+    "camera": "Kamera",
+    "library": "Knižnica",
+    "enterPrompt": "Zadajte prompt na generovanie obrázka z textu",
+    "openInBrowser": "Otvoriť v prehliadači",
+    "makeVariations": "Vytvoriť variácie",
+    "deleteAllFromGeneration": "Vymazať všetko z tejto generácie",
+    "imageOptionsTitle": "Možnosti obrázka",
+    "imageOptionsMessage": "Čo chcete s obrázkom urobiť?",
+    "insertMarkdownHeader": "Tu je obrázok pre:",
+    "variationSuffix": " — variácia predchádzajúceho obrázka",
+    "selectedCount": "vybrané",
+    "selectedCount_one": "vybrané",
+    "selectedCount_other": "vybrané",
+    "imageDescriptionInput": "Pole na popis obrázka",
+    "imageDescriptionHint": "Zadajte popis obrázka, ktorý chcete vygenerovať",
+    "openModelSettings": "Otvoriť nastavenia modelu",
+    "modelSettingsHint": "Klepnutím zmeníte model a nastavenia",
+    "openPhotoGallery": "Otvoriť galériu",
+    "clearInput": "Vymazať",
+    "generatedImage": "Vygenerovaný obrázok",
+    "autoSelectedModel": "Automaticky vybraný {{model}} pre režim {{mode}}",
+    "deleteSelectedConfirmTitle": "Vymazať obrázky",
+    "deleteSelectedConfirmMessage": "Naozaj chcete vymazať obrázky? Túto akciu nemožno vrátiť."
+  },
+  "imageStudio": {
+    "generateImage": "Vygenerovať obrázok",
+    "generatingImage": "Generujem obrázok",
+    "generateImageHint": "Klepnutím vygenerujete obrázok podľa popisu",
+    "imageDescriptionInput": "Pole na popis obrázka",
+    "imageDescriptionHint": "Zadajte popis obrázka, ktorý chcete vygenerovať",
+    "openModelSettings": "Otvoriť nastavenia modelu",
+    "modelSettingsHint": "Klepnutím zmeníte model a nastavenia",
+    "openPhotoGallery": "Otvoriť galériu fotiek",
+    "clearInput": "Vymazať",
+    "generatedImage": "Vygenerovaný obrázok"
+  },
+  "assistants": {
+    "title": "Asistenti",
+    "subtitle": "Vybraní AI špecialisti pripravení na kódovanie, písanie, analýzu, plánovanie a ďalšie.",
+    "searchPlaceholder": "Hľadať asistentov…",
+    "useAssistant": "Použiť asistenta",
+    "selectAssistant": "Vybrať asistenta",
+    "description": "Popis",
+    "systemPrompt": "Systémový prompt",
+    "chooseModel": "Vybrať model",
+    "categoryAll": "Všetky",
+    "categories": {
+      "everyday": "Každodenné",
+      "life": "Život",
+      "health": "Zdravie",
+      "schoolWork": "Škola & práca",
+      "coding": "Programovanie",
+      "creative": "Kreatívne",
+      "general": "Všeobecné"
+    },
+    "presets": {
+      "default": {
+        "name": "Predvolený asistent",
+        "description": "Vyvážená pomoc na bežné úlohy."
+      },
+      "quick": {
+        "name": "Rýchle odpovede",
+        "description": "Krátke a priame odpovede."
+      },
+      "planner": {
+        "name": "Denný plánovač",
+        "description": "Naplánujte si deň a rutiny."
+      },
+      "recipes": {
+        "name": "Jedlá a recepty",
+        "description": "Čo navariť z toho, čo máte."
+      },
+      "fitness": {
+        "name": "Zvyky a fitness",
+        "description": "Krátke cvičenia a domáce tréningy."
+      },
+      "money": {
+        "name": "Finančný pomocník",
+        "description": "Jednoduché rozpočty a tipy na míňanie."
+      },
+      "study": {
+        "name": "Študijný pomocník",
+        "description": "Vysvetlí jednoducho. Vie aj vyskúšať."
+      },
+      "email": {
+        "name": "Email & životopis",
+        "description": "Napíše jasné emaily a riadky do CV."
+      },
+      "translator": {
+        "name": "Prekladač",
+        "description": "Preloží a naučí frázy."
+      },
+      "travel": {
+        "name": "Cestovný parťák",
+        "description": "Jednoduché plány a zoznamy na balenie."
+      },
+      "tech": {
+        "name": "Technická podpora (jednoduchá)",
+        "description": "Telefón, aplikácie, základy Wi-Fi."
+      },
+      "summarizer": {
+        "name": "Skrátené zhrnutie (TL;DR)",
+        "description": "Krátke body + jedna veta."
+      },
+      "gift": {
+        "name": "Hľadač darčekov",
+        "description": "Nápady podľa rozpočtu a záujmov."
+      },
+      "party": {
+        "name": "Plánovač udalostí (lite)",
+        "description": "Rýchle plánovanie malej akcie."
+      },
+      "social": {
+        "name": "Tvorca príspevkov",
+        "description": "Návrhy príspevkov s možnosťami."
+      },
+      "interview": {
+        "name": "Tréner na pohovor",
+        "description": "Nacvičí odpovede (STAR)."
+      },
+      "homefix": {
+        "name": "Domáci opravár",
+        "description": "Jednoduché DIY riešenia."
+      },
+      "pet": {
+        "name": "Starostlivosť o zvieratá",
+        "description": "Kŕmenie, venčenie, základný výcvik."
+      },
+      "mindful": {
+        "name": "Vedomá minútka",
+        "description": "1–3 minúty pauzy."
+      },
+      "polite": {
+        "name": "Zdvorilý prepísač",
+        "description": "Prepíše texty a odpovede slušnejšie."
+      }
+    }
+  },
+  "history": {
+    "title": "História",
+    "searchPlaceholder": "Hľadať v chatov…",
+    "newChat": "Nový chat",
+    "new": "+ Nový",
+    "search": "Hľadať",
+    "clearSearch": "Vymazať vyhľadávanie",
+    "noChatsYet": "Zatiaľ žiadne chaty",
+    "startFirstConversation": "Začnite svoju prvú konverzáciu.",
+    "startChat": "Začať chat",
+    "errorLoadingHistory": "Chyba pri načítaní histórie",
+    "renameChat": "Premenovať chat",
+    "enterNewTitle": "Zadajte nový názov",
+    "deleteChat": "Vymazať chat?",
+    "deleteChatMessage": "„{{title}}“ bude vymazaný.",
+    "rename": "Premenovať",
+    "unpin": "Odomknúť",
+    "pin": "Pripnúť",
+    "untitled": "Bez názvu"
+  },
+  "settings": {
+    "title": "Nastavenia",
+    "model": "Model",
+    "searchPlaceholder": "Hľadať modely…",
+    "temperatureForCurrentModel": "Teplota pre aktuálny model",
+    "customFor": "Vlastné pre {{model}}",
+    "usingDefault": "Používa sa predvolená hodnota {{temperature}}",
+    "resetToDefault": "Obnoviť predvolené",
+    "defaultTemperature": "Predvolená teplota (záloha)",
+    "usedByModelsWithoutOverride": "Používané modelmi bez vlastného nastavenia",
+    "dangerZone": "Nebezpečná zóna",
+    "clearAllChatsAndSettings": "Vymazať všetky chaty a nastavenia",
+    "about": "O aplikácii",
+    "version": "Verzia {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Ochrana súkromia",
+    "hero": {
+      "label": "Špeciálna ponuka",
+      "title": "Prioritný prístup a bez limitov",
+      "upgrade": "Upgradovať",
+      "manage": "Spravovať plán"
+    },
+    "sections": {
+      "premium": "Premium plán",
+      "data": "Údaje používateľa",
+      "support": "Podpora a právne"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Získať Premium",
+        "subtitle": "Odomknite neobmedzené kreatívne nástroje"
+      },
+      "premiumActive": {
+        "title": "Premium je aktívne",
+        "subtitle": "Ďakujeme za podporu ChatCloud"
+      },
+      "restore": {
+        "title": "Obnoviť nákupy",
+        "subtitle": "Použite, ak ste si vymenili zariadenie"
+      },
+      "history": {
+        "title": "Spravovať históriu chatov",
+        "subtitle": "Zobraziť a vymazať minulé relácie"
+      },
+      "reset": {
+        "title": "Resetovať chaty a nastavenia",
+        "subtitle": "Vymaže všetky údaje z tohto zariadenia"
+      },
+      "rate": {
+        "title": "Ohodnoťte nás",
+        "error": "Nepodarilo sa otvoriť stránku obchodu."
+      },
+      "support": {
+        "title": "Podpora",
+        "subtitle": "Kontaktujte nás online",
+        "error": "Nepodarilo sa otvoriť stránku podpory."
+      },
+      "privacy": {
+        "title": "Ochrana súkromia",
+        "error": "Nepodarilo sa otvoriť stránku ochrany súkromia."
+      },
+      "terms": {
+        "title": "Podmienky používania",
+        "error": "Nepodarilo sa otvoriť podmienky."
+      }
+    },
+    "capabilities": {
+      "text": "TEXT",
+      "image": "OBR",
+      "audio": "AUDIO",
+      "video": "VIDEO"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Nedostupné",
+      "linkUnavailableMessage": "Tento odkaz sa teraz nedá otvoriť.",
+      "restoreSuccessTitle": "Obnovené",
+      "restoreSuccessMessage": "Vaše nákupy boli obnovené.",
+      "restoreErrorTitle": "Obnovenie zlyhalo",
+      "restoreErrorMessage": "Nákupy sa teraz nedajú obnoviť.",
+      "resetConfirmTitle": "Resetovať údaje aplikácie?",
+      "resetConfirmMessage": "Týmto zmažete všetky chaty a lokálne nastavenia.",
+      "resetConfirmCancel": "Zrušiť",
+      "resetConfirmCta": "Resetovať"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Vytvoriť",
+    "chooseStyle": "Vybrať štýl",
+    "aspectRatio": "Pomer strán",
+    "starterPrompts": {
+      "title": "Ukážkové prompty",
+      "items": [
+        "štúdiový portrét",
+        "moderná obývačka",
+        "tropická pláž pri západe slnka"
+      ]
+    },
+    "promptPlaceholder": "Napíšte, čo chcete vidieť…",
+    "promptHint": "Príklad: „Zlatý retríver v štúdiovom svetle“",
+    "clearText": "Vymazať text",
+    "generate": "Generovať",
+    "generating": "Generujem…"
+  },
+  "editImage": {
+    "headerTitle": "Upraviť",
+    "chooseStyle": "Vybrať štýl",
+    "aspectRatio": "Pomer strán",
+    "starterPrompts": {
+      "title": "Ukážkové prompty",
+      "items": [
+        "opraviť osvetlenie",
+        "odstrániť pozadie",
+        "jemné retušovanie portrétu"
+      ]
+    },
+    "promptPlaceholder": "Popíšte úpravy (voliteľné)",
+    "clearText": "Vymazať",
+    "generate": "Použiť",
+    "generating": "Používa sa…",
+    "upload": {
+      "choose": "Vybrať fotografiu",
+      "change": "Zmeniť",
+      "remove": "Odstrániť"
+    },
+    "imageUnavailable": {
+      "title": "Obrázok nie je dostupný",
+      "message": "Nepodarilo sa získať prístup k vybranej fotke. Vyberte ju znova a skúste ešte raz."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Kreslené"
+      },
+      "photoreal": {
+        "name": "Fotorealistické"
+      },
+      "sketch": {
+        "name": "Skica"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D ilustrácia"
+      },
+      "dark_fantasy": {
+        "name": "Temná fantasy"
+      },
+      "vintage_film": {
+        "name": "Vintage film"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Neónová žiara"
+      },
+      "epic_landscape": {
+        "name": "Epická krajina"
+      }
+    },
+    "aspectRatios": {
+      "square": "Štvorec",
+      "landscape": "Na šírku",
+      "portrait": "Na výšku"
     },
     "models": {
-      "gpt-4o": "Najvýkonnejší model AI",
-      "gpt-4o-mini": "Rýchly na každodenné úlohy",
-      "claude-3-haiku": "Rýchly a efektívny model",
-      "claude-3.7-sonnet": "Pokročilý model uvažovania",
-      "gemini-2.5-pro": "Najlepší model od Googlu",
-      "gemini-2.0-flash": "Rýchly model s výborným uvažovaním"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Vlastný"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Iné"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Najrýchlejší model",
+      "runwareFluxKrea": "Kreatívne, štýlové výsledky",
+      "runwareQwenImage": "Vyvážené výsledky vysokej kvality",
+      "google4": "Najlepší AI model na obrázky",
+      "fluxKontent": "Flux Kontent doladený na úpravy",
+      "runwareProvider": "Vyvážená kvalita s spoľahlivou difúziou.",
+      "airProvider": "Nano Banana pridáva hravý, živý tón.",
+      "googleProvider": "Google vyladený na pekné detaily.",
+      "anthropicProvider": "Claude pipeline pre jemnejšie nálady.",
+      "default": "Klepnutím zobrazíte dostupné enginy."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "vybraný štýl",
+    "sheetTitle": "Tvoríme vašu víziu",
+    "sheetSubtitle": "Chvíľku počkajte, miešame {{style}} do promptu.",
+    "phases": {
+      "blend": "Miešanie {{style}}",
+      "paint": "Maľovanie scény",
+      "finish": "Dokončovanie"
     },
-    "navigation": {
-      "chat": "Chat",
-      "history": "História",
-      "assistants": "Asistenti",
-      "imagesStudio": "Štúdio",
-      "settings": "Nastavenia",
-      "recentChats": "Nedávne chaty"
-    },
-    "imagesStudio": {
-      "title": "Štúdio",
-      "selectImages": "Vybrať obrázky",
-      "exitSelectionMode": "Ukončiť režim výberu",
-      "selectAll": "Vybrať všetko",
-      "noImagesYet": "Zatiaľ žiadne obrázky",
-      "describeImageHint": "Nižšie opíšte obrázok a klepnite na „Generovať“.",
-      "generatedImagesGallery": "Galéria vygenerovaných obrázkov",
-      "describeImagePlaceholder": "Opíšte požadovaný obrázok…",
-      "deleteConfirmTitle": "Odstrániť obrázky",
-      "deleteConfirmMessage": "Naozaj chcete odstrániť vybrané obrázky? Túto akciu nemožno vrátiť späť.",
+    "actions": {
       "cancel": "Zrušiť",
-      "delete": "Odstrániť",
-      "generate": "Generovať",
-      "generating": "Generuje sa…",
-      "latest": "Najnovšie",
-      "insertToChat": "Vložiť do chatu",
-      "pleaseWait": "Prosím, čakajte…",
-      "processing": "Spracovanie...",
-      "tapToUploadImage": "Klepnite pre nahratie obrázka",
-      "camera": "Fotoaparát",
-      "library": "Galéria",
-      "enterPrompt": "Zadajte prompt na generovanie textu na obrázok",
-      "openInBrowser": "Otvoriť v prehliadači",
-      "makeVariations": "Vytvoriť variácie",
-      "deleteAllFromGeneration": "Odstrániť všetko z tejto generácie",
-      "imageOptionsTitle": "Možnosti obrázka",
-      "imageOptionsMessage": "Čo chcete urobiť s týmto obrázkom?",
-      "insertMarkdownHeader": "Tu je obrázok pre:",
-      "variationSuffix": "— variácia predchádzajúceho obrázka",
-      "selectedCount": "vybrané",
-      "selectedCount_one": "vybrané",
-      "selectedCount_other": "vybrané",
-      "imageDescriptionInput": "Pole popisu obrázka",
-      "imageDescriptionHint": "Zadajte popis obrázka, ktorý chcete vygenerovať",
-      "openModelSettings": "Otvoriť nastavenia modelu",
-      "modelSettingsHint": "Klepnite pre zmenu modelu a nastavení",
-      "openPhotoGallery": "Otvoriť galériu",
-      "clearInput": "Vymazať pole",
-      "generatedImage": "Vygenerovaný obrázok",
-      "autoSelectedModel": "Automaticky vybraný {{model}} pre režim {{mode}}",
-      "deleteSelectedConfirmTitle": "Odstrániť obrázky",
-      "deleteSelectedConfirmMessage": "Naozaj chcete odstrániť obrázky? Túto akciu nemožno vrátiť späť."
+      "retry": "Skúsiť znova",
+      "close": "Zavrieť"
     },
-    "imageStudio": {
-      "generateImage": "Generovať obrázok",
-      "generatingImage": "Generuje sa obrázok",
-      "generateImageHint": "Klepnutím vygenerujete obrázok podľa popisu",
-      "imageDescriptionInput": "Pole popisu obrázka",
-      "imageDescriptionHint": "Zadajte popis obrázka, ktorý chcete vygenerovať",
-      "openModelSettings": "Otvoriť nastavenia modelu",
-      "modelSettingsHint": "Klepnite pre zmenu modelu a nastavení",
-      "openPhotoGallery": "Otvoriť galériu",
-      "clearInput": "Vymazať pole",
-      "generatedImage": "Vygenerovaný obrázok"
+    "errors": {
+      "restrictedTitle": "Obmedzený obsah",
+      "genericTitle": "Generovanie zlyhalo",
+      "genericMessage": "Obrázok sa nepodarilo vygenerovať."
     },
-    "assistants": {
-      "title": "Asistenti",
-      "subtitle": "Vybraní špecialisti AI pripravení na kódovanie, písanie, analýzu, plánovanie a ďalšie.",
-      "searchPlaceholder": "Hľadať asistentov…",
-      "useAssistant": "Použiť asistenta",
-      "description": "Popis",
-      "systemPrompt": "Systémový prompt",
-      "chooseModel": "Vybrať model",
-      "categoryAll": "Všetko",
-      "categories": {
-        "everyday": "Každodenné",
-        "life": "Život",
-        "health": "Zdravie",
-        "schoolWork": "Škola a práca",
-        "coding": "Kódovanie",
-        "creative": "Kreatívne",
-        "general": "Všeobecné"
-      },
-      "presets": {
-        "default": { "name": "Štandardný asistent", "description": "Vyvážená pomoc na každý deň." },
-        "quick": { "name": "Rýchle odpovede", "description": "Krátke a k veci." },
-        "planner": { "name": "Denný plánovač", "description": "Naplánujte si deň a rutiny." },
-        "recipes": { "name": "Jedlá a recepty", "description": "Čo uvariť z toho, čo máte." },
-        "fitness": { "name": "Coach návykov a fitness", "description": "Malé návyky a domáce cvičenia." },
-        "money": { "name": "Finančný parťák", "description": "Jednoduché rozpočty a tipy na výdavky." },
-        "study": { "name": "Študijný pomocník", "description": "Vysvetli jednoducho. Vyskúšaj ma." },
-        "email": { "name": "E-mail a životopis", "description": "Jasné e-maily a body do CV." },
-        "translator": { "name": "Prekladač", "description": "Prekladaj + uč frázy." },
-        "travel": { "name": "Cestovný parťák", "description": "Jednoduché plány a zoznam balenia." },
-        "tech": { "name": "Technická podpora (základ)", "description": "Základy telefónu, apiek a Wi-Fi." },
-        "summarizer": { "name": "TL;DR sumarizér", "description": "Krátke body + jedno-vetová pointa." },
-        "gift": { "name": "Hľadač darčekov", "description": "Nápady podľa rozpočtu a záujmov." },
-        "party": { "name": "Plánovač akcií (lite)", "description": "Rýchlo naplánujte malú párty." },
-        "social": { "name": "Tvorca príspevkov", "description": "Návrhy príspevkov s možnosťami." },
-        "interview": { "name": "Interview tréner", "description": "Trénujte odpovede (STAR)." },
-        "homefix": { "name": "Domáci opravár", "description": "Jednoduché odstraňovanie chýb." },
-        "pet": { "name": "Pomocník pre domáce zvieratá", "description": "Kŕmenie, prechádzky, základný výcvik." },
-        "mindful": { "name": "Minúta všímavosti", "description": "Pokojné pauzy na 1–3 min." },
-        "polite": { "name": "Zdvorilý prepisovač", "description": "Prepíš texty a odpovede zdvorilo." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Nepodarilo sa uložiť",
+      "shareFailedTitle": "Nepodarilo sa zdieľať",
+      "tryAgain": "Skúste znova."
     },
-    "history": {
-      "title": "História",
-      "searchPlaceholder": "Hľadať v chatov...",
-      "newChat": "Nový chat",
-      "new": "+ Nový",
-      "search": "Hľadať",
-      "clearSearch": "Vymazať hľadanie",
-      "noChatsYet": "Zatiaľ žiadne chaty",
-      "startFirstConversation": "Začnite svoju prvú konverzáciu.",
-      "startChat": "Začať chat",
-      "errorLoadingHistory": "Chyba pri načítaní histórie",
-      "renameChat": "Premenovať chat",
-      "enterNewTitle": "Zadajte nový názov",
-      "deleteChat": "Odstrániť chat?",
-      "deleteChatMessage": "„{{title}}“ bude odstránený.",
-      "rename": "Premenovať",
-      "unpin": "Odpnúť",
-      "pin": "Pripnúť",
-      "untitled": "Bez názvu"
+    "result": {
+      "complete": "Hotovo"
     },
-    "settings": {
-      "title": "Nastavenia",
-      "model": "Model",
-      "searchPlaceholder": "Hľadať modely…",
-      "temperatureForCurrentModel": "Teplota pre aktuálny model",
-      "customFor": "Vlastné pre {{model}}",
-      "usingDefault": "Používa sa predvolené {{temperature}}",
-      "resetToDefault": "Obnoviť predvolené",
-      "defaultTemperature": "Predvolená teplota (náhradná)",
-      "usedByModelsWithoutOverride": "Používané modelmi bez prepisu",
-      "dangerZone": "Nebezpečná zóna",
-      "clearAllChatsAndSettings": "Vymazať všetky chaty a nastavenia",
-      "about": "O aplikácii",
-      "version": "Verzia {{version}}",
-      "privacyPolicy": "Zásady ochrany súkromia",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Správa pre Agarka...",
-      "createImages": "Vytvoriť obrázky",
-      "generateAiArtwork": "Generovať AI umelecké dielo",
-      "camera": "Fotoaparát",
-      "takeOrSelectPhotos": "Odfotiť alebo vybrať fotky",
-      "search": "Hľadať",
-      "findInformation": "Nájsť informácie",
-      "removeImage": "Odstrániť obrázok",
-      "messageInput": "Vstup správy",
-      "clearInput": "Vymazať pole",
-      "hideQuickActions": "Skryť rýchle akcie",
-      "showQuickActions": "Zobraziť rýchle akcie",
-      "startVoiceInput": "Spustiť hlasový vstup",
-      "sendMessage": "Odoslať",
-      "offline": "Offline",
-      "stop": "Stop",
-      "streaming": "Streamuje sa…",
-      "closeRecorder": "Zavrieť záznamník",
-      "insertTranscript": "Vložiť prepis",
-      "scrollToLatest": "Posunúť na najnovšie",
-      "copyMessage": "Kopírovať správu",
-      "copyMessageHint": "Skopírovať túto správu do schránky",
-      "shareMessage": "Zdieľať správu",
-      "shareMessageHint": "Zdieľať túto správu",
-      "regenerateResponse": "Vygenerovať odpoveď znova",
-      "regenerateResponseHint": "Vygenerovať novú odpoveď",
-      "copyCode": "Kopírovať kód",
-      "image": "obrázok",
-      "loading": "Načítava sa…",
-      "loadingChat": "Načítava sa chat...",
-      "offlineBanner": "Ste offline. Správy nie je možné odoslať.",
-      "imagePickerErrorTitle": "Chyba výberu obrázka",
-      "messageTooLong": "Správa je príliš dlhá ({{length}}). Limit je {{limit}}.",
-      "emptyTitle": "Ako môžem pomôcť?",
-      "emptySubtitle": "Začnite konverzáciu s AI",
-      "privateTitle": "Súkromný chat",
-      "privateSubtitle": "Tento chat sa nezobrazí v histórii",
-      "listening": "Počúva…",
-      "startRecording": "Začať nahrávanie…",
-      "suggestions": {
-        "writeStory": "Napísať kreatívny príbeh",
-        "writeStorySubtitle": "o magickom dobrodružstve",
-        "planTravel": "Naplánovať itinerár",
-        "planTravelSubtitle": "na úžasnú dovolenku",
-        "explainConcept": "Vysvetliť tento koncept",
-        "explainConceptSubtitle": "jednoduchými slovami",
-        "planDay": "Naplánovať môj deň",
-        "planDaySubtitle": "s tipmi na produktivitu"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Spracovanie...",
-      "tapToUploadImage": "Klepnite pre nahratie obrázka"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Spracovanie...",
-      "camera": "Fotoaparát",
-      "library": "Galéria"
-    },
-    "common": {
-      "new": "NOVÉ",
-      "best": "NAJLEPŠIE",
-      "cancel": "Zrušiť",
-      "save": "Uložiť",
-      "delete": "Odstrániť",
+    "accessibility": {
       "close": "Zavrieť"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Vymazať",
+      "edit": "Upraviť",
+      "save": "Uložiť",
+      "share": "Zdieľať"
+    },
+    "accessibility": {
+      "close": "Zavrieť",
+      "delete": "Vymazať obrázok",
+      "edit": "Upraviť obrázok",
+      "save": "Uložiť obrázok",
+      "share": "Zdieľať obrázok"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Otvoriť menu",
+      "selectImages": "Vybrať obrázky",
+      "exitSelection": "Ukončiť výber",
+      "deleteSelected": "Vymazať vybrané obrázky",
+      "selectToDelete": "Vybrať obrázky na vymazanie"
+    },
+    "createCard": {
+      "title": "Vytvoriť z textu",
+      "subtitle": "Zadajte popis",
+      "cta": "Opísať a generovať"
+    },
+    "editCard": {
+      "title": "Upraviť fotografiu",
+      "subtitle": "Nahrať a upraviť",
+      "cta": "Upraviť fotografiu"
+    },
+    "gallery": {
+      "title": "Galéria",
+      "empty": "Zatiaľ žiadne obrázky",
+      "selection": {
+        "enter": "Vybrať obrázky",
+        "exit": "Ukončiť výber",
+        "deleteSelected": "Vymazať vybrané",
+        "selectForDelete": "Vybrať na vymazanie"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Zoznámte sa:",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Vytvárajte a upravujte obrázky s AI — priamo v {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Zoznámte sa so svojou AI",
+      "titleHighlight": "Asistenti",
+      "subtitle": "Špecializovaní AI experti pripravení pomáhať v bežnom dni",
+      "cards": [
+        {
+          "title": "Fitness tréner",
+          "text": "Získajte personalizované tréningy a stravovanie"
+        },
+        {
+          "title": "Doktor",
+          "text": "Získajte zdravotné tipy, analýzu symptómov a odporúčania"
+        },
+        {
+          "title": "Starostlivosť o domáce zvieratá",
+          "text": "Rady k zdraviu, výcviku a starostlivosti"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "AI RIEŠENIA PRE FIRMY",
+      "description": "Posilnite svoje podnikanie špičkovou umelou inteligenciou pre profesionálov a tímy.",
+      "stats": "Dôveruje nám 500k+ používateľov",
+      "rating": "4,9 / 5",
+      "button": "Začať"
+    }
+  },
+  "coinStore": {
+    "title": "Kúpiť tokeny",
+    "loading": "Načítava sa obchod s tokenmi…",
+    "balanceLabel": "Váš aktuálny zostatok je",
+    "balanceValue": "{{amount}} tokenov",
+    "history": {
+      "link": "História transakcií",
+      "alertTitle": "História",
+      "alertBody": "História transakcií bude čoskoro dostupná."
+    },
+    "noPacks": "Nie sú dostupné žiadne balíky tokenov. Skontrolujte RevenueCat offering id.",
+    "badges": {
+      "basic": "Základný balík",
+      "popular": "Najpopulárnejší",
+      "value": "Najlepšia hodnota"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} tokenov",
+      "defaultName": "Balík {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Prejsť na Premium",
+      "subtitle": "Neobmedzený prístup a funkcie",
+      "cta": "Upgradovať"
+    },
+    "termsText": "Nákupom súhlasíte s našimi",
+    "termsLink": "Podmienkami používania",
+    "alerts": {
+      "initErrorTitle": "Chyba inicializácie",
+      "genericMessage": "Niečo sa pokazilo.",
+      "successTitle": "Hotovo",
+      "successMessage": "Tokeny sa čoskoro zobrazia.",
+      "purchaseFailedTitle": "Nákup zlyhal",
+      "unknownError": "Neznáma chyba"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Obnoviť",
+    "restoreRestoring": "Obnovuje sa…",
+    "features": {
+      "create": "Vytvárajte obrázky a videá",
+      "search": "Vyhľadávajte na webe pomocou AI",
+      "talk": "Rozprávajte sa s AI prirodzene"
+    },
+    "freeTrial": {
+      "title": "Skúšobná verzia zdarma",
+      "subtitle": "3 dni zdarma"
+    },
+    "badge": {
+      "bestOffer": "Najlepšia ponuka"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Ročný",
+        "only": "Len {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Mesačný",
+        "subtitle": "Kedykoľvek môžete zrušiť",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Týždenný",
+        "subtitle": "Kedykoľvek môžete zrušiť",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "týždenne",
+      "perMonth": "mesačne"
+    },
+    "cta": "Pokračovať",
+    "legal": {
+      "terms": "Podmienky",
+      "privacy": "Súkromie"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Správa...",
+    "createImages": "Vytvoriť obrázky",
+    "generateAiArtwork": "Vytvoriť AI ilustráciu",
+    "camera": "Kamera",
+    "takeOrSelectPhotos": "Odfotiť alebo vybrať fotky",
+    "search": "Hľadať",
+    "findInformation": "Nájsť informácie",
+    "findRecentInfo": "Nájsť najnovšie informácie",
+    "removeImage": "Odstrániť obrázok",
+    "messageInput": "Vstup správy",
+    "clearInput": "Vymazať vstup",
+    "quickActionsLabel": "Rýchle akcie",
+    "hideQuickActions": "Skryť rýchle akcie",
+    "showQuickActions": "Zobraziť rýchle akcie",
+    "startVoiceInput": "Spustiť hlasový vstup",
+    "sendMessage": "Poslať správu",
+    "offline": "Offline",
+    "stop": "Stop",
+    "streaming": "Streamujem…",
+    "closeRecorder": "Zavrieť nahrávanie",
+    "insertTranscript": "Poslať",
+    "scrollToLatest": "Posunúť na najnovšiu",
+    "copyMessage": "Kopírovať správu",
+    "copyMessageHint": "Kopírovať túto správu do schránky",
+    "shareMessage": "Zdieľať správu",
+    "shareMessageHint": "Zdieľať túto správu",
+    "regenerateResponse": "Vygenerovať odpoveď znova",
+    "regenerateResponseHint": "Vytvoriť novú odpoveď",
+    "copyCode": "Kopírovať kód",
+    "image": "obrázok",
+    "loading": "Načítava sa…",
+    "loadingChat": "Načítava sa chat...",
+    "offlineBanner": "Ste offline. Správy nie je možné odoslať.",
+    "imagePickerErrorTitle": "Chyba pri výbere obrázka",
+    "imagePickerErrorMessage": "Nepodarilo sa získať prístup k fotkám. Skúste znova.",
+    "messageTooLong": "Správa je príliš dlhá ({{length}}). Limit je {{limit}}.",
+    "sendFailed": "Odoslanie zlyhalo.",
+    "voiceStartFailed": "Nepodarilo sa spustiť hlas.",
+    "emptyTitle": "Ako vám môžem pomôcť?",
+    "emptySubtitle": "Začnite konverzáciu s AI",
+    "privateTitle": "Súkromný chat",
+    "privateSubtitle": "Tento chat sa nezobrazí v histórii",
+    "permissions": {
+      "photosTitle": "Je potrebné povolenie k fotkám",
+      "photosMessage": "Na výber obrázkov je potrebný prístup k fotkám.",
+      "voiceTitle": "Je potrebné povolenie k mikrofónu",
+      "voiceMessage": "Na hlasový vstup je potrebný mikrofón a rozpoznávanie reči."
+    },
+    "activity": {
+      "analyzingImages": "Analyzujem obrázky…",
+      "searching": "Hľadám…",
+      "thinking": "Premýšľam…"
+    },
+    "webSearch": {
+      "title": "Webové vyhľadávanie",
+      "subtitle": "Nájdite aktuálne informácie",
+      "label": "Webové vyhľadávanie",
+      "enable": "Zapnúť webové vyhľadávanie",
+      "disable": "Vypnúť webové vyhľadávanie",
+      "toggleLabel": "Hľadať na webe"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Navrhujte vizuály rýchlo.",
+      "subtitle": "Generujte, upravujte a publikujte na jednom mieste.",
+      "cta": "Otvoriť"
+    },
+    "quickActions": {
+      "createImages": "Vytvoriť obrázky",
+      "openCamera": "Otvoriť kameru",
+      "editImage": "Upraviť obrázok",
+      "startVoice": "Spustiť hlas",
+      "assistants": "Asistenti"
+    },
+    "listening": "Počúvam…",
+    "startRecording": "Spúšťam nahrávanie…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistent nie je dostupný",
+      "unavailableDescription": "Nepodarilo sa načítať asistenta. Skúste znova.",
+      "ready": "Pripravený pomôcť"
+    },
+    "actions": {
+      "copy": "Kopírovať",
+      "share": "Zdieľať",
+      "regenerate": "Vygenerovať znova",
+      "retryFromHere": "Skúsiť znova odtiaľto",
+      "cancel": "Zrušiť"
+    },
+    "messageActionTitle": "Správa",
+    "status": {
+      "sending": "Odosielanie…",
+      "failed": "Zlyhalo",
+      "sent": "Odoslané"
+    },
+    "suggestions": {
+      "writeStory": "Napísať kreatívny príbeh",
+      "writeStorySubtitle": "o magickom dobrodružstve",
+      "planTravel": "Naplánovať cestu",
+      "planTravelSubtitle": "na skvelú dovolenku",
+      "explainConcept": "Vysvetliť tento koncept",
+      "explainConceptSubtitle": "jednoduchými slovami",
+      "planDay": "Naplánovať môj deň",
+      "planDaySubtitle": "s tipmi na produktivitu"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Spracúva sa...",
+    "tapToUploadImage": "Klepnutím nahráte obrázok"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Spracúva sa...",
+    "camera": "Kamera",
+    "library": "Knižnica"
+  },
+  "common": {
+    "new": "NOVÉ",
+    "best": "NAJLEPŠIE",
+    "cancel": "Zrušiť",
+    "save": "Uložiť",
+    "delete": "Vymazať",
+    "close": "Zavrieť",
+    "allow": "Povoliť"
   }
-  
+}

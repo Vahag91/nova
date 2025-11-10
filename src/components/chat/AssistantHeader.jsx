@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { colors } from '../../styles/colors';
 import { PRESETS } from '../../data/presets';
+import { useTranslation } from 'react-i18next';
 
 export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
+  const { t } = useTranslation();
   const fallbackCopy = {
-    title: 'Assistant unavailable',
-    description: 'We couldn’t load this assistant. Please try again.',
+    title: t('chat.assistantHeader.unavailableTitle', { defaultValue: 'Assistant unavailable' }),
+    description: t('chat.assistantHeader.unavailableDescription', { defaultValue: 'We couldn’t load this assistant. Please try again.' }),
   };
 
   const iconGradients = [
@@ -50,8 +52,12 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
   const gradient =
     iconGradients[(presetIndex >= 0 ? presetIndex : 0) % iconGradients.length] || defaultGradient;
 
-  const titleText = preset.name || fallbackCopy.title;
-  const descriptionText = preset.description || fallbackCopy.description;
+  const titleText = preset.id
+    ? t(`assistants.presets.${preset.id}.name`, { defaultValue: preset.name })
+    : fallbackCopy.title;
+  const descriptionText = preset.id
+    ? t(`assistants.presets.${preset.id}.description`, { defaultValue: preset.description })
+    : fallbackCopy.description;
   
   // Use the preset's avatar directly
   const assistantPhoto = preset.avatar;
@@ -74,7 +80,7 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
       {/* Status indicator */}
       <View style={styles.statusRow}>
         <View style={[styles.statusDot, { backgroundColor: gradient.from }]} />
-        <Text style={styles.statusText}>Ready to assist</Text>
+        <Text style={styles.statusText}>{t('chat.assistantHeader.ready', { defaultValue: 'Ready to assist' })}</Text>
       </View>
     </View>
   );

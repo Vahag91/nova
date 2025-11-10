@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "בחרו מודל",
-      "searchPlaceholder": "חיפוש מודלים...",
-      "noModelsFound": "לא נמצאו מודלים",
-      "noModelsAvailable": "אין מודלים זמינים",
-      "currentModel": "המודל הנוכחי: {{name}}. הקישו לשינוי.",
-      "openHint": "פותח את תפריט בחירת המודל",
-      "closeLabel": "סגירת בורר המודל",
-      "searchLabel": "חיפוש מודלים",
-      "searchHint": "הקלידו כדי לסנן מודלים",
-      "modelLabel": "מודל {{name}}",
-      "selectHint": "בחרו {{name}}",
-      "currentlySelected": "מודל נבחר"
+  "modelSelector": {
+    "title": "בחר מודל",
+    "searchPlaceholder": "חפש מודלים...",
+    "noModelsFound": "לא נמצאו מודלים",
+    "noModelsAvailable": "אין מודלים זמינים",
+    "currentModel": "המודל הנוכחי: {{name}}. הקש כדי לשנות.",
+    "openHint": "פותח את תפריט בחירת המודל",
+    "closeLabel": "סגור בחירת מודל",
+    "searchLabel": "חפש מודלים",
+    "searchHint": "הקלד כדי לסנן מודלים זמינים",
+    "modelLabel": "מודל {{name}}",
+    "selectHint": "בחר מודל {{name}}",
+    "currentlySelected": "נבחר כעת"
+  },
+  "models": {
+    "gpt-4o": "מודל ה-AI החזק ביותר",
+    "gpt-4o-mini": "מהיר למשימות יומיומיות",
+    "gpt-5": "מודל כללי חזק במיוחד",
+    "gpt-5-chat-latest": "מותאם לשיחה ודיאלוג",
+    "gpt-5-mini": "GPT-5 מהיר ואמין",
+    "gpt-5-nano": "מודל קל למשימות פשוטות",
+    "o4-mini": "מודל היגיון יעיל",
+    "gpt-4.1-mini": "GPT-4.1 קומפקטי ובעל יכולות",
+    "claude-3-haiku": "Anthropic מהיר וממוקד",
+    "claude-3.7-sonnet": "היגיון מעודן של Anthropic",
+    "gemini-2.5-Flash": "המודל המתקדם ביותר של Google",
+    "gemini-2.5-flash": "המודל המתקדם ביותר של Google",
+    "gemini-2.0-flash": "AI של Google מהיר ומדויק"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "אחר"
+  },
+  "navigation": {
+    "chat": "צ'אט חדש",
+    "history": "היסטוריה",
+    "assistants": "עוזרים",
+    "imagesStudio": "Image Studio",
+    "settings": "הגדרות",
+    "recentChats": "צ'אטים אחרונים"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "צרו, שפרו ופרסמו נכסים ויזואליים במקום אחד.",
+    "cta": "פתח"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "בחר תמונות",
+    "exitSelectionMode": "יציאה ממצב בחירה",
+    "selectAll": "בחר הכל",
+    "noImagesYet": "אין תמונות עדיין",
+    "describeImageHint": "תאר את התמונה למטה והקש 'צור'.",
+    "generatedImagesGallery": "גלריית תמונות שנוצרו",
+    "describeImagePlaceholder": "תאר את התמונה שברצונך ליצור…",
+    "deleteConfirmTitle": "מחק תמונות",
+    "deleteConfirmMessage": "האם למחוק את התמונות שנבחרו? לא ניתן לבטל פעולה זו.",
+    "cancel": "בטל",
+    "delete": "מחק",
+    "generate": "צור",
+    "generating": "יוצר…",
+    "latest": "האחרון",
+    "insertToChat": "הכנס לצ'אט",
+    "pleaseWait": "נא להמתין…",
+    "processing": "מעבד...",
+    "tapToUploadImage": "הקש כדי להעלות תמונה",
+    "camera": "מצלמה",
+    "library": "ספרייה",
+    "enterPrompt": "הכנס פקודה ליצירת תמונה מטקסט",
+    "openInBrowser": "פתח בדפדפן",
+    "makeVariations": "צור וריאציות",
+    "deleteAllFromGeneration": "מחק את כל התמונות מיצירה זו",
+    "imageOptionsTitle": "אפשרויות תמונה",
+    "imageOptionsMessage": "מה תרצה לעשות עם התמונה הזו?",
+    "insertMarkdownHeader": "הנה התמונה עבור:",
+    "variationSuffix": "— וריאציה של התמונה הקודמת",
+    "selectedCount": "נבחר",
+    "selectedCount_one": "נבחר",
+    "selectedCount_other": "נבחרו",
+    "imageDescriptionInput": "שדה תיאור תמונה",
+    "imageDescriptionHint": "הכנס תיאור לתמונה שברצונך ליצור",
+    "openModelSettings": "פתח הגדרות מודל",
+    "modelSettingsHint": "הקש כדי לשנות מודל והגדרות",
+    "openPhotoGallery": "פתח גלריית תמונות",
+    "clearInput": "נקה שדה",
+    "generatedImage": "תמונה שנוצרה",
+    "autoSelectedModel": "המודל {{model}} נבחר אוטומטית עבור מצב {{mode}}",
+    "deleteSelectedConfirmTitle": "מחק תמונות",
+    "deleteSelectedConfirmMessage": "האם למחוק את התמונות? לא ניתן לבטל פעולה זו."
+  },
+  "imageStudio": {
+    "generateImage": "צור תמונה",
+    "generatingImage": "יוצר תמונה",
+    "generateImageHint": "הקש כדי ליצור תמונה על בסיס התיאור שלך",
+    "imageDescriptionInput": "שדה תיאור תמונה",
+    "imageDescriptionHint": "הכנס תיאור לתמונה שברצונך ליצור",
+    "openModelSettings": "פתח הגדרות מודל",
+    "modelSettingsHint": "הקש כדי לשנות מודל והגדרות",
+    "openPhotoGallery": "פתח גלריית תמונות",
+    "clearInput": "נקה שדה",
+    "generatedImage": "תמונה שנוצרה"
+  },
+  "assistants": {
+    "title": "עוזרים",
+    "subtitle": "עוזרי AI שנבחרו בקפידה לקוד, כתיבה, ניתוח, תכנון ועוד.",
+    "searchPlaceholder": "חפש עוזרים…",
+    "useAssistant": "השתמש בעוזר",
+    "selectAssistant": "בחר עוזר",
+    "description": "תיאור",
+    "systemPrompt": "פקודת מערכת",
+    "chooseModel": "בחר מודל",
+    "categoryAll": "הכל",
+    "categories": {
+      "everyday": "יום־יום",
+      "life": "אורח חיים",
+      "health": "בריאות",
+      "schoolWork": "לימודים ועבודה",
+      "coding": "קוד",
+      "creative": "יצירתי",
+      "general": "כללי"
+    },
+    "presets": {
+      "default": {
+        "name": "עוזר ברירת מחדל",
+        "description": "עזרה מאוזנת לדברים יומיומיים."
+      },
+      "quick": {
+        "name": "תשובות מהירות",
+        "description": "תשובות קצרות וישירות."
+      },
+      "planner": {
+        "name": "מתכנן יומי",
+        "description": "תכנן את היום והשגרה שלך."
+      },
+      "recipes": {
+        "name": "מתכונים ואוכל",
+        "description": "מה אפשר להכין ממה שיש."
+      },
+      "fitness": {
+        "name": "מאמן הרגלים וכושר",
+        "description": "הרגלים קטנים ואימוני בית."
+      },
+      "money": {
+        "name": "חבר לכספים",
+        "description": "תקציבים פשוטים וטיפים להוצאות."
+      },
+      "study": {
+        "name": "עוזר לימודים",
+        "description": "הסבר בפשטות. בדוק אותי."
+      },
+      "email": {
+        "name": "אימייל וקורות חיים",
+        "description": "כתוב אימיילים ושורות קו״ח ברורות."
+      },
+      "translator": {
+        "name": "מתרגם",
+        "description": "תרגם + למד ביטויים."
+      },
+      "travel": {
+        "name": "חבר למסע",
+        "description": "תוכניות פשוטות ורשימות ציוד."
+      },
+      "tech": {
+        "name": "תמיכה טכנית (בסיסית)",
+        "description": "טלפון, אפליקציות, Wi-Fi בסיסי."
+      },
+      "summarizer": {
+        "name": "מסכם TL;DR",
+        "description": "נקודות קצרות + משפט אחד."
+      },
+      "gift": {
+        "name": "מחפש מתנות",
+        "description": "רעיונות לפי תקציב ותחומי עניין."
+      },
+      "party": {
+        "name": "מתכנן אירועים (קל)",
+        "description": "תכנן אירוע קטן מהר."
+      },
+      "social": {
+        "name": "יוצר פוסטים חברתיים",
+        "description": "טיוטות פוסטים עם כמה גרסאות."
+      },
+      "interview": {
+        "name": "מאמן ראיונות",
+        "description": "תרגול תשובות בשיטת STAR."
+      },
+      "homefix": {
+        "name": "תיקוני בית",
+        "description": "הנחיות לפתרון תקלות פשוט."
+      },
+      "pet": {
+        "name": "טיפול בחיות מחמד",
+        "description": "הזנה, טיול ואילוף בסיסי."
+      },
+      "mindful": {
+        "name": "דקת נשימות",
+        "description": "הרפיה של 1–3 דקות."
+      },
+      "polite": {
+        "name": "משכתב מנומס",
+        "description": "שכתוב טקסטים בצורה נעימה."
+      }
+    }
+  },
+  "history": {
+    "title": "היסטוריה",
+    "searchPlaceholder": "חפש צ'אטים…",
+    "newChat": "צ'אט חדש",
+    "new": "+ חדש",
+    "search": "חיפוש",
+    "clearSearch": "נקה חיפוש",
+    "noChatsYet": "אין צ'אטים עדיין",
+    "startFirstConversation": "התחל את השיחה הראשונה שלך.",
+    "startChat": "התחל צ'אט",
+    "errorLoadingHistory": "שגיאה בטעינת ההיסטוריה",
+    "renameChat": "שנה שם לצ'אט",
+    "enterNewTitle": "הכנס כותרת חדשה",
+    "deleteChat": "למחוק צ'אט?",
+    "deleteChatMessage": "\"{{title}}\" יימחק.",
+    "rename": "שנה שם",
+    "unpin": "בטל נעיצה",
+    "pin": "נעץ",
+    "untitled": "ללא כותרת"
+  },
+  "settings": {
+    "title": "הגדרות",
+    "model": "מודל",
+    "searchPlaceholder": "חפש מודלים…",
+    "temperatureForCurrentModel": "טמפרטורה למודל הנוכחי",
+    "customFor": "מותאם עבור {{model}}",
+    "usingDefault": "משתמש בברירת המחדל {{temperature}}",
+    "resetToDefault": "אפס לברירת המחדל",
+    "defaultTemperature": "טמפרטורת ברירת מחדל (נפילה)",
+    "usedByModelsWithoutOverride": "משמש מודלים בלי הגדרה משלהם",
+    "dangerZone": "אזור מסוכן",
+    "clearAllChatsAndSettings": "נקה את כל הצ'אטים וההגדרות",
+    "about": "אודות",
+    "version": "גרסה {{version}}{{status}}",
+    "versionPremiumSuffix": " · פרימיום",
+    "privacyPolicy": "מדיניות פרטיות",
+    "hero": {
+      "label": "הצעה מיוחדת",
+      "title": "גישה מועדפת וללא הגבלה",
+      "upgrade": "שדרג",
+      "manage": "נהל את התוכנית"
+    },
+    "sections": {
+      "premium": "תוכנית פרימיום",
+      "data": "נתוני משתמש",
+      "support": "תמיכה ומשפטי"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "קבל פרימיום",
+        "subtitle": "פתח כלי יצירה ללא הגבלה"
+      },
+      "premiumActive": {
+        "title": "פרימיום פעיל",
+        "subtitle": "תודה שתמכת ב-ChatCloud"
+      },
+      "restore": {
+        "title": "שחזר רכישות",
+        "subtitle": "השתמש אם החלפת מכשיר"
+      },
+      "history": {
+        "title": "נהל היסטוריית צ'אט",
+        "subtitle": "צפה ומחק שיחות קודמות"
+      },
+      "reset": {
+        "title": "אפס צ'אטים והעדפות",
+        "subtitle": "מוחק את כל הנתונים במכשיר הזה"
+      },
+      "rate": {
+        "title": "דרג אותנו",
+        "error": "לא ניתן לפתוח את דף החנות."
+      },
+      "support": {
+        "title": "תמיכה",
+        "subtitle": "צור קשר אונליין",
+        "error": "לא ניתן לפתוח את דף התמיכה."
+      },
+      "privacy": {
+        "title": "מדיניות פרטיות",
+        "error": "לא ניתן לפתוח את מדיניות הפרטיות."
+      },
+      "terms": {
+        "title": "תנאי שימוש",
+        "error": "לא ניתן לפתוח את תנאי השימוש."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "אודיו",
+      "video": "וידאו"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "לא זמין",
+      "linkUnavailableMessage": "לא ניתן לפתוח קישור זה כרגע.",
+      "restoreSuccessTitle": "שוחזר",
+      "restoreSuccessMessage": "הרכישות שלך שוחזרו.",
+      "restoreErrorTitle": "שחזור נכשל",
+      "restoreErrorMessage": "לא הצלחנו לשחזר את הרכישות כעת.",
+      "resetConfirmTitle": "לאפס את נתוני האפליקציה?",
+      "resetConfirmMessage": "פעולה זו תמחק את כל הצ'אטים וההגדרות.",
+      "resetConfirmCancel": "בטל",
+      "resetConfirmCta": "אפס"
+    }
+  },
+  "createImage": {
+    "headerTitle": "צור",
+    "chooseStyle": "בחר סגנון",
+    "aspectRatio": "יחס ממדים",
+    "starterPrompts": {
+      "title": "פקודות התחלה",
+      "items": [
+        "צילום סטודיו לראש",
+        "סלון מודרני",
+        "חוף טרופי בשקיעה"
+      ]
+    },
+    "promptPlaceholder": "כתוב מה תרצה לראות…",
+    "promptHint": "לדוגמה: 'כלב גולדן רטריבר בתאורת סטודיו'",
+    "clearText": "נקה טקסט",
+    "generate": "צור",
+    "generating": "יוצר…"
+  },
+  "editImage": {
+    "headerTitle": "ערוך",
+    "chooseStyle": "בחר סגנון",
+    "aspectRatio": "יחס ממדים",
+    "starterPrompts": {
+      "title": "פקודות התחלה",
+      "items": [
+        "תקן תאורה",
+        "הסר רקע",
+        "רטוש פורטרט עדין"
+      ]
+    },
+    "promptPlaceholder": "תאר את העריכה (אופציונלי)",
+    "clearText": "נקה",
+    "generate": "החל",
+    "generating": "מיישם…",
+    "upload": {
+      "choose": "בחר תמונה",
+      "change": "שנה",
+      "remove": "הסר"
+    },
+    "imageUnavailable": {
+      "title": "התמונה לא זמינה",
+      "message": "לא ניתן לגשת לתמונה שנבחרה. אנא בחר שוב ונסה."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "אנימה"
+      },
+      "cartoon": {
+        "name": "סרט מצויר"
+      },
+      "photoreal": {
+        "name": "פוטוריאליסטי"
+      },
+      "sketch": {
+        "name": "סקיצה"
+      },
+      "cyberpunk": {
+        "name": "סייברפאנק"
+      },
+      "steampunk": {
+        "name": "סטימפאנק"
+      },
+      "illustration_3d": {
+        "name": "אילוסטרציה תלת־ממדית"
+      },
+      "dark_fantasy": {
+        "name": "פנטזיה אפלה"
+      },
+      "vintage_film": {
+        "name": "פילם וינטג'"
+      },
+      "pastel": {
+        "name": "פסטל"
+      },
+      "neon_glow": {
+        "name": "זוהר ניאון"
+      },
+      "epic_landscape": {
+        "name": "נוף אפי"
+      }
+    },
+    "aspectRatios": {
+      "square": "ריבועי",
+      "landscape": "افقي",
+      "portrait": "אנכי"
     },
     "models": {
-      "gpt-4o": "מודל ה-AI החזק ביותר",
-      "gpt-4o-mini": "מהיר למשימות יומיומיות",
-      "claude-3-haiku": "מודל מהיר ויעיל",
-      "claude-3.7-sonnet": "מודל הסקה מתקדם",
-      "gemini-2.5-pro": "המודל הטוב ביותר של Google",
-      "gemini-2.0-flash": "מודל מהיר עם הסקה מצוינת"
+      "fluxKontent": "Flux Kontent",
+      "custom": "מותאם"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "אחר"
-    },
-    "navigation": {
-      "chat": "צ׳אט",
-      "history": "היסטוריה",
-      "assistants": "עוזרים",
-      "imagesStudio": "סטודיו",
-      "settings": "הגדרות",
-      "recentChats": "צ׳אטים אחרונים"
-    },
-    "imagesStudio": {
-      "title": "סטודיו",
-      "selectImages": "בחרו תמונות",
-      "exitSelectionMode": "יציאה ממצב בחירה",
-      "selectAll": "בחרו הכל",
-      "noImagesYet": "עדיין אין תמונות",
-      "describeImageHint": "תארו את התמונה למטה והקישו \"צור\".",
-      "generatedImagesGallery": "גלריית תמונות שנוצרו",
-      "describeImagePlaceholder": "תארו את התמונה שתרצו…",
-      "deleteConfirmTitle": "מחיקת תמונות",
-      "deleteConfirmMessage": "למחוק את התמונות שנבחרו? לא ניתן לבטל פעולה זו.",
-      "cancel": "ביטול",
-      "delete": "מחיקה",
-      "generate": "צור",
-      "generating": "יוצר…",
-      "latest": "האחרונות",
-      "insertToChat": "הוספה לצ׳אט",
-      "pleaseWait": "נא להמתין…",
-      "processing": "מעבד...",
-      "tapToUploadImage": "הקישו כדי להעלות תמונה",
-      "camera": "מצלמה",
-      "library": "ספרייה",
-      "enterPrompt": "הזינו הנחיה ליצירת טקסט-לתמונה",
-      "openInBrowser": "פתח בדפדפן",
-      "makeVariations": "צרו וריאציות",
-      "deleteAllFromGeneration": "מחקו הכל מיצירה זו",
-      "imageOptionsTitle": "אפשרויות תמונה",
-      "imageOptionsMessage": "מה תרצו לעשות עם התמונה?",
-      "insertMarkdownHeader": "הנה התמונה עבור:",
-      "variationSuffix": "— וריאציה של התמונה הקודמת",
-      "selectedCount": "נבחרו",
-      "selectedCount_one": "נבחרו",
-      "selectedCount_other": "נבחרו",
-      "imageDescriptionInput": "שדה תיאור תמונה",
-      "imageDescriptionHint": "הזינו תיאור לתמונה שתרצו ליצור",
-      "openModelSettings": "פתח הגדרות מודל",
-      "modelSettingsHint": "הקישו לשינוי המודל וההגדרות",
-      "openPhotoGallery": "פתח גלריה",
-      "clearInput": "נקה שדה",
-      "generatedImage": "תמונה שנוצרה",
-      "autoSelectedModel": "נבחר אוטומטית {{model}} עבור מצב {{mode}}",
-      "deleteSelectedConfirmTitle": "מחיקת תמונות",
-      "deleteSelectedConfirmMessage": "למחוק את התמונות? לא ניתן לבטל פעולה זו."
-    },
-    "imageStudio": {
-      "generateImage": "צור תמונה",
-      "generatingImage": "יוצר תמונה",
-      "generateImageHint": "הקישו כדי ליצור תמונה לפי התיאור שלכם",
-      "imageDescriptionInput": "שדה תיאור תמונה",
-      "imageDescriptionHint": "הזינו תיאור לתמונה שתרצו ליצור",
-      "openModelSettings": "פתח הגדרות מודל",
-      "modelSettingsHint": "הקישו לשינוי המודל וההגדרות",
-      "openPhotoGallery": "פתח גלריה",
-      "clearInput": "נקה שדה",
-      "generatedImage": "תמונה שנוצרה"
-    },
-    "assistants": {
-      "title": "עוזרים",
-      "subtitle": "מומחי בינה מלאכותית לתכנות, כתיבה, ניתוח, תכנון ועוד.",
-      "searchPlaceholder": "חפשו עוזרים…",
-      "useAssistant": "השתמשו בעוזר",
-      "description": "תיאור",
-      "systemPrompt": "הנחיית מערכת",
-      "chooseModel": "בחרו מודל",
-      "categoryAll": "הכול",
-      "categories": {
-        "everyday": "יומיומי",
-        "life": "חיים",
-        "health": "בריאות",
-        "schoolWork": "לימודים ועבודה",
-        "coding": "תכנות",
-        "creative": "יצירתי",
-        "general": "כללי"
-      },
-      "presets": {
-        "default": { "name": "עוזר ברירת מחדל", "description": "סיוע מאוזן לענייני היומיום." },
-        "quick": { "name": "תשובות מהירות", "description": "קצר ולעניין." },
-        "planner": { "name": "מתכנן יומי", "description": "תכננו את היום והשגרה שלכם." },
-        "recipes": { "name": "ארוחות ומתכונים", "description": "מה לבשל ממה שיש." },
-        "fitness": { "name": "מאמן הרגלים וכושר", "description": "הרגלים קטנים ואימוני בית." },
-        "money": { "name": "חבר לכסף", "description": "תקציבים פשוטים וטיפים להוצאות." },
-        "study": { "name": "עוזר לימודים", "description": "הסבר בפשטות. בחנו אותי." },
-        "email": { "name": "דוא\"ל וקורות חיים", "description": "כתיבת מיילים ברורים ונקודות לקו\"ח." },
-        "translator": { "name": "מתרגם", "description": "תרגום + לימוד ביטויים." },
-        "travel": { "name": "בן לוויה למסע", "description": "תוכניות פשוטות ורשימות ציוד." },
-        "tech": { "name": "תמיכה טכנית (בסיס)", "description": "יסודות טלפון, אפליקציות ו-Wi-Fi." },
-        "summarizer": { "name": "מסכם TL;DR", "description": "נקודות קצרות + סיכום בשורה." },
-        "gift": { "name": "מאתר מתנות", "description": "רעיונות לפי תקציב ותחומי עניין." },
-        "party": { "name": "מתכנן אירוע (לייט)", "description": "לאירגון מהיר של מסיבה קטנה." },
-        "social": { "name": "יוצר פוסטים", "description": "טיוטות פוסטים עם אפשרויות." },
-        "interview": { "name": "מאמן ראיונות", "description": "תרגלו תשובות (STAR)." },
-        "homefix": { "name": "מדריך תיקוני בית", "description": "איתור תקלות פשוט ופתרונות." },
-        "pet": { "name": "עוזר לטיפול בחיות", "description": "האכלה, טיולים ואילוף בסיסי." },
-        "mindful": { "name": "דקת מיינדפולנס", "description": "הפסקות שקטות של 1–3 דק'." },
-        "polite": { "name": "ניסוח מנומס", "description": "כתיבה מחודשת מנומסת לטקסטים ותשובות." }
-      }
-    },
-    "history": {
-      "title": "היסטוריה",
-      "searchPlaceholder": "חיפוש צ׳אטים…",
-      "newChat": "צ׳אט חדש",
-      "new": "+ חדש",
-      "search": "חיפוש",
-      "clearSearch": "ניקוי חיפוש",
-      "noChatsYet": "אין צ׳אטים עדיין",
-      "startFirstConversation": "התחילו את השיחה הראשונה שלכם.",
-      "startChat": "התחל צ׳אט",
-      "errorLoadingHistory": "שגיאה בטעינת ההיסטוריה",
-      "renameChat": "שינוי שם הצ׳אט",
-      "enterNewTitle": "הזינו כותרת חדשה",
-      "deleteChat": "למחוק את הצ׳אט?",
-      "deleteChatMessage": "\"{{title}}\" יימחק.",
-      "rename": "שינוי שם",
-      "unpin": "ביטול נעיצה",
-      "pin": "נעיצה",
-      "untitled": "ללא כותרת"
-    },
-    "settings": {
-      "title": "הגדרות",
-      "model": "מודל",
-      "searchPlaceholder": "חיפוש מודלים…",
-      "temperatureForCurrentModel": "טמפרטורה למודל הנוכחי",
-      "customFor": "מותאם עבור {{model}}",
-      "usingDefault": "משתמש בערך ברירת מחדל {{temperature}}",
-      "resetToDefault": "איפוס לברירת מחדל",
-      "defaultTemperature": "טמפרטורת ברירת מחדל (חלופית)",
-      "usedByModelsWithoutOverride": "בשימוש במודלים ללא דריסה",
-      "dangerZone": "אזור מסוכן",
-      "clearAllChatsAndSettings": "ניקוי כל הצ׳אטים וההגדרות",
-      "about": "אודות",
-      "version": "גרסה {{version}}",
-      "privacyPolicy": "מדיניות פרטיות",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "הודעה ל-Agarka...",
-      "createImages": "צור תמונות",
-      "generateAiArtwork": "צור אומנות בינה מלאכותית",
-      "camera": "מצלמה",
-      "takeOrSelectPhotos": "צלמו או בחרו תמונות",
-      "search": "חיפוש",
-      "findInformation": "מציאת מידע",
-      "removeImage": "הסר תמונה",
-      "messageInput": "שדה הודעה",
-      "clearInput": "נקה שדה",
-      "hideQuickActions": "הסתר פעולות מהירות",
-      "showQuickActions": "הצג פעולות מהירות",
-      "startVoiceInput": "הפעל קלט קולי",
-      "sendMessage": "שלח",
-      "offline": "לא מקוון",
-      "stop": "עצור",
-      "streaming": "מזרים…",
-      "closeRecorder": "סגור את המקליט",
-      "insertTranscript": "הוסף תמליל",
-      "scrollToLatest": "גלול לאחרון",
-      "copyMessage": "העתק הודעה",
-      "copyMessageHint": "העתק הודעה זו ללוח",
-      "shareMessage": "שיתוף הודעה",
-      "shareMessageHint": "שיתוף הודעה זו",
-      "regenerateResponse": "צור תגובה מחדש",
-      "regenerateResponseHint": "צור תגובה חדשה",
-      "copyCode": "העתק קוד",
-      "image": "תמונה",
-      "loading": "טוען…",
-      "loadingChat": "טוען צ׳אט...",
-      "offlineBanner": "אינכם מקוונים. לא ניתן לשלוח הודעות.",
-      "imagePickerErrorTitle": "שגיאה בבורר התמונות",
-      "messageTooLong": "ההודעה ארוכה מדי ({{length}}). המגבלה היא {{limit}}.",
-      "emptyTitle": "איך אפשר לעזור?",
-      "emptySubtitle": "התחילו שיחה עם הבינה המלאכותית",
-      "privateTitle": "צ׳אט פרטי",
-      "privateSubtitle": "צ׳אט זה לא יופיע בהיסטוריה",
-      "listening": "מקשיב…",
-      "startRecording": "מתחיל הקלטה…",
-      "suggestions": {
-        "writeStory": "כתבו סיפור יצירתי",
-        "writeStorySubtitle": "על הרפתקה קסומה",
-        "planTravel": "תכננו מסלול טיול",
-        "planTravelSubtitle": "לחופשה מדהימה",
-        "explainConcept": "הסבירו את המושג הזה",
-        "explainConceptSubtitle": "בצורה פשוטה",
-        "planDay": "תכננו את היום שלי",
-        "planDaySubtitle": "עם טיפים לפרודוקטיביות"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "מעבד...",
-      "tapToUploadImage": "הקישו כדי להעלות תמונה"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "מעבד...",
-      "camera": "מצלמה",
-      "library": "ספרייה"
-    },
-    "common": {
-      "new": "חדש",
-      "best": "הטוב ביותר",
-      "cancel": "ביטול",
-      "save": "שמירה",
-      "delete": "מחיקה",
-      "close": "סגירה"
+    "modelTaglines": {
+      "runwareFluxSchnell": "המודל המהיר ביותר",
+      "runwareFluxKrea": "תוצאות יצירתיות ומעוצבות",
+      "runwareQwenImage": "תוצאות מאוזנות ואיכותיות",
+      "google4": "מודל התמונות הטוב ביותר",
+      "fluxKontent": "Flux Kontent מכוון לעריכה",
+      "runwareProvider": "איזון בין איכות ליציבות.",
+      "airProvider": "Nano Banana עם צבעוניות משחקית.",
+      "googleProvider": "Google מכוון לפרטים חדים.",
+      "anthropicProvider": "צינור של Claude לגוונים עדינים.",
+      "default": "הקש כדי לראות מנועים זמינים."
     }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "הסגנון שנבחר",
+    "sheetTitle": "יוצרים את החזון שלך",
+    "sheetSubtitle": "מערבבים את {{style}} בתוך הפקודה.",
+    "phases": {
+      "blend": "מערבב {{style}}",
+      "paint": "מצייר את הסצנה",
+      "finish": "מסיים נגיעות אחרונות"
+    },
+    "actions": {
+      "cancel": "בטל",
+      "retry": "נסה שוב",
+      "close": "סגור"
+    },
+    "errors": {
+      "restrictedTitle": "תוכן חסום",
+      "genericTitle": "יצירה נכשלה",
+      "genericMessage": "לא ניתן היה ליצור תמונה."
+    },
+    "alerts": {
+      "saveFailedTitle": "שמירה נכשלה",
+      "shareFailedTitle": "שיתוף נכשל",
+      "tryAgain": "נא לנסות שוב."
+    },
+    "result": {
+      "complete": "הכל הושלם"
+    },
+    "accessibility": {
+      "close": "סגור"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "מחק",
+      "edit": "ערוך",
+      "save": "שמור",
+      "share": "שתף"
+    },
+    "accessibility": {
+      "close": "סגור",
+      "delete": "מחק תמונה",
+      "edit": "ערוך תמונה",
+      "save": "שמור תמונה",
+      "share": "שתף תמונה"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "פתח תפריט",
+      "selectImages": "בחר תמונות",
+      "exitSelection": "צא ממצב בחירה",
+      "deleteSelected": "מחק תמונות שנבחרו",
+      "selectToDelete": "בחר תמונות למחיקה"
+    },
+    "createCard": {
+      "title": "יצירה מטקסט",
+      "subtitle": "כתוב תיאור",
+      "cta": "תאר וצור"
+    },
+    "editCard": {
+      "title": "עריכת תמונה",
+      "subtitle": "העלה וערוך",
+      "cta": "ערוך תמונה"
+    },
+    "gallery": {
+      "title": "גלריה",
+      "empty": "אין תמונות עדיין",
+      "selection": {
+        "enter": "בחר תמונות",
+        "exit": "צא ממצב בחירה",
+        "deleteSelected": "מחק תמונות שנבחרו",
+        "selectForDelete": "בחר תמונות למחיקה"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "הכירו את",
+      "titleHighlight": "Image Studio",
+      "subtitle": "צרו וערכו תמונות באמצעות AI — ישירות בתוך {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "הכירו את ה-AI שלכם",
+      "titleHighlight": "עוזרים",
+      "subtitle": "מומחי AI מוכנים לעזור בצרכים היומיומיים שלכם",
+      "cards": [
+        {
+          "title": "מאמן כושר",
+          "text": "קבלו תוכניות אימון ותזונה מותאמות"
+        },
+        {
+          "title": "רופא",
+          "text": "תובנות בריאות, ניתוח סימפטומים והכוונה"
+        },
+        {
+          "title": "טיפול בחיות מחמד",
+          "text": "עצות לבריאות, אימון וטיפול בחיה שלכם"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "פתרונות AI לארגונים",
+      "description": "העצימו את העסק שלכם עם AI מתקדם שתוכנן למקצוענים ולצוותים.",
+      "stats": "500K+ משתמשים סומכים עלינו",
+      "rating": "4.9 / 5",
+      "button": "התחלה"
+    }
+  },
+  "coinStore": {
+    "title": "קבלו מטבעות",
+    "loading": "טוען חנות מטבעות…",
+    "balanceLabel": "יתרתכם הנוכחית היא",
+    "balanceValue": "{{amount}} מטבעות",
+    "history": {
+      "link": "היסטוריית עסקאות",
+      "alertTitle": "היסטוריה",
+      "alertBody": "היסטוריית עסקאות תגיע בקרוב."
+    },
+    "noPacks": "אין חבילות מטבעות זמינות. בדקו את מזהה ה-Offering של RevenueCat.",
+    "badges": {
+      "basic": "חבילה בסיסית",
+      "popular": "הכי פופולרית",
+      "value": "המשתלמת ביותר"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} מטבעות",
+      "defaultName": "חבילה {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "עברו לפרימיום",
+      "subtitle": "גישה ותכונות ללא הגבלה",
+      "cta": "שדרג"
+    },
+    "termsText": "ברכישה אתם מסכימים אל",
+    "termsLink": "תנאי השירות",
+    "alerts": {
+      "initErrorTitle": "שגיאת התחלה",
+      "genericMessage": "משהו השתבש.",
+      "successTitle": "הצליח",
+      "successMessage": "המטבעות יופיעו בקרוב.",
+      "purchaseFailedTitle": "הרכישה נכשלה",
+      "unknownError": "שגיאה לא ידועה"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, ‏Grok 4, ‏Veo 3",
+    "restore": "שחזר",
+    "restoreRestoring": "משחזר…",
+    "features": {
+      "create": "צרו תמונות וסרטונים",
+      "search": "חפשו באינטרנט עם AI",
+      "talk": "דברו באופן טבעי עם AI"
+    },
+    "freeTrial": {
+      "title": "תקופת ניסיון",
+      "subtitle": "ניסיון חינם ל־3 ימים"
+    },
+    "badge": {
+      "bestOffer": "ההצעה הטובה ביותר"
+    },
+    "plans": {
+      "yearly": {
+        "title": "שנתי",
+        "only": "רק {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "חודשי",
+        "subtitle": "ניתן לבטל בכל זמן",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "שבועי",
+        "subtitle": "ניתן לבטל בכל זמן",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "לשבוע",
+      "perMonth": "לחודש"
+    },
+    "cta": "המשך",
+    "legal": {
+      "terms": "תנאים",
+      "privacy": "פרטיות"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "הודעה...",
+    "createImages": "צור תמונות",
+    "generateAiArtwork": "צור יצירת AI",
+    "camera": "מצלמה",
+    "takeOrSelectPhotos": "צלם או בחר תמונות",
+    "search": "חפש",
+    "findInformation": "מצא מידע",
+    "findRecentInfo": "מצא מידע עדכני",
+    "removeImage": "הסר תמונה",
+    "messageInput": "שדה הודעה",
+    "clearInput": "נקה שדה",
+    "quickActionsLabel": "פעולות מהירות",
+    "hideQuickActions": "הסתר פעולות מהירות",
+    "showQuickActions": "הצג פעולות מהירות",
+    "startVoiceInput": "התחל קלט קולי",
+    "sendMessage": "שלח הודעה",
+    "offline": "לא מחובר",
+    "stop": "עצור",
+    "streaming": "משדר…",
+    "closeRecorder": "סגור מקליט",
+    "insertTranscript": "שלח",
+    "scrollToLatest": "גלול לאחרונות",
+    "copyMessage": "העתק הודעה",
+    "copyMessageHint": "העתק הודעה זו ללוח הגזירים",
+    "shareMessage": "שתף הודעה",
+    "shareMessageHint": "שתף את ההודעה הזו",
+    "regenerateResponse": "צור תשובה מחדש",
+    "regenerateResponseHint": "צור תשובה חדשה",
+    "copyCode": "העתק קוד",
+    "image": "תמונה",
+    "loading": "טוען…",
+    "loadingChat": "טוען צ'אט...",
+    "offlineBanner": "אתה לא מחובר. אי אפשר לשלוח הודעות.",
+    "imagePickerErrorTitle": "שגיאת בחירת תמונה",
+    "imagePickerErrorMessage": "לא ניתן לגשת לתמונות שלך. נסה שוב.",
+    "messageTooLong": "הודעה ארוכה מדי ({{length}}). המגבלה היא {{limit}}.",
+    "sendFailed": "שליחה נכשלה.",
+    "voiceStartFailed": "לא ניתן להתחיל קול.",
+    "emptyTitle": "איך אפשר לעזור?",
+    "emptySubtitle": "התחל שיחה עם ה-AI",
+    "privateTitle": "צ'אט פרטי",
+    "privateSubtitle": "צ'אט זה לא יופיע בהיסטוריה שלך",
+    "permissions": {
+      "photosTitle": "נדרשת הרשאה לתמונות",
+      "photosMessage": "יש לאפשר גישה לתמונות כדי לבחור.",
+      "voiceTitle": "נדרשת הרשאת קול",
+      "voiceMessage": "נדרש מיקרופון לשימוש בקול."
+    },
+    "activity": {
+      "analyzingImages": "מנתח תמונות…",
+      "searching": "מחפש…",
+      "thinking": "חושב…"
+    },
+    "webSearch": {
+      "title": "חיפוש ברשת",
+      "subtitle": "מצא מידע עדכני",
+      "label": "חיפוש ברשת",
+      "enable": "אפשר חיפוש ברשת",
+      "disable": "בטל חיפוש ברשת",
+      "toggleLabel": "חפש באינטרנט"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "עצבו ויזואליות במהירות.",
+      "subtitle": "צרו, שפרו ופרסמו במקום אחד.",
+      "cta": "פתח"
+    },
+    "quickActions": {
+      "createImages": "צור תמונות",
+      "openCamera": "פתח מצלמה",
+      "editImage": "ערוך תמונה",
+      "startVoice": "התחל קול",
+      "assistants": "עוזרים"
+    },
+    "listening": "מקשיב…",
+    "startRecording": "מתחיל הקלטה…",
+    "assistantHeader": {
+      "unavailableTitle": "העוזר לא זמין",
+      "unavailableDescription": "לא הצלחנו לטעון את העוזר הזה. נסה שוב.",
+      "ready": "מוכן לעזור"
+    },
+    "actions": {
+      "copy": "העתק",
+      "share": "שתף",
+      "regenerate": "צור מחדש",
+      "retryFromHere": "נסה שוב מכאן",
+      "cancel": "בטל"
+    },
+    "messageActionTitle": "הודעה",
+    "status": {
+      "sending": "שולח…",
+      "failed": "נכשל",
+      "sent": "נשלח"
+    },
+    "suggestions": {
+      "writeStory": "כתוב סיפור יצירתי",
+      "writeStorySubtitle": "על הרפתקה קסומה",
+      "planTravel": "תכנן מסע",
+      "planTravelSubtitle": "לחופשה מעולה",
+      "explainConcept": "הסבר את המושג הזה",
+      "explainConceptSubtitle": "בצורה פשוטה",
+      "planDay": "תכנן את היום שלי",
+      "planDaySubtitle": "עם טיפים לפרודקטיביות"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "מעבד...",
+    "tapToUploadImage": "הקש להעלאת תמונה"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "מעבד...",
+    "camera": "מצלמה",
+    "library": "ספרייה"
+  },
+  "common": {
+    "new": "חדש",
+    "best": "הכי טוב",
+    "cancel": "בטל",
+    "save": "שמור",
+    "delete": "מחק",
+    "close": "סגור",
+    "allow": "אפשר"
   }
-  
+}

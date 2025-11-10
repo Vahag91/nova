@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import {
   View,
   Text,
@@ -10,9 +10,11 @@ import {
   LayoutAnimation,
 } from 'react-native';
 import { Share } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useImagesStore } from '../../state/useImagesStore';
 import { toLocalPath } from '../../lib/imageDownloader';
 import SvgIcon from '../SvgIcon';
+import { useTranslation } from 'react-i18next';
 
 const ImageViewer = memo(({ 
   visible,
@@ -22,6 +24,43 @@ const ImageViewer = memo(({
   jobId,
   hideEdit = false,
 }) => {
+  const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
+  const [containerSize, setContainerSize] = useState({ w: 0, h: 0 });
+  const [imgSize, setImgSize] = useState({ w: 0, h: 0 });
+
+  useEffect(() => {
+    if (!imageUri) return;
+    try {
+      RNImage.getSize(
+        imageUri,
+        (w, h) => setImgSize({ w, h }),
+        () => setImgSize({ w: 0, h: 0 })
+      );
+    } catch {
+      setImgSize({ w: 0, h: 0 });
+    }
+  }, [imageUri]);
+
+  const metrics = useMemo(() => {
+    if (!containerSize.w || !containerSize.h || !imgSize.w || !imgSize.h) {
+      return { dispW: containerSize.w, dispH: containerSize.h, vGap: 0, hGap: 0 };
+    }
+    const scale = Math.min(containerSize.w / imgSize.w, containerSize.h / imgSize.h);
+    const dispW = imgSize.w * scale;
+    const dispH = imgSize.h * scale;
+    const vGap = Math.max(0, (containerSize.h - dispH) / 2);
+    const hGap = Math.max(0, (containerSize.w - dispW) / 2);
+    return { dispW, dispH, vGap, hGap };
+  }, [containerSize, imgSize]);
+
+  // Close button anchored relative to image top, with safe-area floor
+  const closeTop = useMemo(() => {
+    return Math.max(insets.top + 8, Math.round(metrics.vGap - 82));
+  }, [metrics.vGap, insets.top]);
+
+  // Reserve so tap overlays don't block controls
+  const bottomReserve = useMemo(() => Math.max(insets.bottom + 14, 20) + 110, [insets.bottom]);
   const handleClose = useCallback(() => {
     onClose?.();
   }, [onClose]);
@@ -52,14 +91,16 @@ const ImageViewer = memo(({
   const handleShare = useCallback(async () => {
     const url = imageUri;
     try {
-      await Share.share({ url, message: url });
+      // Avoid duplicate text posts; only provide the URL/attachment
+      await Share.share({ url });
     } catch (e) {}
   }, [imageUri]);
 
   const handleDownload = useCallback(async () => {
     try {
       const local = await toLocalPath(imageUri);
-      await Share.share({ url: local, message: local });
+      // Share only the local URL so targets receive a single attachment
+      await Share.share({ url: local });
     } catch (e) {}
   }, [imageUri]);
 
@@ -72,7 +113,10 @@ const ImageViewer = memo(({
       animationType="fade"
       onRequestClose={handleClose}
     >
-      <View style={styles.viewerBackdrop}>
+      <View style={styles.viewerBackdrop} onLayout={(e) => {
+        const { width, height } = e.nativeEvent.layout || {};
+        if (width && height) setContainerSize({ w: width, h: height });
+      }}>
         {/* Background catch (behind content) */}
         <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
         <ScrollView
@@ -89,46 +133,66 @@ const ImageViewer = memo(({
           />
         </ScrollView>
 
-        {/* Remove foreground overlay to allow bottom actions to receive touches */}
+        {/* Tap-to-close overlays in letterbox areas */}
+        {metrics.vGap > 1 && (
+          <View style={[styles.tapOverlay, { top: 0, left: 0, right: 0, height: metrics.vGap, zIndex: 2 }]}>
+            <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
+          </View>
+        )}
+        {metrics.vGap > 1 && metrics.vGap - bottomReserve > 4 && (
+          <View style={[styles.tapOverlay, { bottom: bottomReserve, left: 0, right: 0, height: metrics.vGap - bottomReserve, zIndex: 2 }]}>
+            <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
+          </View>
+        )}
+        {metrics.hGap > 1 && (
+          <>
+            <View style={[styles.tapOverlay, { left: 0, width: metrics.hGap, top: 0, bottom: bottomReserve, zIndex: 2 }]}>
+              <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
+            </View>
+            <View style={[styles.tapOverlay, { right: 0, width: metrics.hGap, top: 0, bottom: bottomReserve, zIndex: 2 }]}>
+              <Pressable style={StyleSheet.absoluteFill} onPress={handleClose} />
+            </View>
+          </>
+        )}
 
         {/* Top center close */}
-        <View style={styles.headerCloseWrap}>
+        <View style={[styles.headerCloseWrap, { top: closeTop }]}>
           <Pressable
             onPress={handleClose}
             hitSlop={12}
             style={styles.headerIconBtn}
-            accessibilityLabel="Close"
+            accessibilityLabel={t('imageViewer.accessibility.close')}
           >
-            <SvgIcon name="close" size={24} color="#FFFFFF" />
+            <SvgIcon name="close" size={30} color="#FFFFFF" />
           </Pressable>
         </View>
-        <View style={styles.bottomBar}>
+        <View style={[styles.bottomBar, { bottom: Math.max(insets.bottom + 14, 20) }]}>
           <View style={styles.bottomRow}>
             <View style={styles.bottomItem}>
-              <Pressable onPress={handleDelete} style={[styles.bottomIconButton, styles.bottomIconButtonDestructive]} accessibilityLabel="Delete image">
+              <Pressable onPress={handleDelete} style={[styles.bottomIconButton, styles.bottomIconButtonDestructive]} accessibilityLabel={t('imageViewer.accessibility.delete')}>
                 <SvgIcon name="delete" size={22} color="#FFD0D0" />
               </Pressable>
-              <Text style={styles.bottomLabel}>Delete</Text>
+              <Text style={styles.bottomLabel}>{t('imageViewer.actions.delete')}</Text>
             </View>
             {!hideEdit && (
               <View style={styles.bottomItem}>
-                <Pressable onPress={() => {}} style={styles.bottomIconButton} accessibilityLabel="Edit">
+                <Pressable onPress={() => {}} style={styles.bottomIconButton} accessibilityLabel={t('imageViewer.accessibility.edit')}>
                   <SvgIcon name="photo" size={22} color="#DDE4FF" />
                 </Pressable>
-                <Text style={styles.bottomLabel}>Edit</Text>
+                <Text style={styles.bottomLabel}>{t('imageViewer.actions.edit')}</Text>
               </View>
             )}
             <View style={styles.bottomItem}>
-              <Pressable onPress={handleDownload} style={styles.bottomIconButton} accessibilityLabel="Save">
+              <Pressable onPress={handleDownload} style={styles.bottomIconButton} accessibilityLabel={t('imageViewer.accessibility.save')}>
                 <SvgIcon name="download" size={22} color="#DDE4FF" />
               </Pressable>
-              <Text style={styles.bottomLabel}>Save</Text>
+              <Text style={styles.bottomLabel}>{t('imageViewer.actions.save')}</Text>
             </View>
             <View style={styles.bottomItem}>
-              <Pressable onPress={handleShare} style={[styles.bottomIconButton, styles.bottomIconButtonPrimary]} accessibilityLabel="Share">
+              <Pressable onPress={handleShare} style={[styles.bottomIconButton, styles.bottomIconButtonPrimary]} accessibilityLabel={t('imageViewer.accessibility.share')}>
                 <SvgIcon name="share-upload" size={22} color="#FFFFFF" />
               </Pressable>
-              <Text style={styles.bottomLabel}>Share</Text>
+              <Text style={styles.bottomLabel}>{t('imageViewer.actions.share')}</Text>
             </View>
           </View>
         </View>
@@ -154,7 +218,7 @@ const styles = {
   },
   headerCloseWrap: {
     position: 'absolute',
-    top: '12%',
+    top: 24,
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -166,9 +230,9 @@ const styles = {
     borderRadius: 21,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.35)',
+    backgroundColor: 'transparent',
   },
-  bottomBar: { position: 'absolute', left: 0, right: 0, bottom: '10%', alignItems: 'center', zIndex: 4 },
+  bottomBar: { position: 'absolute', left: 0, right: 0, bottom: 24, alignItems: 'center', zIndex: 4 },
   bottomRow: { flexDirection: 'row', gap: 18, alignItems: 'center', justifyContent: 'center' },
   bottomItem: { alignItems: 'center', gap: 6 },
   bottomIconButton: {
@@ -190,6 +254,7 @@ const styles = {
     borderColor: 'rgba(124,92,255,0.75)',
   },
   bottomLabel: { color: 'rgba(255,255,255,0.75)', fontSize: 11 },
+  tapOverlay: { position: 'absolute' },
   // overlayTouch removed to avoid intercepting taps on controls
 };
 

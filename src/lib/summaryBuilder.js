@@ -184,13 +184,6 @@ export function buildFreshSummaryFromLast50(thread) {
     if (topic) bullets.unshift(topic);
   }
 
-  // Add an Objective bullet from earliest substantial user message if not present
-  const hasObjective = bullets.some(b => /^Objective:/i.test(b));
-  if (!hasObjective) {
-    const obj = inferObjectiveFromFirstUser(thread);
-    if (obj) bullets.unshift(obj);
-  }
-
   const cleaned = dedupeAndTrim(bullets).slice(0, MAX_BULLETS);
 
   // Enforce token budget

@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Pilih model",
-      "searchPlaceholder": "Cari model...",
-      "noModelsFound": "Tiada model ditemui",
-      "noModelsAvailable": "Tiada model tersedia",
-      "currentModel": "Model semasa: {{name}}. Ketik untuk tukar.",
-      "openHint": "Buka menu pemilihan model",
-      "closeLabel": "Tutup pemilih model",
-      "searchLabel": "Cari model",
-      "searchHint": "Taip untuk menapis model",
-      "modelLabel": "Model {{name}}",
-      "selectHint": "Pilih {{name}}",
-      "currentlySelected": "Model yang dipilih"
+  "modelSelector": {
+    "title": "Pilih model",
+    "searchPlaceholder": "Cari model...",
+    "noModelsFound": "Tiada model ditemui",
+    "noModelsAvailable": "Tiada model tersedia",
+    "currentModel": "Model semasa: {{name}}. Ketik untuk tukar.",
+    "openHint": "Buka menu pemilih model",
+    "closeLabel": "Tutup pemilih model",
+    "searchLabel": "Cari model",
+    "searchHint": "Taip untuk tapis model tersedia",
+    "modelLabel": "Model {{name}}",
+    "selectHint": "Pilih model {{name}}",
+    "currentlySelected": "Sedang dipilih"
+  },
+  "models": {
+    "gpt-4o": "Model AI paling berkuasa",
+    "gpt-4o-mini": "Pantas untuk tugasan harian",
+    "gpt-5": "AI serba guna paling berkuasa",
+    "gpt-5-chat-latest": "Dioptimumkan untuk sembang dan dialog",
+    "gpt-5-mini": "GPT-5 pantas dan boleh dipercayai",
+    "gpt-5-nano": "Model ringan untuk tugasan ringkas",
+    "o4-mini": "Model penaakulan cekap",
+    "gpt-4.1-mini": "GPT-4.1 padat tetapi berkeupayaan",
+    "claude-3-haiku": "Anthropic pantas dan fokus",
+    "claude-3.7-sonnet": "Penaakulan halus oleh Anthropic",
+    "gemini-2.5-Flash": "Model paling canggih Google",
+    "gemini-2.5-flash": "Model paling canggih Google",
+    "gemini-2.0-flash": "Google AI pantas dan tepat"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Lain-lain"
+  },
+  "navigation": {
+    "chat": "Sembang Baharu",
+    "history": "Sejarah",
+    "assistants": "Pembantu",
+    "imagesStudio": "Image Studio",
+    "settings": "Tetapan",
+    "recentChats": "Sembang Terkini"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Jana, perhalus dan terbitkan aset visual di satu tempat.",
+    "cta": "Buka"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Pilih imej",
+    "exitSelectionMode": "Keluar mod pemilihan",
+    "selectAll": "Pilih Semua",
+    "noImagesYet": "Tiada imej lagi",
+    "describeImageHint": "Huraikan imej di bawah dan ketik Jana.",
+    "generatedImagesGallery": "Galeri imej dijana",
+    "describeImagePlaceholder": "Huraikan imej yang anda mahu…",
+    "deleteConfirmTitle": "Padam Imej",
+    "deleteConfirmMessage": "Anda pasti mahu memadam imej yang dipilih? Tindakan ini tidak boleh diundurkan.",
+    "cancel": "Batal",
+    "delete": "Padam",
+    "generate": "Jana",
+    "generating": "Menjana…",
+    "latest": "Terbaharu",
+    "insertToChat": "Sisip ke sembang",
+    "pleaseWait": "Sila tunggu…",
+    "processing": "Memproses...",
+    "tapToUploadImage": "Ketik untuk muat naik imej",
+    "camera": "Kamera",
+    "library": "Galeri",
+    "enterPrompt": "Sila masukkan prompt untuk jana imej dari teks",
+    "openInBrowser": "Buka dalam pelayar",
+    "makeVariations": "Buat variasi",
+    "deleteAllFromGeneration": "Padam semua daripada generasi ini",
+    "imageOptionsTitle": "Pilihan Imej",
+    "imageOptionsMessage": "Apa yang anda mahu lakukan dengan imej ini?",
+    "insertMarkdownHeader": "Ini imej untuk:",
+    "variationSuffix": "— variasi daripada imej sebelumnya",
+    "selectedCount": "dipilih",
+    "selectedCount_one": "dipilih",
+    "selectedCount_other": "dipilih",
+    "imageDescriptionInput": "Input keterangan imej",
+    "imageDescriptionHint": "Masukkan keterangan imej yang anda mahu jana",
+    "openModelSettings": "Buka tetapan model",
+    "modelSettingsHint": "Ketik untuk tukar model dan tetapan",
+    "openPhotoGallery": "Buka galeri foto",
+    "clearInput": "Kosongkan input",
+    "generatedImage": "Imej dijana",
+    "autoSelectedModel": "Model {{model}} dipilih secara automatik untuk mod {{mode}}",
+    "deleteSelectedConfirmTitle": "Padam imej",
+    "deleteSelectedConfirmMessage": "Anda pasti mahu memadam imej? Tindakan ini tidak boleh diundurkan."
+  },
+  "imageStudio": {
+    "generateImage": "Jana imej",
+    "generatingImage": "Menjana imej",
+    "generateImageHint": "Ketik untuk jana imej berdasarkan huraian anda",
+    "imageDescriptionInput": "Input keterangan imej",
+    "imageDescriptionHint": "Masukkan keterangan imej yang anda mahu jana",
+    "openModelSettings": "Buka tetapan model",
+    "modelSettingsHint": "Ketik untuk tukar model dan tetapan",
+    "openPhotoGallery": "Buka galeri foto",
+    "clearInput": "Kosongkan input",
+    "generatedImage": "Imej dijana"
+  },
+  "assistants": {
+    "title": "Pembantu",
+    "subtitle": "Pembantu AI terpilih untuk pengaturcaraan, penulisan, analisis, perancangan dan banyak lagi.",
+    "searchPlaceholder": "Cari pembantu…",
+    "useAssistant": "Guna Pembantu",
+    "selectAssistant": "Pilih pembantu",
+    "description": "Huraian",
+    "systemPrompt": "Prompt Sistem",
+    "chooseModel": "Pilih Model",
+    "categoryAll": "Semua",
+    "categories": {
+      "everyday": "Harian",
+      "life": "Gaya hidup",
+      "health": "Kesihatan",
+      "schoolWork": "Sekolah & Kerja",
+      "coding": "Pengaturcaraan",
+      "creative": "Kreatif",
+      "general": "Umum"
+    },
+    "presets": {
+      "default": {
+        "name": "Pembantu Lalai",
+        "description": "Bantuan seimbang untuk tugasan harian."
+      },
+      "quick": {
+        "name": "Jawapan Pantas",
+        "description": "Jawapan pendek dan terus."
+      },
+      "planner": {
+        "name": "Perancang Harian",
+        "description": "Rancang hari dan rutin anda."
+      },
+      "recipes": {
+        "name": "Resipi & Masakan",
+        "description": "Masak dengan bahan yang anda ada."
+      },
+      "fitness": {
+        "name": "Jurulatih Tabiat & Kecergasan",
+        "description": "Tabiat kecil dan senaman di rumah."
+      },
+      "money": {
+        "name": "Pembantu Kewangan",
+        "description": "Bajet mudah & tip perbelanjaan."
+      },
+      "study": {
+        "name": "Pembantu Belajar",
+        "description": "Terangkan mudah. Uji saya."
+      },
+      "email": {
+        "name": "Emel & Resume",
+        "description": "Tulis emel & baris resume yang jelas."
+      },
+      "translator": {
+        "name": "Penterjemah",
+        "description": "Terjemah + ajar frasa."
+      },
+      "travel": {
+        "name": "Pembantu Kembara",
+        "description": "Pelan mudah & senarai bawa."
+      },
+      "tech": {
+        "name": "Sokongan Teknikal (Mudah)",
+        "description": "Telefon, aplikasi, Wi-Fi asas."
+      },
+      "summarizer": {
+        "name": "Ringkasan TL;DR",
+        "description": "Poin ringkas + satu baris ringkasan."
+      },
+      "gift": {
+        "name": "Pencari Hadiah",
+        "description": "Idea ikut bajet & minat."
+      },
+      "party": {
+        "name": "Perancang Acara (Ringkas)",
+        "description": "Rancang parti kecil dengan pantas."
+      },
+      "social": {
+        "name": "Penulis Pos Sosial",
+        "description": "Draf beberapa versi pos."
+      },
+      "interview": {
+        "name": "Jurulatih Temuduga",
+        "description": "Latih jawapan (STAR)."
+      },
+      "homefix": {
+        "name": "Baiki Rumah",
+        "description": "Panduan troubleshooting mudah."
+      },
+      "pet": {
+        "name": "Penjagaan Haiwan",
+        "description": "Makan, bawa berjalan, latihan asas."
+      },
+      "mindful": {
+        "name": "Minit Tenang",
+        "description": "Rehat 1–3 minit."
+      },
+      "polite": {
+        "name": "Penulis Sopan",
+        "description": "Tulis semula mesej dengan lebih sopan."
+      }
+    }
+  },
+  "history": {
+    "title": "Sejarah",
+    "searchPlaceholder": "Cari sembang…",
+    "newChat": "Sembang Baharu",
+    "new": "+ Baharu",
+    "search": "Cari",
+    "clearSearch": "Kosongkan carian",
+    "noChatsYet": "Belum ada sembang",
+    "startFirstConversation": "Mulakan perbualan pertama anda.",
+    "startChat": "Mulakan sembang",
+    "errorLoadingHistory": "Ralat memuat sejarah",
+    "renameChat": "Tukar nama sembang",
+    "enterNewTitle": "Masukkan nama baharu",
+    "deleteChat": "Padam sembang?",
+    "deleteChatMessage": "\"{{title}}\" akan dipadam.",
+    "rename": "Tukar nama",
+    "unpin": "Nyah pin",
+    "pin": "Pin",
+    "untitled": "Tiada tajuk"
+  },
+  "settings": {
+    "title": "Tetapan",
+    "model": "Model",
+    "searchPlaceholder": "Cari model…",
+    "temperatureForCurrentModel": "Suhu untuk model semasa",
+    "customFor": "Tersuai untuk {{model}}",
+    "usingDefault": "Menggunakan lalai {{temperature}}",
+    "resetToDefault": "Tetap semula ke lalai",
+    "defaultTemperature": "Suhu lalai (sandaran)",
+    "usedByModelsWithoutOverride": "Digunakan oleh model tanpa tetapan khusus",
+    "dangerZone": "Zon bahaya",
+    "clearAllChatsAndSettings": "Kosongkan semua sembang & tetapan",
+    "about": "Perihal",
+    "version": "Versi {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Dasar Privasi",
+    "hero": {
+      "label": "Tawaran khas",
+      "title": "Akses keutamaan & tanpa had",
+      "upgrade": "Naik taraf",
+      "manage": "Urus pelan"
+    },
+    "sections": {
+      "premium": "Pelan Premium",
+      "data": "Data Pengguna",
+      "support": "Sokongan & Perundangan"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Dapatkan Premium",
+        "subtitle": "Buka kunci alat penciptaan tanpa had"
+      },
+      "premiumActive": {
+        "title": "Premium Aktif",
+        "subtitle": "Terima kasih kerana menyokong ChatCloud"
+      },
+      "restore": {
+        "title": "Pulihkan pembelian",
+        "subtitle": "Guna jika anda menukar peranti"
+      },
+      "history": {
+        "title": "Urus sejarah sembang",
+        "subtitle": "Lihat dan padam sesi lalu"
+      },
+      "reset": {
+        "title": "Tetap semula sembang & keutamaan",
+        "subtitle": "Padam semua data pada peranti ini"
+      },
+      "rate": {
+        "title": "Nilaikan kami",
+        "error": "Tidak dapat membuka halaman stor."
+      },
+      "support": {
+        "title": "Sokongan",
+        "subtitle": "Hubungi kami dalam talian",
+        "error": "Tidak dapat membuka halaman sokongan."
+      },
+      "privacy": {
+        "title": "Dasar Privasi",
+        "error": "Tidak dapat membuka dasar privasi."
+      },
+      "terms": {
+        "title": "Terma Penggunaan",
+        "error": "Tidak dapat membuka terma penggunaan."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "Audio",
+      "video": "Video"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Tidak tersedia",
+      "linkUnavailableMessage": "Tidak dapat membuka pautan ini sekarang.",
+      "restoreSuccessTitle": "Berjaya dipulihkan",
+      "restoreSuccessMessage": "Pembelian anda telah dipulihkan.",
+      "restoreErrorTitle": "Pulih gagal",
+      "restoreErrorMessage": "Tidak dapat memulihkan pembelian sekarang.",
+      "resetConfirmTitle": "Tetap semula data aplikasi?",
+      "resetConfirmMessage": "Ini akan memadam semua sembang dan tetapan.",
+      "resetConfirmCancel": "Batal",
+      "resetConfirmCta": "Tetap semula"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Cipta",
+    "chooseStyle": "Pilih gaya",
+    "aspectRatio": "Nisbah",
+    "starterPrompts": {
+      "title": "Prompt permulaan",
+      "items": [
+        "potret studio",
+        "ruang tamu moden",
+        "pantai tropika sewaktu matahari terbenam"
+      ]
+    },
+    "promptPlaceholder": "Taip apa yang anda mahu lihat…",
+    "promptHint": "Contoh: 'Golden retriever dalam pencahayaan studio'",
+    "clearText": "Kosongkan teks",
+    "generate": "Jana",
+    "generating": "Menjana…"
+  },
+  "editImage": {
+    "headerTitle": "Edit",
+    "chooseStyle": "Pilih gaya",
+    "aspectRatio": "Nisbah",
+    "starterPrompts": {
+      "title": "Prompt permulaan",
+      "items": [
+        "betulkan pencahayaan",
+        "buang latar belakang",
+        "retouch potret lembut"
+      ]
+    },
+    "promptPlaceholder": "Huraikan suntingan (pilihan)",
+    "clearText": "Kosongkan",
+    "generate": "Terap",
+    "generating": "Menerapkan…",
+    "upload": {
+      "choose": "Pilih foto",
+      "change": "Tukar",
+      "remove": "Buang"
+    },
+    "imageUnavailable": {
+      "title": "Imej tidak tersedia",
+      "message": "Tidak dapat capai imej yang dipilih. Sila pilih semula dan cuba lagi."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Kartun"
+      },
+      "photoreal": {
+        "name": "Fotorealistik"
+      },
+      "sketch": {
+        "name": "Lakaran"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Ilustrasi 3D"
+      },
+      "dark_fantasy": {
+        "name": "Fantasi Gelap"
+      },
+      "vintage_film": {
+        "name": "Filem Vintage"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Neon Glow"
+      },
+      "epic_landscape": {
+        "name": "Lanskap Epik"
+      }
+    },
+    "aspectRatios": {
+      "square": "Segi empat",
+      "landscape": "Lanskap",
+      "portrait": "Potret"
     },
     "models": {
-      "gpt-4o": "Model AI paling berkuasa",
-      "gpt-4o-mini": "Pantas untuk tugas harian",
-      "claude-3-haiku": "Model pantas dan cekap",
-      "claude-3.7-sonnet": "Model penaakulan lanjutan",
-      "gemini-2.5-pro": "Model terbaik Google",
-      "gemini-2.0-flash": "Model pantas dengan penaakulan hebat"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Tersuai"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Lain-lain"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Model paling pantas",
+      "runwareFluxKrea": "Hasil kreatif dan bergaya",
+      "runwareQwenImage": "Seimbang dan berkualiti tinggi",
+      "google4": "Model imej AI terbaik",
+      "fluxKontent": "Flux Kontent ditala untuk suntingan",
+      "runwareProvider": "Seimbang kualiti dengan diffusion stabil.",
+      "airProvider": "Nano Banana dengan tona ceria.",
+      "googleProvider": "Google ditala untuk perincian tajam.",
+      "anthropicProvider": "Pipeline Claude untuk mood halus.",
+      "default": "Ketik untuk teroka enjin tersedia."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "gaya yang anda pilih",
+    "sheetTitle": "Sedang hasilkan visual anda",
+    "sheetSubtitle": "Sedang gabung {{style}} ke dalam prompt.",
+    "phases": {
+      "blend": "Menggabungkan {{style}}",
+      "paint": "Melukis adegan",
+      "finish": "Sentuhan akhir"
     },
-    "navigation": {
-      "chat": "Sembang",
-      "history": "Sejarah",
-      "assistants": "Pembantu",
-      "imagesStudio": "Studio",
-      "settings": "Tetapan",
-      "recentChats": "Sembang terkini"
-    },
-    "imagesStudio": {
-      "title": "Studio",
-      "selectImages": "Pilih imej",
-      "exitSelectionMode": "Keluar mod pemilihan",
-      "selectAll": "Pilih semua",
-      "noImagesYet": "Belum ada imej",
-      "describeImageHint": "Huraikan imej di bawah dan ketik \"Jana\".",
-      "generatedImagesGallery": "Galeri imej dijana",
-      "describeImagePlaceholder": "Huraikan imej yang anda mahukan…",
-      "deleteConfirmTitle": "Padam Imej",
-      "deleteConfirmMessage": "Anda pasti mahu memadam imej yang dipilih? Tindakan ini tidak boleh diundur.",
+    "actions": {
       "cancel": "Batal",
-      "delete": "Padam",
-      "generate": "Jana",
-      "generating": "Menjana…",
-      "latest": "Terkini",
-      "insertToChat": "Sisip ke sembang",
-      "pleaseWait": "Sila tunggu…",
-      "processing": "Memproses...",
-      "tapToUploadImage": "Ketik untuk muat naik imej",
-      "camera": "Kamera",
-      "library": "Galeri",
-      "enterPrompt": "Masukkan prompt untuk penjanaan teks-ke-imej",
-      "openInBrowser": "Buka dalam pelayar",
-      "makeVariations": "Buat variasi",
-      "deleteAllFromGeneration": "Padam semua daripada generasi ini",
-      "imageOptionsTitle": "Opsyen imej",
-      "imageOptionsMessage": "Apa yang anda mahu lakukan dengan imej ini?",
-      "insertMarkdownHeader": "Ini imej untuk:",
-      "variationSuffix": "— variasi imej sebelumnya",
-      "selectedCount": "dipilih",
-      "selectedCount_one": "dipilih",
-      "selectedCount_other": "dipilih",
-      "imageDescriptionInput": "Input penerangan imej",
-      "imageDescriptionHint": "Masukkan penerangan imej yang ingin dijana",
-      "openModelSettings": "Buka tetapan model",
-      "modelSettingsHint": "Ketik untuk tukar model dan tetapan",
-      "openPhotoGallery": "Buka galeri foto",
-      "clearInput": "Kosongkan input",
-      "generatedImage": "Imej dijana",
-      "autoSelectedModel": "Model dipilih automatik {{model}} untuk mod {{mode}}",
-      "deleteSelectedConfirmTitle": "Padam imej",
-      "deleteSelectedConfirmMessage": "Anda pasti mahu memadam imej? Tindakan ini tidak boleh diundur."
+      "retry": "Cuba lagi",
+      "close": "Tutup"
     },
-    "imageStudio": {
-      "generateImage": "Jana imej",
-      "generatingImage": "Menjana imej",
-      "generateImageHint": "Ketik untuk jana imej berdasarkan huraian",
-      "imageDescriptionInput": "Input penerangan imej",
-      "imageDescriptionHint": "Masukkan penerangan imej yang ingin dijana",
-      "openModelSettings": "Buka tetapan model",
-      "modelSettingsHint": "Ketik untuk tukar model dan tetapan",
-      "openPhotoGallery": "Buka galeri foto",
-      "clearInput": "Kosongkan input",
-      "generatedImage": "Imej dijana"
+    "errors": {
+      "restrictedTitle": "Kandungan Disekat",
+      "genericTitle": "Penjanaan gagal",
+      "genericMessage": "Tidak dapat jana imej."
     },
-    "assistants": {
-      "title": "Pembantu",
-      "subtitle": "Pakar AI terpilih untuk pengaturcaraan, penulisan, analisis, perancangan dan banyak lagi.",
-      "searchPlaceholder": "Cari pembantu…",
-      "useAssistant": "Guna Pembantu",
-      "description": "Penerangan",
-      "systemPrompt": "Prompt sistem",
-      "chooseModel": "Pilih model",
-      "categoryAll": "Semua",
-      "categories": {
-        "everyday": "Seharian",
-        "life": "Kehidupan",
-        "health": "Kesihatan",
-        "schoolWork": "Sekolah & kerja",
-        "coding": "Pengaturcaraan",
-        "creative": "Kreatif",
-        "general": "Umum"
-      },
-      "presets": {
-        "default": { "name": "Pembantu Lalai", "description": "Bantuan seimbang untuk tugasan harian." },
-        "quick": { "name": "Jawapan Pantas", "description": "Pendek dan tepat." },
-        "planner": { "name": "Perancang Harian", "description": "Rancang hari dan rutin anda." },
-        "recipes": { "name": "Makanan & Resipi", "description": "Apa yang boleh dimasak dengan yang ada." },
-        "fitness": { "name": "Jurulatih Tabiat & Kecergasan", "description": "Tabiat kecil & senaman di rumah." },
-        "money": { "name": "Rakan Kewangan", "description": "Bajet ringkas & tip perbelanjaan." },
-        "study": { "name": "Pembantu Belajar", "description": "Terangkan mudah. Kuiz saya." },
-        "email": { "name": "Emel & Resume", "description": "Tulis emel jelas & poin CV." },
-        "translator": { "name": "Penterjemah", "description": "Terjemah + belajar frasa." },
-        "travel": { "name": "Rakan Perjalanan", "description": "Pelan ringkas & senarai barangan." },
-        "tech": { "name": "Sokongan Teknikal (Ringkas)", "description": "Asas telefon, aplikasi, Wi-Fi." },
-        "summarizer": { "name": "Ringkasan TL;DR", "description": "Poin ringkas + satu baris ringkasan." },
-        "gift": { "name": "Pencari Hadiah", "description": "Idea ikut bajet & minat." },
-        "party": { "name": "Perancang Acara (Lite)", "description": "Rancang parti kecil dengan cepat." },
-        "social": { "name": "Pembuat Pos Sosial", "description": "Draf pos dengan pilihan." },
-        "interview": { "name": "Jurulatih Temu Duga", "description": "Berlatih jawapan (STAR)." },
-        "homefix": { "name": "Panduan Baiki Rumah", "description": "Penyelesaian masalah mudah." },
-        "pet": { "name": "Rakan Penjagaan Haiwan", "description": "Makan, berjalan, latihan asas." },
-        "mindful": { "name": "Minat Sedar", "description": "Rehat tenang 1–3 minit." },
-        "polite": { "name": "Penulis Semula Berhemah", "description": "Tulis semula teks & balasan dengan sopan." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Gagal simpan",
+      "shareFailedTitle": "Gagal kongsi",
+      "tryAgain": "Sila cuba lagi."
     },
-    "history": {
-      "title": "Sejarah",
-      "searchPlaceholder": "Cari sembang…",
-      "newChat": "Sembang baharu",
-      "new": "+ Baharu",
-      "search": "Cari",
-      "clearSearch": "Kosongkan carian",
-      "noChatsYet": "Belum ada sembang",
-      "startFirstConversation": "Mulakan perbualan pertama anda.",
-      "startChat": "Mulakan sembang",
-      "errorLoadingHistory": "Ralat memuatkan sejarah",
-      "renameChat": "Tukar nama sembang",
-      "enterNewTitle": "Masukkan tajuk baharu",
-      "deleteChat": "Padam sembang?",
-      "deleteChatMessage": "\"{{title}}\" akan dipadam.",
-      "rename": "Tukar nama",
-      "unpin": "Batal pin",
-      "pin": "Pin",
-      "untitled": "Tanpa tajuk"
+    "result": {
+      "complete": "Selesai"
     },
-    "settings": {
-      "title": "Tetapan",
-      "model": "Model",
-      "searchPlaceholder": "Cari model…",
-      "temperatureForCurrentModel": "Suhu untuk model semasa",
-      "customFor": "Tersuai untuk {{model}}",
-      "usingDefault": "Menggunakan lalai {{temperature}}",
-      "resetToDefault": "Tetap semula ke lalai",
-      "defaultTemperature": "Suhu lalai (sandaran)",
-      "usedByModelsWithoutOverride": "Digunakan oleh model tanpa ganti",
-      "dangerZone": "Zon bahaya",
-      "clearAllChatsAndSettings": "Padam semua sembang & tetapan",
-      "about": "Perihal",
-      "version": "Versi {{version}}",
-      "privacyPolicy": "Dasar privasi",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Mesej kepada Agarka...",
-      "createImages": "Cipta Imej",
-      "generateAiArtwork": "Jana karya seni AI",
-      "camera": "Kamera",
-      "takeOrSelectPhotos": "Ambil atau pilih foto",
-      "search": "Cari",
-      "findInformation": "Cari maklumat",
-      "removeImage": "Buang imej",
-      "messageInput": "Input mesej",
-      "clearInput": "Kosongkan input",
-      "hideQuickActions": "Sembunyikan tindakan pantas",
-      "showQuickActions": "Tunjukkan tindakan pantas",
-      "startVoiceInput": "Mulakan input suara",
-      "sendMessage": "Hantar",
-      "offline": "Luar talian",
-      "stop": "Henti",
-      "streaming": "Menstrim…",
-      "closeRecorder": "Tutup perakam",
-      "insertTranscript": "Sisip transkrip",
-      "scrollToLatest": "Skrol ke terkini",
-      "copyMessage": "Salin mesej",
-      "copyMessageHint": "Salin mesej ini ke papan klip",
-      "shareMessage": "Kongsi mesej",
-      "shareMessageHint": "Kongsi mesej ini",
-      "regenerateResponse": "Jana semula respons",
-      "regenerateResponseHint": "Jana respons baharu",
-      "copyCode": "Salin kod",
-      "image": "imej",
-      "loading": "Memuatkan…",
-      "loadingChat": "Memuatkan sembang...",
-      "offlineBanner": "Anda luar talian. Mesej tidak boleh dihantar.",
-      "imagePickerErrorTitle": "Ralat pemilih imej",
-      "messageTooLong": "Mesej terlalu panjang ({{length}}). Hadnya ialah {{limit}}.",
-      "emptyTitle": "Bagaimana saya boleh membantu?",
-      "emptySubtitle": "Mulakan perbualan dengan AI",
-      "privateTitle": "Sembang peribadi",
-      "privateSubtitle": "Sembang ini tidak akan muncul dalam sejarah anda",
-      "listening": "Mendengar…",
-      "startRecording": "Mulakan rakaman…",
-      "suggestions": {
-        "writeStory": "Tulis cerita kreatif",
-        "writeStorySubtitle": "tentang pengembaraan magis",
-        "planTravel": "Rancang itinerari perjalanan",
-        "planTravelSubtitle": "untuk percutian yang hebat",
-        "explainConcept": "Terangkan konsep ini",
-        "explainConceptSubtitle": "dalam istilah mudah",
-        "planDay": "Rancang hari saya",
-        "planDaySubtitle": "dengan petua produktiviti"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Memproses...",
-      "tapToUploadImage": "Ketik untuk muat naik imej"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Memproses...",
-      "camera": "Kamera",
-      "library": "Galeri"
-    },
-    "common": {
-      "new": "BAHARU",
-      "best": "TERBAIK",
-      "cancel": "Batal",
-      "save": "Simpan",
-      "delete": "Padam",
+    "accessibility": {
       "close": "Tutup"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Padam",
+      "edit": "Edit",
+      "save": "Simpan",
+      "share": "Kongsi"
+    },
+    "accessibility": {
+      "close": "Tutup",
+      "delete": "Padam imej",
+      "edit": "Edit imej",
+      "save": "Simpan imej",
+      "share": "Kongsi imej"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Buka menu",
+      "selectImages": "Pilih imej",
+      "exitSelection": "Keluar mod pemilihan",
+      "deleteSelected": "Padam imej terpilih",
+      "selectToDelete": "Pilih imej untuk dipadam"
+    },
+    "createCard": {
+      "title": "Cipta dari teks",
+      "subtitle": "Taip huraian",
+      "cta": "Huraikan & Jana"
+    },
+    "editCard": {
+      "title": "Edit Foto",
+      "subtitle": "Muat naik & edit",
+      "cta": "Edit Foto"
+    },
+    "gallery": {
+      "title": "Galeri",
+      "empty": "Tiada imej lagi",
+      "selection": {
+        "enter": "Pilih imej",
+        "exit": "Keluar mod pemilihan",
+        "deleteSelected": "Padam imej terpilih",
+        "selectForDelete": "Pilih imej untuk dipadam"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Kenali",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Cipta & edit imej dengan AI — terus dalam {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Temui AI anda",
+      "titleHighlight": "Pembantu",
+      "subtitle": "Pakar AI khusus sedia membantu keperluan harian anda",
+      "cards": [
+        {
+          "title": "Jurulatih Kecergasan",
+          "text": "Dapatkan pelan senaman dan nutrisi ikut sasaran anda"
+        },
+        {
+          "title": "Doktor",
+          "text": "Dapatkan maklumat kesihatan, analisis simptom dan panduan"
+        },
+        {
+          "title": "Penjagaan Haiwan",
+          "text": "Nasihat tentang kesihatan, latihan dan penjagaan haiwan kesayangan"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "SOLUSI AI TAHAP ENTERPRISE",
+      "description": "Kuasa perniagaan anda dengan teknologi AI termaju untuk profesional dan pasukan.",
+      "stats": "Dipercayai oleh 500k+ pengguna",
+      "rating": "4.9 / 5",
+      "button": "Mula"
+    }
+  },
+  "coinStore": {
+    "title": "Dapatkan Token",
+    "loading": "Memuatkan kedai token…",
+    "balanceLabel": "Baki semasa anda ialah",
+    "balanceValue": "{{amount}} Token",
+    "history": {
+      "link": "Sejarah Transaksi",
+      "alertTitle": "Sejarah",
+      "alertBody": "Sejarah transaksi akan datang tidak lama lagi."
+    },
+    "noPacks": "Tiada pek token tersedia. Semak ID tawaran RevenueCat anda.",
+    "badges": {
+      "basic": "Pek Asas",
+      "popular": "Paling Popular",
+      "value": "Paling Berbaloi"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} Token",
+      "defaultName": "Pek {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Jadi Premium",
+      "subtitle": "Akses & ciri tanpa had",
+      "cta": "Naik taraf"
+    },
+    "termsText": "Dengan membeli, anda bersetuju dengan",
+    "termsLink": "Terma Perkhidmatan",
+    "alerts": {
+      "initErrorTitle": "Ralat permulaan",
+      "genericMessage": "Ada sesuatu yang tidak kena.",
+      "successTitle": "Berjaya",
+      "successMessage": "Token akan muncul sebentar lagi.",
+      "purchaseFailedTitle": "Pembelian gagal",
+      "unknownError": "Ralat tidak diketahui"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Pulihkan",
+    "restoreRestoring": "Sedang dipulihkan…",
+    "features": {
+      "create": "Cipta imej dan video",
+      "search": "Cari web dengan AI",
+      "talk": "Berbual secara semula jadi dengan AI"
+    },
+    "freeTrial": {
+      "title": "Percubaan percuma",
+      "subtitle": "Percubaan 3 hari"
+    },
+    "badge": {
+      "bestOffer": "Tawaran terbaik"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Tahunan",
+        "only": "Hanya {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Bulanan",
+        "subtitle": "Boleh batal bila-bila masa",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Mingguan",
+        "subtitle": "Boleh batal bila-bila masa",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "setiap minggu",
+      "perMonth": "setiap bulan"
+    },
+    "cta": "Teruskan",
+    "legal": {
+      "terms": "Terma",
+      "privacy": "Privasi"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mesej...",
+    "createImages": "Cipta Imej",
+    "generateAiArtwork": "Jana karya AI",
+    "camera": "Kamera",
+    "takeOrSelectPhotos": "Ambil atau pilih foto",
+    "search": "Cari",
+    "findInformation": "Cari maklumat",
+    "findRecentInfo": "Cari maklumat terbaharu",
+    "removeImage": "Buang imej",
+    "messageInput": "Input mesej",
+    "clearInput": "Kosongkan input",
+    "quickActionsLabel": "Tindakan pantas",
+    "hideQuickActions": "Sembunyi tindakan pantas",
+    "showQuickActions": "Tunjuk tindakan pantas",
+    "startVoiceInput": "Mula input suara",
+    "sendMessage": "Hantar mesej",
+    "offline": "Luar talian",
+    "stop": "Henti",
+    "streaming": "Menstrim…",
+    "closeRecorder": "Tutup perakam",
+    "insertTranscript": "Hantar",
+    "scrollToLatest": "Skrol ke terkini",
+    "copyMessage": "Salin mesej",
+    "copyMessageHint": "Salin mesej ini ke papan klip",
+    "shareMessage": "Kongsi mesej",
+    "shareMessageHint": "Kongsi mesej ini",
+    "regenerateResponse": "Jana semula jawapan",
+    "regenerateResponseHint": "Jana jawapan baharu",
+    "copyCode": "Salin kod",
+    "image": "imej",
+    "loading": "Memuatkan…",
+    "loadingChat": "Memuatkan sembang...",
+    "offlineBanner": "Anda luar talian. Mesej tidak boleh dihantar.",
+    "imagePickerErrorTitle": "Ralat pemilih imej",
+    "imagePickerErrorMessage": "Tidak dapat akses foto anda. Cuba lagi.",
+    "messageTooLong": "Mesej terlalu panjang ({{length}}). Had ialah {{limit}}.",
+    "sendFailed": "Gagal dihantar.",
+    "voiceStartFailed": "Tidak dapat mulakan suara.",
+    "emptyTitle": "Nak saya bantu apa?",
+    "emptySubtitle": "Mulakan perbualan dengan AI",
+    "privateTitle": "Sembang Peribadi",
+    "privateSubtitle": "Sembang ini tidak akan muncul dalam sejarah",
+    "permissions": {
+      "photosTitle": "Perlu kebenaran foto",
+      "photosMessage": "Akses foto diperlukan untuk pilih imej.",
+      "voiceTitle": "Perlu kebenaran suara",
+      "voiceMessage": "Mikrofon dan suara diperlukan untuk fungsi ini."
+    },
+    "activity": {
+      "analyzingImages": "Menganalisis imej…",
+      "searching": "Mencari…",
+      "thinking": "Berfikir…"
+    },
+    "webSearch": {
+      "title": "Carian web",
+      "subtitle": "Cari maklumat terbaharu",
+      "label": "Carian web",
+      "enable": "Hidupkan carian web",
+      "disable": "Matikan carian web",
+      "toggleLabel": "Cari di web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Reka visual dengan pantas.",
+      "subtitle": "Cipta, perhalus dan terbitkan di satu tempat.",
+      "cta": "Buka"
+    },
+    "quickActions": {
+      "createImages": "Cipta Imej",
+      "openCamera": "Buka Kamera",
+      "editImage": "Edit Imej",
+      "startVoice": "Mula Suara",
+      "assistants": "Pembantu"
+    },
+    "listening": "Sedang mendengar…",
+    "startRecording": "Mula merakam…",
+    "assistantHeader": {
+      "unavailableTitle": "Pembantu tidak tersedia",
+      "unavailableDescription": "Kami tidak dapat memuatkan pembantu ini. Sila cuba lagi.",
+      "ready": "Sedia membantu"
+    },
+    "actions": {
+      "copy": "Salin",
+      "share": "Kongsi",
+      "regenerate": "Jana semula",
+      "retryFromHere": "Cuba lagi dari sini",
+      "cancel": "Batal"
+    },
+    "messageActionTitle": "Mesej",
+    "status": {
+      "sending": "Menghantar…",
+      "failed": "Gagal",
+      "sent": "Dihantar"
+    },
+    "suggestions": {
+      "writeStory": "Tulis cerita kreatif",
+      "writeStorySubtitle": "tentang pengembaraan magis",
+      "planTravel": "Rancang perjalanan",
+      "planTravelSubtitle": "untuk percutian hebat",
+      "explainConcept": "Terangkan konsep ini",
+      "explainConceptSubtitle": "dengan mudah",
+      "planDay": "Rancang hari saya",
+      "planDaySubtitle": "dengan tip produktiviti"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Memproses...",
+    "tapToUploadImage": "Ketik untuk muat naik imej"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Memproses...",
+    "camera": "Kamera",
+    "library": "Galeri"
+  },
+  "common": {
+    "new": "BAHARU",
+    "best": "TERBAIK",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "delete": "Padam",
+    "close": "Tutup",
+    "allow": "Benarkan"
   }
-  
+}

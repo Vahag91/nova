@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Bir model seçin",
-      "searchPlaceholder": "Modelleri ara...",
-      "noModelsFound": "Model bulunamadı",
-      "noModelsAvailable": "Kullanılabilir model yok",
-      "currentModel": "Geçerli model: {{name}}. Değiştirmek için dokunun.",
-      "openHint": "Model seçimi menüsünü açar",
-      "closeLabel": "Model seçiciyi kapat",
-      "searchLabel": "Modelleri ara",
-      "searchHint": "Modelleri filtrelemek için yazın",
-      "modelLabel": "{{name}} modeli",
-      "selectHint": "{{name}} seç",
-      "currentlySelected": "Seçili model"
+  "modelSelector": {
+    "title": "Model seç",
+    "searchPlaceholder": "Modelleri ara...",
+    "noModelsFound": "Model bulunamadı",
+    "noModelsAvailable": "Kullanılabilir model yok",
+    "currentModel": "Geçerli model: {{name}}. Değiştirmek için dokun.",
+    "openHint": "Model seçim menüsünü açar",
+    "closeLabel": "Model seçiciyi kapat",
+    "searchLabel": "Modelleri ara",
+    "searchHint": "Mevcut modelleri filtrelemek için yaz",
+    "modelLabel": "{{name}} modeli",
+    "selectHint": "{{name}} modelini seç",
+    "currentlySelected": "Şu anda seçili"
+  },
+  "models": {
+    "gpt-4o": "En güçlü yapay zeka modeli",
+    "gpt-4o-mini": "Günlük işler için hızlı",
+    "gpt-5": "En güçlü çok amaçlı model",
+    "gpt-5-chat-latest": "Sohbet ve diyalog için optimize edildi",
+    "gpt-5-mini": "Hızlı ve güvenilir GPT-5",
+    "gpt-5-nano": "Basit görevler için hafif model",
+    "o4-mini": "Verimli akıl yürütme modeli",
+    "gpt-4.1-mini": "Kompakt ve yetenekli GPT-4.1",
+    "claude-3-haiku": "Hızlı ve odaklı Anthropic yapay zekası",
+    "claude-3.7-sonnet": "Anthropic tarafından rafine akıl yürütme",
+    "gemini-2.5-Flash": "Google’ın en gelişmiş modeli",
+    "gemini-2.5-flash": "Google’ın en gelişmiş modeli",
+    "gemini-2.0-flash": "Hızlı ve hassas Google yapay zekası"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Diğer"
+  },
+  "navigation": {
+    "chat": "Yeni Sohbet",
+    "history": "Geçmiş",
+    "assistants": "Asistanlar",
+    "imagesStudio": "Image Studio",
+    "settings": "Ayarlar",
+    "recentChats": "Son Sohbetler"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Görsel varlıkları tek yerde üret, düzenle ve yayımla.",
+    "cta": "Aç"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Görüntüleri seç",
+    "exitSelectionMode": "Seçim modundan çık",
+    "selectAll": "Tümünü seç",
+    "noImagesYet": "Henüz görüntü yok",
+    "describeImageHint": "Aşağıya görüntüyü yaz ve \"Oluştur\"a dokun.",
+    "generatedImagesGallery": "Oluşturulan görüntüler galerisi",
+    "describeImagePlaceholder": "İstediğin görüntüyü tarif et…",
+    "deleteConfirmTitle": "Görüntüleri sil",
+    "deleteConfirmMessage": "Seçilen görüntüleri silmek istediğine emin misin? Bu işlem geri alınamaz.",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "generate": "Oluştur",
+    "generating": "Oluşturuluyor…",
+    "latest": "En son",
+    "insertToChat": "Sohbete ekle",
+    "pleaseWait": "Lütfen bekle…",
+    "processing": "İşleniyor...",
+    "tapToUploadImage": "Görüntü yüklemek için dokun",
+    "camera": "Kamera",
+    "library": "Galeri",
+    "enterPrompt": "Metinden görüntü üretmek için bir istem gir",
+    "openInBrowser": "Tarayıcıda aç",
+    "makeVariations": "Varyasyonlar oluştur",
+    "deleteAllFromGeneration": "Bu üretimdeki tümünü sil",
+    "imageOptionsTitle": "Görüntü seçenekleri",
+    "imageOptionsMessage": "Bu görüntüyle ne yapmak istiyorsun?",
+    "insertMarkdownHeader": "Şu görüntü:",
+    "variationSuffix": "— önceki görüntünün varyasyonu",
+    "selectedCount": "seçildi",
+    "selectedCount_one": "seçildi",
+    "selectedCount_other": "seçildi",
+    "imageDescriptionInput": "Görüntü açıklama alanı",
+    "imageDescriptionHint": "Oluşturmak istediğin görüntüyü tarif et",
+    "openModelSettings": "Model ayarlarını aç",
+    "modelSettingsHint": "Modeli ve ayarları değiştirmek için dokun",
+    "openPhotoGallery": "Fotoğraf galerisini aç",
+    "clearInput": "Girdiyi temizle",
+    "generatedImage": "Oluşturulan görüntü",
+    "autoSelectedModel": "{{mode}} modu için {{model}} otomatik seçildi",
+    "deleteSelectedConfirmTitle": "Görüntüleri sil",
+    "deleteSelectedConfirmMessage": "Görüntüleri silmek istediğine emin misin? Bu işlem geri alınamaz."
+  },
+  "imageStudio": {
+    "generateImage": "Görüntü oluştur",
+    "generatingImage": "Görüntü oluşturuluyor",
+    "generateImageHint": "Açıklamana göre görüntü oluşturmak için dokun",
+    "imageDescriptionInput": "Görüntü açıklama alanı",
+    "imageDescriptionHint": "Oluşturmak istediğin görüntüyü tarif et",
+    "openModelSettings": "Model ayarlarını aç",
+    "modelSettingsHint": "Modeli ve ayarları değiştirmek için dokun",
+    "openPhotoGallery": "Fotoğraf galerisini aç",
+    "clearInput": "Girdiyi temizle",
+    "generatedImage": "Oluşturulan görüntü"
+  },
+  "assistants": {
+    "title": "Asistanlar",
+    "subtitle": "Kod yazma, yazı yazma, analiz, planlama ve daha fazlası için seçilmiş yapay zeka asistanları.",
+    "searchPlaceholder": "Asistan ara…",
+    "useAssistant": "Asistanı kullan",
+    "selectAssistant": "Asistan seç",
+    "description": "Açıklama",
+    "systemPrompt": "Sistem İstemi",
+    "chooseModel": "Model seç",
+    "categoryAll": "Tümü",
+    "categories": {
+      "everyday": "Günlük",
+      "life": "Yaşam",
+      "health": "Sağlık",
+      "schoolWork": "Okul & İş",
+      "coding": "Kodlama",
+      "creative": "Yaratıcı",
+      "general": "Genel"
+    },
+    "presets": {
+      "default": {
+        "name": "Varsayılan Asistan",
+        "description": "Günlük işler için dengeli yardım."
+      },
+      "quick": {
+        "name": "Hızlı Yanıtlar",
+        "description": "Kısa ve net yanıtlar."
+      },
+      "planner": {
+        "name": "Günlük Planlayıcı",
+        "description": "Gününü ve rutinini planla."
+      },
+      "recipes": {
+        "name": "Yemek & Tarifler",
+        "description": "Elindekilerle ne pişirebilirsin?"
+      },
+      "fitness": {
+        "name": "Alışkanlık & Fitness Koçu",
+        "description": "Küçük alışkanlıklar ve ev egzersizleri."
+      },
+      "money": {
+        "name": "Para Yardımcısı",
+        "description": "Basit bütçeler ve harcama ipuçları."
+      },
+      "study": {
+        "name": "Ders Yardımcısı",
+        "description": "Basitçe açıkla. Beni test et."
+      },
+      "email": {
+        "name": "E-posta & Özgeçmiş",
+        "description": "Net e-postalar ve CV satırları yaz."
+      },
+      "translator": {
+        "name": "Çevirmen",
+        "description": "Çevir + ifadeleri öğret."
+      },
+      "travel": {
+        "name": "Seyahat Arkadaşı",
+        "description": "Basit planlar ve paket listeleri."
+      },
+      "tech": {
+        "name": "Teknik Destek (Basit)",
+        "description": "Telefon, uygulamalar, Wi-Fi temelleri."
+      },
+      "summarizer": {
+        "name": "Özetleyici (TL;DR)",
+        "description": "Kısa maddeler + tek cümle."
+      },
+      "gift": {
+        "name": "Hediye Bulucu",
+        "description": "Bütçe ve ilgiye göre fikirler."
+      },
+      "party": {
+        "name": "Etkinlik Planlayıcı (Hafif)",
+        "description": "Küçük bir etkinliği hızlıca planla."
+      },
+      "social": {
+        "name": "Sosyal Medya Gönderici",
+        "description": "Seçenekli gönderi taslakları."
+      },
+      "interview": {
+        "name": "Mülakat Koçu",
+        "description": "Cevap pratiği (STAR)."
+      },
+      "homefix": {
+        "name": "Ev Tamiri Rehberi",
+        "description": "Basit arızalar için adım adım."
+      },
+      "pet": {
+        "name": "Evcil Hayvan Bakımı",
+        "description": "Besleme, yürüyüş, temel eğitim."
+      },
+      "mindful": {
+        "name": "Farkındalık Dakikası",
+        "description": "1–3 dakikalık sakinleşme."
+      },
+      "polite": {
+        "name": "Kibar Yeniden Yazıcı",
+        "description": "Metinleri nazikçe yeniden yaz."
+      }
+    }
+  },
+  "history": {
+    "title": "Geçmiş",
+    "searchPlaceholder": "Sohbetlerde ara…",
+    "newChat": "Yeni Sohbet",
+    "new": "+ Yeni",
+    "search": "Ara",
+    "clearSearch": "Aramayı temizle",
+    "noChatsYet": "Henüz sohbet yok",
+    "startFirstConversation": "İlk sohbetine başla.",
+    "startChat": "Sohbet başlat",
+    "errorLoadingHistory": "Geçmiş yüklenirken hata oluştu",
+    "renameChat": "Sohbeti yeniden adlandır",
+    "enterNewTitle": "Yeni başlık gir",
+    "deleteChat": "Sohbet silinsin mi?",
+    "deleteChatMessage": "\"{{title}}\" silinecek.",
+    "rename": "Yeniden adlandır",
+    "unpin": "Sabitlemeyi kaldır",
+    "pin": "Sabitle",
+    "untitled": "Başlıksız"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "model": "Model",
+    "searchPlaceholder": "Modelleri ara…",
+    "temperatureForCurrentModel": "Geçerli model için sıcaklık",
+    "customFor": "{{model}} için özel",
+    "usingDefault": "Varsayılan {{temperature}} kullanılıyor",
+    "resetToDefault": "Varsayılana dön",
+    "defaultTemperature": "Varsayılan sıcaklık (yedek)",
+    "usedByModelsWithoutOverride": "Kendi ayarı olmayan modeller bunu kullanır",
+    "dangerZone": "Tehlikeli alan",
+    "clearAllChatsAndSettings": "Tüm sohbetleri ve ayarları temizle",
+    "about": "Hakkında",
+    "version": "Sürüm {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Gizlilik Politikası",
+    "hero": {
+      "label": "Özel teklif",
+      "title": "Öncelikli erişim ve limitsiz kullanım",
+      "upgrade": "Yükselt",
+      "manage": "Planı yönet"
+    },
+    "sections": {
+      "premium": "Premium Plan",
+      "data": "Kullanıcı Verisi",
+      "support": "Destek & Hukuki"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Premium al",
+        "subtitle": "Sınırsız oluşturma araçlarının kilidini aç"
+      },
+      "premiumActive": {
+        "title": "Premium aktif",
+        "subtitle": "ChatCloud’u desteklediğin için teşekkürler"
+      },
+      "restore": {
+        "title": "Satın alımları geri yükle",
+        "subtitle": "Cihaz değiştirdiysen kullan"
+      },
+      "history": {
+        "title": "Sohbet geçmişini yönet",
+        "subtitle": "Önceki oturumları gör ve sil"
+      },
+      "reset": {
+        "title": "Sohbetleri ve tercihleri sıfırla",
+        "subtitle": "Bu cihazdaki tüm verileri temizler"
+      },
+      "rate": {
+        "title": "Bizi değerlendir",
+        "error": "Mağaza sayfası açılamadı."
+      },
+      "support": {
+        "title": "Destek",
+        "subtitle": "Bizimle çevrimiçi iletişime geç",
+        "error": "İletişim sayfası açılamadı."
+      },
+      "privacy": {
+        "title": "Gizlilik Politikası",
+        "error": "Gizlilik politikası açılamadı."
+      },
+      "terms": {
+        "title": "Kullanım Şartları",
+        "error": "Kullanım şartları açılamadı."
+      }
+    },
+    "capabilities": {
+      "text": "METİN",
+      "image": "GÖRÜNTÜ",
+      "audio": "SES",
+      "video": "VİDEO"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Kullanılamıyor",
+      "linkUnavailableMessage": "Bu bağlantı şu anda açılamıyor.",
+      "restoreSuccessTitle": "Geri yüklendi",
+      "restoreSuccessMessage": "Satın alımların geri yüklendi.",
+      "restoreErrorTitle": "Geri yükleme başarısız",
+      "restoreErrorMessage": "Satın alımlar şu anda geri yüklenemedi.",
+      "resetConfirmTitle": "Uygulama verileri sıfırlansın mı?",
+      "resetConfirmMessage": "Bu işlem tüm sohbetleri ve yerel tercihleri kaldırır.",
+      "resetConfirmCancel": "İptal",
+      "resetConfirmCta": "Sıfırla"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Oluştur",
+    "chooseStyle": "Bir stil seç",
+    "aspectRatio": "En/Boy oranı",
+    "starterPrompts": {
+      "title": "Başlangıç istemleri",
+      "items": [
+        "stüdyo portresi",
+        "modern oturma odası",
+        "gün batımında tropik sahil"
+      ]
+    },
+    "promptPlaceholder": "Görmek istediğini yaz…",
+    "promptHint": "Örnek: 'Stüdyo ışığında Golden Retriever'",
+    "clearText": "Metni temizle",
+    "generate": "Oluştur",
+    "generating": "Oluşturuluyor…"
+  },
+  "editImage": {
+    "headerTitle": "Düzenle",
+    "chooseStyle": "Bir stil seç",
+    "aspectRatio": "En/Boy oranı",
+    "starterPrompts": {
+      "title": "Başlangıç istemleri",
+      "items": [
+        "ışığı düzelt",
+        "arkaplanı kaldır",
+        "yumuşak portre rötuşu"
+      ]
+    },
+    "promptPlaceholder": "Düzenlemeleri açıkla (isteğe bağlı)",
+    "clearText": "Temizle",
+    "generate": "Uygula",
+    "generating": "Uygulanıyor…",
+    "upload": {
+      "choose": "Fotoğraf seç",
+      "change": "Değiştir",
+      "remove": "Kaldır"
+    },
+    "imageUnavailable": {
+      "title": "Görüntü kullanılamıyor",
+      "message": "Seçilen görüntüye erişilemedi. Lütfen yeniden seçip tekrar dene."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Çizgi film"
+      },
+      "photoreal": {
+        "name": "Foto-gerçekçi"
+      },
+      "sketch": {
+        "name": "Eskiz"
+      },
+      "cyberpunk": {
+        "name": "Siberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3B İllüstrasyon"
+      },
+      "dark_fantasy": {
+        "name": "Karanlık fantezi"
+      },
+      "vintage_film": {
+        "name": "Vintage film"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Neon parıltı"
+      },
+      "epic_landscape": {
+        "name": "Epik manzara"
+      }
+    },
+    "aspectRatios": {
+      "square": "Kare",
+      "landscape": "Yatay",
+      "portrait": "Dikey"
     },
     "models": {
-      "gpt-4o": "En güçlü AI modeli",
-      "gpt-4o-mini": "Günlük işler için hızlı",
-      "claude-3-haiku": "Hızlı ve verimli model",
-      "claude-3.7-sonnet": "Gelişmiş akıl yürütme modeli",
-      "gemini-2.5-pro": "Google'ın en iyi modeli",
-      "gemini-2.0-flash": "Üst düzey akıl yürütmeli hızlı model"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Özel"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Diğer"
+    "modelTaglines": {
+      "runwareFluxSchnell": "En hızlı model",
+      "runwareFluxKrea": "Yaratıcı ve şık sonuçlar",
+      "runwareQwenImage": "Dengeli ve yüksek kaliteli sonuçlar",
+      "google4": "En iyi yapay zeka görüntü modeli",
+      "fluxKontent": "Düzenleme için ayarlanmış Flux Kontent",
+      "runwareProvider": "Kalite ve kararlı difüzyon arasında denge.",
+      "airProvider": "Nano Banana canlı ve neşeli tonlar ekler.",
+      "googleProvider": "Google keskin ayrıntılar için ayarlanmış.",
+      "anthropicProvider": "Claude hattı ince tonlar için.",
+      "default": "Mevcut motorları görmek için dokun."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "seçtiğin stil",
+    "sheetTitle": "Vizyonunu işliyoruz",
+    "sheetSubtitle": "{{style}} stilini istemine harmanlıyoruz.",
+    "phases": {
+      "blend": "{{style}} harmanlanıyor",
+      "paint": "Sahne boyanıyor",
+      "finish": "Son rötuşlar ekleniyor"
     },
-    "navigation": {
-      "chat": "Sohbet",
-      "history": "Geçmiş",
-      "assistants": "Asistanlar",
-      "imagesStudio": "Stüdyo",
-      "settings": "Ayarlar",
-      "recentChats": "Son sohbetler"
-    },
-    "imagesStudio": {
-      "title": "Stüdyo",
-      "selectImages": "Görüntüleri seç",
-      "exitSelectionMode": "Seçim modundan çık",
-      "selectAll": "Tümünü seç",
-      "noImagesYet": "Henüz görüntü yok",
-      "describeImageHint": "Aşağıda görüntüyü açıklayın ve \"Oluştur\"a dokunun.",
-      "generatedImagesGallery": "Oluşturulan görüntüler galerisi",
-      "describeImagePlaceholder": "İstediğiniz görüntüyü açıklayın…",
-      "deleteConfirmTitle": "Görüntüleri sil",
-      "deleteConfirmMessage": "Seçilen görüntüleri silmek istiyor musunuz? Bu işlem geri alınamaz.",
+    "actions": {
       "cancel": "İptal",
-      "delete": "Sil",
-      "generate": "Oluştur",
-      "generating": "Oluşturuluyor…",
-      "latest": "En yeni",
-      "insertToChat": "Sohbete ekle",
-      "pleaseWait": "Lütfen bekleyin…",
-      "processing": "İşleniyor...",
-      "tapToUploadImage": "Görüntü yüklemek için dokunun",
-      "camera": "Kamera",
-      "library": "Galeri",
-      "enterPrompt": "Metinden görüntü üretmek için bir istem girin",
-      "openInBrowser": "Tarayıcıda aç",
-      "makeVariations": "Varyasyonlar oluştur",
-      "deleteAllFromGeneration": "Bu üretimdeki hepsini sil",
-      "imageOptionsTitle": "Görüntü seçenekleri",
-      "imageOptionsMessage": "Bu görüntüyle ne yapmak istersiniz?",
-      "insertMarkdownHeader": "Şu içerik için görüntü:",
-      "variationSuffix": "— önceki görüntünün varyasyonu",
-      "selectedCount": "seçili",
-      "selectedCount_one": "seçili",
-      "selectedCount_other": "seçili",
-      "imageDescriptionInput": "Görüntü açıklama alanı",
-      "imageDescriptionHint": "Oluşturmak istediğiniz görüntünün açıklamasını girin",
-      "openModelSettings": "Model ayarlarını aç",
-      "modelSettingsHint": "Modeli ve ayarları değiştirmek için dokunun",
-      "openPhotoGallery": "Fotoğraf galerisini aç",
-      "clearInput": "Alanı temizle",
-      "generatedImage": "Oluşturulan görüntü",
-      "autoSelectedModel": "{{mode}} modu için {{model}} otomatik seçildi",
-      "deleteSelectedConfirmTitle": "Görüntüleri sil",
-      "deleteSelectedConfirmMessage": "Görüntüleri silmek istiyor musunuz? Bu işlem geri alınamaz."
+      "retry": "Tekrar dene",
+      "close": "Kapat"
     },
-    "imageStudio": {
-      "generateImage": "Görüntü oluştur",
-      "generatingImage": "Görüntü oluşturuluyor",
-      "generateImageHint": "Açıklamanıza göre görüntü oluşturmak için dokunun",
-      "imageDescriptionInput": "Görüntü açıklama alanı",
-      "imageDescriptionHint": "Oluşturmak istediğiniz görüntünün açıklamasını girin",
-      "openModelSettings": "Model ayarlarını aç",
-      "modelSettingsHint": "Modeli ve ayarları değiştirmek için dokunun",
-      "openPhotoGallery": "Fotoğraf galerisini aç",
-      "clearInput": "Alanı temizle",
-      "generatedImage": "Oluşturulan görüntü"
+    "errors": {
+      "restrictedTitle": "Kısıtlı içerik",
+      "genericTitle": "Oluşturma başarısız",
+      "genericMessage": "Görüntü oluşturulamadı."
     },
-    "assistants": {
-      "title": "Asistanlar",
-      "subtitle": "Kodlama, yazma, analiz, planlama ve daha fazlası için seçilmiş AI uzmanları.",
-      "searchPlaceholder": "Asistan ara…",
-      "useAssistant": "Asistanı kullan",
-      "description": "Açıklama",
-      "systemPrompt": "Sistem istemi",
-      "chooseModel": "Model seç",
-      "categoryAll": "Tümü",
-      "categories": {
-        "everyday": "Gündelik",
-        "life": "Yaşam",
-        "health": "Sağlık",
-        "schoolWork": "Okul ve iş",
-        "coding": "Kodlama",
-        "creative": "Yaratıcı",
-        "general": "Genel"
-      },
-      "presets": {
-        "default": { "name": "Varsayılan Asistan", "description": "Günlük işler için dengeli yardım." },
-        "quick": { "name": "Hızlı Yanıtlar", "description": "Kısa ve doğrudan." },
-        "planner": { "name": "Günlük Planlayıcı", "description": "Gününüzü ve rutinleri planlayın." },
-        "recipes": { "name": "Öğünler & Tarifler", "description": "Elinizdekilerle ne pişirilir." },
-        "fitness": { "name": "Alışkanlık & Fitness Koçu", "description": "Küçük alışkanlıklar & ev egzersizleri." },
-        "money": { "name": "Para Dostu", "description": "Basit bütçeler & harcama ipuçları." },
-        "study": { "name": "Çalışma Yardımcısı", "description": "Basitçe açıkla. Beni sınav yap." },
-        "email": { "name": "E-posta & Özgeçmiş", "description": "Net e-postalar ve CV maddeleri yaz." },
-        "translator": { "name": "Çevirmen", "description": "Çeviri + ifade öğretimi." },
-        "travel": { "name": "Seyahat Arkadaşı", "description": "Basit planlar & paket listesi." },
-        "tech": { "name": "Teknik Destek (Basit)", "description": "Telefon, uygulama ve Wi-Fi temelleri." },
-        "summarizer": { "name": "TL;DR Özetleyici", "description": "Kısa maddeler + tek satır özet." },
-        "gift": { "name": "Hediye Bulucu", "description": "Bütçe ve ilgiye göre fikirler." },
-        "party": { "name": "Etkinlik Planlayıcı (Lite)", "description": "Küçük bir partiyi hızla planlayın." },
-        "social": { "name": "Sosyal Gönderi Oluşturucu", "description": "Seçenekli taslaklar." },
-        "interview": { "name": "Mülakat Koçu", "description": "Yanıtları çalış (STAR)." },
-        "homefix": { "name": "Ev Onarım Rehberi", "description": "Basit sorun giderme." },
-        "pet": { "name": "Evcil Hayvan Yardımı", "description": "Besleme, yürüyüş, temel eğitim." },
-        "mindful": { "name": "Farkındalık Dakikası", "description": "1–3 dakikalık sakin molalar." },
-        "polite": { "name": "Kibar Yeniden Yazıcı", "description": "Metinleri ve yanıtları kibarca yeniden yaz." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Kaydedilemedi",
+      "shareFailedTitle": "Paylaşılamadı",
+      "tryAgain": "Lütfen tekrar dene."
     },
-    "history": {
-      "title": "Geçmiş",
-      "searchPlaceholder": "Sohbetlerde ara…",
-      "newChat": "Yeni sohbet",
-      "new": "+ Yeni",
-      "search": "Ara",
-      "clearSearch": "Aramayı temizle",
-      "noChatsYet": "Henüz sohbet yok",
-      "startFirstConversation": "İlk konuşmanı başlat.",
-      "startChat": "Sohbeti başlat",
-      "errorLoadingHistory": "Geçmiş yüklenirken hata oluştu",
-      "renameChat": "Sohbete ad ver",
-      "enterNewTitle": "Yeni bir başlık girin",
-      "deleteChat": "Sohbet silinsin mi?",
-      "deleteChatMessage": "“{{title}}” silinecek.",
-      "rename": "Yeniden adlandır",
-      "unpin": "Sabitlemeyi kaldır",
-      "pin": "Sabitle",
-      "untitled": "Başlıksız"
+    "result": {
+      "complete": "Hepsi tamam"
     },
-    "settings": {
-      "title": "Ayarlar",
-      "model": "Model",
-      "searchPlaceholder": "Modelleri ara…",
-      "temperatureForCurrentModel": "Geçerli model için sıcaklık",
-      "customFor": "{{model}} için özel",
-      "usingDefault": "Varsayılan {{temperature}} kullanılıyor",
-      "resetToDefault": "Varsayılana sıfırla",
-      "defaultTemperature": "Varsayılan sıcaklık (yedek)",
-      "usedByModelsWithoutOverride": "Geçersiz kılınmayan modellerce kullanılır",
-      "dangerZone": "Tehlikeli bölge",
-      "clearAllChatsAndSettings": "Tüm sohbetleri ve ayarları temizle",
-      "about": "Hakkında",
-      "version": "Sürüm {{version}}",
-      "privacyPolicy": "Gizlilik politikası",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Agarka'ya mesaj yaz...",
-      "createImages": "Görüntü oluştur",
-      "generateAiArtwork": "AI sanat eseri üret",
-      "camera": "Kamera",
-      "takeOrSelectPhotos": "Fotoğraf çek veya seç",
-      "search": "Ara",
-      "findInformation": "Bilgi bul",
-      "removeImage": "Görüntüyü kaldır",
-      "messageInput": "Mesaj alanı",
-      "clearInput": "Alanı temizle",
-      "hideQuickActions": "Hızlı işlemleri gizle",
-      "showQuickActions": "Hızlı işlemleri göster",
-      "startVoiceInput": "Sesle yazmayı başlat",
-      "sendMessage": "Gönder",
-      "offline": "Çevrimdışı",
-      "stop": "Durdur",
-      "streaming": "Yayınlanıyor…",
-      "closeRecorder": "Kaydediciyi kapat",
-      "insertTranscript": "Döküm ekle",
-      "scrollToLatest": "En yeni mesaja git",
-      "copyMessage": "Mesajı kopyala",
-      "copyMessageHint": "Bu mesajı panoya kopyala",
-      "shareMessage": "Mesajı paylaş",
-      "shareMessageHint": "Bu mesajı paylaş",
-      "regenerateResponse": "Yanıtı yeniden oluştur",
-      "regenerateResponseHint": "Yeni bir yanıt oluştur",
-      "copyCode": "Kodu kopyala",
-      "image": "görüntü",
-      "loading": "Yükleniyor…",
-      "loadingChat": "Sohbet yükleniyor...",
-      "offlineBanner": "Çevrimdışısınız. Mesaj gönderilemez.",
-      "imagePickerErrorTitle": "Görüntü seçici hatası",
-      "messageTooLong": "Mesaj çok uzun ({{length}}). Sınır {{limit}}.",
-      "emptyTitle": "Nasıl yardımcı olabilirim?",
-      "emptySubtitle": "AI ile bir konuşma başlatın",
-      "privateTitle": "Özel sohbet",
-      "privateSubtitle": "Bu sohbet geçmişinizde görünmez",
-      "listening": "Dinleniyor…",
-      "startRecording": "Kaydı başlat…",
-      "suggestions": {
-        "writeStory": "Yaratıcı bir hikâye yaz",
-        "writeStorySubtitle": "büyülü bir macera hakkında",
-        "planTravel": "Bir gezi planı hazırla",
-        "planTravelSubtitle": "harika bir tatil için",
-        "explainConcept": "Bu kavramı açıkla",
-        "explainConceptSubtitle": "basit ifadelerle",
-        "planDay": "Günümü planla",
-        "planDaySubtitle": "verimlilik ipuçlarıyla"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "İşleniyor...",
-      "tapToUploadImage": "Görüntü yüklemek için dokunun"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "İşleniyor...",
-      "camera": "Kamera",
-      "library": "Galeri"
-    },
-    "common": {
-      "new": "YENİ",
-      "best": "EN İYİ",
-      "cancel": "İptal",
-      "save": "Kaydet",
-      "delete": "Sil",
+    "accessibility": {
       "close": "Kapat"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Sil",
+      "edit": "Düzenle",
+      "save": "Kaydet",
+      "share": "Paylaş"
+    },
+    "accessibility": {
+      "close": "Kapat",
+      "delete": "Görüntüyü sil",
+      "edit": "Görüntüyü düzenle",
+      "save": "Görüntüyü kaydet",
+      "share": "Görüntüyü paylaş"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Menüyü aç",
+      "selectImages": "Görüntüleri seç",
+      "exitSelection": "Seçimden çık",
+      "deleteSelected": "Seçilen görüntüleri sil",
+      "selectToDelete": "Silmek için görüntü seç"
+    },
+    "createCard": {
+      "title": "Metinden oluştur",
+      "subtitle": "Bir açıklama yaz",
+      "cta": "Tarif et ve oluştur"
+    },
+    "editCard": {
+      "title": "Bir fotoğrafı düzenle",
+      "subtitle": "Yükle ve düzenle",
+      "cta": "Fotoğraf düzenle"
+    },
+    "gallery": {
+      "title": "Galeri",
+      "empty": "Henüz görüntü yok",
+      "selection": {
+        "enter": "Görüntüleri seç",
+        "exit": "Seçimden çık",
+        "deleteSelected": "Seçilenleri sil",
+        "selectForDelete": "Silmek için görüntü seç"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Tanış",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Yapay zeka ile görüntü oluştur ve düzenle — doğrudan {{app}} içinde.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Yapay zekanla tanış",
+      "titleHighlight": "Asistanlar",
+      "subtitle": "Günlük ihtiyaçların için hazır özel yapay zeka uzmanları",
+      "cards": [
+        {
+          "title": "Fitness Koçu",
+          "text": "Hedeflerine uygun antrenman ve beslenme planları al"
+        },
+        {
+          "title": "Doktor",
+          "text": "Sağlık içgörüleri, semptom analizi ve rehberlik al"
+        },
+        {
+          "title": "Evcil Dost",
+          "text": "Evcil hayvan sağlığı, eğitim ve bakım tavsiyeleri"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "Kurumsal Düzey Yapay Zeka Çözümleri",
+      "description": "Kurumsal profesyoneller ve ekipler için tasarlanmış ileri yapay zeka teknolojisiyle işini güçlendir.",
+      "stats": "500 binden fazla kullanıcı tarafından güveniliyor",
+      "rating": "4.9 / 5",
+      "button": "Başla"
+    }
+  },
+  "coinStore": {
+    "title": "Jeton Al",
+    "loading": "Jeton mağazası yükleniyor…",
+    "balanceLabel": "Mevcut bakiyen",
+    "balanceValue": "{{amount}} Jeton",
+    "history": {
+      "link": "İşlem Geçmişi",
+      "alertTitle": "Geçmiş",
+      "alertBody": "İşlem geçmişi yakında geliyor."
+    },
+    "noPacks": "Jeton paketi yok. RevenueCat teklif kimliğini kontrol et.",
+    "badges": {
+      "basic": "Temel Paket",
+      "popular": "En Popüler",
+      "value": "En İyi Fiyat"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} Jeton",
+      "defaultName": "Paket {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Premium’a geç",
+      "subtitle": "Sınırsız erişim ve özellikler",
+      "cta": "Yükselt"
+    },
+    "termsText": "Satın alarak şunları kabul etmiş olursun:",
+    "termsLink": "Hizmet Şartları",
+    "alerts": {
+      "initErrorTitle": "Başlatma hatası",
+      "genericMessage": "Bir şeyler ters gitti.",
+      "successTitle": "Başarılı",
+      "successMessage": "Jetonlar birazdan görünecek.",
+      "purchaseFailedTitle": "Satın alma başarısız",
+      "unknownError": "Bilinmeyen hata"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Geri yükle",
+    "restoreRestoring": "Geri yükleniyor…",
+    "features": {
+      "create": "Görüntü ve video oluştur",
+      "search": "Yapay zeka ile web’de ara",
+      "talk": "Yapay zeka ile doğal konuş"
+    },
+    "freeTrial": {
+      "title": "Ücretsiz deneme",
+      "subtitle": "3 günlük ücretsiz deneme"
+    },
+    "badge": {
+      "bestOffer": "En iyi teklif"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Yıllık",
+        "only": "Sadece {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Aylık",
+        "subtitle": "İstediğin zaman iptal et",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Haftalık",
+        "subtitle": "İstediğin zaman iptal et",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "haftada",
+      "perMonth": "ayda"
+    },
+    "cta": "Devam et",
+    "legal": {
+      "terms": "Şartlar",
+      "privacy": "Gizlilik"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mesaj...",
+    "createImages": "Görüntü Oluştur",
+    "generateAiArtwork": "Yapay zeka sanatı oluştur",
+    "camera": "Kamera",
+    "takeOrSelectPhotos": "Fotoğraf çek veya seç",
+    "search": "Ara",
+    "findInformation": "Bilgi bul",
+    "findRecentInfo": "Güncel bilgi bul",
+    "removeImage": "Görüntüyü kaldır",
+    "messageInput": "Mesaj girişi",
+    "clearInput": "Girdiyi temizle",
+    "quickActionsLabel": "Hızlı işlemler",
+    "hideQuickActions": "Hızlı işlemleri gizle",
+    "showQuickActions": "Hızlı işlemleri göster",
+    "startVoiceInput": "Sesli giriş başlat",
+    "sendMessage": "Mesaj gönder",
+    "offline": "Çevrimdışı",
+    "stop": "Durdur",
+    "streaming": "Yayınlanıyor…",
+    "closeRecorder": "Kaydediciyi kapat",
+    "insertTranscript": "Gönder",
+    "scrollToLatest": "En sona git",
+    "copyMessage": "Mesajı kopyala",
+    "copyMessageHint": "Bu mesajı panoya kopyala",
+    "shareMessage": "Mesajı paylaş",
+    "shareMessageHint": "Bu mesajı paylaş",
+    "regenerateResponse": "Yanıtı yeniden üret",
+    "regenerateResponseHint": "Yeni bir yanıt üret",
+    "copyCode": "Kodu kopyala",
+    "image": "görüntü",
+    "loading": "Yükleniyor…",
+    "loadingChat": "Sohbet yükleniyor...",
+    "offlineBanner": "Çevrimdışısın. Mesajlar gönderilemiyor.",
+    "imagePickerErrorTitle": "Görüntü seçici hatası",
+    "imagePickerErrorMessage": "Fotoğraflarına erişilemedi. Lütfen tekrar dene.",
+    "messageTooLong": "Mesaj çok uzun ({{length}}). Sınır {{limit}}.",
+    "sendFailed": "Gönderilemedi.",
+    "voiceStartFailed": "Sesli giriş başlatılamadı.",
+    "emptyTitle": "Nasıl yardımcı olabilirim?",
+    "emptySubtitle": "Yapay zeka ile bir sohbet başlat",
+    "privateTitle": "Özel Sohbet",
+    "privateSubtitle": "Bu sohbet sohbet geçmişinde görünmeyecek",
+    "permissions": {
+      "photosTitle": "Fotoğraflar için izin gerekli",
+      "photosMessage": "Görüntü seçmek için fotoğraf erişimi gerekli.",
+      "voiceTitle": "Ses izni gerekli",
+      "voiceMessage": "Ses kullanmak için mikrofon gerekli."
+    },
+    "activity": {
+      "analyzingImages": "Görüntüler analiz ediliyor…",
+      "searching": "Aranıyor…",
+      "thinking": "Düşünüyor…"
+    },
+    "webSearch": {
+      "title": "Web araması",
+      "subtitle": "Güncel bilgi bul",
+      "label": "Web Araması",
+      "enable": "Web aramasını etkinleştir",
+      "disable": "Web aramasını devre dışı bırak",
+      "toggleLabel": "Web’de ara"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Görselleri hızlıca tasarla.",
+      "subtitle": "Tek yerde üret, iyileştir ve yayımla.",
+      "cta": "Aç"
+    },
+    "quickActions": {
+      "createImages": "Görüntü Oluştur",
+      "openCamera": "Kamerayı aç",
+      "editImage": "Görüntüyü düzenle",
+      "startVoice": "Sesi başlat",
+      "assistants": "Asistanlar"
+    },
+    "listening": "Dinleniyor…",
+    "startRecording": "Kaydediliyor…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistan kullanılamıyor",
+      "unavailableDescription": "Bu asistan yüklenemedi. Lütfen tekrar dene.",
+      "ready": "Yardım etmeye hazır"
+    },
+    "actions": {
+      "copy": "Kopyala",
+      "share": "Paylaş",
+      "regenerate": "Yeniden üret",
+      "retryFromHere": "Buradan tekrar dene",
+      "cancel": "İptal"
+    },
+    "messageActionTitle": "Mesaj",
+    "status": {
+      "sending": "Gönderiliyor…",
+      "failed": "Başarısız",
+      "sent": "Gönderildi"
+    },
+    "suggestions": {
+      "writeStory": "Yaratıcı bir hikâye yaz",
+      "writeStorySubtitle": "büyülü bir macera hakkında",
+      "planTravel": "Seyahat planı oluştur",
+      "planTravelSubtitle": "harika bir tatil için",
+      "explainConcept": "Bu kavramı açıkla",
+      "explainConceptSubtitle": "basit bir dille",
+      "planDay": "Günümü planla",
+      "planDaySubtitle": "verimlilik ipuçlarıyla"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "İşleniyor...",
+    "tapToUploadImage": "Görüntü yüklemek için dokun"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "İşleniyor...",
+    "camera": "Kamera",
+    "library": "Galeri"
+  },
+  "common": {
+    "new": "YENİ",
+    "best": "EN İYİ",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "delete": "Sil",
+    "close": "Kapat",
+    "allow": "İzin ver"
   }
-  
+}

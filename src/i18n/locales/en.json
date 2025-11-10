@@ -16,10 +16,17 @@
   "models": {
     "gpt-4o": "Most powerful AI model",
     "gpt-4o-mini": "Fast for everyday tasks",
-    "claude-3-haiku": "Fast and efficient model",
-    "claude-3.7-sonnet": "Advanced reasoning model",
-    "gemini-2.5-pro": "Google's best model",
-    "gemini-2.0-flash": "Fast model with great reasoning"
+    "gpt-5": "Most powerful all-purpose AI",
+    "gpt-5-chat-latest": "Optimized for chat and dialogue",
+    "gpt-5-mini": "Fast and reliable GPT-5",
+    "gpt-5-nano": "Light model for simple tasks",
+    "o4-mini": "Efficient reasoning model",
+    "gpt-4.1-mini": "Compact, capable GPT-4.1",
+    "claude-3-haiku": "Fast and focused Anthropic AI",
+    "claude-3.7-sonnet": "Refined reasoning by Anthropic",
+    "gemini-2.5-Flash": "Google's most advanced model",
+    "gemini-2.5-flash": "Google's most advanced model",
+    "gemini-2.0-flash": "Quick and precise Google AI"
   },
   "providers": {
     "openai": "OpenAI",
@@ -32,18 +39,18 @@
     "chat": "New Chat",
     "history": "History",
     "assistants": "Assistants",
-    "imagesStudio": "Studio",
+    "imagesStudio": "Image Studio",
     "settings": "Settings",
     "recentChats": "Recent Chats"
   },
-  "drawerStudioBanner": {
-    "label": "Studio",
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
     "title": "Image Studio",
     "subtitle": "Generate, refine, and publish visual assets in one place.",
     "cta": "Open"
   },
   "imagesStudio": {
-    "title": "Studio",
+    "title": "Image Studio",
     "selectImages": "Select images",
     "exitSelectionMode": "Exit selection mode",
     "selectAll": "Select All",
@@ -103,6 +110,7 @@
     "subtitle": "Curated AI specialists ready for coding, writing, analysis, planning, and more.",
     "searchPlaceholder": "Search assistants…",
     "useAssistant": "Use Assistant",
+    "selectAssistant": "Choose assistant",
     "description": "Description",
     "systemPrompt": "System Prompt",
     "chooseModel": "Choose Model",
@@ -117,26 +125,86 @@
       "general": "General"
     },
     "presets": {
-      "default": { "name": "Default Assistant", "description": "Balanced help for daily stuff." },
-      "quick": { "name": "Quick Answers", "description": "Short, direct answers." },
-      "planner": { "name": "Daily Planner", "description": "Plan your day and routines." },
-      "recipes": { "name": "Meals & Recipes", "description": "What to cook, with what you have." },
-      "fitness": { "name": "Habit & Fitness Coach", "description": "Tiny habits & home workouts." },
-      "money": { "name": "Money Buddy", "description": "Simple budgets & spending tips." },
-      "study": { "name": "Study Helper", "description": "Explain simply. Quiz me." },
-      "email": { "name": "Email & Resume", "description": "Write clear emails and CV lines." },
-      "translator": { "name": "Translator", "description": "Translate + teach phrases." },
-      "travel": { "name": "Travel Buddy", "description": "Simple plans & packing lists." },
-      "tech": { "name": "Tech Support (Simple)", "description": "Phone, apps, Wi-Fi basics." },
-      "summarizer": { "name": "TL;DR Summarizer", "description": "Short bullets + one-line TL;DR." },
-      "gift": { "name": "Gift Finder", "description": "Ideas by budget & interests." },
-      "party": { "name": "Event Planner (Lite)", "description": "Plan a small party fast." },
-      "social": { "name": "Social Post Maker", "description": "Draft posts with options." },
-      "interview": { "name": "Interview Coach", "description": "Practice answers (STAR)." },
-      "homefix": { "name": "Home Fix-It Guide", "description": "Simple DIY troubleshooting." },
-      "pet": { "name": "Pet Care Buddy", "description": "Feeding, walks, basic training." },
-      "mindful": { "name": "Mindful Minute", "description": "1–3 min calm breaks." },
-      "polite": { "name": "Polite Rewriter", "description": "Rewrite texts & replies nicely." }
+      "default": {
+        "name": "Default Assistant",
+        "description": "Balanced help for daily stuff."
+      },
+      "quick": {
+        "name": "Quick Answers",
+        "description": "Short, direct answers."
+      },
+      "planner": {
+        "name": "Daily Planner",
+        "description": "Plan your day and routines."
+      },
+      "recipes": {
+        "name": "Meals & Recipes",
+        "description": "What to cook, with what you have."
+      },
+      "fitness": {
+        "name": "Habit & Fitness Coach",
+        "description": "Tiny habits & home workouts."
+      },
+      "money": {
+        "name": "Money Buddy",
+        "description": "Simple budgets & spending tips."
+      },
+      "study": {
+        "name": "Study Helper",
+        "description": "Explain simply. Quiz me."
+      },
+      "email": {
+        "name": "Email & Resume",
+        "description": "Write clear emails and CV lines."
+      },
+      "translator": {
+        "name": "Translator",
+        "description": "Translate + teach phrases."
+      },
+      "travel": {
+        "name": "Travel Buddy",
+        "description": "Simple plans & packing lists."
+      },
+      "tech": {
+        "name": "Tech Support (Simple)",
+        "description": "Phone, apps, Wi-Fi basics."
+      },
+      "summarizer": {
+        "name": "TL;DR Summarizer",
+        "description": "Short bullets + one-line TL;DR."
+      },
+      "gift": {
+        "name": "Gift Finder",
+        "description": "Ideas by budget & interests."
+      },
+      "party": {
+        "name": "Event Planner (Lite)",
+        "description": "Plan a small party fast."
+      },
+      "social": {
+        "name": "Social Post Maker",
+        "description": "Draft posts with options."
+      },
+      "interview": {
+        "name": "Interview Coach",
+        "description": "Practice answers (STAR)."
+      },
+      "homefix": {
+        "name": "Home Fix-It Guide",
+        "description": "Simple DIY troubleshooting."
+      },
+      "pet": {
+        "name": "Pet Care Buddy",
+        "description": "Feeding, walks, basic training."
+      },
+      "mindful": {
+        "name": "Mindful Minute",
+        "description": "1–3 min calm breaks."
+      },
+      "polite": {
+        "name": "Polite Rewriter",
+        "description": "Rewrite texts & replies nicely."
+      }
     }
   },
   "history": {
@@ -172,26 +240,388 @@
     "dangerZone": "Danger zone",
     "clearAllChatsAndSettings": "Clear all chats & settings",
     "about": "About",
-    "version": "Version {{version}}",
+    "version": "Version {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
     "privacyPolicy": "Privacy Policy",
+    "hero": {
+      "label": "Special offer",
+      "title": "Priority access & no limits",
+      "upgrade": "Upgrade",
+      "manage": "Manage plan"
+    },
+    "sections": {
+      "premium": "Premium Plan",
+      "data": "User Data",
+      "support": "Support & Legal"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Get Premium",
+        "subtitle": "Unlock unlimited creation tools"
+      },
+      "premiumActive": {
+        "title": "Premium Active",
+        "subtitle": "Thanks for supporting ChatCloud"
+      },
+      "restore": {
+        "title": "Restore purchases",
+        "subtitle": "Use if you switched devices"
+      },
+      "history": {
+        "title": "Manage chat history",
+        "subtitle": "View and delete your past sessions"
+      },
+      "reset": {
+        "title": "Reset chats & preferences",
+        "subtitle": "Clears all stored data on this device"
+      },
+      "rate": {
+        "title": "Rate us",
+        "error": "Unable to open the store page."
+      },
+      "support": {
+        "title": "Support",
+        "subtitle": "Contact us online",
+        "error": "Unable to open contact page."
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "error": "Unable to open the privacy policy."
+      },
+      "terms": {
+        "title": "Terms of Use",
+        "error": "Unable to open the terms of use."
+      }
+    },
     "capabilities": {
       "text": "TXT",
       "image": "IMG",
       "audio": "AUD",
       "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Unavailable",
+      "linkUnavailableMessage": "Unable to open this link right now.",
+      "restoreSuccessTitle": "Restored",
+      "restoreSuccessMessage": "Your purchases have been restored.",
+      "restoreErrorTitle": "Restore failed",
+      "restoreErrorMessage": "Unable to restore purchases right now.",
+      "resetConfirmTitle": "Reset app data?",
+      "resetConfirmMessage": "This removes all chats and local preferences.",
+      "resetConfirmCancel": "Cancel",
+      "resetConfirmCta": "Reset"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Create",
+    "chooseStyle": "Choose a Style",
+    "aspectRatio": "Aspect Ratio",
+    "starterPrompts": {
+      "title": "Starter Prompts",
+      "items": [
+        "studio headshot",
+        "modern living room",
+        "tropical beach at sunset"
+      ]
+    },
+    "promptPlaceholder": "Type what you want to see…",
+    "promptHint": "Example: 'Golden retriever in studio lighting'",
+    "clearText": "Clear text",
+    "generate": "Generate",
+    "generating": "Generating…"
+  },
+  "editImage": {
+    "headerTitle": "Edit",
+    "chooseStyle": "Choose a Style",
+    "aspectRatio": "Aspect Ratio",
+    "starterPrompts": {
+      "title": "Starter Prompts",
+      "items": [
+        "fix lighting",
+        "remove background",
+        "soft portrait retouch"
+      ]
+    },
+    "promptPlaceholder": "Describe edits (optional)",
+    "clearText": "Clear text",
+    "generate": "Generate",
+    "generating": "Applying…",
+    "upload": {
+      "choose": "Choose Photo",
+      "change": "Change",
+      "remove": "Remove"
+    },
+    "imageUnavailable": {
+      "title": "Image unavailable",
+      "message": "Could not access the selected photo. Please reselect it and try again."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Cartoon"
+      },
+      "photoreal": {
+        "name": "Photoreal"
+      },
+      "sketch": {
+        "name": "Sketch"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D Illustration"
+      },
+      "dark_fantasy": {
+        "name": "Dark Fantasy"
+      },
+      "vintage_film": {
+        "name": "Vintage Film"
+      },
+      "pastel": {
+        "name": "Pastel Aesthetic"
+      },
+      "neon_glow": {
+        "name": "Neon Glow"
+      },
+      "epic_landscape": {
+        "name": "Epic Landscape"
+      }
+    },
+    "aspectRatios": {
+      "square": "Square",
+      "landscape": "Landscape",
+      "portrait": "Portrait"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Custom"
+    },
+    "modelTaglines": {
+      "runwareFluxSchnell": "Fastest model",
+      "runwareFluxKrea": "Creative, stylized results",
+      "runwareQwenImage": "Balanced, high-quality results",
+      "google4": "Best AI image model",
+      "fluxKontent": "Flux Kontent tuned for edits",
+      "runwareProvider": "Balanced quality with reliable diffusion.",
+      "airProvider": "Nano Banana adds playful, vivid tone.",
+      "googleProvider": "Google tuned for polished details.",
+      "anthropicProvider": "Claude pipeline for nuanced moods.",
+      "default": "Tap to explore available engines."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "your chosen style",
+    "sheetTitle": "Crafting your vision",
+    "sheetSubtitle": "Brief sip of server coffee while we blend {{style}} into the prompt.",
+    "phases": {
+      "blend": "Blending in {{style}}",
+      "paint": "Painting the scene",
+      "finish": "Adding final polish"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "retry": "Retry",
+      "close": "Close"
+    },
+    "errors": {
+      "restrictedTitle": "Restricted Content",
+      "genericTitle": "Generation failed",
+      "genericMessage": "Could not generate image."
+    },
+    "alerts": {
+      "saveFailedTitle": "Could not save",
+      "shareFailedTitle": "Could not share",
+      "tryAgain": "Please try again."
+    },
+    "result": {
+      "complete": "All finished"
+    },
+    "accessibility": {
+      "close": "Close"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Delete",
+      "edit": "Edit",
+      "save": "Save",
+      "share": "Share"
+    },
+    "accessibility": {
+      "close": "Close",
+      "delete": "Delete image",
+      "edit": "Edit image",
+      "save": "Save image",
+      "share": "Share image"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Open menu",
+      "selectImages": "Select images",
+      "exitSelection": "Exit selection",
+      "deleteSelected": "Delete selected images",
+      "selectToDelete": "Select images to delete"
+    },
+    "createCard": {
+      "title": "Create from Text",
+      "subtitle": "Type a description",
+      "cta": "Describe & Generate"
+    },
+    "editCard": {
+      "title": "Edit a Photo",
+      "subtitle": "Upload & edit",
+      "cta": "Edit a Photo"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "empty": "No images yet",
+      "selection": {
+        "enter": "Select images",
+        "exit": "Exit selection",
+        "deleteSelected": "Delete selected images",
+        "selectForDelete": "Select images to delete"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Meet",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Create & edit images with AI—right inside {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Meet Your AI",
+      "titleHighlight": "Assistants",
+      "subtitle": "Specialized AI experts ready to help with your daily needs",
+      "cards": [
+        {
+          "title": "Fitness Coach",
+          "text": "Get personalized workout plans and nutrition advice tailored to your goals"
+        },
+        {
+          "title": "Doctor",
+          "text": "Get health insights, symptom analysis, and medical guidance when you need it"
+        },
+        {
+          "title": "Pet Care",
+          "text": "Expert advice on pet health, training, and care for your furry friends"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "ENTERPRISE-GRADE AI SOLUTIONS",
+      "description": "Empower your business with cutting-edge artificial intelligence technology designed for enterprise professionals and teams.",
+      "stats": "Trusted by 500k+ users",
+      "rating": "4.9 / 5",
+      "button": "Get Started"
+    }
+  },
+  "coinStore": {
+    "title": "Get Tokens",
+    "loading": "Loading coin store…",
+    "balanceLabel": "Your current balance is",
+    "balanceValue": "{{amount}} Tokens",
+    "history": {
+      "link": "Transaction History",
+      "alertTitle": "History",
+      "alertBody": "Transaction history is coming soon."
+    },
+    "noPacks": "No coin packs available. Check your RevenueCat offering id.",
+    "badges": {
+      "basic": "Basic Pack",
+      "popular": "Most Popular",
+      "value": "Best Value"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} Tokens",
+      "defaultName": "Pack {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Go Premium",
+      "subtitle": "Unlimited access & features",
+      "cta": "Upgrade"
+    },
+    "termsText": "By making a purchase, you agree to our",
+    "termsLink": "Terms of Service",
+    "alerts": {
+      "initErrorTitle": "Init error",
+      "genericMessage": "Something went wrong.",
+      "successTitle": "Success",
+      "successMessage": "Coins will appear shortly.",
+      "purchaseFailedTitle": "Purchase failed",
+      "unknownError": "Unknown error"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Restore",
+    "restoreRestoring": "Restoring…",
+    "features": {
+      "create": "Create images and videos",
+      "search": "Search the web with AI",
+      "talk": "Talk naturally to AI"
+    },
+    "freeTrial": {
+      "title": "Free trial",
+      "subtitle": "3-day free trial"
+    },
+    "badge": {
+      "bestOffer": "Best offer"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Yearly",
+        "only": "Only {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Monthly",
+        "subtitle": "Cancel anytime",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Weekly",
+        "subtitle": "Cancel anytime",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "per week",
+      "perMonth": "per month"
+    },
+    "cta": "Continue",
+    "legal": {
+      "terms": "Terms",
+      "privacy": "Privacy"
     }
   },
   "chat": {
-    "messagePlaceholder": "Message Agarka...",
+    "messagePlaceholder": "Message...",
     "createImages": "Create Images",
     "generateAiArtwork": "Generate AI artwork",
     "camera": "Camera",
     "takeOrSelectPhotos": "Take or select photos",
     "search": "Search",
     "findInformation": "Find information",
+    "findRecentInfo": "Find recent info",
     "removeImage": "Remove image",
     "messageInput": "Message input",
     "clearInput": "Clear input",
+    "quickActionsLabel": "Quick actions",
     "hideQuickActions": "Hide quick actions",
     "showQuickActions": "Show quick actions",
     "startVoiceInput": "Start voice input",
@@ -200,7 +630,7 @@
     "stop": "Stop",
     "streaming": "Streaming…",
     "closeRecorder": "Close recorder",
-    "insertTranscript": "Insert transcript",
+    "insertTranscript": "Send",
     "scrollToLatest": "Scroll to latest message",
     "copyMessage": "Copy message",
     "copyMessageHint": "Copy this message to clipboard",
@@ -214,24 +644,66 @@
     "loadingChat": "Loading chat...",
     "offlineBanner": "You're offline. Messages can't be sent.",
     "imagePickerErrorTitle": "Image picker error",
+    "imagePickerErrorMessage": "Unable to access your photos. Please try again.",
     "messageTooLong": "Message too long ({{length}}). Limit is {{limit}}.",
+    "sendFailed": "Failed to send.",
+    "voiceStartFailed": "Could not start voice.",
     "emptyTitle": "How can I help?",
     "emptySubtitle": "Start a conversation with AI",
     "privateTitle": "Private Chat",
     "privateSubtitle": "This chat will not appear in your chat history",
+    "permissions": {
+      "photosTitle": "Photos Permission Needed",
+      "photosMessage": "Photo access is required to choose images.",
+      "voiceTitle": "Voice Permissions Needed",
+      "voiceMessage": "Microphone and speech access is required to use voice."
+    },
+    "activity": {
+      "analyzingImages": "Analyzing images…",
+      "searching": "Searching…",
+      "thinking": "Thinking…"
+    },
+    "webSearch": {
+      "title": "Web search",
+      "subtitle": "Find recent info",
+      "label": "Web Search",
+      "enable": "Enable web search",
+      "disable": "Disable web search",
+      "toggleLabel": "Search the web"
+    },
     "studioBanner": {
       "label": "Image Studio",
       "title": "Design visuals at speed.",
-      "open": "Open"
+      "subtitle": "Generate, refine, and publish visual assets in one place.",
+      "cta": "Open"
     },
     "quickActions": {
       "createImages": "Create Images",
       "openCamera": "Open Camera",
       "editImage": "Edit Image",
-      "startVoice": "Start Voice"
+      "startVoice": "Start Voice",
+      "assistants": "Assistants"
     },
     "listening": "Listening…",
     "startRecording": "Start recording…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistant unavailable",
+      "unavailableDescription": "We couldn’t load this assistant. Please try again.",
+      "ready": "Ready to assist"
+    },
+    "actions": {
+      "copy": "Copy",
+      "share": "Share",
+      "regenerate": "Regenerate",
+      "retryFromHere": "Retry from here",
+      "cancel": "Cancel"
+    },
+    "messageActionTitle": "Message",
+    "status": {
+      "sending": "Sending…",
+      "failed": "Failed",
+      "sent": "Sent"
+    },
     "suggestions": {
       "writeStory": "Write a creative story",
       "writeStorySubtitle": "about a magical adventure",
@@ -260,6 +732,7 @@
     "cancel": "Cancel",
     "save": "Save",
     "delete": "Delete",
-    "close": "Close"
+    "close": "Close",
+    "allow": "Allow"
   }
 }

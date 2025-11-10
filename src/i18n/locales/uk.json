@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Виберіть модель",
-      "searchPlaceholder": "Пошук моделей...",
-      "noModelsFound": "Моделі не знайдені",
-      "noModelsAvailable": "Немає доступних моделей",
-      "currentModel": "Поточна модель: {{name}}. Торкніться, щоб змінити.",
-      "openHint": "Відкриває меню вибору моделі",
-      "closeLabel": "Закрити вибір моделі",
-      "searchLabel": "Пошук моделей",
-      "searchHint": "Вводьте, щоб фільтрувати моделі",
-      "modelLabel": "Модель {{name}}",
-      "selectHint": "Вибрати {{name}}",
-      "currentlySelected": "Поточна вибрана модель"
+  "modelSelector": {
+    "title": "Виберіть модель",
+    "searchPlaceholder": "Пошук моделей...",
+    "noModelsFound": "Моделі не знайдено",
+    "noModelsAvailable": "Немає доступних моделей",
+    "currentModel": "Поточна модель: {{name}}. Натисніть, щоб змінити.",
+    "openHint": "Відкриває меню вибору моделі",
+    "closeLabel": "Закрити вибір моделі",
+    "searchLabel": "Пошук моделей",
+    "searchHint": "Введіть текст для фільтрації моделей",
+    "modelLabel": "Модель {{name}}",
+    "selectHint": "Виберіть модель {{name}}",
+    "currentlySelected": "Зараз обрана"
+  },
+  "models": {
+    "gpt-4o": "Найпотужніша модель ШІ",
+    "gpt-4o-mini": "Швидка для повсякденних завдань",
+    "gpt-5": "Найпотужніша універсальна ШІ",
+    "gpt-5-chat-latest": "Оптимізована для чату та діалогу",
+    "gpt-5-mini": "Швидкий і надійний GPT-5",
+    "gpt-5-nano": "Легка модель для простих задач",
+    "o4-mini": "Ефективна модель мислення",
+    "gpt-4.1-mini": "Компактний і здатний GPT-4.1",
+    "claude-3-haiku": "Швидка та зосереджена Anthropic ШІ",
+    "claude-3.7-sonnet": "Вдосконалене мислення від Anthropic",
+    "gemini-2.5-Flash": "Найбільш просунута модель Google",
+    "gemini-2.5-flash": "Найбільш просунута модель Google",
+    "gemini-2.0-flash": "Швидка і точна Google ШІ"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Інше"
+  },
+  "navigation": {
+    "chat": "Новий чат",
+    "history": "Історія",
+    "assistants": "Асистенти",
+    "imagesStudio": "Image Studio",
+    "settings": "Налаштування",
+    "recentChats": "Останні чати"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Генеруйте, доопрацьовуйте та публікуйте візуальні активи в одному місці.",
+    "cta": "Відкрити"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Вибрати зображення",
+    "exitSelectionMode": "Вийти з режиму вибору",
+    "selectAll": "Вибрати все",
+    "noImagesYet": "Поки немає зображень",
+    "describeImageHint": "Опишіть своє зображення нижче і натисніть Генерувати.",
+    "generatedImagesGallery": "Галерея згенерованих зображень",
+    "describeImagePlaceholder": "Опишіть зображення, яке хочете…",
+    "deleteConfirmTitle": "Видалити зображення",
+    "deleteConfirmMessage": "Ви впевнені, що хочете видалити обрані зображення? Цю дію не можна скасувати.",
+    "cancel": "Скасувати",
+    "delete": "Видалити",
+    "generate": "Генерувати",
+    "generating": "Генерую…",
+    "latest": "Останні",
+    "insertToChat": "Вставити в чат",
+    "pleaseWait": "Будь ласка, зачекайте…",
+    "processing": "Обробка...",
+    "tapToUploadImage": "Натисніть, щоб завантажити зображення",
+    "camera": "Камера",
+    "library": "Бібліотека",
+    "enterPrompt": "Введіть підказку для генерації зображення з тексту",
+    "openInBrowser": "Відкрити в браузері",
+    "makeVariations": "Створити варіації",
+    "deleteAllFromGeneration": "Видалити все з цієї генерації",
+    "imageOptionsTitle": "Параметри зображення",
+    "imageOptionsMessage": "Що ви хочете зробити з цим зображенням?",
+    "insertMarkdownHeader": "Ось зображення для:",
+    "variationSuffix": "— варіант попереднього зображення",
+    "selectedCount": "обрано",
+    "selectedCount_one": "обрано",
+    "selectedCount_other": "обрано",
+    "imageDescriptionInput": "Поле опису зображення",
+    "imageDescriptionHint": "Введіть опис зображення, яке хочете згенерувати",
+    "openModelSettings": "Відкрити налаштування моделі",
+    "modelSettingsHint": "Натисніть, щоб змінити модель і налаштування",
+    "openPhotoGallery": "Відкрити фотогалерею",
+    "clearInput": "Очистити",
+    "generatedImage": "Згенероване зображення",
+    "autoSelectedModel": "Автоматично обрана {{model}} для режиму {{mode}}",
+    "deleteSelectedConfirmTitle": "Видалити зображення",
+    "deleteSelectedConfirmMessage": "Ви впевнені, що хочете видалити зображення? Цю дію не можна скасувати."
+  },
+  "imageStudio": {
+    "generateImage": "Генерувати зображення",
+    "generatingImage": "Генерую зображення",
+    "generateImageHint": "Натисніть, щоб згенерувати зображення за описом",
+    "imageDescriptionInput": "Поле опису зображення",
+    "imageDescriptionHint": "Введіть опис зображення, яке хочете згенерувати",
+    "openModelSettings": "Відкрити налаштування моделі",
+    "modelSettingsHint": "Натисніть, щоб змінити модель і налаштування",
+    "openPhotoGallery": "Відкрити галерею фоток",
+    "clearInput": "Очистити",
+    "generatedImage": "Згенероване зображення"
+  },
+  "assistants": {
+    "title": "Асистенти",
+    "subtitle": "Кураторовані спеціалісти AI для кодування, письма, аналізу, планування і більше.",
+    "searchPlaceholder": "Шукати асистентів…",
+    "useAssistant": "Використати асистента",
+    "selectAssistant": "Вибрати асистента",
+    "description": "Опис",
+    "systemPrompt": "Системний промпт",
+    "chooseModel": "Вибрати модель",
+    "categoryAll": "Усі",
+    "categories": {
+      "everyday": "Щоденні",
+      "life": "Життя",
+      "health": "Здоров'я",
+      "schoolWork": "Школа & робота",
+      "coding": "Кодування",
+      "creative": "Креативне",
+      "general": "Загальне"
+    },
+    "presets": {
+      "default": {
+        "name": "Стандартний асистент",
+        "description": "Збалансована допомога для щоденних задач."
+      },
+      "quick": {
+        "name": "Швидкі відповіді",
+        "description": "Короткі, прямі відповіді."
+      },
+      "planner": {
+        "name": "Планувальник дня",
+        "description": "Плануйте свій день і рутини."
+      },
+      "recipes": {
+        "name": "Страви та рецепти",
+        "description": "Що приготувати з того, що маєте?"
+      },
+      "fitness": {
+        "name": "Тренер звичок і фітнесу",
+        "description": "Малі звички і домашній тренінг."
+      },
+      "money": {
+        "name": "Фінансовий помічник",
+        "description": "Прості бюджети і поради щодо витрат."
+      },
+      "study": {
+        "name": "Допомога у навчанні",
+        "description": "Пояснює просто. Перевірить знання."
+      },
+      "email": {
+        "name": "Е-пошта & резюме",
+        "description": "Напишіть чіткі листи і рядки резюме."
+      },
+      "translator": {
+        "name": "Перекладач",
+        "description": "Перекладіть й навчіться фразам."
+      },
+      "travel": {
+        "name": "Супутник подорожей",
+        "description": "Прості плани та пакувальні списки."
+      },
+      "tech": {
+        "name": "Технічна підтримка (проста)",
+        "description": "Телефон, додатки, Wi-Fi базово."
+      },
+      "summarizer": {
+        "name": "Резюме TL;DR",
+        "description": "Короткі пункти + одне речення."
+      },
+      "gift": {
+        "name": "Підбір подарунка",
+        "description": "Ідеї за бюджетом та інтересами."
+      },
+      "party": {
+        "name": "Планувальник заходів (Lite)",
+        "description": "Швидко сплануйте невелику вечірку."
+      },
+      "social": {
+        "name": "Творець постів",
+        "description": "Чернетки постів з варіантами."
+      },
+      "interview": {
+        "name": "Коуч з інтерв’ю",
+        "description": "Тренуйте відповіді (STAR)."
+      },
+      "homefix": {
+        "name": "Домашній фікс-гід",
+        "description": "Просте DIY-вирішення."
+      },
+      "pet": {
+        "name": "Догляд за тваринами",
+        "description": "Годування, прогулянки, базове навчання."
+      },
+      "mindful": {
+        "name": "Усвідомлена хвилинка",
+        "description": "1–3 хвилини спокою."
+      },
+      "polite": {
+        "name": "Ввічливий переписувач",
+        "description": "Перепиши тексти і відповіді ввічливіше."
+      }
+    }
+  },
+  "history": {
+    "title": "Історія",
+    "searchPlaceholder": "Пошук чатів…",
+    "newChat": "Новий чат",
+    "new": "+ Новий",
+    "search": "Пошук",
+    "clearSearch": "Очистити пошук",
+    "noChatsYet": "Ще немає чатів",
+    "startFirstConversation": "Розпочніть свою першу розмову.",
+    "startChat": "Почати чат",
+    "errorLoadingHistory": "Помилка завантаження історії",
+    "renameChat": "Перейменувати чат",
+    "enterNewTitle": "Введіть нову назву",
+    "deleteChat": "Видалити чат?",
+    "deleteChatMessage": "«{{title}}» буде видалено.",
+    "rename": "Перейменувати",
+    "unpin": "Відкріпити",
+    "pin": "Закріпити",
+    "untitled": "Без назви"
+  },
+  "settings": {
+    "title": "Налаштування",
+    "model": "Модель",
+    "searchPlaceholder": "Пошук моделей…",
+    "temperatureForCurrentModel": "Температура для поточної моделі",
+    "customFor": "Індивідуально для {{model}}",
+    "usingDefault": "Використовується за замовчуванням {{temperature}}",
+    "resetToDefault": "Скинути до стандарту",
+    "defaultTemperature": "Стандартна температура (резерв)",
+    "usedByModelsWithoutOverride": "Використовується моделями без власних налаштувань",
+    "dangerZone": "Небезпечна зона",
+    "clearAllChatsAndSettings": "Очистити всі чати та налаштування",
+    "about": "Про",
+    "version": "Версія {{version}}{{status}}",
+    "versionPremiumSuffix": " · Преміум",
+    "privacyPolicy": "Політика конфіденційності",
+    "hero": {
+      "label": "Спеціальна пропозиція",
+      "title": "Пріоритетний доступ і без лімітів",
+      "upgrade": "Покращити",
+      "manage": "Керувати планом"
+    },
+    "sections": {
+      "premium": "Преміум-план",
+      "data": "Дані користувача",
+      "support": "Підтримка та правова"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Отримати Преміум",
+        "subtitle": "Відкрийте неообмежені інструменти створення"
+      },
+      "premiumActive": {
+        "title": "Преміум активний",
+        "subtitle": "Дякуємо за підтримку ChatCloud"
+      },
+      "restore": {
+        "title": "Відновити покупки",
+        "subtitle": "Використайте, якщо змінили пристрій"
+      },
+      "history": {
+        "title": "Керування історією чатів",
+        "subtitle": "Перегляд та видалення минулих сесій"
+      },
+      "reset": {
+        "title": "Скинути чати та налаштування",
+        "subtitle": "Видаляє всі збережені дані на цьому пристрої"
+      },
+      "rate": {
+        "title": "Оцінити нас",
+        "error": "Не вдалося відкрити сторінку магазину."
+      },
+      "support": {
+        "title": "Підтримка",
+        "subtitle": "Зв’яжіться з нами онлайн",
+        "error": "Не вдалося відкрити сторінку підтримки."
+      },
+      "privacy": {
+        "title": "Політика конфіденційності",
+        "error": "Не вдалося відкрити політику."
+      },
+      "terms": {
+        "title": "Умови використання",
+        "error": "Не вдалося відкрити умови."
+      }
+    },
+    "capabilities": {
+      "text": "ТЕКСТ",
+      "image": "ЗОБР",
+      "audio": "АУДІО",
+      "video": "ВІДЕО"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Неприйнятно",
+      "linkUnavailableMessage": "Не можна відкрити це посилання зараз.",
+      "restoreSuccessTitle": "Відновлено",
+      "restoreSuccessMessage": "Ваші покупки відновлено.",
+      "restoreErrorTitle": "Не вдалося відновити",
+      "restoreErrorMessage": "Не можна відновити покупки зараз.",
+      "resetConfirmTitle": "Скинути дані застосунку?",
+      "resetConfirmMessage": "Це видалить всі чати і локальні налаштування.",
+      "resetConfirmCancel": "Скасувати",
+      "resetConfirmCta": "Скинути"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Створити",
+    "chooseStyle": "Обрати стиль",
+    "aspectRatio": "Формат зображення",
+    "starterPrompts": {
+      "title": "Початкові підказки",
+      "items": [
+        "студійний портрет",
+        "сучасна вітальня",
+        "тропічний пляж на заході сонця"
+      ]
+    },
+    "promptPlaceholder": "Напишіть, що хочете побачити…",
+    "promptHint": "Приклад: «Golden retriever у студійному світлі»",
+    "clearText": "Очистити текст",
+    "generate": "Генерувати",
+    "generating": "Генерація…"
+  },
+  "editImage": {
+    "headerTitle": "Редагувати",
+    "chooseStyle": "Обрати стиль",
+    "aspectRatio": "Формат зображення",
+    "starterPrompts": {
+      "title": "Початкові підказки",
+      "items": [
+        "покращити освітлення",
+        "видалити фон",
+        "м’яка ретуш портрета"
+      ]
+    },
+    "promptPlaceholder": "Опис редагування (необов’язково)",
+    "clearText": "Очистити",
+    "generate": "Застосувати",
+    "generating": "Застосування…",
+    "upload": {
+      "choose": "Вибрати фото",
+      "change": "Змінити",
+      "remove": "Видалити"
+    },
+    "imageUnavailable": {
+      "title": "Зображення недоступне",
+      "message": "Не вдалося отримати доступ до вибраного фото. Виберіть його ще раз і спробуйте ще раз."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Аніме"
+      },
+      "cartoon": {
+        "name": "Мультфільм"
+      },
+      "photoreal": {
+        "name": "Фотореалістичне"
+      },
+      "sketch": {
+        "name": "Ескіз"
+      },
+      "cyberpunk": {
+        "name": "Кіберпанк"
+      },
+      "steampunk": {
+        "name": "Стімпанк"
+      },
+      "illustration_3d": {
+        "name": "3D Ілюстрація"
+      },
+      "dark_fantasy": {
+        "name": "Темне фентезі"
+      },
+      "vintage_film": {
+        "name": "Вінтажний фільм"
+      },
+      "pastel": {
+        "name": "Пастель"
+      },
+      "neon_glow": {
+        "name": "Неон-світло"
+      },
+      "epic_landscape": {
+        "name": "Епічний пейзаж"
+      }
+    },
+    "aspectRatios": {
+      "square": "Квадрат",
+      "landscape": "Пейзаж",
+      "portrait": "Портрет"
     },
     "models": {
-      "gpt-4o": "Найпотужніша AI-модель",
-      "gpt-4o-mini": "Швидка для щоденних завдань",
-      "claude-3-haiku": "Швидка та ефективна модель",
-      "claude-3.7-sonnet": "Просунута модель міркування",
-      "gemini-2.5-pro": "Найкраща модель Google",
-      "gemini-2.0-flash": "Швидка модель з відмінним міркуванням"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Налаштований"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Інше"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Найшвидша модель",
+      "runwareFluxKrea": "Креативні, стилізовані результати",
+      "runwareQwenImage": "Збалансовані, якісні результати",
+      "google4": "Найкраща модель AI для зображень",
+      "fluxKontent": "Flux Kontent налаштований для редагування",
+      "runwareProvider": "Збалансована якість з надійною дифузією.",
+      "airProvider": "Nano Banana додає грайливий, яскравий тон.",
+      "googleProvider": "Google відрегульовано на полірування деталей.",
+      "anthropicProvider": "Пайплайн Claude для тонших настроїв.",
+      "default": "Натисніть, щоб дослідити доступні движки."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "ваш вибраний стиль",
+    "sheetTitle": "Створюємо вашу ідею",
+    "sheetSubtitle": "Хвилька, поки ми змішуємо {{style}} в промпт.",
+    "phases": {
+      "blend": "Змішування {{style}}",
+      "paint": "Малювання сцени",
+      "finish": "Додаємо останній штрих"
     },
-    "navigation": {
-      "chat": "Чат",
-      "history": "Історія",
-      "assistants": "Асистенти",
-      "imagesStudio": "Студія",
-      "settings": "Налаштування",
-      "recentChats": "Нещодавні чати"
-    },
-    "imagesStudio": {
-      "title": "Студія",
-      "selectImages": "Вибрати зображення",
-      "exitSelectionMode": "Вийти з режиму вибору",
-      "selectAll": "Вибрати все",
-      "noImagesYet": "Ще немає зображень",
-      "describeImageHint": "Опишіть зображення нижче та торкніться «Створити».",
-      "generatedImagesGallery": "Галерея згенерованих зображень",
-      "describeImagePlaceholder": "Опишіть бажане зображення…",
-      "deleteConfirmTitle": "Видалити зображення",
-      "deleteConfirmMessage": "Ви впевнені, що хочете видалити вибрані зображення? Дію не можна скасувати.",
+    "actions": {
       "cancel": "Скасувати",
-      "delete": "Видалити",
-      "generate": "Створити",
-      "generating": "Створення…",
-      "latest": "Останні",
-      "insertToChat": "Вставити в чат",
-      "pleaseWait": "Зачекайте…",
-      "processing": "Обробка...",
-      "tapToUploadImage": "Торкніться, щоб завантажити зображення",
-      "camera": "Камера",
-      "library": "Бібліотека",
-      "enterPrompt": "Введіть підказку для генерації зображення з тексту",
-      "openInBrowser": "Відкрити в браузері",
-      "makeVariations": "Створити варіації",
-      "deleteAllFromGeneration": "Видалити все з цієї генерації",
-      "imageOptionsTitle": "Параметри зображення",
-      "imageOptionsMessage": "Що ви хочете зробити з цим зображенням?",
-      "insertMarkdownHeader": "Ось зображення для:",
-      "variationSuffix": "— варіація попереднього зображення",
-      "selectedCount": "вибрано",
-      "selectedCount_one": "вибрано",
-      "selectedCount_other": "вибрано",
-      "imageDescriptionInput": "Поле опису зображення",
-      "imageDescriptionHint": "Введіть опис зображення, яке потрібно згенерувати",
-      "openModelSettings": "Відкрити налаштування моделі",
-      "modelSettingsHint": "Торкніться, щоб змінити модель і налаштування",
-      "openPhotoGallery": "Відкрити галерею",
-      "clearInput": "Очистити поле",
-      "generatedImage": "Згенероване зображення",
-      "autoSelectedModel": "Автоматично обрано {{model}} для режиму {{mode}}",
-      "deleteSelectedConfirmTitle": "Видалити зображення",
-      "deleteSelectedConfirmMessage": "Ви впевнені, що хочете видалити зображення? Дію не можна скасувати."
+      "retry": "Спробувати ще",
+      "close": "Закрити"
     },
-    "imageStudio": {
-      "generateImage": "Згенерувати зображення",
-      "generatingImage": "Генерується зображення",
-      "generateImageHint": "Торкніться, щоб згенерувати зображення за вашим описом",
-      "imageDescriptionInput": "Поле опису зображення",
-      "imageDescriptionHint": "Введіть опис бажаного зображення",
-      "openModelSettings": "Відкрити налаштування моделі",
-      "modelSettingsHint": "Торкніться, щоб змінити модель і налаштування",
-      "openPhotoGallery": "Відкрити галерею",
-      "clearInput": "Очистити поле",
-      "generatedImage": "Згенероване зображення"
+    "errors": {
+      "restrictedTitle": "Обмежений контент",
+      "genericTitle": "Генерація не вдалася",
+      "genericMessage": "Не вдалося згенерувати зображення."
     },
-    "assistants": {
-      "title": "Асистенти",
-      "subtitle": "Добірка AI-спеціалістів для кодування, письма, аналізу, планування тощо.",
-      "searchPlaceholder": "Пошук асистентів…",
-      "useAssistant": "Використати асистента",
-      "description": "Опис",
-      "systemPrompt": "Системна підказка",
-      "chooseModel": "Вибрати модель",
-      "categoryAll": "Усе",
-      "categories": {
-        "everyday": "Повсякденні",
-        "life": "Життя",
-        "health": "Здоров'я",
-        "schoolWork": "Школа й робота",
-        "coding": "Кодування",
-        "creative": "Креатив",
-        "general": "Загальні"
-      },
-      "presets": {
-        "default": { "name": "Асистент за замовчуванням", "description": "Збалансована допомога на щодень." },
-        "quick": { "name": "Швидкі відповіді", "description": "Коротко й по суті." },
-        "planner": { "name": "Щоденний планувальник", "description": "Плануйте день і рутини." },
-        "recipes": { "name": "Страви та рецепти", "description": "Що приготувати з того, що є." },
-        "fitness": { "name": "Коуч звичок і фітнесу", "description": "Малі звички та домашні тренування." },
-        "money": { "name": "Фінансовий помічник", "description": "Прості бюджети та поради щодо витрат." },
-        "study": { "name": "Помічник у навчанні", "description": "Пояснюй просто. Перевіряй мене." },
-        "email": { "name": "Листи та резюме", "description": "Пиши чіткі листи й пункти резюме." },
-        "translator": { "name": "Перекладач", "description": "Перекладай і навчай фраз." },
-        "travel": { "name": "Мандрівний помічник", "description": "Прості плани та список пакування." },
-        "tech": { "name": "Техпідтримка (базова)", "description": "Основи телефону, застосунків і Wi-Fi." },
-        "summarizer": { "name": "Резюматор TL;DR", "description": "Короткі пункти та однорядковий висновок." },
-        "gift": { "name": "Пошук подарунків", "description": "Ідеї за бюджетом та інтересами." },
-        "party": { "name": "Планувальник подій (Lite)", "description": "Швидко сплануйте невелику вечірку." },
-        "social": { "name": "Майстер публікацій", "description": "Чернетки дописів із варіантами." },
-        "interview": { "name": "Тренер співбесіди", "description": "Практикуйте відповіді (STAR)." },
-        "homefix": { "name": "Домашній майстер", "description": "Просте усунення несправностей." },
-        "pet": { "name": "Догляд за улюбленцями", "description": "Годування, прогулянки, базове тренування." },
-        "mindful": { "name": "Хвилина усвідомленості", "description": "Спокійні паузи на 1–3 хв." },
-        "polite": { "name": "Ввічливий перефразувальник", "description": "Переписуйте тексти та відповіді ввічливо." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Не вдалося зберегти",
+      "shareFailedTitle": "Не вдалося поділитися",
+      "tryAgain": "Спробуйте ще раз."
     },
-    "history": {
-      "title": "Історія",
-      "searchPlaceholder": "Пошук чатів…",
-      "newChat": "Новий чат",
-      "new": "+ Новий",
-      "search": "Пошук",
-      "clearSearch": "Очистити пошук",
-      "noChatsYet": "Ще немає чатів",
-      "startFirstConversation": "Почніть свою першу розмову.",
-      "startChat": "Почати чат",
-      "errorLoadingHistory": "Помилка під час завантаження історії",
-      "renameChat": "Перейменувати чат",
-      "enterNewTitle": "Введіть нову назву",
-      "deleteChat": "Видалити чат?",
-      "deleteChatMessage": "«{{title}}» буде видалено.",
-      "rename": "Перейменувати",
-      "unpin": "Відкріпити",
-      "pin": "Закріпити",
-      "untitled": "Без назви"
+    "result": {
+      "complete": "Готово"
     },
-    "settings": {
-      "title": "Налаштування",
-      "model": "Модель",
-      "searchPlaceholder": "Пошук моделей…",
-      "temperatureForCurrentModel": "Параметр temperature для поточної моделі",
-      "customFor": "Власні параметри для {{model}}",
-      "usingDefault": "Використовується значення за замовчуванням {{temperature}}",
-      "resetToDefault": "Скинути до стандартних",
-      "defaultTemperature": "Стандартна temperature (резервна)",
-      "usedByModelsWithoutOverride": "Використовується моделями без перевизначення",
-      "dangerZone": "Небезпечна зона",
-      "clearAllChatsAndSettings": "Очистити всі чати та налаштування",
-      "about": "Про застосунок",
-      "version": "Версія {{version}}",
-      "privacyPolicy": "Політика конфіденційності",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Повідомлення для Agarka...",
-      "createImages": "Створити зображення",
-      "generateAiArtwork": "Згенерувати AI-ілюстрацію",
-      "camera": "Камера",
-      "takeOrSelectPhotos": "Зробити або вибрати фото",
-      "search": "Пошук",
-      "findInformation": "Знайти інформацію",
-      "removeImage": "Видалити зображення",
-      "messageInput": "Поле повідомлення",
-      "clearInput": "Очистити поле",
-      "hideQuickActions": "Приховати швидкі дії",
-      "showQuickActions": "Показати швидкі дії",
-      "startVoiceInput": "Розпочати голосове введення",
-      "sendMessage": "Надіслати",
-      "offline": "Офлайн",
-      "stop": "Зупинити",
-      "streaming": "Трансляція…",
-      "closeRecorder": "Закрити диктофон",
-      "insertTranscript": "Вставити транскрипт",
-      "scrollToLatest": "Прокрутити до останнього",
-      "copyMessage": "Копіювати повідомлення",
-      "copyMessageHint": "Скопіювати це повідомлення до буфера",
-      "shareMessage": "Поділитися повідомленням",
-      "shareMessageHint": "Поділитися цим повідомленням",
-      "regenerateResponse": "Згенерувати відповідь ще раз",
-      "regenerateResponseHint": "Створити нову відповідь",
-      "copyCode": "Копіювати код",
-      "image": "зображення",
-      "loading": "Завантаження…",
-      "loadingChat": "Завантаження чату...",
-      "offlineBanner": "Ви офлайн. Повідомлення неможливо надіслати.",
-      "imagePickerErrorTitle": "Помилка вибору зображення",
-      "messageTooLong": "Повідомлення надто довге ({{length}}). Ліміт — {{limit}}.",
-      "emptyTitle": "Чим можу допомогти?",
-      "emptySubtitle": "Розпочніть розмову з AI",
-      "privateTitle": "Приватний чат",
-      "privateSubtitle": "Цей чат не з’явиться в історії",
-      "listening": "Прослуховування…",
-      "startRecording": "Почати запис…",
-      "suggestions": {
-        "writeStory": "Написати креативну історію",
-        "writeStorySubtitle": "про магічну пригоду",
-        "planTravel": "Спланувати подорож",
-        "planTravelSubtitle": "для неймовірної відпустки",
-        "explainConcept": "Пояснити цей концепт",
-        "explainConceptSubtitle": "простими словами",
-        "planDay": "Спланувати мій день",
-        "planDaySubtitle": "з порадами щодо продуктивності"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Обробка...",
-      "tapToUploadImage": "Торкніться, щоб завантажити зображення"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Обробка...",
-      "camera": "Камера",
-      "library": "Бібліотека"
-    },
-    "common": {
-      "new": "НОВЕ",
-      "best": "НАЙКРАЩЕ",
-      "cancel": "Скасувати",
-      "save": "Зберегти",
-      "delete": "Видалити",
+    "accessibility": {
       "close": "Закрити"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Видалити",
+      "edit": "Редагувати",
+      "save": "Зберегти",
+      "share": "Поділитися"
+    },
+    "accessibility": {
+      "close": "Закрити",
+      "delete": "Видалити зображення",
+      "edit": "Редагувати зображення",
+      "save": "Зберегти зображення",
+      "share": "Поділитися зображенням"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Відкрити меню",
+      "selectImages": "Вибрати зображення",
+      "exitSelection": "Вийти з вибору",
+      "deleteSelected": "Видалити обрані зображення",
+      "selectToDelete": "Виберіть зображення для видалення"
+    },
+    "createCard": {
+      "title": "Створити з тексту",
+      "subtitle": "Напишіть опис",
+      "cta": "Опишіть & генеруйте"
+    },
+    "editCard": {
+      "title": "Редагувати фото",
+      "subtitle": "Завантажте & редагуйте",
+      "cta": "Редагувати фото"
+    },
+    "gallery": {
+      "title": "Галерея",
+      "empty": "Поки немає зображень",
+      "selection": {
+        "enter": "Вибрати зображення",
+        "exit": "Вийти з вибору",
+        "deleteSelected": "Видалити вибрані",
+        "selectForDelete": "Вибрати для видалення"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Знайомтесь:",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Створюйте та редагуйте зображення за допомогою ШІ — прямо в {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Знайомтесь зі своєю ШІ",
+      "titleHighlight": "Асистенти",
+      "subtitle": "Спеціалізовані ШІ-експерти готові допомагати щодня",
+      "cards": [
+        {
+          "title": "Фітнес-тренер",
+          "text": "Отримайте персональні тренування та рекомендації з харчування"
+        },
+        {
+          "title": "Лікар",
+          "text": "Отримайте поради щодо здоров'я, аналіз симптомів, рекомендації"
+        },
+        {
+          "title": "Догляд за тваринами",
+          "text": "Поради експертів про здоров’я, тренування та догляд"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "БІЗНЕС-КЛАС AI-РІШЕННЯ",
+      "description": "Підсиліть свій бізнес передовою штучною інтелекту, створеною для професіоналів і команд.",
+      "stats": "Довіряють понад 500 тисяч користувачів",
+      "rating": "4,9 / 5",
+      "button": "Почати"
+    }
+  },
+  "coinStore": {
+    "title": "Отримати токени",
+    "loading": "Завантаження магазину токенів…",
+    "balanceLabel": "Ваш поточний баланс:",
+    "balanceValue": "{{amount}} токенів",
+    "history": {
+      "link": "Історія транзакцій",
+      "alertTitle": "Історія",
+      "alertBody": "Історія транзакцій буде доступна незабаром."
+    },
+    "noPacks": "Немає доступних пакетів токенів. Перевірте ID пропозиції RevenueCat.",
+    "badges": {
+      "basic": "Базовий пакет",
+      "popular": "Найпопулярніший",
+      "value": "Найкраща ціна"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} токенів",
+      "defaultName": "Пакет {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Перейти на Преміум",
+      "subtitle": "Необмежений доступ і функції",
+      "cta": "Оновити"
+    },
+    "termsText": "Покупкою ви погоджуєтесь із нашими",
+    "termsLink": "Умовами використання",
+    "alerts": {
+      "initErrorTitle": "Помилка ініціалізації",
+      "genericMessage": "Щось пішло не так.",
+      "successTitle": "Успіх",
+      "successMessage": "Токени з’являться незабаром.",
+      "purchaseFailedTitle": "Покупка не вдалася",
+      "unknownError": "Невідома помилка"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Відновити",
+    "restoreRestoring": "Відновлення…",
+    "features": {
+      "create": "Створюйте зображення та відео",
+      "search": "Шукайте в Інтернеті з ШІ",
+      "talk": "Поспілкуйтесь з ШІ природно"
+    },
+    "freeTrial": {
+      "title": "Безкоштовний пробний",
+      "subtitle": "3 дні безкоштовно"
+    },
+    "badge": {
+      "bestOffer": "Найкраща пропозиція"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Річний",
+        "only": "Тільки {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Місячний",
+        "subtitle": "Ви можете скасувати будь-коли",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Щотижневий",
+        "subtitle": "Ви можете скасувати будь-коли",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "на тиждень",
+      "perMonth": "на місяць"
+    },
+    "cta": "Продовжити",
+    "legal": {
+      "terms": "Умови",
+      "privacy": "Конфіденційність"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Повідомлення...",
+    "createImages": "Створити зображення",
+    "generateAiArtwork": "Генерувати арт з ШІ",
+    "camera": "Камера",
+    "takeOrSelectPhotos": "Зробити або вибрати фото",
+    "search": "Пошук",
+    "findInformation": "Знайти інформацію",
+    "findRecentInfo": "Знайти останню інформацію",
+    "removeImage": "Видалити зображення",
+    "messageInput": "Поле вводу повідомлення",
+    "clearInput": "Очистити ввід",
+    "quickActionsLabel": "Швидкі дії",
+    "hideQuickActions": "Сховати швидкі дії",
+    "showQuickActions": "Показати швидкі дії",
+    "startVoiceInput": "Розпочати голосовий ввід",
+    "sendMessage": "Надіслати повідомлення",
+    "offline": "Офлайн",
+    "stop": "Зупинити",
+    "streaming": "Потік…",
+    "closeRecorder": "Закрити запис",
+    "insertTranscript": "Надіслати",
+    "scrollToLatest": "Прокрутити до останнього",
+    "copyMessage": "Копіювати повідомлення",
+    "copyMessageHint": "Копіюйте це повідомлення в буфер",
+    "shareMessage": "Поділитися повідомленням",
+    "shareMessageHint": "Поділіться цим повідомленням",
+    "regenerateResponse": "Генерувати відповідь заново",
+    "regenerateResponseHint": "Створити нову відповідь",
+    "copyCode": "Копіювати код",
+    "image": "зображення",
+    "loading": "Завантаження…",
+    "loadingChat": "Завантаження чату…",
+    "offlineBanner": "Ви офлайн. Повідомлення не можна надіслати.",
+    "imagePickerErrorTitle": "Помилка вибору зображення",
+    "imagePickerErrorMessage": "Не вдалося отримати доступ до фото. Спробуйте ще раз.",
+    "messageTooLong": "Повідомлення занадто довге ({{length}}). Ліміт – {{limit}}.",
+    "sendFailed": "Надсилання не вдалося.",
+    "voiceStartFailed": "Не вдалося розпочати голос.",
+    "emptyTitle": "Чим можу допомогти?",
+    "emptySubtitle": "Розпочніть розмову з ШІ",
+    "privateTitle": "Приватний чат",
+    "privateSubtitle": "Цей чат не з’явиться в історії",
+    "permissions": {
+      "photosTitle": "Потрібен доступ до фото",
+      "photosMessage": "Необхідний доступ до фото, щоб вибрати зображення.",
+      "voiceTitle": "Потрібен доступ до мікрофона",
+      "voiceMessage": "Для голосового вводу потрібен мікрофон і розпізнавання мови."
+    },
+    "activity": {
+      "analyzingImages": "Аналіз зображень…",
+      "searching": "Пошук…",
+      "thinking": "Думаю…"
+    },
+    "webSearch": {
+      "title": "Веб-пошук",
+      "subtitle": "Знайдіть останню інформацію",
+      "label": "Веб-пошук",
+      "enable": "Увімкнути веб-пошук",
+      "disable": "Вимкнути веб-пошук",
+      "toggleLabel": "Шукати в інтернеті"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Проєктуйте візуали швидко.",
+      "subtitle": "Генеруйте, доопрацьовуйте та публікуйте в одному місці.",
+      "cta": "Відкрити"
+    },
+    "quickActions": {
+      "createImages": "Створити зображення",
+      "openCamera": "Відкрити камеру",
+      "editImage": "Редагувати зображення",
+      "startVoice": "Запустити голос",
+      "assistants": "Асистенти"
+    },
+    "listening": "Слухаю…",
+    "startRecording": "Починаю запис…",
+    "assistantHeader": {
+      "unavailableTitle": "Асистент недоступний",
+      "unavailableDescription": "Не вдалося завантажити цього асистента. Спробуйте ще раз.",
+      "ready": "Готовий допомогти"
+    },
+    "actions": {
+      "copy": "Копіювати",
+      "share": "Поділитися",
+      "regenerate": "Генерувати знову",
+      "retryFromHere": "Спробувати з цього місця",
+      "cancel": "Скасувати"
+    },
+    "messageActionTitle": "Повідомлення",
+    "status": {
+      "sending": "Надсилається…",
+      "failed": "Не вдалося",
+      "sent": "Надіслано"
+    },
+    "suggestions": {
+      "writeStory": "Написати креативну історію",
+      "writeStorySubtitle": "про магічну пригоду",
+      "planTravel": "Запланувати подорож",
+      "planTravelSubtitle": "для чудової відпустки",
+      "explainConcept": "Пояснити цю концепцію",
+      "explainConceptSubtitle": "простими словами",
+      "planDay": "Запланувати мій день",
+      "planDaySubtitle": "з порадами щодо продуктивності"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Обробка...",
+    "tapToUploadImage": "Натисніть, щоб завантажити зображення"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Обробка...",
+    "camera": "Камера",
+    "library": "Бібліотека"
+  },
+  "common": {
+    "new": "НОВЕ",
+    "best": "НАЙКРАЩЕ",
+    "cancel": "Скасувати",
+    "save": "Зберегти",
+    "delete": "Видалити",
+    "close": "Закрити",
+    "allow": "Дозволити"
   }
-  
+}

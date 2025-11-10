@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Selectează un model",
-      "searchPlaceholder": "Caută modele...",
-      "noModelsFound": "Nu s-au găsit modele",
-      "noModelsAvailable": "Nu există modele disponibile",
-      "currentModel": "Model curent: {{name}}. Atinge pentru a schimba.",
-      "openHint": "Deschide meniul de selectare a modelului",
-      "closeLabel": "Închide selectorul de model",
-      "searchLabel": "Caută modele",
-      "searchHint": "Tastează pentru a filtra modelele",
-      "modelLabel": "Model {{name}}",
-      "selectHint": "Selectează {{name}}",
-      "currentlySelected": "Modelul selectat"
+  "modelSelector": {
+    "title": "Selectează un model",
+    "searchPlaceholder": "Caută modele...",
+    "noModelsFound": "Nu s-au găsit modele",
+    "noModelsAvailable": "Nu există modele disponibile",
+    "currentModel": "Model curent: {{name}}. Atinge pentru a schimba.",
+    "openHint": "Deschide meniul de selecție a modelului",
+    "closeLabel": "Închide selectorul de model",
+    "searchLabel": "Caută modele",
+    "searchHint": "Scrie pentru a filtra modelele disponibile",
+    "modelLabel": "Model {{name}}",
+    "selectHint": "Selectează modelul {{name}}",
+    "currentlySelected": "Selectat în prezent"
+  },
+  "models": {
+    "gpt-4o": "Cel mai puternic model de AI",
+    "gpt-4o-mini": "Rapid pentru sarcini zilnice",
+    "gpt-5": "Cel mai puternic AI versatil",
+    "gpt-5-chat-latest": "Optimizat pentru chat și dialog",
+    "gpt-5-mini": "GPT-5 rapid și fiabil",
+    "gpt-5-nano": "Model ușor pentru sarcini simple",
+    "o4-mini": "Model eficient de raționament",
+    "gpt-4.1-mini": "GPT-4.1 compact și capabil",
+    "claude-3-haiku": "AI Anthropic rapidă și concentrată",
+    "claude-3.7-sonnet": "Raționament rafinat de la Anthropic",
+    "gemini-2.5-Flash": "Cel mai avansat model Google",
+    "gemini-2.5-flash": "Cel mai avansat model Google",
+    "gemini-2.0-flash": "AI Google rapidă și precisă"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Altele"
+  },
+  "navigation": {
+    "chat": "Chat nou",
+    "history": "Istoric",
+    "assistants": "Asistenți",
+    "imagesStudio": "Image Studio",
+    "settings": "Setări",
+    "recentChats": "Chat-uri recente"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Generează, rafinează și publică elemente vizuale într-un singur loc.",
+    "cta": "Deschide"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Selectează imagini",
+    "exitSelectionMode": "Ieși din modul de selecție",
+    "selectAll": "Selectează tot",
+    "noImagesYet": "Nicio imagine deocamdată",
+    "describeImageHint": "Descrie imaginea mai jos și apasă pe Generează.",
+    "generatedImagesGallery": "Galerie de imagini generate",
+    "describeImagePlaceholder": "Descrie imaginea pe care o vrei…",
+    "deleteConfirmTitle": "Șterge imagini",
+    "deleteConfirmMessage": "Sigur vrei să ștergi imaginile selectate? Acțiunea nu poate fi anulată.",
+    "cancel": "Anulează",
+    "delete": "Șterge",
+    "generate": "Generează",
+    "generating": "Se generează…",
+    "latest": "Cele mai recente",
+    "insertToChat": "Inserează în chat",
+    "pleaseWait": "Te rugăm așteaptă…",
+    "processing": "Se procesează...",
+    "tapToUploadImage": "Atinge pentru a încărca o imagine",
+    "camera": "Cameră",
+    "library": "Bibliotecă",
+    "enterPrompt": "Introdu un prompt pentru generarea text-în-imagine",
+    "openInBrowser": "Deschide în browser",
+    "makeVariations": "Creează variații",
+    "deleteAllFromGeneration": "Șterge tot din această generare",
+    "imageOptionsTitle": "Opțiuni imagine",
+    "imageOptionsMessage": "Ce vrei să faci cu această imagine?",
+    "insertMarkdownHeader": "Iată imaginea pentru:",
+    "variationSuffix": "— variație a imaginii anterioare",
+    "selectedCount": "selectate",
+    "selectedCount_one": "selectată",
+    "selectedCount_other": "selectate",
+    "imageDescriptionInput": "Câmp de descriere a imaginii",
+    "imageDescriptionHint": "Introdu descrierea imaginii pe care vrei să o generezi",
+    "openModelSettings": "Deschide setările modelului",
+    "modelSettingsHint": "Atinge pentru a schimba modelul și setările",
+    "openPhotoGallery": "Deschide galeria foto",
+    "clearInput": "Șterge",
+    "generatedImage": "Imagine generată",
+    "autoSelectedModel": "S-a selectat automat {{model}} pentru modul {{mode}}",
+    "deleteSelectedConfirmTitle": "Șterge imagini",
+    "deleteSelectedConfirmMessage": "Sigur vrei să ștergi imaginile? Acțiunea nu poate fi anulată."
+  },
+  "imageStudio": {
+    "generateImage": "Generează imagine",
+    "generatingImage": "Se generează imaginea",
+    "generateImageHint": "Atinge pentru a genera o imagine din descriere",
+    "imageDescriptionInput": "Câmp de descriere a imaginii",
+    "imageDescriptionHint": "Introdu descrierea imaginii pe care o vrei",
+    "openModelSettings": "Deschide setările modelului",
+    "modelSettingsHint": "Atinge pentru a schimba modelul și setările",
+    "openPhotoGallery": "Deschide galeria foto",
+    "clearInput": "Șterge",
+    "generatedImage": "Imagine generată"
+  },
+  "assistants": {
+    "title": "Asistenți",
+    "subtitle": "Specialiști AI selectați pentru codare, scriere, analiză, planificare și multe altele.",
+    "searchPlaceholder": "Caută asistenți…",
+    "useAssistant": "Folosește asistentul",
+    "selectAssistant": "Alege asistentul",
+    "description": "Descriere",
+    "systemPrompt": "Prompt de sistem",
+    "chooseModel": "Alege modelul",
+    "categoryAll": "Toate",
+    "categories": {
+      "everyday": "Zilnic",
+      "life": "Viață",
+      "health": "Sănătate",
+      "schoolWork": "Școală și muncă",
+      "coding": "Programare",
+      "creative": "Creativ",
+      "general": "General"
+    },
+    "presets": {
+      "default": {
+        "name": "Asistent implicit",
+        "description": "Ajutor echilibrat pentru lucruri de zi cu zi."
+      },
+      "quick": {
+        "name": "Răspunsuri rapide",
+        "description": "Răspunsuri scurte și directe."
+      },
+      "planner": {
+        "name": "Planificator zilnic",
+        "description": "Planifică-ți ziua și rutinele."
+      },
+      "recipes": {
+        "name": "Mese și rețete",
+        "description": "Ce poți găti cu ce ai."
+      },
+      "fitness": {
+        "name": "Antrenor de obiceiuri și fitness",
+        "description": "Micropași și antrenamente acasă."
+      },
+      "money": {
+        "name": "Asistent financiar",
+        "description": "Bugete simple și sfaturi de cheltuire."
+      },
+      "study": {
+        "name": "Ajutor la învățat",
+        "description": "Explică simplu. Pune-mi întrebări."
+      },
+      "email": {
+        "name": "Email & CV",
+        "description": "Scrie emailuri și fraze de CV clare."
+      },
+      "translator": {
+        "name": "Translator",
+        "description": "Tradu și învață expresii."
+      },
+      "travel": {
+        "name": "Partener de călătorie",
+        "description": "Planuri simple și liste de bagaj."
+      },
+      "tech": {
+        "name": "Suport tehnic (simplu)",
+        "description": "Telefon, aplicații, bazele Wi-Fi."
+      },
+      "summarizer": {
+        "name": "Sumarizator TL;DR",
+        "description": "Puncte scurte + o propoziție."
+      },
+      "gift": {
+        "name": "Găsitor de cadouri",
+        "description": "Idei după buget și interese."
+      },
+      "party": {
+        "name": "Planificator de evenimente (Lite)",
+        "description": "Planifică rapid o mică petrecere."
+      },
+      "social": {
+        "name": "Creator de postări sociale",
+        "description": "Drafturi de postări cu opțiuni."
+      },
+      "interview": {
+        "name": "Antrenor de interviu",
+        "description": "Exersează răspunsuri (STAR)."
+      },
+      "homefix": {
+        "name": "Ghid reparații acasă",
+        "description": "Depanare DIY simplă."
+      },
+      "pet": {
+        "name": "Îngrijire animale",
+        "description": "Hrană, plimbări, dresaj de bază."
+      },
+      "mindful": {
+        "name": "Minut de mindfulness",
+        "description": "Pauze de 1–3 minute."
+      },
+      "polite": {
+        "name": "Rescriere politicoasă",
+        "description": "Rescrie mesaje și răspunsuri mai amabil."
+      }
+    }
+  },
+  "history": {
+    "title": "Istoric",
+    "searchPlaceholder": "Caută în chat-uri…",
+    "newChat": "Chat nou",
+    "new": "+ Nou",
+    "search": "Caută",
+    "clearSearch": "Șterge căutarea",
+    "noChatsYet": "Niciun chat încă",
+    "startFirstConversation": "Începe prima ta conversație.",
+    "startChat": "Începe chat",
+    "errorLoadingHistory": "Eroare la încărcarea istoricului",
+    "renameChat": "Redenumește chatul",
+    "enterNewTitle": "Introdu un titlu nou",
+    "deleteChat": "Ștergi chatul?",
+    "deleteChatMessage": "„{{title}}” va fi șters.",
+    "rename": "Redenumește",
+    "unpin": "Anulează fixarea",
+    "pin": "Fixează",
+    "untitled": "Fără titlu"
+  },
+  "settings": {
+    "title": "Setări",
+    "model": "Model",
+    "searchPlaceholder": "Caută modele…",
+    "temperatureForCurrentModel": "Temperatura pentru modelul curent",
+    "customFor": "Personalizat pentru {{model}}",
+    "usingDefault": "Se folosește valoarea implicită {{temperature}}",
+    "resetToDefault": "Resetează la implicit",
+    "defaultTemperature": "Temperatură implicită (de rezervă)",
+    "usedByModelsWithoutOverride": "Folosită de modelele fără setări proprii",
+    "dangerZone": "Zonă de risc",
+    "clearAllChatsAndSettings": "Șterge toate chat-urile și setările",
+    "about": "Despre",
+    "version": "Versiunea {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Politica de confidențialitate",
+    "hero": {
+      "label": "Ofertă specială",
+      "title": "Acces prioritar și fără limite",
+      "upgrade": "Upgrade",
+      "manage": "Administrează planul"
+    },
+    "sections": {
+      "premium": "Plan Premium",
+      "data": "Date utilizator",
+      "support": "Suport & legal"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Ia Premium",
+        "subtitle": "Deblochează unelte de creare nelimitate"
+      },
+      "premiumActive": {
+        "title": "Premium activ",
+        "subtitle": "Mulțumim că susții ChatCloud"
+      },
+      "restore": {
+        "title": "Restaurează cumpărări",
+        "subtitle": "Folosește dacă ai schimbat dispozitivul"
+      },
+      "history": {
+        "title": "Gestionează istoricul chaturilor",
+        "subtitle": "Vezi și șterge sesiunile trecute"
+      },
+      "reset": {
+        "title": "Resetează chat-uri și preferințe",
+        "subtitle": "Șterge toate datele salvate pe acest dispozitiv"
+      },
+      "rate": {
+        "title": "Evaluează-ne",
+        "error": "Nu s-a putut deschide pagina magazinului."
+      },
+      "support": {
+        "title": "Suport",
+        "subtitle": "Contactează-ne online",
+        "error": "Nu s-a putut deschide pagina de contact."
+      },
+      "privacy": {
+        "title": "Politica de confidențialitate",
+        "error": "Nu s-a putut deschide politica de confidențialitate."
+      },
+      "terms": {
+        "title": "Termeni de utilizare",
+        "error": "Nu s-au putut deschide termenii de utilizare."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Indisponibil",
+      "linkUnavailableMessage": "Nu se poate deschide acest link acum.",
+      "restoreSuccessTitle": "Restaurat",
+      "restoreSuccessMessage": "Cumpărăturile tale au fost restaurate.",
+      "restoreErrorTitle": "Restaurare eșuată",
+      "restoreErrorMessage": "Nu se pot restaura cumpărăturile acum.",
+      "resetConfirmTitle": "Resetezi datele aplicației?",
+      "resetConfirmMessage": "Vor fi șterse toate chaturile și preferințele locale.",
+      "resetConfirmCancel": "Anulează",
+      "resetConfirmCta": "Resetează"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Creează",
+    "chooseStyle": "Alege un stil",
+    "aspectRatio": "Raport de aspect",
+    "starterPrompts": {
+      "title": "Prompturi de început",
+      "items": [
+        "portret în studio",
+        "living modern",
+        "plajă tropicală la apus"
+      ]
+    },
+    "promptPlaceholder": "Scrie ce vrei să vezi…",
+    "promptHint": "Exemplu: „Golden retriever în lumină de studio”",
+    "clearText": "Șterge textul",
+    "generate": "Generează",
+    "generating": "Se generează…"
+  },
+  "editImage": {
+    "headerTitle": "Editează",
+    "chooseStyle": "Alege un stil",
+    "aspectRatio": "Raport de aspect",
+    "starterPrompts": {
+      "title": "Prompturi de început",
+      "items": [
+        "corectează lumina",
+        "elimină fundalul",
+        "retuș portret fin"
+      ]
+    },
+    "promptPlaceholder": "Descrie modificările (opțional)",
+    "clearText": "Șterge",
+    "generate": "Aplică",
+    "generating": "Se aplică…",
+    "upload": {
+      "choose": "Alege fotografie",
+      "change": "Schimbă",
+      "remove": "Elimină"
+    },
+    "imageUnavailable": {
+      "title": "Imagine indisponibilă",
+      "message": "Nu s-a putut accesa fotografia selectată. Selecteaz-o din nou și încearcă iar."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Desen animat"
+      },
+      "photoreal": {
+        "name": "Fotorealist"
+      },
+      "sketch": {
+        "name": "Schiță"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Ilustrație 3D"
+      },
+      "dark_fantasy": {
+        "name": "Dark fantasy"
+      },
+      "vintage_film": {
+        "name": "Film vintage"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Strălucire neon"
+      },
+      "epic_landscape": {
+        "name": "Peisaj epic"
+      }
+    },
+    "aspectRatios": {
+      "square": "Pătrat",
+      "landscape": "Orizontal",
+      "portrait": "Vertical"
     },
     "models": {
-      "gpt-4o": "Cel mai puternic model AI",
-      "gpt-4o-mini": "Rapid pentru sarcinile zilnice",
-      "claude-3-haiku": "Model rapid și eficient",
-      "claude-3.7-sonnet": "Model avansat de raționament",
-      "gemini-2.5-pro": "Cel mai bun model Google",
-      "gemini-2.0-flash": "Model rapid cu raționament excelent"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Personalizat"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Altele"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Cel mai rapid model",
+      "runwareFluxKrea": "Rezultate creative și stilizate",
+      "runwareQwenImage": "Rezultate echilibrate și de calitate",
+      "google4": "Cel mai bun model AI pentru imagini",
+      "fluxKontent": "Flux Kontent ajustat pentru editare",
+      "runwareProvider": "Calitate echilibrată cu difuzie fiabilă.",
+      "airProvider": "Nano Banana adaugă un ton jucăuș, intens.",
+      "googleProvider": "Google ajustat pentru detalii finisate.",
+      "anthropicProvider": "Pipeline Claude pentru stări mai nuanțate.",
+      "default": "Atinge pentru a vedea motoarele disponibile."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "stilul ales",
+    "sheetTitle": "Modelăm viziunea ta",
+    "sheetSubtitle": "O secundă cât amestecăm {{style}} în prompt.",
+    "phases": {
+      "blend": "Se amestecă {{style}}",
+      "paint": "Se desenează scena",
+      "finish": "Se adaugă finisajele"
     },
-    "navigation": {
-      "chat": "Chat",
-      "history": "Istoric",
-      "assistants": "Asistenți",
-      "imagesStudio": "Studio",
-      "settings": "Setări",
-      "recentChats": "Conversații recente"
-    },
-    "imagesStudio": {
-      "title": "Studio",
-      "selectImages": "Selectează imagini",
-      "exitSelectionMode": "Ieși din modul de selecție",
-      "selectAll": "Selectează tot",
-      "noImagesYet": "Încă nu există imagini",
-      "describeImageHint": "Descrie imaginea mai jos și atinge „Generează”.",
-      "generatedImagesGallery": "Galerie de imagini generate",
-      "describeImagePlaceholder": "Descrie imaginea dorită…",
-      "deleteConfirmTitle": "Șterge imagini",
-      "deleteConfirmMessage": "Sigur dorești să ștergi imaginile selectate? Această acțiune nu poate fi anulată.",
+    "actions": {
       "cancel": "Anulează",
-      "delete": "Șterge",
-      "generate": "Generează",
-      "generating": "Se generează…",
-      "latest": "Cele mai noi",
-      "insertToChat": "Inserează în chat",
-      "pleaseWait": "Te rugăm să aștepți…",
-      "processing": "Se procesează...",
-      "tapToUploadImage": "Atinge pentru a încărca imagine",
-      "camera": "Cameră",
-      "library": "Bibliotecă",
-      "enterPrompt": "Introdu un prompt pentru generarea text-în-imagine",
-      "openInBrowser": "Deschide în browser",
-      "makeVariations": "Creează variații",
-      "deleteAllFromGeneration": "Șterge tot din această generare",
-      "imageOptionsTitle": "Opțiuni imagine",
-      "imageOptionsMessage": "Ce dorești să faci cu această imagine?",
-      "insertMarkdownHeader": "Iată imaginea pentru:",
-      "variationSuffix": "— variație a imaginii anterioare",
-      "selectedCount": "selectat",
-      "selectedCount_one": "selectat",
-      "selectedCount_other": "selectat",
-      "imageDescriptionInput": "Câmp descriere imagine",
-      "imageDescriptionHint": "Introdu descrierea imaginii pe care vrei să o generezi",
-      "openModelSettings": "Deschide setările modelului",
-      "modelSettingsHint": "Atinge pentru a schimba modelul și setările",
-      "openPhotoGallery": "Deschide galeria foto",
-      "clearInput": "Șterge câmpul",
-      "generatedImage": "Imagine generată",
-      "autoSelectedModel": "Selectat automat {{model}} pentru modul {{mode}}",
-      "deleteSelectedConfirmTitle": "Șterge imagini",
-      "deleteSelectedConfirmMessage": "Sigur dorești să ștergi imaginile? Această acțiune nu poate fi anulată."
+      "retry": "Reîncearcă",
+      "close": "Închide"
     },
-    "imageStudio": {
-      "generateImage": "Generează imagine",
-      "generatingImage": "Se generează imaginea",
-      "generateImageHint": "Atinge pentru a genera o imagine pe baza descrierii",
-      "imageDescriptionInput": "Câmp descriere imagine",
-      "imageDescriptionHint": "Introdu descrierea imaginii pe care vrei să o generezi",
-      "openModelSettings": "Deschide setările modelului",
-      "modelSettingsHint": "Atinge pentru a schimba modelul și setările",
-      "openPhotoGallery": "Deschide galeria foto",
-      "clearInput": "Șterge câmpul",
-      "generatedImage": "Imagine generată"
+    "errors": {
+      "restrictedTitle": "Conținut restricționat",
+      "genericTitle": "Generarea a eșuat",
+      "genericMessage": "Nu s-a putut genera imaginea."
     },
-    "assistants": {
-      "title": "Asistenți",
-      "subtitle": "Specialiști AI selectați pentru programare, scriere, analiză, planificare și altele.",
-      "searchPlaceholder": "Caută asistenți…",
-      "useAssistant": "Folosește asistentul",
-      "description": "Descriere",
-      "systemPrompt": "Prompt de sistem",
-      "chooseModel": "Alege modelul",
-      "categoryAll": "Toate",
-      "categories": {
-        "everyday": "Zilnic",
-        "life": "Viață",
-        "health": "Sănătate",
-        "schoolWork": "Școală & muncă",
-        "coding": "Programare",
-        "creative": "Creativ",
-        "general": "General"
-      },
-      "presets": {
-        "default": { "name": "Asistent implicit", "description": "Ajutor echilibrat pentru zi cu zi." },
-        "quick": { "name": "Răspunsuri rapide", "description": "Scurte și la obiect." },
-        "planner": { "name": "Planificator zilnic", "description": "Planifică-ți ziua și rutinele." },
-        "recipes": { "name": "Mese & rețete", "description": "Ce să gătești cu ce ai." },
-        "fitness": { "name": "Antrenor de obiceiuri & fitness", "description": "Obiceiuri mici & antrenamente acasă." },
-        "money": { "name": "Partener financiar", "description": "Bugete simple & sfaturi de cheltuire." },
-        "study": { "name": "Ajutor la învățat", "description": "Explică simplu. Pune-mi întrebări." },
-        "email": { "name": "Email & CV", "description": "Emailuri clare și puncte de CV." },
-        "translator": { "name": "Translator", "description": "Tradu + învață expresii." },
-        "travel": { "name": "Partener de călătorie", "description": "Planuri simple & listă de bagaje." },
-        "tech": { "name": "Asistență tehnică (simplu)", "description": "Bazele telefonului, aplicațiilor și Wi-Fi." },
-        "summarizer": { "name": "Rezumat TL;DR", "description": "Puncte scurte + un rezumat dintr-un rând." },
-        "gift": { "name": "Găsitor de cadouri", "description": "Idei după buget & interese." },
-        "party": { "name": "Planificator de evenimente (lite)", "description": "Planifică rapid o petrecere mică." },
-        "social": { "name": "Creator postări sociale", "description": "Ciorne de postări cu opțiuni." },
-        "interview": { "name": "Antrenor pentru interviu", "description": "Exersează răspunsuri (STAR)." },
-        "homefix": { "name": "Ghid reparații casă", "description": "Depanare simplă." },
-        "pet": { "name": "Îngrijire animale", "description": "Hrană, plimbări, dresaj de bază." },
-        "mindful": { "name": "Minut de mindfulness", "description": "Pauze liniștite de 1–3 min." },
-        "polite": { "name": "Rescriere politicos", "description": "Rescrie politicos texte și răspunsuri." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Nu s-a putut salva",
+      "shareFailedTitle": "Nu s-a putut partaja",
+      "tryAgain": "Încearcă din nou."
     },
-    "history": {
-      "title": "Istoric",
-      "searchPlaceholder": "Caută în chat-uri…",
-      "newChat": "Chat nou",
-      "new": "+ Nou",
-      "search": "Căutare",
-      "clearSearch": "Șterge căutarea",
-      "noChatsYet": "Încă nu există chat-uri",
-      "startFirstConversation": "Începe prima ta conversație.",
-      "startChat": "Începe chat-ul",
-      "errorLoadingHistory": "Eroare la încărcarea istoricului",
-      "renameChat": "Redenumește chat-ul",
-      "enterNewTitle": "Introdu un titlu nou",
-      "deleteChat": "Ștergi chat-ul?",
-      "deleteChatMessage": "„{{title}}” va fi șters.",
-      "rename": "Redenumește",
-      "unpin": "Anulează fixarea",
-      "pin": "Fixează",
-      "untitled": "Fără titlu"
+    "result": {
+      "complete": "Gata"
     },
-    "settings": {
-      "title": "Setări",
-      "model": "Model",
-      "searchPlaceholder": "Caută modele…",
-      "temperatureForCurrentModel": "Temperatura pentru modelul curent",
-      "customFor": "Personalizat pentru {{model}}",
-      "usingDefault": "Se folosește valoarea implicită {{temperature}}",
-      "resetToDefault": "Resetează la implicit",
-      "defaultTemperature": "Temperatură implicită (fallback)",
-      "usedByModelsWithoutOverride": "Folosită de modelele fără suprascriere",
-      "dangerZone": "Zonă periculoasă",
-      "clearAllChatsAndSettings": "Șterge toate chat-urile și setările",
-      "about": "Despre",
-      "version": "Versiunea {{version}}",
-      "privacyPolicy": "Politica de confidențialitate",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Mesaj pentru Agarka...",
-      "createImages": "Creează imagini",
-      "generateAiArtwork": "Generează artă AI",
-      "camera": "Cameră",
-      "takeOrSelectPhotos": "Fă sau selectează fotografii",
-      "search": "Căutare",
-      "findInformation": "Găsește informații",
-      "removeImage": "Elimină imaginea",
-      "messageInput": "Câmp mesaj",
-      "clearInput": "Șterge câmpul",
-      "hideQuickActions": "Ascunde acțiunile rapide",
-      "showQuickActions": "Afișează acțiunile rapide",
-      "startVoiceInput": "Pornește introducerea vocală",
-      "sendMessage": "Trimite",
-      "offline": "Offline",
-      "stop": "Oprire",
-      "streaming": "Se redă în flux…",
-      "closeRecorder": "Închide înregistratorul",
-      "insertTranscript": "Inserează transcriere",
-      "scrollToLatest": "Derulează la cele mai noi",
-      "copyMessage": "Copiază mesajul",
-      "copyMessageHint": "Copiază acest mesaj în clipboard",
-      "shareMessage": "Distribuie mesajul",
-      "shareMessageHint": "Distribuie acest mesaj",
-      "regenerateResponse": "Generează din nou răspunsul",
-      "regenerateResponseHint": "Generează un răspuns nou",
-      "copyCode": "Copiază codul",
-      "image": "imagine",
-      "loading": "Se încarcă…",
-      "loadingChat": "Se încarcă chat-ul...",
-      "offlineBanner": "Ești offline. Nu poți trimite mesaje.",
-      "imagePickerErrorTitle": "Eroare selector imagine",
-      "messageTooLong": "Mesajul este prea lung ({{length}}). Limita este {{limit}}.",
-      "emptyTitle": "Cu ce te pot ajuta?",
-      "emptySubtitle": "Începe o conversație cu AI",
-      "privateTitle": "Chat privat",
-      "privateSubtitle": "Acest chat nu va apărea în istoricul tău",
-      "listening": "Ascult…",
-      "startRecording": "Începe înregistrarea…",
-      "suggestions": {
-        "writeStory": "Scrie o poveste creativă",
-        "writeStorySubtitle": "despre o aventură magică",
-        "planTravel": "Planifică un itinerar",
-        "planTravelSubtitle": "pentru o vacanță grozavă",
-        "explainConcept": "Explică acest concept",
-        "explainConceptSubtitle": "în termeni simpli",
-        "planDay": "Planifică-mi ziua",
-        "planDaySubtitle": "cu sfaturi de productivitate"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Se procesează...",
-      "tapToUploadImage": "Atinge pentru a încărca imagine"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Se procesează...",
-      "camera": "Cameră",
-      "library": "Bibliotecă"
-    },
-    "common": {
-      "new": "NOU",
-      "best": "CEL MAI BUN",
-      "cancel": "Anulează",
-      "save": "Salvează",
-      "delete": "Șterge",
+    "accessibility": {
       "close": "Închide"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Șterge",
+      "edit": "Editează",
+      "save": "Salvează",
+      "share": "Partajează"
+    },
+    "accessibility": {
+      "close": "Închide",
+      "delete": "Șterge imaginea",
+      "edit": "Editează imaginea",
+      "save": "Salvează imaginea",
+      "share": "Partajează imaginea"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Deschide meniul",
+      "selectImages": "Selectează imagini",
+      "exitSelection": "Ieși din selecție",
+      "deleteSelected": "Șterge imaginile selectate",
+      "selectToDelete": "Selectează imagini pentru ștergere"
+    },
+    "createCard": {
+      "title": "Creează din text",
+      "subtitle": "Scrie o descriere",
+      "cta": "Descrie și generează"
+    },
+    "editCard": {
+      "title": "Editează o fotografie",
+      "subtitle": "Încarcă și editează",
+      "cta": "Editează fotografia"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "empty": "Nicio imagine încă",
+      "selection": {
+        "enter": "Selectează imagini",
+        "exit": "Ieși din selecție",
+        "deleteSelected": "Șterge selectatele",
+        "selectForDelete": "Selectează pentru ștergere"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Fă cunoștință cu",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Creează și editează imagini cu AI — direct în {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Cunoaște-ți AI-ul",
+      "titleHighlight": "Asistenți",
+      "subtitle": "Experți AI specializați gata să te ajute în viața de zi cu zi",
+      "cards": [
+        {
+          "title": "Antrenor de fitness",
+          "text": "Primește planuri de antrenament și nutriție personalizate"
+        },
+        {
+          "title": "Doctor",
+          "text": "Primește informații de sănătate, analiză de simptome și ghidaj"
+        },
+        {
+          "title": "Îngrijire animale",
+          "text": "Sfaturi despre sănătate, dresaj și îngrijire"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "SOLUȚII AI PENTRU COMPANII",
+      "description": "Dezvoltă-ți afacerea cu inteligență artificială de ultimă generație pentru profesioniști și echipe.",
+      "stats": "De încredere pentru 500k+ utilizatori",
+      "rating": "4,9 / 5",
+      "button": "Începe"
+    }
+  },
+  "coinStore": {
+    "title": "Cumpără jetoane",
+    "loading": "Se încarcă magazinul de jetoane…",
+    "balanceLabel": "Soldul tău curent este",
+    "balanceValue": "{{amount}} jetoane",
+    "history": {
+      "link": "Istoric tranzacții",
+      "alertTitle": "Istoric",
+      "alertBody": "Istoricul tranzacțiilor va fi disponibil în curând."
+    },
+    "noPacks": "Nu există pachete de jetoane disponibile. Verifică offering id din RevenueCat.",
+    "badges": {
+      "basic": "Pachet de bază",
+      "popular": "Cel mai popular",
+      "value": "Cel mai bun raport calitate/preț"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} jetoane",
+      "defaultName": "Pachet {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Treci la Premium",
+      "subtitle": "Acces și funcții nelimitate",
+      "cta": "Upgrade"
+    },
+    "termsText": "Prin achiziție ești de acord cu",
+    "termsLink": "Termenii noștri de utilizare",
+    "alerts": {
+      "initErrorTitle": "Eroare la inițializare",
+      "genericMessage": "Ceva nu a mers bine.",
+      "successTitle": "Succes",
+      "successMessage": "Jetoanele vor apărea în curând.",
+      "purchaseFailedTitle": "Achiziție eșuată",
+      "unknownError": "Eroare necunoscută"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Restaurează",
+    "restoreRestoring": "Se restaurează…",
+    "features": {
+      "create": "Creează imagini și videoclipuri",
+      "search": "Caută pe web cu AI",
+      "talk": "Vorbește natural cu AI"
+    },
+    "freeTrial": {
+      "title": "Probă gratuită",
+      "subtitle": "Probă gratuită de 3 zile"
+    },
+    "badge": {
+      "bestOffer": "Cea mai bună ofertă"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Anual",
+        "only": "Doar {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Lunar",
+        "subtitle": "Poți anula oricând",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Săptămânal",
+        "subtitle": "Poți anula oricând",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "pe săptămână",
+      "perMonth": "pe lună"
+    },
+    "cta": "Continuă",
+    "legal": {
+      "terms": "Termeni",
+      "privacy": "Confidențialitate"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mesaj...",
+    "createImages": "Creează imagini",
+    "generateAiArtwork": "Generează artă AI",
+    "camera": "Cameră",
+    "takeOrSelectPhotos": "Fă sau selectează fotografii",
+    "search": "Caută",
+    "findInformation": "Găsește informații",
+    "findRecentInfo": "Găsește informații recente",
+    "removeImage": "Elimină imaginea",
+    "messageInput": "Câmp mesaj",
+    "clearInput": "Șterge",
+    "quickActionsLabel": "Acțiuni rapide",
+    "hideQuickActions": "Ascunde acțiunile rapide",
+    "showQuickActions": "Arată acțiunile rapide",
+    "startVoiceInput": "Pornește introducerea vocală",
+    "sendMessage": "Trimite mesaj",
+    "offline": "Offline",
+    "stop": "Oprește",
+    "streaming": "Se transmite…",
+    "closeRecorder": "Închide înregistrarea",
+    "insertTranscript": "Trimite",
+    "scrollToLatest": "Derulează la cel mai recent",
+    "copyMessage": "Copiază mesajul",
+    "copyMessageHint": "Copiază acest mesaj în clipboard",
+    "shareMessage": "Partajează mesajul",
+    "shareMessageHint": "Partajează acest mesaj",
+    "regenerateResponse": "Generează din nou răspunsul",
+    "regenerateResponseHint": "Creează un răspuns nou",
+    "copyCode": "Copiază codul",
+    "image": "imagine",
+    "loading": "Se încarcă…",
+    "loadingChat": "Se încarcă chatul...",
+    "offlineBanner": "Ești offline. Nu se pot trimite mesaje.",
+    "imagePickerErrorTitle": "Eroare la selectarea imaginii",
+    "imagePickerErrorMessage": "Nu s-a putut accesa galeria. Încearcă din nou.",
+    "messageTooLong": "Mesaj prea lung ({{length}}). Limita este {{limit}}.",
+    "sendFailed": "Trimitere eșuată.",
+    "voiceStartFailed": "Nu s-a putut porni vocea.",
+    "emptyTitle": "Cu ce te pot ajuta?",
+    "emptySubtitle": "Începe o conversație cu AI",
+    "privateTitle": "Chat privat",
+    "privateSubtitle": "Acest chat nu va apărea în istoric",
+    "permissions": {
+      "photosTitle": "Este necesară permisiunea pentru poze",
+      "photosMessage": "Ai nevoie de acces la poze pentru a selecta imagini.",
+      "voiceTitle": "Este necesară permisiunea pentru voce",
+      "voiceMessage": "Ai nevoie de acces la microfon și vorbire pentru a folosi vocea."
+    },
+    "activity": {
+      "analyzingImages": "Se analizează imaginile…",
+      "searching": "Se caută…",
+      "thinking": "Se gândește…"
+    },
+    "webSearch": {
+      "title": "Căutare web",
+      "subtitle": "Găsește informații recente",
+      "label": "Căutare web",
+      "enable": "Activează căutarea web",
+      "disable": "Dezactivează căutarea web",
+      "toggleLabel": "Caută pe web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Proiectează vizualuri rapid.",
+      "subtitle": "Generează, rafinează și publică într-un singur loc.",
+      "cta": "Deschide"
+    },
+    "quickActions": {
+      "createImages": "Creează imagini",
+      "openCamera": "Deschide camera",
+      "editImage": "Editează imaginea",
+      "startVoice": "Pornește vocea",
+      "assistants": "Asistenți"
+    },
+    "listening": "Ascult…",
+    "startRecording": "Pornesc înregistrarea…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistent indisponibil",
+      "unavailableDescription": "Nu am putut încărca asistentul. Încearcă din nou.",
+      "ready": "Gata de ajutor"
+    },
+    "actions": {
+      "copy": "Copiază",
+      "share": "Partajează",
+      "regenerate": "Generează din nou",
+      "retryFromHere": "Încearcă din nou de aici",
+      "cancel": "Anulează"
+    },
+    "messageActionTitle": "Mesaj",
+    "status": {
+      "sending": "Se trimite…",
+      "failed": "Eșuat",
+      "sent": "Trimis"
+    },
+    "suggestions": {
+      "writeStory": "Scrie o poveste creativă",
+      "writeStorySubtitle": "despre o aventură magică",
+      "planTravel": "Planifică o călătorie",
+      "planTravelSubtitle": "pentru o vacanță grozavă",
+      "explainConcept": "Explică acest concept",
+      "explainConceptSubtitle": "în termeni simpli",
+      "planDay": "Planifică-mi ziua",
+      "planDaySubtitle": "cu sfaturi de productivitate"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Se procesează...",
+    "tapToUploadImage": "Atinge pentru a încărca imagine"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Se procesează...",
+    "camera": "Cameră",
+    "library": "Bibliotecă"
+  },
+  "common": {
+    "new": "NOU",
+    "best": "CEL MAI BUN",
+    "cancel": "Anulează",
+    "save": "Salvează",
+    "delete": "Șterge",
+    "close": "Închide",
+    "allow": "Permite"
   }
-  
+}

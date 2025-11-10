@@ -10,7 +10,6 @@ const DEFAULT_MODELS = {
   'gpt-5-nano':       { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'GPT-5 Nano',     group: 'OpenAI' }, temperatureSupported: true },
   'o4-mini':          { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'O4 Mini',        group: 'OpenAI' }, temperatureSupported: true },
   'gpt-4.1-mini':     { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'GPT-4.1 Mini',   group: 'OpenAI' }, temperatureSupported: true },
-  'gpt-4.1-nano':     { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'GPT-4.1 Nano',   group: 'OpenAI' }, temperatureSupported: true },
 
   // ===== Anthropic (Claude) =====
   'claude-3-haiku-20240307': { provider: 'anthropic', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Claude 3 Haiku',   group: 'Anthropic' }, temperatureSupported: true },

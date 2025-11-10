@@ -1,25 +1,32 @@
 {
   "modelSelector": {
     "title": "Seleziona un modello",
-    "searchPlaceholder": "Cerca modelli…",
+    "searchPlaceholder": "Cerca modelli...",
     "noModelsFound": "Nessun modello trovato",
     "noModelsAvailable": "Nessun modello disponibile",
     "currentModel": "Modello attuale: {{name}}. Tocca per cambiare.",
-    "openHint": "Apri il menu di selezione modello",
-    "closeLabel": "Chiudi selezione modello",
+    "openHint": "Apre il menu di selezione del modello",
+    "closeLabel": "Chiudi selettore modello",
     "searchLabel": "Cerca modelli",
-    "searchHint": "Digita per filtrare i modelli",
+    "searchHint": "Digita per filtrare i modelli disponibili",
     "modelLabel": "Modello {{name}}",
-    "selectHint": "Seleziona {{name}}",
-    "currentlySelected": "Modello attualmente selezionato"
+    "selectHint": "Seleziona il modello {{name}}",
+    "currentlySelected": "Attualmente selezionato"
   },
   "models": {
-    "gpt-4o": "Modello IA più potente",
+    "gpt-4o": "Modello di IA più potente",
     "gpt-4o-mini": "Veloce per le attività quotidiane",
-    "claude-3-haiku": "Modello rapido ed efficiente",
-    "claude-3.7-sonnet": "Ragionamento avanzato",
-    "gemini-2.5-pro": "Il miglior modello di Google",
-    "gemini-2.0-flash": "Modello veloce con ottimo ragionamento"
+    "gpt-5": "IA più potente e versatile",
+    "gpt-5-chat-latest": "Ottimizzato per chat e dialogo",
+    "gpt-5-mini": "GPT-5 veloce e affidabile",
+    "gpt-5-nano": "Modello leggero per attività semplici",
+    "o4-mini": "Modello di ragionamento efficiente",
+    "gpt-4.1-mini": "GPT-4.1 compatto e capace",
+    "claude-3-haiku": "IA Anthropic veloce e mirata",
+    "claude-3.7-sonnet": "Ragionamento raffinato di Anthropic",
+    "gemini-2.5-Flash": "Modello più avanzato di Google",
+    "gemini-2.5-flash": "Modello più avanzato di Google",
+    "gemini-2.0-flash": "IA Google rapida e precisa"
   },
   "providers": {
     "openai": "OpenAI",
@@ -29,32 +36,38 @@
     "other": "Altro"
   },
   "navigation": {
-    "chat": "Chat",
+    "chat": "Nuova chat",
     "history": "Cronologia",
     "assistants": "Assistenti",
-    "imagesStudio": "Studio",
+    "imagesStudio": "Image Studio",
     "settings": "Impostazioni",
     "recentChats": "Chat recenti"
   },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Genera, perfeziona e pubblica le risorse visive in un unico posto.",
+    "cta": "Apri"
+  },
   "imagesStudio": {
-    "title": "Studio",
+    "title": "Image Studio",
     "selectImages": "Seleziona immagini",
     "exitSelectionMode": "Esci dalla modalità selezione",
     "selectAll": "Seleziona tutto",
-    "noImagesYet": "Nessuna immagine",
-    "describeImageHint": "Descrivi l’immagine qui sotto e tocca «Genera».",
+    "noImagesYet": "Nessuna immagine per ora",
+    "describeImageHint": "Descrivi l’immagine qui sotto e tocca Genera.",
     "generatedImagesGallery": "Galleria immagini generate",
-    "describeImagePlaceholder": "Descrivi l’immagine che desideri…",
+    "describeImagePlaceholder": "Descrivi l’immagine che vuoi…",
     "deleteConfirmTitle": "Elimina immagini",
-    "deleteConfirmMessage": "Eliminare le immagini selezionate? Questa azione non può essere annullata.",
+    "deleteConfirmMessage": "Vuoi davvero eliminare le immagini selezionate? Questa azione non può essere annullata.",
     "cancel": "Annulla",
     "delete": "Elimina",
     "generate": "Genera",
-    "generating": "Generazione in corso…",
-    "latest": "Ultime",
-    "insertToChat": "Inserisci in chat",
-    "pleaseWait": "Attendere…",
-    "processing": "Elaborazione…",
+    "generating": "Generazione…",
+    "latest": "Più recenti",
+    "insertToChat": "Inserisci nella chat",
+    "pleaseWait": "Attendi…",
+    "processing": "Elaborazione...",
     "tapToUploadImage": "Tocca per caricare un’immagine",
     "camera": "Fotocamera",
     "library": "Libreria",
@@ -69,26 +82,26 @@
     "selectedCount": "selezionate",
     "selectedCount_one": "selezionata",
     "selectedCount_other": "selezionate",
-    "imageDescriptionInput": "Inserimento descrizione immagine",
-    "imageDescriptionHint": "Inserisci la descrizione dell’immagine da generare",
+    "imageDescriptionInput": "Campo descrizione immagine",
+    "imageDescriptionHint": "Inserisci una descrizione dell’immagine che vuoi generare",
     "openModelSettings": "Apri impostazioni modello",
     "modelSettingsHint": "Tocca per cambiare modello e impostazioni",
     "openPhotoGallery": "Apri galleria foto",
     "clearInput": "Pulisci",
     "generatedImage": "Immagine generata",
-    "autoSelectedModel": "{{model}} selezionato automaticamente per la modalità {{mode}}",
+    "autoSelectedModel": "Modello {{model}} selezionato automaticamente per la modalità {{mode}}",
     "deleteSelectedConfirmTitle": "Elimina immagini",
     "deleteSelectedConfirmMessage": "Vuoi davvero eliminare le immagini? Questa azione non può essere annullata."
   },
   "imageStudio": {
     "generateImage": "Genera immagine",
-    "generatingImage": "Immagine in generazione",
-    "generateImageHint": "Tocca per generare un’immagine dalla tua descrizione",
-    "imageDescriptionInput": "Inserimento descrizione immagine",
-    "imageDescriptionHint": "Inserisci la descrizione dell’immagine da generare",
+    "generatingImage": "Generazione immagine",
+    "generateImageHint": "Tocca per generare un’immagine in base alla descrizione",
+    "imageDescriptionInput": "Campo descrizione immagine",
+    "imageDescriptionHint": "Inserisci la descrizione dell’immagine che vuoi generare",
     "openModelSettings": "Apri impostazioni modello",
     "modelSettingsHint": "Tocca per cambiare modello e impostazioni",
-    "openPhotoGallery": "Apri galleria foto",
+    "openPhotoGallery": "Apri galleria",
     "clearInput": "Pulisci",
     "generatedImage": "Immagine generata"
   },
@@ -97,6 +110,7 @@
     "subtitle": "Specialisti IA selezionati per codice, scrittura, analisi, pianificazione e altro.",
     "searchPlaceholder": "Cerca assistenti…",
     "useAssistant": "Usa assistente",
+    "selectAssistant": "Scegli assistente",
     "description": "Descrizione",
     "systemPrompt": "Prompt di sistema",
     "chooseModel": "Scegli modello",
@@ -105,32 +119,92 @@
       "everyday": "Quotidiano",
       "life": "Vita",
       "health": "Salute",
-      "schoolWork": "Scuola & Lavoro",
+      "schoolWork": "Scuola e lavoro",
       "coding": "Programmazione",
       "creative": "Creativo",
       "general": "Generale"
     },
     "presets": {
-      "default": { "name": "Assistente predefinito", "description": "Aiuto equilibrato per le attività di tutti i giorni." },
-      "quick": { "name": "Risposte rapide", "description": "Brevi e dirette." },
-      "planner": { "name": "Pianificatore giornaliero", "description": "Pianifica la giornata e le routine." },
-      "recipes": { "name": "Pasti & Ricette", "description": "Cosa cucinare con ciò che hai." },
-      "fitness": { "name": "Coach Abitudini & Fitness", "description": "Mini-abitudini e workout a casa." },
-      "money": { "name": "Buddy Finanze", "description": "Budget semplici e consigli di risparmio." },
-      "study": { "name": "Aiuto studio", "description": "Spiega in modo semplice. Quiz." },
-      "email": { "name": "Email & CV", "description": "Email chiare e frasi per il CV." },
-      "translator": { "name": "Traduttore", "description": "Traduci e impara frasi." },
-      "travel": { "name": "Compagno di viaggio", "description": "Piani semplici e liste bagaglio." },
-      "tech": { "name": "Supporto tecnico (base)", "description": "Nozioni base su telefono, app e Wi-Fi." },
-      "summarizer": { "name": "Riepilogo TL;DR", "description": "Punti brevi + TL;DR in una riga." },
-      "gift": { "name": "Trova regali", "description": "Idee per budget e interessi." },
-      "party": { "name": "Planner eventi (lite)", "description": "Organizza velocemente una piccola festa." },
-      "social": { "name": "Creatore post social", "description": "Bozze con opzioni." },
-      "interview": { "name": "Coach colloqui", "description": "Esercitati con risposte (STAR)." },
-      "homefix": { "name": "Guida riparazioni casa", "description": "Risoluzione problemi DIY semplice." },
-      "pet": { "name": "Cura animali", "description": "Alimentazione, passeggiate, base di educazione." },
-      "mindful": { "name": "Minuto mindful", "description": "Pausa calma da 1–3 minuti." },
-      "polite": { "name": "Riscrittura gentile", "description": "Riformula testi e risposte con cortesia." }
+      "default": {
+        "name": "Assistente predefinito",
+        "description": "Aiuto bilanciato per il quotidiano."
+      },
+      "quick": {
+        "name": "Risposte rapide",
+        "description": "Risposte brevi e dirette."
+      },
+      "planner": {
+        "name": "Pianificatore giornaliero",
+        "description": "Organizza la giornata e le routine."
+      },
+      "recipes": {
+        "name": "Pasti e ricette",
+        "description": "Cosa cucinare con ciò che hai."
+      },
+      "fitness": {
+        "name": "Coach abitudini e fitness",
+        "description": "Mini abitudini e allenamenti a casa."
+      },
+      "money": {
+        "name": "Consulente denaro",
+        "description": "Budget semplici e consigli di spesa."
+      },
+      "study": {
+        "name": "Aiuto studio",
+        "description": "Spiega in modo semplice. Fammi esercitare."
+      },
+      "email": {
+        "name": "Email e CV",
+        "description": "Scrivi email chiare e righe di curriculum."
+      },
+      "translator": {
+        "name": "Traduttore",
+        "description": "Traduci e impara frasi."
+      },
+      "travel": {
+        "name": "Compagno di viaggio",
+        "description": "Piani semplici e lista bagagli."
+      },
+      "tech": {
+        "name": "Supporto tecnico (semplice)",
+        "description": "Telefono, app, Wi-Fi base."
+      },
+      "summarizer": {
+        "name": "Riassuntore TL;DR",
+        "description": "Punti brevi + riassunto in una riga."
+      },
+      "gift": {
+        "name": "Trova regali",
+        "description": "Idee per budget e interessi."
+      },
+      "party": {
+        "name": "Organizzatore eventi (lite)",
+        "description": "Organizza velocemente una piccola festa."
+      },
+      "social": {
+        "name": "Creatore post social",
+        "description": "Scrivi post con varianti."
+      },
+      "interview": {
+        "name": "Coach colloquio",
+        "description": "Allena le risposte (STAR)."
+      },
+      "homefix": {
+        "name": "Riparazioni casa",
+        "description": "Soluzioni fai-da-te semplici."
+      },
+      "pet": {
+        "name": "Cura animali domestici",
+        "description": "Alimentazione, passeggiate, addestramento base."
+      },
+      "mindful": {
+        "name": "Momento mindfulness",
+        "description": "Pause calme di 1–3 minuti."
+      },
+      "polite": {
+        "name": "Riscrittura gentile",
+        "description": "Riscrivi testi e risposte in modo educato."
+      }
     }
   },
   "history": {
@@ -139,62 +213,424 @@
     "newChat": "Nuova chat",
     "new": "+ Nuova",
     "search": "Cerca",
-    "clearSearch": "Cancella ricerca",
+    "clearSearch": "Pulisci ricerca",
     "noChatsYet": "Ancora nessuna chat",
     "startFirstConversation": "Inizia la tua prima conversazione.",
     "startChat": "Avvia chat",
-    "errorLoadingHistory": "Errore durante il caricamento della cronologia",
+    "errorLoadingHistory": "Errore nel caricamento della cronologia",
     "renameChat": "Rinomina chat",
     "enterNewTitle": "Inserisci un nuovo titolo",
     "deleteChat": "Eliminare la chat?",
-    "deleteChatMessage": "«{{title}}» verrà eliminata.",
+    "deleteChatMessage": "“{{title}}” verrà eliminata.",
     "rename": "Rinomina",
-    "unpin": "Rimuovi pin",
-    "pin": "Fissa",
+    "unpin": "Sblocca",
+    "pin": "Blocca",
     "untitled": "Senza titolo"
   },
   "settings": {
     "title": "Impostazioni",
     "model": "Modello",
     "searchPlaceholder": "Cerca modelli…",
-    "temperatureForCurrentModel": "Temperatura del modello attuale",
+    "temperatureForCurrentModel": "Temperatura per il modello attuale",
     "customFor": "Personalizzato per {{model}}",
-    "usingDefault": "Usa valore predefinito {{temperature}}",
-    "resetToDefault": "Ripristina predefiniti",
+    "usingDefault": "Usa il valore predefinito {{temperature}}",
+    "resetToDefault": "Ripristina predefinito",
     "defaultTemperature": "Temperatura predefinita (fallback)",
-    "usedByModelsWithoutOverride": "Usata dai modelli senza valore personalizzato",
+    "usedByModelsWithoutOverride": "Usata dai modelli senza personalizzazione",
     "dangerZone": "Zona pericolosa",
-    "clearAllChatsAndSettings": "Cancella tutte le chat e le impostazioni",
-    "about": "Info",
-    "version": "Versione {{version}}",
+    "clearAllChatsAndSettings": "Pulisci tutte le chat e le impostazioni",
+    "about": "Informazioni",
+    "version": "Versione {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
     "privacyPolicy": "Informativa sulla privacy",
+    "hero": {
+      "label": "Offerta speciale",
+      "title": "Accesso prioritario e senza limiti",
+      "upgrade": "Aggiorna",
+      "manage": "Gestisci piano"
+    },
+    "sections": {
+      "premium": "Piano Premium",
+      "data": "Dati utente",
+      "support": "Supporto e legale"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Ottieni Premium",
+        "subtitle": "Sblocca strumenti di creazione illimitati"
+      },
+      "premiumActive": {
+        "title": "Premium attivo",
+        "subtitle": "Grazie per il supporto a ChatCloud"
+      },
+      "restore": {
+        "title": "Ripristina acquisti",
+        "subtitle": "Usalo se hai cambiato dispositivo"
+      },
+      "history": {
+        "title": "Gestisci cronologia chat",
+        "subtitle": "Visualizza ed elimina le sessioni passate"
+      },
+      "reset": {
+        "title": "Reimposta chat e preferenze",
+        "subtitle": "Cancella tutti i dati salvati su questo dispositivo"
+      },
+      "rate": {
+        "title": "Valutaci",
+        "error": "Impossibile aprire la pagina dello store."
+      },
+      "support": {
+        "title": "Supporto",
+        "subtitle": "Contattaci online",
+        "error": "Impossibile aprire la pagina di contatto."
+      },
+      "privacy": {
+        "title": "Informativa sulla privacy",
+        "error": "Impossibile aprire l’informativa."
+      },
+      "terms": {
+        "title": "Termini d’uso",
+        "error": "Impossibile aprire i termini d’uso."
+      }
+    },
     "capabilities": {
       "text": "TXT",
       "image": "IMG",
       "audio": "AUD",
       "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Non disponibile",
+      "linkUnavailableMessage": "Impossibile aprire questo link ora.",
+      "restoreSuccessTitle": "Ripristinato",
+      "restoreSuccessMessage": "I tuoi acquisti sono stati ripristinati.",
+      "restoreErrorTitle": "Ripristino non riuscito",
+      "restoreErrorMessage": "Impossibile ripristinare gli acquisti ora.",
+      "resetConfirmTitle": "Reimpostare i dati dell’app?",
+      "resetConfirmMessage": "Questo rimuove tutte le chat e le preferenze locali.",
+      "resetConfirmCancel": "Annulla",
+      "resetConfirmCta": "Reimposta"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Crea",
+    "chooseStyle": "Scegli uno stile",
+    "aspectRatio": "Proporzioni",
+    "starterPrompts": {
+      "title": "Prompt iniziali",
+      "items": [
+        "ritratto in studio",
+        "soggiorno moderno",
+        "spiaggia tropicale al tramonto"
+      ]
+    },
+    "promptPlaceholder": "Scrivi cosa vuoi vedere…",
+    "promptHint": "Esempio: “Golden retriever con luce da studio”",
+    "clearText": "Pulisci testo",
+    "generate": "Genera",
+    "generating": "Generazione…"
+  },
+  "editImage": {
+    "headerTitle": "Modifica",
+    "chooseStyle": "Scegli uno stile",
+    "aspectRatio": "Proporzioni",
+    "starterPrompts": {
+      "title": "Prompt iniziali",
+      "items": [
+        "correggi illuminazione",
+        "rimuovi sfondo",
+        "ritocco morbido ritratto"
+      ]
+    },
+    "promptPlaceholder": "Descrivi le modifiche (facoltativo)",
+    "clearText": "Pulisci testo",
+    "generate": "Genera",
+    "generating": "Applicazione…",
+    "upload": {
+      "choose": "Scegli foto",
+      "change": "Cambia",
+      "remove": "Rimuovi"
+    },
+    "imageUnavailable": {
+      "title": "Immagine non disponibile",
+      "message": "Impossibile accedere alla foto selezionata. Selezionala di nuovo e riprova."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Cartoon"
+      },
+      "photoreal": {
+        "name": "Fotorealistico"
+      },
+      "sketch": {
+        "name": "Schizzo"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Illustrazione 3D"
+      },
+      "dark_fantasy": {
+        "name": "Dark fantasy"
+      },
+      "vintage_film": {
+        "name": "Film vintage"
+      },
+      "pastel": {
+        "name": "Pastello"
+      },
+      "neon_glow": {
+        "name": "Neon glow"
+      },
+      "epic_landscape": {
+        "name": "Paesaggio epico"
+      }
+    },
+    "aspectRatios": {
+      "square": "Quadrato",
+      "landscape": "Orizzontale",
+      "portrait": "Verticale"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Personalizzato"
+    },
+    "modelTaglines": {
+      "runwareFluxSchnell": "Modello più veloce",
+      "runwareFluxKrea": "Creativo e stilizzato",
+      "runwareQwenImage": "Risultati bilanciati e di alta qualità",
+      "google4": "Miglior modello di immagini Google",
+      "fluxKontent": "Flux Kontent ottimizzato per le modifiche",
+      "runwareProvider": "Qualità bilanciata con diffusione affidabile.",
+      "airProvider": "Nano Banana aggiunge un tocco vivace e giocoso.",
+      "googleProvider": "Google ottimizzato per dettagli rifiniti.",
+      "anthropicProvider": "Pipeline Claude per atmosfere più sfumate.",
+      "default": "Tocca per esplorare i motori disponibili."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "lo stile scelto",
+    "sheetTitle": "Stiamo creando la tua immagine",
+    "sheetSubtitle": "Un attimo mentre integriamo {{style}} nel prompt.",
+    "phases": {
+      "blend": "Unione di {{style}}",
+      "paint": "Disegno della scena",
+      "finish": "Tocco finale"
+    },
+    "actions": {
+      "cancel": "Annulla",
+      "retry": "Riprova",
+      "close": "Chiudi"
+    },
+    "errors": {
+      "restrictedTitle": "Contenuto limitato",
+      "genericTitle": "Generazione non riuscita",
+      "genericMessage": "Impossibile generare l’immagine."
+    },
+    "alerts": {
+      "saveFailedTitle": "Impossibile salvare",
+      "shareFailedTitle": "Impossibile condividere",
+      "tryAgain": "Riprova."
+    },
+    "result": {
+      "complete": "Completato"
+    },
+    "accessibility": {
+      "close": "Chiudi"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Elimina",
+      "edit": "Modifica",
+      "save": "Salva",
+      "share": "Condividi"
+    },
+    "accessibility": {
+      "close": "Chiudi",
+      "delete": "Elimina immagine",
+      "edit": "Modifica immagine",
+      "save": "Salva immagine",
+      "share": "Condividi immagine"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Apri menu",
+      "selectImages": "Seleziona immagini",
+      "exitSelection": "Esci dalla selezione",
+      "deleteSelected": "Elimina immagini selezionate",
+      "selectToDelete": "Seleziona immagini da eliminare"
+    },
+    "createCard": {
+      "title": "Crea da testo",
+      "subtitle": "Scrivi una descrizione",
+      "cta": "Descrivi e genera"
+    },
+    "editCard": {
+      "title": "Modifica una foto",
+      "subtitle": "Carica e modifica",
+      "cta": "Modifica foto"
+    },
+    "gallery": {
+      "title": "Galleria",
+      "empty": "Ancora nessuna immagine",
+      "selection": {
+        "enter": "Seleziona immagini",
+        "exit": "Esci dalla selezione",
+        "deleteSelected": "Elimina selezionate",
+        "selectForDelete": "Seleziona immagini da eliminare"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Scopri",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Crea e modifica immagini con l’IA — direttamente in {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Conosci la tua IA",
+      "titleHighlight": "Assistenti",
+      "subtitle": "Assistenti IA specializzati pronti ad aiutarti nella vita quotidiana",
+      "cards": [
+        {
+          "title": "Coach fitness",
+          "text": "Allenamenti e consigli nutrizionali personalizzati"
+        },
+        {
+          "title": "Dottore",
+          "text": "Informazioni sulla salute, analisi dei sintomi e guida medica"
+        },
+        {
+          "title": "Cura per animali",
+          "text": "Consigli su salute, addestramento e cura dei tuoi amici a quattro zampe"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "SOLUZIONI IA DI LIVELLO ENTERPRISE",
+      "description": "Potenzia il tuo business con tecnologie di intelligenza artificiale all’avanguardia.",
+      "stats": "Scelto da oltre 500k utenti",
+      "rating": "4,9 / 5",
+      "button": "Inizia"
+    }
+  },
+  "coinStore": {
+    "title": "Ottieni token",
+    "loading": "Caricamento negozio token…",
+    "balanceLabel": "Il tuo saldo attuale è",
+    "balanceValue": "{{amount}} token",
+    "history": {
+      "link": "Cronologia transazioni",
+      "alertTitle": "Cronologia",
+      "alertBody": "La cronologia transazioni sarà disponibile a breve."
+    },
+    "noPacks": "Nessun pacchetto token disponibile. Controlla l’ID di offerta RevenueCat.",
+    "badges": {
+      "basic": "Pacchetto base",
+      "popular": "Più popolare",
+      "value": "Miglior valore"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} token",
+      "defaultName": "Pacchetto {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Passa a Premium",
+      "subtitle": "Accesso illimitato e funzionalità avanzate",
+      "cta": "Aggiorna"
+    },
+    "termsText": "Effettuando un acquisto, accetti i nostri",
+    "termsLink": "Termini di servizio",
+    "alerts": {
+      "initErrorTitle": "Errore di inizializzazione",
+      "genericMessage": "Qualcosa è andato storto.",
+      "successTitle": "Successo",
+      "successMessage": "I token appariranno a breve.",
+      "purchaseFailedTitle": "Acquisto non riuscito",
+      "unknownError": "Errore sconosciuto"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Ripristina",
+    "restoreRestoring": "Ripristino…",
+    "features": {
+      "create": "Crea immagini e video",
+      "search": "Cerca sul web con l’IA",
+      "talk": "Parla in modo naturale con l’IA"
+    },
+    "freeTrial": {
+      "title": "Prova gratuita",
+      "subtitle": "Prova gratuita di 3 giorni"
+    },
+    "badge": {
+      "bestOffer": "Offerta migliore"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Annuale",
+        "only": "Solo {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Mensile",
+        "subtitle": "Disdici quando vuoi",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Settimanale",
+        "subtitle": "Disdici quando vuoi",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "a settimana",
+      "perMonth": "al mese"
+    },
+    "cta": "Continua",
+    "legal": {
+      "terms": "Termini",
+      "privacy": "Privacy"
     }
   },
   "chat": {
-    "messagePlaceholder": "Messaggio ad Agarka…",
+    "messagePlaceholder": "Messaggio...",
     "createImages": "Crea immagini",
-    "generateAiArtwork": "Genera grafica IA",
+    "generateAiArtwork": "Genera illustrazione IA",
     "camera": "Fotocamera",
     "takeOrSelectPhotos": "Scatta o seleziona foto",
     "search": "Cerca",
     "findInformation": "Trova informazioni",
+    "findRecentInfo": "Trova info recenti",
     "removeImage": "Rimuovi immagine",
-    "messageInput": "Inserimento messaggio",
+    "messageInput": "Campo messaggio",
     "clearInput": "Pulisci",
+    "quickActionsLabel": "Azioni rapide",
     "hideQuickActions": "Nascondi azioni rapide",
     "showQuickActions": "Mostra azioni rapide",
-    "startVoiceInput": "Avvia dettatura",
-    "sendMessage": "Invia",
+    "startVoiceInput": "Avvia input vocale",
+    "sendMessage": "Invia messaggio",
     "offline": "Offline",
     "stop": "Stop",
-    "streaming": "Streaming…",
+    "streaming": "In streaming…",
     "closeRecorder": "Chiudi registratore",
-    "insertTranscript": "Inserisci trascrizione",
+    "insertTranscript": "Invia",
     "scrollToLatest": "Vai all’ultimo messaggio",
     "copyMessage": "Copia messaggio",
     "copyMessageHint": "Copia questo messaggio negli appunti",
@@ -206,34 +642,87 @@
     "image": "immagine",
     "loading": "Caricamento…",
     "loadingChat": "Caricamento chat...",
-    "offlineBanner": "Sei offline. Impossibile inviare i messaggi.",
+    "offlineBanner": "Sei offline. I messaggi non possono essere inviati.",
     "imagePickerErrorTitle": "Errore selezione immagine",
+    "imagePickerErrorMessage": "Impossibile accedere alle tue foto. Riprova.",
     "messageTooLong": "Messaggio troppo lungo ({{length}}). Il limite è {{limit}}.",
+    "sendFailed": "Invio non riuscito.",
+    "voiceStartFailed": "Impossibile avviare la voce.",
     "emptyTitle": "Come posso aiutarti?",
     "emptySubtitle": "Inizia una conversazione con l’IA",
     "privateTitle": "Chat privata",
     "privateSubtitle": "Questa chat non apparirà nella cronologia",
+    "permissions": {
+      "photosTitle": "Autorizzazione foto necessaria",
+      "photosMessage": "L’accesso alle foto è necessario per scegliere le immagini.",
+      "voiceTitle": "Autorizzazione microfono necessaria",
+      "voiceMessage": "Sono necessari microfono e riconoscimento vocale per usare la voce."
+    },
+    "activity": {
+      "analyzingImages": "Analisi immagini…",
+      "searching": "Ricerca…",
+      "thinking": "Elaborazione…"
+    },
+    "webSearch": {
+      "title": "Ricerca web",
+      "subtitle": "Trova info recenti",
+      "label": "Ricerca web",
+      "enable": "Abilita ricerca web",
+      "disable": "Disabilita ricerca web",
+      "toggleLabel": "Cerca sul web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Crea visual velocemente.",
+      "subtitle": "Genera, modifica e pubblica in un posto solo.",
+      "cta": "Apri"
+    },
+    "quickActions": {
+      "createImages": "Crea immagini",
+      "openCamera": "Apri fotocamera",
+      "editImage": "Modifica immagine",
+      "startVoice": "Avvia voce",
+      "assistants": "Assistenti"
+    },
     "listening": "In ascolto…",
     "startRecording": "Avvio registrazione…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistente non disponibile",
+      "unavailableDescription": "Impossibile caricare questo assistente. Riprova.",
+      "ready": "Pronto ad aiutare"
+    },
+    "actions": {
+      "copy": "Copia",
+      "share": "Condividi",
+      "regenerate": "Rigenera",
+      "retryFromHere": "Riprova da qui",
+      "cancel": "Annulla"
+    },
+    "messageActionTitle": "Messaggio",
+    "status": {
+      "sending": "Invio…",
+      "failed": "Fallito",
+      "sent": "Inviato"
+    },
     "suggestions": {
       "writeStory": "Scrivi una storia creativa",
       "writeStorySubtitle": "su un’avventura magica",
-      "planTravel": "Pianifica un itinerario di viaggio",
+      "planTravel": "Pianifica un viaggio",
       "planTravelSubtitle": "per una vacanza fantastica",
       "explainConcept": "Spiega questo concetto",
       "explainConceptSubtitle": "in modo semplice",
-      "planDay": "Organizza la mia giornata",
+      "planDay": "Pianifica la mia giornata",
       "planDaySubtitle": "con consigli di produttività"
     }
   },
   "imageUpload": {
     "required": " *",
-    "processing": "Elaborazione…",
-    "tapToUploadImage": "Tocca per caricare un’immagine"
+    "processing": "Elaborazione...",
+    "tapToUploadImage": "Tocca per caricare immagine"
   },
   "imageGridSelector": {
     "required": " *",
-    "processing": "Elaborazione…",
+    "processing": "Elaborazione...",
     "camera": "Fotocamera",
     "library": "Libreria"
   },
@@ -243,6 +732,7 @@
     "cancel": "Annulla",
     "save": "Salva",
     "delete": "Elimina",
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "allow": "Consenti"
   }
 }

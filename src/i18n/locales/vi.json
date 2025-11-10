@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Chọn mô hình",
-      "searchPlaceholder": "Tìm kiếm mô hình...",
-      "noModelsFound": "Không tìm thấy mô hình nào",
-      "noModelsAvailable": "Không có mô hình khả dụng",
-      "currentModel": "Mô hình hiện tại: {{name}}. Chạm để đổi.",
-      "openHint": "Mở menu chọn mô hình",
-      "closeLabel": "Đóng trình chọn mô hình",
-      "searchLabel": "Tìm mô hình",
-      "searchHint": "Gõ để lọc mô hình",
-      "modelLabel": "Mô hình {{name}}",
-      "selectHint": "Chọn {{name}}",
-      "currentlySelected": "Mô hình đã chọn"
+  "modelSelector": {
+    "title": "Chọn mô hình",
+    "searchPlaceholder": "Tìm kiếm mô hình...",
+    "noModelsFound": "Không tìm thấy mô hình",
+    "noModelsAvailable": "Không có mô hình khả dụng",
+    "currentModel": "Mô hình hiện tại: {{name}}. Nhấn để thay đổi.",
+    "openHint": "Mở menu chọn mô hình",
+    "closeLabel": "Đóng bộ chọn mô hình",
+    "searchLabel": "Tìm kiếm mô hình",
+    "searchHint": "Nhập để lọc các mô hình có sẵn",
+    "modelLabel": "Mô hình {{name}}",
+    "selectHint": "Chọn mô hình {{name}}",
+    "currentlySelected": "Đang được chọn"
+  },
+  "models": {
+    "gpt-4o": "Mô hình AI mạnh mẽ nhất",
+    "gpt-4o-mini": "Nhanh cho tác vụ hằng ngày",
+    "gpt-5": "AI đa mục đích mạnh mẽ nhất",
+    "gpt-5-chat-latest": "Tối ưu cho trò chuyện và hội thoại",
+    "gpt-5-mini": "GPT-5 nhanh và đáng tin cậy",
+    "gpt-5-nano": "Mô hình nhẹ cho tác vụ đơn giản",
+    "o4-mini": "Mô hình suy luận hiệu quả",
+    "gpt-4.1-mini": "GPT-4.1 gọn nhẹ nhưng mạnh",
+    "claude-3-haiku": "Anthropic nhanh và tập trung",
+    "claude-3.7-sonnet": "Suy luận tinh vi từ Anthropic",
+    "gemini-2.5-Flash": "Mô hình tiên tiến nhất của Google",
+    "gemini-2.5-flash": "Mô hình tiên tiến nhất của Google",
+    "gemini-2.0-flash": "Google AI nhanh và chính xác"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Khác"
+  },
+  "navigation": {
+    "chat": "Chat mới",
+    "history": "Lịch sử",
+    "assistants": "Trợ lý",
+    "imagesStudio": "Image Studio",
+    "settings": "Cài đặt",
+    "recentChats": "Chat gần đây"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Tạo, tinh chỉnh và xuất bản nội dung hình ảnh tại một nơi.",
+    "cta": "Mở"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Chọn hình",
+    "exitSelectionMode": "Thoát chế độ chọn",
+    "selectAll": "Chọn tất cả",
+    "noImagesYet": "Chưa có hình nào",
+    "describeImageHint": "Mô tả hình bên dưới rồi nhấn \"Tạo\".",
+    "generatedImagesGallery": "Bộ sưu tập hình đã tạo",
+    "describeImagePlaceholder": "Mô tả hình bạn muốn…",
+    "deleteConfirmTitle": "Xóa hình",
+    "deleteConfirmMessage": "Bạn có chắc muốn xóa các hình đã chọn? Hành động này không thể hoàn tác.",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "generate": "Tạo",
+    "generating": "Đang tạo…",
+    "latest": "Mới nhất",
+    "insertToChat": "Chèn vào chat",
+    "pleaseWait": "Vui lòng chờ…",
+    "processing": "Đang xử lý...",
+    "tapToUploadImage": "Nhấn để tải hình lên",
+    "camera": "Máy ảnh",
+    "library": "Thư viện",
+    "enterPrompt": "Vui lòng nhập prompt để tạo hình từ văn bản",
+    "openInBrowser": "Mở trong trình duyệt",
+    "makeVariations": "Tạo biến thể",
+    "deleteAllFromGeneration": "Xóa toàn bộ hình trong lần tạo này",
+    "imageOptionsTitle": "Tùy chọn hình ảnh",
+    "imageOptionsMessage": "Bạn muốn làm gì với hình này?",
+    "insertMarkdownHeader": "Đây là hình cho:",
+    "variationSuffix": "— biến thể của hình trước",
+    "selectedCount": "đã chọn",
+    "selectedCount_one": "đã chọn",
+    "selectedCount_other": "đã chọn",
+    "imageDescriptionInput": "Ô mô tả hình",
+    "imageDescriptionHint": "Nhập mô tả hình bạn muốn tạo",
+    "openModelSettings": "Mở cài đặt mô hình",
+    "modelSettingsHint": "Nhấn để thay đổi mô hình và cài đặt",
+    "openPhotoGallery": "Mở thư viện ảnh",
+    "clearInput": "Xóa nội dung",
+    "generatedImage": "Hình đã tạo",
+    "autoSelectedModel": "Đã tự chọn {{model}} cho chế độ {{mode}}",
+    "deleteSelectedConfirmTitle": "Xóa hình",
+    "deleteSelectedConfirmMessage": "Bạn có chắc muốn xóa hình? Hành động này không thể hoàn tác."
+  },
+  "imageStudio": {
+    "generateImage": "Tạo hình",
+    "generatingImage": "Đang tạo hình",
+    "generateImageHint": "Nhấn để tạo hình dựa trên mô tả của bạn",
+    "imageDescriptionInput": "Ô mô tả hình",
+    "imageDescriptionHint": "Nhập mô tả hình bạn muốn tạo",
+    "openModelSettings": "Mở cài đặt mô hình",
+    "modelSettingsHint": "Nhấn để thay đổi mô hình và cài đặt",
+    "openPhotoGallery": "Mở thư viện ảnh",
+    "clearInput": "Xóa nội dung",
+    "generatedImage": "Hình đã tạo"
+  },
+  "assistants": {
+    "title": "Trợ lý",
+    "subtitle": "Các trợ lý AI được tuyển chọn cho lập trình, viết nội dung, phân tích, lập kế hoạch và nhiều hơn nữa.",
+    "searchPlaceholder": "Tìm trợ lý…",
+    "useAssistant": "Dùng trợ lý",
+    "selectAssistant": "Chọn trợ lý",
+    "description": "Mô tả",
+    "systemPrompt": "Prompt hệ thống",
+    "chooseModel": "Chọn mô hình",
+    "categoryAll": "Tất cả",
+    "categories": {
+      "everyday": "Hằng ngày",
+      "life": "Đời sống",
+      "health": "Sức khỏe",
+      "schoolWork": "Học tập & công việc",
+      "coding": "Lập trình",
+      "creative": "Sáng tạo",
+      "general": "Chung"
+    },
+    "presets": {
+      "default": {
+        "name": "Trợ lý mặc định",
+        "description": "Hỗ trợ cân bằng cho việc hằng ngày."
+      },
+      "quick": {
+        "name": "Trả lời nhanh",
+        "description": "Câu trả lời ngắn gọn."
+      },
+      "planner": {
+        "name": "Lập kế hoạch ngày",
+        "description": "Sắp xếp ngày và thói quen của bạn."
+      },
+      "recipes": {
+        "name": "Món ăn & công thức",
+        "description": "Nấu gì với nguyên liệu đang có."
+      },
+      "fitness": {
+        "name": "Huấn luyện thói quen & thể dục",
+        "description": "Thói quen nhỏ và tập tại nhà."
+      },
+      "money": {
+        "name": "Trợ lý tài chính",
+        "description": "Ngân sách đơn giản và gợi ý chi tiêu."
+      },
+      "study": {
+        "name": "Trợ lý học tập",
+        "description": "Giải thích dễ hiểu. Có thể hỏi lại bạn."
+      },
+      "email": {
+        "name": "Email & CV",
+        "description": "Viết email và dòng CV rõ ràng."
+      },
+      "translator": {
+        "name": "Dịch thuật",
+        "description": "Dịch và dạy cách nói."
+      },
+      "travel": {
+        "name": "Trợ lý du lịch",
+        "description": "Kế hoạch đơn giản và danh sách đồ mang theo."
+      },
+      "tech": {
+        "name": "Hỗ trợ kỹ thuật (cơ bản)",
+        "description": "Điện thoại, app, Wi-Fi cơ bản."
+      },
+      "summarizer": {
+        "name": "Tóm tắt TL;DR",
+        "description": "Gạch đầu dòng + 1 dòng tổng kết."
+      },
+      "gift": {
+        "name": "Gợi ý quà tặng",
+        "description": "Ý tưởng theo ngân sách & sở thích."
+      },
+      "party": {
+        "name": "Lập kế hoạch sự kiện (nhanh)",
+        "description": "Lên kế hoạch buổi tiệc nhỏ nhanh chóng."
+      },
+      "social": {
+        "name": "Viết bài mạng xã hội",
+        "description": "Soạn nhiều phiên bản bài đăng."
+      },
+      "interview": {
+        "name": "Huấn luyện phỏng vấn",
+        "description": "Luyện trả lời theo STAR."
+      },
+      "homefix": {
+        "name": "Sửa chữa tại nhà",
+        "description": "Hướng dẫn khắc phục sự cố đơn giản."
+      },
+      "pet": {
+        "name": "Chăm sóc thú cưng",
+        "description": "Cho ăn, dắt đi dạo, huấn luyện cơ bản."
+      },
+      "mindful": {
+        "name": "Thư giãn 1 phút",
+        "description": "Thư giãn 1–3 phút."
+      },
+      "polite": {
+        "name": "Viết lịch sự",
+        "description": "Viết lại tin nhắn cho lịch sự hơn."
+      }
+    }
+  },
+  "history": {
+    "title": "Lịch sử",
+    "searchPlaceholder": "Tìm kiếm cuộc chat…",
+    "newChat": "Chat mới",
+    "new": "+ Mới",
+    "search": "Tìm kiếm",
+    "clearSearch": "Xóa tìm kiếm",
+    "noChatsYet": "Chưa có cuộc chat nào",
+    "startFirstConversation": "Bắt đầu cuộc trò chuyện đầu tiên.",
+    "startChat": "Bắt đầu chat",
+    "errorLoadingHistory": "Lỗi khi tải lịch sử",
+    "renameChat": "Đổi tên cuộc chat",
+    "enterNewTitle": "Nhập tên mới",
+    "deleteChat": "Xóa cuộc chat?",
+    "deleteChatMessage": "\"{{title}}\" sẽ bị xóa.",
+    "rename": "Đổi tên",
+    "unpin": "Bỏ ghim",
+    "pin": "Ghim",
+    "untitled": "Chưa đặt tên"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "model": "Mô hình",
+    "searchPlaceholder": "Tìm kiếm mô hình…",
+    "temperatureForCurrentModel": "Temperature cho mô hình hiện tại",
+    "customFor": "Tùy chỉnh cho {{model}}",
+    "usingDefault": "Đang dùng mặc định {{temperature}}",
+    "resetToDefault": "Khôi phục mặc định",
+    "defaultTemperature": "Temperature mặc định (dự phòng)",
+    "usedByModelsWithoutOverride": "Dùng cho các mô hình không có cấu hình riêng",
+    "dangerZone": "Khu vực nguy hiểm",
+    "clearAllChatsAndSettings": "Xóa toàn bộ chat và cài đặt",
+    "about": "Giới thiệu",
+    "version": "Phiên bản {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Chính sách quyền riêng tư",
+    "hero": {
+      "label": "Ưu đãi đặc biệt",
+      "title": "Quyền truy cập ưu tiên & không giới hạn",
+      "upgrade": "Nâng cấp",
+      "manage": "Quản lý gói"
+    },
+    "sections": {
+      "premium": "Gói Premium",
+      "data": "Dữ liệu người dùng",
+      "support": "Hỗ trợ & pháp lý"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Mua Premium",
+        "subtitle": "Mở khóa công cụ sáng tạo không giới hạn"
+      },
+      "premiumActive": {
+        "title": "Đã kích hoạt Premium",
+        "subtitle": "Cảm ơn bạn đã ủng hộ ChatCloud"
+      },
+      "restore": {
+        "title": "Khôi phục mua hàng",
+        "subtitle": "Dùng nếu bạn đổi thiết bị"
+      },
+      "history": {
+        "title": "Quản lý lịch sử chat",
+        "subtitle": "Xem và xóa các phiên trước"
+      },
+      "reset": {
+        "title": "Đặt lại chat & tùy chọn",
+        "subtitle": "Xóa toàn bộ dữ liệu trên thiết bị này"
+      },
+      "rate": {
+        "title": "Đánh giá",
+        "error": "Không thể mở trang cửa hàng."
+      },
+      "support": {
+        "title": "Hỗ trợ",
+        "subtitle": "Liên hệ online",
+        "error": "Không thể mở trang liên hệ."
+      },
+      "privacy": {
+        "title": "Chính sách quyền riêng tư",
+        "error": "Không thể mở trang này."
+      },
+      "terms": {
+        "title": "Điều khoản sử dụng",
+        "error": "Không thể mở điều khoản."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "Âm thanh",
+      "video": "Video"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Không khả dụng",
+      "linkUnavailableMessage": "Không thể mở liên kết này ngay bây giờ.",
+      "restoreSuccessTitle": "Đã khôi phục",
+      "restoreSuccessMessage": "Đã khôi phục mua hàng của bạn.",
+      "restoreErrorTitle": "Khôi phục thất bại",
+      "restoreErrorMessage": "Không thể khôi phục mua hàng ngay bây giờ.",
+      "resetConfirmTitle": "Đặt lại dữ liệu ứng dụng?",
+      "resetConfirmMessage": "Việc này sẽ xóa toàn bộ chat và tùy chọn đã lưu.",
+      "resetConfirmCancel": "Hủy",
+      "resetConfirmCta": "Đặt lại"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Tạo",
+    "chooseStyle": "Chọn kiểu",
+    "aspectRatio": "Tỷ lệ",
+    "starterPrompts": {
+      "title": "Prompt mẫu",
+      "items": [
+        "ảnh chân dung studio",
+        "phòng khách hiện đại",
+        "bãi biển nhiệt đới lúc hoàng hôn"
+      ]
+    },
+    "promptPlaceholder": "Nhập nội dung bạn muốn thấy…",
+    "promptHint": "Ví dụ: “Chó Golden dưới ánh đèn studio”",
+    "clearText": "Xóa",
+    "generate": "Tạo",
+    "generating": "Đang tạo…"
+  },
+  "editImage": {
+    "headerTitle": "Chỉnh sửa",
+    "chooseStyle": "Chọn kiểu",
+    "aspectRatio": "Tỷ lệ",
+    "starterPrompts": {
+      "title": "Prompt mẫu",
+      "items": [
+        "chỉnh sáng",
+        "xóa nền",
+        "retouch chân dung mềm mại"
+      ]
+    },
+    "promptPlaceholder": "Mô tả chỉnh sửa (tùy chọn)",
+    "clearText": "Xóa",
+    "generate": "Áp dụng",
+    "generating": "Đang áp dụng…",
+    "upload": {
+      "choose": "Chọn ảnh",
+      "change": "Đổi",
+      "remove": "Xóa"
+    },
+    "imageUnavailable": {
+      "title": "Ảnh không khả dụng",
+      "message": "Không truy cập được ảnh đã chọn. Hãy chọn lại rồi thử lại."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Hoạt hình"
+      },
+      "photoreal": {
+        "name": "Siêu thực"
+      },
+      "sketch": {
+        "name": "Phác thảo"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Minh họa 3D"
+      },
+      "dark_fantasy": {
+        "name": "Fantasy tối"
+      },
+      "vintage_film": {
+        "name": "Film cổ điển"
+      },
+      "pastel": {
+        "name": "Pastel"
+      },
+      "neon_glow": {
+        "name": "Neon phát sáng"
+      },
+      "epic_landscape": {
+        "name": "Phong cảnh hoành tráng"
+      }
+    },
+    "aspectRatios": {
+      "square": "Vuông",
+      "landscape": "Ngang",
+      "portrait": "Dọc"
     },
     "models": {
-      "gpt-4o": "Mô hình AI mạnh mẽ nhất",
-      "gpt-4o-mini": "Nhanh cho tác vụ hằng ngày",
-      "claude-3-haiku": "Mô hình nhanh và hiệu quả",
-      "claude-3.7-sonnet": "Mô hình suy luận nâng cao",
-      "gemini-2.5-pro": "Mô hình tốt nhất của Google",
-      "gemini-2.0-flash": "Mô hình nhanh với khả năng suy luận tốt"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Tùy chỉnh"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Khác"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Mô hình nhanh nhất",
+      "runwareFluxKrea": "Kết quả sáng tạo, nhiều phong cách",
+      "runwareQwenImage": "Cân bằng và chất lượng cao",
+      "google4": "Mô hình ảnh AI tốt nhất",
+      "fluxKontent": "Flux Kontent tối ưu cho chỉnh sửa",
+      "runwareProvider": "Cân bằng giữa chất lượng và diffusion ổn định.",
+      "airProvider": "Nano Banana cho màu sắc sinh động.",
+      "googleProvider": "Google tối ưu chi tiết sắc nét.",
+      "anthropicProvider": "Quy trình Claude cho cảm xúc tinh tế.",
+      "default": "Nhấn để xem các engine khả dụng."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "kiểu bạn chọn",
+    "sheetTitle": "Đang vẽ theo ý tưởng của bạn",
+    "sheetSubtitle": "Đang trộn {{style}} vào prompt, vui lòng chờ.",
+    "phases": {
+      "blend": "Đang trộn {{style}}",
+      "paint": "Đang vẽ cảnh",
+      "finish": "Đang hoàn thiện"
     },
-    "navigation": {
-      "chat": "Trò chuyện",
-      "history": "Lịch sử",
-      "assistants": "Trợ lý",
-      "imagesStudio": "Studio",
-      "settings": "Cài đặt",
-      "recentChats": "Trò chuyện gần đây"
-    },
-    "imagesStudio": {
-      "title": "Studio",
-      "selectImages": "Chọn ảnh",
-      "exitSelectionMode": "Thoát chế độ chọn",
-      "selectAll": "Chọn tất cả",
-      "noImagesYet": "Chưa có ảnh",
-      "describeImageHint": "Mô tả ảnh bên dưới rồi nhấn \"Tạo\".",
-      "generatedImagesGallery": "Thư viện ảnh đã tạo",
-      "describeImagePlaceholder": "Mô tả ảnh bạn muốn…",
-      "deleteConfirmTitle": "Xóa ảnh",
-      "deleteConfirmMessage": "Bạn có chắc muốn xóa các ảnh đã chọn? Hành động này không thể hoàn tác.",
+    "actions": {
       "cancel": "Hủy",
-      "delete": "Xóa",
-      "generate": "Tạo",
-      "generating": "Đang tạo…",
-      "latest": "Mới nhất",
-      "insertToChat": "Chèn vào trò chuyện",
-      "pleaseWait": "Vui lòng đợi…",
-      "processing": "Đang xử lý...",
-      "tapToUploadImage": "Chạm để tải ảnh lên",
-      "camera": "Máy ảnh",
-      "library": "Thư viện",
-      "enterPrompt": "Nhập prompt để tạo ảnh từ văn bản",
-      "openInBrowser": "Mở trong trình duyệt",
-      "makeVariations": "Tạo biến thể",
-      "deleteAllFromGeneration": "Xóa tất cả từ lần tạo này",
-      "imageOptionsTitle": "Tùy chọn ảnh",
-      "imageOptionsMessage": "Bạn muốn làm gì với ảnh này?",
-      "insertMarkdownHeader": "Ảnh cho:",
-      "variationSuffix": "— biến thể của ảnh trước",
-      "selectedCount": "đã chọn",
-      "selectedCount_one": "đã chọn",
-      "selectedCount_other": "đã chọn",
-      "imageDescriptionInput": "Ô mô tả ảnh",
-      "imageDescriptionHint": "Nhập mô tả ảnh bạn muốn tạo",
-      "openModelSettings": "Mở cài đặt mô hình",
-      "modelSettingsHint": "Chạm để đổi mô hình và cài đặt",
-      "openPhotoGallery": "Mở thư viện ảnh",
-      "clearInput": "Xóa ô",
-      "generatedImage": "Ảnh đã tạo",
-      "autoSelectedModel": "Tự động chọn {{model}} cho chế độ {{mode}}",
-      "deleteSelectedConfirmTitle": "Xóa ảnh",
-      "deleteSelectedConfirmMessage": "Bạn có chắc muốn xóa ảnh? Hành động này không thể hoàn tác."
+      "retry": "Thử lại",
+      "close": "Đóng"
     },
-    "imageStudio": {
-      "generateImage": "Tạo ảnh",
-      "generatingImage": "Đang tạo ảnh",
-      "generateImageHint": "Chạm để tạo ảnh theo mô tả của bạn",
-      "imageDescriptionInput": "Ô mô tả ảnh",
-      "imageDescriptionHint": "Nhập mô tả ảnh bạn muốn tạo",
-      "openModelSettings": "Mở cài đặt mô hình",
-      "modelSettingsHint": "Chạm để đổi mô hình và cài đặt",
-      "openPhotoGallery": "Mở thư viện ảnh",
-      "clearInput": "Xóa ô",
-      "generatedImage": "Ảnh đã tạo"
+    "errors": {
+      "restrictedTitle": "Nội dung bị hạn chế",
+      "genericTitle": "Tạo thất bại",
+      "genericMessage": "Không thể tạo hình."
     },
-    "assistants": {
-      "title": "Trợ lý",
-      "subtitle": "Các chuyên gia AI được tuyển chọn cho lập trình, viết, phân tích, lên kế hoạch và hơn thế nữa.",
-      "searchPlaceholder": "Tìm trợ lý…",
-      "useAssistant": "Dùng trợ lý",
-      "description": "Mô tả",
-      "systemPrompt": "Prompt hệ thống",
-      "chooseModel": "Chọn mô hình",
-      "categoryAll": "Tất cả",
-      "categories": {
-        "everyday": "Hằng ngày",
-        "life": "Cuộc sống",
-        "health": "Sức khỏe",
-        "schoolWork": "Trường & công việc",
-        "coding": "Lập trình",
-        "creative": "Sáng tạo",
-        "general": "Chung"
-      },
-      "presets": {
-        "default": { "name": "Trợ lý mặc định", "description": "Hỗ trợ cân bằng cho công việc hằng ngày." },
-        "quick": { "name": "Trả lời nhanh", "description": "Ngắn gọn, đi thẳng vấn đề." },
-        "planner": { "name": "Lên kế hoạch ngày", "description": "Lập kế hoạch ngày và thói quen." },
-        "recipes": { "name": "Bữa ăn & công thức", "description": "Nấu gì với những gì bạn có." },
-        "fitness": { "name": "Huấn luyện thói quen & thể hình", "description": "Thói quen nhỏ & tập tại nhà." },
-        "money": { "name": "Bạn tài chính", "description": "Ngân sách đơn giản & mẹo chi tiêu." },
-        "study": { "name": "Trợ lý học tập", "description": "Giải thích đơn giản. Hỏi đáp với tôi." },
-        "email": { "name": "Email & CV", "description": "Viết email rõ ràng và dòng CV." },
-        "translator": { "name": "Trình dịch", "description": "Dịch + dạy cụm từ." },
-        "travel": { "name": "Bạn đồng hành du lịch", "description": "Kế hoạch đơn giản & danh sách đồ." },
-        "tech": { "name": "Hỗ trợ kỹ thuật (cơ bản)", "description": "Cơ bản điện thoại, ứng dụng, Wi-Fi." },
-        "summarizer": { "name": "Tóm tắt TL;DR", "description": "Gạch đầu dòng ngắn + tóm tắt một dòng." },
-        "gift": { "name": "Gợi ý quà tặng", "description": "Ý tưởng theo ngân sách & sở thích." },
-        "party": { "name": "Lập kế hoạch sự kiện (Lite)", "description": "Lên kế hoạch bữa tiệc nhỏ nhanh chóng." },
-        "social": { "name": "Tạo bài đăng", "description": "Bản nháp với các lựa chọn." },
-        "interview": { "name": "Huấn luyện phỏng vấn", "description": "Luyện câu trả lời (STAR)." },
-        "homefix": { "name": "Sửa đồ gia dụng", "description": "Khắc phục sự cố đơn giản." },
-        "pet": { "name": "Chăm sóc thú cưng", "description": "Cho ăn, dắt đi dạo, huấn luyện cơ bản." },
-        "mindful": { "name": "Phút chánh niệm", "description": "Nghỉ yên 1–3 phút." },
-        "polite": { "name": "Viết lại lịch sự", "description": "Viết lại văn bản và phản hồi lịch sự." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Không lưu được",
+      "shareFailedTitle": "Không chia sẻ được",
+      "tryAgain": "Vui lòng thử lại."
     },
-    "history": {
-      "title": "Lịch sử",
-      "searchPlaceholder": "Tìm kiếm trò chuyện…",
-      "newChat": "Trò chuyện mới",
-      "new": "+ Mới",
-      "search": "Tìm",
-      "clearSearch": "Xóa tìm kiếm",
-      "noChatsYet": "Chưa có cuộc trò chuyện",
-      "startFirstConversation": "Bắt đầu cuộc trò chuyện đầu tiên của bạn.",
-      "startChat": "Bắt đầu trò chuyện",
-      "errorLoadingHistory": "Lỗi khi tải lịch sử",
-      "renameChat": "Đổi tên trò chuyện",
-      "enterNewTitle": "Nhập tiêu đề mới",
-      "deleteChat": "Xóa trò chuyện?",
-      "deleteChatMessage": "“{{title}}” sẽ bị xóa.",
-      "rename": "Đổi tên",
-      "unpin": "Bỏ ghim",
-      "pin": "Ghim",
-      "untitled": "Không tiêu đề"
+    "result": {
+      "complete": "Hoàn tất"
     },
-    "settings": {
-      "title": "Cài đặt",
-      "model": "Mô hình",
-      "searchPlaceholder": "Tìm mô hình…",
-      "temperatureForCurrentModel": "Temperature cho mô hình hiện tại",
-      "customFor": "Tùy chỉnh cho {{model}}",
-      "usingDefault": "Đang dùng mặc định {{temperature}}",
-      "resetToDefault": "Khôi phục mặc định",
-      "defaultTemperature": "Temperature mặc định (dự phòng)",
-      "usedByModelsWithoutOverride": "Dùng cho mô hình không ghi đè",
-      "dangerZone": "Khu vực nguy hiểm",
-      "clearAllChatsAndSettings": "Xóa tất cả trò chuyện và cài đặt",
-      "about": "Giới thiệu",
-      "version": "Phiên bản {{version}}",
-      "privacyPolicy": "Chính sách quyền riêng tư",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Nhắn cho Agarka...",
-      "createImages": "Tạo ảnh",
-      "generateAiArtwork": "Tạo tác phẩm AI",
-      "camera": "Máy ảnh",
-      "takeOrSelectPhotos": "Chụp hoặc chọn ảnh",
-      "search": "Tìm kiếm",
-      "findInformation": "Tìm thông tin",
-      "removeImage": "Xóa ảnh",
-      "messageInput": "Ô nhập tin nhắn",
-      "clearInput": "Xóa ô",
-      "hideQuickActions": "Ẩn thao tác nhanh",
-      "showQuickActions": "Hiện thao tác nhanh",
-      "startVoiceInput": "Bắt đầu nhập giọng nói",
-      "sendMessage": "Gửi",
-      "offline": "Ngoại tuyến",
-      "stop": "Dừng",
-      "streaming": "Đang phát…",
-      "closeRecorder": "Đóng trình ghi",
-      "insertTranscript": "Chèn bản chép lời",
-      "scrollToLatest": "Cuộn tới mới nhất",
-      "copyMessage": "Sao chép tin nhắn",
-      "copyMessageHint": "Sao chép tin nhắn này vào clipboard",
-      "shareMessage": "Chia sẻ tin nhắn",
-      "shareMessageHint": "Chia sẻ tin nhắn này",
-      "regenerateResponse": "Tạo lại phản hồi",
-      "regenerateResponseHint": "Tạo phản hồi mới",
-      "copyCode": "Sao chép mã",
-      "image": "ảnh",
-      "loading": "Đang tải…",
-      "loadingChat": "Đang tải trò chuyện...",
-      "offlineBanner": "Bạn đang ngoại tuyến. Không thể gửi tin nhắn.",
-      "imagePickerErrorTitle": "Lỗi chọn ảnh",
-      "messageTooLong": "Tin nhắn quá dài ({{length}}). Giới hạn là {{limit}}.",
-      "emptyTitle": "Tôi có thể giúp gì?",
-      "emptySubtitle": "Bắt đầu trò chuyện với AI",
-      "privateTitle": "Trò chuyện riêng tư",
-      "privateSubtitle": "Cuộc trò chuyện này sẽ không xuất hiện trong lịch sử",
-      "listening": "Đang lắng nghe…",
-      "startRecording": "Bắt đầu ghi…",
-      "suggestions": {
-        "writeStory": "Viết một câu chuyện sáng tạo",
-        "writeStorySubtitle": "về một cuộc phiêu lưu kỳ diệu",
-        "planTravel": "Lập kế hoạch chuyến đi",
-        "planTravelSubtitle": "cho một kỳ nghỉ tuyệt vời",
-        "explainConcept": "Giải thích khái niệm này",
-        "explainConceptSubtitle": "bằng lời đơn giản",
-        "planDay": "Lên kế hoạch cho ngày của tôi",
-        "planDaySubtitle": "kèm mẹo năng suất"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Đang xử lý...",
-      "tapToUploadImage": "Chạm để tải ảnh lên"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Đang xử lý...",
-      "camera": "Máy ảnh",
-      "library": "Thư viện"
-    },
-    "common": {
-      "new": "MỚI",
-      "best": "TỐT NHẤT",
-      "cancel": "Hủy",
-      "save": "Lưu",
-      "delete": "Xóa",
+    "accessibility": {
       "close": "Đóng"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Xóa",
+      "edit": "Chỉnh sửa",
+      "save": "Lưu",
+      "share": "Chia sẻ"
+    },
+    "accessibility": {
+      "close": "Đóng",
+      "delete": "Xóa hình",
+      "edit": "Chỉnh sửa hình",
+      "save": "Lưu hình",
+      "share": "Chia sẻ hình"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Mở menu",
+      "selectImages": "Chọn hình",
+      "exitSelection": "Thoát chọn",
+      "deleteSelected": "Xóa hình đã chọn",
+      "selectToDelete": "Chọn hình để xóa"
+    },
+    "createCard": {
+      "title": "Tạo từ văn bản",
+      "subtitle": "Nhập mô tả",
+      "cta": "Mô tả & Tạo"
+    },
+    "editCard": {
+      "title": "Chỉnh sửa ảnh",
+      "subtitle": "Tải lên & chỉnh sửa",
+      "cta": "Chỉnh sửa ảnh"
+    },
+    "gallery": {
+      "title": "Thư viện",
+      "empty": "Chưa có hình",
+      "selection": {
+        "enter": "Chọn hình",
+        "exit": "Thoát chọn",
+        "deleteSelected": "Xóa hình đã chọn",
+        "selectForDelete": "Chọn hình để xóa"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Làm quen với",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Tạo & chỉnh sửa hình với AI ngay trong {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Gặp AI của bạn",
+      "titleHighlight": "Trợ lý",
+      "subtitle": "Các AI chuyên biệt sẵn sàng giúp nhu cầu hằng ngày của bạn",
+      "cards": [
+        {
+          "title": "HLV thể hình",
+          "text": "Nhận kế hoạch tập luyện & dinh dưỡng theo mục tiêu."
+        },
+        {
+          "title": "Bác sĩ",
+          "text": "Nhận thông tin sức khỏe, phân tích triệu chứng, gợi ý chăm sóc."
+        },
+        {
+          "title": "Chăm sóc thú cưng",
+          "text": "Lời khuyên về sức khỏe, huấn luyện và chăm sóc."
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "GIẢI PHÁP AI CHO DOANH NGHIỆP",
+      "description": "Tăng sức mạnh cho doanh nghiệp với AI tiên tiến dành cho đội nhóm.",
+      "stats": "Được tin dùng bởi 500k+ người",
+      "rating": "4.9 / 5",
+      "button": "Bắt đầu"
+    }
+  },
+  "coinStore": {
+    "title": "Mua token",
+    "loading": "Đang tải cửa hàng token…",
+    "balanceLabel": "Số dư hiện tại của bạn",
+    "balanceValue": "{{amount}} token",
+    "history": {
+      "link": "Lịch sử giao dịch",
+      "alertTitle": "Lịch sử",
+      "alertBody": "Lịch sử giao dịch sẽ có sớm."
+    },
+    "noPacks": "Không có gói token nào. Kiểm tra lại RevenueCat offering id.",
+    "badges": {
+      "basic": "Gói cơ bản",
+      "popular": "Phổ biến nhất",
+      "value": "Giá trị nhất"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} token",
+      "defaultName": "Gói {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Nâng cấp Premium",
+      "subtitle": "Truy cập & tính năng không giới hạn",
+      "cta": "Nâng cấp"
+    },
+    "termsText": "Khi mua, bạn đồng ý với",
+    "termsLink": "Điều khoản dịch vụ",
+    "alerts": {
+      "initErrorTitle": "Lỗi khởi tạo",
+      "genericMessage": "Đã xảy ra lỗi.",
+      "successTitle": "Thành công",
+      "successMessage": "Token sẽ hiển thị sớm.",
+      "purchaseFailedTitle": "Mua thất bại",
+      "unknownError": "Lỗi không xác định"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Khôi phục",
+    "restoreRestoring": "Đang khôi phục…",
+    "features": {
+      "create": "Tạo hình ảnh và video",
+      "search": "Tìm web bằng AI",
+      "talk": "Trò chuyện tự nhiên với AI"
+    },
+    "freeTrial": {
+      "title": "Dùng thử miễn phí",
+      "subtitle": "Dùng thử 3 ngày"
+    },
+    "badge": {
+      "bestOffer": "Ưu đãi tốt nhất"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Theo năm",
+        "only": "Chỉ {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Theo tháng",
+        "subtitle": "Hủy bất cứ lúc nào",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Theo tuần",
+        "subtitle": "Hủy bất cứ lúc nào",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "mỗi tuần",
+      "perMonth": "mỗi tháng"
+    },
+    "cta": "Tiếp tục",
+    "legal": {
+      "terms": "Điều khoản",
+      "privacy": "Quyền riêng tư"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Tin nhắn...",
+    "createImages": "Tạo hình",
+    "generateAiArtwork": "Tạo nghệ thuật AI",
+    "camera": "Máy ảnh",
+    "takeOrSelectPhotos": "Chụp hoặc chọn ảnh",
+    "search": "Tìm kiếm",
+    "findInformation": "Tìm thông tin",
+    "findRecentInfo": "Tìm thông tin mới",
+    "removeImage": "Xóa hình",
+    "messageInput": "Ô nhập tin nhắn",
+    "clearInput": "Xóa nội dung",
+    "quickActionsLabel": "Hành động nhanh",
+    "hideQuickActions": "Ẩn hành động nhanh",
+    "showQuickActions": "Hiện hành động nhanh",
+    "startVoiceInput": "Bắt đầu nhập giọng nói",
+    "sendMessage": "Gửi tin nhắn",
+    "offline": "Ngoại tuyến",
+    "stop": "Dừng",
+    "streaming": "Đang nhận dữ liệu…",
+    "closeRecorder": "Đóng ghi âm",
+    "insertTranscript": "Gửi",
+    "scrollToLatest": "Cuộn tới mới nhất",
+    "copyMessage": "Sao chép tin nhắn",
+    "copyMessageHint": "Sao chép tin nhắn này",
+    "shareMessage": "Chia sẻ tin nhắn",
+    "shareMessageHint": "Chia sẻ tin nhắn này",
+    "regenerateResponse": "Tạo lại trả lời",
+    "regenerateResponseHint": "Tạo một câu trả lời mới",
+    "copyCode": "Sao chép mã",
+    "image": "hình",
+    "loading": "Đang tải…",
+    "loadingChat": "Đang tải cuộc chat...",
+    "offlineBanner": "Bạn đang ngoại tuyến. Không thể gửi tin nhắn.",
+    "imagePickerErrorTitle": "Lỗi chọn ảnh",
+    "imagePickerErrorMessage": "Không thể truy cập ảnh của bạn. Hãy thử lại.",
+    "messageTooLong": "Tin nhắn quá dài ({{length}}). Giới hạn là {{limit}}.",
+    "sendFailed": "Gửi thất bại.",
+    "voiceStartFailed": "Không thể bắt đầu giọng nói.",
+    "emptyTitle": "Tôi giúp gì được?",
+    "emptySubtitle": "Bắt đầu trò chuyện với AI",
+    "privateTitle": "Chat riêng tư",
+    "privateSubtitle": "Cuộc chat này sẽ không xuất hiện trong lịch sử",
+    "permissions": {
+      "photosTitle": "Cần quyền truy cập ảnh",
+      "photosMessage": "Chọn ảnh cần quyền truy cập ảnh.",
+      "voiceTitle": "Cần quyền ghi âm",
+      "voiceMessage": "Dùng giọng nói cần quyền micro và giọng nói."
+    },
+    "activity": {
+      "analyzingImages": "Đang phân tích hình…",
+      "searching": "Đang tìm kiếm…",
+      "thinking": "Đang suy nghĩ…"
+    },
+    "webSearch": {
+      "title": "Tìm web",
+      "subtitle": "Tìm thông tin mới",
+      "label": "Tìm web",
+      "enable": "Bật tìm web",
+      "disable": "Tắt tìm web",
+      "toggleLabel": "Tìm trên web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Thiết kế hình nhanh chóng.",
+      "subtitle": "Tạo, tinh chỉnh, xuất bản trong một nơi.",
+      "cta": "Mở"
+    },
+    "quickActions": {
+      "createImages": "Tạo hình",
+      "openCamera": "Mở máy ảnh",
+      "editImage": "Chỉnh sửa hình",
+      "startVoice": "Bắt đầu giọng nói",
+      "assistants": "Trợ lý"
+    },
+    "listening": "Đang nghe…",
+    "startRecording": "Bắt đầu ghi âm…",
+    "assistantHeader": {
+      "unavailableTitle": "Trợ lý không khả dụng",
+      "unavailableDescription": "Không thể tải trợ lý này. Vui lòng thử lại.",
+      "ready": "Sẵn sàng hỗ trợ bạn"
+    },
+    "actions": {
+      "copy": "Sao chép",
+      "share": "Chia sẻ",
+      "regenerate": "Tạo lại",
+      "retryFromHere": "Thử lại từ đây",
+      "cancel": "Hủy"
+    },
+    "messageActionTitle": "Tin nhắn",
+    "status": {
+      "sending": "Đang gửi…",
+      "failed": "Thất bại",
+      "sent": "Đã gửi"
+    },
+    "suggestions": {
+      "writeStory": "Viết một câu chuyện sáng tạo",
+      "writeStorySubtitle": "về một cuộc phiêu lưu kỳ diệu",
+      "planTravel": "Lập lịch trình du lịch",
+      "planTravelSubtitle": "cho một kỳ nghỉ tuyệt vời",
+      "explainConcept": "Giải thích khái niệm này",
+      "explainConceptSubtitle": "một cách dễ hiểu",
+      "planDay": "Lên kế hoạch ngày của tôi",
+      "planDaySubtitle": "kèm mẹo năng suất"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Đang xử lý...",
+    "tapToUploadImage": "Nhấn để tải hình"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Đang xử lý...",
+    "camera": "Máy ảnh",
+    "library": "Thư viện"
+  },
+  "common": {
+    "new": "MỚI",
+    "best": "TỐT NHẤT",
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "delete": "Xóa",
+    "close": "Đóng",
+    "allow": "Cho phép"
   }
-  
+}

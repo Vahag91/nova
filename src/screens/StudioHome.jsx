@@ -80,12 +80,8 @@ export default function StudioHome({ navigation }) {
     return result;
   }, [jobs]);
 
-  // Gallery items: show all generated images; if none, show 12 placeholders
-  const galleryItems = useMemo(() => {
-    if (images && images.length > 0) return images;
-    const sampleUrl = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAjRrGSQFCi5mPBdzF3JJuAt9QYTX6gyLnnkka81WYPawmAaDKIeGJeoPOKC5ymFP6wIhgGGZVoVc-7WqRqRNxrSlzmUyy9t7Q8y6ebprl24e7hdgmJb3p0nC1lv7Le4SUTfHA6TYedMiI0XfLJOPLHZic7K_WubvCWDCFVBsd1ar4yeot5S0oD6Qds9kENx8pDEMIo80PyVzYPLqARrNR0Fl3mzrpFLDGXjM8wpxBCnHRn-nlNz8TsazzgPdS_YoiDYFH_AgTfGns';
-    return Array.from({ length: 12 }).map((_, i) => ({ id: `sample-${i}`, url: sampleUrl }));
-  }, [images]);
+  // Gallery items: show only real images; no placeholders
+  const galleryItems = useMemo(() => images || [], [images]);
 
   // Viewer
   const [viewer, setViewer] = useState({ open: false, uri: '', id: null, jobId: null });
@@ -190,6 +186,12 @@ export default function StudioHome({ navigation }) {
   );
   const tileSize = React.useMemo(() => (Dimensions.get('window').width - 4 * 12) / 3, []);
   const tileDynamicStyle = React.useMemo(() => ({ width: tileSize, height: tileSize }), [tileSize]);
+  const selectionToggleLabel = isSelectionMode
+    ? t('studioHome.gallery.selection.exit')
+    : t('studioHome.gallery.selection.enter');
+  const deleteButtonLabel = selectedImages.size > 0
+    ? t('studioHome.gallery.selection.deleteSelected')
+    : t('studioHome.gallery.selection.selectForDelete');
 
   return (
     <View style={styles.container}>
@@ -201,12 +203,12 @@ export default function StudioHome({ navigation }) {
             style={styles.headerBackBtn}
             hitSlop={10}
             accessibilityRole="button"
-            accessibilityLabel="Open menu"
+            accessibilityLabel={t('studioHome.accessibility.openMenu')}
           >
             <SvgIcon name="menu" size={22} color="#FFFFFF" />
           </Pressable>
           <View pointerEvents="none" style={styles.headerCenterAbs}>
-            <Text style={styles.headerTitle}>Studio</Text>
+            <Text style={styles.headerTitle}>{t('studioHome.headerTitle')}</Text>
           </View>
           {/* Removed top header selection icon for minimalist design */}
           <Pressable onPress={() => navigation.navigate('CoinStore')} style={styles.balancePill} hitSlop={8}>
@@ -243,15 +245,13 @@ export default function StudioHome({ navigation }) {
                   <View style={styles.cardHeaderRow}>
                     <View style={styles.cardIconWrap}><SvgIcon name="quill" size={22} color="#FFFFFF" /></View>
                     <View style={styles.cardTextCol}>
-                      <Text style={styles.cardTitle}>Create from Text</Text>
-                      <Text style={styles.cardSubtitle}>Type a description</Text>
+                      <Text style={styles.cardTitle}>{t('studioHome.createCard.title')}</Text>
+                      <Text style={styles.cardSubtitle}>{t('studioHome.createCard.subtitle')}</Text>
                     </View>
                   </View>
                 </View>
                 <Pressable onPress={openCreate} style={[styles.primaryBtn]} hitSlop={6}>
-                  <Text style={styles.primaryBtnText}>
-                    {`Describe & Generate (${createCost} ◈)`}
-                  </Text>
+                  <Text style={styles.primaryBtnText}>{t('studioHome.createCard.cta')}</Text>
                 </Pressable>
               </View>
             </View>
@@ -276,22 +276,20 @@ export default function StudioHome({ navigation }) {
                   <View style={styles.cardHeaderRow}>
                     <View style={styles.cardIconWrap}><SvgIcon name="photo" size={22} color="#FFFFFF" /></View>
                     <View style={styles.cardTextCol}>
-                      <Text style={styles.cardTitle}>Edit a Photo</Text>
-                      <Text style={styles.cardSubtitle}>Upload & edit</Text>
+                      <Text style={styles.cardTitle}>{t('studioHome.editCard.title')}</Text>
+                      <Text style={styles.cardSubtitle}>{t('studioHome.editCard.subtitle')}</Text>
                     </View>
                   </View>
                 </View>
                 <Pressable onPress={openEdit} style={[styles.secondaryBtn]} hitSlop={6}>
-                  <Text style={styles.secondaryBtnText}>
-                    {`Edit a Photo (${editCost} ◈)`}
-                  </Text>
+                  <Text style={styles.secondaryBtnText}>{t('studioHome.editCard.cta')}</Text>
                 </Pressable>
               </View>
             </View>
 
             {/* Gallery header */}
             <View style={styles.sectionHeaderRow}>
-              <Text style={styles.sectionHeader}>Gallery</Text>
+              <Text style={styles.sectionHeader}>{t('studioHome.gallery.title')}</Text>
               <View style={styles.sectionActions}>
                 <Pressable
                   onPress={() => {
@@ -300,7 +298,7 @@ export default function StudioHome({ navigation }) {
                   }}
                   hitSlop={8}
                   style={styles.sectionHeaderBtn}
-                  accessibilityLabel={isSelectionMode ? 'Exit selection' : 'Select images'}
+                  accessibilityLabel={selectionToggleLabel}
                 >
                   <SvgIcon name="copygrey" size={18} color={isSelectionMode ? '#8A42FF' : '#FFFFFF'} />
                 </Pressable>
@@ -315,7 +313,7 @@ export default function StudioHome({ navigation }) {
                   }}
                   hitSlop={8}
                   style={[styles.sectionHeaderBtn, selectedImages.size > 0 && { backgroundColor: 'rgba(220,50,50,0.2)' }]}
-                  accessibilityLabel={selectedImages.size > 0 ? 'Delete selected images' : 'Select images to delete'}
+                  accessibilityLabel={deleteButtonLabel}
                 >
                   <SvgIcon name="delete" size={18} color={selectedImages.size > 0 ? '#FFB0B0' : '#FFFFFF'} />
                 </Pressable>
@@ -328,7 +326,7 @@ export default function StudioHome({ navigation }) {
         renderItem={renderTile}
         numColumns={3}
         columnWrapperStyle={styles.columnWrapper}
-        ListEmptyComponent={null}
+        ListEmptyComponent={<Text style={styles.emptyText}>{t('studioHome.gallery.empty')}</Text>}
         showsVerticalScrollIndicator={false}
       />
 

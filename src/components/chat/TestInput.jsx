@@ -237,15 +237,15 @@ function TestInput({
                       style={styles.menuItem}
                       onPress={() => { safe(toggleActions); safe(onCreateImagesPress); }}
                       accessibilityRole="button"
-                      accessibilityLabel={'Create images'}
+                      accessibilityLabel={t('chat.createImages')}
                       activeOpacity={0.9}
                     >
                       <View style={[styles.menuIconContainer, styles.iconViolet]}>
                         <PaletteIcon color="#8A2BE2" size={28} />
                       </View>
                       <View style={styles.menuTextContainer}>
-                        <Text style={styles.menuLabel} numberOfLines={1}>Create images</Text>
-                        <Text style={styles.menuSubLabel} numberOfLines={1}>Generate AI artwork</Text>
+                        <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.createImages')}</Text>
+                        <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.generateAiArtwork')}</Text>
                       </View>
                     </TouchableOpacity>
                   </Animated.View>
@@ -255,15 +255,15 @@ function TestInput({
                       style={styles.menuItem}
                       onPress={() => { safe(toggleActions); safe(onOpenCameraPress); }}
                       accessibilityRole="button"
-                      accessibilityLabel={'Camera'}
+                      accessibilityLabel={t('chat.camera')}
                       activeOpacity={0.9}
                     >
                       <View style={[styles.menuIconContainer, styles.iconCyan]}>
                         <CameraIcon color="#00BCD4" size={28} />
                       </View>
                       <View style={styles.menuTextContainer}>
-                        <Text style={styles.menuLabel} numberOfLines={1}>Camera</Text>
-                        <Text style={styles.menuSubLabel} numberOfLines={1}>Take or select photos</Text>
+                        <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.camera')}</Text>
+                        <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.takeOrSelectPhotos')}</Text>
                       </View>
                     </TouchableOpacity>
                   </Animated.View>
@@ -273,15 +273,15 @@ function TestInput({
                       style={[styles.menuItem, styles.menuItemLast]}
                       onPress={() => { safe(toggleActions); safe(onSearchPress); }}
                       accessibilityRole="button"
-                      accessibilityLabel={'Search the web'}
+                      accessibilityLabel={t('chat.webSearch.toggleLabel', { defaultValue: 'Search the web' })}
                       activeOpacity={0.9}
                     >
                       <View style={[styles.menuIconContainer, styles.iconOrange]}>
                         <ExploreIcon color="#FF9800" size={28} />
                       </View>
                       <View style={styles.menuTextContainer}>
-                        <Text style={styles.menuLabel} numberOfLines={1}>Web search</Text>
-                        <Text style={styles.menuSubLabel} numberOfLines={1}>Find recent info</Text>
+                        <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.webSearch.title', { defaultValue: 'Web search' })}</Text>
+                        <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.webSearch.subtitle', { defaultValue: 'Find recent info' })}</Text>
                       </View>
                     </TouchableOpacity>
                   </Animated.View>
@@ -300,7 +300,7 @@ function TestInput({
               .map((a, idx) => (
                 <View key={a.id || `${a.uri}-${idx}`} style={styles.thumbWrap}>
                   <Image source={{ uri: a.uri }} style={styles.thumb} />
-                  <TouchableOpacity onPress={() => safe(onRemoveAttachment, a, idx)} style={styles.thumbRemove} accessibilityLabel={'Remove image'} hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}>
+                  <TouchableOpacity onPress={() => safe(onRemoveAttachment, a, idx)} style={styles.thumbRemove} accessibilityLabel={t('chat.removeImage')} hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}>
                     <Text style={styles.thumbRemoveText}>✕</Text>
                   </TouchableOpacity>
                 </View>
@@ -312,7 +312,7 @@ function TestInput({
           <TextInput
             value={value}
             onChangeText={onChange}
-            placeholder={'Message'}
+            placeholder={t('chat.messagePlaceholder')}
             placeholderTextColor={colors.placeholder}
             style={[styles.input, { maxHeight: maxInputHeight }]}
             editable={!streaming && !offline && !isRecording}
@@ -325,13 +325,13 @@ function TestInput({
             selectionColor={colors.primary}
             underlineColorAndroid="transparent"
             textAlignVertical={isExpanded ? 'top' : 'center'}
-            accessibilityLabel={'Message input'}
+            accessibilityLabel={t('chat.messageInput')}
             scrollEnabled={inputHeight >= maxInputHeight}
           />
           {value?.length > 0 && (
             <TouchableOpacity
               onPress={() => onChange('')}
-              accessibilityLabel={'Clear input'}
+              accessibilityLabel={t('chat.clearInput')}
               style={{ position: 'absolute', right: -14, top: 4, padding: 6 }}>
               <Svg height={18} width={18} viewBox="0 -960 960 960" fill="#8E8E93"><Path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></Svg>
             </TouchableOpacity>
@@ -340,7 +340,7 @@ function TestInput({
         </View>
         <View style={styles.iconsRow}>
           <View style={styles.leftControls}>
-            <TouchableOpacity ref={plusRef} onPress={() => safe(toggleActions)} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={'Quick actions'}>
+            <TouchableOpacity ref={plusRef} onPress={() => safe(toggleActions)} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={t('chat.quickActionsLabel', { defaultValue: 'Quick actions' })}>
               <Animated.View style={plusIconStyle}>
                 <AddIcon color="#FFFFFF" size={18} />
               </Animated.View>
@@ -351,7 +351,7 @@ function TestInput({
               onPress={() => { if (!offline) safe(onSearchPress); }}
               disabled={offline}
               accessibilityRole="button"
-              accessibilityLabel={webSearchEnabled ? 'Disable web search' : 'Enable web search'}
+              accessibilityLabel={webSearchEnabled ? t('chat.webSearch.disable', { defaultValue: 'Disable web search' }) : t('chat.webSearch.enable', { defaultValue: 'Enable web search' })}
             >
               <ExploreIcon
                 color={webSearchEnabled ? "#007AFF" : "#FFFFFF"}
@@ -359,7 +359,7 @@ function TestInput({
               />
               {webSearchEnabled && (
                 <Animated.View style={webSearchTextAnimatedStyle}>
-                  <Text style={styles.webSearchText}>Web Search</Text>
+                  <Text style={styles.webSearchText}>{t('chat.webSearch.label', { defaultValue: 'Web Search' })}</Text>
                 </Animated.View>
               )}
             </TouchableOpacity>
@@ -374,18 +374,18 @@ function TestInput({
               onPressOut={() => safe(onMicHoldEnd)}
               disabled={offline}
               accessibilityRole="button"
-              accessibilityLabel={'Start voice input'}
+              accessibilityLabel={t('chat.startVoiceInput')}
               delayLongPress={500}
             >
               <MicIcon color="#FFFFFF" size={18} />
             </TouchableOpacity>
 
             {!streaming ? (
-              <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? 'Offline' : 'Send message'}>
+              <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? t('chat.offline') : t('chat.sendMessage')}>
                 <SendIcon color={canSend && !isRecording ? '#FFFFFF' : '#000000'} size={23} />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel={'Stop'}>
+              <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel={t('chat.stop')}>
                 <StopIcon color="#FFFFFF" size={22} />
               </TouchableOpacity>
             )}
@@ -394,7 +394,7 @@ function TestInput({
 
         <View style={styles.metaRow}>
           {offline ? (
-            <Text style={styles.metaOffline}>Offline</Text>
+            <Text style={styles.metaOffline}>{t('chat.offline')}</Text>
           ) : showCounter && !streaming ? (
             <Text style={styles.metaCounter}>{(value || '').length}/{maxLength}</Text>
           ) : null}

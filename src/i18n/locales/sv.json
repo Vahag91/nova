@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Välj en modell",
-      "searchPlaceholder": "Sök efter modeller...",
-      "noModelsFound": "Inga modeller hittades",
-      "noModelsAvailable": "Inga tillgängliga modeller",
-      "currentModel": "Aktuell modell: {{name}}. Tryck för att byta.",
-      "openHint": "Öppnar modellvalsmenyn",
-      "closeLabel": "Stäng modellväljaren",
-      "searchLabel": "Sök modeller",
-      "searchHint": "Skriv för att filtrera modeller",
-      "modelLabel": "{{name}}-modell",
-      "selectHint": "Välj {{name}}",
-      "currentlySelected": "Vald modell"
+  "modelSelector": {
+    "title": "Välj modell",
+    "searchPlaceholder": "Sök modeller...",
+    "noModelsFound": "Inga modeller hittades",
+    "noModelsAvailable": "Inga modeller tillgängliga",
+    "currentModel": "Aktuell modell: {{name}}. Tryck för att ändra.",
+    "openHint": "Öppnar modellvalsmenu",
+    "closeLabel": "Stäng modellväljaren",
+    "searchLabel": "Sök modeller",
+    "searchHint": "Skriv för att filtrera tillgängliga modeller",
+    "modelLabel": "Modell {{name}}",
+    "selectHint": "Välj modell {{name}}",
+    "currentlySelected": "För närvarande vald modell"
+  },
+  "models": {
+    "gpt-4o": "Mest kraftfulla AI-modellen",
+    "gpt-4o-mini": "Snabb för vardagliga uppgifter",
+    "gpt-5": "Mest kraftfulla allround-AI",
+    "gpt-5-chat-latest": "Optimerad för chatt och dialog",
+    "gpt-5-mini": "Snabb och pålitlig GPT-5",
+    "gpt-5-nano": "Lätt modell för enkla uppgifter",
+    "o4-mini": "Effektiv resonemangsmodell",
+    "gpt-4.1-mini": "Kompakt och kapabel GPT-4.1",
+    "claude-3-haiku": "Snabb och fokuserad Anthropic-AI",
+    "claude-3.7-sonnet": "Förfinat resonemang från Anthropic",
+    "gemini-2.5-Flash": "Googles mest avancerade modell",
+    "gemini-2.5-flash": "Googles mest avancerade modell",
+    "gemini-2.0-flash": "Snabb och precis Google-AI"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Annat"
+  },
+  "navigation": {
+    "chat": "Ny chatt",
+    "history": "Historik",
+    "assistants": "Assistenter",
+    "imagesStudio": "Image Studio",
+    "settings": "Inställningar",
+    "recentChats": "Senaste chattar"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Generera, finslipa och publicera visuella tillgångar på ett ställe.",
+    "cta": "Öppna"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Välj bilder",
+    "exitSelectionMode": "Avsluta urvalsläge",
+    "selectAll": "Välj alla",
+    "noImagesYet": "Inga bilder ännu",
+    "describeImageHint": "Beskriv din bild nedan och tryck Generera.",
+    "generatedImagesGallery": "Galleri med genererade bilder",
+    "describeImagePlaceholder": "Beskriv bilden du vill ha…",
+    "deleteConfirmTitle": "Radera bilder",
+    "deleteConfirmMessage": "Är du säker på att du vill radera de markerade bilderna? Detta går inte att ångra.",
+    "cancel": "Avbryt",
+    "delete": "Radera",
+    "generate": "Generera",
+    "generating": "Genererar…",
+    "latest": "Senaste",
+    "insertToChat": "Infoga i chatt",
+    "pleaseWait": "Vänligen vänta…",
+    "processing": "Bearbetar...",
+    "tapToUploadImage": "Tryck för att ladda upp bild",
+    "camera": "Kamera",
+    "library": "Bibliotek",
+    "enterPrompt": "Ange prompt för text-till-bild generering",
+    "openInBrowser": "Öppna i webbläsare",
+    "makeVariations": "Skapa variationer",
+    "deleteAllFromGeneration": "Radera allt från denna generering",
+    "imageOptionsTitle": "Bildalternativ",
+    "imageOptionsMessage": "Vad vill du göra med den här bilden?",
+    "insertMarkdownHeader": "Här är bilden för:",
+    "variationSuffix": "— variant av föregående bild",
+    "selectedCount": "valda",
+    "selectedCount_one": "vald",
+    "selectedCount_other": "valda",
+    "imageDescriptionInput": "Fält för bildbeskrivning",
+    "imageDescriptionHint": "Ange beskrivning av bilden du vill generera",
+    "openModelSettings": "Öppna modellinställningar",
+    "modelSettingsHint": "Tryck för att ändra modell och inställningar",
+    "openPhotoGallery": "Öppna fotogalleri",
+    "clearInput": "Rensa",
+    "generatedImage": "Genererad bild",
+    "autoSelectedModel": "Automatiskt vald {{model}} för läge {{mode}}",
+    "deleteSelectedConfirmTitle": "Radera bilder",
+    "deleteSelectedConfirmMessage": "Är du säker på att du vill radera bilderna? Detta går inte att ångra."
+  },
+  "imageStudio": {
+    "generateImage": "Generera bild",
+    "generatingImage": "Genererar bild",
+    "generateImageHint": "Tryck för att generera en bild utifrån din beskrivning",
+    "imageDescriptionInput": "Inmatning för bildbeskrivning",
+    "imageDescriptionHint": "Ange beskrivning av bilden du vill generera",
+    "openModelSettings": "Öppna modellinställningar",
+    "modelSettingsHint": "Tryck för att ändra modell och inställningar",
+    "openPhotoGallery": "Öppna fotogalleri",
+    "clearInput": "Rensa",
+    "generatedImage": "Genererad bild"
+  },
+  "assistants": {
+    "title": "Assistenter",
+    "subtitle": "Kuraterade AI-specialister redo för kodning, skrivande, analys, planering och mer.",
+    "searchPlaceholder": "Sök assistenter…",
+    "useAssistant": "Använd assistent",
+    "selectAssistant": "Välj assistent",
+    "description": "Beskrivning",
+    "systemPrompt": "Systemprompt",
+    "chooseModel": "Välj modell",
+    "categoryAll": "Alla",
+    "categories": {
+      "everyday": "Vardag",
+      "life": "Liv",
+      "health": "Hälsa",
+      "schoolWork": "Skola & arbete",
+      "coding": "Kodning",
+      "creative": "Kreativ",
+      "general": "Allmänt"
+    },
+    "presets": {
+      "default": {
+        "name": "Standardassistent",
+        "description": "Balanserad hjälp för vardagliga uppgifter."
+      },
+      "quick": {
+        "name": "Snabba svar",
+        "description": "Korta, direkta svar."
+      },
+      "planner": {
+        "name": "Dagsplaneraren",
+        "description": "Planera din dag och rutiner."
+      },
+      "recipes": {
+        "name": "Måltider & recept",
+        "description": "Vad ska du laga av det du har?"
+      },
+      "fitness": {
+        "name": "Vanor & träning",
+        "description": "Små vanor och träning hemma."
+      },
+      "money": {
+        "name": "Pengakompis",
+        "description": "Enkla budgetar och spartips."
+      },
+      "study": {
+        "name": "Studiehjälp",
+        "description": "Förklara enkelt. Genväg från mig."
+      },
+      "email": {
+        "name": "E-post & CV",
+        "description": "Skriv tydliga e-postmeddelanden och CV-rader."
+      },
+      "translator": {
+        "name": "Översättare",
+        "description": "Översätt och lär fraser."
+      },
+      "travel": {
+        "name": "Resekompis",
+        "description": "Enkla planer och packlistor."
+      },
+      "tech": {
+        "name": "Teknisk support (enkel)",
+        "description": "Telefon, appar, Wi-Fi-grunder."
+      },
+      "summarizer": {
+        "name": "TL;DR-sammanfattare",
+        "description": "Korta punkter + en rad sammanfattning."
+      },
+      "gift": {
+        "name": "Presentfinnare",
+        "description": "Idéer efter budget & intressen."
+      },
+      "party": {
+        "name": "Evenemangsplanerare (Lite)",
+        "description": "Planera snabbt ett litet party."
+      },
+      "social": {
+        "name": "Social post-skapare",
+        "description": "Utkast till inlägg med val."
+      },
+      "interview": {
+        "name": "Intervjucoach",
+        "description": "Öva svar (STAR)."
+      },
+      "homefix": {
+        "name": "Hemfix-guide",
+        "description": "Enkel DIY-felsökning."
+      },
+      "pet": {
+        "name": "Husdjurshjälp",
+        "description": "Matning, promenader, grundträning."
+      },
+      "mindful": {
+        "name": "Mindful minut",
+        "description": "1–3 minuters paus."
+      },
+      "polite": {
+        "name": "Höviskt omskrivare",
+        "description": "Skriv om texter & svar trevligt."
+      }
+    }
+  },
+  "history": {
+    "title": "Historik",
+    "searchPlaceholder": "Sök i chattar…",
+    "newChat": "Ny chatt",
+    "new": "+ Ny",
+    "search": "Sök",
+    "clearSearch": "Rensa sökning",
+    "noChatsYet": "Inga chattar ännu",
+    "startFirstConversation": "Starta din första konversation.",
+    "startChat": "Starta chatt",
+    "errorLoadingHistory": "Fel vid inläsning av historiken",
+    "renameChat": "Byt namn på chatten",
+    "enterNewTitle": "Ange ny titel",
+    "deleteChat": "Radera chatt?",
+    "deleteChatMessage": "„{{title}}” kommer att raderas.",
+    "rename": "Byt namn",
+    "unpin": "Avfäst",
+    "pin": "Fäst",
+    "untitled": "Ingen titel"
+  },
+  "settings": {
+    "title": "Inställningar",
+    "model": "Modell",
+    "searchPlaceholder": "Sök modeller…",
+    "temperatureForCurrentModel": "Temperatur för aktuell modell",
+    "customFor": "Egen för {{model}}",
+    "usingDefault": "Använder standard {{temperature}}",
+    "resetToDefault": "Återställ till standard",
+    "defaultTemperature": "Standardtemperatur (backup)",
+    "usedByModelsWithoutOverride": "Används av modeller utan egen inställning",
+    "dangerZone": "Farlig zon",
+    "clearAllChatsAndSettings": "Rensa alla chattar & inställningar",
+    "about": "Om",
+    "version": "Version {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Integritetspolicy",
+    "hero": {
+      "label": "Specialerbjudande",
+      "title": "Prioriterad åtkomst & inga begränsningar",
+      "upgrade": "Uppgradera",
+      "manage": "Hantera plan"
+    },
+    "sections": {
+      "premium": "Premiumplan",
+      "data": "Användardata",
+      "support": "Support & juridik"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Få Premium",
+        "subtitle": "Lås upp obegränsade skapandeverktyg"
+      },
+      "premiumActive": {
+        "title": "Premium aktivt",
+        "subtitle": "Tack för att du stödjer ChatCloud"
+      },
+      "restore": {
+        "title": "Återställ köp",
+        "subtitle": "Använd om du bytt enhet"
+      },
+      "history": {
+        "title": "Hantera chatt-historik",
+        "subtitle": "Se och ta bort tidigare sessioner"
+      },
+      "reset": {
+        "title": "Återställ chattar & preferenser",
+        "subtitle": "Tar bort alla sparade data på enheten"
+      },
+      "rate": {
+        "title": "Betygsätt oss",
+        "error": "Kunde inte öppna butikssidan."
+      },
+      "support": {
+        "title": "Support",
+        "subtitle": "Kontakta oss online",
+        "error": "Kunde inte öppna kontakt-sidan."
+      },
+      "privacy": {
+        "title": "Integritetspolicy",
+        "error": "Kunde inte öppna policyn."
+      },
+      "terms": {
+        "title": "Användarvillkor",
+        "error": "Kunde inte öppna villkoren."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Inte tillgängligt",
+      "linkUnavailableMessage": "Det går inte att öppna länken nu.",
+      "restoreSuccessTitle": "Återställt",
+      "restoreSuccessMessage": "Dina köp har återställts.",
+      "restoreErrorTitle": "Återställning misslyckades",
+      "restoreErrorMessage": "Kunde inte återställa köp nu.",
+      "resetConfirmTitle": "Återställa app-data?",
+      "resetConfirmMessage": "Detta raderar alla chattar och lokala inställningar.",
+      "resetConfirmCancel": "Avbryt",
+      "resetConfirmCta": "Återställ"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Skapa",
+    "chooseStyle": "Välj stil",
+    "aspectRatio": "Bildformat",
+    "starterPrompts": {
+      "title": "Start-prompter",
+      "items": [
+        "studiefoto",
+        "modern vardagsrum",
+        "tropisk strand vid solnedgång"
+      ]
+    },
+    "promptPlaceholder": "Skriv vad du vill se…",
+    "promptHint": "Exempel: „Golden retriever i studioljus”",
+    "clearText": "Rensa text",
+    "generate": "Generera",
+    "generating": "Genererar…"
+  },
+  "editImage": {
+    "headerTitle": "Redigera",
+    "chooseStyle": "Välj stil",
+    "aspectRatio": "Bildformat",
+    "starterPrompts": {
+      "title": "Start-prompter",
+      "items": [
+        "justera ljus",
+        "ta bort bakgrund",
+        "mjuk porträttretusch"
+      ]
+    },
+    "promptPlaceholder": "Beskriv redigeringen (valfritt)",
+    "clearText": "Rensa",
+    "generate": "Använd",
+    "generating": "Använder…",
+    "upload": {
+      "choose": "Välj foto",
+      "change": "Byt",
+      "remove": "Ta bort"
+    },
+    "imageUnavailable": {
+      "title": "Bild inte tillgänglig",
+      "message": "Det gick inte att få tillgång till det valda fotot. Välj igen och försök på nytt."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Tecknat"
+      },
+      "photoreal": {
+        "name": "Fotorealistiskt"
+      },
+      "sketch": {
+        "name": "Skiss"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D Illustration"
+      },
+      "dark_fantasy": {
+        "name": "Mörk fantasy"
+      },
+      "vintage_film": {
+        "name": "Vintage-film"
+      },
+      "pastel": {
+        "name": "Pastell"
+      },
+      "neon_glow": {
+        "name": "Neonglöd"
+      },
+      "epic_landscape": {
+        "name": "Episkt landskap"
+      }
+    },
+    "aspectRatios": {
+      "square": "Kvadrat",
+      "landscape": "Landskap",
+      "portrait": "Porträtt"
     },
     "models": {
-      "gpt-4o": "Den kraftfullaste AI-modellen",
-      "gpt-4o-mini": "Snabb för vardagliga uppgifter",
-      "claude-3-haiku": "Snabb och effektiv modell",
-      "claude-3.7-sonnet": "Avancerad resonemangsmodell",
-      "gemini-2.5-pro": "Googles bästa modell",
-      "gemini-2.0-flash": "Snabb modell med bra resonemang"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Anpassad"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Annat"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Snabbaste modellen",
+      "runwareFluxKrea": "Kreativa, stiliserade resultat",
+      "runwareQwenImage": "Bal­anserade, högkvalitativa resultat",
+      "google4": "Bästa AI-bildmodellen",
+      "fluxKontent": "Flux Kontent finjusterad för redigering",
+      "runwareProvider": "Balans mellan kvalitet och tillförlitlig diffusion.",
+      "airProvider": "Nano Banana ger lekfull, livfull ton.",
+      "googleProvider": "Google justerad för polerade detaljer.",
+      "anthropicProvider": "Claude-pipeline för nyanserade stämningar.",
+      "default": "Tryck för att utforska tillgängliga motorer."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "din valda stil",
+    "sheetTitle": "Formar din vision",
+    "sheetSubtitle": "En stund medan vi blandar in {{style}} i prompten.",
+    "phases": {
+      "blend": "Blandar {{style}}",
+      "paint": "Målar scenen",
+      "finish": "Lägger sista polish"
     },
-    "navigation": {
-      "chat": "Chatt",
-      "history": "Historik",
-      "assistants": "Assistenter",
-      "imagesStudio": "Studio",
-      "settings": "Inställningar",
-      "recentChats": "Senaste chattar"
-    },
-    "imagesStudio": {
-      "title": "Studio",
-      "selectImages": "Välj bilder",
-      "exitSelectionMode": "Avsluta markeringsläge",
-      "selectAll": "Välj alla",
-      "noImagesYet": "Inga bilder ännu",
-      "describeImageHint": "Beskriv bilden nedan och tryck ”Generera”.",
-      "generatedImagesGallery": "Galleri med genererade bilder",
-      "describeImagePlaceholder": "Beskriv bilden du vill ha…",
-      "deleteConfirmTitle": "Ta bort bilder",
-      "deleteConfirmMessage": "Är du säker på att du vill ta bort valda bilder? Det går inte att ångra.",
+    "actions": {
       "cancel": "Avbryt",
-      "delete": "Ta bort",
-      "generate": "Generera",
-      "generating": "Genererar…",
-      "latest": "Senaste",
-      "insertToChat": "Infoga i chatt",
-      "pleaseWait": "Vänta…",
-      "processing": "Bearbetar...",
-      "tapToUploadImage": "Tryck för att ladda upp bild",
-      "camera": "Kamera",
-      "library": "Bibliotek",
-      "enterPrompt": "Ange en prompt för text-till-bild-generering",
-      "openInBrowser": "Öppna i webbläsare",
-      "makeVariations": "Skapa varianter",
-      "deleteAllFromGeneration": "Ta bort allt från denna generering",
-      "imageOptionsTitle": "Bildalternativ",
-      "imageOptionsMessage": "Vad vill du göra med den här bilden?",
-      "insertMarkdownHeader": "Här är bilden för:",
-      "variationSuffix": "— variant av föregående bild",
-      "selectedCount": "valda",
-      "selectedCount_one": "valda",
-      "selectedCount_other": "valda",
-      "imageDescriptionInput": "Fält för bildbeskrivning",
-      "imageDescriptionHint": "Ange beskrivningen av bilden du vill generera",
-      "openModelSettings": "Öppna modellinställningar",
-      "modelSettingsHint": "Tryck för att byta modell och inställningar",
-      "openPhotoGallery": "Öppna fotogalleri",
-      "clearInput": "Rensa fält",
-      "generatedImage": "Genererad bild",
-      "autoSelectedModel": "Automatiskt valde {{model}} för läget {{mode}}",
-      "deleteSelectedConfirmTitle": "Ta bort bilder",
-      "deleteSelectedConfirmMessage": "Vill du ta bort bilder? Det går inte att ångra."
+      "retry": "Försök igen",
+      "close": "Stäng"
     },
-    "imageStudio": {
-      "generateImage": "Generera bild",
-      "generatingImage": "Genererar bild",
-      "generateImageHint": "Tryck för att generera en bild utifrån din beskrivning",
-      "imageDescriptionInput": "Fält för bildbeskrivning",
-      "imageDescriptionHint": "Ange beskrivningen av bilden du vill generera",
-      "openModelSettings": "Öppna modellinställningar",
-      "modelSettingsHint": "Tryck för att byta modell och inställningar",
-      "openPhotoGallery": "Öppna fotogalleri",
-      "clearInput": "Rensa fält",
-      "generatedImage": "Genererad bild"
+    "errors": {
+      "restrictedTitle": "Begränsat innehåll",
+      "genericTitle": "Genereringen misslyckades",
+      "genericMessage": "Kunde inte generera bilden."
     },
-    "assistants": {
-      "title": "Assistenter",
-      "subtitle": "Kuraterade AI-specialister för kodning, skrivande, analys, planering m.m.",
-      "searchPlaceholder": "Sök assistenter…",
-      "useAssistant": "Använd assistent",
-      "description": "Beskrivning",
-      "systemPrompt": "System-prompt",
-      "chooseModel": "Välj modell",
-      "categoryAll": "Alla",
-      "categories": {
-        "everyday": "Vardag",
-        "life": "Liv",
-        "health": "Hälsa",
-        "schoolWork": "Skola & arbete",
-        "coding": "Kodning",
-        "creative": "Kreativt",
-        "general": "Allmänt"
-      },
-      "presets": {
-        "default": { "name": "Standardassistent", "description": "Balanserad hjälp för vardagen." },
-        "quick": { "name": "Snabba svar", "description": "Kort och rakt på sak." },
-        "planner": { "name": "Dagsplanerare", "description": "Planera din dag och rutiner." },
-        "recipes": { "name": "Måltider & recept", "description": "Vad du kan laga av det du har." },
-        "fitness": { "name": "Vane- & träningscoach", "description": "Små vanor & hemmapass." },
-        "money": { "name": "Pengavän", "description": "Enkla budgetar & spartips." },
-        "study": { "name": "Studiehjälp", "description": "Förklara enkelt. Förhör mig." },
-        "email": { "name": "E-post & CV", "description": "Skriv tydliga mejl och CV-punkter." },
-        "translator": { "name": "Översättare", "description": "Översätt + lär fraser." },
-        "travel": { "name": "Resekompis", "description": "Enkla planer & packlista." },
-        "tech": { "name": "Teknisk support (enkel)", "description": "Grunder i telefon, appar och Wi-Fi." },
-        "summarizer": { "name": "TL;DR-sammanfattare", "description": "Korta punkter + enradig TL;DR." },
-        "gift": { "name": "Presenttips", "description": "Idéer efter budget & intressen." },
-        "party": { "name": "Eventplanerare (lite)", "description": "Planera en liten fest snabbt." },
-        "social": { "name": "Sociala inlägg", "description": "Utkast med alternativ." },
-        "interview": { "name": "Intervjuträning", "description": "Öva svar (STAR)." },
-        "homefix": { "name": "Hemmafixarguide", "description": "Enkel felsökning." },
-        "pet": { "name": "Hjälp med husdjur", "description": "Utfodring, promenader, grundträning." },
-        "mindful": { "name": "Mindful minut", "description": "Lugna pauser i 1–3 min." },
-        "polite": { "name": "Artig omskrivare", "description": "Skriv om texter och svar artigt." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Kunde inte spara",
+      "shareFailedTitle": "Kunde inte dela",
+      "tryAgain": "Var vänlig försök igen."
     },
-    "history": {
-      "title": "Historik",
-      "searchPlaceholder": "Sök i chattar…",
-      "newChat": "Ny chatt",
-      "new": "+ Ny",
-      "search": "Sök",
-      "clearSearch": "Rensa sökning",
-      "noChatsYet": "Inga chattar ännu",
-      "startFirstConversation": "Starta din första konversation.",
-      "startChat": "Starta chatt",
-      "errorLoadingHistory": "Fel vid inläsning av historik",
-      "renameChat": "Byt namn på chatt",
-      "enterNewTitle": "Ange en ny titel",
-      "deleteChat": "Ta bort chatt?",
-      "deleteChatMessage": "”{{title}}” kommer att tas bort.",
-      "rename": "Byt namn",
-      "unpin": "Lossa",
-      "pin": "Fäst",
-      "untitled": "Utan titel"
+    "result": {
+      "complete": "Klart"
     },
-    "settings": {
-      "title": "Inställningar",
-      "model": "Modell",
-      "searchPlaceholder": "Sök modeller…",
-      "temperatureForCurrentModel": "Temperatur för aktuell modell",
-      "customFor": "Anpassat för {{model}}",
-      "usingDefault": "Använder standard {{temperature}}",
-      "resetToDefault": "Återställ till standard",
-      "defaultTemperature": "Standardtemperatur (fallback)",
-      "usedByModelsWithoutOverride": "Används av modeller utan åsidosättning",
-      "dangerZone": "Riskzon",
-      "clearAllChatsAndSettings": "Rensa alla chattar och inställningar",
-      "about": "Om",
-      "version": "Version {{version}}",
-      "privacyPolicy": "Integritetspolicy",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Meddelande till Agarka...",
-      "createImages": "Skapa bilder",
-      "generateAiArtwork": "Generera AI-konst",
-      "camera": "Kamera",
-      "takeOrSelectPhotos": "Ta eller välj foton",
-      "search": "Sök",
-      "findInformation": "Hitta information",
-      "removeImage": "Ta bort bild",
-      "messageInput": "Meddelandefält",
-      "clearInput": "Rensa fält",
-      "hideQuickActions": "Dölj snabba åtgärder",
-      "showQuickActions": "Visa snabba åtgärder",
-      "startVoiceInput": "Starta röstinmatning",
-      "sendMessage": "Skicka",
-      "offline": "Offline",
-      "stop": "Stoppa",
-      "streaming": "Strömmar…",
-      "closeRecorder": "Stäng inspelaren",
-      "insertTranscript": "Infoga transkription",
-      "scrollToLatest": "Skrolla till senaste",
-      "copyMessage": "Kopiera meddelande",
-      "copyMessageHint": "Kopiera detta meddelande till urklipp",
-      "shareMessage": "Dela meddelande",
-      "shareMessageHint": "Dela detta meddelande",
-      "regenerateResponse": "Generera svar igen",
-      "regenerateResponseHint": "Skapa ett nytt svar",
-      "copyCode": "Kopiera kod",
-      "image": "bild",
-      "loading": "Laddar…",
-      "loadingChat": "Laddar chatt...",
-      "offlineBanner": "Du är offline. Meddelanden kan inte skickas.",
-      "imagePickerErrorTitle": "Fel vid bildval",
-      "messageTooLong": "Meddelandet är för långt ({{length}}). Gränsen är {{limit}}.",
-      "emptyTitle": "Hur kan jag hjälpa till?",
-      "emptySubtitle": "Starta en konversation med AI",
-      "privateTitle": "Privat chatt",
-      "privateSubtitle": "Denna chatt visas inte i din historik",
-      "listening": "Lyssnar…",
-      "startRecording": "Starta inspelning…",
-      "suggestions": {
-        "writeStory": "Skriv en kreativ berättelse",
-        "writeStorySubtitle": "om ett magiskt äventyr",
-        "planTravel": "Planera en resrutt",
-        "planTravelSubtitle": "för en fantastisk semester",
-        "explainConcept": "Förklara detta koncept",
-        "explainConceptSubtitle": "med enkla ord",
-        "planDay": "Planera min dag",
-        "planDaySubtitle": "med produktivitetstips"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Bearbetar...",
-      "tapToUploadImage": "Tryck för att ladda upp bild"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Bearbetar...",
-      "camera": "Kamera",
-      "library": "Bibliotek"
-    },
-    "common": {
-      "new": "NYTT",
-      "best": "BÄST",
-      "cancel": "Avbryt",
-      "save": "Spara",
-      "delete": "Ta bort",
+    "accessibility": {
       "close": "Stäng"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Radera",
+      "edit": "Redigera",
+      "save": "Spara",
+      "share": "Dela"
+    },
+    "accessibility": {
+      "close": "Stäng",
+      "delete": "Radera bild",
+      "edit": "Redigera bild",
+      "save": "Spara bild",
+      "share": "Dela bild"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Öppna meny",
+      "selectImages": "Välj bilder",
+      "exitSelection": "Avsluta val",
+      "deleteSelected": "Radera valda bilder",
+      "selectToDelete": "Välj bilder att radera"
+    },
+    "createCard": {
+      "title": "Skapa från text",
+      "subtitle": "Skriv en beskrivning",
+      "cta": "Beskriv & generera"
+    },
+    "editCard": {
+      "title": "Redigera foto",
+      "subtitle": "Ladda upp & redigera",
+      "cta": "Redigera foto"
+    },
+    "gallery": {
+      "title": "Galleri",
+      "empty": "Inga bilder ännu",
+      "selection": {
+        "enter": "Välj bilder",
+        "exit": "Avsluta val",
+        "deleteSelected": "Radera valda",
+        "selectForDelete": "Välj för radering"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Möt",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Skapa & redigera bilder med AI — direkt i {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Möt din AI",
+      "titleHighlight": "Assistenter",
+      "subtitle": "Specialiserade AI-experter redo att hjälpa dig i vardagen",
+      "cards": [
+        {
+          "title": "Träningscoach",
+          "text": "Få personliga tränings- och kostplaner"
+        },
+        {
+          "title": "Läkare",
+          "text": "Få hälsoinsikter, analys av symptom och råd"
+        },
+        {
+          "title": "Husdjursskötare",
+          "text": "Expertråd om husdjurs hälsa, träning och vård"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "ENTERPRISE-KLASS AI-LÖSNINGAR",
+      "description": "Stärk ditt företag med banbrytande artificiell intelligens designad för gäng och proffs.",
+      "stats": "Förtroende från 500k+ användare",
+      "rating": "4,9 / 5",
+      "button": "Kom igång"
+    }
+  },
+  "coinStore": {
+    "title": "Få tokens",
+    "loading": "Laddar token-butik…",
+    "balanceLabel": "Din nuvarande balans är",
+    "balanceValue": "{{amount}} tokens",
+    "history": {
+      "link": "Transaktionshistorik",
+      "alertTitle": "Historik",
+      "alertBody": "Transaktionshistorik kommer snart."
+    },
+    "noPacks": "Inga tokenpaket tillgängliga. Kontrollera RevenueCat offering-id.",
+    "badges": {
+      "basic": "Grundpaket",
+      "popular": "Populärast",
+      "value": "Bästa värde"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} tokens",
+      "defaultName": "Paket {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Bli Premium",
+      "subtitle": "Obegränsad åtkomst & funktioner",
+      "cta": "Uppgradera"
+    },
+    "termsText": "Genom att köpa accepterar du våra",
+    "termsLink": "Användarvillkor",
+    "alerts": {
+      "initErrorTitle": "Initiering misslyckades",
+      "genericMessage": "Något gick fel.",
+      "successTitle": "Lyckat",
+      "successMessage": "Tokens dyker upp snart.",
+      "purchaseFailedTitle": "Köp misslyckades",
+      "unknownError": "Okänt fel"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Återställ",
+    "restoreRestoring": "Återställer…",
+    "features": {
+      "create": "Skapa bilder och video",
+      "search": "Sök på webben med AI",
+      "talk": "Prata naturligt med AI"
+    },
+    "freeTrial": {
+      "title": "Gratis testperiod",
+      "subtitle": "3-dagars gratis test"
+    },
+    "badge": {
+      "bestOffer": "Bästa erbjudandet"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Årligt",
+        "only": "Endast {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Månadsvis",
+        "subtitle": "Avsluta när som helst",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Veckovis",
+        "subtitle": "Avsluta när som helst",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "per vecka",
+      "perMonth": "per månad"
+    },
+    "cta": "Fortsätt",
+    "legal": {
+      "terms": "Villkor",
+      "privacy": "Integritet"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Meddelande...",
+    "createImages": "Skapa bilder",
+    "generateAiArtwork": "Generera AI-konstverk",
+    "camera": "Kamera",
+    "takeOrSelectPhotos": "Ta eller välj foton",
+    "search": "Sök",
+    "findInformation": "Hitta information",
+    "findRecentInfo": "Hitta senaste info",
+    "removeImage": "Ta bort bild",
+    "messageInput": "Meddelandeinmatning",
+    "clearInput": "Rensa indata",
+    "quickActionsLabel": "Snabba åtgärder",
+    "hideQuickActions": "Dölj snabba åtgärder",
+    "showQuickActions": "Visa snabba åtgärder",
+    "startVoiceInput": "Starta röstinmatning",
+    "sendMessage": "Skicka meddelande",
+    "offline": "Offline",
+    "stop": "Stoppa",
+    "streaming": "Streamar…",
+    "closeRecorder": "Stäng inspelning",
+    "insertTranscript": "Skicka",
+    "scrollToLatest": "Skrolla till senaste",
+    "copyMessage": "Kopiera meddelande",
+    "copyMessageHint": "Kopiera detta meddelande till urklipp",
+    "shareMessage": "Dela meddelande",
+    "shareMessageHint": "Dela detta meddelande",
+    "regenerateResponse": "Generera svar igen",
+    "regenerateResponseHint": "Skapa nytt svar",
+    "copyCode": "Kopiera kod",
+    "image": "bild",
+    "loading": "Läser…",
+    "loadingChat": "Läser chatt...",
+    "offlineBanner": "Du är offline. Meddelanden kan inte skickas.",
+    "imagePickerErrorTitle": "Fel vid val av bild",
+    "imagePickerErrorMessage": "Kunde inte få åtkomst till dina foton. Försök igen.",
+    "messageTooLong": "Meddelandet är för långt ({{length}}). Gräns är {{limit}}.",
+    "sendFailed": "Skickandet misslyckades.",
+    "voiceStartFailed": "Kunde inte starta röst.",
+    "emptyTitle": "Hur kan jag hjälpa?",
+    "emptySubtitle": "Starta en konversation med AI",
+    "privateTitle": "Privat chatt",
+    "privateSubtitle": "Denna chatt kommer inte att visas i din historik",
+    "permissions": {
+      "photosTitle": "Foto­behörighet krävs",
+      "photosMessage": "Fototillgång krävs för att välja bilder.",
+      "voiceTitle": "Röstbehörighet krävs",
+      "voiceMessage": "Mikrofon och röstigenkänning krävs för röstfunktionen."
+    },
+    "activity": {
+      "analyzingImages": "Analyserar bilder…",
+      "searching": "Söker…",
+      "thinking": "Tänker…"
+    },
+    "webSearch": {
+      "title": "Webbsökning",
+      "subtitle": "Hitta senaste info",
+      "label": "Webbsökning",
+      "enable": "Aktivera webbsökning",
+      "disable": "Inaktivera webbsökning",
+      "toggleLabel": "Sök på webben"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Designa visuella element snabbt.",
+      "subtitle": "Generera, finslipa och publicera på ett ställe.",
+      "cta": "Öppna"
+    },
+    "quickActions": {
+      "createImages": "Skapa bilder",
+      "openCamera": "Öppna kamera",
+      "editImage": "Redigera bild",
+      "startVoice": "Starta röst",
+      "assistants": "Assistenter"
+    },
+    "listening": "Lyssnar…",
+    "startRecording": "Startar inspelning…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistent ej tillgänglig",
+      "unavailableDescription": "Kunde inte ladda denna assistent. Försök igen.",
+      "ready": "Redo att hjälpa"
+    },
+    "actions": {
+      "copy": "Kopiera",
+      "share": "Dela",
+      "regenerate": "Generera igen",
+      "retryFromHere": "Försök igen härifrån",
+      "cancel": "Avbryt"
+    },
+    "messageActionTitle": "Meddelande",
+    "status": {
+      "sending": "Skickar…",
+      "failed": "Misslyckades",
+      "sent": "Skickat"
+    },
+    "suggestions": {
+      "writeStory": "Skriv en kreativ berättelse",
+      "writeStorySubtitle": "om ett magiskt äventyr",
+      "planTravel": "Planera en resa",
+      "planTravelSubtitle": "för en fantastisk semester",
+      "explainConcept": "Förklara detta koncept",
+      "explainConceptSubtitle": "med enkla ord",
+      "planDay": "Planera min dag",
+      "planDaySubtitle": "med produktivitetstips"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Bearbetar...",
+    "tapToUploadImage": "Tryck för att ladda upp bild"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Bearbetar...",
+    "camera": "Kamera",
+    "library": "Bibliotek"
+  },
+  "common": {
+    "new": "NY",
+    "best": "BÄSTA",
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "delete": "Radera",
+    "close": "Stäng",
+    "allow": "Tillåt"
   }
-  
+}

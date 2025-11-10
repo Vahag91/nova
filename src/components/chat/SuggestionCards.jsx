@@ -15,20 +15,21 @@ const SuggestionCards = ({ onSuggestionPress }) => {
 
   const items = useMemo(() => {
     const list = [
+      // Keep Edit Images right next to Create Images
       {
         id: 'create-images',
         icon: 'studio',
         title: safeTitle(t('chat.quickActions.createImages', { defaultValue: 'Create Images' }), 'Create Images'),
       },
       {
-        id: 'camera',
-        icon: 'photo',
-        title: safeTitle(t('chat.camera', { defaultValue: 'Camera' }), 'Camera'),
-      },
-      {
         id: 'edit-image',
         icon: 'layers',
         title: safeTitle(t('chat.quickActions.editImage', { defaultValue: 'Edit Image' }), 'Edit Image'),
+      },
+      {
+        id: 'open-camera',
+        icon: 'photo',
+        title: safeTitle(t('chat.camera', { defaultValue: 'Camera' }), 'Camera'),
       },
       {
         id: 'start-voice',

@@ -202,29 +202,25 @@ useEffect(() => {
   }
 
   const onOpenCameraPress = useCallback(async () => {
+    const photosTitle = t('chat.permissions.photosTitle', { defaultValue: 'Photos Permission Needed' });
+    const photosMessage = t('chat.permissions.photosMessage', { defaultValue: 'Photo access is required to choose images.' });
     const res = await ensurePhotoLibraryAccess({ write: false });
     if (!res.ok) {
       // Mirror the official "blocked vs denied" flow with a single user-friendly prompt
       if (res.blocked) {
-        promptOpenSettings(
-          t('chat.imagePickerErrorTitle') || 'Photos Permission Needed',
-          t('chat.photosPermissionMessage') || 'Photo access is blocked. Please enable it in Settings.'
-        );
+        promptOpenSettings(photosTitle, photosMessage);
       } else {
         Alert.alert(
-          t('chat.imagePickerErrorTitle') || 'Photos Permission Needed',
-          t('chat.photosPermissionMessage') || 'Photo access is required to choose images.',
+          photosTitle,
+          photosMessage,
           [
-            { text: t('common.cancel') || 'Cancel', style: 'cancel' },
+            { text: t('common.cancel'), style: 'cancel' },
             {
-              text: t('common.allow') || 'Allow',
+              text: t('common.allow', { defaultValue: 'Allow' }),
               onPress: async () => {
                 const retry = await ensurePhotoLibraryAccess({ write: false });
                 if (!retry.ok && retry.blocked) {
-                  promptOpenSettings(
-                    t('chat.imagePickerErrorTitle') || 'Photos Permission Needed',
-                    t('chat.photosPermissionMessage') || 'Photo access is blocked. Please enable it in Settings.'
-                  );
+                  promptOpenSettings(photosTitle, photosMessage);
                 }
               }
             }
@@ -240,7 +236,10 @@ useEffect(() => {
       (response) => {
         if (response?.didCancel) return;
         if (response?.errorCode || response?.errorMessage) {
-          Alert.alert(t('chat.imagePickerErrorTitle') || 'Photos Error', response?.errorMessage || response?.errorCode);
+          Alert.alert(
+            t('chat.imagePickerErrorTitle'),
+            response?.errorMessage || response?.errorCode || t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' })
+          );
           return;
         }
         const assetsList = Array.isArray(response?.assets) ? response.assets : [];
@@ -261,15 +260,13 @@ useEffect(() => {
 
   const handleCreateImagesPress = useCallback(() => {
     setInsertToChatCallback(onInsertImagesMarkdown);
-    navigation.navigate('ImagesStudio', { seedPrompt: input });
+    // Open Studio home instead of jumping straight into Create
+    navigation.navigate('Studio', { screen: 'StudioHome', params: { seedPrompt: input || '' } });
   }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
 
   const handleEditImagePress = useCallback(() => {
     setInsertToChatCallback(onInsertImagesMarkdown);
-    navigation.navigate('ImagesStudio', {
-      seedPrompt: input,
-      startMode: 'img2img',
-    });
+    navigation.navigate('Studio', { screen: 'EditImage', params: { seedPrompt: input || '' } });
   }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
 
   const handleAssistantsPress = useCallback(() => {
@@ -285,26 +282,22 @@ useEffect(() => {
 
     const res = await ensureMicAndSpeech();
     if (!res.ok) {
+      const voiceTitle = t('chat.permissions.voiceTitle', { defaultValue: 'Voice Permissions Needed' });
+      const voiceMessage = t('chat.permissions.voiceMessage', { defaultValue: 'Microphone and speech access is required to use voice.' });
       if (res.blocked) {
-        promptOpenSettings(
-          t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
-          t('chat.voicePermissionMessage') || 'Microphone/Speech access is blocked. Please enable them in Settings.'
-        );
+        promptOpenSettings(voiceTitle, voiceMessage);
       } else {
         Alert.alert(
-          t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
-          t('chat.voicePermissionMessage') || 'Microphone and Speech Recognition are required to use voice.',
+          voiceTitle,
+          voiceMessage,
           [
-            { text: t('common.cancel') || 'Cancel', style: 'cancel' },
+            { text: t('common.cancel'), style: 'cancel' },
             {
-              text: t('common.allow') || 'Allow',
+              text: t('common.allow', { defaultValue: 'Allow' }),
               onPress: async () => {
                 const retry = await ensureMicAndSpeech();
                 if (!retry.ok && retry.blocked) {
-                  promptOpenSettings(
-                    t('chat.voicePermissionTitle') || 'Voice Permissions Needed',
-                    t('chat.voicePermissionMessage') || 'Microphone/Speech access is blocked. Please enable them in Settings.'
-                  );
+                  promptOpenSettings(voiceTitle, voiceMessage);
                 }
               }
             }
@@ -321,7 +314,7 @@ useEffect(() => {
       if (!started) return;
     } catch (err) {
       const pretty = mapProxyError(err);
-      setError(pretty.message || t('chat.voiceStartFailed') || 'Could not start voice.');
+      setError(pretty.message || t('chat.voiceStartFailed', { defaultValue: 'Could not start voice.' }));
       return;
     }
     setShowVoiceOverlay(true);
@@ -360,7 +353,7 @@ useEffect(() => {
   // ==== Send flow ====
   async function onSend(overrideText) {
     if (offline) {
-      setError(t('chat.offlineBanner') || "You're offline. Try again when you're back online.");
+      setError(t('chat.offlineBanner'));
       return;
     }
     if (streaming) return;
@@ -381,7 +374,7 @@ useEffect(() => {
 
     const MAX_CHARS = 16000;
     if (text.length > MAX_CHARS) {
-      setError(t('chat.messageTooLong', { length: text.length, limit: MAX_CHARS }) || `Message too long (${text.length}/${MAX_CHARS}).`);
+      setError(t('chat.messageTooLong', { length: text.length, limit: MAX_CHARS }));
       return;
     }
 
@@ -409,8 +402,10 @@ useEffect(() => {
       assistantId = a.id;
       try {
         const initialActivity = hasImages
-          ? t('chat.activityAnalyzingImages', 'Analyzing images…')
-          : (webSearchNext ? t('chat.activitySearching', 'Searching…') : t('chat.activityThinking', 'Thinking…'));
+          ? t('chat.activity.analyzingImages', { defaultValue: 'Analyzing images…' })
+          : (webSearchNext
+            ? t('chat.activity.searching', { defaultValue: 'Searching…' })
+            : t('chat.activity.thinking', { defaultValue: 'Thinking…' }));
         a.meta = { ...(a.meta || {}), activity: initialActivity };
       } catch { }
 
@@ -547,7 +542,7 @@ useEffect(() => {
       });
       if (assistantAdded && assistantId) {
         if (isPrivate) {
-          updateLastAssistantContentPrivate(() => t('chat.sendFailed') || 'Failed to send.');
+          updateLastAssistantContentPrivate(() => t('chat.sendFailed', { defaultValue: 'Failed to send.' }));
         } else if (activeThread?.id) {
           removeMessage(activeThread.id, assistantId);
         }
@@ -562,7 +557,7 @@ useEffect(() => {
       abortRef.current = null;
       setStreamingMsgId(null);
       const pretty = mapProxyError(err);
-      setError(pretty.message || t('chat.sendFailed') || 'Failed to send.');
+      setError(pretty.message || t('chat.sendFailed', { defaultValue: 'Failed to send.' }));
     }
   }
 

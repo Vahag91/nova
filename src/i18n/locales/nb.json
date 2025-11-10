@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Velg en modell",
-      "searchPlaceholder": "Søk etter modeller...",
-      "noModelsFound": "Ingen modeller funnet",
-      "noModelsAvailable": "Ingen tilgjengelige modeller",
-      "currentModel": "Gjeldende modell: {{name}}. Trykk for å endre.",
-      "openHint": "Åpner modellvalgmenyen",
-      "closeLabel": "Lukk modellvelger",
-      "searchLabel": "Søk etter modeller",
-      "searchHint": "Skriv for å filtrere modeller",
-      "modelLabel": "{{name}}-modell",
-      "selectHint": "Velg {{name}}",
-      "currentlySelected": "Modellen som er valgt"
+  "modelSelector": {
+    "title": "Velg modell",
+    "searchPlaceholder": "Søk etter modeller...",
+    "noModelsFound": "Ingen modeller funnet",
+    "noModelsAvailable": "Ingen modeller tilgjengelig",
+    "currentModel": "Gjeldende modell: {{name}}. Trykk for å endre.",
+    "openHint": "Åpner modellvelgeren",
+    "closeLabel": "Lukk modellvelger",
+    "searchLabel": "Søk modeller",
+    "searchHint": "Skriv for å filtrere tilgjengelige modeller",
+    "modelLabel": "{{name}}-modell",
+    "selectHint": "Velg {{name}}-modell",
+    "currentlySelected": "Valgt nå"
+  },
+  "models": {
+    "gpt-4o": "Kraftigste KI-modell",
+    "gpt-4o-mini": "Rask for daglige oppgaver",
+    "gpt-5": "Kraftigste allround KI",
+    "gpt-5-chat-latest": "Optimalisert for chat og dialog",
+    "gpt-5-mini": "Rask og pålitelig GPT-5",
+    "gpt-5-nano": "Lett modell for enkle oppgaver",
+    "o4-mini": "Effektiv resonneringsmodell",
+    "gpt-4.1-mini": "Kompakt og kapabel GPT-4.1",
+    "claude-3-haiku": "Rask og fokusert Anthropic-KI",
+    "claude-3.7-sonnet": "Finpusset resonnering fra Anthropic",
+    "gemini-2.5-Flash": "Googles mest avanserte modell",
+    "gemini-2.5-flash": "Googles mest avanserte modell",
+    "gemini-2.0-flash": "Rask og presis Google-KI"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Annet"
+  },
+  "navigation": {
+    "chat": "Ny chat",
+    "history": "Historikk",
+    "assistants": "Assistenter",
+    "imagesStudio": "Image Studio",
+    "settings": "Innstillinger",
+    "recentChats": "Nylige chatter"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Lag, forbedre og publiser visuelt innhold på ett sted.",
+    "cta": "Åpne"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Velg bilder",
+    "exitSelectionMode": "Avslutt valgmodus",
+    "selectAll": "Velg alle",
+    "noImagesYet": "Ingen bilder ennå",
+    "describeImageHint": "Beskriv bildet ditt og trykk Generer.",
+    "generatedImagesGallery": "Galleri med genererte bilder",
+    "describeImagePlaceholder": "Beskriv bildet du vil ha…",
+    "deleteConfirmTitle": "Slett bilder",
+    "deleteConfirmMessage": "Er du sikker på at du vil slette de valgte bildene? Dette kan ikke angres.",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "generate": "Generer",
+    "generating": "Genererer…",
+    "latest": "Siste",
+    "insertToChat": "Sett inn i chat",
+    "pleaseWait": "Vent litt…",
+    "processing": "Behandler...",
+    "tapToUploadImage": "Trykk for å laste opp bilde",
+    "camera": "Kamera",
+    "library": "Galleri",
+    "enterPrompt": "Skriv inn en prompt for tekst-til-bilde",
+    "openInBrowser": "Åpne i nettleser",
+    "makeVariations": "Lag variasjoner",
+    "deleteAllFromGeneration": "Slett alt fra denne genereringen",
+    "imageOptionsTitle": "Bildevalg",
+    "imageOptionsMessage": "Hva vil du gjøre med dette bildet?",
+    "insertMarkdownHeader": "Her er bildet for:",
+    "variationSuffix": "— variasjon av forrige bilde",
+    "selectedCount": "valgt",
+    "selectedCount_one": "valgt",
+    "selectedCount_other": "valgt",
+    "imageDescriptionInput": "Bildefelt",
+    "imageDescriptionHint": "Skriv en beskrivelse av bildet du vil generere",
+    "openModelSettings": "Åpne modellinnstillinger",
+    "modelSettingsHint": "Trykk for å endre modell og innstillinger",
+    "openPhotoGallery": "Åpne bildegalleri",
+    "clearInput": "Tøm",
+    "generatedImage": "Generert bilde",
+    "autoSelectedModel": "Valgte automatisk {{model}} for {{mode}}-modus",
+    "deleteSelectedConfirmTitle": "Slett bilder",
+    "deleteSelectedConfirmMessage": "Er du sikker på at du vil slette bildene? Dette kan ikke angres."
+  },
+  "imageStudio": {
+    "generateImage": "Generer bilde",
+    "generatingImage": "Genererer bilde",
+    "generateImageHint": "Trykk for å generere et bilde basert på beskrivelsen",
+    "imageDescriptionInput": "Bildefelt",
+    "imageDescriptionHint": "Skriv beskrivelsen av bildet du vil generere",
+    "openModelSettings": "Åpne modellinnstillinger",
+    "modelSettingsHint": "Trykk for å endre modell og innstillinger",
+    "openPhotoGallery": "Åpne bildegalleri",
+    "clearInput": "Tøm",
+    "generatedImage": "Generert bilde"
+  },
+  "assistants": {
+    "title": "Assistenter",
+    "subtitle": "Kuraterte KI-spesialister klare for koding, skriving, analyse, planlegging og mer.",
+    "searchPlaceholder": "Søk assistenter…",
+    "useAssistant": "Bruk assistent",
+    "selectAssistant": "Velg assistent",
+    "description": "Beskrivelse",
+    "systemPrompt": "Systemprompt",
+    "chooseModel": "Velg modell",
+    "categoryAll": "Alle",
+    "categories": {
+      "everyday": "Hverdag",
+      "life": "Liv",
+      "health": "Helse",
+      "schoolWork": "Skole & jobb",
+      "coding": "Koding",
+      "creative": "Kreativ",
+      "general": "Generelt"
+    },
+    "presets": {
+      "default": {
+        "name": "Standardassistent",
+        "description": "Balansert hjelp til daglige ting."
+      },
+      "quick": {
+        "name": "Kjappe svar",
+        "description": "Korte, direkte svar."
+      },
+      "planner": {
+        "name": "Dagsplanlegger",
+        "description": "Planlegg dagen og rutinene dine."
+      },
+      "recipes": {
+        "name": "Måltider & oppskrifter",
+        "description": "Hva du kan lage med det du har."
+      },
+      "fitness": {
+        "name": "Vane- og treningscoach",
+        "description": "Små vaner og hjemmetrening."
+      },
+      "money": {
+        "name": "Pengehjelp",
+        "description": "Enkle budsjetter og sparetips."
+      },
+      "study": {
+        "name": "Studiehjelp",
+        "description": "Forklar enkelt. Test meg."
+      },
+      "email": {
+        "name": "E-post & CV",
+        "description": "Skriv tydelige e-poster og CV-punkter."
+      },
+      "translator": {
+        "name": "Oversetter",
+        "description": "Oversett og lær uttrykk."
+      },
+      "travel": {
+        "name": "Reisehjelper",
+        "description": "Enkle planer og pakkelister."
+      },
+      "tech": {
+        "name": "Teknisk støtte (enkel)",
+        "description": "Mobil, apper, Wi-Fi-grunnlag."
+      },
+      "summarizer": {
+        "name": "TL;DR-sammendrag",
+        "description": "Korte punkter + én linjes oppsummering."
+      },
+      "gift": {
+        "name": "Gavefinner",
+        "description": "Ideer etter budsjett og interesser."
+      },
+      "party": {
+        "name": "Arrangement (lett)",
+        "description": "Planlegg et lite event raskt."
+      },
+      "social": {
+        "name": "Sosiale medier-innlegg",
+        "description": "Lag innlegg med varianter."
+      },
+      "interview": {
+        "name": "Intervjutrener",
+        "description": "Øv svar (STAR)."
+      },
+      "homefix": {
+        "name": "Hjemmefikser",
+        "description": "Enkel DIY-feilsøking."
+      },
+      "pet": {
+        "name": "Kjæledyrhjelp",
+        "description": "Fôring, tur, enkel trening."
+      },
+      "mindful": {
+        "name": "Mindfult minutt",
+        "description": "1–3 minutt med ro."
+      },
+      "polite": {
+        "name": "Høflig omskriver",
+        "description": "Skriv om tekst og svar pent."
+      }
+    }
+  },
+  "history": {
+    "title": "Historikk",
+    "searchPlaceholder": "Søk i chatter…",
+    "newChat": "Ny chat",
+    "new": "+ Ny",
+    "search": "Søk",
+    "clearSearch": "Tøm søk",
+    "noChatsYet": "Ingen chatter ennå",
+    "startFirstConversation": "Start din første samtale.",
+    "startChat": "Start chat",
+    "errorLoadingHistory": "Feil ved innlasting av historikk",
+    "renameChat": "Gi chatten nytt navn",
+    "enterNewTitle": "Skriv inn ny tittel",
+    "deleteChat": "Slette chat?",
+    "deleteChatMessage": "«{{title}}» blir slettet.",
+    "rename": "Gi nytt navn",
+    "unpin": "Løsne",
+    "pin": "Fest",
+    "untitled": "Uten tittel"
+  },
+  "settings": {
+    "title": "Innstillinger",
+    "model": "Modell",
+    "searchPlaceholder": "Søk etter modeller…",
+    "temperatureForCurrentModel": "Temperatur for gjeldende modell",
+    "customFor": "Tilpasset for {{model}}",
+    "usingDefault": "Bruker standard {{temperature}}",
+    "resetToDefault": "Tilbakestill til standard",
+    "defaultTemperature": "Standardtemperatur (reserve)",
+    "usedByModelsWithoutOverride": "Brukes av modeller uten egendefinert verdi",
+    "dangerZone": "Fareområde",
+    "clearAllChatsAndSettings": "Slett alle chatter og innstillinger",
+    "about": "Om",
+    "version": "Versjon {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Personvernerklæring",
+    "hero": {
+      "label": "Spesialtilbud",
+      "title": "Prioritert tilgang uten grenser",
+      "upgrade": "Oppgrader",
+      "manage": "Administrer abonnement"
+    },
+    "sections": {
+      "premium": "Premium-abonnement",
+      "data": "Brukerdata",
+      "support": "Støtte & juridisk"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Få Premium",
+        "subtitle": "Lås opp ubegrensede skapingsverktøy"
+      },
+      "premiumActive": {
+        "title": "Premium aktiv",
+        "subtitle": "Takk for at du støtter ChatCloud"
+      },
+      "restore": {
+        "title": "Gjenopprett kjøp",
+        "subtitle": "Bruk hvis du har byttet enhet"
+      },
+      "history": {
+        "title": "Administrer chathistorikk",
+        "subtitle": "Se og slett tidligere økter"
+      },
+      "reset": {
+        "title": "Nullstill chatter og preferanser",
+        "subtitle": "Sletter all lagret data på denne enheten"
+      },
+      "rate": {
+        "title": "Vurder oss",
+        "error": "Kunne ikke åpne butikksiden."
+      },
+      "support": {
+        "title": "Støtte",
+        "subtitle": "Kontakt oss på nett",
+        "error": "Kunne ikke åpne støttesiden."
+      },
+      "privacy": {
+        "title": "Personvernerklæring",
+        "error": "Kunne ikke åpne personvernet."
+      },
+      "terms": {
+        "title": "Bruksvilkår",
+        "error": "Kunne ikke åpne bruksvilkår."
+      }
+    },
+    "capabilities": {
+      "text": "TEKST",
+      "image": "BILDE",
+      "audio": "LYD",
+      "video": "VIDEO"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Ikke tilgjengelig",
+      "linkUnavailableMessage": "Kan ikke åpne denne lenken nå.",
+      "restoreSuccessTitle": "Gjenopprettet",
+      "restoreSuccessMessage": "Kjøpene dine er gjenopprettet.",
+      "restoreErrorTitle": "Gjenoppretting feilet",
+      "restoreErrorMessage": "Kan ikke gjenopprette kjøp akkurat nå.",
+      "resetConfirmTitle": "Nullstill appdata?",
+      "resetConfirmMessage": "Dette fjerner alle chatter og lokale innstillinger.",
+      "resetConfirmCancel": "Avbryt",
+      "resetConfirmCta": "Nullstill"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Opprett",
+    "chooseStyle": "Velg stil",
+    "aspectRatio": "Bildeformat",
+    "starterPrompts": {
+      "title": "Startforslag",
+      "items": [
+        "studiportrett",
+        "moderne stue",
+        "tropisk strand ved solnedgang"
+      ]
+    },
+    "promptPlaceholder": "Skriv hva du vil se…",
+    "promptHint": "Eksempel: «Golden retriever i studiolys»",
+    "clearText": "Tøm tekst",
+    "generate": "Generer",
+    "generating": "Genererer…"
+  },
+  "editImage": {
+    "headerTitle": "Rediger",
+    "chooseStyle": "Velg stil",
+    "aspectRatio": "Bildeformat",
+    "starterPrompts": {
+      "title": "Startforslag",
+      "items": [
+        "fiks lys",
+        "fjern bakgrunn",
+        "myk portrettretusj"
+      ]
+    },
+    "promptPlaceholder": "Beskriv endringer (valgfritt)",
+    "clearText": "Tøm",
+    "generate": "Bruk",
+    "generating": "Bruker…",
+    "upload": {
+      "choose": "Velg bilde",
+      "change": "Bytt",
+      "remove": "Fjern"
+    },
+    "imageUnavailable": {
+      "title": "Bilde ikke tilgjengelig",
+      "message": "Kunne ikke åpne valgt bilde. Velg det på nytt og prøv igjen."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Tegneserie"
+      },
+      "photoreal": {
+        "name": "Fotorealistisk"
+      },
+      "sketch": {
+        "name": "Skitse"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D-illustrasjon"
+      },
+      "dark_fantasy": {
+        "name": "Mørk fantasy"
+      },
+      "vintage_film": {
+        "name": "Vintagefilm"
+      },
+      "pastel": {
+        "name": "Pastell"
+      },
+      "neon_glow": {
+        "name": "Neonglød"
+      },
+      "epic_landscape": {
+        "name": "Episk landskap"
+      }
+    },
+    "aspectRatios": {
+      "square": "Kvadrat",
+      "landscape": "Liggende",
+      "portrait": "Stående"
     },
     "models": {
-      "gpt-4o": "Kraftigste KI-modellen",
-      "gpt-4o-mini": "Rask for daglige oppgaver",
-      "claude-3-haiku": "Rask og effektiv modell",
-      "claude-3.7-sonnet": "Avansert resonneringsmodell",
-      "gemini-2.5-pro": "Googles beste modell",
-      "gemini-2.0-flash": "Rask modell med god resonnering"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Egendefinert"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Annet"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Raskeste modell",
+      "runwareFluxKrea": "Kreative, stiliserte resultater",
+      "runwareQwenImage": "Balanserte, høy­kvalitets bilder",
+      "google4": "Beste KI-bildemodell",
+      "fluxKontent": "Flux Kontent justert for redigering",
+      "runwareProvider": "Balansert kvalitet med pålitelig diffusjon.",
+      "airProvider": "Nano Banana gir et lekent, livlig preg.",
+      "googleProvider": "Google finjustert for polerte detaljer.",
+      "anthropicProvider": "Claude-pipeline for mer nyanserte uttrykk.",
+      "default": "Trykk for å utforske tilgjengelige motorer."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "valgt stil",
+    "sheetTitle": "Former visjonen din",
+    "sheetSubtitle": "Liten pause mens vi blander inn {{style}} i prompten.",
+    "phases": {
+      "blend": "Blander inn {{style}}",
+      "paint": "Tegner scenen",
+      "finish": "Legger siste hånd på verket"
     },
-    "navigation": {
-      "chat": "Chat",
-      "history": "Historikk",
-      "assistants": "Assistenter",
-      "imagesStudio": "Studio",
-      "settings": "Innstillinger",
-      "recentChats": "Nylige chatter"
-    },
-    "imagesStudio": {
-      "title": "Studio",
-      "selectImages": "Velg bilder",
-      "exitSelectionMode": "Avslutt markeringsmodus",
-      "selectAll": "Velg alle",
-      "noImagesYet": "Ingen bilder ennå",
-      "describeImageHint": "Beskriv bildet nedenfor og trykk «Generer».",
-      "generatedImagesGallery": "Galleri over genererte bilder",
-      "describeImagePlaceholder": "Beskriv bildet du vil ha…",
-      "deleteConfirmTitle": "Slett bilder",
-      "deleteConfirmMessage": "Er du sikker på at du vil slette de valgte bildene? Dette kan ikke angres.",
+    "actions": {
       "cancel": "Avbryt",
-      "delete": "Slett",
-      "generate": "Generer",
-      "generating": "Genererer…",
-      "latest": "Siste",
-      "insertToChat": "Sett inn i chat",
-      "pleaseWait": "Vennligst vent…",
-      "processing": "Behandler...",
-      "tapToUploadImage": "Trykk for å laste opp bilde",
-      "camera": "Kamera",
-      "library": "Bildebibliotek",
-      "enterPrompt": "Skriv en prompt for tekst-til-bilde-generering",
-      "openInBrowser": "Åpne i nettleser",
-      "makeVariations": "Lag variasjoner",
-      "deleteAllFromGeneration": "Slett alt fra denne genereringen",
-      "imageOptionsTitle": "Bildealternativer",
-      "imageOptionsMessage": "Hva vil du gjøre med dette bildet?",
-      "insertMarkdownHeader": "Her er bildet for:",
-      "variationSuffix": "— variasjon av forrige bilde",
-      "selectedCount": "valgt",
-      "selectedCount_one": "valgt",
-      "selectedCount_other": "valgt",
-      "imageDescriptionInput": "Felt for bildebeskrivelse",
-      "imageDescriptionHint": "Skriv en beskrivelse av bildet du vil generere",
-      "openModelSettings": "Åpne modellinnstillinger",
-      "modelSettingsHint": "Trykk for å endre modell og innstillinger",
-      "openPhotoGallery": "Åpne bildebibliotek",
-      "clearInput": "Tøm felt",
-      "generatedImage": "Generert bilde",
-      "autoSelectedModel": "Automatisk valgt {{model}} for {{mode}}-modus",
-      "deleteSelectedConfirmTitle": "Slett bilder",
-      "deleteSelectedConfirmMessage": "Er du sikker på at du vil slette bilder? Dette kan ikke angres."
+      "retry": "Prøv igjen",
+      "close": "Lukk"
     },
-    "imageStudio": {
-      "generateImage": "Generer bilde",
-      "generatingImage": "Genererer bilde",
-      "generateImageHint": "Trykk for å generere et bilde basert på beskrivelsen",
-      "imageDescriptionInput": "Felt for bildebeskrivelse",
-      "imageDescriptionHint": "Skriv beskrivelsen av bildet du vil generere",
-      "openModelSettings": "Åpne modellinnstillinger",
-      "modelSettingsHint": "Trykk for å endre modell og innstillinger",
-      "openPhotoGallery": "Åpne bildebibliotek",
-      "clearInput": "Tøm felt",
-      "generatedImage": "Generert bilde"
+    "errors": {
+      "restrictedTitle": "Begrenset innhold",
+      "genericTitle": "Generering feilet",
+      "genericMessage": "Kunne ikke generere bilde."
     },
-    "assistants": {
-      "title": "Assistenter",
-      "subtitle": "Kuraterte KI-spesialister klare for koding, skriving, analyse, planlegging og mer.",
-      "searchPlaceholder": "Søk etter assistenter…",
-      "useAssistant": "Bruk assistent",
-      "description": "Beskrivelse",
-      "systemPrompt": "Systemprompt",
-      "chooseModel": "Velg modell",
-      "categoryAll": "Alle",
-      "categories": {
-        "everyday": "Hverdag",
-        "life": "Liv",
-        "health": "Helse",
-        "schoolWork": "Skole og jobb",
-        "coding": "Koding",
-        "creative": "Kreativt",
-        "general": "Generelt"
-      },
-      "presets": {
-        "default": { "name": "Standardassistent", "description": "Balansert hjelp til hverdagen." },
-        "quick": { "name": "Kjappe svar", "description": "Korte og direkte svar." },
-        "planner": { "name": "Dagsplanlegger", "description": "Planlegg dagen og rutinene." },
-        "recipes": { "name": "Måltider og oppskrifter", "description": "Hva du kan lage av det du har." },
-        "fitness": { "name": "Vane- og treningscoach", "description": "Små vaner og hjemmetrening." },
-        "money": { "name": "Pengevenn", "description": "Enkle budsjetter og forbrukstips." },
-        "study": { "name": "Studiehjelper", "description": "Forklar enkelt. Test meg." },
-        "email": { "name": "E-post og CV", "description": "Skriv klare e-poster og CV-punkter." },
-        "translator": { "name": "Oversetter", "description": "Oversett og lær fraser." },
-        "travel": { "name": "Reisepartner", "description": "Enkle planer og pakkeliste." },
-        "tech": { "name": "Teknisk støtte (enkelt)", "description": "Grunnleggende om telefon, apper og Wi-Fi." },
-        "summarizer": { "name": "TL;DR-oppsummerer", "description": "Korte punkter + énlinjes sammendrag." },
-        "gift": { "name": "Gavefinner", "description": "Ideer etter budsjett og interesser." },
-        "party": { "name": "Arrangement (lett)", "description": "Planlegg en liten fest raskt." },
-        "social": { "name": "Sosiale innlegg", "description": "Utkast med valgmuligheter." },
-        "interview": { "name": "Intervjutrener", "description": "Øv svar (STAR)." },
-        "homefix": { "name": "Hjemmefiksguide", "description": "Enkel feilsøking." },
-        "pet": { "name": "Kjæledyrhjelper", "description": "Fôring, tur og grunntrening." },
-        "mindful": { "name": "Mindful minutt", "description": "Rolige pauser på 1–3 min." },
-        "polite": { "name": "Høflig omskriver", "description": "Skriv om tekster og svar høflig." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Kunne ikke lagre",
+      "shareFailedTitle": "Kunne ikke dele",
+      "tryAgain": "Prøv igjen."
     },
-    "history": {
-      "title": "Historikk",
-      "searchPlaceholder": "Søk i chatter…",
-      "newChat": "Ny chat",
-      "new": "+ Ny",
-      "search": "Søk",
-      "clearSearch": "Tøm søk",
-      "noChatsYet": "Ingen chatter ennå",
-      "startFirstConversation": "Start din første samtale.",
-      "startChat": "Start chat",
-      "errorLoadingHistory": "Feil ved innlasting av historikk",
-      "renameChat": "Gi nytt navn til chat",
-      "enterNewTitle": "Skriv inn en ny tittel",
-      "deleteChat": "Slette chat?",
-      "deleteChatMessage": "«{{title}}» blir slettet.",
-      "rename": "Gi nytt navn",
-      "unpin": "Fjern feste",
-      "pin": "Fest",
-      "untitled": "Uten tittel"
+    "result": {
+      "complete": "Ferdig"
     },
-    "settings": {
-      "title": "Innstillinger",
-      "model": "Modell",
-      "searchPlaceholder": "Søk etter modeller…",
-      "temperatureForCurrentModel": "Temperatur for gjeldende modell",
-      "customFor": "Tilpasset for {{model}}",
-      "usingDefault": "Bruker standard {{temperature}}",
-      "resetToDefault": "Tilbakestill til standard",
-      "defaultTemperature": "Standardtemperatur (reserve)",
-      "usedByModelsWithoutOverride": "Brukes av modeller uten overstyring",
-      "dangerZone": "Fareområde",
-      "clearAllChatsAndSettings": "Slett alle chatter og innstillinger",
-      "about": "Om",
-      "version": "Versjon {{version}}",
-      "privacyPolicy": "Personvernpolicy",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Melding til Agarka...",
-      "createImages": "Opprett bilder",
-      "generateAiArtwork": "Generer KI-kunst",
-      "camera": "Kamera",
-      "takeOrSelectPhotos": "Ta eller velg bilder",
-      "search": "Søk",
-      "findInformation": "Finn informasjon",
-      "removeImage": "Fjern bilde",
-      "messageInput": "Meldingsfelt",
-      "clearInput": "Tøm felt",
-      "hideQuickActions": "Skjul hurtighandlinger",
-      "showQuickActions": "Vis hurtighandlinger",
-      "startVoiceInput": "Start taleinnlegging",
-      "sendMessage": "Send",
-      "offline": "Frakoblet",
-      "stop": "Stopp",
-      "streaming": "Strømmer…",
-      "closeRecorder": "Lukk opptaker",
-      "insertTranscript": "Sett inn transkripsjon",
-      "scrollToLatest": "Rull til nyeste",
-      "copyMessage": "Kopier melding",
-      "copyMessageHint": "Kopier denne meldingen til utklippstavlen",
-      "shareMessage": "Del melding",
-      "shareMessageHint": "Del denne meldingen",
-      "regenerateResponse": "Generer svar på nytt",
-      "regenerateResponseHint": "Generer et nytt svar",
-      "copyCode": "Kopier kode",
-      "image": "bilde",
-      "loading": "Laster…",
-      "loadingChat": "Laster chat...",
-      "offlineBanner": "Du er frakoblet. Meldinger kan ikke sendes.",
-      "imagePickerErrorTitle": "Feil i bildevælger",
-      "messageTooLong": "Meldingen er for lang ({{length}}). Grensen er {{limit}}.",
-      "emptyTitle": "Hvordan kan jeg hjelpe?",
-      "emptySubtitle": "Start en samtale med KI",
-      "privateTitle": "Privat chat",
-      "privateSubtitle": "Denne chatten vises ikke i historikken din",
-      "listening": "Lytter…",
-      "startRecording": "Start opptak…",
-      "suggestions": {
-        "writeStory": "Skriv en kreativ historie",
-        "writeStorySubtitle": "om et magisk eventyr",
-        "planTravel": "Planlegg en reiserute",
-        "planTravelSubtitle": "for en fantastisk ferie",
-        "explainConcept": "Forklar dette konseptet",
-        "explainConceptSubtitle": "med enkle ord",
-        "planDay": "Planlegg dagen min",
-        "planDaySubtitle": "med produktivitetstips"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Behandler...",
-      "tapToUploadImage": "Trykk for å laste opp bilde"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Behandler...",
-      "camera": "Kamera",
-      "library": "Bildebibliotek"
-    },
-    "common": {
-      "new": "NY",
-      "best": "BEST",
-      "cancel": "Avbryt",
-      "save": "Lagre",
-      "delete": "Slett",
+    "accessibility": {
       "close": "Lukk"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Slett",
+      "edit": "Rediger",
+      "save": "Lagre",
+      "share": "Del"
+    },
+    "accessibility": {
+      "close": "Lukk",
+      "delete": "Slett bilde",
+      "edit": "Rediger bilde",
+      "save": "Lagre bilde",
+      "share": "Del bilde"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Åpne meny",
+      "selectImages": "Velg bilder",
+      "exitSelection": "Avslutt valg",
+      "deleteSelected": "Slett valgte bilder",
+      "selectToDelete": "Velg bilder som skal slettes"
+    },
+    "createCard": {
+      "title": "Lag fra tekst",
+      "subtitle": "Skriv en beskrivelse",
+      "cta": "Beskriv & generer"
+    },
+    "editCard": {
+      "title": "Rediger et bilde",
+      "subtitle": "Last opp & rediger",
+      "cta": "Rediger bilde"
+    },
+    "gallery": {
+      "title": "Galleri",
+      "empty": "Ingen bilder ennå",
+      "selection": {
+        "enter": "Velg bilder",
+        "exit": "Avslutt valg",
+        "deleteSelected": "Slett valgte",
+        "selectForDelete": "Velg bilder for sletting"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Møt",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Lag og rediger bilder med KI — rett i {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Møt KI-en din",
+      "titleHighlight": "Assistenter",
+      "subtitle": "Spesialiserte KI-hjelpere klare for hverdagen",
+      "cards": [
+        {
+          "title": "Treningscoach",
+          "text": "Få personlige treningsplaner og kostholdstips"
+        },
+        {
+          "title": "Lege",
+          "text": "Få helseinformasjon og symptomanalyse når du trenger det"
+        },
+        {
+          "title": "Kjæledyrhjelp",
+          "text": "Råd om helse, trening og stell"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "BEDRIFTSKLAR KI",
+      "description": "Gi bedriften din kraftige KI-verktøy laget for profesjonelle og team.",
+      "stats": "Stolt brukt av 500k+ brukere",
+      "rating": "4,9 / 5",
+      "button": "Kom i gang"
+    }
+  },
+  "coinStore": {
+    "title": "Kjøp tokens",
+    "loading": "Laster token-butikk…",
+    "balanceLabel": "Ditt nåværende saldo er",
+    "balanceValue": "{{amount}} tokens",
+    "history": {
+      "link": "Transaksjonshistorikk",
+      "alertTitle": "Historikk",
+      "alertBody": "Transaksjonshistorikk kommer snart."
+    },
+    "noPacks": "Ingen token-pakker tilgjengelig. Sjekk RevenueCat-oppsettet.",
+    "badges": {
+      "basic": "Grunnpakke",
+      "popular": "Mest populær",
+      "value": "Best verdi"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} tokens",
+      "defaultName": "Pakke {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Bli Premium",
+      "subtitle": "Ubegrenset tilgang og funksjoner",
+      "cta": "Oppgrader"
+    },
+    "termsText": "Ved kjøp godtar du våre",
+    "termsLink": "Vilkår for bruk",
+    "alerts": {
+      "initErrorTitle": "Initieringsfeil",
+      "genericMessage": "Noe gikk galt.",
+      "successTitle": "Suksess",
+      "successMessage": "Tokenene vises snart.",
+      "purchaseFailedTitle": "Kjøp feilet",
+      "unknownError": "Ukjent feil"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Gjenopprett",
+    "restoreRestoring": "Gjenoppretter…",
+    "features": {
+      "create": "Lag bilder og videoer",
+      "search": "Søk på nettet med KI",
+      "talk": "Snakk naturlig med KI"
+    },
+    "freeTrial": {
+      "title": "Gratis prøve",
+      "subtitle": "3 dagers gratis prøve"
+    },
+    "badge": {
+      "bestOffer": "Beste tilbud"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Årlig",
+        "only": "Kun {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Månedlig",
+        "subtitle": "Avslutt når som helst",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Ukentlig",
+        "subtitle": "Avslutt når som helst",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "per uke",
+      "perMonth": "per måned"
+    },
+    "cta": "Fortsett",
+    "legal": {
+      "terms": "Vilkår",
+      "privacy": "Personvern"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Melding...",
+    "createImages": "Lag bilder",
+    "generateAiArtwork": "Lag KI-kunst",
+    "camera": "Kamera",
+    "takeOrSelectPhotos": "Ta eller velg bilder",
+    "search": "Søk",
+    "findInformation": "Finn informasjon",
+    "findRecentInfo": "Finn siste info",
+    "removeImage": "Fjern bilde",
+    "messageInput": "Meldingsfelt",
+    "clearInput": "Tøm",
+    "quickActionsLabel": "Hurtigvalg",
+    "hideQuickActions": "Skjul hurtigvalg",
+    "showQuickActions": "Vis hurtigvalg",
+    "startVoiceInput": "Start taleinnskriving",
+    "sendMessage": "Send melding",
+    "offline": "Frakoblet",
+    "stop": "Stopp",
+    "streaming": "Strømmer…",
+    "closeRecorder": "Lukk opptaker",
+    "insertTranscript": "Send",
+    "scrollToLatest": "Rull til siste melding",
+    "copyMessage": "Kopier melding",
+    "copyMessageHint": "Kopier meldingen til utklippstavlen",
+    "shareMessage": "Del melding",
+    "shareMessageHint": "Del denne meldingen",
+    "regenerateResponse": "Regenerer svar",
+    "regenerateResponseHint": "Lag et nytt svar",
+    "copyCode": "Kopier kode",
+    "image": "bilde",
+    "loading": "Laster…",
+    "loadingChat": "Laster chat...",
+    "offlineBanner": "Du er frakoblet. Meldinger kan ikke sendes.",
+    "imagePickerErrorTitle": "Feil ved valg av bilde",
+    "imagePickerErrorMessage": "Kunne ikke få tilgang til bildene dine. Prøv igjen.",
+    "messageTooLong": "Meldingen er for lang ({{length}}). Grensen er {{limit}}.",
+    "sendFailed": "Sending feilet.",
+    "voiceStartFailed": "Kunne ikke starte stemme.",
+    "emptyTitle": "Hvordan kan jeg hjelpe?",
+    "emptySubtitle": "Start en samtale med KI",
+    "privateTitle": "Privat chat",
+    "privateSubtitle": "Denne chatten vises ikke i historikken",
+    "permissions": {
+      "photosTitle": "Tilgang til bilder kreves",
+      "photosMessage": "Vi trenger tilgang til bildene dine for å velge dem.",
+      "voiceTitle": "Tilgang til mikrofon kreves",
+      "voiceMessage": "Mikrofon og tale kreves for stemmefunksjon."
+    },
+    "activity": {
+      "analyzingImages": "Analyserer bilder…",
+      "searching": "Søker…",
+      "thinking": "Tenker…"
+    },
+    "webSearch": {
+      "title": "Web-søk",
+      "subtitle": "Finn oppdatert info",
+      "label": "Web-søk",
+      "enable": "Skru på web-søk",
+      "disable": "Skru av web-søk",
+      "toggleLabel": "Søk på nettet"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Design visuelt i høy fart.",
+      "subtitle": "Generer, forbedre og publiser på ett sted.",
+      "cta": "Åpne"
+    },
+    "quickActions": {
+      "createImages": "Lag bilder",
+      "openCamera": "Åpne kamera",
+      "editImage": "Rediger bilde",
+      "startVoice": "Start tale",
+      "assistants": "Assistenter"
+    },
+    "listening": "Lytter…",
+    "startRecording": "Starter opptak…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistent utilgjengelig",
+      "unavailableDescription": "Vi kunne ikke laste denne assistenten. Prøv igjen.",
+      "ready": "Klar til å hjelpe"
+    },
+    "actions": {
+      "copy": "Kopier",
+      "share": "Del",
+      "regenerate": "Regenerer",
+      "retryFromHere": "Prøv igjen herfra",
+      "cancel": "Avbryt"
+    },
+    "messageActionTitle": "Melding",
+    "status": {
+      "sending": "Sender…",
+      "failed": "Feilet",
+      "sent": "Sendt"
+    },
+    "suggestions": {
+      "writeStory": "Skriv en kreativ historie",
+      "writeStorySubtitle": "om et magisk eventyr",
+      "planTravel": "Lag en reiseplan",
+      "planTravelSubtitle": "for en fantastisk ferie",
+      "explainConcept": "Forklar dette begrepet",
+      "explainConceptSubtitle": "med enkle ord",
+      "planDay": "Planlegg dagen min",
+      "planDaySubtitle": "med produktivitetstips"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Behandler...",
+    "tapToUploadImage": "Trykk for å laste opp bilde"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Behandler...",
+    "camera": "Kamera",
+    "library": "Galleri"
+  },
+  "common": {
+    "new": "NY",
+    "best": "BEST",
+    "cancel": "Avbryt",
+    "save": "Lagre",
+    "delete": "Slett",
+    "close": "Lukk",
+    "allow": "Tillat"
   }
-  
+}

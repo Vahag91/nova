@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "اختَر نموذجًا",
-      "searchPlaceholder": "ابحث عن النماذج...",
-      "noModelsFound": "لا توجد نماذج مطابقة",
-      "noModelsAvailable": "لا توجد نماذج متاحة",
-      "currentModel": "النموذج الحالي: {{name}}. اضغط للتغيير.",
-      "openHint": "فتح قائمة اختيار النموذج",
-      "closeLabel": "إغلاق محدِّد النموذج",
-      "searchLabel": "البحث عن النماذج",
-      "searchHint": "اكتب لتصفية النماذج",
-      "modelLabel": "نموذج {{name}}",
-      "selectHint": "اختيار {{name}}",
-      "currentlySelected": "النموذج المحدد حاليًا"
+  "modelSelector": {
+    "title": "اختر نموذجًا",
+    "searchPlaceholder": "ابحث عن النماذج...",
+    "noModelsFound": "لم يتم العثور على نماذج",
+    "noModelsAvailable": "لا توجد نماذج متاحة",
+    "currentModel": "النموذج الحالي: {{name}}. اضغط لتغيير النموذج.",
+    "openHint": "يفتح قائمة اختيار النموذج",
+    "closeLabel": "إغلاق قائمة اختيار النموذج",
+    "searchLabel": "البحث عن النماذج",
+    "searchHint": "اكتب لتصفية النماذج المتاحة",
+    "modelLabel": "نموذج {{name}}",
+    "selectHint": "اختر النموذج {{name}}",
+    "currentlySelected": "محدد حاليًا"
+  },
+  "models": {
+    "gpt-4o": "أقوى نموذج ذكاء اصطناعي",
+    "gpt-4o-mini": "سريع للمهام اليومية",
+    "gpt-5": "أقوى نموذج شامل",
+    "gpt-5-chat-latest": "محسّن للمحادثة والحوار",
+    "gpt-5-mini": "GPT-5 سريع وموثوق",
+    "gpt-5-nano": "نموذج خفيف للمهام البسيطة",
+    "o4-mini": "نموذج استدلال فعّال",
+    "gpt-4.1-mini": "GPT-4.1 مدمج وقوي",
+    "claude-3-haiku": "ذكاء Anthropic سريع ومركّز",
+    "claude-3.7-sonnet": "استدلال متقن من Anthropic",
+    "gemini-2.5-Flash": "أحدث نموذج من Google",
+    "gemini-2.5-flash": "أحدث نموذج من Google",
+    "gemini-2.0-flash": "ذكاء Google سريع ودقيق"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "أخرى"
+  },
+  "navigation": {
+    "chat": "محادثة جديدة",
+    "history": "السجل",
+    "assistants": "المساعدون",
+    "imagesStudio": "Image Studio",
+    "settings": "الإعدادات",
+    "recentChats": "المحادثات الأخيرة"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "أنشئ وحرّر وانشر الأصول المرئية في مكان واحد.",
+    "cta": "فتح"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "تحديد الصور",
+    "exitSelectionMode": "الخروج من وضع التحديد",
+    "selectAll": "تحديد الكل",
+    "noImagesYet": "لا توجد صور بعد",
+    "describeImageHint": "صف الصورة في الأسفل واضغط «إنشاء».",
+    "generatedImagesGallery": "معرض الصور المُنشَأة",
+    "describeImagePlaceholder": "صف الصورة التي تريدها…",
+    "deleteConfirmTitle": "حذف الصور",
+    "deleteConfirmMessage": "هل أنت متأكد من حذف الصور المحددة؟ هذا الإجراء لا يمكن التراجع عنه.",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "generate": "إنشاء",
+    "generating": "جارٍ الإنشاء…",
+    "latest": "الأحدث",
+    "insertToChat": "إدراج في الدردشة",
+    "pleaseWait": "يرجى الانتظار…",
+    "processing": "جارٍ المعالجة...",
+    "tapToUploadImage": "اضغط لرفع صورة",
+    "camera": "الكاميرا",
+    "library": "المعرض",
+    "enterPrompt": "يرجى إدخال مطالبة لإنشاء صورة من نص",
+    "openInBrowser": "فتح في المتصفح",
+    "makeVariations": "إنشاء تنويعات",
+    "deleteAllFromGeneration": "حذف كل ما في هذا الإنشاء",
+    "imageOptionsTitle": "خيارات الصورة",
+    "imageOptionsMessage": "ماذا تريد أن تفعل بهذه الصورة؟",
+    "insertMarkdownHeader": "إليك الصورة لـ:",
+    "variationSuffix": "— تنويع للصورة السابقة",
+    "selectedCount": "محددة",
+    "selectedCount_one": "محددة",
+    "selectedCount_other": "محددة",
+    "imageDescriptionInput": "إدخال وصف الصورة",
+    "imageDescriptionHint": "اكتب وصف الصورة التي تريد إنشاءها",
+    "openModelSettings": "فتح إعدادات النموذج",
+    "modelSettingsHint": "اضغط لتغيير النموذج والإعدادات",
+    "openPhotoGallery": "فتح معرض الصور",
+    "clearInput": "مسح الإدخال",
+    "generatedImage": "صورة منشأة",
+    "autoSelectedModel": "تم اختيار {{model}} تلقائيًا لوضع {{mode}}",
+    "deleteSelectedConfirmTitle": "حذف الصور",
+    "deleteSelectedConfirmMessage": "هل تريد بالتأكيد حذف الصور؟ هذا الإجراء لا يمكن التراجع عنه."
+  },
+  "imageStudio": {
+    "generateImage": "إنشاء صورة",
+    "generatingImage": "جارٍ إنشاء الصورة",
+    "generateImageHint": "اضغط لإنشاء صورة بناءً على وصفك",
+    "imageDescriptionInput": "إدخال وصف الصورة",
+    "imageDescriptionHint": "اكتب وصف الصورة التي تريد إنشاءها",
+    "openModelSettings": "فتح إعدادات النموذج",
+    "modelSettingsHint": "اضغط لتغيير النموذج والإعدادات",
+    "openPhotoGallery": "فتح معرض الصور",
+    "clearInput": "مسح الإدخال",
+    "generatedImage": "صورة منشأة"
+  },
+  "assistants": {
+    "title": "المساعدون",
+    "subtitle": "مساعدات ذكاء اصطناعي منتقاة للبرمجة والكتابة والتحليل والتخطيط والمزيد.",
+    "searchPlaceholder": "ابحث عن المساعدين…",
+    "useAssistant": "استخدام المساعد",
+    "selectAssistant": "اختر مساعدًا",
+    "description": "الوصف",
+    "systemPrompt": "مطالبة النظام",
+    "chooseModel": "اختر النموذج",
+    "categoryAll": "الكل",
+    "categories": {
+      "everyday": "يومي",
+      "life": "حياة",
+      "health": "صحة",
+      "schoolWork": "دراسة وعمل",
+      "coding": "برمجة",
+      "creative": "إبداع",
+      "general": "عام"
+    },
+    "presets": {
+      "default": {
+        "name": "المساعد الافتراضي",
+        "description": "مساعدة متوازنة للاستخدام اليومي."
+      },
+      "quick": {
+        "name": "إجابات سريعة",
+        "description": "إجابات قصيرة ومباشرة."
+      },
+      "planner": {
+        "name": "مُنظِّم يومي",
+        "description": "خطط يومك وروتينك."
+      },
+      "recipes": {
+        "name": "وصفات وطعام",
+        "description": "ماذا تطبخ بما لديك."
+      },
+      "fitness": {
+        "name": "مدرب عادات ولياقة",
+        "description": "عادات صغيرة وتمارين منزلية."
+      },
+      "money": {
+        "name": "مساعد مالي",
+        "description": "ميزانيات بسيطة ونصائح إنفاق."
+      },
+      "study": {
+        "name": "مساعد دراسة",
+        "description": "اشرح ببساطة. اختبرني."
+      },
+      "email": {
+        "name": "بريد وسيرة ذاتية",
+        "description": "اكتب رسائل وسيرًا ذاتية واضحة."
+      },
+      "translator": {
+        "name": "مترجم",
+        "description": "ترجمة + تعليم عبارات."
+      },
+      "travel": {
+        "name": "رفيق سفر",
+        "description": "خطط بسيطة وقوائم تجهيز."
+      },
+      "tech": {
+        "name": "دعم تقني (بسيط)",
+        "description": "هاتف، تطبيقات، واي فاي أساسيات."
+      },
+      "summarizer": {
+        "name": "مختصر TL;DR",
+        "description": "نقاط سريعة + جملة واحدة."
+      },
+      "gift": {
+        "name": "مقترحات هدايا",
+        "description": "أفكار حسب الميزانية والاهتمامات."
+      },
+      "party": {
+        "name": "منظم فعالية (خفيف)",
+        "description": "خطط مناسبة صغيرة بسرعة."
+      },
+      "social": {
+        "name": "منشئ منشورات اجتماعية",
+        "description": "مسودات منشورات بعدة خيارات."
+      },
+      "interview": {
+        "name": "مدرب مقابلات",
+        "description": "تدرّب على الإجابات (STAR)."
+      },
+      "homefix": {
+        "name": "إصلاحات منزلية",
+        "description": "إرشادات حل مشكلات بسيطة."
+      },
+      "pet": {
+        "name": "رعاية الحيوانات الأليفة",
+        "description": "إطعام، تمشية، تدريب أساسي."
+      },
+      "mindful": {
+        "name": "لحظة هدوء",
+        "description": "استرخاء 1–3 دقائق."
+      },
+      "polite": {
+        "name": "إعادة صياغة مؤدبة",
+        "description": "أعد كتابة الرسائل بلطف."
+      }
+    }
+  },
+  "history": {
+    "title": "السجل",
+    "searchPlaceholder": "ابحث في المحادثات…",
+    "newChat": "محادثة جديدة",
+    "new": "+ جديد",
+    "search": "بحث",
+    "clearSearch": "مسح البحث",
+    "noChatsYet": "لا توجد محادثات بعد",
+    "startFirstConversation": "ابدأ محادثتك الأولى.",
+    "startChat": "ابدأ المحادثة",
+    "errorLoadingHistory": "حدث خطأ أثناء تحميل السجل",
+    "renameChat": "إعادة تسمية المحادثة",
+    "enterNewTitle": "أدخل عنوانًا جديدًا",
+    "deleteChat": "حذف المحادثة؟",
+    "deleteChatMessage": "سيتم حذف \"{{title}}\".",
+    "rename": "إعادة تسمية",
+    "unpin": "إزالة التثبيت",
+    "pin": "تثبيت",
+    "untitled": "بدون عنوان"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "model": "النموذج",
+    "searchPlaceholder": "ابحث عن النماذج…",
+    "temperatureForCurrentModel": "درجة العشوائية للنموذج الحالي",
+    "customFor": "مخصص لـ {{model}}",
+    "usingDefault": "يتم استخدام القيمة الافتراضية {{temperature}}",
+    "resetToDefault": "الرجوع للوضع الافتراضي",
+    "defaultTemperature": "درجة العشوائية الافتراضية (احتياطي)",
+    "usedByModelsWithoutOverride": "يُستخدم للنماذج بدون إعدادات خاصة",
+    "dangerZone": "منطقة خطرة",
+    "clearAllChatsAndSettings": "مسح كل المحادثات والإعدادات",
+    "about": "حول التطبيق",
+    "version": "الإصدار {{version}}{{status}}",
+    "versionPremiumSuffix": " · بريميوم",
+    "privacyPolicy": "سياسة الخصوصية",
+    "hero": {
+      "label": "عرض خاص",
+      "title": "وصول أولوية وبدون حدود",
+      "upgrade": "ترقية",
+      "manage": "إدارة الخطة"
+    },
+    "sections": {
+      "premium": "الخطة المميزة",
+      "data": "بيانات المستخدم",
+      "support": "الدعم والقانوني"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "احصل على بريميوم",
+        "subtitle": "افتح أدوات الإنشاء غير المحدودة"
+      },
+      "premiumActive": {
+        "title": "البريميوم مفعل",
+        "subtitle": "شكرًا لدعمك ChatCloud"
+      },
+      "restore": {
+        "title": "استعادة المشتريات",
+        "subtitle": "استخدمها إذا غيّرت الجهاز"
+      },
+      "history": {
+        "title": "إدارة سجل الدردشة",
+        "subtitle": "اعرض واحذف الجلسات السابقة"
+      },
+      "reset": {
+        "title": "إعادة ضبط الدردشات والتفضيلات",
+        "subtitle": "يمسح كل البيانات على هذا الجهاز"
+      },
+      "rate": {
+        "title": "قيّمنا",
+        "error": "تعذر فتح صفحة المتجر."
+      },
+      "support": {
+        "title": "الدعم",
+        "subtitle": "تواصل معنا عبر الإنترنت",
+        "error": "تعذر فتح صفحة التواصل."
+      },
+      "privacy": {
+        "title": "سياسة الخصوصية",
+        "error": "تعذر فتح سياسة الخصوصية."
+      },
+      "terms": {
+        "title": "شروط الاستخدام",
+        "error": "تعذر فتح شروط الاستخدام."
+      }
+    },
+    "capabilities": {
+      "text": "نص",
+      "image": "صورة",
+      "audio": "صوت",
+      "video": "فيديو"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "غير متاح",
+      "linkUnavailableMessage": "لا يمكن فتح هذا الرابط الآن.",
+      "restoreSuccessTitle": "تمت الاستعادة",
+      "restoreSuccessMessage": "تمت استعادة مشترياتك.",
+      "restoreErrorTitle": "فشل الاستعادة",
+      "restoreErrorMessage": "تعذر استعادة المشتريات الآن.",
+      "resetConfirmTitle": "إعادة ضبط بيانات التطبيق؟",
+      "resetConfirmMessage": "سيؤدي هذا إلى إزالة كل المحادثات والإعدادات.",
+      "resetConfirmCancel": "إلغاء",
+      "resetConfirmCta": "إعادة ضبط"
+    }
+  },
+  "createImage": {
+    "headerTitle": "إنشاء",
+    "chooseStyle": "اختر الأسلوب",
+    "aspectRatio": "نسبة العرض إلى الارتفاع",
+    "starterPrompts": {
+      "title": "مطالبات جاهزة",
+      "items": [
+        "صورة رأس في الأستوديو",
+        "غرفة معيشة عصرية",
+        "شاطئ استوائي عند الغروب"
+      ]
+    },
+    "promptPlaceholder": "اكتب ما تريد رؤيته…",
+    "promptHint": "مثال: 'كلب غولدن ريتريفر بإضاءة أستوديو'",
+    "clearText": "مسح النص",
+    "generate": "إنشاء",
+    "generating": "جارٍ الإنشاء…"
+  },
+  "editImage": {
+    "headerTitle": "تحرير",
+    "chooseStyle": "اختر الأسلوب",
+    "aspectRatio": "نسبة العرض إلى الارتفاع",
+    "starterPrompts": {
+      "title": "مطالبات جاهزة",
+      "items": [
+        "إصلاح الإضاءة",
+        "إزالة الخلفية",
+        "تنقية بورتريه ناعمة"
+      ]
+    },
+    "promptPlaceholder": "صف التعديلات (اختياري)",
+    "clearText": "مسح",
+    "generate": "تطبيق",
+    "generating": "جارٍ التطبيق…",
+    "upload": {
+      "choose": "اختر صورة",
+      "change": "تغيير",
+      "remove": "إزالة"
+    },
+    "imageUnavailable": {
+      "title": "الصورة غير متاحة",
+      "message": "تعذر الوصول إلى الصورة المحددة. يرجى اختيارها مرة أخرى والمحاولة."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "أنمي"
+      },
+      "cartoon": {
+        "name": "كرتون"
+      },
+      "photoreal": {
+        "name": "واقعي"
+      },
+      "sketch": {
+        "name": "رسم تخطيطي"
+      },
+      "cyberpunk": {
+        "name": "سايبر بنك"
+      },
+      "steampunk": {
+        "name": "ستيم بنك"
+      },
+      "illustration_3d": {
+        "name": "رسوم ثلاثية الأبعاد"
+      },
+      "dark_fantasy": {
+        "name": "فانتازيا داكنة"
+      },
+      "vintage_film": {
+        "name": "فيلم كلاسيكي"
+      },
+      "pastel": {
+        "name": "باستيل"
+      },
+      "neon_glow": {
+        "name": "توهج نيون"
+      },
+      "epic_landscape": {
+        "name": "منظر ملحمي"
+      }
+    },
+    "aspectRatios": {
+      "square": "مربع",
+      "landscape": "أفقي",
+      "portrait": "رأسي"
     },
     "models": {
-      "gpt-4o": "أقوى نموذج ذكاء اصطناعي",
-      "gpt-4o-mini": "سريع لمهامك اليومية",
-      "claude-3-haiku": "نموذج سريع وفعّال",
-      "claude-3.7-sonnet": "نموذج استدلال متقدم",
-      "gemini-2.5-pro": "أفضل نموذج من Google",
-      "gemini-2.0-flash": "نموذج سريع مع استدلال قوي"
+      "fluxKontent": "Flux Kontent",
+      "custom": "مخصص"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "أخرى"
+    "modelTaglines": {
+      "runwareFluxSchnell": "أسرع نموذج",
+      "runwareFluxKrea": "نتائج إبداعية وأنيقة",
+      "runwareQwenImage": "نتائج متوازنة وعالية الجودة",
+      "google4": "أفضل نموذج صور بالذكاء الاصطناعي",
+      "fluxKontent": "Flux Kontent مضبوط للتحرير",
+      "runwareProvider": "توازن بين الجودة والانتشار المستقر.",
+      "airProvider": "Nano Banana بلمسة ألوان مرحة.",
+      "googleProvider": "إعداد Google لعرض تفاصيل واضحة.",
+      "anthropicProvider": "خط أنثروبيك بنغمات دقيقة.",
+      "default": "اضغط لاستعراض المحركات المتاحة."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "الأسلوب الذي اخترته",
+    "sheetTitle": "نُشكّل رؤيتك",
+    "sheetSubtitle": "نقوم بدمج {{style}} داخل المطالبة.",
+    "phases": {
+      "blend": "دمج {{style}}",
+      "paint": "رسم المشهد",
+      "finish": "إضافة اللمسات الأخيرة"
     },
-    "navigation": {
-      "chat": "الدردشة",
-      "history": "السجل",
-      "assistants": "المساعدون",
-      "imagesStudio": "الاستوديو",
-      "settings": "الإعدادات",
-      "recentChats": "المحادثات الأخيرة"
-    },
-    "imagesStudio": {
-      "title": "الاستوديو",
-      "selectImages": "تحديد الصور",
-      "exitSelectionMode": "إنهاء وضع التحديد",
-      "selectAll": "تحديد الكل",
-      "noImagesYet": "لا توجد صور بعد",
-      "describeImageHint": "صِف صورتك أدناه ثم اضغط «توليد».",
-      "generatedImagesGallery": "معرض الصور المُولَّدة",
-      "describeImagePlaceholder": "صِف الصورة التي تريدها…",
-      "deleteConfirmTitle": "حذف الصور",
-      "deleteConfirmMessage": "هل أنت متأكد أنك تريد حذف الصور المحددة؟ لا يمكن التراجع عن هذا الإجراء.",
+    "actions": {
       "cancel": "إلغاء",
-      "delete": "حذف",
-      "generate": "توليد",
-      "generating": "جارٍ التوليد…",
-      "latest": "الأحدث",
-      "insertToChat": "إدراج في الدردشة",
-      "pleaseWait": "يرجى الانتظار…",
-      "processing": "جارٍ المعالجة...",
-      "tapToUploadImage": "اضغط لرفع صورة",
-      "camera": "الكاميرا",
-      "library": "المعرض",
-      "enterPrompt": "يرجى إدخال مطالبة للتوليد من نص إلى صورة",
-      "openInBrowser": "افتح في المتصفح",
-      "makeVariations": "إنشاء تنويعات",
-      "deleteAllFromGeneration": "حذف كل الصور من هذه العملية",
-      "imageOptionsTitle": "خيارات الصورة",
-      "imageOptionsMessage": "ماذا تريد أن تفعل بهذه الصورة؟",
-      "insertMarkdownHeader": "إليك الصورة الخاصة بـ:",
-      "variationSuffix": "— تنويع للصورة السابقة",
-      "selectedCount": "محدد",
-      "selectedCount_one": "محدد",
-      "selectedCount_other": "محدد",
-      "imageDescriptionInput": "حقل وصف الصورة",
-      "imageDescriptionHint": "أدخل وصف الصورة التي تريد توليدها",
-      "openModelSettings": "فتح إعدادات النموذج",
-      "modelSettingsHint": "اضغط لتغيير النموذج والإعدادات",
-      "openPhotoGallery": "فتح المعرض",
-      "clearInput": "مسح الإدخال",
-      "generatedImage": "صورة مُولَّدة",
-      "autoSelectedModel": "تم اختيار {{model}} تلقائيًا لوضع {{mode}}",
-      "deleteSelectedConfirmTitle": "حذف الصور",
-      "deleteSelectedConfirmMessage": "هل أنت متأكد أنك تريد حذف الصور؟ لا يمكن التراجع عن هذا الإجراء."
+      "retry": "إعادة المحاولة",
+      "close": "إغلاق"
     },
-    "imageStudio": {
-      "generateImage": "توليد صورة",
-      "generatingImage": "جارٍ توليد الصورة",
-      "generateImageHint": "اضغط لتوليد صورة بناءً على وصفك",
-      "imageDescriptionInput": "حقل وصف الصورة",
-      "imageDescriptionHint": "أدخل وصف الصورة التي تريد توليدها",
-      "openModelSettings": "فتح إعدادات النموذج",
-      "modelSettingsHint": "اضغط لتغيير النموذج والإعدادات",
-      "openPhotoGallery": "فتح المعرض",
-      "clearInput": "مسح الإدخال",
-      "generatedImage": "صورة مُولَّدة"
+    "errors": {
+      "restrictedTitle": "محتوى محظور",
+      "genericTitle": "فشل الإنشاء",
+      "genericMessage": "تعذر إنشاء الصورة."
     },
-    "assistants": {
-      "title": "المساعدون",
-      "subtitle": "متخصصون بالذكاء الاصطناعي مُختارون بعناية للبرمجة والكتابة والتحليل والتخطيط والمزيد.",
-      "searchPlaceholder": "ابحث عن مساعد…",
-      "useAssistant": "استخدام المساعد",
-      "description": "الوصف",
-      "systemPrompt": "موجه النظام",
-      "chooseModel": "اختر نموذجًا",
-      "categoryAll": "الكل",
-      "categories": {
-        "everyday": "يومي",
-        "life": "الحياة",
-        "health": "الصحة",
-        "schoolWork": "الدراسة والعمل",
-        "coding": "البرمجة",
-        "creative": "إبداع",
-        "general": "عام"
-      },
-      "presets": {
-        "default": { "name": "المساعد الافتراضي", "description": "مساعدة متوازنة للمهام اليومية." },
-        "quick": { "name": "إجابات سريعة", "description": "إجابات قصيرة ومباشرة." },
-        "planner": { "name": "مخطِّط يومي", "description": "خطط يومك وروتينك." },
-        "recipes": { "name": "الوجبات والوصفات", "description": "ما الذي تطهوه بما لديك." },
-        "fitness": { "name": "مدرب العادات واللياقة", "description": "عادات صغيرة وتمارين منزلية." },
-        "money": { "name": "رفيق المال", "description": "ميزانيات بسيطة ونصائح إنفاق." },
-        "study": { "name": "مساعد الدراسة", "description": "اشرح ببساطة. اختبرني." },
-        "email": { "name": "البريد والسيرة الذاتية", "description": "اكتب رسائل واضحة ونقاط سيرة ذاتية." },
-        "translator": { "name": "مترجم", "description": "ترجمة + تعليم عبارات." },
-        "travel": { "name": "رفيق السفر", "description": "خطط بسيطة وقوائم تجهيز." },
-        "tech": { "name": "دعم تقني (بسيط)", "description": "أساسيات الهاتف والتطبيقات والواي فاي." },
-        "summarizer": { "name": "المُوجِز TL;DR", "description": "نقاط قصيرة + خلاصة سطر واحد." },
-        "gift": { "name": "مكتشف الهدايا", "description": "أفكار حسب الميزانية والاهتمامات." },
-        "party": { "name": "منظّم المناسبات (خفيف)", "description": "خطط لحفلة صغيرة بسرعة." },
-        "social": { "name": "منشئ منشورات اجتماعية", "description": "صياغة منشورات مع خيارات." },
-        "interview": { "name": "مدرب المقابلات", "description": "تدرّب على الأجوبة (STAR)." },
-        "homefix": { "name": "دليل تصليح المنزل", "description": "استكشاف أعطال بسيطة وإصلاحها." },
-        "pet": { "name": "رفيق رعاية الحيوانات", "description": "تغذية ونزهات وتدريب أساسي." },
-        "mindful": { "name": "دقيقة يقظة", "description": "استراحات هادئة 1–3 دقائق." },
-        "polite": { "name": "معاد الصياغة بلطف", "description": "إعادة صياغة النصوص والردود بلطف." }
-      }
+    "alerts": {
+      "saveFailedTitle": "فشل الحفظ",
+      "shareFailedTitle": "فشل المشاركة",
+      "tryAgain": "يرجى المحاولة مرة أخرى."
     },
-    "history": {
-      "title": "السجل",
-      "searchPlaceholder": "ابحث في الدردشات…",
-      "newChat": "دردشة جديدة",
-      "new": "+ جديد",
-      "search": "بحث",
-      "clearSearch": "مسح البحث",
-      "noChatsYet": "لا توجد دردشات بعد",
-      "startFirstConversation": "ابدأ محادثتك الأولى.",
-      "startChat": "بدء الدردشة",
-      "errorLoadingHistory": "حدث خطأ أثناء تحميل السجل",
-      "renameChat": "إعادة تسمية الدردشة",
-      "enterNewTitle": "أدخل عنوانًا جديدًا",
-      "deleteChat": "حذف الدردشة؟",
-      "deleteChatMessage": "سيتم حذف \"{{title}}\".",
-      "rename": "إعادة تسمية",
-      "unpin": "إلغاء التثبيت",
-      "pin": "تثبيت",
-      "untitled": "بدون عنوان"
+    "result": {
+      "complete": "اكتمل كل شيء"
     },
-    "settings": {
-      "title": "الإعدادات",
-      "model": "النموذج",
-      "searchPlaceholder": "ابحث عن النماذج…",
-      "temperatureForCurrentModel": "الحرارة للنموذج الحالي",
-      "customFor": "مخصص لـ {{model}}",
-      "usingDefault": "استخدام القيمة الافتراضية {{temperature}}",
-      "resetToDefault": "إعادة الضبط للإعداد الافتراضي",
-      "defaultTemperature": "الحرارة الافتراضية (احتياطي)",
-      "usedByModelsWithoutOverride": "تُستخدم للنماذج بدون تخصيص",
-      "dangerZone": "منطقة الخطر",
-      "clearAllChatsAndSettings": "مسح كل الدردشات والإعدادات",
-      "about": "حول",
-      "version": "الإصدار {{version}}",
-      "privacyPolicy": "سياسة الخصوصية",
-      "capabilities": {
-        "text": "نص",
-        "image": "صورة",
-        "audio": "صوت",
-        "video": "فيديو"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "أرسل رسالة إلى Agarka...",
-      "createImages": "إنشاء صور",
-      "generateAiArtwork": "توليد عمل فني بالذكاء الاصطناعي",
-      "camera": "الكاميرا",
-      "takeOrSelectPhotos": "التقط صورًا أو اخترها",
-      "search": "بحث",
-      "findInformation": "اعثر على معلومات",
-      "removeImage": "إزالة الصورة",
-      "messageInput": "حقل الرسالة",
-      "clearInput": "مسح الإدخال",
-      "hideQuickActions": "إخفاء الإجراءات السريعة",
-      "showQuickActions": "إظهار الإجراءات السريعة",
-      "startVoiceInput": "بدء إدخال صوتي",
-      "sendMessage": "إرسال",
-      "offline": "غير متصل",
-      "stop": "إيقاف",
-      "streaming": "جارٍ البث…",
-      "closeRecorder": "إغلاق المسجل",
-      "insertTranscript": "إدراج النص المحوّل",
-      "scrollToLatest": "الانتقال لآخر رسالة",
-      "copyMessage": "نسخ الرسالة",
-      "copyMessageHint": "نسخ هذه الرسالة إلى الحافظة",
-      "shareMessage": "مشاركة الرسالة",
-      "shareMessageHint": "مشاركة هذه الرسالة",
-      "regenerateResponse": "إعادة توليد الرد",
-      "regenerateResponseHint": "توليد رد جديد",
-      "copyCode": "نسخ الكود",
-      "image": "صورة",
-      "loading": "جارٍ التحميل…",
-      "loadingChat": "جارٍ تحميل الدردشة...",
-      "offlineBanner": "أنت غير متصل. لا يمكن إرسال الرسائل.",
-      "imagePickerErrorTitle": "خطأ في منتقي الصور",
-      "messageTooLong": "الرسالة طويلة جدًا ({{length}}). الحد {{limit}}.",
-      "emptyTitle": "كيف يمكنني مساعدتك؟",
-      "emptySubtitle": "ابدأ محادثة مع الذكاء الاصطناعي",
-      "privateTitle": "دردشة خاصة",
-      "privateSubtitle": "لن تظهر هذه الدردشة في سجل محادثاتك",
-      "listening": "جارٍ الاستماع…",
-      "startRecording": "بدء التسجيل…",
-      "suggestions": {
-        "writeStory": "اكتب قصة إبداعية",
-        "writeStorySubtitle": "حول مغامرة سحرية",
-        "planTravel": "خطط برنامج سفر",
-        "planTravelSubtitle": "لإجازة رائعة",
-        "explainConcept": "اشرح هذا المفهوم",
-        "explainConceptSubtitle": "بأسلوب مبسّط",
-        "planDay": "خطط يومي",
-        "planDaySubtitle": "مع نصائح للإنتاجية"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "جارٍ المعالجة...",
-      "tapToUploadImage": "اضغط لرفع صورة"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "جارٍ المعالجة...",
-      "camera": "الكاميرا",
-      "library": "المعرض"
-    },
-    "common": {
-      "new": "جديد",
-      "best": "الأفضل",
-      "cancel": "إلغاء",
-      "save": "حفظ",
-      "delete": "حذف",
+    "accessibility": {
       "close": "إغلاق"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "حذف",
+      "edit": "تحرير",
+      "save": "حفظ",
+      "share": "مشاركة"
+    },
+    "accessibility": {
+      "close": "إغلاق",
+      "delete": "حذف الصورة",
+      "edit": "تحرير الصورة",
+      "save": "حفظ الصورة",
+      "share": "مشاركة الصورة"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "فتح القائمة",
+      "selectImages": "تحديد الصور",
+      "exitSelection": "الخروج من وضع التحديد",
+      "deleteSelected": "حذف الصور المحددة",
+      "selectToDelete": "اختر الصور لحذفها"
+    },
+    "createCard": {
+      "title": "إنشاء من نص",
+      "subtitle": "اكتب وصفًا",
+      "cta": "اكتب وأنشئ"
+    },
+    "editCard": {
+      "title": "تحرير صورة",
+      "subtitle": "ارفع وعدّل",
+      "cta": "حرّر صورة"
+    },
+    "gallery": {
+      "title": "المعرض",
+      "empty": "لا توجد صور بعد",
+      "selection": {
+        "enter": "تحديد الصور",
+        "exit": "الخروج من وضع التحديد",
+        "deleteSelected": "حذف الصور المحددة",
+        "selectForDelete": "اختر الصور لحذفها"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "تعرّف على",
+      "titleHighlight": "Image Studio",
+      "subtitle": "أنشئ وحرّر الصور بالذكاء الاصطناعي — مباشرة داخل {{app}}.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "قابل ذكاءك الاصطناعي",
+      "titleHighlight": "المساعدون",
+      "subtitle": "خبراء ذكاء اصطناعي متخصصون لمساعدتك في احتياجاتك اليومية",
+      "cards": [
+        {
+          "title": "مدرب لياقة",
+          "text": "احصل على خطط تدريب وتغذية حسب أهدافك"
+        },
+        {
+          "title": "طبيب",
+          "text": "احصل على رؤى صحية وتحليل أعراض وإرشاد طبي"
+        },
+        {
+          "title": "رعاية حيوانات",
+          "text": "نصائح لصحة وتدريب ورعاية حيواناتك الأليفة"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "حلول ذكاء اصطناعي على مستوى المؤسسات",
+      "description": "عزّز عملك بتقنية ذكاء اصطناعي متقدمة صُممت للمهنيين والفرق.",
+      "stats": "موثوق به من +500 ألف مستخدم",
+      "rating": "4.9 / 5",
+      "button": "ابدأ"
+    }
+  },
+  "coinStore": {
+    "title": "احصل على عملات",
+    "loading": "جارٍ تحميل متجر العملات…",
+    "balanceLabel": "رصيدك الحالي هو",
+    "balanceValue": "{{amount}} عملة",
+    "history": {
+      "link": "سجل المعاملات",
+      "alertTitle": "السجل",
+      "alertBody": "سجل المعاملات قادم قريبًا."
+    },
+    "noPacks": "لا توجد حزم عملات متاحة. تحقّق من معرف عرض RevenueCat.",
+    "badges": {
+      "basic": "حزمة أساسية",
+      "popular": "الأكثر شيوعًا",
+      "value": "الأفضل قيمة"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} عملة",
+      "defaultName": "حزمة {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "انتقل إلى بريميوم",
+      "subtitle": "وصول وميزات غير محدودة",
+      "cta": "ترقية"
+    },
+    "termsText": "بشرائك، فأنت توافق على",
+    "termsLink": "شروط الخدمة",
+    "alerts": {
+      "initErrorTitle": "خطأ في التهيئة",
+      "genericMessage": "حدث خطأ ما.",
+      "successTitle": "تم بنجاح",
+      "successMessage": "ستظهر العملات خلال لحظات.",
+      "purchaseFailedTitle": "فشلت عملية الشراء",
+      "unknownError": "خطأ غير معروف"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5 وGrok 4 وVeo 3",
+    "restore": "استعادة",
+    "restoreRestoring": "جارٍ الاستعادة…",
+    "features": {
+      "create": "أنشئ صورًا وفيديوهات",
+      "search": "ابحث في الويب بالذكاء الاصطناعي",
+      "talk": "تحدث مع الذكاء الاصطناعي بطبيعية"
+    },
+    "freeTrial": {
+      "title": "تجربة مجانية",
+      "subtitle": "تجربة مجانية لمدة 3 أيام"
+    },
+    "badge": {
+      "bestOffer": "أفضل عرض"
+    },
+    "plans": {
+      "yearly": {
+        "title": "سنوي",
+        "only": "فقط {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "شهري",
+        "subtitle": "يمكن الإلغاء في أي وقت",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "أسبوعي",
+        "subtitle": "يمكن الإلغاء في أي وقت",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "في الأسبوع",
+      "perMonth": "في الشهر"
+    },
+    "cta": "متابعة",
+    "legal": {
+      "terms": "الشروط",
+      "privacy": "الخصوصية"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "رسالة...",
+    "createImages": "إنشاء صور",
+    "generateAiArtwork": "إنشاء عمل فني بالذكاء الاصطناعي",
+    "camera": "الكاميرا",
+    "takeOrSelectPhotos": "التقاط أو اختيار صور",
+    "search": "بحث",
+    "findInformation": "ابحث عن معلومات",
+    "findRecentInfo": "ابحث عن معلومات حديثة",
+    "removeImage": "إزالة الصورة",
+    "messageInput": "إدخال الرسالة",
+    "clearInput": "مسح الإدخال",
+    "quickActionsLabel": "إجراءات سريعة",
+    "hideQuickActions": "إخفاء الإجراءات السريعة",
+    "showQuickActions": "إظهار الإجراءات السريعة",
+    "startVoiceInput": "بدء إدخال صوتي",
+    "sendMessage": "إرسال الرسالة",
+    "offline": "غير متصل",
+    "stop": "إيقاف",
+    "streaming": "جارٍ البث…",
+    "closeRecorder": "إغلاق المسجل",
+    "insertTranscript": "إرسال",
+    "scrollToLatest": "الانتقال إلى الأحدث",
+    "copyMessage": "نسخ الرسالة",
+    "copyMessageHint": "نسخ هذه الرسالة إلى الحافظة",
+    "shareMessage": "مشاركة الرسالة",
+    "shareMessageHint": "مشاركة هذه الرسالة",
+    "regenerateResponse": "إعادة توليد الرد",
+    "regenerateResponseHint": "توليد رد جديد",
+    "copyCode": "نسخ الكود",
+    "image": "صورة",
+    "loading": "جارٍ التحميل…",
+    "loadingChat": "جارٍ تحميل المحادثة...",
+    "offlineBanner": "أنت غير متصل. لا يمكن إرسال الرسائل.",
+    "imagePickerErrorTitle": "خطأ في اختيار الصورة",
+    "imagePickerErrorMessage": "تعذر الوصول إلى صورك. يرجى المحاولة مرة أخرى.",
+    "messageTooLong": "الرسالة طويلة جدًا ({{length}}). الحد هو {{limit}}.",
+    "sendFailed": "فشل الإرسال.",
+    "voiceStartFailed": "تعذر بدء التسجيل الصوتي.",
+    "emptyTitle": "بماذا يمكنني أن أساعد؟",
+    "emptySubtitle": "ابدأ محادثة مع الذكاء الاصطناعي",
+    "privateTitle": "محادثة خاصة",
+    "privateSubtitle": "لن تظهر هذه المحادثة في السجل",
+    "permissions": {
+      "photosTitle": "يلزم إذن الوصول للصور",
+      "photosMessage": "يجب السماح بالوصول للصور لاختيارها.",
+      "voiceTitle": "يلزم إذن الصوت",
+      "voiceMessage": "الميكروفون مطلوب لاستخدام الصوت."
+    },
+    "activity": {
+      "analyzingImages": "جارٍ تحليل الصور…",
+      "searching": "جارٍ البحث…",
+      "thinking": "جارٍ التفكير…"
+    },
+    "webSearch": {
+      "title": "بحث الويب",
+      "subtitle": "ابحث عن المعلومات الحديثة",
+      "label": "بحث الويب",
+      "enable": "تفعيل بحث الويب",
+      "disable": "إيقاف بحث الويب",
+      "toggleLabel": "البحث في الويب"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "صمّم المرئيات بسرعة.",
+      "subtitle": "أنشئ وحسّن وانشر في مكان واحد.",
+      "cta": "فتح"
+    },
+    "quickActions": {
+      "createImages": "إنشاء صور",
+      "openCamera": "فتح الكاميرا",
+      "editImage": "تحرير صورة",
+      "startVoice": "بدء الصوت",
+      "assistants": "المساعدون"
+    },
+    "listening": "جارٍ الاستماع…",
+    "startRecording": "بدء التسجيل…",
+    "assistantHeader": {
+      "unavailableTitle": "المساعد غير متاح",
+      "unavailableDescription": "تعذر تحميل هذا المساعد. يرجى المحاولة مرة أخرى.",
+      "ready": "جاهز للمساعدة"
+    },
+    "actions": {
+      "copy": "نسخ",
+      "share": "مشاركة",
+      "regenerate": "إعادة توليد",
+      "retryFromHere": "إعادة المحاولة من هنا",
+      "cancel": "إلغاء"
+    },
+    "messageActionTitle": "رسالة",
+    "status": {
+      "sending": "جارٍ الإرسال…",
+      "failed": "فشل",
+      "sent": "تم الإرسال"
+    },
+    "suggestions": {
+      "writeStory": "اكتب قصة إبداعية",
+      "writeStorySubtitle": "عن مغامرة سحرية",
+      "planTravel": "اخطط لرحلة",
+      "planTravelSubtitle": "لعطلة رائعة",
+      "explainConcept": "اشرح هذا المفهوم",
+      "explainConceptSubtitle": "بطريقة بسيطة",
+      "planDay": "خطط ليومي",
+      "planDaySubtitle": "مع نصائح إنتاجية"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "جارٍ المعالجة...",
+    "tapToUploadImage": "اضغط لرفع صورة"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "جارٍ المعالجة...",
+    "camera": "الكاميرا",
+    "library": "المعرض"
+  },
+  "common": {
+    "new": "جديد",
+    "best": "الأفضل",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "close": "إغلاق",
+    "allow": "سماح"
   }
-  
+}

@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "Valitse malli",
-      "searchPlaceholder": "Hae malleja...",
-      "noModelsFound": "Malleja ei löytynyt",
-      "noModelsAvailable": "Ei saatavilla olevia malleja",
-      "currentModel": "Nykyinen malli: {{name}}. Napauta vaihtaaksesi.",
-      "openHint": "Avaa mallin valintavalikko",
-      "closeLabel": "Sulje mallin valitsin",
-      "searchLabel": "Hae malleja",
-      "searchHint": "Kirjoita suodattaaksesi malleja",
-      "modelLabel": "{{name}}-malli",
-      "selectHint": "Valitse {{name}}",
-      "currentlySelected": "Tällä hetkellä valittu malli"
+  "modelSelector": {
+    "title": "Valitse malli",
+    "searchPlaceholder": "Hae malleja...",
+    "noModelsFound": "Malleja ei löytynyt",
+    "noModelsAvailable": "Ei malleja saatavilla",
+    "currentModel": "Nykyinen malli: {{name}}. Napauta vaihtaaksesi mallia.",
+    "openHint": "Avaa mallinvalintavalikon",
+    "closeLabel": "Sulje mallin valitsin",
+    "searchLabel": "Hae malleja",
+    "searchHint": "Kirjoita suodattaaksesi saatavilla olevia malleja",
+    "modelLabel": "{{name}} -malli",
+    "selectHint": "Valitse {{name}} -malli",
+    "currentlySelected": "Tällä hetkellä valittuna"
+  },
+  "models": {
+    "gpt-4o": "Tehokkain tekoälymalli",
+    "gpt-4o-mini": "Nopea arjen tehtäviin",
+    "gpt-5": "Tehokkain monikäyttöinen tekoäly",
+    "gpt-5-chat-latest": "Optimoitu keskusteluun",
+    "gpt-5-mini": "Nopea ja luotettava GPT-5",
+    "gpt-5-nano": "Kevyt malli yksinkertaisiin tehtäviin",
+    "o4-mini": "Tehokas päättelymalli",
+    "gpt-4.1-mini": "Kompakti ja kyvykäs GPT-4.1",
+    "claude-3-haiku": "Nopea ja tarkka Anthropic-tekoäly",
+    "claude-3.7-sonnet": "Hiottu päättely Anthropicilta",
+    "gemini-2.5-Flash": "Googlen kehittynein malli",
+    "gemini-2.5-flash": "Googlen kehittynein malli",
+    "gemini-2.0-flash": "Googlen nopea ja tarkka tekoäly"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Muu"
+  },
+  "navigation": {
+    "chat": "Uusi keskustelu",
+    "history": "Historia",
+    "assistants": "Avustajat",
+    "imagesStudio": "Image Studio",
+    "settings": "Asetukset",
+    "recentChats": "Viimeaikaiset"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Luo, viimeistele ja julkaise visuaaliset materiaalit yhdessä paikassa.",
+    "cta": "Avaa"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Valitse kuvia",
+    "exitSelectionMode": "Poistu valinnasta",
+    "selectAll": "Valitse kaikki",
+    "noImagesYet": "Ei kuvia vielä",
+    "describeImageHint": "Kuvaile kuva alla ja napauta Luo.",
+    "generatedImagesGallery": "Luotujen kuvien galleria",
+    "describeImagePlaceholder": "Kuvaile kuva, jonka haluat…",
+    "deleteConfirmTitle": "Poista kuvat",
+    "deleteConfirmMessage": "Haluatko varmasti poistaa valitut kuvat? Tätä ei voi perua.",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "generate": "Luo",
+    "generating": "Luodaan…",
+    "latest": "Uusimmat",
+    "insertToChat": "Lisää keskusteluun",
+    "pleaseWait": "Odota hetki…",
+    "processing": "Käsitellään...",
+    "tapToUploadImage": "Napauta ladataksesi kuvan",
+    "camera": "Kamera",
+    "library": "Galleria",
+    "enterPrompt": "Kirjoita prompt kuvan luonnille",
+    "openInBrowser": "Avaa selaimessa",
+    "makeVariations": "Luo muunnelmia",
+    "deleteAllFromGeneration": "Poista kaikki tästä luonnista",
+    "imageOptionsTitle": "Kuva-asetukset",
+    "imageOptionsMessage": "Mitä haluat tehdä tällä kuvalla?",
+    "insertMarkdownHeader": "Tässä kuva pyynnöllesi:",
+    "variationSuffix": "— muunnelma edellisestä kuvasta",
+    "selectedCount": "valittu",
+    "selectedCount_one": "valittu",
+    "selectedCount_other": "valittu",
+    "imageDescriptionInput": "Kuvan kuvauksen syöte",
+    "imageDescriptionHint": "Kirjoita kuvaus kuvasta, jonka haluat luoda",
+    "openModelSettings": "Avaa malliasetukset",
+    "modelSettingsHint": "Napauta vaihtaaksesi mallia ja asetuksia",
+    "openPhotoGallery": "Avaa kuvagalleria",
+    "clearInput": "Tyhjennä",
+    "generatedImage": "Luotu kuva",
+    "autoSelectedModel": "Valittiin automaattisesti {{model}} tilaan {{mode}}",
+    "deleteSelectedConfirmTitle": "Poista kuvat",
+    "deleteSelectedConfirmMessage": "Haluatko varmasti poistaa kuvat? Tätä ei voi perua."
+  },
+  "imageStudio": {
+    "generateImage": "Luo kuva",
+    "generatingImage": "Luodaan kuvaa",
+    "generateImageHint": "Napauta luodaksesi kuvan kuvauksesi perusteella",
+    "imageDescriptionInput": "Kuvan kuvauksen syöte",
+    "imageDescriptionHint": "Kirjoita kuvaus kuvasta, jonka haluat luoda",
+    "openModelSettings": "Avaa malliasetukset",
+    "modelSettingsHint": "Napauta vaihtaaksesi mallia ja asetuksia",
+    "openPhotoGallery": "Avaa kuvagalleria",
+    "clearInput": "Tyhjennä",
+    "generatedImage": "Luotu kuva"
+  },
+  "assistants": {
+    "title": "Avustajat",
+    "subtitle": "Valikoidut tekoälyasiantuntijat koodaukseen, kirjoittamiseen, analyysiin, suunnitteluun ja muuhun.",
+    "searchPlaceholder": "Etsi avustajia…",
+    "useAssistant": "Käytä avustajaa",
+    "selectAssistant": "Valitse avustaja",
+    "description": "Kuvaus",
+    "systemPrompt": "Järjestelmäprompt",
+    "chooseModel": "Valitse malli",
+    "categoryAll": "Kaikki",
+    "categories": {
+      "everyday": "Arki",
+      "life": "Elämä",
+      "health": "Terveys",
+      "schoolWork": "Koulu & työ",
+      "coding": "Koodaus",
+      "creative": "Luova",
+      "general": "Yleinen"
+    },
+    "presets": {
+      "default": {
+        "name": "Oletusavustaja",
+        "description": "Tasapainoinen apu päivittäisiin juttuihin."
+      },
+      "quick": {
+        "name": "Nopeat vastaukset",
+        "description": "Lyhyet ja suorat vastaukset."
+      },
+      "planner": {
+        "name": "Päiväsuunnittelija",
+        "description": "Suunnittele päiväsi ja rutiinisi."
+      },
+      "recipes": {
+        "name": "Ruoat & reseptit",
+        "description": "Mitä kokata siitä mitä kaapissa on."
+      },
+      "fitness": {
+        "name": "Tottumus & treeni",
+        "description": "Pienet tavat ja kotitreenit."
+      },
+      "money": {
+        "name": "Rahakaveri",
+        "description": "Yksinkertaiset budjetit ja kulutusvinkit."
+      },
+      "study": {
+        "name": "Opiskelukaveri",
+        "description": "Selitä yksinkertaisesti. Kysy minulta."
+      },
+      "email": {
+        "name": "Sähköposti & CV",
+        "description": "Kirjoita selkeät viestit ja CV-rivit."
+      },
+      "translator": {
+        "name": "Kääntäjä",
+        "description": "Käännä ja opettele fraaseja."
+      },
+      "travel": {
+        "name": "Matkakaveri",
+        "description": "Helpot suunnitelmat ja pakkauslistat."
+      },
+      "tech": {
+        "name": "Tekniikka-apu (helppo)",
+        "description": "Puhelin, sovellukset, Wi-Fi-perusteet."
+      },
+      "summarizer": {
+        "name": "Tiivistelmä (TL;DR)",
+        "description": "Lyhyet kohdat + yhden lauseen tiivistelmä."
+      },
+      "gift": {
+        "name": "Lahjaetsijä",
+        "description": "Ideoita budjetin ja kiinnostuksen mukaan."
+      },
+      "party": {
+        "name": "Tapahtumasuunnittelija (kevyt)",
+        "description": "Järjestä pieni juhla nopeasti."
+      },
+      "social": {
+        "name": "Sosiaalisen median tekijä",
+        "description": "Luo postauksia vaihtoehdoilla."
+      },
+      "interview": {
+        "name": "Haastattelutreenari",
+        "description": "Harjoittele vastauksia (STAR)."
+      },
+      "homefix": {
+        "name": "Kodin korjausopas",
+        "description": "Yksinkertainen tee se itse -apu."
+      },
+      "pet": {
+        "name": "Lemmikkiapu",
+        "description": "Ruokinta, lenkit, perustottelevaisuus."
+      },
+      "mindful": {
+        "name": "Hetki läsnäoloa",
+        "description": "1–3 min rauhoittumisia."
+      },
+      "polite": {
+        "name": "Kohtelias uudelleenkirjoitus",
+        "description": "Kirjoita viestit ystävällisemmin."
+      }
+    }
+  },
+  "history": {
+    "title": "Historia",
+    "searchPlaceholder": "Etsi keskusteluja…",
+    "newChat": "Uusi keskustelu",
+    "new": "+ Uusi",
+    "search": "Hae",
+    "clearSearch": "Tyhjennä haku",
+    "noChatsYet": "Ei keskusteluja vielä",
+    "startFirstConversation": "Aloita ensimmäinen keskustelusi.",
+    "startChat": "Aloita keskustelu",
+    "errorLoadingHistory": "Historian lataus epäonnistui",
+    "renameChat": "Nimeä keskustelu uudelleen",
+    "enterNewTitle": "Kirjoita uusi otsikko",
+    "deleteChat": "Poistetaanko keskustelu?",
+    "deleteChatMessage": "”{{title}}” poistetaan.",
+    "rename": "Nimeä uudelleen",
+    "unpin": "Poista kiinnitys",
+    "pin": "Kiinnitä",
+    "untitled": "Nimetön"
+  },
+  "settings": {
+    "title": "Asetukset",
+    "model": "Malli",
+    "searchPlaceholder": "Hae malleja…",
+    "temperatureForCurrentModel": "Lämpötila tälle mallille",
+    "customFor": "Mukautettu mallille {{model}}",
+    "usingDefault": "Käytetään oletusta {{temperature}}",
+    "resetToDefault": "Palauta oletukseen",
+    "defaultTemperature": "Oletuslämpötila (varalla)",
+    "usedByModelsWithoutOverride": "Käytetään malleille ilman omaa asetusta",
+    "dangerZone": "Vaaravyöhyke",
+    "clearAllChatsAndSettings": "Tyhjennä kaikki keskustelut ja asetukset",
+    "about": "Tietoja",
+    "version": "Versio {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Tietosuojakäytäntö",
+    "hero": {
+      "label": "Erikoistarjous",
+      "title": "Etuoikeutettu pääsy ilman rajoja",
+      "upgrade": "Päivitä",
+      "manage": "Hallitse tilausta"
+    },
+    "sections": {
+      "premium": "Premium-tilaus",
+      "data": "Käyttäjätiedot",
+      "support": "Tuki & oikeudet"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Hanki Premium",
+        "subtitle": "Avaa rajattomat luontityökalut"
+      },
+      "premiumActive": {
+        "title": "Premium käytössä",
+        "subtitle": "Kiitos että tuet ChatCloudia"
+      },
+      "restore": {
+        "title": "Palauta ostot",
+        "subtitle": "Käytä jos vaihdoit laitetta"
+      },
+      "history": {
+        "title": "Hallitse chathistoriaa",
+        "subtitle": "Katso ja poista vanhat keskustelut"
+      },
+      "reset": {
+        "title": "Nollaa keskustelut ja asetukset",
+        "subtitle": "Tyhjentää kaikki paikalliset tiedot tältä laitteelta"
+      },
+      "rate": {
+        "title": "Arvostele meidät",
+        "error": "Kauppasivua ei voitu avata."
+      },
+      "support": {
+        "title": "Tuki",
+        "subtitle": "Ota yhteyttä verkossa",
+        "error": "Tukisivua ei voitu avata."
+      },
+      "privacy": {
+        "title": "Tietosuojakäytäntö",
+        "error": "Tietosuojasivua ei voitu avata."
+      },
+      "terms": {
+        "title": "Käyttöehdot",
+        "error": "Käyttöehtoja ei voitu avata."
+      }
+    },
+    "capabilities": {
+      "text": "TEKSTI",
+      "image": "KUVA",
+      "audio": "ÄÄNI",
+      "video": "VIDEO"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Ei saatavilla",
+      "linkUnavailableMessage": "Tätä linkkiä ei voi avata juuri nyt.",
+      "restoreSuccessTitle": "Palautettu",
+      "restoreSuccessMessage": "Ostosi on palautettu.",
+      "restoreErrorTitle": "Palautus epäonnistui",
+      "restoreErrorMessage": "Ostoja ei voitu palauttaa nyt.",
+      "resetConfirmTitle": "Nollataanko sovelluksen tiedot?",
+      "resetConfirmMessage": "Tämä poistaa kaikki keskustelut ja paikalliset asetukset.",
+      "resetConfirmCancel": "Peruuta",
+      "resetConfirmCta": "Nollaa"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Luo",
+    "chooseStyle": "Valitse tyyli",
+    "aspectRatio": "Kuvasuhde",
+    "starterPrompts": {
+      "title": "Aloituspromptit",
+      "items": [
+        "studiomuotokuva",
+        "moderni olohuone",
+        "trooppinen ranta auringonlaskussa"
+      ]
+    },
+    "promptPlaceholder": "Kirjoita mitä haluat nähdä…",
+    "promptHint": "Esim: 'golden noutaja studiovalossa'",
+    "clearText": "Tyhjennä teksti",
+    "generate": "Luo",
+    "generating": "Luodaan…"
+  },
+  "editImage": {
+    "headerTitle": "Muokkaa",
+    "chooseStyle": "Valitse tyyli",
+    "aspectRatio": "Kuvasuhde",
+    "starterPrompts": {
+      "title": "Aloituspromptit",
+      "items": [
+        "korjaa valaistus",
+        "poista tausta",
+        "pehmeä muotokuvan retusointi"
+      ]
+    },
+    "promptPlaceholder": "Kuvaile muokkaukset (valinnainen)",
+    "clearText": "Tyhjennä",
+    "generate": "Toteuta",
+    "generating": "Toteutetaan…",
+    "upload": {
+      "choose": "Valitse kuva",
+      "change": "Vaihda",
+      "remove": "Poista"
+    },
+    "imageUnavailable": {
+      "title": "Kuva ei saatavilla",
+      "message": "Valittua kuvaa ei voitu avata. Valitse se uudelleen ja yritä uudelleen."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Sarjakuva"
+      },
+      "photoreal": {
+        "name": "Valokuvamainen"
+      },
+      "sketch": {
+        "name": "Luonnos"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D-kuvitus"
+      },
+      "dark_fantasy": {
+        "name": "Dark fantasy"
+      },
+      "vintage_film": {
+        "name": "Vintage-filmi"
+      },
+      "pastel": {
+        "name": "Pastelli"
+      },
+      "neon_glow": {
+        "name": "Neonhehku"
+      },
+      "epic_landscape": {
+        "name": "Eepinen maisema"
+      }
+    },
+    "aspectRatios": {
+      "square": "Neliö",
+      "landscape": "Vaaka",
+      "portrait": "Pysty"
     },
     "models": {
-      "gpt-4o": "Tehokkain AI-malli",
-      "gpt-4o-mini": "Nopea arjen tehtäviin",
-      "claude-3-haiku": "Nopea ja tehokas malli",
-      "claude-3.7-sonnet": "Edistynyt päättelymalli",
-      "gemini-2.5-pro": "Googlen paras malli",
-      "gemini-2.0-flash": "Nopea malli, jossa vahva päättely"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Mukautettu"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "Muu"
+    "modelTaglines": {
+      "runwareFluxSchnell": "Nopein malli",
+      "runwareFluxKrea": "Luovat ja tyylitellyt tulokset",
+      "runwareQwenImage": "Tasapainoinen, laadukas tulos",
+      "google4": "Paras tekoälykuvamalli",
+      "fluxKontent": "Flux Kontent muokkauksiin",
+      "runwareProvider": "Tasapainoinen laatu luotettavalla diffuusiolla.",
+      "airProvider": "Nano Banana lisää elävän, leikkisän sävyn.",
+      "googleProvider": "Google viritetty viimeistellyille yksityiskohdille.",
+      "anthropicProvider": "Claude-putki vivahteikkaisiin tunnelmiin.",
+      "default": "Napauta tutkiaksesi saatavilla olevia koneita."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "valitsemasi tyyli",
+    "sheetTitle": "Rakennetaan kuvaasi",
+    "sheetSubtitle": "Pieni hetki, yhdistämme {{style}} kuvaukseesi.",
+    "phases": {
+      "blend": "Yhdistetään {{style}}",
+      "paint": "Maalaamme kohtauksen",
+      "finish": "Viimeistellään"
     },
-    "navigation": {
-      "chat": "Keskustelu",
-      "history": "Historia",
-      "assistants": "Avustajat",
-      "imagesStudio": "Studio",
-      "settings": "Asetukset",
-      "recentChats": "Viimeaikaiset keskustelut"
-    },
-    "imagesStudio": {
-      "title": "Studio",
-      "selectImages": "Valitse kuvia",
-      "exitSelectionMode": "Poistu valintatilasta",
-      "selectAll": "Valitse kaikki",
-      "noImagesYet": "Ei kuvia vielä",
-      "describeImageHint": "Kuvaile kuva alla ja napauta ”Luo”.",
-      "generatedImagesGallery": "Luotujen kuvien galleria",
-      "describeImagePlaceholder": "Kuvaile haluamasi kuva…",
-      "deleteConfirmTitle": "Poista kuvia",
-      "deleteConfirmMessage": "Haluatko varmasti poistaa valitut kuvat? Tätä toimintoa ei voi perua.",
+    "actions": {
       "cancel": "Peruuta",
-      "delete": "Poista",
-      "generate": "Luo",
-      "generating": "Luodaan…",
-      "latest": "Uusimmat",
-      "insertToChat": "Lisää keskusteluun",
-      "pleaseWait": "Odota hetki…",
-      "processing": "Käsitellään...",
-      "tapToUploadImage": "Napauta ladataksesi kuvan",
-      "camera": "Kamera",
-      "library": "Galleria",
-      "enterPrompt": "Anna kehoteteksti tekstistä kuvaksi -generointiin",
-      "openInBrowser": "Avaa selaimessa",
-      "makeVariations": "Tee muunnelmia",
-      "deleteAllFromGeneration": "Poista kaikki tästä generoinnista",
-      "imageOptionsTitle": "Kuvan asetukset",
-      "imageOptionsMessage": "Mitä haluat tehdä tälle kuvalle?",
-      "insertMarkdownHeader": "Tässä on kuva aiheesta:",
-      "variationSuffix": "— edellisen kuvan muunnelma",
-      "selectedCount": "valittu",
-      "selectedCount_one": "valittu",
-      "selectedCount_other": "valittu",
-      "imageDescriptionInput": "Kuvan kuvauskenttä",
-      "imageDescriptionHint": "Anna kuvan kuvaus, jonka haluat luoda",
-      "openModelSettings": "Avaa mallin asetukset",
-      "modelSettingsHint": "Napauta vaihtaaksesi mallia ja asetuksia",
-      "openPhotoGallery": "Avaa galleria",
-      "clearInput": "Tyhjennä kenttä",
-      "generatedImage": "Luotu kuva",
-      "autoSelectedModel": "Valittiin automaattisesti {{model}} {{mode}}-tilaa varten",
-      "deleteSelectedConfirmTitle": "Poista kuvia",
-      "deleteSelectedConfirmMessage": "Haluatko varmasti poistaa kuvat? Tätä toimintoa ei voi perua."
+      "retry": "Yritä uudelleen",
+      "close": "Sulje"
     },
-    "imageStudio": {
-      "generateImage": "Luo kuva",
-      "generatingImage": "Luodaan kuvaa",
-      "generateImageHint": "Luo kuva kuvauksesi perusteella",
-      "imageDescriptionInput": "Kuvan kuvauskenttä",
-      "imageDescriptionHint": "Anna kuvaus kuvasta, jonka haluat luoda",
-      "openModelSettings": "Avaa mallin asetukset",
-      "modelSettingsHint": "Napauta vaihtaaksesi mallia ja asetuksia",
-      "openPhotoGallery": "Avaa galleria",
-      "clearInput": "Tyhjennä kenttä",
-      "generatedImage": "Luotu kuva"
+    "errors": {
+      "restrictedTitle": "Rajoitettu sisältö",
+      "genericTitle": "Luonti epäonnistui",
+      "genericMessage": "Kuvaa ei voitu luoda."
     },
-    "assistants": {
-      "title": "Avustajat",
-      "subtitle": "Kuratoituja AI-asiantuntijoita koodaukseen, kirjoittamiseen, analyysiin, suunnitteluun ja muuhun.",
-      "searchPlaceholder": "Hae avustajia…",
-      "useAssistant": "Käytä avustajaa",
-      "description": "Kuvaus",
-      "systemPrompt": "Järjestelmäkehotus",
-      "chooseModel": "Valitse malli",
-      "categoryAll": "Kaikki",
-      "categories": {
-        "everyday": "Arki",
-        "life": "Elämä",
-        "health": "Terveys",
-        "schoolWork": "Koulu ja työ",
-        "coding": "Koodaus",
-        "creative": "Luova",
-        "general": "Yleinen"
-      },
-      "presets": {
-        "default": { "name": "Oletusavustaja", "description": "Tasapainoinen apu arjen asioihin." },
-        "quick": { "name": "Nopeat vastaukset", "description": "Lyhyet ja suorat vastaukset." },
-        "planner": { "name": "Päivän suunnittelija", "description": "Suunnittele päiväsi ja rutiinisi." },
-        "recipes": { "name": "Ateriat ja reseptit", "description": "Mitä kokata siitä, mitä on." },
-        "fitness": { "name": "Tapa- ja treenivalmentaja", "description": "Pienet tavat ja kotitreenit." },
-        "money": { "name": "Raha-apuri", "description": "Yksinkertaiset budjetit ja kulutusvinkit." },
-        "study": { "name": "Opiskelukaveri", "description": "Selitä yksinkertaisesti. Kokeile minua." },
-        "email": { "name": "Sähköposti ja CV", "description": "Kirjoita selkeitä maileja ja CV-kohtia." },
-        "translator": { "name": "Kääntäjä", "description": "Käännä ja opi ilmauksia." },
-        "travel": { "name": "Matkakaveri", "description": "Yksinkertaiset suunnitelmat ja pakkauslistat." },
-        "tech": { "name": "Tekniikkatuki (perus)", "description": "Puhelin, sovellukset ja Wi-Fi – perusasiat." },
-        "summarizer": { "name": "TL;DR-tiivistelmä", "description": "Lyhyet kohdat + yhden rivin tiivistelmä." },
-        "gift": { "name": "Lahjaideoiden etsijä", "description": "Ideoita budjetin ja kiinnostusten mukaan." },
-        "party": { "name": "Tapahtumasuunnittelija (kevyt)", "description": "Pieni juhla nopeasti." },
-        "social": { "name": "Some-julkaisija", "description": "Luonnoksia eri vaihtoehdoilla." },
-        "interview": { "name": "Haastattelukoutsi", "description": "Harjoittele STAR-vastauksia." },
-        "homefix": { "name": "Kotikorjausopas", "description": "Yksinkertainen vianhaku ja korjaukset." },
-        "pet": { "name": "Lemmikkiapu", "description": "Ruokinta, ulkoilu ja peruskoulutus." },
-        "mindful": { "name": "Tietoinen minuutti", "description": "1–3 min rauhallisia taukoja." },
-        "polite": { "name": "Kohtelias uudelleenkirjoitus", "description": "Kirjoita tekstit ja vastaukset kohteliaammin." }
-      }
+    "alerts": {
+      "saveFailedTitle": "Tallennus epäonnistui",
+      "shareFailedTitle": "Jakaminen epäonnistui",
+      "tryAgain": "Yritä uudelleen."
     },
-    "history": {
-      "title": "Historia",
-      "searchPlaceholder": "Hae keskusteluja…",
-      "newChat": "Uusi keskustelu",
-      "new": "+ Uusi",
-      "search": "Hae",
-      "clearSearch": "Tyhjennä haku",
-      "noChatsYet": "Ei keskusteluja vielä",
-      "startFirstConversation": "Aloita ensimmäinen keskustelusi.",
-      "startChat": "Aloita keskustelu",
-      "errorLoadingHistory": "Virhe historian latauksessa",
-      "renameChat": "Nimeä keskustelu uudelleen",
-      "enterNewTitle": "Anna uusi otsikko",
-      "deleteChat": "Poistetaanko keskustelu?",
-      "deleteChatMessage": "”{{title}}” poistetaan.",
-      "rename": "Nimeä uudelleen",
-      "unpin": "Poista kiinnitys",
-      "pin": "Kiinnitä",
-      "untitled": "Nimetön"
+    "result": {
+      "complete": "Valmis"
     },
-    "settings": {
-      "title": "Asetukset",
-      "model": "Malli",
-      "searchPlaceholder": "Hae malleja…",
-      "temperatureForCurrentModel": "Nykyisen mallin lämpötila",
-      "customFor": "Mukautettu mallille {{model}}",
-      "usingDefault": "Käytetään oletusta {{temperature}}",
-      "resetToDefault": "Palauta oletus",
-      "defaultTemperature": "Oletuslämpötila (varalla)",
-      "usedByModelsWithoutOverride": "Käytössä malleissa ilman ohitusta",
-      "dangerZone": "Vaaravyöhyke",
-      "clearAllChatsAndSettings": "Tyhjennä kaikki keskustelut ja asetukset",
-      "about": "Tietoja",
-      "version": "Versio {{version}}",
-      "privacyPolicy": "Tietosuojakäytäntö",
-      "capabilities": {
-        "text": "TEKSTI",
-        "image": "KUVA",
-        "audio": "AUDIO",
-        "video": "VIDEO"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "Lähetä viesti Agarkalle...",
-      "createImages": "Luo kuvia",
-      "generateAiArtwork": "Luo AI-taidetta",
-      "camera": "Kamera",
-      "takeOrSelectPhotos": "Ota tai valitse valokuvia",
-      "search": "Hae",
-      "findInformation": "Hae tietoa",
-      "removeImage": "Poista kuva",
-      "messageInput": "Viestikenttä",
-      "clearInput": "Tyhjennä kenttä",
-      "hideQuickActions": "Piilota p pikatoiminnot",
-      "showQuickActions": "Näytä pikatoiminnot",
-      "startVoiceInput": "Aloita äänisyöte",
-      "sendMessage": "Lähetä",
-      "offline": "Offline",
-      "stop": "Pysäytä",
-      "streaming": "Suoratoistetaan…",
-      "closeRecorder": "Sulje tallennin",
-      "insertTranscript": "Lisää transkriptio",
-      "scrollToLatest": "Vieritä uusimpaan",
-      "copyMessage": "Kopioi viesti",
-      "copyMessageHint": "Kopioi tämä viesti leikepöydälle",
-      "shareMessage": "Jaa viesti",
-      "shareMessageHint": "Jaa tämä viesti",
-      "regenerateResponse": "Luo vastaus uudelleen",
-      "regenerateResponseHint": "Luo uusi vastaus",
-      "copyCode": "Kopioi koodi",
-      "image": "kuva",
-      "loading": "Ladataan…",
-      "loadingChat": "Ladataan keskustelua...",
-      "offlineBanner": "Olet offline-tilassa. Viestejä ei voi lähettää.",
-      "imagePickerErrorTitle": "Kuvavalitsimen virhe",
-      "messageTooLong": "Viesti on liian pitkä ({{length}}). Raja on {{limit}}.",
-      "emptyTitle": "Miten voin auttaa?",
-      "emptySubtitle": "Aloita keskustelu tekoälyn kanssa",
-      "privateTitle": "Yksityinen keskustelu",
-      "privateSubtitle": "Tämä keskustelu ei näy historiassa",
-      "listening": "Kuunnellaan…",
-      "startRecording": "Aloitetaan nauhoitus…",
-      "suggestions": {
-        "writeStory": "Kirjoita luova tarina",
-        "writeStorySubtitle": "taianomaisesta seikkailusta",
-        "planTravel": "Laadi matkasuunnitelma",
-        "planTravelSubtitle": "upeaa lomaa varten",
-        "explainConcept": "Selitä tämä käsite",
-        "explainConceptSubtitle": "yksinkertaisesti",
-        "planDay": "Suunnittele päiväni",
-        "planDaySubtitle": "tuottavuusvinkeillä"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "Käsitellään...",
-      "tapToUploadImage": "Napauta ladataksesi kuvan"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "Käsitellään...",
-      "camera": "Kamera",
-      "library": "Galleria"
-    },
-    "common": {
-      "new": "UUSI",
-      "best": "PARAS",
-      "cancel": "Peruuta",
-      "save": "Tallenna",
-      "delete": "Poista",
+    "accessibility": {
       "close": "Sulje"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Poista",
+      "edit": "Muokkaa",
+      "save": "Tallenna",
+      "share": "Jaa"
+    },
+    "accessibility": {
+      "close": "Sulje",
+      "delete": "Poista kuva",
+      "edit": "Muokkaa kuvaa",
+      "save": "Tallenna kuva",
+      "share": "Jaa kuva"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Avaa valikko",
+      "selectImages": "Valitse kuvia",
+      "exitSelection": "Poistu valinnasta",
+      "deleteSelected": "Poista valitut kuvat",
+      "selectToDelete": "Valitse poistettavat kuvat"
+    },
+    "createCard": {
+      "title": "Luo tekstistä",
+      "subtitle": "Kirjoita kuvaus",
+      "cta": "Kuvaile & luo"
+    },
+    "editCard": {
+      "title": "Muokkaa valokuvaa",
+      "subtitle": "Lataa ja muokkaa",
+      "cta": "Muokkaa valokuvaa"
+    },
+    "gallery": {
+      "title": "Galleria",
+      "empty": "Ei kuvia vielä",
+      "selection": {
+        "enter": "Valitse kuvia",
+        "exit": "Poistu valinnasta",
+        "deleteSelected": "Poista valitut",
+        "selectForDelete": "Valitse kuvia poistettavaksi"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Tutustu",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Luo ja muokkaa kuvia tekoälyllä — suoraan {{app}}-sovelluksessa.",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "Tapaa tekoälysi",
+      "titleHighlight": "Avustajat",
+      "subtitle": "Erikoistuneita TÄ-avustajia arkeen",
+      "cards": [
+        {
+          "title": "Treeni-valmentaja",
+          "text": "Henkilökohtaiset treenit ja ruokavinkit tavoitteisiisi"
+        },
+        {
+          "title": "Lääkäri",
+          "text": "Terveysnäkemystä, oireiden tarkastelua ja ohjeita"
+        },
+        {
+          "title": "Lemmikkien hoito",
+          "text": "Vinkkejä terveyteen, koulutukseen ja hoitoon"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "YRITYSTASON TÄ-RATKAISUT",
+      "description": "Tehosta liiketoimintaasi huipputason tekoälyllä, joka on tehty tiimeille.",
+      "stats": "Luottamus yli 500k käyttäjältä",
+      "rating": "4,9 / 5",
+      "button": "Aloita"
+    }
+  },
+  "coinStore": {
+    "title": "Osta tokeneita",
+    "loading": "Ladataan token-kauppaa…",
+    "balanceLabel": "Nykyinen saldosi",
+    "balanceValue": "{{amount}} tokenia",
+    "history": {
+      "link": "Tapahtumahistoria",
+      "alertTitle": "Historia",
+      "alertBody": "Tapahtumahistoria tulossa pian."
+    },
+    "noPacks": "Token-paketteja ei ole saatavilla. Tarkista RevenueCat-tarjoustunnus.",
+    "badges": {
+      "basic": "Peruspaketti",
+      "popular": "Suosituin",
+      "value": "Paras hinta"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} tokenia",
+      "defaultName": "Paketti {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "Siirry Premiumiin",
+      "subtitle": "Rajoittamaton pääsy & ominaisuudet",
+      "cta": "Päivitä"
+    },
+    "termsText": "Ostamalla hyväksyt",
+    "termsLink": "Käyttöehdot",
+    "alerts": {
+      "initErrorTitle": "Alustusvirhe",
+      "genericMessage": "Jotain meni vikaan.",
+      "successTitle": "Onnistui",
+      "successMessage": "Tokenit ilmestyvät pian.",
+      "purchaseFailedTitle": "Osto epäonnistui",
+      "unknownError": "Tuntematon virhe"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "Palauta",
+    "restoreRestoring": "Palautetaan…",
+    "features": {
+      "create": "Luo kuvia ja videoita",
+      "search": "Hae verkosta tekoälyllä",
+      "talk": "Keskustele luonnollisesti tekoälyn kanssa"
+    },
+    "freeTrial": {
+      "title": "Ilmainen kokeilu",
+      "subtitle": "3 päivää ilmaiseksi"
+    },
+    "badge": {
+      "bestOffer": "Paras tarjous"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Vuosittain",
+        "only": "Vain {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "Kuukausittain",
+        "subtitle": "Peru milloin vain",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Viikoittain",
+        "subtitle": "Peru milloin vain",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "viikossa",
+      "perMonth": "kuukaudessa"
+    },
+    "cta": "Jatka",
+    "legal": {
+      "terms": "Ehdot",
+      "privacy": "Tietosuoja"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Viesti...",
+    "createImages": "Luo kuvia",
+    "generateAiArtwork": "Luo tekoälykuva",
+    "camera": "Kamera",
+    "takeOrSelectPhotos": "Ota tai valitse kuvia",
+    "search": "Haku",
+    "findInformation": "Etsi tietoa",
+    "findRecentInfo": "Etsi uusinta tietoa",
+    "removeImage": "Poista kuva",
+    "messageInput": "Viestinsyöttö",
+    "clearInput": "Tyhjennä",
+    "quickActionsLabel": "Pikatoiminnot",
+    "hideQuickActions": "Piilota pikatoiminnot",
+    "showQuickActions": "Näytä pikatoiminnot",
+    "startVoiceInput": "Aloita puhesyöttö",
+    "sendMessage": "Lähetä viesti",
+    "offline": "Offline",
+    "stop": "Pysäytä",
+    "streaming": "Toistetaan…",
+    "closeRecorder": "Sulje tallennin",
+    "insertTranscript": "Lähetä",
+    "scrollToLatest": "Vieritä uusimpaan",
+    "copyMessage": "Kopioi viesti",
+    "copyMessageHint": "Kopioi tämä viesti leikepöydälle",
+    "shareMessage": "Jaa viesti",
+    "shareMessageHint": "Jaa tämä viesti",
+    "regenerateResponse": "Luo vastaus uudelleen",
+    "regenerateResponseHint": "Luo uusi vastaus",
+    "copyCode": "Kopioi koodi",
+    "image": "kuva",
+    "loading": "Ladataan…",
+    "loadingChat": "Ladataan keskustelua...",
+    "offlineBanner": "Olet offline-tilassa. Viestejä ei voi lähettää.",
+    "imagePickerErrorTitle": "Kuvan valinta epäonnistui",
+    "imagePickerErrorMessage": "Kuvia ei voitu avata. Yritä uudelleen.",
+    "messageTooLong": "Viesti on liian pitkä ({{length}}). Raja on {{limit}}.",
+    "sendFailed": "Lähetys epäonnistui.",
+    "voiceStartFailed": "Puhetta ei voitu käynnistää.",
+    "emptyTitle": "Miten voin auttaa?",
+    "emptySubtitle": "Aloita keskustelu tekoälyn kanssa",
+    "privateTitle": "Yksityinen keskustelu",
+    "privateSubtitle": "Tämä chat ei näy historiassa",
+    "permissions": {
+      "photosTitle": "Kuvatiedostoihin tarvitaan lupa",
+      "photosMessage": "Kuvien valitsemiseen tarvitaan kuvien käyttöoikeus.",
+      "voiceTitle": "Puhelupa tarvitaan",
+      "voiceMessage": "Mikrofonin ja puheen käyttö vaaditaan puhetoimintoon."
+    },
+    "activity": {
+      "analyzingImages": "Analysoidaan kuvia…",
+      "searching": "Haetaan…",
+      "thinking": "Ajatellaan…"
+    },
+    "webSearch": {
+      "title": "Verkkohaku",
+      "subtitle": "Etsi uusinta tietoa",
+      "label": "Verkkohaku",
+      "enable": "Ota verkkohaku käyttöön",
+      "disable": "Poista verkkohaku käytöstä",
+      "toggleLabel": "Hae verkosta"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Suunnittele visuaalit nopeasti.",
+      "subtitle": "Luo, viimeistele ja julkaise kerralla.",
+      "cta": "Avaa"
+    },
+    "quickActions": {
+      "createImages": "Luo kuvia",
+      "openCamera": "Avaa kamera",
+      "editImage": "Muokkaa kuvaa",
+      "startVoice": "Käynnistä puhe",
+      "assistants": "Avustajat"
+    },
+    "listening": "Kuunnellaan…",
+    "startRecording": "Aloitetaan tallennus…",
+    "assistantHeader": {
+      "unavailableTitle": "Avustaja ei käytettävissä",
+      "unavailableDescription": "Avustajaa ei voitu ladata. Yritä uudelleen.",
+      "ready": "Valmis auttamaan"
+    },
+    "actions": {
+      "copy": "Kopioi",
+      "share": "Jaa",
+      "regenerate": "Luo uudelleen",
+      "retryFromHere": "Yritä tästä",
+      "cancel": "Peruuta"
+    },
+    "messageActionTitle": "Viesti",
+    "status": {
+      "sending": "Lähetetään…",
+      "failed": "Epäonnistui",
+      "sent": "Lähetetty"
+    },
+    "suggestions": {
+      "writeStory": "Kirjoita luova tarina",
+      "writeStorySubtitle": "taianomaisesta seikkailusta",
+      "planTravel": "Suunnittele matka",
+      "planTravelSubtitle": "upeaa lomaa varten",
+      "explainConcept": "Selitä käsite",
+      "explainConceptSubtitle": "yksinkertaisesti",
+      "planDay": "Suunnittele päiväni",
+      "planDaySubtitle": "tuottavuusvinkeillä"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Käsitellään...",
+    "tapToUploadImage": "Napauta ladataksesi kuvan"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Käsitellään...",
+    "camera": "Kamera",
+    "library": "Galleria"
+  },
+  "common": {
+    "new": "UUSI",
+    "best": "PARAS",
+    "cancel": "Peruuta",
+    "save": "Tallenna",
+    "delete": "Poista",
+    "close": "Sulje",
+    "allow": "Salli"
   }
-  
+}

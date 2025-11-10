@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "選擇模型",
-      "searchPlaceholder": "搜尋模型...",
-      "noModelsFound": "找不到模型",
-      "noModelsAvailable": "目前沒有可用模型",
-      "currentModel": "目前模型：{{name}}。點按以變更。",
-      "openHint": "開啟模型選單",
-      "closeLabel": "關閉模型選擇器",
-      "searchLabel": "搜尋模型",
-      "searchHint": "輸入以篩選模型",
-      "modelLabel": "{{name}} 模型",
-      "selectHint": "選擇 {{name}}",
-      "currentlySelected": "目前選取的模型"
+  "modelSelector": {
+    "title": "選擇模型",
+    "searchPlaceholder": "搜尋模型...",
+    "noModelsFound": "找不到模型",
+    "noModelsAvailable": "沒有可用的模型",
+    "currentModel": "目前模型：{{name}}。點按以變更。",
+    "openHint": "開啟模型選擇選單",
+    "closeLabel": "關閉模型選擇器",
+    "searchLabel": "搜尋模型",
+    "searchHint": "輸入以篩選可用模型",
+    "modelLabel": "{{name}} 模型",
+    "selectHint": "選擇 {{name}} 模型",
+    "currentlySelected": "目前已選取的模型"
+  },
+  "models": {
+    "gpt-4o": "最強大的 AI 模型",
+    "gpt-4o-mini": "適合日常工作的快速模型",
+    "gpt-5": "最強大的通用 AI",
+    "gpt-5-chat-latest": "針對聊天與對話最佳化",
+    "gpt-5-mini": "快速且可靠的 GPT-5",
+    "gpt-5-nano": "適合簡單任務的輕量模型",
+    "o4-mini": "高效推理模型",
+    "gpt-4.1-mini": "輕巧但強大的 GPT-4.1",
+    "claude-3-haiku": "快速且專注的 Anthropic AI",
+    "claude-3.7-sonnet": "Anthropic 的精緻推理模型",
+    "gemini-2.5-Flash": "Google 最先進的模型",
+    "gemini-2.5-flash": "Google 最先進的模型",
+    "gemini-2.0-flash": "快速且精準的 Google AI"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "其他"
+  },
+  "navigation": {
+    "chat": "新聊天",
+    "history": "歷史記錄",
+    "assistants": "助理",
+    "imagesStudio": "Image Studio",
+    "settings": "設定",
+    "recentChats": "最近的聊天"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "在同一處建立、微調並發佈視覺素材。",
+    "cta": "開啟"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "選取圖片",
+    "exitSelectionMode": "退出選取模式",
+    "selectAll": "全部選取",
+    "noImagesYet": "尚無圖片",
+    "describeImageHint": "在下方描述你的圖片，然後點擊「生成」。",
+    "generatedImagesGallery": "已生成的圖片庫",
+    "describeImagePlaceholder": "描述你想要的圖片…",
+    "deleteConfirmTitle": "刪除圖片",
+    "deleteConfirmMessage": "你確定要刪除所選圖片嗎？此操作無法復原。",
+    "cancel": "取消",
+    "delete": "刪除",
+    "generate": "生成",
+    "generating": "正在生成…",
+    "latest": "最新",
+    "insertToChat": "插入至聊天",
+    "pleaseWait": "請稍候…",
+    "processing": "處理中...",
+    "tapToUploadImage": "點按以上傳圖片",
+    "camera": "相機",
+    "library": "相簿",
+    "enterPrompt": "請輸入要把文字變成圖片的提示詞",
+    "openInBrowser": "在瀏覽器中開啟",
+    "makeVariations": "建立變化版本",
+    "deleteAllFromGeneration": "刪除此輪生成的全部圖片",
+    "imageOptionsTitle": "圖片選項",
+    "imageOptionsMessage": "你想要對這張圖片做什麼？",
+    "insertMarkdownHeader": "這是對應的圖片：",
+    "variationSuffix": "— 前一張圖片的變化版",
+    "selectedCount": "項已選取",
+    "selectedCount_one": "項已選取",
+    "selectedCount_other": "項已選取",
+    "imageDescriptionInput": "圖片描述輸入",
+    "imageDescriptionHint": "輸入你想生成的圖片描述",
+    "openModelSettings": "開啟模型設定",
+    "modelSettingsHint": "點按以變更模型和設定",
+    "openPhotoGallery": "開啟相簿",
+    "clearInput": "清除輸入",
+    "generatedImage": "已生成的圖片",
+    "autoSelectedModel": "已為 {{mode}} 模式自動選擇 {{model}}",
+    "deleteSelectedConfirmTitle": "刪除圖片",
+    "deleteSelectedConfirmMessage": "確定要刪除圖片嗎？此操作無法復原。"
+  },
+  "imageStudio": {
+    "generateImage": "生成圖片",
+    "generatingImage": "圖片生成中",
+    "generateImageHint": "點按即可根據描述生成圖片",
+    "imageDescriptionInput": "圖片描述輸入",
+    "imageDescriptionHint": "輸入你想生成的圖片描述",
+    "openModelSettings": "開啟模型設定",
+    "modelSettingsHint": "點按以變更模型和設定",
+    "openPhotoGallery": "開啟相簿",
+    "clearInput": "清除輸入",
+    "generatedImage": "已生成的圖片"
+  },
+  "assistants": {
+    "title": "助理",
+    "subtitle": "精選可用於程式撰寫、寫作、分析、規劃等的 AI 專家。",
+    "searchPlaceholder": "搜尋助理…",
+    "useAssistant": "使用助理",
+    "selectAssistant": "選擇助理",
+    "description": "說明",
+    "systemPrompt": "系統提示",
+    "chooseModel": "選擇模型",
+    "categoryAll": "全部",
+    "categories": {
+      "everyday": "日常",
+      "life": "生活",
+      "health": "健康",
+      "schoolWork": "學校與工作",
+      "coding": "程式設計",
+      "creative": "創意",
+      "general": "通用"
+    },
+    "presets": {
+      "default": {
+        "name": "預設助理",
+        "description": "為日常事情提供平衡的協助。"
+      },
+      "quick": {
+        "name": "快速解答",
+        "description": "精簡且直接的回答。"
+      },
+      "planner": {
+        "name": "每日規劃",
+        "description": "幫你安排一天與日常作息。"
+      },
+      "recipes": {
+        "name": "餐點與食譜",
+        "description": "用手邊的食材做飯。"
+      },
+      "fitness": {
+        "name": "習慣與健身教練",
+        "description": "小習慣與居家運動。"
+      },
+      "money": {
+        "name": "理財助手",
+        "description": "簡單預算與消費建議。"
+      },
+      "study": {
+        "name": "學習幫手",
+        "description": "簡單說明，也能出題測驗。"
+      },
+      "email": {
+        "name": "郵件與履歷",
+        "description": "寫清楚的郵件與履歷句子。"
+      },
+      "translator": {
+        "name": "翻譯",
+        "description": "翻譯並教你說法。"
+      },
+      "travel": {
+        "name": "旅遊助理",
+        "description": "簡單行程與行李清單。"
+      },
+      "tech": {
+        "name": "技術支援（基礎）",
+        "description": "手機、App、Wi-Fi 的基本問題。"
+      },
+      "summarizer": {
+        "name": "TL;DR 摘要",
+        "description": "簡短重點＋一句話總結。"
+      },
+      "gift": {
+        "name": "禮物點子",
+        "description": "依預算與興趣給建議。"
+      },
+      "party": {
+        "name": "活動規劃（輕量）",
+        "description": "快速規劃小型聚會。"
+      },
+      "social": {
+        "name": "社群貼文產生器",
+        "description": "產出多個版本的貼文草稿。"
+      },
+      "interview": {
+        "name": "面試教練",
+        "description": "用 STAR 法練習回答。"
+      },
+      "homefix": {
+        "name": "居家修繕指南",
+        "description": "簡單 DIY 故障排除。"
+      },
+      "pet": {
+        "name": "寵物照護",
+        "description": "餵食、散步、基礎訓練。"
+      },
+      "mindful": {
+        "name": "正念一分鐘",
+        "description": "1–3 分鐘的放鬆。"
+      },
+      "polite": {
+        "name": "禮貌改寫",
+        "description": "把文字與回覆改得更客氣。"
+      }
+    }
+  },
+  "history": {
+    "title": "歷史記錄",
+    "searchPlaceholder": "搜尋聊天…",
+    "newChat": "新聊天",
+    "new": "+ 新增",
+    "search": "搜尋",
+    "clearSearch": "清除搜尋",
+    "noChatsYet": "尚無聊天",
+    "startFirstConversation": "開始你的第一段對話。",
+    "startChat": "開始聊天",
+    "errorLoadingHistory": "載入歷史記錄時發生錯誤",
+    "renameChat": "重新命名聊天",
+    "enterNewTitle": "輸入新標題",
+    "deleteChat": "要刪除聊天嗎？",
+    "deleteChatMessage": "「{{title}}」 將被刪除。",
+    "rename": "重新命名",
+    "unpin": "取消釘選",
+    "pin": "釘選",
+    "untitled": "未命名"
+  },
+  "settings": {
+    "title": "設定",
+    "model": "模型",
+    "searchPlaceholder": "搜尋模型…",
+    "temperatureForCurrentModel": "目前模型的溫度",
+    "customFor": "為 {{model}} 自訂",
+    "usingDefault": "使用預設 {{temperature}}",
+    "resetToDefault": "重設為預設值",
+    "defaultTemperature": "預設溫度（備援）",
+    "usedByModelsWithoutOverride": "用於沒有自行設定的模型",
+    "dangerZone": "危險區域",
+    "clearAllChatsAndSettings": "清除所有聊天與設定",
+    "about": "關於",
+    "version": "版本 {{version}}{{status}}",
+    "versionPremiumSuffix": " · 進階版",
+    "privacyPolicy": "隱私權政策",
+    "hero": {
+      "label": "特別優惠",
+      "title": "優先存取與無限制",
+      "upgrade": "升級",
+      "manage": "管理方案"
+    },
+    "sections": {
+      "premium": "進階方案",
+      "data": "使用者資料",
+      "support": "支援與法律"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "升級進階版",
+        "subtitle": "解鎖無限制的創作工具"
+      },
+      "premiumActive": {
+        "title": "進階版已啟用",
+        "subtitle": "感謝你支持 ChatCloud"
+      },
+      "restore": {
+        "title": "還原購買",
+        "subtitle": "若你更換了裝置請使用"
+      },
+      "history": {
+        "title": "管理聊天記錄",
+        "subtitle": "檢視與刪除過去的會話"
+      },
+      "reset": {
+        "title": "重設聊天與偏好",
+        "subtitle": "清除此裝置上的所有本機資料"
+      },
+      "rate": {
+        "title": "給評分",
+        "error": "無法開啟商店頁面。"
+      },
+      "support": {
+        "title": "支援",
+        "subtitle": "線上聯絡我們",
+        "error": "無法開啟聯絡頁面。"
+      },
+      "privacy": {
+        "title": "隱私權政策",
+        "error": "無法開啟隱私權政策。"
+      },
+      "terms": {
+        "title": "使用條款",
+        "error": "無法開啟使用條款。"
+      }
+    },
+    "capabilities": {
+      "text": "文字",
+      "image": "圖片",
+      "audio": "音訊",
+      "video": "影片"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "無法使用",
+      "linkUnavailableMessage": "目前無法開啟此連結。",
+      "restoreSuccessTitle": "已還原",
+      "restoreSuccessMessage": "你的購買已還原。",
+      "restoreErrorTitle": "還原失敗",
+      "restoreErrorMessage": "目前無法還原購買。",
+      "resetConfirmTitle": "要重設應用程式資料嗎？",
+      "resetConfirmMessage": "這會刪除所有聊天與本機偏好設定。",
+      "resetConfirmCancel": "取消",
+      "resetConfirmCta": "重設"
+    }
+  },
+  "createImage": {
+    "headerTitle": "建立",
+    "chooseStyle": "選擇風格",
+    "aspectRatio": "長寬比",
+    "starterPrompts": {
+      "title": "起始提示",
+      "items": [
+        "棚拍頭像",
+        "現代客廳",
+        "黃昏的熱帶海灘"
+      ]
+    },
+    "promptPlaceholder": "輸入你想看到的內容…",
+    "promptHint": "例如：「棚拍燈光下的黃金獵犬」",
+    "clearText": "清除文字",
+    "generate": "生成",
+    "generating": "正在生成…"
+  },
+  "editImage": {
+    "headerTitle": "編輯",
+    "chooseStyle": "選擇風格",
+    "aspectRatio": "長寬比",
+    "starterPrompts": {
+      "title": "起始提示",
+      "items": [
+        "修正光線",
+        "移除背景",
+        "柔化人像修圖"
+      ]
+    },
+    "promptPlaceholder": "描述要編輯的內容（選填）",
+    "clearText": "清除",
+    "generate": "套用",
+    "generating": "套用中…",
+    "upload": {
+      "choose": "選擇照片",
+      "change": "變更",
+      "remove": "移除"
+    },
+    "imageUnavailable": {
+      "title": "圖片無法使用",
+      "message": "無法存取所選照片。請重新選擇後再試一次。"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "動漫"
+      },
+      "cartoon": {
+        "name": "卡通"
+      },
+      "photoreal": {
+        "name": "寫實"
+      },
+      "sketch": {
+        "name": "素描"
+      },
+      "cyberpunk": {
+        "name": "賽博龐克"
+      },
+      "steampunk": {
+        "name": "蒸氣龐克"
+      },
+      "illustration_3d": {
+        "name": "3D 插畫"
+      },
+      "dark_fantasy": {
+        "name": "黑暗奇幻"
+      },
+      "vintage_film": {
+        "name": "復古膠片"
+      },
+      "pastel": {
+        "name": "粉彩風"
+      },
+      "neon_glow": {
+        "name": "霓虹光"
+      },
+      "epic_landscape": {
+        "name": "史詩風景"
+      }
+    },
+    "aspectRatios": {
+      "square": "正方形",
+      "landscape": "橫向",
+      "portrait": "直向"
     },
     "models": {
-      "gpt-4o": "最強大的 AI 模型",
-      "gpt-4o-mini": "日常任務的高速模型",
-      "claude-3-haiku": "快速且高效的模型",
-      "claude-3.7-sonnet": "進階推理模型",
-      "gemini-2.5-pro": "Google 的頂級模型",
-      "gemini-2.0-flash": "具優異推理的高速模型"
+      "fluxKontent": "Flux Kontent",
+      "custom": "自訂"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "其他"
+    "modelTaglines": {
+      "runwareFluxSchnell": "速度最快的模型",
+      "runwareFluxKrea": "創意、風格化的結果",
+      "runwareQwenImage": "平衡且高品質的結果",
+      "google4": "最強的 AI 圖像模型",
+      "fluxKontent": "為編輯調校的 Flux Kontent",
+      "runwareProvider": "在品質與穩定擴散之間取得平衡。",
+      "airProvider": "Nano Banana 增添了鮮明活潑的色調。",
+      "googleProvider": "Google 精細打磨了細節。",
+      "anthropicProvider": "Claude 管線帶來細膩的氛圍。",
+      "default": "點按以瀏覽可用引擎。"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "你所選的風格",
+    "sheetTitle": "正在實現你的想法",
+    "sheetSubtitle": "正在把 {{style}} 混入提示詞，請稍候。",
+    "phases": {
+      "blend": "正在混合 {{style}}",
+      "paint": "正在繪製場景",
+      "finish": "正在做最後潤飾"
     },
-    "navigation": {
-      "chat": "聊天",
-      "history": "歷史",
-      "assistants": "助理",
-      "imagesStudio": "工作室",
-      "settings": "設定",
-      "recentChats": "最近聊天"
-    },
-    "imagesStudio": {
-      "title": "工作室",
-      "selectImages": "選取圖片",
-      "exitSelectionMode": "離開選取模式",
-      "selectAll": "全選",
-      "noImagesYet": "尚無圖片",
-      "describeImageHint": "在下方描述你的圖片，然後點按「產生」。",
-      "generatedImagesGallery": "已產生圖片庫",
-      "describeImagePlaceholder": "描述你想要的圖片…",
-      "deleteConfirmTitle": "刪除圖片",
-      "deleteConfirmMessage": "確定要刪除所選圖片嗎？此操作無法復原。",
+    "actions": {
       "cancel": "取消",
-      "delete": "刪除",
-      "generate": "產生",
-      "generating": "正在產生…",
-      "latest": "最新",
-      "insertToChat": "插入到聊天",
-      "pleaseWait": "請稍候…",
-      "processing": "處理中...",
-      "tapToUploadImage": "點按以上傳圖片",
-      "camera": "相機",
-      "library": "相簿",
-      "enterPrompt": "請輸入文字生圖的提示語",
-      "openInBrowser": "在瀏覽器中開啟",
-      "makeVariations": "製作變體",
-      "deleteAllFromGeneration": "刪除此批次產生的全部圖片",
-      "imageOptionsTitle": "圖片選項",
-      "imageOptionsMessage": "你想怎麼處理這張圖片？",
-      "insertMarkdownHeader": "以下是對應的圖片：",
-      "variationSuffix": "— 上一張圖片的變體",
-      "selectedCount": "已選取",
-      "selectedCount_one": "已選取",
-      "selectedCount_other": "已選取",
-      "imageDescriptionInput": "圖片描述輸入",
-      "imageDescriptionHint": "輸入要產生的圖片描述",
-      "openModelSettings": "開啟模型設定",
-      "modelSettingsHint": "點按以變更模型與設定",
-      "openPhotoGallery": "開啟相簿",
-      "clearInput": "清除輸入",
-      "generatedImage": "已產生圖片",
-      "autoSelectedModel": "已為 {{mode}} 模式自動選擇 {{model}}",
-      "deleteSelectedConfirmTitle": "刪除圖片",
-      "deleteSelectedConfirmMessage": "確定要刪除圖片嗎？此操作無法復原。"
+      "retry": "重試",
+      "close": "關閉"
     },
-    "imageStudio": {
-      "generateImage": "產生圖片",
-      "generatingImage": "正在產生圖片",
-      "generateImageHint": "依據你的描述產生圖片",
-      "imageDescriptionInput": "圖片描述輸入",
-      "imageDescriptionHint": "輸入你想產生的圖片描述",
-      "openModelSettings": "開啟模型設定",
-      "modelSettingsHint": "點按以變更模型與設定",
-      "openPhotoGallery": "開啟相簿",
-      "clearInput": "清除輸入",
-      "generatedImage": "已產生圖片"
+    "errors": {
+      "restrictedTitle": "受限內容",
+      "genericTitle": "生成失敗",
+      "genericMessage": "無法生成圖片。"
     },
-    "assistants": {
-      "title": "助理",
-      "subtitle": "精選的 AI 專家，適用於程式設計、寫作、分析、規劃等。",
-      "searchPlaceholder": "搜尋助理…",
-      "useAssistant": "使用助理",
-      "description": "描述",
-      "systemPrompt": "系統提示",
-      "chooseModel": "選擇模型",
-      "categoryAll": "全部",
-      "categories": {
-        "everyday": "日常",
-        "life": "生活",
-        "health": "健康",
-        "schoolWork": "學習與工作",
-        "coding": "程式設計",
-        "creative": "創意",
-        "general": "一般"
-      },
-      "presets": {
-        "default": { "name": "預設助理", "description": "為日常提供均衡的協助。" },
-        "quick": { "name": "快速答覆", "description": "簡短、直接的回應。" },
-        "planner": { "name": "每日規劃", "description": "規劃你的一天與日常。" },
-        "recipes": { "name": "餐點與食譜", "description": "用現有食材能做什麼。" },
-        "fitness": { "name": "習慣與健身教練", "description": "小習慣與居家運動。" },
-        "money": { "name": "理財夥伴", "description": "簡單預算與消費建議。" },
-        "study": { "name": "學習小幫手", "description": "淺顯解說。小測驗。" },
-        "email": { "name": "郵件與履歷", "description": "撰寫清楚的郵件與履歷重點。" },
-        "translator": { "name": "翻譯助手", "description": "翻譯並教授片語。" },
-        "travel": { "name": "旅遊夥伴", "description": "簡易行程與打包清單。" },
-        "tech": { "name": "技術支援（基礎）", "description": "手機、應用與 Wi-Fi 基礎。" },
-        "summarizer": { "name": "TL;DR 摘要", "description": "精簡重點與一句話總結。" },
-        "gift": { "name": "禮物點子", "description": "依預算與興趣給建議。" },
-        "party": { "name": "活動規劃（輕量）", "description": "快速規劃小型聚會。" },
-        "social": { "name": "社群貼文製作", "description": "提供多種貼文草稿選項。" },
-        "interview": { "name": "面試教練", "description": "練習 STAR 回答。" },
-        "homefix": { "name": "居家修繕指南", "description": "簡單排查與修復。" },
-        "pet": { "name": "寵物照護助手", "description": "餵食、散步與基礎訓練。" },
-        "mindful": { "name": "正念一分鐘", "description": "1–3 分鐘的平靜小休息。" },
-        "polite": { "name": "禮貌改寫", "description": "有禮地改寫文字與回覆。" }
-      }
+    "alerts": {
+      "saveFailedTitle": "無法儲存",
+      "shareFailedTitle": "無法分享",
+      "tryAgain": "請再試一次。"
     },
-    "history": {
-      "title": "歷史",
-      "searchPlaceholder": "搜尋聊天…",
-      "newChat": "新聊天",
-      "new": "+ 新增",
-      "search": "搜尋",
-      "clearSearch": "清除搜尋",
-      "noChatsYet": "尚無聊天",
-      "startFirstConversation": "開始你的第一次對話。",
-      "startChat": "開始聊天",
-      "errorLoadingHistory": "載入歷史記錄時發生錯誤",
-      "renameChat": "重新命名聊天",
-      "enterNewTitle": "輸入新標題",
-      "deleteChat": "要刪除聊天嗎？",
-      "deleteChatMessage": "將刪除「{{title}}」。",
-      "rename": "重新命名",
-      "unpin": "取消釘選",
-      "pin": "釘選",
-      "untitled": "未命名"
+    "result": {
+      "complete": "全部完成"
     },
-    "settings": {
-      "title": "設定",
-      "model": "模型",
-      "searchPlaceholder": "搜尋模型…",
-      "temperatureForCurrentModel": "目前模型的溫度",
-      "customFor": "為 {{model}} 自訂",
-      "usingDefault": "使用預設值 {{temperature}}",
-      "resetToDefault": "重設為預設值",
-      "defaultTemperature": "預設溫度（後援）",
-      "usedByModelsWithoutOverride": "用於未自訂的模型",
-      "dangerZone": "危險區",
-      "clearAllChatsAndSettings": "清除所有聊天與設定",
-      "about": "關於",
-      "version": "版本 {{version}}",
-      "privacyPolicy": "隱私權政策",
-      "capabilities": {
-        "text": "文字",
-        "image": "圖片",
-        "audio": "音訊",
-        "video": "視訊"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "向 Agarka 傳送訊息...",
-      "createImages": "建立圖片",
-      "generateAiArtwork": "產生 AI 藝術作品",
-      "camera": "相機",
-      "takeOrSelectPhotos": "拍攝或選擇相片",
-      "search": "搜尋",
-      "findInformation": "查找資訊",
-      "removeImage": "移除圖片",
-      "messageInput": "訊息輸入",
-      "clearInput": "清除輸入",
-      "hideQuickActions": "隱藏快速動作",
-      "showQuickActions": "顯示快速動作",
-      "startVoiceInput": "開始語音輸入",
-      "sendMessage": "傳送",
-      "offline": "離線",
-      "stop": "停止",
-      "streaming": "串流中…",
-      "closeRecorder": "關閉錄音",
-      "insertTranscript": "插入逐字稿",
-      "scrollToLatest": "捲動到最新訊息",
-      "copyMessage": "複製訊息",
-      "copyMessageHint": "將此訊息複製到剪貼簿",
-      "shareMessage": "分享訊息",
-      "shareMessageHint": "分享此訊息",
-      "regenerateResponse": "重新產生回應",
-      "regenerateResponseHint": "產生新的回應",
-      "copyCode": "複製程式碼",
-      "image": "圖片",
-      "loading": "載入中…",
-      "loadingChat": "正在載入聊天...",
-      "offlineBanner": "你目前離線。無法傳送訊息。",
-      "imagePickerErrorTitle": "圖片選擇器錯誤",
-      "messageTooLong": "訊息過長（{{length}}）。上限為 {{limit}}。",
-      "emptyTitle": "我可以怎麼幫你？",
-      "emptySubtitle": "與 AI 開始對話",
-      "privateTitle": "私密聊天",
-      "privateSubtitle": "此聊天不會顯示於歷史記錄",
-      "listening": "正在聆聽…",
-      "startRecording": "開始錄音…",
-      "suggestions": {
-        "writeStory": "寫一個有創意的故事",
-        "writeStorySubtitle": "關於一場魔法冒險",
-        "planTravel": "規劃旅遊行程",
-        "planTravelSubtitle": "享受精彩假期",
-        "explainConcept": "說明這個概念",
-        "explainConceptSubtitle": "用簡單方式解釋",
-        "planDay": "規劃我的一天",
-        "planDaySubtitle": "附上效率建議"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "處理中...",
-      "tapToUploadImage": "點按以上傳圖片"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "處理中...",
-      "camera": "相機",
-      "library": "相簿"
-    },
-    "common": {
-      "new": "新",
-      "best": "最佳",
-      "cancel": "取消",
-      "save": "儲存",
-      "delete": "刪除",
+    "accessibility": {
       "close": "關閉"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "刪除",
+      "edit": "編輯",
+      "save": "儲存",
+      "share": "分享"
+    },
+    "accessibility": {
+      "close": "關閉",
+      "delete": "刪除圖片",
+      "edit": "編輯圖片",
+      "save": "儲存圖片",
+      "share": "分享圖片"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "開啟選單",
+      "selectImages": "選取圖片",
+      "exitSelection": "退出選取",
+      "deleteSelected": "刪除所選圖片",
+      "selectToDelete": "選取要刪除的圖片"
+    },
+    "createCard": {
+      "title": "從文字建立",
+      "subtitle": "輸入描述",
+      "cta": "描述並生成"
+    },
+    "editCard": {
+      "title": "編輯照片",
+      "subtitle": "上傳並編輯",
+      "cta": "編輯照片"
+    },
+    "gallery": {
+      "title": "圖庫",
+      "empty": "尚無圖片",
+      "selection": {
+        "enter": "選取圖片",
+        "exit": "退出選取",
+        "deleteSelected": "刪除所選圖片",
+        "selectForDelete": "選取要刪除的圖片"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "認識一下",
+      "titleHighlight": "Image Studio",
+      "subtitle": "用 AI 建立與編輯圖片——就在 {{app}} 裡。",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "認識你的 AI",
+      "titleHighlight": "助理",
+      "subtitle": "一群能幫你解決日常需求的專用 AI",
+      "cards": [
+        {
+          "title": "健身教練",
+          "text": "取得符合你目標的健身計畫與飲食建議"
+        },
+        {
+          "title": "醫生",
+          "text": "取得健康洞見、症狀分析與醫療建議"
+        },
+        {
+          "title": "寵物照護",
+          "text": "提供寵物健康、訓練與照護的專家建議"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "企業級 AI 解決方案",
+      "description": "用為企業與團隊打造的尖端 AI 強化你的業務。",
+      "stats": "深受超過 50 萬使用者信賴",
+      "rating": "4.9 / 5",
+      "button": "開始"
+    }
+  },
+  "coinStore": {
+    "title": "取得代幣",
+    "loading": "正在載入代幣商店…",
+    "balanceLabel": "你目前的餘額為",
+    "balanceValue": "{{amount}} 代幣",
+    "history": {
+      "link": "交易記錄",
+      "alertTitle": "記錄",
+      "alertBody": "交易記錄即將推出。"
+    },
+    "noPacks": "目前沒有可用的代幣包。請檢查你的 RevenueCat offering ID。",
+    "badges": {
+      "basic": "基本包",
+      "popular": "最受歡迎",
+      "value": "最超值"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} 代幣",
+      "defaultName": "方案 {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "升級為進階版",
+      "subtitle": "無限存取與功能",
+      "cta": "升級"
+    },
+    "termsText": "完成購買即表示你同意我們的",
+    "termsLink": "服務條款",
+    "alerts": {
+      "initErrorTitle": "初始化錯誤",
+      "genericMessage": "發生了一些問題。",
+      "successTitle": "成功",
+      "successMessage": "代幣將很快顯示。",
+      "purchaseFailedTitle": "購買失敗",
+      "unknownError": "未知錯誤"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5、Grok 4、Veo 3",
+    "restore": "還原",
+    "restoreRestoring": "正在還原…",
+    "features": {
+      "create": "建立圖片與影片",
+      "search": "用 AI 搜尋網頁",
+      "talk": "與 AI 自然對話"
+    },
+    "freeTrial": {
+      "title": "免費試用",
+      "subtitle": "3 天免費試用"
+    },
+    "badge": {
+      "bestOffer": "最優惠"
+    },
+    "plans": {
+      "yearly": {
+        "title": "年繳",
+        "only": "只要 {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "月繳",
+        "subtitle": "隨時可取消",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "週繳",
+        "subtitle": "隨時可取消",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "每週",
+      "perMonth": "每月"
+    },
+    "cta": "繼續",
+    "legal": {
+      "terms": "條款",
+      "privacy": "隱私"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "訊息...",
+    "createImages": "建立圖片",
+    "generateAiArtwork": "生成 AI 藝術作品",
+    "camera": "相機",
+    "takeOrSelectPhotos": "拍照或選擇照片",
+    "search": "搜尋",
+    "findInformation": "尋找資訊",
+    "findRecentInfo": "尋找最新資訊",
+    "removeImage": "移除圖片",
+    "messageInput": "訊息輸入",
+    "clearInput": "清除輸入",
+    "quickActionsLabel": "快速操作",
+    "hideQuickActions": "隱藏快速操作",
+    "showQuickActions": "顯示快速操作",
+    "startVoiceInput": "開始語音輸入",
+    "sendMessage": "傳送訊息",
+    "offline": "離線",
+    "stop": "停止",
+    "streaming": "串流中…",
+    "closeRecorder": "關閉錄音",
+    "insertTranscript": "傳送",
+    "scrollToLatest": "捲動到最新",
+    "copyMessage": "複製訊息",
+    "copyMessageHint": "將此訊息複製到剪貼簿",
+    "shareMessage": "分享訊息",
+    "shareMessageHint": "分享此訊息",
+    "regenerateResponse": "重新生成回應",
+    "regenerateResponseHint": "生成新的回應",
+    "copyCode": "複製程式碼",
+    "image": "圖片",
+    "loading": "載入中…",
+    "loadingChat": "正在載入聊天...",
+    "offlineBanner": "你目前為離線狀態，無法傳送訊息。",
+    "imagePickerErrorTitle": "圖片選取錯誤",
+    "imagePickerErrorMessage": "無法存取你的照片。請重試。",
+    "messageTooLong": "訊息太長 ({{length}})。上限為 {{limit}}。",
+    "sendFailed": "傳送失敗。",
+    "voiceStartFailed": "無法開始語音。",
+    "emptyTitle": "需要我幫什麼？",
+    "emptySubtitle": "開始和 AI 對話吧",
+    "privateTitle": "私密聊天",
+    "privateSubtitle": "此聊天不會顯示在聊天記錄中",
+    "permissions": {
+      "photosTitle": "需要相片權限",
+      "photosMessage": "若要選擇圖片，需要相片存取權限。",
+      "voiceTitle": "需要語音權限",
+      "voiceMessage": "若要使用語音，需要麥克風與語音存取權限。"
+    },
+    "activity": {
+      "analyzingImages": "正在分析圖片…",
+      "searching": "正在搜尋…",
+      "thinking": "正在思考…"
+    },
+    "webSearch": {
+      "title": "網頁搜尋",
+      "subtitle": "尋找最新資訊",
+      "label": "網頁搜尋",
+      "enable": "啟用網頁搜尋",
+      "disable": "停用網頁搜尋",
+      "toggleLabel": "在網頁上搜尋"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "快速設計視覺內容。",
+      "subtitle": "建立、調整、發佈一站完成。",
+      "cta": "開啟"
+    },
+    "quickActions": {
+      "createImages": "建立圖片",
+      "openCamera": "開啟相機",
+      "editImage": "編輯圖片",
+      "startVoice": "開始語音",
+      "assistants": "助理"
+    },
+    "listening": "正在聽取…",
+    "startRecording": "開始錄音…",
+    "assistantHeader": {
+      "unavailableTitle": "無法載入助理",
+      "unavailableDescription": "我們無法載入此助理。請稍後再試。",
+      "ready": "已準備好為你服務"
+    },
+    "actions": {
+      "copy": "複製",
+      "share": "分享",
+      "regenerate": "重新生成",
+      "retryFromHere": "從這裡重試",
+      "cancel": "取消"
+    },
+    "messageActionTitle": "訊息",
+    "status": {
+      "sending": "正在傳送…",
+      "failed": "失敗",
+      "sent": "已傳送"
+    },
+    "suggestions": {
+      "writeStory": "寫一個創意故事",
+      "writeStorySubtitle": "關於一場魔法冒險",
+      "planTravel": "規劃旅遊行程",
+      "planTravelSubtitle": "享受一趟超棒的假期",
+      "explainConcept": "解釋這個概念",
+      "explainConceptSubtitle": "用簡單的說法",
+      "planDay": "規劃我的一天",
+      "planDaySubtitle": "附上提升效率的小技巧"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "處理中...",
+    "tapToUploadImage": "點按以上傳圖片"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "處理中...",
+    "camera": "相機",
+    "library": "相簿"
+  },
+  "common": {
+    "new": "新",
+    "best": "最佳",
+    "cancel": "取消",
+    "save": "儲存",
+    "delete": "刪除",
+    "close": "關閉",
+    "allow": "允許"
   }
-  
+}

@@ -1,249 +1,738 @@
 {
-    "modelSelector": {
-      "title": "เลือกโมเดล",
-      "searchPlaceholder": "ค้นหาโมเดล...",
-      "noModelsFound": "ไม่พบโมเดล",
-      "noModelsAvailable": "ไม่มีโมเดลให้ใช้งาน",
-      "currentModel": "โมเดลปัจจุบัน: {{name}} แตะเพื่อเปลี่ยน",
-      "openHint": "เปิดเมนูเลือกโมเดล",
-      "closeLabel": "ปิดตัวเลือกโมเดล",
-      "searchLabel": "ค้นหาโมเดล",
-      "searchHint": "พิมพ์เพื่อกรองโมเดล",
-      "modelLabel": "โมเดล {{name}}",
-      "selectHint": "เลือก {{name}}",
-      "currentlySelected": "โมเดลที่เลือก"
+  "modelSelector": {
+    "title": "เลือกโมเดล",
+    "searchPlaceholder": "ค้นหาโมเดล...",
+    "noModelsFound": "ไม่พบโมเดล",
+    "noModelsAvailable": "ไม่มีโมเดลที่ใช้ได้",
+    "currentModel": "โมเดลปัจจุบัน: {{name}} แตะเพื่อเปลี่ยน",
+    "openHint": "เปิดเมนูเลือกโมเดล",
+    "closeLabel": "ปิดตัวเลือกโมเดล",
+    "searchLabel": "ค้นหาโมเดล",
+    "searchHint": "พิมพ์เพื่อกรองโมเดลที่มี",
+    "modelLabel": "โมเดล {{name}}",
+    "selectHint": "เลือกโมเดล {{name}}",
+    "currentlySelected": "กำลังเลือกอยู่"
+  },
+  "models": {
+    "gpt-4o": "โมเดล AI ทรงพลังที่สุด",
+    "gpt-4o-mini": "เร็ว เหมาะกับงานประจำวัน",
+    "gpt-5": "AI อเนกประสงค์ที่ทรงพลังที่สุด",
+    "gpt-5-chat-latest": "ปรับให้เหมาะกับแชทและบทสนทนา",
+    "gpt-5-mini": "GPT-5 ที่เร็วและเชื่อถือได้",
+    "gpt-5-nano": "โมเดลขนาดเล็กสำหรับงานง่ายๆ",
+    "o4-mini": "โมเดลให้เหตุผลอย่างมีประสิทธิภาพ",
+    "gpt-4.1-mini": "GPT-4.1 แบบกะทัดรัดแต่เก่ง",
+    "claude-3-haiku": "Anthropic แบบเร็วและโฟกัส",
+    "claude-3.7-sonnet": "การให้เหตุผลที่ละเอียดของ Anthropic",
+    "gemini-2.5-Flash": "โมเดลที่ล้ำหน้าที่สุดของ Google",
+    "gemini-2.5-flash": "โมเดลที่ล้ำหน้าที่สุดของ Google",
+    "gemini-2.0-flash": "Google AI ที่เร็วและแม่นยำ"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "อื่นๆ"
+  },
+  "navigation": {
+    "chat": "แชทใหม่",
+    "history": "ประวัติ",
+    "assistants": "ผู้ช่วย",
+    "imagesStudio": "Image Studio",
+    "settings": "การตั้งค่า",
+    "recentChats": "แชทล่าสุด"
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "สร้าง ปรับแต่ง และเผยแพร่สื่อภาพในที่เดียว",
+    "cta": "เปิด"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "เลือกภาพ",
+    "exitSelectionMode": "ออกจากโหมดเลือก",
+    "selectAll": "เลือกทั้งหมด",
+    "noImagesYet": "ยังไม่มีภาพ",
+    "describeImageHint": "อธิบายภาพด้านล่างแล้วแตะ \"สร้าง\"",
+    "generatedImagesGallery": "แกลเลอรีภาพที่สร้างแล้ว",
+    "describeImagePlaceholder": "อธิบายภาพที่คุณต้องการ…",
+    "deleteConfirmTitle": "ลบภาพ",
+    "deleteConfirmMessage": "คุณแน่ใจหรือไม่ว่าต้องการลบภาพที่เลือก การทำรายการนี้ไม่สามารถย้อนกลับได้",
+    "cancel": "ยกเลิก",
+    "delete": "ลบ",
+    "generate": "สร้าง",
+    "generating": "กำลังสร้าง…",
+    "latest": "ล่าสุด",
+    "insertToChat": "แทรกในแชท",
+    "pleaseWait": "โปรดรอ…",
+    "processing": "กำลังประมวลผล...",
+    "tapToUploadImage": "แตะเพื่ออัปโหลดภาพ",
+    "camera": "กล้อง",
+    "library": "คลังภาพ",
+    "enterPrompt": "กรุณาใส่พรอมพ์เพื่อสร้างภาพจากข้อความ",
+    "openInBrowser": "เปิดในเบราว์เซอร์",
+    "makeVariations": "สร้างภาพหลากหลาย",
+    "deleteAllFromGeneration": "ลบทั้งหมดจากการสร้างครั้งนี้",
+    "imageOptionsTitle": "ตัวเลือกภาพ",
+    "imageOptionsMessage": "คุณต้องการทำอะไรกับภาพนี้",
+    "insertMarkdownHeader": "นี่คือภาพสำหรับ:",
+    "variationSuffix": "— ภาพแปรผันจากภาพก่อนหน้า",
+    "selectedCount": "รายการที่เลือก",
+    "selectedCount_one": "รายการที่เลือก",
+    "selectedCount_other": "รายการที่เลือก",
+    "imageDescriptionInput": "กล่องอธิบายภาพ",
+    "imageDescriptionHint": "ใส่คำอธิบายภาพที่คุณต้องการสร้าง",
+    "openModelSettings": "เปิดการตั้งค่าโมเดล",
+    "modelSettingsHint": "แตะเพื่อเปลี่ยนโมเดลและการตั้งค่า",
+    "openPhotoGallery": "เปิดคลังภาพ",
+    "clearInput": "ล้างข้อความ",
+    "generatedImage": "ภาพที่สร้างแล้ว",
+    "autoSelectedModel": "เลือก {{model}} อัตโนมัติสำหรับโหมด {{mode}}",
+    "deleteSelectedConfirmTitle": "ลบภาพ",
+    "deleteSelectedConfirmMessage": "คุณแน่ใจหรือไม่ว่าต้องการลบภาพ การทำรายการนี้ไม่สามารถย้อนกลับได้"
+  },
+  "imageStudio": {
+    "generateImage": "สร้างภาพ",
+    "generatingImage": "กำลังสร้างภาพ",
+    "generateImageHint": "แตะเพื่อสร้างภาพจากคำอธิบายของคุณ",
+    "imageDescriptionInput": "กล่องอธิบายภาพ",
+    "imageDescriptionHint": "ใส่คำอธิบายภาพที่คุณต้องการสร้าง",
+    "openModelSettings": "เปิดการตั้งค่าโมเดล",
+    "modelSettingsHint": "แตะเพื่อเปลี่ยนโมเดลและการตั้งค่า",
+    "openPhotoGallery": "เปิดคลังภาพ",
+    "clearInput": "ล้างข้อความ",
+    "generatedImage": "ภาพที่สร้างแล้ว"
+  },
+  "assistants": {
+    "title": "ผู้ช่วย",
+    "subtitle": "ผู้ช่วย AI ที่คัดมาแล้วสำหรับโค้ด เขียน วิเคราะห์ วางแผน และอื่นๆ",
+    "searchPlaceholder": "ค้นหาผู้ช่วย…",
+    "useAssistant": "ใช้ผู้ช่วยนี้",
+    "selectAssistant": "เลือกผู้ช่วย",
+    "description": "คำอธิบาย",
+    "systemPrompt": "พรอมพ์ระบบ",
+    "chooseModel": "เลือกโมเดล",
+    "categoryAll": "ทั้งหมด",
+    "categories": {
+      "everyday": "ทุกวัน",
+      "life": "ไลฟ์สไตล์",
+      "health": "สุขภาพ",
+      "schoolWork": "เรียน/งาน",
+      "coding": "เขียนโค้ด",
+      "creative": "สร้างสรรค์",
+      "general": "ทั่วไป"
+    },
+    "presets": {
+      "default": {
+        "name": "ผู้ช่วยเริ่มต้น",
+        "description": "ช่วยงานประจำวันแบบสมดุล"
+      },
+      "quick": {
+        "name": "ตอบเร็ว",
+        "description": "คำตอบสั้น กระชับ"
+      },
+      "planner": {
+        "name": "วางแผนรายวัน",
+        "description": "จัดตารางและรูทีนของคุณ"
+      },
+      "recipes": {
+        "name": "เมนูและสูตร",
+        "description": "ทำอะไรได้บ้างจากของที่มี"
+      },
+      "fitness": {
+        "name": "โค้ชนิสัย/ฟิตเนส",
+        "description": "นิสัยเล็กๆ และออกกำลังกายที่บ้าน"
+      },
+      "money": {
+        "name": "ผู้ช่วยการเงิน",
+        "description": "งบประมาณง่ายๆ และคำแนะนำการใช้เงิน"
+      },
+      "study": {
+        "name": "ผู้ช่วยเรียน",
+        "description": "อธิบายให้เข้าใจง่าย พร้อมแบบทดสอบ"
+      },
+      "email": {
+        "name": "อีเมล/เรซูเม่",
+        "description": "เขียนอีเมลและบรรทัดเรซูเม่ให้ชัดเจน"
+      },
+      "translator": {
+        "name": "ตัวแปลภาษา",
+        "description": "แปลและสอนประโยค"
+      },
+      "travel": {
+        "name": "ผู้ช่วยท่องเที่ยว",
+        "description": "แพลนง่ายๆ และลิสต์ของ"
+      },
+      "tech": {
+        "name": "ช่วยแก้ปัญหาเทคนิค (พื้นฐาน)",
+        "description": "มือถือ แอป Wi-Fi ระดับง่าย"
+      },
+      "summarizer": {
+        "name": "สรุป TL;DR",
+        "description": "หัวข้อสั้นๆ + สรุปหนึ่งบรรทัด"
+      },
+      "gift": {
+        "name": "ไอเดียของขวัญ",
+        "description": "เลือกตามงบและความสนใจ"
+      },
+      "party": {
+        "name": "วางแผนงาน (เบาๆ)",
+        "description": "จัดปาร์ตี้เล็กๆ เร็วๆ"
+      },
+      "social": {
+        "name": "ร่างโพสต์โซเชียล",
+        "description": "ร่างหลายเวอร์ชัน"
+      },
+      "interview": {
+        "name": "โค้ชสัมภาษณ์",
+        "description": "ซ้อมตอบแบบ STAR"
+      },
+      "homefix": {
+        "name": "ซ่อมบ้านง่ายๆ",
+        "description": "ไกด์แก้ปัญหา DIY ง่ายๆ"
+      },
+      "pet": {
+        "name": "ผู้ช่วยดูแลสัตว์เลี้ยง",
+        "description": "ให้อาหาร พาเดิน ฝึกพื้นฐาน"
+      },
+      "mindful": {
+        "name": "พักใจ 1 นาที",
+        "description": "ผ่อนคลาย 1–3 นาที"
+      },
+      "polite": {
+        "name": "เขียนให้สุภาพ",
+        "description": "ทำให้ข้อความ/คำตอบสุภาพขึ้น"
+      }
+    }
+  },
+  "history": {
+    "title": "ประวัติ",
+    "searchPlaceholder": "ค้นหาแชท…",
+    "newChat": "แชทใหม่",
+    "new": "+ ใหม่",
+    "search": "ค้นหา",
+    "clearSearch": "ล้างการค้นหา",
+    "noChatsYet": "ยังไม่มีแชท",
+    "startFirstConversation": "เริ่มบทสนทนาแรกของคุณ",
+    "startChat": "เริ่มแชท",
+    "errorLoadingHistory": "เกิดข้อผิดพลาดขณะโหลดประวัติ",
+    "renameChat": "เปลี่ยนชื่อแชท",
+    "enterNewTitle": "ใส่ชื่อใหม่",
+    "deleteChat": "ลบแชท?",
+    "deleteChatMessage": "“{{title}}” จะถูกลบ",
+    "rename": "เปลี่ยนชื่อ",
+    "unpin": "ยกเลิกปักหมุด",
+    "pin": "ปักหมุด",
+    "untitled": "ไม่มีชื่อ"
+  },
+  "settings": {
+    "title": "การตั้งค่า",
+    "model": "โมเดล",
+    "searchPlaceholder": "ค้นหาโมเดล…",
+    "temperatureForCurrentModel": "Temperature ของโมเดลปัจจุบัน",
+    "customFor": "ปรับแต่งสำหรับ {{model}}",
+    "usingDefault": "กำลังใช้ค่าเริ่มต้น {{temperature}}",
+    "resetToDefault": "รีเซ็ตเป็นค่าเริ่มต้น",
+    "defaultTemperature": "Temperature เริ่มต้น (สำรอง)",
+    "usedByModelsWithoutOverride": "ใช้กับโมเดลที่ไม่ได้ตั้งค่าเอง",
+    "dangerZone": "พื้นที่อันตราย",
+    "clearAllChatsAndSettings": "ล้างแชทและการตั้งค่าทั้งหมด",
+    "about": "เกี่ยวกับ",
+    "version": "เวอร์ชัน {{version}}{{status}}",
+    "versionPremiumSuffix": " · พรีเมียม",
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "hero": {
+      "label": "ข้อเสนอพิเศษ",
+      "title": "สิทธิ์เข้าถึงก่อนและไม่จำกัด",
+      "upgrade": "อัปเกรด",
+      "manage": "จัดการแพ็กเกจ"
+    },
+    "sections": {
+      "premium": "แพ็กเกจพรีเมียม",
+      "data": "ข้อมูลผู้ใช้",
+      "support": "ซัพพอร์ตและกฎหมาย"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "รับพรีเมียม",
+        "subtitle": "ปลดล็อกเครื่องมือสร้างสรรค์ไม่จำกัด"
+      },
+      "premiumActive": {
+        "title": "พรีเมียมใช้งานอยู่",
+        "subtitle": "ขอบคุณที่สนับสนุน ChatCloud"
+      },
+      "restore": {
+        "title": "กู้คืนการซื้อ",
+        "subtitle": "ใช้เมื่อคุณเปลี่ยนอุปกรณ์"
+      },
+      "history": {
+        "title": "จัดการประวัติแชท",
+        "subtitle": "ดูและลบการสนทนาที่ผ่านมา"
+      },
+      "reset": {
+        "title": "รีเซ็ตแชทและการตั้งค่า",
+        "subtitle": "ล้างข้อมูลทั้งหมดบนอุปกรณ์นี้"
+      },
+      "rate": {
+        "title": "ให้คะแนนเรา",
+        "error": "ไม่สามารถเปิดหน้าร้านได้"
+      },
+      "support": {
+        "title": "ซัพพอร์ต",
+        "subtitle": "ติดต่อเราออนไลน์",
+        "error": "ไม่สามารถเปิดหน้าติดต่อได้"
+      },
+      "privacy": {
+        "title": "นโยบายความเป็นส่วนตัว",
+        "error": "ไม่สามารถเปิดนโยบายได้"
+      },
+      "terms": {
+        "title": "ข้อกำหนดการใช้งาน",
+        "error": "ไม่สามารถเปิดข้อกำหนดการใช้งานได้"
+      }
+    },
+    "capabilities": {
+      "text": "ข้อความ",
+      "image": "ภาพ",
+      "audio": "เสียง",
+      "video": "วิดีโอ"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "ไม่สามารถใช้งานได้",
+      "linkUnavailableMessage": "ไม่สามารถเปิดลิงก์นี้ได้ในตอนนี้",
+      "restoreSuccessTitle": "กู้คืนแล้ว",
+      "restoreSuccessMessage": "กู้คืนการซื้อของคุณเรียบร้อยแล้ว",
+      "restoreErrorTitle": "กู้คืนล้มเหลว",
+      "restoreErrorMessage": "ไม่สามารถกู้คืนการซื้อได้ตอนนี้",
+      "resetConfirmTitle": "รีเซ็ตข้อมูลแอป?",
+      "resetConfirmMessage": "การทำเช่นนี้จะลบแชทและการตั้งค่าทั้งหมด",
+      "resetConfirmCancel": "ยกเลิก",
+      "resetConfirmCta": "รีเซ็ต"
+    }
+  },
+  "createImage": {
+    "headerTitle": "สร้าง",
+    "chooseStyle": "เลือกรูปแบบ",
+    "aspectRatio": "อัตราส่วนภาพ",
+    "starterPrompts": {
+      "title": "ตัวอย่างพรอมพ์",
+      "items": [
+        "ภาพพอร์ตเทรตในสตูดิโอ",
+        "ห้องนั่งเล่นสไตล์โมเดิร์น",
+        "ชายหาดเขตร้อนตอนพระอาทิตย์ตก"
+      ]
+    },
+    "promptPlaceholder": "พิมพ์สิ่งที่คุณอยากเห็น…",
+    "promptHint": "ตัวอย่าง: “โกลเด้นรีทรีฟเวอร์ในสตูดิโอไลติ้ง”",
+    "clearText": "ล้างข้อความ",
+    "generate": "สร้าง",
+    "generating": "กำลังสร้าง…"
+  },
+  "editImage": {
+    "headerTitle": "แก้ไข",
+    "chooseStyle": "เลือกรูปแบบ",
+    "aspectRatio": "อัตราส่วนภาพ",
+    "starterPrompts": {
+      "title": "ตัวอย่างพรอมพ์",
+      "items": [
+        "แก้แสง",
+        "ลบพื้นหลัง",
+        "รีทัชภาพบุคคลแบบนุ่มนวล"
+      ]
+    },
+    "promptPlaceholder": "อธิบายการแก้ไข (ไม่จำเป็น)",
+    "clearText": "ล้าง",
+    "generate": "ใช้",
+    "generating": "กำลังใช้…",
+    "upload": {
+      "choose": "เลือกภาพ",
+      "change": "เปลี่ยน",
+      "remove": "เอาออก"
+    },
+    "imageUnavailable": {
+      "title": "ไม่พบภาพ",
+      "message": "ไม่สามารถเข้าถึงภาพที่เลือก โปรดเลือกใหม่แล้วลองอีกครั้ง"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "อนิเมะ"
+      },
+      "cartoon": {
+        "name": "การ์ตูน"
+      },
+      "photoreal": {
+        "name": "สมจริง"
+      },
+      "sketch": {
+        "name": "สเก็ตช์"
+      },
+      "cyberpunk": {
+        "name": "ไซเบอร์พังก์"
+      },
+      "steampunk": {
+        "name": "สตีมพังก์"
+      },
+      "illustration_3d": {
+        "name": "ภาพประกอบ 3D"
+      },
+      "dark_fantasy": {
+        "name": "ดาร์กแฟนตาซี"
+      },
+      "vintage_film": {
+        "name": "ฟิล์มวินเทจ"
+      },
+      "pastel": {
+        "name": "พาสเทล"
+      },
+      "neon_glow": {
+        "name": "นีออนเรืองแสง"
+      },
+      "epic_landscape": {
+        "name": "ภูมิทัศน์สุดอลัง"
+      }
+    },
+    "aspectRatios": {
+      "square": "จัตุรัส",
+      "landscape": "แนวนอน",
+      "portrait": "แนวตั้ง"
     },
     "models": {
-      "gpt-4o": "โมเดล AI ที่ทรงพลังที่สุด",
-      "gpt-4o-mini": "รวดเร็วสำหรับงานประจำวัน",
-      "claude-3-haiku": "โมเดลที่รวดเร็วและมีประสิทธิภาพ",
-      "claude-3.7-sonnet": "โมเดลการให้เหตุผลขั้นสูง",
-      "gemini-2.5-pro": "โมเดลที่ดีที่สุดของ Google",
-      "gemini-2.0-flash": "โมเดลเร็วพร้อมเหตุผลยอดเยี่ยม"
+      "fluxKontent": "Flux Kontent",
+      "custom": "กำหนดเอง"
     },
-    "providers": {
-      "openai": "OpenAI",
-      "anthropic": "Anthropic",
-      "google": "Google",
-      "xai": "xAI",
-      "other": "อื่น ๆ"
+    "modelTaglines": {
+      "runwareFluxSchnell": "โมเดลที่เร็วที่สุด",
+      "runwareFluxKrea": "ผลงานสร้างสรรค์และมีสไตล์",
+      "runwareQwenImage": "สมดุลและคุณภาพสูง",
+      "google4": "โมเดลภาพ AI ที่ดีที่สุด",
+      "fluxKontent": "Flux Kontent สำหรับงานแก้ไข",
+      "runwareProvider": "สมดุลระหว่างคุณภาพกับ diffusion ที่เสถียร",
+      "airProvider": "โทนสดใสสนุกสไตล์ Nano Banana",
+      "googleProvider": "ดีเทลเนี้ยบในแบบ Google",
+      "anthropicProvider": "ทิ้งอารมณ์แบบละเอียดของ Claude",
+      "default": "แตะเพื่อดูเอนจินที่ใช้ได้"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "สไตล์ที่คุณเลือก",
+    "sheetTitle": "กำลังสร้างภาพตามที่คิด",
+    "sheetSubtitle": "กำลังผสม {{style}} เข้ากับพรอมพ์ โปรดรอสักครู่",
+    "phases": {
+      "blend": "กำลังผสม {{style}}",
+      "paint": "กำลังวาดฉาก",
+      "finish": "กำลังเก็บรายละเอียดสุดท้าย"
     },
-    "navigation": {
-      "chat": "แชท",
-      "history": "ประวัติ",
-      "assistants": "ผู้ช่วย",
-      "imagesStudio": "สตูดิโอ",
-      "settings": "การตั้งค่า",
-      "recentChats": "แชทล่าสุด"
-    },
-    "imagesStudio": {
-      "title": "สตูดิโอ",
-      "selectImages": "เลือกภาพ",
-      "exitSelectionMode": "ออกจากโหมดเลือก",
-      "selectAll": "เลือกทั้งหมด",
-      "noImagesYet": "ยังไม่มีภาพ",
-      "describeImageHint": "อธิบายภาพด้านล่างแล้วแตะ \"สร้าง\"",
-      "generatedImagesGallery": "แกลเลอรีภาพที่สร้างแล้ว",
-      "describeImagePlaceholder": "อธิบายภาพที่คุณต้องการ…",
-      "deleteConfirmTitle": "ลบภาพ",
-      "deleteConfirmMessage": "แน่ใจหรือไม่ว่าต้องการลบภาพที่เลือก? การกระทำนี้ไม่สามารถยกเลิกได้",
+    "actions": {
       "cancel": "ยกเลิก",
-      "delete": "ลบ",
-      "generate": "สร้าง",
-      "generating": "กำลังสร้าง…",
-      "latest": "ล่าสุด",
-      "insertToChat": "แทรกในแชท",
-      "pleaseWait": "โปรดรอสักครู่…",
-      "processing": "กำลังประมวลผล...",
-      "tapToUploadImage": "แตะเพื่ออัปโหลดภาพ",
-      "camera": "กล้อง",
-      "library": "คลังรูปภาพ",
-      "enterPrompt": "กรอกพรอมต์เพื่อสร้างภาพจากข้อความ",
-      "openInBrowser": "เปิดในเบราว์เซอร์",
-      "makeVariations": "สร้างแบบแปร",
-      "deleteAllFromGeneration": "ลบทั้งหมดจากการสร้างครั้งนี้",
-      "imageOptionsTitle": "ตัวเลือกของภาพ",
-      "imageOptionsMessage": "ต้องการทำอะไรกับภาพนี้?",
-      "insertMarkdownHeader": "นี่คือภาพสำหรับ:",
-      "variationSuffix": "— แบบแปรของภาพก่อนหน้า",
-      "selectedCount": "ที่เลือก",
-      "selectedCount_one": "ที่เลือก",
-      "selectedCount_other": "ที่เลือก",
-      "imageDescriptionInput": "ช่องคำอธิบายภาพ",
-      "imageDescriptionHint": "กรอกคำอธิบายของภาพที่ต้องการสร้าง",
-      "openModelSettings": "เปิดการตั้งค่าโมเดล",
-      "modelSettingsHint": "แตะเพื่อเปลี่ยนโมเดลและการตั้งค่า",
-      "openPhotoGallery": "เปิดแกลเลอรี",
-      "clearInput": "ล้างช่อง",
-      "generatedImage": "ภาพที่สร้างแล้ว",
-      "autoSelectedModel": "เลือก {{model}} อัตโนมัติสำหรับโหมด {{mode}}",
-      "deleteSelectedConfirmTitle": "ลบภาพ",
-      "deleteSelectedConfirmMessage": "แน่ใจหรือไม่ว่าต้องการลบภาพ? การกระทำนี้ไม่สามารถยกเลิกได้"
+      "retry": "ลองใหม่",
+      "close": "ปิด"
     },
-    "imageStudio": {
-      "generateImage": "สร้างภาพ",
-      "generatingImage": "กำลังสร้างภาพ",
-      "generateImageHint": "แตะเพื่อสร้างภาพตามคำอธิบายของคุณ",
-      "imageDescriptionInput": "ช่องคำอธิบายภาพ",
-      "imageDescriptionHint": "กรอกคำอธิบายของภาพที่ต้องการสร้าง",
-      "openModelSettings": "เปิดการตั้งค่าโมเดล",
-      "modelSettingsHint": "แตะเพื่อเปลี่ยนโมเดลและการตั้งค่า",
-      "openPhotoGallery": "เปิดแกลเลอรี",
-      "clearInput": "ล้างช่อง",
-      "generatedImage": "ภาพที่สร้างแล้ว"
+    "errors": {
+      "restrictedTitle": "เนื้อหาถูกจำกัด",
+      "genericTitle": "สร้างไม่สำเร็จ",
+      "genericMessage": "ไม่สามารถสร้างภาพได้"
     },
-    "assistants": {
-      "title": "ผู้ช่วย",
-      "subtitle": "ผู้เชี่ยวชาญ AI ที่ผ่านการคัดสรรสำหรับการโค้ด เขียน วิเคราะห์ วางแผน และอื่น ๆ",
-      "searchPlaceholder": "ค้นหาผู้ช่วย…",
-      "useAssistant": "ใช้ผู้ช่วย",
-      "description": "คำอธิบาย",
-      "systemPrompt": "พรอมต์ของระบบ",
-      "chooseModel": "เลือกโมเดล",
-      "categoryAll": "ทั้งหมด",
-      "categories": {
-        "everyday": "ประจำวัน",
-        "life": "ชีวิต",
-        "health": "สุขภาพ",
-        "schoolWork": "โรงเรียนและงาน",
-        "coding": "การเขียนโค้ด",
-        "creative": "งานสร้างสรรค์",
-        "general": "ทั่วไป"
-      },
-      "presets": {
-        "default": { "name": "ผู้ช่วยมาตรฐาน", "description": "ช่วยแบบสมดุลสำหรับงานประจำวัน." },
-        "quick": { "name": "คำตอบด่วน", "description": "สั้น ตรงประเด็น." },
-        "planner": { "name": "ผู้ช่วยวางแผนประจำวัน", "description": "วางแผนวันและกิจวัตร." },
-        "recipes": { "name": "มื้ออาหารและสูตร", "description": "ทำอะไรได้จากของที่มี." },
-        "fitness": { "name": "โค้ชนิสัยและฟิตเนส", "description": "นิสัยเล็ก ๆ + ออกกำลังที่บ้าน." },
-        "money": { "name": "คู่หูการเงิน", "description": "งบง่าย ๆ และทิปการใช้จ่าย." },
-        "study": { "name": "ผู้ช่วยเรียน", "description": "อธิบายให้ง่าย ทดสอบฉัน." },
-        "email": { "name": "อีเมลและเรซูเม่", "description": "เขียนอีเมลชัด ๆ และบรรทัดเรซูเม่." },
-        "translator": { "name": "นักแปล", "description": "แปล + สอนวลี." },
-        "travel": { "name": "เพื่อนเที่ยว", "description": "แผนง่าย ๆ และรายการของ." },
-        "tech": { "name": "ซัพพอร์ตเทคนิค (พื้นฐาน)", "description": "พื้นฐานมือถือ แอป และ Wi-Fi." },
-        "summarizer": { "name": "สรุป TL;DR", "description": "บูลเล็ตสั้น + สรุปหนึ่งบรรทัด." },
-        "gift": { "name": "หาของขวัญ", "description": "ไอเดียตามงบและความสนใจ." },
-        "party": { "name": "วางแผนงาน (Lite)", "description": "วางแผนปาร์ตี้เล็ก ๆ รวดเร็ว." },
-        "social": { "name": "ผู้ช่วยโพสต์โซเชียล", "description": "ร่างโพสต์พร้อมตัวเลือก." },
-        "interview": { "name": "โค้ชสัมภาษณ์", "description": "ฝึกคำตอบ (STAR)." },
-        "homefix": { "name": "คู่มือซ่อมบ้าน", "description": "แก้ปัญหาง่าย ๆ." },
-        "pet": { "name": "ผู้ช่วยดูแลสัตว์เลี้ยง", "description": "อาหาร พาเดิน ฝึกพื้นฐาน." },
-        "mindful": { "name": "นาทีแห่งสติ", "description": "พักสงบ 1–3 นาที." },
-        "polite": { "name": "ผู้ช่วยเขียนให้สุภาพ", "description": "เขียนใหม่อย่างสุภาพ." }
-      }
+    "alerts": {
+      "saveFailedTitle": "บันทึกไม่สำเร็จ",
+      "shareFailedTitle": "แชร์ไม่สำเร็จ",
+      "tryAgain": "โปรดลองอีกครั้ง"
     },
-    "history": {
-      "title": "ประวัติ",
-      "searchPlaceholder": "ค้นหาแชท…",
-      "newChat": "แชทใหม่",
-      "new": "+ ใหม่",
-      "search": "ค้นหา",
-      "clearSearch": "ล้างการค้นหา",
-      "noChatsYet": "ยังไม่มีแชท",
-      "startFirstConversation": "เริ่มบทสนทนาแรกของคุณ",
-      "startChat": "เริ่มแชท",
-      "errorLoadingHistory": "เกิดข้อผิดพลาดระหว่างโหลดประวัติ",
-      "renameChat": "เปลี่ยนชื่อแชท",
-      "enterNewTitle": "ใส่ชื่อใหม่",
-      "deleteChat": "ลบแชท?",
-      "deleteChatMessage": "“{{title}}” จะถูกลบ",
-      "rename": "เปลี่ยนชื่อ",
-      "unpin": "เลิกปักหมุด",
-      "pin": "ปักหมุด",
-      "untitled": "ไม่มีชื่อ"
+    "result": {
+      "complete": "เสร็จเรียบร้อย"
     },
-    "settings": {
-      "title": "การตั้งค่า",
-      "model": "โมเดล",
-      "searchPlaceholder": "ค้นหาโมเดล…",
-      "temperatureForCurrentModel": "Temperature ของโมเดลปัจจุบัน",
-      "customFor": "ปรับแต่งสำหรับ {{model}}",
-      "usingDefault": "ใช้ค่าเริ่มต้น {{temperature}}",
-      "resetToDefault": "รีเซ็ตเป็นค่าเริ่มต้น",
-      "defaultTemperature": "Temperature เริ่มต้น (สำรอง)",
-      "usedByModelsWithoutOverride": "ใช้กับโมเดลที่ไม่มีการตั้งค่าเฉพาะ",
-      "dangerZone": "โซนอันตราย",
-      "clearAllChatsAndSettings": "ลบแชทและการตั้งค่าทั้งหมด",
-      "about": "เกี่ยวกับ",
-      "version": "เวอร์ชัน {{version}}",
-      "privacyPolicy": "นโยบายความเป็นส่วนตัว",
-      "capabilities": {
-        "text": "TXT",
-        "image": "IMG",
-        "audio": "AUD",
-        "video": "VID"
-      }
-    },
-    "chat": {
-      "messagePlaceholder": "พิมพ์ข้อความถึง Agarka...",
-      "createImages": "สร้างภาพ",
-      "generateAiArtwork": "สร้างงานศิลป์ด้วย AI",
-      "camera": "กล้อง",
-      "takeOrSelectPhotos": "ถ่ายหรือเลือกภาพ",
-      "search": "ค้นหา",
-      "findInformation": "ค้นหาข้อมูล",
-      "removeImage": "เอาภาพออก",
-      "messageInput": "ช่องข้อความ",
-      "clearInput": "ล้างช่อง",
-      "hideQuickActions": "ซ่อนการดำเนินการด่วน",
-      "showQuickActions": "แสดงการดำเนินการด่วน",
-      "startVoiceInput": "เริ่มป้อนเสียง",
-      "sendMessage": "ส่ง",
-      "offline": "ออฟไลน์",
-      "stop": "หยุด",
-      "streaming": "กำลังสตรีม…",
-      "closeRecorder": "ปิดเครื่องบันทึกเสียง",
-      "insertTranscript": "แทรกถอดความ",
-      "scrollToLatest": "เลื่อนไปยังข้อความล่าสุด",
-      "copyMessage": "คัดลอกข้อความ",
-      "copyMessageHint": "คัดลอกข้อความนี้ไปยังคลิปบอร์ด",
-      "shareMessage": "แชร์ข้อความ",
-      "shareMessageHint": "แชร์ข้อความนี้",
-      "regenerateResponse": "สร้างคำตอบใหม่",
-      "regenerateResponseHint": "สร้างคำตอบใหม่อีกครั้ง",
-      "copyCode": "คัดลอกโค้ด",
-      "image": "ภาพ",
-      "loading": "กำลังโหลด…",
-      "loadingChat": "กำลังโหลดแชท...",
-      "offlineBanner": "คุณออฟไลน์ ข้อความไม่สามารถส่งได้",
-      "imagePickerErrorTitle": "เกิดข้อผิดพลาดในการเลือกภาพ",
-      "messageTooLong": "ข้อความยาวเกินไป ({{length}}) ขีดจำกัดคือ {{limit}}",
-      "emptyTitle": "ฉันช่วยอะไรได้บ้าง?",
-      "emptySubtitle": "เริ่มต้นบทสนทนากับ AI",
-      "privateTitle": "แชทส่วนตัว",
-      "privateSubtitle": "แชทนี้จะไม่แสดงในประวัติของคุณ",
-      "listening": "กำลังฟัง…",
-      "startRecording": "เริ่มบันทึก…",
-      "suggestions": {
-        "writeStory": "เขียนเรื่องราวสร้างสรรค์",
-        "writeStorySubtitle": "เกี่ยวกับการผจญภัยเหนือจินตนาการ",
-        "planTravel": "วางแผนการเดินทาง",
-        "planTravelSubtitle": "สำหรับทริปสุดพิเศษ",
-        "explainConcept": "อธิบายแนวคิดนี้",
-        "explainConceptSubtitle": "ให้เข้าใจง่าย",
-        "planDay": "วางแผนทั้งวันของฉัน",
-        "planDaySubtitle": "พร้อมทริคเพิ่มประสิทธิภาพ"
-      }
-    },
-    "imageUpload": {
-      "required": " *",
-      "processing": "กำลังประมวลผล...",
-      "tapToUploadImage": "แตะเพื่ออัปโหลดภาพ"
-    },
-    "imageGridSelector": {
-      "required": " *",
-      "processing": "กำลังประมวลผล...",
-      "camera": "กล้อง",
-      "library": "คลังรูปภาพ"
-    },
-    "common": {
-      "new": "ใหม่",
-      "best": "ดีที่สุด",
-      "cancel": "ยกเลิก",
-      "save": "บันทึก",
-      "delete": "ลบ",
+    "accessibility": {
       "close": "ปิด"
     }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "ลบ",
+      "edit": "แก้ไข",
+      "save": "บันทึก",
+      "share": "แชร์"
+    },
+    "accessibility": {
+      "close": "ปิด",
+      "delete": "ลบภาพ",
+      "edit": "แก้ไขภาพ",
+      "save": "บันทึกภาพ",
+      "share": "แชร์ภาพ"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "เปิดเมนู",
+      "selectImages": "เลือกภาพ",
+      "exitSelection": "ออกจากโหมดเลือก",
+      "deleteSelected": "ลบภาพที่เลือก",
+      "selectToDelete": "เลือกภาพที่จะลบ"
+    },
+    "createCard": {
+      "title": "สร้างจากข้อความ",
+      "subtitle": "พิมพ์คำอธิบาย",
+      "cta": "อธิบายแล้วสร้าง"
+    },
+    "editCard": {
+      "title": "แก้ไขภาพถ่าย",
+      "subtitle": "อัปโหลดและแก้ไข",
+      "cta": "แก้ไขภาพถ่าย"
+    },
+    "gallery": {
+      "title": "แกลเลอรี",
+      "empty": "ยังไม่มีภาพ",
+      "selection": {
+        "enter": "เลือกภาพ",
+        "exit": "ออกจากโหมดเลือก",
+        "deleteSelected": "ลบภาพที่เลือก",
+        "selectForDelete": "เลือกภาพที่จะลบ"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "ทำความรู้จัก",
+      "titleHighlight": "Image Studio",
+      "subtitle": "สร้างและแก้ไขภาพด้วย AI ได้เลยใน {{app}}",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "พบกับ AI ของคุณ",
+      "titleHighlight": "ผู้ช่วย",
+      "subtitle": "ผู้เชี่ยวชาญ AI ที่พร้อมช่วยงานประจำวันของคุณ",
+      "cards": [
+        {
+          "title": "โค้ชฟิตเนส",
+          "text": "รับแผนออกกำลังกายและโภชนาการที่เหมาะกับเป้าหมาย"
+        },
+        {
+          "title": "คุณหมอ",
+          "text": "ได้ข้อมูลสุขภาพ การวิเคราะห์อาการ และคำแนะนำ"
+        },
+        {
+          "title": "ดูแลสัตว์เลี้ยง",
+          "text": "คำแนะนำเรื่องสุขภาพ ฝึก และการดูแลสัตว์เลี้ยง"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "โซลูชัน AI ระดับองค์กร",
+      "description": "เสริมพลังธุรกิจของคุณด้วย AI ทันสมัยสำหรับองค์กรและทีม",
+      "stats": "มีผู้ใช้กว่า 500k+ ราย",
+      "rating": "4.9 / 5",
+      "button": "เริ่มเลย"
+    }
+  },
+  "coinStore": {
+    "title": "ซื้อโทเค็น",
+    "loading": "กำลังโหลดร้านโทเค็น…",
+    "balanceLabel": "ยอดคงเหลือของคุณคือ",
+    "balanceValue": "{{amount}} โทเค็น",
+    "history": {
+      "link": "ประวัติการทำรายการ",
+      "alertTitle": "ประวัติ",
+      "alertBody": "ประวัติการทำรายการจะมาเร็วๆ นี้"
+    },
+    "noPacks": "ไม่มีแพ็กโทเค็น ตรวจสอบ RevenueCat offering id",
+    "badges": {
+      "basic": "แพ็กพื้นฐาน",
+      "popular": "ยอดนิยม",
+      "value": "คุ้มที่สุด"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} โทเค็น",
+      "defaultName": "แพ็ก {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "อัปเกรดเป็นพรีเมียม",
+      "subtitle": "เข้าถึงและฟีเจอร์ไม่จำกัด",
+      "cta": "อัปเกรด"
+    },
+    "termsText": "เมื่อซื้อถือว่ายอมรับ",
+    "termsLink": "ข้อกำหนดการให้บริการ",
+    "alerts": {
+      "initErrorTitle": "ข้อผิดพลาดในการเริ่มต้น",
+      "genericMessage": "มีบางอย่างผิดพลาด",
+      "successTitle": "สำเร็จ",
+      "successMessage": "โทเค็นจะถูกเพิ่มในไม่ช้า",
+      "purchaseFailedTitle": "ซื้อไม่สำเร็จ",
+      "unknownError": "ข้อผิดพลาดที่ไม่รู้จัก"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "กู้คืน",
+    "restoreRestoring": "กำลังกู้คืน…",
+    "features": {
+      "create": "สร้างภาพและวิดีโอ",
+      "search": "ค้นเว็บด้วย AI",
+      "talk": "คุยกับ AI ได้อย่างเป็นธรรมชาติ"
+    },
+    "freeTrial": {
+      "title": "ทดลองใช้ฟรี",
+      "subtitle": "ทดลองใช้ฟรี 3 วัน"
+    },
+    "badge": {
+      "bestOffer": "ข้อเสนอที่ดีที่สุด"
+    },
+    "plans": {
+      "yearly": {
+        "title": "รายปี",
+        "only": "เพียง {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "รายเดือน",
+        "subtitle": "ยกเลิกได้ทุกเมื่อ",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "รายสัปดาห์",
+        "subtitle": "ยกเลิกได้ทุกเมื่อ",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "ต่อสัปดาห์",
+      "perMonth": "ต่อเดือน"
+    },
+    "cta": "ดำเนินการต่อ",
+    "legal": {
+      "terms": "ข้อกำหนด",
+      "privacy": "ความเป็นส่วนตัว"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "ข้อความ...",
+    "createImages": "สร้างภาพ",
+    "generateAiArtwork": "สร้างงานศิลปะด้วย AI",
+    "camera": "กล้อง",
+    "takeOrSelectPhotos": "ถ่ายหรือเลือกภาพ",
+    "search": "ค้นหา",
+    "findInformation": "ค้นหาข้อมูล",
+    "findRecentInfo": "ค้นหาข้อมูลล่าสุด",
+    "removeImage": "ลบภาพ",
+    "messageInput": "ช่องกรอกข้อความ",
+    "clearInput": "ล้างข้อความ",
+    "quickActionsLabel": "การทำงานด่วน",
+    "hideQuickActions": "ซ่อนการทำงานด่วน",
+    "showQuickActions": "แสดงการทำงานด่วน",
+    "startVoiceInput": "เริ่มป้อนเสียง",
+    "sendMessage": "ส่งข้อความ",
+    "offline": "ออฟไลน์",
+    "stop": "หยุด",
+    "streaming": "กำลังรับข้อมูล…",
+    "closeRecorder": "ปิดตัวบันทึกเสียง",
+    "insertTranscript": "ส่ง",
+    "scrollToLatest": "เลื่อนไปยังข้อความล่าสุด",
+    "copyMessage": "คัดลอกข้อความ",
+    "copyMessageHint": "คัดลอกข้อความนี้ไปยังคลิปบอร์ด",
+    "shareMessage": "แชร์ข้อความ",
+    "shareMessageHint": "แชร์ข้อความนี้",
+    "regenerateResponse": "สร้างคำตอบใหม่",
+    "regenerateResponseHint": "สร้างคำตอบใหม่อีกครั้ง",
+    "copyCode": "คัดลอกโค้ด",
+    "image": "ภาพ",
+    "loading": "กำลังโหลด…",
+    "loadingChat": "กำลังโหลดแชท...",
+    "offlineBanner": "คุณออฟไลน์อยู่ ไม่สามารถส่งข้อความได้",
+    "imagePickerErrorTitle": "เกิดข้อผิดพลาดในการเลือกภาพ",
+    "imagePickerErrorMessage": "ไม่สามารถเข้าถึงภาพของคุณ โปรดลองอีกครั้ง",
+    "messageTooLong": "ข้อความยาวเกินไป ({{length}}) จำกัดที่ {{limit}}",
+    "sendFailed": "ส่งไม่สำเร็จ",
+    "voiceStartFailed": "ไม่สามารถเริ่มเสียงได้",
+    "emptyTitle": "ให้ฉันช่วยอะไรดี?",
+    "emptySubtitle": "เริ่มคุยกับ AI ได้เลย",
+    "privateTitle": "แชทส่วนตัว",
+    "privateSubtitle": "แชทนี้จะไม่อยู่ในประวัติแชท",
+    "permissions": {
+      "photosTitle": "ต้องการสิทธิ์เข้าถึงรูปภาพ",
+      "photosMessage": "การเลือกภาพต้องให้สิทธิ์เข้าถึงรูปภาพ",
+      "voiceTitle": "ต้องการสิทธิ์ไมโครโฟน",
+      "voiceMessage": "การใช้เสียงต้องให้สิทธิ์ไมโครโฟนและเสียง"
+    },
+    "activity": {
+      "analyzingImages": "กำลังวิเคราะห์ภาพ…",
+      "searching": "กำลังค้นหา…",
+      "thinking": "กำลังคิด…"
+    },
+    "webSearch": {
+      "title": "ค้นเว็บ",
+      "subtitle": "ค้นหาข้อมูลล่าสุด",
+      "label": "ค้นเว็บ",
+      "enable": "เปิดการค้นเว็บ",
+      "disable": "ปิดการค้นเว็บ",
+      "toggleLabel": "ค้นหาบนเว็บ"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "ออกแบบภาพอย่างรวดเร็ว",
+      "subtitle": "สร้าง ปรับแต่ง และเผยแพร่ในที่เดียว",
+      "cta": "เปิด"
+    },
+    "quickActions": {
+      "createImages": "สร้างภาพ",
+      "openCamera": "เปิดกล้อง",
+      "editImage": "แก้ไขภาพ",
+      "startVoice": "เริ่มเสียง",
+      "assistants": "ผู้ช่วย"
+    },
+    "listening": "กำลังฟัง…",
+    "startRecording": "เริ่มบันทึก…",
+    "assistantHeader": {
+      "unavailableTitle": "ผู้ช่วยไม่พร้อมใช้งาน",
+      "unavailableDescription": "เราโหลดผู้ช่วยนี้ไม่ได้ โปรดลองใหม่",
+      "ready": "พร้อมช่วยเหลือแล้ว"
+    },
+    "actions": {
+      "copy": "คัดลอก",
+      "share": "แชร์",
+      "regenerate": "สร้างใหม่",
+      "retryFromHere": "ลองใหม่จากตรงนี้",
+      "cancel": "ยกเลิก"
+    },
+    "messageActionTitle": "ข้อความ",
+    "status": {
+      "sending": "กำลังส่ง…",
+      "failed": "ล้มเหลว",
+      "sent": "ส่งแล้ว"
+    },
+    "suggestions": {
+      "writeStory": "เขียนเรื่องราวสร้างสรรค์",
+      "writeStorySubtitle": "เกี่ยวกับการผจญภัยวิเศษ",
+      "planTravel": "วางแผนท่องเที่ยว",
+      "planTravelSubtitle": "สำหรับทริปสุดว้าว",
+      "explainConcept": "อธิบายแนวคิดนี้",
+      "explainConceptSubtitle": "ให้เข้าใจง่าย",
+      "planDay": "วางแผนวันของฉัน",
+      "planDaySubtitle": "พร้อมทริคเพิ่มประสิทธิภาพ"
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "กำลังประมวลผล...",
+    "tapToUploadImage": "แตะเพื่ออัปโหลดภาพ"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "กำลังประมวลผล...",
+    "camera": "กล้อง",
+    "library": "คลังภาพ"
+  },
+  "common": {
+    "new": "ใหม่",
+    "best": "ดีที่สุด",
+    "cancel": "ยกเลิก",
+    "save": "บันทึก",
+    "delete": "ลบ",
+    "close": "ปิด",
+    "allow": "อนุญาต"
   }
-  
+}

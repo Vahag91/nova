@@ -1,25 +1,32 @@
 {
   "modelSelector": {
     "title": "モデルを選択",
-    "searchPlaceholder": "モデルを検索…",
-    "noModelsFound": "該当するモデルがありません",
+    "searchPlaceholder": "モデルを検索...",
+    "noModelsFound": "モデルが見つかりません",
     "noModelsAvailable": "利用可能なモデルがありません",
-    "currentModel": "現在のモデル：{{name}}。タップして変更",
-    "openHint": "モデル選択メニューを開く",
+    "currentModel": "現在のモデル: {{name}}。タップして変更します。",
+    "openHint": "モデル選択メニューを開きます",
     "closeLabel": "モデル選択を閉じる",
     "searchLabel": "モデルを検索",
-    "searchHint": "入力してモデルを絞り込み",
+    "searchHint": "利用可能なモデルを絞り込むには入力してください",
     "modelLabel": "{{name}} モデル",
-    "selectHint": "{{name}} を選択",
+    "selectHint": "{{name}} モデルを選択",
     "currentlySelected": "現在選択中のモデル"
   },
   "models": {
-    "gpt-4o": "最も高性能なAIモデル",
-    "gpt-4o-mini": "日常のタスクに高速",
-    "claude-3-haiku": "高速で効率的なモデル",
-    "claude-3.7-sonnet": "高度な推論モデル",
-    "gemini-2.5-pro": "Googleの最上位モデル",
-    "gemini-2.0-flash": "優れた推論を備えた高速モデル"
+    "gpt-4o": "最も強力なAIモデル",
+    "gpt-4o-mini": "日常タスクに高速",
+    "gpt-5": "最も強力な汎用AI",
+    "gpt-5-chat-latest": "チャットと対話に最適化",
+    "gpt-5-mini": "高速で信頼できる GPT-5",
+    "gpt-5-nano": "簡単なタスク向けの軽量モデル",
+    "o4-mini": "効率的な推論モデル",
+    "gpt-4.1-mini": "コンパクトで高性能な GPT-4.1",
+    "claude-3-haiku": "高速で焦点の定まった Anthropic AI",
+    "claude-3.7-sonnet": "Anthropic による洗練された推論",
+    "gemini-2.5-Flash": "Google の最先端モデル",
+    "gemini-2.5-flash": "Google の最先端モデル",
+    "gemini-2.0-flash": "高速かつ高精度な Google AI"
   },
   "providers": {
     "openai": "OpenAI",
@@ -29,63 +36,69 @@
     "other": "その他"
   },
   "navigation": {
-    "chat": "チャット",
+    "chat": "新しいチャット",
     "history": "履歴",
     "assistants": "アシスタント",
-    "imagesStudio": "スタジオ",
+    "imagesStudio": "Image Studio",
     "settings": "設定",
     "recentChats": "最近のチャット"
   },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "画像アセットを生成・調整・公開する場所。",
+    "cta": "開く"
+  },
   "imagesStudio": {
-    "title": "スタジオ",
+    "title": "Image Studio",
     "selectImages": "画像を選択",
     "exitSelectionMode": "選択モードを終了",
     "selectAll": "すべて選択",
     "noImagesYet": "まだ画像がありません",
-    "describeImageHint": "下に画像の説明を入力し、「生成」をタップしてください。",
-    "generatedImagesGallery": "生成画像ギャラリー",
-    "describeImagePlaceholder": "生成したい画像を説明…",
+    "describeImageHint": "下に画像の説明を書いて「生成」をタップしてください。",
+    "generatedImagesGallery": "生成された画像ギャラリー",
+    "describeImagePlaceholder": "生成したい画像を説明してください…",
     "deleteConfirmTitle": "画像を削除",
-    "deleteConfirmMessage": "選択した画像を削除してもよろしいですか？この操作は元に戻せません。",
+    "deleteConfirmMessage": "選択した画像を削除してもよろしいですか？この操作は取り消せません。",
     "cancel": "キャンセル",
     "delete": "削除",
     "generate": "生成",
     "generating": "生成中…",
     "latest": "最新",
     "insertToChat": "チャットに挿入",
-    "pleaseWait": "少々お待ちください…",
+    "pleaseWait": "お待ちください…",
     "processing": "処理中...",
     "tapToUploadImage": "タップして画像をアップロード",
     "camera": "カメラ",
     "library": "ライブラリ",
-    "enterPrompt": "テキストから画像を生成する説明文を入力してください",
+    "enterPrompt": "テキストから画像を生成するプロンプトを入力してください",
     "openInBrowser": "ブラウザーで開く",
     "makeVariations": "バリエーションを作成",
     "deleteAllFromGeneration": "この生成の画像をすべて削除",
-    "imageOptionsTitle": "画像のオプション",
-    "imageOptionsMessage": "この画像で実行する操作を選択してください。",
-    "insertMarkdownHeader": "次の内容の画像です:",
+    "imageOptionsTitle": "画像オプション",
+    "imageOptionsMessage": "この画像で何をしますか？",
+    "insertMarkdownHeader": "この内容の画像です:",
     "variationSuffix": "— 前の画像のバリエーション",
-    "selectedCount": "件選択",
-    "selectedCount_one": "件選択",
-    "selectedCount_other": "件選択",
-    "imageDescriptionInput": "画像の説明入力",
-    "imageDescriptionHint": "生成したい画像の説明を入力",
+    "selectedCount": "件選択中",
+    "selectedCount_one": "件選択中",
+    "selectedCount_other": "件選択中",
+    "imageDescriptionInput": "画像説明の入力",
+    "imageDescriptionHint": "生成したい画像の説明を入力してください",
     "openModelSettings": "モデル設定を開く",
     "modelSettingsHint": "タップしてモデルと設定を変更",
     "openPhotoGallery": "フォトギャラリーを開く",
     "clearInput": "入力をクリア",
     "generatedImage": "生成画像",
-    "autoSelectedModel": "{{mode}} モードに合わせて {{model}} を自動選択しました",
+    "autoSelectedModel": "{{mode}} モード用に {{model}} が自動選択されました",
     "deleteSelectedConfirmTitle": "画像を削除",
-    "deleteSelectedConfirmMessage": "画像を削除してもよろしいですか？この操作は元に戻せません。"
+    "deleteSelectedConfirmMessage": "画像を削除してもよろしいですか？この操作は取り消せません。"
   },
   "imageStudio": {
     "generateImage": "画像を生成",
     "generatingImage": "画像を生成中",
     "generateImageHint": "説明に基づいて画像を生成するにはタップしてください",
-    "imageDescriptionInput": "画像の説明入力",
-    "imageDescriptionHint": "生成したい画像の説明を入力",
+    "imageDescriptionInput": "画像説明の入力",
+    "imageDescriptionHint": "生成したい画像の説明を入力してください",
     "openModelSettings": "モデル設定を開く",
     "modelSettingsHint": "タップしてモデルと設定を変更",
     "openPhotoGallery": "フォトギャラリーを開く",
@@ -94,16 +107,17 @@
   },
   "assistants": {
     "title": "アシスタント",
-    "subtitle": "コーディング、文章作成、分析、計画などに対応する厳選AIスペシャリスト。",
+    "subtitle": "コード作成・文章作成・分析・計画などにすぐ使えるAIスペシャリスト。",
     "searchPlaceholder": "アシスタントを検索…",
-    "useAssistant": "このアシスタントを使う",
+    "useAssistant": "アシスタントを使う",
+    "selectAssistant": "アシスタントを選択",
     "description": "説明",
     "systemPrompt": "システムプロンプト",
     "chooseModel": "モデルを選択",
     "categoryAll": "すべて",
     "categories": {
       "everyday": "日常",
-      "life": "生活",
+      "life": "ライフ",
       "health": "健康",
       "schoolWork": "学校・仕事",
       "coding": "コーディング",
@@ -111,33 +125,93 @@
       "general": "一般"
     },
     "presets": {
-      "default": { "name": "既定のアシスタント", "description": "日常のことをバランスよく手助け。" },
-      "quick": { "name": "すばやい回答", "description": "短く率直な答え。" },
-      "planner": { "name": "デイリープランナー", "description": "1日の予定とルーティンを計画。" },
-      "recipes": { "name": "食事とレシピ", "description": "ある食材で作れるものを提案。" },
-      "fitness": { "name": "習慣・フィットネスコーチ", "description": "小さな習慣と自宅トレーニング。" },
-      "money": { "name": "マネーバディ", "description": "かんたんな予算と支出のコツ。" },
-      "study": { "name": "学習ヘルパー", "description": "わかりやすく説明。小テスト。" },
-      "email": { "name": "メール＆履歴書", "description": "伝わるメールと職務要約。" },
-      "translator": { "name": "翻訳", "description": "翻訳＋フレーズ学習。" },
-      "travel": { "name": "旅行バディ", "description": "かんたん計画と持ち物リスト。" },
-      "tech": { "name": "かんたんテックサポート", "description": "スマホ・アプリ・Wi-Fiの基本。" },
-      "summarizer": { "name": "要約くん（TL;DR）", "description": "箇条書き＋一言TL;DR。" },
-      "gift": { "name": "プレゼント提案", "description": "予算と好みに合わせて。" },
-      "party": { "name": "イベントプランナー（ライト）", "description": "小規模なパーティーを手早く。" },
-      "social": { "name": "SNS投稿メーカー", "description": "選べる下書きを作成。" },
-      "interview": { "name": "面接コーチ", "description": "STARで練習。" },
-      "homefix": { "name": "おうち修理ガイド", "description": "かんたんDIYのトラブル対応。" },
-      "pet": { "name": "ペットお世話バディ", "description": "食事・散歩・しつけの基本。" },
-      "mindful": { "name": "マインドフルミニッツ", "description": "1〜3分のリラックス。" },
-      "polite": { "name": "丁寧リライター", "description": "文面・返信を丁寧に書き換え。" }
+      "default": {
+        "name": "デフォルトアシスタント",
+        "description": "日常的なことをバランスよくサポート。"
+      },
+      "quick": {
+        "name": "クイックアンサー",
+        "description": "短くて直接的な回答。"
+      },
+      "planner": {
+        "name": "デイリープランナー",
+        "description": "一日の予定やルーティンを立てます。"
+      },
+      "recipes": {
+        "name": "食事・レシピ",
+        "description": "手元にあるもので何を作るか。"
+      },
+      "fitness": {
+        "name": "習慣 & フィットネスコーチ",
+        "description": "小さな習慣と自宅トレーニング。"
+      },
+      "money": {
+        "name": "マネーバディ",
+        "description": "シンプルな予算と節約のヒント。"
+      },
+      "study": {
+        "name": "勉強ヘルパー",
+        "description": "わかりやすく説明。クイズも可。"
+      },
+      "email": {
+        "name": "メール & 履歴書",
+        "description": "分かりやすいメールや職務経歴の文面を書く。"
+      },
+      "translator": {
+        "name": "翻訳",
+        "description": "翻訳してフレーズも教える。"
+      },
+      "travel": {
+        "name": "トラベルバディ",
+        "description": "シンプルな旅程と持ち物リスト。"
+      },
+      "tech": {
+        "name": "かんたんテックサポート",
+        "description": "スマホ・アプリ・Wi-Fi の基本。"
+      },
+      "summarizer": {
+        "name": "TL;DR 要約",
+        "description": "短い箇条書き＋1行まとめ。"
+      },
+      "gift": {
+        "name": "ギフト探し",
+        "description": "予算と好みに合うアイデア。"
+      },
+      "party": {
+        "name": "イベントプランナー (ライト)",
+        "description": "小さなパーティーをすぐ計画。"
+      },
+      "social": {
+        "name": "SNS投稿メーカー",
+        "description": "いくつかのパターンで下書き。"
+      },
+      "interview": {
+        "name": "面接コーチ",
+        "description": "STAR 形式で回答練習。"
+      },
+      "homefix": {
+        "name": "ホーム修理ガイド",
+        "description": "簡単なDIYトラブルシュート。"
+      },
+      "pet": {
+        "name": "ペットケア",
+        "description": "食事・散歩・基本トレーニング。"
+      },
+      "mindful": {
+        "name": "マインドフル1分",
+        "description": "1〜3分の休憩。"
+      },
+      "polite": {
+        "name": "ていねい書き換え",
+        "description": "文章や返信を丁寧に書き直す。"
+      }
     }
   },
   "history": {
     "title": "履歴",
     "searchPlaceholder": "チャットを検索…",
     "newChat": "新しいチャット",
-    "new": "＋新規",
+    "new": "+ 新規",
     "search": "検索",
     "clearSearch": "検索をクリア",
     "noChatsYet": "まだチャットがありません",
@@ -147,9 +221,9 @@
     "renameChat": "チャット名を変更",
     "enterNewTitle": "新しいタイトルを入力",
     "deleteChat": "チャットを削除しますか？",
-    "deleteChatMessage": "「{{title}}」を削除します。",
+    "deleteChatMessage": "「{{title}}」は削除されます。",
     "rename": "名前を変更",
-    "unpin": "ピン留めを解除",
+    "unpin": "ピン留めを外す",
     "pin": "ピン留め",
     "untitled": "無題"
   },
@@ -159,71 +233,486 @@
     "searchPlaceholder": "モデルを検索…",
     "temperatureForCurrentModel": "現在のモデルの温度",
     "customFor": "{{model}} 用にカスタム",
-    "usingDefault": "デフォルト（{{temperature}}）を使用",
+    "usingDefault": "デフォルト {{temperature}} を使用中",
     "resetToDefault": "デフォルトにリセット",
-    "defaultTemperature": "デフォルトの温度（フォールバック）",
-    "usedByModelsWithoutOverride": "上書き設定のないモデルで使用",
-    "dangerZone": "危険ゾーン",
+    "defaultTemperature": "デフォルト温度（フォールバック）",
+    "usedByModelsWithoutOverride": "独自設定のないモデルで使用されます",
+    "dangerZone": "危険エリア",
     "clearAllChatsAndSettings": "すべてのチャットと設定を消去",
-    "about": "情報",
-    "version": "バージョン {{version}}",
+    "about": "このアプリについて",
+    "version": "バージョン {{version}}{{status}}",
+    "versionPremiumSuffix": " · プレミアム",
     "privacyPolicy": "プライバシーポリシー",
+    "hero": {
+      "label": "特別オファー",
+      "title": "優先アクセス & 無制限",
+      "upgrade": "アップグレード",
+      "manage": "プランを管理"
+    },
+    "sections": {
+      "premium": "プレミアムプラン",
+      "data": "ユーザーデータ",
+      "support": "サポート & 法務"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "プレミアムにする",
+        "subtitle": "無制限の作成ツールを解放"
+      },
+      "premiumActive": {
+        "title": "プレミアム有効",
+        "subtitle": "ChatCloud をご利用いただきありがとうございます"
+      },
+      "restore": {
+        "title": "購入を復元",
+        "subtitle": "デバイスを変えた場合に使用"
+      },
+      "history": {
+        "title": "チャット履歴を管理",
+        "subtitle": "過去のセッションを表示・削除"
+      },
+      "reset": {
+        "title": "チャットと設定をリセット",
+        "subtitle": "このデバイスの保存データをすべて削除"
+      },
+      "rate": {
+        "title": "評価する",
+        "error": "ストアページを開けませんでした。"
+      },
+      "support": {
+        "title": "サポート",
+        "subtitle": "オンラインでお問い合わせ",
+        "error": "お問い合わせページを開けませんでした。"
+      },
+      "privacy": {
+        "title": "プライバシーポリシー",
+        "error": "プライバシーポリシーを開けませんでした。"
+      },
+      "terms": {
+        "title": "利用規約",
+        "error": "利用規約を開けませんでした。"
+      }
+    },
     "capabilities": {
       "text": "TXT",
       "image": "IMG",
       "audio": "AUD",
       "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "利用できません",
+      "linkUnavailableMessage": "今はこのリンクを開けません。",
+      "restoreSuccessTitle": "復元しました",
+      "restoreSuccessMessage": "購入が復元されました。",
+      "restoreErrorTitle": "復元に失敗しました",
+      "restoreErrorMessage": "今は購入を復元できません。",
+      "resetConfirmTitle": "アプリデータをリセットしますか？",
+      "resetConfirmMessage": "すべてのチャットとローカル設定が削除されます。",
+      "resetConfirmCancel": "キャンセル",
+      "resetConfirmCta": "リセット"
+    }
+  },
+  "createImage": {
+    "headerTitle": "作成",
+    "chooseStyle": "スタイルを選択",
+    "aspectRatio": "アスペクト比",
+    "starterPrompts": {
+      "title": "スタータープロンプト",
+      "items": [
+        "スタジオ風ヘッドショット",
+        "モダンなリビングルーム",
+        "夕日の熱帯ビーチ"
+      ]
+    },
+    "promptPlaceholder": "見たいものを入力…",
+    "promptHint": "例: 'スタジオライトのゴールデンレトリバー'",
+    "clearText": "テキストをクリア",
+    "generate": "生成",
+    "generating": "生成中…"
+  },
+  "editImage": {
+    "headerTitle": "編集",
+    "chooseStyle": "スタイルを選択",
+    "aspectRatio": "アスペクト比",
+    "starterPrompts": {
+      "title": "スタータープロンプト",
+      "items": [
+        "ライティングを調整",
+        "背景を削除",
+        "ポートレートをやわらかくレタッチ"
+      ]
+    },
+    "promptPlaceholder": "編集内容を説明（任意）",
+    "clearText": "クリア",
+    "generate": "適用",
+    "generating": "適用中…",
+    "upload": {
+      "choose": "写真を選択",
+      "change": "変更",
+      "remove": "削除"
+    },
+    "imageUnavailable": {
+      "title": "画像にアクセスできません",
+      "message": "選択した写真にアクセスできませんでした。もう一度選択して再試行してください。"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "アニメ"
+      },
+      "cartoon": {
+        "name": "カートゥーン"
+      },
+      "photoreal": {
+        "name": "フォトリアル"
+      },
+      "sketch": {
+        "name": "スケッチ"
+      },
+      "cyberpunk": {
+        "name": "サイバーパンク"
+      },
+      "steampunk": {
+        "name": "スチームパンク"
+      },
+      "illustration_3d": {
+        "name": "3Dイラスト"
+      },
+      "dark_fantasy": {
+        "name": "ダークファンタジー"
+      },
+      "vintage_film": {
+        "name": "ビンテージフィルム"
+      },
+      "pastel": {
+        "name": "パステル"
+      },
+      "neon_glow": {
+        "name": "ネオングロー"
+      },
+      "epic_landscape": {
+        "name": "エピックな風景"
+      }
+    },
+    "aspectRatios": {
+      "square": "正方形",
+      "landscape": "横長",
+      "portrait": "縦長"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "カスタム"
+    },
+    "modelTaglines": {
+      "runwareFluxSchnell": "最速のモデル",
+      "runwareFluxKrea": "クリエイティブでスタイリッシュな結果",
+      "runwareQwenImage": "バランスが良く高品質な結果",
+      "google4": "最高のAI画像モデル",
+      "fluxKontent": "編集向けに調整された Flux Kontent",
+      "runwareProvider": "品質と安定したディフュージョンのバランス。",
+      "airProvider": "Nano Banana が遊び心ある鮮やかなトーンを追加。",
+      "googleProvider": "Google が細部を丁寧に磨き上げた仕上がり。",
+      "anthropicProvider": "Claude パイプラインでニュアンスある雰囲気に。",
+      "default": "タップして利用可能なエンジンを表示。"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "選択したスタイル",
+    "sheetTitle": "ビジョンを形にしています",
+    "sheetSubtitle": "{{style}} をプロンプトに混ぜ込んでいます。しばらくお待ちください。",
+    "phases": {
+      "blend": "{{style}} をブレンド中",
+      "paint": "シーンを描画中",
+      "finish": "仕上げを追加中"
+    },
+    "actions": {
+      "cancel": "キャンセル",
+      "retry": "再試行",
+      "close": "閉じる"
+    },
+    "errors": {
+      "restrictedTitle": "制限されたコンテンツ",
+      "genericTitle": "生成に失敗しました",
+      "genericMessage": "画像を生成できませんでした。"
+    },
+    "alerts": {
+      "saveFailedTitle": "保存できませんでした",
+      "shareFailedTitle": "共有できませんでした",
+      "tryAgain": "もう一度お試しください。"
+    },
+    "result": {
+      "complete": "完了しました"
+    },
+    "accessibility": {
+      "close": "閉じる"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "削除",
+      "edit": "編集",
+      "save": "保存",
+      "share": "共有"
+    },
+    "accessibility": {
+      "close": "閉じる",
+      "delete": "画像を削除",
+      "edit": "画像を編集",
+      "save": "画像を保存",
+      "share": "画像を共有"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "メニューを開く",
+      "selectImages": "画像を選択",
+      "exitSelection": "選択を終了",
+      "deleteSelected": "選択した画像を削除",
+      "selectToDelete": "削除する画像を選択"
+    },
+    "createCard": {
+      "title": "テキストから作成",
+      "subtitle": "説明を書いてください",
+      "cta": "説明して生成"
+    },
+    "editCard": {
+      "title": "写真を編集",
+      "subtitle": "アップロードして編集",
+      "cta": "写真を編集"
+    },
+    "gallery": {
+      "title": "ギャラリー",
+      "empty": "まだ画像がありません",
+      "selection": {
+        "enter": "画像を選択",
+        "exit": "選択を終了",
+        "deleteSelected": "選択した画像を削除",
+        "selectForDelete": "削除する画像を選択"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "紹介",
+      "titleHighlight": "Image Studio",
+      "subtitle": "AIで画像を作成・編集 — {{app}} 内で完結します。",
+      "appName": "ChatCloud"
+    },
+    "relaxView": {
+      "title": "あなたのAIを紹介",
+      "titleHighlight": "アシスタント",
+      "subtitle": "日々のニーズを助ける特化AIが勢揃い",
+      "cards": [
+        {
+          "title": "フィットネスコーチ",
+          "text": "目標に合わせたトレーニングと栄養アドバイス"
+        },
+        {
+          "title": "ドクター",
+          "text": "ヘルスインサイト・症状分析・医療的なアドバイス"
+        },
+        {
+          "title": "ペットケア",
+          "text": "ペットの健康・トレーニング・ケアの専門アドバイス"
+        }
+      ]
+    },
+    "splash": {
+      "title": "CHAT CLOUD",
+      "tagline": "エンタープライズ向けAIソリューション",
+      "description": "ビジネスやチーム向けに設計された最先端のAIであなたの組織を強化します。",
+      "stats": "50万ユーザー以上からの信頼",
+      "rating": "4.9 / 5",
+      "button": "はじめる"
+    }
+  },
+  "coinStore": {
+    "title": "トークンを入手",
+    "loading": "コインストアを読み込み中…",
+    "balanceLabel": "現在の残高",
+    "balanceValue": "{{amount}} トークン",
+    "history": {
+      "link": "取引履歴",
+      "alertTitle": "履歴",
+      "alertBody": "取引履歴はまもなく利用可能になります。"
+    },
+    "noPacks": "コインパックがありません。RevenueCat の offering ID を確認してください。",
+    "badges": {
+      "basic": "ベーシックパック",
+      "popular": "一番人気",
+      "value": "最もお得"
+    },
+    "pack": {
+      "tokensLabel": "{{tokens}} トークン",
+      "defaultName": "パック {{index}}",
+      "unknownPrice": "$—"
+    },
+    "premium": {
+      "title": "プレミアムに移行",
+      "subtitle": "無制限のアクセスと機能",
+      "cta": "アップグレード"
+    },
+    "termsText": "購入を行うことで、以下に同意したことになります:",
+    "termsLink": "利用規約",
+    "alerts": {
+      "initErrorTitle": "初期化エラー",
+      "genericMessage": "問題が発生しました。",
+      "successTitle": "成功",
+      "successMessage": "トークンはまもなく反映されます。",
+      "purchaseFailedTitle": "購入に失敗しました",
+      "unknownError": "不明なエラー"
+    }
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "restore": "復元",
+    "restoreRestoring": "復元中…",
+    "features": {
+      "create": "画像と動画を作成",
+      "search": "AIでウェブを検索",
+      "talk": "AIと自然に会話"
+    },
+    "freeTrial": {
+      "title": "無料トライアル",
+      "subtitle": "3日間の無料トライアル"
+    },
+    "badge": {
+      "bestOffer": "最もお得"
+    },
+    "plans": {
+      "yearly": {
+        "title": "年間",
+        "only": "わずか {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "$1.35"
+      },
+      "monthly": {
+        "title": "月額",
+        "subtitle": "いつでもキャンセル可能",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "週額",
+        "subtitle": "いつでもキャンセル可能",
+        "defaultPrice": "USD 9.99"
+      }
+    },
+    "frequency": {
+      "perWeek": "週あたり",
+      "perMonth": "月あたり"
+    },
+    "cta": "続ける",
+    "legal": {
+      "terms": "利用規約",
+      "privacy": "プライバシー"
     }
   },
   "chat": {
-    "messagePlaceholder": "Agarka にメッセージ…",
+    "messagePlaceholder": "メッセージ...",
     "createImages": "画像を作成",
     "generateAiArtwork": "AIアートを生成",
     "camera": "カメラ",
-    "takeOrSelectPhotos": "写真を撮影または選択",
+    "takeOrSelectPhotos": "写真を撮る/選ぶ",
     "search": "検索",
     "findInformation": "情報を探す",
+    "findRecentInfo": "最新情報を探す",
     "removeImage": "画像を削除",
     "messageInput": "メッセージ入力",
     "clearInput": "入力をクリア",
+    "quickActionsLabel": "クイックアクション",
     "hideQuickActions": "クイックアクションを隠す",
     "showQuickActions": "クイックアクションを表示",
     "startVoiceInput": "音声入力を開始",
-    "sendMessage": "送信",
+    "sendMessage": "メッセージを送信",
     "offline": "オフライン",
     "stop": "停止",
     "streaming": "ストリーミング中…",
     "closeRecorder": "レコーダーを閉じる",
-    "insertTranscript": "書き起こしを挿入",
-    "scrollToLatest": "最新メッセージへスクロール",
+    "insertTranscript": "送信",
+    "scrollToLatest": "最新にスクロール",
     "copyMessage": "メッセージをコピー",
     "copyMessageHint": "このメッセージをクリップボードにコピー",
     "shareMessage": "メッセージを共有",
     "shareMessageHint": "このメッセージを共有",
-    "regenerateResponse": "応答を再生成",
-    "regenerateResponseHint": "新しい応答を生成",
+    "regenerateResponse": "返答を再生成",
+    "regenerateResponseHint": "新しい返答を生成",
     "copyCode": "コードをコピー",
     "image": "画像",
     "loading": "読み込み中…",
-    "loadingChat": "チャットを読み込み中…",
-    "offlineBanner": "オフラインです。メッセージを送信できません。",
+    "loadingChat": "チャットを読み込み中...",
+    "offlineBanner": "オフラインのためメッセージは送信できません。",
     "imagePickerErrorTitle": "画像選択エラー",
-    "messageTooLong": "メッセージが長すぎます（{{length}}）。上限は {{limit}} です。",
-    "emptyTitle": "何をお手伝いしますか？",
-    "emptySubtitle": "AIと会話を始めましょう",
+    "imagePickerErrorMessage": "写真にアクセスできません。もう一度お試しください。",
+    "messageTooLong": "メッセージが長すぎます ({{length}})。上限は {{limit}} です。",
+    "sendFailed": "送信に失敗しました。",
+    "voiceStartFailed": "音声を開始できませんでした。",
+    "emptyTitle": "どうお手伝いしましょう？",
+    "emptySubtitle": "AIとの会話を始めましょう",
     "privateTitle": "プライベートチャット",
     "privateSubtitle": "このチャットは履歴に表示されません",
+    "permissions": {
+      "photosTitle": "写真へのアクセスが必要です",
+      "photosMessage": "画像を選択するには写真へのアクセスが必要です。",
+      "voiceTitle": "音声権限が必要です",
+      "voiceMessage": "音声機能を使うにはマイクと音声認識へのアクセスが必要です。"
+    },
+    "activity": {
+      "analyzingImages": "画像を解析中…",
+      "searching": "検索中…",
+      "thinking": "考えています…"
+    },
+    "webSearch": {
+      "title": "ウェブ検索",
+      "subtitle": "最新情報を探す",
+      "label": "ウェブ検索",
+      "enable": "ウェブ検索を有効にする",
+      "disable": "ウェブ検索を無効にする",
+      "toggleLabel": "ウェブで検索"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "ビジュアルを素早くデザイン。",
+      "subtitle": "生成・調整・公開を1か所で。",
+      "cta": "開く"
+    },
+    "quickActions": {
+      "createImages": "画像を作成",
+      "openCamera": "カメラを開く",
+      "editImage": "画像を編集",
+      "startVoice": "音声を開始",
+      "assistants": "アシスタント"
+    },
     "listening": "聞き取り中…",
     "startRecording": "録音を開始…",
+    "assistantHeader": {
+      "unavailableTitle": "アシスタントを読み込めません",
+      "unavailableDescription": "このアシスタントを読み込めませんでした。もう一度お試しください。",
+      "ready": "サポートの準備ができました"
+    },
+    "actions": {
+      "copy": "コピー",
+      "share": "共有",
+      "regenerate": "再生成",
+      "retryFromHere": "ここから再試行",
+      "cancel": "キャンセル"
+    },
+    "messageActionTitle": "メッセージ",
+    "status": {
+      "sending": "送信中…",
+      "failed": "失敗",
+      "sent": "送信済み"
+    },
     "suggestions": {
-      "writeStory": "創作ストーリーを書く",
+      "writeStory": "クリエイティブな物語を書く",
       "writeStorySubtitle": "魔法の冒険について",
-      "planTravel": "旅行プランを作成",
-      "planTravelSubtitle": "最高のバケーションに向けて",
+      "planTravel": "旅行プランを立てる",
+      "planTravelSubtitle": "最高のバケーションのために",
       "explainConcept": "この概念を説明",
-      "explainConceptSubtitle": "やさしく分かりやすく",
-      "planDay": "一日の計画を立てる",
-      "planDaySubtitle": "生産性アップのコツ付き"
+      "explainConceptSubtitle": "やさしい言葉で",
+      "planDay": "一日を計画",
+      "planDaySubtitle": "生産性アップのヒント付き"
     }
   },
   "imageUpload": {
@@ -243,6 +732,7 @@
     "cancel": "キャンセル",
     "save": "保存",
     "delete": "削除",
-    "close": "閉じる"
+    "close": "閉じる",
+    "allow": "許可"
   }
 }

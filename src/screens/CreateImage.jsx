@@ -35,6 +35,7 @@ import Reanimated, {
 } from 'react-native-reanimated';
 import { getModelVisuals, hexToRgba } from '../utils/modelVisuals';
 import { getImageModelPrice } from '../utils/imagePricing';
+import { useTranslation } from 'react-i18next';
 
 const STYLES = [
   {
@@ -113,20 +114,21 @@ const STYLES = [
   },
 ];
 
-const STARTER_PROMPTS = [
+const DEFAULT_STARTER_PROMPTS = [
   'studio headshot',
   'modern living room',
   'tropical beach at sunset',
 ];
 
 const ASPECTS = [
-  { key: '1:1', size: '1024x1024', label: 'Square', glyph: { width: 16, height: 16 } },
-  { key: '16:9', size: '1024x576', label: 'Landscape', glyph: { width: 20, height: 11 } },
-  { key: '3:4', size: '768x1024', label: 'Portrait', glyph: { width: 11, height: 20 } },
+  { key: '1:1', size: '1024x1024', labelKey: 'studioCommon.aspectRatios.square', glyph: { width: 16, height: 16 } },
+  { key: '16:9', size: '1024x576', labelKey: 'studioCommon.aspectRatios.landscape', glyph: { width: 20, height: 11 } },
+  { key: '3:4', size: '768x1024', labelKey: 'studioCommon.aspectRatios.portrait', glyph: { width: 11, height: 20 } },
 ];
 
 export default function CreateImage({ navigation }) {
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   // Balance
   const coins = useImagesStore(s => s.coinsBalance);
@@ -187,6 +189,20 @@ export default function CreateImage({ navigation }) {
   const modelButtonRef = useRef(null);
   const [generatorVisible, setGeneratorVisible] = useState(false);
   const [generatorPayload, setGeneratorPayload] = useState(null);
+  const starterPrompts = useMemo(() => {
+    const list = t('createImage.starterPrompts.items', { returnObjects: true });
+    return Array.isArray(list) ? list : DEFAULT_STARTER_PROMPTS;
+  }, [t]);
+
+  const getStyleLabel = useCallback(
+    (style) => {
+      if (!style) return '';
+      return t(`studioCommon.styles.${style.id}.name`, {
+        defaultValue: style.name || style.id,
+      });
+    },
+    [t],
+  );
 
   useEffect(() => {
     setSelectedModel(defaultModel);
@@ -245,10 +261,15 @@ export default function CreateImage({ navigation }) {
     [footerInset],
   );
 
-  const selectedStyleData = useMemo(
-    () => (selectedStyle ? STYLES.find(s => s.id === selectedStyle) : null),
-    [selectedStyle],
-  );
+  const selectedStyleData = useMemo(() => {
+    if (!selectedStyle) return null;
+    const base = STYLES.find(s => s.id === selectedStyle);
+    if (!base) return null;
+    return {
+      ...base,
+      name: getStyleLabel(base),
+    };
+  }, [selectedStyle, getStyleLabel]);
   const selectedCost = getImageModelPrice(selectedModel);
   const selectedSize = useMemo(
     () => ASPECTS.find(a => a.key === aspect)?.size || '1024x1024',
@@ -302,6 +323,7 @@ export default function CreateImage({ navigation }) {
   const renderStyle = useCallback(
     ({ item }) => {
       const selected = item.id === selectedStyle;
+      const label = getStyleLabel(item);
       return (
         <Pressable
           key={item.id}
@@ -330,12 +352,12 @@ export default function CreateImage({ navigation }) {
             style={[styles.styleName, selected && styles.styleNameSelected]}
             numberOfLines={1}
           >
-            {item.name}
+            {label}
           </Text>
         </Pressable>
       );
     },
-    [selectedStyle],
+    [selectedStyle, getStyleLabel],
   );
 
   const keyStyle = useCallback((it) => it.id, []);
@@ -367,7 +389,7 @@ export default function CreateImage({ navigation }) {
             <SvgIcon name="chevron-left" size={22} color="#FFFFFF" />
           </Pressable>
           <View pointerEvents="none" style={styles.headerCenterAbs}>
-            <Text style={styles.headerTitle}>Create</Text>
+            <Text style={styles.headerTitle}>{t('createImage.headerTitle')}</Text>
           </View>
           <Pressable
             onPress={() => navigation.navigate('CoinStore')}
@@ -421,7 +443,7 @@ export default function CreateImage({ navigation }) {
 
           {/* Choose a Style */}
           <View style={styles.rowBetween}>
-            <Text style={styles.sectionLabel}>Choose a Style</Text>
+            <Text style={styles.sectionLabel}>{t('createImage.chooseStyle')}</Text>
           </View>
           <FlatList
             data={STYLES}
@@ -435,7 +457,7 @@ export default function CreateImage({ navigation }) {
             removeClippedSubViews
           />
 
-          <Text style={styles.aspectLabel}>Aspect Ratio</Text>
+          <Text style={styles.aspectLabel}>{t('createImage.aspectRatio')}</Text>
           <View style={styles.aspectList}>
             {ASPECTS.map(a => {
               const active = aspect === a.key;
@@ -460,7 +482,7 @@ export default function CreateImage({ navigation }) {
                     style={[styles.aspectKey, active && styles.aspectKeyActive]}
                     numberOfLines={1}
                   >
-                    {a.label}
+                    {t(a.labelKey)}
                   </Text>
                 </Pressable>
               );
@@ -468,9 +490,9 @@ export default function CreateImage({ navigation }) {
           </View>
 
           {/* Starter prompts */}
-          <Text style={[styles.sectionLabel, styles.mt6]}>Starter Prompts</Text>
+          <Text style={[styles.sectionLabel, styles.mt6]}>{t('createImage.starterPrompts.title')}</Text>
           <FlatList
-            data={STARTER_PROMPTS}
+            data={starterPrompts}
             keyExtractor={keyChip}
             renderItem={renderChip}
             horizontal
@@ -485,7 +507,7 @@ export default function CreateImage({ navigation }) {
           <View style={styles.promptWrap}>
             <TextInput
               style={styles.prompt}
-              placeholder="Type what you want to see…"
+              placeholder={t('createImage.promptPlaceholder')}
               placeholderTextColor={'rgba(255,255,255,0.65)'}
               multiline
               value={prompt}
@@ -497,7 +519,7 @@ export default function CreateImage({ navigation }) {
                 onPress={() => setPrompt('')}
                 style={styles.promptClearBtn}
                 hitSlop={8}
-                accessibilityLabel="Clear text"
+                accessibilityLabel={t('createImage.clearText')}
               >
                 <SvgIcon
                   name="clear"
@@ -507,7 +529,7 @@ export default function CreateImage({ navigation }) {
               </Pressable>
             )}
             <Text style={styles.promptHint}>
-              Example: 'Golden retriever in studio lighting'
+              {t('createImage.promptHint')}
             </Text>
           </View>
         </Reanimated.View>
@@ -532,7 +554,7 @@ export default function CreateImage({ navigation }) {
               )}
             </View>
             <Text style={styles.generateBtnText}>
-              {busy ? 'Generating…' : 'Generate'}
+              {busy ? t('createImage.generating') : t('createImage.generate')}
             </Text>
             <View style={styles.generateCoinsWrap}>
               <SvgIcon

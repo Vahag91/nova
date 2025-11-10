@@ -15,6 +15,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useImagesStore } from '../../state/useImagesStore';
 import { normalizeImageUri } from '../../lib/imageUtils';
 import { toLocalPath } from '../../lib/imageDownloader';
+import { useTranslation } from 'react-i18next';
 
 const STEP = {
   APPLYING: 'applying',
@@ -40,6 +41,7 @@ export default function CreateImageGenerating({
   payload,
   onClose,
 }) {
+  const { t } = useTranslation();
   const createJob = useImagesStore(s => s.createJob);
 
   const [step, setStep] = useState(STEP.APPLYING);
@@ -131,12 +133,14 @@ export default function CreateImageGenerating({
           imageId: job?.images?.[0]?.id || null,
           imagesCount: Array.isArray(job?.images) ? job.images.length : 1,
           payload: jobPayload,
+          // effective size returned by server (may differ from requested)
+          effectiveSize: job?.size || jobPayload?.size || null,
         });
         setPhaseIndex(3); // Finishing
         setStep(STEP.RESULT);
       } catch (err) {
         if (cancelled) return;
-        setError(err?.message || 'Could not generate image.');
+        setError(err?.message || t('createImageGenerating.errors.genericMessage'));
         setErrorCode(err?.code || null);
         setStep(STEP.ERROR);
       }
@@ -147,7 +151,7 @@ export default function CreateImageGenerating({
       warmup.stop();
       spinnerLoop.stop();
     };
-  }, [visible, jobPayload, createJob, progress, spinner, retryCount]);
+  }, [visible, jobPayload, createJob, progress, spinner, retryCount, t]);
 
   const progressWidth = progress.interpolate({
     inputRange: [0, 1],
@@ -174,18 +178,26 @@ export default function CreateImageGenerating({
     if (!imageUri) return;
     try {
       const local = await toLocalPath(imageUri);
-      await Share.share({ url: local, message: local });
+      // Provide only the URL so share targets don't also post a text path
+      await Share.share({ url: local });
     } catch (err) {
-      Alert.alert('Could not save', 'Please try again.');
+      Alert.alert(
+        t('createImageGenerating.alerts.saveFailedTitle'),
+        t('createImageGenerating.alerts.tryAgain')
+      );
     }
   };
 
   const handleShare = async () => {
     if (!imageUri) return;
     try {
-      await Share.share({ url: imageUri, message: imageUri });
+      // Only include the URL/attachment to avoid duplicate text messages
+      await Share.share({ url: imageUri });
     } catch (err) {
-      Alert.alert('Could not share', 'Please try again.');
+      Alert.alert(
+        t('createImageGenerating.alerts.shareFailedTitle'),
+        t('createImageGenerating.alerts.tryAgain')
+      );
     }
   };
 
@@ -217,19 +229,20 @@ const handleRetry = () => {
   setRetryCount(c => c + 1);
 };
 
+  const styleLabelFallback = t('createImageGenerating.stylePlaceholder');
   const styleLabel = typeof payload?.styleName === 'string' && payload.styleName.length
     ? payload.styleName
-    : 'your chosen style';
+    : styleLabelFallback;
   const phases = useMemo(
     () => [
-      { label: `Blending in ${styleLabel}`, status: phaseIndex >= 1 ? 'active' : 'pending' },
-      { label: 'Painting the scene', status: phaseIndex >= 2 ? 'active' : 'pending' },
-      { label: 'Adding final polish', status: phaseIndex >= 3 ? 'active' : 'pending' },
+      { label: t('createImageGenerating.phases.blend', { style: styleLabel }) },
+      { label: t('createImageGenerating.phases.paint') },
+      { label: t('createImageGenerating.phases.finish') },
     ],
-    [phaseIndex, styleLabel],
+    [styleLabel, t],
   );
 
-  const requestedSize = jobMeta?.payload?.size || payload?.size;
+  const requestedSize = jobMeta?.effectiveSize || jobMeta?.payload?.size || payload?.size;
   const previewAspectRatio = useMemo(() => {
     if (typeof requestedSize === 'string') {
       const match = requestedSize.trim().match(/^(\d+)\s*x\s*(\d+)$/i);
@@ -262,9 +275,9 @@ const handleRetry = () => {
                 </View>
               </View>
               <View style={styles.sheetBody}>
-                <Text style={styles.sheetTitle}>Crafting your vision</Text>
+                <Text style={styles.sheetTitle}>{t('createImageGenerating.sheetTitle')}</Text>
                 <Text style={styles.sheetSubtitle}>
-                  Brief sip of server coffee while we blend {styleLabel.toLowerCase()} into the prompt.
+                  {t('createImageGenerating.sheetSubtitle', { style: styleLabel })}
                 </Text>
                 <View style={styles.phaseList}>
                   {phases.map((phase, index) => {
@@ -297,7 +310,7 @@ const handleRetry = () => {
                   <Animated.View style={[styles.progressFill, { width: progressWidth }]} />
                 </View>
                 <Pressable onPress={handleClose} hitSlop={8}>
-                  <Text style={styles.cancelText}>Cancel</Text>
+                  <Text style={styles.cancelText}>{t('createImageGenerating.actions.cancel')}</Text>
                 </Pressable>
               </View>
             </View>
@@ -307,22 +320,24 @@ const handleRetry = () => {
         {step === STEP.ERROR && (
           <View style={styles.errorContainer}>
             <Text style={styles.errorTitle}>
-              {errorCode === 'restricted_content' ? 'Restricted Content' : 'Generation failed'}
+              {errorCode === 'restricted_content'
+                ? t('createImageGenerating.errors.restrictedTitle')
+                : t('createImageGenerating.errors.genericTitle')}
             </Text>
             <Text style={styles.errorMessage}>{error}</Text>
             {errorCode === 'restricted_content' ? (
               <View style={styles.errorActions}>
                 <Pressable onPress={handleClose} style={[styles.errorButton, styles.errorButtonPrimary]} hitSlop={8}>
-                  <Text style={styles.errorButtonPrimaryText}>Close</Text>
+                  <Text style={styles.errorButtonPrimaryText}>{t('createImageGenerating.actions.close')}</Text>
                 </Pressable>
               </View>
             ) : (
               <View style={styles.errorActions}>
                 <Pressable onPress={handleRetry} style={[styles.errorButton, styles.errorButtonPrimary]} hitSlop={8}>
-                  <Text style={styles.errorButtonPrimaryText}>Retry</Text>
+                  <Text style={styles.errorButtonPrimaryText}>{t('createImageGenerating.actions.retry')}</Text>
                 </Pressable>
                 <Pressable onPress={handleClose} style={styles.errorButton} hitSlop={8}>
-                  <Text style={styles.errorButtonText}>Close</Text>
+                  <Text style={styles.errorButtonText}>{t('createImageGenerating.actions.close')}</Text>
                 </Pressable>
               </View>
             )}
@@ -344,7 +359,7 @@ const handleRetry = () => {
                 style={styles.closeBadge}
                 hitSlop={10}
                 accessibilityRole="button"
-                accessibilityLabel="Close"
+                accessibilityLabel={t('createImageGenerating.accessibility.close')}
               >
                 <Text style={styles.closeIcon}>×</Text>
               </Pressable>
@@ -352,13 +367,13 @@ const handleRetry = () => {
                 <View style={styles.previewBorder} />
                 <Image
                   source={{ uri: imageUri || FALLBACK_IMAGE }}
-                  resizeMode="cover"
+                  resizeMode="contain"
                   style={styles.resultImage}
                 />
               </View>
 
               <View style={styles.resultMeta}>
-                <Text style={styles.resultTitle}>All finished</Text>
+                <Text style={styles.resultTitle}>{t('createImageGenerating.result.complete')}</Text>
                 {payload?.originalPrompt ? (
                   <Text style={styles.resultPrompt} numberOfLines={2}>
                     “{payload.originalPrompt.trim()}”

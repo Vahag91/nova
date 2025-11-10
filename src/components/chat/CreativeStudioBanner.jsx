@@ -47,10 +47,13 @@ const CreativeStudioBanner = ({ onPress, style, paused = false }) => {
               <Text style={styles.title}>
                 {t('chat.studioBanner.title', { defaultValue: 'Design visuals at speed.' })}
               </Text>
+              <Text style={styles.subtitle}>
+                {t('chat.studioBanner.subtitle', { defaultValue: 'Generate, refine, and publish visual assets in one place.' })}
+              </Text>
             </View>
             <View style={styles.cta}>
               <Text style={styles.ctaText}>
-                {t('chat.studioBanner.open', { defaultValue: 'Open' })}
+                {t('chat.studioBanner.cta', { defaultValue: 'Open' })}
               </Text>
               <View style={styles.ctaIcon}>
                 <Text style={styles.ctaIconText}>›</Text>
@@ -78,6 +81,7 @@ const styles = StyleSheet.create({
   textBlock: { gap: 10, maxWidth: '80%' },
   label: { color: 'rgba(229,231,235,0.7)', fontSize: 16, fontFamily: 'Lato-Bold', letterSpacing: 0.2 },
   title: { color: '#FFFFFF', fontSize: 24, fontFamily: 'Lato-Bold', letterSpacing: 0.2 },
+  subtitle: { color: 'rgba(229,231,235,0.78)', fontSize: 14, fontFamily: 'Lato-Regular', lineHeight: 20 },
   cta: {
     flexDirection: 'row',
     alignItems: 'center',
