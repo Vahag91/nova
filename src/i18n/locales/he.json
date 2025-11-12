@@ -142,7 +142,7 @@
         "description": "מה אפשר להכין ממה שיש."
       },
       "fitness": {
-        "name": "מאמן הרגלים וכושר",
+        "name": "מאמן כושר",
         "description": "הרגלים קטנים ואימוני בית."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "תאר וצור"
     },
     "editCard": {
-      "title": "עריכת תמונה",
-      "subtitle": "העלה וערוך",
-      "cta": "ערוך תמונה"
+      "title": "עורך תמונות AI",
+      "subtitle": "הפוך ושפר עם AI",
+      "cta": "ערוך עם AI"
     },
     "gallery": {
       "title": "גלריה",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "לא ניתן לגשת לתמונות שלך. נסה שוב.",
     "messageTooLong": "הודעה ארוכה מדי ({{length}}). המגבלה היא {{limit}}.",
     "sendFailed": "שליחה נכשלה.",
+    "modelNoImageSupport": "המודל שנבחר אינו תומך בתמונות. אנא בחר מודל אחר.",
     "voiceStartFailed": "לא ניתן להתחיל קול.",
     "emptyTitle": "איך אפשר לעזור?",
     "emptySubtitle": "התחל שיחה עם ה-AI",

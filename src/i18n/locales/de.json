@@ -142,7 +142,7 @@
         "description": "Was du mit deinen Zutaten kochen kannst."
       },
       "fitness": {
-        "name": "Gewohnheits- & Fitnesscoach",
+        "name": "Fitness-Coach",
         "description": "Kleine Gewohnheiten & Home-Workouts."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Beschreiben & erstellen"
     },
     "editCard": {
-      "title": "Foto bearbeiten",
-      "subtitle": "Hochladen & bearbeiten",
-      "cta": "Foto bearbeiten"
+      "title": "KI-Fotobearbeitung",
+      "subtitle": "Mit KI transformieren & verbessern",
+      "cta": "Mit KI bearbeiten"
     },
     "gallery": {
       "title": "Galerie",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Zugriff auf Fotos nicht möglich. Bitte erneut versuchen.",
     "messageTooLong": "Nachricht zu lang ({{length}}). Limit ist {{limit}}.",
     "sendFailed": "Senden fehlgeschlagen.",
+    "modelNoImageSupport": "Das ausgewählte Modell unterstützt keine Bilder. Bitte wählen Sie ein anderes Modell.",
     "voiceStartFailed": "Sprache konnte nicht gestartet werden.",
     "emptyTitle": "Wobei soll ich helfen?",
     "emptySubtitle": "Starte ein Gespräch mit der KI",

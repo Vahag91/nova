@@ -142,7 +142,7 @@
         "description": "Elindekilerle ne pişirebilirsin?"
       },
       "fitness": {
-        "name": "Alışkanlık & Fitness Koçu",
+        "name": "Fitness Koçu",
         "description": "Küçük alışkanlıklar ve ev egzersizleri."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Tarif et ve oluştur"
     },
     "editCard": {
-      "title": "Bir fotoğrafı düzenle",
-      "subtitle": "Yükle ve düzenle",
-      "cta": "Fotoğraf düzenle"
+      "title": "AI Fotoğraf Editörü",
+      "subtitle": "AI ile dönüştür ve geliştir",
+      "cta": "AI ile Düzenle"
     },
     "gallery": {
       "title": "Galeri",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Fotoğraflarına erişilemedi. Lütfen tekrar dene.",
     "messageTooLong": "Mesaj çok uzun ({{length}}). Sınır {{limit}}.",
     "sendFailed": "Gönderilemedi.",
+    "modelNoImageSupport": "Seçilen model görüntüleri desteklemiyor. Lütfen farklı bir model seçin.",
     "voiceStartFailed": "Sesli giriş başlatılamadı.",
     "emptyTitle": "Nasıl yardımcı olabilirim?",
     "emptySubtitle": "Yapay zeka ile bir sohbet başlat",

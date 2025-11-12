@@ -142,7 +142,7 @@
         "description": "用手邊的食材做飯。"
       },
       "fitness": {
-        "name": "習慣與健身教練",
+        "name": "健身教練",
         "description": "小習慣與居家運動。"
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "描述並生成"
     },
     "editCard": {
-      "title": "編輯照片",
-      "subtitle": "上傳並編輯",
-      "cta": "編輯照片"
+      "title": "AI照片編輯器",
+      "subtitle": "用AI轉換和增強",
+      "cta": "使用AI編輯"
     },
     "gallery": {
       "title": "圖庫",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "無法存取你的照片。請重試。",
     "messageTooLong": "訊息太長 ({{length}})。上限為 {{limit}}。",
     "sendFailed": "傳送失敗。",
+    "modelNoImageSupport": "所選模型不支援圖像。請選擇其他模型。",
     "voiceStartFailed": "無法開始語音。",
     "emptyTitle": "需要我幫什麼？",
     "emptySubtitle": "開始和 AI 對話吧",

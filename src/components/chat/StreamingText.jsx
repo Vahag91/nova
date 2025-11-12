@@ -6,21 +6,32 @@ import { subscribeStream, getStream } from '../../lib/streamingBuffer';
 
 const CHARS_PER_FRAME = 10;  // Reveal 10 characters per frame (faster)
 const FRAME_DELAY = 20;      // 20ms between frames = 50 FPS (smoother)
+const MARKDOWN_UPDATE_THRESHOLD = 30;  // Only update MarkdownContent when content changes by 30+ chars
+const MARKDOWN_UPDATE_INTERVAL = 100;  // Or every 100ms, whichever comes first
 
 function StreamingText({ messageId, base = '', streaming = false, activityText }) {
   const [buffered, setBuffered] = useState('');      // What we've received from server
   const [displayed, setDisplayed] = useState('');    // What we're showing to user
+  const [debouncedDisplayed, setDebouncedDisplayed] = useState('');  // Debounced version for MarkdownContent
   const displayTimerRef = useRef(null);
+  const debounceTimerRef = useRef(null);
   const targetLengthRef = useRef(0);
+  const lastMarkdownUpdateRef = useRef(0);
+  const lastMarkdownLengthRef = useRef(0);
   const skeletonPulse = useRef(new Animated.Value(0.3)).current;
+  
 
 
-  // Cleanup timer on unmount
+  // Cleanup timers on unmount
   useEffect(() => {
     return () => {
       if (displayTimerRef.current) {
         clearInterval(displayTimerRef.current);
         displayTimerRef.current = null;
+      }
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
       }
     };
   }, []);
@@ -60,11 +71,16 @@ function StreamingText({ messageId, base = '', streaming = false, activityText }
         clearInterval(displayTimerRef.current);
         displayTimerRef.current = null;
       }
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
+      }
       return;
     }
 
     // Start the reveal timer once
     displayTimerRef.current = setInterval(() => {
+      const updateStart = performance.now();
       setDisplayed(prev => {
         const currentLength = prev.length;
         const targetLength = targetLengthRef.current;
@@ -78,7 +94,6 @@ function StreamingText({ messageId, base = '', streaming = false, activityText }
         const nextLength = Math.min(currentLength + CHARS_PER_FRAME, targetLength);
         const bufferedNow = getStream(messageId) || '';
         const nextText = bufferedNow.substring(0, nextLength);
-
         return nextText;
       });
     }, FRAME_DELAY);
@@ -87,13 +102,89 @@ function StreamingText({ messageId, base = '', streaming = false, activityText }
         clearInterval(displayTimerRef.current);
         displayTimerRef.current = null;
       }
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
+      }
     };
   }, [streaming, messageId]);
 
-  const fullText = useMemo(() => (base || '') + displayed, [base, displayed]);
+  // Debounce/throttle MarkdownContent updates during streaming
+  useEffect(() => {
+    if (!streaming || !messageId) {
+      // When streaming stops, immediately sync debounced version
+      const currentDisplayed = displayed;
+      setDebouncedDisplayed(prev => {
+        if (prev !== currentDisplayed) {
+          return currentDisplayed;
+        }
+        return prev;
+      });
+      return;
+    }
 
-  // pure-image guard (non-global regex)
-  const isPureImageMessage = /^!\[[^\]]*\]\([^)]+\)(\s*!\[[^\]]*\]\([^)]+\))*\s*$/.test(fullText.trim());
+    const now = performance.now();
+    const lengthDiff = Math.abs(displayed.length - lastMarkdownLengthRef.current);
+    const timeSinceLastUpdate = now - lastMarkdownUpdateRef.current;
+    
+    // Update MarkdownContent if:
+    // 1. Content changed significantly (30+ chars)
+    // 2. Or enough time has passed (100ms)
+    const shouldUpdate = lengthDiff >= MARKDOWN_UPDATE_THRESHOLD || timeSinceLastUpdate >= MARKDOWN_UPDATE_INTERVAL;
+
+    if (shouldUpdate) {
+      // Clear any pending debounce
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
+      }
+      
+      lastMarkdownUpdateRef.current = now;
+      lastMarkdownLengthRef.current = displayed.length;
+      setDebouncedDisplayed(displayed);
+    } else {
+      // Schedule a debounced update
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+      
+      debounceTimerRef.current = setTimeout(() => {
+        lastMarkdownUpdateRef.current = performance.now();
+        lastMarkdownLengthRef.current = displayed.length;
+        setDebouncedDisplayed(displayed);
+      }, MARKDOWN_UPDATE_INTERVAL);
+    }
+
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
+      }
+    };
+  }, [displayed, streaming, messageId]);
+
+  const fullText = useMemo(() => {
+    return (base || '') + displayed;
+  }, [base, displayed]);
+
+  // Use debounced version for MarkdownContent during streaming
+  const markdownText = useMemo(() => {
+    if (streaming) {
+      // During streaming: base is empty/partial, add displayed content
+      return (base || '') + debouncedDisplayed;
+    }
+    // When streaming completes: base already contains the full final content
+    // Don't add displayed to avoid duplication
+    return base || '';
+  }, [base, displayed, debouncedDisplayed, streaming]);
+
+  // pure-image guard (memoized regex check for performance)
+  const isPureImageMessage = useMemo(() => {
+    const trimmed = fullText.trim();
+    if (!trimmed) return false;
+    const regex = /^!\[[^\]]*\]\([^)]+\)(\s*!\[[^\]]*\]\([^)]+\))*\s*$/;
+    return regex.test(trimmed);
+  }, [fullText]);
   if (isPureImageMessage) {
     return <MarkdownContent text={base || ''} isUser={false} animateOnMount={false} streaming={false} />;
   }
@@ -133,8 +224,8 @@ function StreamingText({ messageId, base = '', streaming = false, activityText }
     );
   }
 
-  // Render with smooth character-by-character reveal
-  return <MarkdownContent text={fullText} isUser={false} animateOnMount={!streaming} streaming={false} />;
+  // Render with debounced MarkdownContent updates during streaming
+  return <MarkdownContent text={markdownText} isUser={false} animateOnMount={!streaming} streaming={streaming} />;
 }
 
 export default memo(StreamingText);

@@ -142,7 +142,7 @@
         "description": "Qué cocinar con lo que tienes."
       },
       "fitness": {
-        "name": "Coach de hábitos y fitness",
+        "name": "Coach de fitness",
         "description": "Pequeños hábitos y entrenamientos en casa."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Describe y crea"
     },
     "editCard": {
-      "title": "Editar una foto",
-      "subtitle": "Sube y edita",
-      "cta": "Editar foto"
+      "title": "Editor de Fotos con IA",
+      "subtitle": "Transforma y mejora con IA",
+      "cta": "Editar con IA"
     },
     "gallery": {
       "title": "Galería",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "No se pudo acceder a tus fotos. Por favor, inténtalo de nuevo.",
     "messageTooLong": "El mensaje es muy largo ({{length}}). El límite es {{limit}}.",
     "sendFailed": "Envío fallido.",
+    "modelNoImageSupport": "El modelo seleccionado no admite imágenes. Por favor, elige un modelo diferente.",
     "voiceStartFailed": "No se pudo iniciar el audio.",
     "emptyTitle": "¿En qué puedo ayudarte?",
     "emptySubtitle": "Comienza una conversación con la IA",

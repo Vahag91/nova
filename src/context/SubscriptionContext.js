@@ -11,6 +11,7 @@ import {
 
 // ✅ NEW: bring your stable device id
 import { ensureDeviceId } from '../lib/ensureDeviceId';
+import { useSettingsStore } from '../state/useSettingsStore';
 
 export const SubscriptionContext = createContext(null);
 
@@ -121,6 +122,12 @@ export function SubscriptionProvider({ children }) {
       setIsPremium(hasPremium);
       setCustomerInfo(info);
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(hasPremium));
+      
+      // Validate model when premium status changes
+      const validateModel = useSettingsStore.getState().validateModelForPremium;
+      if (validateModel) {
+        validateModel(hasPremium);
+      }
     } catch (e) {
       console.warn('Failed to process customer info:', e?.message || String(e));
     }

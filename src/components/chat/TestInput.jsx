@@ -1,9 +1,10 @@
-import React, { useMemo, useState, useEffect, useCallback, memo, useRef } from 'react';
+import React, { useMemo, useState, useEffect, useCallback, memo, useRef, useContext } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
+import { SubscriptionContext } from '../../context/SubscriptionContext';
 
 const noop = () => { };
 
@@ -19,7 +20,7 @@ const MicIcon = ({ color, size = 24 }) => (
 );
 const StopIcon = ({ color, size = 24 }) => (
   <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
-    <Path d="M320-320h320v-320H320v320ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+    <Path d="M320-320h320v-320H320v320Z" />
   </Svg>
 );
 const TestIcon = ({ color, size = 24 }) => (
@@ -62,6 +63,20 @@ function TestInput({
 }) {
   // Debuggers removed (focus on voice only)
   const { t } = useTranslation();
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
+  
+  const handleWebSearchPress = useCallback(() => {
+    if (!isPremium) {
+      try {
+        navigation?.navigate('PaywallScreen', { returnTo: 'Chat' });
+      } catch (error) {
+        console.warn('Failed to navigate to PaywallScreen:', error);
+      }
+      return;
+    }
+    onSearchPress();
+  }, [isPremium, navigation, onSearchPress]);
   const safe = useCallback((fn, ...args) => {
     if (typeof fn !== 'function') return;
     try { fn(...args); } catch {}
@@ -271,7 +286,7 @@ function TestInput({
                   <Animated.View style={menuItem3Style}>
                     <TouchableOpacity
                       style={[styles.menuItem, styles.menuItemLast]}
-                      onPress={() => { safe(toggleActions); safe(onSearchPress); }}
+                      onPress={() => { safe(toggleActions); safe(handleWebSearchPress); }}
                       accessibilityRole="button"
                       accessibilityLabel={t('chat.webSearch.toggleLabel', { defaultValue: 'Search the web' })}
                       activeOpacity={0.9}
@@ -348,7 +363,7 @@ function TestInput({
 
             <TouchableOpacity
               style={[styles.webSearchToggle, offline && styles.iconDisabled]}
-              onPress={() => { if (!offline) safe(onSearchPress); }}
+              onPress={() => { if (!offline) safe(handleWebSearchPress); }}
               disabled={offline}
               accessibilityRole="button"
               accessibilityLabel={webSearchEnabled ? t('chat.webSearch.disable', { defaultValue: 'Disable web search' }) : t('chat.webSearch.enable', { defaultValue: 'Enable web search' })}
@@ -386,16 +401,14 @@ function TestInput({
               </TouchableOpacity>
             ) : (
               <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel={t('chat.stop')}>
-                <StopIcon color="#FFFFFF" size={22} />
+                <StopIcon color="#000000" size={34} />
               </TouchableOpacity>
             )}
           </View>
         </View>
 
         <View style={styles.metaRow}>
-          {offline ? (
-            <Text style={styles.metaOffline}>{t('chat.offline')}</Text>
-          ) : showCounter && !streaming ? (
+          {showCounter && !streaming ? (
             <Text style={styles.metaCounter}>{(value || '').length}/{maxLength}</Text>
           ) : null}
         </View>
@@ -502,10 +515,9 @@ const styles = StyleSheet.create({
   sendButtonActive: { width: 38, height: 38, borderRadius: 24, backgroundColor: '#007AFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
   sendButtonDisabled: { backgroundColor: '#FFFFFF', opacity: 0.5 },
 
-  stopButton: { width: 32, height: 32, borderRadius: 16, backgroundColor: colors.error, justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
+  stopButton: { width: 38, height: 38, borderRadius: 24, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
 
   metaRow: { alignItems: 'flex-end' },
-  metaOffline: { fontSize: 11, color: colors.warning, fontFamily: 'Lato-Regular' },
   metaStreaming: { fontSize: 11, color: colors.primary, fontFamily: 'Lato-Regular' },
   metaRecording: { fontSize: 11, color: '#EA4335', fontFamily: 'Lato-Regular' },
   metaCounter: { fontSize: 11, color: colors.textSecondary, fontFamily: 'Lato-Regular' },

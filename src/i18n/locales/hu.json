@@ -142,7 +142,7 @@
         "description": "Mit főzz abból, amid van."
       },
       "fitness": {
-        "name": "Szokás & edzés edző",
+        "name": "Fitness edző",
         "description": "Apró szokások és otthoni edzések."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Leírás & generálás"
     },
     "editCard": {
-      "title": "Fotó szerkesztése",
-      "subtitle": "Töltsd fel és szerkeszd",
-      "cta": "Fotó szerkesztése"
+      "title": "AI fotószerkesztő",
+      "subtitle": "Alakítsd át és javítsd AI-val",
+      "cta": "Szerkesztés AI-val"
     },
     "gallery": {
       "title": "Galéria",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Nem lehet hozzáférni a fotókhoz. Próbáld újra.",
     "messageTooLong": "Az üzenet túl hosszú ({{length}}). A limit: {{limit}}.",
     "sendFailed": "Küldés sikertelen.",
+    "modelNoImageSupport": "A kiválasztott modell nem támogatja a képeket. Kérjük, válasszon másik modellt.",
     "voiceStartFailed": "Nem sikerült elindítani a hangot.",
     "emptyTitle": "Miben segíthetek?",
     "emptySubtitle": "Kezdj beszélgetést az MI-vel",

@@ -142,7 +142,7 @@
         "description": "Mitä kokata siitä mitä kaapissa on."
       },
       "fitness": {
-        "name": "Tottumus & treeni",
+        "name": "Fitness-valmentaja",
         "description": "Pienet tavat ja kotitreenit."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Kuvaile & luo"
     },
     "editCard": {
-      "title": "Muokkaa valokuvaa",
-      "subtitle": "Lataa ja muokkaa",
-      "cta": "Muokkaa valokuvaa"
+      "title": "AI-kuvankäsittely",
+      "subtitle": "Muunna ja paranna AI:lla",
+      "cta": "Muokkaa AI:lla"
     },
     "gallery": {
       "title": "Galleria",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Kuvia ei voitu avata. Yritä uudelleen.",
     "messageTooLong": "Viesti on liian pitkä ({{length}}). Raja on {{limit}}.",
     "sendFailed": "Lähetys epäonnistui.",
+    "modelNoImageSupport": "Valittu malli ei tue kuvia. Valitse toinen malli.",
     "voiceStartFailed": "Puhetta ei voitu käynnistää.",
     "emptyTitle": "Miten voin auttaa?",
     "emptySubtitle": "Aloita keskustelu tekoälyn kanssa",

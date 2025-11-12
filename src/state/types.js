@@ -20,7 +20,6 @@ export const newAssistantMessage = () => ({
   job: null,
   createdAt: Date.now(),
 });
-
 export const newSystemMessage = (text) => ({
   id: `msg_${Date.now()}_${Math.random().toString(36).slice(2,8)}`,
   role: 'system',

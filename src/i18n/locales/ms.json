@@ -142,7 +142,7 @@
         "description": "Masak dengan bahan yang anda ada."
       },
       "fitness": {
-        "name": "Jurulatih Tabiat & Kecergasan",
+        "name": "Jurulatih Kecergasan",
         "description": "Tabiat kecil dan senaman di rumah."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Huraikan & Jana"
     },
     "editCard": {
-      "title": "Edit Foto",
-      "subtitle": "Muat naik & edit",
-      "cta": "Edit Foto"
+      "title": "Editor Foto AI",
+      "subtitle": "Ubah dan tingkatkan dengan AI",
+      "cta": "Edit dengan AI"
     },
     "gallery": {
       "title": "Galeri",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Tidak dapat akses foto anda. Cuba lagi.",
     "messageTooLong": "Mesej terlalu panjang ({{length}}). Had ialah {{limit}}.",
     "sendFailed": "Gagal dihantar.",
+    "modelNoImageSupport": "Model yang dipilih tidak menyokong imej. Sila pilih model lain.",
     "voiceStartFailed": "Tidak dapat mulakan suara.",
     "emptyTitle": "Nak saya bantu apa?",
     "emptySubtitle": "Mulakan perbualan dengan AI",

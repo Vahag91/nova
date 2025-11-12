@@ -3,7 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
-  ImageBackground,
+  Image,
   Pressable,
   FlatList,
   Dimensions,
@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
+import { useIsFocused } from '@react-navigation/native';
 import SvgIcon from '../components/SvgIcon';
 import { useImagesStore } from '../state/useImagesStore';
 import { normalizeImageUri } from '../lib/imageUtils';
@@ -20,13 +21,43 @@ import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice'
 import { ensureDeviceId } from '../lib/deviceId';
 import ImageViewer from '../components/image-studio/ImageViewer';
 import LinearGradient from 'react-native-linear-gradient';
+import MaskedViewIOS from '@react-native-masked-view/masked-view';
+import Svg, { Path } from 'react-native-svg';
 import { getImageModelPrice } from '../utils/imagePricing';
+import HeroVideo from '../components/navigation/HeroVideo';
+
+const CREATE_VIDEO = require('../../assets/video/create.mp4');
+const EDIT_VIDEO = require('../../assets/video/hero.mp4');
 
 const CARD_ASPECT = 16 / 9;
+
+function GradientText({
+  children,
+  style,
+  colors = ['#42d392', '#647eff'], // green → blue (same as PaywallScreen)
+  start = { x: 0, y: 0 },
+  end = { x: 1, y: 0 },
+}) {
+  return (
+    <MaskedViewIOS
+      style={styles.gradientTextContainer}
+      maskElement={
+        <View style={styles.maskWrap}>
+          <Text style={[style, styles.maskText]}>{children}</Text>
+        </View>
+      }
+    >
+      <LinearGradient colors={colors} start={start} end={end}>
+        <Text style={[style, styles.invisibleText]}>{children}</Text>
+      </LinearGradient>
+    </MaskedViewIOS>
+  );
+}
 
 export default function StudioHome({ navigation }) {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const isFocused = useIsFocused();
 
   // Coin balance
   const coins = useImagesStore(s => s.coinsBalance);
@@ -40,6 +71,12 @@ export default function StudioHome({ navigation }) {
   useEffect(() => {
     // Enable smooth layout animations on Android
     try { if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) UIManager.setLayoutAnimationEnabledExperimental(true); } catch {}
+    
+    // Only fetch coins if balance is not already loaded
+    if (coins !== null && coins !== undefined) {
+      return;
+    }
+    
     let mounted = true;
     (async () => {
       try {
@@ -57,7 +94,7 @@ export default function StudioHome({ navigation }) {
       }
     })();
     return () => { mounted = false; };
-  }, []);
+  }, [coins, setCoinsBalance]);
 
   // Recent images from jobs store
   const jobs = useImagesStore(s => s.jobs);
@@ -163,7 +200,7 @@ export default function StudioHome({ navigation }) {
         }}
         style={{ width: size, height: size, borderRadius: 10, overflow: 'hidden', backgroundColor: '#1A1A1D' }}
       >
-        <ImageBackground source={{ uri: item.url }} style={{ flex: 1 }} resizeMode="cover" />
+        <Image source={{ uri: item.url }} style={{ flex: 1 }} resizeMode="cover" />
         {isSelectionMode && (
           <View style={styles.selectionOverlay}>
             <View style={[styles.checkbox, selected && styles.checkboxSelected]}>
@@ -208,11 +245,16 @@ export default function StudioHome({ navigation }) {
             <SvgIcon name="menu" size={22} color="#FFFFFF" />
           </Pressable>
           <View pointerEvents="none" style={styles.headerCenterAbs}>
-            <Text style={styles.headerTitle}>{t('studioHome.headerTitle')}</Text>
+            <GradientText style={styles.headerTitle}>{t('studioHome.headerTitle')}</GradientText>
           </View>
           {/* Removed top header selection icon for minimalist design */}
           <Pressable onPress={() => navigation.navigate('CoinStore')} style={styles.balancePill} hitSlop={8}>
-            <Text style={styles.balanceText}>{coinsLoading ? '…' : `◈ ${coins ?? '—'}`}</Text>
+            <View style={styles.balanceContent}>
+              <Svg height={14} width={14} viewBox="0 -960 960 960" fill="#FF9500">
+                <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
+              </Svg>
+              <Text style={styles.balanceText}>{coinsLoading ? '…' : coins ?? '—'}</Text>
+            </View>
           </Pressable>
         </View>
       </View>
@@ -227,11 +269,12 @@ export default function StudioHome({ navigation }) {
           <View style={styles.headerGroup}>
             {/* Create Card */}
             <View style={styles.card}>
-              <ImageBackground
-                source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-XK95pOLT3s1Iw3iXY2Pxm6JUU1YFayAsX4mfcrudaLGfOlGdOpA6qZ07Pcz0bkV8BPM8hMRbM9b8MFwsEWL94VxmhQieasdG_ySE5koYRA3fq1ZHEztxO7ROIpdc6gEvJNukMahpveSr_QabORA0hi18hnDEQsPVNTzQhRA3eKC-5dOOSOFU-TtonfkNQdb1FEJbnuy4ywe848HkQNDF0sDPxjDR5lAPt5lsjqcXMpCatHSKi1VvTwaNy_hPn-tG6MmNNcfihI_T' }}
+              <HeroVideo
                 style={styles.absoluteFill}
-                resizeMode="cover"
-                imageStyle={styles.cardBg}
+                source={CREATE_VIDEO}
+                enforceAspectRatio={false}
+                paused={!isFocused}
+                placeholderColor="#17171C"
               />
               <LinearGradient
                 colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.35)", "rgba(0,0,0,0.05)"]}
@@ -258,11 +301,12 @@ export default function StudioHome({ navigation }) {
 
             {/* Edit Card */}
             <View style={styles.card}>
-              <ImageBackground
-                source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDilC2rDw4UyF9DZ0AduIlFILbuyRQZaYwYn6CAUYGQr3wX1dSefDL_sMXpdoHMlz0GU3xRzT7DRNdqBGhZ-N9hSjEDVRl5JzWY9GqZJFLrGfu-js0GnD-1gGyKqviePvzACPt7vGz6gL2LZxFOEfz6mDxPR2S6jq_VBMfzFzxv_mg-Um637W8zwOtNIiYY7lTSWoYo_7WyETvy-6XTqA2GpvAH1OpRRyj14Nv1NX_INxfHSo0q4-PH7Iid2H7j4reA2QV7Q0eWXn-Q' }}
+              <HeroVideo
                 style={styles.absoluteFill}
-                resizeMode="cover"
-                imageStyle={styles.cardBg}
+                source={EDIT_VIDEO}
+                enforceAspectRatio={false}
+                paused={!isFocused}
+                placeholderColor="#17171C"
               />
               <LinearGradient
                 colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.35)", "rgba(0,0,0,0.05)"]}
@@ -274,7 +318,9 @@ export default function StudioHome({ navigation }) {
               <View style={styles.cardContent}>
                 <View style={styles.labelPill}>
                   <View style={styles.cardHeaderRow}>
-                    <View style={styles.cardIconWrap}><SvgIcon name="photo" size={22} color="#FFFFFF" /></View>
+                    <View style={styles.cardIconWrap}>
+                      <SvgIcon name="stars" size={22} color="#FFFFFF" />
+                    </View>
                     <View style={styles.cardTextCol}>
                       <Text style={styles.cardTitle}>{t('studioHome.editCard.title')}</Text>
                       <Text style={styles.cardSubtitle}>{t('studioHome.editCard.subtitle')}</Text>
@@ -361,11 +407,15 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#17171C',
     borderRadius: 999,
     paddingHorizontal: 12,
   },
-  balanceText: { color: '#7C5CFF', fontSize: 14, fontWeight: '800' },
+  balanceContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  balanceText: { color: '#FFFFFF', fontSize: 13, fontWeight: '800' },
 
   card: {
     borderRadius: 20,
@@ -373,7 +423,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#17171C',
     aspectRatio: CARD_ASPECT,
   },
-  cardBg: { transform: [{ scale: 1.02 }] },
   cardOverlay: { ...StyleSheet.absoluteFillObject },
   cardContent: { flex: 1, justifyContent: 'flex-end', padding: 16, gap: 10 },
   labelPill: {
@@ -384,7 +433,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   cardHeaderRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  cardIconWrap: { width: 36, height: 36, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.14)' },
+  cardIconWrap: { width: 36, height: 36, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(124,92,255,0.25)' },
   cardTextCol: { maxWidth: '82%' },
   cardTitle: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
   cardSubtitle: { color: 'rgba(255,255,255,0.75)', fontSize: 13, marginTop: 1 },
@@ -447,4 +496,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   deleteButtonText: { color: '#FFFFFF', fontSize: 13, fontWeight: '800' },
+  // Gradient text styles
+  gradientTextContainer: {
+    alignSelf: 'center', // centers gradient to text width
+  },
+  maskWrap: {
+    backgroundColor: 'transparent',
+  },
+  maskText: {
+    // must be opaque so the mask is solid
+    color: '#000', // mask color; not visible to user
+  },
+  invisibleText: {
+    opacity: 0, // not visible; defines gradient's layout size
+  },
 });

@@ -142,7 +142,7 @@
         "description": "Masak apa dari bahan yang ada."
       },
       "fitness": {
-        "name": "Pelatih Kebiasaan & Fitness",
+        "name": "Pelatih fitness",
         "description": "Kebiasaan kecil dan latihan di rumah."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Deskripsikan & Buat"
     },
     "editCard": {
-      "title": "Edit Foto",
-      "subtitle": "Unggah & edit",
-      "cta": "Edit Foto"
+      "title": "Editor Foto AI",
+      "subtitle": "Ubah dan tingkatkan dengan AI",
+      "cta": "Edit dengan AI"
     },
     "gallery": {
       "title": "Galeri",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Tidak dapat mengakses foto. Coba lagi.",
     "messageTooLong": "Pesan terlalu panjang ({{length}}). Batasnya {{limit}}.",
     "sendFailed": "Gagal mengirim.",
+    "modelNoImageSupport": "Model yang dipilih tidak mendukung gambar. Silakan pilih model lain.",
     "voiceStartFailed": "Tidak dapat memulai suara.",
     "emptyTitle": "Bisa bantu apa?",
     "emptySubtitle": "Mulai ngobrol dengan AI",

@@ -1,5 +1,5 @@
 // SubscriptionScreen.js
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
 import {
   View,
   Text,
@@ -8,12 +8,20 @@ import {
   Switch,
   ScrollView,
   Platform,
+  Animated,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedViewIOS from '@react-native-masked-view/masked-view';
+import AnimatedReanimated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  Easing,
+  runOnJS,
+} from 'react-native-reanimated';
 import SvgIcon from './SvgIcon';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useTranslation } from 'react-i18next';
@@ -126,18 +134,75 @@ export default function PaywallScreen({
 
   const [trialEnabled, setTrialEnabled] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('yearly');
+  
+  // Pulse animation for CTA button
+  const pulseAnim = useRef(new Animated.Value(1)).current;
+  
+  // Entrance animations - start from hidden state
+  const opacity = useSharedValue(0);
+  const translateY = useSharedValue(80);
 
   useEffect(() => {
     try { fetchOfferings && fetchOfferings(); } catch {}
-  }, [fetchOfferings]);
+    
+    // Start pulse animation
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulseAnim, {
+          toValue: 1.05,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulseAnim, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+      ]),
+    ).start();
+    
+    // Trigger entrance animation on mount
+    requestAnimationFrame(() => {
+      opacity.value = withTiming(1, {
+        duration: 500,
+        easing: Easing.out(Easing.ease),
+      });
+      translateY.value = withTiming(0, {
+        duration: 500,
+        easing: Easing.out(Easing.ease),
+      });
+    });
+  }, [fetchOfferings, pulseAnim, opacity, translateY]);
 
   // Always default to Yearly when the paywall screen gains focus
   useFocusEffect(
     useCallback(() => {
       setTrialEnabled(false);
       setSelectedPlan('yearly');
-    }, [])
+      
+      // Reset to initial state
+      opacity.value = 0;
+      translateY.value = 80;
+      
+      // Trigger animation immediately
+      requestAnimationFrame(() => {
+        opacity.value = withTiming(1, {
+          duration: 500,
+          easing: Easing.out(Easing.ease),
+        });
+        translateY.value = withTiming(0, {
+          duration: 500,
+          easing: Easing.out(Easing.ease),
+        });
+      });
+    }, [opacity, translateY])
   );
+  
+  // Animated styles
+  const containerAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+    transform: [{ translateY: translateY.value }],
+  }));
 
   const handleTrialToggle = value => {
     setTrialEnabled(value);
@@ -147,9 +212,26 @@ export default function PaywallScreen({
     setSelectedPlan(plan);
     setTrialEnabled(plan === 'weekly');
   };
-  const handleClose = () => {
+  const performClose = useCallback(() => {
     if (onClose) onClose();
     else if (navigation && navigation.canGoBack()) navigation.goBack();
+  }, [onClose, navigation]);
+
+  const handleClose = () => {
+    // Trigger closing animation
+    opacity.value = withTiming(0, {
+      duration: 300,
+      easing: Easing.in(Easing.cubic),
+    });
+    translateY.value = withTiming(80, {
+      duration: 300,
+      easing: Easing.in(Easing.ease),
+    }, (finished) => {
+      if (finished) {
+        // Navigate after animation completes
+        runOnJS(performClose)();
+      }
+    });
   };
 
   const handleRestore = async () => {
@@ -243,7 +325,10 @@ export default function PaywallScreen({
   return (
     <View style={[styles.container, t.containerBg]}>
       {/* GRADIENT BEHIND CONTENT (covers safe area + 384) */}
-      <View pointerEvents="none" style={[styles.gradientBackdrop, t.gradientBackdrop]}>
+      <AnimatedReanimated.View 
+        pointerEvents="none" 
+        style={[styles.gradientBackdrop, t.gradientBackdrop, containerAnimatedStyle]}
+      >
         {/* Tailwind: bg-gradient-to-b from-blue-500/30 via-purple-500/20 to-transparent */}
         <LinearGradient
           colors={[
@@ -256,7 +341,7 @@ export default function PaywallScreen({
           end={{ x: 0.5, y: 1 }}
           style={styles.gradientPrimary}
         />
-        {/* Soft “blur-ish” halo */}
+        {/* Soft "blur-ish" halo */}
         <LinearGradient
           colors={['rgba(168,85,247,0.18)', 'rgba(0,0,0,0)']}
           locations={[0, 1]}
@@ -264,9 +349,9 @@ export default function PaywallScreen({
           end={{ x: 0.8, y: 1 }}
           style={styles.gradientSecondary}
         />
-      </View>
+      </AnimatedReanimated.View>
 
-      <View style={styles.root}>
+      <AnimatedReanimated.View style={[styles.root, containerAnimatedStyle]}>
         <ScrollView
           style={styles.scroll}
           contentContainerStyle={styles.scrollContent}
@@ -311,7 +396,7 @@ export default function PaywallScreen({
             </View>
           </View>
 
-          <GradientText style={styles.title}>GPT-5, Grok 4, Veo 3</GradientText>
+          <GradientText style={styles.title}>GPT-5, Grok 4, Gemini</GradientText>
 
           {/* Features */}
           <View style={styles.features}>
@@ -438,13 +523,20 @@ export default function PaywallScreen({
 
         {/* Footer */}
         <View style={[styles.footer, t.bgOnly]}> 
-          <TouchableOpacity
-            activeOpacity={0.9}
-            style={styles.cta}
-            onPress={handleContinue}
+          <Animated.View
+            style={[
+              styles.ctaWrapper,
+              { transform: [{ scale: pulseAnim }] },
+            ]}
           >
-            <Text style={styles.ctaText}>{tr('paywall.cta')}</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.9}
+              style={styles.cta}
+              onPress={handleContinue}
+            >
+              <Text style={styles.ctaText}>{tr('paywall.cta')}</Text>
+            </TouchableOpacity>
+          </Animated.View>
 
           <View style={styles.legalRow}>
             <TouchableOpacity activeOpacity={0.8}>
@@ -462,7 +554,7 @@ export default function PaywallScreen({
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </AnimatedReanimated.View>
     </View>
   );
 }
@@ -645,6 +737,9 @@ const styles = StyleSheet.create({
   weeklyCard: { borderRadius: R, padding: 16, marginBottom: 12 },
 
   footer: { paddingTop: 10, paddingBottom: 14 },
+  ctaWrapper: {
+    width: '100%',
+  },
   cta: {
     height: 52,
     backgroundColor: COLORS.primary,

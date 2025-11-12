@@ -142,7 +142,7 @@
         "description": "Nấu gì với nguyên liệu đang có."
       },
       "fitness": {
-        "name": "Huấn luyện thói quen & thể dục",
+        "name": "Huấn luyện viên thể dục",
         "description": "Thói quen nhỏ và tập tại nhà."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Mô tả & Tạo"
     },
     "editCard": {
-      "title": "Chỉnh sửa ảnh",
-      "subtitle": "Tải lên & chỉnh sửa",
-      "cta": "Chỉnh sửa ảnh"
+      "title": "Trình chỉnh sửa ảnh AI",
+      "subtitle": "Chuyển đổi và nâng cấp với AI",
+      "cta": "Chỉnh sửa với AI"
     },
     "gallery": {
       "title": "Thư viện",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Không thể truy cập ảnh của bạn. Hãy thử lại.",
     "messageTooLong": "Tin nhắn quá dài ({{length}}). Giới hạn là {{limit}}.",
     "sendFailed": "Gửi thất bại.",
+    "modelNoImageSupport": "Mô hình đã chọn không hỗ trợ hình ảnh. Vui lòng chọn mô hình khác.",
     "voiceStartFailed": "Không thể bắt đầu giọng nói.",
     "emptyTitle": "Tôi giúp gì được?",
     "emptySubtitle": "Bắt đầu trò chuyện với AI",

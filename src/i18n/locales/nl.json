@@ -142,7 +142,7 @@
         "description": "Wat je kunt koken met wat je hebt."
       },
       "fitness": {
-        "name": "Gewoonte & fitnesscoach",
+        "name": "Fitnesscoach",
         "description": "Kleine gewoonten en thuiswork-outs."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Beschrijven & genereren"
     },
     "editCard": {
-      "title": "Foto bewerken",
-      "subtitle": "Uploaden & bewerken",
-      "cta": "Foto bewerken"
+      "title": "AI-foto-editor",
+      "subtitle": "Transformeer en verbeter met AI",
+      "cta": "Bewerken met AI"
     },
     "gallery": {
       "title": "Galerij",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Kon je foto’s niet openen. Probeer opnieuw.",
     "messageTooLong": "Bericht te lang ({{length}}). Limiet is {{limit}}.",
     "sendFailed": "Verzenden mislukt.",
+    "modelNoImageSupport": "Het geselecteerde model ondersteunt geen afbeeldingen. Kies een ander model.",
     "voiceStartFailed": "Kon spraak niet starten.",
     "emptyTitle": "Waarmee kan ik helpen?",
     "emptySubtitle": "Begin een gesprek met AI",

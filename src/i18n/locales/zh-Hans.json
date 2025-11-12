@@ -142,7 +142,7 @@
         "description": "用现有食材做什么。"
       },
       "fitness": {
-        "name": "习惯与健身教练",
+        "name": "健身教练",
         "description": "小习惯与居家锻炼。"
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "描述并生成"
     },
     "editCard": {
-      "title": "编辑照片",
-      "subtitle": "上传并编辑",
-      "cta": "编辑照片"
+      "title": "AI照片编辑器",
+      "subtitle": "用AI转换和增强",
+      "cta": "使用AI编辑"
     },
     "gallery": {
       "title": "图库",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "无法访问你的照片。请重试。",
     "messageTooLong": "消息太长 ({{length}})。上限为 {{limit}}。",
     "sendFailed": "发送失败。",
+    "modelNoImageSupport": "所选模型不支持图像。请选择其他模型。",
     "voiceStartFailed": "无法开始语音。",
     "emptyTitle": "我能帮你做什么？",
     "emptySubtitle": "开始与 AI 对话",

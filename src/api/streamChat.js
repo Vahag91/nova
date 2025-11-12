@@ -93,7 +93,7 @@ export function streamChat({
     headers,
     body,
     onEvent: (evt) => {
-      if (evt?.type === 'token' && typeof evt.delta === 'string') { 
+      if (evt?.type === 'token' && typeof evt.delta === 'string') {
         onToken?.(evt.delta); 
         return; 
       }
@@ -104,6 +104,9 @@ export function streamChat({
         return; 
       }
       if (evt?.type === 'error') {
+        if (__DEV__) {
+          console.error('[STREAM_CHAT] onEvent - Error event:', evt);
+        }
         // ✅ Mark error occurred - prevents onDone
         errorOccurred = true;
         onError?.(evt); 

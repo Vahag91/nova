@@ -17,6 +17,13 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
 import SvgIcon from './SvgIcon';
 import { useTranslation } from 'react-i18next';
+import { useContext } from 'react';
+import { SubscriptionContext } from '../context/SubscriptionContext';
+import { isPremiumModel, FREE_MODEL } from '../config/premium';
+import { useNavigation } from '@react-navigation/native';
+import { getChatModelPrice } from '../utils/chatPricing';
+import Svg, { Path } from 'react-native-svg';
+import NetInfo from '@react-native-community/netinfo';
 
 // 🔁 Reanimated
 import Animated, {
@@ -34,6 +41,9 @@ import Animated, {
 export default function ModelSelector() {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const navigation = useNavigation();
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
 
   // store
   const models = useSettingsStore(s => s.models);
@@ -43,6 +53,7 @@ export default function ModelSelector() {
   // ui
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isOffline, setIsOffline] = useState(false);
 
   // reanimated shared values
   const overlay = useSharedValue(0);       // 0..1
@@ -51,15 +62,39 @@ export default function ModelSelector() {
   const sheetProgress = useSharedValue(0); // 0..1 (use for opacity / content)
   const rotateArrow = useSharedValue(0);   // 0 closed, 1 open
   const triggerScale = useSharedValue(1);  // trigger micro-bounce
+  const offlineOpacity = useSharedValue(0);
+  const offlineScale = useSharedValue(0.8);
 
   const listRef = useRef(null);
+
+  // Offline indicator
+  React.useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      const offline = !(state.isConnected && state.isInternetReachable);
+      setIsOffline(offline);
+      
+      if (offline) {
+        offlineOpacity.value = withTiming(1, { duration: 300 });
+        offlineScale.value = withSequence(
+          withTiming(1.2, { duration: 200 }),
+          withTiming(1, { duration: 200 })
+        );
+      } else {
+        offlineOpacity.value = withTiming(0, { duration: 300 });
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   // current trigger label
   const current = useMemo(() => {
     const info = models?.[modelKey] || {};
+    const cost = getChatModelPrice(modelKey);
     return {
       name: info.display?.name || modelKey,
       icon: glyphFor(info?.provider, modelKey),
+      cost,
     };
   }, [models, modelKey]);
 
@@ -76,11 +111,15 @@ export default function ModelSelector() {
       icon: glyphFor(info?.provider, key),
       labels: labelsFor(key, t),
       provider: (info?.provider || 'other').toLowerCase(),
+      cost: getChatModelPrice(key),
     });
 
     let filteredModels = Object.entries(models)
       .filter(([_, info]) => info?.kind === 'chat')
       .map(toRow);
+
+    // Show all models - don't filter premium models
+    // Premium models will be marked with PRO badge and gated on selection
 
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
@@ -110,7 +149,7 @@ export default function ModelSelector() {
       }
     });
     return out;
-  }, [models, searchQuery]);
+  }, [models, searchQuery, t]);
 
   // —— Animations ——
   const scrollToSelected = useCallback(() => {
@@ -153,6 +192,11 @@ export default function ModelSelector() {
   // —— Animated styles ——
   const triggerStyle = useAnimatedStyle(() => ({
     transform: [{ scale: triggerScale.value }],
+  }));
+
+  const offlineStyle = useAnimatedStyle(() => ({
+    opacity: offlineOpacity.value,
+    transform: [{ scale: offlineScale.value }],
   }));
 
   const arrowStyle = useAnimatedStyle(() => ({
@@ -202,6 +246,17 @@ export default function ModelSelector() {
       <Animated.View entering={FadeInDown.delay(index * 40).duration(220)}>
         <Pressable
           onPress={() => {
+            // Check if model requires premium - navigate directly to paywall
+            if (!isPremium && isPremiumModel(item.key)) {
+              runClose();
+              try {
+                navigation.navigate('PaywallScreen', { returnTo: 'Chat' });
+              } catch (e) {
+                console.warn('Failed to navigate to PaywallScreen:', e);
+              }
+              return;
+            }
+
             if (item.key !== modelKey) Haptic.trigger('notificationSuccess');
             else Haptic.trigger('selection');
             
@@ -223,31 +278,40 @@ export default function ModelSelector() {
 
           <View style={{ flex: 1 }}>
             <View style={styles.titleBar}>
-              <Text numberOfLines={1} style={[styles.rowTitle, selected && styles.rowTitleSel]}>
-                {item.name}
-              </Text>
-              {!!item.labels?.length && (
-                <View style={styles.badgeWrap}>
-                  {item.labels.map(lbl => (
-                    <View
-                      key={lbl}
-                      style={[
-                        styles.badge,
-                        lbl === 'NEW' && styles.badgeNew,
-                        lbl === 'BEST' && styles.badgeBest,
-                      ]}
-                    >
-                      <Text
+              <View style={styles.titleLeft}>
+                <Text numberOfLines={1} style={[styles.rowTitle, selected && styles.rowTitleSel]}>
+                  {item.name}
+                </Text>
+                {!!item.labels?.length && (
+                  <View style={styles.badgeWrap}>
+                    {item.labels.map(lbl => (
+                      <View
+                        key={lbl}
                         style={[
-                          styles.badgeText,
-                          lbl === 'NEW' && styles.badgeTextNew,
-                          lbl === 'BEST' && styles.badgeTextBest,
+                          styles.badge,
+                          lbl === 'NEW' && styles.badgeNew,
+                          lbl === 'BEST' && styles.badgeBest,
                         ]}
                       >
-                        {lbl}
-                      </Text>
-                    </View>
-                  ))}
+                        <Text
+                          style={[
+                            styles.badgeText,
+                            lbl === 'NEW' && styles.badgeTextNew,
+                            lbl === 'BEST' && styles.badgeTextBest,
+                          ]}
+                        >
+                          {lbl}
+                        </Text>
+                      </View>
+                    ))}
+                  </View>
+                )}
+              </View>
+              {isPremiumModel(item.key) && (
+                <View style={styles.badgePremium}>
+                  <Text style={styles.badgeTextPremium}>
+                    {t('premium.badge', { defaultValue: 'PRO' })}
+                  </Text>
                 </View>
               )}
             </View>
@@ -256,7 +320,17 @@ export default function ModelSelector() {
             </Text>
           </View>
 
-          {selected ? <SvgIcon name="check" size={18} color={colors.primary} /> : null}
+          <View style={styles.rowRight}>
+            {item.cost > 0 ? (
+              <View style={styles.coinPill}>
+                <Svg height={12} width={12} viewBox="0 -960 960 960" fill="#FF9500">
+                  <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
+                </Svg>
+                <Text style={styles.coinPillText}>{item.cost}</Text>
+              </View>
+            ) : null}
+            {selected ? <SvgIcon name="check" size={18} color={colors.primary} /> : null}
+          </View>
         </Pressable>
 
         {showDivider && <View style={styles.divider} />}
@@ -279,6 +353,19 @@ export default function ModelSelector() {
         >
           <SvgIcon name={current.icon} size={22} color={colors.textSecondary} />
           <Text numberOfLines={1} style={styles.triggerText}>{current.name}</Text>
+          {isOffline && (
+            <Animated.View style={[styles.offlineIndicator, offlineStyle]}>
+              <View style={styles.offlineDot} />
+            </Animated.View>
+          )}
+          {current.cost > 0 && (
+            <View style={styles.triggerCoinPill}>
+              <Svg height={12} width={12} viewBox="0 -960 960 960" fill="#D4AF37">
+                <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
+              </Svg>
+              <Text style={styles.triggerCoinText}>{current.cost}</Text>
+            </View>
+          )}
           <Animated.View style={[styles.arrowContainer, arrowStyle]}>
             <SvgIcon name="chevron-down" size={20} color={colors.textSecondary} />
           </Animated.View>
@@ -413,7 +500,28 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   triggerText: { maxWidth: 144, fontSize: 13, fontWeight: '700', color: colors.text },
+  triggerCoinPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+  },
+  triggerCoinText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: '700',
+  },
   arrowContainer: { backgroundColor: colors.surface, borderRadius: 9, padding: 2 },
+  offlineIndicator: {
+    marginLeft: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  offlineDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#F59E0B',
+  },
 
   /* overlay */
   overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.5)' },
@@ -499,11 +607,27 @@ const styles = StyleSheet.create({
 
   divider: { height: StyleSheet.hairlineWidth, backgroundColor: '#2D2D30', marginLeft: 43, marginRight: 7 },
 
-  titleBar: { flexDirection: 'row', alignItems: 'center', gap: 7, marginBottom: 2 },
-  rowTitle: { fontSize: 14, fontWeight: '700', color: colors.text },
+  titleBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 2 },
+  titleLeft: { flexDirection: 'row', alignItems: 'center', gap: 7, flex: 1, flexShrink: 1 },
+  rowTitle: { fontSize: 14, fontWeight: '700', color: colors.text, flexShrink: 1 },
   rowTitleSel: { color: colors.primary },
   rowDesc: { fontSize: 12, color: colors.textSecondary },
   rowDescSel: { color: colors.text },
+  rowRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  coinPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  coinPillText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: '700',
+  },
 
   /* chips */
   badgeWrap: { flexDirection: 'row', gap: 5, flexShrink: 0 },
@@ -512,11 +636,35 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceElevated, borderWidth: 1, borderColor: colors.border,
     shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowRadius: 2, shadowOpacity: 0.1, elevation: 2,
   },
-  badgeNew: { backgroundColor: colors.primary + '20', borderColor: colors.primary, shadowColor: colors.primary, shadowOpacity: 0.2 },
-  badgeBest: { backgroundColor: '#6366F120', borderColor: '#6366F1', shadowColor: '#6366F1', shadowOpacity: 0.2 },
+  badgeNew: { 
+    backgroundColor: colors.primary, 
+    borderWidth: 0,
+    shadowColor: colors.primary, 
+    shadowOpacity: 0.2 
+  },
+  badgeBest: { 
+    backgroundColor: '#6366F1', 
+    borderWidth: 0,
+    shadowColor: '#6366F1', 
+    shadowOpacity: 0.2 
+  },
   badgeText: { fontSize: 9, fontWeight: '800', textTransform: 'uppercase', color: colors.textSecondary, letterSpacing: 0.5 },
-  badgeTextNew: { color: colors.primary },
-  badgeTextBest: { color: '#6366F1' },
+  badgeTextNew: { color: '#FFFFFF' },
+  badgeTextBest: { color: '#FFFFFF' },
+  badgePremium: { 
+    paddingHorizontal: 6, 
+    paddingVertical: 2, 
+    borderRadius: 4,
+    backgroundColor: 'transparent',
+    // No border, no shadow
+  },
+  badgeTextPremium: { 
+    fontSize: 9, 
+    fontWeight: '700', 
+    color: '#F59E0B', 
+    letterSpacing: 0.3,
+    // No uppercase transform for PRO
+  },
 
   /* empty */
   emptyState: { alignItems: 'center', paddingVertical: 36, paddingHorizontal: 18 },

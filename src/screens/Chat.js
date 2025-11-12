@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, A
 import Reanimated, { useAnimatedKeyboard, useAnimatedStyle, useSharedValue, useDerivedValue, withTiming, Easing, KeyboardState } from 'react-native-reanimated';
 import NetInfo from '@react-native-community/netinfo';
 import { launchImageLibrary } from 'react-native-image-picker';
+import Svg, { Path } from 'react-native-svg';
 
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
@@ -21,6 +22,9 @@ import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
 import { buildPayload, getPayloadSize } from '../lib/payloadBuilder';
 import { useVoiceInput } from '../hooks/useVoiceInput';
 import { useTranslation } from 'react-i18next';
+import { useContext } from 'react';
+import { SubscriptionContext } from '../context/SubscriptionContext';
+import { isPremiumModel, FREE_MODEL } from '../config/premium';
 
 
 import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
@@ -28,6 +32,8 @@ import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
 
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
 
   // Stores
   const threads = useThreadsStore(s => s.threads);
@@ -79,6 +85,7 @@ export default function Chat({ navigation }) {
   const [offline, setOffline] = useState(false);
   const [streamingMsgId, setStreamingMsgId] = useState(null);
   const [forceCollapseInput, setForceCollapseInput] = useState(false);
+  
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
   const [webSearchNext, setWebSearchNext] = useState(false); // per-message web search
@@ -86,9 +93,31 @@ export default function Chat({ navigation }) {
   const appStateRef = useRef(AppState.currentState); // Track if app is in background
 
   const messagesNoSystem = useMemo(
-    () => (activeThread?.messages || []).filter(m => m.role !== 'system'),
-    [activeThread?.messages]
+    () => {
+      if (!activeThread) return [];
+      return (activeThread.messages || []).filter(m => m.role !== 'system');
+    },
+    [activeThread]
   );
+
+  // Cleanup: Remove empty assistant messages with stale activity text
+  useEffect(() => {
+    if (!activeThread || !hydrated) return;
+    const emptyMessages = (activeThread.messages || []).filter(m => 
+      m.role === 'assistant' && 
+      (!m.content || m.content.trim().length === 0) &&
+      m.meta?.activity &&
+      m.id !== streamingMsgId // Don't remove currently streaming message
+    );
+    
+    if (emptyMessages.length > 0) {
+      emptyMessages.forEach(msg => {
+        if (!isPrivate && activeThread.id) {
+          removeMessage(activeThread.id, msg.id);
+        }
+      });
+    }
+  }, [activeThread?.id, activeThread?.messages, hydrated, streamingMsgId, isPrivate, removeMessage]);
 
   // Check if chat is empty (no user/assistant messages)
   const isChatEmpty = messagesNoSystem.length === 0;
@@ -111,7 +140,18 @@ export default function Chat({ navigation }) {
   useEffect(() => {
     if (!hydrated) hydrate();
   }, [hydrated, hydrate]);
-  // No debug logging of error state
+  
+  // Safety check: Validate model if free user has premium model selected
+  useEffect(() => {
+    if (!isPremium && activeModelKey && isPremiumModel(activeModelKey)) {
+      // If thread has pinned premium model, we allow it (grandfathered)
+      // But if it's the global model, reset it
+      if (!pinnedModel) {
+        const setModel = useSettingsStore.getState().setModel;
+        setModel(FREE_MODEL);
+      }
+    }
+  }, [isPremium, activeModelKey, pinnedModel]);
 
 useEffect(() => {
   if (!hydrated || isPrivate) return;
@@ -169,12 +209,16 @@ useEffect(() => {
   }, [stopVoice, isRecording]);
 
   // Cleanup on unmount
-  useEffect(() => () => {
-    if (useThreadsStore.getState().privateActive) endPrivate();
-    clearInsertToChatCallback();
+  useEffect(() => {
+    return () => {
+      if (useThreadsStore.getState().privateActive) endPrivate();
+      clearInsertToChatCallback();
+    };
   }, [clearInsertToChatCallback, endPrivate]);
-  useEffect(() => () => {
-    if (abortRef.current) { abortRef.current.abort(); abortRef.current = null; }
+  useEffect(() => {
+    return () => {
+      if (abortRef.current) { abortRef.current.abort(); abortRef.current = null; }
+    };
   }, []);
 
   useEffect(() => {
@@ -236,9 +280,10 @@ useEffect(() => {
       (response) => {
         if (response?.didCancel) return;
         if (response?.errorCode || response?.errorMessage) {
+          // Never show technical error codes to users - always use user-friendly message
           Alert.alert(
             t('chat.imagePickerErrorTitle'),
-            response?.errorMessage || response?.errorCode || t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' })
+            t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' })
           );
           return;
         }
@@ -353,10 +398,12 @@ useEffect(() => {
   // ==== Send flow ====
   async function onSend(overrideText) {
     if (offline) {
-      setError(t('chat.offlineBanner'));
+      setError(t('chat.offlineError', { defaultValue: 'No internet connection. Please check your connection and try again.' }));
       return;
     }
-    if (streaming) return;
+    if (streaming) {
+      return;
+    }
 
     setError('');
     const textRaw = typeof overrideText === 'string' ? overrideText : input;
@@ -364,11 +411,17 @@ useEffect(() => {
     const hasText = !!text;
     const hasImages = attachments.length > 0;
 
-    if (!hasText && !hasImages) return;
-    if (!activeThread) return;
+    if (!hasText && !hasImages) {
+      return;
+    }
+    if (!activeThread) {
+      return;
+    }
 
     if (hasImages && !activeModelCaps.visionInput) {
-      setError(`The selected model (${modelsMap?.[activeModelKey]?.display?.name || activeModelKey}) does not support images.`);
+      setError(t('chat.modelNoImageSupport', { 
+        defaultValue: 'The selected model does not support images. Please choose a different model.' 
+      }));
       return;
     }
 
@@ -400,6 +453,7 @@ useEffect(() => {
     try {
       const a = newAssistantMessage();
       assistantId = a.id;
+      
       try {
         const initialActivity = hasImages
           ? t('chat.activity.analyzingImages', { defaultValue: 'Analyzing images…' })
@@ -421,7 +475,9 @@ useEffect(() => {
       setForceCollapseInput(true);
       composerCleared = true;
 
-      const threadForContext = { ...activeThread, messages: [...(activeThread.messages || []), mUser] };
+      // Create thread context once and reuse (optimize object creation)
+      const threadMessages = activeThread.messages || [];
+      const threadForContext = { ...activeThread, messages: [...threadMessages, mUser] };
       // Dev: log thread context snapshot (sanitized) before payload build
       logAi('thread_meta', {
         threadId: activeThread?.id,
@@ -430,7 +486,7 @@ useEffect(() => {
         pinnedModel: !!activeThread?.meta?.pinnedModel,
         assistantName: activeThread?.meta?.assistantName || activeThread?.title,
         presetId: activeThread?.meta?.presetId || null,
-        msgCountNoSystem: (activeThread?.messages || []).filter(m => m.role !== 'system').length,
+        msgCountNoSystem: threadMessages.filter(m => m.role !== 'system').length,
       });
       await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
       const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
@@ -487,13 +543,30 @@ useEffect(() => {
         },
         onDone: () => {
           const full = getStream(assistantId);
+          
           logAi('response', {
             threadId: activeThread?.id || activeThreadIdForInsert,
             messageId: assistantId,
             content: full,
           });
-          if (isPrivate) updateLastAssistantContentPrivate(() => full);
-          else updateLastAssistantContent(activeThread.id, () => full);
+          
+          // If content is empty, remove the message instead of saving it
+          if (!full || full.trim().length === 0) {
+            if (isPrivate) {
+              // For private, we can't easily remove, so just clear activity
+              updateLastAssistantContentPrivate(() => '');
+            } else if (activeThread?.id) {
+              removeMessage(activeThread.id, assistantId);
+            }
+          } else {
+            // Content exists, update it (activity text will be cleared in updateLastAssistantContent)
+            if (isPrivate) {
+              updateLastAssistantContentPrivate(() => full);
+            } else {
+              updateLastAssistantContent(activeThread.id, () => full);
+            }
+          }
+          
           setStreaming(false);
           abortRef.current = null;
           setStreamingMsgId(null);
@@ -507,6 +580,7 @@ useEffect(() => {
             messageId: assistantId,
             error: err,
           });
+          
           const wasBackgrounded = appStateRef.current !== 'active';
           const isOSTermination = err.code === 0 || err.code === 'NETWORK';
           const partial = getStream(assistantId);
@@ -531,7 +605,7 @@ useEffect(() => {
             // swallow expected background termination
           } else {
             const pretty = mapProxyError(err);
-            setError(pretty.message);
+            setError(pretty.message || t('chat.sendFailed', { defaultValue: 'Failed to send message. Please try again.' }));
           }
         },
       });
@@ -557,7 +631,7 @@ useEffect(() => {
       abortRef.current = null;
       setStreamingMsgId(null);
       const pretty = mapProxyError(err);
-      setError(pretty.message || t('chat.sendFailed', { defaultValue: 'Failed to send.' }));
+      setError(pretty.message || t('chat.sendFailed', { defaultValue: 'Failed to send message. Please try again.' }));
     }
   }
 
@@ -592,7 +666,9 @@ useEffect(() => {
   }
   function onRetryFromHere(message) { setInput(message?.content || ''); }
 
+
   if (!activeThread) return <View style={styles.container}><Text>{t('chat.loading')}</Text></View>;
+
   if (!hydrated) {
     return (
       <View style={styles.container}>
@@ -608,12 +684,6 @@ useEffect(() => {
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.flex1}>
-          {offline && (
-            <View style={styles.offlineBanner}>
-              <Text style={styles.offlineText}>{t('chat.offlineBanner')}</Text>
-            </View>
-          )}
-
           {!!error && (
             <View style={styles.error}>
               <Text style={styles.errorText}>{error}</Text>
@@ -628,7 +698,11 @@ useEffect(() => {
                 <View style={[styles.emptyState, isPrivate && styles.emptyStatePrivate]}>
                   {isPrivate ? (
                     <>
-                      <View style={styles.emptyStateIcon}><Text style={styles.emptyStateIconText}>💬</Text></View>
+                      <View style={styles.emptyStateIcon}>
+                        <Svg height={48} width={48} viewBox="0 -960 960 960" fill="#FFFFFF">
+                          <Path d="M720-240q25 0 42.5-17.5T780-300q0-25-17.5-42.5T720-360q-25 0-42.5 17.5T660-300q0 25 17.5 42.5T720-240Zm0 120q30 0 56-14t43-39q-23-14-48-20.5t-51-6.5q-26 0-51 6.5T621-173q17 25 43 39t56 14ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM490-80H240q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v52q-18-6-37.5-9t-42.5-3v-40H240v400h212q8 24 16 41.5T490-80Zm230 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40ZM240-560v400-400Z" />
+                        </Svg>
+                      </View>
                       <Text style={styles.emptyStateTitle}>{t('chat.privateTitle')}</Text>
                       <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
                     </>
@@ -662,7 +736,19 @@ useEffect(() => {
               onStop={onStop}
               onCreateImagesPress={handleCreateImagesPress}
               onOpenCameraPress={onOpenCameraPress}
-              onSearchPress={() => setWebSearchNext(v => !v)}
+              onSearchPress={() => {
+                if (!isPremium) {
+                  try {
+                    navigation.navigate('PaywallScreen', { returnTo: 'Chat' });
+                  } catch (error) {
+                    if (__DEV__) {
+                      console.warn('Failed to navigate to PaywallScreen:', error);
+                    }
+                  }
+                  return;
+                }
+                setWebSearchNext(v => !v);
+              }}
               onClipboardPress={() => { }}
               webSearchEnabled={webSearchNext}
               onMicPress={handleMicPress}
@@ -702,14 +788,11 @@ const styles = StyleSheet.create({
   flex1: { flex: 1 },
   loadingCenter: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   loadingHint: { color: colors.textSecondary },
-  offlineBanner: { margin: 16, padding: 10, borderRadius: 8, borderWidth: 1, borderColor: colors.warning, backgroundColor: colors.warning + '20' },
-  offlineText: { color: colors.warning, fontSize: 12 },
   error: { backgroundColor: colors.error + '20', padding: 10, borderRadius: 10, margin: 13, borderLeftWidth: 3, borderLeftColor: colors.error },
   errorText: { color: colors.error, fontSize: 14, fontWeight: '500' },
   emptyState: { flex: 1, alignItems: 'stretch', justifyContent: 'flex-start', paddingHorizontal: 16, paddingTop: 32, paddingBottom: 40, gap: 24 },
   emptyStatePrivate: { alignItems: 'center', justifyContent: 'center', paddingTop: 0, paddingBottom: 40, gap: 12 },
-  emptyStateIcon: { width: 64, height: 64, borderRadius: 32, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', marginBottom: 19 },
-  emptyStateIconText: { fontSize: 26 },
+  emptyStateIcon: { width: 64, height: 64, borderRadius: 32, alignItems: 'center', justifyContent: 'center', marginBottom: 19 },
   emptyStateTitle: { fontSize: 21, fontWeight: '700', color: colors.text, marginBottom: 6, textAlign: 'center' },
   emptyStateSubtitle: { fontSize: 14, color: colors.textSecondary, textAlign: 'center', lineHeight: 20 },
 });

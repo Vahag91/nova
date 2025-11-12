@@ -142,7 +142,7 @@
         "description": "Co ugotować z tego, co masz."
       },
       "fitness": {
-        "name": "Trener nawyków i fitnessu",
+        "name": "Trener fitness",
         "description": "Małe nawyki i treningi w domu."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Opisz i generuj"
     },
     "editCard": {
-      "title": "Edytuj zdjęcie",
-      "subtitle": "Wgraj i edytuj",
-      "cta": "Edytuj zdjęcie"
+      "title": "Edytor zdjęć AI",
+      "subtitle": "Przekształć i ulepsz z AI",
+      "cta": "Edytuj z AI"
     },
     "gallery": {
       "title": "Galeria",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Nie można uzyskać dostępu do zdjęć. Spróbuj ponownie.",
     "messageTooLong": "Wiadomość jest za długa ({{length}}). Limit to {{limit}}.",
     "sendFailed": "Wysyłanie nie powiodło się.",
+    "modelNoImageSupport": "Wybrany model nie obsługuje obrazów. Wybierz inny model.",
     "voiceStartFailed": "Nie udało się uruchomić głosu.",
     "emptyTitle": "W czym mogę pomóc?",
     "emptySubtitle": "Rozpocznij rozmowę z AI",

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image } from 'react-native';
 import Haptic from 'react-native-haptic-feedback';
 import { PRESETS } from '../data/presets';
@@ -6,6 +6,8 @@ import { useThreadsStore } from '../state/useThreadsStore';
 import { useTranslation } from 'react-i18next';
 import { useIsFocused } from '@react-navigation/native';
 import HeroVideo from '../components/navigation/HeroVideo';
+import { SubscriptionContext } from '../context/SubscriptionContext';
+import { isAssistantsPremium } from '../config/premium';
 
 const HEADER_VIDEOS = [
   require('../../assets/video/fitness.mp4'),
@@ -14,6 +16,8 @@ const HEADER_VIDEOS = [
 
 export default function Assistants({ navigation }) {
   const { t } = useTranslation();
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
   const createThread = useThreadsStore(s => s.createThread);
   const updateThread = useThreadsStore(s => s.updateThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
@@ -25,6 +29,16 @@ export default function Assistants({ navigation }) {
   }, [isFocused]);
 
   async function handleUsePreset(preset) {
+    // Check premium requirement - navigate directly to paywall if not premium
+    if (!isPremium && isAssistantsPremium()) {
+      try {
+        navigation.navigate('PaywallScreen', { returnTo: 'Assistants' });
+      } catch (e) {
+        console.warn('Failed to navigate to PaywallScreen:', e);
+      }
+      return;
+    }
+
     try {
       // haptics can throw on some devices; make non-fatal
       try { Haptic.trigger('impactLight'); } catch {}
@@ -104,6 +118,7 @@ export default function Assistants({ navigation }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const filteredPresets = useMemo(() => {
+    // Show all assistants - gate on click instead
     if (selectedCategory === 'All') return PRESETS;
     return PRESETS.filter(p => (p.category || 'General') === selectedCategory);
   }, [selectedCategory]);
@@ -156,38 +171,46 @@ export default function Assistants({ navigation }) {
           })}
         </ScrollView>
 
-        {filteredPresets.map((preset, idx) => (
-          <TouchableOpacity 
-            key={preset?.id || preset?.name || String(idx)}
-            style={styles.card}
-            activeOpacity={0.9}
-            onPress={() => handleUsePreset(preset)}
-          >
-            <View style={styles.cardRow}>
-              <View style={styles.iconWrap}>
-                <Image
-                  source={preset.avatar}
-                  style={styles.iconPhoto}
-                />
-              </View>
+        {filteredPresets.length === 0 ? (
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyStateText}>
+              {t('assistants.noAssistants', { defaultValue: 'No assistants found in this category.' })}
+            </Text>
+          </View>
+        ) : (
+          filteredPresets.map((preset, idx) => (
+            <TouchableOpacity 
+              key={preset?.id || preset?.name || String(idx)}
+              style={styles.card}
+              activeOpacity={0.9}
+              onPress={() => handleUsePreset(preset)}
+            >
+              <View style={styles.cardRow}>
+                <View style={styles.iconWrap}>
+                  <Image
+                    source={preset.avatar}
+                    style={styles.iconPhoto}
+                  />
+                </View>
               <View style={styles.cardBody}>
                 <Text style={styles.cardTitle}>{t(`assistants.presets.${preset.id}.name`, { defaultValue: preset.name })}</Text>
                 <Text style={styles.cardDesc}>{t(`assistants.presets.${preset.id}.description`, { defaultValue: preset.description })}</Text>
               </View>
-              {preset?.category ? (() => {
-                const tag = getTagColors(preset.category);
-                return (
-                  <View style={[styles.tag, { 
-                    backgroundColor: tag.bg,
-                    borderColor: tag.border,
-                  }]}> 
-                    <Text style={[styles.tagText, { color: tag.fg }]}>{labelForCategory(preset.category)}</Text>
-                  </View>
-                );
-              })() : null}
-            </View>
-          </TouchableOpacity>
-        ))}
+                {preset?.category ? (() => {
+                  const tag = getTagColors(preset.category);
+                  return (
+                    <View style={[styles.tag, { 
+                      backgroundColor: tag.bg,
+                      borderColor: tag.border,
+                    }]}> 
+                      <Text style={[styles.tagText, { color: tag.fg }]}>{labelForCategory(preset.category)}</Text>
+                    </View>
+                  );
+                })() : null}
+              </View>
+            </TouchableOpacity>
+          ))
+        )}
       </ScrollView>
     </View>
   );
@@ -255,4 +278,14 @@ const styles = StyleSheet.create({
   tag: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, alignSelf: 'flex-start', borderWidth: 1,
     shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.15, shadowRadius: 2, elevation: 2 },
   tagText: { fontSize: 9, fontWeight: '800', fontFamily: 'Lato-Bold', letterSpacing: 0.4, textTransform: 'uppercase' },
+  emptyState: {
+    padding: 24,
+    alignItems: 'center',
+  },
+  emptyStateText: {
+    fontSize: 14,
+    color: '#9CA3AF',
+    fontFamily: 'Lato-Regular',
+    textAlign: 'center',
+  },
 });

@@ -142,7 +142,7 @@
         "description": "있는 재료로 무엇을 만들지."
       },
       "fitness": {
-        "name": "습관 & 피트니스 코치",
+        "name": "피트니스 코치",
         "description": "작은 습관과 홈트레이닝."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "설명하고 생성"
     },
     "editCard": {
-      "title": "사진 편집",
-      "subtitle": "업로드하고 편집",
-      "cta": "사진 편집"
+      "title": "AI 사진 편집기",
+      "subtitle": "AI로 변환 및 향상",
+      "cta": "AI로 편집"
     },
     "gallery": {
       "title": "갤러리",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "사진에 접근할 수 없습니다. 다시 시도하세요.",
     "messageTooLong": "메시지가 너무 깁니다 ({{length}}). 제한은 {{limit}}입니다.",
     "sendFailed": "전송에 실패했습니다.",
+    "modelNoImageSupport": "선택한 모델은 이미지를 지원하지 않습니다. 다른 모델을 선택하세요.",
     "voiceStartFailed": "음성을 시작할 수 없습니다.",
     "emptyTitle": "무엇을 도와드릴까요?",
     "emptySubtitle": "AI와 대화를 시작하세요",

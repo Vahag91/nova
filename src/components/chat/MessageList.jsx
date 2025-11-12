@@ -48,6 +48,7 @@ const MessageListCore = function MessageList({
   const { t } = useTranslation();
 
   const [showJump, setShowJump] = useState(false);
+  const [isUserDragging, setIsUserDragging] = useState(false);
 
   const isAtBottomRef = useRef(true);
   const userDraggingRef = useRef(false);
@@ -81,6 +82,7 @@ const MessageListCore = function MessageList({
   }, [safeMessages, streamingTail?.id]);
 
   const keyExtractor = useCallback((it, index) => String(it?.id ?? it?.key ?? index), []);
+
 
   const lastRenderable = data.length ? data[data.length - 1] : null;
   const footerFirstInGroup =
@@ -124,6 +126,7 @@ const MessageListCore = function MessageList({
 
   const onScrollBeginDrag = useCallback(() => {
     userDraggingRef.current = true;
+    setIsUserDragging(true);
     autoPinRef.current = false;
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
@@ -133,6 +136,7 @@ const MessageListCore = function MessageList({
 
   const onScrollEndDrag = useCallback(() => {
     userDraggingRef.current = false;
+    setIsUserDragging(false);
   }, []);
 
   const onMomentumScrollEnd = useCallback((e) => {
@@ -141,6 +145,8 @@ const MessageListCore = function MessageList({
     const isAtBottom = contentOffset.y >= contentSize.height - layoutMeasurement.height - pad;
     isAtBottomRef.current = isAtBottom;
     autoPinRef.current = isAtBottom;
+    userDraggingRef.current = false;
+    setIsUserDragging(false);
     setShowJump(!isAtBottom);
   }, []);
 
@@ -169,20 +175,30 @@ const MessageListCore = function MessageList({
     };
   }, []);
 
-  const renderItem = ({ item, index }) => {
+  // Use ref to access data without causing re-renders
+  const dataRef = useRef(data);
+  useEffect(() => {
+    dataRef.current = data;
+  }, [data]);
+
+  const renderItem = useCallback(({ item, index }) => {
     if (item?.type === 'day') return <DaySeparator date={item.date} />;
     if (item?.role === 'system') return <DaySeparator system text={item.content} />;
 
+    // Find prev/next messages by looking at data array from ref (doesn't cause re-renders)
+    const currentData = dataRef.current;
     let j = index - 1; let prevMsg = null;
-    while (j >= 0) { if (!data[j]?.type) { prevMsg = data[j]; break; } j--; }
+    while (j >= 0) { if (!currentData[j]?.type) { prevMsg = currentData[j]; break; } j--; }
     j = index + 1; let nextMsg = null;
-    while (j < data.length) { if (!data[j]?.type) { nextMsg = data[j]; break; } j++; }
+    while (j < currentData.length) { if (!currentData[j]?.type) { nextMsg = currentData[j]; break; } j++; }
 
-    if (!item || typeof item !== 'object') return null;
+    if (!item || typeof item !== 'object') {
+      return null;
+    }
+    
     const role = item.role;
     const isFirstInGroup = !prevMsg || prevMsg.role !== role;
     const isLastInGroup  = !nextMsg || nextMsg.role !== role;
-
     const isStreamingItem = streaming && (item.id === streamingMessageId);
 
     try {
@@ -201,7 +217,15 @@ const MessageListCore = function MessageList({
     } catch {
       return null;
     }
-  };
+  }, [streaming, streamingMessageId, onRetryFromHere]);
+
+  // Stable extraData - use string to avoid object reference changes
+  // Only include streaming message ID to minimize re-renders
+  const extraData = useMemo(() => {
+    // Only include streaming message ID, not global streaming state
+    // This way, only the streaming message re-renders when streaming starts/stops
+    return streamingMessageId || 'none';
+  }, [streamingMessageId]);
 
   return (
     <View style={styles.root}>
@@ -212,6 +236,7 @@ const MessageListCore = function MessageList({
           data={data}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
+          extraData={extraData}
           onScroll={handleScroll}
           scrollEventThrottle={16}
           onScrollBeginDrag={onScrollBeginDrag}
@@ -226,7 +251,7 @@ const MessageListCore = function MessageList({
           maxToRenderPerBatch={12}
           updateCellsBatchingPeriod={50}
           contentContainerStyle={styles.listContent}
-          showsVerticalScrollIndicator={!userDraggingRef.current}
+          showsVerticalScrollIndicator={!isUserDragging}
           ListFooterComponent={<View style={{ height: BOTTOM_GAP }} />}
         />
 

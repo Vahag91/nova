@@ -142,7 +142,7 @@
         "description": "Vad ska du laga av det du har?"
       },
       "fitness": {
-        "name": "Vanor & träning",
+        "name": "Träningscoach",
         "description": "Små vanor och träning hemma."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Beskriv & generera"
     },
     "editCard": {
-      "title": "Redigera foto",
-      "subtitle": "Ladda upp & redigera",
-      "cta": "Redigera foto"
+      "title": "AI-fotoredigerare",
+      "subtitle": "Förvandla och förbättra med AI",
+      "cta": "Redigera med AI"
     },
     "gallery": {
       "title": "Galleri",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Kunde inte få åtkomst till dina foton. Försök igen.",
     "messageTooLong": "Meddelandet är för långt ({{length}}). Gräns är {{limit}}.",
     "sendFailed": "Skickandet misslyckades.",
+    "modelNoImageSupport": "Den valda modellen stöder inte bilder. Välj en annan modell.",
     "voiceStartFailed": "Kunde inte starta röst.",
     "emptyTitle": "Hur kan jag hjälpa?",
     "emptySubtitle": "Starta en konversation med AI",

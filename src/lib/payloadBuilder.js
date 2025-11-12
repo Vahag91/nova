@@ -131,6 +131,28 @@ function isAffirmativeOrTiny(newMsg) {
   return YES_RE.test(t);
 }
 
+// Get last N full message pairs (user + assistant) for better context
+function getLastMessagePairs(thread, count = 2) {
+  const msgs = (thread.messages || []).filter(m => m.role !== 'system');
+  if (msgs.length < 2) return [];
+  
+  const pairs = [];
+  // Start from the second-to-last message and work backwards
+  for (let i = msgs.length - 2; i >= 0 && pairs.length < count; i--) {
+    if (msgs[i].role === 'user' && msgs[i + 1]?.role === 'assistant') {
+      const userMsg = msgs[i];
+      const assistantMsg = msgs[i + 1];
+      
+      // Use mm field if available, otherwise convert markdown
+      const u = userMsg.mm ? { ...userMsg, content: userMsg.mm } : convertMarkdownImageToMultimodal(userMsg);
+      const a = assistantMsg;
+      
+      pairs.unshift({ user: u, assistant: a });
+    }
+  }
+  return pairs;
+}
+
 // Small, safe recent context (last 1 Q→A), only if we have room
 function buildRecencyContext(thread, maxChars = 700) {
   const msgs = (thread.messages || []).filter(m => m.role !== 'system');
@@ -193,14 +215,11 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
     const room = Math.max(0, tokenCap - baseTokens);
     const trimmedSummary = safeTrimSummary(rawSummary, room);
     if (trimmedSummary) {
-      console.log('[AI Payload] Context summary:', trimmedSummary);
       payload = [...sys, { role: 'system', content: trimmedSummary }, newMsg];
-    } else {
-      console.log('[AI Payload] Summary trimmed out (no room).');
     }
   }
 
-  // Optional tiny recency: prefer the REAL last pair if it had an image
+  // Optional recency: include last 1-2 full message pairs for better context
   const USE_RECENCY = true;
   if (USE_RECENCY) {
     const tokensNow = payload.reduce((n, m) => n + safeCount(m), 0);
@@ -226,55 +245,82 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
         ];
         const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
         if (candTokens <= tokenCap) {
-          console.log('[AI Payload] Including recent image exchange for context:', {
-            user: imagePair.user,
-            assistant: imagePair.assistant,
-          });
           payload = candidate;
         }
       } else {
-        // fallback to tiny text-only recency (your existing behavior)
-        let recency = '';
-        try { recency = typeof buildRecencyContext === 'function' ? buildRecencyContext(thread, 700) : ''; } catch {}
-        if (recency) {
-          const candidate = [
-            ...payload.slice(0, -1),
-            { role: 'system', content: `Recency context:\n${recency}` },
-            newMsg
-          ];
-          const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
+        // Try to include last 1-2 full message pairs (user + assistant) as actual messages
+        // This is better than text-only recency because it preserves the conversation flow
+        const pairs = getLastMessagePairs(thread, 2);
+        if (pairs.length > 0) {
+          // Try with 2 pairs first
+          let candidate = [...payload.slice(0, -1)];
+          for (const pair of pairs) {
+            candidate.push(pair.user);
+            if (pair.assistant) candidate.push(pair.assistant);
+          }
+          candidate.push(newMsg);
+          
+          let candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
           if (candTokens <= tokenCap) {
-            console.log('[AI Payload] Recency context:', recency);
             payload = candidate;
+          } else if (pairs.length > 1) {
+            // Try with just the last 1 pair if 2 don't fit
+            candidate = [...payload.slice(0, -1)];
+            const lastPair = pairs[pairs.length - 1];
+            candidate.push(lastPair.user);
+            if (lastPair.assistant) candidate.push(lastPair.assistant);
+            candidate.push(newMsg);
+            
+            candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
+            if (candTokens <= tokenCap) {
+              payload = candidate;
+            }
+          }
+        }
+        
+        // Fallback to tiny text-only recency if pairs don't fit
+        if (payload.length === (rawSummary ? 3 : 2)) {
+          let recency = '';
+          try { recency = typeof buildRecencyContext === 'function' ? buildRecencyContext(thread, 700) : ''; } catch {}
+          if (recency) {
+            const candidate = [
+              ...payload.slice(0, -1),
+              { role: 'system', content: `Recency context:\n${recency}` },
+              newMsg
+            ];
+            const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
+            if (candTokens <= tokenCap) {
+              payload = candidate;
+            }
           }
         }
       }
-      // If the new user input is low-signal (e.g., "yes"), include up to 2 prior assistant lines
-      if (isAffirmativeOrTiny(newMsg)) {
-        const assistants = getLastAssistantTexts(thread, 2, 600);
-        if (assistants.length) {
-          const recap = assistants.map(a => `A: ${a}`).join('\n');
-          const candidate = [
-            ...payload.slice(0, -1),
-            { role: 'system', content: recap },
-            newMsg,
-          ];
-          const candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
+      
+      // If the new user input is low-signal (e.g., "yes"), include full message pairs instead of just assistant text
+      if (isAffirmativeOrTiny(newMsg) && payload.length <= (rawSummary ? 3 : 2)) {
+        const pairs = getLastMessagePairs(thread, 2);
+        if (pairs.length > 0) {
+          let candidate = [...payload.slice(0, -1)];
+          for (const pair of pairs) {
+            candidate.push(pair.user);
+            if (pair.assistant) candidate.push(pair.assistant);
+          }
+          candidate.push(newMsg);
+          
+          let candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
           if (candTokens <= tokenCap) {
-            console.log('[AI Payload] Assistant recap included:', assistants.map(s => s.slice(0, 120)));
             payload = candidate;
-          } else if (assistants.length > 1) {
-            // Try with only the most recent assistant line if both won't fit
-            const recap1 = `A: ${assistants[assistants.length - 1]}`;
-            const candidate1 = [
-              ...payload.slice(0, -1),
-              { role: 'system', content: recap1 },
-              newMsg,
-            ];
-            const candTokens1 = candidate1.reduce((n, m) => n + safeCount(m), 0);
-            if (candTokens1 <= tokenCap) {
-              console.log('[AI Payload] Assistant recap (1) included:', recap1.slice(0, 120));
-              payload = candidate1;
+          } else if (pairs.length > 1) {
+            // Try with just the last 1 pair
+            candidate = [...payload.slice(0, -1)];
+            const lastPair = pairs[pairs.length - 1];
+            candidate.push(lastPair.user);
+            if (lastPair.assistant) candidate.push(lastPair.assistant);
+            candidate.push(newMsg);
+            
+            candTokens = candidate.reduce((n, m) => n + safeCount(m), 0);
+            if (candTokens <= tokenCap) {
+              payload = candidate;
             }
           }
         }
@@ -285,11 +331,9 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
 
   const finalTokens = payload.reduce((n, m) => n + safeCount(m), 0);
   if (finalTokens > tokenCap && payload.length > 2) {
-    console.log('[AI Payload] Payload exceeded token cap, falling back to system + new message only.');
     return [payload[0], payload[payload.length - 1]];
   }
 
-  console.log('[AI Payload] Final messages sent:', payload);
   return payload;
 }
 

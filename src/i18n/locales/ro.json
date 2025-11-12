@@ -142,7 +142,7 @@
         "description": "Ce poți găti cu ce ai."
       },
       "fitness": {
-        "name": "Antrenor de obiceiuri și fitness",
+        "name": "Antrenor fitness",
         "description": "Micropași și antrenamente acasă."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Descrie și generează"
     },
     "editCard": {
-      "title": "Editează o fotografie",
-      "subtitle": "Încarcă și editează",
-      "cta": "Editează fotografia"
+      "title": "Editor foto AI",
+      "subtitle": "Transformă și îmbunătățește cu AI",
+      "cta": "Editează cu AI"
     },
     "gallery": {
       "title": "Galerie",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Nu s-a putut accesa galeria. Încearcă din nou.",
     "messageTooLong": "Mesaj prea lung ({{length}}). Limita este {{limit}}.",
     "sendFailed": "Trimitere eșuată.",
+    "modelNoImageSupport": "Modelul selectat nu suportă imagini. Vă rugăm să alegeți un alt model.",
     "voiceStartFailed": "Nu s-a putut porni vocea.",
     "emptyTitle": "Cu ce te pot ajuta?",
     "emptySubtitle": "Începe o conversație cu AI",

@@ -142,7 +142,7 @@
         "description": "What to cook, with what you have."
       },
       "fitness": {
-        "name": "Habit & Fitness Coach",
+        "name": "Fitness Coach",
         "description": "Tiny habits & home workouts."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Describe & Generate"
     },
     "editCard": {
-      "title": "Edit a Photo",
-      "subtitle": "Upload & edit",
-      "cta": "Edit a Photo"
+      "title": "AI Photo Editor",
+      "subtitle": "Transform & enhance with AI",
+      "cta": "Edit with AI"
     },
     "gallery": {
       "title": "Gallery",
@@ -565,6 +565,15 @@
       "unknownError": "Unknown error"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
     "restore": "Restore",
@@ -643,10 +652,12 @@
     "loading": "Loading…",
     "loadingChat": "Loading chat...",
     "offlineBanner": "You're offline. Messages can't be sent.",
+    "offlineError": "No internet connection. Please check your connection and try again.",
     "imagePickerErrorTitle": "Image picker error",
     "imagePickerErrorMessage": "Unable to access your photos. Please try again.",
     "messageTooLong": "Message too long ({{length}}). Limit is {{limit}}.",
-    "sendFailed": "Failed to send.",
+    "sendFailed": "Failed to send message. Please try again.",
+    "modelNoImageSupport": "The selected model does not support images. Please choose a different model.",
     "voiceStartFailed": "Could not start voice.",
     "emptyTitle": "How can I help?",
     "emptySubtitle": "Start a conversation with AI",

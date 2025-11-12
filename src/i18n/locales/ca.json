@@ -142,7 +142,7 @@
         "description": "Què cuinar amb el que tens."
       },
       "fitness": {
-        "name": "Hàbits i condició física",
+        "name": "Entrenador de fitness",
         "description": "Microhàbits i entrenaments a casa."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Descriu i genera"
     },
     "editCard": {
-      "title": "Edita una foto",
-      "subtitle": "Puja i edita",
-      "cta": "Editar foto"
+      "title": "Editor de fotos IA",
+      "subtitle": "Transforma i millora amb IA",
+      "cta": "Editar amb IA"
     },
     "gallery": {
       "title": "Galeria",
@@ -647,7 +647,8 @@
     "imagePickerErrorMessage": "No s’ha pogut accedir a les teves fotos. Prova-ho de nou.",
     "messageTooLong": "Missatge massa llarg ({{length}}). El límit és {{limit}}.",
     "sendFailed": "Error en enviar.",
-    "voiceStartFailed": "No s’ha pogut iniciar la veu.",
+    "modelNoImageSupport": "El model seleccionat no admet imatges. Si us plau, tria un model diferent.",
+    "voiceStartFailed": "No s'ha pogut iniciar la veu.",
     "emptyTitle": "En què puc ajudar-te?",
     "emptySubtitle": "Comença una conversa amb IA",
     "privateTitle": "Xat privat",

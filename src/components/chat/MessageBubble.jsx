@@ -101,7 +101,7 @@ function PureImagesBlock({ uris, alignRight }) {
   );
 }
 
-const MessageBubble = memo(function MessageBubble({
+const MessageBubbleImpl = function MessageBubble({
   message,
   isUser,
   isFirstInGroup,
@@ -257,6 +257,15 @@ const MessageBubble = memo(function MessageBubble({
           // ASSISTANT SIDE (unified)
           (() => {
             const isStreamingThis = streamingMessageId === message.id;
+            const baseContent = message.content || '';
+            const hasContent = baseContent.trim().length > 0;
+            
+            // Don't render empty non-streaming messages (even if they have activity text)
+            // Activity text should only show while streaming
+            if (!isStreamingThis && !hasContent) {
+              return null;
+            }
+            
             return (
               <TouchableOpacity activeOpacity={0.92} onPress={Keyboard.dismiss} onLongPress={showSheet} delayLongPress={180}>
                 <View
@@ -268,7 +277,7 @@ const MessageBubble = memo(function MessageBubble({
                 >
                   <StreamingText
                     messageId={message.id}
-                    base={message.content}
+                    base={baseContent}
                     streaming={isStreamingThis}
                     activityText={message?.meta?.activity}
                   />
@@ -332,7 +341,7 @@ const MessageBubble = memo(function MessageBubble({
       )}
     </View>
   );
-});
+};
 
 const styles = StyleSheet.create({
   wrap: {
@@ -431,6 +440,56 @@ const styles = StyleSheet.create({
     borderRadius: 999,
   },
   retryText: { fontSize: 12, color: colors.text },
+});
+
+const MessageBubble = memo(MessageBubbleImpl, (prev, next) => {
+  // Compare message by ID and content (not by reference)
+  const prevMsg = prev.message;
+  const nextMsg = next.message;
+  
+  // If message ID changed, re-render
+  if (prevMsg?.id !== nextMsg?.id) return false;
+  
+  // If content changed, re-render
+  if (prevMsg?.content !== nextMsg?.content) return false;
+  
+  // Check if streaming state changed for THIS specific message
+  const prevIsStreaming = prev.streaming && prev.streamingMessageId === prevMsg?.id;
+  const nextIsStreaming = next.streaming && next.streamingMessageId === nextMsg?.id;
+  if (prevIsStreaming !== nextIsStreaming) return false;
+  
+  // Compare other props - only re-render if they actually changed
+  if (prev.isUser !== next.isUser) return false;
+  if (prev.isFirstInGroup !== next.isFirstInGroup) return false;
+  if (prev.isLastInGroup !== next.isLastInGroup) return false;
+  if (prev.showMeta !== next.showMeta) return false;
+  
+  // For streaming prop and streamingMessageId: only re-render if THIS message is affected
+  // Check if THIS message was/is streaming
+  const thisMsgId = prevMsg?.id;
+  const prevWasThisStreaming = prev.streamingMessageId === thisMsgId;
+  const nextIsThisStreaming = next.streamingMessageId === thisMsgId;
+  
+  // If streamingMessageId changed but this message wasn't affected, skip re-render
+  if (prev.streamingMessageId !== next.streamingMessageId) {
+    // Only re-render if this message was or is streaming
+    if (!prevWasThisStreaming && !nextIsThisStreaming) {
+      // Streaming state changed for a different message - skip re-render
+      return true;
+    }
+  }
+  
+  // For streaming prop: only re-render if THIS message's streaming state changed
+  if (prev.streaming !== next.streaming) {
+    // Only re-render if this affects THIS message
+    if (!prevIsStreaming && !nextIsStreaming) {
+      // Global streaming state changed but this message wasn't affected - skip re-render
+      return true;
+    }
+  }
+  
+  // Skip re-render - all props are the same
+  return true;
 });
 
 export default MessageBubble;

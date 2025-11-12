@@ -42,6 +42,7 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { PRESETS, PRESET_AVATARS } from '../data/presets';
+import NetInfo from '@react-native-community/netinfo';
 
 const Drawer = createDrawerNavigator();
 
@@ -234,6 +235,35 @@ function ChatHeaderCenter() {
     : null;
   const displayName = translatedName || activeThread?.title || t('assistants.defaultTitle', 'Assistant');
 
+  // Offline indicator
+  const [isOffline, setIsOffline] = useState(false);
+  const offlineOpacity = useSharedValue(0);
+  const offlineScale = useSharedValue(0.8);
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      const offline = !(state.isConnected && state.isInternetReachable);
+      setIsOffline(offline);
+      
+      if (offline) {
+        offlineOpacity.value = withTiming(1, { duration: 300 });
+        offlineScale.value = withSequence(
+          withTiming(1.2, { duration: 200 }),
+          withTiming(1, { duration: 200 })
+        );
+      } else {
+        offlineOpacity.value = withTiming(0, { duration: 300 });
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const offlineStyle = useAnimatedStyle(() => ({
+    opacity: offlineOpacity.value,
+    transform: [{ scale: offlineScale.value }],
+  }));
+
   return (
     <>
       <Animated.View style={triggerStyle}>
@@ -248,6 +278,11 @@ function ChatHeaderCenter() {
           <Text style={styles.headerPillText} numberOfLines={1} ellipsizeMode="tail">
             {displayName || (activeThread?.title || t('assistants.defaultTitle', 'Assistant'))}
           </Text>
+          {isOffline && (
+            <Animated.View style={[styles.offlineIndicator, offlineStyle]}>
+              <View style={styles.offlineDot} />
+            </Animated.View>
+          )}
           <Animated.View style={[styles.headerPillChevronWrap, arrowStyle]}>
             <SvgIcon name="chevron-down" size={18} color={colors.textSecondary} />
           </Animated.View>
@@ -467,6 +502,8 @@ export default function DrawerNavigator() {
           options={{
             headerShown: false,
             title: 'Paywall',
+            drawerItemStyle: { display: 'none' },
+            swipeEnabled: false,
           }}
         />
       </Drawer.Navigator>
@@ -541,6 +578,17 @@ const styles = StyleSheet.create({
   },
   headerPillChevronWrap: {
     marginLeft: 6,
+  },
+  offlineIndicator: {
+    marginLeft: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  offlineDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#F59E0B',
   },
   sheetOverlay: {
     ...StyleSheet.absoluteFillObject,

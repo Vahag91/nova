@@ -94,11 +94,24 @@ export const useThreadsStore = create((set, get) => ({
       const next = state.threads.map(t => {
         if (t.id !== threadId) return t;
         const msgs = [...(t.messages || [])];
+        let found = false;
         for (let i = msgs.length - 1; i >= 0; i--) {
           if (msgs[i].role === 'assistant') {
             const prev = msgs[i].content || '';
             const newContent = updater(prev);
-            if (prev !== newContent) msgs[i] = { ...msgs[i], content: newContent };
+            if (prev !== newContent) {
+              // Clear activity text when content is updated (streaming completed)
+              const updatedMeta = { ...msgs[i].meta };
+              if (updatedMeta.activity) {
+                delete updatedMeta.activity;
+              }
+              msgs[i] = { 
+                ...msgs[i], 
+                content: newContent,
+                meta: updatedMeta,
+              };
+            }
+            found = true;
             break;
           }
         }
@@ -161,7 +174,9 @@ export const useThreadsStore = create((set, get) => ({
   addPrivateMessage: (message) => {
     set(state => {
       const t = state.privateThread;
-      if (!state.privateActive || !t) return {};
+      if (!state.privateActive || !t) {
+        return {};
+      }
       return {
         privateThread: { ...t, messages: [...(t.messages || []), message], updatedAt: Date.now() }
       };
@@ -170,12 +185,26 @@ export const useThreadsStore = create((set, get) => ({
   updateLastAssistantContentPrivate: (updater) => {
     set(state => {
       const t = state.privateThread;
-      if (!state.privateActive || !t) return {};
+      if (!state.privateActive || !t) {
+        return {};
+      }
       const msgs = [...(t.messages || [])];
+      let found = false;
       for (let i = msgs.length - 1; i >= 0; i--) {
         if (msgs[i].role === 'assistant') {
           const prev = msgs[i].content || '';
-          msgs[i] = { ...msgs[i], content: updater(prev) };
+          const updated = updater(prev);
+          // Clear activity text when content is updated (streaming completed)
+          const updatedMeta = { ...msgs[i].meta };
+          if (updatedMeta.activity) {
+            delete updatedMeta.activity;
+          }
+          msgs[i] = { 
+            ...msgs[i], 
+            content: updated,
+            meta: updatedMeta,
+          };
+          found = true;
           break;
         }
       }

@@ -142,7 +142,7 @@
         "description": "Hvad skal du lave af det, du har?"
       },
       "fitness": {
-        "name": "Vaner & træning",
+        "name": "Fitness træner",
         "description": "Små vaner og hjemmetræning."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Beskriv & generér"
     },
     "editCard": {
-      "title": "Redigér foto",
-      "subtitle": "Upload & rediger",
-      "cta": "Redigér foto"
+      "title": "AI-fotoredigering",
+      "subtitle": "Transformer og forbedre med AI",
+      "cta": "Rediger med AI"
     },
     "gallery": {
       "title": "Galleri",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Kunne ikke få adgang til dine fotos. Prøv igen.",
     "messageTooLong": "Beskeden er for lang ({{length}}). Grænsen er {{limit}}.",
     "sendFailed": "Sendelsen mislykkedes.",
+    "modelNoImageSupport": "Den valgte model understøtter ikke billeder. Vælg en anden model.",
     "voiceStartFailed": "Kunne ikke starte stemme.",
     "emptyTitle": "Hvordan kan jeg hjælpe?",
     "emptySubtitle": "Start en samtale med KI",

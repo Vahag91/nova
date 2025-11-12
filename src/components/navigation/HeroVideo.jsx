@@ -34,13 +34,16 @@ export default function HeroVideo({
     bumpTick();
   }, [bumpTick]);
 
-  // Watchdog: if playback stalls >6s, seek to 0
+  // Watchdog: if playback stalls >8s, seek to 0 (less aggressive)
   useEffect(() => {
+    if (paused) return; // Don't check when paused
     const id = setInterval(() => {
-      if (Date.now() - lastTickRef.current > 6000) restart();
-    }, 5000);
+      if (!paused && Date.now() - lastTickRef.current > 8000) {
+        restart();
+      }
+    }, 3000);
     return () => clearInterval(id);
-  }, [restart]); // ← stable, not tied to every progress tick
+  }, [restart, paused]);
 
   // Restart on key or playlist length change
   useEffect(() => {
@@ -75,26 +78,42 @@ export default function HeroVideo({
         resizeMode="cover"
         repeat
         muted
-        paused={paused}                 // ← keep playing unless parent pauses it
+        paused={paused}
         ignoreSilentSwitch="obey"
         playInBackground={false}
         playWhenInactive={false}
+        progressUpdateInterval={250}
+        bufferConfig={{
+          minBufferMs: 15000,
+          maxBufferMs: 50000,
+          bufferForPlaybackMs: 2500,
+          bufferForPlaybackAfterRebufferMs: 5000,
+        }}
         onLoad={bumpTick}
+        onLoadStart={bumpTick}
         onBuffer={bumpTick}
-        onProgress={bumpTick}           // ← no setState here; no re-render spam
+        onProgress={bumpTick}
         onEnd={() => {
           if (playlist.length > 1) {
             setSourceIndex(i => (i + 1) % playlist.length);
           }
           // if single source, let `repeat` handle the loop (no manual restart)
         }}
-        onPlaybackStalled={restart}
+        onPlaybackStalled={() => {
+          // Only restart if actually stalled, not just buffering
+          setTimeout(() => {
+            if (Date.now() - lastTickRef.current > 3000) {
+              restart();
+            }
+          }, 1000);
+        }}
         onError={(e) => {
           console.warn('HeroVideo error:', e?.nativeEvent);
-          restart();
+          // Only restart on actual errors, not warnings
+          if (e?.nativeEvent?.error?.errorCode) {
+            restart();
+          }
         }}
-        // Android note: if you ever see cover-cropping glitches, try:
-        // useTextureView={false}
       />
     </View>
   );

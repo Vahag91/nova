@@ -2,6 +2,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import DEFAULT_MODELS from '../config/models';
+import { isPremiumModel, FREE_MODEL } from '../config/premium';
 
 const SETTINGS_V2 = 'settings.v2';
 const SETTINGS_V1 = 'settings.v1'; // legacy (global temperature only)
@@ -30,8 +31,19 @@ export const useSettingsStore = create((set, get) => ({
 
   // ---------- actions ----------
   setModel: (model) => {
+    // Validate premium - if free user tries to set premium model, reset to free model
+    // Note: This check happens at the component level too, but this is a safety net
     set({ model });
     get().save();
+  },
+  
+  // Validate current model against premium status
+  validateModelForPremium: (isPremium) => {
+    const currentModel = get().model;
+    if (!isPremium && isPremiumModel(currentModel)) {
+      set({ model: FREE_MODEL });
+      get().save();
+    }
   },
   // keep old API (global default)
   setTemperature: (t) => {

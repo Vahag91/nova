@@ -142,7 +142,7 @@
         "description": "Što skuhati od onog što imaš."
       },
       "fitness": {
-        "name": "Navike i fitness",
+        "name": "Fitness trener",
         "description": "Male navike i kućni treninzi."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Opiši i generiraj"
     },
     "editCard": {
-      "title": "Uredi fotografiju",
-      "subtitle": "Prenesi i uredi",
-      "cta": "Uredi fotografiju"
+      "title": "AI uređivač fotografija",
+      "subtitle": "Transformiraj i poboljšaj s AI",
+      "cta": "Uredi s AI"
     },
     "gallery": {
       "title": "Galerija",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Nije moguće pristupiti fotografijama. Pokušaj ponovno.",
     "messageTooLong": "Poruka je preduga ({{length}}). Granica je {{limit}}.",
     "sendFailed": "Slanje nije uspjelo.",
+    "modelNoImageSupport": "Odabrani model ne podržava slike. Molimo odaberite drugi model.",
     "voiceStartFailed": "Nije moguće pokrenuti glas.",
     "emptyTitle": "Kako mogu pomoći?",
     "emptySubtitle": "Započni razgovor s AI",

@@ -20,26 +20,31 @@ const SuggestionCards = ({ onSuggestionPress }) => {
         id: 'create-images',
         icon: 'studio',
         title: safeTitle(t('chat.quickActions.createImages', { defaultValue: 'Create Images' }), 'Create Images'),
+        color: '#00BCD4', // Cyan
       },
       {
         id: 'edit-image',
         icon: 'layers',
         title: safeTitle(t('chat.quickActions.editImage', { defaultValue: 'Edit Image' }), 'Edit Image'),
+        color: '#F19E39', // Orange
       },
       {
         id: 'open-camera',
         icon: 'photo',
         title: safeTitle(t('chat.camera', { defaultValue: 'Camera' }), 'Camera'),
+        color: '#75FB4C', // Green
       },
       {
         id: 'start-voice',
         icon: 'mic',
         title: safeTitle(t('chat.quickActions.startVoice', { defaultValue: 'Start Voice' }), 'Start Voice'),
+        color: '#FF6B6B', // Red/Pink
       },
       {
         id: 'assistants',
         icon: 'assistants',
         title: safeTitle(t('chat.quickActions.assistants', { defaultValue: 'Assistants' }), 'Assistants'),
+        color: '#A78BFA', // Purple
       },
     ];
     // Ensure it is an array of valid items
@@ -69,7 +74,7 @@ const SuggestionCards = ({ onSuggestionPress }) => {
               onPress={() => handlePress(suggestion)}
             >
               <View style={styles.iconWrap}>
-                <SvgIcon name={suggestion.icon} size={24} color="#75FBFD" />
+                <SvgIcon name={suggestion.icon} size={24} color={suggestion.color || '#75FBFD'} />
               </View>
               <Text style={styles.chipLabel}>{suggestion.title}</Text>
             </TouchableOpacity>
@@ -96,8 +101,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#0e0e0fff',
     borderRadius: 22,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+    paddingHorizontal: 11,
+    paddingVertical: 8,
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.12)',
     marginRight: 2,
@@ -109,7 +114,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 12,
+    marginRight: 6,
   },
   chipLabel: {
     color: '#F9FAFB',

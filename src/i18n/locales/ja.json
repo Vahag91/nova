@@ -142,7 +142,7 @@
         "description": "手元にあるもので何を作るか。"
       },
       "fitness": {
-        "name": "習慣 & フィットネスコーチ",
+        "name": "フィットネスコーチ",
         "description": "小さな習慣と自宅トレーニング。"
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "説明して生成"
     },
     "editCard": {
-      "title": "写真を編集",
-      "subtitle": "アップロードして編集",
-      "cta": "写真を編集"
+      "title": "AI写真エディター",
+      "subtitle": "AIで変換・強化",
+      "cta": "AIで編集"
     },
     "gallery": {
       "title": "ギャラリー",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "写真にアクセスできません。もう一度お試しください。",
     "messageTooLong": "メッセージが長すぎます ({{length}})。上限は {{limit}} です。",
     "sendFailed": "送信に失敗しました。",
+    "modelNoImageSupport": "選択したモデルは画像をサポートしていません。別のモデルを選択してください。",
     "voiceStartFailed": "音声を開始できませんでした。",
     "emptyTitle": "どうお手伝いしましょう？",
     "emptySubtitle": "AIとの会話を始めましょう",

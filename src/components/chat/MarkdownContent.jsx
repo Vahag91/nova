@@ -1,4 +1,4 @@
-import React, { useMemo, memo } from 'react';
+import React, { useMemo, memo, useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,6 +8,7 @@ import {
   Linking,
   Image,
   Dimensions,
+  InteractionManager,
 } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import Clipboard from '@react-native-clipboard/clipboard';
@@ -77,7 +78,51 @@ const ImageRenderer = memo(function ImageRenderer({ uri, alt }) {
 }, (prev, next) => prev.uri === next.uri);
 
 function MarkdownContentImpl({ text, isUser, animateOnMount = false, streaming = false }) {
-  const cleaned = useMemo(() => preprocess(text), [text]);
+  const prevStreamingRef = React.useRef(streaming);
+  
+  // Defer expensive markdown render when streaming completes
+  const [deferredText, setDeferredText] = useState(text);
+  const [isDeferring, setIsDeferring] = useState(false);
+  const prevTextRefForDefer = React.useRef(text);
+  
+  useEffect(() => {
+    // Skip if we're already deferring - don't interfere with ongoing deferral
+    if (isDeferring) {
+      return;
+    }
+    
+    const wasStreaming = prevStreamingRef.current;
+    const isNowStreaming = streaming;
+    const textChanged = text !== prevTextRefForDefer.current;
+    const textLengthIncrease = text.length - prevTextRefForDefer.current.length;
+    
+    // If streaming just completed AND text increased significantly, defer the expensive render
+    // Lower threshold (30 chars) to catch more cases where final text is much larger
+    if (wasStreaming && !isNowStreaming && textChanged && textLengthIncrease > 30) {
+      // Set deferring flag but DON'T update deferredText yet - keep showing old text
+      setIsDeferring(true);
+      // Capture the text value at defer time to avoid race conditions
+      const textToDefer = text;
+      // Use InteractionManager to defer until interactions are complete
+      const handle = InteractionManager.runAfterInteractions(() => {
+        // Now update deferredText with the captured text - this will trigger the expensive render
+        setDeferredText(textToDefer);
+        setIsDeferring(false);
+      });
+      // Update refs to track the new text, but don't update deferredText state yet
+      prevTextRefForDefer.current = text;
+      prevStreamingRef.current = streaming;
+      return () => handle.cancel();
+    } else {
+      // During streaming or if not streaming, update immediately
+      setDeferredText(text);
+      prevTextRefForDefer.current = text;
+      prevStreamingRef.current = streaming;
+    }
+  }, [text, streaming]);
+  
+  // Use deferred text for markdown rendering to avoid blocking UI
+  const cleaned = useMemo(() => preprocess(deferredText), [deferredText]);
 
   const rules = useMemo(() => ({
     fence: (node) => {
@@ -162,11 +207,31 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false, streaming =
 
 const MarkdownContent = memo(
   MarkdownContentImpl,
-  (prev, next) =>
-    prev.text === next.text &&
-    prev.isUser === next.isUser &&
-    prev.streaming === next.streaming &&
-    prev.animateOnMount === next.animateOnMount
+  (prev, next) => {
+    // If streaming state changed, always re-render
+    if (prev.streaming !== next.streaming) {
+      return false; // Re-render
+    }
+    
+    // During streaming, only re-render if text changed significantly (30+ chars or structure changed)
+    if (next.streaming && prev.streaming) {
+      const prevText = prev.text || '';
+      const nextText = next.text || '';
+      const lengthDiff = Math.abs(nextText.length - prevText.length);
+      
+      // Skip if only small changes (< 30 chars) and same structure
+      if (lengthDiff < 30 && prevText.substring(0, Math.min(prevText.length, 100)) === nextText.substring(0, Math.min(nextText.length, 100))) {
+        return true; // Skip re-render
+      }
+    }
+    
+    // Standard comparison for non-streaming or significant changes
+    return (
+      prev.text === next.text &&
+      prev.isUser === next.isUser &&
+      prev.animateOnMount === next.animateOnMount
+    );
+  }
 );
 export default MarkdownContent;
 

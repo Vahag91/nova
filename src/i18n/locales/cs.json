@@ -142,7 +142,7 @@
         "description": "Co vařit z toho, co máte."
       },
       "fitness": {
-        "name": "Zvyky a cvičení",
+        "name": "Fitness trenér",
         "description": "Krátké návyky a domácí tréninky."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Popište a generujte"
     },
     "editCard": {
-      "title": "Upravit fotku",
-      "subtitle": "Nahrát a upravit",
-      "cta": "Upravit fotku"
+      "title": "AI editor fotografií",
+      "subtitle": "Transformujte a vylepšete pomocí AI",
+      "cta": "Upravit pomocí AI"
     },
     "gallery": {
       "title": "Galerie",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Nelze získat přístup k fotkám. Zkuste to znovu.",
     "messageTooLong": "Zpráva je příliš dlouhá ({{length}}). Limit je {{limit}}.",
     "sendFailed": "Odeslání se nezdařilo.",
+    "modelNoImageSupport": "Vybraný model nepodporuje obrázky. Vyberte jiný model.",
     "voiceStartFailed": "Nepodařilo se spustit hlas.",
     "emptyTitle": "S čím můžu pomoct?",
     "emptySubtitle": "Začněte konverzaci s AI",

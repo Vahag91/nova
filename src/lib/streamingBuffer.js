@@ -3,8 +3,14 @@ const _buffers = new Map();         // id -> string
 const _listeners = new Map();       // id -> Set<fn>
 
 export function appendStream(id, chunk) {
-  if (!id || typeof chunk !== 'string' || !chunk) return;
-  _buffers.set(id, (_buffers.get(id) || '') + chunk);
+  if (!id || typeof chunk !== 'string' || !chunk) {
+    return;
+  }
+  
+  const before = _buffers.get(id) || '';
+  const after = before + chunk;
+  _buffers.set(id, after);
+  
   const set = _listeners.get(id);
   if (set && set.size) {
     const fns = Array.from(set);

@@ -36,6 +36,7 @@ import { getModelVisuals } from '../utils/modelVisuals';
 import { getImageModelPrice } from '../utils/imagePricing';
 import RNFS from 'react-native-fs';
 import { useTranslation } from 'react-i18next';
+import Svg, { Path } from 'react-native-svg';
 
 const STYLES = [
   { id: 'photoreal', name: 'Photoreal', image: require('../../assets/images/createstudio/photoreal.webp'), cost: 3 },
@@ -78,6 +79,11 @@ export default function EditImage({ navigation }) {
   const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
   const [coinsLoading, setCoinsLoading] = useState(false);
   useEffect(() => {
+    // Only fetch coins if balance is not already loaded
+    if (coins !== null && coins !== undefined) {
+      return;
+    }
+    
     let mounted = true;
     (async () => {
       try {
@@ -90,7 +96,7 @@ export default function EditImage({ navigation }) {
       finally { if (mounted) setCoinsLoading(false); }
     })();
     return () => { mounted = false; };
-  }, []);
+  }, [coins, setCoinsBalance]);
 
   // Model from settings
   const models = useSettingsStore(s => s.models);
@@ -386,7 +392,12 @@ export default function EditImage({ navigation }) {
             <Text style={styles.headerTitle}>{t('editImage.headerTitle')}</Text>
           </View>
           <Pressable onPress={() => navigation.navigate('CoinStore')} style={styles.balancePill} hitSlop={8}>
-            <Text style={styles.balanceText}>{coinsLoading ? '…' : `◈ ${coins ?? '—'}`}</Text>
+            <View style={styles.balanceContent}>
+              <Svg height={14} width={14} viewBox="0 -960 960 960" fill="#FF9500">
+                <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
+              </Svg>
+              <Text style={styles.balanceText}>{coinsLoading ? '…' : coins ?? '—'}</Text>
+            </View>
           </Pressable>
         </View>
       </View>
@@ -440,6 +451,14 @@ export default function EditImage({ navigation }) {
                 <Text style={styles.modelButtonName} numberOfLines={1}>
                   {selectedModelDisplay?.display?.name || selectedModel}
                 </Text>
+                {selectedCost > 0 && (
+                  <View style={styles.modelButtonCoins}>
+                    <Svg height={12} width={12} viewBox="0 -960 960 960" fill="#FF9500">
+                      <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
+                    </Svg>
+                    <Text style={styles.modelButtonCoinsText}>{selectedCost}</Text>
+                  </View>
+                )}
               </View>
               <View style={styles.modelButtonChevron}>
                 <SvgIcon name="chevron-down" size={16} color="rgba(255,255,255,0.9)" />
@@ -585,7 +604,12 @@ const styles = StyleSheet.create({
   headerCenterAbs: { ...StyleSheet.absoluteFillObject, alignItems: 'center', justifyContent: 'center' },
   headerTitle: { color: '#FFFFFF', fontSize: 22, fontWeight: '800' },
   balancePill: { height: 40, flexDirection: 'row', alignItems: 'center', borderRadius: 999, paddingHorizontal: 8 },
-  balanceText: { color: '#7C5CFF', fontSize: 16, fontWeight: '800' },
+  balanceContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  balanceText: { color: '#FFFFFF', fontSize: 14, fontWeight: '800' },
 
   content: { paddingHorizontal: 16, paddingTop: 16, gap: 16 },
   modelWrap: { gap: 8 },
@@ -610,6 +634,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modelButtonName: { color: '#FFFFFF', fontSize: 15, fontWeight: '700', flexShrink: 1 },
+  modelButtonCoins: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  modelButtonCoinsText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '700',
+  },
   modelButtonChevron: { marginLeft: 12 },
   rowBetween: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   sectionLabel: { color: 'rgba(255,255,255,0.75)', fontSize: 14, fontWeight: '600' },

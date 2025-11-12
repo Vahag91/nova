@@ -142,7 +142,7 @@
         "description": "Hva du kan lage med det du har."
       },
       "fitness": {
-        "name": "Vane- og treningscoach",
+        "name": "Treningscoach",
         "description": "Små vaner og hjemmetrening."
       },
       "money": {
@@ -478,9 +478,9 @@
       "cta": "Beskriv & generer"
     },
     "editCard": {
-      "title": "Rediger et bilde",
-      "subtitle": "Last opp & rediger",
-      "cta": "Rediger bilde"
+      "title": "AI-fotoredigering",
+      "subtitle": "Transformer og forbedre med AI",
+      "cta": "Rediger med AI"
     },
     "gallery": {
       "title": "Galleri",
@@ -647,6 +647,7 @@
     "imagePickerErrorMessage": "Kunne ikke få tilgang til bildene dine. Prøv igjen.",
     "messageTooLong": "Meldingen er for lang ({{length}}). Grensen er {{limit}}.",
     "sendFailed": "Sending feilet.",
+    "modelNoImageSupport": "Den valgte modellen støtter ikke bilder. Velg en annen modell.",
     "voiceStartFailed": "Kunne ikke starte stemme.",
     "emptyTitle": "Hvordan kan jeg hjelpe?",
     "emptySubtitle": "Start en samtale med KI",
