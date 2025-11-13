@@ -145,16 +145,23 @@ export default function Settings() {
   }, [clearThreads, t]);
 
   const premiumItems = useMemo(
-    () => [
-      {
-        key: 'premium',
-        title: isPremium ? t('settings.rows.premiumActive.title') : t('settings.rows.getPremium.title'),
-        subtitle: isPremium ? t('settings.rows.premiumActive.subtitle') : t('settings.rows.getPremium.subtitle'),
-        icon: <SvgIcon name="stars" size={22} color="#FCD34D" />,
-        iconBg: '#2B1A3D',
-        onPress: handleUpgrade,
-      },
-      {
+    () => {
+      const items = [];
+      
+      // Only show "Get Premium" if user is not premium
+      if (!isPremium) {
+        items.push({
+          key: 'premium',
+          title: t('settings.rows.getPremium.title'),
+          subtitle: t('settings.rows.getPremium.subtitle'),
+          icon: <SvgIcon name="stars" size={22} color="#FCD34D" />,
+          iconBg: '#2B1A3D',
+          onPress: handleUpgrade,
+        });
+      }
+      
+      // Always show restore option
+      items.push({
         key: 'restore',
         title: t('settings.rows.restore.title'),
         subtitle: t('settings.rows.restore.subtitle'),
@@ -165,8 +172,10 @@ export default function Settings() {
           <ActivityIndicator size="small" color="#FFFFFF" />
         ) : undefined,
         disabled: restoring,
-      },
-    ],
+      });
+      
+      return items;
+    },
     [handleUpgrade, handleRestore, isPremium, restoring, t],
   );
 

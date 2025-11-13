@@ -16,6 +16,7 @@ import { useImagesStore } from '../../state/useImagesStore';
 import { normalizeImageUri } from '../../lib/imageUtils';
 import { toLocalPath } from '../../lib/imageDownloader';
 import { useTranslation } from 'react-i18next';
+import RateUsService from '../../services/RateUsService';
 
 const STEP = {
   APPLYING: 'applying',
@@ -138,6 +139,14 @@ export default function CreateImageGenerating({
         });
         setPhaseIndex(3); // Finishing
         setStep(STEP.RESULT);
+        
+        // Check for rate prompt after successful photo creation
+        const checkResult = await RateUsService.canShowRatePrompt();
+        if (checkResult.canShow) {
+          setTimeout(() => {
+            RateUsService.showRatePrompt();
+          }, 2000);
+        }
       } catch (err) {
         if (cancelled) return;
         setError(err?.message || t('createImageGenerating.errors.genericMessage'));
@@ -258,9 +267,10 @@ const handleRetry = () => {
   }, [requestedSize]);
 
   return (
-    <Modal visible={visible} transparent animationType="fade" onRequestClose={handleClose}>
-      <View style={styles.root}>
-        {step === STEP.APPLYING && (
+    <>
+      <Modal visible={visible} transparent animationType="fade" onRequestClose={handleClose}>
+        <View style={styles.root}>
+          {step === STEP.APPLYING && (
           <View style={styles.applyingContainer}>
             <View style={styles.sheet}>
               <View style={styles.sheetHeader}>
@@ -417,8 +427,9 @@ const handleRetry = () => {
             </View>
           </View>
         )}
-      </View>
-    </Modal>
+        </View>
+      </Modal>
+    </>
   );
 }
 

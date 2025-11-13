@@ -735,5 +735,12 @@
     "delete": "מחק",
     "close": "סגור",
     "allow": "אפשר"
+  },
+  "rateUs": {
+    "title": "האם אתה נהנה מ-ChatCloud?",
+    "subtitle": "המשוב שלך עוזר לנו להשתפר. האם תוכל לדרג אותנו ב-App Store?",
+    "rateNow": "דרג עכשיו",
+    "maybeLater": "אולי מאוחר יותר",
+    "dontAskAgain": "אל תשאל שוב"
   }
 }

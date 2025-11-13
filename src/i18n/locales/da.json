@@ -735,5 +735,12 @@
     "delete": "Slet",
     "close": "Luk",
     "allow": "Tillad"
+  },
+  "rateUs": {
+    "title": "Nyder du ChatCloud?",
+    "subtitle": "Din feedback hjælper os med at forbedre. Vil du vurdere os i App Store?",
+    "rateNow": "Vurder nu",
+    "maybeLater": "Måske senere",
+    "dontAskAgain": "Spørg ikke igen"
   }
 }

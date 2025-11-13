@@ -735,5 +735,12 @@
     "delete": "Izbriši",
     "close": "Zatvori",
     "allow": "Dopusti"
+  },
+  "rateUs": {
+    "title": "Uživate li ChatCloud?",
+    "subtitle": "Vaša povratna informacija pomaže nam poboljšati se. Možete li nas ocijeniti u App Storeu?",
+    "rateNow": "Ocijeni sada",
+    "maybeLater": "Možda kasnije",
+    "dontAskAgain": "Ne pitaj ponovno"
   }
 }

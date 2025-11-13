@@ -735,5 +735,12 @@
     "delete": "Poista",
     "close": "Sulje",
     "allow": "Salli"
+  },
+  "rateUs": {
+    "title": "Nautitko ChatCloudista?",
+    "subtitle": "Palautteesi auttaa meitä parantamaan. Voisitko arvostella meidät App Storessa?",
+    "rateNow": "Arvostele nyt",
+    "maybeLater": "Ehkä myöhemmin",
+    "dontAskAgain": "Älä kysy uudelleen"
   }
 }

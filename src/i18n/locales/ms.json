@@ -735,5 +735,12 @@
     "delete": "Padam",
     "close": "Tutup",
     "allow": "Benarkan"
+  },
+  "rateUs": {
+    "title": "Menikmati ChatCloud?",
+    "subtitle": "Maklum balas anda membantu kami memperbaiki. Bolehkah anda menilai kami di App Store?",
+    "rateNow": "Nilaikan sekarang",
+    "maybeLater": "Mungkin kemudian",
+    "dontAskAgain": "Jangan tanya lagi"
   }
 }

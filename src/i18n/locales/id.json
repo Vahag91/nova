@@ -735,5 +735,12 @@
     "delete": "Hapus",
     "close": "Tutup",
     "allow": "Izinkan"
+  },
+  "rateUs": {
+    "title": "Menikmati ChatCloud?",
+    "subtitle": "Masukan Anda membantu kami meningkatkan. Bisakah Anda menilai kami di App Store?",
+    "rateNow": "Beri nilai sekarang",
+    "maybeLater": "Mungkin nanti",
+    "dontAskAgain": "Jangan tanya lagi"
   }
 }

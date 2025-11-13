@@ -735,5 +735,12 @@
     "delete": "Usuń",
     "close": "Zamknij",
     "allow": "Zezwól"
+  },
+  "rateUs": {
+    "title": "Podoba Ci się ChatCloud?",
+    "subtitle": "Twoja opinia pomaga nam się poprawiać. Czy mógłbyś nas ocenić w App Store?",
+    "rateNow": "Oceń teraz",
+    "maybeLater": "Może później",
+    "dontAskAgain": "Nie pytaj ponownie"
   }
 }

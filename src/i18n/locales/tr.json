@@ -735,5 +735,12 @@
     "delete": "Sil",
     "close": "Kapat",
     "allow": "İzin ver"
+  },
+  "rateUs": {
+    "title": "ChatCloud'u beğendiniz mi?",
+    "subtitle": "Geri bildiriminiz iyileştirmemize yardımcı olur. Bizi App Store'da değerlendirebilir misiniz?",
+    "rateNow": "Şimdi değerlendir",
+    "maybeLater": "Belki sonra",
+    "dontAskAgain": "Tekrar sorma"
   }
 }

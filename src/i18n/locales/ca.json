@@ -735,5 +735,12 @@
     "delete": "Suprimeix",
     "close": "Tanca",
     "allow": "Permet"
+  },
+  "rateUs": {
+    "title": "Gaudiu de ChatCloud?",
+    "subtitle": "El vostre feedback ens ajuda a millorar. Podríeu valorar-nos a l'App Store?",
+    "rateNow": "Valora ara",
+    "maybeLater": "Potser més tard",
+    "dontAskAgain": "No tornar a preguntar"
   }
 }

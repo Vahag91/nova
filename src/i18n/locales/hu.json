@@ -735,5 +735,12 @@
     "delete": "Törlés",
     "close": "Bezárás",
     "allow": "Engedélyezés"
+  },
+  "rateUs": {
+    "title": "Élvezi a ChatCloud-ot?",
+    "subtitle": "Visszajelzése segít nekünk fejleszteni. Értékelne minket az App Store-ban?",
+    "rateNow": "Értékelés most",
+    "maybeLater": "Talán később",
+    "dontAskAgain": "Ne kérdezze újra"
   }
 }

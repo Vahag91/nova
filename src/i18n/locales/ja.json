@@ -735,5 +735,12 @@
     "delete": "削除",
     "close": "閉じる",
     "allow": "許可"
+  },
+  "rateUs": {
+    "title": "ChatCloudをお楽しみですか？",
+    "subtitle": "フィードバックは改善に役立ちます。App Storeで評価していただけますか？",
+    "rateNow": "今すぐ評価",
+    "maybeLater": "後で",
+    "dontAskAgain": "再度尋ねない"
   }
 }

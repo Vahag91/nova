@@ -735,5 +735,12 @@
     "delete": "Verwijderen",
     "close": "Sluiten",
     "allow": "Toestaan"
+  },
+  "rateUs": {
+    "title": "Geniet je van ChatCloud?",
+    "subtitle": "Je feedback helpt ons verbeteren. Zou je ons kunnen beoordelen in de App Store?",
+    "rateNow": "Nu beoordelen",
+    "maybeLater": "Misschien later",
+    "dontAskAgain": "Niet meer vragen"
   }
 }

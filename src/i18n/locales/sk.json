@@ -735,5 +735,12 @@
     "delete": "Vymazať",
     "close": "Zavrieť",
     "allow": "Povoliť"
+  },
+  "rateUs": {
+    "title": "Užívate si ChatCloud?",
+    "subtitle": "Vaša spätná väzba nám pomáha zlepšovať sa. Mohli by ste nás ohodnotiť v App Store?",
+    "rateNow": "Ohodnotiť teraz",
+    "maybeLater": "Možno neskôr",
+    "dontAskAgain": "Nepýtať sa znova"
   }
 }

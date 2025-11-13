@@ -735,5 +735,12 @@
     "delete": "刪除",
     "close": "關閉",
     "allow": "允許"
+  },
+  "rateUs": {
+    "title": "喜歡 ChatCloud 嗎？",
+    "subtitle": "您的回饋幫助我們改進。您能在 App Store 上為我們評分嗎？",
+    "rateNow": "立即評分",
+    "maybeLater": "稍後再說",
+    "dontAskAgain": "不再詢問"
   }
 }

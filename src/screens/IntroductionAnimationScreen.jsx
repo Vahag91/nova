@@ -17,12 +17,14 @@ import {
   TopBackSkipView,
   CenterNextButton,
 } from '../components/onboarding';
+import RateUsService from '../services/RateUsService';
 
 const IntroductionAnimationScreen = ({ onComplete }) => {
   const window = useWindowDimensions();
 
   const [currentPage, setCurrentPage] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const continueCountRef = useRef(0);
 
   useEffect(() => {
     Image.prefetch(
@@ -61,14 +63,26 @@ const IntroductionAnimationScreen = ({ onComplete }) => {
     }).start();
   }, []);
 
-  const onNextClick = useCallback(() => {
+  const onNextClick = useCallback(async () => {
     const v = animValue.current;
     if (v < 0.2) {
       // SplashView → RelaxView
+      continueCountRef.current += 1;
       playAnimation(0.2);
     } else if (v >= 0.2 && v < 0.4) {
-      // RelaxView → CareView
+      // RelaxView → CareView (2nd continue)
+      continueCountRef.current += 1;
       playAnimation(0.4);
+      
+      // After 2nd continue, check for rate prompt
+      if (continueCountRef.current >= 2) {
+        const checkResult = await RateUsService.canShowRatePrompt();
+        if (checkResult.canShow) {
+          setTimeout(() => {
+            RateUsService.showRatePrompt();
+          }, 1500);
+        }
+      }
     } else if (v >= 0.4) {
       // LAST SCREEN - call onComplete to close onboarding
       if (onComplete) onComplete();

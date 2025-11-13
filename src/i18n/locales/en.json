@@ -648,6 +648,7 @@
     "regenerateResponse": "Regenerate response",
     "regenerateResponseHint": "Generate a new response",
     "copyCode": "Copy code",
+    "copied": "Copied",
     "image": "image",
     "loading": "Loading…",
     "loadingChat": "Loading chat...",
@@ -745,5 +746,12 @@
     "delete": "Delete",
     "close": "Close",
     "allow": "Allow"
+  },
+  "rateUs": {
+    "title": "Enjoying ChatCloud?",
+    "subtitle": "Your feedback helps us improve. Would you mind rating us on the App Store?",
+    "rateNow": "Rate Now",
+    "maybeLater": "Maybe Later",
+    "dontAskAgain": "Don't Ask Again"
   }
 }

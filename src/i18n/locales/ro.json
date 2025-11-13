@@ -735,5 +735,12 @@
     "delete": "Șterge",
     "close": "Închide",
     "allow": "Permite"
+  },
+  "rateUs": {
+    "title": "Vă bucurați de ChatCloud?",
+    "subtitle": "Feedback-ul dvs. ne ajută să ne îmbunătățim. Ne-ați putea evalua în App Store?",
+    "rateNow": "Evaluează acum",
+    "maybeLater": "Poate mai târziu",
+    "dontAskAgain": "Nu mai întreba"
   }
 }

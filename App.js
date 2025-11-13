@@ -14,6 +14,7 @@ import OfflineBanner from './src/components/OfflineBanner'; // ← NEW
 import './src/i18n';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SubscriptionProvider } from './src/context/SubscriptionContext';
+import UsageTrackingService from './src/services/UsageTrackingService';
 
 export default function App() {
   const hydrateSettings = useSettingsStore(s => s.hydrate);
@@ -39,6 +40,9 @@ export default function App() {
     hydrateSettings();
     hydrateThreads();
     hydrateImages();
+    
+    // Initialize usage tracking (first launch date)
+    UsageTrackingService.initializeFirstLaunch();
 
     (async () => {
       try {
@@ -62,6 +66,8 @@ export default function App() {
         if (r.ok) {
           const json = await r.json();
           const modelsData = json?.models || json;
+          console.log('modelsData', modelsData);
+          
           if (modelsData && typeof modelsData === 'object') setModels(modelsData);
         }
       } catch {

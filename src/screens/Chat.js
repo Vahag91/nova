@@ -29,6 +29,8 @@ import { isPremiumModel, FREE_MODEL } from '../config/premium';
 
 import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
 import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
+import RateUsService from '../services/RateUsService';
+import UsageTrackingService from '../services/UsageTrackingService';
 
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
@@ -89,6 +91,7 @@ export default function Chat({ navigation }) {
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
   const [webSearchNext, setWebSearchNext] = useState(false); // per-message web search
+  const successfulMessagesRef = useRef(0); // Track successful messages for rate prompt
   const abortRef = useRef(null);
   const appStateRef = useRef(AppState.currentState); // Track if app is in background
 
@@ -573,6 +576,21 @@ useEffect(() => {
           clearStream(assistantId);
           if (!isPrivate) forceSaveThread(activeThread.id);
           setWebSearchNext(false);
+
+          // Track successful message and check for rate prompt (after 2 successful messages)
+          successfulMessagesRef.current += 1;
+          if (successfulMessagesRef.current >= 2) {
+            // Check if we can show rate prompt (async IIFE)
+            (async () => {
+              const checkResult = await RateUsService.canShowRatePrompt();
+              if (checkResult.canShow) {
+                // Small delay to not interrupt user flow, then show native modal
+                setTimeout(() => {
+                  RateUsService.showRatePrompt();
+                }, 2000);
+              }
+            })();
+          }
         },
         onError: (err) => {
           logAi('response_error', {

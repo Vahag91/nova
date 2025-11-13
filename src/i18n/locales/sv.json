@@ -735,5 +735,12 @@
     "delete": "Radera",
     "close": "Stäng",
     "allow": "Tillåt"
+  },
+  "rateUs": {
+    "title": "Gillar du ChatCloud?",
+    "subtitle": "Din feedback hjälper oss att förbättra. Skulle du kunna betygsätta oss i App Store?",
+    "rateNow": "Betygsätt nu",
+    "maybeLater": "Kanske senare",
+    "dontAskAgain": "Fråga inte igen"
   }
 }
