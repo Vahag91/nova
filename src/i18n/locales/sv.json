@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Googles mest avancerade modell",
     "gemini-2.0-flash": "Snabb och precis Google-AI"
   },
+  "modelDescriptions": {
+    "most_powerful": "Mest kraftfulla AI-modellen",
+    "fast_everyday": "Snabb för vardagliga uppgifter",
+    "fast_reasoning": "Snabb modell med bra resonemang",
+    "great_reasoning": "Avancerad resonemangsmodell",
+    "coding_reasoning": "Avancerad programmering och resonemang",
+    "better_coding": "Bättre för programmering och resonemang",
+    "best_overall": "Bästa allround AI-modellen",
+    "best_google": "Googles bästa modell",
+    "best_xai": "Mest kraftfulla xAI-modellen",
+    "creative_focus": "Utmärkt för kreativt skrivande",
+    "code_helper": "Utmärkt för programmeringshjälp",
+    "chat_focus": "Optimerad för chatt",
+    "long_context": "Utmärkt för långa sammanhang",
+    "budget_friendly": "Budgetvänlig AI-modell",
+    "ultra_fast": "Ultra snabba svar",
+    "safe_default": "Säkert standardval",
+    "multilingual": "Stark flerspråkig support",
+    "vision_strong": "Utmärkt med bilder och vision",
+    "data_analysis": "Bra för dataanalys",
+    "structured_tasks": "Bra för strukturerade uppgifter",
+    "everyday_helper": "Vardagsassistentmodell",
+    "concise_answers": "Korta, koncisa svar",
+    "detailed_answers": "Detaljerade steg-för-steg-svar",
+    "experimental": "Experimentell modell av nästa generation",
+    "reliable_classic": "Pålitlig klassisk modell",
+    "lightweight": "Lättviktig, lågkostnadsmodell",
+    "chatty_personal": "Vänligare och mer personlig",
+    "pro_users": "Bäst för avancerade användare",
+    "research_helper": "Bra för forskning och anteckningar",
+    "reasoning_strong": "Avancerad resonemangsmodell"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Vänligen vänta…",
     "processing": "Bearbetar...",
     "tapToUploadImage": "Tryck för att ladda upp bild",
-    "camera": "Kamera",
+    "camera": "Ladda upp foton",
     "library": "Bibliotek",
     "enterPrompt": "Ange prompt för text-till-bild generering",
     "openInBrowser": "Öppna i webbläsare",
@@ -215,8 +247,10 @@
     "search": "Sök",
     "clearSearch": "Rensa sökning",
     "noChatsYet": "Inga chattar ännu",
+    "noResults": "Inga chattar ännu",
     "startFirstConversation": "Starta din första konversation.",
     "startChat": "Starta chatt",
+    "startNewChat": "Starta ny chatt",
     "errorLoadingHistory": "Fel vid inläsning av historiken",
     "renameChat": "Byt namn på chatten",
     "enterNewTitle": "Ange ny titel",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Möt",
       "titleHighlight": "Image Studio",
-      "subtitle": "Skapa & redigera bilder med AI — direkt i {{app}}.",
+      "subtitle": "Skapa & redigera bilder med AI — direkt i ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Möt din AI",
       "titleHighlight": "Assistenter",
       "subtitle": "Specialiserade AI-experter redo att hjälpa dig i vardagen",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Träningscoach",
-          "text": "Få personliga tränings- och kostplaner"
+          "text": "Små vanor och hemträning."
         },
-        {
-          "title": "Läkare",
-          "text": "Få hälsoinsikter, analys av symptom och råd"
+        "recipes": {
+          "title": "Måltider och recept",
+          "text": "Vad ska laga med vad du har."
         },
-        {
-          "title": "Husdjursskötare",
-          "text": "Expertråd om husdjurs hälsa, träning och vård"
+        "travel": {
+          "title": "Resekompis",
+          "text": "Enkla planer och packlistor."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Få tokens",
+    "title": "Få credits",
     "loading": "Laddar token-butik…",
     "balanceLabel": "Din nuvarande balans är",
-    "balanceValue": "{{amount}} tokens",
+    "balanceValue": "{{amount}} credits",
     "history": {
       "link": "Transaktionshistorik",
       "alertTitle": "Historik",
@@ -545,9 +579,10 @@
       "value": "Bästa värde"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} tokens",
+      "tokensLabel": "{{credits}} credits",
       "defaultName": "Paket {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} credits"
     },
     "premium": {
       "title": "Bli Premium",
@@ -560,7 +595,7 @@
       "initErrorTitle": "Initiering misslyckades",
       "genericMessage": "Något gick fel.",
       "successTitle": "Lyckat",
-      "successMessage": "Tokens dyker upp snart.",
+      "successMessage": "Credits dyker upp snart.",
       "purchaseFailedTitle": "Köp misslyckades",
       "unknownError": "Okänt fel"
     }
@@ -572,7 +607,13 @@
     "features": {
       "create": "Skapa bilder och video",
       "search": "Sök på webben med AI",
-      "talk": "Prata naturligt med AI"
+      "talk": "Prata naturligt med AI",
+      "imageStudio": "Få Image Studio {{credits}} krediter {{period}}",
+      "period": {
+        "weekly": "veckovis",
+        "monthly": "månadsvis",
+        "yearly": "årligen"
+      }
     },
     "freeTrial": {
       "title": "Gratis testperiod",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Meddelande...",
     "createImages": "Skapa bilder",
     "generateAiArtwork": "Generera AI-konstverk",
-    "camera": "Kamera",
-    "takeOrSelectPhotos": "Ta eller välj foton",
+    "camera": "Ladda upp foton",
+    "takeOrSelectPhotos": "Välj foton",
     "search": "Sök",
     "findInformation": "Hitta information",
     "findRecentInfo": "Hitta senaste info",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "med enkla ord",
       "planDay": "Planera min dag",
       "planDaySubtitle": "med produktivitetstips"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Bearbetar...",
-    "camera": "Kamera",
+    "camera": "Ladda upp foton",
     "library": "Bibliotek"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Spara",
     "delete": "Radera",
     "close": "Stäng",
-    "allow": "Tillåt"
+    "allow": "Tillåt",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Gillar du ChatCloud?",
@@ -742,5 +788,63 @@
     "rateNow": "Betygsätt nu",
     "maybeLater": "Kanske senare",
     "dontAskAgain": "Fråga inte igen"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Exklusiv",
+    "badgeLine2": "Engångserbjudande",
+    "upgradeNow": "Uppgradera nu för {{price}}",
+    "loadingPrice": "Laddar...",
+    "termsOfUse": "Användarvillkor",
+    "privacyPolicy": "Integritetspolicy",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

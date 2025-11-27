@@ -1,6 +1,11 @@
 import { CHAT_PROXY_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 import { SSEClient } from '../lib/SSEClient';
 
+const DEFAULT_FALLBACK_MODEL = 'gpt-5-nano';
+const logStream = (...args) => {
+  // Logging disabled for production
+};
+
 export function streamChat({
   model,
   messages,
@@ -15,9 +20,9 @@ export function streamChat({
   allowWebSearch = false,
   forceWebSearch = false,
   webSearchConfig = undefined,
+  fallbackModel = DEFAULT_FALLBACK_MODEL,
 }) {
-  const startTime = Date.now();
-  const performanceStart = performance.now();
+
   // Build headers (add anon key only for local dev)
   const headers = {
     'Content-Type': 'application/json',
@@ -25,7 +30,7 @@ export function streamChat({
     'x-app-version': '1.0.0',
     ...(secretMode ? { 'x-secret-mode': '1' } : {}),
   };
-  if (__DEV__ && SUPABASE_ANON_KEY) {
+  if (SUPABASE_ANON_KEY) {
     headers.Authorization = `Bearer ${SUPABASE_ANON_KEY}`;
   }
 
@@ -43,43 +48,9 @@ export function streamChat({
     return { role: m.role, content: m.content ?? '' };
   });
 
-  // ✅ NEW: Track stream state to prevent onDone after errors
-  let doneCalled = false;
-  let errorOccurred = false;
-  let doneEventSeen = false;
-  let closeInfo = null;
-
-  const safeOnDone = () => {
-    if (!doneCalled) {
-      doneCalled = true;
-      onDone?.();
-    }
-  };
-
-  // ✅ NEW: Only call onDone if stream completed successfully
-  const finishIfAppropriate = (source) => {
-    if (errorOccurred) {
-      // Never call onDone after any error
-      return;
-    }
-    
-    // Accept completion either by explicit provider event or clean HTTP close
-    const okClose = closeInfo?.reason === 'complete';
-    const userAborted = closeInfo?.reason === 'client_abort';
-    
-    if (userAborted) {
-      // User canceled - don't call onDone, but don't treat as error either
-      return;
-    }
-    
-    if (doneEventSeen || okClose) {
-      safeOnDone();
-    }
-    // else: closed without error but no done event - treat as incomplete/canceled
-  };
+  logStream('start', { model, fallbackModel, allowWebSearch, forceWebSearch });
 
   const body = {
-    model,
     messages: outMessages,
     tools: [], // client-side placeholder (not used by proxy, safe to keep)
     capabilities: { supportsImages: true, supportsAudio: false, supportsVideo: false },
@@ -88,70 +59,146 @@ export function streamChat({
   if (forceWebSearch) body.forceWebSearch = true;
   if (webSearchConfig) body.webSearchConfig = webSearchConfig;
 
-  const client = new SSEClient(CHAT_PROXY_URL, {
-    method: 'POST',
-    headers,
-    body,
-    onEvent: (evt) => {
-      if (evt?.type === 'token' && typeof evt.delta === 'string') {
-        onToken?.(evt.delta); 
-        return; 
+  const canUseFallback = Boolean(fallbackModel && fallbackModel !== model);
+  let doneCalled = false;
+  let finished = false;
+  let fallbackStarted = false;
+  let tokensEmitted = false;
+  let primaryError = null;
+  let activeClient = null;
+  let aborted = false;
+
+  const safeOnDone = () => {
+    if (!doneCalled) {
+      doneCalled = true;
+      finished = true;
+      logStream('done');
+      onDone?.();
+    }
+  };
+
+  const stopAll = () => {
+    aborted = true;
+    activeClient?.abort();
+  };
+
+  const startAttempt = (modelToUse, isFallback = false) => {
+    let doneEventSeen = false;
+    let closeInfo = null;
+    let attemptErrored = false;
+    let errorHandled = false;
+
+    logStream('attempt_start', { model: modelToUse, isFallback });
+
+    const finishIfAppropriate = (source) => {
+      if (finished || attemptErrored) return;
+      const okClose = closeInfo?.reason === 'complete';
+      const userAborted = closeInfo?.reason === 'client_abort' || aborted;
+
+      if (userAborted) {
+        logStream('attempt_abort', { model: modelToUse, isFallback, source });
+        return;
       }
-      if (evt?.type === 'done') {
-        // ✅ Track that provider sent done event
-        doneEventSeen = true;
-        finishIfAppropriate('done_event');
-        return; 
+
+      if (doneEventSeen || okClose) {
+        safeOnDone();
       }
-      if (evt?.type === 'error') {
-        if (__DEV__) {
-          console.error('[STREAM_CHAT] onEvent - Error event:', evt);
+    };
+
+    const forwardError = (errEnvelope, source) => {
+      if (finished || errorHandled) return;
+      attemptErrored = true;
+      errorHandled = true;
+
+      const enriched = {
+        ...(typeof errEnvelope === 'object' ? errEnvelope : { message: String(errEnvelope) }),
+        source,
+        model: modelToUse,
+        isFallback,
+      };
+
+      if (!tokensEmitted && !isFallback && canUseFallback && !fallbackStarted) {
+        fallbackStarted = true;
+        primaryError = enriched;
+        logStream('attempt_failed_primary', { error: enriched, fallbackModel });
+        // Abort current client before retrying to ensure clean state
+        activeClient?.abort('fallback_switch');
+        startAttempt(fallbackModel, true);
+        return;
+      }
+
+      finished = true;
+      const finalError = fallbackStarted || isFallback
+        ? { ...enriched, fallbackTried: true, fallbackModel, primaryError: primaryError || enriched }
+        : enriched;
+
+      logStream('attempt_failed_final', finalError);
+      onError?.(finalError);
+    };
+
+    const client = new SSEClient(CHAT_PROXY_URL, {
+      method: 'POST',
+      headers,
+      body: { ...body, model: modelToUse },
+      onEvent: (evt) => {
+        if (evt?.type === 'token' && typeof evt.delta === 'string') {
+          tokensEmitted = true;
+          onToken?.(evt.delta);
+          return;
         }
-        // ✅ Mark error occurred - prevents onDone
-        errorOccurred = true;
-        onError?.(evt); 
-        return; 
-      }
+        if (evt?.type === 'done') {
+          doneEventSeen = true;
+          finishIfAppropriate('done_event');
+          return;
+        }
+        if (evt?.type === 'error') {
+          forwardError(evt, 'provider_event');
+          return;
+        }
 
-      // Optional: show tool events if you decide to surface them
-      // if (evt?.type === 'tool') { /* surface "Searching..." etc. */ return; }
+        const rtext = evt?.output_text_delta || evt?.delta;
+        if (typeof rtext === 'string') {
+          tokensEmitted = true;
+          onToken?.(rtext);
+          return;
+        }
+        const cc = evt?.choices?.[0]?.delta?.content;
+        if (typeof cc === 'string') {
+          tokensEmitted = true;
+          onToken?.(cc);
+        }
+      },
+      onOpen: () => {},
+      onError: (e) => {
+        forwardError(e, 'transport');
+      },
+      onClose: (info) => {
+        closeInfo = info;
+        finishIfAppropriate('close');
+      },
+      retryPolicy: 'none',  // Disable auto-retry; we control fallback manually
+      retryDelays: [],
+      heartbeatInterval: 15000,
+      timeoutMs: 60000,
+      inactivityTimeoutMs: 30000,
+      log: __DEV__ === true,
+    });
 
-      // Fallbacks for raw formats
-      const rtext = evt?.output_text_delta || evt?.delta;
-      if (typeof rtext === 'string') { 
-        onToken?.(rtext); 
-        return; 
-      }
-      const cc = evt?.choices?.[0]?.delta?.content;
-      if (typeof cc === 'string') {
-        onToken?.(cc);
-      }
-    },
-    onOpen: () => {},
-    onError: (e) => {
-      // ✅ Mark error occurred - prevents onDone from firing later
-      errorOccurred = true;
-      onError?.(e);
-    },
-    onClose: (info) => {
-      // ✅ Store close info and finish appropriately
-      closeInfo = info;
-      finishIfAppropriate('close');
-    },
-    retryPolicy: 'none',  // ✅ CRITICAL: Disable auto-retry for chat generations
-    retryDelays: [],      // ✅ Backup: empty array also prevents retries
-    heartbeatInterval: 15000,
-    timeoutMs: 60000,
-    inactivityTimeoutMs: 30000,
-    log: __DEV__ === true,  // Verbose logs only during development
-  });
+    activeClient = client;
+    client.start();
+    return client;
+  };
 
-  client.start();
+  const controller = {
+    abort: stopAll,
+  };
+
+  startAttempt(model, false);
 
   if (signal) {
-    if (signal.aborted) client.abort();
-    else signal.addEventListener('abort', () => client.abort(), { once: true });
+    if (signal.aborted) controller.abort();
+    else signal.addEventListener('abort', () => controller.abort(), { once: true });
   }
 
-  return client;
+  return controller;
 }

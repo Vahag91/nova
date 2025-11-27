@@ -30,7 +30,6 @@ import { isPremiumModel, FREE_MODEL } from '../config/premium';
 import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
 import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
 import RateUsService from '../services/RateUsService';
-import UsageTrackingService from '../services/UsageTrackingService';
 
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
@@ -91,6 +90,7 @@ export default function Chat({ navigation }) {
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
   const [webSearchNext, setWebSearchNext] = useState(false); // per-message web search
+  const requestModelKey = useMemo(() => (webSearchNext ? 'gpt-5.1' : activeModelKey), [webSearchNext, activeModelKey]);
   const successfulMessagesRef = useRef(0); // Track successful messages for rate prompt
   const abortRef = useRef(null);
   const appStateRef = useRef(AppState.currentState); // Track if app is in background
@@ -137,7 +137,11 @@ export default function Chat({ navigation }) {
   const onPartialText = useCallback((text) => {
     setVoiceText(text || '');
   }, [setVoiceText]);
-  const { isRecording, volume, start: startVoice, stop: stopVoice } = useVoiceInput({ onPartialText, onFinalText });
+  const { isRecording, volume, start: startVoice, stop: stopVoice, activate: activateVoice } = useVoiceInput({
+    onPartialText,
+    onFinalText,
+    autoInit: false,
+  });
 
   // Hydrate & ensure thread
   useEffect(() => {
@@ -189,7 +193,6 @@ useEffect(() => {
   const animatedContentStyle = useAnimatedStyle(() => ({ transform: [{ translateY: kTranslate.value }] }));
   const animatedFooterStyle = useAnimatedStyle(() => ({ transform: [{ translateY: kTranslate.value + kGap.value }] }));
 
-  const logAi = useCallback(() => {}, []);
 
   // Network
   useEffect(() => {
@@ -308,13 +311,29 @@ useEffect(() => {
 
   const handleCreateImagesPress = useCallback(() => {
     setInsertToChatCallback(onInsertImagesMarkdown);
-    // Open Studio home instead of jumping straight into Create
-    navigation.navigate('Studio', { screen: 'StudioHome', params: { seedPrompt: input || '' } });
+    try {
+      navigation.navigate('Studio', {
+        screen: 'StudioHome',
+      });
+    } catch (err) {
+      // Navigation error handled silently
+    }
   }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
 
   const handleEditImagePress = useCallback(() => {
     setInsertToChatCallback(onInsertImagesMarkdown);
-    navigation.navigate('Studio', { screen: 'EditImage', params: { seedPrompt: input || '' } });
+    try {
+      // Navigate to EditImage screen in Studio stack
+      navigation.navigate('Studio', {
+        screen: 'EditImage',
+        params: { 
+          seedPrompt: input || '', 
+          returnTo: 'Chat' 
+        },
+      });
+    } catch (err) {
+      // Navigation error handled silently
+    }
   }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
 
   const handleAssistantsPress = useCallback(() => {
@@ -328,6 +347,7 @@ useEffect(() => {
       return;
     }
 
+    activateVoice();
     const res = await ensureMicAndSpeech();
     if (!res.ok) {
       const voiceTitle = t('chat.permissions.voiceTitle', { defaultValue: 'Voice Permissions Needed' });
@@ -367,7 +387,7 @@ useEffect(() => {
     }
     setShowVoiceOverlay(true);
     setVoiceText('');
-  }, [isRecording, setShowVoiceOverlay, stopVoice, setInput, startVoice, setError, t, setVoiceText]);
+  }, [activateVoice, isRecording, setShowVoiceOverlay, stopVoice, setInput, startVoice, setError, t, setVoiceText]);
 
   const handleQuickSuggestionPress = useCallback((suggestion) => {
     const id = suggestion?.id;
@@ -481,59 +501,16 @@ useEffect(() => {
       // Create thread context once and reuse (optimize object creation)
       const threadMessages = activeThread.messages || [];
       const threadForContext = { ...activeThread, messages: [...threadMessages, mUser] };
-      // Dev: log thread context snapshot (sanitized) before payload build
-      logAi('thread_meta', {
-        threadId: activeThread?.id,
-        title: activeThread?.title,
-        hasSystem: !!activeThread?.system,
-        pinnedModel: !!activeThread?.meta?.pinnedModel,
-        assistantName: activeThread?.meta?.assistantName || activeThread?.title,
-        presetId: activeThread?.meta?.presetId || null,
-        msgCountNoSystem: threadMessages.filter(m => m.role !== 'system').length,
-      });
       await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
       const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
 
-      // Classify system parts for easier debugging
-      const sys0 = payload[0]?.role === 'system' ? payload[0].content : '';
-      const sys1 = payload[1]?.role === 'system' ? payload[1].content : '';
-      const maybeExtras = payload.slice(2).filter(m => m.role === 'system').map(m => m.content);
-      logAi('context', {
-        threadId: activeThread?.id,
-        model: activeModelKey,
-        tokensEst: (() => { try { return getPayloadSize(payload); } catch { return -1; } })(),
-        systemGlobalPreview: typeof sys0 === 'string' ? sys0.slice(0, 160) : '[mm] ',
-        systemPersonaPreview: typeof sys1 === 'string' ? sys1.slice(0, 160) : '[none]',
-        extraSystemPreviews: maybeExtras.map(s => (s || '').slice(0, 160)),
-        messageCount: payload.length,
-      });
-
-      // Dedicated context size log for quick metrics
-      try {
-        const size = typeof getPayloadSize === 'function' ? getPayloadSize(payload) : -1;
-        const roles = payload.map(p => p.role);
-        logAi('context_size', {
-          tokensEst: size,
-          charsApprox: size > 0 ? size * 4 : -1,
-          roles,
-          systems: roles.filter(r => r === 'system').length,
-          users: roles.filter(r => r === 'user').length,
-          assistants: roles.filter(r => r === 'assistant').length,
-        });
-      } catch {}
-
-      logAi('request', {
-        threadId: activeThread?.id || activeThreadIdForInsert,
-        model: activeModelKey,
-        payload,
-      });
 
       setStreaming(true);
       const deviceId = await ensureDeviceId();
       const controller = new AbortController(); abortRef.current = controller;
 
       streamChat({
-        model: activeModelKey,
+        model: requestModelKey,
         messages: payload,
         deviceId,
         allowWebSearch: webSearchNext,
@@ -546,12 +523,6 @@ useEffect(() => {
         },
         onDone: () => {
           const full = getStream(assistantId);
-          
-          logAi('response', {
-            threadId: activeThread?.id || activeThreadIdForInsert,
-            messageId: assistantId,
-            content: full,
-          });
           
           // If content is empty, remove the message instead of saving it
           if (!full || full.trim().length === 0) {
@@ -593,12 +564,6 @@ useEffect(() => {
           }
         },
         onError: (err) => {
-          logAi('response_error', {
-            threadId: activeThread?.id || activeThreadIdForInsert,
-            messageId: assistantId,
-            error: err,
-          });
-          
           const wasBackgrounded = appStateRef.current !== 'active';
           const isOSTermination = err.code === 0 || err.code === 'NETWORK';
           const partial = getStream(assistantId);
@@ -628,10 +593,6 @@ useEffect(() => {
         },
       });
     } catch (err) {
-      logAi('request_failed', {
-        threadId: activeThread?.id || activeThreadIdForInsert,
-        error: err,
-      });
       if (assistantAdded && assistantId) {
         if (isPrivate) {
           updateLastAssistantContentPrivate(() => t('chat.sendFailed', { defaultValue: 'Failed to send.' }));
@@ -755,16 +716,6 @@ useEffect(() => {
               onCreateImagesPress={handleCreateImagesPress}
               onOpenCameraPress={onOpenCameraPress}
               onSearchPress={() => {
-                if (!isPremium) {
-                  try {
-                    navigation.navigate('PaywallScreen', { returnTo: 'Chat' });
-                  } catch (error) {
-                    if (__DEV__) {
-                      console.warn('Failed to navigate to PaywallScreen:', error);
-                    }
-                  }
-                  return;
-                }
                 setWebSearchNext(v => !v);
               }}
               onClipboardPress={() => { }}

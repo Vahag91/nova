@@ -1,6 +1,5 @@
 // app/src/hooks/useVoiceInput.js (using @ascendtis/react-native-voice-to-text)
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Platform, PermissionsAndroid } from 'react-native';
 import {
   addEventListener,
   startListening,
@@ -13,10 +12,14 @@ export function useVoiceInput({
   onPartialText,
   onFinalText,
   onErrorText,
+  autoInit = true,
 } = {}) {
   const [isRecording, setIsRecording] = useState(false);
   const [volume, setVolume] = useState(0);
 
+  const [active, setActive] = useState(!!autoInit);
+  const enabledRef = useRef(!!autoInit);
+  useEffect(() => { enabledRef.current = active; }, [active]);
 
   const partialCbRef = useRef(onPartialText);
   const finalCbRef = useRef(onFinalText);
@@ -27,6 +30,7 @@ export function useVoiceInput({
   useEffect(() => { errCbRef.current = onErrorText; }, [onErrorText]);
 
   useEffect(() => {
+    if (!active) return undefined;
     // Bind new library events
     const subs = [];
     subs.push(addEventListener('onSpeechStart', () => setIsRecording(true)));
@@ -47,24 +51,6 @@ export function useVoiceInput({
       setIsRecording(false);
     }));
 
-    // Android mic permission
-    if (Platform.OS === 'android') {
-      (async () => {
-        try {
-          await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-            {
-              title: 'Microphone Permission',
-              message: 'This app needs access to your microphone to recognize speech',
-              buttonNeutral: 'Ask Me Later',
-              buttonNegative: 'Cancel',
-              buttonPositive: 'OK',
-            }
-          );
-        } catch {}
-      })();
-    }
-
     return () => {
       // Unsubscribe listeners
       subs.forEach(s => s && typeof s.remove === 'function' && s.remove());
@@ -72,9 +58,19 @@ export function useVoiceInput({
       setVolume(0);
       try { const maybe = stopListening(); if (maybe && typeof maybe.then === 'function') maybe.catch(() => {}); } catch {}
     };
+  }, [active]);
+
+  const activate = useCallback(() => {
+    if (!enabledRef.current) {
+      enabledRef.current = true;
+      setActive(true);
+    }
   }, []);
 
   const start = useCallback(async () => {
+    if (!enabledRef.current) {
+      return false;
+    }
     try {
       if (typeof setRecognitionLanguage === 'function' && locale) {
         try { await setRecognitionLanguage(locale); } catch {}
@@ -90,16 +86,18 @@ export function useVoiceInput({
   }, [locale]);
 
   const stop = useCallback(async () => {
+    if (!enabledRef.current) return;
     try { await stopListening(); } catch {}
     setIsRecording(false);
     setVolume(0);
   }, []);
 
   const cancel = useCallback(async () => {
+    if (!enabledRef.current) return;
     try { await stopListening(); } catch {}
     setIsRecording(false);
     setVolume(0);
   }, []);
 
-  return { isRecording, volume, start, stop, cancel };
+  return { isRecording, volume, start, stop, cancel, activate };
 }

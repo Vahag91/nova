@@ -3,6 +3,18 @@ import { Storage } from '../lib/storage';
 import { throttledSave } from '../lib/throttledSave';
 import { newThread } from './types';
 
+const DEFAULT_THREAD_TITLE = 'assistant';
+
+function normalizeThreadTitle(title) {
+  const trimmed = typeof title === 'string' ? title.trim() : '';
+  if (!trimmed) return DEFAULT_THREAD_TITLE;
+  const lower = trimmed.toLowerCase();
+  if (lower === 'new chat' || lower === 'new conversation') {
+    return DEFAULT_THREAD_TITLE;
+  }
+  return trimmed;
+}
+
 function bump(arr, id, patch = {}) {
   return arr.map(t => t.id === id ? { ...t, ...patch, updatedAt: Date.now() } : t);
 }
@@ -48,8 +60,9 @@ export const useThreadsStore = create((set, get) => ({
     });
   },
   // TIP: if you want to default to the new OpenAI chat model everywhere, change model below.
-  createThread: ({ title = 'Untitled', model = 'gpt-5-nano', system = null } = {}) => {
-    const t = newThread({ title, model, system });
+  createThread: ({ title = DEFAULT_THREAD_TITLE, model = 'gpt-5-nano', system = null } = {}) => {
+    const normalizedTitle = normalizeThreadTitle(title);
+    const t = newThread({ title: normalizedTitle, model, system });
     set(state => {
       const threads = [t, ...state.threads];
       safeSaveThreads(threads);

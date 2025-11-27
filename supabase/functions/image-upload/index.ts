@@ -50,7 +50,6 @@ Deno.serve(async (req) => {
 
     if (!uploadResponse.ok) {
       const errorText = await uploadResponse.text().catch(() => "Upload failed");
-      console.error(`Runware upload error ${uploadResponse.status}:`, errorText);
       return new Response(errorText, { status: uploadResponse.status, headers: CORS });
     }
 
@@ -58,7 +57,6 @@ Deno.serve(async (req) => {
     const imageUUID = uploadJson?.imageUUID || uploadJson?.uuid || uploadJson?.id;
 
     if (!imageUUID) {
-      console.error("Runware upload response missing imageUUID:", uploadJson);
       return new Response("Invalid response from Runware", { status: 502, headers: CORS });
     }
 
@@ -72,7 +70,6 @@ Deno.serve(async (req) => {
     });
 
   } catch (error) {
-    console.error("Upload error:", error);
     return new Response(
       JSON.stringify({ 
         success: false, 

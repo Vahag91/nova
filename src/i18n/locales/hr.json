@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Googleov najnapredniji model",
     "gemini-2.0-flash": "Brz i precizan Google AI"
   },
+  "modelDescriptions": {
+    "most_powerful": "Najmoćniji AI model",
+    "fast_everyday": "Brz za svakodnevne zadatke",
+    "fast_reasoning": "Brz model s dobrim zaključivanjem",
+    "great_reasoning": "Napredni model zaključivanja",
+    "coding_reasoning": "Napredno programiranje i zaključivanje",
+    "better_coding": "Bolje za programiranje i zaključivanje",
+    "best_overall": "Najbolji sveobuhvatan AI model",
+    "best_google": "Najbolji Google model",
+    "best_xai": "Najmoćniji xAI model",
+    "creative_focus": "Odličan za kreativno pisanje",
+    "code_helper": "Odličan za pomoć pri programiranju",
+    "chat_focus": "Optimiziran za chat",
+    "long_context": "Odličan za dugačke kontekste",
+    "budget_friendly": "Prilagođen proračunu AI model",
+    "ultra_fast": "Ultra brzi odgovori",
+    "safe_default": "Siguran zadani izbor",
+    "multilingual": "Jaka višejezična podrška",
+    "vision_strong": "Odličan s slikama i vidom",
+    "data_analysis": "Dobar za analizu podataka",
+    "structured_tasks": "Dobar za strukturirane zadatke",
+    "everyday_helper": "Model asistenta za svakodnevne zadatke",
+    "concise_answers": "Kratki, sažeti odgovori",
+    "detailed_answers": "Detaljni odgovori korak po korak",
+    "experimental": "Eksperimentalni model sljedeće generacije",
+    "reliable_classic": "Pouzdan klasični model",
+    "lightweight": "Lagani, niskotrošni model",
+    "chatty_personal": "Prijateljskiji i osobni",
+    "pro_users": "Najbolji za napredne korisnike",
+    "research_helper": "Dobar za istraživanje i bilješke",
+    "reasoning_strong": "Napredni model zaključivanja"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Pričekaj…",
     "processing": "Obrađujem...",
     "tapToUploadImage": "Dodirni za prijenos slike",
-    "camera": "Kamera",
+    "camera": "Učitaj fotografije",
     "library": "Galerija",
     "enterPrompt": "Unesi prompt za generiranje slike iz teksta",
     "openInBrowser": "Otvori u pregledniku",
@@ -225,7 +257,9 @@
     "rename": "Preimenuj",
     "unpin": "Otkvači",
     "pin": "Prikvači",
-    "untitled": "Bez naslova"
+    "untitled": "Bez naslova",
+    "noResults": "Nema chatova još",
+    "startNewChat": "Započni chat"
   },
   "settings": {
     "title": "Postavke",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Upoznaj",
       "titleHighlight": "Image Studio",
-      "subtitle": "Stvaraj i uređuj slike s AI — izravno u {{app}}.",
+      "subtitle": "Stvaraj i uređuj slike s AI — izravno u ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Upoznaj svoj AI",
       "titleHighlight": "Asistenti",
       "subtitle": "Specijalizirani AI pomagači spremni za svakodnevne potrebe",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Fitness trener",
-          "text": "Planovi vježbanja i prehrane po tvojoj mjeri"
+          "text": "Male navike i vježbe kod kuće."
         },
-        {
-          "title": "Doktor",
-          "text": "Uvid u zdravlje, analiza simptoma i smjernice"
+        "recipes": {
+          "title": "Obroci i recepti",
+          "text": "Što kuhati s onim što imaš."
         },
-        {
-          "title": "Briga o ljubimcima",
-          "text": "Savjeti o zdravlju, dresuri i njezi"
+        "travel": {
+          "title": "Putni suputnik",
+          "text": "Jednostavni planovi i popisi pakiranja."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Kupi tokene",
+    "title": "Kupi credite",
     "loading": "Učitavanje trgovine tokenima…",
     "balanceLabel": "Tvoj trenutni saldo je",
-    "balanceValue": "{{amount}} tokena",
+    "balanceValue": "{{amount}} credita",
     "history": {
       "link": "Povijest transakcija",
       "alertTitle": "Povijest",
@@ -545,9 +579,10 @@
       "value": "Najbolja vrijednost"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} tokena",
+      "tokensLabel": "{{credits}} tokena",
       "defaultName": "Paket {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} tokena"
     },
     "premium": {
       "title": "Postani Premium",
@@ -560,7 +595,7 @@
       "initErrorTitle": "Greška inicijalizacije",
       "genericMessage": "Nešto je pošlo po zlu.",
       "successTitle": "Uspjeh",
-      "successMessage": "Tokeni će se uskoro pojaviti.",
+      "successMessage": "Crediti će se uskoro pojaviti.",
       "purchaseFailedTitle": "Kupnja nije uspjela",
       "unknownError": "Nepoznata greška"
     }
@@ -572,7 +607,13 @@
     "features": {
       "create": "Stvaraj slike i videozapise",
       "search": "Pretražuj web s AI",
-      "talk": "Pričaj prirodno s AI"
+      "talk": "Pričaj prirodno s AI",
+      "imageStudio": "Dobij Image Studio {{credits}} kredita {{period}}",
+      "period": {
+        "weekly": "tjedno",
+        "monthly": "mjesečno",
+        "yearly": "godišnje"
+      }
     },
     "freeTrial": {
       "title": "Besplatno probno razdoblje",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Poruka...",
     "createImages": "Stvori slike",
     "generateAiArtwork": "Stvori AI ilustraciju",
-    "camera": "Kamera",
-    "takeOrSelectPhotos": "Snimi ili odaberi fotografije",
+    "camera": "Učitaj fotografije",
+    "takeOrSelectPhotos": "Odaberi fotografije",
     "search": "Pretraži",
     "findInformation": "Pronađi informacije",
     "findRecentInfo": "Pronađi najnovije informacije",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "jednostavnim riječima",
       "planDay": "Isplaniraj moj dan",
       "planDaySubtitle": "s savjetima za produktivnost"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Obrada...",
-    "camera": "Kamera",
+    "camera": "Učitaj fotografije",
     "library": "Galerija"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Spremi",
     "delete": "Izbriši",
     "close": "Zatvori",
-    "allow": "Dopusti"
+    "allow": "Dopusti",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Uživate li ChatCloud?",
@@ -742,5 +788,63 @@
     "rateNow": "Ocijeni sada",
     "maybeLater": "Možda kasnije",
     "dontAskAgain": "Ne pitaj ponovno"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Ekskluzivno",
+    "badgeLine2": "Jednokratna ponuda",
+    "upgradeNow": "Nadogradi sada za {{price}}",
+    "loadingPrice": "Učitavanje...",
+    "termsOfUse": "Uvjeti korištenja",
+    "privacyPolicy": "Pravila privatnosti",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

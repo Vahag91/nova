@@ -85,11 +85,6 @@ export async function createRunwareImages({
     deviceId,
     jobId,
   };
-  
-  if (__DEV__) {
-    // eslint-disable-next-line no-console
-    console.log('[createRunwareImages] requestBody:', requestBody);
-  }
 
 
   const res = await fetch(IMAGES_RUNWARE_URL, {

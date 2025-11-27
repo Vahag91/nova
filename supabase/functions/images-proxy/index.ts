@@ -55,7 +55,6 @@ Deno.serve(async (req) => {
 
   if (!resp.ok) {
     const txt = await resp.text().catch(() => "");
-    console.error(`OpenAI API error: ${resp.status} ${resp.statusText}`, txt);
     return new Response(txt || "Upstream error", { status: resp.status, headers: CORS });
   }
 
@@ -63,13 +62,11 @@ Deno.serve(async (req) => {
   try {
     json = await resp.json();
   } catch (error) {
-    console.error("Failed to parse OpenAI response:", error);
     return new Response("Invalid response from OpenAI", { status: 502, headers: CORS });
   }
 
   // Validate response structure
   if (!json || !Array.isArray(json.data)) {
-    console.error("Invalid OpenAI response structure:", json);
     return new Response("Invalid response structure from OpenAI", { status: 502, headers: CORS });
   }
 
@@ -80,11 +77,9 @@ Deno.serve(async (req) => {
     if (d.url) {
       // Direct URL from OpenAI
       imageUrl = d.url;
-      console.log(`Image ${i}: Using URL`);
     } else if (d.b64_json) {
       // Base64 data - format as data URI
       imageUrl = `data:image/png;base64,${d.b64_json}`;
-      console.log(`Image ${i}: Using base64 data, length: ${d.b64_json.length}`);
     }
     
     return {
@@ -97,7 +92,6 @@ Deno.serve(async (req) => {
   // Validate that we have at least one image with valid URLs
   const validImages = images.filter(img => img.url && img.url.trim().length > 0);
   if (validImages.length === 0) {
-    console.error("No valid images returned from OpenAI:", { images, originalJson: json });
     return new Response("No valid images generated", { status: 502, headers: CORS });
   }
 

@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Google 最先進的模型",
     "gemini-2.0-flash": "快速且精準的 Google AI"
   },
+  "modelDescriptions": {
+    "most_powerful": "最強大的 AI 模型",
+    "fast_everyday": "適合日常工作的快速模型",
+    "fast_reasoning": "具有良好推理能力的快速模型",
+    "great_reasoning": "高級推理模型",
+    "coding_reasoning": "高級程式設計和推理",
+    "better_coding": "更適合程式設計和推理",
+    "best_overall": "最佳通用 AI 模型",
+    "best_google": "Google 最佳模型",
+    "best_xai": "xAI 最強大的模型",
+    "creative_focus": "非常適合創意寫作",
+    "code_helper": "非常適合程式設計協助",
+    "chat_focus": "針對聊天最佳化",
+    "long_context": "非常適合長上下文",
+    "budget_friendly": "經濟實惠的 AI 模型",
+    "ultra_fast": "超快速回應",
+    "safe_default": "安全的預設選擇",
+    "multilingual": "強大的多語言支援",
+    "vision_strong": "在圖像和視覺方面表現優秀",
+    "data_analysis": "適合資料分析",
+    "structured_tasks": "適合結構化任務",
+    "everyday_helper": "日常助手模型",
+    "concise_answers": "簡短、簡潔的回答",
+    "detailed_answers": "詳細的逐步回答",
+    "experimental": "實驗性下一代模型",
+    "reliable_classic": "可靠的經典模型",
+    "lightweight": "輕量級、低成本模型",
+    "chatty_personal": "更友善和個人化",
+    "pro_users": "最適合進階使用者",
+    "research_helper": "適合研究和筆記",
+    "reasoning_strong": "高級推理模型"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "請稍候…",
     "processing": "處理中...",
     "tapToUploadImage": "點按以上傳圖片",
-    "camera": "相機",
+    "camera": "上傳照片",
     "library": "相簿",
     "enterPrompt": "請輸入要把文字變成圖片的提示詞",
     "openInBrowser": "在瀏覽器中開啟",
@@ -215,8 +247,10 @@
     "search": "搜尋",
     "clearSearch": "清除搜尋",
     "noChatsYet": "尚無聊天",
+    "noResults": "尚無聊天",
     "startFirstConversation": "開始你的第一段對話。",
     "startChat": "開始聊天",
+    "startNewChat": "開始新聊天",
     "errorLoadingHistory": "載入歷史記錄時發生錯誤",
     "renameChat": "重新命名聊天",
     "enterNewTitle": "輸入新標題",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "認識一下",
       "titleHighlight": "Image Studio",
-      "subtitle": "用 AI 建立與編輯圖片——就在 {{app}} 裡。",
+      "subtitle": "用 AI 建立與編輯圖片——就在 ChatCloud 裡。",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "認識你的 AI",
       "titleHighlight": "助理",
       "subtitle": "一群能幫你解決日常需求的專用 AI",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "健身教練",
-          "text": "取得符合你目標的健身計畫與飲食建議"
+          "text": "小習慣和家庭鍛煉。"
         },
-        {
-          "title": "醫生",
-          "text": "取得健康洞見、症狀分析與醫療建議"
+        "recipes": {
+          "title": "餐食和食譜",
+          "text": "用現有食材烹飪。"
         },
-        {
-          "title": "寵物照護",
-          "text": "提供寵物健康、訓練與照護的專家建議"
+        "travel": {
+          "title": "旅行夥伴",
+          "text": "簡單計劃和打包清單。"
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "最超值"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} 代幣",
+      "tokensLabel": "{{credits}} 代幣",
       "defaultName": "方案 {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} 代幣"
     },
     "premium": {
       "title": "升級為進階版",
@@ -572,7 +607,13 @@
     "features": {
       "create": "建立圖片與影片",
       "search": "用 AI 搜尋網頁",
-      "talk": "與 AI 自然對話"
+      "talk": "與 AI 自然對話",
+      "imageStudio": "取得 Image Studio {{credits}} 積分 {{period}}",
+      "period": {
+        "weekly": "每週",
+        "monthly": "每月",
+        "yearly": "每年"
+      }
     },
     "freeTrial": {
       "title": "免費試用",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "訊息...",
     "createImages": "建立圖片",
     "generateAiArtwork": "生成 AI 藝術作品",
-    "camera": "相機",
-    "takeOrSelectPhotos": "拍照或選擇照片",
+    "camera": "上傳照片",
+    "takeOrSelectPhotos": "選擇照片",
     "search": "搜尋",
     "findInformation": "尋找資訊",
     "findRecentInfo": "尋找最新資訊",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "用簡單的說法",
       "planDay": "規劃我的一天",
       "planDaySubtitle": "附上提升效率的小技巧"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "處理中...",
-    "camera": "相機",
+    "camera": "上傳照片",
     "library": "相簿"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "儲存",
     "delete": "刪除",
     "close": "關閉",
-    "allow": "允許"
+    "allow": "允許",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "喜歡 ChatCloud 嗎？",
@@ -742,5 +788,63 @@
     "rateNow": "立即評分",
     "maybeLater": "稍後再說",
     "dontAskAgain": "不再詢問"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "獨家",
+    "badgeLine2": "一次性優惠",
+    "upgradeNow": "立即升級 {{price}}",
+    "loadingPrice": "載入中...",
+    "termsOfUse": "使用條款",
+    "privacyPolicy": "隱私政策",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

@@ -5,6 +5,7 @@ import Svg, { Path } from 'react-native-svg';
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { SubscriptionContext } from '../../context/SubscriptionContext';
+import { setPendingPremiumAction } from '../../state/premiumActions';
 
 const noop = () => { };
 
@@ -67,15 +68,22 @@ function TestInput({
   const isPremium = !!subscription?.isPremium;
   
   const handleWebSearchPress = useCallback(() => {
-    if (!isPremium) {
-      try {
-        navigation?.navigate('PaywallScreen', { returnTo: 'Chat' });
-      } catch (error) {
-        console.warn('Failed to navigate to PaywallScreen:', error);
-      }
+    if (isPremium) {
+      onSearchPress();
       return;
     }
-    onSearchPress();
+    setPendingPremiumAction(() => {
+      try {
+        onSearchPress();
+      } catch (error) {
+        // Web search enable error handled silently
+      }
+    });
+    try {
+      navigation?.navigate('PaywallScreen', { returnTo: 'Chat' });
+    } catch (error) {
+      // Navigation error handled silently
+    }
   }, [isPremium, navigation, onSearchPress]);
   const safe = useCallback((fn, ...args) => {
     if (typeof fn !== 'function') return;

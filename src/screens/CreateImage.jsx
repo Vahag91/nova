@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback, useRef } from 'react';
+import React, { useMemo, useState, useEffect, useCallback, useRef, useContext } from 'react';
 import {
   ActivityIndicator,
   View,
@@ -12,6 +12,7 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SvgIcon from '../components/SvgIcon';
@@ -37,6 +38,7 @@ import { getModelVisuals, hexToRgba } from '../utils/modelVisuals';
 import { getImageModelPrice } from '../utils/imagePricing';
 import { useTranslation } from 'react-i18next';
 import Svg, { Path } from 'react-native-svg';
+import { SubscriptionContext } from '../context/SubscriptionContext';
 
 const STYLES = [
   {
@@ -127,9 +129,16 @@ const ASPECTS = [
   { key: '3:4', size: '768x1024', labelKey: 'studioCommon.aspectRatios.portrait', glyph: { width: 11, height: 20 } },
 ];
 
-export default function CreateImage({ navigation }) {
+export default function CreateImage({ navigation, route }) {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  
+  // Handle returnTo navigation like EditImage for consistency
+  const returnTo = route?.params?.returnTo;
+  const parentNav = navigation.getParent?.() || null;
+  
+  // Track if screen is focused to prevent flash when navigating between screens
+  const isFocused = useIsFocused();
 
   // Balance
   const coins = useImagesStore(s => s.coinsBalance);
@@ -195,6 +204,40 @@ export default function CreateImage({ navigation }) {
   const modelButtonRef = useRef(null);
   const [generatorVisible, setGeneratorVisible] = useState(false);
   const [generatorPayload, setGeneratorPayload] = useState(null);
+
+  // Reset form state when screen loses focus to prevent UI flips
+  // Initialize fresh state when screen gains focus
+  useFocusEffect(
+    useCallback(() => {
+      // Initialize prompt from route params if provided (when screen gains focus)
+      const seedPrompt = route?.params?.seedPrompt;
+      if (seedPrompt && typeof seedPrompt === 'string') {
+        setPrompt(seedPrompt);
+      } else {
+        setPrompt('');
+      }
+      
+      // Reset other form fields to defaults when screen gains focus
+      setSelectedStyle(null);
+      setAspect(ASPECTS[0].key);
+      setBusy(false);
+      setGeneratorVisible(false);
+      setGeneratorPayload(null);
+      setModelMenuOpen(false);
+      
+      // Cleanup when screen loses focus (navigating away)
+      return () => {
+        setPrompt('');
+        setSelectedStyle(null);
+        setAspect(ASPECTS[0].key);
+        setBusy(false);
+        setGeneratorVisible(false);
+        setGeneratorPayload(null);
+        setModelMenuOpen(false);
+        Keyboard.dismiss();
+      };
+    }, [route?.params?.seedPrompt])
+  );
   const starterPrompts = useMemo(() => {
     const list = t('createImage.starterPrompts.items', { returnObjects: true });
     return Array.isArray(list) ? list : DEFAULT_STARTER_PROMPTS;
@@ -253,6 +296,8 @@ export default function CreateImage({ navigation }) {
     transform: [{ translateY: kTranslate.value + kGap.value }],
   }));
 
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
   const footerInset = Math.max(insets.bottom, 14);
   const footerStyle = useMemo(
     () => [styles.footer, { paddingBottom: footerInset }],
@@ -284,9 +329,17 @@ export default function CreateImage({ navigation }) {
 
   const onGenerate = useCallback(() => {
     if (!prompt.trim() || busy) return;
-    // Insufficient coins: open Coin Store instead of generating
+    // Insufficient coins: show paywall first, then navigate to Coin Store
     if ((coins ?? 0) < (selectedCost ?? 0)) {
-      try { navigation.navigate('CoinStore'); } catch {}
+      if (!isPremium) {
+        try { 
+          navigation.navigate('PaywallScreen', { afterCloseNavigateTo: 'CoinStore' });
+        } catch {}
+      } else {
+        try {
+          navigation.navigate('CoinStore');
+        } catch {}
+      }
       return;
     }
     setBusy(true);
@@ -353,6 +406,13 @@ export default function CreateImage({ navigation }) {
               style={[styles.styleThumb, styles.styleThumbImage]}
               fadeDuration={0}
             />
+            {selected && (
+              <View style={styles.styleSelectedOverlay}>
+                <View style={styles.styleSelectedIcon}>
+                  <SvgIcon name="check" size={24} color="#FFFFFF" />
+                </View>
+              </View>
+            )}
           </View>
           <Text
             style={[styles.styleName, selected && styles.styleNameSelected]}
@@ -369,18 +429,26 @@ export default function CreateImage({ navigation }) {
   const keyStyle = useCallback((it) => it.id, []);
 
   const renderChip = useCallback(
-    ({ item }) => (
-      <Pressable
-        onPress={() => setPrompt(p => (p ? p : item))}
-        style={styles.chip}
-      >
-        <Text style={styles.chipText}>{item}</Text>
-      </Pressable>
-    ),
-    [],
+    ({ item }) => {
+      const isSelected = prompt.trim() === item.trim();
+      return (
+        <Pressable
+          onPress={() => setPrompt(item)}
+          style={[styles.chip, isSelected && styles.chipSelected]}
+        >
+          <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>{item}</Text>
+        </Pressable>
+      );
+    },
+    [prompt],
   );
 
   const keyChip = useCallback((it, idx) => `${idx}-${it}`, []);
+
+  // Don't render content if screen is not focused to prevent flash during navigation
+  if (!isFocused) {
+    return <View style={styles.container} />;
+  }
 
   return (
     <View style={styles.container}>
@@ -388,7 +456,20 @@ export default function CreateImage({ navigation }) {
       <View style={headerStyle}>
         <View style={styles.headerRow}>
           <Pressable
-            onPress={() => navigation.goBack()}
+            onPress={() => {
+              if (returnTo && parentNav) {
+                // Navigate back to the specified screen in the parent navigator
+                // Navigate directly to Chat - React Navigation will handle clearing the nested stack
+                try {
+                  parentNav.navigate(returnTo);
+                } catch (err) {
+                  // Fallback: go back in current stack
+                  navigation.goBack();
+                }
+              } else {
+                navigation.goBack();
+              }
+            }}
             style={styles.headerBackBtn}
             hitSlop={10}
           >
@@ -719,16 +800,43 @@ const styles = StyleSheet.create({
   },
   styleItem: { width: 140, marginRight: 12, marginBottom: 12, alignItems: 'center' },
   styleItemSelected: {},
-  styleThumbSelected: { borderWidth: 2, borderColor: '#7C5CFF' },
+  styleThumbSelected: {},
   styleThumb: { width: '100%', height: '100%' },
   styleThumbImage: { borderRadius: 18, resizeMode: 'cover' },
+  styleSelectedOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 18,
+    backgroundColor: 'rgba(124, 92, 255, 0.4)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  styleSelectedIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#7C5CFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#7C5CFF',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
+    elevation: 8,
+  },
   styleName: {
     color: '#FFFFFF',
     fontSize: 14,
     marginTop: 8,
     textAlign: 'center',
   },
-  styleNameSelected: { fontWeight: '800' },
+  styleNameSelected: { 
+    fontWeight: '800',
+    color: '#7C5CFF',
+  },
 
   aspectLabel: {
     color: 'rgba(255,255,255,0.75)',
@@ -747,12 +855,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 999,
     backgroundColor: '#17171C',
+    borderWidth: 1,
+    borderColor: 'transparent',
     marginRight: 10,
+  },
+  chipSelected: {
+    backgroundColor: '#7C5CFF',
+    borderColor: '#7C5CFF',
   },
   chipText: {
     color: 'rgba(255,255,255,0.75)',
     fontSize: 13,
     fontWeight: '600',
+  },
+  chipTextSelected: {
+    color: '#FFFFFF',
+    fontWeight: '700',
   },
 
   promptWrap: { gap: 6, marginTop: 6 },

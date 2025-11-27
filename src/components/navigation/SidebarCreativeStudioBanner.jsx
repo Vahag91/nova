@@ -26,9 +26,6 @@ const SidebarCreativeStudioBanner = ({ onPress, style, restartKey }) => {
             <Text style={styles.label}>
               {t('sidebarStudioBanner.label', { defaultValue: 'Studio' }).toUpperCase()}
             </Text>
-            <Text style={styles.title}>
-              {t('sidebarStudioBanner.title', { defaultValue: 'IMAGE STUDIO' })}
-            </Text>
             <Text style={styles.subtitle}>
               {t('sidebarStudioBanner.subtitle', { defaultValue: 'Generate, refine, and publish visual assets in one place.' })}
             </Text>
@@ -88,8 +85,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   label: {
-    color: 'rgba(229,231,235,0.64)',
-    fontSize: 12,
+    color: '#FFFFFF',
+    fontSize: 14,
     fontFamily: 'Lato-Bold',
     letterSpacing: 2,
   },
@@ -99,6 +96,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontFamily: 'Lato-Bold',
     letterSpacing: 0.3,
+    opacity: 1,
   },
   subtitle: {
     fontSize: 12,

@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "A Google legfejlettebb modellje",
     "gemini-2.0-flash": "Gyors és pontos Google MI"
   },
+  "modelDescriptions": {
+    "most_powerful": "Leghatékonyabb MI modell",
+    "fast_everyday": "Gyors a mindennapi feladatokra",
+    "fast_reasoning": "Gyors modell jó következtetéssel",
+    "great_reasoning": "Fejlett következtető modell",
+    "coding_reasoning": "Fejlett programozás és következtetés",
+    "better_coding": "Jobb programozásra és következtetésre",
+    "best_overall": "Legjobb általános célú MI modell",
+    "best_google": "A Google legjobb modellje",
+    "best_xai": "Leghatékonyabb xAI modell",
+    "creative_focus": "Nagyszerű kreatív íráshoz",
+    "code_helper": "Nagyszerű programozási segítséghez",
+    "chat_focus": "Csevegésre optimalizálva",
+    "long_context": "Nagyszerű hosszú kontextusokhoz",
+    "budget_friendly": "Költségkímélő MI modell",
+    "ultra_fast": "Ultra gyors válaszok",
+    "safe_default": "Biztonságos alapértelmezett választás",
+    "multilingual": "Erős többnyelvű támogatás",
+    "vision_strong": "Nagyszerű képekkel és látással",
+    "data_analysis": "Jó adatelemzéshez",
+    "structured_tasks": "Jó strukturált feladatokhoz",
+    "everyday_helper": "Mindennapi asszisztens modell",
+    "concise_answers": "Rövid, tömör válaszok",
+    "detailed_answers": "Részletes lépésről lépésre válaszok",
+    "experimental": "Kísérleti következő generációs modell",
+    "reliable_classic": "Megbízható klasszikus modell",
+    "lightweight": "Könnyű, alacsony költségű modell",
+    "chatty_personal": "Barátságosabb és személyesebb",
+    "pro_users": "Legjobb haladó felhasználóknak",
+    "research_helper": "Jó kutatáshoz és jegyzetekhez",
+    "reasoning_strong": "Fejlett következtető modell"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Kis türelmet…",
     "processing": "Feldolgozás...",
     "tapToUploadImage": "Koppints a kép feltöltéséhez",
-    "camera": "Kamera",
+    "camera": "Fotók feltöltése",
     "library": "Galéria",
     "enterPrompt": "Adj meg egy promptot a szöveg–kép generáláshoz",
     "openInBrowser": "Megnyitás böngészőben",
@@ -225,7 +257,9 @@
     "rename": "Átnevezés",
     "unpin": "Rögzítés feloldása",
     "pin": "Rögzítés",
-    "untitled": "Cím nélküli"
+    "untitled": "Cím nélküli",
+    "noResults": "Még nincsenek chatek",
+    "startNewChat": "Chat indítása"
   },
   "settings": {
     "title": "Beállítások",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Ismerd meg",
       "titleHighlight": "Image Studio",
-      "subtitle": "Készíts és szerkessz képeket MI-vel — közvetlenül a {{app}} felületén.",
+      "subtitle": "Készíts és szerkessz képeket MI-vel — közvetlenül a ChatCloud felületén.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Ismerd meg az MI-det",
       "titleHighlight": "Asszisztensek",
       "subtitle": "Szakosodott MI-segítők a mindennapi feladatokra",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Fitnesz edző",
-          "text": "Személyre szabott edzéstervek és étrendi tippek"
+          "text": "Kis szokások és otthoni edzések."
         },
-        {
-          "title": "Orvos",
-          "text": "Egészségügyi útmutatás és tünetelemzés, amikor szükséged van rá"
+        "recipes": {
+          "title": "Ételek és receptek",
+          "text": "Mit főzz azzal, amid van."
         },
-        {
-          "title": "Kisállatgondozás",
-          "text": "Tanácsok az állat egészségéhez és tanításához"
+        "travel": {
+          "title": "Utazási társ",
+          "text": "Egyszerű tervek és csomagolási listák."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Tokenek vásárlása",
+    "title": "Creditek vásárlása",
     "loading": "Tokenbolt betöltése…",
     "balanceLabel": "Jelenlegi egyenleged",
-    "balanceValue": "{{amount}} token",
+    "balanceValue": "{{amount}} credit",
     "history": {
       "link": "Tranzakciók",
       "alertTitle": "Előzmények",
@@ -545,9 +579,10 @@
       "value": "Legjobb ár-érték"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} token",
+      "tokensLabel": "{{credits}} token",
       "defaultName": "{{index}}. csomag",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} token"
     },
     "premium": {
       "title": "Prémium előfizetés",
@@ -560,7 +595,7 @@
       "initErrorTitle": "Inicializálási hiba",
       "genericMessage": "Valami hiba történt.",
       "successTitle": "Siker",
-      "successMessage": "A tokenek hamarosan megjelennek.",
+      "successMessage": "A creditek hamarosan megjelennek.",
       "purchaseFailedTitle": "Vásárlás sikertelen",
       "unknownError": "Ismeretlen hiba"
     }
@@ -572,7 +607,13 @@
     "features": {
       "create": "Képek és videók készítése",
       "search": "Webes keresés MI-vel",
-      "talk": "Természetes beszélgetés az MI-vel"
+      "talk": "Természetes beszélgetés az MI-vel",
+      "imageStudio": "Szerezd meg az Image Studio {{credits}} kredit {{period}}",
+      "period": {
+        "weekly": "hetente",
+        "monthly": "havonta",
+        "yearly": "évente"
+      }
     },
     "freeTrial": {
       "title": "Ingyenes próba",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Üzenet...",
     "createImages": "Képek készítése",
     "generateAiArtwork": "MI által készített kép",
-    "camera": "Kamera",
-    "takeOrSelectPhotos": "Fotó készítése vagy kiválasztása",
+    "camera": "Fotók feltöltése",
+    "takeOrSelectPhotos": "Fotók kiválasztása",
     "search": "Keresés",
     "findInformation": "Információ keresése",
     "findRecentInfo": "Friss infók keresése",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "egyszerű szavakkal",
       "planDay": "Tervezzük meg a napod",
       "planDaySubtitle": "produktivitási tippekkel"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Feldolgozás...",
-    "camera": "Kamera",
+    "camera": "Fotók feltöltése",
     "library": "Galéria"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Mentés",
     "delete": "Törlés",
     "close": "Bezárás",
-    "allow": "Engedélyezés"
+    "allow": "Engedélyezés",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Élvezi a ChatCloud-ot?",
@@ -742,5 +788,63 @@
     "rateNow": "Értékelés most",
     "maybeLater": "Talán később",
     "dontAskAgain": "Ne kérdezze újra"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Exkluzív",
+    "badgeLine2": "Egyszeri ajánlat",
+    "upgradeNow": "Frissítés most {{price}}",
+    "loadingPrice": "Betöltés...",
+    "termsOfUse": "Felhasználási feltételek",
+    "privacyPolicy": "Adatvédelmi irányelvek",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "המודל המתקדם ביותר של Google",
     "gemini-2.0-flash": "AI של Google מהיר ומדויק"
   },
+  "modelDescriptions": {
+    "most_powerful": "מודל ה-AI החזק ביותר",
+    "fast_everyday": "מהיר למשימות יומיומיות",
+    "fast_reasoning": "מודל מהיר עם היגיון טוב",
+    "great_reasoning": "מודל היגיון מתקדם",
+    "coding_reasoning": "תכנות והיגיון מתקדמים",
+    "better_coding": "טוב יותר לתכנות והיגיון",
+    "best_overall": "מודל AI כללי הטוב ביותר",
+    "best_google": "המודל הטוב ביותר של Google",
+    "best_xai": "מודל xAI החזק ביותר",
+    "creative_focus": "מצוין לכתיבה יצירתית",
+    "code_helper": "מצוין לעזרה בתכנות",
+    "chat_focus": "מותאם לשיחה",
+    "long_context": "מצוין להקשרים ארוכים",
+    "budget_friendly": "מודל AI ידידותי לתקציב",
+    "ultra_fast": "תגובות מהירות במיוחד",
+    "safe_default": "בחירה ברירת מחדל בטוחה",
+    "multilingual": "תמיכה רב-לשונית חזקה",
+    "vision_strong": "מצוין עם תמונות וראייה",
+    "data_analysis": "טוב לניתוח נתונים",
+    "structured_tasks": "טוב למשימות מובנות",
+    "everyday_helper": "מודל עוזר יומיומי",
+    "concise_answers": "תשובות קצרות ותמציתיות",
+    "detailed_answers": "תשובות מפורטות שלב אחר שלב",
+    "experimental": "מודל ניסיוני של הדור הבא",
+    "reliable_classic": "מודל קלאסי אמין",
+    "lightweight": "מודל קל וזול",
+    "chatty_personal": "יותר ידידותי ואישי",
+    "pro_users": "הטוב ביותר למשתמשים מתקדמים",
+    "research_helper": "טוב למחקר ולסיכומים",
+    "reasoning_strong": "מודל היגיון מתקדם"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "נא להמתין…",
     "processing": "מעבד...",
     "tapToUploadImage": "הקש כדי להעלות תמונה",
-    "camera": "מצלמה",
+    "camera": "העלה תמונות",
     "library": "ספרייה",
     "enterPrompt": "הכנס פקודה ליצירת תמונה מטקסט",
     "openInBrowser": "פתח בדפדפן",
@@ -225,7 +257,9 @@
     "rename": "שנה שם",
     "unpin": "בטל נעיצה",
     "pin": "נעץ",
-    "untitled": "ללא כותרת"
+    "untitled": "ללא כותרת",
+    "noResults": "אין צ'אטים עדיין",
+    "startNewChat": "התחל צ'אט"
   },
   "settings": {
     "title": "הגדרות",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "הכירו את",
       "titleHighlight": "Image Studio",
-      "subtitle": "צרו וערכו תמונות באמצעות AI — ישירות בתוך {{app}}.",
+      "subtitle": "צרו וערכו תמונות באמצעות AI — ישירות בתוך ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "הכירו את ה-AI שלכם",
       "titleHighlight": "עוזרים",
       "subtitle": "מומחי AI מוכנים לעזור בצרכים היומיומיים שלכם",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "מאמן כושר",
-          "text": "קבלו תוכניות אימון ותזונה מותאמות"
+          "text": "הרגלים קטנים ואימונים בבית."
         },
-        {
-          "title": "רופא",
-          "text": "תובנות בריאות, ניתוח סימפטומים והכוונה"
+        "recipes": {
+          "title": "ארוחות ומתכונים",
+          "text": "מה לבשל עם מה שיש לך."
         },
-        {
-          "title": "טיפול בחיות מחמד",
-          "text": "עצות לבריאות, אימון וטיפול בחיה שלכם"
+        "travel": {
+          "title": "שותף לנסיעה",
+          "text": "תוכניות פשוטות ורשימות אריזה."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "המשתלמת ביותר"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} מטבעות",
+      "tokensLabel": "{{credits}} מטבעות",
       "defaultName": "חבילה {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} מטבעות"
     },
     "premium": {
       "title": "עברו לפרימיום",
@@ -572,7 +607,13 @@
     "features": {
       "create": "צרו תמונות וסרטונים",
       "search": "חפשו באינטרנט עם AI",
-      "talk": "דברו באופן טבעי עם AI"
+      "talk": "דברו באופן טבעי עם AI",
+      "imageStudio": "קבל Image Studio {{credits}} אשראי {{period}}",
+      "period": {
+        "weekly": "שבועי",
+        "monthly": "חודשי",
+        "yearly": "שנתי"
+      }
     },
     "freeTrial": {
       "title": "תקופת ניסיון",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "הודעה...",
     "createImages": "צור תמונות",
     "generateAiArtwork": "צור יצירת AI",
-    "camera": "מצלמה",
-    "takeOrSelectPhotos": "צלם או בחר תמונות",
+    "camera": "העלה תמונות",
+    "takeOrSelectPhotos": "בחר תמונות",
     "search": "חפש",
     "findInformation": "מצא מידע",
     "findRecentInfo": "מצא מידע עדכני",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "בצורה פשוטה",
       "planDay": "תכנן את היום שלי",
       "planDaySubtitle": "עם טיפים לפרודקטיביות"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "מעבד...",
-    "camera": "מצלמה",
+    "camera": "העלה תמונות",
     "library": "ספרייה"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "שמור",
     "delete": "מחק",
     "close": "סגור",
-    "allow": "אפשר"
+    "allow": "אפשר",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "האם אתה נהנה מ-ChatCloud?",
@@ -742,5 +788,63 @@
     "rateNow": "דרג עכשיו",
     "maybeLater": "אולי מאוחר יותר",
     "dontAskAgain": "אל תשאל שוב"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "בלעדי",
+    "badgeLine2": "הצעה חד פעמית",
+    "upgradeNow": "שדרג עכשיו עבור {{price}}",
+    "loadingPrice": "טוען...",
+    "termsOfUse": "תנאי שימוש",
+    "privacyPolicy": "מדיניות פרטיות",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

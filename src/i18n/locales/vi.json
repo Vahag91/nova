@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Mô hình tiên tiến nhất của Google",
     "gemini-2.0-flash": "Google AI nhanh và chính xác"
   },
+  "modelDescriptions": {
+    "most_powerful": "Mô hình AI mạnh mẽ nhất",
+    "fast_everyday": "Nhanh cho tác vụ hằng ngày",
+    "fast_reasoning": "Mô hình nhanh với khả năng suy luận tốt",
+    "great_reasoning": "Mô hình suy luận tiên tiến",
+    "coding_reasoning": "Lập trình và suy luận tiên tiến",
+    "better_coding": "Tốt hơn cho lập trình và suy luận",
+    "best_overall": "Mô hình AI đa mục đích tốt nhất",
+    "best_google": "Mô hình tốt nhất của Google",
+    "best_xai": "Mô hình xAI mạnh mẽ nhất",
+    "creative_focus": "Tuyệt vời cho viết sáng tạo",
+    "code_helper": "Tuyệt vời cho hỗ trợ lập trình",
+    "chat_focus": "Tối ưu cho trò chuyện",
+    "long_context": "Tuyệt vời cho ngữ cảnh dài",
+    "budget_friendly": "Mô hình AI thân thiện với ngân sách",
+    "ultra_fast": "Phản hồi siêu nhanh",
+    "safe_default": "Lựa chọn mặc định an toàn",
+    "multilingual": "Hỗ trợ đa ngôn ngữ mạnh mẽ",
+    "vision_strong": "Tuyệt vời với hình ảnh và thị giác",
+    "data_analysis": "Tốt cho phân tích dữ liệu",
+    "structured_tasks": "Tốt cho các tác vụ có cấu trúc",
+    "everyday_helper": "Mô hình trợ lý hàng ngày",
+    "concise_answers": "Câu trả lời ngắn gọn, súc tích",
+    "detailed_answers": "Câu trả lời chi tiết từng bước",
+    "experimental": "Mô hình thử nghiệm thế hệ tiếp theo",
+    "reliable_classic": "Mô hình cổ điển đáng tin cậy",
+    "lightweight": "Mô hình nhẹ, chi phí thấp",
+    "chatty_personal": "Thân thiện và cá nhân hóa hơn",
+    "pro_users": "Tốt nhất cho người dùng chuyên nghiệp",
+    "research_helper": "Tốt cho nghiên cứu và ghi chú",
+    "reasoning_strong": "Mô hình suy luận tiên tiến"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Vui lòng chờ…",
     "processing": "Đang xử lý...",
     "tapToUploadImage": "Nhấn để tải hình lên",
-    "camera": "Máy ảnh",
+    "camera": "Tải ảnh lên",
     "library": "Thư viện",
     "enterPrompt": "Vui lòng nhập prompt để tạo hình từ văn bản",
     "openInBrowser": "Mở trong trình duyệt",
@@ -215,8 +247,10 @@
     "search": "Tìm kiếm",
     "clearSearch": "Xóa tìm kiếm",
     "noChatsYet": "Chưa có cuộc chat nào",
+    "noResults": "Chưa có cuộc chat nào",
     "startFirstConversation": "Bắt đầu cuộc trò chuyện đầu tiên.",
     "startChat": "Bắt đầu chat",
+    "startNewChat": "Bắt đầu chat mới",
     "errorLoadingHistory": "Lỗi khi tải lịch sử",
     "renameChat": "Đổi tên cuộc chat",
     "enterNewTitle": "Nhập tên mới",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Làm quen với",
       "titleHighlight": "Image Studio",
-      "subtitle": "Tạo & chỉnh sửa hình với AI ngay trong {{app}}.",
+      "subtitle": "Tạo & chỉnh sửa hình với AI ngay trong ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Gặp AI của bạn",
       "titleHighlight": "Trợ lý",
       "subtitle": "Các AI chuyên biệt sẵn sàng giúp nhu cầu hằng ngày của bạn",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "HLV thể hình",
-          "text": "Nhận kế hoạch tập luyện & dinh dưỡng theo mục tiêu."
+          "text": "Thói quen nhỏ & tập luyện tại nhà."
         },
-        {
-          "title": "Bác sĩ",
-          "text": "Nhận thông tin sức khỏe, phân tích triệu chứng, gợi ý chăm sóc."
+        "recipes": {
+          "title": "Bữa ăn & Công thức",
+          "text": "Nấu gì với những gì bạn có."
         },
-        {
-          "title": "Chăm sóc thú cưng",
-          "text": "Lời khuyên về sức khỏe, huấn luyện và chăm sóc."
+        "travel": {
+          "title": "Bạn đồng hành",
+          "text": "Kế hoạch đơn giản & danh sách đóng gói."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Mua token",
+    "title": "Mua credit",
     "loading": "Đang tải cửa hàng token…",
     "balanceLabel": "Số dư hiện tại của bạn",
-    "balanceValue": "{{amount}} token",
+    "balanceValue": "{{amount}} credit",
     "history": {
       "link": "Lịch sử giao dịch",
       "alertTitle": "Lịch sử",
@@ -545,9 +579,10 @@
       "value": "Giá trị nhất"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} token",
+      "tokensLabel": "{{credits}} token",
       "defaultName": "Gói {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} token"
     },
     "premium": {
       "title": "Nâng cấp Premium",
@@ -560,7 +595,7 @@
       "initErrorTitle": "Lỗi khởi tạo",
       "genericMessage": "Đã xảy ra lỗi.",
       "successTitle": "Thành công",
-      "successMessage": "Token sẽ hiển thị sớm.",
+      "successMessage": "Credit sẽ hiển thị sớm.",
       "purchaseFailedTitle": "Mua thất bại",
       "unknownError": "Lỗi không xác định"
     }
@@ -572,7 +607,13 @@
     "features": {
       "create": "Tạo hình ảnh và video",
       "search": "Tìm web bằng AI",
-      "talk": "Trò chuyện tự nhiên với AI"
+      "talk": "Trò chuyện tự nhiên với AI",
+      "imageStudio": "Nhận Image Studio {{credits}} tín dụng {{period}}",
+      "period": {
+        "weekly": "hàng tuần",
+        "monthly": "hàng tháng",
+        "yearly": "hàng năm"
+      }
     },
     "freeTrial": {
       "title": "Dùng thử miễn phí",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Tin nhắn...",
     "createImages": "Tạo hình",
     "generateAiArtwork": "Tạo nghệ thuật AI",
-    "camera": "Máy ảnh",
-    "takeOrSelectPhotos": "Chụp hoặc chọn ảnh",
+    "camera": "Tải ảnh lên",
+    "takeOrSelectPhotos": "Chọn ảnh",
     "search": "Tìm kiếm",
     "findInformation": "Tìm thông tin",
     "findRecentInfo": "Tìm thông tin mới",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "một cách dễ hiểu",
       "planDay": "Lên kế hoạch ngày của tôi",
       "planDaySubtitle": "kèm mẹo năng suất"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Đang xử lý...",
-    "camera": "Máy ảnh",
+    "camera": "Tải ảnh lên",
     "library": "Thư viện"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Lưu",
     "delete": "Xóa",
     "close": "Đóng",
-    "allow": "Cho phép"
+    "allow": "Cho phép",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Bạn có thích ChatCloud không?",
@@ -742,5 +788,63 @@
     "rateNow": "Đánh giá ngay",
     "maybeLater": "Có thể sau",
     "dontAskAgain": "Đừng hỏi lại"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Độc quyền",
+    "badgeLine2": "Ưu đãi một lần",
+    "upgradeNow": "Nâng cấp ngay với {{price}}",
+    "loadingPrice": "Đang tải...",
+    "termsOfUse": "Điều khoản Sử dụng",
+    "privacyPolicy": "Chính sách Quyền riêng tư",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

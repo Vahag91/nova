@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView, Image } from 'react-native';
 import { DrawerContentScrollView, useDrawerStatus } from '@react-navigation/drawer';
 import Animated, {
@@ -19,6 +19,7 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import { useTranslation } from 'react-i18next';
 import { betterPreview, summaryPreview } from '../lib/format';
 import SidebarCreativeStudioBanner from '../components/navigation/SidebarCreativeStudioBanner';
+import { SubscriptionContext } from '../context/SubscriptionContext';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -44,6 +45,9 @@ export default function CustomDrawerContent(props) {
   const [recentChatsExpanded, setRecentChatsExpanded] = React.useState(true);
   const recentChatsHeight = useSharedValue(1);
   const chevronRotation = useSharedValue(0);
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
+  const baseMenuItemCount = 4;
 
   const SPRING_CONFIG = {
     damping: 16,
@@ -82,6 +86,9 @@ export default function CustomDrawerContent(props) {
   }, [recentChatsExpanded]);
 
   const navigateTo = (routeName, params) => {
+    if (routeName === 'PaywallScreen' && isPremium) {
+      return;
+    }
     Haptic.trigger('impactLight');
     
     // If navigating to Chat, create a new thread
@@ -195,14 +202,14 @@ export default function CustomDrawerContent(props) {
 
   const RecentChatItem = ({ thread, index }) => {
     const isActive = thread.id === activeThreadId;
-    const chatItemAnimStyle = getMenuItemStyle(index + 4); // Offset for main menu items
+    const chatItemAnimStyle = getMenuItemStyle(index + baseMenuItemCount); // Offset for main menu items
 
     // Get preview text from summary or recent messages
     const preview = React.useMemo(() => {
-      const raw = thread.summary?.trim() || betterPreview(thread.messages);
-      const resolved = thread.summary ? summaryPreview(raw) : raw;
-      const fallback = t('history.newChat');
-      const text = resolved || fallback;
+      const summaryText = thread.summary?.trim();
+      const summaryBased = summaryText ? summaryPreview(summaryText) : '';
+      const resolved = summaryBased || betterPreview(thread.messages) || t('history.newChat');
+      const text = resolved;
       return text.length > 40 ? `${text.slice(0, 39)}…` : text;
     }, [thread.summary, thread.messages, t]);
 
@@ -336,18 +343,11 @@ export default function CustomDrawerContent(props) {
         {/* Bottom Navigation */}
         <View style={styles.bottomNav}>
           <MenuItem
-            icon="stars"
-            label={'Test Paywall'}
-            routeName="PaywallScreen"
-            isActive={activeRoute === 'PaywallScreen'}
-            index={4}
-          />
-          <MenuItem
             icon="settings"
             label={t('navigation.settings')}
             routeName="Settings"
             isActive={activeRoute === 'Settings'}
-            index={5}
+            index={baseMenuItemCount}
           />
         </View>
       </DrawerContentScrollView>
@@ -374,20 +374,19 @@ const styles = StyleSheet.create({
   logoCircle: {
     width: 42,
     height: 42,
-    backgroundColor: colors.background,
     borderRadius: 21,
     alignItems: 'center',
     justifyContent: 'center',
   },
   appIcon: {
-    width: 36,
-    height: 36,
+    width: 48,
+    height: 48,
   },
   logoText: {
     fontSize: 24,
     fontWeight: 'bold',
     color: colors.text,
-    marginLeft: 12,
+    marginLeft: 6,
     letterSpacing: 2,
     fontFamily: 'Lato-Bold',
   },

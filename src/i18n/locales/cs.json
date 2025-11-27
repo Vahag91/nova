@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Nejpokročilejší model Google",
     "gemini-2.0-flash": "Rychlá a přesná AI od Google"
   },
+  "modelDescriptions": {
+    "most_powerful": "Nejsilnější model AI",
+    "fast_everyday": "Rychlý pro každodenní úkoly",
+    "fast_reasoning": "Rychlý model s dobrým uvažováním",
+    "great_reasoning": "Pokročilý model uvažování",
+    "coding_reasoning": "Pokročilé programování a uvažování",
+    "better_coding": "Lepší pro programování a uvažování",
+    "best_overall": "Nejlepší univerzální model AI",
+    "best_google": "Nejlepší model Google",
+    "best_xai": "Nejsilnější model xAI",
+    "creative_focus": "Skvělé pro kreativní psaní",
+    "code_helper": "Skvělé pro pomoc s programováním",
+    "chat_focus": "Optimalizováno pro chat",
+    "long_context": "Skvělé pro dlouhé kontexty",
+    "budget_friendly": "Model AI šetrný k rozpočtu",
+    "ultra_fast": "Ultra rychlé odpovědi",
+    "safe_default": "Bezpečná výchozí volba",
+    "multilingual": "Silná vícejazyčná podpora",
+    "vision_strong": "Skvělé s obrázky a viděním",
+    "data_analysis": "Dobré pro analýzu dat",
+    "structured_tasks": "Dobré pro strukturované úkoly",
+    "everyday_helper": "Model asistenta pro každodenní použití",
+    "concise_answers": "Stručné, výstižné odpovědi",
+    "detailed_answers": "Podrobné odpovědi krok za krokem",
+    "experimental": "Experimentální model nové generace",
+    "reliable_classic": "Spolehlivý klasický model",
+    "lightweight": "Lehký, nízkonákladový model",
+    "chatty_personal": "Přátelštější a osobnější",
+    "pro_users": "Nejlepší pro pokročilé uživatele",
+    "research_helper": "Dobré pro výzkum a poznámky",
+    "reasoning_strong": "Pokročilý model uvažování"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Počkejte prosím…",
     "processing": "Zpracovávám...",
     "tapToUploadImage": "Klepněte pro nahrání obrázku",
-    "camera": "Fotoaparát",
+    "camera": "Nahrát fotky",
     "library": "Knihovna",
     "enterPrompt": "Zadejte prompt pro generování text–obrázek",
     "openInBrowser": "Otevřít v prohlížeči",
@@ -225,7 +257,9 @@
     "rename": "Přejmenovat",
     "unpin": "Odepnout",
     "pin": "Připnout",
-    "untitled": "Bez názvu"
+    "untitled": "Bez názvu",
+    "noResults": "Zatím žádné chaty",
+    "startNewChat": "Začít chat"
   },
   "settings": {
     "title": "Nastavení",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Seznamte se s",
       "titleHighlight": "Image Studio",
-      "subtitle": "Vytvářejte a upravujte obrázky s AI — přímo v {{app}}.",
+      "subtitle": "Vytvářejte a upravujte obrázky s AI — přímo v ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Seznamte se se svou AI",
       "titleHighlight": "Asistenti",
       "subtitle": "Specializovaní AI experti připraveni pomoci v běžném životě",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Fitness kouč",
-          "text": "Tréninky a výživa podle vašich cílů"
+          "text": "Malé návyky a domácí tréninky."
         },
-        {
-          "title": "Doktor",
-          "text": "Zdravotní informace, analýza příznaků a doporučení"
+        "recipes": {
+          "title": "Jídla a recepty",
+          "text": "Co uvařit z toho, co máte."
         },
-        {
-          "title": "Péče o mazlíčky",
-          "text": "Rady k péči, výcviku a zdraví domácích mazlíčků"
+        "travel": {
+          "title": "Cestovní společník",
+          "text": "Jednoduché plány a seznamy balení."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Získat tokeny",
+    "title": "Získat credity",
     "loading": "Načítám obchod s tokeny…",
     "balanceLabel": "Váš aktuální zůstatek je",
-    "balanceValue": "{{amount}} tokenů",
+    "balanceValue": "{{amount}} creditů",
     "history": {
       "link": "Historie transakcí",
       "alertTitle": "Historie",
@@ -545,9 +579,10 @@
       "value": "Nejvýhodnější"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} tokenů",
+      "tokensLabel": "{{credits}} tokenů",
       "defaultName": "Balíček {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} tokenů"
     },
     "premium": {
       "title": "Přejít na Premium",
@@ -560,7 +595,7 @@
       "initErrorTitle": "Chyba inicializace",
       "genericMessage": "Došlo k chybě.",
       "successTitle": "Hotovo",
-      "successMessage": "Tokeny se brzy objeví.",
+      "successMessage": "Credity se brzy objeví.",
       "purchaseFailedTitle": "Nákup selhal",
       "unknownError": "Neznámá chyba"
     }
@@ -572,7 +607,13 @@
     "features": {
       "create": "Vytvářejte obrázky a videa",
       "search": "Vyhledávejte na webu pomocí AI",
-      "talk": "Mluvte přirozeně s AI"
+      "talk": "Mluvte přirozeně s AI",
+      "imageStudio": "Získejte Image Studio {{credits}} kreditů {{period}}",
+      "period": {
+        "weekly": "týdně",
+        "monthly": "měsíčně",
+        "yearly": "ročně"
+      }
     },
     "freeTrial": {
       "title": "Zkušební verze",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Zpráva...",
     "createImages": "Vytvořit obrázky",
     "generateAiArtwork": "Vygenerovat AI ilustraci",
-    "camera": "Fotoaparát",
-    "takeOrSelectPhotos": "Vyfotit nebo vybrat fotky",
+    "camera": "Nahrát fotky",
+    "takeOrSelectPhotos": "Vybrat fotky",
     "search": "Hledat",
     "findInformation": "Najít informace",
     "findRecentInfo": "Najít nedávné informace",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "jednoduše",
       "planDay": "Naplánovat den",
       "planDaySubtitle": "s tipy na produktivitu"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Zpracovávám...",
-    "camera": "Fotoaparát",
+    "camera": "Nahrát fotky",
     "library": "Knihovna"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Uložit",
     "delete": "Smazat",
     "close": "Zavřít",
-    "allow": "Povolit"
+    "allow": "Povolit",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Užíváte si ChatCloud?",
@@ -742,5 +788,63 @@
     "rateNow": "Ohodnotit nyní",
     "maybeLater": "Možná později",
     "dontAskAgain": "Neptat se znovu"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Exkluzivní",
+    "badgeLine2": "Jednorázová nabídka",
+    "upgradeNow": "Upgradovat nyní za {{price}}",
+    "loadingPrice": "Načítání...",
+    "termsOfUse": "Podmínky použití",
+    "privacyPolicy": "Zásady ochrany osobních údajů",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

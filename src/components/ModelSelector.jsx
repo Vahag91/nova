@@ -9,7 +9,6 @@ import {
   StyleSheet,
   Platform,
   Dimensions,
-  TextInput,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Haptic from 'react-native-haptic-feedback';
@@ -19,7 +18,8 @@ import SvgIcon from './SvgIcon';
 import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';
 import { SubscriptionContext } from '../context/SubscriptionContext';
-import { isPremiumModel, FREE_MODEL } from '../config/premium';
+import { isPremiumModel } from '../config/premium';
+import { setPendingPremiumAction } from '../state/premiumActions';
 import { useNavigation } from '@react-navigation/native';
 import { getChatModelPrice } from '../utils/chatPricing';
 import Svg, { Path } from 'react-native-svg';
@@ -107,9 +107,9 @@ export default function ModelSelector() {
     const toRow = ([key, info]) => ({
       key,
       name: info?.display?.name || key,
-      desc: t(`models.${key}`, { defaultValue: descriptionFor(key, info, t) }),
+      desc: getModelDescription(key, info, t),
       icon: glyphFor(info?.provider, key),
-      labels: labelsFor(key, t),
+      labels: info?.display?.labels || info?.labels || labelsFor(key, t), // Backend labels override hardcoded
       provider: (info?.provider || 'other').toLowerCase(),
       cost: getChatModelPrice(key),
     });
@@ -248,11 +248,18 @@ export default function ModelSelector() {
           onPress={() => {
             // Check if model requires premium - navigate directly to paywall
             if (!isPremium && isPremiumModel(item.key)) {
+              setPendingPremiumAction(() => {
+                try {
+                  setModel(item.key);
+                } catch (error) {
+                  // Model setting error handled silently
+                }
+              });
               runClose();
               try {
                 navigation.navigate('PaywallScreen', { returnTo: 'Chat' });
               } catch (e) {
-                console.warn('Failed to navigate to PaywallScreen:', e);
+                // Navigation error handled silently
               }
               return;
             }
@@ -307,7 +314,7 @@ export default function ModelSelector() {
                   </View>
                 )}
               </View>
-              {isPremiumModel(item.key) && (
+              {isPremiumModel(item.key) && !isPremium && (
                 <View style={styles.badgePremium}>
                   <Text style={styles.badgeTextPremium}>
                     {t('premium.badge', { defaultValue: 'PRO' })}
@@ -433,11 +440,28 @@ function glyphFor(provider, key) {
   if (/deepseek/.test(p) || /deepseek/i.test(k)) return 'deepseek';
   return 'gpt';
 }
-function descriptionFor(key, info, t) {
-  // Try to get translation first, fallback to hardcoded map, then generic
-  const translated = t(`models.${key}`, { defaultValue: null });
-  if (translated) return translated;
+function getModelDescription(key, info, t) {
+  // Priority 1: Backend descriptionKey (translated via i18n)
+  const descriptionKey = info?.display?.descriptionKey;
+  if (descriptionKey) {
+    const translated = t(`modelDescriptions.${descriptionKey}`, { defaultValue: null });
+    if (translated && translated !== `modelDescriptions.${descriptionKey}`) {
+      return translated;
+    }
+    // Fallback to hardcoded preset if translation missing
+    const preset = MODEL_DESCRIPTION_PRESETS[descriptionKey];
+    if (preset) return preset;
+  }
   
+  // Priority 2: Frontend i18n translation for model key (backward compatibility)
+  const translated = t(`models.${key}`, { defaultValue: null });
+  if (translated && translated !== `models.${key}`) return translated;
+  
+  // Priority 3: Hardcoded fallback map
+  return descriptionFor(key, info, t);
+}
+
+function descriptionFor(key, info, t) {
   const map = {
     'gpt-5': 'Most powerful all-purpose AI',
     'gpt-5-chat-latest': 'Optimized for chat and dialogue',
@@ -453,6 +477,40 @@ function descriptionFor(key, info, t) {
   
   return map[key] || `${info?.provider || 'AI'} model`;
 }
+
+// Model description presets (fallback if i18n translation missing)
+const MODEL_DESCRIPTION_PRESETS = {
+  most_powerful: "Most powerful AI model",
+  fast_everyday: "Fast for everyday tasks",
+  fast_reasoning: "Fast model with good reasoning",
+  great_reasoning: "Advanced reasoning model",
+  coding_reasoning: "Advanced coding and reasoning",
+  better_coding: "Better for coding and reasoning",
+  best_overall: "Best all-around AI model",
+  best_google: "Google's best model",
+  best_xai: "xAI's most powerful model",
+  creative_focus: "Great for creative writing",
+  code_helper: "Great for coding help",
+  chat_focus: "Optimized for chatting",
+  long_context: "Great for long contexts",
+  budget_friendly: "Budget-friendly AI model",
+  ultra_fast: "Ultra fast responses",
+  safe_default: "Safe default choice",
+  multilingual: "Strong multilingual support",
+  vision_strong: "Great with images and vision",
+  data_analysis: "Good for data analysis",
+  structured_tasks: "Good for structured tasks",
+  everyday_helper: "Everyday assistant model",
+  concise_answers: "Short, concise answers",
+  detailed_answers: "Detailed step-by-step answers",
+  experimental: "Experimental next-gen model",
+  reliable_classic: "Reliable classic model",
+  lightweight: "Lightweight, low-cost model",
+  chatty_personal: "More friendly and personal",
+  pro_users: "Best for power users",
+  research_helper: "Good for research and notes",
+  reasoning_strong: "Advanced reasoning model",
+};
 
 function labelsFor(key, t) {
   const map = {

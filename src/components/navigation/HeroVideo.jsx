@@ -108,7 +108,6 @@ export default function HeroVideo({
           }, 1000);
         }}
         onError={(e) => {
-          console.warn('HeroVideo error:', e?.nativeEvent);
           // Only restart on actual errors, not warnings
           if (e?.nativeEvent?.error?.errorCode) {
             restart();

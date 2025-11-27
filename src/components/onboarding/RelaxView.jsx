@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, View, Text, Animated, useWindowDimensions, Image } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { PRESETS } from '../../data/presets';
 
 const RelaxView = ({ animationController }) => {
+  const { t } = useTranslation();
   const window = useWindowDimensions();
+  const assistantCards = useMemo(() => {
+    const ids = ['fitness', 'recipes', 'travel'];
+    return PRESETS.filter(p => ids.includes(p.id)).map((preset, index) => ({
+      id: preset.id,
+      title: t(`onboarding.relaxView.cards.${preset.id}.title`, { defaultValue: preset.name }),
+      text: t(`onboarding.relaxView.cards.${preset.id}.text`, { defaultValue: preset.description }),
+      image: preset.avatar,
+      rotate: index === 0 ? '-2deg' : index === 1 ? '1deg' : '-1deg',
+    }));
+  }, [t]);
 
   const slideAnim = animationController.current.interpolate({
     inputRange: [0, 0.2, 0.4, 0.8],
@@ -19,61 +32,27 @@ const RelaxView = ({ animationController }) => {
       style={[styles.container, { transform: [{ translateX: slideAnim }], opacity: fadeIn }]}
     >
       <View style={styles.cardsContainer}>
-        {/* Card 1 - Fitness Coach */}
-        <Animated.View style={[styles.card, { transform: [{ rotate: '-2deg' }] }]}>
-          <View style={styles.cardContent}>
-            <View style={styles.imageContainer}>
-              <Image
-                source={require('../../../assets/icons/human1.jpg')}
-                style={styles.humanImage}
-                resizeMode="cover"
-              />
+        {assistantCards.map((card) => (
+          <Animated.View key={card.id} style={[styles.card, { transform: [{ rotate: card.rotate }] }]}>
+            <View style={styles.cardContent}>
+              <View style={styles.imageContainer}>
+                <Image source={card.image} style={styles.humanImage} resizeMode="cover" />
+              </View>
+              <View style={styles.textContent}>
+                <Text style={styles.cardTitle}>{card.title}</Text>
+                <Text style={styles.cardText}>{card.text}</Text>
+              </View>
             </View>
-            <View style={styles.textContent}>
-              <Text style={styles.cardTitle}>Fitness Coach</Text>
-              <Text style={styles.cardText}>Get personalized workout plans and nutrition advice tailored to your goals</Text>
-            </View>
-          </View>
-        </Animated.View>
-
-        {/* Card 2 - Doctor */}
-        <Animated.View style={[styles.card, { transform: [{ rotate: '1deg' }] }]}>
-          <View style={styles.cardContent}>
-            <View style={styles.imageContainer}>
-              <Image
-                source={require('../../../assets/icons/human2.jpg')}
-                style={styles.humanImage}
-                resizeMode="cover"
-              />
-            </View>
-            <View style={styles.textContent}>
-              <Text style={styles.cardTitle}>Doctor</Text>
-              <Text style={styles.cardText}>Get health insights, symptom analysis, and medical guidance when you need it</Text>
-            </View>
-          </View>
-        </Animated.View>
-
-        {/* Card 3 - Pet Care */}
-        <Animated.View style={[styles.card, { transform: [{ rotate: '-1deg' }] }]}>
-          <View style={styles.cardContent}>
-            <View style={styles.imageContainer}>
-              <Image
-                source={require('../../../assets/icons/human3.jpg')}
-                style={styles.humanImage}
-                resizeMode="cover"
-              />
-            </View>
-            <View style={styles.textContent}>
-              <Text style={styles.cardTitle}>Pet Care</Text>
-              <Text style={styles.cardText}>Expert advice on pet health, training, and care for your furry friends</Text>
-            </View>
-          </View>
-        </Animated.View>
+          </Animated.View>
+        ))}
       </View>
 
       <View style={styles.textContainer}>
-        <Text style={styles.title}>Meet Your AI <Text style={{ color: '#00F0FF' }}>Assistants</Text></Text>
-        <Text style={styles.subtitle}>Specialized AI experts ready to help with your daily needs</Text>
+        <Text style={styles.title}>
+          {t('onboarding.relaxView.title')}{' '}
+          <Text style={{ color: '#00F0FF' }}>{t('onboarding.relaxView.titleHighlight')}</Text>
+        </Text>
+        <Text style={styles.subtitle}>{t('onboarding.relaxView.subtitle')}</Text>
       </View>
     </Animated.View>
   );

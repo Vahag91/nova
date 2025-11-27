@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Meest geavanceerde Google-model",
     "gemini-2.0-flash": "Snel en precies Google-AI"
   },
+  "modelDescriptions": {
+    "most_powerful": "Meest krachtige AI-model",
+    "fast_everyday": "Snel voor dagelijks gebruik",
+    "fast_reasoning": "Snel model met goed redeneren",
+    "great_reasoning": "Geavanceerd redeneermodel",
+    "coding_reasoning": "Geavanceerd programmeren en redeneren",
+    "better_coding": "Beter voor programmeren en redeneren",
+    "best_overall": "Beste alles-in-één AI-model",
+    "best_google": "Beste Google-model",
+    "best_xai": "Meest krachtige xAI-model",
+    "creative_focus": "Geweldig voor creatief schrijven",
+    "code_helper": "Geweldig voor codehulp",
+    "chat_focus": "Geoptimaliseerd voor chat",
+    "long_context": "Geweldig voor lange contexten",
+    "budget_friendly": "Budgetvriendelijk AI-model",
+    "ultra_fast": "Ultra snelle antwoorden",
+    "safe_default": "Veilige standaardkeuze",
+    "multilingual": "Sterke meertalige ondersteuning",
+    "vision_strong": "Geweldig met afbeeldingen en visie",
+    "data_analysis": "Goed voor data-analyse",
+    "structured_tasks": "Goed voor gestructureerde taken",
+    "everyday_helper": "Dagelijkse assistentmodel",
+    "concise_answers": "Korte, beknopte antwoorden",
+    "detailed_answers": "Gedetailleerde stap-voor-stap antwoorden",
+    "experimental": "Experimenteel model van nieuwe generatie",
+    "reliable_classic": "Betrouwbaar klassiek model",
+    "lightweight": "Lichtgewicht, goedkoop model",
+    "chatty_personal": "Vriendelijker en persoonlijker",
+    "pro_users": "Beste voor gevorderde gebruikers",
+    "research_helper": "Goed voor onderzoek en notities",
+    "reasoning_strong": "Geavanceerd redeneermodel"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Even geduld…",
     "processing": "Bezig met verwerken...",
     "tapToUploadImage": "Tik om afbeelding te uploaden",
-    "camera": "Camera",
+    "camera": "Foto's uploaden",
     "library": "Bibliotheek",
     "enterPrompt": "Voer een prompt in voor tekst-naar-afbeelding",
     "openInBrowser": "Openen in browser",
@@ -225,7 +257,9 @@
     "rename": "Hernoemen",
     "unpin": "Losmaken",
     "pin": "Vastmaken",
-    "untitled": "Zonder titel"
+    "untitled": "Zonder titel",
+    "noResults": "Nog geen chats",
+    "startNewChat": "Chat starten"
   },
   "settings": {
     "title": "Instellingen",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Maak kennis met",
       "titleHighlight": "Image Studio",
-      "subtitle": "Maak en bewerk afbeeldingen met AI — gewoon in {{app}}.",
+      "subtitle": "Maak en bewerk afbeeldingen met AI — gewoon in ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Maak kennis met je AI",
       "titleHighlight": "Assistenten",
       "subtitle": "Gespecialiseerde AI-experts die je dagelijks helpen",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Fitnesscoach",
-          "text": "Persoonlijke workouts en voedingstips"
+          "text": "Kleine gewoontes en thuisworkouts."
         },
-        {
-          "title": "Dokter",
-          "text": "Informatie over gezondheid en symptoomanalyse"
+        "recipes": {
+          "title": "Maaltijden en recepten",
+          "text": "Wat koken met wat je hebt."
         },
-        {
-          "title": "Huisdierhulp",
-          "text": "Advies over verzorging, training en gezondheid"
+        "travel": {
+          "title": "Reisgenoot",
+          "text": "Eenvoudige plannen en paklijsten."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Tokens kopen",
+    "title": "Credits kopen",
     "loading": "Tokenwinkel laden…",
     "balanceLabel": "Je huidige saldo is",
-    "balanceValue": "{{amount}} tokens",
+    "balanceValue": "{{amount}} credits",
     "history": {
       "link": "Transactiegeschiedenis",
       "alertTitle": "Geschiedenis",
@@ -545,9 +579,10 @@
       "value": "Beste waarde"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} tokens",
+      "tokensLabel": "{{credits}} credits",
       "defaultName": "Pakket {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} credits"
     },
     "premium": {
       "title": "Premium worden",
@@ -560,7 +595,7 @@
       "initErrorTitle": "Initialisatiefout",
       "genericMessage": "Er ging iets mis.",
       "successTitle": "Gelukt",
-      "successMessage": "Tokens verschijnen zo.",
+      "successMessage": "Credits verschijnen zo.",
       "purchaseFailedTitle": "Aankoop mislukt",
       "unknownError": "Onbekende fout"
     }
@@ -572,7 +607,13 @@
     "features": {
       "create": "Afbeeldingen en video’s maken",
       "search": "Met AI op het web zoeken",
-      "talk": "Natuurlijk praten met AI"
+      "talk": "Natuurlijk praten met AI",
+      "imageStudio": "Krijg Image Studio {{credits}} credits {{period}}",
+      "period": {
+        "weekly": "wekelijks",
+        "monthly": "maandelijks",
+        "yearly": "jaarlijks"
+      }
     },
     "freeTrial": {
       "title": "Gratis proef",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Bericht...",
     "createImages": "Afbeeldingen maken",
     "generateAiArtwork": "AI-illustratie genereren",
-    "camera": "Camera",
-    "takeOrSelectPhotos": "Foto maken of kiezen",
+    "camera": "Foto's uploaden",
+    "takeOrSelectPhotos": "Foto's kiezen",
     "search": "Zoeken",
     "findInformation": "Informatie zoeken",
     "findRecentInfo": "Recente info zoeken",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "in eenvoudige woorden",
       "planDay": "Dag plannen",
       "planDaySubtitle": "met productiviteitstips"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Bezig…",
-    "camera": "Camera",
+    "camera": "Foto's uploaden",
     "library": "Bibliotheek"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Opslaan",
     "delete": "Verwijderen",
     "close": "Sluiten",
-    "allow": "Toestaan"
+    "allow": "Toestaan",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Geniet je van ChatCloud?",
@@ -742,5 +788,63 @@
     "rateNow": "Nu beoordelen",
     "maybeLater": "Misschien later",
     "dontAskAgain": "Niet meer vragen"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Exclusief",
+    "badgeLine2": "Eenmalige aanbieding",
+    "upgradeNow": "Nu upgraden voor {{price}}",
+    "loadingPrice": "Laden...",
+    "termsOfUse": "Gebruiksvoorwaarden",
+    "privacyPolicy": "Privacybeleid",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

@@ -56,7 +56,6 @@ export default function HistorySimple({ navigation }) {
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const renameThread = useThreadsStore(s => s.renameThread);
   const deleteThread = useThreadsStore(s => s.deleteThread);
-console.log('threads', threads);
 
   const [busyId, setBusyId] = useState(null);
   const [q, setQ] = useState('');
@@ -96,8 +95,10 @@ console.log('threads', threads);
     const nonEmpty = sorted.filter(t => Array.isArray(t?.messages) && t.messages.some(m => m.role === 'user' || m.role === 'assistant'));
     if (!needle) return nonEmpty;
     return nonEmpty.filter(t => {
-      const rawPreview = t.summary?.trim() || betterPreview(t.messages);
-      const preview = (t.summary ? summaryPreview(rawPreview) : rawPreview).toLowerCase();
+      const summaryText = t.summary?.trim();
+      const summaryBased = summaryText ? summaryPreview(summaryText) : '';
+      const previewSource = summaryBased || betterPreview(t.messages);
+      const preview = previewSource.toLowerCase();
       return preview.includes(needle);
     });
   }, [sorted, q]);
@@ -186,10 +187,7 @@ function onRename(thread) {
           {busyId === thread.id ? (
             <Text style={styles.deleteBtnText}>...</Text>
           ) : (
-            <>
-              <SvgIcon name="trash" size={18} color="#FFFFFF" />
-              <Text style={styles.deleteBtnText}>{t('common.delete')}</Text>
-            </>
+            <SvgIcon name="trash" size={25} color="#FFFFFF" />
           )}
         </View>
       </RectButton>
@@ -197,8 +195,10 @@ function onRename(thread) {
   );
 
 const renderItem = ({ item: thread }) => {
-  const rawPreview = thread.summary?.trim() || betterPreview(thread.messages);
-  const preview = thread.summary ? summaryPreview(rawPreview) : rawPreview;
+  const summaryText = thread.summary?.trim();
+  const summaryBased = summaryText ? summaryPreview(summaryText) : '';
+  const rawPreview = summaryBased || betterPreview(thread.messages);
+  const preview = rawPreview || t('history.newChat');
     return (
       <Swipeable
       ref={(ref) => { ref ? rowRefs.current.set(thread.id, ref) : rowRefs.current.delete(thread.id); }}
@@ -267,9 +267,13 @@ const renderItem = ({ item: thread }) => {
         contentContainerStyle={sections.length ? { paddingBottom: 100 } : styles.emptyWrap}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Text style={styles.emptyTitle}>{t('history.noResults')}</Text>
+            <Text style={styles.emptyTitle}>
+              {t('history.noResults', { defaultValue: 'No chats yet' })}
+            </Text>
             <TouchableOpacity onPress={onNew} style={styles.startBtn}>
-              <Text style={styles.startBtnText}>{t('history.startNewChat')}</Text>
+              <Text style={styles.startBtnText}>
+                {t('history.startNewChat', { defaultValue: 'Start a new chat' })}
+              </Text>
             </TouchableOpacity>
           </View>
         }

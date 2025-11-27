@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import {
   Alert,
   Animated,
@@ -85,7 +85,6 @@ export default function CreateImageGenerating({
     }
     if (!jobPayload) return;
 
-    let cancelled = false;
     setStep(STEP.APPLYING);
     setImageUri(null);
     setError(null);
@@ -94,12 +93,28 @@ export default function CreateImageGenerating({
     setJobMeta(null);
     progress.setValue(0);
 
+    // Initial warmup animation to 50%
     const warmup = Animated.timing(progress, {
-      toValue: 0.7,
-      duration: 2200,
+      toValue: 0.5,
+      duration: 1500,
       useNativeDriver: false,
     });
-    warmup.start();
+
+    // Simulated progress animation that continues while waiting for API
+    // This animates from 50% to 90% over a longer duration
+    // It will be interrupted when the actual job completes
+    const simulatedProgress = Animated.timing(progress, {
+      toValue: 0.9,
+      duration: 15000, // 15 seconds to go from 50% to 90%
+      useNativeDriver: false,
+    });
+
+    // Chain animations: warmup then simulated progress
+    const progressSequence = Animated.sequence([
+      warmup,
+      simulatedProgress,
+    ]);
+    progressSequence.start();
 
     const spinnerLoop = Animated.loop(
       Animated.timing(spinner, {
@@ -117,11 +132,12 @@ export default function CreateImageGenerating({
       try {
         setPhaseIndex(2); // Generating
         const job = await createJob(jobPayload);
-        if (cancelled) return;
 
+        // Stop the progress sequence and animate to completion
+        progressSequence.stop();
         Animated.timing(progress, {
           toValue: 1,
-          duration: 420,
+          duration: 500,
           useNativeDriver: false,
         }).start();
 
@@ -148,7 +164,8 @@ export default function CreateImageGenerating({
           }, 2000);
         }
       } catch (err) {
-        if (cancelled) return;
+        // Stop progress animation on error
+        progressSequence.stop();
         setError(err?.message || t('createImageGenerating.errors.genericMessage'));
         setErrorCode(err?.code || null);
         setStep(STEP.ERROR);
@@ -156,8 +173,7 @@ export default function CreateImageGenerating({
     })();
 
     return () => {
-      cancelled = true;
-      warmup.stop();
+      progressSequence.stop();
       spinnerLoop.stop();
     };
   }, [visible, jobPayload, createJob, progress, spinner, retryCount, t]);
@@ -238,17 +254,41 @@ const handleRetry = () => {
   setRetryCount(c => c + 1);
 };
 
-  const styleLabelFallback = t('createImageGenerating.stylePlaceholder');
-  const styleLabel = typeof payload?.styleName === 'string' && payload.styleName.length
+  // Only show style label if a style is actually selected
+  const hasStyle = payload?.styleId || (payload?.styleName && typeof payload.styleName === 'string' && payload.styleName.length > 0);
+  const styleLabel = hasStyle && payload?.styleName
     ? payload.styleName
-    : styleLabelFallback;
+    : null;
+  
+  const resolveStylePlaceholder = useCallback(
+    (text) => {
+      if (typeof text !== 'string') return text;
+      // If no style, remove the style placeholder entirely
+      if (!styleLabel) {
+        // Remove patterns like "{{style}}" or "{style}" and clean up surrounding text
+        return text
+          .replace(/\{\{\s*style\s*\}\}/gi, '')
+          .replace(/\{\s*style\s*\}/gi, '')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+      return text
+        .replace(/\{\{\s*style\s*\}\}/gi, styleLabel)
+        .replace(/\{\s*style\s*\}/gi, styleLabel);
+    },
+    [styleLabel],
+  );
+  
   const phases = useMemo(
     () => [
-      { label: t('createImageGenerating.phases.blend', { style: styleLabel }) },
+      { label: resolveStylePlaceholder(t('createImageGenerating.phases.blend', { style: styleLabel || '' })) },
       { label: t('createImageGenerating.phases.paint') },
       { label: t('createImageGenerating.phases.finish') },
     ],
-    [styleLabel, t],
+    [resolveStylePlaceholder, styleLabel, t],
+  );
+  const sheetSubtitleText = resolveStylePlaceholder(
+    t('createImageGenerating.sheetSubtitle', { style: styleLabel || '' })
   );
 
   const requestedSize = jobMeta?.effectiveSize || jobMeta?.payload?.size || payload?.size;
@@ -287,7 +327,7 @@ const handleRetry = () => {
               <View style={styles.sheetBody}>
                 <Text style={styles.sheetTitle}>{t('createImageGenerating.sheetTitle')}</Text>
                 <Text style={styles.sheetSubtitle}>
-                  {t('createImageGenerating.sheetSubtitle', { style: styleLabel })}
+                  {sheetSubtitleText}
                 </Text>
                 <View style={styles.phaseList}>
                   {phases.map((phase, index) => {
@@ -319,9 +359,6 @@ const handleRetry = () => {
                 <View style={styles.progressTrack}>
                   <Animated.View style={[styles.progressFill, { width: progressWidth }]} />
                 </View>
-                <Pressable onPress={handleClose} hitSlop={8}>
-                  <Text style={styles.cancelText}>{t('createImageGenerating.actions.cancel')}</Text>
-                </Pressable>
               </View>
             </View>
           </View>
@@ -390,9 +427,11 @@ const handleRetry = () => {
                   </Text>
                 ) : null}
                 <View style={styles.resultTags}>
-                  <View style={styles.tag}>
-                    <Text style={styles.tagText}>{styleLabel}</Text>
-                  </View>
+                  {hasStyle && styleLabel ? (
+                    <View style={styles.tag}>
+                      <Text style={styles.tagText}>{styleLabel}</Text>
+                    </View>
+                  ) : null}
                   {payload?.size ? (
                     <View style={styles.tag}>
                       <Text style={styles.tagText}>{payload.size}</Text>
@@ -548,11 +587,6 @@ const styles = StyleSheet.create({
     height: 4,
     borderRadius: 999,
     backgroundColor: '#7C5CFF',
-  },
-  cancelText: {
-    color: 'rgba(214,220,232,0.75)',
-    fontSize: 13,
-    fontWeight: '600',
   },
   errorContainer: {
     flex: 1,

@@ -24,9 +24,41 @@
     "gpt-4.1-mini": "Kompakt ve yetenekli GPT-4.1",
     "claude-3-haiku": "Hızlı ve odaklı Anthropic yapay zekası",
     "claude-3.7-sonnet": "Anthropic tarafından rafine akıl yürütme",
-    "gemini-2.5-Flash": "Google’ın en gelişmiş modeli",
-    "gemini-2.5-flash": "Google’ın en gelişmiş modeli",
+    "gemini-2.5-Flash": "Google'ın en gelişmiş modeli",
+    "gemini-2.5-flash": "Google'ın en gelişmiş modeli",
     "gemini-2.0-flash": "Hızlı ve hassas Google yapay zekası"
+  },
+  "modelDescriptions": {
+    "most_powerful": "En güçlü yapay zeka modeli",
+    "fast_everyday": "Günlük işler için hızlı",
+    "fast_reasoning": "İyi akıl yürütme ile hızlı model",
+    "great_reasoning": "Gelişmiş akıl yürütme modeli",
+    "coding_reasoning": "Gelişmiş kodlama ve akıl yürütme",
+    "better_coding": "Kodlama ve akıl yürütme için daha iyi",
+    "best_overall": "En iyi çok amaçlı yapay zeka modeli",
+    "best_google": "Google'ın en iyi modeli",
+    "best_xai": "xAI'nin en güçlü modeli",
+    "creative_focus": "Yaratıcı yazım için harika",
+    "code_helper": "Kodlama yardımı için harika",
+    "chat_focus": "Sohbet için optimize edildi",
+    "long_context": "Uzun bağlamlar için harika",
+    "budget_friendly": "Bütçe dostu yapay zeka modeli",
+    "ultra_fast": "Ultra hızlı yanıtlar",
+    "safe_default": "Güvenli varsayılan seçim",
+    "multilingual": "Güçlü çok dilli destek",
+    "vision_strong": "Görüntüler ve görüş için harika",
+    "data_analysis": "Veri analizi için iyi",
+    "structured_tasks": "Yapılandırılmış görevler için iyi",
+    "everyday_helper": "Günlük asistan modeli",
+    "concise_answers": "Kısa, özlü cevaplar",
+    "detailed_answers": "Detaylı adım adım cevaplar",
+    "experimental": "Deneysel yeni nesil model",
+    "reliable_classic": "Güvenilir klasik model",
+    "lightweight": "Hafif, düşük maliyetli model",
+    "chatty_personal": "Daha dostane ve kişisel",
+    "pro_users": "Güçlü kullanıcılar için en iyi",
+    "research_helper": "Araştırma ve notlar için iyi",
+    "reasoning_strong": "Gelişmiş akıl yürütme modeli"
   },
   "providers": {
     "openai": "OpenAI",
@@ -69,7 +101,7 @@
     "pleaseWait": "Lütfen bekle…",
     "processing": "İşleniyor...",
     "tapToUploadImage": "Görüntü yüklemek için dokun",
-    "camera": "Kamera",
+    "camera": "Fotoğraf yükle",
     "library": "Galeri",
     "enterPrompt": "Metinden görüntü üretmek için bir istem gir",
     "openInBrowser": "Tarayıcıda aç",
@@ -215,8 +247,10 @@
     "search": "Ara",
     "clearSearch": "Aramayı temizle",
     "noChatsYet": "Henüz sohbet yok",
+    "noResults": "Henüz sohbet yok",
     "startFirstConversation": "İlk sohbetine başla.",
     "startChat": "Sohbet başlat",
+    "startNewChat": "Yeni sohbet başlat",
     "errorLoadingHistory": "Geçmiş yüklenirken hata oluştu",
     "renameChat": "Sohbeti yeniden adlandır",
     "enterNewTitle": "Yeni başlık gir",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Tanış",
       "titleHighlight": "Image Studio",
-      "subtitle": "Yapay zeka ile görüntü oluştur ve düzenle — doğrudan {{app}} içinde.",
+      "subtitle": "Yapay zeka ile görüntü oluştur ve düzenle — doğrudan ChatCloud içinde.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Yapay zekanla tanış",
       "titleHighlight": "Asistanlar",
       "subtitle": "Günlük ihtiyaçların için hazır özel yapay zeka uzmanları",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Fitness Koçu",
-          "text": "Hedeflerine uygun antrenman ve beslenme planları al"
+          "text": "Küçük alışkanlıklar ve ev antrenmanları."
         },
-        {
-          "title": "Doktor",
-          "text": "Sağlık içgörüleri, semptom analizi ve rehberlik al"
+        "recipes": {
+          "title": "Yemekler ve Tarifler",
+          "text": "Elinizdekiyle ne pişireceğiniz."
         },
-        {
-          "title": "Evcil Dost",
-          "text": "Evcil hayvan sağlığı, eğitim ve bakım tavsiyeleri"
+        "travel": {
+          "title": "Seyahat Arkadaşı",
+          "text": "Basit planlar ve paket listeleri."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "En İyi Fiyat"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} Jeton",
+      "tokensLabel": "{{credits}} Jeton",
       "defaultName": "Paket {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} Jeton"
     },
     "premium": {
       "title": "Premium’a geç",
@@ -572,7 +607,13 @@
     "features": {
       "create": "Görüntü ve video oluştur",
       "search": "Yapay zeka ile web’de ara",
-      "talk": "Yapay zeka ile doğal konuş"
+      "talk": "Yapay zeka ile doğal konuş",
+      "imageStudio": "Image Studio {{credits}} kredi {{period}} al",
+      "period": {
+        "weekly": "haftalık",
+        "monthly": "aylık",
+        "yearly": "yıllık"
+      }
     },
     "freeTrial": {
       "title": "Ücretsiz deneme",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Mesaj...",
     "createImages": "Görüntü Oluştur",
     "generateAiArtwork": "Yapay zeka sanatı oluştur",
-    "camera": "Kamera",
-    "takeOrSelectPhotos": "Fotoğraf çek veya seç",
+    "camera": "Fotoğraf yükle",
+    "takeOrSelectPhotos": "Fotoğraf seç",
     "search": "Ara",
     "findInformation": "Bilgi bul",
     "findRecentInfo": "Güncel bilgi bul",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "basit bir dille",
       "planDay": "Günümü planla",
       "planDaySubtitle": "verimlilik ipuçlarıyla"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "İşleniyor...",
-    "camera": "Kamera",
+    "camera": "Fotoğraf yükle",
     "library": "Galeri"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Kaydet",
     "delete": "Sil",
     "close": "Kapat",
-    "allow": "İzin ver"
+    "allow": "İzin ver",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "ChatCloud'u beğendiniz mi?",
@@ -742,5 +788,63 @@
     "rateNow": "Şimdi değerlendir",
     "maybeLater": "Belki sonra",
     "dontAskAgain": "Tekrar sorma"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Özel",
+    "badgeLine2": "Tek seferlik teklif",
+    "upgradeNow": "Şimdi yükselt {{price}}",
+    "loadingPrice": "Yükleniyor...",
+    "termsOfUse": "Kullanım Koşulları",
+    "privacyPolicy": "Gizlilik Politikası",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

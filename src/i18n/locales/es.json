@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Modelo más avanzado de Google",
     "gemini-2.0-flash": "IA de Google rápida y precisa"
   },
+  "modelDescriptions": {
+    "most_powerful": "Modelo de IA más potente",
+    "fast_everyday": "Rápido para tareas diarias",
+    "fast_reasoning": "Modelo rápido con buen razonamiento",
+    "great_reasoning": "Modelo de razonamiento avanzado",
+    "coding_reasoning": "Programación y razonamiento avanzados",
+    "better_coding": "Mejor para programación y razonamiento",
+    "best_overall": "Mejor modelo de IA completo",
+    "best_google": "Mejor modelo de Google",
+    "best_xai": "Modelo xAI más potente",
+    "creative_focus": "Excelente para escritura creativa",
+    "code_helper": "Excelente para ayuda con código",
+    "chat_focus": "Optimizado para chat",
+    "long_context": "Excelente para contextos largos",
+    "budget_friendly": "Modelo de IA económico",
+    "ultra_fast": "Respuestas ultrarrápidas",
+    "safe_default": "Elección predeterminada segura",
+    "multilingual": "Fuerte soporte multilingüe",
+    "vision_strong": "Excelente con imágenes y visión",
+    "data_analysis": "Bueno para análisis de datos",
+    "structured_tasks": "Bueno para tareas estructuradas",
+    "everyday_helper": "Modelo asistente cotidiano",
+    "concise_answers": "Respuestas cortas y concisas",
+    "detailed_answers": "Respuestas detalladas paso a paso",
+    "experimental": "Modelo experimental de próxima generación",
+    "reliable_classic": "Modelo clásico confiable",
+    "lightweight": "Modelo ligero y económico",
+    "chatty_personal": "Más amigable y personal",
+    "pro_users": "Mejor para usuarios avanzados",
+    "research_helper": "Bueno para investigación y notas",
+    "reasoning_strong": "Modelo de razonamiento avanzado"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Por favor espera…",
     "processing": "Procesando...",
     "tapToUploadImage": "Toca para subir una imagen",
-    "camera": "Cámara",
+    "camera": "Subir fotos",
     "library": "Galería",
     "enterPrompt": "Introduce un prompt para la generación de texto a imagen",
     "openInBrowser": "Abrir en el navegador",
@@ -225,7 +257,9 @@
     "rename": "Renombrar",
     "unpin": "Desanclar",
     "pin": "Anclar",
-    "untitled": "Sin título"
+    "untitled": "Sin título",
+    "noResults": "Aún no hay chats",
+    "startNewChat": "Iniciar chat"
   },
   "settings": {
     "title": "Ajustes",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Te presentamos",
       "titleHighlight": "Image Studio",
-      "subtitle": "Crea y edita imágenes con IA — dentro de {{app}}.",
+      "subtitle": "Crea y edita imágenes con IA — dentro de ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Conoce tu IA",
       "titleHighlight": "Asistentes",
       "subtitle": "Expertos de IA listos para ayudarte con tu día a día",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Coach de fitness",
-          "text": "Planes de entrenamiento y nutrición adaptados a tus metas"
+          "text": "Pequeños hábitos y entrenamientos en casa."
         },
-        {
-          "title": "Doctor",
-          "text": "Información de salud, análisis de síntomas y orientación médica"
+        "recipes": {
+          "title": "Comidas y recetas",
+          "text": "Qué cocinar con lo que tienes."
         },
-        {
-          "title": "Cuidado de mascotas",
-          "text": "Consejos de expertos sobre salud, entrenamiento y cuidado"
+        "travel": {
+          "title": "Compañero de viaje",
+          "text": "Planes simples y listas de equipaje."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Obtener tokens",
+    "title": "Obtener credits",
     "loading": "Cargando tienda de tokens…",
     "balanceLabel": "Tu saldo actual es",
-    "balanceValue": "{{amount}} tokens",
+    "balanceValue": "{{amount}} credits",
     "history": {
       "link": "Historial de transacciones",
       "alertTitle": "Historial",
@@ -545,9 +579,10 @@
       "value": "Mejor valor"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} tokens",
+      "tokensLabel": "{{credits}} credits",
       "defaultName": "Paquete {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} credits"
     },
     "premium": {
       "title": "Hazte Premium",
@@ -560,10 +595,19 @@
       "initErrorTitle": "Error de inicio",
       "genericMessage": "Ocurrió un error.",
       "successTitle": "Éxito",
-      "successMessage": "Los tokens aparecerán en breve.",
+      "successMessage": "Los credits aparecerán en breve.",
       "purchaseFailedTitle": "Compra fallida",
       "unknownError": "Error desconocido"
     }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Requerido",
+    "upgrade": "Actualizar",
+    "modelRequiredMessage": "Este modelo requiere Premium. Actualiza para acceder a GPT-5, Grok 4, Claude y otros modelos avanzados.",
+    "assistantsRequiredMessage": "Los asistentes requieren Premium. Actualiza para acceder a asistentes de IA especializados para fitness, programación, escritura y más.",
+    "assistantsTitle": "Premium Requerido",
+    "assistantsMessage": "Los asistentes requieren Premium. Actualiza para acceder a asistentes de IA especializados para fitness, programación, escritura y más."
   },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
@@ -572,7 +616,13 @@
     "features": {
       "create": "Crear imágenes y videos",
       "search": "Buscar en la web con IA",
-      "talk": "Habla de forma natural con la IA"
+      "talk": "Habla de forma natural con la IA",
+      "imageStudio": "Obtén Image Studio {{credits}} créditos {{period}}",
+      "period": {
+        "weekly": "semanal",
+        "monthly": "mensual",
+        "yearly": "anual"
+      }
     },
     "freeTrial": {
       "title": "Prueba gratis",
@@ -609,12 +659,61 @@
       "privacy": "Privacidad"
     }
   },
+  "oneTimeOffer": {
+    "title": "Oferta de Una Vez",
+    "subtitle": "No volverás a ver esta oferta.",
+    "badgeLine1": "Exclusivo",
+    "badgeLine2": "Oferta única",
+    "upgradeNow": "Actualizar ahora por {{price}}",
+    "loadingPrice": "Cargando...",
+    "termsOfUse": "Términos de Uso",
+    "privacyPolicy": "Política de Privacidad",
+    "accessTitle": "Acceso ilimitado a",
+    "accessSubtitle": "GPT, Gemini y Grok 4",
+    "features": {
+      "unlimitedGPT4": "Acceso ilimitado a GPT-4",
+      "geminiPro": "Acceso a Gemini Pro",
+      "grokInsights": "Utiliza Grok para obtener información actualizada",
+      "priorityAccess": "Acceso prioritario y respuestas más rápidas"
+    },
+    "bestValue": "Mejor Valor",
+    "annualPremium": "Premium Anual",
+    "oneTimePayment": "Pago único",
+    "wasPrice": "era",
+    "continue": "Continuar",
+    "restore": "Restaurar",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "successTitle": "¡Éxito!",
+    "successMessage": "¡Gracias por tu compra! Ahora tienes acceso de por vida a todas las funciones premium.",
+    "errorTitle": "Compra Fallida",
+    "errorMessage": "Algo salió mal. Por favor, intenta de nuevo.",
+    "restoreSuccessTitle": "Restaurado",
+    "restoreSuccessMessage": "Tus compras han sido restauradas.",
+    "restoreErrorTitle": "Restauración Fallida",
+    "restoreErrorMessage": "No se encontraron compras para restaurar."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Error al Cargar Modelos",
+      "modelsLoadMessage": "No se pudieron cargar los modelos de IA. La app usará modelos predeterminados. Por favor, verifica tu conexión a internet.",
+      "modelsLoadTimeout": "La carga de modelos tardó demasiado. La app usará modelos predeterminados. Por favor, intenta de nuevo.",
+      "modelsLoadNetwork": "Sin conexión a internet. La app usará modelos predeterminados. Por favor, verifica tu conexión.",
+      "deviceIdTitle": "Error de Inicialización",
+      "deviceIdMessage": "No se pudo inicializar el ID del dispositivo. Algunas funciones pueden no funcionar correctamente.",
+      "storageTitle": "Error de Almacenamiento",
+      "storageMessage": "No se pudo acceder al almacenamiento local. Algunas funciones pueden no funcionar correctamente.",
+      "crashTitle": "Algo salió mal.",
+      "crashSubtitle": "Por favor, intenta de nuevo.",
+      "crashLabel": "La app falló"
+    }
+  },
   "chat": {
     "messagePlaceholder": "Mensaje...",
     "createImages": "Crear imágenes",
     "generateAiArtwork": "Generar arte con IA",
-    "camera": "Cámara",
-    "takeOrSelectPhotos": "Tomar o elegir fotos",
+    "camera": "Subir fotos",
+    "takeOrSelectPhotos": "Seleccionar fotos",
     "search": "Buscar",
     "findInformation": "Buscar información",
     "findRecentInfo": "Buscar info reciente",
@@ -639,10 +738,12 @@
     "regenerateResponse": "Regenerar respuesta",
     "regenerateResponseHint": "Generar una nueva respuesta",
     "copyCode": "Copiar código",
+    "copied": "Copiado",
     "image": "imagen",
     "loading": "Cargando…",
     "loadingChat": "Cargando chat...",
     "offlineBanner": "Estás sin conexión. No se pueden enviar mensajes.",
+    "offlineError": "Sin conexión a internet. Por favor, verifica tu conexión e intenta de nuevo.",
     "imagePickerErrorTitle": "Error al seleccionar imagen",
     "imagePickerErrorMessage": "No se pudo acceder a tus fotos. Intenta de nuevo.",
     "messageTooLong": "Mensaje demasiado largo ({{length}}). El límite es {{limit}}.",
@@ -724,7 +825,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Procesando...",
-    "camera": "Cámara",
+    "camera": "Subir fotos",
     "library": "Galería"
   },
   "common": {
@@ -734,7 +835,10 @@
     "save": "Guardar",
     "delete": "Eliminar",
     "close": "Cerrar",
-    "allow": "Permitir"
+    "allow": "Permitir",
+    "ok": "OK",
+    "retry": "Reintentar",
+    "tryAgain": "Intentar de Nuevo"
   },
   "rateUs": {
     "title": "¿Te gusta ChatCloud?",

@@ -68,33 +68,46 @@ export default function StudioHome({ navigation }) {
   const createCost = useMemo(() => getImageModelPrice('runware-flux-schnell'), []);
   const editCost = useMemo(() => getImageModelPrice('runware-qwen-image'), []);
 
+  const loadBalance = useCallback(async (forceRefresh = false) => {
+    if (!forceRefresh && coins !== null && coins !== undefined) {
+      return;
+    }
+    let mounted = true;
+    try {
+      setCoinsLoading(true);
+      let id = deviceIdRef.current;
+      if (!id) {
+        id = await ensureDeviceId();
+        deviceIdRef.current = id;
+      }
+      let sb = coinsClientRef.current;
+      if (!sb) {
+        sb = createSbWithDevice(id);
+        coinsClientRef.current = sb;
+      }
+      const bal = await fetchBalanceByDevice(sb, id);
+      if (mounted) setCoinsBalance(bal);
+    } catch (e) {
+      if (mounted) setCoinsBalance(null);
+    } finally {
+      if (mounted) setCoinsLoading(false);
+    }
+    return () => { mounted = false; };
+  }, [coins, setCoinsBalance]);
+
   useEffect(() => {
     // Enable smooth layout animations on Android
     try { if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) UIManager.setLayoutAnimationEnabledExperimental(true); } catch {}
-    
-    // Only fetch coins if balance is not already loaded
-    if (coins !== null && coins !== undefined) {
-      return;
-    }
-    
-    let mounted = true;
-    (async () => {
-      try {
-        const id = await ensureDeviceId();
-        deviceIdRef.current = id;
-        const sb = createSbWithDevice(id);
-        coinsClientRef.current = sb;
-        setCoinsLoading(true);
-        const bal = await fetchBalanceByDevice(sb, id);
-        if (mounted) setCoinsBalance(bal);
-      } catch (e) {
-        if (mounted) setCoinsBalance(null);
-      } finally {
-        if (mounted) setCoinsLoading(false);
-      }
-    })();
-    return () => { mounted = false; };
-  }, [coins, setCoinsBalance]);
+    loadBalance(false);
+  }, [loadBalance]);
+
+  useEffect(() => {
+    if (!isFocused) return;
+    const cleanup = loadBalance(true);
+    return () => {
+      if (typeof cleanup === 'function') cleanup();
+    };
+  }, [isFocused, loadBalance]);
 
   // Recent images from jobs store
   const jobs = useImagesStore(s => s.jobs);
@@ -293,9 +306,11 @@ export default function StudioHome({ navigation }) {
                     </View>
                   </View>
                 </View>
-                <Pressable onPress={openCreate} style={[styles.primaryBtn]} hitSlop={6}>
-                  <Text style={styles.primaryBtnText}>{t('studioHome.createCard.cta')}</Text>
-                </Pressable>
+                <View style={styles.cardButtonContainer}>
+                  <Pressable onPress={openCreate} style={[styles.secondaryBtn]} hitSlop={6}>
+                    <Text style={styles.secondaryBtnText}>{t('studioHome.createCard.cta')}</Text>
+                  </Pressable>
+                </View>
               </View>
             </View>
 
@@ -327,9 +342,11 @@ export default function StudioHome({ navigation }) {
                     </View>
                   </View>
                 </View>
-                <Pressable onPress={openEdit} style={[styles.secondaryBtn]} hitSlop={6}>
-                  <Text style={styles.secondaryBtnText}>{t('studioHome.editCard.cta')}</Text>
-                </Pressable>
+                <View style={styles.cardButtonContainer}>
+                  <Pressable onPress={openEdit} style={[styles.primaryBtn]} hitSlop={6}>
+                    <Text style={styles.primaryBtnText}>{t('studioHome.editCard.cta')}</Text>
+                  </Pressable>
+                </View>
               </View>
             </View>
 
@@ -424,7 +441,8 @@ const styles = StyleSheet.create({
     aspectRatio: CARD_ASPECT,
   },
   cardOverlay: { ...StyleSheet.absoluteFillObject },
-  cardContent: { flex: 1, justifyContent: 'flex-end', padding: 16, gap: 10 },
+  cardContent: { flex: 1, justifyContent: 'space-between', padding: 16 },
+  cardButtonContainer: { marginTop: 'auto' },
   labelPill: {
     alignSelf: 'flex-start',
     backgroundColor: 'rgba(255,255,255,0.08)',

@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Найбільш просунута модель Google",
     "gemini-2.0-flash": "Швидка і точна Google ШІ"
   },
+  "modelDescriptions": {
+    "most_powerful": "Найпотужніша модель ШІ",
+    "fast_everyday": "Швидка для повсякденних завдань",
+    "fast_reasoning": "Швидка модель з хорошим мисленням",
+    "great_reasoning": "Просунута модель мислення",
+    "coding_reasoning": "Просунуте програмування та мислення",
+    "better_coding": "Краще для програмування та мислення",
+    "best_overall": "Найкраща універсальна модель ШІ",
+    "best_google": "Найкраща модель Google",
+    "best_xai": "Найпотужніша модель xAI",
+    "creative_focus": "Чудово для творчого письма",
+    "code_helper": "Чудово для допомоги з програмуванням",
+    "chat_focus": "Оптимізована для спілкування",
+    "long_context": "Чудово для довгих контекстів",
+    "budget_friendly": "Бюджетна модель ШІ",
+    "ultra_fast": "Надшвидкі відповіді",
+    "safe_default": "Безпечний вибір за замовчуванням",
+    "multilingual": "Сильна багатомовна підтримка",
+    "vision_strong": "Чудово з зображеннями та зором",
+    "data_analysis": "Добре для аналізу даних",
+    "structured_tasks": "Добре для структурованих завдань",
+    "everyday_helper": "Модель помічника для щоденних завдань",
+    "concise_answers": "Короткі, лаконічні відповіді",
+    "detailed_answers": "Детальні покрокові відповіді",
+    "experimental": "Експериментальна модель нового покоління",
+    "reliable_classic": "Надійна класична модель",
+    "lightweight": "Легка, недорога модель",
+    "chatty_personal": "Більш дружня та особиста",
+    "pro_users": "Найкраще для досвідчених користувачів",
+    "research_helper": "Добре для досліджень та нотаток",
+    "reasoning_strong": "Просунута модель мислення"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Будь ласка, зачекайте…",
     "processing": "Обробка...",
     "tapToUploadImage": "Натисніть, щоб завантажити зображення",
-    "camera": "Камера",
+    "camera": "Завантажити фото",
     "library": "Бібліотека",
     "enterPrompt": "Введіть підказку для генерації зображення з тексту",
     "openInBrowser": "Відкрити в браузері",
@@ -215,8 +247,10 @@
     "search": "Пошук",
     "clearSearch": "Очистити пошук",
     "noChatsYet": "Ще немає чатів",
+    "noResults": "Ще немає чатів",
     "startFirstConversation": "Розпочніть свою першу розмову.",
     "startChat": "Почати чат",
+    "startNewChat": "Почати новий чат",
     "errorLoadingHistory": "Помилка завантаження історії",
     "renameChat": "Перейменувати чат",
     "enterNewTitle": "Введіть нову назву",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Знайомтесь:",
       "titleHighlight": "Image Studio",
-      "subtitle": "Створюйте та редагуйте зображення за допомогою ШІ — прямо в {{app}}.",
+      "subtitle": "Створюйте та редагуйте зображення за допомогою ШІ — прямо в ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Знайомтесь зі своєю ШІ",
       "titleHighlight": "Асистенти",
       "subtitle": "Спеціалізовані ШІ-експерти готові допомагати щодня",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Фітнес-тренер",
-          "text": "Отримайте персональні тренування та рекомендації з харчування"
+          "text": "Малі звички та домашні тренування."
         },
-        {
-          "title": "Лікар",
-          "text": "Отримайте поради щодо здоров'я, аналіз симптомів, рекомендації"
+        "recipes": {
+          "title": "Страви та рецепти",
+          "text": "Що приготувати з того, що є."
         },
-        {
-          "title": "Догляд за тваринами",
-          "text": "Поради експертів про здоров’я, тренування та догляд"
+        "travel": {
+          "title": "Попутник у подорожі",
+          "text": "Прості плани та списки для збирання."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "Найкраща ціна"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} токенів",
+      "tokensLabel": "{{credits}} токенів",
       "defaultName": "Пакет {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} токенів"
     },
     "premium": {
       "title": "Перейти на Преміум",
@@ -572,7 +607,13 @@
     "features": {
       "create": "Створюйте зображення та відео",
       "search": "Шукайте в Інтернеті з ШІ",
-      "talk": "Поспілкуйтесь з ШІ природно"
+      "talk": "Поспілкуйтесь з ШІ природно",
+      "imageStudio": "Отримай Image Studio {{credits}} кредитів {{period}}",
+      "period": {
+        "weekly": "щотижня",
+        "monthly": "щомісяця",
+        "yearly": "щороку"
+      }
     },
     "freeTrial": {
       "title": "Безкоштовний пробний",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Повідомлення...",
     "createImages": "Створити зображення",
     "generateAiArtwork": "Генерувати арт з ШІ",
-    "camera": "Камера",
-    "takeOrSelectPhotos": "Зробити або вибрати фото",
+    "camera": "Завантажити фото",
+    "takeOrSelectPhotos": "Вибрати фото",
     "search": "Пошук",
     "findInformation": "Знайти інформацію",
     "findRecentInfo": "Знайти останню інформацію",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "простими словами",
       "planDay": "Запланувати мій день",
       "planDaySubtitle": "з порадами щодо продуктивності"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Обробка...",
-    "camera": "Камера",
+    "camera": "Завантажити фото",
     "library": "Бібліотека"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Зберегти",
     "delete": "Видалити",
     "close": "Закрити",
-    "allow": "Дозволити"
+    "allow": "Дозволити",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Вам подобається ChatCloud?",
@@ -742,5 +788,63 @@
     "rateNow": "Оцінити зараз",
     "maybeLater": "Можливо пізніше",
     "dontAskAgain": "Більше не питати"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Ексклюзивна",
+    "badgeLine2": "Одноразова пропозиція",
+    "upgradeNow": "Оновити зараз за {{price}}",
+    "loadingPrice": "Завантаження...",
+    "termsOfUse": "Умови використання",
+    "privacyPolicy": "Політика конфіденційності",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

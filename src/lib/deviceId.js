@@ -31,11 +31,10 @@ export async function ensureDeviceId() {
     if (found) {
       memoizedId = found;
       try { await Storage.getOrCreateDeviceId(() => found); } catch {}
-      if (__DEV__) console.log('[DeviceId] keychain hit', found);
       return memoizedId;
     }
   } catch (e) {
-    if (__DEV__) console.log('[DeviceId] keychain read error', e?.message || String(e));
+    // Keychain read error handled silently
   }
 
   // 2) Legacy fallback (your existing storage)
@@ -44,7 +43,6 @@ export async function ensureDeviceId() {
     if (legacy) {
       try { await setKeychainId(legacy); } catch {}
       memoizedId = legacy;
-      if (__DEV__) console.log('[DeviceId] legacy storage id', legacy);
       return memoizedId;
     }
   } catch {}
@@ -59,7 +57,6 @@ export async function ensureDeviceId() {
   }
   try { await Storage.getOrCreateDeviceId(() => fresh); } catch {}
   memoizedId = fresh;
-  if (__DEV__) console.log('[DeviceId] generated + saved', memoizedId);
   return memoizedId;
 }
 
@@ -69,5 +66,4 @@ export async function __resetDeviceId_devOnly() {
   try { await Keychain.resetGenericPassword({ service: KEYCHAIN_SERVICE }); } catch {}
   try { await Storage.getOrCreateDeviceId(() => ''); } catch {}
   memoizedId = null;
-  if (__DEV__) console.log('[DeviceId] reset (dev only)');
 }

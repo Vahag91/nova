@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, Pressable, ActivityIndicator, Alert, AppState, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Pressable, ActivityIndicator, AppState, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Purchases from 'react-native-purchases';
@@ -37,19 +37,11 @@ const CoinIcon = ({ size = 24, color = '#DA954B' }) => (
   </Svg>
 );
 
-const ArrowRightIcon = ({ size = 18, color = '#FFFFFF' }) => (
-  <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
-    <Path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
-  </Svg>
-);
-
 export default function CoinStore() {
   const navigation = useNavigation();
   const route = useRoute();
   const insets = useSafeAreaInsets();
   const { t, i18n } = useTranslation();
-  const dev = typeof __DEV__ !== 'undefined' && __DEV__;
-  const dlog = useCallback((...args) => { if (!dev) return; try { console.log('[CoinStore]', ...args); } catch {} }, [dev]);
   const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
   const [deviceId, setDeviceId] = useState(null);
   const [sb, setSb] = useState(null);
@@ -57,73 +49,60 @@ export default function CoinStore() {
   const [balance, setBalance] = useState(0);
   const [packs, setPacks] = useState([]);
   const [buying, setBuying] = useState(false);
+  const [processingPackId, setProcessingPackId] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
-        dlog('init start');
         // 1) stable id (RevenueCat is configured globally in SubscriptionContext)
         const id = await ensureDeviceId();
         setDeviceId(id);
-        dlog('deviceId', id);
 
         // Check current RevenueCat app user
         try {
           const rcUserId = (await Purchases.getAppUserID?.()) || '(unknown)';
           const ci = await Purchases.getCustomerInfo?.();
           const original = ci?.originalAppUserId || '(unknown)';
-          dlog('RC appUserID', rcUserId, 'originalAppUserId', original);
           if (rcUserId && id && rcUserId !== id) {
-            dlog('RC/DeviceId MISMATCH', { deviceId: id, rcUserId, originalAppUserId: original });
+            // RC/DeviceId mismatch detected
           }
         } catch (e) {
-          dlog('RC user check error', e?.message || String(e));
+          // RC user check error handled silently
         }
         // Compare RC appUserID with our deviceId to spot mismatch
         try {
           const rcUser = (typeof Purchases.getAppUserID === 'function')
             ? await Purchases.getAppUserID()
             : (await Purchases.getCustomerInfo())?.originalAppUserId;
-          dlog('RC appUserID', rcUser, 'match:', rcUser === id);
+          // RC appUserID match check
         } catch (e) {
-          dlog('getAppUserID/customerInfo error', e?.message || String(e));
+          // getAppUserID/customerInfo error handled silently
         }
 
         // 2) supabase client
         const client = createSbWithDevice(id);
         setSb(client);
-        dlog('supabase client created');
 
         // 3) parallel: balance + offerings (RC already configured by SubscriptionProvider)
         const [bal, offerings] = await Promise.all([
           fetchBalanceByDevice(client, id),
           Purchases.getOfferings(),
         ]);
-        dlog('balance fetched', bal);
         setBalance(bal);
         setCoinsBalance(bal);
         // Select 'coins' offering first; fall back to current
         const allKeys = offerings?.all ? Object.keys(offerings.all) : [];
-        dlog('offerings keys', allKeys, 'current:', offerings?.current?.identifier);
         const coinsOffering = (offerings?.all && offerings.all.coins) || offerings?.current || null;
         const available = Array.isArray(coinsOffering?.availablePackages) ? coinsOffering.availablePackages : [];
-        console.log('[CoinStore] RevenueCat packages', available.map(pkg => ({
-          pkgId: pkg?.identifier,
-          productId: pkg?.product?.identifier,
-          title: pkg?.product?.title,
-          price: pkg?.product?.priceString,
-        })));
 
         setPacks(available);
       } catch (e) {
-        dlog('init error', e?.message || String(e));
         Alert.alert(t('coinStore.alerts.initErrorTitle'), e?.message || t('coinStore.alerts.genericMessage'));
       } finally {
         setLoading(false);
-        dlog('init done');
       }
     })();
-  }, [dlog]);
+  }, []);
 
   const refreshBalance = useCallback(async () => {
     if (!sb || !deviceId) return;
@@ -131,11 +110,10 @@ export default function CoinStore() {
       const bal = await fetchBalanceByDevice(sb, deviceId);
       setBalance(bal);
       setCoinsBalance(bal);
-      dlog('balance refreshed', bal);
     } catch (e) {
-      dlog('refresh balance error', e?.message || String(e));
+      // Refresh balance error handled silently
     }
-  }, [sb, deviceId, dlog]);
+  }, [sb, deviceId]);
 
   const refreshBalanceWithPolling = useCallback(async (tries = 5, delayMs = 1200) => {
     for (let i = 0; i < tries; i++) {
@@ -144,82 +122,72 @@ export default function CoinStore() {
     }
   }, [refreshBalance]);
 
-  const buyPack = useCallback(async (pkg) => {
+  const buyPack = useCallback(async (pkg, packId) => {
     if (!pkg || !deviceId) return;
     setBuying(true);
+    setProcessingPackId(packId || (pkg?.identifier || ''));
     try {
-      const prod = pkg?.product || pkg?.storeProduct;
-      dlog('purchase attempt', { pkgId: pkg?.identifier, productId: prod?.identifier, title: prod?.title, price: prod?.priceString });
-
       // Ensure RC identity matches deviceId before purchasing
       try {
         const current = await Purchases.getAppUserID?.();
         if (current && current !== deviceId) {
-          dlog('forcing RC logIn before purchase', { current, deviceId });
-          try { await Purchases.logIn(String(deviceId)); } catch (err) { dlog('logIn before error', err?.message || String(err)); }
+          try { await Purchases.logIn(String(deviceId)); } catch (err) {}
         }
-      } catch (e) { dlog('pre-purchase userId check error', e?.message || String(e)); }
+      } catch (e) {}
 
       await Purchases.purchasePackage(pkg);
-      dlog('purchase success');
 
       // Re-assert identity after purchase in case SDK flipped to anonymous
       try {
         const after = await Purchases.getAppUserID?.();
-        dlog('RC appUserID after purchase', after);
         if (after && after !== deviceId) {
-          dlog('forcing RC logIn after purchase', { after, deviceId });
-          try { await Purchases.logIn(String(deviceId)); } catch (err) { dlog('logIn after error', err?.message || String(err)); }
+          try { await Purchases.logIn(String(deviceId)); } catch (err) {}
         }
-      } catch {}
-
-      // Re-check and log match state
-      try {
-        const rcUser = (typeof Purchases.getAppUserID === 'function')
-          ? await Purchases.getAppUserID()
-          : (await Purchases.getCustomerInfo())?.originalAppUserId;
-        dlog('RC appUserID (post-purchase)', rcUser, 'match:', rcUser === deviceId);
       } catch {}
 
       refreshBalanceWithPolling(); // webhook credits
       Alert.alert(t('coinStore.alerts.successTitle'), t('coinStore.alerts.successMessage'));
     } catch (e) {
       if (e && e.userCancelled) return;
-      dlog('purchase failed', e?.message || String(e));
       Alert.alert(t('coinStore.alerts.purchaseFailedTitle'), (e && e.message) || t('coinStore.alerts.unknownError'));
     } finally {
       setBuying(false);
+      setProcessingPackId(null);
     }
-  }, [refreshBalanceWithPolling, deviceId, dlog]);
+  }, [refreshBalanceWithPolling, deviceId]);
 
   useEffect(() => {
     const sub = AppState.addEventListener('change', s => {
-      dlog('AppState', s);
       if (s === 'active') refreshBalance();
     });
     return () => sub.remove();
-  }, [refreshBalance, dlog]);
+  }, [refreshBalance]);
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: UI.bg }]} edges={['top', 'left', 'right']}>
-      {/* Header */}
-      <View style={[styles.header, { paddingTop: Math.max(insets.top, 6) }]}>
-        <Pressable
-          onPress={() => {
-            const ret = route?.params?.returnTo;
-            if (ret && ret.route) {
-              if (ret.screen) navigation.navigate(ret.route, { screen: ret.screen });
-              else navigation.navigate(ret.route);
-            } else {
-              navigation.goBack();
-            }
-          }}
-          style={styles.headerBtn}
-        >
-          <SvgIcon name="close" size={22} color={UI.textMuted} />
-        </Pressable>
-        <Text style={styles.headerTitle}>{t('coinStore.title')}</Text>
-        <View style={styles.headerSpacer} />
+    <View style={[styles.container, { backgroundColor: UI.bg }]}>
+      {/* Header - Fixed at top */}
+      <View style={[styles.headerWrapper, { paddingTop: insets.top }]}>
+        <View style={styles.header}>
+          <Pressable
+            onPress={() => {
+              const ret = route?.params?.returnTo;
+              if (ret && ret.route) {
+                if (ret.screen) navigation.navigate(ret.route, { screen: ret.screen });
+                else navigation.navigate(ret.route);
+              } else {
+                navigation.goBack();
+              }
+            }}
+            style={styles.headerBtn}
+            hitSlop={8}
+          >
+            <SvgIcon name="close" size={22} color={UI.textMuted} />
+          </Pressable>
+          <Text style={styles.headerTitle} numberOfLines={1}>
+            {t('coinStore.title')}
+          </Text>
+          <View style={styles.headerBtn} />
+        </View>
       </View>
 
       {loading ? (
@@ -228,7 +196,11 @@ export default function CoinStore() {
           <Text style={styles.loadingHint}>{t('coinStore.loading')}</Text>
         </View>
       ) : (
-        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <ScrollView 
+          style={styles.scrollView}
+          contentContainerStyle={styles.scrollContent} 
+          showsVerticalScrollIndicator={false}
+        >
           {/* Balance Section (no card) */}
           <View style={styles.balanceTextBlock}>
             <Text style={styles.balanceLabel}>{t('coinStore.balanceLabel')}</Text>
@@ -239,14 +211,11 @@ export default function CoinStore() {
                 return template.replace('{{amount}}', formattedAmount);
               })()}
             </Text>
-            <Pressable onPress={() => Alert.alert(t('coinStore.history.alertTitle'), t('coinStore.history.alertBody'))}>
-              <Text style={styles.historyLink}>{t('coinStore.history.link')}</Text>
-            </Pressable>
           </View>
 
           {/* Packs */}
           <View style={styles.packsList}>
-            {packs.length === 0 ? (
+              {packs.length === 0 ? (
               <Text style={styles.muted}>{t('coinStore.noPacks')}</Text>
             ) : (
               packs.map((p, idx) => {
@@ -261,28 +230,34 @@ export default function CoinStore() {
                 const tint = variant === 0 ? UI.purple : variant === 1 ? UI.blue : UI.green;
                 const badgeText = variant === 0 ? t('coinStore.badges.basic') : variant === 1 ? t('coinStore.badges.popular') : t('coinStore.badges.value');
                 const subtitleStyle = variant === 1 ? styles.packSubtitleBlue : styles.packSubtitleDefault;
-                const tokensLabel = amount
+                const creditsLabel = amount
                   ? (() => {
-                      const formattedTokens = Number(amount).toLocaleString(getLocaleForNumberFormatting(i18n.language));
-                      const template = t('coinStore.pack.tokensLabel', { defaultValue: '{{tokens}} トークン' });
-                      return template.replace('{{tokens}}', formattedTokens);
+                      const formattedCredits = Number(amount).toLocaleString(getLocaleForNumberFormatting(i18n.language));
+                      const template = t('coinStore.pack.creditsLabel', { defaultValue: '{{credits}} credits' });
+                      return template.replace('{{credits}}', formattedCredits);
                     })()
                   : fallbackTitle;
                 const priceLabel = price || t('coinStore.pack.unknownPrice');
+                const packId = key;
+                const isProcessing = buying && processingPackId === packId;
                 return (
-                  <Pressable key={key} onPress={() => buyPack(p)} disabled={buying}
+                  <Pressable key={key} onPress={() => buyPack(p, packId)} disabled={buying}
                     style={[styles.packCard, styles.packCardSurface]}>
 
                     <View style={styles.packRow}>
                       <View style={styles.packLeft}>
                         <CoinIcon size={22} />
                         <View style={styles.packTextWrap}>
-                          <Text style={styles.packTitle}>{tokensLabel}</Text>
+                          <Text style={styles.packTitle}>{creditsLabel}</Text>
                           <Text style={subtitleStyle}>{badgeText}</Text>
                         </View>
                       </View>
                       <View style={[styles.pricePill, styles.pricePillDark]}>
-                        <Text style={[styles.priceText, { color: tint }]}>{priceLabel}</Text>
+                        {isProcessing ? (
+                          <ActivityIndicator size="small" color={tint} />
+                        ) : (
+                          <Text style={[styles.priceText, { color: tint }]}>{priceLabel}</Text>
+                        )}
                       </View>
                     </View>
                   </Pressable>
@@ -291,47 +266,45 @@ export default function CoinStore() {
             )}
           </View>
 
-          {/* Premium CTA */}
-          <Pressable onPress={() => navigation.navigate('PaywallScreen', { returnTo: 'CoinStore' })} style={[styles.premiumCard, { borderColor: UI.border10, backgroundColor: UI.surface }]}>
-            <View style={styles.premiumRow}>
-              <View>
-                <Text style={styles.premiumTitle}>{t('coinStore.premium.title')}</Text>
-                <Text style={styles.premiumSubtitle}>{t('coinStore.premium.subtitle')}</Text>
-              </View>
-              <View style={[styles.upgradePill, { backgroundColor: UI.primary }]}>
-                <Text style={styles.upgradePillText}>{t('coinStore.premium.cta')}</Text>
-                <ArrowRightIcon size={18} color={UI.white} />
-              </View>
-            </View>
-          </Pressable>
-
-          <Text style={styles.termsText}>
-            {t('coinStore.termsText')} <Text style={styles.underline}>{t('coinStore.termsLink')}</Text>.
-          </Text>
-
           <View style={styles.spacer28} />
         </ScrollView>
       )}
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  // Removed negative margin to avoid top gap under full-screen modal
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16 },
+  headerWrapper: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+    backgroundColor: UI.bg,
+  },
+  // Header fixed at top
+  header: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between', 
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    width: '100%',
+    backgroundColor: UI.bg,
+  },
   headerBtn: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
-  headerTitle: { color: '#FFFFFF', fontSize: 18, fontWeight: '600' },
+  headerTitle: { color: '#FFFFFF', fontSize: 18, fontWeight: '600', flex: 1, textAlign: 'center' },
   headerSpacer: { width: 40, height: 40 },
-  scrollContent: { padding: 16, paddingTop: 10 },
+  scrollView: { flex: 1 },
+  scrollContent: { padding: 16, paddingTop: 70, flexGrow: 1, justifyContent: 'center' },
   centerBox: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   muted: { color: UI.textMuted },
   loadingHint: { color: UI.textMuted, marginTop: 8 },
   // Balance (plain section)
   balanceTextBlock: { alignItems: 'center', marginBottom: 16 },
-  balanceLabel: { color: UI.textMuted, fontWeight: '500', fontSize: 12 },
-  balanceBig: { color: UI.text, fontSize: 36, fontWeight: '900', marginTop: 6 },
-  historyLink: { marginTop: 6, color: withAlpha(UI.primary, 0.8), textDecorationLine: 'underline', textAlign: 'center', fontSize: 12 },
+  balanceLabel: { color: UI.textMuted, fontWeight: '500', fontSize: 16 },
+  balanceBig: { color: UI.text, fontSize: 36, fontWeight: '900', marginTop: 10 },
 
   packsList: { gap: 12 },
   packCard: { borderWidth: 1, borderRadius: 24, padding: 20, overflow: 'hidden', shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 12, shadowOffset: { width: 0, height: 4 } },
@@ -349,14 +322,6 @@ const styles = StyleSheet.create({
   cardOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
   iconBubble: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
 
-  premiumCard: { marginTop: 16, borderRadius: 24, padding: 20, borderWidth: 1 },
-  premiumRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  premiumTitle: { color: UI.text, fontSize: 20, fontWeight: '800' },
-  premiumSubtitle: { color: UI.textMuted, fontSize: 13, marginTop: 4 },
-  upgradePill: { flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 },
-  upgradePillText: { color: UI.white, fontWeight: '700' },
-  termsText: { color: UI.textMuted, fontSize: 12, textAlign: 'center', marginTop: 12 },
-  underline: { textDecorationLine: 'underline', color: UI.textMuted },
   spacer28: { height: 28 },
 });
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {
@@ -32,8 +32,8 @@ import History from '../screens/HistorySimple';
 import Assistants from '../screens/Assistants';
 import Settings from '../screens/Settings.jsx';
 import StudioStack from './StudioStack';
-import CoinStore from '../screens/CoinStore.jsx';
 import PaywallScreen from '../components/PaywallScreen';
+import OneTimeOfferScreen from '../screens/OneTimeOfferScreen';
 import ModelSelector from '../components/ModelSelector';
 import SvgIcon from '../components/SvgIcon';
 import CustomDrawerContent from './CustomDrawerContent';
@@ -43,8 +43,23 @@ import { colors } from '../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { PRESETS, PRESET_AVATARS } from '../data/presets';
 import NetInfo from '@react-native-community/netinfo';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SubscriptionContext } from '../context/SubscriptionContext';
+import { navigationRef, isNavigationReadyRef } from './rootNavigation';
+import { ONE_TIME_OFFER_KEY } from '../constants/storageKeys';
 
 const Drawer = createDrawerNavigator();
+
+function isSameDay(timestampA, timestampB) {
+  if (!timestampA || !timestampB) return false;
+  const a = new Date(timestampA);
+  const b = new Date(timestampB);
+  return (
+    a.getUTCFullYear() === b.getUTCFullYear() &&
+    a.getUTCMonth() === b.getUTCMonth() &&
+    a.getUTCDate() === b.getUTCDate()
+  );
+}
 
 // Header center component for model dropdown or assistant switcher
 function ChatHeaderCenter() {
@@ -158,7 +173,6 @@ function ChatHeaderCenter() {
       setActiveThread(nextThread.id);
       navigation.navigate('Chat');
     } catch (error) {
-      console.warn('assistant switch failed', error);
       Alert.alert(
         t('assistants.errorTitle') || 'Something went wrong',
         t('assistants.errorMessage') || 'Could not start this assistant.'
@@ -225,22 +239,19 @@ function ChatHeaderCenter() {
 
   const keyExtractor = useCallback(item => item.id, []);
 
-  if (!isAssistantChat) {
-    return <ModelSelector />;
-  }
-
-  const assistantPhoto = preset?.avatar || PRESET_AVATARS[0];
-  const translatedName = currentPresetId
-    ? t(`assistants.presets.${currentPresetId}.name`, { defaultValue: preset?.name })
-    : null;
-  const displayName = translatedName || activeThread?.title || t('assistants.defaultTitle', 'Assistant');
-
-  // Offline indicator
+  // Offline indicator state is declared unconditionally so hooks order stays stable
   const [isOffline, setIsOffline] = useState(false);
   const offlineOpacity = useSharedValue(0);
   const offlineScale = useSharedValue(0.8);
 
   useEffect(() => {
+    if (!isAssistantChat) {
+      setIsOffline(false);
+      offlineOpacity.value = 0;
+      offlineScale.value = 0.8;
+      return undefined;
+    }
+
     const unsubscribe = NetInfo.addEventListener(state => {
       const offline = !(state.isConnected && state.isInternetReachable);
       setIsOffline(offline);
@@ -257,12 +268,22 @@ function ChatHeaderCenter() {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [isAssistantChat, offlineOpacity, offlineScale]);
 
   const offlineStyle = useAnimatedStyle(() => ({
     opacity: offlineOpacity.value,
     transform: [{ scale: offlineScale.value }],
   }));
+
+  if (!isAssistantChat) {
+    return <ModelSelector />;
+  }
+
+  const assistantPhoto = preset?.avatar || PRESET_AVATARS[0];
+  const translatedName = currentPresetId
+    ? t(`assistants.presets.${currentPresetId}.name`, { defaultValue: preset?.name })
+    : null;
+  const displayName = translatedName || activeThread?.title || t('assistants.defaultTitle', 'Assistant');
 
   return (
     <>
@@ -401,10 +422,60 @@ function HistoryHeaderRight({ navigation }) {
   );
 }
 
-export default function DrawerNavigator() {
+export default function DrawerNavigator({ onNavigationReady }) {
   const { t } = useTranslation();
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
+  const subscriptionReady = !!subscription?.subscriptionReady;
+  const [navReady, setNavReady] = useState(false);
+  const [oneTimeOfferChecked, setOneTimeOfferChecked] = useState(false);
+  const [currentRouteName, setCurrentRouteName] = useState(null);
+
+  useEffect(() => {
+    if (!navReady || !subscriptionReady || isPremium || oneTimeOfferChecked) return;
+    const blockedRoutes = new Set(['PaywallScreen', 'OneTimeOfferScreen']);
+    if (blockedRoutes.has(currentRouteName)) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const last = await AsyncStorage.getItem(ONE_TIME_OFFER_KEY);
+        const now = Date.now();
+        const lastTs = last ? Number(last) : 0;
+        const shouldShow = !lastTs || !isSameDay(lastTs, now);
+
+        if (shouldShow && navigationRef?.isReady()) {
+          navigationRef.navigate('OneTimeOfferScreen');
+          await AsyncStorage.setItem(ONE_TIME_OFFER_KEY, String(now));
+        }
+      } catch (error) {
+        // Silent fail
+      } finally {
+        if (!cancelled) {
+          setOneTimeOfferChecked(true);
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [navReady, isPremium, subscriptionReady, oneTimeOfferChecked, currentRouteName]);
+
   return (
-    <NavigationContainer>
+      <NavigationContainer
+        ref={navigationRef}
+        onReady={() => {
+          isNavigationReadyRef.current = true;
+          setNavReady(true);
+          const routeName = navigationRef.getCurrentRoute()?.name || null;
+          setCurrentRouteName(routeName);
+          onNavigationReady?.(true);
+        }}
+        onStateChange={() => {
+          const routeName = navigationRef.getCurrentRoute()?.name || null;
+          setCurrentRouteName(routeName);
+        }}
+      >
       <Drawer.Navigator
         initialRouteName="Chat"
         drawerContent={(props) => <CustomDrawerContent {...props} />}
@@ -492,9 +563,7 @@ export default function DrawerNavigator() {
             return (
               <PaywallScreen
                 onClose={goBackSafe}
-                onRestore={() => {
-                  console.log('Restore pressed');
-                }}
+                onRestore={() => {}}
                 onContinue={goBackSafe}
               />
             );
@@ -502,6 +571,16 @@ export default function DrawerNavigator() {
           options={{
             headerShown: false,
             title: 'Paywall',
+            drawerItemStyle: { display: 'none' },
+            swipeEnabled: false,
+          }}
+        />
+        <Drawer.Screen
+          name="OneTimeOfferScreen"
+          component={OneTimeOfferScreen}
+          options={{
+            headerShown: false,
+            title: 'One-Time Offer',
             drawerItemStyle: { display: 'none' },
             swipeEnabled: false,
           }}

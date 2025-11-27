@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Easing,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import SvgIcon from '../SvgIcon';
@@ -197,55 +198,62 @@ const ModelMenu = memo(({ visible, onClose, model, onModelChange, imageModels = 
             <Text style={styles.title}>{t('modelSelector.title')}</Text>
           </View>
           
-          {safeModels.map((m, idx) => {
-            const isSelected = m.key === model;
-            const visuals = getModelVisuals(m.provider, m.key);
-            const descriptor = visuals.tagline || formatModelProvider(m.provider);
-            const cost = getImageModelPrice(m.key);
-            const last = idx === safeModels.length - 1;
-            return (
-              <Pressable
-                key={m.key}
-                onPress={() => onSelect(m.key)}
-                style={[
-                  styles.item,
-                  isSelected && styles.itemSelected,
-                  last && styles.itemLast,
-                ]}
-                accessibilityRole="button"
-                accessibilityState={{ selected: isSelected }}
-              >
-                {/* Left section: icon + name + descriptor */}
-                <View style={styles.rowLeft}>
-                  <SvgIcon name={visuals.icon} size={28} color="#FFFFFF" />
-                  <View style={styles.itemText}>
-                    <Text
-                      numberOfLines={1}
-                      style={[styles.itemLabel, isSelected && styles.itemLabelSelected]}
-                    >
-                      {m.display?.name || m.key}
-                    </Text>
-                    <Text numberOfLines={1} style={styles.itemProvider}>
-                      {descriptor}
-                    </Text>
+          <ScrollView 
+            style={styles.scrollView}
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}
+            nestedScrollEnabled={true}
+          >
+            {safeModels.map((m, idx) => {
+              const isSelected = m.key === model;
+              const visuals = getModelVisuals(m.provider, m.key);
+              const descriptor = visuals.tagline || formatModelProvider(m.provider);
+              const cost = getImageModelPrice(m.key);
+              const last = idx === safeModels.length - 1;
+              return (
+                <Pressable
+                  key={m.key}
+                  onPress={() => onSelect(m.key)}
+                  style={[
+                    styles.item,
+                    isSelected && styles.itemSelected,
+                    last && styles.itemLast,
+                  ]}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: isSelected }}
+                >
+                  {/* Left section: icon + name + descriptor */}
+                  <View style={styles.rowLeft}>
+                    <SvgIcon name={visuals.icon} size={28} color="#FFFFFF" />
+                    <View style={styles.itemText}>
+                      <Text
+                        numberOfLines={1}
+                        style={[styles.itemLabel, isSelected && styles.itemLabelSelected]}
+                      >
+                        {m.display?.name || m.key}
+                      </Text>
+                      <Text numberOfLines={2} style={styles.itemProvider}>
+                        {descriptor}
+                      </Text>
+                    </View>
                   </View>
-                </View>
 
-                {/* Right section: coin pill + check (aligned) */}
-                <View style={styles.rowRight}>
-                  <View style={styles.coinPill}>
-                    <Svg height={12} width={12} viewBox="0 -960 960 960" fill="#FF9500">
-                      <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
-                    </Svg>
-                    <Text style={styles.coinPillText}>{cost}</Text>
+                  {/* Right section: coin pill + check (aligned) */}
+                  <View style={styles.rowRight}>
+                    <View style={styles.coinPill}>
+                      <Svg height={12} width={12} viewBox="0 -960 960 960" fill="#FF9500">
+                        <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
+                      </Svg>
+                      <Text style={styles.coinPillText}>{cost}</Text>
+                    </View>
+                    <View style={styles.checkWrap}>
+                      <SvgIcon name="check" size={22} color={isSelected ? '#FFFFFF' : 'transparent'} />
+                    </View>
                   </View>
-                  <View style={styles.checkWrap}>
-                    <SvgIcon name="check" size={22} color={isSelected ? '#FFFFFF' : 'transparent'} />
-                  </View>
-                </View>
-              </Pressable>
-            );
-          })}
+                </Pressable>
+              );
+            })}
+          </ScrollView>
         </View>
       </Animated.View>
     </Modal>
@@ -300,22 +308,28 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
   },
 
+  scrollView: {
+    flexGrow: 0,
+  },
+  scrollContent: {
+    paddingBottom: 4,
+  },
   item: {
     minHeight: ITEM_HEIGHT,
     paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: 12,
+    gap: 8,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: 'rgba(255,255,255,0.08)',
   },
   rowLeft: { flexDirection: 'row', alignItems: 'center', gap: 12, flexShrink: 1, flexGrow: 1 },
-  rowRight: { flexDirection: 'row', alignItems: 'center', gap: 10, marginLeft: 10 },
+  rowRight: { flexDirection: 'row', alignItems: 'center', gap: 10, marginLeft: 10, flexShrink: 0 },
   itemSelected: {},
   itemLast: { borderBottomWidth: 0 },
-  itemText: { flex: 1, gap: 2 },
+  itemText: { flex: 1, justifyContent: 'center', gap: 1 },
   itemLabel: {
     color: '#F4F6FD',
     fontSize: 15,
@@ -330,6 +344,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
     fontFamily: 'Lato-Regular',
     marginRight: 8,
+    lineHeight: 15,
+    padding:1,
+    marginBottom:4
   },
   coinPill: {
     minWidth: 56,

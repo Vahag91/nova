@@ -19,7 +19,6 @@ import { colors } from '../styles/colors';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
-import { APP_VERSION } from '../config/appInfo';
 
 const LINKS = {
   privacy: 'https://aicloudsolutions.app/privacy',
@@ -100,8 +99,9 @@ export default function Settings() {
   }, [t]);
 
   const handleUpgrade = useCallback(() => {
+    if (isPremium) return;
     navigation.navigate('PaywallScreen', { returnTo: 'Settings' });
-  }, [navigation]);
+  }, [isPremium, navigation]);
 
   const handleRestore = useCallback(async () => {
     if (!restorePurchases) return;
@@ -136,7 +136,7 @@ export default function Settings() {
               await clearThreads?.();
               await useSettingsStore.getState().reset();
             } catch (error) {
-              console.warn('[Settings] reset failed', error?.message || error);
+              // Reset error handled silently
             }
           },
         },
@@ -258,40 +258,34 @@ export default function Settings() {
         contentContainerStyle={[styles.content, { paddingBottom: Math.max(insets.bottom, 24) }]}
         showsVerticalScrollIndicator={false}
       >
-        <Pressable style={styles.heroCard} onPress={handleUpgrade}>
-          <View pointerEvents="none" style={styles.heroAccentCircleLarge} />
-          <View pointerEvents="none" style={styles.heroAccentCircleSmall} />
-          <View style={styles.heroCopy}>
-            <Text style={styles.heroLabel}>{t('settings.hero.label')}</Text>
-            <Text style={styles.heroTitle}>{t('settings.hero.title')}</Text>
-            <Pressable
-              style={styles.heroButton}
-              onPress={(event) => {
-                event?.stopPropagation?.();
-                handleUpgrade();
-              }}
-            >
-              <Text style={styles.heroButtonText}>
-                {isPremium ? t('settings.hero.manage') : t('settings.hero.upgrade')}
-              </Text>
-            </Pressable>
-          </View>
-          <View style={styles.heroIconTile} />
-        </Pressable>
+        {!isPremium ? (
+          <Pressable style={styles.heroCard} onPress={handleUpgrade}>
+            <View pointerEvents="none" style={styles.heroAccentCircleLarge} />
+            <View pointerEvents="none" style={styles.heroAccentCircleSmall} />
+            <View style={styles.heroCopy}>
+              <Text style={styles.heroLabel}>{t('settings.hero.label')}</Text>
+              <Text style={styles.heroTitle}>{t('settings.hero.title')}</Text>
+              <Pressable
+                style={styles.heroButton}
+                onPress={(event) => {
+                  event?.stopPropagation?.();
+                  handleUpgrade();
+                }}
+              >
+                <Text style={styles.heroButtonText}>
+                  {t('settings.hero.upgrade')}
+                </Text>
+              </Pressable>
+            </View>
+            <View style={styles.heroIconTile} />
+          </Pressable>
+        ) : null}
 
         <Section title={t('settings.sections.premium')}>{renderSectionRows(premiumItems)}</Section>
 
         <Section title={t('settings.sections.data')}>{renderSectionRows(dataItems)}</Section>
 
         <Section title={t('settings.sections.support')}>{renderSectionRows(supportItems)}</Section>
-
-        <Text style={styles.versionLabel}>
-          {(() => {
-            const statusText = isPremium ? t('settings.versionPremiumSuffix', { defaultValue: ' · Premium' }) : '';
-            const template = t('settings.version', { defaultValue: 'Version {{version}}{{status}}' });
-            return template.replace('{{version}}', APP_VERSION).replace('{{status}}', statusText);
-          })()}
-        </Text>
       </ScrollView>
     </SafeAreaView>
   );

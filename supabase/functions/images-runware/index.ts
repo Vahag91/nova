@@ -209,23 +209,41 @@ Deno.serve(async (req)=>{
   try {
     body = await req.json();
   } catch  {
-    return new Response(JSON.stringify({ error: 'bad_request', message: 'Image generation failed' }), {
+    return new Response(JSON.stringify({
+      error: 'bad_request',
+      message: 'Image generation failed'
+    }), {
       status: 400,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   const deviceId = String(body?.deviceId || req.headers.get('x-device-id') || req.headers.get('x-client-id') || "").trim();
   if (!deviceId) {
-    return new Response(JSON.stringify({ error: 'bad_request', message: 'Image generation failed' }), {
+    return new Response(JSON.stringify({
+      error: 'bad_request',
+      message: 'Image generation failed'
+    }), {
       status: 400,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   const jobIdRaw = String(body?.jobId || "").trim();
   if (!UUID_RE.test(jobIdRaw)) {
-    return new Response(JSON.stringify({ error: 'bad_request', message: 'Image generation failed' }), {
+    return new Response(JSON.stringify({
+      error: 'bad_request',
+      message: 'Image generation failed'
+    }), {
       status: 400,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   const jobUUID = jobIdRaw;
@@ -241,17 +259,29 @@ Deno.serve(async (req)=>{
   // Use the resolved model + size validation
   const resolvedModelKey = resolveModelKey(modelKey);
   if (!resolvedModelKey) {
-    return new Response(JSON.stringify({ error: 'invalid_model', message: 'Image generation failed' }), {
+    return new Response(JSON.stringify({
+      error: 'invalid_model',
+      message: 'Image generation failed'
+    }), {
       status: 400,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   const coinsEstimate = coinsForModel(selectedModelKey, resolvedModelKey);
   const sizeParam = String(body?.size || '1024x1024').trim();
   const m = sizeParam.match(/^(\d+)x(\d+)$/);
-  if (!m) return new Response(JSON.stringify({ error: 'invalid_size', message: 'Image generation failed' }), {
+  if (!m) return new Response(JSON.stringify({
+    error: 'invalid_size',
+    message: 'Image generation failed'
+  }), {
     status: 400,
-    headers: { ...CORS, 'Content-Type': 'application/json' }
+    headers: {
+      ...CORS,
+      'Content-Type': 'application/json'
+    }
   });
   let width = parseInt(m[1], 10);
   let height = parseInt(m[2], 10);
@@ -290,9 +320,15 @@ Deno.serve(async (req)=>{
       if (selectedModelKey?.includes?.('flux') || modelKey.includes('flux')) return '1536x1024, 1024x1536, 1280x1280';
       return '1024x1024';
     })();
-    return new Response(JSON.stringify({ error: 'size_exceeded', message: 'Image generation failed' }), {
+    return new Response(JSON.stringify({
+      error: 'size_exceeded',
+      message: 'Image generation failed'
+    }), {
       status: 400,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   const requestedStepsRaw = Number(body?.steps);
@@ -304,9 +340,15 @@ Deno.serve(async (req)=>{
   const cfg = Number.isFinite(requestedCfgRaw) ? requestedCfgRaw : 9;
   // Build tasks (keep ONLY text2img & img2img)
   if (mode === 'text2img' && !prompt) {
-    return new Response(JSON.stringify({ error: 'bad_request', message: 'Image generation failed' }), {
+    return new Response(JSON.stringify({
+      error: 'bad_request',
+      message: 'Image generation failed'
+    }), {
       status: 400,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   const headers = {
@@ -325,9 +367,15 @@ Deno.serve(async (req)=>{
   const refs = Array.isArray(body?.referenceImages) ? body.referenceImages.filter((ref)=>typeof ref === 'string' && ref.trim().length) : [];
   if (mode === 'img2img' || isFriendlyQwen && refs.length) {
     if (!refs.length) {
-      return new Response(JSON.stringify({ error: 'bad_request', message: 'Image generation failed' }), {
+      return new Response(JSON.stringify({
+        error: 'bad_request',
+        message: 'Image generation failed'
+      }), {
         status: 400,
-        headers: { ...CORS, 'Content-Type': 'application/json' }
+        headers: {
+          ...CORS,
+          'Content-Type': 'application/json'
+        }
       });
     }
     const processedRefs = [];
@@ -485,8 +533,8 @@ Deno.serve(async (req)=>{
       task.CFGScale = cfg;
       task.outputFormat = body?.outputFormat ?? 'JPG';
       // Enforce provider-side NSFW checks for FLUX/Krea text2img
-      if ((selectedModelKey?.includes('flux') || selectedModelKey?.includes('krea')) && !(task as any).checkNSFW) {
-        (task as any).checkNSFW = true;
+      if ((selectedModelKey?.includes('flux') || selectedModelKey?.includes('krea')) && !task.checkNSFW) {
+        task.checkNSFW = true;
       }
     }
     if (body?.advancedFeatures && typeof body.advancedFeatures === 'object') {
@@ -533,7 +581,7 @@ Deno.serve(async (req)=>{
         job_id: null
       });
     } catch (refundError) {
-      // swallow
+    // swallow
     }
   };
   const tasks = [
@@ -567,9 +615,15 @@ Deno.serve(async (req)=>{
       }
       // If it's a client error (4xx) or we're out of retries, refund and return error
       await refundCoins();
-      return new Response(JSON.stringify({ error: 'generation_failed', message: 'Image generation failed' }), {
+      return new Response(JSON.stringify({
+        error: 'generation_failed',
+        message: 'Image generation failed'
+      }), {
         status: resp.status,
-        headers: { ...CORS, 'Content-Type': 'application/json' }
+        headers: {
+          ...CORS,
+          'Content-Type': 'application/json'
+        }
       });
     } catch (error) {
       lastError = error;
@@ -578,17 +632,29 @@ Deno.serve(async (req)=>{
         continue;
       }
       await refundCoins();
-      return new Response(JSON.stringify({ error: 'generation_failed', message: 'Image generation failed' }), {
+      return new Response(JSON.stringify({
+        error: 'generation_failed',
+        message: 'Image generation failed'
+      }), {
         status: 502,
-        headers: { ...CORS, 'Content-Type': 'application/json' }
+        headers: {
+          ...CORS,
+          'Content-Type': 'application/json'
+        }
       });
     }
   }
   if (!resp || !resp.ok) {
     await refundCoins();
-    return new Response(JSON.stringify({ error: 'generation_failed', message: 'Image generation failed' }), {
-      status: (lastError as any)?.status || 502,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+    return new Response(JSON.stringify({
+      error: 'generation_failed',
+      message: 'Image generation failed'
+    }), {
+      status: lastError?.status || 502,
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   // Expected shape:
@@ -597,41 +663,53 @@ Deno.serve(async (req)=>{
   try {
     json = await resp.json();
   } catch (e) {
-    return new Response(JSON.stringify({ error: 'generation_failed', message: 'Image generation failed' }), {
+    return new Response(JSON.stringify({
+      error: 'generation_failed',
+      message: 'Image generation failed'
+    }), {
       status: 502,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   // Treat Google/Gemini provider filtering as restricted content (refund, no images)
-  const providerErrors: any[] = Array.isArray((json as any)?.errors) ? (json as any).errors : [];
-  const googleFiltered = selectedModelKey === 'google:4@1' && providerErrors.some((e: any) => {
+  const providerErrors = Array.isArray(json?.errors) ? json.errors : [];
+  const googleFiltered = selectedModelKey === 'google:4@1' && providerErrors.some((e)=>{
     const msg = String(e?.message || e?.responseContent || '').toLowerCase();
     return e?.code === 'invalidProviderResponse' && (msg.includes('filtered out') || msg.includes('responsible ai'));
   });
   if (googleFiltered) {
     await refundCoins();
-    return new Response(
-      JSON.stringify({
-        error: 'restricted_content',
-        userMessage: 'Restricted content blocked by safety filters. No coins were charged.',
-        refund: true,
-      }),
-      { status: 403, headers: { ...CORS, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({
+      error: 'restricted_content',
+      userMessage: 'Restricted content blocked by safety filters. No coins were charged.',
+      refund: true
+    }), {
+      status: 403,
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
+    });
   }
   const data = Array.isArray(json?.data) ? json.data : [];
   // Detect provider NSFW flags (FLUX/Krea return NSFWContent boolean)
-  const nsfwFlag = data.some((d: any) => d?.NSFWContent === true || d?.nsfw === true || d?.nsfw_flag === true || (d?.safety && (d.safety.nsfw === true || d.safety.isAdult === true)));
+  const nsfwFlag = data.some((d)=>d?.NSFWContent === true || d?.nsfw === true || d?.nsfw_flag === true || d?.safety && (d.safety.nsfw === true || d.safety.isAdult === true));
   if (nsfwFlag) {
     await refundCoins();
-    return new Response(
-      JSON.stringify({
-        error: 'restricted_content',
-        userMessage: 'Restricted content blocked by safety filters. No coins were charged.',
-        refund: true,
-      }),
-      { status: 403, headers: { ...CORS, 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({
+      error: 'restricted_content',
+      userMessage: 'Restricted content blocked by safety filters. No coins were charged.',
+      refund: true
+    }), {
+      status: 403,
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
+    });
   }
   const images = data.map((d, i)=>{
     const url = d?.imageURL || d?.imageUrl || ""; // primary path
@@ -644,9 +722,15 @@ Deno.serve(async (req)=>{
     } : null;
   }).filter(Boolean);
   if (!images.length) {
-    return new Response(JSON.stringify({ error: 'generation_failed', message: 'Image generation failed' }), {
+    return new Response(JSON.stringify({
+      error: 'generation_failed',
+      message: 'Image generation failed'
+    }), {
       status: 502,
-      headers: { ...CORS, 'Content-Type': 'application/json' }
+      headers: {
+        ...CORS,
+        'Content-Type': 'application/json'
+      }
     });
   }
   return new Response(JSON.stringify({

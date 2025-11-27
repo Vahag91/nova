@@ -303,10 +303,7 @@ export class SSEClient {
   }
 
   _log(...args) {
-    if (this.opts.log) {
-      // eslint-disable-next-line no-console
-      console.log('[SSE]', ...args);
-    }
+    // Logging disabled for production
   }
 }
 

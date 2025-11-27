@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "โมเดลที่ล้ำหน้าที่สุดของ Google",
     "gemini-2.0-flash": "Google AI ที่เร็วและแม่นยำ"
   },
+  "modelDescriptions": {
+    "most_powerful": "โมเดล AI ทรงพลังที่สุด",
+    "fast_everyday": "เร็ว เหมาะกับงานประจำวัน",
+    "fast_reasoning": "โมเดลเร็วพร้อมการให้เหตุผลที่ดี",
+    "great_reasoning": "โมเดลให้เหตุผลขั้นสูง",
+    "coding_reasoning": "การเขียนโค้ดและการให้เหตุผลขั้นสูง",
+    "better_coding": "ดีกว่าสำหรับการเขียนโค้ดและการให้เหตุผล",
+    "best_overall": "โมเดล AI อเนกประสงค์ที่ดีที่สุด",
+    "best_google": "โมเดลที่ดีที่สุดของ Google",
+    "best_xai": "โมเดล xAI ที่ทรงพลังที่สุด",
+    "creative_focus": "ยอดเยี่ยมสำหรับการเขียนเชิงสร้างสรรค์",
+    "code_helper": "ยอดเยี่ยมสำหรับความช่วยเหลือในการเขียนโค้ด",
+    "chat_focus": "ปรับให้เหมาะกับแชท",
+    "long_context": "ยอดเยี่ยมสำหรับบริบทที่ยาว",
+    "budget_friendly": "โมเดล AI ที่เป็นมิตรกับงบประมาณ",
+    "ultra_fast": "การตอบสนองที่เร็วมาก",
+    "safe_default": "ตัวเลือกเริ่มต้นที่ปลอดภัย",
+    "multilingual": "การสนับสนุนหลายภาษาที่แข็งแกร่ง",
+    "vision_strong": "ยอดเยี่ยมกับรูปภาพและการมองเห็น",
+    "data_analysis": "ดีสำหรับการวิเคราะห์ข้อมูล",
+    "structured_tasks": "ดีสำหรับงานที่มีโครงสร้าง",
+    "everyday_helper": "โมเดลผู้ช่วยประจำวัน",
+    "concise_answers": "คำตอบสั้นกระชับ",
+    "detailed_answers": "คำตอบโดยละเอียดทีละขั้นตอน",
+    "experimental": "โมเดลทดลองรุ่นใหม่",
+    "reliable_classic": "โมเดลคลาสสิกที่เชื่อถือได้",
+    "lightweight": "โมเดลน้ำหนักเบาต้นทุนต่ำ",
+    "chatty_personal": "เป็นมิตรและเป็นส่วนตัวมากขึ้น",
+    "pro_users": "ดีที่สุดสำหรับผู้ใช้ระดับมืออาชีพ",
+    "research_helper": "ดีสำหรับการวิจัยและบันทึก",
+    "reasoning_strong": "โมเดลให้เหตุผลขั้นสูง"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "โปรดรอ…",
     "processing": "กำลังประมวลผล...",
     "tapToUploadImage": "แตะเพื่ออัปโหลดภาพ",
-    "camera": "กล้อง",
+    "camera": "อัปโหลดภาพ",
     "library": "คลังภาพ",
     "enterPrompt": "กรุณาใส่พรอมพ์เพื่อสร้างภาพจากข้อความ",
     "openInBrowser": "เปิดในเบราว์เซอร์",
@@ -215,8 +247,10 @@
     "search": "ค้นหา",
     "clearSearch": "ล้างการค้นหา",
     "noChatsYet": "ยังไม่มีแชท",
+    "noResults": "ยังไม่มีแชท",
     "startFirstConversation": "เริ่มบทสนทนาแรกของคุณ",
     "startChat": "เริ่มแชท",
+    "startNewChat": "เริ่มแชทใหม่",
     "errorLoadingHistory": "เกิดข้อผิดพลาดขณะโหลดประวัติ",
     "renameChat": "เปลี่ยนชื่อแชท",
     "enterNewTitle": "ใส่ชื่อใหม่",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "ทำความรู้จัก",
       "titleHighlight": "Image Studio",
-      "subtitle": "สร้างและแก้ไขภาพด้วย AI ได้เลยใน {{app}}",
+      "subtitle": "สร้างและแก้ไขภาพด้วย AI ได้เลยใน ChatCloud",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "พบกับ AI ของคุณ",
       "titleHighlight": "ผู้ช่วย",
       "subtitle": "ผู้เชี่ยวชาญ AI ที่พร้อมช่วยงานประจำวันของคุณ",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "โค้ชฟิตเนส",
-          "text": "รับแผนออกกำลังกายและโภชนาการที่เหมาะกับเป้าหมาย"
+          "text": "นิสัยเล็กๆ และการออกกำลังกายที่บ้าน"
         },
-        {
-          "title": "คุณหมอ",
-          "text": "ได้ข้อมูลสุขภาพ การวิเคราะห์อาการ และคำแนะนำ"
+        "recipes": {
+          "title": "มื้ออาหารและสูตรอาหาร",
+          "text": "ทำอะไรกินจากสิ่งที่คุณมี"
         },
-        {
-          "title": "ดูแลสัตว์เลี้ยง",
-          "text": "คำแนะนำเรื่องสุขภาพ ฝึก และการดูแลสัตว์เลี้ยง"
+        "travel": {
+          "title": "เพื่อนเดินทาง",
+          "text": "แผนง่ายๆ และรายการของที่ต้องพก"
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "คุ้มที่สุด"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} โทเค็น",
+      "tokensLabel": "{{credits}} โทเค็น",
       "defaultName": "แพ็ก {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} โทเค็น"
     },
     "premium": {
       "title": "อัปเกรดเป็นพรีเมียม",
@@ -572,7 +607,13 @@
     "features": {
       "create": "สร้างภาพและวิดีโอ",
       "search": "ค้นเว็บด้วย AI",
-      "talk": "คุยกับ AI ได้อย่างเป็นธรรมชาติ"
+      "talk": "คุยกับ AI ได้อย่างเป็นธรรมชาติ",
+      "imageStudio": "รับ Image Studio {{credits}} เครดิต {{period}}",
+      "period": {
+        "weekly": "รายสัปดาห์",
+        "monthly": "รายเดือน",
+        "yearly": "รายปี"
+      }
     },
     "freeTrial": {
       "title": "ทดลองใช้ฟรี",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "ข้อความ...",
     "createImages": "สร้างภาพ",
     "generateAiArtwork": "สร้างงานศิลปะด้วย AI",
-    "camera": "กล้อง",
-    "takeOrSelectPhotos": "ถ่ายหรือเลือกภาพ",
+    "camera": "อัปโหลดภาพ",
+    "takeOrSelectPhotos": "เลือกภาพ",
     "search": "ค้นหา",
     "findInformation": "ค้นหาข้อมูล",
     "findRecentInfo": "ค้นหาข้อมูลล่าสุด",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "ให้เข้าใจง่าย",
       "planDay": "วางแผนวันของฉัน",
       "planDaySubtitle": "พร้อมทริคเพิ่มประสิทธิภาพ"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "กำลังประมวลผล...",
-    "camera": "กล้อง",
+    "camera": "อัปโหลดภาพ",
     "library": "คลังภาพ"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "บันทึก",
     "delete": "ลบ",
     "close": "ปิด",
-    "allow": "อนุญาต"
+    "allow": "อนุญาต",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "คุณชอบ ChatCloud ไหม?",
@@ -742,5 +788,63 @@
     "rateNow": "ให้คะแนนตอนนี้",
     "maybeLater": "อาจจะทีหลัง",
     "dontAskAgain": "อย่าถามอีก"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "พิเศษ",
+    "badgeLine2": "ข้อเสนอครั้งเดียว",
+    "upgradeNow": "อัปเกรดตอนนี้ {{price}}",
+    "loadingPrice": "กำลังโหลด...",
+    "termsOfUse": "ข้อกำหนดการใช้งาน",
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useContext } from 'react';
+import React, { useEffect, useMemo, useState, useContext, useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image } from 'react-native';
 import Haptic from 'react-native-haptic-feedback';
 import { PRESETS } from '../data/presets';
@@ -8,6 +8,7 @@ import { useIsFocused } from '@react-navigation/native';
 import HeroVideo from '../components/navigation/HeroVideo';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { isAssistantsPremium } from '../config/premium';
+import { setPendingPremiumAction } from '../state/premiumActions';
 
 const HEADER_VIDEOS = [
   require('../../assets/video/fitness.mp4'),
@@ -28,28 +29,14 @@ export default function Assistants({ navigation }) {
     if (isFocused) setHeaderRestartKey(k => k + 1);
   }, [isFocused]);
 
-  async function handleUsePreset(preset) {
-    // Check premium requirement - navigate directly to paywall if not premium
-    if (!isPremium && isAssistantsPremium()) {
-      try {
-        navigation.navigate('PaywallScreen', { returnTo: 'Assistants' });
-      } catch (e) {
-        console.warn('Failed to navigate to PaywallScreen:', e);
-      }
-      return;
-    }
-
+  const startAssistantPreset = useCallback(async (preset) => {
     try {
-      // haptics can throw on some devices; make non-fatal
       try { Haptic.trigger('impactLight'); } catch {}
-
-      // App policy: assistants always use GPT-5 nano
       const model = 'gpt-5-nano';
       const title = preset?.name || 'Assistant';
       const sys = typeof preset?.system === 'string' ? preset.system : '';
 
       const tNew = createThread({ title, model, system: sys });
-      // Pin model and persist stable metadata
       try {
         updateThread(tNew.id, {
           meta: {
@@ -64,12 +51,26 @@ export default function Assistants({ navigation }) {
       setActiveThread(tNew.id);
       navigation?.navigate?.('Chat');
     } catch (e) {
-      console.warn('usePreset failed', e);
       Alert.alert(
         t('assistants.errorTitle') || 'Something went wrong',
         t('assistants.errorMessage') || 'Could not start this assistant.'
       );
     }
+  }, [createThread, navigation, setActiveThread, t, updateThread]);
+
+  async function handleUsePreset(preset) {
+    if (!isPremium && isAssistantsPremium()) {
+      setPendingPremiumAction(() => {
+        startAssistantPreset(preset);
+      });
+      try {
+        navigation.navigate('PaywallScreen', { returnTo: 'Assistants' });
+      } catch (e) {
+        // Navigation error handled silently
+      }
+      return;
+    }
+    startAssistantPreset(preset);
   }
 
   function getTagColors(category) {

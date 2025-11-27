@@ -49,7 +49,6 @@ export async function ensureMicAndSpeech() {
     if (Platform.OS === 'ios') {
       let mic = await check(PERMISSIONS.IOS.MICROPHONE);
       let speech = await check(PERMISSIONS.IOS.SPEECH_RECOGNITION);
-      try { if (__DEV__) console.log('[Perm] ios pre-check', { mic, speech }); } catch {}
       if (mic === RESULTS.BLOCKED || speech === RESULTS.BLOCKED) return { ok: false, blocked: true };
 
       const toReq = [];
@@ -59,21 +58,16 @@ export async function ensureMicAndSpeech() {
         const res = await requestMultiple(toReq);
         mic = res[PERMISSIONS.IOS.MICROPHONE] || mic;
         speech = res[PERMISSIONS.IOS.SPEECH_RECOGNITION] || speech;
-        try { if (__DEV__) console.log('[Perm] ios requested', res); } catch {}
       }
       const ok = mic === RESULTS.GRANTED && speech === RESULTS.GRANTED;
-      try { if (__DEV__) console.log('[Perm] ios final', { mic, speech, ok }); } catch {}
       return { ok, blocked: !ok && (mic === RESULTS.BLOCKED || speech === RESULTS.BLOCKED) };
     } else {
       let st = await check(PERMISSIONS.ANDROID.RECORD_AUDIO);
-      try { if (__DEV__) console.log('[Perm] android pre-check', st); } catch {}
       if (st === RESULTS.DENIED || st === RESULTS.NOT_DETERMINED) st = await request(PERMISSIONS.ANDROID.RECORD_AUDIO);
-      try { if (__DEV__) console.log('[Perm] android requested', st); } catch {}
       if (st === RESULTS.BLOCKED) return { ok: false, blocked: true };
       return { ok: st === RESULTS.GRANTED };
     }
   } catch {
-    try { if (__DEV__) console.log('[Perm] ensureMicAndSpeech error'); } catch {}
     return { ok: false };
   }
 }

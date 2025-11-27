@@ -17,12 +17,20 @@ export function formatRelative(ts) {
 export function stripImageArtifacts(input) {
   if (!input) return { text: '', imageCount: 0 };
   let imageCount = 0;
-  const markless = String(input || '').replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt = '') => {
+  const asString = String(input || '');
+  const markless = asString.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, () => {
     imageCount += 1;
-    const cleaned = alt.trim();
-    return cleaned || '';
+    return '';
   });
-  const withoutDataUris = markless.replace(/\bdata:image\/[a-z0-9.+-]+;base64,[^\s)]+/gi, () => {
+  const withoutDanglingMarkdown = markless.replace(/!\[([^\]]*)\]\((?=[^\)]*$)/g, () => {
+    imageCount += 1;
+    return '';
+  });
+  const withoutBareMarkdown = withoutDanglingMarkdown.replace(/!\[([^\]]+)\]/g, () => {
+    imageCount += 1;
+    return '';
+  });
+  const withoutDataUris = withoutBareMarkdown.replace(/\bdata:image\/[a-z0-9.+-]+;base64,[^\s)]+/gi, () => {
     imageCount += 1;
     return '';
   });
@@ -51,9 +59,9 @@ export function summaryPreview(summary) {
   if (lines.length === 0) {
     const { text, imageCount } = stripImageArtifacts(summaryText);
     if (!text && imageCount > 0) {
-      return imageCount > 1 ? 'Image attachments' : 'Image attachment';
+      return '';
     }
-    return text || 'New chat';
+    return text || '';
   }
 
   let text = lines[0]
@@ -71,10 +79,10 @@ export function summaryPreview(summary) {
 
   const { text: stripped, imageCount } = stripImageArtifacts(text);
   if (!stripped && imageCount > 0) {
-    return imageCount > 1 ? 'Image attachments' : 'Image attachment';
+    return '';
   }
 
-  return stripped || 'New chat';
+  return stripped || '';
 }
 
 const MAX_PREVIEW_LENGTH = 80;
@@ -162,7 +170,7 @@ function buildCandidate(message) {
   const totalImages = imagesInText + attachmentImages;
   const withLinksCollapsed = collapseLinks(noImages);
   const plain = stripSimpleMarkdown(withLinksCollapsed);
-  const previewText = plain || (totalImages > 1 ? 'Image attachments' : totalImages === 1 ? 'Image attachment' : '');
+  const previewText = plain;
   const weak = !plain || plain.length < 12 || GENERIC_ACK_RE.test((plain || '').toLowerCase());
 
   return {
@@ -197,11 +205,17 @@ export function betterPreview(messages) {
   let bestAssistant = null;
   let bestUser = null;
   let bestAny = null;
+  let sawImageOnly = false;
 
   for (let i = messages.length - 1; i >= 0; i -= 1) {
     const message = messages[i];
     const candidate = buildCandidate(message);
-    if (!candidate.previewText) continue;
+    if (!candidate.previewText) {
+      if (candidate.totalImages > 0) {
+        sawImageOnly = true;
+      }
+      continue;
+    }
 
     const scored = {
       ...candidate,
@@ -234,5 +248,5 @@ export function betterPreview(messages) {
   if (bestAssistant) return bestAssistant.truncated;
   if (bestUser) return bestUser.truncated;
   if (bestAny) return bestAny.truncated;
-  return 'Empty';
+  return sawImageOnly ? '' : 'Empty';
 }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback, useRef } from 'react';
+import React, { useMemo, useState, useEffect, useCallback, useRef, useContext } from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SvgIcon from '../components/SvgIcon';
 import { useSettingsStore } from '../state/useSettingsStore';
@@ -37,6 +38,7 @@ import { getImageModelPrice } from '../utils/imagePricing';
 import RNFS from 'react-native-fs';
 import { useTranslation } from 'react-i18next';
 import Svg, { Path } from 'react-native-svg';
+import { SubscriptionContext } from '../context/SubscriptionContext';
 
 const STYLES = [
   { id: 'photoreal', name: 'Photoreal', image: require('../../assets/images/createstudio/photoreal.webp'), cost: 3 },
@@ -70,9 +72,15 @@ const IMG2IMG_MODELS = new Set([
   'google:4@1',
 ]);
 
-export default function EditImage({ navigation }) {
+export default function EditImage({ navigation, route }) {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const returnTo = route?.params?.returnTo;
+  const parentNav = navigation.getParent?.() || null;
+  
+  // Track if screen is focused to prevent flash when navigating between screens
+  const isFocused = useIsFocused();
+
 
   // Balance
   const coins = useImagesStore(s => s.coinsBalance);
@@ -188,7 +196,47 @@ export default function EditImage({ navigation }) {
     setSelectedModel(defaultModel);
   }, [defaultModel]);
 
+  // Reset form state when screen loses focus to prevent UI flips
+  // Initialize fresh state when screen gains focus
+  useFocusEffect(
+    useCallback(() => {
+      // Initialize prompt from route params if provided (when screen gains focus)
+      const seedPrompt = route?.params?.seedPrompt;
+      if (seedPrompt && typeof seedPrompt === 'string') {
+        setPrompt(seedPrompt);
+      } else {
+        setPrompt('');
+      }
+      
+      // Reset other form fields to defaults when screen gains focus
+      setSelectedStyle(null);
+      setAspect(ASPECTS[0].key);
+      setBusy(false);
+      setImageUri('');
+      setImageReference('');
+      setGeneratorVisible(false);
+      setGeneratorPayload(null);
+      setModelMenuOpen(false);
+      
+      // Cleanup when screen loses focus (navigating away)
+      return () => {
+        setPrompt('');
+        setSelectedStyle(null);
+        setAspect(ASPECTS[0].key);
+        setBusy(false);
+        setImageUri('');
+        setImageReference('');
+        setGeneratorVisible(false);
+        setGeneratorPayload(null);
+        setModelMenuOpen(false);
+        Keyboard.dismiss();
+      };
+    }, [route?.params?.seedPrompt])
+  );
+
   const headerStyle = useMemo(() => [styles.header, { paddingTop: Math.max(insets.top, 12) + 6 }], [insets.top]);
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
   const footerInset = Math.max(insets.bottom, 14);
   // Keyboard-aware footer + content
   const keyboard = useAnimatedKeyboard();
@@ -250,16 +298,23 @@ export default function EditImage({ navigation }) {
       setImageReference(dataUri);
       return dataUri;
     } catch (error) {
-      console.warn('[EditImage] Failed to convert reference image:', error);
       return '';
     }
   }, [imageUri, imageReference]);
 
   const onGenerate = useCallback(async () => {
     if (!imageUri || busy) return;
-    // Insufficient coins: open Coin Store instead of generating
+    // Insufficient coins: show paywall first, then navigate to Coin Store
     if ((coins ?? 0) < (selectedCost ?? 0)) {
-      try { navigation.navigate('CoinStore'); } catch {}
+      if (!isPremium) {
+        try { 
+          navigation.navigate('PaywallScreen', { afterCloseNavigateTo: 'CoinStore' });
+        } catch {}
+      } else {
+        try {
+          navigation.navigate('CoinStore');
+        } catch {}
+      }
       return;
     }
     setBusy(true);
@@ -317,10 +372,6 @@ export default function EditImage({ navigation }) {
         referenceImages: references,
       });
     }
-    if (__DEV__) {
-      // eslint-disable-next-line no-console
-      console.log('[EditImage] payload to generator:', payload);
-    }
     setGeneratorPayload(payload);
     setGeneratorVisible(true);
     Keyboard.dismiss();
@@ -354,6 +405,13 @@ export default function EditImage({ navigation }) {
               style={styles.styleThumb}
               fadeDuration={0}
             />
+            {selected && (
+              <View style={styles.styleSelectedOverlay}>
+                <View style={styles.styleSelectedIcon}>
+                  <SvgIcon name="check" size={24} color="#FFFFFF" />
+                </View>
+              </View>
+            )}
           </View>
           <Text
             style={[styles.styleName, selected && styles.styleNameSelected]}
@@ -368,11 +426,20 @@ export default function EditImage({ navigation }) {
   );
 
   const keyStyle = useCallback((it) => it.id, []);
-  const renderChip = useCallback(({ item }) => (
-    <Pressable onPress={() => setPrompt(p => (p ? p : item))} style={styles.chip}>
-      <Text style={styles.chipText}>{item}</Text>
-    </Pressable>
-  ), []);
+  const renderChip = useCallback(
+    ({ item }) => {
+      const isSelected = prompt.trim() === item.trim();
+      return (
+        <Pressable
+          onPress={() => setPrompt(item)}
+          style={[styles.chip, isSelected && styles.chipSelected]}
+        >
+          <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>{item}</Text>
+        </Pressable>
+      );
+    },
+    [prompt],
+  );
   const keyChip = useCallback((it, idx) => `${idx}-${it}` , []);
 
   const handleGeneratorClose = useCallback(() => {
@@ -381,11 +448,33 @@ export default function EditImage({ navigation }) {
     setBusy(false);
   }, []);
 
+  // Don't render content if screen is not focused to prevent flash during navigation
+  if (!isFocused) {
+    return <View style={styles.container} />;
+  }
+
   return (
     <View style={styles.container}>
       <View style={headerStyle}>
         <View style={styles.headerRow}>
-          <Pressable onPress={() => navigation.goBack()} style={styles.headerBackBtn} hitSlop={10}>
+          <Pressable
+            onPress={() => {
+              if (returnTo && parentNav) {
+                // Navigate back to the specified screen in the parent navigator
+                // Navigate directly to Chat - React Navigation will handle clearing the nested stack
+                try {
+                  parentNav.navigate(returnTo);
+                } catch (err) {
+                  // Fallback: go back in current stack
+                  navigation.goBack();
+                }
+              } else {
+                navigation.goBack();
+              }
+            }}
+            style={styles.headerBackBtn}
+            hitSlop={10}
+          >
             <SvgIcon name="chevron-left" size={22} color="#FFFFFF" />
           </Pressable>
           <View pointerEvents="none" style={styles.headerCenterAbs}>
@@ -669,19 +758,64 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255,255,255,0.12)',
     height: 128,
   },
-  styleThumbSelected: { borderColor: '#7C5CFF', borderWidth: 2 },
+  styleThumbSelected: {},
   styleThumb: { width: '100%', height: '100%', borderRadius: 18, resizeMode: 'cover' },
+  styleSelectedOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 18,
+    backgroundColor: 'rgba(124, 92, 255, 0.4)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  styleSelectedIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#7C5CFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#7C5CFF',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
+    elevation: 8,
+  },
   styleName: {
     color: '#FFFFFF',
     fontSize: 14,
     marginTop: 8,
     textAlign: 'center',
   },
-  styleNameSelected: { fontWeight: '800' },
+  styleNameSelected: { 
+    fontWeight: '800',
+    color: '#7C5CFF',
+  },
 
-  chip: { height: 40, paddingHorizontal: 16, alignItems: 'center', justifyContent: 'center', borderRadius: 999, backgroundColor: '#17171C', marginRight: 10 },
+  chip: { 
+    height: 40, 
+    paddingHorizontal: 16, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    borderRadius: 999, 
+    backgroundColor: '#17171C', 
+    borderWidth: 1,
+    borderColor: 'transparent',
+    marginRight: 10 
+  },
+  chipSelected: {
+    backgroundColor: '#7C5CFF',
+    borderColor: '#7C5CFF',
+  },
   chipsList: { gap: 10 },
   chipText: { color: 'rgba(255,255,255,0.75)', fontSize: 13, fontWeight: '600' },
+  chipTextSelected: {
+    color: '#FFFFFF',
+    fontWeight: '700',
+  },
 
   promptWrap: { gap: 6, marginTop: 6 },
   prompt: { minHeight: 100, borderRadius: 12, padding: 14, backgroundColor: '#17171C', color: '#FFFFFF', fontSize: 16 },

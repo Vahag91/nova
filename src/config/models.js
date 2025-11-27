@@ -4,24 +4,22 @@
 
 const DEFAULT_MODELS = {
   // ===== OpenAI =====
-  'gpt-5':            { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'GPT-5',            group: 'OpenAI' }, temperatureSupported: true },
-  'gpt-5-chat-latest':{ provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'GPT-5 Chat',      group: 'OpenAI' }, temperatureSupported: true },
-  'gpt-5-mini':       { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'GPT-5 Mini',     group: 'OpenAI' }, temperatureSupported: true },
-  'gpt-5-nano':       { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'GPT-5 Nano',     group: 'OpenAI' }, temperatureSupported: true },
-  'o4-mini':          { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'O4 Mini',        group: 'OpenAI' }, temperatureSupported: true },
-  'gpt-4.1-mini':     { provider: 'openai', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'GPT-4.1 Mini',   group: 'OpenAI' }, temperatureSupported: true },
-
+  'gpt-5.1': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5.1', group: 'OpenAI', labels: ['NEW', 'BEST'] }, temperatureSupported: true },
+  'gpt-5': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5', group: 'OpenAI', labels: ['NEW', 'BEST'] }, temperatureSupported: true },
+  'gpt-5.1-chat-latest': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5.1 Chat', group: 'OpenAI', labels: ['NEW', 'BEST'] }, temperatureSupported: true },
+  'gpt-5-mini': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5 Mini', group: 'OpenAI', labels: ['NEW'] }, temperatureSupported: true },
+  'gpt-5-nano': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5 Nano', group: 'OpenAI', labels: ['NEW'] }, temperatureSupported: true },
+  'o4-mini': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'O4 Mini', group: 'OpenAI', labels: ['NEW'] }, temperatureSupported: true },
   // ===== Anthropic (Claude) =====
-  'claude-3-haiku-20240307': { provider: 'anthropic', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Claude 3 Haiku',   group: 'Anthropic' }, temperatureSupported: true },
-  'claude-3-5-haiku-latest': { provider: 'anthropic', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Claude 3.5 Haiku', group: 'Anthropic' }, temperatureSupported: true },
-
+  'claude-3-5-haiku-20241022': { provider: 'anthropic', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Claude Haiku 4.5', group: 'Anthropic' }, temperatureSupported: true },
+  'claude-sonnet-4-20250514': { provider: 'anthropic', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Claude Sonnet 4.5', group: 'Anthropic' }, temperatureSupported: true },
   // ===== Google (Gemini) =====
-  'gemini-2.0-flash':   { provider: 'google', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'Gemini 2.0 Flash',  group: 'Google' },   temperatureSupported: true },
-  'gemini-2.5-flash': { provider: 'google', kind: 'chat', caps: { visionInput: true,  imageGen: false, audioIn: true,  audioOut: false }, display: { name: 'Gemini 2.5 Flash',group: 'Google' },   temperatureSupported: true },
+  'gemini-2.0-flash': { provider: 'google', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'Gemini 2.0 Flash', group: 'Google' }, temperatureSupported: true },
+  'gemini-2.5-flash': { provider: 'google', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'Gemini 2.5 Flash', group: 'Google' }, temperatureSupported: true },
 
   // ===== xAI (Grok) =====
-  'grok-3-mini':           { provider: 'xai', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Grok 3 Mini',           group: 'xAI' }, temperatureSupported: true },
-  'grok-4-fast-reasoning': { provider: 'xai', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Grok 4 Fast Reasoning', group: 'xAI' }, temperatureSupported: true },
+  'grok-3-mini': { provider: 'xai', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Grok 3 Mini', group: 'xAI', labels: ['NEW'] }, temperatureSupported: true },
+  'grok-4-fast-reasoning': { provider: 'xai', kind: 'chat', caps: { visionInput: false, imageGen: false, audioIn: false, audioOut: false }, display: { name: 'Grok 4 Fast Reasoning', group: 'xAI', labels: ['NEW'] }, temperatureSupported: true },
 
   // ===== DeepSeek =====
   'deepseek-chat': {
@@ -40,10 +38,10 @@ const DEFAULT_MODELS = {
   },
 
   // ===== Runware (images) =====
-  'runware-flux-schnell': { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'Flux Schnell',    group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
-  'runware-flux-krea':    { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'Flux Krea',       group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
-  'runware-qwen-image':   { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'Qwen Aura',       group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
-  'google:4@1':           { provider: 'air',     kind: 'image', caps: { visionInput: false, imageGen: true,  audioIn: false, audioOut: false }, display: { name: 'Nano Banana',     group: 'AIR' },      temperatureSupported: false, meta: { size: '1024x1024' } },
+  'runware-flux-schnell': { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true, audioIn: false, audioOut: false }, display: { name: 'Flux Schnell', group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
+  'runware-flux-krea': { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true, audioIn: false, audioOut: false }, display: { name: 'Flux Krea', group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
+  'runware-qwen-image': { provider: 'runware', kind: 'image', caps: { visionInput: false, imageGen: true, audioIn: false, audioOut: false }, display: { name: 'Qwen Aura', group: 'Runware' }, temperatureSupported: false, meta: { size: '1024x1024' } },
+  'google:4@1': { provider: 'air', kind: 'image', caps: { visionInput: false, imageGen: true, audioIn: false, audioOut: false }, display: { name: 'Nano Banana', group: 'AIR' }, temperatureSupported: false, meta: { size: '1024x1024' } },
 };
 
 export default DEFAULT_MODELS;

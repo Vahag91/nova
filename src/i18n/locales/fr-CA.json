@@ -14,7 +14,7 @@
     "currentlySelected": "Actuellement sélectionné"
   },
   "models": {
-    "gpt-4o": "Le modèle d’IA le plus puissant",
+    "gpt-4o": "Le modèle d'IA le plus puissant",
     "gpt-4o-mini": "Rapide pour les tâches quotidiennes",
     "gpt-5": "Le modèle polyvalent le plus puissant",
     "gpt-5-chat-latest": "Optimisé pour la conversation et le dialogue",
@@ -23,10 +23,42 @@
     "o4-mini": "Modèle de raisonnement efficace",
     "gpt-4.1-mini": "GPT-4.1 compact et capable",
     "claude-3-haiku": "IA Anthropic rapide et focalisée",
-    "claude-3.7-sonnet": "Raisonnement raffiné d’Anthropic",
+    "claude-3.7-sonnet": "Raisonnement raffiné d'Anthropic",
     "gemini-2.5-Flash": "Le modèle le plus avancé de Google",
     "gemini-2.5-flash": "Le modèle le plus avancé de Google",
     "gemini-2.0-flash": "IA de Google rapide et précise"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Le modèle d'IA le plus puissant",
+    "fast_everyday": "Rapide pour les tâches quotidiennes",
+    "fast_reasoning": "Modèle rapide avec bon raisonnement",
+    "great_reasoning": "Modèle de raisonnement avancé",
+    "coding_reasoning": "Programmation et raisonnement avancés",
+    "better_coding": "Mieux pour la programmation et le raisonnement",
+    "best_overall": "Meilleur modèle d'IA polyvalent",
+    "best_google": "Meilleur modèle de Google",
+    "best_xai": "Modèle xAI le plus puissant",
+    "creative_focus": "Excellent pour l'écriture créative",
+    "code_helper": "Excellent pour l'aide au codage",
+    "chat_focus": "Optimisé pour la conversation",
+    "long_context": "Excellent pour les longs contextes",
+    "budget_friendly": "Modèle d'IA économique",
+    "ultra_fast": "Réponses ultra rapides",
+    "safe_default": "Choix par défaut sûr",
+    "multilingual": "Fort support multilingue",
+    "vision_strong": "Excellent avec les images et la vision",
+    "data_analysis": "Bon pour l'analyse de données",
+    "structured_tasks": "Bon pour les tâches structurées",
+    "everyday_helper": "Modèle assistant quotidien",
+    "concise_answers": "Réponses courtes et concises",
+    "detailed_answers": "Réponses détaillées étape par étape",
+    "experimental": "Modèle expérimental de nouvelle génération",
+    "reliable_classic": "Modèle classique fiable",
+    "lightweight": "Modèle léger et économique",
+    "chatty_personal": "Plus amical et personnel",
+    "pro_users": "Meilleur pour les utilisateurs avancés",
+    "research_helper": "Bon pour la recherche et les notes",
+    "reasoning_strong": "Modèle de raisonnement avancé"
   },
   "providers": {
     "openai": "OpenAI",
@@ -69,7 +101,7 @@
     "pleaseWait": "Veuillez patienter…",
     "processing": "Traitement...",
     "tapToUploadImage": "Touchez pour télécharger une image",
-    "camera": "Caméra",
+    "camera": "Télécharger des photos",
     "library": "Bibliothèque",
     "enterPrompt": "Veuillez saisir un prompt pour la génération d’image à partir de texte",
     "openInBrowser": "Ouvrir dans le navigateur",
@@ -225,7 +257,9 @@
     "rename": "Renommer",
     "unpin": "Désépingler",
     "pin": "Épingler",
-    "untitled": "Sans titre"
+    "untitled": "Sans titre",
+    "noResults": "Aucune conversation encore",
+    "startNewChat": "Démarrer conversation"
   },
   "settings": {
     "title": "Paramètres",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Découvrez",
       "titleHighlight": "Image Studio",
-      "subtitle": "Créez & éditez des images avec l’IA — directement dans {{app}}.",
+      "subtitle": "Créez & éditez des images avec l’IA — directement dans ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Rencontrez votre IA",
       "titleHighlight": "Assistants",
       "subtitle": "Des spécialistes IA prêts à aider au quotidien",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Coach fitness",
-          "text": "Obtenez des plans d’entraînement et de nutrition adaptés à vos objectifs"
+          "text": "Petites habitudes et entraînements à domicile."
         },
-        {
-          "title": "Médecin",
-          "text": "Obtenez des idées santé, analyse de symptômes et guidage médical"
+        "recipes": {
+          "title": "Repas et recettes",
+          "text": "Que cuisiner avec ce que vous avez."
         },
-        {
-          "title": "Soin d’animaux",
-          "text": "Conseils sur la santé, l’entraînement et les soins de vos animaux"
+        "travel": {
+          "title": "Compagnon de voyage",
+          "text": "Plans simples et listes de bagages."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "Meilleur rapport qualité-prix"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} Jetons",
+      "tokensLabel": "{{credits}} Jetons",
       "defaultName": "Pack {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} Jetons"
     },
     "premium": {
       "title": "Devenir Premium",
@@ -572,7 +607,13 @@
     "features": {
       "create": "Créer images et vidéos",
       "search": "Rechercher le web avec IA",
-      "talk": "Parler naturellement à l’IA"
+      "talk": "Parler naturellement à l’IA",
+      "imageStudio": "Obtenez Image Studio {{credits}} crédits {{period}}",
+      "period": {
+        "weekly": "hebdomadaire",
+        "monthly": "mensuel",
+        "yearly": "annuel"
+      }
     },
     "freeTrial": {
       "title": "Essai gratuit",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Message...",
     "createImages": "Créer images",
     "generateAiArtwork": "Générer art IA",
-    "camera": "Caméra",
-    "takeOrSelectPhotos": "Prendre ou choisir des photos",
+    "camera": "Télécharger des photos",
+    "takeOrSelectPhotos": "Choisir des photos",
     "search": "Rechercher",
     "findInformation": "Trouver de l’information",
     "findRecentInfo": "Trouver infos récentes",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "en termes simples",
       "planDay": "Planifie ma journée",
       "planDaySubtitle": "avec des astuces de productivité"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Traitement en cours...",
-    "camera": "Caméra",
+    "camera": "Télécharger des photos",
     "library": "Bibliothèque"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Enregistrer",
     "delete": "Supprimer",
     "close": "Fermer",
-    "allow": "Autoriser"
+    "allow": "Autoriser",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Vous aimez ChatCloud ?",
@@ -742,5 +788,63 @@
     "rateNow": "Noter maintenant",
     "maybeLater": "Peut-être plus tard",
     "dontAskAgain": "Ne plus demander"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Exclusif",
+    "badgeLine2": "Offre unique",
+    "upgradeNow": "Mettre à niveau maintenant pour {{price}}",
+    "loadingPrice": "Chargement...",
+    "termsOfUse": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

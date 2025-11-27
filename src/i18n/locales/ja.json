@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Google の最先端モデル",
     "gemini-2.0-flash": "高速かつ高精度な Google AI"
   },
+  "modelDescriptions": {
+    "most_powerful": "最も強力なAIモデル",
+    "fast_everyday": "日常タスクに高速",
+    "fast_reasoning": "優れた推論能力を持つ高速モデル",
+    "great_reasoning": "高度な推論モデル",
+    "coding_reasoning": "高度なコーディングと推論",
+    "better_coding": "コーディングと推論に最適",
+    "best_overall": "最高の汎用AIモデル",
+    "best_google": "Google最高のモデル",
+    "best_xai": "xAI最強のモデル",
+    "creative_focus": "クリエイティブな文章作成に最適",
+    "code_helper": "コーディング支援に最適",
+    "chat_focus": "チャットに最適化",
+    "long_context": "長いコンテキストに最適",
+    "budget_friendly": "予算に優しいAIモデル",
+    "ultra_fast": "超高速レスポンス",
+    "safe_default": "安全なデフォルト選択",
+    "multilingual": "強力な多言語サポート",
+    "vision_strong": "画像と視覚処理に優れている",
+    "data_analysis": "データ分析に適している",
+    "structured_tasks": "構造化されたタスクに適している",
+    "everyday_helper": "日常的なアシスタントモデル",
+    "concise_answers": "簡潔で要点を押さえた回答",
+    "detailed_answers": "詳細なステップバイステップの回答",
+    "experimental": "実験的な次世代モデル",
+    "reliable_classic": "信頼性の高いクラシックモデル",
+    "lightweight": "軽量で低コストのモデル",
+    "chatty_personal": "より親しみやすく個人的",
+    "pro_users": "上級ユーザーに最適",
+    "research_helper": "研究とメモに適している",
+    "reasoning_strong": "高度な推論モデル"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "お待ちください…",
     "processing": "処理中...",
     "tapToUploadImage": "タップして画像をアップロード",
-    "camera": "カメラ",
+    "camera": "写真をアップロード",
     "library": "ライブラリ",
     "enterPrompt": "テキストから画像を生成するプロンプトを入力してください",
     "openInBrowser": "ブラウザーで開く",
@@ -225,7 +257,9 @@
     "rename": "名前を変更",
     "unpin": "ピン留めを外す",
     "pin": "ピン留め",
-    "untitled": "無題"
+    "untitled": "無題",
+    "noResults": "まだチャットがありません",
+    "startNewChat": "チャットを開始"
   },
   "settings": {
     "title": "設定",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "紹介",
       "titleHighlight": "Image Studio",
-      "subtitle": "AIで画像を作成・編集 — {{app}} 内で完結します。",
+      "subtitle": "AIで画像を作成・編集 — ChatCloud 内で完結します。",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "あなたのAIを紹介",
       "titleHighlight": "アシスタント",
       "subtitle": "日々のニーズを助ける特化AIが勢揃い",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "フィットネスコーチ",
-          "text": "目標に合わせたトレーニングと栄養アドバイス"
+          "text": "小さな習慣と自宅でのワークアウト。"
         },
-        {
-          "title": "ドクター",
-          "text": "ヘルスインサイト・症状分析・医療的なアドバイス"
+        "recipes": {
+          "title": "食事とレシピ",
+          "text": "あるもので何を作るか。"
         },
-        {
-          "title": "ペットケア",
-          "text": "ペットの健康・トレーニング・ケアの専門アドバイス"
+        "travel": {
+          "title": "旅行の相棒",
+          "text": "シンプルな計画とパッキングリスト。"
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "最もお得"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} トークン",
+      "tokensLabel": "{{credits}} トークン",
       "defaultName": "パック {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} トークン"
     },
     "premium": {
       "title": "プレミアムに移行",
@@ -565,6 +600,15 @@
       "unknownError": "不明なエラー"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "プレミアムが必要です",
+    "upgrade": "アップグレード",
+    "modelRequiredMessage": "このモデルにはプレミアムが必要です。GPT-5、Grok 4、Claudeなどの高度なモデルにアクセスするにはアップグレードしてください。",
+    "assistantsRequiredMessage": "アシスタントにはプレミアムが必要です。フィットネス、コーディング、ライティングなどの専門AIアシスタントにアクセスするにはアップグレードしてください。",
+    "assistantsTitle": "プレミアムが必要です",
+    "assistantsMessage": "アシスタントにはプレミアムが必要です。フィットネス、コーディング、ライティングなどの専門AIアシスタントにアクセスするにはアップグレードしてください。"
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
     "restore": "復元",
@@ -572,7 +616,13 @@
     "features": {
       "create": "画像と動画を作成",
       "search": "AIでウェブを検索",
-      "talk": "AIと自然に会話"
+      "talk": "AIと自然に会話",
+      "imageStudio": "Image Studio {{credits}}クレジット{{period}}を取得",
+      "period": {
+        "weekly": "週間",
+        "monthly": "月間",
+        "yearly": "年間"
+      }
     },
     "freeTrial": {
       "title": "無料トライアル",
@@ -609,12 +659,61 @@
       "privacy": "プライバシー"
     }
   },
+  "oneTimeOffer": {
+    "title": "ワンタイムオファー",
+    "subtitle": "このオファーは二度と表示されません。",
+    "badgeLine1": "限定",
+    "badgeLine2": "ワンタイムオファー",
+    "upgradeNow": "今すぐアップグレード {{price}}",
+    "loadingPrice": "読み込み中...",
+    "termsOfUse": "利用規約",
+    "privacyPolicy": "プライバシーポリシー",
+    "accessTitle": "無制限アクセス",
+    "accessSubtitle": "GPT、Gemini、Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4への無制限アクセス",
+      "geminiPro": "Gemini Proへのアクセス",
+      "grokInsights": "最新のインサイトを得るためにGrokを活用",
+      "priorityAccess": "優先アクセスとより高速な応答"
+    },
+    "bestValue": "最高の価値",
+    "annualPremium": "年間プレミアム",
+    "oneTimePayment": "一回限りの支払い",
+    "wasPrice": "以前の価格",
+    "continue": "続ける",
+    "restore": "復元",
+    "terms": "利用規約",
+    "privacy": "プライバシー",
+    "successTitle": "成功！",
+    "successMessage": "ご購入ありがとうございます！これですべてのプレミアム機能への生涯アクセスが可能になりました。",
+    "errorTitle": "購入に失敗しました",
+    "errorMessage": "問題が発生しました。もう一度お試しください。",
+    "restoreSuccessTitle": "復元しました",
+    "restoreSuccessMessage": "購入が復元されました。",
+    "restoreErrorTitle": "復元に失敗しました",
+    "restoreErrorMessage": "復元する購入が見つかりませんでした。"
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "モデルの読み込みに失敗しました",
+      "modelsLoadMessage": "AIモデルを読み込めませんでした。アプリはデフォルトモデルを使用します。インターネット接続を確認してください。",
+      "modelsLoadTimeout": "モデルの読み込みに時間がかかりすぎました。アプリはデフォルトモデルを使用します。もう一度お試しください。",
+      "modelsLoadNetwork": "インターネット接続がありません。アプリはデフォルトモデルを使用します。接続を確認してください。",
+      "deviceIdTitle": "初期化エラー",
+      "deviceIdMessage": "デバイスIDの初期化に失敗しました。一部の機能が正しく動作しない可能性があります。",
+      "storageTitle": "ストレージエラー",
+      "storageMessage": "ローカルストレージにアクセスできませんでした。一部の機能が正しく動作しない可能性があります。",
+      "crashTitle": "問題が発生しました。",
+      "crashSubtitle": "もう一度お試しください。",
+      "crashLabel": "アプリがクラッシュしました"
+    }
+  },
   "chat": {
     "messagePlaceholder": "メッセージ...",
     "createImages": "画像を作成",
     "generateAiArtwork": "AIアートを生成",
-    "camera": "カメラ",
-    "takeOrSelectPhotos": "写真を撮る/選ぶ",
+    "camera": "写真をアップロード",
+    "takeOrSelectPhotos": "写真を選ぶ",
     "search": "検索",
     "findInformation": "情報を探す",
     "findRecentInfo": "最新情報を探す",
@@ -639,10 +738,12 @@
     "regenerateResponse": "返答を再生成",
     "regenerateResponseHint": "新しい返答を生成",
     "copyCode": "コードをコピー",
+    "copied": "コピーしました",
     "image": "画像",
     "loading": "読み込み中…",
     "loadingChat": "チャットを読み込み中...",
     "offlineBanner": "オフラインのためメッセージは送信できません。",
+    "offlineError": "インターネット接続がありません。接続を確認して再試行してください。",
     "imagePickerErrorTitle": "画像選択エラー",
     "imagePickerErrorMessage": "写真にアクセスできません。もう一度お試しください。",
     "messageTooLong": "メッセージが長すぎます ({{length}})。上限は {{limit}} です。",
@@ -724,7 +825,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "処理中...",
-    "camera": "カメラ",
+    "camera": "写真をアップロード",
     "library": "ライブラリ"
   },
   "common": {
@@ -734,7 +835,10 @@
     "save": "保存",
     "delete": "削除",
     "close": "閉じる",
-    "allow": "許可"
+    "allow": "許可",
+    "ok": "OK",
+    "retry": "再試行",
+    "tryAgain": "もう一度試す"
   },
   "rateUs": {
     "title": "ChatCloudをお楽しみですか？",

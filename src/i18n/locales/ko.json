@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Google의 최신 고급 모델",
     "gemini-2.0-flash": "빠르고 정확한 Google AI"
   },
+  "modelDescriptions": {
+    "most_powerful": "가장 강력한 AI 모델",
+    "fast_everyday": "일상 작업에 빠름",
+    "fast_reasoning": "좋은 추론 능력을 가진 빠른 모델",
+    "great_reasoning": "고급 추론 모델",
+    "coding_reasoning": "고급 코딩 및 추론",
+    "better_coding": "코딩 및 추론에 더 적합",
+    "best_overall": "최고의 범용 AI 모델",
+    "best_google": "Google 최고의 모델",
+    "best_xai": "xAI 최강 모델",
+    "creative_focus": "창의적 글쓰기에 훌륭함",
+    "code_helper": "코딩 도움에 훌륭함",
+    "chat_focus": "채팅에 최적화",
+    "long_context": "긴 컨텍스트에 훌륭함",
+    "budget_friendly": "예산 친화적인 AI 모델",
+    "ultra_fast": "초고속 응답",
+    "safe_default": "안전한 기본 선택",
+    "multilingual": "강력한 다국어 지원",
+    "vision_strong": "이미지 및 시각 처리에 뛰어남",
+    "data_analysis": "데이터 분석에 적합",
+    "structured_tasks": "구조화된 작업에 적합",
+    "everyday_helper": "일상적인 어시스턴트 모델",
+    "concise_answers": "짧고 간결한 답변",
+    "detailed_answers": "상세한 단계별 답변",
+    "experimental": "실험적인 차세대 모델",
+    "reliable_classic": "신뢰할 수 있는 클래식 모델",
+    "lightweight": "경량 저비용 모델",
+    "chatty_personal": "더 친근하고 개인적",
+    "pro_users": "전문 사용자에게 최적",
+    "research_helper": "연구 및 메모에 적합",
+    "reasoning_strong": "고급 추론 모델"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "잠시만 기다려 주세요…",
     "processing": "처리 중...",
     "tapToUploadImage": "탭하여 이미지 업로드",
-    "camera": "카메라",
+    "camera": "사진 업로드",
     "library": "라이브러리",
     "enterPrompt": "텍스트 → 이미지 생성을 위한 프롬프트를 입력하세요",
     "openInBrowser": "브라우저에서 열기",
@@ -225,7 +257,9 @@
     "rename": "이름 변경",
     "unpin": "고정 해제",
     "pin": "고정",
-    "untitled": "제목 없음"
+    "untitled": "제목 없음",
+    "noResults": "아직 채팅이 없습니다",
+    "startNewChat": "채팅 시작"
   },
   "settings": {
     "title": "설정",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "소개합니다",
       "titleHighlight": "Image Studio",
-      "subtitle": "AI로 이미지를 만들고 편집 — {{app}} 안에서 바로.",
+      "subtitle": "AI로 이미지를 만들고 편집 — ChatCloud 안에서 바로.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "당신의 AI를 만나보세요",
       "titleHighlight": "어시스턴트",
       "subtitle": "일상적인 요구를 해결해 줄 특화 AI들",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "피트니스 코치",
-          "text": "목표에 맞는 운동과 영양 조언을 받아보세요"
+          "text": "작은 습관과 집 운동."
         },
-        {
-          "title": "닥터",
-          "text": "건강 인사이트, 증상 분석, 필요한 조언"
+        "recipes": {
+          "title": "식사와 레시피",
+          "text": "가지고 있는 것으로 요리하기."
         },
-        {
-          "title": "펫 케어",
-          "text": "반려동물 건강, 훈련, 돌봄 전문가 조언"
+        "travel": {
+          "title": "여행 동반자",
+          "text": "간단한 계획과 짐싸기 목록."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "가성비 최고"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} 토큰",
+      "tokensLabel": "{{credits}} 토큰",
       "defaultName": "팩 {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} 토큰"
     },
     "premium": {
       "title": "프리미엄으로",
@@ -572,7 +607,13 @@
     "features": {
       "create": "이미지와 동영상 만들기",
       "search": "AI로 웹 검색",
-      "talk": "AI와 자연스럽게 대화"
+      "talk": "AI와 자연스럽게 대화",
+      "imageStudio": "Image Studio {{credits}} 크레딧 {{period}} 받기",
+      "period": {
+        "weekly": "주간",
+        "monthly": "월간",
+        "yearly": "연간"
+      }
     },
     "freeTrial": {
       "title": "무료 체험",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "메시지...",
     "createImages": "이미지 만들기",
     "generateAiArtwork": "AI 아트워크 생성",
-    "camera": "카메라",
-    "takeOrSelectPhotos": "사진 찍기 또는 선택",
+    "camera": "사진 업로드",
+    "takeOrSelectPhotos": "사진 선택",
     "search": "검색",
     "findInformation": "정보 찾기",
     "findRecentInfo": "최신 정보 찾기",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "쉬운 말로",
       "planDay": "하루 계획하기",
       "planDaySubtitle": "생산성을 높이는 팁과 함께"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "처리 중...",
-    "camera": "카메라",
+    "camera": "사진 업로드",
     "library": "라이브러리"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "저장",
     "delete": "삭제",
     "close": "닫기",
-    "allow": "허용"
+    "allow": "허용",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "ChatCloud를 즐기고 계신가요?",
@@ -742,5 +788,63 @@
     "rateNow": "지금 평가하기",
     "maybeLater": "나중에",
     "dontAskAgain": "다시 묻지 않기"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "독점",
+    "badgeLine2": "일회성 제안",
+    "upgradeNow": "지금 업그레이드 {{price}}",
+    "loadingPrice": "로딩 중...",
+    "termsOfUse": "이용 약관",
+    "privacyPolicy": "개인정보 보호정책",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

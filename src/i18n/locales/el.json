@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Το πιο προηγμένο μοντέλο της Google",
     "gemini-2.0-flash": "Γρήγορη και ακριβής ΤΝ Google"
   },
+  "modelDescriptions": {
+    "most_powerful": "Ισχυρότερο μοντέλο ΤΝ",
+    "fast_everyday": "Γρήγορο για καθημερινές εργασίες",
+    "fast_reasoning": "Γρήγορο μοντέλο με καλό συλλογισμό",
+    "great_reasoning": "Προηγμένο μοντέλο συλλογισμού",
+    "coding_reasoning": "Προηγμένος προγραμματισμός και συλλογισμός",
+    "better_coding": "Καλύτερο για προγραμματισμό και συλλογισμό",
+    "best_overall": "Καλύτερο ολοκληρωμένο μοντέλο ΤΝ",
+    "best_google": "Καλύτερο μοντέλο Google",
+    "best_xai": "Ισχυρότερο μοντέλο xAI",
+    "creative_focus": "Εξαιρετικό για δημιουργική γραφή",
+    "code_helper": "Εξαιρετικό για βοήθεια προγραμματισμού",
+    "chat_focus": "Βελτιστοποιημένο για συνομιλία",
+    "long_context": "Εξαιρετικό για μεγάλα περιεχόμενα",
+    "budget_friendly": "Οικονομικό μοντέλο ΤΝ",
+    "ultra_fast": "Υπερ-γρήγορες απαντήσεις",
+    "safe_default": "Ασφαλής προεπιλογή",
+    "multilingual": "Ισχυρή πολυγλωσσική υποστήριξη",
+    "vision_strong": "Εξαιρετικό με εικόνες και όραση",
+    "data_analysis": "Καλό για ανάλυση δεδομένων",
+    "structured_tasks": "Καλό για δομημένες εργασίες",
+    "everyday_helper": "Μοντέλο βοηθού καθημερινών εργασιών",
+    "concise_answers": "Σύντομες, περιεκτικές απαντήσεις",
+    "detailed_answers": "Λεπτομερείς απαντήσεις βήμα προς βήμα",
+    "experimental": "Πειραματικό μοντέλο νέας γενιάς",
+    "reliable_classic": "Αξιόπιστο κλασικό μοντέλο",
+    "lightweight": "Ελαφρύ, οικονομικό μοντέλο",
+    "chatty_personal": "Πιο φιλικό και προσωπικό",
+    "pro_users": "Καλύτερο για προχωρημένους χρήστες",
+    "research_helper": "Καλό για έρευνα και σημειώσεις",
+    "reasoning_strong": "Προηγμένο μοντέλο συλλογισμού"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Περίμενε…",
     "processing": "Επεξεργασία...",
     "tapToUploadImage": "Πάτησε για μεταφόρτωση εικόνας",
-    "camera": "Κάμερα",
+    "camera": "Ανέβασμα φωτογραφιών",
     "library": "Συλλογή",
     "enterPrompt": "Πληκτρολόγησε prompt για text-to-image",
     "openInBrowser": "Άνοιγμα στον περιηγητή",
@@ -225,7 +257,9 @@
     "rename": "Μετονομασία",
     "unpin": "Ξεκαρφίτσωμα",
     "pin": "Καρφίτσωμα",
-    "untitled": "Χωρίς τίτλο"
+    "untitled": "Χωρίς τίτλο",
+    "noResults": "Δεν υπάρχουν συνομιλίες ακόμη",
+    "startNewChat": "Έναρξη συνομιλίας"
   },
   "settings": {
     "title": "Ρυθμίσεις",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Γνώρισε το",
       "titleHighlight": "Image Studio",
-      "subtitle": "Δημιούργησε & επεξεργάσου εικόνες με ΤΝ — μέσα στο {{app}}.",
+      "subtitle": "Δημιούργησε & επεξεργάσου εικόνες με ΤΝ — μέσα στο ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Γνώρισε την ΤΝ σου",
       "titleHighlight": "Βοηθοί",
       "subtitle": "Εξειδικευμένοι βοηθοί ΤΝ έτοιμοι να σε βοηθήσουν",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Προπονητής γυμναστικής",
-          "text": "Πλάνα προπόνησης & διατροφής για τους στόχους σου"
+          "text": "Μικρές συνήθειες και προπονήσεις στο σπίτι."
         },
-        {
-          "title": "Γιατρός",
-          "text": "Στοιχεία υγείας, συμπτώματα και καθοδήγηση"
+        "recipes": {
+          "title": "Γεύματα και συνταγές",
+          "text": "Τι να μαγειρέψεις με αυτό που έχεις."
         },
-        {
-          "title": "Φροντίδα κατοικιδίων",
-          "text": "Συμβουλές για υγεία, εκπαίδευση και φροντίδα"
+        "travel": {
+          "title": "Σύντροφος ταξιδιού",
+          "text": "Απλά σχέδια και λίστες συσκευασίας."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Αγορά tokens",
+    "title": "Αγορά credits",
     "loading": "Φόρτωση καταστήματος…",
     "balanceLabel": "Τρέχον υπόλοιπο",
-    "balanceValue": "{{amount}} tokens",
+    "balanceValue": "{{amount}} credits",
     "history": {
       "link": "Ιστορικό συναλλαγών",
       "alertTitle": "Ιστορικό",
@@ -545,9 +579,10 @@
       "value": "Καλύτερη αξία"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} tokens",
+      "tokensLabel": "{{credits}} credits",
       "defaultName": "Πακέτο {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} credits"
     },
     "premium": {
       "title": "Γίνε Premium",
@@ -560,7 +595,7 @@
       "initErrorTitle": "Σφάλμα αρχικοποίησης",
       "genericMessage": "Κάτι πήγε στραβά.",
       "successTitle": "Επιτυχία",
-      "successMessage": "Τα tokens θα εμφανιστούν σύντομα.",
+      "successMessage": "Τα credits θα εμφανιστούν σύντομα.",
       "purchaseFailedTitle": "Αποτυχία αγοράς",
       "unknownError": "Άγνωστο σφάλμα"
     }
@@ -572,7 +607,13 @@
     "features": {
       "create": "Δημιούργησε εικόνες και βίντεο",
       "search": "Αναζήτησε στον ιστό με ΤΝ",
-      "talk": "Μίλησε φυσικά με την ΤΝ"
+      "talk": "Μίλησε φυσικά με την ΤΝ",
+      "imageStudio": "Απόκτησε Image Studio {{credits}} πίστωση {{period}}",
+      "period": {
+        "weekly": "εβδομαδιαία",
+        "monthly": "μηνιαία",
+        "yearly": "ετήσια"
+      }
     },
     "freeTrial": {
       "title": "Δωρεάν δοκιμή",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Μήνυμα...",
     "createImages": "Δημιουργία εικόνων",
     "generateAiArtwork": "Δημιουργία AI εικόνας",
-    "camera": "Κάμερα",
-    "takeOrSelectPhotos": "Τράβα ή επίλεξε φωτογραφίες",
+    "camera": "Ανέβασμα φωτογραφιών",
+    "takeOrSelectPhotos": "Επίλεξε φωτογραφίες",
     "search": "Αναζήτηση",
     "findInformation": "Βρες πληροφορίες",
     "findRecentInfo": "Βρες πρόσφατες πληροφορίες",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "με απλά λόγια",
       "planDay": "Οργάνωσε τη μέρα μου",
       "planDaySubtitle": "με tips παραγωγικότητας"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Επεξεργασία...",
-    "camera": "Κάμερα",
+    "camera": "Ανέβασμα φωτογραφιών",
     "library": "Συλλογή"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Αποθήκευση",
     "delete": "Διαγραφή",
     "close": "Κλείσιμο",
-    "allow": "Να επιτρέπεται"
+    "allow": "Να επιτρέπεται",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Απολαμβάνετε το ChatCloud;",
@@ -742,5 +788,63 @@
     "rateNow": "Αξιολογήστε τώρα",
     "maybeLater": "Ίσως αργότερα",
     "dontAskAgain": "Μην ρωτήσετε ξανά"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Αποκλειστικό",
+    "badgeLine2": "Εφάπαξ προσφορά",
+    "upgradeNow": "Αναβάθμιση τώρα για {{price}}",
+    "loadingPrice": "Φόρτωση...",
+    "termsOfUse": "Όροι Χρήσης",
+    "privacyPolicy": "Πολιτική Απορρήτου",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

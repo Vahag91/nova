@@ -10,7 +10,7 @@ import {
 } from '../config/payments';
 
 // ✅ NEW: bring your stable device id
-import { ensureDeviceId } from '../lib/ensureDeviceId';
+import { ensureDeviceId } from '../lib/deviceId';
 import { useSettingsStore } from '../state/useSettingsStore';
 
 export const SubscriptionContext = createContext(null);
@@ -28,6 +28,7 @@ export function SubscriptionProvider({ children }) {
     oneTime: null,
   });
   const [restoring, setRestoring] = useState(false);
+  const [subscriptionReady, setSubscriptionReady] = useState(false);
 
   const configuredRef = useRef(false);
 
@@ -42,14 +43,11 @@ export function SubscriptionProvider({ children }) {
       try {
         if (__DEV__) Purchases.setLogLevel(LOG_LEVEL.DEBUG);
         const os = Platform.OS;
-        const maskedKey = (key) => (key ? `${String(key).slice(0, 6)}…` : 'none');
-        console.log('[RevenueCat] init', { os, key: maskedKey(apiKey) });
 
         const cachedPremium = await AsyncStorage.getItem(STORAGE_KEY);
         if (cachedPremium !== null) setIsPremium(JSON.parse(cachedPremium));
 
         if (!apiKey) {
-          console.warn('RevenueCat public API key missing. Set in src/config/payments.js');
           return;
         }
 
@@ -65,7 +63,6 @@ export function SubscriptionProvider({ children }) {
           // Preflight: if Purchases is already configured elsewhere, this will work.
           try {
             await Purchases.getCustomerInfo();
-            console.log('[RevenueCat] detected existing configuration (preflight)');
             alreadyConfigured = true;
           } catch {}
         }
@@ -77,21 +74,18 @@ export function SubscriptionProvider({ children }) {
         } else {
           configuredRef.current = true;
           try { root[RC_GUARD_KEY] = true; } catch {}
-          console.log('[RevenueCat] configure skipped (already set)');
         }
 
         // ✅ NEW: ensure appUserID is your stable device id (required for coins)
         try {
           const deviceId = await ensureDeviceId();
-          const res = await Purchases.logIn(String(deviceId));
-          console.log('[RevenueCat] appUserID set', { appUserId: deviceId, created: res?.created });
+          await Purchases.logIn(String(deviceId));
         } catch (e) {
-          console.warn('RevenueCat logIn failed:', e?.message || String(e));
+          // RevenueCat logIn error handled silently
         }
 
         // keep info fresh when RevenueCat pushes updates
         removeListener = Purchases.addCustomerInfoUpdateListener(async (info) => {
-          console.log('[RevenueCat] customerInfo update received');
           await handleCustomerInfo(info);
         });
 
@@ -99,7 +93,7 @@ export function SubscriptionProvider({ children }) {
         await handleCustomerInfo(info);
         await fetchOfferings();
       } catch (err) {
-        console.warn('RevenueCat init error:', err?.message || String(err));
+        // RevenueCat init error handled silently
       }
     })();
 
@@ -115,12 +109,19 @@ export function SubscriptionProvider({ children }) {
   const handleCustomerInfo = async (info) => {
     try {
       const active = info?.entitlements?.active || {};
-      const hasPremium = !!active[REVENUE_ENTITLEMENT_ID];
+      const entitlementId = (REVENUE_ENTITLEMENT_ID || '').trim();
+      let hasPremium = entitlementId ? !!active[entitlementId] : false;
+      // Fallback: if entitlement id is misconfigured but any entitlement is active, treat as premium
+      let entitlementFallback = false;
+      if (!hasPremium && Object.keys(active).length > 0) {
+        hasPremium = true;
+        entitlementFallback = true;
+      }
       const activeEnts = Object.keys(active);
       const allEnts = Object.keys(info?.entitlements?.all || {});
-      console.log('[RevenueCat] entitlements', { hasPremium, activeEnts, allEnts, entitlementChecked: REVENUE_ENTITLEMENT_ID });
       setIsPremium(hasPremium);
       setCustomerInfo(info);
+      setSubscriptionReady(true);
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(hasPremium));
       
       // Validate model when premium status changes
@@ -129,22 +130,16 @@ export function SubscriptionProvider({ children }) {
         validateModel(hasPremium);
       }
     } catch (e) {
-      console.warn('Failed to process customer info:', e?.message || String(e));
+      // Customer info processing error handled silently
     }
   };
 
   const purchasePackage = async (pkg) => {
     try {
       const result = await Purchases.purchasePackage(pkg);
-      try {
-        const p = result?.productIdentifier || result?.productId || pkg?.product?.identifier;
-        const price = pkg?.product?.priceString;
-        console.log('[RevenueCat] purchase success', { pkgId: pkg?.identifier, productId: p, price });
-      } catch {}
       await handleCustomerInfo(result.customerInfo);
       return result;
     } catch (err) {
-      console.warn('Purchase error:', err?.message || String(err));
       throw err;
     }
   };
@@ -153,11 +148,9 @@ export function SubscriptionProvider({ children }) {
     setRestoring(true);
     try {
       const info = await Purchases.restorePurchases();
-      console.log('[RevenueCat] restorePurchases OK');
       await handleCustomerInfo(info);
       return info;
     } catch (err) {
-      console.warn('Restore error:', err?.message || String(err));
       throw err;
     } finally {
       setRestoring(false);
@@ -169,7 +162,7 @@ export function SubscriptionProvider({ children }) {
       const info = await Purchases.getCustomerInfo();
       await handleCustomerInfo(info);
     } catch (err) {
-      console.warn('Refresh error:', err?.message || String(err));
+      // Refresh error handled silently
     }
   };
 
@@ -180,18 +173,16 @@ export function SubscriptionProvider({ children }) {
       setIsPremium(false);
       setCustomerInfo(null);
     } catch (e) {
-      console.warn('Logout error:', e?.message || String(e));
+      // Logout error handled silently
     }
   };
 
   const logInRevenueCat = async (appUserId) => {
     try {
       const info = await Purchases.logIn(String(appUserId));
-      console.log('[RevenueCat] logIn result', { created: info?.created });
       await handleCustomerInfo(info?.customerInfo || info);
       return info;
     } catch (e) {
-      console.warn('Login error:', e?.message || String(e));
       throw e;
     }
   };
@@ -200,7 +191,6 @@ export function SubscriptionProvider({ children }) {
     try {
       const offerings = await Purchases.getOfferings();
       if (!offerings?.all) {
-        console.log('[RevenueCat] getOfferings returned no offerings');
         return;
       }
 
@@ -267,7 +257,7 @@ export function SubscriptionProvider({ children }) {
       });
       return next;
     } catch (e) {
-      console.warn('Failed to fetch offerings:', e?.message || String(e));
+      // Failed to fetch offerings - error handled silently
     }
   }, []);
 
@@ -277,6 +267,7 @@ export function SubscriptionProvider({ children }) {
       customerInfo,
       availablePackages,
       restoring,
+      subscriptionReady,
       purchasePackage,
       restorePurchases,
       refreshCustomerInfo,
@@ -284,7 +275,7 @@ export function SubscriptionProvider({ children }) {
       logOutRevenueCat,
       logInRevenueCat,
     }),
-    [isPremium, customerInfo, availablePackages, restoring]
+    [isPremium, customerInfo, availablePackages, restoring, subscriptionReady]
   );
 
   return (

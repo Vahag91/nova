@@ -10,6 +10,7 @@ import {
   Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import MyPressable from './MyPressable';
 
 const COLORS = {
@@ -28,6 +29,7 @@ const COLORS = {
 };
 
 const SplashView = ({ onNextClick, animationController }) => {
+  const { t } = useTranslation();
   const { width, height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
 
@@ -58,21 +60,20 @@ const SplashView = ({ onNextClick, animationController }) => {
         {/* Title + underline */}
         <View style={[styles.titleContainer, { maxWidth: contentMax }]}>
           <Text style={[styles.title, { fontSize: isSmall ? 30 : 34 }]} numberOfLines={1}>
-            CHAT CLOUD
+            {t('onboarding.splash.title')}
           </Text>
           <View style={styles.titleUnderline} />
         </View>
 
         {/* Tagline */}
         <Text style={[styles.subtitle, { fontSize: isSmall ? 13 : 14 }]}>
-          ENTERPRISE-GRADE AI SOLUTIONS
+          {t('onboarding.splash.tagline')}
         </Text>
 
         {/* Description */}
         <View style={[styles.card, { maxWidth: contentMax }]}>
           <Text style={[styles.description, { fontSize: isSmall ? 14 : 15, lineHeight: isSmall ? 22 : 24 }]}>
-            Empower your business with cutting-edge artificial intelligence technology designed for enterprise
-            professionals and teams.
+            {t('onboarding.splash.description')}
           </Text>
         </View>
 
@@ -96,7 +97,7 @@ const SplashView = ({ onNextClick, animationController }) => {
                 resizeMode="cover"
               />
             </View>
-            <Text style={styles.statsText}>Trusted by 500k+ users</Text>
+            <Text style={styles.statsText}>{t('onboarding.splash.stats')}</Text>
           </View>
 
           <View style={styles.ratingContainer}>
@@ -107,7 +108,7 @@ const SplashView = ({ onNextClick, animationController }) => {
               <Text style={styles.star}>★</Text>
               <Text style={[styles.star, { opacity: 0.6 }]}>★</Text>
             </View>
-            <Text style={styles.ratingText}>4.9 / 5</Text>
+            <Text style={styles.ratingText}>{t('onboarding.splash.rating')}</Text>
           </View>
         </View>
       </ScrollView>
@@ -122,7 +123,7 @@ const SplashView = ({ onNextClick, animationController }) => {
               touchOpacity={0.6}
               onPress={onNextClick}
             >
-              <Text style={[styles.buttonText, { fontSize: isSmall ? 16 : 17 }]}>Get Started</Text>
+              <Text style={[styles.buttonText, { fontSize: isSmall ? 16 : 17 }]}>{t('onboarding.splash.button')}</Text>
             </MyPressable>
           </View>
         </View>
@@ -146,15 +147,15 @@ const styles = StyleSheet.create({
   },
   appIcon: {
     borderRadius: 20,
-    ...Platform.select({
-      ios: {
-        shadowColor: COLORS.primary,
-        shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.18,
-        shadowRadius: 12,
-      },
-      android: { elevation: 6 },
-    }),
+    // ...Platform.select({
+    //   ios: {
+    //     shadowColor: COLORS.primary,
+    //     shadowOffset: { width: 0, height: 8 },
+    //     shadowOpacity: 0.18,
+    //     shadowRadius: 12,
+    //   },
+    //   android: { elevation: 6 },
+    // }),
   },
 
   /* ---------- Title ----------- */

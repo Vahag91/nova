@@ -14,7 +14,7 @@
     "currentlySelected": "Actualment seleccionat"
   },
   "models": {
-    "gpt-4o": "Model d’IA més potent",
+    "gpt-4o": "Model d'IA més potent",
     "gpt-4o-mini": "Ràpid per a tasques diàries",
     "gpt-5": "IA més potent i polivalent",
     "gpt-5-chat-latest": "Optimitzat per a xat i diàleg",
@@ -22,11 +22,43 @@
     "gpt-5-nano": "Model lleuger per a tasques simples",
     "o4-mini": "Model de raonament eficient",
     "gpt-4.1-mini": "GPT-4.1 compacte i capaç",
-    "claude-3-haiku": "IA d’Anthropic ràpida i enfocada",
-    "claude-3.7-sonnet": "Raonament refinat d’Anthropic",
+    "claude-3-haiku": "IA d'Anthropic ràpida i enfocada",
+    "claude-3.7-sonnet": "Raonament refinat d'Anthropic",
     "gemini-2.5-Flash": "Model més avançat de Google",
     "gemini-2.5-flash": "Model més avançat de Google",
     "gemini-2.0-flash": "IA de Google ràpida i precisa"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Model d'IA més potent",
+    "fast_everyday": "Ràpid per a tasques diàries",
+    "fast_reasoning": "Model ràpid amb bon raonament",
+    "great_reasoning": "Model de raonament avançat",
+    "coding_reasoning": "Programació i raonament avançats",
+    "better_coding": "Millor per a programació i raonament",
+    "best_overall": "Millor model d'IA complet",
+    "best_google": "Millor model de Google",
+    "best_xai": "Model xAI més potent",
+    "creative_focus": "Excel·lent per a escriptura creativa",
+    "code_helper": "Excel·lent per a ajuda amb codi",
+    "chat_focus": "Optimitzat per a xat",
+    "long_context": "Excel·lent per a contextos llargs",
+    "budget_friendly": "Model d'IA econòmic",
+    "ultra_fast": "Respostes ultraràpides",
+    "safe_default": "Elecció per defecte segura",
+    "multilingual": "Fort suport multilingüe",
+    "vision_strong": "Excel·lent amb imatges i visió",
+    "data_analysis": "Bo per a anàlisi de dades",
+    "structured_tasks": "Bo per a tasques estructurades",
+    "everyday_helper": "Model assistent diari",
+    "concise_answers": "Respostes curtes i concises",
+    "detailed_answers": "Respostes detallades pas a pas",
+    "experimental": "Model experimental de nova generació",
+    "reliable_classic": "Model clàssic fiable",
+    "lightweight": "Model lleuger i econòmic",
+    "chatty_personal": "Més amigable i personal",
+    "pro_users": "Millor per a usuaris avançats",
+    "research_helper": "Bo per a recerca i notes",
+    "reasoning_strong": "Model de raonament avançat"
   },
   "providers": {
     "openai": "OpenAI",
@@ -69,7 +101,7 @@
     "pleaseWait": "Espera, si us plau…",
     "processing": "Processant...",
     "tapToUploadImage": "Toca per pujar una imatge",
-    "camera": "Càmera",
+    "camera": "Pujar fotos",
     "library": "Biblioteca",
     "enterPrompt": "Introdueix un prompt per a la generació de text a imatge",
     "openInBrowser": "Obre al navegador",
@@ -225,7 +257,9 @@
     "rename": "Canvia el nom",
     "unpin": "Desfixa",
     "pin": "Fixa",
-    "untitled": "Sense títol"
+    "untitled": "Sense títol",
+    "noResults": "Encara no hi ha xats",
+    "startNewChat": "Inicia un xat"
   },
   "settings": {
     "title": "Configuració",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Coneix",
       "titleHighlight": "Image Studio",
-      "subtitle": "Crea i edita imatges amb IA — dins de {{app}}.",
+      "subtitle": "Crea i edita imatges amb IA — dins de ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Coneix la teva IA",
       "titleHighlight": "Assistents",
       "subtitle": "Especialistes d’IA preparats per ajudar-te en el dia a dia",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Coach de fitness",
-          "text": "Entrenaments i consells de nutrició adaptats als teus objectius"
+          "text": "Petits hàbits i entrenaments a casa."
         },
-        {
-          "title": "Doctor",
-          "text": "Informació de salut, anàlisi de símptomes i orientació mèdica"
+        "recipes": {
+          "title": "Àpats i receptes",
+          "text": "Què cuinar amb el que tens."
         },
-        {
-          "title": "Cura de mascotes",
-          "text": "Consells d’experts en salut, entrenament i benestar"
+        "travel": {
+          "title": "Company de viatge",
+          "text": "Plans simples i llistes de maletes."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "Millor preu"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} fitxes",
+      "tokensLabel": "{{credits}} fitxes",
       "defaultName": "Paquet {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} fitxes"
     },
     "premium": {
       "title": "Passa a Premium",
@@ -572,7 +607,13 @@
     "features": {
       "create": "Crea imatges i vídeos",
       "search": "Cerca al web amb IA",
-      "talk": "Parla de manera natural amb la IA"
+      "talk": "Parla de manera natural amb la IA",
+      "imageStudio": "Aconsegueix Image Studio {{credits}} crèdits {{period}}",
+      "period": {
+        "weekly": "setmanal",
+        "monthly": "mensual",
+        "yearly": "anual"
+      }
     },
     "freeTrial": {
       "title": "Prova gratuïta",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Missatge...",
     "createImages": "Crea imatges",
     "generateAiArtwork": "Genera art amb IA",
-    "camera": "Càmera",
-    "takeOrSelectPhotos": "Fes o selecciona fotos",
+    "camera": "Pujar fotos",
+    "takeOrSelectPhotos": "Selecciona fotos",
     "search": "Cerca",
     "findInformation": "Troba informació",
     "findRecentInfo": "Troba informació recent",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "amb paraules senzilles",
       "planDay": "Planifica el meu dia",
       "planDaySubtitle": "amb consells de productivitat"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Processant...",
-    "camera": "Càmera",
+    "camera": "Pujar fotos",
     "library": "Biblioteca"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Desa",
     "delete": "Suprimeix",
     "close": "Tanca",
-    "allow": "Permet"
+    "allow": "Permet",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Gaudiu de ChatCloud?",
@@ -742,5 +788,63 @@
     "rateNow": "Valora ara",
     "maybeLater": "Potser més tard",
     "dontAskAgain": "No tornar a preguntar"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Exclusiu",
+    "badgeLine2": "Oferta única",
+    "upgradeNow": "Actualitza ara per {{price}}",
+    "loadingPrice": "Carregant...",
+    "termsOfUse": "Termes d'Ús",
+    "privacyPolicy": "Política de Privacitat",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

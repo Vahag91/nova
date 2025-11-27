@@ -89,12 +89,16 @@ const CareView = ({ animationController }) => {
         </View>
 
         <Animated.View style={[styles.heroBlock, { transform: [{ translateY: titleTY }] }]}>
-          <Text style={styles.heroTitle} numberOfLines={1}>
-            {t('onboarding.careView.titlePrefix')}{' '}
-            <Text style={{ color: '#00F0FF' }}>{t('onboarding.careView.titleHighlight')}</Text>
-          </Text>
+          <View style={styles.heroTitleContainer}>
+            <Text style={styles.heroTitle}>
+              {t('onboarding.careView.titlePrefix')}
+            </Text>
+            <Text style={[styles.heroTitle, { color: '#00F0FF' }]}>
+              {t('onboarding.careView.titleHighlight')}
+            </Text>
+          </View>
           <Text style={styles.heroSub}>
-            {t('onboarding.careView.subtitle', { app: t('onboarding.careView.appName') })}
+            {t('onboarding.careView.subtitle')}
           </Text>
         </Animated.View>
       </Animated.View>
@@ -148,6 +152,10 @@ const styles = StyleSheet.create({
 
 
   heroBlock: { width: '100%', alignItems: 'center', marginTop: 30 },
+  heroTitleContainer: {
+    alignItems: 'center',
+    marginBottom: 16,
+  },
   heroTitle: {
     color: COLORS.text,
     textAlign: 'center',
@@ -155,7 +163,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: -1,
     lineHeight: 56,
-    marginBottom: 16,
   },
   heroSub: {
     color: COLORS.muted,

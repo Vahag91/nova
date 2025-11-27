@@ -28,6 +28,38 @@
     "gemini-2.5-flash": "Model paling canggih Google",
     "gemini-2.0-flash": "Google AI pantas dan tepat"
   },
+  "modelDescriptions": {
+    "most_powerful": "Model AI paling berkuasa",
+    "fast_everyday": "Pantas untuk tugasan harian",
+    "fast_reasoning": "Model pantas dengan penaakulan yang baik",
+    "great_reasoning": "Model penaakulan canggih",
+    "coding_reasoning": "Pengaturcaraan dan penaakulan canggih",
+    "better_coding": "Lebih baik untuk pengaturcaraan dan penaakulan",
+    "best_overall": "Model AI serba guna terbaik",
+    "best_google": "Model terbaik Google",
+    "best_xai": "Model xAI paling berkuasa",
+    "creative_focus": "Sangat baik untuk penulisan kreatif",
+    "code_helper": "Sangat baik untuk bantuan pengaturcaraan",
+    "chat_focus": "Dioptimumkan untuk sembang",
+    "long_context": "Sangat baik untuk konteks panjang",
+    "budget_friendly": "Model AI mesra bajet",
+    "ultra_fast": "Respons ultra pantas",
+    "safe_default": "Pilihan lalai yang selamat",
+    "multilingual": "Sokongan pelbagai bahasa yang kuat",
+    "vision_strong": "Sangat baik dengan imej dan penglihatan",
+    "data_analysis": "Baik untuk analisis data",
+    "structured_tasks": "Baik untuk tugasan berstruktur",
+    "everyday_helper": "Model pembantu harian",
+    "concise_answers": "Jawapan ringkas dan padat",
+    "detailed_answers": "Jawapan terperinci langkah demi langkah",
+    "experimental": "Model eksperimen generasi seterusnya",
+    "reliable_classic": "Model klasik yang boleh dipercayai",
+    "lightweight": "Model ringan, kos rendah",
+    "chatty_personal": "Lebih mesra dan peribadi",
+    "pro_users": "Terbaik untuk pengguna maju",
+    "research_helper": "Baik untuk penyelidikan dan nota",
+    "reasoning_strong": "Model penaakulan canggih"
+  },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
@@ -69,7 +101,7 @@
     "pleaseWait": "Sila tunggu…",
     "processing": "Memproses...",
     "tapToUploadImage": "Ketik untuk muat naik imej",
-    "camera": "Kamera",
+    "camera": "Muat naik foto",
     "library": "Galeri",
     "enterPrompt": "Sila masukkan prompt untuk jana imej dari teks",
     "openInBrowser": "Buka dalam pelayar",
@@ -225,7 +257,9 @@
     "rename": "Tukar nama",
     "unpin": "Nyah pin",
     "pin": "Pin",
-    "untitled": "Tiada tajuk"
+    "untitled": "Tiada tajuk",
+    "noResults": "Belum ada sembang",
+    "startNewChat": "Mulakan sembang"
   },
   "settings": {
     "title": "Tetapan",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Kenali",
       "titleHighlight": "Image Studio",
-      "subtitle": "Cipta & edit imej dengan AI — terus dalam {{app}}.",
+      "subtitle": "Cipta & edit imej dengan AI — terus dalam ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Temui AI anda",
       "titleHighlight": "Pembantu",
       "subtitle": "Pakar AI khusus sedia membantu keperluan harian anda",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Jurulatih Kecergasan",
-          "text": "Dapatkan pelan senaman dan nutrisi ikut sasaran anda"
+          "text": "Tabiat kecil & senaman di rumah."
         },
-        {
-          "title": "Doktor",
-          "text": "Dapatkan maklumat kesihatan, analisis simptom dan panduan"
+        "recipes": {
+          "title": "Hidangan & Resipi",
+          "text": "Apa yang perlu dimasak dengan apa yang anda ada."
         },
-        {
-          "title": "Penjagaan Haiwan",
-          "text": "Nasihat tentang kesihatan, latihan dan penjagaan haiwan kesayangan"
+        "travel": {
+          "title": "Rakan Perjalanan",
+          "text": "Rancangan mudah & senarai bungkusan."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -529,10 +563,10 @@
     }
   },
   "coinStore": {
-    "title": "Dapatkan Token",
+    "title": "Dapatkan Credit",
     "loading": "Memuatkan kedai token…",
     "balanceLabel": "Baki semasa anda ialah",
-    "balanceValue": "{{amount}} Token",
+    "balanceValue": "{{amount}} Credit",
     "history": {
       "link": "Sejarah Transaksi",
       "alertTitle": "Sejarah",
@@ -545,9 +579,10 @@
       "value": "Paling Berbaloi"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} Token",
+      "tokensLabel": "{{credits}} Credit",
       "defaultName": "Pek {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} Credit"
     },
     "premium": {
       "title": "Jadi Premium",
@@ -560,7 +595,7 @@
       "initErrorTitle": "Ralat permulaan",
       "genericMessage": "Ada sesuatu yang tidak kena.",
       "successTitle": "Berjaya",
-      "successMessage": "Token akan muncul sebentar lagi.",
+      "successMessage": "Credit akan muncul sebentar lagi.",
       "purchaseFailedTitle": "Pembelian gagal",
       "unknownError": "Ralat tidak diketahui"
     }
@@ -572,7 +607,13 @@
     "features": {
       "create": "Cipta imej dan video",
       "search": "Cari web dengan AI",
-      "talk": "Berbual secara semula jadi dengan AI"
+      "talk": "Berbual secara semula jadi dengan AI",
+      "imageStudio": "Dapatkan Image Studio {{credits}} kredit {{period}}",
+      "period": {
+        "weekly": "mingguan",
+        "monthly": "bulanan",
+        "yearly": "tahunan"
+      }
     },
     "freeTrial": {
       "title": "Percubaan percuma",
@@ -613,8 +654,8 @@
     "messagePlaceholder": "Mesej...",
     "createImages": "Cipta Imej",
     "generateAiArtwork": "Jana karya AI",
-    "camera": "Kamera",
-    "takeOrSelectPhotos": "Ambil atau pilih foto",
+    "camera": "Muat naik foto",
+    "takeOrSelectPhotos": "Pilih foto",
     "search": "Cari",
     "findInformation": "Cari maklumat",
     "findRecentInfo": "Cari maklumat terbaharu",
@@ -714,7 +755,9 @@
       "explainConceptSubtitle": "dengan mudah",
       "planDay": "Rancang hari saya",
       "planDaySubtitle": "dengan tip produktiviti"
-    }
+    },
+    "copied": "Copied",
+    "offlineError": "No internet connection. Please check your connection and try again."
   },
   "imageUpload": {
     "required": " *",
@@ -724,7 +767,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Memproses...",
-    "camera": "Kamera",
+    "camera": "Muat naik foto",
     "library": "Galeri"
   },
   "common": {
@@ -734,7 +777,10 @@
     "save": "Simpan",
     "delete": "Padam",
     "close": "Tutup",
-    "allow": "Benarkan"
+    "allow": "Benarkan",
+    "ok": "OK",
+    "retry": "Retry",
+    "tryAgain": "Try Again"
   },
   "rateUs": {
     "title": "Menikmati ChatCloud?",
@@ -742,5 +788,63 @@
     "rateNow": "Nilaikan sekarang",
     "maybeLater": "Mungkin kemudian",
     "dontAskAgain": "Jangan tanya lagi"
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Required",
+    "upgrade": "Upgrade",
+    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
+    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
+    "assistantsTitle": "Premium Required",
+    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
+  },
+  "oneTimeOffer": {
+    "title": "One-Time Offer",
+    "subtitle": "You will not see this offer again.",
+    "badgeLine1": "Eksklusif",
+    "badgeLine2": "Tawaran sekali",
+    "upgradeNow": "Naik taraf sekarang untuk {{price}}",
+    "loadingPrice": "Memuatkan...",
+    "termsOfUse": "Terma Penggunaan",
+    "privacyPolicy": "Dasar Privasi",
+    "accessTitle": "Unlimited access to",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited access to GPT-4",
+      "geminiPro": "Access to Gemini Pro",
+      "grokInsights": "Utilize Grok for fresh insights",
+      "priorityAccess": "Priority access & faster responses"
+    },
+    "bestValue": "Best Value",
+    "annualPremium": "Annual Premium",
+    "oneTimePayment": "One-time payment",
+    "wasPrice": "was",
+    "continue": "Continue",
+    "restore": "Restore",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "successTitle": "Success!",
+    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
+    "errorTitle": "Purchase Failed",
+    "errorMessage": "Something went wrong. Please try again.",
+    "restoreSuccessTitle": "Restored",
+    "restoreSuccessMessage": "Your purchases have been restored.",
+    "restoreErrorTitle": "Restore Failed",
+    "restoreErrorMessage": "No purchases found to restore."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Failed to Load Models",
+      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
+      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
+      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
+      "deviceIdTitle": "Initialization Error",
+      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
+      "storageTitle": "Storage Error",
+      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
+      "crashTitle": "Something went wrong.",
+      "crashSubtitle": "Please try again.",
+      "crashLabel": "App crashed"
+    }
   }
 }

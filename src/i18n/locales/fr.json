@@ -14,7 +14,7 @@
     "currentlySelected": "Actuellement sélectionné"
   },
   "models": {
-    "gpt-4o": "Modèle d’IA le plus puissant",
+    "gpt-4o": "Modèle d'IA le plus puissant",
     "gpt-4o-mini": "Rapide pour les tâches quotidiennes",
     "gpt-5": "IA polyvalente la plus puissante",
     "gpt-5-chat-latest": "Optimisé pour le chat et le dialogue",
@@ -27,6 +27,38 @@
     "gemini-2.5-Flash": "Modèle le plus avancé de Google",
     "gemini-2.5-flash": "Modèle le plus avancé de Google",
     "gemini-2.0-flash": "IA Google rapide et précise"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Modèle d'IA le plus puissant",
+    "fast_everyday": "Rapide pour les tâches quotidiennes",
+    "fast_reasoning": "Modèle rapide avec bon raisonnement",
+    "great_reasoning": "Modèle de raisonnement avancé",
+    "coding_reasoning": "Programmation et raisonnement avancés",
+    "better_coding": "Mieux pour la programmation et le raisonnement",
+    "best_overall": "Meilleur modèle d'IA polyvalent",
+    "best_google": "Meilleur modèle de Google",
+    "best_xai": "Modèle xAI le plus puissant",
+    "creative_focus": "Excellent pour l'écriture créative",
+    "code_helper": "Excellent pour l'aide au codage",
+    "chat_focus": "Optimisé pour le chat",
+    "long_context": "Excellent pour les longs contextes",
+    "budget_friendly": "Modèle d'IA économique",
+    "ultra_fast": "Réponses ultra rapides",
+    "safe_default": "Choix par défaut sûr",
+    "multilingual": "Fort support multilingue",
+    "vision_strong": "Excellent avec les images et la vision",
+    "data_analysis": "Bon pour l'analyse de données",
+    "structured_tasks": "Bon pour les tâches structurées",
+    "everyday_helper": "Modèle assistant quotidien",
+    "concise_answers": "Réponses courtes et concises",
+    "detailed_answers": "Réponses détaillées étape par étape",
+    "experimental": "Modèle expérimental de nouvelle génération",
+    "reliable_classic": "Modèle classique fiable",
+    "lightweight": "Modèle léger et économique",
+    "chatty_personal": "Plus amical et personnel",
+    "pro_users": "Meilleur pour les utilisateurs avancés",
+    "research_helper": "Bon pour la recherche et les notes",
+    "reasoning_strong": "Modèle de raisonnement avancé"
   },
   "providers": {
     "openai": "OpenAI",
@@ -69,7 +101,7 @@
     "pleaseWait": "Veuillez patienter…",
     "processing": "Traitement...",
     "tapToUploadImage": "Touchez pour téléverser une image",
-    "camera": "Appareil photo",
+    "camera": "Télécharger des photos",
     "library": "Bibliothèque",
     "enterPrompt": "Veuillez saisir un prompt pour la génération texte-vers-image",
     "openInBrowser": "Ouvrir dans le navigateur",
@@ -225,7 +257,9 @@
     "rename": "Renommer",
     "unpin": "Détacher",
     "pin": "Épingler",
-    "untitled": "Sans titre"
+    "untitled": "Sans titre",
+    "noResults": "Aucun chat pour le moment",
+    "startNewChat": "Commencer un chat"
   },
   "settings": {
     "title": "Réglages",
@@ -497,27 +531,27 @@
     "careView": {
       "titlePrefix": "Découvrez",
       "titleHighlight": "Image Studio",
-      "subtitle": "Créez et modifiez des images avec l’IA — directement dans {{app}}.",
+      "subtitle": "Créez et modifiez des images avec l’IA — directement dans ChatCloud.",
       "appName": "ChatCloud"
     },
     "relaxView": {
       "title": "Découvrez votre IA",
       "titleHighlight": "Assistants",
       "subtitle": "Des experts IA spécialisés prêts à vous aider au quotidien",
-      "cards": [
-        {
+      "cards": {
+        "fitness": {
           "title": "Coach fitness",
-          "text": "Programmes d’entraînement et conseils nutrition adaptés à vos objectifs"
+          "text": "Petites habitudes et entraînements à domicile."
         },
-        {
-          "title": "Docteur",
-          "text": "Infos santé, analyse de symptômes et conseils médicaux"
+        "recipes": {
+          "title": "Repas et recettes",
+          "text": "Que cuisiner avec ce que vous avez."
         },
-        {
-          "title": "Soins pour animaux",
-          "text": "Conseils d’experts sur la santé, le dressage et le soin de vos compagnons"
+        "travel": {
+          "title": "Compagnon de voyage",
+          "text": "Plans simples et listes de bagages."
         }
-      ]
+      }
     },
     "splash": {
       "title": "CHAT CLOUD",
@@ -545,9 +579,10 @@
       "value": "Meilleure offre"
     },
     "pack": {
-      "tokensLabel": "{{tokens}} jetons",
+      "tokensLabel": "{{credits}} jetons",
       "defaultName": "Pack {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "$—",
+      "creditsLabel": "{{credits}} jetons"
     },
     "premium": {
       "title": "Passer Premium",
@@ -565,6 +600,15 @@
       "unknownError": "Erreur inconnue"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Requis",
+    "upgrade": "Mettre à niveau",
+    "modelRequiredMessage": "Ce modèle nécessite Premium. Mettez à niveau pour accéder à GPT-5, Grok 4, Claude et d'autres modèles avancés.",
+    "assistantsRequiredMessage": "Les assistants nécessitent Premium. Mettez à niveau pour accéder à des assistants IA spécialisés pour le fitness, la programmation, l'écriture et plus encore.",
+    "assistantsTitle": "Premium Requis",
+    "assistantsMessage": "Les assistants nécessitent Premium. Mettez à niveau pour accéder à des assistants IA spécialisés pour le fitness, la programmation, l'écriture et plus encore."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
     "restore": "Restaurer",
@@ -572,7 +616,13 @@
     "features": {
       "create": "Créer des images et vidéos",
       "search": "Rechercher sur le web avec l’IA",
-      "talk": "Parler naturellement à l’IA"
+      "talk": "Parler naturellement à l’IA",
+      "imageStudio": "Obtenez Image Studio {{credits}} crédits {{period}}",
+      "period": {
+        "weekly": "hebdomadaire",
+        "monthly": "mensuel",
+        "yearly": "annuel"
+      }
     },
     "freeTrial": {
       "title": "Essai gratuit",
@@ -609,12 +659,61 @@
       "privacy": "Confidentialité"
     }
   },
+  "oneTimeOffer": {
+    "title": "Offre Unique",
+    "subtitle": "Vous ne reverrez plus cette offre.",
+    "badgeLine1": "Exclusif",
+    "badgeLine2": "Offre unique",
+    "upgradeNow": "Mettre à niveau maintenant pour {{price}}",
+    "loadingPrice": "Chargement...",
+    "termsOfUse": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "accessTitle": "Accès illimité à",
+    "accessSubtitle": "GPT, Gemini et Grok 4",
+    "features": {
+      "unlimitedGPT4": "Accès illimité à GPT-4",
+      "geminiPro": "Accès à Gemini Pro",
+      "grokInsights": "Utilisez Grok pour des informations fraîches",
+      "priorityAccess": "Accès prioritaire et réponses plus rapides"
+    },
+    "bestValue": "Meilleure Valeur",
+    "annualPremium": "Premium Annuel",
+    "oneTimePayment": "Paiement unique",
+    "wasPrice": "était",
+    "continue": "Continuer",
+    "restore": "Restaurer",
+    "terms": "Conditions",
+    "privacy": "Confidentialité",
+    "successTitle": "Succès !",
+    "successMessage": "Merci pour votre achat ! Vous avez maintenant un accès à vie à toutes les fonctionnalités premium.",
+    "errorTitle": "Achat Échoué",
+    "errorMessage": "Quelque chose s'est mal passé. Veuillez réessayer.",
+    "restoreSuccessTitle": "Restauré",
+    "restoreSuccessMessage": "Vos achats ont été restaurés.",
+    "restoreErrorTitle": "Restauration Échouée",
+    "restoreErrorMessage": "Aucun achat trouvé à restaurer."
+  },
+  "app": {
+    "errors": {
+      "modelsLoadTitle": "Échec du Chargement des Modèles",
+      "modelsLoadMessage": "Impossible de charger les modèles IA. L'application utilisera les modèles par défaut. Veuillez vérifier votre connexion Internet.",
+      "modelsLoadTimeout": "Le chargement des modèles a pris trop de temps. L'application utilisera les modèles par défaut. Veuillez réessayer.",
+      "modelsLoadNetwork": "Pas de connexion Internet. L'application utilisera les modèles par défaut. Veuillez vérifier votre connexion.",
+      "deviceIdTitle": "Erreur d'Initialisation",
+      "deviceIdMessage": "Échec de l'initialisation de l'ID du appareil. Certaines fonctionnalités peuvent ne pas fonctionner correctement.",
+      "storageTitle": "Erreur de Stockage",
+      "storageMessage": "Impossible d'accéder au stockage local. Certaines fonctionnalités peuvent ne pas fonctionner correctement.",
+      "crashTitle": "Quelque chose s'est mal passé.",
+      "crashSubtitle": "Veuillez réessayer.",
+      "crashLabel": "L'application a planté"
+    }
+  },
   "chat": {
     "messagePlaceholder": "Message...",
     "createImages": "Créer des images",
     "generateAiArtwork": "Générer une illustration IA",
-    "camera": "Appareil photo",
-    "takeOrSelectPhotos": "Prendre ou choisir des photos",
+    "camera": "Télécharger des photos",
+    "takeOrSelectPhotos": "Choisir des photos",
     "search": "Rechercher",
     "findInformation": "Trouver des informations",
     "findRecentInfo": "Trouver des infos récentes",
@@ -639,11 +738,13 @@
     "regenerateResponse": "Régénérer la réponse",
     "regenerateResponseHint": "Générer une nouvelle réponse",
     "copyCode": "Copier le code",
+    "copied": "Copié",
     "image": "image",
     "loading": "Chargement…",
     "loadingChat": "Chargement du chat...",
     "offlineBanner": "Vous êtes hors ligne. Les messages ne peuvent pas être envoyés.",
-    "imagePickerErrorTitle": "Erreur sélection d’image",
+    "offlineError": "Pas de connexion Internet. Veuillez vérifier votre connexion et réessayer.",
+    "imagePickerErrorTitle": "Erreur sélection d'image",
     "imagePickerErrorMessage": "Impossible d’accéder à vos photos. Veuillez réessayer.",
     "messageTooLong": "Message trop long ({{length}}). La limite est de {{limit}}.",
     "sendFailed": "Échec de l'envoi.",
@@ -724,7 +825,7 @@
   "imageGridSelector": {
     "required": " *",
     "processing": "Traitement...",
-    "camera": "Appareil photo",
+    "camera": "Télécharger des photos",
     "library": "Bibliothèque"
   },
   "common": {
@@ -734,7 +835,10 @@
     "save": "Enregistrer",
     "delete": "Supprimer",
     "close": "Fermer",
-    "allow": "Autoriser"
+    "allow": "Autoriser",
+    "ok": "OK",
+    "retry": "Réessayer",
+    "tryAgain": "Réessayer"
   },
   "rateUs": {
     "title": "Vous aimez ChatCloud ?",
