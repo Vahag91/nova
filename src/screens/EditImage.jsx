@@ -273,7 +273,16 @@ export default function EditImage({ navigation, route }) {
       await promptOpenSettings();
       return;
     }
-    const res = await launchImageLibrary({ mediaType: 'photo', selectionLimit: 1, includeBase64: true });
+    // Request base64 and force a decode/re-encode to bake EXIF orientation into pixels
+    const res = await launchImageLibrary({
+      mediaType: 'photo',
+      selectionLimit: 1,
+      includeBase64: true,
+      includeExtra: true,
+      maxWidth: 1800,
+      maxHeight: 1800,
+      quality: 1,
+    });
     const asset = res?.assets?.[0];
     if (asset?.uri) {
       setImageUri(asset.uri);

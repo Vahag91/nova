@@ -4,3 +4,4 @@ export const MODELS_URL = `${SUPABASE_BASE}/functions/v1/models`;
 export const CHAT_PROXY_URL = `${SUPABASE_BASE}/functions/v1/chat-proxy`;
 export const IMAGES_PROXY_URL = `${SUPABASE_BASE}/functions/v1/images-proxy`;
 export const IMAGES_RUNWARE_URL = `${SUPABASE_BASE}/functions/v1/images-runware`;
+export const IMAGES_TEST_URL = `${SUPABASE_BASE}/functions/v1/images-test`;

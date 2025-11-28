@@ -1,4 +1,4 @@
-import { IMAGES_RUNWARE_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
+import { IMAGES_RUNWARE_URL,IMAGES_TEST_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 
 /**
  * createRunwareImages

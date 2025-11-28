@@ -646,7 +646,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(11,11,14,0.96)',
   },
   resultContent: {
-    gap: 24,
+    gap: 10,
     alignItems: 'center',
     width: '94%',
     maxWidth: 560,
@@ -668,6 +668,7 @@ const styles = StyleSheet.create({
   previewWrap: {
     width: '100%',
     maxWidth: 560,
+    maxHeight: 500,
     alignSelf: 'center',
     borderRadius: 32,
     overflow: 'hidden',
@@ -685,6 +686,7 @@ const styles = StyleSheet.create({
   },
   resultImage: {
     flex: 1,
+    // Reduce vertical scale slightly to avoid overflow in portrait layouts
   },
   resultMeta: {
     width: '92%',
