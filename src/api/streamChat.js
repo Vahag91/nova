@@ -2,10 +2,7 @@ import { CHAT_PROXY_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 import { SSEClient } from '../lib/SSEClient';
 
 const DEFAULT_FALLBACK_MODEL = 'gpt-5-nano';
-const logStream = (...args) => {
-  // Lightweight console logging to diagnose slow responses; keep minimal noise
-  try { console.log('[streamChat]', ...args); } catch {}
-};
+const logStream = () => {};
 
 export function streamChat({
   model,

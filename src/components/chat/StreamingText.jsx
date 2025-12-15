@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo, useRef } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Animated } from 'react-native';
 import MarkdownContent from './MarkdownContent';
 import { subscribeStream, getStream } from '../../lib/streamingBuffer';
 import { colors } from '../../styles/colors';
@@ -9,6 +9,7 @@ const CURSOR_CHAR = ' ▋';
 function StreamingText({ messageId, base = '', streaming = false, activityText }) {
   // The text currently visible on screen
   const [displayedText, setDisplayedText] = useState(base || '');
+  const pulseAnim = useRef(new Animated.Value(0)).current;
   
   // Refs to hold state without causing re-renders
   const fullContentRef = useRef(base || '');
@@ -18,22 +19,15 @@ function StreamingText({ messageId, base = '', streaming = false, activityText }
 
   // 1. Network Listener: Instantly captures data from the global buffer
   useEffect(() => {
-    if (!streaming || !messageId) {
-      // Stream finished or initial load: Sync state immediately
-      const final = getStream(messageId) || base;
-      if (__DEV__) {
-        console.log('[StreamingText] original payload', { messageId, text: final });
+      if (!streaming || !messageId) {
+        const final = getStream(messageId) || base;
+        fullContentRef.current = final;
+        setDisplayedText(final);
+        return;
       }
-      fullContentRef.current = final;
-      setDisplayedText(final);
-      return;
-    }
 
     // Initialize with current buffer
     const current = getStream(messageId) || base;
-    if (__DEV__) {
-      console.log('[StreamingText] initial buffer', { messageId, text: current });
-    }
     fullContentRef.current = current;
 
     // Subscribe to future updates (updates ref only, no render)
@@ -122,11 +116,28 @@ function StreamingText({ messageId, base = '', streaming = false, activityText }
 
   // 3. Skeleton State (Thinking)
   const showSkeleton = streaming && displayLengthRef.current === 0;
+  useEffect(() => {
+    if (!showSkeleton) return;
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulseAnim, { toValue: 1, duration: 800, useNativeDriver: true }),
+        Animated.timing(pulseAnim, { toValue: 0, duration: 800, useNativeDriver: true }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [showSkeleton, pulseAnim]);
+
+  const pulseStyle = {
+    opacity: pulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.55, 1] }),
+  };
 
   if (showSkeleton) {
     return (
       <View style={styles.skeletonContainer}>
-        <Text style={styles.activityText}>{activityText || 'Thinking...'}</Text>
+        <Animated.Text style={[styles.activityText, pulseStyle]}>
+          {activityText || 'Thinking...'}
+        </Animated.Text>
       </View>
     );
   }
@@ -150,10 +161,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   activityText: {
-    color: '#888',
+    color: colors.textSecondary,
     fontSize: 14,
     fontFamily: 'Lato-Regular',
-    fontStyle: 'italic',
+    fontWeight: '600',
   },
 });
 

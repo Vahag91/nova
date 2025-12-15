@@ -7,7 +7,6 @@ export const MarkdownImage = memo(({ uri, alt }) => {
   const IMAGE_MAX_W = 300;
   const lockedWRef = useRef(Math.min(screenW - H_PAD * 2, IMAGE_MAX_W));
   const [ratio, setRatio] = useState(16 / 9);
-console.log("worked image");
 
   return (
     <Image

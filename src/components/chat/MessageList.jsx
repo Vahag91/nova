@@ -13,7 +13,7 @@ import { colors } from '../../styles/colors';
 const BOTTOM_GAP = 16;
 const NEAR_BOTTOM_PAD_RATIO = 0.12;
 const logTouch = (where, extra = {}) => {
-  console.log(`[Touch] ${where}`, extra);
+  // touch tracking disabled in production
 };
 
 function toDayKey(d) {

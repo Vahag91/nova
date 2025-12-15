@@ -958,5 +958,11 @@
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Daily reward",
+      "body": "Don’t miss your daily coins — claim before midnight."
+    }
   }
 }

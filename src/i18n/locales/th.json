@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "รางวัล",
-    "openMenu": "เปิดเมนู",
-    "goBack": "ย้อนกลับ"
-  },
-  "pointsHero": {
-    "totalBalance": "ยอดรวมทั้งหมด",
-    "seeYourRewards": "ดูรางวัลของคุณ"
-  },
-  "streakTracker": {
-    "title": "สตรีคประจำวัน",
-    "subtitle": "ทำต่อไป! คุณกำลังไปได้สวย",
-    "days": "วัน",
-    "prize": "รางวัล",
-    "dayLabel": "วันที่ {{number}}",
-    "nextReward": "รางวัลถัดไป: {{amount}} ในอีก {{time}}",
-    "coins": "เหรียญ"
-  },
-  "sections": {
-    "availableQuests": "ภารกิจที่ทำได้",
-    "completedQuests": "ภารกิจที่สำเร็จแล้ว",
-    "availableRewards": "รางวัลที่รับได้",
-    "needsMoreCoins": "ต้องการเหรียญเพิ่ม"
-  },
-  "balances": {
-    "rewardCoins": "เหรียญรางวัล",
-    "imageCredits": "เครดิตรูปภาพ"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "เครดิตรูปภาพ 50",
-      "imageCredits200": "เครดิตรูปภาพ 200",
-      "imageCredits600": "เครดิตรูปภาพ 600",
-      "weeklyPremium": "พรีเมียมรายสัปดาห์",
-      "secretBox": "กล่องลับ"
+    "header": {
+      "title": "รางวัล",
+      "openMenu": "เปิดเมนู",
+      "goBack": "ย้อนกลับ"
     },
-    "rewardDescriptions": {
-      "secretBox": "มีรางวัลลับอยู่ข้างใน"
+    "pointsHero": {
+      "totalBalance": "ยอดรวมทั้งหมด",
+      "seeYourRewards": "ดูรางวัลของคุณ"
     },
-    "alerts": {
-      "comingSoonTitle": "เร็วๆ นี้",
-      "comingSoonMessage": "รางวัลนี้ยังไม่พร้อมใช้งาน",
-      "notEnoughCoinsTitle": "เหรียญไม่พอ",
-      "notEnoughCoinsMessage": "คุณต้องมีเหรียญรางวัลมากกว่านี้เพื่อปลดล็อกรางวัลนี้",
-      "errorTitle": "ข้อผิดพลาด",
-      "couldNotOpenBox": "ไม่สามารถเปิดกล่องได้",
-      "couldNotRedeem": "ไม่สามารถแลกรางวัลได้ กรุณาลองใหม่อีกครั้ง",
-      "mysteryReward": "รางวัลลับ"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "เข้าสู่ระบบรายวัน",
-      "description": "เปิดแอปวันนี้เพื่อรักษาสตรีคของคุณ",
-      "message": "ภารกิจนี้จะสำเร็จอัตโนมัติเมื่อคุณเปิดแอปในแต่ละวัน"
+    "streakTracker": {
+      "title": "สตรีคประจำวัน",
+      "subtitle": "ทำต่อไป! คุณกำลังไปได้สวย",
+      "days": "วัน",
+      "prize": "รางวัล",
+      "dayLabel": "วันที่ {{number}}",
+      "nextReward": "รางวัลถัดไป: {{amount}} ในอีก {{time}}",
+      "coins": "เหรียญ"
     },
-    "shareFacebook": {
-      "title": "แชร์บน Facebook",
-      "description": "โพสต์เกี่ยวกับเราบน Facebook"
+    "sections": {
+      "availableQuests": "ภารกิจที่ทำได้",
+      "completedQuests": "ภารกิจที่สำเร็จแล้ว",
+      "availableRewards": "รางวัลที่รับได้",
+      "needsMoreCoins": "ต้องการเหรียญเพิ่ม"
     },
-    "shareTwitter": {
-      "title": "แชร์บน X",
-      "description": "ทวีตประสบการณ์ของคุณ"
+    "balances": {
+      "rewardCoins": "เหรียญรางวัล",
+      "imageCredits": "เครดิตรูปภาพ"
     },
-    "shareInstagram": {
-      "title": "แชร์บน Instagram",
-      "description": "แชร์สตอรี่หรือโพสต์"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "เครดิตรูปภาพ 50",
+        "imageCredits200": "เครดิตรูปภาพ 200",
+        "imageCredits600": "เครดิตรูปภาพ 600",
+        "weeklyPremium": "พรีเมียมรายสัปดาห์",
+        "secretBox": "กล่องลับ"
+      },
+      "rewardDescriptions": {
+        "secretBox": "มีรางวัลลับอยู่ข้างใน"
+      },
+      "alerts": {
+        "comingSoonTitle": "เร็วๆ นี้",
+        "comingSoonMessage": "รางวัลนี้ยังไม่พร้อมใช้งาน",
+        "notEnoughCoinsTitle": "เหรียญไม่พอ",
+        "notEnoughCoinsMessage": "คุณต้องมีเหรียญรางวัลมากกว่านี้เพื่อปลดล็อกรางวัลนี้",
+        "errorTitle": "ข้อผิดพลาด",
+        "couldNotOpenBox": "ไม่สามารถเปิดกล่องได้",
+        "couldNotRedeem": "ไม่สามารถแลกรางวัลได้ กรุณาลองใหม่อีกครั้ง",
+        "mysteryReward": "รางวัลลับ"
+      }
     },
-    "shareExperience": {
-      "title": "แชร์ประสบการณ์ของคุณ",
-      "description": "บอกเพื่อนว่าทำไมคุณถึงชอบแอปนี้"
+    "quests": {
+      "dailyLogin": {
+        "title": "เข้าสู่ระบบรายวัน",
+        "description": "เปิดแอปวันนี้เพื่อรักษาสตรีคของคุณ",
+        "message": "ภารกิจนี้จะสำเร็จอัตโนมัติเมื่อคุณเปิดแอปในแต่ละวัน"
+      },
+      "shareFacebook": {
+        "title": "แชร์บน Facebook",
+        "description": "โพสต์เกี่ยวกับเราบน Facebook"
+      },
+      "shareTwitter": {
+        "title": "แชร์บน X",
+        "description": "ทวีตประสบการณ์ของคุณ"
+      },
+      "shareInstagram": {
+        "title": "แชร์บน Instagram",
+        "description": "แชร์สตอรี่หรือโพสต์"
+      },
+      "shareExperience": {
+        "title": "แชร์ประสบการณ์ของคุณ",
+        "description": "บอกเพื่อนว่าทำไมคุณถึงชอบแอปนี้"
+      },
+      "share": {
+        "genericMessage": "ฉันกำลังใช้แอป AI นี้สำหรับแชทและสร้างรูปภาพ ลองดูได้ที่: {{url}}",
+        "facebookQuote": "ลองดูแอป AI นี้สิ!",
+        "twitterText": "ฉันกำลังลองใช้แอป AI นี้ อยู่ เจ๋งมากเลย",
+        "instagramMessage": "ลองดูแอป AI นี้: {{url}}"
+      },
+      "store": {
+        "errorTitle": "ข้อผิดพลาด",
+        "errorMessage": "ไม่สามารถเปิดหน้าร้านค้าได้"
+      }
     },
-    "share": {
-      "genericMessage": "ฉันกำลังใช้แอป AI นี้สำหรับแชทและสร้างรูปภาพ ลองดูได้ที่: {{url}}",
-      "facebookQuote": "ลองดูแอป AI นี้สิ!",
-      "twitterText": "ฉันกำลังลองใช้แอป AI นี้ อยู่ เจ๋งมากเลย",
-      "instagramMessage": "ลองดูแอป AI นี้: {{url}}"
-    },
-    "store": {
-      "errorTitle": "ข้อผิดพลาด",
-      "errorMessage": "ไม่สามารถเปิดหน้าร้านค้าได้"
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "สำเร็จภารกิจ",
-      "description": "ทำภารกิจสำเร็จ",
-      "points": "+{{points}} คะแนน",
-      "close": "ปิด"
-    },
-    "rewardSuccess": {
-      "error": "ข้อผิดพลาด",
-      "success": "สำเร็จ",
-      "somethingWentWrong": "เกิดข้อผิดพลาดบางอย่าง",
-      "rewardUnlocked": "ปลดล็อกรางวัลแล้ว",
-      "credits": "เครดิต",
-      "close": "ปิด",
-      "okay": "ตกลง"
-    },
-    "secretBox": {
-      "pill": "กล่องลับ",
-      "rewardUnlocked": "ปลดล็อกรางวัลแล้ว",
-      "shufflingRewards": "กำลังสุ่มรางวัล...",
-      "imageCreditsAdded": "เพิ่มเครดิตรูปภาพไปยังบัญชีของคุณแล้ว",
-      "continue": "ดำเนินการต่อ",
-      "revealing": "กำลังเปิดเผย...",
-      "prizeTiers": {
-        "lucky": "โชคดี",
-        "pro": "โปร",
-        "elite": "เอลีท",
-        "mythic": "ระดับตำนาน"
+    "modals": {
+      "questCompleted": {
+        "title": "สำเร็จภารกิจ",
+        "description": "ทำภารกิจสำเร็จ",
+        "points": "+{{points}} คะแนน",
+        "close": "ปิด"
+      },
+      "rewardSuccess": {
+        "error": "ข้อผิดพลาด",
+        "success": "สำเร็จ",
+        "somethingWentWrong": "เกิดข้อผิดพลาดบางอย่าง",
+        "rewardUnlocked": "ปลดล็อกรางวัลแล้ว",
+        "credits": "เครดิต",
+        "close": "ปิด",
+        "okay": "ตกลง"
+      },
+      "secretBox": {
+        "pill": "กล่องลับ",
+        "rewardUnlocked": "ปลดล็อกรางวัลแล้ว",
+        "shufflingRewards": "กำลังสุ่มรางวัล...",
+        "imageCreditsAdded": "เพิ่มเครดิตรูปภาพไปยังบัญชีของคุณแล้ว",
+        "continue": "ดำเนินการต่อ",
+        "revealing": "กำลังเปิดเผย...",
+        "prizeTiers": {
+          "lucky": "โชคดี",
+          "pro": "โปร",
+          "elite": "เอลีท",
+          "mythic": "ระดับตำนาน"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "รางวัลประจำวัน",
+      "body": "อย่าพลาดเหรียญประจำวัน — รับก่อนเที่ยงคืน"
+    }
   }
-}
 }

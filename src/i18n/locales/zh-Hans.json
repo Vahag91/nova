@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "奖励",
-    "openMenu": "打开菜单",
-    "goBack": "返回"
-  },
-  "pointsHero": {
-    "totalBalance": "总余额",
-    "seeYourRewards": "查看你的奖励"
-  },
-  "streakTracker": {
-    "title": "每日连胜",
-    "subtitle": "继续保持！你太棒了。",
-    "days": "天",
-    "prize": "奖励",
-    "dayLabel": "第 {{number}} 天",
-    "nextReward": "下一次奖励：{{time}} 后 {{amount}}",
-    "coins": "金币"
-  },
-  "sections": {
-    "availableQuests": "可用任务",
-    "completedQuests": "已完成任务",
-    "availableRewards": "可用奖励",
-    "needsMoreCoins": "还需要更多金币"
-  },
-  "balances": {
-    "rewardCoins": "奖励金币",
-    "imageCredits": "图片点数"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 图片点数",
-      "imageCredits200": "200 图片点数",
-      "imageCredits600": "600 图片点数",
-      "weeklyPremium": "每周高级版",
-      "secretBox": "神秘盒子"
+    "header": {
+      "title": "奖励",
+      "openMenu": "打开菜单",
+      "goBack": "返回"
     },
-    "rewardDescriptions": {
-      "secretBox": "内含神秘奖励"
+    "pointsHero": {
+      "totalBalance": "总余额",
+      "seeYourRewards": "查看你的奖励"
     },
-    "alerts": {
-      "comingSoonTitle": "即将上线",
-      "comingSoonMessage": "该奖励暂不可用。",
-      "notEnoughCoinsTitle": "金币不足",
-      "notEnoughCoinsMessage": "你需要更多奖励金币才能解锁该奖励。",
-      "errorTitle": "错误",
-      "couldNotOpenBox": "无法打开盒子。",
-      "couldNotRedeem": "无法兑换奖励。请重试。",
-      "mysteryReward": "神秘奖励"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "每日登录",
-      "description": "今天打开应用以保持连胜",
-      "message": "当你每天打开应用时，该任务会自动完成。"
+    "streakTracker": {
+      "title": "每日连胜",
+      "subtitle": "继续保持！你太棒了。",
+      "days": "天",
+      "prize": "奖励",
+      "dayLabel": "第 {{number}} 天",
+      "nextReward": "下一次奖励：{{time}} 后 {{amount}}",
+      "coins": "金币"
     },
-    "shareFacebook": {
-      "title": "分享到 Facebook",
-      "description": "在 Facebook 上发布关于我们的内容"
+    "sections": {
+      "availableQuests": "可用任务",
+      "completedQuests": "已完成任务",
+      "availableRewards": "可用奖励",
+      "needsMoreCoins": "还需要更多金币"
     },
-    "shareTwitter": {
-      "title": "分享到 X",
-      "description": "发布你的体验推文"
+    "balances": {
+      "rewardCoins": "奖励金币",
+      "imageCredits": "图片点数"
     },
-    "shareInstagram": {
-      "title": "分享到 Instagram",
-      "description": "分享一条动态或快拍"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 图片点数",
+        "imageCredits200": "200 图片点数",
+        "imageCredits600": "600 图片点数",
+        "weeklyPremium": "每周高级版",
+        "secretBox": "神秘盒子"
+      },
+      "rewardDescriptions": {
+        "secretBox": "内含神秘奖励"
+      },
+      "alerts": {
+        "comingSoonTitle": "即将上线",
+        "comingSoonMessage": "该奖励暂不可用。",
+        "notEnoughCoinsTitle": "金币不足",
+        "notEnoughCoinsMessage": "你需要更多奖励金币才能解锁该奖励。",
+        "errorTitle": "错误",
+        "couldNotOpenBox": "无法打开盒子。",
+        "couldNotRedeem": "无法兑换奖励。请重试。",
+        "mysteryReward": "神秘奖励"
+      }
     },
-    "shareExperience": {
-      "title": "分享你的体验",
-      "description": "告诉朋友你为什么喜欢这款应用"
+    "quests": {
+      "dailyLogin": {
+        "title": "每日登录",
+        "description": "今天打开应用以保持连胜",
+        "message": "当你每天打开应用时，该任务会自动完成。"
+      },
+      "shareFacebook": {
+        "title": "分享到 Facebook",
+        "description": "在 Facebook 上发布关于我们的内容"
+      },
+      "shareTwitter": {
+        "title": "分享到 X",
+        "description": "发布你的体验推文"
+      },
+      "shareInstagram": {
+        "title": "分享到 Instagram",
+        "description": "分享一条动态或快拍"
+      },
+      "shareExperience": {
+        "title": "分享你的体验",
+        "description": "告诉朋友你为什么喜欢这款应用"
+      },
+      "share": {
+        "genericMessage": "我在用这款 AI 应用进行聊天和图片生成。快来看看：{{url}}",
+        "facebookQuote": "快来看看这款 AI 应用！",
+        "twitterText": "我在试用这款 AI 应用，挺不错的。",
+        "instagramMessage": "快来看看这款 AI 应用：{{url}}"
+      },
+      "store": {
+        "errorTitle": "错误",
+        "errorMessage": "无法打开商店页面。"
+      }
     },
-    "share": {
-      "genericMessage": "我在用这款 AI 应用进行聊天和图片生成。快来看看：{{url}}",
-      "facebookQuote": "快来看看这款 AI 应用！",
-      "twitterText": "我在试用这款 AI 应用，挺不错的。",
-      "instagramMessage": "快来看看这款 AI 应用：{{url}}"
-    },
-    "store": {
-      "errorTitle": "错误",
-      "errorMessage": "无法打开商店页面。"
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "任务完成",
-      "description": "任务完成",
-      "points": "+{{points}} 积分",
-      "close": "关闭"
-    },
-    "rewardSuccess": {
-      "error": "错误",
-      "success": "成功",
-      "somethingWentWrong": "出了点问题",
-      "rewardUnlocked": "奖励已解锁",
-      "credits": "点数",
-      "close": "关闭",
-      "okay": "好的"
-    },
-    "secretBox": {
-      "pill": "神秘盒子",
-      "rewardUnlocked": "奖励已解锁",
-      "shufflingRewards": "正在随机抽取奖励...",
-      "imageCreditsAdded": "图片点数已添加到你的账户",
-      "continue": "继续",
-      "revealing": "揭晓中...",
-      "prizeTiers": {
-        "lucky": "幸运",
-        "pro": "PRO",
-        "elite": "精英",
-        "mythic": "神话"
+    "modals": {
+      "questCompleted": {
+        "title": "任务完成",
+        "description": "任务完成",
+        "points": "+{{points}} 积分",
+        "close": "关闭"
+      },
+      "rewardSuccess": {
+        "error": "错误",
+        "success": "成功",
+        "somethingWentWrong": "出了点问题",
+        "rewardUnlocked": "奖励已解锁",
+        "credits": "点数",
+        "close": "关闭",
+        "okay": "好的"
+      },
+      "secretBox": {
+        "pill": "神秘盒子",
+        "rewardUnlocked": "奖励已解锁",
+        "shufflingRewards": "正在随机抽取奖励...",
+        "imageCreditsAdded": "图片点数已添加到你的账户",
+        "continue": "继续",
+        "revealing": "揭晓中...",
+        "prizeTiers": {
+          "lucky": "幸运",
+          "pro": "PRO",
+          "elite": "精英",
+          "mythic": "神话"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "每日奖励",
+      "body": "别错过每日金币 — 请在午夜前领取。"
+    }
   }
-}
 }

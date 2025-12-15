@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Odmeny",
-    "openMenu": "Otvoriť menu",
-    "goBack": "Späť"
-  },
-  "pointsHero": {
-    "totalBalance": "CELKOVÝ ZOSTATOK",
-    "seeYourRewards": "Zobraziť odmeny"
-  },
-  "streakTracker": {
-    "title": "Denná séria",
-    "subtitle": "Len tak ďalej! Ideš skvelo.",
-    "days": "Dni",
-    "prize": "Odmena",
-    "dayLabel": "Deň {{number}}",
-    "nextReward": "Ďalšia odmena: {{amount}} o {{time}}",
-    "coins": "Mince"
-  },
-  "sections": {
-    "availableQuests": "Dostupné úlohy",
-    "completedQuests": "Dokončené úlohy",
-    "availableRewards": "Dostupné odmeny",
-    "needsMoreCoins": "Potrebujete viac mincí"
-  },
-  "balances": {
-    "rewardCoins": "Odmeňovacie mince",
-    "imageCredits": "Kredity na obrázky"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 kreditov na obrázky",
-      "imageCredits200": "200 kreditov na obrázky",
-      "imageCredits600": "600 kreditov na obrázky",
-      "weeklyPremium": "Týždenné Premium",
-      "secretBox": "Tajomná krabička"
+    "header": {
+      "title": "Odmeny",
+      "openMenu": "Otvoriť menu",
+      "goBack": "Späť"
     },
-    "rewardDescriptions": {
-      "secretBox": "Vo vnútri sú prekvapivé odmeny"
+    "pointsHero": {
+      "totalBalance": "CELKOVÝ ZOSTATOK",
+      "seeYourRewards": "Zobraziť odmeny"
     },
-    "alerts": {
-      "comingSoonTitle": "Už čoskoro",
-      "comingSoonMessage": "Táto odmena zatiaľ nie je dostupná.",
-      "notEnoughCoinsTitle": "Nedostatok mincí",
-      "notEnoughCoinsMessage": "Na odomknutie tejto odmeny potrebujete viac odmeňovacích mincí.",
-      "errorTitle": "Chyba",
-      "couldNotOpenBox": "Krabičku sa nepodarilo otvoriť.",
-      "couldNotRedeem": "Odmenu sa nepodarilo získať. Skúste to prosím znova.",
-      "mysteryReward": "Tajomná odmena"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Denné prihlásenie",
-      "description": "Otvorte aplikáciu dnes, aby ste si udržali sériu",
-      "message": "Táto úloha sa dokončí automaticky, keď každý deň otvoríte aplikáciu."
+    "streakTracker": {
+      "title": "Denná séria",
+      "subtitle": "Len tak ďalej! Ideš skvelo.",
+      "days": "Dni",
+      "prize": "Odmena",
+      "dayLabel": "Deň {{number}}",
+      "nextReward": "Ďalšia odmena: {{amount}} o {{time}}",
+      "coins": "Mince"
     },
-    "shareFacebook": {
-      "title": "Zdieľať na Facebooku",
-      "description": "Uverejnite o nás príspevok na Facebooku"
+    "sections": {
+      "availableQuests": "Dostupné úlohy",
+      "completedQuests": "Dokončené úlohy",
+      "availableRewards": "Dostupné odmeny",
+      "needsMoreCoins": "Potrebujete viac mincí"
     },
-    "shareTwitter": {
-      "title": "Zdieľať na X",
-      "description": "Tweetnite o svojej skúsenosti"
+    "balances": {
+      "rewardCoins": "Odmeňovacie mince",
+      "imageCredits": "Kredity na obrázky"
     },
-    "shareInstagram": {
-      "title": "Zdieľať na Instagrame",
-      "description": "Zdieľajte príbeh alebo príspevok"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 kreditov na obrázky",
+        "imageCredits200": "200 kreditov na obrázky",
+        "imageCredits600": "600 kreditov na obrázky",
+        "weeklyPremium": "Týždenné Premium",
+        "secretBox": "Tajomná krabička"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Vo vnútri sú prekvapivé odmeny"
+      },
+      "alerts": {
+        "comingSoonTitle": "Už čoskoro",
+        "comingSoonMessage": "Táto odmena zatiaľ nie je dostupná.",
+        "notEnoughCoinsTitle": "Nedostatok mincí",
+        "notEnoughCoinsMessage": "Na odomknutie tejto odmeny potrebujete viac odmeňovacích mincí.",
+        "errorTitle": "Chyba",
+        "couldNotOpenBox": "Krabičku sa nepodarilo otvoriť.",
+        "couldNotRedeem": "Odmenu sa nepodarilo získať. Skúste to prosím znova.",
+        "mysteryReward": "Tajomná odmena"
+      }
     },
-    "shareExperience": {
-      "title": "Zdieľajte svoju skúsenosť",
-      "description": "Povedzte priateľom, prečo sa vám aplikácia páči"
+    "quests": {
+      "dailyLogin": {
+        "title": "Denné prihlásenie",
+        "description": "Otvorte aplikáciu dnes, aby ste si udržali sériu",
+        "message": "Táto úloha sa dokončí automaticky, keď každý deň otvoríte aplikáciu."
+      },
+      "shareFacebook": {
+        "title": "Zdieľať na Facebooku",
+        "description": "Uverejnite o nás príspevok na Facebooku"
+      },
+      "shareTwitter": {
+        "title": "Zdieľať na X",
+        "description": "Tweetnite o svojej skúsenosti"
+      },
+      "shareInstagram": {
+        "title": "Zdieľať na Instagrame",
+        "description": "Zdieľajte príbeh alebo príspevok"
+      },
+      "shareExperience": {
+        "title": "Zdieľajte svoju skúsenosť",
+        "description": "Povedzte priateľom, prečo sa vám aplikácia páči"
+      },
+      "share": {
+        "genericMessage": "Používam túto AI aplikáciu na chat a generovanie obrázkov. Pozrite si ju: {{url}}",
+        "facebookQuote": "Pozrite si túto AI aplikáciu!",
+        "twitterText": "Skúšam túto AI aplikáciu, je fakt super.",
+        "instagramMessage": "Pozrite si túto AI aplikáciu: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Chyba",
+        "errorMessage": "Nepodarilo sa otvoriť stránku obchodu."
+      }
     },
-    "share": {
-      "genericMessage": "Používam túto AI aplikáciu na chat a generovanie obrázkov. Pozrite si ju: {{url}}",
-      "facebookQuote": "Pozrite si túto AI aplikáciu!",
-      "twitterText": "Skúšam túto AI aplikáciu, je fakt super.",
-      "instagramMessage": "Pozrite si túto AI aplikáciu: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Chyba",
-      "errorMessage": "Nepodarilo sa otvoriť stránku obchodu."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Úloha splnená",
-      "description": "Úloha splnená",
-      "points": "+{{points}} bodov",
-      "close": "Zavrieť"
-    },
-    "rewardSuccess": {
-      "error": "CHYBA",
-      "success": "ÚSPECH",
-      "somethingWentWrong": "Niečo sa pokazilo",
-      "rewardUnlocked": "Odmena odomknutá",
-      "credits": "Kredity",
-      "close": "Zavrieť",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "TAJOMNÁ KRABIČKA",
-      "rewardUnlocked": "ODMENA ODOMKNUTÁ",
-      "shufflingRewards": "MIEŠANIE ODMEN...",
-      "imageCreditsAdded": "Kredity na obrázky boli pridané do vášho účtu",
-      "continue": "Pokračovať",
-      "revealing": "Odhaľovanie...",
-      "prizeTiers": {
-        "lucky": "ŠŤASTNÝ",
-        "pro": "PRO",
-        "elite": "ELITE",
-        "mythic": "MYTICKÝ"
+    "modals": {
+      "questCompleted": {
+        "title": "Úloha splnená",
+        "description": "Úloha splnená",
+        "points": "+{{points}} bodov",
+        "close": "Zavrieť"
+      },
+      "rewardSuccess": {
+        "error": "CHYBA",
+        "success": "ÚSPECH",
+        "somethingWentWrong": "Niečo sa pokazilo",
+        "rewardUnlocked": "Odmena odomknutá",
+        "credits": "Kredity",
+        "close": "Zavrieť",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "TAJOMNÁ KRABIČKA",
+        "rewardUnlocked": "ODMENA ODOMKNUTÁ",
+        "shufflingRewards": "MIEŠANIE ODMEN...",
+        "imageCreditsAdded": "Kredity na obrázky boli pridané do vášho účtu",
+        "continue": "Pokračovať",
+        "revealing": "Odhaľovanie...",
+        "prizeTiers": {
+          "lucky": "ŠŤASTNÝ",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MYTICKÝ"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Denná odmena",
+      "body": "Nenech si ujsť denné mince — vyzdvihni ich pred polnocou."
+    }
   }
-}
 }

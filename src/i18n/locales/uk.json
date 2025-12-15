@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Нагороди",
-    "openMenu": "Відкрити меню",
-    "goBack": "Назад"
-  },
-  "pointsHero": {
-    "totalBalance": "ЗАГАЛЬНИЙ БАЛАНС",
-    "seeYourRewards": "Переглянути нагороди"
-  },
-  "streakTracker": {
-    "title": "Щоденна серія",
-    "subtitle": "Так тримати! Ви просто вогонь.",
-    "days": "Дні",
-    "prize": "Нагорода",
-    "dayLabel": "День {{number}}",
-    "nextReward": "Наступна нагорода: {{amount}} через {{time}}",
-    "coins": "Монети"
-  },
-  "sections": {
-    "availableQuests": "Доступні завдання",
-    "completedQuests": "Виконані завдання",
-    "availableRewards": "Доступні нагороди",
-    "needsMoreCoins": "Потрібно більше монет"
-  },
-  "balances": {
-    "rewardCoins": "Нагородні монети",
-    "imageCredits": "Кредити зображень"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 кредитів зображень",
-      "imageCredits200": "200 кредитів зображень",
-      "imageCredits600": "600 кредитів зображень",
-      "weeklyPremium": "Преміум на тиждень",
-      "secretBox": "Секретна коробка"
+    "header": {
+      "title": "Нагороди",
+      "openMenu": "Відкрити меню",
+      "goBack": "Назад"
     },
-    "rewardDescriptions": {
-      "secretBox": "Всередині — сюрпризи"
+    "pointsHero": {
+      "totalBalance": "ЗАГАЛЬНИЙ БАЛАНС",
+      "seeYourRewards": "Переглянути нагороди"
     },
-    "alerts": {
-      "comingSoonTitle": "Незабаром",
-      "comingSoonMessage": "Ця нагорода ще недоступна.",
-      "notEnoughCoinsTitle": "Недостатньо монет",
-      "notEnoughCoinsMessage": "Щоб розблокувати цю нагороду, потрібно більше нагородних монет.",
-      "errorTitle": "Помилка",
-      "couldNotOpenBox": "Не вдалося відкрити коробку.",
-      "couldNotRedeem": "Не вдалося отримати нагороду. Будь ласка, спробуйте ще раз.",
-      "mysteryReward": "Таємнича нагорода"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Щоденний вхід",
-      "description": "Відкрийте застосунок сьогодні, щоб зберегти серію",
-      "message": "Це завдання виконується автоматично, коли ви відкриваєте застосунок щодня."
+    "streakTracker": {
+      "title": "Щоденна серія",
+      "subtitle": "Так тримати! Ви просто вогонь.",
+      "days": "Дні",
+      "prize": "Нагорода",
+      "dayLabel": "День {{number}}",
+      "nextReward": "Наступна нагорода: {{amount}} через {{time}}",
+      "coins": "Монети"
     },
-    "shareFacebook": {
-      "title": "Поділитися у Facebook",
-      "description": "Зробіть допис про нас у Facebook"
+    "sections": {
+      "availableQuests": "Доступні завдання",
+      "completedQuests": "Виконані завдання",
+      "availableRewards": "Доступні нагороди",
+      "needsMoreCoins": "Потрібно більше монет"
     },
-    "shareTwitter": {
-      "title": "Поділитися в X",
-      "description": "Напишіть твіт про свій досвід"
+    "balances": {
+      "rewardCoins": "Нагородні монети",
+      "imageCredits": "Кредити зображень"
     },
-    "shareInstagram": {
-      "title": "Поділитися в Instagram",
-      "description": "Поділіться сторіс або дописом"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 кредитів зображень",
+        "imageCredits200": "200 кредитів зображень",
+        "imageCredits600": "600 кредитів зображень",
+        "weeklyPremium": "Преміум на тиждень",
+        "secretBox": "Секретна коробка"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Всередині — сюрпризи"
+      },
+      "alerts": {
+        "comingSoonTitle": "Незабаром",
+        "comingSoonMessage": "Ця нагорода ще недоступна.",
+        "notEnoughCoinsTitle": "Недостатньо монет",
+        "notEnoughCoinsMessage": "Щоб розблокувати цю нагороду, потрібно більше нагородних монет.",
+        "errorTitle": "Помилка",
+        "couldNotOpenBox": "Не вдалося відкрити коробку.",
+        "couldNotRedeem": "Не вдалося отримати нагороду. Будь ласка, спробуйте ще раз.",
+        "mysteryReward": "Таємнича нагорода"
+      }
     },
-    "shareExperience": {
-      "title": "Поділіться досвідом",
-      "description": "Розкажіть друзям, чому вам подобається застосунок"
+    "quests": {
+      "dailyLogin": {
+        "title": "Щоденний вхід",
+        "description": "Відкрийте застосунок сьогодні, щоб зберегти серію",
+        "message": "Це завдання виконується автоматично, коли ви відкриваєте застосунок щодня."
+      },
+      "shareFacebook": {
+        "title": "Поділитися у Facebook",
+        "description": "Зробіть допис про нас у Facebook"
+      },
+      "shareTwitter": {
+        "title": "Поділитися в X",
+        "description": "Напишіть твіт про свій досвід"
+      },
+      "shareInstagram": {
+        "title": "Поділитися в Instagram",
+        "description": "Поділіться сторіс або дописом"
+      },
+      "shareExperience": {
+        "title": "Поділіться досвідом",
+        "description": "Розкажіть друзям, чому вам подобається застосунок"
+      },
+      "share": {
+        "genericMessage": "Я використовую цей AI-застосунок для чату та генерації зображень. Перевірте: {{url}}",
+        "facebookQuote": "Перевірте цей AI-застосунок!",
+        "twitterText": "Я тестую цей AI-застосунок — він справді класний.",
+        "instagramMessage": "Перевірте цей AI-застосунок: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Помилка",
+        "errorMessage": "Не вдалося відкрити сторінку магазину."
+      }
     },
-    "share": {
-      "genericMessage": "Я використовую цей AI-застосунок для чату та генерації зображень. Перевірте: {{url}}",
-      "facebookQuote": "Перевірте цей AI-застосунок!",
-      "twitterText": "Я тестую цей AI-застосунок — він справді класний.",
-      "instagramMessage": "Перевірте цей AI-застосунок: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Помилка",
-      "errorMessage": "Не вдалося відкрити сторінку магазину."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Завдання виконано",
-      "description": "Завдання виконано",
-      "points": "+{{points}} балів",
-      "close": "Закрити"
-    },
-    "rewardSuccess": {
-      "error": "ПОМИЛКА",
-      "success": "УСПІХ",
-      "somethingWentWrong": "Щось пішло не так",
-      "rewardUnlocked": "Нагороду розблоковано",
-      "credits": "Кредити",
-      "close": "Закрити",
-      "okay": "ОК"
-    },
-    "secretBox": {
-      "pill": "СЕКРЕТНА КОРОБКА",
-      "rewardUnlocked": "НАГОРОДУ РОЗБЛОКОВАНО",
-      "shufflingRewards": "ПЕРЕМІШУЄМО НАГОРОДИ...",
-      "imageCreditsAdded": "Кредити зображень додано до вашого акаунта",
-      "continue": "Продовжити",
-      "revealing": "Відкриваємо...",
-      "prizeTiers": {
-        "lucky": "УДАЧА",
-        "pro": "PRO",
-        "elite": "ELITE",
-        "mythic": "MYTHIC"
+    "modals": {
+      "questCompleted": {
+        "title": "Завдання виконано",
+        "description": "Завдання виконано",
+        "points": "+{{points}} балів",
+        "close": "Закрити"
+      },
+      "rewardSuccess": {
+        "error": "ПОМИЛКА",
+        "success": "УСПІХ",
+        "somethingWentWrong": "Щось пішло не так",
+        "rewardUnlocked": "Нагороду розблоковано",
+        "credits": "Кредити",
+        "close": "Закрити",
+        "okay": "ОК"
+      },
+      "secretBox": {
+        "pill": "СЕКРЕТНА КОРОБКА",
+        "rewardUnlocked": "НАГОРОДУ РОЗБЛОКОВАНО",
+        "shufflingRewards": "ПЕРЕМІШУЄМО НАГОРОДИ...",
+        "imageCreditsAdded": "Кредити зображень додано до вашого акаунта",
+        "continue": "Продовжити",
+        "revealing": "Відкриваємо...",
+        "prizeTiers": {
+          "lucky": "УДАЧА",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MYTHIC"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Щоденна винагорода",
+      "body": "Не пропусти щоденні монети — забери їх до опівночі."
+    }
   }
-}
 }

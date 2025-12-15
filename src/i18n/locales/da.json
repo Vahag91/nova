@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Belønninger",
-    "openMenu": "Åbn menu",
-    "goBack": "Tilbage"
-  },
-  "pointsHero": {
-    "totalBalance": "SAMLET SALDO",
-    "seeYourRewards": "Se dine belønninger"
-  },
-  "streakTracker": {
-    "title": "Daglig streak",
-    "subtitle": "Bliv ved! Du er on fire.",
-    "days": "Dage",
-    "prize": "Præmie",
-    "dayLabel": "Dag {{number}}",
-    "nextReward": "Næste belønning: {{amount}} om {{time}}",
-    "coins": "Mønter"
-  },
-  "sections": {
-    "availableQuests": "Tilgængelige quests",
-    "completedQuests": "Gennemførte quests",
-    "availableRewards": "Tilgængelige belønninger",
-    "needsMoreCoins": "Behøver flere mønter"
-  },
-  "balances": {
-    "rewardCoins": "Belønningsmønter",
-    "imageCredits": "Billedkreditter"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 billedkreditter",
-      "imageCredits200": "200 billedkreditter",
-      "imageCredits600": "600 billedkreditter",
-      "weeklyPremium": "Ugentlig Premium",
-      "secretBox": "Hemmelig boks"
+    "header": {
+      "title": "Belønninger",
+      "openMenu": "Åbn menu",
+      "goBack": "Tilbage"
     },
-    "rewardDescriptions": {
-      "secretBox": "Mysteriebelønninger indeni"
+    "pointsHero": {
+      "totalBalance": "SAMLET SALDO",
+      "seeYourRewards": "Se dine belønninger"
     },
-    "alerts": {
-      "comingSoonTitle": "Kommer snart",
-      "comingSoonMessage": "Denne belønning er ikke tilgængelig endnu.",
-      "notEnoughCoinsTitle": "Ikke nok mønter",
-      "notEnoughCoinsMessage": "Du har brug for flere belønningsmønter for at låse denne belønning op.",
-      "errorTitle": "Fejl",
-      "couldNotOpenBox": "Kunne ikke åbne boksen.",
-      "couldNotRedeem": "Kunne ikke indløse belønningen. Prøv igen.",
-      "mysteryReward": "Mysteriebelønning"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Dagligt login",
-      "description": "Åbn appen i dag for at holde din streak",
-      "message": "Denne quest fuldføres automatisk, når du åbner appen hver dag."
+    "streakTracker": {
+      "title": "Daglig streak",
+      "subtitle": "Bliv ved! Du er on fire.",
+      "days": "Dage",
+      "prize": "Præmie",
+      "dayLabel": "Dag {{number}}",
+      "nextReward": "Næste belønning: {{amount}} om {{time}}",
+      "coins": "Mønter"
     },
-    "shareFacebook": {
-      "title": "Del på Facebook",
-      "description": "Lav et opslag om os på Facebook"
+    "sections": {
+      "availableQuests": "Tilgængelige quests",
+      "completedQuests": "Gennemførte quests",
+      "availableRewards": "Tilgængelige belønninger",
+      "needsMoreCoins": "Behøver flere mønter"
     },
-    "shareTwitter": {
-      "title": "Del på X",
-      "description": "Tweet om din oplevelse"
+    "balances": {
+      "rewardCoins": "Belønningsmønter",
+      "imageCredits": "Billedkreditter"
     },
-    "shareInstagram": {
-      "title": "Del på Instagram",
-      "description": "Del en story eller et opslag"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 billedkreditter",
+        "imageCredits200": "200 billedkreditter",
+        "imageCredits600": "600 billedkreditter",
+        "weeklyPremium": "Ugentlig Premium",
+        "secretBox": "Hemmelig boks"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Mysteriebelønninger indeni"
+      },
+      "alerts": {
+        "comingSoonTitle": "Kommer snart",
+        "comingSoonMessage": "Denne belønning er ikke tilgængelig endnu.",
+        "notEnoughCoinsTitle": "Ikke nok mønter",
+        "notEnoughCoinsMessage": "Du har brug for flere belønningsmønter for at låse denne belønning op.",
+        "errorTitle": "Fejl",
+        "couldNotOpenBox": "Kunne ikke åbne boksen.",
+        "couldNotRedeem": "Kunne ikke indløse belønningen. Prøv igen.",
+        "mysteryReward": "Mysteriebelønning"
+      }
     },
-    "shareExperience": {
-      "title": "Del din oplevelse",
-      "description": "Fortæl vennerne, hvorfor du kan lide appen"
+    "quests": {
+      "dailyLogin": {
+        "title": "Dagligt login",
+        "description": "Åbn appen i dag for at holde din streak",
+        "message": "Denne quest fuldføres automatisk, når du åbner appen hver dag."
+      },
+      "shareFacebook": {
+        "title": "Del på Facebook",
+        "description": "Lav et opslag om os på Facebook"
+      },
+      "shareTwitter": {
+        "title": "Del på X",
+        "description": "Tweet om din oplevelse"
+      },
+      "shareInstagram": {
+        "title": "Del på Instagram",
+        "description": "Del en story eller et opslag"
+      },
+      "shareExperience": {
+        "title": "Del din oplevelse",
+        "description": "Fortæl vennerne, hvorfor du kan lide appen"
+      },
+      "share": {
+        "genericMessage": "Jeg bruger denne AI-app til chat og billedgenerering. Tjek den ud: {{url}}",
+        "facebookQuote": "Tjek denne AI-app!",
+        "twitterText": "Jeg prøver denne AI-app, den er ret fed.",
+        "instagramMessage": "Tjek denne AI-app: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Fejl",
+        "errorMessage": "Kunne ikke åbne butikssiden."
+      }
     },
-    "share": {
-      "genericMessage": "Jeg bruger denne AI-app til chat og billedgenerering. Tjek den ud: {{url}}",
-      "facebookQuote": "Tjek denne AI-app!",
-      "twitterText": "Jeg prøver denne AI-app, den er ret fed.",
-      "instagramMessage": "Tjek denne AI-app: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Fejl",
-      "errorMessage": "Kunne ikke åbne butikssiden."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Quest fuldført",
-      "description": "Quest fuldført",
-      "points": "+{{points}} point",
-      "close": "Luk"
-    },
-    "rewardSuccess": {
-      "error": "FEJL",
-      "success": "SUCCES",
-      "somethingWentWrong": "Noget gik galt",
-      "rewardUnlocked": "Belønning låst op",
-      "credits": "Kreditter",
-      "close": "Luk",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "HEMMELIG BOKS",
-      "rewardUnlocked": "BELØNNING LÅST OP",
-      "shufflingRewards": "BLANDER BELØNNINGER...",
-      "imageCreditsAdded": "Billedkreditter blev tilføjet til din konto",
-      "continue": "Fortsæt",
-      "revealing": "Afslører...",
-      "prizeTiers": {
-        "lucky": "HELDIG",
-        "pro": "PRO",
-        "elite": "ELITE",
-        "mythic": "MYTISK"
+    "modals": {
+      "questCompleted": {
+        "title": "Quest fuldført",
+        "description": "Quest fuldført",
+        "points": "+{{points}} point",
+        "close": "Luk"
+      },
+      "rewardSuccess": {
+        "error": "FEJL",
+        "success": "SUCCES",
+        "somethingWentWrong": "Noget gik galt",
+        "rewardUnlocked": "Belønning låst op",
+        "credits": "Kreditter",
+        "close": "Luk",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "HEMMELIG BOKS",
+        "rewardUnlocked": "BELØNNING LÅST OP",
+        "shufflingRewards": "BLANDER BELØNNINGER...",
+        "imageCreditsAdded": "Billedkreditter blev tilføjet til din konto",
+        "continue": "Fortsæt",
+        "revealing": "Afslører...",
+        "prizeTiers": {
+          "lucky": "HELDIG",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MYTISK"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Daglig belønning",
+      "body": "Gå ikke glip af dine daglige mønter — hent dem før midnat."
+    }
   }
-}
 }

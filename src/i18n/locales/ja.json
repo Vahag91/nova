@@ -848,121 +848,126 @@
     "maybeLater": "後で",
     "dontAskAgain": "再度尋ねない"
   },
-  
-"rewards": {
-  "header": {
-    "title": "報酬",
-    "openMenu": "メニューを開く",
-    "goBack": "戻る"
-  },
-  "pointsHero": {
-    "totalBalance": "合計残高",
-    "seeYourRewards": "報酬を見る"
-  },
-  "streakTracker": {
-    "title": "デイリーストリーク",
-    "subtitle": "その調子！絶好調です。",
-    "days": "日数",
-    "prize": "報酬",
-    "dayLabel": "{{number}}日目",
-    "nextReward": "次の報酬: {{time}}後に{{amount}}",
-    "coins": "コイン"
-  },
-  "sections": {
-    "availableQuests": "利用可能なクエスト",
-    "completedQuests": "完了したクエスト",
-    "availableRewards": "利用可能な報酬",
-    "needsMoreCoins": "コインが足りません"
-  },
-  "balances": {
-    "rewardCoins": "報酬コイン",
-    "imageCredits": "画像クレジット"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "画像クレジット 50",
-      "imageCredits200": "画像クレジット 200",
-      "imageCredits600": "画像クレジット 600",
-      "weeklyPremium": "週間プレミアム",
-      "secretBox": "シークレットボックス"
+  "rewards": {
+    "header": {
+      "title": "報酬",
+      "openMenu": "メニューを開く",
+      "goBack": "戻る"
     },
-    "rewardDescriptions": {
-      "secretBox": "中身はお楽しみ"
+    "pointsHero": {
+      "totalBalance": "合計残高",
+      "seeYourRewards": "報酬を見る"
     },
-    "alerts": {
-      "comingSoonTitle": "近日公開",
-      "comingSoonMessage": "この報酬はまだ利用できません。",
-      "notEnoughCoinsTitle": "コインが足りません",
-      "notEnoughCoinsMessage": "この報酬を解放するには、報酬コインがもっと必要です。",
-      "errorTitle": "エラー",
-      "couldNotOpenBox": "ボックスを開けませんでした。",
-      "couldNotRedeem": "報酬を受け取れませんでした。もう一度お試しください。",
-      "mysteryReward": "ミステリー報酬"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "デイリーログイン",
-      "description": "今日アプリを開いてストリークを維持しよう",
-      "message": "このクエストは、毎日アプリを開くと自動で完了します。"
+    "streakTracker": {
+      "title": "デイリーストリーク",
+      "subtitle": "その調子！絶好調です。",
+      "days": "日数",
+      "prize": "報酬",
+      "dayLabel": "{{number}}日目",
+      "nextReward": "次の報酬: {{time}}後に{{amount}}",
+      "coins": "コイン"
     },
-    "shareFacebook": {
-      "title": "Facebookでシェア",
-      "description": "Facebookで私たちについて投稿する"
+    "sections": {
+      "availableQuests": "利用可能なクエスト",
+      "completedQuests": "完了したクエスト",
+      "availableRewards": "利用可能な報酬",
+      "needsMoreCoins": "コインが足りません"
     },
-    "shareTwitter": {
-      "title": "X（旧Twitter）でシェア",
-      "description": "体験を投稿する"
+    "balances": {
+      "rewardCoins": "報酬コイン",
+      "imageCredits": "画像クレジット"
     },
-    "shareInstagram": {
-      "title": "Instagramでシェア",
-      "description": "ストーリーまたは投稿でシェアする"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "画像クレジット 50",
+        "imageCredits200": "画像クレジット 200",
+        "imageCredits600": "画像クレジット 600",
+        "weeklyPremium": "週間プレミアム",
+        "secretBox": "シークレットボックス"
+      },
+      "rewardDescriptions": {
+        "secretBox": "中身はお楽しみ"
+      },
+      "alerts": {
+        "comingSoonTitle": "近日公開",
+        "comingSoonMessage": "この報酬はまだ利用できません。",
+        "notEnoughCoinsTitle": "コインが足りません",
+        "notEnoughCoinsMessage": "この報酬を解放するには、報酬コインがもっと必要です。",
+        "errorTitle": "エラー",
+        "couldNotOpenBox": "ボックスを開けませんでした。",
+        "couldNotRedeem": "報酬を受け取れませんでした。もう一度お試しください。",
+        "mysteryReward": "ミステリー報酬"
+      }
     },
-    "shareExperience": {
-      "title": "体験をシェア",
-      "description": "このアプリが好きな理由を友達に伝える"
+    "quests": {
+      "dailyLogin": {
+        "title": "デイリーログイン",
+        "description": "今日アプリを開いてストリークを維持しよう",
+        "message": "このクエストは、毎日アプリを開くと自動で完了します。"
+      },
+      "shareFacebook": {
+        "title": "Facebookでシェア",
+        "description": "Facebookで私たちについて投稿する"
+      },
+      "shareTwitter": {
+        "title": "X（旧Twitter）でシェア",
+        "description": "体験を投稿する"
+      },
+      "shareInstagram": {
+        "title": "Instagramでシェア",
+        "description": "ストーリーまたは投稿でシェアする"
+      },
+      "shareExperience": {
+        "title": "体験をシェア",
+        "description": "このアプリが好きな理由を友達に伝える"
+      },
+      "share": {
+        "genericMessage": "このAIアプリでチャット＆画像生成を使っています。チェックしてみて: {{url}}",
+        "facebookQuote": "このAIアプリをチェック！",
+        "twitterText": "このAIアプリを試してるけど、かなりいい感じ。",
+        "instagramMessage": "このAIアプリをチェックしてね: {{url}}"
+      },
+      "store": {
+        "errorTitle": "エラー",
+        "errorMessage": "ストアページを開けませんでした。"
+      }
     },
-    "share": {
-      "genericMessage": "このAIアプリでチャット＆画像生成を使っています。チェックしてみて: {{url}}",
-      "facebookQuote": "このAIアプリをチェック！",
-      "twitterText": "このAIアプリを試してるけど、かなりいい感じ。",
-      "instagramMessage": "このAIアプリをチェックしてね: {{url}}"
-    },
-    "store": {
-      "errorTitle": "エラー",
-      "errorMessage": "ストアページを開けませんでした。"
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "クエスト完了",
-      "description": "クエストを完了しました",
-      "points": "+{{points}}ポイント",
-      "close": "閉じる"
-    },
-    "rewardSuccess": {
-      "error": "エラー",
-      "success": "成功",
-      "somethingWentWrong": "問題が発生しました",
-      "rewardUnlocked": "報酬を解放しました",
-      "credits": "クレジット",
-      "close": "閉じる",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "シークレットボックス",
-      "rewardUnlocked": "報酬を解放しました",
-      "shufflingRewards": "報酬をシャッフル中...",
-      "imageCreditsAdded": "画像クレジットがアカウントに追加されました",
-      "continue": "続行",
-      "revealing": "公開中...",
-      "prizeTiers": {
-        "lucky": "ラッキー",
-        "pro": "PRO",
-        "elite": "エリート",
-        "mythic": "ミシック"
+    "modals": {
+      "questCompleted": {
+        "title": "クエスト完了",
+        "description": "クエストを完了しました",
+        "points": "+{{points}}ポイント",
+        "close": "閉じる"
+      },
+      "rewardSuccess": {
+        "error": "エラー",
+        "success": "成功",
+        "somethingWentWrong": "問題が発生しました",
+        "rewardUnlocked": "報酬を解放しました",
+        "credits": "クレジット",
+        "close": "閉じる",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "シークレットボックス",
+        "rewardUnlocked": "報酬を解放しました",
+        "shufflingRewards": "報酬をシャッフル中...",
+        "imageCreditsAdded": "画像クレジットがアカウントに追加されました",
+        "continue": "続行",
+        "revealing": "公開中...",
+        "prizeTiers": {
+          "lucky": "ラッキー",
+          "pro": "PRO",
+          "elite": "エリート",
+          "mythic": "ミシック"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "デイリー報酬",
+      "body": "毎日のコインをお見逃しなく — 深夜0時前に受け取ってください。"
+    }
   }
-}
 }

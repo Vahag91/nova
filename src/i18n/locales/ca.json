@@ -963,5 +963,11 @@
         }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Recompensa diària",
+      "body": "No et perdis les teves monedes diàries — reclama-les abans de mitjanit."
+    }
   }
 }

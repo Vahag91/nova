@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Recompense",
-    "openMenu": "Deschide meniul",
-    "goBack": "Înapoi"
-  },
-  "pointsHero": {
-    "totalBalance": "SOLD TOTAL",
-    "seeYourRewards": "Vezi recompensele tale"
-  },
-  "streakTracker": {
-    "title": "Serie zilnică",
-    "subtitle": "Ține-o tot așa! Ești în formă.",
-    "days": "Zile",
-    "prize": "Premiu",
-    "dayLabel": "Ziua {{number}}",
-    "nextReward": "Următoarea recompensă: {{amount}} în {{time}}",
-    "coins": "Monede"
-  },
-  "sections": {
-    "availableQuests": "Misiuni disponibile",
-    "completedQuests": "Misiuni finalizate",
-    "availableRewards": "Recompense disponibile",
-    "needsMoreCoins": "Ai nevoie de mai multe monede"
-  },
-  "balances": {
-    "rewardCoins": "Monede de recompensă",
-    "imageCredits": "Credite de imagine"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 credite de imagine",
-      "imageCredits200": "200 credite de imagine",
-      "imageCredits600": "600 credite de imagine",
-      "weeklyPremium": "Premium săptămânal",
-      "secretBox": "Cutie secretă"
+    "header": {
+      "title": "Recompense",
+      "openMenu": "Deschide meniul",
+      "goBack": "Înapoi"
     },
-    "rewardDescriptions": {
-      "secretBox": "Recompense surpriză înăuntru"
+    "pointsHero": {
+      "totalBalance": "SOLD TOTAL",
+      "seeYourRewards": "Vezi recompensele tale"
     },
-    "alerts": {
-      "comingSoonTitle": "În curând",
-      "comingSoonMessage": "Această recompensă nu este disponibilă încă.",
-      "notEnoughCoinsTitle": "Nu ai suficiente monede",
-      "notEnoughCoinsMessage": "Ai nevoie de mai multe monede de recompensă pentru a debloca această recompensă.",
-      "errorTitle": "Eroare",
-      "couldNotOpenBox": "Nu s-a putut deschide cutia.",
-      "couldNotRedeem": "Nu s-a putut revendica recompensa. Încearcă din nou.",
-      "mysteryReward": "Recompensă misterioasă"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Autentificare zilnică",
-      "description": "Deschide aplicația azi ca să-ți păstrezi seria",
-      "message": "Această misiune se finalizează automat când deschizi aplicația în fiecare zi."
+    "streakTracker": {
+      "title": "Serie zilnică",
+      "subtitle": "Ține-o tot așa! Ești în formă.",
+      "days": "Zile",
+      "prize": "Premiu",
+      "dayLabel": "Ziua {{number}}",
+      "nextReward": "Următoarea recompensă: {{amount}} în {{time}}",
+      "coins": "Monede"
     },
-    "shareFacebook": {
-      "title": "Distribuie pe Facebook",
-      "description": "Postează despre noi pe Facebook"
+    "sections": {
+      "availableQuests": "Misiuni disponibile",
+      "completedQuests": "Misiuni finalizate",
+      "availableRewards": "Recompense disponibile",
+      "needsMoreCoins": "Ai nevoie de mai multe monede"
     },
-    "shareTwitter": {
-      "title": "Distribuie pe X",
-      "description": "Scrie un tweet despre experiența ta"
+    "balances": {
+      "rewardCoins": "Monede de recompensă",
+      "imageCredits": "Credite de imagine"
     },
-    "shareInstagram": {
-      "title": "Distribuie pe Instagram",
-      "description": "Distribuie o poveste sau o postare"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 credite de imagine",
+        "imageCredits200": "200 credite de imagine",
+        "imageCredits600": "600 credite de imagine",
+        "weeklyPremium": "Premium săptămânal",
+        "secretBox": "Cutie secretă"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Recompense surpriză înăuntru"
+      },
+      "alerts": {
+        "comingSoonTitle": "În curând",
+        "comingSoonMessage": "Această recompensă nu este disponibilă încă.",
+        "notEnoughCoinsTitle": "Nu ai suficiente monede",
+        "notEnoughCoinsMessage": "Ai nevoie de mai multe monede de recompensă pentru a debloca această recompensă.",
+        "errorTitle": "Eroare",
+        "couldNotOpenBox": "Nu s-a putut deschide cutia.",
+        "couldNotRedeem": "Nu s-a putut revendica recompensa. Încearcă din nou.",
+        "mysteryReward": "Recompensă misterioasă"
+      }
     },
-    "shareExperience": {
-      "title": "Împărtășește-ți experiența",
-      "description": "Spune-le prietenilor de ce îți place aplicația"
+    "quests": {
+      "dailyLogin": {
+        "title": "Autentificare zilnică",
+        "description": "Deschide aplicația azi ca să-ți păstrezi seria",
+        "message": "Această misiune se finalizează automat când deschizi aplicația în fiecare zi."
+      },
+      "shareFacebook": {
+        "title": "Distribuie pe Facebook",
+        "description": "Postează despre noi pe Facebook"
+      },
+      "shareTwitter": {
+        "title": "Distribuie pe X",
+        "description": "Scrie un tweet despre experiența ta"
+      },
+      "shareInstagram": {
+        "title": "Distribuie pe Instagram",
+        "description": "Distribuie o poveste sau o postare"
+      },
+      "shareExperience": {
+        "title": "Împărtășește-ți experiența",
+        "description": "Spune-le prietenilor de ce îți place aplicația"
+      },
+      "share": {
+        "genericMessage": "Folosesc această aplicație AI pentru chat și generare de imagini. Vezi: {{url}}",
+        "facebookQuote": "Vezi această aplicație AI!",
+        "twitterText": "Încerc această aplicație AI, e chiar tare.",
+        "instagramMessage": "Vezi această aplicație AI: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Eroare",
+        "errorMessage": "Nu s-a putut deschide pagina magazinului."
+      }
     },
-    "share": {
-      "genericMessage": "Folosesc această aplicație AI pentru chat și generare de imagini. Vezi: {{url}}",
-      "facebookQuote": "Vezi această aplicație AI!",
-      "twitterText": "Încerc această aplicație AI, e chiar tare.",
-      "instagramMessage": "Vezi această aplicație AI: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Eroare",
-      "errorMessage": "Nu s-a putut deschide pagina magazinului."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Misiune completă",
-      "description": "Misiune completată",
-      "points": "+{{points}} puncte",
-      "close": "Închide"
-    },
-    "rewardSuccess": {
-      "error": "EROARE",
-      "success": "SUCCES",
-      "somethingWentWrong": "Ceva nu a mers bine",
-      "rewardUnlocked": "Recompensă deblocată",
-      "credits": "Credite",
-      "close": "Închide",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "CUTIE SECRETĂ",
-      "rewardUnlocked": "RECOMPENSĂ DEBLOCATĂ",
-      "shufflingRewards": "AMESTECARE RECOMPENSE...",
-      "imageCreditsAdded": "Creditele de imagine au fost adăugate în contul tău",
-      "continue": "Continuă",
-      "revealing": "Se dezvăluie...",
-      "prizeTiers": {
-        "lucky": "NOROCOS",
-        "pro": "PRO",
-        "elite": "ELITĂ",
-        "mythic": "MITIC"
+    "modals": {
+      "questCompleted": {
+        "title": "Misiune completă",
+        "description": "Misiune completată",
+        "points": "+{{points}} puncte",
+        "close": "Închide"
+      },
+      "rewardSuccess": {
+        "error": "EROARE",
+        "success": "SUCCES",
+        "somethingWentWrong": "Ceva nu a mers bine",
+        "rewardUnlocked": "Recompensă deblocată",
+        "credits": "Credite",
+        "close": "Închide",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "CUTIE SECRETĂ",
+        "rewardUnlocked": "RECOMPENSĂ DEBLOCATĂ",
+        "shufflingRewards": "AMESTECARE RECOMPENSE...",
+        "imageCreditsAdded": "Creditele de imagine au fost adăugate în contul tău",
+        "continue": "Continuă",
+        "revealing": "Se dezvăluie...",
+        "prizeTiers": {
+          "lucky": "NOROCOS",
+          "pro": "PRO",
+          "elite": "ELITĂ",
+          "mythic": "MITIC"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Recompensă zilnică",
+      "body": "Nu rata monedele zilnice — revendică-le înainte de miezul nopții."
+    }
   }
-}
 }

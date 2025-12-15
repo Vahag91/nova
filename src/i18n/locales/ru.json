@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Награды",
-    "openMenu": "Открыть меню",
-    "goBack": "Назад"
-  },
-  "pointsHero": {
-    "totalBalance": "ОБЩИЙ БАЛАНС",
-    "seeYourRewards": "Посмотреть награды"
-  },
-  "streakTracker": {
-    "title": "Ежедневная серия",
-    "subtitle": "Так держать! Вы в ударе.",
-    "days": "Дни",
-    "prize": "Награда",
-    "dayLabel": "День {{number}}",
-    "nextReward": "Следующая награда: {{amount}} через {{time}}",
-    "coins": "Монеты"
-  },
-  "sections": {
-    "availableQuests": "Доступные задания",
-    "completedQuests": "Выполненные задания",
-    "availableRewards": "Доступные награды",
-    "needsMoreCoins": "Нужно больше монет"
-  },
-  "balances": {
-    "rewardCoins": "Наградные монеты",
-    "imageCredits": "Кредиты изображений"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 кредитов изображений",
-      "imageCredits200": "200 кредитов изображений",
-      "imageCredits600": "600 кредитов изображений",
-      "weeklyPremium": "Премиум на неделю",
-      "secretBox": "Секретная коробка"
+    "header": {
+      "title": "Награды",
+      "openMenu": "Открыть меню",
+      "goBack": "Назад"
     },
-    "rewardDescriptions": {
-      "secretBox": "Внутри — сюрпризы"
+    "pointsHero": {
+      "totalBalance": "ОБЩИЙ БАЛАНС",
+      "seeYourRewards": "Посмотреть награды"
     },
-    "alerts": {
-      "comingSoonTitle": "Скоро",
-      "comingSoonMessage": "Эта награда пока недоступна.",
-      "notEnoughCoinsTitle": "Недостаточно монет",
-      "notEnoughCoinsMessage": "Чтобы открыть эту награду, нужно больше наградных монет.",
-      "errorTitle": "Ошибка",
-      "couldNotOpenBox": "Не удалось открыть коробку.",
-      "couldNotRedeem": "Не удалось получить награду. Пожалуйста, попробуйте снова.",
-      "mysteryReward": "Таинственная награда"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Ежедневный вход",
-      "description": "Откройте приложение сегодня, чтобы сохранить серию",
-      "message": "Это задание выполняется автоматически, когда вы открываете приложение каждый день."
+    "streakTracker": {
+      "title": "Ежедневная серия",
+      "subtitle": "Так держать! Вы в ударе.",
+      "days": "Дни",
+      "prize": "Награда",
+      "dayLabel": "День {{number}}",
+      "nextReward": "Следующая награда: {{amount}} через {{time}}",
+      "coins": "Монеты"
     },
-    "shareFacebook": {
-      "title": "Поделиться в Facebook",
-      "description": "Сделайте пост о нас в Facebook"
+    "sections": {
+      "availableQuests": "Доступные задания",
+      "completedQuests": "Выполненные задания",
+      "availableRewards": "Доступные награды",
+      "needsMoreCoins": "Нужно больше монет"
     },
-    "shareTwitter": {
-      "title": "Поделиться в X",
-      "description": "Напишите твит о вашем опыте"
+    "balances": {
+      "rewardCoins": "Наградные монеты",
+      "imageCredits": "Кредиты изображений"
     },
-    "shareInstagram": {
-      "title": "Поделиться в Instagram",
-      "description": "Поделитесь сторис или постом"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 кредитов изображений",
+        "imageCredits200": "200 кредитов изображений",
+        "imageCredits600": "600 кредитов изображений",
+        "weeklyPremium": "Премиум на неделю",
+        "secretBox": "Секретная коробка"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Внутри — сюрпризы"
+      },
+      "alerts": {
+        "comingSoonTitle": "Скоро",
+        "comingSoonMessage": "Эта награда пока недоступна.",
+        "notEnoughCoinsTitle": "Недостаточно монет",
+        "notEnoughCoinsMessage": "Чтобы открыть эту награду, нужно больше наградных монет.",
+        "errorTitle": "Ошибка",
+        "couldNotOpenBox": "Не удалось открыть коробку.",
+        "couldNotRedeem": "Не удалось получить награду. Пожалуйста, попробуйте снова.",
+        "mysteryReward": "Таинственная награда"
+      }
     },
-    "shareExperience": {
-      "title": "Поделитесь опытом",
-      "description": "Расскажите друзьям, почему вам нравится приложение"
+    "quests": {
+      "dailyLogin": {
+        "title": "Ежедневный вход",
+        "description": "Откройте приложение сегодня, чтобы сохранить серию",
+        "message": "Это задание выполняется автоматически, когда вы открываете приложение каждый день."
+      },
+      "shareFacebook": {
+        "title": "Поделиться в Facebook",
+        "description": "Сделайте пост о нас в Facebook"
+      },
+      "shareTwitter": {
+        "title": "Поделиться в X",
+        "description": "Напишите твит о вашем опыте"
+      },
+      "shareInstagram": {
+        "title": "Поделиться в Instagram",
+        "description": "Поделитесь сторис или постом"
+      },
+      "shareExperience": {
+        "title": "Поделитесь опытом",
+        "description": "Расскажите друзьям, почему вам нравится приложение"
+      },
+      "share": {
+        "genericMessage": "Я использую это AI-приложение для чата и генерации изображений. Посмотрите: {{url}}",
+        "facebookQuote": "Посмотрите это AI-приложение!",
+        "twitterText": "Я пробую это AI-приложение — оно довольно классное.",
+        "instagramMessage": "Посмотрите это AI-приложение: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Ошибка",
+        "errorMessage": "Не удалось открыть страницу магазина."
+      }
     },
-    "share": {
-      "genericMessage": "Я использую это AI-приложение для чата и генерации изображений. Посмотрите: {{url}}",
-      "facebookQuote": "Посмотрите это AI-приложение!",
-      "twitterText": "Я пробую это AI-приложение — оно довольно классное.",
-      "instagramMessage": "Посмотрите это AI-приложение: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Ошибка",
-      "errorMessage": "Не удалось открыть страницу магазина."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Задание выполнено",
-      "description": "Задание выполнено",
-      "points": "+{{points}} очков",
-      "close": "Закрыть"
-    },
-    "rewardSuccess": {
-      "error": "ОШИБКА",
-      "success": "УСПЕХ",
-      "somethingWentWrong": "Что-то пошло не так",
-      "rewardUnlocked": "Награда разблокирована",
-      "credits": "Кредиты",
-      "close": "Закрыть",
-      "okay": "ОК"
-    },
-    "secretBox": {
-      "pill": "СЕКРЕТНАЯ КОРОБКА",
-      "rewardUnlocked": "НАГРАДА РАЗБЛОКИРОВАНА",
-      "shufflingRewards": "ПЕРЕМЕШИВАЕМ НАГРАДЫ...",
-      "imageCreditsAdded": "Кредиты изображений добавлены на ваш аккаунт",
-      "continue": "Продолжить",
-      "revealing": "Открываем...",
-      "prizeTiers": {
-        "lucky": "УДАЧА",
-        "pro": "PRO",
-        "elite": "ELITE",
-        "mythic": "MYTHIC"
+    "modals": {
+      "questCompleted": {
+        "title": "Задание выполнено",
+        "description": "Задание выполнено",
+        "points": "+{{points}} очков",
+        "close": "Закрыть"
+      },
+      "rewardSuccess": {
+        "error": "ОШИБКА",
+        "success": "УСПЕХ",
+        "somethingWentWrong": "Что-то пошло не так",
+        "rewardUnlocked": "Награда разблокирована",
+        "credits": "Кредиты",
+        "close": "Закрыть",
+        "okay": "ОК"
+      },
+      "secretBox": {
+        "pill": "СЕКРЕТНАЯ КОРОБКА",
+        "rewardUnlocked": "НАГРАДА РАЗБЛОКИРОВАНА",
+        "shufflingRewards": "ПЕРЕМЕШИВАЕМ НАГРАДЫ...",
+        "imageCreditsAdded": "Кредиты изображений добавлены на ваш аккаунт",
+        "continue": "Продолжить",
+        "revealing": "Открываем...",
+        "prizeTiers": {
+          "lucky": "УДАЧА",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MYTHIC"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Ежедневная награда",
+      "body": "Не пропусти ежедневные монеты — забери до полуночи."
+    }
   }
-}
 }

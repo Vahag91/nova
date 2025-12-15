@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "리워드",
-    "openMenu": "메뉴 열기",
-    "goBack": "뒤로"
-  },
-  "pointsHero": {
-    "totalBalance": "총 잔액",
-    "seeYourRewards": "내 리워드 보기"
-  },
-  "streakTracker": {
-    "title": "일일 연속 달성",
-    "subtitle": "계속 유지하세요! 정말 잘하고 있어요.",
-    "days": "일",
-    "prize": "보상",
-    "dayLabel": "{{number}}일차",
-    "nextReward": "다음 보상: {{time}} 후 {{amount}}",
-    "coins": "코인"
-  },
-  "sections": {
-    "availableQuests": "사용 가능한 퀘스트",
-    "completedQuests": "완료한 퀘스트",
-    "availableRewards": "사용 가능한 보상",
-    "needsMoreCoins": "코인이 더 필요해요"
-  },
-  "balances": {
-    "rewardCoins": "보상 코인",
-    "imageCredits": "이미지 크레딧"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "이미지 크레딧 50",
-      "imageCredits200": "이미지 크레딧 200",
-      "imageCredits600": "이미지 크레딧 600",
-      "weeklyPremium": "주간 프리미엄",
-      "secretBox": "시크릿 박스"
+    "header": {
+      "title": "리워드",
+      "openMenu": "메뉴 열기",
+      "goBack": "뒤로"
     },
-    "rewardDescriptions": {
-      "secretBox": "안에 랜덤 보상이 있어요"
+    "pointsHero": {
+      "totalBalance": "총 잔액",
+      "seeYourRewards": "내 리워드 보기"
     },
-    "alerts": {
-      "comingSoonTitle": "곧 출시",
-      "comingSoonMessage": "이 보상은 아직 사용할 수 없어요.",
-      "notEnoughCoinsTitle": "코인이 부족해요",
-      "notEnoughCoinsMessage": "이 보상을 잠금 해제하려면 보상 코인이 더 필요해요.",
-      "errorTitle": "오류",
-      "couldNotOpenBox": "박스를 열 수 없어요.",
-      "couldNotRedeem": "보상을 받지 못했어요. 다시 시도해 주세요.",
-      "mysteryReward": "미스터리 보상"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "일일 로그인",
-      "description": "오늘 앱을 열어 연속 기록을 유지하세요",
-      "message": "이 퀘스트는 매일 앱을 열면 자동으로 완료돼요."
+    "streakTracker": {
+      "title": "일일 연속 달성",
+      "subtitle": "계속 유지하세요! 정말 잘하고 있어요.",
+      "days": "일",
+      "prize": "보상",
+      "dayLabel": "{{number}}일차",
+      "nextReward": "다음 보상: {{time}} 후 {{amount}}",
+      "coins": "코인"
     },
-    "shareFacebook": {
-      "title": "Facebook에 공유",
-      "description": "Facebook에 우리에 대해 게시해 주세요"
+    "sections": {
+      "availableQuests": "사용 가능한 퀘스트",
+      "completedQuests": "완료한 퀘스트",
+      "availableRewards": "사용 가능한 보상",
+      "needsMoreCoins": "코인이 더 필요해요"
     },
-    "shareTwitter": {
-      "title": "X에 공유",
-      "description": "경험을 트윗해 주세요"
+    "balances": {
+      "rewardCoins": "보상 코인",
+      "imageCredits": "이미지 크레딧"
     },
-    "shareInstagram": {
-      "title": "Instagram에 공유",
-      "description": "스토리 또는 게시물을 공유해 주세요"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "이미지 크레딧 50",
+        "imageCredits200": "이미지 크레딧 200",
+        "imageCredits600": "이미지 크레딧 600",
+        "weeklyPremium": "주간 프리미엄",
+        "secretBox": "시크릿 박스"
+      },
+      "rewardDescriptions": {
+        "secretBox": "안에 랜덤 보상이 있어요"
+      },
+      "alerts": {
+        "comingSoonTitle": "곧 출시",
+        "comingSoonMessage": "이 보상은 아직 사용할 수 없어요.",
+        "notEnoughCoinsTitle": "코인이 부족해요",
+        "notEnoughCoinsMessage": "이 보상을 잠금 해제하려면 보상 코인이 더 필요해요.",
+        "errorTitle": "오류",
+        "couldNotOpenBox": "박스를 열 수 없어요.",
+        "couldNotRedeem": "보상을 받지 못했어요. 다시 시도해 주세요.",
+        "mysteryReward": "미스터리 보상"
+      }
     },
-    "shareExperience": {
-      "title": "경험 공유하기",
-      "description": "친구들에게 앱이 좋은 이유를 알려 주세요"
+    "quests": {
+      "dailyLogin": {
+        "title": "일일 로그인",
+        "description": "오늘 앱을 열어 연속 기록을 유지하세요",
+        "message": "이 퀘스트는 매일 앱을 열면 자동으로 완료돼요."
+      },
+      "shareFacebook": {
+        "title": "Facebook에 공유",
+        "description": "Facebook에 우리에 대해 게시해 주세요"
+      },
+      "shareTwitter": {
+        "title": "X에 공유",
+        "description": "경험을 트윗해 주세요"
+      },
+      "shareInstagram": {
+        "title": "Instagram에 공유",
+        "description": "스토리 또는 게시물을 공유해 주세요"
+      },
+      "shareExperience": {
+        "title": "경험 공유하기",
+        "description": "친구들에게 앱이 좋은 이유를 알려 주세요"
+      },
+      "share": {
+        "genericMessage": "저는 이 AI 앱으로 채팅과 이미지 생성을 하고 있어요. 확인해 보세요: {{url}}",
+        "facebookQuote": "이 AI 앱을 확인해 보세요!",
+        "twitterText": "이 AI 앱을 써보고 있는데 꽤 좋아요.",
+        "instagramMessage": "이 AI 앱을 확인해 보세요: {{url}}"
+      },
+      "store": {
+        "errorTitle": "오류",
+        "errorMessage": "스토어 페이지를 열 수 없어요."
+      }
     },
-    "share": {
-      "genericMessage": "저는 이 AI 앱으로 채팅과 이미지 생성을 하고 있어요. 확인해 보세요: {{url}}",
-      "facebookQuote": "이 AI 앱을 확인해 보세요!",
-      "twitterText": "이 AI 앱을 써보고 있는데 꽤 좋아요.",
-      "instagramMessage": "이 AI 앱을 확인해 보세요: {{url}}"
-    },
-    "store": {
-      "errorTitle": "오류",
-      "errorMessage": "스토어 페이지를 열 수 없어요."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "퀘스트 완료",
-      "description": "퀘스트가 완료되었습니다",
-      "points": "+{{points}} 포인트",
-      "close": "닫기"
-    },
-    "rewardSuccess": {
-      "error": "오류",
-      "success": "성공",
-      "somethingWentWrong": "문제가 발생했습니다",
-      "rewardUnlocked": "보상 잠금 해제",
-      "credits": "크레딧",
-      "close": "닫기",
-      "okay": "확인"
-    },
-    "secretBox": {
-      "pill": "시크릿 박스",
-      "rewardUnlocked": "보상 잠금 해제",
-      "shufflingRewards": "보상 섞는 중...",
-      "imageCreditsAdded": "이미지 크레딧이 계정에 추가되었습니다",
-      "continue": "계속",
-      "revealing": "공개 중...",
-      "prizeTiers": {
-        "lucky": "럭키",
-        "pro": "프로",
-        "elite": "엘리트",
-        "mythic": "미식"
+    "modals": {
+      "questCompleted": {
+        "title": "퀘스트 완료",
+        "description": "퀘스트가 완료되었습니다",
+        "points": "+{{points}} 포인트",
+        "close": "닫기"
+      },
+      "rewardSuccess": {
+        "error": "오류",
+        "success": "성공",
+        "somethingWentWrong": "문제가 발생했습니다",
+        "rewardUnlocked": "보상 잠금 해제",
+        "credits": "크레딧",
+        "close": "닫기",
+        "okay": "확인"
+      },
+      "secretBox": {
+        "pill": "시크릿 박스",
+        "rewardUnlocked": "보상 잠금 해제",
+        "shufflingRewards": "보상 섞는 중...",
+        "imageCreditsAdded": "이미지 크레딧이 계정에 추가되었습니다",
+        "continue": "계속",
+        "revealing": "공개 중...",
+        "prizeTiers": {
+          "lucky": "럭키",
+          "pro": "프로",
+          "elite": "엘리트",
+          "mythic": "미식"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "일일 보상",
+      "body": "일일 코인을 놓치지 마세요 — 자정 전에 수령하세요."
+    }
   }
-}
 }

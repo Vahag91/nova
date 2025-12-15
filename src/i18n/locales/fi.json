@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Palkinnot",
-    "openMenu": "Avaa valikko",
-    "goBack": "Takaisin"
-  },
-  "pointsHero": {
-    "totalBalance": "KOKONAISSALDO",
-    "seeYourRewards": "Katso palkintosi"
-  },
-  "streakTracker": {
-    "title": "Päivittäinen putki",
-    "subtitle": "Jatka samaan malliin! Olet liekeissä.",
-    "days": "Päivät",
-    "prize": "Palkinto",
-    "dayLabel": "Päivä {{number}}",
-    "nextReward": "Seuraava palkinto: {{amount}} {{time}} kuluttua",
-    "coins": "Kolikot"
-  },
-  "sections": {
-    "availableQuests": "Saatavilla olevat tehtävät",
-    "completedQuests": "Suoritetut tehtävät",
-    "availableRewards": "Saatavilla olevat palkinnot",
-    "needsMoreCoins": "Tarvitset lisää kolikoita"
-  },
-  "balances": {
-    "rewardCoins": "Palkintokolikot",
-    "imageCredits": "Kuvakrediitit"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 kuvakrediittiä",
-      "imageCredits200": "200 kuvakrediittiä",
-      "imageCredits600": "600 kuvakrediittiä",
-      "weeklyPremium": "Viikkopremium",
-      "secretBox": "Salainen laatikko"
+    "header": {
+      "title": "Palkinnot",
+      "openMenu": "Avaa valikko",
+      "goBack": "Takaisin"
     },
-    "rewardDescriptions": {
-      "secretBox": "Yllätyspalkintoja sisällä"
+    "pointsHero": {
+      "totalBalance": "KOKONAISSALDO",
+      "seeYourRewards": "Katso palkintosi"
     },
-    "alerts": {
-      "comingSoonTitle": "Tulossa pian",
-      "comingSoonMessage": "Tämä palkinto ei ole vielä saatavilla.",
-      "notEnoughCoinsTitle": "Ei tarpeeksi kolikoita",
-      "notEnoughCoinsMessage": "Tarvitset lisää palkintokolikoita tämän palkinnon avaamiseen.",
-      "errorTitle": "Virhe",
-      "couldNotOpenBox": "Laatikkoa ei voitu avata.",
-      "couldNotRedeem": "Palkintoa ei voitu lunastaa. Yritä uudelleen.",
-      "mysteryReward": "Mysteeripalkinto"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Päivittäinen kirjautuminen",
-      "description": "Avaa sovellus tänään, jotta putki jatkuu",
-      "message": "Tämä tehtävä suoritetaan automaattisesti, kun avaat sovelluksen joka päivä."
+    "streakTracker": {
+      "title": "Päivittäinen putki",
+      "subtitle": "Jatka samaan malliin! Olet liekeissä.",
+      "days": "Päivät",
+      "prize": "Palkinto",
+      "dayLabel": "Päivä {{number}}",
+      "nextReward": "Seuraava palkinto: {{amount}} {{time}} kuluttua",
+      "coins": "Kolikot"
     },
-    "shareFacebook": {
-      "title": "Jaa Facebookissa",
-      "description": "Tee meistä julkaisu Facebookissa"
+    "sections": {
+      "availableQuests": "Saatavilla olevat tehtävät",
+      "completedQuests": "Suoritetut tehtävät",
+      "availableRewards": "Saatavilla olevat palkinnot",
+      "needsMoreCoins": "Tarvitset lisää kolikoita"
     },
-    "shareTwitter": {
-      "title": "Jaa X:ssä",
-      "description": "Twiittaa kokemuksestasi"
+    "balances": {
+      "rewardCoins": "Palkintokolikot",
+      "imageCredits": "Kuvakrediitit"
     },
-    "shareInstagram": {
-      "title": "Jaa Instagramissa",
-      "description": "Jaa tarina tai julkaisu"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 kuvakrediittiä",
+        "imageCredits200": "200 kuvakrediittiä",
+        "imageCredits600": "600 kuvakrediittiä",
+        "weeklyPremium": "Viikkopremium",
+        "secretBox": "Salainen laatikko"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Yllätyspalkintoja sisällä"
+      },
+      "alerts": {
+        "comingSoonTitle": "Tulossa pian",
+        "comingSoonMessage": "Tämä palkinto ei ole vielä saatavilla.",
+        "notEnoughCoinsTitle": "Ei tarpeeksi kolikoita",
+        "notEnoughCoinsMessage": "Tarvitset lisää palkintokolikoita tämän palkinnon avaamiseen.",
+        "errorTitle": "Virhe",
+        "couldNotOpenBox": "Laatikkoa ei voitu avata.",
+        "couldNotRedeem": "Palkintoa ei voitu lunastaa. Yritä uudelleen.",
+        "mysteryReward": "Mysteeripalkinto"
+      }
     },
-    "shareExperience": {
-      "title": "Jaa kokemuksesi",
-      "description": "Kerro kavereille, miksi pidät sovelluksesta"
+    "quests": {
+      "dailyLogin": {
+        "title": "Päivittäinen kirjautuminen",
+        "description": "Avaa sovellus tänään, jotta putki jatkuu",
+        "message": "Tämä tehtävä suoritetaan automaattisesti, kun avaat sovelluksen joka päivä."
+      },
+      "shareFacebook": {
+        "title": "Jaa Facebookissa",
+        "description": "Tee meistä julkaisu Facebookissa"
+      },
+      "shareTwitter": {
+        "title": "Jaa X:ssä",
+        "description": "Twiittaa kokemuksestasi"
+      },
+      "shareInstagram": {
+        "title": "Jaa Instagramissa",
+        "description": "Jaa tarina tai julkaisu"
+      },
+      "shareExperience": {
+        "title": "Jaa kokemuksesi",
+        "description": "Kerro kavereille, miksi pidät sovelluksesta"
+      },
+      "share": {
+        "genericMessage": "Käytän tätä tekoälysovellusta chattiin ja kuvien luontiin. Katso: {{url}}",
+        "facebookQuote": "Tutustu tähän tekoälysovellukseen!",
+        "twitterText": "Testaan tätä tekoälysovellusta, se on aika siisti.",
+        "instagramMessage": "Tutustu tähän tekoälysovellukseen: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Virhe",
+        "errorMessage": "Kaupan sivua ei voitu avata."
+      }
     },
-    "share": {
-      "genericMessage": "Käytän tätä tekoälysovellusta chattiin ja kuvien luontiin. Katso: {{url}}",
-      "facebookQuote": "Tutustu tähän tekoälysovellukseen!",
-      "twitterText": "Testaan tätä tekoälysovellusta, se on aika siisti.",
-      "instagramMessage": "Tutustu tähän tekoälysovellukseen: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Virhe",
-      "errorMessage": "Kaupan sivua ei voitu avata."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Tehtävä suoritettu",
-      "description": "Tehtävä suoritettu",
-      "points": "+{{points}} pistettä",
-      "close": "Sulje"
-    },
-    "rewardSuccess": {
-      "error": "VIRHE",
-      "success": "ONNISTUI",
-      "somethingWentWrong": "Jokin meni pieleen",
-      "rewardUnlocked": "Palkinto avattu",
-      "credits": "Krediitit",
-      "close": "Sulje",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "SALAINEN LAATIKKO",
-      "rewardUnlocked": "PALKINTO AVATTU",
-      "shufflingRewards": "SEKOITETAAN PALKINTOJA...",
-      "imageCreditsAdded": "Kuvakrediittejä lisättiin tilillesi",
-      "continue": "Jatka",
-      "revealing": "Paljastetaan...",
-      "prizeTiers": {
-        "lucky": "ONNEKAS",
-        "pro": "PRO",
-        "elite": "ELIITTI",
-        "mythic": "MYyttINEN"
+    "modals": {
+      "questCompleted": {
+        "title": "Tehtävä suoritettu",
+        "description": "Tehtävä suoritettu",
+        "points": "+{{points}} pistettä",
+        "close": "Sulje"
+      },
+      "rewardSuccess": {
+        "error": "VIRHE",
+        "success": "ONNISTUI",
+        "somethingWentWrong": "Jokin meni pieleen",
+        "rewardUnlocked": "Palkinto avattu",
+        "credits": "Krediitit",
+        "close": "Sulje",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "SALAINEN LAATIKKO",
+        "rewardUnlocked": "PALKINTO AVATTU",
+        "shufflingRewards": "SEKOITETAAN PALKINTOJA...",
+        "imageCreditsAdded": "Kuvakrediittejä lisättiin tilillesi",
+        "continue": "Jatka",
+        "revealing": "Paljastetaan...",
+        "prizeTiers": {
+          "lucky": "ONNEKAS",
+          "pro": "PRO",
+          "elite": "ELIITTI",
+          "mythic": "MYyttINEN"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Päivittäinen palkinto",
+      "body": "Älä missaa päivittäisiä kolikoitasi — lunasta ennen keskiyötä."
+    }
   }
-}
 }

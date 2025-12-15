@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Ganjaran",
-    "openMenu": "Buka menu",
-    "goBack": "Kembali"
-  },
-  "pointsHero": {
-    "totalBalance": "JUMLAH BAKI",
-    "seeYourRewards": "Lihat ganjaran anda"
-  },
-  "streakTracker": {
-    "title": "Streak Harian",
-    "subtitle": "Teruskan! Anda memang hebat.",
-    "days": "Hari",
-    "prize": "Hadiah",
-    "dayLabel": "Hari {{number}}",
-    "nextReward": "Ganjaran seterusnya: {{amount}} dalam {{time}}",
-    "coins": "Syiling"
-  },
-  "sections": {
-    "availableQuests": "Misi tersedia",
-    "completedQuests": "Misi selesai",
-    "availableRewards": "Ganjaran tersedia",
-    "needsMoreCoins": "Perlukan lebih banyak syiling"
-  },
-  "balances": {
-    "rewardCoins": "Syiling ganjaran",
-    "imageCredits": "Kredit imej"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 kredit imej",
-      "imageCredits200": "200 kredit imej",
-      "imageCredits600": "600 kredit imej",
-      "weeklyPremium": "Premium Mingguan",
-      "secretBox": "Kotak Rahsia"
+    "header": {
+      "title": "Ganjaran",
+      "openMenu": "Buka menu",
+      "goBack": "Kembali"
     },
-    "rewardDescriptions": {
-      "secretBox": "Ganjaran misteri di dalam"
+    "pointsHero": {
+      "totalBalance": "JUMLAH BAKI",
+      "seeYourRewards": "Lihat ganjaran anda"
     },
-    "alerts": {
-      "comingSoonTitle": "Akan datang",
-      "comingSoonMessage": "Ganjaran ini belum tersedia lagi.",
-      "notEnoughCoinsTitle": "Syiling tidak mencukupi",
-      "notEnoughCoinsMessage": "Anda perlukan lebih banyak syiling ganjaran untuk membuka ganjaran ini.",
-      "errorTitle": "Ralat",
-      "couldNotOpenBox": "Tidak dapat membuka kotak.",
-      "couldNotRedeem": "Tidak dapat menebus ganjaran. Sila cuba lagi.",
-      "mysteryReward": "Ganjaran Misteri"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Log masuk harian",
-      "description": "Buka aplikasi hari ini untuk kekalkan streak anda",
-      "message": "Misi ini selesai secara automatik apabila anda membuka aplikasi setiap hari."
+    "streakTracker": {
+      "title": "Streak Harian",
+      "subtitle": "Teruskan! Anda memang hebat.",
+      "days": "Hari",
+      "prize": "Hadiah",
+      "dayLabel": "Hari {{number}}",
+      "nextReward": "Ganjaran seterusnya: {{amount}} dalam {{time}}",
+      "coins": "Syiling"
     },
-    "shareFacebook": {
-      "title": "Kongsi di Facebook",
-      "description": "Buat hantaran tentang kami di Facebook"
+    "sections": {
+      "availableQuests": "Misi tersedia",
+      "completedQuests": "Misi selesai",
+      "availableRewards": "Ganjaran tersedia",
+      "needsMoreCoins": "Perlukan lebih banyak syiling"
     },
-    "shareTwitter": {
-      "title": "Kongsi di X",
-      "description": "Tweet pengalaman anda"
+    "balances": {
+      "rewardCoins": "Syiling ganjaran",
+      "imageCredits": "Kredit imej"
     },
-    "shareInstagram": {
-      "title": "Kongsi di Instagram",
-      "description": "Kongsi story atau hantaran"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 kredit imej",
+        "imageCredits200": "200 kredit imej",
+        "imageCredits600": "600 kredit imej",
+        "weeklyPremium": "Premium Mingguan",
+        "secretBox": "Kotak Rahsia"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Ganjaran misteri di dalam"
+      },
+      "alerts": {
+        "comingSoonTitle": "Akan datang",
+        "comingSoonMessage": "Ganjaran ini belum tersedia lagi.",
+        "notEnoughCoinsTitle": "Syiling tidak mencukupi",
+        "notEnoughCoinsMessage": "Anda perlukan lebih banyak syiling ganjaran untuk membuka ganjaran ini.",
+        "errorTitle": "Ralat",
+        "couldNotOpenBox": "Tidak dapat membuka kotak.",
+        "couldNotRedeem": "Tidak dapat menebus ganjaran. Sila cuba lagi.",
+        "mysteryReward": "Ganjaran Misteri"
+      }
     },
-    "shareExperience": {
-      "title": "Kongsi pengalaman anda",
-      "description": "Beritahu rakan kenapa anda suka aplikasi ini"
+    "quests": {
+      "dailyLogin": {
+        "title": "Log masuk harian",
+        "description": "Buka aplikasi hari ini untuk kekalkan streak anda",
+        "message": "Misi ini selesai secara automatik apabila anda membuka aplikasi setiap hari."
+      },
+      "shareFacebook": {
+        "title": "Kongsi di Facebook",
+        "description": "Buat hantaran tentang kami di Facebook"
+      },
+      "shareTwitter": {
+        "title": "Kongsi di X",
+        "description": "Tweet pengalaman anda"
+      },
+      "shareInstagram": {
+        "title": "Kongsi di Instagram",
+        "description": "Kongsi story atau hantaran"
+      },
+      "shareExperience": {
+        "title": "Kongsi pengalaman anda",
+        "description": "Beritahu rakan kenapa anda suka aplikasi ini"
+      },
+      "share": {
+        "genericMessage": "Saya menggunakan aplikasi AI ini untuk chat & penjanaan imej. Lihat: {{url}}",
+        "facebookQuote": "Lihat aplikasi AI ini!",
+        "twitterText": "Saya cuba aplikasi AI ini, memang best.",
+        "instagramMessage": "Lihat aplikasi AI ini: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Ralat",
+        "errorMessage": "Tidak dapat membuka halaman kedai."
+      }
     },
-    "share": {
-      "genericMessage": "Saya menggunakan aplikasi AI ini untuk chat & penjanaan imej. Lihat: {{url}}",
-      "facebookQuote": "Lihat aplikasi AI ini!",
-      "twitterText": "Saya cuba aplikasi AI ini, memang best.",
-      "instagramMessage": "Lihat aplikasi AI ini: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Ralat",
-      "errorMessage": "Tidak dapat membuka halaman kedai."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Misi selesai",
-      "description": "Misi selesai",
-      "points": "+{{points}} mata",
-      "close": "Tutup"
-    },
-    "rewardSuccess": {
-      "error": "RALAT",
-      "success": "BERJAYA",
-      "somethingWentWrong": "Sesuatu telah berlaku",
-      "rewardUnlocked": "Ganjaran dibuka",
-      "credits": "Kredit",
-      "close": "Tutup",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "KOTAK RAHSIA",
-      "rewardUnlocked": "GANJARAN DIBUKA",
-      "shufflingRewards": "MENGACAK GANJARAN...",
-      "imageCreditsAdded": "Kredit imej telah ditambah ke akaun anda",
-      "continue": "Teruskan",
-      "revealing": "Mendedahkan...",
-      "prizeTiers": {
-        "lucky": "BERTUAH",
-        "pro": "PRO",
-        "elite": "ELIT",
-        "mythic": "MYTHIC"
+    "modals": {
+      "questCompleted": {
+        "title": "Misi selesai",
+        "description": "Misi selesai",
+        "points": "+{{points}} mata",
+        "close": "Tutup"
+      },
+      "rewardSuccess": {
+        "error": "RALAT",
+        "success": "BERJAYA",
+        "somethingWentWrong": "Sesuatu telah berlaku",
+        "rewardUnlocked": "Ganjaran dibuka",
+        "credits": "Kredit",
+        "close": "Tutup",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "KOTAK RAHSIA",
+        "rewardUnlocked": "GANJARAN DIBUKA",
+        "shufflingRewards": "MENGACAK GANJARAN...",
+        "imageCreditsAdded": "Kredit imej telah ditambah ke akaun anda",
+        "continue": "Teruskan",
+        "revealing": "Mendedahkan...",
+        "prizeTiers": {
+          "lucky": "BERTUAH",
+          "pro": "PRO",
+          "elite": "ELIT",
+          "mythic": "MYTHIC"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Ganjaran harian",
+      "body": "Jangan terlepas syiling harian anda — tuntut sebelum tengah malam."
+    }
   }
-}
 }

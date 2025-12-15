@@ -65,14 +65,6 @@ export const MarkdownTable = ({ node }) => {
   const [copied, setCopied] = useState(false);
   const { headers, rows } = useMemo(() => extractTableData(node), [node]);
 
-  if (__DEV__) {
-    console.log('[MarkdownTable] render', {
-      key: node?.key,
-      headers: headers?.length,
-      rows: rows?.length,
-    });
-  }
-
   if (!headers.length && !rows.length) return null;
 
   // Calculate Width
@@ -145,9 +137,6 @@ export const MarkdownTable = ({ node }) => {
 };
 
 export const TableWrapper = ({ node, children }) => {
-  if (__DEV__) {
-    console.log('[TableWrapper] children count', React.Children.count(children), 'node key', node?.key);
-  }
   return <MarkdownTable node={node}>{children}</MarkdownTable>;
 };
 

@@ -28,7 +28,6 @@ export const MarkdownBlockquote = ({ node, children }) => {
   
   const borderColor = tone === 'warn' ? '#FFB74D' : tone === 'tip' ? '#4CAF50' : '#42A5F5';
   const bgColor = tone === 'warn' ? '#332200' : tone === 'tip' ? '#002200' : '#111b26';
-console.log("worked blockquote");
 
   return (
     <View style={[styles.container, { borderLeftColor: borderColor, backgroundColor: bgColor }]}>

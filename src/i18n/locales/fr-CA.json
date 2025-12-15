@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Récompenses",
-    "openMenu": "Ouvrir le menu",
-    "goBack": "Retour"
-  },
-  "pointsHero": {
-    "totalBalance": "SOLDE TOTAL",
-    "seeYourRewards": "Voir tes récompenses"
-  },
-  "streakTracker": {
-    "title": "Série quotidienne",
-    "subtitle": "Continue comme ça! Tu es en feu.",
-    "days": "Jours",
-    "prize": "Prix",
-    "dayLabel": "Jour {{number}}",
-    "nextReward": "Prochaine récompense : {{amount}} dans {{time}}",
-    "coins": "Pièces"
-  },
-  "sections": {
-    "availableQuests": "Quêtes disponibles",
-    "completedQuests": "Quêtes complétées",
-    "availableRewards": "Récompenses disponibles",
-    "needsMoreCoins": "Besoin de plus de pièces"
-  },
-  "balances": {
-    "rewardCoins": "Pièces de récompense",
-    "imageCredits": "Crédits d’image"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 crédits d’image",
-      "imageCredits200": "200 crédits d’image",
-      "imageCredits600": "600 crédits d’image",
-      "weeklyPremium": "Premium hebdomadaire",
-      "secretBox": "Boîte secrète"
+    "header": {
+      "title": "Récompenses",
+      "openMenu": "Ouvrir le menu",
+      "goBack": "Retour"
     },
-    "rewardDescriptions": {
-      "secretBox": "Des récompenses surprises à l’intérieur"
+    "pointsHero": {
+      "totalBalance": "SOLDE TOTAL",
+      "seeYourRewards": "Voir tes récompenses"
     },
-    "alerts": {
-      "comingSoonTitle": "Bientôt",
-      "comingSoonMessage": "Cette récompense n’est pas encore disponible.",
-      "notEnoughCoinsTitle": "Pas assez de pièces",
-      "notEnoughCoinsMessage": "Tu as besoin de plus de pièces de récompense pour débloquer cette récompense.",
-      "errorTitle": "Erreur",
-      "couldNotOpenBox": "Impossible d’ouvrir la boîte.",
-      "couldNotRedeem": "Impossible d’échanger la récompense. Réessaie.",
-      "mysteryReward": "Récompense mystère"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Connexion quotidienne",
-      "description": "Ouvre l’app aujourd’hui pour garder ta série",
-      "message": "Cette quête se complète automatiquement quand tu ouvres l’app chaque jour."
+    "streakTracker": {
+      "title": "Série quotidienne",
+      "subtitle": "Continue comme ça! Tu es en feu.",
+      "days": "Jours",
+      "prize": "Prix",
+      "dayLabel": "Jour {{number}}",
+      "nextReward": "Prochaine récompense : {{amount}} dans {{time}}",
+      "coins": "Pièces"
     },
-    "shareFacebook": {
-      "title": "Partager sur Facebook",
-      "description": "Publie à notre sujet sur Facebook"
+    "sections": {
+      "availableQuests": "Quêtes disponibles",
+      "completedQuests": "Quêtes complétées",
+      "availableRewards": "Récompenses disponibles",
+      "needsMoreCoins": "Besoin de plus de pièces"
     },
-    "shareTwitter": {
-      "title": "Partager sur X",
-      "description": "Tweete ton expérience"
+    "balances": {
+      "rewardCoins": "Pièces de récompense",
+      "imageCredits": "Crédits d’image"
     },
-    "shareInstagram": {
-      "title": "Partager sur Instagram",
-      "description": "Partage une story ou une publication"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 crédits d’image",
+        "imageCredits200": "200 crédits d’image",
+        "imageCredits600": "600 crédits d’image",
+        "weeklyPremium": "Premium hebdomadaire",
+        "secretBox": "Boîte secrète"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Des récompenses surprises à l’intérieur"
+      },
+      "alerts": {
+        "comingSoonTitle": "Bientôt",
+        "comingSoonMessage": "Cette récompense n’est pas encore disponible.",
+        "notEnoughCoinsTitle": "Pas assez de pièces",
+        "notEnoughCoinsMessage": "Tu as besoin de plus de pièces de récompense pour débloquer cette récompense.",
+        "errorTitle": "Erreur",
+        "couldNotOpenBox": "Impossible d’ouvrir la boîte.",
+        "couldNotRedeem": "Impossible d’échanger la récompense. Réessaie.",
+        "mysteryReward": "Récompense mystère"
+      }
     },
-    "shareExperience": {
-      "title": "Partage ton expérience",
-      "description": "Dis à tes amis pourquoi tu aimes l’app"
+    "quests": {
+      "dailyLogin": {
+        "title": "Connexion quotidienne",
+        "description": "Ouvre l’app aujourd’hui pour garder ta série",
+        "message": "Cette quête se complète automatiquement quand tu ouvres l’app chaque jour."
+      },
+      "shareFacebook": {
+        "title": "Partager sur Facebook",
+        "description": "Publie à notre sujet sur Facebook"
+      },
+      "shareTwitter": {
+        "title": "Partager sur X",
+        "description": "Tweete ton expérience"
+      },
+      "shareInstagram": {
+        "title": "Partager sur Instagram",
+        "description": "Partage une story ou une publication"
+      },
+      "shareExperience": {
+        "title": "Partage ton expérience",
+        "description": "Dis à tes amis pourquoi tu aimes l’app"
+      },
+      "share": {
+        "genericMessage": "J’utilise cette app d’IA pour le chat et la génération d’images. Va voir : {{url}}",
+        "facebookQuote": "Va voir cette app d’IA!",
+        "twitterText": "J’essaie cette app d’IA, elle est vraiment cool.",
+        "instagramMessage": "Va voir cette app d’IA : {{url}}"
+      },
+      "store": {
+        "errorTitle": "Erreur",
+        "errorMessage": "Impossible d’ouvrir la page de la boutique."
+      }
     },
-    "share": {
-      "genericMessage": "J’utilise cette app d’IA pour le chat et la génération d’images. Va voir : {{url}}",
-      "facebookQuote": "Va voir cette app d’IA!",
-      "twitterText": "J’essaie cette app d’IA, elle est vraiment cool.",
-      "instagramMessage": "Va voir cette app d’IA : {{url}}"
-    },
-    "store": {
-      "errorTitle": "Erreur",
-      "errorMessage": "Impossible d’ouvrir la page de la boutique."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Quête complétée",
-      "description": "Quête complétée",
-      "points": "+{{points}} points",
-      "close": "Fermer"
-    },
-    "rewardSuccess": {
-      "error": "ERREUR",
-      "success": "SUCCÈS",
-      "somethingWentWrong": "Un problème est survenu",
-      "rewardUnlocked": "Récompense débloquée",
-      "credits": "Crédits",
-      "close": "Fermer",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "BOÎTE SECRÈTE",
-      "rewardUnlocked": "RÉCOMPENSE DÉBLOQUÉE",
-      "shufflingRewards": "MÉLANGE DES RÉCOMPENSES...",
-      "imageCreditsAdded": "Des crédits d’image ont été ajoutés à ton compte",
-      "continue": "Continuer",
-      "revealing": "Révélation...",
-      "prizeTiers": {
-        "lucky": "CHANCEUX",
-        "pro": "PRO",
-        "elite": "ÉLITE",
-        "mythic": "MYTHIQUE"
+    "modals": {
+      "questCompleted": {
+        "title": "Quête complétée",
+        "description": "Quête complétée",
+        "points": "+{{points}} points",
+        "close": "Fermer"
+      },
+      "rewardSuccess": {
+        "error": "ERREUR",
+        "success": "SUCCÈS",
+        "somethingWentWrong": "Un problème est survenu",
+        "rewardUnlocked": "Récompense débloquée",
+        "credits": "Crédits",
+        "close": "Fermer",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "BOÎTE SECRÈTE",
+        "rewardUnlocked": "RÉCOMPENSE DÉBLOQUÉE",
+        "shufflingRewards": "MÉLANGE DES RÉCOMPENSES...",
+        "imageCreditsAdded": "Des crédits d’image ont été ajoutés à ton compte",
+        "continue": "Continuer",
+        "revealing": "Révélation...",
+        "prizeTiers": {
+          "lucky": "CHANCEUX",
+          "pro": "PRO",
+          "elite": "ÉLITE",
+          "mythic": "MYTHIQUE"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Récompense quotidienne",
+      "body": "Ne manque pas tes pièces du jour — récupère-les avant minuit."
+    }
   }
-}
 }

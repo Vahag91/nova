@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, Pressable, StyleSheet, Animated, Easing } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,7 @@ export const Header = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const appearAnim = useRef(new Animated.Value(0)).current;
   
   // Check if we're on the initial route (RewardsHome) - if so, show burger menu
   const state = navigation.getState();
@@ -26,8 +27,29 @@ export const Header = () => {
     }
   };
 
+  useEffect(() => {
+    Animated.timing(appearAnim, {
+      toValue: 1,
+      duration: 260,
+      easing: Easing.out(Easing.quad),
+      useNativeDriver: true,
+    }).start();
+  }, [appearAnim]);
+
+  const animatedStyle = {
+    opacity: appearAnim,
+    transform: [
+      {
+        translateY: appearAnim.interpolate({
+          inputRange: [0, 1],
+          outputRange: [-8, 0],
+        }),
+      },
+    ],
+  };
+
   return (
-    <View style={[styles.container, { paddingTop: insets.top + 12 }]}>
+    <Animated.View style={[styles.container, { paddingTop: insets.top + 26 }, animatedStyle]}>
       <View style={styles.leftSection}>
         <Pressable
           onPress={handleLeftPress}
@@ -47,7 +69,7 @@ export const Header = () => {
       </View>
 
       <View style={styles.rightSection} />
-    </View>
+    </Animated.View>
   );
 };
 
@@ -88,12 +110,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.05)',
   },
   title: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: '700',
     fontFamily: 'Lato-Bold',
     color: '#FFFFFF',
     textAlign: 'center',
     includeFontPadding: false,
+    letterSpacing: 0.2,
   },
 });
 

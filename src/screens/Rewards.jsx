@@ -27,12 +27,12 @@ const ANDROID_PACKAGE_NAME = 'com.yourapp.package'; // TODO
 const APP_SHARE_URL = `https://apps.apple.com/app/id${IOS_APP_ID}`;
 const DAILY_MODAL_KEY = 'rewards-daily-login-modal-day';
 
-// IMPORTANT: use UTC here to match your Zustand store logic
+// Use local day key to align with rewards store
 function toDayKey(date = new Date()) {
   const d = new Date(date);
-  const year = d.getUTCFullYear();
-  const month = String(d.getUTCMonth() + 1).padStart(2, '0');
-  const day = String(d.getUTCDate()).padStart(2, '0');
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 }
 

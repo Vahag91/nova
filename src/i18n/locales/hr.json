@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Nagrade",
-    "openMenu": "Otvori izbornik",
-    "goBack": "Natrag"
-  },
-  "pointsHero": {
-    "totalBalance": "UKUPNO STANJE",
-    "seeYourRewards": "Pogledaj svoje nagrade"
-  },
-  "streakTracker": {
-    "title": "Dnevni niz",
-    "subtitle": "Samo tako dalje! Odlično ti ide.",
-    "days": "Dani",
-    "prize": "Nagrada",
-    "dayLabel": "Dan {{number}}",
-    "nextReward": "Sljedeća nagrada: {{amount}} za {{time}}",
-    "coins": "Kovanice"
-  },
-  "sections": {
-    "availableQuests": "Dostupni zadaci",
-    "completedQuests": "Dovršeni zadaci",
-    "availableRewards": "Dostupne nagrade",
-    "needsMoreCoins": "Treba više kovanica"
-  },
-  "balances": {
-    "rewardCoins": "Nagradni novčići",
-    "imageCredits": "Krediti za slike"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 kredita za slike",
-      "imageCredits200": "200 kredita za slike",
-      "imageCredits600": "600 kredita za slike",
-      "weeklyPremium": "Tjedni Premium",
-      "secretBox": "Tajna kutija"
+    "header": {
+      "title": "Nagrade",
+      "openMenu": "Otvori izbornik",
+      "goBack": "Natrag"
     },
-    "rewardDescriptions": {
-      "secretBox": "Unutra su iznenadne nagrade"
+    "pointsHero": {
+      "totalBalance": "UKUPNO STANJE",
+      "seeYourRewards": "Pogledaj svoje nagrade"
     },
-    "alerts": {
-      "comingSoonTitle": "Uskoro",
-      "comingSoonMessage": "Ova nagrada još nije dostupna.",
-      "notEnoughCoinsTitle": "Nema dovoljno kovanica",
-      "notEnoughCoinsMessage": "Trebaš više nagradnih novčića da otključaš ovu nagradu.",
-      "errorTitle": "Greška",
-      "couldNotOpenBox": "Nije moguće otvoriti kutiju.",
-      "couldNotRedeem": "Nije moguće preuzeti nagradu. Pokušaj ponovno.",
-      "mysteryReward": "Tajanstvena nagrada"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Dnevna prijava",
-      "description": "Otvori aplikaciju danas da zadržiš niz",
-      "message": "Ovaj se zadatak automatski dovršava kada svaki dan otvoriš aplikaciju."
+    "streakTracker": {
+      "title": "Dnevni niz",
+      "subtitle": "Samo tako dalje! Odlično ti ide.",
+      "days": "Dani",
+      "prize": "Nagrada",
+      "dayLabel": "Dan {{number}}",
+      "nextReward": "Sljedeća nagrada: {{amount}} za {{time}}",
+      "coins": "Kovanice"
     },
-    "shareFacebook": {
-      "title": "Podijeli na Facebooku",
-      "description": "Objavi o nama na Facebooku"
+    "sections": {
+      "availableQuests": "Dostupni zadaci",
+      "completedQuests": "Dovršeni zadaci",
+      "availableRewards": "Dostupne nagrade",
+      "needsMoreCoins": "Treba više kovanica"
     },
-    "shareTwitter": {
-      "title": "Podijeli na X-u",
-      "description": "Objavi tweet o svom iskustvu"
+    "balances": {
+      "rewardCoins": "Nagradni novčići",
+      "imageCredits": "Krediti za slike"
     },
-    "shareInstagram": {
-      "title": "Podijeli na Instagramu",
-      "description": "Podijeli priču ili objavu"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 kredita za slike",
+        "imageCredits200": "200 kredita za slike",
+        "imageCredits600": "600 kredita za slike",
+        "weeklyPremium": "Tjedni Premium",
+        "secretBox": "Tajna kutija"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Unutra su iznenadne nagrade"
+      },
+      "alerts": {
+        "comingSoonTitle": "Uskoro",
+        "comingSoonMessage": "Ova nagrada još nije dostupna.",
+        "notEnoughCoinsTitle": "Nema dovoljno kovanica",
+        "notEnoughCoinsMessage": "Trebaš više nagradnih novčića da otključaš ovu nagradu.",
+        "errorTitle": "Greška",
+        "couldNotOpenBox": "Nije moguće otvoriti kutiju.",
+        "couldNotRedeem": "Nije moguće preuzeti nagradu. Pokušaj ponovno.",
+        "mysteryReward": "Tajanstvena nagrada"
+      }
     },
-    "shareExperience": {
-      "title": "Podijeli svoje iskustvo",
-      "description": "Reci prijateljima zašto ti se sviđa aplikacija"
+    "quests": {
+      "dailyLogin": {
+        "title": "Dnevna prijava",
+        "description": "Otvori aplikaciju danas da zadržiš niz",
+        "message": "Ovaj se zadatak automatski dovršava kada svaki dan otvoriš aplikaciju."
+      },
+      "shareFacebook": {
+        "title": "Podijeli na Facebooku",
+        "description": "Objavi o nama na Facebooku"
+      },
+      "shareTwitter": {
+        "title": "Podijeli na X-u",
+        "description": "Objavi tweet o svom iskustvu"
+      },
+      "shareInstagram": {
+        "title": "Podijeli na Instagramu",
+        "description": "Podijeli priču ili objavu"
+      },
+      "shareExperience": {
+        "title": "Podijeli svoje iskustvo",
+        "description": "Reci prijateljima zašto ti se sviđa aplikacija"
+      },
+      "share": {
+        "genericMessage": "Koristim ovu AI aplikaciju za chat i generiranje slika. Pogledaj: {{url}}",
+        "facebookQuote": "Pogledaj ovu AI aplikaciju!",
+        "twitterText": "Isprobavam ovu AI aplikaciju, baš je fora.",
+        "instagramMessage": "Pogledaj ovu AI aplikaciju: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Greška",
+        "errorMessage": "Nije moguće otvoriti stranicu trgovine."
+      }
     },
-    "share": {
-      "genericMessage": "Koristim ovu AI aplikaciju za chat i generiranje slika. Pogledaj: {{url}}",
-      "facebookQuote": "Pogledaj ovu AI aplikaciju!",
-      "twitterText": "Isprobavam ovu AI aplikaciju, baš je fora.",
-      "instagramMessage": "Pogledaj ovu AI aplikaciju: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Greška",
-      "errorMessage": "Nije moguće otvoriti stranicu trgovine."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Zadatak dovršen",
-      "description": "Zadatak dovršen",
-      "points": "+{{points}} bodova",
-      "close": "Zatvori"
-    },
-    "rewardSuccess": {
-      "error": "GREŠKA",
-      "success": "USPJEH",
-      "somethingWentWrong": "Nešto je pošlo po zlu",
-      "rewardUnlocked": "Nagrada otključana",
-      "credits": "Krediti",
-      "close": "Zatvori",
-      "okay": "U redu"
-    },
-    "secretBox": {
-      "pill": "TAJNA KUTIJA",
-      "rewardUnlocked": "NAGRADA OTKLJUČANA",
-      "shufflingRewards": "MIJEŠANJE NAGRADA...",
-      "imageCreditsAdded": "Krediti za slike dodani su na tvoj račun",
-      "continue": "Nastavi",
-      "revealing": "Otkrivanje...",
-      "prizeTiers": {
-        "lucky": "SRETNO",
-        "pro": "PRO",
-        "elite": "ELITE",
-        "mythic": "MITSKO"
+    "modals": {
+      "questCompleted": {
+        "title": "Zadatak dovršen",
+        "description": "Zadatak dovršen",
+        "points": "+{{points}} bodova",
+        "close": "Zatvori"
+      },
+      "rewardSuccess": {
+        "error": "GREŠKA",
+        "success": "USPJEH",
+        "somethingWentWrong": "Nešto je pošlo po zlu",
+        "rewardUnlocked": "Nagrada otključana",
+        "credits": "Krediti",
+        "close": "Zatvori",
+        "okay": "U redu"
+      },
+      "secretBox": {
+        "pill": "TAJNA KUTIJA",
+        "rewardUnlocked": "NAGRADA OTKLJUČANA",
+        "shufflingRewards": "MIJEŠANJE NAGRADA...",
+        "imageCreditsAdded": "Krediti za slike dodani su na tvoj račun",
+        "continue": "Nastavi",
+        "revealing": "Otkrivanje...",
+        "prizeTiers": {
+          "lucky": "SRETNO",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MITSKO"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Dnevna nagrada",
+      "body": "Ne propusti svoje dnevne novčiće — preuzmi ih prije ponoći."
+    }
   }
-}
 }

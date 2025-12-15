@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Jutalmak",
-    "openMenu": "Menü megnyitása",
-    "goBack": "Vissza"
-  },
-  "pointsHero": {
-    "totalBalance": "ÖSSZES EGYENLEG",
-    "seeYourRewards": "Jutalmak megtekintése"
-  },
-  "streakTracker": {
-    "title": "Napi sorozat",
-    "subtitle": "Csak így tovább! Nagyon jól csinálod.",
-    "days": "Napok",
-    "prize": "Nyeremény",
-    "dayLabel": "{{number}}. nap",
-    "nextReward": "Következő jutalom: {{amount}} ennyi idő múlva: {{time}}",
-    "coins": "Érmék"
-  },
-  "sections": {
-    "availableQuests": "Elérhető küldetések",
-    "completedQuests": "Teljesített küldetések",
-    "availableRewards": "Elérhető jutalmak",
-    "needsMoreCoins": "Több érme szükséges"
-  },
-  "balances": {
-    "rewardCoins": "Jutalomérmék",
-    "imageCredits": "Képkreditek"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 képkredit",
-      "imageCredits200": "200 képkredit",
-      "imageCredits600": "600 képkredit",
-      "weeklyPremium": "Heti Premium",
-      "secretBox": "Titkos doboz"
+    "header": {
+      "title": "Jutalmak",
+      "openMenu": "Menü megnyitása",
+      "goBack": "Vissza"
     },
-    "rewardDescriptions": {
-      "secretBox": "Meglepetés jutalmak belül"
+    "pointsHero": {
+      "totalBalance": "ÖSSZES EGYENLEG",
+      "seeYourRewards": "Jutalmak megtekintése"
     },
-    "alerts": {
-      "comingSoonTitle": "Hamarosan",
-      "comingSoonMessage": "Ez a jutalom még nem érhető el.",
-      "notEnoughCoinsTitle": "Nincs elég érme",
-      "notEnoughCoinsMessage": "Több jutalomérmére van szükséged a jutalom feloldásához.",
-      "errorTitle": "Hiba",
-      "couldNotOpenBox": "Nem sikerült kinyitni a dobozt.",
-      "couldNotRedeem": "Nem sikerült beváltani a jutalmat. Kérjük, próbáld újra.",
-      "mysteryReward": "Titokzatos jutalom"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Napi bejelentkezés",
-      "description": "Nyisd meg az appot ma, hogy megőrizd a sorozatodat",
-      "message": "Ez a küldetés automatikusan teljesül, amikor minden nap megnyitod az appot."
+    "streakTracker": {
+      "title": "Napi sorozat",
+      "subtitle": "Csak így tovább! Nagyon jól csinálod.",
+      "days": "Napok",
+      "prize": "Nyeremény",
+      "dayLabel": "{{number}}. nap",
+      "nextReward": "Következő jutalom: {{amount}} ennyi idő múlva: {{time}}",
+      "coins": "Érmék"
     },
-    "shareFacebook": {
-      "title": "Megosztás Facebookon",
-      "description": "Posztolj rólunk Facebookon"
+    "sections": {
+      "availableQuests": "Elérhető küldetések",
+      "completedQuests": "Teljesített küldetések",
+      "availableRewards": "Elérhető jutalmak",
+      "needsMoreCoins": "Több érme szükséges"
     },
-    "shareTwitter": {
-      "title": "Megosztás X-en",
-      "description": "Tweetelj az élményedről"
+    "balances": {
+      "rewardCoins": "Jutalomérmék",
+      "imageCredits": "Képkreditek"
     },
-    "shareInstagram": {
-      "title": "Megosztás Instagramon",
-      "description": "Ossz meg egy sztorit vagy posztot"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 képkredit",
+        "imageCredits200": "200 képkredit",
+        "imageCredits600": "600 képkredit",
+        "weeklyPremium": "Heti Premium",
+        "secretBox": "Titkos doboz"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Meglepetés jutalmak belül"
+      },
+      "alerts": {
+        "comingSoonTitle": "Hamarosan",
+        "comingSoonMessage": "Ez a jutalom még nem érhető el.",
+        "notEnoughCoinsTitle": "Nincs elég érme",
+        "notEnoughCoinsMessage": "Több jutalomérmére van szükséged a jutalom feloldásához.",
+        "errorTitle": "Hiba",
+        "couldNotOpenBox": "Nem sikerült kinyitni a dobozt.",
+        "couldNotRedeem": "Nem sikerült beváltani a jutalmat. Kérjük, próbáld újra.",
+        "mysteryReward": "Titokzatos jutalom"
+      }
     },
-    "shareExperience": {
-      "title": "Oszd meg az élményedet",
-      "description": "Mondd el a barátoknak, miért tetszik az app"
+    "quests": {
+      "dailyLogin": {
+        "title": "Napi bejelentkezés",
+        "description": "Nyisd meg az appot ma, hogy megőrizd a sorozatodat",
+        "message": "Ez a küldetés automatikusan teljesül, amikor minden nap megnyitod az appot."
+      },
+      "shareFacebook": {
+        "title": "Megosztás Facebookon",
+        "description": "Posztolj rólunk Facebookon"
+      },
+      "shareTwitter": {
+        "title": "Megosztás X-en",
+        "description": "Tweetelj az élményedről"
+      },
+      "shareInstagram": {
+        "title": "Megosztás Instagramon",
+        "description": "Ossz meg egy sztorit vagy posztot"
+      },
+      "shareExperience": {
+        "title": "Oszd meg az élményedet",
+        "description": "Mondd el a barátoknak, miért tetszik az app"
+      },
+      "share": {
+        "genericMessage": "Ezt az AI appot chathez és képgeneráláshoz használom. Nézd meg: {{url}}",
+        "facebookQuote": "Nézd meg ezt az AI appot!",
+        "twitterText": "Próbálom ezt az AI appot, elég menő.",
+        "instagramMessage": "Nézd meg ezt az AI appot: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Hiba",
+        "errorMessage": "Nem sikerült megnyitni az áruház oldalát."
+      }
     },
-    "share": {
-      "genericMessage": "Ezt az AI appot chathez és képgeneráláshoz használom. Nézd meg: {{url}}",
-      "facebookQuote": "Nézd meg ezt az AI appot!",
-      "twitterText": "Próbálom ezt az AI appot, elég menő.",
-      "instagramMessage": "Nézd meg ezt az AI appot: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Hiba",
-      "errorMessage": "Nem sikerült megnyitni az áruház oldalát."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Küldetés teljesítve",
-      "description": "Küldetés teljesítve",
-      "points": "+{{points}} pont",
-      "close": "Bezárás"
-    },
-    "rewardSuccess": {
-      "error": "HIBA",
-      "success": "SIKER",
-      "somethingWentWrong": "Valami hiba történt",
-      "rewardUnlocked": "Jutalom feloldva",
-      "credits": "Kreditek",
-      "close": "Bezárás",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "TITKOS DOBOZ",
-      "rewardUnlocked": "JUTALOM FELOLDVA",
-      "shufflingRewards": "JUTALMAK KEVERÉSE...",
-      "imageCreditsAdded": "A képkreditek hozzáadva a fiókodhoz",
-      "continue": "Folytatás",
-      "revealing": "Felfedés...",
-      "prizeTiers": {
-        "lucky": "SZERENCSÉS",
-        "pro": "PRO",
-        "elite": "ELIT",
-        "mythic": "MITIKUS"
+    "modals": {
+      "questCompleted": {
+        "title": "Küldetés teljesítve",
+        "description": "Küldetés teljesítve",
+        "points": "+{{points}} pont",
+        "close": "Bezárás"
+      },
+      "rewardSuccess": {
+        "error": "HIBA",
+        "success": "SIKER",
+        "somethingWentWrong": "Valami hiba történt",
+        "rewardUnlocked": "Jutalom feloldva",
+        "credits": "Kreditek",
+        "close": "Bezárás",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "TITKOS DOBOZ",
+        "rewardUnlocked": "JUTALOM FELOLDVA",
+        "shufflingRewards": "JUTALMAK KEVERÉSE...",
+        "imageCreditsAdded": "A képkreditek hozzáadva a fiókodhoz",
+        "continue": "Folytatás",
+        "revealing": "Felfedés...",
+        "prizeTiers": {
+          "lucky": "SZERENCSÉS",
+          "pro": "PRO",
+          "elite": "ELIT",
+          "mythic": "MITIKUS"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Napi jutalom",
+      "body": "Ne maradj le a napi érméidről — vedd fel éjfél előtt."
+    }
   }
-}
 }

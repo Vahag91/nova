@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "रिवॉर्ड्स",
-    "openMenu": "मेन्यू खोलें",
-    "goBack": "वापस जाएँ"
-  },
-  "pointsHero": {
-    "totalBalance": "कुल बैलेंस",
-    "seeYourRewards": "अपने रिवॉर्ड्स देखें"
-  },
-  "streakTracker": {
-    "title": "डेली स्ट्रीक",
-    "subtitle": "ऐसे ही जारी रखें! आप शानदार कर रहे हैं।",
-    "days": "दिन",
-    "prize": "इनाम",
-    "dayLabel": "दिन {{number}}",
-    "nextReward": "अगला रिवॉर्ड: {{time}} में {{amount}}",
-    "coins": "कॉइन्स"
-  },
-  "sections": {
-    "availableQuests": "उपलब्ध क्वेस्ट्स",
-    "completedQuests": "पूरा किए गए क्वेस्ट्स",
-    "availableRewards": "उपलब्ध रिवॉर्ड्स",
-    "needsMoreCoins": "और कॉइन्स चाहिए"
-  },
-  "balances": {
-    "rewardCoins": "रिवॉर्ड कॉइन्स",
-    "imageCredits": "इमेज क्रेडिट्स"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 इमेज क्रेडिट्स",
-      "imageCredits200": "200 इमेज क्रेडिट्स",
-      "imageCredits600": "600 इमेज क्रेडिट्स",
-      "weeklyPremium": "साप्ताहिक प्रीमियम",
-      "secretBox": "सीक्रेट बॉक्स"
+    "header": {
+      "title": "रिवॉर्ड्स",
+      "openMenu": "मेन्यू खोलें",
+      "goBack": "वापस जाएँ"
     },
-    "rewardDescriptions": {
-      "secretBox": "अंदर सरप्राइज़ रिवॉर्ड्स"
+    "pointsHero": {
+      "totalBalance": "कुल बैलेंस",
+      "seeYourRewards": "अपने रिवॉर्ड्स देखें"
     },
-    "alerts": {
-      "comingSoonTitle": "जल्द आ रहा है",
-      "comingSoonMessage": "यह रिवॉर्ड अभी उपलब्ध नहीं है।",
-      "notEnoughCoinsTitle": "पर्याप्त कॉइन्स नहीं हैं",
-      "notEnoughCoinsMessage": "इस रिवॉर्ड को अनलॉक करने के लिए आपको और रिवॉर्ड कॉइन्स चाहिए।",
-      "errorTitle": "त्रुटि",
-      "couldNotOpenBox": "बॉक्स नहीं खुल पाया।",
-      "couldNotRedeem": "रिवॉर्ड रिडीम नहीं हो पाया। कृपया फिर से कोशिश करें।",
-      "mysteryReward": "मिस्ट्री रिवॉर्ड"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "डेली लॉगिन",
-      "description": "आज ऐप खोलकर अपनी स्ट्रीक बनाए रखें",
-      "message": "जब आप हर दिन ऐप खोलते हैं, यह क्वेस्ट अपने आप पूरा हो जाता है।"
+    "streakTracker": {
+      "title": "डेली स्ट्रीक",
+      "subtitle": "ऐसे ही जारी रखें! आप शानदार कर रहे हैं।",
+      "days": "दिन",
+      "prize": "इनाम",
+      "dayLabel": "दिन {{number}}",
+      "nextReward": "अगला रिवॉर्ड: {{time}} में {{amount}}",
+      "coins": "कॉइन्स"
     },
-    "shareFacebook": {
-      "title": "Facebook पर शेयर करें",
-      "description": "Facebook पर हमारे बारे में पोस्ट करें"
+    "sections": {
+      "availableQuests": "उपलब्ध क्वेस्ट्स",
+      "completedQuests": "पूरा किए गए क्वेस्ट्स",
+      "availableRewards": "उपलब्ध रिवॉर्ड्स",
+      "needsMoreCoins": "और कॉइन्स चाहिए"
     },
-    "shareTwitter": {
-      "title": "X पर शेयर करें",
-      "description": "अपना अनुभव ट्वीट करें"
+    "balances": {
+      "rewardCoins": "रिवॉर्ड कॉइन्स",
+      "imageCredits": "इमेज क्रेडिट्स"
     },
-    "shareInstagram": {
-      "title": "Instagram पर शेयर करें",
-      "description": "स्टोरी या पोस्ट शेयर करें"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 इमेज क्रेडिट्स",
+        "imageCredits200": "200 इमेज क्रेडिट्स",
+        "imageCredits600": "600 इमेज क्रेडिट्स",
+        "weeklyPremium": "साप्ताहिक प्रीमियम",
+        "secretBox": "सीक्रेट बॉक्स"
+      },
+      "rewardDescriptions": {
+        "secretBox": "अंदर सरप्राइज़ रिवॉर्ड्स"
+      },
+      "alerts": {
+        "comingSoonTitle": "जल्द आ रहा है",
+        "comingSoonMessage": "यह रिवॉर्ड अभी उपलब्ध नहीं है।",
+        "notEnoughCoinsTitle": "पर्याप्त कॉइन्स नहीं हैं",
+        "notEnoughCoinsMessage": "इस रिवॉर्ड को अनलॉक करने के लिए आपको और रिवॉर्ड कॉइन्स चाहिए।",
+        "errorTitle": "त्रुटि",
+        "couldNotOpenBox": "बॉक्स नहीं खुल पाया।",
+        "couldNotRedeem": "रिवॉर्ड रिडीम नहीं हो पाया। कृपया फिर से कोशिश करें।",
+        "mysteryReward": "मिस्ट्री रिवॉर्ड"
+      }
     },
-    "shareExperience": {
-      "title": "अपना अनुभव साझा करें",
-      "description": "दोस्तों को बताएँ कि आपको ऐप क्यों पसंद है"
+    "quests": {
+      "dailyLogin": {
+        "title": "डेली लॉगिन",
+        "description": "आज ऐप खोलकर अपनी स्ट्रीक बनाए रखें",
+        "message": "जब आप हर दिन ऐप खोलते हैं, यह क्वेस्ट अपने आप पूरा हो जाता है।"
+      },
+      "shareFacebook": {
+        "title": "Facebook पर शेयर करें",
+        "description": "Facebook पर हमारे बारे में पोस्ट करें"
+      },
+      "shareTwitter": {
+        "title": "X पर शेयर करें",
+        "description": "अपना अनुभव ट्वीट करें"
+      },
+      "shareInstagram": {
+        "title": "Instagram पर शेयर करें",
+        "description": "स्टोरी या पोस्ट शेयर करें"
+      },
+      "shareExperience": {
+        "title": "अपना अनुभव साझा करें",
+        "description": "दोस्तों को बताएँ कि आपको ऐप क्यों पसंद है"
+      },
+      "share": {
+        "genericMessage": "मैं इस AI ऐप का उपयोग चैट और इमेज जनरेशन के लिए कर रहा/रही हूँ। देखें: {{url}}",
+        "facebookQuote": "इस AI ऐप को देखें!",
+        "twitterText": "मैं इस AI ऐप को आज़मा रहा/रही हूँ, यह काफ़ी बढ़िया है।",
+        "instagramMessage": "इस AI ऐप को देखें: {{url}}"
+      },
+      "store": {
+        "errorTitle": "त्रुटि",
+        "errorMessage": "स्टोर पेज नहीं खुल पाया।"
+      }
     },
-    "share": {
-      "genericMessage": "मैं इस AI ऐप का उपयोग चैट और इमेज जनरेशन के लिए कर रहा/रही हूँ। देखें: {{url}}",
-      "facebookQuote": "इस AI ऐप को देखें!",
-      "twitterText": "मैं इस AI ऐप को आज़मा रहा/रही हूँ, यह काफ़ी बढ़िया है।",
-      "instagramMessage": "इस AI ऐप को देखें: {{url}}"
-    },
-    "store": {
-      "errorTitle": "त्रुटि",
-      "errorMessage": "स्टोर पेज नहीं खुल पाया।"
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "क्वेस्ट पूरा हुआ",
-      "description": "क्वेस्ट पूरा हुआ",
-      "points": "+{{points}} पॉइंट्स",
-      "close": "बंद करें"
-    },
-    "rewardSuccess": {
-      "error": "ERROR",
-      "success": "SUCCESS",
-      "somethingWentWrong": "कुछ गलत हो गया",
-      "rewardUnlocked": "रिवॉर्ड अनलॉक हुआ",
-      "credits": "क्रेडिट्स",
-      "close": "बंद करें",
-      "okay": "ठीक है"
-    },
-    "secretBox": {
-      "pill": "सीक्रेट बॉक्स",
-      "rewardUnlocked": "रिवॉर्ड अनलॉक हुआ",
-      "shufflingRewards": "रिवॉर्ड्स शफल हो रहे हैं...",
-      "imageCreditsAdded": "इमेज क्रेडिट्स आपके अकाउंट में जोड़ दिए गए हैं",
-      "continue": "जारी रखें",
-      "revealing": "खुलासा हो रहा है...",
-      "prizeTiers": {
-        "lucky": "लकी",
-        "pro": "प्रो",
-        "elite": "एलीट",
-        "mythic": "मिथिक"
+    "modals": {
+      "questCompleted": {
+        "title": "क्वेस्ट पूरा हुआ",
+        "description": "क्वेस्ट पूरा हुआ",
+        "points": "+{{points}} पॉइंट्स",
+        "close": "बंद करें"
+      },
+      "rewardSuccess": {
+        "error": "ERROR",
+        "success": "SUCCESS",
+        "somethingWentWrong": "कुछ गलत हो गया",
+        "rewardUnlocked": "रिवॉर्ड अनलॉक हुआ",
+        "credits": "क्रेडिट्स",
+        "close": "बंद करें",
+        "okay": "ठीक है"
+      },
+      "secretBox": {
+        "pill": "सीक्रेट बॉक्स",
+        "rewardUnlocked": "रिवॉर्ड अनलॉक हुआ",
+        "shufflingRewards": "रिवॉर्ड्स शफल हो रहे हैं...",
+        "imageCreditsAdded": "इमेज क्रेडिट्स आपके अकाउंट में जोड़ दिए गए हैं",
+        "continue": "जारी रखें",
+        "revealing": "खुलासा हो रहा है...",
+        "prizeTiers": {
+          "lucky": "लकी",
+          "pro": "प्रो",
+          "elite": "एलीट",
+          "mythic": "मिथिक"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "दैनिक इनाम",
+      "body": "अपने दैनिक कॉइन्स मिस न करें — आधी रात से पहले क्लेम करें।"
+    }
   }
-}
 }

@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Nagrody",
-    "openMenu": "Otwórz menu",
-    "goBack": "Wróć"
-  },
-  "pointsHero": {
-    "totalBalance": "ŁĄCZNE SALDO",
-    "seeYourRewards": "Zobacz swoje nagrody"
-  },
-  "streakTracker": {
-    "title": "Dzienna passa",
-    "subtitle": "Tak trzymaj! Idzie ci świetnie.",
-    "days": "Dni",
-    "prize": "Nagroda",
-    "dayLabel": "Dzień {{number}}",
-    "nextReward": "Następna nagroda: {{amount}} za {{time}}",
-    "coins": "Monety"
-  },
-  "sections": {
-    "availableQuests": "Dostępne zadania",
-    "completedQuests": "Ukończone zadania",
-    "availableRewards": "Dostępne nagrody",
-    "needsMoreCoins": "Potrzebujesz więcej monet"
-  },
-  "balances": {
-    "rewardCoins": "Monety nagród",
-    "imageCredits": "Kredyty obrazów"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 kredytów obrazów",
-      "imageCredits200": "200 kredytów obrazów",
-      "imageCredits600": "600 kredytów obrazów",
-      "weeklyPremium": "Premium tygodniowe",
-      "secretBox": "Tajemnicze pudełko"
+    "header": {
+      "title": "Nagrody",
+      "openMenu": "Otwórz menu",
+      "goBack": "Wróć"
     },
-    "rewardDescriptions": {
-      "secretBox": "W środku niespodzianki"
+    "pointsHero": {
+      "totalBalance": "ŁĄCZNE SALDO",
+      "seeYourRewards": "Zobacz swoje nagrody"
     },
-    "alerts": {
-      "comingSoonTitle": "Wkrótce",
-      "comingSoonMessage": "Ta nagroda nie jest jeszcze dostępna.",
-      "notEnoughCoinsTitle": "Za mało monet",
-      "notEnoughCoinsMessage": "Potrzebujesz więcej monet nagród, aby odblokować tę nagrodę.",
-      "errorTitle": "Błąd",
-      "couldNotOpenBox": "Nie udało się otworzyć pudełka.",
-      "couldNotRedeem": "Nie udało się odebrać nagrody. Spróbuj ponownie.",
-      "mysteryReward": "Tajemnicza nagroda"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Codzienne logowanie",
-      "description": "Otwórz aplikację dziś, aby utrzymać passę",
-      "message": "To zadanie jest ukończone automatycznie, gdy otwierasz aplikację każdego dnia."
+    "streakTracker": {
+      "title": "Dzienna passa",
+      "subtitle": "Tak trzymaj! Idzie ci świetnie.",
+      "days": "Dni",
+      "prize": "Nagroda",
+      "dayLabel": "Dzień {{number}}",
+      "nextReward": "Następna nagroda: {{amount}} za {{time}}",
+      "coins": "Monety"
     },
-    "shareFacebook": {
-      "title": "Udostępnij na Facebooku",
-      "description": "Opublikuj o nas na Facebooku"
+    "sections": {
+      "availableQuests": "Dostępne zadania",
+      "completedQuests": "Ukończone zadania",
+      "availableRewards": "Dostępne nagrody",
+      "needsMoreCoins": "Potrzebujesz więcej monet"
     },
-    "shareTwitter": {
-      "title": "Udostępnij na X",
-      "description": "Napisz tweeta o swoim doświadczeniu"
+    "balances": {
+      "rewardCoins": "Monety nagród",
+      "imageCredits": "Kredyty obrazów"
     },
-    "shareInstagram": {
-      "title": "Udostępnij na Instagramie",
-      "description": "Udostępnij relację lub post"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 kredytów obrazów",
+        "imageCredits200": "200 kredytów obrazów",
+        "imageCredits600": "600 kredytów obrazów",
+        "weeklyPremium": "Premium tygodniowe",
+        "secretBox": "Tajemnicze pudełko"
+      },
+      "rewardDescriptions": {
+        "secretBox": "W środku niespodzianki"
+      },
+      "alerts": {
+        "comingSoonTitle": "Wkrótce",
+        "comingSoonMessage": "Ta nagroda nie jest jeszcze dostępna.",
+        "notEnoughCoinsTitle": "Za mało monet",
+        "notEnoughCoinsMessage": "Potrzebujesz więcej monet nagród, aby odblokować tę nagrodę.",
+        "errorTitle": "Błąd",
+        "couldNotOpenBox": "Nie udało się otworzyć pudełka.",
+        "couldNotRedeem": "Nie udało się odebrać nagrody. Spróbuj ponownie.",
+        "mysteryReward": "Tajemnicza nagroda"
+      }
     },
-    "shareExperience": {
-      "title": "Podziel się doświadczeniem",
-      "description": "Powiedz znajomym, dlaczego lubisz aplikację"
+    "quests": {
+      "dailyLogin": {
+        "title": "Codzienne logowanie",
+        "description": "Otwórz aplikację dziś, aby utrzymać passę",
+        "message": "To zadanie jest ukończone automatycznie, gdy otwierasz aplikację każdego dnia."
+      },
+      "shareFacebook": {
+        "title": "Udostępnij na Facebooku",
+        "description": "Opublikuj o nas na Facebooku"
+      },
+      "shareTwitter": {
+        "title": "Udostępnij na X",
+        "description": "Napisz tweeta o swoim doświadczeniu"
+      },
+      "shareInstagram": {
+        "title": "Udostępnij na Instagramie",
+        "description": "Udostępnij relację lub post"
+      },
+      "shareExperience": {
+        "title": "Podziel się doświadczeniem",
+        "description": "Powiedz znajomym, dlaczego lubisz aplikację"
+      },
+      "share": {
+        "genericMessage": "Używam tej aplikacji AI do czatu i generowania obrazów. Sprawdź: {{url}}",
+        "facebookQuote": "Sprawdź tę aplikację AI!",
+        "twitterText": "Testuję tę aplikację AI, jest naprawdę fajna.",
+        "instagramMessage": "Sprawdź tę aplikację AI: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Błąd",
+        "errorMessage": "Nie udało się otworzyć strony sklepu."
+      }
     },
-    "share": {
-      "genericMessage": "Używam tej aplikacji AI do czatu i generowania obrazów. Sprawdź: {{url}}",
-      "facebookQuote": "Sprawdź tę aplikację AI!",
-      "twitterText": "Testuję tę aplikację AI, jest naprawdę fajna.",
-      "instagramMessage": "Sprawdź tę aplikację AI: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Błąd",
-      "errorMessage": "Nie udało się otworzyć strony sklepu."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Zadanie ukończone",
-      "description": "Zadanie ukończone",
-      "points": "+{{points}} punktów",
-      "close": "Zamknij"
-    },
-    "rewardSuccess": {
-      "error": "BŁĄD",
-      "success": "SUKCES",
-      "somethingWentWrong": "Coś poszło nie tak",
-      "rewardUnlocked": "Nagroda odblokowana",
-      "credits": "Kredyty",
-      "close": "Zamknij",
-      "okay": "OK"
-    },
-    "secretBox": {
-      "pill": "TAJEMNICZE PUDEŁKO",
-      "rewardUnlocked": "NAGRODA ODBLOKOWANA",
-      "shufflingRewards": "LOSOWANIE NAGRÓD...",
-      "imageCreditsAdded": "Kredyty obrazów zostały dodane do Twojego konta",
-      "continue": "Kontynuuj",
-      "revealing": "Odkrywanie...",
-      "prizeTiers": {
-        "lucky": "SZCZĘŚCIE",
-        "pro": "PRO",
-        "elite": "ELITE",
-        "mythic": "MITYCZNY"
+    "modals": {
+      "questCompleted": {
+        "title": "Zadanie ukończone",
+        "description": "Zadanie ukończone",
+        "points": "+{{points}} punktów",
+        "close": "Zamknij"
+      },
+      "rewardSuccess": {
+        "error": "BŁĄD",
+        "success": "SUKCES",
+        "somethingWentWrong": "Coś poszło nie tak",
+        "rewardUnlocked": "Nagroda odblokowana",
+        "credits": "Kredyty",
+        "close": "Zamknij",
+        "okay": "OK"
+      },
+      "secretBox": {
+        "pill": "TAJEMNICZE PUDEŁKO",
+        "rewardUnlocked": "NAGRODA ODBLOKOWANA",
+        "shufflingRewards": "LOSOWANIE NAGRÓD...",
+        "imageCreditsAdded": "Kredyty obrazów zostały dodane do Twojego konta",
+        "continue": "Kontynuuj",
+        "revealing": "Odkrywanie...",
+        "prizeTiers": {
+          "lucky": "SZCZĘŚCIE",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MITYCZNY"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Codzienna nagroda",
+      "body": "Nie przegap dziennych monet — odbierz je przed północą."
+    }
   }
-}
 }

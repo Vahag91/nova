@@ -849,119 +849,125 @@
     }
   },
   "rewards": {
-  "header": {
-    "title": "Ödüller",
-    "openMenu": "Menüyü aç",
-    "goBack": "Geri"
-  },
-  "pointsHero": {
-    "totalBalance": "TOPLAM BAKİYE",
-    "seeYourRewards": "Ödüllerini gör"
-  },
-  "streakTracker": {
-    "title": "Günlük seri",
-    "subtitle": "Devam et! Harika gidiyorsun.",
-    "days": "Gün",
-    "prize": "Ödül",
-    "dayLabel": "{{number}}. Gün",
-    "nextReward": "Sonraki ödül: {{time}} içinde {{amount}}",
-    "coins": "Jeton"
-  },
-  "sections": {
-    "availableQuests": "Mevcut görevler",
-    "completedQuests": "Tamamlanan görevler",
-    "availableRewards": "Mevcut ödüller",
-    "needsMoreCoins": "Daha fazla jeton gerekli"
-  },
-  "balances": {
-    "rewardCoins": "Ödül jetonları",
-    "imageCredits": "Görsel kredileri"
-  },
-  "rewardsList": {
-    "rewardTitles": {
-      "imageCredits50": "50 Görsel Kredisi",
-      "imageCredits200": "200 Görsel Kredisi",
-      "imageCredits600": "600 Görsel Kredisi",
-      "weeklyPremium": "Haftalık Premium",
-      "secretBox": "Gizli Kutu"
+    "header": {
+      "title": "Ödüller",
+      "openMenu": "Menüyü aç",
+      "goBack": "Geri"
     },
-    "rewardDescriptions": {
-      "secretBox": "İçinde sürpriz ödüller"
+    "pointsHero": {
+      "totalBalance": "TOPLAM BAKİYE",
+      "seeYourRewards": "Ödüllerini gör"
     },
-    "alerts": {
-      "comingSoonTitle": "Yakında",
-      "comingSoonMessage": "Bu ödül henüz mevcut değil.",
-      "notEnoughCoinsTitle": "Yeterli jeton yok",
-      "notEnoughCoinsMessage": "Bu ödülü açmak için daha fazla ödül jetonuna ihtiyacın var.",
-      "errorTitle": "Hata",
-      "couldNotOpenBox": "Kutu açılamadı.",
-      "couldNotRedeem": "Ödül alınamadı. Lütfen tekrar dene.",
-      "mysteryReward": "Gizemli Ödül"
-    }
-  },
-  "quests": {
-    "dailyLogin": {
-      "title": "Günlük giriş",
-      "description": "Serini korumak için bugün uygulamayı aç",
-      "message": "Bu görev, uygulamayı her gün açtığında otomatik olarak tamamlanır."
+    "streakTracker": {
+      "title": "Günlük seri",
+      "subtitle": "Devam et! Harika gidiyorsun.",
+      "days": "Gün",
+      "prize": "Ödül",
+      "dayLabel": "{{number}}. Gün",
+      "nextReward": "Sonraki ödül: {{time}} içinde {{amount}}",
+      "coins": "Jeton"
     },
-    "shareFacebook": {
-      "title": "Facebook'ta paylaş",
-      "description": "Facebook'ta hakkımızda paylaşım yap"
+    "sections": {
+      "availableQuests": "Mevcut görevler",
+      "completedQuests": "Tamamlanan görevler",
+      "availableRewards": "Mevcut ödüller",
+      "needsMoreCoins": "Daha fazla jeton gerekli"
     },
-    "shareTwitter": {
-      "title": "X'te paylaş",
-      "description": "Deneyimini tweetle"
+    "balances": {
+      "rewardCoins": "Ödül jetonları",
+      "imageCredits": "Görsel kredileri"
     },
-    "shareInstagram": {
-      "title": "Instagram'da paylaş",
-      "description": "Bir hikaye veya gönderi paylaş"
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 Görsel Kredisi",
+        "imageCredits200": "200 Görsel Kredisi",
+        "imageCredits600": "600 Görsel Kredisi",
+        "weeklyPremium": "Haftalık Premium",
+        "secretBox": "Gizli Kutu"
+      },
+      "rewardDescriptions": {
+        "secretBox": "İçinde sürpriz ödüller"
+      },
+      "alerts": {
+        "comingSoonTitle": "Yakında",
+        "comingSoonMessage": "Bu ödül henüz mevcut değil.",
+        "notEnoughCoinsTitle": "Yeterli jeton yok",
+        "notEnoughCoinsMessage": "Bu ödülü açmak için daha fazla ödül jetonuna ihtiyacın var.",
+        "errorTitle": "Hata",
+        "couldNotOpenBox": "Kutu açılamadı.",
+        "couldNotRedeem": "Ödül alınamadı. Lütfen tekrar dene.",
+        "mysteryReward": "Gizemli Ödül"
+      }
     },
-    "shareExperience": {
-      "title": "Deneyimini paylaş",
-      "description": "Arkadaşlarına uygulamayı neden sevdiğini anlat"
+    "quests": {
+      "dailyLogin": {
+        "title": "Günlük giriş",
+        "description": "Serini korumak için bugün uygulamayı aç",
+        "message": "Bu görev, uygulamayı her gün açtığında otomatik olarak tamamlanır."
+      },
+      "shareFacebook": {
+        "title": "Facebook'ta paylaş",
+        "description": "Facebook'ta hakkımızda paylaşım yap"
+      },
+      "shareTwitter": {
+        "title": "X'te paylaş",
+        "description": "Deneyimini tweetle"
+      },
+      "shareInstagram": {
+        "title": "Instagram'da paylaş",
+        "description": "Bir hikaye veya gönderi paylaş"
+      },
+      "shareExperience": {
+        "title": "Deneyimini paylaş",
+        "description": "Arkadaşlarına uygulamayı neden sevdiğini anlat"
+      },
+      "share": {
+        "genericMessage": "Bu AI uygulamasını sohbet ve görsel üretimi için kullanıyorum. Göz at: {{url}}",
+        "facebookQuote": "Bu AI uygulamasına göz at!",
+        "twitterText": "Bu AI uygulamasını deniyorum, oldukça iyi.",
+        "instagramMessage": "Bu AI uygulamasına göz at: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Hata",
+        "errorMessage": "Mağaza sayfası açılamadı."
+      }
     },
-    "share": {
-      "genericMessage": "Bu AI uygulamasını sohbet ve görsel üretimi için kullanıyorum. Göz at: {{url}}",
-      "facebookQuote": "Bu AI uygulamasına göz at!",
-      "twitterText": "Bu AI uygulamasını deniyorum, oldukça iyi.",
-      "instagramMessage": "Bu AI uygulamasına göz at: {{url}}"
-    },
-    "store": {
-      "errorTitle": "Hata",
-      "errorMessage": "Mağaza sayfası açılamadı."
-    }
-  },
-  "modals": {
-    "questCompleted": {
-      "title": "Görev tamamlandı",
-      "description": "Görev tamamlandı",
-      "points": "+{{points}} puan",
-      "close": "Kapat"
-    },
-    "rewardSuccess": {
-      "error": "HATA",
-      "success": "BAŞARILI",
-      "somethingWentWrong": "Bir şeyler ters gitti",
-      "rewardUnlocked": "Ödül açıldı",
-      "credits": "Krediler",
-      "close": "Kapat",
-      "okay": "Tamam"
-    },
-    "secretBox": {
-      "pill": "GİZLİ KUTU",
-      "rewardUnlocked": "ÖDÜL AÇILDI",
-      "shufflingRewards": "ÖDÜLLER KARIŞTIRILIYOR...",
-      "imageCreditsAdded": "Görsel kredileri hesabına eklendi",
-      "continue": "Devam et",
-      "revealing": "Açıklanıyor...",
-      "prizeTiers": {
-        "lucky": "ŞANSLI",
-        "pro": "PRO",
-        "elite": "ELITE",
-        "mythic": "EFSANEVİ"
+    "modals": {
+      "questCompleted": {
+        "title": "Görev tamamlandı",
+        "description": "Görev tamamlandı",
+        "points": "+{{points}} puan",
+        "close": "Kapat"
+      },
+      "rewardSuccess": {
+        "error": "HATA",
+        "success": "BAŞARILI",
+        "somethingWentWrong": "Bir şeyler ters gitti",
+        "rewardUnlocked": "Ödül açıldı",
+        "credits": "Krediler",
+        "close": "Kapat",
+        "okay": "Tamam"
+      },
+      "secretBox": {
+        "pill": "GİZLİ KUTU",
+        "rewardUnlocked": "ÖDÜL AÇILDI",
+        "shufflingRewards": "ÖDÜLLER KARIŞTIRILIYOR...",
+        "imageCreditsAdded": "Görsel kredileri hesabına eklendi",
+        "continue": "Devam et",
+        "revealing": "Açıklanıyor...",
+        "prizeTiers": {
+          "lucky": "ŞANSLI",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "EFSANEVİ"
+        }
       }
     }
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Günlük ödül",
+      "body": "Günlük coin’lerini kaçırma — gece yarısından önce al."
+    }
   }
-}
 }
