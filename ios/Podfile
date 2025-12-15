@@ -2,14 +2,13 @@ source 'https://cdn.cocoapods.org/'
 platform :ios, '15.1'
 
 # Resolve react_native_pods.rb with node to allow for hoisting
- def node_require(script)
-   # Resolve script with node to allow for hoisting
-   require Pod::Executable.execute_command('node', ['-p',
-     "require.resolve(
-       '#{script}',
-       {paths: [process.argv[1]]},
-     )", __dir__]).strip
- end
+def node_require(script)
+  require Pod::Executable.execute_command('node', ['-p',
+    "require.resolve(
+      '#{script}',
+      {paths: [process.argv[1]]},
+    )", __dir__]).strip
+end
 
 # Use it to require both react-native's and this package's scripts:
 node_require('react-native/scripts/react_native_pods.rb')
@@ -21,7 +20,7 @@ setup_permissions([
   # 'Bluetooth',
   # 'Calendars',
   # 'CalendarsWriteOnly',
-  #'Camera',
+  # 'Camera',
   # 'Contacts',
   # 'FaceID',
   # 'LocationAccuracy',
@@ -37,30 +36,25 @@ setup_permissions([
   'SpeechRecognition',
   # 'StoreKit',
 ])
-linkage = ENV['USE_FRAMEWORKS']
-if linkage != nil
-  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
-  use_frameworks! :linkage => linkage.to_sym
-end
 
 target 'aily' do
+  # REQUIRED for react-native-firebase (firebase-ios-sdk v9+ / RNFirebase v15+)
+  # Put this BEFORE use_react_native!
+  use_frameworks! :linkage => :static
+  $RNFirebaseAsStaticFramework = true
   config = use_native_modules!
 
   use_react_native!(
     :path => config[:reactNativePath],
-    # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-
   post_install do |installer|
     react_native_post_install(installer) if defined?(react_native_post_install)
+
     installer.pods_project.targets.each do |t|
       t.build_configurations.each do |cfg|
-        # enforce for every Pod
         cfg.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
-        # (optional) keep this if you previously disabled script sandboxing
-        # cfg.build_settings['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
       end
     end
   end

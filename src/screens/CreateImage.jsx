@@ -432,12 +432,12 @@ export default function CreateImage({ navigation, route }) {
     ({ item }) => {
       const isSelected = prompt.trim() === item.trim();
       return (
-        <Pressable
-          onPress={() => setPrompt(item)}
+      <Pressable
+        onPress={() => setPrompt(item)}
           style={[styles.chip, isSelected && styles.chipSelected]}
-        >
+      >
           <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>{item}</Text>
-        </Pressable>
+      </Pressable>
       );
     },
     [prompt],

@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Neuer Chat",
     "history": "Verlauf",
+    "rewards": "Tägliche Belohnungen",
     "assistants": "Assistenten",
     "imagesStudio": "Image Studio",
     "settings": "Einstellungen",
@@ -846,5 +847,121 @@
     "rateNow": "Jetzt bewerten",
     "maybeLater": "Vielleicht später",
     "dontAskAgain": "Nicht mehr fragen"
+  },
+  "rewards": {
+  "header": {
+    "title": "Belohnungen",
+    "openMenu": "Menü öffnen",
+    "goBack": "Zurück"
+  },
+  "pointsHero": {
+    "totalBalance": "GESAMTGUTHABEN",
+    "seeYourRewards": "Belohnungen ansehen"
+  },
+  "streakTracker": {
+    "title": "Tägliche Serie",
+    "subtitle": "Weiter so! Du bist on fire.",
+    "days": "Tage",
+    "prize": "Preis",
+    "dayLabel": "Tag {{number}}",
+    "nextReward": "Nächste Belohnung: {{amount}} in {{time}}",
+    "coins": "Münzen"
+  },
+  "sections": {
+    "availableQuests": "Verfügbare Quests",
+    "completedQuests": "Abgeschlossene Quests",
+    "availableRewards": "Verfügbare Belohnungen",
+    "needsMoreCoins": "Benötigt mehr Münzen"
+  },
+  "balances": {
+    "rewardCoins": "Belohnungsmünzen",
+    "imageCredits": "Bildguthaben"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 Bildguthaben",
+      "imageCredits200": "200 Bildguthaben",
+      "imageCredits600": "600 Bildguthaben",
+      "weeklyPremium": "Wöchentliches Premium",
+      "secretBox": "Geheime Box"
+    },
+    "rewardDescriptions": {
+      "secretBox": "Überraschungsbelohnungen im Inneren"
+    },
+    "alerts": {
+      "comingSoonTitle": "Kommt bald",
+      "comingSoonMessage": "Diese Belohnung ist noch nicht verfügbar.",
+      "notEnoughCoinsTitle": "Nicht genug Münzen",
+      "notEnoughCoinsMessage": "Du brauchst mehr Belohnungsmünzen, um diese Belohnung freizuschalten.",
+      "errorTitle": "Fehler",
+      "couldNotOpenBox": "Box konnte nicht geöffnet werden.",
+      "couldNotRedeem": "Belohnung konnte nicht eingelöst werden. Bitte versuche es erneut.",
+      "mysteryReward": "Geheime Belohnung"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "Täglicher Login",
+      "description": "Öffne die App heute, um deine Serie zu behalten",
+      "message": "Diese Quest wird automatisch abgeschlossen, wenn du die App jeden Tag öffnest."
+    },
+    "shareFacebook": {
+      "title": "Auf Facebook teilen",
+      "description": "Poste über uns auf Facebook"
+    },
+    "shareTwitter": {
+      "title": "Auf X teilen",
+      "description": "Twittere über deine Erfahrung"
+    },
+    "shareInstagram": {
+      "title": "Auf Instagram teilen",
+      "description": "Teile eine Story oder einen Beitrag"
+    },
+    "shareExperience": {
+      "title": "Teile deine Erfahrung",
+      "description": "Erzähle Freunden, warum dir die App gefällt"
+    },
+    "share": {
+      "genericMessage": "Ich nutze diese KI-App für Chat & Bildgenerierung. Schau sie dir an: {{url}}",
+      "facebookQuote": "Schau dir diese KI-App an!",
+      "twitterText": "Ich teste diese KI-App, sie ist ziemlich cool.",
+      "instagramMessage": "Schau dir diese KI-App an: {{url}}"
+    },
+    "store": {
+      "errorTitle": "Fehler",
+      "errorMessage": "Store-Seite konnte nicht geöffnet werden."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "Quest abgeschlossen",
+      "description": "Quest abgeschlossen",
+      "points": "+{{points}} Punkte",
+      "close": "Schließen"
+    },
+    "rewardSuccess": {
+      "error": "FEHLER",
+      "success": "ERFOLG",
+      "somethingWentWrong": "Etwas ist schiefgelaufen",
+      "rewardUnlocked": "Belohnung freigeschaltet",
+      "credits": "Guthaben",
+      "close": "Schließen",
+      "okay": "OK"
+    },
+    "secretBox": {
+      "pill": "GEHEIME BOX",
+      "rewardUnlocked": "BELONHUNG FREIGESCHALTET",
+      "shufflingRewards": "BELONHUNGEN WERDEN GEMISCHT...",
+      "imageCreditsAdded": "Bildguthaben wurde deinem Konto hinzugefügt",
+      "continue": "Weiter",
+      "revealing": "Wird aufgedeckt...",
+      "prizeTiers": {
+        "lucky": "GLÜCK",
+        "pro": "PRO",
+        "elite": "ELITE",
+        "mythic": "MYTHISCH"
+      }
+    }
   }
+}
 }

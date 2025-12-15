@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Nouveau chat",
     "history": "Historique",
+    "rewards": "Récompenses quotidiennes",
     "assistants": "Assistants",
     "imagesStudio": "Image Studio",
     "settings": "Réglages",
@@ -846,5 +847,121 @@
     "rateNow": "Noter maintenant",
     "maybeLater": "Peut-être plus tard",
     "dontAskAgain": "Ne plus demander"
+  },
+  "rewards": {
+  "header": {
+    "title": "Récompenses",
+    "openMenu": "Ouvrir le menu",
+    "goBack": "Retour"
+  },
+  "pointsHero": {
+    "totalBalance": "SOLDE TOTAL",
+    "seeYourRewards": "Voir vos récompenses"
+  },
+  "streakTracker": {
+    "title": "Série quotidienne",
+    "subtitle": "Continuez comme ça ! Vous êtes en feu.",
+    "days": "Jours",
+    "prize": "Prix",
+    "dayLabel": "Jour {{number}}",
+    "nextReward": "Prochaine récompense : {{amount}} dans {{time}}",
+    "coins": "Pièces"
+  },
+  "sections": {
+    "availableQuests": "Quêtes disponibles",
+    "completedQuests": "Quêtes terminées",
+    "availableRewards": "Récompenses disponibles",
+    "needsMoreCoins": "Besoin de plus de pièces"
+  },
+  "balances": {
+    "rewardCoins": "Pièces de récompense",
+    "imageCredits": "Crédits d’image"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 crédits d’image",
+      "imageCredits200": "200 crédits d’image",
+      "imageCredits600": "600 crédits d’image",
+      "weeklyPremium": "Premium hebdomadaire",
+      "secretBox": "Boîte secrète"
+    },
+    "rewardDescriptions": {
+      "secretBox": "Des récompenses surprises à l’intérieur"
+    },
+    "alerts": {
+      "comingSoonTitle": "Bientôt disponible",
+      "comingSoonMessage": "Cette récompense n’est pas encore disponible.",
+      "notEnoughCoinsTitle": "Pas assez de pièces",
+      "notEnoughCoinsMessage": "Vous avez besoin de plus de pièces de récompense pour débloquer cette récompense.",
+      "errorTitle": "Erreur",
+      "couldNotOpenBox": "Impossible d’ouvrir la boîte.",
+      "couldNotRedeem": "Impossible d’échanger la récompense. Veuillez réessayer.",
+      "mysteryReward": "Récompense mystère"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "Connexion quotidienne",
+      "description": "Ouvrez l’app aujourd’hui pour garder votre série",
+      "message": "Cette quête se termine automatiquement lorsque vous ouvrez l’app chaque jour."
+    },
+    "shareFacebook": {
+      "title": "Partager sur Facebook",
+      "description": "Publiez à notre sujet sur Facebook"
+    },
+    "shareTwitter": {
+      "title": "Partager sur X",
+      "description": "Tweetez votre expérience"
+    },
+    "shareInstagram": {
+      "title": "Partager sur Instagram",
+      "description": "Partagez une story ou une publication"
+    },
+    "shareExperience": {
+      "title": "Partagez votre expérience",
+      "description": "Dites à vos amis pourquoi vous aimez l’app"
+    },
+    "share": {
+      "genericMessage": "J’utilise cette app d’IA pour le chat et la génération d’images. Découvrez-la : {{url}}",
+      "facebookQuote": "Découvrez cette app d’IA !",
+      "twitterText": "J’essaie cette app d’IA, elle est plutôt cool.",
+      "instagramMessage": "Découvrez cette app d’IA : {{url}}"
+    },
+    "store": {
+      "errorTitle": "Erreur",
+      "errorMessage": "Impossible d’ouvrir la page de la boutique."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "Quête terminée",
+      "description": "Quête terminée",
+      "points": "+{{points}} points",
+      "close": "Fermer"
+    },
+    "rewardSuccess": {
+      "error": "ERREUR",
+      "success": "SUCCÈS",
+      "somethingWentWrong": "Un problème est survenu",
+      "rewardUnlocked": "Récompense débloquée",
+      "credits": "Crédits",
+      "close": "Fermer",
+      "okay": "OK"
+    },
+    "secretBox": {
+      "pill": "BOÎTE SECRÈTE",
+      "rewardUnlocked": "RÉCOMPENSE DÉBLOQUÉE",
+      "shufflingRewards": "MÉLANGE DES RÉCOMPENSES...",
+      "imageCreditsAdded": "Des crédits d’image ont été ajoutés à votre compte",
+      "continue": "Continuer",
+      "revealing": "Révélation...",
+      "prizeTiers": {
+        "lucky": "CHANCEUX",
+        "pro": "PRO",
+        "elite": "ÉLITE",
+        "mythic": "MYTHIQUE"
+      }
+    }
   }
+}
 }

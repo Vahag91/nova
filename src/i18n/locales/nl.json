@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Nieuwe chat",
     "history": "Geschiedenis",
+    "rewards": "Dagelijkse beloningen",
     "assistants": "Assistenten",
     "imagesStudio": "Image Studio",
     "settings": "Instellingen",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
     }
+  },
+  "rewards": {
+  "header": {
+    "title": "Beloningen",
+    "openMenu": "Menu openen",
+    "goBack": "Terug"
+  },
+  "pointsHero": {
+    "totalBalance": "TOTAAL SALDO",
+    "seeYourRewards": "Bekijk je beloningen"
+  },
+  "streakTracker": {
+    "title": "Dagelijkse streak",
+    "subtitle": "Ga zo door! Je bent on fire.",
+    "days": "Dagen",
+    "prize": "Prijs",
+    "dayLabel": "Dag {{number}}",
+    "nextReward": "Volgende beloning: {{amount}} over {{time}}",
+    "coins": "Munten"
+  },
+  "sections": {
+    "availableQuests": "Beschikbare quests",
+    "completedQuests": "Voltooide quests",
+    "availableRewards": "Beschikbare beloningen",
+    "needsMoreCoins": "Meer munten nodig"
+  },
+  "balances": {
+    "rewardCoins": "Beloningsmunten",
+    "imageCredits": "Afbeeldingscredits"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 afbeeldingscredits",
+      "imageCredits200": "200 afbeeldingscredits",
+      "imageCredits600": "600 afbeeldingscredits",
+      "weeklyPremium": "Wekelijkse Premium",
+      "secretBox": "Geheime box"
+    },
+    "rewardDescriptions": {
+      "secretBox": "Verrassingsbeloningen binnenin"
+    },
+    "alerts": {
+      "comingSoonTitle": "Binnenkort",
+      "comingSoonMessage": "Deze beloning is nog niet beschikbaar.",
+      "notEnoughCoinsTitle": "Niet genoeg munten",
+      "notEnoughCoinsMessage": "Je hebt meer beloningsmunten nodig om deze beloning te ontgrendelen.",
+      "errorTitle": "Fout",
+      "couldNotOpenBox": "Kon de box niet openen.",
+      "couldNotRedeem": "Kon de beloning niet inwisselen. Probeer het opnieuw.",
+      "mysteryReward": "Mysteriebeloning"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "Dagelijkse login",
+      "description": "Open de app vandaag om je streak te behouden",
+      "message": "Deze quest wordt automatisch voltooid wanneer je de app elke dag opent."
+    },
+    "shareFacebook": {
+      "title": "Delen op Facebook",
+      "description": "Plaats iets over ons op Facebook"
+    },
+    "shareTwitter": {
+      "title": "Delen op X",
+      "description": "Tweet over je ervaring"
+    },
+    "shareInstagram": {
+      "title": "Delen op Instagram",
+      "description": "Deel een story of bericht"
+    },
+    "shareExperience": {
+      "title": "Deel je ervaring",
+      "description": "Vertel vrienden waarom je de app leuk vindt"
+    },
+    "share": {
+      "genericMessage": "Ik gebruik deze AI-app voor chat en het genereren van afbeeldingen. Bekijk ‘m: {{url}}",
+      "facebookQuote": "Bekijk deze AI-app!",
+      "twitterText": "Ik probeer deze AI-app, hij is best cool.",
+      "instagramMessage": "Bekijk deze AI-app: {{url}}"
+    },
+    "store": {
+      "errorTitle": "Fout",
+      "errorMessage": "Kon de winkelpagina niet openen."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "Quest voltooid",
+      "description": "Quest voltooid",
+      "points": "+{{points}} punten",
+      "close": "Sluiten"
+    },
+    "rewardSuccess": {
+      "error": "FOUT",
+      "success": "SUCCES",
+      "somethingWentWrong": "Er is iets misgegaan",
+      "rewardUnlocked": "Beloning ontgrendeld",
+      "credits": "Credits",
+      "close": "Sluiten",
+      "okay": "Oké"
+    },
+    "secretBox": {
+      "pill": "GEHEIME BOX",
+      "rewardUnlocked": "BELONING ONTGRENDELD",
+      "shufflingRewards": "BELONINGEN WORDEN GESCHUD...",
+      "imageCreditsAdded": "Afbeeldingscredits zijn aan je account toegevoegd",
+      "continue": "Doorgaan",
+      "revealing": "Onthullen...",
+      "prizeTiers": {
+        "lucky": "GELUK",
+        "pro": "PRO",
+        "elite": "ELITE",
+        "mythic": "MYTHISCH"
+      }
+    }
   }
+}
 }

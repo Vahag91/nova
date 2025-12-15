@@ -47,7 +47,7 @@ export default function CustomDrawerContent(props) {
   const chevronRotation = useSharedValue(0);
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
-  const baseMenuItemCount = 4;
+  const baseMenuItemCount = 5;
 
   const SPRING_CONFIG = {
     damping: 16,
@@ -297,18 +297,25 @@ export default function CustomDrawerContent(props) {
             index={1}
           />
           <MenuItem
+            icon="gift-finder"
+            label={t('navigation.rewards', { defaultValue: 'Daily Rewards' })}
+            routeName="Rewards"
+            isActive={activeRoute === 'Rewards'}
+            index={2}
+          />
+          <MenuItem
             icon="quill"
             label={t('navigation.assistants')}
             routeName="Assistants"
             isActive={activeRoute === 'Assistants'}
-            index={2}
+            index={3}
           />
           <MenuItem
             icon="studio"
             label={t('navigation.imagesStudio')}
             routeName="Studio"
             isActive={activeRoute === 'Studio'}
-            index={3}
+            index={4}
           />
 
           {/* Recent Chats Section */}

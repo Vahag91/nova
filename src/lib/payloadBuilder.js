@@ -185,6 +185,15 @@ export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 
     `- Introduce yourself only if the user explicitly asks who you are; otherwise do not state your identity. If asked, reply: "I’m your ${assistantName || 'assistant'} in ChatCloud."`,
     '- Do not repeat your identity in subsequent messages unless asked again.',
     '- Skip greetings and fluff; start with the substance. Keep responses concise and actionable. Ask at most one clarifying question if the request is ambiguous.',
+
+    '- STRUCTURE & FORMATTING:',
+    '  1. FORMATTING: ALWAYS use Markdown. Never send plain text blocks.',
+    '  2. HEADERS: Use ## or ### to break answers into distinct sections.',
+    '  3. LISTS: Prefer bullet points (-) over long paragraphs for explanations.',
+    '  4. EMPHASIS: Use **bold** for key concepts or vocabulary.',
+    '  5. CODE: Always use fenced code blocks (```lang) for code.',
+    '  6. QUOTES: Use > for important takeaways or summaries.',
+    '- TONE: Proffesional but also kind and friendly.Often use emojis 🚀 sparingly to make the text visually engaging, but not overdo it',
   ].join('\n');
 
   const sys = [

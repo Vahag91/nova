@@ -2,6 +2,9 @@ import React, { useMemo, useState, useEffect, useCallback, memo, useRef, useCont
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
+// --- NEW IMPORT ---
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { SubscriptionContext } from '../../context/SubscriptionContext';
@@ -60,12 +63,14 @@ function TestInput({
   attachments = [], onRemoveAttachment = noop,
   maxLength = 4000, minInputHeight = 40, maxInputHeight = 140,
   forceCollapsed = false, isRecording = false,
-  webSearchEnabled = false, // NEW: web search toggle state
+  webSearchEnabled = false,
 }) {
-  // Debuggers removed (focus on voice only)
   const { t } = useTranslation();
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
+  
+  // Safe area for bottom padding (home bar)
+  const insets = useSafeAreaInsets();
   
   const handleWebSearchPress = useCallback(() => {
     if (isPremium) {
@@ -76,20 +81,18 @@ function TestInput({
       try {
         onSearchPress();
       } catch (error) {
-        // Web search enable error handled silently
       }
     });
     try {
       navigation?.navigate('PaywallScreen', { returnTo: 'Chat' });
     } catch (error) {
-      // Navigation error handled silently
     }
   }, [isPremium, navigation, onSearchPress]);
+
   const safe = useCallback((fn, ...args) => {
     if (typeof fn !== 'function') return;
     try { fn(...args); } catch {}
   }, []);
-
 
   const MENU_ITEM_HEIGHT = 52;
   const ANIMATION_DURATION = 300;
@@ -105,8 +108,6 @@ function TestInput({
   useEffect(() => { lastRectRef.current = wrapperRect; }, [wrapperRect]);
   const [inputHeight, setInputHeight] = useState(minInputHeight);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [keyboardVisible, setKeyboardVisible] = useState(false);
-  const paddingAnim = useSharedValue(Platform.OS === 'ios' ? 22 : 16);
 
   // timer during recording
   const [recSecs, setRecSecs] = useState(0);
@@ -119,12 +120,6 @@ function TestInput({
     return () => { if (id) clearInterval(id); };
   }, [isRecording]);
 
-  // keyboard
-  useEffect(() => {
-    const s = Keyboard.addListener('keyboardDidShow', () => setKeyboardVisible(true));
-    const h = Keyboard.addListener('keyboardDidHide', () => setKeyboardVisible(false));
-    return () => { s?.remove(); h?.remove(); };
-  }, []);
   // measure wrapper rect
   const measureWrapper = () => wrapperRef.current?.measureInWindow((x, y, w, h) => {
     const prev = lastRectRef.current || {};
@@ -141,9 +136,6 @@ function TestInput({
     const sub = Dimensions.addEventListener?.('change', measureWrapper);
     return () => sub?.remove?.();
   }, []);
-  useEffect(() => {
-    if (Platform.OS === 'ios') paddingAnim.value = withTiming(keyboardVisible ? 16 : 24, { duration: 250, easing: Easing.out(Easing.quad) });
-  }, [keyboardVisible, paddingAnim]);
 
   useEffect(() => { if (forceCollapsed && isOpen.value) isOpen.value = false; }, [forceCollapsed, isOpen]);
 
@@ -192,7 +184,6 @@ function TestInput({
   const popoverAnimatedStyle = useAnimatedStyle(() => ({
     opacity: isOpen.value ? withTiming(1, { duration: ANIMATION_DURATION }) : withTiming(0, { duration: ANIMATION_DURATION }),
   }));
-  const paddingAnimatedStyle = useAnimatedStyle(() => ({ paddingBottom: Platform.OS === 'ios' ? paddingAnim.value : 16 }));
 
   const webSearchTextAnimatedStyle = useAnimatedStyle(() => ({
     opacity: webSearchTextVisible.value,
@@ -231,10 +222,9 @@ function TestInput({
     const newH = Math.max(minInputHeight, Math.min(h, maxInputHeight));
     setInputHeight(newH); setIsExpanded(newH > minInputHeight);
   };
-  const onMicTap = () => { if (!offline) safe(onMicPress); };
 
   return (
-    <Animated.View ref={wrapperRef} onLayout={measureWrapper} style={[styles.wrapper, paddingAnimatedStyle]}>
+    <Animated.View ref={wrapperRef} onLayout={measureWrapper} style={[styles.wrapper, { paddingBottom: Math.max(8, insets.bottom) }]}>
       {renderMenu && (
         <>
           <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, backdropAnimatedStyle]}>
@@ -464,7 +454,6 @@ const styles = StyleSheet.create({
 
   inputContainer: {
     backgroundColor: '#1e1e1e',
-    //  padding: 16,
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 24, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 8

@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "محادثة جديدة",
     "history": "السجل",
+    "rewards": "المكافآت اليومية",
     "assistants": "المساعدون",
     "imagesStudio": "Image Studio",
     "settings": "الإعدادات",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
     }
-  }
+  },
+    "rewards": {
+      "header": {
+        "title": "المكافآت",
+        "openMenu": "فتح القائمة",
+        "goBack": "رجوع"
+      },
+      "pointsHero": {
+        "totalBalance": "الرصيد الإجمالي",
+        "seeYourRewards": "عرض مكافآتك"
+      },
+      "streakTracker": {
+        "title": "سلسلة الأيام",
+        "subtitle": "استمر! أنت رائع.",
+        "days": "الأيام",
+        "prize": "الجائزة",
+        "dayLabel": "اليوم {{number}}",
+        "nextReward": "المكافأة التالية: {{amount}} خلال {{time}}",
+        "coins": "عملات"
+      },
+      "sections": {
+        "availableQuests": "المهام المتاحة",
+        "completedQuests": "المهام المكتملة",
+        "availableRewards": "المكافآت المتاحة",
+        "needsMoreCoins": "تحتاج إلى المزيد من العملات"
+      },
+      "balances": {
+        "rewardCoins": "عملات المكافآت",
+        "imageCredits": "رصيد الصور"
+      },
+      "rewardsList": {
+        "rewardTitles": {
+          "imageCredits50": "50 رصيد صور",
+          "imageCredits200": "200 رصيد صور",
+          "imageCredits600": "600 رصيد صور",
+          "weeklyPremium": "بريميوم أسبوعي",
+          "secretBox": "الصندوق السري"
+        },
+        "rewardDescriptions": {
+          "secretBox": "مكافآت مفاجئة بالداخل"
+        },
+        "alerts": {
+          "comingSoonTitle": "قريبًا",
+          "comingSoonMessage": "هذه المكافأة غير متاحة بعد.",
+          "notEnoughCoinsTitle": "لا توجد عملات كافية",
+          "notEnoughCoinsMessage": "تحتاج إلى المزيد من عملات المكافآت لفتح هذه المكافأة.",
+          "errorTitle": "خطأ",
+          "couldNotOpenBox": "تعذر فتح الصندوق.",
+          "couldNotRedeem": "تعذر استلام المكافأة. يرجى المحاولة مرة أخرى.",
+          "mysteryReward": "مكافأة غامضة"
+        }
+      },
+      "quests": {
+        "dailyLogin": {
+          "title": "تسجيل الدخول اليومي",
+          "description": "افتح التطبيق اليوم للحفاظ على السلسلة",
+          "message": "يتم إكمال هذه المهمة تلقائيًا عند فتح التطبيق كل يوم."
+        },
+        "shareFacebook": {
+          "title": "المشاركة على فيسبوك",
+          "description": "انشر عنا على فيسبوك"
+        },
+        "shareTwitter": {
+          "title": "المشاركة على X",
+          "description": "غرّد عن تجربتك"
+        },
+        "shareInstagram": {
+          "title": "المشاركة على إنستغرام",
+          "description": "شارك قصة أو منشورًا"
+        },
+        "shareExperience": {
+          "title": "شارك تجربتك",
+          "description": "أخبر أصدقاءك لماذا تحب التطبيق"
+        },
+        "share": {
+          "genericMessage": "أنا أستخدم هذا التطبيق للذكاء الاصطناعي للدردشة وتوليد الصور. جرّبه: {{url}}",
+          "facebookQuote": "جرّب هذا التطبيق للذكاء الاصطناعي!",
+          "twitterText": "أجرب هذا التطبيق للذكاء الاصطناعي، إنه رائع.",
+          "instagramMessage": "جرّب هذا التطبيق للذكاء الاصطناعي: {{url}}"
+        },
+        "store": {
+          "errorTitle": "خطأ",
+          "errorMessage": "تعذر فتح صفحة المتجر."
+        }
+      },
+      "modals": {
+        "questCompleted": {
+          "title": "اكتملت المهمة",
+          "description": "تمت المهمة",
+          "points": "+{{points}} نقطة",
+          "close": "إغلاق"
+        },
+        "rewardSuccess": {
+          "error": "خطأ",
+          "success": "نجاح",
+          "somethingWentWrong": "حدث خطأ ما",
+          "rewardUnlocked": "تم فتح المكافأة",
+          "credits": "الرصيد",
+          "close": "إغلاق",
+          "okay": "حسنًا"
+        },
+        "secretBox": {
+          "pill": "الصندوق السري",
+          "rewardUnlocked": "تم فتح المكافأة",
+          "shufflingRewards": "جارٍ خلط المكافآت...",
+          "imageCreditsAdded": "تمت إضافة رصيد الصور إلى حسابك",
+          "continue": "متابعة",
+          "revealing": "جارٍ الكشف...",
+          "prizeTiers": {
+            "lucky": "محظوظ",
+            "pro": "احترافي",
+            "elite": "نخبوي",
+            "mythic": "أسطوري"
+          }
+        }
+      }
+    }
 }

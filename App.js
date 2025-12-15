@@ -1,5 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Alert, View, ActivityIndicator, StyleSheet } from 'react-native';
+import {
+  Alert,
+  View,
+  ActivityIndicator,
+  StyleSheet,
+  Platform,
+  PermissionsAndroid,
+} from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -21,6 +28,7 @@ import { SubscriptionProvider } from './src/context/SubscriptionContext';
 import UsageTrackingService from './src/services/UsageTrackingService';
 import { navigate } from './src/navigation/rootNavigation';
 import { ONBOARDING_KEY, ONE_TIME_OFFER_KEY } from './src/constants/storageKeys';
+import { initPush } from './src/lib/testFirebasePush';
 
 const FETCH_TIMEOUT_MS = 10000; // 10 seconds
 
@@ -42,6 +50,19 @@ export default function App() {
   const [firstLaunch, setFirstLaunch] = useState(null);
   const [navigationReady, setNavigationReady] = useState(false);
   const [pendingPostOnboardingPaywall, setPendingPostOnboardingPaywall] = useState(false);
+
+  useEffect(() => {
+    // Request notification permission early (local notifications for rewards, etc.)
+    if (Platform.OS === 'android' && Platform.Version >= 33) {
+      PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS).catch(() => {});
+    }
+
+    // Test Firebase Push Notifications (development only)
+    if (__DEV__) {
+      // Test Firebase push on app startup - will show token in alert and console
+      initPush().catch(err => console.error('Firebase test error:', err));
+    }
+  }, []);
 
   const loadModels = useCallback(async () => {
     try {

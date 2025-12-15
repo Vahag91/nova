@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Xat nou",
     "history": "Historial",
+    "rewards": "Recompenses diàries",
     "assistants": "Assistents",
     "imagesStudio": "Image Studio",
     "settings": "Configuració",
@@ -845,6 +846,122 @@
       "crashTitle": "Something went wrong.",
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
+    }
+  },
+  "rewards": {
+    "header": {
+      "title": "Recompenses",
+      "openMenu": "Obre el menú",
+      "goBack": "Enrere"
+    },
+    "pointsHero": {
+      "totalBalance": "SALDO TOTAL",
+      "seeYourRewards": "Veure les teves recompenses"
+    },
+    "streakTracker": {
+      "title": "Ratxa diària",
+      "subtitle": "Segueix així! Estàs en ratxa.",
+      "days": "Dies",
+      "prize": "Premi",
+      "dayLabel": "Dia {{number}}",
+      "nextReward": "Proper premi: {{amount}} en {{time}}",
+      "coins": "Monedes"
+    },
+    "sections": {
+      "availableQuests": "Reptes disponibles",
+      "completedQuests": "Reptes completats",
+      "availableRewards": "Recompenses disponibles",
+      "needsMoreCoins": "Calen més monedes"
+    },
+    "balances": {
+      "rewardCoins": "Monedes de recompensa",
+      "imageCredits": "Crèdits d’imatge"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 crèdits d’imatge",
+        "imageCredits200": "200 crèdits d’imatge",
+        "imageCredits600": "600 crèdits d’imatge",
+        "weeklyPremium": "Premium setmanal",
+        "secretBox": "Caixa secreta"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Recompenses sorpresa a dins"
+      },
+      "alerts": {
+        "comingSoonTitle": "Properament",
+        "comingSoonMessage": "Aquesta recompensa encara no està disponible.",
+        "notEnoughCoinsTitle": "No hi ha prou monedes",
+        "notEnoughCoinsMessage": "Necessites més monedes de recompensa per desbloquejar aquesta recompensa.",
+        "errorTitle": "Error",
+        "couldNotOpenBox": "No s’ha pogut obrir la caixa.",
+        "couldNotRedeem": "No s’ha pogut bescanviar la recompensa. Torna-ho a provar.",
+        "mysteryReward": "Recompensa misteriosa"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Inici de sessió diari",
+        "description": "Obre l’app avui per mantenir la ratxa",
+        "message": "Aquest repte es completa automàticament quan obres l’app cada dia."
+      },
+      "shareFacebook": {
+        "title": "Comparteix a Facebook",
+        "description": "Publica sobre nosaltres a Facebook"
+      },
+      "shareTwitter": {
+        "title": "Comparteix a X",
+        "description": "Fes un tuit sobre la teva experiència"
+      },
+      "shareInstagram": {
+        "title": "Comparteix a Instagram",
+        "description": "Comparteix una història o una publicació"
+      },
+      "shareExperience": {
+        "title": "Comparteix la teva experiència",
+        "description": "Explica als amics per què t’agrada l’app"
+      },
+      "share": {
+        "genericMessage": "Estic fent servir aquesta app d’IA per a xat i generació d’imatges. Dona-hi un cop d’ull: {{url}}",
+        "facebookQuote": "Mira aquesta app d’IA!",
+        "twitterText": "Estic provant aquesta app d’IA, està molt bé.",
+        "instagramMessage": "Mira aquesta app d’IA: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Error",
+        "errorMessage": "No s’ha pogut obrir la pàgina de la botiga."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Repte completat",
+        "description": "Repte completat",
+        "points": "+{{points}} punts",
+        "close": "Tancar"
+      },
+      "rewardSuccess": {
+        "error": "ERROR",
+        "success": "ÈXIT",
+        "somethingWentWrong": "Alguna cosa ha anat malament",
+        "rewardUnlocked": "Recompensa desbloquejada",
+        "credits": "Crèdits",
+        "close": "Tancar",
+        "okay": "D’acord"
+      },
+      "secretBox": {
+        "pill": "CAIXA SECRETA",
+        "rewardUnlocked": "RECOMPENSA DESBLOQUEJADA",
+        "shufflingRewards": "BARREJANT RECOMPENSES...",
+        "imageCreditsAdded": "S’han afegit crèdits d’imatge al teu compte",
+        "continue": "Continua",
+        "revealing": "Revelant...",
+        "prizeTiers": {
+          "lucky": "AFORTUNAT",
+          "pro": "PRO",
+          "elite": "ELIT",
+          "mythic": "MÍTIC"
+        }
+      }
     }
   }
 }

@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "New Chat",
     "history": "History",
+    "rewards": "Daily Rewards",
     "assistants": "Assistants",
     "imagesStudio": "Image Studio",
     "settings": "Settings",
@@ -826,6 +827,122 @@
     "restoreSuccessMessage": "Your purchases have been restored.",
     "restoreErrorTitle": "Restore Failed",
     "restoreErrorMessage": "No purchases found to restore."
+  },
+  "rewards": {
+    "header": {
+      "title": "Rewards",
+      "openMenu": "Open menu",
+      "goBack": "Go back"
+    },
+    "pointsHero": {
+      "totalBalance": "TOTAL BALANCE",
+      "seeYourRewards": "See your rewards"
+    },
+    "streakTracker": {
+      "title": "Daily Streak",
+      "subtitle": "Keep it up! You're on fire.",
+      "days": "Days",
+      "prize": "Prize",
+      "dayLabel": "Day {{number}}",
+      "nextReward": "Next reward: {{amount}} in {{time}}",
+      "coins": "Coins"
+    },
+    "sections": {
+      "availableQuests": "Available Quests",
+      "completedQuests": "Completed Quests",
+      "availableRewards": "Available rewards",
+      "needsMoreCoins": "Needs more coins"
+    },
+    "balances": {
+      "rewardCoins": "Reward coins",
+      "imageCredits": "Image credits"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 Image Credits",
+        "imageCredits200": "200 Image Credits",
+        "imageCredits600": "600 Image Credits",
+        "weeklyPremium": "Weekly Premium",
+        "secretBox": "Secret Box"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Mystery rewards inside"
+      },
+      "alerts": {
+        "comingSoonTitle": "Coming soon",
+        "comingSoonMessage": "This reward is not available yet.",
+        "notEnoughCoinsTitle": "Not enough coins",
+        "notEnoughCoinsMessage": "You need more reward coins to unlock this reward.",
+        "errorTitle": "Error",
+        "couldNotOpenBox": "Could not open box.",
+        "couldNotRedeem": "Could not redeem reward. Please try again.",
+        "mysteryReward": "Mystery Reward"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Daily Login",
+        "description": "Open the app today to keep your streak",
+        "message": "This quest is completed automatically when you open the app each day."
+      },
+      "shareFacebook": {
+        "title": "Share on Facebook",
+        "description": "Post about us on Facebook"
+      },
+      "shareTwitter": {
+        "title": "Share on Twitter",
+        "description": "Tweet your experience"
+      },
+      "shareInstagram": {
+        "title": "Share on Instagram",
+        "description": "Share a story or post"
+      },
+      "shareExperience": {
+        "title": "Share your experience",
+        "description": "Tell friends why you like the app"
+      },
+      "share": {
+        "genericMessage": "I'm using this AI app for chat & image generation. Check it out: {{url}}",
+        "facebookQuote": "Check out this AI App!",
+        "twitterText": "I'm trying this AI app, it's pretty cool.",
+        "instagramMessage": "Check out this AI app: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Error",
+        "errorMessage": "Could not open the store page."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Quest Complete",
+        "description": "Quest completed",
+        "points": "+{{points}} points",
+        "close": "Close"
+      },
+      "rewardSuccess": {
+        "error": "ERROR",
+        "success": "SUCCESS",
+        "somethingWentWrong": "Something went wrong",
+        "rewardUnlocked": "Reward Unlocked",
+        "credits": "Credits",
+        "close": "Close",
+        "okay": "Okay"
+      },
+      "secretBox": {
+        "pill": "SECRET BOX",
+        "rewardUnlocked": "REWARD UNLOCKED",
+        "shufflingRewards": "SHUFFLING REWARDS...",
+        "imageCreditsAdded": "Image credits added to your account",
+        "continue": "Continue",
+        "revealing": "Revealing...",
+        "prizeTiers": {
+          "lucky": "LUCKY",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MYTHIC"
+        }
+      }
+    }
   },
   "app": {
     "errors": {

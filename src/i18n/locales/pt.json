@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Novo chat",
     "history": "Histórico",
+    "rewards": "Recompensas diárias",
     "assistants": "Assistentes",
     "imagesStudio": "Image Studio",
     "settings": "Configurações",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Tente novamente.",
       "crashLabel": "Aplicativo travou"
     }
+  },
+  "rewards": {
+  "header": {
+    "title": "Recompensas",
+    "openMenu": "Abrir menu",
+    "goBack": "Voltar"
+  },
+  "pointsHero": {
+    "totalBalance": "SALDO TOTAL",
+    "seeYourRewards": "Ver as suas recompensas"
+  },
+  "streakTracker": {
+    "title": "Sequência diária",
+    "subtitle": "Continue assim! Está em grande.",
+    "days": "Dias",
+    "prize": "Prémio",
+    "dayLabel": "Dia {{number}}",
+    "nextReward": "Próxima recompensa: {{amount}} em {{time}}",
+    "coins": "Moedas"
+  },
+  "sections": {
+    "availableQuests": "Missões disponíveis",
+    "completedQuests": "Missões concluídas",
+    "availableRewards": "Recompensas disponíveis",
+    "needsMoreCoins": "Precisa de mais moedas"
+  },
+  "balances": {
+    "rewardCoins": "Moedas de recompensa",
+    "imageCredits": "Créditos de imagem"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 créditos de imagem",
+      "imageCredits200": "200 créditos de imagem",
+      "imageCredits600": "600 créditos de imagem",
+      "weeklyPremium": "Premium semanal",
+      "secretBox": "Caixa secreta"
+    },
+    "rewardDescriptions": {
+      "secretBox": "Recompensas surpresa no interior"
+    },
+    "alerts": {
+      "comingSoonTitle": "Em breve",
+      "comingSoonMessage": "Esta recompensa ainda não está disponível.",
+      "notEnoughCoinsTitle": "Moedas insuficientes",
+      "notEnoughCoinsMessage": "Precisa de mais moedas de recompensa para desbloquear esta recompensa.",
+      "errorTitle": "Erro",
+      "couldNotOpenBox": "Não foi possível abrir a caixa.",
+      "couldNotRedeem": "Não foi possível resgatar a recompensa. Tente novamente.",
+      "mysteryReward": "Recompensa misteriosa"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "Login diário",
+      "description": "Abra a app hoje para manter a sua sequência",
+      "message": "Esta missão é concluída automaticamente quando abre a app todos os dias."
+    },
+    "shareFacebook": {
+      "title": "Partilhar no Facebook",
+      "description": "Faça uma publicação sobre nós no Facebook"
+    },
+    "shareTwitter": {
+      "title": "Partilhar no X",
+      "description": "Tweet sobre a sua experiência"
+    },
+    "shareInstagram": {
+      "title": "Partilhar no Instagram",
+      "description": "Partilhe uma story ou uma publicação"
+    },
+    "shareExperience": {
+      "title": "Partilhe a sua experiência",
+      "description": "Diga aos amigos por que gosta da app"
+    },
+    "share": {
+      "genericMessage": "Estou a usar esta app de IA para chat e geração de imagens. Veja: {{url}}",
+      "facebookQuote": "Veja esta app de IA!",
+      "twitterText": "Estou a experimentar esta app de IA, é muito fixe.",
+      "instagramMessage": "Veja esta app de IA: {{url}}"
+    },
+    "store": {
+      "errorTitle": "Erro",
+      "errorMessage": "Não foi possível abrir a página da loja."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "Missão concluída",
+      "description": "Missão concluída",
+      "points": "+{{points}} pontos",
+      "close": "Fechar"
+    },
+    "rewardSuccess": {
+      "error": "ERRO",
+      "success": "SUCESSO",
+      "somethingWentWrong": "Algo correu mal",
+      "rewardUnlocked": "Recompensa desbloqueada",
+      "credits": "Créditos",
+      "close": "Fechar",
+      "okay": "OK"
+    },
+    "secretBox": {
+      "pill": "CAIXA SECRETA",
+      "rewardUnlocked": "RECOMPENSA DESBLOQUEADA",
+      "shufflingRewards": "A BARALHAR RECOMPENSAS...",
+      "imageCreditsAdded": "Créditos de imagem adicionados à sua conta",
+      "continue": "Continuar",
+      "revealing": "A revelar...",
+      "prizeTiers": {
+        "lucky": "SORTE",
+        "pro": "PRO",
+        "elite": "ELITE",
+        "mythic": "MÍTICO"
+      }
+    }
   }
+}
 }

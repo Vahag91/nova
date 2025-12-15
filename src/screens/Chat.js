@@ -1,9 +1,17 @@
-import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
-import Reanimated, { useAnimatedKeyboard, useAnimatedStyle, useSharedValue, useDerivedValue, withTiming, Easing, KeyboardState } from 'react-native-reanimated';
+import React, { useEffect, useMemo, useRef, useState, useCallback, useContext } from 'react';
+import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert, Platform } from 'react-native';
+import Reanimated, { useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
+import { useHeaderHeight } from '@react-navigation/elements';
 import NetInfo from '@react-native-community/netinfo';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Svg, { Path } from 'react-native-svg';
+
+// --- KEYBOARD CONTROLLER IMPORTS ---
+import { 
+  KeyboardAvoidingView, 
+  KeyboardGestureArea,           
+  useReanimatedKeyboardAnimation 
+} from 'react-native-keyboard-controller';
 
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
@@ -19,13 +27,11 @@ import AssistantHeader from '../components/chat/AssistantHeader';
 import { colors } from '../styles/colors';
 import { appendStream, getStream, clearStream } from '../lib/streamingBuffer';
 import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
-import { buildPayload, getPayloadSize } from '../lib/payloadBuilder';
+import { buildPayload } from '../lib/payloadBuilder';
 import { useVoiceInput } from '../hooks/useVoiceInput';
 import { useTranslation } from 'react-i18next';
-import { useContext } from 'react';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { isPremiumModel, FREE_MODEL } from '../config/premium';
-
 
 import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
 import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
@@ -35,6 +41,33 @@ export default function Chat({ navigation }) {
   const { t } = useTranslation();
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
+  
+  const headerHeight = useHeaderHeight();
+
+  // --- ANIMATION SETUP ---
+  const { progress } = useReanimatedKeyboardAnimation();
+
+  // 1. Suggestion Chips Animation
+  const suggestionStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(progress.value, [0, 0.5], [1, 0], Extrapolation.CLAMP),
+      transform: [
+        { translateY: interpolate(progress.value, [0, 1], [0, 20], Extrapolation.CLAMP) }
+      ],
+      pointerEvents: progress.value > 0.1 ? 'none' : 'auto',
+    };
+  });
+
+  // 2. Banner Animation
+  const bannerStyle = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(progress.value, [0, 0.6], [1, 0], Extrapolation.CLAMP),
+      transform: [
+        { translateY: interpolate(progress.value, [0, 1], [0, -100], Extrapolation.CLAMP) },
+        { scale: interpolate(progress.value, [0, 1], [1, 0.9], Extrapolation.CLAMP) }
+      ],
+    };
+  });
 
   // Stores
   const threads = useThreadsStore(s => s.threads);
@@ -72,7 +105,6 @@ export default function Chat({ navigation }) {
   const activeThread = isPrivate ? privateThread : normalActive;
 
   // Model selection
-  // If this thread is an assistant with a pinned model, respect the thread's model
   const pinnedModel = !!(activeThread?.meta && activeThread?.meta?.pinnedModel);
   const activeModelKey = pinnedModel
     ? (activeThread?.model || globalModel)
@@ -89,11 +121,11 @@ export default function Chat({ navigation }) {
   
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
-  const [webSearchNext, setWebSearchNext] = useState(false); // per-message web search
+  const [webSearchNext, setWebSearchNext] = useState(false); 
   const requestModelKey = useMemo(() => (webSearchNext ? 'gpt-5.1' : activeModelKey), [webSearchNext, activeModelKey]);
-  const successfulMessagesRef = useRef(0); // Track successful messages for rate prompt
+  const successfulMessagesRef = useRef(0); 
   const abortRef = useRef(null);
-  const appStateRef = useRef(AppState.currentState); // Track if app is in background
+  const appStateRef = useRef(AppState.currentState);
 
   const messagesNoSystem = useMemo(
     () => {
@@ -103,14 +135,13 @@ export default function Chat({ navigation }) {
     [activeThread]
   );
 
-  // Cleanup: Remove empty assistant messages with stale activity text
   useEffect(() => {
     if (!activeThread || !hydrated) return;
     const emptyMessages = (activeThread.messages || []).filter(m => 
       m.role === 'assistant' && 
       (!m.content || m.content.trim().length === 0) &&
       m.meta?.activity &&
-      m.id !== streamingMsgId // Don't remove currently streaming message
+      m.id !== streamingMsgId 
     );
     
     if (emptyMessages.length > 0) {
@@ -122,13 +153,10 @@ export default function Chat({ navigation }) {
     }
   }, [activeThread?.id, activeThread?.messages, hydrated, streamingMsgId, isPrivate, removeMessage]);
 
-  // Check if chat is empty (no user/assistant messages)
   const isChatEmpty = messagesNoSystem.length === 0;
-  // Check if this is an assistant thread (thread.system or legacy system message)
   const isAssistantThread = !!(activeThread?.system) || activeThread?.messages?.some(m => m.role === 'system');
   const showQuickSuggestions = !isPrivate && isChatEmpty && !isAssistantThread;
 
-  // Voice: manual stop => send once
   const onFinalText = useCallback((text) => {
     const trimmed = (text || '').trim();
     if (!trimmed) return;
@@ -143,16 +171,12 @@ export default function Chat({ navigation }) {
     autoInit: false,
   });
 
-  // Hydrate & ensure thread
   useEffect(() => {
     if (!hydrated) hydrate();
   }, [hydrated, hydrate]);
   
-  // Safety check: Validate model if free user has premium model selected
   useEffect(() => {
     if (!isPremium && activeModelKey && isPremiumModel(activeModelKey)) {
-      // If thread has pinned premium model, we allow it (grandfathered)
-      // But if it's the global model, reset it
       if (!pinnedModel) {
         const setModel = useSettingsStore.getState().setModel;
         setModel(FREE_MODEL);
@@ -160,15 +184,14 @@ export default function Chat({ navigation }) {
     }
   }, [isPremium, activeModelKey, pinnedModel]);
 
-useEffect(() => {
-  if (!hydrated || isPrivate) return;
-  if (!activeThread) {
-    const th = createThread({ title: t('history.newChat'), model: globalModel });
-    setActiveThread(th.id);
-  }
-}, [hydrated, isPrivate, activeThread, createThread, setActiveThread, globalModel, t]);
+  useEffect(() => {
+    if (!hydrated || isPrivate) return;
+    if (!activeThread) {
+      const th = createThread({ title: t('history.newChat'), model: globalModel });
+      setActiveThread(th.id);
+    }
+  }, [hydrated, isPrivate, activeThread, createThread, setActiveThread, globalModel, t]);
 
-  // Scroll management
   useEffect(() => { didInitialScrollRef.current = false; }, [activeThread?.id]);
   useEffect(() => {
     if (!activeThread?.messages?.length || didInitialScrollRef.current) return;
@@ -178,23 +201,7 @@ useEffect(() => {
     });
     didInitialScrollRef.current = true;
   }, [activeThread?.messages?.length, activeThread?.id]);
-  // Keyboard animation
-  const keyboard = useAnimatedKeyboard();
-  const GAP = 6;
-  const kTranslate = useSharedValue(0);
-  const kGap = useSharedValue(0);
-  useDerivedValue(() => {
-    const h = keyboard.height.value;
-    const isClosing = keyboard.state.value === KeyboardState.CLOSING;
-    const duration = isClosing ? 240 : 40;
-    kTranslate.value = withTiming(-h, { duration, easing: Easing.out(Easing.cubic) });
-    kGap.value = withTiming(h > 0 ? GAP : 0, { duration, easing: Easing.out(Easing.cubic) });
-  });
-  const animatedContentStyle = useAnimatedStyle(() => ({ transform: [{ translateY: kTranslate.value }] }));
-  const animatedFooterStyle = useAnimatedStyle(() => ({ transform: [{ translateY: kTranslate.value + kGap.value }] }));
 
-
-  // Network
   useEffect(() => {
     const sub = NetInfo.addEventListener(s =>
       setOffline(!(s.isConnected && s.isInternetReachable))
@@ -202,7 +209,6 @@ useEffect(() => {
     return () => sub && sub();
   }, []);
 
-  // App background: track state + stop voice recording (streaming continues until OS kills it)
   useEffect(() => {
     const handleAppStateChange = (nextAppState) => {
       appStateRef.current = nextAppState;
@@ -214,7 +220,6 @@ useEffect(() => {
     return () => sub.remove();
   }, [stopVoice, isRecording]);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (useThreadsStore.getState().privateActive) endPrivate();
@@ -234,7 +239,6 @@ useEffect(() => {
     }
   }, [forceCollapseInput]);
 
-  // Attachments
   function addPickedAssets(assets = []) {
     const normalized = assets
       .filter(a => a?.uri && a?.type)
@@ -256,7 +260,6 @@ useEffect(() => {
     const photosMessage = t('chat.permissions.photosMessage', { defaultValue: 'Photo access is required to choose images.' });
     const res = await ensurePhotoLibraryAccess({ write: false });
     if (!res.ok) {
-      // Mirror the official "blocked vs denied" flow with a single user-friendly prompt
       if (res.blocked) {
         promptOpenSettings(photosTitle, photosMessage);
       } else {
@@ -286,7 +289,6 @@ useEffect(() => {
       (response) => {
         if (response?.didCancel) return;
         if (response?.errorCode || response?.errorMessage) {
-          // Never show technical error codes to users - always use user-friendly message
           Alert.alert(
             t('chat.imagePickerErrorTitle'),
             t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' })
@@ -315,15 +317,12 @@ useEffect(() => {
       navigation.navigate('Studio', {
         screen: 'StudioHome',
       });
-    } catch (err) {
-      // Navigation error handled silently
-    }
+    } catch (err) { }
   }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
 
   const handleEditImagePress = useCallback(() => {
     setInsertToChatCallback(onInsertImagesMarkdown);
     try {
-      // Navigate to EditImage screen in Studio stack
       navigation.navigate('Studio', {
         screen: 'EditImage',
         params: { 
@@ -331,9 +330,7 @@ useEffect(() => {
           returnTo: 'Chat' 
         },
       });
-    } catch (err) {
-      // Navigation error handled silently
-    }
+    } catch (err) { }
   }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
 
   const handleAssistantsPress = useCallback(() => {
@@ -492,18 +489,15 @@ useEffect(() => {
       requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
       assistantAdded = true;
 
-      // reset composer (but leave webSearchNext until send completion)
       setInput('');
       setAttachments([]);
       setForceCollapseInput(true);
       composerCleared = true;
 
-      // Create thread context once and reuse (optimize object creation)
       const threadMessages = activeThread.messages || [];
       const threadForContext = { ...activeThread, messages: [...threadMessages, mUser] };
       await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
       const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
-
 
       setStreaming(true);
       const deviceId = await ensureDeviceId();
@@ -524,16 +518,13 @@ useEffect(() => {
         onDone: () => {
           const full = getStream(assistantId);
           
-          // If content is empty, remove the message instead of saving it
           if (!full || full.trim().length === 0) {
             if (isPrivate) {
-              // For private, we can't easily remove, so just clear activity
               updateLastAssistantContentPrivate(() => '');
             } else if (activeThread?.id) {
               removeMessage(activeThread.id, assistantId);
             }
           } else {
-            // Content exists, update it (activity text will be cleared in updateLastAssistantContent)
             if (isPrivate) {
               updateLastAssistantContentPrivate(() => full);
             } else {
@@ -548,14 +539,11 @@ useEffect(() => {
           if (!isPrivate) forceSaveThread(activeThread.id);
           setWebSearchNext(false);
 
-          // Track successful message and check for rate prompt (after 2 successful messages)
           successfulMessagesRef.current += 1;
           if (successfulMessagesRef.current >= 2) {
-            // Check if we can show rate prompt (async IIFE)
             (async () => {
               const checkResult = await RateUsService.canShowRatePrompt();
               if (checkResult.canShow) {
-                // Small delay to not interrupt user flow, then show native modal
                 setTimeout(() => {
                   RateUsService.showRatePrompt();
                 }, 2000);
@@ -661,8 +649,14 @@ useEffect(() => {
 
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={{ flex: 1 }}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? (headerHeight-25 || 65) : 0}
+      >
+        {/* We moved the inner flex wrapper here to contain everything */}
         <View style={styles.flex1}>
+          
           {!!error && (
             <View style={styles.error}>
               <Text style={styles.errorText}>{error}</Text>
@@ -670,44 +664,64 @@ useEffect(() => {
           )}
 
           {isChatEmpty ? (
-            <Reanimated.View style={[styles.flex1, animatedContentStyle]}>
-              {isAssistantThread ? (
-                <AssistantHeader thread={activeThread} showOnlyWhenEmpty />
-              ) : (
-                <View style={[styles.emptyState, isPrivate && styles.emptyStatePrivate]}>
-                  {isPrivate ? (
-                    <>
-                      <View style={styles.emptyStateIcon}>
-                        <Svg height={48} width={48} viewBox="0 -960 960 960" fill="#FFFFFF">
-                          <Path d="M720-240q25 0 42.5-17.5T780-300q0-25-17.5-42.5T720-360q-25 0-42.5 17.5T660-300q0 25 17.5 42.5T720-240Zm0 120q30 0 56-14t43-39q-23-14-48-20.5t-51-6.5q-26 0-51 6.5T621-173q17 25 43 39t56 14ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM490-80H240q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v52q-18-6-37.5-9t-42.5-3v-40H240v400h212q8 24 16 41.5T490-80Zm230 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40ZM240-560v400-400Z" />
-                        </Svg>
-                      </View>
-                      <Text style={styles.emptyStateTitle}>{t('chat.privateTitle')}</Text>
-                      <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
-                    </>
-                  ) : (
-                    <CreativeStudioBanner onPress={handleCreateImagesPress} paused={showVoiceOverlay || isRecording} />
-                  )}
-                </View>
-              )}
-            </Reanimated.View>
+            // --- FIX IS HERE: Wrapping Empty State in TouchableWithoutFeedback ---
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+              <View style={styles.flex1}>
+                {isAssistantThread ? (
+                  <AssistantHeader thread={activeThread} showOnlyWhenEmpty />
+                ) : (
+                  <View style={[styles.emptyState, isPrivate && styles.emptyStatePrivate]}>
+                    {isPrivate ? (
+                      <>
+                        <View style={styles.emptyStateIcon}>
+                          <Svg height={48} width={48} viewBox="0 -960 960 960" fill="#FFFFFF">
+                            <Path d="M720-240q25 0 42.5-17.5T780-300q0-25-17.5-42.5T720-360q-25 0-42.5 17.5T660-300q0 25 17.5 42.5T720-240Zm0 120q30 0 56-14t43-39q-23-14-48-20.5t-51-6.5q-26 0-51 6.5T621-173q17 25 43 39t56 14ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM490-80H240q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v52q-18-6-37.5-9t-42.5-3v-40H240v400h212q8 24 16 41.5T490-80Zm230 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40ZM240-560v400-400Z" />
+                          </Svg>
+                        </View>
+                        <Text style={styles.emptyStateTitle}>{t('chat.privateTitle')}</Text>
+                        <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
+                      </>
+                    ) : (
+                      // Banner is inside the Touchable, so swipes up but tapping background dismisses keyboard
+                      <Reanimated.View style={bannerStyle}>
+                        <CreativeStudioBanner onPress={handleCreateImagesPress} paused={showVoiceOverlay || isRecording} />
+                      </Reanimated.View>
+                    )}
+                  </View>
+                )}
+              </View>
+            </TouchableWithoutFeedback>
           ) : (
-            <Reanimated.View style={[styles.flex1, animatedContentStyle]}>
-              <MessageList
-                ref={messageListRef}
-                messages={messagesNoSystem}
-                streaming={streaming}
-                streamingMessageId={streamingMsgId}
-                onRetryFromHere={onRetryFromHere}
-                threadKey={activeThread.id}
-              />
-            </Reanimated.View>
+            // --- Normal List with Drag-to-Dismiss ---
+            <KeyboardGestureArea
+              style={styles.flex1}
+              interpolator="ios"
+              showOnKeyboardWillShow={false}
+            >
+              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.flex1}>
+                  <MessageList
+                    ref={messageListRef}
+                    messages={messagesNoSystem}
+                    streaming={streaming}
+                    streamingMessageId={streamingMsgId}
+                    onRetryFromHere={onRetryFromHere}
+                    threadKey={activeThread.id}
+                    contentContainerStyle={{ paddingBottom: 20 }}
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+            </KeyboardGestureArea>
           )}
 
-          <Reanimated.View style={animatedFooterStyle}>
-            {showQuickSuggestions && (
-              <SuggestionCards onSuggestionPress={handleQuickSuggestionPress} />
-            )}
+          <View>
+            {/* Animated Suggestions */}
+            <Reanimated.View style={suggestionStyle}>
+              {showQuickSuggestions && (
+                <SuggestionCards onSuggestionPress={handleQuickSuggestionPress} />
+              )}
+            </Reanimated.View>
+            
             <TestInput
               value={input}
               onChange={setInput}
@@ -745,9 +759,9 @@ useEffect(() => {
                 if (isRecording) stopVoice();
               }}
             />
-          </Reanimated.View>
+          </View>
         </View>
-      </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </View>
   );
 }
@@ -757,6 +771,8 @@ const styles = StyleSheet.create({
   flex1: { flex: 1 },
   loadingCenter: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   loadingHint: { color: colors.textSecondary },
+  header: { padding: 16 },
+  headerTitle: { color: 'white', fontSize: 18, fontWeight: 'bold' },
   error: { backgroundColor: colors.error + '20', padding: 10, borderRadius: 10, margin: 13, borderLeftWidth: 3, borderLeftColor: colors.error },
   errorText: { color: colors.error, fontSize: 14, fontWeight: '500' },
   emptyState: { flex: 1, alignItems: 'stretch', justifyContent: 'flex-start', paddingHorizontal: 16, paddingTop: 32, paddingBottom: 40, gap: 24 },

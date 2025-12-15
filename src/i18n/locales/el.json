@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Νέα συνομιλία",
     "history": "Ιστορικό",
+    "rewards": "Ημερήσιες ανταμοιβές",
     "assistants": "Βοηθοί",
     "imagesStudio": "Image Studio",
     "settings": "Ρυθμίσεις",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
     }
+  },
+  "rewards": {
+  "header": {
+    "title": "Ανταμοιβές",
+    "openMenu": "Άνοιγμα μενού",
+    "goBack": "Πίσω"
+  },
+  "pointsHero": {
+    "totalBalance": "ΣΥΝΟΛΙΚΟ ΥΠΟΛΟΙΠΟ",
+    "seeYourRewards": "Δες τις ανταμοιβές σου"
+  },
+  "streakTracker": {
+    "title": "Ημερήσιο σερί",
+    "subtitle": "Συνέχισε έτσι! Τα πας τέλεια.",
+    "days": "Ημέρες",
+    "prize": "Έπαθλο",
+    "dayLabel": "Ημέρα {{number}}",
+    "nextReward": "Επόμενη ανταμοιβή: {{amount}} σε {{time}}",
+    "coins": "Νομίσματα"
+  },
+  "sections": {
+    "availableQuests": "Διαθέσιμες αποστολές",
+    "completedQuests": "Ολοκληρωμένες αποστολές",
+    "availableRewards": "Διαθέσιμες ανταμοιβές",
+    "needsMoreCoins": "Χρειάζονται περισσότερα νομίσματα"
+  },
+  "balances": {
+    "rewardCoins": "Νομίσματα ανταμοιβής",
+    "imageCredits": "Πιστώσεις εικόνων"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 πιστώσεις εικόνων",
+      "imageCredits200": "200 πιστώσεις εικόνων",
+      "imageCredits600": "600 πιστώσεις εικόνων",
+      "weeklyPremium": "Εβδομαδιαίο Premium",
+      "secretBox": "Μυστικό κουτί"
+    },
+    "rewardDescriptions": {
+      "secretBox": "Μυστηριώδεις ανταμοιβές μέσα"
+    },
+    "alerts": {
+      "comingSoonTitle": "Σύντομα διαθέσιμο",
+      "comingSoonMessage": "Αυτή η ανταμοιβή δεν είναι διαθέσιμη ακόμα.",
+      "notEnoughCoinsTitle": "Δεν υπάρχουν αρκετά νομίσματα",
+      "notEnoughCoinsMessage": "Χρειάζεσαι περισσότερα νομίσματα ανταμοιβής για να ξεκλειδώσεις αυτή την ανταμοιβή.",
+      "errorTitle": "Σφάλμα",
+      "couldNotOpenBox": "Δεν ήταν δυνατό να ανοίξει το κουτί.",
+      "couldNotRedeem": "Δεν ήταν δυνατή η εξαργύρωση της ανταμοιβής. Δοκίμασε ξανά.",
+      "mysteryReward": "Μυστική ανταμοιβή"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "Ημερήσια είσοδος",
+      "description": "Άνοιξε την εφαρμογή σήμερα για να κρατήσεις το σερί σου",
+      "message": "Αυτή η αποστολή ολοκληρώνεται αυτόματα όταν ανοίγεις την εφαρμογή κάθε μέρα."
+    },
+    "shareFacebook": {
+      "title": "Κοινοποίηση στο Facebook",
+      "description": "Κάνε μια ανάρτηση για εμάς στο Facebook"
+    },
+    "shareTwitter": {
+      "title": "Κοινοποίηση στο X",
+      "description": "Κάνε tweet την εμπειρία σου"
+    },
+    "shareInstagram": {
+      "title": "Κοινοποίηση στο Instagram",
+      "description": "Μοιράσου μια ιστορία ή μια ανάρτηση"
+    },
+    "shareExperience": {
+      "title": "Μοιράσου την εμπειρία σου",
+      "description": "Πες στους φίλους γιατί σου αρέσει η εφαρμογή"
+    },
+    "share": {
+      "genericMessage": "Χρησιμοποιώ αυτή την εφαρμογή AI για συνομιλία & δημιουργία εικόνων. Δες την: {{url}}",
+      "facebookQuote": "Δες αυτή την εφαρμογή AI!",
+      "twitterText": "Δοκιμάζω αυτή την εφαρμογή AI, είναι πολύ καλή.",
+      "instagramMessage": "Δες αυτή την εφαρμογή AI: {{url}}"
+    },
+    "store": {
+      "errorTitle": "Σφάλμα",
+      "errorMessage": "Δεν ήταν δυνατό να ανοίξει η σελίδα του καταστήματος."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "Η αποστολή ολοκληρώθηκε",
+      "description": "Η αποστολή ολοκληρώθηκε",
+      "points": "+{{points}} πόντοι",
+      "close": "Κλείσιμο"
+    },
+    "rewardSuccess": {
+      "error": "ΣΦΑΛΜΑ",
+      "success": "ΕΠΙΤΥΧΙΑ",
+      "somethingWentWrong": "Κάτι πήγε στραβά",
+      "rewardUnlocked": "Η ανταμοιβή ξεκλειδώθηκε",
+      "credits": "Πιστώσεις",
+      "close": "Κλείσιμο",
+      "okay": "OK"
+    },
+    "secretBox": {
+      "pill": "ΜΥΣΤΙΚΟ ΚΟΥΤΙ",
+      "rewardUnlocked": "Η ΑΝΤΑΜΟΙΒΗ ΞΕΚΛΕΙΔΩΘΗΚΕ",
+      "shufflingRewards": "ΑΝΑΚΑΤΕΜΑ ΑΝΤΑΜΟΙΒΩΝ...",
+      "imageCreditsAdded": "Προστέθηκαν πιστώσεις εικόνων στον λογαριασμό σου",
+      "continue": "Συνέχεια",
+      "revealing": "Αποκάλυψη...",
+      "prizeTiers": {
+        "lucky": "ΤΥΧΕΡΟ",
+        "pro": "PRO",
+        "elite": "ELITE",
+        "mythic": "ΜΥΘΙΚΟ"
+      }
+    }
   }
+}
 }

@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "צ'אט חדש",
     "history": "היסטוריה",
+    "rewards": "פרסים יומיים",
     "assistants": "עוזרים",
     "imagesStudio": "Image Studio",
     "settings": "הגדרות",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
     }
+  },
+  "rewards": {
+  "header": {
+    "title": "תגמולים",
+    "openMenu": "פתח תפריט",
+    "goBack": "חזור"
+  },
+  "pointsHero": {
+    "totalBalance": "יתרה כוללת",
+    "seeYourRewards": "צפה בתגמולים שלך"
+  },
+  "streakTracker": {
+    "title": "רצף יומי",
+    "subtitle": "תמשיך כך! אתה בלהבות.",
+    "days": "ימים",
+    "prize": "פרס",
+    "dayLabel": "יום {{number}}",
+    "nextReward": "התגמול הבא: {{amount}} בעוד {{time}}",
+    "coins": "מטבעות"
+  },
+  "sections": {
+    "availableQuests": "משימות זמינות",
+    "completedQuests": "משימות שהושלמו",
+    "availableRewards": "תגמולים זמינים",
+    "needsMoreCoins": "צריך עוד מטבעות"
+  },
+  "balances": {
+    "rewardCoins": "מטבעות תגמול",
+    "imageCredits": "קרדיטים לתמונות"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 קרדיטים לתמונות",
+      "imageCredits200": "200 קרדיטים לתמונות",
+      "imageCredits600": "600 קרדיטים לתמונות",
+      "weeklyPremium": "פרימיום שבועי",
+      "secretBox": "קופסה סודית"
+    },
+    "rewardDescriptions": {
+      "secretBox": "תגמולי הפתעה בפנים"
+    },
+    "alerts": {
+      "comingSoonTitle": "בקרוב",
+      "comingSoonMessage": "התגמול הזה עדיין לא זמין.",
+      "notEnoughCoinsTitle": "אין מספיק מטבעות",
+      "notEnoughCoinsMessage": "צריך עוד מטבעות תגמול כדי לפתוח את התגמול הזה.",
+      "errorTitle": "שגיאה",
+      "couldNotOpenBox": "לא ניתן לפתוח את הקופסה.",
+      "couldNotRedeem": "לא ניתן לממש את התגמול. נסה שוב.",
+      "mysteryReward": "תגמול מסתורי"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "כניסה יומית",
+      "description": "פתח את האפליקציה היום כדי לשמור על הרצף",
+      "message": "המשימה הזו מושלמת אוטומטית כשאתה פותח את האפליקציה בכל יום."
+    },
+    "shareFacebook": {
+      "title": "שתף בפייסבוק",
+      "description": "פרסם עלינו בפייסבוק"
+    },
+    "shareTwitter": {
+      "title": "שתף ב-X",
+      "description": "צייץ על החוויה שלך"
+    },
+    "shareInstagram": {
+      "title": "שתף באינסטגרם",
+      "description": "שתף סטורי או פוסט"
+    },
+    "shareExperience": {
+      "title": "שתף את החוויה שלך",
+      "description": "ספר לחברים למה אתה אוהב את האפליקציה"
+    },
+    "share": {
+      "genericMessage": "אני משתמש באפליקציית ה-AI הזו לצ׳אט וליצירת תמונות. בדוק/י: {{url}}",
+      "facebookQuote": "בדוק/י את אפליקציית ה-AI הזו!",
+      "twitterText": "אני מנסה את אפליקציית ה-AI הזו, היא ממש מגניבה.",
+      "instagramMessage": "בדוק/י את אפליקציית ה-AI הזו: {{url}}"
+    },
+    "store": {
+      "errorTitle": "שגיאה",
+      "errorMessage": "לא ניתן לפתוח את דף החנות."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "המשימה הושלמה",
+      "description": "המשימה הושלמה",
+      "points": "+{{points}} נקודות",
+      "close": "סגור"
+    },
+    "rewardSuccess": {
+      "error": "שגיאה",
+      "success": "הצלחה",
+      "somethingWentWrong": "משהו השתבש",
+      "rewardUnlocked": "התגמול נפתח",
+      "credits": "קרדיטים",
+      "close": "סגור",
+      "okay": "אישור"
+    },
+    "secretBox": {
+      "pill": "קופסה סודית",
+      "rewardUnlocked": "התגמול נפתח",
+      "shufflingRewards": "מערבבים תגמולים...",
+      "imageCreditsAdded": "קרדיטים לתמונות נוספו לחשבון שלך",
+      "continue": "המשך",
+      "revealing": "חושפים...",
+      "prizeTiers": {
+        "lucky": "מזל",
+        "pro": "PRO",
+        "elite": "ELITE",
+        "mythic": "MYTHIC"
+      }
+    }
   }
+}
 }

@@ -1,245 +1,160 @@
-// StreamingText.js - Throttled character-by-character reveal for smooth streaming
-import React, { useEffect, useMemo, useState, memo, useRef } from 'react';
-import { View, Animated, StyleSheet } from 'react-native';
+import React, { useEffect, useState, memo, useRef } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 import MarkdownContent from './MarkdownContent';
 import { subscribeStream, getStream } from '../../lib/streamingBuffer';
+import { colors } from '../../styles/colors';
 
-const CHARS_PER_FRAME = 10;  // Reveal 10 characters per frame (faster)
-const FRAME_DELAY = 20;      // 20ms between frames = 50 FPS (smoother)
-const MARKDOWN_UPDATE_THRESHOLD = 30;  // Only update MarkdownContent when content changes by 30+ chars
-const MARKDOWN_UPDATE_INTERVAL = 100;  // Or every 100ms, whichever comes first
+const CURSOR_CHAR = ' ▋'; 
 
 function StreamingText({ messageId, base = '', streaming = false, activityText }) {
-  const [buffered, setBuffered] = useState('');      // What we've received from server
-  const [displayed, setDisplayed] = useState('');    // What we're showing to user
-  const [debouncedDisplayed, setDebouncedDisplayed] = useState('');  // Debounced version for MarkdownContent
-  const displayTimerRef = useRef(null);
-  const debounceTimerRef = useRef(null);
-  const targetLengthRef = useRef(0);
-  const lastMarkdownUpdateRef = useRef(0);
-  const lastMarkdownLengthRef = useRef(0);
-  const skeletonPulse = useRef(new Animated.Value(0.3)).current;
+  // The text currently visible on screen
+  const [displayedText, setDisplayedText] = useState(base || '');
   
+  // Refs to hold state without causing re-renders
+  const fullContentRef = useRef(base || '');
+  const displayLengthRef = useRef((base || '').length);
+  const loopRef = useRef(null);
+  const cursorVisibleRef = useRef(true);
 
-
-  // Cleanup timers on unmount
-  useEffect(() => {
-    return () => {
-      if (displayTimerRef.current) {
-        clearInterval(displayTimerRef.current);
-        displayTimerRef.current = null;
-      }
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
-        debounceTimerRef.current = null;
-      }
-    };
-  }, []);
-
-  // Subscribe to buffer - this receives content from server
+  // 1. Network Listener: Instantly captures data from the global buffer
   useEffect(() => {
     if (!streaming || !messageId) {
-      setBuffered('');
-      setDisplayed('');
-      targetLengthRef.current = 0;
-      if (displayTimerRef.current) {
-        clearInterval(displayTimerRef.current);
-        displayTimerRef.current = null;
+      // Stream finished or initial load: Sync state immediately
+      const final = getStream(messageId) || base;
+      if (__DEV__) {
+        console.log('[StreamingText] original payload', { messageId, text: final });
       }
+      fullContentRef.current = final;
+      setDisplayedText(final);
       return;
     }
 
-    const initialContent = getStream(messageId);
-    setBuffered(initialContent);
-    targetLengthRef.current = initialContent.length;
-
-    return subscribeStream(
-      messageId,
-      () => {
-        const newContent = getStream(messageId);
-        setBuffered(newContent);
-        targetLengthRef.current = newContent.length;
-      },
-      { throttleMs: 50 }
-    );
-  }, [messageId, streaming]);
-
-  // Gradually reveal buffered content character-by-character
-  useEffect(() => {
-    if (!streaming || !messageId) {
-      if (displayTimerRef.current) {
-        clearInterval(displayTimerRef.current);
-        displayTimerRef.current = null;
-      }
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
-        debounceTimerRef.current = null;
-      }
-      return;
+    // Initialize with current buffer
+    const current = getStream(messageId) || base;
+    if (__DEV__) {
+      console.log('[StreamingText] initial buffer', { messageId, text: current });
     }
+    fullContentRef.current = current;
 
-    // Start the reveal timer once
-    displayTimerRef.current = setInterval(() => {
-      const updateStart = performance.now();
-      setDisplayed(prev => {
-        const currentLength = prev.length;
-        const targetLength = targetLengthRef.current;
+    // Subscribe to future updates (updates ref only, no render)
+    return subscribeStream(messageId, () => {
+      fullContentRef.current = getStream(messageId);
+    });
+  }, [messageId, streaming, base]);
 
-        if (currentLength >= targetLength) {
-          // Fully caught up, keep showing same content
-          return prev;
-        }
-
-        // Reveal next batch of characters
-        const nextLength = Math.min(currentLength + CHARS_PER_FRAME, targetLength);
-        const bufferedNow = getStream(messageId) || '';
-        const nextText = bufferedNow.substring(0, nextLength);
-        return nextText;
-      });
-    }, FRAME_DELAY);
-    return () => {
-      if (displayTimerRef.current) {
-        clearInterval(displayTimerRef.current);
-        displayTimerRef.current = null;
-      }
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
-        debounceTimerRef.current = null;
-      }
-    };
-  }, [streaming, messageId]);
-
-  // Debounce/throttle MarkdownContent updates during streaming
+  // 2. The "Liquid" Physics Loop: Controls rendering speed (30-60 FPS)
   useEffect(() => {
-    if (!streaming || !messageId) {
-      // When streaming stops, immediately sync debounced version
-      const currentDisplayed = displayed;
-      setDebouncedDisplayed(prev => {
-        if (prev !== currentDisplayed) {
-          return currentDisplayed;
-        }
-        return prev;
-      });
-      return;
-    }
+    if (!streaming) return;
 
-    const now = performance.now();
-    const lengthDiff = Math.abs(displayed.length - lastMarkdownLengthRef.current);
-    const timeSinceLastUpdate = now - lastMarkdownUpdateRef.current;
-    
-    // Update MarkdownContent if:
-    // 1. Content changed significantly (30+ chars)
-    // 2. Or enough time has passed (100ms)
-    const shouldUpdate = lengthDiff >= MARKDOWN_UPDATE_THRESHOLD || timeSinceLastUpdate >= MARKDOWN_UPDATE_INTERVAL;
+    let lastFrame = Date.now();
+    let cursorTimer = 0;
+    let accumulatedTime = 0;
 
-    if (shouldUpdate) {
-      // Clear any pending debounce
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
-        debounceTimerRef.current = null;
+    // CONFIGURATION: Controls smoothness. 
+    // 15ms = ~66 chars/second (Very smooth)
+    const MS_PER_CHAR = 15; 
+
+    const tick = () => {
+      const now = Date.now();
+      const delta = now - lastFrame;
+      lastFrame = now;
+      accumulatedTime += delta;
+
+      // --- Cursor Blinking ---
+      cursorTimer += delta;
+      if (cursorTimer > 500) { // Blink every 500ms
+        cursorVisibleRef.current = !cursorVisibleRef.current;
+        cursorTimer = 0;
       }
+
+      const fullContent = fullContentRef.current;
+      const currentLen = displayLengthRef.current;
+      const targetLen = fullContent.length;
       
-      lastMarkdownUpdateRef.current = now;
-      lastMarkdownLengthRef.current = displayed.length;
-      setDebouncedDisplayed(displayed);
-    } else {
-      // Schedule a debounced update
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
+      // --- Typing Logic ---
+      if (accumulatedTime >= MS_PER_CHAR && currentLen < targetLen) {
+        
+        // Determine how many characters to add this frame
+        let charsToAdd = Math.floor(accumulatedTime / MS_PER_CHAR);
+        const distance = targetLen - currentLen;
+        
+        // Adaptive Velocity:
+        // If falling behind (>100 chars), speed up slightly (max 3 chars/frame).
+        // Otherwise, stick to 1 char/frame for maximum smoothness.
+        if (distance > 100) charsToAdd = Math.max(charsToAdd, 3);
+        else charsToAdd = 1; 
+
+        // Deduct time used
+        accumulatedTime = accumulatedTime % MS_PER_CHAR;
+
+        const nextLen = Math.min(currentLen + charsToAdd, targetLen);
+        const nextSlice = fullContent.substring(0, nextLen);
+        
+        displayLengthRef.current = nextLen;
+
+        // Add cursor to the end of the string
+        const textWithCursor = cursorVisibleRef.current 
+          ? nextSlice + CURSOR_CHAR 
+          : nextSlice + '  ';
+
+        setDisplayedText(textWithCursor);
+      } 
+      // If waiting for network, just animate the cursor
+      else if (currentLen === targetLen) {
+         const slice = fullContent.substring(0, currentLen);
+         const textWithCursor = cursorVisibleRef.current 
+          ? slice + CURSOR_CHAR 
+          : slice + '  ';
+         
+         // Only update state if cursor changed to prevent useless renders
+         setDisplayedText(prev => prev !== textWithCursor ? textWithCursor : prev);
       }
-      
-      debounceTimerRef.current = setTimeout(() => {
-        lastMarkdownUpdateRef.current = performance.now();
-        lastMarkdownLengthRef.current = displayed.length;
-        setDebouncedDisplayed(displayed);
-      }, MARKDOWN_UPDATE_INTERVAL);
-    }
+
+      loopRef.current = requestAnimationFrame(tick);
+    };
+
+    loopRef.current = requestAnimationFrame(tick);
 
     return () => {
-      if (debounceTimerRef.current) {
-        clearTimeout(debounceTimerRef.current);
-        debounceTimerRef.current = null;
-      }
+      if (loopRef.current) cancelAnimationFrame(loopRef.current);
     };
-  }, [displayed, streaming, messageId]);
+  }, [streaming]);
 
-  const fullText = useMemo(() => {
-    return (base || '') + displayed;
-  }, [base, displayed]);
+  // 3. Skeleton State (Thinking)
+  const showSkeleton = streaming && displayLengthRef.current === 0;
 
-  // Use debounced version for MarkdownContent during streaming
-  const markdownText = useMemo(() => {
-    if (streaming) {
-      // During streaming: base is empty/partial, add displayed content
-      return (base || '') + debouncedDisplayed;
-    }
-    // When streaming completes: base already contains the full final content
-    // Don't add displayed to avoid duplication
-    return base || '';
-  }, [base, displayed, debouncedDisplayed, streaming]);
-
-  // pure-image guard (memoized regex check for performance)
-  const isPureImageMessage = useMemo(() => {
-    const trimmed = fullText.trim();
-    if (!trimmed) return false;
-    const regex = /^!\[[^\]]*\]\([^)]+\)(\s*!\[[^\]]*\]\([^)]+\))*\s*$/;
-    return regex.test(trimmed);
-  }, [fullText]);
-  if (isPureImageMessage) {
-    return <MarkdownContent text={base || ''} isUser={false} animateOnMount={false} streaming={false} />;
-  }
-
-  // Before first token while streaming → show skeleton placeholder
-  const hasFirstToken = fullText.trim().length > 0;
-
-  useEffect(() => {
-    if (streaming && !hasFirstToken) {
-      const loop = Animated.loop(
-        Animated.sequence([
-          Animated.timing(skeletonPulse, { toValue: 0.6, duration: 400, useNativeDriver: true }),
-          Animated.timing(skeletonPulse, { toValue: 0.3, duration: 400, useNativeDriver: true }),
-        ])
-      );
-      loop.start();
-      return () => loop.stop();
-    }
-  }, [streaming, hasFirstToken, skeletonPulse]);
-
-  if (streaming && !hasFirstToken) {
+  if (showSkeleton) {
     return (
-      <View style={styles.skeletonWrap}>
-        {!!activityText && (
-          <Animated.Text style={[styles.activityText, { opacity: skeletonPulse }]}>
-            {activityText}
-          </Animated.Text>
-        )}
-        {!activityText && (
-          <>
-            <Animated.View style={[styles.skelLine, { opacity: skeletonPulse, width: 240 }]} />
-            <Animated.View style={[styles.skelLine, { opacity: skeletonPulse, width: 180 }]} />
-            <Animated.View style={[styles.skelLine, { opacity: skeletonPulse, width: 220 }]} />
-          </>
-        )}
+      <View style={styles.skeletonContainer}>
+        <Text style={styles.activityText}>{activityText || 'Thinking...'}</Text>
       </View>
     );
   }
 
-  // Render with debounced MarkdownContent updates during streaming
-  return <MarkdownContent text={markdownText} isUser={false} animateOnMount={!streaming} streaming={streaming} />;
+  // 4. Render
+  return (
+    <View>
+      <MarkdownContent 
+        text={displayedText} 
+        isUser={false} 
+        animateOnMount={false} 
+        streaming={streaming} 
+      />
+    </View>
+  );
 }
 
-export default memo(StreamingText);
-
 const styles = StyleSheet.create({
-  skeletonWrap: { gap: 8, paddingRight: 8, paddingTop: 2, minWidth: 120 },
-  skelLine: {
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: '#2a2a2a',
+  skeletonContainer: {
+    paddingVertical: 8,
+    paddingHorizontal: 4,
   },
   activityText: {
-    color: '#a0a0a0',
-    fontSize: 15,
+    color: '#888',
+    fontSize: 14,
     fontFamily: 'Lato-Regular',
+    fontStyle: 'italic',
   },
 });
+
+export default memo(StreamingText);

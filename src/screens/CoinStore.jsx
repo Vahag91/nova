@@ -168,25 +168,25 @@ export default function CoinStore() {
       {/* Header - Fixed at top */}
       <View style={[styles.headerWrapper, { paddingTop: insets.top }]}>
         <View style={styles.header}>
-          <Pressable
-            onPress={() => {
-              const ret = route?.params?.returnTo;
-              if (ret && ret.route) {
-                if (ret.screen) navigation.navigate(ret.route, { screen: ret.screen });
-                else navigation.navigate(ret.route);
-              } else {
-                navigation.goBack();
-              }
-            }}
-            style={styles.headerBtn}
+        <Pressable
+          onPress={() => {
+            const ret = route?.params?.returnTo;
+            if (ret && ret.route) {
+              if (ret.screen) navigation.navigate(ret.route, { screen: ret.screen });
+              else navigation.navigate(ret.route);
+            } else {
+              navigation.goBack();
+            }
+          }}
+          style={styles.headerBtn}
             hitSlop={8}
-          >
-            <SvgIcon name="close" size={22} color={UI.textMuted} />
-          </Pressable>
-          <Text style={styles.headerTitle} numberOfLines={1}>
-            {t('coinStore.title')}
-          </Text>
-          <View style={styles.headerBtn} />
+        >
+          <SvgIcon name="close" size={22} color={UI.textMuted} />
+        </Pressable>
+        <Text style={styles.headerTitle} numberOfLines={1}>
+          {t('coinStore.title')}
+        </Text>
+        <View style={styles.headerBtn} />
         </View>
       </View>
 

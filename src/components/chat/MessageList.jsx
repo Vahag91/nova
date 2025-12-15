@@ -12,6 +12,9 @@ import { colors } from '../../styles/colors';
 
 const BOTTOM_GAP = 16;
 const NEAR_BOTTOM_PAD_RATIO = 0.12;
+const logTouch = (where, extra = {}) => {
+  console.log(`[Touch] ${where}`, extra);
+};
 
 function toDayKey(d) {
   const dt = new Date(d);
@@ -242,6 +245,10 @@ const MessageListCore = function MessageList({
           onScrollBeginDrag={onScrollBeginDrag}
           onScrollEndDrag={onScrollEndDrag}
           onMomentumScrollEnd={onMomentumScrollEnd}
+          onTouchStart={(e) => logTouch('FlatList touchStart', { y: e.nativeEvent?.locationY })}
+          onTouchEnd={(e) => logTouch('FlatList touchEnd', { y: e.nativeEvent?.locationY })}
+          onStartShouldSetResponderCapture={() => false}
+          onMoveShouldSetResponderCapture={() => false}
           onContentSizeChange={onContentSizeChange}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="interactive"

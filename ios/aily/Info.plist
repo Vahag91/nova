@@ -22,6 +22,16 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+		<string>twitter</string>
+		<string>fb</string>
+		<string>fbapi</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+		<string>whatsapp</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -39,6 +49,8 @@
 	<string>This will enable you to seamlessly import photos to your AI editor</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>We are using speech recognition to transcribe your voice into text so you can dictate messages and prompts instead of typing</string>
+	<key>NSUserNotificationUsageDescription</key>
+	<string>We use notifications to confirm quest completions and streak rewards.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UIAppFonts</key>
@@ -46,6 +58,11 @@
 		<string>Lato-Bold.ttf</string>
 		<string>Lato-BoldItalic.ttf</string>
 		<string>Lato-Regular.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

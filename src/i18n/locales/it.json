@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Nuova chat",
     "history": "Cronologia",
+    "rewards": "Ricompense giornaliere",
     "assistants": "Assistenti",
     "imagesStudio": "Image Studio",
     "settings": "Impostazioni",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Riprova.",
       "crashLabel": "App bloccata"
     }
+  },
+  "rewards": {
+  "header": {
+    "title": "Ricompense",
+    "openMenu": "Apri menu",
+    "goBack": "Indietro"
+  },
+  "pointsHero": {
+    "totalBalance": "SALDO TOTALE",
+    "seeYourRewards": "Vedi le tue ricompense"
+  },
+  "streakTracker": {
+    "title": "Serie giornaliera",
+    "subtitle": "Continua così! Sei in forma.",
+    "days": "Giorni",
+    "prize": "Premio",
+    "dayLabel": "Giorno {{number}}",
+    "nextReward": "Prossima ricompensa: {{amount}} tra {{time}}",
+    "coins": "Monete"
+  },
+  "sections": {
+    "availableQuests": "Missioni disponibili",
+    "completedQuests": "Missioni completate",
+    "availableRewards": "Ricompense disponibili",
+    "needsMoreCoins": "Servono più monete"
+  },
+  "balances": {
+    "rewardCoins": "Monete premio",
+    "imageCredits": "Crediti immagine"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 crediti immagine",
+      "imageCredits200": "200 crediti immagine",
+      "imageCredits600": "600 crediti immagine",
+      "weeklyPremium": "Premium settimanale",
+      "secretBox": "Scatola segreta"
+    },
+    "rewardDescriptions": {
+      "secretBox": "Ricompense a sorpresa all’interno"
+    },
+    "alerts": {
+      "comingSoonTitle": "In arrivo",
+      "comingSoonMessage": "Questa ricompensa non è ancora disponibile.",
+      "notEnoughCoinsTitle": "Monete insufficienti",
+      "notEnoughCoinsMessage": "Ti servono più monete premio per sbloccare questa ricompensa.",
+      "errorTitle": "Errore",
+      "couldNotOpenBox": "Impossibile aprire la scatola.",
+      "couldNotRedeem": "Impossibile riscattare la ricompensa. Riprova.",
+      "mysteryReward": "Ricompensa misteriosa"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "Accesso giornaliero",
+      "description": "Apri l’app oggi per mantenere la tua serie",
+      "message": "Questa missione viene completata automaticamente quando apri l’app ogni giorno."
+    },
+    "shareFacebook": {
+      "title": "Condividi su Facebook",
+      "description": "Pubblica su di noi su Facebook"
+    },
+    "shareTwitter": {
+      "title": "Condividi su X",
+      "description": "Twitta la tua esperienza"
+    },
+    "shareInstagram": {
+      "title": "Condividi su Instagram",
+      "description": "Condividi una storia o un post"
+    },
+    "shareExperience": {
+      "title": "Condividi la tua esperienza",
+      "description": "Di’ agli amici perché ti piace l’app"
+    },
+    "share": {
+      "genericMessage": "Sto usando questa app di IA per chat e generazione di immagini. Dai un’occhiata: {{url}}",
+      "facebookQuote": "Dai un’occhiata a questa app di IA!",
+      "twitterText": "Sto provando questa app di IA, è davvero fantastica.",
+      "instagramMessage": "Dai un’occhiata a questa app di IA: {{url}}"
+    },
+    "store": {
+      "errorTitle": "Errore",
+      "errorMessage": "Impossibile aprire la pagina dello store."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "Missione completata",
+      "description": "Missione completata",
+      "points": "+{{points}} punti",
+      "close": "Chiudi"
+    },
+    "rewardSuccess": {
+      "error": "ERRORE",
+      "success": "SUCCESSO",
+      "somethingWentWrong": "Qualcosa è andato storto",
+      "rewardUnlocked": "Ricompensa sbloccata",
+      "credits": "Crediti",
+      "close": "Chiudi",
+      "okay": "OK"
+    },
+    "secretBox": {
+      "pill": "SCATOLA SEGRETA",
+      "rewardUnlocked": "RICOMPENSA SBLOCCATA",
+      "shufflingRewards": "MESCOLANDO LE RICOMPENSE...",
+      "imageCreditsAdded": "Crediti immagine aggiunti al tuo account",
+      "continue": "Continua",
+      "revealing": "Rivelazione...",
+      "prizeTiers": {
+        "lucky": "FORTUNATO",
+        "pro": "PRO",
+        "elite": "ELITE",
+        "mythic": "MITICO"
+      }
+    }
   }
+}
 }

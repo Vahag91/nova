@@ -31,6 +31,8 @@ import Chat from '../screens/Chat';
 import History from '../screens/HistorySimple';
 import Assistants from '../screens/Assistants';
 import Settings from '../screens/Settings.jsx';
+import RewardsStack from './RewardsStack';
+import RewardsHeader from '../components/rewards/Header';
 import StudioStack from './StudioStack';
 import PaywallScreen from '../components/PaywallScreen';
 import OneTimeOfferScreen from '../screens/OneTimeOfferScreen';
@@ -524,6 +526,15 @@ export default function DrawerNavigator({ onNavigationReady }) {
             headerTitle: t('navigation.history'),
             headerRight: () => <HistoryHeaderRight navigation={navigation} />,
           })}
+        />
+        <Drawer.Screen
+          name="Rewards"
+          component={RewardsStack}
+          options={{
+            headerShown: false,
+            title: 'Rewards',
+            drawerItemStyle: { display: 'flex' },
+          }}
         />
         <Drawer.Screen name="Assistants" component={Assistants} options={{ title: t('navigation.assistants') }} />
         <Drawer.Screen

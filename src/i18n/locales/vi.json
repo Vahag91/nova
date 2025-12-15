@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Chat mới",
     "history": "Lịch sử",
+    "rewards": "Phần thưởng hàng ngày",
     "assistants": "Trợ lý",
     "imagesStudio": "Image Studio",
     "settings": "Cài đặt",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
     }
+  },
+  "rewards": {
+  "header": {
+    "title": "Phần thưởng",
+    "openMenu": "Mở menu",
+    "goBack": "Quay lại"
+  },
+  "pointsHero": {
+    "totalBalance": "TỔNG SỐ DƯ",
+    "seeYourRewards": "Xem phần thưởng của bạn"
+  },
+  "streakTracker": {
+    "title": "Chuỗi hằng ngày",
+    "subtitle": "Cứ tiếp tục nhé! Bạn đang rất tuyệt.",
+    "days": "Ngày",
+    "prize": "Phần thưởng",
+    "dayLabel": "Ngày {{number}}",
+    "nextReward": "Phần thưởng tiếp theo: {{amount}} trong {{time}}",
+    "coins": "Xu"
+  },
+  "sections": {
+    "availableQuests": "Nhiệm vụ khả dụng",
+    "completedQuests": "Nhiệm vụ đã hoàn thành",
+    "availableRewards": "Phần thưởng khả dụng",
+    "needsMoreCoins": "Cần thêm xu"
+  },
+  "balances": {
+    "rewardCoins": "Xu thưởng",
+    "imageCredits": "Tín dụng ảnh"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 tín dụng ảnh",
+      "imageCredits200": "200 tín dụng ảnh",
+      "imageCredits600": "600 tín dụng ảnh",
+      "weeklyPremium": "Premium theo tuần",
+      "secretBox": "Hộp bí mật"
+    },
+    "rewardDescriptions": {
+      "secretBox": "Bên trong có phần thưởng bất ngờ"
+    },
+    "alerts": {
+      "comingSoonTitle": "Sắp ra mắt",
+      "comingSoonMessage": "Phần thưởng này chưa khả dụng.",
+      "notEnoughCoinsTitle": "Không đủ xu",
+      "notEnoughCoinsMessage": "Bạn cần thêm xu thưởng để mở khóa phần thưởng này.",
+      "errorTitle": "Lỗi",
+      "couldNotOpenBox": "Không thể mở hộp.",
+      "couldNotRedeem": "Không thể đổi phần thưởng. Vui lòng thử lại.",
+      "mysteryReward": "Phần thưởng bí ẩn"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "Đăng nhập hằng ngày",
+      "description": "Mở ứng dụng hôm nay để giữ chuỗi của bạn",
+      "message": "Nhiệm vụ này sẽ tự động hoàn thành khi bạn mở ứng dụng mỗi ngày."
+    },
+    "shareFacebook": {
+      "title": "Chia sẻ lên Facebook",
+      "description": "Đăng bài về chúng tôi trên Facebook"
+    },
+    "shareTwitter": {
+      "title": "Chia sẻ lên X",
+      "description": "Tweet trải nghiệm của bạn"
+    },
+    "shareInstagram": {
+      "title": "Chia sẻ lên Instagram",
+      "description": "Chia sẻ story hoặc bài đăng"
+    },
+    "shareExperience": {
+      "title": "Chia sẻ trải nghiệm của bạn",
+      "description": "Nói với bạn bè vì sao bạn thích ứng dụng"
+    },
+    "share": {
+      "genericMessage": "Mình đang dùng ứng dụng AI này để chat & tạo ảnh. Xem thử nhé: {{url}}",
+      "facebookQuote": "Xem thử ứng dụng AI này nhé!",
+      "twitterText": "Mình đang thử ứng dụng AI này, khá là hay.",
+      "instagramMessage": "Xem thử ứng dụng AI này: {{url}}"
+    },
+    "store": {
+      "errorTitle": "Lỗi",
+      "errorMessage": "Không thể mở trang cửa hàng."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "Hoàn thành nhiệm vụ",
+      "description": "Đã hoàn thành nhiệm vụ",
+      "points": "+{{points}} điểm",
+      "close": "Đóng"
+    },
+    "rewardSuccess": {
+      "error": "LỖI",
+      "success": "THÀNH CÔNG",
+      "somethingWentWrong": "Đã xảy ra lỗi",
+      "rewardUnlocked": "Đã mở khóa phần thưởng",
+      "credits": "Tín dụng",
+      "close": "Đóng",
+      "okay": "OK"
+    },
+    "secretBox": {
+      "pill": "HỘP BÍ MẬT",
+      "rewardUnlocked": "ĐÃ MỞ KHÓA PHẦN THƯỞNG",
+      "shufflingRewards": "ĐANG XÁO TRỘN PHẦN THƯỞNG...",
+      "imageCreditsAdded": "Tín dụng ảnh đã được thêm vào tài khoản của bạn",
+      "continue": "Tiếp tục",
+      "revealing": "Đang mở...",
+      "prizeTiers": {
+        "lucky": "MAY MẮN",
+        "pro": "PRO",
+        "elite": "ELITE",
+        "mythic": "MYTHIC"
+      }
+    }
   }
+}
 }

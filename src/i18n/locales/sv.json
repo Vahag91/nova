@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "Ny chatt",
     "history": "Historik",
+    "rewards": "Dagliga belöningar",
     "assistants": "Assistenter",
     "imagesStudio": "Image Studio",
     "settings": "Inställningar",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
     }
+  },
+  "rewards": {
+  "header": {
+    "title": "Belöningar",
+    "openMenu": "Öppna meny",
+    "goBack": "Tillbaka"
+  },
+  "pointsHero": {
+    "totalBalance": "TOTALT SALDO",
+    "seeYourRewards": "Se dina belöningar"
+  },
+  "streakTracker": {
+    "title": "Daglig streak",
+    "subtitle": "Fortsätt så! Du är on fire.",
+    "days": "Dagar",
+    "prize": "Pris",
+    "dayLabel": "Dag {{number}}",
+    "nextReward": "Nästa belöning: {{amount}} om {{time}}",
+    "coins": "Mynt"
+  },
+  "sections": {
+    "availableQuests": "Tillgängliga uppdrag",
+    "completedQuests": "Slutförda uppdrag",
+    "availableRewards": "Tillgängliga belöningar",
+    "needsMoreCoins": "Behöver fler mynt"
+  },
+  "balances": {
+    "rewardCoins": "Belöningsmynt",
+    "imageCredits": "Bildkrediter"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 bildkrediter",
+      "imageCredits200": "200 bildkrediter",
+      "imageCredits600": "600 bildkrediter",
+      "weeklyPremium": "Veckopremium",
+      "secretBox": "Hemlig låda"
+    },
+    "rewardDescriptions": {
+      "secretBox": "Överraskningsbelöningar inuti"
+    },
+    "alerts": {
+      "comingSoonTitle": "Kommer snart",
+      "comingSoonMessage": "Den här belöningen är inte tillgänglig än.",
+      "notEnoughCoinsTitle": "Inte tillräckligt med mynt",
+      "notEnoughCoinsMessage": "Du behöver fler belöningsmynt för att låsa upp den här belöningen.",
+      "errorTitle": "Fel",
+      "couldNotOpenBox": "Kunde inte öppna lådan.",
+      "couldNotRedeem": "Kunde inte lösa in belöningen. Försök igen.",
+      "mysteryReward": "Mysteriebelöning"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "Daglig inloggning",
+      "description": "Öppna appen idag för att behålla din streak",
+      "message": "Det här uppdraget slutförs automatiskt när du öppnar appen varje dag."
+    },
+    "shareFacebook": {
+      "title": "Dela på Facebook",
+      "description": "Publicera om oss på Facebook"
+    },
+    "shareTwitter": {
+      "title": "Dela på X",
+      "description": "Tweeta om din upplevelse"
+    },
+    "shareInstagram": {
+      "title": "Dela på Instagram",
+      "description": "Dela en story eller ett inlägg"
+    },
+    "shareExperience": {
+      "title": "Dela din upplevelse",
+      "description": "Berätta för vänner varför du gillar appen"
+    },
+    "share": {
+      "genericMessage": "Jag använder den här AI-appen för chatt och bildgenerering. Kolla in den: {{url}}",
+      "facebookQuote": "Kolla in den här AI-appen!",
+      "twitterText": "Jag testar den här AI-appen, den är riktigt cool.",
+      "instagramMessage": "Kolla in den här AI-appen: {{url}}"
+    },
+    "store": {
+      "errorTitle": "Fel",
+      "errorMessage": "Kunde inte öppna butikssidan."
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "Uppdrag klart",
+      "description": "Uppdrag slutfört",
+      "points": "+{{points}} poäng",
+      "close": "Stäng"
+    },
+    "rewardSuccess": {
+      "error": "FEL",
+      "success": "LYCKADES",
+      "somethingWentWrong": "Något gick fel",
+      "rewardUnlocked": "Belöning upplåst",
+      "credits": "Krediter",
+      "close": "Stäng",
+      "okay": "OK"
+    },
+    "secretBox": {
+      "pill": "HEMLIG LÅDA",
+      "rewardUnlocked": "BELÖNING UPPLÅST",
+      "shufflingRewards": "BLANDAR BELÖNINGAR...",
+      "imageCreditsAdded": "Bildkrediter har lagts till på ditt konto",
+      "continue": "Fortsätt",
+      "revealing": "Avslöjar...",
+      "prizeTiers": {
+        "lucky": "TUR",
+        "pro": "PRO",
+        "elite": "ELIT",
+        "mythic": "MYTISK"
+      }
+    }
   }
+}
 }

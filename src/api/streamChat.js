@@ -3,7 +3,8 @@ import { SSEClient } from '../lib/SSEClient';
 
 const DEFAULT_FALLBACK_MODEL = 'gpt-5-nano';
 const logStream = (...args) => {
-  // Logging disabled for production
+  // Lightweight console logging to diagnose slow responses; keep minimal noise
+  try { console.log('[streamChat]', ...args); } catch {}
 };
 
 export function streamChat({
@@ -48,8 +49,6 @@ export function streamChat({
     return { role: m.role, content: m.content ?? '' };
   });
 
-  logStream('start', { model, fallbackModel, allowWebSearch, forceWebSearch });
-
   const body = {
     messages: outMessages,
     tools: [], // client-side placeholder (not used by proxy, safe to keep)
@@ -67,12 +66,17 @@ export function streamChat({
   let primaryError = null;
   let activeClient = null;
   let aborted = false;
+  const timings = {
+    start: Date.now(),
+    firstTokenMs: null,
+    tokens: 0,
+    lastModel: null,
+  };
 
   const safeOnDone = () => {
     if (!doneCalled) {
       doneCalled = true;
       finished = true;
-      logStream('done');
       onDone?.();
     }
   };
@@ -88,7 +92,6 @@ export function streamChat({
     let attemptErrored = false;
     let errorHandled = false;
 
-    logStream('attempt_start', { model: modelToUse, isFallback });
 
     const finishIfAppropriate = (source) => {
       if (finished || attemptErrored) return;
@@ -96,7 +99,6 @@ export function streamChat({
       const userAborted = closeInfo?.reason === 'client_abort' || aborted;
 
       if (userAborted) {
-        logStream('attempt_abort', { model: modelToUse, isFallback, source });
         return;
       }
 
@@ -143,6 +145,11 @@ export function streamChat({
       onEvent: (evt) => {
         if (evt?.type === 'token' && typeof evt.delta === 'string') {
           tokensEmitted = true;
+          timings.tokens += 1;
+          timings.lastModel = modelToUse;
+          if (timings.firstTokenMs === null) {
+            timings.firstTokenMs = Date.now() - timings.start;
+          }
           onToken?.(evt.delta);
           return;
         }
@@ -159,12 +166,24 @@ export function streamChat({
         const rtext = evt?.output_text_delta || evt?.delta;
         if (typeof rtext === 'string') {
           tokensEmitted = true;
+          timings.tokens += 1;
+          timings.lastModel = modelToUse;
+          if (timings.firstTokenMs === null) {
+            timings.firstTokenMs = Date.now() - timings.start;
+            logStream('first_token', { model: modelToUse, latencyMs: timings.firstTokenMs });
+          }
           onToken?.(rtext);
           return;
         }
         const cc = evt?.choices?.[0]?.delta?.content;
         if (typeof cc === 'string') {
           tokensEmitted = true;
+          timings.tokens += 1;
+          timings.lastModel = modelToUse;
+          if (timings.firstTokenMs === null) {
+            timings.firstTokenMs = Date.now() - timings.start;
+            logStream('first_token', { model: modelToUse, latencyMs: timings.firstTokenMs });
+          }
           onToken?.(cc);
         }
       },

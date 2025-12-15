@@ -70,6 +70,7 @@
   "navigation": {
     "chat": "新聊天",
     "history": "歷史記錄",
+    "rewards": "每日獎勵",
     "assistants": "助理",
     "imagesStudio": "Image Studio",
     "settings": "設定",
@@ -846,5 +847,121 @@
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
     }
+  },
+  "rewards": {
+  "header": {
+    "title": "獎勵",
+    "openMenu": "開啟選單",
+    "goBack": "返回"
+  },
+  "pointsHero": {
+    "totalBalance": "總餘額",
+    "seeYourRewards": "查看你的獎勵"
+  },
+  "streakTracker": {
+    "title": "每日連勝",
+    "subtitle": "繼續保持！你超強。",
+    "days": "天",
+    "prize": "獎勵",
+    "dayLabel": "第 {{number}} 天",
+    "nextReward": "下一個獎勵：{{time}} 後 {{amount}}",
+    "coins": "金幣"
+  },
+  "sections": {
+    "availableQuests": "可用任務",
+    "completedQuests": "已完成任務",
+    "availableRewards": "可用獎勵",
+    "needsMoreCoins": "需要更多金幣"
+  },
+  "balances": {
+    "rewardCoins": "獎勵金幣",
+    "imageCredits": "圖片點數"
+  },
+  "rewardsList": {
+    "rewardTitles": {
+      "imageCredits50": "50 圖片點數",
+      "imageCredits200": "200 圖片點數",
+      "imageCredits600": "600 圖片點數",
+      "weeklyPremium": "每週 Premium",
+      "secretBox": "神秘盒子"
+    },
+    "rewardDescriptions": {
+      "secretBox": "內含神秘獎勵"
+    },
+    "alerts": {
+      "comingSoonTitle": "即將推出",
+      "comingSoonMessage": "此獎勵尚未提供。",
+      "notEnoughCoinsTitle": "金幣不足",
+      "notEnoughCoinsMessage": "你需要更多獎勵金幣才能解鎖此獎勵。",
+      "errorTitle": "錯誤",
+      "couldNotOpenBox": "無法開啟盒子。",
+      "couldNotRedeem": "無法兌換獎勵。請再試一次。",
+      "mysteryReward": "神秘獎勵"
+    }
+  },
+  "quests": {
+    "dailyLogin": {
+      "title": "每日登入",
+      "description": "今天開啟 App 以維持連勝",
+      "message": "當你每天開啟 App 時，此任務會自動完成。"
+    },
+    "shareFacebook": {
+      "title": "分享到 Facebook",
+      "description": "在 Facebook 發文分享我們"
+    },
+    "shareTwitter": {
+      "title": "分享到 X",
+      "description": "發文分享你的體驗"
+    },
+    "shareInstagram": {
+      "title": "分享到 Instagram",
+      "description": "分享限時動態或貼文"
+    },
+    "shareExperience": {
+      "title": "分享你的體驗",
+      "description": "告訴朋友你為什麼喜歡這個 App"
+    },
+    "share": {
+      "genericMessage": "我正在使用這款 AI App 來聊天和生成圖片。快來看看：{{url}}",
+      "facebookQuote": "快來看看這款 AI App！",
+      "twitterText": "我正在試用這款 AI App，還不錯喔。",
+      "instagramMessage": "快來看看這款 AI App：{{url}}"
+    },
+    "store": {
+      "errorTitle": "錯誤",
+      "errorMessage": "無法開啟商店頁面。"
+    }
+  },
+  "modals": {
+    "questCompleted": {
+      "title": "任務完成",
+      "description": "任務完成",
+      "points": "+{{points}} 點",
+      "close": "關閉"
+    },
+    "rewardSuccess": {
+      "error": "錯誤",
+      "success": "成功",
+      "somethingWentWrong": "發生錯誤",
+      "rewardUnlocked": "獎勵已解鎖",
+      "credits": "點數",
+      "close": "關閉",
+      "okay": "好的"
+    },
+    "secretBox": {
+      "pill": "神秘盒子",
+      "rewardUnlocked": "獎勵已解鎖",
+      "shufflingRewards": "正在隨機抽取獎勵...",
+      "imageCreditsAdded": "圖片點數已加入你的帳戶",
+      "continue": "繼續",
+      "revealing": "揭曉中...",
+      "prizeTiers": {
+        "lucky": "幸運",
+        "pro": "PRO",
+        "elite": "菁英",
+        "mythic": "神話"
+      }
+    }
   }
+}
 }
