@@ -74,7 +74,13 @@
     "assistants": "Asistenti",
     "imagesStudio": "Image Studio",
     "settings": "Nastavenia",
-    "recentChats": "Nedávne chaty"
+    "recentChats": "Nedávne chaty",
+    "proFeatures": "Pro funkcie",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Získajte PRO",
+      "subtitle": "Všetky funkcie AI"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Ochrana súkromia",
     "hero": {
       "label": "Špeciálna ponuka",
-      "title": "Prioritný prístup a bez limitov",
+      "title": "Neobmedzený prístup\n& funkcie Pro",
       "upgrade": "Upgradovať",
       "manage": "Spravovať plán"
     },
@@ -561,6 +567,10 @@
       "stats": "Dôveruje nám 500k+ používateľov",
       "rating": "4,9 / 5",
       "button": "Začať"
+    },
+    "buttons": {
+      "continue": "Pokračovať",
+      "start": "Začnime"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} tokenov",
       "defaultName": "Balík {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} tokenov"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Ročný",
         "only": "Len {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Mesačný",

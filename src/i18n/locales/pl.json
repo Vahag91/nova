@@ -74,7 +74,13 @@
     "assistants": "Asystenci",
     "imagesStudio": "Image Studio",
     "settings": "Ustawienia",
-    "recentChats": "Ostatnie czaty"
+    "recentChats": "Ostatnie czaty",
+    "proFeatures": "Funkcje Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Zdobądź PRO",
+      "subtitle": "Wszystkie funkcje AI"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Polityka prywatności",
     "hero": {
       "label": "Oferta specjalna",
-      "title": "Priorytetowy dostęp i brak limitów",
+      "title": "Nielimitowany dostęp\n& funkcje Pro",
       "upgrade": "Ulepsz",
       "manage": "Zarządzaj planem"
     },
@@ -561,6 +567,10 @@
       "stats": "Zaufanie 500 tys.+ użytkowników",
       "rating": "4,9 / 5",
       "button": "Zaczynamy"
+    },
+    "buttons": {
+      "continue": "Kontynuuj",
+      "start": "Zaczynamy"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} tokenów",
       "defaultName": "Paczka {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} tokenów"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Roczny",
         "only": "Tylko {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Miesięczny",

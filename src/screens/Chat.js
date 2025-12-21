@@ -32,6 +32,7 @@ import { useVoiceInput } from '../hooks/useVoiceInput';
 import { useTranslation } from 'react-i18next';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { isPremiumModel, FREE_MODEL } from '../config/premium';
+import { setPendingPremiumAction } from '../state/premiumActions';
 
 import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
 import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
@@ -122,7 +123,14 @@ export default function Chat({ navigation }) {
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
   const [webSearchNext, setWebSearchNext] = useState(false); 
-  const requestModelKey = useMemo(() => (webSearchNext ? 'gpt-5.1' : activeModelKey), [webSearchNext, activeModelKey]);
+  const resolvedActiveModel = useMemo(
+    () => (activeModelKey === 'gpt-5-nano' ? 'gpt-5.1-chat-latest' : activeModelKey),
+    [activeModelKey]
+  );
+  const requestModelKey = useMemo(
+    () => (webSearchNext ? 'gpt-5.1' : resolvedActiveModel),
+    [webSearchNext, resolvedActiveModel]
+  );
   const successfulMessagesRef = useRef(0); 
   const abortRef = useRef(null);
   const appStateRef = useRef(AppState.currentState);
@@ -337,7 +345,7 @@ export default function Chat({ navigation }) {
     navigation.navigate('Assistants');
   }, [navigation]);
 
-  const handleMicPress = useCallback(async () => {
+  const startVoiceFlow = useCallback(async () => {
     if (isRecording) {
       stopVoice();
       setShowVoiceOverlay(false);
@@ -385,6 +393,31 @@ export default function Chat({ navigation }) {
     setShowVoiceOverlay(true);
     setVoiceText('');
   }, [activateVoice, isRecording, setShowVoiceOverlay, stopVoice, setInput, startVoice, setError, t, setVoiceText]);
+
+  const handleMicPress = useCallback(() => {
+    if (isRecording) {
+      startVoiceFlow();
+      return;
+    }
+
+    if (isPremium) {
+      startVoiceFlow();
+      return;
+    }
+
+    setPendingPremiumAction(() => {
+      // Let the paywall close animation finish first.
+      setTimeout(() => {
+        try {
+          startVoiceFlow();
+        } catch {}
+      }, 450);
+    });
+
+    try {
+      navigation?.navigate('PaywallScreen', { returnTo: 'Chat' });
+    } catch {}
+  }, [isRecording, isPremium, navigation, startVoiceFlow]);
 
   const handleQuickSuggestionPress = useCallback((suggestion) => {
     const id = suggestion?.id;

@@ -74,7 +74,13 @@
     "assistants": "Asistanlar",
     "imagesStudio": "Image Studio",
     "settings": "Ayarlar",
-    "recentChats": "Son Sohbetler"
+    "recentChats": "Son Sohbetler",
+    "proFeatures": "Pro özellikler",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "PRO alın",
+      "subtitle": "Tüm AI özellikleri"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Gizlilik Politikası",
     "hero": {
       "label": "Özel teklif",
-      "title": "Öncelikli erişim ve limitsiz kullanım",
+      "title": "Sınırsız erişim\n& Pro özellikler",
       "upgrade": "Yükselt",
       "manage": "Planı yönet"
     },
@@ -561,6 +567,10 @@
       "stats": "500 binden fazla kullanıcı tarafından güveniliyor",
       "rating": "4.9 / 5",
       "button": "Başla"
+    },
+    "buttons": {
+      "continue": "Devam et",
+      "start": "Hadi başlayalım"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} Jeton",
       "defaultName": "Paket {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} Jeton"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Yıllık",
         "only": "Sadece {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Aylık",

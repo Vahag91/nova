@@ -74,7 +74,13 @@
     "assistants": "어시스턴트",
     "imagesStudio": "Image Studio",
     "settings": "설정",
-    "recentChats": "최근 채팅"
+    "recentChats": "최근 채팅",
+    "proFeatures": "프로 기능",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "PRO 받기",
+      "subtitle": "모든 AI 기능"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "개인정보 처리방침",
     "hero": {
       "label": "특가",
-      "title": "우선 접근 & 무제한",
+      "title": "무제한 이용\n및 Pro 기능",
       "upgrade": "업그레이드",
       "manage": "플랜 관리"
     },
@@ -561,6 +567,10 @@
       "stats": "50만+ 사용자가 신뢰",
       "rating": "4.9 / 5",
       "button": "시작하기"
+    },
+    "buttons": {
+      "continue": "계속하기",
+      "start": "시작하기"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} 토큰",
       "defaultName": "팩 {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} 토큰"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "연간",
         "only": "단 {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "월간",

@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { getDailyLoginRewardForStreakDay } from '../lib/rewardsSchedule';
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -117,9 +118,7 @@ export const useRewardsStore = create(
         let { quests } = get();
         const diff = lastActiveDay ? diffInDays(lastActiveDay, todayKey) : null;
 
-        const calculateDailyReward = (streakDay) => {
-          return streakDay % 7 === 0 ? 500 : 200;
-        };
+        const calculateDailyReward = (streakDay) => getDailyLoginRewardForStreakDay(streakDay);
 
         const hasDaily = quests.some(q => q.id === 'daily-login');
         if (!hasDaily) {
@@ -180,26 +179,6 @@ export const useRewardsStore = create(
 
         quests = completeQuestState(quests, 'daily-login');
 
-        const today = toDayKey();
-        quests = quests.map(q => {
-          if (q.id.startsWith('share-')) {
-            if (q.completedAt) {
-              const completedDay = toDayKey(new Date(q.completedAt));
-              if (completedDay !== today) {
-                const templateQuest = defaultQuestsTemplate.find(tq => tq.id === q.id);
-                return {
-                  ...q,
-                  status: 'available',
-                  completedAt: null,
-                  notified: false,
-                  points: templateQuest?.points || q.points,
-                };
-              }
-            }
-          }
-          return q;
-        });
-
         set({
           currentStreak: nextStreak,
           bestStreak: Math.max(bestStreak, nextStreak),
@@ -232,6 +211,8 @@ export const useRewardsStore = create(
           set({ quests: freshQuests() });
         } else {
           const updatedQuests = quests.map(quest => {
+            // Daily-login points are dynamic (based on streak day); don't normalize to template.
+            if (quest?.id === 'daily-login') return quest;
             const templateQuest = defaultQuestsTemplate.find(tq => tq.id === quest.id);
             if (templateQuest && quest.points !== templateQuest.points) {
               if (quest.status === 'available') {

@@ -19,6 +19,7 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import { useTranslation } from 'react-i18next';
 import { betterPreview, summaryPreview } from '../lib/format';
 import SidebarCreativeStudioBanner from '../components/navigation/SidebarCreativeStudioBanner';
+import SidebarProFeaturesButton from '../components/navigation/SidebarProFeaturesButton';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
@@ -47,7 +48,7 @@ export default function CustomDrawerContent(props) {
   const chevronRotation = useSharedValue(0);
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
-  const baseMenuItemCount = 5;
+  const baseMenuItemCount = 6;
 
   const SPRING_CONFIG = {
     damping: 16,
@@ -275,51 +276,7 @@ export default function CustomDrawerContent(props) {
           </Animated.View>
           <Text style={styles.logoText}>ChatCloud</Text>
         </Animated.View>
-        <SidebarCreativeStudioBanner
-            onPress={() => navigateTo('Studio', { screen: 'StudioHome' })}
-            style={styles.sidebarBanner}
-            restartKey={drawerOpenTick}
-          />
-        <View style={styles.mainNav}>
-
-          <MenuItem
-            icon="newchat"
-            label={t('navigation.chat')}
-            routeName="Chat"
-            isActive={activeRoute === 'Chat'}
-            index={0}
-          />
-          <MenuItem
-            icon="layout"
-            label={t('navigation.history')}
-            routeName="History"
-            isActive={activeRoute === 'History'}
-            index={1}
-          />
-          <MenuItem
-            icon="gift-finder"
-            label={t('navigation.rewards', { defaultValue: 'Daily Rewards' })}
-            routeName="Rewards"
-            isActive={activeRoute === 'Rewards'}
-            index={2}
-          />
-          <MenuItem
-            icon="quill"
-            label={t('navigation.assistants')}
-            routeName="Assistants"
-            isActive={activeRoute === 'Assistants'}
-            index={3}
-          />
-          <MenuItem
-            icon="studio"
-            label={t('navigation.imagesStudio')}
-            routeName="Studio"
-            isActive={activeRoute === 'Studio'}
-            index={4}
-          />
-
-          {/* Recent Chats Section */}
-          {recentThreads.length > 0 && (
+            {recentThreads.length > 0 && (
             <View style={styles.recentChatsSection}>
               <TouchableOpacity 
                 style={styles.recentChatsHeader}
@@ -345,18 +302,66 @@ export default function CustomDrawerContent(props) {
               </Animated.View>
             </View>
           )}
-        </View>
+        <SidebarCreativeStudioBanner
+            onPress={() => navigateTo('Studio', { screen: 'StudioHome' })}
+            style={styles.sidebarBanner}
+            restartKey={drawerOpenTick}
+          />
+          
+        <View style={styles.mainNav}>
 
-        {/* Bottom Navigation */}
-        <View style={styles.bottomNav}>
+          <MenuItem
+            icon="newchat"
+            label={t('navigation.chat')}
+            routeName="Chat"
+            isActive={activeRoute === 'Chat'}
+            index={0}
+          />
+          <MenuItem
+            icon="layout"
+            label={t('navigation.history')}
+            routeName="History"
+            isActive={activeRoute === 'History'}
+            index={1}
+          />
+          <MenuItem
+            icon="quill"
+            label={t('navigation.assistants')}
+            routeName="Assistants"
+            isActive={activeRoute === 'Assistants'}
+            index={2}
+          />
+          <MenuItem
+            icon="studio"
+            label={t('navigation.imagesStudio')}
+            routeName="Studio"
+            isActive={activeRoute === 'Studio'}
+            index={3}
+          />
+          <MenuItem
+            icon="gift-finder"
+            label={t('navigation.rewards', { defaultValue: 'Daily Rewards' })}
+            routeName="Rewards"
+            isActive={activeRoute === 'Rewards'}
+            index={4}
+          />
           <MenuItem
             icon="settings"
             label={t('navigation.settings')}
             routeName="Settings"
             isActive={activeRoute === 'Settings'}
-            index={baseMenuItemCount}
+            index={5}
           />
         </View>
+        {!isPremium && (
+          <View style={styles.footerSection}>
+            <SidebarProFeaturesButton
+              onPress={() => navigateTo('PaywallScreen', { returnTo: activeRoute })}
+            />
+          </View>
+        )}
+                  {/* Recent Chats Section */}
+      
       </DrawerContentScrollView>
     </SafeAreaView>
   );
@@ -371,6 +376,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 12,
     paddingBottom: 24,
+    flexGrow: 1,
   },
   logoSection: {
     flexDirection: 'row',
@@ -398,18 +404,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
   },
   mainNav: {
-    gap: 16,
-    marginTop: 26,
+    gap: 8,
+    marginTop: 20,
   },
   sidebarBanner: {
     marginTop: 18,
   },
-  bottomNav: {
-    gap: 16,
-    paddingTop: 24,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-    marginTop: 24,
+  footerSection: {
+    marginTop: 'auto',
+    paddingTop: 20,
   },
   menuItem: {
     flexDirection: 'row',

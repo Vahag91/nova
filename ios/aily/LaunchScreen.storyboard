@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CenterStack">
-                                <rect key="frame" x="127.66666666666669" y="314.66666666666669" width="120" height="183"/>
+                                <rect key="frame" x="160" y="418" width="120" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="AppIcon-Image">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -26,19 +26,10 @@
                                             <constraint firstAttribute="width" constant="120" id="AppIcon-Width"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ChatCloud Ai" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                        <rect key="frame" x="0.0" y="144" width="120" height="43"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="183" id="CenterStack-Height"/>
+                                    <constraint firstAttribute="height" constant="120" id="CenterStack-Height"/>
                                     <constraint firstAttribute="width" constant="120" id="CenterStack-Width"/>
-                                    <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="AppIcon-Image" secondAttribute="bottom" constant="24" id="DWI-qo-E1N"/>
-                                    <constraint firstItem="AppIcon-Image" firstAttribute="trailing" secondItem="GJd-Yh-RWb" secondAttribute="trailing" id="NcK-bS-ttc"/>
-                                    <constraint firstItem="AppIcon-Image" firstAttribute="leading" secondItem="GJd-Yh-RWb" secondAttribute="leading" id="NdA-cY-zqd"/>
                                     <constraint firstItem="AppIcon-Image" firstAttribute="top" secondItem="CenterStack" secondAttribute="top" id="Zvg-LV-pxg"/>
                                     <constraint firstItem="AppIcon-Image" firstAttribute="centerX" secondItem="CenterStack" secondAttribute="centerX" id="kvb-bt-q33"/>
                                 </constraints>

@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, View, Text, Animated } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import MyPressable from './MyPressable';
 
 const NextButtonArrow = ({ onBtnPress, animationController, isAnimating = false }) => {
   // 0 = Splash, 1 = RelaxView, 2 = CareView
   const [phase, setPhase] = useState(0);
   const listenerId = useRef(undefined);
+  const { t } = useTranslation();
   
   // Animation values for smooth transitions
   const textOpacity = useRef(new Animated.Value(1)).current;
@@ -56,7 +58,9 @@ const NextButtonArrow = ({ onBtnPress, animationController, isAnimating = false 
   }, [animationController, phase, textOpacity, textScale]);
 
   const isCircle = phase === 0;
-  const label = phase === 2 ? "Let's start" : phase === 1 ? "Continue" : null;
+  const continueLabel = t('onboarding.buttons.continue', { defaultValue: 'Continue' });
+  const startLabel = t('onboarding.buttons.start', { defaultValue: "Let's start" });
+  const label = phase === 2 ? startLabel : phase === 1 ? continueLabel : null;
   const width = phase === 2 ? 220 : phase === 1 ? 160 : 58;
 
   // Only render when we have a label

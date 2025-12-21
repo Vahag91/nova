@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import LinearGradient from 'react-native-linear-gradient';
 import SvgIcon from '../SvgIcon';
-import { colors } from '../../styles/colors';
+import { getDailyLoginRewardForStreakDay } from '../../lib/rewardsSchedule';
 
 export const StreakTracker = ({ currentDay, days = [] }) => {
   const { t } = useTranslation();
@@ -31,7 +31,8 @@ export const StreakTracker = ({ currentDay, days = [] }) => {
   const weekDays = days.length > 0 ? days.map((day) => {
     // Use actualDay if available, otherwise try to parse day.day, or use index
     const dayNumber = day.actualDay || (typeof day.day === 'number' ? day.day : (day.day ? parseInt(String(day.day).replace(/Day\s*/i, '')) : null));
-    const reward = dayNumber && dayNumber % 7 === 0 ? 300 : (day.reward || 100);
+    const fallbackDay = dayNumber || day.displayDay || 1;
+    const reward = typeof day.reward === 'number' ? day.reward : getDailyLoginRewardForStreakDay(fallbackDay);
     return {
       ...day,
       status: day.status,
@@ -40,7 +41,7 @@ export const StreakTracker = ({ currentDay, days = [] }) => {
     };
   }) : Array.from({ length: 7 }, (_, i) => ({
     status: i === 0 ? 'current' : 'locked',
-    reward: (i + 1) % 7 === 0 ? 300 : 100,
+    reward: getDailyLoginRewardForStreakDay(i + 1),
     dayNumber: i + 1,
     actualDay: i + 1,
     displayDay: i + 1,
@@ -55,7 +56,7 @@ export const StreakTracker = ({ currentDay, days = [] }) => {
     : 0;
 
   const nextRewardDay = weekDays.find(d => d.status !== 'completed' && d.reward);
-  const nextRewardAmount = nextRewardDay?.reward ?? 100;
+  const nextRewardAmount = nextRewardDay?.reward ?? 200;
   const nextRewardText = `${nextRewardAmount} ${t('rewards.streakTracker.coins')}`;
 
   // DayItem component - matches the React web code exactly
@@ -79,7 +80,7 @@ export const StreakTracker = ({ currentDay, days = [] }) => {
             style={styles.prizeNode}
           >
             <View style={styles.prizeNodeOverlay} />
-            <Text style={styles.prizeReward}>300</Text>
+            <Text style={styles.prizeReward}>{day.reward}</Text>
           </LinearGradient>
           <Text style={styles.prizeLabel}>{t('rewards.streakTracker.prize')}</Text>
         </View>

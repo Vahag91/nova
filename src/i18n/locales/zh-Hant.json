@@ -74,7 +74,13 @@
     "assistants": "助理",
     "imagesStudio": "Image Studio",
     "settings": "設定",
-    "recentChats": "最近的聊天"
+    "recentChats": "最近的聊天",
+    "proFeatures": "專業功能",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "取得PRO",
+      "subtitle": "全部AI功能"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "隱私權政策",
     "hero": {
       "label": "特別優惠",
-      "title": "優先存取與無限制",
+      "title": "無限存取\n與專業功能",
       "upgrade": "升級",
       "manage": "管理方案"
     },
@@ -561,6 +567,10 @@
       "stats": "深受超過 50 萬使用者信賴",
       "rating": "4.9 / 5",
       "button": "開始"
+    },
+    "buttons": {
+      "continue": "繼續",
+      "start": "開始使用"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} 代幣",
       "defaultName": "方案 {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} 代幣"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "年繳",
         "only": "只要 {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "月繳",

@@ -19,6 +19,7 @@ import { colors } from '../styles/colors';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
+import HeroBanner from '../components/settings/HeroBanner';
 
 const LINKS = {
   privacy: 'https://aicloudsolutions.app/privacy',
@@ -259,26 +260,7 @@ export default function Settings() {
         showsVerticalScrollIndicator={false}
       >
         {!isPremium ? (
-          <Pressable style={styles.heroCard} onPress={handleUpgrade}>
-            <View pointerEvents="none" style={styles.heroAccentCircleLarge} />
-            <View pointerEvents="none" style={styles.heroAccentCircleSmall} />
-            <View style={styles.heroCopy}>
-              <Text style={styles.heroLabel}>{t('settings.hero.label')}</Text>
-              <Text style={styles.heroTitle}>{t('settings.hero.title')}</Text>
-              <Pressable
-                style={styles.heroButton}
-                onPress={(event) => {
-                  event?.stopPropagation?.();
-                  handleUpgrade();
-                }}
-              >
-                <Text style={styles.heroButtonText}>
-                  {t('settings.hero.upgrade')}
-                </Text>
-              </Pressable>
-            </View>
-            <View style={styles.heroIconTile} />
-          </Pressable>
+          <HeroBanner onPress={handleUpgrade} />
         ) : null}
 
         <Section title={t('settings.sections.premium')}>{renderSectionRows(premiumItems)}</Section>
@@ -292,9 +274,6 @@ export default function Settings() {
 }
 
 const PAGE_BACKGROUND = '#000000'; // match Chat screen background
-const SURFACE = '#16161C';
-const HERO_BG = '#1D2030';
-
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
@@ -308,77 +287,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 48,
     gap: 32,
-  },
-  heroCard: {
-    backgroundColor: HERO_BG,
-    borderRadius: 24,
-    paddingHorizontal: 20,
-    paddingVertical: 22,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    overflow: 'hidden',
-    position: 'relative',
-    minHeight: 118,
-  },
-  heroAccentCircleLarge: {
-    position: 'absolute',
-    width: 185,
-    height: 185,
-    borderRadius: 92,
-    backgroundColor: 'rgba(124,92,255,0.16)',
-    top: -52,
-    right: -62,
-  },
-  heroAccentCircleSmall: {
-    position: 'absolute',
-    width: 135,
-    height: 135,
-    borderRadius: 67,
-    backgroundColor: 'rgba(124,92,255,0.12)',
-    bottom: -44,
-    left: -30,
-  },
-  heroCopy: {
-    flex: 1,
-    gap: 10,
-  },
-  heroLabel: {
-    color: 'rgba(255,255,255,0.65)',
-    textTransform: 'uppercase',
-    letterSpacing: 1.3,
-    fontSize: 11,
-    fontWeight: '600',
-  },
-  heroTitle: {
-    color: '#FFFFFF',
-    fontSize: 24,
-    fontWeight: '800',
-    lineHeight: 30,
-  },
-  heroButton: {
-    marginTop: 8,
-    backgroundColor: '#FFFFFF',
-    paddingHorizontal: 22,
-    paddingVertical: 10,
-    borderRadius: 999,
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'flex-start',
-  },
-  heroButtonText: {
-    color: '#0B0B0E',
-    fontWeight: '700',
-    fontSize: 13,
-    textAlign: 'center',
-  },
-  heroIconTile: {
-    width: 52,
-    height: 52,
-    borderRadius: 14,
-    backgroundColor: 'rgba(255,255,255,0.14)',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   section: {
     gap: 10,

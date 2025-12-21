@@ -74,7 +74,13 @@
     "assistants": "Pembantu",
     "imagesStudio": "Image Studio",
     "settings": "Tetapan",
-    "recentChats": "Sembang Terkini"
+    "recentChats": "Sembang Terkini",
+    "proFeatures": "Ciri Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Dapatkan PRO",
+      "subtitle": "Semua ciri AI"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Dasar Privasi",
     "hero": {
       "label": "Tawaran khas",
-      "title": "Akses keutamaan & tanpa had",
+      "title": "Akses tanpa had\n& ciri Pro",
       "upgrade": "Naik taraf",
       "manage": "Urus pelan"
     },
@@ -561,6 +567,10 @@
       "stats": "Dipercayai oleh 500k+ pengguna",
       "rating": "4.9 / 5",
       "button": "Mula"
+    },
+    "buttons": {
+      "continue": "Teruskan",
+      "start": "Mari mulakan"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} Credit",
       "defaultName": "Pek {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} Credit"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Tahunan",
         "only": "Hanya {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Bulanan",

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   View,
   ScrollView,
@@ -21,6 +21,7 @@ import { RedeemCard } from '../components/rewards/RedeemCard';
 import { QuestCompletedModal } from '../components/rewards/QuestCompletedModal';
 import { useRewardsStore } from '../state/useRewardsStore';
 import { useNavigation } from '@react-navigation/native';
+import { getDailyLoginRewardForStreakDay } from '../lib/rewardsSchedule';
 
 const IOS_APP_ID = '6753916530';
 const ANDROID_PACKAGE_NAME = 'com.yourapp.package'; // TODO
@@ -54,13 +55,9 @@ export default function RewardsScreen() {
   const quests = useRewardsStore(s => s.quests);
   const completeQuest = useRewardsStore(s => s.completeQuest);
   const resetQuestsIfMissing = useRewardsStore(s => s.resetQuestsIfMissing);
-  const resetAllQuests = useRewardsStore(s => s.resetAllQuests);
   const markQuestAsNotified = useRewardsStore(s => s.markQuestAsNotified);
-  const setPoints = useRewardsStore(s => s.setPoints);
 
   const [modalReward, setModalReward] = useState(null);
-  const dailyModalCheckedRef = useRef(false);
-  const questsUpdateRef = useRef(false);
 
   // 1) Wait for hydration, then reset quests and record activity
   useEffect(() => {
@@ -69,7 +66,6 @@ export default function RewardsScreen() {
     resetQuestsIfMissing();
     const timer = setTimeout(() => {
       recordActivity();
-      questsUpdateRef.current = true;
     }, 100);
 
     return () => clearTimeout(timer);
@@ -83,48 +79,44 @@ export default function RewardsScreen() {
     return () => sub.remove();
   }, [recordActivity]);
 
-  // 3) Daily login modal once per day
+  // 3) Auto-popup completion modals (daily has priority)
   useEffect(() => {
-    if (!hydrated || !questsUpdateRef.current) return;
-    if (dailyModalCheckedRef.current) return;
-
-    dailyModalCheckedRef.current = true;
-
-    (async () => {
-      try {
-        await new Promise(resolve => setTimeout(resolve, 200));
-
-        const today = toDayKey();
-        const storedDay = await AsyncStorage.getItem(DAILY_MODAL_KEY);
-
-        const dailyQuest = quests.find(
-          q => q.id === 'daily-login' && q.status === 'completed'
-        );
-
-        if (dailyQuest && isCompletedToday(dailyQuest) && storedDay !== today) {
-          setModalReward(dailyQuest);
-        }
-      } catch (e) {
-        // Daily modal check error
-      }
-    })();
-  }, [quests, hydrated]);
-
-  // 4) Auto-popup for other completed quests (once)
-  useEffect(() => {
-    if (!hydrated || !questsUpdateRef.current) return;
+    if (!hydrated) return;
     if (modalReward) return;
 
     const timer = setTimeout(() => {
-      const otherUnnotified = quests.find(
-        q =>
-          q.id !== 'daily-login' &&
-          q.status === 'completed' &&
-          isCompletedToday(q) &&
-          !q.notified
-      );
+      (async () => {
+        try {
+          const today = toDayKey();
+          const storedDay = await AsyncStorage.getItem(DAILY_MODAL_KEY);
 
-      if (otherUnnotified) setModalReward(otherUnnotified);
+          // Read from the store to avoid stale closures around `quests` while hydration/recordActivity runs.
+          const latestQuests = useRewardsStore.getState().quests || [];
+
+          const dailyQuest = latestQuests.find(
+            q => q.id === 'daily-login' && q.status === 'completed'
+          );
+
+          if (dailyQuest && isCompletedToday(dailyQuest) && storedDay !== today) {
+            setModalReward(prev => prev || dailyQuest);
+            return;
+          }
+
+          const otherUnnotified = latestQuests.find(
+            q =>
+              q.id !== 'daily-login' &&
+              q.status === 'completed' &&
+              isCompletedToday(q) &&
+              !q.notified
+          );
+
+          if (otherUnnotified) {
+            setModalReward(prev => prev || otherUnnotified);
+          }
+        } catch (e) {
+          // Modal check error
+        }
+      })();
     }, 200);
 
     return () => clearTimeout(timer);
@@ -164,7 +156,7 @@ export default function RewardsScreen() {
         else status = 'locked';
       }
 
-      const reward = displayDay === 7 ? 500 : 200;
+      const reward = getDailyLoginRewardForStreakDay(actualDayNumber);
       days.push({
         day: actualDayNumber, // Just pass the number, not the formatted string
         status,

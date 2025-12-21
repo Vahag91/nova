@@ -1,10 +1,24 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, Pressable, ActivityIndicator, AppState, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  Pressable,
+  ActivityIndicator,
+  AppState,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import Purchases from 'react-native-purchases';
 import { ensureDeviceId } from '../lib/deviceId';
-import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice';
+import {
+  createSbWithDevice,
+  fetchBalanceByDevice,
+} from '../lib/supabaseDevice';
 import { useImagesStore } from '../state/useImagesStore';
 import { useTranslation } from 'react-i18next';
 // MaterialIcons no longer used here
@@ -71,9 +85,10 @@ export default function CoinStore() {
         }
         // Compare RC appUserID with our deviceId to spot mismatch
         try {
-          const rcUser = (typeof Purchases.getAppUserID === 'function')
-            ? await Purchases.getAppUserID()
-            : (await Purchases.getCustomerInfo())?.originalAppUserId;
+          const rcUser =
+            typeof Purchases.getAppUserID === 'function'
+              ? await Purchases.getAppUserID()
+              : (await Purchases.getCustomerInfo())?.originalAppUserId;
           // RC appUserID match check
         } catch (e) {
           // getAppUserID/customerInfo error handled silently
@@ -92,12 +107,18 @@ export default function CoinStore() {
         setCoinsBalance(bal);
         // Select 'coins' offering first; fall back to current
         const allKeys = offerings?.all ? Object.keys(offerings.all) : [];
-        const coinsOffering = (offerings?.all && offerings.all.coins) || offerings?.current || null;
-        const available = Array.isArray(coinsOffering?.availablePackages) ? coinsOffering.availablePackages : [];
+        const coinsOffering =
+          (offerings?.all && offerings.all.coins) || offerings?.current || null;
+        const available = Array.isArray(coinsOffering?.availablePackages)
+          ? coinsOffering.availablePackages
+          : [];
 
         setPacks(available);
       } catch (e) {
-        Alert.alert(t('coinStore.alerts.initErrorTitle'), e?.message || t('coinStore.alerts.genericMessage'));
+        Alert.alert(
+          t('coinStore.alerts.initErrorTitle'),
+          e?.message || t('coinStore.alerts.genericMessage'),
+        );
       } finally {
         setLoading(false);
       }
@@ -115,46 +136,62 @@ export default function CoinStore() {
     }
   }, [sb, deviceId]);
 
-  const refreshBalanceWithPolling = useCallback(async (tries = 5, delayMs = 1200) => {
-    for (let i = 0; i < tries; i++) {
-      await refreshBalance();
-      await new Promise(r => setTimeout(r, delayMs));
-    }
-  }, [refreshBalance]);
+  const refreshBalanceWithPolling = useCallback(
+    async (tries = 5, delayMs = 1200) => {
+      for (let i = 0; i < tries; i++) {
+        await refreshBalance();
+        await new Promise(r => setTimeout(r, delayMs));
+      }
+    },
+    [refreshBalance],
+  );
 
-  const buyPack = useCallback(async (pkg, packId) => {
-    if (!pkg || !deviceId) return;
-    setBuying(true);
-    setProcessingPackId(packId || (pkg?.identifier || ''));
-    try {
-      // Ensure RC identity matches deviceId before purchasing
+  const buyPack = useCallback(
+    async (pkg, packId) => {
+      if (!pkg || !deviceId) return;
+      setBuying(true);
+      setProcessingPackId(packId || pkg?.identifier || '');
       try {
-        const current = await Purchases.getAppUserID?.();
-        if (current && current !== deviceId) {
-          try { await Purchases.logIn(String(deviceId)); } catch (err) {}
-        }
-      } catch (e) {}
+        // Ensure RC identity matches deviceId before purchasing
+        try {
+          const current = await Purchases.getAppUserID?.();
+          if (current && current !== deviceId) {
+            try {
+              await Purchases.logIn(String(deviceId));
+            } catch (err) {}
+          }
+        } catch (e) {}
 
-      await Purchases.purchasePackage(pkg);
+        await Purchases.purchasePackage(pkg);
 
-      // Re-assert identity after purchase in case SDK flipped to anonymous
-      try {
-        const after = await Purchases.getAppUserID?.();
-        if (after && after !== deviceId) {
-          try { await Purchases.logIn(String(deviceId)); } catch (err) {}
-        }
-      } catch {}
+        // Re-assert identity after purchase in case SDK flipped to anonymous
+        try {
+          const after = await Purchases.getAppUserID?.();
+          if (after && after !== deviceId) {
+            try {
+              await Purchases.logIn(String(deviceId));
+            } catch (err) {}
+          }
+        } catch {}
 
-      refreshBalanceWithPolling(); // webhook credits
-      Alert.alert(t('coinStore.alerts.successTitle'), t('coinStore.alerts.successMessage'));
-    } catch (e) {
-      if (e && e.userCancelled) return;
-      Alert.alert(t('coinStore.alerts.purchaseFailedTitle'), (e && e.message) || t('coinStore.alerts.unknownError'));
-    } finally {
-      setBuying(false);
-      setProcessingPackId(null);
-    }
-  }, [refreshBalanceWithPolling, deviceId]);
+        refreshBalanceWithPolling(); // webhook credits
+        Alert.alert(
+          t('coinStore.alerts.successTitle'),
+          t('coinStore.alerts.successMessage'),
+        );
+      } catch (e) {
+        if (e && e.userCancelled) return;
+        Alert.alert(
+          t('coinStore.alerts.purchaseFailedTitle'),
+          (e && e.message) || t('coinStore.alerts.unknownError'),
+        );
+      } finally {
+        setBuying(false);
+        setProcessingPackId(null);
+      }
+    },
+    [refreshBalanceWithPolling, deviceId],
+  );
 
   useEffect(() => {
     const sub = AppState.addEventListener('change', s => {
@@ -168,25 +205,26 @@ export default function CoinStore() {
       {/* Header - Fixed at top */}
       <View style={[styles.headerWrapper, { paddingTop: insets.top }]}>
         <View style={styles.header}>
-        <Pressable
-          onPress={() => {
-            const ret = route?.params?.returnTo;
-            if (ret && ret.route) {
-              if (ret.screen) navigation.navigate(ret.route, { screen: ret.screen });
-              else navigation.navigate(ret.route);
-            } else {
-              navigation.goBack();
-            }
-          }}
-          style={styles.headerBtn}
+          <Pressable
+            onPress={() => {
+              const ret = route?.params?.returnTo;
+              if (ret && ret.route) {
+                if (ret.screen)
+                  navigation.navigate(ret.route, { screen: ret.screen });
+                else navigation.navigate(ret.route);
+              } else {
+                navigation.goBack();
+              }
+            }}
+            style={styles.headerBtn}
             hitSlop={8}
-        >
-          <SvgIcon name="close" size={22} color={UI.textMuted} />
-        </Pressable>
-        <Text style={styles.headerTitle} numberOfLines={1}>
-          {t('coinStore.title')}
-        </Text>
-        <View style={styles.headerBtn} />
+          >
+            <SvgIcon name="close" size={22} color={UI.textMuted} />
+          </Pressable>
+          <Text style={styles.headerTitle} numberOfLines={1}>
+            {t('coinStore.title')}
+          </Text>
+          <View style={styles.headerBtn} />
         </View>
       </View>
 
@@ -196,44 +234,69 @@ export default function CoinStore() {
           <Text style={styles.loadingHint}>{t('coinStore.loading')}</Text>
         </View>
       ) : (
-        <ScrollView 
+        <ScrollView
           style={styles.scrollView}
-          contentContainerStyle={styles.scrollContent} 
+          contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
           {/* Balance Section (no card) */}
           <View style={styles.balanceTextBlock}>
-            <Text style={styles.balanceLabel}>{t('coinStore.balanceLabel')}</Text>
             <Text style={styles.balanceBig}>
               {(() => {
-                const formattedAmount = Number(balance || 0).toLocaleString(getLocaleForNumberFormatting(i18n.language));
-                const template = t('coinStore.balanceValue', { defaultValue: '{{amount}} トークン' });
+                const formattedAmount = Number(balance || 0).toLocaleString(
+                  getLocaleForNumberFormatting(i18n.language),
+                );
+                const template = t('coinStore.balanceValue', {
+                  defaultValue: '{{amount}} トークン',
+                });
                 return template.replace('{{amount}}', formattedAmount);
               })()}
+            </Text>
+            <Text style={styles.balanceLabel}>
+              {t('coinStore.balanceLabel')}
             </Text>
           </View>
 
           {/* Packs */}
           <View style={styles.packsList}>
-              {packs.length === 0 ? (
+            {packs.length === 0 ? (
               <Text style={styles.muted}>{t('coinStore.noPacks')}</Text>
             ) : (
               packs.map((p, idx) => {
                 const prod = p?.product || p?.storeProduct || {};
                 const rawTitle = prod?.title || p?.identifier || '';
-                const fallbackTitle = rawTitle || t('coinStore.pack.defaultName', { index: idx + 1 });
+                const fallbackTitle =
+                  rawTitle ||
+                  t('coinStore.pack.defaultName', { index: idx + 1 });
                 const amountDigits = String(rawTitle).replace(/[^\d]/g, '');
                 const amount = amountDigits ? Number(amountDigits) : null;
                 const price = prod?.priceString || prod?.price?.formatted || '';
                 const key = p?.identifier || prod?.identifier || String(idx);
                 const variant = idx % 3;
-                const tint = variant === 0 ? UI.purple : variant === 1 ? UI.blue : UI.green;
-                const badgeText = variant === 0 ? t('coinStore.badges.basic') : variant === 1 ? t('coinStore.badges.popular') : t('coinStore.badges.value');
-                const subtitleStyle = variant === 1 ? styles.packSubtitleBlue : styles.packSubtitleDefault;
+                const tint =
+                  variant === 0
+                    ? UI.purple
+                    : variant === 1
+                    ? UI.blue
+                    : UI.green;
+                const badgeText =
+                  variant === 0
+                    ? t('coinStore.badges.basic')
+                    : variant === 1
+                    ? t('coinStore.badges.popular')
+                    : t('coinStore.badges.value');
+                const subtitleStyle =
+                  variant === 1
+                    ? styles.packSubtitleBlue
+                    : styles.packSubtitleDefault;
                 const creditsLabel = amount
                   ? (() => {
-                      const formattedCredits = Number(amount).toLocaleString(getLocaleForNumberFormatting(i18n.language));
-                      const template = t('coinStore.pack.creditsLabel', { defaultValue: '{{credits}} credits' });
+                      const formattedCredits = Number(amount).toLocaleString(
+                        getLocaleForNumberFormatting(i18n.language),
+                      );
+                      const template = t('coinStore.pack.creditsLabel', {
+                        defaultValue: '{{credits}} credits',
+                      });
                       return template.replace('{{credits}}', formattedCredits);
                     })()
                   : fallbackTitle;
@@ -241,9 +304,12 @@ export default function CoinStore() {
                 const packId = key;
                 const isProcessing = buying && processingPackId === packId;
                 return (
-                  <Pressable key={key} onPress={() => buyPack(p, packId)} disabled={buying}
-                    style={[styles.packCard, styles.packCardSurface]}>
-
+                  <Pressable
+                    key={key}
+                    onPress={() => buyPack(p, packId)}
+                    disabled={buying}
+                    style={[styles.packCard, styles.packCardSurface]}
+                  >
                     <View style={styles.packRow}>
                       <View style={styles.packLeft}>
                         <CoinIcon size={22} />
@@ -256,7 +322,9 @@ export default function CoinStore() {
                         {isProcessing ? (
                           <ActivityIndicator size="small" color={tint} />
                         ) : (
-                          <Text style={[styles.priceText, { color: tint }]}>{priceLabel}</Text>
+                          <Text style={[styles.priceText, { color: tint }]}>
+                            {priceLabel}
+                          </Text>
                         )}
                       </View>
                     </View>
@@ -284,43 +352,141 @@ const styles = StyleSheet.create({
     backgroundColor: UI.bg,
   },
   // Header fixed at top
-  header: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    justifyContent: 'space-between', 
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
     width: '100%',
     backgroundColor: UI.bg,
   },
-  headerBtn: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
-  headerTitle: { color: '#FFFFFF', fontSize: 18, fontWeight: '600', flex: 1, textAlign: 'center' },
+  headerBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '600',
+    flex: 1,
+    textAlign: 'center',
+  },
   headerSpacer: { width: 40, height: 40 },
   scrollView: { flex: 1 },
-  scrollContent: { padding: 16, paddingTop: 70, flexGrow: 1, justifyContent: 'center' },
+  scrollContent: {
+    padding: 16,
+    paddingTop: 70,
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
   centerBox: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   muted: { color: UI.textMuted },
   loadingHint: { color: UI.textMuted, marginTop: 8 },
   // Balance (plain section)
-  balanceTextBlock: { alignItems: 'center', marginBottom: 16 },
-  balanceLabel: { color: UI.textMuted, fontWeight: '500', fontSize: 16 },
-  balanceBig: { color: UI.text, fontSize: 36, fontWeight: '900', marginTop: 10 },
+  balanceTextBlock: {
+    alignItems: 'center',
+    marginBottom: 26,
+    width: '100%',
+    maxWidth: 520,
+    alignSelf: 'center',
+    gap: 10,
+  },
+  balanceLabel: {
+    color: UI.textMuted,
+    fontWeight: '500',
+    fontSize: 16,
+    textAlign: 'center',
+    flexWrap: 'wrap',
+  },
+  balanceBig: {
+    color: UI.text,
+    fontSize: 30,
+    fontWeight: '900',
+    marginTop: 10,
+    textAlign: 'center',
+    flexWrap: 'wrap',
+  },
 
-  packsList: { gap: 12 },
-  packCard: { borderWidth: 1, borderRadius: 24, padding: 20, overflow: 'hidden', shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 12, shadowOffset: { width: 0, height: 4 } },
-  packCardSurface: { backgroundColor: UI.surface, borderColor: UI.border10, borderWidth: 1 },
-  packRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  packLeft: { flexDirection: 'row', alignItems: 'center' },
-  packTextWrap: { marginLeft: 12 },
-  packTitle: { color: UI.text, fontSize: 20, fontWeight: '800' },
-  packSubtitle: { color: UI.textMuted, fontSize: 13 },
-  packSubtitleDefault: { color: UI.textMuted, fontSize: 13, fontWeight: '400' },
-  packSubtitleBlue: { color: UI.blue, fontSize: 13, fontWeight: '600' },
-  pricePill: { paddingHorizontal: 14, paddingVertical: 8, borderRadius: 999, alignItems: 'center', justifyContent: 'center' },
-  priceText: { fontWeight: '700', fontSize: 16 },
+  packsList: { gap: 12, width: '100%', maxWidth: 520, alignSelf: 'center' },
+  packCard: {
+    width: '100%',
+    borderWidth: 1,
+    borderRadius: 24,
+    padding: 20,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+  },
+  packCardSurface: {
+    backgroundColor: UI.surface,
+    borderColor: UI.border10,
+    borderWidth: 1,
+  },
+  packRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  packLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    minWidth: 0,
+  },
+  packTextWrap: { marginLeft: 12, flex: 1, minWidth: 0 },
+  packTitle: {
+    color: UI.text,
+    fontSize: 17,
+    fontWeight: '800',
+    flexWrap: 'wrap',
+    flexShrink: 1,
+    lineHeight: 24,
+  },
+  packSubtitle: {
+    color: UI.textMuted,
+    fontSize: 13,
+    flexWrap: 'wrap',
+    flexShrink: 1,
+  },
+  packSubtitleDefault: {
+    color: UI.textMuted,
+    fontSize: 13,
+    fontWeight: '400',
+    flexWrap: 'wrap',
+    flexShrink: 1,
+  },
+  packSubtitleBlue: {
+    color: UI.blue,
+    fontSize: 13,
+    fontWeight: '600',
+    flexWrap: 'wrap',
+    flexShrink: 1,
+  },
+  pricePill: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 999,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    marginLeft: 12,
+  },
+  priceText: { fontWeight: '700', fontSize: 16, textAlign: 'center' },
   pricePillDark: { backgroundColor: UI.bg },
   cardOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
-  iconBubble: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
+  iconBubble: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
   spacer28: { height: 28 },
 });
@@ -337,41 +503,41 @@ function withAlpha(hex, alpha) {
 // Map i18n language codes to locale strings for number formatting
 function getLocaleForNumberFormatting(i18nLang) {
   const localeMap = {
-    'ja': 'ja-JP',
-    'en': 'en-US',
-    'es': 'es-ES',
+    ja: 'ja-JP',
+    en: 'en-US',
+    es: 'es-ES',
     'es-MX': 'es-MX',
-    'fr': 'fr-FR',
+    fr: 'fr-FR',
     'fr-CA': 'fr-CA',
-    'de': 'de-DE',
-    'it': 'it-IT',
-    'pt': 'pt-BR',
-    'ru': 'ru-RU',
+    de: 'de-DE',
+    it: 'it-IT',
+    pt: 'pt-BR',
+    ru: 'ru-RU',
     'zh-Hans': 'zh-CN',
     'zh-Hant': 'zh-TW',
-    'ko': 'ko-KR',
-    'ar': 'ar-SA',
-    'nl': 'nl-NL',
-    'pl': 'pl-PL',
-    'tr': 'tr-TR',
-    'he': 'he-IL',
-    'sv': 'sv-SE',
-    'da': 'da-DK',
-    'nb': 'nb-NO',
-    'fi': 'fi-FI',
-    'cs': 'cs-CZ',
-    'sk': 'sk-SK',
-    'uk': 'uk-UA',
-    'hr': 'hr-HR',
-    'hu': 'hu-HU',
-    'ro': 'ro-RO',
-    'el': 'el-GR',
-    'ca': 'ca-ES',
-    'vi': 'vi-VN',
-    'th': 'th-TH',
-    'id': 'id-ID',
-    'hi': 'hi-IN',
-    'ms': 'ms-MY',
+    ko: 'ko-KR',
+    ar: 'ar-SA',
+    nl: 'nl-NL',
+    pl: 'pl-PL',
+    tr: 'tr-TR',
+    he: 'he-IL',
+    sv: 'sv-SE',
+    da: 'da-DK',
+    nb: 'nb-NO',
+    fi: 'fi-FI',
+    cs: 'cs-CZ',
+    sk: 'sk-SK',
+    uk: 'uk-UA',
+    hr: 'hr-HR',
+    hu: 'hu-HU',
+    ro: 'ro-RO',
+    el: 'el-GR',
+    ca: 'ca-ES',
+    vi: 'vi-VN',
+    th: 'th-TH',
+    id: 'id-ID',
+    hi: 'hi-IN',
+    ms: 'ms-MY',
   };
   return localeMap[i18nLang] || i18nLang || 'en-US';
 }

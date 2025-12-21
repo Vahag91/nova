@@ -16,11 +16,6 @@ const COLORS = {
   muted: '#7A808F',
 };
 
-const PLACEHOLDER_IMG = {
-  uri: 'https://play-lh.googleusercontent.com/BHvZASibi_0asg-sDFogPs65I-Ce3eDd1Ksh2HoHva4wUA-I3GQv3-Nj-DtXSQEUlG1K',
-};
-
-
 const CareView = ({ animationController }) => {
   const { t } = useTranslation();
   const { width } = useWindowDimensions();
@@ -73,7 +68,7 @@ const CareView = ({ animationController }) => {
             ]}
           >
             {/* full image */}
-            <Image source={PLACEHOLDER_IMG} style={styles.fullImage} resizeMode="cover" />
+            <Image source={require('../../../assets/images/onboarding/before.jpg')} style={styles.fullImage} resizeMode="cover" />
           </Animated.View>
 
           {/* EDIT */}
@@ -84,7 +79,7 @@ const CareView = ({ animationController }) => {
             ]}
           >
             {/* full image */}
-            <Image source={PLACEHOLDER_IMG} style={styles.fullImage} resizeMode="cover" />
+            <Image source={require('../../../assets/images/onboarding/after.jpg')} style={styles.fullImage} resizeMode="cover" />
           </Animated.View>
         </View>
 
@@ -143,11 +138,8 @@ const styles = StyleSheet.create({
    // full image
    fullImage: {
      ...StyleSheet.absoluteFillObject,
-     position: 'absolute',
-     top: -10,
-     left: 0,
-     right: 0,
-     bottom: 0,
+    width: '100%',
+    height: '100%',
    },
 
 

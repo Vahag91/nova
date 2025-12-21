@@ -74,7 +74,13 @@
     "assistants": "المساعدون",
     "imagesStudio": "Image Studio",
     "settings": "الإعدادات",
-    "recentChats": "المحادثات الأخيرة"
+    "recentChats": "المحادثات الأخيرة",
+    "proFeatures": "ميزات برو",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "احصل على PRO",
+      "subtitle": "كل ميزات الذكاء الاصطناعي"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "سياسة الخصوصية",
     "hero": {
       "label": "عرض خاص",
-      "title": "وصول أولوية وبدون حدود",
+      "title": "وصول غير محدود\nومزايا احترافية",
       "upgrade": "ترقية",
       "manage": "إدارة الخطة"
     },
@@ -561,6 +567,10 @@
       "stats": "موثوق به من +500 ألف مستخدم",
       "rating": "4.9 / 5",
       "button": "ابدأ"
+    },
+    "buttons": {
+      "continue": "متابعة",
+      "start": "لنبدأ"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} عملة",
       "defaultName": "حزمة {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} عملة"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "سنوي",
         "only": "فقط {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "شهري",

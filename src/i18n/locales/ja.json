@@ -74,7 +74,13 @@
     "assistants": "アシスタント",
     "imagesStudio": "Image Studio",
     "settings": "設定",
-    "recentChats": "最近のチャット"
+    "recentChats": "最近のチャット",
+    "proFeatures": "プロ機能",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "PROを入手",
+      "subtitle": "AI機能をすべて"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "プライバシーポリシー",
     "hero": {
       "label": "特別オファー",
-      "title": "優先アクセス & 無制限",
+      "title": "無制限アクセス\n＆プロ機能",
       "upgrade": "アップグレード",
       "manage": "プランを管理"
     },
@@ -561,6 +567,10 @@
       "stats": "50万ユーザー以上からの信頼",
       "rating": "4.9 / 5",
       "button": "はじめる"
+    },
+    "buttons": {
+      "continue": "続ける",
+      "start": "始めましょう"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} トークン",
       "defaultName": "パック {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} トークン"
     },
     "premium": {
@@ -637,7 +647,7 @@
         "title": "年間",
         "only": "わずか {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "月額",

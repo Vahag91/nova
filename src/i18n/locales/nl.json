@@ -74,7 +74,13 @@
     "assistants": "Assistenten",
     "imagesStudio": "Image Studio",
     "settings": "Instellingen",
-    "recentChats": "Recente chats"
+    "recentChats": "Recente chats",
+    "proFeatures": "Pro-functies",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Krijg PRO",
+      "subtitle": "Alle AI-functies"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Privacybeleid",
     "hero": {
       "label": "Speciale aanbieding",
-      "title": "Prioritaire toegang & geen limieten",
+      "title": "Onbeperkte toegang\n& Pro-functies",
       "upgrade": "Upgraden",
       "manage": "Abonnement beheren"
     },
@@ -561,6 +567,10 @@
       "stats": "Vertrouwd door 500k+ gebruikers",
       "rating": "4,9 / 5",
       "button": "Aan de slag"
+    },
+    "buttons": {
+      "continue": "Doorgaan",
+      "start": "Aan de slag"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} credits",
       "defaultName": "Pakket {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} credits"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Jaarlijks",
         "only": "Slechts {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Maandelijks",

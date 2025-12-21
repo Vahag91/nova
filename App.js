@@ -32,6 +32,7 @@ import { SubscriptionProvider } from './src/context/SubscriptionContext';
 import UsageTrackingService from './src/services/UsageTrackingService';
 import { navigate } from './src/navigation/rootNavigation';
 import { ONBOARDING_KEY, ONE_TIME_OFFER_KEY } from './src/constants/storageKeys';
+import { colors } from './src/styles/colors';
 
 // ✅ Rewards store
 import { useRewardsStore } from './src/state/useRewardsStore';
@@ -373,7 +374,7 @@ export default function App() {
   if (!bootReady) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#6366F1" />
+        <ActivityIndicator size="large" color="#FFFFFF" />
       </View>
     );
   }
@@ -397,7 +398,7 @@ export default function App() {
 const styles = StyleSheet.create({
   loadingContainer: {
     flex: 1,
-    backgroundColor: '#0F172A',
+    backgroundColor: colors.background,
     justifyContent: 'center',
     alignItems: 'center',
   },

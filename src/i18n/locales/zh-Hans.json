@@ -74,7 +74,13 @@
     "assistants": "助手",
     "imagesStudio": "Image Studio",
     "settings": "设置",
-    "recentChats": "最近的聊天"
+    "recentChats": "最近的聊天",
+    "proFeatures": "专业功能",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "获取PRO",
+      "subtitle": "全部AI功能"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "隐私政策",
     "hero": {
       "label": "特别优惠",
-      "title": "优先访问 & 无限制",
+      "title": "无限访问\n与专业功能",
       "upgrade": "升级",
       "manage": "管理套餐"
     },
@@ -561,6 +567,10 @@
       "stats": "已获得 50 万+ 用户信任",
       "rating": "4.9 / 5",
       "button": "开始使用"
+    },
+    "buttons": {
+      "continue": "继续",
+      "start": "开始使用"
     }
   },
   "coinStore": {
@@ -583,7 +593,7 @@
       "creditsLabel": "{{credits}} 积分",
       "tokensLabel": "{{credits}} 积分",
       "defaultName": "套餐 {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "升级为高级版",
@@ -628,7 +638,7 @@
         "title": "年付",
         "only": "仅需 {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "月付",

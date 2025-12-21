@@ -74,7 +74,13 @@
     "assistants": "Ассистенты",
     "imagesStudio": "Image Studio",
     "settings": "Настройки",
-    "recentChats": "Недавние чаты"
+    "recentChats": "Недавние чаты",
+    "proFeatures": "Функции Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Получите PRO",
+      "subtitle": "Все функции ИИ"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Политика конфиденциальности",
     "hero": {
       "label": "Специальное предложение",
-      "title": "Приоритетный доступ и без лимитов",
+      "title": "Безлимитный доступ\nи Pro-функции",
       "upgrade": "Обновить",
       "manage": "Управлять планом"
     },
@@ -561,6 +567,10 @@
       "stats": "Нам доверяют более 500k пользователей",
       "rating": "4,9 / 5",
       "button": "Начать"
+    },
+    "buttons": {
+      "continue": "Продолжить",
+      "start": "Давайте начнём"
     }
   },
   "coinStore": {
@@ -583,7 +593,7 @@
       "creditsLabel": "{{credits}} кредитов",
       "tokensLabel": "{{credits}} кредитов",
       "defaultName": "Пакет {{index}}",
-      "unknownPrice": "$—"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Перейти на Премиум",
@@ -628,7 +638,7 @@
         "title": "Годовой",
         "only": "Всего {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Месячный",

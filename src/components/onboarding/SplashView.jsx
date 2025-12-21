@@ -79,6 +79,8 @@ const SplashView = ({ onNextClick, animationController }) => {
 
         {/* Social proof */}
         <View style={[styles.statsCard, { maxWidth: contentMax }]}>
+          
+          {/* Top Row: Avatars + Text */}
           <View style={styles.userStatsRow}>
             <View style={styles.avatarsContainer}>
               <Image 
@@ -97,9 +99,12 @@ const SplashView = ({ onNextClick, animationController }) => {
                 resizeMode="cover"
               />
             </View>
-            <Text style={styles.statsText}>{t('onboarding.splash.stats')}</Text>
+            <Text style={styles.statsText}>
+              {t('onboarding.splash.stats')}
+            </Text>
           </View>
 
+          {/* Bottom Row: Stars + Rating Text */}
           <View style={styles.ratingContainer}>
             <View style={styles.starsContainer}>
               <Text style={styles.star}>★</Text>
@@ -108,7 +113,9 @@ const SplashView = ({ onNextClick, animationController }) => {
               <Text style={styles.star}>★</Text>
               <Text style={[styles.star, { opacity: 0.6 }]}>★</Text>
             </View>
-            <Text style={styles.ratingText}>{t('onboarding.splash.rating')}</Text>
+            <Text style={styles.ratingText}>
+              {t('onboarding.splash.rating')}
+            </Text>
           </View>
         </View>
       </ScrollView>
@@ -136,6 +143,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 20,
     alignItems: 'center',
+    paddingBottom: 20, // Added safety padding
   },
 
   /* ---------- Header / Logo ----------- */
@@ -147,21 +155,13 @@ const styles = StyleSheet.create({
   },
   appIcon: {
     borderRadius: 20,
-    // ...Platform.select({
-    //   ios: {
-    //     shadowColor: COLORS.primary,
-    //     shadowOffset: { width: 0, height: 8 },
-    //     shadowOpacity: 0.18,
-    //     shadowRadius: 12,
-    //   },
-    //   android: { elevation: 6 },
-    // }),
   },
 
   /* ---------- Title ----------- */
   titleContainer: {
     alignItems: 'center',
     marginBottom: 10,
+    width: '100%',
   },
   title: {
     color: COLORS.textPrimary,
@@ -205,6 +205,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderWidth: 1,
     borderColor: COLORS.border,
+    width: '100%',
   },
   description: {
     color: '#C8C8D8',
@@ -212,7 +213,7 @@ const styles = StyleSheet.create({
     fontFamily: 'WorkSans-Regular',
   },
 
-  /* ---------- Stats Card ----------- */
+  /* ---------- Stats Card (FIXED) ----------- */
   statsCard: {
     backgroundColor: COLORS.surfaceSoft,
     borderRadius: 14,
@@ -221,16 +222,23 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: COLORS.borderSoft,
+    width: '100%',
+    alignItems: 'center', // Ensures content centers in card
   },
+  
+  // Row 1: Users
   userStatsRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    flexWrap: 'wrap', // Allows wrapping on very small screens
+    gap: 10,          // Consistent spacing
     marginBottom: 10,
   },
   avatarsContainer: {
     flexDirection: 'row',
-    marginRight: 10,
+    // Removed margin right, using gap in parent instead
+    flexShrink: 0,
   },
   avatar: {
     width: 30,
@@ -247,17 +255,21 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     letterSpacing: 0.2,
-    textAlign: 'center',
+    textAlign: 'center', // Centers text if it wraps
+    flexShrink: 1, // Prevents text from pushing bounds
   },
 
+  // Row 2: Ratings (Fixed Overlap)
   ratingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    flexWrap: 'wrap', // CRITICAL FIX: Wraps items if screen is narrow
+    gap: 8,           // CRITICAL FIX: Adds space between stars and text
   },
   starsContainer: {
     flexDirection: 'row',
-    marginRight: 8,
+    // Removed marginRight, using gap in parent
   },
   star: {
     fontSize: 16,
@@ -272,6 +284,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
     letterSpacing: 0.3,
+    textAlign: 'center', // Centers text if it wraps
+    flexShrink: 1,       // Allows text to shrink rather than overflow
   },
 
   /* ---------- Footer Button ----------- */
@@ -280,14 +294,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 8,
   },
-
-  // OUTER: casts shadow (no clipping)
   buttonShadowWrapper: {
     alignSelf: 'center',
     borderRadius: 32,
     overflow: 'visible',
-
-    // iOS shadow - matches button color
     ...Platform.select({
       ios: {
         shadowColor: '#15203A',
@@ -301,13 +311,10 @@ const styles = StyleSheet.create({
       },
     }),
   },
-
-  // INNER: clips ripple/contents to rounded shape
   buttonClip: {
     borderRadius: 32,
     overflow: 'hidden',
   },
-
   button: {
     backgroundColor: COLORS.buttonBg,
     paddingVertical: 14,

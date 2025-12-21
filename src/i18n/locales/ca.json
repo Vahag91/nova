@@ -74,7 +74,13 @@
     "assistants": "Assistents",
     "imagesStudio": "Image Studio",
     "settings": "Configuració",
-    "recentChats": "Xats recents"
+    "recentChats": "Xats recents",
+    "proFeatures": "Funcions Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Aconsegueix PRO",
+      "subtitle": "Totes les funcions d'IA"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Política de privacitat",
     "hero": {
       "label": "Oferta especial",
-      "title": "Accés prioritari i sense límits",
+      "title": "Accés il·limitat\n& funcions Pro",
       "upgrade": "Actualitza",
       "manage": "Gestiona el pla"
     },
@@ -561,6 +567,10 @@
       "stats": "Confiat per més de 500k usuaris",
       "rating": "4,9 / 5",
       "button": "Comença"
+    },
+    "buttons": {
+      "continue": "Continua",
+      "start": "Comencem"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} fitxes",
       "defaultName": "Paquet {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} fitxes"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Anual",
         "only": "Només {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Mensual",

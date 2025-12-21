@@ -74,7 +74,13 @@
     "assistants": "Asszisztensek",
     "imagesStudio": "Image Studio",
     "settings": "Beállítások",
-    "recentChats": "Legutóbbi chatek"
+    "recentChats": "Legutóbbi chatek",
+    "proFeatures": "Pro funkciók",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Szerezd meg a PRO-t",
+      "subtitle": "Minden AI-funkció"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Adatvédelmi szabályzat",
     "hero": {
       "label": "Különleges ajánlat",
-      "title": "Elsőbbségi hozzáférés és nincs limit",
+      "title": "Korlátlan hozzáférés\n& Pro funkciók",
       "upgrade": "Frissítés",
       "manage": "Csomag kezelése"
     },
@@ -561,6 +567,10 @@
       "stats": "500k+ felhasználó bizalmával",
       "rating": "4,9 / 5",
       "button": "Kezdés"
+    },
+    "buttons": {
+      "continue": "Folytatás",
+      "start": "Kezdjük el"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} token",
       "defaultName": "{{index}}. csomag",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} token"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Éves",
         "only": "Csak {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Havi",

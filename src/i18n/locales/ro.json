@@ -74,7 +74,13 @@
     "assistants": "Asistenți",
     "imagesStudio": "Image Studio",
     "settings": "Setări",
-    "recentChats": "Chat-uri recente"
+    "recentChats": "Chat-uri recente",
+    "proFeatures": "Funcții Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Obțineți PRO",
+      "subtitle": "Toate funcțiile AI"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Politica de confidențialitate",
     "hero": {
       "label": "Ofertă specială",
-      "title": "Acces prioritar și fără limite",
+      "title": "Acces nelimitat\n& funcții Pro",
       "upgrade": "Upgrade",
       "manage": "Administrează planul"
     },
@@ -561,6 +567,10 @@
       "stats": "De încredere pentru 500k+ utilizatori",
       "rating": "4,9 / 5",
       "button": "Începe"
+    },
+    "buttons": {
+      "continue": "Continuă",
+      "start": "Să începem"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} jetoane",
       "defaultName": "Pachet {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} jetoane"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Anual",
         "only": "Doar {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Lunar",

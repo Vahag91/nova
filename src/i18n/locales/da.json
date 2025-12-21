@@ -74,7 +74,13 @@
     "assistants": "Assistenter",
     "imagesStudio": "Image Studio",
     "settings": "Indstillinger",
-    "recentChats": "Nylige chats"
+    "recentChats": "Nylige chats",
+    "proFeatures": "Pro-funktioner",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Få PRO",
+      "subtitle": "Alle AI-funktioner"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "Datapolitik",
     "hero": {
       "label": "Specielt tilbud",
-      "title": "Prioriteret adgang & ingen begrænsninger",
+      "title": "Ubegrænset adgang\n& Pro-funktioner",
       "upgrade": "Opgradér",
       "manage": "Administrér plan"
     },
@@ -561,6 +567,10 @@
       "stats": "Tillid fra 500k+ brugere",
       "rating": "4,9 / 5",
       "button": "Kom i gang"
+    },
+    "buttons": {
+      "continue": "Fortsæt",
+      "start": "Lad os starte"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} credits",
       "defaultName": "Pakke {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} credits"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "Årligt",
         "only": "Kun {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "Månedligt",

@@ -1,5 +1,12 @@
 // SubscriptionScreen.js
-import React, { useCallback, useContext, useEffect, useMemo, useState, useRef } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+} from 'react';
 import {
   View,
   Text,
@@ -11,10 +18,15 @@ import {
   Animated,
   ActivityIndicator,
   Linking,
+  useWindowDimensions,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
-import { useNavigation, useFocusEffect, useRoute } from '@react-navigation/native';
+import {
+  useNavigation,
+  useFocusEffect,
+  useRoute,
+} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedViewIOS from '@react-native-masked-view/masked-view';
 import AnimatedReanimated, {
@@ -27,8 +39,14 @@ import AnimatedReanimated, {
 import SvgIcon from './SvgIcon';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useTranslation } from 'react-i18next';
-import { consumePendingPremiumAction, clearPendingPremiumAction } from '../state/premiumActions';
-import { navigate as navigateRoot, navigationRef } from '../navigation/rootNavigation';
+import {
+  consumePendingPremiumAction,
+  clearPendingPremiumAction,
+} from '../state/premiumActions';
+import {
+  navigate as navigateRoot,
+  navigationRef,
+} from '../navigation/rootNavigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ONE_TIME_OFFER_KEY } from '../constants/storageKeys';
 // Custom SVG Icons
@@ -89,10 +107,13 @@ function extractPriceValue(product) {
 
 function formatWeeklyEquivalent(product) {
   const price = extractPriceValue(product);
-  const currencyCode = product?.currencyCode || product?.currency || 'USD';
+  const currencyCode = String(
+    product?.currencyCode || product?.currency || 'USD',
+  ).toUpperCase();
   const subscriptionPeriod = product?.subscriptionPeriod || {};
   const unit = (subscriptionPeriod.unit || 'YEAR').toUpperCase();
-  const weeksPerUnit = WEEKS_PER_PERIOD_UNIT[unit] || WEEKS_PER_PERIOD_UNIT.YEAR;
+  const weeksPerUnit =
+    WEEKS_PER_PERIOD_UNIT[unit] || WEEKS_PER_PERIOD_UNIT.YEAR;
   const numberOfUnits = subscriptionPeriod.numberOfUnits || 1;
   if (!price || !currencyCode || !weeksPerUnit || !numberOfUnits) {
     return null;
@@ -102,20 +123,16 @@ function formatWeeklyEquivalent(product) {
   if (!Number.isFinite(value)) {
     return null;
   }
-  if (typeof Intl !== 'undefined' && typeof Intl.NumberFormat === 'function') {
-    try {
-      return new Intl.NumberFormat(undefined, {
-        style: 'currency',
-        currency: currencyCode,
-        maximumFractionDigits: 2,
-      }).format(value);
-    } catch (error) {
-      // Formatting failed, fallback to simple string
-    }
-  }
+  // Use currency code (e.g., "USD 1.15") to match RevenueCat's `priceString` format
+  // and avoid symbol-only output like "$1.15".
   return `${currencyCode} ${value.toFixed(2)}`;
 }
 
+function interpolatePrice(text = '', price = '') {
+  if (!text || !price) return text;
+  const placeholder = /{{\s*price\s*}}|{\s*price\s*}/g;
+  return text.replace(placeholder, price);
+}
 
 const SearchWebIcon = ({ color = '#5985E1', size = 24 }) => (
   <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
@@ -160,7 +177,12 @@ function Chip({ icon, label, tint, style, customIcon }) {
       {customIcon ? (
         <View style={styles.chipIconWrap}>{customIcon}</View>
       ) : (
-        <SvgIcon name={icon} size={20} style={styles.chipIconWrap} color={tint} />
+        <SvgIcon
+          name={icon}
+          size={20}
+          style={styles.chipIconWrap}
+          color={tint}
+        />
       )}
       <Text style={styles.chipText}>{label}</Text>
     </View>
@@ -211,30 +233,35 @@ export default function PaywallScreen({
   const insets = useSafeAreaInsets();
   const { t: tr } = useTranslation();
   const route = useRoute();
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const justPurchasedRef = useRef(false);
   const showOneTimeAfterClose = route.params?.showOneTimeOfferAfterClose;
   const firstLaunchPaywall = route.params?.firstLaunchPaywall;
   const afterCloseNavigateTo = route.params?.afterCloseNavigateTo;
+  const isCompactWidth = windowWidth <= 360;
+  const isCompactHeight = windowHeight <= 700;
 
   const [trialEnabled, setTrialEnabled] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('yearly');
   const [purchaseLoading, setPurchaseLoading] = useState(false);
   const [closeReady, setCloseReady] = useState(false);
-  
+
   // Refs for scrolling
   const scrollViewRef = useRef(null);
-  
+
   // Pulse animation for CTA button
   const pulseAnim = useRef(new Animated.Value(1)).current;
   const closePlaceholderPulse = useRef(new Animated.Value(0)).current;
-  
+
   // Entrance animations - start from hidden state
   const opacity = useSharedValue(0);
   const translateY = useSharedValue(80);
 
   useEffect(() => {
-    try { fetchOfferings && fetchOfferings(); } catch {}
-    
+    try {
+      fetchOfferings && fetchOfferings();
+    } catch {}
+
     // Start pulse animation
     Animated.loop(
       Animated.sequence([
@@ -266,7 +293,7 @@ export default function PaywallScreen({
       ]),
     );
     placeholderLoop.start();
-    
+
     // Trigger entrance animation on mount
     requestAnimationFrame(() => {
       opacity.value = withTiming(1, {
@@ -286,11 +313,11 @@ export default function PaywallScreen({
     useCallback(() => {
       setTrialEnabled(false);
       setSelectedPlan('yearly');
-      
+
       // Reset to initial state
       opacity.value = 0;
       translateY.value = 80;
-      
+
       // Trigger animation immediately
       requestAnimationFrame(() => {
         opacity.value = withTiming(1, {
@@ -302,7 +329,7 @@ export default function PaywallScreen({
           easing: Easing.out(Easing.ease),
         });
       });
-    }, [opacity, translateY])
+    }, [opacity, translateY]),
   );
 
   useFocusEffect(
@@ -310,9 +337,9 @@ export default function PaywallScreen({
       setCloseReady(false);
       const timer = setTimeout(() => setCloseReady(true), 5000);
       return () => clearTimeout(timer);
-    }, [])
+    }, []),
   );
-  
+
   // Animated styles
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
@@ -322,7 +349,7 @@ export default function PaywallScreen({
   const handleTrialToggle = value => {
     setTrialEnabled(value);
     setSelectedPlan(value ? 'weekly' : 'yearly');
-    
+
     // Scroll to weekly plan when trial is enabled (weekly is the last item)
     if (value && scrollViewRef.current) {
       setTimeout(() => {
@@ -337,12 +364,12 @@ export default function PaywallScreen({
   const performClose = useCallback(() => {
     clearPendingPremiumAction();
     const shouldShowOneTime =
-      showOneTimeAfterClose &&
-      !isPremium &&
-      !justPurchasedRef.current;
+      showOneTimeAfterClose && !isPremium && !justPurchasedRef.current;
     justPurchasedRef.current = false;
     if (shouldShowOneTime) {
-      AsyncStorage.setItem(ONE_TIME_OFFER_KEY, String(Date.now())).catch(() => {});
+      AsyncStorage.setItem(ONE_TIME_OFFER_KEY, String(Date.now())).catch(
+        () => {},
+      );
       if (navigation?.replace) {
         navigation.replace('OneTimeOfferScreen');
       } else {
@@ -386,7 +413,13 @@ export default function PaywallScreen({
     } else if (navigation && navigation.canGoBack()) {
       navigation.goBack();
     }
-  }, [onClose, navigation, showOneTimeAfterClose, isPremium, afterCloseNavigateTo]);
+  }, [
+    onClose,
+    navigation,
+    showOneTimeAfterClose,
+    isPremium,
+    afterCloseNavigateTo,
+  ]);
 
   const handleClose = () => {
     // Trigger closing animation
@@ -394,15 +427,19 @@ export default function PaywallScreen({
       duration: 300,
       easing: Easing.in(Easing.cubic),
     });
-    translateY.value = withTiming(80, {
-      duration: 300,
-      easing: Easing.in(Easing.ease),
-    }, (finished) => {
-      if (finished) {
-        // Navigate after animation completes
-        runOnJS(performClose)();
-      }
-    });
+    translateY.value = withTiming(
+      80,
+      {
+        duration: 300,
+        easing: Easing.in(Easing.ease),
+      },
+      finished => {
+        if (finished) {
+          // Navigate after animation completes
+          runOnJS(performClose)();
+        }
+      },
+    );
   };
 
   const handleRestore = async () => {
@@ -412,7 +449,7 @@ export default function PaywallScreen({
       const ents = info?.entitlements?.active || {};
       const hasPremium = !!ents?.Premium || isPremium;
       if (hasPremium) {
-      justPurchasedRef.current = true;
+        justPurchasedRef.current = true;
         consumePendingPremiumAction();
         handleClose();
       }
@@ -427,7 +464,11 @@ export default function PaywallScreen({
       yearly: availablePackages?.yearly,
       oneTime: availablePackages?.oneTime,
     };
-    const pkg = planMap[selectedPlan] || availablePackages?.yearly || availablePackages?.monthly || availablePackages?.weekly;
+    const pkg =
+      planMap[selectedPlan] ||
+      availablePackages?.yearly ||
+      availablePackages?.monthly ||
+      availablePackages?.weekly;
     if (!pkg) {
       onContinue && onContinue();
       return;
@@ -501,35 +542,59 @@ export default function PaywallScreen({
       textPrimary: { color: theme.text },
       textSecondary: { color: theme.textSecondary },
     }),
-    [insets.top, insets.bottom, theme, selectedPlan]
+    [insets.top, insets.bottom, theme, selectedPlan],
   );
 
   const yearlyPrice =
-    availablePackages?.yearly?.product?.priceString || tr('paywall.plans.yearly.defaultPrice');
-  const weeklyEquivalentYearlyPrice = formatWeeklyEquivalent(availablePackages?.yearly?.product);
+    availablePackages?.yearly?.product?.priceString ||
+    tr('paywall.plans.yearly.defaultPrice');
+  const yearlyOnlyTemplate = tr('paywall.plans.yearly.only', {
+    defaultValue: 'Only {{price}}',
+  });
+  const yearlyOnlyText = yearlyPrice
+    ? interpolatePrice(yearlyOnlyTemplate, yearlyPrice)
+    : yearlyOnlyTemplate;
+  const weeklyEquivalentYearlyPrice = formatWeeklyEquivalent(
+    availablePackages?.yearly?.product,
+  );
   const yearlyIntro =
     weeklyEquivalentYearlyPrice || tr('paywall.plans.yearly.defaultIntroPrice');
   const monthlyPrice =
-    availablePackages?.monthly?.product?.priceString || tr('paywall.plans.monthly.defaultPrice');
+    availablePackages?.monthly?.product?.priceString ||
+    tr('paywall.plans.monthly.defaultPrice');
   const weeklyPrice =
-    availablePackages?.weekly?.product?.priceString || tr('paywall.plans.weekly.defaultPrice');
+    availablePackages?.weekly?.product?.priceString ||
+    tr('paywall.plans.weekly.defaultPrice');
 
   // Compute Image Studio credits and period for the selected plan
   const imageStudioCredits = useMemo(() => {
-    return selectedPlan === 'yearly' ? '15000' : selectedPlan === 'monthly' ? '1200' : '400';
+    return selectedPlan === 'yearly'
+      ? '15000'
+      : selectedPlan === 'monthly'
+      ? '1200'
+      : '400';
   }, [selectedPlan]);
-  
+
   const imageStudioPeriod = useMemo(() => {
-    const periodKey = selectedPlan === 'yearly' ? 'yearly' : selectedPlan === 'monthly' ? 'monthly' : 'weekly';
+    const periodKey =
+      selectedPlan === 'yearly'
+        ? 'yearly'
+        : selectedPlan === 'monthly'
+        ? 'monthly'
+        : 'weekly';
     return tr(`paywall.features.period.${periodKey}`);
   }, [selectedPlan, tr]);
 
   return (
     <View style={[styles.container, t.containerBg]}>
       {/* GRADIENT BEHIND CONTENT (covers safe area + 384) */}
-      <AnimatedReanimated.View 
-        pointerEvents="none" 
-        style={[styles.gradientBackdrop, t.gradientBackdrop, containerAnimatedStyle]}
+      <AnimatedReanimated.View
+        pointerEvents="none"
+        style={[
+          styles.gradientBackdrop,
+          t.gradientBackdrop,
+          containerAnimatedStyle,
+        ]}
       >
         {/* Tailwind: bg-gradient-to-b from-blue-500/30 via-purple-500/20 to-transparent */}
         <LinearGradient
@@ -553,18 +618,42 @@ export default function PaywallScreen({
         />
       </AnimatedReanimated.View>
 
-      <AnimatedReanimated.View style={[styles.root, containerAnimatedStyle]}>
+      <AnimatedReanimated.View
+        style={[
+          styles.root,
+          isCompactWidth && styles.rootCompact,
+          isCompactHeight && styles.rootCompactHeight,
+          containerAnimatedStyle,
+        ]}
+      >
         <ScrollView
           ref={scrollViewRef}
           style={styles.scroll}
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={[
+            styles.scrollContent,
+            isCompactHeight && styles.scrollContentCompact,
+          ]}
           showsVerticalScrollIndicator={false}
         >
           {/* Header + “orbiting chips” cluster */}
-          <View style={styles.headerWithModels}>
-            <View style={styles.headerButtons}>
+          <View
+            style={[
+              styles.headerWithModels,
+              isCompactHeight && styles.headerWithModelsCompact,
+            ]}
+          >
+            <View
+              style={[
+                styles.headerButtons,
+                isCompactHeight && styles.headerButtonsCompact,
+              ]}
+            >
               {closeReady ? (
-                <TouchableOpacity onPress={handleClose} activeOpacity={0.8} style={styles.iconCircle}>
+                <TouchableOpacity
+                  onPress={handleClose}
+                  activeOpacity={0.8}
+                  style={styles.iconCircle}
+                >
                   <CloseIcon color="rgba(255,255,255,0.45)" size={20} />
                 </TouchableOpacity>
               ) : (
@@ -573,7 +662,9 @@ export default function PaywallScreen({
                     style={[
                       styles.placeholderDot,
                       {
-                        borderColor: dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
+                        borderColor: dark
+                          ? 'rgba(255,255,255,0.2)'
+                          : 'rgba(0,0,0,0.2)',
                         opacity: placeholderOpacity,
                         transform: [{ scale: placeholderScale }],
                       },
@@ -582,14 +673,28 @@ export default function PaywallScreen({
                 </View>
               )}
 
-              <TouchableOpacity onPress={handleRestore} activeOpacity={0.9} disabled={!!restoring} style={[styles.restoreBtn, restoring && t.restoreDisabled]}>
-              <Text style={styles.restoreText}>{restoring ? tr('paywall.restoreRestoring') : tr('paywall.restore')}</Text>
+              <TouchableOpacity
+                onPress={handleRestore}
+                activeOpacity={0.9}
+                disabled={!!restoring}
+                style={[styles.restoreBtn, restoring && t.restoreDisabled]}
+              >
+                <Text style={styles.restoreText}>
+                  {restoring
+                    ? tr('paywall.restoreRestoring')
+                    : tr('paywall.restore')}
+                </Text>
               </TouchableOpacity>
             </View>
 
             <View style={styles.centerWrap}>
               <View style={styles.chipsLayer}>
-                <Chip icon="gemini" label="Gemini" tint={COLORS.green} style={styles.chipGemini} />
+                <Chip
+                  icon="gemini"
+                  label="Gemini"
+                  tint={COLORS.green}
+                  style={styles.chipGemini}
+                />
                 <Chip
                   icon="banana"
                   label="Nano Banana"
@@ -597,15 +702,30 @@ export default function PaywallScreen({
                   style={styles.chipBanana}
                   // customIcon={<PerplexityIcon color="#EA33F7" size={16} />}
                 />
-                <Chip icon="gpt" label="ChatGPT" tint={COLORS.teal} style={styles.chipGPT} />
+                <Chip
+                  icon="gpt"
+                  label="ChatGPT"
+                  tint={COLORS.teal}
+                  style={styles.chipGPT}
+                />
                 <Chip
                   icon="claude"
                   label="Claude"
                   tint={COLORS.orange}
                   style={styles.chipClaude}
                 />
-                <Chip icon="grok" label="Grok 4" tint={COLORS.blue} style={styles.chipGrok} />
-                <Chip icon="deepseek" label="DeepSeek" tint={COLORS.blue} style={styles.chipDeepseek} />
+                <Chip
+                  icon="grok"
+                  label="Grok 4"
+                  tint={COLORS.blue}
+                  style={styles.chipGrok}
+                />
+                <Chip
+                  icon="deepseek"
+                  label="DeepSeek"
+                  tint={COLORS.blue}
+                  style={styles.chipDeepseek}
+                />
               </View>
 
               <View style={[styles.centerLogo, t.centerLogoBg]}>
@@ -614,38 +734,65 @@ export default function PaywallScreen({
             </View>
           </View>
 
-          <GradientText style={styles.title}>GPT-5.1, Grok 4, Gemini 3</GradientText>
+          <GradientText
+            style={[styles.title, isCompactHeight && styles.titleCompact]}
+          >
+            GPT-5.1, Grok 4, Gemini 3
+          </GradientText>
 
           {/* Features */}
-          <View style={styles.features}>
+          <View
+            style={[styles.features, isCompactHeight && styles.featuresCompact]}
+          >
             <View style={styles.featureRow}>
               <CreateImagesVideosIcon color="#F19E39" size={20} />
               {(() => {
-                const template = tr('paywall.features.imageStudio', { defaultValue: 'Get Image Studio {{credits}} credits {{period}}' });
+                const template = tr('paywall.features.imageStudio', {
+                  defaultValue:
+                    'Get Image Studio {{credits}} credits {{period}}',
+                });
                 const parts = template.split('{{credits}}');
                 if (parts.length === 2) {
                   const afterCredits = parts[1].split('{{period}}');
                   return (
-                    <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
-                      <Text style={[styles.featureText, t.textPrimary]}>{parts[0]}</Text>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                      }}
+                    >
+                      <Text style={[styles.featureText, t.textPrimary]}>
+                        {parts[0]}
+                      </Text>
                       <GradientText style={styles.featureText}>
                         {imageStudioCredits}
                       </GradientText>
-                      <Text style={[styles.featureText, t.textPrimary]}>{afterCredits[0]}</Text>
+                      <Text style={[styles.featureText, t.textPrimary]}>
+                        {afterCredits[0]}
+                      </Text>
                       {afterCredits[1] ? (
                         <>
-                          <Text style={[styles.featureText, t.textPrimary]}>{imageStudioPeriod}</Text>
-                          <Text style={[styles.featureText, t.textPrimary]}>{afterCredits[1]}</Text>
+                          <Text style={[styles.featureText, t.textPrimary]}>
+                            {imageStudioPeriod}
+                          </Text>
+                          <Text style={[styles.featureText, t.textPrimary]}>
+                            {afterCredits[1]}
+                          </Text>
                         </>
                       ) : (
-                        <Text style={[styles.featureText, t.textPrimary]}>{imageStudioPeriod}</Text>
+                        <Text style={[styles.featureText, t.textPrimary]}>
+                          {imageStudioPeriod}
+                        </Text>
                       )}
                     </View>
                   );
                 }
                 return (
                   <Text style={[styles.featureText, t.textPrimary]}>
-                    {template.replace('{{credits}}', imageStudioCredits).replace('{{period}}', imageStudioPeriod)}
+                    {template
+                      .replace('{{credits}}', imageStudioCredits)
+                      .replace('{{period}}', imageStudioPeriod)}
                   </Text>
                 );
               })()}
@@ -691,21 +838,25 @@ export default function PaywallScreen({
           >
             <View style={[styles.yearlyCard, t.yearlyCard]}>
               <View style={styles.badge}>
-                <Text style={styles.badgeText}>{tr('paywall.badge.bestOffer')}</Text>
+                <Text style={styles.badgeText}>
+                  {tr('paywall.badge.bestOffer')}
+                </Text>
               </View>
               <View style={styles.rowSpread}>
                 <View>
                   <Text style={[styles.planTitle, t.textPrimary]}>
                     {tr('paywall.plans.yearly.title')}
                   </Text>
-                <Text style={[styles.planSubYear, t.textPrimary]}>
-                  {yearlyPrice ? `Only ${yearlyPrice}` : tr('paywall.plans.yearly.title')}
-                </Text>
+                  <Text style={[styles.planSubYear, t.textPrimary]}>
+                    {yearlyPrice
+                      ? yearlyOnlyText
+                      : tr('paywall.plans.yearly.title')}
+                  </Text>
                 </View>
                 <View style={styles.alignEnd}>
-                <Text style={[styles.planSubDaily, t.textPrimary]}>
-                  {yearlyIntro}
-                </Text>
+                  <Text style={[styles.planSubDaily, t.textPrimary]}>
+                    {yearlyIntro}
+                  </Text>
                   <Text style={[styles.planSub, t.textSecondary]}>
                     {tr('paywall.frequency.perWeek')}
                   </Text>
@@ -716,7 +867,8 @@ export default function PaywallScreen({
 
           {/* Monthly */}
           {!firstLaunchPaywall && (
-            <TouchableOpacity style={[styles.weeklyCard, t.monthlyCard]}
+            <TouchableOpacity
+              style={[styles.weeklyCard, t.monthlyCard]}
               onPress={() => handleSelectPlan('monthly')}
               activeOpacity={0.8}
             >
@@ -742,39 +894,36 @@ export default function PaywallScreen({
           )}
 
           {/* Weekly */}
-          <TouchableOpacity 
+          <TouchableOpacity
             style={[styles.weeklyCard, t.weeklyCard]}
             onPress={() => handleSelectPlan('weekly')}
             activeOpacity={0.8}
           >
-              <View style={styles.rowSpread}>
-                <View>
-                  <Text style={[styles.planTitle, t.textPrimary]}>
-                    {tr('paywall.plans.weekly.title')}
-                  </Text>
-                  <Text style={[styles.planSub, t.textSecondary]}>
-                    {tr('paywall.plans.weekly.subtitle')}
-                  </Text>
-                </View>
-                <View style={styles.alignEnd}>
-                  <Text style={[styles.planPrice, t.textPrimary]}>
-                    {weeklyPrice}
-                  </Text>
-                  <Text style={[styles.planSub, t.textSecondary]}>
-                    {tr('paywall.frequency.perWeek')}
-                  </Text>
-                </View>
+            <View style={styles.rowSpread}>
+              <View>
+                <Text style={[styles.planTitle, t.textPrimary]}>
+                  {tr('paywall.plans.weekly.title')}
+                </Text>
+                <Text style={[styles.planSub, t.textSecondary]}>
+                  {tr('paywall.plans.weekly.subtitle')}
+                </Text>
               </View>
-            </TouchableOpacity>
+              <View style={styles.alignEnd}>
+                <Text style={[styles.planPrice, t.textPrimary]}>
+                  {weeklyPrice}
+                </Text>
+                <Text style={[styles.planSub, t.textSecondary]}>
+                  {tr('paywall.frequency.perWeek')}
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
         </ScrollView>
 
         {/* Footer */}
-        <View style={[styles.footer, t.bgOnly]}> 
+        <View style={[styles.footer, t.bgOnly]}>
           <Animated.View
-            style={[
-              styles.ctaWrapper,
-              { transform: [{ scale: pulseAnim }] },
-            ]}
+            style={[styles.ctaWrapper, { transform: [{ scale: pulseAnim }] }]}
           >
             <TouchableOpacity
               activeOpacity={0.9}
@@ -793,18 +942,20 @@ export default function PaywallScreen({
           <View style={styles.legalRow}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => Linking.openURL('https://aicloudsolutions.app/terms')}
+              onPress={() =>
+                Linking.openURL('https://aicloudsolutions.app/terms')
+              }
             >
               <Text style={[styles.legalLink, t.textSecondary]}>
                 {tr('paywall.legal.terms')}
               </Text>
             </TouchableOpacity>
-            <Text style={[styles.legalDivider, t.textSecondary]}>
-              |
-            </Text>
+            <Text style={[styles.legalDivider, t.textSecondary]}>|</Text>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => Linking.openURL('https://aicloudsolutions.app/privacy')}
+              onPress={() =>
+                Linking.openURL('https://aicloudsolutions.app/privacy')
+              }
             >
               <Text style={[styles.legalLink, t.textSecondary]}>
                 {tr('paywall.legal.privacy')}
@@ -828,6 +979,12 @@ const styles = StyleSheet.create({
     // IMPORTANT: keep transparent so the gradient behind is visible
     backgroundColor: 'transparent',
   },
+  rootCompact: {
+    paddingHorizontal: 12,
+  },
+  rootCompactHeight: {
+    paddingTop: Platform.select({ ios: 6, android: 6 }),
+  },
 
   // Gradient behind content; sibling FIRST so content draws above it
   gradientBackdrop: {
@@ -849,10 +1006,11 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
 
-  scroll: { backgroundColor: 'transparent' },
+  scroll: { backgroundColor: 'transparent', flex: 1 },
   scrollContent: { paddingBottom: 16 },
+  scrollContentCompact: { paddingBottom: 10 },
 
-  headerWithModels: { marginBottom: 16 },
+  headerWithModelsCompact: { marginBottom: 12 },
   headerButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -860,6 +1018,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 4,
   },
+  headerButtonsCompact: { marginBottom: 14 },
   iconCircle: {
     width: 36,
     height: 36,
@@ -940,6 +1099,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     fontFamily: 'Lato-Bold',
   },
+  titleCompact: { marginBottom: 12 },
 
   // Gradient text styles
   gradientTextContainer: {
@@ -957,6 +1117,7 @@ const styles = StyleSheet.create({
   },
 
   features: { marginBottom: 26, gap: 10 },
+  featuresCompact: { marginBottom: 18, gap: 8 },
   featureRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   featureText: { fontSize: 16, fontFamily: 'Lato-Regular' },
 
@@ -994,18 +1155,19 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   alignEnd: { alignItems: 'flex-end' },
-
   cardTitle: { fontSize: 16, fontWeight: '700', fontFamily: 'Lato-Bold' },
   cardSubtitle: { fontSize: 13, marginTop: 2, fontFamily: 'Lato-Regular' },
-
   planTitle: { fontSize: 18, fontWeight: '700', fontFamily: 'Lato-Bold' },
   planSubDaily: { fontSize: 16, marginTop: 4, fontFamily: 'Lato-Regular' },
   planSub: { fontSize: 13, marginTop: 2, fontFamily: 'Lato-Regular' },
-  planSubYear: { fontSize: 16, marginTop: 4, fontWeight: '800', fontFamily: 'Lato-Bold' },
+  planSubYear: {
+    fontSize: 16,
+    marginTop: 4,
+    fontWeight: '800',
+    fontFamily: 'Lato-Bold',
+  },
   planPrice: { fontSize: 18, fontWeight: '700', fontFamily: 'Lato-Bold' },
-
   weeklyCard: { borderRadius: R, padding: 16, marginBottom: 12 },
-
   footer: { paddingTop: 10, paddingBottom: 14 },
   ctaWrapper: {
     width: '100%',

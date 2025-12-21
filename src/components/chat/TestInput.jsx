@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect, useCallback, memo, useRef, useContext } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions, Modal } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 // --- NEW IMPORT ---
@@ -152,6 +152,14 @@ function TestInput({
     return !streaming && !offline && (hasText || hasImages);
   }, [streaming, offline, value, attachments]);
 
+  const useLatoForInput = useMemo(() => {
+    const text = value ?? '';
+    for (let i = 0; i < text.length; i++) {
+      if (text.charCodeAt(i) > 0x7f) return false;
+    }
+    return true;
+  }, [value]);
+
   const showCounter = useMemo(() => value && value.length >= Math.max(0, maxLength - 300), [value, maxLength]);
 
   const backdropAnimatedStyle = useAnimatedStyle(() => ({
@@ -226,83 +234,94 @@ function TestInput({
   return (
     <Animated.View ref={wrapperRef} onLayout={measureWrapper} style={[styles.wrapper, { paddingBottom: Math.max(8, insets.bottom) }]}>
       {renderMenu && (
-        <>
-          <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, backdropAnimatedStyle]}>
-            <TouchableOpacity
-              activeOpacity={1}
-              onPress={() => safe(toggleActions)}
-              style={StyleSheet.absoluteFill}
-            />
-          </Animated.View>
+        <Modal
+          transparent
+          visible
+          statusBarTranslucent
+          onRequestClose={() => safe(toggleActions)}
+        >
+          <View style={styles.modalRoot}>
+            <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, backdropAnimatedStyle]}>
+              <TouchableOpacity
+                activeOpacity={1}
+                onPress={() => safe(toggleActions)}
+                style={StyleSheet.absoluteFill}
+              />
+            </Animated.View>
 
-          {anchor && (() => {
-            const menuWidth = wrapperRect.width;
-            const halfMenuWidth = menuWidth / 2;
-            return (
-              <Animated.View pointerEvents="box-none" style={[styles.popoverContainer, popoverAnimatedStyle, {
-                bottom: (MENU_ITEM_HEIGHT * 3 + 2) + 36 - 64,
-                left: Math.max(8, Math.min(anchor.x - wrapperRect.x + anchor.width / 2 - halfMenuWidth, wrapperRect.width - menuWidth - 8)),
-                width: menuWidth,
-              }]}>
-                <View style={styles.menuBox}>
-                  <Animated.View style={menuItem1Style}>
-                    <TouchableOpacity
-                      style={styles.menuItem}
-                      onPress={() => { safe(toggleActions); safe(onCreateImagesPress); }}
-                      accessibilityRole="button"
-                      accessibilityLabel={t('chat.createImages')}
-                      activeOpacity={0.9}
-                    >
-                      <View style={[styles.menuIconContainer, styles.iconViolet]}>
-                        <PaletteIcon color="#8A2BE2" size={28} />
-                      </View>
-                      <View style={styles.menuTextContainer}>
-                        <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.createImages')}</Text>
-                        <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.generateAiArtwork')}</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </Animated.View>
+            {anchor && (() => {
+              const menuWidth = wrapperRect.width;
+              const halfMenuWidth = menuWidth / 2;
+              const fallbackBottom = (MENU_ITEM_HEIGHT * 3 + 2) + 36 - 64;
+              const bottomOffset = wrapperRect.y > 0
+                ? Math.max(8, win.height - wrapperRect.y + 8)
+                : fallbackBottom;
+              return (
+                <Animated.View pointerEvents="box-none" style={[styles.popoverContainer, popoverAnimatedStyle, {
+                  bottom: bottomOffset,
+                  left: Math.max(8, Math.min(anchor.x + anchor.width / 2 - halfMenuWidth, win.width - menuWidth - 8)),
+                  width: menuWidth,
+                }]}>
+                  <View style={styles.menuBox}>
+                    <Animated.View style={menuItem1Style}>
+                      <TouchableOpacity
+                        style={styles.menuItem}
+                        onPress={() => { safe(toggleActions); safe(onCreateImagesPress); }}
+                        accessibilityRole="button"
+                        accessibilityLabel={t('chat.createImages')}
+                        activeOpacity={0.9}
+                      >
+                        <View style={[styles.menuIconContainer, styles.iconViolet]}>
+                          <PaletteIcon color="#8A2BE2" size={28} />
+                        </View>
+                        <View style={styles.menuTextContainer}>
+                          <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.createImages')}</Text>
+                          <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.generateAiArtwork')}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    </Animated.View>
 
-                  <Animated.View style={menuItem2Style}>
-                    <TouchableOpacity
-                      style={styles.menuItem}
-                      onPress={() => { safe(toggleActions); safe(onOpenCameraPress); }}
-                      accessibilityRole="button"
-                      accessibilityLabel={t('chat.camera')}
-                      activeOpacity={0.9}
-                    >
-                      <View style={[styles.menuIconContainer, styles.iconCyan]}>
-                        <CameraIcon color="#00BCD4" size={28} />
-                      </View>
-                      <View style={styles.menuTextContainer}>
-                        <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.camera')}</Text>
-                        <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.takeOrSelectPhotos')}</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </Animated.View>
+                    <Animated.View style={menuItem2Style}>
+                      <TouchableOpacity
+                        style={styles.menuItem}
+                        onPress={() => { safe(toggleActions); safe(onOpenCameraPress); }}
+                        accessibilityRole="button"
+                        accessibilityLabel={t('chat.camera')}
+                        activeOpacity={0.9}
+                      >
+                        <View style={[styles.menuIconContainer, styles.iconCyan]}>
+                          <CameraIcon color="#00BCD4" size={28} />
+                        </View>
+                        <View style={styles.menuTextContainer}>
+                          <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.camera')}</Text>
+                          <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.takeOrSelectPhotos')}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    </Animated.View>
 
-                  <Animated.View style={menuItem3Style}>
-                    <TouchableOpacity
-                      style={[styles.menuItem, styles.menuItemLast]}
-                      onPress={() => { safe(toggleActions); safe(handleWebSearchPress); }}
-                      accessibilityRole="button"
-                      accessibilityLabel={t('chat.webSearch.toggleLabel', { defaultValue: 'Search the web' })}
-                      activeOpacity={0.9}
-                    >
-                      <View style={[styles.menuIconContainer, styles.iconOrange]}>
-                        <ExploreIcon color="#FF9800" size={28} />
-                      </View>
-                      <View style={styles.menuTextContainer}>
-                        <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.webSearch.title', { defaultValue: 'Web search' })}</Text>
-                        <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.webSearch.subtitle', { defaultValue: 'Find recent info' })}</Text>
-                      </View>
-                    </TouchableOpacity>
-                  </Animated.View>
-                </View>
-              </Animated.View>
-            );
-          })()}
-        </>
+                    <Animated.View style={menuItem3Style}>
+                      <TouchableOpacity
+                        style={[styles.menuItem, styles.menuItemLast]}
+                        onPress={() => { safe(toggleActions); safe(handleWebSearchPress); }}
+                        accessibilityRole="button"
+                        accessibilityLabel={t('chat.webSearch.toggleLabel', { defaultValue: 'Search the web' })}
+                        activeOpacity={0.9}
+                      >
+                        <View style={[styles.menuIconContainer, styles.iconOrange]}>
+                          <ExploreIcon color="#FF9800" size={28} />
+                        </View>
+                        <View style={styles.menuTextContainer}>
+                          <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.webSearch.title', { defaultValue: 'Web search' })}</Text>
+                          <Text style={styles.menuSubLabel} numberOfLines={1}>{t('chat.webSearch.subtitle', { defaultValue: 'Find recent info' })}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    </Animated.View>
+                  </View>
+                </Animated.View>
+              );
+            })()}
+          </View>
+        </Modal>
       )}
 
       <View style={styles.inputContainer}>
@@ -327,7 +346,7 @@ function TestInput({
             onChangeText={onChange}
             placeholder={t('chat.messagePlaceholder')}
             placeholderTextColor={colors.placeholder}
-            style={[styles.input, { maxHeight: maxInputHeight }]}
+            style={[styles.input, useLatoForInput && styles.inputLato, { maxHeight: maxInputHeight }]}
             editable={!streaming && !offline && !isRecording}
             multiline
             onContentSizeChange={handleContentSizeChange}
@@ -419,6 +438,7 @@ const THUMB = 48;
 
 const styles = StyleSheet.create({
   wrapper: { backgroundColor: '#000000', paddingHorizontal: 12, paddingTop: 8, position: 'relative' },
+  modalRoot: { flex: 1 },
   backdrop: { backgroundColor: 'rgba(0,0,0,0.2)', zIndex: 998 },
   popoverContainer: { position: 'absolute', zIndex: 1000, elevation: 50, padding: 12 },
   menuBox: {
@@ -469,13 +489,15 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 16,
     color: colors.text,
-    fontFamily: 'Lato-Regular',
     paddingHorizontal: 0,
     paddingVertical: 8,
     paddingRight: 14,
     textAlignVertical: 'top',
     includeFontPadding: false,
     minHeight: 40
+  },
+  inputLato: {
+    fontFamily: 'Lato-Regular',
   },
 
   iconsRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 0 },

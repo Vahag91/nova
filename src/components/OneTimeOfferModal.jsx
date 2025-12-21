@@ -17,6 +17,7 @@ import {
   Linking,
   Animated,
   TouchableOpacity,
+  useWindowDimensions,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -128,6 +129,7 @@ export default function OneTimeOfferModal({
 }) {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
+  const { width: windowWidth } = useWindowDimensions();
   const subscription = useContext(SubscriptionContext);
   const { availablePackages, purchasePackage, restorePurchases } =
     subscription || {};
@@ -135,6 +137,7 @@ export default function OneTimeOfferModal({
   const [restoring, setRestoring] = useState(false);
   const [closeReady, setCloseReady] = useState(false);
   const closePlaceholderPulse = useRef(new Animated.Value(0)).current;
+  const isCompactWidth = windowWidth <= 360;
 
   const oneTimePackage = availablePackages?.oneTime;
   const yearlyPackage = availablePackages?.yearly;
@@ -521,7 +524,7 @@ useEffect(() => {
             </Pressable>
 
             {/* Footer Links */}
-            <View style={styles.termsInline}>
+            <View style={[styles.termsInline, isCompactWidth && styles.termsStack]}>
               <Pressable
                 onPress={() => Linking.openURL('https://aicloudsolutions.app/terms')}
                 hitSlop={8}
@@ -530,7 +533,7 @@ useEffect(() => {
                   {t('oneTimeOffer.termsOfUse', { defaultValue: 'Terms of Use' })}
                 </Text>
               </Pressable>
-              <Text style={styles.footerLinkSeparator}>|</Text>
+              {!isCompactWidth && <Text style={styles.footerLinkSeparator}>|</Text>}
               <Pressable
                 onPress={() => Linking.openURL('https://aicloudsolutions.app/privacy')}
                 hitSlop={8}
@@ -699,7 +702,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#191C29', // surface-dark
     borderRadius: 12,
     paddingVertical: 20,
-    paddingHorizontal: 24,
+    paddingHorizontal: 14,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#A855F7',
@@ -710,7 +713,7 @@ const styles = StyleSheet.create({
   },
   lifetimeButtonText: {
     color: '#FFFFFF',
-    fontSize: 20,
+    fontSize: 19,
     fontWeight: '700',
     // fontFamily: 'Lato-Bold',
   },
@@ -719,14 +722,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 24,
+    flexWrap: 'wrap',
+    gap: 8,
     marginTop: 16,
     paddingBottom: 8,
+  },
+  termsStack: {
+    flexDirection: 'column',
+    gap: 6,
+    paddingHorizontal: 16,
   },
   footerLink: {
     fontSize: 12,
     fontFamily: 'Lato-Regular',
     color: '#94A3B8', // muted-dark
+    textAlign: 'center',
   },
   footerLinkSeparator: {
     fontSize: 12,

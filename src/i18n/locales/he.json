@@ -74,7 +74,13 @@
     "assistants": "עוזרים",
     "imagesStudio": "Image Studio",
     "settings": "הגדרות",
-    "recentChats": "צ'אטים אחרונים"
+    "recentChats": "צ'אטים אחרונים",
+    "proFeatures": "תכונות פרו",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "קבל PRO",
+      "subtitle": "כל תכונות ה-AI"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "מדיניות פרטיות",
     "hero": {
       "label": "הצעה מיוחדת",
-      "title": "גישה מועדפת וללא הגבלה",
+      "title": "גישה ללא הגבלה\nותכונות Pro",
       "upgrade": "שדרג",
       "manage": "נהל את התוכנית"
     },
@@ -561,6 +567,10 @@
       "stats": "500K+ משתמשים סומכים עלינו",
       "rating": "4.9 / 5",
       "button": "התחלה"
+    },
+    "buttons": {
+      "continue": "המשך",
+      "start": "בואו נתחיל"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} מטבעות",
       "defaultName": "חבילה {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} מטבעות"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "שנתי",
         "only": "רק {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "חודשי",

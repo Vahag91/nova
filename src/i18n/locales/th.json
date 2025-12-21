@@ -74,7 +74,13 @@
     "assistants": "ผู้ช่วย",
     "imagesStudio": "Image Studio",
     "settings": "การตั้งค่า",
-    "recentChats": "แชทล่าสุด"
+    "recentChats": "แชทล่าสุด",
+    "proFeatures": "ฟีเจอร์โปร",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "รับ PRO",
+      "subtitle": "ฟีเจอร์ AI ทั้งหมด"
+    }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
@@ -280,7 +286,7 @@
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
     "hero": {
       "label": "ข้อเสนอพิเศษ",
-      "title": "สิทธิ์เข้าถึงก่อนและไม่จำกัด",
+      "title": "เข้าถึงได้ไม่จำกัด\n& ฟีเจอร์ระดับโปร",
       "upgrade": "อัปเกรด",
       "manage": "จัดการแพ็กเกจ"
     },
@@ -561,6 +567,10 @@
       "stats": "มีผู้ใช้กว่า 500k+ ราย",
       "rating": "4.9 / 5",
       "button": "เริ่มเลย"
+    },
+    "buttons": {
+      "continue": "ดำเนินการต่อ",
+      "start": "เริ่มกันเลย"
     }
   },
   "coinStore": {
@@ -582,7 +592,7 @@
     "pack": {
       "tokensLabel": "{{credits}} โทเค็น",
       "defaultName": "แพ็ก {{index}}",
-      "unknownPrice": "$—",
+      "unknownPrice": "USD —",
       "creditsLabel": "{{credits}} โทเค็น"
     },
     "premium": {
@@ -628,7 +638,7 @@
         "title": "รายปี",
         "only": "เพียง {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "$1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "รายเดือน",

@@ -146,8 +146,8 @@ const MessageBubbleImpl = function MessageBubble({
   streamingMessageId,
 }) {
   const { t } = useTranslation();
-  const capsuleRadius = 999;
-  const stackRadius = capsuleRadius;
+  const capsuleRadius = 22;
+  const stackRadius = 10;
   const copyLabel = t('chat.actions.copy', { defaultValue: 'Copy' });
   const shareLabel = t('chat.actions.share', { defaultValue: 'Share' });
   const regenerateLabel = t('chat.actions.regenerate', {
@@ -170,14 +170,14 @@ const MessageBubbleImpl = function MessageBubble({
         ? {
             borderTopLeftRadius: capsuleRadius,
             borderTopRightRadius: isFirstInGroup ? capsuleRadius : stackRadius,
-            borderBottomRightRadius: capsuleRadius,
-            borderBottomLeftRadius: isLastInGroup ? capsuleRadius : stackRadius,
+            borderBottomRightRadius: isLastInGroup ? capsuleRadius : stackRadius,
+            borderBottomLeftRadius: capsuleRadius,
           }
         : {
             borderTopRightRadius: capsuleRadius,
             borderTopLeftRadius: isFirstInGroup ? capsuleRadius : stackRadius,
-            borderBottomLeftRadius: capsuleRadius,
-            borderBottomRightRadius: isLastInGroup ? capsuleRadius : stackRadius,
+            borderBottomLeftRadius: isLastInGroup ? capsuleRadius : stackRadius,
+            borderBottomRightRadius: capsuleRadius,
           },
     [isUser, isFirstInGroup, isLastInGroup],
   );
@@ -515,7 +515,7 @@ const styles = StyleSheet.create({
   modelText: { fontSize: 10, color: colors.textSecondary },
   metaTime: { fontSize: 10, color: colors.textMuted },
 
-  actionRow: { flexDirection: 'row', gap: 12, marginTop: 6 },
+  actionRow: { flexDirection: 'row', gap: 12, marginTop: -2, marginLeft: 10 },
   actionButton: {
     paddingHorizontal: 12,
     paddingVertical: 8,
