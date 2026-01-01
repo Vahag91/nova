@@ -15,7 +15,7 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 import Haptic from 'react-native-haptic-feedback';
 import { useThreadsStore } from '../state/useThreadsStore';
-import { betterPreview, summaryPreview } from '../lib/format';
+import { betterPreview, firstUserPreview, summaryPreview } from '../lib/format';
 import { colors } from '../styles/colors';
 import SvgIcon from '../components/SvgIcon';
 import { useTranslation } from 'react-i18next';
@@ -69,7 +69,7 @@ export default function HistorySimple({ navigation }) {
       -1,
       true
     );
-  }, []);
+  }, [pulseAnim]);
 
   const pulseStyle = useAnimatedStyle(() => ({
     transform: [{ scale: 1 + pulseAnim.value * 0.1 }],
@@ -97,7 +97,7 @@ export default function HistorySimple({ navigation }) {
     return nonEmpty.filter(t => {
       const summaryText = t.summary?.trim();
       const summaryBased = summaryText ? summaryPreview(summaryText) : '';
-      const previewSource = summaryBased || betterPreview(t.messages);
+      const previewSource = firstUserPreview(t.messages) || summaryBased || betterPreview(t.messages);
       const preview = previewSource.toLowerCase();
       return preview.includes(needle);
     });
@@ -197,7 +197,7 @@ function onRename(thread) {
 const renderItem = ({ item: thread }) => {
   const summaryText = thread.summary?.trim();
   const summaryBased = summaryText ? summaryPreview(summaryText) : '';
-  const rawPreview = summaryBased || betterPreview(thread.messages);
+  const rawPreview = firstUserPreview(thread.messages) || summaryBased || betterPreview(thread.messages);
   const preview = rawPreview || t('history.newChat');
     return (
       <Swipeable

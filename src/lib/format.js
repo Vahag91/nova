@@ -22,7 +22,7 @@ export function stripImageArtifacts(input) {
     imageCount += 1;
     return '';
   });
-  const withoutDanglingMarkdown = markless.replace(/!\[([^\]]*)\]\((?=[^\)]*$)/g, () => {
+  const withoutDanglingMarkdown = markless.replace(/!\[([^\]]*)\]\((?=[^)]*$)/g, () => {
     imageCount += 1;
     return '';
   });
@@ -83,6 +83,26 @@ export function summaryPreview(summary) {
   }
 
   return stripped || '';
+}
+
+// Preview based on the first meaningful user message in the thread
+export function firstUserPreview(messages) {
+  if (!messages?.length) return '';
+
+  for (let i = 0; i < messages.length; i += 1) {
+    const message = messages[i];
+    if (message?.role !== 'user') continue;
+
+    const candidate = buildCandidate(message);
+    if (candidate.previewText) {
+      return truncatePreview(candidate.previewText);
+    }
+    if (candidate.totalImages > 0) {
+      return 'Image';
+    }
+  }
+
+  return '';
 }
 
 const MAX_PREVIEW_LENGTH = 80;
@@ -151,7 +171,7 @@ function stripSimpleMarkdown(text) {
     .replace(/_([^_]+)_/g, '$1')
     .replace(/~~([^~]+)~~/g, '$1')
     .replace(/^>\s+/gm, '')
-    .replace(/^[\-\*\+]\s+/gm, '')
+    .replace(/^[-*+]\s+/gm, '')
     .replace(/#{1,6}\s+/gm, '')
     .replace(/\s+/g, ' ')
     .trim();

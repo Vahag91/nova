@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import HeroVideo from './HeroVideo';
 
-const SidebarCreativeStudioBanner = ({ onPress, style, restartKey }) => {
+const SidebarCreativeStudioBanner = ({ onPress, style, restartKey, compact = false }) => {
   const { t } = useTranslation();
 
   
@@ -18,21 +18,21 @@ const SidebarCreativeStudioBanner = ({ onPress, style, restartKey }) => {
       android_ripple={{ color: '#ffffff20' }}
       onPress={onPress}
     >
-      <View style={styles.inner}>
+      <View style={[styles.inner, compact && styles.innerCompact]}>
         <HeroVideo style={styles.heroVideo} restartKey={restartKey} />
         <View style={styles.overlay} />
-        <View style={styles.content}>
-          <View style={styles.textColumn}>
-            <Text style={styles.label}>
+        <View style={[styles.content, compact && styles.contentCompact]}>
+          <View style={[styles.textColumn, compact && styles.textColumnCompact]}>
+            <Text style={[styles.label, compact && styles.labelCompact]}>
               {t('sidebarStudioBanner.label', { defaultValue: 'Studio' }).toUpperCase()}
             </Text>
-            <Text style={styles.subtitle}>
+            <Text style={[styles.subtitle, compact && styles.subtitleCompact]} numberOfLines={compact ? 2 : 3}>
               {t('sidebarStudioBanner.subtitle', { defaultValue: 'Generate, refine, and publish visual assets in one place.' })}
             </Text>
           </View>
           <View style={styles.ctaRow}>
-            <View style={styles.cta}>
-              <Text style={styles.ctaLabel}>
+            <View style={[styles.cta, compact && styles.ctaCompact]}>
+              <Text style={[styles.ctaLabel, compact && styles.ctaLabelCompact]}>
                 {t('sidebarStudioBanner.cta', { defaultValue: 'Open' })}
               </Text>
             </View>
@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
     minHeight: 120,
     justifyContent: 'center',
   },
+  innerCompact: {
+    minHeight: 96,
+  },
   heroVideo: {
     position: 'absolute',
     top: 0,
@@ -78,17 +81,30 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
   },
+  contentCompact: {
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+  },
   textColumn: {
     flex: 1,
     gap: 8,
     maxWidth: '68%',
     marginTop: 8,
   },
+  textColumnCompact: {
+    gap: 6,
+    maxWidth: '72%',
+    marginTop: 6,
+  },
   label: {
     color: '#FFFFFF',
     fontSize: 14,
     fontFamily: 'Lato-Bold',
     letterSpacing: 2,
+  },
+  labelCompact: {
+    fontSize: 12,
+    letterSpacing: 1.6,
   },
   title: {
     fontSize: 18,
@@ -105,6 +121,11 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     maxWidth: '80%',
   },
+  subtitleCompact: {
+    fontSize: 11,
+    lineHeight: 14,
+    maxWidth: '100%',
+  },
   ctaRow: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -117,11 +138,19 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
 
   },
+  ctaCompact: {
+    marginTop: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
   ctaLabel: {
     color: '#FFFFFF',
     fontSize: 12,
     fontFamily: 'Lato-Bold',
     letterSpacing: 0.5,
+  },
+  ctaLabelCompact: {
+    fontSize: 11,
   },
 });
 

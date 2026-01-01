@@ -49,6 +49,7 @@ import {
 } from '../navigation/rootNavigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ONE_TIME_OFFER_KEY } from '../constants/storageKeys';
+import { ONE_TIME_OFFER_PAYWALL_ENABLED } from '../constants/featureFlags';
 // Custom SVG Icons
 const CloseIcon = ({ color = '#FFFFFF', size = 24 }) => (
   <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
@@ -364,7 +365,10 @@ export default function PaywallScreen({
   const performClose = useCallback(() => {
     clearPendingPremiumAction();
     const shouldShowOneTime =
-      showOneTimeAfterClose && !isPremium && !justPurchasedRef.current;
+      ONE_TIME_OFFER_PAYWALL_ENABLED &&
+      showOneTimeAfterClose &&
+      !isPremium &&
+      !justPurchasedRef.current;
     justPurchasedRef.current = false;
     if (shouldShowOneTime) {
       AsyncStorage.setItem(ONE_TIME_OFFER_KEY, String(Date.now())).catch(

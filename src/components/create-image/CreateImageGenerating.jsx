@@ -17,6 +17,7 @@ import { normalizeImageUri } from '../../lib/imageUtils';
 import { toLocalPath } from '../../lib/imageDownloader';
 import { useTranslation } from 'react-i18next';
 import RateUsService from '../../services/RateUsService';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const STEP = {
   APPLYING: 'applying',
@@ -43,6 +44,7 @@ export default function CreateImageGenerating({
   onClose,
 }) {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
   const createJob = useImagesStore(s => s.createJob);
 
   const [step, setStep] = useState(STEP.APPLYING);
@@ -306,6 +308,9 @@ const handleRetry = () => {
     return 3 / 4;
   }, [requestedSize]);
 
+  const topPad = Math.max(18, (insets?.top || 0) + 12);
+  const bottomPad = Math.max(14, (insets?.bottom || 0) + 10);
+
   return (
     <>
       <Modal visible={visible} transparent animationType="fade" onRequestClose={handleClose}>
@@ -394,75 +399,107 @@ const handleRetry = () => {
         {step === STEP.RESULT && (
           <View style={styles.resultContainer}>
             <LinearGradient
-              colors={['rgba(10,13,20,0.95)', 'rgba(9,15,22,0.85)', 'rgba(7,10,18,0.95)']}
-              style={styles.resultBackground}
+              colors={['#05050A', '#0B0B12', '#05050A']}
+              style={StyleSheet.absoluteFillObject}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
             />
 
-            <View style={styles.resultContent}>
-              <Pressable
-                onPress={handleClose}
-                style={styles.closeBadge}
-                hitSlop={10}
-                accessibilityRole="button"
-                accessibilityLabel={t('createImageGenerating.accessibility.close')}
-              >
-                <Text style={styles.closeIcon}>×</Text>
-              </Pressable>
-              <View style={[styles.previewWrap, { aspectRatio: previewAspectRatio }]}>
-                <View style={styles.previewBorder} />
-                <Image
-                  source={{ uri: imageUri || FALLBACK_IMAGE }}
-                  resizeMode="contain"
-                  style={styles.resultImage}
-                />
+            <View style={[styles.resultContent, { paddingTop: topPad, paddingBottom: bottomPad }]}>
+              <View style={styles.resultTop}>
+                <Pressable
+                  onPress={handleClose}
+                  style={styles.closeBadge}
+                  hitSlop={10}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('createImageGenerating.accessibility.close')}
+                >
+                  <SvgIcon name="close" size={22} color="rgba(255,255,255,0.92)" />
+                </Pressable>
               </View>
 
-              <View style={styles.resultMeta}>
-                <Text style={styles.resultTitle}>{t('createImageGenerating.result.complete')}</Text>
-                {payload?.originalPrompt ? (
-                  <Text style={styles.resultPrompt} numberOfLines={2}>
-                    “{payload.originalPrompt.trim()}”
-                  </Text>
-                ) : null}
-                <View style={styles.resultTags}>
-                  {hasStyle && styleLabel ? (
-                    <View style={styles.tag}>
-                      <Text style={styles.tagText}>{styleLabel}</Text>
-                    </View>
+              <View style={styles.resultMain}>
+                <View style={styles.previewOuter}>
+                  <View style={[styles.previewWrap, { aspectRatio: previewAspectRatio }]}>
+                    <Image
+                      source={{ uri: imageUri || FALLBACK_IMAGE }}
+                      resizeMode="cover"
+                      style={styles.resultImage}
+                    />
+                    <LinearGradient
+                      colors={['rgba(0,0,0,0.42)', 'rgba(0,0,0,0.0)']}
+                      start={{ x: 0.5, y: 1 }}
+                      end={{ x: 0.5, y: 0 }}
+                      style={styles.imageOverlay}
+                      pointerEvents="none"
+                    />
+                    <View style={styles.previewBorder} pointerEvents="none" />
+                  </View>
+                </View>
+
+                <View style={styles.resultMeta}>
+                  <Text style={styles.resultTitle}>{t('createImageGenerating.result.complete')}</Text>
+                  {payload?.originalPrompt ? (
+                    <Text style={styles.resultPrompt} numberOfLines={2}>
+                      “{payload.originalPrompt.trim()}”
+                    </Text>
                   ) : null}
-                  {payload?.size ? (
-                    <View style={styles.tag}>
-                      <Text style={styles.tagText}>{payload.size}</Text>
+                  {requestedSize ? (
+                    <View style={styles.sizePill}>
+                      <Text style={styles.sizePillText}>{requestedSize}</Text>
                     </View>
                   ) : null}
                 </View>
+
+                <View style={styles.resultActionsRow}>
+                  <View style={styles.actionItem}>
+                    <Pressable
+                      style={({ pressed }) => [
+                        styles.iconButton,
+                        styles.iconButtonDestructive,
+                        pressed && styles.iconButtonPressed,
+                      ]}
+                      onPress={handleDelete}
+                      hitSlop={10}
+                      accessibilityLabel={t('imageViewer.accessibility.delete')}
+                    >
+                      <SvgIcon name="delete" size={22} color="#FF7B7B" />
+                    </Pressable>
+                    <Text style={styles.actionLabel}>{t('imageViewer.actions.delete')}</Text>
+                  </View>
+                  <View style={styles.actionItem}>
+                    <Pressable
+                      style={({ pressed }) => [
+                        styles.iconButton,
+                        pressed && styles.iconButtonPressed,
+                      ]}
+                      onPress={handleSave}
+                      hitSlop={10}
+                      accessibilityLabel={t('imageViewer.accessibility.save')}
+                    >
+                      <SvgIcon name="download" size={22} color="rgba(255,255,255,0.92)" />
+                    </Pressable>
+                    <Text style={styles.actionLabel}>{t('imageViewer.actions.save')}</Text>
+                  </View>
+                  <View style={styles.actionItem}>
+                    <Pressable
+                      style={({ pressed }) => [
+                        styles.iconButton,
+                        styles.iconButtonPrimary,
+                        pressed && styles.iconButtonPressed,
+                      ]}
+                      onPress={handleShare}
+                      hitSlop={10}
+                      accessibilityLabel={t('imageViewer.accessibility.share')}
+                    >
+                      <SvgIcon name="share-upload" size={22} color="#FFFFFF" />
+                    </Pressable>
+                    <Text style={styles.actionLabel}>{t('imageViewer.actions.share')}</Text>
+                  </View>
+                </View>
               </View>
 
-              <View style={styles.resultActionsRow}>
-                <Pressable
-                  style={[styles.iconButton, styles.iconButtonDestructive]}
-                  onPress={handleDelete}
-                  hitSlop={8}
-                >
-                  <SvgIcon name="delete" size={22} color="#FFD0D0" />
-                </Pressable>
-                <Pressable
-                  style={styles.iconButton}
-                  onPress={handleSave}
-                  hitSlop={8}
-                >
-                  <SvgIcon name="download" size={22} color="#DDE4FF" />
-                </Pressable>
-                <Pressable
-                  style={[styles.iconButton, styles.iconButtonPrimary]}
-                  onPress={handleShare}
-                  hitSlop={8}
-                >
-                  <SvgIcon name="share-upload" size={22} color="#FFFFFF" />
-                </Pressable>
-              </View>
+              <View style={styles.bottomHandle} />
             </View>
           </View>
         )}
@@ -637,26 +674,36 @@ const styles = StyleSheet.create({
   },
   resultContainer: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 24,
-    justifyContent: 'center',
   },
   resultBackground: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(11,11,14,0.96)',
   },
   resultContent: {
-    gap: 10,
+    flex: 1,
     alignItems: 'center',
-    width: '94%',
+    justifyContent: 'space-between',
+    width: '100%',
     maxWidth: 560,
     alignSelf: 'center',
+    paddingHorizontal: 22,
+  },
+  resultTop: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  resultMain: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -10,
   },
   closeBadge: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.06)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -664,6 +711,13 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 22,
     fontWeight: '700',
+  },
+  previewOuter: {
+    width: '100%',
+    maxWidth: 560,
+    position: 'relative',
+    alignItems: 'center',
+    marginBottom: 22,
   },
   previewWrap: {
     width: '100%',
@@ -673,36 +727,59 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     overflow: 'hidden',
     position: 'relative',
+    backgroundColor: '#1A1A20',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.06)',
     shadowColor: '#000',
     shadowOpacity: 0.45,
     shadowRadius: 28,
     shadowOffset: { width: 0, height: 20 },
+    elevation: 18,
   },
   previewBorder: {
     ...StyleSheet.absoluteFillObject,
     borderRadius: 32,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: 'rgba(255,255,255,0.10)',
   },
   resultImage: {
-    flex: 1,
-    // Reduce vertical scale slightly to avoid overflow in portrait layouts
+    ...StyleSheet.absoluteFillObject,
+  },
+  imageOverlay: {
+    ...StyleSheet.absoluteFillObject,
   },
   resultMeta: {
-    width: '92%',
+    width: '100%',
     alignItems: 'center',
     gap: 12,
+    marginBottom: 18,
   },
   resultTitle: {
-    color: '#F4F6FD',
-    fontSize: 20,
-    fontWeight: '700',
+    color: '#FFFFFF',
+    fontSize: 26,
+    fontWeight: '800',
+    letterSpacing: -0.3,
   },
   resultPrompt: {
-    color: 'rgba(219,225,240,0.8)',
-    fontSize: 13,
+    color: 'rgba(225,228,240,0.72)',
+    fontSize: 13.5,
     textAlign: 'center',
     lineHeight: 18,
+  },
+  sizePill: {
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 999,
+    backgroundColor: 'rgba(255,255,255,0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.10)',
+    marginTop: 2,
+  },
+  sizePillText: {
+    color: '#8B5CF6',
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.3,
   },
   resultTags: {
     flexDirection: 'row',
@@ -728,29 +805,45 @@ const styles = StyleSheet.create({
   resultActionsRow: {
     flexDirection: 'row',
     gap: 18,
-    width: '68%',
     justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+  actionItem: {
+    alignItems: 'center',
+    gap: 8,
+  },
+  actionLabel: {
+    color: 'rgba(255,255,255,0.72)',
+    fontSize: 11,
+    fontWeight: '600',
   },
   iconButton: {
-    width: 54,
-    height: 54,
-    borderRadius: 20,
-    backgroundColor: '#17171C',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: 'rgba(255,255,255,0.04)',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  iconButtonPressed: {
+    transform: [{ scale: 0.96 }],
+  },
   iconButtonDestructive: {
-    backgroundColor: 'rgba(110,32,38,0.85)',
-    borderColor: 'rgba(255,120,120,0.4)',
+    backgroundColor: 'rgba(255,255,255,0.04)',
   },
   iconButtonPrimary: {
-    backgroundColor: '#7C5CFF',
-    borderColor: 'rgba(124,92,255,0.75)',
-    shadowColor: '#7C5CFF',
-    shadowOpacity: 0.22,
-    shadowRadius: 12,
+    backgroundColor: '#8B5CF6',
+    shadowColor: '#8B5CF6',
+    shadowOpacity: 0.32,
+    shadowRadius: 16,
     shadowOffset: { width: 0, height: 10 },
+    elevation: 12,
+  },
+  bottomHandle: {
+    width: 120,
+    height: 4,
+    borderRadius: 999,
+    backgroundColor: 'rgba(255,255,255,0.18)',
+    opacity: 0.65,
   },
 });

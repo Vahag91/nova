@@ -99,6 +99,10 @@ function TestInput({
   const isOpen = useSharedValue(false);
   const webSearchTextVisible = useSharedValue(webSearchEnabled);
   const [renderMenu, setRenderMenu] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuOpenRef = useRef(false);
+  const openMenuTimeoutRef = useRef(null);
+  const closeMenuTimeoutRef = useRef(null);
   const plusRef = React.useRef(null);
   const wrapperRef = React.useRef(null);
   const [anchor, setAnchor] = useState(null);
@@ -136,8 +140,6 @@ function TestInput({
     const sub = Dimensions.addEventListener?.('change', measureWrapper);
     return () => sub?.remove?.();
   }, []);
-
-  useEffect(() => { if (forceCollapsed && isOpen.value) isOpen.value = false; }, [forceCollapsed, isOpen]);
 
   useEffect(() => {
     webSearchTextVisible.value = withTiming(webSearchEnabled ? 1 : 0, {
@@ -207,18 +209,78 @@ function TestInput({
     }
   };
 
-  const toggleActions = () => {
-    if (isOpen.value) {
-      isOpen.value = false;
-      setTimeout(() => setRenderMenu(false), ANIMATION_DURATION);
-    } else {
-      requestAnimationFrame(() => {
-        measureAnchor();
-        setRenderMenu(true);
-        setTimeout(() => { isOpen.value = true; }, 50);
-      });
+  const clearMenuTimers = useCallback(() => {
+    if (openMenuTimeoutRef.current) clearTimeout(openMenuTimeoutRef.current);
+    if (closeMenuTimeoutRef.current) clearTimeout(closeMenuTimeoutRef.current);
+    openMenuTimeoutRef.current = null;
+    closeMenuTimeoutRef.current = null;
+  }, []);
+
+  const closeActionsImmediately = useCallback(() => {
+    clearMenuTimers();
+    menuOpenRef.current = false;
+    setMenuOpen(false);
+    isOpen.value = false;
+    setRenderMenu(false);
+    setAnchor(null);
+  }, [clearMenuTimers, isOpen]);
+
+  const closeActions = useCallback(() => {
+    clearMenuTimers();
+    menuOpenRef.current = false;
+    setMenuOpen(false);
+    isOpen.value = false;
+    closeMenuTimeoutRef.current = setTimeout(() => {
+      setRenderMenu(false);
+      setAnchor(null);
+      closeMenuTimeoutRef.current = null;
+    }, ANIMATION_DURATION);
+  }, [ANIMATION_DURATION, clearMenuTimers, isOpen]);
+
+  const openActions = useCallback(() => {
+    clearMenuTimers();
+    menuOpenRef.current = true;
+    setMenuOpen(true);
+    requestAnimationFrame(() => {
+      measureAnchor();
+      setRenderMenu(true);
+      openMenuTimeoutRef.current = setTimeout(() => {
+        isOpen.value = true;
+        openMenuTimeoutRef.current = null;
+      }, 50);
+    });
+  }, [clearMenuTimers, isOpen]);
+
+  const toggleActions = useCallback(() => {
+    if (menuOpenRef.current) closeActions();
+    else openActions();
+  }, [closeActions, openActions]);
+
+  useEffect(() => {
+    return () => clearMenuTimers();
+  }, [clearMenuTimers]);
+
+  const handleCameraActionPress = useCallback(() => {
+    closeActionsImmediately();
+    requestAnimationFrame(() => safe(onOpenCameraPress));
+  }, [closeActionsImmediately, onOpenCameraPress, safe]);
+
+  const handleCreateImagesActionPress = useCallback(() => {
+    closeActions();
+    requestAnimationFrame(() => safe(onCreateImagesPress));
+  }, [closeActions, onCreateImagesPress, safe]);
+
+  const handleWebSearchActionPress = useCallback(() => {
+    closeActions();
+    requestAnimationFrame(() => safe(handleWebSearchPress));
+  }, [closeActions, handleWebSearchPress, safe]);
+
+  useEffect(() => {
+    if (forceCollapsed && menuOpenRef.current) {
+      closeActionsImmediately();
     }
-  };
+  }, [forceCollapsed, closeActionsImmediately]);
+
   const handleSend = () => { if (canSend) safe(onSend); };
   const handleStop = () => {
     if (streaming && onStop) safe(onStop);
@@ -238,13 +300,16 @@ function TestInput({
           transparent
           visible
           statusBarTranslucent
-          onRequestClose={() => safe(toggleActions)}
+          onRequestClose={() => safe(closeActions)}
         >
           <View style={styles.modalRoot}>
-            <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, backdropAnimatedStyle]}>
+            <Animated.View
+              pointerEvents={menuOpen ? 'auto' : 'none'}
+              style={[StyleSheet.absoluteFill, styles.backdrop, backdropAnimatedStyle]}
+            >
               <TouchableOpacity
                 activeOpacity={1}
-                onPress={() => safe(toggleActions)}
+                onPress={() => safe(closeActions)}
                 style={StyleSheet.absoluteFill}
               />
             </Animated.View>
@@ -257,7 +322,9 @@ function TestInput({
                 ? Math.max(8, win.height - wrapperRect.y + 8)
                 : fallbackBottom;
               return (
-                <Animated.View pointerEvents="box-none" style={[styles.popoverContainer, popoverAnimatedStyle, {
+                <Animated.View
+                  pointerEvents={menuOpen ? 'box-none' : 'none'}
+                  style={[styles.popoverContainer, popoverAnimatedStyle, {
                   bottom: bottomOffset,
                   left: Math.max(8, Math.min(anchor.x + anchor.width / 2 - halfMenuWidth, win.width - menuWidth - 8)),
                   width: menuWidth,
@@ -266,7 +333,7 @@ function TestInput({
                     <Animated.View style={menuItem1Style}>
                       <TouchableOpacity
                         style={styles.menuItem}
-                        onPress={() => { safe(toggleActions); safe(onCreateImagesPress); }}
+                        onPress={handleCreateImagesActionPress}
                         accessibilityRole="button"
                         accessibilityLabel={t('chat.createImages')}
                         activeOpacity={0.9}
@@ -284,7 +351,7 @@ function TestInput({
                     <Animated.View style={menuItem2Style}>
                       <TouchableOpacity
                         style={styles.menuItem}
-                        onPress={() => { safe(toggleActions); safe(onOpenCameraPress); }}
+                        onPress={handleCameraActionPress}
                         accessibilityRole="button"
                         accessibilityLabel={t('chat.camera')}
                         activeOpacity={0.9}
@@ -302,7 +369,7 @@ function TestInput({
                     <Animated.View style={menuItem3Style}>
                       <TouchableOpacity
                         style={[styles.menuItem, styles.menuItemLast]}
-                        onPress={() => { safe(toggleActions); safe(handleWebSearchPress); }}
+                        onPress={handleWebSearchActionPress}
                         accessibilityRole="button"
                         accessibilityLabel={t('chat.webSearch.toggleLabel', { defaultValue: 'Search the web' })}
                         activeOpacity={0.9}

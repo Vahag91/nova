@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, useWindowDimensions } from 'react-native';
 import { DrawerContentScrollView, useDrawerStatus } from '@react-navigation/drawer';
 import Animated, {
   useSharedValue,
@@ -12,12 +12,13 @@ import Animated, {
 } from 'react-native-reanimated';
 import LinearGradient from 'react-native-linear-gradient';
 import Haptic from 'react-native-haptic-feedback';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SvgIcon from '../components/SvgIcon';
 import { colors } from '../styles/colors';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { useTranslation } from 'react-i18next';
-import { betterPreview, summaryPreview } from '../lib/format';
+import { betterPreview, firstUserPreview, summaryPreview } from '../lib/format';
 import SidebarCreativeStudioBanner from '../components/navigation/SidebarCreativeStudioBanner';
 import SidebarProFeaturesButton from '../components/navigation/SidebarProFeaturesButton';
 import { SubscriptionContext } from '../context/SubscriptionContext';
@@ -27,6 +28,10 @@ const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 export default function CustomDrawerContent(props) {
   const { state, navigation } = props;
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
+  const { height: screenHeight } = useWindowDimensions();
+  const isCompactHeight = screenHeight <= 700;
+  const isVeryCompactHeight = screenHeight <= 620;
   const activeRoute = state.routeNames[state.index];
   const drawerOpen = useDrawerStatus() === 'open';
   const [drawerOpenTick, setDrawerOpenTick] = React.useState(0);
@@ -41,14 +46,18 @@ export default function CustomDrawerContent(props) {
 
   // Animation values
   const isOpen = useSharedValue(0);
-  const logoScale = useSharedValue(1);
   const logoPulse = useSharedValue(0);
-  const [recentChatsExpanded, setRecentChatsExpanded] = React.useState(true);
-  const recentChatsHeight = useSharedValue(1);
-  const chevronRotation = useSharedValue(0);
+  const initialRecentChatsExpanded = !isVeryCompactHeight;
+  const [recentChatsExpanded, setRecentChatsExpanded] = React.useState(initialRecentChatsExpanded);
+  const recentChatsHeight = useSharedValue(initialRecentChatsExpanded ? 1 : 0);
+  const chevronRotation = useSharedValue(initialRecentChatsExpanded ? 0 : 180);
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
   const baseMenuItemCount = 6;
+  const menuIconSize = isCompactHeight ? 18 : 20;
+  const drawerPaddingHorizontal = isCompactHeight ? 16 : 24;
+  const drawerPaddingTop = isCompactHeight ? 8 : 12;
+  const drawerPaddingBottom = isCompactHeight ? 14 : 20;
 
   const SPRING_CONFIG = {
     damping: 16,
@@ -111,14 +120,14 @@ export default function CustomDrawerContent(props) {
     navigation.navigate('Chat');
   };
 
-  // Get recent threads (last 5, sorted by updatedAt)
+  // Get recent threads (last 3, sorted by updatedAt)
   const recentThreads = React.useMemo(() => {
     const nonEmptyThreads = threads.filter(t => 
       Array.isArray(t?.messages) && t.messages.some(m => m.role === 'user' || m.role === 'assistant')
     );
     return [...nonEmptyThreads]
       .sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0))
-      .slice(0, 5);
+      .slice(0, 3);
   }, [threads]);
 
   // Logo animation - fade and slide when opening
@@ -175,6 +184,7 @@ export default function CustomDrawerContent(props) {
       <AnimatedTouchable
         style={[
           styles.menuItem,
+          isCompactHeight && styles.menuItemCompact,
           menuItemAnimStyle,
           isActive && styles.menuItemActive,
         ]}
@@ -184,15 +194,16 @@ export default function CustomDrawerContent(props) {
         {isActive && (
           <Animated.View style={[styles.activeIndicator, activeIndicatorStyle]} />
         )}
-        <View style={styles.iconContainer}>
+        <View style={[styles.iconContainer, isCompactHeight && styles.iconContainerCompact]}>
           <SvgIcon 
             name={icon} 
-            size={20} 
+            size={menuIconSize} 
             color={isActive ? colors.text : colors.textSecondary} 
           />
         </View>
         <Text style={[
           styles.menuLabel,
+          isCompactHeight && styles.menuLabelCompact,
           isActive && styles.menuLabelActive,
         ]}>
           {label}
@@ -209,7 +220,7 @@ export default function CustomDrawerContent(props) {
     const preview = React.useMemo(() => {
       const summaryText = thread.summary?.trim();
       const summaryBased = summaryText ? summaryPreview(summaryText) : '';
-      const resolved = summaryBased || betterPreview(thread.messages) || t('history.newChat');
+      const resolved = firstUserPreview(thread.messages) || summaryBased || betterPreview(thread.messages) || t('history.newChat');
       const text = resolved;
       return text.length > 40 ? `${text.slice(0, 39)}…` : text;
     }, [thread.summary, thread.messages, t]);
@@ -218,6 +229,7 @@ export default function CustomDrawerContent(props) {
       <AnimatedTouchable
         style={[
           styles.recentChatItem,
+          isCompactHeight && styles.recentChatItemCompact,
           chatItemAnimStyle,
           isActive && styles.recentChatItemActive,
         ]}
@@ -227,6 +239,7 @@ export default function CustomDrawerContent(props) {
         <Text 
           style={[
             styles.recentChatText,
+            isCompactHeight && styles.recentChatTextCompact,
             isActive && styles.recentChatTextActive,
           ]} 
           numberOfLines={1}
@@ -237,24 +250,40 @@ export default function CustomDrawerContent(props) {
     );
   };
 
-  const   recentChatsContainerStyle = useAnimatedStyle(() => {
+  const recentThreadCount = recentThreads.length;
+  const recentChatItemHeight = isCompactHeight ? 40 : 46;
+
+  const recentChatsContainerStyle = useAnimatedStyle(() => {
     const progress = recentChatsHeight.value;
-    const maxVisibleItems = 3;
-    const itemHeight = 46; // paddingVertical: 10, marginBottom: 4, height ~42
-    const maxHeight = maxVisibleItems * itemHeight;
+    const maxHeight = recentThreadCount * recentChatItemHeight;
     return {
       opacity: progress,
       maxHeight: progress * maxHeight,
       transform: [{ translateY: (1 - progress) * -10 }],
     };
-  });
+  }, [recentThreadCount, recentChatItemHeight]);
 
   const chevronStyle = useAnimatedStyle(() => ({
     transform: [{ rotate: `${chevronRotation.value}deg` }],
   }));
 
+  const contentContainerStyle = React.useMemo(
+    () => ({
+      paddingTop: insets.top + drawerPaddingTop,
+      paddingBottom: insets.bottom + drawerPaddingBottom,
+      paddingHorizontal: drawerPaddingHorizontal,
+    }),
+    [
+      insets.top,
+      insets.bottom,
+      drawerPaddingTop,
+      drawerPaddingBottom,
+      drawerPaddingHorizontal,
+    ]
+  );
+
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <LinearGradient
         colors={['#000000', '#0a0a0f', '#000000']}
         locations={[0, 0.5, 1]}
@@ -262,108 +291,137 @@ export default function CustomDrawerContent(props) {
       />
       <DrawerContentScrollView
         {...props}
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[styles.scrollContent, contentContainerStyle]}
         showsVerticalScrollIndicator={false}
       >
-        {/* Logo Section */}
-        <Animated.View style={[styles.logoSection, logoAnimatedStyle]}>
-          <Animated.View style={[styles.logoCircle, logoGlowStyle]}>
-            <Image 
+        <View style={styles.content}>
+          <View>
+            {/* Logo Section */}
+            <Animated.View
+              style={[
+                styles.logoSection,
+                isCompactHeight && styles.logoSectionCompact,
+                logoAnimatedStyle,
+              ]}
+            >
+              <Animated.View
+                style={[
+                  styles.logoCircle,
+                  isCompactHeight && styles.logoCircleCompact,
+                  logoGlowStyle,
+                ]}
+              >
+                <Image
               source={require('../../assets/icons/appiconsvg.png')}
-              style={styles.appIcon}
+              style={[styles.appIcon, isCompactHeight && styles.appIconCompact]}
               resizeMode="contain"
             />
-          </Animated.View>
-          <Text style={styles.logoText}>ChatCloud</Text>
-        </Animated.View>
-            {recentThreads.length > 0 && (
-            <View style={styles.recentChatsSection}>
-              <TouchableOpacity 
-                style={styles.recentChatsHeader}
-                onPress={() => setRecentChatsExpanded(!recentChatsExpanded)}
-                activeOpacity={0.7}
-              >
-                <Text style={styles.recentChatsTitle}>{t('navigation.recentChats')}</Text>
-                <Animated.View style={chevronStyle}>
-                  <Text style={styles.recentChatsChevron}>▼</Text>
-                </Animated.View>
-              </TouchableOpacity>
+              </Animated.View>
+              <Text style={[styles.logoText, isCompactHeight && styles.logoTextCompact]}>
+                ChatCloud
+              </Text>
+            </Animated.View>
 
-              <Animated.View style={[styles.recentChatsList, recentChatsContainerStyle]}>
-                <ScrollView 
-                  style={styles.recentChatsScrollView}
-                  nestedScrollEnabled={true}
-                  showsVerticalScrollIndicator={false}
+            {recentThreads.length > 0 && (
+              <View
+                style={[
+                  styles.recentChatsSection,
+                  isCompactHeight && styles.recentChatsSectionCompact,
+                ]}
+              >
+                <TouchableOpacity
+                  style={[
+                    styles.recentChatsHeader,
+                    isCompactHeight && styles.recentChatsHeaderCompact,
+                  ]}
+                  onPress={() => setRecentChatsExpanded(!recentChatsExpanded)}
+                  activeOpacity={0.7}
                 >
+                  <Text
+                    style={[
+                      styles.recentChatsTitle,
+                      isCompactHeight && styles.recentChatsTitleCompact,
+                    ]}
+                  >
+                    {t('navigation.recentChats')}
+                  </Text>
+                  <Animated.View style={chevronStyle}>
+                    <Text style={styles.recentChatsChevron}>▼</Text>
+                  </Animated.View>
+                </TouchableOpacity>
+
+                <Animated.View style={[styles.recentChatsList, recentChatsContainerStyle]}>
                   {recentThreads.map((thread, idx) => (
                     <RecentChatItem key={thread.id} thread={thread} index={idx} />
                   ))}
-                </ScrollView>
-              </Animated.View>
+                </Animated.View>
+              </View>
+            )}
+
+            <SidebarCreativeStudioBanner
+              compact={isCompactHeight}
+              onPress={() => navigateTo('Studio', { screen: 'StudioHome' })}
+              style={[styles.sidebarBanner, isCompactHeight && styles.sidebarBannerCompact]}
+              restartKey={drawerOpenTick}
+            />
+
+            <View style={[styles.mainNav, isCompactHeight && styles.mainNavCompact]}>
+              <MenuItem
+                icon="newchat"
+                label={t('navigation.chat')}
+                routeName="Chat"
+                isActive={activeRoute === 'Chat'}
+                index={0}
+              />
+              <MenuItem
+                icon="layout"
+                label={t('navigation.history')}
+                routeName="History"
+                isActive={activeRoute === 'History'}
+                index={1}
+              />
+              <MenuItem
+                icon="quill"
+                label={t('navigation.assistants')}
+                routeName="Assistants"
+                isActive={activeRoute === 'Assistants'}
+                index={2}
+              />
+              <MenuItem
+                icon="studio"
+                label={t('navigation.imagesStudio')}
+                routeName="Studio"
+                isActive={activeRoute === 'Studio'}
+                index={3}
+              />
+              <MenuItem
+                icon="gift-finder"
+                label={t('navigation.rewards', { defaultValue: 'Daily Rewards' })}
+                routeName="Rewards"
+                isActive={activeRoute === 'Rewards'}
+                index={4}
+              />
+              <MenuItem
+                icon="settings"
+                label={t('navigation.settings')}
+                routeName="Settings"
+                isActive={activeRoute === 'Settings'}
+                index={5}
+              />
+            </View>
+          </View>
+
+          {!isPremium && (
+            <View style={[styles.footerSection, isCompactHeight && styles.footerSectionCompact]}>
+              <SidebarProFeaturesButton
+                compact={isCompactHeight}
+                onPress={() => navigateTo('PaywallScreen', { returnTo: activeRoute })}
+              />
             </View>
           )}
-        <SidebarCreativeStudioBanner
-            onPress={() => navigateTo('Studio', { screen: 'StudioHome' })}
-            style={styles.sidebarBanner}
-            restartKey={drawerOpenTick}
-          />
-          
-        <View style={styles.mainNav}>
-
-          <MenuItem
-            icon="newchat"
-            label={t('navigation.chat')}
-            routeName="Chat"
-            isActive={activeRoute === 'Chat'}
-            index={0}
-          />
-          <MenuItem
-            icon="layout"
-            label={t('navigation.history')}
-            routeName="History"
-            isActive={activeRoute === 'History'}
-            index={1}
-          />
-          <MenuItem
-            icon="quill"
-            label={t('navigation.assistants')}
-            routeName="Assistants"
-            isActive={activeRoute === 'Assistants'}
-            index={2}
-          />
-          <MenuItem
-            icon="studio"
-            label={t('navigation.imagesStudio')}
-            routeName="Studio"
-            isActive={activeRoute === 'Studio'}
-            index={3}
-          />
-          <MenuItem
-            icon="gift-finder"
-            label={t('navigation.rewards', { defaultValue: 'Daily Rewards' })}
-            routeName="Rewards"
-            isActive={activeRoute === 'Rewards'}
-            index={4}
-          />
-          <MenuItem
-            icon="settings"
-            label={t('navigation.settings')}
-            routeName="Settings"
-            isActive={activeRoute === 'Settings'}
-            index={5}
-          />
         </View>
-        {!isPremium && (
-          <View style={styles.footerSection}>
-            <SidebarProFeaturesButton
-              onPress={() => navigateTo('PaywallScreen', { returnTo: activeRoute })}
-            />
-          </View>
-        )}
-                  {/* Recent Chats Section */}
-      
       </DrawerContentScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -373,16 +431,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   scrollContent: {
-    paddingHorizontal: 24,
-    paddingTop: 12,
-    paddingBottom: 24,
     flexGrow: 1,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'space-between',
   },
   logoSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 4,
-    paddingTop: 12,
+    paddingTop: 6,
+  },
+  logoSectionCompact: {
+    paddingTop: 2,
   },
   logoCircle: {
     width: 42,
@@ -391,9 +452,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logoCircleCompact: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+  },
   appIcon: {
     width: 48,
     height: 48,
+  },
+  appIconCompact: {
+    width: 42,
+    height: 42,
   },
   logoText: {
     fontSize: 24,
@@ -403,16 +473,27 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     fontFamily: 'Lato-Bold',
   },
+  logoTextCompact: {
+    fontSize: 20,
+    letterSpacing: 1.4,
+  },
   mainNav: {
-    gap: 8,
-    marginTop: 20,
+    marginTop: 10,
+  },
+  mainNavCompact: {
+    marginTop: 8,
   },
   sidebarBanner: {
-    marginTop: 18,
+    marginTop: 8,
+  },
+  sidebarBannerCompact: {
+    marginTop: 6,
   },
   footerSection: {
-    marginTop: 'auto',
-    paddingTop: 20,
+    paddingTop: 10,
+  },
+  footerSectionCompact: {
+    paddingTop: 8,
   },
   menuItem: {
     flexDirection: 'row',
@@ -423,6 +504,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     position: 'relative',
     overflow: 'hidden',
+  },
+  menuItemCompact: {
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderRadius: 10,
   },
   menuItemActive: {
     backgroundColor: 'rgba(59, 130, 246, 0.15)',
@@ -447,11 +533,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 14,
   },
+  iconContainerCompact: {
+    width: 24,
+    height: 24,
+    marginRight: 12,
+  },
   menuLabel: {
     fontSize: 15,
     fontWeight: '500',
     color: colors.textSecondary,
     fontFamily: 'Lato-Regular',
+  },
+  menuLabelCompact: {
+    fontSize: 14,
   },
   menuLabelActive: {
     color: colors.text,
@@ -459,7 +553,10 @@ const styles = StyleSheet.create({
   },
   // Recent Chats Section
   recentChatsSection: {
-    marginTop: 24,
+    marginTop: 14,
+  },
+  recentChatsSectionCompact: {
+    marginTop: 16,
   },
   recentChatsHeader: {
     flexDirection: 'row',
@@ -467,7 +564,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 12,
     paddingVertical: 8,
-    marginBottom: 8,
+    marginBottom: 0,
+  },
+  recentChatsHeaderCompact: {
+    paddingVertical: 6,
+    marginBottom: 6,
   },
   recentChatsTitle: {
     fontSize: 12,
@@ -477,6 +578,9 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     fontFamily: 'Lato-Bold',
   },
+  recentChatsTitleCompact: {
+    fontSize: 11,
+  },
   recentChatsChevron: {
     fontSize: 10,
     color: colors.textSecondary,
@@ -485,15 +589,16 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: 8,
   },
-  recentChatsScrollView: {
-    maxHeight: 130, // 3 items * 46px each
-  },
   recentChatItem: {
-    paddingVertical: 10,
+    paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 8,
     marginBottom: 4,
     backgroundColor: 'transparent',
+  },
+  recentChatItemCompact: {
+    paddingVertical: 8,
+    paddingHorizontal: 10,
   },
   recentChatItemActive: {
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -512,6 +617,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: colors.textSecondary,
     fontFamily: 'Lato-Regular',
+  },
+  recentChatTextCompact: {
+    fontSize: 12,
   },
   recentChatTextActive: {
     color: colors.text,

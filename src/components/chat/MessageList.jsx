@@ -313,15 +313,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: 10,
+    bottom: 4,
     alignItems: 'center',
   },
   jumpButton: {
     backgroundColor: colors.surfaceElevated,
     borderColor: colors.border,
     borderWidth: 1,
-    width: 48,
-    height: 48,
+        padding: 6,
     borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
@@ -333,6 +332,7 @@ const styles = StyleSheet.create({
   },
   arrowIcon: {
     alignSelf: 'center',
+
   },
 });
 

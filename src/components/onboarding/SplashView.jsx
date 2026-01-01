@@ -28,7 +28,7 @@ const COLORS = {
   gold: '#FFD700',
 };
 
-const SplashView = ({ onNextClick, animationController }) => {
+const SplashView = ({ onNextClick, animationController, isAnimating = false }) => {
   const { t } = useTranslation();
   const { width, height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
@@ -125,10 +125,18 @@ const SplashView = ({ onNextClick, animationController }) => {
         <View style={styles.buttonShadowWrapper}>
           <View style={styles.buttonClip}>
             <MyPressable
-              style={[styles.button, { paddingHorizontal: isSmall ? 32 : 48, height: isSmall ? 52 : 56 }]}
+              style={[
+                styles.button,
+                {
+                  paddingHorizontal: isSmall ? 32 : 48,
+                  height: isSmall ? 52 : 56,
+                  opacity: isAnimating ? 0.6 : 1,
+                },
+              ]}
               android_ripple={{ color: 'rgba(82,82,224,0.18)' }}
               touchOpacity={0.6}
-              onPress={onNextClick}
+              onPress={isAnimating ? undefined : onNextClick}
+              disabled={isAnimating}
             >
               <Text style={[styles.buttonText, { fontSize: isSmall ? 16 : 17 }]}>{t('onboarding.splash.button')}</Text>
             </MyPressable>

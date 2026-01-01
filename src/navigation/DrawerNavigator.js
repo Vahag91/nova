@@ -49,6 +49,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { navigationRef, isNavigationReadyRef } from './rootNavigation';
 import { ONE_TIME_OFFER_KEY } from '../constants/storageKeys';
+import { ONE_TIME_OFFER_PAYWALL_ENABLED } from '../constants/featureFlags';
 
 const Drawer = createDrawerNavigator();
 
@@ -430,10 +431,11 @@ export default function DrawerNavigator({ onNavigationReady }) {
   const isPremium = !!subscription?.isPremium;
   const subscriptionReady = !!subscription?.subscriptionReady;
   const [navReady, setNavReady] = useState(false);
-  const [oneTimeOfferChecked, setOneTimeOfferChecked] = useState(false);
+  const [oneTimeOfferChecked, setOneTimeOfferChecked] = useState(!ONE_TIME_OFFER_PAYWALL_ENABLED);
   const [currentRouteName, setCurrentRouteName] = useState(null);
 
   useEffect(() => {
+    if (!ONE_TIME_OFFER_PAYWALL_ENABLED) return;
     if (!navReady || !subscriptionReady || isPremium || oneTimeOfferChecked) return;
     const blockedRoutes = new Set(['PaywallScreen', 'OneTimeOfferScreen']);
     if (blockedRoutes.has(currentRouteName)) return;

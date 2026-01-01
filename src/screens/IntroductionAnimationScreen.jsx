@@ -22,30 +22,40 @@ import RateUsService from '../services/RateUsService';
 const IntroductionAnimationScreen = ({ onComplete }) => {
   const window = useWindowDimensions();
 
-  const [currentPage, setCurrentPage] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const continueCountRef = useRef(0);
+  const transitionLockedRef = useRef(false);
+  const isMountedRef = useRef(true);
 
   useEffect(() => {
+    isMountedRef.current = true;
     Image.prefetch(
       Image.resolveAssetSource(
         require('../../assets/images/onboardingtheme.jpg')
       ).uri
     )
-      .then(() => setImageLoaded(true))
-      .catch(() => setImageLoaded(true));
+      .then(() => {
+        if (isMountedRef.current) setImageLoaded(true);
+      })
+      .catch(() => {
+        if (isMountedRef.current) setImageLoaded(true);
+      });
+    return () => {
+      isMountedRef.current = false;
+    };
   }, []);
 
   const animationController = useRef(new Animated.Value(0));
   const animValue = useRef(0);
 
   useEffect(() => {
-    const listener = animationController.current.addListener(({ value }) => {
+    const controller = animationController.current;
+    const listenerId = controller.addListener(({ value }) => {
       animValue.current = value;
-      setCurrentPage(value);
     });
     return () => {
-      animationController.current.removeListener(listener);
+      controller.removeListener(listenerId);
     };
   }, []);
 
@@ -55,49 +65,75 @@ const IntroductionAnimationScreen = ({ onComplete }) => {
   });
 
   const playAnimation = useCallback((toValue, duration = 1600) => {
-    Animated.timing(animationController.current, {
-      toValue,
-      duration,
-      easing: Easing.bezier(0.4, 0.0, 0.2, 1.0),
-      useNativeDriver: true,
-    }).start();
+    return new Promise(resolve => {
+      Animated.timing(animationController.current, {
+        toValue,
+        duration,
+        easing: Easing.bezier(0.4, 0.0, 0.2, 1.0),
+        useNativeDriver: true,
+      }).start(({ finished }) => resolve(finished));
+    });
   }, []);
+
+  const beginTransition = useCallback(
+    (toValue, duration = 1600) => {
+      if (transitionLockedRef.current) return null;
+      transitionLockedRef.current = true;
+      if (isMountedRef.current) setIsAnimating(true);
+      return playAnimation(toValue, duration).finally(() => {
+        if (isMountedRef.current) setIsAnimating(false);
+        transitionLockedRef.current = false;
+      });
+    },
+    [playAnimation]
+  );
 
   const onNextClick = useCallback(async () => {
     const v = animValue.current;
     if (v < 0.2) {
       // SplashView → RelaxView
+      const transition = beginTransition(0.2);
+      if (!transition) return;
       continueCountRef.current += 1;
-      playAnimation(0.2);
+      await transition;
     } else if (v >= 0.2 && v < 0.4) {
       // RelaxView → CareView (2nd continue)
+      const transition = beginTransition(0.4);
+      if (!transition) return;
       continueCountRef.current += 1;
-      playAnimation(0.4);
       
       // After 2nd continue, check for rate prompt
       if (continueCountRef.current >= 2) {
-        const checkResult = await RateUsService.canShowRatePrompt();
-        if (checkResult.canShow) {
-          setTimeout(() => {
-            RateUsService.showRatePrompt();
-          }, 1500);
-        }
+        RateUsService.canShowRatePrompt()
+          .then(checkResult => {
+            if (checkResult.canShow) {
+              setTimeout(() => {
+                RateUsService.showRatePrompt();
+              }, 1500);
+            }
+          })
+          .catch(() => {});
       }
+
+      await transition;
     } else if (v >= 0.4) {
       // LAST SCREEN - call onComplete to close onboarding
+      if (transitionLockedRef.current) return;
+      transitionLockedRef.current = true;
+      if (isMountedRef.current) setIsAnimating(true);
       if (onComplete) onComplete();
     }
-  }, [playAnimation, onComplete]);
+  }, [beginTransition, onComplete]);
 
   const onBackClick = useCallback(() => {
     const v = animValue.current;
-    if (v >= 0.4) playAnimation(0.2);
-    else if (v >= 0.2) playAnimation(0.0);
-  }, [playAnimation]);
+    if (v >= 0.4) beginTransition(0.2);
+    else if (v >= 0.2) beginTransition(0.0);
+  }, [beginTransition]);
 
   const onSkipClick = useCallback(() => {
-    playAnimation(0.4, 1200);
-  }, [playAnimation]);
+    beginTransition(0.4, 1200);
+  }, [beginTransition]);
 
   return (
     <ImageBackground
@@ -109,7 +145,7 @@ const IntroductionAnimationScreen = ({ onComplete }) => {
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
 
       <View style={styles.overlay} pointerEvents="box-none">
-        <SplashView {...{ onNextClick, animationController }} />
+        <SplashView {...{ onNextClick, animationController, isAnimating }} />
         <Animated.View
           style={[
             styles.scenesContainer,
@@ -120,8 +156,8 @@ const IntroductionAnimationScreen = ({ onComplete }) => {
           <RelaxView {...{ animationController }} />
           <CareView {...{ animationController }} />
         </Animated.View>
-        <TopBackSkipView {...{ onBackClick, onSkipClick, animationController }} />
-        <CenterNextButton {...{ onNextClick, animationController }} />
+        <TopBackSkipView {...{ onBackClick, onSkipClick, animationController, isAnimating }} />
+        <CenterNextButton {...{ onNextClick, animationController, isAnimating }} />
       </View>
     </ImageBackground>
   );
