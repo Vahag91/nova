@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect, useCallback, memo, useRef, useContext } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Keyboard, Image, ScrollView, Dimensions, Modal } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from 'react-native-reanimated';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Image, ScrollView, Modal, useWindowDimensions, Keyboard } from 'react-native';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, interpolate, Extrapolation } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 // --- NEW IMPORT ---
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -95,21 +95,25 @@ function TestInput({
   }, []);
 
   const MENU_ITEM_HEIGHT = 52;
-  const ANIMATION_DURATION = 300;
-  const isOpen = useSharedValue(false);
+  const OPEN_DURATION_MS = 220;
+  const CLOSE_DURATION_MS = 180;
+  const isOpen = useSharedValue(0);
   const webSearchTextVisible = useSharedValue(webSearchEnabled);
   const [renderMenu, setRenderMenu] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuOpenRef = useRef(false);
-  const openMenuTimeoutRef = useRef(null);
-  const closeMenuTimeoutRef = useRef(null);
-  const plusRef = React.useRef(null);
-  const wrapperRef = React.useRef(null);
+  const closeTimeoutRef = useRef(null);
+  const openFallbackTimeoutRef = useRef(null);
+  const openAfterKeyboardHideTimeoutRef = useRef(null);
+  const plusRef = useRef(null);
+  const inputRef = useRef(null);
+  const inputFocusedRef = useRef(false);
+  const keyboardVisibleRef = useRef(false);
+  const pendingOpenAfterKeyboardHideRef = useRef(false);
+  const openedFromKeyboardRef = useRef(false);
+  const refocusAfterCloseRef = useRef(false);
   const [anchor, setAnchor] = useState(null);
-  const win = Dimensions.get('window');
-  const [wrapperRect, setWrapperRect] = useState({ x: 0, y: 0, width: win.width, height: win.height });
-  const lastRectRef = useRef(wrapperRect);
-  useEffect(() => { lastRectRef.current = wrapperRect; }, [wrapperRect]);
+  const win = useWindowDimensions();
   const [inputHeight, setInputHeight] = useState(minInputHeight);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -123,23 +127,6 @@ function TestInput({
     }
     return () => { if (id) clearInterval(id); };
   }, [isRecording]);
-
-  // measure wrapper rect
-  const measureWrapper = () => wrapperRef.current?.measureInWindow((x, y, w, h) => {
-    const prev = lastRectRef.current || {};
-    const dx = Math.abs((prev.x ?? 0) - x);
-    const dy = Math.abs((prev.y ?? 0) - y);
-    const dw = Math.abs((prev.width ?? 0) - w);
-    const dh = Math.abs((prev.height ?? 0) - h);
-    if (dx > 0.5 || dy > 0.5 || dw > 0.5 || dh > 0.5) {
-      setWrapperRect({ x, y, width: w, height: h });
-    }
-  });
-  useEffect(() => {
-    measureWrapper();
-    const sub = Dimensions.addEventListener?.('change', measureWrapper);
-    return () => sub?.remove?.();
-  }, []);
 
   useEffect(() => {
     webSearchTextVisible.value = withTiming(webSearchEnabled ? 1 : 0, {
@@ -166,22 +153,23 @@ function TestInput({
 
   const backdropAnimatedStyle = useAnimatedStyle(() => ({
     opacity: isOpen.value,
-    zIndex: isOpen.value ? 1 : -1,
   }));
 
-  const plusIconStyle = useAnimatedStyle(() => ({
-    transform: [{ rotate: isOpen.value ? '45deg' : '0deg' }],
-  }));
+  const plusIconStyle = useAnimatedStyle(() => {
+    const deg = interpolate(isOpen.value, [0, 1], [0, 45], Extrapolation.CLAMP);
+    return { transform: [{ rotate: `${deg}deg` }] };
+  });
 
   const getMenuItemStyle = (index) => {
     return useAnimatedStyle(() => {
-      const scaleValue = isOpen.value ? 1 : 0;
-      const translateValue = isOpen.value ? 0 : 20;
+      const start = index * 0.08;
+      const t = Math.min(1, Math.max(0, (isOpen.value - start) / (1 - start)));
+      const translateValue = (1 - t) * 12;
       return {
-        opacity: scaleValue,
+        opacity: t,
         transform: [
           { translateY: translateValue },
-          { scale: scaleValue },
+          { scale: 0.98 + 0.02 * t },
         ],
       };
     });
@@ -192,7 +180,11 @@ function TestInput({
   const menuItem3Style = getMenuItemStyle(2);
 
   const popoverAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: isOpen.value ? withTiming(1, { duration: ANIMATION_DURATION }) : withTiming(0, { duration: ANIMATION_DURATION }),
+    opacity: isOpen.value,
+    transform: [
+      { translateY: (1 - isOpen.value) * 6 },
+      { scale: 0.98 + 0.02 * isOpen.value },
+    ],
   }));
 
   const webSearchTextAnimatedStyle = useAnimatedStyle(() => ({
@@ -203,62 +195,159 @@ function TestInput({
     ],
   }));
 
-  const measureAnchor = () => {
-    if (plusRef.current?.measureInWindow) {
-      plusRef.current.measureInWindow((x, y, w, h) => setAnchor({ x, y, width: w, height: h }));
-    }
-  };
+  const measureAnchor = useCallback((cb) => {
+    const plus = plusRef.current;
+    if (!plus || typeof plus.measureInWindow !== 'function') return;
+    plus.measureInWindow((x, y, w, h) => {
+      const next = { x, y, width: w, height: h };
+      setAnchor(next);
+      if (typeof cb === 'function') cb(next);
+    });
+  }, []);
 
   const clearMenuTimers = useCallback(() => {
-    if (openMenuTimeoutRef.current) clearTimeout(openMenuTimeoutRef.current);
-    if (closeMenuTimeoutRef.current) clearTimeout(closeMenuTimeoutRef.current);
-    openMenuTimeoutRef.current = null;
-    closeMenuTimeoutRef.current = null;
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    if (openFallbackTimeoutRef.current) {
+      clearTimeout(openFallbackTimeoutRef.current);
+      openFallbackTimeoutRef.current = null;
+    }
+    if (openAfterKeyboardHideTimeoutRef.current) {
+      clearTimeout(openAfterKeyboardHideTimeoutRef.current);
+      openAfterKeyboardHideTimeoutRef.current = null;
+    }
   }, []);
 
   const closeActionsImmediately = useCallback(() => {
     clearMenuTimers();
+    pendingOpenAfterKeyboardHideRef.current = false;
+    refocusAfterCloseRef.current = false;
+    openedFromKeyboardRef.current = false;
     menuOpenRef.current = false;
+    isOpen.value = 0;
     setMenuOpen(false);
-    isOpen.value = false;
     setRenderMenu(false);
     setAnchor(null);
   }, [clearMenuTimers, isOpen]);
 
   const closeActions = useCallback(() => {
     clearMenuTimers();
+    pendingOpenAfterKeyboardHideRef.current = false;
     menuOpenRef.current = false;
-    setMenuOpen(false);
-    isOpen.value = false;
-    closeMenuTimeoutRef.current = setTimeout(() => {
+    isOpen.value = withTiming(0, {
+      duration: CLOSE_DURATION_MS,
+      easing: Easing.out(Easing.quad),
+    });
+    closeTimeoutRef.current = setTimeout(() => {
+      setMenuOpen(false);
       setRenderMenu(false);
       setAnchor(null);
-      closeMenuTimeoutRef.current = null;
-    }, ANIMATION_DURATION);
-  }, [ANIMATION_DURATION, clearMenuTimers, isOpen]);
+      closeTimeoutRef.current = null;
 
-  const openActions = useCallback(() => {
+      const shouldRefocus = refocusAfterCloseRef.current;
+      refocusAfterCloseRef.current = false;
+      openedFromKeyboardRef.current = false;
+      if (shouldRefocus) {
+        requestAnimationFrame(() => inputRef.current?.focus?.());
+      }
+    }, CLOSE_DURATION_MS);
+  }, [CLOSE_DURATION_MS, clearMenuTimers, isOpen]);
+
+  const openMenuNow = useCallback(() => {
+    if (menuOpenRef.current) return;
     clearMenuTimers();
     menuOpenRef.current = true;
     setMenuOpen(true);
+    setRenderMenu(true);
+    isOpen.value = 0;
+    isOpen.value = withTiming(1, {
+      duration: OPEN_DURATION_MS,
+      easing: Easing.out(Easing.cubic),
+    });
     requestAnimationFrame(() => {
       measureAnchor();
-      setRenderMenu(true);
-      openMenuTimeoutRef.current = setTimeout(() => {
-        isOpen.value = true;
-        openMenuTimeoutRef.current = null;
-      }, 50);
+      requestAnimationFrame(() => {
+        if (menuOpenRef.current) measureAnchor();
+      });
     });
-  }, [clearMenuTimers, isOpen]);
+    openFallbackTimeoutRef.current = setTimeout(() => {
+      if (menuOpenRef.current) measureAnchor();
+      openFallbackTimeoutRef.current = null;
+    }, 250);
+  }, [OPEN_DURATION_MS, clearMenuTimers, isOpen, measureAnchor]);
+
+  const openActions = useCallback(() => {
+    if (menuOpenRef.current) return;
+    clearMenuTimers();
+
+    const shouldDismissKeyboard = !!(inputFocusedRef.current || keyboardVisibleRef.current);
+    openedFromKeyboardRef.current = shouldDismissKeyboard;
+
+    if (shouldDismissKeyboard) {
+      pendingOpenAfterKeyboardHideRef.current = true;
+      inputRef.current?.blur?.();
+      Keyboard.dismiss();
+      openAfterKeyboardHideTimeoutRef.current = setTimeout(() => {
+        if (!pendingOpenAfterKeyboardHideRef.current) return;
+        pendingOpenAfterKeyboardHideRef.current = false;
+        openAfterKeyboardHideTimeoutRef.current = null;
+        openMenuNow();
+      }, 350);
+      return;
+    }
+
+    openMenuNow();
+  }, [clearMenuTimers, openMenuNow]);
 
   const toggleActions = useCallback(() => {
-    if (menuOpenRef.current) closeActions();
-    else openActions();
-  }, [closeActions, openActions]);
+    if (menuOpenRef.current) {
+      refocusAfterCloseRef.current = openedFromKeyboardRef.current;
+      closeActions();
+      return;
+    }
+
+    if (pendingOpenAfterKeyboardHideRef.current) {
+      pendingOpenAfterKeyboardHideRef.current = false;
+      clearMenuTimers();
+      requestAnimationFrame(() => inputRef.current?.focus?.());
+      return;
+    }
+
+    openActions();
+  }, [clearMenuTimers, closeActions, openActions]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    requestAnimationFrame(measureAnchor);
+  }, [menuOpen, measureAnchor, win.height, win.width]);
 
   useEffect(() => {
     return () => clearMenuTimers();
   }, [clearMenuTimers]);
+
+  useEffect(() => {
+    const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+    const hideEvent = 'keyboardDidHide';
+
+    const showSub = Keyboard.addListener(showEvent, () => {
+      keyboardVisibleRef.current = true;
+      if (menuOpenRef.current) closeActionsImmediately();
+    });
+    const hideSub = Keyboard.addListener(hideEvent, () => {
+      keyboardVisibleRef.current = false;
+      if (!pendingOpenAfterKeyboardHideRef.current) return;
+      pendingOpenAfterKeyboardHideRef.current = false;
+      clearMenuTimers();
+      openMenuNow();
+    });
+
+    return () => {
+      showSub?.remove?.();
+      hideSub?.remove?.();
+    };
+  }, [clearMenuTimers, closeActionsImmediately, openMenuNow]);
 
   const handleCameraActionPress = useCallback(() => {
     closeActionsImmediately();
@@ -266,14 +355,14 @@ function TestInput({
   }, [closeActionsImmediately, onOpenCameraPress, safe]);
 
   const handleCreateImagesActionPress = useCallback(() => {
-    closeActions();
+    closeActionsImmediately();
     requestAnimationFrame(() => safe(onCreateImagesPress));
-  }, [closeActions, onCreateImagesPress, safe]);
+  }, [closeActionsImmediately, onCreateImagesPress, safe]);
 
   const handleWebSearchActionPress = useCallback(() => {
-    closeActions();
+    closeActionsImmediately();
     requestAnimationFrame(() => safe(handleWebSearchPress));
-  }, [closeActions, handleWebSearchPress, safe]);
+  }, [closeActionsImmediately, handleWebSearchPress, safe]);
 
   useEffect(() => {
     if (forceCollapsed && menuOpenRef.current) {
@@ -294,7 +383,10 @@ function TestInput({
   };
 
   return (
-    <Animated.View ref={wrapperRef} onLayout={measureWrapper} style={[styles.wrapper, { paddingBottom: Math.max(8, insets.bottom) }]}>
+    <View
+      onLayout={() => { if (menuOpenRef.current) measureAnchor(); }}
+      style={[styles.wrapper, { paddingBottom: Math.max(8, insets.bottom) }]}
+    >
       {renderMenu && (
         <Modal
           transparent
@@ -315,12 +407,12 @@ function TestInput({
             </Animated.View>
 
             {anchor && (() => {
-              const menuWidth = wrapperRect.width;
+              const menuWidth = Math.min(win.width - 16, 360);
               const halfMenuWidth = menuWidth / 2;
               const fallbackBottom = (MENU_ITEM_HEIGHT * 3 + 2) + 36 - 64;
-              const bottomOffset = wrapperRect.y > 0
-                ? Math.max(8, win.height - wrapperRect.y + 8)
-                : fallbackBottom;
+              const gap = 12;
+              const hasAnchorY = typeof anchor.y === 'number' && Number.isFinite(anchor.y) && anchor.y > 0 && anchor.y < win.height;
+              const bottomOffset = hasAnchorY ? Math.max(8, win.height - anchor.y + gap) : fallbackBottom;
               return (
                 <Animated.View
                   pointerEvents={menuOpen ? 'box-none' : 'none'}
@@ -409,6 +501,7 @@ function TestInput({
 
         <View style={styles.inputArea}>
           <TextInput
+            ref={inputRef}
             value={value}
             onChangeText={onChange}
             placeholder={t('chat.messagePlaceholder')}
@@ -426,6 +519,14 @@ function TestInput({
             textAlignVertical={isExpanded ? 'top' : 'center'}
             accessibilityLabel={t('chat.messageInput')}
             scrollEnabled={inputHeight >= maxInputHeight}
+            onFocus={() => {
+              inputFocusedRef.current = true;
+              keyboardVisibleRef.current = true;
+              if (menuOpenRef.current) closeActionsImmediately();
+            }}
+            onBlur={() => {
+              inputFocusedRef.current = false;
+            }}
           />
           {value?.length > 0 && (
             <TouchableOpacity
@@ -437,13 +538,15 @@ function TestInput({
           )}
 
         </View>
-        <View style={styles.iconsRow}>
-          <View style={styles.leftControls}>
-            <TouchableOpacity ref={plusRef} onPress={() => safe(toggleActions)} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={t('chat.quickActionsLabel', { defaultValue: 'Quick actions' })}>
-              <Animated.View style={plusIconStyle}>
-                <AddIcon color="#FFFFFF" size={18} />
-              </Animated.View>
-            </TouchableOpacity>
+          <View style={styles.iconsRow}>
+            <View style={styles.leftControls}>
+            <View ref={plusRef} collapsable={false} onLayout={() => { if (menuOpenRef.current) measureAnchor(); }}>
+              <TouchableOpacity onPress={() => safe(toggleActions)} style={[styles.plusButton, isRecording && styles.disabledBtn]} disabled={isRecording} accessibilityRole="button" accessibilityLabel={t('chat.quickActionsLabel', { defaultValue: 'Quick actions' })}>
+                <Animated.View style={plusIconStyle}>
+                  <AddIcon color="#FFFFFF" size={18} />
+                </Animated.View>
+              </TouchableOpacity>
+            </View>
 
             <TouchableOpacity
               style={[styles.webSearchToggle, offline && styles.iconDisabled]}
@@ -497,7 +600,7 @@ function TestInput({
           ) : null}
         </View>
       </View>
-    </Animated.View>
+    </View>
   );
 }
 
