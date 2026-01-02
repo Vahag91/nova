@@ -359,6 +359,7 @@ const MessageBubbleImpl = function MessageBubble({
                   delayLongPress={180}
                   onStartShouldSetResponderCapture={() => false}
                   onMoveShouldSetResponderCapture={() => false}
+                  style={styles.assistantPressable}
                 >
                   <View
                     style={[
@@ -484,11 +485,17 @@ const styles = StyleSheet.create({
   // assistant text container (no background)
   assistantTextContainer: {
     maxWidth: '100%',
+    width: '100%',
+    flex: 1,
     padding: 0,
   },
   assistantTight: {
     paddingHorizontal: 0,
     marginHorizontal: 0,
+  },
+  assistantPressable: {
+    flex: 1,
+    alignSelf: 'stretch',
   },
 
   // pure images grid

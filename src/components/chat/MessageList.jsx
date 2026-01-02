@@ -9,9 +9,13 @@ import Svg, { Path } from 'react-native-svg';
 import MessageBubble from './MessageBubble';
 import DaySeparator from './DaySeparator';
 import { colors } from '../../styles/colors';
+import { chatDebugLog, isChatDebugEnabled } from '../../lib/chatDebug';
 
 const BOTTOM_GAP = 16;
 const NEAR_BOTTOM_PAD_RATIO = 0.12;
+const AUTO_PAUSE_GROWTH_RATIO = 0.85;
+const AUTO_PAUSE_MIN_GROWTH_PX = 120;
+const POST_STREAM_DRAIN_WINDOW_MS = 15_000;
 const logTouch = (where, extra = {}) => {
   // touch tracking disabled in production
 };
@@ -53,11 +57,45 @@ const MessageListCore = function MessageList({
   const [showJump, setShowJump] = useState(false);
   const [isUserDragging, setIsUserDragging] = useState(false);
 
+  const streamingRef = useRef(streaming);
+  const streamingMessageIdRef = useRef(streamingMessageId);
   const isAtBottomRef = useRef(true);
   const userDraggingRef = useRef(false);
   const autoPinRef = useRef(true);
   const manualScrollRequestRef = useRef(false);
   const scrollTimeoutRef = useRef(null);
+  const lastContentSizeRef = useRef({ w: 0, h: 0, ts: 0 });
+  const scrollMetricsRef = useRef({ offsetY: 0, layoutH: 0, contentH: 0 });
+  const listLayoutRef = useRef({ w: 0, h: 0 });
+  const assistantAutoPauseRef = useRef({
+    paused: false,
+    allowAutoPause: true,
+    baselineContentH: 0,
+    drainUntilTs: 0,
+  });
+
+  useEffect(() => {
+    streamingRef.current = streaming;
+    streamingMessageIdRef.current = streamingMessageId;
+  }, [streaming, streamingMessageId]);
+
+  useEffect(() => {
+    const now = Date.now();
+    if (streamingMessageId) {
+      assistantAutoPauseRef.current = {
+        paused: false,
+        allowAutoPause: true,
+        baselineContentH: 0,
+        drainUntilTs: now + POST_STREAM_DRAIN_WINDOW_MS,
+      };
+      return;
+    }
+
+    // Streaming ended: keep an "output active" window to include the UI drain.
+    if (assistantAutoPauseRef.current.drainUntilTs < now + POST_STREAM_DRAIN_WINDOW_MS) {
+      assistantAutoPauseRef.current.drainUntilTs = now + POST_STREAM_DRAIN_WINDOW_MS;
+    }
+  }, [streamingMessageId]);
 
   const safeMessages = useMemo(
     () => Array.isArray(messages)
@@ -82,16 +120,9 @@ const MessageListCore = function MessageList({
       ? safeMessages.filter(m => m?.id !== streamingTail.id).concat([streamingTail])
       : safeMessages;
     return interleaveDaySeparators(base);
-  }, [safeMessages, streamingTail?.id]);
+  }, [safeMessages, streamingTail]);
 
   const keyExtractor = useCallback((it, index) => String(it?.id ?? it?.key ?? index), []);
-
-
-  const lastRenderable = data.length ? data[data.length - 1] : null;
-  const footerFirstInGroup =
-    !lastRenderable ||
-    lastRenderable.type === 'day' ||
-    lastRenderable.role !== (streamingTail?.role || 'assistant');
 
   const scrollToBottom = useCallback((animated = true) => {
     listRef.current?.scrollToEnd({ animated });
@@ -99,10 +130,22 @@ const MessageListCore = function MessageList({
 
   const scrollToBottomIfNeeded = useCallback((animated = false) => {
     if (scrollTimeoutRef.current) return;
+    if (assistantAutoPauseRef.current.paused && !manualScrollRequestRef.current) return;
     const shouldScroll =
       manualScrollRequestRef.current ||
       (autoPinRef.current && isAtBottomRef.current && !userDraggingRef.current);
     if (shouldScroll) {
+      if (isChatDebugEnabled('scroll')) {
+        chatDebugLog('scroll', 'scrollToBottomIfNeeded', {
+          animated,
+          manualRequest: manualScrollRequestRef.current,
+          autoPin: autoPinRef.current,
+          isAtBottom: isAtBottomRef.current,
+          userDragging: userDraggingRef.current,
+          streaming: streamingRef.current,
+          streamingMessageId: streamingMessageIdRef.current,
+        });
+      }
       scrollTimeoutRef.current = setTimeout(() => {
         listRef.current?.scrollToEnd({ animated });
         scrollTimeoutRef.current = null;
@@ -118,13 +161,29 @@ const MessageListCore = function MessageList({
 
   const handleScroll = useCallback((e) => {
     const { layoutMeasurement, contentOffset, contentSize } = e.nativeEvent;
+    scrollMetricsRef.current = {
+      offsetY: contentOffset.y,
+      layoutH: layoutMeasurement.height,
+      contentH: contentSize.height,
+    };
     const pad = layoutMeasurement.height * NEAR_BOTTOM_PAD_RATIO;
     const isAtBottom = contentOffset.y >= contentSize.height - layoutMeasurement.height - pad;
+    const prev = isAtBottomRef.current;
     isAtBottomRef.current = isAtBottom;
-    if (!userDraggingRef.current && isAtBottom) {
+    const effectiveAtBottom = isAtBottom && !assistantAutoPauseRef.current.paused;
+    if (!userDraggingRef.current && effectiveAtBottom) {
       autoPinRef.current = true;
     }
-    setShowJump(!isAtBottom);
+    setShowJump(!effectiveAtBottom);
+    if (prev !== isAtBottom && isChatDebugEnabled('scroll')) {
+      chatDebugLog('scroll', 'atBottomChanged', {
+        isAtBottom,
+        y: contentOffset.y,
+        height: layoutMeasurement.height,
+        contentHeight: contentSize.height,
+        pad,
+      });
+    }
   }, []);
 
   const onScrollBeginDrag = useCallback(() => {
@@ -144,17 +203,82 @@ const MessageListCore = function MessageList({
 
   const onMomentumScrollEnd = useCallback((e) => {
     const { layoutMeasurement, contentOffset, contentSize } = e.nativeEvent;
+    scrollMetricsRef.current = {
+      offsetY: contentOffset.y,
+      layoutH: layoutMeasurement.height,
+      contentH: contentSize.height,
+    };
     const pad = layoutMeasurement.height * NEAR_BOTTOM_PAD_RATIO;
     const isAtBottom = contentOffset.y >= contentSize.height - layoutMeasurement.height - pad;
     isAtBottomRef.current = isAtBottom;
-    autoPinRef.current = isAtBottom;
+    if (isAtBottom && assistantAutoPauseRef.current.paused) {
+      assistantAutoPauseRef.current.paused = false;
+      assistantAutoPauseRef.current.allowAutoPause = false;
+    }
+    autoPinRef.current = isAtBottom && !assistantAutoPauseRef.current.paused;
     userDraggingRef.current = false;
     setIsUserDragging(false);
-    setShowJump(!isAtBottom);
+    setShowJump(!(isAtBottom && !assistantAutoPauseRef.current.paused));
   }, []);
 
-  const onContentSizeChange = useCallback(() => {
-    scrollToBottomIfNeeded(false);
+  const onContentSizeChange = useCallback((w, h) => {
+    if (isChatDebugEnabled('scroll')) {
+      const now = Date.now();
+      const prev = lastContentSizeRef.current;
+      const dh = h - (prev?.h || 0);
+      const shouldLog = now - (prev?.ts || 0) > 600 || Math.abs(dh) > 120;
+      if (shouldLog) {
+        lastContentSizeRef.current = { w, h, ts: now };
+        chatDebugLog('scroll', 'contentSize', { w, h, dh });
+      }
+    }
+    const now = Date.now();
+    const layoutH = listLayoutRef.current.h || scrollMetricsRef.current.layoutH || 0;
+    scrollMetricsRef.current = { ...scrollMetricsRef.current, contentH: h };
+
+    const outputActive =
+      !!streamingMessageIdRef.current ||
+      !!streamingRef.current ||
+      now < assistantAutoPauseRef.current.drainUntilTs;
+
+    if (outputActive && assistantAutoPauseRef.current.baselineContentH === 0) {
+      assistantAutoPauseRef.current.baselineContentH = h;
+    }
+
+    if (
+      outputActive &&
+      assistantAutoPauseRef.current.allowAutoPause &&
+      !assistantAutoPauseRef.current.paused &&
+      !userDraggingRef.current &&
+      autoPinRef.current &&
+      isAtBottomRef.current &&
+      layoutH > 0
+    ) {
+      const baseline = assistantAutoPauseRef.current.baselineContentH || h;
+      const growth = h - baseline;
+      const thresholdPx = Math.max(layoutH * AUTO_PAUSE_GROWTH_RATIO, AUTO_PAUSE_MIN_GROWTH_PX);
+      if (growth > thresholdPx) {
+        assistantAutoPauseRef.current.paused = true;
+        autoPinRef.current = false;
+        isAtBottomRef.current = false;
+        setShowJump(true);
+        if (isChatDebugEnabled('scroll')) {
+          chatDebugLog('scroll', 'autoPause', { growth, thresholdPx, layoutH, w, h });
+        }
+        return;
+      }
+    }
+
+    if (!userDraggingRef.current && layoutH > 0) {
+      const { offsetY } = scrollMetricsRef.current;
+      const pad = layoutH * NEAR_BOTTOM_PAD_RATIO;
+      const isAtBottom = offsetY >= h - layoutH - pad;
+      isAtBottomRef.current = isAtBottom;
+      setShowJump(!(isAtBottom && !assistantAutoPauseRef.current.paused));
+    }
+
+    const followAnimated = outputActive;
+    scrollToBottomIfNeeded(followAnimated);
   }, [scrollToBottomIfNeeded]);
 
   useEffect(() => {
@@ -162,6 +286,12 @@ const MessageListCore = function MessageList({
     autoPinRef.current = true;
     userDraggingRef.current = false;
     manualScrollRequestRef.current = false;
+    assistantAutoPauseRef.current = {
+      paused: false,
+      allowAutoPause: true,
+      baselineContentH: 0,
+      drainUntilTs: 0,
+    };
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
       scrollTimeoutRef.current = null;
@@ -184,10 +314,10 @@ const MessageListCore = function MessageList({
     dataRef.current = data;
   }, [data]);
 
+  
   const renderItem = useCallback(({ item, index }) => {
     if (item?.type === 'day') return <DaySeparator date={item.date} />;
     if (item?.role === 'system') return <DaySeparator system text={item.content} />;
-
     // Find prev/next messages by looking at data array from ref (doesn't cause re-renders)
     const currentData = dataRef.current;
     let j = index - 1; let prevMsg = null;
@@ -221,7 +351,6 @@ const MessageListCore = function MessageList({
       return null;
     }
   }, [streaming, streamingMessageId, onRetryFromHere]);
-
   // Stable extraData - use string to avoid object reference changes
   // Only include streaming message ID to minimize re-renders
   const extraData = useMemo(() => {
@@ -240,6 +369,12 @@ const MessageListCore = function MessageList({
           keyExtractor={keyExtractor}
           renderItem={renderItem}
           extraData={extraData}
+          onLayout={(e) => {
+            listLayoutRef.current = {
+              w: e.nativeEvent.layout.width,
+              h: e.nativeEvent.layout.height,
+            };
+          }}
           onScroll={handleScroll}
           scrollEventThrottle={16}
           onScrollBeginDrag={onScrollBeginDrag}
@@ -273,6 +408,8 @@ const MessageListCore = function MessageList({
               activeOpacity={0.9}
               style={styles.jumpButton}
               onPress={() => {
+                assistantAutoPauseRef.current.paused = false;
+                assistantAutoPauseRef.current.allowAutoPause = false;
                 manualScrollRequestRef.current = true;
                 listRef.current?.scrollToEnd({ animated: true });
                 isAtBottomRef.current = true;

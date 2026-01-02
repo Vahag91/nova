@@ -26,6 +26,7 @@ import SuggestionCards from '../components/chat/SuggestionCards';
 import AssistantHeader from '../components/chat/AssistantHeader';
 import { colors } from '../styles/colors';
 import { appendStream, getStream, clearStream } from '../lib/streamingBuffer';
+import { chatDebugLog, isChatDebugEnabled } from '../lib/chatDebug';
 import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
 import { buildPayload } from '../lib/payloadBuilder';
 import { useVoiceInput } from '../hooks/useVoiceInput';
@@ -536,6 +537,20 @@ export default function Chat({ navigation }) {
       const deviceId = await ensureDeviceId();
       const controller = new AbortController(); abortRef.current = controller;
 
+      const streamDebug = isChatDebugEnabled('streaming');
+      const startedAt = Date.now();
+      let netChars = 0;
+      let netChunks = 0;
+      let lastNetLogAt = startedAt;
+      if (streamDebug) {
+        chatDebugLog('streaming', 'request', {
+          assistantId,
+          model: requestModelKey,
+          webSearchNext,
+          hasImages,
+        });
+      }
+
       streamChat({
         model: requestModelKey,
         messages: payload,
@@ -546,10 +561,35 @@ export default function Chat({ navigation }) {
         onToken: (chunk) => {
           if (typeof chunk === 'string') {
             appendStream(assistantId, chunk);
+            if (streamDebug) {
+              netChars += chunk.length;
+              netChunks += 1;
+              const now = Date.now();
+              if (now - lastNetLogAt > 1000) {
+                lastNetLogAt = now;
+                chatDebugLog('streaming', 'onToken', {
+                  assistantId,
+                  netChunks,
+                  netChars,
+                  bufferLen: getStream(assistantId).length,
+                  elapsedMs: now - startedAt,
+                });
+                netChars = 0;
+                netChunks = 0;
+              }
+            }
           }
         },
         onDone: () => {
           const full = getStream(assistantId);
+          if (streamDebug) {
+            const now = Date.now();
+            chatDebugLog('streaming', 'done', {
+              assistantId,
+              fullLen: (full || '').length,
+              elapsedMs: now - startedAt,
+            });
+          }
           
           if (!full || full.trim().length === 0) {
             if (isPrivate) {
@@ -588,6 +628,16 @@ export default function Chat({ navigation }) {
           const wasBackgrounded = appStateRef.current !== 'active';
           const isOSTermination = err.code === 0 || err.code === 'NETWORK';
           const partial = getStream(assistantId);
+          if (streamDebug) {
+            const now = Date.now();
+            chatDebugLog('streaming', 'error', {
+              assistantId,
+              partialLen: (partial || '').length,
+              elapsedMs: now - startedAt,
+              code: err?.code,
+              message: err?.message,
+            });
+          }
 
           if (partial && partial.trim().length > 0) {
             if (isPrivate) updateLastAssistantContentPrivate(() => partial);

@@ -1,7 +1,8 @@
-import React, { useEffect, useState, memo, useRef } from 'react';
-import { View, StyleSheet, Text, Animated } from 'react-native';
+import React, { useEffect, useState, memo, useRef, useCallback } from 'react';
+import { View, StyleSheet, Animated } from 'react-native';
 import MarkdownContent from './MarkdownContent';
 import { subscribeStream, getStream } from '../../lib/streamingBuffer';
+import { chatDebugLog, isChatDebugEnabled } from '../../lib/chatDebug';
 import { colors } from '../../styles/colors';
 
 const CURSOR_CHAR = ' ▋'; 
@@ -12,107 +13,216 @@ function StreamingText({ messageId, base = '', streaming = false, activityText }
   const pulseAnim = useRef(new Animated.Value(0)).current;
   
   // Refs to hold state without causing re-renders
-  const fullContentRef = useRef(base || '');
+  const targetTextRef = useRef(base || '');
   const displayLengthRef = useRef((base || '').length);
   const loopRef = useRef(null);
   const cursorVisibleRef = useRef(true);
+  const streamingRef = useRef(streaming);
+  const messageIdRef = useRef(messageId);
+  const lastFrameRef = useRef(Date.now());
+  const cursorTimerRef = useRef(0);
+  const accumulatedTimeRef = useRef(0);
+  const lastTickLogRef = useRef(0);
+  const lastNetLogRef = useRef(0);
+  const lastNetLenRef = useRef((base || '').length);
 
-  // 1. Network Listener: Instantly captures data from the global buffer
   useEffect(() => {
-      if (!streaming || !messageId) {
-        const final = getStream(messageId) || base;
-        fullContentRef.current = final;
-        setDisplayedText(final);
+    streamingRef.current = streaming;
+  }, [streaming]);
+
+  useEffect(() => {
+    messageIdRef.current = messageId;
+  }, [messageId]);
+
+  const stopLoop = useCallback((reason) => {
+    if (!loopRef.current) return;
+    cancelAnimationFrame(loopRef.current);
+    loopRef.current = null;
+    accumulatedTimeRef.current = 0;
+    cursorTimerRef.current = 0;
+    chatDebugLog('streaming', 'loopStop', { messageId: messageIdRef.current, reason });
+  }, []);
+
+  const tick = useCallback(() => {
+    const now = Date.now();
+    const delta = now - lastFrameRef.current;
+    lastFrameRef.current = now;
+    accumulatedTimeRef.current += delta;
+    cursorTimerRef.current += delta;
+
+    if (cursorTimerRef.current > 500) {
+      cursorVisibleRef.current = !cursorVisibleRef.current;
+      cursorTimerRef.current = 0;
+    }
+
+    const target = targetTextRef.current || '';
+    const targetLen = target.length;
+    let currentLen = displayLengthRef.current;
+    if (currentLen > targetLen) {
+      currentLen = targetLen;
+      displayLengthRef.current = targetLen;
+    }
+
+    const isNetworkStreaming = streamingRef.current;
+    const MS_PER_CHAR = isNetworkStreaming ? 15 : 4;
+
+    if (currentLen < targetLen && accumulatedTimeRef.current >= MS_PER_CHAR) {
+      let charsToAdd = Math.floor(accumulatedTimeRef.current / MS_PER_CHAR);
+      const distance = targetLen - currentLen;
+
+      if (isNetworkStreaming) {
+        if (distance > 800) charsToAdd = Math.max(charsToAdd, 8);
+        else if (distance > 400) charsToAdd = Math.max(charsToAdd, 6);
+        else if (distance > 100) charsToAdd = Math.max(charsToAdd, 3);
+        else charsToAdd = 1;
+      } else {
+        if (distance > 1200) charsToAdd = Math.max(charsToAdd, 32);
+        else if (distance > 600) charsToAdd = Math.max(charsToAdd, 24);
+        else if (distance > 300) charsToAdd = Math.max(charsToAdd, 16);
+        else if (distance > 150) charsToAdd = Math.max(charsToAdd, 10);
+        else if (distance > 60) charsToAdd = Math.max(charsToAdd, 6);
+        else charsToAdd = Math.max(charsToAdd, 2);
+      }
+
+      accumulatedTimeRef.current = accumulatedTimeRef.current % MS_PER_CHAR;
+      const nextLen = Math.min(currentLen + charsToAdd, targetLen);
+      displayLengthRef.current = nextLen;
+
+      const nextSlice = target.substring(0, nextLen);
+      const shouldShowCursor = isNetworkStreaming || nextLen < targetLen;
+      const textWithCursor = shouldShowCursor
+        ? (cursorVisibleRef.current ? nextSlice + CURSOR_CHAR : nextSlice + '  ')
+        : nextSlice;
+      setDisplayedText(textWithCursor);
+    } else if (currentLen === targetLen) {
+      if (isNetworkStreaming) {
+        const textWithCursor = cursorVisibleRef.current ? target + CURSOR_CHAR : target + '  ';
+        setDisplayedText(prev => (prev !== textWithCursor ? textWithCursor : prev));
+      } else {
+        setDisplayedText(target);
+        stopLoop('done');
         return;
       }
+    }
 
-    // Initialize with current buffer
-    const current = getStream(messageId) || base;
-    fullContentRef.current = current;
-
-    // Subscribe to future updates (updates ref only, no render)
-    return subscribeStream(messageId, () => {
-      fullContentRef.current = getStream(messageId);
-    });
-  }, [messageId, streaming, base]);
-
-  // 2. The "Liquid" Physics Loop: Controls rendering speed (30-60 FPS)
-  useEffect(() => {
-    if (!streaming) return;
-
-    let lastFrame = Date.now();
-    let cursorTimer = 0;
-    let accumulatedTime = 0;
-
-    // CONFIGURATION: Controls smoothness. 
-    // 15ms = ~66 chars/second (Very smooth)
-    const MS_PER_CHAR = 15; 
-
-    const tick = () => {
-      const now = Date.now();
-      const delta = now - lastFrame;
-      lastFrame = now;
-      accumulatedTime += delta;
-
-      // --- Cursor Blinking ---
-      cursorTimer += delta;
-      if (cursorTimer > 500) { // Blink every 500ms
-        cursorVisibleRef.current = !cursorVisibleRef.current;
-        cursorTimer = 0;
-      }
-
-      const fullContent = fullContentRef.current;
-      const currentLen = displayLengthRef.current;
-      const targetLen = fullContent.length;
-      
-      // --- Typing Logic ---
-      if (accumulatedTime >= MS_PER_CHAR && currentLen < targetLen) {
-        
-        // Determine how many characters to add this frame
-        let charsToAdd = Math.floor(accumulatedTime / MS_PER_CHAR);
-        const distance = targetLen - currentLen;
-        
-        // Adaptive Velocity:
-        // If falling behind (>100 chars), speed up slightly (max 3 chars/frame).
-        // Otherwise, stick to 1 char/frame for maximum smoothness.
-        if (distance > 100) charsToAdd = Math.max(charsToAdd, 3);
-        else charsToAdd = 1; 
-
-        // Deduct time used
-        accumulatedTime = accumulatedTime % MS_PER_CHAR;
-
-        const nextLen = Math.min(currentLen + charsToAdd, targetLen);
-        const nextSlice = fullContent.substring(0, nextLen);
-        
-        displayLengthRef.current = nextLen;
-
-        // Add cursor to the end of the string
-        const textWithCursor = cursorVisibleRef.current 
-          ? nextSlice + CURSOR_CHAR 
-          : nextSlice + '  ';
-
-        setDisplayedText(textWithCursor);
-      } 
-      // If waiting for network, just animate the cursor
-      else if (currentLen === targetLen) {
-         const slice = fullContent.substring(0, currentLen);
-         const textWithCursor = cursorVisibleRef.current 
-          ? slice + CURSOR_CHAR 
-          : slice + '  ';
-         
-         // Only update state if cursor changed to prevent useless renders
-         setDisplayedText(prev => prev !== textWithCursor ? textWithCursor : prev);
-      }
-
-      loopRef.current = requestAnimationFrame(tick);
-    };
+    if (isChatDebugEnabled('streaming') && now - lastTickLogRef.current > 1000) {
+      lastTickLogRef.current = now;
+      chatDebugLog('streaming', 'tick', {
+        messageId: messageIdRef.current,
+        displayedLen: displayLengthRef.current,
+        targetLen: targetTextRef.current.length,
+        distance: targetTextRef.current.length - displayLengthRef.current,
+        streaming: streamingRef.current,
+      });
+    }
 
     loopRef.current = requestAnimationFrame(tick);
+  }, [stopLoop]);
 
-    return () => {
-      if (loopRef.current) cancelAnimationFrame(loopRef.current);
-    };
-  }, [streaming]);
+  const startLoop = useCallback((reason) => {
+    if (loopRef.current) return;
+    lastFrameRef.current = Date.now();
+    accumulatedTimeRef.current = 0;
+    cursorTimerRef.current = 0;
+    loopRef.current = requestAnimationFrame(tick);
+    chatDebugLog('streaming', 'loopStart', {
+      messageId: messageIdRef.current,
+      reason,
+      displayedLen: displayLengthRef.current,
+      targetLen: targetTextRef.current.length,
+      streaming: streamingRef.current,
+    });
+  }, [tick]);
+
+  // Reset internal state when message changes.
+  useEffect(() => {
+    stopLoop('messageChange');
+    targetTextRef.current = base || '';
+    displayLengthRef.current = (base || '').length;
+    lastNetLenRef.current = (base || '').length;
+    cursorVisibleRef.current = true;
+    lastTickLogRef.current = 0;
+    lastNetLogRef.current = 0;
+    setDisplayedText(base || '');
+    return () => stopLoop('unmount');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [messageId]);
+
+  // 1) Network listener: keep targetTextRef in sync with streaming buffer.
+  useEffect(() => {
+    if (!messageId || !streaming) return;
+
+    const current = getStream(messageId) || base || '';
+    if (current.length >= (targetTextRef.current || '').length) {
+      targetTextRef.current = current;
+      lastNetLenRef.current = current.length;
+    }
+    chatDebugLog('streaming', 'start', {
+      messageId,
+      baseLen: (base || '').length,
+      bufferLen: (targetTextRef.current || '').length,
+      displayedLen: displayLengthRef.current,
+    });
+
+    startLoop('streaming');
+
+    return subscribeStream(messageId, () => {
+      const next = getStream(messageId) || '';
+      if (next.length >= (targetTextRef.current || '').length) {
+        targetTextRef.current = next;
+      }
+
+      if (isChatDebugEnabled('streaming')) {
+        const now = Date.now();
+        const nextLen = next.length;
+        const deltaChars = nextLen - lastNetLenRef.current;
+        if (deltaChars !== 0 && now - lastNetLogRef.current > 400) {
+          lastNetLogRef.current = now;
+          chatDebugLog('streaming', 'net', {
+            messageId,
+            deltaChars,
+            bufferLen: nextLen,
+            displayedLen: displayLengthRef.current,
+          });
+        }
+        lastNetLenRef.current = nextLen;
+      }
+
+      startLoop('netUpdate');
+    });
+  }, [messageId, streaming, base, startLoop]);
+
+  // 2) When network streaming ends, keep typing until we fully "drain" to the final text.
+  useEffect(() => {
+    if (!messageId || streaming) return;
+
+    const fromBuf = getStream(messageId) || '';
+    const baseText = base || '';
+    const existing = targetTextRef.current || '';
+    const final =
+      baseText.length >= fromBuf.length && baseText.length >= existing.length
+        ? baseText
+        : (fromBuf.length >= existing.length ? fromBuf : existing);
+
+    if (final.length >= existing.length) targetTextRef.current = final;
+
+    if (displayLengthRef.current < final.length) {
+      chatDebugLog('streaming', 'drainStart', {
+        messageId,
+        finalLen: final.length,
+        displayedLen: displayLengthRef.current,
+      });
+      startLoop('drain');
+    } else {
+      setDisplayedText(final);
+      chatDebugLog('streaming', 'finalize', {
+        messageId,
+        baseLen: baseText.length,
+        finalLen: final.length,
+        displayedLen: displayLengthRef.current,
+      });
+    }
+  }, [messageId, streaming, base, startLoop]);
 
   // 3. Skeleton State (Thinking)
   const showSkeleton = streaming && displayLengthRef.current === 0;
