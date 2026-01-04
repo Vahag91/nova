@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import { userStyles, assistantStyles } from './markdownStyles';
+import ChatText from '../ChatText';
+import { MarkdownLink } from './MarkdownLink';
 
 
 export const MarkdownList = ({ 
@@ -33,6 +35,51 @@ export const MarkdownListItem = ({
   isUser = false 
 }) => {
   const styles = isUser ? userStyles : assistantStyles;
+  const useUiTextView = Platform.OS === 'ios' && !isUser;
+
+  const renderSelectableRuns = () => {
+    const arr = React.Children.toArray(children);
+    const out = [];
+    let run = [];
+    let k = 0;
+
+    const isTextLike = (child) => {
+      if (typeof child === 'string' || typeof child === 'number') return true;
+      if (!React.isValidElement(child)) return false;
+      if (child.type === ChatText) return true;
+      // react-native Text
+      if (child.type === Text) return true;
+      if (child.type === MarkdownLink) return true;
+      // Common heuristic: RN Text has displayName "Text"
+      if (child.type && child.type.displayName === 'Text') return true;
+      return false;
+    };
+
+    const flush = () => {
+      if (!run.length) return;
+      out.push(
+        <ChatText
+          key={`li-sel-${index}-${k++}`}
+          selectable
+          uiTextView
+          style={styles.body || styles.text}
+        >
+          {run}
+        </ChatText>,
+      );
+      run = [];
+    };
+
+    for (const child of arr) {
+      if (isTextLike(child)) run.push(child);
+      else {
+        flush();
+        out.push(React.isValidElement(child) ? React.cloneElement(child, { key: `li-nt-${index}-${k++}` }) : child);
+      }
+    }
+    flush();
+    return out;
+  };
   
   const renderBulletOrNumber = () => {
     if (type === 'ol') {
@@ -55,7 +102,7 @@ export const MarkdownListItem = ({
       {renderBulletOrNumber()}
       
       <View style={styles.contentContainer}>
-        {children}
+        {useUiTextView ? renderSelectableRuns() : children}
       </View>
     </View>
   );

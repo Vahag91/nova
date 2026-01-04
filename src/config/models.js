@@ -4,9 +4,9 @@
 
 const DEFAULT_MODELS = {
   // ===== OpenAI =====
-  'gpt-5.1': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5.1', group: 'OpenAI', labels: ['NEW', 'BEST'] }, temperatureSupported: true },
+  'gpt-5.2': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5.2', group: 'OpenAI', labels: ['NEW', 'BEST'] }, temperatureSupported: true },
   'gpt-5': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5', group: 'OpenAI', labels: ['NEW', 'BEST'] }, temperatureSupported: true },
-  'gpt-5.1-chat-latest': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5.1 Chat', group: 'OpenAI', labels: ['NEW', 'BEST'] }, temperatureSupported: true },
+  'gpt-5.2-chat-latest': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5.2 Chat', group: 'OpenAI', labels: ['NEW', 'BEST'] }, temperatureSupported: true },
   'gpt-5-mini': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5 Mini', group: 'OpenAI', labels: ['NEW'] }, temperatureSupported: true },
   'gpt-5-nano': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'GPT-5 Nano', group: 'OpenAI', labels: ['NEW'] }, temperatureSupported: true },
   'o4-mini': { provider: 'openai', kind: 'chat', caps: { visionInput: true, imageGen: false, audioIn: true, audioOut: false }, display: { name: 'O4 Mini', group: 'OpenAI', labels: ['NEW'] }, temperatureSupported: true },

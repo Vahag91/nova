@@ -741,7 +741,7 @@ export default function PaywallScreen({
           <GradientText
             style={[styles.title, isCompactHeight && styles.titleCompact]}
           >
-            GPT-5.1, Grok 4, Gemini 3
+            GPT-5.2, Grok 4, Gemini 3
           </GradientText>
 
           {/* Features */}

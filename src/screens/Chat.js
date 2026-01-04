@@ -38,6 +38,7 @@ import { setPendingPremiumAction } from '../state/premiumActions';
 import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
 import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
 import RateUsService from '../services/RateUsService';
+import ChatToast from '../components/chat/ChatToast';
 
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
@@ -120,16 +121,36 @@ export default function Chat({ navigation }) {
   const [offline, setOffline] = useState(false);
   const [streamingMsgId, setStreamingMsgId] = useState(null);
   const [forceCollapseInput, setForceCollapseInput] = useState(false);
+
+  const toastTimerRef = useRef(null);
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const showToast = useCallback((message) => {
+    const msg = String(message || '').trim();
+    if (!msg) return;
+    setToastMessage(msg);
+    setToastVisible(true);
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    toastTimerRef.current = setTimeout(() => {
+      setToastVisible(false);
+    }, 1200);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    };
+  }, []);
   
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
   const [webSearchNext, setWebSearchNext] = useState(false); 
   const resolvedActiveModel = useMemo(
-    () => (activeModelKey === 'gpt-5-nano' ? 'gpt-5.1-chat-latest' : activeModelKey),
+    () => (activeModelKey === 'gpt-5-nano' ? 'gpt-5.2-chat-latest' : activeModelKey),
     [activeModelKey]
   );
   const requestModelKey = useMemo(
-    () => (webSearchNext ? 'gpt-5.1' : resolvedActiveModel),
+    () => (webSearchNext ? 'gpt-5.2' : resolvedActiveModel),
     [webSearchNext, resolvedActiveModel]
   );
   const successfulMessagesRef = useRef(0); 
@@ -732,6 +753,7 @@ export default function Chat({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <ChatToast visible={toastVisible} message={toastMessage} />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={{ flex: 1 }}
@@ -789,6 +811,7 @@ export default function Chat({ navigation }) {
                     streaming={streaming}
                     streamingMessageId={streamingMsgId}
                     onRetryFromHere={onRetryFromHere}
+                    onToast={showToast}
                     threadKey={activeThread.id}
                     contentContainerStyle={{ paddingBottom: 20 }}
                   />

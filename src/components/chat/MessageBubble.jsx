@@ -1,9 +1,10 @@
-import React, { useMemo, memo, useState } from 'react';
+import React, { useEffect, useMemo, memo, useRef, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
+  Pressable,
   ActionSheetIOS,
   Platform,
   Alert,
@@ -19,6 +20,7 @@ import SvgIcon from '../SvgIcon';
 import StreamingText from './StreamingText';
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
+import { plainTextFromMarkdown } from '../../lib/plainTextFromMarkdown';
 
 // --- image helpers (stable, no global regex side-effects) ---
 const IMG_TAG_RE = /!\[[^\]]*\]\(([^)]+)\)/; // non-global: safe for .test()
@@ -142,6 +144,7 @@ const MessageBubbleImpl = function MessageBubble({
   isLastInGroup,
   showMeta = false,
   onRetryFromHere,
+  onToast,
   streaming = false,
   streamingMessageId,
 }) {
@@ -164,6 +167,21 @@ const MessageBubbleImpl = function MessageBubble({
   const failedLabel = t('chat.status.failed', { defaultValue: 'Failed' });
   const sentLabel = t('chat.status.sent', { defaultValue: 'Sent' });
 
+  const copyTimerRef = useRef(null);
+  const [copyJustHappened, setCopyJustHappened] = useState(false);
+  useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+    };
+  }, []);
+
+  const flashCopyFeedback = () => {
+    setCopyJustHappened(true);
+    if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+    copyTimerRef.current = setTimeout(() => setCopyJustHappened(false), 1000);
+    onToast?.(t('chat.copied', { defaultValue: 'Copied' }));
+  };
+
   const cornerStyle = useMemo(
     () =>
       isUser
@@ -183,8 +201,9 @@ const MessageBubbleImpl = function MessageBubble({
   );
 
   const onCopy = () => {
-    Clipboard.setString(message.content || '');
+    Clipboard.setString(plainTextFromMarkdown(message.content || ''));
     Haptic.trigger('notificationSuccess');
+    flashCopyFeedback();
   };
 
   const onShare = async () => {
@@ -351,6 +370,46 @@ const MessageBubbleImpl = function MessageBubble({
                 return null;
               }
 
+              const assistantInner = (
+                <View
+                  style={[
+                    styles.assistantTextContainer,
+                    isStreamingThis && styles.assistantTight,
+                  ]}
+                  accessibilityLiveRegion="polite"
+                >
+                  <StreamingText
+                    messageId={message.id}
+                    base={baseContent}
+                    streaming={isStreamingThis}
+                    activityText={message?.meta?.activity}
+                  />
+                  {showMeta && (
+                    <View style={styles.metaRow}>
+                      {!!model && (
+                        <View style={styles.modelTag}>
+                          <Text style={styles.modelText}>{model}</Text>
+                        </View>
+                      )}
+                      {!!status && (
+                        <Text style={styles.metaTime}>
+                          {status === 'pending'
+                            ? sendingLabel
+                            : status === 'failed'
+                            ? failedLabel
+                            : sentLabel}
+                        </Text>
+                      )}
+                    </View>
+                  )}
+                </View>
+              );
+
+              // iOS: avoid touch wrappers so UITextView selection can work.
+              if (Platform.OS === 'ios') {
+                return <View style={styles.assistantPressable}>{assistantInner}</View>;
+              }
+
               return (
                 <TouchableOpacity
                   activeOpacity={0.92}
@@ -361,79 +420,78 @@ const MessageBubbleImpl = function MessageBubble({
                   onMoveShouldSetResponderCapture={() => false}
                   style={styles.assistantPressable}
                 >
-                  <View
-                    style={[
-                      styles.assistantTextContainer,
-                      isStreamingThis && styles.assistantTight,
-                    ]}
-                    accessibilityLiveRegion="polite"
-                  >
-                    <StreamingText
-                      messageId={message.id}
-                      base={baseContent}
-                      streaming={isStreamingThis}
-                      activityText={message?.meta?.activity}
-                    />
-                    {showMeta && (
-                      <View style={styles.metaRow}>
-                        {!!model && (
-                          <View style={styles.modelTag}>
-                            <Text style={styles.modelText}>{model}</Text>
-                          </View>
-                        )}
-                        {!!status && (
-                          <Text style={styles.metaTime}>
-                            {status === 'pending'
-                              ? sendingLabel
-                              : status === 'failed'
-                              ? failedLabel
-                              : sentLabel}
-                          </Text>
-                        )}
-                      </View>
-                    )}
-                  </View>
+                  {assistantInner}
                 </TouchableOpacity>
               );
             })()}
       </View>
 
-      {/* Quick actions (visible under AI bubbles) */}
-      {!isUser && (
-        <View style={styles.actionRow}>
-          <TouchableOpacity
+      {/* Quick actions (visible under bubbles) */}
+      {(!isUser || message?.meta?.status !== 'failed') && (
+        <View
+          style={[
+            styles.actionRow,
+            isUser ? styles.actionRowUser : styles.actionRowAssistant,
+          ]}
+        >
+          <Pressable
             style={({ pressed }) => [
               styles.actionButton,
+              !isUser && styles.actionButtonAssistant,
               pressed && styles.actionButtonPressed,
             ]}
             onPress={onCopy}
             accessibilityLabel={t('chat.copyMessage')}
             accessibilityHint={t('chat.copyMessageHint')}
           >
-            <SvgIcon name="copy" size={18} color={colors.textSecondary} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={({ pressed }) => [
-              styles.actionButton,
-              pressed && styles.actionButtonPressed,
-            ]}
-            onPress={onShare}
-            accessibilityLabel={t('chat.shareMessage')}
-            accessibilityHint={t('chat.shareMessageHint')}
-          >
-            <SvgIcon name="share" size={18} color={colors.textSecondary} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={({ pressed }) => [
-              styles.actionButton,
-              pressed && styles.actionButtonPressed,
-            ]}
-            onPress={onRegenerate}
-            accessibilityLabel={t('chat.regenerateResponse')}
-            accessibilityHint={t('chat.regenerateResponseHint')}
-          >
-            <SvgIcon name="repeat" size={18} color={colors.textSecondary} />
-          </TouchableOpacity>
+            <SvgIcon
+              name={copyJustHappened ? 'check-bold' : 'copy'}
+              size={18}
+              color={copyJustHappened ? colors.success : colors.textSecondary}
+            />
+          </Pressable>
+
+          {!isUser && (
+            <>
+              <Pressable
+                style={({ pressed }) => [
+                  styles.actionButton,
+                  styles.actionButtonAssistant,
+                  pressed && styles.actionButtonPressed,
+                ]}
+                onPress={onShare}
+                accessibilityLabel={t('chat.shareMessage')}
+                accessibilityHint={t('chat.shareMessageHint')}
+              >
+                <SvgIcon name="share" size={18} color={colors.textSecondary} />
+              </Pressable>
+              <Pressable
+                style={({ pressed }) => [
+                  styles.actionButton,
+                  styles.actionButtonAssistant,
+                  pressed && styles.actionButtonPressed,
+                ]}
+                onPress={onRegenerate}
+                accessibilityLabel={t('chat.regenerateResponse')}
+                accessibilityHint={t('chat.regenerateResponseHint')}
+              >
+                <SvgIcon name="repeat" size={18} color={colors.textSecondary} />
+              </Pressable>
+            </>
+          )}
+
+          {isUser && (
+            <Pressable
+              style={({ pressed }) => [
+                styles.actionButton,
+                pressed && styles.actionButtonPressed,
+              ]}
+              onPress={onRegenerate}
+              accessibilityLabel={retryLabel}
+            >
+              <SvgIcon name="repeat" size={18} color={colors.textSecondary} />
+            </Pressable>
+          )}
         </View>
       )}
 
@@ -522,22 +580,37 @@ const styles = StyleSheet.create({
   modelText: { fontSize: 10, color: colors.textSecondary },
   metaTime: { fontSize: 10, color: colors.textMuted },
 
-  actionRow: { flexDirection: 'row', gap: 12, marginTop: -2, marginLeft: 10 },
+  actionRow: { flexDirection: 'row' },
+  actionRowAssistant: {
+    marginLeft: 4,
+    marginRight: 0,
+    marginTop: -10,
+    gap: 2,
+    alignSelf: 'flex-start',
+  },
+  actionRowUser: {
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: -2,
+    gap: 0,
+    alignSelf: 'flex-end',
+  },
   actionButton: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 0,
     paddingVertical: 8,
-    backgroundColor: colors.surfaceElevated,
+    backgroundColor: 'transparent',
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: 36,
+    minWidth: 32,
     minHeight: 36,
   },
+  actionButtonAssistant: {
+    minWidth: 28,
+  },
   actionButtonPressed: {
-    backgroundColor: colors.border,
-    transform: [{ scale: 0.95 }],
+    opacity: 0.6,
+    transform: [{ scale: 0.96 }],
   },
 
   failedRow: { marginTop: 6, alignSelf: 'flex-end' },

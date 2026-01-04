@@ -48,6 +48,7 @@ const MessageListCore = function MessageList({
   streaming,
   streamingMessageId,
   onRetryFromHere,
+  onToast,
   threadKey,
 }, ref) {
   // Debuggers removed (focus on voice only)
@@ -342,6 +343,7 @@ const MessageListCore = function MessageList({
           isFirstInGroup={isFirstInGroup}
           isLastInGroup={isLastInGroup}
           onRetryFromHere={onRetryFromHere}
+          onToast={onToast}
           showMeta={isLastInGroup}
           streaming={!!isStreamingItem}
           streamingMessageId={streamingMessageId}
@@ -350,7 +352,7 @@ const MessageListCore = function MessageList({
     } catch {
       return null;
     }
-  }, [streaming, streamingMessageId, onRetryFromHere]);
+  }, [streaming, streamingMessageId, onRetryFromHere, onToast]);
   // Stable extraData - use string to avoid object reference changes
   // Only include streaming message ID to minimize re-renders
   const extraData = useMemo(() => {

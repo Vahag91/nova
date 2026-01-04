@@ -1,5 +1,5 @@
 import React, { useMemo, memo } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import Animated, { FadeIn, Easing } from 'react-native-reanimated';
 
@@ -13,6 +13,7 @@ import { MarkdownLink } from './markdown/MarkdownLink';
 import TableWrapper, { TableRow, TableCell } from './markdown/MarkdownTable';
 import { MarkdownImage } from './markdown/MarkdownImage';
 import { MarkdownList, MarkdownListItem } from './markdown/MarkdownList';
+import ChatText from './ChatText';
 
 // 3. PREPROCESSOR
 function preprocess(md) {
@@ -76,9 +77,87 @@ function preprocess(md) {
 function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
   const cleaned = useMemo(() => preprocess(text), [text]);
   const styles = isUser ? userStyles : assistantStyles;
+  const useUiTextView = Platform.OS === 'ios' && !isUser;
+
+  const renderSelectableRuns = useMemo(() => {
+    if (!useUiTextView) return null;
+
+    const isNonTextNode = (child) =>
+      React.isValidElement(child) && child.type === MarkdownImage;
+
+    return (children, keyBase) => {
+      const arr = React.Children.toArray(children);
+      const out = [];
+      let run = [];
+      let k = 0;
+
+      const flush = () => {
+        if (!run.length) return;
+        out.push(
+          <ChatText
+            key={`${keyBase}-sel-${k++}`}
+            selectable
+            uiTextView
+            style={styles.body}
+          >
+            {run}
+          </ChatText>,
+        );
+        run = [];
+      };
+
+      for (const child of arr) {
+        if (isNonTextNode(child)) {
+          flush();
+          out.push(React.cloneElement(child, { key: `${keyBase}-nt-${k++}` }));
+          continue;
+        }
+        run.push(child);
+      }
+
+      flush();
+      return out;
+    };
+  }, [styles.body, useUiTextView]);
 
   const rules = useMemo(() => ({
     // --- CUSTOM COMPONENTS (Things that need special logic) ---
+
+    // iOS assistant: render all text nodes as UITextView children so selection works per-block.
+    ...(useUiTextView
+      ? {
+          text: (node, children, parent, styles, inheritedStyles = {}) => (
+            <ChatText key={node.key} style={[inheritedStyles, styles.text]}>
+              {node.content}
+            </ChatText>
+          ),
+          strong: (node, children, parent, styles) => (
+            <ChatText key={node.key} style={styles.strong}>
+              {children}
+            </ChatText>
+          ),
+          em: (node, children, parent, styles) => (
+            <ChatText key={node.key} style={styles.em}>
+              {children}
+            </ChatText>
+          ),
+          s: (node, children, parent, styles) => (
+            <ChatText key={node.key} style={styles.s}>
+              {children}
+            </ChatText>
+          ),
+          hardbreak: (node, children, parent, styles) => (
+            <ChatText key={node.key} style={styles.hardbreak}>
+              {'\n'}
+            </ChatText>
+          ),
+          softbreak: (node, children, parent, styles) => (
+            <ChatText key={node.key} style={styles.softbreak}>
+              {'\n'}
+            </ChatText>
+          ),
+        }
+      : null),
 
     // 1. CODE BLOCKS
     fence: (node) => {
@@ -91,7 +170,16 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
       return <CodeBlock key={node.key} language="text" content={content} />;
     },
     // Keep this one because we want a specific look for inline code
-    code_inline: (node) => <Text key={node.key} style={styles.code_inline}>{node.content}</Text>,
+    code_inline: (node) =>
+      useUiTextView ? (
+        <ChatText key={node.key} style={styles.code_inline}>
+          {node.content}
+        </ChatText>
+      ) : (
+        <Text key={node.key} style={styles.code_inline}>
+          {node.content}
+        </Text>
+      ),
 
     // 2. ALERTS (Blockquote)
     blockquote: (node, children) => (
@@ -127,30 +215,48 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
     },
     // 🟢 1. PARAGRAPH: Enforce the "Premium" Body Style
     // This ensures LineHeight: 28, FontSize: 16, and proper spacing.
-    paragraph: (node, children) => (
-      <View key={node.key} style={styles.paragraph}>
-        <Text style={styles.body}>{children}</Text>
-      </View>
-    ),
+    paragraph: (node, children) =>
+      useUiTextView ? (
+        <View key={node.key} style={styles.paragraph}>
+          {renderSelectableRuns ? renderSelectableRuns(children, `p-${node.key}`) : null}
+        </View>
+      ) : (
+        <View key={node.key} style={styles.paragraph}>
+          <Text style={styles.body}>{children}</Text>
+        </View>
+      ),
 
     // 🟢 2. TEXTGROUP: Catches "Loose" Text (Conversation)
     // Often, simple replies like "Hello!" are not wrapped in paragraphs.
     // This forces them to look just as good.
-    textgroup: (node, children) => (
-      <Text key={node.key} style={styles.body}>{children}</Text>
-    ),
+    textgroup: (node, children) =>
+      useUiTextView ? (
+        <ChatText key={node.key} selectable uiTextView style={styles.body}>
+          {children}
+        </ChatText>
+      ) : (
+        <Text key={node.key} style={styles.body}>
+          {children}
+        </Text>
+      ),
     // 6. CUSTOM TYPOGRAPHY
     // We ONLY define this because we want the extra separator line.
     // We let the library handle heading2, heading3, paragraph, text, strong, em automatically.
     heading1: (node, children) => (
       <View key={node.key} style={{ marginTop: 24, marginBottom: 12 }}>
-        <Text style={styles.heading1}>{children}</Text>
+        {useUiTextView ? (
+          <ChatText selectable uiTextView style={styles.heading1}>
+            {children}
+          </ChatText>
+        ) : (
+          <Text style={styles.heading1}>{children}</Text>
+        )}
         <View style={{ height: 1, backgroundColor: '#333', marginTop: 8, width: '100%' }} />
       </View>
     ),
 
     hr: (node) => <View key={node.key} style={baseStyles.hr} />,
-  }), [isUser, styles]);
+  }), [isUser, renderSelectableRuns, styles, useUiTextView]);
 
   const container = animateOnMount
     ? { entering: FadeIn.duration(180).easing(Easing.out(Easing.cubic)) }

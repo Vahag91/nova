@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
-import { Text, Linking, StyleSheet } from 'react-native';
+import { Text, Linking, StyleSheet, Platform } from 'react-native';
 import { colors } from '../../../styles/colors';
 import { userStyles, assistantStyles } from './markdownStyles';
+import ChatText from '../ChatText';
 
 export const MarkdownLink = ({ node, children, isUser }) => {
   const url = node?.attributes?.href || '';
@@ -41,32 +42,33 @@ export const MarkdownLink = ({ node, children, isUser }) => {
 
   const baseStyle = isUser ? userStyles.link : assistantStyles.link;
   const linkColor = isUser ? '#FFFFFF' : colors.primary;
+  const LinkText = Platform.OS === 'ios' && !isUser ? ChatText : Text;
 
   if (isWiki) {
     return (
-      <Text style={[baseStyle, styles.inlineLink]} onPress={onPress}>
-        <Text style={styles.wikiGlyph}>⌁</Text>
-        <Text style={styles.linkLabel}> {title} </Text>
-        <Text style={[styles.arrow, { color: linkColor }]}>↗</Text>
-      </Text>
+      <LinkText style={[baseStyle, styles.inlineLink]} onPress={onPress}>
+        <LinkText style={styles.wikiGlyph}>⌁</LinkText>
+        <LinkText style={styles.linkLabel}> {title} </LinkText>
+        <LinkText style={[styles.arrow, { color: linkColor }]}>↗</LinkText>
+      </LinkText>
     );
   }
 
   if (isYoutube) {
     return (
-      <Text style={[baseStyle, styles.inlineLink]} onPress={onPress}>
-        <Text style={[styles.playGlyph, { color: '#FF6B6B' }]}>▶</Text>
-        <Text style={styles.linkLabel}> Watch Video </Text>
-        <Text style={[styles.arrow, { color: linkColor }]}>↗</Text>
-      </Text>
+      <LinkText style={[baseStyle, styles.inlineLink]} onPress={onPress}>
+        <LinkText style={[styles.playGlyph, { color: '#FF6B6B' }]}>▶</LinkText>
+        <LinkText style={styles.linkLabel}> Watch Video </LinkText>
+        <LinkText style={[styles.arrow, { color: linkColor }]}>↗</LinkText>
+      </LinkText>
     );
   }
 
   return (
-    <Text style={[baseStyle, styles.inlineLink]} onPress={onPress}>
-      <Text style={styles.linkLabel}>{title || parsed.domain} </Text>
-      <Text style={[styles.arrow, { color: linkColor }]}>↗</Text>
-    </Text>
+    <LinkText style={[baseStyle, styles.inlineLink]} onPress={onPress}>
+      <LinkText style={styles.linkLabel}>{title || parsed.domain} </LinkText>
+      <LinkText style={[styles.arrow, { color: linkColor }]}>↗</LinkText>
+    </LinkText>
   );
 };
 

@@ -163,8 +163,8 @@ export const userStyles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     lineHeight: 24,
-    paddingHorizontal: 8,
-    paddingVertical: 10,
+    paddingHorizontal: 2,
+    paddingVertical: 5,
   },
   // Catch-all for loose text
   text: {
