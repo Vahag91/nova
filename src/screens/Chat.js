@@ -803,20 +803,23 @@ export default function Chat({ navigation }) {
               interpolator="ios"
               showOnKeyboardWillShow={false}
             >
-              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.flex1}>
-                  <MessageList
-                    ref={messageListRef}
-                    messages={messagesNoSystem}
-                    streaming={streaming}
-                    streamingMessageId={streamingMsgId}
-                    onRetryFromHere={onRetryFromHere}
-                    onToast={showToast}
-                    threadKey={activeThread.id}
-                    contentContainerStyle={{ paddingBottom: 20 }}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
+              <View
+                style={styles.flex1}
+                onTouchStart={(e) => {
+                  Keyboard.dismiss();
+                }}
+              >
+                <MessageList
+                  ref={messageListRef}
+                  messages={messagesNoSystem}
+                  streaming={streaming}
+                  streamingMessageId={streamingMsgId}
+                  onRetryFromHere={onRetryFromHere}
+                  onToast={showToast}
+                  threadKey={activeThread.id}
+                  contentContainerStyle={{ paddingBottom: 20 }}
+                />
+              </View>
             </KeyboardGestureArea>
           )}
 
