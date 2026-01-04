@@ -71,14 +71,23 @@ export const useSettingsStore = create((set, get) => ({
 
   // registry
   setModels: (incoming) => {
-    // Merge server models (left wins) over local defaults for easy rollout.
-    const merged = { ...DEFAULT_MODELS, ...(incoming && typeof incoming === 'object' ? incoming : {}) };
-    set({ models: merged });
+    const isValidIncoming =
+      incoming &&
+      typeof incoming === 'object' &&
+      !Array.isArray(incoming) &&
+      Object.keys(incoming).length > 0;
 
-    // If current model is missing (e.g., renamed upstream), fall back gracefully.
+    const nextModels = isValidIncoming ? incoming : DEFAULT_MODELS;
+    set({ models: nextModels });
+
+    // If current model is missing (e.g., removed upstream), fall back gracefully.
     const cur = get().model;
-    if (!merged[cur]) {
-      set({ model: 'gpt-5-nano' });
+    if (!nextModels?.[cur]) {
+      const fallback =
+        nextModels?.[FREE_MODEL]
+          ? FREE_MODEL
+          : (Object.keys(nextModels).find(k => nextModels?.[k]?.kind === 'chat') || Object.keys(nextModels)[0] || FREE_MODEL);
+      set({ model: fallback });
       get().save();
     }
   },
@@ -95,12 +104,17 @@ export const useSettingsStore = create((set, get) => ({
       const { fetchModels } = await import('../api/models'); // you already call MODELS_URL elsewhere
       const incoming = await fetchModels();
       if (incoming && Object.keys(incoming).length > 0) {
-        const merged = { ...DEFAULT_MODELS, ...incoming };
-        set({ models: merged });
+        set({ models: incoming });
 
         // guard current selection
         const cur = get().model;
-        if (!merged[cur]) set({ model: 'gpt-5-nano' });
+        if (!incoming[cur]) {
+          const fallback =
+            incoming?.[FREE_MODEL]
+              ? FREE_MODEL
+              : (Object.keys(incoming).find(k => incoming?.[k]?.kind === 'chat') || Object.keys(incoming)[0] || FREE_MODEL);
+          set({ model: fallback });
+        }
         return true;
       }
     } catch {}

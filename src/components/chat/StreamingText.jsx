@@ -7,7 +7,7 @@ import { colors } from '../../styles/colors';
 
 const CURSOR_CHAR = ' ▋'; 
 
-function StreamingText({ messageId, base = '', streaming = false, activityText }) {
+function StreamingText({ messageId, base = '', streaming = false, activityText, selectionResetToken }) {
   // The text currently visible on screen
   const [displayedText, setDisplayedText] = useState(base || '');
   const pulseAnim = useRef(new Animated.Value(0)).current;
@@ -260,6 +260,7 @@ function StreamingText({ messageId, base = '', streaming = false, activityText }
         isUser={false} 
         animateOnMount={false} 
         streaming={streaming} 
+        selectionResetToken={selectionResetToken}
       />
     </View>
   );

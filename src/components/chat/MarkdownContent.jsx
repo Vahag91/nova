@@ -74,10 +74,11 @@ function preprocess(md) {
   return s;
 }
 
-function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
+function MarkdownContentImpl({ text, isUser, animateOnMount = false, selectionResetToken = 0 }) {
   const cleaned = useMemo(() => preprocess(text), [text]);
   const styles = isUser ? userStyles : assistantStyles;
   const useUiTextView = Platform.OS === 'ios' && !isUser;
+  const keySalt = selectionResetToken || 0;
 
   const renderSelectableRuns = useMemo(() => {
     if (!useUiTextView) return null;
@@ -95,7 +96,7 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
         if (!run.length) return;
         out.push(
           <ChatText
-            key={`${keyBase}-sel-${k++}`}
+            key={`${keyBase}-sel-${k++}-${keySalt}`}
             selectable
             uiTextView
             style={styles.body}
@@ -118,7 +119,7 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
       flush();
       return out;
     };
-  }, [styles.body, useUiTextView]);
+  }, [styles.body, useUiTextView, keySalt]);
 
   const rules = useMemo(() => ({
     // --- CUSTOM COMPONENTS (Things that need special logic) ---
@@ -127,32 +128,32 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
     ...(useUiTextView
       ? {
           text: (node, children, parent, styles, inheritedStyles = {}) => (
-            <ChatText key={node.key} style={[inheritedStyles, styles.text]}>
+            <ChatText key={`${node.key}-${keySalt}`} style={[inheritedStyles, styles.text]}>
               {node.content}
             </ChatText>
           ),
           strong: (node, children, parent, styles) => (
-            <ChatText key={node.key} style={styles.strong}>
+            <ChatText key={`${node.key}-${keySalt}`} style={styles.strong}>
               {children}
             </ChatText>
           ),
           em: (node, children, parent, styles) => (
-            <ChatText key={node.key} style={styles.em}>
+            <ChatText key={`${node.key}-${keySalt}`} style={styles.em}>
               {children}
             </ChatText>
           ),
           s: (node, children, parent, styles) => (
-            <ChatText key={node.key} style={styles.s}>
+            <ChatText key={`${node.key}-${keySalt}`} style={styles.s}>
               {children}
             </ChatText>
           ),
           hardbreak: (node, children, parent, styles) => (
-            <ChatText key={node.key} style={styles.hardbreak}>
+            <ChatText key={`${node.key}-${keySalt}`} style={styles.hardbreak}>
               {'\n'}
             </ChatText>
           ),
           softbreak: (node, children, parent, styles) => (
-            <ChatText key={node.key} style={styles.softbreak}>
+            <ChatText key={`${node.key}-${keySalt}`} style={styles.softbreak}>
               {'\n'}
             </ChatText>
           ),
@@ -218,7 +219,7 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
     paragraph: (node, children) =>
       useUiTextView ? (
         <View key={node.key} style={styles.paragraph}>
-          {renderSelectableRuns ? renderSelectableRuns(children, `p-${node.key}`) : null}
+          {renderSelectableRuns ? renderSelectableRuns(children, `p-${node.key}-${keySalt}`) : null}
         </View>
       ) : (
         <View key={node.key} style={styles.paragraph}>
@@ -231,7 +232,7 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
     // This forces them to look just as good.
     textgroup: (node, children) =>
       useUiTextView ? (
-        <ChatText key={node.key} selectable uiTextView style={styles.body}>
+        <ChatText key={`${node.key}-${keySalt}`} selectable uiTextView style={styles.body}>
           {children}
         </ChatText>
       ) : (
@@ -245,7 +246,7 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
     heading1: (node, children) => (
       <View key={node.key} style={{ marginTop: 24, marginBottom: 12 }}>
         {useUiTextView ? (
-          <ChatText selectable uiTextView style={styles.heading1}>
+          <ChatText key={`${node.key}-h1-${keySalt}`} selectable uiTextView style={styles.heading1}>
             {children}
           </ChatText>
         ) : (
@@ -256,7 +257,7 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
     ),
 
     hr: (node) => <View key={node.key} style={baseStyles.hr} />,
-  }), [isUser, renderSelectableRuns, styles, useUiTextView]);
+  }), [isUser, renderSelectableRuns, styles, useUiTextView, keySalt]);
 
   const container = animateOnMount
     ? { entering: FadeIn.duration(180).easing(Easing.out(Easing.cubic)) }
@@ -279,7 +280,11 @@ function MarkdownContentImpl({ text, isUser, animateOnMount = false }) {
 }
 
 const MarkdownContent = memo(MarkdownContentImpl, (prev, next) => {
-  return prev.text === next.text && prev.isUser === next.isUser;
+  return (
+    prev.text === next.text &&
+    prev.isUser === next.isUser &&
+    prev.selectionResetToken === next.selectionResetToken
+  );
 });
 
 export default MarkdownContent;

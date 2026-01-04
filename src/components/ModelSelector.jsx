@@ -85,7 +85,7 @@ export default function ModelSelector() {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [offlineOpacity, offlineScale]);
 
   // current trigger label
   const current = useMemo(() => {
@@ -109,7 +109,7 @@ export default function ModelSelector() {
       name: info?.display?.name || key,
       desc: getModelDescription(key, info, t),
       icon: glyphFor(info?.provider, key),
-      labels: info?.display?.labels || info?.labels || labelsFor(key, t), // Backend labels override hardcoded
+      labels: info?.display?.labels ?? info?.labels ?? labelsFor(key, t), // Backend labels override hardcoded (allow empty array)
       provider: (info?.provider || 'other').toLowerCase(),
       cost: getChatModelPrice(key),
     });
@@ -441,6 +441,10 @@ function glyphFor(provider, key) {
   return 'gpt';
 }
 function getModelDescription(key, info, t) {
+  // Priority 0: Backend literal description (lets you change copy without app update).
+  const backendDesc = typeof info?.display?.description === 'string' ? info.display.description.trim() : '';
+  if (backendDesc) return backendDesc;
+
   // Priority 1: Backend descriptionKey (translated via i18n)
   const descriptionKey = info?.display?.descriptionKey;
   if (descriptionKey) {
@@ -645,7 +649,7 @@ const styles = StyleSheet.create({
   cardRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 13,
+    gap: 8,
     paddingHorizontal: 11,
     paddingVertical: 11,
     backgroundColor: 'transparent',

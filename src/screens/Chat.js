@@ -100,6 +100,11 @@ export default function Chat({ navigation }) {
   // Local
   const messageListRef = useRef(null);
   const didInitialScrollRef = useRef(false);
+  const [selectionResetToken, setSelectionResetToken] = useState(0);
+  const tapRef = useRef({ x: 0, y: 0, ts: 0, moved: false });
+  const bumpSelectionResetToken = useCallback(() => {
+    setSelectionResetToken(v => v + 1);
+  }, []);
 
   const normalActive = useMemo(
     () => threads.find(d => d.id === activeThreadId) || null,
@@ -806,7 +811,32 @@ export default function Chat({ navigation }) {
               <View
                 style={styles.flex1}
                 onTouchStart={(e) => {
+                  const { pageX, pageY } = e?.nativeEvent || {};
+                  tapRef.current = {
+                    x: typeof pageX === 'number' ? pageX : 0,
+                    y: typeof pageY === 'number' ? pageY : 0,
+                    ts: Date.now(),
+                    moved: false,
+                  };
+                }}
+                onTouchMove={(e) => {
+                  const s = tapRef.current;
+                  if (!s.ts || s.moved) return;
+                  const { pageX, pageY } = e?.nativeEvent || {};
+                  if (typeof pageX !== 'number' || typeof pageY !== 'number') return;
+                  const dx = pageX - s.x;
+                  const dy = pageY - s.y;
+                  if (dx * dx + dy * dy > 64) s.moved = true; // ~8px
+                }}
+                onTouchEnd={() => {
+                  const s = tapRef.current;
+                  const dt = s.ts ? Date.now() - s.ts : 0;
+                  const isTap = !!s.ts && !s.moved && dt > 0 && dt < 260;
+                  tapRef.current.ts = 0;
+                  tapRef.current.moved = false;
+                  if (!isTap) return;
                   Keyboard.dismiss();
+                  bumpSelectionResetToken();
                 }}
               >
                 <MessageList
@@ -818,6 +848,7 @@ export default function Chat({ navigation }) {
                   onToast={showToast}
                   threadKey={activeThread.id}
                   contentContainerStyle={{ paddingBottom: 20 }}
+                  selectionResetToken={selectionResetToken}
                 />
               </View>
             </KeyboardGestureArea>

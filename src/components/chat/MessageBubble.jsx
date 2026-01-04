@@ -147,6 +147,7 @@ const MessageBubbleImpl = function MessageBubble({
   onToast,
   streaming = false,
   streamingMessageId,
+  selectionResetToken,
 }) {
   const { t } = useTranslation();
   const capsuleRadius = 22;
@@ -300,8 +301,8 @@ const MessageBubbleImpl = function MessageBubble({
                     onLongPress={showSheet}
                     delayLongPress={180}
                   >
-                    <View style={[styles.bubble, styles.user, cornerStyle]}>
-                      <MarkdownContent text={leftover} isUser={isUser} />
+                  <View style={[styles.bubble, styles.user, cornerStyle]}>
+                    <MarkdownContent text={leftover} isUser={isUser} selectionResetToken={selectionResetToken} />
                         {showMeta && (
                           <View style={styles.metaRow}>
                             {!!model && (
@@ -335,7 +336,7 @@ const MessageBubbleImpl = function MessageBubble({
                   delayLongPress={180}
                 >
                   <View style={[styles.bubble, styles.user, cornerStyle]}>
-                    <MarkdownContent text={content} isUser={isUser} />
+                    <MarkdownContent text={content} isUser={isUser} selectionResetToken={selectionResetToken} />
                     {showMeta && (
                       <View style={styles.metaRow}>
                         {!!model && (
@@ -383,6 +384,7 @@ const MessageBubbleImpl = function MessageBubble({
                     base={baseContent}
                     streaming={isStreamingThis}
                     activityText={message?.meta?.activity}
+                    selectionResetToken={selectionResetToken}
                   />
                   {showMeta && (
                     <View style={styles.metaRow}>
@@ -651,6 +653,10 @@ const MessageBubble = memo(MessageBubbleImpl, (prev, next) => {
   if (prev.isFirstInGroup !== next.isFirstInGroup) return false;
   if (prev.isLastInGroup !== next.isLastInGroup) return false;
   if (prev.showMeta !== next.showMeta) return false;
+  if (prev.selectionResetToken !== next.selectionResetToken) {
+    // Selection-reset only matters for iOS assistant UITextView blocks.
+    if (!prev.isUser) return false;
+  }
 
   // For streaming prop and streamingMessageId: only re-render if THIS message is affected
   // Check if THIS message was/is streaming

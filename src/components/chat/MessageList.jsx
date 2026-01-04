@@ -50,6 +50,7 @@ const MessageListCore = function MessageList({
   onRetryFromHere,
   onToast,
   threadKey,
+  selectionResetToken,
 }, ref) {
   // Debuggers removed (focus on voice only)
   const listRef = useRef(null);
@@ -347,12 +348,13 @@ const MessageListCore = function MessageList({
           showMeta={isLastInGroup}
           streaming={!!isStreamingItem}
           streamingMessageId={streamingMessageId}
+          selectionResetToken={selectionResetToken}
         />
       );
     } catch {
       return null;
     }
-  }, [streaming, streamingMessageId, onRetryFromHere, onToast]);
+  }, [streaming, streamingMessageId, onRetryFromHere, onToast, selectionResetToken]);
   // Stable extraData - use string to avoid object reference changes
   // Only include streaming message ID to minimize re-renders
   const extraData = useMemo(() => {
@@ -481,6 +483,7 @@ const MessageList = memo(forwardRef(MessageListCore), (prev, next) => {
   if (prev.streamingMessageId !== next.streamingMessageId) return false;
   if (prev.onRetryFromHere !== next.onRetryFromHere) return false;
   if (prev.threadKey !== next.threadKey) return false;
+  if (prev.selectionResetToken !== next.selectionResetToken) return false;
 
   const pLast = prev.messages[prev.messages.length - 1]?.id;
   const nLast = next.messages[next.messages.length - 1]?.id;
