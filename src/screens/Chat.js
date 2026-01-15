@@ -39,6 +39,7 @@ import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from
 import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
 import RateUsService from '../services/RateUsService';
 import ChatToast from '../components/chat/ChatToast';
+import { plainTextFromMarkdown } from '../lib/plainTextFromMarkdown';
 
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
@@ -186,7 +187,7 @@ export default function Chat({ navigation }) {
         }
       });
     }
-  }, [activeThread?.id, activeThread?.messages, hydrated, streamingMsgId, isPrivate, removeMessage]);
+  }, [activeThread, hydrated, streamingMsgId, isPrivate, removeMessage]);
 
   const isChatEmpty = messagesNoSystem.length === 0;
   const isAssistantThread = !!(activeThread?.system) || activeThread?.messages?.some(m => m.role === 'system');
@@ -353,7 +354,7 @@ export default function Chat({ navigation }) {
         screen: 'StudioHome',
       });
     } catch (err) { }
-  }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
+  }, [navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
 
   const handleEditImagePress = useCallback(() => {
     setInsertToChatCallback(onInsertImagesMarkdown);
@@ -740,7 +741,11 @@ export default function Chat({ navigation }) {
       stopVoice();
     }
   }
-  function onRetryFromHere(message) { setInput(message?.content || ''); }
+  function onRetryFromHere(message) {
+    const raw = message?.content || '';
+    const isAssistant = message?.role === 'assistant';
+    setInput(isAssistant ? plainTextFromMarkdown(raw) : raw);
+  }
 
 
   if (!activeThread) return <View style={styles.container}><Text>{t('chat.loading')}</Text></View>;

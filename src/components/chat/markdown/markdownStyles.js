@@ -159,7 +159,7 @@ export const userStyles = StyleSheet.create({
   },
   // Standard text blocks
   paragraph: {
-    marginBottom: 0, // User messages usually don't need bottom margins
+    marginBottom: -4, // User messages usually don't need bottom margins
     color: '#FFFFFF',
     fontSize: 16,
     lineHeight: 24,

@@ -209,7 +209,9 @@ const MessageBubbleImpl = function MessageBubble({
 
   const onShare = async () => {
     try {
-      await Share.share({ message: message.content || '' });
+      const raw = message.content || '';
+      const shareText = isUser ? raw : plainTextFromMarkdown(raw);
+      await Share.share({ message: shareText });
     } catch {}
   };
 

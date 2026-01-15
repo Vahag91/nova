@@ -42,32 +42,35 @@ export const MarkdownLink = ({ node, children, isUser }) => {
 
   const baseStyle = isUser ? userStyles.link : assistantStyles.link;
   const linkColor = isUser ? '#FFFFFF' : colors.primary;
-  const LinkText = Platform.OS === 'ios' && !isUser ? ChatText : Text;
+  const isIosAssistant = Platform.OS === 'ios' && !isUser;
+  const LinkText = isIosAssistant ? ChatText : Text;
+  const outerPressProps = isIosAssistant ? {} : { onPress };
+  const innerPressProps = isIosAssistant ? { onPress } : {};
 
   if (isWiki) {
     return (
-      <LinkText style={[baseStyle, styles.inlineLink]} onPress={onPress}>
-        <LinkText style={styles.wikiGlyph}>⌁</LinkText>
-        <LinkText style={styles.linkLabel}> {title} </LinkText>
-        <LinkText style={[styles.arrow, { color: linkColor }]}>↗</LinkText>
+      <LinkText style={[baseStyle, styles.inlineLink]} {...outerPressProps}>
+        <LinkText style={styles.wikiGlyph} {...innerPressProps}>⌁</LinkText>
+        <LinkText style={styles.linkLabel} {...innerPressProps}> {title} </LinkText>
+        <LinkText style={[styles.arrow, { color: linkColor }]} {...innerPressProps}>↗</LinkText>
       </LinkText>
     );
   }
 
   if (isYoutube) {
     return (
-      <LinkText style={[baseStyle, styles.inlineLink]} onPress={onPress}>
-        <LinkText style={[styles.playGlyph, { color: '#FF6B6B' }]}>▶</LinkText>
-        <LinkText style={styles.linkLabel}> Watch Video </LinkText>
-        <LinkText style={[styles.arrow, { color: linkColor }]}>↗</LinkText>
+      <LinkText style={[baseStyle, styles.inlineLink]} {...outerPressProps}>
+        <LinkText style={[styles.playGlyph, { color: '#FF6B6B' }]} {...innerPressProps}>▶</LinkText>
+        <LinkText style={styles.linkLabel} {...innerPressProps}> Watch Video </LinkText>
+        <LinkText style={[styles.arrow, { color: linkColor }]} {...innerPressProps}>↗</LinkText>
       </LinkText>
     );
   }
 
   return (
-    <LinkText style={[baseStyle, styles.inlineLink]} onPress={onPress}>
-      <LinkText style={styles.linkLabel}>{title || parsed.domain} </LinkText>
-      <LinkText style={[styles.arrow, { color: linkColor }]}>↗</LinkText>
+    <LinkText style={[baseStyle, styles.inlineLink]} {...outerPressProps}>
+      <LinkText style={styles.linkLabel} {...innerPressProps}>{title || parsed.domain} </LinkText>
+      <LinkText style={[styles.arrow, { color: linkColor }]} {...innerPressProps}>↗</LinkText>
     </LinkText>
   );
 };
