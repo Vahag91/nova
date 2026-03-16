@@ -648,7 +648,8 @@
       "weekly": {
         "title": "รายสัปดาห์",
         "subtitle": "ยกเลิกได้ทุกเมื่อ",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "ฟรี 3 วัน จากนั้น"
       }
     },
     "frequency": {

@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Settimanale",
         "subtitle": "Disdici quando vuoi",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 giorni gratis, poi"
       }
     },
     "frequency": {

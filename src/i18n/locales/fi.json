@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Viikoittain",
         "subtitle": "Peru milloin vain",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 päivää ilmaiseksi, sitten"
       }
     },
     "frequency": {

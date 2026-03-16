@@ -657,7 +657,8 @@
       "weekly": {
         "title": "Wöchentlich",
         "subtitle": "Jederzeit kündbar",
-        "defaultPrice": "USD 9,99"
+        "defaultPrice": "USD 9,99",
+        "trialThen": "3 Tage gratis, dann"
       }
     },
     "frequency": {

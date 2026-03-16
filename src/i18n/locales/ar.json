@@ -648,7 +648,8 @@
       "weekly": {
         "title": "أسبوعي",
         "subtitle": "يمكن الإلغاء في أي وقت",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 أيام مجانًا، ثم"
       }
     },
     "frequency": {

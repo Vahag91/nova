@@ -246,6 +246,7 @@ export default function PaywallScreen({
   const [selectedPlan, setSelectedPlan] = useState('yearly');
   const [purchaseLoading, setPurchaseLoading] = useState(false);
   const [closeReady, setCloseReady] = useState(false);
+  const showFreeTrialToggle = false;
 
   // Refs for scrolling
   const scrollViewRef = useRef(null);
@@ -569,6 +570,9 @@ export default function PaywallScreen({
   const weeklyPrice =
     availablePackages?.weekly?.product?.priceString ||
     tr('paywall.plans.weekly.defaultPrice');
+  const weeklyTrialThenText = tr('paywall.plans.weekly.trialThen', {
+    defaultValue: '3 days free, then',
+  });
 
   // Compute Image Studio credits and period for the selected plan
   const imageStudioCredits = useMemo(() => {
@@ -815,24 +819,26 @@ export default function PaywallScreen({
             </View>
           </View>
 
-          {/* Free trial toggle */}
-          <View style={[styles.cardRow, t.cardRowBg]}>
-            <View>
-              <Text style={[styles.cardTitle, t.textPrimary]}>
-                {tr('paywall.freeTrial.title')}
-              </Text>
-              <Text style={[styles.cardSubtitle, t.textSecondary]}>
-                {tr('paywall.freeTrial.subtitle')}
-              </Text>
+          {/* Free trial toggle (temporarily disabled) */}
+          {showFreeTrialToggle && (
+            <View style={[styles.cardRow, t.cardRowBg]}>
+              <View>
+                <Text style={[styles.cardTitle, t.textPrimary]}>
+                  {tr('paywall.freeTrial.title')}
+                </Text>
+                <Text style={[styles.cardSubtitle, t.textSecondary]}>
+                  {tr('paywall.freeTrial.subtitle')}
+                </Text>
+              </View>
+              <Switch
+                value={trialEnabled}
+                onValueChange={handleTrialToggle}
+                trackColor={{ false: '#4F4F4F', true: '#007AFF' }}
+                thumbColor="#FFFFFF"
+                ios_backgroundColor="#4F4F4F"
+              />
             </View>
-            <Switch
-              value={trialEnabled}
-              onValueChange={handleTrialToggle}
-              trackColor={{ false: '#4F4F4F', true: '#007AFF' }}
-              thumbColor="#FFFFFF"
-              ios_backgroundColor="#4F4F4F"
-            />
-          </View>
+          )}
 
           {/* Yearly (Best offer) */}
           <TouchableOpacity
@@ -908,14 +914,16 @@ export default function PaywallScreen({
                 <Text style={[styles.planTitle, t.textPrimary]}>
                   {tr('paywall.plans.weekly.title')}
                 </Text>
-                <Text style={[styles.planSub, t.textSecondary]}>
-                  {tr('paywall.plans.weekly.subtitle')}
+                <Text style={[styles.weeklyTrialLabel, t.textPrimary]}>
+                  {weeklyTrialThenText}
                 </Text>
               </View>
               <View style={styles.alignEnd}>
-                <Text style={[styles.planPrice, t.textPrimary]}>
-                  {weeklyPrice}
-                </Text>
+                <View style={styles.weeklyPriceRow}>
+                  <Text style={[styles.planPrice, t.textPrimary]}>
+                    {weeklyPrice}
+                  </Text>
+                </View>
                 <Text style={[styles.planSub, t.textSecondary]}>
                   {tr('paywall.frequency.perWeek')}
                 </Text>
@@ -1171,6 +1179,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
   },
   planPrice: { fontSize: 18, fontWeight: '700', fontFamily: 'Lato-Bold' },
+  weeklyPriceRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'baseline',
+    gap: 6,
+  },
+  weeklyTrialLabel: {
+    fontSize: 16,
+    fontWeight: '700',
+    fontFamily: 'Lato-Bold',
+    marginTop: 4,
+  },
   weeklyCard: { borderRadius: R, padding: 16, marginBottom: 12 },
   footer: { paddingTop: 10, paddingBottom: 14 },
   ctaWrapper: {

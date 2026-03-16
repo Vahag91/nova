@@ -648,7 +648,8 @@
       "weekly": {
         "title": "周付",
         "subtitle": "随时可取消",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "免费 3 天，之后"
       }
     },
     "frequency": {

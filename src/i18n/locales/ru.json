@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Недельный",
         "subtitle": "Отменить можно в любой момент",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 дня бесплатно, затем"
       }
     },
     "frequency": {

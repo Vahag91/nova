@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Heti",
         "subtitle": "Bármikor lemondható",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 nap ingyen, majd"
       }
     },
     "frequency": {

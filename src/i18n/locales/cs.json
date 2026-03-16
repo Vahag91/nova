@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Týdenní",
         "subtitle": "Zrušit můžete kdykoliv",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 dny zdarma, poté"
       }
     },
     "frequency": {

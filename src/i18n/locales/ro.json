@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Săptămânal",
         "subtitle": "Poți anula oricând",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 zile gratis, apoi"
       }
     },
     "frequency": {

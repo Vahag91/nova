@@ -657,7 +657,8 @@
       "weekly": {
         "title": "Hebdomadaire",
         "subtitle": "Annulez à tout moment",
-        "defaultPrice": "9,99 USD"
+        "defaultPrice": "9,99 USD",
+        "trialThen": "3 jours gratuits, puis"
       }
     },
     "frequency": {

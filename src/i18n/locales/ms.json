@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Mingguan",
         "subtitle": "Boleh batal bila-bila masa",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 hari percuma, kemudian"
       }
     },
     "frequency": {

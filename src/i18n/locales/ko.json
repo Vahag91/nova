@@ -648,7 +648,8 @@
       "weekly": {
         "title": "주간",
         "subtitle": "언제든 해지 가능",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3일 무료, 이후"
       }
     },
     "frequency": {

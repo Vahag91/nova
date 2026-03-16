@@ -648,7 +648,8 @@
       "weekly": {
         "title": "साप्ताहिक",
         "subtitle": "कभी भी रद्द करें",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 दिन मुफ़्त, फिर"
       }
     },
     "frequency": {

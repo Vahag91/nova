@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Εβδομαδιαίο",
         "subtitle": "Ακύρωση οποτεδήποτε",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 ημέρες δωρεάν, μετά"
       }
     },
     "frequency": {

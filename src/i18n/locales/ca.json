@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Setmanal",
         "subtitle": "Cancel·la quan vulguis",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 dies gratis, després"
       }
     },
     "frequency": {

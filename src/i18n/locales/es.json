@@ -657,7 +657,8 @@
       "weekly": {
         "title": "Semanal",
         "subtitle": "Cancela cuando quieras",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 días gratis, luego"
       }
     },
     "frequency": {

@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Veckovis",
         "subtitle": "Avsluta när som helst",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 dagar gratis, sedan"
       }
     },
     "frequency": {

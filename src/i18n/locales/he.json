@@ -648,7 +648,8 @@
       "weekly": {
         "title": "שבועי",
         "subtitle": "ניתן לבטל בכל זמן",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 ימים בחינם, ואז"
       }
     },
     "frequency": {

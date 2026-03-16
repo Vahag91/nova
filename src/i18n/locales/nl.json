@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Wekelijks",
         "subtitle": "Op elk moment opzeggen",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 dagen gratis, daarna"
       }
     },
     "frequency": {

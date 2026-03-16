@@ -648,7 +648,8 @@
       "weekly": {
         "title": "Theo tuần",
         "subtitle": "Hủy bất cứ lúc nào",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "Miễn phí 3 ngày, sau đó"
       }
     },
     "frequency": {

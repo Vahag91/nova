@@ -657,7 +657,8 @@
       "weekly": {
         "title": "週額",
         "subtitle": "いつでもキャンセル可能",
-        "defaultPrice": "USD 9.99"
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3日間無料、その後"
       }
     },
     "frequency": {
