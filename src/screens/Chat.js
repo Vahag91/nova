@@ -10,6 +10,7 @@ import Svg, { Path } from 'react-native-svg';
 import { 
   KeyboardAvoidingView, 
   KeyboardGestureArea,           
+  KeyboardEvents,
   useReanimatedKeyboardAnimation 
 } from 'react-native-keyboard-controller';
 
@@ -127,6 +128,7 @@ export default function Chat({ navigation }) {
   const [offline, setOffline] = useState(false);
   const [streamingMsgId, setStreamingMsgId] = useState(null);
   const [forceCollapseInput, setForceCollapseInput] = useState(false);
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
 
   const toastTimerRef = useRef(null);
   const [toastVisible, setToastVisible] = useState(false);
@@ -145,6 +147,22 @@ export default function Chat({ navigation }) {
   useEffect(() => {
     return () => {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const show = () => setKeyboardVisible(true);
+    const hide = () => setKeyboardVisible(false);
+
+    const subscriptions = [
+      KeyboardEvents.addListener('keyboardWillShow', show),
+      KeyboardEvents.addListener('keyboardDidShow', show),
+      KeyboardEvents.addListener('keyboardWillHide', hide),
+      KeyboardEvents.addListener('keyboardDidHide', hide),
+    ];
+
+    return () => {
+      subscriptions.forEach(sub => sub?.remove?.());
     };
   }, []);
   
@@ -192,6 +210,7 @@ export default function Chat({ navigation }) {
   const isChatEmpty = messagesNoSystem.length === 0;
   const isAssistantThread = !!(activeThread?.system) || activeThread?.messages?.some(m => m.role === 'system');
   const showQuickSuggestions = !isPrivate && isChatEmpty && !isAssistantThread;
+  const showKeyboardHelpers = showQuickSuggestions && !keyboardVisible;
   const useIosKeyboardLayout = Platform.OS === 'ios';
   const RootKeyboardView = useIosKeyboardLayout ? KeyboardAvoidingView : View;
 
@@ -849,10 +868,13 @@ export default function Chat({ navigation }) {
                         <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
                       </>
                     ) : (
-                      // Banner is inside the Touchable, so swipes up but tapping background dismisses keyboard
-                      <Reanimated.View style={bannerStyle}>
-                        <CreativeStudioBanner onPress={handleCreateImagesPress} paused={showVoiceOverlay || isRecording} />
-                      </Reanimated.View>
+                      // Collapse helper content out of layout when the keyboard is opening,
+                      // otherwise the invisible banner/suggestions still push the composer below the keyboard.
+                      showKeyboardHelpers ? (
+                        <Reanimated.View style={bannerStyle}>
+                          <CreativeStudioBanner onPress={handleCreateImagesPress} paused={showVoiceOverlay || isRecording} />
+                        </Reanimated.View>
+                      ) : null
                     )}
                   </View>
                 )}
@@ -878,7 +900,7 @@ export default function Chat({ navigation }) {
           <View>
             {/* Animated Suggestions */}
             <Reanimated.View style={suggestionStyle}>
-              {showQuickSuggestions && (
+              {showKeyboardHelpers && (
                 <SuggestionCards onSuggestionPress={handleQuickSuggestionPress} />
               )}
             </Reanimated.View>
