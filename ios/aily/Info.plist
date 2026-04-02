@@ -50,7 +50,7 @@
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>We are using speech recognition to transcribe your voice into text so you can dictate messages and prompts instead of typing</string>
 	<key>NSUserNotificationUsageDescription</key>
-	<string>We use notifications to confirm quest completions and streak rewards.</string>
+	<string>We use notifications for important app updates and reminders.</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UIAppFonts</key>

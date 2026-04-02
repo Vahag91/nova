@@ -11,6 +11,18 @@ import {
 
 // ✅ NEW: bring your stable device id
 import { ensureDeviceId } from '../lib/deviceId';
+import {
+  getReviewerPremiumEnabled,
+  getReviewerPremiumCoinsGranted,
+  setReviewerPremiumEnabled,
+  setReviewerPremiumCoinsGranted,
+} from '../lib/reviewerPremium';
+import {
+  createSbWithDevice,
+  fetchBalanceByDevice,
+  grantReviewerCoins,
+} from '../lib/supabaseDevice';
+import { useImagesStore } from '../state/useImagesStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 
 export const SubscriptionContext = createContext(null);
@@ -18,8 +30,22 @@ export const SubscriptionContext = createContext(null);
 const STORAGE_KEY = '@isPremium';
 const RC_GUARD_KEY = '__RC_CONFIGURED__';
 
+function getRevenueCatPremiumFromInfo(info) {
+  const active = info?.entitlements?.active || {};
+  const entitlementId = (REVENUE_ENTITLEMENT_ID || '').trim();
+  let hasPremium = entitlementId ? !!active[entitlementId] : false;
+
+  // Fallback: if entitlement id is misconfigured but any entitlement is active, treat as premium
+  if (!hasPremium && Object.keys(active).length > 0) {
+    hasPremium = true;
+  }
+
+  return hasPremium;
+}
+
 export function SubscriptionProvider({ children }) {
-  const [isPremium, setIsPremium] = useState(false);
+  const [hasRevenueCatPremium, setHasRevenueCatPremium] = useState(false);
+  const [reviewerPremiumEnabled, setReviewerPremiumActive] = useState(false);
   const [customerInfo, setCustomerInfo] = useState(null);
   const [availablePackages, setAvailablePackages] = useState({
     weekly: null,
@@ -31,23 +57,29 @@ export function SubscriptionProvider({ children }) {
   const [subscriptionReady, setSubscriptionReady] = useState(false);
 
   const configuredRef = useRef(false);
+  const reviewerPremiumRef = useRef(false);
 
   const apiKey = useMemo(
     () => (Platform.OS === 'ios' ? REVENUE_PUBLIC_IOS : REVENUE_PUBLIC_ANDROID),
     []
   );
+  const isPremium = hasRevenueCatPremium || reviewerPremiumEnabled;
 
   useEffect(() => {
     let removeListener;
     (async () => {
       try {
         if (__DEV__) Purchases.setLogLevel(LOG_LEVEL.DEBUG);
-        const os = Platform.OS;
 
         const cachedPremium = await AsyncStorage.getItem(STORAGE_KEY);
-        if (cachedPremium !== null) setIsPremium(JSON.parse(cachedPremium));
+        if (cachedPremium !== null) setHasRevenueCatPremium(JSON.parse(cachedPremium));
+
+        const reviewerPremium = await getReviewerPremiumEnabled();
+        reviewerPremiumRef.current = reviewerPremium;
+        setReviewerPremiumActive(reviewerPremium);
 
         if (!apiKey) {
+          setSubscriptionReady(true);
           return;
         }
 
@@ -108,18 +140,9 @@ export function SubscriptionProvider({ children }) {
 
   const handleCustomerInfo = async (info) => {
     try {
-      const active = info?.entitlements?.active || {};
-      const entitlementId = (REVENUE_ENTITLEMENT_ID || '').trim();
-      let hasPremium = entitlementId ? !!active[entitlementId] : false;
-      // Fallback: if entitlement id is misconfigured but any entitlement is active, treat as premium
-      let entitlementFallback = false;
-      if (!hasPremium && Object.keys(active).length > 0) {
-        hasPremium = true;
-        entitlementFallback = true;
-      }
-      const activeEnts = Object.keys(active);
-      const allEnts = Object.keys(info?.entitlements?.all || {});
-      setIsPremium(hasPremium);
+      const hasPremium = getRevenueCatPremiumFromInfo(info);
+      const effectivePremium = hasPremium || reviewerPremiumRef.current;
+      setHasRevenueCatPremium(hasPremium);
       setCustomerInfo(info);
       setSubscriptionReady(true);
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(hasPremium));
@@ -127,12 +150,67 @@ export function SubscriptionProvider({ children }) {
       // Validate model when premium status changes
       const validateModel = useSettingsStore.getState().validateModelForPremium;
       if (validateModel) {
-        validateModel(hasPremium);
+        validateModel(effectivePremium);
       }
     } catch (e) {
       // Customer info processing error handled silently
     }
   };
+
+  const activateReviewerPremium = useCallback(async () => {
+    reviewerPremiumRef.current = true;
+    setReviewerPremiumActive(true);
+    await setReviewerPremiumEnabled(true);
+
+    const validateModel = useSettingsStore.getState().validateModelForPremium;
+    if (validateModel) {
+      validateModel(true);
+    }
+
+    try {
+      const alreadyGranted = await getReviewerPremiumCoinsGranted();
+      const deviceId = await ensureDeviceId();
+      const sb = createSbWithDevice(deviceId);
+
+      if (!alreadyGranted) {
+        const balance = await grantReviewerCoins(sb, deviceId, 1000);
+        useImagesStore.getState().setCoinsBalance(balance);
+        await setReviewerPremiumCoinsGranted(true);
+      } else {
+        const balance = await fetchBalanceByDevice(sb, deviceId);
+        useImagesStore.getState().setCoinsBalance(balance);
+      }
+    } catch {
+      const currentBalance = useImagesStore.getState().coinsBalance;
+      useImagesStore.getState().setCoinsBalance(
+        Math.max(typeof currentBalance === 'number' ? currentBalance : 0, 1000)
+      );
+    }
+  }, []);
+
+  const deactivateReviewerPremium = useCallback(async () => {
+    reviewerPremiumRef.current = false;
+    setReviewerPremiumActive(false);
+    await setReviewerPremiumEnabled(false);
+
+    let actualRevenueCatPremium = getRevenueCatPremiumFromInfo(customerInfo);
+
+    if (apiKey) {
+      try {
+        const info = await Purchases.getCustomerInfo();
+        actualRevenueCatPremium = getRevenueCatPremiumFromInfo(info);
+        setCustomerInfo(info);
+      } catch {}
+    }
+
+    setHasRevenueCatPremium(actualRevenueCatPremium);
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(actualRevenueCatPremium));
+
+    const validateModel = useSettingsStore.getState().validateModelForPremium;
+    if (validateModel) {
+      validateModel(actualRevenueCatPremium);
+    }
+  }, [apiKey, customerInfo]);
 
   const purchasePackage = async (pkg) => {
     try {
@@ -169,8 +247,8 @@ export function SubscriptionProvider({ children }) {
   const logOutRevenueCat = async () => {
     try {
       await Purchases.logOut();
-      await AsyncStorage.removeItem(STORAGE_KEY);
-      setIsPremium(false);
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(false));
+      setHasRevenueCatPremium(false);
       setCustomerInfo(null);
     } catch (e) {
       // Logout error handled silently
@@ -261,22 +339,22 @@ export function SubscriptionProvider({ children }) {
     }
   }, []);
 
-  const value = useMemo(
-    () => ({
-      isPremium,
-      customerInfo,
-      availablePackages,
-      restoring,
-      subscriptionReady,
-      purchasePackage,
-      restorePurchases,
-      refreshCustomerInfo,
-      fetchOfferings,
-      logOutRevenueCat,
-      logInRevenueCat,
-    }),
-    [isPremium, customerInfo, availablePackages, restoring, subscriptionReady]
-  );
+  const value = {
+    isPremium,
+    customerInfo,
+    availablePackages,
+    restoring,
+    subscriptionReady,
+    reviewerPremiumEnabled,
+    purchasePackage,
+    restorePurchases,
+    refreshCustomerInfo,
+    fetchOfferings,
+    logOutRevenueCat,
+    logInRevenueCat,
+    activateReviewerPremium,
+    deactivateReviewerPremium,
+  };
 
   return (
     <SubscriptionContext.Provider value={value}>{children}</SubscriptionContext.Provider>

@@ -8,14 +8,14 @@ const RATE_KEYS = {
   HAS_RATED: '@hasRatedApp', // Track if user clicked "Rate Now" (we assume they rated)
 };
 
-// App Store IDs
-const IOS_APP_ID = '6753916530'; // ChatCloud iOS App Store ID
-const ANDROID_APP_ID = ''; // Android package name (empty for now)
+// Store IDs
+const IOS_APP_ID = '6753916530';
+const ANDROID_APP_ID = 'com.aicloudsolutions.chatcloud';
 
-// iOS review URLs - using both deep link and web fallback for better compatibility
 const IOS_DEEP_LINK = `itms-apps://itunes.apple.com/app/id${IOS_APP_ID}?action=write-review`;
 const IOS_WEB_FALLBACK = `https://apps.apple.com/app/id${IOS_APP_ID}?action=write-review`;
 const PLAY_STORE_LINK = `market://details?id=${ANDROID_APP_ID}`;
+const PLAY_STORE_WEB_FALLBACK = `https://play.google.com/store/apps/details?id=${ANDROID_APP_ID}`;
 
 class RateUsService {
   // Simple check: Can we show the rate prompt?
@@ -151,10 +151,11 @@ class RateUsService {
         } catch (deepLinkError) {
           await Linking.openURL(IOS_WEB_FALLBACK);
         }
-      } else {
-        // Android: Use Play Store link (only if ANDROID_APP_ID is set)
-        if (ANDROID_APP_ID) {
+      } else if (ANDROID_APP_ID) {
+        try {
           await Linking.openURL(PLAY_STORE_LINK);
+        } catch (playStoreError) {
+          await Linking.openURL(PLAY_STORE_WEB_FALLBACK);
         }
       }
       

@@ -8,29 +8,22 @@ import {
   Linking,
   Alert,
   ActivityIndicator,
-  Platform,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
 import SvgIcon from '../components/SvgIcon';
-import { colors } from '../styles/colors';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import HeroBanner from '../components/settings/HeroBanner';
+import RateUsService from '../services/RateUsService';
 
 const LINKS = {
   privacy: 'https://aicloudsolutions.app/privacy',
   terms: 'https://aicloudsolutions.app/terms',
   support: 'https://aicloudsolutions.app/contact',
-  rate:
-    Platform.select({
-      ios: 'https://apps.apple.com/app/id6753916530',
-      android: 'https://play.google.com/store/apps/details?id=com.chatcloud',
-      default: 'https://chatcloud.ai/app',
-    }) || 'https://chatcloud.ai/app',
 };
 
 function Section({ title, children }) {
@@ -145,6 +138,17 @@ export default function Settings() {
     );
   }, [clearThreads, t]);
 
+  const handleRateUs = useCallback(async () => {
+    try {
+      await RateUsService.showRatePrompt();
+    } catch (error) {
+      Alert.alert(
+        t('settings.alerts.linkUnavailableTitle'),
+        t('settings.rows.rate.error'),
+      );
+    }
+  }, [t]);
+
   const premiumItems = useMemo(
     () => {
       const items = [];
@@ -187,7 +191,7 @@ export default function Settings() {
         title: t('settings.rows.rate.title'),
         icon: <SvgIcon name="diamond" size={20} color="#FB923C" />,
         iconBg: '#321F14',
-        onPress: () => openUrlSafe(LINKS.rate, t('settings.rows.rate.error')),
+        onPress: handleRateUs,
       },
       {
         key: 'support',
@@ -212,7 +216,7 @@ export default function Settings() {
         onPress: () => openUrlSafe(LINKS.terms, t('settings.rows.terms.error')),
       },
     ],
-    [openUrlSafe, t],
+    [handleRateUs, openUrlSafe, t],
   );
 
   const dataItems = useMemo(

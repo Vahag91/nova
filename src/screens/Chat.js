@@ -192,6 +192,8 @@ export default function Chat({ navigation }) {
   const isChatEmpty = messagesNoSystem.length === 0;
   const isAssistantThread = !!(activeThread?.system) || activeThread?.messages?.some(m => m.role === 'system');
   const showQuickSuggestions = !isPrivate && isChatEmpty && !isAssistantThread;
+  const useIosKeyboardLayout = Platform.OS === 'ios';
+  const RootKeyboardView = useIosKeyboardLayout ? KeyboardAvoidingView : View;
 
   const onFinalText = useCallback((text) => {
     const trimmed = (text || '').trim();
@@ -761,13 +763,63 @@ export default function Chat({ navigation }) {
     );
   }
 
+  const messageListContent = (
+    <View
+      style={styles.flex1}
+      onTouchStart={(e) => {
+        const { pageX, pageY } = e?.nativeEvent || {};
+        tapRef.current = {
+          x: typeof pageX === 'number' ? pageX : 0,
+          y: typeof pageY === 'number' ? pageY : 0,
+          ts: Date.now(),
+          moved: false,
+        };
+      }}
+      onTouchMove={(e) => {
+        const s = tapRef.current;
+        if (!s.ts || s.moved) return;
+        const { pageX, pageY } = e?.nativeEvent || {};
+        if (typeof pageX !== 'number' || typeof pageY !== 'number') return;
+        const dx = pageX - s.x;
+        const dy = pageY - s.y;
+        if (dx * dx + dy * dy > 64) s.moved = true; // ~8px
+      }}
+      onTouchEnd={() => {
+        const s = tapRef.current;
+        const dt = s.ts ? Date.now() - s.ts : 0;
+        const isTap = !!s.ts && !s.moved && dt > 0 && dt < 260;
+        tapRef.current.ts = 0;
+        tapRef.current.moved = false;
+        if (!isTap) return;
+        Keyboard.dismiss();
+        bumpSelectionResetToken();
+      }}
+    >
+      <MessageList
+        ref={messageListRef}
+        messages={messagesNoSystem}
+        streaming={streaming}
+        streamingMessageId={streamingMsgId}
+        onRetryFromHere={onRetryFromHere}
+        onToast={showToast}
+        threadKey={activeThread.id}
+        contentContainerStyle={{ paddingBottom: 20 }}
+        selectionResetToken={selectionResetToken}
+      />
+    </View>
+  );
+
   return (
     <View style={styles.container}>
       <ChatToast visible={toastVisible} message={toastMessage} />
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        style={{ flex: 1 }}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? (headerHeight-25 || 65) : 0}
+      <RootKeyboardView
+        {...(useIosKeyboardLayout
+          ? {
+              behavior: 'padding',
+              keyboardVerticalOffset: headerHeight - 25 || 65,
+            }
+          : {})}
+        style={styles.flex1}
       >
         {/* We moved the inner flex wrapper here to contain everything */}
         <View style={styles.flex1}>
@@ -808,55 +860,19 @@ export default function Chat({ navigation }) {
             </TouchableWithoutFeedback>
           ) : (
             // --- Normal List with Drag-to-Dismiss ---
-            <KeyboardGestureArea
-              style={styles.flex1}
-              interpolator="ios"
-              showOnKeyboardWillShow={false}
-            >
-              <View
-                style={styles.flex1}
-                onTouchStart={(e) => {
-                  const { pageX, pageY } = e?.nativeEvent || {};
-                  tapRef.current = {
-                    x: typeof pageX === 'number' ? pageX : 0,
-                    y: typeof pageY === 'number' ? pageY : 0,
-                    ts: Date.now(),
-                    moved: false,
-                  };
-                }}
-                onTouchMove={(e) => {
-                  const s = tapRef.current;
-                  if (!s.ts || s.moved) return;
-                  const { pageX, pageY } = e?.nativeEvent || {};
-                  if (typeof pageX !== 'number' || typeof pageY !== 'number') return;
-                  const dx = pageX - s.x;
-                  const dy = pageY - s.y;
-                  if (dx * dx + dy * dy > 64) s.moved = true; // ~8px
-                }}
-                onTouchEnd={() => {
-                  const s = tapRef.current;
-                  const dt = s.ts ? Date.now() - s.ts : 0;
-                  const isTap = !!s.ts && !s.moved && dt > 0 && dt < 260;
-                  tapRef.current.ts = 0;
-                  tapRef.current.moved = false;
-                  if (!isTap) return;
-                  Keyboard.dismiss();
-                  bumpSelectionResetToken();
-                }}
-              >
-                <MessageList
-                  ref={messageListRef}
-                  messages={messagesNoSystem}
-                  streaming={streaming}
-                  streamingMessageId={streamingMsgId}
-                  onRetryFromHere={onRetryFromHere}
-                  onToast={showToast}
-                  threadKey={activeThread.id}
-                  contentContainerStyle={{ paddingBottom: 20 }}
-                  selectionResetToken={selectionResetToken}
-                />
-              </View>
-            </KeyboardGestureArea>
+            <View style={styles.flex1}>
+              {useIosKeyboardLayout ? (
+                <KeyboardGestureArea
+                  style={styles.flex1}
+                  interpolator="ios"
+                  showOnKeyboardWillShow={false}
+                >
+                  {messageListContent}
+                </KeyboardGestureArea>
+              ) : (
+                messageListContent
+              )}
+            </View>
           )}
 
           <View>
@@ -906,7 +922,7 @@ export default function Chat({ navigation }) {
             />
           </View>
         </View>
-      </KeyboardAvoidingView>
+      </RootKeyboardView>
     </View>
   );
 }

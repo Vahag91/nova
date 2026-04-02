@@ -71,21 +71,97 @@ def enableProguardInReleaseBuilds = false
  * this variant is about 6MiB larger per architecture than default.
  */
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
+def isWindowsHost = System.properties['os.name'].toLowerCase().contains('windows')
+def windowsNativeShortRoot = new File(System.getProperty("user.home"), ".nova-native")
+def windowsNativeCMakeBuildDir = new File(windowsNativeShortRoot, "cxx")
+def keyboardControllerDir = new File(rootDir, "../node_modules/react-native-keyboard-controller")
+def windowsKeyboardCommonTarget = new File(
+    keyboardControllerDir,
+    "common/cpp/react/renderer/components/reactnativekeyboardcontroller"
+)
+def windowsKeyboardGeneratedTarget = new File(
+    keyboardControllerDir,
+    "android/build/generated/source/codegen/jni"
+)
+def windowsKeyboardCommonLink = new File(windowsNativeShortRoot, "rnkc-common")
+def windowsKeyboardGeneratedLink = new File(windowsNativeShortRoot, "rnkc-generated")
+
+def ensureWindowsJunction = { File link, File target ->
+    if (!target.exists()) {
+        target.mkdirs()
+    }
+    if (!link.parentFile.exists()) {
+        link.parentFile.mkdirs()
+    }
+
+    if (link.exists()) {
+        try {
+            if (link.canonicalPath == target.canonicalPath) {
+                return
+            }
+        } catch (Exception ignored) {
+        }
+        exec {
+            commandLine "cmd", "/c", "rmdir", link.absolutePath
+            ignoreExitValue = true
+        }
+    }
+
+    exec {
+        commandLine "cmd", "/c", "mklink", "/J", link.absolutePath, target.absolutePath
+    }
+}
+
+tasks.register("prepareWindowsNativeShortPaths") {
+    onlyIf { isWindowsHost }
+    doLast {
+        windowsNativeShortRoot.mkdirs()
+        windowsNativeCMakeBuildDir.mkdirs()
+        ensureWindowsJunction(windowsKeyboardCommonLink, windowsKeyboardCommonTarget)
+        ensureWindowsJunction(windowsKeyboardGeneratedLink, windowsKeyboardGeneratedTarget)
+    }
+}
 
 android {
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
+    externalNativeBuild {
+        cmake {
+            if (isWindowsHost) {
+                // Keep the New Architecture CMake output under a shorter path on Windows.
+                buildStagingDirectory windowsNativeCMakeBuildDir.absolutePath
+            }
+        }
+    }
 
-    namespace "com.aily"
+    namespace "com.aicloudsolutions.chatcloud"
     defaultConfig {
-        applicationId "com.aily"
+        applicationId "com.aicloudsolutions.chatcloud"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        externalNativeBuild {
+            cmake {
+                if (isWindowsHost) {
+                    arguments(
+                        "-DRNKC_COMMON_DIR=${windowsKeyboardCommonLink.absolutePath.replace('\\', '/')}",
+                        "-DRNKC_GENERATED_JNI_DIR=${windowsKeyboardGeneratedLink.absolutePath.replace('\\', '/')}"
+                    )
+                }
+            }
+        }
     }
     signingConfigs {
+                       release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -100,11 +176,15 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+}
+
+tasks.matching { it.name == "preBuild" }.configureEach {
+    dependsOn("prepareWindowsNativeShortPaths")
 }
 
 dependencies {

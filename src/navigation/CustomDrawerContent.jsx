@@ -1,5 +1,14 @@
-import React, { useContext, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, useWindowDimensions } from 'react-native';
+import React, { useCallback, useContext, useEffect } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  useWindowDimensions,
+  Modal,
+  ActivityIndicator,
+} from 'react-native';
 import { DrawerContentScrollView, useDrawerStatus } from '@react-navigation/drawer';
 import Animated, {
   useSharedValue,
@@ -53,11 +62,18 @@ export default function CustomDrawerContent(props) {
   const chevronRotation = useSharedValue(initialRecentChatsExpanded ? 0 : 180);
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
-  const baseMenuItemCount = 6;
+  const reviewerPremiumEnabled = !!subscription?.reviewerPremiumEnabled;
+  const activateReviewerPremium = subscription?.activateReviewerPremium;
+  const deactivateReviewerPremium = subscription?.deactivateReviewerPremium;
+  const baseMenuItemCount = 5;
   const menuIconSize = isCompactHeight ? 18 : 20;
   const drawerPaddingHorizontal = isCompactHeight ? 16 : 24;
   const drawerPaddingTop = isCompactHeight ? 8 : 12;
   const drawerPaddingBottom = isCompactHeight ? 14 : 20;
+  const [reviewerPremiumModalVisible, setReviewerPremiumModalVisible] = React.useState(false);
+  const [activatingReviewerPremium, setActivatingReviewerPremium] = React.useState(false);
+  const reviewerTapCountRef = React.useRef(0);
+  const lastVersionTapAtRef = React.useRef(0);
 
   const SPRING_CONFIG = {
     damping: 16,
@@ -113,6 +129,50 @@ export default function CustomDrawerContent(props) {
     }
     navigation.navigate(routeName, params);
   };
+
+  const handleVersionPress = useCallback(() => {
+    if (reviewerPremiumModalVisible) {
+      return;
+    }
+
+    const now = Date.now();
+    const withinSequence = now - lastVersionTapAtRef.current <= 1500;
+    const nextTapCount = withinSequence ? reviewerTapCountRef.current + 1 : 1;
+
+    reviewerTapCountRef.current = Math.min(nextTapCount, 5);
+    lastVersionTapAtRef.current = now;
+
+    if (reviewerTapCountRef.current < 5) {
+      return;
+    }
+
+    reviewerTapCountRef.current = 0;
+    lastVersionTapAtRef.current = 0;
+    setReviewerPremiumModalVisible(true);
+  }, [reviewerPremiumModalVisible]);
+
+  const handleToggleReviewerPremium = useCallback(async () => {
+    const action = reviewerPremiumEnabled
+      ? deactivateReviewerPremium
+      : activateReviewerPremium;
+
+    if (!action || activatingReviewerPremium) {
+      return;
+    }
+
+    try {
+      setActivatingReviewerPremium(true);
+      await action();
+      setReviewerPremiumModalVisible(false);
+    } finally {
+      setActivatingReviewerPremium(false);
+    }
+  }, [
+    activateReviewerPremium,
+    deactivateReviewerPremium,
+    reviewerPremiumEnabled,
+    activatingReviewerPremium,
+  ]);
 
   const navigateToThread = (threadId) => {
     Haptic.trigger('impactLight');
@@ -395,19 +455,19 @@ export default function CustomDrawerContent(props) {
                 index={3}
               />
               <MenuItem
-                icon="gift-finder"
-                label={t('navigation.rewards', { defaultValue: 'Daily Rewards' })}
-                routeName="Rewards"
-                isActive={activeRoute === 'Rewards'}
-                index={4}
-              />
-              <MenuItem
                 icon="settings"
                 label={t('navigation.settings')}
                 routeName="Settings"
                 isActive={activeRoute === 'Settings'}
-                index={5}
+                index={4}
               />
+              <TouchableOpacity
+                style={styles.versionButton}
+                onPress={handleVersionPress}
+                activeOpacity={0.85}
+              >
+                <Text style={styles.versionLabel}>Version 1</Text>
+              </TouchableOpacity>
             </View>
           </View>
 
@@ -421,6 +481,77 @@ export default function CustomDrawerContent(props) {
           )}
         </View>
       </DrawerContentScrollView>
+
+      <Modal
+        transparent
+        visible={reviewerPremiumModalVisible}
+        animationType="fade"
+        statusBarTranslucent
+        onRequestClose={() => setReviewerPremiumModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalEyebrow}>
+              {t('navigation.reviewerPremiumLabel', {
+                defaultValue: 'Reviewer premium',
+              })}
+            </Text>
+            <Text style={styles.modalTitle}>
+              {reviewerPremiumEnabled
+                ? t('navigation.reviewerPremiumDeactivateTitle', {
+                    defaultValue: 'Deactivate reviewer premium',
+                  })
+                : t('navigation.reviewerPremiumTitle', {
+                    defaultValue: 'Activate reviewer premium',
+                  })}
+            </Text>
+            <Text style={styles.modalBody}>
+              {reviewerPremiumEnabled
+                ? t('navigation.reviewerPremiumActiveMessage', {
+                    defaultValue: 'Deactivate premium preview',
+                  })
+                : t('navigation.reviewerPremiumMessage', {
+                    defaultValue: 'Activate premium preview',
+                  })}
+            </Text>
+
+            <View style={styles.modalActions}>
+              <TouchableOpacity
+                style={[styles.modalButton, styles.modalButtonSecondary]}
+                onPress={() => setReviewerPremiumModalVisible(false)}
+                activeOpacity={0.85}
+              >
+                <Text style={styles.modalButtonSecondaryText}>
+                  {t('common.cancel', { defaultValue: 'Cancel' })}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.modalButton,
+                  styles.modalButtonPrimary,
+                ]}
+                onPress={handleToggleReviewerPremium}
+                disabled={activatingReviewerPremium}
+                activeOpacity={0.9}
+              >
+                {activatingReviewerPremium ? (
+                  <ActivityIndicator size="small" color="#08111F" />
+                ) : (
+                  <Text style={styles.modalButtonPrimaryText}>
+                    {reviewerPremiumEnabled
+                      ? t('navigation.reviewerPremiumDeactivateCta', {
+                          defaultValue: 'Deactivate',
+                        })
+                      : t('navigation.reviewerPremiumCta', {
+                          defaultValue: 'Activate',
+                        })}
+                  </Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -482,6 +613,21 @@ const styles = StyleSheet.create({
   },
   mainNavCompact: {
     marginTop: 8,
+  },
+  versionButton: {
+    alignSelf: 'flex-start',
+    marginTop: 30,
+    marginLeft: 18,
+    paddingTop: 1,
+    paddingBottom: 8,
+    paddingRight: 10,
+  },
+  versionLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    letterSpacing: 0.2,
+    color: 'rgba(203, 213, 225, 0.78)',
+    fontFamily: 'Lato-Regular',
   },
   sidebarBanner: {
     marginTop: 8,
@@ -549,6 +695,80 @@ const styles = StyleSheet.create({
   },
   menuLabelActive: {
     color: colors.text,
+    fontFamily: 'Lato-Bold',
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.72)',
+    paddingHorizontal: 24,
+  },
+  modalCard: {
+    width: '100%',
+    maxWidth: 360,
+    borderRadius: 24,
+    padding: 22,
+    backgroundColor: '#0B1220',
+    borderWidth: 1,
+    borderColor: 'rgba(148, 163, 184, 0.16)',
+  },
+  modalEyebrow: {
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+    color: '#7DD3FC',
+    fontFamily: 'Lato-Bold',
+  },
+  modalTitle: {
+    marginTop: 10,
+    fontSize: 22,
+    fontWeight: '800',
+    color: '#F8FAFC',
+    fontFamily: 'Lato-Bold',
+  },
+  modalBody: {
+    marginTop: 10,
+    fontSize: 14,
+    lineHeight: 21,
+    color: 'rgba(226, 232, 240, 0.82)',
+    fontFamily: 'Lato-Regular',
+  },
+  modalActions: {
+    flexDirection: 'row',
+    gap: 12,
+    marginTop: 20,
+  },
+  modalButton: {
+    flex: 1,
+    minHeight: 46,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 14,
+  },
+  modalButtonPrimary: {
+    backgroundColor: '#7DD3FC',
+  },
+  modalButtonSecondary: {
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    borderWidth: 1,
+    borderColor: 'rgba(148, 163, 184, 0.2)',
+  },
+  modalButtonDisabled: {
+    opacity: 0.6,
+  },
+  modalButtonPrimaryText: {
+    fontSize: 15,
+    fontWeight: '800',
+    color: '#08111F',
+    fontFamily: 'Lato-Bold',
+  },
+  modalButtonSecondaryText: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#E2E8F0',
     fontFamily: 'Lato-Bold',
   },
   // Recent Chats Section

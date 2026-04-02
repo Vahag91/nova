@@ -21,3 +21,16 @@ export async function fetchBalanceByDevice(sb, deviceId) {
   const balance = data?.balance ?? 0;
   return balance;
 }
+
+export async function grantReviewerCoins(sb, deviceId, amount = 1000) {
+  const { error } = await sb.from('coins_ledger').insert({
+    device_id: deviceId,
+    delta: amount,
+    source: 'app:reviewer-premium',
+    product_id: 'reviewer-premium',
+    job_id: null,
+  });
+
+  if (error) throw error;
+  return fetchBalanceByDevice(sb, deviceId);
+}

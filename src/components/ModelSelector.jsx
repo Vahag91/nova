@@ -396,7 +396,7 @@ export default function ModelSelector() {
             },
             panelStyle,
           ]}
-          accessibilityRole="dialog"
+          accessibilityRole="menu"
           accessibilityViewIsModal
           importantForAccessibility="yes"
         >

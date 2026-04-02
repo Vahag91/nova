@@ -1,4 +1,4 @@
-package com.aily
+package com.aicloudsolutions.chatcloud
 
 import android.app.Application
 import com.facebook.react.PackageList

@@ -1,4 +1,4 @@
-package com.aily
+package com.aicloudsolutions.chatcloud
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

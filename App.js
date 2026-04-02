@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Platform,
   PermissionsAndroid,
-  AppState,
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
@@ -15,7 +14,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import NetInfo from '@react-native-community/netinfo';
 import notifee, { EventType } from '@notifee/react-native';
-import * as RNLocalize from 'react-native-localize';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 import { useSettingsStore } from './src/state/useSettingsStore';
 import { useThreadsStore } from './src/state/useThreadsStore';
@@ -27,32 +27,27 @@ import GlobalErrorBoundary from './src/components/GlobalErrorBoundary';
 import OfflineBanner from './src/components/OfflineBanner';
 import { logException } from './src/error/logger';
 import './src/i18n';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SubscriptionProvider } from './src/context/SubscriptionContext';
 import UsageTrackingService from './src/services/UsageTrackingService';
 import { navigate } from './src/navigation/rootNavigation';
 import { ONBOARDING_KEY, ONE_TIME_OFFER_KEY } from './src/constants/storageKeys';
 import { colors } from './src/styles/colors';
-
-// ✅ Rewards store
-import { useRewardsStore } from './src/state/useRewardsStore';
-
-// ✅ Daily reward reminder scheduling (Notifee triggers)
-import {
-  scheduleDailyRewardReminders,
-  cancelTodayDailyRewardReminder,
-} from './src/notifications/dailyRewardNotifications';
-
-import { isDailyLoginCompletedToday } from './src/notifications/rewardReminderHelpers';
 import {
   consumePendingNotificationNav,
   setPendingNotificationNav,
 } from './src/notifications/notificationNavQueue';
 
 const FETCH_TIMEOUT_MS = 10000; // 10 seconds
+const REMOVED_REWARDS_ROUTE_NAMES = new Set(['Rewards', 'RewardsHome', 'RewardsList']);
+const REMOVED_DAILY_REWARD_CACHE_KEY = 'notifee_daily_reward_schedule_v2';
+const REMOVED_DAILY_REWARD_NOTIFICATION_PREFIX = 'daily_reward_';
+
+function isRemovedRewardsRoute(route) {
+  return typeof route === 'string' && REMOVED_REWARDS_ROUTE_NAMES.has(route);
+}
 
 export default function App() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const hydrateSettings = useSettingsStore(s => s.hydrate);
   const settingsHydrated = useSettingsStore(s => s.hydrated);
@@ -64,19 +59,14 @@ export default function App() {
   const hydrateImages = useImagesStore(s => s.hydrate);
   const imagesHydrated = useImagesStore(s => s.hydrated);
 
-  // ✅ Rewards store fields
-  const rewardsHydrated = useRewardsStore(s => s.hydrated);
-  const recordRewardActivity = useRewardsStore(s => s.recordActivity);
   const [deviceIdReady, setDeviceIdReady] = useState(false);
   const [modelsLoaded, setModelsLoaded] = useState(false);
-  const [modelsError, setModelsError] = useState(null);
+  const [, setModelsError] = useState(null);
   const [firstLaunch, setFirstLaunch] = useState(null);
   const [navigationReady, setNavigationReady] = useState(false);
   const [pendingPostOnboardingPaywall, setPendingPostOnboardingPaywall] = useState(false);
 
-  // 0) Permissions + debug notification
   useEffect(() => {
-    // Android 13+ runtime permission
     if (Platform.OS === 'android' && Platform.Version >= 33) {
       PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS).catch(() => {});
     }
@@ -160,7 +150,6 @@ export default function App() {
     }
   }, [setModels, modelsLoaded, t]);
 
-  // 1) Boot/hydration logic
   useEffect(() => {
     (async () => {
       try {
@@ -211,78 +200,36 @@ export default function App() {
     loadModels();
   }, [loadModels, hydrateSettings, hydrateThreads, hydrateImages]);
 
-  // ✅ Daily reward reminder scheduling (22:00 local) with locale/timezone awareness
   useEffect(() => {
-    if (!rewardsHydrated) return;
-
-    const sync = async ({ force = false } = {}) => {
+    (async () => {
       try {
-        recordRewardActivity();
+        const scheduled = await notifee.getTriggerNotifications();
+        const staleIds = scheduled
+          .map(item => item?.notification?.id)
+          .filter(
+            id =>
+              typeof id === 'string' &&
+              id.startsWith(REMOVED_DAILY_REWARD_NOTIFICATION_PREFIX)
+          );
+
+        if (staleIds.length > 0) {
+          await Promise.all(staleIds.map(id => notifee.cancelNotification(id)));
+        }
       } catch {}
 
-      const latestQuests = useRewardsStore.getState().quests;
+      try {
+        await AsyncStorage.removeItem(REMOVED_DAILY_REWARD_CACHE_KEY);
+      } catch {}
+    })();
+  }, []);
 
-      const lang =
-        i18n?.language ||
-        RNLocalize.getLocales?.()?.[0]?.languageTag ||
-        'unknown';
-      const timeZone = RNLocalize.getTimeZone?.() || 'unknown';
-
-      const title = t('push.dailyReward.title', { defaultValue: 'Daily reward' });
-      const body = t('push.dailyReward.body', {
-        defaultValue: 'Don’t miss your daily coins — claim before midnight.',
-      });
-
-      await scheduleDailyRewardReminders({
-        daysAhead: 30,
-        hour: 22,
-        minute: 0,
-        title,
-        body,
-        lang,
-        timeZone,
-        force,
-        route: 'Rewards',
-      });
-
-      if (isDailyLoginCompletedToday(latestQuests)) {
-        await cancelTodayDailyRewardReminder();
-      }
-    };
-
-    // Run once
-    sync().catch(e => console.warn('Daily reward sync failed:', e));
-
-    // Foreground resync
-    const sub = AppState.addEventListener('change', state => {
-      if (state === 'active') {
-        sync().catch(e => console.warn('Daily reward sync (active) failed:', e));
-      }
-    });
-
-    // Resync on locale/timezone change
-    const onLocalizeChange = () => {
-      sync({ force: true }).catch(e =>
-        console.warn('Daily reward sync (localize change) failed:', e)
-      );
-    };
-
-    RNLocalize.addEventListener?.('change', onLocalizeChange);
-
-    return () => {
-      sub.remove();
-      RNLocalize.removeEventListener?.('change', onLocalizeChange);
-    };
-  }, [rewardsHydrated, t, i18n?.language, recordRewardActivity]);
-
-  // Handle foreground notification taps
   useEffect(() => {
     const unsub = notifee.onForegroundEvent(async ({ type, detail }) => {
       if (type !== EventType.PRESS) return;
 
       const data = detail?.notification?.data;
       const route = data?.route;
-      if (!route) return;
+      if (!route || isRemovedRewardsRoute(route)) return;
 
       if (navigationReady) {
         navigate(route);
@@ -294,7 +241,6 @@ export default function App() {
     return () => unsub();
   }, [navigationReady]);
 
-  // Handle initial notification tap when app was closed
   useEffect(() => {
     (async () => {
       try {
@@ -302,7 +248,7 @@ export default function App() {
         const data = initial?.notification?.data;
         const route = data?.route;
 
-        if (route) {
+        if (route && !isRemovedRewardsRoute(route)) {
           await setPendingNotificationNav({ route, ts: Date.now() });
         }
       } catch {
@@ -311,13 +257,12 @@ export default function App() {
     })();
   }, []);
 
-  // Consume pending navigation once navigation is ready
   useEffect(() => {
     if (!navigationReady) return;
 
     (async () => {
       const pending = await consumePendingNotificationNav();
-      if (pending?.route) {
+      if (pending?.route && !isRemovedRewardsRoute(pending.route)) {
         navigate(pending.route);
       }
     })();
