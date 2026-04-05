@@ -7,7 +7,6 @@ import {
   Pressable,
   FlatList,
   Dimensions,
-  Platform,
   UIManager,
   LayoutAnimation,
 } from 'react-native';
@@ -17,101 +16,90 @@ import { useIsFocused } from '@react-navigation/native';
 import SvgIcon from '../components/SvgIcon';
 import { useImagesStore } from '../state/useImagesStore';
 import { normalizeImageUri } from '../lib/imageUtils';
-import { createSbWithDevice, fetchBalanceByDevice } from '../lib/supabaseDevice';
-import { ensureDeviceId } from '../lib/deviceId';
 import ImageViewer from '../components/image-studio/ImageViewer';
-import LinearGradient from 'react-native-linear-gradient';
-import MaskedViewIOS from '@react-native-masked-view/masked-view';
-import Svg, { Path } from 'react-native-svg';
-import { getImageModelPrice } from '../utils/imagePricing';
-import HeroVideo from '../components/navigation/HeroVideo';
+import { perfEnd, perfLog, perfStart } from '../lib/perfTrace';
+import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
 
-const CREATE_VIDEO = require('../../assets/video/create.mp4');
-const EDIT_VIDEO = require('../../assets/video/hero.mp4');
+const CREATE_IMAGE = require('../../assets/images/createstudio/photoreal.webp');
+const EDIT_IMAGE = require('../../assets/images/createstudio/anime.webp');
 
 const CARD_ASPECT = 16 / 9;
 
-function GradientText({
-  children,
-  style,
-  colors = ['#42d392', '#647eff'], // green → blue (same as PaywallScreen)
-  start = { x: 0, y: 0 },
-  end = { x: 1, y: 0 },
-}) {
-  return (
-    <MaskedViewIOS
-      style={styles.gradientTextContainer}
-      maskElement={
-        <View style={styles.maskWrap}>
-          <Text style={[style, styles.maskText]}>{children}</Text>
-        </View>
-      }
-    >
-      <LinearGradient colors={colors} start={start} end={end}>
-        <Text style={[style, styles.invisibleText]}>{children}</Text>
-      </LinearGradient>
-    </MaskedViewIOS>
-  );
+function GradientText({ children, style }) {
+  return <Text style={style}>{children}</Text>;
 }
 
 export default function StudioHome({ navigation }) {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
   const isFocused = useIsFocused();
+  const { openMenu, reportScreenReady } = useAndroidNavigationMenu();
+  const rootLayoutLoggedRef = useRef(false);
+  const rootLayoutSeenRef = useRef(false);
+  const screenReadyReportedRef = useRef(false);
+  const headerLayoutLoggedRef = useRef(false);
+  const contentSizeLoggedRef = useRef(false);
 
-  // Coin balance
-  const coins = useImagesStore(s => s.coinsBalance);
-  const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
-  const [coinsLoading, setCoinsLoading] = useState(false);
-  const coinsClientRef = useRef(null);
-  const deviceIdRef = useRef(null);
-  const createCost = useMemo(() => getImageModelPrice('runware-flux-schnell'), []);
-  const editCost = useMemo(() => getImageModelPrice('runware-qwen-image'), []);
+  useEffect(() => {
+    perfLog('studio.screen.mounted');
+    return () => {
+      perfLog('studio.screen.unmounted');
+    };
+  }, []);
 
-  const loadBalance = useCallback(async (forceRefresh = false) => {
-    if (!forceRefresh && coins !== null && coins !== undefined) {
+  useEffect(() => {
+    perfLog('studio.screen.focus', {
+      isFocused,
+    });
+    if (isFocused) {
+      screenReadyReportedRef.current = false;
+      if (rootLayoutSeenRef.current) {
+        requestAnimationFrame(() => {
+          if (!screenReadyReportedRef.current) {
+            reportScreenReady('Studio');
+            screenReadyReportedRef.current = true;
+          }
+        });
+      }
+    }
+  }, [isFocused, reportScreenReady]);
+
+  useEffect(() => {
+    if (!isFocused) {
+      perfEnd('studio.focus_cycle', {
+        status: 'blur',
+      });
       return;
     }
-    let mounted = true;
-    try {
-      setCoinsLoading(true);
-      let id = deviceIdRef.current;
-      if (!id) {
-        id = await ensureDeviceId();
-        deviceIdRef.current = id;
-      }
-      let sb = coinsClientRef.current;
-      if (!sb) {
-        sb = createSbWithDevice(id);
-        coinsClientRef.current = sb;
-      }
-      const bal = await fetchBalanceByDevice(sb, id);
-      if (mounted) setCoinsBalance(bal);
-    } catch (e) {
-      if (mounted) setCoinsBalance(null);
-    } finally {
-      if (mounted) setCoinsLoading(false);
-    }
-    return () => { mounted = false; };
-  }, [coins, setCoinsBalance]);
 
-  useEffect(() => {
-    // Enable smooth layout animations on Android
-    try { if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) UIManager.setLayoutAnimationEnabledExperimental(true); } catch {}
-    loadBalance(false);
-  }, [loadBalance]);
+    rootLayoutLoggedRef.current = false;
+    headerLayoutLoggedRef.current = false;
+    contentSizeLoggedRef.current = false;
+    perfStart('studio.focus_cycle');
 
-  useEffect(() => {
-    if (!isFocused) return;
-    const cleanup = loadBalance(true);
     return () => {
-      if (typeof cleanup === 'function') cleanup();
+      perfEnd('studio.focus_cycle', {
+        status: 'cleanup',
+      });
     };
-  }, [isFocused, loadBalance]);
+  }, [isFocused]);
+
+  useEffect(() => {
+    const shouldEnableLayoutAnimation =
+      typeof UIManager.setLayoutAnimationEnabledExperimental === 'function' &&
+      !global?.nativeFabricUIManager;
+
+    try {
+      if (shouldEnableLayoutAnimation) {
+        UIManager.setLayoutAnimationEnabledExperimental(true);
+      }
+    } catch {}
+  }, []);
 
   // Recent images from jobs store
   const jobs = useImagesStore(s => s.jobs);
   const images = useMemo(() => {
+    const startedAt = global.performance?.now?.() ?? Date.now();
     const done = (jobs || []).filter(j => j?.status === 'done');
     const result = done.flatMap((j, jdx) => (j.images || []).map((img, idx) => {
       const normalizedUrl = normalizeImageUri(img?.url);
@@ -127,7 +115,28 @@ export default function StudioHome({ navigation }) {
         model: j.model,
       } : null;
     })).filter(Boolean);
+    const finishedAt = global.performance?.now?.() ?? Date.now();
+    perfLog('studio.images.derived', {
+      jobs: jobs?.length || 0,
+      doneJobs: done.length,
+      images: result.length,
+      durationMs: Number((finishedAt - startedAt).toFixed(1)),
+    });
     return result;
+  }, [jobs]);
+
+  useEffect(() => {
+    perfLog('studio.images.count', {
+      count: images.length,
+    });
+  }, [images.length]);
+
+  useEffect(() => {
+    const totalImages = (jobs || []).reduce((sum, job) => sum + (job?.images?.length || 0), 0);
+    perfLog('studio.jobs.snapshot', {
+      jobs: jobs?.length || 0,
+      totalImages,
+    });
   }, [jobs]);
 
   // Gallery items: show only real images; no placeholders
@@ -186,15 +195,27 @@ export default function StudioHome({ navigation }) {
   }, [selectedImages, galleryItems, deleteImage, clearSelection]);
 
   const openCreate = useCallback(() => {
+    perfLog('studio.home.open_create', {
+      galleryItems: galleryItems.length,
+    });
     navigation.navigate('CreateImage');
-  }, [navigation]);
+  }, [galleryItems.length, navigation]);
 
   const openEdit = useCallback(() => {
+    perfLog('studio.home.open_edit', {
+      galleryItems: galleryItems.length,
+    });
     navigation.navigate('EditImage');
-  }, [navigation]);
+  }, [galleryItems.length, navigation]);
+
+  const tileSize = useMemo(() => (Dimensions.get('window').width - 4 * 12) / 3, []);
+  const tileDynamicStyle = useMemo(() => ({ width: tileSize, height: tileSize }), [tileSize]);
+  const galleryExtraData = useMemo(
+    () => ({ isSelectionMode, selSize: selectedImages.size }),
+    [isSelectionMode, selectedImages.size]
+  );
 
   const renderTile = useCallback(({ item }) => {
-    const size = (Dimensions.get('window').width - 4 * 12) / 3; // 3 cols, 12 padding/gap
     const selected = selectedImages.has(item.id);
     return (
       <Pressable
@@ -211,7 +232,7 @@ export default function StudioHome({ navigation }) {
             toggleImageSelection(item.id);
           }
         }}
-        style={{ width: size, height: size, borderRadius: 10, overflow: 'hidden', backgroundColor: '#1A1A1D' }}
+        style={[tileDynamicStyle, styles.tile]}
       >
         <Image source={{ uri: item.url }} style={{ flex: 1 }} resizeMode="cover" />
         {isSelectionMode && (
@@ -223,7 +244,7 @@ export default function StudioHome({ navigation }) {
         )}
       </Pressable>
     );
-  }, [isSelectionMode, selectedImages, toggleImageSelection]);
+  }, [isSelectionMode, selectedImages, tileDynamicStyle, toggleImageSelection]);
 
   // Dynamic styles
   const headerStyle = React.useMemo(
@@ -234,8 +255,6 @@ export default function StudioHome({ navigation }) {
     () => [styles.listContent, { paddingBottom: Math.max(insets.bottom, 24) }],
     [insets.bottom]
   );
-  const tileSize = React.useMemo(() => (Dimensions.get('window').width - 4 * 12) / 3, []);
-  const tileDynamicStyle = React.useMemo(() => ({ width: tileSize, height: tileSize }), [tileSize]);
   const selectionToggleLabel = isSelectionMode
     ? t('studioHome.gallery.selection.exit')
     : t('studioHome.gallery.selection.enter');
@@ -244,12 +263,24 @@ export default function StudioHome({ navigation }) {
     : t('studioHome.gallery.selection.selectForDelete');
 
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      onLayout={() => {
+        if (rootLayoutLoggedRef.current) return;
+        rootLayoutLoggedRef.current = true;
+        rootLayoutSeenRef.current = true;
+        perfLog('studio.root.layout');
+        if (isFocused && !screenReadyReportedRef.current) {
+          reportScreenReady('Studio');
+          screenReadyReportedRef.current = true;
+        }
+      }}
+    >
       {/* Header */}
       <View style={headerStyle}>
         <View style={styles.headerRow}>
           <Pressable
-            onPress={() => navigation.toggleDrawer?.()}
+            onPress={openMenu}
             style={styles.headerBackBtn}
             hitSlop={10}
             accessibilityRole="button"
@@ -260,15 +291,7 @@ export default function StudioHome({ navigation }) {
           <View pointerEvents="none" style={styles.headerCenterAbs}>
             <GradientText style={styles.headerTitle}>{t('studioHome.headerTitle')}</GradientText>
           </View>
-          {/* Removed top header selection icon for minimalist design */}
-          <Pressable onPress={() => navigation.navigate('CoinStore')} style={styles.balancePill} hitSlop={8}>
-            <View style={styles.balanceContent}>
-              <Svg height={14} width={14} viewBox="0 -960 960 960" fill="#FF9500">
-                <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
-              </Svg>
-              <Text style={styles.balanceText}>{coinsLoading ? '…' : coins ?? '—'}</Text>
-            </View>
-          </Pressable>
+          <View style={styles.headerRightSpacer} />
         </View>
       </View>
 
@@ -277,25 +300,24 @@ export default function StudioHome({ navigation }) {
       {/* Body */}
       <FlatList
         contentContainerStyle={listContentStyle}
-        extraData={{ isSelectionMode, selSize: selectedImages.size }}
+        extraData={galleryExtraData}
         ListHeaderComponent={
-          <View style={styles.headerGroup}>
+          <View
+            style={styles.headerGroup}
+            onLayout={() => {
+              if (headerLayoutLoggedRef.current) return;
+              headerLayoutLoggedRef.current = true;
+              perfLog('studio.header.layout');
+            }}
+          >
             {/* Create Card */}
             <View style={styles.card}>
-              <HeroVideo
+              <Image
+                source={CREATE_IMAGE}
                 style={styles.absoluteFill}
-                source={CREATE_VIDEO}
-                enforceAspectRatio={false}
-                paused={!isFocused}
-                placeholderColor="#17171C"
+                resizeMode="cover"
               />
-              <LinearGradient
-                colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.35)", "rgba(0,0,0,0.05)"]}
-                locations={[0, 0.4, 1]}
-                start={{ x: 0.5, y: 1 }}
-                end={{ x: 0.5, y: 0 }}
-                style={styles.cardOverlay}
-              />
+              <View style={[styles.cardOverlay, styles.cardOverlayAndroid]} />
               <View style={styles.cardContent}>
                 <View style={styles.labelPill}>
                   <View style={styles.cardHeaderRow}>
@@ -316,20 +338,12 @@ export default function StudioHome({ navigation }) {
 
             {/* Edit Card */}
             <View style={styles.card}>
-              <HeroVideo
+              <Image
+                source={EDIT_IMAGE}
                 style={styles.absoluteFill}
-                source={EDIT_VIDEO}
-                enforceAspectRatio={false}
-                paused={!isFocused}
-                placeholderColor="#17171C"
+                resizeMode="cover"
               />
-              <LinearGradient
-                colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.35)", "rgba(0,0,0,0.05)"]}
-                locations={[0, 0.4, 1]}
-                start={{ x: 0.5, y: 1 }}
-                end={{ x: 0.5, y: 0 }}
-                style={styles.cardOverlay}
-              />
+              <View style={[styles.cardOverlay, styles.cardOverlayAndroid]} />
               <View style={styles.cardContent}>
                 <View style={styles.labelPill}>
                   <View style={styles.cardHeaderRow}>
@@ -391,17 +405,31 @@ export default function StudioHome({ navigation }) {
         columnWrapperStyle={styles.columnWrapper}
         ListEmptyComponent={<Text style={styles.emptyText}>{t('studioHome.gallery.empty')}</Text>}
         showsVerticalScrollIndicator={false}
+        removeClippedSubviews
+        initialNumToRender={9}
+        maxToRenderPerBatch={6}
+        windowSize={5}
+        onContentSizeChange={(_, height) => {
+          if (contentSizeLoggedRef.current) return;
+          contentSizeLoggedRef.current = true;
+          perfLog('studio.list.content_size', {
+            height,
+            items: galleryItems.length,
+          });
+        }}
       />
 
       {/* Image viewer modal */}
-      <ImageViewer
-        visible={viewer.open}
-        imageUri={viewer.uri}
-        imageId={viewer.id}
-        jobId={viewer.jobId}
-        hideEdit
-        onClose={() => setViewer({ open: false, uri: '', id: null, jobId: null })}
-      />
+      {viewer.open ? (
+        <ImageViewer
+          visible={viewer.open}
+          imageUri={viewer.uri}
+          imageId={viewer.id}
+          jobId={viewer.jobId}
+          hideEdit
+          onClose={() => setViewer({ open: false, uri: '', id: null, jobId: null })}
+        />
+      ) : null}
     </View>
   );
 }
@@ -418,21 +446,7 @@ const styles = StyleSheet.create({
   headerBackBtn: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center' },
   headerCenterAbs: { ...StyleSheet.absoluteFillObject, alignItems: 'center', justifyContent: 'center' },
   headerTitle: { color: '#FFFFFF', fontSize: 22, fontWeight: '800', letterSpacing: 0.3 },
-  headerButton: { width: 40, height: 40, alignItems: 'center', justifyContent: 'center', marginRight: 8 },
-  headerButtonActive: { backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 10 },
-  balancePill: {
-    height: 40,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 999,
-    paddingHorizontal: 12,
-  },
-  balanceContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  balanceText: { color: '#FFFFFF', fontSize: 13, fontWeight: '800' },
+  headerRightSpacer: { width: 40, height: 40 },
 
   card: {
     borderRadius: 20,
@@ -441,6 +455,9 @@ const styles = StyleSheet.create({
     aspectRatio: CARD_ASPECT,
   },
   cardOverlay: { ...StyleSheet.absoluteFillObject },
+  cardOverlayAndroid: {
+    backgroundColor: 'rgba(0,0,0,0.34)',
+  },
   cardContent: { flex: 1, justifyContent: 'space-between', padding: 16 },
   cardButtonContainer: { marginTop: 'auto' },
   labelPill: {
@@ -514,18 +531,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   deleteButtonText: { color: '#FFFFFF', fontSize: 13, fontWeight: '800' },
-  // Gradient text styles
-  gradientTextContainer: {
-    alignSelf: 'center', // centers gradient to text width
-  },
-  maskWrap: {
-    backgroundColor: 'transparent',
-  },
-  maskText: {
-    // must be opaque so the mask is solid
-    color: '#000', // mask color; not visible to user
-  },
-  invisibleText: {
-    opacity: 0, // not visible; defines gradient's layout size
-  },
 });

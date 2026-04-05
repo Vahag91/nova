@@ -99,5 +99,10 @@ const styles = StyleSheet.create({
   ctaIconText: { color: '#FFFFFF', fontSize: 14, fontFamily: 'Lato-Bold' },
 });
 
-// Ignore onPress identity changes; will re-render on i18n/navigation context changes
-export default memo(CreativeStudioBanner, () => true);
+// Ignore onPress identity changes, but still react to paused/style changes.
+export default memo(
+  CreativeStudioBanner,
+  (prevProps, nextProps) =>
+    prevProps.paused === nextProps.paused &&
+    prevProps.style === nextProps.style
+);

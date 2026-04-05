@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback, useContext } from 'react';
-import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert, Platform } from 'react-native';
+import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert, Platform, InteractionManager } from 'react-native';
 import Reanimated, { useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
 import { useHeaderHeight } from '@react-navigation/elements';
 import NetInfo from '@react-native-community/netinfo';
@@ -41,6 +41,7 @@ import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
 import RateUsService from '../services/RateUsService';
 import ChatToast from '../components/chat/ChatToast';
 import { plainTextFromMarkdown } from '../lib/plainTextFromMarkdown';
+import { perfEnd, perfLog, perfStart } from '../lib/perfTrace';
 
 export default function Chat({ navigation }) {
   const { t } = useTranslation();
@@ -75,8 +76,12 @@ export default function Chat({ navigation }) {
   });
 
   // Stores
-  const threads = useThreadsStore(s => s.threads);
-  const activeThreadId = useThreadsStore(s => s.activeThreadId);
+  const normalActive = useThreadsStore(
+    useCallback(
+      s => (s.activeThreadId ? s.threadsById?.[s.activeThreadId] || null : null),
+      []
+    )
+  );
   const hydrated = useThreadsStore(s => s.hydrated);
   const hydrate = useThreadsStore(s => s.hydrate);
   const createThread = useThreadsStore(s => s.createThread);
@@ -108,10 +113,6 @@ export default function Chat({ navigation }) {
     setSelectionResetToken(v => v + 1);
   }, []);
 
-  const normalActive = useMemo(
-    () => threads.find(d => d.id === activeThreadId) || null,
-    [threads, activeThreadId]
-  );
   const activeThread = isPrivate ? privateThread : normalActive;
 
   // Model selection
@@ -129,6 +130,9 @@ export default function Chat({ navigation }) {
   const [streamingMsgId, setStreamingMsgId] = useState(null);
   const [forceCollapseInput, setForceCollapseInput] = useState(false);
   const [keyboardVisible, setKeyboardVisible] = useState(false);
+  const [helpersVisible, setHelpersVisible] = useState(false);
+  const helperRevealTimeoutRef = useRef(null);
+  const helperRevealInteractionRef = useRef(null);
 
   const toastTimerRef = useRef(null);
   const [toastVisible, setToastVisible] = useState(false);
@@ -150,6 +154,17 @@ export default function Chat({ navigation }) {
     };
   }, []);
 
+  const cancelHelperReveal = useCallback(() => {
+    if (helperRevealTimeoutRef.current) {
+      clearTimeout(helperRevealTimeoutRef.current);
+      helperRevealTimeoutRef.current = null;
+    }
+    if (helperRevealInteractionRef.current) {
+      helperRevealInteractionRef.current.cancel?.();
+      helperRevealInteractionRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
     const show = () => setKeyboardVisible(true);
     const hide = () => setKeyboardVisible(false);
@@ -157,14 +172,20 @@ export default function Chat({ navigation }) {
     const subscriptions = [
       KeyboardEvents.addListener('keyboardWillShow', show),
       KeyboardEvents.addListener('keyboardDidShow', show),
-      KeyboardEvents.addListener('keyboardWillHide', hide),
       KeyboardEvents.addListener('keyboardDidHide', hide),
     ];
 
     return () => {
+      cancelHelperReveal();
       subscriptions.forEach(sub => sub?.remove?.());
     };
-  }, []);
+  }, [cancelHelperReveal]);
+
+  useEffect(() => {
+    perfLog('chat.keyboard.visibility_changed', {
+      visible: keyboardVisible,
+    });
+  }, [keyboardVisible]);
   
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
@@ -190,6 +211,22 @@ export default function Chat({ navigation }) {
   );
 
   useEffect(() => {
+    perfLog('chat.screen.mounted');
+    return () => {
+      perfLog('chat.screen.unmounted');
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!activeThread?.id) return;
+    perfLog('chat.thread.active_changed', {
+      threadId: activeThread.id,
+      messages: activeThread.messages?.length || 0,
+      isPrivate,
+    });
+  }, [activeThread?.id, activeThread?.messages?.length, isPrivate]);
+
+  useEffect(() => {
     if (!activeThread || !hydrated) return;
     const emptyMessages = (activeThread.messages || []).filter(m => 
       m.role === 'assistant' && 
@@ -210,9 +247,36 @@ export default function Chat({ navigation }) {
   const isChatEmpty = messagesNoSystem.length === 0;
   const isAssistantThread = !!(activeThread?.system) || activeThread?.messages?.some(m => m.role === 'system');
   const showQuickSuggestions = !isPrivate && isChatEmpty && !isAssistantThread;
-  const showKeyboardHelpers = showQuickSuggestions && !keyboardVisible;
-  const useIosKeyboardLayout = Platform.OS === 'ios';
-  const RootKeyboardView = useIosKeyboardLayout ? KeyboardAvoidingView : View;
+  const showKeyboardHelpers = showQuickSuggestions && helpersVisible;
+  const keyboardVerticalOffset = Platform.OS === 'android'
+    ? headerHeight
+    : (headerHeight - 25 || 65);
+
+  useEffect(() => {
+    if (!showQuickSuggestions || keyboardVisible) {
+      cancelHelperReveal();
+      setHelpersVisible(false);
+      return;
+    }
+
+    cancelHelperReveal();
+    helperRevealTimeoutRef.current = setTimeout(() => {
+      helperRevealTimeoutRef.current = null;
+      helperRevealInteractionRef.current = InteractionManager.runAfterInteractions(() => {
+        helperRevealInteractionRef.current = null;
+        setHelpersVisible(true);
+      });
+    }, 90);
+
+    return cancelHelperReveal;
+  }, [cancelHelperReveal, keyboardVisible, showQuickSuggestions]);
+
+  useEffect(() => {
+    perfLog('chat.helpers.visibility_changed', {
+      visible: helpersVisible,
+      quickSuggestions: showQuickSuggestions,
+    });
+  }, [helpersVisible, showQuickSuggestions]);
 
   const onFinalText = useCallback((text) => {
     const trimmed = (text || '').trim();
@@ -395,9 +459,15 @@ export default function Chat({ navigation }) {
   }, [navigation]);
 
   const startVoiceFlow = useCallback(async () => {
+    perfStart('chat.voice.flow', {
+      isRecording,
+    });
     if (isRecording) {
       stopVoice();
       setShowVoiceOverlay(false);
+      perfEnd('chat.voice.flow', {
+        status: 'stop_existing',
+      });
       return;
     }
 
@@ -427,20 +497,36 @@ export default function Chat({ navigation }) {
           { cancelable: true }
         );
       }
+      perfEnd('chat.voice.flow', {
+        status: 'permission_denied',
+        blocked: res.blocked,
+      });
       return;
     }
 
     setInput('');
     try {
       const started = await startVoice();
-      if (!started) return;
+      if (!started) {
+        perfEnd('chat.voice.flow', {
+          status: 'not_started',
+        });
+        return;
+      }
     } catch (err) {
       const pretty = mapProxyError(err);
       setError(pretty.message || t('chat.voiceStartFailed', { defaultValue: 'Could not start voice.' }));
+      perfEnd('chat.voice.flow', {
+        status: 'error',
+        message: err?.message,
+      });
       return;
     }
     setShowVoiceOverlay(true);
     setVoiceText('');
+    perfEnd('chat.voice.flow', {
+      status: 'started',
+    });
   }, [activateVoice, isRecording, setShowVoiceOverlay, stopVoice, setInput, startVoice, setError, t, setVoiceText]);
 
   const handleMicPress = useCallback(() => {
@@ -512,6 +598,7 @@ export default function Chat({ navigation }) {
     const text = (textRaw || '').trim();
     const hasText = !!text;
     const hasImages = attachments.length > 0;
+    const perfKey = `chat.send.${Date.now()}`;
 
     if (!hasText && !hasImages) {
       return;
@@ -553,6 +640,14 @@ export default function Chat({ navigation }) {
     let composerCleared = false;
 
     try {
+      perfStart(perfKey, {
+        threadId: activeThread.id,
+        textLength: text.length,
+        attachments: attachments.length,
+        model: requestModelKey,
+        webSearchNext,
+        isPrivate,
+      });
       const a = newAssistantMessage();
       assistantId = a.id;
       
@@ -630,6 +725,11 @@ export default function Chat({ navigation }) {
         },
         onDone: () => {
           const full = getStream(assistantId);
+          perfEnd(perfKey, {
+            status: 'done',
+            assistantId,
+            fullLength: (full || '').length,
+          });
           if (streamDebug) {
             const now = Date.now();
             chatDebugLog('streaming', 'done', {
@@ -676,6 +776,13 @@ export default function Chat({ navigation }) {
           const wasBackgrounded = appStateRef.current !== 'active';
           const isOSTermination = err.code === 0 || err.code === 'NETWORK';
           const partial = getStream(assistantId);
+          perfEnd(perfKey, {
+            status: 'error',
+            assistantId,
+            partialLength: (partial || '').length,
+            code: err?.code,
+            message: err?.message,
+          });
           if (streamDebug) {
             const now = Date.now();
             chatDebugLog('streaming', 'error', {
@@ -712,6 +819,11 @@ export default function Chat({ navigation }) {
         },
       });
     } catch (err) {
+      perfEnd(perfKey, {
+        status: 'caught_error',
+        assistantId,
+        message: err?.message,
+      });
       if (assistantAdded && assistantId) {
         if (isPrivate) {
           updateLastAssistantContentPrivate(() => t('chat.sendFailed', { defaultValue: 'Failed to send.' }));
@@ -734,6 +846,11 @@ export default function Chat({ navigation }) {
   }
 
   function onStop() {
+    perfLog('chat.stop_triggered', {
+      streamingActive: !!abortRef.current,
+      streamingMsgId,
+      isRecording,
+    });
     if (abortRef.current) {
       if (streamingMsgId) {
         const partial = getStream(streamingMsgId);
@@ -763,6 +880,10 @@ export default function Chat({ navigation }) {
     }
   }
   function onRetryFromHere(message) {
+    perfLog('chat.retry_from_message', {
+      messageId: message?.id,
+      role: message?.role,
+    });
     const raw = message?.content || '';
     const isAssistant = message?.role === 'assistant';
     setInput(isAssistant ? plainTextFromMarkdown(raw) : raw);
@@ -831,13 +952,9 @@ export default function Chat({ navigation }) {
   return (
     <View style={styles.container}>
       <ChatToast visible={toastVisible} message={toastMessage} />
-      <RootKeyboardView
-        {...(useIosKeyboardLayout
-          ? {
-              behavior: 'padding',
-              keyboardVerticalOffset: headerHeight - 25 || 65,
-            }
-          : {})}
+      <KeyboardAvoidingView
+        behavior="translate-with-padding"
+        keyboardVerticalOffset={keyboardVerticalOffset}
         style={styles.flex1}
       >
         {/* We moved the inner flex wrapper here to contain everything */}
@@ -883,17 +1000,13 @@ export default function Chat({ navigation }) {
           ) : (
             // --- Normal List with Drag-to-Dismiss ---
             <View style={styles.flex1}>
-              {useIosKeyboardLayout ? (
-                <KeyboardGestureArea
-                  style={styles.flex1}
-                  interpolator="ios"
-                  showOnKeyboardWillShow={false}
-                >
-                  {messageListContent}
-                </KeyboardGestureArea>
-              ) : (
-                messageListContent
-              )}
+              <KeyboardGestureArea
+                style={styles.flex1}
+                interpolator="ios"
+                showOnKeyboardWillShow={false}
+              >
+                {messageListContent}
+              </KeyboardGestureArea>
             </View>
           )}
 
@@ -944,7 +1057,7 @@ export default function Chat({ navigation }) {
             />
           </View>
         </View>
-      </RootKeyboardView>
+      </KeyboardAvoidingView>
     </View>
   );
 }

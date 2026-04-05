@@ -322,6 +322,9 @@ const MessageListCore = function MessageList({
     if (item?.role === 'system') return <DaySeparator system text={item.content} />;
     // Find prev/next messages by looking at data array from ref (doesn't cause re-renders)
     const currentData = dataRef.current;
+    const prevItem = index > 0 ? currentData[index - 1] : null;
+    const followsDaySeparator = prevItem?.type === 'day';
+
     let j = index - 1; let prevMsg = null;
     while (j >= 0) { if (!currentData[j]?.type) { prevMsg = currentData[j]; break; } j--; }
     j = index + 1; let nextMsg = null;
@@ -343,6 +346,7 @@ const MessageListCore = function MessageList({
           isUser={role === 'user'}
           isFirstInGroup={isFirstInGroup}
           isLastInGroup={isLastInGroup}
+          followsDaySeparator={followsDaySeparator}
           onRetryFromHere={onRetryFromHere}
           onToast={onToast}
           showMeta={isLastInGroup}

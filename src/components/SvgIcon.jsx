@@ -377,9 +377,9 @@ export default function SvgIcon({ name, size = 16, color = '#666', style }) {
           <Svg width={size} height={size} viewBox="0 0 16 16" fill="none">
             <Defs>
               <RadialGradient id="prefix__paint0_radial_980_20147" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(16.1326 5.4553 -43.70045 129.2322 1.588 6.503)">
-                <Stop offset=".067" stopColor="#9168C0" />
-                <Stop offset=".343" stopColor="#5684D1" />
-                <Stop offset=".672" stopColor="#1BA1E3" />
+                <Stop offset="0.067" stopColor="#9168C0" />
+                <Stop offset="0.343" stopColor="#5684D1" />
+                <Stop offset="0.672" stopColor="#1BA1E3" />
               </RadialGradient>
             </Defs>
             <Path

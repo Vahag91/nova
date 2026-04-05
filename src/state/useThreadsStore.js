@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { Storage } from '../lib/storage';
 import { throttledSave } from '../lib/throttledSave';
+import { buildThreadIndexEntry, sortThreadIndex } from '../lib/threadIndex';
 import { newThread } from './types';
 
 const DEFAULT_THREAD_TITLE = 'assistant';
@@ -15,162 +16,226 @@ function normalizeThreadTitle(title) {
   return trimmed;
 }
 
-function bump(arr, id, patch = {}) {
-  return arr.map(t => t.id === id ? { ...t, ...patch, updatedAt: Date.now() } : t);
-}
+function upsertThreadRecord(state, thread) {
+  const nextThread = {
+    ...(state.threadsById?.[thread.id] || {}),
+    ...thread,
+  };
 
-function safeSaveThreads(threads) {
-  try {
-    const maybePromise = Storage.saveThreads(threads);
-    if (maybePromise && typeof maybePromise.then === 'function') {
-      maybePromise.catch(() => {});
-    }
-  } catch (_) {
-    // keep UI responsive on storage failures
-  }
-}
+  const nextIndexEntry = buildThreadIndexEntry(nextThread);
+  const nextIndex = sortThreadIndex([
+    nextIndexEntry,
+    ...(state.threadIndex || []).filter(entry => entry.id !== nextThread.id),
+  ]);
 
-function isArray(value) {
-  return Array.isArray(value);
+  return {
+    threadIndex: nextIndex,
+    threadsById: {
+      ...(state.threadsById || {}),
+      [nextThread.id]: nextThread,
+    },
+    thread: nextThread,
+  };
 }
 
 export const useThreadsStore = create((set, get) => ({
-  threads: [],
+  threadIndex: [],
+  threadsById: {},
   activeThreadId: null,
   hydrated: false,
-  
+
   // Performance monitoring
   _debug: {
     lastUpdate: null,
     updateCount: 0,
-    renderTime: null
+    renderTime: null,
   },
+
   hydrate: async () => {
-    let threads = [];
-    try {
-      const loaded = await Storage.loadThreads();
-      threads = isArray(loaded) ? loaded : [];
-    } catch (_) {
-      threads = [];
-    }
+    const { threadIndex, threadsById } = await Storage.loadThreadState();
     set({
-      threads,
+      threadIndex,
+      threadsById,
       activeThreadId: null,
       hydrated: true,
     });
   },
-  // TIP: if you want to default to the new OpenAI chat model everywhere, change model below.
+
   createThread: ({ title = DEFAULT_THREAD_TITLE, model = 'gpt-5-nano', system = null } = {}) => {
     const normalizedTitle = normalizeThreadTitle(title);
-    const t = newThread({ title: normalizedTitle, model, system });
+    const thread = newThread({ title: normalizedTitle, model, system });
+
     set(state => {
-      const threads = [t, ...state.threads];
-      safeSaveThreads(threads);
-      return { 
-        threads, 
-        activeThreadId: t.id
+      const next = upsertThreadRecord(state, thread);
+      return {
+        threadIndex: next.threadIndex,
+        threadsById: next.threadsById,
+        activeThreadId: thread.id,
       };
     });
-    return t;
+
+    return thread;
   },
+
   setActiveThread: (id) => set({ activeThreadId: id }),
+
   addMessage: (threadId, message) => {
     set(state => {
-      const next = state.threads.map(t => {
-        if (t.id !== threadId) return t;
-        return {
-          ...t,
-          messages: [...(t.messages || []), message],
-          updatedAt: message.createdAt,
-        };
-      });
-      safeSaveThreads(next);
-      return { threads: next };
+      const current = state.threadsById?.[threadId];
+      if (!current) return {};
+
+      const nextThread = {
+        ...current,
+        messages: [...(current.messages || []), message],
+        updatedAt: message.createdAt || Date.now(),
+      };
+      const next = upsertThreadRecord(state, nextThread);
+      Storage.saveThread(next.thread);
+      return {
+        threadIndex: next.threadIndex,
+        threadsById: next.threadsById,
+      };
     });
   },
+
   removeMessage: (threadId, messageId) => {
     set(state => {
-      const next = state.threads.map(t => {
-        if (t.id !== threadId) return t;
-        return {
-          ...t,
-          messages: (t.messages || []).filter(m => m.id !== messageId),
-          updatedAt: Date.now(),
-        };
-      });
-      safeSaveThreads(next);
-      return { threads: next };
+      const current = state.threadsById?.[threadId];
+      if (!current) return {};
+
+      const nextThread = {
+        ...current,
+        messages: (current.messages || []).filter(message => message.id !== messageId),
+        updatedAt: Date.now(),
+      };
+      const next = upsertThreadRecord(state, nextThread);
+      Storage.saveThread(next.thread);
+      return {
+        threadIndex: next.threadIndex,
+        threadsById: next.threadsById,
+      };
     });
   },
+
   updateLastAssistantContent: (threadId, updater) => {
     set(state => {
-      const next = state.threads.map(t => {
-        if (t.id !== threadId) return t;
-        const msgs = [...(t.messages || [])];
-        let found = false;
-        for (let i = msgs.length - 1; i >= 0; i--) {
-          if (msgs[i].role === 'assistant') {
-            const prev = msgs[i].content || '';
-            const newContent = updater(prev);
-            if (prev !== newContent) {
-              // Clear activity text when content is updated (streaming completed)
-              const updatedMeta = { ...msgs[i].meta };
-              if (updatedMeta.activity) {
-                delete updatedMeta.activity;
-              }
-              msgs[i] = { 
-                ...msgs[i], 
-                content: newContent,
-                meta: updatedMeta,
-              };
-            }
-            found = true;
-            break;
+      const current = state.threadsById?.[threadId];
+      if (!current) return {};
+
+      const messages = [...(current.messages || [])];
+      for (let i = messages.length - 1; i >= 0; i -= 1) {
+        if (messages[i].role !== 'assistant') continue;
+
+        const previous = messages[i].content || '';
+        const nextContent = updater(previous);
+        if (previous !== nextContent) {
+          const nextMeta = { ...messages[i].meta };
+          if (nextMeta.activity) {
+            delete nextMeta.activity;
           }
+          messages[i] = {
+            ...messages[i],
+            content: nextContent,
+            meta: nextMeta,
+          };
         }
-        const updatedThread = { ...t, messages: msgs, updatedAt: Date.now() };
-        throttledSave.queueSave(threadId, updatedThread);
-        return updatedThread;
-      });
-      return { threads: next };
+        break;
+      }
+
+      const nextThread = {
+        ...current,
+        messages,
+        updatedAt: Date.now(),
+      };
+      const next = upsertThreadRecord(state, nextThread);
+      throttledSave.queueSave(threadId, next.thread);
+      return {
+        threadIndex: next.threadIndex,
+        threadsById: next.threadsById,
+      };
     });
   },
+
   updateThread: (id, patch) => {
-    set((state) => {
-      const next = bump(state.threads, id, patch);
-      safeSaveThreads(next);
-      return { threads: next };
+    set(state => {
+      const current = state.threadsById?.[id];
+      if (!current) return {};
+
+      const nextThread = {
+        ...current,
+        ...patch,
+        updatedAt: Date.now(),
+      };
+      const next = upsertThreadRecord(state, nextThread);
+      Storage.saveThread(next.thread);
+      return {
+        threadIndex: next.threadIndex,
+        threadsById: next.threadsById,
+      };
     });
   },
+
   pinThread: (id, pinned) => {
-    set((state) => {
-      const next = state.threads.map(t => t.id === id ? { ...t, pinned: !!pinned } : t);
-      safeSaveThreads(next);
-      return { threads: next };
+    set(state => {
+      const current = state.threadsById?.[id];
+      if (!current) return {};
+
+      const nextThread = {
+        ...current,
+        pinned: !!pinned,
+      };
+      const next = upsertThreadRecord(state, nextThread);
+      Storage.saveThread(next.thread);
+      return {
+        threadIndex: next.threadIndex,
+        threadsById: next.threadsById,
+      };
     });
   },
+
   renameThread: (id, title) => {
-    set((state) => {
-      const next = state.threads.map(t => t.id === id ? { ...t, title } : t);
-      safeSaveThreads(next);
-      return { threads: next };
+    set(state => {
+      const current = state.threadsById?.[id];
+      if (!current) return {};
+
+      const nextThread = {
+        ...current,
+        title,
+      };
+      const next = upsertThreadRecord(state, nextThread);
+      Storage.saveThread(next.thread);
+      return {
+        threadIndex: next.threadIndex,
+        threadsById: next.threadsById,
+      };
     });
   },
+
   deleteThread: (threadId) => {
     set(state => {
-      const threads = state.threads.filter(t => t.id !== threadId);
-      const activeThreadId = state.activeThreadId === threadId
-        ? (threads[0]?.id ?? null)
+      const nextThreadsById = { ...(state.threadsById || {}) };
+      delete nextThreadsById[threadId];
+
+      const nextThreadIndex = (state.threadIndex || []).filter(entry => entry.id !== threadId);
+      const nextActiveThreadId = state.activeThreadId === threadId
+        ? (nextThreadIndex[0]?.id ?? null)
         : state.activeThreadId;
-      safeSaveThreads(threads);
-      return { threads, activeThreadId };
+
+      Storage.deleteThread(threadId);
+
+      return {
+        threadIndex: nextThreadIndex,
+        threadsById: nextThreadsById,
+        activeThreadId: nextActiveThreadId,
+      };
     });
   },
+
   reset: async () => {
     try {
-      await Storage.saveThreads([]);
+      await Storage.saveThreadState([], {});
     } catch (_) {}
-    set({ threads: [], activeThreadId: null });
+    set({ threadIndex: [], threadsById: {}, activeThreadId: null });
   },
 
   // ===== PRIVATE =====
@@ -178,77 +243,89 @@ export const useThreadsStore = create((set, get) => ({
   privateThread: null,
 
   startPrivate: (model) => {
-    const t = newThread({ title: 'Private chat', model, system: null });
-    t.isPrivate = true;
-    set({ privateActive: true, privateThread: t });
+    const thread = newThread({ title: 'Private chat', model, system: null });
+    thread.isPrivate = true;
+    set({ privateActive: true, privateThread: thread });
   },
+
   endPrivate: () => set({ privateActive: false, privateThread: null }),
 
   addPrivateMessage: (message) => {
     set(state => {
-      const t = state.privateThread;
-      if (!state.privateActive || !t) {
+      const thread = state.privateThread;
+      if (!state.privateActive || !thread) {
         return {};
       }
       return {
-        privateThread: { ...t, messages: [...(t.messages || []), message], updatedAt: Date.now() }
+        privateThread: {
+          ...thread,
+          messages: [...(thread.messages || []), message],
+          updatedAt: Date.now(),
+        },
       };
     });
   },
+
   updateLastAssistantContentPrivate: (updater) => {
     set(state => {
-      const t = state.privateThread;
-      if (!state.privateActive || !t) {
+      const thread = state.privateThread;
+      if (!state.privateActive || !thread) {
         return {};
       }
-      const msgs = [...(t.messages || [])];
-      let found = false;
-      for (let i = msgs.length - 1; i >= 0; i--) {
-        if (msgs[i].role === 'assistant') {
-          const prev = msgs[i].content || '';
-          const updated = updater(prev);
-          // Clear activity text when content is updated (streaming completed)
-          const updatedMeta = { ...msgs[i].meta };
-          if (updatedMeta.activity) {
-            delete updatedMeta.activity;
-          }
-          msgs[i] = { 
-            ...msgs[i], 
-            content: updated,
-            meta: updatedMeta,
-          };
-          found = true;
-          break;
+
+      const messages = [...(thread.messages || [])];
+      for (let i = messages.length - 1; i >= 0; i -= 1) {
+        if (messages[i].role !== 'assistant') continue;
+        const previous = messages[i].content || '';
+        const nextContent = updater(previous);
+        const nextMeta = { ...messages[i].meta };
+        if (nextMeta.activity) {
+          delete nextMeta.activity;
         }
+        messages[i] = {
+          ...messages[i],
+          content: nextContent,
+          meta: nextMeta,
+        };
+        break;
       }
-      const updatedThread = { ...t, messages: msgs, updatedAt: Date.now() };
-      return { privateThread: updatedThread };
+
+      return {
+        privateThread: {
+          ...thread,
+          messages,
+          updatedAt: Date.now(),
+        },
+      };
     });
   },
 
   forceSaveThread: (threadId) => {
-    const state = get();
-    const thread = state.threads.find(t => t.id === threadId);
+    const thread = get().threadsById?.[threadId];
     if (thread) throttledSave.immediateSave(threadId, thread);
   },
 
   setThreadSummary: (threadId, summary, metaPatch) => set(state => {
-    const next = state.threads.map(t => {
-      if (t.id !== threadId) return t;
-      const nonSystemCount = (t.messages || []).filter(m => m.role !== 'system').length;
-      return {
-        ...t,
-        summary,
-        summaryUpdatedAt: metaPatch?.summaryUpdatedAt ?? Date.now(),
-        meta: {
-          ...t.meta,
-          summaryLastMsgCount: metaPatch?.summaryLastMsgCount ?? nonSystemCount,
-        },
-        updatedAt: Date.now(),
-      };
-    });
-    safeSaveThreads(next);
-    return { threads: next };
+    const current = state.threadsById?.[threadId];
+    if (!current) return {};
+
+    const nonSystemCount = (current.messages || []).filter(message => message.role !== 'system').length;
+    const nextThread = {
+      ...current,
+      summary,
+      summaryUpdatedAt: metaPatch?.summaryUpdatedAt ?? Date.now(),
+      meta: {
+        ...current.meta,
+        summaryLastMsgCount: metaPatch?.summaryLastMsgCount ?? nonSystemCount,
+      },
+      updatedAt: Date.now(),
+    };
+    const next = upsertThreadRecord(state, nextThread);
+    Storage.saveThread(next.thread);
+    return {
+      threadIndex: next.threadIndex,
+      threadsById: next.threadsById,
+    };
   }),
 
   insertToChatCallback: null,

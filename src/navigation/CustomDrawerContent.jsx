@@ -8,6 +8,7 @@ import {
   useWindowDimensions,
   Modal,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import { DrawerContentScrollView, useDrawerStatus } from '@react-navigation/drawer';
 import Animated, {
@@ -31,23 +32,35 @@ import { betterPreview, firstUserPreview, summaryPreview } from '../lib/format';
 import SidebarCreativeStudioBanner from '../components/navigation/SidebarCreativeStudioBanner';
 import SidebarProFeaturesButton from '../components/navigation/SidebarProFeaturesButton';
 import { SubscriptionContext } from '../context/SubscriptionContext';
+import { perfEnd, perfLog, perfStart } from '../lib/perfTrace';
+import CustomDrawerContentAndroid from './CustomDrawerContentAndroid';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
 export default function CustomDrawerContent(props) {
+  if (Platform.OS === 'android') {
+    return <CustomDrawerContentAndroid {...props} />;
+  }
+
+  return <AnimatedDrawerContent {...props} />;
+}
+
+function AnimatedDrawerContent(props) {
   const { state, navigation } = props;
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const { height: screenHeight } = useWindowDimensions();
   const isCompactHeight = screenHeight <= 700;
   const isVeryCompactHeight = screenHeight <= 620;
+  const disableHeavyAnimations = Platform.OS === 'android';
   const activeRoute = state.routeNames[state.index];
   const drawerOpen = useDrawerStatus() === 'open';
   const [drawerOpenTick, setDrawerOpenTick] = React.useState(0);
+  const [playSidebarBannerVideo, setPlaySidebarBannerVideo] = React.useState(false);
   const prevDrawerState = React.useRef(drawerOpen);
   
   // Thread store
-  const threads = useThreadsStore(s => s.threads);
+  const threads = useThreadsStore(s => Object.values(s.threadsById || {}));
   const activeThreadId = useThreadsStore(s => s.activeThreadId);
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
@@ -82,25 +95,58 @@ export default function CustomDrawerContent(props) {
   };
 
   useEffect(() => {
+    perfStart('drawer.transition', {
+      open: drawerOpen,
+    });
     // Toggle animations whenever the drawer opens/closes
-    isOpen.value = drawerOpen ? 1 : 0;
+    isOpen.value = disableHeavyAnimations ? (drawerOpen ? 1 : 0) : drawerOpen ? 1 : 0;
     if (drawerOpen && !prevDrawerState.current) {
       setDrawerOpenTick(tick => tick + 1);
     }
     prevDrawerState.current = drawerOpen;
-  }, [drawerOpen]);
+    const timeoutId = setTimeout(() => {
+      perfEnd('drawer.transition', {
+        open: drawerOpen,
+      });
+    }, 320);
+    return () => clearTimeout(timeoutId);
+  }, [disableHeavyAnimations, drawerOpen, isOpen]);
 
   useEffect(() => {
+    if (!drawerOpen) {
+      setPlaySidebarBannerVideo(false);
+      return undefined;
+    }
+
+    const timeoutId = setTimeout(() => {
+      setPlaySidebarBannerVideo(true);
+    }, disableHeavyAnimations ? 520 : 280);
+
+    return () => clearTimeout(timeoutId);
+  }, [disableHeavyAnimations, drawerOpen]);
+
+  useEffect(() => {
+    if (disableHeavyAnimations) {
+      logoPulse.value = 0;
+      return undefined;
+    }
+
     // Logo pulse animation
     logoPulse.value = withRepeat(
       withTiming(1, { duration: 2000, easing: Easing.inOut(Easing.sin) }),
       -1,
       true
     );
-  }, []);
+  }, [disableHeavyAnimations, logoPulse]);
 
   // Recent chats collapse animation
   React.useEffect(() => {
+    if (disableHeavyAnimations) {
+      recentChatsHeight.value = recentChatsExpanded ? 1 : 0;
+      chevronRotation.value = recentChatsExpanded ? 0 : 180;
+      return;
+    }
+
     recentChatsHeight.value = withTiming(recentChatsExpanded ? 1 : 0, {
       duration: 300,
       easing: Easing.inOut(Easing.ease),
@@ -109,9 +155,14 @@ export default function CustomDrawerContent(props) {
       duration: 300,
       easing: Easing.inOut(Easing.ease),
     });
-  }, [recentChatsExpanded]);
+  }, [chevronRotation, disableHeavyAnimations, recentChatsExpanded, recentChatsHeight]);
 
   const navigateTo = (routeName, params) => {
+    perfLog('drawer.navigate', {
+      routeName,
+      params,
+      activeRoute,
+    });
     if (routeName === 'PaywallScreen' && isPremium) {
       return;
     }
@@ -175,6 +226,9 @@ export default function CustomDrawerContent(props) {
   ]);
 
   const navigateToThread = (threadId) => {
+    perfLog('drawer.navigate_thread', {
+      threadId,
+    });
     Haptic.trigger('impactLight');
     setActiveThread(threadId);
     navigation.navigate('Chat');
@@ -192,6 +246,13 @@ export default function CustomDrawerContent(props) {
 
   // Logo animation - fade and slide when opening
   const logoAnimatedStyle = useAnimatedStyle(() => {
+    if (disableHeavyAnimations) {
+      return {
+        opacity: 1,
+        transform: [{ translateX: 0 }],
+      };
+    }
+
     const translateValue = isOpen.value === 1 ? 0 : -20;
     const opacityValue = isOpen.value === 1 ? 1 : 0.3;
     
@@ -201,16 +262,32 @@ export default function CustomDrawerContent(props) {
         { translateX: withSpring(translateValue, SPRING_CONFIG) },
       ],
     };
-  });
+  }, [disableHeavyAnimations]);
 
-  const logoGlowStyle = useAnimatedStyle(() => ({
-    shadowOpacity: 0.5 + logoPulse.value * 0.3,
-    shadowRadius: 15 + logoPulse.value * 10,
-  }));
+  const logoGlowStyle = useAnimatedStyle(() => {
+    if (disableHeavyAnimations) {
+      return {
+        shadowOpacity: 0,
+        shadowRadius: 0,
+      };
+    }
+
+    return {
+      shadowOpacity: 0.5 + logoPulse.value * 0.3,
+      shadowRadius: 15 + logoPulse.value * 10,
+    };
+  }, [disableHeavyAnimations]);
 
   // Menu item animations - fade and slide with stagger
   const getMenuItemStyle = (index) => {
     return useAnimatedStyle(() => {
+      if (disableHeavyAnimations) {
+        return {
+          opacity: 1,
+          transform: [{ translateX: 0 }],
+        };
+      }
+
       const delay = index * 60;
       const translateValue = isOpen.value === 1 ? 0 : -30;
       const opacityValue = isOpen.value === 1 ? 1 : 0.3;
@@ -221,7 +298,7 @@ export default function CustomDrawerContent(props) {
           { translateX: withDelay(delay, withSpring(translateValue, SPRING_CONFIG)) },
         ],
       };
-    });
+    }, [disableHeavyAnimations]);
   };
 
   const MenuItem = ({ icon, label, routeName, isActive, index }) => {
@@ -229,11 +306,16 @@ export default function CustomDrawerContent(props) {
     const activeScale = useSharedValue(isActive ? 1 : 0);
 
     useEffect(() => {
+      if (disableHeavyAnimations) {
+        activeScale.value = isActive ? 1 : 0;
+        return;
+      }
+
       activeScale.value = withSpring(isActive ? 1 : 0, {
         damping: 15,
         stiffness: 150,
       });
-    }, [isActive]);
+    }, [activeScale, disableHeavyAnimations, isActive]);
 
     const activeIndicatorStyle = useAnimatedStyle(() => ({
       opacity: activeScale.value,
@@ -394,7 +476,13 @@ export default function CustomDrawerContent(props) {
                     styles.recentChatsHeader,
                     isCompactHeight && styles.recentChatsHeaderCompact,
                   ]}
-                  onPress={() => setRecentChatsExpanded(!recentChatsExpanded)}
+                  onPress={() => {
+                    const nextExpanded = !recentChatsExpanded;
+                    perfLog('drawer.recent_chats.toggle', {
+                      expanded: nextExpanded,
+                    });
+                    setRecentChatsExpanded(nextExpanded);
+                  }}
                   activeOpacity={0.7}
                 >
                   <Text
@@ -423,6 +511,7 @@ export default function CustomDrawerContent(props) {
               onPress={() => navigateTo('Studio', { screen: 'StudioHome' })}
               style={[styles.sidebarBanner, isCompactHeight && styles.sidebarBannerCompact]}
               restartKey={drawerOpenTick}
+              playVideo={!disableHeavyAnimations && playSidebarBannerVideo}
             />
 
             <View style={[styles.mainNav, isCompactHeight && styles.mainNavCompact]}>

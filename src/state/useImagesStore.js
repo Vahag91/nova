@@ -8,6 +8,7 @@ import RNFS from 'react-native-fs';
 import { ensureDeviceId } from '../lib/deviceId';
 import { SUPABASE_BASE, SUPABASE_ANON_KEY } from '../config/endpoints';
 import { v4 as uuidv4 } from 'uuid';
+import { perfEnd, perfStart } from '../lib/perfTrace';
 // Advanced mode helper functions are now handled by createRunwareImages API
 
 const RUNWARE_KEYS = new Set([
@@ -29,6 +30,7 @@ export const useImagesStore = create((set, get) => ({
   hydrated: false,
   
   hydrate: async () => {
+    perfStart('images_store.hydrate');
     // Clean up corrupted cache files on startup
     try {
       await cleanupCorruptedCache();
@@ -82,6 +84,10 @@ export const useImagesStore = create((set, get) => ({
     
     // Save the updated jobs with fixed URLs
     Storage.saveImages(normalized);
+    perfEnd('images_store.hydrate', {
+      jobs: normalized.length,
+      images: normalized.reduce((sum, job) => sum + (job?.images?.length || 0), 0),
+    });
   },
 
   // Auto-save helper

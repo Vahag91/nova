@@ -39,6 +39,7 @@ import { getImageModelPrice } from '../utils/imagePricing';
 import { useTranslation } from 'react-i18next';
 import Svg, { Path } from 'react-native-svg';
 import { SubscriptionContext } from '../context/SubscriptionContext';
+import { perfLog } from '../lib/perfTrace';
 
 const STYLES = [
   {
@@ -143,7 +144,6 @@ export default function CreateImage({ navigation, route }) {
   // Balance
   const coins = useImagesStore(s => s.coinsBalance);
   const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
-  const [coinsLoading, setCoinsLoading] = useState(false);
   useEffect(() => {
     // Only fetch coins if balance is not already loaded
     if (coins !== null && coins !== undefined) {
@@ -155,13 +155,10 @@ export default function CreateImage({ navigation, route }) {
       try {
         const id = await ensureDeviceId();
         const sb = createSbWithDevice(id);
-        setCoinsLoading(true);
         const bal = await fetchBalanceByDevice(sb, id);
         if (mounted) setCoinsBalance(bal);
       } catch {
         if (mounted) setCoinsBalance(null);
-      } finally {
-        if (mounted) setCoinsLoading(false);
       }
     })();
     return () => {
@@ -369,8 +366,36 @@ export default function CreateImage({ navigation, route }) {
     selectedStyleData,
     coins,
     selectedCost,
+    isPremium,
     navigation,
   ]);
+
+  const handleBackPress = useCallback(() => {
+    perfLog('studio.create.back_press', {
+      returnTo: returnTo || null,
+      hasParentNavigator: !!parentNav,
+    });
+    if (returnTo && parentNav) {
+      perfLog('studio.create.return_to', {
+        returnTo,
+      });
+      try {
+        parentNav.navigate(returnTo);
+      } catch (err) {
+        navigation.goBack();
+      }
+      return;
+    }
+
+    perfLog('studio.create.return_home', {
+      source: 'header_back',
+    });
+    if (typeof navigation.popToTop === 'function') {
+      navigation.popToTop();
+      return;
+    }
+    navigation.goBack();
+  }, [navigation, parentNav, returnTo]);
 
   const handleGeneratorClose = useCallback(() => {
     setGeneratorVisible(false);
@@ -456,20 +481,7 @@ export default function CreateImage({ navigation, route }) {
       <View style={headerStyle}>
         <View style={styles.headerRow}>
           <Pressable
-            onPress={() => {
-              if (returnTo && parentNav) {
-                // Navigate back to the specified screen in the parent navigator
-                // Navigate directly to Chat - React Navigation will handle clearing the nested stack
-                try {
-                  parentNav.navigate(returnTo);
-                } catch (err) {
-                  // Fallback: go back in current stack
-                  navigation.goBack();
-                }
-              } else {
-                navigation.goBack();
-              }
-            }}
+            onPress={handleBackPress}
             style={styles.headerBackBtn}
             hitSlop={10}
           >
@@ -478,20 +490,7 @@ export default function CreateImage({ navigation, route }) {
           <View pointerEvents="none" style={styles.headerCenterAbs}>
             <Text style={styles.headerTitle}>{t('createImage.headerTitle')}</Text>
           </View>
-          <Pressable
-            onPress={() => navigation.navigate('CoinStore')}
-            style={styles.balancePill}
-            hitSlop={8}
-          >
-            <View style={styles.balanceContent}>
-              <Svg height={14} width={14} viewBox="0 -960 960 960" fill="#FF9500">
-                <Path d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
-              </Svg>
-              <Text style={styles.balanceText}>
-                {coinsLoading ? '…' : coins ?? '—'}
-              </Text>
-            </View>
-          </Pressable>
+          <View style={styles.headerRightSpacer} />
         </View>
       </View>
 
@@ -715,19 +714,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headerTitle: { color: '#FFFFFF', fontSize: 22, fontWeight: '800' },
-  balancePill: {
-    height: 40,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 999,
-    paddingHorizontal: 8,
-  },
-  balanceContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  balanceText: { color: '#FFFFFF', fontSize: 14, fontWeight: '800' },
+  headerRightSpacer: { width: 40, height: 40 },
 
   content: { paddingHorizontal: 16, paddingTop: 16, gap: 16 },
   modelWrap: { gap: 8 },

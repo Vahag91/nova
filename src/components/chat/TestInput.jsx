@@ -9,6 +9,7 @@ import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { SubscriptionContext } from '../../context/SubscriptionContext';
 import { setPendingPremiumAction } from '../../state/premiumActions';
+import { perfCancel, perfEnd, perfLog, perfStart } from '../../lib/perfTrace';
 
 const noop = () => { };
 
@@ -116,6 +117,7 @@ function TestInput({
   const win = useWindowDimensions();
   const [inputHeight, setInputHeight] = useState(minInputHeight);
   const [isExpanded, setIsExpanded] = useState(false);
+  const lastLoggedInputHeightRef = useRef(minInputHeight);
 
   // timer during recording
   const [recSecs, setRecSecs] = useState(0);
@@ -127,6 +129,17 @@ function TestInput({
     }
     return () => { if (id) clearInterval(id); };
   }, [isRecording]);
+
+  useEffect(() => {
+    perfLog('chat.input.mounted', {
+      maxLength,
+      minInputHeight,
+      maxInputHeight,
+    });
+    return () => {
+      perfLog('chat.input.unmounted');
+    };
+  }, [maxInputHeight, maxLength, minInputHeight]);
 
   useEffect(() => {
     webSearchTextVisible.value = withTiming(webSearchEnabled ? 1 : 0, {
@@ -230,9 +243,14 @@ function TestInput({
     setMenuOpen(false);
     setRenderMenu(false);
     setAnchor(null);
+    perfCancel('chat.input.menu.open', { mode: 'immediate-close' });
+    perfCancel('chat.input.menu.close', { mode: 'immediate-close' });
   }, [clearMenuTimers, isOpen]);
 
   const closeActions = useCallback(() => {
+    perfStart('chat.input.menu.close', {
+      openedFromKeyboard: openedFromKeyboardRef.current,
+    });
     clearMenuTimers();
     pendingOpenAfterKeyboardHideRef.current = false;
     menuOpenRef.current = false;
@@ -252,6 +270,9 @@ function TestInput({
       if (shouldRefocus) {
         requestAnimationFrame(() => inputRef.current?.focus?.());
       }
+      perfEnd('chat.input.menu.close', {
+        refocused: shouldRefocus,
+      });
     }, CLOSE_DURATION_MS);
   }, [CLOSE_DURATION_MS, clearMenuTimers, isOpen]);
 
@@ -276,16 +297,24 @@ function TestInput({
       if (menuOpenRef.current) measureAnchor();
       openFallbackTimeoutRef.current = null;
     }, 250);
+    perfEnd('chat.input.menu.open', {
+      viaKeyboardDismiss: openedFromKeyboardRef.current,
+    });
   }, [OPEN_DURATION_MS, clearMenuTimers, isOpen, measureAnchor]);
 
   const openActions = useCallback(() => {
     if (menuOpenRef.current) return;
+    perfStart('chat.input.menu.open', {
+      keyboardVisible: keyboardVisibleRef.current,
+      inputFocused: inputFocusedRef.current,
+    });
     clearMenuTimers();
 
     const shouldDismissKeyboard = !!(inputFocusedRef.current || keyboardVisibleRef.current);
     openedFromKeyboardRef.current = shouldDismissKeyboard;
 
     if (shouldDismissKeyboard) {
+      perfLog('chat.input.menu.waiting_for_keyboard_hide');
       pendingOpenAfterKeyboardHideRef.current = true;
       inputRef.current?.blur?.();
       Keyboard.dismiss();
@@ -333,10 +362,14 @@ function TestInput({
 
     const showSub = Keyboard.addListener(showEvent, () => {
       keyboardVisibleRef.current = true;
+      perfLog('chat.input.keyboard.show');
       if (menuOpenRef.current) closeActionsImmediately();
     });
     const hideSub = Keyboard.addListener(hideEvent, () => {
       keyboardVisibleRef.current = false;
+      perfLog('chat.input.keyboard.hide', {
+        pendingMenuOpen: pendingOpenAfterKeyboardHideRef.current,
+      });
       if (!pendingOpenAfterKeyboardHideRef.current) return;
       pendingOpenAfterKeyboardHideRef.current = false;
       clearMenuTimers();
@@ -372,6 +405,10 @@ function TestInput({
 
   const handleSend = () => { if (canSend) safe(onSend); };
   const handleStop = () => {
+    perfLog('chat.input.stop_pressed', {
+      streaming,
+      isRecording,
+    });
     if (streaming && onStop) safe(onStop);
     else if (isRecording) safe(onMicPress);
   };
@@ -379,6 +416,12 @@ function TestInput({
     const h = e.nativeEvent.contentSize?.height;
     if (!h) return;
     const newH = Math.max(minInputHeight, Math.min(h, maxInputHeight));
+    if (newH !== lastLoggedInputHeightRef.current) {
+      lastLoggedInputHeightRef.current = newH;
+      perfLog('chat.input.height_changed', {
+        height: newH,
+      });
+    }
     setInputHeight(newH); setIsExpanded(newH > minInputHeight);
   };
 
@@ -522,10 +565,14 @@ function TestInput({
             onFocus={() => {
               inputFocusedRef.current = true;
               keyboardVisibleRef.current = true;
+              perfLog('chat.input.focus', {
+                valueLength: value?.length || 0,
+              });
               if (menuOpenRef.current) closeActionsImmediately();
             }}
             onBlur={() => {
               inputFocusedRef.current = false;
+              perfLog('chat.input.blur');
             }}
           />
           {value?.length > 0 && (
@@ -583,7 +630,16 @@ function TestInput({
             </TouchableOpacity>
 
             {!streaming ? (
-              <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={handleSend} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? t('chat.offline') : t('chat.sendMessage')}>
+              <TouchableOpacity style={[canSend ? styles.sendButtonActive : styles.sendButton, (offline || isRecording) && styles.sendButtonDisabled]} onPress={() => {
+                perfLog('chat.input.send_pressed', {
+                  textLength: value?.trim?.().length || 0,
+                  attachments: Array.isArray(attachments) ? attachments.length : 0,
+                  canSend,
+                  offline,
+                  isRecording,
+                });
+                handleSend();
+              }} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? t('chat.offline') : t('chat.sendMessage')}>
                 <SendIcon color={canSend && !isRecording ? '#FFFFFF' : '#000000'} size={23} />
               </TouchableOpacity>
             ) : (

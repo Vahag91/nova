@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Platform,
   PermissionsAndroid,
+  StatusBar,
 } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
@@ -306,6 +307,7 @@ export default function App() {
           <SubscriptionProvider>
             <KeyboardProvider statusBarTranslucent>
               <GestureHandlerRootView style={{ flex: 1 }}>
+                <StatusBar barStyle="light-content" backgroundColor="#000000" />
                 <OfflineBanner />
                 <IntroductionAnimationScreen onComplete={handleOnboardingComplete} />
               </GestureHandlerRootView>
@@ -330,6 +332,7 @@ export default function App() {
         <SubscriptionProvider>
           <KeyboardProvider statusBarTranslucent>
             <GestureHandlerRootView style={{ flex: 1 }}>
+              <StatusBar barStyle="light-content" backgroundColor="#000000" />
               <OfflineBanner />
               <DrawerNavigator onNavigationReady={setNavigationReady} />
             </GestureHandlerRootView>

@@ -50,6 +50,15 @@ function isImagesOnly(md = '') {
   return leftover.length === 0;
 }
 
+function isPlainUserText(md = '') {
+  if (!md || typeof md !== 'string') return false;
+  const text = md.trim();
+  if (!text) return false;
+  if (text.includes('\n') || text.includes('\r')) return false;
+  if (/https?:\/\//i.test(text)) return false;
+  return !/[`*_#[\]()>|]/.test(text);
+}
+
 // helper component (place above MessageBubble)
 function FitImage({ uri, style }) {
   const screenW = Dimensions.get('window').width;
@@ -142,6 +151,7 @@ const MessageBubbleImpl = function MessageBubble({
   isUser,
   isFirstInGroup,
   isLastInGroup,
+  followsDaySeparator = false,
   showMeta = false,
   onRetryFromHere,
   onToast,
@@ -264,7 +274,8 @@ const MessageBubbleImpl = function MessageBubble({
       style={[
         styles.wrap,
         isUser ? styles.right : styles.left,
-        isFirstInGroup && styles.firstInGroup,
+        isFirstInGroup && !followsDaySeparator && styles.firstInGroup,
+        followsDaySeparator && styles.afterDaySeparator,
       ]}
     >
       <View style={styles.messageContainer}>
@@ -274,6 +285,7 @@ const MessageBubbleImpl = function MessageBubble({
               const content = message.content || '';
               const uris = extractImageUrisAll(content);
               const leftover = stripImageMd(content);
+              const plainUserText = isPlainUserText(content);
 
               // Pure image(s) → no bubble, just images
               if (uris.length && isImagesOnly(content)) {
@@ -303,8 +315,19 @@ const MessageBubbleImpl = function MessageBubble({
                     onLongPress={showSheet}
                     delayLongPress={180}
                   >
-                  <View style={[styles.bubble, styles.user, cornerStyle]}>
-                    <MarkdownContent text={leftover} isUser={isUser} selectionResetToken={selectionResetToken} />
+                  <View
+                    style={[
+                      styles.bubble,
+                      styles.user,
+                      cornerStyle,
+                      isPlainUserText(leftover) && styles.userPlainBubble,
+                    ]}
+                  >
+                    {isPlainUserText(leftover) ? (
+                      <Text style={styles.userPlainText}>{leftover.trim()}</Text>
+                    ) : (
+                      <MarkdownContent text={leftover} isUser={isUser} selectionResetToken={selectionResetToken} />
+                    )}
                         {showMeta && (
                           <View style={styles.metaRow}>
                             {!!model && (
@@ -337,8 +360,19 @@ const MessageBubbleImpl = function MessageBubble({
                   onLongPress={showSheet}
                   delayLongPress={180}
                 >
-                  <View style={[styles.bubble, styles.user, cornerStyle]}>
-                    <MarkdownContent text={content} isUser={isUser} selectionResetToken={selectionResetToken} />
+                  <View
+                    style={[
+                      styles.bubble,
+                      styles.user,
+                      cornerStyle,
+                      plainUserText && styles.userPlainBubble,
+                    ]}
+                  >
+                    {plainUserText ? (
+                      <Text style={styles.userPlainText}>{content.trim()}</Text>
+                    ) : (
+                      <MarkdownContent text={content} isUser={isUser} selectionResetToken={selectionResetToken} />
+                    )}
                     {showMeta && (
                       <View style={styles.metaRow}>
                         {!!model && (
@@ -520,6 +554,7 @@ const styles = StyleSheet.create({
   left: { alignItems: 'flex-start' },
   right: { alignItems: 'flex-end' },
   firstInGroup: { marginTop: 16 },
+  afterDaySeparator: { marginTop: 4 },
 
   messageContainer: {
     flexDirection: 'row',
@@ -542,6 +577,15 @@ const styles = StyleSheet.create({
   user: {
     backgroundColor: colors.userBubble,
     borderColor: colors.userBubble,
+  },
+  userPlainBubble: {
+    paddingVertical: 10,
+  },
+  userPlainText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    lineHeight: 22,
+    includeFontPadding: false,
   },
 
   // assistant text container (no background)
@@ -654,6 +698,7 @@ const MessageBubble = memo(MessageBubbleImpl, (prev, next) => {
   if (prev.isUser !== next.isUser) return false;
   if (prev.isFirstInGroup !== next.isFirstInGroup) return false;
   if (prev.isLastInGroup !== next.isLastInGroup) return false;
+  if (prev.followsDaySeparator !== next.followsDaySeparator) return false;
   if (prev.showMeta !== next.showMeta) return false;
   if (prev.selectionResetToken !== next.selectionResetToken) {
     // Selection-reset only matters for iOS assistant UITextView blocks.

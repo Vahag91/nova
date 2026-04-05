@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -10,15 +10,17 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
 import SvgIcon from '../components/SvgIcon';
 import { SubscriptionContext } from '../context/SubscriptionContext';
+import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import HeroBanner from '../components/settings/HeroBanner';
 import RateUsService from '../services/RateUsService';
+import { perfLog } from '../lib/perfTrace';
 
 const LINKS = {
   privacy: 'https://aicloudsolutions.app/privacy',
@@ -72,12 +74,44 @@ export default function Settings() {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const isFocused = useIsFocused();
+  const { reportScreenReady } = useAndroidNavigationMenu();
   const clearThreads = useThreadsStore(s => s.reset);
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
   const restorePurchases = subscription?.restorePurchases;
 
   const [restoring, setRestoring] = useState(false);
+  const rootLayoutLoggedRef = useRef(false);
+  const rootLayoutSeenRef = useRef(false);
+  const screenReadyReportedRef = useRef(false);
+  const contentSizeLoggedRef = useRef(false);
+
+  useEffect(() => {
+    perfLog('settings.screen.mounted');
+    return () => {
+      perfLog('settings.screen.unmounted');
+    };
+  }, []);
+
+  useEffect(() => {
+    perfLog('settings.screen.focus', {
+      isFocused,
+    });
+    if (isFocused) {
+      rootLayoutLoggedRef.current = false;
+      contentSizeLoggedRef.current = false;
+      screenReadyReportedRef.current = false;
+      if (rootLayoutSeenRef.current) {
+        requestAnimationFrame(() => {
+          if (!screenReadyReportedRef.current) {
+            reportScreenReady('Settings');
+            screenReadyReportedRef.current = true;
+          }
+        });
+      }
+    }
+  }, [isFocused, reportScreenReady]);
 
   const openUrlSafe = useCallback(async (url, fallbackMessage) => {
     try {
@@ -241,6 +275,23 @@ export default function Settings() {
     [handleClearData, navigation, t],
   );
 
+  useEffect(() => {
+    perfLog('settings.sections.snapshot', {
+      premiumItems: premiumItems.length,
+      dataItems: dataItems.length,
+      supportItems: supportItems.length,
+      isPremium,
+      restoring,
+    });
+  }, [dataItems.length, isPremium, premiumItems.length, restoring, supportItems.length]);
+
+  const wrapSettingPress = useCallback((key, onPress) => () => {
+    perfLog('settings.row.press', {
+      key,
+    });
+    onPress?.();
+  }, []);
+
   const renderSectionRows = (items) =>
     items.map((item, index) => (
       <SettingRow
@@ -249,7 +300,7 @@ export default function Settings() {
         iconBg={item.iconBg}
         title={item.title}
         subtitle={item.subtitle}
-        onPress={item.onPress}
+        onPress={wrapSettingPress(item.key, item.onPress)}
         disabled={item.disabled}
         trailing={item.trailing}
         isLast={index === items.length - 1}
@@ -262,6 +313,26 @@ export default function Settings() {
         style={styles.container}
         contentContainerStyle={[styles.content, { paddingBottom: Math.max(insets.bottom, 24) }]}
         showsVerticalScrollIndicator={false}
+        onLayout={() => {
+          if (rootLayoutLoggedRef.current) return;
+          rootLayoutLoggedRef.current = true;
+          rootLayoutSeenRef.current = true;
+          perfLog('settings.root.layout');
+          if (isFocused && !screenReadyReportedRef.current) {
+            reportScreenReady('Settings');
+            screenReadyReportedRef.current = true;
+          }
+        }}
+        onContentSizeChange={(_, height) => {
+          if (contentSizeLoggedRef.current) return;
+          contentSizeLoggedRef.current = true;
+          perfLog('settings.content_size', {
+            height,
+            premiumItems: premiumItems.length,
+            dataItems: dataItems.length,
+            supportItems: supportItems.length,
+          });
+        }}
       >
         {!isPremium ? (
           <HeroBanner onPress={handleUpgrade} />

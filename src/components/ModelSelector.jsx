@@ -24,6 +24,7 @@ import { useNavigation } from '@react-navigation/native';
 import { getChatModelPrice } from '../utils/chatPricing';
 import Svg, { Path } from 'react-native-svg';
 import NetInfo from '@react-native-community/netinfo';
+import { perfEnd, perfLog, perfStart } from '../lib/perfTrace';
 
 // 🔁 Reanimated
 import Animated, {
@@ -158,6 +159,7 @@ export default function ModelSelector() {
   }, [sections, modelKey]);
 
   const runOpen = useCallback(() => {
+    perfStart('chat.model_selector');
     // trigger micro interaction
     triggerScale.value = withSequence(
       withTiming(0.96, { duration: 80, easing: Easing.out(Easing.cubic) }),
@@ -178,6 +180,10 @@ export default function ModelSelector() {
   }, [overlay, dropY, sheetScale, sheetProgress, rotateArrow, triggerScale, scrollToSelected]);
 
   const runClose = useCallback(() => {
+    perfEnd('chat.model_selector', {
+      action: 'close',
+      selectedModel: modelKey,
+    });
     setSearchQuery('');
     // animate out
     overlay.value = withTiming(0, { duration: 160, easing: Easing.in(Easing.cubic) }, (finished) => {
@@ -187,7 +193,7 @@ export default function ModelSelector() {
     sheetScale.value = withTiming(0.985, { duration: 180, easing: Easing.in(Easing.cubic) });
     sheetProgress.value = withTiming(0, { duration: 140, easing: Easing.in(Easing.cubic) });
     rotateArrow.value = withTiming(0, { duration: 160, easing: Easing.in(Easing.cubic) });
-  }, [overlay, dropY, sheetScale, sheetProgress, rotateArrow]);
+  }, [modelKey, overlay, dropY, sheetScale, sheetProgress, rotateArrow]);
 
   // —— Animated styles ——
   const triggerStyle = useAnimatedStyle(() => ({
@@ -246,6 +252,11 @@ export default function ModelSelector() {
       <Animated.View entering={FadeInDown.delay(index * 40).duration(220)}>
         <Pressable
           onPress={() => {
+            perfLog('chat.model_selector.choose', {
+              model: item.key,
+              selected: item.key === modelKey,
+              premiumRequired: !isPremium && isPremiumModel(item.key),
+            });
             // Check if model requires premium - navigate directly to paywall
             if (!isPremium && isPremiumModel(item.key)) {
               setPendingPremiumAction(() => {

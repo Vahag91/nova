@@ -2,23 +2,18 @@ import React, { useMemo, useRef, useState, useEffect } from 'react';
 import {
   View, Text, StyleSheet, SectionList, TouchableOpacity, TextInput, Alert,
 } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import { RectButton } from 'react-native-gesture-handler';
-import Animated, { 
-  FadeIn, 
-  useSharedValue, 
-  useAnimatedStyle, 
-  withRepeat, 
-  withTiming, 
-  Easing 
-} from 'react-native-reanimated';
+import Animated, { FadeIn } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import Haptic from 'react-native-haptic-feedback';
 import { useThreadsStore } from '../state/useThreadsStore';
-import { betterPreview, firstUserPreview, summaryPreview } from '../lib/format';
 import { colors } from '../styles/colors';
 import SvgIcon from '../components/SvgIcon';
+import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
 import { useTranslation } from 'react-i18next';
+import { perfLog } from '../lib/perfTrace';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -49,9 +44,17 @@ function formatRowDate(ts, locale, lang) {
 
 export default function HistorySimple({ navigation }) {
   const { t, i18n } = useTranslation();
+  const isFocused = useIsFocused();
+  const { reportScreenReady } = useAndroidNavigationMenu();
   const lang = (i18n?.language || 'en').split('-')[0];
   const locale = lang === 'ja' ? 'ja-JP' : 'en-US';
-  const threads = useThreadsStore(s => s.threads);
+  const frozenThreadIndexRef = useRef([]);
+  const threadIndex = useThreadsStore(
+    React.useCallback(
+      state => (isFocused ? state.threadIndex : frozenThreadIndexRef.current),
+      [isFocused]
+    )
+  );
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const renameThread = useThreadsStore(s => s.renameThread);
@@ -59,23 +62,37 @@ export default function HistorySimple({ navigation }) {
 
   const [busyId, setBusyId] = useState(null);
   const [q, setQ] = useState('');
+  const rootLayoutLoggedRef = useRef(false);
+  const rootLayoutSeenRef = useRef(false);
+  const screenReadyReportedRef = useRef(false);
+  const contentSizeLoggedRef = useRef(false);
 
-  // Pulse animation for New Chat button
-  const pulseAnim = useSharedValue(0);
-  
   useEffect(() => {
-    pulseAnim.value = withRepeat(
-      withTiming(1, { duration: 1500, easing: Easing.inOut(Easing.sin) }),
-      -1,
-      true
-    );
-  }, [pulseAnim]);
+    perfLog('history.screen.mounted');
+    return () => {
+      perfLog('history.screen.unmounted');
+    };
+  }, []);
 
-  const pulseStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: 1 + pulseAnim.value * 0.1 }],
-    shadowOpacity: 0.3 + pulseAnim.value * 0.4,
-    shadowRadius: 8 + pulseAnim.value * 8,
-  }));
+  useEffect(() => {
+    perfLog('history.screen.focus', {
+      isFocused,
+    });
+    if (isFocused) {
+      frozenThreadIndexRef.current = threadIndex;
+      rootLayoutLoggedRef.current = false;
+      contentSizeLoggedRef.current = false;
+      screenReadyReportedRef.current = false;
+      if (rootLayoutSeenRef.current) {
+        requestAnimationFrame(() => {
+          if (!screenReadyReportedRef.current) {
+            reportScreenReady('History');
+            screenReadyReportedRef.current = true;
+          }
+        });
+      }
+    }
+  }, [isFocused, reportScreenReady, threadIndex]);
 
   // Swipe row refs
   const rowRefs = useRef(new Map());
@@ -84,22 +101,19 @@ export default function HistorySimple({ navigation }) {
 
   // Sort: recent first (no pinning)
   const sorted = useMemo(() => {
-    const arr = [...threads];
+    const arr = threadIndex.filter(thread => thread?.hasMessages);
     arr.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
     return arr;
-  }, [threads]);
+  }, [threadIndex]);
 
-  // Filter by search (topic/preview only) and hide empty threads
+  // Filter by search using precomputed thread previews.
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    const nonEmpty = sorted.filter(t => Array.isArray(t?.messages) && t.messages.some(m => m.role === 'user' || m.role === 'assistant'));
-    if (!needle) return nonEmpty;
-    return nonEmpty.filter(t => {
-      const summaryText = t.summary?.trim();
-      const summaryBased = summaryText ? summaryPreview(summaryText) : '';
-      const previewSource = firstUserPreview(t.messages) || summaryBased || betterPreview(t.messages);
-      const preview = previewSource.toLowerCase();
-      return preview.includes(needle);
+    if (!needle) return sorted;
+    return sorted.filter(thread => {
+      const preview = String(thread?.preview || '').toLowerCase();
+      const title = String(thread?.title || '').toLowerCase();
+      return preview.includes(needle) || title.includes(needle);
     });
   }, [sorted, q]);
 
@@ -126,13 +140,28 @@ export default function HistorySimple({ navigation }) {
     });
   }, [filtered, locale, lang]);
 
+  useEffect(() => {
+    if (!isFocused) return;
+    perfLog('history.data.snapshot', {
+      indexedThreads: threadIndex.length,
+      sortedThreads: sorted.length,
+      filteredThreads: filtered.length,
+      sections: sections.length,
+      queryLength: q.length,
+    });
+  }, [filtered.length, isFocused, q.length, sections.length, sorted.length, threadIndex.length]);
+
 function openThread(thread) {
+    perfLog('history.thread.open', {
+      threadId: thread?.id,
+    });
     Haptic.trigger('impactLight');
   setActiveThread(thread.id);
     navigation?.navigate?.('Chat');
   }
 
   function onNew() {
+    perfLog('history.new_chat');
     Haptic.trigger('impactLight');
     const th = createThread({ title: t('history.newChat') });
     setActiveThread(th.id);
@@ -195,10 +224,7 @@ function onRename(thread) {
   );
 
 const renderItem = ({ item: thread }) => {
-  const summaryText = thread.summary?.trim();
-  const summaryBased = summaryText ? summaryPreview(summaryText) : '';
-  const rawPreview = firstUserPreview(thread.messages) || summaryBased || betterPreview(thread.messages);
-  const preview = rawPreview || t('history.newChat');
+  const preview = thread.preview || t('history.newChat');
     return (
       <Swipeable
       ref={(ref) => { ref ? rowRefs.current.set(thread.id, ref) : rowRefs.current.delete(thread.id); }}
@@ -240,12 +266,29 @@ const renderItem = ({ item: thread }) => {
   );
 
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      onLayout={() => {
+        if (rootLayoutLoggedRef.current) return;
+        rootLayoutLoggedRef.current = true;
+        rootLayoutSeenRef.current = true;
+        perfLog('history.root.layout');
+        if (isFocused && !screenReadyReportedRef.current) {
+          reportScreenReady('History');
+          screenReadyReportedRef.current = true;
+        }
+      }}
+    >
       <View style={styles.searchWrap}>
         <SvgIcon name="search" size={18} color="#888888" style={styles.searchIcon} />
         <TextInput
           value={q}
-          onChangeText={setQ}
+          onChangeText={(text) => {
+            perfLog('history.search.change', {
+              length: text?.length || 0,
+            });
+            setQ(text);
+          }}
           placeholder={t('history.search')}
           placeholderTextColor="#666666"
           style={styles.search}
@@ -263,6 +306,19 @@ const renderItem = ({ item: thread }) => {
         renderItem={renderItem}
         renderSectionHeader={renderSectionHeader}
         stickySectionHeadersEnabled
+        removeClippedSubviews
+        initialNumToRender={8}
+        maxToRenderPerBatch={6}
+        windowSize={5}
+        onContentSizeChange={(_, height) => {
+          if (contentSizeLoggedRef.current) return;
+          contentSizeLoggedRef.current = true;
+          perfLog('history.list.content_size', {
+            height,
+            sections: sections.length,
+            items: filtered.length,
+          });
+        }}
         style={{ backgroundColor: '#000000' }}
         contentContainerStyle={sections.length ? { paddingBottom: 100 } : styles.emptyWrap}
         ListEmptyComponent={
@@ -282,7 +338,7 @@ const renderItem = ({ item: thread }) => {
       <View style={styles.newChatButtonContainer}>
         <AnimatedTouchable 
           onPress={onNew} 
-          style={[styles.newChatButton, pulseStyle]}
+          style={styles.newChatButton}
           activeOpacity={0.8}
         >
           <Svg width={18} height={18} viewBox="0 0 440 440">

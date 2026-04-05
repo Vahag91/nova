@@ -14,14 +14,7 @@ function flushQueue() {
   const threadsToSave = Array.from(saveQueue.values());
   saveQueue.clear(); // Clear the queue immediately
 
-  // Load all threads, update the ones in the queue, then save all
-  Storage.loadThreads()
-    .then(allThreads => {
-      const updatedThreadsMap = new Map(allThreads.map(t => [t.id, t]));
-      threadsToSave.forEach(t => updatedThreadsMap.set(t.id, t));
-      const finalThreads = Array.from(updatedThreadsMap.values());
-      return Storage.saveThreads(finalThreads);
-    })
+  Promise.all(threadsToSave.map(thread => Storage.saveThread(thread)))
     .catch(error => {
     })
     .finally(() => {
@@ -45,13 +38,7 @@ export const throttledSave = {
     }
 
     // Perform immediate save
-    Storage.loadThreads()
-      .then(allThreads => {
-        const updatedThreadsMap = new Map(allThreads.map(t => [t.id, t]));
-        updatedThreadsMap.set(threadId, threadData);
-        const finalThreads = Array.from(updatedThreadsMap.values());
-        return Storage.saveThreads(finalThreads);
-      })
+    Storage.saveThread(threadData)
       .catch(error => {
       });
   },

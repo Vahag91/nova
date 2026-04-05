@@ -7,7 +7,6 @@ import {
   View,
   Image,
   StyleSheet,
-  Platform,
   Modal,
   Pressable,
   Alert,
@@ -36,7 +35,8 @@ import PaywallScreen from '../components/PaywallScreen';
 import OneTimeOfferScreen from '../screens/OneTimeOfferScreen';
 import ModelSelector from '../components/ModelSelector';
 import SvgIcon from '../components/SvgIcon';
-import CustomDrawerContent from './CustomDrawerContent';
+import AndroidNavigationMenu from './AndroidNavigationMenu';
+import { AndroidNavigationMenuProvider, useAndroidNavigationMenu } from './AndroidNavigationMenuContext';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
@@ -48,8 +48,21 @@ import { SubscriptionContext } from '../context/SubscriptionContext';
 import { navigationRef, isNavigationReadyRef } from './rootNavigation';
 import { ONE_TIME_OFFER_KEY } from '../constants/storageKeys';
 import { ONE_TIME_OFFER_PAYWALL_ENABLED } from '../constants/featureFlags';
-
 const Drawer = createDrawerNavigator();
+
+function normalizeAndroidMenuRoute(routeName) {
+  if (!routeName) return 'Chat';
+
+  if (['Studio', 'StudioHome', 'CreateImage', 'EditImage', 'CoinStore'].includes(routeName)) {
+    return 'Studio';
+  }
+
+  return routeName;
+}
+
+function isStudioLeafRoute(routeName) {
+  return ['StudioHome', 'CreateImage', 'EditImage', 'CoinStore'].includes(routeName);
+}
 
 function isSameDay(timestampA, timestampB) {
   if (!timestampA || !timestampB) return false;
@@ -62,27 +75,39 @@ function isSameDay(timestampA, timestampB) {
   );
 }
 
+function AndroidMenuButton() {
+  const { openMenu } = useAndroidNavigationMenu();
+
+  return (
+    <TouchableOpacity
+      style={[styles.headerButton, styles.headerButtonNeutral]}
+      activeOpacity={0.85}
+      onPress={openMenu}
+    >
+      <SvgIcon name="menu" size={24} color={colors.text} />
+    </TouchableOpacity>
+  );
+}
+
 // Header center component for model dropdown or assistant switcher
 function ChatHeaderCenter() {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
 
-  const threads = useThreadsStore(s => s.threads);
-  const activeThreadId = useThreadsStore(s => s.activeThreadId);
+  const activeThread = useThreadsStore(
+    useCallback(
+      s => (s.activeThreadId ? s.threadsById?.[s.activeThreadId] || null : null),
+      []
+    )
+  );
   const isPrivate = useThreadsStore(s => s.privateActive);
   const createThread = useThreadsStore(s => s.createThread);
   const updateThread = useThreadsStore(s => s.updateThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   // no longer inject system message into messages; use thread.system
-  const currentModel = useSettingsStore(s => s.model);
 
   const [sheetOpen, setSheetOpen] = useState(false);
-
-  const activeThread = useMemo(
-    () => threads.find(t => t.id === activeThreadId) || null,
-    [threads, activeThreadId]
-  );
 
   const systemText = activeThread?.system || activeThread?.messages?.find(m => m.role === 'system')?.content;
 
@@ -179,7 +204,7 @@ function ChatHeaderCenter() {
         t('assistants.errorMessage') || 'Could not start this assistant.'
       );
     }
-  }, [closeSheet, systemText, currentModel, createThread, setActiveThread, navigation, t]);
+  }, [closeSheet, systemText, createThread, updateThread, setActiveThread, navigation, t]);
 
   const listRef = useRef(null);
 
@@ -423,6 +448,32 @@ function HistoryHeaderRight({ navigation }) {
   );
 }
 
+function PaywallRouteScreen({ navigation, route }) {
+  const returnTo = route?.params?.returnTo;
+
+  const goBackSafe = useCallback(() => {
+    if (returnTo) {
+      navigation.navigate(returnTo);
+      return;
+    }
+
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+      return;
+    }
+
+    navigation.navigate('Chat');
+  }, [navigation, returnTo]);
+
+  return (
+    <PaywallScreen
+      onClose={goBackSafe}
+      onRestore={() => {}}
+      onContinue={goBackSafe}
+    />
+  );
+}
+
 export default function DrawerNavigator({ onNavigationReady }) {
   const { t } = useTranslation();
   const subscription = useContext(SubscriptionContext);
@@ -431,6 +482,12 @@ export default function DrawerNavigator({ onNavigationReady }) {
   const [navReady, setNavReady] = useState(false);
   const [oneTimeOfferChecked, setOneTimeOfferChecked] = useState(!ONE_TIME_OFFER_PAYWALL_ENABLED);
   const [currentRouteName, setCurrentRouteName] = useState(null);
+  const [androidMenuVisible, setAndroidMenuVisible] = useState(false);
+  const lastStudioLeafRouteRef = useRef('StudioHome');
+  const currentMenuRoute = useMemo(
+    () => normalizeAndroidMenuRoute(currentRouteName),
+    [currentRouteName]
+  );
 
   useEffect(() => {
     if (!ONE_TIME_OFFER_PAYWALL_ENABLED) return;
@@ -463,7 +520,97 @@ export default function DrawerNavigator({ onNavigationReady }) {
     };
   }, [navReady, isPremium, subscriptionReady, oneTimeOfferChecked, currentRouteName]);
 
+  const openAndroidMenu = useCallback(() => {
+    if (androidMenuVisible) {
+      return;
+    }
+    setAndroidMenuVisible(true);
+  }, [androidMenuVisible]);
+
+  const closeAndroidMenu = useCallback((reason = 'dismiss') => {
+    if (!androidMenuVisible) {
+      return;
+    }
+    setAndroidMenuVisible(false);
+  }, [androidMenuVisible]);
+
+  const dispatchAndroidMenuNavigation = useCallback((routeName, params, currentLeafRoute) => {
+    if (!navigationRef?.isReady?.()) {
+      return;
+    }
+
+    if (routeName === 'PaywallScreen') {
+      navigationRef.navigate('PaywallScreen', params);
+      return;
+    }
+
+    if (routeName === 'Chat') {
+      navigationRef.navigate('Chat');
+      return;
+    }
+
+    if (routeName === 'Studio') {
+      const shouldResetToHome =
+        currentLeafRoute !== 'StudioHome' &&
+        lastStudioLeafRouteRef.current &&
+        lastStudioLeafRouteRef.current !== 'StudioHome';
+
+      if (shouldResetToHome) {
+        navigationRef.navigate('Studio', { screen: 'StudioHome' });
+      } else {
+        navigationRef.navigate('Studio');
+      }
+      return;
+    }
+
+    navigationRef.navigate(routeName, params);
+  }, []);
+
+  const handleAndroidMenuNavigate = useCallback((routeName, params) => {
+    const currentLeafRoute = navigationRef.getCurrentRoute()?.name || currentRouteName;
+    const activeRoute = normalizeAndroidMenuRoute(currentLeafRoute);
+
+    if (!navigationRef?.isReady?.()) {
+      closeAndroidMenu('navigate');
+      return;
+    }
+
+    if (routeName === activeRoute && !(routeName === 'Studio' && currentLeafRoute !== 'StudioHome')) {
+      closeAndroidMenu('navigate_skipped');
+      return;
+    }
+
+    closeAndroidMenu('navigate');
+    requestAnimationFrame(() => {
+      dispatchAndroidMenuNavigation(routeName, params, currentLeafRoute);
+    });
+  }, [closeAndroidMenu, currentRouteName, dispatchAndroidMenuNavigation]);
+
+  const handleAndroidMenuNavigateThread = useCallback((threadId) => {
+    if (!navigationRef?.isReady?.()) {
+      closeAndroidMenu('navigate_thread');
+      return;
+    }
+
+    const { setActiveThread } = useThreadsStore.getState();
+    setActiveThread(threadId);
+    closeAndroidMenu('navigate_thread');
+    requestAnimationFrame(() => {
+      if (navigationRef?.isReady?.()) {
+        navigationRef.navigate('Chat');
+      }
+    });
+  }, [closeAndroidMenu]);
+
+  const androidMenuContextValue = useMemo(() => ({
+    openMenu: openAndroidMenu,
+    closeMenu: closeAndroidMenu,
+    reportScreenReady: () => {},
+    isAvailable: true,
+  }), [closeAndroidMenu, openAndroidMenu]);
+
   return (
+      <AndroidNavigationMenuProvider value={androidMenuContextValue}>
       <NavigationContainer
         ref={navigationRef}
         onReady={() => {
@@ -471,17 +618,27 @@ export default function DrawerNavigator({ onNavigationReady }) {
           setNavReady(true);
           const routeName = navigationRef.getCurrentRoute()?.name || null;
           setCurrentRouteName(routeName);
+          if (isStudioLeafRoute(routeName)) {
+            lastStudioLeafRouteRef.current = routeName;
+          }
           onNavigationReady?.(true);
         }}
         onStateChange={() => {
           const routeName = navigationRef.getCurrentRoute()?.name || null;
           setCurrentRouteName(routeName);
+          if (isStudioLeafRoute(routeName)) {
+            lastStudioLeafRouteRef.current = routeName;
+          }
         }}
       >
       <Drawer.Navigator
         initialRouteName="Chat"
-        drawerContent={(props) => <CustomDrawerContent {...props} />}
+        drawerContent={() => null}
+        detachInactiveScreens={false}
         screenOptions={{
+          lazy: true,
+          freezeOnBlur: false,
+          headerLeft: () => <AndroidMenuButton />,
           headerStyle: {
             backgroundColor: '#000000',
             borderBottomWidth: 0,
@@ -497,8 +654,8 @@ export default function DrawerNavigator({ onNavigationReady }) {
           },
           drawerActiveTintColor: colors.accent,
           drawerInactiveTintColor: colors.textSecondary,
-          drawerType: 'slide',
-          swipeEnabled: true,
+          drawerType: 'back',
+          swipeEnabled: false,
           swipeEdgeWidth: 50,
         }}
       >
@@ -508,15 +665,7 @@ export default function DrawerNavigator({ onNavigationReady }) {
           options={({ navigation }) => ({
             headerTitle: () => <ChatHeaderCenter />,
             headerRight: () => <ChatHeaderRight />,
-            headerLeft: () => (
-              <TouchableOpacity
-                style={[styles.headerButton, styles.headerButtonNeutral]}
-                activeOpacity={0.85}
-                onPress={() => navigation.toggleDrawer()}
-              >
-                <SvgIcon name="menu" size={24} color={colors.text} />
-              </TouchableOpacity>
-            ),
+            headerLeft: () => <AndroidMenuButton />,
           })}
         />
         <Drawer.Screen
@@ -551,25 +700,7 @@ export default function DrawerNavigator({ onNavigationReady }) {
         {/** Create/Edit are children of Studio stack; no drawer entries */}
         <Drawer.Screen
           name="PaywallScreen"
-          component={({ navigation, route }) => {
-            const returnTo = route?.params?.returnTo;
-            const goBackSafe = () => {
-              if (returnTo) {
-                navigation.navigate(returnTo);
-              } else if (navigation.canGoBack()) {
-                navigation.goBack();
-              } else {
-                navigation.navigate('Chat');
-              }
-            };
-            return (
-              <PaywallScreen
-                onClose={goBackSafe}
-                onRestore={() => {}}
-                onContinue={goBackSafe}
-              />
-            );
-          }}
+          component={PaywallRouteScreen}
           options={{
             headerShown: false,
             title: 'Paywall',
@@ -589,6 +720,14 @@ export default function DrawerNavigator({ onNavigationReady }) {
         />
       </Drawer.Navigator>
     </NavigationContainer>
+    <AndroidNavigationMenu
+      visible={androidMenuVisible}
+      activeRouteName={currentMenuRoute}
+      onClose={closeAndroidMenu}
+      onNavigate={handleAndroidMenuNavigate}
+      onNavigateThread={handleAndroidMenuNavigateThread}
+    />
+    </AndroidNavigationMenuProvider>
   );
 }
 
@@ -602,17 +741,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.surface,
     flexDirection: 'row',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.12,
-        shadowRadius: 4,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    elevation: 3,
   },
   headerButtonNeutral: {
     backgroundColor: colors.surface,
@@ -629,17 +758,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     flexDirection: 'row',
     alignItems: 'center',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.12,
-        shadowRadius: 4,
-      },
-      android: {
-        elevation: 3,
-      },
-    }),
+    elevation: 3,
   },
   headerPillAvatar: {
     width: 32,
@@ -686,7 +805,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 18 },
     shadowRadius: 29,
-    shadowOpacity: Platform.OS === 'ios' ? 0.28 : 0.32,
+    shadowOpacity: 0.32,
     elevation: 22,
   },
   sheetHeader: {

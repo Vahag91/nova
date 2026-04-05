@@ -1,13 +1,20 @@
 import React from 'react';
-import { Pressable, StyleSheet, View, Text } from 'react-native';
+import { Image, Pressable, StyleSheet, View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import HeroVideo from './HeroVideo';
 
-const SidebarCreativeStudioBanner = ({ onPress, style, restartKey, compact = false }) => {
+const DRAWER_BANNER_IMAGE = require('../../../assets/images/createstudio/banana.png');
+
+const SidebarCreativeStudioBanner = ({
+  onPress,
+  style,
+  restartKey,
+  compact = false,
+  playVideo = false,
+}) => {
   const { t } = useTranslation();
 
-  
   return (
     <Pressable
       style={({ pressed }) => [
@@ -19,7 +26,15 @@ const SidebarCreativeStudioBanner = ({ onPress, style, restartKey, compact = fal
       onPress={onPress}
     >
       <View style={[styles.inner, compact && styles.innerCompact]}>
-        <HeroVideo style={styles.heroVideo} restartKey={restartKey} />
+        {playVideo ? (
+          <HeroVideo style={styles.heroVideo} restartKey={restartKey} />
+        ) : (
+          <Image
+            source={DRAWER_BANNER_IMAGE}
+            style={styles.heroVideo}
+            resizeMode="cover"
+          />
+        )}
         <View style={styles.overlay} />
         <View style={[styles.content, compact && styles.contentCompact]}>
           <View style={[styles.textColumn, compact && styles.textColumnCompact]}>
