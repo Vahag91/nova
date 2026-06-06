@@ -19,7 +19,7 @@
     "gpt-5": "IA mais poderosa e versátil",
     "gpt-5-chat-latest": "Otimizado para chat e diálogo",
     "gpt-5-mini": "GPT-5 rápido e confiável",
-    "gpt-5-nano": "Modelo leve para tarefas simples",
+    "gpt-5.4-nano": "Modelo leve para tarefas simples",
     "o4-mini": "Modelo de raciocínio eficiente",
     "gpt-4.1-mini": "GPT-4.1 compacto e capaz",
     "claude-3-haiku": "IA da Anthropic rápida e focada",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Criativo e estilizado",
       "runwareQwenImage": "Equilíbrio e alta qualidade",
       "google4": "Melhor modelo de imagem do Google",
+      "klingImageO1": "Edição de imagem com alto controle",
       "fluxKontent": "Flux Kontent ajustado para edições",
       "runwareProvider": "Qualidade equilibrada com difusão confiável.",
       "airProvider": "Nano Banana adiciona um tom vivo e divertido.",
       "googleProvider": "Google ajustado para detalhes refinados.",
+      "klingaiProvider": "KlingAI ajustado para edições controladas.",
       "anthropicProvider": "Pipeline Claude para climas mais sutis.",
       "default": "Toque para explorar os mecanismos disponíveis."
     }
@@ -657,6 +659,7 @@
       "perMonth": "por mês"
     },
     "cta": "Continuar",
+    "ctaFreeTrial": "Experimentar grátis",
     "legal": {
       "terms": "Termos",
       "privacy": "Privacidade"
@@ -769,6 +772,66 @@
       "explainConceptSubtitle": "em termos simples",
       "planDay": "Planejar meu dia",
       "planDaySubtitle": "com dicas de produtividade"
+    },
+    "home": {
+      "eyebrow": "Escolha um tópico",
+      "title": "O que você quer fazer?",
+      "subtitle": "Escolha uma direção e comece com um aviso forte.",
+      "pickPromptTitle": "Escolha um prompt para começar",
+      "changeTopic": "Escolha outro tópico",
+      "intents": {
+        "summarize": "Resuma o texto",
+        "summarizeShort": "Resumir",
+        "summarizeHint": "Artigos, notas, notas de voz, tópicos longos",
+        "plan": "Faça um plano",
+        "planHint": "Viagens, rotinas, orçamentos, prazos, mudanças de vida",
+        "brainstorm": "Brainstorming",
+        "brainstormHint": "Ideias, ofertas, nomes, conteúdo, projetos paralelos",
+        "analyze": "Analisar dados",
+        "analyzeHint": "Gastos, feedback, métricas, hábitos, desempenho"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Crie um briefing do fundador",
+          "founderBriefSubtitle": "Retire os principais riscos, decisões e próximos passos.",
+          "classNotesTitle": "Limpe minhas anotações de estudo",
+          "classNotesSubtitle": "Transforme notas aproximadas em um guia de estudo claro.",
+          "meetingHandoffTitle": "Escreva um resumo da transferência",
+          "meetingHandoffSubtitle": "Útil após reuniões, ligações ou longas conversas internas.",
+          "longArticleTitle": "Resuma este artigo rapidamente",
+          "longArticleSubtitle": "Condense um longo artigo em conclusões precisas."
+        },
+        "plan": {
+          "energyResetTitle": "Crie uma redefinição de energia de 14 dias",
+          "energyResetSubtitle": "Um plano realista para sono, alimentação, movimento e concentração.",
+          "mealPlanTitle": "Planeje refeições que eu realmente cozinharei",
+          "mealPlanSubtitle": "Prático, acessível e baseado no que tenho.",
+          "cityMoveTitle": "Planejar minha mudança para uma nova cidade",
+          "cityMoveSubtitle": "Divida-o em cronograma, orçamento, habitação e tarefas administrativas.",
+          "tripEscapeTitle": "Planeje uma escapadela de fim de semana memorável",
+          "tripEscapeSubtitle": "Algo melhor que um itinerário genérico."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Encontre uma agitação lateral realista",
+          "sideHustleSubtitle": "Idéias que posso começar enquanto trabalho em tempo integral.",
+          "brandAngleTitle": "Encontre um ângulo de marca memorável",
+          "brandAngleSubtitle": "Útil para produtos, criadores, agências ou boletins informativos.",
+          "socialSeriesTitle": "Invente uma série de conteúdo",
+          "socialSeriesSubtitle": "Algo consistente o suficiente para aumentar o público.",
+          "datingIdeasTitle": "Tenha ideias novas",
+          "datingIdeasSubtitle": "Datas, presentes, surpresas ou eventos que pareçam atenciosos."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Descubra onde meu dinheiro está vazando",
+          "spendingLeaksSubtitle": "Mostre padrões, pontos fracos e as vitórias mais fáceis primeiro.",
+          "customerFeedbackTitle": "Transforme feedback em prioridades",
+          "customerFeedbackSubtitle": "Solicitações de cluster, reclamações, urgência e impacto.",
+          "habitPatternsTitle": "Identifique padrões em meus hábitos",
+          "habitPatternsSubtitle": "Útil para treinos, sono, registro no diário ou registros de foco.",
+          "metricsStoryTitle": "Explique o que os números significam",
+          "metricsStorySubtitle": "Mais sinal, menos ruído na planilha."
+        }
+      }
     }
   },
   "imageUpload": {

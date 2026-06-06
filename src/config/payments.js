@@ -1,8 +1,8 @@
 // RevenueCat public SDK keys (safe to ship in client)
-// TODO: Replace with your actual keys and entitlement id
-export const REVENUE_PUBLIC_IOS = 'appl_SyYAkvEBwWQUGwzREHIZjdfVsiN';
-export const REVENUE_PUBLIC_ANDROID = '';
-export const REVENUE_ENTITLEMENT_ID = 'Premium';
+const REVENUE_GOOGLE_PLAY_ANDROID = 'goog_tmOkJotzDIcbkhwVLerpECRlnky';
+
+export const REVENUE_PUBLIC_ANDROID = REVENUE_GOOGLE_PLAY_ANDROID;
+export const REVENUE_ENTITLEMENT_ID = 'ChatCloud Pro';
 
 // Optional: offering identifiers you use in RevenueCat dashboard
 export const OFFERING_IDS = {

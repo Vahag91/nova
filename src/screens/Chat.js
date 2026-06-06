@@ -11,7 +11,7 @@ import {
   KeyboardAvoidingView, 
   KeyboardGestureArea,           
   KeyboardEvents,
-  useReanimatedKeyboardAnimation 
+  useReanimatedKeyboardAnimation,
 } from 'react-native-keyboard-controller';
 
 import { useThreadsStore } from '../state/useThreadsStore';
@@ -27,7 +27,6 @@ import SuggestionCards from '../components/chat/SuggestionCards';
 import AssistantHeader from '../components/chat/AssistantHeader';
 import { colors } from '../styles/colors';
 import { appendStream, getStream, clearStream } from '../lib/streamingBuffer';
-import { chatDebugLog, isChatDebugEnabled } from '../lib/chatDebug';
 import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
 import { buildPayload } from '../lib/payloadBuilder';
 import { useVoiceInput } from '../hooks/useVoiceInput';
@@ -35,45 +34,60 @@ import { useTranslation } from 'react-i18next';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { isPremiumModel, FREE_MODEL } from '../config/premium';
 import { setPendingPremiumAction } from '../state/premiumActions';
+import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
 
-import { ensurePhotoLibraryAccess, ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
+import { ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
 import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
 import RateUsService from '../services/RateUsService';
 import ChatToast from '../components/chat/ChatToast';
+import ReportContentModal from '../components/reporting/ReportContentModal';
 import { plainTextFromMarkdown } from '../lib/plainTextFromMarkdown';
 import { perfEnd, perfLog, perfStart } from '../lib/perfTrace';
 
+function mergeVoiceTranscript(base, chunk) {
+  const left = String(base || '').trim();
+  const right = String(chunk || '').trim();
+
+  if (!right) {
+    return left;
+  }
+  if (!left) {
+    return right;
+  }
+  if (left === right || left.endsWith(right)) {
+    return left;
+  }
+  if (right.startsWith(left)) {
+    return right;
+  }
+
+  return `${left} ${right}`;
+}
+
 export default function Chat({ navigation }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
+  const subscriptionReady = !!subscription?.subscriptionReady;
   
   const headerHeight = useHeaderHeight();
-
-  // --- ANIMATION SETUP ---
   const { progress } = useReanimatedKeyboardAnimation();
 
-  // 1. Suggestion Chips Animation
-  const suggestionStyle = useAnimatedStyle(() => {
-    return {
-      opacity: interpolate(progress.value, [0, 0.5], [1, 0], Extrapolation.CLAMP),
-      transform: [
-        { translateY: interpolate(progress.value, [0, 1], [0, 20], Extrapolation.CLAMP) }
-      ],
-      pointerEvents: progress.value > 0.1 ? 'none' : 'auto',
-    };
-  });
+  const suggestionStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(progress.value, [0, 0.5], [1, 0], Extrapolation.CLAMP),
+    transform: [
+      { translateY: interpolate(progress.value, [0, 1], [0, 20], Extrapolation.CLAMP) },
+    ],
+    pointerEvents: progress.value > 0.1 ? 'none' : 'auto',
+  }));
 
-  // 2. Banner Animation
-  const bannerStyle = useAnimatedStyle(() => {
-    return {
-      opacity: interpolate(progress.value, [0, 0.6], [1, 0], Extrapolation.CLAMP),
-      transform: [
-        { translateY: interpolate(progress.value, [0, 1], [0, -100], Extrapolation.CLAMP) },
-        { scale: interpolate(progress.value, [0, 1], [1, 0.9], Extrapolation.CLAMP) }
-      ],
-    };
-  });
+  const bannerStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(progress.value, [0, 0.6], [1, 0], Extrapolation.CLAMP),
+    transform: [
+      { translateY: interpolate(progress.value, [0, 1], [0, -100], Extrapolation.CLAMP) },
+      { scale: interpolate(progress.value, [0, 1], [1, 0.9], Extrapolation.CLAMP) },
+    ],
+  }));
 
   // Stores
   const normalActive = useThreadsStore(
@@ -108,9 +122,22 @@ export default function Chat({ navigation }) {
   const messageListRef = useRef(null);
   const didInitialScrollRef = useRef(false);
   const [selectionResetToken, setSelectionResetToken] = useState(0);
+  const [pendingMicAfterSubscriptionReady, setPendingMicAfterSubscriptionReady] = useState(false);
   const tapRef = useRef({ x: 0, y: 0, ts: 0, moved: false });
+  const suppressSelectionResetRef = useRef(false);
+  const suppressSelectionResetTimeoutRef = useRef(null);
   const bumpSelectionResetToken = useCallback(() => {
     setSelectionResetToken(v => v + 1);
+  }, []);
+  const holdSelectionReset = useCallback(() => {
+    suppressSelectionResetRef.current = true;
+    if (suppressSelectionResetTimeoutRef.current) {
+      clearTimeout(suppressSelectionResetTimeoutRef.current);
+    }
+    suppressSelectionResetTimeoutRef.current = setTimeout(() => {
+      suppressSelectionResetRef.current = false;
+      suppressSelectionResetTimeoutRef.current = null;
+    }, 350);
   }, []);
 
   const activeThread = isPrivate ? privateThread : normalActive;
@@ -131,6 +158,7 @@ export default function Chat({ navigation }) {
   const [forceCollapseInput, setForceCollapseInput] = useState(false);
   const [keyboardVisible, setKeyboardVisible] = useState(false);
   const [helpersVisible, setHelpersVisible] = useState(false);
+  const [reportTarget, setReportTarget] = useState(null);
   const helperRevealTimeoutRef = useRef(null);
   const helperRevealInteractionRef = useRef(null);
 
@@ -151,6 +179,9 @@ export default function Chat({ navigation }) {
   useEffect(() => {
     return () => {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      if (suppressSelectionResetTimeoutRef.current) {
+        clearTimeout(suppressSelectionResetTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -189,9 +220,15 @@ export default function Chat({ navigation }) {
   
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
   const [voiceText, setVoiceText] = useState('');
+  const committedVoiceTextRef = useRef('');
   const [webSearchNext, setWebSearchNext] = useState(false); 
+  const voiceLocale = useMemo(() => {
+    const raw = i18n?.resolvedLanguage || i18n?.language || '';
+    const normalized = String(raw || '').trim().replace(/_/g, '-');
+    return normalized || undefined;
+  }, [i18n?.language, i18n?.resolvedLanguage]);
   const resolvedActiveModel = useMemo(
-    () => (activeModelKey === 'gpt-5-nano' ? 'gpt-5.2-chat-latest' : activeModelKey),
+    () => activeModelKey,
     [activeModelKey]
   );
   const requestModelKey = useMemo(
@@ -281,15 +318,31 @@ export default function Chat({ navigation }) {
   const onFinalText = useCallback((text) => {
     const trimmed = (text || '').trim();
     if (!trimmed) return;
-    setVoiceText(trimmed);
+    const merged = mergeVoiceTranscript(committedVoiceTextRef.current, trimmed);
+    committedVoiceTextRef.current = merged;
+    setVoiceText(merged);
   }, [setVoiceText]);
   const onPartialText = useCallback((text) => {
-    setVoiceText(text || '');
+    const partial = String(text || '').trim();
+    if (!partial) {
+      setVoiceText(committedVoiceTextRef.current);
+      return;
+    }
+
+    setVoiceText(mergeVoiceTranscript(committedVoiceTextRef.current, partial));
   }, [setVoiceText]);
-  const { isRecording, volume, start: startVoice, stop: stopVoice, activate: activateVoice } = useVoiceInput({
+  const onVoiceError = useCallback((message) => {
+    const pretty = mapProxyError({ message });
+    setError(pretty.message || t('chat.voiceStartFailed', { defaultValue: 'Could not start voice.' }));
+    if (!String(voiceText || '').trim()) {
+      setShowVoiceOverlay(false);
+    }
+  }, [setError, setShowVoiceOverlay, t, voiceText]);
+  const { isRecording, volume, start: startVoice, stop: stopVoice } = useVoiceInput({
+    locale: voiceLocale,
     onPartialText,
     onFinalText,
-    autoInit: false,
+    onErrorText: onVoiceError,
   });
 
   useEffect(() => {
@@ -342,6 +395,21 @@ export default function Chat({ navigation }) {
   }, [stopVoice, isRecording]);
 
   useEffect(() => {
+    if (!showVoiceOverlay || isRecording || String(voiceText || '').trim()) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      if (!isRecording && !String(voiceText || '').trim()) {
+        setShowVoiceOverlay(false);
+        setError(t('chat.voiceNoSpeechDetected', { defaultValue: 'No voice was recognized. Please try again.' }));
+      }
+    }, 600);
+
+    return () => clearTimeout(timeoutId);
+  }, [isRecording, setError, showVoiceOverlay, t, voiceText]);
+
+  useEffect(() => {
     return () => {
       if (useThreadsStore.getState().privateActive) endPrivate();
       clearInsertToChatCallback();
@@ -377,34 +445,6 @@ export default function Chat({ navigation }) {
   }
 
   const onOpenCameraPress = useCallback(async () => {
-    const photosTitle = t('chat.permissions.photosTitle', { defaultValue: 'Photos Permission Needed' });
-    const photosMessage = t('chat.permissions.photosMessage', { defaultValue: 'Photo access is required to choose images.' });
-    const res = await ensurePhotoLibraryAccess({ write: false });
-    if (!res.ok) {
-      if (res.blocked) {
-        promptOpenSettings(photosTitle, photosMessage);
-      } else {
-        Alert.alert(
-          photosTitle,
-          photosMessage,
-          [
-            { text: t('common.cancel'), style: 'cancel' },
-            {
-              text: t('common.allow', { defaultValue: 'Allow' }),
-              onPress: async () => {
-                const retry = await ensurePhotoLibraryAccess({ write: false });
-                if (!retry.ok && retry.blocked) {
-                  promptOpenSettings(photosTitle, photosMessage);
-                }
-              }
-            }
-          ],
-          { cancelable: true }
-        );
-      }
-      return;
-    }
-
     launchImageLibrary(
       { mediaType: 'photo', includeBase64: true, selectionLimit: 2, maxWidth: 500, maxHeight: 500, quality: 0.52 },
       (response) => {
@@ -435,28 +475,9 @@ export default function Chat({ navigation }) {
   const handleCreateImagesPress = useCallback(() => {
     setInsertToChatCallback(onInsertImagesMarkdown);
     try {
-      navigation.navigate('Studio', {
-        screen: 'StudioHome',
-      });
+      navigation.navigate('Studio');
     } catch (err) { }
   }, [navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
-
-  const handleEditImagePress = useCallback(() => {
-    setInsertToChatCallback(onInsertImagesMarkdown);
-    try {
-      navigation.navigate('Studio', {
-        screen: 'EditImage',
-        params: { 
-          seedPrompt: input || '', 
-          returnTo: 'Chat' 
-        },
-      });
-    } catch (err) { }
-  }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
-
-  const handleAssistantsPress = useCallback(() => {
-    navigation.navigate('Assistants');
-  }, [navigation]);
 
   const startVoiceFlow = useCallback(async () => {
     perfStart('chat.voice.flow', {
@@ -471,7 +492,6 @@ export default function Chat({ navigation }) {
       return;
     }
 
-    activateVoice();
     const res = await ensureMicAndSpeech();
     if (!res.ok) {
       const voiceTitle = t('chat.permissions.voiceTitle', { defaultValue: 'Voice Permissions Needed' });
@@ -504,7 +524,8 @@ export default function Chat({ navigation }) {
       return;
     }
 
-    setInput('');
+    committedVoiceTextRef.current = '';
+    setVoiceText('');
     try {
       const started = await startVoice();
       if (!started) {
@@ -522,24 +543,14 @@ export default function Chat({ navigation }) {
       });
       return;
     }
+    setInput('');
     setShowVoiceOverlay(true);
-    setVoiceText('');
     perfEnd('chat.voice.flow', {
       status: 'started',
     });
-  }, [activateVoice, isRecording, setShowVoiceOverlay, stopVoice, setInput, startVoice, setError, t, setVoiceText]);
+  }, [isRecording, setShowVoiceOverlay, stopVoice, setInput, startVoice, setError, t, setVoiceText]);
 
-  const handleMicPress = useCallback(() => {
-    if (isRecording) {
-      startVoiceFlow();
-      return;
-    }
-
-    if (isPremium) {
-      startVoiceFlow();
-      return;
-    }
-
+  const openMicPaywall = useCallback(() => {
     setPendingPremiumAction(() => {
       // Let the paywall close animation finish first.
       setTimeout(() => {
@@ -552,7 +563,78 @@ export default function Chat({ navigation }) {
     try {
       navigation?.navigate('PaywallScreen', { returnTo: 'Chat' });
     } catch {}
-  }, [isRecording, isPremium, navigation, startVoiceFlow]);
+  }, [navigation, startVoiceFlow]);
+
+  useEffect(() => {
+    if (!subscriptionReady || !pendingMicAfterSubscriptionReady) {
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      const hasPremiumAccess = await resolvePremiumStatus(subscription);
+      if (cancelled) {
+        return;
+      }
+
+      setPendingMicAfterSubscriptionReady(false);
+      if (hasPremiumAccess) {
+        startVoiceFlow();
+        return;
+      }
+
+      openMicPaywall();
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    openMicPaywall,
+    pendingMicAfterSubscriptionReady,
+    startVoiceFlow,
+    subscription,
+    subscriptionReady,
+  ]);
+
+  const handleMicPress = useCallback(async () => {
+    if (isRecording) {
+      startVoiceFlow();
+      return;
+    }
+
+    if (!subscriptionReady) {
+      setPendingMicAfterSubscriptionReady(true);
+      return;
+    }
+
+    if (await resolvePremiumStatus(subscription)) {
+      startVoiceFlow();
+      return;
+    }
+
+    openMicPaywall();
+  }, [
+    isRecording,
+    openMicPaywall,
+    startVoiceFlow,
+    subscription,
+    subscriptionReady,
+  ]);
+
+  const handleEditImagePress = useCallback(() => {
+    setInsertToChatCallback(onInsertImagesMarkdown);
+    try {
+      navigation.navigate('EditImage', {
+        seedPrompt: input || '',
+        returnTo: 'Chat',
+      });
+    } catch (err) { }
+  }, [input, navigation, onInsertImagesMarkdown, setInsertToChatCallback]);
+
+  const handleAssistantsPress = useCallback(() => {
+    navigation.navigate('Assistants');
+  }, [navigation]);
 
   const handleQuickSuggestionPress = useCallback((suggestion) => {
     const id = suggestion?.id;
@@ -577,7 +659,7 @@ export default function Chat({ navigation }) {
       return;
     }
     setInput(suggestion?.title || '');
-  }, [handleAssistantsPress, handleCreateImagesPress, handleEditImagePress, handleMicPress, onOpenCameraPress, setInput]);
+  }, [handleAssistantsPress, handleCreateImagesPress, handleEditImagePress, handleMicPress, onOpenCameraPress]);
 
   const onRemoveAttachment = useCallback((att) => {
     setAttachments(prev => prev.filter(a => a.id !== att.id));
@@ -657,7 +739,7 @@ export default function Chat({ navigation }) {
           : (webSearchNext
             ? t('chat.activity.searching', { defaultValue: 'Searching…' })
             : t('chat.activity.thinking', { defaultValue: 'Thinking…' }));
-        a.meta = { ...(a.meta || {}), activity: initialActivity };
+        a.meta = { ...(a.meta || {}), activity: initialActivity, model: requestModelKey };
       } catch { }
 
       if (isPrivate) { addPrivateMessage(u); addPrivateMessage(a); }
@@ -680,20 +762,6 @@ export default function Chat({ navigation }) {
       const deviceId = await ensureDeviceId();
       const controller = new AbortController(); abortRef.current = controller;
 
-      const streamDebug = isChatDebugEnabled('streaming');
-      const startedAt = Date.now();
-      let netChars = 0;
-      let netChunks = 0;
-      let lastNetLogAt = startedAt;
-      if (streamDebug) {
-        chatDebugLog('streaming', 'request', {
-          assistantId,
-          model: requestModelKey,
-          webSearchNext,
-          hasImages,
-        });
-      }
-
       streamChat({
         model: requestModelKey,
         messages: payload,
@@ -704,23 +772,6 @@ export default function Chat({ navigation }) {
         onToken: (chunk) => {
           if (typeof chunk === 'string') {
             appendStream(assistantId, chunk);
-            if (streamDebug) {
-              netChars += chunk.length;
-              netChunks += 1;
-              const now = Date.now();
-              if (now - lastNetLogAt > 1000) {
-                lastNetLogAt = now;
-                chatDebugLog('streaming', 'onToken', {
-                  assistantId,
-                  netChunks,
-                  netChars,
-                  bufferLen: getStream(assistantId).length,
-                  elapsedMs: now - startedAt,
-                });
-                netChars = 0;
-                netChunks = 0;
-              }
-            }
           }
         },
         onDone: () => {
@@ -730,14 +781,6 @@ export default function Chat({ navigation }) {
             assistantId,
             fullLength: (full || '').length,
           });
-          if (streamDebug) {
-            const now = Date.now();
-            chatDebugLog('streaming', 'done', {
-              assistantId,
-              fullLen: (full || '').length,
-              elapsedMs: now - startedAt,
-            });
-          }
           
           if (!full || full.trim().length === 0) {
             if (isPrivate) {
@@ -783,16 +826,6 @@ export default function Chat({ navigation }) {
             code: err?.code,
             message: err?.message,
           });
-          if (streamDebug) {
-            const now = Date.now();
-            chatDebugLog('streaming', 'error', {
-              assistantId,
-              partialLen: (partial || '').length,
-              elapsedMs: now - startedAt,
-              code: err?.code,
-              message: err?.message,
-            });
-          }
 
           if (partial && partial.trim().length > 0) {
             if (isPrivate) updateLastAssistantContentPrivate(() => partial);
@@ -889,6 +922,22 @@ export default function Chat({ navigation }) {
     setInput(isAssistant ? plainTextFromMarkdown(raw) : raw);
   }
 
+  const handleReportAssistantResponse = useCallback(({ message, prompt }) => {
+    if (!message || message.role !== 'assistant') return;
+    setReportTarget({
+      content_type: 'chat_response',
+      content_id: message.id,
+      prompt: typeof prompt === 'string' ? plainTextFromMarkdown(prompt) : '',
+      output_text: message.content,
+      model: message?.meta?.model || activeModelKey,
+      source_screen: 'chat',
+      metadata: {
+        private_chat: !!isPrivate,
+        ...(isPrivate ? {} : { thread_id: activeThread?.id || null }),
+      },
+    });
+  }, [activeModelKey, activeThread?.id, isPrivate]);
+
 
   if (!activeThread) return <View style={styles.container}><Text>{t('chat.loading')}</Text></View>;
 
@@ -931,6 +980,14 @@ export default function Chat({ navigation }) {
         tapRef.current.ts = 0;
         tapRef.current.moved = false;
         if (!isTap) return;
+        if (suppressSelectionResetRef.current) {
+          suppressSelectionResetRef.current = false;
+          if (suppressSelectionResetTimeoutRef.current) {
+            clearTimeout(suppressSelectionResetTimeoutRef.current);
+            suppressSelectionResetTimeoutRef.current = null;
+          }
+          return;
+        }
         Keyboard.dismiss();
         bumpSelectionResetToken();
       }}
@@ -943,8 +1000,10 @@ export default function Chat({ navigation }) {
         onRetryFromHere={onRetryFromHere}
         onToast={showToast}
         threadKey={activeThread.id}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={styles.messageListContent}
         selectionResetToken={selectionResetToken}
+        onActionPressIn={holdSelectionReset}
+        onReport={handleReportAssistantResponse}
       />
     </View>
   );
@@ -952,6 +1011,12 @@ export default function Chat({ navigation }) {
   return (
     <View style={styles.container}>
       <ChatToast visible={toastVisible} message={toastMessage} />
+      <ReportContentModal
+        visible={!!reportTarget}
+        report={reportTarget}
+        privateDisclosure={!!reportTarget?.metadata?.private_chat}
+        onClose={() => setReportTarget(null)}
+      />
       <KeyboardAvoidingView
         behavior="translate-with-padding"
         keyboardVerticalOffset={keyboardVerticalOffset}
@@ -985,11 +1050,12 @@ export default function Chat({ navigation }) {
                         <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
                       </>
                     ) : (
-                      // Collapse helper content out of layout when the keyboard is opening,
-                      // otherwise the invisible banner/suggestions still push the composer below the keyboard.
                       showKeyboardHelpers ? (
                         <Reanimated.View style={bannerStyle}>
-                          <CreativeStudioBanner onPress={handleCreateImagesPress} paused={showVoiceOverlay || isRecording} />
+                          <CreativeStudioBanner
+                            onPress={handleCreateImagesPress}
+                            paused={showVoiceOverlay || isRecording}
+                          />
                         </Reanimated.View>
                       ) : null
                     )}
@@ -1011,13 +1077,11 @@ export default function Chat({ navigation }) {
           )}
 
           <View>
-            {/* Animated Suggestions */}
             <Reanimated.View style={suggestionStyle}>
               {showKeyboardHelpers && (
                 <SuggestionCards onSuggestionPress={handleQuickSuggestionPress} />
               )}
             </Reanimated.View>
-            
             <TestInput
               value={input}
               onChange={setInput}
@@ -1049,10 +1113,14 @@ export default function Chat({ navigation }) {
                 setShowVoiceOverlay(false);
                 if (isRecording) stopVoice();
                 if (voiceText?.trim()) setInput(voiceText.trim());
+                committedVoiceTextRef.current = '';
+                setVoiceText('');
               }}
               onClose={() => {
                 setShowVoiceOverlay(false);
                 if (isRecording) stopVoice();
+                committedVoiceTextRef.current = '';
+                setVoiceText('');
               }}
             />
           </View>
@@ -1071,6 +1139,7 @@ const styles = StyleSheet.create({
   headerTitle: { color: 'white', fontSize: 18, fontWeight: 'bold' },
   error: { backgroundColor: colors.error + '20', padding: 10, borderRadius: 10, margin: 13, borderLeftWidth: 3, borderLeftColor: colors.error },
   errorText: { color: colors.error, fontSize: 14, fontWeight: '500' },
+  messageListContent: { paddingBottom: 20 },
   emptyState: { flex: 1, alignItems: 'stretch', justifyContent: 'flex-start', paddingHorizontal: 16, paddingTop: 32, paddingBottom: 40, gap: 24 },
   emptyStatePrivate: { alignItems: 'center', justifyContent: 'center', paddingTop: 0, paddingBottom: 40, gap: 12 },
   emptyStateIcon: { width: 64, height: 64, borderRadius: 32, alignItems: 'center', justifyContent: 'center', marginBottom: 19 },

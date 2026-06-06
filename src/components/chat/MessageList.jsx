@@ -9,7 +9,6 @@ import Svg, { Path } from 'react-native-svg';
 import MessageBubble from './MessageBubble';
 import DaySeparator from './DaySeparator';
 import { colors } from '../../styles/colors';
-import { chatDebugLog, isChatDebugEnabled } from '../../lib/chatDebug';
 
 const BOTTOM_GAP = 16;
 const NEAR_BOTTOM_PAD_RATIO = 0.12;
@@ -51,8 +50,9 @@ const MessageListCore = function MessageList({
   onToast,
   threadKey,
   selectionResetToken,
+  onActionPressIn,
+  onReport,
 }, ref) {
-  // Debuggers removed (focus on voice only)
   const listRef = useRef(null);
   const { t } = useTranslation();
 
@@ -66,7 +66,6 @@ const MessageListCore = function MessageList({
   const autoPinRef = useRef(true);
   const manualScrollRequestRef = useRef(false);
   const scrollTimeoutRef = useRef(null);
-  const lastContentSizeRef = useRef({ w: 0, h: 0, ts: 0 });
   const scrollMetricsRef = useRef({ offsetY: 0, layoutH: 0, contentH: 0 });
   const listLayoutRef = useRef({ w: 0, h: 0 });
   const assistantAutoPauseRef = useRef({
@@ -137,17 +136,6 @@ const MessageListCore = function MessageList({
       manualScrollRequestRef.current ||
       (autoPinRef.current && isAtBottomRef.current && !userDraggingRef.current);
     if (shouldScroll) {
-      if (isChatDebugEnabled('scroll')) {
-        chatDebugLog('scroll', 'scrollToBottomIfNeeded', {
-          animated,
-          manualRequest: manualScrollRequestRef.current,
-          autoPin: autoPinRef.current,
-          isAtBottom: isAtBottomRef.current,
-          userDragging: userDraggingRef.current,
-          streaming: streamingRef.current,
-          streamingMessageId: streamingMessageIdRef.current,
-        });
-      }
       scrollTimeoutRef.current = setTimeout(() => {
         listRef.current?.scrollToEnd({ animated });
         scrollTimeoutRef.current = null;
@@ -170,22 +158,12 @@ const MessageListCore = function MessageList({
     };
     const pad = layoutMeasurement.height * NEAR_BOTTOM_PAD_RATIO;
     const isAtBottom = contentOffset.y >= contentSize.height - layoutMeasurement.height - pad;
-    const prev = isAtBottomRef.current;
     isAtBottomRef.current = isAtBottom;
     const effectiveAtBottom = isAtBottom && !assistantAutoPauseRef.current.paused;
     if (!userDraggingRef.current && effectiveAtBottom) {
       autoPinRef.current = true;
     }
     setShowJump(!effectiveAtBottom);
-    if (prev !== isAtBottom && isChatDebugEnabled('scroll')) {
-      chatDebugLog('scroll', 'atBottomChanged', {
-        isAtBottom,
-        y: contentOffset.y,
-        height: layoutMeasurement.height,
-        contentHeight: contentSize.height,
-        pad,
-      });
-    }
   }, []);
 
   const onScrollBeginDrag = useCallback(() => {
@@ -224,16 +202,6 @@ const MessageListCore = function MessageList({
   }, []);
 
   const onContentSizeChange = useCallback((w, h) => {
-    if (isChatDebugEnabled('scroll')) {
-      const now = Date.now();
-      const prev = lastContentSizeRef.current;
-      const dh = h - (prev?.h || 0);
-      const shouldLog = now - (prev?.ts || 0) > 600 || Math.abs(dh) > 120;
-      if (shouldLog) {
-        lastContentSizeRef.current = { w, h, ts: now };
-        chatDebugLog('scroll', 'contentSize', { w, h, dh });
-      }
-    }
     const now = Date.now();
     const layoutH = listLayoutRef.current.h || scrollMetricsRef.current.layoutH || 0;
     scrollMetricsRef.current = { ...scrollMetricsRef.current, contentH: h };
@@ -264,9 +232,6 @@ const MessageListCore = function MessageList({
         autoPinRef.current = false;
         isAtBottomRef.current = false;
         setShowJump(true);
-        if (isChatDebugEnabled('scroll')) {
-          chatDebugLog('scroll', 'autoPause', { growth, thresholdPx, layoutH, w, h });
-        }
         return;
       }
     }
@@ -338,6 +303,15 @@ const MessageListCore = function MessageList({
     const isFirstInGroup = !prevMsg || prevMsg.role !== role;
     const isLastInGroup  = !nextMsg || nextMsg.role !== role;
     const isStreamingItem = streaming && (item.id === streamingMessageId);
+    let previousUserMessage = null;
+    if (role === 'assistant') {
+      for (let promptIndex = index - 1; promptIndex >= 0; promptIndex -= 1) {
+        if (currentData[promptIndex]?.role === 'user') {
+          previousUserMessage = currentData[promptIndex];
+          break;
+        }
+      }
+    }
 
     try {
       return (
@@ -353,12 +327,16 @@ const MessageListCore = function MessageList({
           streaming={!!isStreamingItem}
           streamingMessageId={streamingMessageId}
           selectionResetToken={selectionResetToken}
+          onActionPressIn={onActionPressIn}
+          onReport={role === 'assistant'
+            ? () => onReport?.({ message: item, prompt: previousUserMessage?.content || '' })
+            : undefined}
         />
       );
     } catch {
       return null;
     }
-  }, [streaming, streamingMessageId, onRetryFromHere, onToast, selectionResetToken]);
+  }, [streaming, streamingMessageId, onRetryFromHere, onToast, selectionResetToken, onActionPressIn, onReport]);
   // Stable extraData - use string to avoid object reference changes
   // Only include streaming message ID to minimize re-renders
   const extraData = useMemo(() => {
@@ -486,6 +464,7 @@ const MessageList = memo(forwardRef(MessageListCore), (prev, next) => {
   if (prev.streaming !== next.streaming) return false;
   if (prev.streamingMessageId !== next.streamingMessageId) return false;
   if (prev.onRetryFromHere !== next.onRetryFromHere) return false;
+  if (prev.onActionPressIn !== next.onActionPressIn) return false;
   if (prev.threadKey !== next.threadKey) return false;
   if (prev.selectionResetToken !== next.selectionResetToken) return false;
 

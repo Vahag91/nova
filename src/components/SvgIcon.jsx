@@ -57,6 +57,12 @@ export default function SvgIcon({ name, size = 16, color = '#666', style }) {
             <Path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" fill={color} />
           </Svg>
         );
+      case 'flag':
+        return (
+          <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
+            <Path d="M200-80v-760h360l16 80h184v400H520l-16-80H280v360h-80Zm80-440h280l16 80h104v-240H520l-16-80H280v240Z" fill={color} />
+          </Svg>
+        );
       case 'lock-bold':
         return (
           <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
@@ -300,12 +306,6 @@ export default function SvgIcon({ name, size = 16, color = '#666', style }) {
             <Path d="M221-120q-27 0-48-16.5T144-179L42-549q-5-19 6.5-35T80-600h190l176-262q5-8 14-13t19-5q10 0 19 5t14 13l176 262h192q20 0 31.5 16t6.5 35L816-179q-8 26-29 42.5T739-120H221Zm-1-80h520l88-320H132l88 320Zm260-80q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM367-600h225L479-768 367-600Zm113 240Z" fill={color} />
           </Svg>
         );
-        return (
-          <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-            <Rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke={color} strokeWidth="2" fill="none" />
-            <Path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke={color} strokeWidth="2" fill="none" />
-          </Svg>
-        );
       case 'share':
         return (
           <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
@@ -450,6 +450,15 @@ export default function SvgIcon({ name, size = 16, color = '#666', style }) {
           <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
             <Path
               d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"
+              fill={color}
+            />
+          </Svg>
+        );
+      case 'text-select':
+        return (
+          <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">
+            <Path
+              d="M240-160q-33 0-56.5-23.5T160-240v-120h80v120h120v80H240Zm360 0v-80h120v-120h80v120q0 33-23.5 56.5T720-160H600ZM160-600v-120q0-33 23.5-56.5T240-800h120v80H240v120h-80Zm560 0v-120H600v-80h120q33 0 56.5 23.5T800-720v120h-80ZM420-240v-80h20v-320H320v-80h320v80H520v320h20v80H420Z"
               fill={color}
             />
           </Svg>

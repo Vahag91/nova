@@ -19,7 +19,7 @@
     "gpt-5": "מודל כללי חזק במיוחד",
     "gpt-5-chat-latest": "מותאם לשיחה ודיאלוג",
     "gpt-5-mini": "GPT-5 מהיר ואמין",
-    "gpt-5-nano": "מודל קל למשימות פשוטות",
+    "gpt-5.4-nano": "מודל קל למשימות פשוטות",
     "o4-mini": "מודל היגיון יעיל",
     "gpt-4.1-mini": "GPT-4.1 קומפקטי ובעל יכולות",
     "claude-3-haiku": "Anthropic מהיר וממוקד",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "תוצאות יצירתיות ומעוצבות",
       "runwareQwenImage": "תוצאות מאוזנות ואיכותיות",
       "google4": "מודל התמונות הטוב ביותר",
+      "klingImageO1": "עריכת תמונות עם שליטה גבוהה",
       "fluxKontent": "Flux Kontent מכוון לעריכה",
       "runwareProvider": "איזון בין איכות ליציבות.",
       "airProvider": "Nano Banana עם צבעוניות משחקית.",
       "googleProvider": "Google מכוון לפרטים חדים.",
+      "klingaiProvider": "KlingAI מותאם לעריכות מדויקות ומבוקרות.",
       "anthropicProvider": "צינור של Claude לגוונים עדינים.",
       "default": "הקש כדי לראות מנועים זמינים."
     }
@@ -657,6 +659,7 @@
       "perMonth": "לחודש"
     },
     "cta": "המשך",
+    "ctaFreeTrial": "נסה בחינם",
     "legal": {
       "terms": "תנאים",
       "privacy": "פרטיות"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "עם טיפים לפרודקטיביות"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "בחר נושא",
+      "title": "מה אתה רוצה לעשות?",
+      "subtitle": "בחר כיוון ואז התחל עם הנחיה חזקה.",
+      "pickPromptTitle": "בחר הנחיה להתחיל",
+      "changeTopic": "בחר נושא אחר",
+      "intents": {
+        "summarize": "סיכום טקסט",
+        "summarizeShort": "לסכם",
+        "summarizeHint": "מאמרים, הערות, תזכירים קוליים, שרשורים ארוכים",
+        "plan": "תעשה תוכנית",
+        "planHint": "טיולים, שגרות, תקציבים, מועדים, שינויים בחיים",
+        "brainstorm": "סיעור מוחות",
+        "brainstormHint": "רעיונות, הצעות, שמות, תוכן, פרויקטים צדדיים",
+        "analyze": "נתח נתונים",
+        "analyzeHint": "הוצאה, משוב, מדדים, הרגלים, ביצועים"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "צור בריף מייסד",
+          "founderBriefSubtitle": "שלוף את הסיכונים העיקריים, ההחלטות והצעדים הבאים.",
+          "classNotesTitle": "נקה את הערות הלימוד שלי",
+          "classNotesSubtitle": "הפוך הערות גסות למדריך לימוד ברור.",
+          "meetingHandoffTitle": "כתוב סיכום מסירה",
+          "meetingHandoffSubtitle": "שימושי לאחר פגישות, שיחות או שרשורים פנימיים ארוכים.",
+          "longArticleTitle": "סכם את המאמר הזה במהירות",
+          "longArticleSubtitle": "תמצית כתבה ארוכה לכדי טייק אווי חדים."
+        },
+        "plan": {
+          "energyResetTitle": "בנה איפוס אנרגיה ל-14 יום",
+          "energyResetSubtitle": "תוכנית ריאלית לשינה, אוכל, תנועה ומיקוד.",
+          "mealPlanTitle": "לתכנן ארוחות שאני באמת אבשל",
+          "mealPlanSubtitle": "מעשי, סביר, ומבוסס על מה שיש לי.",
+          "cityMoveTitle": "לתכנן את המעבר שלי לעיר חדשה",
+          "cityMoveSubtitle": "חלקו אותו למשימות ציר זמן, תקציב, דיור וניהול.",
+          "tripEscapeTitle": "תכנן בריחה בלתי נשכחת בסוף השבוע",
+          "tripEscapeSubtitle": "משהו טוב יותר ממסלול גנרי."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "מצא המולה צדדית מציאותית",
+          "sideHustleSubtitle": "רעיונות שאני יכול להתחיל תוך כדי עבודה במשרה מלאה.",
+          "brandAngleTitle": "מצא זווית מותג בלתי נשכחת",
+          "brandAngleSubtitle": "שימושי עבור מוצרים, יוצרים, סוכנויות או ניוזלטרים.",
+          "socialSeriesTitle": "המציאו סדרת תוכן",
+          "socialSeriesSubtitle": "משהו עקבי מספיק כדי להגדיל קהל.",
+          "datingIdeasTitle": "בוא עם רעיונות טריים",
+          "datingIdeasSubtitle": "תאריכים, מתנות, הפתעות או אירועים שמרגישים מהורהרים."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "מצא איפה הכסף שלי דולף",
+          "spendingLeaksSubtitle": "הצג דפוסים, נקודות תורפה והכי קל מנצח קודם.",
+          "customerFeedbackTitle": "הפוך משוב לסדרי עדיפויות",
+          "customerFeedbackSubtitle": "אשכול בקשות, תלונות, דחיפות והשפעה.",
+          "habitPatternsTitle": "זיהוי דפוסים בהרגלים שלי",
+          "habitPatternsSubtitle": "שימושי עבור אימונים, שינה, יומן או יומני מיקוד.",
+          "metricsStoryTitle": "הסבר מה המשמעות של המספרים",
+          "metricsStorySubtitle": "יותר אות, פחות רעש בגיליון אלקטרוני."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

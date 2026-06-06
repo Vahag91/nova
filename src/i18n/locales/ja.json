@@ -19,7 +19,7 @@
     "gpt-5": "最も強力な汎用AI",
     "gpt-5-chat-latest": "チャットと対話に最適化",
     "gpt-5-mini": "高速で信頼できる GPT-5",
-    "gpt-5-nano": "簡単なタスク向けの軽量モデル",
+    "gpt-5.4-nano": "簡単なタスク向けの軽量モデル",
     "o4-mini": "効率的な推論モデル",
     "gpt-4.1-mini": "コンパクトで高性能な GPT-4.1",
     "claude-3-haiku": "高速で焦点の定まった Anthropic AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "クリエイティブでスタイリッシュな結果",
       "runwareQwenImage": "バランスが良く高品質な結果",
       "google4": "最高のAI画像モデル",
+      "klingImageO1": "高精度な画像編集",
       "fluxKontent": "編集向けに調整された Flux Kontent",
       "runwareProvider": "品質と安定したディフュージョンのバランス。",
       "airProvider": "Nano Banana が遊び心ある鮮やかなトーンを追加。",
       "googleProvider": "Google が細部を丁寧に磨き上げた仕上がり。",
+      "klingaiProvider": "KlingAI は精密でコントロールしやすい編集向けに最適化されています。",
       "anthropicProvider": "Claude パイプラインでニュアンスある雰囲気に。",
       "default": "タップして利用可能なエンジンを表示。"
     }
@@ -666,6 +668,7 @@
       "perMonth": "月あたり"
     },
     "cta": "続ける",
+    "ctaFreeTrial": "無料で試す",
     "legal": {
       "terms": "利用規約",
       "privacy": "プライバシー"
@@ -827,6 +830,66 @@
       "explainConceptSubtitle": "やさしい言葉で",
       "planDay": "一日を計画",
       "planDaySubtitle": "生産性アップのヒント付き"
+    },
+    "home": {
+      "eyebrow": "トピックを選択してください",
+      "title": "何がしたいのですか？",
+      "subtitle": "方向を選択し、強力なプロンプトから始めます。",
+      "pickPromptTitle": "開始するプロンプトを選択してください",
+      "changeTopic": "別のトピックを選択してください",
+      "intents": {
+        "summarize": "テキストを要約する",
+        "summarizeShort": "要約する",
+        "summarizeHint": "記事、メモ、ボイスメモ、長いスレッド",
+        "plan": "計画を立てる",
+        "planHint": "旅行、日課、予算、締め切り、生活の変化",
+        "brainstorm": "ブレーンストーミング",
+        "brainstormHint": "アイデア、オファー、名前、コンテンツ、サイドプロジェクト",
+        "analyze": "データを分析する",
+        "analyzeHint": "支出、フィードバック、指標、習慣、パフォーマンス"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "創業者の概要を作成する",
+          "founderBriefSubtitle": "主なリスク、決定事項、次のステップを引き出します。",
+          "classNotesTitle": "勉強ノートを整理する",
+          "classNotesSubtitle": "大まかなメモを明確な学習ガイドに変えます。",
+          "meetingHandoffTitle": "引き継ぎの概要を書く",
+          "meetingHandoffSubtitle": "会議、電話、または長い社内スレッドの後に役立ちます。",
+          "longArticleTitle": "この記事を簡単に要約してください",
+          "longArticleSubtitle": "長い記事を鋭い要点に凝縮します。"
+        },
+        "plan": {
+          "energyResetTitle": "14 日間のエネルギーリセットを構築する",
+          "energyResetSubtitle": "睡眠、食事、動き、集中力に関する現実的な計画。",
+          "mealPlanTitle": "実際に作る食事の計画を立てる",
+          "mealPlanSubtitle": "実用的で手頃な価格で、私が持っているものに基づいています。",
+          "cityMoveTitle": "新しい都市への引っ越しを計画する",
+          "cityMoveSubtitle": "タイムライン、予算、住居、管理タスクに分割します。",
+          "tripEscapeTitle": "思い出に残る週末の逃避行を計画しましょう",
+          "tripEscapeSubtitle": "一般的な旅程よりも優れたもの。"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "現実的な副業を見つける",
+          "sideHustleSubtitle": "フルタイムで働きながら始められるアイデア。",
+          "brandAngleTitle": "記憶に残るブランドの角度を見つける",
+          "brandAngleSubtitle": "製品、クリエイター、代理店、ニュースレターに役立ちます。",
+          "socialSeriesTitle": "コンテンツシリーズを考案する",
+          "socialSeriesSubtitle": "視聴者を増やすのに十分な一貫性のあるもの。",
+          "datingIdeasTitle": "新鮮なアイデアを思いつく",
+          "datingIdeasSubtitle": "デート、プレゼント、サプライズ、思いやりを感じるイベント。"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "お金が漏れている場所を見つける",
+          "spendingLeaksSubtitle": "パターン、弱点、最も簡単な勝ちを最初に示します。",
+          "customerFeedbackTitle": "フィードバックを優先事項に変える",
+          "customerFeedbackSubtitle": "クラスターのリクエスト、苦情、緊急性、および影響。",
+          "habitPatternsTitle": "自分の習慣のパターンを見つける",
+          "habitPatternsSubtitle": "トレーニング、睡眠、日記、集中力の記録に役立ちます。",
+          "metricsStoryTitle": "数字の意味を説明する",
+          "metricsStorySubtitle": "信号が増え、スプレッドシートのノイズが減ります。"
+        }
+      }
     }
   },
   "imageUpload": {

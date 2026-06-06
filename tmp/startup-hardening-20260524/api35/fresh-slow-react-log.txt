@@ -1,0 +1,4 @@
+05-24 18:06:36.060  4056  4081 I ReactNativeJS: ?? i18next is made possible by our own product, Locize — consider powering your project with managed localization (AI, CDN, integrations): https://locize.com ??
+05-24 18:06:36.061  4056  4081 I ReactNativeJS: Running "ChatCloud"
+05-24 18:06:39.077  4056  4081 W ReactNativeJS: '[startup] loadModels timed out:', 'loadModels timed out after 3000 ms'
+05-24 18:06:39.310  4056  4081 W ReactNativeJS: '[startup] initializeSubscriptions timed out:', 'initializeSubscriptions timed out after 3000 ms'

@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   TouchableOpacity,
   Text,
@@ -30,7 +31,9 @@ import Chat from '../screens/Chat';
 import History from '../screens/HistorySimple';
 import Assistants from '../screens/Assistants';
 import Settings from '../screens/Settings.jsx';
-import StudioStack from './StudioStack';
+import StudioHome from '../screens/StudioHome.jsx';
+import CreateImage from '../screens/CreateImage.jsx';
+import EditImage from '../screens/EditImage.jsx';
 import PaywallScreen from '../components/PaywallScreen';
 import OneTimeOfferScreen from '../screens/OneTimeOfferScreen';
 import ModelSelector from '../components/ModelSelector';
@@ -45,23 +48,26 @@ import { PRESETS, PRESET_AVATARS } from '../data/presets';
 import NetInfo from '@react-native-community/netinfo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SubscriptionContext } from '../context/SubscriptionContext';
-import { navigationRef, isNavigationReadyRef } from './rootNavigation';
+import {
+  navigationRef,
+  isNavigationReadyRef,
+  ROOT_DRAWER_ROUTE,
+  ROOT_DRAWER_SCREEN_NAMES,
+} from './rootNavigation';
 import { ONE_TIME_OFFER_KEY } from '../constants/storageKeys';
 import { ONE_TIME_OFFER_PAYWALL_ENABLED } from '../constants/featureFlags';
+
 const Drawer = createDrawerNavigator();
+const RootStack = createNativeStackNavigator();
 
 function normalizeAndroidMenuRoute(routeName) {
   if (!routeName) return 'Chat';
 
-  if (['Studio', 'StudioHome', 'CreateImage', 'EditImage', 'CoinStore'].includes(routeName)) {
+  if (['Studio', 'CreateImage', 'EditImage'].includes(routeName)) {
     return 'Studio';
   }
 
   return routeName;
-}
-
-function isStudioLeafRoute(routeName) {
-  return ['StudioHome', 'CreateImage', 'EditImage', 'CoinStore'].includes(routeName);
 }
 
 function isSameDay(timestampA, timestampB) {
@@ -181,8 +187,7 @@ function ChatHeaderCenter() {
     try { Haptic.trigger('impactLight'); } catch {}
 
     try {
-      // App policy: assistants always use GPT-5 nano and are pinned to it
-      const modelKey = 'gpt-5-nano';
+      const modelKey = 'gpt-5.4-nano';
       const title = t(`assistants.presets.${choice.id}.name`, { defaultValue: choice.name });
       const sys = typeof choice.system === 'string' ? choice.system : '';
       const nextThread = createThread({ title, model: modelKey, system: sys });
@@ -452,42 +457,127 @@ function PaywallRouteScreen({ navigation, route }) {
   const returnTo = route?.params?.returnTo;
 
   const goBackSafe = useCallback(() => {
-    if (returnTo) {
-      navigation.navigate(returnTo);
-      return;
-    }
-
     if (navigation.canGoBack()) {
       navigation.goBack();
       return;
     }
 
-    navigation.navigate('Chat');
+    if (returnTo) {
+      if (ROOT_DRAWER_SCREEN_NAMES.has(returnTo)) {
+        navigation.replace(ROOT_DRAWER_ROUTE, { screen: returnTo });
+      } else {
+        navigation.replace(returnTo);
+      }
+      return;
+    }
+
+    navigation.replace(ROOT_DRAWER_ROUTE, { screen: 'Chat' });
   }, [navigation, returnTo]);
 
   return (
     <PaywallScreen
       onClose={goBackSafe}
       onRestore={() => {}}
-      onContinue={goBackSafe}
     />
   );
 }
 
-export default function DrawerNavigator({ onNavigationReady }) {
+function MainDrawerNavigator() {
   const { t } = useTranslation();
+  
+  return (
+    <Drawer.Navigator
+      initialRouteName="Chat"
+      drawerContent={() => null}
+      screenOptions={{
+        lazy: true,
+        headerLeft: () => <AndroidMenuButton />,
+        headerStyle: {
+          backgroundColor: '#000000',
+          borderBottomWidth: 0,
+        },
+        headerTintColor: colors.text,
+        headerTitleStyle: {
+          color: colors.text,
+          fontFamily: 'Lato-Bold',
+        },
+        drawerStyle: {
+          backgroundColor: colors.background,
+          width: 280,
+        },
+        drawerActiveTintColor: colors.accent,
+        drawerInactiveTintColor: colors.textSecondary,
+        drawerType: 'back',
+        swipeEnabled: false,
+        swipeEdgeWidth: 50,
+      }}
+    >
+      <Drawer.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          headerTitle: () => <ChatHeaderCenter />,
+          headerRight: () => <ChatHeaderRight />,
+          headerLeft: () => <AndroidMenuButton />,
+        }}
+      />
+      <Drawer.Screen
+        name="History"
+        component={History}
+        options={({ navigation }) => ({
+          headerTitle: t('navigation.history'),
+          headerRight: () => <HistoryHeaderRight navigation={navigation} />,
+        })}
+      />
+      <Drawer.Screen name="Assistants" component={Assistants} options={{ title: t('navigation.assistants') }} />
+      <Drawer.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          title: t('navigation.settings'),
+          headerTitleStyle: {
+            color: colors.text,
+            fontFamily: 'Lato-Black',
+            fontSize: 24,
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Studio"
+        component={StudioHome}
+        options={{
+          headerShown: false,
+          title: t('navigation.imagesStudio') || 'Image Studio',
+        }}
+      />
+    </Drawer.Navigator>
+  );
+}
+
+export default function DrawerNavigator({
+  onNavigationReady,
+  initialLaunchScreen = null,
+  initialLaunchParams = undefined,
+}) {
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
   const subscriptionReady = !!subscription?.subscriptionReady;
+  const threadsHydrated = useThreadsStore(s => s.hydrated);
+  const hydrateThreads = useThreadsStore(s => s.hydrate);
   const [navReady, setNavReady] = useState(false);
   const [oneTimeOfferChecked, setOneTimeOfferChecked] = useState(!ONE_TIME_OFFER_PAYWALL_ENABLED);
   const [currentRouteName, setCurrentRouteName] = useState(null);
   const [androidMenuVisible, setAndroidMenuVisible] = useState(false);
-  const lastStudioLeafRouteRef = useRef('StudioHome');
   const currentMenuRoute = useMemo(
     () => normalizeAndroidMenuRoute(currentRouteName),
     [currentRouteName]
   );
+
+  useEffect(() => {
+    if (!threadsHydrated) {
+      hydrateThreads();
+    }
+  }, [hydrateThreads, threadsHydrated]);
 
   useEffect(() => {
     if (!ONE_TIME_OFFER_PAYWALL_ENABLED) return;
@@ -534,55 +624,41 @@ export default function DrawerNavigator({ onNavigationReady }) {
     setAndroidMenuVisible(false);
   }, [androidMenuVisible]);
 
-  const dispatchAndroidMenuNavigation = useCallback((routeName, params, currentLeafRoute) => {
+  const dispatchAndroidMenuNavigation = useCallback((routeName, params) => {
     if (!navigationRef?.isReady?.()) {
       return;
     }
 
-    if (routeName === 'PaywallScreen') {
-      navigationRef.navigate('PaywallScreen', params);
+    if (routeName === 'PaywallScreen' || routeName === 'OneTimeOfferScreen') {
+      navigationRef.navigate(routeName, params);
       return;
     }
 
-    if (routeName === 'Chat') {
-      navigationRef.navigate('Chat');
-      return;
-    }
-
-    if (routeName === 'Studio') {
-      const shouldResetToHome =
-        currentLeafRoute !== 'StudioHome' &&
-        lastStudioLeafRouteRef.current &&
-        lastStudioLeafRouteRef.current !== 'StudioHome';
-
-      if (shouldResetToHome) {
-        navigationRef.navigate('Studio', { screen: 'StudioHome' });
-      } else {
-        navigationRef.navigate('Studio');
-      }
-      return;
-    }
-
-    navigationRef.navigate(routeName, params);
+    const nestedParams = params
+      ? { screen: routeName, params }
+      : { screen: routeName };
+    navigationRef.navigate(ROOT_DRAWER_ROUTE, nestedParams);
   }, []);
 
   const handleAndroidMenuNavigate = useCallback((routeName, params) => {
     const currentLeafRoute = navigationRef.getCurrentRoute()?.name || currentRouteName;
     const activeRoute = normalizeAndroidMenuRoute(currentLeafRoute);
+    const isStudioDetailRoute =
+      currentLeafRoute === 'CreateImage' || currentLeafRoute === 'EditImage';
 
     if (!navigationRef?.isReady?.()) {
       closeAndroidMenu('navigate');
       return;
     }
 
-    if (routeName === activeRoute && !(routeName === 'Studio' && currentLeafRoute !== 'StudioHome')) {
+    if (routeName === activeRoute && !(routeName === 'Studio' && isStudioDetailRoute)) {
       closeAndroidMenu('navigate_skipped');
       return;
     }
 
     closeAndroidMenu('navigate');
     requestAnimationFrame(() => {
-      dispatchAndroidMenuNavigation(routeName, params, currentLeafRoute);
+      dispatchAndroidMenuNavigation(routeName, params);
     });
   }, [closeAndroidMenu, currentRouteName, dispatchAndroidMenuNavigation]);
 
@@ -597,7 +673,7 @@ export default function DrawerNavigator({ onNavigationReady }) {
     closeAndroidMenu('navigate_thread');
     requestAnimationFrame(() => {
       if (navigationRef?.isReady?.()) {
-        navigationRef.navigate('Chat');
+        navigationRef.navigate(ROOT_DRAWER_ROUTE, { screen: 'Chat' });
       }
     });
   }, [closeAndroidMenu]);
@@ -610,7 +686,7 @@ export default function DrawerNavigator({ onNavigationReady }) {
   }), [closeAndroidMenu, openAndroidMenu]);
 
   return (
-      <AndroidNavigationMenuProvider value={androidMenuContextValue}>
+    <AndroidNavigationMenuProvider value={androidMenuContextValue}>
       <NavigationContainer
         ref={navigationRef}
         onReady={() => {
@@ -618,115 +694,71 @@ export default function DrawerNavigator({ onNavigationReady }) {
           setNavReady(true);
           const routeName = navigationRef.getCurrentRoute()?.name || null;
           setCurrentRouteName(routeName);
-          if (isStudioLeafRoute(routeName)) {
-            lastStudioLeafRouteRef.current = routeName;
-          }
           onNavigationReady?.(true);
         }}
         onStateChange={() => {
           const routeName = navigationRef.getCurrentRoute()?.name || null;
           setCurrentRouteName(routeName);
-          if (isStudioLeafRoute(routeName)) {
-            lastStudioLeafRouteRef.current = routeName;
-          }
         }}
       >
-      <Drawer.Navigator
-        initialRouteName="Chat"
-        drawerContent={() => null}
-        detachInactiveScreens={false}
-        screenOptions={{
-          lazy: true,
-          freezeOnBlur: false,
-          headerLeft: () => <AndroidMenuButton />,
-          headerStyle: {
-            backgroundColor: '#000000',
-            borderBottomWidth: 0,
-          },
-          headerTintColor: colors.text,
-          headerTitleStyle: {
-            color: colors.text,
-            fontFamily: 'Lato-Bold',
-          },
-          drawerStyle: {
-            backgroundColor: colors.background,
-            width: 280,
-          },
-          drawerActiveTintColor: colors.accent,
-          drawerInactiveTintColor: colors.textSecondary,
-          drawerType: 'back',
-          swipeEnabled: false,
-          swipeEdgeWidth: 50,
-        }}
-      >
-        <Drawer.Screen
-          name="Chat"
-          component={Chat}
-          options={({ navigation }) => ({
-            headerTitle: () => <ChatHeaderCenter />,
-            headerRight: () => <ChatHeaderRight />,
-            headerLeft: () => <AndroidMenuButton />,
-          })}
-        />
-        <Drawer.Screen
-          name="History"
-          component={History}
-          options={({ navigation }) => ({
-            headerTitle: t('navigation.history'),
-            headerRight: () => <HistoryHeaderRight navigation={navigation} />,
-          })}
-        />
-        <Drawer.Screen name="Assistants" component={Assistants} options={{ title: t('navigation.assistants') }} />
-        <Drawer.Screen
-          name="Settings"
-          component={Settings}
-          options={{
-            title: t('navigation.settings'),
-            headerTitleStyle: {
-              color: colors.text,
-              fontFamily: 'Lato-Black',
-              fontSize: 24,
+        <RootStack.Navigator
+          initialRouteName={initialLaunchScreen || ROOT_DRAWER_ROUTE}
+          screenOptions={{
+            headerShown: false,
+            animation: 'default',
+            contentStyle: {
+              backgroundColor: '#0B0B0E',
             },
           }}
-        />
-        <Drawer.Screen
-          name="Studio"
-          component={StudioStack}
-          options={{
-            headerShown: false,
-            title: t('navigation.imagesStudio') || 'Image Studio',
-          }}
-        />
-        {/** Create/Edit are children of Studio stack; no drawer entries */}
-        <Drawer.Screen
-          name="PaywallScreen"
-          component={PaywallRouteScreen}
-          options={{
-            headerShown: false,
-            title: 'Paywall',
-            drawerItemStyle: { display: 'none' },
-            swipeEnabled: false,
-          }}
-        />
-        <Drawer.Screen
-          name="OneTimeOfferScreen"
-          component={OneTimeOfferScreen}
-          options={{
-            headerShown: false,
-            title: 'One-Time Offer',
-            drawerItemStyle: { display: 'none' },
-            swipeEnabled: false,
-          }}
-        />
-      </Drawer.Navigator>
-    </NavigationContainer>
-    <AndroidNavigationMenu
-      visible={androidMenuVisible}
-      activeRouteName={currentMenuRoute}
-      onClose={closeAndroidMenu}
-      onNavigate={handleAndroidMenuNavigate}
-      onNavigateThread={handleAndroidMenuNavigateThread}
-    />
+        >
+          <RootStack.Screen name={ROOT_DRAWER_ROUTE} component={MainDrawerNavigator} />
+          <RootStack.Screen
+            name="CreateImage"
+            component={CreateImage}
+            options={{
+              animation: 'slide_from_right',
+              presentation: 'card',
+            }}
+          />
+          <RootStack.Screen
+            name="EditImage"
+            component={EditImage}
+            options={{
+              animation: 'slide_from_right',
+              presentation: 'card',
+            }}
+          />
+          <RootStack.Screen
+            name="PaywallScreen"
+            component={PaywallRouteScreen}
+            options={{
+              animation: 'fade_from_bottom',
+              presentation: 'transparentModal',
+              contentStyle: {
+                backgroundColor: 'transparent',
+              },
+            }}
+            initialParams={
+              initialLaunchScreen === 'PaywallScreen' ? initialLaunchParams : undefined
+            }
+          />
+          <RootStack.Screen
+            name="OneTimeOfferScreen"
+            component={OneTimeOfferScreen}
+            options={{
+              animation: 'fade_from_bottom',
+              presentation: 'transparentModal',
+            }}
+          />
+        </RootStack.Navigator>
+      </NavigationContainer>
+      <AndroidNavigationMenu
+        visible={androidMenuVisible}
+        activeRouteName={currentMenuRoute}
+        onClose={closeAndroidMenu}
+        onNavigate={handleAndroidMenuNavigate}
+        onNavigateThread={handleAndroidMenuNavigateThread}
+      />
     </AndroidNavigationMenuProvider>
   );
 }

@@ -19,7 +19,7 @@
     "gpt-5": "AI đa mục đích mạnh mẽ nhất",
     "gpt-5-chat-latest": "Tối ưu cho trò chuyện và hội thoại",
     "gpt-5-mini": "GPT-5 nhanh và đáng tin cậy",
-    "gpt-5-nano": "Mô hình nhẹ cho tác vụ đơn giản",
+    "gpt-5.4-nano": "Mô hình nhẹ cho tác vụ đơn giản",
     "o4-mini": "Mô hình suy luận hiệu quả",
     "gpt-4.1-mini": "GPT-4.1 gọn nhẹ nhưng mạnh",
     "claude-3-haiku": "Anthropic nhanh và tập trung",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Kết quả sáng tạo, nhiều phong cách",
       "runwareQwenImage": "Cân bằng và chất lượng cao",
       "google4": "Mô hình ảnh AI tốt nhất",
+      "klingImageO1": "Chỉnh sửa ảnh với khả năng kiểm soát cao",
       "fluxKontent": "Flux Kontent tối ưu cho chỉnh sửa",
       "runwareProvider": "Cân bằng giữa chất lượng và diffusion ổn định.",
       "airProvider": "Nano Banana cho màu sắc sinh động.",
       "googleProvider": "Google tối ưu chi tiết sắc nét.",
+      "klingaiProvider": "KlingAI được tinh chỉnh cho các chỉnh sửa có kiểm soát.",
       "anthropicProvider": "Quy trình Claude cho cảm xúc tinh tế.",
       "default": "Nhấn để xem các engine khả dụng."
     }
@@ -657,6 +659,7 @@
       "perMonth": "mỗi tháng"
     },
     "cta": "Tiếp tục",
+    "ctaFreeTrial": "Dùng thử miễn phí",
     "legal": {
       "terms": "Điều khoản",
       "privacy": "Quyền riêng tư"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "kèm mẹo năng suất"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Chọn một chủ đề",
+      "title": "Bạn muốn làm gì?",
+      "subtitle": "Chọn một hướng đi, sau đó bắt đầu bằng một lời nhắc mạnh mẽ.",
+      "pickPromptTitle": "Chọn lời nhắc để bắt đầu",
+      "changeTopic": "Chọn chủ đề khác",
+      "intents": {
+        "summarize": "Tóm tắt văn bản",
+        "summarizeShort": "Tóm tắt",
+        "summarizeHint": "Bài viết, ghi chú, ghi nhớ giọng nói, chủ đề dài",
+        "plan": "Lập kế hoạch",
+        "planHint": "Những chuyến đi, thói quen, ngân sách, thời hạn, thay đổi cuộc sống",
+        "brainstorm": "Động não",
+        "brainstormHint": "Ý tưởng, ưu đãi, tên, nội dung, dự án phụ",
+        "analyze": "Phân tích dữ liệu",
+        "analyzeHint": "Chi tiêu, phản hồi, số liệu, thói quen, hiệu suất"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Tạo bản tóm tắt về người sáng lập",
+          "founderBriefSubtitle": "Rút ra những rủi ro chính, quyết định và các bước tiếp theo.",
+          "classNotesTitle": "Dọn dẹp ghi chú học tập của tôi",
+          "classNotesSubtitle": "Biến những ghi chú thô thành một hướng dẫn học tập rõ ràng.",
+          "meetingHandoffTitle": "Viết tóm tắt bàn giao",
+          "meetingHandoffSubtitle": "Hữu ích sau các cuộc họp, cuộc gọi hoặc các cuộc trò chuyện nội bộ dài.",
+          "longArticleTitle": "Tóm tắt bài viết này một cách nhanh chóng",
+          "longArticleSubtitle": "Cô đọng một bài viết dài thành những bài học sâu sắc."
+        },
+        "plan": {
+          "energyResetTitle": "Xây dựng thiết lập lại năng lượng trong 14 ngày",
+          "energyResetSubtitle": "Một kế hoạch thực tế về giấc ngủ, thức ăn, vận động và sự tập trung.",
+          "mealPlanTitle": "Lên kế hoạch cho bữa ăn tôi sẽ thực sự nấu",
+          "mealPlanSubtitle": "Thực tế, giá cả phải chăng và dựa trên những gì tôi có.",
+          "cityMoveTitle": "Lên kế hoạch di chuyển đến một thành phố mới",
+          "cityMoveSubtitle": "Chia nó thành các nhiệm vụ về dòng thời gian, ngân sách, nhà ở và quản trị viên.",
+          "tripEscapeTitle": "Lên kế hoạch cho một kỳ nghỉ cuối tuần đáng nhớ",
+          "tripEscapeSubtitle": "Một cái gì đó tốt hơn một hành trình chung chung."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Tìm một khía cạnh thực tế hối hả",
+          "sideHustleSubtitle": "Những ý tưởng tôi có thể bắt đầu khi làm việc toàn thời gian.",
+          "brandAngleTitle": "Tìm một góc độ thương hiệu đáng nhớ",
+          "brandAngleSubtitle": "Hữu ích cho sản phẩm, người sáng tạo, đại lý hoặc bản tin.",
+          "socialSeriesTitle": "Phát minh ra một chuỗi nội dung",
+          "socialSeriesSubtitle": "Một cái gì đó đủ nhất quán để tăng lượng khán giả.",
+          "datingIdeasTitle": "Đưa ra những ý tưởng mới",
+          "datingIdeasSubtitle": "Những cuộc hẹn hò, quà tặng, sự bất ngờ hoặc sự kiện khiến bạn cảm thấy chu đáo."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Tìm nơi tiền của tôi bị rò rỉ",
+          "spendingLeaksSubtitle": "Hiển thị các mô hình, điểm yếu và chiến thắng dễ dàng nhất trước tiên.",
+          "customerFeedbackTitle": "Biến phản hồi thành ưu tiên",
+          "customerFeedbackSubtitle": "Nhóm yêu cầu, khiếu nại, mức độ khẩn cấp và tác động.",
+          "habitPatternsTitle": "Tìm ra những khuôn mẫu trong thói quen của tôi",
+          "habitPatternsSubtitle": "Hữu ích cho việc tập luyện, ngủ, viết nhật ký hoặc ghi lại sự tập trung.",
+          "metricsStoryTitle": "Giải thích ý nghĩa của các con số",
+          "metricsStorySubtitle": "Nhiều tín hiệu hơn, bảng tính ít nhiễu hơn."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

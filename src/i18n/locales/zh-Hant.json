@@ -19,7 +19,7 @@
     "gpt-5": "最強大的通用 AI",
     "gpt-5-chat-latest": "針對聊天與對話最佳化",
     "gpt-5-mini": "快速且可靠的 GPT-5",
-    "gpt-5-nano": "適合簡單任務的輕量模型",
+    "gpt-5.4-nano": "適合簡單任務的輕量模型",
     "o4-mini": "高效推理模型",
     "gpt-4.1-mini": "輕巧但強大的 GPT-4.1",
     "claude-3-haiku": "快速且專注的 Anthropic AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "創意、風格化的結果",
       "runwareQwenImage": "平衡且高品質的結果",
       "google4": "最強的 AI 圖像模型",
+      "klingImageO1": "高精度影像編輯",
       "fluxKontent": "為編輯調校的 Flux Kontent",
       "runwareProvider": "在品質與穩定擴散之間取得平衡。",
       "airProvider": "Nano Banana 增添了鮮明活潑的色調。",
       "googleProvider": "Google 精細打磨了細節。",
+      "klingaiProvider": "KlingAI 已針對可控編輯進行最佳化。",
       "anthropicProvider": "Claude 管線帶來細膩的氛圍。",
       "default": "點按以瀏覽可用引擎。"
     }
@@ -657,6 +659,7 @@
       "perMonth": "每月"
     },
     "cta": "繼續",
+    "ctaFreeTrial": "免費試用",
     "legal": {
       "terms": "條款",
       "privacy": "隱私"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "附上提升效率的小技巧"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "選擇一個主題",
+      "title": "你想做什麼？",
+      "subtitle": "選擇一個方向，然後以強烈的提示開始。",
+      "pickPromptTitle": "選擇提示開始",
+      "changeTopic": "選擇另一個主題",
+      "intents": {
+        "summarize": "總結文本",
+        "summarizeShort": "總結",
+        "summarizeHint": "文章、筆記、語音備忘錄、長線程",
+        "plan": "制定計劃",
+        "planHint": "旅行、日常事務、預算、截止日期、生活變化",
+        "brainstorm": "腦力激盪",
+        "brainstormHint": "想法、提議、名稱、內容、副項目",
+        "analyze": "分析數據",
+        "analyzeHint": "支出、回饋、指標、習慣、績效"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "創建創始人簡介",
+          "founderBriefSubtitle": "列出主要風險、決策和後續步驟。",
+          "classNotesTitle": "清理我的學習筆記",
+          "classNotesSubtitle": "將粗略的筆記變成清晰的學習指南。",
+          "meetingHandoffTitle": "寫一份交接總結",
+          "meetingHandoffSubtitle": "在會議、通話或長時間的內部討論後很有用。",
+          "longArticleTitle": "快速總結一下這篇文章",
+          "longArticleSubtitle": "將長篇文章濃縮成尖銳的要點。"
+        },
+        "plan": {
+          "energyResetTitle": "進行 14 天的能量重置",
+          "energyResetSubtitle": "針對睡眠、食物、運動和注意力的現實計劃。",
+          "mealPlanTitle": "計劃我實際上會做飯的飯菜",
+          "mealPlanSubtitle": "實用，實惠，基於我所擁有的。",
+          "cityMoveTitle": "計劃我搬到一個新城市",
+          "cityMoveSubtitle": "將其分解為時間表、預算、住房和管理任務。",
+          "tripEscapeTitle": "計劃一個難忘的週末度假",
+          "tripEscapeSubtitle": "比通用行程更好的東西。"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "尋找現實的副業",
+          "sideHustleSubtitle": "我可以在全職工作時開始的想法。",
+          "brandAngleTitle": "尋找令人難忘的品牌角度",
+          "brandAngleSubtitle": "對於產品、創作者、機構或時事通訊很有用。",
+          "socialSeriesTitle": "發明一個內容系列",
+          "socialSeriesSubtitle": "足夠一致的東西可以增加觀眾。",
+          "datingIdeasTitle": "提出新鮮的想法",
+          "datingIdeasSubtitle": "約會、禮物、驚喜或深思熟慮的活動。"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "找出我的錢流失的地方",
+          "spendingLeaksSubtitle": "首先展示模式、弱點和最簡單的勝利。",
+          "customerFeedbackTitle": "將回饋轉化為優先事項",
+          "customerFeedbackSubtitle": "叢集請求、投訴、緊迫性和影響。",
+          "habitPatternsTitle": "發現我的習慣模式",
+          "habitPatternsSubtitle": "對於運動、睡眠、日記或焦點日誌很有用。",
+          "metricsStoryTitle": "解釋一下數字的含義",
+          "metricsStorySubtitle": "更多訊號，更少電子表格雜訊。"
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

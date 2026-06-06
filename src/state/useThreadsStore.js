@@ -61,7 +61,7 @@ export const useThreadsStore = create((set, get) => ({
     });
   },
 
-  createThread: ({ title = DEFAULT_THREAD_TITLE, model = 'gpt-5-nano', system = null } = {}) => {
+  createThread: ({ title = DEFAULT_THREAD_TITLE, model = 'gpt-5.4-nano', system = null } = {}) => {
     const normalizedTitle = normalizeThreadTitle(title);
     const thread = newThread({ title: normalizedTitle, model, system });
 

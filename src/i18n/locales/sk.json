@@ -19,7 +19,7 @@
     "gpt-5": "Najuniverzálnejšia a najsilnejšia AI",
     "gpt-5-chat-latest": "Optimalizovaný na chat a dialóg",
     "gpt-5-mini": "Rýchly a spoľahlivý GPT-5",
-    "gpt-5-nano": "Ľahký model na jednoduché úlohy",
+    "gpt-5.4-nano": "Ľahký model na jednoduché úlohy",
     "o4-mini": "Efektívny model na uvažovanie",
     "gpt-4.1-mini": "Kompaktný a schopný GPT-4.1",
     "claude-3-haiku": "Rýchla a zameraná AI od Anthropic",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Kreatívne, štýlové výsledky",
       "runwareQwenImage": "Vyvážené výsledky vysokej kvality",
       "google4": "Najlepší AI model na obrázky",
+      "klingImageO1": "Úprava obrázkov s vysokou mierou kontroly",
       "fluxKontent": "Flux Kontent doladený na úpravy",
       "runwareProvider": "Vyvážená kvalita s spoľahlivou difúziou.",
       "airProvider": "Nano Banana pridáva hravý, živý tón.",
       "googleProvider": "Google vyladený na pekné detaily.",
+      "klingaiProvider": "KlingAI je doladený na presné a kontrolované úpravy.",
       "anthropicProvider": "Claude pipeline pre jemnejšie nálady.",
       "default": "Klepnutím zobrazíte dostupné enginy."
     }
@@ -657,6 +659,7 @@
       "perMonth": "mesačne"
     },
     "cta": "Pokračovať",
+    "ctaFreeTrial": "Vyskúšať zadarmo",
     "legal": {
       "terms": "Podmienky",
       "privacy": "Súkromie"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "s tipmi na produktivitu"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Vyberte tému",
+      "title": "čo chceš robiť?",
+      "subtitle": "Vyberte si smer a potom začnite dôraznou výzvou.",
+      "pickPromptTitle": "Vyberte výzvu na spustenie",
+      "changeTopic": "Vyberte si inú tému",
+      "intents": {
+        "summarize": "Zhrňte text",
+        "summarizeShort": "Zhrnúť",
+        "summarizeHint": "Články, poznámky, hlasové poznámky, dlhé vlákna",
+        "plan": "Urobte si plán",
+        "planHint": "Výlety, rutiny, rozpočty, termíny, životné zmeny",
+        "brainstorm": "Brainstorming",
+        "brainstormHint": "Nápady, ponuky, názvy, obsah, vedľajšie projekty",
+        "analyze": "Analyzujte údaje",
+        "analyzeHint": "Výdavky, spätná väzba, metriky, zvyky, výkon"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Vytvorte brief zakladateľa",
+          "founderBriefSubtitle": "Vytiahnite hlavné riziká, rozhodnutia a ďalšie kroky.",
+          "classNotesTitle": "Vyčisti si moje študijné poznámky",
+          "classNotesSubtitle": "Premeňte hrubé poznámky na prehľadnú študijnú príručku.",
+          "meetingHandoffTitle": "Napíšte zhrnutie odovzdania",
+          "meetingHandoffSubtitle": "Užitočné po stretnutiach, hovoroch alebo dlhých interných vláknach.",
+          "longArticleTitle": "Rýchlo zhrňte tento článok",
+          "longArticleSubtitle": "Zhustite dlhý článok do ostrých vecí."
+        },
+        "plan": {
+          "energyResetTitle": "Vytvorte 14-dňový energetický reset",
+          "energyResetSubtitle": "Realistický plán spánku, jedla, pohybu a sústredenia.",
+          "mealPlanTitle": "Naplánujte si jedlá, ktoré skutočne uvarím",
+          "mealPlanSubtitle": "Praktické, cenovo dostupné a podľa toho, čo mám.",
+          "cityMoveTitle": "Naplánujte si môj presun do nového mesta",
+          "cityMoveSubtitle": "Rozdeľte to na časovú os, rozpočet, bývanie a úlohy správcu.",
+          "tripEscapeTitle": "Naplánujte si nezabudnuteľný víkendový útek",
+          "tripEscapeSubtitle": "Niečo lepšie ako všeobecný itinerár."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Nájdite realistický bočný zhon",
+          "sideHustleSubtitle": "Nápady, ktoré môžem začať pri práci na plný úväzok.",
+          "brandAngleTitle": "Nájdite nezabudnuteľný uhol značky",
+          "brandAngleSubtitle": "Užitočné pre produkty, tvorcov, agentúry alebo bulletiny.",
+          "socialSeriesTitle": "Vymyslite sériu obsahu",
+          "socialSeriesSubtitle": "Niečo dostatočne konzistentné na rozšírenie publika.",
+          "datingIdeasTitle": "Prichádzajte s novými nápadmi",
+          "datingIdeasSubtitle": "Dátumy, darčeky, prekvapenia alebo udalosti, ktoré sú premyslené."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Zistite, kde mi unikajú peniaze",
+          "spendingLeaksSubtitle": "Ukážte vzory, slabé miesta a ten najjednoduchší vyhráva ako prvý.",
+          "customerFeedbackTitle": "Premeňte spätnú väzbu na priority",
+          "customerFeedbackSubtitle": "Žiadosti klastra, sťažnosti, naliehavosť a vplyv.",
+          "habitPatternsTitle": "Všimnite si vzory v mojich zvykoch",
+          "habitPatternsSubtitle": "Užitočné pri cvičení, spánku, zapisovaní denníka alebo záznamoch zamerania.",
+          "metricsStoryTitle": "Vysvetlite, čo čísla znamenajú",
+          "metricsStorySubtitle": "Viac signálu, menej šumu tabuľky."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

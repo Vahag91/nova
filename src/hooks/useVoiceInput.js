@@ -2,102 +2,239 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   addEventListener,
+  destroy,
+  isRecognitionAvailable,
+  setRecognitionLanguage,
   startListening,
   stopListening,
-  setRecognitionLanguage,
 } from '@ascendtis/react-native-voice-to-text';
+
+const START_TIMEOUT_MS = 4000;
+
+function normalizeVolume(value) {
+  if (typeof value !== 'number' || Number.isNaN(value)) {
+    return 0;
+  }
+
+  return Math.max(0, Math.min(1, (value + 2) / 12));
+}
 
 export function useVoiceInput({
   locale,
   onPartialText,
   onFinalText,
   onErrorText,
-  autoInit = true,
 } = {}) {
   const [isRecording, setIsRecording] = useState(false);
   const [volume, setVolume] = useState(0);
 
-  const [active, setActive] = useState(!!autoInit);
-  const enabledRef = useRef(!!autoInit);
-  useEffect(() => { enabledRef.current = active; }, [active]);
-
+  const isRecordingRef = useRef(false);
   const partialCbRef = useRef(onPartialText);
   const finalCbRef = useRef(onFinalText);
   const errCbRef = useRef(onErrorText);
-
-  useEffect(() => { partialCbRef.current = onPartialText; }, [onPartialText]);
-  useEffect(() => { finalCbRef.current = onFinalText; }, [onFinalText]);
-  useEffect(() => { errCbRef.current = onErrorText; }, [onErrorText]);
+  const pendingStartRef = useRef(null);
+  const startInFlightRef = useRef(false);
 
   useEffect(() => {
-    if (!active) return undefined;
-    // Bind new library events
-    const subs = [];
-    subs.push(addEventListener('onSpeechStart', () => setIsRecording(true)));
-    subs.push(addEventListener('onSpeechEnd', () => setIsRecording(false)));
-    subs.push(addEventListener('onSpeechResults', (e) => {
-      const val = e?.value;
-      const text = Array.isArray(val) ? (val[0] || '') : (typeof val === 'string' ? val : '');
-      if (text) finalCbRef.current?.(text);
-    }));
-    subs.push(addEventListener('onSpeechPartialResults', (e) => {
-      const val = e?.value;
-      const text = Array.isArray(val) ? (val[0] || '') : (typeof val === 'string' ? val : '');
-      partialCbRef.current?.(text || '');
-    }));
-    subs.push(addEventListener('onSpeechError', (e) => {
-      const msg = e?.message || e?.error || 'Speech error';
-      errCbRef.current?.(typeof msg === 'string' ? msg : 'Speech error');
-      setIsRecording(false);
-    }));
+    isRecordingRef.current = isRecording;
+  }, [isRecording]);
 
-    return () => {
-      // Unsubscribe listeners
-      subs.forEach(s => s && typeof s.remove === 'function' && s.remove());
-      setIsRecording(false);
-      setVolume(0);
-      try { const maybe = stopListening(); if (maybe && typeof maybe.then === 'function') maybe.catch(() => {}); } catch {}
-    };
-  }, [active]);
+  useEffect(() => {
+    partialCbRef.current = onPartialText;
+  }, [onPartialText]);
 
-  const activate = useCallback(() => {
-    if (!enabledRef.current) {
-      enabledRef.current = true;
-      setActive(true);
-    }
-  }, []);
+  useEffect(() => {
+    finalCbRef.current = onFinalText;
+  }, [onFinalText]);
 
-  const start = useCallback(async () => {
-    if (!enabledRef.current) {
+  useEffect(() => {
+    errCbRef.current = onErrorText;
+  }, [onErrorText]);
+
+  const settlePendingStart = useCallback(started => {
+    const pending = pendingStartRef.current;
+    if (!pending) {
       return false;
     }
-    try {
-      if (typeof setRecognitionLanguage === 'function' && locale) {
-        try { await setRecognitionLanguage(locale); } catch {}
-      }
-      await startListening();
+
+    if (pending.timeoutId) {
+      clearTimeout(pending.timeoutId);
+    }
+
+    pendingStartRef.current = null;
+    startInFlightRef.current = false;
+    pending.resolve(!!started);
+    return true;
+  }, []);
+
+  const failStartAttempt = useCallback((message, shouldNotify = true) => {
+    settlePendingStart(false);
+    startInFlightRef.current = false;
+    setIsRecording(false);
+    setVolume(0);
+
+    if (shouldNotify && message) {
+      errCbRef.current?.(message);
+    }
+  }, [settlePendingStart]);
+
+  useEffect(() => {
+    const handleSpeechStarted = () => {
       setIsRecording(true);
+      settlePendingStart(true);
+    };
+
+    const handleSpeechEnded = () => {
+      setIsRecording(false);
+      setVolume(0);
+      settlePendingStart(false);
+    };
+
+    const handleSpeechResults = e => {
+      const val = e?.value;
+      const text = Array.isArray(val)
+        ? (val[0] || '')
+        : (typeof val === 'string' ? val : '');
+
+      if (text) {
+        settlePendingStart(true);
+        finalCbRef.current?.(text);
+      }
+    };
+
+    const handleSpeechPartialResults = e => {
+      const val = e?.value;
+      const text = Array.isArray(val)
+        ? (val[0] || '')
+        : (typeof val === 'string' ? val : '');
+
+      if (text) {
+        settlePendingStart(true);
+      }
+      partialCbRef.current?.(text || '');
+    };
+
+    const handleSpeechError = e => {
+      const message = e?.message || e?.error || 'Speech error';
+      failStartAttempt(typeof message === 'string' ? message : 'Speech error');
+    };
+
+    const handleSpeechVolumeChanged = e => {
+      setVolume(normalizeVolume(e?.value));
+    };
+
+    const subs = [
+      addEventListener('onSpeechStart', handleSpeechStarted),
+      addEventListener('onSpeechBegin', handleSpeechStarted),
+      addEventListener('onSpeechEnd', handleSpeechEnded),
+      addEventListener('onSpeechResults', handleSpeechResults),
+      addEventListener('onSpeechPartialResults', handleSpeechPartialResults),
+      addEventListener('onSpeechError', handleSpeechError),
+      addEventListener('onSpeechVolumeChanged', handleSpeechVolumeChanged),
+    ];
+
+    return () => {
+      subs.forEach(sub => {
+        if (sub && typeof sub.remove === 'function') {
+          sub.remove();
+        }
+      });
+
+      settlePendingStart(false);
+      setIsRecording(false);
+      setVolume(0);
+
+      try {
+        const maybe = stopListening();
+        if (maybe && typeof maybe.then === 'function') {
+          maybe.catch(() => {});
+        }
+      } catch {}
+
+      try {
+        const maybeDestroy = destroy?.();
+        if (maybeDestroy && typeof maybeDestroy.then === 'function') {
+          maybeDestroy.catch(() => {});
+        }
+      } catch {}
+    };
+  }, [failStartAttempt, settlePendingStart]);
+
+  const activate = useCallback(() => {}, []);
+
+  const start = useCallback(async () => {
+    if (startInFlightRef.current || isRecordingRef.current) {
+      return false;
+    }
+
+    try {
+      if (typeof isRecognitionAvailable === 'function') {
+        try {
+          const available = await isRecognitionAvailable();
+          if (available === false) {
+            failStartAttempt('Speech recognition is not available on this device.');
+            return false;
+          }
+        } catch {}
+      }
+
+      if (typeof setRecognitionLanguage === 'function' && locale) {
+        try {
+          await setRecognitionLanguage(locale);
+        } catch {}
+      }
+
+      const startResult = new Promise(resolve => {
+        const timeoutId = setTimeout(() => {
+          pendingStartRef.current = null;
+          startInFlightRef.current = false;
+          setIsRecording(false);
+          setVolume(0);
+          errCbRef.current?.('Voice recognition did not start. Please try again.');
+          try {
+            const maybe = stopListening();
+            if (maybe && typeof maybe.then === 'function') {
+              maybe.catch(() => {});
+            }
+          } catch {}
+          resolve(false);
+        }, START_TIMEOUT_MS);
+
+        pendingStartRef.current = { resolve, timeoutId };
+      });
+
+      startInFlightRef.current = true;
+      await startListening();
+      const started = await startResult;
+      if (!started) {
+        return false;
+      }
+
       setVolume(0);
       return true;
     } catch (error) {
-      errCbRef.current?.(error?.message || String(error));
+      failStartAttempt(error?.message || String(error));
       return false;
     }
-  }, [locale]);
+  }, [failStartAttempt, locale]);
 
   const stop = useCallback(async () => {
-    if (!enabledRef.current) return;
-    try { await stopListening(); } catch {}
+    settlePendingStart(false);
+    try {
+      await stopListening();
+    } catch {}
     setIsRecording(false);
     setVolume(0);
-  }, []);
+  }, [settlePendingStart]);
 
   const cancel = useCallback(async () => {
-    if (!enabledRef.current) return;
-    try { await stopListening(); } catch {}
+    settlePendingStart(false);
+    try {
+      await stopListening();
+    } catch {}
     setIsRecording(false);
     setVolume(0);
-  }, []);
+  }, [settlePendingStart]);
 
   return { isRecording, volume, start, stop, cancel, activate };
 }

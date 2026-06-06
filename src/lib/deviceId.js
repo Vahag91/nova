@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Platform } from 'react-native';
 import * as Keychain from 'react-native-keychain';
 import { Storage } from './storage';
 
@@ -16,7 +15,6 @@ async function setKeychainId(id) {
   // username is arbitrary ('device'), password holds the id
   await Keychain.setGenericPassword('device', val, {
     service: KEYCHAIN_SERVICE,
-    ...(Platform.OS === 'ios' ? { accessible: Keychain.ACCESSIBLE.ALWAYS } : {}),
   });
   return val;
 }

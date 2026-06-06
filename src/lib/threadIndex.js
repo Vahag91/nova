@@ -1,6 +1,6 @@
 import { betterPreview, firstUserPreview, summaryPreview } from './format';
 
-const DEFAULT_MODEL = 'gpt-5-nano';
+const DEFAULT_MODEL = 'gpt-5.4-nano';
 
 export function hasRenderableMessages(messages) {
   return Array.isArray(messages)
@@ -97,4 +97,3 @@ export function buildThreadStateFromArray(threads = []) {
 export function sortThreadIndex(index = []) {
   return [...index].sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
 }
-

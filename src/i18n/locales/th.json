@@ -19,7 +19,7 @@
     "gpt-5": "AI อเนกประสงค์ที่ทรงพลังที่สุด",
     "gpt-5-chat-latest": "ปรับให้เหมาะกับแชทและบทสนทนา",
     "gpt-5-mini": "GPT-5 ที่เร็วและเชื่อถือได้",
-    "gpt-5-nano": "โมเดลขนาดเล็กสำหรับงานง่ายๆ",
+    "gpt-5.4-nano": "โมเดลขนาดเล็กสำหรับงานง่ายๆ",
     "o4-mini": "โมเดลให้เหตุผลอย่างมีประสิทธิภาพ",
     "gpt-4.1-mini": "GPT-4.1 แบบกะทัดรัดแต่เก่ง",
     "claude-3-haiku": "Anthropic แบบเร็วและโฟกัส",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "ผลงานสร้างสรรค์และมีสไตล์",
       "runwareQwenImage": "สมดุลและคุณภาพสูง",
       "google4": "โมเดลภาพ AI ที่ดีที่สุด",
+      "klingImageO1": "การแก้ไขภาพที่ควบคุมได้อย่างละเอียด",
       "fluxKontent": "Flux Kontent สำหรับงานแก้ไข",
       "runwareProvider": "สมดุลระหว่างคุณภาพกับ diffusion ที่เสถียร",
       "airProvider": "โทนสดใสสนุกสไตล์ Nano Banana",
       "googleProvider": "ดีเทลเนี้ยบในแบบ Google",
+      "klingaiProvider": "KlingAI ปรับแต่งมาสำหรับการแก้ไขที่ควบคุมได้อย่างแม่นยำ",
       "anthropicProvider": "ทิ้งอารมณ์แบบละเอียดของ Claude",
       "default": "แตะเพื่อดูเอนจินที่ใช้ได้"
     }
@@ -657,6 +659,7 @@
       "perMonth": "ต่อเดือน"
     },
     "cta": "ดำเนินการต่อ",
+    "ctaFreeTrial": "ทดลองใช้ฟรี",
     "legal": {
       "terms": "ข้อกำหนด",
       "privacy": "ความเป็นส่วนตัว"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "พร้อมทริคเพิ่มประสิทธิภาพ"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "เลือกหัวข้อ",
+      "title": "คุณต้องการทำอะไร?",
+      "subtitle": "เลือกทิศทาง จากนั้นเริ่มต้นด้วยการแจ้งที่ชัดเจน",
+      "pickPromptTitle": "เลือกข้อความแจ้งเพื่อเริ่มต้น",
+      "changeTopic": "เลือกหัวข้ออื่น",
+      "intents": {
+        "summarize": "สรุปข้อความ",
+        "summarizeShort": "สรุป",
+        "summarizeHint": "บทความ โน้ต บันทึกเสียง กระทู้ยาวๆ",
+        "plan": "วางแผน",
+        "planHint": "การเดินทาง กิจวัตร งบประมาณ กำหนดเวลา การเปลี่ยนแปลงชีวิต",
+        "brainstorm": "ระดมความคิด",
+        "brainstormHint": "แนวคิด ข้อเสนอ ชื่อ เนื้อหา โครงการรอง",
+        "analyze": "วิเคราะห์ข้อมูล",
+        "analyzeHint": "การใช้จ่าย ความคิดเห็น ตัวชี้วัด นิสัย ประสิทธิภาพ"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "สร้างบรีฟของผู้ก่อตั้ง",
+          "founderBriefSubtitle": "ดึงความเสี่ยงหลัก การตัดสินใจ และขั้นตอนถัดไปออกมา",
+          "classNotesTitle": "ทำความสะอาดบันทึกการเรียนของฉัน",
+          "classNotesSubtitle": "เปลี่ยนบันทึกคร่าวๆ ให้เป็นแนวทางศึกษาที่ชัดเจน",
+          "meetingHandoffTitle": "เขียนสรุปการแฮนด์ออฟ",
+          "meetingHandoffSubtitle": "มีประโยชน์หลังการประชุม การโทร หรือการสนทนาภายในที่ยาวนาน",
+          "longArticleTitle": "สรุปบทความนี้อย่างรวดเร็ว",
+          "longArticleSubtitle": "ย่อบทความยาวๆ ให้กลายเป็นประเด็นที่เฉียบแหลม"
+        },
+        "plan": {
+          "energyResetTitle": "สร้างการรีเซ็ตพลังงาน 14 วัน",
+          "energyResetSubtitle": "แผนการนอน อาหาร การเคลื่อนไหว และสมาธิที่สมจริง",
+          "mealPlanTitle": "วางแผนมื้ออาหารที่ฉันจะปรุงจริงๆ",
+          "mealPlanSubtitle": "ใช้งานได้จริง ราคาไม่แพง และขึ้นอยู่กับสิ่งที่ฉันมี",
+          "cityMoveTitle": "วางแผนย้ายไปเมืองใหม่",
+          "cityMoveSubtitle": "แบ่งออกเป็นไทม์ไลน์ งบประมาณ ที่อยู่อาศัย และงานผู้ดูแลระบบ",
+          "tripEscapeTitle": "วางแผนการหลบหนีช่วงสุดสัปดาห์ที่น่าจดจำ",
+          "tripEscapeSubtitle": "มีบางอย่างที่ดีกว่าแผนการเดินทางทั่วไป"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "ค้นหาความเร่งรีบด้านข้างที่สมจริง",
+          "sideHustleSubtitle": "แนวคิดที่ฉันสามารถเริ่มต้นได้ในขณะที่ทำงานเต็มเวลา",
+          "brandAngleTitle": "ค้นหามุมแบรนด์ที่น่าจดจำ",
+          "brandAngleSubtitle": "มีประโยชน์สำหรับผลิตภัณฑ์ ผู้สร้าง เอเจนซี่ หรือจดหมายข่าว",
+          "socialSeriesTitle": "ประดิษฐ์ชุดเนื้อหา",
+          "socialSeriesSubtitle": "สิ่งที่สอดคล้องกันเพียงพอที่จะเพิ่มจำนวนผู้ชม",
+          "datingIdeasTitle": "มาพร้อมไอเดียใหม่ๆ",
+          "datingIdeasSubtitle": "วันที่ ของขวัญ เซอร์ไพรส์ หรือกิจกรรมที่ให้ความรู้สึกน่าคิด"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "ค้นหาว่าเงินของฉันรั่วไหลอยู่ที่ไหน",
+          "spendingLeaksSubtitle": "แสดงรูปแบบ จุดอ่อน และชนะง่ายที่สุดก่อน",
+          "customerFeedbackTitle": "เปลี่ยนความคิดเห็นเป็นลำดับความสำคัญ",
+          "customerFeedbackSubtitle": "คำขอคลัสเตอร์ การร้องเรียน ความเร่งด่วน และผลกระทบ",
+          "habitPatternsTitle": "สังเกตรูปแบบในนิสัยของฉัน",
+          "habitPatternsSubtitle": "มีประโยชน์สำหรับการออกกำลังกาย การนอนหลับ การจดบันทึก หรือบันทึกสมาธิ",
+          "metricsStoryTitle": "อธิบายว่าตัวเลขหมายถึงอะไร",
+          "metricsStorySubtitle": "สัญญาณมากขึ้น สัญญาณรบกวนจากสเปรดชีตน้อยลง"
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

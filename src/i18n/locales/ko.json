@@ -19,7 +19,7 @@
     "gpt-5": "가장 강력한 범용 AI",
     "gpt-5-chat-latest": "채팅과 대화에 최적화",
     "gpt-5-mini": "빠르고 신뢰할 수 있는 GPT-5",
-    "gpt-5-nano": "간단한 작업용 경량 모델",
+    "gpt-5.4-nano": "간단한 작업용 경량 모델",
     "o4-mini": "효율적인 추론 모델",
     "gpt-4.1-mini": "작지만 강력한 GPT-4.1",
     "claude-3-haiku": "빠르고 집중된 Anthropic AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "창의적이고 스타일리시한 결과",
       "runwareQwenImage": "균형 잡힌 고품질 결과",
       "google4": "최고급 AI 이미지 모델",
+      "klingImageO1": "정밀하게 제어되는 이미지 편집",
       "fluxKontent": "편집에 맞게 튜닝된 Flux Kontent",
       "runwareProvider": "품질과 안정적인 디퓨전에 균형.",
       "airProvider": "Nano Banana가 생동감 있는 톤을 추가.",
       "googleProvider": "Google이 디테일을 매끈하게 조정.",
+      "klingaiProvider": "KlingAI는 정밀하고 제어된 편집에 맞게 최적화되었습니다.",
       "anthropicProvider": "세밀한 분위기를 위한 Claude 파이프라인.",
       "default": "탭해서 사용 가능한 엔진 보기."
     }
@@ -657,6 +659,7 @@
       "perMonth": "월당"
     },
     "cta": "계속",
+    "ctaFreeTrial": "무료로 체험하기",
     "legal": {
       "terms": "약관",
       "privacy": "개인정보"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "생산성을 높이는 팁과 함께"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "주제를 선택하세요",
+      "title": "무엇을 하고 싶나요?",
+      "subtitle": "방향을 선택한 다음 강력한 프롬프트로 시작하세요.",
+      "pickPromptTitle": "시작하라는 메시지를 선택하세요",
+      "changeTopic": "다른 주제를 선택하세요",
+      "intents": {
+        "summarize": "텍스트 요약",
+        "summarizeShort": "요약",
+        "summarizeHint": "기사, 메모, 음성 메모, 긴 스레드",
+        "plan": "계획을 세우다",
+        "planHint": "여행, 일상, 예산, 마감일, 삶의 변화",
+        "brainstorm": "브레인스토밍",
+        "brainstormHint": "아이디어, 제안, 이름, 콘텐츠, 사이드 프로젝트",
+        "analyze": "데이터 분석",
+        "analyzeHint": "지출, 피드백, 지표, 습관, 성과"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "창업자 개요 작성",
+          "founderBriefSubtitle": "주요 위험, 결정 및 다음 단계를 도출합니다.",
+          "classNotesTitle": "내 공부 노트 정리",
+          "classNotesSubtitle": "대략적인 메모를 명확한 학습 가이드로 바꿔보세요.",
+          "meetingHandoffTitle": "핸드오프 요약 작성",
+          "meetingHandoffSubtitle": "회의, 통화 또는 긴 내부 스레드 후에 유용합니다.",
+          "longArticleTitle": "이 글을 빨리 요약해보세요",
+          "longArticleSubtitle": "긴 기사를 날카로운 내용으로 압축합니다."
+        },
+        "plan": {
+          "energyResetTitle": "14일 에너지 재설정을 구축하세요",
+          "energyResetSubtitle": "수면, 음식, 움직임, 집중을 위한 현실적인 계획입니다.",
+          "mealPlanTitle": "내가 실제로 요리할 식사 계획하기",
+          "mealPlanSubtitle": "실용적이고 저렴하며 내가 가지고 있는 것을 기반으로 합니다.",
+          "cityMoveTitle": "새로운 도시로의 이사 계획하기",
+          "cityMoveSubtitle": "일정, 예산, 주택, 관리 작업으로 나누세요.",
+          "tripEscapeTitle": "기억에 남는 주말 여행을 계획해보세요",
+          "tripEscapeSubtitle": "일반적인 여행 일정보다 나은 것이 있습니다."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "현실적인 부업 찾기",
+          "sideHustleSubtitle": "풀타임으로 일하면서 시작할 수 있는 아이디어.",
+          "brandAngleTitle": "기억에 남는 브랜드 앵글을 찾아보세요",
+          "brandAngleSubtitle": "제품, 제작자, 대행사 또는 뉴스레터에 유용합니다.",
+          "socialSeriesTitle": "콘텐츠 시리즈를 만들어 보세요",
+          "socialSeriesSubtitle": "청중을 늘릴 수 있을 만큼 일관된 것.",
+          "datingIdeasTitle": "신선한 아이디어를 생각해 보세요.",
+          "datingIdeasSubtitle": "사려 깊은 데이트, 선물, 서프라이즈 또는 이벤트."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "내 돈이 새고 있는 곳을 찾아보세요",
+          "spendingLeaksSubtitle": "패턴과 약점을 보여주고 가장 쉬운 것이 먼저 승리합니다.",
+          "customerFeedbackTitle": "피드백을 우선순위로 전환",
+          "customerFeedbackSubtitle": "클러스터 요청, 불만 사항, 긴급성 및 영향.",
+          "habitPatternsTitle": "내 습관에서 패턴을 찾아보세요",
+          "habitPatternsSubtitle": "운동, 수면, 일기 쓰기 또는 집중 기록에 유용합니다.",
+          "metricsStoryTitle": "숫자가 무엇을 의미하는지 설명하세요.",
+          "metricsStorySubtitle": "더 많은 신호, 더 적은 스프레드시트 노이즈."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

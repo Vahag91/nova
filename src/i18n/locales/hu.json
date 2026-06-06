@@ -19,7 +19,7 @@
     "gpt-5": "Leghatékonyabb, általános célú MI",
     "gpt-5-chat-latest": "Csevegésre és párbeszédre optimalizálva",
     "gpt-5-mini": "Gyors és megbízható GPT-5",
-    "gpt-5-nano": "Könnyű modell egyszerű feladatokra",
+    "gpt-5.4-nano": "Könnyű modell egyszerű feladatokra",
     "o4-mini": "Hatékony következtető modell",
     "gpt-4.1-mini": "Kompakt, mégis erős GPT-4.1",
     "claude-3-haiku": "Gyors és fókuszált Anthropic MI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Kreatív, stilizált eredmények",
       "runwareQwenImage": "Kiegyensúlyozott, jó minőségű eredmények",
       "google4": "Legjobb MI képgeneráló modell",
+      "klingImageO1": "Képszerkesztés nagyfokú kontrollal",
       "fluxKontent": "Flux Kontent képszerkesztésre hangolva",
       "runwareProvider": "Kiegyensúlyozott minőség megbízható diffúzióval.",
       "airProvider": "A Nano Banana játékos, élénk tónust ad.",
       "googleProvider": "Google-finomhangolás a precíz részletekért.",
+      "klingaiProvider": "A KlingAI kontrollált szerkesztésekre van hangolva.",
       "anthropicProvider": "Claude csővezeték a kifinomult hangulatokhoz.",
       "default": "Koppints az elérhető motorok felfedezéséhez."
     }
@@ -657,6 +659,7 @@
       "perMonth": "havonta"
     },
     "cta": "Folytatás",
+    "ctaFreeTrial": "Próbáld ki ingyen",
     "legal": {
       "terms": "Feltételek",
       "privacy": "Adatvédelem"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "produktivitási tippekkel"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Válassz egy témát",
+      "title": "mit akarsz csinálni?",
+      "subtitle": "Válasszon egy irányt, majd kezdje erős felszólítással.",
+      "pickPromptTitle": "Válasszon promptot az indításhoz",
+      "changeTopic": "Válassz másik témát",
+      "intents": {
+        "summarize": "Szöveg összefoglalása",
+        "summarizeShort": "Összefoglalni",
+        "summarizeHint": "Cikkek, jegyzetek, hangjegyzetek, hosszú szálak",
+        "plan": "Készíts egy tervet",
+        "planHint": "Utazások, rutinok, költségvetések, határidők, életváltozások",
+        "brainstorm": "Brainstorm",
+        "brainstormHint": "Ötletek, ajánlatok, nevek, tartalom, mellékprojektek",
+        "analyze": "Adatok elemzése",
+        "analyzeHint": "Költések, visszajelzések, mutatók, szokások, teljesítmény"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Hozzon létre egy alapítói összefoglalót",
+          "founderBriefSubtitle": "Húzza ki a fő kockázatokat, döntéseket és a következő lépéseket.",
+          "classNotesTitle": "Takarítsd ki a tanulmányi jegyzeteimet",
+          "classNotesSubtitle": "A durva jegyzeteket világos tanulmányi útmutatóvá alakítsa.",
+          "meetingHandoffTitle": "Írjon átadás-összefoglalót",
+          "meetingHandoffSubtitle": "Hasznos értekezletek, hívások vagy hosszú belső szálak után.",
+          "longArticleTitle": "Foglalja össze gyorsan ezt a cikket",
+          "longArticleSubtitle": "Sűrítsen egy hosszú cikket éles kivonatokká."
+        },
+        "plan": {
+          "energyResetTitle": "Készítsen 14 napos energia-visszaállítást",
+          "energyResetSubtitle": "Reális terv az alváshoz, étkezéshez, mozgáshoz és összpontosításhoz.",
+          "mealPlanTitle": "Tervezze meg az ételeket, amelyeket én fogok főzni",
+          "mealPlanSubtitle": "Praktikus, megfizethető, és azon alapul, amim van.",
+          "cityMoveTitle": "Tervezze meg a költözésemet egy új városba",
+          "cityMoveSubtitle": "Bontsa fel ütemtervre, költségvetésre, lakhatási és adminisztrátori feladatokra.",
+          "tripEscapeTitle": "Tervezz egy emlékezetes hétvégi szökést",
+          "tripEscapeSubtitle": "Valami jobb, mint egy általános útvonal."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Találja meg a reális oldalsó hajtást",
+          "sideHustleSubtitle": "Ötletek, amiket teljes munkaidőben is el tudok kezdeni.",
+          "brandAngleTitle": "Találjon egy emlékezetes márkaszöget",
+          "brandAngleSubtitle": "Hasznos termékek, alkotók, ügynökségek vagy hírlevelek számára.",
+          "socialSeriesTitle": "Találj ki egy tartalomsorozatot",
+          "socialSeriesSubtitle": "Valami elég következetes ahhoz, hogy növelje a közönséget.",
+          "datingIdeasTitle": "Találj ki friss ötleteket",
+          "datingIdeasSubtitle": "Dátumok, ajándékok, meglepetések vagy elgondolkodtató események."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Keresse meg, hol szivárog a pénzem",
+          "spendingLeaksSubtitle": "Mutasson mintákat, gyenge pontokat, és a legkönnyebb nyer először.",
+          "customerFeedbackTitle": "A visszajelzéseket prioritásokká alakítsa",
+          "customerFeedbackSubtitle": "Klaszterkérelmek, panaszok, sürgősség és hatás.",
+          "habitPatternsTitle": "Foltos minták a szokásaimban",
+          "habitPatternsSubtitle": "Hasznos edzésekhez, alváshoz, naplózáshoz vagy fókusznaplókhoz.",
+          "metricsStoryTitle": "Magyarázd el, mit jelentenek a számok!",
+          "metricsStorySubtitle": "Több jel, kevesebb táblázatzaj."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

@@ -4,7 +4,7 @@
 
 const CHAT_MODEL_PRICES = {
   // Free models
-  'gpt-5-nano': 0,
+  'gpt-5.4-nano': 0,
   // Premium models - could add pricing here later
   'gpt-5': 0,
   'gpt-5-chat-latest': 0,

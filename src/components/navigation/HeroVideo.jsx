@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import Video from 'react-native-video';
+import { Platform, StyleSheet, View } from 'react-native';
+import Video, { ViewType } from 'react-native-video';
 import { perfEnd, perfLog, perfStart } from '../../lib/perfTrace';
 
 const DEFAULT_VIDEO = require('../../../assets/video/hero.mp4');
+const WATCHDOG_INTERVAL_MS = 1000;
+const WATCHDOG_IDLE_MS = 2500;
 
 export default function HeroVideo({
   style,
@@ -19,7 +21,10 @@ export default function HeroVideo({
   const stalledRestartTimeoutRef = useRef(null);
   const lastTickRef = useRef(Date.now());
   const lastRestartAtRef = useRef(0);
+  const didMountRef = useRef(false);
+  const isReadyRef = useRef(false);
   const [sourceIndex, setSourceIndex] = useState(0);
+  const [playerInstanceKey, setPlayerInstanceKey] = useState(0);
 
   const playlist = useMemo(() => {
     if (Array.isArray(sources) && sources.length) {
@@ -28,6 +33,21 @@ export default function HeroVideo({
 
     return [source || DEFAULT_VIDEO];
   }, [source, sources]);
+
+  const usesLocalSource = useMemo(() => (
+    playlist.every(item => {
+      if (typeof item === 'number') {
+        return true;
+      }
+
+      const uri = item?.uri;
+      if (typeof uri !== 'string' || !uri.length) {
+        return false;
+      }
+
+      return !/^https?:\/\//i.test(uri);
+    })
+  ), [playlist]);
 
   const bumpTick = useCallback(() => {
     lastTickRef.current = Date.now();
@@ -48,7 +68,7 @@ export default function HeroVideo({
     bumpTick();
   }, [bumpTick]);
 
-  const restart = useCallback((reason = 'manual') => {
+  const restart = useCallback((reason = 'manual', { forceReload = false } = {}) => {
     const now = Date.now();
     if (paused || now - lastRestartAtRef.current < 4000) {
       return;
@@ -59,9 +79,17 @@ export default function HeroVideo({
     perfLog('hero_video.restart', {
       sourceIndex,
       reason,
+      forceReload,
     });
+    isReadyRef.current = false;
+    if (forceReload) {
+      setPlayerInstanceKey(key => key + 1);
+      bumpTick();
+      return;
+    }
+
     seekToStart();
-  }, [clearPendingRestart, paused, seekToStart, sourceIndex]);
+  }, [bumpTick, clearPendingRestart, paused, seekToStart, sourceIndex]);
 
   useEffect(() => {
     perfLog('hero_video.mounted', {
@@ -76,19 +104,63 @@ export default function HeroVideo({
   }, [clearPendingRestart, paused, playlist.length]);
 
   useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+
     clearPendingRestart();
-    setSourceIndex(0);
-    seekToStart();
-  }, [clearPendingRestart, restartKey, playlist.length, seekToStart]);
+    bufferingRef.current = false;
+    if (sourceIndex !== 0) {
+      isReadyRef.current = false;
+      setSourceIndex(0);
+      bumpTick();
+      return;
+    }
+
+    if (isReadyRef.current) {
+      seekToStart();
+      return;
+    }
+
+    bumpTick();
+  }, [bumpTick, clearPendingRestart, restartKey, seekToStart, sourceIndex]);
 
   useEffect(() => {
+    clearPendingRestart();
+    bufferingRef.current = false;
+    isReadyRef.current = false;
     setSourceIndex(0);
-  }, [playlist]);
+    bumpTick();
+  }, [bumpTick, clearPendingRestart, playlist]);
 
   useEffect(() => {
     clearPendingRestart();
-    seekToStart();
-  }, [clearPendingRestart, sourceIndex, seekToStart]);
+    bufferingRef.current = false;
+    isReadyRef.current = false;
+    bumpTick();
+  }, [bumpTick, clearPendingRestart, sourceIndex]);
+
+  useEffect(() => {
+    if (paused) {
+      return undefined;
+    }
+
+    const interval = setInterval(() => {
+      const idleMs = Date.now() - lastTickRef.current;
+      if (!isReadyRef.current || bufferingRef.current || idleMs < WATCHDOG_IDLE_MS) {
+        return;
+      }
+
+      perfLog('hero_video.watchdog_restart', {
+        sourceIndex,
+        idleMs,
+      });
+      restart('watchdog', { forceReload: true });
+    }, WATCHDOG_INTERVAL_MS);
+
+    return () => clearInterval(interval);
+  }, [paused, restart, sourceIndex]);
 
   return (
     <View
@@ -100,25 +172,30 @@ export default function HeroVideo({
       ]}
     >
       <Video
+        key={`${playerInstanceKey}:${sourceIndex}`}
         ref={videoRef}
         source={playlist[sourceIndex] || playlist[0]}
         style={styles.video}
         resizeMode="cover"
+        hideShutterView={Platform.OS === 'android'}
         repeat={playlist.length <= 1}
         muted
         paused={paused}
+        viewType={Platform.OS === 'android' ? ViewType.TEXTURE : undefined}
         ignoreSilentSwitch="obey"
         playInBackground={false}
         playWhenInactive={false}
-        progressUpdateInterval={250}
-        bufferConfig={{
-          minBufferMs: 15000,
-          maxBufferMs: 50000,
-          bufferForPlaybackMs: 2500,
-          bufferForPlaybackAfterRebufferMs: 5000,
+        progressUpdateInterval={1000}
+        bufferConfig={usesLocalSource ? undefined : {
+          minBufferMs: 2500,
+          maxBufferMs: 10000,
+          bufferForPlaybackMs: 250,
+          bufferForPlaybackAfterRebufferMs: 500,
         }}
         onLoad={event => {
           clearPendingRestart();
+          isReadyRef.current = true;
+          bufferingRef.current = false;
           perfEnd('hero_video.load', {
             sourceIndex,
             duration: event?.duration,
@@ -127,6 +204,7 @@ export default function HeroVideo({
         }}
         onLoadStart={() => {
           clearPendingRestart();
+          isReadyRef.current = false;
           perfStart('hero_video.load', {
             sourceIndex,
             paused,
@@ -153,6 +231,7 @@ export default function HeroVideo({
           });
 
           if (playlist.length > 1) {
+            isReadyRef.current = false;
             setSourceIndex(index => (index + 1) % playlist.length);
           }
         }}
@@ -173,18 +252,19 @@ export default function HeroVideo({
               sourceIndex,
               idleMs,
             });
-            restart('stalled');
+            restart('stalled', { forceReload: true });
           }, 1200);
         }}
         onError={event => {
           clearPendingRestart();
+          isReadyRef.current = false;
           perfLog('hero_video.error', {
             sourceIndex,
             error: event?.nativeEvent?.error,
           });
 
           if (event?.nativeEvent?.error) {
-            restart('error');
+            restart('error', { forceReload: true });
           }
         }}
       />

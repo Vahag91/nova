@@ -24,7 +24,7 @@ import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import Svg, { Path } from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
-import MaskedViewIOS from '@react-native-masked-view/masked-view';
+import MaskedView from '@react-native-masked-view/masked-view';
 import AnimatedReanimated, {
   useSharedValue,
   useAnimatedStyle,
@@ -61,7 +61,7 @@ const CreateImagesIcon = ({ color = '#75FB4C', size = 24 }) => (
 
 function GradientText({ children, style, colors: gradientColors = ['#A855F7', '#6366F1'] }) {
   return (
-    <MaskedViewIOS
+    <MaskedView
       style={styles.gradientTextContainer}
       maskElement={
         <View style={styles.maskWrap}>
@@ -76,13 +76,13 @@ function GradientText({ children, style, colors: gradientColors = ['#A855F7', '#
       >
         <Text style={[style, styles.invisibleText]}>{children}</Text>
       </LinearGradient>
-    </MaskedViewIOS>
+    </MaskedView>
   );
 }
 
 function GradientTextSoft({ children, style }) {
   return (
-    <MaskedViewIOS
+    <MaskedView
       style={styles.gradientTextContainer}
       maskElement={
         <View style={styles.maskWrap}>
@@ -97,13 +97,13 @@ function GradientTextSoft({ children, style }) {
       >
         <Text style={[style, styles.invisibleText]}>{children}</Text>
       </LinearGradient>
-    </MaskedViewIOS>
+    </MaskedView>
   );
 }
 
 function GradientDiscountText({ children, style }) {
   return (
-    <MaskedViewIOS
+    <MaskedView
       style={styles.gradientTextContainer}
       maskElement={
         <View style={styles.maskWrap}>
@@ -118,7 +118,7 @@ function GradientDiscountText({ children, style }) {
       >
         <Text style={[style, styles.invisibleText]}>{children}</Text>
       </LinearGradient>
-    </MaskedViewIOS>
+    </MaskedView>
   );
 }
 
@@ -131,7 +131,7 @@ export default function OneTimeOfferModal({
   const insets = useSafeAreaInsets();
   const { width: windowWidth } = useWindowDimensions();
   const subscription = useContext(SubscriptionContext);
-  const { availablePackages, purchasePackage, restorePurchases } =
+  const { availablePackages, purchasePackage, restorePurchases, paymentsEnabled } =
     subscription || {};
   const [purchasing, setPurchasing] = useState(false);
   const [restoring, setRestoring] = useState(false);
@@ -238,6 +238,15 @@ useEffect(() => {
   }, [opacity, translateY, performClose]);
 
   const handlePurchase = useCallback(async () => {
+    if (!paymentsEnabled) {
+      Alert.alert(
+        t('oneTimeOffer.unavailableTitle', { defaultValue: 'Purchases unavailable' }),
+        t('oneTimeOffer.unavailableMessage', {
+          defaultValue: 'Android billing is not configured yet.',
+        }),
+      );
+      return;
+    }
     if (!oneTimePackage || purchasing) return;
 
     setPurchasing(true);
@@ -267,15 +276,25 @@ useEffect(() => {
       setPurchasing(false);
     }
   }, [
+    handleClose,
     oneTimePackage,
+    paymentsEnabled,
     purchasePackage,
     purchasing,
     t,
     onPurchaseComplete,
-    onClose,
   ]);
 
   const handleRestore = useCallback(async () => {
+    if (!paymentsEnabled) {
+      Alert.alert(
+        t('oneTimeOffer.unavailableTitle', { defaultValue: 'Purchases unavailable' }),
+        t('oneTimeOffer.unavailableMessage', {
+          defaultValue: 'Android billing is not configured yet.',
+        }),
+      );
+      return;
+    }
     if (restoring) return;
     setRestoring(true);
     try {
@@ -297,7 +316,7 @@ useEffect(() => {
     } finally {
       setRestoring(false);
     }
-  }, [restorePurchases, restoring, t]);
+  }, [paymentsEnabled, restorePurchases, restoring, t]);
 
   const product = oneTimePackage?.product || {};
   const priceString = product?.priceString || null;
@@ -407,7 +426,7 @@ useEffect(() => {
           <Pressable 
             onPress={handleRestore} 
             style={[styles.restoreButton, restoring && styles.restoreButtonDisabled]}
-            disabled={restoring}
+            disabled={restoring || !paymentsEnabled}
           >
             <Text style={styles.restoreButtonText}>
               {restoring 
@@ -499,9 +518,12 @@ useEffect(() => {
 
             {/* Lifetime Button */}
             <Pressable
-              style={styles.lifetimeButton}
+              style={[
+                styles.lifetimeButton,
+                (!paymentsEnabled || !oneTimePackage || purchasing) && styles.lifetimeButtonDisabled,
+              ]}
               onPress={handlePurchase}
-              disabled={purchasing || !oneTimePackage}
+              disabled={purchasing || !oneTimePackage || !paymentsEnabled}
             >
               {purchasing ? (
                 <ActivityIndicator size="small" color="#FFFFFF" />
@@ -535,7 +557,7 @@ useEffect(() => {
               </Pressable>
               {!isCompactWidth && <Text style={styles.footerLinkSeparator}>|</Text>}
               <Pressable
-                onPress={() => Linking.openURL('https://aicloudsolutions.app/privacy')}
+                onPress={() => Linking.openURL('https://aicloudsolutions.app/privacy/chatcloud')}
                 hitSlop={8}
               >
                 <Text style={styles.footerLink}>
@@ -710,6 +732,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 30,
     elevation: 8,
+  },
+  lifetimeButtonDisabled: {
+    opacity: 0.55,
   },
   lifetimeButtonText: {
     color: '#FFFFFF',

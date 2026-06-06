@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect, useCallback, memo, useRef, useContext } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Platform, Image, ScrollView, Modal, useWindowDimensions, Keyboard } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, ScrollView, Modal, useWindowDimensions, Keyboard } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, interpolate, Extrapolation } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 // --- NEW IMPORT ---
@@ -9,6 +9,7 @@ import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { SubscriptionContext } from '../../context/SubscriptionContext';
 import { setPendingPremiumAction } from '../../state/premiumActions';
+import { resolvePremiumStatus } from '../../lib/resolvePremiumStatus';
 import { perfCancel, perfEnd, perfLog, perfStart } from '../../lib/perfTrace';
 
 const noop = () => { };
@@ -68,13 +69,12 @@ function TestInput({
 }) {
   const { t } = useTranslation();
   const subscription = useContext(SubscriptionContext);
-  const isPremium = !!subscription?.isPremium;
   
   // Safe area for bottom padding (home bar)
   const insets = useSafeAreaInsets();
   
-  const handleWebSearchPress = useCallback(() => {
-    if (isPremium) {
+  const handleWebSearchPress = useCallback(async () => {
+    if (await resolvePremiumStatus(subscription)) {
       onSearchPress();
       return;
     }
@@ -88,7 +88,7 @@ function TestInput({
       navigation?.navigate('PaywallScreen', { returnTo: 'Chat' });
     } catch (error) {
     }
-  }, [isPremium, navigation, onSearchPress]);
+  }, [navigation, onSearchPress, subscription]);
 
   const safe = useCallback((fn, ...args) => {
     if (typeof fn !== 'function') return;
@@ -173,8 +173,8 @@ function TestInput({
     return { transform: [{ rotate: `${deg}deg` }] };
   });
 
-  const getMenuItemStyle = (index) => {
-    return useAnimatedStyle(() => {
+  const useMenuItemStyle = index =>
+    useAnimatedStyle(() => {
       const start = index * 0.08;
       const t = Math.min(1, Math.max(0, (isOpen.value - start) / (1 - start)));
       const translateValue = (1 - t) * 12;
@@ -186,11 +186,10 @@ function TestInput({
         ],
       };
     });
-  };
 
-  const menuItem1Style = getMenuItemStyle(0);
-  const menuItem2Style = getMenuItemStyle(1);
-  const menuItem3Style = getMenuItemStyle(2);
+  const menuItem1Style = useMenuItemStyle(0);
+  const menuItem2Style = useMenuItemStyle(1);
+  const menuItem3Style = useMenuItemStyle(2);
 
   const popoverAnimatedStyle = useAnimatedStyle(() => ({
     opacity: isOpen.value,
@@ -357,7 +356,7 @@ function TestInput({
   }, [clearMenuTimers]);
 
   useEffect(() => {
-    const showEvent = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+    const showEvent = 'keyboardDidShow';
     const hideEvent = 'keyboardDidHide';
 
     const showSub = Keyboard.addListener(showEvent, () => {
@@ -556,7 +555,6 @@ function TestInput({
             maxLength={maxLength}
             autoCorrect
             autoCapitalize="sentences"
-            keyboardAppearance={Platform.OS === 'ios' ? 'default' : undefined}
             selectionColor={colors.primary}
             underlineColorAndroid="transparent"
             textAlignVertical={isExpanded ? 'top' : 'center'}
@@ -618,13 +616,11 @@ function TestInput({
             <TouchableOpacity
               style={[styles.micButton, offline && styles.iconDisabled]}
               onPress={() => { if (!offline) safe(onMicPress); }}
-              onLongPress={() => { if (!offline) safe(onMicPress); }}
               onPressIn={() => safe(onMicHoldStart)}
               onPressOut={() => safe(onMicHoldEnd)}
               disabled={offline}
               accessibilityRole="button"
               accessibilityLabel={t('chat.startVoiceInput')}
-              delayLongPress={500}
             >
               <MicIcon color="#FFFFFF" size={18} />
             </TouchableOpacity>

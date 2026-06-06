@@ -7,7 +7,6 @@ import {
   FlatList,
   Modal,
   StyleSheet,
-  Platform,
   Dimensions,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -20,6 +19,7 @@ import { useContext } from 'react';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { isPremiumModel } from '../config/premium';
 import { setPendingPremiumAction } from '../state/premiumActions';
+import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
 import { useNavigation } from '@react-navigation/native';
 import { getChatModelPrice } from '../utils/chatPricing';
 import Svg, { Path } from 'react-native-svg';
@@ -219,6 +219,42 @@ export default function ModelSelector() {
   }));
 
   // —— render —— //
+  const handleSelectModel = useCallback(async (item) => {
+    const premiumRequired = isPremiumModel(item.key);
+    const hasPremiumAccess = premiumRequired
+      ? await resolvePremiumStatus(subscription)
+      : true;
+
+    perfLog('chat.model_selector.choose', {
+      model: item.key,
+      selected: item.key === modelKey,
+      premiumRequired: !hasPremiumAccess && premiumRequired,
+    });
+
+    if (!hasPremiumAccess && premiumRequired) {
+      setPendingPremiumAction(() => {
+        try {
+          setModel(item.key);
+        } catch (error) {
+          // Model setting error handled silently
+        }
+      });
+      runClose();
+      try {
+        navigation.navigate('PaywallScreen', { returnTo: 'Chat' });
+      } catch (e) {
+        // Navigation error handled silently
+      }
+      return;
+    }
+
+    if (item.key !== modelKey) Haptic.trigger('notificationSuccess');
+    else Haptic.trigger('selection');
+
+    setModel(item.key);
+    runClose();
+  }, [modelKey, navigation, runClose, setModel, subscription]);
+
   const renderItem = ({ item, index }) => {
     if (item.type === 'empty') {
       return (
@@ -252,34 +288,7 @@ export default function ModelSelector() {
       <Animated.View entering={FadeInDown.delay(index * 40).duration(220)}>
         <Pressable
           onPress={() => {
-            perfLog('chat.model_selector.choose', {
-              model: item.key,
-              selected: item.key === modelKey,
-              premiumRequired: !isPremium && isPremiumModel(item.key),
-            });
-            // Check if model requires premium - navigate directly to paywall
-            if (!isPremium && isPremiumModel(item.key)) {
-              setPendingPremiumAction(() => {
-                try {
-                  setModel(item.key);
-                } catch (error) {
-                  // Model setting error handled silently
-                }
-              });
-              runClose();
-              try {
-                navigation.navigate('PaywallScreen', { returnTo: 'Chat' });
-              } catch (e) {
-                // Navigation error handled silently
-              }
-              return;
-            }
-
-            if (item.key !== modelKey) Haptic.trigger('notificationSuccess');
-            else Haptic.trigger('selection');
-            
-            setModel(item.key);
-            runClose();
+            handleSelectModel(item);
           }}
           android_ripple={{ color: '#1A1A1D' }}
           style={({ pressed }) => [
@@ -481,7 +490,7 @@ function descriptionFor(key, info, t) {
     'gpt-5': 'Most powerful all-purpose AI',
     'gpt-5-chat-latest': 'Optimized for chat and dialogue',
     'gpt-5-mini': 'Fast and reliable GPT-5',
-    'gpt-5-nano': 'Light model for simple tasks',
+    'gpt-5.4-nano': 'Light model for simple tasks',
     'o4-mini': 'Efficient reasoning model',
     'gpt-4.1-mini': 'Compact, capable GPT-4.1',
     'claude-3-haiku': 'Fast and focused Anthropic AI',
@@ -532,7 +541,7 @@ function labelsFor(key, t) {
     'gpt-5': ['NEW', 'BEST'],
     'gpt-5-chat-latest': ['NEW', 'BEST'],
     'gpt-5-mini': ['NEW'],
-    'gpt-5-nano': ['NEW'],
+    'gpt-5.4-nano': ['NEW'],
     'o4-mini': ['NEW'],
     'gpt-4.1-mini': [],
     'claude-3.7-sonnet': ['NEW'],
@@ -615,7 +624,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 18 },
     shadowRadius: 29,
-    shadowOpacity: Platform.OS === 'ios' ? 0.28 : 0.32,
+    shadowOpacity: 0.32,
     elevation: 22,
   },
   panelHeader: {

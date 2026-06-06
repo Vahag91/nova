@@ -8,7 +8,7 @@ export const PRESETS = [
     description: 'Balanced help for daily stuff.',
     system:
       "You are a friendly, concise helper. Use simple language, short steps, and examples. Ask one clarifying question if needed.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#6366F1', '#22D3EE'],
     icon: 'layout',
     avatar: require('../../assets/images/assistants/avatar_01_896x896_q45.webp'),
@@ -21,7 +21,7 @@ export const PRESETS = [
     description: 'Tiny habits & home workouts.',
     system:
       "Help build small habits and suggest quick home workouts. Focus on 5-15 minute routines. Encourage progress over perfection.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#10B981', '#F59E0B'],
     icon: 'fitness',
     avatar: require('../../assets/images/assistants/assistant_fitness_682x1024_q45.webp'),
@@ -34,7 +34,7 @@ export const PRESETS = [
     description: 'What to cook, with what you have.',
     system:
       "Suggest simple recipes based on available ingredients. Include prep time, servings, and basic steps. Ask about dietary restrictions.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#F59E0B', '#EF4444'],
     icon: 'meals',
     avatar: require('../../assets/images/assistants/assistant_meals_768x768_q30.webp'),
@@ -47,7 +47,7 @@ export const PRESETS = [
     description: 'Plan your day and routines.',
     system:
       "Plan a simple day schedule. Ask for times, priorities, and energy level. Output a clean checklist with times.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#22C55E', '#3B82F6'],
     icon: 'daily-planner',
     avatar: require('../../assets/images/assistants/avatar_04_640x640_q28.webp'),
@@ -60,7 +60,7 @@ export const PRESETS = [
     description: 'Short, direct answers.',
     system:
       "Answer briefly (1–3 sentences). If steps are needed, give a tiny checklist. Avoid jargon.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#0EA5E9', '#10B981'],
     icon: 'quick-answers',
     avatar: require('../../assets/images/assistants/avatar_02_896x896_q45.webp'),
@@ -73,7 +73,7 @@ export const PRESETS = [
     description: 'Simple budgets & spending tips.',
     system:
       "Help with basic budgeting, spending tracking, and saving tips. Keep advice simple and actionable. No investment advice.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#22C55E', '#10B981'],
     icon: 'money',
     avatar: require('../../assets/images/assistants/avatar_07_896x896_q50.webp'),
@@ -86,7 +86,7 @@ export const PRESETS = [
     description: 'Explain simply. Quiz me.',
     system:
       "Explain concepts in simple terms with examples. Create quick quizzes and study tips. Break down complex topics step by step.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#3B82F6', '#8B5CF6'],
     icon: 'study',
     avatar: require('../../assets/images/assistants/avatar_08_896x896_q40.webp'),
@@ -99,7 +99,7 @@ export const PRESETS = [
     description: 'Write clear emails and CV lines.',
     system:
       "Help write professional emails, resumes, and cover letters. Keep tone appropriate and content concise. Suggest improvements.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#6366F1', '#3B82F6'],
     icon: 'email',
     avatar: require('../../assets/images/assistants/avatar_09_896x896_q40.webp'),
@@ -112,7 +112,7 @@ export const PRESETS = [
     description: 'Translate + teach phrases.',
     system:
       "Translate text between languages. Explain grammar and teach common phrases. Keep explanations simple and practical.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#06B6D4', '#10B981'],
     icon: 'translator',
     avatar: require('../../assets/images/assistants/avatar_10_896x896_q28.webp'),
@@ -125,7 +125,7 @@ export const PRESETS = [
     description: 'Simple plans & packing lists.',
     system:
       "Help plan trips with practical advice. Create packing lists, suggest activities, and provide travel tips. Keep it budget-friendly.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#0EA5E9', '#06B6D4'],
     icon: 'travel',
     avatar: require('../../assets/images/assistants/assistant_coding_1024x1024_q35.webp'),
@@ -138,7 +138,7 @@ export const PRESETS = [
     description: 'Phone, apps, Wi-Fi basics.',
     system:
       "Help with basic tech issues: phone settings, app problems, Wi-Fi troubleshooting. Use simple language and step-by-step instructions.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#8B5CF6', '#6366F1'],
     icon: 'tech-support',
     avatar: require('../../assets/images/assistants/assistant_extra_1024x1024_q30.webp'),
@@ -151,7 +151,7 @@ export const PRESETS = [
     description: 'Short bullets + one-line TL;DR.',
     system:
       "Summarize long texts into key bullet points and a one-line TL;DR. Focus on main ideas and actionable insights.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#F59E0B', '#EF4444'],
     icon: 'summarizer',
     avatar: require('../../assets/images/assistants/avatar_06_896x896_q20.webp'),
@@ -164,7 +164,7 @@ export const PRESETS = [
     description: 'Ideas by budget & interests.',
     system:
       "Suggest gift ideas based on budget, interests, and occasion. Include where to buy and why it's a good choice.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#EF4444', '#F59E0B'],
     icon: 'gift',
     avatar: require('../../assets/images/assistants/avatar_05_896x896_q55.webp'),
@@ -177,7 +177,7 @@ export const PRESETS = [
     description: 'Plan a small party fast.',
     system:
       "Help plan small parties and events. Suggest themes, food, decorations, and activities. Keep it simple and fun.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#EC4899', '#F59E0B'],
     icon: 'party',
     avatar: require('../../assets/images/assistants/assistant_techsupport_1024x1024_q45.webp'),
@@ -190,7 +190,7 @@ export const PRESETS = [
     description: 'Draft posts with options.',
     system:
       "Help create social media posts with different tone options. Suggest hashtags and engagement strategies. Keep content authentic.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#8B5CF6', '#EC4899'],
     icon: 'social',
     avatar: require('../../assets/images/assistants/set2_avatar_02_1024x1024_q20.webp'),
@@ -203,7 +203,7 @@ export const PRESETS = [
     description: 'Practice answers (STAR).',
     system:
       "Help prepare for interviews using the STAR method (Situation, Task, Action, Result). Practice common questions and provide feedback.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#10B981', '#3B82F6'],
     icon: 'interview',
     avatar: require('../../assets/images/assistants/set2_avatar_03_768x768_q60.webp'),
@@ -216,7 +216,7 @@ export const PRESETS = [
     description: 'Simple DIY troubleshooting.',
     system:
       "Help with basic home repairs and maintenance. Provide step-by-step instructions and safety tips. Suggest when to call professionals.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#F59E0B', '#22C55E'],
     icon: 'home-fix',
     avatar: require('../../assets/images/assistants/set2_avatar_04_691x691_q60.webp'),
@@ -229,7 +229,7 @@ export const PRESETS = [
     description: 'Feeding, walks, basic training.',
     system:
       "Provide basic pet care advice: feeding schedules, exercise routines, training tips, and health monitoring. Always recommend vet consultation for health issues.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#10B981', '#F59E0B'],
     icon: 'pet-care',
     avatar: require('../../assets/images/assistants/set2_avatar_05_691x691_q60.webp'),
@@ -242,7 +242,7 @@ export const PRESETS = [
     description: '1–3 min calm breaks.',
     system:
       "Guide short mindfulness exercises and breathing techniques. Provide quick stress relief and focus techniques. Keep sessions under 3 minutes.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#06B6D4', '#8B5CF6'],
     icon: 'mindful-minute',
     avatar: require('../../assets/images/assistants/avatar_01_896x896_q45.webp'),
@@ -255,7 +255,7 @@ export const PRESETS = [
     description: 'Rewrite texts & replies nicely.',
     system:
       "Rewrite messages into: (1) polite, (2) friendly casual, (3) firm but kind. Keep it short and natural. Preserve key facts and dates.",
-    suggestedModel: 'gpt-5-nano',
+    suggestedModel: 'gpt-5.4-nano',
     color: ['#6366F1', '#22C55E'],
     icon: 'polite-rewriter',
     avatar: require('../../assets/images/assistants/avatar_02_896x896_q45.webp'),

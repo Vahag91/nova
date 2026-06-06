@@ -19,7 +19,7 @@
     "gpt-5": "Le modèle polyvalent le plus puissant",
     "gpt-5-chat-latest": "Optimisé pour la conversation et le dialogue",
     "gpt-5-mini": "GPT-5 rapide et fiable",
-    "gpt-5-nano": "Modèle léger pour les tâches simples",
+    "gpt-5.4-nano": "Modèle léger pour les tâches simples",
     "o4-mini": "Modèle de raisonnement efficace",
     "gpt-4.1-mini": "GPT-4.1 compact et capable",
     "claude-3-haiku": "IA Anthropic rapide et focalisée",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Résultats créatifs et stylisés",
       "runwareQwenImage": "Résultats équilibrés et de haute qualité",
       "google4": "Le meilleur modèle d’image IA",
+      "klingImageO1": "Retouche d’image avec contrôle précis",
       "fluxKontent": "Flux Kontent réglé pour l’édition",
       "runwareProvider": "Qualité équilibrée avec diffusion fiable.",
       "airProvider": "Nano Banana ajoute un ton ludique et vif.",
       "googleProvider": "Google réglé pour des détails nets.",
+      "klingaiProvider": "KlingAI est optimisé pour des retouches maîtrisées.",
       "anthropicProvider": "Pipeline Claude pour des nuances subtiles.",
       "default": "Touchez pour explorer les moteurs disponibles."
     }
@@ -657,6 +659,7 @@
       "perMonth": "par mois"
     },
     "cta": "Continuer",
+    "ctaFreeTrial": "Essayer gratuitement",
     "legal": {
       "terms": "Conditions",
       "privacy": "Confidentialité"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "avec des astuces de productivité"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Choisissez un sujet",
+      "title": "Que veux-tu faire ?",
+      "subtitle": "Choisissez une direction, puis commencez par une invite forte.",
+      "pickPromptTitle": "Choisissez une invite pour démarrer",
+      "changeTopic": "Choisissez un autre sujet",
+      "intents": {
+        "summarize": "Résumer le texte",
+        "summarizeShort": "Résumer",
+        "summarizeHint": "Articles, notes, mémos vocaux, longs fils de discussion",
+        "plan": "Faire un plan",
+        "planHint": "Voyages, routines, budgets, délais, changements de vie",
+        "brainstorm": "Remue-méninges",
+        "brainstormHint": "Idées, offres, noms, contenus, projets parallèles",
+        "analyze": "Analyser les données",
+        "analyzeHint": "Dépenses, commentaires, mesures, habitudes, performances"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Créer un brief de fondateur",
+          "founderBriefSubtitle": "Retirez les principaux risques, décisions et prochaines étapes.",
+          "classNotesTitle": "Nettoyer mes notes d'étude",
+          "classNotesSubtitle": "Transformez des notes brouillons en un guide d'étude clair.",
+          "meetingHandoffTitle": "Rédiger un résumé du transfert",
+          "meetingHandoffSubtitle": "Utile après des réunions, des appels ou de longues discussions internes.",
+          "longArticleTitle": "Résumez rapidement cet article",
+          "longArticleSubtitle": "Condensez un long article en points à retenir."
+        },
+        "plan": {
+          "energyResetTitle": "Construisez une réinitialisation énergétique de 14 jours",
+          "energyResetSubtitle": "Un plan réaliste pour le sommeil, la nourriture, le mouvement et la concentration.",
+          "mealPlanTitle": "Planifier les repas que je vais réellement cuisiner",
+          "mealPlanSubtitle": "Pratique, abordable et basé sur ce que j'ai.",
+          "cityMoveTitle": "Planifier mon déménagement dans une nouvelle ville",
+          "cityMoveSubtitle": "Divisez-le en calendrier, budget, logement et tâches administratives.",
+          "tripEscapeTitle": "Planifiez une escapade de week-end mémorable",
+          "tripEscapeSubtitle": "Quelque chose de mieux qu'un itinéraire générique."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Trouvez une activité secondaire réaliste",
+          "sideHustleSubtitle": "Des idées que je peux démarrer tout en travaillant à temps plein.",
+          "brandAngleTitle": "Trouvez un angle de marque mémorable",
+          "brandAngleSubtitle": "Utile pour les produits, les créateurs, les agences ou les newsletters.",
+          "socialSeriesTitle": "Inventer une série de contenus",
+          "socialSeriesSubtitle": "Quelque chose d’assez cohérent pour développer une audience.",
+          "datingIdeasTitle": "Trouver de nouvelles idées",
+          "datingIdeasSubtitle": "Des rendez-vous, des cadeaux, des surprises ou des événements qui semblent attentionnés."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Trouver où fuit mon argent",
+          "spendingLeaksSubtitle": "Montrez les modèles, les points faibles et les gains les plus faciles en premier.",
+          "customerFeedbackTitle": "Transformez les commentaires en priorités",
+          "customerFeedbackSubtitle": "Regroupez les demandes, les plaintes, l’urgence et l’impact.",
+          "habitPatternsTitle": "Repérer des tendances dans mes habitudes",
+          "habitPatternsSubtitle": "Utile pour les entraînements, le sommeil, la journalisation ou les journaux de concentration.",
+          "metricsStoryTitle": "Expliquez ce que signifient les chiffres",
+          "metricsStorySubtitle": "Plus de signal, moins de bruit de feuille de calcul."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

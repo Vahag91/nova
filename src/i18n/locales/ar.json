@@ -19,7 +19,7 @@
     "gpt-5": "أقوى نموذج شامل",
     "gpt-5-chat-latest": "محسّن للمحادثة والحوار",
     "gpt-5-mini": "GPT-5 سريع وموثوق",
-    "gpt-5-nano": "نموذج خفيف للمهام البسيطة",
+    "gpt-5.4-nano": "نموذج خفيف للمهام البسيطة",
     "o4-mini": "نموذج استدلال فعّال",
     "gpt-4.1-mini": "GPT-4.1 مدمج وقوي",
     "claude-3-haiku": "ذكاء Anthropic سريع ومركّز",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "نتائج إبداعية وأنيقة",
       "runwareQwenImage": "نتائج متوازنة وعالية الجودة",
       "google4": "أفضل نموذج صور بالذكاء الاصطناعي",
+      "klingImageO1": "تحرير الصور بتحكم عالٍ",
       "fluxKontent": "Flux Kontent مضبوط للتحرير",
       "runwareProvider": "توازن بين الجودة والانتشار المستقر.",
       "airProvider": "Nano Banana بلمسة ألوان مرحة.",
       "googleProvider": "إعداد Google لعرض تفاصيل واضحة.",
+      "klingaiProvider": "KlingAI مضبوط للتعديلات الدقيقة.",
       "anthropicProvider": "خط أنثروبيك بنغمات دقيقة.",
       "default": "اضغط لاستعراض المحركات المتاحة."
     }
@@ -657,6 +659,7 @@
       "perMonth": "في الشهر"
     },
     "cta": "متابعة",
+    "ctaFreeTrial": "جرّبه مجانًا",
     "legal": {
       "terms": "الشروط",
       "privacy": "الخصوصية"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "مع نصائح إنتاجية"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "اختر موضوعا",
+      "title": "ماذا تريد أن تفعل؟",
+      "subtitle": "اختر اتجاهًا، ثم ابدأ بمطالبة قوية.",
+      "pickPromptTitle": "اختر موجهًا للبدء",
+      "changeTopic": "اختر موضوعا آخر",
+      "intents": {
+        "summarize": "تلخيص النص",
+        "summarizeShort": "تلخيص",
+        "summarizeHint": "مقالات، ملاحظات، مذكرات صوتية، مواضيع طويلة",
+        "plan": "ضع خطة",
+        "planHint": "الرحلات، الروتين، الميزانيات، المواعيد النهائية، تغييرات الحياة",
+        "brainstorm": "العصف الذهني",
+        "brainstormHint": "أفكار، عروض، أسماء، محتوى، مشاريع جانبية",
+        "analyze": "تحليل البيانات",
+        "analyzeHint": "الإنفاق، ردود الفعل، المقاييس، العادات، الأداء"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "إنشاء ملخص المؤسس",
+          "founderBriefSubtitle": "استخرج المخاطر والقرارات الرئيسية والخطوات التالية.",
+          "classNotesTitle": "تنظيف ملاحظات دراستي",
+          "classNotesSubtitle": "تحويل الملاحظات التقريبية إلى دليل دراسة واضح.",
+          "meetingHandoffTitle": "اكتب ملخص التسليم",
+          "meetingHandoffSubtitle": "مفيد بعد الاجتماعات أو المكالمات أو المواضيع الداخلية الطويلة.",
+          "longArticleTitle": "تلخيص هذه المقالة بسرعة",
+          "longArticleSubtitle": "قم بتكثيف مقال طويل في الوجبات السريعة الحادة."
+        },
+        "plan": {
+          "energyResetTitle": "قم ببناء إعادة ضبط الطاقة لمدة 14 يومًا",
+          "energyResetSubtitle": "خطة واقعية للنوم والطعام والحركة والتركيز.",
+          "mealPlanTitle": "خطط للوجبات التي سأطبخها بالفعل",
+          "mealPlanSubtitle": "عملي، وبأسعار معقولة، وبناءً على ما لدي.",
+          "cityMoveTitle": "أخطط لانتقالي إلى مدينة جديدة",
+          "cityMoveSubtitle": "قم بتقسيمها إلى مهام الجدول الزمني والميزانية والإسكان والمهام الإدارية.",
+          "tripEscapeTitle": "خطط لقضاء عطلة نهاية أسبوع لا تُنسى",
+          "tripEscapeSubtitle": "شيء أفضل من خط سير الرحلة العام."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "ابحث عن صخب جانبي واقعي",
+          "sideHustleSubtitle": "أفكار يمكنني البدء بها أثناء العمل بدوام كامل.",
+          "brandAngleTitle": "ابحث عن زاوية لا تُنسى للعلامة التجارية",
+          "brandAngleSubtitle": "مفيد للمنتجات أو المبدعين أو الوكالات أو النشرات الإخبارية.",
+          "socialSeriesTitle": "ابتكر سلسلة محتوى",
+          "socialSeriesSubtitle": "شيء متسق بما يكفي لتنمية الجمهور.",
+          "datingIdeasTitle": "الخروج بأفكار جديدة",
+          "datingIdeasSubtitle": "التواريخ أو الهدايا أو المفاجآت أو الأحداث التي تشعرك بالتفكير."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "العثور على أين تتسرب أموالي",
+          "spendingLeaksSubtitle": "اعرض الأنماط ونقاط الضعف والانتصارات الأسهل أولاً.",
+          "customerFeedbackTitle": "تحويل ردود الفعل إلى أولويات",
+          "customerFeedbackSubtitle": "طلبات المجموعة والشكاوى والإلحاح والتأثير.",
+          "habitPatternsTitle": "بقعة الأنماط في عاداتي",
+          "habitPatternsSubtitle": "مفيد للتمرينات أو النوم أو كتابة اليوميات أو سجلات التركيز.",
+          "metricsStoryTitle": "اشرح ماذا تعني الأرقام",
+          "metricsStorySubtitle": "إشارة أكثر، ضوضاء أقل في جدول البيانات."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

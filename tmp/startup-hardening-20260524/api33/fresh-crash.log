@@ -1,0 +1,30 @@
+--------- beginning of crash
+05-24 17:56:32.588  5659  5746 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 5746 (bt_stack_manage), pid 5659 (droid.bluetooth)
+05-24 17:56:33.063  5751  5751 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+05-24 17:56:33.063  5751  5751 F DEBUG   : Build fingerprint: 'google/sdk_gphone64_x86_64/emu64x:13/TE1A.240213.009/12342917:userdebug/dev-keys'
+05-24 17:56:33.063  5751  5751 F DEBUG   : Revision: '0'
+05-24 17:56:33.063  5751  5751 F DEBUG   : ABI: 'x86_64'
+05-24 17:56:33.063  5751  5751 F DEBUG   : Timestamp: 2026-05-24 17:56:32.666434063+0400
+05-24 17:56:33.063  5751  5751 F DEBUG   : Process uptime: 0s
+05-24 17:56:33.063  5751  5751 F DEBUG   : Cmdline: com.google.android.bluetooth
+05-24 17:56:33.063  5751  5751 F DEBUG   : pid: 5659, tid: 5746, name: bt_stack_manage  >>> com.google.android.bluetooth <<<
+05-24 17:56:33.063  5751  5751 F DEBUG   : uid: 1002
+05-24 17:56:33.063  5751  5751 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+05-24 17:56:33.063  5751  5751 F DEBUG   : Abort message: 'Unable to get a Bluetooth service after 500ms, start the HAL before starting Bluetooth'
+05-24 17:56:33.063  5751  5751 F DEBUG   :     rax 0000000000000000  rbx 000000000000161b  rcx 00007798f0f4870f  rdx 0000000000000006
+05-24 17:56:33.063  5751  5751 F DEBUG   :     r8  0000000000000001  r9  0000000000000001  r10 00007795d245d250  r11 0000000000000203
+05-24 17:56:33.063  5751  5751 F DEBUG   :     r12 0000000000000008  r13 0000779690ce466c  r14 00007795d245d248  r15 0000000000001672
+05-24 17:56:33.063  5751  5751 F DEBUG   :     rdi 000000000000161b  rsi 0000000000001672
+05-24 17:56:33.063  5751  5751 F DEBUG   :     rbp 0000779780cd04a0  rsp 00007795d245d240  rip 00007798f0f4870f
+05-24 17:56:33.063  5751  5751 F DEBUG   : backtrace:
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #00 pc 000000000005f70f  /apex/com.android.runtime/lib64/bionic/libc.so (abort+191) (BuildId: f090904cc3ac285a6f190f8003c3eb0e)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #01 pc 000000000082824f  /apex/com.android.art/lib64/libart.so (art::Runtime::Abort(char const*)+111) (BuildId: 83888e21c265ad4f1cc612f8fca2b8fa)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #02 pc 0000000000019cfc  /apex/com.android.art/lib64/libbase.so (android::base::SetAborter(std::__1::function<void (char const*)>&&)::$_3::__invoke(char const*)+60) (BuildId: 0aa332cd750579dec074c73abcd15956)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #03 pc 0000000000008612  /system/lib64/liblog.so (__android_log_assert+338) (BuildId: 6b890ed51b66670f87b252ab8bb0baf6)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #04 pc 0000000000ae12d7  /apex/com.android.btservices/lib64/libbluetooth_jni.so (base::internal::Invoker<base::internal::BindState<bluetooth::hal::HciHalHidl::Start()::'lambda'()>, void ()>::RunOnce(base::internal::BindStateBase*)+23) (BuildId: beb9ee77881bd7088bc6fa969a7fe317)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #05 pc 0000000000acd4ac  /apex/com.android.btservices/lib64/libbluetooth_jni.so (bluetooth::os::Alarm::on_fire()+108) (BuildId: beb9ee77881bd7088bc6fa969a7fe317)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #06 pc 0000000000ace9fd  /apex/com.android.btservices/lib64/libbluetooth_jni.so (bluetooth::os::Reactor::Run()+669) (BuildId: beb9ee77881bd7088bc6fa969a7fe317)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #07 pc 0000000000acf61d  /apex/com.android.btservices/lib64/libbluetooth_jni.so (bluetooth::os::Thread::run(bluetooth::os::Thread::Priority)+173) (BuildId: beb9ee77881bd7088bc6fa969a7fe317)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #08 pc 0000000000acf769  /apex/com.android.btservices/lib64/libbluetooth_jni.so (void* std::__1::__thread_proxy<std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct> >, void (bluetooth::os::Thread::*)(bluetooth::os::Thread::Priority), bluetooth::os::Thread*, bluetooth::os::Thread::Priority> >(void*)+57) (BuildId: beb9ee77881bd7088bc6fa969a7fe317)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #09 pc 00000000000ccd9a  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start(void*)+58) (BuildId: f090904cc3ac285a6f190f8003c3eb0e)
+05-24 17:56:33.063  5751  5751 F DEBUG   :       #10 pc 0000000000060d47  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+55) (BuildId: f090904cc3ac285a6f190f8003c3eb0e)

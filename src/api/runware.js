@@ -1,4 +1,4 @@
-import { IMAGES_RUNWARE_URL,IMAGES_TEST_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
+import { IMAGES_RUNWARE_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 
 /**
  * createRunwareImages
@@ -33,8 +33,6 @@ export async function createRunwareImages({
   deviceId,
   jobId,
 }) {
-  // Starting image generation:
-
   // For advanced modes, prompt might be optional
   if (!prompt || !prompt.trim()) {
     if (mode === 'text2img') {
@@ -86,7 +84,6 @@ export async function createRunwareImages({
     jobId,
   };
 
-
   const res = await fetch(IMAGES_RUNWARE_URL, {
     method: 'POST',
     headers,
@@ -104,7 +101,7 @@ export async function createRunwareImages({
       txt = await res.text().catch(() => 'Image generation failed');
     }
     if (res.status === 402) {
-      const message = body?.message || txt || 'Not enough coins. Please top up in the Coin Store.';
+      const message = body?.message || txt || 'Not enough coins available for this request.';
       const err = new Error(message);
       err.code = 'insufficient_coins';
       throw err;

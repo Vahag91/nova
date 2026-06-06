@@ -1,7 +1,7 @@
 // src/state/useSettingsStore.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
-import DEFAULT_MODELS from '../config/models';
+import DEFAULT_MODELS, { buildModelRegistry } from '../config/models';
 import { isPremiumModel, FREE_MODEL } from '../config/premium';
 
 const SETTINGS_V2 = 'settings.v2';
@@ -11,7 +11,7 @@ export const useSettingsStore = create((set, get) => ({
   hydrated: false,
 
   // current selection
-  model: 'gpt-5-nano',
+  model: 'gpt-5.4-nano',
   
   // Performance monitoring
   _debug: {
@@ -71,13 +71,7 @@ export const useSettingsStore = create((set, get) => ({
 
   // registry
   setModels: (incoming) => {
-    const isValidIncoming =
-      incoming &&
-      typeof incoming === 'object' &&
-      !Array.isArray(incoming) &&
-      Object.keys(incoming).length > 0;
-
-    const nextModels = isValidIncoming ? incoming : DEFAULT_MODELS;
+    const nextModels = buildModelRegistry(incoming);
     set({ models: nextModels });
 
     // If current model is missing (e.g., removed upstream), fall back gracefully.
@@ -104,15 +98,16 @@ export const useSettingsStore = create((set, get) => ({
       const { fetchModels } = await import('../api/models'); // you already call MODELS_URL elsewhere
       const incoming = await fetchModels();
       if (incoming && Object.keys(incoming).length > 0) {
-        set({ models: incoming });
+        const nextModels = buildModelRegistry(incoming);
+        set({ models: nextModels });
 
         // guard current selection
         const cur = get().model;
-        if (!incoming[cur]) {
+        if (!nextModels[cur]) {
           const fallback =
-            incoming?.[FREE_MODEL]
+            nextModels?.[FREE_MODEL]
               ? FREE_MODEL
-              : (Object.keys(incoming).find(k => incoming?.[k]?.kind === 'chat') || Object.keys(incoming)[0] || FREE_MODEL);
+              : (Object.keys(nextModels).find(k => nextModels?.[k]?.kind === 'chat') || Object.keys(nextModels)[0] || FREE_MODEL);
           set({ model: fallback });
         }
         return true;
@@ -148,7 +143,7 @@ export const useSettingsStore = create((set, get) => ({
       if (raw2) {
         const data = JSON.parse(raw2);
         set({
-          model: data.model ?? 'gpt-5-nano',
+          model: data.model ?? 'gpt-5.4-nano',
           temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
           perModelTemp: data.perModelTemp || {},
         });
@@ -161,7 +156,7 @@ export const useSettingsStore = create((set, get) => ({
       if (raw1) {
         const data = JSON.parse(raw1);
         set({
-          model: data.model ?? 'gpt-5-nano',
+          model: data.model ?? 'gpt-5.4-nano',
           temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
           perModelTemp: {},
         });
@@ -182,7 +177,7 @@ export const useSettingsStore = create((set, get) => ({
       await AsyncStorage.removeItem(SETTINGS_V1);
     } catch {}
     set({
-      model: 'gpt-5-nano',
+      model: 'gpt-5.4-nano',
       temperature: 0.7,
       perModelTemp: {},
       // keep models as-is

@@ -18,6 +18,8 @@ import { toLocalPath } from '../../lib/imageDownloader';
 import { useTranslation } from 'react-i18next';
 import RateUsService from '../../services/RateUsService';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { mapProxyError } from '../../lib/errors';
+import ReportContentModal from '../reporting/ReportContentModal';
 
 const STEP = {
   APPLYING: 'applying',
@@ -54,6 +56,7 @@ export default function CreateImageGenerating({
   const [phaseIndex, setPhaseIndex] = useState(0);
   const [retryCount, setRetryCount] = useState(0);
   const [jobMeta, setJobMeta] = useState(null);
+  const [reportVisible, setReportVisible] = useState(false);
   const progress = useRef(new Animated.Value(0)).current;
   const spinner = useRef(new Animated.Value(0)).current;
 
@@ -80,6 +83,7 @@ export default function CreateImageGenerating({
       setError(null);
       setPhaseIndex(0);
       setJobMeta(null);
+      setReportVisible(false);
       progress.setValue(0);
       spinner.stopAnimation();
       spinner.setValue(0);
@@ -93,6 +97,7 @@ export default function CreateImageGenerating({
     setErrorCode(null);
     setPhaseIndex(0);
     setJobMeta(null);
+    setReportVisible(false);
     progress.setValue(0);
 
     // Initial warmup animation to 50%
@@ -150,6 +155,9 @@ export default function CreateImageGenerating({
         setJobMeta({
           jobId: job?.id || null,
           imageId: job?.images?.[0]?.id || null,
+          originalUrl:
+            job?.images?.[0]?.originalUrl ||
+            (/^https?:\/\//i.test(firstImage || '') ? firstImage : null),
           imagesCount: Array.isArray(job?.images) ? job.images.length : 1,
           payload: jobPayload,
           // effective size returned by server (may differ from requested)
@@ -168,7 +176,13 @@ export default function CreateImageGenerating({
       } catch (err) {
         // Stop progress animation on error
         progressSequence.stop();
-        setError(err?.message || t('createImageGenerating.errors.genericMessage'));
+        const pretty =
+          err?.code === 'restricted_content'
+            ? {
+                message: err?.message || t('createImageGenerating.errors.genericMessage'),
+              }
+            : mapProxyError(err);
+        setError(pretty?.message || t('createImageGenerating.errors.genericMessage'));
         setErrorCode(err?.code || null);
         setStep(STEP.ERROR);
       }
@@ -196,6 +210,7 @@ export default function CreateImageGenerating({
 
   const handleClose = () => {
     setJobMeta(null);
+    setReportVisible(false);
     try {
       onClose?.();
     } catch {}
@@ -310,6 +325,22 @@ const handleRetry = () => {
 
   const topPad = Math.max(18, (insets?.top || 0) + 12);
   const bottomPad = Math.max(14, (insets?.bottom || 0) + 10);
+  const mode = jobMeta?.payload?.mode || jobPayload?.mode || 'text2img';
+  const reportPayload = useMemo(
+    () => ({
+      content_type: mode === 'text2img' ? 'generated_image' : 'edited_image',
+      content_id: jobMeta?.imageId || jobMeta?.jobId || undefined,
+      prompt: payload?.originalPrompt || jobMeta?.payload?.prompt || undefined,
+      image_url: jobMeta?.originalUrl || undefined,
+      model: jobMeta?.payload?.model || payload?.model || undefined,
+      source_screen: 'create_image_generating',
+      metadata: {
+        job_id: jobMeta?.jobId || null,
+        mode,
+      },
+    }),
+    [jobMeta, mode, payload?.model, payload?.originalPrompt],
+  );
 
   return (
     <>
@@ -452,7 +483,7 @@ const handleRetry = () => {
                 </View>
 
                 <View style={styles.resultActionsRow}>
-                  <View style={styles.actionItem}>
+                      <View style={styles.actionItem}>
                     <Pressable
                       style={({ pressed }) => [
                         styles.iconButton,
@@ -494,9 +525,23 @@ const handleRetry = () => {
                     >
                       <SvgIcon name="share-upload" size={22} color="#FFFFFF" />
                     </Pressable>
-                    <Text style={styles.actionLabel}>{t('imageViewer.actions.share')}</Text>
-                  </View>
-                </View>
+                        <Text style={styles.actionLabel}>{t('imageViewer.actions.share')}</Text>
+                      </View>
+                      <View style={styles.actionItem}>
+                        <Pressable
+                           style={({ pressed }) => [
+                             styles.iconButton,
+                             pressed && styles.iconButtonPressed,
+                          ]}
+                          onPress={() => setReportVisible(true)}
+                          hitSlop={10}
+                          accessibilityLabel="Report AI content"
+                        >
+                          <SvgIcon name="flag" size={22} color="rgba(255,255,255,0.92)" />
+                        </Pressable>
+                        <Text style={styles.actionLabel}>Report</Text>
+                      </View>
+                    </View>
               </View>
 
               <View style={styles.bottomHandle} />
@@ -504,8 +549,13 @@ const handleRetry = () => {
           </View>
         )}
         </View>
-      </Modal>
-    </>
+          </Modal>
+          <ReportContentModal
+            visible={reportVisible && step === STEP.RESULT}
+            report={reportPayload}
+            onClose={() => setReportVisible(false)}
+          />
+        </>
   );
 }
 

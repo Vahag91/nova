@@ -17,6 +17,9 @@ import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
 
 const BAR_COUNT = 18;
+const TRANSCRIPT_LINE_HEIGHT = 24;
+const TRANSCRIPT_MAX_LINES = 3;
+const TRANSCRIPT_MAX_HEIGHT = TRANSCRIPT_LINE_HEIGHT * TRANSCRIPT_MAX_LINES;
 
 // Smooth + gated behavior
 const PHASE_MS = 2400;
@@ -64,6 +67,7 @@ function VoiceOverlay({ visible, isRecording, transcript, volume = 0, onInsert, 
   useEffect(() => {}, []);
   const { t } = useTranslation();
   const { height: screenH } = useWindowDimensions();
+  const transcriptScrollRef = useRef(null);
 
 
 
@@ -119,7 +123,7 @@ function VoiceOverlay({ visible, isRecording, transcript, volume = 0, onInsert, 
       cancelAnimation(energy);
       cancelAnimation(micPulse);
     };
-  }, []);
+  }, [energy, micPulse, phase]);
 
   // show/hide overlay & pulse
   useEffect(() => {
@@ -269,6 +273,28 @@ function VoiceOverlay({ visible, isRecording, transcript, volume = 0, onInsert, 
     if (txt?.length) return txt;
     return isRecording ? t('chat.listening') : t('chat.startRecording');
   }, [transcript, isRecording, t]);
+  const hasTranscript = !!transcript?.trim()?.length;
+  const titleWrapDynamicStyle = useMemo(
+    () => [
+      styles.titleWrap,
+      hasTranscript
+        ? styles.titleWrapTranscript
+        : styles.titleWrapIdle,
+    ],
+    [hasTranscript],
+  );
+
+  useEffect(() => {
+    if (!visible || !hasTranscript) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      transcriptScrollRef.current?.scrollToEnd?.({ animated: false });
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+  }, [hasTranscript, titleText, visible]);
 
   if (!render) return null;
 
@@ -297,44 +323,61 @@ function VoiceOverlay({ visible, isRecording, transcript, volume = 0, onInsert, 
         </TouchableOpacity>
 
         <View style={styles.content}>
-          <Reanimated.View style={[styles.titleWrap, { maxHeight: screenH * 0.4 }, titleStyle]}>
-            <ScrollView
-              style={styles.titleScroll}
-              contentContainerStyle={styles.titleScrollContent}
-              showsVerticalScrollIndicator={false}
-              nestedScrollEnabled
-            >
-              <Text style={styles.title} maxFontSizeMultiplier={1.3}>
-                {titleText}
-              </Text>
-            </ScrollView>
-          </Reanimated.View>
+          <View style={styles.stage}>
+            <Reanimated.View style={[titleWrapDynamicStyle, titleStyle]}>
+              {hasTranscript ? (
+                <ScrollView
+                  ref={transcriptScrollRef}
+                  style={styles.titleScroll}
+                  contentContainerStyle={styles.titleScrollContent}
+                  showsVerticalScrollIndicator
+                  indicatorStyle="white"
+                  nestedScrollEnabled
+                  bounces={false}
+                >
+                  <Text style={styles.title} maxFontSizeMultiplier={1.3}>
+                    {titleText}
+                  </Text>
+                </ScrollView>
+              ) : (
+                <View style={styles.titleIdleWrap}>
+                  <Text
+                    style={[styles.title, styles.titleIdle]}
+                    maxFontSizeMultiplier={1.2}
+                    numberOfLines={2}
+                  >
+                    {titleText}
+                  </Text>
+                </View>
+              )}
+            </Reanimated.View>
 
-          <Reanimated.View style={[styles.micWrap, micWrapStyle, micStyle]}>
-            <View style={styles.micCircle}>
-              <SvgIcon name="mic" size={32} color="#FFFFFF" />
-            </View>
-          </Reanimated.View>
+            <Reanimated.View style={[styles.micWrap, micWrapStyle, micStyle]}>
+              <View style={styles.micCircle}>
+                <SvgIcon name="mic" size={32} color="#FFFFFF" />
+              </View>
+            </Reanimated.View>
 
-          <Reanimated.View style={[styles.waveRow, waveStyle]}>
-            {Array.from({ length: BAR_COUNT }).map((_, i) => (
-              <WaveBar 
-                key={i} 
-                i={i} 
-                phase={phase} 
-                energy={energy} 
-                offsets={offsets} 
-                centers={centers} 
-              />
-            ))}
-          </Reanimated.View>
+            <Reanimated.View style={[styles.waveRow, waveStyle]}>
+              {Array.from({ length: BAR_COUNT }).map((_, i) => (
+                <WaveBar
+                  key={i}
+                  i={i}
+                  phase={phase}
+                  energy={energy}
+                  offsets={offsets}
+                  centers={centers}
+                />
+              ))}
+            </Reanimated.View>
+          </View>
         </View>
 
-        <Reanimated.View style={buttonStyle}>
+        <Reanimated.View style={[styles.footer, buttonStyle]}>
           <TouchableOpacity
-            style={[styles.insertBtn, !transcript?.trim()?.length && styles.insertDisabled]}
+            style={[styles.insertBtn, !hasTranscript && styles.insertDisabled]}
             onPress={() => { try { onInsert?.(); } catch {} }}
-            disabled={!transcript?.trim()?.length}
+            disabled={!hasTranscript}
             accessibilityLabel={t('chat.insertTranscript')}
           >
             <Text style={styles.insertText}>{t('chat.insertTranscript')}</Text>
@@ -387,30 +430,61 @@ const styles = StyleSheet.create({
     zIndex: 1 
   },
   content: { 
-    justifyContent: 'flex-start', 
+    flex: 1,
+    justifyContent: 'center', 
     alignItems: 'center', 
-    paddingTop: 6, 
+    paddingTop: 12,
     paddingBottom: 10, 
     alignSelf: 'stretch' 
   },
+  stage: {
+    width: '100%',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 8,
+  },
   titleWrap: { 
-    alignSelf: 'stretch', 
-    marginBottom: 12, 
-    paddingHorizontal: 8 
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: 292,
+    minHeight: 46,
+    justifyContent: 'center',
+    marginBottom: 26, 
+    paddingHorizontal: 10,
+  },
+  titleWrapTranscript: {
+    maxHeight: TRANSCRIPT_MAX_HEIGHT,
+  },
+  titleWrapIdle: {
+    maxWidth: 248,
+    minHeight: 0,
+    marginBottom: 28,
   },
   titleScroll: { 
-    alignSelf: 'stretch' 
+    width: '100%',
   },
   titleScrollContent: { 
+    flexGrow: 1,
     alignItems: 'center', 
-    justifyContent: 'center' 
+    justifyContent: 'center',
+  },
+  titleIdleWrap: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: { 
     fontSize: 18, 
-    lineHeight: 22, 
+    lineHeight: TRANSCRIPT_LINE_HEIGHT,
     color: '#E5E7EB', 
     textAlign: 'center', 
-    fontFamily: 'Lato-Regular' 
+    fontFamily: 'Lato-Regular',
+    width: '100%',
+  },
+  titleIdle: {
+    fontSize: 16,
+    lineHeight: 22,
+    color: '#F3F4F6',
   },
   micWrap: { 
     width: 75, 
@@ -419,7 +493,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2563EBCC', 
     alignItems: 'center', 
     justifyContent: 'center', 
-    marginBottom: 16, 
+    marginBottom: 18, 
     shadowColor: '#3B82F6', 
     shadowOffset: { width: 0, height: 0 }, 
     flexShrink: 0 
@@ -435,18 +509,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     alignItems: 'flex-end', 
     justifyContent: 'center', 
-    height: 80, 
-    marginTop: 6, 
-    marginBottom: 24, 
-    paddingHorizontal: 6, 
+    alignSelf: 'center',
+    minWidth: 164,
+    height: 54, 
+    marginTop: 0, 
+    marginBottom: 0, 
+    paddingHorizontal: 0, 
     flexShrink: 0 
   },
   waveBar: { 
     width: 4, 
-    marginHorizontal: 3, 
+    marginHorizontal: 2.5, 
     borderRadius: 2, 
     backgroundColor: '#60A5FA',
     minHeight: 10 // Ensure minimum height
+  },
+  footer: {
+    paddingTop: 14,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: '#1A2234',
   },
   insertBtn: { 
     alignSelf: 'stretch', 
@@ -454,7 +535,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24, 
     paddingVertical: 16, 
     borderRadius: 16, 
-    marginTop: 8, 
+    marginTop: 0, 
     marginHorizontal: 20, 
     shadowColor: 'rgba(59,130,246,0.5)', 
     shadowOffset: { width: 0, height: 0 }, 
@@ -462,7 +543,8 @@ const styles = StyleSheet.create({
     shadowRadius: 12 
   },
   insertDisabled: { 
-    opacity: 0.5 
+    opacity: 0.45,
+    backgroundColor: '#2D4F8F',
   },
   insertText: { 
     color: '#FFFFFF', 

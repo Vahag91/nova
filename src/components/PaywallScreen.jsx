@@ -14,7 +14,7 @@ import {
   TouchableOpacity,
   Switch,
   ScrollView,
-  Platform,
+  Alert,
   Animated,
   ActivityIndicator,
   Linking,
@@ -24,18 +24,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 import {
   useNavigation,
-  useFocusEffect,
   useRoute,
 } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import MaskedViewIOS from '@react-native-masked-view/masked-view';
-import AnimatedReanimated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  Easing,
-  runOnJS,
-} from 'react-native-reanimated';
+import MaskedView from '@react-native-masked-view/masked-view';
 import SvgIcon from './SvgIcon';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useTranslation } from 'react-i18next';
@@ -45,11 +37,14 @@ import {
 } from '../state/premiumActions';
 import {
   navigate as navigateRoot,
-  navigationRef,
 } from '../navigation/rootNavigation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ONE_TIME_OFFER_KEY } from '../constants/storageKeys';
 import { ONE_TIME_OFFER_PAYWALL_ENABLED } from '../constants/featureFlags';
+import {
+  PAYWALL_CLOSE_LOCK_MS,
+  shouldDelayPaywallClose,
+} from '../lib/paywallCloseGate';
 // Custom SVG Icons
 const CloseIcon = ({ color = '#FFFFFF', size = 24 }) => (
   <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
@@ -198,7 +193,7 @@ function GradientText({
   end = { x: 1, y: 0 },
 }) {
   return (
-    <MaskedViewIOS
+    <MaskedView
       style={styles.gradientTextContainer}
       maskElement={
         // The mask is the text itself
@@ -212,14 +207,13 @@ function GradientText({
         {/* This invisible text sets the size so the gradient fits perfectly */}
         <Text style={[style, styles.invisibleText]}>{children}</Text>
       </LinearGradient>
-    </MaskedViewIOS>
+    </MaskedView>
   );
 }
 
 export default function PaywallScreen({
   onClose,
   onRestore,
-  onContinue,
   dark = true,
 }) {
   const {
@@ -229,6 +223,7 @@ export default function PaywallScreen({
     restorePurchases,
     isPremium,
     restoring,
+    paymentsEnabled,
   } = useContext(SubscriptionContext) || {};
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
@@ -237,27 +232,26 @@ export default function PaywallScreen({
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const justPurchasedRef = useRef(false);
   const showOneTimeAfterClose = route.params?.showOneTimeOfferAfterClose;
-  const firstLaunchPaywall = route.params?.firstLaunchPaywall;
   const afterCloseNavigateTo = route.params?.afterCloseNavigateTo;
+  const delayCloseForPaywall = shouldDelayPaywallClose(route.params);
   const isCompactWidth = windowWidth <= 360;
   const isCompactHeight = windowHeight <= 700;
 
   const [trialEnabled, setTrialEnabled] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState('yearly');
+  const [selectedPlan, setSelectedPlan] = useState('weekly');
   const [purchaseLoading, setPurchaseLoading] = useState(false);
-  const [closeReady, setCloseReady] = useState(false);
+  const [closeReady, setCloseReady] = useState(!delayCloseForPaywall);
   const showFreeTrialToggle = false;
+  const hasYearly = !!availablePackages?.yearly;
+  const hasWeekly = !!availablePackages?.weekly;
 
   // Refs for scrolling
   const scrollViewRef = useRef(null);
+  const isClosingRef = useRef(false);
+  const premiumActionHandledRef = useRef(false);
 
   // Pulse animation for CTA button
   const pulseAnim = useRef(new Animated.Value(1)).current;
-  const closePlaceholderPulse = useRef(new Animated.Value(0)).current;
-
-  // Entrance animations - start from hidden state
-  const opacity = useSharedValue(0);
-  const translateY = useSharedValue(80);
 
   useEffect(() => {
     try {
@@ -279,74 +273,36 @@ export default function PaywallScreen({
         }),
       ]),
     ).start();
+  }, [fetchOfferings, pulseAnim]);
 
-    const placeholderLoop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(closePlaceholderPulse, {
-          toValue: 1,
-          duration: 1000,
-          useNativeDriver: true,
-        }),
-        Animated.timing(closePlaceholderPulse, {
-          toValue: 0,
-          duration: 1000,
-          useNativeDriver: true,
-        }),
-      ]),
-    );
-    placeholderLoop.start();
+  useEffect(() => {
+    setTrialEnabled(false);
+    setSelectedPlan(hasWeekly || !hasYearly ? 'weekly' : 'yearly');
+  }, [hasWeekly, hasYearly]);
 
-    // Trigger entrance animation on mount
-    requestAnimationFrame(() => {
-      opacity.value = withTiming(1, {
-        duration: 500,
-        easing: Easing.out(Easing.ease),
-      });
-      translateY.value = withTiming(0, {
-        duration: 500,
-        easing: Easing.out(Easing.ease),
-      });
-    });
-    return () => placeholderLoop.stop();
-  }, [fetchOfferings, pulseAnim, opacity, translateY, closePlaceholderPulse]);
+  useEffect(() => {
+    if (!delayCloseForPaywall) {
+      setCloseReady(true);
+      return undefined;
+    }
 
-  // Always default to Yearly when the paywall screen gains focus
-  useFocusEffect(
-    useCallback(() => {
-      setTrialEnabled(false);
-      setSelectedPlan('yearly');
+    setCloseReady(false);
+    const timeoutId = setTimeout(() => {
+      setCloseReady(true);
+    }, PAYWALL_CLOSE_LOCK_MS);
 
-      // Reset to initial state
-      opacity.value = 0;
-      translateY.value = 80;
+    return () => clearTimeout(timeoutId);
+  }, [delayCloseForPaywall]);
 
-      // Trigger animation immediately
-      requestAnimationFrame(() => {
-        opacity.value = withTiming(1, {
-          duration: 500,
-          easing: Easing.out(Easing.ease),
-        });
-        translateY.value = withTiming(0, {
-          duration: 500,
-          easing: Easing.out(Easing.ease),
-        });
-      });
-    }, [opacity, translateY]),
-  );
-
-  useFocusEffect(
-    useCallback(() => {
-      setCloseReady(false);
-      const timer = setTimeout(() => setCloseReady(true), 5000);
-      return () => clearTimeout(timer);
-    }, []),
-  );
-
-  // Animated styles
-  const containerAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-    transform: [{ translateY: translateY.value }],
-  }));
+  useEffect(() => {
+    if (selectedPlan === 'yearly' && !hasYearly) {
+      setSelectedPlan(hasWeekly ? 'weekly' : 'yearly');
+      return;
+    }
+    if (selectedPlan === 'weekly' && !hasWeekly) {
+      setSelectedPlan(hasYearly ? 'yearly' : 'weekly');
+    }
+  }, [hasWeekly, hasYearly, selectedPlan]);
 
   const handleTrialToggle = value => {
     setTrialEnabled(value);
@@ -364,6 +320,7 @@ export default function PaywallScreen({
     setTrialEnabled(plan === 'weekly');
   };
   const performClose = useCallback(() => {
+    isClosingRef.current = false;
     clearPendingPremiumAction();
     const shouldShowOneTime =
       ONE_TIME_OFFER_PAYWALL_ENABLED &&
@@ -382,35 +339,13 @@ export default function PaywallScreen({
       }
       return;
     }
-    // Navigate to specified screen after paywall closes (e.g., CoinStore)
+    // Navigate to a requested screen after paywall closes.
     if (afterCloseNavigateTo) {
       try {
-        // CoinStore is nested in StudioStack, so we need to navigate to Studio first
-        if (afterCloseNavigateTo === 'CoinStore') {
-          // Use root navigation to navigate to nested route
-          if (navigationRef?.isReady()) {
-            navigationRef.navigate('Studio', { screen: 'CoinStore' });
-          } else {
-            // Fallback: try using the navigation hook
-            const parentNav = navigation?.getParent?.();
-            if (parentNav) {
-              parentNav.navigate('Studio', { screen: 'CoinStore' });
-            } else if (navigation) {
-              navigation.navigate('Studio', { screen: 'CoinStore' });
-            }
-          }
-        } else {
-          // For other routes, try root navigation first
-          if (navigationRef?.isReady()) {
-            navigationRef.navigate(afterCloseNavigateTo);
-          } else if (navigation) {
-            navigation.navigate(afterCloseNavigateTo);
-          }
-        }
+        navigateRoot(afterCloseNavigateTo);
         return;
-      } catch (err) {
+      } catch {
         // If navigation fails, fall through to default close behavior
-        console.warn('Navigation failed:', err);
       }
     }
     if (onClose) {
@@ -426,67 +361,143 @@ export default function PaywallScreen({
     afterCloseNavigateTo,
   ]);
 
-  const handleClose = () => {
-    // Trigger closing animation
-    opacity.value = withTiming(0, {
-      duration: 300,
-      easing: Easing.in(Easing.cubic),
-    });
-    translateY.value = withTiming(
-      80,
-      {
-        duration: 300,
-        easing: Easing.in(Easing.ease),
-      },
-      finished => {
-        if (finished) {
-          // Navigate after animation completes
-          runOnJS(performClose)();
-        }
-      },
-    );
-  };
+  const handleClose = useCallback(() => {
+    if (!closeReady) {
+      return;
+    }
+    if (isClosingRef.current) {
+      return;
+    }
+
+    isClosingRef.current = true;
+    performClose();
+  }, [closeReady, performClose]);
+
+  const completePremiumFlow = useCallback(() => {
+    justPurchasedRef.current = true;
+
+    if (!premiumActionHandledRef.current) {
+      premiumActionHandledRef.current = true;
+      consumePendingPremiumAction();
+    }
+
+    performClose();
+  }, [performClose]);
+
+  useEffect(() => {
+    if (!isPremium) {
+      premiumActionHandledRef.current = false;
+      return;
+    }
+
+    completePremiumFlow();
+  }, [completePremiumFlow, isPremium]);
 
   const handleRestore = async () => {
+    if (!paymentsEnabled) {
+      Alert.alert(
+        tr('paywall.unavailableTitle', { defaultValue: 'Purchases unavailable' }),
+        tr('paywall.unavailableMessage', {
+          defaultValue: 'Android billing is not configured yet.',
+        }),
+      );
+      return;
+    }
+
     try {
       const info = await restorePurchases?.();
       onRestore && onRestore();
       const ents = info?.entitlements?.active || {};
-      const hasPremium = !!ents?.Premium || isPremium;
-      if (hasPremium) {
-        justPurchasedRef.current = true;
-        consumePendingPremiumAction();
-        handleClose();
+      const hasPremiumEntitlement = Object.keys(ents).length > 0 || isPremium;
+      if (hasPremiumEntitlement) {
+        completePremiumFlow();
+        return;
       }
-    } catch {}
+
+      Alert.alert(
+        tr('paywall.restoreEmptyTitle', {
+          defaultValue: 'No purchases found',
+        }),
+        tr('paywall.restoreEmptyMessage', {
+          defaultValue:
+            'We could not find an active purchase to restore for this account.',
+        }),
+      );
+    } catch (error) {
+      Alert.alert(
+        tr('paywall.restoreFailedTitle', { defaultValue: 'Restore failed' }),
+        error?.message ||
+          tr('paywall.restoreFailedMessage', {
+            defaultValue: 'Unable to restore purchases right now.',
+          }),
+      );
+    }
   };
 
   const handleContinue = async () => {
     if (purchaseLoading) return;
-    const planMap = {
-      weekly: availablePackages?.weekly,
-      monthly: availablePackages?.monthly,
-      yearly: availablePackages?.yearly,
-      oneTime: availablePackages?.oneTime,
-    };
-    const pkg =
-      planMap[selectedPlan] ||
-      availablePackages?.yearly ||
-      availablePackages?.monthly ||
-      availablePackages?.weekly;
+
+    if (!paymentsEnabled) {
+      Alert.alert(
+        tr('paywall.unavailableTitle', { defaultValue: 'Purchases unavailable' }),
+        tr('paywall.unavailableMessage', {
+          defaultValue: 'Android billing is not configured yet.',
+        }),
+      );
+      return;
+    }
+
+    let sourcePackages = availablePackages;
+    let pkg =
+      (selectedPlan === 'yearly'
+        ? sourcePackages?.yearly
+        : sourcePackages?.weekly) ||
+      sourcePackages?.yearly ||
+      sourcePackages?.weekly;
+
+    if (!pkg && fetchOfferings) {
+      sourcePackages = await fetchOfferings();
+      pkg =
+        (selectedPlan === 'yearly'
+          ? sourcePackages?.yearly
+          : sourcePackages?.weekly) ||
+        sourcePackages?.yearly ||
+        sourcePackages?.weekly;
+    }
+
     if (!pkg) {
-      onContinue && onContinue();
+      Alert.alert(
+        tr('paywall.productsUnavailableTitle', {
+          defaultValue: 'No plans available',
+        }),
+        tr('paywall.productsUnavailableMessage', {
+          defaultValue: 'No Android subscription products are available right now.',
+        }),
+      );
       return;
     }
     try {
       setPurchaseLoading(true);
       await purchasePackage?.(pkg);
-      justPurchasedRef.current = true;
-      consumePendingPremiumAction();
-      onContinue && onContinue();
-      handleClose();
+      completePremiumFlow();
     } catch (error) {
-      // Purchase error handled silently
+      const errorCode = error?.code;
+      const wasCancelled =
+        error?.userCancelled === true ||
+        errorCode === 'USER_CANCELLED' ||
+        errorCode === 'PURCHASE_CANCELLED_ERROR';
+
+      if (wasCancelled) {
+        return;
+      }
+
+      Alert.alert(
+        tr('paywall.purchaseFailedTitle', { defaultValue: 'Purchase failed' }),
+        error?.message ||
+          tr('paywall.purchaseFailedMessage', {
+            defaultValue: 'Unable to complete this purchase right now.',
+          }),
+      );
     } finally {
       setPurchaseLoading(false);
     }
@@ -503,15 +514,6 @@ export default function PaywallScreen({
     }),
     [dark],
   );
-
-  const placeholderOpacity = closePlaceholderPulse.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.2, 0.55],
-  });
-  const placeholderScale = closePlaceholderPulse.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.92, 1.08],
-  });
 
   // Dynamic themed styles (no inline style objects in JSX)
   const t = useMemo(
@@ -531,12 +533,6 @@ export default function PaywallScreen({
         borderColor: selectedPlan === 'yearly' ? COLORS.primary : '#333',
         backgroundColor:
           selectedPlan === 'yearly' ? 'rgba(0, 122, 255, 0.1)' : theme.card,
-      },
-      monthlyCard: {
-        backgroundColor:
-          selectedPlan === 'monthly' ? 'rgba(0, 122, 255, 0.1)' : theme.card,
-        borderWidth: 2,
-        borderColor: selectedPlan === 'monthly' ? COLORS.primary : '#333',
       },
       weeklyCard: {
         backgroundColor:
@@ -564,44 +560,35 @@ export default function PaywallScreen({
   );
   const yearlyIntro =
     weeklyEquivalentYearlyPrice || tr('paywall.plans.yearly.defaultIntroPrice');
-  const monthlyPrice =
-    availablePackages?.monthly?.product?.priceString ||
-    tr('paywall.plans.monthly.defaultPrice');
   const weeklyPrice =
     availablePackages?.weekly?.product?.priceString ||
     tr('paywall.plans.weekly.defaultPrice');
   const weeklyTrialThenText = tr('paywall.plans.weekly.trialThen', {
     defaultValue: '3 days free, then',
   });
+  const ctaLabel =
+    selectedPlan === 'weekly'
+      ? tr('paywall.ctaFreeTrial', { defaultValue: 'Try It For Free' })
+      : tr('paywall.cta');
 
   // Compute Image Studio credits and period for the selected plan
   const imageStudioCredits = useMemo(() => {
-    return selectedPlan === 'yearly'
-      ? '15000'
-      : selectedPlan === 'monthly'
-      ? '1200'
-      : '400';
+    return selectedPlan === 'yearly' ? '15000' : '400';
   }, [selectedPlan]);
 
   const imageStudioPeriod = useMemo(() => {
-    const periodKey =
-      selectedPlan === 'yearly'
-        ? 'yearly'
-        : selectedPlan === 'monthly'
-        ? 'monthly'
-        : 'weekly';
+    const periodKey = selectedPlan === 'yearly' ? 'yearly' : 'weekly';
     return tr(`paywall.features.period.${periodKey}`);
   }, [selectedPlan, tr]);
 
   return (
     <View style={[styles.container, t.containerBg]}>
       {/* GRADIENT BEHIND CONTENT (covers safe area + 384) */}
-      <AnimatedReanimated.View
+      <View
         pointerEvents="none"
         style={[
           styles.gradientBackdrop,
           t.gradientBackdrop,
-          containerAnimatedStyle,
         ]}
       >
         {/* Tailwind: bg-gradient-to-b from-blue-500/30 via-purple-500/20 to-transparent */}
@@ -618,20 +605,24 @@ export default function PaywallScreen({
         />
         {/* Soft "blur-ish" halo */}
         <LinearGradient
-          colors={['rgba(168,85,247,0.18)', 'rgba(0,0,0,0)']}
-          locations={[0, 1]}
+          colors={[
+            'rgba(168,85,247,0)',
+            'rgba(99,102,241,0.14)',
+            'rgba(168,85,247,0.10)',
+            'rgba(0,0,0,0)',
+          ]}
+          locations={[0, 0.24, 0.58, 1]}
           start={{ x: 0.2, y: 0 }}
           end={{ x: 0.8, y: 1 }}
           style={styles.gradientSecondary}
         />
-      </AnimatedReanimated.View>
+      </View>
 
-      <AnimatedReanimated.View
+      <View
         style={[
           styles.root,
           isCompactWidth && styles.rootCompact,
           isCompactHeight && styles.rootCompactHeight,
-          containerAnimatedStyle,
         ]}
       >
         <ScrollView
@@ -661,31 +652,25 @@ export default function PaywallScreen({
                   onPress={handleClose}
                   activeOpacity={0.8}
                   style={styles.iconCircle}
+                  accessibilityRole="button"
+                  accessibilityLabel={tr('paywall.close', {
+                    defaultValue: 'Close paywall',
+                  })}
                 >
                   <CloseIcon color="rgba(255,255,255,0.45)" size={20} />
                 </TouchableOpacity>
               ) : (
-                <View style={styles.iconCirclePlaceholder}>
-                  <Animated.View
-                    style={[
-                      styles.placeholderDot,
-                      {
-                        borderColor: dark
-                          ? 'rgba(255,255,255,0.2)'
-                          : 'rgba(0,0,0,0.2)',
-                        opacity: placeholderOpacity,
-                        transform: [{ scale: placeholderScale }],
-                      },
-                    ]}
-                  />
-                </View>
+                <View style={styles.iconCircle} />
               )}
 
               <TouchableOpacity
                 onPress={handleRestore}
                 activeOpacity={0.9}
-                disabled={!!restoring}
-                style={[styles.restoreBtn, restoring && t.restoreDisabled]}
+                disabled={!!restoring || !paymentsEnabled}
+                style={[
+                  styles.restoreBtn,
+                  (restoring || !paymentsEnabled) && t.restoreDisabled,
+                ]}
               >
                 <Text style={styles.restoreText}>
                   {restoring
@@ -705,7 +690,7 @@ export default function PaywallScreen({
                 />
                 <Chip
                   icon="banana"
-                  label="Nano Banana"
+                          label="Nano Banana Pro"
                   tint={COLORS.purple}
                   style={styles.chipBanana}
                   // customIcon={<PerplexityIcon color="#EA33F7" size={16} />}
@@ -724,7 +709,7 @@ export default function PaywallScreen({
                 />
                 <Chip
                   icon="grok"
-                  label="Grok 4"
+                  label="Grok"
                   tint={COLORS.blue}
                   style={styles.chipGrok}
                 />
@@ -745,7 +730,7 @@ export default function PaywallScreen({
           <GradientText
             style={[styles.title, isCompactHeight && styles.titleCompact]}
           >
-            GPT-5.2, Grok 4, Gemini 3
+            GPT-5.5, Grok, Gemini
           </GradientText>
 
           {/* Features */}
@@ -840,96 +825,88 @@ export default function PaywallScreen({
             </View>
           )}
 
-          {/* Yearly (Best offer) */}
-          <TouchableOpacity
-            style={styles.bestOfferWrap}
-            onPress={() => handleSelectPlan('yearly')}
-            activeOpacity={0.8}
-          >
-            <View style={[styles.yearlyCard, t.yearlyCard]}>
-              <View style={styles.badge}>
-                <Text style={styles.badgeText}>
-                  {tr('paywall.badge.bestOffer')}
-                </Text>
-              </View>
-              <View style={styles.rowSpread}>
-                <View>
-                  <Text style={[styles.planTitle, t.textPrimary]}>
-                    {tr('paywall.plans.yearly.title')}
-                  </Text>
-                  <Text style={[styles.planSubYear, t.textPrimary]}>
-                    {yearlyPrice
-                      ? yearlyOnlyText
-                      : tr('paywall.plans.yearly.title')}
-                  </Text>
-                </View>
-                <View style={styles.alignEnd}>
-                  <Text style={[styles.planSubDaily, t.textPrimary]}>
-                    {yearlyIntro}
-                  </Text>
-                  <Text style={[styles.planSub, t.textSecondary]}>
-                    {tr('paywall.frequency.perWeek')}
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
-
-          {/* Monthly */}
-          {!firstLaunchPaywall && (
+          {hasYearly && (
             <TouchableOpacity
-              style={[styles.weeklyCard, t.monthlyCard]}
-              onPress={() => handleSelectPlan('monthly')}
+              style={styles.bestOfferWrap}
+              onPress={() => handleSelectPlan('yearly')}
+              activeOpacity={0.8}
+            >
+              <View style={[styles.yearlyCard, t.yearlyCard]}>
+                <View style={styles.badge}>
+                  <Text style={styles.badgeText}>
+                    {tr('paywall.badge.bestOffer')}
+                  </Text>
+                </View>
+                <View style={styles.rowSpread}>
+                  <View>
+                    <Text style={[styles.planTitle, t.textPrimary]}>
+                      {tr('paywall.plans.yearly.title')}
+                    </Text>
+                    <Text style={[styles.planSubYear, t.textPrimary]}>
+                      {yearlyPrice
+                        ? yearlyOnlyText
+                        : tr('paywall.plans.yearly.title')}
+                    </Text>
+                  </View>
+                  <View style={styles.alignEnd}>
+                    <Text style={[styles.planSubDaily, t.textPrimary]}>
+                      {yearlyIntro}
+                    </Text>
+                    <Text style={[styles.planSub, t.textSecondary]}>
+                      {tr('paywall.frequency.perWeek')}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </TouchableOpacity>
+          )}
+
+          {hasWeekly && (
+            <TouchableOpacity
+              style={[styles.weeklyCard, t.weeklyCard]}
+              onPress={() => handleSelectPlan('weekly')}
               activeOpacity={0.8}
             >
               <View style={styles.rowSpread}>
                 <View>
                   <Text style={[styles.planTitle, t.textPrimary]}>
-                    {tr('paywall.plans.monthly.title')}
+                    {tr('paywall.plans.weekly.title')}
                   </Text>
-                  <Text style={[styles.planSub, t.textSecondary]}>
-                    {tr('paywall.plans.monthly.subtitle')}
+                  <Text style={[styles.weeklyTrialLabel, t.textPrimary]}>
+                    {weeklyTrialThenText}
                   </Text>
                 </View>
                 <View style={styles.alignEnd}>
-                  <Text style={[styles.planPrice, t.textPrimary]}>
-                    {monthlyPrice}
-                  </Text>
+                  <View style={styles.weeklyPriceRow}>
+                    <Text style={[styles.planPrice, t.textPrimary]}>
+                      {weeklyPrice}
+                    </Text>
+                  </View>
                   <Text style={[styles.planSub, t.textSecondary]}>
-                    {tr('paywall.frequency.perMonth')}
+                    {tr('paywall.frequency.perWeek')}
                   </Text>
                 </View>
               </View>
             </TouchableOpacity>
           )}
 
-          {/* Weekly */}
-          <TouchableOpacity
-            style={[styles.weeklyCard, t.weeklyCard]}
-            onPress={() => handleSelectPlan('weekly')}
-            activeOpacity={0.8}
-          >
-            <View style={styles.rowSpread}>
+          {!hasYearly && !hasWeekly && (
+            <View style={[styles.cardRow, t.cardRowBg]}>
               <View>
-                <Text style={[styles.planTitle, t.textPrimary]}>
-                  {tr('paywall.plans.weekly.title')}
+                <Text style={[styles.cardTitle, t.textPrimary]}>
+                  {tr('paywall.productsUnavailableTitle', {
+                    defaultValue: 'No plans available',
+                  })}
                 </Text>
-                <Text style={[styles.weeklyTrialLabel, t.textPrimary]}>
-                  {weeklyTrialThenText}
-                </Text>
-              </View>
-              <View style={styles.alignEnd}>
-                <View style={styles.weeklyPriceRow}>
-                  <Text style={[styles.planPrice, t.textPrimary]}>
-                    {weeklyPrice}
-                  </Text>
-                </View>
-                <Text style={[styles.planSub, t.textSecondary]}>
-                  {tr('paywall.frequency.perWeek')}
+                <Text style={[styles.cardSubtitle, t.textSecondary]}>
+                  {tr('paywall.productsUnavailableMessage', {
+                    defaultValue:
+                      'No Android subscription products are available right now.',
+                  })}
                 </Text>
               </View>
             </View>
-          </TouchableOpacity>
+          )}
         </ScrollView>
 
         {/* Footer */}
@@ -939,14 +916,21 @@ export default function PaywallScreen({
           >
             <TouchableOpacity
               activeOpacity={0.9}
-              style={styles.cta}
+              style={[
+                styles.cta,
+                (!paymentsEnabled || (!hasYearly && !hasWeekly)) && styles.ctaDisabled,
+              ]}
               onPress={handleContinue}
-              disabled={purchaseLoading}
+              disabled={
+                purchaseLoading ||
+                !paymentsEnabled ||
+                (!hasYearly && !hasWeekly)
+              }
             >
               {purchaseLoading ? (
-                <ActivityIndicator color="#000000" />
+                <ActivityIndicator color="#FFFFFF" />
               ) : (
-                <Text style={styles.ctaText}>{tr('paywall.cta')}</Text>
+                <Text style={styles.ctaText}>{ctaLabel}</Text>
               )}
             </TouchableOpacity>
           </Animated.View>
@@ -966,7 +950,7 @@ export default function PaywallScreen({
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() =>
-                Linking.openURL('https://aicloudsolutions.app/privacy')
+                Linking.openURL('https://aicloudsolutions.app/privacy/chatcloud')
               }
             >
               <Text style={[styles.legalLink, t.textSecondary]}>
@@ -975,7 +959,7 @@ export default function PaywallScreen({
             </TouchableOpacity>
           </View>
         </View>
-      </AnimatedReanimated.View>
+      </View>
     </View>
   );
 }
@@ -987,7 +971,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     paddingHorizontal: 16,
-    paddingTop: Platform.select({ ios: 8, android: 8 }),
+    paddingTop: 8,
     // IMPORTANT: keep transparent so the gradient behind is visible
     backgroundColor: 'transparent',
   },
@@ -995,7 +979,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   rootCompactHeight: {
-    paddingTop: Platform.select({ ios: 6, android: 6 }),
+    paddingTop: 6,
   },
 
   // Gradient behind content; sibling FIRST so content draws above it
@@ -1011,11 +995,11 @@ const styles = StyleSheet.create({
   },
   gradientSecondary: {
     position: 'absolute',
-    top: 24,
-    left: 0,
-    right: 0,
-    height: 300,
-    opacity: 0.9,
+    top: -8,
+    left: -16,
+    right: -16,
+    height: 332,
+    opacity: 1,
   },
 
   scroll: { backgroundColor: 'transparent', flex: 1 },
@@ -1036,18 +1020,6 @@ const styles = StyleSheet.create({
     height: 36,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  iconCirclePlaceholder: {
-    width: 36,
-    height: 36,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  placeholderDot: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-    borderWidth: 1,
   },
   restoreBtn: {
     paddingHorizontal: 16,
@@ -1203,10 +1175,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  ctaDisabled: {
+    opacity: 0.55,
+  },
   ctaText: {
     color: '#FFFFFF',
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: 'Lato-Bold',
   },
   legalRow: {

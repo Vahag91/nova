@@ -6,7 +6,6 @@ import {
   useWindowDimensions,
   Animated,
   Easing,
-  StatusBar,
   ImageBackground,
   Image,
 } from 'react-native';
@@ -142,8 +141,6 @@ const IntroductionAnimationScreen = ({ onComplete }) => {
       imageStyle={styles.bgImage}
       onLoad={() => setImageLoaded(true)}
     >
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-
       <View style={styles.overlay} pointerEvents="box-none">
         <SplashView {...{ onNextClick, animationController, isAnimating }} />
         <Animated.View

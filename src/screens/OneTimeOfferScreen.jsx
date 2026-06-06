@@ -14,7 +14,7 @@ export default function OneTimeOfferScreen() {
       if (navigation.canGoBack()) {
         navigation.goBack();
       } else {
-        navigation.navigate('Chat');
+        navigation.navigate('MainDrawer', { screen: 'Chat' });
       }
     }, 0);
     return () => clearTimeout(timer);
@@ -31,7 +31,9 @@ export default function OneTimeOfferScreen() {
     setVisible(false);
     if (navigation.canGoBack()) {
       navigation.goBack();
+      return;
     }
+    navigation.replace('MainDrawer', { screen: 'Chat' });
   }, [navigation]);
 
   const handlePurchaseComplete = useCallback(() => {

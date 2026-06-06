@@ -1,35 +1,39 @@
 import React, { useMemo } from 'react';
-import { Text, Linking, StyleSheet, Platform } from 'react-native';
+import { Text, Linking, StyleSheet } from 'react-native';
 import { colors } from '../../../styles/colors';
 import { userStyles, assistantStyles } from './markdownStyles';
-import ChatText from '../ChatText';
 
 export const MarkdownLink = ({ node, children, isUser }) => {
   const url = node?.attributes?.href || '';
+  const normalizedUrl = useMemo(() => {
+    if (!url) return '';
+    if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return url;
+    return `https://${url}`;
+  }, [url]);
 
   const textContent = useMemo(() => {
     if (node?.content) return node.content;
     return React.Children.toArray(children)
-      .filter((c) => typeof c === 'string')
+      .filter(c => typeof c === 'string')
       .join('')
       .trim();
   }, [node?.content, children]);
 
   const onPress = () => {
-    if (url) Linking.openURL(url).catch(() => {});
+    if (normalizedUrl) Linking.openURL(normalizedUrl).catch(() => {});
   };
 
-  const isWiki = url.includes('wikipedia.org');
-  const isYoutube = url.includes('youtube.com') || url.includes('youtu.be');
+  const isWiki = normalizedUrl.includes('wikipedia.org');
+  const isYoutube = normalizedUrl.includes('youtube.com') || normalizedUrl.includes('youtu.be');
 
   const parsed = useMemo(() => {
     try {
-      const u = new URL(url);
+      const u = new URL(normalizedUrl);
       return { domain: u.hostname.replace(/^www\./, ''), path: u.pathname };
     } catch (e) {
       return { domain: url, path: '' };
     }
-  }, [url]);
+  }, [normalizedUrl, url]);
 
   const title = useMemo(() => {
     if (textContent) return textContent;
@@ -42,36 +46,32 @@ export const MarkdownLink = ({ node, children, isUser }) => {
 
   const baseStyle = isUser ? userStyles.link : assistantStyles.link;
   const linkColor = isUser ? '#FFFFFF' : colors.primary;
-  const isIosAssistant = Platform.OS === 'ios' && !isUser;
-  const LinkText = isIosAssistant ? ChatText : Text;
-  const outerPressProps = isIosAssistant ? {} : { onPress };
-  const innerPressProps = isIosAssistant ? { onPress } : {};
 
   if (isWiki) {
     return (
-      <LinkText style={[baseStyle, styles.inlineLink]} {...outerPressProps}>
-        <LinkText style={styles.wikiGlyph} {...innerPressProps}>⌁</LinkText>
-        <LinkText style={styles.linkLabel} {...innerPressProps}> {title} </LinkText>
-        <LinkText style={[styles.arrow, { color: linkColor }]} {...innerPressProps}>↗</LinkText>
-      </LinkText>
+      <Text style={[baseStyle, styles.inlineLink]} onPress={onPress}>
+        <Text style={styles.wikiGlyph}>⌁</Text>
+        <Text style={styles.linkLabel}> {title} </Text>
+        <Text style={[styles.arrow, { color: linkColor }]}>↗</Text>
+      </Text>
     );
   }
 
   if (isYoutube) {
     return (
-      <LinkText style={[baseStyle, styles.inlineLink]} {...outerPressProps}>
-        <LinkText style={[styles.playGlyph, { color: '#FF6B6B' }]} {...innerPressProps}>▶</LinkText>
-        <LinkText style={styles.linkLabel} {...innerPressProps}> Watch Video </LinkText>
-        <LinkText style={[styles.arrow, { color: linkColor }]} {...innerPressProps}>↗</LinkText>
-      </LinkText>
+      <Text style={[baseStyle, styles.inlineLink]} onPress={onPress}>
+        <Text style={[styles.playGlyph, { color: '#FF6B6B' }]}>▶</Text>
+        <Text style={styles.linkLabel}> Watch Video </Text>
+        <Text style={[styles.arrow, { color: linkColor }]}>↗</Text>
+      </Text>
     );
   }
 
   return (
-    <LinkText style={[baseStyle, styles.inlineLink]} {...outerPressProps}>
-      <LinkText style={styles.linkLabel} {...innerPressProps}>{title || parsed.domain} </LinkText>
-      <LinkText style={[styles.arrow, { color: linkColor }]} {...innerPressProps}>↗</LinkText>
-    </LinkText>
+    <Text style={[baseStyle, styles.inlineLink]} onPress={onPress}>
+      <Text style={styles.linkLabel}>{title || parsed.domain} </Text>
+      <Text style={[styles.arrow, { color: linkColor }]}>↗</Text>
+    </Text>
   );
 };
 

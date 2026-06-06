@@ -19,7 +19,7 @@
     "gpt-5": "En güçlü çok amaçlı model",
     "gpt-5-chat-latest": "Sohbet ve diyalog için optimize edildi",
     "gpt-5-mini": "Hızlı ve güvenilir GPT-5",
-    "gpt-5-nano": "Basit görevler için hafif model",
+    "gpt-5.4-nano": "Basit görevler için hafif model",
     "o4-mini": "Verimli akıl yürütme modeli",
     "gpt-4.1-mini": "Kompakt ve yetenekli GPT-4.1",
     "claude-3-haiku": "Hızlı ve odaklı Anthropic yapay zekası",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Yaratıcı ve şık sonuçlar",
       "runwareQwenImage": "Dengeli ve yüksek kaliteli sonuçlar",
       "google4": "En iyi yapay zeka görüntü modeli",
+      "klingImageO1": "Yüksek kontrollü görsel düzenleme",
       "fluxKontent": "Düzenleme için ayarlanmış Flux Kontent",
       "runwareProvider": "Kalite ve kararlı difüzyon arasında denge.",
       "airProvider": "Nano Banana canlı ve neşeli tonlar ekler.",
       "googleProvider": "Google keskin ayrıntılar için ayarlanmış.",
+      "klingaiProvider": "KlingAI kontrollü düzenlemeler için optimize edildi.",
       "anthropicProvider": "Claude hattı ince tonlar için.",
       "default": "Mevcut motorları görmek için dokun."
     }
@@ -657,6 +659,7 @@
       "perMonth": "ayda"
     },
     "cta": "Devam et",
+    "ctaFreeTrial": "Ücretsiz dene",
     "legal": {
       "terms": "Şartlar",
       "privacy": "Gizlilik"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "verimlilik ipuçlarıyla"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Bir konu seçin",
+      "title": "Ne yapmak istiyorsun?",
+      "subtitle": "Bir yön seçin ve ardından güçlü bir yönlendirmeyle başlayın.",
+      "pickPromptTitle": "Başlamak için bir bilgi istemi seçin",
+      "changeTopic": "Başka bir konu seç",
+      "intents": {
+        "summarize": "Metni özetle",
+        "summarizeShort": "Özetle",
+        "summarizeHint": "Makaleler, notlar, sesli notlar, uzun konular",
+        "plan": "Bir plan yap",
+        "planHint": "Geziler, rutinler, bütçeler, son teslim tarihleri, yaşam değişiklikleri",
+        "brainstorm": "Beyin fırtınası",
+        "brainstormHint": "Fikirler, teklifler, isimler, içerikler, yan projeler",
+        "analyze": "Verileri analiz edin",
+        "analyzeHint": "Harcama, geri bildirim, ölçümler, alışkanlıklar, performans"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Kurucu özeti oluşturun",
+          "founderBriefSubtitle": "Ana riskleri, kararları ve sonraki adımları ortaya çıkarın.",
+          "classNotesTitle": "Çalışma notlarımı temizle",
+          "classNotesSubtitle": "Kaba notları anlaşılır bir çalışma kılavuzuna dönüştürün.",
+          "meetingHandoffTitle": "Devir özeti yazın",
+          "meetingHandoffSubtitle": "Toplantılardan, aramalardan veya uzun iç yazışmalardan sonra kullanışlıdır.",
+          "longArticleTitle": "Bu makaleyi hızla özetleyin",
+          "longArticleSubtitle": "Uzun bir makaleyi keskin çıkarımlara yoğunlaştırın."
+        },
+        "plan": {
+          "energyResetTitle": "14 günlük bir enerji sıfırlaması oluşturun",
+          "energyResetSubtitle": "Uyku, yemek, hareket ve odaklanma için gerçekçi bir plan.",
+          "mealPlanTitle": "Gerçekten pişireceğim yemekleri planla",
+          "mealPlanSubtitle": "Pratik, uygun fiyatlı ve sahip olduklarıma dayalı.",
+          "cityMoveTitle": "Yeni bir şehre taşınmamı planla",
+          "cityMoveSubtitle": "Bunu zaman çizelgesi, bütçe, konut ve yönetici görevlerine ayırın.",
+          "tripEscapeTitle": "Unutulmaz bir hafta sonu kaçamağı planlayın",
+          "tripEscapeSubtitle": "Genel bir seyahat programından daha iyi bir şey."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Gerçekçi bir yan uğraş bulun",
+          "sideHustleSubtitle": "Tam zamanlı çalışırken başlayabileceğim fikirler.",
+          "brandAngleTitle": "Unutulmaz bir marka açısı bulun",
+          "brandAngleSubtitle": "Ürünler, yaratıcılar, ajanslar veya haber bültenleri için kullanışlıdır.",
+          "socialSeriesTitle": "Bir içerik serisi icat edin",
+          "socialSeriesSubtitle": "Hedef kitleyi büyütecek kadar tutarlı bir şey.",
+          "datingIdeasTitle": "Yeni fikirlerle gelin",
+          "datingIdeasSubtitle": "Tarihler, hediyeler, sürprizler veya düşünceli hissettiren etkinlikler."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Paramın nereye sızdığını bul",
+          "spendingLeaksSubtitle": "Kalıpları, zayıf noktaları gösterin ve en kolay olan ilk önce kazanır.",
+          "customerFeedbackTitle": "Geri bildirimi önceliklere dönüştürün",
+          "customerFeedbackSubtitle": "Küme istekleri, şikayetler, aciliyet ve etki.",
+          "habitPatternsTitle": "Alışkanlıklarımdaki nokta kalıpları",
+          "habitPatternsSubtitle": "Egzersizler, uyku, günlük kaydı veya odak günlükleri için kullanışlıdır.",
+          "metricsStoryTitle": "Sayıların ne anlama geldiğini açıklayın",
+          "metricsStorySubtitle": "Daha fazla sinyal, daha az elektronik tablo gürültüsü."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
+  Alert,
   Image,
   Modal,
   Pressable,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -27,6 +27,7 @@ import SidebarProFeaturesButton from '../components/navigation/SidebarProFeature
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { colors } from '../styles/colors';
+import { APP_VERSION } from '../config/appInfo';
 function MenuItem({ active, icon, label, onPress }) {
   return (
     <TouchableOpacity
@@ -58,14 +59,21 @@ export default function AndroidNavigationMenu({
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const { height: screenHeight } = useWindowDimensions();
-  const topInset = Math.max(insets.top, StatusBar.currentHeight || 0);
+  const topInset = insets.top;
   const isCompactHeight = screenHeight <= 700;
-  const isPremium = !!useContext(SubscriptionContext)?.isPremium;
+  const subscription = useContext(SubscriptionContext);
+  const isPremium = !!subscription?.isPremium;
+  const reviewerPremiumEnabled = !!subscription?.reviewerPremiumEnabled;
+  const activateReviewerPremium = subscription?.activateReviewerPremium;
+  const deactivateReviewerPremium = subscription?.deactivateReviewerPremium;
   const threadIndex = useThreadsStore(s => s.threadIndex);
   const activeThreadId = useThreadsStore(s => s.activeThreadId);
+  const createThread = useThreadsStore(s => s.createThread);
   const [mounted, setMounted] = useState(visible);
   const [animationRouteName, setAnimationRouteName] = useState(activeRouteName);
   const wasVisibleRef = useRef(visible);
+  const versionTapCountRef = useRef(0);
+  const versionTapTsRef = useRef(0);
   const overlayOpacity = useSharedValue(0);
   const panelTranslateX = useSharedValue(-PANEL_WIDTH);
 
@@ -83,6 +91,67 @@ export default function AndroidNavigationMenu({
   const handleThreadPress = React.useCallback((threadId) => {
     onNavigateThread(threadId);
   }, [onNavigateThread]);
+
+  const handleNewChatPress = React.useCallback(() => {
+    createThread({ title: t('history.newChat') });
+    handleMenuItemPress('Chat', 'new_chat');
+  }, [createThread, handleMenuItemPress, t]);
+
+  const handleVersionTap = React.useCallback(async () => {
+    const now = Date.now();
+    if (now - versionTapTsRef.current > 2500) {
+      versionTapCountRef.current = 0;
+    }
+    versionTapTsRef.current = now;
+    versionTapCountRef.current += 1;
+
+    if (versionTapCountRef.current < 5) {
+      return;
+    }
+
+    versionTapCountRef.current = 0;
+
+    try {
+      if (reviewerPremiumEnabled) {
+        Alert.alert(
+          'Deactivate Premium',
+          'Do you want to deactivate reviewer premium?',
+          [
+            { text: 'Cancel', style: 'cancel' },
+            {
+              text: 'Deactivate',
+              style: 'destructive',
+              onPress: async () => {
+                try {
+                  await deactivateReviewerPremium?.();
+                } catch {}
+              },
+            },
+          ],
+        );
+      } else {
+        Alert.alert(
+          'Activate Premium',
+          'Do you want to activate reviewer premium?',
+          [
+            { text: 'Cancel', style: 'cancel' },
+            {
+              text: 'Activate',
+              onPress: async () => {
+                try {
+                  await activateReviewerPremium?.();
+                } catch {}
+              },
+            },
+          ],
+        );
+      }
+    } catch {}
+  }, [
+    activateReviewerPremium,
+    deactivateReviewerPremium,
+    reviewerPremiumEnabled,
+  ]);
 
   useEffect(() => {
     if (visible && !wasVisibleRef.current) {
@@ -219,7 +288,7 @@ export default function AndroidNavigationMenu({
                 active={activeRouteName === 'Chat'}
                 icon="newchat"
                 label={t('navigation.chat')}
-                onPress={() => handleMenuItemPress('Chat')}
+                onPress={handleNewChatPress}
               />
               <MenuItem
                 active={activeRouteName === 'History'}
@@ -247,6 +316,12 @@ export default function AndroidNavigationMenu({
               />
             </View>
           </ScrollView>
+
+          <Pressable onPress={handleVersionTap} hitSlop={12} style={styles.versionWrap}>
+            <Text style={styles.versionText}>
+              {`Version ${String(APP_VERSION || '1').split('.')[0]}`}
+            </Text>
+          </Pressable>
 
           {!isPremium ? (
             <SidebarProFeaturesButton
@@ -314,7 +389,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.4,
   },
   recentChatsSection: {
-    marginTop: 16,
+    marginTop: 36,
   },
   recentChatsTitle: {
     fontSize: 12,
@@ -344,7 +419,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Bold',
   },
   sidebarBanner: {
-    marginTop: 8,
+    marginTop: 10,
   },
   mainNav: {
     marginTop: 10,
@@ -374,5 +449,17 @@ const styles = StyleSheet.create({
   menuLabelActive: {
     color: colors.text,
     fontFamily: 'Lato-Bold',
+  },
+  versionWrap: {
+    marginTop: 16,
+    alignItems: 'flex-start',
+    marginBottom: 12,
+    paddingLeft: 4,
+  },
+  versionText: {
+    color: 'rgba(148,163,184,0.7)',
+    fontSize: 13,
+    fontFamily: 'Lato-Regular',
+    textAlign: 'left',
   },
 });

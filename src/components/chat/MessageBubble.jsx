@@ -5,8 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Pressable,
-  ActionSheetIOS,
-  Platform,
   Alert,
   Share,
   Keyboard,
@@ -158,6 +156,8 @@ const MessageBubbleImpl = function MessageBubble({
   streaming = false,
   streamingMessageId,
   selectionResetToken,
+  onActionPressIn,
+  onReport,
 }) {
   const { t } = useTranslation();
   const capsuleRadius = 22;
@@ -170,6 +170,7 @@ const MessageBubbleImpl = function MessageBubble({
   const retryLabel = t('chat.actions.retryFromHere', {
     defaultValue: 'Retry from here',
   });
+  const reportLabel = t('chat.actions.report', { defaultValue: 'Report' });
   const cancelLabel = t('chat.actions.cancel', { defaultValue: 'Cancel' });
   const messageActionTitle = t('chat.messageActionTitle', {
     defaultValue: 'Message',
@@ -211,8 +212,16 @@ const MessageBubbleImpl = function MessageBubble({
     [isUser, isFirstInGroup, isLastInGroup],
   );
 
+  const assistantPlainText = useMemo(() => {
+    if (isUser) return '';
+    return plainTextFromMarkdown(message.content || '');
+  }, [isUser, message.content]);
+
   const onCopy = () => {
-    Clipboard.setString(plainTextFromMarkdown(message.content || ''));
+    const copyText = isUser
+      ? plainTextFromMarkdown(message.content || '')
+      : assistantPlainText;
+    Clipboard.setString(copyText);
     Haptic.trigger('notificationSuccess');
     flashCopyFeedback();
   };
@@ -229,43 +238,29 @@ const MessageBubbleImpl = function MessageBubble({
     if (onRetryFromHere) onRetryFromHere(message);
   };
 
-  const showSheet = () => {
-    const baseUser = [copyLabel, retryLabel, cancelLabel];
-    const baseAi = [copyLabel, shareLabel, regenerateLabel, cancelLabel];
-    const options = isUser ? baseUser : baseAi;
-    const cancelButtonIndex = options.length - 1;
+  const onReportContent = () => {
+    onReport?.(message);
+  };
 
-    if (Platform.OS === 'ios') {
-      Haptic.trigger('selection');
-      ActionSheetIOS.showActionSheetWithOptions(
-        { options, cancelButtonIndex },
-        idx => {
-          const choice = options[idx];
-          if (choice === copyLabel) onCopy();
-          else if (choice === shareLabel) onShare();
-          else if (choice === regenerateLabel) onRegenerate();
-          else if (choice === retryLabel) onRegenerate();
+  const showSheet = () => {
+    Haptic.trigger('selection');
+    Alert.alert(
+      messageActionTitle,
+      undefined,
+      [
+        { text: copyLabel, onPress: onCopy },
+        !isUser && { text: shareLabel, onPress: onShare },
+        {
+          text: isUser ? retryLabel : regenerateLabel,
+          onPress: onRegenerate,
         },
-      );
-    } else {
-      Alert.alert(
-        messageActionTitle,
-        undefined,
-        [
-          { text: copyLabel, onPress: onCopy },
-          !isUser && { text: shareLabel, onPress: onShare },
-          {
-            text: isUser ? retryLabel : regenerateLabel,
-            onPress: onRegenerate,
-          },
-          { text: cancelLabel, style: 'cancel' },
-        ].filter(Boolean),
-      );
-    }
+        !isUser && { text: reportLabel, onPress: onReportContent },
+        { text: cancelLabel, style: 'cancel' },
+      ].filter(Boolean),
+    );
   };
 
   const status = message?.meta?.status; // 'pending' | 'sent' | 'failed'
-  const model = message?.meta?.model;
   const isPureImages = isImagesOnly(message.content);
   const imageUris = isPureImages ? extractImageUrisAll(message.content) : [];
 
@@ -327,14 +322,9 @@ const MessageBubbleImpl = function MessageBubble({
                       <Text style={styles.userPlainText}>{leftover.trim()}</Text>
                     ) : (
                       <MarkdownContent text={leftover} isUser={isUser} selectionResetToken={selectionResetToken} />
-                    )}
+                        )}
                         {showMeta && (
                           <View style={styles.metaRow}>
-                            {!!model && (
-                              <View style={styles.modelTag}>
-                                <Text style={styles.modelText}>{model}</Text>
-                              </View>
-                            )}
                             {!!status && (
                               <Text style={styles.metaTime}>
                                 {status === 'pending'
@@ -375,11 +365,6 @@ const MessageBubbleImpl = function MessageBubble({
                     )}
                     {showMeta && (
                       <View style={styles.metaRow}>
-                        {!!model && (
-                          <View style={styles.modelTag}>
-                            <Text style={styles.modelText}>{model}</Text>
-                          </View>
-                        )}
                         {!!status && (
                           <Text style={styles.metaTime}>
                             {status === 'pending'
@@ -415,20 +400,20 @@ const MessageBubbleImpl = function MessageBubble({
                   ]}
                   accessibilityLiveRegion="polite"
                 >
-                  <StreamingText
-                    messageId={message.id}
-                    base={baseContent}
-                    streaming={isStreamingThis}
-                    activityText={message?.meta?.activity}
-                    selectionResetToken={selectionResetToken}
-                  />
+                  <View style={styles.assistantContentShell}>
+                    <View style={styles.assistantContentBase}>
+                      <StreamingText
+                        messageId={message.id}
+                        base={baseContent}
+                        streaming={isStreamingThis}
+                        activityText={message?.meta?.activity}
+                        selectionResetToken={selectionResetToken}
+                      />
+                    </View>
+                  </View>
+
                   {showMeta && (
                     <View style={styles.metaRow}>
-                      {!!model && (
-                        <View style={styles.modelTag}>
-                          <Text style={styles.modelText}>{model}</Text>
-                        </View>
-                      )}
                       {!!status && (
                         <Text style={styles.metaTime}>
                           {status === 'pending'
@@ -443,29 +428,12 @@ const MessageBubbleImpl = function MessageBubble({
                 </View>
               );
 
-              // iOS: avoid touch wrappers so UITextView selection can work.
-              if (Platform.OS === 'ios') {
-                return <View style={styles.assistantPressable}>{assistantInner}</View>;
-              }
-
-              return (
-                <TouchableOpacity
-                  activeOpacity={0.92}
-                  onPress={Keyboard.dismiss}
-                  // onLongPress={showSheet}
-                  delayLongPress={180}
-                  onStartShouldSetResponderCapture={() => false}
-                  onMoveShouldSetResponderCapture={() => false}
-                  style={styles.assistantPressable}
-                >
-                  {assistantInner}
-                </TouchableOpacity>
-              );
+              return <View style={styles.assistantPressable}>{assistantInner}</View>;
             })()}
       </View>
 
       {/* Quick actions (visible under bubbles) */}
-      {(!isUser || message?.meta?.status !== 'failed') && (
+      {(!isUser || (isUser && message?.meta?.status !== 'failed')) && (
         <View
           style={[
             styles.actionRow,
@@ -476,8 +444,10 @@ const MessageBubbleImpl = function MessageBubble({
             style={({ pressed }) => [
               styles.actionButton,
               !isUser && styles.actionButtonAssistant,
+              !isUser && styles.actionButtonLabeled,
               pressed && styles.actionButtonPressed,
             ]}
+            onPressIn={onActionPressIn}
             onPress={onCopy}
             accessibilityLabel={t('chat.copyMessage')}
             accessibilityHint={t('chat.copyMessageHint')}
@@ -487,6 +457,7 @@ const MessageBubbleImpl = function MessageBubble({
               size={18}
               color={copyJustHappened ? colors.success : colors.textSecondary}
             />
+            {!isUser && <Text style={styles.actionButtonText}>{copyLabel}</Text>}
           </Pressable>
 
           {!isUser && (
@@ -495,26 +466,46 @@ const MessageBubbleImpl = function MessageBubble({
                 style={({ pressed }) => [
                   styles.actionButton,
                   styles.actionButtonAssistant,
+                  styles.actionButtonLabeled,
                   pressed && styles.actionButtonPressed,
                 ]}
+                onPressIn={onActionPressIn}
                 onPress={onShare}
                 accessibilityLabel={t('chat.shareMessage')}
                 accessibilityHint={t('chat.shareMessageHint')}
-              >
-                <SvgIcon name="share" size={18} color={colors.textSecondary} />
-              </Pressable>
+                >
+                  <SvgIcon name="share" size={18} color={colors.textSecondary} />
+                  <Text style={styles.actionButtonText}>{shareLabel}</Text>
+                </Pressable>
               <Pressable
                 style={({ pressed }) => [
                   styles.actionButton,
                   styles.actionButtonAssistant,
+                  styles.actionButtonLabeled,
                   pressed && styles.actionButtonPressed,
                 ]}
+                onPressIn={onActionPressIn}
                 onPress={onRegenerate}
                 accessibilityLabel={t('chat.regenerateResponse')}
                 accessibilityHint={t('chat.regenerateResponseHint')}
-              >
-                <SvgIcon name="repeat" size={18} color={colors.textSecondary} />
-              </Pressable>
+                >
+                  <SvgIcon name="repeat" size={18} color={colors.textSecondary} />
+                  <Text style={styles.actionButtonText}>{regenerateLabel}</Text>
+                </Pressable>
+                <Pressable
+                  style={({ pressed }) => [
+                   styles.actionButton,
+                   styles.actionButtonAssistant,
+                   styles.actionButtonLabeled,
+                   pressed && styles.actionButtonPressed,
+                  ]}
+                  onPressIn={onActionPressIn}
+                  onPress={onReportContent}
+                  accessibilityLabel={reportLabel}
+                >
+                  <SvgIcon name="flag" size={18} color={colors.textSecondary} />
+                  <Text style={styles.actionButtonText}>{reportLabel}</Text>
+                </Pressable>
             </>
           )}
 
@@ -524,6 +515,7 @@ const MessageBubbleImpl = function MessageBubble({
                 styles.actionButton,
                 pressed && styles.actionButtonPressed,
               ]}
+              onPressIn={onActionPressIn}
               onPress={onRegenerate}
               accessibilityLabel={retryLabel}
             >
@@ -603,6 +595,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
   },
+  assistantContentShell: {
+    width: '100%',
+  },
+  assistantContentBase: {
+    width: '100%',
+  },
 
   // pure images grid
   gridWrap: {
@@ -617,15 +615,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexWrap: 'wrap',
   },
-  modelTag: {
-    backgroundColor: colors.surfaceElevated,
-    borderColor: colors.border,
-    borderWidth: 1,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
-  },
-  modelText: { fontSize: 10, color: colors.textSecondary },
   metaTime: { fontSize: 10, color: colors.textMuted },
 
   actionRow: { flexDirection: 'row' },
@@ -633,7 +622,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     marginRight: 0,
     marginTop: -10,
-    gap: 2,
+    gap: 12,
     alignSelf: 'flex-start',
   },
   actionRowUser: {
@@ -655,6 +644,15 @@ const styles = StyleSheet.create({
   },
   actionButtonAssistant: {
     minWidth: 28,
+  },
+  actionButtonLabeled: {
+    minWidth: 42,
+    gap: 4,
+  },
+  actionButtonText: {
+    color: colors.textSecondary,
+    fontSize: 11,
+    fontWeight: '600',
   },
   actionButtonPressed: {
     opacity: 0.6,
@@ -700,10 +698,8 @@ const MessageBubble = memo(MessageBubbleImpl, (prev, next) => {
   if (prev.isLastInGroup !== next.isLastInGroup) return false;
   if (prev.followsDaySeparator !== next.followsDaySeparator) return false;
   if (prev.showMeta !== next.showMeta) return false;
-  if (prev.selectionResetToken !== next.selectionResetToken) {
-    // Selection-reset only matters for iOS assistant UITextView blocks.
-    if (!prev.isUser) return false;
-  }
+  if (prev.selectionResetToken !== next.selectionResetToken) return false;
+  if (prev.onReport !== next.onReport) return false;
 
   // For streaming prop and streamingMessageId: only re-render if THIS message is affected
   // Check if THIS message was/is streaming

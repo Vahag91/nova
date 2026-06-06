@@ -5,4 +5,5 @@ export default {
   video: false,
   cloudSync: false,
   payments: false,
+  zeroImageModelCosts: false,
 };

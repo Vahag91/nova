@@ -19,7 +19,7 @@
     "gpt-5": "AI serba guna paling kuat",
     "gpt-5-chat-latest": "Dioptimalkan untuk chat dan dialog",
     "gpt-5-mini": "GPT-5 cepat dan andal",
-    "gpt-5-nano": "Model ringan untuk tugas sederhana",
+    "gpt-5.4-nano": "Model ringan untuk tugas sederhana",
     "o4-mini": "Model penalaran efisien",
     "gpt-4.1-mini": "GPT-4.1 ringkas namun andal",
     "claude-3-haiku": "Anthropic cepat dan fokus",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Hasil kreatif dan bergaya",
       "runwareQwenImage": "Seimbang dan berkualitas tinggi",
       "google4": "Model gambar AI terbaik",
+      "klingImageO1": "Pengeditan gambar dengan kontrol tinggi",
       "fluxKontent": "Flux Kontent disetel untuk pengeditan",
       "runwareProvider": "Seimbang antara kualitas dan diffusion yang stabil.",
       "airProvider": "Nano Banana dengan warna cerah menyenangkan.",
       "googleProvider": "Google disetel untuk detail tajam.",
+      "klingaiProvider": "KlingAI disetel untuk edit yang terkontrol.",
       "anthropicProvider": "Pipeline Claude untuk nuansa halus.",
       "default": "Ketuk untuk jelajahi engine yang tersedia."
     }
@@ -657,6 +659,7 @@
       "perMonth": "per bulan"
     },
     "cta": "Lanjutkan",
+    "ctaFreeTrial": "Coba gratis",
     "legal": {
       "terms": "Ketentuan",
       "privacy": "Privasi"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "dengan tips produktivitas"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Pilih topik",
+      "title": "Apa yang ingin kamu lakukan?",
+      "subtitle": "Pilih arah, lalu mulai dengan perintah yang kuat.",
+      "pickPromptTitle": "Pilih perintah untuk memulai",
+      "changeTopic": "Pilih topik lain",
+      "intents": {
+        "summarize": "Meringkas teks",
+        "summarizeShort": "Ringkaslah",
+        "summarizeHint": "Artikel, catatan, memo suara, thread panjang",
+        "plan": "Buatlah rencana",
+        "planHint": "Perjalanan, rutinitas, anggaran, tenggat waktu, perubahan hidup",
+        "brainstorm": "Bertukar pikiran",
+        "brainstormHint": "Ide, penawaran, nama, konten, proyek sampingan",
+        "analyze": "Analisis data",
+        "analyzeHint": "Pengeluaran, umpan balik, metrik, kebiasaan, kinerja"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Buat ringkasan pendiri",
+          "founderBriefSubtitle": "Tarik keluar risiko utama, keputusan, dan langkah selanjutnya.",
+          "classNotesTitle": "Rapikan catatan belajarku",
+          "classNotesSubtitle": "Ubah catatan kasar menjadi panduan belajar yang jelas.",
+          "meetingHandoffTitle": "Tulis ringkasan serah terima",
+          "meetingHandoffSubtitle": "Berguna setelah rapat, panggilan, atau thread internal yang panjang.",
+          "longArticleTitle": "Ringkaslah artikel ini dengan cepat",
+          "longArticleSubtitle": "Ringkas artikel panjang menjadi kesimpulan yang tajam."
+        },
+        "plan": {
+          "energyResetTitle": "Bangun pengaturan ulang energi 14 hari",
+          "energyResetSubtitle": "Rencana realistis untuk tidur, makanan, gerakan, dan fokus.",
+          "mealPlanTitle": "Rencanakan makanan yang sebenarnya akan saya masak",
+          "mealPlanSubtitle": "Praktis, terjangkau, dan berdasarkan apa yang saya miliki.",
+          "cityMoveTitle": "Rencanakan kepindahan saya ke kota baru",
+          "cityMoveSubtitle": "Bagilah menjadi garis waktu, anggaran, perumahan, dan tugas admin.",
+          "tripEscapeTitle": "Rencanakan liburan akhir pekan yang berkesan",
+          "tripEscapeSubtitle": "Sesuatu yang lebih baik daripada rencana perjalanan umum."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Temukan pekerjaan sampingan yang realistis",
+          "sideHustleSubtitle": "Ide yang bisa saya mulai sambil bekerja penuh waktu.",
+          "brandAngleTitle": "Temukan sudut pandang merek yang mudah diingat",
+          "brandAngleSubtitle": "Berguna untuk produk, pembuat konten, agensi, atau buletin.",
+          "socialSeriesTitle": "Ciptakan seri konten",
+          "socialSeriesSubtitle": "Sesuatu yang cukup konsisten untuk meningkatkan jumlah penonton.",
+          "datingIdeasTitle": "Munculkan ide-ide segar",
+          "datingIdeasSubtitle": "Tanggal, hadiah, kejutan, atau acara yang berkesan."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Temukan di mana uang saya bocor",
+          "spendingLeaksSubtitle": "Tunjukkan pola, titik lemah, dan kemenangan termudah terlebih dahulu.",
+          "customerFeedbackTitle": "Ubah umpan balik menjadi prioritas",
+          "customerFeedbackSubtitle": "Permintaan cluster, keluhan, urgensi, dan dampak.",
+          "habitPatternsTitle": "Temukan pola dalam kebiasaan saya",
+          "habitPatternsSubtitle": "Berguna untuk latihan, tidur, penjurnalan, atau catatan fokus.",
+          "metricsStoryTitle": "Jelaskan apa arti angka-angka tersebut",
+          "metricsStorySubtitle": "Lebih banyak sinyal, lebih sedikit noise pada spreadsheet."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

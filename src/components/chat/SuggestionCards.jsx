@@ -4,58 +4,79 @@ import { useTranslation } from 'react-i18next';
 import SvgIcon from '../SvgIcon';
 
 const SuggestionCards = ({ onSuggestionPress }) => {
-  // Debuggers removed (focus on voice only)
   const { t } = useTranslation();
 
-  const safeTitle = (v, fallback) => {
-    if (typeof v === 'string') return v;
-    if (v == null) return fallback;
-    try { return String(v); } catch { return fallback; }
+  const safeTitle = (value, fallback) => {
+    if (typeof value === 'string') return value;
+    if (value == null) return fallback;
+    try {
+      return String(value);
+    } catch {
+      return fallback;
+    }
   };
 
   const items = useMemo(() => {
     const list = [
-      // Keep Edit Images right next to Create Images
       {
         id: 'create-images',
         icon: 'studio',
-        title: safeTitle(t('chat.quickActions.createImages', { defaultValue: 'Create Images' }), 'Create Images'),
-        color: '#00BCD4', // Cyan
+        title: safeTitle(
+          t('chat.quickActions.createImages', { defaultValue: 'Create Images' }),
+          'Create Images',
+        ),
+        color: '#00BCD4',
       },
       {
         id: 'edit-image',
         icon: 'layers',
-        title: safeTitle(t('chat.quickActions.editImage', { defaultValue: 'Edit Image' }), 'Edit Image'),
-        color: '#F19E39', // Orange
+        title: safeTitle(
+          t('chat.quickActions.editImage', { defaultValue: 'Edit Image' }),
+          'Edit Image',
+        ),
+        color: '#F19E39',
       },
       {
         id: 'open-camera',
         icon: 'photo',
         title: safeTitle(t('chat.camera', { defaultValue: 'Camera' }), 'Camera'),
-        color: '#75FB4C', // Green
+        color: '#75FB4C',
       },
       {
         id: 'start-voice',
         icon: 'mic',
-        title: safeTitle(t('chat.quickActions.startVoice', { defaultValue: 'Start Voice' }), 'Start Voice'),
-        color: '#FF6B6B', // Red/Pink
+        title: safeTitle(
+          t('chat.quickActions.startVoice', { defaultValue: 'Start Voice' }),
+          'Start Voice',
+        ),
+        color: '#FF6B6B',
       },
       {
         id: 'assistants',
         icon: 'assistants',
-        title: safeTitle(t('chat.quickActions.assistants', { defaultValue: 'Assistants' }), 'Assistants'),
-        color: '#A78BFA', // Purple
+        title: safeTitle(
+          t('chat.quickActions.assistants', { defaultValue: 'Assistants' }),
+          'Assistants',
+        ),
+        color: '#A78BFA',
       },
     ];
-    // Ensure it is an array of valid items
+
     return Array.isArray(list)
-      ? list.filter((s, idx) => s && typeof s.icon === 'string' && (typeof s.id === 'string' || (s.id = `sugg_${idx}`)))
+      ? list.filter(
+          (item, index) =>
+            item &&
+            typeof item.icon === 'string' &&
+            (typeof item.id === 'string' || (item.id = `sugg_${index}`)),
+        )
       : [];
   }, [t]);
 
-  const handlePress = (suggestion) => {
+  const handlePress = suggestion => {
     if (!suggestion) return;
-    try { typeof onSuggestionPress === 'function' && onSuggestionPress(suggestion); } catch {}
+    try {
+      typeof onSuggestionPress === 'function' && onSuggestionPress(suggestion);
+    } catch {}
   };
 
   return (
@@ -66,7 +87,7 @@ const SuggestionCards = ({ onSuggestionPress }) => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.scrollContent}
         >
-          {(Array.isArray(items) ? items : []).map((suggestion) => (
+          {(Array.isArray(items) ? items : []).map(suggestion => (
             <TouchableOpacity
               key={suggestion.id}
               style={styles.chip}
@@ -74,7 +95,11 @@ const SuggestionCards = ({ onSuggestionPress }) => {
               onPress={() => handlePress(suggestion)}
             >
               <View style={styles.iconWrap}>
-                <SvgIcon name={suggestion.icon} size={24} color={suggestion.color || '#75FBFD'} />
+                <SvgIcon
+                  name={suggestion.icon}
+                  size={24}
+                  color={suggestion.color || '#75FBFD'}
+                />
               </View>
               <Text style={styles.chipLabel}>{suggestion.title}</Text>
             </TouchableOpacity>
@@ -86,7 +111,9 @@ const SuggestionCards = ({ onSuggestionPress }) => {
 };
 
 const styles = StyleSheet.create({
-
+  container: {
+    paddingBottom: 12,
+  },
   shell: {
     borderRadius: 24,
     paddingVertical: 4,
@@ -99,14 +126,13 @@ const styles = StyleSheet.create({
   chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#0e0e0fff',
+    backgroundColor: '#0E0E0F',
     borderRadius: 22,
     paddingHorizontal: 11,
     paddingVertical: 8,
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.12)',
     marginRight: 2,
-    // minHeight: 70,
   },
   iconWrap: {
     width: 36,
@@ -124,5 +150,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// Ignore function identity churn; re-render still occurs on i18n context changes
 export default memo(SuggestionCards, () => true);

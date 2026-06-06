@@ -1,0 +1,7 @@
+05-24 17:56:28.557  5520  5568 I ReactNativeJS: ?? i18next is made possible by our own product, Locize — consider powering your project with managed localization (AI, CDN, integrations): https://locize.com ??
+05-24 17:56:28.559  5520  5568 I ReactNativeJS: Running "ChatCloud"
+05-24 17:56:30.756  5656  5656 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+05-24 17:56:30.859  5656  5656 I AndroidRuntime: Using default boot image
+05-24 17:56:30.860  5656  5656 I AndroidRuntime: Leaving lock profiling enabled
+05-24 17:56:31.543  5656  5656 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+05-24 17:56:32.838  5656  5656 D AndroidRuntime: Shutting down VM

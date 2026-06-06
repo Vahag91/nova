@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Animated, StatusBar, Platform } from 'react-native';
+import { StyleSheet, Animated } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 import MyPressable from './MyPressable';
@@ -10,7 +10,7 @@ const TopBackSkipView = ({
   animationController,
 }) => {
   const { top } = useSafeAreaInsets();
-  const marginTop = Platform.OS === 'ios' ? top : StatusBar.currentHeight;
+  const marginTop = top;
 
   const headerTranslateY = animationController.current.interpolate({
     inputRange: [0, 0.2, 0.4, 0.6, 0.8],

@@ -1,0 +1,2 @@
+WARN: Renderer11.cpp:889 (initializeD3DDevice): Failed creating Debug D3D11 device - falling back to release runtime.
+WARN: Renderer11.cpp:889 (initializeD3DDevice): Failed creating Debug D3D11 device - falling back to release runtime.

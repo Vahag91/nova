@@ -31,7 +31,7 @@ export const newSystemMessage = (text) => ({
   createdAt: Date.now(),
 });
 
-export const newThread = ({title='ChatCloud assistant', model='gpt-5-nano', system=null} = {}) => ({
+export const newThread = ({title='ChatCloud assistant', model='gpt-5.4-nano', system=null} = {}) => ({
   id: `thr_${Date.now()}_${Math.random().toString(36).slice(2,8)}`,
   title,
   createdAt: Date.now(),

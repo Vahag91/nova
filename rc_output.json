@@ -1,0 +1,25 @@
+{
+  "current_offering_id": "default",
+  "offerings": [
+    {
+      "description": "The standard set of packages",
+      "identifier": "default",
+      "metadata": null,
+      "packages": [
+        {
+          "identifier": "$rc_weekly",
+          "platform_product_identifier": "7days_weekly",
+          "platform_product_plan_identifier": "7days-weekly"
+        },
+        {
+          "identifier": "$rc_annual",
+          "platform_product_identifier": "360days_annual",
+          "platform_product_plan_identifier": "360days-annual"
+        }
+      ]
+    }
+  ],
+  "placements": {
+    "fallback_offering_id": "default"
+  }
+}

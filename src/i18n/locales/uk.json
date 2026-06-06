@@ -19,7 +19,7 @@
     "gpt-5": "Найпотужніша універсальна ШІ",
     "gpt-5-chat-latest": "Оптимізована для чату та діалогу",
     "gpt-5-mini": "Швидкий і надійний GPT-5",
-    "gpt-5-nano": "Легка модель для простих задач",
+    "gpt-5.4-nano": "Легка модель для простих задач",
     "o4-mini": "Ефективна модель мислення",
     "gpt-4.1-mini": "Компактний і здатний GPT-4.1",
     "claude-3-haiku": "Швидка та зосереджена Anthropic ШІ",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Креативні, стилізовані результати",
       "runwareQwenImage": "Збалансовані, якісні результати",
       "google4": "Найкраща модель AI для зображень",
+      "klingImageO1": "Редагування зображень із точним контролем",
       "fluxKontent": "Flux Kontent налаштований для редагування",
       "runwareProvider": "Збалансована якість з надійною дифузією.",
       "airProvider": "Nano Banana додає грайливий, яскравий тон.",
       "googleProvider": "Google відрегульовано на полірування деталей.",
+      "klingaiProvider": "KlingAI налаштований для точних і контрольованих редагувань.",
       "anthropicProvider": "Пайплайн Claude для тонших настроїв.",
       "default": "Натисніть, щоб дослідити доступні движки."
     }
@@ -657,6 +659,7 @@
       "perMonth": "на місяць"
     },
     "cta": "Продовжити",
+    "ctaFreeTrial": "Спробувати безкоштовно",
     "legal": {
       "terms": "Умови",
       "privacy": "Конфіденційність"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "з порадами щодо продуктивності"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Виберіть тему",
+      "title": "що ти хочеш робити",
+      "subtitle": "Виберіть напрямок і почніть із сильної підказки.",
+      "pickPromptTitle": "Виберіть підказку, щоб почати",
+      "changeTopic": "Виберіть іншу тему",
+      "intents": {
+        "summarize": "Конспектувати текст",
+        "summarizeShort": "Підведіть підсумки",
+        "summarizeHint": "Статті, замітки, голосові нотатки, довгі теми",
+        "plan": "Складіть план",
+        "planHint": "Подорожі, рутини, бюджети, дедлайни, зміни в житті",
+        "brainstorm": "Мозковий штурм",
+        "brainstormHint": "Ідеї, пропозиції, імена, контент, сайд-проекти",
+        "analyze": "Аналізуйте дані",
+        "analyzeHint": "Витрати, відгуки, показники, звички, ефективність"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Створіть бриф засновника",
+          "founderBriefSubtitle": "Витягніть основні ризики, рішення та наступні кроки.",
+          "classNotesTitle": "Очистити мої конспекти",
+          "classNotesSubtitle": "Перетворіть приблизні нотатки на чіткий навчальний посібник.",
+          "meetingHandoffTitle": "Напишіть підсумок передачі",
+          "meetingHandoffSubtitle": "Корисно після зустрічей, дзвінків або довгих внутрішніх розмов.",
+          "longArticleTitle": "Швидко підсумуйте цю статтю",
+          "longArticleSubtitle": "Згорніть довгу статтю на гострі висновки."
+        },
+        "plan": {
+          "energyResetTitle": "Зробіть 14-денне скидання енергії",
+          "energyResetSubtitle": "Реалістичний план сну, їжі, руху та зосередженості.",
+          "mealPlanTitle": "Плануйте страви, які я буду готувати",
+          "mealPlanSubtitle": "Практичний, доступний і заснований на тому, що я маю.",
+          "cityMoveTitle": "Планую переїзд до нового міста",
+          "cityMoveSubtitle": "Розбийте його на графік, бюджет, житлові та адміністративні завдання.",
+          "tripEscapeTitle": "Заплануйте незабутню втечу на вихідні",
+          "tripEscapeSubtitle": "Щось краще, ніж загальний маршрут."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Знайдіть реалістичну побічну суєту",
+          "sideHustleSubtitle": "Ідеї, які я можу почати, працюючи повний робочий день.",
+          "brandAngleTitle": "Знайдіть бренд, який запам’ятовується",
+          "brandAngleSubtitle": "Корисно для продуктів, творців, агентств або інформаційних бюлетенів.",
+          "socialSeriesTitle": "Придумайте серію вмісту",
+          "socialSeriesSubtitle": "Щось достатньо послідовне, щоб збільшити аудиторію.",
+          "datingIdeasTitle": "Вигадуйте свіжі ідеї",
+          "datingIdeasSubtitle": "Побачення, подарунки, сюрпризи чи події, які здаються серйозними."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Знайди, куди витікають мої гроші",
+          "spendingLeaksSubtitle": "Покажіть закономірності, слабкі місця, і першим переможе найлегший.",
+          "customerFeedbackTitle": "Перетворіть відгуки на пріоритети",
+          "customerFeedbackSubtitle": "Кластерні запити, скарги, терміновість і вплив.",
+          "habitPatternsTitle": "Знайди шаблони в моїх звичках",
+          "habitPatternsSubtitle": "Корисно для тренувань, сну, журналювання або журналів концентрації.",
+          "metricsStoryTitle": "Поясніть, що означають цифри",
+          "metricsStorySubtitle": "Більше сигналу, менше шуму електронної таблиці."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

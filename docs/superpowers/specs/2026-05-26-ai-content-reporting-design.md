@@ -21,7 +21,7 @@ Create a Supabase migration for `public.ai_content_reports` with:
 
 - Output identity: `content_type`, `content_id`, `source_screen`.
 - Reporter identity: nullable `user_id`, nullable `device_id`.
-- Classification: `reason`, optional `details`, moderation `status`.
+- Classification: `reason`, reserved nullable `details`, moderation `status`. The in-app UI submits a reason only; `details` remains nullable for schema compatibility.
 - Evidence: optional `prompt`, `output_text`, `image_url`, `image_storage_path`, `model`, and bounded `metadata`.
 - Client context: `app_version`, `platform`.
 - Audit timestamps: `created_at`, `updated_at`.
@@ -33,7 +33,7 @@ Database check constraints restrict `content_type`, `reason`, `status`, and boun
 Add `src/api/reportContent.js` as the single submission boundary. It:
 
 - Validates supported content types and reasons before issuing a request.
-- Removes empty optional fields and truncates optional user details to the database bound.
+- Removes empty optional evidence fields and keeps any future `details` value within the database bound.
 - Obtains the existing device ID and submits through `createSbWithDevice(deviceId)`.
 - Adds `APP_VERSION` and `Platform.OS`.
 - Rejects local/base64 image references rather than uploading media.
@@ -46,7 +46,6 @@ Add `ReportContentModal.jsx`, rendered within the existing screen/modal hierarch
 - Title: `Report AI content`.
 - Explanation: `Tell us what is wrong with this generated content.`
 - Six selectable reasons: sexual or nudity; violence or self-harm; hate or harassment; child safety concern; scam or deceptive content; other.
-- Optional details input.
 - `Cancel` and `Submit Report` actions with loading state.
 - Inline failure message and submitted success state.
 - Private-chat disclosure when applicable.
@@ -76,7 +75,7 @@ Add labeled `Report` next to `Delete`, `Save`, and `Share` in `ImageViewer`. Bui
 
 - Users receive `Thanks. Your report was submitted.` after a successful insert.
 - Failed inserts leave the modal open and display `Could not submit report. Please try again.`
-- A reason is mandatory; details are optional.
+- A reason is mandatory; the in-app report flow does not collect free-text details.
 - Reporting a Private chat item is an explicit exception to private storage, communicated before submission.
 - Report evidence excludes base64 reference images and locally cached image bytes.
 
@@ -86,4 +85,3 @@ Add labeled `Report` next to `Delete`, `Save`, and `Share` in `ImageViewer`. Bui
 - Run the Jest suite and lint.
 - Run an Android release/debug build task available in the project, or report the precise blocker.
 - Manually verify the in-app flow on chat output, new text-to-image output, edited output, and a stored gallery image.
-

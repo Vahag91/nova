@@ -19,7 +19,7 @@
     "gpt-5": "Kraftigste allround KI",
     "gpt-5-chat-latest": "Optimalisert for chat og dialog",
     "gpt-5-mini": "Rask og pålitelig GPT-5",
-    "gpt-5-nano": "Lett modell for enkle oppgaver",
+    "gpt-5.4-nano": "Lett modell for enkle oppgaver",
     "o4-mini": "Effektiv resonneringsmodell",
     "gpt-4.1-mini": "Kompakt og kapabel GPT-4.1",
     "claude-3-haiku": "Rask og fokusert Anthropic-KI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Kreative, stiliserte resultater",
       "runwareQwenImage": "Balanserte, høy­kvalitets bilder",
       "google4": "Beste KI-bildemodell",
+      "klingImageO1": "Bilderedigering med høy kontroll",
       "fluxKontent": "Flux Kontent justert for redigering",
       "runwareProvider": "Balansert kvalitet med pålitelig diffusjon.",
       "airProvider": "Nano Banana gir et lekent, livlig preg.",
       "googleProvider": "Google finjustert for polerte detaljer.",
+      "klingaiProvider": "KlingAI er finjustert for kontrollerte redigeringer.",
       "anthropicProvider": "Claude-pipeline for mer nyanserte uttrykk.",
       "default": "Trykk for å utforske tilgjengelige motorer."
     }
@@ -657,6 +659,7 @@
       "perMonth": "per måned"
     },
     "cta": "Fortsett",
+    "ctaFreeTrial": "Prøv gratis",
     "legal": {
       "terms": "Vilkår",
       "privacy": "Personvern"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "med produktivitetstips"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Velg et emne",
+      "title": "Hva vil du gjøre?",
+      "subtitle": "Velg en retning, og start deretter med en sterk melding.",
+      "pickPromptTitle": "Velg en melding for å starte",
+      "changeTopic": "Velg et annet emne",
+      "intents": {
+        "summarize": "Oppsummer tekst",
+        "summarizeShort": "Oppsummer",
+        "summarizeHint": "Artikler, notater, talememoer, lange tråder",
+        "plan": "Lag en plan",
+        "planHint": "Turer, rutiner, budsjetter, frister, endringer i livet",
+        "brainstorm": "Brainstorm",
+        "brainstormHint": "Ideer, tilbud, navn, innhold, sideprosjekter",
+        "analyze": "Analyser data",
+        "analyzeHint": "Utgifter, tilbakemeldinger, beregninger, vaner, ytelse"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Lag en grunnleggerbrief",
+          "founderBriefSubtitle": "Trekk ut de viktigste risikoene, beslutningene og neste trinn.",
+          "classNotesTitle": "Rydd opp i studienotatene mine",
+          "classNotesSubtitle": "Gjør grove notater til en tydelig studieveiledning.",
+          "meetingHandoffTitle": "Skriv et overleveringssammendrag",
+          "meetingHandoffSubtitle": "Nyttig etter møter, samtaler eller lange interne tråder.",
+          "longArticleTitle": "Oppsummer denne artikkelen raskt",
+          "longArticleSubtitle": "Kondenser en lang artikkel til skarpe takeaways."
+        },
+        "plan": {
+          "energyResetTitle": "Bygg en 14-dagers energitilbakestilling",
+          "energyResetSubtitle": "En realistisk plan for søvn, mat, bevegelse og fokus.",
+          "mealPlanTitle": "Planlegg måltider jeg faktisk skal lage",
+          "mealPlanSubtitle": "Praktisk, rimelig, og basert på det jeg har.",
+          "cityMoveTitle": "Planlegg flyttingen min til en ny by",
+          "cityMoveSubtitle": "Del det inn i tidslinje, budsjett, bolig og administrasjonsoppgaver.",
+          "tripEscapeTitle": "Planlegg en minneverdig helgetur",
+          "tripEscapeSubtitle": "Noe bedre enn en generisk reiserute."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Finn et realistisk sidekjas",
+          "sideHustleSubtitle": "Ideer jeg kan starte mens jeg jobber fulltid.",
+          "brandAngleTitle": "Finn en minneverdig merkevinkel",
+          "brandAngleSubtitle": "Nyttig for produkter, skapere, byråer eller nyhetsbrev.",
+          "socialSeriesTitle": "Oppfinn en innholdsserie",
+          "socialSeriesSubtitle": "Noe konsistent nok til å vokse et publikum.",
+          "datingIdeasTitle": "Kom med friske ideer",
+          "datingIdeasSubtitle": "Datoer, gaver, overraskelser eller hendelser som føles gjennomtenkte."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Finn hvor pengene mine lekker",
+          "spendingLeaksSubtitle": "Vis mønstre, svake punkter, og den enkleste vinner først.",
+          "customerFeedbackTitle": "Gjør tilbakemelding til prioriteringer",
+          "customerFeedbackSubtitle": "Klyngeforespørsler, klager, haster og innvirkning.",
+          "habitPatternsTitle": "Finn mønstre i vanene mine",
+          "habitPatternsSubtitle": "Nyttig for treningsøkter, søvn, journalføring eller fokuslogger.",
+          "metricsStoryTitle": "Forklar hva tallene betyr",
+          "metricsStorySubtitle": "Mer signal, mindre regnearkstøy."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

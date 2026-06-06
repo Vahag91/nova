@@ -19,7 +19,7 @@
     "gpt-5": "Najpotężniejsza AI do wielu zastosowań",
     "gpt-5-chat-latest": "Zoptymalizowany do czatu i dialogu",
     "gpt-5-mini": "Szybki i niezawodny GPT-5",
-    "gpt-5-nano": "Lekki model do prostych zadań",
+    "gpt-5.4-nano": "Lekki model do prostych zadań",
     "o4-mini": "Wydajny model rozumowania",
     "gpt-4.1-mini": "Kompaktowy i mocny GPT-4.1",
     "claude-3-haiku": "Szybka i skupiona AI od Anthropic",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Kreatywne, stylizowane rezultaty",
       "runwareQwenImage": "Zrównoważona, wysoka jakość",
       "google4": "Najlepszy model AI do obrazów",
+      "klingImageO1": "Edycja obrazów z dużą kontrolą",
       "fluxKontent": "Flux Kontent dostrojony do edycji",
       "runwareProvider": "Zrównoważona jakość i stabilna dyfuzja.",
       "airProvider": "Nano Banana dodaje żywy, zabawny charakter.",
       "googleProvider": "Google dopracowany do szczegółów.",
+      "klingaiProvider": "KlingAI został dostrojony do kontrolowanej edycji.",
       "anthropicProvider": "Potok Claude do bardziej zniuansowanych efektów.",
       "default": "Stuknij, aby zobaczyć dostępne silniki."
     }
@@ -657,6 +659,7 @@
       "perMonth": "miesięcznie"
     },
     "cta": "Kontynuuj",
+    "ctaFreeTrial": "Wypróbuj za darmo",
     "legal": {
       "terms": "Warunki",
       "privacy": "Prywatność"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "z poradami produktywności"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Wybierz temat",
+      "title": "Co chcesz zrobić?",
+      "subtitle": "Wybierz kierunek, a następnie zacznij od mocnego podpowiedzi.",
+      "pickPromptTitle": "Wybierz monit, aby rozpocząć",
+      "changeTopic": "Wybierz inny temat",
+      "intents": {
+        "summarize": "Podsumuj tekst",
+        "summarizeShort": "Podsumuj",
+        "summarizeHint": "Artykuły, notatki, notatki głosowe, długie wątki",
+        "plan": "Zrób plan",
+        "planHint": "Podróże, rutyny, budżety, terminy, zmiany w życiu",
+        "brainstorm": "Burza mózgów",
+        "brainstormHint": "Pomysły, oferty, nazwy, treści, projekty poboczne",
+        "analyze": "Analizuj dane",
+        "analyzeHint": "Wydatki, opinie, wskaźniki, nawyki, wydajność"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Utwórz brief założycielski",
+          "founderBriefSubtitle": "Wyciągnij główne ryzyka, decyzje i kolejne kroki.",
+          "classNotesTitle": "Posprzątaj moje notatki z nauki",
+          "classNotesSubtitle": "Zmień szorstkie notatki w przejrzysty podręcznik do nauki.",
+          "meetingHandoffTitle": "Napisz podsumowanie przekazania",
+          "meetingHandoffSubtitle": "Przydatne po spotkaniach, rozmowach telefonicznych lub długich wątkach wewnętrznych.",
+          "longArticleTitle": "Podsumuj szybko ten artykuł",
+          "longArticleSubtitle": "Skondensuj długi artykuł w krótkie podsumowania."
+        },
+        "plan": {
+          "energyResetTitle": "Zbuduj 14-dniowy reset energetyczny",
+          "energyResetSubtitle": "Realistyczny plan snu, jedzenia, ruchu i skupienia.",
+          "mealPlanTitle": "Zaplanuj posiłki, które faktycznie ugotuję",
+          "mealPlanSubtitle": "Praktyczny, niedrogi i oparty na tym, co mam.",
+          "cityMoveTitle": "Zaplanuj moją przeprowadzkę do nowego miasta",
+          "cityMoveSubtitle": "Podziel go na oś czasu, budżet, mieszkania i zadania administracyjne.",
+          "tripEscapeTitle": "Zaplanuj niezapomniany weekendowy wypad",
+          "tripEscapeSubtitle": "Coś lepszego niż ogólny plan podróży."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Znajdź realistyczny poboczny zgiełk",
+          "sideHustleSubtitle": "Pomysły, które mogę rozpocząć pracując na pełen etat.",
+          "brandAngleTitle": "Znajdź niezapomniany punkt widzenia marki",
+          "brandAngleSubtitle": "Przydatne w przypadku produktów, twórców, agencji lub biuletynów.",
+          "socialSeriesTitle": "Wymyśl serię treści",
+          "socialSeriesSubtitle": "Coś na tyle spójnego, aby zwiększyć grono odbiorców.",
+          "datingIdeasTitle": "Wpadaj na świeże pomysły",
+          "datingIdeasSubtitle": "Daty, prezenty, niespodzianki lub wydarzenia, które wydają się przemyślane."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Dowiedz się, gdzie wyciekają moje pieniądze",
+          "spendingLeaksSubtitle": "Najpierw pokaż wzorce, słabe punkty i najłatwiejsze wygrane.",
+          "customerFeedbackTitle": "Zmień informację zwrotną w priorytety",
+          "customerFeedbackSubtitle": "Wnioski, skargi, pilność i wpływ klastra.",
+          "habitPatternsTitle": "Znajdź wzorce w moich nawykach",
+          "habitPatternsSubtitle": "Przydatne do treningów, snu, dziennika lub dzienników skupienia.",
+          "metricsStoryTitle": "Wyjaśnij, co oznaczają liczby",
+          "metricsStorySubtitle": "Więcej sygnału, mniej szumów w arkuszach kalkulacyjnych."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

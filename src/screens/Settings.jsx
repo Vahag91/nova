@@ -21,9 +21,10 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import HeroBanner from '../components/settings/HeroBanner';
 import RateUsService from '../services/RateUsService';
 import { perfLog } from '../lib/perfTrace';
+import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
 
 const LINKS = {
-  privacy: 'https://aicloudsolutions.app/privacy',
+  privacy: 'https://aicloudsolutions.app/privacy/chatcloud',
   terms: 'https://aicloudsolutions.app/terms',
   support: 'https://aicloudsolutions.app/contact',
 };
@@ -78,10 +79,15 @@ export default function Settings() {
   const { reportScreenReady } = useAndroidNavigationMenu();
   const clearThreads = useThreadsStore(s => s.reset);
   const subscription = useContext(SubscriptionContext);
-  const isPremium = !!subscription?.isPremium;
   const restorePurchases = subscription?.restorePurchases;
 
   const [restoring, setRestoring] = useState(false);
+  const [hasPremiumAccess, setHasPremiumAccess] = useState(
+    () => !!subscription?.isPremium,
+  );
+  const [premiumStatusResolved, setPremiumStatusResolved] = useState(
+    () => !!subscription?.isPremium || !subscription?.paymentsEnabled,
+  );
   const rootLayoutLoggedRef = useRef(false);
   const rootLayoutSeenRef = useRef(false);
   const screenReadyReportedRef = useRef(false);
@@ -113,10 +119,46 @@ export default function Settings() {
     }
   }, [isFocused, reportScreenReady]);
 
+  useEffect(() => {
+    let cancelled = false;
+    const cachedPremium = !!subscription?.isPremium;
+    const paymentsEnabled = !!subscription?.paymentsEnabled;
+
+    setHasPremiumAccess(cachedPremium);
+    setPremiumStatusResolved(cachedPremium || !paymentsEnabled);
+
+    if (!isFocused) {
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    (async () => {
+      const resolvedPremium = await resolvePremiumStatus(subscription);
+      if (cancelled) {
+        return;
+      }
+
+      setHasPremiumAccess(resolvedPremium);
+      setPremiumStatusResolved(true);
+    })().catch(() => {
+      if (!cancelled) {
+        setPremiumStatusResolved(true);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    isFocused,
+    subscription,
+    subscription?.isPremium,
+    subscription?.paymentsEnabled,
+  ]);
+
   const openUrlSafe = useCallback(async (url, fallbackMessage) => {
     try {
-      const supported = await Linking.canOpenURL(url);
-      if (!supported) throw new Error('unsupported');
       await Linking.openURL(url);
     } catch (error) {
       Alert.alert(
@@ -126,20 +168,38 @@ export default function Settings() {
     }
   }, [t]);
 
-  const handleUpgrade = useCallback(() => {
-    if (isPremium) return;
+  const handleUpgrade = useCallback(async () => {
+    if (await resolvePremiumStatus(subscription)) return;
     navigation.navigate('PaywallScreen', { returnTo: 'Settings' });
-  }, [isPremium, navigation]);
+  }, [navigation, subscription]);
 
   const handleRestore = useCallback(async () => {
     if (!restorePurchases) return;
     setRestoring(true);
     try {
-      await restorePurchases();
-      Alert.alert(
-        t('settings.alerts.restoreSuccessTitle'),
-        t('settings.alerts.restoreSuccessMessage'),
-      );
+      const info = await restorePurchases();
+      const restored =
+        Object.keys(info?.entitlements?.active || {}).length > 0 ||
+        (await resolvePremiumStatus(subscription));
+
+      setHasPremiumAccess(restored);
+      setPremiumStatusResolved(true);
+
+      if (restored) {
+        Alert.alert(
+          t('settings.alerts.restoreSuccessTitle'),
+          t('settings.alerts.restoreSuccessMessage'),
+        );
+      } else {
+        Alert.alert(
+          t('settings.alerts.restoreEmptyTitle', {
+            defaultValue: 'No purchases found',
+          }),
+          t('settings.alerts.restoreEmptyMessage', {
+            defaultValue: 'We could not find an active purchase to restore for this account.',
+          }),
+        );
+      }
     } catch (error) {
       Alert.alert(
         t('settings.alerts.restoreErrorTitle'),
@@ -148,7 +208,7 @@ export default function Settings() {
     } finally {
       setRestoring(false);
     }
-  }, [restorePurchases, t]);
+  }, [restorePurchases, subscription, t]);
 
   const handleClearData = useCallback(() => {
     Alert.alert(
@@ -188,7 +248,7 @@ export default function Settings() {
       const items = [];
       
       // Only show "Get Premium" if user is not premium
-      if (!isPremium) {
+      if (premiumStatusResolved && !hasPremiumAccess) {
         items.push({
           key: 'premium',
           title: t('settings.rows.getPremium.title'),
@@ -215,7 +275,14 @@ export default function Settings() {
       
       return items;
     },
-    [handleUpgrade, handleRestore, isPremium, restoring, t],
+    [
+      handleUpgrade,
+      handleRestore,
+      hasPremiumAccess,
+      premiumStatusResolved,
+      restoring,
+      t,
+    ],
   );
 
   const supportItems = useMemo(
@@ -280,10 +347,18 @@ export default function Settings() {
       premiumItems: premiumItems.length,
       dataItems: dataItems.length,
       supportItems: supportItems.length,
-      isPremium,
+      isPremium: hasPremiumAccess,
+      premiumStatusResolved,
       restoring,
     });
-  }, [dataItems.length, isPremium, premiumItems.length, restoring, supportItems.length]);
+  }, [
+    dataItems.length,
+    hasPremiumAccess,
+    premiumItems.length,
+    premiumStatusResolved,
+    restoring,
+    supportItems.length,
+  ]);
 
   const wrapSettingPress = useCallback((key, onPress) => () => {
     perfLog('settings.row.press', {
@@ -334,7 +409,7 @@ export default function Settings() {
           });
         }}
       >
-        {!isPremium ? (
+        {premiumStatusResolved && !hasPremiumAccess ? (
           <HeroBanner onPress={handleUpgrade} />
         ) : null}
 
@@ -428,12 +503,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.08)',
     marginLeft: 60,
     marginRight: 12,
-  },
-  versionLabel: {
-    textAlign: 'center',
-    color: 'rgba(148,163,184,0.7)',
-    fontSize: 13,
-    marginTop: 12,
-    marginBottom: 12,
   },
 });

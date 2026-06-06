@@ -19,7 +19,7 @@
     "gpt-5": "最强大的通用 AI",
     "gpt-5-chat-latest": "为聊天与对话优化",
     "gpt-5-mini": "快速且可靠的 GPT-5",
-    "gpt-5-nano": "适合简单任务的轻量模型",
+    "gpt-5.4-nano": "适合简单任务的轻量模型",
     "o4-mini": "高效推理模型",
     "gpt-4.1-mini": "紧凑且强大的 GPT-4.1",
     "claude-3-haiku": "快速且专注的 Anthropic AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "富有创意、风格化的效果",
       "runwareQwenImage": "均衡且高质量的效果",
       "google4": "最好的 AI 图像模型",
+      "klingImageO1": "高精度图像编辑",
       "fluxKontent": "为编辑优化的 Flux Kontent",
       "runwareProvider": "在质量与稳定扩散之间取得平衡。",
       "airProvider": "Nano Banana 增加了鲜艳活泼的色调。",
       "googleProvider": "Google 打磨出精致细节。",
+      "klingaiProvider": "KlingAI 已针对可控编辑进行了优化。",
       "anthropicProvider": "Claude 流程带来更细腻的氛围。",
       "default": "点按以查看可用引擎。"
     }
@@ -657,6 +659,7 @@
       "perMonth": "每月"
     },
     "cta": "继续",
+    "ctaFreeTrial": "免费试用",
     "legal": {
       "terms": "条款",
       "privacy": "隐私"
@@ -769,6 +772,66 @@
       "explainConceptSubtitle": "用简单的语言",
       "planDay": "规划我的一天",
       "planDaySubtitle": "附带效率小技巧"
+    },
+    "home": {
+      "eyebrow": "选择一个主题",
+      "title": "你想做什么？",
+      "subtitle": "选择一个方向，然后以强烈的提示开始。",
+      "pickPromptTitle": "选择提示开始",
+      "changeTopic": "选择另一个主题",
+      "intents": {
+        "summarize": "总结文本",
+        "summarizeShort": "总结",
+        "summarizeHint": "文章、笔记、语音备忘录、长线程",
+        "plan": "制定计划",
+        "planHint": "旅行、日常事务、预算、截止日期、生活变化",
+        "brainstorm": "头脑风暴",
+        "brainstormHint": "想法、提议、名称、内容、副项目",
+        "analyze": "分析数据",
+        "analyzeHint": "支出、反馈、指标、习惯、绩效"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "创建创始人简介",
+          "founderBriefSubtitle": "列出主要风险、决策和后续步骤。",
+          "classNotesTitle": "清理我的学习笔记",
+          "classNotesSubtitle": "将粗略的笔记变成清晰的学习指南。",
+          "meetingHandoffTitle": "写一份交接总结",
+          "meetingHandoffSubtitle": "在会议、通话或长时间的内部讨论后很有用。",
+          "longArticleTitle": "快速总结一下这篇文章",
+          "longArticleSubtitle": "将长篇文章浓缩成尖锐的要点。"
+        },
+        "plan": {
+          "energyResetTitle": "进行 14 天的能量重置",
+          "energyResetSubtitle": "针对睡眠、食物、运动和注意力的现实计划。",
+          "mealPlanTitle": "计划我实际上会做饭的饭菜",
+          "mealPlanSubtitle": "实用，实惠，基于我所拥有的。",
+          "cityMoveTitle": "计划我搬到一个新城市",
+          "cityMoveSubtitle": "将其分解为时间表、预算、住房和管理任务。",
+          "tripEscapeTitle": "计划一次难忘的周末度假",
+          "tripEscapeSubtitle": "比通用行程更好的东西。"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "寻找现实的副业",
+          "sideHustleSubtitle": "我可以在全职工作时开始的想法。",
+          "brandAngleTitle": "寻找令人难忘的品牌角度",
+          "brandAngleSubtitle": "对于产品、创作者、机构或时事通讯很有用。",
+          "socialSeriesTitle": "发明一个内容系列",
+          "socialSeriesSubtitle": "足够一致的东西可以增加观众。",
+          "datingIdeasTitle": "提出新鲜的想法",
+          "datingIdeasSubtitle": "约会、礼物、惊喜或深思熟虑的活动。"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "找出我的钱流失的地方",
+          "spendingLeaksSubtitle": "首先展示模式、弱点和最简单的胜利。",
+          "customerFeedbackTitle": "将反馈转化为优先事项",
+          "customerFeedbackSubtitle": "集群请求、投诉、紧迫性和影响。",
+          "habitPatternsTitle": "发现我的习惯模式",
+          "habitPatternsSubtitle": "对于锻炼、睡眠、日记或焦点日志很有用。",
+          "metricsStoryTitle": "解释一下数字的含义",
+          "metricsStorySubtitle": "更多信号，更少电子表格噪音。"
+        }
+      }
     }
   },
   "imageUpload": {

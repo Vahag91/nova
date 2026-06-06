@@ -1,0 +1,2 @@
+05-24 17:59:49.417  8489  8517 I ReactNativeJS: ?? i18next is made possible by our own product, Locize — consider powering your project with managed localization (AI, CDN, integrations): https://locize.com ??
+05-24 17:59:49.417  8489  8517 I ReactNativeJS: Running "ChatCloud"

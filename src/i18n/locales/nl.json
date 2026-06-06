@@ -19,7 +19,7 @@
     "gpt-5": "Meest krachtige alles-in-één AI",
     "gpt-5-chat-latest": "Geoptimaliseerd voor chat en dialoog",
     "gpt-5-mini": "Snel en betrouwbaar GPT-5",
-    "gpt-5-nano": "Licht model voor eenvoudige taken",
+    "gpt-5.4-nano": "Licht model voor eenvoudige taken",
     "o4-mini": "Efficiënt redeneermodel",
     "gpt-4.1-mini": "Compact, capabel GPT-4.1",
     "claude-3-haiku": "Snelle en gerichte Anthropic-AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Creatief en gestileerd",
       "runwareQwenImage": "Gebalanceerd en hoge kwaliteit",
       "google4": "Beste afbeeldingsmodel van Google",
+      "klingImageO1": "Beeldbewerking met veel controle",
       "fluxKontent": "Flux Kontent afgestemd op edits",
       "runwareProvider": "Gebalanceerde kwaliteit met betrouwbare diffusie.",
       "airProvider": "Nano Banana geeft speelse, levendige toon.",
       "googleProvider": "Google getuned voor verfijnde details.",
+      "klingaiProvider": "KlingAI is afgestemd op gecontroleerde bewerkingen.",
       "anthropicProvider": "Claude-pipeline voor genuanceerde sferen.",
       "default": "Tik om de beschikbare engines te verkennen."
     }
@@ -657,6 +659,7 @@
       "perMonth": "per maand"
     },
     "cta": "Doorgaan",
+    "ctaFreeTrial": "Probeer gratis",
     "legal": {
       "terms": "Voorwaarden",
       "privacy": "Privacy"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "met productiviteitstips"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Kies een onderwerp",
+      "title": "Wat wil je doen?",
+      "subtitle": "Kies een richting en begin met een krachtige prompt.",
+      "pickPromptTitle": "Kies een prompt om te starten",
+      "changeTopic": "Kies een ander onderwerp",
+      "intents": {
+        "summarize": "Vat de tekst samen",
+        "summarizeShort": "Samenvatten",
+        "summarizeHint": "Artikelen, notities, spraakmemo's, lange discussies",
+        "plan": "Maak een plan",
+        "planHint": "Reizen, routines, budgetten, deadlines, levensveranderingen",
+        "brainstorm": "Brainstormen",
+        "brainstormHint": "Ideeën, aanbiedingen, namen, inhoud, zijprojecten",
+        "analyze": "Analyseer gegevens",
+        "analyzeHint": "Uitgaven, feedback, statistieken, gewoonten, prestaties"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Maak een oprichtersbriefing",
+          "founderBriefSubtitle": "Haal de belangrijkste risico's, beslissingen en volgende stappen eruit.",
+          "classNotesTitle": "Ruim mijn studieaantekeningen op",
+          "classNotesSubtitle": "Maak van ruwe aantekeningen een duidelijke studiegids.",
+          "meetingHandoffTitle": "Schrijf een samenvatting van de overdracht",
+          "meetingHandoffSubtitle": "Handig na vergaderingen, gesprekken of lange interne discussies.",
+          "longArticleTitle": "Vat dit artikel snel samen",
+          "longArticleSubtitle": "Verkort een lang artikel tot scherpe afhaalrestaurants."
+        },
+        "plan": {
+          "energyResetTitle": "Bouw een energiereset van 14 dagen op",
+          "energyResetSubtitle": "Een realistisch plan voor slaap, eten, beweging en focus.",
+          "mealPlanTitle": "Plan maaltijden die ik daadwerkelijk ga koken",
+          "mealPlanSubtitle": "Praktisch, betaalbaar en gebaseerd op wat ik heb.",
+          "cityMoveTitle": "Plan mijn verhuizing naar een nieuwe stad",
+          "cityMoveSubtitle": "Verdeel het in tijdlijn, budget, huisvesting en administratieve taken.",
+          "tripEscapeTitle": "Plan een onvergetelijk weekendje weg",
+          "tripEscapeSubtitle": "Iets beters dan een generiek reisschema."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Zoek een realistische bijbaan",
+          "sideHustleSubtitle": "Ideeën waar ik mee kan beginnen terwijl ik fulltime werk.",
+          "brandAngleTitle": "Vind een gedenkwaardige merkhoek",
+          "brandAngleSubtitle": "Handig voor producten, makers, bureaus of nieuwsbrieven.",
+          "socialSeriesTitle": "Bedenk een inhoudsreeks",
+          "socialSeriesSubtitle": "Iets consistent genoeg om een publiek te laten groeien.",
+          "datingIdeasTitle": "Kom met frisse ideeën",
+          "datingIdeasSubtitle": "Datums, geschenken, verrassingen of gebeurtenissen die attent aanvoelen."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Zoek waar mijn geld lekt",
+          "spendingLeaksSubtitle": "Laat patronen, zwakke plekken en de gemakkelijkste overwinningen eerst zien.",
+          "customerFeedbackTitle": "Zet feedback om in prioriteiten",
+          "customerFeedbackSubtitle": "Cluster verzoeken, klachten, urgentie en impact.",
+          "habitPatternsTitle": "Ontdek patronen in mijn gewoontes",
+          "habitPatternsSubtitle": "Handig voor trainingen, slaap, dagboekregistratie of focuslogboeken.",
+          "metricsStoryTitle": "Leg uit wat de cijfers betekenen",
+          "metricsStorySubtitle": "Meer signaal, minder spreadsheetruis."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

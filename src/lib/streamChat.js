@@ -2,7 +2,7 @@
 import { CHAT_PROXY_URL } from '../config/endpoints';
 import { readSSE } from '../lib/sse';
 
-const DEFAULT_FALLBACK_MODEL = 'gpt-5-nano';
+const DEFAULT_FALLBACK_MODEL = 'gpt-5.4-nano';
 const logStream = (...args) => {
   // Logging disabled for production
 };

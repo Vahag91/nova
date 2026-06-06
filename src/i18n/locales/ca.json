@@ -19,7 +19,7 @@
     "gpt-5": "IA més potent i polivalent",
     "gpt-5-chat-latest": "Optimitzat per a xat i diàleg",
     "gpt-5-mini": "GPT-5 ràpid i fiable",
-    "gpt-5-nano": "Model lleuger per a tasques simples",
+    "gpt-5.4-nano": "Model lleuger per a tasques simples",
     "o4-mini": "Model de raonament eficient",
     "gpt-4.1-mini": "GPT-4.1 compacte i capaç",
     "claude-3-haiku": "IA d'Anthropic ràpida i enfocada",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Creatiu i estilitzat",
       "runwareQwenImage": "Qualitat alta i equilibrada",
       "google4": "Millor model d’imatge de Google",
+      "klingImageO1": "Edició d'imatges amb un alt nivell de control",
       "fluxKontent": "Flux Kontent ajustat per a edició",
       "runwareProvider": "Qualitat equilibrada amb difusió fiable.",
       "airProvider": "Nano Banana afegeix un toc viu i juganer.",
       "googleProvider": "Google ajustat per a detalls polits.",
+      "klingaiProvider": "KlingAI està ajustat per a edicions controlades.",
       "anthropicProvider": "Canal Claude per a ambients més matisats.",
       "default": "Toca per explorar els motors disponibles."
     }
@@ -657,6 +659,7 @@
       "perMonth": "per mes"
     },
     "cta": "Continua",
+    "ctaFreeTrial": "Prova-ho gratis",
     "legal": {
       "terms": "Termes",
       "privacy": "Privacitat"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "amb consells de productivitat"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Trieu un tema",
+      "title": "Què vols fer?",
+      "subtitle": "Trieu una direcció i, a continuació, comenceu amb un missatge fort.",
+      "pickPromptTitle": "Trieu una indicació per començar",
+      "changeTopic": "Trieu un altre tema",
+      "intents": {
+        "summarize": "Resumir el text",
+        "summarizeShort": "Resumir",
+        "summarizeHint": "Articles, notes, notes de veu, fils llargs",
+        "plan": "Fes un pla",
+        "planHint": "Viatges, rutines, pressupostos, terminis, canvis de vida",
+        "brainstorm": "Pluja d'idees",
+        "brainstormHint": "Idees, ofertes, noms, continguts, projectes paralels",
+        "analyze": "Analitzar dades",
+        "analyzeHint": "Despesa, feedback, mètriques, hàbits, rendiment"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Creeu un resum del fundador",
+          "founderBriefSubtitle": "Extreu els principals riscos, decisions i passos següents.",
+          "classNotesTitle": "Netegeu les meves notes d'estudi",
+          "classNotesSubtitle": "Converteix les notes aproximades en una guia d'estudi clara.",
+          "meetingHandoffTitle": "Escriu un resum del lliurament",
+          "meetingHandoffSubtitle": "Útil després de reunions, trucades o fils interns llargs.",
+          "longArticleTitle": "Resumeix ràpidament aquest article",
+          "longArticleSubtitle": "Condenseu un article llarg en conclusions contundents."
+        },
+        "plan": {
+          "energyResetTitle": "Construeix un restabliment d'energia de 14 dies",
+          "energyResetSubtitle": "Un pla realista per dormir, menjar, moviment i concentració.",
+          "mealPlanTitle": "Planifica els àpats que cuinaré",
+          "mealPlanSubtitle": "Pràctic, assequible i basat en el que tinc.",
+          "cityMoveTitle": "Planifica el meu trasllat a una nova ciutat",
+          "cityMoveSubtitle": "Dividiu-lo en tasques de cronologia, pressupost, habitatge i administració.",
+          "tripEscapeTitle": "Planifica una escapada de cap de setmana memorable",
+          "tripEscapeSubtitle": "Alguna cosa millor que un itinerari genèric."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Trobeu un enrenou lateral realista",
+          "sideHustleSubtitle": "Idees que puc començar treballant a temps complet.",
+          "brandAngleTitle": "Trobeu un angle de marca memorable",
+          "brandAngleSubtitle": "Útil per a productes, creadors, agències o butlletins informatius.",
+          "socialSeriesTitle": "Inventa una sèrie de continguts",
+          "socialSeriesSubtitle": "Una cosa prou coherent per fer créixer un públic.",
+          "datingIdeasTitle": "Proporcioneu idees noves",
+          "datingIdeasSubtitle": "Cites, regals, sorpreses o esdeveniments que semblin reflexius."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Troba on s'estan filtrant els meus diners",
+          "spendingLeaksSubtitle": "Mostra primer els patrons, els punts febles i els més fàcils.",
+          "customerFeedbackTitle": "Converteix els comentaris en prioritats",
+          "customerFeedbackSubtitle": "Clúster de sol·licituds, queixes, urgència i impacte.",
+          "habitPatternsTitle": "Detectar patrons en els meus hàbits",
+          "habitPatternsSubtitle": "Útil per fer entrenaments, dormir, fer un diari o registres de concentració.",
+          "metricsStoryTitle": "Explica què volen dir els números",
+          "metricsStorySubtitle": "Més senyal, menys soroll del full de càlcul."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

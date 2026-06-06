@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "https://esm.sh/@supabase/functions-js/edge-runtime.d.ts": "https://esm.sh/@supabase/functions-js/edge-runtime.d.ts"
-  }
-}

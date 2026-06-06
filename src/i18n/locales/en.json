@@ -19,7 +19,7 @@
     "gpt-5": "Most powerful all-purpose AI",
     "gpt-5-chat-latest": "Optimized for chat and dialogue",
     "gpt-5-mini": "Fast and reliable GPT-5",
-    "gpt-5-nano": "Light model for simple tasks",
+    "gpt-5.4-nano": "Light model for simple tasks",
     "o4-mini": "Efficient reasoning model",
     "gpt-4.1-mini": "Compact, capable GPT-4.1",
     "claude-3-haiku": "Fast and focused Anthropic AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Creative, stylized results",
       "runwareQwenImage": "Balanced, high-quality results",
       "google4": "Best AI image model",
+      "klingImageO1": "High-control image editing",
       "fluxKontent": "Flux Kontent tuned for edits",
       "runwareProvider": "Balanced quality with reliable diffusion.",
       "airProvider": "Nano Banana adds playful, vivid tone.",
       "googleProvider": "Google tuned for polished details.",
+      "klingaiProvider": "KlingAI tuned for controlled edits.",
       "anthropicProvider": "Claude pipeline for nuanced moods.",
       "default": "Tap to explore available engines."
     }
@@ -665,6 +667,7 @@
       "perMonth": "per month"
     },
     "cta": "Continue",
+    "ctaFreeTrial": "Try It For Free",
     "legal": {
       "terms": "Terms",
       "privacy": "Privacy"
@@ -777,6 +780,66 @@
       "explainConceptSubtitle": "in simple terms",
       "planDay": "Plan my day",
       "planDaySubtitle": "with productivity tips"
+    },
+    "home": {
+      "eyebrow": "Choose a topic",
+      "title": "What do you want to do?",
+      "subtitle": "Choose a direction, then start with a strong prompt.",
+      "pickPromptTitle": "Choose a prompt to start",
+      "changeTopic": "Choose another topic",
+      "intents": {
+        "summarize": "Summarize text",
+        "summarizeShort": "Summarize",
+        "summarizeHint": "Articles, notes, voice memos, long threads",
+        "plan": "Make a plan",
+        "planHint": "Trips, routines, budgets, deadlines, life changes",
+        "brainstorm": "Brainstorm",
+        "brainstormHint": "Ideas, offers, names, content, side projects",
+        "analyze": "Analyze data",
+        "analyzeHint": "Spending, feedback, metrics, habits, performance"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Create a founder brief",
+          "founderBriefSubtitle": "Pull out the main risks, decisions, and next steps.",
+          "classNotesTitle": "Clean up my study notes",
+          "classNotesSubtitle": "Turn rough notes into a clear study guide.",
+          "meetingHandoffTitle": "Write a handoff summary",
+          "meetingHandoffSubtitle": "Useful after meetings, calls, or long internal threads.",
+          "longArticleTitle": "Summarize this article quickly",
+          "longArticleSubtitle": "Condense a long article into sharp takeaways."
+        },
+        "plan": {
+          "energyResetTitle": "Build a 14-day energy reset",
+          "energyResetSubtitle": "A realistic plan for sleep, food, movement, and focus.",
+          "mealPlanTitle": "Plan meals I will actually cook",
+          "mealPlanSubtitle": "Practical, affordable, and based on what I have.",
+          "cityMoveTitle": "Plan my move to a new city",
+          "cityMoveSubtitle": "Break it into timeline, budget, housing, and admin tasks.",
+          "tripEscapeTitle": "Plan a memorable weekend escape",
+          "tripEscapeSubtitle": "Something better than a generic itinerary."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Find a realistic side hustle",
+          "sideHustleSubtitle": "Ideas I can start while working full-time.",
+          "brandAngleTitle": "Find a memorable brand angle",
+          "brandAngleSubtitle": "Useful for products, creators, agencies, or newsletters.",
+          "socialSeriesTitle": "Invent a content series",
+          "socialSeriesSubtitle": "Something consistent enough to grow an audience.",
+          "datingIdeasTitle": "Come up with fresh ideas",
+          "datingIdeasSubtitle": "Dates, gifts, surprises, or events that feel thoughtful."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Find where my money is leaking",
+          "spendingLeaksSubtitle": "Show patterns, weak spots, and the easiest wins first.",
+          "customerFeedbackTitle": "Turn feedback into priorities",
+          "customerFeedbackSubtitle": "Cluster requests, complaints, urgency, and impact.",
+          "habitPatternsTitle": "Spot patterns in my habits",
+          "habitPatternsSubtitle": "Useful for workouts, sleep, journaling, or focus logs.",
+          "metricsStoryTitle": "Explain what the numbers mean",
+          "metricsStorySubtitle": "More signal, less spreadsheet noise."
+        }
+      }
     }
   },
   "imageUpload": {

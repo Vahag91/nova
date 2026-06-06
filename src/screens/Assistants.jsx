@@ -5,25 +5,30 @@ import { PRESETS } from '../data/presets';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useTranslation } from 'react-i18next';
 import { useIsFocused } from '@react-navigation/native';
+import HeroVideo from '../components/navigation/HeroVideo';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { isAssistantsPremium } from '../config/premium';
 import { setPendingPremiumAction } from '../state/premiumActions';
 import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
 import { perfLog } from '../lib/perfTrace';
+import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
 
-const HEADER_IMAGE = require('../../assets/images/assistants/assistant_fitness_682x1024_q45.webp');
+const HEADER_VIDEOS = [
+  require('../../assets/video/fitness.mp4'),
+  require('../../assets/video/meels.mp4'),
+];
 
 export default function Assistants({ navigation }) {
   const { t } = useTranslation();
   const subscription = useContext(SubscriptionContext);
   const { reportScreenReady } = useAndroidNavigationMenu();
-  const isPremium = !!subscription?.isPremium;
   const createThread = useThreadsStore(s => s.createThread);
   const updateThread = useThreadsStore(s => s.updateThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const isFocused = useIsFocused();
   const rootLayoutSeenRef = React.useRef(false);
   const screenReadyReportedRef = React.useRef(false);
+  const [headerRestartKey, setHeaderRestartKey] = useState(0);
   const [rootLayoutLogged, setRootLayoutLogged] = useState(false);
   const [headerLayoutLogged, setHeaderLayoutLogged] = useState(false);
   const [contentSizeLogged, setContentSizeLogged] = useState(false);
@@ -40,6 +45,7 @@ export default function Assistants({ navigation }) {
       isFocused,
     });
     if (isFocused) {
+      setHeaderRestartKey(k => k + 1);
       setRootLayoutLogged(false);
       setHeaderLayoutLogged(false);
       setContentSizeLogged(false);
@@ -58,7 +64,7 @@ export default function Assistants({ navigation }) {
   const startAssistantPreset = useCallback(async (preset) => {
     try {
       try { Haptic.trigger('impactLight'); } catch {}
-      const model = 'gpt-5-nano';
+      const model = 'gpt-5.4-nano';
       const title = preset?.name || 'Assistant';
       const sys = typeof preset?.system === 'string' ? preset.system : '';
 
@@ -85,11 +91,16 @@ export default function Assistants({ navigation }) {
   }, [createThread, navigation, setActiveThread, t, updateThread]);
 
   const handleUsePreset = useCallback(async (preset) => {
+    const needsPremium = isAssistantsPremium();
+    const hasPremiumAccess = needsPremium
+      ? await resolvePremiumStatus(subscription)
+      : true;
+
     perfLog('assistants.preset.press', {
       presetId: preset?.id,
-      premiumGate: !isPremium && isAssistantsPremium(),
+      premiumGate: !hasPremiumAccess && needsPremium,
     });
-    if (!isPremium && isAssistantsPremium()) {
+    if (!hasPremiumAccess && needsPremium) {
       setPendingPremiumAction(() => {
         startAssistantPreset(preset);
       });
@@ -101,7 +112,7 @@ export default function Assistants({ navigation }) {
       return;
     }
     startAssistantPreset(preset);
-  }, [isPremium, navigation, startAssistantPreset]);
+  }, [navigation, startAssistantPreset, subscription]);
 
   function getTagColors(category) {
     switch (category) {
@@ -159,7 +170,7 @@ export default function Assistants({ navigation }) {
       category: selectedCategory,
       visiblePresets: filteredPresets.length,
       totalPresets: PRESETS.length,
-      headerMedia: 'image',
+      headerMedia: 'video',
     });
   }, [filteredPresets.length, selectedCategory]);
 
@@ -205,10 +216,13 @@ export default function Assistants({ navigation }) {
       }}
     >
       <View style={styles.headerIntro}>
-        <Image
-          source={HEADER_IMAGE}
+        <HeroVideo
           style={styles.headerVideo}
-          resizeMode="cover"
+          sources={HEADER_VIDEOS}
+          restartKey={headerRestartKey}
+          paused={!isFocused}
+          enforceAspectRatio={false}
+          placeholderColor="#10121C"
         />
         <View style={styles.headerOverlay} />
         <View style={styles.headerContent}>
@@ -252,6 +266,8 @@ export default function Assistants({ navigation }) {
   ), [
     categories,
     headerLayoutLogged,
+    headerRestartKey,
+    isFocused,
     labelForCategory,
     selectedCategory,
     t,

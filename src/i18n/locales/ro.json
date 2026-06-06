@@ -19,7 +19,7 @@
     "gpt-5": "Cel mai puternic AI versatil",
     "gpt-5-chat-latest": "Optimizat pentru chat și dialog",
     "gpt-5-mini": "GPT-5 rapid și fiabil",
-    "gpt-5-nano": "Model ușor pentru sarcini simple",
+    "gpt-5.4-nano": "Model ușor pentru sarcini simple",
     "o4-mini": "Model eficient de raționament",
     "gpt-4.1-mini": "GPT-4.1 compact și capabil",
     "claude-3-haiku": "AI Anthropic rapidă și concentrată",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Rezultate creative și stilizate",
       "runwareQwenImage": "Rezultate echilibrate și de calitate",
       "google4": "Cel mai bun model AI pentru imagini",
+      "klingImageO1": "Editare de imagini cu control ridicat",
       "fluxKontent": "Flux Kontent ajustat pentru editare",
       "runwareProvider": "Calitate echilibrată cu difuzie fiabilă.",
       "airProvider": "Nano Banana adaugă un ton jucăuș, intens.",
       "googleProvider": "Google ajustat pentru detalii finisate.",
+      "klingaiProvider": "KlingAI este optimizat pentru editări controlate.",
       "anthropicProvider": "Pipeline Claude pentru stări mai nuanțate.",
       "default": "Atinge pentru a vedea motoarele disponibile."
     }
@@ -657,6 +659,7 @@
       "perMonth": "pe lună"
     },
     "cta": "Continuă",
+    "ctaFreeTrial": "Încearcă gratuit",
     "legal": {
       "terms": "Termeni",
       "privacy": "Confidențialitate"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "cu sfaturi de productivitate"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Alegeți un subiect",
+      "title": "Ce vrei sa faci?",
+      "subtitle": "Alegeți o direcție, apoi începeți cu un prompt puternic.",
+      "pickPromptTitle": "Alegeți o solicitare pentru a începe",
+      "changeTopic": "Alege alt subiect",
+      "intents": {
+        "summarize": "Rezumați textul",
+        "summarizeShort": "Rezumă",
+        "summarizeHint": "Articole, note, note vocale, fire lungi",
+        "plan": "Faceți un plan",
+        "planHint": "Călătorii, rutine, bugete, termene limită, schimbări în viață",
+        "brainstorm": "Brainstorming",
+        "brainstormHint": "Idei, oferte, nume, conținut, proiecte secundare",
+        "analyze": "Analizați datele",
+        "analyzeHint": "Cheltuieli, feedback, metrici, obiceiuri, performanță"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Creați un brief al fondatorului",
+          "founderBriefSubtitle": "Scoateți principalele riscuri, decizii și pașii următori.",
+          "classNotesTitle": "Curăță-mi notele de studiu",
+          "classNotesSubtitle": "Transformă notele brute într-un ghid de studiu clar.",
+          "meetingHandoffTitle": "Scrieți un rezumat al transferului",
+          "meetingHandoffSubtitle": "Util după întâlniri, apeluri sau fire interne lungi.",
+          "longArticleTitle": "Rezumați rapid acest articol",
+          "longArticleSubtitle": "Condensați un articol lung în concluzii clare."
+        },
+        "plan": {
+          "energyResetTitle": "Construiți o resetare a energiei de 14 zile",
+          "energyResetSubtitle": "Un plan realist pentru somn, mâncare, mișcare și concentrare.",
+          "mealPlanTitle": "Planificați mesele pe care le voi găti de fapt",
+          "mealPlanSubtitle": "Practic, accesibil și bazat pe ceea ce am.",
+          "cityMoveTitle": "Planifică-mi mutarea într-un oraș nou",
+          "cityMoveSubtitle": "Împărțiți-l în cronologie, buget, locuințe și sarcini de administrare.",
+          "tripEscapeTitle": "Planifică o evadare de weekend memorabilă",
+          "tripEscapeSubtitle": "Ceva mai bun decât un itinerar generic."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Găsiți o agitație laterală realistă",
+          "sideHustleSubtitle": "Idei pe care le pot începe în timp ce lucrez cu normă întreagă.",
+          "brandAngleTitle": "Găsiți un unghi de brand memorabil",
+          "brandAngleSubtitle": "Util pentru produse, creatori, agenții sau buletine informative.",
+          "socialSeriesTitle": "Inventează o serie de conținut",
+          "socialSeriesSubtitle": "Ceva suficient de consistent pentru a crește un public.",
+          "datingIdeasTitle": "Vino cu idei proaspete",
+          "datingIdeasSubtitle": "Întâlniri, cadouri, surprize sau evenimente care par gânditoare."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Găsiți unde se scurg banii mei",
+          "spendingLeaksSubtitle": "Afișați modelele, punctele slabe și cel mai ușor câștigă mai întâi.",
+          "customerFeedbackTitle": "Transformă feedback-ul în priorități",
+          "customerFeedbackSubtitle": "Agrupați solicitări, plângeri, urgență și impact.",
+          "habitPatternsTitle": "Identificați modele în obiceiurile mele",
+          "habitPatternsSubtitle": "Util pentru antrenamente, somn, jurnal sau jurnal de concentrare.",
+          "metricsStoryTitle": "Explicați ce înseamnă numerele",
+          "metricsStorySubtitle": "Mai mult semnal, mai puțin zgomot din foaia de calcul."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

@@ -19,7 +19,7 @@
     "gpt-5": "सबसे शक्तिशाली सर्व-उद्देश्य AI",
     "gpt-5-chat-latest": "चैट और संवाद के लिए अनुकूलित",
     "gpt-5-mini": "तेज़ और भरोसेमंद GPT-5",
-    "gpt-5-nano": "सरल कामों के लिए हल्का मॉडल",
+    "gpt-5.4-nano": "सरल कामों के लिए हल्का मॉडल",
     "o4-mini": "कुशल तर्क मॉडल",
     "gpt-4.1-mini": "कंपैक्ट और सक्षम GPT-4.1",
     "claude-3-haiku": "तेज़ और केंद्रित Anthropic AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "रचनात्मक और स्टाइलिश परिणाम",
       "runwareQwenImage": "संतुलित, उच्च गुणवत्ता वाले परिणाम",
       "google4": "सबसे बढ़िया AI इमेज मॉडल",
+      "klingImageO1": "उच्च नियंत्रण के साथ इमेज एडिटिंग",
       "fluxKontent": "एडिटिंग के लिए ट्यून किया गया Flux Kontent",
       "runwareProvider": "टिकाऊ डिफ्यूज़न के साथ संतुलित गुणवत्ता.",
       "airProvider": "Nano Banana से रंगीन, मज़ेदार टोन.",
       "googleProvider": "Google से तीखे, साफ़ विवरण.",
+      "klingaiProvider": "KlingAI को नियंत्रित एडिट्स के लिए ट्यून किया गया है।",
       "anthropicProvider": "Claude पाइपलाइन से सूक्ष्म टोन.",
       "default": "उपलब्ध इंजन देखने के लिए टैप करें."
     }
@@ -657,6 +659,7 @@
       "perMonth": "प्रति माह"
     },
     "cta": "जारी रखें",
+    "ctaFreeTrial": "मुफ़्त में आज़माएँ",
     "legal": {
       "terms": "शर्तें",
       "privacy": "गोपनीयता"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "उत्पादकता टिप्स के साथ"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "एक विषय चुनें",
+      "title": "आप क्या करना चाहते हैं?",
+      "subtitle": "एक दिशा चुनें, फिर एक मजबूत संकेत के साथ शुरुआत करें।",
+      "pickPromptTitle": "आरंभ करने के लिए एक संकेत चुनें",
+      "changeTopic": "कोई अन्य विषय चुनें",
+      "intents": {
+        "summarize": "पाठ को सारांशित करें",
+        "summarizeShort": "संक्षेप करें",
+        "summarizeHint": "लेख, नोट्स, वॉयस मेमो, लंबे धागे",
+        "plan": "एक योजना बनाओ",
+        "planHint": "यात्राएँ, दिनचर्या, बजट, समय सीमा, जीवन में परिवर्तन",
+        "brainstorm": "मंथन",
+        "brainstormHint": "विचार, प्रस्ताव, नाम, सामग्री, साइड प्रोजेक्ट",
+        "analyze": "डेटा का विश्लेषण करें",
+        "analyzeHint": "खर्च, फीडबैक, मेट्रिक्स, आदतें, प्रदर्शन"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "एक संस्थापक संक्षिप्त बनाएँ",
+          "founderBriefSubtitle": "मुख्य जोखिमों, निर्णयों और अगले चरणों के बारे में बताएं।",
+          "classNotesTitle": "मेरे अध्ययन नोट्स साफ़ करें",
+          "classNotesSubtitle": "रफ नोट्स को स्पष्ट अध्ययन गाइड में बदलें।",
+          "meetingHandoffTitle": "एक हैंडऑफ़ सारांश लिखें",
+          "meetingHandoffSubtitle": "मीटिंग, कॉल या लंबे आंतरिक थ्रेड के बाद उपयोगी।",
+          "longArticleTitle": "इस आलेख को शीघ्रता से सारांशित करें",
+          "longArticleSubtitle": "एक लंबे लेख को संक्षिप्त निष्कर्षों में संक्षिप्त करें।"
+        },
+        "plan": {
+          "energyResetTitle": "14 दिन का ऊर्जा रीसेट बनाएं",
+          "energyResetSubtitle": "नींद, भोजन, गतिविधि और फोकस के लिए एक यथार्थवादी योजना।",
+          "mealPlanTitle": "भोजन की योजना बनाएं जो मैं वास्तव में पकाऊंगा",
+          "mealPlanSubtitle": "व्यावहारिक, किफायती और जो मेरे पास है उस पर आधारित।",
+          "cityMoveTitle": "एक नये शहर में जाने की योजना बनाऊँ",
+          "cityMoveSubtitle": "इसे समयरेखा, बजट, आवास और व्यवस्थापक कार्यों में विभाजित करें।",
+          "tripEscapeTitle": "एक यादगार सप्ताहांत पलायन की योजना बनाएं",
+          "tripEscapeSubtitle": "सामान्य यात्रा कार्यक्रम से कुछ बेहतर।"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "एक यथार्थवादी पक्ष खोजें",
+          "sideHustleSubtitle": "ऐसे विचार जिन्हें मैं पूर्णकालिक काम करते हुए शुरू कर सकता हूं।",
+          "brandAngleTitle": "एक यादगार ब्रांड एंगल ढूंढें",
+          "brandAngleSubtitle": "उत्पादों, रचनाकारों, एजेंसियों या न्यूज़लेटर्स के लिए उपयोगी।",
+          "socialSeriesTitle": "एक सामग्री श्रृंखला का आविष्कार करें",
+          "socialSeriesSubtitle": "दर्शकों की संख्या बढ़ाने के लिए पर्याप्त रूप से कुछ सुसंगत।",
+          "datingIdeasTitle": "नए विचारों के साथ आएं",
+          "datingIdeasSubtitle": "तारीखें, उपहार, आश्चर्य, या घटनाएँ जो विचारणीय लगती हैं।"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "पता लगाएं कि मेरा पैसा कहां लीक हो रहा है",
+          "spendingLeaksSubtitle": "सबसे पहले पैटर्न, कमजोरियां और सबसे आसान जीत दिखाएं।",
+          "customerFeedbackTitle": "फीडबैक को प्राथमिकताओं में बदलें",
+          "customerFeedbackSubtitle": "क्लस्टर अनुरोध, शिकायतें, तात्कालिकता और प्रभाव।",
+          "habitPatternsTitle": "मेरी आदतों में पैटर्न पहचानें",
+          "habitPatternsSubtitle": "वर्कआउट, नींद, जर्नलिंग या फोकस लॉग के लिए उपयोगी।",
+          "metricsStoryTitle": "बताएं कि संख्याओं का क्या मतलब है",
+          "metricsStorySubtitle": "अधिक सिग्नल, कम स्प्रेडशीट शोर।"
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

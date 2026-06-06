@@ -19,7 +19,7 @@
     "gpt-5": "Tehokkain monikäyttöinen tekoäly",
     "gpt-5-chat-latest": "Optimoitu keskusteluun",
     "gpt-5-mini": "Nopea ja luotettava GPT-5",
-    "gpt-5-nano": "Kevyt malli yksinkertaisiin tehtäviin",
+    "gpt-5.4-nano": "Kevyt malli yksinkertaisiin tehtäviin",
     "o4-mini": "Tehokas päättelymalli",
     "gpt-4.1-mini": "Kompakti ja kyvykäs GPT-4.1",
     "claude-3-haiku": "Nopea ja tarkka Anthropic-tekoäly",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Luovat ja tyylitellyt tulokset",
       "runwareQwenImage": "Tasapainoinen, laadukas tulos",
       "google4": "Paras tekoälykuvamalli",
+      "klingImageO1": "Kuvankäsittelyä tarkalla hallinnalla",
       "fluxKontent": "Flux Kontent muokkauksiin",
       "runwareProvider": "Tasapainoinen laatu luotettavalla diffuusiolla.",
       "airProvider": "Nano Banana lisää elävän, leikkisän sävyn.",
       "googleProvider": "Google viritetty viimeistellyille yksityiskohdille.",
+      "klingaiProvider": "KlingAI on viritetty hallittuihin muokkauksiin.",
       "anthropicProvider": "Claude-putki vivahteikkaisiin tunnelmiin.",
       "default": "Napauta tutkiaksesi saatavilla olevia koneita."
     }
@@ -657,6 +659,7 @@
       "perMonth": "kuukaudessa"
     },
     "cta": "Jatka",
+    "ctaFreeTrial": "Kokeile ilmaiseksi",
     "legal": {
       "terms": "Ehdot",
       "privacy": "Tietosuoja"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "tuottavuusvinkeillä"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Valitse aihe",
+      "title": "Mitä haluat tehdä?",
+      "subtitle": "Valitse suunta ja aloita sitten vahvalla kehotuksella.",
+      "pickPromptTitle": "Aloita valitsemalla kehote",
+      "changeTopic": "Valitse toinen aihe",
+      "intents": {
+        "summarize": "Tee yhteenveto tekstistä",
+        "summarizeShort": "Tee yhteenveto",
+        "summarizeHint": "Artikkelit, muistiinpanot, äänimuistiot, pitkät ketjut",
+        "plan": "Tee suunnitelma",
+        "planHint": "Matkat, rutiinit, budjetit, määräajat, elämänmuutokset",
+        "brainstorm": "Aivoriihi",
+        "brainstormHint": "Ideoita, tarjouksia, nimiä, sisältöjä, sivuprojekteja",
+        "analyze": "Analysoi tiedot",
+        "analyzeHint": "Kulutus, palaute, mittarit, tavat, suorituskyky"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Luo perustajakirja",
+          "founderBriefSubtitle": "Ota esiin tärkeimmät riskit, päätökset ja seuraavat vaiheet.",
+          "classNotesTitle": "Puhdista opiskelumuistiinpanot",
+          "classNotesSubtitle": "Muuta karkeat muistiinpanot selkeäksi opinto-oppaaksi.",
+          "meetingHandoffTitle": "Kirjoita vaihdon yhteenveto",
+          "meetingHandoffSubtitle": "Hyödyllinen kokousten, puheluiden tai pitkien sisäisten säikeiden jälkeen.",
+          "longArticleTitle": "Tee tämän artikkelin yhteenveto nopeasti",
+          "longArticleSubtitle": "Tiivistä pitkä artikkeli teräviin otoksiin."
+        },
+        "plan": {
+          "energyResetTitle": "Rakenna 14 päivän energianpalautus",
+          "energyResetSubtitle": "Realistinen suunnitelma unelle, ruoalle, liikkumiselle ja keskittymiselle.",
+          "mealPlanTitle": "Suunnittele ateriat, joita teen todella",
+          "mealPlanSubtitle": "Käytännöllinen, edullinen ja perustuu siihen mitä minulla on.",
+          "cityMoveTitle": "Suunnittele muuttoni uuteen kaupunkiin",
+          "cityMoveSubtitle": "Jaa se aikajanaan, budjettiin, asumiseen ja järjestelmänvalvojan tehtäviin.",
+          "tripEscapeTitle": "Suunnittele ikimuistoinen viikonloppumatka",
+          "tripEscapeSubtitle": "Jotain parempaa kuin yleinen reittisuunnitelma."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Löydä realistinen sivutouhu",
+          "sideHustleSubtitle": "Ideoita, joita voin aloittaa kokopäivätyössä.",
+          "brandAngleTitle": "Löydä mieleenpainuva brändikulma",
+          "brandAngleSubtitle": "Hyödyllinen tuotteille, sisällöntuottajille, toimistoille tai uutiskirjeille.",
+          "socialSeriesTitle": "Keksi sisältösarja",
+          "socialSeriesSubtitle": "Jotain tarpeeksi johdonmukaista kasvattamaan yleisöä.",
+          "datingIdeasTitle": "Keksi tuoreita ideoita",
+          "datingIdeasSubtitle": "Päivämäärät, lahjat, yllätykset tai tapahtumat, jotka tuntuvat ajattelevilta."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Selvitä, mihin rahani vuotavat",
+          "spendingLeaksSubtitle": "Näytä kuviot, heikot kohdat ja helpoin voittaa ensin.",
+          "customerFeedbackTitle": "Muuta palaute prioriteeteiksi",
+          "customerFeedbackSubtitle": "Klusteripyynnöt, valitukset, kiireellisyys ja vaikutukset.",
+          "habitPatternsTitle": "Huomaa kuvioita tavoissani",
+          "habitPatternsSubtitle": "Hyödyllinen harjoitteluun, nukkumiseen, päiväkirjan pitämiseen tai tarkennuslokeihin.",
+          "metricsStoryTitle": "Selitä, mitä numerot tarkoittavat",
+          "metricsStorySubtitle": "Enemmän signaalia, vähemmän laskentataulukon kohinaa."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

@@ -19,7 +19,7 @@
     "gpt-5": "Mest kraftfulla allround-AI",
     "gpt-5-chat-latest": "Optimerad för chatt och dialog",
     "gpt-5-mini": "Snabb och pålitlig GPT-5",
-    "gpt-5-nano": "Lätt modell för enkla uppgifter",
+    "gpt-5.4-nano": "Lätt modell för enkla uppgifter",
     "o4-mini": "Effektiv resonemangsmodell",
     "gpt-4.1-mini": "Kompakt och kapabel GPT-4.1",
     "claude-3-haiku": "Snabb och fokuserad Anthropic-AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Kreativa, stiliserade resultat",
       "runwareQwenImage": "Bal­anserade, högkvalitativa resultat",
       "google4": "Bästa AI-bildmodellen",
+      "klingImageO1": "Bildredigering med hög kontroll",
       "fluxKontent": "Flux Kontent finjusterad för redigering",
       "runwareProvider": "Balans mellan kvalitet och tillförlitlig diffusion.",
       "airProvider": "Nano Banana ger lekfull, livfull ton.",
       "googleProvider": "Google justerad för polerade detaljer.",
+      "klingaiProvider": "KlingAI är finjusterad för kontrollerade redigeringar.",
       "anthropicProvider": "Claude-pipeline för nyanserade stämningar.",
       "default": "Tryck för att utforska tillgängliga motorer."
     }
@@ -657,6 +659,7 @@
       "perMonth": "per månad"
     },
     "cta": "Fortsätt",
+    "ctaFreeTrial": "Prova gratis",
     "legal": {
       "terms": "Villkor",
       "privacy": "Integritet"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "med produktivitetstips"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Välj ett ämne",
+      "title": "Vad vill du göra?",
+      "subtitle": "Välj en riktning och börja sedan med en stark uppmaning.",
+      "pickPromptTitle": "Välj en uppmaning att starta",
+      "changeTopic": "Välj ett annat ämne",
+      "intents": {
+        "summarize": "Sammanfatta text",
+        "summarizeShort": "Sammanfatta",
+        "summarizeHint": "Artiklar, anteckningar, röstmemon, långa trådar",
+        "plan": "Gör en plan",
+        "planHint": "Resor, rutiner, budgetar, deadlines, livsförändringar",
+        "brainstorm": "Brainstorma",
+        "brainstormHint": "Idéer, erbjudanden, namn, innehåll, sidoprojekt",
+        "analyze": "Analysera data",
+        "analyzeHint": "Utgifter, feedback, mätvärden, vanor, prestation"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Skapa en grundarbrief",
+          "founderBriefSubtitle": "Ta fram de viktigaste riskerna, besluten och nästa steg.",
+          "classNotesTitle": "Rensa upp mina studieanteckningar",
+          "classNotesSubtitle": "Förvandla grova anteckningar till en tydlig studieguide.",
+          "meetingHandoffTitle": "Skriv en överlämningssammanfattning",
+          "meetingHandoffSubtitle": "Användbart efter möten, samtal eller långa interna trådar.",
+          "longArticleTitle": "Sammanfatta den här artikeln snabbt",
+          "longArticleSubtitle": "Kondensera en lång artikel till skarpa takeaways."
+        },
+        "plan": {
+          "energyResetTitle": "Bygg en 14-dagars energiåterställning",
+          "energyResetSubtitle": "En realistisk plan för sömn, mat, rörelse och fokus.",
+          "mealPlanTitle": "Planera måltider som jag faktiskt ska laga",
+          "mealPlanSubtitle": "Praktiskt, prisvärt och baserat på vad jag har.",
+          "cityMoveTitle": "Planera min flytt till en ny stad",
+          "cityMoveSubtitle": "Dela upp det i tidslinje, budget, bostäder och administratörsuppgifter.",
+          "tripEscapeTitle": "Planera en minnesvärd helgflykt",
+          "tripEscapeSubtitle": "Något bättre än en generisk resplan."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Hitta ett realistiskt sidoliv",
+          "sideHustleSubtitle": "Idéer jag kan börja när jag jobbar heltid.",
+          "brandAngleTitle": "Hitta en minnesvärd varumärkesvinkel",
+          "brandAngleSubtitle": "Användbar för produkter, kreatörer, byråer eller nyhetsbrev.",
+          "socialSeriesTitle": "Uppfinn en innehållsserie",
+          "socialSeriesSubtitle": "Något tillräckligt konsekvent för att växa en publik.",
+          "datingIdeasTitle": "Kom med nya idéer",
+          "datingIdeasSubtitle": "Dejter, presenter, överraskningar eller händelser som känns omtänksamma."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Hitta var mina pengar läcker",
+          "spendingLeaksSubtitle": "Visa mönster, svaga punkter och den enklaste vinner först.",
+          "customerFeedbackTitle": "Gör feedback till prioriteringar",
+          "customerFeedbackSubtitle": "Klusterförfrågningar, klagomål, brådska och påverkan.",
+          "habitPatternsTitle": "Upptäck mönster i mina vanor",
+          "habitPatternsSubtitle": "Användbar för träning, sömn, journalföring eller fokusloggar.",
+          "metricsStoryTitle": "Förklara vad siffrorna betyder",
+          "metricsStorySubtitle": "Mer signal, mindre brus i kalkylblad."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

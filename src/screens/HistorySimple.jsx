@@ -49,6 +49,8 @@ export default function HistorySimple({ navigation }) {
   const lang = (i18n?.language || 'en').split('-')[0];
   const locale = lang === 'ja' ? 'ja-JP' : 'en-US';
   const frozenThreadIndexRef = useRef([]);
+  const hydrated = useThreadsStore(s => s.hydrated);
+  const hydrate = useThreadsStore(s => s.hydrate);
   const threadIndex = useThreadsStore(
     React.useCallback(
       state => (isFocused ? state.threadIndex : frozenThreadIndexRef.current),
@@ -73,6 +75,12 @@ export default function HistorySimple({ navigation }) {
       perfLog('history.screen.unmounted');
     };
   }, []);
+
+  useEffect(() => {
+    if (!hydrated) {
+      hydrate();
+    }
+  }, [hydrate, hydrated]);
 
   useEffect(() => {
     perfLog('history.screen.focus', {
@@ -265,6 +273,18 @@ const renderItem = ({ item: thread }) => {
     </View>
   );
 
+  if (!hydrated) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.loadingCenter}>
+          <Text style={styles.loadingHint}>
+            {t('history.loading', { defaultValue: 'Loading history...' })}
+          </Text>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View
       style={styles.container}
@@ -356,6 +376,15 @@ const renderItem = ({ item: thread }) => {
 
 const styles = StyleSheet.create({
   container:{ flex:1, backgroundColor: '#000000' },
+  loadingCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingHint: {
+    color: colors.textSecondary,
+    fontSize: 14,
+  },
 
   searchWrap: {
     flexDirection: 'row',

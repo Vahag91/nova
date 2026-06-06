@@ -2,12 +2,18 @@ import React, { useEffect, useState, memo, useRef, useCallback } from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 import MarkdownContent from './MarkdownContent';
 import { subscribeStream, getStream } from '../../lib/streamingBuffer';
-import { chatDebugLog, isChatDebugEnabled } from '../../lib/chatDebug';
 import { colors } from '../../styles/colors';
 
 const CURSOR_CHAR = ' ▋'; 
 
-function StreamingText({ messageId, base = '', streaming = false, activityText, selectionResetToken }) {
+function StreamingText({
+  messageId,
+  base = '',
+  streaming = false,
+  activityText,
+  selectable = false,
+  selectionResetToken,
+}) {
   // The text currently visible on screen
   const [displayedText, setDisplayedText] = useState(base || '');
   const pulseAnim = useRef(new Animated.Value(0)).current;
@@ -22,9 +28,6 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
   const lastFrameRef = useRef(Date.now());
   const cursorTimerRef = useRef(0);
   const accumulatedTimeRef = useRef(0);
-  const lastTickLogRef = useRef(0);
-  const lastNetLogRef = useRef(0);
-  const lastNetLenRef = useRef((base || '').length);
 
   useEffect(() => {
     streamingRef.current = streaming;
@@ -40,7 +43,6 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
     loopRef.current = null;
     accumulatedTimeRef.current = 0;
     cursorTimerRef.current = 0;
-    chatDebugLog('streaming', 'loopStop', { messageId: messageIdRef.current, reason });
   }, []);
 
   const tick = useCallback(() => {
@@ -105,17 +107,6 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
       }
     }
 
-    if (isChatDebugEnabled('streaming') && now - lastTickLogRef.current > 1000) {
-      lastTickLogRef.current = now;
-      chatDebugLog('streaming', 'tick', {
-        messageId: messageIdRef.current,
-        displayedLen: displayLengthRef.current,
-        targetLen: targetTextRef.current.length,
-        distance: targetTextRef.current.length - displayLengthRef.current,
-        streaming: streamingRef.current,
-      });
-    }
-
     loopRef.current = requestAnimationFrame(tick);
   }, [stopLoop]);
 
@@ -125,13 +116,6 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
     accumulatedTimeRef.current = 0;
     cursorTimerRef.current = 0;
     loopRef.current = requestAnimationFrame(tick);
-    chatDebugLog('streaming', 'loopStart', {
-      messageId: messageIdRef.current,
-      reason,
-      displayedLen: displayLengthRef.current,
-      targetLen: targetTextRef.current.length,
-      streaming: streamingRef.current,
-    });
   }, [tick]);
 
   // Reset internal state when message changes.
@@ -139,10 +123,7 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
     stopLoop('messageChange');
     targetTextRef.current = base || '';
     displayLengthRef.current = (base || '').length;
-    lastNetLenRef.current = (base || '').length;
     cursorVisibleRef.current = true;
-    lastTickLogRef.current = 0;
-    lastNetLogRef.current = 0;
     setDisplayedText(base || '');
     return () => stopLoop('unmount');
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -155,14 +136,7 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
     const current = getStream(messageId) || base || '';
     if (current.length >= (targetTextRef.current || '').length) {
       targetTextRef.current = current;
-      lastNetLenRef.current = current.length;
     }
-    chatDebugLog('streaming', 'start', {
-      messageId,
-      baseLen: (base || '').length,
-      bufferLen: (targetTextRef.current || '').length,
-      displayedLen: displayLengthRef.current,
-    });
 
     startLoop('streaming');
 
@@ -170,22 +144,6 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
       const next = getStream(messageId) || '';
       if (next.length >= (targetTextRef.current || '').length) {
         targetTextRef.current = next;
-      }
-
-      if (isChatDebugEnabled('streaming')) {
-        const now = Date.now();
-        const nextLen = next.length;
-        const deltaChars = nextLen - lastNetLenRef.current;
-        if (deltaChars !== 0 && now - lastNetLogRef.current > 400) {
-          lastNetLogRef.current = now;
-          chatDebugLog('streaming', 'net', {
-            messageId,
-            deltaChars,
-            bufferLen: nextLen,
-            displayedLen: displayLengthRef.current,
-          });
-        }
-        lastNetLenRef.current = nextLen;
       }
 
       startLoop('netUpdate');
@@ -207,20 +165,9 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
     if (final.length >= existing.length) targetTextRef.current = final;
 
     if (displayLengthRef.current < final.length) {
-      chatDebugLog('streaming', 'drainStart', {
-        messageId,
-        finalLen: final.length,
-        displayedLen: displayLengthRef.current,
-      });
       startLoop('drain');
     } else {
       setDisplayedText(final);
-      chatDebugLog('streaming', 'finalize', {
-        messageId,
-        baseLen: baseText.length,
-        finalLen: final.length,
-        displayedLen: displayLengthRef.current,
-      });
     }
   }, [messageId, streaming, base, startLoop]);
 
@@ -260,6 +207,7 @@ function StreamingText({ messageId, base = '', streaming = false, activityText, 
         isUser={false} 
         animateOnMount={false} 
         streaming={streaming} 
+        selectable={selectable}
         selectionResetToken={selectionResetToken}
       />
     </View>

@@ -78,10 +78,7 @@ function patchKeyboardControllerCMake() {
 
 if (require.main === module) {
   try {
-    const patched = patchKeyboardControllerCMake();
-    if (patched) {
-      console.log('react-native-keyboard-controller CMakeLists patched');
-    }
+    patchKeyboardControllerCMake();
   } catch (error) {
     console.error(error.message);
     process.exit(1);

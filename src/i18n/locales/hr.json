@@ -19,7 +19,7 @@
     "gpt-5": "Najmoćniji višenamjenski AI",
     "gpt-5-chat-latest": "Optimiziran za chat i dijalog",
     "gpt-5-mini": "Brz i pouzdan GPT-5",
-    "gpt-5-nano": "Lagani model za jednostavne zadatke",
+    "gpt-5.4-nano": "Lagani model za jednostavne zadatke",
     "o4-mini": "Učinkovit model za zaključivanje",
     "gpt-4.1-mini": "Kompaktan i sposoban GPT-4.1",
     "claude-3-haiku": "Brz i fokusiran Anthropic AI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Kreativni, stilizirani rezultati",
       "runwareQwenImage": "Uravnotežena, visoka kvaliteta",
       "google4": "Najbolji AI model za slike",
+      "klingImageO1": "Uređivanje slika s visokom razinom kontrole",
       "fluxKontent": "Flux Kontent podešen za uređivanje",
       "runwareProvider": "Uravnotežena kvaliteta s pouzdanom difuzijom.",
       "airProvider": "Nano Banana daje živ i razigran ton.",
       "googleProvider": "Google podešen za dotjerane detalje.",
+      "klingaiProvider": "KlingAI je podešen za kontrolirane izmjene.",
       "anthropicProvider": "Claude pipeline za profinjene stilove.",
       "default": "Dodirni za pregled dostupnih pogona."
     }
@@ -657,6 +659,7 @@
       "perMonth": "mjesečno"
     },
     "cta": "Nastavi",
+    "ctaFreeTrial": "Isprobaj besplatno",
     "legal": {
       "terms": "Uvjeti",
       "privacy": "Privatnost"
@@ -769,7 +772,67 @@
       "planDaySubtitle": "s savjetima za produktivnost"
     },
     "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again."
+    "offlineError": "No internet connection. Please check your connection and try again.",
+    "home": {
+      "eyebrow": "Odaberite temu",
+      "title": "Što želiš učiniti?",
+      "subtitle": "Odaberite smjer, a zatim počnite sa snažnim upitom.",
+      "pickPromptTitle": "Odaberite upit za početak",
+      "changeTopic": "Odaberite drugu temu",
+      "intents": {
+        "summarize": "Sažeti tekst",
+        "summarizeShort": "Sažmi",
+        "summarizeHint": "Članci, bilješke, glasovni zapisi, duge niti",
+        "plan": "Napravite plan",
+        "planHint": "Putovanja, rutine, proračuni, rokovi, životne promjene",
+        "brainstorm": "Brainstorm",
+        "brainstormHint": "Ideje, ponude, imena, sadržaji, popratni projekti",
+        "analyze": "Analizirajte podatke",
+        "analyzeHint": "Potrošnja, povratne informacije, metrika, navike, učinak"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Napravite sažetak osnivača",
+          "founderBriefSubtitle": "Izvucite glavne rizike, odluke i sljedeće korake.",
+          "classNotesTitle": "Počisti moje bilješke",
+          "classNotesSubtitle": "Pretvorite grube bilješke u jasan vodič za učenje.",
+          "meetingHandoffTitle": "Napišite sažetak predaje",
+          "meetingHandoffSubtitle": "Korisno nakon sastanaka, poziva ili dugih internih razgovora.",
+          "longArticleTitle": "Brzo sažmite ovaj članak",
+          "longArticleSubtitle": "Sažmite dugačak članak u oštre zaključke."
+        },
+        "plan": {
+          "energyResetTitle": "Izgradite 14-dnevno resetiranje energije",
+          "energyResetSubtitle": "Realan plan za spavanje, hranu, kretanje i fokus.",
+          "mealPlanTitle": "Planirajte obroke koje ću zapravo kuhati",
+          "mealPlanSubtitle": "Praktičan, pristupačan i baziran na onome što imam.",
+          "cityMoveTitle": "Isplaniraj moju selidbu u novi grad",
+          "cityMoveSubtitle": "Podijelite ga na vremensku traku, proračun, stambene i administrativne zadatke.",
+          "tripEscapeTitle": "Isplanirajte nezaboravan vikend bijeg",
+          "tripEscapeSubtitle": "Nešto bolje od generičkog plana puta."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Pronađite realnu sporednu gužvu",
+          "sideHustleSubtitle": "Ideje koje mogu pokrenuti radeći puno radno vrijeme.",
+          "brandAngleTitle": "Pronađite nezaboravan kut marke",
+          "brandAngleSubtitle": "Korisno za proizvode, kreatore, agencije ili biltene.",
+          "socialSeriesTitle": "Izmislite niz sadržaja",
+          "socialSeriesSubtitle": "Nešto dovoljno dosljedno da poveća publiku.",
+          "datingIdeasTitle": "Smislite svježe ideje",
+          "datingIdeasSubtitle": "Datumi, darovi, iznenađenja ili događaji koji se čine pažljivima."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Pronađite gdje mi curi novac",
+          "spendingLeaksSubtitle": "Pokažite obrasce, slabe točke i najlakši pobjeđuje prvi.",
+          "customerFeedbackTitle": "Pretvorite povratne informacije u prioritete",
+          "customerFeedbackSubtitle": "Zahtjevi klastera, pritužbe, hitnost i utjecaj.",
+          "habitPatternsTitle": "Uoči uzorke u mojim navikama",
+          "habitPatternsSubtitle": "Korisno za vježbanje, spavanje, vođenje dnevnika ili zapise fokusa.",
+          "metricsStoryTitle": "Objasnite što znače brojevi",
+          "metricsStorySubtitle": "Više signala, manje šuma proračunske tablice."
+        }
+      }
+    }
   },
   "imageUpload": {
     "required": " *",

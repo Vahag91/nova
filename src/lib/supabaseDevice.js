@@ -1,5 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
-import { SUPABASE_BASE, SUPABASE_ANON_KEY } from '../config/endpoints';
+import {
+  RC_WEBHOOK_URL,
+  SUPABASE_BASE,
+  SUPABASE_ANON_KEY,
+} from '../config/endpoints';
 
 // Create a Supabase client that tags requests with the current device id.
 export function createSbWithDevice(deviceId) {
@@ -22,15 +26,37 @@ export async function fetchBalanceByDevice(sb, deviceId) {
   return balance;
 }
 
-export async function grantReviewerCoins(sb, deviceId, amount = 1000) {
-  const { error } = await sb.from('coins_ledger').insert({
-    device_id: deviceId,
-    delta: amount,
-    source: 'app:reviewer-premium',
-    product_id: 'reviewer-premium',
-    job_id: null,
+export async function grantReviewerCoins(deviceId) {
+  const response = await fetch(RC_WEBHOOK_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      apikey: SUPABASE_ANON_KEY,
+      'X-Device-Id': String(deviceId),
+    },
+    body: JSON.stringify({
+      action: 'grant_reviewer_coins',
+      device_id: deviceId,
+    }),
   });
 
-  if (error) throw error;
-  return fetchBalanceByDevice(sb, deviceId);
+  let body = null;
+  try {
+    body = await response.json();
+  } catch {}
+
+  if (!response.ok) {
+    const error = new Error(body?.error || 'Unable to grant reviewer coins.');
+    error.code = body?.error || 'reviewer_grant_failed';
+    throw error;
+  }
+
+  if (typeof body?.balance !== 'number') {
+    const error = new Error('Reviewer grant returned no coin balance.');
+    error.code = 'reviewer_balance_missing';
+    throw error;
+  }
+
+  return body.balance;
 }

@@ -1,7 +1,7 @@
 import { CHAT_PROXY_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 import { SSEClient } from '../lib/SSEClient';
 
-const DEFAULT_FALLBACK_MODEL = 'gpt-5-nano';
+const DEFAULT_FALLBACK_MODEL = 'gpt-5.4-nano';
 const logStream = () => {};
 
 export function streamChat({

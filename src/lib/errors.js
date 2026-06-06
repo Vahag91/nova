@@ -12,6 +12,27 @@ export function mapProxyError(err) {
       : 'We are handling many requests. Please try again in a moment.';
     return { title: 'Too many requests', message };
   }
+
+  if (code === 'restricted_content') {
+    return {
+      title: 'Restricted Content',
+      message: 'This request was blocked by safety filters.',
+    };
+  }
+
+  if (code === 'insufficient_coins') {
+    return {
+      title: 'Not enough coins',
+      message: 'Your current balance is too low for this request.',
+    };
+  }
+
+  if (code === 'invalid_image_response') {
+    return {
+      title: 'Image unavailable',
+      message: 'The generated image file was temporarily unavailable. Please try again.',
+    };
+  }
   
   if (code === 401 || /auth|token|unauthor/i.test(msg)) {
     return { title: 'Authorization issue', message: 'We could not verify your account. Please try again.' };
@@ -44,6 +65,13 @@ export function mapProxyError(err) {
   
   if (/server|500|502|503|504/i.test(msg)) {
     return { title: 'Server hiccup', message: 'Our servers had trouble. Please try again shortly.' };
+  }
+
+  if (/temporarily unavailable|cloudflare|image file was temporarily unavailable/i.test(msg)) {
+    return {
+      title: 'Image unavailable',
+      message: 'The generated image file was temporarily unavailable. Please try again.',
+    };
   }
   
   // Catch HTTP error patterns in message text

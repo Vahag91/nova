@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.aicloudsolutions.chatcloud/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.aicloudsolutions.chatcloud/.MainActivity
+TotalTime: 1500
+WaitTime: 1508
+Complete

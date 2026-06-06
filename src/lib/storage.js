@@ -35,36 +35,74 @@ async function loadThreadIndexOnly() {
   }
 }
 
+async function loadThreadRecordsByKeys(keys = []) {
+  if (!Array.isArray(keys) || keys.length === 0) {
+    return [];
+  }
+
+  try {
+    const pairs = await AsyncStorage.multiGet(keys);
+
+    return pairs.reduce((acc, [, raw]) => {
+      if (!raw) return acc;
+
+      try {
+        const parsed = JSON.parse(raw);
+        const normalized = normalizeThreadRecord(parsed);
+        if (normalized?.id && hasRenderableMessages(normalized.messages)) {
+          acc.push(normalized);
+        }
+      } catch {}
+
+      return acc;
+    }, []);
+  } catch {
+    return [];
+  }
+}
+
+async function loadThreadRecordsOnly() {
+  try {
+    const keys = await AsyncStorage.getAllKeys();
+    const recordKeys = keys.filter(key => key.startsWith(THREAD_RECORD_PREFIX));
+    return loadThreadRecordsByKeys(recordKeys);
+  } catch {
+    return [];
+  }
+}
+
 export const Storage = {
   // Threads
   async loadThreadState() {
     try {
-      const threadIndex = await loadThreadIndexOnly();
+      const persistedIndex = await loadThreadIndexOnly();
 
-      if (threadIndex.length > 0) {
-        const pairs = await AsyncStorage.multiGet(
-          threadIndex.map(entry => threadRecordKey(entry.id))
+      if (persistedIndex.length > 0) {
+        const indexedThreads = await loadThreadRecordsByKeys(
+          persistedIndex.map(entry => threadRecordKey(entry.id))
         );
 
-        const threadsById = {};
+        if (indexedThreads.length > 0) {
+          const nextState = buildThreadStateFromArray(indexedThreads);
+          const needsIndexRefresh =
+            nextState.threadIndex.length !== persistedIndex.length
+            || persistedIndex.some(entry => typeof entry?.hasMessages !== 'boolean')
+            || persistedIndex.some(entry => typeof entry?.preview !== 'string');
 
-        for (const [key, raw] of pairs) {
-          const id = key.replace(THREAD_RECORD_PREFIX, '');
-          const indexEntry = threadIndex.find(entry => entry.id === id);
-
-          if (!indexEntry) continue;
-
-          let record = null;
-          try {
-            record = raw ? JSON.parse(raw) : null;
-          } catch {
-            record = null;
+          if (needsIndexRefresh) {
+            await this.saveThreadState(nextState.threadIndex, nextState.threadsById);
           }
 
-          threadsById[id] = mergeThreadRecord(indexEntry, record);
+          return nextState;
         }
+      }
 
-        return { threadIndex, threadsById };
+      const storedThreadRecords = await loadThreadRecordsOnly();
+      if (storedThreadRecords.length > 0) {
+        const nextState = buildThreadStateFromArray(storedThreadRecords);
+        await this.saveThreadState(nextState.threadIndex, nextState.threadsById);
+        await AsyncStorage.removeItem(KEY_THREADS);
+        return nextState;
       }
 
       const raw = await AsyncStorage.getItem(KEY_THREADS);

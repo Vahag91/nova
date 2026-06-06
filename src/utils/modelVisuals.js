@@ -56,6 +56,12 @@ export function getModelVisuals(provider, modelKey) {
         accent: '#665CEE',
         tagline: translate('studioCommon.modelTaglines.runwareQwenImage', 'Balanced, high-quality results'),
       };
+    case 'klingai:kling-image@o1':
+      return {
+        icon: 'stars',
+        accent: '#4FC3FF',
+        tagline: translate('studioCommon.modelTaglines.klingImageO1', 'High-control image editing'),
+      };
     case 'google:4@1':
       return {
         icon: 'nano-banana',
@@ -84,6 +90,12 @@ export function getModelVisuals(provider, modelKey) {
         icon: 'globe-grid',
         accent: '#3DA8FD',
         tagline: translate('studioCommon.modelTaglines.googleProvider', 'Google tuned for polished details.'),
+      };
+    case 'klingai':
+      return {
+        icon: 'stars',
+        accent: '#4FC3FF',
+        tagline: translate('studioCommon.modelTaglines.klingaiProvider', 'KlingAI tuned for controlled edits.'),
       };
     case 'anthropic':
       return {

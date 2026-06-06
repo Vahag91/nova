@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect, useCallback, useRef, useContext } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   View,
   Text,
   StyleSheet,
@@ -9,37 +10,39 @@ import {
   Image,
   TextInput,
   Keyboard,
-  Platform,
   ScrollView,
 } from 'react-native';
-import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SvgIcon from '../components/SvgIcon';
-import { useSettingsStore } from '../state/useSettingsStore';
-import { useImagesStore } from '../state/useImagesStore';
-import {
-  createSbWithDevice,
-  fetchBalanceByDevice,
-} from '../lib/supabaseDevice';
-import { ensureDeviceId } from '../lib/deviceId';
 import ModelMenu from '../components/image-studio/ModelMenu';
+import CoinBalanceBadge from '../components/image-studio/CoinBalanceBadge';
 import CreateImageGenerating from '../components/create-image/CreateImageGenerating';
+import useCoinBalance from '../hooks/useCoinBalance';
 import Reanimated, {
-  useAnimatedKeyboard,
   useAnimatedStyle,
   useSharedValue,
   useDerivedValue,
   withTiming,
   Easing,
-  KeyboardState,
 } from 'react-native-reanimated';
-import { getModelVisuals, hexToRgba } from '../utils/modelVisuals';
+import {
+  useAnimatedKeyboard,
+  KeyboardState,
+} from 'react-native-keyboard-controller';
+import { getModelVisuals } from '../utils/modelVisuals';
 import { getImageModelPrice } from '../utils/imagePricing';
 import { useTranslation } from 'react-i18next';
 import Svg, { Path } from 'react-native-svg';
 import { SubscriptionContext } from '../context/SubscriptionContext';
+import features from '../config/features';
+import { getImageModelsRegistry } from '../config/models';
 import { perfLog } from '../lib/perfTrace';
+import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
+import {
+  ROOT_DRAWER_ROUTE,
+  ROOT_DRAWER_SCREEN_NAMES,
+} from '../navigation/rootNavigation';
 
 const STYLES = [
   {
@@ -133,41 +136,16 @@ const ASPECTS = [
 export default function CreateImage({ navigation, route }) {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const zeroImageModelCosts = !!features.zeroImageModelCosts;
   
   // Handle returnTo navigation like EditImage for consistency
   const returnTo = route?.params?.returnTo;
-  const parentNav = navigation.getParent?.() || null;
   
-  // Track if screen is focused to prevent flash when navigating between screens
-  const isFocused = useIsFocused();
-
   // Balance
-  const coins = useImagesStore(s => s.coinsBalance);
-  const setCoinsBalance = useImagesStore(s => s.setCoinsBalance);
-  useEffect(() => {
-    // Only fetch coins if balance is not already loaded
-    if (coins !== null && coins !== undefined) {
-      return;
-    }
-    
-    let mounted = true;
-    (async () => {
-      try {
-        const id = await ensureDeviceId();
-        const sb = createSbWithDevice(id);
-        const bal = await fetchBalanceByDevice(sb, id);
-        if (mounted) setCoinsBalance(bal);
-      } catch {
-        if (mounted) setCoinsBalance(null);
-      }
-    })();
-    return () => {
-      mounted = false;
-    };
-  }, [coins, setCoinsBalance]);
+  const coins = useCoinBalance();
 
-  // Model from settings
-  const models = useSettingsStore(s => s.models);
+  // Image Studio models are project-local by design.
+  const models = getImageModelsRegistry();
   const defaultModel = useMemo(() => {
     const entries = Object.entries(models || {});
     const first = entries.find(([, v]) => v?.caps?.imageGen);
@@ -202,39 +180,15 @@ export default function CreateImage({ navigation, route }) {
   const [generatorVisible, setGeneratorVisible] = useState(false);
   const [generatorPayload, setGeneratorPayload] = useState(null);
 
-  // Reset form state when screen loses focus to prevent UI flips
-  // Initialize fresh state when screen gains focus
-  useFocusEffect(
-    useCallback(() => {
-      // Initialize prompt from route params if provided (when screen gains focus)
-      const seedPrompt = route?.params?.seedPrompt;
-      if (seedPrompt && typeof seedPrompt === 'string') {
-        setPrompt(seedPrompt);
-      } else {
-        setPrompt('');
-      }
-      
-      // Reset other form fields to defaults when screen gains focus
-      setSelectedStyle(null);
-      setAspect(ASPECTS[0].key);
-      setBusy(false);
-      setGeneratorVisible(false);
-      setGeneratorPayload(null);
-      setModelMenuOpen(false);
-      
-      // Cleanup when screen loses focus (navigating away)
-      return () => {
-        setPrompt('');
-        setSelectedStyle(null);
-        setAspect(ASPECTS[0].key);
-        setBusy(false);
-        setGeneratorVisible(false);
-        setGeneratorPayload(null);
-        setModelMenuOpen(false);
-        Keyboard.dismiss();
-      };
-    }, [route?.params?.seedPrompt])
-  );
+  useEffect(() => {
+    const seedPrompt = route?.params?.seedPrompt;
+    if (seedPrompt && typeof seedPrompt === 'string') {
+      setPrompt(seedPrompt);
+      return;
+    }
+
+    setPrompt('');
+  }, [returnTo, route?.params?.seedPrompt]);
   const starterPrompts = useMemo(() => {
     const list = t('createImage.starterPrompts.items', { returnObjects: true });
     return Array.isArray(list) ? list : DEFAULT_STARTER_PROMPTS;
@@ -294,7 +248,6 @@ export default function CreateImage({ navigation, route }) {
   }));
 
   const subscription = useContext(SubscriptionContext);
-  const isPremium = !!subscription?.isPremium;
   const footerInset = Math.max(insets.bottom, 14);
   const footerStyle = useMemo(
     () => [styles.footer, { paddingBottom: footerInset }],
@@ -323,19 +276,24 @@ export default function CreateImage({ navigation, route }) {
     () => ASPECTS.find(a => a.key === aspect)?.size || '1024x1024',
     [aspect],
   );
+  const showInsufficientCoinsAlert = useCallback(() => {
+    Alert.alert(
+      t('notEnoughCoinsTitle', { defaultValue: 'Not enough coins' }),
+      t('studioCommon.notEnoughCoinsMessage', {
+        defaultValue: 'Your current balance is too low for this image.',
+      }),
+    );
+  }, [t]);
 
-  const onGenerate = useCallback(() => {
+  const onGenerate = useCallback(async () => {
     if (!prompt.trim() || busy) return;
-    // Insufficient coins: show paywall first, then navigate to Coin Store
     if ((coins ?? 0) < (selectedCost ?? 0)) {
-      if (!isPremium) {
-        try { 
-          navigation.navigate('PaywallScreen', { afterCloseNavigateTo: 'CoinStore' });
+      if (!(await resolvePremiumStatus(subscription))) {
+        try {
+          navigation.navigate('PaywallScreen');
         } catch {}
       } else {
-        try {
-          navigation.navigate('CoinStore');
-        } catch {}
+        showInsufficientCoinsAlert();
       }
       return;
     }
@@ -354,6 +312,7 @@ export default function CreateImage({ navigation, route }) {
       styleName: selectedStyleData?.name || null,
       model: selectedModel,
       size: selectedSize,
+      includeCost: !zeroImageModelCosts,
     };
     setGeneratorPayload(payload);
     setGeneratorVisible(true);
@@ -364,38 +323,41 @@ export default function CreateImage({ navigation, route }) {
     selectedModel,
     selectedSize,
     selectedStyleData,
+    zeroImageModelCosts,
     coins,
     selectedCost,
-    isPremium,
     navigation,
+    showInsufficientCoinsAlert,
+    subscription,
   ]);
 
   const handleBackPress = useCallback(() => {
     perfLog('studio.create.back_press', {
       returnTo: returnTo || null,
-      hasParentNavigator: !!parentNav,
     });
-    if (returnTo && parentNav) {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+      return;
+    }
+    if (returnTo) {
       perfLog('studio.create.return_to', {
         returnTo,
       });
-      try {
-        parentNav.navigate(returnTo);
-      } catch (err) {
-        navigation.goBack();
+      if (ROOT_DRAWER_SCREEN_NAMES.has(returnTo)) {
+        navigation.navigate(ROOT_DRAWER_ROUTE, { screen: returnTo });
+        return;
       }
-      return;
+      try {
+        navigation.navigate(returnTo);
+        return;
+      } catch {}
     }
 
     perfLog('studio.create.return_home', {
       source: 'header_back',
     });
-    if (typeof navigation.popToTop === 'function') {
-      navigation.popToTop();
-      return;
-    }
-    navigation.goBack();
-  }, [navigation, parentNav, returnTo]);
+    navigation.navigate(ROOT_DRAWER_ROUTE, { screen: 'Studio' });
+  }, [navigation, returnTo]);
 
   const handleGeneratorClose = useCallback(() => {
     setGeneratorVisible(false);
@@ -470,11 +432,6 @@ export default function CreateImage({ navigation, route }) {
 
   const keyChip = useCallback((it, idx) => `${idx}-${it}`, []);
 
-  // Don't render content if screen is not focused to prevent flash during navigation
-  if (!isFocused) {
-    return <View style={styles.container} />;
-  }
-
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -490,7 +447,9 @@ export default function CreateImage({ navigation, route }) {
           <View pointerEvents="none" style={styles.headerCenterAbs}>
             <Text style={styles.headerTitle}>{t('createImage.headerTitle')}</Text>
           </View>
-          <View style={styles.headerRightSpacer} />
+          <View style={styles.headerRightSlot}>
+            <CoinBalanceBadge coins={coins} />
+          </View>
         </View>
       </View>
 
@@ -505,7 +464,9 @@ export default function CreateImage({ navigation, route }) {
         keyboardShouldPersistTaps="handled"
         contentInsetAdjustmentBehavior="automatic"
       >
-        <Reanimated.View style={[styles.content, animatedContentStyle]}>
+        <Reanimated.View
+          style={[styles.content, animatedContentStyle]}
+        >
           {/* Model selector */}
           <View style={styles.modelWrap}>
             <Pressable
@@ -712,9 +673,14 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 96,
   },
   headerTitle: { color: '#FFFFFF', fontSize: 22, fontWeight: '800' },
-  headerRightSpacer: { width: 40, height: 40 },
+  headerRightSlot: {
+    minWidth: 74,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
 
   content: { paddingHorizontal: 16, paddingTop: 16, gap: 16 },
   modelWrap: { gap: 8 },
@@ -950,15 +916,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#7C5CFF',
-        shadowOpacity: 0.28,
-        shadowRadius: 16,
-        shadowOffset: { width: 0, height: 10 },
-      },
-      android: { elevation: 3 },
-    }),
+    elevation: 3,
   },
   generateBtnDisabled: { opacity: 0.65 },
   generateContent: {

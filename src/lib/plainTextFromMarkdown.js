@@ -5,7 +5,9 @@ export function plainTextFromMarkdown(input) {
   s = s.replace(/\r\n/g, '\n');
 
   // Keep code content but remove fences.
-  s = s.replace(/```[^\n]*\n([\s\S]*?)\n?```/g, (_, code) => String(code || '').replace(/\n+$/g, ''));
+  s = s.replace(/```[^\n]*\n([\s\S]*?)\n?```/g, (_, code) =>
+    String(code || '').replace(/\n+$/g, ''),
+  );
   s = s.replace(/`([^`]+)`/g, '$1');
 
   // Images/links.
@@ -31,8 +33,8 @@ export function plainTextFromMarkdown(input) {
   s = s.replace(/^\s{0,3}([-*_])(?:\s*\1){2,}\s*$/gm, '');
 
   // Lists.
-  s = s.replace(/^\s{0,3}(\d+)\.\s+/gm, '• ');
-  s = s.replace(/^\s{0,3}[-*+]\s+/gm, '• ');
+  s = s.replace(/^\s{0,3}(\d+)\.\s+/gm, '- ');
+  s = s.replace(/^\s{0,3}[-*+]\s+/gm, '- ');
 
   // Bold / italic / strike.
   s = s.replace(/\*\*([\s\S]+?)\*\*/g, '$1');
@@ -44,7 +46,7 @@ export function plainTextFromMarkdown(input) {
   // Tables: convert pipe-separated rows to tab-separated rows (skip separator lines).
   s = s
     .split('\n')
-    .map((line) => {
+    .map(line => {
       const l = String(line);
       if (!l.includes('|')) return l;
       const trimmed = l.trim();
@@ -55,7 +57,7 @@ export function plainTextFromMarkdown(input) {
         .replace(/^\|/, '')
         .replace(/\|$/, '')
         .split('|')
-        .map((c) => c.trim());
+        .map(c => c.trim());
       return cells.join('\t');
     })
     .join('\n');
@@ -65,4 +67,3 @@ export function plainTextFromMarkdown(input) {
   s = s.replace(/\n{3,}/g, '\n\n');
   return s.trim();
 }
-

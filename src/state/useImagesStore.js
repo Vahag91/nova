@@ -1,29 +1,35 @@
 import { create } from 'zustand';
 import { Storage } from '../lib/storage';
-import { createImages } from '../api/images';
 import { createRunwareImages } from '../api/runware';
 import { toLocalPath, deleteLocalFile } from '../lib/imageDownloader';
 import { normalizeImageUri, cacheToFile, cleanupCorruptedCache } from '../lib/imageUtils';
 import RNFS from 'react-native-fs';
 import { ensureDeviceId } from '../lib/deviceId';
-import { SUPABASE_BASE, SUPABASE_ANON_KEY } from '../config/endpoints';
 import { v4 as uuidv4 } from 'uuid';
 import { perfEnd, perfStart } from '../lib/perfTrace';
 // Advanced mode helper functions are now handled by createRunwareImages API
 
-const RUNWARE_KEYS = new Set([
-  'runware-flux-schnell',
-  'runware-flux-krea',
-  'runware-qwen-image',
-  'google:4@1',
-]);
-
 // Advanced modes now use createRunwareImages API directly
+
+function buildImageGenerationUserError(error, fallbackMessage) {
+  const message =
+    typeof fallbackMessage === 'string' && fallbackMessage.trim()
+      ? fallbackMessage.trim()
+      : 'Image generation failed.';
+  const next = new Error(message);
+  next.code = error?.code || 'generation_failed';
+  return next;
+}
 
 export const useImagesStore = create((set, get) => ({
   coinsBalance: null,
   setCoinsBalance: (balance) => {
-    set({ coinsBalance: typeof balance === 'number' ? balance : null });
+    const nextBalance = typeof balance === 'number' ? balance : null;
+    set(state => (
+      state.coinsBalance === nextBalance
+        ? state
+        : { coinsBalance: nextBalance }
+    ));
   },
   // ===== persisted (normal) =====
   jobs: [],
@@ -46,6 +52,7 @@ export const useImagesStore = create((set, get) => ({
       chatId: j.chatId ?? null,
       prompt: j.prompt || '',
       model: j.model || 'runware-flux-schnell',
+      mode: j.mode || 'text2img',
       size: j.size || '1024x1024',
       n: j.n || 1,
       status: j.status || 'done',
@@ -160,45 +167,39 @@ export const useImagesStore = create((set, get) => ({
     
     set(state => ({ jobs: [job, ...state.jobs] }));
     get()._save(); // Auto-save
-    
+
     try {
-      const isRunware = RUNWARE_KEYS.has(model);
-      let deviceIdForCoins = null;
-      if (isRunware) {
-        deviceIdForCoins = await ensureDeviceId();
-        if (!deviceIdForCoins) {
-          throw new Error('Device unavailable. Please restart the app.');
-        }
+      const deviceIdForCoins = await ensureDeviceId();
+      if (!deviceIdForCoins) {
+        throw new Error('Device unavailable. Please restart the app.');
       }
 
-      const spendJobId = isRunware ? uuidv4() : null;
-      const res = isRunware
-        ? await createRunwareImages({ 
-            prompt, 
-            model, 
-            size,
-            mode,
-            seedImage,
-            maskImage,
-            strength,
-            outpaint,
-            guideImage,
-            baseModel,
-            ipAdapterModel,
-            CFGScale,
-            outputType,
-            outputFormat,
-            outputQuality,
-            scheduler,
-            includeCost,
-            checkNSFW,
-            acceleration,
-            referenceImages,
-            advancedFeatures,
-            deviceId: deviceIdForCoins,
-            jobId: spendJobId,
-          })
-        : await createImages({ prompt, model, size, n: 1 });       // existing OpenAI/DALL·E
+      const spendJobId = uuidv4();
+      const res = await createRunwareImages({
+        prompt,
+        model,
+        size,
+        mode,
+        seedImage,
+        maskImage,
+        strength,
+        outpaint,
+        guideImage,
+        baseModel,
+        ipAdapterModel,
+        CFGScale,
+        outputType,
+        outputFormat,
+        outputQuality,
+        scheduler,
+        includeCost,
+        checkNSFW,
+        acceleration,
+        referenceImages,
+        advancedFeatures,
+        deviceId: deviceIdForCoins,
+        jobId: spendJobId,
+      });
 
       const imgs = await Promise.all((res.images || []).map(async (img, i) => {
         const raw = img?.url || '';
@@ -278,8 +279,13 @@ export const useImagesStore = create((set, get) => ({
       
       if (error?.code === 'restricted_content' || /restricted|nsfw|content not allowed/i.test(userMessage)) {
         userMessage = 'Restricted content blocked by safety filters. No coins were charged.';
+      } else if (
+        error?.code === 'invalid_image_response' ||
+        /temporarily unavailable|cloudflare|expected an image|html error page|supported image/i.test(userMessage)
+      ) {
+        userMessage = 'The generated image file was temporarily unavailable. Please try again.';
       } else if (/not enough coins/i.test(userMessage)) {
-        userMessage = 'Not enough coins. Please visit the Coin Store to top up.';
+        userMessage = 'Not enough coins available for this request.';
       } else if (userMessage.includes('unknownErrorWhileReadingResults')) {
         userMessage = 'Runware service is temporarily unavailable. Please try again in a moment.';
       } else if (userMessage.includes('500') || userMessage.includes('502')) {
@@ -301,7 +307,7 @@ export const useImagesStore = create((set, get) => ({
       }));
       get()._save(); // Auto-save
       
-      throw error;
+      throw buildImageGenerationUserError(error, userMessage);
     }
   },
 
@@ -339,16 +345,16 @@ export const useImagesStore = create((set, get) => ({
     }
     
     set((state) => {
-      const updatedJobs = state.jobs.map((job) => {
-        if (job.id === jobId) {
-          const updatedImages = (job.images || []).filter((img) => img.id !== imageId);
+      const updatedJobs = state.jobs.map((entry) => {
+        if (entry.id === jobId) {
+          const updatedImages = (entry.images || []).filter((img) => img.id !== imageId);
           return {
-            ...job,
+            ...entry,
             images: updatedImages,
             updatedAt: Date.now(),
           };
         }
-        return job;
+        return entry;
       });
       return { jobs: updatedJobs };
     });
@@ -477,6 +483,11 @@ export const useImagesStore = create((set, get) => ({
       
       if (error?.code === 'restricted_content' || /restricted|nsfw|content not allowed/i.test(userMessage)) {
         userMessage = 'Restricted content blocked by safety filters. No coins were charged.';
+      } else if (
+        error?.code === 'invalid_image_response' ||
+        /temporarily unavailable|cloudflare|expected an image|html error page|supported image/i.test(userMessage)
+      ) {
+        userMessage = 'The generated image file was temporarily unavailable. Please try again.';
       } else if (userMessage.includes('unknownErrorWhileReadingResults')) {
         userMessage = 'Runware service is temporarily unavailable. Please try again in a moment.';
       } else if (userMessage.includes('500') || userMessage.includes('502')) {
@@ -498,7 +509,7 @@ export const useImagesStore = create((set, get) => ({
       }));
       get()._save();
 
-      throw error;
+      throw buildImageGenerationUserError(error, userMessage);
     }
   },
 

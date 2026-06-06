@@ -19,7 +19,7 @@
     "gpt-5": "Leistungsstärkstes Allround-Modell",
     "gpt-5-chat-latest": "Für Chat und Dialog optimiert",
     "gpt-5-mini": "Schnelles und zuverlässiges GPT-5",
-    "gpt-5-nano": "Leichtes Modell für einfache Aufgaben",
+    "gpt-5.4-nano": "Leichtes Modell für einfache Aufgaben",
     "o4-mini": "Effizientes Reasoning-Modell",
     "gpt-4.1-mini": "Kompaktes, leistungsfähiges GPT-4.1",
     "claude-3-haiku": "Schnelle, fokussierte Anthropic-KI",
@@ -450,10 +450,12 @@
       "runwareFluxKrea": "Kreative, stilisierte Ergebnisse",
       "runwareQwenImage": "Ausgewogene, hochwertige Ergebnisse",
       "google4": "Bestes KI-Bildmodell",
+      "klingImageO1": "Bildbearbeitung mit hoher Kontrolle",
       "fluxKontent": "Flux Kontent für Bearbeitung optimiert",
       "runwareProvider": "Balance aus Qualität und stabiler Diffusion.",
       "airProvider": "Nano Banana sorgt für lebendige, verspielte Töne.",
       "googleProvider": "Google für scharfe Details abgestimmt.",
+      "klingaiProvider": "KlingAI ist auf kontrollierte Bearbeitungen abgestimmt.",
       "anthropicProvider": "Claude-Pipeline für feine Nuancen.",
       "default": "Tippen, um verfügbare Engines zu sehen."
     }
@@ -666,6 +668,7 @@
       "perMonth": "pro Monat"
     },
     "cta": "Fortfahren",
+    "ctaFreeTrial": "Kostenlos testen",
     "legal": {
       "terms": "Bedingungen",
       "privacy": "Datenschutz"
@@ -827,6 +830,66 @@
       "explainConceptSubtitle": "in einfachen Worten",
       "planDay": "Meinen Tag planen",
       "planDaySubtitle": "mit Produktivitäts-Tipps"
+    },
+    "home": {
+      "eyebrow": "Wählen Sie ein Thema",
+      "title": "Was möchten Sie tun?",
+      "subtitle": "Wählen Sie eine Richtung und beginnen Sie dann mit einer starken Aufforderung.",
+      "pickPromptTitle": "Wählen Sie eine Eingabeaufforderung zum Starten",
+      "changeTopic": "Wählen Sie ein anderes Thema",
+      "intents": {
+        "summarize": "Text zusammenfassen",
+        "summarizeShort": "Zusammenfassen",
+        "summarizeHint": "Artikel, Notizen, Sprachnotizen, lange Threads",
+        "plan": "Machen Sie einen Plan",
+        "planHint": "Reisen, Routinen, Budgets, Fristen, Lebensveränderungen",
+        "brainstorm": "Brainstorming",
+        "brainstormHint": "Ideen, Angebote, Namen, Inhalte, Nebenprojekte",
+        "analyze": "Daten analysieren",
+        "analyzeHint": "Ausgaben, Feedback, Kennzahlen, Gewohnheiten, Leistung"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Erstellen Sie ein Gründerbriefing",
+          "founderBriefSubtitle": "Ermitteln Sie die wichtigsten Risiken, Entscheidungen und nächsten Schritte.",
+          "classNotesTitle": "Räumen Sie meine Lernnotizen auf",
+          "classNotesSubtitle": "Verwandeln Sie grobe Notizen in einen klaren Studienführer.",
+          "meetingHandoffTitle": "Schreiben Sie eine Zusammenfassung der Übergabe",
+          "meetingHandoffSubtitle": "Nützlich nach Besprechungen, Anrufen oder langen internen Threads.",
+          "longArticleTitle": "Fassen Sie diesen Artikel schnell zusammen",
+          "longArticleSubtitle": "Fassen Sie einen langen Artikel in scharfsinnige Erkenntnisse zusammen."
+        },
+        "plan": {
+          "energyResetTitle": "Erstellen Sie einen 14-tägigen Energie-Reset",
+          "energyResetSubtitle": "Ein realistischer Plan für Schlaf, Essen, Bewegung und Konzentration.",
+          "mealPlanTitle": "Planen Sie Mahlzeiten, die ich tatsächlich kochen werde",
+          "mealPlanSubtitle": "Praktisch, erschwinglich und basierend auf dem, was ich habe.",
+          "cityMoveTitle": "Plane meinen Umzug in eine neue Stadt",
+          "cityMoveSubtitle": "Teilen Sie es in Zeitleiste, Budget, Unterbringung und Verwaltungsaufgaben auf.",
+          "tripEscapeTitle": "Planen Sie einen unvergesslichen Wochenendausflug",
+          "tripEscapeSubtitle": "Etwas Besseres als eine allgemeine Reiseroute."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Finden Sie eine realistische Nebenbeschäftigung",
+          "sideHustleSubtitle": "Ideen, die ich neben meiner Vollzeitbeschäftigung umsetzen kann.",
+          "brandAngleTitle": "Finden Sie einen einprägsamen Markenaspekt",
+          "brandAngleSubtitle": "Nützlich für Produkte, Ersteller, Agenturen oder Newsletter.",
+          "socialSeriesTitle": "Erfinden Sie eine Inhaltsreihe",
+          "socialSeriesSubtitle": "Etwas, das konsistent genug ist, um ein Publikum zu gewinnen.",
+          "datingIdeasTitle": "Lassen Sie sich frische Ideen einfallen",
+          "datingIdeasSubtitle": "Termine, Geschenke, Überraschungen oder Ereignisse, die nachdenklich wirken."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Finden Sie heraus, wo mein Geld ausläuft",
+          "spendingLeaksSubtitle": "Zeigen Sie zuerst Muster, Schwachstellen und die einfachsten Erfolge auf.",
+          "customerFeedbackTitle": "Verwandeln Sie Feedback in Prioritäten",
+          "customerFeedbackSubtitle": "Clusteranfragen, Beschwerden, Dringlichkeit und Auswirkungen.",
+          "habitPatternsTitle": "Erkenne Muster in meinen Gewohnheiten",
+          "habitPatternsSubtitle": "Nützlich für Workouts, Schlaf, Journaling oder Fokusprotokolle.",
+          "metricsStoryTitle": "Erklären Sie, was die Zahlen bedeuten",
+          "metricsStorySubtitle": "Mehr Signal, weniger Tabellenrauschen."
+        }
+      }
     }
   },
   "imageUpload": {

@@ -1,6 +1,5 @@
 package com.aicloudsolutions.chatcloud
 
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import androidx.core.view.WindowCompat
@@ -13,9 +12,6 @@ class MainActivity : ReactActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    window.statusBarColor = Color.BLACK
-    window.navigationBarColor = Color.BLACK
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
       window.isNavigationBarContrastEnforced = false

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import { useImagesStore } from '../../state/useImagesStore';
 import { toLocalPath } from '../../lib/imageDownloader';
 import SvgIcon from '../SvgIcon';
 import { useTranslation } from 'react-i18next';
+import ReportContentModal from '../reporting/ReportContentModal';
 
 const ImageViewer = memo(({ 
   visible,
@@ -25,15 +26,39 @@ const ImageViewer = memo(({
 }) => {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
+  const [reportVisible, setReportVisible] = useState(false);
 
   const handleClose = useCallback(() => {
+    setReportVisible(false);
     onClose?.();
   }, [onClose]);
 
   const jobs = useImagesStore(s => s.jobs);
   const job = useMemo(() => jobs.find(j => j.id === jobId), [jobs, jobId]);
+  const selectedImage = useMemo(
+    () => job?.images?.find(image => image?.id === imageId) || null,
+    [imageId, job],
+  );
 
   const promptText = useMemo(() => (job?.prompt ? String(job.prompt).trim() : ''), [job?.prompt]);
+  const reportPayload = useMemo(
+    () => ({
+      content_type:
+        !job?.mode || job?.mode === 'text2img' ? 'generated_image' : 'edited_image',
+      content_id: imageId || jobId || undefined,
+      prompt: promptText || undefined,
+      image_url:
+        selectedImage?.originalUrl ||
+        (/^https?:\/\//i.test(imageUri || '') ? imageUri : undefined),
+      model: job?.model || undefined,
+      source_screen: 'image_viewer',
+      metadata: {
+        job_id: jobId || null,
+        mode: job?.mode || 'text2img',
+      },
+    }),
+    [imageId, imageUri, job?.mode, job?.model, jobId, promptText, selectedImage?.originalUrl],
+  );
   const requestedSize = job?.size || null;
   const previewAspectRatio = useMemo(() => {
     if (typeof requestedSize === 'string') {
@@ -102,6 +127,7 @@ const ImageViewer = memo(({
   if (!visible || !imageUri) return null;
 
   return (
+    <>
     <Modal
       visible={visible}
       transparent
@@ -198,6 +224,20 @@ const ImageViewer = memo(({
                 </Pressable>
                 <Text style={styles.actionLabel}>{t('imageViewer.actions.share')}</Text>
               </View>
+              <View style={styles.actionItem}>
+                <Pressable
+                  style={({ pressed }) => [
+                    styles.actionButton,
+                    pressed && styles.actionButtonPressed,
+                  ]}
+                  onPress={() => setReportVisible(true)}
+                  hitSlop={10}
+                  accessibilityLabel="Report AI content"
+                >
+                  <SvgIcon name="flag" size={22} color="rgba(255,255,255,0.92)" />
+                </Pressable>
+                <Text style={styles.actionLabel}>Report</Text>
+              </View>
             </View>
           </View>
 
@@ -205,6 +245,12 @@ const ImageViewer = memo(({
         </View>
       </View>
     </Modal>
+    <ReportContentModal
+      visible={reportVisible}
+      report={reportPayload}
+      onClose={() => setReportVisible(false)}
+    />
+    </>
   );
 });
 
