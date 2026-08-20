@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
+import { useTranslation } from 'react-i18next';
 
 function CoinIcon({ size = 15, color = '#FFB24B' }) {
   return (
@@ -11,7 +12,10 @@ function CoinIcon({ size = 15, color = '#FFB24B' }) {
 }
 
 export default function CoinBalanceBadge({ coins, style }) {
-  const balanceLabel = typeof coins === 'number' ? coins.toLocaleString() : '--';
+  const { i18n } = useTranslation();
+  const locale = i18n.resolvedLanguage || i18n.language || undefined;
+  const balanceLabel =
+    typeof coins === 'number' ? coins.toLocaleString(locale) : '--';
 
   return (
     <View style={[styles.badge, style]}>

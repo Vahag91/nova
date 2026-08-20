@@ -11,7 +11,12 @@
     "searchHint": "उपलब्ध मॉडलों को फ़िल्टर करने के लिए टाइप करें",
     "modelLabel": "{{name}} मॉडल",
     "selectHint": "{{name}} मॉडल चुनें",
-    "currentlySelected": "वर्तमान में चयनित"
+    "currentlySelected": "वर्तमान में चयनित",
+    "genericModel": "{{provider}} मॉडल",
+    "badges": {
+      "new": "नया",
+      "best": "सर्वश्रेष्ठ"
+    }
   },
   "models": {
     "gpt-4o": "सबसे शक्तिशाली AI मॉडल",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "सहायक",
+    "defaultTitle": "असिस्टेंट",
+    "errorTitle": "कुछ गड़बड़ हो गई",
+    "errorMessage": "यह असिस्टेंट शुरू नहीं हो सका।",
+    "noAssistants": "इस श्रेणी में कोई असिस्टेंट नहीं मिला।",
+    "selectAssistantHint": "असिस्टेंट चयनकर्ता खोलें",
     "subtitle": "कोडिंग, लेखन, विश्लेषण, प्लानिंग और बहुत कुछ के लिए चुने हुए AI सहायक.",
     "searchPlaceholder": "सहायक खोजें…",
     "useAssistant": "सहायक का उपयोग करें",
@@ -254,9 +264,12 @@
     "search": "खोजें",
     "clearSearch": "खोज साफ़ करें",
     "noChatsYet": "अभी कोई चैट नहीं",
+    "noResults": "अभी कोई चैट नहीं",
     "startFirstConversation": "अपनी पहली बातचीत शुरू करें.",
     "startChat": "चैट शुरू करें",
+    "startNewChat": "चैट शुरू करें",
     "errorLoadingHistory": "इतिहास लोड करने में त्रुटि",
+    "loading": "इतिहास लोड हो रहा है...",
     "renameChat": "चैट का नाम बदलें",
     "enterNewTitle": "नया शीर्षक दर्ज करें",
     "deleteChat": "चैट हटाएँ?",
@@ -264,9 +277,7 @@
     "rename": "नाम बदलें",
     "unpin": "अनपिन",
     "pin": "पिन करें",
-    "untitled": "शीर्षकहीन",
-    "noResults": "अभी कोई चैट नहीं",
-    "startNewChat": "चैट शुरू करें"
+    "untitled": "शीर्षकहीन"
   },
   "settings": {
     "title": "सेटिंग्स",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "प्रीमियम सक्रिय",
-        "subtitle": "ChatCloud को सपोर्ट करने के लिए धन्यवाद"
+        "subtitle": "Cloud AI को सपोर्ट करने के लिए धन्यवाद"
       },
       "restore": {
         "title": "खरीदारी वापस लाएँ",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "यह लिंक अभी नहीं खोला जा सकता.",
       "restoreSuccessTitle": "सफल",
       "restoreSuccessMessage": "आपकी खरीदारी वापस ला दी गई है.",
+      "restoreEmptyTitle": "कोई खरीदारी नहीं मिली",
+      "restoreEmptyMessage": "इस खाते के लिए पुनर्स्थापित करने हेतु कोई सक्रिय खरीदारी नहीं मिली।",
       "restoreErrorTitle": "वापस लाने में विफल",
       "restoreErrorMessage": "अभी खरीदारी वापस नहीं ला सके.",
       "resetConfirmTitle": "ऐप डेटा रीसेट करें?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "कस्टम"
     },
+    "notEnoughCoinsTitle": "पर्याप्त सिक्के नहीं",
+    "notEnoughCoinsMessage": "इस छवि के लिए आपका मौजूदा बैलेंस बहुत कम है।",
     "modelTaglines": {
       "runwareFluxSchnell": "सबसे तेज़ मॉडल",
       "runwareFluxKrea": "रचनात्मक और स्टाइलिश परिणाम",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "सहेजा नहीं जा सका",
       "shareFailedTitle": "साझा नहीं कर सके",
-      "tryAgain": "कृपया दोबारा कोशिश करें."
+      "tryAgain": "कृपया दोबारा कोशिश करें.",
+      "savedTitle": "सहेजा गया",
+      "savedMessage": "छवि आपकी गैलरी में सहेज दी गई।",
+      "permissionTitle": "अनुमति आवश्यक",
+      "permissionMessage": "छवियों को गैलरी में सहेजने के लिए स्टोरेज एक्सेस की अनुमति दें।"
     },
     "result": {
       "complete": "सब हो गया"
@@ -498,12 +517,47 @@
       "save": "सहेजें",
       "share": "साझा करें"
     },
+    "alerts": {
+      "savedTitle": "सहेजा गया",
+      "savedMessage": "छवि आपकी गैलरी में सहेज दी गई।",
+      "permissionTitle": "अनुमति आवश्यक",
+      "permissionMessage": "छवियों को गैलरी में सहेजने के लिए स्टोरेज एक्सेस की अनुमति दें।",
+      "saveFailedTitle": "सहेजा नहीं जा सका",
+      "tryAgain": "कृपया फिर से प्रयास करें।"
+    },
     "accessibility": {
       "close": "बंद करें",
       "delete": "इमेज हटाएँ",
       "edit": "इमेज संपादित करें",
       "save": "इमेज सहेजें",
       "share": "इमेज साझा करें"
+    }
+  },
+  "reportContent": {
+    "title": "AI सामग्री की रिपोर्ट करें",
+    "subtitle": "हमें बताएं कि इस जनरेट की गई सामग्री में क्या गलत है।",
+    "privateDisclosure": "सबमिट करने पर यह रिपोर्ट की गई सामग्री सुरक्षा समीक्षा के लिए भेजी जाती है।",
+    "accessibilityLabel": "AI सामग्री की रिपोर्ट करें",
+    "reasons": {
+      "sexual": "यौन या नग्नता वाली सामग्री",
+      "violence_self_harm": "हिंसा या आत्म-हानि",
+      "hate_harassment": "घृणा या उत्पीड़न",
+      "child_safety": "बाल सुरक्षा संबंधी चिंता",
+      "scam_deceptive": "धोखाधड़ी या भ्रामक सामग्री",
+      "other": "अन्य"
+    },
+    "errors": {
+      "reasonRequired": "सबमिट करने से पहले कृपया एक कारण चुनें।",
+      "submit": "रिपोर्ट सबमिट नहीं हो सकी। कृपया फिर से प्रयास करें।"
+    },
+    "success": {
+      "title": "धन्यवाद। आपकी रिपोर्ट सबमिट हो गई।",
+      "subtitle": "हम सामग्री सुरक्षा बेहतर बनाने के लिए रिपोर्ट का उपयोग करेंगे।"
+    },
+    "actions": {
+      "report": "रिपोर्ट करें",
+      "submit": "रिपोर्ट सबमिट करें",
+      "done": "हो गया"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "मिलिए",
       "titleHighlight": "Image Studio",
-      "subtitle": "ChatCloud के अंदर ही AI से इमेज बनाएँ और एडिट करें.",
-      "appName": "ChatCloud"
+      "subtitle": "Cloud AI के अंदर ही AI से इमेज बनाएँ और एडिट करें."
     },
     "relaxView": {
       "title": "अपने AI से मिलिए",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "एंटरप्राइज़-ग्रेड AI सॉल्यूशंस",
       "description": "पेशेवरों और टीमों के लिए बनी अत्याधुनिक AI से अपना बिज़नेस सशक्त करें.",
       "stats": "500k+ यूज़र्स का भरोसा",
@@ -592,10 +645,10 @@
       "value": "सबसे किफायती"
     },
     "pack": {
+      "creditsLabel": "{{credits}} टोकन",
       "tokensLabel": "{{credits}} टोकन",
       "defaultName": "पैक {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} टोकन"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "प्रीमियम लें",
@@ -613,8 +666,28 @@
       "unknownError": "अज्ञात त्रुटि"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "प्रीमियम आवश्यक",
+    "upgrade": "अपग्रेड करें",
+    "modelRequiredMessage": "इस मॉडल के लिए प्रीमियम आवश्यक है। GPT-5, Grok 4, Claude और अन्य उन्नत मॉडलों तक पहुँच के लिए अपग्रेड करें।",
+    "assistantsRequiredMessage": "असिस्टेंट के लिए प्रीमियम आवश्यक है। फिटनेस, कोडिंग, लेखन आदि के लिए विशेष AI असिस्टेंट पाने हेतु अपग्रेड करें।",
+    "assistantsTitle": "प्रीमियम आवश्यक",
+    "assistantsMessage": "असिस्टेंट के लिए प्रीमियम आवश्यक है। फिटनेस, कोडिंग, लेखन आदि के लिए विशेष AI असिस्टेंट पाने हेतु अपग्रेड करें।"
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "पेवॉल बंद करें",
+    "unavailableTitle": "खरीदारी अनुपलब्ध",
+    "unavailableMessage": "Android बिलिंग अभी कॉन्फ़िगर नहीं की गई है।",
+    "restoreEmptyTitle": "कोई खरीदारी नहीं मिली",
+    "restoreEmptyMessage": "इस खाते के लिए पुनर्स्थापित करने हेतु कोई सक्रिय खरीदारी नहीं मिली।",
+    "restoreFailedTitle": "पुनर्स्थापना विफल",
+    "restoreFailedMessage": "अभी खरीदारी पुनर्स्थापित नहीं की जा सकती।",
+    "productsUnavailableTitle": "कोई प्लान उपलब्ध नहीं",
+    "productsUnavailableMessage": "अभी कोई Android सदस्यता उत्पाद उपलब्ध नहीं है।",
+    "purchaseFailedTitle": "खरीदारी विफल",
+    "purchaseFailedMessage": "अभी यह खरीदारी पूरी नहीं की जा सकती।",
     "restore": "रीस्टोर",
     "restoreRestoring": "रीस्टोर हो रहा है…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "शर्तें",
       "privacy": "गोपनीयता"
+    },
+    "premium": {
+      "headline": "एक ही योजना में सभी प्रीमियम एआई",
+      "subtitleLine1": "चैट करें, कोड करें, बनाएं और योजना बनाएं",
+      "subtitleLine2": "उन्नत मॉडलों के साथ.",
+      "enableTrial": "निःशुल्क परीक्षण सक्षम करें",
+      "annual": "वार्षिक",
+      "saveBadge": "83% बचाएं",
+      "year": "वर्ष",
+      "week": "सप्ताह",
+      "termsOfUse": "उपयोग की शर्तें",
+      "privacyPolicy": "गोपनीयता नीति"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "जवाब फिर बनाएँ",
     "regenerateResponseHint": "नया जवाब बनाएँ",
     "copyCode": "कोड कॉपी करें",
+    "copied": "कॉपी हो गया",
     "image": "इमेज",
     "loading": "लोड हो रहा है…",
     "loadingChat": "चैट लोड हो रही है...",
     "offlineBanner": "आप ऑफ़लाइन हैं. संदेश नहीं भेजा जा सकता.",
+    "offlineError": "इंटरनेट कनेक्शन नहीं है। कृपया अपना कनेक्शन जाँचें और फिर से प्रयास करें।",
     "imagePickerErrorTitle": "इमेज चुनने में त्रुटि",
     "imagePickerErrorMessage": "फ़ोटो तक पहुँच नहीं मिली. कृपया दोबारा कोशिश करें.",
     "messageTooLong": "संदेश बहुत लंबा है ({{length}}). सीमा {{limit}} है.",
     "sendFailed": "भेजना विफल.",
     "modelNoImageSupport": "चयनित मॉडल छवियों का समर्थन नहीं करता है। कृपया एक अलग मॉडल चुनें।",
     "voiceStartFailed": "वॉइस शुरू नहीं हो सकी।",
+    "voiceNoSpeechDetected": "कोई आवाज़ पहचानी नहीं गई। कृपया फिर से प्रयास करें।",
     "emptyTitle": "मैं कैसे मदद करूँ?",
     "emptySubtitle": "AI के साथ बातचीत शुरू करें",
     "privateTitle": "निजी चैट",
     "privateSubtitle": "यह चैट आपके इतिहास में नहीं दिखेगी",
+    "startPrivateChat": "निजी चैट शुरू करें",
+    "endPrivateChat": "निजी चैट समाप्त करें",
     "permissions": {
       "photosTitle": "फ़ोटो की अनुमति आवश्यक",
       "photosMessage": "इमेज चुनने के लिए फ़ोटो की पहुँच ज़रूरी है.",
@@ -753,7 +843,19 @@
       "share": "साझा करें",
       "regenerate": "फिर बनाएँ",
       "retryFromHere": "यहाँ से फिर कोशिश करें",
+      "report": "रिपोर्ट करें",
       "cancel": "रद्द करें"
+    },
+    "markdown": {
+      "copy": "कॉपी करें",
+      "copied": "कॉपी हो गया",
+      "table": "तालिका",
+      "watchVideo": "वीडियो देखें",
+      "wikipedia": "विकिपीडिया",
+      "link": "लिंक",
+      "note": "नोट",
+      "warning": "चेतावनी",
+      "tip": "सुझाव"
     },
     "messageActionTitle": "संदेश",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "मेरा दिन प्लान करो",
       "planDaySubtitle": "उत्पादकता टिप्स के साथ"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "एक विषय चुनें",
       "title": "आप क्या करना चाहते हैं?",
@@ -846,81 +946,59 @@
     "library": "लाइब्रेरी"
   },
   "common": {
-    "new": "नया",
-    "best": "सर्वश्रेष्ठ",
-    "cancel": "रद्द करें",
-    "save": "सहेजें",
-    "delete": "हटाएँ",
-    "close": "बंद करें",
-    "allow": "अनुमति दें",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "पुनः प्रयास करें",
+    "cancel": "रद्द करें",
+    "allow": "अनुमति दें",
+    "notNow": "अभी नहीं",
+    "openSettings": "सेटिंग्स खोलें",
+    "close": "बंद करें",
+    "save": "सहेजें",
+    "tryAgain": "फिर से प्रयास करें"
   },
   "rateUs": {
-    "title": "क्या आप ChatCloud का आनंद ले रहे हैं?",
+    "title": "क्या आप Cloud AI का आनंद ले रहे हैं?",
     "subtitle": "आपकी प्रतिक्रिया हमें सुधारने में मदद करती है। क्या आप हमें App Store पर रेट कर सकते हैं?",
     "rateNow": "अभी रेट करें",
     "maybeLater": "शायद बाद में",
     "dontAskAgain": "फिर से न पूछें"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "एक बार का ऑफ़र",
+    "discount": "{{percent}}% छूट",
+    "subtitle": "यह ऑफ़र आपको दोबारा नहीं दिखेगा।",
     "badgeLine1": "विशेष",
     "badgeLine2": "एक बार का ऑफर",
     "upgradeNow": "अभी अपग्रेड करें {{price}}",
     "loadingPrice": "लोड हो रहा है...",
     "termsOfUse": "उपयोग की शर्तें",
     "privacyPolicy": "गोपनीयता नीति",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "असीमित पहुँच",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "GPT-4 तक असीमित पहुँच",
+      "geminiPro": "Gemini Pro तक पहुँच",
+      "grokInsights": "नई जानकारियों के लिए Grok का उपयोग करें",
+      "priorityAccess": "प्राथमिकता पहुँच और तेज़ प्रतिक्रियाएँ"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "सर्वोत्तम मूल्य",
+    "annualPremium": "वार्षिक प्रीमियम",
+    "oneTimePayment": "एक बार का भुगतान",
+    "wasPrice": "पहले",
+    "continue": "जारी रखें",
+    "restore": "पुनर्स्थापित करें",
+    "terms": "शर्तें",
+    "privacy": "गोपनीयता",
+    "successTitle": "सफलता!",
+    "successMessage": "खरीदारी के लिए धन्यवाद! अगले 12 महीनों तक प्रीमियम एक्सेस का आनंद लें।",
+    "errorTitle": "खरीदारी विफल",
+    "errorMessage": "कुछ गड़बड़ हो गई। कृपया फिर से प्रयास करें।",
+    "restoreSuccessTitle": "पुनर्स्थापित",
+    "restoreSuccessMessage": "आपकी खरीदारी पुनर्स्थापित कर दी गई है।",
+    "restoreErrorTitle": "पुनर्स्थापना विफल",
+    "restoreErrorMessage": "पुनर्स्थापित करने के लिए कोई खरीदारी नहीं मिली।",
+    "unavailableTitle": "खरीदारी अनुपलब्ध",
+    "unavailableMessage": "Android बिलिंग अभी कॉन्फ़िगर नहीं की गई है।"
   },
   "rewards": {
     "header": {
@@ -1014,8 +1092,8 @@
         "close": "बंद करें"
       },
       "rewardSuccess": {
-        "error": "ERROR",
-        "success": "SUCCESS",
+        "error": "त्रुटि",
+        "success": "सफलता",
         "somethingWentWrong": "कुछ गलत हो गया",
         "rewardUnlocked": "रिवॉर्ड अनलॉक हुआ",
         "credits": "क्रेडिट्स",
@@ -1036,12 +1114,80 @@
           "mythic": "मिथिक"
         }
       }
+    },
+    "checkIn": {
+      "title": "अपने रोज़ाना सिक्के लें",
+      "subtitle": "हर दिन आइए, इनाम बढ़ता जाएगा।",
+      "cta": "चेक-इन करें",
+      "claimed": "मिल गया! +{{amount}} सिक्के",
+      "later": "बाद में"
     }
+  },
+  "app": {
+    "version": "संस्करण {{version}}",
+    "offlineBanner": "आप ऑफ़लाइन हैं",
+    "launch": {
+      "accessibilityLabel": "Cloud AI शुरू हो रहा है",
+      "title": "CLOUD AI",
+      "subtitle": "AI, जब भी आपको चाहिए"
+    },
+    "errors": {
+      "modelsLoadTitle": "मॉडल लोड नहीं हो सके",
+      "modelsLoadMessage": "AI मॉडल लोड नहीं हो पा रहे हैं। ऐप डिफ़ॉल्ट मॉडलों का उपयोग करेगा। कृपया अपना इंटरनेट कनेक्शन जाँचें।",
+      "modelsLoadTimeout": "मॉडल लोड होने में बहुत समय लगा। ऐप डिफ़ॉल्ट मॉडलों का उपयोग करेगा। कृपया फिर से प्रयास करें।",
+      "modelsLoadNetwork": "इंटरनेट कनेक्शन नहीं है। ऐप डिफ़ॉल्ट मॉडलों का उपयोग करेगा। कृपया अपना कनेक्शन जाँचें।",
+      "deviceIdTitle": "आरंभीकरण त्रुटि",
+      "deviceIdMessage": "डिवाइस ID आरंभ नहीं हो सका। कुछ सुविधाएँ ठीक से काम नहीं कर सकती हैं।",
+      "storageTitle": "स्टोरेज त्रुटि",
+      "storageMessage": "लोकल स्टोरेज तक पहुँच नहीं हो पा रही है। कुछ सुविधाएँ ठीक से काम नहीं कर सकती हैं।",
+      "crashTitle": "कुछ गड़बड़ हो गई।",
+      "crashSubtitle": "कृपया फिर से प्रयास करें।",
+      "crashLabel": "ऐप क्रैश हो गया"
+    },
+    "proxyErrors": {
+      "genericTitle": "कुछ गड़बड़ हो गई",
+      "genericMessage": "कृपया फिर से प्रयास करें।",
+      "rateLimitTitle": "बहुत अधिक अनुरोध",
+      "rateLimitMessage": "हम अभी बहुत सारे अनुरोध संभाल रहे हैं। कृपया थोड़ी देर में फिर से प्रयास करें।",
+      "rateLimitRetryAfter": "हम अभी बहुत सारे अनुरोध संभाल रहे हैं। कृपया लगभग {{seconds}} सेकंड में फिर से प्रयास करें।",
+      "restrictedTitle": "प्रतिबंधित सामग्री",
+      "restrictedMessage": "इस अनुरोध को सुरक्षा फ़िल्टर द्वारा रोक दिया गया।",
+      "insufficientCoinsTitle": "पर्याप्त सिक्के नहीं",
+      "insufficientCoinsMessage": "इस अनुरोध के लिए आपका मौजूदा बैलेंस बहुत कम है।",
+      "imageUnavailableTitle": "छवि अनुपलब्ध",
+      "imageUnavailableMessage": "जनरेट की गई छवि फ़ाइल अस्थायी रूप से अनुपलब्ध थी। कृपया फिर से प्रयास करें।",
+      "authorizationTitle": "प्राधिकरण समस्या",
+      "authorizationMessage": "हम आपके खाते की पुष्टि नहीं कर सके। कृपया फिर से प्रयास करें।",
+      "serverTitle": "सर्वर में गड़बड़ी",
+      "serverMessage": "हमारे सर्वर में समस्या आई। कृपया थोड़ी देर में फिर से प्रयास करें।",
+      "timeoutTitle": "बहुत समय लग रहा है",
+      "timeoutMessage": "अनुरोध का समय समाप्त हो गया। कृपया फिर से प्रयास करें।",
+      "networkTitle": "कोई कनेक्शन नहीं",
+      "networkMessage": "इंटरनेट कनेक्शन नहीं है। कृपया अपना कनेक्शन जाँचें और फिर से प्रयास करें।",
+      "requestTitle": "अनुरोध में समस्या",
+      "requestMessage": "आपके अनुरोध में कुछ गड़बड़ हो गई। कृपया फिर से प्रयास करें।"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "प्रीमियम सक्रिय करें",
+    "activateMessage": "क्या आप समीक्षक प्रीमियम सक्रिय करना चाहते हैं?",
+    "activateAction": "सक्रिय करें",
+    "deactivateTitle": "प्रीमियम निष्क्रिय करें",
+    "deactivateMessage": "क्या आप समीक्षक प्रीमियम निष्क्रिय करना चाहते हैं?",
+    "deactivateAction": "निष्क्रिय करें"
   },
   "push": {
     "dailyReward": {
       "title": "दैनिक इनाम",
       "body": "अपने दैनिक कॉइन्स मिस न करें — आधी रात से पहले क्लेम करें।"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "अपने रोज़ाना सिक्के मिस न करें",
+      "body": "हम दिन में एक रिमाइंडर भेजते हैं ताकि आपकी स्ट्रीक बनी रहे और सिक्के बढ़ते रहें। कोई स्पैम नहीं, और आप इसे कभी भी बंद कर सकते हैं।",
+      "enable": "रिमाइंडर चालू करें",
+      "skip": "अभी नहीं"
     }
   }
 }

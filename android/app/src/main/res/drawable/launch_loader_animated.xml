@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App-owned native loader. AnimatedVectorDrawable runs its vector animator
+     on RenderThread on API 25+, so React/Fabric startup cannot pause it. -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/launch_loader">
+    <target
+        android:name="loader"
+        android:animation="@animator/launch_loader_app_rotation" />
+</animated-vector>

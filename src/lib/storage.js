@@ -35,28 +35,36 @@ async function loadThreadIndexOnly() {
   }
 }
 
-async function loadThreadRecordsByKeys(keys = []) {
+async function loadThreadRecordsByKeys(keys = [], { throwOnReadError = false } = {}) {
   if (!Array.isArray(keys) || keys.length === 0) {
     return [];
   }
 
   try {
-    const pairs = await AsyncStorage.multiGet(keys);
+    const records = [];
+    const batchSize = 8;
+    for (let offset = 0; offset < keys.length; offset += batchSize) {
+      const pairs = await AsyncStorage.multiGet(
+        keys.slice(offset, offset + batchSize),
+      );
 
-    return pairs.reduce((acc, [, raw]) => {
-      if (!raw) return acc;
+      for (const [, raw] of pairs) {
+        if (!raw) continue;
 
-      try {
-        const parsed = JSON.parse(raw);
-        const normalized = normalizeThreadRecord(parsed);
-        if (normalized?.id && hasRenderableMessages(normalized.messages)) {
-          acc.push(normalized);
-        }
-      } catch {}
+        try {
+          const parsed = JSON.parse(raw);
+          const normalized = normalizeThreadRecord(parsed);
+          if (normalized?.id && hasRenderableMessages(normalized.messages)) {
+            records.push(normalized);
+          }
+        } catch {}
+      }
 
-      return acc;
-    }, []);
-  } catch {
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    return records;
+  } catch (error) {
+    if (throwOnReadError) throw error;
     return [];
   }
 }
@@ -73,6 +81,21 @@ async function loadThreadRecordsOnly() {
 
 export const Storage = {
   // Threads
+  async loadThreadIndex() {
+    return loadThreadIndexOnly();
+  },
+  async loadThreadBodies(threadIndex) {
+    try {
+      const persistedIndex = compactThreadIndex(threadIndex);
+      const records = await loadThreadRecordsByKeys(
+        persistedIndex.map(entry => threadRecordKey(entry.id)),
+        { throwOnReadError: true },
+      );
+      return { ...buildThreadStateFromArray(records), loadSucceeded: true };
+    } catch {
+      return { threadIndex: [], threadsById: {}, loadSucceeded: false };
+    }
+  },
   async loadThreadState() {
     try {
       const persistedIndex = await loadThreadIndexOnly();
@@ -140,12 +163,14 @@ export const Storage = {
   async saveThreadState(threadIndex, threadsById) {
     try {
       const persistedIndex = compactThreadIndex(threadIndex);
-      const bodyPairs = persistedIndex.map(entry => {
-        const normalized = normalizeThreadRecord(
-          threadsById?.[entry.id] || mergeThreadRecord(entry, null)
-        );
-        return [threadRecordKey(entry.id), JSON.stringify(normalized)];
-      });
+      // During metadata-first startup, older thread bodies may not be loaded
+      // yet. Never overwrite those persisted records with index-only shells.
+      const bodyPairs = persistedIndex
+        .filter(entry => !!threadsById?.[entry.id])
+        .map(entry => {
+          const normalized = normalizeThreadRecord(threadsById[entry.id]);
+          return [threadRecordKey(entry.id), JSON.stringify(normalized)];
+        });
 
       await AsyncStorage.setItem(KEY_THREAD_INDEX, JSON.stringify(persistedIndex));
 

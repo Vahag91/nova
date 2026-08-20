@@ -11,7 +11,12 @@
     "searchHint": "Skriv for å filtrere tilgjengelige modeller",
     "modelLabel": "{{name}}-modell",
     "selectHint": "Velg {{name}}-modell",
-    "currentlySelected": "Valgt nå"
+    "currentlySelected": "Valgt nå",
+    "genericModel": "{{provider}}-modell",
+    "badges": {
+      "new": "NY",
+      "best": "BESTE"
+    }
   },
   "models": {
     "gpt-4o": "Kraftigste KI-modell",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Assistenter",
+    "defaultTitle": "Assistent",
+    "errorTitle": "Noe gikk galt",
+    "errorMessage": "Denne assistenten kunne ikke startes.",
+    "noAssistants": "Ingen assistenter funnet i denne kategorien.",
+    "selectAssistantHint": "Åpne assistentvelgeren",
     "subtitle": "Kuraterte KI-spesialister klare for koding, skriving, analyse, planlegging og mer.",
     "searchPlaceholder": "Søk assistenter…",
     "useAssistant": "Bruk assistent",
@@ -254,9 +264,12 @@
     "search": "Søk",
     "clearSearch": "Tøm søk",
     "noChatsYet": "Ingen chatter ennå",
+    "noResults": "Ingen chatter ennå",
     "startFirstConversation": "Start din første samtale.",
     "startChat": "Start chat",
+    "startNewChat": "Start chat",
     "errorLoadingHistory": "Feil ved innlasting av historikk",
+    "loading": "Laster inn historikk...",
     "renameChat": "Gi chatten nytt navn",
     "enterNewTitle": "Skriv inn ny tittel",
     "deleteChat": "Slette chat?",
@@ -264,9 +277,7 @@
     "rename": "Gi nytt navn",
     "unpin": "Løsne",
     "pin": "Fest",
-    "untitled": "Uten tittel",
-    "noResults": "Ingen chatter ennå",
-    "startNewChat": "Start chat"
+    "untitled": "Uten tittel"
   },
   "settings": {
     "title": "Innstillinger",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium aktiv",
-        "subtitle": "Takk for at du støtter ChatCloud"
+        "subtitle": "Takk for at du støtter Cloud AI"
       },
       "restore": {
         "title": "Gjenopprett kjøp",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Kan ikke åpne denne lenken nå.",
       "restoreSuccessTitle": "Gjenopprettet",
       "restoreSuccessMessage": "Kjøpene dine er gjenopprettet.",
+      "restoreEmptyTitle": "Ingen kjøp funnet",
+      "restoreEmptyMessage": "Vi fant ingen aktive kjøp å gjenopprette for denne kontoen.",
       "restoreErrorTitle": "Gjenoppretting feilet",
       "restoreErrorMessage": "Kan ikke gjenopprette kjøp akkurat nå.",
       "resetConfirmTitle": "Nullstill appdata?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Egendefinert"
     },
+    "notEnoughCoinsTitle": "Ikke nok mynter",
+    "notEnoughCoinsMessage": "Saldoen din er for lav for dette bildet.",
     "modelTaglines": {
       "runwareFluxSchnell": "Raskeste modell",
       "runwareFluxKrea": "Kreative, stiliserte resultater",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Kunne ikke lagre",
       "shareFailedTitle": "Kunne ikke dele",
-      "tryAgain": "Prøv igjen."
+      "tryAgain": "Prøv igjen.",
+      "savedTitle": "Lagret",
+      "savedMessage": "Bildet er lagret i galleriet ditt.",
+      "permissionTitle": "Tillatelse kreves",
+      "permissionMessage": "Tillat lagringstilgang for å lagre bilder i galleriet ditt."
     },
     "result": {
       "complete": "Ferdig"
@@ -498,12 +517,47 @@
       "save": "Lagre",
       "share": "Del"
     },
+    "alerts": {
+      "savedTitle": "Lagret",
+      "savedMessage": "Bildet er lagret i galleriet ditt.",
+      "permissionTitle": "Tillatelse kreves",
+      "permissionMessage": "Tillat lagringstilgang for å lagre bilder i galleriet ditt.",
+      "saveFailedTitle": "Kunne ikke lagre",
+      "tryAgain": "Prøv på nytt."
+    },
     "accessibility": {
       "close": "Lukk",
       "delete": "Slett bilde",
       "edit": "Rediger bilde",
       "save": "Lagre bilde",
       "share": "Del bilde"
+    }
+  },
+  "reportContent": {
+    "title": "Rapporter KI-innhold",
+    "subtitle": "Fortell oss hva som er galt med dette genererte innholdet.",
+    "privateDisclosure": "Når du sender, videresendes det rapporterte innholdet til sikkerhetsgjennomgang.",
+    "accessibilityLabel": "Rapporter KI-innhold",
+    "reasons": {
+      "sexual": "Seksuelt innhold eller nakenhet",
+      "violence_self_harm": "Vold eller selvskading",
+      "hate_harassment": "Hat eller trakassering",
+      "child_safety": "Bekymring for barns sikkerhet",
+      "scam_deceptive": "Svindel eller villedende innhold",
+      "other": "Annet"
+    },
+    "errors": {
+      "reasonRequired": "Velg en årsak før du sender.",
+      "submit": "Rapporten kunne ikke sendes. Prøv på nytt."
+    },
+    "success": {
+      "title": "Takk. Rapporten din er sendt.",
+      "subtitle": "Vi bruker rapporter til å forbedre innholdssikkerheten."
+    },
+    "actions": {
+      "report": "Rapporter",
+      "submit": "Send rapport",
+      "done": "Ferdig"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Møt",
       "titleHighlight": "Image Studio",
-      "subtitle": "Lag og rediger bilder med KI — rett i ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Lag og rediger bilder med KI — rett i Cloud AI."
     },
     "relaxView": {
       "title": "Møt KI-en din",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "BEDRIFTSKLAR KI",
       "description": "Gi bedriften din kraftige KI-verktøy laget for profesjonelle og team.",
       "stats": "Stolt brukt av 500k+ brukere",
@@ -592,10 +645,10 @@
       "value": "Best verdi"
     },
     "pack": {
+      "creditsLabel": "{{credits}} credits",
       "tokensLabel": "{{credits}} credits",
       "defaultName": "Pakke {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} credits"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Bli Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Ukjent feil"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium kreves",
+    "upgrade": "Oppgrader",
+    "modelRequiredMessage": "Denne modellen krever Premium. Oppgrader for å få tilgang til GPT-5, Grok 4, Claude og flere avanserte modeller.",
+    "assistantsRequiredMessage": "Assistenter krever Premium. Oppgrader for å få tilgang til spesialiserte KI-assistenter for trening, koding, skriving og mer.",
+    "assistantsTitle": "Premium kreves",
+    "assistantsMessage": "Assistenter krever Premium. Oppgrader for å få tilgang til spesialiserte KI-assistenter for trening, koding, skriving og mer."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Lukk betalingsskjermen",
+    "unavailableTitle": "Kjøp er utilgjengelige",
+    "unavailableMessage": "Android-fakturering er ikke konfigurert ennå.",
+    "restoreEmptyTitle": "Ingen kjøp funnet",
+    "restoreEmptyMessage": "Vi fant ingen aktive kjøp å gjenopprette for denne kontoen.",
+    "restoreFailedTitle": "Gjenoppretting mislyktes",
+    "restoreFailedMessage": "Kjøp kan ikke gjenopprettes akkurat nå.",
+    "productsUnavailableTitle": "Ingen tilgjengelige planer",
+    "productsUnavailableMessage": "Ingen Android-abonnementer er tilgjengelige akkurat nå.",
+    "purchaseFailedTitle": "Kjøpet mislyktes",
+    "purchaseFailedMessage": "Dette kjøpet kan ikke fullføres akkurat nå.",
     "restore": "Gjenopprett",
     "restoreRestoring": "Gjenoppretter…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Vilkår",
       "privacy": "Personvern"
+    },
+    "premium": {
+      "headline": "All premium AI i én plan",
+      "subtitleLine1": "Chat, kode, opprett og plan",
+      "subtitleLine2": "med avanserte modeller.",
+      "enableTrial": "Aktiver gratis prøveversjon",
+      "annual": "Årlig",
+      "saveBadge": "Spar 83 %",
+      "year": "år",
+      "week": "uke",
+      "termsOfUse": "Vilkår for bruk",
+      "privacyPolicy": "Personvernerklæring"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Regenerer svar",
     "regenerateResponseHint": "Lag et nytt svar",
     "copyCode": "Kopier kode",
+    "copied": "Kopiert",
     "image": "bilde",
     "loading": "Laster…",
     "loadingChat": "Laster chat...",
     "offlineBanner": "Du er frakoblet. Meldinger kan ikke sendes.",
+    "offlineError": "Ingen internettforbindelse. Sjekk tilkoblingen din og prøv på nytt.",
     "imagePickerErrorTitle": "Feil ved valg av bilde",
     "imagePickerErrorMessage": "Kunne ikke få tilgang til bildene dine. Prøv igjen.",
     "messageTooLong": "Meldingen er for lang ({{length}}). Grensen er {{limit}}.",
     "sendFailed": "Sending feilet.",
     "modelNoImageSupport": "Den valgte modellen støtter ikke bilder. Velg en annen modell.",
     "voiceStartFailed": "Kunne ikke starte stemme.",
+    "voiceNoSpeechDetected": "Ingen stemme ble gjenkjent. Prøv på nytt.",
     "emptyTitle": "Hvordan kan jeg hjelpe?",
     "emptySubtitle": "Start en samtale med KI",
     "privateTitle": "Privat chat",
     "privateSubtitle": "Denne chatten vises ikke i historikken",
+    "startPrivateChat": "Start privat chat",
+    "endPrivateChat": "Avslutt privat chat",
     "permissions": {
       "photosTitle": "Tilgang til bilder kreves",
       "photosMessage": "Vi trenger tilgang til bildene dine for å velge dem.",
@@ -753,7 +843,19 @@
       "share": "Del",
       "regenerate": "Regenerer",
       "retryFromHere": "Prøv igjen herfra",
+      "report": "Rapporter",
       "cancel": "Avbryt"
+    },
+    "markdown": {
+      "copy": "Kopier",
+      "copied": "Kopiert",
+      "table": "TABELL",
+      "watchVideo": "Se video",
+      "wikipedia": "Wikipedia",
+      "link": "Lenke",
+      "note": "Merknad",
+      "warning": "Advarsel",
+      "tip": "Tips"
     },
     "messageActionTitle": "Melding",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Planlegg dagen min",
       "planDaySubtitle": "med produktivitetstips"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Velg et emne",
       "title": "Hva vil du gjøre?",
@@ -846,81 +946,59 @@
     "library": "Galleri"
   },
   "common": {
-    "new": "NY",
-    "best": "BEST",
-    "cancel": "Avbryt",
-    "save": "Lagre",
-    "delete": "Slett",
-    "close": "Lukk",
-    "allow": "Tillat",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Prøv på nytt",
+    "cancel": "Avbryt",
+    "allow": "Tillat",
+    "notNow": "Ikke nå",
+    "openSettings": "Åpne innstillinger",
+    "close": "Lukk",
+    "save": "Lagre",
+    "tryAgain": "Prøv igjen"
   },
   "rateUs": {
-    "title": "Nyter du ChatCloud?",
+    "title": "Nyter du Cloud AI?",
     "subtitle": "Din tilbakemelding hjelper oss med å forbedre. Vil du vurdere oss i App Store?",
     "rateNow": "Vurder nå",
     "maybeLater": "Kanskje senere",
     "dontAskAgain": "Ikke spør igjen"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Engangstilbud",
+    "discount": "{{percent}} % RABATT",
+    "subtitle": "Du vil ikke se dette tilbudet igjen.",
     "badgeLine1": "Eksklusiv",
     "badgeLine2": "Engangstilbud",
     "upgradeNow": "Oppgrader nå for {{price}}",
     "loadingPrice": "Laster...",
     "termsOfUse": "Vilkår for bruk",
     "privacyPolicy": "Personvernregler",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Ubegrenset tilgang til",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Ubegrenset tilgang til GPT-4",
+      "geminiPro": "Tilgang til Gemini Pro",
+      "grokInsights": "Bruk Grok for nye innsikter",
+      "priorityAccess": "Prioritert tilgang og raskere svar"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Best verdi",
+    "annualPremium": "Årlig Premium",
+    "oneTimePayment": "Engangsbetaling",
+    "wasPrice": "før",
+    "continue": "Fortsett",
+    "restore": "Gjenopprett",
+    "terms": "Vilkår",
+    "privacy": "Personvern",
+    "successTitle": "Suksess!",
+    "successMessage": "Takk for kjøpet! Nyt premium-tilgang de neste 12 månedene.",
+    "errorTitle": "Kjøpet mislyktes",
+    "errorMessage": "Noe gikk galt. Prøv på nytt.",
+    "restoreSuccessTitle": "Gjenopprettet",
+    "restoreSuccessMessage": "Kjøpene dine er gjenopprettet.",
+    "restoreErrorTitle": "Gjenoppretting mislyktes",
+    "restoreErrorMessage": "Ingen kjøp funnet å gjenopprette.",
+    "unavailableTitle": "Kjøp er utilgjengelige",
+    "unavailableMessage": "Android-fakturering er ikke konfigurert ennå."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MYTISK"
         }
       }
+    },
+    "checkIn": {
+      "title": "Hent de daglige myntene dine",
+      "subtitle": "Kom tilbake hver dag — belønningen vokser.",
+      "cta": "Sjekk inn",
+      "claimed": "Mottatt! +{{amount}} mynter",
+      "later": "Senere"
     }
+  },
+  "app": {
+    "version": "Versjon {{version}}",
+    "offlineBanner": "Du er frakoblet",
+    "launch": {
+      "accessibilityLabel": "Starter Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "KI, klar når du er"
+    },
+    "errors": {
+      "modelsLoadTitle": "Kunne ikke laste inn modeller",
+      "modelsLoadMessage": "KI-modellene kan ikke lastes inn. Appen bruker standardmodeller. Sjekk internettforbindelsen din.",
+      "modelsLoadTimeout": "Innlastingen av modellene tok for lang tid. Appen bruker standardmodeller. Prøv på nytt.",
+      "modelsLoadNetwork": "Ingen internettforbindelse. Appen bruker standardmodeller. Sjekk tilkoblingen din.",
+      "deviceIdTitle": "Initialiseringsfeil",
+      "deviceIdMessage": "Kunne ikke initialisere enhets-ID. Noen funksjoner fungerer kanskje ikke som de skal.",
+      "storageTitle": "Lagringsfeil",
+      "storageMessage": "Får ikke tilgang til lokal lagring. Noen funksjoner fungerer kanskje ikke som de skal.",
+      "crashTitle": "Noe gikk galt.",
+      "crashSubtitle": "Prøv på nytt.",
+      "crashLabel": "Appen krasjet"
+    },
+    "proxyErrors": {
+      "genericTitle": "Noe gikk galt",
+      "genericMessage": "Prøv på nytt.",
+      "rateLimitTitle": "For mange forespørsler",
+      "rateLimitMessage": "Vi håndterer mange forespørsler nå. Prøv på nytt om et øyeblikk.",
+      "rateLimitRetryAfter": "Vi håndterer mange forespørsler nå. Prøv på nytt om cirka {{seconds}} sekunder.",
+      "restrictedTitle": "Begrenset innhold",
+      "restrictedMessage": "Denne forespørselen ble blokkert av sikkerhetsfiltre.",
+      "insufficientCoinsTitle": "Ikke nok mynter",
+      "insufficientCoinsMessage": "Saldoen din er for lav for denne forespørselen.",
+      "imageUnavailableTitle": "Bildet er utilgjengelig",
+      "imageUnavailableMessage": "Den genererte bildefilen var midlertidig utilgjengelig. Prøv på nytt.",
+      "authorizationTitle": "Autorisasjonsproblem",
+      "authorizationMessage": "Vi kunne ikke bekrefte kontoen din. Prøv på nytt.",
+      "serverTitle": "Serverproblem",
+      "serverMessage": "Serverne våre hadde et problem. Prøv på nytt snart.",
+      "timeoutTitle": "Tar for lang tid",
+      "timeoutMessage": "Forespørselen fikk tidsavbrudd. Prøv på nytt.",
+      "networkTitle": "Ingen tilkobling",
+      "networkMessage": "Ingen internettforbindelse. Sjekk tilkoblingen din og prøv på nytt.",
+      "requestTitle": "Problem med forespørselen",
+      "requestMessage": "Noe gikk galt med forespørselen din. Prøv på nytt."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktiver Premium",
+    "activateMessage": "Vil du aktivere anmelder-premium?",
+    "activateAction": "Aktiver",
+    "deactivateTitle": "Deaktiver Premium",
+    "deactivateMessage": "Vil du deaktivere anmelder-premium?",
+    "deactivateAction": "Deaktiver"
   },
   "push": {
     "dailyReward": {
       "title": "Daglig belønning",
       "body": "Ikke gå glipp av dine daglige mynter — hent dem før midnatt."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Gå aldri glipp av de daglige myntene",
+      "body": "Vi sender én påminnelse om dagen, slik at rekken din holdes i live og myntene fortsetter å vokse. Ingen spam, og du kan skru det av når som helst.",
+      "enable": "Slå på påminnelser",
+      "skip": "Ikke nå"
     }
   }
 }

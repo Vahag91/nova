@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState, memo } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -7,10 +7,21 @@ import HeroVideo from '../navigation/HeroVideo';
 
 const BACKGROUND_VIDEO = require('../../../assets/video/backgroundVideo.mp4');
 
-const CreativeStudioBanner = ({ onPress, style, paused = false }) => {
+const CreativeStudioBanner = forwardRef(({
+  onPress,
+  style,
+  paused = false,
+  playVideo = true,
+}, forwardedRef) => {
   const { t } = useTranslation();
   const isFocused = useIsFocused();
   const [restartKey, setRestartKey] = useState(0);
+  const videoRef = useRef(null);
+
+  useImperativeHandle(forwardedRef, () => ({
+    pause: () => videoRef.current?.pause?.(),
+    resume: () => videoRef.current?.resume?.(),
+  }), []);
 
   useEffect(() => {
     if (isFocused) {
@@ -29,14 +40,17 @@ const CreativeStudioBanner = ({ onPress, style, paused = false }) => {
         onPress={onPress}
       >
         <View style={styles.inner}>
-          <HeroVideo
-            style={styles.video}
-            source={BACKGROUND_VIDEO}
-            restartKey={restartKey}
-            enforceAspectRatio={false}
-            paused={paused}
-            placeholderColor="#0B1020"
-          />
+          {playVideo ? (
+            <HeroVideo
+              ref={videoRef}
+              style={styles.video}
+              source={BACKGROUND_VIDEO}
+              restartKey={restartKey}
+              enforceAspectRatio={false}
+              paused={paused}
+              placeholderColor="#0B1020"
+            />
+          ) : null}
           <View style={styles.overlay} />
           <View style={styles.content}>
             <View style={styles.textBlock}>
@@ -65,7 +79,7 @@ const CreativeStudioBanner = ({ onPress, style, paused = false }) => {
       </Pressable>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -86,6 +100,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     minHeight: 171,
     justifyContent: 'center',
+    backgroundColor: '#0B1020',
   },
   video: {
     ...StyleSheet.absoluteFillObject,
@@ -158,5 +173,6 @@ export default memo(
   CreativeStudioBanner,
   (prevProps, nextProps) =>
     prevProps.paused === nextProps.paused &&
+    prevProps.playVideo === nextProps.playVideo &&
     prevProps.style === nextProps.style,
 );

@@ -11,7 +11,12 @@
     "searchHint": "Írj be szöveget a modellek szűréséhez",
     "modelLabel": "{{name}} modell",
     "selectHint": "{{name}} modell kiválasztása",
-    "currentlySelected": "Jelenleg kiválasztva"
+    "currentlySelected": "Jelenleg kiválasztva",
+    "genericModel": "{{provider}} modell",
+    "badges": {
+      "new": "ÚJ",
+      "best": "LEGJOBB"
+    }
   },
   "models": {
     "gpt-4o": "Leghatékonyabb MI modell",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Asszisztensek",
+    "defaultTitle": "Asszisztens",
+    "errorTitle": "Hiba történt",
+    "errorMessage": "Ezt az asszisztenst nem sikerült elindítani.",
+    "noAssistants": "Ebben a kategóriában nem található asszisztens.",
+    "selectAssistantHint": "Asszisztensválasztó megnyitása",
     "subtitle": "Összeállított MI-szakértők kódoláshoz, íráshoz, elemzéshez, tervezéshez és még sok máshoz.",
     "searchPlaceholder": "Asszisztensek keresése…",
     "useAssistant": "Asszisztens használata",
@@ -254,9 +264,12 @@
     "search": "Keresés",
     "clearSearch": "Keresés törlése",
     "noChatsYet": "Még nincsenek chatek",
+    "noResults": "Még nincsenek chatek",
     "startFirstConversation": "Kezdd el az első beszélgetésed.",
     "startChat": "Chat indítása",
+    "startNewChat": "Chat indítása",
     "errorLoadingHistory": "Hiba az előzmények betöltésekor",
+    "loading": "Előzmények betöltése...",
     "renameChat": "Chat átnevezése",
     "enterNewTitle": "Adj meg új címet",
     "deleteChat": "Chat törlése?",
@@ -264,9 +277,7 @@
     "rename": "Átnevezés",
     "unpin": "Rögzítés feloldása",
     "pin": "Rögzítés",
-    "untitled": "Cím nélküli",
-    "noResults": "Még nincsenek chatek",
-    "startNewChat": "Chat indítása"
+    "untitled": "Cím nélküli"
   },
   "settings": {
     "title": "Beállítások",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Prémium aktív",
-        "subtitle": "Köszönjük, hogy támogatod a ChatCloudot"
+        "subtitle": "Köszönjük, hogy támogatod a Cloud AIot"
       },
       "restore": {
         "title": "Vásárlások visszaállítása",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Ezt a hivatkozást most nem lehet megnyitni.",
       "restoreSuccessTitle": "Visszaállítva",
       "restoreSuccessMessage": "A vásárlásaid vissza lettek állítva.",
+      "restoreEmptyTitle": "Nem található vásárlás",
+      "restoreEmptyMessage": "Nem találtunk visszaállítható aktív vásárlást ehhez a fiókhoz.",
       "restoreErrorTitle": "Sikertelen visszaállítás",
       "restoreErrorMessage": "Most nem sikerült visszaállítani a vásárlásokat.",
       "resetConfirmTitle": "Biztosan törlöd az alkalmazás adatait?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Egyedi"
     },
+    "notEnoughCoinsTitle": "Nincs elég érme",
+    "notEnoughCoinsMessage": "A jelenlegi egyenlege túl alacsony ehhez a képhez.",
     "modelTaglines": {
       "runwareFluxSchnell": "Leggyorsabb modell",
       "runwareFluxKrea": "Kreatív, stilizált eredmények",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Mentés sikertelen",
       "shareFailedTitle": "Megosztás sikertelen",
-      "tryAgain": "Próbáld újra."
+      "tryAgain": "Próbáld újra.",
+      "savedTitle": "Mentve",
+      "savedMessage": "A kép a galériába mentve.",
+      "permissionTitle": "Engedély szükséges",
+      "permissionMessage": "Engedélyezze a tárhely-hozzáférést a képek galériába mentéséhez."
     },
     "result": {
       "complete": "Kész"
@@ -498,12 +517,47 @@
       "save": "Mentés",
       "share": "Megosztás"
     },
+    "alerts": {
+      "savedTitle": "Mentve",
+      "savedMessage": "A kép a galériába mentve.",
+      "permissionTitle": "Engedély szükséges",
+      "permissionMessage": "Engedélyezze a tárhely-hozzáférést a képek galériába mentéséhez.",
+      "saveFailedTitle": "Nem sikerült menteni",
+      "tryAgain": "Próbálja újra."
+    },
     "accessibility": {
       "close": "Bezárás",
       "delete": "Kép törlése",
       "edit": "Kép szerkesztése",
       "save": "Kép mentése",
       "share": "Kép megosztása"
+    }
+  },
+  "reportContent": {
+    "title": "MI-tartalom jelentése",
+    "subtitle": "Mondja el, mi a probléma ezzel a generált tartalommal.",
+    "privateDisclosure": "A beküldéssel a jelentett tartalom biztonsági felülvizsgálatra kerül.",
+    "accessibilityLabel": "MI-tartalom jelentése",
+    "reasons": {
+      "sexual": "Szexuális tartalom vagy meztelenség",
+      "violence_self_harm": "Erőszak vagy önkárosítás",
+      "hate_harassment": "Gyűlölet vagy zaklatás",
+      "child_safety": "Gyermekbiztonsági aggály",
+      "scam_deceptive": "Átverés vagy megtévesztő tartalom",
+      "other": "Egyéb"
+    },
+    "errors": {
+      "reasonRequired": "Küldés előtt válasszon okot.",
+      "submit": "A jelentést nem sikerült elküldeni. Próbálja újra."
+    },
+    "success": {
+      "title": "Köszönjük. A jelentését elküldtük.",
+      "subtitle": "A jelentéseket a tartalombiztonság javítására használjuk."
+    },
+    "actions": {
+      "report": "Jelentés",
+      "submit": "Jelentés elküldése",
+      "done": "Kész"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Ismerd meg",
       "titleHighlight": "Image Studio",
-      "subtitle": "Készíts és szerkessz képeket MI-vel — közvetlenül a ChatCloud felületén.",
-      "appName": "ChatCloud"
+      "subtitle": "Készíts és szerkessz képeket MI-vel — közvetlenül a Cloud AI felületén."
     },
     "relaxView": {
       "title": "Ismerd meg az MI-det",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "VÁLLALATI SZINTŰ MI MEGOLDÁSOK",
       "description": "Erősítsd a cégedet korszerű mesterséges intelligenciával, szakemberek és csapatok számára.",
       "stats": "500k+ felhasználó bizalmával",
@@ -592,10 +645,10 @@
       "value": "Legjobb ár-érték"
     },
     "pack": {
+      "creditsLabel": "{{credits}} token",
       "tokensLabel": "{{credits}} token",
       "defaultName": "{{index}}. csomag",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} token"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Prémium előfizetés",
@@ -613,8 +666,28 @@
       "unknownError": "Ismeretlen hiba"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Prémium szükséges",
+    "upgrade": "Frissítés",
+    "modelRequiredMessage": "Ez a modell prémiumot igényel. Frissítsen a GPT-5, a Grok 4, a Claude és további fejlett modellek eléréséhez.",
+    "assistantsRequiredMessage": "Az asszisztensek prémiumot igényelnek. Frissítsen a fitnesz, kódolás, írás és egyéb területek specializált MI-asszisztenseinek eléréséhez.",
+    "assistantsTitle": "Prémium szükséges",
+    "assistantsMessage": "Az asszisztensek prémiumot igényelnek. Frissítsen a fitnesz, kódolás, írás és egyéb területek specializált MI-asszisztenseinek eléréséhez."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Fizetési képernyő bezárása",
+    "unavailableTitle": "A vásárlás nem érhető el",
+    "unavailableMessage": "Az Android-számlázás még nincs beállítva.",
+    "restoreEmptyTitle": "Nem található vásárlás",
+    "restoreEmptyMessage": "Nem találtunk visszaállítható aktív vásárlást ehhez a fiókhoz.",
+    "restoreFailedTitle": "Sikertelen visszaállítás",
+    "restoreFailedMessage": "A vásárlásokat jelenleg nem lehet visszaállítani.",
+    "productsUnavailableTitle": "Nincs elérhető csomag",
+    "productsUnavailableMessage": "Jelenleg nincs elérhető Android-előfizetés.",
+    "purchaseFailedTitle": "Sikertelen vásárlás",
+    "purchaseFailedMessage": "Ezt a vásárlást jelenleg nem lehet befejezni.",
     "restore": "Visszaállítás",
     "restoreRestoring": "Visszaállítás…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Feltételek",
       "privacy": "Adatvédelem"
+    },
+    "premium": {
+      "headline": "Minden prémium AI egy tervben",
+      "subtitleLine1": "Csevegés, kódolás, létrehozás és tervezés",
+      "subtitleLine2": "fejlett modellekkel.",
+      "enableTrial": "Ingyenes próbaverzió engedélyezése",
+      "annual": "Éves",
+      "saveBadge": "83% megtakarítás",
+      "year": "év",
+      "week": "hét",
+      "termsOfUse": "Felhasználási feltételek",
+      "privacyPolicy": "Adatvédelmi szabályzat"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Válasz újragenerálása",
     "regenerateResponseHint": "Új válasz készítése",
     "copyCode": "Kód másolása",
+    "copied": "Másolva",
     "image": "kép",
     "loading": "Betöltés…",
     "loadingChat": "Chat betöltése...",
     "offlineBanner": "Offline vagy. Az üzenetek nem küldhetők el.",
+    "offlineError": "Nincs internetkapcsolat. Ellenőrizze a kapcsolatot, és próbálja újra.",
     "imagePickerErrorTitle": "Képválasztási hiba",
     "imagePickerErrorMessage": "Nem lehet hozzáférni a fotókhoz. Próbáld újra.",
     "messageTooLong": "Az üzenet túl hosszú ({{length}}). A limit: {{limit}}.",
     "sendFailed": "Küldés sikertelen.",
     "modelNoImageSupport": "A kiválasztott modell nem támogatja a képeket. Kérjük, válasszon másik modellt.",
     "voiceStartFailed": "Nem sikerült elindítani a hangot.",
+    "voiceNoSpeechDetected": "Nem sikerült hangot felismerni. Próbálja újra.",
     "emptyTitle": "Miben segíthetek?",
     "emptySubtitle": "Kezdj beszélgetést az MI-vel",
     "privateTitle": "Privát chat",
     "privateSubtitle": "Ez a beszélgetés nem jelenik meg az előzményekben",
+    "startPrivateChat": "Privát csevegés indítása",
+    "endPrivateChat": "Privát csevegés befejezése",
     "permissions": {
       "photosTitle": "Fénykép-hozzáférés szükséges",
       "photosMessage": "A képek kiválasztásához hozzáférés kell a fotókhoz.",
@@ -753,7 +843,19 @@
       "share": "Megosztás",
       "regenerate": "Újragenerálás",
       "retryFromHere": "Próbáld innen újra",
+      "report": "Jelentés",
       "cancel": "Mégse"
+    },
+    "markdown": {
+      "copy": "Másolás",
+      "copied": "Másolva",
+      "table": "TÁBLÁZAT",
+      "watchVideo": "Videó megtekintése",
+      "wikipedia": "Wikipédia",
+      "link": "Hivatkozás",
+      "note": "Megjegyzés",
+      "warning": "Figyelmeztetés",
+      "tip": "Tipp"
     },
     "messageActionTitle": "Üzenet",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Tervezzük meg a napod",
       "planDaySubtitle": "produktivitási tippekkel"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Válassz egy témát",
       "title": "mit akarsz csinálni?",
@@ -846,81 +946,59 @@
     "library": "Galéria"
   },
   "common": {
-    "new": "ÚJ",
-    "best": "LEGJOBB",
-    "cancel": "Mégse",
-    "save": "Mentés",
-    "delete": "Törlés",
-    "close": "Bezárás",
-    "allow": "Engedélyezés",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Újra",
+    "cancel": "Mégse",
+    "allow": "Engedélyezés",
+    "notNow": "Most nem",
+    "openSettings": "Beállítások megnyitása",
+    "close": "Bezárás",
+    "save": "Mentés",
+    "tryAgain": "Próbálja újra"
   },
   "rateUs": {
-    "title": "Élvezi a ChatCloud-ot?",
+    "title": "Élvezi a Cloud AI-ot?",
     "subtitle": "Visszajelzése segít nekünk fejleszteni. Értékelne minket az App Store-ban?",
     "rateNow": "Értékelés most",
     "maybeLater": "Talán később",
     "dontAskAgain": "Ne kérdezze újra"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Egyszeri ajánlat",
+    "discount": "{{percent}}% KEDVEZMÉNY",
+    "subtitle": "Ezt az ajánlatot nem látja többé.",
     "badgeLine1": "Exkluzív",
     "badgeLine2": "Egyszeri ajánlat",
     "upgradeNow": "Frissítés most {{price}}",
     "loadingPrice": "Betöltés...",
     "termsOfUse": "Felhasználási feltételek",
     "privacyPolicy": "Adatvédelmi irányelvek",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Korlátlan hozzáférés",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Korlátlan hozzáférés a GPT-4-hez",
+      "geminiPro": "Hozzáférés a Gemini Próhoz",
+      "grokInsights": "Használja a Grokot friss meglátásokért",
+      "priorityAccess": "Elsőbbségi hozzáférés és gyorsabb válaszok"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Legjobb ár-érték",
+    "annualPremium": "Éves prémium",
+    "oneTimePayment": "Egyszeri fizetés",
+    "wasPrice": "eredetileg",
+    "continue": "Folytatás",
+    "restore": "Visszaállítás",
+    "terms": "Feltételek",
+    "privacy": "Adatvédelem",
+    "successTitle": "Siker!",
+    "successMessage": "Köszönjük a vásárlást! Élvezze a prémium hozzáférést a következő 12 hónapban.",
+    "errorTitle": "Sikertelen vásárlás",
+    "errorMessage": "Hiba történt. Próbálja újra.",
+    "restoreSuccessTitle": "Visszaállítva",
+    "restoreSuccessMessage": "A vásárlásai vissza lettek állítva.",
+    "restoreErrorTitle": "Sikertelen visszaállítás",
+    "restoreErrorMessage": "Nem található visszaállítható vásárlás.",
+    "unavailableTitle": "A vásárlás nem érhető el",
+    "unavailableMessage": "Az Android-számlázás még nincs beállítva."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MITIKUS"
         }
       }
+    },
+    "checkIn": {
+      "title": "Vedd át a napi érméidet",
+      "subtitle": "Térj vissza mindennap — nő a jutalom.",
+      "cta": "Bejelentkezés",
+      "claimed": "Megkaptad! +{{amount}} érme",
+      "later": "Később"
     }
+  },
+  "app": {
+    "version": "Verzió: {{version}}",
+    "offlineBanner": "Offline állapotban van",
+    "launch": {
+      "accessibilityLabel": "A Cloud AI indítása",
+      "title": "CLOUD AI",
+      "subtitle": "MI, készen áll, amikor csak kell"
+    },
+    "errors": {
+      "modelsLoadTitle": "Nem sikerült betölteni a modelleket",
+      "modelsLoadMessage": "Az MI-modellek nem tölthetők be. Az alkalmazás az alapértelmezett modelleket használja. Ellenőrizze az internetkapcsolatot.",
+      "modelsLoadTimeout": "A modellek betöltése túl sokáig tartott. Az alkalmazás az alapértelmezett modelleket használja. Próbálja újra.",
+      "modelsLoadNetwork": "Nincs internetkapcsolat. Az alkalmazás az alapértelmezett modelleket használja. Ellenőrizze a kapcsolatot.",
+      "deviceIdTitle": "Inicializálási hiba",
+      "deviceIdMessage": "Az eszközazonosító inicializálása sikertelen. Egyes funkciók nem biztos, hogy megfelelően működnek.",
+      "storageTitle": "Tárhelyhiba",
+      "storageMessage": "A helyi tárhely nem érhető el. Egyes funkciók nem biztos, hogy megfelelően működnek.",
+      "crashTitle": "Hiba történt.",
+      "crashSubtitle": "Próbálja újra.",
+      "crashLabel": "Az alkalmazás összeomlott"
+    },
+    "proxyErrors": {
+      "genericTitle": "Hiba történt",
+      "genericMessage": "Próbálja újra.",
+      "rateLimitTitle": "Túl sok kérés",
+      "rateLimitMessage": "Sok kérést dolgozunk fel. Próbálja újra kis idő múlva.",
+      "rateLimitRetryAfter": "Sok kérést dolgozunk fel. Próbálja újra körülbelül {{seconds}} másodperc múlva.",
+      "restrictedTitle": "Korlátozott tartalom",
+      "restrictedMessage": "Ezt a kérést a biztonsági szűrők letiltották.",
+      "insufficientCoinsTitle": "Nincs elég érme",
+      "insufficientCoinsMessage": "A jelenlegi egyenlege túl alacsony ehhez a kéréshez.",
+      "imageUnavailableTitle": "A kép nem érhető el",
+      "imageUnavailableMessage": "A létrehozott képfájl átmenetileg nem volt elérhető. Próbálja újra.",
+      "authorizationTitle": "Engedélyezési probléma",
+      "authorizationMessage": "Nem tudtuk ellenőrizni a fiókját. Próbálja újra.",
+      "serverTitle": "Szerverhiba",
+      "serverMessage": "A szervereinknél probléma lépett fel. Próbálja újra hamarosan.",
+      "timeoutTitle": "Túl sokáig tart",
+      "timeoutMessage": "A kérés túllépte az időkorlátot. Próbálja újra.",
+      "networkTitle": "Nincs kapcsolat",
+      "networkMessage": "Nincs internetkapcsolat. Ellenőrizze a kapcsolatot, és próbálja újra.",
+      "requestTitle": "Kérési probléma",
+      "requestMessage": "Hiba történt a kérésével. Próbálja újra."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Prémium aktiválása",
+    "activateMessage": "Aktiválja az értékelői prémiumot?",
+    "activateAction": "Aktiválás",
+    "deactivateTitle": "Prémium kikapcsolása",
+    "deactivateMessage": "Kikapcsolja az értékelői prémiumot?",
+    "deactivateAction": "Kikapcsolás"
   },
   "push": {
     "dailyReward": {
       "title": "Napi jutalom",
       "body": "Ne maradj le a napi érméidről — vedd fel éjfél előtt."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Ne maradj le a napi érméidről",
+      "body": "Naponta egy emlékeztetőt küldünk, hogy a sorozatod megmaradjon és az érméid gyarapodjanak. Nincs spam, és bármikor kikapcsolhatod.",
+      "enable": "Emlékeztetők bekapcsolása",
+      "skip": "Most nem"
     }
   }
 }

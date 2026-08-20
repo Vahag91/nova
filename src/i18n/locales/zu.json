@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Khetha imodeli",
+    "searchPlaceholder": "Sesha amamodeli...",
+    "noModelsFound": "Awekho amamodeli atholiwe",
+    "noModelsAvailable": "Awekho amamodeli atholakalayo",
+    "currentModel": "Imodeli yamanje: {{name}}. Thepha ukuze ushintshe imodeli.",
+    "openHint": "Ivula imenyu yokukhetha imodeli",
+    "closeLabel": "Vala isikhethi semodeli",
+    "searchLabel": "Sesha amamodeli",
+    "searchHint": "Thayipha ukuze uhlunge amamodeli atholakalayo",
+    "modelLabel": "{{name}} imodeli",
+    "selectHint": "Khetha imodeli {{name}}",
+    "currentlySelected": "Imodeli ekhethiwe okwamanje",
+    "genericModel": "{{provider}} imodeli",
+    "badges": {
+      "new": "OKUSHA",
+      "best": "OKUHLE"
+    }
+  },
+  "models": {
+    "gpt-4o": "Imodeli ye-AI enamandla kakhulu",
+    "gpt-4o-mini": "Fast for imisebenzi yansuku zonke",
+    "gpt-5": "I-AI enamandla kakhulu yenhloso yonke",
+    "gpt-5-chat-latest": "Ilungiselelwe ingxoxo nengxoxo",
+    "gpt-5-mini": "Kuyashesha futhi kuthembekile GPT-5",
+    "gpt-5.4-nano": "Imodeli elula yemisebenzi elula",
+    "o4-mini": "Imodeli yokucabanga ephumelelayo",
+    "gpt-4.1-mini": "Iqinile, iyakwazi GPT-4.1",
+    "claude-3-haiku": "I-Anthropic AI esheshayo futhi egxilile",
+    "claude-3.7-sonnet": "Ukucabanga okucolisisiwe nge-Anthropic",
+    "gemini-2.5-Flash": "Imodeli ye-Google ethuthuke kakhulu",
+    "gemini-2.5-flash": "Imodeli ye-Google ethuthuke kakhulu",
+    "gemini-2.0-flash": "I-Google AI esheshayo nenembile"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Imodeli ye-AI enamandla kakhulu",
+    "fast_everyday": "Fast for imisebenzi yansuku zonke",
+    "fast_reasoning": "Imodeli esheshayo enengqondo enhle",
+    "great_reasoning": "Imodeli yokucabanga ethuthukisiwe",
+    "coding_reasoning": "Ukubhala amakhodi okuthuthukile nokucabanga",
+    "better_coding": "Kungcono ukubhala ngekhodi nokucabanga",
+    "best_overall": "Imodeli ye-AI enhle kunazo zonke",
+    "best_google": "Imodeli ehamba phambili ye-Google",
+    "best_xai": "Imodeli ye-xAI enamandla kakhulu",
+    "creative_focus": "Ilungele ukubhala ngobuciko",
+    "code_helper": "Kuhle ngosizo lokubhala amakhodi",
+    "chat_focus": "Ilungiselelwe ukuxoxa",
+    "long_context": "Ilungele izimo ezinde",
+    "budget_friendly": "Imodeli ye-AI elungele isabelomali",
+    "ultra_fast": "Izimpendulo ezisheshayo",
+    "safe_default": "Ukukhetha okuzenzakalelayo okuphephile",
+    "multilingual": "Ukusekelwa okunamandla kwezilimi eziningi",
+    "vision_strong": "Kuhle ngezithombe nombono",
+    "data_analysis": "Ilungele ukuhlaziywa kwedatha",
+    "structured_tasks": "Ilungele imisebenzi ehleliwe",
+    "everyday_helper": "Imodeli yomsizi wansuku zonke",
+    "concise_answers": "Izimpendulo ezimfushane nezimfushane",
+    "detailed_answers": "Izimpendulo ezinemininingwane zesinyathelo ngesinyathelo",
+    "experimental": "Imodeli yesizukulwane esilandelayo sokuhlola",
+    "reliable_classic": "Imodeli yakudala ethembekile",
+    "lightweight": "Imodeli engasindi, ebiza kancane",
+    "chatty_personal": "Ubungane obuningi futhi siqu",
+    "pro_users": "Kuhle kakhulu kubasebenzisi bamandla",
+    "research_helper": "Ilungele ucwaningo namanothi",
+    "reasoning_strong": "Imodeli yokucabanga ethuthukisiwe"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "I-Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Okunye"
+  },
+  "navigation": {
+    "chat": "Ingxoxo Entsha",
+    "history": "Umlando",
+    "rewards": "Imivuzo Yansuku zonke",
+    "assistants": "Abasizi",
+    "imagesStudio": "Image Studio",
+    "settings": "Izilungiselelo",
+    "recentChats": "Izingxoxo Zakamuva",
+    "proFeatures": "Izici ze-Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Thola Izici ze-Pro",
+      "subtitle": "Zonke izici ze-AI"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Khiqiza, yenza ngcono, futhi ushicilele amafa abonakalayo endaweni eyodwa.",
+    "cta": "Vula"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Khetha izithombe",
+    "exitSelectionMode": "Phuma kumodi yokukhetha",
+    "selectAll": "Khetha Konke",
+    "noImagesYet": "Azikho izithombe okwamanje",
+    "describeImageHint": "Chaza isithombe sakho ngezansi bese uthepha okuthi Khiqiza.",
+    "generatedImagesGallery": "Igalari yezithombe ezakhiwe",
+    "describeImagePlaceholder": "Chaza isithombe osifunayo...",
+    "deleteConfirmTitle": "Susa Izithombe",
+    "deleteConfirmMessage": "Uqinisekile ukuthi ufuna ukususa izithombe ezikhethiwe? Lesi senzo asikwazi ukuhlehliswa.",
+    "cancel": "Khansela",
+    "delete": "Susa",
+    "generate": "Khiqiza",
+    "generating": "Iyakhiqiza...",
+    "latest": "Okwakamuva",
+    "insertToChat": "Faka ukuze uxoxe",
+    "pleaseWait": "Sicela ulinde...",
+    "processing": "Iyacubungula...",
+    "tapToUploadImage": "Thepha ukuze ulayishe isithombe",
+    "camera": "Layisha Izithombe",
+    "library": "Umtapowolwazi",
+    "enterPrompt": "Sicela ufake ukwaziswa kokwenza umbhalo uye esithombeni",
+    "openInBrowser": "Vula kusiphequluli",
+    "makeVariations": "Yenza izinguquko",
+    "deleteAllFromGeneration": "Susa konke kulesi sizukulwane",
+    "imageOptionsTitle": "Izinketho zesithombe",
+    "imageOptionsMessage": "Ungathanda ukwenzani ngalesi sithombe?",
+    "insertMarkdownHeader": "Nasi isithombe sika:",
+    "variationSuffix": "- ukuhluka kwesithombe sangaphambilini",
+    "selectedCount": "kukhethiwe",
+    "selectedCount_one": "kukhethiwe",
+    "selectedCount_other": "kukhethiwe",
+    "imageDescriptionInput": "Okokufaka kwencazelo yesithombe",
+    "imageDescriptionHint": "Faka incazelo yesithombe ofuna ukusikhiqiza",
+    "openModelSettings": "Vula izilungiselelo zemodeli",
+    "modelSettingsHint": "Thepha ukuze ushintshe imodeli nezilungiselelo",
+    "openPhotoGallery": "Vula igalari yezithombe",
+    "clearInput": "Sula okokufaka",
+    "generatedImage": "Isithombe esikhiqiziwe",
+    "autoSelectedModel": "Kukhethwe ngokuzenzakalelayo {{model}} kumodi ye-{{mode}}",
+    "deleteSelectedConfirmTitle": "Susa izithombe",
+    "deleteSelectedConfirmMessage": "Uqinisekile ukuthi ufuna ukususa izithombe? Lesi senzo asikwazi ukuhlehliswa."
+  },
+  "imageStudio": {
+    "generateImage": "Khiqiza isithombe",
+    "generatingImage": "Ikhiqiza isithombe",
+    "generateImageHint": "Thepha ukuze ukhiqize isithombe esisekelwe encazelweni yakho",
+    "imageDescriptionInput": "Okokufaka kwencazelo yesithombe",
+    "imageDescriptionHint": "Faka incazelo yesithombe ofuna ukusikhiqiza",
+    "openModelSettings": "Vula izilungiselelo zemodeli",
+    "modelSettingsHint": "Thepha ukuze ushintshe imodeli nezilungiselelo",
+    "openPhotoGallery": "Vula igalari yezithombe",
+    "clearInput": "Sula okokufaka",
+    "generatedImage": "Isithombe esikhiqiziwe"
+  },
+  "assistants": {
+    "title": "Abasizi",
+    "defaultTitle": "Umsizi",
+    "errorTitle": "Kukhona okungahambanga kahle",
+    "errorMessage": "Ayikwazanga ukuqala lo msizi.",
+    "noAssistants": "Abekho abasizi abatholakele kulesi sigaba.",
+    "selectAssistantHint": "Vula isikhethi somsizi",
+    "subtitle": "Ochwepheshe be-AI abakhethiwe balungele ukubhala amakhodi, ukubhala, ukuhlaziya, ukuhlela, nokunye.",
+    "searchPlaceholder": "Sesha abasizi...",
+    "useAssistant": "Sebenzisa Umsizi",
+    "selectAssistant": "Khetha umsizi",
+    "description": "Incazelo",
+    "systemPrompt": "Ukwaziswa Kwesistimu",
+    "chooseModel": "Khetha Imodeli",
+    "categoryAll": "Konke",
+    "categories": {
+      "everyday": "Nsuku zonke",
+      "life": "Impilo",
+      "health": "Impilo",
+      "schoolWork": "Isikole Nomsebenzi",
+      "coding": "Ukubhala amakhodi",
+      "creative": "Ubuciko",
+      "general": "Okujwayelekile"
+    },
+    "presets": {
+      "default": {
+        "name": "Umsizi Ozenzakalelayo",
+        "description": "Usizo olulinganiselayo lwezinto zansuku zonke."
+      },
+      "quick": {
+        "name": "Izimpendulo Ezisheshayo",
+        "description": "Izimpendulo ezimfushane, eziqondile."
+      },
+      "planner": {
+        "name": "Umhleli Wansuku zonke",
+        "description": "Hlela usuku lwakho nemikhuba."
+      },
+      "recipes": {
+        "name": "Ukudla & Amaresiphi",
+        "description": "Ongakupheka, ngalokho onakho."
+      },
+      "fitness": {
+        "name": "Umqeqeshi Wokuqina",
+        "description": "Imikhuba emincane nokusebenza kwasekhaya."
+      },
+      "money": {
+        "name": "Buddy Wemali",
+        "description": "Ibhajethi elula namathiphu okusebenzisa imali."
+      },
+      "study": {
+        "name": "Umsizi Wokufunda",
+        "description": "Chaza kalula. Ngibuze imibuzo."
+      },
+      "email": {
+        "name": "I-imeyili & Qalisa kabusha",
+        "description": "Bhala ama-imeyili acacile nemigqa ye-CV."
+      },
+      "translator": {
+        "name": "Umhumushi",
+        "description": "Humusha + fundisa imishwana."
+      },
+      "travel": {
+        "name": "Travel Buddy || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "description": "Izinhlelo ezilula nohlu lokupakisha."
+      },
+      "tech": {
+        "name": "Ukusekelwa Kobuchwepheshe (Okulula)",
+        "description": "Ifoni, izinhlelo zokusebenza, izisekelo ze-Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL;DR Isifinyezo",
+        "description": "Izinhlamvu ezimfushane + umugqa owodwa TL;DR."
+      },
+      "gift": {
+        "name": "Isitholi Sezipho",
+        "description": "Imibono ngebhajethi nezithakazelo."
+      },
+      "party": {
+        "name": "Umhleli Womcimbi (Lite)",
+        "description": "Hlela iphathi encane ngokushesha."
+      },
+      "social": {
+        "name": "I-Social Post Maker",
+        "description": "Okuthunyelwe okusalungiswa ngezinketho."
+      },
+      "interview": {
+        "name": "Umqeqeshi Wengxoxo",
+        "description": "Prakthiza izimpendulo (STAR)."
+      },
+      "homefix": {
+        "name": "I-Home Fix-It Guide",
+        "description": "Ukuxazulula inkinga okulula kwe-DIY."
+      },
+      "pet": {
+        "name": "Umngane Wokunakekela Izilwane Ezifuywayo || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "description": "Ukondla, ukuhamba, ukuqeqeshwa okuyisisekelo."
+      },
+      "mindful": {
+        "name": "Iminithi Enengqondo",
+        "description": "1–3 amaminithi amakhefu azolile."
+      },
+      "polite": {
+        "name": "Umbhali Ohloniphekile",
+        "description": "Bhala kabusha imibhalo futhi uphendule kahle."
+      }
+    }
+  },
+  "history": {
+    "title": "Umlando",
+    "searchPlaceholder": "Sesha izingxoxo...",
+    "newChat": "Ingxoxo Entsha",
+    "new": "+ Okusha",
+    "search": "Sesha",
+    "clearSearch": "Sula ukusesha",
+    "noChatsYet": "Azikho izingxoxo okwamanje",
+    "noResults": "Azikho izingxoxo okwamanje",
+    "startFirstConversation": "Qala ingxoxo yakho yokuqala.",
+    "startChat": "Qala ingxoxo",
+    "startNewChat": "Qala ingxoxo entsha",
+    "errorLoadingHistory": "Iphutha ekulayisheni umlando",
+    "loading": "Ilayisha umlando...",
+    "renameChat": "Qamba kabusha ingxoxo",
+    "enterNewTitle": "Faka isihloko esisha",
+    "deleteChat": "Susa ingxoxo?",
+    "deleteChatMessage": "\"{{title}}\" izosuswa.",
+    "rename": "Qamba kabusha",
+    "unpin": "Susa ukuphina",
+    "pin": "Phina",
+    "untitled": "Ayinasihloko"
+  },
+  "settings": {
+    "title": "Izilungiselelo",
+    "model": "Imodeli",
+    "searchPlaceholder": "Sesha amamodeli...",
+    "temperatureForCurrentModel": "Izinga lokushisa lemodeli yamanje",
+    "customFor": "Ngokwezifiso {{model}}",
+    "usingDefault": "Ukusebenzisa okuzenzakalelayo {{temperature}}",
+    "resetToDefault": "Setha kabusha kube okumisiwe",
+    "defaultTemperature": "Izinga lokushisa elizenzakalelayo (i-fallback)",
+    "usedByModelsWithoutOverride": "Isetshenziswa amamodeli ngaphandle kokubhala ngokwezifiso",
+    "dangerZone": "Indawo eyingozi",
+    "clearAllChatsAndSettings": "Sula zonke izingxoxo nezilungiselelo",
+    "about": "Mayelana",
+    "version": "Inguqulo {{version}}{{status}}",
+    "versionPremiumSuffix": "· I-Premium",
+    "privacyPolicy": "Inqubomgomo Yobumfihlo",
+    "hero": {
+      "label": "Ukunikezwa okukhethekile",
+      "title": "Ukufinyelela Okungenamkhawulo\nIzici ze-Pro",
+      "upgrade": "Thuthukisa",
+      "manage": "Phatha uhlelo"
+    },
+    "sections": {
+      "premium": "Uhlelo lwe-Premium",
+      "data": "Idatha Yomsebenzisi",
+      "support": "Ukusekela & Kwezomthetho"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Thola i-Premium",
+        "subtitle": "Vula amathuluzi okudala angenamkhawulo"
+      },
+      "premiumActive": {
+        "title": "I-Premium Iyasebenza",
+        "subtitle": "Siyabonga ngokusekela Cloud AI"
+      },
+      "restore": {
+        "title": "Buyisela okuthengiwe",
+        "subtitle": "Sebenzisa uma ushintshe amadivayisi"
+      },
+      "history": {
+        "title": "Phatha umlando wengxoxo",
+        "subtitle": "Buka futhi ususe izikhathi zakho ezedlule"
+      },
+      "reset": {
+        "title": "Setha kabusha izingxoxo nokuncamelayo",
+        "subtitle": "Isula yonke idatha egcinwe kule divayisi"
+      },
+      "rate": {
+        "title": "Silinganisele",
+        "error": "Ayikwazi ukuvula ikhasi lesitolo."
+      },
+      "support": {
+        "title": "Ukusekela",
+        "subtitle": "Xhumana nathi ku-inthanethi",
+        "error": "Ayikwazi ukuvula ikhasi lokuxhumana."
+      },
+      "privacy": {
+        "title": "Inqubomgomo Yobumfihlo",
+        "error": "Ayikwazi ukuvula inqubomgomo yobumfihlo."
+      },
+      "terms": {
+        "title": "Imigomo Yokusebenzisa",
+        "error": "Ayikwazi ukuvula imigomo yokusetshenziswa."
+      }
+    },
+    "capabilities": {
+      "text": "I-TXT",
+      "image": "I-IMG",
+      "audio": "I-AUD",
+      "video": "I-VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Ayitholakali",
+      "linkUnavailableMessage": "Ayikwazi ukuvula lesi sixhumanisi khona manje.",
+      "restoreSuccessTitle": "Kubuyiselwe",
+      "restoreSuccessMessage": "Ukuthenga kwakho kubuyisiwe.",
+      "restoreEmptyTitle": "Akukho ukuthenga okutholiwe",
+      "restoreEmptyMessage": "Asikwazanga ukuthola ukuthenga okusebenzayo ukuze sikubuyisele kule akhawunti.",
+      "restoreErrorTitle": "Ukubuyisela kuhlulekile",
+      "restoreErrorMessage": "Ayikwazi ukubuyisela ukuthenga njengamanje.",
+      "resetConfirmTitle": "Setha kabusha idatha yohlelo lokusebenza?",
+      "resetConfirmMessage": "Lokhu kususa zonke izingxoxo nezintandokazi zasendaweni.",
+      "resetConfirmCancel": "Khansela",
+      "resetConfirmCta": "Setha kabusha"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Dala",
+    "chooseStyle": "Khetha Isitayela",
+    "aspectRatio": "I-Aspect ratio",
+    "starterPrompts": {
+      "title": "I-Starter Prompts",
+      "items": [
+        "isithombe se-studio || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "igumbi lokuphumula lesimanje",
+        "ibhishi elishisayo ekushoneni kwelanga"
+      ]
+    },
+    "promptPlaceholder": "Thayipha ofuna ukukubona...",
+    "promptHint": "Isibonelo: 'I-retriever yegolide ekukhanyeni kwesitudiyo'",
+    "clearText": "Sula umbhalo",
+    "generate": "Khiqiza",
+    "generating": "Iyakhiqiza..."
+  },
+  "editImage": {
+    "headerTitle": "Hlela",
+    "chooseStyle": "Khetha Isitayela",
+    "aspectRatio": "I-Aspect ratio",
+    "starterPrompts": {
+      "title": "I-Starter Prompts",
+      "items": [
+        "lungisa ukukhanya",
+        "susa ingemuva",
+        "i-soft portrait retouch"
+      ]
+    },
+    "promptPlaceholder": "Chaza ukuhlela (kuyakhetheka)",
+    "clearText": "Sula umbhalo",
+    "generate": "Khiqiza",
+    "generating": "Iyafaka...",
+    "upload": {
+      "choose": "Khetha Isithombe",
+      "change": "Shintsha",
+      "remove": "Susa"
+    },
+    "imageUnavailable": {
+      "title": "Isithombe asitholakali",
+      "message": "Ayikwazanga ukufinyelela isithombe esikhethiwe. Sicela uyikhethe kabusha bese uzama futhi."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "I-anime"
+      },
+      "cartoon": {
+        "name": "Ikhathuni"
+      },
+      "photoreal": {
+        "name": "I-Photoreal"
+      },
+      "sketch": {
+        "name": "Sketch"
+      },
+      "cyberpunk": {
+        "name": "I-Cyberpunk"
+      },
+      "steampunk": {
+        "name": "I-Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Umfanekiso we-3D"
+      },
+      "dark_fantasy": {
+        "name": "Iphupho Elimnyama"
+      },
+      "vintage_film": {
+        "name": "Ifilimu Yakudala"
+      },
+      "pastel": {
+        "name": "I-Pastel Aesthetic"
+      },
+      "neon_glow": {
+        "name": "I-Neon Glow"
+      },
+      "epic_landscape": {
+        "name": "I-Epic Landscape"
+      }
+    },
+    "aspectRatios": {
+      "square": "Isikwele",
+      "landscape": "Ukuma kwezwe",
+      "portrait": "Ukuma ngobude"
+    },
+    "models": {
+      "fluxKontent": "I-Flux Content",
+      "custom": "Ngokwezifiso"
+    },
+    "notEnoughCoinsTitle": "Azikho izinhlamvu zemali ezanele",
+    "notEnoughCoinsMessage": "Ibhalansi yakho yamanje iphansi kakhulu kulesi sithombe.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Imodeli esheshayo",
+      "runwareFluxKrea": "Imiphumela yobuciko, eyenziwe ngesitayela",
+      "runwareQwenImage": "Imiphumela elinganiselwe, yekhwalithi ephezulu",
+      "google4": "Imodeli yesithombe esihle kakhulu se-AI",
+      "klingImageO1": "Ukuhlelwa kwesithombe esilawula kakhulu",
+      "fluxKontent": "I-Flux Konttent ihlelelwe ukuhlelwa",
+      "runwareProvider": "Ikhwalithi elinganiselayo nokusabalalisa okuthembekile.",
+      "airProvider": "I-Nano Banana yengeza ithoni edlalwayo, ecacile.",
+      "googleProvider": "I-Google ishunele imininingwane ephucuziwe.",
+      "klingaiProvider": "I-KlingAI ihlelelwe ukuhlelwa okulawulwayo.",
+      "anthropicProvider": "Claude ipayipi lemizwa ehlukile.",
+      "default": "Thepha ukuze uhlole izinjini ezitholakalayo."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "isitayela osikhethile",
+    "sheetTitle": "Ukwakha umbono wakho",
+    "sheetSubtitle": "Ukuphuzwa kafushane kwekhofi leseva ngenkathi sihlanganisa {{style}} ekwazisweni.",
+    "phases": {
+      "blend": "Ukuhlanganisa {{style}}",
+      "paint": "Ukudweba indawo",
+      "finish": "Yengeza ipholishi yokugcina"
+    },
+    "actions": {
+      "cancel": "Khansela",
+      "retry": "Zama futhi",
+      "close": "Vala"
+    },
+    "errors": {
+      "restrictedTitle": "Okuqukethwe Okukhawulelwe",
+      "genericTitle": "Isizukulwane sihlulekile",
+      "genericMessage": "Ayikwazanga ukukhiqiza isithombe."
+    },
+    "alerts": {
+      "saveFailedTitle": "Ayikwazanga ukulondoloza",
+      "shareFailedTitle": "Ayikwazanga ukwabelana",
+      "tryAgain": "Sicela uzame futhi.",
+      "savedTitle": "Kulondoloziwe",
+      "savedMessage": "Isithombe silondolozwe kugalari yakho.",
+      "permissionTitle": "Imvume iyadingeka",
+      "permissionMessage": "Vumela ukufinyelela kwesitoreji ukuze ulondoloze izithombe kugalari yakho."
+    },
+    "result": {
+      "complete": "Konke kuqediwe"
+    },
+    "accessibility": {
+      "close": "Vala"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Susa",
+      "edit": "Hlela",
+      "save": "Londoloza",
+      "share": "Yabelana"
+    },
+    "alerts": {
+      "savedTitle": "Kulondoloziwe",
+      "savedMessage": "Isithombe silondolozwe kugalari yakho.",
+      "permissionTitle": "Imvume iyadingeka",
+      "permissionMessage": "Vumela ukufinyelela kwesitoreji ukuze ulondoloze izithombe kugalari yakho.",
+      "saveFailedTitle": "Ayikwazanga ukulondoloza",
+      "tryAgain": "Sicela uzame futhi."
+    },
+    "accessibility": {
+      "close": "Vala",
+      "delete": "Susa isithombe",
+      "edit": "Hlela isithombe",
+      "save": "Londoloza isithombe",
+      "share": "Yabelana ngesithombe"
+    }
+  },
+  "reportContent": {
+    "title": "Bika okuqukethwe kwe-AI",
+    "subtitle": "Sitshele ukuthi yini engalungile ngalokhu okuqukethwe okukhiqizwa.",
+    "privateDisclosure": "Ukuhambisa kuthumela lokhu okuqukethwe okubikiwe ukuze kubuyekezwe ukuphepha.",
+    "accessibilityLabel": "Bika okuqukethwe kwe-AI",
+    "reasons": {
+      "sexual": "Okuqukethwe kwezocansi noma ubunqunu",
+      "violence_self_harm": "Udlame noma ukuzilimaza",
+      "hate_harassment": "Inzondo noma ukuhlukumeza",
+      "child_safety": "Ukukhathazeka ngokuphepha kwezingane",
+      "scam_deceptive": "Umkhonyovu noma okuqukethwe okukhohlisayo",
+      "other": "Okunye"
+    },
+    "errors": {
+      "reasonRequired": "Sicela ukhethe isizathu ngaphambi kokusithumela.",
+      "submit": "Ayikwazanga ukuthumela umbiko. Sicela uzame futhi."
+    },
+    "success": {
+      "title": "Ngiyabonga. Umbiko wakho uthunyelwe.",
+      "subtitle": "Sizosebenzisa imibiko ukuthuthukisa ukuphepha kokuqukethwe."
+    },
+    "actions": {
+      "report": "Bika",
+      "submit": "Thumela umbiko",
+      "done": "Kwenziwe"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Vula imenyu",
+      "selectImages": "Khetha izithombe",
+      "exitSelection": "Phuma ekukhetheni",
+      "deleteSelected": "Susa izithombe ezikhethiwe",
+      "selectToDelete": "Khetha izithombe ozozisusa"
+    },
+    "createCard": {
+      "title": "Dala kusuka kumbhalo",
+      "subtitle": "Thayipha incazelo",
+      "cta": "Chaza futhi Ukhiqize"
+    },
+    "editCard": {
+      "title": "I-AI Photo Editor",
+      "subtitle": "Guqula futhi uthuthukise nge-AI",
+      "cta": "Hlela nge-AI"
+    },
+    "gallery": {
+      "title": "Igalari",
+      "empty": "Azikho izithombe okwamanje",
+      "selection": {
+        "enter": "Khetha izithombe",
+        "exit": "Phuma ekukhetheni",
+        "deleteSelected": "Susa izithombe ezikhethiwe",
+        "selectForDelete": "Khetha izithombe ozozisusa"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Hlanganani",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Dala futhi uhlele izithombe nge-AI—khona ngaphakathi Cloud AI."
+    },
+    "relaxView": {
+      "title": "Hlangana ne-AI yakho",
+      "titleHighlight": "Abasizi",
+      "subtitle": "Ochwepheshe be-AI abakhethekile abakulungele ukusiza ngezidingo zakho zansuku zonke",
+      "cards": {
+        "fitness": {
+          "title": "Umqeqeshi Wokuqina",
+          "text": "Imikhuba emincane nokusebenza kwasekhaya."
+        },
+        "recipes": {
+          "title": "Ukudla & Amaresiphi",
+          "text": "Ongakupheka, ngalokho onakho."
+        },
+        "travel": {
+          "title": "Travel Buddy || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+          "text": "Izinhlelo ezilula nohlu lokupakisha."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ENTERPRISE-grade AI SOLUTIONS",
+      "description": "Nika ibhizinisi lakho amandla ngobuchwepheshe be-intelligence bokwenziwa obusezingeni eliphezulu obudizayinelwe ochwepheshe bebhizinisi namaqembu.",
+      "stats": "Ithenjwa ngabasebenzisi abangu-500k+",
+      "rating": "4.9 / 5",
+      "button": "Qalisa"
+    },
+    "buttons": {
+      "continue": "Qhubeka",
+      "start": "Ake siqale"
+    }
+  },
+  "coinStore": {
+    "title": "Thola Amakhredithi",
+    "loading": "Ilayisha isitolo semali...",
+    "balanceLabel": "Ibhalansi yakho yamanje ithi",
+    "balanceValue": "{{amount}} Amakhredithi",
+    "history": {
+      "link": "Umlando Wokwenziwe",
+      "alertTitle": "Umlando",
+      "alertBody": "Umlando wokwenziwe uyeza maduze."
+    },
+    "noPacks": "Awekho amaphekhi ohlamvu lwemali atholakalayo. Hlola i-id yakho yokunikeza RevenueCat.",
+    "badges": {
+      "basic": "Iphakethe Eliyisisekelo",
+      "popular": "Okudume kakhulu",
+      "value": "Inani Elihle Kakhulu"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Amakhredithi",
+      "tokensLabel": "{{credits}} Amakhredithi",
+      "defaultName": "Iphakethe {{index}}",
+      "unknownPrice": "I-USD -"
+    },
+    "premium": {
+      "title": "Hamba ku-Premium",
+      "subtitle": "Ukufinyelela okungenamkhawulo nezici",
+      "cta": "Thuthukisa"
+    },
+    "termsText": "Ngokwenza ukuthenga, uyavumelana nokwethu",
+    "termsLink": "Imigomo Yesevisi",
+    "alerts": {
+      "initErrorTitle": "Iphutha lokuqala",
+      "genericMessage": "Kukhona okungahambanga kahle.",
+      "successTitle": "Impumelelo",
+      "successMessage": "Amakhredithi azovela maduze.",
+      "purchaseFailedTitle": "Ukuthenga kuhlulekile",
+      "unknownError": "Iphutha elingaziwa"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "I-Premium iyadingeka",
+    "upgrade": "Thuthukisa",
+    "modelRequiredMessage": "Le modeli idinga i-Premium. Thuthukisa ukuze ufinyelele GPT-5, Grok 4, Claude, namamodeli athuthuke kakhulu.",
+    "assistantsRequiredMessage": "Abasizi badinga i-Premium. Thuthukisa ukuze ufinyelele kubasizi be-AI abakhethekile ukuze uthole ukufaneleka, ukubhala amakhodi, ukubhala, nokuningi.",
+    "assistantsTitle": "I-Premium iyadingeka",
+    "assistantsMessage": "Abasizi badinga i-Premium. Thuthukisa ukuze ufinyelele kubasizi be-AI abakhethekile ukuze uthole ukufaneleka, ukubhala amakhodi, ukubhala, nokuningi."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Vala i-paywall",
+    "unavailableTitle": "Ukuthenga akutholakali",
+    "unavailableMessage": "Inkokhelo ye-Android ayikalungiselelwa.",
+    "restoreEmptyTitle": "Akukho ukuthenga okutholiwe",
+    "restoreEmptyMessage": "Asikwazanga ukuthola ukuthenga okusebenzayo ukuze sikubuyisele kule akhawunti.",
+    "restoreFailedTitle": "Ukubuyisela kuhlulekile",
+    "restoreFailedMessage": "Ayikwazi ukubuyisela ukuthenga njengamanje.",
+    "productsUnavailableTitle": "Azikho izinhlelo ezitholakalayo",
+    "productsUnavailableMessage": "Ayikho imikhiqizo yokubhaliselwe ye-Android etholakalayo njengamanje.",
+    "purchaseFailedTitle": "Ukuthenga kuhlulekile",
+    "purchaseFailedMessage": "Ayikwazi ukuqedela lokhu kuthenga khona manje.",
+    "restore": "Buyisela",
+    "restoreRestoring": "Iyabuyisela...",
+    "features": {
+      "create": "Dala izithombe namavidiyo",
+      "search": "Sesha iwebhu nge-AI",
+      "talk": "Khuluma ngokwemvelo ne-AI",
+      "imageStudio": "Thola Image Studio {{credits}} amakhredithi {{period}}",
+      "period": {
+        "weekly": "masonto onke",
+        "monthly": "njalo ngenyanga",
+        "yearly": "minyaka yonke"
+      }
+    },
+    "freeTrial": {
+      "title": "Isivivinyo samahhala",
+      "subtitle": "Isivivinyo samahhala sezinsuku ezi-3"
+    },
+    "badge": {
+      "bestOffer": "Ukunikezwa okuhle kakhulu"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Minyaka yonke",
+        "only": "Kuphela {{price}}",
+        "defaultPrice": "$79.99",
+        "defaultIntroPrice": "izindleko 1.35 USD"
+      },
+      "monthly": {
+        "title": "Nyanga zonke",
+        "subtitle": "Khansela noma nini",
+        "defaultPrice": "I-USD 19.99"
+      },
+      "weekly": {
+        "title": "Maviki onke",
+        "subtitle": "Khansela noma nini",
+        "defaultPrice": "$9.99",
+        "trialThen": "3 izinsuku mahhala, ke"
+      }
+    },
+    "frequency": {
+      "perWeek": "ngesonto",
+      "perMonth": "ngenyanga"
+    },
+    "cta": "Qhubeka",
+    "ctaFreeTrial": "Izame Mahhala",
+    "legal": {
+      "terms": "Imigomo",
+      "privacy": "Ubumfihlo"
+    },
+    "premium": {
+      "headline": "Yonke i-AI ye-premium ohlelweni olulodwa",
+      "subtitleLine1": "Xoxa, khodi, dala, futhi uhlele",
+      "subtitleLine2": "ngamamodeli athuthukile.",
+      "enableTrial": "Nika amandla isivivinyo samahhala",
+      "annual": "Yonyaka",
+      "saveBadge": "Yonga u-83%",
+      "year": "unyaka",
+      "week": "isonto",
+      "termsOfUse": "Imigomo Yokusebenzisa",
+      "privacyPolicy": "Inqubomgomo Yemfihlo"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Umlayezo...",
+    "createImages": "Dala Izithombe",
+    "generateAiArtwork": "Khiqiza umsebenzi wobuciko we-AI",
+    "camera": "Layisha Izithombe",
+    "takeOrSelectPhotos": "Khetha izithombe",
+    "search": "Sesha",
+    "findInformation": "Thola ulwazi",
+    "findRecentInfo": "Thola ulwazi lwakamuva",
+    "removeImage": "Susa isithombe",
+    "messageInput": "Okokufaka umlayezo",
+    "clearInput": "Sula okokufaka",
+    "quickActionsLabel": "Izenzo ezisheshayo",
+    "hideQuickActions": "Fihla izenzo ezisheshayo",
+    "showQuickActions": "Bonisa izenzo ezisheshayo",
+    "startVoiceInput": "Qala ukufakwa kwezwi",
+    "sendMessage": "Thumela umlayezo",
+    "offline": "Okungaxhunyiwe ku-inthanethi",
+    "stop": "Yima",
+    "streaming": "Iyasakaza...",
+    "closeRecorder": "Vala isiqophi",
+    "insertTranscript": "Thumela",
+    "scrollToLatest": "Skrolela kumlayezo wakamuva",
+    "copyMessage": "Kopisha umlayezo",
+    "copyMessageHint": "Kopisha lo mlayezo ebhodini lokunamathisela",
+    "shareMessage": "Yabelana ngomlayezo",
+    "shareMessageHint": "Yabelana ngalo mlayezo",
+    "regenerateResponse": "Yenza kabusha impendulo",
+    "regenerateResponseHint": "Khiqiza impendulo entsha",
+    "copyCode": "Kopisha ikhodi",
+    "copied": "Kukopishiwe",
+    "image": "isithombe",
+    "loading": "Iyalayisha...",
+    "loadingChat": "Ilayisha ingxoxo...",
+    "offlineBanner": "Awuxhunyiwe ku-inthanethi. Imilayezo ayikwazi ukuthunyelwa.",
+    "offlineError": "Alukho uxhumano lwe-inthanethi. Sicela uhlole uxhumo lwakho bese uzama futhi.",
+    "imagePickerErrorTitle": "Iphutha lesikhi sesithombe",
+    "imagePickerErrorMessage": "Ayikwazi ukufinyelela izithombe zakho. Sicela uzame futhi.",
+    "messageTooLong": "Umlayezo mude kakhulu ({{length}}). Umkhawulo ngu-{{limit}}.",
+    "sendFailed": "Yehlulekile ukuthumela umlayezo. Sicela uzame futhi.",
+    "modelNoImageSupport": "Imodeli ekhethiwe ayisekeli izithombe. Sicela ukhethe imodeli ehlukile.",
+    "voiceStartFailed": "Ayikwazanga ukuqala izwi.",
+    "voiceNoSpeechDetected": "Alikho izwi elaziwayo. Sicela uzame futhi.",
+    "emptyTitle": "Ngingasiza kanjani?",
+    "emptySubtitle": "Qala ingxoxo ne-AI",
+    "privateTitle": "Ingxoxo Yangasese",
+    "privateSubtitle": "Le ngxoxo ngeke ivele emlandweni wakho wengxoxo",
+    "startPrivateChat": "Qala ingxoxo yangasese",
+    "endPrivateChat": "Qeda ingxoxo eyimfihlo",
+    "permissions": {
+      "photosTitle": "Izithombe Imvume Iyadingeka",
+      "photosMessage": "Ukufinyelela isithombe kuyadingeka ukuze ukhethe izithombe.",
+      "voiceTitle": "Izimvume Zezwi Ziyadingeka",
+      "voiceMessage": "Ukufinyelela kwemakrofoni nenkulumo kuyadingeka ukuze usebenzise izwi."
+    },
+    "activity": {
+      "analyzingImages": "Ihlaziya izithombe...",
+      "searching": "Iyasesha...",
+      "thinking": "Iyacabanga..."
+    },
+    "webSearch": {
+      "title": "Usesho lwewebhu",
+      "subtitle": "Thola ulwazi lwakamuva",
+      "label": "Usesho Lwewebhu",
+      "enable": "Nika amandla usesho lwewebhu",
+      "disable": "Khubaza ukusesha kwewebhu",
+      "toggleLabel": "Sesha iwebhu"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Dizayina okubonwayo ngesivinini.",
+      "subtitle": "Khiqiza, yenza ngcono, futhi ushicilele amafa abonakalayo endaweni eyodwa.",
+      "cta": "Vula"
+    },
+    "quickActions": {
+      "createImages": "Dala Izithombe",
+      "openCamera": "Vula Ikhamera",
+      "editImage": "Hlela Isithombe",
+      "startVoice": "Qala Izwi",
+      "assistants": "Abasizi"
+    },
+    "listening": "Ilalele...",
+    "startRecording": "Qala ukurekhoda...",
+    "assistantHeader": {
+      "unavailableTitle": "Umsizi akatholakali",
+      "unavailableDescription": "Asikwazanga ukulayisha lo msizi. Sicela uzame futhi.",
+      "ready": "Ulungele ukusiza"
+    },
+    "actions": {
+      "copy": "Kopisha",
+      "share": "Yabelana",
+      "regenerate": "Khiqiza kabusha",
+      "retryFromHere": "Zama futhi kusukela lapha",
+      "report": "Bika",
+      "cancel": "Khansela"
+    },
+    "markdown": {
+      "copy": "Kopisha",
+      "copied": "Kukopishiwe",
+      "table": "ITAFULA",
+      "watchVideo": "Buka Ividiyo",
+      "wikipedia": "I-Wikipedia",
+      "link": "Isixhumanisi",
+      "note": "Qaphela",
+      "warning": "Isexwayiso",
+      "tip": "Ithiphu"
+    },
+    "messageActionTitle": "Umlayezo",
+    "status": {
+      "sending": "Iyathumela...",
+      "failed": "Yehlulekile",
+      "sent": "Ithunyelwe"
+    },
+    "suggestions": {
+      "writeStory": "Bhala indaba eqanjiwe",
+      "writeStorySubtitle": "mayelana adventure imilingo",
+      "planTravel": "Hlela uhambo lohambo",
+      "planTravelSubtitle": "iholide elimangalisayo",
+      "explainConcept": "Chaza lo mqondo",
+      "explainConceptSubtitle": "ngamagama alula",
+      "planDay": "Hlela usuku lwami",
+      "planDaySubtitle": "ngamathiphu okukhiqiza"
+    },
+    "home": {
+      "eyebrow": "Khetha isihloko",
+      "title": "Yini ofuna ukuyenza?",
+      "subtitle": "Khetha isiqondiso, bese uqala ngomyalo oqinile.",
+      "pickPromptTitle": "Khetha ukwaziswa ukuze uqale",
+      "changeTopic": "Khetha esinye isihloko",
+      "intents": {
+        "summarize": "Fingqa umbhalo",
+        "summarizeShort": "Fingqa",
+        "summarizeHint": "Imibhalo, amanothi, amamemo ezwi, imicu emide",
+        "plan": "Yenza uhlelo",
+        "planHint": "Uhambo, imizila, ibhajethi, umnqamulajuqu, izinguquko zempilo",
+        "brainstorm": "Cabanga ngekhanda",
+        "brainstormHint": "Imibono, okunikezwayo, amagama, okuqukethwe, amaphrojekthi aseceleni",
+        "analyze": "Hlaziya idatha",
+        "analyzeHint": "Ukuchitha, impendulo, amamethrikhi, imikhuba, ukusebenza"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Dala kafushane umsunguli",
+          "founderBriefSubtitle": "Khipha ubungozi obukhulu, izinqumo, nezinyathelo ezilandelayo.",
+          "classNotesTitle": "Hlanza amanothi ami okufunda",
+          "classNotesSubtitle": "Guqula amanothi amanga ube yigayidi yokufunda ecacile.",
+          "meetingHandoffTitle": "Bhala isifinyezo se-handoff",
+          "meetingHandoffSubtitle": "Iwusizo ngemva kwemihlangano, izingcingo, noma uchungechunge olude lwangaphakathi.",
+          "longArticleTitle": "Fingqa lesi sihloko ngokushesha",
+          "longArticleSubtitle": "Hlanganisa i-athikili ende ibe yizinto ozithathayo ezicijile."
+        },
+        "plan": {
+          "energyResetTitle": "Yakha ukusetha kabusha amandla kwezinsuku eziyi-14",
+          "energyResetSubtitle": "Uhlelo olungokoqobo lokulala, ukudla, ukunyakaza, nokugxila.",
+          "mealPlanTitle": "Hlela ukudla engizokupheka ngempela",
+          "mealPlanSubtitle": "Iyasebenza, iyathengeka, futhi isekelwe kulokho enginakho.",
+          "cityMoveTitle": "Hlela ukuthuthela kwami edolobheni elisha",
+          "cityMoveSubtitle": "Ihlukanise ibe umugqa wesikhathi, isabelomali, izindlu, kanye nemisebenzi yokuphatha.",
+          "tripEscapeTitle": "Hlela ukuphunyuka kwempelasonto okukhumbulekayo",
+          "tripEscapeSubtitle": "Okuthile okungcono kunohlelo lohambo olujwayelekile."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Thola isiphithiphithi eseceleni",
+          "sideHustleSubtitle": "Imibono engingayiqala ngenkathi ngisebenza isikhathi esigcwele.",
+          "brandAngleTitle": "Thola i-engeli yomkhiqizo ongasoze uyikhohlwe",
+          "brandAngleSubtitle": "Iwusizo emikhiqizweni, abadali, ama-ejensi, noma izincwadi zezindaba.",
+          "socialSeriesTitle": "Qamba uchungechunge lokuqukethwe",
+          "socialSeriesSubtitle": "Kukhona okungaguquki ngokwanele ukukhulisa izethameli.",
+          "datingIdeasTitle": "Woza nemibono emisha",
+          "datingIdeasSubtitle": "Izinsuku, izipho, lezimanga, noma izehlakalo ezizwakala zicabanga."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Thola lapho imali yami ivuza khona",
+          "spendingLeaksSubtitle": "Bonisa amaphethini, izindawo ezibuthakathaka, nokuwina okulula kuqala.",
+          "customerFeedbackTitle": "Shintsha impendulo ibe yizinto eziza kuqala",
+          "customerFeedbackSubtitle": "Izicelo zeqoqo, izikhalazo, ukuphuthuma, nomthelela.",
+          "habitPatternsTitle": "Amaphethini amabala emikhubeni yami",
+          "habitPatternsSubtitle": "Ilungele ukujima, ukulala, ukubhala izindaba, noma amalogi wokugxila.",
+          "metricsStoryTitle": "Chaza ukuthi izinombolo zisho ukuthini",
+          "metricsStorySubtitle": "Isiginali eyengeziwe, umsindo omncane wesipredishithi."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Iyacubungula...",
+    "tapToUploadImage": "Thepha ukuze ulayishe isithombe"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Iyacubungula...",
+    "camera": "Layisha Izithombe",
+    "library": "Umtapowolwazi"
+  },
+  "common": {
+    "ok": "KULUNGILE",
+    "retry": "Zama futhi",
+    "cancel": "Khansela",
+    "allow": "Vumela",
+    "notNow": "Hhayi manje",
+    "openSettings": "Vula Izilungiselelo",
+    "close": "Vala",
+    "save": "Londoloza",
+    "tryAgain": "Zama Futhi"
+  },
+  "rateUs": {
+    "title": "Ujabulela Cloud AI?",
+    "subtitle": "Impendulo yakho isisiza ukuthi sithuthuke. Ungathanda ukusilinganisa ku-App Store?",
+    "rateNow": "Linganisa Manje",
+    "maybeLater": "Mhlawumbe Kamuva",
+    "dontAskAgain": "Ungaphinde Ubuze"
+  },
+  "oneTimeOffer": {
+    "title": "Umtitilizo wesikhathi esisodwa",
+    "discount": "{{percent}}% IVULIWE",
+    "subtitle": "Ngeke uphinde uwubone lo mnikelo.",
+    "badgeLine1": "Okukhethekile",
+    "badgeLine2": "Ukunikezwa kwesikhathi esisodwa",
+    "upgradeNow": "Thuthukisa manje ukuze uthole {{price}}",
+    "loadingPrice": "Iyalayisha...",
+    "termsOfUse": "Imigomo Yokusebenzisa",
+    "privacyPolicy": "Inqubomgomo Yobumfihlo",
+    "accessTitle": "Ukufinyelela okungenamkhawulo ku",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Ukufinyelela okungenamkhawulo kokuthi GPT-4",
+      "geminiPro": "Ukufinyelela ku-Gemini Pro",
+      "grokInsights": "Sebenzisa Grok ukuthola imininingwane emisha",
+      "priorityAccess": "Ukufinyelela okubalulekile nezimpendulo ezisheshayo"
+    },
+    "bestValue": "Inani Elihle Kakhulu",
+    "annualPremium": "I-Premium Yonyaka",
+    "oneTimePayment": "Inkokhelo yesikhathi esisodwa",
+    "wasPrice": "kwaba",
+    "continue": "Qhubeka",
+    "restore": "Buyisela",
+    "terms": "Imigomo",
+    "privacy": "Ubumfihlo",
+    "successTitle": "Impumelelo!",
+    "successMessage": "Siyabonga ngokuthenga kwakho! Jabulela ukufinyelela kwe-premium izinyanga eziyi-12 ezizayo.",
+    "errorTitle": "Ukuthenga Kwehlulekile",
+    "errorMessage": "Kukhona okungahambanga kahle. Sicela uzame futhi.",
+    "restoreSuccessTitle": "Kubuyiselwe",
+    "restoreSuccessMessage": "Ukuthenga kwakho kubuyisiwe.",
+    "restoreErrorTitle": "Ukubuyisela Kwehlulekile",
+    "restoreErrorMessage": "Akukho ukuthenga okutholiwe ukuze kubuyiselwe.",
+    "unavailableTitle": "Ukuthenga akutholakali",
+    "unavailableMessage": "Inkokhelo ye-Android ayikalungiselelwa."
+  },
+  "rewards": {
+    "header": {
+      "title": "Imivuzo",
+      "openMenu": "Vula imenyu",
+      "goBack": "Buyela emuva"
+    },
+    "pointsHero": {
+      "totalBalance": "ILINGANISO IYONKE",
+      "seeYourRewards": "Bona imiklomelo yakho"
+    },
+    "streakTracker": {
+      "title": "I-Daily Streak",
+      "subtitle": "Qhubeka! Uyavutha.",
+      "days": "Izinsuku",
+      "prize": "Umklomelo",
+      "dayLabel": "Usuku {{number}}",
+      "nextReward": "Umklomelo olandelayo: {{amount}} ku-{{time}}",
+      "coins": "Izinhlamvu zemali"
+    },
+    "sections": {
+      "availableQuests": "Izicelo Ezitholakalayo",
+      "completedQuests": "Izicelo Eziqediwe",
+      "availableRewards": "Imiklomelo etholakalayo",
+      "needsMoreCoins": "Idinga izinhlamvu zemali ezengeziwe"
+    },
+    "balances": {
+      "rewardCoins": "Izinhlamvu zemali zomvuzo",
+      "imageCredits": "Amakhredithi esithombe"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 Izikweletu Zezithombe || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "imageCredits200": "Amakhredithi ezithombe angama-200",
+        "imageCredits600": "Amakhredithi Ezithombe angu-600 || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "weeklyPremium": "I-Premium yamasonto onke",
+        "secretBox": "Ibhokisi Eliyimfihlo"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Imfihlakalo ivuza ngaphakathi"
+      },
+      "alerts": {
+        "comingSoonTitle": "Iyeza maduze",
+        "comingSoonMessage": "Lo mklomelo awutholakali okwamanje.",
+        "notEnoughCoinsTitle": "Azikho izinhlamvu zemali ezanele",
+        "notEnoughCoinsMessage": "Udinga izinhlamvu zemali ezengeziwe ukuze uvule lo mklomelo.",
+        "errorTitle": "Iphutha",
+        "couldNotOpenBox": "Ayikwazanga ukuvula ibhokisi.",
+        "couldNotRedeem": "Ayikwazanga ukusebenzisa umvuzo. Sicela uzame futhi.",
+        "mysteryReward": "Umvuzo Oyimfihlakalo"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Ukungena Kwansuku zonke",
+        "description": "Vula uhlelo lokusebenza namuhla ukuze ugcine uchungechunge lwakho",
+        "message": "Lesi sicelo siqedwa ngokuzenzakalela uma uvula uhlelo lokusebenza usuku ngalunye."
+      },
+      "shareFacebook": {
+        "title": "Yabelana ku-Facebook",
+        "description": "Thumela ngathi kuFacebook"
+      },
+      "shareTwitter": {
+        "title": "Yabelana ku-Twitter",
+        "description": "Tweet ngesipiliyoni sakho"
+      },
+      "shareInstagram": {
+        "title": "Yabelana ku-Instagram",
+        "description": "Yabelana ngendaba noma okuthunyelwe"
+      },
+      "shareExperience": {
+        "title": "Yabelana ngolwazi lwakho",
+        "description": "Tshela abangani ukuthi kungani uthanda uhlelo lokusebenza"
+      },
+      "share": {
+        "genericMessage": "Ngisebenzisa lolu hlelo lokusebenza lwe-AI ukwenza ingxoxo nokwenza izithombe. Yihlole: {{url}}",
+        "facebookQuote": "Bheka lolu hlelo lokusebenza lwe-AI!",
+        "twitterText": "Ngizama lolu hlelo lokusebenza lwe-AI, lupholile kakhulu.",
+        "instagramMessage": "Bheka lolu hlelo lokusebenza lwe-AI: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Iphutha",
+        "errorMessage": "Ayikwazanga ukuvula ikhasi lesitolo."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Ukufuna Kuqediwe",
+        "description": "Imfuno iqediwe",
+        "points": "+{{points}} amaphuzu",
+        "close": "Vala"
+      },
+      "rewardSuccess": {
+        "error": "IPHUTHA",
+        "success": "IMPUMELELO",
+        "somethingWentWrong": "Kukhona okungahambanga kahle",
+        "rewardUnlocked": "Umvuzo Uvuliwe",
+        "credits": "Amakhredithi",
+        "close": "Vala",
+        "okay": "Kulungile"
+      },
+      "secretBox": {
+        "pill": "IBHOKISI LEMFIHLO",
+        "rewardUnlocked": "UMVUZO UVULIWE",
+        "shufflingRewards": "IHLUPHA Imiklomelo...",
+        "imageCreditsAdded": "Amakhredithi esithombe angezwe ku-akhawunti yakho",
+        "continue": "Qhubeka",
+        "revealing": "Iyaveza...",
+        "prizeTiers": {
+          "lucky": "ENHLANHLA",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "INsumansumane"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Thatha izinhlamvu zemali zakho zansuku zonke",
+      "subtitle": "Buya nsuku zonke — umklomelo uyakhula.",
+      "cta": "Ngena",
+      "claimed": "Kutholakele! +{{amount}} izinhlamvu",
+      "later": "Emuva kwesikhathi"
+    }
+  },
+  "app": {
+    "version": "Inguqulo {{version}}",
+    "offlineBanner": "Awuxhunyiwe ku-inthanethi",
+    "launch": {
+      "accessibilityLabel": "Iqala Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "I-AI, ilungile uma usulungile"
+    },
+    "errors": {
+      "modelsLoadTitle": "Yehlulekile Ukulayisha Amamodeli",
+      "modelsLoadMessage": "Ayikwazi ukulayisha amamodeli e-AI. Uhlelo lokusebenza luzosebenzisa amamodeli azenzakalelayo. Sicela uhlole uxhumano lwakho lwe-inthanethi.",
+      "modelsLoadTimeout": "Ukulayisha amamodeli kuthathe isikhathi eside kakhulu. Uhlelo lokusebenza luzosebenzisa amamodeli azenzakalelayo. Sicela uzame futhi.",
+      "modelsLoadNetwork": "Alukho uxhumano lwe-inthanethi. Uhlelo lokusebenza luzosebenzisa amamodeli azenzakalelayo. Sicela uhlole ukuxhumana kwakho.",
+      "deviceIdTitle": "Iphutha Lokuqalisa",
+      "deviceIdMessage": "Yehlulekile ukuqalisa i-ID yedivayisi. Ezinye izici zingase zingasebenzi kahle.",
+      "storageTitle": "Iphutha Lesitoreji",
+      "storageMessage": "Ayikwazi ukufinyelela isitoreji sasendaweni. Ezinye izici zingase zingasebenzi kahle.",
+      "crashTitle": "Kukhona okungahambanga kahle.",
+      "crashSubtitle": "Sicela uzame futhi.",
+      "crashLabel": "Uhlelo lokusebenza luphahlazekile"
+    },
+    "proxyErrors": {
+      "genericTitle": "Kukhona okungahambanga kahle",
+      "genericMessage": "Sicela uzame futhi.",
+      "rateLimitTitle": "Izicelo eziningi kakhulu",
+      "rateLimitMessage": "Sisingatha izicelo eziningi. Sicela uzame futhi ngemva kwesikhashana.",
+      "rateLimitRetryAfter": "Sisingatha izicelo eziningi. Sicela uzame futhi ngemva kwemizuzwana engu-{{seconds}}.",
+      "restrictedTitle": "Okuqukethwe Okukhawulelwe",
+      "restrictedMessage": "Lesi sicelo sivinjwe izihlungi zokuphepha.",
+      "insufficientCoinsTitle": "Azikho izinhlamvu zemali ezanele",
+      "insufficientCoinsMessage": "Ibhalansi yakho yamanje iphansi kakhulu kulesi sicelo.",
+      "imageUnavailableTitle": "Isithombe asitholakali",
+      "imageUnavailableMessage": "Ifayela lesithombe elikhiqiziwe alitholakali okwesikhashana. Sicela uzame futhi.",
+      "authorizationTitle": "Inkinga yokugunyazwa",
+      "authorizationMessage": "Asikwazanga ukuqinisekisa i-akhawunti yakho. Sicela uzame futhi.",
+      "serverTitle": "Ukuhixa kweseva",
+      "serverMessage": "Iziphakeli zethu zibe nenkinga. Sicela uzame futhi maduze.",
+      "timeoutTitle": "Kuthatha isikhathi eside kakhulu",
+      "timeoutMessage": "Isicelo siphelelwe yisikhathi. Sicela uzame futhi.",
+      "networkTitle": "Alukho uxhumano",
+      "networkMessage": "Alukho uxhumano lwe-inthanethi. Sicela uhlole uxhumo lwakho bese uzama futhi.",
+      "requestTitle": "Isicelo sokukhishwa",
+      "requestMessage": "Kukhona okungahambanga kahle ngesicelo sakho. Sicela uzame futhi."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Vula i-Premium",
+    "activateMessage": "Ingabe ufuna ukusebenzisa i-premium yombuyekezi?",
+    "activateAction": "Yenza kusebenze",
+    "deactivateTitle": "Vala i-Premium",
+    "deactivateMessage": "Ingabe ufuna ukwenza kungasebenzi i-premium yombuyekezi?",
+    "deactivateAction": "Vala ukusebenza"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Umvuzo wansuku zonke",
+      "body": "Ungaphuthelwa izinhlamvu zemali zakho zansuku zonke - funa ngaphambi kwaphakathi kwamabili."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Ungaphuthelwa yizinhlamvu zemali zakho zansuku zonke",
+      "body": "Sithumela isikhumbuzi esisodwa ngosuku ukuze uchungechunge lwakho luqhubeke futhi izinhlamvu zemali zande. Awukho ugaxekile, futhi ungayivala noma nini.",
+      "enable": "Vula izikhumbuzi",
+      "skip": "Hhayi manje"
+    }
+  }
+}

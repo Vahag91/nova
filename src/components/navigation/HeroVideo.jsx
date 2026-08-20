@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Video, { ViewType } from 'react-native-video';
 import { perfEnd, perfLog, perfStart } from '../../lib/perfTrace';
@@ -7,7 +7,7 @@ const DEFAULT_VIDEO = require('../../../assets/video/hero.mp4');
 const WATCHDOG_INTERVAL_MS = 1000;
 const WATCHDOG_IDLE_MS = 2500;
 
-export default function HeroVideo({
+const HeroVideo = forwardRef(function HeroVideo({
   style,
   restartKey,
   source = DEFAULT_VIDEO,
@@ -15,7 +15,7 @@ export default function HeroVideo({
   enforceAspectRatio = true,
   placeholderColor = '#0B1020',
   paused = false,
-}) {
+}, forwardedRef) {
   const videoRef = useRef(null);
   const bufferingRef = useRef(false);
   const stalledRestartTimeoutRef = useRef(null);
@@ -25,6 +25,15 @@ export default function HeroVideo({
   const isReadyRef = useRef(false);
   const [sourceIndex, setSourceIndex] = useState(0);
   const [playerInstanceKey, setPlayerInstanceKey] = useState(0);
+
+  useImperativeHandle(forwardedRef, () => ({
+    pause: () => videoRef.current?.pause?.(),
+    resume: () => {
+      if (!paused) {
+        videoRef.current?.resume?.();
+      }
+    },
+  }), [paused]);
 
   const playlist = useMemo(() => {
     if (Array.isArray(sources) && sources.length) {
@@ -270,7 +279,9 @@ export default function HeroVideo({
       />
     </View>
   );
-}
+});
+
+export default HeroVideo;
 
 const styles = StyleSheet.create({
   base: {

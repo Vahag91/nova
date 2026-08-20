@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Загвар сонгоно уу",
+    "searchPlaceholder": "Загвар хайх...",
+    "noModelsFound": "Ямар ч загвар олдсонгүй",
+    "noModelsAvailable": "Ямар ч загвар байхгүй",
+    "currentModel": "Одоогийн загвар: {{name}}. Загварыг өөрчлөхийн тулд товшино уу.",
+    "openHint": "Загвар сонгох цэсийг нээнэ",
+    "closeLabel": "Загвар сонгогчийг хаах",
+    "searchLabel": "Загвар хайх",
+    "searchHint": "Боломжтой загваруудыг шүүх бол бичнэ үү",
+    "modelLabel": "{{name}} загвар",
+    "selectHint": "{{name}} загварыг сонгоно уу",
+    "currentlySelected": "Одоогоор сонгогдсон загвар",
+    "genericModel": "{{provider}} загвар",
+    "badges": {
+      "new": "ШИНЭ",
+      "best": "ШИЛДЭГ"
+    }
+  },
+  "models": {
+    "gpt-4o": "Хамгийн хүчирхэг AI загвар",
+    "gpt-4o-mini": "Өдөр тутмын ажилд хурдан",
+    "gpt-5": "Хамгийн хүчирхэг бүх зориулалттай хиймэл оюун ухаан",
+    "gpt-5-chat-latest": "Чат болон харилцан ярианд зориулж оновчтой болгосон",
+    "gpt-5-mini": "Хурдан найдвартай GPT-5",
+    "gpt-5.4-nano": "Энгийн даалгаварт зориулсан хөнгөн загвар",
+    "o4-mini": "Үр дүнтэй үндэслэлийн загвар",
+    "gpt-4.1-mini": "Авсаархан, чадвартай GPT-4.1",
+    "claude-3-haiku": "Хурдан бөгөөд төвлөрсөн Anthropic AI",
+    "claude-3.7-sonnet": "Антропикийн боловсронгуй үндэслэл",
+    "gemini-2.5-Flash": "Google-ийн хамгийн дэвшилтэт загвар",
+    "gemini-2.5-flash": "Google-ийн хамгийн дэвшилтэт загвар",
+    "gemini-2.0-flash": "Хурдан бөгөөд нарийн Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Хамгийн хүчирхэг AI загвар",
+    "fast_everyday": "Өдөр тутмын ажилд хурдан",
+    "fast_reasoning": "Сайн үндэслэлтэй хурдан загвар",
+    "great_reasoning": "Нарийвчилсан үндэслэлийн загвар",
+    "coding_reasoning": "Нарийвчилсан кодчилол, үндэслэл",
+    "better_coding": "Кодлох, үндэслэл гаргахад илүү тохиромжтой",
+    "best_overall": "AI-ийн шилдэг загвар",
+    "best_google": "Google-ийн шилдэг загвар",
+    "best_xai": "xAI-ийн хамгийн хүчирхэг загвар",
+    "creative_focus": "Бүтээлч бичихэд тохиромжтой",
+    "code_helper": "Кодлоход тохиромжтой",
+    "chat_focus": "Чатлахад оновчтой",
+    "long_context": "Урт хугацааны контекстэд тохиромжтой",
+    "budget_friendly": "Төсөвт ээлтэй AI загвар",
+    "ultra_fast": "Хэт хурдан хариу үйлдэл",
+    "safe_default": "Аюулгүй өгөгдмөл сонголт",
+    "multilingual": "Олон хэлний хүчтэй дэмжлэг",
+    "vision_strong": "Зураг, алсын хараатай гайхалтай",
+    "data_analysis": "Өгөгдлийн шинжилгээ хийхэд тохиромжтой",
+    "structured_tasks": "Зохион байгуулалттай ажлуудад тохиромжтой",
+    "everyday_helper": "Өдөр тутмын туслах загвар",
+    "concise_answers": "Богино, товч хариултууд",
+    "detailed_answers": "Алхам алхмаар дэлгэрэнгүй хариултууд",
+    "experimental": "Туршилтын дараагийн үеийн загвар",
+    "reliable_classic": "Найдвартай сонгодог загвар",
+    "lightweight": "Хөнгөн жинтэй, хямд загвар",
+    "chatty_personal": "Илүү найрсаг, хувийн",
+    "pro_users": "Эрчим хүчний хэрэглэгчдэд хамгийн тохиромжтой",
+    "research_helper": "Судалгаа, тэмдэглэл хийхэд тохиромжтой",
+    "reasoning_strong": "Нарийвчилсан үндэслэлийн загвар"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Антропик",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Бусад"
+  },
+  "navigation": {
+    "chat": "Шинэ чат",
+    "history": "Түүх",
+    "rewards": "Өдөр тутмын урамшуулал",
+    "assistants": "Туслахууд",
+    "imagesStudio": "Image Studio",
+    "settings": "Тохиргоо",
+    "recentChats": "Саяхны чатууд",
+    "proFeatures": "Мэргэжлийн онцлогууд",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Pro онцлогуудыг аваарай",
+      "subtitle": "Бүх AI онцлог"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Харааны хөрөнгийг нэг дор үүсгэж, сайжруулж, нийтлээрэй.",
+    "cta": "Нээлттэй"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Зураг сонгох",
+    "exitSelectionMode": "Сонгох горимоос гарах",
+    "selectAll": "Бүгдийг сонгоно уу",
+    "noImagesYet": "Одоогоор зураг алга",
+    "describeImageHint": "Доорх зургаа тайлбарлаад Үүсгэх гэснийг товшино уу.",
+    "generatedImagesGallery": "Үүсгэсэн зургийн цомог",
+    "describeImagePlaceholder": "Хүссэн зургаа дүрслэн бичээрэй...",
+    "deleteConfirmTitle": "Зургийг устгах",
+    "deleteConfirmMessage": "Та сонгосон зургуудаа устгахдаа итгэлтэй байна уу? Энэ үйлдлийг буцаах боломжгүй.",
+    "cancel": "Цуцлах",
+    "delete": "Устгах",
+    "generate": "Үүсгэх",
+    "generating": "Үүсгэж байна...",
+    "latest": "Хамгийн сүүлийн үеийн",
+    "insertToChat": "Чат руу оруулах",
+    "pleaseWait": "Хүлээгээрэй...",
+    "processing": "Боловсруулж байна...",
+    "tapToUploadImage": "Зураг байршуулахын тулд товшино уу",
+    "camera": "Зураг байршуулах",
+    "library": "Номын сан",
+    "enterPrompt": "Текстээс зураг үүсгэх хүсэлтийг оруулна уу",
+    "openInBrowser": "Хөтөч дээр нээх",
+    "makeVariations": "Хувилбар хийх",
+    "deleteAllFromGeneration": "Энэ үеийнхээс бүгдийг устга",
+    "imageOptionsTitle": "Зургийн сонголтууд",
+    "imageOptionsMessage": "Та энэ зургаар юу хиймээр байна?",
+    "insertMarkdownHeader": "Үүнд зориулсан зураг энд байна:",
+    "variationSuffix": "- өмнөх зургийн өөрчлөлт",
+    "selectedCount": "сонгосон",
+    "selectedCount_one": "сонгосон",
+    "selectedCount_other": "сонгосон",
+    "imageDescriptionInput": "Зургийн тайлбар оруулах",
+    "imageDescriptionHint": "Үүсгэхийг хүссэн зургийнхаа тайлбарыг оруулна уу",
+    "openModelSettings": "Загварын тохиргоог нээнэ үү",
+    "modelSettingsHint": "Загвар болон тохиргоог өөрчлөхийн тулд товшино уу",
+    "openPhotoGallery": "Зургийн цомог нээх",
+    "clearInput": "Оролтоо арилгах",
+    "generatedImage": "Үүсгэсэн зураг",
+    "autoSelectedModel": "{{mode}} горимд {{model}}-г автоматаар сонгосон",
+    "deleteSelectedConfirmTitle": "Зургийг устгах",
+    "deleteSelectedConfirmMessage": "Та зургуудыг устгахдаа итгэлтэй байна уу? Энэ үйлдлийг буцаах боломжгүй."
+  },
+  "imageStudio": {
+    "generateImage": "Зураг үүсгэх",
+    "generatingImage": "Зураг үүсгэж байна",
+    "generateImageHint": "Өөрийн тайлбар дээр үндэслэн зураг үүсгэхийн тулд товшино уу",
+    "imageDescriptionInput": "Зургийн тайлбар оруулах",
+    "imageDescriptionHint": "Үүсгэхийг хүссэн зургийнхаа тайлбарыг оруулна уу",
+    "openModelSettings": "Загварын тохиргоог нээнэ үү",
+    "modelSettingsHint": "Загвар болон тохиргоог өөрчлөхийн тулд товшино уу",
+    "openPhotoGallery": "Зургийн цомог нээх",
+    "clearInput": "Оролтоо арилгах",
+    "generatedImage": "Үүсгэсэн зураг"
+  },
+  "assistants": {
+    "title": "Туслахууд",
+    "defaultTitle": "Туслах",
+    "errorTitle": "Ямар нэг алдаа гарлаа",
+    "errorMessage": "Энэ туслахыг эхлүүлж чадсангүй.",
+    "noAssistants": "Энэ ангилалд туслах ажилтан олдсонгүй.",
+    "selectAssistantHint": "Туслах сонгогчийг нээх",
+    "subtitle": "Кодлох, бичих, дүн шинжилгээ хийх, төлөвлөх зэрэгт бэлэн болсон хиймэл оюун ухааны мэргэжилтнүүд.",
+    "searchPlaceholder": "Хайлтын туслахууд...",
+    "useAssistant": "Туслахыг ашиглах",
+    "selectAssistant": "Туслахаа сонго",
+    "description": "Тодорхойлолт",
+    "systemPrompt": "Системийн сануулга",
+    "chooseModel": "Загвар сонгоно уу",
+    "categoryAll": "Бүгд",
+    "categories": {
+      "everyday": "Өдөр бүр",
+      "life": "Амьдрал",
+      "health": "Эрүүл мэнд",
+      "schoolWork": "Сургууль ба ажил",
+      "coding": "Кодлох",
+      "creative": "Бүтээлч",
+      "general": "Генерал"
+    },
+    "presets": {
+      "default": {
+        "name": "Өгөгдмөл туслах",
+        "description": "Өдөр тутмын ажилд тэнцвэртэй тусламж."
+      },
+      "quick": {
+        "name": "Шуурхай хариултууд",
+        "description": "Богино, шууд хариултууд."
+      },
+      "planner": {
+        "name": "Өдөр тутмын төлөвлөгч",
+        "description": "Өдөр, дэг журмыг төлөвлө."
+      },
+      "recipes": {
+        "name": "Хоол ба жор",
+        "description": "Юу хоол хийх вэ, өөрт байгаа зүйлээрээ."
+      },
+      "fitness": {
+        "name": "Фитнесс дасгалжуулагч",
+        "description": "Жижиг зуршил, гэрийн дасгал."
+      },
+      "money": {
+        "name": "Мөнгө найз",
+        "description": "Энгийн төсөв, зарцуулалтын зөвлөмжүүд."
+      },
+      "study": {
+        "name": "Сургалтын туслах",
+        "description": "Энгийнээр тайлбарла. Надаас асуугаарай."
+      },
+      "email": {
+        "name": "Цахим шуудан, үргэлжлүүлэх",
+        "description": "Тодорхой и-мэйл болон CV мөрүүдийг бичээрэй."
+      },
+      "translator": {
+        "name": "Орчуулагч",
+        "description": "Орчуулах + хэллэг заах."
+      },
+      "travel": {
+        "name": "Аялалын найз",
+        "description": "Энгийн төлөвлөгөө, багцын жагсаалт."
+      },
+      "tech": {
+        "name": "Техникийн дэмжлэг (энгийн)",
+        "description": "Утас, программ, Wi-Fi-ын үндсэн мэдээлэл."
+      },
+      "summarizer": {
+        "name": "TL; DR хураангуйлагч",
+        "description": "Богино сум + нэг шугамтай TL;DR."
+      },
+      "gift": {
+        "name": "Бэлэг хайгч",
+        "description": "Төсөв, ашиг сонирхлын дагуу санаанууд."
+      },
+      "party": {
+        "name": "Үйл явдал төлөвлөгч (Lite)",
+        "description": "Жижиг үдэшлэгийг хурдан төлөвлө."
+      },
+      "social": {
+        "name": "Нийгмийн нийтлэл үйлдвэрлэгч",
+        "description": "Сонголт бүхий нийтлэлийн ноорог."
+      },
+      "interview": {
+        "name": "Ярилцлагын дасгалжуулагч",
+        "description": "Дасгалын хариултууд (STAR)."
+      },
+      "homefix": {
+        "name": "Гэрийн засварын гарын авлага",
+        "description": "Энгийн DIY алдааг олж засварлах."
+      },
+      "pet": {
+        "name": "Гэрийн тэжээвэр амьтдын тусламж үйлчилгээний найз",
+        "description": "Хооллох, алхах, үндсэн сургалт."
+      },
+      "mindful": {
+        "name": "Анхааралтай минут",
+        "description": "1-3 мин тайван завсарлага."
+      },
+      "polite": {
+        "name": "Эелдэг зохиолч",
+        "description": "Текстүүдийг дахин бичиж, сайн хариулах."
+      }
+    }
+  },
+  "history": {
+    "title": "Түүх",
+    "searchPlaceholder": "Чат хайх...",
+    "newChat": "Шинэ чат",
+    "new": "+ Шинэ",
+    "search": "Хайх",
+    "clearSearch": "Хайлтыг арилгах",
+    "noChatsYet": "Одоогоор чат байхгүй",
+    "noResults": "Одоогоор чат байхгүй",
+    "startFirstConversation": "Анхны яриагаа эхэл.",
+    "startChat": "Чат эхлүүлэх",
+    "startNewChat": "Шинэ чат эхлүүлэх",
+    "errorLoadingHistory": "Түүхийг ачаалахад алдаа гарлаа",
+    "loading": "Түүхийг ачаалж байна...",
+    "renameChat": "Чатын нэрийг өөрчлөх",
+    "enterNewTitle": "Шинэ гарчиг оруулна уу",
+    "deleteChat": "Чатыг устгах уу?",
+    "deleteChatMessage": "\"{{title}}\" устгагдах болно.",
+    "rename": "Нэрээ өөрчлөх",
+    "unpin": "Буулгах",
+    "pin": "Бэхлэх",
+    "untitled": "Гарчиггүй"
+  },
+  "settings": {
+    "title": "Тохиргоо",
+    "model": "Загвар",
+    "searchPlaceholder": "Загвар хайх...",
+    "temperatureForCurrentModel": "Одоогийн загварын температур",
+    "customFor": "{{model}}-д зориулсан захиалгат",
+    "usingDefault": "Өгөгдмөл {{temperature}} ашиглаж байна",
+    "resetToDefault": "Өгөгдмөл рүү дахин тохируулна уу",
+    "defaultTemperature": "Өгөгдмөл температур (буцах)",
+    "usedByModelsWithoutOverride": "Захиалгат хүчингүй болсон загваруудад ашигладаг",
+    "dangerZone": "Аюултай бүс",
+    "clearAllChatsAndSettings": "Бүх чат, тохиргоог арилгана уу",
+    "about": "тухай",
+    "version": "Хувилбар {{version}}{{status}}",
+    "versionPremiumSuffix": "· Дээд зэрэглэлийн",
+    "privacyPolicy": "Нууцлалын бодлого",
+    "hero": {
+      "label": "Тусгай санал",
+      "title": "Хязгааргүй хандалт\n& Pro онцлогууд",
+      "upgrade": "Шинэчлэх",
+      "manage": "Төлөвлөгөө удирдах"
+    },
+    "sections": {
+      "premium": "Дээд зэрэглэлийн төлөвлөгөө",
+      "data": "Хэрэглэгчийн өгөгдөл",
+      "support": "Дэмжлэг ба хууль эрх зүй"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Premium авах",
+        "subtitle": "Хязгааргүй үүсгэх хэрэгслийн түгжээг тайлаарай"
+      },
+      "premiumActive": {
+        "title": "Дээд зэрэглэлийн идэвхтэй",
+        "subtitle": "Cloud AI-г дэмжсэнд баярлалаа"
+      },
+      "restore": {
+        "title": "Худалдан авалтыг сэргээх",
+        "subtitle": "Хэрэв та төхөөрөмжөө сольсон бол ашиглаарай"
+      },
+      "history": {
+        "title": "Чатын түүхийг удирдах",
+        "subtitle": "Өөрийн өмнөх сессүүдийг харж, устгана уу"
+      },
+      "reset": {
+        "title": "Чат болон тохиргоог дахин тохируулна уу",
+        "subtitle": "Энэ төхөөрөмж дээр хадгалагдсан бүх өгөгдлийг арилгана"
+      },
+      "rate": {
+        "title": "Биднийг үнэлээрэй",
+        "error": "Дэлгүүрийн хуудсыг нээх боломжгүй байна."
+      },
+      "support": {
+        "title": "Дэмжлэг",
+        "subtitle": "Бидэнтэй онлайнаар холбогдоно уу",
+        "error": "Холбоо барих хуудсыг нээх боломжгүй байна."
+      },
+      "privacy": {
+        "title": "Нууцлалын бодлого",
+        "error": "Нууцлалын бодлогыг нээх боломжгүй байна."
+      },
+      "terms": {
+        "title": "Хэрэглэх нөхцөл",
+        "error": "Ашиглалтын нөхцөлийг нээх боломжгүй байна."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Боломжгүй",
+      "linkUnavailableMessage": "Яг одоо энэ холбоосыг нээх боломжгүй байна.",
+      "restoreSuccessTitle": "Сэргээгдсэн",
+      "restoreSuccessMessage": "Таны худалдан авалт сэргээгдсэн.",
+      "restoreEmptyTitle": "Худалдан авалт олдсонгүй",
+      "restoreEmptyMessage": "Бид энэ бүртгэлийг сэргээх идэвхтэй худалдан авалт олж чадсангүй.",
+      "restoreErrorTitle": "Сэргээх амжилтгүй боллоо",
+      "restoreErrorMessage": "Яг одоо худалдан авалтыг сэргээх боломжгүй байна.",
+      "resetConfirmTitle": "Аппын өгөгдлийг шинэчлэх үү?",
+      "resetConfirmMessage": "Энэ нь бүх чат болон орон нутгийн тохиргоог устгана.",
+      "resetConfirmCancel": "Цуцлах",
+      "resetConfirmCta": "Дахин тохируулах"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Үүсгэх",
+    "chooseStyle": "Загвар сонгох",
+    "aspectRatio": "Харьцаа",
+    "starterPrompts": {
+      "title": "Эхлэлийн сануулга",
+      "items": [
+        "студийн толгойн зураг",
+        "орчин үеийн зочны өрөө",
+        "нар жаргах үед халуун орны наран шарлагын газар"
+      ]
+    },
+    "promptPlaceholder": "Үзэхийг хүссэн зүйлээ бичнэ үү...",
+    "promptHint": "Жишээ нь: 'Голден ретривер студийн гэрэлтүүлэгт'",
+    "clearText": "Текстийг цэвэрлэх",
+    "generate": "Үүсгэх",
+    "generating": "Үүсгэж байна..."
+  },
+  "editImage": {
+    "headerTitle": "Засварлах",
+    "chooseStyle": "Загвар сонгох",
+    "aspectRatio": "Харьцаа",
+    "starterPrompts": {
+      "title": "Эхлэлийн сануулга",
+      "items": [
+        "гэрэлтүүлэг засах",
+        "дэвсгэр арилгах",
+        "зөөлөн хөрөг засвар"
+      ]
+    },
+    "promptPlaceholder": "Засварыг тайлбарлах (заавал биш)",
+    "clearText": "Текстийг цэвэрлэх",
+    "generate": "Үүсгэх",
+    "generating": "Өргөдөл гаргаж байна...",
+    "upload": {
+      "choose": "Зураг сонгоно уу",
+      "change": "Өөрчлөх",
+      "remove": "Устгах"
+    },
+    "imageUnavailable": {
+      "title": "Зураг боломжгүй",
+      "message": "Сонгосон зураг руу нэвтэрч чадсангүй. Үүнийг дахин сонгоод дахин оролдоно уу."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Анимэ"
+      },
+      "cartoon": {
+        "name": "Хүүхэлдэйн кино"
+      },
+      "photoreal": {
+        "name": "Фото бодит"
+      },
+      "sketch": {
+        "name": "Ноорог"
+      },
+      "cyberpunk": {
+        "name": "Киберпанк"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D дүрслэл"
+      },
+      "dark_fantasy": {
+        "name": "Харанхуй уран зөгнөл"
+      },
+      "vintage_film": {
+        "name": "Vintage кино"
+      },
+      "pastel": {
+        "name": "Пастел гоо зүй"
+      },
+      "neon_glow": {
+        "name": "Неон гялбаа"
+      },
+      "epic_landscape": {
+        "name": "Эпик ландшафт"
+      }
+    },
+    "aspectRatios": {
+      "square": "Дөрвөлжин",
+      "landscape": "Ландшафт",
+      "portrait": "Хөрөг зураг"
+    },
+    "models": {
+      "fluxKontent": "Flux агуулга",
+      "custom": "Захиалгат"
+    },
+    "notEnoughCoinsTitle": "Зоос хангалтгүй байна",
+    "notEnoughCoinsMessage": "Таны одоогийн үлдэгдэл энэ зурагт хэт бага байна.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Хамгийн хурдан загвар",
+      "runwareFluxKrea": "Бүтээлч, загварчлагдсан үр дүн",
+      "runwareQwenImage": "Тэнцвэртэй, өндөр чанартай үр дүн",
+      "google4": "Шилдэг AI зургийн загвар",
+      "klingImageO1": "Өндөр хяналттай зураг засварлах",
+      "fluxKontent": "Flux контентыг засварлахаар тохируулсан",
+      "runwareProvider": "Найдвартай тархалттай тэнцвэртэй чанар.",
+      "airProvider": "Нано банана нь хөгжилтэй, тод өнгө нэмдэг.",
+      "googleProvider": "Google-ийн өнгөлсөн дэлгэрэнгүй мэдээллийг тохируулсан.",
+      "klingaiProvider": "KlingAI нь хяналттай засвар хийхэд зориулагдсан.",
+      "anthropicProvider": "Claude янз бүрийн сэтгэлийн хөдөлгөөнд зориулсан дамжуулах хоолой.",
+      "default": "Боломжтой хөдөлгүүрүүдийг судлахын тулд товшино уу."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "таны сонгосон хэв маяг",
+    "sheetTitle": "Алсын хараагаа бүтээх",
+    "sheetSubtitle": "Бид {{style}}-г сануулгад холих зуур серверийн кофеноос товч балгана уу.",
+    "phases": {
+      "blend": "{{style}}-д холих",
+      "paint": "Үзэгдэл зурж байна",
+      "finish": "Эцсийн өнгөлгөө нэмнэ"
+    },
+    "actions": {
+      "cancel": "Цуцлах",
+      "retry": "Дахин оролдоно уу",
+      "close": "Хаах"
+    },
+    "errors": {
+      "restrictedTitle": "Хязгаарлагдмал контент",
+      "genericTitle": "Үүсгэх амжилтгүй боллоо",
+      "genericMessage": "Зураг үүсгэж чадсангүй."
+    },
+    "alerts": {
+      "saveFailedTitle": "Хадгалж чадсангүй",
+      "shareFailedTitle": "Хуваалцаж чадсангүй",
+      "tryAgain": "Дахин оролдоно уу.",
+      "savedTitle": "Хадгалсан",
+      "savedMessage": "Зургийг таны галерейд хадгалсан.",
+      "permissionTitle": "Зөвшөөрөл хэрэгтэй",
+      "permissionMessage": "Зургийг галерейд хадгалахын тулд хадгалах санд хандахыг зөвшөөрнө үү."
+    },
+    "result": {
+      "complete": "Бүгд дууссан"
+    },
+    "accessibility": {
+      "close": "Хаах"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Устгах",
+      "edit": "Засварлах",
+      "save": "Хадгалах",
+      "share": "Хуваалцах"
+    },
+    "alerts": {
+      "savedTitle": "Хадгалсан",
+      "savedMessage": "Зургийг таны галерейд хадгалсан.",
+      "permissionTitle": "Зөвшөөрөл хэрэгтэй",
+      "permissionMessage": "Зургийг галерейд хадгалахын тулд хадгалах санд хандахыг зөвшөөрнө үү.",
+      "saveFailedTitle": "Хадгалж чадсангүй",
+      "tryAgain": "Дахин оролдоно уу."
+    },
+    "accessibility": {
+      "close": "Хаах",
+      "delete": "Зургийг устгах",
+      "edit": "Зургийг засах",
+      "save": "Зургийг хадгалах",
+      "share": "Зураг хуваалцах"
+    }
+  },
+  "reportContent": {
+    "title": "AI агуулгыг мэдээлэх",
+    "subtitle": "Энэ үүсгэсэн контентод юу буруу байгааг бидэнд хэлээрэй.",
+    "privateDisclosure": "Илгээснээр энэ мэдээлэгдсэн агуулгыг аюулгүй байдлын хяналтад илгээнэ.",
+    "accessibilityLabel": "AI агуулгыг мэдээлэх",
+    "reasons": {
+      "sexual": "Бэлгийн эсвэл нүцгэн байдлын агуулга",
+      "violence_self_harm": "Хүчирхийлэл эсвэл өөрийгөө гэмтээх",
+      "hate_harassment": "Үзэн ядалт эсвэл дарамт",
+      "child_safety": "Хүүхдийн аюулгүй байдлын асуудал",
+      "scam_deceptive": "Луйвар эсвэл хуурамч контент",
+      "other": "Бусад"
+    },
+    "errors": {
+      "reasonRequired": "Илгээхээсээ өмнө шалтгааныг сонгоно уу.",
+      "submit": "Тайлан илгээж чадсангүй. Дахин оролдоно уу."
+    },
+    "success": {
+      "title": "Баярлалаа. Таны тайланг илгээсэн.",
+      "subtitle": "Бид агуулгын аюулгүй байдлыг сайжруулахын тулд тайланг ашиглах болно."
+    },
+    "actions": {
+      "report": "Тайлан",
+      "submit": "Тайлан илгээх",
+      "done": "Дууслаа"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Цэсийг нээх",
+      "selectImages": "Зураг сонгох",
+      "exitSelection": "Сонголтоос гарах",
+      "deleteSelected": "Сонгосон зургуудыг устгах",
+      "selectToDelete": "Устгах зургуудыг сонгоно уу"
+    },
+    "createCard": {
+      "title": "Текстээс үүсгэх",
+      "subtitle": "Тайлбар бичнэ үү",
+      "cta": "Тодорхойлох, үүсгэх"
+    },
+    "editCard": {
+      "title": "AI зураг засварлагч",
+      "subtitle": "AI ашиглан өөрчил, сайжруул",
+      "cta": "AI ашиглан засварлах"
+    },
+    "gallery": {
+      "title": "Галерей",
+      "empty": "Одоогоор зураг алга",
+      "selection": {
+        "enter": "Зураг сонгох",
+        "exit": "Сонголтоос гарах",
+        "deleteSelected": "Сонгосон зургуудыг устгах",
+        "selectForDelete": "Устгах зургуудыг сонгоно уу"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Уулзана",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Cloud AI дотроос хиймэл оюун ухаан ашиглан зураг үүсгэж, засаарай."
+    },
+    "relaxView": {
+      "title": "Өөрийн хиймэл оюун ухаантай танилц",
+      "titleHighlight": "Туслахууд",
+      "subtitle": "Мэргэшсэн хиймэл оюун ухааны мэргэжилтнүүд таны өдөр тутмын хэрэгцээнд туслахад бэлэн байна",
+      "cards": {
+        "fitness": {
+          "title": "Фитнесс дасгалжуулагч",
+          "text": "Жижиг зуршил, гэрийн дасгал."
+        },
+        "recipes": {
+          "title": "Хоол ба жор",
+          "text": "Юу хоол хийх вэ, өөрт байгаа зүйлээрээ."
+        },
+        "travel": {
+          "title": "Аялалын найз",
+          "text": "Энгийн төлөвлөгөө, багцын жагсаалт."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "АЖ АХУЙН ЗЭРЭГЛЭЛИЙН AI ШИЙДЭЛ",
+      "description": "Байгууллагын мэргэжилтнүүд болон багуудад зориулагдсан хиймэл оюун ухааны дэвшилтэт технологиор бизнесээ хүчирхэгжүүлээрэй.",
+      "stats": "500 мянга гаруй хэрэглэгчид итгэдэг",
+      "rating": "4.9 / 5",
+      "button": "Эхлэх"
+    },
+    "buttons": {
+      "continue": "Үргэлжлүүлэх",
+      "start": "Эхэлцгээе"
+    }
+  },
+  "coinStore": {
+    "title": "Зээл авах",
+    "loading": "Зоосны дэлгүүрийг ачаалж байна...",
+    "balanceLabel": "Таны одоогийн үлдэгдэл",
+    "balanceValue": "{{amount}} Кредит",
+    "history": {
+      "link": "Гүйлгээний түүх",
+      "alertTitle": "Түүх",
+      "alertBody": "Гүйлгээний түүх удахгүй гарах болно."
+    },
+    "noPacks": "Зоосны багц байхгүй. RevenueCat саналын дугаараа шалгана уу.",
+    "badges": {
+      "basic": "Үндсэн багц",
+      "popular": "Хамгийн алдартай",
+      "value": "Хамгийн сайн үнэ цэнэ"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Кредит",
+      "tokensLabel": "{{credits}} Кредит",
+      "defaultName": "Багц {{index}}",
+      "unknownPrice": "доллар -"
+    },
+    "premium": {
+      "title": "Premium-д орно",
+      "subtitle": "Хязгааргүй хандалт ба онцлог",
+      "cta": "Сайжруулах"
+    },
+    "termsText": "Худалдан авалт хийснээр та манайхыг зөвшөөрч байна",
+    "termsLink": "Үйлчилгээний нөхцөл",
+    "alerts": {
+      "initErrorTitle": "Эхлэх алдаа",
+      "genericMessage": "Ямар нэг алдаа гарлаа.",
+      "successTitle": "Амжилт",
+      "successMessage": "Зээл удахгүй гарч ирнэ.",
+      "purchaseFailedTitle": "Худалдан авалт амжилтгүй боллоо",
+      "unknownError": "Үл мэдэгдэх алдаа"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Дээд зэрэглэлийн шаардлагатай",
+    "upgrade": "Шинэчлэх",
+    "modelRequiredMessage": "Энэ загвар нь Premium шаарддаг. GPT-5, Grok 4, Claude болон илүү дэвшилтэт загваруудад хандахын тулд шинэчилнэ үү.",
+    "assistantsRequiredMessage": "Туслахуудад Premium шаардлагатай. Фитнесс, кодчилол, бичих болон бусад зүйлд зориулсан хиймэл оюун ухааны тусгай туслахуудад хандахын тулд сайжруулаарай.",
+    "assistantsTitle": "Дээд зэрэглэлийн шаардлагатай",
+    "assistantsMessage": "Туслахуудад Premium шаардлагатай. Фитнесс, кодчилол, бичих болон бусад зүйлд зориулсан хиймэл оюун ухааны тусгай туслахуудад хандахын тулд сайжруулаарай."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Төлбөрийн ханыг хаах",
+    "unavailableTitle": "Худалдан авалт хийх боломжгүй",
+    "unavailableMessage": "Android тооцоог хараахан тохируулаагүй байна.",
+    "restoreEmptyTitle": "Худалдан авалт олдсонгүй",
+    "restoreEmptyMessage": "Бид энэ бүртгэлийг сэргээх идэвхтэй худалдан авалт олж чадсангүй.",
+    "restoreFailedTitle": "Сэргээх амжилтгүй боллоо",
+    "restoreFailedMessage": "Яг одоо худалдан авалтыг сэргээх боломжгүй байна.",
+    "productsUnavailableTitle": "Төлөвлөгөө байхгүй",
+    "productsUnavailableMessage": "Одоогоор Android захиалгын бүтээгдэхүүн байхгүй байна.",
+    "purchaseFailedTitle": "Худалдан авалт амжилтгүй боллоо",
+    "purchaseFailedMessage": "Яг одоо энэ худалдан авалтыг дуусгах боломжгүй байна.",
+    "restore": "Сэргээх",
+    "restoreRestoring": "Сэргээж байна...",
+    "features": {
+      "create": "Зураг, видео үүсгэх",
+      "search": "AI ашиглан вэбээс хайх",
+      "talk": "AI-тай байгалийн жамаар ярь",
+      "imageStudio": "Image Studio {{credits}} кредит {{period}} аваарай",
+      "period": {
+        "weekly": "долоо хоног бүр",
+        "monthly": "сар бүр",
+        "yearly": "жил бүр"
+      }
+    },
+    "freeTrial": {
+      "title": "Үнэгүй туршилт",
+      "subtitle": "3 өдрийн үнэгүй туршилт"
+    },
+    "badge": {
+      "bestOffer": "Хамгийн сайн санал"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Жил бүр",
+        "only": "Зөвхөн {{price}}",
+        "defaultPrice": "79.99 ам.доллар",
+        "defaultIntroPrice": "1.35 ам.доллар"
+      },
+      "monthly": {
+        "title": "Сар бүр",
+        "subtitle": "Хэзээ ч цуцлах",
+        "defaultPrice": "19.99 ам.доллар"
+      },
+      "weekly": {
+        "title": "Долоо хоног бүр",
+        "subtitle": "Хэзээ ч цуцлах",
+        "defaultPrice": "9.99 ам.доллар",
+        "trialThen": "Тэгвэл 3 хоног үнэгүй"
+      }
+    },
+    "frequency": {
+      "perWeek": "долоо хоногт",
+      "perMonth": "сард"
+    },
+    "cta": "Үргэлжлүүлэх",
+    "ctaFreeTrial": "Үнэгүй туршаад үзээрэй",
+    "legal": {
+      "terms": "Нөхцөл",
+      "privacy": "Нууцлал"
+    },
+    "premium": {
+      "headline": "Бүх дээд зэрэглэлийн AI нэг төлөвлөгөөнд",
+      "subtitleLine1": "Чатлах, кодлох, үүсгэх, төлөвлөх",
+      "subtitleLine2": "дэвшилтэт загваруудтай.",
+      "enableTrial": "Үнэгүй туршилтыг идэвхжүүлэх",
+      "annual": "Жилийн",
+      "saveBadge": "83% хэмнэнэ",
+      "year": "жил",
+      "week": "долоо хоног",
+      "termsOfUse": "Хэрэглэх нөхцөл",
+      "privacyPolicy": "Нууцлалын бодлого"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Зурвас...",
+    "createImages": "Зураг үүсгэх",
+    "generateAiArtwork": "AI урлагийн бүтээл үүсгэх",
+    "camera": "Зураг байршуулах",
+    "takeOrSelectPhotos": "Зураг сонгох",
+    "search": "Хайх",
+    "findInformation": "Мэдээлэл хайх",
+    "findRecentInfo": "Сүүлийн үеийн мэдээллийг хайж олох",
+    "removeImage": "Зургийг арилгах",
+    "messageInput": "Зурвас оруулах",
+    "clearInput": "Оролтоо арилгах",
+    "quickActionsLabel": "Шуурхай үйлдэл",
+    "hideQuickActions": "Шуурхай үйлдлүүдийг нуух",
+    "showQuickActions": "Шуурхай үйлдлүүдийг харуулах",
+    "startVoiceInput": "Дуут оруулгыг эхлүүлнэ үү",
+    "sendMessage": "Зурвас илгээх",
+    "offline": "Офлайн",
+    "stop": "Зогс",
+    "streaming": "Дамжуулж байна...",
+    "closeRecorder": "Дуу хураагуурыг хаах",
+    "insertTranscript": "Илгээх",
+    "scrollToLatest": "Сүүлийн зурвас руу гүйлгэ",
+    "copyMessage": "Зурвас хуулах",
+    "copyMessageHint": "Энэ мессежийг санах ой руу хуулна уу",
+    "shareMessage": "Зурвас хуваалцах",
+    "shareMessageHint": "Энэ мессежийг хуваалц",
+    "regenerateResponse": "Хариултыг сэргээх",
+    "regenerateResponseHint": "Шинэ хариу үүсгэх",
+    "copyCode": "Код хуулах",
+    "copied": "Хуулсан",
+    "image": "зураг",
+    "loading": "Ачааж байна…",
+    "loadingChat": "Чатыг ачаалж байна...",
+    "offlineBanner": "Та офлайн байна. Мессеж илгээх боломжгүй.",
+    "offlineError": "Интернэт холболт байхгүй. Холболтоо шалгаад дахин оролдоно уу.",
+    "imagePickerErrorTitle": "Зураг сонгогчийн алдаа",
+    "imagePickerErrorMessage": "Таны зурганд хандах боломжгүй байна. Дахин оролдоно уу.",
+    "messageTooLong": "Зурвас хэт урт байна ({{length}}). Хязгаарлалт нь {{limit}}.",
+    "sendFailed": "Мессеж илгээж чадсангүй. Дахин оролдоно уу.",
+    "modelNoImageSupport": "Сонгосон загвар нь зургийг дэмждэггүй. Өөр загвар сонгоно уу.",
+    "voiceStartFailed": "Дууг эхлүүлж чадсангүй.",
+    "voiceNoSpeechDetected": "Ямар ч дуу хоолой танигдаагүй. Дахин оролдоно уу.",
+    "emptyTitle": "Би яаж туслах вэ?",
+    "emptySubtitle": "AI-тай яриа эхлүүл",
+    "privateTitle": "Хувийн чат",
+    "privateSubtitle": "Энэ чат таны чатын түүхэнд харагдахгүй",
+    "startPrivateChat": "Хувийн чат эхлүүлэх",
+    "endPrivateChat": "Хувийн чатыг дуусгах",
+    "permissions": {
+      "photosTitle": "Зургийн зөвшөөрөл шаардлагатай",
+      "photosMessage": "Зургийг сонгохын тулд зургийн хандалт шаардлагатай.",
+      "voiceTitle": "Дуут зөвшөөрөл шаардлагатай",
+      "voiceMessage": "Дууг ашиглахын тулд микрофон болон ярианы хандалт шаардлагатай."
+    },
+    "activity": {
+      "analyzingImages": "Зурганд дүн шинжилгээ хийж байна...",
+      "searching": "Хайж байна...",
+      "thinking": "Бодож байна…"
+    },
+    "webSearch": {
+      "title": "Вэб хайлт",
+      "subtitle": "Сүүлийн үеийн мэдээллийг хайж олох",
+      "label": "Вэб хайлт",
+      "enable": "Вэб хайлтыг идэвхжүүл",
+      "disable": "Вэб хайлтыг идэвхгүй болгох",
+      "toggleLabel": "Вэбээс хайх"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Визуал дүрслэлийг хурдтайгаар зохион бүтээх.",
+      "subtitle": "Харааны хөрөнгийг нэг дор үүсгэж, сайжруулж, нийтлээрэй.",
+      "cta": "Нээлттэй"
+    },
+    "quickActions": {
+      "createImages": "Зураг үүсгэх",
+      "openCamera": "Камерыг нээх",
+      "editImage": "Зургийг засах",
+      "startVoice": "Voice эхлүүлэх",
+      "assistants": "Туслахууд"
+    },
+    "listening": "Сонсож байна...",
+    "startRecording": "Бичлэг хийж эхлэх...",
+    "assistantHeader": {
+      "unavailableTitle": "Туслах боломжгүй",
+      "unavailableDescription": "Бид энэ туслахыг ачаалж чадсангүй. Дахин оролдоно уу.",
+      "ready": "Туслахад бэлэн байна"
+    },
+    "actions": {
+      "copy": "Хуулбарлах",
+      "share": "Хуваалцах",
+      "regenerate": "Дахин сэргээх",
+      "retryFromHere": "Эндээс дахин оролдоно уу",
+      "report": "Тайлан",
+      "cancel": "Цуцлах"
+    },
+    "markdown": {
+      "copy": "Хуулбарлах",
+      "copied": "Хуулсан",
+      "table": "ХҮСНЭГТ",
+      "watchVideo": "Видео үзэх",
+      "wikipedia": "Википедиа",
+      "link": "Холбоос",
+      "note": "Анхаарна уу",
+      "warning": "Анхааруулга",
+      "tip": "Зөвлөгөө"
+    },
+    "messageActionTitle": "Мессеж",
+    "status": {
+      "sending": "Илгээж байна...",
+      "failed": "Амжилтгүй",
+      "sent": "Илгээсэн"
+    },
+    "suggestions": {
+      "writeStory": "Бүтээлч түүх бичээрэй",
+      "writeStorySubtitle": "ид шидийн адал явдлын тухай",
+      "planTravel": "Аялал жуулчлалын маршрут төлөвлө",
+      "planTravelSubtitle": "гайхалтай амралтын төлөө",
+      "explainConcept": "Энэ ойлголтыг тайлбарла",
+      "explainConceptSubtitle": "энгийн үгээр",
+      "planDay": "Миний өдрийг төлөвлө",
+      "planDaySubtitle": "бүтээмжийн зөвлөмжүүдтэй"
+    },
+    "home": {
+      "eyebrow": "Сэдэв сонгоно уу",
+      "title": "Та юу хиймээр байна?",
+      "subtitle": "Чиглэлээ сонгоод дараа нь хүчтэй сануулгыг эхлүүлээрэй.",
+      "pickPromptTitle": "Эхлэхийн тулд сануулгыг сонгоно уу",
+      "changeTopic": "Өөр сэдэв сонгоно уу",
+      "intents": {
+        "summarize": "Текстийг хураангуйлах",
+        "summarizeShort": "Дүгнэж хэлье",
+        "summarizeHint": "Нийтлэл, тэмдэглэл, дуут тэмдэглэл, урт утаснууд",
+        "plan": "Төлөвлөгөө гарга",
+        "planHint": "Аялал, дэг журам, төсөв, эцсийн хугацаа, амьдралын өөрчлөлт",
+        "brainstorm": "Оюуны шуурга",
+        "brainstormHint": "Санаа, санал, нэр, агуулга, хажуугийн төслүүд",
+        "analyze": "Өгөгдөлд дүн шинжилгээ хийх",
+        "analyzeHint": "Зардал, санал хүсэлт, хэмжүүр, зуршил, гүйцэтгэл"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Үүсгэн байгуулагчийн товч танилцуулга үүсгэх",
+          "founderBriefSubtitle": "Гол эрсдэл, шийдвэр, дараагийн алхмуудыг гарга.",
+          "classNotesTitle": "Миний хичээлийн тэмдэглэлийг цэвэрлэ",
+          "classNotesSubtitle": "Бүдүүн тэмдэглэлийг тодорхой судлах гарын авлага болгон хувирга.",
+          "meetingHandoffTitle": "Дамжуулах товчлолыг бичнэ үү",
+          "meetingHandoffSubtitle": "Уулзалт, дуудлага эсвэл удаан хугацааны дотоод хэлхээсийн дараа хэрэгтэй.",
+          "longArticleTitle": "Энэ өгүүллийг хурдан нэгтгэн дүгнэ",
+          "longArticleSubtitle": "Урт өгүүллийг товч тайлбар болгон хураангуйл."
+        },
+        "plan": {
+          "energyResetTitle": "14 хоногийн эрчим хүчийг дахин тохируулах",
+          "energyResetSubtitle": "Унтах, хооллох, хөдөлгөөн хийх, анхаарлаа төвлөрүүлэх бодит төлөвлөгөө.",
+          "mealPlanTitle": "Би үнэхээр хоол хийх хоолоо төлөвлө",
+          "mealPlanSubtitle": "Практик, боломжийн, надад байгаа зүйл дээр тулгуурласан.",
+          "cityMoveTitle": "Шинэ хот руу нүүхээ төлөвлө",
+          "cityMoveSubtitle": "Үүнийг цаг хугацаа, төсөв, орон сууц, админ ажил гэж хуваа.",
+          "tripEscapeTitle": "Амралтын өдрүүдээр мартагдашгүй амралтаа төлөвлө",
+          "tripEscapeSubtitle": "Ердийн маршрутаас илүү сайн зүйл."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Бодит хажуугийн шуугианыг олоорой",
+          "sideHustleSubtitle": "Бүтэн цагаар ажиллаж байхдаа эхлүүлж болох санаанууд.",
+          "brandAngleTitle": "Мартагдашгүй брэндийн өнцгийг олоорой",
+          "brandAngleSubtitle": "Бүтээгдэхүүн, бүтээгчид, агентлагууд эсвэл мэдээллийн товхимолд хэрэгтэй.",
+          "socialSeriesTitle": "Агуулгын цуврал зохион бүтээх",
+          "socialSeriesSubtitle": "Үзэгчдийг өсгөхөд хангалттай нийцтэй зүйл.",
+          "datingIdeasTitle": "Шинэ санаануудыг гаргаж ирээрэй",
+          "datingIdeasSubtitle": "Болзоо, бэлэг, гэнэтийн бэлэг эсвэл бодол санагдуулсан үйл явдлууд."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Миний мөнгө хаашаа урсаж байгааг олж мэд",
+          "spendingLeaksSubtitle": "Загвар, сул цэгүүдийг харуул, хамгийн амархан нь түрүүлж хождог.",
+          "customerFeedbackTitle": "Санал хүсэлтийг тэргүүлэх чиглэл болгон хувирга",
+          "customerFeedbackSubtitle": "Кластерын хүсэлт, гомдол, яаралтай байдал, нөлөөлөл.",
+          "habitPatternsTitle": "Миний зуршилд хэв маягийг олж мэдээрэй",
+          "habitPatternsSubtitle": "Дасгал хийх, унтах, өдрийн тэмдэглэл хөтлөх, анхаарлаа төвлөрүүлэхэд тохиромжтой.",
+          "metricsStoryTitle": "Тоонууд ямар утгатай болохыг тайлбарла",
+          "metricsStorySubtitle": "Илүү их дохио, хүснэгтийн чимээ багатай."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Боловсруулж байна...",
+    "tapToUploadImage": "Зураг байршуулахын тулд товшино уу"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Боловсруулж байна...",
+    "camera": "Зураг байршуулах",
+    "library": "Номын сан"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "Дахин оролдоно уу",
+    "cancel": "Цуцлах",
+    "allow": "Зөвшөөрөх",
+    "notNow": "Одоо биш",
+    "openSettings": "Тохиргоог нээнэ үү",
+    "close": "Хаах",
+    "save": "Хадгалах",
+    "tryAgain": "Дахин оролдоно уу"
+  },
+  "rateUs": {
+    "title": "Cloud AI таалагдаж байна уу?",
+    "subtitle": "Таны санал хүсэлт биднийг сайжруулахад тусална. Та биднийг App Store дээр үнэлнэ үү?",
+    "rateNow": "Одоо үнэлгээ өгнө үү",
+    "maybeLater": "Магадгүй дараа нь",
+    "dontAskAgain": "Дахиж битгий асуу"
+  },
+  "oneTimeOffer": {
+    "title": "Нэг удаагийн санал",
+    "discount": "{{percent}}% ХЯМДРАЛТАЙ",
+    "subtitle": "Та энэ саналыг дахиж харахгүй.",
+    "badgeLine1": "Онцгой",
+    "badgeLine2": "Нэг удаагийн санал",
+    "upgradeNow": "{{price}}-г яг одоо шинэчилнэ үү",
+    "loadingPrice": "Ачааж байна...",
+    "termsOfUse": "Хэрэглэх нөхцөл",
+    "privacyPolicy": "Нууцлалын бодлого",
+    "accessTitle": "Хязгааргүй нэвтрэх",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4 руу хязгааргүй нэвтрэх",
+      "geminiPro": "Gemini Pro руу нэвтрэх",
+      "grokInsights": "Шинэ ойлголт авахын тулд Grok ашиглана уу",
+      "priorityAccess": "Тэргүүлэх хандалт ба илүү хурдан хариулт"
+    },
+    "bestValue": "Хамгийн сайн үнэ цэнэ",
+    "annualPremium": "Жилийн урамшуулал",
+    "oneTimePayment": "Нэг удаагийн төлбөр",
+    "wasPrice": "байсан",
+    "continue": "Үргэлжлүүлэх",
+    "restore": "Сэргээх",
+    "terms": "Нөхцөл",
+    "privacy": "Нууцлал",
+    "successTitle": "Амжилт!",
+    "successMessage": "Худалдан авалт хийсэнд баярлалаа! Дараагийн 12 сарын турш дээд зэрэглэлийн хандалтыг сайхан өнгөрүүлээрэй.",
+    "errorTitle": "Худалдан авалт амжилтгүй боллоо",
+    "errorMessage": "Ямар нэг алдаа гарлаа. Дахин оролдоно уу.",
+    "restoreSuccessTitle": "Сэргээгдсэн",
+    "restoreSuccessMessage": "Таны худалдан авалт сэргээгдсэн.",
+    "restoreErrorTitle": "Сэргээх амжилтгүй боллоо",
+    "restoreErrorMessage": "Сэргээх худалдан авалт олдсонгүй.",
+    "unavailableTitle": "Худалдан авалт хийх боломжгүй",
+    "unavailableMessage": "Android тооцоог хараахан тохируулаагүй байна."
+  },
+  "rewards": {
+    "header": {
+      "title": "Шагнал",
+      "openMenu": "Цэсийг нээх",
+      "goBack": "Буцах"
+    },
+    "pointsHero": {
+      "totalBalance": "НИЙТ ҮЛДЭГДЭЛ",
+      "seeYourRewards": "Шагналаа харна уу"
+    },
+    "streakTracker": {
+      "title": "Өдөр тутмын цуврал",
+      "subtitle": "Үргэлжлүүл! Чи шатаж байна.",
+      "days": "Өдөр",
+      "prize": "Шагнал",
+      "dayLabel": "Өдөр {{number}}",
+      "nextReward": "Дараагийн шагнал: {{amount}} {{time}}",
+      "coins": "Зоос"
+    },
+    "sections": {
+      "availableQuests": "Боломжтой даалгаварууд",
+      "completedQuests": "Дууссан даалгаварууд",
+      "availableRewards": "Боломжтой урамшуулал",
+      "needsMoreCoins": "Илүү их зоос хэрэгтэй"
+    },
+    "balances": {
+      "rewardCoins": "Шагналын зоос",
+      "imageCredits": "Зургийн кредит"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 зургийн кредит",
+        "imageCredits200": "200 зургийн кредит",
+        "imageCredits600": "600 зургийн кредит",
+        "weeklyPremium": "Долоо хоног тутмын Premium",
+        "secretBox": "Нууц хайрцаг"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Дотор нь нууцлаг шагналууд"
+      },
+      "alerts": {
+        "comingSoonTitle": "Удахгүй",
+        "comingSoonMessage": "Энэ шагналыг хараахан авах боломжгүй.",
+        "notEnoughCoinsTitle": "Зоос хангалтгүй байна",
+        "notEnoughCoinsMessage": "Энэ шагналыг нээхийн тулд танд илүү олон шагналын зоос хэрэгтэй.",
+        "errorTitle": "Алдаа",
+        "couldNotOpenBox": "Хайрцаг нээж чадсангүй.",
+        "couldNotRedeem": "Шагналыг зарцуулж чадсангүй. Дахин оролдоно уу.",
+        "mysteryReward": "Нууцлаг шагнал"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Өдөр бүр нэвтрэх",
+        "description": "Аппликейшнээ өнөөдөр нээнэ үү",
+        "message": "Өдөр бүр програмыг нээх үед энэ даалгавар автоматаар дуусна."
+      },
+      "shareFacebook": {
+        "title": "Facebook дээр хуваалцах",
+        "description": "Бидний тухай Facebook дээр нийтэл"
+      },
+      "shareTwitter": {
+        "title": "Twitter дээр хуваалцах",
+        "description": "Өөрийн туршлагаа жиргэ"
+      },
+      "shareInstagram": {
+        "title": "Instagram дээр хуваалцах",
+        "description": "Түүх эсвэл нийтлэлээ хуваалцаарай"
+      },
+      "shareExperience": {
+        "title": "Туршлагаасаа хуваалцаарай",
+        "description": "Найзууддаа яагаад апп таалагдаж байгаагаа хэлээрэй"
+      },
+      "share": {
+        "genericMessage": "Би энэ AI програмыг чат, зураг үүсгэхэд ашиглаж байна. Үүнийг үзээрэй: {{url}}",
+        "facebookQuote": "Энэхүү AI програмыг үзээрэй!",
+        "twitterText": "Би энэ AI програмыг туршиж байна, энэ нь үнэхээр дажгүй юм.",
+        "instagramMessage": "Энэхүү AI програмыг үзээрэй: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Алдаа",
+        "errorMessage": "Дэлгүүрийн хуудсыг нээж чадсангүй."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Даалгавар дууссан",
+        "description": "Даалгавар дууссан",
+        "points": "+{{points}} оноо",
+        "close": "Хаах"
+      },
+      "rewardSuccess": {
+        "error": "АЛДАА",
+        "success": "АМЖИЛТ",
+        "somethingWentWrong": "Ямар нэг алдаа гарлаа",
+        "rewardUnlocked": "Шагналын түгжээг тайлсан",
+        "credits": "Зээл",
+        "close": "Хаах",
+        "okay": "За"
+      },
+      "secretBox": {
+        "pill": "НУУЦ ХАЙРЦАГ",
+        "rewardUnlocked": "ШАГНАЛЫН түгжээг тайлсан",
+        "shufflingRewards": "ШАГНАЛ ХОЛБОЖ БАЙНА...",
+        "imageCreditsAdded": "Зургийн кредитийг таны дансанд нэмсэн",
+        "continue": "Үргэлжлүүлэх",
+        "revealing": "Илчилж байна...",
+        "prizeTiers": {
+          "lucky": "АЗТАЙ",
+          "pro": "PRO",
+          "elite": "ЭЛИТ",
+          "mythic": "ДОМОГ"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Өдөр тутмын зоосоо аваарай",
+      "subtitle": "Өдөр бүр эргэн ирээрэй — шагнал нэмэгдэнэ.",
+      "cta": "Бүртгүүлэх",
+      "claimed": "Авлаа! +{{amount}} зоос",
+      "later": "Дараа"
+    }
+  },
+  "app": {
+    "version": "Хувилбар {{version}}",
+    "offlineBanner": "Та офлайн байна",
+    "launch": {
+      "accessibilityLabel": "Cloud AI эхэлж байна",
+      "title": "CLOUD AI",
+      "subtitle": "AI, чамайг байгаа үед бэлэн байна"
+    },
+    "errors": {
+      "modelsLoadTitle": "Загваруудыг ачаалж чадсангүй",
+      "modelsLoadMessage": "AI загваруудыг ачаалах боломжгүй. Аппликешн нь үндсэн загваруудыг ашиглах болно. Интернэт холболтоо шалгана уу.",
+      "modelsLoadTimeout": "Загваруудыг ачаалахад хэт удсан. Аппликешн нь үндсэн загваруудыг ашиглах болно. Дахин оролдоно уу.",
+      "modelsLoadNetwork": "Интернэт холболт байхгүй. Аппликешн нь үндсэн загваруудыг ашиглах болно. Холболтоо шалгана уу.",
+      "deviceIdTitle": "Эхлүүлэх алдаа",
+      "deviceIdMessage": "Төхөөрөмжийн ID-г эхлүүлж чадсангүй. Зарим функцууд зөв ажиллахгүй байж магадгүй.",
+      "storageTitle": "Хадгалалтын алдаа",
+      "storageMessage": "Дотоод санах ойд хандах боломжгүй. Зарим функцууд зөв ажиллахгүй байж магадгүй.",
+      "crashTitle": "Ямар нэг алдаа гарлаа.",
+      "crashSubtitle": "Дахин оролдоно уу.",
+      "crashLabel": "Апп осолдсон"
+    },
+    "proxyErrors": {
+      "genericTitle": "Ямар нэг алдаа гарлаа",
+      "genericMessage": "Дахин оролдоно уу.",
+      "rateLimitTitle": "Хэт олон хүсэлт",
+      "rateLimitMessage": "Бид олон хүсэлтийг хүлээн авч байна. Хэсэг хугацааны дараа дахин оролдоно уу.",
+      "rateLimitRetryAfter": "Бид олон хүсэлтийг хүлээн авч байна. Ойролцоогоор {{seconds}} секундын дараа дахин оролдоно уу.",
+      "restrictedTitle": "Хязгаарлагдмал контент",
+      "restrictedMessage": "Энэ хүсэлтийг аюулгүй байдлын шүүлтүүрээр хаасан.",
+      "insufficientCoinsTitle": "Зоос хангалтгүй байна",
+      "insufficientCoinsMessage": "Таны одоогийн үлдэгдэл энэ хүсэлтэд хэт бага байна.",
+      "imageUnavailableTitle": "Зураг боломжгүй",
+      "imageUnavailableMessage": "Үүсгэсэн зургийн файлыг түр ашиглах боломжгүй байна. Дахин оролдоно уу.",
+      "authorizationTitle": "Зөвшөөрлийн асуудал",
+      "authorizationMessage": "Бид таны бүртгэлийг баталгаажуулж чадсангүй. Дахин оролдоно уу.",
+      "serverTitle": "Серверийн саатал",
+      "serverMessage": "Манай серверүүдэд асуудал гарсан. Удахгүй дахин оролдоно уу.",
+      "timeoutTitle": "Хэт удаж байна",
+      "timeoutMessage": "Хүсэлтийн хугацаа дууссан. Дахин оролдоно уу.",
+      "networkTitle": "Холболт байхгүй",
+      "networkMessage": "Интернэт холболт байхгүй. Холболтоо шалгаад дахин оролдоно уу.",
+      "requestTitle": "Асуудлыг хүсэх",
+      "requestMessage": "Таны хүсэлтэд алдаа гарлаа. Дахин оролдоно уу."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Premium-г идэвхжүүлнэ үү",
+    "activateMessage": "Та шүүмжлэгчийн урамшууллыг идэвхжүүлэхийг хүсэж байна уу?",
+    "activateAction": "Идэвхжүүлэх",
+    "deactivateTitle": "Premium-г идэвхгүй болгох",
+    "deactivateMessage": "Та шүүмжлэгчийн урамшууллыг идэвхгүй болгохыг хүсэж байна уу?",
+    "deactivateAction": "Идэвхгүй болгох"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Өдөр тутмын шагнал",
+      "body": "Өдөр тутмын зоосоо бүү алдаарай - шөнө дундаас өмнө нэхэмжлээрэй."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Өдөр тутмын зоосоо бүү алдаарай",
+      "body": "Таны цуврал тасрахгүй, зоос чинь нэмэгдэж байхын тулд өдөрт нэг сануулга илгээнэ. Спам байхгүй, хүссэн үедээ унтраах боломжтой.",
+      "enable": "Сануулга асаах",
+      "skip": "Одоо биш"
+    }
+  }
+}

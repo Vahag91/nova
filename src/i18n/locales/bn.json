@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "একটি মডেল নির্বাচন করুন",
+    "searchPlaceholder": "মডেল অনুসন্ধান করুন...",
+    "noModelsFound": "কোন মডেল পাওয়া যায়নি",
+    "noModelsAvailable": "কোন মডেল উপলব্ধ",
+    "currentModel": "বর্তমান মডেল: {{name}}। মডেল পরিবর্তন করতে আলতো চাপুন।",
+    "openHint": "মডেল নির্বাচন মেনু খোলে",
+    "closeLabel": "মডেল নির্বাচক বন্ধ করুন",
+    "searchLabel": "মডেল অনুসন্ধান করুন",
+    "searchHint": "উপলব্ধ মডেলগুলি ফিল্টার করতে টাইপ করুন৷",
+    "modelLabel": "{{name}} মডেল",
+    "selectHint": "{{name}} মডেল নির্বাচন করুন",
+    "currentlySelected": "বর্তমানে নির্বাচিত মডেল",
+    "genericModel": "{{provider}} মডেল",
+    "badges": {
+      "new": "নতুন",
+      "best": "সেরা"
+    }
+  },
+  "models": {
+    "gpt-4o": "সবচেয়ে শক্তিশালী AI মডেল",
+    "gpt-4o-mini": "দৈনন্দিন কাজের জন্য দ্রুত",
+    "gpt-5": "সবচেয়ে শক্তিশালী সর্ব-উদ্দেশ্য AI",
+    "gpt-5-chat-latest": "চ্যাট এবং কথোপকথনের জন্য অপ্টিমাইজ করা হয়েছে",
+    "gpt-5-mini": "দ্রুত এবং নির্ভরযোগ্য GPT-5",
+    "gpt-5.4-nano": "সাধারণ কাজের জন্য হালকা মডেল",
+    "o4-mini": "দক্ষ যুক্তি মডেল",
+    "gpt-4.1-mini": "কমপ্যাক্ট, সক্ষম GPT-4.1",
+    "claude-3-haiku": "দ্রুত এবং ফোকাসড অ্যানথ্রপিক এআই",
+    "claude-3.7-sonnet": "Anthropic দ্বারা পরিমার্জিত যুক্তি",
+    "gemini-2.5-Flash": "গুগলের সবচেয়ে উন্নত মডেল",
+    "gemini-2.5-flash": "গুগলের সবচেয়ে উন্নত মডেল",
+    "gemini-2.0-flash": "দ্রুত এবং সুনির্দিষ্ট Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "সবচেয়ে শক্তিশালী AI মডেল",
+    "fast_everyday": "দৈনন্দিন কাজের জন্য দ্রুত",
+    "fast_reasoning": "ভাল যুক্তি সঙ্গে দ্রুত মডেল",
+    "great_reasoning": "উন্নত যুক্তি মডেল",
+    "coding_reasoning": "উন্নত কোডিং এবং যুক্তি",
+    "better_coding": "কোডিং এবং যুক্তির জন্য ভাল",
+    "best_overall": "সর্বোত্তম এআই মডেল",
+    "best_google": "গুগলের সেরা মডেল",
+    "best_xai": "xAI এর সবচেয়ে শক্তিশালী মডেল",
+    "creative_focus": "সৃজনশীল লেখার জন্য দুর্দান্ত",
+    "code_helper": "কোডিং সাহায্যের জন্য মহান",
+    "chat_focus": "চ্যাট করার জন্য অপ্টিমাইজ করা হয়েছে",
+    "long_context": "দীর্ঘ প্রসঙ্গের জন্য দুর্দান্ত",
+    "budget_friendly": "বাজেট-বান্ধব এআই মডেল",
+    "ultra_fast": "অতি দ্রুত প্রতিক্রিয়া",
+    "safe_default": "নিরাপদ ডিফল্ট পছন্দ",
+    "multilingual": "শক্তিশালী বহুভাষিক সমর্থন",
+    "vision_strong": "ইমেজ এবং দৃষ্টি সঙ্গে মহান",
+    "data_analysis": "ডেটা বিশ্লেষণের জন্য ভাল",
+    "structured_tasks": "কাঠামোবদ্ধ কাজের জন্য ভাল",
+    "everyday_helper": "প্রতিদিনের সহকারী মডেল",
+    "concise_answers": "সংক্ষিপ্ত, সংক্ষিপ্ত উত্তর",
+    "detailed_answers": "বিস্তারিত ধাপে ধাপে উত্তর",
+    "experimental": "পরীক্ষামূলক পরবর্তী প্রজন্মের মডেল",
+    "reliable_classic": "নির্ভরযোগ্য ক্লাসিক মডেল",
+    "lightweight": "লাইটওয়েট, কম খরচে মডেল",
+    "chatty_personal": "আরো বন্ধুত্বপূর্ণ এবং ব্যক্তিগত",
+    "pro_users": "পাওয়ার ব্যবহারকারীদের জন্য সেরা",
+    "research_helper": "গবেষণা এবং নোট জন্য ভাল",
+    "reasoning_strong": "উন্নত যুক্তি মডেল"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "নৃতাত্ত্বিক",
+    "google": "গুগল",
+    "xai": "xAI",
+    "other": "অন্যান্য"
+  },
+  "navigation": {
+    "chat": "নতুন চ্যাট",
+    "history": "ইতিহাস",
+    "rewards": "দৈনিক পুরস্কার",
+    "assistants": "সহকারী",
+    "imagesStudio": "Image Studio",
+    "settings": "সেটিংস",
+    "recentChats": "সাম্প্রতিক চ্যাট",
+    "proFeatures": "প্রো বৈশিষ্ট্য",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "প্রো বৈশিষ্ট্য পান",
+      "subtitle": "সমস্ত AI বৈশিষ্ট্য"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "এক জায়গায় ভিজ্যুয়াল সম্পদ তৈরি করুন, পরিমার্জন করুন এবং প্রকাশ করুন।",
+    "cta": "খোলা"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "ছবি নির্বাচন করুন",
+    "exitSelectionMode": "নির্বাচন মোড থেকে প্রস্থান করুন",
+    "selectAll": "সব নির্বাচন করুন",
+    "noImagesYet": "এখনো কোন ছবি নেই",
+    "describeImageHint": "নীচে আপনার ছবি বর্ণনা করুন এবং তৈরি করুন আলতো চাপুন।",
+    "generatedImagesGallery": "উত্পন্ন ছবি গ্যালারি",
+    "describeImagePlaceholder": "আপনি যে চিত্রটি চান তা বর্ণনা করুন...",
+    "deleteConfirmTitle": "ছবি মুছুন",
+    "deleteConfirmMessage": "আপনি কি নির্বাচিত ছবি মুছে ফেলার বিষয়ে নিশ্চিত? এই ক্রিয়াটি পূর্বাবস্থায় ফেরানো যাবে না৷",
+    "cancel": "বাতিল করুন",
+    "delete": "মুছে দিন",
+    "generate": "তৈরি করুন",
+    "generating": "তৈরি করা হচ্ছে...",
+    "latest": "সর্বশেষ",
+    "insertToChat": "চ্যাট করতে ঢোকান",
+    "pleaseWait": "অনুগ্রহ করে অপেক্ষা করুন...",
+    "processing": "প্রক্রিয়া করা হচ্ছে...",
+    "tapToUploadImage": "ছবি আপলোড করতে আলতো চাপুন",
+    "camera": "ফটো আপলোড করুন",
+    "library": "লাইব্রেরি",
+    "enterPrompt": "টেক্সট-টু-ইমেজ তৈরির জন্য অনুগ্রহ করে একটি প্রম্পট লিখুন",
+    "openInBrowser": "ব্রাউজারে খুলুন",
+    "makeVariations": "বৈচিত্র্য তৈরি করুন",
+    "deleteAllFromGeneration": "এই প্রজন্ম থেকে সব মুছে দিন",
+    "imageOptionsTitle": "ইমেজ অপশন",
+    "imageOptionsMessage": "আপনি এই ইমেজ দিয়ে কি করতে চান?",
+    "insertMarkdownHeader": "এখানে এর জন্য চিত্রটি রয়েছে:",
+    "variationSuffix": "- পূর্ববর্তী চিত্রের বৈচিত্র",
+    "selectedCount": "নির্বাচিত",
+    "selectedCount_one": "নির্বাচিত",
+    "selectedCount_other": "নির্বাচিত",
+    "imageDescriptionInput": "ইমেজ বিবরণ ইনপুট",
+    "imageDescriptionHint": "আপনি যে চিত্রটি তৈরি করতে চান তার একটি বিবরণ লিখুন",
+    "openModelSettings": "মডেল সেটিংস খুলুন",
+    "modelSettingsHint": "মডেল এবং সেটিংস পরিবর্তন করতে আলতো চাপুন",
+    "openPhotoGallery": "ফটো গ্যালারি খুলুন",
+    "clearInput": "ইনপুট পরিষ্কার করুন",
+    "generatedImage": "জেনারেটেড ইমেজ",
+    "autoSelectedModel": "{{mode}} মোডের জন্য স্বয়ংক্রিয়ভাবে নির্বাচিত {{model}}",
+    "deleteSelectedConfirmTitle": "ছবি মুছুন",
+    "deleteSelectedConfirmMessage": "আপনি কি নিশ্চিত আপনি ছবি মুছে দিতে চান? এই ক্রিয়াটি পূর্বাবস্থায় ফেরানো যাবে না৷"
+  },
+  "imageStudio": {
+    "generateImage": "ইমেজ তৈরি করুন",
+    "generatingImage": "ইমেজ তৈরি করা হচ্ছে",
+    "generateImageHint": "আপনার বর্ণনার উপর ভিত্তি করে একটি ছবি তৈরি করতে আলতো চাপুন",
+    "imageDescriptionInput": "ইমেজ বিবরণ ইনপুট",
+    "imageDescriptionHint": "আপনি যে চিত্রটি তৈরি করতে চান তার একটি বিবরণ লিখুন",
+    "openModelSettings": "মডেল সেটিংস খুলুন",
+    "modelSettingsHint": "মডেল এবং সেটিংস পরিবর্তন করতে আলতো চাপুন",
+    "openPhotoGallery": "ফটো গ্যালারি খুলুন",
+    "clearInput": "ইনপুট পরিষ্কার করুন",
+    "generatedImage": "জেনারেটেড ইমেজ"
+  },
+  "assistants": {
+    "title": "সহকারী",
+    "defaultTitle": "সহকারী",
+    "errorTitle": "কিছু ভুল হয়েছে",
+    "errorMessage": "এই সহকারী শুরু করা যায়নি.",
+    "noAssistants": "এই বিভাগে কোন সহকারী পাওয়া যায়নি।",
+    "selectAssistantHint": "সহকারী পিকার খুলুন",
+    "subtitle": "কিউরেটেড এআই বিশেষজ্ঞরা কোডিং, লেখা, বিশ্লেষণ, পরিকল্পনা এবং আরও অনেক কিছুর জন্য প্রস্তুত।",
+    "searchPlaceholder": "সহকারী অনুসন্ধান করুন...",
+    "useAssistant": "সহকারী ব্যবহার করুন",
+    "selectAssistant": "সহকারী নির্বাচন করুন",
+    "description": "বর্ণনা",
+    "systemPrompt": "সিস্টেম প্রম্পট",
+    "chooseModel": "মডেল নির্বাচন করুন",
+    "categoryAll": "সব",
+    "categories": {
+      "everyday": "প্রতিদিন",
+      "life": "জীবন",
+      "health": "স্বাস্থ্য",
+      "schoolWork": "স্কুল এবং কাজ",
+      "coding": "কোডিং",
+      "creative": "সৃজনশীল",
+      "general": "সাধারণ"
+    },
+    "presets": {
+      "default": {
+        "name": "ডিফল্ট সহকারী",
+        "description": "দৈনন্দিন জিনিসের জন্য সুষম সাহায্য."
+      },
+      "quick": {
+        "name": "দ্রুত উত্তর",
+        "description": "সংক্ষিপ্ত, সরাসরি উত্তর।"
+      },
+      "planner": {
+        "name": "দৈনিক পরিকল্পনাকারী",
+        "description": "আপনার দিন এবং রুটিন পরিকল্পনা."
+      },
+      "recipes": {
+        "name": "খাবার এবং রেসিপি",
+        "description": "কি রান্না করবেন, যা আছে তা দিয়ে।"
+      },
+      "fitness": {
+        "name": "ফিটনেস কোচ",
+        "description": "ক্ষুদ্র অভ্যাস এবং ঘরোয়া ওয়ার্কআউট।"
+      },
+      "money": {
+        "name": "মানি বডি",
+        "description": "সহজ বাজেট এবং খরচ টিপস."
+      },
+      "study": {
+        "name": "স্টাডি হেল্পার",
+        "description": "সহজভাবে ব্যাখ্যা করুন। আমাকে প্রশ্ন করুন."
+      },
+      "email": {
+        "name": "ইমেল এবং জীবনবৃত্তান্ত",
+        "description": "পরিষ্কার ইমেইল এবং সিভি লাইন লিখুন."
+      },
+      "translator": {
+        "name": "অনুবাদক",
+        "description": "অনুবাদ + বাক্যাংশ শেখান।"
+      },
+      "travel": {
+        "name": "ভ্রমণ বন্ধু",
+        "description": "সহজ পরিকল্পনা এবং প্যাকিং তালিকা."
+      },
+      "tech": {
+        "name": "প্রযুক্তি সহায়তা (সহজ)",
+        "description": "ফোন, অ্যাপস, ওয়াই-ফাই বেসিক।"
+      },
+      "summarizer": {
+        "name": "TL; DR সংক্ষিপ্তসারকারী",
+        "description": "শর্ট বুলেট + ওয়ান-লাইন টিএল; ডিআর।"
+      },
+      "gift": {
+        "name": "উপহার সন্ধানকারী",
+        "description": "বাজেট এবং আগ্রহ দ্বারা ধারণা."
+      },
+      "party": {
+        "name": "ইভেন্ট প্ল্যানার (লাইট)",
+        "description": "দ্রুত একটি ছোট পার্টির পরিকল্পনা করুন।"
+      },
+      "social": {
+        "name": "সামাজিক পোস্ট মেকার",
+        "description": "বিকল্প সহ খসড়া পোস্ট."
+      },
+      "interview": {
+        "name": "ইন্টারভিউ কোচ",
+        "description": "উত্তর অনুশীলন করুন (STAR)।"
+      },
+      "homefix": {
+        "name": "হোম ফিক্স-ইট গাইড",
+        "description": "সহজ DIY সমস্যা সমাধান।"
+      },
+      "pet": {
+        "name": "পোষা প্রাণীর যত্ন বন্ধু",
+        "description": "খাওয়ানো, হাঁটা, মৌলিক প্রশিক্ষণ।"
+      },
+      "mindful": {
+        "name": "মাইন্ডফুল মিনিট",
+        "description": "1-3 মিনিটের শান্ত বিরতি।"
+      },
+      "polite": {
+        "name": "ভদ্র রিরাইটার",
+        "description": "সুন্দরভাবে পাঠ্য এবং উত্তর লিখুন।"
+      }
+    }
+  },
+  "history": {
+    "title": "ইতিহাস",
+    "searchPlaceholder": "চ্যাট খুঁজুন…",
+    "newChat": "নতুন চ্যাট",
+    "new": "+ নতুন",
+    "search": "অনুসন্ধান করুন",
+    "clearSearch": "সাফ অনুসন্ধান",
+    "noChatsYet": "এখনও কোন চ্যাট",
+    "noResults": "এখনও কোন চ্যাট",
+    "startFirstConversation": "আপনার প্রথম কথোপকথন শুরু করুন.",
+    "startChat": "চ্যাট শুরু করুন",
+    "startNewChat": "একটি নতুন চ্যাট শুরু করুন",
+    "errorLoadingHistory": "ইতিহাস লোড করার সময় ত্রুটি৷",
+    "loading": "ইতিহাস লোড হচ্ছে...",
+    "renameChat": "চ্যাটের নাম পরিবর্তন করুন",
+    "enterNewTitle": "একটি নতুন শিরোনাম লিখুন",
+    "deleteChat": "চ্যাট মুছবেন?",
+    "deleteChatMessage": "\"{{title}}\" মুছে ফেলা হবে৷",
+    "rename": "নাম পরিবর্তন করুন",
+    "unpin": "আনপিন করুন",
+    "pin": "পিন",
+    "untitled": "শিরোনামহীন"
+  },
+  "settings": {
+    "title": "সেটিংস",
+    "model": "মডেল",
+    "searchPlaceholder": "মডেল খুঁজুন…",
+    "temperatureForCurrentModel": "বর্তমান মডেলের জন্য তাপমাত্রা",
+    "customFor": "{{model}} এর জন্য কাস্টম",
+    "usingDefault": "ডিফল্ট {{temperature}} ব্যবহার করা হচ্ছে",
+    "resetToDefault": "ডিফল্টে রিসেট করুন",
+    "defaultTemperature": "ডিফল্ট তাপমাত্রা (ফলব্যাক)",
+    "usedByModelsWithoutOverride": "একটি কাস্টম ওভাররাইড ছাড়া মডেল দ্বারা ব্যবহৃত",
+    "dangerZone": "বিপদ অঞ্চল",
+    "clearAllChatsAndSettings": "সমস্ত চ্যাট এবং সেটিংস সাফ করুন৷",
+    "about": "সম্পর্কে",
+    "version": "সংস্করণ {{version}}{{status}}",
+    "versionPremiumSuffix": "· প্রিমিয়াম",
+    "privacyPolicy": "গোপনীয়তা নীতি",
+    "hero": {
+      "label": "বিশেষ অফার",
+      "title": "সীমাহীন অ্যাক্সেস\nএবং প্রো বৈশিষ্ট্য",
+      "upgrade": "আপগ্রেড করুন",
+      "manage": "পরিকল্পনা পরিচালনা করুন"
+    },
+    "sections": {
+      "premium": "প্রিমিয়াম প্ল্যান",
+      "data": "ব্যবহারকারীর ডেটা",
+      "support": "সমর্থন এবং আইনি"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "প্রিমিয়াম পান",
+        "subtitle": "আনলিমিটেড তৈরির টুল আনলক করুন"
+      },
+      "premiumActive": {
+        "title": "প্রিমিয়াম সক্রিয়",
+        "subtitle": "Cloud AI সমর্থন করার জন্য ধন্যবাদ"
+      },
+      "restore": {
+        "title": "কেনাকাটা পুনরুদ্ধার করুন",
+        "subtitle": "আপনি ডিভাইস পরিবর্তন করলে ব্যবহার করুন"
+      },
+      "history": {
+        "title": "চ্যাট ইতিহাস পরিচালনা করুন",
+        "subtitle": "আপনার অতীতের সেশনগুলি দেখুন এবং মুছুন৷"
+      },
+      "reset": {
+        "title": "চ্যাট এবং পছন্দগুলি রিসেট করুন৷",
+        "subtitle": "এই ডিভাইসে সমস্ত সঞ্চিত ডেটা সাফ করে"
+      },
+      "rate": {
+        "title": "আমাদের রেট",
+        "error": "দোকান পৃষ্ঠা খুলতে অক্ষম."
+      },
+      "support": {
+        "title": "সমর্থন",
+        "subtitle": "অনলাইনে আমাদের সাথে যোগাযোগ করুন",
+        "error": "যোগাযোগ পৃষ্ঠা খুলতে অক্ষম."
+      },
+      "privacy": {
+        "title": "গোপনীয়তা নীতি",
+        "error": "গোপনীয়তা নীতি খুলতে অক্ষম."
+      },
+      "terms": {
+        "title": "ব্যবহারের শর্তাবলী",
+        "error": "ব্যবহারের শর্তাবলী খুলতে অক্ষম।"
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "আইএমজি",
+      "audio": "AUD",
+      "video": "ভিআইডি"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "অনুপলব্ধ",
+      "linkUnavailableMessage": "এই মুহূর্তে এই লিঙ্ক খুলতে অক্ষম.",
+      "restoreSuccessTitle": "পুনরুদ্ধার করা হয়েছে",
+      "restoreSuccessMessage": "আপনার কেনাকাটা পুনরুদ্ধার করা হয়েছে.",
+      "restoreEmptyTitle": "কোনো কেনাকাটা পাওয়া যায়নি",
+      "restoreEmptyMessage": "এই অ্যাকাউন্টের জন্য পুনরুদ্ধার করার জন্য আমরা একটি সক্রিয় ক্রয় খুঁজে পাইনি৷",
+      "restoreErrorTitle": "পুনরুদ্ধার ব্যর্থ হয়েছে",
+      "restoreErrorMessage": "এই মুহূর্তে কেনাকাটা পুনরুদ্ধার করতে অক্ষম৷",
+      "resetConfirmTitle": "অ্যাপ ডেটা রিসেট করবেন?",
+      "resetConfirmMessage": "এটি সমস্ত চ্যাট এবং স্থানীয় পছন্দগুলিকে সরিয়ে দেয়৷",
+      "resetConfirmCancel": "বাতিল করুন",
+      "resetConfirmCta": "রিসেট করুন"
+    }
+  },
+  "createImage": {
+    "headerTitle": "তৈরি করুন",
+    "chooseStyle": "একটি শৈলী চয়ন করুন",
+    "aspectRatio": "আকৃতির অনুপাত",
+    "starterPrompts": {
+      "title": "স্টার্টার প্রম্পট",
+      "items": [
+        "স্টুডিও হেডশট",
+        "আধুনিক বসার ঘর",
+        "সূর্যাস্তের সময় গ্রীষ্মমন্ডলীয় সৈকত"
+      ]
+    },
+    "promptPlaceholder": "আপনি যা দেখতে চান তা টাইপ করুন...",
+    "promptHint": "উদাহরণ: 'স্টুডিও লাইটিংয়ে গোল্ডেন রিট্রিভার'",
+    "clearText": "পাঠ্য পরিষ্কার করুন",
+    "generate": "তৈরি করুন",
+    "generating": "তৈরি করা হচ্ছে..."
+  },
+  "editImage": {
+    "headerTitle": "সম্পাদনা করুন",
+    "chooseStyle": "একটি শৈলী চয়ন করুন",
+    "aspectRatio": "আকৃতির অনুপাত",
+    "starterPrompts": {
+      "title": "স্টার্টার প্রম্পট",
+      "items": [
+        "আলো ঠিক করুন",
+        "পটভূমি সরান",
+        "নরম পোর্ট্রেট রিটাচ"
+      ]
+    },
+    "promptPlaceholder": "সম্পাদনা বর্ণনা করুন (ঐচ্ছিক)",
+    "clearText": "পাঠ্য পরিষ্কার করুন",
+    "generate": "তৈরি করুন",
+    "generating": "আবেদন করা হচ্ছে...",
+    "upload": {
+      "choose": "ফটো নির্বাচন করুন",
+      "change": "পরিবর্তন",
+      "remove": "সরান"
+    },
+    "imageUnavailable": {
+      "title": "ছবি অনুপলব্ধ",
+      "message": "নির্বাচিত ফটো অ্যাক্সেস করা যায়নি. অনুগ্রহ করে এটি পুনরায় নির্বাচন করুন এবং আবার চেষ্টা করুন।"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "এনিমে"
+      },
+      "cartoon": {
+        "name": "কার্টুন"
+      },
+      "photoreal": {
+        "name": "ফটোরিয়াল"
+      },
+      "sketch": {
+        "name": "স্কেচ"
+      },
+      "cyberpunk": {
+        "name": "সাইবারপাঙ্ক"
+      },
+      "steampunk": {
+        "name": "স্টিম্পঙ্ক"
+      },
+      "illustration_3d": {
+        "name": "3D ইলাস্ট্রেশন"
+      },
+      "dark_fantasy": {
+        "name": "ডার্ক ফ্যান্টাসি"
+      },
+      "vintage_film": {
+        "name": "ভিনটেজ ফিল্ম"
+      },
+      "pastel": {
+        "name": "প্যাস্টেল নান্দনিক"
+      },
+      "neon_glow": {
+        "name": "নিয়ন গ্লো"
+      },
+      "epic_landscape": {
+        "name": "এপিক ল্যান্ডস্কেপ"
+      }
+    },
+    "aspectRatios": {
+      "square": "বর্গক্ষেত্র",
+      "landscape": "ল্যান্ডস্কেপ",
+      "portrait": "প্রতিকৃতি"
+    },
+    "models": {
+      "fluxKontent": "ফ্লাক্স কনটেন্ট",
+      "custom": "কাস্টম"
+    },
+    "notEnoughCoinsTitle": "পর্যাপ্ত কয়েন নেই",
+    "notEnoughCoinsMessage": "এই ছবির জন্য আপনার বর্তমান ব্যালেন্স খুবই কম।",
+    "modelTaglines": {
+      "runwareFluxSchnell": "দ্রুততম মডেল",
+      "runwareFluxKrea": "সৃজনশীল, শৈলীকৃত ফলাফল",
+      "runwareQwenImage": "সুষম, উচ্চ-মানের ফলাফল",
+      "google4": "সেরা এআই ইমেজ মডেল",
+      "klingImageO1": "উচ্চ-নিয়ন্ত্রণ চিত্র সম্পাদনা",
+      "fluxKontent": "ফ্লাক্স কনটেন্ট সম্পাদনার জন্য টিউন করা হয়েছে",
+      "runwareProvider": "নির্ভরযোগ্য বিস্তারের সাথে সুষম মানের।",
+      "airProvider": "ন্যানো কলা কৌতুকপূর্ণ, প্রাণবন্ত স্বন যোগ করে।",
+      "googleProvider": "গুগুল পালিশ বিস্তারিত জন্য টিউন.",
+      "klingaiProvider": "KlingAI নিয়ন্ত্রিত সম্পাদনার জন্য টিউন করা হয়েছে।",
+      "anthropicProvider": "সূক্ষ্ম মেজাজের জন্য Claude পাইপলাইন।",
+      "default": "উপলব্ধ ইঞ্জিনগুলি অন্বেষণ করতে আলতো চাপুন৷"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "আপনার নির্বাচিত শৈলী",
+    "sheetTitle": "আপনার দৃষ্টি কারুকাজ",
+    "sheetSubtitle": "আমরা প্রম্পটে {{style}} মিশ্রিত করার সময় সার্ভার কফির সংক্ষিপ্ত চুমুক।",
+    "phases": {
+      "blend": "{{style}} এ মিশ্রিত",
+      "paint": "দৃশ্য আঁকা",
+      "finish": "চূড়ান্ত পোলিশ যোগ করা হচ্ছে"
+    },
+    "actions": {
+      "cancel": "বাতিল করুন",
+      "retry": "আবার চেষ্টা করুন",
+      "close": "বন্ধ"
+    },
+    "errors": {
+      "restrictedTitle": "সীমাবদ্ধ বিষয়বস্তু",
+      "genericTitle": "জেনারেশন ব্যর্থ হয়েছে",
+      "genericMessage": "ছবি তৈরি করা যায়নি।"
+    },
+    "alerts": {
+      "saveFailedTitle": "বাঁচাতে পারেনি",
+      "shareFailedTitle": "শেয়ার করতে পারিনি",
+      "tryAgain": "আবার চেষ্টা করুন.",
+      "savedTitle": "সংরক্ষিত",
+      "savedMessage": "ছবি আপনার গ্যালারিতে সংরক্ষিত।",
+      "permissionTitle": "অনুমতি প্রয়োজন",
+      "permissionMessage": "আপনার গ্যালারিতে ছবি সংরক্ষণ করতে স্টোরেজ অ্যাক্সেসের অনুমতি দিন।"
+    },
+    "result": {
+      "complete": "সব শেষ"
+    },
+    "accessibility": {
+      "close": "বন্ধ"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "মুছে দিন",
+      "edit": "সম্পাদনা করুন",
+      "save": "সংরক্ষণ করুন",
+      "share": "শেয়ার করুন"
+    },
+    "alerts": {
+      "savedTitle": "সংরক্ষিত",
+      "savedMessage": "ছবি আপনার গ্যালারিতে সংরক্ষিত।",
+      "permissionTitle": "অনুমতি প্রয়োজন",
+      "permissionMessage": "আপনার গ্যালারিতে ছবি সংরক্ষণ করতে স্টোরেজ অ্যাক্সেসের অনুমতি দিন।",
+      "saveFailedTitle": "বাঁচাতে পারেনি",
+      "tryAgain": "আবার চেষ্টা করুন."
+    },
+    "accessibility": {
+      "close": "বন্ধ",
+      "delete": "ছবি মুছুন",
+      "edit": "ছবি সম্পাদনা করুন",
+      "save": "ছবি সংরক্ষণ করুন",
+      "share": "ছবি শেয়ার করুন"
+    }
+  },
+  "reportContent": {
+    "title": "এআই কন্টেন্ট রিপোর্ট করুন",
+    "subtitle": "এই উত্পন্ন কন্টেন্ট সঙ্গে ভুল কি আমাদের বলুন.",
+    "privateDisclosure": "জমা দেওয়া এই রিপোর্ট করা বিষয়বস্তু নিরাপত্তা পর্যালোচনার জন্য পাঠায়।",
+    "accessibilityLabel": "এআই কন্টেন্ট রিপোর্ট করুন",
+    "reasons": {
+      "sexual": "যৌন বা নগ্নতা বিষয়বস্তু",
+      "violence_self_harm": "সহিংসতা বা আত্ম-ক্ষতি",
+      "hate_harassment": "ঘৃণা বা হয়রানি",
+      "child_safety": "শিশু নিরাপত্তা উদ্বেগ",
+      "scam_deceptive": "স্ক্যাম বা প্রতারণামূলক সামগ্রী",
+      "other": "অন্যান্য"
+    },
+    "errors": {
+      "reasonRequired": "জমা দেওয়ার আগে একটি কারণ চয়ন করুন.",
+      "submit": "রিপোর্ট জমা দিতে পারেনি। আবার চেষ্টা করুন."
+    },
+    "success": {
+      "title": "ধন্যবাদ আপনার রিপোর্ট জমা দেওয়া হয়েছে.",
+      "subtitle": "আমরা কন্টেন্ট নিরাপত্তা উন্নত করতে রিপোর্ট ব্যবহার করব."
+    },
+    "actions": {
+      "report": "রিপোর্ট",
+      "submit": "রিপোর্ট জমা দিন",
+      "done": "সম্পন্ন"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "মেনু খুলুন",
+      "selectImages": "ছবি নির্বাচন করুন",
+      "exitSelection": "নির্বাচন থেকে প্রস্থান করুন",
+      "deleteSelected": "নির্বাচিত ছবি মুছুন",
+      "selectToDelete": "মুছে ফেলার জন্য ছবি নির্বাচন করুন"
+    },
+    "createCard": {
+      "title": "টেক্সট থেকে তৈরি করুন",
+      "subtitle": "একটি বিবরণ টাইপ করুন",
+      "cta": "বর্ণনা করুন এবং তৈরি করুন"
+    },
+    "editCard": {
+      "title": "এআই ফটো এডিটর",
+      "subtitle": "AI এর সাথে রূপান্তর এবং উন্নত করুন",
+      "cta": "এআই দিয়ে সম্পাদনা করুন"
+    },
+    "gallery": {
+      "title": "গ্যালারি",
+      "empty": "এখনো কোন ছবি নেই",
+      "selection": {
+        "enter": "ছবি নির্বাচন করুন",
+        "exit": "নির্বাচন থেকে প্রস্থান করুন",
+        "deleteSelected": "নির্বাচিত ছবি মুছুন",
+        "selectForDelete": "মুছে ফেলার জন্য ছবি নির্বাচন করুন"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "দেখা",
+      "titleHighlight": "Image Studio",
+      "subtitle": "AI-এর সাথে ছবি তৈরি করুন এবং সম্পাদনা করুন—ঠিক Cloud AI এর ভিতরে।"
+    },
+    "relaxView": {
+      "title": "আপনার এআই এর সাথে দেখা করুন",
+      "titleHighlight": "সহকারী",
+      "subtitle": "বিশেষ এআই বিশেষজ্ঞরা আপনার দৈনন্দিন প্রয়োজনে সাহায্য করতে প্রস্তুত",
+      "cards": {
+        "fitness": {
+          "title": "ফিটনেস কোচ",
+          "text": "ক্ষুদ্র অভ্যাস এবং ঘরোয়া ওয়ার্কআউট।"
+        },
+        "recipes": {
+          "title": "খাবার এবং রেসিপি",
+          "text": "কি রান্না করবেন, যা আছে তা দিয়ে।"
+        },
+        "travel": {
+          "title": "ভ্রমণ বন্ধু",
+          "text": "সহজ পরিকল্পনা এবং প্যাকিং তালিকা."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "এন্টারপ্রাইজ-গ্রেড এআই সলিউশন",
+      "description": "এন্টারপ্রাইজ পেশাদার এবং দলগুলির জন্য ডিজাইন করা অত্যাধুনিক কৃত্রিম বুদ্ধিমত্তা প্রযুক্তির মাধ্যমে আপনার ব্যবসাকে শক্তিশালী করুন৷",
+      "stats": "500k+ ব্যবহারকারীদের দ্বারা বিশ্বস্ত",
+      "rating": "৪.৯/৫",
+      "button": "শুরু করুন"
+    },
+    "buttons": {
+      "continue": "চালিয়ে যান",
+      "start": "শুরু করা যাক"
+    }
+  },
+  "coinStore": {
+    "title": "ক্রেডিট পান",
+    "loading": "কয়েন স্টোর লোড হচ্ছে...",
+    "balanceLabel": "আপনার বর্তমান ব্যালেন্স হল",
+    "balanceValue": "{{amount}} ক্রেডিট",
+    "history": {
+      "link": "লেনদেনের ইতিহাস",
+      "alertTitle": "ইতিহাস",
+      "alertBody": "লেনদেনের ইতিহাস শীঘ্রই আসছে।"
+    },
+    "noPacks": "কোন কয়েন প্যাক উপলব্ধ নেই। আপনার RevenueCat অফার আইডি চেক করুন৷",
+    "badges": {
+      "basic": "বেসিক প্যাক",
+      "popular": "সর্বাধিক জনপ্রিয়",
+      "value": "শ্রেষ্ঠ মান"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} ক্রেডিট",
+      "tokensLabel": "{{credits}} ক্রেডিট",
+      "defaultName": "প্যাক {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "প্রিমিয়াম যান",
+      "subtitle": "সীমাহীন অ্যাক্সেস এবং বৈশিষ্ট্য",
+      "cta": "আপগ্রেড করুন"
+    },
+    "termsText": "একটি ক্রয় করে, আপনি আমাদের সাথে সম্মত হন",
+    "termsLink": "পরিষেবার শর্তাবলী",
+    "alerts": {
+      "initErrorTitle": "ইনিট ত্রুটি",
+      "genericMessage": "কিছু ভুল হয়েছে",
+      "successTitle": "সফলতা",
+      "successMessage": "ক্রেডিট শীঘ্রই প্রদর্শিত হবে.",
+      "purchaseFailedTitle": "ক্রয় ব্যর্থ হয়েছে",
+      "unknownError": "অজানা ত্রুটি"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "প্রিমিয়াম প্রয়োজন",
+    "upgrade": "আপগ্রেড করুন",
+    "modelRequiredMessage": "এই মডেলের জন্য প্রিমিয়াম প্রয়োজন। GPT-5, Grok 4, Claude, এবং আরও উন্নত মডেল অ্যাক্সেস করতে আপগ্রেড করুন৷",
+    "assistantsRequiredMessage": "সহায়কদের প্রিমিয়াম প্রয়োজন। ফিটনেস, কোডিং, লেখা এবং আরও অনেক কিছুর জন্য বিশেষ AI সহকারী অ্যাক্সেস করতে আপগ্রেড করুন।",
+    "assistantsTitle": "প্রিমিয়াম প্রয়োজন",
+    "assistantsMessage": "সহায়কদের প্রিমিয়াম প্রয়োজন। ফিটনেস, কোডিং, লেখা এবং আরও অনেক কিছুর জন্য বিশেষ AI সহকারী অ্যাক্সেস করতে আপগ্রেড করুন।"
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "পেওয়াল বন্ধ করুন",
+    "unavailableTitle": "কেনাকাটা অনুপলব্ধ",
+    "unavailableMessage": "অ্যান্ড্রয়েড বিলিং এখনও কনফিগার করা হয়নি৷",
+    "restoreEmptyTitle": "কোনো কেনাকাটা পাওয়া যায়নি",
+    "restoreEmptyMessage": "এই অ্যাকাউন্টের জন্য পুনরুদ্ধার করার জন্য আমরা একটি সক্রিয় ক্রয় খুঁজে পাইনি৷",
+    "restoreFailedTitle": "পুনরুদ্ধার ব্যর্থ হয়েছে",
+    "restoreFailedMessage": "এই মুহূর্তে কেনাকাটা পুনরুদ্ধার করতে অক্ষম৷",
+    "productsUnavailableTitle": "কোন পরিকল্পনা উপলব্ধ",
+    "productsUnavailableMessage": "কোন Android সদস্যতা পণ্য এই মুহূর্তে উপলব্ধ.",
+    "purchaseFailedTitle": "ক্রয় ব্যর্থ হয়েছে",
+    "purchaseFailedMessage": "এই মুহূর্তে এই ক্রয় সম্পূর্ণ করতে অক্ষম.",
+    "restore": "পুনরুদ্ধার করুন",
+    "restoreRestoring": "পুনরুদ্ধার করা হচ্ছে...",
+    "features": {
+      "create": "ছবি এবং ভিডিও তৈরি করুন",
+      "search": "AI দিয়ে ওয়েবে সার্চ করুন",
+      "talk": "AI এর সাথে স্বাভাবিকভাবে কথা বলুন",
+      "imageStudio": "পান Image Studio {{credits}} ক্রেডিট {{period}}",
+      "period": {
+        "weekly": "সাপ্তাহিক",
+        "monthly": "মাসিক",
+        "yearly": "বার্ষিক"
+      }
+    },
+    "freeTrial": {
+      "title": "বিনামূল্যে ট্রায়াল",
+      "subtitle": "3 দিনের বিনামূল্যে ট্রায়াল"
+    },
+    "badge": {
+      "bestOffer": "সেরা অফার"
+    },
+    "plans": {
+      "yearly": {
+        "title": "বার্ষিক",
+        "only": "শুধুমাত্র {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
+      },
+      "monthly": {
+        "title": "মাসিক",
+        "subtitle": "যেকোনো সময় বাতিল করুন",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "সাপ্তাহিক",
+        "subtitle": "যেকোনো সময় বাতিল করুন",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "তাহলে ৩ দিন ফ্রি"
+      }
+    },
+    "frequency": {
+      "perWeek": "প্রতি সপ্তাহে",
+      "perMonth": "প্রতি মাসে"
+    },
+    "cta": "চালিয়ে যান",
+    "ctaFreeTrial": "এটি বিনামূল্যে চেষ্টা করুন",
+    "legal": {
+      "terms": "শর্তাবলী",
+      "privacy": "গোপনীয়তা"
+    },
+    "premium": {
+      "headline": "সমস্ত প্রিমিয়াম AI এক প্ল্যানে",
+      "subtitleLine1": "চ্যাট, কোড, তৈরি এবং পরিকল্পনা",
+      "subtitleLine2": "উন্নত মডেলের সাথে।",
+      "enableTrial": "বিনামূল্যে ট্রায়াল সক্ষম করুন",
+      "annual": "বার্ষিক",
+      "saveBadge": "83% সংরক্ষণ করুন",
+      "year": "বছর",
+      "week": "সপ্তাহ",
+      "termsOfUse": "ব্যবহারের শর্তাবলী",
+      "privacyPolicy": "গোপনীয়তা নীতি"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "বার্তা...",
+    "createImages": "ছবি তৈরি করুন",
+    "generateAiArtwork": "এআই আর্টওয়ার্ক তৈরি করুন",
+    "camera": "ফটো আপলোড করুন",
+    "takeOrSelectPhotos": "ফটো নির্বাচন করুন",
+    "search": "অনুসন্ধান করুন",
+    "findInformation": "তথ্য খুঁজুন",
+    "findRecentInfo": "সাম্প্রতিক তথ্য খুঁজুন",
+    "removeImage": "ছবি সরান",
+    "messageInput": "বার্তা ইনপুট",
+    "clearInput": "ইনপুট পরিষ্কার করুন",
+    "quickActionsLabel": "দ্রুত কর্ম",
+    "hideQuickActions": "দ্রুত কর্ম লুকান",
+    "showQuickActions": "দ্রুত কর্ম দেখান",
+    "startVoiceInput": "ভয়েস ইনপুট শুরু করুন",
+    "sendMessage": "বার্তা পাঠান",
+    "offline": "অফলাইন",
+    "stop": "থামো",
+    "streaming": "স্ট্রিমিং...",
+    "closeRecorder": "রেকর্ডার বন্ধ করুন",
+    "insertTranscript": "পাঠান",
+    "scrollToLatest": "সর্বশেষ বার্তায় স্ক্রোল করুন",
+    "copyMessage": "বার্তা কপি করুন",
+    "copyMessageHint": "এই বার্তাটি ক্লিপবোর্ডে অনুলিপি করুন",
+    "shareMessage": "বার্তা শেয়ার করুন",
+    "shareMessageHint": "এই বার্তা শেয়ার করুন",
+    "regenerateResponse": "প্রতিক্রিয়া পুনর্জন্ম",
+    "regenerateResponseHint": "একটি নতুন প্রতিক্রিয়া তৈরি করুন",
+    "copyCode": "কোড কপি করুন",
+    "copied": "কপি করা হয়েছে",
+    "image": "ইমেজ",
+    "loading": "লোড হচ্ছে...",
+    "loadingChat": "চ্যাট লোড হচ্ছে...",
+    "offlineBanner": "আপনি অফলাইনে আছেন। বার্তা পাঠানো যাবে না.",
+    "offlineError": "ইন্টারনেট সংযোগ নেই। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন.",
+    "imagePickerErrorTitle": "ছবি বাছাই ত্রুটি",
+    "imagePickerErrorMessage": "আপনার ফটো অ্যাক্সেস করতে অক্ষম. আবার চেষ্টা করুন.",
+    "messageTooLong": "বার্তা অনেক বড় ({{length}})। সীমা হল {{limit}}।",
+    "sendFailed": "বার্তা পাঠাতে ব্যর্থ হয়েছে. আবার চেষ্টা করুন.",
+    "modelNoImageSupport": "নির্বাচিত মডেল ছবি সমর্থন করে না. একটি ভিন্ন মডেল চয়ন করুন.",
+    "voiceStartFailed": "ভয়েস শুরু করা যায়নি।",
+    "voiceNoSpeechDetected": "কোনো কণ্ঠস্বর চেনা যায়নি। আবার চেষ্টা করুন.",
+    "emptyTitle": "আমি কিভাবে সাহায্য করতে পারি?",
+    "emptySubtitle": "AI এর সাথে কথোপকথন শুরু করুন",
+    "privateTitle": "ব্যক্তিগত চ্যাট",
+    "privateSubtitle": "এই চ্যাট আপনার চ্যাট ইতিহাসে প্রদর্শিত হবে না",
+    "startPrivateChat": "ব্যক্তিগত চ্যাট শুরু করুন",
+    "endPrivateChat": "ব্যক্তিগত চ্যাট শেষ করুন",
+    "permissions": {
+      "photosTitle": "ফটো অনুমতি প্রয়োজন",
+      "photosMessage": "ছবি নির্বাচন করার জন্য ফটো অ্যাক্সেস প্রয়োজন।",
+      "voiceTitle": "ভয়েস অনুমতি প্রয়োজন",
+      "voiceMessage": "ভয়েস ব্যবহার করার জন্য মাইক্রোফোন এবং স্পিচ অ্যাক্সেস প্রয়োজন।"
+    },
+    "activity": {
+      "analyzingImages": "ছবি বিশ্লেষণ করা হচ্ছে...",
+      "searching": "অনুসন্ধান করা হচ্ছে...",
+      "thinking": "ভাবছেন…"
+    },
+    "webSearch": {
+      "title": "ওয়েব অনুসন্ধান",
+      "subtitle": "সাম্প্রতিক তথ্য খুঁজুন",
+      "label": "ওয়েব অনুসন্ধান",
+      "enable": "ওয়েব অনুসন্ধান সক্ষম করুন",
+      "disable": "ওয়েব অনুসন্ধান অক্ষম করুন",
+      "toggleLabel": "ওয়েব অনুসন্ধান করুন"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "গতিতে ভিজ্যুয়াল ডিজাইন করুন।",
+      "subtitle": "এক জায়গায় ভিজ্যুয়াল সম্পদ তৈরি করুন, পরিমার্জন করুন এবং প্রকাশ করুন।",
+      "cta": "খোলা"
+    },
+    "quickActions": {
+      "createImages": "ছবি তৈরি করুন",
+      "openCamera": "ক্যামেরা খুলুন",
+      "editImage": "ছবি সম্পাদনা করুন",
+      "startVoice": "ভয়েস শুরু করুন",
+      "assistants": "সহকারী"
+    },
+    "listening": "শোনা হচ্ছে...",
+    "startRecording": "রেকর্ডিং শুরু করুন...",
+    "assistantHeader": {
+      "unavailableTitle": "সহকারী অনুপলব্ধ৷",
+      "unavailableDescription": "আমরা এই সহকারী লোড করতে পারিনি। আবার চেষ্টা করুন.",
+      "ready": "সাহায্য করতে প্রস্তুত"
+    },
+    "actions": {
+      "copy": "কপি",
+      "share": "শেয়ার করুন",
+      "regenerate": "পুনর্জন্ম",
+      "retryFromHere": "এখান থেকে আবার চেষ্টা করুন",
+      "report": "রিপোর্ট",
+      "cancel": "বাতিল করুন"
+    },
+    "markdown": {
+      "copy": "কপি",
+      "copied": "কপি করা হয়েছে",
+      "table": "টেবিল",
+      "watchVideo": "ভিডিও দেখুন",
+      "wikipedia": "উইকিপিডিয়া",
+      "link": "লিঙ্ক",
+      "note": "দ্রষ্টব্য",
+      "warning": "সতর্কতা",
+      "tip": "টিপ"
+    },
+    "messageActionTitle": "বার্তা",
+    "status": {
+      "sending": "পাঠানো হচ্ছে...",
+      "failed": "ব্যর্থ হয়েছে",
+      "sent": "পাঠানো হয়েছে"
+    },
+    "suggestions": {
+      "writeStory": "একটি সৃজনশীল গল্প লিখুন",
+      "writeStorySubtitle": "একটি জাদুকরী অ্যাডভেঞ্চার সম্পর্কে",
+      "planTravel": "একটি ভ্রমণ ভ্রমণের পরিকল্পনা করুন",
+      "planTravelSubtitle": "একটি আশ্চর্যজনক ছুটির জন্য",
+      "explainConcept": "এই ধারণাটি ব্যাখ্যা কর",
+      "explainConceptSubtitle": "সহজ শর্তে",
+      "planDay": "আমার দিন পরিকল্পনা",
+      "planDaySubtitle": "উত্পাদনশীলতা টিপস সহ"
+    },
+    "home": {
+      "eyebrow": "একটি বিষয় নির্বাচন করুন",
+      "title": "আপনি কি করতে চান?",
+      "subtitle": "একটি দিক নির্বাচন করুন, তারপর একটি শক্তিশালী প্রম্পট দিয়ে শুরু করুন।",
+      "pickPromptTitle": "শুরু করার জন্য একটি প্রম্পট বেছে নিন",
+      "changeTopic": "অন্য বিষয় চয়ন করুন",
+      "intents": {
+        "summarize": "টেক্সট সারসংক্ষেপ",
+        "summarizeShort": "সারসংক্ষেপ",
+        "summarizeHint": "প্রবন্ধ, নোট, ভয়েস মেমো, দীর্ঘ থ্রেড",
+        "plan": "একটি পরিকল্পনা করুন",
+        "planHint": "ট্রিপ, রুটিন, বাজেট, সময়সীমা, জীবন পরিবর্তন",
+        "brainstorm": "বুদ্ধিমত্তা",
+        "brainstormHint": "ধারণা, অফার, নাম, বিষয়বস্তু, পার্শ্ব প্রকল্প",
+        "analyze": "তথ্য বিশ্লেষণ করুন",
+        "analyzeHint": "খরচ, প্রতিক্রিয়া, মেট্রিক্স, অভ্যাস, কর্মক্ষমতা"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "একটি প্রতিষ্ঠাতা সংক্ষিপ্ত তৈরি করুন",
+          "founderBriefSubtitle": "প্রধান ঝুঁকি, সিদ্ধান্ত এবং পরবর্তী পদক্ষেপগুলি বের করুন।",
+          "classNotesTitle": "আমার অধ্যয়ন নোট পরিষ্কার",
+          "classNotesSubtitle": "মোটামুটি নোটগুলিকে একটি পরিষ্কার অধ্যয়ন গাইডে পরিণত করুন।",
+          "meetingHandoffTitle": "একটি হ্যান্ডঅফ সারাংশ লিখুন",
+          "meetingHandoffSubtitle": "মিটিং, কল বা দীর্ঘ অভ্যন্তরীণ থ্রেডের পরে দরকারী।",
+          "longArticleTitle": "এই নিবন্ধটি দ্রুত সংক্ষিপ্ত করুন",
+          "longArticleSubtitle": "তীক্ষ্ণ টেকওয়েতে একটি দীর্ঘ নিবন্ধ ঘনীভূত করুন।"
+        },
+        "plan": {
+          "energyResetTitle": "একটি 14-দিনের শক্তি রিসেট তৈরি করুন",
+          "energyResetSubtitle": "ঘুম, খাদ্য, আন্দোলন এবং ফোকাসের জন্য একটি বাস্তবসম্মত পরিকল্পনা।",
+          "mealPlanTitle": "আমি আসলে রান্না করব খাবারের পরিকল্পনা করুন",
+          "mealPlanSubtitle": "ব্যবহারিক, সাশ্রয়ী মূল্যের, এবং আমার যা আছে তার উপর ভিত্তি করে।",
+          "cityMoveTitle": "আমার একটি নতুন শহরে যাওয়ার পরিকল্পনা করুন",
+          "cityMoveSubtitle": "এটিকে টাইমলাইন, বাজেট, আবাসন এবং প্রশাসক কার্যগুলিতে বিভক্ত করুন।",
+          "tripEscapeTitle": "একটি স্মরণীয় সপ্তাহান্তে পালিয়ে যাওয়ার পরিকল্পনা করুন",
+          "tripEscapeSubtitle": "একটি সাধারণ ভ্রমণপথের চেয়ে ভালো কিছু।"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "একটি বাস্তবসম্মত পার্শ্ব তাড়াহুড়ো খুঁজুন",
+          "sideHustleSubtitle": "পূর্ণ-সময় কাজ করার সময় আমি শুরু করতে পারি এমন ধারণা।",
+          "brandAngleTitle": "একটি স্মরণীয় ব্র্যান্ড কোণ খুঁজুন",
+          "brandAngleSubtitle": "পণ্য, নির্মাতা, সংস্থা, বা নিউজলেটার জন্য দরকারী.",
+          "socialSeriesTitle": "একটি বিষয়বস্তু সিরিজ উদ্ভাবন",
+          "socialSeriesSubtitle": "দর্শক বাড়াতে যথেষ্ট সামঞ্জস্যপূর্ণ কিছু।",
+          "datingIdeasTitle": "নতুন ধারনা নিয়ে আসুন",
+          "datingIdeasSubtitle": "তারিখ, উপহার, আশ্চর্য বা ঘটনা যা চিন্তাশীল মনে হয়।"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "আমার টাকা ফাঁস কোথায় খুঁজে বের করুন",
+          "spendingLeaksSubtitle": "নিদর্শন, দুর্বল দাগ, এবং প্রথমে সবচেয়ে সহজ জয়গুলি দেখান।",
+          "customerFeedbackTitle": "মতামতকে অগ্রাধিকারে পরিণত করুন",
+          "customerFeedbackSubtitle": "ক্লাস্টার অনুরোধ, অভিযোগ, জরুরিতা এবং প্রভাব।",
+          "habitPatternsTitle": "আমার অভ্যাস মধ্যে স্পট নিদর্শন",
+          "habitPatternsSubtitle": "ওয়ার্কআউট, ঘুম, জার্নালিং বা ফোকাস লগের জন্য দরকারী।",
+          "metricsStoryTitle": "সংখ্যার অর্থ কী তা ব্যাখ্যা করুন",
+          "metricsStorySubtitle": "আরও সংকেত, কম স্প্রেডশীট শব্দ।"
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "প্রক্রিয়া করা হচ্ছে...",
+    "tapToUploadImage": "ছবি আপলোড করতে আলতো চাপুন"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "প্রক্রিয়া করা হচ্ছে...",
+    "camera": "ফটো আপলোড করুন",
+    "library": "লাইব্রেরি"
+  },
+  "common": {
+    "ok": "ঠিক আছে",
+    "retry": "আবার চেষ্টা করুন",
+    "cancel": "বাতিল করুন",
+    "allow": "অনুমতি দিন",
+    "notNow": "এখন না",
+    "openSettings": "সেটিংস খুলুন",
+    "close": "বন্ধ",
+    "save": "সংরক্ষণ করুন",
+    "tryAgain": "আবার চেষ্টা করুন"
+  },
+  "rateUs": {
+    "title": "Cloud AI উপভোগ করছেন?",
+    "subtitle": "আপনার প্রতিক্রিয়া আমাদের উন্নতি করতে সাহায্য করে। আপনি কি আমাদের অ্যাপ স্টোরে রেটিং দিতে আপত্তি করবেন?",
+    "rateNow": "এখন রেট",
+    "maybeLater": "হয়তো পরে",
+    "dontAskAgain": "আবার জিজ্ঞাসা করবেন না"
+  },
+  "oneTimeOffer": {
+    "title": "এককালীন অফার",
+    "discount": "{{percent}}% ছাড়",
+    "subtitle": "আপনি এই অফারটি আর দেখতে পাবেন না।",
+    "badgeLine1": "এক্সক্লুসিভ",
+    "badgeLine2": "এককালীন অফার",
+    "upgradeNow": "{{price}} এর জন্য এখনই আপগ্রেড করুন",
+    "loadingPrice": "লোড হচ্ছে...",
+    "termsOfUse": "ব্যবহারের শর্তাবলী",
+    "privacyPolicy": "গোপনীয়তা নীতি",
+    "accessTitle": "সীমাহীন অ্যাক্সেস",
+    "accessSubtitle": "GPT, Gemini এবং Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4 এ সীমাহীন অ্যাক্সেস",
+      "geminiPro": "Gemini প্রো-এ অ্যাক্সেস",
+      "grokInsights": "নতুন অন্তর্দৃষ্টির জন্য Grok ব্যবহার করুন৷",
+      "priorityAccess": "অগ্রাধিকার অ্যাক্সেস এবং দ্রুত প্রতিক্রিয়া"
+    },
+    "bestValue": "শ্রেষ্ঠ মান",
+    "annualPremium": "বার্ষিক প্রিমিয়াম",
+    "oneTimePayment": "এককালীন অর্থপ্রদান",
+    "wasPrice": "ছিল",
+    "continue": "চালিয়ে যান",
+    "restore": "পুনরুদ্ধার করুন",
+    "terms": "শর্তাবলী",
+    "privacy": "গোপনীয়তা",
+    "successTitle": "সফলতার !",
+    "successMessage": "আপনার ক্রয়ের জন্য আপনাকে ধন্যবাদ! পরবর্তী 12 মাসের জন্য প্রিমিয়াম অ্যাক্সেস উপভোগ করুন।",
+    "errorTitle": "ক্রয় ব্যর্থ হয়েছে৷",
+    "errorMessage": "কিছু ভুল হয়েছে আবার চেষ্টা করুন.",
+    "restoreSuccessTitle": "পুনরুদ্ধার করা হয়েছে",
+    "restoreSuccessMessage": "আপনার কেনাকাটা পুনরুদ্ধার করা হয়েছে.",
+    "restoreErrorTitle": "পুনরুদ্ধার ব্যর্থ হয়েছে",
+    "restoreErrorMessage": "পুনরুদ্ধার করার জন্য কোনো কেনাকাটা পাওয়া যায়নি।",
+    "unavailableTitle": "কেনাকাটা অনুপলব্ধ",
+    "unavailableMessage": "অ্যান্ড্রয়েড বিলিং এখনও কনফিগার করা হয়নি৷"
+  },
+  "rewards": {
+    "header": {
+      "title": "পুরস্কার",
+      "openMenu": "মেনু খুলুন",
+      "goBack": "ফিরে যান"
+    },
+    "pointsHero": {
+      "totalBalance": "মোট ব্যালেন্স",
+      "seeYourRewards": "আপনার পুরস্কার দেখুন"
+    },
+    "streakTracker": {
+      "title": "ডেইলি স্ট্রিক",
+      "subtitle": "এটা আপ রাখুন! আপনি আগুনে আছেন।",
+      "days": "দিন",
+      "prize": "পুরস্কার",
+      "dayLabel": "দিন {{number}}",
+      "nextReward": "পরবর্তী পুরস্কার: {{time}}-এ {{amount}}",
+      "coins": "কয়েন"
+    },
+    "sections": {
+      "availableQuests": "উপলব্ধ কোয়েস্ট",
+      "completedQuests": "সম্পূর্ণ অনুসন্ধান",
+      "availableRewards": "উপলব্ধ পুরস্কার",
+      "needsMoreCoins": "আরো কয়েন প্রয়োজন"
+    },
+    "balances": {
+      "rewardCoins": "পুরস্কারের কয়েন",
+      "imageCredits": "ইমেজ ক্রেডিট"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 ইমেজ ক্রেডিট",
+        "imageCredits200": "200 ইমেজ ক্রেডিট",
+        "imageCredits600": "600 ইমেজ ক্রেডিট",
+        "weeklyPremium": "সাপ্তাহিক প্রিমিয়াম",
+        "secretBox": "গোপন বাক্স"
+      },
+      "rewardDescriptions": {
+        "secretBox": "ভিতরে রহস্য পুরস্কার"
+      },
+      "alerts": {
+        "comingSoonTitle": "শীঘ্রই আসছে",
+        "comingSoonMessage": "এই পুরস্কার এখনও উপলব্ধ নয়.",
+        "notEnoughCoinsTitle": "পর্যাপ্ত কয়েন নেই",
+        "notEnoughCoinsMessage": "এই পুরস্কারটি আনলক করতে আপনার আরও পুরস্কারের কয়েন প্রয়োজন।",
+        "errorTitle": "ত্রুটি",
+        "couldNotOpenBox": "বাক্স খুলতে পারেনি।",
+        "couldNotRedeem": "পুরস্কার রিডিম করা যায়নি। আবার চেষ্টা করুন.",
+        "mysteryReward": "রহস্য পুরস্কার"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "দৈনিক লগইন",
+        "description": "আপনার ধারা বজায় রাখতে আজই অ্যাপটি খুলুন",
+        "message": "আপনি প্রতিদিন অ্যাপ খুললে এই অনুসন্ধানটি স্বয়ংক্রিয়ভাবে সম্পন্ন হয়।"
+      },
+      "shareFacebook": {
+        "title": "ফেসবুকে শেয়ার করুন",
+        "description": "ফেসবুকে আমাদের সম্পর্কে পোস্ট করুন"
+      },
+      "shareTwitter": {
+        "title": "টুইটারে শেয়ার করুন",
+        "description": "আপনার অভিজ্ঞতা টুইট"
+      },
+      "shareInstagram": {
+        "title": "ইনস্টাগ্রামে শেয়ার করুন",
+        "description": "একটি গল্প বা পোস্ট শেয়ার করুন"
+      },
+      "shareExperience": {
+        "title": "আপনার অভিজ্ঞতা শেয়ার করুন",
+        "description": "বন্ধুদের বলুন কেন আপনি অ্যাপটি পছন্দ করেন"
+      },
+      "share": {
+        "genericMessage": "আমি চ্যাট এবং ইমেজ তৈরির জন্য এই AI অ্যাপটি ব্যবহার করছি। এটি পরীক্ষা করে দেখুন: {{url}}",
+        "facebookQuote": "এই AI অ্যাপটি দেখুন!",
+        "twitterText": "আমি এই AI অ্যাপটি চেষ্টা করছি, এটি বেশ চমৎকার।",
+        "instagramMessage": "এই AI অ্যাপটি দেখুন: {{url}}"
+      },
+      "store": {
+        "errorTitle": "ত্রুটি",
+        "errorMessage": "দোকান পাতা খুলতে পারেনি."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "কোয়েস্ট সম্পূর্ণ",
+        "description": "অনুসন্ধান সম্পন্ন হয়েছে",
+        "points": "+{{points}} পয়েন্ট",
+        "close": "বন্ধ"
+      },
+      "rewardSuccess": {
+        "error": "ত্রুটি",
+        "success": "সফলতা",
+        "somethingWentWrong": "কিছু ভুল হয়েছে",
+        "rewardUnlocked": "পুরস্কার আনলক করা হয়েছে",
+        "credits": "ক্রেডিট",
+        "close": "বন্ধ",
+        "okay": "ঠিক আছে"
+      },
+      "secretBox": {
+        "pill": "সিক্রেট বক্স",
+        "rewardUnlocked": "পুরষ্কার আনলক করা হয়েছে",
+        "shufflingRewards": "এলোমেলো পুরস্কার...",
+        "imageCreditsAdded": "আপনার অ্যাকাউন্টে ইমেজ ক্রেডিট যোগ করা হয়েছে",
+        "continue": "চালিয়ে যান",
+        "revealing": "প্রকাশ করা হচ্ছে...",
+        "prizeTiers": {
+          "lucky": "ভাগ্যবান",
+          "pro": "PRO",
+          "elite": "এলিট",
+          "mythic": "মিথিক"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "আপনার দৈনিক কয়েন নিন",
+      "subtitle": "প্রতিদিন আসুন, পুরস্কার বাড়বে।",
+      "cta": "চেক-ইন",
+      "claimed": "পেয়েছেন! +{{amount}} কয়েন",
+      "later": "পরে"
+    }
+  },
+  "app": {
+    "version": "সংস্করণ {{version}}",
+    "offlineBanner": "আপনি অফলাইনে আছেন",
+    "launch": {
+      "accessibilityLabel": "শুরু হচ্ছে Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "এআই, আপনি যখন প্রস্তুত"
+    },
+    "errors": {
+      "modelsLoadTitle": "মডেল লোড করতে ব্যর্থ হয়েছে",
+      "modelsLoadMessage": "AI মডেলগুলি লোড করতে অক্ষম৷ অ্যাপটি ডিফল্ট মডেল ব্যবহার করবে। আপনার ইন্টারনেট সংযোগ পরীক্ষা করুন.",
+      "modelsLoadTimeout": "লোডিং মডেলগুলি খুব বেশি সময় নেয়৷ অ্যাপটি ডিফল্ট মডেল ব্যবহার করবে। আবার চেষ্টা করুন.",
+      "modelsLoadNetwork": "ইন্টারনেট সংযোগ নেই। অ্যাপটি ডিফল্ট মডেল ব্যবহার করবে। আপনার সংযোগ পরীক্ষা করুন.",
+      "deviceIdTitle": "সূচনা ত্রুটি",
+      "deviceIdMessage": "ডিভাইস আইডি আরম্ভ করতে ব্যর্থ হয়েছে. কিছু বৈশিষ্ট্য সঠিকভাবে কাজ নাও করতে পারে।",
+      "storageTitle": "স্টোরেজ ত্রুটি",
+      "storageMessage": "স্থানীয় স্টোরেজ অ্যাক্সেস করতে অক্ষম। কিছু বৈশিষ্ট্য সঠিকভাবে কাজ নাও করতে পারে।",
+      "crashTitle": "কিছু ভুল হয়েছে",
+      "crashSubtitle": "আবার চেষ্টা করুন.",
+      "crashLabel": "অ্যাপ ক্র্যাশ হয়েছে"
+    },
+    "proxyErrors": {
+      "genericTitle": "কিছু ভুল হয়েছে",
+      "genericMessage": "আবার চেষ্টা করুন.",
+      "rateLimitTitle": "অনেক অনুরোধ",
+      "rateLimitMessage": "আমরা অনেক অনুরোধ পরিচালনা করছি. অনুগ্রহ করে কিছুক্ষণের মধ্যে আবার চেষ্টা করুন।",
+      "rateLimitRetryAfter": "আমরা অনেক অনুরোধ পরিচালনা করছি. অনুগ্রহ করে প্রায় {{seconds}} সেকেন্ডের মধ্যে আবার চেষ্টা করুন৷",
+      "restrictedTitle": "সীমাবদ্ধ বিষয়বস্তু",
+      "restrictedMessage": "এই অনুরোধ নিরাপত্তা ফিল্টার দ্বারা ব্লক করা হয়েছে.",
+      "insufficientCoinsTitle": "পর্যাপ্ত কয়েন নেই",
+      "insufficientCoinsMessage": "এই অনুরোধের জন্য আপনার বর্তমান ব্যালেন্স খুবই কম।",
+      "imageUnavailableTitle": "ছবি অনুপলব্ধ",
+      "imageUnavailableMessage": "উত্পন্ন চিত্র ফাইল সাময়িকভাবে অনুপলব্ধ ছিল. আবার চেষ্টা করুন.",
+      "authorizationTitle": "অনুমোদনের সমস্যা",
+      "authorizationMessage": "আমরা আপনার অ্যাকাউন্ট যাচাই করতে পারিনি। আবার চেষ্টা করুন.",
+      "serverTitle": "সার্ভার হেঁচকি",
+      "serverMessage": "আমাদের সার্ভার সমস্যা ছিল. শীঘ্রই আবার চেষ্টা করুন.",
+      "timeoutTitle": "খুব বেশি সময় নিচ্ছে",
+      "timeoutMessage": "অনুরোধের সময় শেষ হয়েছে৷ আবার চেষ্টা করুন.",
+      "networkTitle": "সংযোগ নেই",
+      "networkMessage": "ইন্টারনেট সংযোগ নেই। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন.",
+      "requestTitle": "অনুরোধ সমস্যা",
+      "requestMessage": "আপনার অনুরোধে কিছু ভুল হয়েছে। আবার চেষ্টা করুন."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "প্রিমিয়াম সক্রিয় করুন",
+    "activateMessage": "আপনি কি রিভিউয়ার প্রিমিয়াম সক্রিয় করতে চান?",
+    "activateAction": "সক্রিয় করুন",
+    "deactivateTitle": "প্রিমিয়াম নিষ্ক্রিয় করুন",
+    "deactivateMessage": "আপনি কি পর্যালোচক প্রিমিয়াম নিষ্ক্রিয় করতে চান?",
+    "deactivateAction": "নিষ্ক্রিয় করুন"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "দৈনিক পুরস্কার",
+      "body": "আপনার দৈনিক কয়েন মিস করবেন না - মধ্যরাতের আগে দাবি করুন।"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "আপনার দৈনিক কয়েন মিস করবেন না",
+      "body": "আপনার ধারাবাহিকতা বজায় রাখতে এবং কয়েন বাড়াতে আমরা দিনে একটি রিমাইন্ডার পাঠাই। কোনো স্প্যাম নেই, যেকোনো সময় বন্ধ করতে পারেন।",
+      "enable": "রিমাইন্ডার চালু করুন",
+      "skip": "এখন নয়"
+    }
+  }
+}

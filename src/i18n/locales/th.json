@@ -11,7 +11,12 @@
     "searchHint": "พิมพ์เพื่อกรองโมเดลที่มี",
     "modelLabel": "โมเดล {{name}}",
     "selectHint": "เลือกโมเดล {{name}}",
-    "currentlySelected": "กำลังเลือกอยู่"
+    "currentlySelected": "กำลังเลือกอยู่",
+    "genericModel": "โมเดล {{provider}}",
+    "badges": {
+      "new": "ใหม่",
+      "best": "ดีที่สุด"
+    }
   },
   "models": {
     "gpt-4o": "โมเดล AI ทรงพลังที่สุด",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "ผู้ช่วย",
+    "defaultTitle": "ผู้ช่วย",
+    "errorTitle": "เกิดข้อผิดพลาด",
+    "errorMessage": "ไม่สามารถเริ่มผู้ช่วยนี้ได้",
+    "noAssistants": "ไม่พบผู้ช่วยในหมวดหมู่นี้",
+    "selectAssistantHint": "เปิดตัวเลือกผู้ช่วย",
     "subtitle": "ผู้ช่วย AI ที่คัดมาแล้วสำหรับโค้ด เขียน วิเคราะห์ วางแผน และอื่นๆ",
     "searchPlaceholder": "ค้นหาผู้ช่วย…",
     "useAssistant": "ใช้ผู้ช่วยนี้",
@@ -259,6 +269,7 @@
     "startChat": "เริ่มแชท",
     "startNewChat": "เริ่มแชทใหม่",
     "errorLoadingHistory": "เกิดข้อผิดพลาดขณะโหลดประวัติ",
+    "loading": "กำลังโหลดประวัติ...",
     "renameChat": "เปลี่ยนชื่อแชท",
     "enterNewTitle": "ใส่ชื่อใหม่",
     "deleteChat": "ลบแชท?",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "พรีเมียมใช้งานอยู่",
-        "subtitle": "ขอบคุณที่สนับสนุน ChatCloud"
+        "subtitle": "ขอบคุณที่สนับสนุน Cloud AI"
       },
       "restore": {
         "title": "กู้คืนการซื้อ",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "ไม่สามารถเปิดลิงก์นี้ได้ในตอนนี้",
       "restoreSuccessTitle": "กู้คืนแล้ว",
       "restoreSuccessMessage": "กู้คืนการซื้อของคุณเรียบร้อยแล้ว",
+      "restoreEmptyTitle": "ไม่พบการซื้อ",
+      "restoreEmptyMessage": "เราไม่พบการซื้อที่ใช้งานอยู่ที่จะกู้คืนสำหรับบัญชีนี้",
       "restoreErrorTitle": "กู้คืนล้มเหลว",
       "restoreErrorMessage": "ไม่สามารถกู้คืนการซื้อได้ตอนนี้",
       "resetConfirmTitle": "รีเซ็ตข้อมูลแอป?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "กำหนดเอง"
     },
+    "notEnoughCoinsTitle": "เหรียญไม่เพียงพอ",
+    "notEnoughCoinsMessage": "ยอดคงเหลือปัจจุบันของคุณไม่เพียงพอสำหรับรูปภาพนี้",
     "modelTaglines": {
       "runwareFluxSchnell": "โมเดลที่เร็วที่สุด",
       "runwareFluxKrea": "ผลงานสร้างสรรค์และมีสไตล์",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "บันทึกไม่สำเร็จ",
       "shareFailedTitle": "แชร์ไม่สำเร็จ",
-      "tryAgain": "โปรดลองอีกครั้ง"
+      "tryAgain": "โปรดลองอีกครั้ง",
+      "savedTitle": "บันทึกแล้ว",
+      "savedMessage": "บันทึกรูปภาพลงแกลเลอรีของคุณแล้ว",
+      "permissionTitle": "ต้องการสิทธิ์",
+      "permissionMessage": "อนุญาตการเข้าถึงพื้นที่จัดเก็บเพื่อบันทึกรูปภาพลงแกลเลอรีของคุณ"
     },
     "result": {
       "complete": "เสร็จเรียบร้อย"
@@ -498,12 +517,47 @@
       "save": "บันทึก",
       "share": "แชร์"
     },
+    "alerts": {
+      "savedTitle": "บันทึกแล้ว",
+      "savedMessage": "บันทึกรูปภาพลงแกลเลอรีของคุณแล้ว",
+      "permissionTitle": "ต้องการสิทธิ์",
+      "permissionMessage": "อนุญาตการเข้าถึงพื้นที่จัดเก็บเพื่อบันทึกรูปภาพลงแกลเลอรีของคุณ",
+      "saveFailedTitle": "ไม่สามารถบันทึกได้",
+      "tryAgain": "โปรดลองอีกครั้ง"
+    },
     "accessibility": {
       "close": "ปิด",
       "delete": "ลบภาพ",
       "edit": "แก้ไขภาพ",
       "save": "บันทึกภาพ",
       "share": "แชร์ภาพ"
+    }
+  },
+  "reportContent": {
+    "title": "รายงานเนื้อหา AI",
+    "subtitle": "บอกเราว่าเนื้อหาที่สร้างขึ้นนี้มีปัญหาอะไร",
+    "privateDisclosure": "การส่งจะส่งเนื้อหาที่ถูกรายงานนี้ไปตรวจสอบด้านความปลอดภัย",
+    "accessibilityLabel": "รายงานเนื้อหา AI",
+    "reasons": {
+      "sexual": "เนื้อหาทางเพศหรือภาพเปลือย",
+      "violence_self_harm": "ความรุนแรงหรือการทำร้ายตนเอง",
+      "hate_harassment": "ความเกลียดชังหรือการคุกคาม",
+      "child_safety": "ข้อกังวลด้านความปลอดภัยของเด็ก",
+      "scam_deceptive": "การหลอกลวงหรือเนื้อหาที่ทำให้เข้าใจผิด",
+      "other": "อื่นๆ"
+    },
+    "errors": {
+      "reasonRequired": "โปรดเลือกเหตุผลก่อนส่ง",
+      "submit": "ไม่สามารถส่งรายงานได้ โปรดลองอีกครั้ง"
+    },
+    "success": {
+      "title": "ขอบคุณ รายงานของคุณถูกส่งแล้ว",
+      "subtitle": "เราจะใช้รายงานเพื่อปรับปรุงความปลอดภัยของเนื้อหา"
+    },
+    "actions": {
+      "report": "รายงาน",
+      "submit": "ส่งรายงาน",
+      "done": "เสร็จสิ้น"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "ทำความรู้จัก",
       "titleHighlight": "Image Studio",
-      "subtitle": "สร้างและแก้ไขภาพด้วย AI ได้เลยใน ChatCloud",
-      "appName": "ChatCloud"
+      "subtitle": "สร้างและแก้ไขภาพด้วย AI ได้เลยใน Cloud AI"
     },
     "relaxView": {
       "title": "พบกับ AI ของคุณ",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "โซลูชัน AI ระดับองค์กร",
       "description": "เสริมพลังธุรกิจของคุณด้วย AI ทันสมัยสำหรับองค์กรและทีม",
       "stats": "มีผู้ใช้กว่า 500k+ ราย",
@@ -592,10 +645,10 @@
       "value": "คุ้มที่สุด"
     },
     "pack": {
+      "creditsLabel": "{{credits}} โทเค็น",
       "tokensLabel": "{{credits}} โทเค็น",
       "defaultName": "แพ็ก {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} โทเค็น"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "อัปเกรดเป็นพรีเมียม",
@@ -613,8 +666,28 @@
       "unknownError": "ข้อผิดพลาดที่ไม่รู้จัก"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "ต้องใช้พรีเมียม",
+    "upgrade": "อัปเกรด",
+    "modelRequiredMessage": "โมเดลนี้ต้องใช้พรีเมียม อัปเกรดเพื่อเข้าถึง GPT-5, Grok 4, Claude และโมเดลขั้นสูงอื่นๆ",
+    "assistantsRequiredMessage": "ผู้ช่วยต้องใช้พรีเมียม อัปเกรดเพื่อเข้าถึงผู้ช่วย AI เฉพาะทางด้านฟิตเนส การเขียนโค้ด การเขียน และอื่นๆ",
+    "assistantsTitle": "ต้องใช้พรีเมียม",
+    "assistantsMessage": "ผู้ช่วยต้องใช้พรีเมียม อัปเกรดเพื่อเข้าถึงผู้ช่วย AI เฉพาะทางด้านฟิตเนส การเขียนโค้ด การเขียน และอื่นๆ"
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "ปิดหน้าชำระเงิน",
+    "unavailableTitle": "ไม่สามารถซื้อได้",
+    "unavailableMessage": "ยังไม่ได้กำหนดค่าการเรียกเก็บเงินบน Android",
+    "restoreEmptyTitle": "ไม่พบการซื้อ",
+    "restoreEmptyMessage": "เราไม่พบการซื้อที่ใช้งานอยู่ที่จะกู้คืนสำหรับบัญชีนี้",
+    "restoreFailedTitle": "การกู้คืนล้มเหลว",
+    "restoreFailedMessage": "ไม่สามารถกู้คืนการซื้อได้ในขณะนี้",
+    "productsUnavailableTitle": "ไม่มีแผนที่พร้อมใช้งาน",
+    "productsUnavailableMessage": "ขณะนี้ไม่มีผลิตภัณฑ์การสมัครสมาชิก Android ที่พร้อมใช้งาน",
+    "purchaseFailedTitle": "การซื้อล้มเหลว",
+    "purchaseFailedMessage": "ไม่สามารถทำการซื้อนี้ให้เสร็จสิ้นได้ในขณะนี้",
     "restore": "กู้คืน",
     "restoreRestoring": "กำลังกู้คืน…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "ข้อกำหนด",
       "privacy": "ความเป็นส่วนตัว"
+    },
+    "premium": {
+      "headline": "AI ระดับพรีเมียมทั้งหมดในแผนเดียว",
+      "subtitleLine1": "แชท เขียนโค้ด สร้างสรรค์ และวางแผน",
+      "subtitleLine2": "ด้วยโมเดลขั้นสูง",
+      "enableTrial": "เปิดใช้งานการทดลองใช้ฟรี",
+      "annual": "ประจำปี",
+      "saveBadge": "ประหยัด 83%",
+      "year": "ปี",
+      "week": "สัปดาห์",
+      "termsOfUse": "เงื่อนไขการใช้งาน",
+      "privacyPolicy": "นโยบายความเป็นส่วนตัว"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "สร้างคำตอบใหม่",
     "regenerateResponseHint": "สร้างคำตอบใหม่อีกครั้ง",
     "copyCode": "คัดลอกโค้ด",
+    "copied": "คัดลอกแล้ว",
     "image": "ภาพ",
     "loading": "กำลังโหลด…",
     "loadingChat": "กำลังโหลดแชท...",
     "offlineBanner": "คุณออฟไลน์อยู่ ไม่สามารถส่งข้อความได้",
+    "offlineError": "ไม่มีการเชื่อมต่ออินเทอร์เน็ต โปรดตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง",
     "imagePickerErrorTitle": "เกิดข้อผิดพลาดในการเลือกภาพ",
     "imagePickerErrorMessage": "ไม่สามารถเข้าถึงภาพของคุณ โปรดลองอีกครั้ง",
     "messageTooLong": "ข้อความยาวเกินไป ({{length}}) จำกัดที่ {{limit}}",
     "sendFailed": "ส่งไม่สำเร็จ",
     "modelNoImageSupport": "โมเดลที่เลือกไม่รองรับรูปภาพ กรุณาเลือกโมเดลอื่น",
     "voiceStartFailed": "ไม่สามารถเริ่มเสียงได้",
+    "voiceNoSpeechDetected": "ไม่พบเสียงพูด โปรดลองอีกครั้ง",
     "emptyTitle": "ให้ฉันช่วยอะไรดี?",
     "emptySubtitle": "เริ่มคุยกับ AI ได้เลย",
     "privateTitle": "แชทส่วนตัว",
     "privateSubtitle": "แชทนี้จะไม่อยู่ในประวัติแชท",
+    "startPrivateChat": "เริ่มแชทส่วนตัว",
+    "endPrivateChat": "สิ้นสุดแชทส่วนตัว",
     "permissions": {
       "photosTitle": "ต้องการสิทธิ์เข้าถึงรูปภาพ",
       "photosMessage": "การเลือกภาพต้องให้สิทธิ์เข้าถึงรูปภาพ",
@@ -753,7 +843,19 @@
       "share": "แชร์",
       "regenerate": "สร้างใหม่",
       "retryFromHere": "ลองใหม่จากตรงนี้",
+      "report": "รายงาน",
       "cancel": "ยกเลิก"
+    },
+    "markdown": {
+      "copy": "คัดลอก",
+      "copied": "คัดลอกแล้ว",
+      "table": "ตาราง",
+      "watchVideo": "ดูวิดีโอ",
+      "wikipedia": "วิกิพีเดีย",
+      "link": "ลิงก์",
+      "note": "หมายเหตุ",
+      "warning": "คำเตือน",
+      "tip": "เคล็ดลับ"
     },
     "messageActionTitle": "ข้อความ",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "วางแผนวันของฉัน",
       "planDaySubtitle": "พร้อมทริคเพิ่มประสิทธิภาพ"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "เลือกหัวข้อ",
       "title": "คุณต้องการทำอะไร?",
@@ -846,81 +946,59 @@
     "library": "คลังภาพ"
   },
   "common": {
-    "new": "ใหม่",
-    "best": "ดีที่สุด",
-    "cancel": "ยกเลิก",
-    "save": "บันทึก",
-    "delete": "ลบ",
-    "close": "ปิด",
-    "allow": "อนุญาต",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "ลองใหม่",
+    "cancel": "ยกเลิก",
+    "allow": "อนุญาต",
+    "notNow": "ไว้ทีหลัง",
+    "openSettings": "เปิดการตั้งค่า",
+    "close": "ปิด",
+    "save": "บันทึก",
+    "tryAgain": "ลองอีกครั้ง"
   },
   "rateUs": {
-    "title": "คุณชอบ ChatCloud ไหม?",
+    "title": "คุณชอบ Cloud AI ไหม?",
     "subtitle": "ความคิดเห็นของคุณช่วยให้เราปรับปรุงได้ คุณช่วยให้คะแนนเราใน App Store ได้ไหม?",
     "rateNow": "ให้คะแนนตอนนี้",
     "maybeLater": "อาจจะทีหลัง",
     "dontAskAgain": "อย่าถามอีก"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "ข้อเสนอครั้งเดียว",
+    "discount": "ลด {{percent}}%",
+    "subtitle": "คุณจะไม่เห็นข้อเสนอนี้อีก",
     "badgeLine1": "พิเศษ",
     "badgeLine2": "ข้อเสนอครั้งเดียว",
     "upgradeNow": "อัปเกรดตอนนี้ {{price}}",
     "loadingPrice": "กำลังโหลด...",
     "termsOfUse": "ข้อกำหนดการใช้งาน",
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "การเข้าถึงแบบไม่จำกัดสำหรับ",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "เข้าถึง GPT-4 แบบไม่จำกัด",
+      "geminiPro": "เข้าถึง Gemini Pro",
+      "grokInsights": "ใช้ Grok เพื่อรับข้อมูลเชิงลึกใหม่ๆ",
+      "priorityAccess": "การเข้าถึงระดับพิเศษและการตอบสนองที่เร็วขึ้น"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "คุ้มค่าที่สุด",
+    "annualPremium": "พรีเมียมรายปี",
+    "oneTimePayment": "ชำระเงินครั้งเดียว",
+    "wasPrice": "จากราคา",
+    "continue": "ดำเนินการต่อ",
+    "restore": "กู้คืน",
+    "terms": "ข้อกำหนด",
+    "privacy": "ความเป็นส่วนตัว",
+    "successTitle": "สำเร็จ!",
+    "successMessage": "ขอบคุณสำหรับการซื้อ! เพลิดเพลินกับการเข้าถึงพรีเมียมตลอด 12 เดือนข้างหน้า",
+    "errorTitle": "การซื้อล้มเหลว",
+    "errorMessage": "เกิดข้อผิดพลาด โปรดลองอีกครั้ง",
+    "restoreSuccessTitle": "กู้คืนแล้ว",
+    "restoreSuccessMessage": "การซื้อของคุณได้รับการกู้คืนแล้ว",
+    "restoreErrorTitle": "การกู้คืนล้มเหลว",
+    "restoreErrorMessage": "ไม่พบการซื้อที่จะกู้คืน",
+    "unavailableTitle": "ไม่สามารถซื้อได้",
+    "unavailableMessage": "ยังไม่ได้กำหนดค่าการเรียกเก็บเงินบน Android"
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "ระดับตำนาน"
         }
       }
+    },
+    "checkIn": {
+      "title": "รับเหรียญประจำวัน",
+      "subtitle": "กลับมาทุกวันเพื่อรางวัลที่มากขึ้น",
+      "cta": "เช็คอิน",
+      "claimed": "รับแล้ว! +{{amount}} เหรียญ",
+      "later": "ไว้ก่อน"
     }
+  },
+  "app": {
+    "version": "เวอร์ชัน {{version}}",
+    "offlineBanner": "คุณออฟไลน์อยู่",
+    "launch": {
+      "accessibilityLabel": "กำลังเริ่ม Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI พร้อมใช้งานทุกเมื่อ"
+    },
+    "errors": {
+      "modelsLoadTitle": "โหลดโมเดลไม่สำเร็จ",
+      "modelsLoadMessage": "ไม่สามารถโหลดโมเดล AI ได้ แอปจะใช้โมเดลเริ่มต้น โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณ",
+      "modelsLoadTimeout": "การโหลดโมเดลใช้เวลานานเกินไป แอปจะใช้โมเดลเริ่มต้น โปรดลองอีกครั้ง",
+      "modelsLoadNetwork": "ไม่มีการเชื่อมต่ออินเทอร์เน็ต แอปจะใช้โมเดลเริ่มต้น โปรดตรวจสอบการเชื่อมต่อของคุณ",
+      "deviceIdTitle": "ข้อผิดพลาดในการเริ่มต้น",
+      "deviceIdMessage": "ไม่สามารถเริ่มต้น ID อุปกรณ์ได้ ฟีเจอร์บางอย่างอาจทำงานไม่ถูกต้อง",
+      "storageTitle": "ข้อผิดพลาดพื้นที่จัดเก็บ",
+      "storageMessage": "ไม่สามารถเข้าถึงพื้นที่จัดเก็บในเครื่องได้ ฟีเจอร์บางอย่างอาจทำงานไม่ถูกต้อง",
+      "crashTitle": "เกิดข้อผิดพลาด",
+      "crashSubtitle": "โปรดลองอีกครั้ง",
+      "crashLabel": "แอปขัดข้อง"
+    },
+    "proxyErrors": {
+      "genericTitle": "เกิดข้อผิดพลาด",
+      "genericMessage": "โปรดลองอีกครั้ง",
+      "rateLimitTitle": "คำขอมากเกินไป",
+      "rateLimitMessage": "ขณะนี้มีคำขอจำนวนมาก โปรดลองอีกครั้งในอีกสักครู่",
+      "rateLimitRetryAfter": "ขณะนี้มีคำขอจำนวนมาก โปรดลองอีกครั้งในอีกประมาณ {{seconds}} วินาที",
+      "restrictedTitle": "เนื้อหาที่ถูกจำกัด",
+      "restrictedMessage": "คำขอนี้ถูกบล็อกโดยตัวกรองความปลอดภัย",
+      "insufficientCoinsTitle": "เหรียญไม่เพียงพอ",
+      "insufficientCoinsMessage": "ยอดคงเหลือปัจจุบันของคุณไม่เพียงพอสำหรับคำขอนี้",
+      "imageUnavailableTitle": "รูปภาพไม่พร้อมใช้งาน",
+      "imageUnavailableMessage": "ไฟล์รูปภาพที่สร้างขึ้นไม่พร้อมใช้งานชั่วคราว โปรดลองอีกครั้ง",
+      "authorizationTitle": "ปัญหาการให้สิทธิ์",
+      "authorizationMessage": "เราไม่สามารถยืนยันบัญชีของคุณได้ โปรดลองอีกครั้ง",
+      "serverTitle": "เซิร์ฟเวอร์ขัดข้อง",
+      "serverMessage": "เซิร์ฟเวอร์ของเรามีปัญหา โปรดลองอีกครั้งในไม่ช้า",
+      "timeoutTitle": "ใช้เวลานานเกินไป",
+      "timeoutMessage": "คำขอหมดเวลา โปรดลองอีกครั้ง",
+      "networkTitle": "ไม่มีการเชื่อมต่อ",
+      "networkMessage": "ไม่มีการเชื่อมต่ออินเทอร์เน็ต โปรดตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง",
+      "requestTitle": "ปัญหาเกี่ยวกับคำขอ",
+      "requestMessage": "คำขอของคุณมีปัญหา โปรดลองอีกครั้ง"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "เปิดใช้งานพรีเมียม",
+    "activateMessage": "คุณต้องการเปิดใช้งานพรีเมียมสำหรับผู้ตรวจสอบหรือไม่",
+    "activateAction": "เปิดใช้งาน",
+    "deactivateTitle": "ปิดใช้งานพรีเมียม",
+    "deactivateMessage": "คุณต้องการปิดใช้งานพรีเมียมสำหรับผู้ตรวจสอบหรือไม่",
+    "deactivateAction": "ปิดใช้งาน"
   },
   "push": {
     "dailyReward": {
       "title": "รางวัลประจำวัน",
       "body": "อย่าพลาดเหรียญประจำวัน — รับก่อนเที่ยงคืน"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "อย่าพลาดเหรียญประจำวันของคุณ",
+      "body": "เราส่งการแจ้งเตือนวันละครั้ง เพื่อให้สตรีคของคุณต่อเนื่องและเหรียญเพิ่มขึ้นเรื่อย ๆ ไม่มีสแปม และปิดได้ทุกเมื่อ",
+      "enable": "เปิดการแจ้งเตือน",
+      "skip": "ไว้ก่อน"
     }
   }
 }

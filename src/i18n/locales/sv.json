@@ -11,7 +11,12 @@
     "searchHint": "Skriv för att filtrera tillgängliga modeller",
     "modelLabel": "Modell {{name}}",
     "selectHint": "Välj modell {{name}}",
-    "currentlySelected": "För närvarande vald modell"
+    "currentlySelected": "För närvarande vald modell",
+    "genericModel": "{{provider}}-modell",
+    "badges": {
+      "new": "NY",
+      "best": "BÄST"
+    }
   },
   "models": {
     "gpt-4o": "Mest kraftfulla AI-modellen",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Assistenter",
+    "defaultTitle": "Assistent",
+    "errorTitle": "Något gick fel",
+    "errorMessage": "Den här assistenten kunde inte startas.",
+    "noAssistants": "Inga assistenter hittades i den här kategorin.",
+    "selectAssistantHint": "Öppna assistentväljaren",
     "subtitle": "Kuraterade AI-specialister redo för kodning, skrivande, analys, planering och mer.",
     "searchPlaceholder": "Sök assistenter…",
     "useAssistant": "Använd assistent",
@@ -259,6 +269,7 @@
     "startChat": "Starta chatt",
     "startNewChat": "Starta ny chatt",
     "errorLoadingHistory": "Fel vid inläsning av historiken",
+    "loading": "Läser in historik...",
     "renameChat": "Byt namn på chatten",
     "enterNewTitle": "Ange ny titel",
     "deleteChat": "Radera chatt?",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium aktivt",
-        "subtitle": "Tack för att du stödjer ChatCloud"
+        "subtitle": "Tack för att du stödjer Cloud AI"
       },
       "restore": {
         "title": "Återställ köp",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Det går inte att öppna länken nu.",
       "restoreSuccessTitle": "Återställt",
       "restoreSuccessMessage": "Dina köp har återställts.",
+      "restoreEmptyTitle": "Inga köp hittades",
+      "restoreEmptyMessage": "Vi hittade inget aktivt köp att återställa för det här kontot.",
       "restoreErrorTitle": "Återställning misslyckades",
       "restoreErrorMessage": "Kunde inte återställa köp nu.",
       "resetConfirmTitle": "Återställa app-data?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Anpassad"
     },
+    "notEnoughCoinsTitle": "Inte tillräckligt med mynt",
+    "notEnoughCoinsMessage": "Ditt nuvarande saldo är för lågt för den här bilden.",
     "modelTaglines": {
       "runwareFluxSchnell": "Snabbaste modellen",
       "runwareFluxKrea": "Kreativa, stiliserade resultat",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Kunde inte spara",
       "shareFailedTitle": "Kunde inte dela",
-      "tryAgain": "Var vänlig försök igen."
+      "tryAgain": "Var vänlig försök igen.",
+      "savedTitle": "Sparad",
+      "savedMessage": "Bilden har sparats i ditt galleri.",
+      "permissionTitle": "Behörighet krävs",
+      "permissionMessage": "Tillåt lagringsåtkomst för att spara bilder i ditt galleri."
     },
     "result": {
       "complete": "Klart"
@@ -498,12 +517,47 @@
       "save": "Spara",
       "share": "Dela"
     },
+    "alerts": {
+      "savedTitle": "Sparad",
+      "savedMessage": "Bilden har sparats i ditt galleri.",
+      "permissionTitle": "Behörighet krävs",
+      "permissionMessage": "Tillåt lagringsåtkomst för att spara bilder i ditt galleri.",
+      "saveFailedTitle": "Kunde inte spara",
+      "tryAgain": "Försök igen."
+    },
     "accessibility": {
       "close": "Stäng",
       "delete": "Radera bild",
       "edit": "Redigera bild",
       "save": "Spara bild",
       "share": "Dela bild"
+    }
+  },
+  "reportContent": {
+    "title": "Rapportera AI-innehåll",
+    "subtitle": "Berätta vad som är fel med det här genererade innehållet.",
+    "privateDisclosure": "När du skickar vidarebefordras det rapporterade innehållet för säkerhetsgranskning.",
+    "accessibilityLabel": "Rapportera AI-innehåll",
+    "reasons": {
+      "sexual": "Sexuellt innehåll eller nakenhet",
+      "violence_self_harm": "Våld eller självskada",
+      "hate_harassment": "Hat eller trakasserier",
+      "child_safety": "Oro för barns säkerhet",
+      "scam_deceptive": "Bedrägeri eller vilseledande innehåll",
+      "other": "Annat"
+    },
+    "errors": {
+      "reasonRequired": "Välj en anledning innan du skickar.",
+      "submit": "Rapporten kunde inte skickas. Försök igen."
+    },
+    "success": {
+      "title": "Tack. Din rapport har skickats.",
+      "subtitle": "Vi använder rapporter för att förbättra innehållssäkerheten."
+    },
+    "actions": {
+      "report": "Rapportera",
+      "submit": "Skicka rapport",
+      "done": "Klar"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Möt",
       "titleHighlight": "Image Studio",
-      "subtitle": "Skapa & redigera bilder med AI — direkt i ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Skapa & redigera bilder med AI — direkt i Cloud AI."
     },
     "relaxView": {
       "title": "Möt din AI",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "ENTERPRISE-KLASS AI-LÖSNINGAR",
       "description": "Stärk ditt företag med banbrytande artificiell intelligens designad för gäng och proffs.",
       "stats": "Förtroende från 500k+ användare",
@@ -592,10 +645,10 @@
       "value": "Bästa värde"
     },
     "pack": {
+      "creditsLabel": "{{credits}} credits",
       "tokensLabel": "{{credits}} credits",
       "defaultName": "Paket {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} credits"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Bli Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Okänt fel"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium krävs",
+    "upgrade": "Uppgradera",
+    "modelRequiredMessage": "Den här modellen kräver Premium. Uppgradera för att få tillgång till GPT-5, Grok 4, Claude och fler avancerade modeller.",
+    "assistantsRequiredMessage": "Assistenter kräver Premium. Uppgradera för att få tillgång till specialiserade AI-assistenter för träning, kodning, skrivande och mer.",
+    "assistantsTitle": "Premium krävs",
+    "assistantsMessage": "Assistenter kräver Premium. Uppgradera för att få tillgång till specialiserade AI-assistenter för träning, kodning, skrivande och mer."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Stäng betalskärmen",
+    "unavailableTitle": "Köp är inte tillgängliga",
+    "unavailableMessage": "Android-fakturering är inte konfigurerad än.",
+    "restoreEmptyTitle": "Inga köp hittades",
+    "restoreEmptyMessage": "Vi hittade inget aktivt köp att återställa för det här kontot.",
+    "restoreFailedTitle": "Återställningen misslyckades",
+    "restoreFailedMessage": "Köp kan inte återställas just nu.",
+    "productsUnavailableTitle": "Inga abonnemang tillgängliga",
+    "productsUnavailableMessage": "Inga Android-prenumerationer är tillgängliga just nu.",
+    "purchaseFailedTitle": "Köpet misslyckades",
+    "purchaseFailedMessage": "Det här köpet kan inte slutföras just nu.",
     "restore": "Återställ",
     "restoreRestoring": "Återställer…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Villkor",
       "privacy": "Integritet"
+    },
+    "premium": {
+      "headline": "All premium AI i en plan",
+      "subtitleLine1": "Chatta, koda, skapa och planera",
+      "subtitleLine2": "med avancerade modeller.",
+      "enableTrial": "Aktivera gratis provperiod",
+      "annual": "Årlig",
+      "saveBadge": "Spara 83 %",
+      "year": "år",
+      "week": "vecka",
+      "termsOfUse": "Användarvillkor",
+      "privacyPolicy": "Sekretesspolicy"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Generera svar igen",
     "regenerateResponseHint": "Skapa nytt svar",
     "copyCode": "Kopiera kod",
+    "copied": "Kopierat",
     "image": "bild",
     "loading": "Läser…",
     "loadingChat": "Läser chatt...",
     "offlineBanner": "Du är offline. Meddelanden kan inte skickas.",
+    "offlineError": "Ingen internetanslutning. Kontrollera din anslutning och försök igen.",
     "imagePickerErrorTitle": "Fel vid val av bild",
     "imagePickerErrorMessage": "Kunde inte få åtkomst till dina foton. Försök igen.",
     "messageTooLong": "Meddelandet är för långt ({{length}}). Gräns är {{limit}}.",
     "sendFailed": "Skickandet misslyckades.",
     "modelNoImageSupport": "Den valda modellen stöder inte bilder. Välj en annan modell.",
     "voiceStartFailed": "Kunde inte starta röst.",
+    "voiceNoSpeechDetected": "Ingen röst kändes igen. Försök igen.",
     "emptyTitle": "Hur kan jag hjälpa?",
     "emptySubtitle": "Starta en konversation med AI",
     "privateTitle": "Privat chatt",
     "privateSubtitle": "Denna chatt kommer inte att visas i din historik",
+    "startPrivateChat": "Starta privat chatt",
+    "endPrivateChat": "Avsluta privat chatt",
     "permissions": {
       "photosTitle": "Foto­behörighet krävs",
       "photosMessage": "Fototillgång krävs för att välja bilder.",
@@ -753,7 +843,19 @@
       "share": "Dela",
       "regenerate": "Generera igen",
       "retryFromHere": "Försök igen härifrån",
+      "report": "Rapportera",
       "cancel": "Avbryt"
+    },
+    "markdown": {
+      "copy": "Kopiera",
+      "copied": "Kopierat",
+      "table": "TABELL",
+      "watchVideo": "Titta på video",
+      "wikipedia": "Wikipedia",
+      "link": "Länk",
+      "note": "Obs",
+      "warning": "Varning",
+      "tip": "Tips"
     },
     "messageActionTitle": "Meddelande",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Planera min dag",
       "planDaySubtitle": "med produktivitetstips"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Välj ett ämne",
       "title": "Vad vill du göra?",
@@ -846,81 +946,59 @@
     "library": "Bibliotek"
   },
   "common": {
-    "new": "NY",
-    "best": "BÄSTA",
-    "cancel": "Avbryt",
-    "save": "Spara",
-    "delete": "Radera",
-    "close": "Stäng",
-    "allow": "Tillåt",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Försök igen",
+    "cancel": "Avbryt",
+    "allow": "Tillåt",
+    "notNow": "Inte nu",
+    "openSettings": "Öppna inställningar",
+    "close": "Stäng",
+    "save": "Spara",
+    "tryAgain": "Försök på nytt"
   },
   "rateUs": {
-    "title": "Gillar du ChatCloud?",
+    "title": "Gillar du Cloud AI?",
     "subtitle": "Din feedback hjälper oss att förbättra. Skulle du kunna betygsätta oss i App Store?",
     "rateNow": "Betygsätt nu",
     "maybeLater": "Kanske senare",
     "dontAskAgain": "Fråga inte igen"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Engångserbjudande",
+    "discount": "{{percent}} % RABATT",
+    "subtitle": "Du kommer inte att se det här erbjudandet igen.",
     "badgeLine1": "Exklusiv",
     "badgeLine2": "Engångserbjudande",
     "upgradeNow": "Uppgradera nu för {{price}}",
     "loadingPrice": "Laddar...",
     "termsOfUse": "Användarvillkor",
     "privacyPolicy": "Integritetspolicy",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Obegränsad tillgång till",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Obegränsad tillgång till GPT-4",
+      "geminiPro": "Tillgång till Gemini Pro",
+      "grokInsights": "Använd Grok för nya insikter",
+      "priorityAccess": "Prioriterad åtkomst och snabbare svar"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Bäst värde",
+    "annualPremium": "Årspremium",
+    "oneTimePayment": "Engångsbetalning",
+    "wasPrice": "tidigare",
+    "continue": "Fortsätt",
+    "restore": "Återställ",
+    "terms": "Villkor",
+    "privacy": "Integritet",
+    "successTitle": "Klart!",
+    "successMessage": "Tack för ditt köp! Njut av premiumåtkomst under de kommande 12 månaderna.",
+    "errorTitle": "Köpet misslyckades",
+    "errorMessage": "Något gick fel. Försök igen.",
+    "restoreSuccessTitle": "Återställt",
+    "restoreSuccessMessage": "Dina köp har återställts.",
+    "restoreErrorTitle": "Återställningen misslyckades",
+    "restoreErrorMessage": "Inga köp hittades att återställa.",
+    "unavailableTitle": "Köp är inte tillgängliga",
+    "unavailableMessage": "Android-fakturering är inte konfigurerad än."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MYTISK"
         }
       }
+    },
+    "checkIn": {
+      "title": "Hämta dina dagliga mynt",
+      "subtitle": "Kom tillbaka varje dag — belöningen växer.",
+      "cta": "Checka in",
+      "claimed": "Mottaget! +{{amount}} mynt",
+      "later": "Senare"
     }
+  },
+  "app": {
+    "version": "Version {{version}}",
+    "offlineBanner": "Du är offline",
+    "launch": {
+      "accessibilityLabel": "Startar Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, redo när du är det"
+    },
+    "errors": {
+      "modelsLoadTitle": "Det gick inte att läsa in modellerna",
+      "modelsLoadMessage": "AI-modellerna kan inte läsas in. Appen använder standardmodeller. Kontrollera din internetanslutning.",
+      "modelsLoadTimeout": "Inläsningen av modellerna tog för lång tid. Appen använder standardmodeller. Försök igen.",
+      "modelsLoadNetwork": "Ingen internetanslutning. Appen använder standardmodeller. Kontrollera din anslutning.",
+      "deviceIdTitle": "Initieringsfel",
+      "deviceIdMessage": "Det gick inte att initiera enhets-ID. Vissa funktioner kanske inte fungerar korrekt.",
+      "storageTitle": "Lagringsfel",
+      "storageMessage": "Det går inte att komma åt den lokala lagringen. Vissa funktioner kanske inte fungerar korrekt.",
+      "crashTitle": "Något gick fel.",
+      "crashSubtitle": "Försök igen.",
+      "crashLabel": "Appen kraschade"
+    },
+    "proxyErrors": {
+      "genericTitle": "Något gick fel",
+      "genericMessage": "Försök igen.",
+      "rateLimitTitle": "För många förfrågningar",
+      "rateLimitMessage": "Vi hanterar många förfrågningar just nu. Försök igen om en stund.",
+      "rateLimitRetryAfter": "Vi hanterar många förfrågningar just nu. Försök igen om cirka {{seconds}} sekunder.",
+      "restrictedTitle": "Begränsat innehåll",
+      "restrictedMessage": "Den här begäran blockerades av säkerhetsfilter.",
+      "insufficientCoinsTitle": "Inte tillräckligt med mynt",
+      "insufficientCoinsMessage": "Ditt nuvarande saldo är för lågt för den här begäran.",
+      "imageUnavailableTitle": "Bilden är inte tillgänglig",
+      "imageUnavailableMessage": "Den genererade bildfilen var tillfälligt otillgänglig. Försök igen.",
+      "authorizationTitle": "Auktoriseringsproblem",
+      "authorizationMessage": "Vi kunde inte verifiera ditt konto. Försök igen.",
+      "serverTitle": "Serverproblem",
+      "serverMessage": "Våra servrar fick problem. Försök igen snart.",
+      "timeoutTitle": "Tar för lång tid",
+      "timeoutMessage": "Begäran tog för lång tid. Försök igen.",
+      "networkTitle": "Ingen anslutning",
+      "networkMessage": "Ingen internetanslutning. Kontrollera din anslutning och försök igen.",
+      "requestTitle": "Problem med begäran",
+      "requestMessage": "Något gick fel med din begäran. Försök igen."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktivera Premium",
+    "activateMessage": "Vill du aktivera granskarpremium?",
+    "activateAction": "Aktivera",
+    "deactivateTitle": "Inaktivera Premium",
+    "deactivateMessage": "Vill du inaktivera granskarpremium?",
+    "deactivateAction": "Inaktivera"
   },
   "push": {
     "dailyReward": {
       "title": "Daglig belöning",
       "body": "Missa inte dina dagliga mynt — hämta dem före midnatt."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Missa aldrig dina dagliga mynt",
+      "body": "Vi skickar en påminnelse om dagen så att din svit fortsätter och mynten växer. Ingen spam, och du kan stänga av det när som helst.",
+      "enable": "Slå på påminnelser",
+      "skip": "Inte nu"
     }
   }
 }

@@ -4,6 +4,16 @@ export async function resolvePremiumStatus(subscription) {
   }
 
   if (
+    typeof subscription?.waitForSubscriptionReady === 'function'
+  ) {
+    try {
+      if (await subscription.waitForSubscriptionReady()) {
+        return true;
+      }
+    } catch {}
+  }
+
+  if (
     !subscription?.paymentsEnabled ||
     typeof subscription?.refreshCustomerInfo !== 'function'
   ) {

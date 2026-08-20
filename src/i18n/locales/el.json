@@ -11,7 +11,12 @@
     "searchHint": "Πληκτρολόγησε για να φιλτράρεις τα διαθέσιμα μοντέλα",
     "modelLabel": "Μοντέλο {{name}}",
     "selectHint": "Επιλογή μοντέλου {{name}}",
-    "currentlySelected": "Επιλεγμένο αυτή τη στιγμή"
+    "currentlySelected": "Επιλεγμένο αυτή τη στιγμή",
+    "genericModel": "Μοντέλο {{provider}}",
+    "badges": {
+      "new": "ΝΕΟ",
+      "best": "ΚΟΡΥΦΑΙΟ"
+    }
   },
   "models": {
     "gpt-4o": "Ισχυρότερο μοντέλο ΤΝ",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Βοηθοί",
+    "defaultTitle": "Βοηθός",
+    "errorTitle": "Κάτι πήγε στραβά",
+    "errorMessage": "Δεν ήταν δυνατή η εκκίνηση αυτού του βοηθού.",
+    "noAssistants": "Δεν βρέθηκαν βοηθοί σε αυτήν την κατηγορία.",
+    "selectAssistantHint": "Άνοιγμα επιλογέα βοηθών",
     "subtitle": "Επιλεγμένοι βοηθοί ΤΝ για κώδικα, γράψιμο, ανάλυση, οργάνωση και άλλα.",
     "searchPlaceholder": "Αναζήτηση βοηθών…",
     "useAssistant": "Χρήση βοηθού",
@@ -254,9 +264,12 @@
     "search": "Αναζήτηση",
     "clearSearch": "Καθαρισμός αναζήτησης",
     "noChatsYet": "Δεν υπάρχουν συνομιλίες ακόμη",
+    "noResults": "Δεν υπάρχουν συνομιλίες ακόμη",
     "startFirstConversation": "Ξεκίνησε την πρώτη σου συνομιλία.",
     "startChat": "Έναρξη συνομιλίας",
+    "startNewChat": "Έναρξη συνομιλίας",
     "errorLoadingHistory": "Σφάλμα κατά τη φόρτωση ιστορικού",
+    "loading": "Φόρτωση ιστορικού...",
     "renameChat": "Μετονομασία συνομιλίας",
     "enterNewTitle": "Γράψε νέο τίτλο",
     "deleteChat": "Διαγραφή συνομιλίας;",
@@ -264,9 +277,7 @@
     "rename": "Μετονομασία",
     "unpin": "Ξεκαρφίτσωμα",
     "pin": "Καρφίτσωμα",
-    "untitled": "Χωρίς τίτλο",
-    "noResults": "Δεν υπάρχουν συνομιλίες ακόμη",
-    "startNewChat": "Έναρξη συνομιλίας"
+    "untitled": "Χωρίς τίτλο"
   },
   "settings": {
     "title": "Ρυθμίσεις",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium ενεργό",
-        "subtitle": "Ευχαριστούμε που στηρίζεις το ChatCloud"
+        "subtitle": "Ευχαριστούμε που στηρίζεις το Cloud AI"
       },
       "restore": {
         "title": "Επαναφορά αγορών",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Αυτός ο σύνδεσμος δεν μπορεί να ανοίξει τώρα.",
       "restoreSuccessTitle": "Επαναφέρθηκε",
       "restoreSuccessMessage": "Οι αγορές σου επαναφέρθηκαν.",
+      "restoreEmptyTitle": "Δεν βρέθηκαν αγορές",
+      "restoreEmptyMessage": "Δεν βρήκαμε ενεργή αγορά για επαναφορά σε αυτόν τον λογαριασμό.",
       "restoreErrorTitle": "Αδυναμία επαναφοράς",
       "restoreErrorMessage": "Δεν γίνεται να επαναφερθούν οι αγορές τώρα.",
       "resetConfirmTitle": "Επαναφορά δεδομένων εφαρμογής;",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Προσαρμοσμένο"
     },
+    "notEnoughCoinsTitle": "Δεν υπάρχουν αρκετά νομίσματα",
+    "notEnoughCoinsMessage": "Το τρέχον υπόλοιπό σας είναι πολύ χαμηλό για αυτήν την εικόνα.",
     "modelTaglines": {
       "runwareFluxSchnell": "Ταχύτερο μοντέλο",
       "runwareFluxKrea": "Δημιουργικό & στιλιζαρισμένο",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Δεν αποθηκεύτηκε",
       "shareFailedTitle": "Δεν κοινοποιήθηκε",
-      "tryAgain": "Δοκίμασε ξανά."
+      "tryAgain": "Δοκίμασε ξανά.",
+      "savedTitle": "Αποθηκεύτηκε",
+      "savedMessage": "Η εικόνα αποθηκεύτηκε στη συλλογή σας.",
+      "permissionTitle": "Απαιτείται άδεια",
+      "permissionMessage": "Επιτρέψτε την πρόσβαση στον αποθηκευτικό χώρο για να αποθηκεύετε εικόνες στη συλλογή σας."
     },
     "result": {
       "complete": "Έτοιμο"
@@ -498,12 +517,47 @@
       "save": "Αποθήκευση",
       "share": "Κοινοποίηση"
     },
+    "alerts": {
+      "savedTitle": "Αποθηκεύτηκε",
+      "savedMessage": "Η εικόνα αποθηκεύτηκε στη συλλογή σας.",
+      "permissionTitle": "Απαιτείται άδεια",
+      "permissionMessage": "Επιτρέψτε την πρόσβαση στον αποθηκευτικό χώρο για να αποθηκεύετε εικόνες στη συλλογή σας.",
+      "saveFailedTitle": "Δεν ήταν δυνατή η αποθήκευση",
+      "tryAgain": "Δοκιμάστε ξανά."
+    },
     "accessibility": {
       "close": "Κλείσιμο",
       "delete": "Διαγραφή εικόνας",
       "edit": "Επεξεργασία εικόνας",
       "save": "Αποθήκευση εικόνας",
       "share": "Κοινοποίηση εικόνας"
+    }
+  },
+  "reportContent": {
+    "title": "Αναφορά περιεχομένου AI",
+    "subtitle": "Πείτε μας τι πρόβλημα έχει αυτό το περιεχόμενο.",
+    "privateDisclosure": "Με την υποβολή, το αναφερόμενο περιεχόμενο αποστέλλεται για έλεγχο ασφαλείας.",
+    "accessibilityLabel": "Αναφορά περιεχομένου AI",
+    "reasons": {
+      "sexual": "Σεξουαλικό περιεχόμενο ή γυμνό",
+      "violence_self_harm": "Βία ή αυτοτραυματισμός",
+      "hate_harassment": "Μίσος ή παρενόχληση",
+      "child_safety": "Ανησυχία για την ασφάλεια παιδιών",
+      "scam_deceptive": "Απάτη ή παραπλανητικό περιεχόμενο",
+      "other": "Άλλο"
+    },
+    "errors": {
+      "reasonRequired": "Επιλέξτε έναν λόγο πριν από την υποβολή.",
+      "submit": "Δεν ήταν δυνατή η υποβολή της αναφοράς. Δοκιμάστε ξανά."
+    },
+    "success": {
+      "title": "Ευχαριστούμε. Η αναφορά σας υποβλήθηκε.",
+      "subtitle": "Θα χρησιμοποιήσουμε τις αναφορές για να βελτιώσουμε την ασφάλεια του περιεχομένου."
+    },
+    "actions": {
+      "report": "Αναφορά",
+      "submit": "Υποβολή αναφοράς",
+      "done": "Τέλος"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Γνώρισε το",
       "titleHighlight": "Image Studio",
-      "subtitle": "Δημιούργησε & επεξεργάσου εικόνες με ΤΝ — μέσα στο ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Δημιούργησε & επεξεργάσου εικόνες με ΤΝ — μέσα στο Cloud AI."
     },
     "relaxView": {
       "title": "Γνώρισε την ΤΝ σου",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "ΛΥΣΕΙΣ ΤΝ ΓΙΑ ΕΠΙΧΕΙΡΗΣΕΙΣ",
       "description": "Ενίσχυσε την ομάδα σου με σύγχρονη τεχνητή νοημοσύνη.",
       "stats": "Εμπιστεύονται 500k+ χρήστες",
@@ -592,10 +645,10 @@
       "value": "Καλύτερη αξία"
     },
     "pack": {
+      "creditsLabel": "{{credits}} credits",
       "tokensLabel": "{{credits}} credits",
       "defaultName": "Πακέτο {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} credits"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Γίνε Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Άγνωστο σφάλμα"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Απαιτείται Premium",
+    "upgrade": "Αναβάθμιση",
+    "modelRequiredMessage": "Αυτό το μοντέλο απαιτεί Premium. Αναβαθμίστε για πρόσβαση σε GPT-5, Grok 4, Claude και άλλα προηγμένα μοντέλα.",
+    "assistantsRequiredMessage": "Οι βοηθοί απαιτούν Premium. Αναβαθμίστε για πρόσβαση σε εξειδικευμένους βοηθούς AI για γυμναστική, προγραμματισμό, γράψιμο και άλλα.",
+    "assistantsTitle": "Απαιτείται Premium",
+    "assistantsMessage": "Οι βοηθοί απαιτούν Premium. Αναβαθμίστε για πρόσβαση σε εξειδικευμένους βοηθούς AI για γυμναστική, προγραμματισμό, γράψιμο και άλλα."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Κλείσιμο οθόνης πληρωμής",
+    "unavailableTitle": "Οι αγορές δεν είναι διαθέσιμες",
+    "unavailableMessage": "Η χρέωση Android δεν έχει ρυθμιστεί ακόμη.",
+    "restoreEmptyTitle": "Δεν βρέθηκαν αγορές",
+    "restoreEmptyMessage": "Δεν βρήκαμε ενεργή αγορά για επαναφορά σε αυτόν τον λογαριασμό.",
+    "restoreFailedTitle": "Η επαναφορά απέτυχε",
+    "restoreFailedMessage": "Δεν είναι δυνατή η επαναφορά των αγορών αυτήν τη στιγμή.",
+    "productsUnavailableTitle": "Δεν υπάρχουν διαθέσιμα πλάνα",
+    "productsUnavailableMessage": "Δεν υπάρχουν διαθέσιμες συνδρομές Android αυτήν τη στιγμή.",
+    "purchaseFailedTitle": "Η αγορά απέτυχε",
+    "purchaseFailedMessage": "Δεν είναι δυνατή η ολοκλήρωση αυτής της αγοράς αυτήν τη στιγμή.",
     "restore": "Επαναφορά",
     "restoreRestoring": "Γίνεται επαναφορά…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Όροι",
       "privacy": "Απόρρητο"
+    },
+    "premium": {
+      "headline": "Όλα τα premium AI σε ένα πρόγραμμα",
+      "subtitleLine1": "Συνομιλία, κωδικοποίηση, δημιουργία και σχέδιο",
+      "subtitleLine2": "με προηγμένα μοντέλα.",
+      "enableTrial": "Ενεργοποίηση δωρεάν δοκιμής",
+      "annual": "Ετήσιο",
+      "saveBadge": "Εξοικονομήστε 83%",
+      "year": "έτος",
+      "week": "εβδομάδα",
+      "termsOfUse": "Όροι Χρήσης",
+      "privacyPolicy": "Πολιτική Απορρήτου"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Επαναδημιουργία απάντησης",
     "regenerateResponseHint": "Δημιουργία νέας απάντησης",
     "copyCode": "Αντιγραφή κώδικα",
+    "copied": "Αντιγράφηκε",
     "image": "εικόνα",
     "loading": "Φόρτωση…",
     "loadingChat": "Φόρτωση συνομιλίας...",
     "offlineBanner": "Είσαι εκτός σύνδεσης. Δεν μπορούν να σταλούν μηνύματα.",
+    "offlineError": "Δεν υπάρχει σύνδεση στο διαδίκτυο. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "imagePickerErrorTitle": "Σφάλμα επιλογής εικόνας",
     "imagePickerErrorMessage": "Δεν ήταν δυνατή η πρόσβαση στις φωτογραφίες. Προσπάθησε ξανά.",
     "messageTooLong": "Το μήνυμα είναι πολύ μεγάλο ({{length}}). Το όριο είναι {{limit}}.",
     "sendFailed": "Η αποστολή απέτυχε.",
     "modelNoImageSupport": "Το επιλεγμένο μοντέλο δεν υποστηρίζει εικόνες. Επιλέξτε διαφορετικό μοντέλο.",
     "voiceStartFailed": "Δεν ήταν δυνατή η έναρξη φωνής.",
+    "voiceNoSpeechDetected": "Δεν αναγνωρίστηκε φωνή. Δοκιμάστε ξανά.",
     "emptyTitle": "Τι θες να κάνουμε;",
     "emptySubtitle": "Ξεκίνα μια συζήτηση με ΤΝ",
     "privateTitle": "Ιδιωτική συνομιλία",
     "privateSubtitle": "Αυτή η συνομιλία δεν θα εμφανιστεί στο ιστορικό",
+    "startPrivateChat": "Έναρξη ιδιωτικής συνομιλίας",
+    "endPrivateChat": "Τερματισμός ιδιωτικής συνομιλίας",
     "permissions": {
       "photosTitle": "Απαιτείται πρόσβαση σε φωτογραφίες",
       "photosMessage": "Χρειάζεται πρόσβαση στις φωτογραφίες για να τις επιλέξεις.",
@@ -753,7 +843,19 @@
       "share": "Κοινοποίηση",
       "regenerate": "Επαναδημιουργία",
       "retryFromHere": "Ξανά από εδώ",
+      "report": "Αναφορά",
       "cancel": "Άκυρο"
+    },
+    "markdown": {
+      "copy": "Αντιγραφή",
+      "copied": "Αντιγράφηκε",
+      "table": "ΠΙΝΑΚΑΣ",
+      "watchVideo": "Παρακολούθηση βίντεο",
+      "wikipedia": "Βικιπαίδεια",
+      "link": "Σύνδεσμος",
+      "note": "Σημείωση",
+      "warning": "Προειδοποίηση",
+      "tip": "Συμβουλή"
     },
     "messageActionTitle": "Μήνυμα",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Οργάνωσε τη μέρα μου",
       "planDaySubtitle": "με tips παραγωγικότητας"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Επιλέξτε ένα θέμα",
       "title": "Τι θέλεις να κάνεις;",
@@ -846,81 +946,59 @@
     "library": "Συλλογή"
   },
   "common": {
-    "new": "ΝΕΟ",
-    "best": "ΚΑΛΥΤΕΡΟ",
-    "cancel": "Άκυρο",
-    "save": "Αποθήκευση",
-    "delete": "Διαγραφή",
-    "close": "Κλείσιμο",
-    "allow": "Να επιτρέπεται",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Επανάληψη",
+    "cancel": "Άκυρο",
+    "allow": "Να επιτρέπεται",
+    "notNow": "Όχι τώρα",
+    "openSettings": "Άνοιγμα ρυθμίσεων",
+    "close": "Κλείσιμο",
+    "save": "Αποθήκευση",
+    "tryAgain": "Δοκιμάστε ξανά"
   },
   "rateUs": {
-    "title": "Απολαμβάνετε το ChatCloud;",
+    "title": "Απολαμβάνετε το Cloud AI;",
     "subtitle": "Η ανατροφοδότησή σας μας βοηθά να βελτιωθούμε. Θα μπορούσατε να μας αξιολογήσετε στο App Store;",
     "rateNow": "Αξιολογήστε τώρα",
     "maybeLater": "Ίσως αργότερα",
     "dontAskAgain": "Μην ρωτήσετε ξανά"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Μοναδική προσφορά",
+    "discount": "ΕΚΠΤΩΣΗ {{percent}}%",
+    "subtitle": "Δεν θα ξαναδείτε αυτήν την προσφορά.",
     "badgeLine1": "Αποκλειστικό",
     "badgeLine2": "Εφάπαξ προσφορά",
     "upgradeNow": "Αναβάθμιση τώρα για {{price}}",
     "loadingPrice": "Φόρτωση...",
     "termsOfUse": "Όροι Χρήσης",
     "privacyPolicy": "Πολιτική Απορρήτου",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Απεριόριστη πρόσβαση σε",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Απεριόριστη πρόσβαση στο GPT-4",
+      "geminiPro": "Πρόσβαση στο Gemini Pro",
+      "grokInsights": "Χρησιμοποιήστε το Grok για νέες ιδέες",
+      "priorityAccess": "Προτεραιότητα πρόσβασης και ταχύτερες απαντήσεις"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Καλύτερη αξία",
+    "annualPremium": "Ετήσιο Premium",
+    "oneTimePayment": "Εφάπαξ πληρωμή",
+    "wasPrice": "από",
+    "continue": "Συνέχεια",
+    "restore": "Επαναφορά",
+    "terms": "Όροι",
+    "privacy": "Απόρρητο",
+    "successTitle": "Επιτυχία!",
+    "successMessage": "Ευχαριστούμε για την αγορά σας! Απολαύστε πρόσβαση premium για τους επόμενους 12 μήνες.",
+    "errorTitle": "Η αγορά απέτυχε",
+    "errorMessage": "Κάτι πήγε στραβά. Δοκιμάστε ξανά.",
+    "restoreSuccessTitle": "Επαναφέρθηκαν",
+    "restoreSuccessMessage": "Οι αγορές σας επαναφέρθηκαν.",
+    "restoreErrorTitle": "Η επαναφορά απέτυχε",
+    "restoreErrorMessage": "Δεν βρέθηκαν αγορές για επαναφορά.",
+    "unavailableTitle": "Οι αγορές δεν είναι διαθέσιμες",
+    "unavailableMessage": "Η χρέωση Android δεν έχει ρυθμιστεί ακόμη."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "ΜΥΘΙΚΟ"
         }
       }
+    },
+    "checkIn": {
+      "title": "Πάρτε τα καθημερινά σας νομίσματα",
+      "subtitle": "Επιστρέφετε κάθε μέρα — η ανταμοιβή μεγαλώνει.",
+      "cta": "Δήλωση",
+      "claimed": "Ελήφθη! +{{amount}} νομίσματα",
+      "later": "Αργότερα"
     }
+  },
+  "app": {
+    "version": "Έκδοση {{version}}",
+    "offlineBanner": "Είστε εκτός σύνδεσης",
+    "launch": {
+      "accessibilityLabel": "Εκκίνηση του Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, έτοιμη όποτε τη χρειαστείς"
+    },
+    "errors": {
+      "modelsLoadTitle": "Αποτυχία φόρτωσης μοντέλων",
+      "modelsLoadMessage": "Δεν είναι δυνατή η φόρτωση των μοντέλων AI. Η εφαρμογή θα χρησιμοποιήσει τα προεπιλεγμένα μοντέλα. Ελέγξτε τη σύνδεσή σας στο διαδίκτυο.",
+      "modelsLoadTimeout": "Η φόρτωση των μοντέλων διήρκεσε πολύ. Η εφαρμογή θα χρησιμοποιήσει τα προεπιλεγμένα μοντέλα. Δοκιμάστε ξανά.",
+      "modelsLoadNetwork": "Δεν υπάρχει σύνδεση στο διαδίκτυο. Η εφαρμογή θα χρησιμοποιήσει τα προεπιλεγμένα μοντέλα. Ελέγξτε τη σύνδεσή σας.",
+      "deviceIdTitle": "Σφάλμα αρχικοποίησης",
+      "deviceIdMessage": "Αποτυχία αρχικοποίησης του αναγνωριστικού συσκευής. Ορισμένες λειτουργίες ενδέχεται να μην λειτουργούν σωστά.",
+      "storageTitle": "Σφάλμα αποθήκευσης",
+      "storageMessage": "Δεν είναι δυνατή η πρόσβαση στον τοπικό αποθηκευτικό χώρο. Ορισμένες λειτουργίες ενδέχεται να μην λειτουργούν σωστά.",
+      "crashTitle": "Κάτι πήγε στραβά.",
+      "crashSubtitle": "Δοκιμάστε ξανά.",
+      "crashLabel": "Η εφαρμογή κατέρρευσε"
+    },
+    "proxyErrors": {
+      "genericTitle": "Κάτι πήγε στραβά",
+      "genericMessage": "Δοκιμάστε ξανά.",
+      "rateLimitTitle": "Πάρα πολλά αιτήματα",
+      "rateLimitMessage": "Διαχειριζόμαστε πολλά αιτήματα. Δοκιμάστε ξανά σε λίγο.",
+      "rateLimitRetryAfter": "Διαχειριζόμαστε πολλά αιτήματα. Δοκιμάστε ξανά σε περίπου {{seconds}} δευτερόλεπτα.",
+      "restrictedTitle": "Περιορισμένο περιεχόμενο",
+      "restrictedMessage": "Αυτό το αίτημα αποκλείστηκε από τα φίλτρα ασφαλείας.",
+      "insufficientCoinsTitle": "Δεν υπάρχουν αρκετά νομίσματα",
+      "insufficientCoinsMessage": "Το τρέχον υπόλοιπό σας είναι πολύ χαμηλό για αυτό το αίτημα.",
+      "imageUnavailableTitle": "Η εικόνα δεν είναι διαθέσιμη",
+      "imageUnavailableMessage": "Το αρχείο της εικόνας που δημιουργήθηκε ήταν προσωρινά μη διαθέσιμο. Δοκιμάστε ξανά.",
+      "authorizationTitle": "Πρόβλημα εξουσιοδότησης",
+      "authorizationMessage": "Δεν ήταν δυνατή η επαλήθευση του λογαριασμού σας. Δοκιμάστε ξανά.",
+      "serverTitle": "Πρόβλημα διακομιστή",
+      "serverMessage": "Οι διακομιστές μας αντιμετώπισαν πρόβλημα. Δοκιμάστε ξανά σύντομα.",
+      "timeoutTitle": "Καθυστερεί υπερβολικά",
+      "timeoutMessage": "Το αίτημα έληξε. Δοκιμάστε ξανά.",
+      "networkTitle": "Χωρίς σύνδεση",
+      "networkMessage": "Δεν υπάρχει σύνδεση στο διαδίκτυο. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+      "requestTitle": "Πρόβλημα αιτήματος",
+      "requestMessage": "Κάτι πήγε στραβά με το αίτημά σας. Δοκιμάστε ξανά."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Ενεργοποίηση Premium",
+    "activateMessage": "Θέλετε να ενεργοποιήσετε το premium αξιολογητή;",
+    "activateAction": "Ενεργοποίηση",
+    "deactivateTitle": "Απενεργοποίηση Premium",
+    "deactivateMessage": "Θέλετε να απενεργοποιήσετε το premium αξιολογητή;",
+    "deactivateAction": "Απενεργοποίηση"
   },
   "push": {
     "dailyReward": {
       "title": "Ημερήσια ανταμοιβή",
       "body": "Μην χάσεις τα ημερήσια νομίσματά σου — διεκδίκησέ τα πριν τα μεσάνυχτα."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Μη χάνετε τα καθημερινά σας νομίσματα",
+      "body": "Στέλνουμε μία υπενθύμιση την ημέρα, ώστε το σερί σας να συνεχίζεται και τα νομίσματα να αυξάνονται. Χωρίς ανεπιθύμητα μηνύματα, μπορείτε να το απενεργοποιήσετε ανά πάσα στιγμή.",
+      "enable": "Ενεργοποίηση υπενθυμίσεων",
+      "skip": "Όχι τώρα"
     }
   }
 }

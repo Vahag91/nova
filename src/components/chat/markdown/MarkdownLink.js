@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
 import { Text, Linking, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors } from '../../../styles/colors';
 import { userStyles, assistantStyles } from './markdownStyles';
 
 export const MarkdownLink = ({ node, children, isUser }) => {
+  const { t } = useTranslation();
   const url = node?.attributes?.href || '';
   const normalizedUrl = useMemo(() => {
     if (!url) return '';
@@ -38,11 +40,11 @@ export const MarkdownLink = ({ node, children, isUser }) => {
   const title = useMemo(() => {
     if (textContent) return textContent;
     if (isWiki && parsed.path) {
-      const t = parsed.path.split('/').pop() || '';
-      return decodeURIComponent(t.replace(/_/g, ' ')) || 'Wikipedia';
+      const slug = parsed.path.split('/').pop() || '';
+      return decodeURIComponent(slug.replace(/_/g, ' ')) || t('chat.markdown.wikipedia');
     }
-    return parsed.domain || 'Link';
-  }, [textContent, isWiki, parsed]);
+    return parsed.domain || t('chat.markdown.link');
+  }, [textContent, isWiki, parsed, t]);
 
   const baseStyle = isUser ? userStyles.link : assistantStyles.link;
   const linkColor = isUser ? '#FFFFFF' : colors.primary;
@@ -61,7 +63,7 @@ export const MarkdownLink = ({ node, children, isUser }) => {
     return (
       <Text style={[baseStyle, styles.inlineLink]} onPress={onPress}>
         <Text style={[styles.playGlyph, { color: '#FF6B6B' }]}>▶</Text>
-        <Text style={styles.linkLabel}> Watch Video </Text>
+        <Text style={styles.linkLabel}> {t('chat.markdown.watchVideo')} </Text>
         <Text style={[styles.arrow, { color: linkColor }]}>↗</Text>
       </Text>
     );

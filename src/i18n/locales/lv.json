@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Izvēlieties modeli",
+    "searchPlaceholder": "Meklēt modeļus...",
+    "noModelsFound": "Nav atrasts neviens modelis",
+    "noModelsAvailable": "Nav pieejami modeļi",
+    "currentModel": "Pašreizējais modelis: {{name}}. Pieskarieties, lai mainītu modeli.",
+    "openHint": "Atver modeļa atlases izvēlni",
+    "closeLabel": "Aizveriet modeļa atlasītāju",
+    "searchLabel": "Meklēt modeļus",
+    "searchHint": "Ierakstiet, lai filtrētu pieejamos modeļus",
+    "modelLabel": "{{name}} modelis",
+    "selectHint": "Izvēlieties {{name}} modeli",
+    "currentlySelected": "Šobrīd izvēlētais modelis",
+    "genericModel": "{{provider}} modelis",
+    "badges": {
+      "new": "JAUNS",
+      "best": "LABĀKAIS"
+    }
+  },
+  "models": {
+    "gpt-4o": "Jaudīgākais AI modelis",
+    "gpt-4o-mini": "Ātri ikdienas darbiem",
+    "gpt-5": "Visspēcīgākais universālais AI",
+    "gpt-5-chat-latest": "Optimizēts tērzēšanai un dialogam",
+    "gpt-5-mini": "Ātrs un uzticams GPT-5",
+    "gpt-5.4-nano": "Viegls modelis vienkāršiem uzdevumiem",
+    "o4-mini": "Efektīva spriešanas modelis",
+    "gpt-4.1-mini": "Kompakts, spējīgs GPT-4.1",
+    "claude-3-haiku": "Ātrs un mērķtiecīgs antropiskais AI",
+    "claude-3.7-sonnet": "Anthropic izsmalcināts arguments",
+    "gemini-2.5-Flash": "Google vismodernākais modelis",
+    "gemini-2.5-flash": "Google vismodernākais modelis",
+    "gemini-2.0-flash": "Ātrs un precīzs Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Jaudīgākais AI modelis",
+    "fast_everyday": "Ātri ikdienas darbiem",
+    "fast_reasoning": "Ātrs modelis ar labu argumentāciju",
+    "great_reasoning": "Uzlabots spriešanas modelis",
+    "coding_reasoning": "Uzlabota kodēšana un argumentācija",
+    "better_coding": "Labāk kodēšanai un argumentācijai",
+    "best_overall": "Labākais universālais AI modelis",
+    "best_google": "Google labākais modelis",
+    "best_xai": "xAI jaudīgākais modelis",
+    "creative_focus": "Lieliski piemērots radošai rakstīšanai",
+    "code_helper": "Lieliski piemērots kodēšanas palīdzībai",
+    "chat_focus": "Optimizēts tērzēšanai",
+    "long_context": "Lieliski piemērots gariem kontekstiem",
+    "budget_friendly": "Budžetam draudzīgs AI modelis",
+    "ultra_fast": "Īpaši ātras atbildes",
+    "safe_default": "Droša noklusējuma izvēle",
+    "multilingual": "Spēcīgs daudzvalodu atbalsts",
+    "vision_strong": "Lieliski ar attēliem un redzējumu",
+    "data_analysis": "Piemērots datu analīzei",
+    "structured_tasks": "Piemērots strukturētiem uzdevumiem",
+    "everyday_helper": "Ikdienas asistenta modelis",
+    "concise_answers": "Īsas, kodolīgas atbildes",
+    "detailed_answers": "Detalizētas soli pa solim atbildes",
+    "experimental": "Eksperimentāls nākamās paaudzes modelis",
+    "reliable_classic": "Uzticams klasisks modelis",
+    "lightweight": "Viegls, zemu izmaksu modelis",
+    "chatty_personal": "Draudzīgāks un personiskāks",
+    "pro_users": "Vislabāk enerģētiskajiem lietotājiem",
+    "research_helper": "Piemērots pētījumiem un piezīmēm",
+    "reasoning_strong": "Uzlabots spriešanas modelis"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Antropisks",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Cits"
+  },
+  "navigation": {
+    "chat": "Jauna tērzēšana",
+    "history": "Vēsture",
+    "rewards": "Ikdienas balvas",
+    "assistants": "Asistenti",
+    "imagesStudio": "Image Studio",
+    "settings": "Iestatījumi",
+    "recentChats": "Pēdējās tērzēšanas sarunas",
+    "proFeatures": "Pro funkcijas",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Iegūstiet Pro funkcijas",
+      "subtitle": "Visas AI funkcijas"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Ģenerējiet, uzlabojiet un publicējiet vizuālos līdzekļus vienuviet.",
+    "cta": "Atvērt"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Izvēlieties attēlus",
+    "exitSelectionMode": "Iziet no atlases režīma",
+    "selectAll": "Atlasiet visu",
+    "noImagesYet": "Vēl nav attēlu",
+    "describeImageHint": "Tālāk aprakstiet savu attēlu un pieskarieties pie Ģenerēt.",
+    "generatedImagesGallery": "Ģenerēta attēlu galerija",
+    "describeImagePlaceholder": "Aprakstiet vēlamo attēlu…",
+    "deleteConfirmTitle": "Dzēst attēlus",
+    "deleteConfirmMessage": "Vai tiešām vēlaties dzēst atlasītos attēlus? Šo darbību nevar atsaukt.",
+    "cancel": "Atcelt",
+    "delete": "Dzēst",
+    "generate": "Ģenerēt",
+    "generating": "Notiek ģenerēšana…",
+    "latest": "Jaunākais",
+    "insertToChat": "Ievietojiet, lai tērzētu",
+    "pleaseWait": "Lūdzu, uzgaidiet…",
+    "processing": "Notiek apstrāde...",
+    "tapToUploadImage": "Pieskarieties, lai augšupielādētu attēlu",
+    "camera": "Augšupielādējiet fotoattēlus",
+    "library": "Bibliotēka",
+    "enterPrompt": "Lūdzu, ievadiet uzvedni teksta pārveidošanai attēlā",
+    "openInBrowser": "Atvērt pārlūkprogrammā",
+    "makeVariations": "Veiciet variācijas",
+    "deleteAllFromGeneration": "Dzēst visu no šīs paaudzes",
+    "imageOptionsTitle": "Attēla opcijas",
+    "imageOptionsMessage": "Ko jūs vēlētos darīt ar šo attēlu?",
+    "insertMarkdownHeader": "Šeit ir attēls:",
+    "variationSuffix": "— iepriekšējā attēla variācija",
+    "selectedCount": "atlasīts",
+    "selectedCount_one": "atlasīts",
+    "selectedCount_other": "atlasīts",
+    "imageDescriptionInput": "Attēla apraksta ievade",
+    "imageDescriptionHint": "Ievadiet ģenerējamā attēla aprakstu",
+    "openModelSettings": "Atveriet modeļa iestatījumus",
+    "modelSettingsHint": "Pieskarieties, lai mainītu modeli un iestatījumus",
+    "openPhotoGallery": "Atvērt fotogaleriju",
+    "clearInput": "Notīrīt ievadi",
+    "generatedImage": "Ģenerēts attēls",
+    "autoSelectedModel": "Automātiski atlasīts {{model}} režīmam {{mode}}",
+    "deleteSelectedConfirmTitle": "Dzēst attēlus",
+    "deleteSelectedConfirmMessage": "Vai tiešām vēlaties dzēst attēlus? Šo darbību nevar atsaukt."
+  },
+  "imageStudio": {
+    "generateImage": "Ģenerēt attēlu",
+    "generatingImage": "Attēla ģenerēšana",
+    "generateImageHint": "Pieskarieties, lai ģenerētu attēlu, pamatojoties uz jūsu aprakstu",
+    "imageDescriptionInput": "Attēla apraksta ievade",
+    "imageDescriptionHint": "Ievadiet ģenerējamā attēla aprakstu",
+    "openModelSettings": "Atveriet modeļa iestatījumus",
+    "modelSettingsHint": "Pieskarieties, lai mainītu modeli un iestatījumus",
+    "openPhotoGallery": "Atvērt fotogaleriju",
+    "clearInput": "Notīrīt ievadi",
+    "generatedImage": "Ģenerēts attēls"
+  },
+  "assistants": {
+    "title": "Asistenti",
+    "defaultTitle": "Asistents",
+    "errorTitle": "Kaut kas nogāja greizi",
+    "errorMessage": "Nevarēja palaist šo palīgu.",
+    "noAssistants": "Šajā kategorijā nav atrasts neviens palīgs.",
+    "selectAssistantHint": "Atvērt palīga atlasītāju",
+    "subtitle": "Kurēti AI speciālisti, kas ir gatavi kodēšanai, rakstīšanai, analīzei, plānošanai un citam darbam.",
+    "searchPlaceholder": "Meklēšanas palīgi…",
+    "useAssistant": "Izmantojiet palīgu",
+    "selectAssistant": "Izvēlieties palīgu",
+    "description": "Apraksts",
+    "systemPrompt": "Sistēmas uzvedne",
+    "chooseModel": "Izvēlieties modeli",
+    "categoryAll": "Visi",
+    "categories": {
+      "everyday": "Ikdienā",
+      "life": "Dzīve",
+      "health": "Veselība",
+      "schoolWork": "Skola un darbs",
+      "coding": "Kodēšana",
+      "creative": "Radošs",
+      "general": "Ģenerālis"
+    },
+    "presets": {
+      "default": {
+        "name": "Noklusējuma palīgs",
+        "description": "Līdzsvarota palīdzība ikdienas lietām."
+      },
+      "quick": {
+        "name": "Ātrās atbildes",
+        "description": "Īsas, tiešas atbildes."
+      },
+      "planner": {
+        "name": "Dienas plānotājs",
+        "description": "Plānojiet savu dienu un rutīnas."
+      },
+      "recipes": {
+        "name": "Ēdieni un receptes",
+        "description": "Ko gatavot, ar to, kas tev ir."
+      },
+      "fitness": {
+        "name": "Fitnesa treneris",
+        "description": "Sīki ieradumi un mājas treniņi."
+      },
+      "money": {
+        "name": "Naudas draugs",
+        "description": "Vienkārši budžeti un tēriņu padomi."
+      },
+      "study": {
+        "name": "Mācību palīgs",
+        "description": "Paskaidrojiet vienkārši. Apjautājiet mani."
+      },
+      "email": {
+        "name": "E-pasts un atsākšana",
+        "description": "Rakstiet skaidrus e-pastus un CV rindas."
+      },
+      "translator": {
+        "name": "Tulkotājs",
+        "description": "Tulkot + mācīt frāzes."
+      },
+      "travel": {
+        "name": "Ceļojuma draugs",
+        "description": "Vienkārši plāni un iepakošanas saraksti."
+      },
+      "tech": {
+        "name": "Tehniskais atbalsts (vienkāršs)",
+        "description": "Tālrunis, lietotnes, Wi-Fi pamati."
+      },
+      "summarizer": {
+        "name": "TL;DR apkopotājs",
+        "description": "Īsās lodes + vienas līnijas TL;DR."
+      },
+      "gift": {
+        "name": "Dāvanu meklētājs",
+        "description": "Idejas pēc budžeta un interesēm."
+      },
+      "party": {
+        "name": "Pasākumu plānotājs (viegls)",
+        "description": "Ātri plānojiet nelielu ballīti."
+      },
+      "social": {
+        "name": "Sociālo ziņu veidotājs",
+        "description": "Ziņu melnraksti ar opcijām."
+      },
+      "interview": {
+        "name": "Interviju treneris",
+        "description": "Prakses atbildes (ZVAIGZNE)."
+      },
+      "homefix": {
+        "name": "Mājas labošanas rokasgrāmata",
+        "description": "Vienkārša DIY problēmu novēršana."
+      },
+      "pet": {
+        "name": "Mājdzīvnieku kopšanas draugs",
+        "description": "Ēdināšana, pastaigas, pamatapmācība."
+      },
+      "mindful": {
+        "name": "Uzmanīga minūte",
+        "description": "1-3 min mierīgas pauzes."
+      },
+      "polite": {
+        "name": "Pieklājīgs pārrakstītājs",
+        "description": "Skaisti pārrakstiet tekstus un atbildes."
+      }
+    }
+  },
+  "history": {
+    "title": "Vēsture",
+    "searchPlaceholder": "Meklēt tērzēšanu…",
+    "newChat": "Jauna tērzēšana",
+    "new": "+ Jauns",
+    "search": "Meklēt",
+    "clearSearch": "Notīrīt meklēšanu",
+    "noChatsYet": "Vēl nav tērzēšanas",
+    "noResults": "Vēl nav tērzēšanas",
+    "startFirstConversation": "Sāciet savu pirmo sarunu.",
+    "startChat": "Sāciet tērzēšanu",
+    "startNewChat": "Sāciet jaunu tērzēšanu",
+    "errorLoadingHistory": "Ielādējot vēsturi, radās kļūda",
+    "loading": "Notiek vēstures ielāde...",
+    "renameChat": "Pārdēvēt tērzēšanu",
+    "enterNewTitle": "Ievadiet jaunu nosaukumu",
+    "deleteChat": "Vai dzēst tērzēšanu?",
+    "deleteChatMessage": "“{{title}}” tiks dzēsts.",
+    "rename": "Pārdēvēt",
+    "unpin": "Atspraust",
+    "pin": "Piespraust",
+    "untitled": "Bez nosaukuma"
+  },
+  "settings": {
+    "title": "Iestatījumi",
+    "model": "Modelis",
+    "searchPlaceholder": "Meklēt modeļus…",
+    "temperatureForCurrentModel": "Temperatūra pašreizējam modelim",
+    "customFor": "Pielāgots {{model}}",
+    "usingDefault": "Izmantojot noklusējuma {{temperature}}",
+    "resetToDefault": "Atiestatīt uz noklusējuma vērtību",
+    "defaultTemperature": "Noklusējuma temperatūra (atkāpšanās)",
+    "usedByModelsWithoutOverride": "Izmanto modeļos bez pielāgotas ignorēšanas",
+    "dangerZone": "Bīstamības zona",
+    "clearAllChatsAndSettings": "Notīrīt visas tērzēšanas sarunas un iestatījumus",
+    "about": "Par",
+    "version": "Versija {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Privātuma politika",
+    "hero": {
+      "label": "Īpašais piedāvājums",
+      "title": "Neierobežota piekļuve\n& Pro funkcijas",
+      "upgrade": "Jaunināt",
+      "manage": "Pārvaldīt plānu"
+    },
+    "sections": {
+      "premium": "Premium plāns",
+      "data": "Lietotāja dati",
+      "support": "Atbalsts un juridiskie pakalpojumi"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Iegūstiet Premium",
+        "subtitle": "Atbloķējiet neierobežotus izveides rīkus"
+      },
+      "premiumActive": {
+        "title": "Premium ir aktīvs",
+        "subtitle": "Paldies par atbalstu Cloud AI"
+      },
+      "restore": {
+        "title": "Atjaunot pirkumus",
+        "subtitle": "Izmantojiet, ja mainījāt ierīces"
+      },
+      "history": {
+        "title": "Pārvaldīt tērzēšanas vēsturi",
+        "subtitle": "Skatiet un dzēsiet savas iepriekšējās sesijas"
+      },
+      "reset": {
+        "title": "Atiestatīt tērzēšanas sarunas un preferences",
+        "subtitle": "Notīra visus šajā ierīcē saglabātos datus"
+      },
+      "rate": {
+        "title": "Novērtējiet mūs",
+        "error": "Nevar atvērt veikala lapu."
+      },
+      "support": {
+        "title": "Atbalsts",
+        "subtitle": "Sazinieties ar mums tiešsaistē",
+        "error": "Nevar atvērt kontaktu lapu."
+      },
+      "privacy": {
+        "title": "Privātuma politika",
+        "error": "Nevar atvērt privātuma politiku."
+      },
+      "terms": {
+        "title": "Lietošanas noteikumi",
+        "error": "Nevar atvērt lietošanas noteikumus."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Nav pieejams",
+      "linkUnavailableMessage": "Pašlaik nevar atvērt šo saiti.",
+      "restoreSuccessTitle": "Atjaunots",
+      "restoreSuccessMessage": "Jūsu pirkumi ir atjaunoti.",
+      "restoreEmptyTitle": "Nav atrasts neviens pirkums",
+      "restoreEmptyMessage": "Mēs nevarējām atrast aktīvu pirkumu, ko atjaunot šim kontam.",
+      "restoreErrorTitle": "Atjaunot neizdevās",
+      "restoreErrorMessage": "Pašlaik nevar atjaunot pirkumus.",
+      "resetConfirmTitle": "Vai atiestatīt lietotnes datus?",
+      "resetConfirmMessage": "Tādējādi tiek noņemtas visas tērzēšanas sarunas un vietējās preferences.",
+      "resetConfirmCancel": "Atcelt",
+      "resetConfirmCta": "Atiestatīt"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Izveidot",
+    "chooseStyle": "Izvēlieties stilu",
+    "aspectRatio": "Malu attiecība",
+    "starterPrompts": {
+      "title": "Startera uzvednes",
+      "items": [
+        "studijas galvas šāviens",
+        "moderna dzīvojamā istaba",
+        "tropiskā pludmale saulrietā"
+      ]
+    },
+    "promptPlaceholder": "Ierakstiet, ko vēlaties redzēt…",
+    "promptHint": "Piemērs: “Zelta retrīvers studijas apgaismojumā”",
+    "clearText": "Skaidrs teksts",
+    "generate": "Ģenerēt",
+    "generating": "Notiek ģenerēšana…"
+  },
+  "editImage": {
+    "headerTitle": "Rediģēt",
+    "chooseStyle": "Izvēlieties stilu",
+    "aspectRatio": "Malu attiecība",
+    "starterPrompts": {
+      "title": "Startera uzvednes",
+      "items": [
+        "labot apgaismojumu",
+        "noņemt fonu",
+        "mīksta portreta retušēšana"
+      ]
+    },
+    "promptPlaceholder": "Aprakstiet labojumus (neobligāti)",
+    "clearText": "Skaidrs teksts",
+    "generate": "Ģenerēt",
+    "generating": "Notiek pieteikšanās…",
+    "upload": {
+      "choose": "Izvēlieties Fotoattēlu",
+      "change": "Mainīt",
+      "remove": "Noņemt"
+    },
+    "imageUnavailable": {
+      "title": "Attēls nav pieejams",
+      "message": "Nevarēja piekļūt atlasītajam fotoattēlam. Lūdzu, atlasiet to vēlreiz un mēģiniet vēlreiz."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Karikatūra"
+      },
+      "photoreal": {
+        "name": "Fotoreāls"
+      },
+      "sketch": {
+        "name": "Skice"
+      },
+      "cyberpunk": {
+        "name": "Kiberpanks"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D ilustrācija"
+      },
+      "dark_fantasy": {
+        "name": "Tumšā fantāzija"
+      },
+      "vintage_film": {
+        "name": "Vintage filma"
+      },
+      "pastel": {
+        "name": "Pastels Estētika"
+      },
+      "neon_glow": {
+        "name": "Neona mirdzums"
+      },
+      "epic_landscape": {
+        "name": "Episkā ainava"
+      }
+    },
+    "aspectRatios": {
+      "square": "Kvadrāts",
+      "landscape": "Ainava",
+      "portrait": "Portrets"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontents",
+      "custom": "Pielāgots"
+    },
+    "notEnoughCoinsTitle": "Nepietiek monētu",
+    "notEnoughCoinsMessage": "Jūsu pašreizējais atlikums ir pārāk mazs šim attēlam.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Ātrākais modelis",
+      "runwareFluxKrea": "Radoši, stilizēti rezultāti",
+      "runwareQwenImage": "Līdzsvaroti, augstas kvalitātes rezultāti",
+      "google4": "Labākais AI attēla modelis",
+      "klingImageO1": "Augstas kontroles attēlu rediģēšana",
+      "fluxKontent": "Flux Kontent pielāgots labojumiem",
+      "runwareProvider": "Līdzsvarota kvalitāte ar uzticamu difūziju.",
+      "airProvider": "Nano Banana piešķir rotaļīgu, spilgtu toni.",
+      "googleProvider": "Google noregulēja smalkas detaļas.",
+      "klingaiProvider": "KlingAI pielāgots kontrolētiem labojumiem.",
+      "anthropicProvider": "Claude cauruļvads niansētām noskaņām.",
+      "default": "Pieskarieties, lai izpētītu pieejamos dzinējus."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "jūsu izvēlētais stils",
+    "sheetTitle": "Jūsu redzējuma veidošana",
+    "sheetSubtitle": "Īss malks servera kafijas, kamēr mēs sajaucam {{style}} uzvednē.",
+    "phases": {
+      "blend": "Sajaukšana {{style}}",
+      "paint": "Ainas gleznošana",
+      "finish": "Galīgās pulēšanas pievienošana"
+    },
+    "actions": {
+      "cancel": "Atcelt",
+      "retry": "Mēģiniet vēlreiz",
+      "close": "Aizvērt"
+    },
+    "errors": {
+      "restrictedTitle": "Ierobežots saturs",
+      "genericTitle": "Ģenerēšana neizdevās",
+      "genericMessage": "Nevarēja ģenerēt attēlu."
+    },
+    "alerts": {
+      "saveFailedTitle": "Nevarēja saglabāt",
+      "shareFailedTitle": "Nevarēja kopīgot",
+      "tryAgain": "Lūdzu, mēģiniet vēlreiz.",
+      "savedTitle": "Saglabāts",
+      "savedMessage": "Attēls saglabāts jūsu galerijā.",
+      "permissionTitle": "Nepieciešama atļauja",
+      "permissionMessage": "Atļaujiet piekļuvi krātuvei, lai saglabātu attēlus savā galerijā."
+    },
+    "result": {
+      "complete": "Viss pabeigts"
+    },
+    "accessibility": {
+      "close": "Aizvērt"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Dzēst",
+      "edit": "Rediģēt",
+      "save": "Saglabāt",
+      "share": "Dalīties"
+    },
+    "alerts": {
+      "savedTitle": "Saglabāts",
+      "savedMessage": "Attēls saglabāts jūsu galerijā.",
+      "permissionTitle": "Nepieciešama atļauja",
+      "permissionMessage": "Atļaujiet piekļuvi krātuvei, lai saglabātu attēlus savā galerijā.",
+      "saveFailedTitle": "Nevarēja saglabāt",
+      "tryAgain": "Lūdzu, mēģiniet vēlreiz."
+    },
+    "accessibility": {
+      "close": "Aizvērt",
+      "delete": "Dzēst attēlu",
+      "edit": "Rediģēt attēlu",
+      "save": "Saglabāt attēlu",
+      "share": "Kopīgojiet attēlu"
+    }
+  },
+  "reportContent": {
+    "title": "Ziņojiet par AI saturu",
+    "subtitle": "Pastāstiet mums, kas ir nepareizi ar šo ģenerēto saturu.",
+    "privateDisclosure": "Iesniedzot šo ziņojumu, šis saturs tiek nosūtīts drošības pārbaudei.",
+    "accessibilityLabel": "Ziņojiet par AI saturu",
+    "reasons": {
+      "sexual": "Seksuāla rakstura vai kailuma saturs",
+      "violence_self_harm": "Vardarbība vai paškaitējums",
+      "hate_harassment": "Naids vai uzmākšanās",
+      "child_safety": "Bažas par bērnu drošību",
+      "scam_deceptive": "Krāpniecisks vai maldinošs saturs",
+      "other": "Cits"
+    },
+    "errors": {
+      "reasonRequired": "Pirms iesniegšanas, lūdzu, izvēlieties iemeslu.",
+      "submit": "Nevarēja iesniegt atskaiti. Lūdzu, mēģiniet vēlreiz."
+    },
+    "success": {
+      "title": "Paldies. Jūsu ziņojums tika iesniegts.",
+      "subtitle": "Mēs izmantosim pārskatus, lai uzlabotu satura drošību."
+    },
+    "actions": {
+      "report": "Ziņojums",
+      "submit": "Iesniegt ziņojumu",
+      "done": "Gatavs"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Atvērt izvēlni",
+      "selectImages": "Izvēlieties attēlus",
+      "exitSelection": "Iziet no atlases",
+      "deleteSelected": "Dzēst atlasītos attēlus",
+      "selectToDelete": "Atlasiet attēlus, ko dzēst"
+    },
+    "createCard": {
+      "title": "Izveidot no teksta",
+      "subtitle": "Ierakstiet aprakstu",
+      "cta": "Aprakstiet un ģenerējiet"
+    },
+    "editCard": {
+      "title": "AI fotoattēlu redaktors",
+      "subtitle": "Pārveidojiet un uzlabojiet, izmantojot AI",
+      "cta": "Rediģēt ar AI"
+    },
+    "gallery": {
+      "title": "Galerija",
+      "empty": "Vēl nav attēlu",
+      "selection": {
+        "enter": "Izvēlieties attēlus",
+        "exit": "Iziet no atlases",
+        "deleteSelected": "Dzēst atlasītos attēlus",
+        "selectForDelete": "Atlasiet attēlus, ko dzēst"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Iepazīstieties",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Izveidojiet un rediģējiet attēlus, izmantojot AI — tieši Cloud AI iekšpusē."
+    },
+    "relaxView": {
+      "title": "Iepazīstieties ar savu AI",
+      "titleHighlight": "Asistenti",
+      "subtitle": "Specializēti AI eksperti ir gatavi palīdzēt ar jūsu ikdienas vajadzībām",
+      "cards": {
+        "fitness": {
+          "title": "Fitnesa treneris",
+          "text": "Sīki ieradumi un mājas treniņi."
+        },
+        "recipes": {
+          "title": "Ēdieni un receptes",
+          "text": "Ko gatavot, ar to, kas tev ir."
+        },
+        "travel": {
+          "title": "Ceļojuma draugs",
+          "text": "Vienkārši plāni un iepakošanas saraksti."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "UZŅĒMUMA KVALITĀTES AI RISINĀJUMI",
+      "description": "Pilnvarojiet savu biznesu ar progresīvām mākslīgā intelekta tehnoloģijām, kas paredzētas uzņēmumu profesionāļiem un komandām.",
+      "stats": "Uzticas vairāk nekā 500 000 lietotāju",
+      "rating": "4,9/5",
+      "button": "Sāciet darbu"
+    },
+    "buttons": {
+      "continue": "Turpināt",
+      "start": "Sāksim"
+    }
+  },
+  "coinStore": {
+    "title": "Saņemt kredītus",
+    "loading": "Notiek monētu veikala ielāde…",
+    "balanceLabel": "Jūsu pašreizējais atlikums ir",
+    "balanceValue": "{{amount}} kredīti",
+    "history": {
+      "link": "Darījumu vēsture",
+      "alertTitle": "Vēsture",
+      "alertBody": "Drīzumā būs pieejama darījumu vēsture."
+    },
+    "noPacks": "Nav pieejami monētu iepakojumi. Pārbaudiet savu RevenueCat piedāvājuma ID.",
+    "badges": {
+      "basic": "Pamata pakotne",
+      "popular": "Populārākais",
+      "value": "Labākā vērtība"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} kredīti",
+      "tokensLabel": "{{credits}} kredīti",
+      "defaultName": "Iepakojums {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Izmantojiet Premium",
+      "subtitle": "Neierobežota piekļuve un funkcijas",
+      "cta": "Jaunināt"
+    },
+    "termsText": "Veicot pirkumu, jūs piekrītat mūsu",
+    "termsLink": "Pakalpojuma noteikumi",
+    "alerts": {
+      "initErrorTitle": "Sākuma kļūda",
+      "genericMessage": "Kaut kas nogāja greizi.",
+      "successTitle": "Panākumi",
+      "successMessage": "Drīzumā parādīsies kredīti.",
+      "purchaseFailedTitle": "Pirkums neizdevās",
+      "unknownError": "Nezināma kļūda"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Nepieciešama Premium",
+    "upgrade": "Jaunināt",
+    "modelRequiredMessage": "Šim modelim nepieciešama Premium. Jauniniet, lai piekļūtu GPT-5, Grok 4, Claude un citiem uzlabotiem modeļiem.",
+    "assistantsRequiredMessage": "Asistentiem ir nepieciešama Premium. Jauniniet, lai piekļūtu specializētiem mākslīgā intelekta palīgiem fitnesa, kodēšanas, rakstīšanas un daudz ko citu.",
+    "assistantsTitle": "Nepieciešama Premium",
+    "assistantsMessage": "Asistentiem ir nepieciešama Premium. Jauniniet, lai piekļūtu specializētiem mākslīgā intelekta palīgiem fitnesa, kodēšanas, rakstīšanas un daudz ko citu."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Aizveriet maksas sienu",
+    "unavailableTitle": "Pirkumi nav pieejami",
+    "unavailableMessage": "Android norēķini vēl nav konfigurēti.",
+    "restoreEmptyTitle": "Nav atrasts neviens pirkums",
+    "restoreEmptyMessage": "Mēs nevarējām atrast aktīvu pirkumu, ko atjaunot šim kontam.",
+    "restoreFailedTitle": "Atjaunot neizdevās",
+    "restoreFailedMessage": "Pašlaik nevar atjaunot pirkumus.",
+    "productsUnavailableTitle": "Nav pieejami plāni",
+    "productsUnavailableMessage": "Pašlaik nav pieejams neviens Android abonēšanas produkts.",
+    "purchaseFailedTitle": "Pirkums neizdevās",
+    "purchaseFailedMessage": "Pašlaik nevar pabeigt šo pirkumu.",
+    "restore": "Atjaunot",
+    "restoreRestoring": "Notiek atjaunošana…",
+    "features": {
+      "create": "Izveidojiet attēlus un videoklipus",
+      "search": "Meklējiet tīmeklī, izmantojot AI",
+      "talk": "Runājiet dabiski ar AI",
+      "imageStudio": "Saņemiet Image Studio {{credits}} kredītus {{period}}",
+      "period": {
+        "weekly": "katru nedēļu",
+        "monthly": "katru mēnesi",
+        "yearly": "gadā"
+      }
+    },
+    "freeTrial": {
+      "title": "Bezmaksas izmēģinājums",
+      "subtitle": "3 dienu bezmaksas izmēģinājums"
+    },
+    "badge": {
+      "bestOffer": "Labākais piedāvājums"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Ik gadu",
+        "only": "Tikai {{price}}",
+        "defaultPrice": "79,99 USD",
+        "defaultIntroPrice": "USD 1,35"
+      },
+      "monthly": {
+        "title": "Ikmēneša",
+        "subtitle": "Atcelt jebkurā laikā",
+        "defaultPrice": "19,99 USD"
+      },
+      "weekly": {
+        "title": "Iknedēļas",
+        "subtitle": "Atcelt jebkurā laikā",
+        "defaultPrice": "9,99 USD",
+        "trialThen": "Tad 3 dienas bez maksas"
+      }
+    },
+    "frequency": {
+      "perWeek": "nedēļā",
+      "perMonth": "mēnesī"
+    },
+    "cta": "Turpināt",
+    "ctaFreeTrial": "Izmēģiniet to bez maksas",
+    "legal": {
+      "terms": "Noteikumi",
+      "privacy": "Privātums"
+    },
+    "premium": {
+      "headline": "Viss premium AI vienā plānā",
+      "subtitleLine1": "Tērzējiet, kodējiet, izveidojiet un plānojiet",
+      "subtitleLine2": "ar uzlabotiem modeļiem.",
+      "enableTrial": "Iespējot bezmaksas izmēģinājuma versiju",
+      "annual": "Gada",
+      "saveBadge": "Ietaupiet 83%",
+      "year": "gads",
+      "week": "nedēļa",
+      "termsOfUse": "Lietošanas noteikumi",
+      "privacyPolicy": "Privātuma politika"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Ziņa...",
+    "createImages": "Izveidojiet attēlus",
+    "generateAiArtwork": "Ģenerējiet AI mākslas darbus",
+    "camera": "Augšupielādējiet fotoattēlus",
+    "takeOrSelectPhotos": "Izvēlieties fotoattēlus",
+    "search": "Meklēt",
+    "findInformation": "Atrodiet informāciju",
+    "findRecentInfo": "Atrodiet jaunāko informāciju",
+    "removeImage": "Noņemt attēlu",
+    "messageInput": "Ziņojuma ievade",
+    "clearInput": "Notīrīt ievadi",
+    "quickActionsLabel": "Ātras darbības",
+    "hideQuickActions": "Slēpt ātrās darbības",
+    "showQuickActions": "Rādīt ātras darbības",
+    "startVoiceInput": "Sāciet balss ievadi",
+    "sendMessage": "Nosūtīt ziņu",
+    "offline": "Bezsaistē",
+    "stop": "Apstāties",
+    "streaming": "Straumēšana…",
+    "closeRecorder": "Aizveriet ierakstītāju",
+    "insertTranscript": "Sūtīt",
+    "scrollToLatest": "Ritiniet līdz pēdējai ziņai",
+    "copyMessage": "Kopēt ziņojumu",
+    "copyMessageHint": "Kopējiet šo ziņojumu starpliktuvē",
+    "shareMessage": "Kopīgot ziņu",
+    "shareMessageHint": "Dalies ar šo ziņu",
+    "regenerateResponse": "Atjaunot reakciju",
+    "regenerateResponseHint": "Izveidojiet jaunu atbildi",
+    "copyCode": "Kopēt kodu",
+    "copied": "Kopēts",
+    "image": "attēlu",
+    "loading": "Notiek ielāde…",
+    "loadingChat": "Notiek tērzēšanas ielāde...",
+    "offlineBanner": "Jūs esat bezsaistē. Ziņas nevar nosūtīt.",
+    "offlineError": "Nav interneta savienojuma. Lūdzu, pārbaudiet savienojumu un mēģiniet vēlreiz.",
+    "imagePickerErrorTitle": "Attēlu atlasītāja kļūda",
+    "imagePickerErrorMessage": "Nevar piekļūt jūsu fotoattēliem. Lūdzu, mēģiniet vēlreiz.",
+    "messageTooLong": "Ziņojums ir pārāk garš ({{length}}). Ierobežojums ir {{limit}}.",
+    "sendFailed": "Neizdevās nosūtīt ziņojumu. Lūdzu, mēģiniet vēlreiz.",
+    "modelNoImageSupport": "Atlasītais modelis neatbalsta attēlus. Lūdzu, izvēlieties citu modeli.",
+    "voiceStartFailed": "Nevarēja sākt balsi.",
+    "voiceNoSpeechDetected": "Neviena balss netika atpazīta. Lūdzu, mēģiniet vēlreiz.",
+    "emptyTitle": "Kā es varu palīdzēt?",
+    "emptySubtitle": "Sāciet sarunu ar AI",
+    "privateTitle": "Privātā tērzēšana",
+    "privateSubtitle": "Šī tērzēšana netiks rādīta jūsu tērzēšanas vēsturē",
+    "startPrivateChat": "Sāciet privātu tērzēšanu",
+    "endPrivateChat": "Beigt privāto tērzēšanu",
+    "permissions": {
+      "photosTitle": "Nepieciešama fotoattēlu atļauja",
+      "photosMessage": "Lai izvēlētos attēlus, ir nepieciešama piekļuve fotoattēliem.",
+      "voiceTitle": "Nepieciešamas balss atļaujas",
+      "voiceMessage": "Lai izmantotu balsi, ir nepieciešama piekļuve mikrofonam un runai."
+    },
+    "activity": {
+      "analyzingImages": "Notiek attēlu analīze…",
+      "searching": "Notiek meklēšana…",
+      "thinking": "Domājot…"
+    },
+    "webSearch": {
+      "title": "Meklēšana tīmeklī",
+      "subtitle": "Atrodiet jaunāko informāciju",
+      "label": "Meklēšana tīmeklī",
+      "enable": "Iespējot meklēšanu tīmeklī",
+      "disable": "Atspējot meklēšanu tīmeklī",
+      "toggleLabel": "Meklēt tīmeklī"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Ātri noformējiet vizuālos attēlus.",
+      "subtitle": "Ģenerējiet, uzlabojiet un publicējiet vizuālos līdzekļus vienuviet.",
+      "cta": "Atvērt"
+    },
+    "quickActions": {
+      "createImages": "Izveidojiet attēlus",
+      "openCamera": "Atveriet kameru",
+      "editImage": "Rediģēt attēlu",
+      "startVoice": "Sākt Voice",
+      "assistants": "Asistenti"
+    },
+    "listening": "Klausās…",
+    "startRecording": "Sākt ierakstīšanu…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistents nav pieejams",
+      "unavailableDescription": "Mēs nevarējām ielādēt šo palīgu. Lūdzu, mēģiniet vēlreiz.",
+      "ready": "Gatavs palīdzēt"
+    },
+    "actions": {
+      "copy": "Kopēt",
+      "share": "Dalīties",
+      "regenerate": "Atjaunot",
+      "retryFromHere": "Mēģiniet vēlreiz no šejienes",
+      "report": "Ziņojums",
+      "cancel": "Atcelt"
+    },
+    "markdown": {
+      "copy": "Kopēt",
+      "copied": "Kopēts",
+      "table": "TABULA",
+      "watchVideo": "Skatīties video",
+      "wikipedia": "Wikipedia",
+      "link": "Saite",
+      "note": "Piezīme",
+      "warning": "Brīdinājums",
+      "tip": "Padoms"
+    },
+    "messageActionTitle": "Ziņa",
+    "status": {
+      "sending": "Notiek sūtīšana…",
+      "failed": "Neizdevās",
+      "sent": "Nosūtīts"
+    },
+    "suggestions": {
+      "writeStory": "Uzrakstiet radošu stāstu",
+      "writeStorySubtitle": "par maģisku piedzīvojumu",
+      "planTravel": "Plānojiet ceļojuma maršrutu",
+      "planTravelSubtitle": "par brīnišķīgām brīvdienām",
+      "explainConcept": "Izskaidrojiet šo jēdzienu",
+      "explainConceptSubtitle": "vienkāršā izteiksmē",
+      "planDay": "Plāno manu dienu",
+      "planDaySubtitle": "ar produktivitātes padomiem"
+    },
+    "home": {
+      "eyebrow": "Izvēlieties tēmu",
+      "title": "Ko jūs vēlaties darīt?",
+      "subtitle": "Izvēlieties virzienu un pēc tam sāciet ar spēcīgu uzvedni.",
+      "pickPromptTitle": "Izvēlieties uzvedni, lai sāktu",
+      "changeTopic": "Izvēlieties citu tēmu",
+      "intents": {
+        "summarize": "Apkopojiet tekstu",
+        "summarizeShort": "Apkopojiet",
+        "summarizeHint": "Raksti, piezīmes, balss piezīmes, gari pavedieni",
+        "plan": "Izveidojiet plānu",
+        "planHint": "Ceļojumi, rutīnas, budžeti, termiņi, dzīves pārmaiņas",
+        "brainstorm": "Prāta vētra",
+        "brainstormHint": "Idejas, piedāvājumi, nosaukumi, saturs, blakus projekti",
+        "analyze": "Analizējiet datus",
+        "analyzeHint": "Tēriņi, atsauksmes, rādītāji, paradumi, veiktspēja"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Izveidojiet dibinātāja īsu aprakstu",
+          "founderBriefSubtitle": "Izvelciet galvenos riskus, lēmumus un nākamās darbības.",
+          "classNotesTitle": "Iztīriet manas mācību piezīmes",
+          "classNotesSubtitle": "Pārvērtiet aptuvenas piezīmes par skaidru mācību rokasgrāmatu.",
+          "meetingHandoffTitle": "Uzrakstiet nodošanas kopsavilkumu",
+          "meetingHandoffSubtitle": "Noderīga pēc sapulcēm, zvaniem vai gariem iekšējiem pavedieniem.",
+          "longArticleTitle": "Ātri apkopojiet šo rakstu",
+          "longArticleSubtitle": "Sablīvējiet garu rakstu asās paņēmienos."
+        },
+        "plan": {
+          "energyResetTitle": "Izveidojiet 14 dienu enerģijas atiestatīšanu",
+          "energyResetSubtitle": "Reālistisks miega, ēdiena, kustības un koncentrēšanās plāns.",
+          "mealPlanTitle": "Plānojiet ēdienreizes, kuras es patiešām gatavoju",
+          "mealPlanSubtitle": "Praktiski, par pieņemamu cenu un pamatojoties uz to, kas man ir.",
+          "cityMoveTitle": "Plānojiet savu pārcelšanos uz jaunu pilsētu",
+          "cityMoveSubtitle": "Sadaliet to laika skalas, budžeta, mājokļa un administratora uzdevumos.",
+          "tripEscapeTitle": "Plānojiet neaizmirstamu nedēļas nogales aizbēgšanu",
+          "tripEscapeSubtitle": "Kaut kas labāks par vispārēju maršrutu."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Atrodiet reālistisku sānu steigu",
+          "sideHustleSubtitle": "Idejas, ko varu uzsākt, strādājot pilnu slodzi.",
+          "brandAngleTitle": "Atrodiet neaizmirstamu zīmola leņķi",
+          "brandAngleSubtitle": "Noderīga produktiem, veidotājiem, aģentūrām vai informatīvajiem izdevumiem.",
+          "socialSeriesTitle": "Izgudrojiet satura sēriju",
+          "socialSeriesSubtitle": "Kaut kas pietiekami konsekvents, lai palielinātu auditoriju.",
+          "datingIdeasTitle": "Nāciet klajā ar svaigām idejām",
+          "datingIdeasSubtitle": "Randiņi, dāvanas, pārsteigumi vai notikumi, kas šķiet pārdomāti."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Atrodiet, kur noplūst mana nauda",
+          "spendingLeaksSubtitle": "Parādiet modeļus, vājās vietas un vieglākais uzvar pirmais.",
+          "customerFeedbackTitle": "Pārvērtiet atsauksmes par prioritātēm",
+          "customerFeedbackSubtitle": "Klasteru pieprasījumi, sūdzības, steidzamība un ietekme.",
+          "habitPatternsTitle": "Pamanīt modeļus manos ieradumos",
+          "habitPatternsSubtitle": "Noderīga treniņiem, gulēšanai, žurnālu rakstīšanai vai fokusa žurnāliem.",
+          "metricsStoryTitle": "Paskaidrojiet, ko nozīmē skaitļi",
+          "metricsStorySubtitle": "Vairāk signāla, mazāk izklājlapas trokšņu."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Notiek apstrāde...",
+    "tapToUploadImage": "Pieskarieties, lai augšupielādētu attēlu"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Notiek apstrāde...",
+    "camera": "Augšupielādējiet fotoattēlus",
+    "library": "Bibliotēka"
+  },
+  "common": {
+    "ok": "Labi",
+    "retry": "Mēģiniet vēlreiz",
+    "cancel": "Atcelt",
+    "allow": "Atļaut",
+    "notNow": "Ne tagad",
+    "openSettings": "Atveriet iestatījumus",
+    "close": "Aizvērt",
+    "save": "Saglabāt",
+    "tryAgain": "Mēģiniet vēlreiz"
+  },
+  "rateUs": {
+    "title": "Vai jums patīk Cloud AI?",
+    "subtitle": "Jūsu atsauksmes palīdz mums uzlabot. Vai jūs vēlētos mūs novērtēt App Store?",
+    "rateNow": "Novērtējiet tūlīt",
+    "maybeLater": "Varbūt Vēlāk",
+    "dontAskAgain": "Nejautājiet vēlreiz"
+  },
+  "oneTimeOffer": {
+    "title": "Vienreizējs piedāvājums",
+    "discount": "{{percent}}% ATLAIDE",
+    "subtitle": "Šo piedāvājumu jūs vairs neredzēsit.",
+    "badgeLine1": "Ekskluzīvs",
+    "badgeLine2": "Vienreizējs piedāvājums",
+    "upgradeNow": "Jauniniet tūlīt uz {{price}}",
+    "loadingPrice": "Notiek ielāde...",
+    "termsOfUse": "Lietošanas noteikumi",
+    "privacyPolicy": "Privātuma politika",
+    "accessTitle": "Neierobežota piekļuve",
+    "accessSubtitle": "GPT, Gemini un Grok 4",
+    "features": {
+      "unlimitedGPT4": "Neierobežota piekļuve GPT-4",
+      "geminiPro": "Piekļuve Gemini Pro",
+      "grokInsights": "Izmantojiet Grok, lai iegūtu jaunus ieskatus",
+      "priorityAccess": "Prioritāra piekļuve un ātrākas atbildes"
+    },
+    "bestValue": "Labākā vērtība",
+    "annualPremium": "Gada prēmija",
+    "oneTimePayment": "Vienreizējs maksājums",
+    "wasPrice": "bija",
+    "continue": "Turpināt",
+    "restore": "Atjaunot",
+    "terms": "Noteikumi",
+    "privacy": "Privātums",
+    "successTitle": "Veiksmi!",
+    "successMessage": "Paldies par pirkumu! Izbaudiet premium līmeņa piekļuvi nākamajiem 12 mēnešiem.",
+    "errorTitle": "Pirkums neizdevās",
+    "errorMessage": "Kaut kas nogāja greizi. Lūdzu, mēģiniet vēlreiz.",
+    "restoreSuccessTitle": "Atjaunots",
+    "restoreSuccessMessage": "Jūsu pirkumi ir atjaunoti.",
+    "restoreErrorTitle": "Atjaunot neizdevās",
+    "restoreErrorMessage": "Nav atrasts neviens pirkums, ko atjaunot.",
+    "unavailableTitle": "Pirkumi nav pieejami",
+    "unavailableMessage": "Android norēķini vēl nav konfigurēti."
+  },
+  "rewards": {
+    "header": {
+      "title": "Atlīdzības",
+      "openMenu": "Atvērt izvēlni",
+      "goBack": "Ejiet atpakaļ"
+    },
+    "pointsHero": {
+      "totalBalance": "KOPĒJĀ BILANCE",
+      "seeYourRewards": "Skatiet savas atlīdzības"
+    },
+    "streakTracker": {
+      "title": "Dienas sērija",
+      "subtitle": "Tā turpināt! Tu esi aizdedzis.",
+      "days": "Dienas",
+      "prize": "Balva",
+      "dayLabel": "diena {{number}}",
+      "nextReward": "Nākamā balva: {{amount}} sadaļā {{time}}",
+      "coins": "Monētas"
+    },
+    "sections": {
+      "availableQuests": "Pieejamie uzdevumi",
+      "completedQuests": "Pabeigtie uzdevumi",
+      "availableRewards": "Pieejamās balvas",
+      "needsMoreCoins": "Vajag vairāk monētu"
+    },
+    "balances": {
+      "rewardCoins": "Atlīdzības monētas",
+      "imageCredits": "Attēlu kredīti"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 attēlu kredīti",
+        "imageCredits200": "200 attēlu kredīti",
+        "imageCredits600": "600 attēlu kredīti",
+        "weeklyPremium": "Iknedēļas prēmija",
+        "secretBox": "Slepenā kaste"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Noslēpumainās balvas iekšā"
+      },
+      "alerts": {
+        "comingSoonTitle": "Drīzumā",
+        "comingSoonMessage": "Šī atlīdzība vēl nav pieejama.",
+        "notEnoughCoinsTitle": "Nepietiek monētu",
+        "notEnoughCoinsMessage": "Lai atbloķētu šo balvu, jums ir nepieciešams vairāk atlīdzības monētu.",
+        "errorTitle": "Kļūda",
+        "couldNotOpenBox": "Nevarēja atvērt kastīti.",
+        "couldNotRedeem": "Nevarēja izpirkt atlīdzību. Lūdzu, mēģiniet vēlreiz.",
+        "mysteryReward": "Noslēpumainā balva"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Ikdienas pieteikšanās",
+        "description": "Atveriet lietotni šodien, lai saglabātu savu sēriju",
+        "message": "Šis uzdevums tiek pabeigts automātiski, kad katru dienu atverat lietotni."
+      },
+      "shareFacebook": {
+        "title": "Kopīgot Facebook",
+        "description": "Raksti par mums Facebook"
+      },
+      "shareTwitter": {
+        "title": "Kopīgojiet pakalpojumā Twitter",
+        "description": "Pastāstiet tviterī savu pieredzi"
+      },
+      "shareInstagram": {
+        "title": "Kopīgojiet Instagram",
+        "description": "Kopīgojiet stāstu vai ziņu"
+      },
+      "shareExperience": {
+        "title": "Dalieties pieredzē",
+        "description": "Pastāstiet draugiem, kāpēc jums patīk lietotne"
+      },
+      "share": {
+        "genericMessage": "Es izmantoju šo AI lietotni tērzēšanai un attēlu ģenerēšanai. Apskatiet: {{url}}",
+        "facebookQuote": "Apskatiet šo AI lietotni!",
+        "twitterText": "Es mēģinu šo AI lietotni, tā ir diezgan forša.",
+        "instagramMessage": "Apskatiet šo AI lietotni: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Kļūda",
+        "errorMessage": "Nevarēja atvērt veikala lapu."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Kvests pabeigts",
+        "description": "Uzdevums pabeigts",
+        "points": "+{{points}} punkti",
+        "close": "Aizvērt"
+      },
+      "rewardSuccess": {
+        "error": "KĻŪDA",
+        "success": "VEIKSMES",
+        "somethingWentWrong": "Kaut kas nogāja greizi",
+        "rewardUnlocked": "Atlīdzība ir atbloķēta",
+        "credits": "Kredīti",
+        "close": "Aizvērt",
+        "okay": "Labi"
+      },
+      "secretBox": {
+        "pill": "SLEPENU KASTE",
+        "rewardUnlocked": "ATLĪDZĪBA ATKLĀTA",
+        "shufflingRewards": "BALVOJUMU JAUKŠANA...",
+        "imageCreditsAdded": "Jūsu kontam pievienoti attēlu kredīti",
+        "continue": "Turpināt",
+        "revealing": "Atklāj...",
+        "prizeTiers": {
+          "lucky": "LAIMĒ",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MĪTISKA"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Saņem savas ikdienas monētas",
+      "subtitle": "Atgriezies katru dienu — balva aug.",
+      "cta": "Reģistrēties",
+      "claimed": "Saņemts! +{{amount}} monētas",
+      "later": "Vēlāk"
+    }
+  },
+  "app": {
+    "version": "Versija {{version}}",
+    "offlineBanner": "Jūs esat bezsaistē",
+    "launch": {
+      "accessibilityLabel": "Sākot ar Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, gatavs, kad esat gatavs"
+    },
+    "errors": {
+      "modelsLoadTitle": "Neizdevās ielādēt modeļus",
+      "modelsLoadMessage": "Nevar ielādēt AI modeļus. Lietotne izmantos noklusējuma modeļus. Lūdzu, pārbaudiet savu interneta savienojumu.",
+      "modelsLoadTimeout": "Modeļu ielāde ilga pārāk ilgi. Lietotne izmantos noklusējuma modeļus. Lūdzu, mēģiniet vēlreiz.",
+      "modelsLoadNetwork": "Nav interneta savienojuma. Lietotne izmantos noklusējuma modeļus. Lūdzu, pārbaudiet savienojumu.",
+      "deviceIdTitle": "Inicializācijas kļūda",
+      "deviceIdMessage": "Neizdevās inicializēt ierīces ID. Dažas funkcijas var nedarboties pareizi.",
+      "storageTitle": "Krātuves kļūda",
+      "storageMessage": "Nevar piekļūt vietējai krātuvei. Dažas funkcijas var nedarboties pareizi.",
+      "crashTitle": "Kaut kas nogāja greizi.",
+      "crashSubtitle": "Lūdzu, mēģiniet vēlreiz.",
+      "crashLabel": "Lietotne avarēja"
+    },
+    "proxyErrors": {
+      "genericTitle": "Kaut kas nogāja greizi",
+      "genericMessage": "Lūdzu, mēģiniet vēlreiz.",
+      "rateLimitTitle": "Pārāk daudz pieprasījumu",
+      "rateLimitMessage": "Mēs apstrādājam daudzus pieprasījumus. Lūdzu, pēc brīža mēģiniet vēlreiz.",
+      "rateLimitRetryAfter": "Mēs apstrādājam daudzus pieprasījumus. Lūdzu, mēģiniet vēlreiz pēc aptuveni {{seconds}} sekundēm.",
+      "restrictedTitle": "Ierobežots saturs",
+      "restrictedMessage": "Šo pieprasījumu bloķēja drošības filtri.",
+      "insufficientCoinsTitle": "Nepietiek monētu",
+      "insufficientCoinsMessage": "Jūsu pašreizējais atlikums ir pārāk mazs šim pieprasījumam.",
+      "imageUnavailableTitle": "Attēls nav pieejams",
+      "imageUnavailableMessage": "Ģenerētais attēla fails īslaicīgi nebija pieejams. Lūdzu, mēģiniet vēlreiz.",
+      "authorizationTitle": "Autorizācijas jautājums",
+      "authorizationMessage": "Mēs nevarējām verificēt jūsu kontu. Lūdzu, mēģiniet vēlreiz.",
+      "serverTitle": "Servera žagas",
+      "serverMessage": "Mūsu serveriem radās problēmas. Lūdzu, drīzumā mēģiniet vēlreiz.",
+      "timeoutTitle": "Aizņem pārāk ilgu laiku",
+      "timeoutMessage": "Pieprasījumam iestājās noildze. Lūdzu, mēģiniet vēlreiz.",
+      "networkTitle": "Nav savienojuma",
+      "networkMessage": "Nav interneta savienojuma. Lūdzu, pārbaudiet savienojumu un mēģiniet vēlreiz.",
+      "requestTitle": "Pieprasīt problēmu",
+      "requestMessage": "Ar jūsu pieprasījumu radās problēma. Lūdzu, mēģiniet vēlreiz."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktivizējiet Premium",
+    "activateMessage": "Vai vēlaties aktivizēt recenzentu prēmiju?",
+    "activateAction": "Aktivizēt",
+    "deactivateTitle": "Deaktivizējiet Premium",
+    "deactivateMessage": "Vai vēlaties deaktivizēt recenzentu prēmiju?",
+    "deactivateAction": "Deaktivizēt"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Ikdienas atlīdzība",
+      "body": "Nepalaidiet garām savas ikdienas monētas — pieprasiet to pirms pusnakts."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Nepalaid garām savas ikdienas monētas",
+      "body": "Sūtām vienu atgādinājumu dienā, lai tava sērija turpinātos un monētas pieaugtu. Nekāda mēstuļošana, un vari izslēgt jebkurā brīdī.",
+      "enable": "Ieslēgt atgādinājumus",
+      "skip": "Ne tagad"
+    }
+  }
+}

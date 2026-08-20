@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "ሞዴል ይምረጡ",
+    "searchPlaceholder": "ሞዴሎችን ፈልግ...",
+    "noModelsFound": "ምንም ሞዴሎች አልተገኙም።",
+    "noModelsAvailable": "ምንም ሞዴሎች የሉም",
+    "currentModel": "የአሁኑ ሞዴል: {{name}}. ሞዴል ለመቀየር መታ ያድርጉ።",
+    "openHint": "የሞዴል ምርጫ ምናሌን ይከፍታል።",
+    "closeLabel": "ሞዴል መራጭን ዝጋ",
+    "searchLabel": "ሞዴሎችን ይፈልጉ",
+    "searchHint": "ያሉትን ሞዴሎች ለማጣራት ይተይቡ",
+    "modelLabel": "{{name}} ሞዴል",
+    "selectHint": "{{name}} ሞዴል ይምረጡ",
+    "currentlySelected": "በአሁኑ ጊዜ የተመረጠ ሞዴል",
+    "genericModel": "{{provider}} ሞዴል",
+    "badges": {
+      "new": "አዲስ",
+      "best": "ምርጥ"
+    }
+  },
+  "models": {
+    "gpt-4o": "በጣም ኃይለኛ AI ሞዴል",
+    "gpt-4o-mini": "ለዕለታዊ ተግባራት ፈጣን",
+    "gpt-5": "በጣም ኃይለኛ ሁሉን አቀፍ AI",
+    "gpt-5-chat-latest": "ለውይይት እና ለውይይት የተመቻቸ",
+    "gpt-5-mini": "ፈጣን እና አስተማማኝ GPT-5",
+    "gpt-5.4-nano": "ለቀላል ስራዎች የብርሃን ሞዴል",
+    "o4-mini": "ውጤታማ የማመዛዘን ሞዴል",
+    "gpt-4.1-mini": "የታመቀ፣ የሚችል GPT-4.1",
+    "claude-3-haiku": "ፈጣን እና ትኩረት አንትሮፒክ AI",
+    "claude-3.7-sonnet": "በAnthropic የጠራ ምክንያት",
+    "gemini-2.5-Flash": "የጉግል በጣም የላቀ ሞዴል",
+    "gemini-2.5-flash": "የጉግል በጣም የላቀ ሞዴል",
+    "gemini-2.0-flash": "ፈጣን እና ትክክለኛ Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "በጣም ኃይለኛ AI ሞዴል",
+    "fast_everyday": "ለዕለታዊ ተግባራት ፈጣን",
+    "fast_reasoning": "ፈጣን ሞዴል በጥሩ ምክንያት",
+    "great_reasoning": "የላቀ የማመዛዘን ሞዴል",
+    "coding_reasoning": "የላቀ ኮድ መስጠት እና ማመዛዘን",
+    "better_coding": "ለኮድ እና ለማመዛዘን የተሻለ",
+    "best_overall": "ምርጥ ሁሉን አቀፍ AI ሞዴል",
+    "best_google": "የጉግል ምርጥ ሞዴል",
+    "best_xai": "xAI በጣም ኃይለኛ ሞዴል",
+    "creative_focus": "ለፈጠራ ጽሑፍ በጣም ጥሩ",
+    "code_helper": "ለኮድ ድጋፍ በጣም ጥሩ",
+    "chat_focus": "ለመወያየት የተመቻቸ",
+    "long_context": "ለረጅም አውዶች ምርጥ",
+    "budget_friendly": "የበጀት ተስማሚ AI ሞዴል",
+    "ultra_fast": "እጅግ በጣም ፈጣን ምላሾች",
+    "safe_default": "ደህንነቱ የተጠበቀ ነባሪ ምርጫ",
+    "multilingual": "ጠንካራ የባለብዙ ቋንቋ ድጋፍ",
+    "vision_strong": "በምስል እና በእይታ ጥሩ",
+    "data_analysis": "ለመረጃ ትንተና ጥሩ",
+    "structured_tasks": "ለተዋቀሩ ተግባራት ጥሩ",
+    "everyday_helper": "የዕለት ተዕለት ረዳት ሞዴል",
+    "concise_answers": "አጭር ፣ አጭር መልሶች",
+    "detailed_answers": "ዝርዝር የደረጃ በደረጃ መልሶች",
+    "experimental": "የሙከራ ቀጣይ-ጂን ሞዴል",
+    "reliable_classic": "አስተማማኝ ክላሲክ ሞዴል",
+    "lightweight": "ቀላል ክብደት ያለው, አነስተኛ ዋጋ ያለው ሞዴል",
+    "chatty_personal": "የበለጠ ተግባቢ እና ግላዊ",
+    "pro_users": "ለኃይል ተጠቃሚዎች ምርጥ",
+    "research_helper": "ለምርምር እና ማስታወሻዎች ጥሩ",
+    "reasoning_strong": "የላቀ የማመዛዘን ሞዴል"
+  },
+  "providers": {
+    "openai": "ፒ 000",
+    "anthropic": "አንትሮፖኒክ",
+    "google": "ጎግል",
+    "xai": "xAI",
+    "other": "ሌላ"
+  },
+  "navigation": {
+    "chat": "አዲስ ውይይት",
+    "history": "ታሪክ",
+    "rewards": "ዕለታዊ ሽልማቶች",
+    "assistants": "ረዳቶች",
+    "imagesStudio": "ፒ 000",
+    "settings": "ቅንብሮች",
+    "recentChats": "የቅርብ ጊዜ ውይይቶች",
+    "proFeatures": "Pro ባህሪዎች",
+    "pro": "ፕሮ",
+    "proFeaturesCta": {
+      "title": "Pro ባህሪያትን ያግኙ",
+      "subtitle": "ሁሉም የ AI ባህሪዎች"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "ፒ 000",
+    "title": "ፒ 000",
+    "subtitle": "ምስላዊ ንብረቶችን መፍጠር፣ ማጥራት እና በአንድ ቦታ ያትሙ።",
+    "cta": "ክፈት"
+  },
+  "imagesStudio": {
+    "title": "ፒ 000",
+    "selectImages": "ምስሎችን ይምረጡ",
+    "exitSelectionMode": "ከምርጫ ሁነታ ውጣ",
+    "selectAll": "ሁሉንም ይምረጡ",
+    "noImagesYet": "እስካሁን ምንም ምስሎች የሉም",
+    "describeImageHint": "ምስልዎን ከዚህ በታች ይግለጹ እና ፍጠርን ይንኩ።",
+    "generatedImagesGallery": "የመነጩ ምስሎች ማዕከለ-ስዕላት",
+    "describeImagePlaceholder": "የሚፈልጉትን ምስል ይግለጹ…",
+    "deleteConfirmTitle": "ምስሎችን ሰርዝ",
+    "deleteConfirmMessage": "እርግጠኛ ነዎት የተመረጡትን ምስሎች መሰረዝ ይፈልጋሉ? ይህ እርምጃ ሊቀለበስ አይችልም።",
+    "cancel": "ሰርዝ",
+    "delete": "ሰርዝ",
+    "generate": "ማመንጨት",
+    "generating": "በማመንጨት ላይ…",
+    "latest": "የቅርብ ጊዜ",
+    "insertToChat": "ለመወያየት አስገባ",
+    "pleaseWait": "እባክዎ ይጠብቁ…",
+    "processing": "በማስሄድ ላይ...",
+    "tapToUploadImage": "ምስል ለመስቀል መታ ያድርጉ",
+    "camera": "ፎቶዎችን ይስቀሉ",
+    "library": "ቤተ መፃህፍት",
+    "enterPrompt": "እባክዎ ከጽሑፍ ወደ ምስል ማመንጨት ጥያቄ ያስገቡ",
+    "openInBrowser": "በአሳሽ ውስጥ ክፈት",
+    "makeVariations": "ልዩነቶችን ያድርጉ",
+    "deleteAllFromGeneration": "ሁሉንም ከዚህ ትውልድ ሰርዝ",
+    "imageOptionsTitle": "የምስል አማራጮች",
+    "imageOptionsMessage": "በዚህ ምስል ምን ማድረግ ይፈልጋሉ?",
+    "insertMarkdownHeader": "ምስሉ ይኸውልህ፡-",
+    "variationSuffix": "- የቀድሞ ምስል ልዩነት",
+    "selectedCount": "ተመርጧል",
+    "selectedCount_one": "ተመርጧል",
+    "selectedCount_other": "ተመርጧል",
+    "imageDescriptionInput": "የምስል መግለጫ ግቤት",
+    "imageDescriptionHint": "ለመፍጠር የሚፈልጉትን ምስል መግለጫ ያስገቡ",
+    "openModelSettings": "የሞዴል ቅንብሮችን ይክፈቱ",
+    "modelSettingsHint": "ሞዴል እና ቅንብሮችን ለመቀየር ይንኩ።",
+    "openPhotoGallery": "የፎቶ ጋለሪ ክፈት",
+    "clearInput": "ግቤትን አጽዳ",
+    "generatedImage": "የመነጨ ምስል",
+    "autoSelectedModel": "በራስ የተመረጠ {{model}} ለ{{mode}} ሁነታ",
+    "deleteSelectedConfirmTitle": "ምስሎችን ሰርዝ",
+    "deleteSelectedConfirmMessage": "እርግጠኛ ነህ ምስሎችን መሰረዝ ትፈልጋለህ? ይህ እርምጃ ሊቀለበስ አይችልም።"
+  },
+  "imageStudio": {
+    "generateImage": "ምስል ይፍጠሩ",
+    "generatingImage": "ምስል በማመንጨት ላይ",
+    "generateImageHint": "በእርስዎ መግለጫ ላይ በመመስረት ምስል ለማመንጨት መታ ያድርጉ",
+    "imageDescriptionInput": "የምስል መግለጫ ግቤት",
+    "imageDescriptionHint": "ለመፍጠር የሚፈልጉትን ምስል መግለጫ ያስገቡ",
+    "openModelSettings": "የሞዴል ቅንብሮችን ይክፈቱ",
+    "modelSettingsHint": "ሞዴል እና ቅንብሮችን ለመቀየር ይንኩ።",
+    "openPhotoGallery": "የፎቶ ጋለሪ ክፈት",
+    "clearInput": "ግቤትን አጽዳ",
+    "generatedImage": "የመነጨ ምስል"
+  },
+  "assistants": {
+    "title": "ረዳቶች",
+    "defaultTitle": "ረዳት",
+    "errorTitle": "የሆነ ችግር ተፈጥሯል።",
+    "errorMessage": "ይህን ረዳት መጀመር አልተቻለም።",
+    "noAssistants": "በዚህ ምድብ ውስጥ ምንም ረዳቶች አልተገኙም።",
+    "selectAssistantHint": "ክፍት ረዳት መራጭ",
+    "subtitle": "ለኮድ፣ ለመፃፍ፣ ለመተንተን፣ ለማቀድ እና ለሌሎችም ዝግጁ የሆኑ ልዩ ባለሙያተኞች።",
+    "searchPlaceholder": "ረዳቶችን ይፈልጉ…",
+    "useAssistant": "ረዳትን ተጠቀም",
+    "selectAssistant": "ረዳት ይምረጡ",
+    "description": "መግለጫ",
+    "systemPrompt": "የስርዓት ጥያቄ",
+    "chooseModel": "ሞዴል ይምረጡ",
+    "categoryAll": "ሁሉም",
+    "categories": {
+      "everyday": "በየቀኑ",
+      "life": "ሕይወት",
+      "health": "ጤና",
+      "schoolWork": "ትምህርት ቤት እና ስራ",
+      "coding": "ኮድ መስጠት",
+      "creative": "ፈጠራ",
+      "general": "አጠቃላይ"
+    },
+    "presets": {
+      "default": {
+        "name": "ነባሪ ረዳት",
+        "description": "ለዕለታዊ ነገሮች ሚዛናዊ እርዳታ."
+      },
+      "quick": {
+        "name": "ፈጣን መልሶች",
+        "description": "አጭር ፣ ቀጥተኛ መልሶች"
+      },
+      "planner": {
+        "name": "ዕለታዊ ዕቅድ አውጪ",
+        "description": "ቀንዎን እና የዕለት ተዕለት እንቅስቃሴዎን ያቅዱ።"
+      },
+      "recipes": {
+        "name": "ምግቦች እና የምግብ አዘገጃጀቶች",
+        "description": "ምን ማብሰል, ካለህ ጋር."
+      },
+      "fitness": {
+        "name": "የአካል ብቃት አሰልጣኝ",
+        "description": "ትናንሽ ልምዶች እና የቤት ውስጥ ልምምዶች።"
+      },
+      "money": {
+        "name": "ገንዘብ ጓደኛ",
+        "description": "ቀላል በጀት እና የወጪ ምክሮች።"
+      },
+      "study": {
+        "name": "የጥናት አጋዥ",
+        "description": "በቀላሉ ያብራሩ። ጠይቁኝ"
+      },
+      "email": {
+        "name": "ኢሜይል እና ከቆመበት ቀጥል",
+        "description": "ግልጽ ኢሜይሎችን እና የሲቪ መስመሮችን ይፃፉ."
+      },
+      "translator": {
+        "name": "ተርጓሚ",
+        "description": "ተርጉም + ሀረጎችን አስተምር።"
+      },
+      "travel": {
+        "name": "የጉዞ ጓደኛ",
+        "description": "ቀላል ዕቅዶች እና የማሸጊያ ዝርዝሮች።"
+      },
+      "tech": {
+        "name": "የቴክኖሎጂ ድጋፍ (ቀላል)",
+        "description": "ስልክ፣ አፕሊኬሽኖች፣ Wi-Fi መሰረታዊ ነገሮች።"
+      },
+      "summarizer": {
+        "name": "TL;DR ማጠቃለያ",
+        "description": "አጭር ጥይቶች + ባለ አንድ መስመር TL;DR."
+      },
+      "gift": {
+        "name": "ስጦታ ፈላጊ",
+        "description": "ሀሳቦች በበጀት እና በፍላጎቶች።"
+      },
+      "party": {
+        "name": "የክስተት እቅድ አውጪ (ላይት)",
+        "description": "ትንሽ ፓርቲ በፍጥነት ያቅዱ።"
+      },
+      "social": {
+        "name": "ማህበራዊ ፖስታ ሰሪ",
+        "description": "ከአማራጮች ጋር ረቂቅ ልጥፎች።"
+      },
+      "interview": {
+        "name": "የቃለ መጠይቅ አሰልጣኝ",
+        "description": "መልሶችን ይለማመዱ (STAR)።"
+      },
+      "homefix": {
+        "name": "የቤት ማስተካከያ - መመሪያ",
+        "description": "ቀላል DIY መላ ፍለጋ።"
+      },
+      "pet": {
+        "name": "የቤት እንስሳት እንክብካቤ ጓደኛ",
+        "description": "መመገብ, መራመድ, መሰረታዊ ስልጠና."
+      },
+      "mindful": {
+        "name": "ልብ የሚነካ ደቂቃ",
+        "description": "1-3 ደቂቃ የመረጋጋት እረፍቶች."
+      },
+      "polite": {
+        "name": "ጨዋ ዳግም ጸሐፊ",
+        "description": "ጽሁፎችን እንደገና ይፃፉ እና በጥሩ ሁኔታ ምላሾችን ይስጡ።"
+      }
+    }
+  },
+  "history": {
+    "title": "ታሪክ",
+    "searchPlaceholder": "ውይይቶችን ፈልግ…",
+    "newChat": "አዲስ ውይይት",
+    "new": "+ አዲስ",
+    "search": "ፈልግ",
+    "clearSearch": "ፍለጋን አጽዳ",
+    "noChatsYet": "እስካሁን ምንም ውይይት የለም።",
+    "noResults": "እስካሁን ምንም ውይይት የለም።",
+    "startFirstConversation": "የመጀመሪያ ንግግርህን ጀምር።",
+    "startChat": "ውይይት ጀምር",
+    "startNewChat": "አዲስ ውይይት ጀምር",
+    "errorLoadingHistory": "ታሪክን መጫን ላይ ስህተት",
+    "loading": "ታሪክን በመጫን ላይ...",
+    "renameChat": "ቻቱን እንደገና ይሰይሙ",
+    "enterNewTitle": "አዲስ ርዕስ አስገባ",
+    "deleteChat": "ውይይት ይሰረዝ?",
+    "deleteChatMessage": "\"{{title}}\" ይሰረዛል።",
+    "rename": "እንደገና ይሰይሙ",
+    "unpin": "ንቀል",
+    "pin": "ፒን",
+    "untitled": "ርዕስ አልባ"
+  },
+  "settings": {
+    "title": "ቅንብሮች",
+    "model": "ሞዴል",
+    "searchPlaceholder": "ሞዴሎችን ፈልግ…",
+    "temperatureForCurrentModel": "ለአሁኑ ሞዴል የሙቀት መጠን",
+    "customFor": "ብጁ ለ {{model}}",
+    "usingDefault": "ነባሪ {{temperature}} በመጠቀም",
+    "resetToDefault": "ወደ ነባሪ ዳግም አስጀምር",
+    "defaultTemperature": "ነባሪ የሙቀት መጠን (ወደ ኋላ መመለስ)",
+    "usedByModelsWithoutOverride": "ብጁ መሻር በሌለበት ሞዴሎች ጥቅም ላይ ይውላል",
+    "dangerZone": "አደገኛ ዞን",
+    "clearAllChatsAndSettings": "ሁሉንም ውይይቶች እና ቅንብሮች ያጽዱ",
+    "about": "ስለ",
+    "version": "ስሪት {{version}}{{status}}",
+    "versionPremiumSuffix": "· ፕሪሚየም",
+    "privacyPolicy": "የግላዊነት ፖሊሲ",
+    "hero": {
+      "label": "ልዩ ቅናሽ",
+      "title": "ያልተገደበ መዳረሻ\n& Pro ባህሪዎች",
+      "upgrade": "አሻሽል።",
+      "manage": "እቅድ አስተዳድር"
+    },
+    "sections": {
+      "premium": "ፕሪሚየም እቅድ",
+      "data": "የተጠቃሚ ውሂብ",
+      "support": "ድጋፍ እና ህጋዊ"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "ፕሪሚየም ያግኙ",
+        "subtitle": "ያልተገደበ የመፍጠር መሳሪያዎችን ይክፈቱ"
+      },
+      "premiumActive": {
+        "title": "ፕሪሚየም ንቁ",
+        "subtitle": "ስለደገፉ እናመሰግናለን Cloud AI"
+      },
+      "restore": {
+        "title": "ግዢዎችን ወደነበሩበት ይመልሱ",
+        "subtitle": "መሣሪያዎችን ከቀየሩ ይጠቀሙ"
+      },
+      "history": {
+        "title": "የውይይት ታሪክን አስተዳድር",
+        "subtitle": "ያለፉትን ክፍለ-ጊዜዎችዎን ይመልከቱ እና ይሰርዙ"
+      },
+      "reset": {
+        "title": "ውይይቶችን እና ምርጫዎችን ዳግም ያስጀምሩ",
+        "subtitle": "በዚህ መሳሪያ ላይ ሁሉንም የተከማቸ ውሂብ ያጸዳል።"
+      },
+      "rate": {
+        "title": "ደረጃ ይስጡን።",
+        "error": "የማከማቻ ገጹን መክፈት አልተቻለም።"
+      },
+      "support": {
+        "title": "ድጋፍ",
+        "subtitle": "መስመር ላይ ያግኙን",
+        "error": "የእውቂያ ገጽ መክፈት አልተቻለም።"
+      },
+      "privacy": {
+        "title": "የግላዊነት ፖሊሲ",
+        "error": "የግላዊነት መመሪያውን መክፈት አልተቻለም።"
+      },
+      "terms": {
+        "title": "የአጠቃቀም ውል",
+        "error": "የአጠቃቀም ደንቦቹን መክፈት አልተቻለም።"
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "አይገኝም",
+      "linkUnavailableMessage": "ይህን ሊንክ አሁን መክፈት አልተቻለም።",
+      "restoreSuccessTitle": "ወደነበረበት ተመልሷል",
+      "restoreSuccessMessage": "ግዢዎችዎ ወደነበሩበት ተመልሰዋል።",
+      "restoreEmptyTitle": "ምንም ግዢዎች አልተገኙም።",
+      "restoreEmptyMessage": "ለዚህ መለያ ወደነበረበት ለመመለስ ንቁ ግዢ ማግኘት አልቻልንም።",
+      "restoreErrorTitle": "ወደነበረበት መመለስ አልተሳካም።",
+      "restoreErrorMessage": "ግዢዎችን አሁን ወደነበሩበት መመለስ አልተቻለም።",
+      "resetConfirmTitle": "የመተግበሪያ ውሂብ ዳግም ይጀመር?",
+      "resetConfirmMessage": "ይህ ሁሉንም ቻቶች እና የአካባቢ ምርጫዎችን ያስወግዳል።",
+      "resetConfirmCancel": "ሰርዝ",
+      "resetConfirmCta": "ዳግም አስጀምር"
+    }
+  },
+  "createImage": {
+    "headerTitle": "ፍጠር",
+    "chooseStyle": "ቅጥ ይምረጡ",
+    "aspectRatio": "ምጥጥነ ገጽታ",
+    "starterPrompts": {
+      "title": "የማስጀመሪያ ጥያቄዎች",
+      "items": [
+        "ስቱዲዮ headshot",
+        "ዘመናዊ ሳሎን",
+        "ፀሐይ ስትጠልቅ ሞቃታማ የባህር ዳርቻ"
+      ]
+    },
+    "promptPlaceholder": "ማየት የሚፈልጉትን ይተይቡ…",
+    "promptHint": "ምሳሌ፡ 'ወርቃማ መልሶ ማግኛ በስቱዲዮ መብራት'",
+    "clearText": "ጽሑፍ አጽዳ",
+    "generate": "ማመንጨት",
+    "generating": "በማመንጨት ላይ…"
+  },
+  "editImage": {
+    "headerTitle": "አርትዕ",
+    "chooseStyle": "ቅጥ ይምረጡ",
+    "aspectRatio": "ምጥጥነ ገጽታ",
+    "starterPrompts": {
+      "title": "የማስጀመሪያ ጥያቄዎች",
+      "items": [
+        "መብራትን ማስተካከል",
+        "ዳራ አስወግድ",
+        "ለስላሳ የቁም ሥዕላዊ መግለጫ"
+      ]
+    },
+    "promptPlaceholder": "አርትዖቶችን ይግለጹ (አማራጭ)",
+    "clearText": "ጽሑፍ አጽዳ",
+    "generate": "ማመንጨት",
+    "generating": "በማመልከት ላይ…",
+    "upload": {
+      "choose": "ፎቶ ይምረጡ",
+      "change": "ለውጥ",
+      "remove": "አስወግድ"
+    },
+    "imageUnavailable": {
+      "title": "ምስል አይገኝም",
+      "message": "የተመረጠውን ፎቶ መድረስ አልተቻለም። እባክዎ እንደገና ይምረጡት እና እንደገና ይሞክሩ።"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "አኒሜ"
+      },
+      "cartoon": {
+        "name": "ካርቱን"
+      },
+      "photoreal": {
+        "name": "ፎቶሪያል"
+      },
+      "sketch": {
+        "name": "ንድፍ"
+      },
+      "cyberpunk": {
+        "name": "ሳይበርፐንክ"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D ምሳሌ"
+      },
+      "dark_fantasy": {
+        "name": "ጨለማ ቅዠት።"
+      },
+      "vintage_film": {
+        "name": "ቪንቴጅ ፊልም"
+      },
+      "pastel": {
+        "name": "pastel Aesthetic"
+      },
+      "neon_glow": {
+        "name": "ኒዮን ፍካት"
+      },
+      "epic_landscape": {
+        "name": "Epic Landscape"
+      }
+    },
+    "aspectRatios": {
+      "square": "ካሬ",
+      "landscape": "የመሬት ገጽታ",
+      "portrait": "የቁም ሥዕል"
+    },
+    "models": {
+      "fluxKontent": "ፍሉክስ ኮንቴንት።",
+      "custom": "ብጁ"
+    },
+    "notEnoughCoinsTitle": "በቂ ሳንቲሞች የሉም",
+    "notEnoughCoinsMessage": "ለዚህ ምስል የአሁኑ ሒሳብዎ በጣም ዝቅተኛ ነው።",
+    "modelTaglines": {
+      "runwareFluxSchnell": "በጣም ፈጣን ሞዴል",
+      "runwareFluxKrea": "የፈጠራ ፣ የቅጥ ውጤቶች",
+      "runwareQwenImage": "ሚዛናዊ ፣ ከፍተኛ ጥራት ያላቸው ውጤቶች",
+      "google4": "ምርጥ AI ምስል ሞዴል",
+      "klingImageO1": "ከፍተኛ-ቁጥጥር ምስል አርትዖት",
+      "fluxKontent": "Flux Kontent ለአርትዖቶች ተስተካክሏል።",
+      "runwareProvider": "ከአስተማማኝ ስርጭት ጋር የተመጣጠነ ጥራት.",
+      "airProvider": "ናኖ ሙዝ ተጫዋች፣ ደማቅ ቃና ይጨምራል።",
+      "googleProvider": "ጎግል ለተጣራ ዝርዝሮች ተስተካክሏል።",
+      "klingaiProvider": "KlingAI ለተቆጣጠሩት አርትዖቶች ተስተካክሏል።",
+      "anthropicProvider": "Claudeየቧንቧ መስመር ለተዛባ ስሜቶች።",
+      "default": "ያሉትን ሞተሮች ለማሰስ መታ ያድርጉ።"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "የመረጡት ዘይቤ",
+    "sheetTitle": "እይታዎን መፍጠር",
+    "sheetSubtitle": "{{style}} ወደ መጠየቂያው ስንቀላቀል የአገልጋይ ቡና አጭር ስፒፕ።",
+    "phases": {
+      "blend": "በ {{style}} ውስጥ መቀላቀል",
+      "paint": "ቦታውን መቀባት",
+      "finish": "የመጨረሻውን ማጽጃ ማከል"
+    },
+    "actions": {
+      "cancel": "ሰርዝ",
+      "retry": "እንደገና ይሞክሩ",
+      "close": "ዝጋ"
+    },
+    "errors": {
+      "restrictedTitle": "የተገደበ ይዘት",
+      "genericTitle": "ትውልድ አልተሳካም።",
+      "genericMessage": "ምስል መፍጠር አልተቻለም።"
+    },
+    "alerts": {
+      "saveFailedTitle": "ማስቀመጥ አልተቻለም",
+      "shareFailedTitle": "ማጋራት አልተቻለም",
+      "tryAgain": "እባክዎ እንደገና ይሞክሩ።",
+      "savedTitle": "ተቀምጧል",
+      "savedMessage": "ምስል ወደ ጋለሪዎ ተቀምጧል።",
+      "permissionTitle": "ፍቃድ ያስፈልጋል",
+      "permissionMessage": "ምስሎችን ወደ ጋለሪዎ ለማስቀመጥ የማከማቻ መዳረሻን ይፍቀዱ።"
+    },
+    "result": {
+      "complete": "ሁሉም አልቋል"
+    },
+    "accessibility": {
+      "close": "ዝጋ"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "ሰርዝ",
+      "edit": "አርትዕ",
+      "save": "አስቀምጥ",
+      "share": "አጋራ"
+    },
+    "alerts": {
+      "savedTitle": "ተቀምጧል",
+      "savedMessage": "ምስል ወደ ጋለሪዎ ተቀምጧል።",
+      "permissionTitle": "ፍቃድ ያስፈልጋል",
+      "permissionMessage": "ምስሎችን ወደ ጋለሪዎ ለማስቀመጥ የማከማቻ መዳረሻን ይፍቀዱ።",
+      "saveFailedTitle": "ማስቀመጥ አልተቻለም",
+      "tryAgain": "እባክዎ እንደገና ይሞክሩ።"
+    },
+    "accessibility": {
+      "close": "ዝጋ",
+      "delete": "ምስል ሰርዝ",
+      "edit": "ምስል አርትዕ",
+      "save": "ምስል አስቀምጥ",
+      "share": "ምስል አጋራ"
+    }
+  },
+  "reportContent": {
+    "title": "የ AI ይዘትን ሪፖርት አድርግ",
+    "subtitle": "በዚህ የመነጨ ይዘት ላይ ምን ችግር እንዳለ ይንገሩን።",
+    "privateDisclosure": "ማስገባት ይህንን ሪፖርት የተደረገ ይዘት ለደህንነት ግምገማ ይልካል።",
+    "accessibilityLabel": "የ AI ይዘትን ሪፖርት አድርግ",
+    "reasons": {
+      "sexual": "ወሲባዊ ወይም እርቃንነት ይዘት",
+      "violence_self_harm": "ብጥብጥ ወይም ራስን መጉዳት።",
+      "hate_harassment": "ጥላቻ ወይም ትንኮሳ",
+      "child_safety": "የልጆች ደህንነት ስጋት",
+      "scam_deceptive": "ማጭበርበር ወይም አታላይ ይዘት",
+      "other": "ሌላ"
+    },
+    "errors": {
+      "reasonRequired": "እባክዎ ከማስገባትዎ በፊት ምክንያት ይምረጡ።",
+      "submit": "ሪፖርት ማስገባት አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+    },
+    "success": {
+      "title": "አመሰግናለሁ። ሪፖርትህ ቀርቧል።",
+      "subtitle": "የይዘት ደህንነትን ለማሻሻል ሪፖርቶችን እንጠቀማለን።"
+    },
+    "actions": {
+      "report": "ሪፖርት አድርግ",
+      "submit": "ሪፖርት አስገባ",
+      "done": "ተከናውኗል"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "ፒ 000",
+    "accessibility": {
+      "openMenu": "ምናሌን ክፈት",
+      "selectImages": "ምስሎችን ይምረጡ",
+      "exitSelection": "ምርጫን ውጣ",
+      "deleteSelected": "የተመረጡ ምስሎችን ሰርዝ",
+      "selectToDelete": "የሚሰረዙ ምስሎችን ይምረጡ"
+    },
+    "createCard": {
+      "title": "ከጽሑፍ ፍጠር",
+      "subtitle": "መግለጫ ይተይቡ",
+      "cta": "ይግለጹ እና ይፍጠሩ"
+    },
+    "editCard": {
+      "title": "AI ፎቶ አርታዒ",
+      "subtitle": "በ AI ቀይር እና አሻሽል።",
+      "cta": "በ AI ያርትዑ"
+    },
+    "gallery": {
+      "title": "ማዕከለ-ስዕላት",
+      "empty": "እስካሁን ምንም ምስሎች የሉም",
+      "selection": {
+        "enter": "ምስሎችን ይምረጡ",
+        "exit": "ምርጫን ውጣ",
+        "deleteSelected": "የተመረጡ ምስሎችን ሰርዝ",
+        "selectForDelete": "የሚሰረዙ ምስሎችን ይምረጡ"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "ተገናኙ",
+      "titleHighlight": "ፒ 000",
+      "subtitle": "ምስሎችን በ AI ይፍጠሩ እና ያርትዑ - ልክ Cloud AI ውስጥ።"
+    },
+    "relaxView": {
+      "title": "የእርስዎን AI ያግኙ",
+      "titleHighlight": "ረዳቶች",
+      "subtitle": "በየእለቱ ፍላጎቶችዎ ለመርዳት ዝግጁ የሆኑ ልዩ የ AI ባለሙያዎች",
+      "cards": {
+        "fitness": {
+          "title": "የአካል ብቃት አሰልጣኝ",
+          "text": "ትናንሽ ልምዶች እና የቤት ውስጥ ልምምዶች።"
+        },
+        "recipes": {
+          "title": "ምግቦች እና የምግብ አዘገጃጀቶች",
+          "text": "ምን ማብሰል, ካለህ ጋር."
+        },
+        "travel": {
+          "title": "የጉዞ ጓደኛ",
+          "text": "ቀላል ዕቅዶች እና የማሸጊያ ዝርዝሮች።"
+        }
+      }
+    },
+    "splash": {
+      "title": "ፒ 000",
+      "tagline": "ኢንተርፕራይዝ-ደረጃ AI መፍትሄዎች",
+      "description": "ለድርጅት ባለሙያዎች እና ቡድኖች በተዘጋጀ እጅግ በጣም ጥሩ አርቴፊሻል ኢንተለጀንስ ቴክኖሎጂ ንግድዎን ያሳድጉ።",
+      "stats": "በ500k+ ተጠቃሚዎች የታመነ",
+      "rating": "4.9/5",
+      "button": "ጀምር"
+    },
+    "buttons": {
+      "continue": "ቀጥል",
+      "start": "እንጀምር"
+    }
+  },
+  "coinStore": {
+    "title": "ምስጋናዎችን ያግኙ",
+    "loading": "የሳንቲም መደብርን በመጫን ላይ…",
+    "balanceLabel": "የአሁኑ ቀሪ ሂሳብዎ ነው።",
+    "balanceValue": "{{amount}} ክሬዲቶች",
+    "history": {
+      "link": "የግብይት ታሪክ",
+      "alertTitle": "ታሪክ",
+      "alertBody": "የግብይት ታሪክ በቅርቡ ይመጣል።"
+    },
+    "noPacks": "ምንም የሳንቲም ጥቅሎች የሉም። የእርስዎን RevenueCat ማቅረቢያ መታወቂያ ያረጋግጡ።",
+    "badges": {
+      "basic": "መሰረታዊ ጥቅል",
+      "popular": "በጣም ታዋቂ",
+      "value": "ምርጥ እሴት"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} ክሬዲቶች",
+      "tokensLabel": "{{credits}} ክሬዲቶች",
+      "defaultName": "ጥቅል {{index}}",
+      "unknownPrice": "ዶላር -"
+    },
+    "premium": {
+      "title": "ወደ ፕሪሚየም ይሂዱ",
+      "subtitle": "ያልተገደበ መዳረሻ እና ባህሪያት",
+      "cta": "አሻሽል።"
+    },
+    "termsText": "ግዢ በመፈጸም፣ በእኛ ተስማምተዋል።",
+    "termsLink": "የአገልግሎት ውል",
+    "alerts": {
+      "initErrorTitle": "የመግቢያ ስህተት",
+      "genericMessage": "የሆነ ችግር ተፈጥሯል።",
+      "successTitle": "ስኬት",
+      "successMessage": "ክሬዲቶች በቅርቡ ይታያሉ።",
+      "purchaseFailedTitle": "ግዢ አልተሳካም።",
+      "unknownError": "ያልታወቀ ስህተት"
+    }
+  },
+  "premium": {
+    "badge": "ፕሮ",
+    "requiredTitle": "ፕሪሚየም ያስፈልጋል",
+    "upgrade": "አሻሽል።",
+    "modelRequiredMessage": "ይህ ሞዴል ፕሪሚየም ያስፈልገዋል። GPT-5፣ Grok 4፣ Claude እና ተጨማሪ የላቁ ሞዴሎችን ለመድረስ ያሻሽሉ።",
+    "assistantsRequiredMessage": "ረዳቶች ፕሪሚየም ይፈልጋሉ። ለአካል ብቃት፣ ኮድ ማድረግ፣ መጻፍ እና ሌሎችም ልዩ የሆኑ AI ረዳቶችን ለማግኘት ያሻሽሉ።",
+    "assistantsTitle": "ፕሪሚየም ያስፈልጋል",
+    "assistantsMessage": "ረዳቶች ፕሪሚየም ይፈልጋሉ። ለአካል ብቃት፣ ኮድ ማድረግ፣ መጻፍ እና ሌሎችም ልዩ የሆኑ AI ረዳቶችን ለማግኘት ያሻሽሉ።"
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5፣ Grok፣ Gemini",
+    "close": "የክፍያ ግድግዳ ዝጋ",
+    "unavailableTitle": "ግዢዎች አይገኙም።",
+    "unavailableMessage": "የአንድሮይድ ክፍያ ገና አልተዋቀረም።",
+    "restoreEmptyTitle": "ምንም ግዢዎች አልተገኙም።",
+    "restoreEmptyMessage": "ለዚህ መለያ ወደነበረበት ለመመለስ ንቁ ግዢ ማግኘት አልቻልንም።",
+    "restoreFailedTitle": "ወደነበረበት መመለስ አልተሳካም።",
+    "restoreFailedMessage": "ግዢዎችን አሁን ወደነበሩበት መመለስ አልተቻለም።",
+    "productsUnavailableTitle": "ምንም ዕቅዶች የሉም",
+    "productsUnavailableMessage": "ምንም የአንድሮይድ ምዝገባ ምርቶች አሁን አይገኙም።",
+    "purchaseFailedTitle": "ግዢ አልተሳካም።",
+    "purchaseFailedMessage": "ይህን ግዢ አሁን ማጠናቀቅ አልተቻለም።",
+    "restore": "እነበረበት መልስ",
+    "restoreRestoring": "ወደነበረበት በመመለስ ላይ…",
+    "features": {
+      "create": "ምስሎችን እና ቪዲዮዎችን ይፍጠሩ",
+      "search": "ድሩን በ AI ይፈልጉ",
+      "talk": "በተፈጥሮ ከ AI ጋር ይነጋገሩ",
+      "imageStudio": "Image Studio {{credits}} ክሬዲቶች {{period}} ያግኙ",
+      "period": {
+        "weekly": "በየሳምንቱ",
+        "monthly": "ወርሃዊ",
+        "yearly": "በየዓመቱ"
+      }
+    },
+    "freeTrial": {
+      "title": "ነፃ ሙከራ",
+      "subtitle": "የ3-ቀን ነጻ ሙከራ"
+    },
+    "badge": {
+      "bestOffer": "ምርጥ ቅናሽ"
+    },
+    "plans": {
+      "yearly": {
+        "title": "በየአመቱ",
+        "only": "⟬P000 ብቻ {{price}}",
+        "defaultPrice": "79.99 የአሜሪካ ዶላር",
+        "defaultIntroPrice": "1.35 የአሜሪካ ዶላር"
+      },
+      "monthly": {
+        "title": "ወርሃዊ",
+        "subtitle": "በማንኛውም ጊዜ ይሰርዙ",
+        "defaultPrice": "19.99 የአሜሪካ ዶላር"
+      },
+      "weekly": {
+        "title": "በየሳምንቱ",
+        "subtitle": "በማንኛውም ጊዜ ይሰርዙ",
+        "defaultPrice": "9.99 የአሜሪካ ዶላር",
+        "trialThen": "ለ 3 ቀናት ነፃ ፣ ከዚያ"
+      }
+    },
+    "frequency": {
+      "perWeek": "በሳምንት",
+      "perMonth": "በወር"
+    },
+    "cta": "ቀጥል",
+    "ctaFreeTrial": "በነጻ ይሞክሩት።",
+    "legal": {
+      "terms": "ውሎች",
+      "privacy": "ግላዊነት"
+    },
+    "premium": {
+      "headline": "ሁሉም ፕሪሚየም AI በአንድ እቅድ",
+      "subtitleLine1": "ይወያዩ፣ ኮድ ያድርጉ፣ ይፍጠሩ እና ያቅዱ",
+      "subtitleLine2": "ከላቁ ሞዴሎች ጋር.",
+      "enableTrial": "ነጻ ሙከራን አንቃ",
+      "annual": "አመታዊ",
+      "saveBadge": "83% ይቆጥቡ",
+      "year": "አመት",
+      "week": "ሳምንት",
+      "termsOfUse": "የአጠቃቀም ውል",
+      "privacyPolicy": "የግላዊነት ፖሊሲ"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "መልእክት...",
+    "createImages": "ምስሎችን ይፍጠሩ",
+    "generateAiArtwork": "AI የስነ ጥበብ ስራዎችን ይፍጠሩ",
+    "camera": "ፎቶዎችን ይስቀሉ",
+    "takeOrSelectPhotos": "ፎቶዎችን ይምረጡ",
+    "search": "ፈልግ",
+    "findInformation": "መረጃ ያግኙ",
+    "findRecentInfo": "የቅርብ ጊዜ መረጃ ያግኙ",
+    "removeImage": "ምስል አስወግድ",
+    "messageInput": "የመልእክት ግቤት",
+    "clearInput": "ግቤትን አጽዳ",
+    "quickActionsLabel": "ፈጣን እርምጃዎች",
+    "hideQuickActions": "ፈጣን እርምጃዎችን ደብቅ",
+    "showQuickActions": "ፈጣን ድርጊቶችን አሳይ",
+    "startVoiceInput": "የድምጽ ግቤት ጀምር",
+    "sendMessage": "መልእክት ላክ",
+    "offline": "ከመስመር ውጭ",
+    "stop": "አቁም",
+    "streaming": "በዥረት መልቀቅ…",
+    "closeRecorder": "መቅጃውን ዝጋ",
+    "insertTranscript": "ላክ",
+    "scrollToLatest": "ወደ የቅርብ ጊዜ መልእክት ያሸብልሉ።",
+    "copyMessage": "መልእክት ቅዳ",
+    "copyMessageHint": "ይህን መልእክት ወደ ቅንጥብ ሰሌዳ ይቅዱ",
+    "shareMessage": "መልእክት አጋራ",
+    "shareMessageHint": "ይህን መልእክት አጋራ",
+    "regenerateResponse": "ምላሽን ያድሱ",
+    "regenerateResponseHint": "አዲስ ምላሽ ይፍጠሩ",
+    "copyCode": "ኮድ ቅዳ",
+    "copied": "ተገልብጧል",
+    "image": "ምስል",
+    "loading": "በመጫን ላይ…",
+    "loadingChat": "ውይይትን በመጫን ላይ...",
+    "offlineBanner": "ከመስመር ውጭ ነዎት። መልዕክቶች መላክ አልተቻለም።",
+    "offlineError": "ምንም የበይነመረብ ግንኙነት የለም። እባክዎ ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
+    "imagePickerErrorTitle": "የምስል መራጭ ስህተት",
+    "imagePickerErrorMessage": "ፎቶዎችዎን መድረስ አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
+    "messageTooLong": "መልእክት በጣም ረጅም ነው ({{length}})። ገደብ {{limit}} ነው።",
+    "sendFailed": "መልዕክት መላክ አልተሳካም። እባክዎ እንደገና ይሞክሩ።",
+    "modelNoImageSupport": "የተመረጠው ሞዴል ምስሎችን አይደግፍም. እባክዎ የተለየ ሞዴል ይምረጡ።",
+    "voiceStartFailed": "ድምጽ መጀመር አልተቻለም።",
+    "voiceNoSpeechDetected": "ምንም ድምፅ አልታወቀም። እባክዎ እንደገና ይሞክሩ።",
+    "emptyTitle": "እንዴት መርዳት እችላለሁ?",
+    "emptySubtitle": "ከ AI ጋር ውይይት ይጀምሩ",
+    "privateTitle": "የግል ውይይት",
+    "privateSubtitle": "ይህ ውይይት በእርስዎ የውይይት ታሪክ ውስጥ አይታይም።",
+    "startPrivateChat": "የግል ውይይት ጀምር",
+    "endPrivateChat": "የግል ውይይትን ጨርስ",
+    "permissions": {
+      "photosTitle": "የፎቶዎች ፍቃድ ያስፈልጋል",
+      "photosMessage": "ምስሎችን ለመምረጥ የፎቶ መዳረሻ ያስፈልጋል።",
+      "voiceTitle": "የድምጽ ፍቃዶች ያስፈልጋሉ።",
+      "voiceMessage": "ድምጽን ለመጠቀም ማይክሮፎን እና የንግግር መዳረሻ ያስፈልጋል።"
+    },
+    "activity": {
+      "analyzingImages": "ምስሎችን በመተንተን ላይ…",
+      "searching": "በመፈለግ ላይ…",
+      "thinking": "በማሰብ…"
+    },
+    "webSearch": {
+      "title": "የድር ፍለጋ",
+      "subtitle": "የቅርብ ጊዜ መረጃ ያግኙ",
+      "label": "የድር ፍለጋ",
+      "enable": "የድር ፍለጋን አንቃ",
+      "disable": "የድር ፍለጋን አሰናክል",
+      "toggleLabel": "ድሩን ይፈልጉ"
+    },
+    "studioBanner": {
+      "label": "ፒ 000",
+      "title": "ምስሎችን በፍጥነት ይንደፉ።",
+      "subtitle": "ምስላዊ ንብረቶችን መፍጠር፣ ማጥራት እና በአንድ ቦታ ያትሙ።",
+      "cta": "ክፈት"
+    },
+    "quickActions": {
+      "createImages": "ምስሎችን ይፍጠሩ",
+      "openCamera": "ካሜራ ክፈት",
+      "editImage": "ምስል አርትዕ",
+      "startVoice": "ድምጽ ጀምር",
+      "assistants": "ረዳቶች"
+    },
+    "listening": "በማዳመጥ ላይ…",
+    "startRecording": "መቅዳት ጀምር…",
+    "assistantHeader": {
+      "unavailableTitle": "ረዳት አይገኝም",
+      "unavailableDescription": "ይህን ረዳት መጫን አልቻልንም። እባክዎ እንደገና ይሞክሩ።",
+      "ready": "ለመርዳት ዝግጁ"
+    },
+    "actions": {
+      "copy": "ቅዳ",
+      "share": "አጋራ",
+      "regenerate": "እንደገና ማመንጨት",
+      "retryFromHere": "ከዚህ እንደገና ይሞክሩ",
+      "report": "ሪፖርት አድርግ",
+      "cancel": "ሰርዝ"
+    },
+    "markdown": {
+      "copy": "ቅዳ",
+      "copied": "ተገልብጧል",
+      "table": "ጠረጴዛ",
+      "watchVideo": "ቪዲዮ ይመልከቱ",
+      "wikipedia": "ዊኪፔዲያ",
+      "link": "አገናኝ",
+      "note": "ማስታወሻ",
+      "warning": "ማስጠንቀቂያ",
+      "tip": "ጠቃሚ ምክር"
+    },
+    "messageActionTitle": "መልእክት",
+    "status": {
+      "sending": "በመላክ ላይ…",
+      "failed": "አልተሳካም።",
+      "sent": "ተልኳል።"
+    },
+    "suggestions": {
+      "writeStory": "የፈጠራ ታሪክ ጻፍ",
+      "writeStorySubtitle": "ስለ አስማታዊ ጀብዱ",
+      "planTravel": "የጉዞ ዕቅድ ያቅዱ",
+      "planTravelSubtitle": "ለሚገርም የእረፍት ጊዜ",
+      "explainConcept": "ይህንን ጽንሰ-ሐሳብ ያብራሩ",
+      "explainConceptSubtitle": "በቀላል አነጋገር",
+      "planDay": "ቀኔን ያቅዱ",
+      "planDaySubtitle": "ከምርታማነት ምክሮች ጋር"
+    },
+    "home": {
+      "eyebrow": "ርዕስ ይምረጡ",
+      "title": "ምን ማድረግ ትፈልጋለህ?",
+      "subtitle": "አቅጣጫ ይምረጡ፣ ከዚያ በጠንካራ ጥያቄ ይጀምሩ።",
+      "pickPromptTitle": "ለመጀመር ጥያቄ ይምረጡ",
+      "changeTopic": "ሌላ ርዕስ ይምረጡ",
+      "intents": {
+        "summarize": "ጽሑፍን ማጠቃለል",
+        "summarizeShort": "ማጠቃለል",
+        "summarizeHint": "ጽሑፎች, ማስታወሻዎች, የድምጽ ማስታወሻዎች, ረጅም ክሮች",
+        "plan": "እቅድ አውጣ",
+        "planHint": "ጉዞዎች፣ ልማዶች፣ በጀት፣ የግዜ ገደቦች፣ የህይወት ለውጦች",
+        "brainstorm": "የአዕምሮ ማዕበል",
+        "brainstormHint": "ሀሳቦች, ቅናሾች, ስሞች, ይዘቶች, የጎን ፕሮጀክቶች",
+        "analyze": "መረጃን ተንትን",
+        "analyzeHint": "ወጪ፣ ግብረመልስ፣ መለኪያዎች፣ ልማዶች፣ አፈጻጸም"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "የመስራች አጭር መግለጫ ይፍጠሩ",
+          "founderBriefSubtitle": "ዋና ዋና አደጋዎችን, ውሳኔዎችን እና ቀጣይ እርምጃዎችን አውጣ.",
+          "classNotesTitle": "የጥናት ማስታወሻዎቼን አጽዳ",
+          "classNotesSubtitle": "ሻካራ ማስታወሻዎችን ወደ ግልጽ የጥናት መመሪያ ይለውጡ።",
+          "meetingHandoffTitle": "የእጅ ማጠቃለያ ይጻፉ",
+          "meetingHandoffSubtitle": "ከስብሰባዎች፣ ጥሪዎች ወይም ረጅም የውስጥ ክሮች በኋላ ጠቃሚ።",
+          "longArticleTitle": "ይህን ጽሑፍ በፍጥነት ያጠቃልሉት",
+          "longArticleSubtitle": "አንድ ረጅም መጣጥፍ ወደ ሹል መወሰኛ መንገዶች ሰብስብ።"
+        },
+        "plan": {
+          "energyResetTitle": "የ14-ቀን የኃይል ዳግም ማስጀመር ይገንቡ",
+          "energyResetSubtitle": "ለእንቅልፍ፣ ለምግብ፣ ለመንቀሳቀስ እና ለማተኮር እውነተኛ እቅድ።",
+          "mealPlanTitle": "ምግብ ያቅዱ እኔ በእርግጥ አብስላለሁ።",
+          "mealPlanSubtitle": "ተግባራዊ፣ ተመጣጣኝ እና ባለኝ ላይ የተመሰረተ።",
+          "cityMoveTitle": "ወደ አዲስ ከተማ ለመዛወር እቅድ ያውጡ",
+          "cityMoveSubtitle": "ወደ የጊዜ መስመር፣ በጀት፣ መኖሪያ ቤት እና የአስተዳዳሪ ተግባራት ይከፋፍሉት።",
+          "tripEscapeTitle": "የማይረሳ ቅዳሜና እሁድ ማምለጫ ያቅዱ",
+          "tripEscapeSubtitle": "ከአጠቃላይ የጉዞ መስመር የተሻለ ነገር።"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "እውነተኛ የጎን ሽኩቻ ያግኙ",
+          "sideHustleSubtitle": "የሙሉ ጊዜ ሥራ በምሠራበት ጊዜ መጀመር የምችል ሐሳቦች።",
+          "brandAngleTitle": "የማይረሳ የምርት አንግል ያግኙ",
+          "brandAngleSubtitle": "ለምርቶች፣ ፈጣሪዎች፣ ኤጀንሲዎች ወይም ጋዜጣዎች ጠቃሚ።",
+          "socialSeriesTitle": "ተከታታይ ይዘት ፍጠር",
+          "socialSeriesSubtitle": "ተመልካቾችን ለማሳደግ ወጥ የሆነ ነገር።",
+          "datingIdeasTitle": "ትኩስ ሀሳቦችን ይዘው ይምጡ",
+          "datingIdeasSubtitle": "አሳቢነት የሚሰማቸው ቀኖች፣ ስጦታዎች፣ አስገራሚ ነገሮች ወይም ክስተቶች።"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "ገንዘቤ የት እንደሚፈስ ፈልግ",
+          "spendingLeaksSubtitle": "ቅጦችን፣ ደካማ ቦታዎችን እና ቀላሉን መጀመሪያ ያሸንፉ።",
+          "customerFeedbackTitle": "አስተያየቶችን ወደ ቅድሚያ የሚሰጣቸውን ነገሮች ይለውጡ",
+          "customerFeedbackSubtitle": "የክላስተር ጥያቄዎች፣ ቅሬታዎች፣ አጣዳፊነት እና ተፅዕኖ።",
+          "habitPatternsTitle": "በልማዶቼ ውስጥ ስፖት ቅጦች",
+          "habitPatternsSubtitle": "ለአካል ብቃት እንቅስቃሴ፣ ለእንቅልፍ፣ ለጆርናል ዝግጅት ወይም የትኩረት ምዝግብ ማስታወሻዎች ጠቃሚ።",
+          "metricsStoryTitle": "ቁጥሮቹ ምን ማለት እንደሆኑ ያብራሩ",
+          "metricsStorySubtitle": "ተጨማሪ ምልክት፣ ያነሰ የተመን ሉህ ጫጫታ።"
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "በማስሄድ ላይ...",
+    "tapToUploadImage": "ምስል ለመስቀል መታ ያድርጉ"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "በማስሄድ ላይ...",
+    "camera": "ፎቶዎችን ይስቀሉ",
+    "library": "ቤተ መፃህፍት"
+  },
+  "common": {
+    "ok": "እሺ",
+    "retry": "እንደገና ይሞክሩ",
+    "cancel": "ሰርዝ",
+    "allow": "ፍቀድ",
+    "notNow": "አሁን አይደለም",
+    "openSettings": "ቅንብሮችን ይክፈቱ",
+    "close": "ዝጋ",
+    "save": "አስቀምጥ",
+    "tryAgain": "እንደገና ይሞክሩ"
+  },
+  "rateUs": {
+    "title": "Cloud AI እየተዝናኑ ነው?",
+    "subtitle": "የእርስዎ አስተያየት እንድናሻሽል ያግዘናል። በApp ስቶር ላይ ደረጃ መስጠት ያስቸግረናል?",
+    "rateNow": "አሁን ደረጃ ይስጡ",
+    "maybeLater": "ምናልባት በኋላ",
+    "dontAskAgain": "እንደገና አትጠይቅ"
+  },
+  "oneTimeOffer": {
+    "title": "የአንድ ጊዜ አቅርቦት",
+    "discount": "{{percent}}% ጠፍቷል",
+    "subtitle": "ይህን አቅርቦት እንደገና ማየት አይችሉም።",
+    "badgeLine1": "ብቸኛ",
+    "badgeLine2": "የአንድ ጊዜ አቅርቦት",
+    "upgradeNow": "ለ {{price}} አሁን አሻሽል",
+    "loadingPrice": "በመጫን ላይ...",
+    "termsOfUse": "የአጠቃቀም ውል",
+    "privacyPolicy": "የግላዊነት ፖሊሲ",
+    "accessTitle": "ያልተገደበ መዳረሻ",
+    "accessSubtitle": "GPT፣ Gemini እና Grok 4",
+    "features": {
+      "unlimitedGPT4": "የGPT-4 ያልተገደበ መዳረሻ",
+      "geminiPro": "የGemini Pro መዳረሻ",
+      "grokInsights": "ለአዲስ ግንዛቤዎች Grok ይጠቀሙ",
+      "priorityAccess": "ቅድሚያ መዳረሻ እና ፈጣን ምላሾች"
+    },
+    "bestValue": "ምርጥ እሴት",
+    "annualPremium": "አመታዊ ፕሪሚየም",
+    "oneTimePayment": "የአንድ ጊዜ ክፍያ",
+    "wasPrice": "ነበር",
+    "continue": "ቀጥል",
+    "restore": "እነበረበት መልስ",
+    "terms": "ውሎች",
+    "privacy": "ግላዊነት",
+    "successTitle": "ስኬት!",
+    "successMessage": "ለግዢዎ እናመሰግናለን! ለሚቀጥሉት 12 ወራት በፕሪሚየም መዳረሻ ይደሰቱ።",
+    "errorTitle": "ግዢ አልተሳካም።",
+    "errorMessage": "የሆነ ችግር ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።",
+    "restoreSuccessTitle": "ወደነበረበት ተመልሷል",
+    "restoreSuccessMessage": "ግዢዎችዎ ወደነበሩበት ተመልሰዋል።",
+    "restoreErrorTitle": "ወደነበረበት መመለስ አልተሳካም።",
+    "restoreErrorMessage": "ወደነበረበት የሚመለሱ ምንም ግዢዎች አልተገኙም።",
+    "unavailableTitle": "ግዢዎች አይገኙም።",
+    "unavailableMessage": "የአንድሮይድ ክፍያ ገና አልተዋቀረም።"
+  },
+  "rewards": {
+    "header": {
+      "title": "ሽልማቶች",
+      "openMenu": "ምናሌን ክፈት",
+      "goBack": "ተመለስ"
+    },
+    "pointsHero": {
+      "totalBalance": "ጠቅላላ ሚዛን",
+      "seeYourRewards": "ሽልማቶችዎን ይመልከቱ"
+    },
+    "streakTracker": {
+      "title": "የዕለት ተዕለት እንቅስቃሴ",
+      "subtitle": "ቀጥልበት! እየተቃጠለ ነው።",
+      "days": "ቀናት",
+      "prize": "ሽልማት",
+      "dayLabel": "ቀን {{number}}",
+      "nextReward": "ቀጣይ ሽልማት፡ {{amount}} በ{{time}}",
+      "coins": "ሳንቲሞች"
+    },
+    "sections": {
+      "availableQuests": "የሚገኙ ተልእኮዎች",
+      "completedQuests": "የተጠናቀቁ ተልእኮዎች",
+      "availableRewards": "የሚገኙ ሽልማቶች",
+      "needsMoreCoins": "ተጨማሪ ሳንቲሞች ይፈልጋል"
+    },
+    "balances": {
+      "rewardCoins": "ሽልማቶች ሳንቲሞች",
+      "imageCredits": "የምስል ምስጋናዎች"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 ምስል ምስጋናዎች",
+        "imageCredits200": "200 ምስል ምስጋናዎች",
+        "imageCredits600": "600 ምስል ምስጋናዎች",
+        "weeklyPremium": "ሳምንታዊ ፕሪሚየም",
+        "secretBox": "ሚስጥራዊ ሳጥን"
+      },
+      "rewardDescriptions": {
+        "secretBox": "ውስጥ ሚስጥራዊ ሽልማቶች"
+      },
+      "alerts": {
+        "comingSoonTitle": "በቅርቡ ይመጣል",
+        "comingSoonMessage": "ይህ ሽልማት እስካሁን አይገኝም።",
+        "notEnoughCoinsTitle": "በቂ ሳንቲሞች የሉም",
+        "notEnoughCoinsMessage": "ይህን ሽልማት ለመክፈት ተጨማሪ የሽልማት ሳንቲሞች ያስፈልገዎታል።",
+        "errorTitle": "ስህተት",
+        "couldNotOpenBox": "ሳጥን መክፈት አልተቻለም።",
+        "couldNotRedeem": "ሽልማትን ማስመለስ አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
+        "mysteryReward": "ሚስጥራዊ ሽልማት"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "ዕለታዊ መግቢያ",
+        "description": "ጅምርዎን ለማስቀጠል መተግበሪያውን ዛሬ ይክፈቱት።",
+        "message": "መተግበሪያውን በየቀኑ ሲከፍቱ ይህ ተልዕኮ በራስ-ሰር ይጠናቀቃል።"
+      },
+      "shareFacebook": {
+        "title": "Facebook ላይ አጋራ",
+        "description": "ስለ እኛ በፌስቡክ ላይ ይለጥፉ"
+      },
+      "shareTwitter": {
+        "title": "በትዊተር ላይ አጋራ",
+        "description": "የእርስዎን ልምድ Tweet"
+      },
+      "shareInstagram": {
+        "title": "ኢንስታግራም ላይ አጋራ",
+        "description": "ታሪክ ወይም ልጥፍ አጋራ"
+      },
+      "shareExperience": {
+        "title": "ተሞክሮዎን ያካፍሉ",
+        "description": "መተግበሪያውን ለምን እንደወደዱት ለጓደኞችዎ ይንገሩ"
+      },
+      "share": {
+        "genericMessage": "ይህን AI መተግበሪያ ለውይይት እና ምስል ለመፍጠር እየተጠቀምኩ ነው። ይመልከቱት፡ {{url}}",
+        "facebookQuote": "ይህን AI መተግበሪያ ይመልከቱ!",
+        "twitterText": "ይህን AI መተግበሪያ እየሞከርኩ ነው፣ በጣም ጥሩ ነው።",
+        "instagramMessage": "ይህን AI መተግበሪያ ይመልከቱ፡ {{url}}"
+      },
+      "store": {
+        "errorTitle": "ስህተት",
+        "errorMessage": "የማከማቻ ገጹን መክፈት አልተቻለም።"
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "ተልዕኮ ተጠናቋል",
+        "description": "ተልዕኮ ተጠናቀቀ",
+        "points": "+{{points}} ነጥቦች",
+        "close": "ዝጋ"
+      },
+      "rewardSuccess": {
+        "error": "ስህተት",
+        "success": "ስኬት",
+        "somethingWentWrong": "የሆነ ችግር ተፈጥሯል።",
+        "rewardUnlocked": "ሽልማት ተከፍቷል።",
+        "credits": "ምስጋናዎች",
+        "close": "ዝጋ",
+        "okay": "እሺ"
+      },
+      "secretBox": {
+        "pill": "ሚስጥራዊ ሳጥን",
+        "rewardUnlocked": "ሽልማት ተከፍቷል።",
+        "shufflingRewards": "ሽልማቶችን በማሸጋገር ላይ...",
+        "imageCreditsAdded": "የምስል ምስጋናዎች ወደ መለያዎ ታክለዋል።",
+        "continue": "ቀጥል",
+        "revealing": "በመግለጥ ላይ...",
+        "prizeTiers": {
+          "lucky": "እድለኛ",
+          "pro": "ፕሮ",
+          "elite": "ELITE",
+          "mythic": "አፈ ታሪክ"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "የዕለት ሳንቲሞችዎን ይውሰዱ",
+      "subtitle": "በየቀኑ ይመለሱ፤ ሽልማቱ ይጨምራል።",
+      "cta": "ይመዝገቡ",
+      "claimed": "ተቀብለዋል! +{{amount}} ሳንቲም",
+      "later": "በኋላ"
+    }
+  },
+  "app": {
+    "version": "ስሪት {{version}}",
+    "offlineBanner": "ከመስመር ውጭ ነዎት",
+    "launch": {
+      "accessibilityLabel": "በመጀመር ላይ Cloud AI",
+      "title": "ፒ 000",
+      "subtitle": "AI፣ እርስዎ ሲሆኑ ዝግጁ ናቸው።"
+    },
+    "errors": {
+      "modelsLoadTitle": "ሞዴሎችን መጫን አልተሳካም።",
+      "modelsLoadMessage": "AI ሞዴሎችን መጫን አልተቻለም። መተግበሪያው ነባሪ ሞዴሎችን ይጠቀማል። እባክዎ የበይነመረብ ግንኙነትዎን ያረጋግጡ።",
+      "modelsLoadTimeout": "ሞዴሎችን መጫን በጣም ረጅም ጊዜ ወስዷል። መተግበሪያው ነባሪ ሞዴሎችን ይጠቀማል። እባክዎ እንደገና ይሞክሩ።",
+      "modelsLoadNetwork": "ምንም የበይነመረብ ግንኙነት የለም። መተግበሪያው ነባሪ ሞዴሎችን ይጠቀማል። እባክዎ ግንኙነትዎን ያረጋግጡ።",
+      "deviceIdTitle": "የማስጀመር ስህተት",
+      "deviceIdMessage": "የመሣሪያ መታወቂያ ማስጀመር አልተሳካም። አንዳንድ ባህሪያት በትክክል ላይሰሩ ይችላሉ.",
+      "storageTitle": "የማከማቻ ስህተት",
+      "storageMessage": "የአካባቢ ማከማቻ መድረስ አልተቻለም። አንዳንድ ባህሪያት በትክክል ላይሰሩ ይችላሉ።",
+      "crashTitle": "የሆነ ችግር ተፈጥሯል።",
+      "crashSubtitle": "እባክዎ እንደገና ይሞክሩ።",
+      "crashLabel": "መተግበሪያ ተበላሽቷል።"
+    },
+    "proxyErrors": {
+      "genericTitle": "የሆነ ችግር ተፈጥሯል።",
+      "genericMessage": "እባክዎ እንደገና ይሞክሩ።",
+      "rateLimitTitle": "በጣም ብዙ ጥያቄዎች",
+      "rateLimitMessage": "ብዙ ጥያቄዎችን እያስተናገድን ነው። እባክዎ ከአፍታ በኋላ እንደገና ይሞክሩ።",
+      "rateLimitRetryAfter": "ብዙ ጥያቄዎችን እያስተናገድን ነው። እባክዎ በ{{seconds}} ሰከንዶች ውስጥ እንደገና ይሞክሩ።",
+      "restrictedTitle": "የተገደበ ይዘት",
+      "restrictedMessage": "ይህ ጥያቄ በደህንነት ማጣሪያዎች ታግዷል።",
+      "insufficientCoinsTitle": "በቂ ሳንቲሞች የሉም",
+      "insufficientCoinsMessage": "ለዚህ ጥያቄ የአሁኑ ቀሪ ሒሳብዎ በጣም ዝቅተኛ ነው።",
+      "imageUnavailableTitle": "ምስል አይገኝም",
+      "imageUnavailableMessage": "የተፈጠረው የምስል ፋይል ለጊዜው አይገኝም። እባክዎ እንደገና ይሞክሩ።",
+      "authorizationTitle": "የፈቃድ ጉዳይ",
+      "authorizationMessage": "መለያህን ማረጋገጥ አልቻልንም። እባክዎ እንደገና ይሞክሩ።",
+      "serverTitle": "የአገልጋይ ጠለፋ",
+      "serverMessage": "የእኛ አገልጋዮች ችግር ነበረባቸው። እባክዎ ከጥቂት ቆይታ በኋላ እንደገና ይሞክሩ።",
+      "timeoutTitle": "በጣም ረጅም ጊዜ መውሰድ",
+      "timeoutMessage": "ጥያቄው ጊዜ አልቋል። እባክዎ እንደገና ይሞክሩ።",
+      "networkTitle": "ግንኙነት የለም።",
+      "networkMessage": "ምንም የበይነመረብ ግንኙነት የለም። እባክዎ ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።",
+      "requestTitle": "ጥያቄ ይጠይቁ",
+      "requestMessage": "በጥያቄህ ላይ የሆነ ችግር ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "ፕሪሚየምን ያንቁ",
+    "activateMessage": "የገምጋሚ ፕሪሚየምን ማግበር ይፈልጋሉ?",
+    "activateAction": "አግብር",
+    "deactivateTitle": "ፕሪሚየምን አቦዝን",
+    "deactivateMessage": "የገምጋሚ ፕሪሚየምን ማቦዘን ይፈልጋሉ?",
+    "deactivateAction": "አቦዝን"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "ዕለታዊ ሽልማት",
+      "body": "ዕለታዊ ሳንቲሞችዎን እንዳያመልጥዎት - ከእኩለ ሌሊት በፊት ይጠይቁ።"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "የዕለት ሳንቲሞችዎን አያምልጡ",
+      "body": "ተከታታይነትዎ እንዲቀጥል እና ሳንቲሞችዎ እንዲጨምሩ በቀን አንድ ማስታወሻ እንልካለን። አላስፈላጊ መልእክት የለም፣ በማንኛውም ጊዜ ማጥፋት ይችላሉ።",
+      "enable": "ማስታወሻዎችን አብራ",
+      "skip": "አሁን አይደለም"
+    }
+  }
+}

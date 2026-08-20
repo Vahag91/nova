@@ -11,7 +11,12 @@
     "searchHint": "Píšte pre filtrovanie dostupných modelov",
     "modelLabel": "Model {{name}}",
     "selectHint": "Vybrať model {{name}}",
-    "currentlySelected": "Aktuálne vybrané"
+    "currentlySelected": "Aktuálne vybrané",
+    "genericModel": "Model {{provider}}",
+    "badges": {
+      "new": "NOVÝ",
+      "best": "NAJLEPŠÍ"
+    }
   },
   "models": {
     "gpt-4o": "Najvýkonnejší AI model",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Asistenti",
+    "defaultTitle": "Asistent",
+    "errorTitle": "Niečo sa pokazilo",
+    "errorMessage": "Tohto asistenta sa nepodarilo spustiť.",
+    "noAssistants": "V tejto kategórii sa nenašli žiadni asistenti.",
+    "selectAssistantHint": "Otvoriť výber asistenta",
     "subtitle": "Vybraní AI špecialisti pripravení na kódovanie, písanie, analýzu, plánovanie a ďalšie.",
     "searchPlaceholder": "Hľadať asistentov…",
     "useAssistant": "Použiť asistenta",
@@ -259,6 +269,7 @@
     "startChat": "Začať chat",
     "startNewChat": "Začať nový chat",
     "errorLoadingHistory": "Chyba pri načítaní histórie",
+    "loading": "Načítava sa história...",
     "renameChat": "Premenovať chat",
     "enterNewTitle": "Zadajte nový názov",
     "deleteChat": "Vymazať chat?",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium je aktívne",
-        "subtitle": "Ďakujeme za podporu ChatCloud"
+        "subtitle": "Ďakujeme za podporu Cloud AI"
       },
       "restore": {
         "title": "Obnoviť nákupy",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Tento odkaz sa teraz nedá otvoriť.",
       "restoreSuccessTitle": "Obnovené",
       "restoreSuccessMessage": "Vaše nákupy boli obnovené.",
+      "restoreEmptyTitle": "Nenašli sa žiadne nákupy",
+      "restoreEmptyMessage": "Pre tento účet sme nenašli žiadny aktívny nákup na obnovenie.",
       "restoreErrorTitle": "Obnovenie zlyhalo",
       "restoreErrorMessage": "Nákupy sa teraz nedajú obnoviť.",
       "resetConfirmTitle": "Resetovať údaje aplikácie?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Vlastný"
     },
+    "notEnoughCoinsTitle": "Nedostatok mincí",
+    "notEnoughCoinsMessage": "Váš aktuálny zostatok je pre tento obrázok príliš nízky.",
     "modelTaglines": {
       "runwareFluxSchnell": "Najrýchlejší model",
       "runwareFluxKrea": "Kreatívne, štýlové výsledky",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Nepodarilo sa uložiť",
       "shareFailedTitle": "Nepodarilo sa zdieľať",
-      "tryAgain": "Skúste znova."
+      "tryAgain": "Skúste znova.",
+      "savedTitle": "Uložené",
+      "savedMessage": "Obrázok bol uložený do galérie.",
+      "permissionTitle": "Vyžaduje sa povolenie",
+      "permissionMessage": "Povoľte prístup k úložisku, aby sa obrázky mohli ukladať do galérie."
     },
     "result": {
       "complete": "Hotovo"
@@ -498,12 +517,47 @@
       "save": "Uložiť",
       "share": "Zdieľať"
     },
+    "alerts": {
+      "savedTitle": "Uložené",
+      "savedMessage": "Obrázok bol uložený do galérie.",
+      "permissionTitle": "Vyžaduje sa povolenie",
+      "permissionMessage": "Povoľte prístup k úložisku, aby sa obrázky mohli ukladať do galérie.",
+      "saveFailedTitle": "Nepodarilo sa uložiť",
+      "tryAgain": "Skúste to prosím znova."
+    },
     "accessibility": {
       "close": "Zavrieť",
       "delete": "Vymazať obrázok",
       "edit": "Upraviť obrázok",
       "save": "Uložiť obrázok",
       "share": "Zdieľať obrázok"
+    }
+  },
+  "reportContent": {
+    "title": "Nahlásiť obsah AI",
+    "subtitle": "Povedzte nám, čo je s týmto vygenerovaným obsahom zlé.",
+    "privateDisclosure": "Odoslaním sa nahlásený obsah odošle na bezpečnostnú kontrolu.",
+    "accessibilityLabel": "Nahlásiť obsah AI",
+    "reasons": {
+      "sexual": "Sexuálny obsah alebo nahota",
+      "violence_self_harm": "Násilie alebo sebapoškodzovanie",
+      "hate_harassment": "Nenávisť alebo obťažovanie",
+      "child_safety": "Obavy o bezpečnosť detí",
+      "scam_deceptive": "Podvod alebo klamlivý obsah",
+      "other": "Iné"
+    },
+    "errors": {
+      "reasonRequired": "Pred odoslaním prosím vyberte dôvod.",
+      "submit": "Hlásenie sa nepodarilo odoslať. Skúste to prosím znova."
+    },
+    "success": {
+      "title": "Ďakujeme. Vaše hlásenie bolo odoslané.",
+      "subtitle": "Hlásenia využijeme na zlepšenie bezpečnosti obsahu."
+    },
+    "actions": {
+      "report": "Nahlásiť",
+      "submit": "Odoslať hlásenie",
+      "done": "Hotovo"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Zoznámte sa:",
       "titleHighlight": "Image Studio",
-      "subtitle": "Vytvárajte a upravujte obrázky s AI — priamo v ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Vytvárajte a upravujte obrázky s AI — priamo v Cloud AI."
     },
     "relaxView": {
       "title": "Zoznámte sa so svojou AI",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "AI RIEŠENIA PRE FIRMY",
       "description": "Posilnite svoje podnikanie špičkovou umelou inteligenciou pre profesionálov a tímy.",
       "stats": "Dôveruje nám 500k+ používateľov",
@@ -592,10 +645,10 @@
       "value": "Najlepšia hodnota"
     },
     "pack": {
+      "creditsLabel": "{{credits}} tokenov",
       "tokensLabel": "{{credits}} tokenov",
       "defaultName": "Balík {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} tokenov"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Prejsť na Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Neznáma chyba"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Vyžaduje sa Premium",
+    "upgrade": "Prejsť na vyšší plán",
+    "modelRequiredMessage": "Tento model vyžaduje Premium. Prejdite na vyšší plán a získajte prístup ku GPT-5, Grok 4, Claude a ďalším pokročilým modelom.",
+    "assistantsRequiredMessage": "Asistenti vyžadujú Premium. Prejdite na vyšší plán a získajte prístup k špecializovaným AI asistentom pre fitnes, programovanie, písanie a ďalšie.",
+    "assistantsTitle": "Vyžaduje sa Premium",
+    "assistantsMessage": "Asistenti vyžadujú Premium. Prejdite na vyšší plán a získajte prístup k špecializovaným AI asistentom pre fitnes, programovanie, písanie a ďalšie."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Zavrieť platobnú obrazovku",
+    "unavailableTitle": "Nákupy nie sú k dispozícii",
+    "unavailableMessage": "Fakturácia pre Android ešte nie je nakonfigurovaná.",
+    "restoreEmptyTitle": "Nenašli sa žiadne nákupy",
+    "restoreEmptyMessage": "Pre tento účet sme nenašli žiadny aktívny nákup na obnovenie.",
+    "restoreFailedTitle": "Obnovenie zlyhalo",
+    "restoreFailedMessage": "Nákupy teraz nie je možné obnoviť.",
+    "productsUnavailableTitle": "Žiadne dostupné plány",
+    "productsUnavailableMessage": "Momentálne nie sú k dispozícii žiadne predplatné pre Android.",
+    "purchaseFailedTitle": "Nákup zlyhal",
+    "purchaseFailedMessage": "Tento nákup teraz nie je možné dokončiť.",
     "restore": "Obnoviť",
     "restoreRestoring": "Obnovuje sa…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Podmienky",
       "privacy": "Súkromie"
+    },
+    "premium": {
+      "headline": "Všetky prémiové AI v jednom pláne",
+      "subtitleLine1": "Chatujte, kódujte, vytvárajte a plánujte",
+      "subtitleLine2": "s pokročilými modelmi.",
+      "enableTrial": "Povoliť bezplatnú skúšobnú verziu",
+      "annual": "Ročný",
+      "saveBadge": "Ušetrite 83 %",
+      "year": "rok",
+      "week": "týždeň",
+      "termsOfUse": "Podmienky používania",
+      "privacyPolicy": "Zásady ochrany osobných údajov"
     }
   },
   "chat": {
@@ -683,7 +768,7 @@
     "startVoiceInput": "Spustiť hlasový vstup",
     "sendMessage": "Poslať správu",
     "offline": "Offline",
-    "stop": "Stop",
+    "stop": "Zastaviť",
     "streaming": "Streamujem…",
     "closeRecorder": "Zavrieť nahrávanie",
     "insertTranscript": "Poslať",
@@ -695,20 +780,25 @@
     "regenerateResponse": "Vygenerovať odpoveď znova",
     "regenerateResponseHint": "Vytvoriť novú odpoveď",
     "copyCode": "Kopírovať kód",
+    "copied": "Skopírované",
     "image": "obrázok",
     "loading": "Načítava sa…",
     "loadingChat": "Načítava sa chat...",
     "offlineBanner": "Ste offline. Správy nie je možné odoslať.",
+    "offlineError": "Žiadne pripojenie na internet. Skontrolujte prosím pripojenie a skúste to znova.",
     "imagePickerErrorTitle": "Chyba pri výbere obrázka",
     "imagePickerErrorMessage": "Nepodarilo sa získať prístup k fotkám. Skúste znova.",
     "messageTooLong": "Správa je príliš dlhá ({{length}}). Limit je {{limit}}.",
     "sendFailed": "Odoslanie zlyhalo.",
     "modelNoImageSupport": "Vybraný model nepodporuje obrázky. Vyberte iný model.",
     "voiceStartFailed": "Nepodarilo sa spustiť hlas.",
+    "voiceNoSpeechDetected": "Nebol rozpoznaný žiadny hlas. Skúste to prosím znova.",
     "emptyTitle": "Ako vám môžem pomôcť?",
     "emptySubtitle": "Začnite konverzáciu s AI",
     "privateTitle": "Súkromný chat",
     "privateSubtitle": "Tento chat sa nezobrazí v histórii",
+    "startPrivateChat": "Začať súkromný chat",
+    "endPrivateChat": "Ukončiť súkromný chat",
     "permissions": {
       "photosTitle": "Je potrebné povolenie k fotkám",
       "photosMessage": "Na výber obrázkov je potrebný prístup k fotkám.",
@@ -753,7 +843,19 @@
       "share": "Zdieľať",
       "regenerate": "Vygenerovať znova",
       "retryFromHere": "Skúsiť znova odtiaľto",
+      "report": "Nahlásiť",
       "cancel": "Zrušiť"
+    },
+    "markdown": {
+      "copy": "Kopírovať",
+      "copied": "Skopírované",
+      "table": "TABUĽKA",
+      "watchVideo": "Pozrieť video",
+      "wikipedia": "Wikipédia",
+      "link": "Odkaz",
+      "note": "Poznámka",
+      "warning": "Upozornenie",
+      "tip": "Tip"
     },
     "messageActionTitle": "Správa",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Naplánovať môj deň",
       "planDaySubtitle": "s tipmi na produktivitu"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Vyberte tému",
       "title": "čo chceš robiť?",
@@ -846,81 +946,59 @@
     "library": "Knižnica"
   },
   "common": {
-    "new": "NOVÉ",
-    "best": "NAJLEPŠIE",
-    "cancel": "Zrušiť",
-    "save": "Uložiť",
-    "delete": "Vymazať",
-    "close": "Zavrieť",
-    "allow": "Povoliť",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Skúsiť znova",
+    "cancel": "Zrušiť",
+    "allow": "Povoliť",
+    "notNow": "Teraz nie",
+    "openSettings": "Otvoriť nastavenia",
+    "close": "Zavrieť",
+    "save": "Uložiť",
+    "tryAgain": "Skúste to znova"
   },
   "rateUs": {
-    "title": "Užívate si ChatCloud?",
+    "title": "Užívate si Cloud AI?",
     "subtitle": "Vaša spätná väzba nám pomáha zlepšovať sa. Mohli by ste nás ohodnotiť v App Store?",
     "rateNow": "Ohodnotiť teraz",
     "maybeLater": "Možno neskôr",
     "dontAskAgain": "Nepýtať sa znova"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Jednorazová ponuka",
+    "discount": "ZĽAVA {{percent}} %",
+    "subtitle": "Túto ponuku už znova neuvidíte.",
     "badgeLine1": "Exkluzívne",
     "badgeLine2": "Jednorazová ponuka",
     "upgradeNow": "Inovovať teraz za {{price}}",
     "loadingPrice": "Načítava sa...",
     "termsOfUse": "Podmienky použitia",
     "privacyPolicy": "Zásady ochrany súkromia",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Neobmedzený prístup k",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Neobmedzený prístup ku GPT-4",
+      "geminiPro": "Prístup ku Gemini Pro",
+      "grokInsights": "Využite Grok na nové poznatky",
+      "priorityAccess": "Prioritný prístup a rýchlejšie odpovede"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Najvýhodnejšie",
+    "annualPremium": "Ročné Premium",
+    "oneTimePayment": "Jednorazová platba",
+    "wasPrice": "pôvodne",
+    "continue": "Pokračovať",
+    "restore": "Obnoviť",
+    "terms": "Podmienky",
+    "privacy": "Súkromie",
+    "successTitle": "Úspech!",
+    "successMessage": "Ďakujeme za nákup! Užívajte si prémiový prístup počas nasledujúcich 12 mesiacov.",
+    "errorTitle": "Nákup zlyhal",
+    "errorMessage": "Niečo sa pokazilo. Skúste to prosím znova.",
+    "restoreSuccessTitle": "Obnovené",
+    "restoreSuccessMessage": "Vaše nákupy boli obnovené.",
+    "restoreErrorTitle": "Obnovenie zlyhalo",
+    "restoreErrorMessage": "Nenašli sa žiadne nákupy na obnovenie.",
+    "unavailableTitle": "Nákupy nie sú k dispozícii",
+    "unavailableMessage": "Fakturácia pre Android ešte nie je nakonfigurovaná."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MYTICKÝ"
         }
       }
+    },
+    "checkIn": {
+      "title": "Vyzdvihnite si denné mince",
+      "subtitle": "Vracajte sa každý deň — odmena rastie.",
+      "cta": "Prihlásiť sa",
+      "claimed": "Získané! +{{amount}} mincí",
+      "later": "Neskôr"
     }
+  },
+  "app": {
+    "version": "Verzia {{version}}",
+    "offlineBanner": "Ste offline",
+    "launch": {
+      "accessibilityLabel": "Spúšťa sa Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI pripravená, kedykoľvek chcete"
+    },
+    "errors": {
+      "modelsLoadTitle": "Modely sa nepodarilo načítať",
+      "modelsLoadMessage": "AI modely nie je možné načítať. Aplikácia použije predvolené modely. Skontrolujte prosím pripojenie na internet.",
+      "modelsLoadTimeout": "Načítanie modelov trvalo príliš dlho. Aplikácia použije predvolené modely. Skúste to prosím znova.",
+      "modelsLoadNetwork": "Žiadne pripojenie na internet. Aplikácia použije predvolené modely. Skontrolujte prosím pripojenie.",
+      "deviceIdTitle": "Chyba inicializácie",
+      "deviceIdMessage": "Nepodarilo sa inicializovať ID zariadenia. Niektoré funkcie nemusia fungovať správne.",
+      "storageTitle": "Chyba úložiska",
+      "storageMessage": "Nie je možné získať prístup k miestnemu úložisku. Niektoré funkcie nemusia fungovať správne.",
+      "crashTitle": "Niečo sa pokazilo.",
+      "crashSubtitle": "Skúste to prosím znova.",
+      "crashLabel": "Aplikácia zlyhala"
+    },
+    "proxyErrors": {
+      "genericTitle": "Niečo sa pokazilo",
+      "genericMessage": "Skúste to prosím znova.",
+      "rateLimitTitle": "Príliš veľa požiadaviek",
+      "rateLimitMessage": "Spracovávame veľa požiadaviek. Skúste to prosím o chvíľu znova.",
+      "rateLimitRetryAfter": "Spracovávame veľa požiadaviek. Skúste to prosím znova približne o {{seconds}} sekúnd.",
+      "restrictedTitle": "Obmedzený obsah",
+      "restrictedMessage": "Táto požiadavka bola zablokovaná bezpečnostnými filtrami.",
+      "insufficientCoinsTitle": "Nedostatok mincí",
+      "insufficientCoinsMessage": "Váš aktuálny zostatok je pre túto požiadavku príliš nízky.",
+      "imageUnavailableTitle": "Obrázok nie je k dispozícii",
+      "imageUnavailableMessage": "Súbor vygenerovaného obrázka bol dočasne nedostupný. Skúste to prosím znova.",
+      "authorizationTitle": "Problém s autorizáciou",
+      "authorizationMessage": "Nepodarilo sa overiť váš účet. Skúste to prosím znova.",
+      "serverTitle": "Výpadok servera",
+      "serverMessage": "Naše servery mali problém. Skúste to prosím čoskoro znova.",
+      "timeoutTitle": "Trvá to príliš dlho",
+      "timeoutMessage": "Časový limit požiadavky vypršal. Skúste to prosím znova.",
+      "networkTitle": "Žiadne pripojenie",
+      "networkMessage": "Žiadne pripojenie na internet. Skontrolujte prosím pripojenie a skúste to znova.",
+      "requestTitle": "Problém s požiadavkou",
+      "requestMessage": "S vašou požiadavkou sa niečo pokazilo. Skúste to prosím znova."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktivovať Premium",
+    "activateMessage": "Chcete aktivovať prémiový režim pre recenzentov?",
+    "activateAction": "Aktivovať",
+    "deactivateTitle": "Deaktivovať Premium",
+    "deactivateMessage": "Chcete deaktivovať prémiový režim pre recenzentov?",
+    "deactivateAction": "Deaktivovať"
   },
   "push": {
     "dailyReward": {
       "title": "Denná odmena",
       "body": "Nenech si ujsť denné mince — vyzdvihni ich pred polnocou."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Nenechajte si ujsť denné mince",
+      "body": "Posielame jednu pripomienku denne, aby vaša séria pokračovala a mincí pribúdalo. Žiadny spam, kedykoľvek môžete vypnúť.",
+      "enable": "Zapnúť pripomienky",
+      "skip": "Teraz nie"
     }
   }
 }

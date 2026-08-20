@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "एक मोडेल चयन गर्नुहोस्",
+    "searchPlaceholder": "मोडेलहरू खोज्नुहोस्...",
+    "noModelsFound": "कुनै मोडेल भेटिएन",
+    "noModelsAvailable": "कुनै मोडेल उपलब्ध छैन",
+    "currentModel": "हालको मोडेल: {{name}}। मोडेल परिवर्तन गर्न ट्याप गर्नुहोस्।",
+    "openHint": "मोडेल चयन मेनु खोल्छ",
+    "closeLabel": "मोडेल चयनकर्ता बन्द गर्नुहोस्",
+    "searchLabel": "मोडेलहरू खोज्नुहोस्",
+    "searchHint": "उपलब्ध मोडेलहरू फिल्टर गर्न टाइप गर्नुहोस्",
+    "modelLabel": "{{name}} मोडेल",
+    "selectHint": "{{name}} मोडेल चयन गर्नुहोस्",
+    "currentlySelected": "हाल चयन गरिएको मोडेल",
+    "genericModel": "{{provider}} मोडेल",
+    "badges": {
+      "new": "नयाँ",
+      "best": "उत्तम"
+    }
+  },
+  "models": {
+    "gpt-4o": "सबैभन्दा शक्तिशाली एआई मोडेल",
+    "gpt-4o-mini": "दैनिक कार्यहरूको लागि छिटो",
+    "gpt-5": "सबैभन्दा शक्तिशाली सबै उद्देश्य एआई",
+    "gpt-5-chat-latest": "च्याट र संवादको लागि अनुकूलित",
+    "gpt-5-mini": "छिटो र भरपर्दो GPT-5",
+    "gpt-5.4-nano": "साधारण कार्यहरूको लागि हल्का मोडेल",
+    "o4-mini": "कुशल तर्क मोडेल",
+    "gpt-4.1-mini": "कम्प्याक्ट, सक्षम GPT-4.1",
+    "claude-3-haiku": "द्रुत र केन्द्रित एन्थ्रोपिक एआई",
+    "claude-3.7-sonnet": "एन्थ्रोपिक द्वारा परिष्कृत तर्क",
+    "gemini-2.5-Flash": "Google को सबैभन्दा उन्नत मोडेल",
+    "gemini-2.5-flash": "Google को सबैभन्दा उन्नत मोडेल",
+    "gemini-2.0-flash": "द्रुत र सटीक Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "सबैभन्दा शक्तिशाली एआई मोडेल",
+    "fast_everyday": "दैनिक कार्यहरूको लागि छिटो",
+    "fast_reasoning": "राम्रो तर्क संग छिटो मोडेल",
+    "great_reasoning": "उन्नत तर्क मोडेल",
+    "coding_reasoning": "उन्नत कोडिङ र तर्क",
+    "better_coding": "कोडिङ र तर्कको लागि राम्रो",
+    "best_overall": "सबै भन्दा राम्रो AI मोडेल",
+    "best_google": "Google को उत्कृष्ट मोडेल",
+    "best_xai": "xAI को सबैभन्दा शक्तिशाली मोडेल",
+    "creative_focus": "रचनात्मक लेखन को लागी महान",
+    "code_helper": "कोडिङ मद्दतको लागि महान",
+    "chat_focus": "च्याट गर्न को लागी अनुकूलित",
+    "long_context": "लामो सन्दर्भहरूको लागि उत्कृष्ट",
+    "budget_friendly": "बजेट-अनुकूल AI मोडेल",
+    "ultra_fast": "अल्ट्रा छिटो प्रतिक्रियाहरू",
+    "safe_default": "सुरक्षित पूर्वनिर्धारित विकल्प",
+    "multilingual": "बलियो बहुभाषी समर्थन",
+    "vision_strong": "छवि र दृष्टि संग महान",
+    "data_analysis": "डाटा विश्लेषणको लागि राम्रो",
+    "structured_tasks": "संरचित कार्यहरूको लागि राम्रो",
+    "everyday_helper": "दैनिक सहायक मोडेल",
+    "concise_answers": "छोटो, संक्षिप्त जवाफ",
+    "detailed_answers": "विस्तृत चरण-दर-चरण उत्तरहरू",
+    "experimental": "प्रयोगात्मक नेक्स्ट-जेन मोडेल",
+    "reliable_classic": "भरपर्दो क्लासिक मोडेल",
+    "lightweight": "हल्का, कम लागत मोडेल",
+    "chatty_personal": "अधिक अनुकूल र व्यक्तिगत",
+    "pro_users": "पावर प्रयोगकर्ताहरूको लागि उत्तम",
+    "research_helper": "अनुसन्धान र नोटहरूको लागि राम्रो",
+    "reasoning_strong": "उन्नत तर्क मोडेल"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "एन्थ्रोपिक",
+    "google": "गुगल",
+    "xai": "xAI",
+    "other": "अन्य"
+  },
+  "navigation": {
+    "chat": "नयाँ च्याट",
+    "history": "इतिहास",
+    "rewards": "दैनिक पुरस्कार",
+    "assistants": "सहायकहरू",
+    "imagesStudio": "Image Studio",
+    "settings": "सेटिङहरू",
+    "recentChats": "भर्खरको च्याटहरू",
+    "proFeatures": "प्रो सुविधाहरू",
+    "pro": "प्रो",
+    "proFeaturesCta": {
+      "title": "प्रो सुविधाहरू प्राप्त गर्नुहोस्",
+      "subtitle": "सबै AI सुविधाहरू"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "एकै ठाउँमा दृश्य सम्पत्तिहरू उत्पन्न गर्नुहोस्, परिष्कृत गर्नुहोस् र प्रकाशित गर्नुहोस्।",
+    "cta": "खोल्नुहोस्"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "छविहरू चयन गर्नुहोस्",
+    "exitSelectionMode": "चयन मोडबाट बाहिर निस्कनुहोस्",
+    "selectAll": "सबै चयन गर्नुहोस्",
+    "noImagesYet": "अहिलेसम्म कुनै छविहरू छैनन्",
+    "describeImageHint": "तल आफ्नो छवि वर्णन गर्नुहोस् र उत्पन्न ट्याप गर्नुहोस्।",
+    "generatedImagesGallery": "उत्पन्न छवि ग्यालरी",
+    "describeImagePlaceholder": "आफूले चाहेको छविको वर्णन गर्नुहोस्...",
+    "deleteConfirmTitle": "छविहरू मेटाउनुहोस्",
+    "deleteConfirmMessage": "के तपाइँ निश्चित तस्बिरहरू मेटाउन चाहनुहुन्छ? यो कार्य अन्डू गर्न सकिँदैन।",
+    "cancel": "रद्द गर्नुहोस्",
+    "delete": "मेट्नुहोस्",
+    "generate": "उत्पन्न गर्नुहोस्",
+    "generating": "उत्पन्न गर्दै...",
+    "latest": "पछिल्लो",
+    "insertToChat": "च्याट गर्न सम्मिलित गर्नुहोस्",
+    "pleaseWait": "कृपया पर्खनुहोस्...",
+    "processing": "प्रशोधन गर्दै...",
+    "tapToUploadImage": "छवि अपलोड गर्न ट्याप गर्नुहोस्",
+    "camera": "फोटोहरू अपलोड गर्नुहोस्",
+    "library": "पुस्तकालय",
+    "enterPrompt": "कृपया पाठ-देखि-छवि उत्पादनको लागि प्रम्प्ट प्रविष्ट गर्नुहोस्",
+    "openInBrowser": "ब्राउजरमा खोल्नुहोस्",
+    "makeVariations": "भिन्नताहरू बनाउनुहोस्",
+    "deleteAllFromGeneration": "यो पुस्ताबाट सबै मेटाउनुहोस्",
+    "imageOptionsTitle": "छवि विकल्प",
+    "imageOptionsMessage": "तपाईं यो छविसँग के गर्न चाहनुहुन्छ?",
+    "insertMarkdownHeader": "यहाँ को लागी छवि छ:",
+    "variationSuffix": "- अघिल्लो छविको भिन्नता",
+    "selectedCount": "चयन गरियो",
+    "selectedCount_one": "चयन गरियो",
+    "selectedCount_other": "चयन गरियो",
+    "imageDescriptionInput": "छवि विवरण इनपुट",
+    "imageDescriptionHint": "तपाईंले सिर्जना गर्न चाहनुभएको छविको विवरण प्रविष्ट गर्नुहोस्",
+    "openModelSettings": "मोडेल सेटिङहरू खोल्नुहोस्",
+    "modelSettingsHint": "मोडेल र सेटिङहरू परिवर्तन गर्न ट्याप गर्नुहोस्",
+    "openPhotoGallery": "फोटो ग्यालेरी खोल्नुहोस्",
+    "clearInput": "इनपुट खाली गर्नुहोस्",
+    "generatedImage": "उत्पन्न छवि",
+    "autoSelectedModel": "{{mode}} मोडको लागि स्वतः चयन गरिएको {{model}}",
+    "deleteSelectedConfirmTitle": "छविहरू मेटाउनुहोस्",
+    "deleteSelectedConfirmMessage": "के तपाइँ निश्चित रूपमा छविहरू मेटाउन चाहनुहुन्छ? यो कार्य अन्डू गर्न सकिँदैन।"
+  },
+  "imageStudio": {
+    "generateImage": "छवि उत्पन्न गर्नुहोस्",
+    "generatingImage": "छवि सिर्जना गर्दै",
+    "generateImageHint": "तपाईंको विवरणमा आधारित छवि सिर्जना गर्न ट्याप गर्नुहोस्",
+    "imageDescriptionInput": "छवि विवरण इनपुट",
+    "imageDescriptionHint": "तपाईंले सिर्जना गर्न चाहनुभएको छविको विवरण प्रविष्ट गर्नुहोस्",
+    "openModelSettings": "मोडेल सेटिङहरू खोल्नुहोस्",
+    "modelSettingsHint": "मोडेल र सेटिङहरू परिवर्तन गर्न ट्याप गर्नुहोस्",
+    "openPhotoGallery": "फोटो ग्यालेरी खोल्नुहोस्",
+    "clearInput": "इनपुट खाली गर्नुहोस्",
+    "generatedImage": "उत्पन्न छवि"
+  },
+  "assistants": {
+    "title": "सहायकहरू",
+    "defaultTitle": "सहायक",
+    "errorTitle": "केही गडबड भयो",
+    "errorMessage": "यो सहायक सुरु गर्न सकिएन।",
+    "noAssistants": "यस कोटीमा कुनै सहायक भेटिएनन्।",
+    "selectAssistantHint": "सहायक पिकर खोल्नुहोस्",
+    "subtitle": "क्युरेट गरिएको एआई विशेषज्ञहरू कोडिङ, लेखन, विश्लेषण, योजना, र थपका लागि तयार छन्।",
+    "searchPlaceholder": "सहायक खोज्नुहोस्...",
+    "useAssistant": "सहायक प्रयोग गर्नुहोस्",
+    "selectAssistant": "सहायक छान्नुहोस्",
+    "description": "विवरण",
+    "systemPrompt": "प्रणाली प्रम्प्ट",
+    "chooseModel": "मोडेल छान्नुहोस्",
+    "categoryAll": "सबै",
+    "categories": {
+      "everyday": "हरेक दिन",
+      "life": "जीवन",
+      "health": "स्वास्थ्य",
+      "schoolWork": "स्कूल र काम",
+      "coding": "कोडिङ",
+      "creative": "रचनात्मक",
+      "general": "सामान्य"
+    },
+    "presets": {
+      "default": {
+        "name": "पूर्वनिर्धारित सहायक",
+        "description": "दैनिक सामानको लागि सन्तुलित मद्दत।"
+      },
+      "quick": {
+        "name": "द्रुत उत्तरहरू",
+        "description": "छोटो, सीधा जवाफ।"
+      },
+      "planner": {
+        "name": "दैनिक योजनाकार",
+        "description": "आफ्नो दिन र दिनचर्या योजना गर्नुहोस्।"
+      },
+      "recipes": {
+        "name": "भोजन र व्यञ्जनहरु",
+        "description": "के पकाउने, के छ त्यसैमा।"
+      },
+      "fitness": {
+        "name": "फिटनेस कोच",
+        "description": "सानो बानी र घर कसरत।"
+      },
+      "money": {
+        "name": "पैसा साथी",
+        "description": "सरल बजेट र खर्च सुझावहरू।"
+      },
+      "study": {
+        "name": "अध्ययन सहयोगी",
+        "description": "सरल रूपमा व्याख्या गर्नुहोस्। मलाई प्रश्न गर्नुहोस्।"
+      },
+      "email": {
+        "name": "इमेल र पुनःसुरु",
+        "description": "स्पष्ट इमेल र CV लाइनहरू लेख्नुहोस्।"
+      },
+      "translator": {
+        "name": "अनुवादक",
+        "description": "अनुवाद गर्नुहोस् + वाक्यांशहरू सिकाउनुहोस्।"
+      },
+      "travel": {
+        "name": "यात्रा साथी",
+        "description": "सरल योजना र प्याकिङ सूची।"
+      },
+      "tech": {
+        "name": "प्राविधिक समर्थन (सरल)",
+        "description": "फोन, एप्स, Wi-Fi आधारभूत कुराहरू।"
+      },
+      "summarizer": {
+        "name": "TL; DR सारांशकार",
+        "description": "छोटो बुलेट + एक-लाइन TL; DR।"
+      },
+      "gift": {
+        "name": "उपहार खोजकर्ता",
+        "description": "बजेट र चासो द्वारा विचार।"
+      },
+      "party": {
+        "name": "घटना योजनाकार (लाइट)",
+        "description": "एक सानो पार्टी छिटो योजना।"
+      },
+      "social": {
+        "name": "सामाजिक पोस्ट निर्माता",
+        "description": "विकल्पहरूको साथ ड्राफ्ट पोष्टहरू।"
+      },
+      "interview": {
+        "name": "अन्तर्वार्ता प्रशिक्षक",
+        "description": "अभ्यास जवाफ (STAR)।"
+      },
+      "homefix": {
+        "name": "गृह फिक्स-इट गाइड",
+        "description": "सरल DIY समस्या निवारण।"
+      },
+      "pet": {
+        "name": "पाल्तु जनावर हेरचाह साथी",
+        "description": "खुवाउने, हिँड्ने, आधारभूत तालिम।"
+      },
+      "mindful": {
+        "name": "माइन्डफुल मिनेट",
+        "description": "1-3 मिनेट शान्त विश्राम।"
+      },
+      "polite": {
+        "name": "विनम्र पुनर्लेखक",
+        "description": "पाठहरू र जवाफहरू राम्ररी लेख्नुहोस्।"
+      }
+    }
+  },
+  "history": {
+    "title": "इतिहास",
+    "searchPlaceholder": "च्याटहरू खोज्नुहोस्...",
+    "newChat": "नयाँ च्याट",
+    "new": "+ नयाँ",
+    "search": "खोज्नुहोस्",
+    "clearSearch": "खोज खाली गर्नुहोस्",
+    "noChatsYet": "अहिलेसम्म कुनै च्याट छैन",
+    "noResults": "अहिलेसम्म कुनै च्याट छैन",
+    "startFirstConversation": "आफ्नो पहिलो कुराकानी सुरु गर्नुहोस्।",
+    "startChat": "च्याट सुरु गर्नुहोस्",
+    "startNewChat": "नयाँ च्याट सुरु गर्नुहोस्",
+    "errorLoadingHistory": "इतिहास लोड गर्दा त्रुटि भयो",
+    "loading": "इतिहास लोड गर्दै...",
+    "renameChat": "च्याट पुन: नामाकरण गर्नुहोस्",
+    "enterNewTitle": "नयाँ शीर्षक प्रविष्ट गर्नुहोस्",
+    "deleteChat": "च्याट मेट्ने हो?",
+    "deleteChatMessage": "\"{{title}}\" मेटिनेछ।",
+    "rename": "पुन: नामाकरण गर्नुहोस्",
+    "unpin": "अनपिन गर्नुहोस्",
+    "pin": "पिन",
+    "untitled": "शीर्षकविहीन"
+  },
+  "settings": {
+    "title": "सेटिङहरू",
+    "model": "मोडेल",
+    "searchPlaceholder": "मोडेलहरू खोज्नुहोस्…",
+    "temperatureForCurrentModel": "हालको मोडेलको लागि तापक्रम",
+    "customFor": "{{model}} को लागि अनुकूलन",
+    "usingDefault": "पूर्वनिर्धारित {{temperature}} प्रयोग गर्दै",
+    "resetToDefault": "पूर्वनिर्धारितमा रिसेट गर्नुहोस्",
+    "defaultTemperature": "पूर्वनिर्धारित तापमान (फलब्याक)",
+    "usedByModelsWithoutOverride": "अनुकूलन ओभरराइड बिना मोडेलहरू द्वारा प्रयोग गरिएको",
+    "dangerZone": "खतरा क्षेत्र",
+    "clearAllChatsAndSettings": "सबै च्याट र सेटिङहरू खाली गर्नुहोस्",
+    "about": "बारे",
+    "version": "संस्करण {{version}}{{status}}",
+    "versionPremiumSuffix": "· प्रिमियम",
+    "privacyPolicy": "गोपनीयता नीति",
+    "hero": {
+      "label": "विशेष प्रस्ताव",
+      "title": "असीमित पहुँच\nर प्रो सुविधाहरू",
+      "upgrade": "अपग्रेड गर्नुहोस्",
+      "manage": "योजना प्रबन्ध गर्नुहोस्"
+    },
+    "sections": {
+      "premium": "प्रिमियम योजना",
+      "data": "प्रयोगकर्ता डेटा",
+      "support": "समर्थन र कानूनी"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "प्रिमियम प्राप्त गर्नुहोस्",
+        "subtitle": "असीमित सिर्जना उपकरणहरू अनलक गर्नुहोस्"
+      },
+      "premiumActive": {
+        "title": "प्रिमियम सक्रिय",
+        "subtitle": "Cloud AI समर्थन गर्नुभएकोमा धन्यवाद"
+      },
+      "restore": {
+        "title": "खरिदहरू पुनर्स्थापित गर्नुहोस्",
+        "subtitle": "यदि तपाईंले यन्त्रहरू स्विच गर्नुभयो भने प्रयोग गर्नुहोस्"
+      },
+      "history": {
+        "title": "च्याट इतिहास प्रबन्ध गर्नुहोस्",
+        "subtitle": "तपाईंको विगतका सत्रहरू हेर्नुहोस् र मेटाउनुहोस्"
+      },
+      "reset": {
+        "title": "च्याट र प्राथमिकताहरू रिसेट गर्नुहोस्",
+        "subtitle": "यस यन्त्रमा भण्डारण गरिएका सबै डेटा खाली गर्छ"
+      },
+      "rate": {
+        "title": "हामीलाई मूल्याङ्कन गर्नुहोस्",
+        "error": "स्टोर पृष्ठ खोल्न असमर्थ।"
+      },
+      "support": {
+        "title": "समर्थन",
+        "subtitle": "हामीलाई अनलाइन सम्पर्क गर्नुहोस्",
+        "error": "सम्पर्क पृष्ठ खोल्न असमर्थ।"
+      },
+      "privacy": {
+        "title": "गोपनीयता नीति",
+        "error": "गोपनीयता नीति खोल्न असमर्थ।"
+      },
+      "terms": {
+        "title": "प्रयोगका सर्तहरू",
+        "error": "प्रयोगका सर्तहरू खोल्न असमर्थ।"
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "अनुपलब्ध",
+      "linkUnavailableMessage": "अहिले यो लिङ्क खोल्न असमर्थ।",
+      "restoreSuccessTitle": "पुनर्स्थापित",
+      "restoreSuccessMessage": "तपाईंका खरिदहरू पुनर्स्थापित गरिएका छन्।",
+      "restoreEmptyTitle": "कुनै खरिदहरू फेला परेनन्",
+      "restoreEmptyMessage": "हामीले यस खाताको लागि पुनर्स्थापना गर्न सक्रिय खरिद फेला पार्न सकेनौं।",
+      "restoreErrorTitle": "पुनर्स्थापना असफल भयो",
+      "restoreErrorMessage": "अहिले खरिदहरू पुनर्स्थापना गर्न असमर्थ।",
+      "resetConfirmTitle": "एप डेटा रिसेट गर्ने हो?",
+      "resetConfirmMessage": "यसले सबै च्याट र स्थानीय प्राथमिकताहरू हटाउँछ।",
+      "resetConfirmCancel": "रद्द गर्नुहोस्",
+      "resetConfirmCta": "रिसेट गर्नुहोस्"
+    }
+  },
+  "createImage": {
+    "headerTitle": "सिर्जना गर्नुहोस्",
+    "chooseStyle": "एक शैली छान्नुहोस्",
+    "aspectRatio": "पक्ष अनुपात",
+    "starterPrompts": {
+      "title": "स्टार्टर प्रम्प्टहरू",
+      "items": [
+        "स्टुडियो हेडशट",
+        "आधुनिक बैठक कोठा",
+        "सूर्यास्तमा उष्णकटिबंधीय समुद्र तट"
+      ]
+    },
+    "promptPlaceholder": "तपाई के हेर्न चाहनुहुन्छ टाइप गर्नुहोस्...",
+    "promptHint": "उदाहरण: 'स्टुडियो प्रकाशमा गोल्डेन रिट्रिभर'",
+    "clearText": "पाठ खाली गर्नुहोस्",
+    "generate": "उत्पन्न गर्नुहोस्",
+    "generating": "उत्पन्न गर्दै..."
+  },
+  "editImage": {
+    "headerTitle": "सम्पादन गर्नुहोस्",
+    "chooseStyle": "एक शैली छान्नुहोस्",
+    "aspectRatio": "पक्ष अनुपात",
+    "starterPrompts": {
+      "title": "स्टार्टर प्रम्प्टहरू",
+      "items": [
+        "प्रकाश ठीक गर्नुहोस्",
+        "पृष्ठभूमि हटाउनुहोस्",
+        "नरम पोर्ट्रेट रिटच"
+      ]
+    },
+    "promptPlaceholder": "सम्पादनहरू वर्णन गर्नुहोस् (वैकल्पिक)",
+    "clearText": "पाठ खाली गर्नुहोस्",
+    "generate": "उत्पन्न गर्नुहोस्",
+    "generating": "आवेदन गर्दै...",
+    "upload": {
+      "choose": "फोटो छान्नुहोस्",
+      "change": "परिवर्तन गर्नुहोस्",
+      "remove": "हटाउनुहोस्"
+    },
+    "imageUnavailable": {
+      "title": "छवि उपलब्ध छैन",
+      "message": "चयन गरिएको फोटो पहुँच गर्न सकिएन। कृपया यसलाई पुन: चयन गर्नुहोस् र पुन: प्रयास गर्नुहोस्।"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "एनिमे"
+      },
+      "cartoon": {
+        "name": "कार्टुन"
+      },
+      "photoreal": {
+        "name": "फोटोरियल"
+      },
+      "sketch": {
+        "name": "स्केच"
+      },
+      "cyberpunk": {
+        "name": "साइबरपंक"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D चित्रण"
+      },
+      "dark_fantasy": {
+        "name": "गाढा काल्पनिक"
+      },
+      "vintage_film": {
+        "name": "पुरानो फिल्म"
+      },
+      "pastel": {
+        "name": "पेस्टल एस्थेटिक"
+      },
+      "neon_glow": {
+        "name": "नियोन चमक"
+      },
+      "epic_landscape": {
+        "name": "महाकाव्य परिदृश्य"
+      }
+    },
+    "aspectRatios": {
+      "square": "वर्ग",
+      "landscape": "परिदृश्य",
+      "portrait": "पोर्ट्रेट"
+    },
+    "models": {
+      "fluxKontent": "फ्लक्स सामग्री",
+      "custom": "अनुकूलन"
+    },
+    "notEnoughCoinsTitle": "पर्याप्त सिक्का छैन",
+    "notEnoughCoinsMessage": "यो छविको लागि तपाईंको हालको ब्यालेन्स धेरै कम छ।",
+    "modelTaglines": {
+      "runwareFluxSchnell": "सबैभन्दा छिटो मोडेल",
+      "runwareFluxKrea": "रचनात्मक, शैलीगत परिणामहरू",
+      "runwareQwenImage": "सन्तुलित, उच्च गुणस्तर परिणाम",
+      "google4": "सर्वश्रेष्ठ एआई छवि मोडेल",
+      "klingImageO1": "उच्च-नियन्त्रण छवि सम्पादन",
+      "fluxKontent": "फ्लक्स कन्टेन्ट सम्पादनका लागि ट्युन गरिएको छ",
+      "runwareProvider": "विश्वसनीय प्रसार संग सन्तुलित गुणस्तर।",
+      "airProvider": "Nano Banana ले चंचल, जीवन्त स्वर थप्छ।",
+      "googleProvider": "गुगलले पालिश गरिएको विवरणहरूको लागि ट्युन गरेको छ।",
+      "klingaiProvider": "KlingAI नियन्त्रित सम्पादनहरूको लागि ट्युन गरियो।",
+      "anthropicProvider": "सूक्ष्म मुडका लागि Claude पाइपलाइन।",
+      "default": "उपलब्ध इन्जिनहरू अन्वेषण गर्न ट्याप गर्नुहोस्।"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "आफ्नो रोजेको शैली",
+    "sheetTitle": "आफ्नो दृष्टि क्राफ्टिंग",
+    "sheetSubtitle": "हामीले प्रम्प्टमा {{style}} मिलाउँदा सर्भर कफीको छोटो चुस्की।",
+    "phases": {
+      "blend": "{{style}} मा मिश्रण",
+      "paint": "दृश्य चित्रण गर्दै",
+      "finish": "अन्तिम पोलिश थप्दै"
+    },
+    "actions": {
+      "cancel": "रद्द गर्नुहोस्",
+      "retry": "पुन: प्रयास गर्नुहोस्",
+      "close": "बन्द गर्नुहोस्"
+    },
+    "errors": {
+      "restrictedTitle": "प्रतिबन्धित सामग्री",
+      "genericTitle": "पुस्ता असफल भयो",
+      "genericMessage": "छवि उत्पन्न गर्न सकेन।"
+    },
+    "alerts": {
+      "saveFailedTitle": "बचाउन सकिएन",
+      "shareFailedTitle": "साझेदारी गर्न सकेन",
+      "tryAgain": "कृपया पुन: प्रयास गर्नुहोस्।",
+      "savedTitle": "सुरक्षित गरियो",
+      "savedMessage": "छवि तपाईंको ग्यालेरीमा सुरक्षित गरियो।",
+      "permissionTitle": "अनुमति चाहिन्छ",
+      "permissionMessage": "तपाईंको ग्यालेरीमा छविहरू बचत गर्न भण्डारण पहुँच अनुमति दिनुहोस्।"
+    },
+    "result": {
+      "complete": "सबै सकियो"
+    },
+    "accessibility": {
+      "close": "बन्द गर्नुहोस्"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "मेट्नुहोस्",
+      "edit": "सम्पादन गर्नुहोस्",
+      "save": "बचत गर्नुहोस्",
+      "share": "सेयर गर्नुहोस्"
+    },
+    "alerts": {
+      "savedTitle": "सुरक्षित गरियो",
+      "savedMessage": "छवि तपाईंको ग्यालेरीमा सुरक्षित गरियो।",
+      "permissionTitle": "अनुमति चाहिन्छ",
+      "permissionMessage": "तपाईंको ग्यालेरीमा छविहरू बचत गर्न भण्डारण पहुँच अनुमति दिनुहोस्।",
+      "saveFailedTitle": "बचाउन सकिएन",
+      "tryAgain": "कृपया पुन: प्रयास गर्नुहोस्।"
+    },
+    "accessibility": {
+      "close": "बन्द गर्नुहोस्",
+      "delete": "छवि मेटाउनुहोस्",
+      "edit": "छवि सम्पादन गर्नुहोस्",
+      "save": "छवि बचत गर्नुहोस्",
+      "share": "छवि साझेदारी गर्नुहोस्"
+    }
+  },
+  "reportContent": {
+    "title": "AI सामग्री रिपोर्ट गर्नुहोस्",
+    "subtitle": "हामीलाई भन्नुहोस् यो उत्पन्न सामग्रीमा के गलत छ।",
+    "privateDisclosure": "पेश गर्दा यो रिपोर्ट गरिएको सामग्री सुरक्षा समीक्षाको लागि पठाइन्छ।",
+    "accessibilityLabel": "AI सामग्री रिपोर्ट गर्नुहोस्",
+    "reasons": {
+      "sexual": "यौन वा नग्नता सामग्री",
+      "violence_self_harm": "हिंसा वा आत्म-हानि",
+      "hate_harassment": "घृणा वा उत्पीडन",
+      "child_safety": "बाल सुरक्षा चिन्ता",
+      "scam_deceptive": "घोटाला वा भ्रामक सामग्री",
+      "other": "अन्य"
+    },
+    "errors": {
+      "reasonRequired": "कृपया पेश गर्नु अघि कारण छान्नुहोस्।",
+      "submit": "प्रतिवेदन पेश गर्न सकिएन। कृपया पुन: प्रयास गर्नुहोस्।"
+    },
+    "success": {
+      "title": "धन्यवाद। तपाईंको रिपोर्ट पेश गरियो।",
+      "subtitle": "हामी सामग्री सुरक्षा सुधार गर्न रिपोर्टहरू प्रयोग गर्नेछौं।"
+    },
+    "actions": {
+      "report": "रिपोर्ट",
+      "submit": "प्रतिवेदन पेश गर्नुहोस्",
+      "done": "सकियो"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "मेनु खोल्नुहोस्",
+      "selectImages": "छविहरू चयन गर्नुहोस्",
+      "exitSelection": "चयनबाट बाहिर निस्कनुहोस्",
+      "deleteSelected": "चयन गरिएका छविहरू मेटाउनुहोस्",
+      "selectToDelete": "मेटाउन छविहरू चयन गर्नुहोस्"
+    },
+    "createCard": {
+      "title": "पाठबाट सिर्जना गर्नुहोस्",
+      "subtitle": "विवरण टाइप गर्नुहोस्",
+      "cta": "वर्णन गर्नुहोस् र उत्पन्न गर्नुहोस्"
+    },
+    "editCard": {
+      "title": "एआई फोटो सम्पादक",
+      "subtitle": "AI संग रूपान्तरण र वृद्धि",
+      "cta": "AI सँग सम्पादन गर्नुहोस्"
+    },
+    "gallery": {
+      "title": "ग्यालेरी",
+      "empty": "अहिलेसम्म कुनै छविहरू छैनन्",
+      "selection": {
+        "enter": "छविहरू चयन गर्नुहोस्",
+        "exit": "चयनबाट बाहिर निस्कनुहोस्",
+        "deleteSelected": "चयन गरिएका छविहरू मेटाउनुहोस्",
+        "selectForDelete": "मेटाउन छविहरू चयन गर्नुहोस्"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "भेट्नुहोस्",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Cloud AI भित्र AI मार्फत छविहरू सिर्जना र सम्पादन गर्नुहोस्।"
+    },
+    "relaxView": {
+      "title": "आफ्नो AI भेट्नुहोस्",
+      "titleHighlight": "सहायकहरू",
+      "subtitle": "विशेष एआई विशेषज्ञहरू तपाईंको दैनिक आवश्यकताहरूमा मद्दत गर्न तयार छन्",
+      "cards": {
+        "fitness": {
+          "title": "फिटनेस कोच",
+          "text": "सानो बानी र घर कसरत।"
+        },
+        "recipes": {
+          "title": "भोजन र व्यञ्जनहरु",
+          "text": "के पकाउने, के छ त्यसैमा।"
+        },
+        "travel": {
+          "title": "यात्रा साथी",
+          "text": "सरल योजना र प्याकिङ सूची।"
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "इन्टरप्राइज-ग्रेड एआई समाधानहरू",
+      "description": "उद्यम पेशेवरहरू र टोलीहरूको लागि डिजाइन गरिएको अत्याधुनिक कृत्रिम बुद्धिमत्ता प्रविधिको साथ तपाईंको व्यवसायलाई सशक्त बनाउनुहोस्।",
+      "stats": "500k+ प्रयोगकर्ताहरू द्वारा विश्वसनीय",
+      "rating": "४.९ / ५",
+      "button": "सुरु गर्नुहोस्"
+    },
+    "buttons": {
+      "continue": "जारी राख्नुहोस्",
+      "start": "सुरु गरौं"
+    }
+  },
+  "coinStore": {
+    "title": "क्रेडिट प्राप्त गर्नुहोस्",
+    "loading": "सिक्का पसल लोड गर्दै...",
+    "balanceLabel": "तपाईंको हालको ब्यालेन्स छ",
+    "balanceValue": "{{amount}} क्रेडिटहरू",
+    "history": {
+      "link": "लेनदेन इतिहास",
+      "alertTitle": "इतिहास",
+      "alertBody": "लेनदेन इतिहास चाँडै आउँदैछ।"
+    },
+    "noPacks": "कुनै सिक्का प्याकहरू उपलब्ध छैनन्। आफ्नो RevenueCat अफरिङ आईडी जाँच गर्नुहोस्।",
+    "badges": {
+      "basic": "आधारभूत प्याक",
+      "popular": "सबैभन्दा लोकप्रिय",
+      "value": "उत्तम मूल्य"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} क्रेडिटहरू",
+      "tokensLabel": "{{credits}} क्रेडिटहरू",
+      "defaultName": "प्याक {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "Premium जानुहोस्",
+      "subtitle": "असीमित पहुँच र सुविधाहरू",
+      "cta": "अपग्रेड गर्नुहोस्"
+    },
+    "termsText": "खरिद गरेर, तपाईं हाम्रो कुरामा सहमत हुनुहुन्छ",
+    "termsLink": "सेवाका सर्तहरू",
+    "alerts": {
+      "initErrorTitle": "प्रारम्भिक त्रुटि",
+      "genericMessage": "केही गडबड भयो।",
+      "successTitle": "सफलता",
+      "successMessage": "क्रेडिटहरू चाँडै देखा पर्नेछ।",
+      "purchaseFailedTitle": "खरिद असफल भयो",
+      "unknownError": "अज्ञात त्रुटि"
+    }
+  },
+  "premium": {
+    "badge": "प्रो",
+    "requiredTitle": "प्रिमियम आवश्यक छ",
+    "upgrade": "अपग्रेड गर्नुहोस्",
+    "modelRequiredMessage": "यो मोडेललाई प्रिमियम चाहिन्छ। GPT-5, Grok 4, Claude, र थप उन्नत मोडेलहरू पहुँच गर्न अपग्रेड गर्नुहोस्।",
+    "assistantsRequiredMessage": "सहायकहरूलाई प्रिमियम चाहिन्छ। फिटनेस, कोडिङ, लेखन, र थपका लागि विशेष AI सहायकहरू पहुँच गर्न अपग्रेड गर्नुहोस्।",
+    "assistantsTitle": "प्रिमियम आवश्यक छ",
+    "assistantsMessage": "सहायकहरूलाई प्रिमियम चाहिन्छ। फिटनेस, कोडिङ, लेखन, र थपका लागि विशेष AI सहायकहरू पहुँच गर्न अपग्रेड गर्नुहोस्।"
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "paywall बन्द गर्नुहोस्",
+    "unavailableTitle": "खरिदहरू उपलब्ध छैनन्",
+    "unavailableMessage": "Android बिलिङ अझै कन्फिगर गरिएको छैन।",
+    "restoreEmptyTitle": "कुनै खरिदहरू फेला परेनन्",
+    "restoreEmptyMessage": "हामीले यस खाताको लागि पुनर्स्थापना गर्न सक्रिय खरिद फेला पार्न सकेनौं।",
+    "restoreFailedTitle": "पुनर्स्थापना असफल भयो",
+    "restoreFailedMessage": "अहिले खरिदहरू पुनर्स्थापना गर्न असमर्थ।",
+    "productsUnavailableTitle": "कुनै योजना उपलब्ध छैन",
+    "productsUnavailableMessage": "कुनै पनि Android सदस्यता उत्पादनहरू अहिले उपलब्ध छैनन्।",
+    "purchaseFailedTitle": "खरिद असफल भयो",
+    "purchaseFailedMessage": "अहिले यो खरिद पूरा गर्न असमर्थ।",
+    "restore": "पुनर्स्थापना गर्नुहोस्",
+    "restoreRestoring": "पुनर्स्थापना गर्दै...",
+    "features": {
+      "create": "छवि र भिडियोहरू सिर्जना गर्नुहोस्",
+      "search": "AI को साथ वेब खोज्नुहोस्",
+      "talk": "AI सँग स्वाभाविक कुरा गर्नुहोस्",
+      "imageStudio": "Image Studio {{credits}} क्रेडिट {{period}} प्राप्त गर्नुहोस्",
+      "period": {
+        "weekly": "साप्ताहिक",
+        "monthly": "मासिक",
+        "yearly": "वार्षिक"
+      }
+    },
+    "freeTrial": {
+      "title": "नि: शुल्क परीक्षण",
+      "subtitle": "3-दिन नि: शुल्क परीक्षण"
+    },
+    "badge": {
+      "bestOffer": "उत्तम प्रस्ताव"
+    },
+    "plans": {
+      "yearly": {
+        "title": "वार्षिक",
+        "only": "मात्र {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
+      },
+      "monthly": {
+        "title": "मासिक",
+        "subtitle": "जुनसुकै बेला रद्द गर्नुहोस्",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "साप्ताहिक",
+        "subtitle": "जुनसुकै बेला रद्द गर्नुहोस्",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "३ दिन नि:शुल्क, त्यसपछि"
+      }
+    },
+    "frequency": {
+      "perWeek": "प्रति हप्ता",
+      "perMonth": "प्रति महिना"
+    },
+    "cta": "जारी राख्नुहोस्",
+    "ctaFreeTrial": "यसलाई निःशुल्क प्रयास गर्नुहोस्",
+    "legal": {
+      "terms": "सर्तहरू",
+      "privacy": "गोपनीयता"
+    },
+    "premium": {
+      "headline": "सबै प्रिमियम एआई एउटै योजनामा",
+      "subtitleLine1": "च्याट, कोड, सिर्जना, र योजना",
+      "subtitleLine2": "उन्नत मोडेल संग।",
+      "enableTrial": "नि:शुल्क परीक्षण सक्षम गर्नुहोस्",
+      "annual": "वार्षिक",
+      "saveBadge": "83% बचत गर्नुहोस्",
+      "year": "वर्ष",
+      "week": "हप्ता",
+      "termsOfUse": "प्रयोगका सर्तहरू",
+      "privacyPolicy": "गोपनीयता नीति"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "सन्देश...",
+    "createImages": "छविहरू सिर्जना गर्नुहोस्",
+    "generateAiArtwork": "AI कलाकृति उत्पन्न गर्नुहोस्",
+    "camera": "फोटोहरू अपलोड गर्नुहोस्",
+    "takeOrSelectPhotos": "फोटोहरू चयन गर्नुहोस्",
+    "search": "खोज्नुहोस्",
+    "findInformation": "जानकारी खोज्नुहोस्",
+    "findRecentInfo": "हालको जानकारी खोज्नुहोस्",
+    "removeImage": "छवि हटाउनुहोस्",
+    "messageInput": "सन्देश इनपुट",
+    "clearInput": "इनपुट खाली गर्नुहोस्",
+    "quickActionsLabel": "द्रुत कार्यहरू",
+    "hideQuickActions": "द्रुत कार्यहरू लुकाउनुहोस्",
+    "showQuickActions": "द्रुत कार्यहरू देखाउनुहोस्",
+    "startVoiceInput": "आवाज इनपुट सुरु गर्नुहोस्",
+    "sendMessage": "सन्देश पठाउनुहोस्",
+    "offline": "अफलाइन",
+    "stop": "रोक्नुहोस्",
+    "streaming": "स्ट्रिमिङ…",
+    "closeRecorder": "रेकर्डर बन्द गर्नुहोस्",
+    "insertTranscript": "पठाउनुहोस्",
+    "scrollToLatest": "पछिल्लो सन्देशमा स्क्रोल गर्नुहोस्",
+    "copyMessage": "सन्देश प्रतिलिपि गर्नुहोस्",
+    "copyMessageHint": "यो सन्देश क्लिपबोर्डमा प्रतिलिपि गर्नुहोस्",
+    "shareMessage": "सन्देश साझा गर्नुहोस्",
+    "shareMessageHint": "यो सन्देश साझा गर्नुहोस्",
+    "regenerateResponse": "प्रतिक्रिया पुन: उत्पन्न गर्नुहोस्",
+    "regenerateResponseHint": "नयाँ प्रतिक्रिया उत्पन्न गर्नुहोस्",
+    "copyCode": "कोड प्रतिलिपि गर्नुहोस्",
+    "copied": "प्रतिलिपि गरियो",
+    "image": "छवि",
+    "loading": "लोड हुँदै...",
+    "loadingChat": "च्याट लोड गर्दै...",
+    "offlineBanner": "तपाईं अफलाइन हुनुहुन्छ। सन्देशहरू पठाउन सकिँदैन।",
+    "offlineError": "इन्टरनेट जडान छैन। कृपया आफ्नो जडान जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्।",
+    "imagePickerErrorTitle": "छवि चयनकर्ता त्रुटि",
+    "imagePickerErrorMessage": "तपाईंको फोटोहरू पहुँच गर्न असमर्थ। कृपया पुन: प्रयास गर्नुहोस्।",
+    "messageTooLong": "सन्देश धेरै लामो ({{length}})। सीमा {{limit}} हो।",
+    "sendFailed": "सन्देश पठाउन असफल भयो। कृपया पुन: प्रयास गर्नुहोस्।",
+    "modelNoImageSupport": "चयन गरिएको मोडेलले छविहरूलाई समर्थन गर्दैन। कृपया फरक मोडेल छान्नुहोस्।",
+    "voiceStartFailed": "आवाज सुरु गर्न सकिएन।",
+    "voiceNoSpeechDetected": "आवाज चिनिएन । कृपया पुन: प्रयास गर्नुहोस्।",
+    "emptyTitle": "म कसरी मद्दत गर्न सक्छु?",
+    "emptySubtitle": "AI सँग कुराकानी सुरु गर्नुहोस्",
+    "privateTitle": "निजी च्याट",
+    "privateSubtitle": "यो च्याट तपाईंको च्याट इतिहासमा देखिने छैन",
+    "startPrivateChat": "निजी कुराकानी सुरु गर्नुहोस्",
+    "endPrivateChat": "निजी च्याट अन्त्य गर्नुहोस्",
+    "permissions": {
+      "photosTitle": "फोटो अनुमति आवश्यक छ",
+      "photosMessage": "तस्बिरहरू छनौट गर्न फोटो पहुँच आवश्यक छ।",
+      "voiceTitle": "आवाज अनुमतिहरू आवश्यक छ",
+      "voiceMessage": "आवाज प्रयोग गर्न माइक्रोफोन र वाणी पहुँच आवश्यक छ।"
+    },
+    "activity": {
+      "analyzingImages": "तस्बिरहरू विश्लेषण गर्दै...",
+      "searching": "खोज्दै…",
+      "thinking": "सोच्दै…"
+    },
+    "webSearch": {
+      "title": "वेब खोज",
+      "subtitle": "हालको जानकारी खोज्नुहोस्",
+      "label": "वेब खोज",
+      "enable": "वेब खोज सक्षम गर्नुहोस्",
+      "disable": "वेब खोज असक्षम गर्नुहोस्",
+      "toggleLabel": "वेब खोज्नुहोस्"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "गतिमा दृश्यहरू डिजाइन गर्नुहोस्।",
+      "subtitle": "एकै ठाउँमा दृश्य सम्पत्तिहरू उत्पन्न गर्नुहोस्, परिष्कृत गर्नुहोस् र प्रकाशित गर्नुहोस्।",
+      "cta": "खोल्नुहोस्"
+    },
+    "quickActions": {
+      "createImages": "छविहरू सिर्जना गर्नुहोस्",
+      "openCamera": "क्यामेरा खोल्नुहोस्",
+      "editImage": "छवि सम्पादन गर्नुहोस्",
+      "startVoice": "आवाज सुरु गर्नुहोस्",
+      "assistants": "सहायकहरू"
+    },
+    "listening": "सुन्दै…",
+    "startRecording": "रेकर्डिङ सुरु गर्नुहोस्...",
+    "assistantHeader": {
+      "unavailableTitle": "सहायक उपलब्ध छैन",
+      "unavailableDescription": "हामीले यो सहायक लोड गर्न सकेनौं। कृपया पुन: प्रयास गर्नुहोस्।",
+      "ready": "सहयोग गर्न तयार छ"
+    },
+    "actions": {
+      "copy": "प्रतिलिपि गर्नुहोस्",
+      "share": "सेयर गर्नुहोस्",
+      "regenerate": "पुन: उत्पन्न गर्नुहोस्",
+      "retryFromHere": "यहाँबाट पुन: प्रयास गर्नुहोस्",
+      "report": "रिपोर्ट",
+      "cancel": "रद्द गर्नुहोस्"
+    },
+    "markdown": {
+      "copy": "प्रतिलिपि गर्नुहोस्",
+      "copied": "प्रतिलिपि गरियो",
+      "table": "तालिका",
+      "watchVideo": "भिडियो हेर्नुहोस",
+      "wikipedia": "विकिपिडिया",
+      "link": "लिङ्क",
+      "note": "नोट",
+      "warning": "चेतावनी",
+      "tip": "टिप"
+    },
+    "messageActionTitle": "सन्देश",
+    "status": {
+      "sending": "पठाउँदै...",
+      "failed": "असफल",
+      "sent": "पठाइयो"
+    },
+    "suggestions": {
+      "writeStory": "रचनात्मक कथा लेख्नुहोस्",
+      "writeStorySubtitle": "एक जादुई साहसिक बारेमा",
+      "planTravel": "यात्राको योजना बनाउनुहोस्",
+      "planTravelSubtitle": "एक अद्भुत छुट्टी को लागी",
+      "explainConcept": "यो अवधारणा व्याख्या गर्नुहोस्",
+      "explainConceptSubtitle": "सरल शब्दहरूमा",
+      "planDay": "मेरो दिन योजना गर्नुहोस्",
+      "planDaySubtitle": "उत्पादकता सुझावहरूको साथ"
+    },
+    "home": {
+      "eyebrow": "एउटा विषय छान्नुहोस्",
+      "title": "तपाईं के गर्न चाहनुहुन्छ?",
+      "subtitle": "एउटा दिशा छान्नुहोस्, त्यसपछि बलियो प्रम्प्टको साथ सुरु गर्नुहोस्।",
+      "pickPromptTitle": "सुरु गर्न प्रम्प्ट छान्नुहोस्",
+      "changeTopic": "अर्को विषय छान्नुहोस्",
+      "intents": {
+        "summarize": "पाठ संक्षेप गर्नुहोस्",
+        "summarizeShort": "संक्षेप गर्नुहोस्",
+        "summarizeHint": "लेखहरू, नोटहरू, भ्वाइस मेमोहरू, लामो थ्रेडहरू",
+        "plan": "योजना बनाउनुहोस्",
+        "planHint": "यात्रा, दिनचर्या, बजेट, समय सीमा, जीवन परिवर्तन",
+        "brainstorm": "मंथन",
+        "brainstormHint": "विचारहरू, प्रस्तावहरू, नामहरू, सामग्री, साइड परियोजनाहरू",
+        "analyze": "डाटा विश्लेषण गर्नुहोस्",
+        "analyzeHint": "खर्च, प्रतिक्रिया, मेट्रिक्स, बानी, प्रदर्शन"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "एक संस्थापक संक्षिप्त सिर्जना गर्नुहोस्",
+          "founderBriefSubtitle": "मुख्य जोखिमहरू, निर्णयहरू, र अर्को चरणहरू बाहिर निकाल्नुहोस्।",
+          "classNotesTitle": "मेरो अध्ययन नोटहरू सफा गर्नुहोस्",
+          "classNotesSubtitle": "स्पष्ट अध्ययन गाइडमा नराम्रो नोटहरू बदल्नुहोस्।",
+          "meetingHandoffTitle": "ह्यान्डअफ सारांश लेख्नुहोस्",
+          "meetingHandoffSubtitle": "बैठकहरू, कलहरू, वा लामो आन्तरिक थ्रेडहरू पछि उपयोगी।",
+          "longArticleTitle": "यो लेख चाँडै संक्षेप गर्नुहोस्",
+          "longArticleSubtitle": "लामो लेखलाई तीखो टेकवेमा गाढा गर्नुहोस्।"
+        },
+        "plan": {
+          "energyResetTitle": "14-दिनको ऊर्जा रिसेट बनाउनुहोस्",
+          "energyResetSubtitle": "निद्रा, खाना, आन्दोलन, र फोकस को लागी एक यथार्थवादी योजना।",
+          "mealPlanTitle": "म वास्तवमा पकाउने खाना योजना",
+          "mealPlanSubtitle": "व्यावहारिक, किफायती, र मसँग के छ त्यसमा आधारित।",
+          "cityMoveTitle": "नयाँ शहरमा मेरो सर्ने योजना बनाउनुहोस्",
+          "cityMoveSubtitle": "यसलाई टाइमलाइन, बजेट, आवास, र प्रशासक कार्यहरूमा विभाजन गर्नुहोस्।",
+          "tripEscapeTitle": "एक यादगार सप्ताहन्त भाग्ने योजना बनाउनुहोस्",
+          "tripEscapeSubtitle": "एक सामान्य यात्रा कार्यक्रम भन्दा राम्रो केहि।"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "एक यथार्थवादी पक्ष हस्टल खोज्नुहोस्",
+          "sideHustleSubtitle": "पूर्ण-समय काम गर्दा मैले सुरु गर्न सक्ने विचारहरू।",
+          "brandAngleTitle": "एक यादगार ब्रान्ड कोण फेला पार्नुहोस्",
+          "brandAngleSubtitle": "उत्पादनहरू, सिर्जनाकर्ताहरू, एजेन्सीहरू, वा न्यूजलेटरहरूको लागि उपयोगी।",
+          "socialSeriesTitle": "सामग्री श्रृंखला आविष्कार गर्नुहोस्",
+          "socialSeriesSubtitle": "दर्शक बढाउनको लागि पर्याप्त एकरूपता।",
+          "datingIdeasTitle": "नयाँ विचार लिएर आउनुहोस्",
+          "datingIdeasSubtitle": "मितिहरू, उपहारहरू, आश्चर्यहरू, वा घटनाहरू जुन विचारशील महसुस गर्छन्।"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "मेरो पैसा कहाँ चुहिएको छ पत्ता लगाउनुहोस्",
+          "spendingLeaksSubtitle": "ढाँचाहरू, कमजोर स्थानहरू, र सबैभन्दा सजिलो जीतहरू देखाउनुहोस्।",
+          "customerFeedbackTitle": "प्रतिक्रियालाई प्राथमिकतामा बदल्नुहोस्",
+          "customerFeedbackSubtitle": "क्लस्टर अनुरोध, गुनासो, तत्काल र प्रभाव।",
+          "habitPatternsTitle": "मेरो बानीमा स्पट ढाँचाहरू",
+          "habitPatternsSubtitle": "कसरत, निद्रा, जर्नलिङ, वा फोकस लगहरूको लागि उपयोगी।",
+          "metricsStoryTitle": "संख्याको अर्थ के हो व्याख्या गर्नुहोस्",
+          "metricsStorySubtitle": "अधिक संकेत, कम स्प्रेडसिट शोर।"
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "प्रशोधन गर्दै...",
+    "tapToUploadImage": "छवि अपलोड गर्न ट्याप गर्नुहोस्"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "प्रशोधन गर्दै...",
+    "camera": "फोटोहरू अपलोड गर्नुहोस्",
+    "library": "पुस्तकालय"
+  },
+  "common": {
+    "ok": "ठीक छ",
+    "retry": "पुन: प्रयास गर्नुहोस्",
+    "cancel": "रद्द गर्नुहोस्",
+    "allow": "अनुमति दिनुहोस्",
+    "notNow": "अहिले होइन",
+    "openSettings": "सेटिङ्हरू खोल्नुहोस्",
+    "close": "बन्द गर्नुहोस्",
+    "save": "बचत गर्नुहोस्",
+    "tryAgain": "फेरि प्रयास गर्नुहोस्"
+  },
+  "rateUs": {
+    "title": "Cloud AI रमाइलो गर्दै हुनुहुन्छ?",
+    "subtitle": "तपाईंको प्रतिक्रियाले हामीलाई सुधार गर्न मद्दत गर्छ। के तपाइँ हामीलाई एप स्टोरमा मूल्याङ्कन गर्न मन पराउनुहुन्छ?",
+    "rateNow": "अहिले मूल्याङ्कन गर्नुहोस्",
+    "maybeLater": "सायद पछि",
+    "dontAskAgain": "फेरि न सोध्नुहोस्"
+  },
+  "oneTimeOffer": {
+    "title": "एक-समय प्रस्ताव",
+    "discount": "{{percent}}% छुट",
+    "subtitle": "तपाईंले यो प्रस्ताव फेरि देख्नुहुने छैन।",
+    "badgeLine1": "विशेष",
+    "badgeLine2": "एक पटक प्रस्ताव",
+    "upgradeNow": "{{price}} का लागि अहिले अपग्रेड गर्नुहोस्",
+    "loadingPrice": "लोड गर्दै...",
+    "termsOfUse": "प्रयोगका सर्तहरू",
+    "privacyPolicy": "गोपनीयता नीति",
+    "accessTitle": "मा असीमित पहुँच",
+    "accessSubtitle": "GPT, Gemini र Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4 मा असीमित पहुँच",
+      "geminiPro": "Gemini प्रो मा पहुँच",
+      "grokInsights": "ताजा अन्तर्दृष्टिको लागि Grok प्रयोग गर्नुहोस्",
+      "priorityAccess": "प्राथमिकता पहुँच र छिटो प्रतिक्रियाहरू"
+    },
+    "bestValue": "उत्तम मूल्य",
+    "annualPremium": "वार्षिक प्रिमियम",
+    "oneTimePayment": "एक पटक भुक्तानी",
+    "wasPrice": "थियो",
+    "continue": "जारी राख्नुहोस्",
+    "restore": "पुनर्स्थापना गर्नुहोस्",
+    "terms": "सर्तहरू",
+    "privacy": "गोपनीयता",
+    "successTitle": "सफलता!",
+    "successMessage": "तपाइँको खरिद को लागी धन्यवाद! अर्को १२ महिनाको लागि प्रिमियम पहुँचको आनन्द लिनुहोस्।",
+    "errorTitle": "खरिद असफल भयो",
+    "errorMessage": "केही गडबड भयो। कृपया पुन: प्रयास गर्नुहोस्।",
+    "restoreSuccessTitle": "पुनर्स्थापित",
+    "restoreSuccessMessage": "तपाईंका खरिदहरू पुनर्स्थापित गरिएका छन्।",
+    "restoreErrorTitle": "पुनर्स्थापना असफल भयो",
+    "restoreErrorMessage": "पुनर्स्थापना गर्न कुनै खरिदहरू फेला परेनन्।",
+    "unavailableTitle": "खरिदहरू उपलब्ध छैनन्",
+    "unavailableMessage": "Android बिलिङ अझै कन्फिगर गरिएको छैन।"
+  },
+  "rewards": {
+    "header": {
+      "title": "पुरस्कारहरू",
+      "openMenu": "मेनु खोल्नुहोस्",
+      "goBack": "फिर्ता जानुहोस्"
+    },
+    "pointsHero": {
+      "totalBalance": "कुल ब्यालेन्स",
+      "seeYourRewards": "आफ्नो पुरस्कार हेर्नुहोस्"
+    },
+    "streakTracker": {
+      "title": "दैनिक स्ट्रीक",
+      "subtitle": "यसलाई जारी राख्नुहोस्! तपाईं आगोमा हुनुहुन्छ।",
+      "days": "दिनहरू",
+      "prize": "पुरस्कार",
+      "dayLabel": "दिन {{number}}",
+      "nextReward": "अर्को पुरस्कार: {{amount}} in {{time}}",
+      "coins": "सिक्का"
+    },
+    "sections": {
+      "availableQuests": "उपलब्ध खोजहरू",
+      "completedQuests": "पूरा क्वेस्टहरू",
+      "availableRewards": "उपलब्ध पुरस्कारहरू",
+      "needsMoreCoins": "थप सिक्का चाहिन्छ"
+    },
+    "balances": {
+      "rewardCoins": "इनाम सिक्का",
+      "imageCredits": "छवि क्रेडिट"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 छवि क्रेडिटहरू",
+        "imageCredits200": "200 छवि क्रेडिट",
+        "imageCredits600": "600 छवि क्रेडिटहरू",
+        "weeklyPremium": "साप्ताहिक प्रिमियम",
+        "secretBox": "गोप्य बक्स"
+      },
+      "rewardDescriptions": {
+        "secretBox": "भित्र रहस्य पुरस्कार"
+      },
+      "alerts": {
+        "comingSoonTitle": "चाँडै आउँदैछ",
+        "comingSoonMessage": "यो पुरस्कार अझै उपलब्ध छैन।",
+        "notEnoughCoinsTitle": "पर्याप्त सिक्का छैन",
+        "notEnoughCoinsMessage": "तपाईंलाई यो पुरस्कार अनलक गर्न थप पुरस्कार सिक्का चाहिन्छ।",
+        "errorTitle": "त्रुटि",
+        "couldNotOpenBox": "बक्स खोल्न सकेन।",
+        "couldNotRedeem": "पुरस्कार रिडिम गर्न सकिएन। कृपया पुन: प्रयास गर्नुहोस्।",
+        "mysteryReward": "रहस्य पुरस्कार"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "दैनिक लगइन",
+        "description": "आफ्नो स्ट्रीक राख्न आज एप खोल्नुहोस्",
+        "message": "तपाईंले हरेक दिन एप खोल्दा यो खोज स्वतः पूरा हुन्छ।"
+      },
+      "shareFacebook": {
+        "title": "फेसबुकमा सेयर गर्नुहोस्",
+        "description": "Facebook मा हाम्रो बारेमा पोस्ट गर्नुहोस्"
+      },
+      "shareTwitter": {
+        "title": "Twitter मा साझा गर्नुहोस्",
+        "description": "आफ्नो अनुभव ट्वीट गर्नुहोस्"
+      },
+      "shareInstagram": {
+        "title": "इन्स्टाग्राममा साझेदारी गर्नुहोस्",
+        "description": "कथा वा पोस्ट साझा गर्नुहोस्"
+      },
+      "shareExperience": {
+        "title": "आफ्नो अनुभव साझा गर्नुहोस्",
+        "description": "तपाईलाई एप किन मन पर्यो साथीहरूलाई भन्नुहोस्"
+      },
+      "share": {
+        "genericMessage": "म च्याट र छवि उत्पादनको लागि यो एआई एप प्रयोग गर्दैछु। यसलाई जाँच गर्नुहोस्: {{url}}",
+        "facebookQuote": "यो एआई एप जाँच गर्नुहोस्!",
+        "twitterText": "म यो AI एप कोसिस गर्दैछु, यो धेरै राम्रो छ।",
+        "instagramMessage": "यो AI एप हेर्नुहोस्: {{url}}"
+      },
+      "store": {
+        "errorTitle": "त्रुटि",
+        "errorMessage": "स्टोर पृष्ठ खोल्न सकेन।"
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "खोज पूरा",
+        "description": "खोज पूरा भयो",
+        "points": "+{{points}} अंक",
+        "close": "बन्द गर्नुहोस्"
+      },
+      "rewardSuccess": {
+        "error": "त्रुटि",
+        "success": "सफलता",
+        "somethingWentWrong": "केही गडबड भयो",
+        "rewardUnlocked": "पुरस्कार अनलक गरियो",
+        "credits": "क्रेडिटहरू",
+        "close": "बन्द गर्नुहोस्",
+        "okay": "ठीक छ"
+      },
+      "secretBox": {
+        "pill": "गोप्य बक्स",
+        "rewardUnlocked": "पुरस्कार अनलक गरियो",
+        "shufflingRewards": "फेरबदल पुरस्कार...",
+        "imageCreditsAdded": "तपाईंको खातामा छवि क्रेडिटहरू थपियो",
+        "continue": "जारी राख्नुहोस्",
+        "revealing": "खुलासा गर्दै...",
+        "prizeTiers": {
+          "lucky": "भाग्यमानी",
+          "pro": "प्रो",
+          "elite": "ELITE",
+          "mythic": "मिथिक"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "आफ्नो दैनिक सिक्का लिनुहोस्",
+      "subtitle": "हरेक दिन आउनुहोस् — पुरस्कार बढ्दै जान्छ।",
+      "cta": "चेक-इन",
+      "claimed": "प्राप्त भयो! +{{amount}} सिक्का",
+      "later": "पछि"
+    }
+  },
+  "app": {
+    "version": "संस्करण {{version}}",
+    "offlineBanner": "तपाईं अफलाइन हुनुहुन्छ",
+    "launch": {
+      "accessibilityLabel": "Cloud AI सुरु गर्दै",
+      "title": "CLOUD AI",
+      "subtitle": "AI, तपाईं हुँदा तयार"
+    },
+    "errors": {
+      "modelsLoadTitle": "मोडेलहरू लोड गर्न असफल भयो",
+      "modelsLoadMessage": "AI मोडेलहरू लोड गर्न असमर्थ। एपले पूर्वनिर्धारित मोडेलहरू प्रयोग गर्नेछ। कृपया आफ्नो इन्टरनेट जडान जाँच गर्नुहोस्।",
+      "modelsLoadTimeout": "मोडेल लोड गर्न धेरै समय लाग्यो। एपले पूर्वनिर्धारित मोडेलहरू प्रयोग गर्नेछ। कृपया पुन: प्रयास गर्नुहोस्।",
+      "modelsLoadNetwork": "इन्टरनेट जडान छैन। एपले पूर्वनिर्धारित मोडेलहरू प्रयोग गर्नेछ। कृपया आफ्नो जडान जाँच गर्नुहोस्।",
+      "deviceIdTitle": "प्रारम्भिक त्रुटि",
+      "deviceIdMessage": "यन्त्र ID प्रारम्भ गर्न असफल भयो। केही सुविधाहरू सही रूपमा काम नगर्न सक्छ।",
+      "storageTitle": "भण्डारण त्रुटि",
+      "storageMessage": "स्थानीय भण्डारण पहुँच गर्न असमर्थ। केही सुविधाहरू सही रूपमा काम नगर्न सक्छ।",
+      "crashTitle": "केही गडबड भयो।",
+      "crashSubtitle": "कृपया पुन: प्रयास गर्नुहोस्।",
+      "crashLabel": "एप क्र्यास भयो"
+    },
+    "proxyErrors": {
+      "genericTitle": "केही गडबड भयो",
+      "genericMessage": "कृपया पुन: प्रयास गर्नुहोस्।",
+      "rateLimitTitle": "धेरै अनुरोधहरू",
+      "rateLimitMessage": "हामीले धेरै अनुरोधहरू सम्हालिरहेका छौं। कृपया एक क्षणमा पुन: प्रयास गर्नुहोस्।",
+      "rateLimitRetryAfter": "हामीले धेरै अनुरोधहरू सम्हालिरहेका छौं। कृपया लगभग {{seconds}} सेकेन्डमा पुन: प्रयास गर्नुहोस्।",
+      "restrictedTitle": "प्रतिबन्धित सामग्री",
+      "restrictedMessage": "यो अनुरोध सुरक्षा फिल्टर द्वारा अवरुद्ध गरिएको थियो।",
+      "insufficientCoinsTitle": "पर्याप्त सिक्का छैन",
+      "insufficientCoinsMessage": "यो अनुरोधको लागि तपाईंको हालको ब्यालेन्स धेरै कम छ।",
+      "imageUnavailableTitle": "छवि उपलब्ध छैन",
+      "imageUnavailableMessage": "उत्पन्न छवि फाइल अस्थायी रूपमा अनुपलब्ध थियो। कृपया पुन: प्रयास गर्नुहोस्।",
+      "authorizationTitle": "प्राधिकरण मुद्दा",
+      "authorizationMessage": "हामीले तपाईंको खाता प्रमाणित गर्न सकेनौं। कृपया पुन: प्रयास गर्नुहोस्।",
+      "serverTitle": "सर्भर हिचकी",
+      "serverMessage": "हाम्रो सर्भरमा समस्या थियो। कृपया छिट्टै पुन: प्रयास गर्नुहोस्।",
+      "timeoutTitle": "धेरै समय लाग्ने",
+      "timeoutMessage": "अनुरोधको समय सकियो। कृपया पुन: प्रयास गर्नुहोस्।",
+      "networkTitle": "कुनै जडान छैन",
+      "networkMessage": "इन्टरनेट जडान छैन। कृपया आफ्नो जडान जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्।",
+      "requestTitle": "अनुरोध मुद्दा",
+      "requestMessage": "तपाईंको अनुरोधमा केही गडबड भयो। कृपया पुन: प्रयास गर्नुहोस्।"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "प्रिमियम सक्रिय गर्नुहोस्",
+    "activateMessage": "के तपाइँ समीक्षक प्रिमियम सक्रिय गर्न चाहनुहुन्छ?",
+    "activateAction": "सक्रिय गर्नुहोस्",
+    "deactivateTitle": "प्रिमियम निष्क्रिय गर्नुहोस्",
+    "deactivateMessage": "के तपाईं समीक्षक प्रिमियम निष्क्रिय गर्न चाहनुहुन्छ?",
+    "deactivateAction": "निष्क्रिय पार्नुहोस्"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "दैनिक इनाम",
+      "body": "आफ्नो दैनिक सिक्का नछुटाउनुहोस् - मध्यरात अघि दावी गर्नुहोस्।"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "आफ्नो दैनिक सिक्का नछुटाउनुहोस्",
+      "body": "तपाईंको स्ट्रिक कायम रहोस् र सिक्का बढ्दै जाओस् भनेर हामी दिनमा एउटा रिमाइन्डर पठाउँछौं। कुनै स्प्याम छैन, जुनसुकै बेला बन्द गर्न सक्नुहुन्छ।",
+      "enable": "रिमाइन्डर सक्रिय गर्नुहोस्",
+      "skip": "अहिले होइन"
+    }
+  }
+}

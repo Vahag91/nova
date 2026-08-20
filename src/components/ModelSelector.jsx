@@ -16,7 +16,7 @@ import { colors } from '../styles/colors';
 import SvgIcon from './SvgIcon';
 import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';
-import { SubscriptionContext } from '../context/SubscriptionContext';
+import { SubscriptionAccessContext } from '../context/SubscriptionContext';
 import { isPremiumModel } from '../config/premium';
 import { setPendingPremiumAction } from '../state/premiumActions';
 import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
@@ -43,7 +43,7 @@ export default function ModelSelector() {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
   const navigation = useNavigation();
-  const subscription = useContext(SubscriptionContext);
+  const subscription = useContext(SubscriptionAccessContext);
   const isPremium = !!subscription?.isPremium;
 
   // store
@@ -101,6 +101,9 @@ export default function ModelSelector() {
 
   // build + group
   const sections = useMemo(() => {
+    if (!open) {
+      return [];
+    }
     if (!models || Object.keys(models).length === 0) {
       return [{ type: 'empty', id: 'empty', message: t('modelSelector.noModelsAvailable') }];
     }
@@ -150,13 +153,18 @@ export default function ModelSelector() {
       }
     });
     return out;
-  }, [models, searchQuery, t]);
+  }, [models, open, searchQuery, t]);
+
+  const sectionsRef = useRef(sections);
+  sectionsRef.current = sections;
 
   // —— Animations ——
   const scrollToSelected = useCallback(() => {
-    const idx = sections.findIndex(r => r.type === 'row' && r.key === modelKey);
+    const idx = sectionsRef.current.findIndex(
+      r => r.type === 'row' && r.key === modelKey,
+    );
     if (idx >= 0) setTimeout(() => listRef.current?.scrollToIndex({ index: idx, animated: true, viewPosition: 0.5 }), 60);
-  }, [sections, modelKey]);
+  }, [modelKey]);
 
   const runOpen = useCallback(() => {
     perfStart('chat.model_selector');
@@ -311,26 +319,34 @@ export default function ModelSelector() {
                 </Text>
                 {!!item.labels?.length && (
                   <View style={styles.badgeWrap}>
-                    {item.labels.map(lbl => (
-                      <View
-                        key={lbl}
-                        style={[
-                          styles.badge,
-                          lbl === 'NEW' && styles.badgeNew,
-                          lbl === 'BEST' && styles.badgeBest,
-                        ]}
-                      >
-                        <Text
+                    {item.labels.map(lbl => {
+                      const badgeLabel =
+                        lbl === 'NEW'
+                          ? t('modelSelector.badges.new')
+                          : lbl === 'BEST'
+                            ? t('modelSelector.badges.best')
+                            : lbl;
+                      return (
+                        <View
+                          key={lbl}
                           style={[
-                            styles.badgeText,
-                            lbl === 'NEW' && styles.badgeTextNew,
-                            lbl === 'BEST' && styles.badgeTextBest,
+                            styles.badge,
+                            lbl === 'NEW' && styles.badgeNew,
+                            lbl === 'BEST' && styles.badgeBest,
                           ]}
                         >
-                          {lbl}
-                        </Text>
-                      </View>
-                    ))}
+                          <Text
+                            style={[
+                              styles.badgeText,
+                              lbl === 'NEW' && styles.badgeTextNew,
+                              lbl === 'BEST' && styles.badgeTextBest,
+                            ]}
+                          >
+                            {badgeLabel}
+                          </Text>
+                        </View>
+                      );
+                    })}
                   </View>
                 )}
               </View>
@@ -400,7 +416,8 @@ export default function ModelSelector() {
       </Animated.View>
 
       {/* Modal */}
-      <Modal transparent visible={open} statusBarTranslucent animationType="none" onRequestClose={runClose}>
+      {open ? (
+      <Modal transparent visible statusBarTranslucent animationType="none" onRequestClose={runClose}>
         {/* Overlay */}
         <Animated.View style={[styles.overlay, overlayStyle]}>
           <Pressable style={StyleSheet.absoluteFill} onPress={runClose} />
@@ -445,6 +462,7 @@ export default function ModelSelector() {
           />
         </Animated.View>
       </Modal>
+      ) : null}
     </>
   );
 }
@@ -499,7 +517,9 @@ function descriptionFor(key, info, t) {
     'gemini-2.0-flash': 'Quick and precise Google AI'
   };
   
-  return map[key] || `${info?.provider || 'AI'} model`;
+  return map[key] || t('modelSelector.genericModel', {
+    provider: info?.provider || 'AI',
+  });
 }
 
 // Model description presets (fallback if i18n translation missing)

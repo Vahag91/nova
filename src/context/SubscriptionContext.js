@@ -1,7 +1,17 @@
-import React, { createContext, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { InteractionManager } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Purchases from 'react-native-purchases';
 import {
+  GOOGLE_PLAY_DISPLAY_PRODUCTS,
+  REVENUE_OFFERINGS_BASE_URL,
   REVENUE_PUBLIC_ANDROID,
   REVENUE_ENTITLEMENT_ID,
   OFFERING_IDS,
@@ -27,22 +37,26 @@ import { logException } from '../error/logger';
 import { runStartupTask } from '../lib/startupTimeout';
 
 export const SubscriptionContext = createContext(null);
+export const SubscriptionAccessContext = createContext(null);
 
 const STORAGE_KEY = '@isPremium';
 const RC_GUARD_KEY = '__RC_CONFIGURED__';
 const RC_CONFIGURED_API_KEY = '__RC_CONFIGURED_API_KEY__';
+// Google documents SERVICE_UNAVAILABLE (Billing response code 2) as transient.
+// Give RevenueCat enough time to recover its Billing connection, then retry the
+// product-details operation with bounded backoff while the paywall is open.
+const OFFERINGS_TIMEOUT_MS = 4000;
+const OFFERINGS_RETRY_DELAYS_MS = [0, 750];
+
+function waitForOfferingsRetry(delayMs) {
+  if (!delayMs) return Promise.resolve();
+  return new Promise(resolve => setTimeout(resolve, delayMs));
+}
 
 function getRevenueCatPremiumFromInfo(info) {
   const active = info?.entitlements?.active || {};
   const entitlementId = (REVENUE_ENTITLEMENT_ID || '').trim();
-  let hasPremium = entitlementId ? !!active[entitlementId] : false;
-
-  // Fallback: if entitlement id is misconfigured but any entitlement is active, treat as premium
-  if (!hasPremium && Object.keys(active).length > 0) {
-    hasPremium = true;
-  }
-
-  return hasPremium;
+  return entitlementId ? !!active[entitlementId] : false;
 }
 
 function getSubscriptionPeriodKey(product) {
@@ -116,7 +130,38 @@ function getPackageSlot(pkg) {
   return null;
 }
 
-export function SubscriptionProvider({ children }) {
+function getServerPackageSlot(pkg) {
+  const packageIdentifier = String(pkg?.identifier || '').toLowerCase();
+  const productIdentifier = String(
+    pkg?.platform_product_identifier || '',
+  ).toLowerCase();
+  const planIdentifier = String(
+    pkg?.platform_product_plan_identifier || '',
+  ).toLowerCase();
+
+  if (
+    packageIdentifier === '$rc_weekly' ||
+    productIdentifier.includes('weekly') ||
+    planIdentifier === 'weekly'
+  ) {
+    return 'weekly';
+  }
+  if (
+    packageIdentifier === '$rc_annual' ||
+    productIdentifier.includes('annual') ||
+    productIdentifier.includes('yearly') ||
+    planIdentifier === 'yearly'
+  ) {
+    return 'yearly';
+  }
+  return null;
+}
+
+export function SubscriptionProvider({
+  children,
+  deferNetworkWork = false,
+  prefetchDuringOnboarding = false,
+}) {
   const [hasRevenueCatPremium, setHasRevenueCatPremium] = useState(false);
   const [reviewerPremiumEnabled, setReviewerPremiumActive] = useState(false);
   const [customerInfo, setCustomerInfo] = useState(null);
@@ -126,17 +171,59 @@ export function SubscriptionProvider({ children }) {
     yearly: null,
     oneTime: null,
   });
+  const [offeredPackages, setOfferedPackages] = useState({
+    weekly: null,
+    monthly: null,
+    yearly: null,
+    oneTime: null,
+  });
   const [restoring, setRestoring] = useState(false);
   const [subscriptionReady, setSubscriptionReady] = useState(false);
+  const [entitlementCacheReady, setEntitlementCacheReady] = useState(false);
+  const [offeringsState, setOfferingsState] = useState('idle');
 
   const configuredRef = useRef(false);
   const revenueCatPremiumRef = useRef(false);
   const reviewerPremiumRef = useRef(false);
   const lastEffectivePremiumRef = useRef(false);
+  const offeringsRequestRef = useRef(null);
+  const subscriptionReadyRef = useRef(false);
+  const subscriptionReadyWaitersRef = useRef(new Set());
 
   const apiKey = String(REVENUE_PUBLIC_ANDROID || '').trim();
   const paymentsEnabled = apiKey.length > 0;
   const isPremium = hasRevenueCatPremium || reviewerPremiumEnabled;
+
+  const markSubscriptionReady = useCallback(() => {
+    const premium =
+      revenueCatPremiumRef.current || reviewerPremiumRef.current;
+
+    subscriptionReadyRef.current = true;
+    setSubscriptionReady(true);
+
+    const waiters = Array.from(subscriptionReadyWaitersRef.current);
+    subscriptionReadyWaitersRef.current.clear();
+    waiters.forEach(resolve => resolve(premium));
+
+    return premium;
+  }, []);
+
+  const waitForSubscriptionReady = useCallback(() => {
+    if (subscriptionReadyRef.current) {
+      return Promise.resolve(
+        revenueCatPremiumRef.current || reviewerPremiumRef.current,
+      );
+    }
+
+    return new Promise(resolve => {
+      const finish = premium => {
+        subscriptionReadyWaitersRef.current.delete(finish);
+        resolve(!!premium);
+      };
+
+      subscriptionReadyWaitersRef.current.add(finish);
+    });
+  }, []);
 
   const refreshCoinsBalance = useCallback(async () => {
     const deviceId = await ensureDeviceId();
@@ -175,7 +262,7 @@ export function SubscriptionProvider({ children }) {
         setCustomerInfo(info);
       }
 
-      setSubscriptionReady(true);
+      markSubscriptionReady();
 
       if (persistRevenueCat) {
         await AsyncStorage.setItem(
@@ -197,7 +284,7 @@ export function SubscriptionProvider({ children }) {
 
       return effectivePremium;
     },
-    [],
+    [markSubscriptionReady],
   );
 
   const pollForCoinsBalanceUpdate = useCallback(async (previousBalance) => {
@@ -219,6 +306,8 @@ export function SubscriptionProvider({ children }) {
 
   useEffect(() => {
     let removeListener;
+    let interactionTask;
+    let cancelled = false;
     runStartupTask(async () => {
       try {
         const cachedPremium = await AsyncStorage.getItem(STORAGE_KEY);
@@ -234,6 +323,25 @@ export function SubscriptionProvider({ children }) {
         setReviewerPremiumActive(reviewerPremium);
         lastEffectivePremiumRef.current =
           cachedRevenueCatPremium || reviewerPremium;
+        if (!cancelled) {
+          setEntitlementCacheReady(true);
+        }
+        if (!paymentsEnabled) {
+          markSubscriptionReady();
+          return;
+        }
+        if (deferNetworkWork) return;
+
+        // On first launch, begin the native/network work while onboarding is
+        // visible so the paywall can reuse cached offerings. Returning users
+        // keep the existing after-interactions scheduling for startup safety.
+        if (!prefetchDuringOnboarding) {
+          await new Promise(resolve => {
+            interactionTask = InteractionManager.runAfterInteractions(resolve);
+          });
+        }
+        if (cancelled) return;
+
         if (reviewerPremium) {
           ensureReviewerCoinsBalance().catch(async () => {
             try {
@@ -242,11 +350,6 @@ export function SubscriptionProvider({ children }) {
               useImagesStore.getState().setCoinsBalance(null);
             }
           });
-        }
-
-        if (!paymentsEnabled) {
-          setSubscriptionReady(true);
-          return;
         }
 
         installRevenueCatLogHandler(Purchases);
@@ -298,17 +401,30 @@ export function SubscriptionProvider({ children }) {
           await handleCustomerInfo(info);
         });
 
+        // Start products first; customer-info refresh and offering download are
+        // independent after configuration/login. Do not await this here so a
+        // slow entitlement refresh cannot make prices load inside the paywall.
+        fetchOfferings().catch(error => {
+          logException(error, { context: 'prefetchRevenueCatOfferings' });
+        });
         const info = await Purchases.getCustomerInfo();
         await handleCustomerInfo(info);
-        await fetchOfferings();
       } catch (err) {
-        setSubscriptionReady(true);
+        markSubscriptionReady();
         throw err;
       }
     }, {
       label: 'initializeSubscriptions',
       onError: (error, details) => {
-        setSubscriptionReady(true);
+        setEntitlementCacheReady(true);
+        // A timeout does not cancel the native request. Keep premium checks
+        // queued until that request reports a real entitlement result, while
+        // still allowing the paywall UI to leave its startup loading state.
+        if (details.timedOut && paymentsEnabled) {
+          setSubscriptionReady(true);
+        } else {
+          markSubscriptionReady();
+        }
         console.warn(
           `[startup] ${details.context} ${details.timedOut ? 'timed out' : 'failed'}:`,
           error?.message || String(error),
@@ -318,15 +434,25 @@ export function SubscriptionProvider({ children }) {
     });
 
     return () => {
+      cancelled = true;
+      interactionTask?.cancel?.();
       try {
         if (typeof removeListener === 'function') removeListener();
         else if (removeListener && typeof removeListener.remove === 'function') removeListener.remove();
       } catch {}
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [apiKey, ensureReviewerCoinsBalance, paymentsEnabled, refreshCoinsBalance]);
+  }, [
+    apiKey,
+    deferNetworkWork,
+    ensureReviewerCoinsBalance,
+    paymentsEnabled,
+    prefetchDuringOnboarding,
+    markSubscriptionReady,
+    refreshCoinsBalance,
+  ]);
 
-  const handleCustomerInfo = async (info) => {
+  const handleCustomerInfo = useCallback(async (info) => {
     try {
       const hasPremium = getRevenueCatPremiumFromInfo(info);
       return await syncPremiumState({
@@ -336,7 +462,7 @@ export function SubscriptionProvider({ children }) {
       });
     } catch (e) {}
     return false;
-  };
+  }, [syncPremiumState]);
 
   const activateReviewerPremium = useCallback(async () => {
     await setReviewerPremiumEnabled(true);
@@ -383,7 +509,7 @@ export function SubscriptionProvider({ children }) {
     });
   }, [apiKey, customerInfo, syncPremiumState]);
 
-  const purchasePackage = async (pkg) => {
+  const purchasePackage = useCallback(async (pkg) => {
     if (!paymentsEnabled) {
       throw new Error('Android purchases are not configured.');
     }
@@ -396,9 +522,9 @@ export function SubscriptionProvider({ children }) {
     } catch (err) {
       throw err;
     }
-  };
+  }, [handleCustomerInfo, paymentsEnabled, pollForCoinsBalanceUpdate]);
 
-  const restorePurchases = async () => {
+  const restorePurchases = useCallback(async () => {
     if (!paymentsEnabled) {
       throw new Error('Android purchases are not configured.');
     }
@@ -414,9 +540,9 @@ export function SubscriptionProvider({ children }) {
     } finally {
       setRestoring(false);
     }
-  };
+  }, [handleCustomerInfo, paymentsEnabled, pollForCoinsBalanceUpdate]);
 
-  const refreshCustomerInfo = async () => {
+  const refreshCustomerInfo = useCallback(async () => {
     if (!paymentsEnabled) {
       return reviewerPremiumRef.current;
     }
@@ -425,9 +551,9 @@ export function SubscriptionProvider({ children }) {
       return await handleCustomerInfo(info);
     } catch (err) {}
     return revenueCatPremiumRef.current || reviewerPremiumRef.current;
-  };
+  }, [handleCustomerInfo, paymentsEnabled]);
 
-  const logOutRevenueCat = async () => {
+  const logOutRevenueCat = useCallback(async () => {
     if (!paymentsEnabled) {
       return;
     }
@@ -439,9 +565,9 @@ export function SubscriptionProvider({ children }) {
       setCustomerInfo(null);
       lastEffectivePremiumRef.current = reviewerPremiumRef.current;
     } catch (e) {}
-  };
+  }, [paymentsEnabled]);
 
-  const logInRevenueCat = async (appUserId) => {
+  const logInRevenueCat = useCallback(async (appUserId) => {
     if (!paymentsEnabled) {
       throw new Error('Android purchases are not configured.');
     }
@@ -452,7 +578,80 @@ export function SubscriptionProvider({ children }) {
     } catch (e) {
       throw e;
     }
-  };
+  }, [handleCustomerInfo, paymentsEnabled]);
+
+  const fetchRevenueCatOfferingCatalog = useCallback(async () => {
+    const deviceId = await ensureDeviceId();
+    const response = await fetch(
+      `${REVENUE_OFFERINGS_BASE_URL}/${encodeURIComponent(
+        String(deviceId),
+      )}/offerings`,
+      {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'X-Platform': 'android',
+        },
+      },
+    );
+    if (!response.ok) {
+      throw new Error(
+        `RevenueCat offering catalog failed with HTTP ${response.status}.`,
+      );
+    }
+
+    const payload = await response.json();
+    const offerings = Array.isArray(payload?.offerings) ? payload.offerings : [];
+    const offering =
+      offerings.find(item => item?.identifier === payload?.current_offering_id) ||
+      offerings.find(item => item?.identifier === OFFERING_IDS.default) ||
+      offerings[0] ||
+      null;
+    const next = { weekly: null, monthly: null, yearly: null, oneTime: null };
+
+    for (const serverPackage of offering?.packages || []) {
+      const slot = getServerPackageSlot(serverPackage);
+      const displayProduct = slot ? GOOGLE_PLAY_DISPLAY_PRODUCTS[slot] : null;
+      if (!slot || !displayProduct || next[slot]) continue;
+      if (
+        String(serverPackage?.platform_product_identifier || '') !==
+          displayProduct.identifier ||
+        String(serverPackage?.platform_product_plan_identifier || '') !==
+          displayProduct.basePlanIdentifier
+      ) {
+        continue;
+      }
+
+      next[slot] = {
+        identifier: serverPackage.identifier,
+        productIdentifier: serverPackage.platform_product_identifier,
+        basePlanIdentifier: serverPackage.platform_product_plan_identifier,
+        product: displayProduct,
+      };
+    }
+
+    setOfferedPackages(next);
+    console.info(
+      '[RevenueCat] offering catalog loaded',
+      JSON.stringify({
+        offering: offering?.identifier || null,
+        weekly: next.weekly
+          ? {
+              product: next.weekly.productIdentifier,
+              basePlan: next.weekly.basePlanIdentifier,
+              price: next.weekly.product.priceString,
+            }
+          : null,
+        yearly: next.yearly
+          ? {
+              product: next.yearly.productIdentifier,
+              basePlan: next.yearly.basePlanIdentifier,
+              price: next.yearly.product.priceString,
+            }
+          : null,
+      }),
+    );
+    return next;
+  }, [apiKey]);
 
   const fetchOfferings = useCallback(async () => {
     if (!paymentsEnabled) {
@@ -463,67 +662,164 @@ export function SubscriptionProvider({ children }) {
         oneTime: null,
       };
     }
-    try {
-      const offerings = await Purchases.getOfferings();
-      const next = { weekly: null, monthly: null, yearly: null, oneTime: null };
-      const offeringsMap = offerings?.all || {};
-      const defaultOffering =
-        offeringsMap[OFFERING_IDS.default] ||
-        offerings?.current ||
-        Object.values(offeringsMap)[0] ||
-        null;
-      const oneTimeOffering = offeringsMap[OFFERING_IDS.oneTime];
+    if (offeringsRequestRef.current) {
+      return offeringsRequestRef.current;
+    }
 
-      const mapPackages = (offering) => {
-        const packages = offering?.availablePackages || [];
-        for (const pkg of packages) {
-          const slot = getPackageSlot(pkg);
-          if (slot && !next[slot]) {
-            next[slot] = pkg;
+    setOfferingsState('loading');
+    const request = (async () => {
+      let lastError = null;
+      try {
+        fetchRevenueCatOfferingCatalog().catch(error => {
+          logException(error, { context: 'fetchRevenueCatOfferingCatalog' });
+        });
+
+        for (
+          let attempt = 0;
+          attempt < OFFERINGS_RETRY_DELAYS_MS.length;
+          attempt += 1
+        ) {
+          await waitForOfferingsRetry(OFFERINGS_RETRY_DELAYS_MS[attempt]);
+
+          let timeoutId = null;
+          try {
+            const offerings = await Promise.race([
+              Purchases.getOfferings(),
+              new Promise((_, reject) => {
+                timeoutId = setTimeout(
+                  () => reject(new Error('Offerings request timed out.')),
+                  OFFERINGS_TIMEOUT_MS,
+                );
+              }),
+            ]);
+            const next = {
+              weekly: null,
+              monthly: null,
+              yearly: null,
+              oneTime: null,
+            };
+            const offeringsMap = offerings?.all || {};
+            const defaultOffering =
+              offeringsMap[OFFERING_IDS.default] ||
+              offerings?.current ||
+              Object.values(offeringsMap)[0] ||
+              null;
+            const oneTimeOffering = offeringsMap[OFFERING_IDS.oneTime];
+
+            const mapPackages = offering => {
+              const packages = offering?.availablePackages || [];
+              for (const pkg of packages) {
+                const slot = getPackageSlot(pkg);
+                if (slot && !next[slot]) {
+                  next[slot] = pkg;
+                }
+              }
+            };
+
+            mapPackages(defaultOffering);
+            if (oneTimeOffering && oneTimeOffering !== defaultOffering) {
+              mapPackages(oneTimeOffering);
+            }
+
+            if (!next.weekly && !next.yearly && !next.monthly && !next.oneTime) {
+              throw new Error(
+                'RevenueCat returned no purchasable Google Play packages.',
+              );
+            }
+
+            // A product's localized price can change while its package
+            // identifier remains the same. Accept every successful refresh so
+            // the paywall never keeps stale Play pricing in memory.
+            setAvailablePackages(next);
+            setOfferingsState('ready');
+            return next;
+          } catch (error) {
+            lastError = error;
+          } finally {
+            if (timeoutId !== null) clearTimeout(timeoutId);
           }
         }
-      };
 
-      mapPackages(defaultOffering);
-      if (oneTimeOffering && oneTimeOffering !== defaultOffering) {
-        mapPackages(oneTimeOffering);
+        setOfferingsState('error');
+        if (lastError) {
+          logException(lastError, {
+            context: 'fetchRevenueCatOfferings',
+            attempts: OFFERINGS_RETRY_DELAYS_MS.length,
+          });
+        }
+        return undefined;
+      } finally {
+        offeringsRequestRef.current = null;
       }
+    })();
 
-      setAvailablePackages((prev) => {
-        const same =
-          (!!prev.weekly?.identifier) === (!!next.weekly?.identifier) &&
-          (!!prev.monthly?.identifier) === (!!next.monthly?.identifier) &&
-          (!!prev.yearly?.identifier) === (!!next.yearly?.identifier) &&
-          (!!prev.oneTime?.identifier) === (!!next.oneTime?.identifier) &&
-          (prev.weekly?.identifier || null) === (next.weekly?.identifier || null) &&
-          (prev.monthly?.identifier || null) === (next.monthly?.identifier || null) &&
-          (prev.yearly?.identifier || null) === (next.yearly?.identifier || null) &&
-          (prev.oneTime?.identifier || null) === (next.oneTime?.identifier || null);
-        return same ? prev : next;
-      });
-      return next;
-    } catch (e) {}
-  }, [paymentsEnabled]);
+    offeringsRequestRef.current = request;
+    return request;
+  }, [fetchRevenueCatOfferingCatalog, paymentsEnabled]);
 
-  const value = {
+  const value = useMemo(() => ({
     isPremium,
     customerInfo,
     availablePackages,
+    offeredPackages,
     restoring,
     subscriptionReady,
+    entitlementCacheReady,
+    offeringsState,
     paymentsEnabled,
     reviewerPremiumEnabled,
     purchasePackage,
     restorePurchases,
     refreshCustomerInfo,
+    waitForSubscriptionReady,
     fetchOfferings,
     logOutRevenueCat,
     logInRevenueCat,
     activateReviewerPremium,
     deactivateReviewerPremium,
-  };
+  }), [
+    activateReviewerPremium,
+    availablePackages,
+    customerInfo,
+    deactivateReviewerPremium,
+    fetchOfferings,
+    isPremium,
+    logInRevenueCat,
+    logOutRevenueCat,
+    paymentsEnabled,
+    purchasePackage,
+    refreshCustomerInfo,
+    waitForSubscriptionReady,
+    restoring,
+    restorePurchases,
+    reviewerPremiumEnabled,
+    offeringsState,
+    offeredPackages,
+    subscriptionReady,
+    entitlementCacheReady,
+  ]);
+
+  const accessValue = useMemo(() => ({
+    isPremium,
+    subscriptionReady,
+    entitlementCacheReady,
+    paymentsEnabled,
+    refreshCustomerInfo,
+    waitForSubscriptionReady,
+  }), [
+    entitlementCacheReady,
+    isPremium,
+    paymentsEnabled,
+    refreshCustomerInfo,
+    waitForSubscriptionReady,
+    subscriptionReady,
+  ]);
 
   return (
-    <SubscriptionContext.Provider value={value}>{children}</SubscriptionContext.Provider>
+    <SubscriptionAccessContext.Provider value={accessValue}>
+      <SubscriptionContext.Provider value={value}>
+        {children}
+      </SubscriptionContext.Provider>
+    </SubscriptionAccessContext.Provider>
   );
 }

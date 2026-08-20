@@ -7,23 +7,29 @@ const readSource = relativePath =>
 describe('AI content report UI contract', () => {
   test('provides a reason-only in-app report modal with all reviewer-visible states', () => {
     const modalSource = readSource('src/components/reporting/ReportContentModal.jsx');
+    const english = JSON.parse(readSource('src/i18n/locales/en.json'));
 
-    expect(modalSource).toContain('Report AI content');
-    expect(modalSource).toContain('Tell us what is wrong with this generated content.');
-    expect(modalSource).toContain('Sexual or nudity content');
-    expect(modalSource).toContain('Violence or self-harm');
-    expect(modalSource).toContain('Hate or harassment');
-    expect(modalSource).toContain('Child safety concern');
-    expect(modalSource).toContain('Scam or deceptive content');
-    expect(modalSource).toContain('Other');
+    expect(modalSource).toContain("t('reportContent.title')");
+    expect(modalSource).toContain("t('reportContent.subtitle')");
+    expect(modalSource).toContain('reportContent.reasons.${option}');
+    expect(english.reportContent.reasons).toEqual({
+      sexual: 'Sexual or nudity content',
+      violence_self_harm: 'Violence or self-harm',
+      hate_harassment: 'Hate or harassment',
+      child_safety: 'Child safety concern',
+      scam_deceptive: 'Scam or deceptive content',
+      other: 'Other',
+    });
     expect(modalSource).not.toContain('Add details (optional)');
     expect(modalSource).not.toContain('TextInput');
     expect(modalSource).not.toContain('details,');
-    expect(modalSource).toContain('Submit Report');
-    expect(modalSource).toContain('Thanks. Your report was submitted.');
-    expect(modalSource).toContain('Could not submit report. Please try again.');
-    expect(modalSource).toContain(
-      'Submitting sends this reported content for safety review.',
+    expect(modalSource).toContain("t('reportContent.actions.submit')");
+    expect(modalSource).toContain("t('reportContent.success.title')");
+    expect(modalSource).toContain("t('reportContent.errors.submit')");
+    expect(modalSource).toContain("t('reportContent.privateDisclosure')");
+    expect(english.reportContent.actions.submit).toBe('Submit Report');
+    expect(english.reportContent.success.title).toBe(
+      'Thanks. Your report was submitted.',
     );
     expect(modalSource).toContain('submitAiContentReport');
   });
@@ -64,7 +70,7 @@ describe('AI content report UI contract', () => {
     expect(resultSource).toContain("'edited_image'");
     expect(resultSource).toContain("source_screen: 'create_image_generating'");
     expect(resultSource).toContain('originalUrl');
-    expect(resultSource).toContain('>Report</Text>');
+    expect(resultSource).toContain("t('reportContent.actions.report')");
     expect(resultSource).toContain('<SvgIcon name="flag" size={22} color="rgba(255,255,255,0.92)" />');
     expect(resultSource).not.toContain('iconButtonReport');
     expect(resultSource).not.toContain('reportLabel');
@@ -76,7 +82,7 @@ describe('AI content report UI contract', () => {
     expect(viewerSource).toContain("'edited_image'");
     expect(viewerSource).toContain("source_screen: 'image_viewer'");
     expect(viewerSource).toContain('originalUrl');
-    expect(viewerSource).toContain('>Report</Text>');
+    expect(viewerSource).toContain("t('reportContent.actions.report')");
     expect(viewerSource).toContain('<SvgIcon name="flag" size={22} color="rgba(255,255,255,0.92)" />');
     expect(viewerSource).not.toContain('actionButtonReport');
     expect(viewerSource).not.toContain('reportLabel');

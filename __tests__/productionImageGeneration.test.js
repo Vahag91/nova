@@ -22,4 +22,11 @@ describe('production image generation surface', () => {
     expect(edgeFunctionSource).not.toContain('bypassCoinCharge');
     expect(edgeFunctionSource).not.toContain('testing:');
   });
+
+  test('hydrates gallery metadata before persisting a new charged job', () => {
+    expect(imageStoreSource).toContain('await get().hydrate();');
+    expect(imageStoreSource).toContain(
+      'delayed startup work cannot overwrite the',
+    );
+  });
 });

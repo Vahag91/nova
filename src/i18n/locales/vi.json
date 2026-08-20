@@ -11,7 +11,12 @@
     "searchHint": "Nhập để lọc các mô hình có sẵn",
     "modelLabel": "Mô hình {{name}}",
     "selectHint": "Chọn mô hình {{name}}",
-    "currentlySelected": "Đang được chọn"
+    "currentlySelected": "Đang được chọn",
+    "genericModel": "Mô hình {{provider}}",
+    "badges": {
+      "new": "MỚI",
+      "best": "TỐT NHẤT"
+    }
   },
   "models": {
     "gpt-4o": "Mô hình AI mạnh mẽ nhất",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Trợ lý",
+    "defaultTitle": "Trợ lý",
+    "errorTitle": "Đã xảy ra lỗi",
+    "errorMessage": "Không thể khởi động trợ lý này.",
+    "noAssistants": "Không tìm thấy trợ lý nào trong danh mục này.",
+    "selectAssistantHint": "Mở bộ chọn trợ lý",
     "subtitle": "Các trợ lý AI được tuyển chọn cho lập trình, viết nội dung, phân tích, lập kế hoạch và nhiều hơn nữa.",
     "searchPlaceholder": "Tìm trợ lý…",
     "useAssistant": "Dùng trợ lý",
@@ -259,6 +269,7 @@
     "startChat": "Bắt đầu chat",
     "startNewChat": "Bắt đầu chat mới",
     "errorLoadingHistory": "Lỗi khi tải lịch sử",
+    "loading": "Đang tải lịch sử...",
     "renameChat": "Đổi tên cuộc chat",
     "enterNewTitle": "Nhập tên mới",
     "deleteChat": "Xóa cuộc chat?",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Đã kích hoạt Premium",
-        "subtitle": "Cảm ơn bạn đã ủng hộ ChatCloud"
+        "subtitle": "Cảm ơn bạn đã ủng hộ Cloud AI"
       },
       "restore": {
         "title": "Khôi phục mua hàng",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Không thể mở liên kết này ngay bây giờ.",
       "restoreSuccessTitle": "Đã khôi phục",
       "restoreSuccessMessage": "Đã khôi phục mua hàng của bạn.",
+      "restoreEmptyTitle": "Không tìm thấy giao dịch mua",
+      "restoreEmptyMessage": "Chúng tôi không tìm thấy giao dịch mua đang hoạt động nào để khôi phục cho tài khoản này.",
       "restoreErrorTitle": "Khôi phục thất bại",
       "restoreErrorMessage": "Không thể khôi phục mua hàng ngay bây giờ.",
       "resetConfirmTitle": "Đặt lại dữ liệu ứng dụng?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Tùy chỉnh"
     },
+    "notEnoughCoinsTitle": "Không đủ xu",
+    "notEnoughCoinsMessage": "Số dư hiện tại của bạn không đủ cho hình ảnh này.",
     "modelTaglines": {
       "runwareFluxSchnell": "Mô hình nhanh nhất",
       "runwareFluxKrea": "Kết quả sáng tạo, nhiều phong cách",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Không lưu được",
       "shareFailedTitle": "Không chia sẻ được",
-      "tryAgain": "Vui lòng thử lại."
+      "tryAgain": "Vui lòng thử lại.",
+      "savedTitle": "Đã lưu",
+      "savedMessage": "Đã lưu hình ảnh vào thư viện của bạn.",
+      "permissionTitle": "Cần quyền truy cập",
+      "permissionMessage": "Cho phép truy cập bộ nhớ để lưu hình ảnh vào thư viện của bạn."
     },
     "result": {
       "complete": "Hoàn tất"
@@ -498,12 +517,47 @@
       "save": "Lưu",
       "share": "Chia sẻ"
     },
+    "alerts": {
+      "savedTitle": "Đã lưu",
+      "savedMessage": "Đã lưu hình ảnh vào thư viện của bạn.",
+      "permissionTitle": "Cần quyền truy cập",
+      "permissionMessage": "Cho phép truy cập bộ nhớ để lưu hình ảnh vào thư viện của bạn.",
+      "saveFailedTitle": "Không thể lưu",
+      "tryAgain": "Vui lòng thử lại."
+    },
     "accessibility": {
       "close": "Đóng",
       "delete": "Xóa hình",
       "edit": "Chỉnh sửa hình",
       "save": "Lưu hình",
       "share": "Chia sẻ hình"
+    }
+  },
+  "reportContent": {
+    "title": "Báo cáo nội dung AI",
+    "subtitle": "Hãy cho chúng tôi biết nội dung được tạo này có vấn đề gì.",
+    "privateDisclosure": "Khi gửi, nội dung bị báo cáo này sẽ được chuyển đi để xem xét về an toàn.",
+    "accessibilityLabel": "Báo cáo nội dung AI",
+    "reasons": {
+      "sexual": "Nội dung tình dục hoặc khỏa thân",
+      "violence_self_harm": "Bạo lực hoặc tự gây hại",
+      "hate_harassment": "Thù ghét hoặc quấy rối",
+      "child_safety": "Lo ngại về an toàn trẻ em",
+      "scam_deceptive": "Lừa đảo hoặc nội dung gian dối",
+      "other": "Khác"
+    },
+    "errors": {
+      "reasonRequired": "Vui lòng chọn lý do trước khi gửi.",
+      "submit": "Không thể gửi báo cáo. Vui lòng thử lại."
+    },
+    "success": {
+      "title": "Cảm ơn bạn. Báo cáo của bạn đã được gửi.",
+      "subtitle": "Chúng tôi sẽ dùng các báo cáo để cải thiện an toàn nội dung."
+    },
+    "actions": {
+      "report": "Báo cáo",
+      "submit": "Gửi báo cáo",
+      "done": "Xong"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Làm quen với",
       "titleHighlight": "Image Studio",
-      "subtitle": "Tạo & chỉnh sửa hình với AI ngay trong ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Tạo & chỉnh sửa hình với AI ngay trong Cloud AI."
     },
     "relaxView": {
       "title": "Gặp AI của bạn",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "GIẢI PHÁP AI CHO DOANH NGHIỆP",
       "description": "Tăng sức mạnh cho doanh nghiệp với AI tiên tiến dành cho đội nhóm.",
       "stats": "Được tin dùng bởi 500k+ người",
@@ -592,10 +645,10 @@
       "value": "Giá trị nhất"
     },
     "pack": {
+      "creditsLabel": "{{credits}} token",
       "tokensLabel": "{{credits}} token",
       "defaultName": "Gói {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} token"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Nâng cấp Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Lỗi không xác định"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Yêu cầu Premium",
+    "upgrade": "Nâng cấp",
+    "modelRequiredMessage": "Mô hình này yêu cầu Premium. Nâng cấp để truy cập GPT-5, Grok 4, Claude và nhiều mô hình nâng cao khác.",
+    "assistantsRequiredMessage": "Trợ lý yêu cầu Premium. Nâng cấp để truy cập các trợ lý AI chuyên biệt về thể hình, lập trình, viết lách và hơn thế nữa.",
+    "assistantsTitle": "Yêu cầu Premium",
+    "assistantsMessage": "Trợ lý yêu cầu Premium. Nâng cấp để truy cập các trợ lý AI chuyên biệt về thể hình, lập trình, viết lách và hơn thế nữa."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Đóng màn hình thanh toán",
+    "unavailableTitle": "Không thể mua hàng",
+    "unavailableMessage": "Chưa định cấu hình thanh toán trên Android.",
+    "restoreEmptyTitle": "Không tìm thấy giao dịch mua",
+    "restoreEmptyMessage": "Chúng tôi không tìm thấy giao dịch mua đang hoạt động nào để khôi phục cho tài khoản này.",
+    "restoreFailedTitle": "Khôi phục thất bại",
+    "restoreFailedMessage": "Hiện không thể khôi phục giao dịch mua.",
+    "productsUnavailableTitle": "Không có gói nào khả dụng",
+    "productsUnavailableMessage": "Hiện không có gói đăng ký Android nào khả dụng.",
+    "purchaseFailedTitle": "Mua hàng thất bại",
+    "purchaseFailedMessage": "Hiện không thể hoàn tất giao dịch mua này.",
     "restore": "Khôi phục",
     "restoreRestoring": "Đang khôi phục…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Điều khoản",
       "privacy": "Quyền riêng tư"
+    },
+    "premium": {
+      "headline": "Tất cả AI cao cấp trong một gói",
+      "subtitleLine1": "Trò chuyện, viết mã, tạo và lập kế hoạch",
+      "subtitleLine2": "với những mẫu mã tiên tiến.",
+      "enableTrial": "Cho phép dùng thử miễn phí",
+      "annual": "Hàng năm",
+      "saveBadge": "Tiết kiệm 83%",
+      "year": "năm",
+      "week": "tuần",
+      "termsOfUse": "Điều khoản sử dụng",
+      "privacyPolicy": "Chính sách bảo mật"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Tạo lại trả lời",
     "regenerateResponseHint": "Tạo một câu trả lời mới",
     "copyCode": "Sao chép mã",
+    "copied": "Đã sao chép",
     "image": "hình",
     "loading": "Đang tải…",
     "loadingChat": "Đang tải cuộc chat...",
     "offlineBanner": "Bạn đang ngoại tuyến. Không thể gửi tin nhắn.",
+    "offlineError": "Không có kết nối Internet. Vui lòng kiểm tra kết nối và thử lại.",
     "imagePickerErrorTitle": "Lỗi chọn ảnh",
     "imagePickerErrorMessage": "Không thể truy cập ảnh của bạn. Hãy thử lại.",
     "messageTooLong": "Tin nhắn quá dài ({{length}}). Giới hạn là {{limit}}.",
     "sendFailed": "Gửi thất bại.",
     "modelNoImageSupport": "Mô hình đã chọn không hỗ trợ hình ảnh. Vui lòng chọn mô hình khác.",
     "voiceStartFailed": "Không thể bắt đầu giọng nói.",
+    "voiceNoSpeechDetected": "Không nhận dạng được giọng nói. Vui lòng thử lại.",
     "emptyTitle": "Tôi giúp gì được?",
     "emptySubtitle": "Bắt đầu trò chuyện với AI",
     "privateTitle": "Chat riêng tư",
     "privateSubtitle": "Cuộc chat này sẽ không xuất hiện trong lịch sử",
+    "startPrivateChat": "Bắt đầu trò chuyện riêng tư",
+    "endPrivateChat": "Kết thúc trò chuyện riêng tư",
     "permissions": {
       "photosTitle": "Cần quyền truy cập ảnh",
       "photosMessage": "Chọn ảnh cần quyền truy cập ảnh.",
@@ -753,7 +843,19 @@
       "share": "Chia sẻ",
       "regenerate": "Tạo lại",
       "retryFromHere": "Thử lại từ đây",
+      "report": "Báo cáo",
       "cancel": "Hủy"
+    },
+    "markdown": {
+      "copy": "Sao chép",
+      "copied": "Đã sao chép",
+      "table": "BẢNG",
+      "watchVideo": "Xem video",
+      "wikipedia": "Wikipedia",
+      "link": "Liên kết",
+      "note": "Ghi chú",
+      "warning": "Cảnh báo",
+      "tip": "Mẹo"
     },
     "messageActionTitle": "Tin nhắn",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Lên kế hoạch ngày của tôi",
       "planDaySubtitle": "kèm mẹo năng suất"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Chọn một chủ đề",
       "title": "Bạn muốn làm gì?",
@@ -846,81 +946,59 @@
     "library": "Thư viện"
   },
   "common": {
-    "new": "MỚI",
-    "best": "TỐT NHẤT",
-    "cancel": "Hủy",
-    "save": "Lưu",
-    "delete": "Xóa",
-    "close": "Đóng",
-    "allow": "Cho phép",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Thử lại",
+    "cancel": "Hủy",
+    "allow": "Cho phép",
+    "notNow": "Để sau",
+    "openSettings": "Mở Cài đặt",
+    "close": "Đóng",
+    "save": "Lưu",
+    "tryAgain": "Thử lại lần nữa"
   },
   "rateUs": {
-    "title": "Bạn có thích ChatCloud không?",
+    "title": "Bạn có thích Cloud AI không?",
     "subtitle": "Phản hồi của bạn giúp chúng tôi cải thiện. Bạn có thể đánh giá chúng tôi trên App Store không?",
     "rateNow": "Đánh giá ngay",
     "maybeLater": "Có thể sau",
     "dontAskAgain": "Đừng hỏi lại"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Ưu đãi một lần",
+    "discount": "GIẢM {{percent}}%",
+    "subtitle": "Bạn sẽ không thấy ưu đãi này lần nữa.",
     "badgeLine1": "Độc quyền",
     "badgeLine2": "Ưu đãi một lần",
     "upgradeNow": "Nâng cấp ngay với {{price}}",
     "loadingPrice": "Đang tải...",
     "termsOfUse": "Điều khoản Sử dụng",
     "privacyPolicy": "Chính sách Quyền riêng tư",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Truy cập không giới hạn",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Truy cập không giới hạn GPT-4",
+      "geminiPro": "Truy cập Gemini Pro",
+      "grokInsights": "Dùng Grok để có góc nhìn mới mẻ",
+      "priorityAccess": "Truy cập ưu tiên và phản hồi nhanh hơn"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Đáng giá nhất",
+    "annualPremium": "Premium hằng năm",
+    "oneTimePayment": "Thanh toán một lần",
+    "wasPrice": "giá gốc",
+    "continue": "Tiếp tục",
+    "restore": "Khôi phục",
+    "terms": "Điều khoản",
+    "privacy": "Quyền riêng tư",
+    "successTitle": "Thành công!",
+    "successMessage": "Cảm ơn bạn đã mua hàng! Tận hưởng quyền truy cập Premium trong 12 tháng tới.",
+    "errorTitle": "Mua hàng thất bại",
+    "errorMessage": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "restoreSuccessTitle": "Đã khôi phục",
+    "restoreSuccessMessage": "Các giao dịch mua của bạn đã được khôi phục.",
+    "restoreErrorTitle": "Khôi phục thất bại",
+    "restoreErrorMessage": "Không tìm thấy giao dịch mua nào để khôi phục.",
+    "unavailableTitle": "Không thể mua hàng",
+    "unavailableMessage": "Chưa định cấu hình thanh toán trên Android."
   },
   "rewards": {
     "header": {
@@ -1033,15 +1111,83 @@
           "lucky": "MAY MẮN",
           "pro": "PRO",
           "elite": "ELITE",
-          "mythic": "MYTHIC"
+          "mythic": "THUYỀN THOẠI"
         }
       }
+    },
+    "checkIn": {
+      "title": "Nhận xu hằng ngày",
+      "subtitle": "Quay lại mỗi ngày để nhận thưởng lớn hơn.",
+      "cta": "Điểm danh",
+      "claimed": "Đã nhận! +{{amount}} xu",
+      "later": "Để sau"
     }
+  },
+  "app": {
+    "version": "Phiên bản {{version}}",
+    "offlineBanner": "Bạn đang ngoại tuyến",
+    "launch": {
+      "accessibilityLabel": "Đang khởi động Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI luôn sẵn sàng khi bạn cần"
+    },
+    "errors": {
+      "modelsLoadTitle": "Không tải được mô hình",
+      "modelsLoadMessage": "Không thể tải các mô hình AI. Ứng dụng sẽ dùng mô hình mặc định. Vui lòng kiểm tra kết nối Internet của bạn.",
+      "modelsLoadTimeout": "Việc tải mô hình mất quá nhiều thời gian. Ứng dụng sẽ dùng mô hình mặc định. Vui lòng thử lại.",
+      "modelsLoadNetwork": "Không có kết nối Internet. Ứng dụng sẽ dùng mô hình mặc định. Vui lòng kiểm tra kết nối của bạn.",
+      "deviceIdTitle": "Lỗi khởi tạo",
+      "deviceIdMessage": "Không khởi tạo được ID thiết bị. Một số tính năng có thể không hoạt động đúng.",
+      "storageTitle": "Lỗi bộ nhớ",
+      "storageMessage": "Không thể truy cập bộ nhớ cục bộ. Một số tính năng có thể không hoạt động đúng.",
+      "crashTitle": "Đã xảy ra lỗi.",
+      "crashSubtitle": "Vui lòng thử lại.",
+      "crashLabel": "Ứng dụng gặp sự cố"
+    },
+    "proxyErrors": {
+      "genericTitle": "Đã xảy ra lỗi",
+      "genericMessage": "Vui lòng thử lại.",
+      "rateLimitTitle": "Quá nhiều yêu cầu",
+      "rateLimitMessage": "Chúng tôi đang xử lý nhiều yêu cầu. Vui lòng thử lại sau giây lát.",
+      "rateLimitRetryAfter": "Chúng tôi đang xử lý nhiều yêu cầu. Vui lòng thử lại sau khoảng {{seconds}} giây.",
+      "restrictedTitle": "Nội dung bị hạn chế",
+      "restrictedMessage": "Yêu cầu này đã bị bộ lọc an toàn chặn.",
+      "insufficientCoinsTitle": "Không đủ xu",
+      "insufficientCoinsMessage": "Số dư hiện tại của bạn không đủ cho yêu cầu này.",
+      "imageUnavailableTitle": "Hình ảnh không khả dụng",
+      "imageUnavailableMessage": "Tệp hình ảnh đã tạo tạm thời không khả dụng. Vui lòng thử lại.",
+      "authorizationTitle": "Sự cố ủy quyền",
+      "authorizationMessage": "Chúng tôi không thể xác minh tài khoản của bạn. Vui lòng thử lại.",
+      "serverTitle": "Sự cố máy chủ",
+      "serverMessage": "Máy chủ của chúng tôi gặp sự cố. Vui lòng thử lại sau.",
+      "timeoutTitle": "Mất quá nhiều thời gian",
+      "timeoutMessage": "Yêu cầu đã hết thời gian chờ. Vui lòng thử lại.",
+      "networkTitle": "Không có kết nối",
+      "networkMessage": "Không có kết nối Internet. Vui lòng kiểm tra kết nối và thử lại.",
+      "requestTitle": "Sự cố yêu cầu",
+      "requestMessage": "Yêu cầu của bạn gặp sự cố. Vui lòng thử lại."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Kích hoạt Premium",
+    "activateMessage": "Bạn có muốn kích hoạt Premium cho người đánh giá không?",
+    "activateAction": "Kích hoạt",
+    "deactivateTitle": "Hủy kích hoạt Premium",
+    "deactivateMessage": "Bạn có muốn hủy kích hoạt Premium cho người đánh giá không?",
+    "deactivateAction": "Hủy kích hoạt"
   },
   "push": {
     "dailyReward": {
       "title": "Phần thưởng hằng ngày",
       "body": "Đừng bỏ lỡ xu hằng ngày — nhận trước nửa đêm."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Đừng bỏ lỡ xu hằng ngày của bạn",
+      "body": "Chúng tôi gửi một lời nhắc mỗi ngày để chuỗi của bạn không bị gián đoạn và xu tiếp tục tăng. Không spam, bạn có thể tắt bất cứ lúc nào.",
+      "enable": "Bật lời nhắc",
+      "skip": "Để sau"
     }
   }
 }

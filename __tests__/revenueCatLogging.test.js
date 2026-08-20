@@ -10,6 +10,21 @@ describe('shouldSuppressRevenueCatLog', () => {
     ).toBe(true);
   });
 
+  test('suppresses transient Google Play service unavailable retries', () => {
+    expect(
+      shouldSuppressRevenueCatLog(
+        'WARN',
+        'Billing is unavailable. Will retry with backoff. App is in background: false',
+      ),
+    ).toBe(true);
+    expect(
+      shouldSuppressRevenueCatLog(
+        'ERROR',
+        'Error fetching offerings - ErrorCode: SERVICE_UNAVAILABLE.',
+      ),
+    ).toBe(true);
+  });
+
   test('keeps unrelated RevenueCat errors visible', () => {
     expect(
       shouldSuppressRevenueCatLog(

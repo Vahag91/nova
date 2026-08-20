@@ -11,7 +11,12 @@
     "searchHint": "اكتب لتصفية النماذج المتاحة",
     "modelLabel": "نموذج {{name}}",
     "selectHint": "اختر النموذج {{name}}",
-    "currentlySelected": "محدد حاليًا"
+    "currentlySelected": "محدد حاليًا",
+    "genericModel": "نموذج {{provider}}",
+    "badges": {
+      "new": "جديد",
+      "best": "الأفضل"
+    }
   },
   "models": {
     "gpt-4o": "أقوى نموذج ذكاء اصطناعي",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "المساعدون",
+    "defaultTitle": "مساعد",
+    "errorTitle": "حدث خطأ ما",
+    "errorMessage": "تعذّر تشغيل هذا المساعد.",
+    "noAssistants": "لا يوجد مساعدون في هذه الفئة.",
+    "selectAssistantHint": "فتح أداة اختيار المساعد",
     "subtitle": "مساعدات ذكاء اصطناعي منتقاة للبرمجة والكتابة والتحليل والتخطيط والمزيد.",
     "searchPlaceholder": "ابحث عن المساعدين…",
     "useAssistant": "استخدام المساعد",
@@ -254,9 +264,12 @@
     "search": "بحث",
     "clearSearch": "مسح البحث",
     "noChatsYet": "لا توجد محادثات بعد",
+    "noResults": "لا توجد محادثات بعد",
     "startFirstConversation": "ابدأ محادثتك الأولى.",
     "startChat": "ابدأ المحادثة",
+    "startNewChat": "ابدأ المحادثة",
     "errorLoadingHistory": "حدث خطأ أثناء تحميل السجل",
+    "loading": "جارٍ تحميل السجل...",
     "renameChat": "إعادة تسمية المحادثة",
     "enterNewTitle": "أدخل عنوانًا جديدًا",
     "deleteChat": "حذف المحادثة؟",
@@ -264,9 +277,7 @@
     "rename": "إعادة تسمية",
     "unpin": "إزالة التثبيت",
     "pin": "تثبيت",
-    "untitled": "بدون عنوان",
-    "noResults": "لا توجد محادثات بعد",
-    "startNewChat": "ابدأ المحادثة"
+    "untitled": "بدون عنوان"
   },
   "settings": {
     "title": "الإعدادات",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "البريميوم مفعل",
-        "subtitle": "شكرًا لدعمك ChatCloud"
+        "subtitle": "شكرًا لدعمك Cloud AI"
       },
       "restore": {
         "title": "استعادة المشتريات",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "لا يمكن فتح هذا الرابط الآن.",
       "restoreSuccessTitle": "تمت الاستعادة",
       "restoreSuccessMessage": "تمت استعادة مشترياتك.",
+      "restoreEmptyTitle": "لم يتم العثور على مشتريات",
+      "restoreEmptyMessage": "لم نعثر على عملية شراء نشطة لاستعادتها لهذا الحساب.",
       "restoreErrorTitle": "فشل الاستعادة",
       "restoreErrorMessage": "تعذر استعادة المشتريات الآن.",
       "resetConfirmTitle": "إعادة ضبط بيانات التطبيق؟",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "مخصص"
     },
+    "notEnoughCoinsTitle": "لا توجد عملات كافية",
+    "notEnoughCoinsMessage": "رصيدك الحالي غير كافٍ لهذه الصورة.",
     "modelTaglines": {
       "runwareFluxSchnell": "أسرع نموذج",
       "runwareFluxKrea": "نتائج إبداعية وأنيقة",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "فشل الحفظ",
       "shareFailedTitle": "فشل المشاركة",
-      "tryAgain": "يرجى المحاولة مرة أخرى."
+      "tryAgain": "يرجى المحاولة مرة أخرى.",
+      "savedTitle": "تم الحفظ",
+      "savedMessage": "تم حفظ الصورة في معرضك.",
+      "permissionTitle": "إذن مطلوب",
+      "permissionMessage": "اسمح بالوصول إلى وحدة التخزين لحفظ الصور في معرضك."
     },
     "result": {
       "complete": "اكتمل كل شيء"
@@ -498,12 +517,47 @@
       "save": "حفظ",
       "share": "مشاركة"
     },
+    "alerts": {
+      "savedTitle": "تم الحفظ",
+      "savedMessage": "تم حفظ الصورة في معرضك.",
+      "permissionTitle": "إذن مطلوب",
+      "permissionMessage": "اسمح بالوصول إلى وحدة التخزين لحفظ الصور في معرضك.",
+      "saveFailedTitle": "تعذّر الحفظ",
+      "tryAgain": "يُرجى المحاولة مرة أخرى."
+    },
     "accessibility": {
       "close": "إغلاق",
       "delete": "حذف الصورة",
       "edit": "تحرير الصورة",
       "save": "حفظ الصورة",
       "share": "مشاركة الصورة"
+    }
+  },
+  "reportContent": {
+    "title": "الإبلاغ عن محتوى ذكاء اصطناعي",
+    "subtitle": "أخبرنا ما المشكلة في هذا المحتوى المُنشأ.",
+    "privateDisclosure": "بالإرسال، يتم إرسال هذا المحتوى المُبلَّغ عنه لمراجعة السلامة.",
+    "accessibilityLabel": "الإبلاغ عن محتوى ذكاء اصطناعي",
+    "reasons": {
+      "sexual": "محتوى جنسي أو عُري",
+      "violence_self_harm": "عنف أو إيذاء النفس",
+      "hate_harassment": "كراهية أو تحرّش",
+      "child_safety": "مخاوف تتعلق بسلامة الأطفال",
+      "scam_deceptive": "احتيال أو محتوى مضلِّل",
+      "other": "أخرى"
+    },
+    "errors": {
+      "reasonRequired": "يُرجى اختيار سبب قبل الإرسال.",
+      "submit": "تعذّر إرسال البلاغ. يُرجى المحاولة مرة أخرى."
+    },
+    "success": {
+      "title": "شكرًا لك. تم إرسال بلاغك.",
+      "subtitle": "سنستخدم البلاغات لتحسين سلامة المحتوى."
+    },
+    "actions": {
+      "report": "إبلاغ",
+      "submit": "إرسال البلاغ",
+      "done": "تم"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "تعرّف على",
       "titleHighlight": "Image Studio",
-      "subtitle": "أنشئ وحرّر الصور بالذكاء الاصطناعي — مباشرة داخل ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "أنشئ وحرّر الصور بالذكاء الاصطناعي — مباشرة داخل Cloud AI."
     },
     "relaxView": {
       "title": "قابل ذكاءك الاصطناعي",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "حلول ذكاء اصطناعي على مستوى المؤسسات",
       "description": "عزّز عملك بتقنية ذكاء اصطناعي متقدمة صُممت للمهنيين والفرق.",
       "stats": "موثوق به من +500 ألف مستخدم",
@@ -592,10 +645,10 @@
       "value": "الأفضل قيمة"
     },
     "pack": {
+      "creditsLabel": "{{credits}} عملة",
       "tokensLabel": "{{credits}} عملة",
       "defaultName": "حزمة {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} عملة"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "انتقل إلى بريميوم",
@@ -613,8 +666,28 @@
       "unknownError": "خطأ غير معروف"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "النسخة المميزة مطلوبة",
+    "upgrade": "ترقية",
+    "modelRequiredMessage": "يتطلب هذا النموذج النسخة المميزة. قم بالترقية للوصول إلى GPT-5 وGrok 4 وClaude ونماذج متقدمة أخرى.",
+    "assistantsRequiredMessage": "يتطلب المساعدون النسخة المميزة. قم بالترقية للوصول إلى مساعدي ذكاء اصطناعي متخصصين في اللياقة والبرمجة والكتابة والمزيد.",
+    "assistantsTitle": "النسخة المميزة مطلوبة",
+    "assistantsMessage": "يتطلب المساعدون النسخة المميزة. قم بالترقية للوصول إلى مساعدي ذكاء اصطناعي متخصصين في اللياقة والبرمجة والكتابة والمزيد."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5 وGrok 4 وVeo 3",
+    "close": "إغلاق شاشة الدفع",
+    "unavailableTitle": "عمليات الشراء غير متاحة",
+    "unavailableMessage": "لم يتم إعداد الفوترة على Android بعد.",
+    "restoreEmptyTitle": "لم يتم العثور على مشتريات",
+    "restoreEmptyMessage": "لم نعثر على عملية شراء نشطة لاستعادتها لهذا الحساب.",
+    "restoreFailedTitle": "فشلت الاستعادة",
+    "restoreFailedMessage": "يتعذّر استعادة المشتريات حاليًا.",
+    "productsUnavailableTitle": "لا توجد خطط متاحة",
+    "productsUnavailableMessage": "لا توجد منتجات اشتراك متاحة على Android حاليًا.",
+    "purchaseFailedTitle": "فشلت عملية الشراء",
+    "purchaseFailedMessage": "يتعذّر إتمام عملية الشراء هذه حاليًا.",
     "restore": "استعادة",
     "restoreRestoring": "جارٍ الاستعادة…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "الشروط",
       "privacy": "الخصوصية"
+    },
+    "premium": {
+      "headline": "كل الذكاء الاصطناعي المتميز في خطة واحدة",
+      "subtitleLine1": "الدردشة والبرمجة والإنشاء والتخطيط",
+      "subtitleLine2": "مع نماذج متقدمة.",
+      "enableTrial": "تمكين النسخة التجريبية المجانية",
+      "annual": "سنوي",
+      "saveBadge": "وفر 83%",
+      "year": "سنة",
+      "week": "الاسبوع",
+      "termsOfUse": "شروط الاستخدام",
+      "privacyPolicy": "سياسة الخصوصية"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "إعادة توليد الرد",
     "regenerateResponseHint": "توليد رد جديد",
     "copyCode": "نسخ الكود",
+    "copied": "تم النسخ",
     "image": "صورة",
     "loading": "جارٍ التحميل…",
     "loadingChat": "جارٍ تحميل المحادثة...",
     "offlineBanner": "أنت غير متصل. لا يمكن إرسال الرسائل.",
+    "offlineError": "لا يوجد اتصال بالإنترنت. يُرجى التحقق من اتصالك والمحاولة مرة أخرى.",
     "imagePickerErrorTitle": "خطأ في اختيار الصورة",
     "imagePickerErrorMessage": "تعذر الوصول إلى صورك. يرجى المحاولة مرة أخرى.",
     "messageTooLong": "الرسالة طويلة جدًا ({{length}}). الحد هو {{limit}}.",
     "sendFailed": "فشل الإرسال.",
     "modelNoImageSupport": "النموذج المحدد لا يدعم الصور. يرجى اختيار نموذج آخر.",
     "voiceStartFailed": "تعذر بدء التسجيل الصوتي.",
+    "voiceNoSpeechDetected": "لم يتم التعرف على أي صوت. يُرجى المحاولة مرة أخرى.",
     "emptyTitle": "بماذا يمكنني أن أساعد؟",
     "emptySubtitle": "ابدأ محادثة مع الذكاء الاصطناعي",
     "privateTitle": "محادثة خاصة",
     "privateSubtitle": "لن تظهر هذه المحادثة في السجل",
+    "startPrivateChat": "بدء دردشة خاصة",
+    "endPrivateChat": "إنهاء الدردشة الخاصة",
     "permissions": {
       "photosTitle": "يلزم إذن الوصول للصور",
       "photosMessage": "يجب السماح بالوصول للصور لاختيارها.",
@@ -753,7 +843,19 @@
       "share": "مشاركة",
       "regenerate": "إعادة توليد",
       "retryFromHere": "إعادة المحاولة من هنا",
+      "report": "إبلاغ",
       "cancel": "إلغاء"
+    },
+    "markdown": {
+      "copy": "نسخ",
+      "copied": "تم النسخ",
+      "table": "جدول",
+      "watchVideo": "مشاهدة الفيديو",
+      "wikipedia": "ويكيبيديا",
+      "link": "رابط",
+      "note": "ملاحظة",
+      "warning": "تحذير",
+      "tip": "نصيحة"
     },
     "messageActionTitle": "رسالة",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "خطط ليومي",
       "planDaySubtitle": "مع نصائح إنتاجية"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "اختر موضوعا",
       "title": "ماذا تريد أن تفعل؟",
@@ -846,81 +946,59 @@
     "library": "المعرض"
   },
   "common": {
-    "new": "جديد",
-    "best": "الأفضل",
-    "cancel": "إلغاء",
-    "save": "حفظ",
-    "delete": "حذف",
-    "close": "إغلاق",
-    "allow": "سماح",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "إعادة المحاولة",
+    "cancel": "إلغاء",
+    "allow": "سماح",
+    "notNow": "ليس الآن",
+    "openSettings": "فتح الإعدادات",
+    "close": "إغلاق",
+    "save": "حفظ",
+    "tryAgain": "حاول مرة أخرى"
   },
   "rateUs": {
-    "title": "هل تستمتع بـ ChatCloud؟",
+    "title": "هل تستمتع بـ Cloud AI؟",
     "subtitle": "ملاحظاتك تساعدنا على التحسين. هل يمكنك تقييمنا في متجر التطبيقات؟",
     "rateNow": "قيم الآن",
     "maybeLater": "ربما لاحقاً",
     "dontAskAgain": "لا تسأل مرة أخرى"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "عرض لمرة واحدة",
+    "discount": "خصم {{percent}}%",
+    "subtitle": "لن ترى هذا العرض مرة أخرى.",
     "badgeLine1": "حصري",
     "badgeLine2": "عرض لمرة واحدة",
     "upgradeNow": "ترقية الآن مقابل {{price}}",
     "loadingPrice": "جاري التحميل...",
     "termsOfUse": "شروط الاستخدام",
     "privacyPolicy": "سياسة الخصوصية",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "وصول غير محدود إلى",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "وصول غير محدود إلى GPT-4",
+      "geminiPro": "الوصول إلى Gemini Pro",
+      "grokInsights": "استخدم Grok للحصول على رؤى جديدة",
+      "priorityAccess": "وصول ذو أولوية واستجابات أسرع"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "أفضل قيمة",
+    "annualPremium": "النسخة المميزة السنوية",
+    "oneTimePayment": "دفعة لمرة واحدة",
+    "wasPrice": "كان",
+    "continue": "متابعة",
+    "restore": "استعادة",
+    "terms": "الشروط",
+    "privacy": "الخصوصية",
+    "successTitle": "تم بنجاح!",
+    "successMessage": "شكرًا لشرائك! استمتع بالوصول المميز خلال الـ 12 شهرًا القادمة.",
+    "errorTitle": "فشلت عملية الشراء",
+    "errorMessage": "حدث خطأ ما. يُرجى المحاولة مرة أخرى.",
+    "restoreSuccessTitle": "تمت الاستعادة",
+    "restoreSuccessMessage": "تمت استعادة مشترياتك.",
+    "restoreErrorTitle": "فشلت الاستعادة",
+    "restoreErrorMessage": "لم يتم العثور على مشتريات لاستعادتها.",
+    "unavailableTitle": "عمليات الشراء غير متاحة",
+    "unavailableMessage": "لم يتم إعداد الفوترة على Android بعد."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "أسطوري"
         }
       }
+    },
+    "checkIn": {
+      "title": "احصل على عملاتك اليومية",
+      "subtitle": "عد كل يوم لتزداد المكافأة.",
+      "cta": "تسجيل الحضور",
+      "claimed": "تم الاستلام! +{{amount}} عملة",
+      "later": "لاحقًا"
     }
+  },
+  "app": {
+    "version": "الإصدار {{version}}",
+    "offlineBanner": "أنت غير متصل بالإنترنت",
+    "launch": {
+      "accessibilityLabel": "جارٍ تشغيل Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "ذكاء اصطناعي جاهز متى احتجت إليه"
+    },
+    "errors": {
+      "modelsLoadTitle": "فشل تحميل النماذج",
+      "modelsLoadMessage": "يتعذّر تحميل نماذج الذكاء الاصطناعي. سيستخدم التطبيق النماذج الافتراضية. يُرجى التحقق من اتصالك بالإنترنت.",
+      "modelsLoadTimeout": "استغرق تحميل النماذج وقتًا طويلًا. سيستخدم التطبيق النماذج الافتراضية. يُرجى المحاولة مرة أخرى.",
+      "modelsLoadNetwork": "لا يوجد اتصال بالإنترنت. سيستخدم التطبيق النماذج الافتراضية. يُرجى التحقق من اتصالك.",
+      "deviceIdTitle": "خطأ في التهيئة",
+      "deviceIdMessage": "فشلت تهيئة معرّف الجهاز. قد لا تعمل بعض الميزات بشكل صحيح.",
+      "storageTitle": "خطأ في التخزين",
+      "storageMessage": "يتعذّر الوصول إلى وحدة التخزين المحلية. قد لا تعمل بعض الميزات بشكل صحيح.",
+      "crashTitle": "حدث خطأ ما.",
+      "crashSubtitle": "يُرجى المحاولة مرة أخرى.",
+      "crashLabel": "تعطّل التطبيق"
+    },
+    "proxyErrors": {
+      "genericTitle": "حدث خطأ ما",
+      "genericMessage": "يُرجى المحاولة مرة أخرى.",
+      "rateLimitTitle": "طلبات كثيرة جدًا",
+      "rateLimitMessage": "نعالج عددًا كبيرًا من الطلبات حاليًا. يُرجى المحاولة بعد قليل.",
+      "rateLimitRetryAfter": "نعالج عددًا كبيرًا من الطلبات حاليًا. يُرجى إعادة المحاولة بعد حوالي {{seconds}} ثانية.",
+      "restrictedTitle": "محتوى مقيَّد",
+      "restrictedMessage": "تم حظر هذا الطلب بواسطة عوامل تصفية الأمان.",
+      "insufficientCoinsTitle": "لا توجد عملات كافية",
+      "insufficientCoinsMessage": "رصيدك الحالي غير كافٍ لهذا الطلب.",
+      "imageUnavailableTitle": "الصورة غير متاحة",
+      "imageUnavailableMessage": "ملف الصورة المُنشأة غير متاح مؤقتًا. يُرجى المحاولة مرة أخرى.",
+      "authorizationTitle": "مشكلة في التفويض",
+      "authorizationMessage": "تعذّر التحقق من حسابك. يُرجى المحاولة مرة أخرى.",
+      "serverTitle": "عطل في الخادم",
+      "serverMessage": "واجهت خوادمنا مشكلة. يُرجى المحاولة بعد قليل.",
+      "timeoutTitle": "يستغرق وقتًا طويلًا",
+      "timeoutMessage": "انتهت مهلة الطلب. يُرجى المحاولة مرة أخرى.",
+      "networkTitle": "لا يوجد اتصال",
+      "networkMessage": "لا يوجد اتصال بالإنترنت. يُرجى التحقق من اتصالك والمحاولة مرة أخرى.",
+      "requestTitle": "مشكلة في الطلب",
+      "requestMessage": "حدث خطأ في طلبك. يُرجى المحاولة مرة أخرى."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "تفعيل النسخة المميزة",
+    "activateMessage": "هل تريد تفعيل النسخة المميزة للمراجعين؟",
+    "activateAction": "تفعيل",
+    "deactivateTitle": "إلغاء تفعيل النسخة المميزة",
+    "deactivateMessage": "هل تريد إلغاء تفعيل النسخة المميزة للمراجعين؟",
+    "deactivateAction": "إلغاء التفعيل"
   },
   "push": {
     "dailyReward": {
       "title": "مكافأة يومية",
       "body": "لا تفوّت عملاتك اليومية — اطلبها قبل منتصف الليل."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "لا تفوّت عملاتك اليومية",
+      "body": "نرسل تذكيرًا واحدًا يوميًا للحفاظ على سلسلتك ومواصلة زيادة عملاتك. بلا إزعاج، ويمكنك إيقافه في أي وقت.",
+      "enable": "تفعيل التذكيرات",
+      "skip": "ليس الآن"
     }
   }
 }

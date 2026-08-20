@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState, useCallback, useContext } 
 import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert, Platform, InteractionManager } from 'react-native';
 import Reanimated, { useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
 import { useHeaderHeight } from '@react-navigation/elements';
+import { useFocusEffect } from '@react-navigation/native';
 import NetInfo from '@react-native-community/netinfo';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Svg, { Path } from 'react-native-svg';
@@ -31,7 +32,7 @@ import { ensureSummaryIfNeeded } from '../lib/summaryBuilder';
 import { buildPayload } from '../lib/payloadBuilder';
 import { useVoiceInput } from '../hooks/useVoiceInput';
 import { useTranslation } from 'react-i18next';
-import { SubscriptionContext } from '../context/SubscriptionContext';
+import { SubscriptionAccessContext } from '../context/SubscriptionContext';
 import { isPremiumModel, FREE_MODEL } from '../config/premium';
 import { setPendingPremiumAction } from '../state/premiumActions';
 import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
@@ -43,6 +44,10 @@ import ChatToast from '../components/chat/ChatToast';
 import ReportContentModal from '../components/reporting/ReportContentModal';
 import { plainTextFromMarkdown } from '../lib/plainTextFromMarkdown';
 import { perfEnd, perfLog, perfStart } from '../lib/perfTrace';
+import { runImagePickerSingleFlight } from '../lib/imagePickerSingleFlight';
+import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
+
+const STARTUP_DECORATIVE_MEDIA_DELAY_MS = 240;
 
 function mergeVoiceTranscript(base, chunk) {
   const left = String(base || '').trim();
@@ -66,9 +71,11 @@ function mergeVoiceTranscript(base, chunk) {
 
 export default function Chat({ navigation }) {
   const { t, i18n } = useTranslation();
-  const subscription = useContext(SubscriptionContext);
+  const { reportScreenReady } = useAndroidNavigationMenu();
+  const subscription = useContext(SubscriptionAccessContext);
   const isPremium = !!subscription?.isPremium;
   const subscriptionReady = !!subscription?.subscriptionReady;
+  const entitlementCacheReady = !!subscription?.entitlementCacheReady;
   
   const headerHeight = useHeaderHeight();
   const { progress } = useReanimatedKeyboardAnimation();
@@ -115,6 +122,7 @@ export default function Chat({ navigation }) {
   const updateLastAssistantContentPrivate = useThreadsStore(s => s.updateLastAssistantContentPrivate);
 
   // Settings
+  const settingsHydrated = useSettingsStore(s => s.hydrated);
   const globalModel = useSettingsStore(s => s.model);
   const modelsMap = useSettingsStore(s => s.models);
 
@@ -151,16 +159,22 @@ export default function Chat({ navigation }) {
 
   const [input, setInput] = useState('');
   const [attachments, setAttachments] = useState([]);
+  const [imagePickerActive, setImagePickerActive] = useState(false);
   const [error, setError] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [offline, setOffline] = useState(false);
   const [streamingMsgId, setStreamingMsgId] = useState(null);
   const [forceCollapseInput, setForceCollapseInput] = useState(false);
   const [keyboardVisible, setKeyboardVisible] = useState(false);
-  const [helpersVisible, setHelpersVisible] = useState(false);
+  const [helpersVisible, setHelpersVisible] = useState(true);
+  const [decorativeMediaReady, setDecorativeMediaReady] = useState(false);
   const [reportTarget, setReportTarget] = useState(null);
   const helperRevealTimeoutRef = useRef(null);
   const helperRevealInteractionRef = useRef(null);
+  const decorativeMediaTimeoutRef = useRef(null);
+  const decorativeMediaInteractionRef = useRef(null);
+  const voiceOverlayUnmountTimeoutRef = useRef(null);
+  const bannerMediaRef = useRef(null);
 
   const toastTimerRef = useRef(null);
   const [toastVisible, setToastVisible] = useState(false);
@@ -197,13 +211,25 @@ export default function Chat({ navigation }) {
   }, []);
 
   useEffect(() => {
-    const show = () => setKeyboardVisible(true);
-    const hide = () => setKeyboardVisible(false);
+    const handleKeyboardWillShow = () => {
+      // Keyboard progress already drives the banner/suggestion animations on
+      // the UI thread. Do not trigger a full Chat render while those frames
+      // are moving; only cancel a pending post-close reveal.
+      cancelHelperReveal();
+      bannerMediaRef.current?.pause?.();
+      perfLog('chat.keyboard.animation_started');
+    };
+    const handleKeyboardDidShow = () => {
+      // These updates are batched after the IME animation has settled. The
+      // hidden helper subtree is removed once, outside the moving frames.
+      setKeyboardVisible(true);
+    };
+    const handleKeyboardDidHide = () => setKeyboardVisible(false);
 
     const subscriptions = [
-      KeyboardEvents.addListener('keyboardWillShow', show),
-      KeyboardEvents.addListener('keyboardDidShow', show),
-      KeyboardEvents.addListener('keyboardDidHide', hide),
+      KeyboardEvents.addListener('keyboardWillShow', handleKeyboardWillShow),
+      KeyboardEvents.addListener('keyboardDidShow', handleKeyboardDidShow),
+      KeyboardEvents.addListener('keyboardDidHide', handleKeyboardDidHide),
     ];
 
     return () => {
@@ -219,6 +245,7 @@ export default function Chat({ navigation }) {
   }, [keyboardVisible]);
   
   const [showVoiceOverlay, setShowVoiceOverlay] = useState(false);
+  const [keepVoiceOverlayMounted, setKeepVoiceOverlayMounted] = useState(false);
   const [voiceText, setVoiceText] = useState('');
   const committedVoiceTextRef = useRef('');
   const [webSearchNext, setWebSearchNext] = useState(false); 
@@ -238,6 +265,39 @@ export default function Chat({ navigation }) {
   const successfulMessagesRef = useRef(0); 
   const abortRef = useRef(null);
   const appStateRef = useRef(AppState.currentState);
+  const isMountedRef = useRef(true);
+  const isFocusedRef = useRef(false);
+  const startupReadyFrameRef = useRef(null);
+  const startupReadyReportedRef = useRef(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      isFocusedRef.current = true;
+      return () => {
+        isFocusedRef.current = false;
+      };
+    }, []),
+  );
+
+  useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+      isFocusedRef.current = false;
+      if (startupReadyFrameRef.current !== null) {
+        cancelAnimationFrame(startupReadyFrameRef.current);
+      }
+      if (decorativeMediaTimeoutRef.current) {
+        clearTimeout(decorativeMediaTimeoutRef.current);
+        decorativeMediaTimeoutRef.current = null;
+      }
+      decorativeMediaInteractionRef.current?.cancel?.();
+      decorativeMediaInteractionRef.current = null;
+      if (voiceOverlayUnmountTimeoutRef.current) {
+        clearTimeout(voiceOverlayUnmountTimeoutRef.current);
+        voiceOverlayUnmountTimeoutRef.current = null;
+      }
+    };
+  }, []);
 
   const messagesNoSystem = useMemo(
     () => {
@@ -290,13 +350,80 @@ export default function Chat({ navigation }) {
     : (headerHeight - 25 || 65);
 
   useEffect(() => {
-    if (!showQuickSuggestions || keyboardVisible) {
+    const initialVisualReady =
+      hydrated &&
+      settingsHydrated &&
+      entitlementCacheReady &&
+      !!activeThread &&
+      (!showQuickSuggestions || helpersVisible);
+    if (!initialVisualReady || startupReadyReportedRef.current) {
+      return undefined;
+    }
+
+    startupReadyFrameRef.current = requestAnimationFrame(() => {
+      startupReadyFrameRef.current = requestAnimationFrame(() => {
+        startupReadyFrameRef.current = null;
+        if (!isMountedRef.current || startupReadyReportedRef.current) return;
+        startupReadyReportedRef.current = true;
+        reportScreenReady?.();
+
+        // The banner shell is already laid out, but its native TextureView and
+        // player are decorative. Start them after App's 180 ms startup fade so
+        // media initialization cannot pause the launch loader.
+        decorativeMediaTimeoutRef.current = setTimeout(() => {
+          decorativeMediaTimeoutRef.current = null;
+          decorativeMediaInteractionRef.current = InteractionManager.runAfterInteractions(() => {
+            decorativeMediaInteractionRef.current = null;
+            if (isMountedRef.current) {
+              setDecorativeMediaReady(true);
+            }
+          });
+        }, STARTUP_DECORATIVE_MEDIA_DELAY_MS);
+      });
+    });
+
+    return () => {
+      if (startupReadyFrameRef.current !== null) {
+        cancelAnimationFrame(startupReadyFrameRef.current);
+        startupReadyFrameRef.current = null;
+      }
+    };
+  }, [
+    activeThread,
+    entitlementCacheReady,
+    helpersVisible,
+    hydrated,
+    reportScreenReady,
+    settingsHydrated,
+    showQuickSuggestions,
+  ]);
+
+  useEffect(() => {
+    if (!showQuickSuggestions) {
       cancelHelperReveal();
       setHelpersVisible(false);
       return;
     }
 
+    // Keep the helper/video subtree mounted while the keyboard is moving.
+    // Reanimated hides it on the UI thread; retaining the native TextureView
+    // avoids decoder teardown, remount and resize churn on every IME cycle.
+    if (keyboardVisible) {
+      cancelHelperReveal();
+      return undefined;
+    }
+
     cancelHelperReveal();
+    // The first complete Chat frame must not wait for React Navigation's
+    // interaction queue. Later keyboard re-shows keep the small delay below.
+    if (!startupReadyReportedRef.current) {
+      setHelpersVisible(true);
+      return undefined;
+    }
+    if (helpersVisible) {
+      return undefined;
+    }
+
     helperRevealTimeoutRef.current = setTimeout(() => {
       helperRevealTimeoutRef.current = null;
       helperRevealInteractionRef.current = InteractionManager.runAfterInteractions(() => {
@@ -306,7 +433,38 @@ export default function Chat({ navigation }) {
     }, 90);
 
     return cancelHelperReveal;
-  }, [cancelHelperReveal, keyboardVisible, showQuickSuggestions]);
+  }, [
+    cancelHelperReveal,
+    helpersVisible,
+    keyboardVisible,
+    showQuickSuggestions,
+  ]);
+
+  useEffect(() => {
+    if (showVoiceOverlay) {
+      if (voiceOverlayUnmountTimeoutRef.current) {
+        clearTimeout(voiceOverlayUnmountTimeoutRef.current);
+        voiceOverlayUnmountTimeoutRef.current = null;
+      }
+      setKeepVoiceOverlayMounted(true);
+      return undefined;
+    }
+    if (!keepVoiceOverlayMounted) {
+      return undefined;
+    }
+
+    voiceOverlayUnmountTimeoutRef.current = setTimeout(() => {
+      voiceOverlayUnmountTimeoutRef.current = null;
+      setKeepVoiceOverlayMounted(false);
+    }, 320);
+
+    return () => {
+      if (voiceOverlayUnmountTimeoutRef.current) {
+        clearTimeout(voiceOverlayUnmountTimeoutRef.current);
+        voiceOverlayUnmountTimeoutRef.current = null;
+      }
+    };
+  }, [keepVoiceOverlayMounted, showVoiceOverlay]);
 
   useEffect(() => {
     perfLog('chat.helpers.visibility_changed', {
@@ -332,7 +490,7 @@ export default function Chat({ navigation }) {
     setVoiceText(mergeVoiceTranscript(committedVoiceTextRef.current, partial));
   }, [setVoiceText]);
   const onVoiceError = useCallback((message) => {
-    const pretty = mapProxyError({ message });
+    const pretty = mapProxyError({ message }, t);
     setError(pretty.message || t('chat.voiceStartFailed', { defaultValue: 'Could not start voice.' }));
     if (!String(voiceText || '').trim()) {
       setShowVoiceOverlay(false);
@@ -350,13 +508,18 @@ export default function Chat({ navigation }) {
   }, [hydrated, hydrate]);
   
   useEffect(() => {
-    if (!isPremium && activeModelKey && isPremiumModel(activeModelKey)) {
+    if (
+      entitlementCacheReady &&
+      !isPremium &&
+      activeModelKey &&
+      isPremiumModel(activeModelKey)
+    ) {
       if (!pinnedModel) {
         const setModel = useSettingsStore.getState().setModel;
         setModel(FREE_MODEL);
       }
     }
-  }, [isPremium, activeModelKey, pinnedModel]);
+  }, [entitlementCacheReady, isPremium, activeModelKey, pinnedModel]);
 
   useEffect(() => {
     if (!hydrated || isPrivate) return;
@@ -428,7 +591,7 @@ export default function Chat({ navigation }) {
     }
   }, [forceCollapseInput]);
 
-  function addPickedAssets(assets = []) {
+  const addPickedAssets = useCallback((assets = []) => {
     const normalized = assets
       .filter(a => a?.uri && a?.type)
       .map((a, idx) => ({
@@ -442,26 +605,54 @@ export default function Chat({ navigation }) {
       for (const n of normalized) if (!seen.has(n.uri)) { merged.push(n); seen.add(n.uri); }
       return merged;
     });
-  }
+  }, []);
 
   const onOpenCameraPress = useCallback(async () => {
-    launchImageLibrary(
-      { mediaType: 'photo', includeBase64: true, selectionLimit: 2, maxWidth: 500, maxHeight: 500, quality: 0.52 },
-      (response) => {
-        if (response?.didCancel) return;
-        if (response?.errorCode || response?.errorMessage) {
-          Alert.alert(
-            t('chat.imagePickerErrorTitle'),
-            t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' })
-          );
-          return;
+    try {
+      const result = await runImagePickerSingleFlight(async () => {
+        if (isMountedRef.current) {
+          setImagePickerActive(true);
         }
-        const assetsList = Array.isArray(response?.assets) ? response.assets : [];
-        if (!assetsList.length) return;
-        addPickedAssets(assetsList);
+        try {
+          return await launchImageLibrary({
+            mediaType: 'photo',
+            includeBase64: true,
+            selectionLimit: 2,
+            maxWidth: 500,
+            maxHeight: 500,
+            quality: 0.52,
+          });
+        } finally {
+          if (isMountedRef.current) {
+            setImagePickerActive(false);
+          }
+        }
+      });
+
+      if (!result.started || !isMountedRef.current || !isFocusedRef.current) {
+        return;
       }
-    );
-  }, [t]);
+
+      const response = result.response;
+      if (response?.didCancel) return;
+      if (response?.errorCode || response?.errorMessage) {
+        Alert.alert(
+          t('chat.imagePickerErrorTitle'),
+          t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' })
+        );
+        return;
+      }
+      const assetsList = Array.isArray(response?.assets) ? response.assets : [];
+      if (!assetsList.some(asset => asset?.uri)) return;
+      addPickedAssets(assetsList);
+    } catch {
+      if (!isMountedRef.current || !isFocusedRef.current) return;
+      Alert.alert(
+        t('chat.imagePickerErrorTitle'),
+        t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' })
+      );
+    }
+  }, [addPickedAssets, t]);
 
   const activeThreadIdForInsert = activeThread?.id;
 
@@ -535,7 +726,7 @@ export default function Chat({ navigation }) {
         return;
       }
     } catch (err) {
-      const pretty = mapProxyError(err);
+      const pretty = mapProxyError(err, t);
       setError(pretty.message || t('chat.voiceStartFailed', { defaultValue: 'Could not start voice.' }));
       perfEnd('chat.voice.flow', {
         status: 'error',
@@ -846,7 +1037,7 @@ export default function Chat({ navigation }) {
           if (wasBackgrounded && isOSTermination) {
             // swallow expected background termination
           } else {
-            const pretty = mapProxyError(err);
+            const pretty = mapProxyError(err, t);
             setError(pretty.message || t('chat.sendFailed', { defaultValue: 'Failed to send message. Please try again.' }));
           }
         },
@@ -873,7 +1064,7 @@ export default function Chat({ navigation }) {
       setStreaming(false);
       abortRef.current = null;
       setStreamingMsgId(null);
-      const pretty = mapProxyError(err);
+      const pretty = mapProxyError(err, t);
       setError(pretty.message || t('chat.sendFailed', { defaultValue: 'Failed to send message. Please try again.' }));
     }
   }
@@ -1053,8 +1244,10 @@ export default function Chat({ navigation }) {
                       showKeyboardHelpers ? (
                         <Reanimated.View style={bannerStyle}>
                           <CreativeStudioBanner
+                            ref={bannerMediaRef}
                             onPress={handleCreateImagesPress}
                             paused={showVoiceOverlay || isRecording}
+                            playVideo={decorativeMediaReady && !keyboardVisible}
                           />
                         </Reanimated.View>
                       ) : null
@@ -1079,7 +1272,10 @@ export default function Chat({ navigation }) {
           <View>
             <Reanimated.View style={suggestionStyle}>
               {showKeyboardHelpers && (
-                <SuggestionCards onSuggestionPress={handleQuickSuggestionPress} />
+                <SuggestionCards
+                  onSuggestionPress={handleQuickSuggestionPress}
+                  imagePickerActive={imagePickerActive}
+                />
               )}
             </Reanimated.View>
             <TestInput
@@ -1089,6 +1285,7 @@ export default function Chat({ navigation }) {
               onStop={onStop}
               onCreateImagesPress={handleCreateImagesPress}
               onOpenCameraPress={onOpenCameraPress}
+              imagePickerActive={imagePickerActive}
               onSearchPress={() => {
                 setWebSearchNext(v => !v);
               }}
@@ -1104,25 +1301,27 @@ export default function Chat({ navigation }) {
               isRecording={isRecording}
               navigation={navigation}
             />
-            <VoiceOverlay
-              visible={showVoiceOverlay}
-              isRecording={isRecording}
-              transcript={voiceText}
-              volume={isRecording ? Math.max(volume || 0, 0.4) : 0}
-              onInsert={() => {
-                setShowVoiceOverlay(false);
-                if (isRecording) stopVoice();
-                if (voiceText?.trim()) setInput(voiceText.trim());
-                committedVoiceTextRef.current = '';
-                setVoiceText('');
-              }}
-              onClose={() => {
-                setShowVoiceOverlay(false);
-                if (isRecording) stopVoice();
-                committedVoiceTextRef.current = '';
-                setVoiceText('');
-              }}
-            />
+            {showVoiceOverlay || keepVoiceOverlayMounted ? (
+              <VoiceOverlay
+                visible={showVoiceOverlay}
+                isRecording={isRecording}
+                transcript={voiceText}
+                volume={isRecording ? Math.max(volume || 0, 0.4) : 0}
+                onInsert={() => {
+                  setShowVoiceOverlay(false);
+                  if (isRecording) stopVoice();
+                  if (voiceText?.trim()) setInput(voiceText.trim());
+                  committedVoiceTextRef.current = '';
+                  setVoiceText('');
+                }}
+                onClose={() => {
+                  setShowVoiceOverlay(false);
+                  if (isRecording) stopVoice();
+                  committedVoiceTextRef.current = '';
+                  setVoiceText('');
+                }}
+              />
+            ) : null}
           </View>
         </View>
       </KeyboardAvoidingView>
@@ -1131,7 +1330,7 @@ export default function Chat({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#000000' },
+  container: { flex: 1, backgroundColor: '#0A0A0A' },
   flex1: { flex: 1 },
   loadingCenter: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   loadingHint: { color: colors.textSecondary },

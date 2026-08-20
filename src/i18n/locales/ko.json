@@ -11,7 +11,12 @@
     "searchHint": "사용 가능한 모델을 필터링하려면 입력하세요",
     "modelLabel": "{{name}} 모델",
     "selectHint": "{{name}} 모델 선택",
-    "currentlySelected": "현재 선택된 모델"
+    "currentlySelected": "현재 선택된 모델",
+    "genericModel": "{{provider}} 모델",
+    "badges": {
+      "new": "신규",
+      "best": "베스트"
+    }
   },
   "models": {
     "gpt-4o": "가장 강력한 AI 모델",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "어시스턴트",
+    "defaultTitle": "어시스턴트",
+    "errorTitle": "문제가 발생했습니다",
+    "errorMessage": "이 어시스턴트를 시작할 수 없습니다.",
+    "noAssistants": "이 카테고리에는 어시스턴트가 없습니다.",
+    "selectAssistantHint": "어시스턴트 선택기 열기",
     "subtitle": "코딩, 글쓰기, 분석, 기획 등을 바로 도와줄 AI 전문가 모음.",
     "searchPlaceholder": "어시스턴트 검색…",
     "useAssistant": "어시스턴트 사용",
@@ -254,9 +264,12 @@
     "search": "검색",
     "clearSearch": "검색 지우기",
     "noChatsYet": "아직 채팅이 없습니다",
+    "noResults": "아직 채팅이 없습니다",
     "startFirstConversation": "첫 대화를 시작해 보세요.",
     "startChat": "채팅 시작",
+    "startNewChat": "채팅 시작",
     "errorLoadingHistory": "기록을 불러오는 중 오류가 발생했습니다",
+    "loading": "기록을 불러오는 중...",
     "renameChat": "채팅 이름 변경",
     "enterNewTitle": "새 제목을 입력하세요",
     "deleteChat": "채팅을 삭제할까요?",
@@ -264,9 +277,7 @@
     "rename": "이름 변경",
     "unpin": "고정 해제",
     "pin": "고정",
-    "untitled": "제목 없음",
-    "noResults": "아직 채팅이 없습니다",
-    "startNewChat": "채팅 시작"
+    "untitled": "제목 없음"
   },
   "settings": {
     "title": "설정",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "프리미엄 사용 중",
-        "subtitle": "ChatCloud를 후원해 주셔서 감사합니다"
+        "subtitle": "Cloud AI를 후원해 주셔서 감사합니다"
       },
       "restore": {
         "title": "구매 복원",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "지금은 이 링크를 열 수 없습니다.",
       "restoreSuccessTitle": "복원됨",
       "restoreSuccessMessage": "구매가 복원되었습니다.",
+      "restoreEmptyTitle": "구매 내역 없음",
+      "restoreEmptyMessage": "이 계정에서 복원할 수 있는 활성 구매 내역을 찾을 수 없습니다.",
       "restoreErrorTitle": "복원 실패",
       "restoreErrorMessage": "지금은 구매를 복원할 수 없습니다.",
       "resetConfirmTitle": "앱 데이터를 초기화할까요?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "사용자 지정"
     },
+    "notEnoughCoinsTitle": "코인이 부족합니다",
+    "notEnoughCoinsMessage": "현재 잔액이 이 이미지에 필요한 금액보다 부족합니다.",
     "modelTaglines": {
       "runwareFluxSchnell": "가장 빠른 모델",
       "runwareFluxKrea": "창의적이고 스타일리시한 결과",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "저장할 수 없습니다",
       "shareFailedTitle": "공유할 수 없습니다",
-      "tryAgain": "다시 시도해 주세요."
+      "tryAgain": "다시 시도해 주세요.",
+      "savedTitle": "저장됨",
+      "savedMessage": "이미지가 갤러리에 저장되었습니다.",
+      "permissionTitle": "권한 필요",
+      "permissionMessage": "이미지를 갤러리에 저장하려면 저장소 접근을 허용해 주세요."
     },
     "result": {
       "complete": "완료되었습니다"
@@ -498,12 +517,47 @@
       "save": "저장",
       "share": "공유"
     },
+    "alerts": {
+      "savedTitle": "저장됨",
+      "savedMessage": "이미지가 갤러리에 저장되었습니다.",
+      "permissionTitle": "권한 필요",
+      "permissionMessage": "이미지를 갤러리에 저장하려면 저장소 접근을 허용해 주세요.",
+      "saveFailedTitle": "저장할 수 없음",
+      "tryAgain": "다시 시도해 주세요."
+    },
     "accessibility": {
       "close": "닫기",
       "delete": "이미지 삭제",
       "edit": "이미지 편집",
       "save": "이미지 저장",
       "share": "이미지 공유"
+    }
+  },
+  "reportContent": {
+    "title": "AI 콘텐츠 신고",
+    "subtitle": "이 생성된 콘텐츠의 문제점을 알려 주세요.",
+    "privateDisclosure": "제출하면 신고된 콘텐츠가 안전 검토를 위해 전송됩니다.",
+    "accessibilityLabel": "AI 콘텐츠 신고",
+    "reasons": {
+      "sexual": "성적 콘텐츠 또는 노출",
+      "violence_self_harm": "폭력 또는 자해",
+      "hate_harassment": "혐오 또는 괴롭힘",
+      "child_safety": "아동 안전 문제",
+      "scam_deceptive": "사기 또는 기만적 콘텐츠",
+      "other": "기타"
+    },
+    "errors": {
+      "reasonRequired": "제출하기 전에 사유를 선택해 주세요.",
+      "submit": "신고를 제출할 수 없습니다. 다시 시도해 주세요."
+    },
+    "success": {
+      "title": "감사합니다. 신고가 제출되었습니다.",
+      "subtitle": "신고는 콘텐츠 안전성을 개선하는 데 사용됩니다."
+    },
+    "actions": {
+      "report": "신고",
+      "submit": "신고 제출",
+      "done": "완료"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "소개합니다",
       "titleHighlight": "Image Studio",
-      "subtitle": "AI로 이미지를 만들고 편집 — ChatCloud 안에서 바로.",
-      "appName": "ChatCloud"
+      "subtitle": "AI로 이미지를 만들고 편집 — Cloud AI 안에서 바로."
     },
     "relaxView": {
       "title": "당신의 AI를 만나보세요",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "엔터프라이즈급 AI 솔루션",
       "description": "기업과 팀을 위해 설계된 최첨단 인공지능으로 비즈니스를 강화하세요.",
       "stats": "50만+ 사용자가 신뢰",
@@ -592,10 +645,10 @@
       "value": "가성비 최고"
     },
     "pack": {
+      "creditsLabel": "{{credits}} 토큰",
       "tokensLabel": "{{credits}} 토큰",
       "defaultName": "팩 {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} 토큰"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "프리미엄으로",
@@ -613,8 +666,28 @@
       "unknownError": "알 수 없는 오류"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "프리미엄 필요",
+    "upgrade": "업그레이드",
+    "modelRequiredMessage": "이 모델은 프리미엄이 필요합니다. 업그레이드하여 GPT-5, Grok 4, Claude 등 고급 모델을 이용해 보세요.",
+    "assistantsRequiredMessage": "어시스턴트는 프리미엄이 필요합니다. 업그레이드하여 피트니스, 코딩, 글쓰기 등 전문 AI 어시스턴트를 이용해 보세요.",
+    "assistantsTitle": "프리미엄 필요",
+    "assistantsMessage": "어시스턴트는 프리미엄이 필요합니다. 업그레이드하여 피트니스, 코딩, 글쓰기 등 전문 AI 어시스턴트를 이용해 보세요."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "페이월 닫기",
+    "unavailableTitle": "구매를 사용할 수 없음",
+    "unavailableMessage": "Android 결제가 아직 설정되지 않았습니다.",
+    "restoreEmptyTitle": "구매 내역 없음",
+    "restoreEmptyMessage": "이 계정에서 복원할 수 있는 활성 구매 내역을 찾을 수 없습니다.",
+    "restoreFailedTitle": "복원 실패",
+    "restoreFailedMessage": "지금은 구매를 복원할 수 없습니다.",
+    "productsUnavailableTitle": "사용 가능한 플랜 없음",
+    "productsUnavailableMessage": "현재 사용 가능한 Android 구독 상품이 없습니다.",
+    "purchaseFailedTitle": "구매 실패",
+    "purchaseFailedMessage": "지금은 구매를 완료할 수 없습니다.",
     "restore": "복원",
     "restoreRestoring": "복원 중…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "약관",
       "privacy": "개인정보"
+    },
+    "premium": {
+      "headline": "하나의 계획에 모든 프리미엄 AI",
+      "subtitleLine1": "채팅, 코딩, 생성 및 계획",
+      "subtitleLine2": "고급 모델로.",
+      "enableTrial": "무료 평가판 활성화",
+      "annual": "연간",
+      "saveBadge": "83% 할인",
+      "year": "연도",
+      "week": "주",
+      "termsOfUse": "이용약관",
+      "privacyPolicy": "개인 정보 보호 정책"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "응답 다시 생성",
     "regenerateResponseHint": "새 응답 생성",
     "copyCode": "코드 복사",
+    "copied": "복사됨",
     "image": "이미지",
     "loading": "불러오는 중…",
     "loadingChat": "채팅 불러오는 중...",
     "offlineBanner": "오프라인 상태입니다. 메시지를 보낼 수 없습니다.",
+    "offlineError": "인터넷에 연결되어 있지 않습니다. 연결을 확인한 후 다시 시도해 주세요.",
     "imagePickerErrorTitle": "이미지 선택 오류",
     "imagePickerErrorMessage": "사진에 접근할 수 없습니다. 다시 시도하세요.",
     "messageTooLong": "메시지가 너무 깁니다 ({{length}}). 제한은 {{limit}}입니다.",
     "sendFailed": "전송에 실패했습니다.",
     "modelNoImageSupport": "선택한 모델은 이미지를 지원하지 않습니다. 다른 모델을 선택하세요.",
     "voiceStartFailed": "음성을 시작할 수 없습니다.",
+    "voiceNoSpeechDetected": "음성이 인식되지 않았습니다. 다시 시도해 주세요.",
     "emptyTitle": "무엇을 도와드릴까요?",
     "emptySubtitle": "AI와 대화를 시작하세요",
     "privateTitle": "비공개 채팅",
     "privateSubtitle": "이 채팅은 기록에 표시되지 않습니다",
+    "startPrivateChat": "비공개 채팅 시작",
+    "endPrivateChat": "비공개 채팅 종료",
     "permissions": {
       "photosTitle": "사진 권한 필요",
       "photosMessage": "이미지를 선택하려면 사진 접근 권한이 필요합니다.",
@@ -753,7 +843,19 @@
       "share": "공유",
       "regenerate": "다시 생성",
       "retryFromHere": "여기서 다시 시도",
+      "report": "신고",
       "cancel": "취소"
+    },
+    "markdown": {
+      "copy": "복사",
+      "copied": "복사됨",
+      "table": "표",
+      "watchVideo": "동영상 보기",
+      "wikipedia": "위키백과",
+      "link": "링크",
+      "note": "참고",
+      "warning": "경고",
+      "tip": "팁"
     },
     "messageActionTitle": "메시지",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "하루 계획하기",
       "planDaySubtitle": "생산성을 높이는 팁과 함께"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "주제를 선택하세요",
       "title": "무엇을 하고 싶나요?",
@@ -846,81 +946,59 @@
     "library": "라이브러리"
   },
   "common": {
-    "new": "새로",
-    "best": "베스트",
-    "cancel": "취소",
-    "save": "저장",
-    "delete": "삭제",
-    "close": "닫기",
-    "allow": "허용",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "다시 시도",
+    "cancel": "취소",
+    "allow": "허용",
+    "notNow": "나중에",
+    "openSettings": "설정 열기",
+    "close": "닫기",
+    "save": "저장",
+    "tryAgain": "다시 시도"
   },
   "rateUs": {
-    "title": "ChatCloud를 즐기고 계신가요?",
+    "title": "Cloud AI를 즐기고 계신가요?",
     "subtitle": "피드백은 개선에 도움이 됩니다. App Store에서 평가해 주시겠어요?",
     "rateNow": "지금 평가하기",
     "maybeLater": "나중에",
     "dontAskAgain": "다시 묻지 않기"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "단 한 번의 특가",
+    "discount": "{{percent}}% 할인",
+    "subtitle": "이 혜택은 다시 표시되지 않습니다.",
     "badgeLine1": "독점",
     "badgeLine2": "일회성 제안",
     "upgradeNow": "지금 업그레이드 {{price}}",
     "loadingPrice": "로딩 중...",
     "termsOfUse": "이용 약관",
     "privacyPolicy": "개인정보 보호정책",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "무제한 이용",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "GPT-4 무제한 이용",
+      "geminiPro": "Gemini Pro 이용",
+      "grokInsights": "Grok으로 새로운 인사이트 얻기",
+      "priorityAccess": "우선 접속 및 더 빠른 응답"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "최고의 가성비",
+    "annualPremium": "연간 프리미엄",
+    "oneTimePayment": "일회성 결제",
+    "wasPrice": "정가",
+    "continue": "계속",
+    "restore": "복원",
+    "terms": "이용약관",
+    "privacy": "개인정보",
+    "successTitle": "성공!",
+    "successMessage": "구매해 주셔서 감사합니다! 앞으로 12개월 동안 프리미엄을 이용하실 수 있습니다.",
+    "errorTitle": "구매 실패",
+    "errorMessage": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "restoreSuccessTitle": "복원됨",
+    "restoreSuccessMessage": "구매 내역이 복원되었습니다.",
+    "restoreErrorTitle": "복원 실패",
+    "restoreErrorMessage": "복원할 구매 내역이 없습니다.",
+    "unavailableTitle": "구매를 사용할 수 없음",
+    "unavailableMessage": "Android 결제가 아직 설정되지 않았습니다."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "미식"
         }
       }
+    },
+    "checkIn": {
+      "title": "매일 코인 받기",
+      "subtitle": "매일 방문할수록 보상이 커집니다.",
+      "cta": "출석하기",
+      "claimed": "받았습니다! +{{amount}} 코인",
+      "later": "나중에"
     }
+  },
+  "app": {
+    "version": "버전 {{version}}",
+    "offlineBanner": "오프라인 상태입니다",
+    "launch": {
+      "accessibilityLabel": "챗 클라우드 시작 중",
+      "title": "CLOUD AI",
+      "subtitle": "언제든 준비된 AI"
+    },
+    "errors": {
+      "modelsLoadTitle": "모델을 불러오지 못했습니다",
+      "modelsLoadMessage": "AI 모델을 불러올 수 없습니다. 기본 모델을 사용합니다. 인터넷 연결을 확인해 주세요.",
+      "modelsLoadTimeout": "모델을 불러오는 데 시간이 너무 오래 걸립니다. 기본 모델을 사용합니다. 다시 시도해 주세요.",
+      "modelsLoadNetwork": "인터넷에 연결되어 있지 않습니다. 기본 모델을 사용합니다. 연결을 확인해 주세요.",
+      "deviceIdTitle": "초기화 오류",
+      "deviceIdMessage": "기기 ID를 초기화하지 못했습니다. 일부 기능이 정상적으로 작동하지 않을 수 있습니다.",
+      "storageTitle": "저장소 오류",
+      "storageMessage": "로컬 저장소에 접근할 수 없습니다. 일부 기능이 정상적으로 작동하지 않을 수 있습니다.",
+      "crashTitle": "문제가 발생했습니다.",
+      "crashSubtitle": "다시 시도해 주세요.",
+      "crashLabel": "앱 오류 발생"
+    },
+    "proxyErrors": {
+      "genericTitle": "문제가 발생했습니다",
+      "genericMessage": "다시 시도해 주세요.",
+      "rateLimitTitle": "요청이 너무 많습니다",
+      "rateLimitMessage": "요청이 많아 처리 중입니다. 잠시 후 다시 시도해 주세요.",
+      "rateLimitRetryAfter": "요청이 많아 처리 중입니다. 약 {{seconds}}초 후에 다시 시도해 주세요.",
+      "restrictedTitle": "제한된 콘텐츠",
+      "restrictedMessage": "이 요청은 안전 필터에 의해 차단되었습니다.",
+      "insufficientCoinsTitle": "코인이 부족합니다",
+      "insufficientCoinsMessage": "현재 잔액이 이 요청에 필요한 금액보다 부족합니다.",
+      "imageUnavailableTitle": "이미지를 사용할 수 없음",
+      "imageUnavailableMessage": "생성된 이미지 파일을 일시적으로 사용할 수 없습니다. 다시 시도해 주세요.",
+      "authorizationTitle": "인증 문제",
+      "authorizationMessage": "계정을 확인할 수 없습니다. 다시 시도해 주세요.",
+      "serverTitle": "서버 오류",
+      "serverMessage": "서버에 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.",
+      "timeoutTitle": "응답이 지연되고 있습니다",
+      "timeoutMessage": "요청 시간이 초과되었습니다. 다시 시도해 주세요.",
+      "networkTitle": "연결 없음",
+      "networkMessage": "인터넷에 연결되어 있지 않습니다. 연결을 확인한 후 다시 시도해 주세요.",
+      "requestTitle": "요청 문제",
+      "requestMessage": "요청 처리 중 문제가 발생했습니다. 다시 시도해 주세요."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "프리미엄 활성화",
+    "activateMessage": "리뷰어 프리미엄을 활성화하시겠습니까?",
+    "activateAction": "활성화",
+    "deactivateTitle": "프리미엄 비활성화",
+    "deactivateMessage": "리뷰어 프리미엄을 비활성화하시겠습니까?",
+    "deactivateAction": "비활성화"
   },
   "push": {
     "dailyReward": {
       "title": "일일 보상",
       "body": "일일 코인을 놓치지 마세요 — 자정 전에 수령하세요."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "매일 받는 코인을 놓치지 마세요",
+      "body": "연속 기록이 끊기지 않고 코인이 계속 쌓이도록 하루에 한 번만 알려드립니다. 스팸은 없으며 언제든지 끌 수 있습니다.",
+      "enable": "알림 켜기",
+      "skip": "나중에"
     }
   }
 }

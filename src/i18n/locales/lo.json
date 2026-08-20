@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "ເລືອກຕົວແບບ",
+    "searchPlaceholder": "ຊອກຫາແບບຈໍາລອງ...",
+    "noModelsFound": "ບໍ່ພົບຕົວແບບ",
+    "noModelsAvailable": "ບໍ່ມີແບບຈໍາລອງ",
+    "currentModel": "ຮູບແບບປະຈຸບັນ: {{name}}. ແຕະເພື່ອປ່ຽນຮູບແບບ.",
+    "openHint": "ເປີດເມນູການເລືອກຕົວແບບ",
+    "closeLabel": "ປິດຕົວເລືອກຕົວແບບ",
+    "searchLabel": "ຄົ້ນຫາແບບຈໍາລອງ",
+    "searchHint": "ພິມເພື່ອກັ່ນຕອງຮູບແບບທີ່ມີຢູ່",
+    "modelLabel": "{{name}}ແບບ",
+    "selectHint": "ເລືອກແບບ{{name}}",
+    "currentlySelected": "ຮູບແບບທີ່ເລືອກໃນປັດຈຸບັນ",
+    "genericModel": "{{provider}}ແບບ",
+    "badges": {
+      "new": "ໃໝ່",
+      "best": "ດີທີ່ສຸດ"
+    }
+  },
+  "models": {
+    "gpt-4o": "ຮູບແບບ AI ທີ່ມີປະສິດທິພາບທີ່ສຸດ",
+    "gpt-4o-mini": "ໄວສໍາລັບວຽກງານປະຈໍາວັນ",
+    "gpt-5": "AI ທີ່ມີປະສິດທິພາບທີ່ສຸດ",
+    "gpt-5-chat-latest": "ເໝາະສຳລັບການສົນທະນາ ແລະການສົນທະນາ",
+    "gpt-5-mini": "ໄວແລະເຊື່ອຖືໄດ້ GPT-5",
+    "gpt-5.4-nano": "ຮູບແບບແສງສະຫວ່າງສໍາລັບວຽກງານທີ່ງ່າຍດາຍ",
+    "o4-mini": "ຮູບແບບການສົມເຫດສົມຜົນທີ່ມີປະສິດທິພາບ",
+    "gpt-4.1-mini": "ກະທັດຮັດ, ມີຄວາມສາມາດ GPT-4.1",
+    "claude-3-haiku": "ໄວແລະສຸມໃສ່ Anthropic AI",
+    "claude-3.7-sonnet": "ສົມເຫດສົມຜົນທີ່ຫລອມໂລຫະໂດຍ Anthropic",
+    "gemini-2.5-Flash": "ຮູບແບບທີ່ກ້າວຫນ້າທີ່ສຸດຂອງ Google",
+    "gemini-2.5-flash": "ຮູບແບບທີ່ກ້າວຫນ້າທີ່ສຸດຂອງ Google",
+    "gemini-2.0-flash": "Google AI ໄວແລະຊັດເຈນ"
+  },
+  "modelDescriptions": {
+    "most_powerful": "ຮູບແບບ AI ທີ່ມີປະສິດທິພາບທີ່ສຸດ",
+    "fast_everyday": "ໄວສໍາລັບວຽກງານປະຈໍາວັນ",
+    "fast_reasoning": "ຮູບແບບໄວທີ່ມີເຫດຜົນດີ",
+    "great_reasoning": "ຮູບແບບການໃຫ້ເຫດຜົນຂັ້ນສູງ",
+    "coding_reasoning": "ການເຂົ້າລະຫັດແບບພິເສດແລະການສົມເຫດສົມຜົນ",
+    "better_coding": "ດີກວ່າສໍາລັບການຂຽນລະຫັດແລະການສົມເຫດສົມຜົນ",
+    "best_overall": "ຮູບແບບ AI ທັງຫມົດທີ່ດີທີ່ສຸດ",
+    "best_google": "ຮູບແບບທີ່ດີທີ່ສຸດຂອງ Google",
+    "best_xai": "ຮູບແບບທີ່ມີປະສິດທິພາບທີ່ສຸດຂອງ xAI",
+    "creative_focus": "ດີເລີດສໍາລັບການຂຽນສ້າງສັນ",
+    "code_helper": "ດີຫຼາຍສໍາລັບການຊ່ວຍຂຽນລະຫັດ",
+    "chat_focus": "ເຫມາະສໍາລັບການສົນທະນາ",
+    "long_context": "ທີ່ດີເລີດສໍາລັບສະພາບການທີ່ຍາວນານ",
+    "budget_friendly": "ຮູບແບບ AI ທີ່ເປັນມິດກັບງົບປະມານ",
+    "ultra_fast": "ຕອບສະໜອງໄວທີ່ສຸດ",
+    "safe_default": "ທາງເລືອກເລີ່ມຕົ້ນທີ່ປອດໄພ",
+    "multilingual": "ສະຫນັບສະຫນູນຫຼາຍພາສາທີ່ເຂັ້ມແຂງ",
+    "vision_strong": "ດີເລີດກັບຮູບພາບແລະວິໄສທັດ",
+    "data_analysis": "ດີສໍາລັບການວິເຄາະຂໍ້ມູນ",
+    "structured_tasks": "ດີສໍາລັບວຽກງານທີ່ມີໂຄງສ້າງ",
+    "everyday_helper": "ຕົວແບບຜູ້ຊ່ວຍປະຈໍາວັນ",
+    "concise_answers": "ຄໍາຕອບສັ້ນ, ຫຍໍ້",
+    "detailed_answers": "ຄໍາ​ຕອບ​ໂດຍ​ຂັ້ນ​ຕອນ​ລະ​ອຽດ​",
+    "experimental": "ທົດລອງລຸ້ນຕໍ່ໄປ",
+    "reliable_classic": "ຮູບແບບຄລາສສິກທີ່ເຊື່ອຖືໄດ້",
+    "lightweight": "ຮູບແບບນ້ໍາຫນັກເບົາ, ລາຄາຖືກ",
+    "chatty_personal": "ເປັນມິດ ແລະເປັນສ່ວນຕົວຫຼາຍຂຶ້ນ",
+    "pro_users": "ທີ່ດີທີ່ສຸດສໍາລັບຜູ້ໃຊ້ພະລັງງານ",
+    "research_helper": "ດີສໍາລັບການຄົ້ນຄວ້າແລະບັນທຶກ",
+    "reasoning_strong": "ຮູບແບບການໃຫ້ເຫດຜົນຂັ້ນສູງ"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "ອື່ນໆ"
+  },
+  "navigation": {
+    "chat": "ສົນທະນາໃໝ່",
+    "history": "ປະຫວັດສາດ",
+    "rewards": "ລາງວັນປະຈໍາວັນ",
+    "assistants": "ຜູ້ຊ່ວຍ",
+    "imagesStudio": "Image Studio",
+    "settings": "ການຕັ້ງຄ່າ",
+    "recentChats": "ການສົນທະນາທີ່ຜ່ານມາ",
+    "proFeatures": "ຄຸນ​ນະ​ສົມ​ບັດ Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "ຮັບຄຸນສົມບັດ Pro",
+      "subtitle": "ຄຸນສົມບັດ AI ທັງໝົດ"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "ສ້າງ, ປັບປຸງ, ແລະເຜີຍແຜ່ຊັບສິນທີ່ເປັນຕາຢູ່ໃນບ່ອນດຽວ.",
+    "cta": "ເປີດ"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "ເລືອກຮູບພາບ",
+    "exitSelectionMode": "ອອກຈາກໂໝດການເລືອກ",
+    "selectAll": "ເລືອກທັງໝົດ",
+    "noImagesYet": "ບໍ່ມີຮູບພາບເທື່ອ",
+    "describeImageHint": "ອະທິບາຍຮູບພາບຂອງທ່ານຂ້າງລຸ່ມນີ້ ແລະແຕະທີ່ສ້າງ.",
+    "generatedImagesGallery": "ຄັງຮູບພາບທີ່ສ້າງຂຶ້ນ",
+    "describeImagePlaceholder": "ອະທິບາຍຮູບທີ່ທ່ານຕ້ອງການ...",
+    "deleteConfirmTitle": "ລຶບຮູບພາບ",
+    "deleteConfirmMessage": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບຮູບທີ່ເລືອກ? ຄຳສັ່ງນີ້ບໍ່ສາມາດຍົກເລີກໄດ້.",
+    "cancel": "ຍົກເລີກ",
+    "delete": "ລຶບ",
+    "generate": "ສ້າງ",
+    "generating": "ກຳລັງສ້າງ...",
+    "latest": "ລ່າສຸດ",
+    "insertToChat": "ໃສ່ເພື່ອສົນທະນາ",
+    "pleaseWait": "ກະລຸນາລໍຖ້າ...",
+    "processing": "ກຳລັງປະມວນຜົນ...",
+    "tapToUploadImage": "ແຕະເພື່ອອັບໂຫລດຮູບ",
+    "camera": "ອັບໂຫຼດຮູບ",
+    "library": "ຫໍສະໝຸດ",
+    "enterPrompt": "ກະລຸນາໃສ່ການເຕືອນສໍາລັບການສ້າງຂໍ້ຄວາມເປັນຮູບພາບ",
+    "openInBrowser": "ເປີດໃນ browser",
+    "makeVariations": "ສ້າງການປ່ຽນແປງ",
+    "deleteAllFromGeneration": "ລຶບທັງໝົດອອກຈາກລຸ້ນນີ້",
+    "imageOptionsTitle": "ຕົວເລືອກຮູບພາບ",
+    "imageOptionsMessage": "ເຈົ້າຢາກເຮັດຫຍັງກັບຮູບນີ້?",
+    "insertMarkdownHeader": "ນີ້ແມ່ນຮູບພາບສໍາລັບ:",
+    "variationSuffix": "- ການ​ປ່ຽນ​ແປງ​ຂອງ​ຮູບ​ພາບ​ທີ່​ຜ່ານ​ມາ​",
+    "selectedCount": "ເລືອກ",
+    "selectedCount_one": "ເລືອກ",
+    "selectedCount_other": "ເລືອກ",
+    "imageDescriptionInput": "ການປ້ອນລາຍລະອຽດຮູບພາບ",
+    "imageDescriptionHint": "ໃສ່ລາຍລະອຽດຂອງຮູບພາບທີ່ທ່ານຕ້ອງການສ້າງ",
+    "openModelSettings": "ເປີດການຕັ້ງຄ່າຕົວແບບ",
+    "modelSettingsHint": "ແຕະເພື່ອປ່ຽນຮູບແບບ ແລະການຕັ້ງຄ່າ",
+    "openPhotoGallery": "ເປີດຄັງຮູບພາບ",
+    "clearInput": "ລຶບການປ້ອນຂໍ້ມູນ",
+    "generatedImage": "ຮູບພາບທີ່ສ້າງຂຶ້ນ",
+    "autoSelectedModel": "{{model}}ເລືອກອັດຕະໂນມັດສຳລັບໂໝດ {{mode}}",
+    "deleteSelectedConfirmTitle": "ລຶບຮູບ",
+    "deleteSelectedConfirmMessage": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບຮູບພາບ? ຄຳສັ່ງນີ້ບໍ່ສາມາດຍົກເລີກໄດ້."
+  },
+  "imageStudio": {
+    "generateImage": "ສ້າງຮູບພາບ",
+    "generatingImage": "ກຳລັງສ້າງຮູບ",
+    "generateImageHint": "ແຕະເພື່ອສ້າງຮູບພາບໂດຍອີງໃສ່ຄໍາອະທິບາຍຂອງທ່ານ",
+    "imageDescriptionInput": "ການປ້ອນລາຍລະອຽດຮູບພາບ",
+    "imageDescriptionHint": "ໃສ່ລາຍລະອຽດຂອງຮູບພາບທີ່ທ່ານຕ້ອງການສ້າງ",
+    "openModelSettings": "ເປີດການຕັ້ງຄ່າຕົວແບບ",
+    "modelSettingsHint": "ແຕະເພື່ອປ່ຽນຮູບແບບ ແລະການຕັ້ງຄ່າ",
+    "openPhotoGallery": "ເປີດຄັງຮູບພາບ",
+    "clearInput": "ລຶບການປ້ອນຂໍ້ມູນ",
+    "generatedImage": "ຮູບພາບທີ່ສ້າງຂຶ້ນ"
+  },
+  "assistants": {
+    "title": "ຜູ້ຊ່ວຍ",
+    "defaultTitle": "ຜູ້ຊ່ວຍ",
+    "errorTitle": "ມີບາງຢ່າງຜິດພາດ",
+    "errorMessage": "ບໍ່ສາມາດເລີ່ມຜູ້ຊ່ວຍນີ້ໄດ້.",
+    "noAssistants": "ບໍ່ພົບຜູ້ຊ່ວຍໃນໝວດນີ້.",
+    "selectAssistantHint": "ເປີດຕົວເລືອກຜູ້ຊ່ວຍ",
+    "subtitle": "ຜູ້ຊ່ຽວຊານດ້ານ AI ທີ່ໄດ້ຮັບການຄັດເລືອກພ້ອມແລ້ວສໍາລັບການຂຽນລະຫັດ, ການຂຽນ, ການວິເຄາະ, ການວາງແຜນ, ແລະອື່ນໆ.",
+    "searchPlaceholder": "ຜູ້ຊ່ວຍຄົ້ນຫາ...",
+    "useAssistant": "ໃຊ້ຜູ້ຊ່ວຍ",
+    "selectAssistant": "ເລືອກຜູ້ຊ່ວຍ",
+    "description": "ລາຍລະອຽດ",
+    "systemPrompt": "ການເຕືອນລະບົບ",
+    "chooseModel": "ເລືອກຕົວແບບ",
+    "categoryAll": "ທັງໝົດ",
+    "categories": {
+      "everyday": "ທຸກໆມື້",
+      "life": "ຊີວິດ",
+      "health": "ສຸຂະພາບ",
+      "schoolWork": "ໂຮງຮຽນ & ເຮັດວຽກ",
+      "coding": "ການຂຽນລະຫັດ",
+      "creative": "ສ້າງສັນ",
+      "general": "ທົ່ວໄປ"
+    },
+    "presets": {
+      "default": {
+        "name": "ຜູ້ຊ່ວຍເລີ່ມຕົ້ນ",
+        "description": "ການຊ່ວຍເຫຼືອທີ່ສົມດູນສໍາລັບສິ່ງປະຈໍາວັນ."
+      },
+      "quick": {
+        "name": "ຄໍາຕອບດ່ວນ",
+        "description": "ສັ້ນ, ຄໍາຕອບໂດຍກົງ."
+      },
+      "planner": {
+        "name": "ຜູ້ວາງແຜນປະຈໍາວັນ",
+        "description": "ວາງແຜນມື້ ແລະວຽກປະຈຳຂອງເຈົ້າ."
+      },
+      "recipes": {
+        "name": "ອາຫານ & ສູດ",
+        "description": "ສິ່ງທີ່ຈະແຕ່ງກິນ, ກັບສິ່ງທີ່ທ່ານມີ."
+      },
+      "fitness": {
+        "name": "ຄູຝຶກອອກກຳລັງກາຍ",
+        "description": "ນິໄສນ້ອຍໆ & ການອອກກຳລັງກາຍຢູ່ເຮືອນ."
+      },
+      "money": {
+        "name": "ເງິນ Buddy",
+        "description": "ງົບປະມານງ່າຍດາຍ & ຄໍາແນະນໍາການໃຊ້ຈ່າຍ."
+      },
+      "study": {
+        "name": "ຜູ້ຊ່ວຍການສຶກສາ",
+        "description": "ອະທິບາຍງ່າຍໆ. ສອບຖາມຂ້ອຍ."
+      },
+      "email": {
+        "name": "ອີເມວ & ຊີວະປະຫວັດ",
+        "description": "ຂຽນອີເມວແລະ CV ທີ່ຊັດເຈນ."
+      },
+      "translator": {
+        "name": "ນັກແປ",
+        "description": "ແປ + ສອນປະໂຫຍກ."
+      },
+      "travel": {
+        "name": "ການເດີນທາງ Buddy",
+        "description": "ແຜນ​ການ​ງ່າຍ​ດາຍ​ແລະ​ບັນ​ຊີ​ລາຍ​ການ​ຫຸ້ມ​ຫໍ່​."
+      },
+      "tech": {
+        "name": "ສະຫນັບສະຫນູນເຕັກໂນໂລຢີ (ງ່າຍດາຍ)",
+        "description": "ໂທລະສັບ, ແອັບ, Wi-Fi ພື້ນຖານ."
+      },
+      "summarizer": {
+        "name": "TL;DR ສະຫຼຸບ",
+        "description": "ລູກປືນສັ້ນ + ແຖວໜຶ່ງ TL;DR."
+      },
+      "gift": {
+        "name": "ຊອກຫາຂອງຂວັນ",
+        "description": "ແນວຄວາມຄິດຕາມງົບປະມານ & ຄວາມສົນໃຈ."
+      },
+      "party": {
+        "name": "ຕົວວາງແຜນເຫດການ (Lite)",
+        "description": "ວາງແຜນງານລ້ຽງນ້ອຍໆໄວ."
+      },
+      "social": {
+        "name": "ຜູ້ສ້າງໄປສະນີສັງຄົມ",
+        "description": "ສະບັບຮ່າງທີ່ມີທາງເລືອກ."
+      },
+      "interview": {
+        "name": "ສຳພາດຄູຝຶກ",
+        "description": "ປະຕິບັດຄໍາຕອບ (STAR)."
+      },
+      "homefix": {
+        "name": "ຄູ່ມືສ້ອມແປງເຮືອນ",
+        "description": "ການ​ແກ້​ໄຂ​ບັນ​ຫາ DIY ງ່າຍ​ດາຍ​."
+      },
+      "pet": {
+        "name": "ພີ່ລ້ຽງສັດ",
+        "description": "ການໃຫ້ອາຫານ, ການຍ່າງ, ການຝຶກອົບຮົມຂັ້ນພື້ນຖານ."
+      },
+      "mindful": {
+        "name": "ນາທີສະຕິ",
+        "description": "ພັກຜ່ອນ 1-3 ນາທີ."
+      },
+      "polite": {
+        "name": "ນັກຂຽນທີ່ສຸພາບ",
+        "description": "ຂຽນ​ບົດ​ເລື່ອງ​ແລະ​ຕອບ​ຄືນ​ໄດ້​ຢ່າງ​ດີ​."
+      }
+    }
+  },
+  "history": {
+    "title": "ປະຫວັດສາດ",
+    "searchPlaceholder": "ຊອກຫາການສົນທະນາ...",
+    "newChat": "ສົນທະນາໃໝ່",
+    "new": "+ ໃໝ່",
+    "search": "ຊອກຫາ",
+    "clearSearch": "ລຶບການຊອກຫາ",
+    "noChatsYet": "ບໍ່ມີການສົນທະນາເທື່ອ",
+    "noResults": "ບໍ່ມີການສົນທະນາເທື່ອ",
+    "startFirstConversation": "ເລີ່ມການສົນທະນາທໍາອິດຂອງທ່ານ.",
+    "startChat": "ເລີ່ມການສົນທະນາ",
+    "startNewChat": "ເລີ່ມການສົນທະນາໃໝ່",
+    "errorLoadingHistory": "ເກີດຄວາມຜິດພາດໃນການໂຫຼດປະຫວັດ",
+    "loading": "ກຳລັງໂຫຼດປະຫວັດ...",
+    "renameChat": "ປ່ຽນຊື່ການສົນທະນາ",
+    "enterNewTitle": "ໃສ່ຊື່ໃໝ່",
+    "deleteChat": "ລຶບການສົນທະນາບໍ?",
+    "deleteChatMessage": "\"{{title}}\" ຈະຖືກລຶບອອກ.",
+    "rename": "ປ່ຽນຊື່",
+    "unpin": "ຖອນປັກໝຸດ",
+    "pin": "ປັກໝຸດ",
+    "untitled": "ບໍ່ມີຊື່"
+  },
+  "settings": {
+    "title": "ການຕັ້ງຄ່າ",
+    "model": "ຕົວແບບ",
+    "searchPlaceholder": "ຊອກຫາແບບຈໍາລອງ...",
+    "temperatureForCurrentModel": "ອຸນຫະພູມສໍາລັບຮູບແບບປະຈຸບັນ",
+    "customFor": "ກຳນົດເອງສຳລັບ {{model}}",
+    "usingDefault": "ໃຊ້ຄ່າເລີ່ມຕົ້ນ {{temperature}}",
+    "resetToDefault": "ຣີເຊັດເປັນຄ່າເລີ່ມຕົ້ນ",
+    "defaultTemperature": "ອຸນຫະພູມເລີ່ມຕົ້ນ (ກັບຄືນ)",
+    "usedByModelsWithoutOverride": "ໃຊ້ໂດຍຕົວແບບທີ່ບໍ່ມີການລົບລ້າງແບບກຳນົດເອງ",
+    "dangerZone": "ເຂດອັນຕະລາຍ",
+    "clearAllChatsAndSettings": "ລຶບລ້າງການສົນທະນາ ແລະການຕັ້ງຄ່າທັງໝົດ",
+    "about": "ກ່ຽວກັບ",
+    "version": "ລຸ້ນ {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
+    "hero": {
+      "label": "ຂໍ້ສະເໜີພິເສດ",
+      "title": "ການເຂົ້າເຖິງບໍ່ຈໍາກັດ\n& ຄຸນ​ນະ​ສົມ​ບັດ Pro",
+      "upgrade": "ຍົກລະດັບ",
+      "manage": "ຈັດການແຜນການ"
+    },
+    "sections": {
+      "premium": "ແຜນພຣີມຽມ",
+      "data": "ຂໍ້ມູນຜູ້ໃຊ້",
+      "support": "ສະຫນັບສະຫນູນ & ທາງດ້ານກົດຫມາຍ"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "ຮັບ Premium",
+        "subtitle": "ປົດລັອກເຄື່ອງມືການສ້າງບໍ່ຈໍາກັດ"
+      },
+      "premiumActive": {
+        "title": "ເປີດໃຊ້ພຣີມຽມແລ້ວ",
+        "subtitle": "ຂອບໃຈທີ່ອຸດໜູນ Cloud AI"
+      },
+      "restore": {
+        "title": "ຟື້ນຟູການຊື້",
+        "subtitle": "ໃຊ້ຖ້າທ່ານປ່ຽນອຸປະກອນ"
+      },
+      "history": {
+        "title": "ຈັດການປະຫວັດການສົນທະນາ",
+        "subtitle": "ເບິ່ງແລະລຶບເຊດຊັນທີ່ຜ່ານມາຂອງທ່ານ"
+      },
+      "reset": {
+        "title": "ຣີເຊັດການສົນທະນາ ແລະການຕັ້ງຄ່າ",
+        "subtitle": "ລຶບລ້າງຂໍ້ມູນທີ່ເກັບໄວ້ທັງໝົດໃນອຸປະກອນນີ້"
+      },
+      "rate": {
+        "title": "ໃຫ້ຄະແນນພວກເຮົາ",
+        "error": "ບໍ່ສາມາດເປີດໜ້າຮ້ານໄດ້."
+      },
+      "support": {
+        "title": "ສະຫນັບສະຫນູນ",
+        "subtitle": "ຕິດຕໍ່ພວກເຮົາອອນໄລນ໌",
+        "error": "ບໍ່ສາມາດເປີດໜ້າຕິດຕໍ່ໄດ້."
+      },
+      "privacy": {
+        "title": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
+        "error": "ບໍ່ສາມາດເປີດນະໂຍບາຍຄວາມເປັນສ່ວນຕົວໄດ້."
+      },
+      "terms": {
+        "title": "ເງື່ອນໄຂການນໍາໃຊ້",
+        "error": "ບໍ່ສາມາດເປີດເງື່ອນໄຂການໃຊ້ງານໄດ້."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "ບໍ່ສາມາດໃຊ້ໄດ້",
+      "linkUnavailableMessage": "ບໍ່ສາມາດເປີດລິ້ງນີ້ໄດ້ໃນຕອນນີ້.",
+      "restoreSuccessTitle": "ຟື້ນຟູ",
+      "restoreSuccessMessage": "ການ​ຊື້​ຂອງ​ທ່ານ​ໄດ້​ຮັບ​ການ​ຟື້ນ​ຟູ​.",
+      "restoreEmptyTitle": "ບໍ່ພົບການຊື້",
+      "restoreEmptyMessage": "ພວກເຮົາບໍ່ສາມາດຊອກຫາການຊື້ທີ່ເຄື່ອນໄຫວເພື່ອກູ້ຄືນບັນຊີນີ້.",
+      "restoreErrorTitle": "ກູ້ຄືນບໍ່ສຳເລັດ",
+      "restoreErrorMessage": "ບໍ່ສາມາດກູ້ການຊື້ຄືນໄດ້ໃນຕອນນີ້.",
+      "resetConfirmTitle": "ຣີເຊັດຂໍ້ມູນແອັບບໍ?",
+      "resetConfirmMessage": "ນີ້ຈະເປັນການລຶບການສົນທະນາ ແລະການຕັ້ງຄ່າທ້ອງຖິ່ນທັງໝົດອອກ.",
+      "resetConfirmCancel": "ຍົກເລີກ",
+      "resetConfirmCta": "ຣີເຊັດ"
+    }
+  },
+  "createImage": {
+    "headerTitle": "ສ້າງ",
+    "chooseStyle": "ເລືອກຮູບແບບ",
+    "aspectRatio": "ອັດຕາສ່ວນ",
+    "starterPrompts": {
+      "title": "ການເຕືອນເລີ່ມຕົ້ນ",
+      "items": [
+        "studio headshot",
+        "ຫ້ອງຮັບແຂກທີ່ທັນສະໄຫມ",
+        "ຫາດ​ຊາຍ​ເຂດ​ຮ້ອນ​ໃນ sunset​"
+      ]
+    },
+    "promptPlaceholder": "ພິມສິ່ງທີ່ທ່ານຕ້ອງການເບິ່ງ...",
+    "promptHint": "ຕົວຢ່າງ: 'Golden retriever in studio lighting'",
+    "clearText": "ລ້າງຂໍ້ຄວາມ",
+    "generate": "ສ້າງ",
+    "generating": "ກຳລັງສ້າງ..."
+  },
+  "editImage": {
+    "headerTitle": "ແກ້ໄຂ",
+    "chooseStyle": "ເລືອກຮູບແບບ",
+    "aspectRatio": "ອັດຕາສ່ວນ",
+    "starterPrompts": {
+      "title": "ການເຕືອນເລີ່ມຕົ້ນ",
+      "items": [
+        "ແກ້ໄຂແສງ",
+        "ລຶບພື້ນຫຼັງ",
+        "ປັບຮູບຄົນແບບອ່ອນໆ"
+      ]
+    },
+    "promptPlaceholder": "ອະທິບາຍການແກ້ໄຂ (ທາງເລືອກ)",
+    "clearText": "ລ້າງຂໍ້ຄວາມ",
+    "generate": "ສ້າງ",
+    "generating": "ກຳລັງນຳໃຊ້...",
+    "upload": {
+      "choose": "ເລືອກຮູບ",
+      "change": "ປ່ຽນແປງ",
+      "remove": "ເອົາອອກ"
+    },
+    "imageUnavailable": {
+      "title": "ບໍ່ມີຮູບພາບ",
+      "message": "ບໍ່ສາມາດເຂົ້າເຖິງຮູບທີ່ເລືອກໄດ້. ກະລຸນາເລືອກມັນຄືນໃໝ່ແລ້ວລອງອີກຄັ້ງ."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "ສັດ"
+      },
+      "cartoon": {
+        "name": "ກາຕູນ"
+      },
+      "photoreal": {
+        "name": "ຮູບພາບ"
+      },
+      "sketch": {
+        "name": "ຮູບແຕ້ມ"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "ຮູບປະກອບ 3 ມິຕິ"
+      },
+      "dark_fantasy": {
+        "name": "Dark Fantasy"
+      },
+      "vintage_film": {
+        "name": "ຮູບເງົາ Vintage"
+      },
+      "pastel": {
+        "name": "ຄວາມງາມ Pastel"
+      },
+      "neon_glow": {
+        "name": "ແສງນີອອນ"
+      },
+      "epic_landscape": {
+        "name": "ພູມສັນຖານ Epic"
+      }
+    },
+    "aspectRatios": {
+      "square": "ຮຽບຮ້ອຍ",
+      "landscape": "ພູມສັນຖານ",
+      "portrait": "ຮູບຄົນ"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "ກຳນົດເອງ"
+    },
+    "notEnoughCoinsTitle": "ຫຼຽນບໍ່ພຽງພໍ",
+    "notEnoughCoinsMessage": "ຍອດຄົງເຫຼືອປັດຈຸບັນຂອງເຈົ້າຕໍ່າເກີນໄປສຳລັບຮູບນີ້.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "ຮູບແບບທີ່ໄວທີ່ສຸດ",
+      "runwareFluxKrea": "ຜົນໄດ້ຮັບທີ່ສ້າງສັນ, ມີສະໄຕລ໌",
+      "runwareQwenImage": "ຄວາມສົມດຸນ, ຜົນໄດ້ຮັບທີ່ມີຄຸນນະພາບສູງ",
+      "google4": "ຮູບແບບຮູບພາບ AI ທີ່ດີທີ່ສຸດ",
+      "klingImageO1": "ການແກ້ໄຂຮູບພາບທີ່ມີການຄວບຄຸມສູງ",
+      "fluxKontent": "Flux Kontent ໄດ້ຮັບການປັບປຸງແກ້ໄຂ",
+      "runwareProvider": "ຄຸນະພາບສົມດຸນກັບການແຜ່ກະຈາຍທີ່ເຊື່ອຖືໄດ້.",
+      "airProvider": "ກ້ວຍນາໂນເພີ່ມສຽງທີ່ມ່ວນຊື່ນ, ມີຊີວິດຊີວາ.",
+      "googleProvider": "Google ປັບແຕ່ງລາຍລະອຽດທີ່ຫຼູຫຼາ.",
+      "klingaiProvider": "KlingAI ປັບແຕ່ງການແກ້ໄຂທີ່ຄວບຄຸມ.",
+      "anthropicProvider": "Claude ທໍ່ສໍາລັບອາລົມ nuanced.",
+      "default": "ແຕະເພື່ອສຳຫຼວດເຄື່ອງຈັກທີ່ມີຢູ່."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "ແບບທີ່ທ່ານເລືອກ",
+    "sheetTitle": "ການສ້າງວິໄສທັດຂອງທ່ານ",
+    "sheetSubtitle": "ຊິບກາເຟເຊີບເວີສັ້ນໆ ໃນຂະນະທີ່ພວກເຮົາຜະສົມ {{style}} ເຂົ້າໄປໃນການເຕືອນ.",
+    "phases": {
+      "blend": "ຜະສົມໃນ {{style}}",
+      "paint": "ການທາສີ scene ໄດ້",
+      "finish": "ເພີ່ມຂັດສຸດທ້າຍ"
+    },
+    "actions": {
+      "cancel": "ຍົກເລີກ",
+      "retry": "ລອງໃໝ່",
+      "close": "ປິດ"
+    },
+    "errors": {
+      "restrictedTitle": "ເນື້ອຫາຖືກຈໍາກັດ",
+      "genericTitle": "ການຜະລິດລົ້ມເຫລວ",
+      "genericMessage": "ບໍ່ສາມາດສ້າງຮູບພາບໄດ້."
+    },
+    "alerts": {
+      "saveFailedTitle": "ບໍ່ສາມາດບັນທຶກໄດ້",
+      "shareFailedTitle": "ບໍ່ສາມາດແບ່ງປັນໄດ້",
+      "tryAgain": "ກະລຸນາລອງອີກຄັ້ງ.",
+      "savedTitle": "ບັນທຶກແລ້ວ",
+      "savedMessage": "ຮູບພາບທີ່ບັນທຶກໄວ້ໃນຄັງຮູບພາບຂອງທ່ານ.",
+      "permissionTitle": "ຕ້ອງການການອະນຸຍາດ",
+      "permissionMessage": "ອະນຸຍາດໃຫ້ເຂົ້າເຖິງບ່ອນເກັບຂໍ້ມູນເພື່ອບັນທຶກຮູບພາບໃສ່ຫ້ອງສະໝຸດຂອງທ່ານ."
+    },
+    "result": {
+      "complete": "ທັງໝົດແລ້ວ"
+    },
+    "accessibility": {
+      "close": "ປິດ"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "ລຶບ",
+      "edit": "ແກ້ໄຂ",
+      "save": "ບັນທຶກ",
+      "share": "ແບ່ງປັນ"
+    },
+    "alerts": {
+      "savedTitle": "ບັນທຶກແລ້ວ",
+      "savedMessage": "ຮູບພາບທີ່ບັນທຶກໄວ້ໃນຄັງຮູບພາບຂອງທ່ານ.",
+      "permissionTitle": "ຕ້ອງການການອະນຸຍາດ",
+      "permissionMessage": "ອະນຸຍາດໃຫ້ເຂົ້າເຖິງບ່ອນເກັບຂໍ້ມູນເພື່ອບັນທຶກຮູບພາບໃສ່ຫ້ອງສະໝຸດຂອງທ່ານ.",
+      "saveFailedTitle": "ບໍ່ສາມາດບັນທຶກໄດ້",
+      "tryAgain": "ກະລຸນາລອງອີກຄັ້ງ."
+    },
+    "accessibility": {
+      "close": "ປິດ",
+      "delete": "ລຶບຮູບ",
+      "edit": "ແກ້ໄຂຮູບພາບ",
+      "save": "ບັນທຶກຮູບພາບ",
+      "share": "ແບ່ງປັນຮູບພາບ"
+    }
+  },
+  "reportContent": {
+    "title": "ລາຍງານເນື້ອຫາ AI",
+    "subtitle": "ບອກພວກເຮົາວ່າມີຫຍັງຜິດພາດກັບເນື້ອຫາທີ່ສ້າງຂຶ້ນນີ້.",
+    "privateDisclosure": "ການຍື່ນສະເຫນີຈະສົ່ງເນື້ອໃນລາຍງານນີ້ສໍາລັບການກວດສອບຄວາມປອດໄພ.",
+    "accessibilityLabel": "ລາຍງານເນື້ອຫາ AI",
+    "reasons": {
+      "sexual": "ເນື້ອຫາທາງເພດ ຫຼືໂປ້ເປືອຍ",
+      "violence_self_harm": "ຄວາມຮຸນແຮງ ຫຼືການທຳຮ້າຍຕົນເອງ",
+      "hate_harassment": "ຄວາມກຽດຊັງ ຫຼືການຂົ່ມເຫັງ",
+      "child_safety": "ຄວາມເປັນຫ່ວງຄວາມປອດໄພຂອງເດັກ",
+      "scam_deceptive": "ເນື້ອຫາຫຼອກລວງ ຫຼືຫຼອກລວງ",
+      "other": "ອື່ນໆ"
+    },
+    "errors": {
+      "reasonRequired": "ກະລຸນາເລືອກເຫດຜົນກ່ອນທີ່ຈະສົ່ງ.",
+      "submit": "ບໍ່ສາມາດສົ່ງລາຍງານໄດ້. ກະລຸນາລອງອີກຄັ້ງ."
+    },
+    "success": {
+      "title": "ຂອບໃຈ. ບົດລາຍງານຂອງທ່ານໄດ້ຖືກສົ່ງ.",
+      "subtitle": "ພວກເຮົາຈະໃຊ້ບົດລາຍງານເພື່ອປັບປຸງຄວາມປອດໄພຂອງເນື້ອຫາ."
+    },
+    "actions": {
+      "report": "ລາຍງານ",
+      "submit": "ສົ່ງບົດລາຍງານ",
+      "done": "ສຳເລັດແລ້ວ"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "ເປີດເມນູ",
+      "selectImages": "ເລືອກຮູບພາບ",
+      "exitSelection": "ອອກຈາກການເລືອກ",
+      "deleteSelected": "ລຶບຮູບທີ່ເລືອກ",
+      "selectToDelete": "ເລືອກຮູບທີ່ຈະລຶບ"
+    },
+    "createCard": {
+      "title": "ສ້າງຈາກຂໍ້ຄວາມ",
+      "subtitle": "ພິມຄຳອະທິບາຍ",
+      "cta": "ອະທິບາຍ ແລະສ້າງ"
+    },
+    "editCard": {
+      "title": "ຕົວແກ້ໄຂຮູບພາບ AI",
+      "subtitle": "ຫັນປ່ຽນ ແລະປັບປຸງດ້ວຍ AI",
+      "cta": "ແກ້ໄຂດ້ວຍ AI"
+    },
+    "gallery": {
+      "title": "ຄັງຮູບ",
+      "empty": "ບໍ່ມີຮູບພາບເທື່ອ",
+      "selection": {
+        "enter": "ເລືອກຮູບພາບ",
+        "exit": "ອອກຈາກການເລືອກ",
+        "deleteSelected": "ລຶບຮູບທີ່ເລືອກ",
+        "selectForDelete": "ເລືອກຮູບທີ່ຈະລຶບ"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "ພົບກັນ",
+      "titleHighlight": "Image Studio",
+      "subtitle": "ສ້າງ ແລະ ແກ້ໄຂຮູບພາບດ້ວຍ AI—ພາຍໃນ Cloud AI."
+    },
+    "relaxView": {
+      "title": "ພົບກັບ AI ຂອງທ່ານ",
+      "titleHighlight": "ຜູ້ຊ່ວຍ",
+      "subtitle": "ຜູ້ຊ່ຽວຊານ AI ພິເສດພ້ອມທີ່ຈະຊ່ວຍຄວາມຕ້ອງການປະຈໍາວັນຂອງທ່ານ",
+      "cards": {
+        "fitness": {
+          "title": "ຄູຝຶກອອກກຳລັງກາຍ",
+          "text": "ນິໄສນ້ອຍໆ & ການອອກກຳລັງກາຍຢູ່ເຮືອນ."
+        },
+        "recipes": {
+          "title": "ອາຫານ & ສູດ",
+          "text": "ສິ່ງທີ່ຈະແຕ່ງກິນ, ກັບສິ່ງທີ່ທ່ານມີ."
+        },
+        "travel": {
+          "title": "ການເດີນທາງ Buddy",
+          "text": "ແຜນ​ການ​ງ່າຍ​ດາຍ​ແລະ​ບັນ​ຊີ​ລາຍ​ການ​ຫຸ້ມ​ຫໍ່​."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ວິທີແກ້ໄຂ AI ລະດັບວິສາຫະກິດ",
+      "description": "ສ້າງຄວາມເຂັ້ມແຂງໃຫ້ກັບທຸລະກິດຂອງທ່ານດ້ວຍເທັກໂນໂລຍີປັນຍາປະດິດທີ່ທັນສະໄໝທີ່ອອກແບບມາສຳລັບຜູ້ຊ່ຽວຊານວິສາຫະກິດ ແລະທີມງານ.",
+      "stats": "ເຊື່ອຖືໄດ້ໂດຍຜູ້ໃຊ້ 500k+",
+      "rating": "4.9/5",
+      "button": "ເລີ່ມຕົ້ນ"
+    },
+    "buttons": {
+      "continue": "ສືບຕໍ່",
+      "start": "ໃຫ້ເລີ່ມຕົ້ນ"
+    }
+  },
+  "coinStore": {
+    "title": "ໄດ້ຮັບສິນເຊື່ອ",
+    "loading": "ກຳລັງໂຫຼດບ່ອນເກັບເງິນ…",
+    "balanceLabel": "ຍອດເງິນປະຈຸບັນຂອງທ່ານແມ່ນ",
+    "balanceValue": "{{amount}}ສິນເຊື່ອ",
+    "history": {
+      "link": "ປະຫວັດທຸລະກໍາ",
+      "alertTitle": "ປະຫວັດສາດ",
+      "alertBody": "ປະຫວັດທຸລະກໍາຈະມາໃນໄວໆນີ້."
+    },
+    "noPacks": "ບໍ່ມີຊອງຫຼຽນທີ່ມີຢູ່. ກວດເບິ່ງ ID ການສະເຫນີຂາຍ RevenueCat ຂອງທ່ານ.",
+    "badges": {
+      "basic": "ຊຸດພື້ນຖານ",
+      "popular": "ນິຍົມທີ່ສຸດ",
+      "value": "ມູນຄ່າທີ່ດີທີ່ສຸດ"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}}ສິນເຊື່ອ",
+      "tokensLabel": "{{credits}}ສິນເຊື່ອ",
+      "defaultName": "ຊຸດ {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "ໄປ Premium",
+      "subtitle": "ການເຂົ້າເຖິງບໍ່ຈໍາກັດ & ຄຸນສົມບັດ",
+      "cta": "ຍົກລະດັບ"
+    },
+    "termsText": "ໂດຍການເຮັດການຊື້, ທ່ານຕົກລົງເຫັນດີກັບພວກເຮົາ",
+    "termsLink": "ເງື່ອນໄຂການໃຫ້ບໍລິການ",
+    "alerts": {
+      "initErrorTitle": "ຄວາມ​ຜິດ​ພາດ init",
+      "genericMessage": "ມີບາງຢ່າງຜິດພາດ.",
+      "successTitle": "ສຳເລັດ",
+      "successMessage": "ສິນເຊື່ອຈະປາກົດໃນໄວໆນີ້.",
+      "purchaseFailedTitle": "ການຊື້ລົ້ມເຫລວ",
+      "unknownError": "ຄວາມຜິດພາດທີ່ບໍ່ຮູ້ຈັກ"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "ຕ້ອງການ Premium",
+    "upgrade": "ຍົກລະດັບ",
+    "modelRequiredMessage": "ຮູບແບບນີ້ຕ້ອງການ Premium. ອັບເກຣດເພື່ອເຂົ້າເຖິງ GPT-5, Grok 4, Claude, ແລະແບບພິເສດກວ່າ.",
+    "assistantsRequiredMessage": "ຜູ້ຊ່ວຍຕ້ອງການ Premium. ອັບເກຣດເພື່ອເຂົ້າເຖິງຜູ້ຊ່ວຍ AI ພິເສດສຳລັບການອອກກຳລັງກາຍ, ການເຂົ້າລະຫັດ, ຂຽນ ແລະອື່ນໆອີກ.",
+    "assistantsTitle": "ຕ້ອງການ Premium",
+    "assistantsMessage": "ຜູ້ຊ່ວຍຕ້ອງການ Premium. ອັບເກຣດເພື່ອເຂົ້າເຖິງຜູ້ຊ່ວຍ AI ພິເສດສຳລັບການອອກກຳລັງກາຍ, ການເຂົ້າລະຫັດ, ຂຽນ ແລະອື່ນໆອີກ."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "ປິດ paywall",
+    "unavailableTitle": "ບໍ່ສາມາດສັ່ງຊື້ໄດ້",
+    "unavailableMessage": "ການຮຽກເກັບເງິນ Android ບໍ່ໄດ້ຖືກຕັ້ງຄ່າເທື່ອ.",
+    "restoreEmptyTitle": "ບໍ່ພົບການຊື້",
+    "restoreEmptyMessage": "ພວກເຮົາບໍ່ສາມາດຊອກຫາການຊື້ທີ່ເຄື່ອນໄຫວເພື່ອກູ້ຄືນບັນຊີນີ້.",
+    "restoreFailedTitle": "ກູ້ຄືນບໍ່ສຳເລັດ",
+    "restoreFailedMessage": "ບໍ່ສາມາດກູ້ການຊື້ຄືນໄດ້ໃນຕອນນີ້.",
+    "productsUnavailableTitle": "ບໍ່ມີແຜນການ",
+    "productsUnavailableMessage": "ບໍ່ມີຜະລິດຕະພັນການສະໝັກໃຊ້ Android ທີ່ສາມາດໃຊ້ໄດ້ໃນຕອນນີ້.",
+    "purchaseFailedTitle": "ການຊື້ລົ້ມເຫລວ",
+    "purchaseFailedMessage": "ບໍ່ສາມາດສຳເລັດການຊື້ນີ້ໄດ້ໃນຕອນນີ້.",
+    "restore": "ຟື້ນຟູ",
+    "restoreRestoring": "ກຳລັງຟື້ນຟູ...",
+    "features": {
+      "create": "ສ້າງຮູບພາບແລະວິດີໂອ",
+      "search": "ຄົ້ນຫາເວັບດ້ວຍ AI",
+      "talk": "ເວົ້າແບບທໍາມະຊາດກັບ AI",
+      "imageStudio": "ຮັບ Image Studio {{credits}} ເຄຣດິດ {{period}}",
+      "period": {
+        "weekly": "ປະຈໍາອາທິດ",
+        "monthly": "ປະຈໍາເດືອນ",
+        "yearly": "ທຸກໆປີ"
+      }
+    },
+    "freeTrial": {
+      "title": "ການທົດລອງໃຊ້ຟຣີ",
+      "subtitle": "ການທົດລອງໃຊ້ຟຣີ 3 ມື້"
+    },
+    "badge": {
+      "bestOffer": "ຂໍ້ສະເໜີທີ່ດີທີ່ສຸດ"
+    },
+    "plans": {
+      "yearly": {
+        "title": "ປະຈຳປີ",
+        "only": "{{price}}ເທົ່ານັ້ນ",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
+      },
+      "monthly": {
+        "title": "ປະຈໍາເດືອນ",
+        "subtitle": "ຍົກເລີກໄດ້ທຸກເວລາ",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "ອາທິດ",
+        "subtitle": "ຍົກເລີກໄດ້ທຸກເວລາ",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 ມື້ຟຣີ, ຈາກນັ້ນ"
+      }
+    },
+    "frequency": {
+      "perWeek": "ຕໍ່ອາທິດ",
+      "perMonth": "ຕໍ່ເດືອນ"
+    },
+    "cta": "ສືບຕໍ່",
+    "ctaFreeTrial": "ລອງໃຊ້ມັນຟຣີ",
+    "legal": {
+      "terms": "ເງື່ອນໄຂ",
+      "privacy": "ຄວາມເປັນສ່ວນຕົວ"
+    },
+    "premium": {
+      "headline": "AI ລະດັບພຣີມຽມທັງໝົດໃນແຜນດຽວ",
+      "subtitleLine1": "ສົນທະນາ, ລະຫັດ, ສ້າງ, ແລະວາງແຜນ",
+      "subtitleLine2": "ກັບແບບພິເສດ.",
+      "enableTrial": "ເປີດການທົດລອງໃຊ້ຟຣີ",
+      "annual": "ປະຈຳປີ",
+      "saveBadge": "ປະຢັດ 83%",
+      "year": "ປີ",
+      "week": "ອາທິດ",
+      "termsOfUse": "ເງື່ອນໄຂການນຳໃຊ້",
+      "privacyPolicy": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "ຂໍ້ຄວາມ...",
+    "createImages": "ສ້າງຮູບພາບ",
+    "generateAiArtwork": "ສ້າງວຽກສິລະປະ AI",
+    "camera": "ອັບໂຫຼດຮູບ",
+    "takeOrSelectPhotos": "ເລືອກຮູບ",
+    "search": "ຊອກຫາ",
+    "findInformation": "ຊອກຫາຂໍ້ມູນ",
+    "findRecentInfo": "ຊອກຫາຂໍ້ມູນຫຼ້າສຸດ",
+    "removeImage": "ລຶບຮູບອອກ",
+    "messageInput": "ການ​ປ້ອນ​ຂໍ້​ຄວາມ​",
+    "clearInput": "ລຶບການປ້ອນຂໍ້ມູນ",
+    "quickActionsLabel": "ການປະຕິບັດໄວ",
+    "hideQuickActions": "ເຊື່ອງການກະທຳໄວ",
+    "showQuickActions": "ສະແດງການດໍາເນີນການດ່ວນ",
+    "startVoiceInput": "ເລີ່ມການປ້ອນຂໍ້ມູນດ້ວຍສຽງ",
+    "sendMessage": "ສົ່ງຂໍ້ຄວາມ",
+    "offline": "ອອບໄລນ໌",
+    "stop": "ຢຸດ",
+    "streaming": "ການຖ່າຍທອດ...",
+    "closeRecorder": "ປິດເຄື່ອງບັນທຶກ",
+    "insertTranscript": "ສົ່ງ",
+    "scrollToLatest": "ເລື່ອນໄປຫາຂໍ້ຄວາມຫຼ້າສຸດ",
+    "copyMessage": "ສຳເນົາຂໍ້ຄວາມ",
+    "copyMessageHint": "ສຳເນົາຂໍ້ຄວາມນີ້ໃສ່ຄລິບບອດ",
+    "shareMessage": "ແບ່ງປັນຂໍ້ຄວາມ",
+    "shareMessageHint": "ແບ່ງປັນຂໍ້ຄວາມນີ້",
+    "regenerateResponse": "ຟື້ນຟູການຕອບໂຕ້",
+    "regenerateResponseHint": "ສ້າງຄໍາຕອບໃຫມ່",
+    "copyCode": "ສຳເນົາລະຫັດ",
+    "copied": "ສຳເນົາແລ້ວ",
+    "image": "ຮູບພາບ",
+    "loading": "ກຳລັງໂຫລດ...",
+    "loadingChat": "ກຳລັງໂຫຼດການສົນທະນາ...",
+    "offlineBanner": "ທ່ານອອບລາຍຢູ່. ຂໍ້ຄວາມບໍ່ສາມາດສົ່ງໄດ້.",
+    "offlineError": "ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດ. ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງເຈົ້າແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
+    "imagePickerErrorTitle": "ການເລືອກຮູບພາບຜິດພາດ",
+    "imagePickerErrorMessage": "ບໍ່ສາມາດເຂົ້າເຖິງຮູບພາບຂອງທ່ານໄດ້. ກະລຸນາລອງອີກຄັ້ງ.",
+    "messageTooLong": "ຂໍ້ຄວາມຍາວເກີນໄປ ({{length}}). ຈຳກັດແມ່ນ{{limit}}.",
+    "sendFailed": "ສົ່ງຂໍ້ຄວາມບໍ່ສຳເລັດ. ກະລຸນາລອງອີກຄັ້ງ.",
+    "modelNoImageSupport": "ຮູບແບບທີ່ເລືອກບໍ່ຮອງຮັບຮູບພາບ. ກະລຸນາເລືອກຮູບແບບອື່ນ.",
+    "voiceStartFailed": "ບໍ່ສາມາດເລີ່ມສຽງໄດ້.",
+    "voiceNoSpeechDetected": "ບໍ່ມີສຽງຖືກຮັບຮູ້. ກະລຸນາລອງອີກຄັ້ງ.",
+    "emptyTitle": "ຂ້ອຍສາມາດຊ່ວຍໄດ້ແນວໃດ?",
+    "emptySubtitle": "ເລີ່ມການສົນທະນາກັບ AI",
+    "privateTitle": "ສົນທະນາສ່ວນຕົວ",
+    "privateSubtitle": "ການສົນທະນານີ້ຈະບໍ່ປາກົດຢູ່ໃນປະຫວັດການສົນທະນາຂອງທ່ານ",
+    "startPrivateChat": "ເລີ່ມການສົນທະນາສ່ວນຕົວ",
+    "endPrivateChat": "ສິ້ນສຸດການສົນທະນາສ່ວນຕົວ",
+    "permissions": {
+      "photosTitle": "ຕ້ອງການການອະນຸຍາດຮູບພາບ",
+      "photosMessage": "ຕ້ອງມີການເຂົ້າເຖິງຮູບພາບເພື່ອເລືອກຮູບພາບ.",
+      "voiceTitle": "ຕ້ອງການສິດອະນຸຍາດສຽງ",
+      "voiceMessage": "ຕ້ອງໃຊ້ໄມໂຄຣໂຟນ ແລະສຽງເວົ້າເພື່ອໃຊ້ສຽງ."
+    },
+    "activity": {
+      "analyzingImages": "ກຳລັງວິເຄາະຮູບພາບ...",
+      "searching": "ກຳລັງຊອກຫາ...",
+      "thinking": "ຄິດ..."
+    },
+    "webSearch": {
+      "title": "ຄົ້ນຫາເວັບ",
+      "subtitle": "ຊອກຫາຂໍ້ມູນຫຼ້າສຸດ",
+      "label": "ຄົ້ນຫາເວັບ",
+      "enable": "ເປີດໃຊ້ການຊອກຫາເວັບ",
+      "disable": "ປິດການຊອກຫາເວັບ",
+      "toggleLabel": "ຊອກຫາເວັບ"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "ການອອກແບບພາບດ້ວຍຄວາມໄວ.",
+      "subtitle": "ສ້າງ, ປັບປຸງ, ແລະເຜີຍແຜ່ຊັບສິນທີ່ເປັນຕາຢູ່ໃນບ່ອນດຽວ.",
+      "cta": "ເປີດ"
+    },
+    "quickActions": {
+      "createImages": "ສ້າງຮູບພາບ",
+      "openCamera": "ເປີດກ້ອງຖ່າຍຮູບ",
+      "editImage": "ແກ້ໄຂຮູບພາບ",
+      "startVoice": "ເລີ່ມສຽງ",
+      "assistants": "ຜູ້ຊ່ວຍ"
+    },
+    "listening": "ກຳລັງຟັງ...",
+    "startRecording": "ເລີ່ມການບັນທຶກ...",
+    "assistantHeader": {
+      "unavailableTitle": "ຜູ້ຊ່ວຍບໍ່ສາມາດໃຊ້ໄດ້",
+      "unavailableDescription": "ພວກເຮົາບໍ່ສາມາດໂຫຼດຜູ້ຊ່ວຍນີ້ໄດ້. ກະລຸນາລອງອີກຄັ້ງ.",
+      "ready": "ພ້ອມ​ທີ່​ຈະ​ຊ່ວຍ​ເຫຼືອ​"
+    },
+    "actions": {
+      "copy": "ສຳເນົາ",
+      "share": "ແບ່ງປັນ",
+      "regenerate": "ຟື້ນຟູ",
+      "retryFromHere": "ລອງໃໝ່ຈາກບ່ອນນີ້",
+      "report": "ລາຍງານ",
+      "cancel": "ຍົກເລີກ"
+    },
+    "markdown": {
+      "copy": "ສຳເນົາ",
+      "copied": "ສຳເນົາແລ້ວ",
+      "table": "ຕາຕະລາງ",
+      "watchVideo": "ເບິ່ງວີດີໂອ",
+      "wikipedia": "ວິກິພີເດຍ",
+      "link": "ເຊື່ອມຕໍ່",
+      "note": "ໝາຍເຫດ",
+      "warning": "ຄຳເຕືອນ",
+      "tip": "ເຄັດລັບ"
+    },
+    "messageActionTitle": "ຂໍ້ຄວາມ",
+    "status": {
+      "sending": "ກຳລັງສົ່ງ...",
+      "failed": "ລົ້ມເຫລວ",
+      "sent": "ສົ່ງແລ້ວ"
+    },
+    "suggestions": {
+      "writeStory": "ຂຽນເລື່ອງສ້າງສັນ",
+      "writeStorySubtitle": "ກ່ຽວກັບການຜະຈົນໄພ magical",
+      "planTravel": "ວາງແຜນການເດີນທາງ",
+      "planTravelSubtitle": "ສໍາລັບການພັກຜ່ອນທີ່ຫນ້າປະຫລາດໃຈ",
+      "explainConcept": "ອະທິບາຍແນວຄວາມຄິດນີ້",
+      "explainConceptSubtitle": "ໃນຄໍາສັບທີ່ງ່າຍດາຍ",
+      "planDay": "ວາງແຜນມື້ຂອງຂ້ອຍ",
+      "planDaySubtitle": "ກັບຄໍາແນະນໍາການຜະລິດ"
+    },
+    "home": {
+      "eyebrow": "ເລືອກຫົວຂໍ້",
+      "title": "ເຈົ້າຢາກເຮັດຫຍັງ?",
+      "subtitle": "ເລືອກທິດທາງ, ຫຼັງຈາກນັ້ນເລີ່ມຕົ້ນດ້ວຍການກະຕຸ້ນເຕືອນທີ່ເຂັ້ມແຂງ.",
+      "pickPromptTitle": "ເລືອກການເຕືອນເພື່ອເລີ່ມຕົ້ນ",
+      "changeTopic": "ເລືອກຫົວຂໍ້ອື່ນ",
+      "intents": {
+        "summarize": "ສະຫຼຸບຂໍ້ຄວາມ",
+        "summarizeShort": "ສະຫຼຸບ",
+        "summarizeHint": "ບົດຄວາມ, ບັນທຶກ, ບັນທຶກສຽງ, ກະທູ້ຍາວ",
+        "plan": "ສ້າງແຜນການ",
+        "planHint": "ການເດີນທາງ, ປົກກະຕິ, ງົບປະມານ, ກໍານົດເວລາ, ການປ່ຽນແປງຊີວິດ",
+        "brainstorm": "ສະໝອງ",
+        "brainstormHint": "ແນວຄວາມຄິດ, ການສະເຫນີ, ຊື່, ເນື້ອໃນ, ໂຄງການຂ້າງຄຽງ",
+        "analyze": "ວິເຄາະຂໍ້ມູນ",
+        "analyzeHint": "ການ​ໃຊ້​ຈ່າຍ​, ຄໍາ​ຄຶດ​ຄໍາ​ເຫັນ​, metrics​, ນິ​ໄສ​, ການ​ປະ​ຕິ​ບັດ​"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "ສ້າງບົດສະຫຼຸບຂອງຜູ້ກໍ່ຕັ້ງ",
+          "founderBriefSubtitle": "ດຶງອອກຈາກຄວາມສ່ຽງຕົ້ນຕໍ, ການຕັດສິນໃຈ, ແລະຂັ້ນຕອນຕໍ່ໄປ.",
+          "classNotesTitle": "ເຮັດຄວາມສະອາດບັນທຶກການສຶກສາຂອງຂ້ອຍ",
+          "classNotesSubtitle": "ປ່ຽນບົດບັນທຶກທີ່ຫຍາບຄາຍເປັນຄູ່ມືການສຶກສາທີ່ຊັດເຈນ.",
+          "meetingHandoffTitle": "ຂຽນ​ບົດ​ສັງ​ລວມ​",
+          "meetingHandoffSubtitle": "ເປັນປະໂຫຍດຫຼັງຈາກກອງປະຊຸມ, ໂທ, ຫຼືກະທູ້ພາຍໃນຍາວ.",
+          "longArticleTitle": "ສະຫຼຸບບົດຄວາມນີ້ໄວ",
+          "longArticleSubtitle": "ຫຍໍ້ບົດຄວາມຍາວເຂົ້າໄປໃນການຖອດຖອນແຫຼມ."
+        },
+        "plan": {
+          "energyResetTitle": "ສ້າງການຣີເຊັດພະລັງງານ 14 ມື້",
+          "energyResetSubtitle": "ແຜນການທີ່ແທ້ຈິງສໍາລັບການນອນ, ອາຫານ, ການເຄື່ອນໄຫວ, ແລະຈຸດສຸມ.",
+          "mealPlanTitle": "ວາງແຜນອາຫານທີ່ຈິງຂ້ອຍຈະແຕ່ງກິນ",
+          "mealPlanSubtitle": "ປະຕິບັດໄດ້, ລາຄາບໍ່ແພງ, ແລະອີງໃສ່ສິ່ງທີ່ຂ້ອຍມີ.",
+          "cityMoveTitle": "ວາງແຜນການຍ້າຍໄປເມືອງໃໝ່",
+          "cityMoveSubtitle": "ແບ່ງມັນອອກເປັນໄລຍະເວລາ, ງົບປະມານ, ທີ່ຢູ່ອາໃສ, ແລະວຽກງານບໍລິຫານ.",
+          "tripEscapeTitle": "ວາງແຜນການຫລົບຫນີທ້າຍອາທິດທີ່ຫນ້າຈົດຈໍາ",
+          "tripEscapeSubtitle": "ບາງສິ່ງບາງຢ່າງທີ່ດີກ່ວາເສັ້ນທາງທົ່ວໄປ."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "ຊອກ​ຫາ hustle ຂ້າງ​ຕົວ​ຈິງ​",
+          "sideHustleSubtitle": "ແນວຄວາມຄິດທີ່ຂ້ອຍສາມາດເລີ່ມຕົ້ນໄດ້ໃນຂະນະທີ່ເຮັດວຽກເຕັມເວລາ.",
+          "brandAngleTitle": "ຊອກຫາມຸມຍີ່ຫໍ້ທີ່ຫນ້າຈົດຈໍາ",
+          "brandAngleSubtitle": "ເປັນປະໂຫຍດສໍາລັບຜະລິດຕະພັນ, ຜູ້ສ້າງ, ອົງການ, ຫຼືຈົດຫມາຍຂ່າວ.",
+          "socialSeriesTitle": "ປະດິດຊຸດເນື້ອຫາ",
+          "socialSeriesSubtitle": "ບາງສິ່ງບາງຢ່າງທີ່ສອດຄ່ອງພຽງພໍທີ່ຈະເພີ່ມຜູ້ຊົມ.",
+          "datingIdeasTitle": "ມາກັບແນວຄວາມຄິດສົດໆ",
+          "datingIdeasSubtitle": "ວັນທີ, ຂອງຂວັນ, ຄວາມແປກໃຈ, ຫຼືເຫດການທີ່ມີຄວາມຮູ້ສຶກຄິດ."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "ຊອກຫາບ່ອນທີ່ເງິນຂອງຂ້ອຍຮົ່ວໄຫຼ",
+          "spendingLeaksSubtitle": "ສະແດງຮູບແບບ, ຈຸດອ່ອນ, ແລະຊະນະທີ່ງ່າຍທີ່ສຸດກ່ອນ.",
+          "customerFeedbackTitle": "ປ່ຽນຄໍາຕິຊົມເປັນບູລິມະສິດ",
+          "customerFeedbackSubtitle": "ການຮ້ອງຂໍຂອງກຸ່ມ, ການຮ້ອງຮຽນ, ຄວາມຮີບດ່ວນ, ແລະຜົນກະທົບ.",
+          "habitPatternsTitle": "ຮູບແບບຈຸດໃນນິໄສຂອງຂ້ອຍ",
+          "habitPatternsSubtitle": "ເປັນປະໂຫຍດສໍາລັບການອອກກໍາລັງກາຍ, ນອນ, ບັນທຶກ, ຫຼືບັນທຶກການສຸມໃສ່.",
+          "metricsStoryTitle": "ອະທິບາຍວ່າຕົວເລກຫມາຍຄວາມວ່າແນວໃດ",
+          "metricsStorySubtitle": "ສັນຍານຫຼາຍຂຶ້ນ, ມີສຽງລົບກວນໜ້ອຍລົງ."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "ກຳລັງປະມວນຜົນ...",
+    "tapToUploadImage": "ແຕະເພື່ອອັບໂຫລດຮູບ"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "ກຳລັງປະມວນຜົນ...",
+    "camera": "ອັບໂຫຼດຮູບ",
+    "library": "ຫໍສະໝຸດ"
+  },
+  "common": {
+    "ok": "ຕົກລົງ",
+    "retry": "ລອງໃໝ່",
+    "cancel": "ຍົກເລີກ",
+    "allow": "ອະນຸຍາດ",
+    "notNow": "ບໍ່ແມ່ນດຽວນີ້",
+    "openSettings": "ເປີດການຕັ້ງຄ່າ",
+    "close": "ປິດ",
+    "save": "ບັນທຶກ",
+    "tryAgain": "ລອງອີກຄັ້ງ"
+  },
+  "rateUs": {
+    "title": "ມ່ວນ Cloud AI?",
+    "subtitle": "ຄໍາຕິຊົມຂອງທ່ານຊ່ວຍພວກເຮົາປັບປຸງ. ເຈົ້າຄວນໃຫ້ຄະແນນພວກເຮົາຢູ່ໃນ App Store ບໍ?",
+    "rateNow": "ໃຫ້ຄະແນນດຽວນີ້",
+    "maybeLater": "ບາງທີຕໍ່ມາ",
+    "dontAskAgain": "ຢ່າຖາມອີກ"
+  },
+  "oneTimeOffer": {
+    "title": "ຂໍ້ສະເໜີຄັ້ງດຽວ",
+    "discount": "{{percent}}% ຫຼຸດ",
+    "subtitle": "ທ່ານຈະບໍ່ເຫັນຂໍ້ສະເໜີນີ້ອີກ.",
+    "badgeLine1": "ສະເພາະ",
+    "badgeLine2": "ຂໍ້ສະເໜີຄັ້ງດຽວ",
+    "upgradeNow": "ອັບເກຣດຕອນນີ້ສຳລັບ {{price}}",
+    "loadingPrice": "ກຳລັງໂຫລດ...",
+    "termsOfUse": "ເງື່ອນໄຂການນໍາໃຊ້",
+    "privacyPolicy": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
+    "accessTitle": "ການ​ເຂົ້າ​ເຖິງ​ບໍ່​ຈໍາ​ກັດ​",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "ເຂົ້າເຖິງໄດ້ບໍ່ຈຳກັດ GPT-4",
+      "geminiPro": "ເຂົ້າເຖິງ Gemini Pro",
+      "grokInsights": "ໃຊ້ Grok ເພື່ອຄວາມເຂົ້າໃຈສົດໆ",
+      "priorityAccess": "ການເຂົ້າເຖິງບູລິມະສິດ & ຄໍາຕອບທີ່ໄວກວ່າ"
+    },
+    "bestValue": "ມູນຄ່າທີ່ດີທີ່ສຸດ",
+    "annualPremium": "Premium ປະຈໍາປີ",
+    "oneTimePayment": "ການຈ່າຍເງິນຄັ້ງດຽວ",
+    "wasPrice": "ແມ່ນ",
+    "continue": "ສືບຕໍ່",
+    "restore": "ຟື້ນຟູ",
+    "terms": "ເງື່ອນໄຂ",
+    "privacy": "ຄວາມເປັນສ່ວນຕົວ",
+    "successTitle": "ສຳເລັດ!",
+    "successMessage": "ຂໍ​ຂອບ​ໃຈ​ທ່ານ​ສໍາ​ລັບ​ການ​ຊື້​ຂອງ​ທ່ານ​! ເພີດເພີນໄປກັບການເຂົ້າເຖິງແບບພຣີມຽມສໍາລັບ 12 ເດືອນຕໍ່ໄປ.",
+    "errorTitle": "ການຊື້ລົ້ມເຫລວ",
+    "errorMessage": "ມີບາງຢ່າງຜິດພາດ. ກະລຸນາລອງອີກຄັ້ງ.",
+    "restoreSuccessTitle": "ຟື້ນຟູ",
+    "restoreSuccessMessage": "ການ​ຊື້​ຂອງ​ທ່ານ​ໄດ້​ຮັບ​ການ​ຟື້ນ​ຟູ​.",
+    "restoreErrorTitle": "ການຟື້ນຟູລົ້ມເຫລວ",
+    "restoreErrorMessage": "ບໍ່ພົບການຊື້ເພື່ອຟື້ນຟູ.",
+    "unavailableTitle": "ບໍ່ສາມາດສັ່ງຊື້ໄດ້",
+    "unavailableMessage": "ການຮຽກເກັບເງິນ Android ບໍ່ໄດ້ຖືກຕັ້ງຄ່າເທື່ອ."
+  },
+  "rewards": {
+    "header": {
+      "title": "ລາງວັນ",
+      "openMenu": "ເປີດເມນູ",
+      "goBack": "ກັບຄືນ"
+    },
+    "pointsHero": {
+      "totalBalance": "ຍອດເງິນທັງໝົດ",
+      "seeYourRewards": "ເບິ່ງລາງວັນຂອງທ່ານ"
+    },
+    "streakTracker": {
+      "title": "Streak ປະຈໍາວັນ",
+      "subtitle": "ຮັກສາມັນໄວ້! ເຈົ້າຢູ່ໃນໄຟ.",
+      "days": "ມື້",
+      "prize": "ລາງວັນ",
+      "dayLabel": "ມື້ {{number}}",
+      "nextReward": "ລາງວັນຕໍ່ໄປ: {{amount}} ໃນ {{time}}",
+      "coins": "ຫຼຽນ"
+    },
+    "sections": {
+      "availableQuests": "Quests ທີ່ມີຢູ່",
+      "completedQuests": "Quests ສໍາເລັດ",
+      "availableRewards": "ລາງວັນທີ່ມີຢູ່",
+      "needsMoreCoins": "ຕ້ອງການຫຼຽນເພີ່ມເຕີມ"
+    },
+    "balances": {
+      "rewardCoins": "ຫຼຽນລາງວັນ",
+      "imageCredits": "ສິນເຊື່ອຮູບພາບ"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 ສິນເຊື່ອຮູບພາບ",
+        "imageCredits200": "200 ສິນເຊື່ອຮູບພາບ",
+        "imageCredits600": "600 ສິນເຊື່ອຮູບພາບ",
+        "weeklyPremium": "Premium ປະຈໍາອາທິດ",
+        "secretBox": "ກ່ອງລັບ"
+      },
+      "rewardDescriptions": {
+        "secretBox": "ລາງວັນຄວາມລຶກລັບພາຍໃນ"
+      },
+      "alerts": {
+        "comingSoonTitle": "ໄວໆນີ້",
+        "comingSoonMessage": "ລາງວັນນີ້ຍັງບໍ່ທັນມີເທື່ອ.",
+        "notEnoughCoinsTitle": "ຫຼຽນບໍ່ພຽງພໍ",
+        "notEnoughCoinsMessage": "ທ່ານຕ້ອງການຫຼຽນລາງວັນເພີ່ມເຕີມເພື່ອປົດລັອກລາງວັນນີ້.",
+        "errorTitle": "ຜິດພາດ",
+        "couldNotOpenBox": "ບໍ່ສາມາດເປີດກ່ອງໄດ້.",
+        "couldNotRedeem": "ບໍ່ສາມາດແລກລາງວັນໄດ້. ກະລຸນາລອງອີກຄັ້ງ.",
+        "mysteryReward": "ລາງວັນຄວາມລຶກລັບ"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "ເຂົ້າສູ່ລະບົບປະຈໍາວັນ",
+        "description": "ເປີດແອັບມື້ນີ້ເພື່ອຮັກສາສະຖິຕິຂອງທ່ານ",
+        "message": "ການຄົ້ນຫານີ້ແມ່ນສໍາເລັດໂດຍອັດຕະໂນມັດເມື່ອທ່ານເປີດແອັບຯໃນແຕ່ລະມື້."
+      },
+      "shareFacebook": {
+        "title": "ແບ່ງປັນກ່ຽວກັບເຟສບຸກ",
+        "description": "ປະກາດກ່ຽວກັບພວກເຮົາກ່ຽວກັບເຟສບຸກ"
+      },
+      "shareTwitter": {
+        "title": "ແບ່ງປັນໃນ Twitter",
+        "description": "Tweet ປະສົບການຂອງທ່ານ"
+      },
+      "shareInstagram": {
+        "title": "ແບ່ງປັນໃນ Instagram",
+        "description": "ແບ່ງປັນເລື່ອງ ຫຼືໂພສ"
+      },
+      "shareExperience": {
+        "title": "ແບ່ງປັນປະສົບການຂອງທ່ານ",
+        "description": "ບອກໝູ່ວ່າເປັນຫຍັງເຈົ້າມັກແອັບ"
+      },
+      "share": {
+        "genericMessage": "ຂ້ອຍກຳລັງໃຊ້ແອັບ AI ນີ້ສຳລັບການສົນທະນາ ແລະການສ້າງຮູບພາບ. ກວດເບິ່ງວ່າ: {{url}}",
+        "facebookQuote": "ກວດເບິ່ງແອັບ AI ນີ້!",
+        "twitterText": "ຂ້ອຍກໍາລັງພະຍາຍາມແອັບ AI ນີ້, ມັນເຢັນດີ.",
+        "instagramMessage": "ກວດເບິ່ງແອັບ AI ນີ້: {{url}}"
+      },
+      "store": {
+        "errorTitle": "ຜິດພາດ",
+        "errorMessage": "ບໍ່ສາມາດເປີດໜ້າຮ້ານໄດ້."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Quest ສໍາເລັດ",
+        "description": "Quest ສໍາເລັດ",
+        "points": "+{{points}} ຄະແນນ",
+        "close": "ປິດ"
+      },
+      "rewardSuccess": {
+        "error": "ຜິດພາດ",
+        "success": "ຄວາມສຳເລັດ",
+        "somethingWentWrong": "ມີບາງຢ່າງຜິດພາດ",
+        "rewardUnlocked": "ປົດລັອກລາງວັນແລ້ວ",
+        "credits": "ສິນເຊື່ອ",
+        "close": "ປິດ",
+        "okay": "ຕົກລົງ"
+      },
+      "secretBox": {
+        "pill": "ກ່ອງຄວາມລັບ",
+        "rewardUnlocked": "ປົດລ໋ອກລາງວັນແລ້ວ",
+        "shufflingRewards": "ແຈກລາງວັນ...",
+        "imageCreditsAdded": "ເພີ່ມເຄຣດິດຮູບພາບໃສ່ບັນຊີຂອງທ່ານແລ້ວ",
+        "continue": "ສືບຕໍ່",
+        "revealing": "ກຳລັງເປີດເຜີຍ...",
+        "prizeTiers": {
+          "lucky": "ໂຊກດີ",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "ຕຳນານ"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "ຮັບຫຼຽນປະຈຳວັນຂອງທ່ານ",
+      "subtitle": "ກັບມາທຸກມື້ — ລາງວັນເພີ່ມຂຶ້ນ.",
+      "cta": "ເຊັກອິນ",
+      "claimed": "ໄດ້ຮັບແລ້ວ! +{{amount}} ຫຼຽນ",
+      "later": "ພາຍຫຼັງ"
+    }
+  },
+  "app": {
+    "version": "ລຸ້ນ {{version}}",
+    "offlineBanner": "ທ່ານອອບລາຍຢູ່",
+    "launch": {
+      "accessibilityLabel": "ເລີ່ມCloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, ກຽມພ້ອມໃນເວລາທີ່ທ່ານມີ"
+    },
+    "errors": {
+      "modelsLoadTitle": "ໂຫຼດຕົວແບບບໍ່ສຳເລັດ",
+      "modelsLoadMessage": "ບໍ່ສາມາດໂຫຼດຕົວແບບ AI ໄດ້. ແອັບຈະໃຊ້ຕົວແບບເລີ່ມຕົ້ນ. ກະລຸນາກວດເບິ່ງການເຊື່ອມຕໍ່ອິນເຕີເນັດຂອງທ່ານ.",
+      "modelsLoadTimeout": "ການໂຫຼດຕົວແບບໃຊ້ເວລາດົນເກີນໄປ. ແອັບຈະໃຊ້ຕົວແບບເລີ່ມຕົ້ນ. ກະລຸນາລອງອີກຄັ້ງ.",
+      "modelsLoadNetwork": "ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດ. ແອັບຈະໃຊ້ຕົວແບບເລີ່ມຕົ້ນ. ກະລຸນາກວດເບິ່ງການເຊື່ອມຕໍ່ຂອງທ່ານ.",
+      "deviceIdTitle": "ການເລີ່ມຕົ້ນຜິດພາດ",
+      "deviceIdMessage": "ລົ້ມເຫລວໃນການເລີ່ມຕົ້ນ ID ອຸປະກອນ. ບາງຄຸນສົມບັດອາດຈະເຮັດວຽກບໍ່ຖືກຕ້ອງ.",
+      "storageTitle": "ການເກັບຮັກສາຜິດພາດ",
+      "storageMessage": "ບໍ່ສາມາດເຂົ້າເຖິງບ່ອນເກັບຂໍ້ມູນໃນທ້ອງຖິ່ນໄດ້. ບາງຄຸນສົມບັດອາດຈະເຮັດວຽກບໍ່ຖືກຕ້ອງ.",
+      "crashTitle": "ມີບາງຢ່າງຜິດພາດ.",
+      "crashSubtitle": "ກະລຸນາລອງອີກຄັ້ງ.",
+      "crashLabel": "ແອັບຂັດຂ້ອງ"
+    },
+    "proxyErrors": {
+      "genericTitle": "ມີບາງຢ່າງຜິດພາດ",
+      "genericMessage": "ກະລຸນາລອງອີກຄັ້ງ.",
+      "rateLimitTitle": "ການຮ້ອງຂໍຫຼາຍເກີນໄປ",
+      "rateLimitMessage": "ພວກເຮົາກໍາລັງຈັດການກັບຄໍາຮ້ອງຂໍຈໍານວນຫຼາຍ. ກະລຸນາລອງໃໝ່ໃນອີກຈັກໜ່ອຍ.",
+      "rateLimitRetryAfter": "ພວກເຮົາກໍາລັງຈັດການກັບຄໍາຮ້ອງຂໍຈໍານວນຫຼາຍ. ກະລຸນາລອງໃໝ່ໃນອີກປະມານ {{seconds}} ວິນາທີ.",
+      "restrictedTitle": "ເນື້ອຫາຖືກຈໍາກັດ",
+      "restrictedMessage": "ການຮ້ອງຂໍນີ້ຖືກບລັອກໂດຍຕົວກອງຄວາມປອດໄພ.",
+      "insufficientCoinsTitle": "ຫຼຽນບໍ່ພຽງພໍ",
+      "insufficientCoinsMessage": "ຍອດຄົງເຫຼືອປັດຈຸບັນຂອງທ່ານຕໍ່າເກີນໄປສຳລັບການຮ້ອງຂໍນີ້.",
+      "imageUnavailableTitle": "ບໍ່ມີຮູບພາບ",
+      "imageUnavailableMessage": "ໄຟລ໌ຮູບພາບທີ່ສ້າງຂຶ້ນບໍ່ສາມາດໃຊ້ໄດ້ຊົ່ວຄາວ. ກະລຸນາລອງອີກຄັ້ງ.",
+      "authorizationTitle": "ບັນຫາການອະນຸຍາດ",
+      "authorizationMessage": "ພວກເຮົາບໍ່ສາມາດຢືນຢັນບັນຊີຂອງທ່ານໄດ້. ກະລຸນາລອງອີກຄັ້ງ.",
+      "serverTitle": "ເຊີບເວີ hiccup",
+      "serverMessage": "ເຊີບເວີຂອງພວກເຮົາມີບັນຫາ. ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນໄວໆນີ້.",
+      "timeoutTitle": "ໃຊ້ເວລາດົນເກີນໄປ",
+      "timeoutMessage": "ຄຳຮ້ອງຂໍໝົດເວລາ. ກະລຸນາລອງອີກຄັ້ງ.",
+      "networkTitle": "ບໍ່ມີການເຊື່ອມຕໍ່",
+      "networkMessage": "ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດ. ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງເຈົ້າແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
+      "requestTitle": "ຮ້ອງຂໍບັນຫາ",
+      "requestMessage": "ມີບາງຢ່າງຜິດພາດກັບຄຳຮ້ອງຂໍຂອງເຈົ້າ. ກະລຸນາລອງອີກຄັ້ງ."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "ເປີດໃຊ້ Premium",
+    "activateMessage": "ທ່ານຕ້ອງການເປີດໃຊ້ຄ່າພຣີມຽມຜູ້ຕິຊົມບໍ?",
+    "activateAction": "ເປີດໃຊ້",
+    "deactivateTitle": "ປິດການນຳໃຊ້ Premium",
+    "deactivateMessage": "ທ່ານຕ້ອງການປິດການນຳໃຊ້ຄ່າຜູ້ຕິຊົມບໍ?",
+    "deactivateAction": "ປິດໃຊ້ງານ"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "ລາງວັນປະຈໍາວັນ",
+      "body": "ຢ່າພາດຫຼຽນປະຈໍາວັນຂອງທ່ານ — ຂໍກ່ອນເວລາທ່ຽງຄືນ."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "ຢ່າພາດຫຼຽນປະຈຳວັນຂອງທ່ານ",
+      "body": "ພວກເຮົາສົ່ງການແຈ້ງເຕືອນມື້ລະຄັ້ງ ເພື່ອໃຫ້ສະຖິຕິຕໍ່ເນື່ອງຂອງທ່ານຍັງຄົງຢູ່ ແລະ ຫຼຽນເພີ່ມຂຶ້ນ. ບໍ່ມີສະແປມ ແລະ ທ່ານສາມາດປິດໄດ້ທຸກເວລາ.",
+      "enable": "ເປີດການແຈ້ງເຕືອນ",
+      "skip": "ຍັງກ່ອນ"
+    }
+  }
+}

@@ -8,7 +8,7 @@ const RATE_KEYS = {
   HAS_RATED: '@hasRatedApp',
 };
 
-const ANDROID_APP_ID = 'com.aicloudsolutions.chatcloud';
+const ANDROID_APP_ID = 'com.aicloudsolutions.cloud';
 const PLAY_STORE_LINK = `market://details?id=${ANDROID_APP_ID}`;
 const PLAY_STORE_WEB_FALLBACK = `https://play.google.com/store/apps/details?id=${ANDROID_APP_ID}`;
 

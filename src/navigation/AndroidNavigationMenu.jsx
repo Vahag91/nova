@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Alert,
+  Dimensions,
   Image,
   Modal,
   Pressable,
@@ -28,10 +29,18 @@ import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { colors } from '../styles/colors';
 import { APP_VERSION } from '../config/appInfo';
-function MenuItem({ active, icon, label, onPress }) {
+// Matches the coin accent used on the rewards screen.
+const REWARDS_ACCENT = '#FBBF24';
+
+function MenuItem({ active, icon, label, onPress, highlight }) {
   return (
     <TouchableOpacity
-      style={[styles.menuItem, active && styles.menuItemActive]}
+      style={[
+        styles.menuItem,
+        highlight && styles.menuItemHighlight,
+        active &&
+          (highlight ? styles.menuItemHighlightActive : styles.menuItemActive),
+      ]}
       onPress={onPress}
       activeOpacity={0.82}
     >
@@ -39,10 +48,22 @@ function MenuItem({ active, icon, label, onPress }) {
         <SvgIcon
           name={icon}
           size={18}
-          color={active ? colors.text : colors.textSecondary}
+          color={
+            highlight
+              ? REWARDS_ACCENT
+              : active
+                ? colors.text
+                : colors.textSecondary
+          }
         />
       </View>
-      <Text style={[styles.menuLabel, active && styles.menuLabelActive]}>
+      <Text
+        style={[
+          styles.menuLabel,
+          active && styles.menuLabelActive,
+          highlight && styles.menuLabelHighlight,
+        ]}
+      >
         {label}
       </Text>
     </TouchableOpacity>
@@ -60,6 +81,16 @@ export default function AndroidNavigationMenu({
   const insets = useSafeAreaInsets();
   const { height: screenHeight } = useWindowDimensions();
   const topInset = insets.top;
+  // This drawer lives in a Modal, which statusBarTranslucent pushes edge-to-edge.
+  // Below API 35 the main window still fits the navigation bar, so the provider
+  // reports bottom: 0 and the footer would sit under the system buttons. Fall
+  // back to the screen/window delta, which is the system bar height.
+  const bottomInset = React.useMemo(() => {
+    if (insets.bottom > 0) return insets.bottom;
+    const fullHeight = Dimensions.get('screen').height;
+    const delta = Math.round(fullHeight - screenHeight);
+    return delta > 0 && delta < 200 ? delta : 0;
+  }, [insets.bottom, screenHeight]);
   const isCompactHeight = screenHeight <= 700;
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
@@ -67,6 +98,7 @@ export default function AndroidNavigationMenu({
   const activateReviewerPremium = subscription?.activateReviewerPremium;
   const deactivateReviewerPremium = subscription?.deactivateReviewerPremium;
   const threadIndex = useThreadsStore(s => s.threadIndex);
+  const threadBodiesHydrated = useThreadsStore(s => s.threadBodiesHydrated);
   const activeThreadId = useThreadsStore(s => s.activeThreadId);
   const createThread = useThreadsStore(s => s.createThread);
   const [mounted, setMounted] = useState(visible);
@@ -78,11 +110,12 @@ export default function AndroidNavigationMenu({
   const panelTranslateX = useSharedValue(-PANEL_WIDTH);
 
   const recentThreads = useMemo(() => {
+    if (!threadBodiesHydrated) return [];
     return threadIndex
       .filter(thread => thread?.hasMessages)
       .sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0))
       .slice(0, 3);
-  }, [threadIndex]);
+  }, [threadBodiesHydrated, threadIndex]);
 
   const handleMenuItemPress = React.useCallback((routeName, source = 'menu_item', params) => {
     onNavigate(routeName, params);
@@ -114,12 +147,12 @@ export default function AndroidNavigationMenu({
     try {
       if (reviewerPremiumEnabled) {
         Alert.alert(
-          'Deactivate Premium',
-          'Do you want to deactivate reviewer premium?',
+          t('reviewerPremium.deactivateTitle'),
+          t('reviewerPremium.deactivateMessage'),
           [
-            { text: 'Cancel', style: 'cancel' },
+            { text: t('common.cancel'), style: 'cancel' },
             {
-              text: 'Deactivate',
+              text: t('reviewerPremium.deactivateAction'),
               style: 'destructive',
               onPress: async () => {
                 try {
@@ -131,12 +164,12 @@ export default function AndroidNavigationMenu({
         );
       } else {
         Alert.alert(
-          'Activate Premium',
-          'Do you want to activate reviewer premium?',
+          t('reviewerPremium.activateTitle'),
+          t('reviewerPremium.activateMessage'),
           [
-            { text: 'Cancel', style: 'cancel' },
+            { text: t('common.cancel'), style: 'cancel' },
             {
-              text: 'Activate',
+              text: t('reviewerPremium.activateAction'),
               onPress: async () => {
                 try {
                   await activateReviewerPremium?.();
@@ -151,6 +184,7 @@ export default function AndroidNavigationMenu({
     activateReviewerPremium,
     deactivateReviewerPremium,
     reviewerPremiumEnabled,
+    t,
   ]);
 
   useEffect(() => {
@@ -222,12 +256,13 @@ export default function AndroidNavigationMenu({
             styles.panel,
             panelAnimatedStyle,
             {
-              paddingTop: topInset + 18,
-              paddingBottom: insets.bottom + 18,
+              paddingTop: topInset + 34,
+              paddingBottom: bottomInset + 18,
             },
           ]}
         >
           <ScrollView
+            style={styles.scrollArea}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.scrollContent}
           >
@@ -239,7 +274,7 @@ export default function AndroidNavigationMenu({
                   resizeMode="contain"
                 />
               </View>
-              <Text style={styles.logoText}>ChatCloud</Text>
+              <Text style={styles.logoText}>Cloud AI</Text>
             </View>
 
             {recentThreads.length > 0 ? (
@@ -309,6 +344,13 @@ export default function AndroidNavigationMenu({
                 onPress={() => handleMenuItemPress('Studio')}
               />
               <MenuItem
+                highlight
+                active={activeRouteName === 'Rewards'}
+                icon="coin"
+                label={t('navigation.rewards')}
+                onPress={() => handleMenuItemPress('Rewards')}
+              />
+              <MenuItem
                 active={activeRouteName === 'Settings'}
                 icon="settings"
                 label={t('navigation.settings')}
@@ -317,18 +359,22 @@ export default function AndroidNavigationMenu({
             </View>
           </ScrollView>
 
-          <Pressable onPress={handleVersionTap} hitSlop={12} style={styles.versionWrap}>
-            <Text style={styles.versionText}>
-              {`Version ${String(APP_VERSION || '1').split('.')[0]}`}
-            </Text>
-          </Pressable>
+          <View style={styles.footer}>
+            <Pressable onPress={handleVersionTap} hitSlop={12} style={styles.versionWrap}>
+              <Text style={styles.versionText}>
+                {t('app.version', {
+                  version: String(APP_VERSION || '1').split('.')[0],
+                })}
+              </Text>
+            </Pressable>
 
-          {!isPremium ? (
-            <SidebarProFeaturesButton
-              compact={isCompactHeight}
-              onPress={() => handleMenuItemPress('PaywallScreen', 'footer_upgrade', { returnTo: activeRouteName })}
-            />
-          ) : null}
+            {!isPremium ? (
+              <SidebarProFeaturesButton
+                compact={isCompactHeight}
+                onPress={() => handleMenuItemPress('PaywallScreen', 'footer_upgrade', { returnTo: activeRouteName })}
+              />
+            ) : null}
+          </View>
         </Animated.View>
       </View>
     </Modal>
@@ -361,6 +407,12 @@ const styles = StyleSheet.create({
     shadowRadius: 18,
     shadowOffset: { width: 6, height: 0 },
   },
+  scrollArea: {
+    flex: 1,
+  },
+  footer: {
+    flexShrink: 0,
+  },
   scrollContent: {
     paddingBottom: 16,
   },
@@ -378,8 +430,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   appIcon: {
-    width: 46,
-    height: 46,
+    width: 44,
+    height: 44,
   },
   logoText: {
     fontSize: 24,
@@ -434,6 +486,12 @@ const styles = StyleSheet.create({
   menuItemActive: {
     backgroundColor: 'rgba(59,130,246,0.15)',
   },
+  menuItemHighlight: {
+    backgroundColor: 'rgba(251,191,36,0.12)',
+  },
+  menuItemHighlightActive: {
+    backgroundColor: 'rgba(251,191,36,0.22)',
+  },
   iconContainer: {
     width: 28,
     height: 28,
@@ -448,6 +506,10 @@ const styles = StyleSheet.create({
   },
   menuLabelActive: {
     color: colors.text,
+    fontFamily: 'Lato-Bold',
+  },
+  menuLabelHighlight: {
+    color: REWARDS_ACCENT,
     fontFamily: 'Lato-Bold',
   },
   versionWrap: {

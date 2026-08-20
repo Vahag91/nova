@@ -4,6 +4,7 @@ import { Storage } from './storage';
 
 const KEYCHAIN_SERVICE = 'com.tortnisoft.chatcloud.deviceId.v1';
 let memoizedId = null;
+let inFlightIdPromise = null;
 
 function normalize(id) {
   return String(id || '').trim();
@@ -19,8 +20,7 @@ async function setKeychainId(id) {
   return val;
 }
 
-export async function ensureDeviceId() {
-  if (memoizedId) return memoizedId;
+async function resolveDeviceId() {
 
   // 1) Try Keychain
   try {
@@ -58,10 +58,21 @@ export async function ensureDeviceId() {
   return memoizedId;
 }
 
+export function ensureDeviceId() {
+  if (memoizedId) return Promise.resolve(memoizedId);
+  if (inFlightIdPromise) return inFlightIdPromise;
+
+  inFlightIdPromise = resolveDeviceId().finally(() => {
+    inFlightIdPromise = null;
+  });
+  return inFlightIdPromise;
+}
+
 // Handy for QA: wipe only in debug builds
 export async function __resetDeviceId_devOnly() {
   if (!__DEV__) return;
   try { await Keychain.resetGenericPassword({ service: KEYCHAIN_SERVICE }); } catch {}
   try { await Storage.getOrCreateDeviceId(() => ''); } catch {}
   memoizedId = null;
+  inFlightIdPromise = null;
 }

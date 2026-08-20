@@ -11,7 +11,12 @@
     "searchHint": "Kirjoita suodattaaksesi saatavilla olevia malleja",
     "modelLabel": "{{name}} -malli",
     "selectHint": "Valitse {{name}} -malli",
-    "currentlySelected": "Tällä hetkellä valittuna"
+    "currentlySelected": "Tällä hetkellä valittuna",
+    "genericModel": "{{provider}} malli",
+    "badges": {
+      "new": "UUTTA",
+      "best": "PARAS"
+    }
   },
   "models": {
     "gpt-4o": "Tehokkain tekoälymalli",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Avustajat",
+    "defaultTitle": "Avustaja",
+    "errorTitle": "Jotain meni pieleen",
+    "errorMessage": "Tätä avustajaa ei voitu käynnistää.",
+    "noAssistants": "Tästä luokasta ei löytynyt avustajia.",
+    "selectAssistantHint": "Avaa apuvalitsin",
     "subtitle": "Valikoidut tekoälyasiantuntijat koodaukseen, kirjoittamiseen, analyysiin, suunnitteluun ja muuhun.",
     "searchPlaceholder": "Etsi avustajia…",
     "useAssistant": "Käytä avustajaa",
@@ -254,9 +264,12 @@
     "search": "Hae",
     "clearSearch": "Tyhjennä haku",
     "noChatsYet": "Ei keskusteluja vielä",
+    "noResults": "Ei keskusteluja vielä",
     "startFirstConversation": "Aloita ensimmäinen keskustelusi.",
     "startChat": "Aloita keskustelu",
+    "startNewChat": "Aloita keskustelu",
     "errorLoadingHistory": "Historian lataus epäonnistui",
+    "loading": "Ladataan historiaa...",
     "renameChat": "Nimeä keskustelu uudelleen",
     "enterNewTitle": "Kirjoita uusi otsikko",
     "deleteChat": "Poistetaanko keskustelu?",
@@ -264,9 +277,7 @@
     "rename": "Nimeä uudelleen",
     "unpin": "Poista kiinnitys",
     "pin": "Kiinnitä",
-    "untitled": "Nimetön",
-    "noResults": "Ei keskusteluja vielä",
-    "startNewChat": "Aloita keskustelu"
+    "untitled": "Nimetön"
   },
   "settings": {
     "title": "Asetukset",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium käytössä",
-        "subtitle": "Kiitos että tuet ChatCloudia"
+        "subtitle": "Kiitos että tuet Cloud AIia"
       },
       "restore": {
         "title": "Palauta ostot",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Tätä linkkiä ei voi avata juuri nyt.",
       "restoreSuccessTitle": "Palautettu",
       "restoreSuccessMessage": "Ostosi on palautettu.",
+      "restoreEmptyTitle": "Ostoksia ei löytynyt",
+      "restoreEmptyMessage": "Emme löytäneet aktiivista palautettavaa ostosta tälle tilille.",
       "restoreErrorTitle": "Palautus epäonnistui",
       "restoreErrorMessage": "Ostoja ei voitu palauttaa nyt.",
       "resetConfirmTitle": "Nollataanko sovelluksen tiedot?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Mukautettu"
     },
+    "notEnoughCoinsTitle": "Ei tarpeeksi kolikoita",
+    "notEnoughCoinsMessage": "Nykyinen saldosi on liian pieni tälle kuvalle.",
     "modelTaglines": {
       "runwareFluxSchnell": "Nopein malli",
       "runwareFluxKrea": "Luovat ja tyylitellyt tulokset",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Tallennus epäonnistui",
       "shareFailedTitle": "Jakaminen epäonnistui",
-      "tryAgain": "Yritä uudelleen."
+      "tryAgain": "Yritä uudelleen.",
+      "savedTitle": "Tallennettu",
+      "savedMessage": "Kuva tallennettu galleriaasi.",
+      "permissionTitle": "Lupa tarvitaan",
+      "permissionMessage": "Salli tallennustilan käyttö kuvien tallentamiseksi galleriaasi."
     },
     "result": {
       "complete": "Valmis"
@@ -498,12 +517,47 @@
       "save": "Tallenna",
       "share": "Jaa"
     },
+    "alerts": {
+      "savedTitle": "Tallennettu",
+      "savedMessage": "Kuva tallennettu galleriaasi.",
+      "permissionTitle": "Lupa tarvitaan",
+      "permissionMessage": "Salli tallennustilan käyttö kuvien tallentamiseksi galleriaasi.",
+      "saveFailedTitle": "Ei voitu tallentaa",
+      "tryAgain": "Yritä uudelleen."
+    },
     "accessibility": {
       "close": "Sulje",
       "delete": "Poista kuva",
       "edit": "Muokkaa kuvaa",
       "save": "Tallenna kuva",
       "share": "Jaa kuva"
+    }
+  },
+  "reportContent": {
+    "title": "Ilmoita tekoälysisällöstä",
+    "subtitle": "Kerro meille, mikä tässä luodussa sisällössä on vialla.",
+    "privateDisclosure": "Lähettäminen lähettää tämän ilmoitetun sisällön turvallisuusarviointiin.",
+    "accessibilityLabel": "Ilmoita tekoälysisällöstä",
+    "reasons": {
+      "sexual": "Seksuaalinen tai alastomuus",
+      "violence_self_harm": "Väkivalta tai itsensä vahingoittaminen",
+      "hate_harassment": "Viha tai häirintä",
+      "child_safety": "Huoli lasten turvallisuudesta",
+      "scam_deceptive": "Huijaus tai petollinen sisältö",
+      "other": "muu"
+    },
+    "errors": {
+      "reasonRequired": "Valitse syy ennen lähettämistä.",
+      "submit": "Raporttia ei voitu lähettää. Yritä uudelleen."
+    },
+    "success": {
+      "title": "Kiitos. Raporttisi lähetettiin.",
+      "subtitle": "Käytämme raportteja sisällön turvallisuuden parantamiseen."
+    },
+    "actions": {
+      "report": "Raportoi",
+      "submit": "Lähetä raportti",
+      "done": "Valmis"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Tutustu",
       "titleHighlight": "Image Studio",
-      "subtitle": "Luo ja muokkaa kuvia tekoälyllä — suoraan ChatCloud-sovelluksessa.",
-      "appName": "ChatCloud"
+      "subtitle": "Luo ja muokkaa kuvia tekoälyllä — suoraan Cloud AI-sovelluksessa."
     },
     "relaxView": {
       "title": "Tapaa tekoälysi",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "YRITYSTASON TÄ-RATKAISUT",
       "description": "Tehosta liiketoimintaasi huipputason tekoälyllä, joka on tehty tiimeille.",
       "stats": "Luottamus yli 500k käyttäjältä",
@@ -592,10 +645,10 @@
       "value": "Paras hinta"
     },
     "pack": {
+      "creditsLabel": "{{credits}} tokenia",
       "tokensLabel": "{{credits}} tokenia",
       "defaultName": "Paketti {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} tokenia"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Siirry Premiumiin",
@@ -613,8 +666,28 @@
       "unknownError": "Tuntematon virhe"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium vaaditaan",
+    "upgrade": "Päivitä",
+    "modelRequiredMessage": "Tämä malli vaatii Premiumin. Päivitä käyttääksesi GPT-5, Grok 4, Claude ja kehittyneempiä malleja.",
+    "assistantsRequiredMessage": "Assistentit vaativat Premiumin. Päivitä, niin pääset käyttämään erikoistuneita tekoälyapulaisia ​​kuntoiluun, koodaukseen, kirjoittamiseen ja muuhun.",
+    "assistantsTitle": "Premium vaaditaan",
+    "assistantsMessage": "Assistentit vaativat Premiumin. Päivitä, niin pääset käyttämään erikoistuneita tekoälyapulaisia ​​kuntoiluun, koodaukseen, kirjoittamiseen ja muuhun."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Sulje maksumuuri",
+    "unavailableTitle": "Ostoksia ei saatavilla",
+    "unavailableMessage": "Android-laskutusta ei ole vielä määritetty.",
+    "restoreEmptyTitle": "Ostoksia ei löytynyt",
+    "restoreEmptyMessage": "Emme löytäneet aktiivista palautettavaa ostosta tälle tilille.",
+    "restoreFailedTitle": "Palautus epäonnistui",
+    "restoreFailedMessage": "Ostoksia ei voi palauttaa juuri nyt.",
+    "productsUnavailableTitle": "Suunnitelmia ei ole saatavilla",
+    "productsUnavailableMessage": "Android-tilaustuotteita ei ole tällä hetkellä saatavilla.",
+    "purchaseFailedTitle": "Osto epäonnistui",
+    "purchaseFailedMessage": "Tätä ostoa ei voi suorittaa juuri nyt.",
     "restore": "Palauta",
     "restoreRestoring": "Palautetaan…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Ehdot",
       "privacy": "Tietosuoja"
+    },
+    "premium": {
+      "headline": "Kaikki premium AI yhdessä paketissa",
+      "subtitleLine1": "Keskustele, koodaa, luo ja suunnittele",
+      "subtitleLine2": "edistyneillä malleilla.",
+      "enableTrial": "Ota ilmainen kokeiluversio käyttöön",
+      "annual": "Vuosittainen",
+      "saveBadge": "Säästä 83 %",
+      "year": "vuosi",
+      "week": "viikko",
+      "termsOfUse": "Käyttöehdot",
+      "privacyPolicy": "Tietosuojakäytäntö"
     }
   },
   "chat": {
@@ -682,7 +767,7 @@
     "showQuickActions": "Näytä pikatoiminnot",
     "startVoiceInput": "Aloita puhesyöttö",
     "sendMessage": "Lähetä viesti",
-    "offline": "Offline",
+    "offline": "Offline-tilassa",
     "stop": "Pysäytä",
     "streaming": "Toistetaan…",
     "closeRecorder": "Sulje tallennin",
@@ -695,20 +780,25 @@
     "regenerateResponse": "Luo vastaus uudelleen",
     "regenerateResponseHint": "Luo uusi vastaus",
     "copyCode": "Kopioi koodi",
+    "copied": "Kopioitu",
     "image": "kuva",
     "loading": "Ladataan…",
     "loadingChat": "Ladataan keskustelua...",
     "offlineBanner": "Olet offline-tilassa. Viestejä ei voi lähettää.",
+    "offlineError": "Ei internetyhteyttä. Tarkista yhteys ja yritä uudelleen.",
     "imagePickerErrorTitle": "Kuvan valinta epäonnistui",
     "imagePickerErrorMessage": "Kuvia ei voitu avata. Yritä uudelleen.",
     "messageTooLong": "Viesti on liian pitkä ({{length}}). Raja on {{limit}}.",
     "sendFailed": "Lähetys epäonnistui.",
     "modelNoImageSupport": "Valittu malli ei tue kuvia. Valitse toinen malli.",
     "voiceStartFailed": "Puhetta ei voitu käynnistää.",
+    "voiceNoSpeechDetected": "Ääntä ei tunnistettu. Yritä uudelleen.",
     "emptyTitle": "Miten voin auttaa?",
     "emptySubtitle": "Aloita keskustelu tekoälyn kanssa",
     "privateTitle": "Yksityinen keskustelu",
     "privateSubtitle": "Tämä chat ei näy historiassa",
+    "startPrivateChat": "Aloita yksityinen chat",
+    "endPrivateChat": "Lopeta yksityinen chat",
     "permissions": {
       "photosTitle": "Kuvatiedostoihin tarvitaan lupa",
       "photosMessage": "Kuvien valitsemiseen tarvitaan kuvien käyttöoikeus.",
@@ -753,7 +843,19 @@
       "share": "Jaa",
       "regenerate": "Luo uudelleen",
       "retryFromHere": "Yritä tästä",
+      "report": "Raportoi",
       "cancel": "Peruuta"
+    },
+    "markdown": {
+      "copy": "Kopioi",
+      "copied": "Kopioitu",
+      "table": "TAULUKKO",
+      "watchVideo": "Katso video",
+      "wikipedia": "Wikipedia",
+      "link": "Linkki",
+      "note": "Huom",
+      "warning": "Varoitus",
+      "tip": "Vihje"
     },
     "messageActionTitle": "Viesti",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Suunnittele päiväni",
       "planDaySubtitle": "tuottavuusvinkeillä"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Valitse aihe",
       "title": "Mitä haluat tehdä?",
@@ -846,81 +946,59 @@
     "library": "Galleria"
   },
   "common": {
-    "new": "UUSI",
-    "best": "PARAS",
-    "cancel": "Peruuta",
-    "save": "Tallenna",
-    "delete": "Poista",
-    "close": "Sulje",
-    "allow": "Salli",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Yritä uudelleen",
+    "cancel": "Peruuta",
+    "allow": "Salli",
+    "notNow": "Ei nyt",
+    "openSettings": "Avaa Asetukset",
+    "close": "Sulje",
+    "save": "Tallenna",
+    "tryAgain": "Yritä uudelleen"
   },
   "rateUs": {
-    "title": "Nautitko ChatCloudista?",
+    "title": "Nautitko Cloud AIista?",
     "subtitle": "Palautteesi auttaa meitä parantamaan. Voisitko arvostella meidät App Storessa?",
     "rateNow": "Arvostele nyt",
     "maybeLater": "Ehkä myöhemmin",
     "dontAskAgain": "Älä kysy uudelleen"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Kertatarjous",
+    "discount": "{{percent}}% alennus",
+    "subtitle": "Et näe tätä tarjousta enää.",
     "badgeLine1": "Eksklusiivinen",
     "badgeLine2": "Kertaluonteinen tarjous",
     "upgradeNow": "Päivitä nyt {{price}}",
     "loadingPrice": "Ladataan...",
     "termsOfUse": "Käyttöehdot",
     "privacyPolicy": "Tietosuojakäytäntö",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Rajoittamaton pääsy",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Rajoittamaton pääsy numeroon GPT-4",
+      "geminiPro": "Pääsy Gemini Pro:hon",
+      "grokInsights": "Käytä Grok tuoreita oivalluksia varten",
+      "priorityAccess": "Ensisijainen käyttöoikeus ja nopeammat vastaukset"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Paras arvo",
+    "annualPremium": "Vuosittainen palkkio",
+    "oneTimePayment": "Kertamaksu",
+    "wasPrice": "oli",
+    "continue": "Jatka",
+    "restore": "Palauta",
+    "terms": "Ehdot",
+    "privacy": "Yksityisyys",
+    "successTitle": "Menestystä!",
+    "successMessage": "Kiitos ostoksestasi! Nauti premium-käyttöoikeudesta seuraavat 12 kuukautta.",
+    "errorTitle": "Osto epäonnistui",
+    "errorMessage": "Jotain meni pieleen. Yritä uudelleen.",
+    "restoreSuccessTitle": "Palautettu",
+    "restoreSuccessMessage": "Ostoksesi on palautettu.",
+    "restoreErrorTitle": "Palautus epäonnistui",
+    "restoreErrorMessage": "Palautettavaa ei löytynyt.",
+    "unavailableTitle": "Ostoksia ei saatavilla",
+    "unavailableMessage": "Android-laskutusta ei ole vielä määritetty."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MYyttINEN"
         }
       }
+    },
+    "checkIn": {
+      "title": "Lunasta päivittäiset kolikkosi",
+      "subtitle": "Palaa joka päivä — palkinto kasvaa.",
+      "cta": "Kirjaudu sisään",
+      "claimed": "Saatu! +{{amount}} kolikkoa",
+      "later": "Myöhemmin"
     }
+  },
+  "app": {
+    "version": "Versio {{version}}",
+    "offlineBanner": "Olet offline-tilassa",
+    "launch": {
+      "accessibilityLabel": "Alkaen Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, valmiina kun olet"
+    },
+    "errors": {
+      "modelsLoadTitle": "Mallien lataaminen epäonnistui",
+      "modelsLoadMessage": "AI-malleja ei voi ladata. Sovellus käyttää oletusmalleja. Tarkista Internet-yhteytesi.",
+      "modelsLoadTimeout": "Mallien lataaminen kesti liian kauan. Sovellus käyttää oletusmalleja. Yritä uudelleen.",
+      "modelsLoadNetwork": "Ei internetyhteyttä. Sovellus käyttää oletusmalleja. Tarkista yhteys.",
+      "deviceIdTitle": "Alustusvirhe",
+      "deviceIdMessage": "Laitetunnuksen alustaminen epäonnistui. Jotkut ominaisuudet eivät ehkä toimi oikein.",
+      "storageTitle": "Tallennusvirhe",
+      "storageMessage": "Paikallista tallennustilaa ei voi käyttää. Jotkut ominaisuudet eivät ehkä toimi oikein.",
+      "crashTitle": "Jotain meni pieleen.",
+      "crashSubtitle": "Yritä uudelleen.",
+      "crashLabel": "Sovellus kaatui"
+    },
+    "proxyErrors": {
+      "genericTitle": "Jotain meni pieleen",
+      "genericMessage": "Yritä uudelleen.",
+      "rateLimitTitle": "Liikaa pyyntöjä",
+      "rateLimitMessage": "Käsittelemme monia pyyntöjä. Yritä hetken kuluttua uudelleen.",
+      "rateLimitRetryAfter": "Käsittelemme monia pyyntöjä. Yritä uudelleen noin {{seconds}} sekunnin kuluttua.",
+      "restrictedTitle": "Rajoitettu sisältö",
+      "restrictedMessage": "Turvasuodattimet estivät tämän pyynnön.",
+      "insufficientCoinsTitle": "Ei tarpeeksi kolikoita",
+      "insufficientCoinsMessage": "Nykyinen saldosi on liian pieni tälle pyynnölle.",
+      "imageUnavailableTitle": "Kuva ei ole saatavilla",
+      "imageUnavailableMessage": "Luotu kuvatiedosto oli tilapäisesti poissa käytöstä. Yritä uudelleen.",
+      "authorizationTitle": "Valtuutusongelma",
+      "authorizationMessage": "Emme voineet vahvistaa tiliäsi. Yritä uudelleen.",
+      "serverTitle": "Palvelimen hikka",
+      "serverMessage": "Palvelimillamme oli ongelmia. Yritä hetken kuluttua uudelleen.",
+      "timeoutTitle": "Kestää liian kauan",
+      "timeoutMessage": "Pyyntö aikakatkaistiin. Yritä uudelleen.",
+      "networkTitle": "Ei yhteyttä",
+      "networkMessage": "Ei internetyhteyttä. Tarkista yhteys ja yritä uudelleen.",
+      "requestTitle": "Pyydä ongelmaa",
+      "requestMessage": "Jotain meni pieleen pyynnössäsi. Yritä uudelleen."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktivoi Premium",
+    "activateMessage": "Haluatko aktivoida Reviewer Premiumin?",
+    "activateAction": "Aktivoi",
+    "deactivateTitle": "Poista Premium käytöstä",
+    "deactivateMessage": "Haluatko poistaa arvostelijapremion käytöstä?",
+    "deactivateAction": "Poista käytöstä"
   },
   "push": {
     "dailyReward": {
       "title": "Päivittäinen palkinto",
       "body": "Älä missaa päivittäisiä kolikoitasi — lunasta ennen keskiyötä."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Älä menetä päivittäisiä kolikoitasi",
+      "body": "Lähetämme yhden muistutuksen päivässä, jotta putkesi jatkuu ja kolikkosi karttuvat. Ei roskapostia, ja voit poistaa sen käytöstä milloin tahansa.",
+      "enable": "Ota muistutukset käyttöön",
+      "skip": "Ei nyt"
     }
   }
 }

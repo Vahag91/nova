@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Chagua mfano",
+    "searchPlaceholder": "Tafuta miundo...",
+    "noModelsFound": "Hakuna miundo iliyopatikana",
+    "noModelsAvailable": "Hakuna miundo inayopatikana",
+    "currentModel": "Muundo wa sasa: {{name}}. Gusa ili kubadilisha muundo.",
+    "openHint": "Hufungua menyu ya uteuzi wa muundo",
+    "closeLabel": "Funga kiteuzi cha muundo",
+    "searchLabel": "Tafuta mifano",
+    "searchHint": "Andika ili kuchuja miundo inayopatikana",
+    "modelLabel": "{{name}} mfano",
+    "selectHint": "Chagua muundo wa {{name}}",
+    "currentlySelected": "Mfano uliochaguliwa kwa sasa",
+    "genericModel": "{{provider}} mfano",
+    "badges": {
+      "new": "MPYA",
+      "best": "BORA"
+    }
+  },
+  "models": {
+    "gpt-4o": "Mfano wa AI wenye nguvu zaidi",
+    "gpt-4o-mini": "Haraka kwa kazi za kila siku",
+    "gpt-5": "AI yenye nguvu zaidi ya makusudi yote",
+    "gpt-5-chat-latest": "Imeboreshwa kwa gumzo na mazungumzo",
+    "gpt-5-mini": "Haraka na ya kuaminika GPT-5",
+    "gpt-5.4-nano": "Mfano wa mwanga kwa kazi rahisi",
+    "o4-mini": "Mfano mzuri wa hoja",
+    "gpt-4.1-mini": "Compact, uwezo GPT-4.1",
+    "claude-3-haiku": "Anthropic AI ya haraka na yenye umakini",
+    "claude-3.7-sonnet": "Hoja iliyoboreshwa na Anthropic",
+    "gemini-2.5-Flash": "Muundo wa hali ya juu zaidi wa Google",
+    "gemini-2.5-flash": "Muundo wa juu zaidi wa Google",
+    "gemini-2.0-flash": "Google AI ya haraka na sahihi"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Mfano wa AI wenye nguvu zaidi",
+    "fast_everyday": "Haraka kwa kazi za kila siku",
+    "fast_reasoning": "Mfano wa haraka na hoja nzuri",
+    "great_reasoning": "Mfano wa juu wa hoja",
+    "coding_reasoning": "Usimbaji wa hali ya juu na hoja",
+    "better_coding": "Bora kwa kuweka msimbo na hoja",
+    "best_overall": "Mfano bora zaidi wa pande zote wa AI",
+    "best_google": "Muundo bora wa Google",
+    "best_xai": "Mfano wa nguvu zaidi wa xAI",
+    "creative_focus": "Nzuri kwa uandishi wa ubunifu",
+    "code_helper": "Nzuri kwa usaidizi wa kusimba",
+    "chat_focus": "Imeboreshwa kwa kupiga gumzo",
+    "long_context": "Nzuri kwa muktadha mrefu",
+    "budget_friendly": "Muundo wa AI unaoendana na bajeti",
+    "ultra_fast": "Majibu ya haraka sana",
+    "safe_default": "Chaguo chaguo-msingi salama",
+    "multilingual": "Usaidizi mkubwa wa lugha nyingi",
+    "vision_strong": "Kubwa na picha na maono",
+    "data_analysis": "Nzuri kwa uchambuzi wa data",
+    "structured_tasks": "Nzuri kwa kazi zilizopangwa",
+    "everyday_helper": "Mfano wa msaidizi wa kila siku",
+    "concise_answers": "Majibu mafupi, mafupi",
+    "detailed_answers": "Majibu ya kina hatua kwa hatua",
+    "experimental": "Mfano wa majaribio wa kizazi kijacho",
+    "reliable_classic": "Mfano wa kuaminika wa classic",
+    "lightweight": "Nyepesi, mfano wa gharama nafuu",
+    "chatty_personal": "Kirafiki zaidi na kibinafsi",
+    "pro_users": "Bora kwa watumiaji wa nishati",
+    "research_helper": "Nzuri kwa utafiti na maelezo",
+    "reasoning_strong": "Mfano wa juu wa hoja"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Nyingine"
+  },
+  "navigation": {
+    "chat": "Gumzo Mpya",
+    "history": "Historia",
+    "rewards": "Zawadi za Kila Siku",
+    "assistants": "Wasaidizi",
+    "imagesStudio": "Image Studio",
+    "settings": "Mipangilio",
+    "recentChats": "Soga za Hivi Karibuni",
+    "proFeatures": "Vipengele vya Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Pata Vipengele vya Pro",
+      "subtitle": "Vipengele vyote vya AI"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Tengeneza, chuja na uchapishe vipengee vinavyoonekana katika sehemu moja.",
+    "cta": "Fungua"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Chagua picha",
+    "exitSelectionMode": "Ondoka kwenye hali ya uteuzi",
+    "selectAll": "Chagua Zote",
+    "noImagesYet": "Bado hakuna picha",
+    "describeImageHint": "Eleza picha yako hapa chini na ugonge Unda.",
+    "generatedImagesGallery": "Matunzio ya picha yaliyotengenezwa",
+    "describeImagePlaceholder": "Eleza picha unayotaka...",
+    "deleteConfirmTitle": "Futa Picha",
+    "deleteConfirmMessage": "Je, una uhakika unataka kufuta picha zilizochaguliwa? Kitendo hiki hakiwezi kutenduliwa.",
+    "cancel": "Ghairi",
+    "delete": "Futa",
+    "generate": "Tengeneza",
+    "generating": "Inazalisha...",
+    "latest": "Karibuni",
+    "insertToChat": "Ingiza kwenye gumzo",
+    "pleaseWait": "Tafadhali subiri...",
+    "processing": "Inachakata...",
+    "tapToUploadImage": "Gusa ili kupakia picha",
+    "camera": "Pakia Picha",
+    "library": "Maktaba",
+    "enterPrompt": "Tafadhali weka kidokezo cha utengenezaji wa maandishi hadi picha",
+    "openInBrowser": "Fungua katika kivinjari",
+    "makeVariations": "Fanya tofauti",
+    "deleteAllFromGeneration": "Futa yote kutoka kwa kizazi hiki",
+    "imageOptionsTitle": "Chaguzi za Picha",
+    "imageOptionsMessage": "Je, ungependa kufanya nini na picha hii?",
+    "insertMarkdownHeader": "Hii hapa picha ya:",
+    "variationSuffix": "- tofauti ya picha ya awali",
+    "selectedCount": "iliyochaguliwa",
+    "selectedCount_one": "iliyochaguliwa",
+    "selectedCount_other": "iliyochaguliwa",
+    "imageDescriptionInput": "Ingizo la maelezo ya picha",
+    "imageDescriptionHint": "Weka maelezo ya picha unayotaka kutengeneza",
+    "openModelSettings": "Fungua mipangilio ya mfano",
+    "modelSettingsHint": "Gusa ili kubadilisha muundo na mipangilio",
+    "openPhotoGallery": "Fungua matunzio ya picha",
+    "clearInput": "Ingizo wazi",
+    "generatedImage": "Picha inayozalishwa",
+    "autoSelectedModel": "Iliyochaguliwa kiotomatiki {{model}} kwa hali ya {{mode}}",
+    "deleteSelectedConfirmTitle": "Futa picha",
+    "deleteSelectedConfirmMessage": "Je, una uhakika unataka kufuta picha? Kitendo hiki hakiwezi kutenduliwa."
+  },
+  "imageStudio": {
+    "generateImage": "Tengeneza picha",
+    "generatingImage": "Inazalisha picha",
+    "generateImageHint": "Gusa ili kuunda picha kulingana na maelezo yako",
+    "imageDescriptionInput": "Ingizo la maelezo ya picha",
+    "imageDescriptionHint": "Weka maelezo ya picha unayotaka kutengeneza",
+    "openModelSettings": "Fungua mipangilio ya mfano",
+    "modelSettingsHint": "Gusa ili kubadilisha muundo na mipangilio",
+    "openPhotoGallery": "Fungua matunzio ya picha",
+    "clearInput": "Ingizo wazi",
+    "generatedImage": "Picha inayozalishwa"
+  },
+  "assistants": {
+    "title": "Wasaidizi",
+    "defaultTitle": "Msaidizi",
+    "errorTitle": "Hitilafu fulani imetokea",
+    "errorMessage": "Haikuweza kuanzisha msaidizi huyu.",
+    "noAssistants": "Hakuna wasaidizi waliopatikana katika kategoria hii.",
+    "selectAssistantHint": "Fungua kiteua msaidizi",
+    "subtitle": "Wataalamu wa AI walioratibiwa tayari kwa kuweka misimbo, kuandika, uchambuzi, kupanga, na zaidi.",
+    "searchPlaceholder": "Tafuta wasaidizi...",
+    "useAssistant": "Tumia Mratibu",
+    "selectAssistant": "Chagua msaidizi",
+    "description": "Maelezo",
+    "systemPrompt": "Agizo la Mfumo",
+    "chooseModel": "Chagua Mfano",
+    "categoryAll": "Wote",
+    "categories": {
+      "everyday": "Kila siku",
+      "life": "Maisha",
+      "health": "Afya",
+      "schoolWork": "Shule na Kazi",
+      "coding": "Kuweka msimbo",
+      "creative": "Ubunifu",
+      "general": "Mkuu"
+    },
+    "presets": {
+      "default": {
+        "name": "Mratibu Chaguomsingi",
+        "description": "Usaidizi wa usawa kwa mambo ya kila siku."
+      },
+      "quick": {
+        "name": "Majibu ya Haraka",
+        "description": "Majibu mafupi, ya moja kwa moja."
+      },
+      "planner": {
+        "name": "Mpangaji wa Kila siku",
+        "description": "Panga siku yako na taratibu."
+      },
+      "recipes": {
+        "name": "Milo & Mapishi",
+        "description": "Nini cha kupika, na kile ulicho nacho."
+      },
+      "fitness": {
+        "name": "Kocha wa Fitness",
+        "description": "Mazoea madogo na mazoezi ya nyumbani."
+      },
+      "money": {
+        "name": "Rafiki wa Pesa",
+        "description": "Bajeti rahisi na vidokezo vya matumizi."
+      },
+      "study": {
+        "name": "Msaidizi wa Masomo",
+        "description": "Eleza kwa urahisi. Niulize maswali."
+      },
+      "email": {
+        "name": "Barua pepe na Uendelee",
+        "description": "Andika barua pepe wazi na mistari ya CV."
+      },
+      "translator": {
+        "name": "Mfasiri",
+        "description": "Tafsiri + fundisha misemo."
+      },
+      "travel": {
+        "name": "Kusafiri Buddy",
+        "description": "Mipango rahisi & orodha za kufunga."
+      },
+      "tech": {
+        "name": "Usaidizi wa Teknolojia (Rahisi)",
+        "description": "Simu, programu, misingi ya Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL; Muhtasari wa DR",
+        "description": "Risasi fupi + mstari mmoja TL;DR."
+      },
+      "gift": {
+        "name": "Kitafuta Zawadi",
+        "description": "Mawazo kwa bajeti na maslahi."
+      },
+      "party": {
+        "name": "Mpangaji wa Tukio (Lite)",
+        "description": "Panga karamu ndogo haraka."
+      },
+      "social": {
+        "name": "Muundaji wa chapisho la kijamii",
+        "description": "Rasimu ya machapisho yenye chaguo."
+      },
+      "interview": {
+        "name": "Kocha wa Mahojiano",
+        "description": "Mazoezi ya majibu (STAR)."
+      },
+      "homefix": {
+        "name": "Mwongozo wa Kurekebisha Nyumbani",
+        "description": "Utatuzi rahisi wa DIY."
+      },
+      "pet": {
+        "name": "Pet Care Buddy || maandishi ya kiolesura cha mtumiaji wa programu ya simu",
+        "description": "Kulisha, matembezi, mafunzo ya msingi."
+      },
+      "mindful": {
+        "name": "Dakika ya Makini",
+        "description": "Dakika 1-3 mapumziko ya utulivu."
+      },
+      "polite": {
+        "name": "Mwandikaji tena mwenye adabu",
+        "description": "Andika upya maandishi na ujibu vizuri."
+      }
+    }
+  },
+  "history": {
+    "title": "Historia",
+    "searchPlaceholder": "Tafuta gumzo...",
+    "newChat": "Gumzo Mpya",
+    "new": "+ Mpya",
+    "search": "Tafuta",
+    "clearSearch": "Futa utafutaji",
+    "noChatsYet": "Bado hakuna gumzo",
+    "noResults": "Bado hakuna gumzo",
+    "startFirstConversation": "Anza mazungumzo yako ya kwanza.",
+    "startChat": "Anzisha gumzo",
+    "startNewChat": "Anzisha gumzo jipya",
+    "errorLoadingHistory": "Hitilafu katika kupakia historia",
+    "loading": "Inapakia historia...",
+    "renameChat": "Badilisha jina la gumzo",
+    "enterNewTitle": "Weka kichwa kipya",
+    "deleteChat": "Ungependa kufuta gumzo?",
+    "deleteChatMessage": "\"{{title}}\" itafutwa.",
+    "rename": "Badilisha jina",
+    "unpin": "Bandua",
+    "pin": "Bandika",
+    "untitled": "Haina jina"
+  },
+  "settings": {
+    "title": "Mipangilio",
+    "model": "Mfano",
+    "searchPlaceholder": "Tafuta miundo...",
+    "temperatureForCurrentModel": "Joto kwa mfano wa sasa",
+    "customFor": "Maalum kwa {{model}}",
+    "usingDefault": "Kwa kutumia chaguomsingi {{temperature}}",
+    "resetToDefault": "Weka upya kwa chaguomsingi",
+    "defaultTemperature": "Halijoto chaguomsingi (rudi nyuma)",
+    "usedByModelsWithoutOverride": "Inatumiwa na mifano bila ubatilishaji maalum",
+    "dangerZone": "Eneo la hatari",
+    "clearAllChatsAndSettings": "Futa gumzo na mipangilio yote",
+    "about": "Kuhusu",
+    "version": "Toleo {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Sera ya Faragha",
+    "hero": {
+      "label": "Ofa maalum",
+      "title": "Ufikiaji usio na kikomo\n& Vipengele vya Pro",
+      "upgrade": "Boresha",
+      "manage": "Dhibiti mpango"
+    },
+    "sections": {
+      "premium": "Mpango wa Premium",
+      "data": "Data ya Mtumiaji",
+      "support": "Usaidizi na Kisheria"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Pata Premium",
+        "subtitle": "Fungua zana za uundaji zisizo na kikomo"
+      },
+      "premiumActive": {
+        "title": "Premium Active || maandishi ya kiolesura cha mtumiaji wa programu ya simu",
+        "subtitle": "Asante kwa kuunga mkono Cloud AI"
+      },
+      "restore": {
+        "title": "Rejesha ununuzi",
+        "subtitle": "Tumia ikiwa umebadilisha vifaa"
+      },
+      "history": {
+        "title": "Dhibiti historia ya gumzo",
+        "subtitle": "Tazama na ufute vipindi vyako vya zamani"
+      },
+      "reset": {
+        "title": "Weka upya mazungumzo na mapendeleo",
+        "subtitle": "Hufuta data yote iliyohifadhiwa kwenye kifaa hiki"
+      },
+      "rate": {
+        "title": "Tukadirie",
+        "error": "Imeshindwa kufungua ukurasa wa hifadhi."
+      },
+      "support": {
+        "title": "Msaada",
+        "subtitle": "Wasiliana nasi mtandaoni",
+        "error": "Imeshindwa kufungua ukurasa wa anwani."
+      },
+      "privacy": {
+        "title": "Sera ya Faragha",
+        "error": "Imeshindwa kufungua sera ya faragha."
+      },
+      "terms": {
+        "title": "Masharti ya Matumizi",
+        "error": "Imeshindwa kufungua sheria na masharti."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Haipatikani",
+      "linkUnavailableMessage": "Imeshindwa kufungua kiungo hiki kwa sasa.",
+      "restoreSuccessTitle": "Imerejeshwa",
+      "restoreSuccessMessage": "Ununuzi wako umerejeshwa.",
+      "restoreEmptyTitle": "Hakuna ununuzi uliopatikana",
+      "restoreEmptyMessage": "Hatukuweza kupata ununuzi unaoendelea wa kurejesha akaunti hii.",
+      "restoreErrorTitle": "Kurejesha kumeshindwa",
+      "restoreErrorMessage": "Imeshindwa kurejesha ununuzi sasa hivi.",
+      "resetConfirmTitle": "Ungependa kuweka upya data ya programu?",
+      "resetConfirmMessage": "Hii huondoa soga zote na mapendeleo ya karibu nawe.",
+      "resetConfirmCancel": "Ghairi",
+      "resetConfirmCta": "Weka upya"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Unda",
+    "chooseStyle": "Chagua Mtindo",
+    "aspectRatio": "Uwiano wa kipengele",
+    "starterPrompts": {
+      "title": "Vidokezo vya Kuanza",
+      "items": [
+        "picha ya studio",
+        "sebule ya kisasa",
+        "pwani ya kitropiki wakati wa machweo"
+      ]
+    },
+    "promptPlaceholder": "Andika unachotaka kuona...",
+    "promptHint": "Mfano: 'Retrieter ya dhahabu katika taa ya studio'",
+    "clearText": "Nakala wazi",
+    "generate": "Tengeneza",
+    "generating": "Inazalisha..."
+  },
+  "editImage": {
+    "headerTitle": "Hariri",
+    "chooseStyle": "Chagua Mtindo",
+    "aspectRatio": "Uwiano wa kipengele",
+    "starterPrompts": {
+      "title": "Vidokezo vya Kuanza",
+      "items": [
+        "kurekebisha taa",
+        "ondoa usuli",
+        "urekebishaji wa picha laini"
+      ]
+    },
+    "promptPlaceholder": "Eleza mabadiliko (ya hiari)",
+    "clearText": "Nakala wazi",
+    "generate": "Tengeneza",
+    "generating": "Inatuma...",
+    "upload": {
+      "choose": "Chagua Picha",
+      "change": "Badilika",
+      "remove": "Ondoa"
+    },
+    "imageUnavailable": {
+      "title": "Picha haipatikani",
+      "message": "Haikuweza kufikia picha iliyochaguliwa. Tafadhali ichague upya na ujaribu tena."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Wahusika"
+      },
+      "cartoon": {
+        "name": "Katuni"
+      },
+      "photoreal": {
+        "name": "Picha halisi"
+      },
+      "sketch": {
+        "name": "Mchoro"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Mchoro wa 3D"
+      },
+      "dark_fantasy": {
+        "name": "Ndoto ya Giza"
+      },
+      "vintage_film": {
+        "name": "Filamu ya zamani"
+      },
+      "pastel": {
+        "name": "Aesthetic ya Pastel"
+      },
+      "neon_glow": {
+        "name": "Mwangaza wa Neon"
+      },
+      "epic_landscape": {
+        "name": "Mazingira ya Epic"
+      }
+    },
+    "aspectRatios": {
+      "square": "Mraba",
+      "landscape": "Mandhari",
+      "portrait": "Picha"
+    },
+    "models": {
+      "fluxKontent": "Maudhui ya Flux",
+      "custom": "Desturi"
+    },
+    "notEnoughCoinsTitle": "Hakuna sarafu za kutosha",
+    "notEnoughCoinsMessage": "Salio lako la sasa ni la chini sana kwa picha hii.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Mfano wa haraka zaidi",
+      "runwareFluxKrea": "Ubunifu, matokeo ya mtindo",
+      "runwareQwenImage": "Matokeo ya usawa, ya ubora wa juu",
+      "google4": "Mfano bora wa picha wa AI",
+      "klingImageO1": "Udhibiti wa juu wa uhariri wa picha",
+      "fluxKontent": "Flux Konttent imeratibiwa kuhaririwa",
+      "runwareProvider": "Ubora wa usawa na uenezi wa kuaminika.",
+      "airProvider": "Banana ya Nano inaongeza sauti ya kucheza na ya wazi.",
+      "googleProvider": "Google imetayarisha maelezo yaliyoboreshwa.",
+      "klingaiProvider": "KlingAI imeundwa kwa ajili ya mabadiliko yanayodhibitiwa.",
+      "anthropicProvider": "Claude bomba la mihemko isiyobadilika.",
+      "default": "Gusa ili kuchunguza injini zinazopatikana."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "mtindo uliouchagua",
+    "sheetTitle": "Kutengeneza maono yako",
+    "sheetSubtitle": "Kunywa kwa kifupi kahawa ya seva huku tunachanganya {{style}} kwenye kidokezo.",
+    "phases": {
+      "blend": "Kuchanganya katika {{style}}",
+      "paint": "Kuchora eneo",
+      "finish": "Inaongeza polish ya mwisho"
+    },
+    "actions": {
+      "cancel": "Ghairi",
+      "retry": "Jaribu tena",
+      "close": "Funga"
+    },
+    "errors": {
+      "restrictedTitle": "Maudhui yenye Mipaka",
+      "genericTitle": "Kizazi kimeshindwa",
+      "genericMessage": "Haikuweza kuzalisha picha."
+    },
+    "alerts": {
+      "saveFailedTitle": "Haikuweza kuhifadhi",
+      "shareFailedTitle": "Haikuweza kushiriki",
+      "tryAgain": "Tafadhali jaribu tena.",
+      "savedTitle": "Imehifadhiwa",
+      "savedMessage": "Picha imehifadhiwa kwenye ghala yako.",
+      "permissionTitle": "Ruhusa inahitajika",
+      "permissionMessage": "Ruhusu ufikiaji wa hifadhi ili kuhifadhi picha kwenye ghala yako."
+    },
+    "result": {
+      "complete": "Yote yamekamilika"
+    },
+    "accessibility": {
+      "close": "Funga"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Futa",
+      "edit": "Hariri",
+      "save": "Hifadhi",
+      "share": "Shiriki"
+    },
+    "alerts": {
+      "savedTitle": "Imehifadhiwa",
+      "savedMessage": "Picha imehifadhiwa kwenye ghala yako.",
+      "permissionTitle": "Ruhusa inahitajika",
+      "permissionMessage": "Ruhusu ufikiaji wa hifadhi ili kuhifadhi picha kwenye ghala yako.",
+      "saveFailedTitle": "Haikuweza kuhifadhi",
+      "tryAgain": "Tafadhali jaribu tena."
+    },
+    "accessibility": {
+      "close": "Funga",
+      "delete": "Futa picha",
+      "edit": "Hariri picha",
+      "save": "Hifadhi picha",
+      "share": "Shiriki picha"
+    }
+  },
+  "reportContent": {
+    "title": "Ripoti maudhui ya AI",
+    "subtitle": "Tuambie ni nini kibaya na maudhui haya yaliyotolewa.",
+    "privateDisclosure": "Kuwasilisha hutuma maudhui haya yaliyoripotiwa kwa ukaguzi wa usalama.",
+    "accessibilityLabel": "Ripoti maudhui ya AI",
+    "reasons": {
+      "sexual": "Maudhui ya ngono au uchi",
+      "violence_self_harm": "Vurugu au kujidhuru",
+      "hate_harassment": "Chuki au unyanyasaji",
+      "child_safety": "Hofu ya usalama wa mtoto",
+      "scam_deceptive": "Ulaghai au maudhui ya udanganyifu",
+      "other": "Nyingine"
+    },
+    "errors": {
+      "reasonRequired": "Tafadhali chagua sababu kabla ya kuwasilisha.",
+      "submit": "Haikuweza kuwasilisha ripoti. Tafadhali jaribu tena."
+    },
+    "success": {
+      "title": "Asante. Ripoti yako iliwasilishwa.",
+      "subtitle": "Tutatumia ripoti kuboresha usalama wa maudhui."
+    },
+    "actions": {
+      "report": "Ripoti",
+      "submit": "Wasilisha Ripoti",
+      "done": "Imekamilika"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Fungua menyu",
+      "selectImages": "Chagua picha",
+      "exitSelection": "Ondoka kwenye uteuzi",
+      "deleteSelected": "Futa picha zilizochaguliwa",
+      "selectToDelete": "Chagua picha za kufuta"
+    },
+    "createCard": {
+      "title": "Unda kutoka kwa Maandishi",
+      "subtitle": "Andika maelezo",
+      "cta": "Eleza & Unda"
+    },
+    "editCard": {
+      "title": "Mhariri wa Picha wa AI",
+      "subtitle": "Badilisha na uimarishe na AI",
+      "cta": "Hariri ukitumia AI"
+    },
+    "gallery": {
+      "title": "Matunzio",
+      "empty": "Bado hakuna picha",
+      "selection": {
+        "enter": "Chagua picha",
+        "exit": "Ondoka kwenye uteuzi",
+        "deleteSelected": "Futa picha zilizochaguliwa",
+        "selectForDelete": "Chagua picha za kufuta"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Kutana",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Unda na uhariri picha ukitumia AI—ndani ya Cloud AI."
+    },
+    "relaxView": {
+      "title": "Kutana na AI yako",
+      "titleHighlight": "Wasaidizi",
+      "subtitle": "Wataalamu maalum wa AI tayari kukusaidia kwa mahitaji yako ya kila siku",
+      "cards": {
+        "fitness": {
+          "title": "Kocha wa Fitness",
+          "text": "Mazoea madogo na mazoezi ya nyumbani."
+        },
+        "recipes": {
+          "title": "Milo & Mapishi",
+          "text": "Nini cha kupika, na kile ulicho nacho."
+        },
+        "travel": {
+          "title": "Kusafiri Buddy",
+          "text": "Mipango rahisi & orodha za kufunga."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "UTATUZI WA AI WA DARAJA LA UJASIRI",
+      "description": "Iwezeshe biashara yako kwa teknolojia ya kisasa ya akili ya bandia iliyoundwa kwa ajili ya wataalamu wa biashara na timu.",
+      "stats": "Inaaminiwa na watumiaji 500k+",
+      "rating": "4.9 / 5",
+      "button": "Anza"
+    },
+    "buttons": {
+      "continue": "Endelea",
+      "start": "Hebu tuanze"
+    }
+  },
+  "coinStore": {
+    "title": "Pata Mikopo",
+    "loading": "Inapakia duka la sarafu...",
+    "balanceLabel": "Salio lako la sasa ni",
+    "balanceValue": "{{amount}} Mikopo",
+    "history": {
+      "link": "Historia ya Muamala",
+      "alertTitle": "Historia",
+      "alertBody": "Historia ya miamala inakuja hivi karibuni."
+    },
+    "noPacks": "Hakuna vifurushi vya sarafu vinavyopatikana. Angalia kitambulisho chako cha ofa RevenueCat.",
+    "badges": {
+      "basic": "Kifurushi cha Msingi",
+      "popular": "Maarufu Zaidi",
+      "value": "Thamani Bora"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Mikopo",
+      "tokensLabel": "{{credits}} Mikopo",
+      "defaultName": "Pakiti {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "Nenda kwenye Premium",
+      "subtitle": "Ufikiaji usio na kikomo na vipengele",
+      "cta": "Boresha"
+    },
+    "termsText": "Kwa kufanya ununuzi, unakubali yetu",
+    "termsLink": "Masharti ya Huduma",
+    "alerts": {
+      "initErrorTitle": "Kosa la kuanzisha",
+      "genericMessage": "Hitilafu fulani imetokea.",
+      "successTitle": "Mafanikio",
+      "successMessage": "Salio litaonekana hivi karibuni.",
+      "purchaseFailedTitle": "Imeshindwa kununua",
+      "unknownError": "Hitilafu isiyojulikana"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Inahitajika",
+    "upgrade": "Boresha",
+    "modelRequiredMessage": "Muundo huu unahitaji Premium. Pata toleo jipya la GPT-5, Grok 4, Claude, na miundo ya hali ya juu zaidi.",
+    "assistantsRequiredMessage": "Waratibu wanahitaji Premium. Boresha ili ufikie wasaidizi maalum wa AI kwa siha, usimbaji, uandishi, na zaidi.",
+    "assistantsTitle": "Premium Inahitajika",
+    "assistantsMessage": "Waratibu wanahitaji Premium. Boresha ili ufikie wasaidizi maalum wa AI kwa siha, usimbaji, uandishi, na zaidi."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Funga ukuta wa malipo",
+    "unavailableTitle": "Ununuzi haupatikani",
+    "unavailableMessage": "Utozaji wa Android bado haujasanidiwa.",
+    "restoreEmptyTitle": "Hakuna ununuzi uliopatikana",
+    "restoreEmptyMessage": "Hatukuweza kupata ununuzi unaoendelea wa kurejesha akaunti hii.",
+    "restoreFailedTitle": "Kurejesha kumeshindwa",
+    "restoreFailedMessage": "Imeshindwa kurejesha ununuzi sasa hivi.",
+    "productsUnavailableTitle": "Hakuna mipango inayopatikana",
+    "productsUnavailableMessage": "Hakuna bidhaa za usajili wa Android zinazopatikana kwa sasa.",
+    "purchaseFailedTitle": "Imeshindwa kununua",
+    "purchaseFailedMessage": "Imeshindwa kukamilisha ununuzi huu kwa sasa.",
+    "restore": "Rejesha",
+    "restoreRestoring": "Inarejesha...",
+    "features": {
+      "create": "Unda picha na video",
+      "search": "Tafuta wavuti ukitumia AI",
+      "talk": "Ongea kwa kawaida na AI",
+      "imageStudio": "Pata mikopo ya Image Studio {{credits}} {{period}}",
+      "period": {
+        "weekly": "kila wiki",
+        "monthly": "kila mwezi",
+        "yearly": "kila mwaka"
+      }
+    },
+    "freeTrial": {
+      "title": "Jaribio la bure",
+      "subtitle": "Jaribio la siku 3 bila malipo"
+    },
+    "badge": {
+      "bestOffer": "Ofa bora zaidi"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Kila mwaka",
+        "only": "{{price}} pekee",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
+      },
+      "monthly": {
+        "title": "Kila mwezi",
+        "subtitle": "Ghairi wakati wowote",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Kila wiki",
+        "subtitle": "Ghairi wakati wowote",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "Siku 3 bila malipo, basi"
+      }
+    },
+    "frequency": {
+      "perWeek": "kwa wiki",
+      "perMonth": "kwa mwezi"
+    },
+    "cta": "Endelea",
+    "ctaFreeTrial": "Ijaribu Bila Malipo",
+    "legal": {
+      "terms": "Masharti",
+      "privacy": "Faragha"
+    },
+    "premium": {
+      "headline": "AI zote za malipo katika mpango mmoja",
+      "subtitleLine1": "Piga gumzo, misimbo, unda na panga",
+      "subtitleLine2": "na mifano ya juu.",
+      "enableTrial": "Washa jaribio lisilolipishwa",
+      "annual": "Kila mwaka",
+      "saveBadge": "Okoa 83%",
+      "year": "mwaka",
+      "week": "wiki",
+      "termsOfUse": "Masharti ya Matumizi",
+      "privacyPolicy": "Sera ya Faragha || programu ya simu paywall UI"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Ujumbe...",
+    "createImages": "Unda Picha",
+    "generateAiArtwork": "Tengeneza mchoro wa AI",
+    "camera": "Pakia Picha",
+    "takeOrSelectPhotos": "Chagua picha",
+    "search": "Tafuta",
+    "findInformation": "Tafuta habari",
+    "findRecentInfo": "Tafuta habari za hivi majuzi",
+    "removeImage": "Ondoa picha",
+    "messageInput": "Ingizo la ujumbe",
+    "clearInput": "Ingizo wazi",
+    "quickActionsLabel": "Vitendo vya haraka",
+    "hideQuickActions": "Ficha vitendo vya haraka",
+    "showQuickActions": "Onyesha vitendo vya haraka",
+    "startVoiceInput": "Anza kuandika kwa kutamka",
+    "sendMessage": "Tuma ujumbe",
+    "offline": "Nje ya mtandao",
+    "stop": "Acha",
+    "streaming": "Inatiririsha...",
+    "closeRecorder": "Funga kinasa sauti",
+    "insertTranscript": "Tuma",
+    "scrollToLatest": "Sogeza hadi ujumbe wa hivi punde",
+    "copyMessage": "Nakili ujumbe",
+    "copyMessageHint": "Nakili ujumbe huu kwenye ubao wa kunakili",
+    "shareMessage": "Shiriki ujumbe",
+    "shareMessageHint": "Share ujumbe huu",
+    "regenerateResponse": "Tengeneza jibu upya",
+    "regenerateResponseHint": "Toa jibu jipya",
+    "copyCode": "Nakili msimbo",
+    "copied": "Imenakiliwa",
+    "image": "picha",
+    "loading": "Inapakia...",
+    "loadingChat": "Inapakia gumzo...",
+    "offlineBanner": "Hauko mtandaoni. Ujumbe hauwezi kutumwa.",
+    "offlineError": "Hakuna muunganisho wa intaneti. Tafadhali angalia muunganisho wako na ujaribu tena.",
+    "imagePickerErrorTitle": "Hitilafu ya kichagua picha",
+    "imagePickerErrorMessage": "Imeshindwa kufikia picha zako. Tafadhali jaribu tena.",
+    "messageTooLong": "Ujumbe ni mrefu sana ({{length}}). Kikomo ni {{limit}}.",
+    "sendFailed": "Imeshindwa kutuma ujumbe. Tafadhali jaribu tena.",
+    "modelNoImageSupport": "Muundo uliochaguliwa hautumii picha. Tafadhali chagua muundo tofauti.",
+    "voiceStartFailed": "Haikuweza kuanzisha sauti.",
+    "voiceNoSpeechDetected": "Hakuna sauti iliyotambuliwa. Tafadhali jaribu tena.",
+    "emptyTitle": "Ninawezaje kusaidia?",
+    "emptySubtitle": "Anza mazungumzo na AI",
+    "privateTitle": "Gumzo la Kibinafsi",
+    "privateSubtitle": "Gumzo hili halitaonekana katika historia yako ya soga",
+    "startPrivateChat": "Anzisha gumzo la faragha",
+    "endPrivateChat": "Komesha gumzo la faragha",
+    "permissions": {
+      "photosTitle": "Ruhusa ya Picha Inahitajika",
+      "photosMessage": "Ufikiaji wa picha unahitajika ili kuchagua picha.",
+      "voiceTitle": "Ruhusa za Sauti Zinahitajika",
+      "voiceMessage": "Ufikiaji wa maikrofoni na usemi unahitajika ili kutumia sauti."
+    },
+    "activity": {
+      "analyzingImages": "Inachanganua picha...",
+      "searching": "Inatafuta...",
+      "thinking": "Kufikiri..."
+    },
+    "webSearch": {
+      "title": "Utafutaji wa wavuti",
+      "subtitle": "Tafuta habari za hivi majuzi",
+      "label": "Utafutaji wa Wavuti",
+      "enable": "Washa utafutaji wa wavuti",
+      "disable": "Zima utafutaji wa wavuti",
+      "toggleLabel": "Tafuta wavuti"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Kubuni taswira kwa kasi.",
+      "subtitle": "Tengeneza, chuja na uchapishe vipengee vinavyoonekana katika sehemu moja.",
+      "cta": "Fungua"
+    },
+    "quickActions": {
+      "createImages": "Unda Picha",
+      "openCamera": "Fungua Kamera",
+      "editImage": "Hariri Picha",
+      "startVoice": "Anzisha Sauti",
+      "assistants": "Wasaidizi"
+    },
+    "listening": "Inasikiliza...",
+    "startRecording": "Anza kurekodi...",
+    "assistantHeader": {
+      "unavailableTitle": "Mratibu haipatikani",
+      "unavailableDescription": "Hatukuweza kupakia programu hii ya mratibu. Tafadhali jaribu tena.",
+      "ready": "Tayari kusaidia"
+    },
+    "actions": {
+      "copy": "Nakili",
+      "share": "Shiriki",
+      "regenerate": "Tengeneza upya",
+      "retryFromHere": "Jaribu tena kutoka hapa",
+      "report": "Ripoti",
+      "cancel": "Ghairi"
+    },
+    "markdown": {
+      "copy": "Nakili",
+      "copied": "Imenakiliwa",
+      "table": "JEDWALI",
+      "watchVideo": "Tazama Video",
+      "wikipedia": "Wikipedia",
+      "link": "Kiungo",
+      "note": "Kumbuka",
+      "warning": "Onyo",
+      "tip": "Kidokezo"
+    },
+    "messageActionTitle": "Ujumbe",
+    "status": {
+      "sending": "Inatuma...",
+      "failed": "Imeshindwa",
+      "sent": "Imetumwa"
+    },
+    "suggestions": {
+      "writeStory": "Andika hadithi ya ubunifu",
+      "writeStorySubtitle": "kuhusu tukio la kichawi",
+      "planTravel": "Panga ratiba ya safari",
+      "planTravelSubtitle": "kwa likizo ya ajabu",
+      "explainConcept": "Eleza dhana hii",
+      "explainConceptSubtitle": "kwa maneno rahisi",
+      "planDay": "Panga siku yangu",
+      "planDaySubtitle": "na vidokezo vya tija"
+    },
+    "home": {
+      "eyebrow": "Chagua mada",
+      "title": "Unataka kufanya nini?",
+      "subtitle": "Chagua mwelekeo, kisha anza na kidokezo dhabiti.",
+      "pickPromptTitle": "Chagua kidokezo ili kuanza",
+      "changeTopic": "Chagua mada nyingine",
+      "intents": {
+        "summarize": "Fanya muhtasari wa maandishi",
+        "summarizeShort": "Fanya muhtasari",
+        "summarizeHint": "Nakala, maelezo, memo za sauti, nyuzi ndefu",
+        "plan": "Fanya mpango",
+        "planHint": "Safari, taratibu, bajeti, tarehe za mwisho, mabadiliko ya maisha",
+        "brainstorm": "Cheza bongo",
+        "brainstormHint": "Mawazo, matoleo, majina, maudhui, miradi ya kando",
+        "analyze": "Changanua data",
+        "analyzeHint": "Matumizi, maoni, vipimo, tabia, utendaji"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Unda muhtasari wa mwanzilishi",
+          "founderBriefSubtitle": "Vuta hatari kuu, maamuzi, na hatua zinazofuata.",
+          "classNotesTitle": "Safisha vidokezo vyangu vya kusoma",
+          "classNotesSubtitle": "Badilisha maelezo mafupi kuwa mwongozo wa kusoma wazi.",
+          "meetingHandoffTitle": "Andika muhtasari wa hati",
+          "meetingHandoffSubtitle": "Inatumika baada ya mikutano, simu, au mazungumzo marefu ya ndani.",
+          "longArticleTitle": "Fanya muhtasari wa makala hii haraka",
+          "longArticleSubtitle": "Finya makala marefu iwe ya kuchukua kwa ukali."
+        },
+        "plan": {
+          "energyResetTitle": "Jenga uwekaji upya wa nishati kwa siku 14",
+          "energyResetSubtitle": "Mpango wa kweli wa kulala, chakula, harakati na umakini.",
+          "mealPlanTitle": "Panga chakula nitapika kweli",
+          "mealPlanSubtitle": "Vitendo, bei nafuu, na kulingana na kile nilichonacho.",
+          "cityMoveTitle": "Panga kuhamia kwa jiji jipya",
+          "cityMoveSubtitle": "Igawanye katika ratiba ya matukio, bajeti, makazi na majukumu ya msimamizi.",
+          "tripEscapeTitle": "Panga kutoroka kwa wikendi ya kukumbukwa",
+          "tripEscapeSubtitle": "Kitu bora kuliko ratiba ya kawaida."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Tafuta msukumo wa upande wa kweli",
+          "sideHustleSubtitle": "Mawazo ninayoweza kuanza nikiwa nafanya kazi kwa muda wote.",
+          "brandAngleTitle": "Tafuta pembe ya chapa ya kukumbukwa",
+          "brandAngleSubtitle": "Inafaa kwa bidhaa, watayarishi, mawakala au majarida.",
+          "socialSeriesTitle": "Buni mfululizo wa maudhui",
+          "socialSeriesSubtitle": "Kitu kinacholingana vya kutosha kukuza hadhira.",
+          "datingIdeasTitle": "Njoo na mawazo mapya",
+          "datingIdeasSubtitle": "Tarehe, zawadi, matukio ya kushangaza, au matukio ambayo yanafikiriwa."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Tafuta mahali pesa zangu zinavuja",
+          "spendingLeaksSubtitle": "Onyesha mifumo, maeneo dhaifu, na ushindi rahisi zaidi kwanza.",
+          "customerFeedbackTitle": "Badilisha maoni kuwa vipaumbele",
+          "customerFeedbackSubtitle": "Maombi ya nguzo, malalamiko, uharaka, na athari.",
+          "habitPatternsTitle": "Mitindo ya doa katika tabia zangu",
+          "habitPatternsSubtitle": "Inafaa kwa mazoezi, kulala, kuandika habari, au kumbukumbu za kuzingatia.",
+          "metricsStoryTitle": "Eleza maana ya nambari",
+          "metricsStorySubtitle": "Ishara zaidi, kelele kidogo ya lahajedwali."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Inachakata...",
+    "tapToUploadImage": "Gusa ili kupakia picha"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Inachakata...",
+    "camera": "Pakia Picha",
+    "library": "Maktaba"
+  },
+  "common": {
+    "ok": "SAWA",
+    "retry": "Jaribu tena",
+    "cancel": "Ghairi",
+    "allow": "Ruhusu",
+    "notNow": "Si sasa",
+    "openSettings": "Fungua Mipangilio",
+    "close": "Funga",
+    "save": "Hifadhi",
+    "tryAgain": "Jaribu Tena"
+  },
+  "rateUs": {
+    "title": "Je, unafurahia Cloud AI?",
+    "subtitle": "Maoni yako hutusaidia kuboresha. Je, ungependa kutukadiria kwenye App Store?",
+    "rateNow": "Kadiria Sasa",
+    "maybeLater": "Labda Baadaye",
+    "dontAskAgain": "Usiulize Tena"
+  },
+  "oneTimeOffer": {
+    "title": "Ofa ya Mara Moja",
+    "discount": "{{percent}}% PUNGUZO",
+    "subtitle": "Hutaona ofa hii tena.",
+    "badgeLine1": "Kipekee",
+    "badgeLine2": "Ofa ya mara moja",
+    "upgradeNow": "Pata toleo jipya la {{price}}",
+    "loadingPrice": "Inapakia...",
+    "termsOfUse": "Masharti ya Matumizi",
+    "privacyPolicy": "Sera ya Faragha",
+    "accessTitle": "Ufikiaji usio na kikomo wa",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Ufikiaji usio na kikomo kwa GPT-4",
+      "geminiPro": "Ufikiaji wa Gemini Pro",
+      "grokInsights": "Tumia Grok kwa maarifa mapya",
+      "priorityAccess": "Ufikiaji wa kipaumbele na majibu ya haraka"
+    },
+    "bestValue": "Thamani Bora",
+    "annualPremium": "Malipo ya Mwaka",
+    "oneTimePayment": "Malipo ya mara moja",
+    "wasPrice": "ilikuwa",
+    "continue": "Endelea",
+    "restore": "Rejesha",
+    "terms": "Masharti",
+    "privacy": "Faragha",
+    "successTitle": "Mafanikio!",
+    "successMessage": "Asante kwa ununuzi wako! Furahia ufikiaji unaolipishwa kwa miezi 12 ijayo.",
+    "errorTitle": "Ununuzi Umeshindwa",
+    "errorMessage": "Hitilafu fulani imetokea. Tafadhali jaribu tena.",
+    "restoreSuccessTitle": "Imerejeshwa",
+    "restoreSuccessMessage": "Ununuzi wako umerejeshwa.",
+    "restoreErrorTitle": "Kurejesha Imeshindwa",
+    "restoreErrorMessage": "Hakuna ununuzi uliopatikana wa kurejesha.",
+    "unavailableTitle": "Ununuzi haupatikani",
+    "unavailableMessage": "Utozaji wa Android bado haujasanidiwa."
+  },
+  "rewards": {
+    "header": {
+      "title": "Zawadi",
+      "openMenu": "Fungua menyu",
+      "goBack": "Rudi nyuma"
+    },
+    "pointsHero": {
+      "totalBalance": "USAWA WA JUMLA",
+      "seeYourRewards": "Tazama zawadi zako"
+    },
+    "streakTracker": {
+      "title": "Mfululizo wa Kila Siku",
+      "subtitle": "Endelea! Unawaka moto.",
+      "days": "Siku",
+      "prize": "Tuzo",
+      "dayLabel": "Siku {{number}}",
+      "nextReward": "Zawadi inayofuata: {{amount}} katika {{time}}",
+      "coins": "Sarafu"
+    },
+    "sections": {
+      "availableQuests": "Mapambano Yanayopatikana",
+      "completedQuests": "Jumuia Zilizokamilika",
+      "availableRewards": "Zawadi zinazopatikana",
+      "needsMoreCoins": "Inahitaji sarafu zaidi"
+    },
+    "balances": {
+      "rewardCoins": "Pesa za malipo",
+      "imageCredits": "Mikopo ya picha"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "Mikopo 50 ya Picha",
+        "imageCredits200": "Mikopo 200 ya Picha",
+        "imageCredits600": "Mikopo 600 ya Picha",
+        "weeklyPremium": "Malipo ya Wiki",
+        "secretBox": "Sanduku la Siri"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Zawadi za siri ndani"
+      },
+      "alerts": {
+        "comingSoonTitle": "Inakuja hivi karibuni",
+        "comingSoonMessage": "Zawadi hii bado haipatikani.",
+        "notEnoughCoinsTitle": "Hakuna sarafu za kutosha",
+        "notEnoughCoinsMessage": "Unahitaji sarafu zaidi za zawadi ili kufungua zawadi hii.",
+        "errorTitle": "Hitilafu",
+        "couldNotOpenBox": "Haikuweza kufungua kisanduku.",
+        "couldNotRedeem": "Haikuweza kukomboa zawadi. Tafadhali jaribu tena.",
+        "mysteryReward": "Tuzo la Siri"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Kuingia Kila Siku",
+        "description": "Fungua programu leo ili kudumisha mfululizo wako",
+        "message": "Pambano hili linakamilika kiotomatiki unapofungua programu kila siku."
+      },
+      "shareFacebook": {
+        "title": "Shiriki kwenye Facebook",
+        "description": "Chapisha kuhusu sisi kwenye Facebook"
+      },
+      "shareTwitter": {
+        "title": "Shiriki kwenye Twitter",
+        "description": "Tweet uzoefu wako"
+      },
+      "shareInstagram": {
+        "title": "Shiriki kwenye Instagram",
+        "description": "Shiriki hadithi au chapisho"
+      },
+      "shareExperience": {
+        "title": "Shiriki uzoefu wako",
+        "description": "Waambie marafiki kwa nini unapenda programu"
+      },
+      "share": {
+        "genericMessage": "Ninatumia programu hii ya AI kutengeneza gumzo na picha. Iangalie: {{url}}",
+        "facebookQuote": "Angalia Programu hii ya AI!",
+        "twitterText": "Ninajaribu programu hii ya AI, ni nzuri sana.",
+        "instagramMessage": "Angalia programu hii ya AI: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Hitilafu",
+        "errorMessage": "Haikuweza kufungua ukurasa wa hifadhi."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Jaribio Limekamilika",
+        "description": "Pambano limekamilika",
+        "points": "+{{points}} pointi",
+        "close": "Funga"
+      },
+      "rewardSuccess": {
+        "error": "HITILAFU",
+        "success": "MAFANIKIO",
+        "somethingWentWrong": "Hitilafu fulani imetokea",
+        "rewardUnlocked": "Zawadi Imefunguliwa",
+        "credits": "Mikopo",
+        "close": "Funga",
+        "okay": "Sawa"
+      },
+      "secretBox": {
+        "pill": "SANDUKU LA SIRI",
+        "rewardUnlocked": "ZAWADI IMEFUNGULIWA",
+        "shufflingRewards": "KUCHUKUA ZAWADI...",
+        "imageCreditsAdded": "Salio za picha zimeongezwa kwenye akaunti yako",
+        "continue": "Endelea",
+        "revealing": "Inafichua...",
+        "prizeTiers": {
+          "lucky": "BAHATI",
+          "pro": "PRO",
+          "elite": "WASOMI",
+          "mythic": "HADITHI"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Chukua sarafu zako za kila siku",
+      "subtitle": "Rudi kila siku — zawadi inaongezeka.",
+      "cta": "Jisajili",
+      "claimed": "Imepokelewa! +{{amount}} sarafu",
+      "later": "Baadaye"
+    }
+  },
+  "app": {
+    "version": "Toleo {{version}}",
+    "offlineBanner": "Hauko mtandaoni",
+    "launch": {
+      "accessibilityLabel": "Inaanza Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, tayari wakati uko"
+    },
+    "errors": {
+      "modelsLoadTitle": "Imeshindwa Kupakia Miundo",
+      "modelsLoadMessage": "Haiwezi kupakia miundo ya AI. Programu itatumia miundo chaguomsingi. Tafadhali angalia muunganisho wako wa intaneti.",
+      "modelsLoadTimeout": "Kupakia miundo kulichukua muda mrefu sana. Programu itatumia miundo chaguomsingi. Tafadhali jaribu tena.",
+      "modelsLoadNetwork": "Hakuna muunganisho wa intaneti. Programu itatumia miundo chaguomsingi. Tafadhali angalia muunganisho wako.",
+      "deviceIdTitle": "Hitilafu ya Kuanzisha",
+      "deviceIdMessage": "Imeshindwa kuanzisha kitambulisho cha kifaa. Baadhi ya vipengele huenda visifanye kazi ipasavyo.",
+      "storageTitle": "Hitilafu ya Hifadhi",
+      "storageMessage": "Haiwezi kufikia hifadhi ya ndani. Baadhi ya vipengele huenda visifanye kazi ipasavyo.",
+      "crashTitle": "Hitilafu fulani imetokea.",
+      "crashSubtitle": "Tafadhali jaribu tena.",
+      "crashLabel": "Programu iliacha kufanya kazi"
+    },
+    "proxyErrors": {
+      "genericTitle": "Hitilafu fulani imetokea",
+      "genericMessage": "Tafadhali jaribu tena.",
+      "rateLimitTitle": "Maombi mengi sana",
+      "rateLimitMessage": "Tunashughulikia maombi mengi. Tafadhali jaribu tena baada ya muda mfupi.",
+      "rateLimitRetryAfter": "Tunashughulikia maombi mengi. Tafadhali jaribu tena baada ya kama sekunde {{seconds}}.",
+      "restrictedTitle": "Maudhui yenye Mipaka",
+      "restrictedMessage": "Ombi hili lilizuiwa na vichujio vya usalama.",
+      "insufficientCoinsTitle": "Hakuna sarafu za kutosha",
+      "insufficientCoinsMessage": "Salio lako la sasa ni la chini sana kwa ombi hili.",
+      "imageUnavailableTitle": "Picha haipatikani",
+      "imageUnavailableMessage": "Faili ya picha iliyotengenezwa haikupatikana kwa muda. Tafadhali jaribu tena.",
+      "authorizationTitle": "Suala la uidhinishaji",
+      "authorizationMessage": "Hatukuweza kuthibitisha akaunti yako. Tafadhali jaribu tena.",
+      "serverTitle": "Hiccup ya seva",
+      "serverMessage": "Seva zetu zilikuwa na matatizo. Tafadhali jaribu tena baada ya muda mfupi.",
+      "timeoutTitle": "Kuchukua muda mrefu sana",
+      "timeoutMessage": "Muda wa ombi umekwisha. Tafadhali jaribu tena.",
+      "networkTitle": "Hakuna muunganisho",
+      "networkMessage": "Hakuna muunganisho wa intaneti. Tafadhali angalia muunganisho wako na ujaribu tena.",
+      "requestTitle": "Ombi suala",
+      "requestMessage": "Hitilafu fulani imetokea na ombi lako. Tafadhali jaribu tena."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Washa Premium",
+    "activateMessage": "Je, ungependa kuwezesha malipo ya mkaguzi?",
+    "activateAction": "Washa",
+    "deactivateTitle": "Zima Premium",
+    "deactivateMessage": "Je, ungependa kuzima malipo ya mkaguzi?",
+    "deactivateAction": "Zima"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Zawadi ya kila siku",
+      "body": "Usikose sarafu zako za kila siku - dai kabla ya saa sita usiku."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Usikose sarafu zako za kila siku",
+      "body": "Tunatuma ukumbusho mmoja kwa siku ili mfululizo wako uendelee na sarafu zako ziongezeke. Hakuna taka, na unaweza kuzima wakati wowote.",
+      "enable": "Washa vikumbusho",
+      "skip": "Si sasa"
+    }
+  }
+}

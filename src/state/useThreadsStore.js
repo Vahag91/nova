@@ -5,6 +5,8 @@ import { buildThreadIndexEntry, sortThreadIndex } from '../lib/threadIndex';
 import { newThread } from './types';
 
 const DEFAULT_THREAD_TITLE = 'assistant';
+let hydrationPromise = null;
+let threadBodiesHydrationPromise = null;
 
 function normalizeThreadTitle(title) {
   const trimmed = typeof title === 'string' ? title.trim() : '';
@@ -43,6 +45,8 @@ export const useThreadsStore = create((set, get) => ({
   threadsById: {},
   activeThreadId: null,
   hydrated: false,
+  threadBodiesHydrated: false,
+  threadBodiesLoadFailed: false,
 
   // Performance monitoring
   _debug: {
@@ -52,13 +56,128 @@ export const useThreadsStore = create((set, get) => ({
   },
 
   hydrate: async () => {
-    const { threadIndex, threadsById } = await Storage.loadThreadState();
-    set({
-      threadIndex,
-      threadsById,
-      activeThreadId: null,
-      hydrated: true,
+    if (get().hydrated) return;
+    if (hydrationPromise) return hydrationPromise;
+
+    hydrationPromise = (async () => {
+      const threadIndex = await Storage.loadThreadIndex();
+      if (!get().hydrated) {
+        if (threadIndex.length === 0) {
+          // An empty v2 index can also mean an upgrade from legacy storage or
+          // recoverable orphan records. Complete that one-time migration before
+          // the UI can save a new thread and remove the legacy source.
+          const loaded = await Storage.loadThreadState();
+          if (get().hydrated) return;
+          set({
+            threadIndex: loaded.threadIndex || [],
+            threadsById: loaded.threadsById || {},
+            activeThreadId: null,
+            hydrated: true,
+            threadBodiesHydrated: true,
+          });
+        } else {
+          set({
+            threadIndex,
+            threadsById: {},
+            activeThreadId: null,
+            hydrated: true,
+          });
+        }
+      }
+    })().finally(() => {
+      hydrationPromise = null;
     });
+
+    return hydrationPromise;
+  },
+
+  hydrateThreadBodies: async () => {
+    if (get().threadBodiesHydrated) return;
+    if (threadBodiesHydrationPromise) return threadBodiesHydrationPromise;
+
+    threadBodiesHydrationPromise = (async () => {
+      await get().hydrate();
+      if (get().threadBodiesHydrated) return;
+
+      const snapshotIndex = get().threadIndex || [];
+      const snapshotIndexById = new Map(
+        snapshotIndex.filter(entry => entry?.id).map(entry => [entry.id, entry]),
+      );
+      const snapshotBodies = get().threadsById || {};
+      // This read is deliberately migration-free. Delayed startup hydration
+      // must never write stale records over a concurrent delete/reset/new chat.
+      set({ threadBodiesLoadFailed: false });
+      let loaded = await Storage.loadThreadBodies(snapshotIndex);
+      if (!loaded.loadSucceeded) {
+        await new Promise(resolve => setTimeout(resolve, 350));
+        loaded = await Storage.loadThreadBodies(snapshotIndex);
+      }
+      if (!loaded.loadSucceeded) {
+        if (!get().threadBodiesHydrated) {
+          set({ threadBodiesLoadFailed: true });
+        }
+        return;
+      }
+      set(state => {
+        const loadedIndexById = new Map(
+          (loaded.threadIndex || [])
+            .filter(entry => entry?.id)
+            .map(entry => [entry.id, entry]),
+        );
+        const nextIndex = [];
+        const nextBodies = {};
+
+        (state.threadIndex || []).forEach(currentEntry => {
+          const id = currentEntry?.id;
+          if (!id) return;
+
+          const snapshotEntry = snapshotIndexById.get(id);
+          const currentBody = state.threadsById?.[id];
+          const bodyChanged = currentBody !== snapshotBodies[id];
+          const entryChanged = currentEntry !== snapshotEntry;
+          const addedWhileLoading = !snapshotEntry;
+          const localEmptyThread = currentBody && !currentEntry.hasMessages;
+
+          if (
+            addedWhileLoading ||
+            entryChanged ||
+            bodyChanged ||
+            localEmptyThread
+          ) {
+            nextIndex.push(currentEntry);
+            if (currentBody) nextBodies[id] = currentBody;
+            return;
+          }
+
+          const loadedBody = loaded.threadsById?.[id];
+          const loadedEntry = loadedIndexById.get(id);
+          // Missing/corrupt bodies are omitted instead of leaving ghost rows.
+          if (loadedBody && loadedEntry) {
+            nextIndex.push(loadedEntry);
+            nextBodies[id] = loadedBody;
+          }
+        });
+
+        const sortedIndex = sortThreadIndex(nextIndex);
+        const activeThreadStillExists = sortedIndex.some(
+          entry => entry.id === state.activeThreadId,
+        );
+
+        return {
+          threadIndex: sortedIndex,
+          threadsById: nextBodies,
+          activeThreadId: activeThreadStillExists
+            ? state.activeThreadId
+            : (sortedIndex[0]?.id ?? null),
+          threadBodiesHydrated: true,
+          threadBodiesLoadFailed: false,
+        };
+      });
+    })().finally(() => {
+      threadBodiesHydrationPromise = null;
+    });
+
+    return threadBodiesHydrationPromise;
   },
 
   createThread: ({ title = DEFAULT_THREAD_TITLE, model = 'gpt-5.4-nano', system = null } = {}) => {
@@ -235,15 +354,21 @@ export const useThreadsStore = create((set, get) => ({
     try {
       await Storage.saveThreadState([], {});
     } catch (_) {}
-    set({ threadIndex: [], threadsById: {}, activeThreadId: null });
+    set({
+      threadIndex: [],
+      threadsById: {},
+      activeThreadId: null,
+      threadBodiesHydrated: true,
+      threadBodiesLoadFailed: false,
+    });
   },
 
   // ===== PRIVATE =====
   privateActive: false,
   privateThread: null,
 
-  startPrivate: (model) => {
-    const thread = newThread({ title: 'Private chat', model, system: null });
+  startPrivate: (model, title) => {
+    const thread = newThread({ title, model, system: null });
     thread.isPrivate = true;
     set({ privateActive: true, privateThread: thread });
   },

@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Изберете модел",
+    "searchPlaceholder": "Търсене на модели...",
+    "noModelsFound": "Няма намерени модели",
+    "noModelsAvailable": "Няма налични модели",
+    "currentModel": "Актуален модел: {{name}}. Докоснете, за да промените модела.",
+    "openHint": "Отваря менюто за избор на модел",
+    "closeLabel": "Затворете селектора на модела",
+    "searchLabel": "Търсене на модели",
+    "searchHint": "Въведете, за да филтрирате наличните модели",
+    "modelLabel": "{{name}} модел",
+    "selectHint": "Изберете модел {{name}}",
+    "currentlySelected": "Текущо избран модел",
+    "genericModel": "{{provider}} модел",
+    "badges": {
+      "new": "НОВО",
+      "best": "НАЙ-ДОБРИЯТ"
+    }
+  },
+  "models": {
+    "gpt-4o": "Най-мощният AI модел",
+    "gpt-4o-mini": "Бързо за ежедневни задачи",
+    "gpt-5": "Най-мощният универсален AI",
+    "gpt-5-chat-latest": "Оптимизиран за чат и диалог",
+    "gpt-5-mini": "Бърз и надежден GPT-5",
+    "gpt-5.4-nano": "Лек модел за лесни задачи",
+    "o4-mini": "Ефективен модел на разсъждение",
+    "gpt-4.1-mini": "Компактен, способен GPT-4.1",
+    "claude-3-haiku": "Бърз и фокусиран антропичен AI",
+    "claude-3.7-sonnet": "Изтънчено разсъждение от Anthropic",
+    "gemini-2.5-Flash": "Най-модерният модел на Google",
+    "gemini-2.5-flash": "Най-модерният модел на Google",
+    "gemini-2.0-flash": "Бърз и прецизен Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Най-мощният AI модел",
+    "fast_everyday": "Бързо за ежедневни задачи",
+    "fast_reasoning": "Бърз модел с добра аргументация",
+    "great_reasoning": "Разширен модел на разсъждение",
+    "coding_reasoning": "Разширено кодиране и разсъждения",
+    "better_coding": "По-добро за кодиране и разсъждение",
+    "best_overall": "Най-добрият универсален AI модел",
+    "best_google": "Най-добрият модел на Google",
+    "best_xai": "Най-мощният модел на xAI",
+    "creative_focus": "Чудесно за творческо писане",
+    "code_helper": "Чудесно за помощ при кодиране",
+    "chat_focus": "Оптимизиран за чат",
+    "long_context": "Чудесно за дълги контексти",
+    "budget_friendly": "Бюджетен AI модел",
+    "ultra_fast": "Ултра бързи реакции",
+    "safe_default": "Безопасен избор по подразбиране",
+    "multilingual": "Силна многоезична поддръжка",
+    "vision_strong": "Страхотен с изображения и визия",
+    "data_analysis": "Добър за анализ на данни",
+    "structured_tasks": "Добър за структурирани задачи",
+    "everyday_helper": "Ежедневен асистент модел",
+    "concise_answers": "Кратки, стегнати отговори",
+    "detailed_answers": "Подробни отговори стъпка по стъпка",
+    "experimental": "Експериментален модел от следващо поколение",
+    "reliable_classic": "Надежден класически модел",
+    "lightweight": "Лек, евтин модел",
+    "chatty_personal": "По-приятелски и лични",
+    "pro_users": "Най-доброто за опитни потребители",
+    "research_helper": "Добър за изследвания и бележки",
+    "reasoning_strong": "Разширен модел на разсъждение"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Антропен",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "други"
+  },
+  "navigation": {
+    "chat": "Нов чат",
+    "history": "История",
+    "rewards": "Ежедневни награди",
+    "assistants": "Помощници",
+    "imagesStudio": "Image Studio",
+    "settings": "Настройки",
+    "recentChats": "Последни чатове",
+    "proFeatures": "Професионални функции",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Вземете професионални функции",
+      "subtitle": "Всички AI функции"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Генерирайте, прецизирайте и публикувайте визуални активи на едно място.",
+    "cta": "Отворете"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Изберете изображения",
+    "exitSelectionMode": "Изход от режима на избор",
+    "selectAll": "Изберете Всички",
+    "noImagesYet": "Все още няма изображения",
+    "describeImageHint": "Опишете вашето изображение по-долу и докоснете Генериране.",
+    "generatedImagesGallery": "Галерия с генерирани изображения",
+    "describeImagePlaceholder": "Опишете изображението, което искате...",
+    "deleteConfirmTitle": "Изтриване на изображения",
+    "deleteConfirmMessage": "Сигурни ли сте, че искате да изтриете избраните изображения? Това действие не може да бъде отменено.",
+    "cancel": "Отказ",
+    "delete": "Изтриване",
+    "generate": "Генерирай",
+    "generating": "Генериране...",
+    "latest": "Последни",
+    "insertToChat": "Вмъкване за чат",
+    "pleaseWait": "моля изчакайте...",
+    "processing": "Обработва се...",
+    "tapToUploadImage": "Докоснете, за да качите изображение",
+    "camera": "Качване на снимки",
+    "library": "Библиотека",
+    "enterPrompt": "Моля, въведете подкана за генериране на текст към изображение",
+    "openInBrowser": "Отворете в браузъра",
+    "makeVariations": "Правете вариации",
+    "deleteAllFromGeneration": "Изтрийте всички от това поколение",
+    "imageOptionsTitle": "Опции за изображение",
+    "imageOptionsMessage": "Какво бихте искали да направите с това изображение?",
+    "insertMarkdownHeader": "Ето изображението за:",
+    "variationSuffix": "— вариант на предишното изображение",
+    "selectedCount": "избрани",
+    "selectedCount_one": "избрани",
+    "selectedCount_other": "избрани",
+    "imageDescriptionInput": "Въвеждане на описание на изображението",
+    "imageDescriptionHint": "Въведете описание на изображението, което искате да генерирате",
+    "openModelSettings": "Отворете настройките на модела",
+    "modelSettingsHint": "Докоснете, за да промените модела и настройките",
+    "openPhotoGallery": "Отворете галерията със снимки",
+    "clearInput": "Изчистване на въведеното",
+    "generatedImage": "Генерирано изображение",
+    "autoSelectedModel": "Автоматично избран {{model}} за режим {{mode}}",
+    "deleteSelectedConfirmTitle": "Изтриване на изображения",
+    "deleteSelectedConfirmMessage": "Сигурни ли сте, че искате да изтриете изображения? Това действие не може да бъде отменено."
+  },
+  "imageStudio": {
+    "generateImage": "Генериране на изображение",
+    "generatingImage": "Генериране на изображение",
+    "generateImageHint": "Докоснете, за да генерирате изображение въз основа на вашето описание",
+    "imageDescriptionInput": "Въвеждане на описание на изображението",
+    "imageDescriptionHint": "Въведете описание на изображението, което искате да генерирате",
+    "openModelSettings": "Отворете настройките на модела",
+    "modelSettingsHint": "Докоснете, за да промените модела и настройките",
+    "openPhotoGallery": "Отворете галерията със снимки",
+    "clearInput": "Изчистване на въведеното",
+    "generatedImage": "Генерирано изображение"
+  },
+  "assistants": {
+    "title": "Помощници",
+    "defaultTitle": "Помощник",
+    "errorTitle": "Нещо се обърка",
+    "errorMessage": "Този асистент не може да се стартира.",
+    "noAssistants": "Няма намерени асистенти в тази категория.",
+    "selectAssistantHint": "Отворете асистента за избор",
+    "subtitle": "Подбрани специалисти по изкуствен интелект, готови за кодиране, писане, анализ, планиране и др.",
+    "searchPlaceholder": "Асистенти за търсене...",
+    "useAssistant": "Използвайте Асистент",
+    "selectAssistant": "Изберете асистент",
+    "description": "Описание",
+    "systemPrompt": "Системен ред",
+    "chooseModel": "Изберете модел",
+    "categoryAll": "Всички",
+    "categories": {
+      "everyday": "Всеки ден",
+      "life": "живот",
+      "health": "здраве",
+      "schoolWork": "Училище и работа",
+      "coding": "Кодиране",
+      "creative": "Творчески",
+      "general": "генерал"
+    },
+    "presets": {
+      "default": {
+        "name": "Асистент по подразбиране",
+        "description": "Балансирана помощ за ежедневните неща."
+      },
+      "quick": {
+        "name": "Бързи отговори",
+        "description": "Кратки, директни отговори."
+      },
+      "planner": {
+        "name": "Дневен плановик",
+        "description": "Планирайте деня и рутините си."
+      },
+      "recipes": {
+        "name": "Ястия и рецепти",
+        "description": "Какво да сготвите, с това, което имате."
+      },
+      "fitness": {
+        "name": "Фитнес треньор",
+        "description": "Малки навици и домашни тренировки."
+      },
+      "money": {
+        "name": "пари приятел",
+        "description": "Прости бюджети и съвети за харчене."
+      },
+      "study": {
+        "name": "Учебен помощник",
+        "description": "Обяснете просто. Разпитай ме."
+      },
+      "email": {
+        "name": "Имейл и автобиография",
+        "description": "Пишете ясни имейли и CV редове."
+      },
+      "translator": {
+        "name": "Преводач",
+        "description": "Превеждайте + преподавайте фрази."
+      },
+      "travel": {
+        "name": "Спътник в пътуванията",
+        "description": "Прости планове и опаковъчни списъци."
+      },
+      "tech": {
+        "name": "Техническа поддръжка (проста)",
+        "description": "Телефон, приложения, основи на Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL; DR Резюме",
+        "description": "Къси топчета + едноредов TL;DR."
+      },
+      "gift": {
+        "name": "Търсач на подаръци",
+        "description": "Идеи по бюджет и интереси."
+      },
+      "party": {
+        "name": "Организатор на събития (Lite)",
+        "description": "Планирайте бързо малко парти."
+      },
+      "social": {
+        "name": "Създател на социални публикации",
+        "description": "Чернови на публикации с опции."
+      },
+      "interview": {
+        "name": "Треньор за интервю",
+        "description": "Тренирайте отговори (STAR)."
+      },
+      "homefix": {
+        "name": "Ръководство за ремонт на дома",
+        "description": "Лесно отстраняване на неизправности „направи си сам“."
+      },
+      "pet": {
+        "name": "Грижа за любимци",
+        "description": "Хранене, разходки, основно обучение."
+      },
+      "mindful": {
+        "name": "Minute Minute",
+        "description": "1–3 минути спокойни почивки."
+      },
+      "polite": {
+        "name": "Учтив преписвач",
+        "description": "Пренаписвайте текстове и отговори добре."
+      }
+    }
+  },
+  "history": {
+    "title": "История",
+    "searchPlaceholder": "Търсене в чатове...",
+    "newChat": "Нов чат",
+    "new": "+ Ново",
+    "search": "Търсене",
+    "clearSearch": "Изчистете търсенето",
+    "noChatsYet": "Все още няма чатове",
+    "noResults": "Все още няма чатове",
+    "startFirstConversation": "Започнете първия си разговор.",
+    "startChat": "Започнете чат",
+    "startNewChat": "Започнете нов чат",
+    "errorLoadingHistory": "Грешка при зареждане на хронологията",
+    "loading": "Историята се зарежда...",
+    "renameChat": "Преименувайте чата",
+    "enterNewTitle": "Въведете ново заглавие",
+    "deleteChat": "Изтриване на чата?",
+    "deleteChatMessage": "„{{title}}“ ще бъде изтрит.",
+    "rename": "Преименуване",
+    "unpin": "Откачване",
+    "pin": "ПИН",
+    "untitled": "Без заглавие"
+  },
+  "settings": {
+    "title": "Настройки",
+    "model": "Модел",
+    "searchPlaceholder": "Търсене на модели...",
+    "temperatureForCurrentModel": "Температура за текущия модел",
+    "customFor": "Персонализирано за {{model}}",
+    "usingDefault": "Използване на {{temperature}} по подразбиране",
+    "resetToDefault": "Възстановяване по подразбиране",
+    "defaultTemperature": "Температура по подразбиране (резервен)",
+    "usedByModelsWithoutOverride": "Използва се от модели без персонализирана замяна",
+    "dangerZone": "Опасна зона",
+    "clearAllChatsAndSettings": "Изчистете всички чатове и настройки",
+    "about": "За",
+    "version": "Версия {{version}}{{status}}",
+    "versionPremiumSuffix": "· Премиум",
+    "privacyPolicy": "Политика за поверителност",
+    "hero": {
+      "label": "Специална оферта",
+      "title": "Неограничен достъп\n& Pro функции",
+      "upgrade": "Надграждане",
+      "manage": "Управление на плана"
+    },
+    "sections": {
+      "premium": "Премиум план",
+      "data": "Потребителски данни",
+      "support": "Поддръжка и правни въпроси"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Вземете Premium",
+        "subtitle": "Отключете неограничени инструменти за създаване"
+      },
+      "premiumActive": {
+        "title": "Премиум е активен",
+        "subtitle": "Благодаря за подкрепата Cloud AI"
+      },
+      "restore": {
+        "title": "Възстановяване на покупките",
+        "subtitle": "Използвайте, ако сте сменили устройства"
+      },
+      "history": {
+        "title": "Управление на хронологията на чата",
+        "subtitle": "Преглеждайте и изтривайте миналите си сесии"
+      },
+      "reset": {
+        "title": "Нулиране на чатове и предпочитания",
+        "subtitle": "Изчиства всички съхранени данни на това устройство"
+      },
+      "rate": {
+        "title": "Оценете ни",
+        "error": "Страницата на магазина не може да се отвори."
+      },
+      "support": {
+        "title": "поддръжка",
+        "subtitle": "Свържете се с нас онлайн",
+        "error": "Страницата с контакти не може да се отвори."
+      },
+      "privacy": {
+        "title": "Политика за поверителност",
+        "error": "Не може да се отвори политиката за поверителност."
+      },
+      "terms": {
+        "title": "Условия за ползване",
+        "error": "Не могат да се отворят условията за ползване."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Недостъпен",
+      "linkUnavailableMessage": "В момента не може да се отвори тази връзка.",
+      "restoreSuccessTitle": "Възстановен",
+      "restoreSuccessMessage": "Вашите покупки са възстановени.",
+      "restoreEmptyTitle": "Няма намерени покупки",
+      "restoreEmptyMessage": "Не можахме да намерим активна покупка за възстановяване за този акаунт.",
+      "restoreErrorTitle": "Възстановяването не бе успешно",
+      "restoreErrorMessage": "Покупките не могат да бъдат възстановени в момента.",
+      "resetConfirmTitle": "Нулиране на данните на приложението?",
+      "resetConfirmMessage": "Това премахва всички чатове и локални предпочитания.",
+      "resetConfirmCancel": "Отказ",
+      "resetConfirmCta": "Нулиране"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Създавайте",
+    "chooseStyle": "Изберете стил",
+    "aspectRatio": "Съотношение на страните",
+    "starterPrompts": {
+      "title": "Стартови подкани",
+      "items": [
+        "студийна хедшот",
+        "модерна всекидневна",
+        "тропически плаж при залез слънце"
+      ]
+    },
+    "promptPlaceholder": "Въведете това, което искате да видите...",
+    "promptHint": "Пример: „Голдън ретривър в студийно осветление“",
+    "clearText": "Ясен текст",
+    "generate": "Генерирай",
+    "generating": "Генериране..."
+  },
+  "editImage": {
+    "headerTitle": "Редактиране",
+    "chooseStyle": "Изберете стил",
+    "aspectRatio": "Съотношение на страните",
+    "starterPrompts": {
+      "title": "Стартови подкани",
+      "items": [
+        "поправете осветлението",
+        "премахване на фона",
+        "мек портретен ретуш"
+      ]
+    },
+    "promptPlaceholder": "Опишете редакциите (по избор)",
+    "clearText": "Ясен текст",
+    "generate": "Генерирай",
+    "generating": "Прилага се...",
+    "upload": {
+      "choose": "Изберете Снимка",
+      "change": "промяна",
+      "remove": "Премахнете"
+    },
+    "imageUnavailable": {
+      "title": "Изображението не е налично",
+      "message": "Неуспешен достъп до избраната снимка. Моля, изберете го отново и опитайте отново."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Аниме"
+      },
+      "cartoon": {
+        "name": "Карикатура"
+      },
+      "photoreal": {
+        "name": "Фотореалистичен"
+      },
+      "sketch": {
+        "name": "Скица"
+      },
+      "cyberpunk": {
+        "name": "Киберпънк"
+      },
+      "steampunk": {
+        "name": "Стиймпънк"
+      },
+      "illustration_3d": {
+        "name": "3D илюстрация"
+      },
+      "dark_fantasy": {
+        "name": "Тъмна фантазия"
+      },
+      "vintage_film": {
+        "name": "Ретро филм"
+      },
+      "pastel": {
+        "name": "Пастелна естетика"
+      },
+      "neon_glow": {
+        "name": "Неонов блясък"
+      },
+      "epic_landscape": {
+        "name": "Епичен пейзаж"
+      }
+    },
+    "aspectRatios": {
+      "square": "Квадрат",
+      "landscape": "Пейзаж",
+      "portrait": "Портрет"
+    },
+    "models": {
+      "fluxKontent": "Съдържание на Flux",
+      "custom": "По поръчка"
+    },
+    "notEnoughCoinsTitle": "Няма достатъчно монети",
+    "notEnoughCoinsMessage": "Текущият ви баланс е твърде нисък за това изображение.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Най-бърз модел",
+      "runwareFluxKrea": "Творчески, стилизирани резултати",
+      "runwareQwenImage": "Балансирани, висококачествени резултати",
+      "google4": "Най-добър AI модел на изображение",
+      "klingImageO1": "Редактиране на изображения с висок контрол",
+      "fluxKontent": "Контентът на Flux е настроен за редакции",
+      "runwareProvider": "Балансирано качество с надеждна дифузия.",
+      "airProvider": "Nano Banana добавя игрив, жив тон.",
+      "googleProvider": "Google настроен за изпипани детайли.",
+      "klingaiProvider": "KlingAI е настроен за контролирани редакции.",
+      "anthropicProvider": "Claude конвейер за нюансирани настроения.",
+      "default": "Докоснете, за да разгледате наличните двигатели."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "избрания от вас стил",
+    "sheetTitle": "Създаване на вашата визия",
+    "sheetSubtitle": "Кратка глътка сервирано кафе, докато смесваме {{style}} в подканата.",
+    "phases": {
+      "blend": "Смесване в {{style}}",
+      "paint": "Рисуване на сцената",
+      "finish": "Добавяне на финален лак"
+    },
+    "actions": {
+      "cancel": "Отказ",
+      "retry": "Опитайте отново",
+      "close": "затвори"
+    },
+    "errors": {
+      "restrictedTitle": "Ограничено съдържание",
+      "genericTitle": "Неуспешно генериране",
+      "genericMessage": "Не можа да се генерира изображение."
+    },
+    "alerts": {
+      "saveFailedTitle": "Не може да се запази",
+      "shareFailedTitle": "Не може да се сподели",
+      "tryAgain": "Моля, опитайте отново.",
+      "savedTitle": "Запазено",
+      "savedMessage": "Изображението е запазено във вашата галерия.",
+      "permissionTitle": "Необходимо е разрешение",
+      "permissionMessage": "Разрешете достъп до хранилището, за да запазвате изображения във вашата галерия."
+    },
+    "result": {
+      "complete": "Всичко е готово"
+    },
+    "accessibility": {
+      "close": "затвори"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Изтриване",
+      "edit": "Редактиране",
+      "save": "Запазване",
+      "share": "Споделете"
+    },
+    "alerts": {
+      "savedTitle": "Запазено",
+      "savedMessage": "Изображението е запазено във вашата галерия.",
+      "permissionTitle": "Необходимо е разрешение",
+      "permissionMessage": "Разрешете достъп до хранилището, за да запазвате изображения във вашата галерия.",
+      "saveFailedTitle": "Не може да се запази",
+      "tryAgain": "Моля, опитайте отново."
+    },
+    "accessibility": {
+      "close": "затвори",
+      "delete": "Изтриване на изображението",
+      "edit": "Редактиране на изображението",
+      "save": "Запазване на изображението",
+      "share": "Споделете изображение"
+    }
+  },
+  "reportContent": {
+    "title": "Докладвайте AI съдържание",
+    "subtitle": "Кажете ни какво не е наред с това генерирано съдържание.",
+    "privateDisclosure": "Изпращането изпраща докладваното съдържание за проверка на безопасността.",
+    "accessibilityLabel": "Докладвайте AI съдържание",
+    "reasons": {
+      "sexual": "Сексуално или актово съдържание",
+      "violence_self_harm": "Насилие или самонараняване",
+      "hate_harassment": "Омраза или тормоз",
+      "child_safety": "Загриженост за безопасността на децата",
+      "scam_deceptive": "Измама или измамно съдържание",
+      "other": "други"
+    },
+    "errors": {
+      "reasonRequired": "Моля, изберете причина, преди да изпратите.",
+      "submit": "Не може да се изпрати отчет. Моля, опитайте отново."
+    },
+    "success": {
+      "title": "благодаря Вашият доклад беше подаден.",
+      "subtitle": "Ще използваме отчети, за да подобрим безопасността на съдържанието."
+    },
+    "actions": {
+      "report": "Докладвай",
+      "submit": "Изпратете отчет",
+      "done": "Готово"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Отворете менюто",
+      "selectImages": "Изберете изображения",
+      "exitSelection": "Изход от избора",
+      "deleteSelected": "Изтриване на избрани изображения",
+      "selectToDelete": "Изберете изображения за изтриване"
+    },
+    "createCard": {
+      "title": "Създаване от текст",
+      "subtitle": "Въведете описание",
+      "cta": "Опишете и генерирайте"
+    },
+    "editCard": {
+      "title": "AI фоторедактор",
+      "subtitle": "Трансформирайте и подобрете с AI",
+      "cta": "Редактирайте с AI"
+    },
+    "gallery": {
+      "title": "Галерия",
+      "empty": "Все още няма изображения",
+      "selection": {
+        "enter": "Изберете изображения",
+        "exit": "Изход от избора",
+        "deleteSelected": "Изтриване на избрани изображения",
+        "selectForDelete": "Изберете изображения за изтриване"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Запознайте се",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Създавайте и редактирайте изображения с AI – направо в Cloud AI."
+    },
+    "relaxView": {
+      "title": "Запознайте се с вашия AI",
+      "titleHighlight": "Помощници",
+      "subtitle": "Специализирани AI експерти, готови да помогнат с ежедневните ви нужди",
+      "cards": {
+        "fitness": {
+          "title": "Фитнес треньор",
+          "text": "Малки навици и домашни тренировки."
+        },
+        "recipes": {
+          "title": "Ястия и рецепти",
+          "text": "Какво да сготвите, с това, което имате."
+        },
+        "travel": {
+          "title": "Спътник в пътуванията",
+          "text": "Прости планове и опаковъчни списъци."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "РЕШЕНИЯ ЗА ИИ ОТ ПРЕДПРИЯТИЕ",
+      "description": "Дайте възможност на бизнеса си с авангардна технология за изкуствен интелект, предназначена за корпоративни професионалисти и екипи.",
+      "stats": "Доверен от 500k+ потребители",
+      "rating": "4,9 / 5",
+      "button": "Започнете"
+    },
+    "buttons": {
+      "continue": "Продължи",
+      "start": "Да започваме"
+    }
+  },
+  "coinStore": {
+    "title": "Вземете кредити",
+    "loading": "Магазинът за монети се зарежда…",
+    "balanceLabel": "Текущият ви баланс е",
+    "balanceValue": "{{amount}} Кредити",
+    "history": {
+      "link": "История на транзакциите",
+      "alertTitle": "История",
+      "alertBody": "Историята на транзакциите идва скоро."
+    },
+    "noPacks": "Няма налични пакети монети. Проверете своя RevenueCat идентификатор на оферта.",
+    "badges": {
+      "basic": "Основен пакет",
+      "popular": "Най-популярни",
+      "value": "Най-добра стойност"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Кредити",
+      "tokensLabel": "{{credits}} Кредити",
+      "defaultName": "Опаковка {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Отидете на Premium",
+      "subtitle": "Неограничен достъп и функции",
+      "cta": "Надграждане"
+    },
+    "termsText": "Правейки покупка, вие се съгласявате с нашите",
+    "termsLink": "Условия за ползване",
+    "alerts": {
+      "initErrorTitle": "Грешка при стартиране",
+      "genericMessage": "Нещо се обърка.",
+      "successTitle": "Успех",
+      "successMessage": "Кредитите ще се появят скоро.",
+      "purchaseFailedTitle": "Покупката е неуспешна",
+      "unknownError": "Неизвестна грешка"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Изисква се премия",
+    "upgrade": "Надграждане",
+    "modelRequiredMessage": "Този модел изисква Premium. Надстройте за достъп до GPT-5, Grok 4, Claude и по-усъвършенствани модели.",
+    "assistantsRequiredMessage": "Асистентите изискват Premium. Надстройте за достъп до специализирани AI асистенти за фитнес, кодиране, писане и др.",
+    "assistantsTitle": "Изисква се премия",
+    "assistantsMessage": "Асистентите изискват Premium. Надстройте за достъп до специализирани AI асистенти за фитнес, кодиране, писане и др."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5,5, Grok, Gemini",
+    "close": "Затворете платената стена",
+    "unavailableTitle": "Покупките не са налични",
+    "unavailableMessage": "Android таксуването все още не е конфигурирано.",
+    "restoreEmptyTitle": "Няма намерени покупки",
+    "restoreEmptyMessage": "Не можахме да намерим активна покупка за възстановяване за този акаунт.",
+    "restoreFailedTitle": "Възстановяването не бе успешно",
+    "restoreFailedMessage": "Покупките не могат да бъдат възстановени в момента.",
+    "productsUnavailableTitle": "Няма налични планове",
+    "productsUnavailableMessage": "В момента не са налични абонаментни продукти за Android.",
+    "purchaseFailedTitle": "Покупката е неуспешна",
+    "purchaseFailedMessage": "Не може да завърши тази покупка в момента.",
+    "restore": "Възстановяване",
+    "restoreRestoring": "Възстановява се...",
+    "features": {
+      "create": "Създавайте изображения и видеоклипове",
+      "search": "Търсете в мрежата с AI",
+      "talk": "Говорете естествено с AI",
+      "imageStudio": "Вземете Image Studio {{credits}} кредити {{period}}",
+      "period": {
+        "weekly": "седмично",
+        "monthly": "месечно",
+        "yearly": "годишно"
+      }
+    },
+    "freeTrial": {
+      "title": "Безплатна пробна версия",
+      "subtitle": "3-дневен безплатен пробен период"
+    },
+    "badge": {
+      "bestOffer": "Най-добра оферта"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Годишно",
+        "only": "Само {{price}}",
+        "defaultPrice": "79,99 USD",
+        "defaultIntroPrice": "1,35 USD"
+      },
+      "monthly": {
+        "title": "Месечно",
+        "subtitle": "Отказ по всяко време",
+        "defaultPrice": "19,99 USD"
+      },
+      "weekly": {
+        "title": "Ежеседмично",
+        "subtitle": "Отказ по всяко време",
+        "defaultPrice": "9,99 USD",
+        "trialThen": "След това 3 дни безплатно"
+      }
+    },
+    "frequency": {
+      "perWeek": "на седмица",
+      "perMonth": "на месец"
+    },
+    "cta": "Продължи",
+    "ctaFreeTrial": "Опитайте го безплатно",
+    "legal": {
+      "terms": "Условия",
+      "privacy": "Поверителност"
+    },
+    "premium": {
+      "headline": "Цял премиум AI в един план",
+      "subtitleLine1": "Чат, кодирайте, създавайте и планирайте",
+      "subtitleLine2": "с усъвършенствани модели.",
+      "enableTrial": "Активирайте безплатния пробен период",
+      "annual": "Годишен",
+      "saveBadge": "Спестете 83%",
+      "year": "година",
+      "week": "седмица",
+      "termsOfUse": "Условия за ползване",
+      "privacyPolicy": "Политика за поверителност"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "съобщение...",
+    "createImages": "Създаване на изображения",
+    "generateAiArtwork": "Генерирайте AI произведения на изкуството",
+    "camera": "Качване на снимки",
+    "takeOrSelectPhotos": "Изберете снимки",
+    "search": "Търсене",
+    "findInformation": "Намерете информация",
+    "findRecentInfo": "Намерете скорошна информация",
+    "removeImage": "Премахване на изображението",
+    "messageInput": "Въвеждане на съобщение",
+    "clearInput": "Изчистване на въведеното",
+    "quickActionsLabel": "Бързи действия",
+    "hideQuickActions": "Скриване на бързи действия",
+    "showQuickActions": "Показване на бързи действия",
+    "startVoiceInput": "Стартирайте гласово въвеждане",
+    "sendMessage": "Изпратете съобщение",
+    "offline": "Офлайн",
+    "stop": "Спрете",
+    "streaming": "Поточно предаване...",
+    "closeRecorder": "Затваряне на рекордера",
+    "insertTranscript": "Изпратете",
+    "scrollToLatest": "Превъртете до последното съобщение",
+    "copyMessage": "Копиране на съобщение",
+    "copyMessageHint": "Копирайте това съобщение в клипборда",
+    "shareMessage": "Споделете съобщение",
+    "shareMessageHint": "Споделете това съобщение",
+    "regenerateResponse": "Регенериране на отговор",
+    "regenerateResponseHint": "Генерирайте нов отговор",
+    "copyCode": "Копирайте кода",
+    "copied": "Копирано",
+    "image": "изображение",
+    "loading": "Зарежда се...",
+    "loadingChat": "Чатът се зарежда...",
+    "offlineBanner": "Вие сте офлайн. Съобщенията не могат да се изпращат.",
+    "offlineError": "Няма интернет връзка. Моля, проверете връзката си и опитайте отново.",
+    "imagePickerErrorTitle": "Грешка в инструмента за избор на изображение",
+    "imagePickerErrorMessage": "Няма достъп до вашите снимки. Моля, опитайте отново.",
+    "messageTooLong": "Съобщението е твърде дълго ({{length}}). Ограничението е {{limit}}.",
+    "sendFailed": "Неуспешно изпращане на съобщение. Моля, опитайте отново.",
+    "modelNoImageSupport": "Избраният модел не поддържа изображения. Моля, изберете друг модел.",
+    "voiceStartFailed": "Не може да се стартира глас.",
+    "voiceNoSpeechDetected": "Не беше разпознат глас. Моля, опитайте отново.",
+    "emptyTitle": "как мога да помогна",
+    "emptySubtitle": "Започнете разговор с AI",
+    "privateTitle": "Частен чат",
+    "privateSubtitle": "Този чат няма да се показва в хронологията ви на чат",
+    "startPrivateChat": "Започнете личен чат",
+    "endPrivateChat": "Край на частния чат",
+    "permissions": {
+      "photosTitle": "Необходимо е разрешение за снимки",
+      "photosMessage": "За избор на изображения е необходим достъп до снимки.",
+      "voiceTitle": "Необходими са гласови разрешения",
+      "voiceMessage": "За използване на глас се изисква достъп до микрофон и говор."
+    },
+    "activity": {
+      "analyzingImages": "Изображенията се анализират...",
+      "searching": "Търсене...",
+      "thinking": "мислене..."
+    },
+    "webSearch": {
+      "title": "Търсене в мрежата",
+      "subtitle": "Намерете скорошна информация",
+      "label": "Търсене в мрежата",
+      "enable": "Активирайте търсенето в мрежата",
+      "disable": "Деактивирайте търсенето в мрежата",
+      "toggleLabel": "Търсете в мрежата"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Проектирайте визуализации на бърза скорост.",
+      "subtitle": "Генерирайте, прецизирайте и публикувайте визуални активи на едно място.",
+      "cta": "Отворете"
+    },
+    "quickActions": {
+      "createImages": "Създаване на изображения",
+      "openCamera": "Отворете Камера",
+      "editImage": "Редактиране на изображение",
+      "startVoice": "Стартирайте Voice",
+      "assistants": "Помощници"
+    },
+    "listening": "Слушам...",
+    "startRecording": "Започнете да записвате...",
+    "assistantHeader": {
+      "unavailableTitle": "Асистентът е недостъпен",
+      "unavailableDescription": "Не можахме да заредим този асистент. Моля, опитайте отново.",
+      "ready": "Готов да помогне"
+    },
+    "actions": {
+      "copy": "копие",
+      "share": "Споделете",
+      "regenerate": "Регенерирайте",
+      "retryFromHere": "Опитайте отново от тук",
+      "report": "Докладвай",
+      "cancel": "Отказ"
+    },
+    "markdown": {
+      "copy": "копие",
+      "copied": "Копирано",
+      "table": "ТАБЛИЦА",
+      "watchVideo": "Гледайте видео",
+      "wikipedia": "Уикипедия",
+      "link": "Връзка",
+      "note": "Забележка",
+      "warning": "Предупреждение",
+      "tip": "Съвет"
+    },
+    "messageActionTitle": "Съобщение",
+    "status": {
+      "sending": "Изпращане...",
+      "failed": "Неуспешно",
+      "sent": "Изпратено"
+    },
+    "suggestions": {
+      "writeStory": "Напишете творческа история",
+      "writeStorySubtitle": "за едно магическо приключение",
+      "planTravel": "Планирайте маршрут за пътуване",
+      "planTravelSubtitle": "за невероятна почивка",
+      "explainConcept": "Обяснете това понятие",
+      "explainConceptSubtitle": "с прости думи",
+      "planDay": "Планирай деня ми",
+      "planDaySubtitle": "със съвети за продуктивност"
+    },
+    "home": {
+      "eyebrow": "Изберете тема",
+      "title": "какво искаш да направиш",
+      "subtitle": "Изберете посока, след което започнете със силна подкана.",
+      "pickPromptTitle": "Изберете подкана, за да започнете",
+      "changeTopic": "Изберете друга тема",
+      "intents": {
+        "summarize": "Резюмирайте текста",
+        "summarizeShort": "Обобщете",
+        "summarizeHint": "Статии, бележки, гласови бележки, дълги теми",
+        "plan": "Направете план",
+        "planHint": "Пътувания, рутина, бюджети, крайни срокове, промени в живота",
+        "brainstorm": "Мозъчна атака",
+        "brainstormHint": "Идеи, предложения, имена, съдържание, странични проекти",
+        "analyze": "Анализирайте данните",
+        "analyzeHint": "Разходи, обратна връзка, показатели, навици, ефективност"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Създайте кратка информация за основателя",
+          "founderBriefSubtitle": "Извадете основните рискове, решения и следващи стъпки.",
+          "classNotesTitle": "Изчистете учебните си бележки",
+          "classNotesSubtitle": "Превърнете грубите бележки в ясно учебно ръководство.",
+          "meetingHandoffTitle": "Напишете резюме на предаването",
+          "meetingHandoffSubtitle": "Полезно след срещи, разговори или дълги вътрешни разговори.",
+          "longArticleTitle": "Резюмирайте бързо тази статия",
+          "longArticleSubtitle": "Кондензирайте дълга статия в остри изводи."
+        },
+        "plan": {
+          "energyResetTitle": "Изградете 14-дневно енергийно нулиране",
+          "energyResetSubtitle": "Реалистичен план за сън, храна, движение и фокус.",
+          "mealPlanTitle": "Планирайте ястия, които всъщност ще готвя",
+          "mealPlanSubtitle": "Практичен, достъпен и въз основа на това, което имам.",
+          "cityMoveTitle": "Планирайте преместването ми в нов град",
+          "cityMoveSubtitle": "Разделете го на график, бюджет, жилищни и административни задачи.",
+          "tripEscapeTitle": "Планирайте незабравимо бягство през уикенда",
+          "tripEscapeSubtitle": "Нещо по-добро от общ маршрут."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Намерете реалистична странична суматоха",
+          "sideHustleSubtitle": "Идеи, които мога да започна, докато работя на пълен работен ден.",
+          "brandAngleTitle": "Намерете запомнящ се ъгъл на марката",
+          "brandAngleSubtitle": "Полезно за продукти, творци, агенции или бюлетини.",
+          "socialSeriesTitle": "Измислете поредица от съдържание",
+          "socialSeriesSubtitle": "Нещо достатъчно последователно, за да увеличи аудиторията.",
+          "datingIdeasTitle": "Измислете свежи идеи",
+          "datingIdeasSubtitle": "Дати, подаръци, изненади или събития, които се чувстват обмислени."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Намерете къде изтичат парите ми",
+          "spendingLeaksSubtitle": "Покажете модели, слаби места и най-лесният печели първи.",
+          "customerFeedbackTitle": "Превърнете обратната връзка в приоритети",
+          "customerFeedbackSubtitle": "Клъстерни заявки, жалби, спешност и въздействие.",
+          "habitPatternsTitle": "Открийте модели в моите навици",
+          "habitPatternsSubtitle": "Полезно за тренировки, сън, водене на дневник или регистрационни файлове за фокусиране.",
+          "metricsStoryTitle": "Обяснете какво означават числата",
+          "metricsStorySubtitle": "Повече сигнал, по-малко шум от електронни таблици."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Обработва се...",
+    "tapToUploadImage": "Докоснете, за да качите изображение"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Обработва се...",
+    "camera": "Качване на снимки",
+    "library": "Библиотека"
+  },
+  "common": {
+    "ok": "добре",
+    "retry": "Опитайте отново",
+    "cancel": "Отказ",
+    "allow": "Разрешете",
+    "notNow": "Не сега",
+    "openSettings": "Отворете Настройки",
+    "close": "затвори",
+    "save": "Запазване",
+    "tryAgain": "Опитайте отново"
+  },
+  "rateUs": {
+    "title": "Харесвате ли Cloud AI?",
+    "subtitle": "Вашата обратна връзка ни помага да се подобрим. Бихте ли ни оценили в App Store?",
+    "rateNow": "Оценете сега",
+    "maybeLater": "Може би по-късно",
+    "dontAskAgain": "Не питай отново"
+  },
+  "oneTimeOffer": {
+    "title": "Еднократна оферта",
+    "discount": "{{percent}}% НАМАЛЕНИЕ",
+    "subtitle": "Няма да видите тази оферта отново.",
+    "badgeLine1": "Изключително",
+    "badgeLine2": "Еднократна оферта",
+    "upgradeNow": "Надстройте сега за {{price}}",
+    "loadingPrice": "Зареждане...",
+    "termsOfUse": "Условия за ползване",
+    "privacyPolicy": "Политика за поверителност",
+    "accessTitle": "Неограничен достъп до",
+    "accessSubtitle": "GPT, Gemini и Grok 4",
+    "features": {
+      "unlimitedGPT4": "Неограничен достъп до GPT-4",
+      "geminiPro": "Достъп до Gemini Pro",
+      "grokInsights": "Използвайте Grok за свежи прозрения",
+      "priorityAccess": "Приоритетен достъп и по-бързи отговори"
+    },
+    "bestValue": "Най-добра стойност",
+    "annualPremium": "Годишна премия",
+    "oneTimePayment": "Еднократно плащане",
+    "wasPrice": "беше",
+    "continue": "Продължи",
+    "restore": "Възстановяване",
+    "terms": "Условия",
+    "privacy": "Поверителност",
+    "successTitle": "Успех!",
+    "successMessage": "Благодарим ви за покупката! Насладете се на първокласен достъп през следващите 12 месеца.",
+    "errorTitle": "Неуспешна покупка",
+    "errorMessage": "Нещо се обърка. Моля, опитайте отново.",
+    "restoreSuccessTitle": "Възстановен",
+    "restoreSuccessMessage": "Вашите покупки са възстановени.",
+    "restoreErrorTitle": "Неуспешно възстановяване",
+    "restoreErrorMessage": "Няма намерени покупки за възстановяване.",
+    "unavailableTitle": "Покупките не са налични",
+    "unavailableMessage": "Android таксуването все още не е конфигурирано."
+  },
+  "rewards": {
+    "header": {
+      "title": "Награди",
+      "openMenu": "Отворете менюто",
+      "goBack": "Върни се назад"
+    },
+    "pointsHero": {
+      "totalBalance": "ОБЩ БАЛАНС",
+      "seeYourRewards": "Вижте своите награди"
+    },
+    "streakTracker": {
+      "title": "Ежедневна серия",
+      "subtitle": "Продължавай така! Ти гориш.",
+      "days": "Дни",
+      "prize": "награда",
+      "dayLabel": "Ден {{number}}",
+      "nextReward": "Следваща награда: {{amount}} в {{time}}",
+      "coins": "Монети"
+    },
+    "sections": {
+      "availableQuests": "Налични куестове",
+      "completedQuests": "Завършени мисии",
+      "availableRewards": "Налични награди",
+      "needsMoreCoins": "Има нужда от повече монети"
+    },
+    "balances": {
+      "rewardCoins": "Наградни монети",
+      "imageCredits": "Кредити за изображения"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 изображения",
+        "imageCredits200": "200 изображения",
+        "imageCredits600": "600 кредита за изображения",
+        "weeklyPremium": "Седмична премия",
+        "secretBox": "Тайна кутия"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Мистериозни награди вътре"
+      },
+      "alerts": {
+        "comingSoonTitle": "Очаквайте скоро",
+        "comingSoonMessage": "Тази награда все още не е налична.",
+        "notEnoughCoinsTitle": "Няма достатъчно монети",
+        "notEnoughCoinsMessage": "Имате нужда от повече монети за награда, за да отключите тази награда.",
+        "errorTitle": "Грешка",
+        "couldNotOpenBox": "Кутията не можа да се отвори.",
+        "couldNotRedeem": "Наградата не можа да бъде осребрена. Моля, опитайте отново.",
+        "mysteryReward": "Мистериозна награда"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Ежедневно влизане",
+        "description": "Отворете приложението днес, за да запазите поредицата си",
+        "message": "Това търсене се изпълнява автоматично, когато отваряте приложението всеки ден."
+      },
+      "shareFacebook": {
+        "title": "Споделете във Facebook",
+        "description": "Публикувайте за нас във Facebook"
+      },
+      "shareTwitter": {
+        "title": "Споделете в Twitter",
+        "description": "Tweet вашето преживяване"
+      },
+      "shareInstagram": {
+        "title": "Споделете в Instagram",
+        "description": "Споделете история или публикация"
+      },
+      "shareExperience": {
+        "title": "Споделете своя опит",
+        "description": "Кажете на приятели защо харесвате приложението"
+      },
+      "share": {
+        "genericMessage": "Използвам това AI приложение за чат и генериране на изображения. Вижте го: {{url}}",
+        "facebookQuote": "Вижте това AI приложение!",
+        "twitterText": "Опитвам това AI приложение, много е страхотно.",
+        "instagramMessage": "Вижте това AI приложение: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Грешка",
+        "errorMessage": "Страницата на магазина не можа да се отвори."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Мисията е завършена",
+        "description": "Мисията завършена",
+        "points": "+{{points}} точки",
+        "close": "затвори"
+      },
+      "rewardSuccess": {
+        "error": "ГРЕШКА",
+        "success": "УСПЕХ",
+        "somethingWentWrong": "Нещо се обърка",
+        "rewardUnlocked": "Наградата е отключена",
+        "credits": "Кредити",
+        "close": "затвори",
+        "okay": "окей"
+      },
+      "secretBox": {
+        "pill": "СЕКРЕТНА КУТИЯ",
+        "rewardUnlocked": "НАГРАДАТА СЕ ОТКЛЮЧИ",
+        "shufflingRewards": "РАЗМЕСВАНЕ НА НАГРАДИТЕ...",
+        "imageCreditsAdded": "Кредити за изображения, добавени към вашия акаунт",
+        "continue": "Продължи",
+        "revealing": "Разкриване...",
+        "prizeTiers": {
+          "lucky": "КЪСМЕТЛИК",
+          "pro": "PRO",
+          "elite": "ЕЛИТ",
+          "mythic": "МИТИЧЕН"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Вземете дневните си монети",
+      "subtitle": "Връщайте се всеки ден — наградата расте.",
+      "cta": "Отчитане",
+      "claimed": "Получено! +{{amount}} монети",
+      "later": "По-късно"
+    }
+  },
+  "app": {
+    "version": "Версия {{version}}",
+    "offlineBanner": "Вие сте офлайн",
+    "launch": {
+      "accessibilityLabel": "Започвайки от Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, готов, когато си"
+    },
+    "errors": {
+      "modelsLoadTitle": "Неуспешно зареждане на модели",
+      "modelsLoadMessage": "Не могат да се заредят AI модели. Приложението ще използва модели по подразбиране. Моля, проверете вашата интернет връзка.",
+      "modelsLoadTimeout": "Зареждането на модели отне твърде дълго. Приложението ще използва модели по подразбиране. Моля, опитайте отново.",
+      "modelsLoadNetwork": "Няма интернет връзка. Приложението ще използва модели по подразбиране. Моля, проверете връзката си.",
+      "deviceIdTitle": "Грешка при инициализация",
+      "deviceIdMessage": "Неуспешно инициализиране на ID на устройството. Някои функции може да не работят правилно.",
+      "storageTitle": "Грешка при съхранение",
+      "storageMessage": "Няма достъп до локално хранилище. Някои функции може да не работят правилно.",
+      "crashTitle": "Нещо се обърка.",
+      "crashSubtitle": "Моля, опитайте отново.",
+      "crashLabel": "Приложението се срина"
+    },
+    "proxyErrors": {
+      "genericTitle": "Нещо се обърка",
+      "genericMessage": "Моля, опитайте отново.",
+      "rateLimitTitle": "Твърде много заявки",
+      "rateLimitMessage": "Ние обработваме много заявки. Моля, опитайте отново след малко.",
+      "rateLimitRetryAfter": "Ние обработваме много заявки. Моля, опитайте отново след около {{seconds}} секунди.",
+      "restrictedTitle": "Ограничено съдържание",
+      "restrictedMessage": "Тази заявка беше блокирана от защитни филтри.",
+      "insufficientCoinsTitle": "Няма достатъчно монети",
+      "insufficientCoinsMessage": "Текущият ви баланс е твърде нисък за тази заявка.",
+      "imageUnavailableTitle": "Изображението не е налично",
+      "imageUnavailableMessage": "Генерираният файл с изображение беше временно недостъпен. Моля, опитайте отново.",
+      "authorizationTitle": "Проблем с разрешението",
+      "authorizationMessage": "Не можахме да потвърдим вашия акаунт. Моля, опитайте отново.",
+      "serverTitle": "Хълцане на сървъра",
+      "serverMessage": "Сървърите ни имаха проблеми. Моля, опитайте отново след малко.",
+      "timeoutTitle": "Отне твърде дълго",
+      "timeoutMessage": "Времето за изчакване на заявката изтече. Моля, опитайте отново.",
+      "networkTitle": "Няма връзка",
+      "networkMessage": "Няма интернет връзка. Моля, проверете връзката си и опитайте отново.",
+      "requestTitle": "Заявка за проблем",
+      "requestMessage": "Нещо се обърка със заявката ви. Моля, опитайте отново."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Активирайте Premium",
+    "activateMessage": "Искате ли да активирате премията за рецензенти?",
+    "activateAction": "Активирайте",
+    "deactivateTitle": "Деактивирайте Premium",
+    "deactivateMessage": "Искате ли да деактивирате премията за рецензент?",
+    "deactivateAction": "Деактивирайте"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Ежедневна награда",
+      "body": "Не пропускайте ежедневните си монети - вземете преди полунощ."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Не пропускайте дневните си монети",
+      "body": "Изпращаме едно напомняне на ден, за да запазите серията си и монетите ви да растат. Без спам и можете да го изключите по всяко време.",
+      "enable": "Включи напомнянията",
+      "skip": "Не сега"
+    }
+  }
+}

@@ -11,7 +11,12 @@
     "searchHint": "Escriu per filtrar els models disponibles",
     "modelLabel": "Model {{name}}",
     "selectHint": "Selecciona el model {{name}}",
-    "currentlySelected": "Actualment seleccionat"
+    "currentlySelected": "Actualment seleccionat",
+    "genericModel": "Model {{provider}}",
+    "badges": {
+      "new": "NOU",
+      "best": "MILLOR"
+    }
   },
   "models": {
     "gpt-4o": "Model d'IA més potent",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Assistents",
+    "defaultTitle": "Assistent",
+    "errorTitle": "Alguna cosa va fallar",
+    "errorMessage": "No s'ha pogut iniciar aquest assistent.",
+    "noAssistants": "No s'han trobat assistents en aquesta categoria.",
+    "selectAssistantHint": "Obre l'assistent de selecció",
     "subtitle": "Especialistes d’IA preparats per programar, escriure, analitzar, planificar i més.",
     "searchPlaceholder": "Cerca assistents…",
     "useAssistant": "Usa l’assistent",
@@ -254,9 +264,12 @@
     "search": "Cerca",
     "clearSearch": "Neteja la cerca",
     "noChatsYet": "Encara no hi ha xats",
+    "noResults": "Encara no hi ha xats",
     "startFirstConversation": "Comença la teva primera conversa.",
     "startChat": "Inicia un xat",
+    "startNewChat": "Inicia un xat",
     "errorLoadingHistory": "Error en carregar l’historial",
+    "loading": "S'està carregant l'historial...",
     "renameChat": "Canvia el nom del xat",
     "enterNewTitle": "Introdueix un nou títol",
     "deleteChat": "Vols suprimir el xat?",
@@ -264,9 +277,7 @@
     "rename": "Canvia el nom",
     "unpin": "Desfixa",
     "pin": "Fixa",
-    "untitled": "Sense títol",
-    "noResults": "Encara no hi ha xats",
-    "startNewChat": "Inicia un xat"
+    "untitled": "Sense títol"
   },
   "settings": {
     "title": "Configuració",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium actiu",
-        "subtitle": "Gràcies per donar suport a ChatCloud"
+        "subtitle": "Gràcies per donar suport a Cloud AI"
       },
       "restore": {
         "title": "Restaura compres",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "No es pot obrir aquest enllaç ara mateix.",
       "restoreSuccessTitle": "Restaurat",
       "restoreSuccessMessage": "S’han restaurat les teves compres.",
+      "restoreEmptyTitle": "No s'han trobat compres",
+      "restoreEmptyMessage": "No hem trobat cap compra activa per restaurar per a aquest compte.",
       "restoreErrorTitle": "No s’ha pogut restaurar",
       "restoreErrorMessage": "No es poden restaurar les compres ara.",
       "resetConfirmTitle": "Restablir les dades de l’app?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Personalitzat"
     },
+    "notEnoughCoinsTitle": "No hi ha prou monedes",
+    "notEnoughCoinsMessage": "El vostre saldo actual és massa baix per a aquesta imatge.",
     "modelTaglines": {
       "runwareFluxSchnell": "Model més ràpid",
       "runwareFluxKrea": "Creatiu i estilitzat",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "No s’ha pogut desar",
       "shareFailedTitle": "No s’ha pogut compartir",
-      "tryAgain": "Torna-ho a intentar."
+      "tryAgain": "Torna-ho a intentar.",
+      "savedTitle": "Desat",
+      "savedMessage": "Imatge desada a la teva galeria.",
+      "permissionTitle": "Cal permís",
+      "permissionMessage": "Permet l'accés a l'emmagatzematge per desar imatges a la teva galeria."
     },
     "result": {
       "complete": "Tot a punt"
@@ -498,12 +517,47 @@
       "save": "Desa",
       "share": "Comparteix"
     },
+    "alerts": {
+      "savedTitle": "Desat",
+      "savedMessage": "Imatge desada a la teva galeria.",
+      "permissionTitle": "Cal permís",
+      "permissionMessage": "Permet l'accés a l'emmagatzematge per desar imatges a la teva galeria.",
+      "saveFailedTitle": "No s'ha pogut desar",
+      "tryAgain": "Si us plau, torna-ho a provar."
+    },
     "accessibility": {
       "close": "Tanca",
       "delete": "Suprimeix la imatge",
       "edit": "Edita la imatge",
       "save": "Desa la imatge",
       "share": "Comparteix la imatge"
+    }
+  },
+  "reportContent": {
+    "title": "Informa del contingut d'IA",
+    "subtitle": "Expliqueu-nos què passa amb aquest contingut generat.",
+    "privateDisclosure": "En enviar aquest contingut s'envia per a una revisió de seguretat.",
+    "accessibilityLabel": "Informa del contingut d'IA",
+    "reasons": {
+      "sexual": "Contingut sexual o de nuesa",
+      "violence_self_harm": "Violència o autolesió",
+      "hate_harassment": "Odi o assetjament",
+      "child_safety": "Preocupació per la seguretat infantil",
+      "scam_deceptive": "Contingut estafa o enganyós",
+      "other": "Altres"
+    },
+    "errors": {
+      "reasonRequired": "Si us plau, trieu un motiu abans d'enviar-lo.",
+      "submit": "No s'ha pogut enviar l'informe. Si us plau, torna-ho a provar."
+    },
+    "success": {
+      "title": "Gràcies. S'ha enviat el vostre informe.",
+      "subtitle": "Utilitzarem informes per millorar la seguretat del contingut."
+    },
+    "actions": {
+      "report": "Informeu",
+      "submit": "Presentar informe",
+      "done": "Fet"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Coneix",
       "titleHighlight": "Image Studio",
-      "subtitle": "Crea i edita imatges amb IA — dins de ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Crea i edita imatges amb IA — dins de Cloud AI."
     },
     "relaxView": {
       "title": "Coneix la teva IA",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "SOLUCIONS D’IA PER A EMPRESES",
       "description": "Impulsa el teu negoci amb IA d’última generació pensada per a professionals i equips.",
       "stats": "Confiat per més de 500k usuaris",
@@ -592,10 +645,10 @@
       "value": "Millor preu"
     },
     "pack": {
+      "creditsLabel": "{{credits}} fitxes",
       "tokensLabel": "{{credits}} fitxes",
       "defaultName": "Paquet {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} fitxes"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Passa a Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Error desconegut"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium obligatori",
+    "upgrade": "Actualitza",
+    "modelRequiredMessage": "Aquest model requereix Premium. Actualitza per accedir a GPT-5, Grok 4, Claude i models més avançats.",
+    "assistantsRequiredMessage": "Els assistents necessiten Premium. Actualitza per accedir a assistents d'IA especialitzats per a fitness, codificació, escriptura i molt més.",
+    "assistantsTitle": "Premium obligatori",
+    "assistantsMessage": "Els assistents necessiten Premium. Actualitza per accedir a assistents d'IA especialitzats per a fitness, codificació, escriptura i molt més."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Tanca el mur de pagament",
+    "unavailableTitle": "Compres no disponibles",
+    "unavailableMessage": "La facturació d'Android encara no està configurada.",
+    "restoreEmptyTitle": "No s'han trobat compres",
+    "restoreEmptyMessage": "No hem trobat cap compra activa per restaurar per a aquest compte.",
+    "restoreFailedTitle": "La restauració ha fallat",
+    "restoreFailedMessage": "No es poden restaurar les compres ara mateix.",
+    "productsUnavailableTitle": "No hi ha plans disponibles",
+    "productsUnavailableMessage": "No hi ha productes de subscripció d'Android disponibles en aquest moment.",
+    "purchaseFailedTitle": "La compra ha fallat",
+    "purchaseFailedMessage": "No es pot completar aquesta compra en aquest moment.",
     "restore": "Restaura",
     "restoreRestoring": "Restaurant…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Termes",
       "privacy": "Privacitat"
+    },
+    "premium": {
+      "headline": "Tota la IA premium en un pla",
+      "subtitleLine1": "Xateja, codifica, crea i planifica",
+      "subtitleLine2": "amb models avançats.",
+      "enableTrial": "Activa la prova gratuïta",
+      "annual": "Anual",
+      "saveBadge": "Estalvia un 83%",
+      "year": "any",
+      "week": "setmana",
+      "termsOfUse": "Condicions d'ús",
+      "privacyPolicy": "Política de privadesa"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Torna a generar la resposta",
     "regenerateResponseHint": "Genera una resposta nova",
     "copyCode": "Copia el codi",
+    "copied": "Copiat",
     "image": "imatge",
     "loading": "Carregant…",
     "loadingChat": "Carregant el xat...",
     "offlineBanner": "Estàs fora de línia. No es poden enviar missatges.",
+    "offlineError": "Sense connexió a Internet. Comprova la teva connexió i torna-ho a provar.",
     "imagePickerErrorTitle": "Error en seleccionar imatge",
     "imagePickerErrorMessage": "No s’ha pogut accedir a les teves fotos. Prova-ho de nou.",
     "messageTooLong": "Missatge massa llarg ({{length}}). El límit és {{limit}}.",
     "sendFailed": "Error en enviar.",
     "modelNoImageSupport": "El model seleccionat no admet imatges. Si us plau, tria un model diferent.",
     "voiceStartFailed": "No s'ha pogut iniciar la veu.",
+    "voiceNoSpeechDetected": "No es va reconèixer cap veu. Si us plau, torna-ho a provar.",
     "emptyTitle": "En què puc ajudar-te?",
     "emptySubtitle": "Comença una conversa amb IA",
     "privateTitle": "Xat privat",
     "privateSubtitle": "Aquest xat no apareixerà a l’historial",
+    "startPrivateChat": "Inicia el xat privat",
+    "endPrivateChat": "Finalitza el xat privat",
     "permissions": {
       "photosTitle": "Cal permís per a les fotos",
       "photosMessage": "Cal accés a les fotos per poder-ne triar.",
@@ -753,7 +843,19 @@
       "share": "Comparteix",
       "regenerate": "Torna a generar",
       "retryFromHere": "Torna-ho a provar des d’aquí",
+      "report": "Informeu",
       "cancel": "Cancel·la"
+    },
+    "markdown": {
+      "copy": "Còpia",
+      "copied": "Copiat",
+      "table": "TAULA",
+      "watchVideo": "Mira el vídeo",
+      "wikipedia": "Wikipedia",
+      "link": "Enllaç",
+      "note": "Nota",
+      "warning": "Avís",
+      "tip": "Consell"
     },
     "messageActionTitle": "Missatge",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Planifica el meu dia",
       "planDaySubtitle": "amb consells de productivitat"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Trieu un tema",
       "title": "Què vols fer?",
@@ -846,81 +946,59 @@
     "library": "Biblioteca"
   },
   "common": {
-    "new": "NOU",
-    "best": "MILLOR",
-    "cancel": "Cancel·la",
-    "save": "Desa",
-    "delete": "Suprimeix",
-    "close": "Tanca",
-    "allow": "Permet",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Torna-ho a provar",
+    "cancel": "Cancel·la",
+    "allow": "Permet",
+    "notNow": "Ara no",
+    "openSettings": "Obriu Configuració",
+    "close": "Tanca",
+    "save": "Desa",
+    "tryAgain": "Torna-ho a provar"
   },
   "rateUs": {
-    "title": "Gaudiu de ChatCloud?",
+    "title": "Gaudiu de Cloud AI?",
     "subtitle": "El vostre feedback ens ajuda a millorar. Podríeu valorar-nos a l'App Store?",
     "rateNow": "Valora ara",
     "maybeLater": "Potser més tard",
     "dontAskAgain": "No tornar a preguntar"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Oferta única",
+    "discount": "{{percent}}% de descompte",
+    "subtitle": "No tornaràs a veure aquesta oferta.",
     "badgeLine1": "Exclusiu",
     "badgeLine2": "Oferta única",
     "upgradeNow": "Actualitza ara per {{price}}",
     "loadingPrice": "Carregant...",
     "termsOfUse": "Termes d'Ús",
     "privacyPolicy": "Política de Privacitat",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Accés il·limitat a",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Accés il·limitat a GPT-4",
+      "geminiPro": "Accés a Gemini Pro",
+      "grokInsights": "Utilitzeu Grok per obtenir informació nova",
+      "priorityAccess": "Accés prioritari i respostes més ràpides"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Millor relació qualitat-preu",
+    "annualPremium": "Premium anual",
+    "oneTimePayment": "Pagament únic",
+    "wasPrice": "era",
+    "continue": "Continua",
+    "restore": "Restaurar",
+    "terms": "Termes",
+    "privacy": "Privadesa",
+    "successTitle": "Èxit!",
+    "successMessage": "Gràcies per la teva compra! Gaudeix d'accés premium durant els propers 12 mesos.",
+    "errorTitle": "La compra ha fallat",
+    "errorMessage": "Alguna cosa va fallar. Si us plau, torna-ho a provar.",
+    "restoreSuccessTitle": "Restaurat",
+    "restoreSuccessMessage": "Les teves compres s'han restaurat.",
+    "restoreErrorTitle": "La restauració ha fallat",
+    "restoreErrorMessage": "No s'han trobat compres per restaurar.",
+    "unavailableTitle": "Compres no disponibles",
+    "unavailableMessage": "La facturació d'Android encara no està configurada."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MÍTIC"
         }
       }
+    },
+    "checkIn": {
+      "title": "Reclama les teves monedes diàries",
+      "subtitle": "Torna cada dia: la recompensa creix.",
+      "cta": "Registra'm",
+      "claimed": "Rebut! +{{amount}} monedes",
+      "later": "Més tard"
     }
+  },
+  "app": {
+    "version": "Versió {{version}}",
+    "offlineBanner": "Estàs fora de línia",
+    "launch": {
+      "accessibilityLabel": "A partir de Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, llest quan siguis"
+    },
+    "errors": {
+      "modelsLoadTitle": "No s'han pogut carregar els models",
+      "modelsLoadMessage": "No es poden carregar models d'IA. L'aplicació utilitzarà models predeterminats. Comproveu la vostra connexió a Internet.",
+      "modelsLoadTimeout": "La càrrega de models va trigar massa. L'aplicació utilitzarà models predeterminats. Si us plau, torna-ho a provar.",
+      "modelsLoadNetwork": "Sense connexió a Internet. L'aplicació utilitzarà models predeterminats. Comproveu la vostra connexió.",
+      "deviceIdTitle": "Error d'inicialització",
+      "deviceIdMessage": "No s'ha pogut inicialitzar l'identificador del dispositiu. És possible que algunes funcions no funcionin correctament.",
+      "storageTitle": "Error d'emmagatzematge",
+      "storageMessage": "No es pot accedir a l'emmagatzematge local. És possible que algunes funcions no funcionin correctament.",
+      "crashTitle": "Alguna cosa va fallar.",
+      "crashSubtitle": "Si us plau, torna-ho a provar.",
+      "crashLabel": "L'aplicació s'ha bloquejat"
+    },
+    "proxyErrors": {
+      "genericTitle": "Alguna cosa va fallar",
+      "genericMessage": "Si us plau, torna-ho a provar.",
+      "rateLimitTitle": "Massa peticions",
+      "rateLimitMessage": "Estem atenent moltes peticions. Si us plau, torna-ho a provar d'aquí a un moment.",
+      "rateLimitRetryAfter": "Estem atenent moltes peticions. Torna-ho a provar d'aquí a uns {{seconds}} segons.",
+      "restrictedTitle": "Contingut restringit",
+      "restrictedMessage": "Aquesta sol·licitud s'ha bloquejat pels filtres de seguretat.",
+      "insufficientCoinsTitle": "No hi ha prou monedes",
+      "insufficientCoinsMessage": "El vostre saldo actual és massa baix per a aquesta sol·licitud.",
+      "imageUnavailableTitle": "Imatge no disponible",
+      "imageUnavailableMessage": "El fitxer d'imatge generat no estava disponible temporalment. Si us plau, torna-ho a provar.",
+      "authorizationTitle": "Problema d'autorització",
+      "authorizationMessage": "No hem pogut verificar el vostre compte. Si us plau, torna-ho a provar.",
+      "serverTitle": "Singlot del servidor",
+      "serverMessage": "Els nostres servidors van tenir problemes. Si us plau, torna-ho a provar en breu.",
+      "timeoutTitle": "S'està trigant massa",
+      "timeoutMessage": "La sol·licitud s'ha esgotat. Si us plau, torna-ho a provar.",
+      "networkTitle": "Sense connexió",
+      "networkMessage": "Sense connexió a Internet. Comprova la teva connexió i torna-ho a provar.",
+      "requestTitle": "Problema de la sol·licitud",
+      "requestMessage": "S'ha produït un error amb la vostra sol·licitud. Si us plau, torna-ho a provar."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Activa Premium",
+    "activateMessage": "Voleu activar el revisor premium?",
+    "activateAction": "Activar",
+    "deactivateTitle": "Desactiva Premium",
+    "deactivateMessage": "Voleu desactivar el revisor premium?",
+    "deactivateAction": "Desactivar"
   },
   "push": {
     "dailyReward": {
       "title": "Recompensa diària",
       "body": "No et perdis les teves monedes diàries — reclama-les abans de mitjanit."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "No perdis les teves monedes diàries",
+      "body": "T'enviem un recordatori al dia perquè la teva ratxa no es trenqui i les monedes segueixin creixent. Sense correu brossa i el pots desactivar quan vulguis.",
+      "enable": "Activa els recordatoris",
+      "skip": "Ara no"
     }
   }
 }

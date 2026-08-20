@@ -11,7 +11,12 @@
     "searchHint": "Escribe para filtrar los modelos disponibles",
     "modelLabel": "Modelo {{name}}",
     "selectHint": "Seleccionar modelo {{name}}",
-    "currentlySelected": "Actualmente seleccionado"
+    "currentlySelected": "Actualmente seleccionado",
+    "genericModel": "Modelo de {{provider}}",
+    "badges": {
+      "new": "NUEVO",
+      "best": "MEJOR"
+    }
   },
   "models": {
     "gpt-4o": "Modelo de IA más potente",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Asistentes",
+    "defaultTitle": "Asistente",
+    "errorTitle": "Algo salió mal",
+    "errorMessage": "No se pudo iniciar este asistente.",
+    "noAssistants": "No se encontraron asistentes en esta categoría.",
+    "selectAssistantHint": "Abrir el selector de asistentes",
     "subtitle": "Especialistas de IA listos para programar, escribir, analizar, planificar y más.",
     "searchPlaceholder": "Buscar asistentes…",
     "useAssistant": "Usar asistente",
@@ -254,9 +264,12 @@
     "search": "Buscar",
     "clearSearch": "Borrar búsqueda",
     "noChatsYet": "Aún no hay chats",
+    "noResults": "Aún no hay chats",
     "startFirstConversation": "Comienza tu primera conversación.",
     "startChat": "Iniciar chat",
+    "startNewChat": "Iniciar chat",
     "errorLoadingHistory": "Error al cargar el historial",
+    "loading": "Cargando historial...",
     "renameChat": "Renombrar chat",
     "enterNewTitle": "Ingresa un nuevo título",
     "deleteChat": "¿Eliminar chat?",
@@ -264,9 +277,7 @@
     "rename": "Renombrar",
     "unpin": "Desanclar",
     "pin": "Anclar",
-    "untitled": "Sin título",
-    "noResults": "Aún no hay chats",
-    "startNewChat": "Iniciar chat"
+    "untitled": "Sin título"
   },
   "settings": {
     "title": "Ajustes",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium activo",
-        "subtitle": "Gracias por apoyar ChatCloud"
+        "subtitle": "Gracias por apoyar Cloud AI"
       },
       "restore": {
         "title": "Restaurar compras",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "No se puede abrir este enlace ahora.",
       "restoreSuccessTitle": "Restaurado",
       "restoreSuccessMessage": "Tus compras han sido restauradas.",
+      "restoreEmptyTitle": "No se encontraron compras",
+      "restoreEmptyMessage": "No encontramos ninguna compra activa que restaurar para esta cuenta.",
       "restoreErrorTitle": "Error al restaurar",
       "restoreErrorMessage": "No se pueden restaurar las compras ahora.",
       "resetConfirmTitle": "¿Restablecer datos de la app?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Personalizado"
     },
+    "notEnoughCoinsTitle": "Monedas insuficientes",
+    "notEnoughCoinsMessage": "Tu saldo actual es insuficiente para esta imagen.",
     "modelTaglines": {
       "runwareFluxSchnell": "Modelo más rápido",
       "runwareFluxKrea": "Creativo y muy estilizado",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "No se pudo guardar",
       "shareFailedTitle": "No se pudo compartir",
-      "tryAgain": "Intenta de nuevo."
+      "tryAgain": "Intenta de nuevo.",
+      "savedTitle": "Guardada",
+      "savedMessage": "Imagen guardada en tu galería.",
+      "permissionTitle": "Permiso necesario",
+      "permissionMessage": "Permite el acceso al almacenamiento para guardar imágenes en tu galería."
     },
     "result": {
       "complete": "Listo"
@@ -498,12 +517,47 @@
       "save": "Guardar",
       "share": "Compartir"
     },
+    "alerts": {
+      "savedTitle": "Guardada",
+      "savedMessage": "Imagen guardada en tu galería.",
+      "permissionTitle": "Permiso necesario",
+      "permissionMessage": "Permite el acceso al almacenamiento para guardar imágenes en tu galería.",
+      "saveFailedTitle": "No se pudo guardar",
+      "tryAgain": "Inténtalo de nuevo."
+    },
     "accessibility": {
       "close": "Cerrar",
       "delete": "Eliminar imagen",
       "edit": "Editar imagen",
       "save": "Guardar imagen",
       "share": "Compartir imagen"
+    }
+  },
+  "reportContent": {
+    "title": "Denunciar contenido de IA",
+    "subtitle": "Cuéntanos qué está mal en este contenido generado.",
+    "privateDisclosure": "Al enviar, este contenido denunciado se remite a una revisión de seguridad.",
+    "accessibilityLabel": "Denunciar contenido de IA",
+    "reasons": {
+      "sexual": "Contenido sexual o desnudos",
+      "violence_self_harm": "Violencia o autolesiones",
+      "hate_harassment": "Odio o acoso",
+      "child_safety": "Problema de seguridad infantil",
+      "scam_deceptive": "Estafa o contenido engañoso",
+      "other": "Otro"
+    },
+    "errors": {
+      "reasonRequired": "Elige un motivo antes de enviar.",
+      "submit": "No se pudo enviar la denuncia. Inténtalo de nuevo."
+    },
+    "success": {
+      "title": "Gracias. Tu denuncia se ha enviado.",
+      "subtitle": "Usaremos las denuncias para mejorar la seguridad del contenido."
+    },
+    "actions": {
+      "report": "Denunciar",
+      "submit": "Enviar denuncia",
+      "done": "Listo"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Te presentamos",
       "titleHighlight": "Image Studio",
-      "subtitle": "Crea y edita imágenes con IA — dentro de ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Crea y edita imágenes con IA — dentro de Cloud AI."
     },
     "relaxView": {
       "title": "Conoce tu IA",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "SOLUCIONES DE IA A NIVEL EMPRESARIAL",
       "description": "Potencia tu negocio con IA avanzada diseñada para profesionales y equipos.",
       "stats": "Confiado por 500k+ usuarios",
@@ -592,10 +645,10 @@
       "value": "Mejor valor"
     },
     "pack": {
+      "creditsLabel": "{{credits}} credits",
       "tokensLabel": "{{credits}} credits",
       "defaultName": "Paquete {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} credits"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Hazte Premium",
@@ -624,6 +677,17 @@
   },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Cerrar pantalla de pago",
+    "unavailableTitle": "Compras no disponibles",
+    "unavailableMessage": "La facturación de Android aún no está configurada.",
+    "restoreEmptyTitle": "No se encontraron compras",
+    "restoreEmptyMessage": "No encontramos ninguna compra activa que restaurar para esta cuenta.",
+    "restoreFailedTitle": "Restauración fallida",
+    "restoreFailedMessage": "No se pueden restaurar las compras en este momento.",
+    "productsUnavailableTitle": "No hay planes disponibles",
+    "productsUnavailableMessage": "No hay suscripciones de Android disponibles en este momento.",
+    "purchaseFailedTitle": "Compra fallida",
+    "purchaseFailedMessage": "No se puede completar esta compra en este momento.",
     "restore": "Restaurar",
     "restoreRestoring": "Restaurando…",
     "features": {
@@ -672,55 +736,18 @@
     "legal": {
       "terms": "Términos",
       "privacy": "Privacidad"
-    }
-  },
-  "oneTimeOffer": {
-    "title": "Oferta de Una Vez",
-    "subtitle": "No volverás a ver esta oferta.",
-    "badgeLine1": "Exclusivo",
-    "badgeLine2": "Oferta única",
-    "upgradeNow": "Actualizar ahora por {{price}}",
-    "loadingPrice": "Cargando...",
-    "termsOfUse": "Términos de Uso",
-    "privacyPolicy": "Política de Privacidad",
-    "accessTitle": "Acceso ilimitado a",
-    "accessSubtitle": "GPT, Gemini y Grok 4",
-    "features": {
-      "unlimitedGPT4": "Acceso ilimitado a GPT-4",
-      "geminiPro": "Acceso a Gemini Pro",
-      "grokInsights": "Utiliza Grok para obtener información actualizada",
-      "priorityAccess": "Acceso prioritario y respuestas más rápidas"
     },
-    "bestValue": "Mejor Valor",
-    "annualPremium": "Premium Anual",
-    "oneTimePayment": "Pago único",
-    "wasPrice": "era",
-    "continue": "Continuar",
-    "restore": "Restaurar",
-    "terms": "Términos",
-    "privacy": "Privacidad",
-    "successTitle": "¡Éxito!",
-    "successMessage": "¡Gracias por tu compra! Ahora tienes acceso de por vida a todas las funciones premium.",
-    "errorTitle": "Compra Fallida",
-    "errorMessage": "Algo salió mal. Por favor, intenta de nuevo.",
-    "restoreSuccessTitle": "Restaurado",
-    "restoreSuccessMessage": "Tus compras han sido restauradas.",
-    "restoreErrorTitle": "Restauración Fallida",
-    "restoreErrorMessage": "No se encontraron compras para restaurar."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Error al Cargar Modelos",
-      "modelsLoadMessage": "No se pudieron cargar los modelos de IA. La app usará modelos predeterminados. Por favor, verifica tu conexión a internet.",
-      "modelsLoadTimeout": "La carga de modelos tardó demasiado. La app usará modelos predeterminados. Por favor, intenta de nuevo.",
-      "modelsLoadNetwork": "Sin conexión a internet. La app usará modelos predeterminados. Por favor, verifica tu conexión.",
-      "deviceIdTitle": "Error de Inicialización",
-      "deviceIdMessage": "No se pudo inicializar el ID del dispositivo. Algunas funciones pueden no funcionar correctamente.",
-      "storageTitle": "Error de Almacenamiento",
-      "storageMessage": "No se pudo acceder al almacenamiento local. Algunas funciones pueden no funcionar correctamente.",
-      "crashTitle": "Algo salió mal.",
-      "crashSubtitle": "Por favor, intenta de nuevo.",
-      "crashLabel": "La app falló"
+    "premium": {
+      "headline": "Toda la IA premium en un solo plan",
+      "subtitleLine1": "Chatea, codifica, crea y planifica",
+      "subtitleLine2": "con modelos avanzados.",
+      "enableTrial": "Habilitar prueba gratuita",
+      "annual": "Anual",
+      "saveBadge": "Ahorre 83%",
+      "year": "año",
+      "week": "semana",
+      "termsOfUse": "Términos de uso",
+      "privacyPolicy": "Política de privacidad"
     }
   },
   "chat": {
@@ -765,10 +792,13 @@
     "sendFailed": "Error al enviar.",
     "modelNoImageSupport": "El modelo seleccionado no admite imágenes. Por favor, elige un modelo diferente.",
     "voiceStartFailed": "No se pudo iniciar la voz.",
+    "voiceNoSpeechDetected": "No se reconoció ninguna voz. Inténtalo de nuevo.",
     "emptyTitle": "¿En qué te ayudo?",
     "emptySubtitle": "Empieza una conversación con IA",
     "privateTitle": "Chat privado",
     "privateSubtitle": "Este chat no aparecerá en tu historial",
+    "startPrivateChat": "Iniciar chat privado",
+    "endPrivateChat": "Finalizar chat privado",
     "permissions": {
       "photosTitle": "Se necesita permiso de fotos",
       "photosMessage": "Necesitamos acceso a tus fotos para elegir imágenes.",
@@ -813,7 +843,19 @@
       "share": "Compartir",
       "regenerate": "Regenerar",
       "retryFromHere": "Reintentar desde aquí",
+      "report": "Denunciar",
       "cancel": "Cancelar"
+    },
+    "markdown": {
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "table": "TABLA",
+      "watchVideo": "Ver vídeo",
+      "wikipedia": "Wikipedia",
+      "link": "Enlace",
+      "note": "Nota",
+      "warning": "Advertencia",
+      "tip": "Consejo"
     },
     "messageActionTitle": "Mensaje",
     "status": {
@@ -904,23 +946,59 @@
     "library": "Galería"
   },
   "common": {
-    "new": "NUEVO",
-    "best": "MEJOR",
-    "cancel": "Cancelar",
-    "save": "Guardar",
-    "delete": "Eliminar",
-    "close": "Cerrar",
-    "allow": "Permitir",
     "ok": "OK",
     "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "allow": "Permitir",
+    "notNow": "Ahora no",
+    "openSettings": "Abrir ajustes",
+    "close": "Cerrar",
+    "save": "Guardar",
     "tryAgain": "Intentar de Nuevo"
   },
   "rateUs": {
-    "title": "¿Te gusta ChatCloud?",
+    "title": "¿Te gusta Cloud AI?",
     "subtitle": "Tu opinión nos ayuda a mejorar. ¿Podrías calificarnos en la App Store?",
     "rateNow": "Calificar ahora",
     "maybeLater": "Tal vez más tarde",
     "dontAskAgain": "No preguntar de nuevo"
+  },
+  "oneTimeOffer": {
+    "title": "Oferta de Una Vez",
+    "discount": "{{percent}}% DE DESCUENTO",
+    "subtitle": "No volverás a ver esta oferta.",
+    "badgeLine1": "Exclusivo",
+    "badgeLine2": "Oferta única",
+    "upgradeNow": "Actualizar ahora por {{price}}",
+    "loadingPrice": "Cargando...",
+    "termsOfUse": "Términos de Uso",
+    "privacyPolicy": "Política de Privacidad",
+    "accessTitle": "Acceso ilimitado a",
+    "accessSubtitle": "GPT, Gemini y Grok 4",
+    "features": {
+      "unlimitedGPT4": "Acceso ilimitado a GPT-4",
+      "geminiPro": "Acceso a Gemini Pro",
+      "grokInsights": "Utiliza Grok para obtener información actualizada",
+      "priorityAccess": "Acceso prioritario y respuestas más rápidas"
+    },
+    "bestValue": "Mejor Valor",
+    "annualPremium": "Premium Anual",
+    "oneTimePayment": "Pago único",
+    "wasPrice": "era",
+    "continue": "Continuar",
+    "restore": "Restaurar",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "successTitle": "¡Éxito!",
+    "successMessage": "¡Gracias por tu compra! Ahora tienes acceso de por vida a todas las funciones premium.",
+    "errorTitle": "Compra Fallida",
+    "errorMessage": "Algo salió mal. Por favor, intenta de nuevo.",
+    "restoreSuccessTitle": "Restaurado",
+    "restoreSuccessMessage": "Tus compras han sido restauradas.",
+    "restoreErrorTitle": "Restauración Fallida",
+    "restoreErrorMessage": "No se encontraron compras para restaurar.",
+    "unavailableTitle": "Compras no disponibles",
+    "unavailableMessage": "La facturación de Android aún no está configurada."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MÍTICO"
         }
       }
+    },
+    "checkIn": {
+      "title": "Reclama tus monedas diarias",
+      "subtitle": "Vuelve cada día para una recompensa mayor.",
+      "cta": "Registrarme",
+      "claimed": "¡Recibido! +{{amount}} monedas",
+      "later": "Más tarde"
     }
+  },
+  "app": {
+    "version": "Versión {{version}}",
+    "offlineBanner": "Estás sin conexión",
+    "launch": {
+      "accessibilityLabel": "Iniciando Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "IA lista cuando la necesites"
+    },
+    "errors": {
+      "modelsLoadTitle": "Error al Cargar Modelos",
+      "modelsLoadMessage": "No se pudieron cargar los modelos de IA. La app usará modelos predeterminados. Por favor, verifica tu conexión a internet.",
+      "modelsLoadTimeout": "La carga de modelos tardó demasiado. La app usará modelos predeterminados. Por favor, intenta de nuevo.",
+      "modelsLoadNetwork": "Sin conexión a internet. La app usará modelos predeterminados. Por favor, verifica tu conexión.",
+      "deviceIdTitle": "Error de Inicialización",
+      "deviceIdMessage": "No se pudo inicializar el ID del dispositivo. Algunas funciones pueden no funcionar correctamente.",
+      "storageTitle": "Error de Almacenamiento",
+      "storageMessage": "No se pudo acceder al almacenamiento local. Algunas funciones pueden no funcionar correctamente.",
+      "crashTitle": "Algo salió mal.",
+      "crashSubtitle": "Por favor, intenta de nuevo.",
+      "crashLabel": "La app falló"
+    },
+    "proxyErrors": {
+      "genericTitle": "Algo salió mal",
+      "genericMessage": "Inténtalo de nuevo.",
+      "rateLimitTitle": "Demasiadas solicitudes",
+      "rateLimitMessage": "Estamos gestionando muchas solicitudes. Inténtalo de nuevo en un momento.",
+      "rateLimitRetryAfter": "Estamos gestionando muchas solicitudes. Inténtalo de nuevo en unos {{seconds}} segundos.",
+      "restrictedTitle": "Contenido restringido",
+      "restrictedMessage": "Esta solicitud fue bloqueada por los filtros de seguridad.",
+      "insufficientCoinsTitle": "Monedas insuficientes",
+      "insufficientCoinsMessage": "Tu saldo actual es insuficiente para esta solicitud.",
+      "imageUnavailableTitle": "Imagen no disponible",
+      "imageUnavailableMessage": "El archivo de la imagen generada no estaba disponible temporalmente. Inténtalo de nuevo.",
+      "authorizationTitle": "Problema de autorización",
+      "authorizationMessage": "No pudimos verificar tu cuenta. Inténtalo de nuevo.",
+      "serverTitle": "Fallo del servidor",
+      "serverMessage": "Nuestros servidores tuvieron un problema. Inténtalo de nuevo en breve.",
+      "timeoutTitle": "Está tardando demasiado",
+      "timeoutMessage": "La solicitud agotó el tiempo de espera. Inténtalo de nuevo.",
+      "networkTitle": "Sin conexión",
+      "networkMessage": "No hay conexión a Internet. Comprueba tu conexión e inténtalo de nuevo.",
+      "requestTitle": "Problema con la solicitud",
+      "requestMessage": "Algo salió mal con tu solicitud. Inténtalo de nuevo."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Activar Premium",
+    "activateMessage": "¿Quieres activar el premium para revisores?",
+    "activateAction": "Activar",
+    "deactivateTitle": "Desactivar Premium",
+    "deactivateMessage": "¿Quieres desactivar el premium para revisores?",
+    "deactivateAction": "Desactivar"
   },
   "push": {
     "dailyReward": {
       "title": "Recompensa diaria",
       "body": "No te pierdas tus monedas diarias — reclámalas antes de medianoche."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "No te pierdas tus monedas diarias",
+      "body": "Enviamos un recordatorio al día para que tu racha siga viva y tus monedas sigan creciendo. Sin spam y puedes desactivarlo cuando quieras.",
+      "enable": "Activar recordatorios",
+      "skip": "Ahora no"
     }
   }
 }

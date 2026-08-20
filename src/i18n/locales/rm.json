@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Tscherna in model",
+    "searchPlaceholder": "Tschertgar models...",
+    "noModelsFound": "Chattà nagins models",
+    "noModelsAvailable": "Nagins models disponibels",
+    "currentModel": "Model actual: {{name}}. Smatga per midar il model.",
+    "openHint": "Avra il menu per tscherner in model",
+    "closeLabel": "Serrar la tscherna da models",
+    "searchLabel": "Tschertgar models",
+    "searchHint": "Tippa per filtrar ils models disponibels",
+    "modelLabel": "Model {{name}}",
+    "selectHint": "Tscherner il model {{name}}",
+    "currentlySelected": "Model tschernì actualmain",
+    "genericModel": "Model da {{provider}}",
+    "badges": {
+      "new": "NOV",
+      "best": "TOP"
+    }
+  },
+  "models": {
+    "gpt-4o": "Il pli pussant model d'IA",
+    "gpt-4o-mini": "Svelt per incumbensas da mintgadi",
+    "gpt-5": "La pli pussanta IA universala",
+    "gpt-5-chat-latest": "Optimà per chat e dialog",
+    "gpt-5-mini": "GPT-5 svelt e fidabel",
+    "gpt-5.4-nano": "Model lev per incumbensas simplas",
+    "o4-mini": "Model da raschunar effizient",
+    "gpt-4.1-mini": "GPT-4.1 cumpact e pussant",
+    "claude-3-haiku": "IA svelta e focussada da Anthropic",
+    "claude-3.7-sonnet": "Raschunar rafinà da Anthropic",
+    "gemini-2.5-Flash": "Il pli avanzà model da Google",
+    "gemini-2.5-flash": "Il pli avanzà model da Google",
+    "gemini-2.0-flash": "IA svelta e precisa da Google"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Il pli pussant model d'IA",
+    "fast_everyday": "Svelt per incumbensas da mintgadi",
+    "fast_reasoning": "Model svelt cun bun raschunar",
+    "great_reasoning": "Model avanzà da raschunar",
+    "coding_reasoning": "Programmar e raschunar avanzà",
+    "better_coding": "Meglier per programmar e raschunar",
+    "best_overall": "Il meglier model d'IA en general",
+    "best_google": "Il meglier model da Google",
+    "best_xai": "Il pli pussant model da xAI",
+    "creative_focus": "Ideal per scriver creativ",
+    "code_helper": "Ideal per agid cun programmar",
+    "chat_focus": "Optimà per chattar",
+    "long_context": "Ideal per contexts lungs",
+    "budget_friendly": "Model d'IA bunmartgà",
+    "ultra_fast": "Respostas fitg sveltas",
+    "safe_default": "Tscherna da standard segira",
+    "multilingual": "Ferm sustegn multiling",
+    "vision_strong": "Ideal cun maletgs e visiun",
+    "data_analysis": "Bun per analisar datas",
+    "structured_tasks": "Bun per incumbensas structuradas",
+    "everyday_helper": "Model d'assistenza per il mintgadi",
+    "concise_answers": "Respostas curtas e concisas",
+    "detailed_answers": "Respostas detagliadas pass per pass",
+    "experimental": "Model experimental da nova generaziun",
+    "reliable_classic": "Model classic fidabel",
+    "lightweight": "Model lev e bunmartgà",
+    "chatty_personal": "Pli amiaivel e persunal",
+    "pro_users": "Il meglier per utilisaders profis",
+    "research_helper": "Bun per retschertgas e notizias",
+    "reasoning_strong": "Model avanzà da raschunar"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Auters"
+  },
+  "navigation": {
+    "chat": "Nov chat",
+    "history": "Cronologia",
+    "rewards": "Recumpensas dal di",
+    "assistants": "Assistents",
+    "imagesStudio": "Image Studio",
+    "settings": "Parameters",
+    "recentChats": "Chats dacurt",
+    "proFeatures": "Funcziuns Pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Obtegna funcziuns Pro",
+      "subtitle": "Tut las funcziuns d'IA"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Generescha, rafinescha e publitgescha material visual en in lieu.",
+    "cta": "Avrir"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Tscherner maletgs",
+    "exitSelectionMode": "Bandunar il modus da tscherna",
+    "selectAll": "Tscherner tut",
+    "noImagesYet": "Anc nagins maletgs",
+    "describeImageHint": "Descriva tes maletg sutvart e smatga sin Generar.",
+    "generatedImagesGallery": "Galaria da maletgs generads",
+    "describeImagePlaceholder": "Descriva il maletg che ti vuls…",
+    "deleteConfirmTitle": "Stizzar maletgs",
+    "deleteConfirmMessage": "Vuls ti propi stizzar ils maletgs tschernids? Questa acziun na po betg vegnir revocada.",
+    "cancel": "Interrumper",
+    "delete": "Stizzar",
+    "generate": "Generar",
+    "generating": "Generar…",
+    "latest": "Il pli nov",
+    "insertToChat": "Inserir en il chat",
+    "pleaseWait": "Spetga per plaschair…",
+    "processing": "Elavurar...",
+    "tapToUploadImage": "Smatga per chargiar si in maletg",
+    "camera": "Chargiar si fotografias",
+    "library": "Biblioteca",
+    "enterPrompt": "Endatescha per plaschair in prompt per generar in maletg dal text",
+    "openInBrowser": "Avrir en il navigatur",
+    "makeVariations": "Crear variaziuns",
+    "deleteAllFromGeneration": "Stizzar tut da questa generaziun",
+    "imageOptionsTitle": "Opziuns dal maletg",
+    "imageOptionsMessage": "Tge vuls ti far cun quest maletg?",
+    "insertMarkdownHeader": "Qua è il maletg per:",
+    "variationSuffix": "— variaziun dal maletg precedent",
+    "selectedCount": "tschernì",
+    "selectedCount_one": "tschernì",
+    "selectedCount_other": "tschernids",
+    "imageDescriptionInput": "Endataziun da la descripziun dal maletg",
+    "imageDescriptionHint": "Endatescha ina descripziun dal maletg che ti vuls generar",
+    "openModelSettings": "Avrir ils parameters dal model",
+    "modelSettingsHint": "Smatga per midar il model ed ils parameters",
+    "openPhotoGallery": "Avrir la galaria da fotografias",
+    "clearInput": "Stizzar l'endataziun",
+    "generatedImage": "Maletg generà",
+    "autoSelectedModel": "Tschernì automaticamain {{model}} per il modus {{mode}}",
+    "deleteSelectedConfirmTitle": "Stizzar maletgs",
+    "deleteSelectedConfirmMessage": "Vuls ti propi stizzar ils maletgs? Questa acziun na po betg vegnir revocada."
+  },
+  "imageStudio": {
+    "generateImage": "Generar in maletg",
+    "generatingImage": "Il maletg vegn generà",
+    "generateImageHint": "Smatga per generar in maletg tenor tia descripziun",
+    "imageDescriptionInput": "Endataziun da la descripziun dal maletg",
+    "imageDescriptionHint": "Endatescha ina descripziun dal maletg che ti vuls generar",
+    "openModelSettings": "Avrir ils parameters dal model",
+    "modelSettingsHint": "Smatga per midar il model ed ils parameters",
+    "openPhotoGallery": "Avrir la galaria da fotografias",
+    "clearInput": "Stizzar l'endataziun",
+    "generatedImage": "Maletg generà"
+  },
+  "assistants": {
+    "title": "Assistents",
+    "defaultTitle": "Assistent",
+    "errorTitle": "Igl è succedì in sbagl",
+    "errorMessage": "Impussibel da lantschar quest assistent.",
+    "noAssistants": "Chattà nagins assistents en questa categoria.",
+    "selectAssistantHint": "Avrir la tscherna d'assistents",
+    "subtitle": "Spezialists d'IA curads, pronts per programmar, scriver, analisar, planisar e dapli.",
+    "searchPlaceholder": "Tschertgar assistents…",
+    "useAssistant": "Utilisar l'assistent",
+    "selectAssistant": "Tscherner in assistent",
+    "description": "Descripziun",
+    "systemPrompt": "Prompt da sistem",
+    "chooseModel": "Tscherner in model",
+    "categoryAll": "Tuts",
+    "categories": {
+      "everyday": "Mintgadi",
+      "life": "Vita",
+      "health": "Sanadad",
+      "schoolWork": "Scola e lavur",
+      "coding": "Programmar",
+      "creative": "Creativ",
+      "general": "General"
+    },
+    "presets": {
+      "default": {
+        "name": "Assistent da standard",
+        "description": "Agid equilibrà per il mintgadi."
+      },
+      "quick": {
+        "name": "Respostas sveltas",
+        "description": "Respostas curtas e directas."
+      },
+      "planner": {
+        "name": "Planisader dal di",
+        "description": "Planisescha tes di e tias rutinas."
+      },
+      "recipes": {
+        "name": "Tratgas e retschetas",
+        "description": "Tge cuschinar, cun quai che ti has."
+      },
+      "fitness": {
+        "name": "Trenader da fitness",
+        "description": "Pitschnas disas e trenament a chasa."
+      },
+      "money": {
+        "name": "Cumpogn da daners",
+        "description": "Budgets simpels e tips per las expensas."
+      },
+      "study": {
+        "name": "Agid da studi",
+        "description": "Explitgar simplamain. Far dumondas."
+      },
+      "email": {
+        "name": "E-mail e CV",
+        "description": "Scriver e-mails clers e lingias da CV."
+      },
+      "translator": {
+        "name": "Translatur",
+        "description": "Translatar + emprender frasas."
+      },
+      "travel": {
+        "name": "Cumpogn da viadi",
+        "description": "Plans simpels e glistas da fardel."
+      },
+      "tech": {
+        "name": "Sustegn tecnic (simpel)",
+        "description": "Telefon, apps, basas da Wi-Fi."
+      },
+      "summarizer": {
+        "name": "Resumaziun TL;DR",
+        "description": "Puncts curts + TL;DR d'ina lingia."
+      },
+      "gift": {
+        "name": "Chattar regals",
+        "description": "Ideas tenor budget ed interess."
+      },
+      "party": {
+        "name": "Planisader da festas (lev)",
+        "description": "Planisescha svelt ina pitschna festa."
+      },
+      "social": {
+        "name": "Creader da posts socials",
+        "description": "Sbozzar posts cun opziuns."
+      },
+      "interview": {
+        "name": "Trenader d'intervistas",
+        "description": "Trenar respostas (STAR)."
+      },
+      "homefix": {
+        "name": "Guid da reparaturas a chasa",
+        "description": "Diagnosa simpla per far sez."
+      },
+      "pet": {
+        "name": "Cumpogn per animals da chasa",
+        "description": "Nutrir, spassegiar, trenament da basa."
+      },
+      "mindful": {
+        "name": "Minuta da calma",
+        "description": "Pausas da calma da 1–3 min."
+      },
+      "polite": {
+        "name": "Reformular gentilmain",
+        "description": "Reformulescha texts e respostas gentilmain."
+      }
+    }
+  },
+  "history": {
+    "title": "Istoric",
+    "searchPlaceholder": "Caută în chat-uri…",
+    "newChat": "Chat nou",
+    "new": "+ Nou",
+    "search": "Caută",
+    "clearSearch": "Șterge căutarea",
+    "noChatsYet": "Nu există încă chat-uri",
+    "noResults": "Nu există încă chat-uri",
+    "startFirstConversation": "Începe prima conversație.",
+    "startChat": "Începe un chat",
+    "startNewChat": "Începe un chat nou",
+    "errorLoadingHistory": "Eroare la încărcarea istoricului",
+    "loading": "Se încarcă istoricul...",
+    "renameChat": "Redenumește chat-ul",
+    "enterNewTitle": "Introdu un titlu nou",
+    "deleteChat": "Ștergi chat-ul?",
+    "deleteChatMessage": "„{{title}}” va fi șters.",
+    "rename": "Redenumește",
+    "unpin": "Anulează fixarea",
+    "pin": "Fixează",
+    "untitled": "Fără titlu"
+  },
+  "settings": {
+    "title": "Setări",
+    "model": "Model",
+    "searchPlaceholder": "Caută modele…",
+    "temperatureForCurrentModel": "Temperatura modelului curent",
+    "customFor": "Personalizată pentru {{model}}",
+    "usingDefault": "Se folosește valoarea implicită {{temperature}}",
+    "resetToDefault": "Restabilește valoarea implicită",
+    "defaultTemperature": "Temperatură implicită (de rezervă)",
+    "usedByModelsWithoutOverride": "Folosită de modelele fără o setare personalizată",
+    "dangerZone": "Zonă periculoasă",
+    "clearAllChatsAndSettings": "Șterge toate chat-urile și setările",
+    "about": "Despre aplicație",
+    "version": "Versiunea {{version}}{{status}}",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Politica de confidențialitate",
+    "hero": {
+      "label": "Ofertă specială",
+      "title": "Acces nelimitat\nși funcții Pro",
+      "upgrade": "Treci la Pro",
+      "manage": "Gestionează abonamentul"
+    },
+    "sections": {
+      "premium": "Plan Premium",
+      "data": "Datele utilizatorului",
+      "support": "Asistență și informații juridice"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Obține Premium",
+        "subtitle": "Deblochează instrumente de creație nelimitate"
+      },
+      "premiumActive": {
+        "title": "Premium activ",
+        "subtitle": "Îți mulțumim că susții Cloud AI"
+      },
+      "restore": {
+        "title": "Restaurează achizițiile",
+        "subtitle": "Folosește această opțiune dacă ai schimbat dispozitivul"
+      },
+      "history": {
+        "title": "Gestionează istoricul chat-urilor",
+        "subtitle": "Vezi și șterge sesiunile anterioare"
+      },
+      "reset": {
+        "title": "Resetează chat-urile și preferințele",
+        "subtitle": "Șterge toate datele salvate pe acest dispozitiv"
+      },
+      "rate": {
+        "title": "Evaluează-ne",
+        "error": "Pagina magazinului nu a putut fi deschisă."
+      },
+      "support": {
+        "title": "Asistență",
+        "subtitle": "Contactează-ne online",
+        "error": "Pagina de contact nu a putut fi deschisă."
+      },
+      "privacy": {
+        "title": "Politica de confidențialitate",
+        "error": "Politica de confidențialitate nu a putut fi deschisă."
+      },
+      "terms": {
+        "title": "Termeni de utilizare",
+        "error": "Termenii de utilizare nu au putut fi deschiși."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Indisponibil",
+      "linkUnavailableMessage": "Acest link nu poate fi deschis momentan.",
+      "restoreSuccessTitle": "Restaurat",
+      "restoreSuccessMessage": "Achizițiile tale au fost restaurate.",
+      "restoreEmptyTitle": "Nu s-au găsit achiziții",
+      "restoreEmptyMessage": "Nu am găsit nicio achiziție activă care să poată fi restaurată pentru acest cont.",
+      "restoreErrorTitle": "Restaurarea a eșuat",
+      "restoreErrorMessage": "Achizițiile nu pot fi restaurate momentan.",
+      "resetConfirmTitle": "Resetezi datele aplicației?",
+      "resetConfirmMessage": "Aceasta va elimina toate chat-urile și preferințele locale.",
+      "resetConfirmCancel": "Anulează",
+      "resetConfirmCta": "Resetează"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Creează",
+    "chooseStyle": "Alege un stil",
+    "aspectRatio": "Raport de aspect",
+    "starterPrompts": {
+      "title": "Idei de început",
+      "items": [
+        "portret de studio",
+        "living modern",
+        "plajă tropicală la apus"
+      ]
+    },
+    "promptPlaceholder": "Descrie ce vrei să vezi…",
+    "promptHint": "Exemplu: „Golden retriever în lumină de studio”",
+    "clearText": "Șterge textul",
+    "generate": "Generează",
+    "generating": "Se generează…"
+  },
+  "editImage": {
+    "headerTitle": "Editează",
+    "chooseStyle": "Alege un stil",
+    "aspectRatio": "Raport de aspect",
+    "starterPrompts": {
+      "title": "Idei de început",
+      "items": [
+        "corectează iluminarea",
+        "elimină fundalul",
+        "retușare delicată de portret"
+      ]
+    },
+    "promptPlaceholder": "Descrie modificările (opțional)",
+    "clearText": "Șterge textul",
+    "generate": "Generează",
+    "generating": "Se aplică…",
+    "upload": {
+      "choose": "Alege fotografia",
+      "change": "Schimbă",
+      "remove": "Elimină"
+    },
+    "imageUnavailable": {
+      "title": "Imagine indisponibilă",
+      "message": "Fotografia selectată nu a putut fi accesată. Selecteaz-o din nou și încearcă iar."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Desen animat"
+      },
+      "photoreal": {
+        "name": "Fotorealist"
+      },
+      "sketch": {
+        "name": "Schiță"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Ilustrație 3D"
+      },
+      "dark_fantasy": {
+        "name": "Fantezie întunecată"
+      },
+      "vintage_film": {
+        "name": "Film vintage"
+      },
+      "pastel": {
+        "name": "Estetică pastelată"
+      },
+      "neon_glow": {
+        "name": "Strălucire neon"
+      },
+      "epic_landscape": {
+        "name": "Peisaj epic"
+      }
+    },
+    "aspectRatios": {
+      "square": "Pătrat",
+      "landscape": "Peisaj",
+      "portrait": "Portret"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Personalizat"
+    },
+    "notEnoughCoinsTitle": "Nu ai suficiente monede",
+    "notEnoughCoinsMessage": "Soldul tău actual este prea mic pentru această imagine.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Cel mai rapid model",
+      "runwareFluxKrea": "Rezultate creative și stilizate",
+      "runwareQwenImage": "Rezultate echilibrate, de înaltă calitate",
+      "google4": "Cel mai bun model AI pentru imagini",
+      "klingImageO1": "Editare de imagini cu control avansat",
+      "fluxKontent": "Flux Kontent optimizat pentru editare",
+      "runwareProvider": "Calitate echilibrată și generare fiabilă.",
+      "airProvider": "Nano Banana adaugă un stil jucăuș și culori vii.",
+      "googleProvider": "Google este optimizat pentru detalii rafinate.",
+      "klingaiProvider": "KlingAI este optimizat pentru editări controlate.",
+      "anthropicProvider": "Flux Claude pentru atmosfere și nuanțe subtile.",
+      "default": "Atinge pentru a explora motoarele disponibile."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "stilul ales",
+    "sheetTitle": "Îți transformăm ideea în imagine",
+    "sheetSubtitle": "O scurtă pauză cât timp serverele integrează stilul {{style}} în descriere.",
+    "phases": {
+      "blend": "Se aplică stilul {{style}}",
+      "paint": "Se creează scena",
+      "finish": "Se adaugă ultimele detalii"
+    },
+    "actions": {
+      "cancel": "Anulează",
+      "retry": "Încearcă din nou",
+      "close": "Închide"
+    },
+    "errors": {
+      "restrictedTitle": "Conținut restricționat",
+      "genericTitle": "Generarea a eșuat",
+      "genericMessage": "Imaginea nu a putut fi generată."
+    },
+    "alerts": {
+      "saveFailedTitle": "Nu s-a putut salva",
+      "shareFailedTitle": "Nu s-a putut distribui",
+      "tryAgain": "Încearcă din nou.",
+      "savedTitle": "Salvat",
+      "savedMessage": "Imaginea a fost salvată în galerie.",
+      "permissionTitle": "Este necesară permisiunea",
+      "permissionMessage": "Permite accesul la stocare pentru a salva imaginile în galerie."
+    },
+    "result": {
+      "complete": "Totul este gata"
+    },
+    "accessibility": {
+      "close": "Închide"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Șterge",
+      "edit": "Editează",
+      "save": "Salvează",
+      "share": "Distribuie"
+    },
+    "alerts": {
+      "savedTitle": "Salvat",
+      "savedMessage": "Imaginea a fost salvată în galerie.",
+      "permissionTitle": "Este necesară permisiunea",
+      "permissionMessage": "Permite accesul la stocare pentru a salva imaginile în galerie.",
+      "saveFailedTitle": "Nu s-a putut salva",
+      "tryAgain": "Încearcă din nou."
+    },
+    "accessibility": {
+      "close": "Închide",
+      "delete": "Șterge imaginea",
+      "edit": "Editează imaginea",
+      "save": "Salvează imaginea",
+      "share": "Distribuie imaginea"
+    }
+  },
+  "reportContent": {
+    "title": "Raportează conținutul AI",
+    "subtitle": "Spune-ne ce este în neregulă cu acest conținut generat.",
+    "privateDisclosure": "Prin trimitere, conținutul raportat va fi analizat din motive de siguranță.",
+    "accessibilityLabel": "Raportează conținutul AI",
+    "reasons": {
+      "sexual": "Conținut sexual sau nuditate",
+      "violence_self_harm": "Violență sau autovătămare",
+      "hate_harassment": "Ura sau hărțuire",
+      "child_safety": "Problemă privind siguranța copiilor",
+      "scam_deceptive": "Înșelătorie sau conținut înșelător",
+      "other": "Altele"
+    },
+    "errors": {
+      "reasonRequired": "Alege un motiv înainte de trimitere.",
+      "submit": "Raportul nu a putut fi trimis. Încearcă din nou."
+    },
+    "success": {
+      "title": "Mulțumim. Raportul tău a fost trimis.",
+      "subtitle": "Vom folosi rapoartele pentru a îmbunătăți siguranța conținutului."
+    },
+    "actions": {
+      "report": "Raportează",
+      "submit": "Trimite raportul",
+      "done": "Gata"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Studio de imagini",
+    "accessibility": {
+      "openMenu": "Deschide meniul",
+      "selectImages": "Selectează imaginile",
+      "exitSelection": "Ieși din selectare",
+      "deleteSelected": "Șterge imaginile selectate",
+      "selectToDelete": "Selectează imaginile de șters"
+    },
+    "createCard": {
+      "title": "Creează din text",
+      "subtitle": "Introdu o descriere",
+      "cta": "Descrie și generează"
+    },
+    "editCard": {
+      "title": "Editor foto AI",
+      "subtitle": "Transformă și îmbunătățește cu AI",
+      "cta": "Editează cu AI"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "empty": "Nu există încă imagini",
+      "selection": {
+        "enter": "Selectează imaginile",
+        "exit": "Ieși din selectare",
+        "deleteSelected": "Șterge imaginile selectate",
+        "selectForDelete": "Selectează imaginile de șters"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Descoperă",
+      "titleHighlight": "Studio de imagini",
+      "subtitle": "Creează și editează imagini cu AI direct în Cloud AI."
+    },
+    "relaxView": {
+      "title": "Descoperă asistenții",
+      "titleHighlight": "Asistenți",
+      "subtitle": "Experți AI specializați, gata să te ajute în activitățile zilnice",
+      "cards": {
+        "fitness": {
+          "title": "Antrenor de fitness",
+          "text": "Obiceiuri simple și antrenamente acasă."
+        },
+        "recipes": {
+          "title": "Mese și rețete",
+          "text": "Ce să gătești cu ingredientele pe care le ai."
+        },
+        "travel": {
+          "title": "Asistent de călătorie",
+          "text": "Planuri simple și liste pentru bagaje."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "SOLUȚII AI PENTRU COMPANII",
+      "description": "Dezvoltă-ți afacerea cu tehnologie AI de ultimă generație, creată pentru profesioniști și echipe.",
+      "stats": "Apreciat de peste 500.000 de utilizatori",
+      "rating": "4,9 / 5",
+      "button": "Începe"
+    },
+    "buttons": {
+      "continue": "Continuă",
+      "start": "Să începem"
+    }
+  },
+  "coinStore": {
+    "title": "Obține credite",
+    "loading": "Se încarcă magazinul de credite…",
+    "balanceLabel": "Soldul tău actual este",
+    "balanceValue": "{{amount}} credite",
+    "history": {
+      "link": "Istoricul tranzacțiilor",
+      "alertTitle": "Istoric",
+      "alertBody": "Istoricul tranzacțiilor va fi disponibil în curând."
+    },
+    "noPacks": "Nu există pachete de credite disponibile. Verifică ID-ul ofertei RevenueCat.",
+    "badges": {
+      "basic": "Pachet de bază",
+      "popular": "Cel mai popular",
+      "value": "Cel mai avantajos"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} credite",
+      "tokensLabel": "{{credits}} credite",
+      "defaultName": "Pachetul {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Treci la Premium",
+      "subtitle": "Acces și funcții nelimitate",
+      "cta": "Treci la Pro"
+    },
+    "termsText": "Prin efectuarea unei achiziții, ești de acord cu",
+    "termsLink": "Termenii serviciului",
+    "alerts": {
+      "initErrorTitle": "Eroare de inițializare",
+      "genericMessage": "Ceva nu a funcționat.",
+      "successTitle": "Succes",
+      "successMessage": "Creditele vor apărea în scurt timp.",
+      "purchaseFailedTitle": "Achiziția a eșuat",
+      "unknownError": "Eroare necunoscută"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Este necesar Premium",
+    "upgrade": "Treci la Pro",
+    "modelRequiredMessage": "Acest model necesită Premium. Treci la Premium pentru acces la GPT-5, Grok 4, Claude și alte modele avansate.",
+    "assistantsRequiredMessage": "Asistenții necesită Premium. Treci la Premium pentru acces la asistenți AI specializați în fitness, programare, scriere și multe altele.",
+    "assistantsTitle": "Este necesar Premium",
+    "assistantsMessage": "Asistenții necesită Premium. Treci la Premium pentru acces la asistenți AI specializați în fitness, programare, scriere și multe altele."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Închide ecranul de abonare",
+    "unavailableTitle": "Achizițiile nu sunt disponibile",
+    "unavailableMessage": "Facturarea Android nu este configurată încă.",
+    "restoreEmptyTitle": "Nu s-au găsit achiziții",
+    "restoreEmptyMessage": "Nu am găsit nicio achiziție activă care să poată fi restaurată pentru acest cont.",
+    "restoreFailedTitle": "Restaurarea a eșuat",
+    "restoreFailedMessage": "Achizițiile nu pot fi restaurate momentan.",
+    "productsUnavailableTitle": "Nu există planuri disponibile",
+    "productsUnavailableMessage": "Momentan nu există produse de abonament Android disponibile.",
+    "purchaseFailedTitle": "Achiziția a eșuat",
+    "purchaseFailedMessage": "Această achiziție nu poate fi finalizată momentan.",
+    "restore": "Restaurează",
+    "restoreRestoring": "Se restaurează…",
+    "features": {
+      "create": "Creează imagini și videoclipuri",
+      "search": "Caută pe web cu AI",
+      "talk": "Vorbește natural cu AI",
+      "imageStudio": "Primești {{credits}} credite pentru Studio de imagini {{period}}",
+      "period": {
+        "weekly": "săptămânal",
+        "monthly": "lunar",
+        "yearly": "anual"
+      }
+    },
+    "freeTrial": {
+      "title": "Perioadă de probă gratuită",
+      "subtitle": "Probă gratuită de 3 zile"
+    },
+    "badge": {
+      "bestOffer": "Cea mai bună ofertă"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Anual",
+        "only": "Doar {{price}}",
+        "defaultPrice": "79,99 USD",
+        "defaultIntroPrice": "1,35 USD"
+      },
+      "monthly": {
+        "title": "Lunar",
+        "subtitle": "Anulezi oricând",
+        "defaultPrice": "19,99 USD"
+      },
+      "weekly": {
+        "title": "Săptămânal",
+        "subtitle": "Anulezi oricând",
+        "defaultPrice": "9,99 USD",
+        "trialThen": "3 zile gratuit, apoi"
+      }
+    },
+    "frequency": {
+      "perWeek": "pe săptămână",
+      "perMonth": "pe lună"
+    },
+    "cta": "Continuă",
+    "ctaFreeTrial": "Încearcă gratuit",
+    "legal": {
+      "terms": "Termeni",
+      "privacy": "Confidențialitate"
+    },
+    "premium": {
+      "headline": "Tut l'IA premium en in plan",
+      "subtitleLine1": "Discuta, codescha, creescha e planisescha",
+      "subtitleLine2": "cun models avanzads.",
+      "enableTrial": "Activar la prova gratuita",
+      "annual": "Annual",
+      "saveBadge": "Spargna 83%",
+      "year": "onn",
+      "week": "emna",
+      "termsOfUse": "Cundiziuns d'utilisaziun",
+      "privacyPolicy": "Politica da privacy"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mesaj...",
+    "createImages": "Creează imagini",
+    "generateAiArtwork": "Generează artă cu AI",
+    "camera": "Încarcă fotografii",
+    "takeOrSelectPhotos": "Selectează fotografii",
+    "search": "Caută",
+    "findInformation": "Găsește informații",
+    "findRecentInfo": "Găsește informații recente",
+    "removeImage": "Elimină imaginea",
+    "messageInput": "Câmp pentru mesaj",
+    "clearInput": "Șterge textul introdus",
+    "quickActionsLabel": "Acțiuni rapide",
+    "hideQuickActions": "Ascunde acțiunile rapide",
+    "showQuickActions": "Afișează acțiunile rapide",
+    "startVoiceInput": "Pornește introducerea vocală",
+    "sendMessage": "Trimite mesajul",
+    "offline": "Fără conexiune",
+    "stop": "Oprește",
+    "streaming": "Se generează răspunsul…",
+    "closeRecorder": "Închide înregistrarea",
+    "insertTranscript": "Trimite",
+    "scrollToLatest": "Mergi la cel mai recent mesaj",
+    "copyMessage": "Copiază mesajul",
+    "copyMessageHint": "Copiază acest mesaj în clipboard",
+    "shareMessage": "Distribuie mesajul",
+    "shareMessageHint": "Distribuie acest mesaj",
+    "regenerateResponse": "Generează din nou răspunsul",
+    "regenerateResponseHint": "Generează un răspuns nou",
+    "copyCode": "Copiază codul",
+    "copied": "Copiat",
+    "image": "imagine",
+    "loading": "Se încarcă…",
+    "loadingChat": "Se încarcă chat-ul...",
+    "offlineBanner": "Nu ai conexiune la internet. Mesajele nu pot fi trimise.",
+    "offlineError": "Nu există conexiune la internet. Verifică conexiunea și încearcă din nou.",
+    "imagePickerErrorTitle": "Eroare la selectarea imaginii",
+    "imagePickerErrorMessage": "Fotografiile tale nu au putut fi accesate. Încearcă din nou.",
+    "messageTooLong": "Mesajul este prea lung ({{length}}). Limita este {{limit}}.",
+    "sendFailed": "Mesajul nu a putut fi trimis. Încearcă din nou.",
+    "modelNoImageSupport": "Modelul selectat nu acceptă imagini. Alege un alt model.",
+    "voiceStartFailed": "Introducerea vocală nu a putut fi pornită.",
+    "voiceNoSpeechDetected": "Nu a fost detectată nicio voce. Încearcă din nou.",
+    "emptyTitle": "Cu ce te pot ajuta?",
+    "emptySubtitle": "Începe o conversație cu AI",
+    "privateTitle": "Chat privat",
+    "privateSubtitle": "Acest chat nu va apărea în istoricul conversațiilor",
+    "startPrivateChat": "Începe un chat privat",
+    "endPrivateChat": "Încheie chat-ul privat",
+    "permissions": {
+      "photosTitle": "Este necesară permisiunea pentru fotografii",
+      "photosMessage": "Accesul la fotografii este necesar pentru a selecta imagini.",
+      "voiceTitle": "Sunt necesare permisiuni pentru voce",
+      "voiceMessage": "Accesul la microfon și recunoașterea vocală sunt necesare pentru folosirea vocii."
+    },
+    "activity": {
+      "analyzingImages": "Se analizează imaginile…",
+      "searching": "Se caută…",
+      "thinking": "Se analizează…"
+    },
+    "webSearch": {
+      "title": "Căutare pe web",
+      "subtitle": "Găsește informații recente",
+      "label": "Căutare pe web",
+      "enable": "Activează căutarea pe web",
+      "disable": "Dezactivează căutarea pe web",
+      "toggleLabel": "Caută pe web"
+    },
+    "studioBanner": {
+      "label": "Studio de imagini",
+      "title": "Creează rapid materiale vizuale.",
+      "subtitle": "Generează, perfecționează și publică materiale vizuale într-un singur loc.",
+      "cta": "Deschide"
+    },
+    "quickActions": {
+      "createImages": "Creează imagini",
+      "openCamera": "Deschide camera",
+      "editImage": "Editează imaginea",
+      "startVoice": "Pornește vocea",
+      "assistants": "Asistenți"
+    },
+    "listening": "Ascult…",
+    "startRecording": "Pornește înregistrarea…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistent indisponibil",
+      "unavailableDescription": "Acest asistent nu a putut fi încărcat. Încearcă din nou.",
+      "ready": "Gata să te ajute"
+    },
+    "actions": {
+      "copy": "Copiază",
+      "share": "Distribuie",
+      "regenerate": "Generează din nou",
+      "retryFromHere": "Reîncearcă de aici",
+      "report": "Raportează",
+      "cancel": "Anulează"
+    },
+    "markdown": {
+      "copy": "Copiază",
+      "copied": "Copiat",
+      "table": "TABEL",
+      "watchVideo": "Urmărește videoclipul",
+      "wikipedia": "Wikipedia",
+      "link": "Link",
+      "note": "Notă",
+      "warning": "Avertisment",
+      "tip": "Sfat"
+    },
+    "messageActionTitle": "Mesaj",
+    "status": {
+      "sending": "Se trimite…",
+      "failed": "Eșuat",
+      "sent": "Trimis"
+    },
+    "suggestions": {
+      "writeStory": "Scrie o poveste creativă",
+      "writeStorySubtitle": "despre o aventură magică",
+      "planTravel": "Planifică un itinerar de călătorie",
+      "planTravelSubtitle": "pentru o vacanță de neuitat",
+      "explainConcept": "Explică acest concept",
+      "explainConceptSubtitle": "în cuvinte simple",
+      "planDay": "Planifică-mi ziua",
+      "planDaySubtitle": "cu sfaturi pentru productivitate"
+    },
+    "home": {
+      "eyebrow": "Alege un subiect",
+      "title": "Ce vrei să faci?",
+      "subtitle": "Alege o direcție, apoi începe cu o solicitare clară.",
+      "pickPromptTitle": "Alege o sugestie pentru început",
+      "changeTopic": "Alege alt subiect",
+      "intents": {
+        "summarize": "Rezumă un text",
+        "summarizeShort": "Rezumă",
+        "summarizeHint": "Articole, notițe, înregistrări vocale și conversații lungi",
+        "plan": "Creează un plan",
+        "planHint": "Călătorii, rutine, bugete, termene-limită și schimbări importante",
+        "brainstorm": "Generează idei",
+        "brainstormHint": "Idei, oferte, nume, conținut și proiecte secundare",
+        "analyze": "Analizează date",
+        "analyzeHint": "Cheltuieli, feedback, indicatori, obiceiuri și performanță"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Creează un rezumat pentru fondator",
+          "founderBriefSubtitle": "Evidențiază riscurile principale, deciziile și pașii următori.",
+          "classNotesTitle": "Organizează-mi notițele de studiu",
+          "classNotesSubtitle": "Transformă notițele neordonate într-un ghid clar de studiu.",
+          "meetingHandoffTitle": "Scrie un rezumat de predare",
+          "meetingHandoffSubtitle": "Util după ședințe, apeluri sau conversații interne lungi.",
+          "longArticleTitle": "Rezumă rapid acest articol",
+          "longArticleSubtitle": "Transformă un articol lung în concluzii clare și concise."
+        },
+        "plan": {
+          "energyResetTitle": "Creează un plan de revitalizare pentru 14 zile",
+          "energyResetSubtitle": "Un plan realist pentru somn, alimentație, mișcare și concentrare.",
+          "mealPlanTitle": "Planifică mese pe care chiar le voi găti",
+          "mealPlanSubtitle": "Practice, accesibile și bazate pe ingredientele pe care le am.",
+          "cityMoveTitle": "Planifică-mi mutarea într-un oraș nou",
+          "cityMoveSubtitle": "Împarte planul în calendar, buget, locuință și sarcini administrative.",
+          "tripEscapeTitle": "Planifică o escapadă memorabilă de weekend",
+          "tripEscapeSubtitle": "Ceva mai bun decât un itinerar obișnuit."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Găsește o sursă realistă de venit suplimentar",
+          "sideHustleSubtitle": "Idei pe care le pot începe în timp ce lucrez cu normă întreagă.",
+          "brandAngleTitle": "Găsește o direcție memorabilă pentru brand",
+          "brandAngleSubtitle": "Utilă pentru produse, creatori, agenții sau newslettere.",
+          "socialSeriesTitle": "Creează o serie de conținut",
+          "socialSeriesSubtitle": "Un concept suficient de consecvent pentru a dezvolta o audiență.",
+          "datingIdeasTitle": "Propune idei noi",
+          "datingIdeasSubtitle": "Întâlniri, cadouri, surprize sau evenimente cu adevărat speciale."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Descoperă unde îmi pierd banii",
+          "spendingLeaksSubtitle": "Arată tiparele, punctele slabe și cele mai ușoare îmbunătățiri.",
+          "customerFeedbackTitle": "Transformă feedbackul în priorități",
+          "customerFeedbackSubtitle": "Grupează cererile și reclamațiile după urgență și impact.",
+          "habitPatternsTitle": "Identifică tipare în obiceiurile mele",
+          "habitPatternsSubtitle": "Util pentru antrenamente, somn, jurnal sau monitorizarea concentrării.",
+          "metricsStoryTitle": "Explică ce înseamnă cifrele",
+          "metricsStorySubtitle": "Mai multe informații utile, mai puțin zgomot în tabele."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": " *",
+    "processing": "Se procesează...",
+    "tapToUploadImage": "Atinge pentru a încărca o imagine"
+  },
+  "imageGridSelector": {
+    "required": " *",
+    "processing": "Se procesează...",
+    "camera": "Încarcă fotografii",
+    "library": "Bibliotecă"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "Încearcă din nou",
+    "cancel": "Anulează",
+    "allow": "Permite",
+    "notNow": "Nu acum",
+    "openSettings": "Deschide setările",
+    "close": "Închide",
+    "save": "Salvează",
+    "tryAgain": "Încearcă din nou"
+  },
+  "rateUs": {
+    "title": "Îți place Cloud AI?",
+    "subtitle": "Feedbackul tău ne ajută să îmbunătățim aplicația. Ne poți acorda o evaluare în App Store?",
+    "rateNow": "Evaluează acum",
+    "maybeLater": "Poate mai târziu",
+    "dontAskAgain": "Nu mai întreba"
+  },
+  "oneTimeOffer": {
+    "title": "Ofertă unică",
+    "discount": "REDUCERE {{percent}}%",
+    "subtitle": "Această ofertă nu va mai apărea.",
+    "badgeLine1": "Exclusiv",
+    "badgeLine2": "Ofertă unică",
+    "upgradeNow": "Treci la Premium acum pentru {{price}}",
+    "loadingPrice": "Se încarcă...",
+    "termsOfUse": "Termeni de utilizare",
+    "privacyPolicy": "Politica de confidențialitate",
+    "accessTitle": "Acces nelimitat la",
+    "accessSubtitle": "GPT, Gemini și Grok 4",
+    "features": {
+      "unlimitedGPT4": "Acces nelimitat la GPT-4",
+      "geminiPro": "Acces la Gemini Pro",
+      "grokInsights": "Folosește Grok pentru informații actuale",
+      "priorityAccess": "Acces prioritar și răspunsuri mai rapide"
+    },
+    "bestValue": "Cel mai avantajos",
+    "annualPremium": "Premium anual",
+    "oneTimePayment": "Plată unică",
+    "wasPrice": "în loc de",
+    "continue": "Continuă",
+    "restore": "Restaurează",
+    "terms": "Termeni",
+    "privacy": "Confidențialitate",
+    "successTitle": "Succes!",
+    "successMessage": "Îți mulțumim pentru achiziție! Bucură-te de acces Premium în următoarele 12 luni.",
+    "errorTitle": "Achiziția a eșuat",
+    "errorMessage": "Ceva nu a funcționat. Încearcă din nou.",
+    "restoreSuccessTitle": "Restaurat",
+    "restoreSuccessMessage": "Achizițiile tale au fost restaurate.",
+    "restoreErrorTitle": "Restaurarea a eșuat",
+    "restoreErrorMessage": "Nu s-au găsit achiziții de restaurat.",
+    "unavailableTitle": "Achizițiile nu sunt disponibile",
+    "unavailableMessage": "Facturarea Android nu este configurată încă."
+  },
+  "rewards": {
+    "header": {
+      "title": "Recompense",
+      "openMenu": "Deschide meniul",
+      "goBack": "Înapoi"
+    },
+    "pointsHero": {
+      "totalBalance": "SOLD TOTAL",
+      "seeYourRewards": "Vezi recompensele"
+    },
+    "streakTracker": {
+      "title": "Serie zilnică",
+      "subtitle": "Continuă tot așa! Te descurci excelent.",
+      "days": "Zile",
+      "prize": "Premiu",
+      "dayLabel": "Ziua {{number}}",
+      "nextReward": "Următoarea recompensă: {{amount}} peste {{time}}",
+      "coins": "Monede"
+    },
+    "sections": {
+      "availableQuests": "Misiuni disponibile",
+      "completedQuests": "Misiuni finalizate",
+      "availableRewards": "Recompense disponibile",
+      "needsMoreCoins": "Necesită mai multe monede"
+    },
+    "balances": {
+      "rewardCoins": "Monede de recompensă",
+      "imageCredits": "Credite pentru imagini"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 de credite pentru imagini",
+        "imageCredits200": "200 de credite pentru imagini",
+        "imageCredits600": "600 de credite pentru imagini",
+        "weeklyPremium": "Premium săptămânal",
+        "secretBox": "Cutie secretă"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Conține recompense-surpriză"
+      },
+      "alerts": {
+        "comingSoonTitle": "În curând",
+        "comingSoonMessage": "Această recompensă nu este disponibilă încă.",
+        "notEnoughCoinsTitle": "Nu ai suficiente monede",
+        "notEnoughCoinsMessage": "Ai nevoie de mai multe monede de recompensă pentru a debloca această recompensă.",
+        "errorTitle": "Eroare",
+        "couldNotOpenBox": "Cutia nu a putut fi deschisă.",
+        "couldNotRedeem": "Recompensa nu a putut fi revendicată. Încearcă din nou.",
+        "mysteryReward": "Recompensă-surpriză"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Conectare zilnică",
+        "description": "Deschide aplicația astăzi pentru a-ți păstra seria",
+        "message": "Această misiune este finalizată automat când deschizi aplicația în fiecare zi."
+      },
+      "shareFacebook": {
+        "title": "Distribuie pe Facebook",
+        "description": "Publică despre noi pe Facebook"
+      },
+      "shareTwitter": {
+        "title": "Distribuie pe Twitter",
+        "description": "Scrie pe Twitter despre experiența ta"
+      },
+      "shareInstagram": {
+        "title": "Distribuie pe Instagram",
+        "description": "Distribuie o poveste sau o postare"
+      },
+      "shareExperience": {
+        "title": "Împărtășește-ți experiența",
+        "description": "Spune-le prietenilor de ce îți place aplicația"
+      },
+      "share": {
+        "genericMessage": "Folosesc această aplicație AI pentru chat și generarea de imagini. Încearc-o: {{url}}",
+        "facebookQuote": "Încearcă această aplicație AI!",
+        "twitterText": "Încerc această aplicație AI și este foarte interesantă.",
+        "instagramMessage": "Încearcă această aplicație AI: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Eroare",
+        "errorMessage": "Pagina magazinului nu a putut fi deschisă."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Misiune finalizată",
+        "description": "Misiune finalizată",
+        "points": "+{{points}} puncte",
+        "close": "Închide"
+      },
+      "rewardSuccess": {
+        "error": "EROARE",
+        "success": "SUCCES",
+        "somethingWentWrong": "Ceva nu a funcționat",
+        "rewardUnlocked": "Recompensă deblocată",
+        "credits": "Credite",
+        "close": "Închide",
+        "okay": "Bine"
+      },
+      "secretBox": {
+        "pill": "CUTIE SECRETĂ",
+        "rewardUnlocked": "RECOMPENSĂ DEBLOCATĂ",
+        "shufflingRewards": "SE AMESTECĂ RECOMPENSELE...",
+        "imageCreditsAdded": "Creditele pentru imagini au fost adăugate în cont",
+        "continue": "Continuă",
+        "revealing": "Se dezvăluie...",
+        "prizeTiers": {
+          "lucky": "NOROCOS",
+          "pro": "PRO",
+          "elite": "ELITĂ",
+          "mythic": "MITIC"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Retira tes daners dal di",
+      "subtitle": "Turna mintga di — il premi crescha.",
+      "cta": "S'annunziar",
+      "claimed": "Retschavì! +{{amount}} daners",
+      "later": "Pli tard"
+    }
+  },
+  "app": {
+    "version": "Versiunea {{version}}",
+    "offlineBanner": "Nu ai conexiune la internet",
+    "launch": {
+      "accessibilityLabel": "Se pornește Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, gata când ești și tu"
+    },
+    "errors": {
+      "modelsLoadTitle": "Modelele nu au putut fi încărcate",
+      "modelsLoadMessage": "Modelele AI nu au putut fi încărcate. Aplicația va folosi modelele implicite. Verifică conexiunea la internet.",
+      "modelsLoadTimeout": "Încărcarea modelelor a durat prea mult. Aplicația va folosi modelele implicite. Încearcă din nou.",
+      "modelsLoadNetwork": "Nu există conexiune la internet. Aplicația va folosi modelele implicite. Verifică conexiunea.",
+      "deviceIdTitle": "Eroare de inițializare",
+      "deviceIdMessage": "ID-ul dispozitivului nu a putut fi inițializat. Este posibil ca unele funcții să nu funcționeze corect.",
+      "storageTitle": "Eroare de stocare",
+      "storageMessage": "Stocarea locală nu a putut fi accesată. Este posibil ca unele funcții să nu funcționeze corect.",
+      "crashTitle": "Ceva nu a funcționat.",
+      "crashSubtitle": "Încearcă din nou.",
+      "crashLabel": "Aplicația s-a închis neașteptat"
+    },
+    "proxyErrors": {
+      "genericTitle": "Ceva nu a funcționat",
+      "genericMessage": "Încearcă din nou.",
+      "rateLimitTitle": "Prea multe solicitări",
+      "rateLimitMessage": "Procesăm multe solicitări. Încearcă din nou peste câteva momente.",
+      "rateLimitRetryAfter": "Procesăm multe solicitări. Încearcă din nou peste aproximativ {{seconds}} secunde.",
+      "restrictedTitle": "Conținut restricționat",
+      "restrictedMessage": "Această solicitare a fost blocată de filtrele de siguranță.",
+      "insufficientCoinsTitle": "Nu ai suficiente monede",
+      "insufficientCoinsMessage": "Soldul tău actual este prea mic pentru această solicitare.",
+      "imageUnavailableTitle": "Imagine indisponibilă",
+      "imageUnavailableMessage": "Fișierul imaginii generate este temporar indisponibil. Încearcă din nou.",
+      "authorizationTitle": "Problemă de autorizare",
+      "authorizationMessage": "Contul tău nu a putut fi verificat. Încearcă din nou.",
+      "serverTitle": "Problemă temporară a serverului",
+      "serverMessage": "Serverele noastre au întâmpinat o problemă. Încearcă din nou în scurt timp.",
+      "timeoutTitle": "Durează prea mult",
+      "timeoutMessage": "Solicitarea a expirat. Încearcă din nou.",
+      "networkTitle": "Fără conexiune",
+      "networkMessage": "Nu există conexiune la internet. Verifică conexiunea și încearcă din nou.",
+      "requestTitle": "Problemă cu solicitarea",
+      "requestMessage": "A apărut o problemă cu solicitarea ta. Încearcă din nou."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Activează Premium",
+    "activateMessage": "Vrei să activezi Premium pentru recenzent?",
+    "activateAction": "Activează",
+    "deactivateTitle": "Dezactivează Premium",
+    "deactivateMessage": "Vrei să dezactivezi Premium pentru recenzent?",
+    "deactivateAction": "Dezactivează"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Recompensă zilnică",
+      "body": "Nu rata monedele zilnice — revendică-le înainte de miezul nopții."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Na perda betg tes daners dal di",
+      "body": "Nus trametain ina regurdientscha per di, uschè che tia seria resta viva e tes daners creschan vinavant. Nagin spam, e ti pos deactivar quai da mintga mument.",
+      "enable": "Activar las regurdientschas",
+      "skip": "Betg ussa"
+    }
+  }
+}

@@ -17,7 +17,7 @@ describe('Android Play Console warning mitigations', () => {
       'java',
       'com',
       'aicloudsolutions',
-      'chatcloud',
+      'cloud',
       'MainActivity.kt',
     );
 
@@ -26,9 +26,13 @@ describe('Android Play Console warning mitigations', () => {
     expect(mainActivity).not.toContain('android.graphics.Color');
   });
 
-  test('React Native StatusBar module is not used from JS', () => {
+  test('uses one stable app-wide StatusBar instead of screen-level toggles', () => {
+    const app = readRepoFile('App.js');
+    expect(app).toContain('<StatusBar');
+    expect(app).toContain('translucent');
+    expect(app).toContain('backgroundColor="transparent"');
+
     const files = [
-      'App.js',
       path.join('src', 'screens', 'IntroductionAnimationScreen.jsx'),
       path.join('src', 'navigation', 'AndroidNavigationMenu.jsx'),
       path.join('src', 'components', 'onboarding', 'TopBackSkipView.jsx'),

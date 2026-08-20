@@ -46,11 +46,14 @@ export default function HistorySimple({ navigation }) {
   const { t, i18n } = useTranslation();
   const isFocused = useIsFocused();
   const { reportScreenReady } = useAndroidNavigationMenu();
-  const lang = (i18n?.language || 'en').split('-')[0];
-  const locale = lang === 'ja' ? 'ja-JP' : 'en-US';
+  const locale = i18n?.resolvedLanguage || i18n?.language || 'en';
+  const lang = locale.split('-')[0];
   const frozenThreadIndexRef = useRef([]);
   const hydrated = useThreadsStore(s => s.hydrated);
+  const threadBodiesHydrated = useThreadsStore(s => s.threadBodiesHydrated);
+  const threadBodiesLoadFailed = useThreadsStore(s => s.threadBodiesLoadFailed);
   const hydrate = useThreadsStore(s => s.hydrate);
+  const hydrateThreadBodies = useThreadsStore(s => s.hydrateThreadBodies);
   const threadIndex = useThreadsStore(
     React.useCallback(
       state => (isFocused ? state.threadIndex : frozenThreadIndexRef.current),
@@ -79,8 +82,12 @@ export default function HistorySimple({ navigation }) {
   useEffect(() => {
     if (!hydrated) {
       hydrate();
+      return;
     }
-  }, [hydrate, hydrated]);
+    if (!threadBodiesHydrated) {
+      hydrateThreadBodies();
+    }
+  }, [hydrate, hydrateThreadBodies, hydrated, threadBodiesHydrated]);
 
   useEffect(() => {
     perfLog('history.screen.focus', {
@@ -273,7 +280,26 @@ const renderItem = ({ item: thread }) => {
     </View>
   );
 
-  if (!hydrated) {
+  if (threadBodiesLoadFailed) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.loadingCenter}>
+          <Text style={styles.loadingHint}>
+            {t('history.errorLoadingHistory', {
+              defaultValue: 'Could not load history.',
+            })}
+          </Text>
+          <TouchableOpacity
+            onPress={hydrateThreadBodies}
+            style={styles.retryButton}>
+            <Text style={styles.retryButtonText}>{t('common.retry')}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
+  if (!hydrated || !threadBodiesHydrated) {
     return (
       <View style={styles.container}>
         <View style={styles.loadingCenter}>
@@ -384,6 +410,17 @@ const styles = StyleSheet.create({
   loadingHint: {
     color: colors.textSecondary,
     fontSize: 14,
+  },
+  retryButton: {
+    marginTop: 14,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    backgroundColor: colors.primary,
+  },
+  retryButtonText: {
+    color: '#FFFFFF',
+    fontWeight: '700',
   },
 
   searchWrap: {

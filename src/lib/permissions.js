@@ -1,13 +1,17 @@
 import { Alert } from 'react-native';
 import { check, request, PERMISSIONS, RESULTS, openSettings } from 'react-native-permissions';
+import i18n from '../i18n';
 
 export function promptOpenSettings(title, message) {
   Alert.alert(
     title,
     message,
     [
-      { text: 'Not now', style: 'cancel' },
-      { text: 'Open Settings', onPress: () => openSettings().catch(() => {}) },
+      { text: i18n.t('common.notNow'), style: 'cancel' },
+      {
+        text: i18n.t('common.openSettings'),
+        onPress: () => openSettings().catch(() => {}),
+      },
     ],
     { cancelable: true },
   );

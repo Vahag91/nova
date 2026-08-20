@@ -6,7 +6,7 @@ import { useThreadsStore } from '../state/useThreadsStore';
 import { useTranslation } from 'react-i18next';
 import { useIsFocused } from '@react-navigation/native';
 import HeroVideo from '../components/navigation/HeroVideo';
-import { SubscriptionContext } from '../context/SubscriptionContext';
+import { SubscriptionAccessContext } from '../context/SubscriptionContext';
 import { isAssistantsPremium } from '../config/premium';
 import { setPendingPremiumAction } from '../state/premiumActions';
 import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
@@ -20,7 +20,7 @@ const HEADER_VIDEOS = [
 
 export default function Assistants({ navigation }) {
   const { t } = useTranslation();
-  const subscription = useContext(SubscriptionContext);
+  const subscription = useContext(SubscriptionAccessContext);
   const { reportScreenReady } = useAndroidNavigationMenu();
   const createThread = useThreadsStore(s => s.createThread);
   const updateThread = useThreadsStore(s => s.updateThread);
@@ -65,7 +65,7 @@ export default function Assistants({ navigation }) {
     try {
       try { Haptic.trigger('impactLight'); } catch {}
       const model = 'gpt-5.4-nano';
-      const title = preset?.name || 'Assistant';
+      const title = preset?.name || t('assistants.defaultTitle');
       const sys = typeof preset?.system === 'string' ? preset.system : '';
 
       const tNew = createThread({ title, model, system: sys });
@@ -84,8 +84,8 @@ export default function Assistants({ navigation }) {
       navigation?.navigate?.('Chat');
     } catch (e) {
       Alert.alert(
-        t('assistants.errorTitle') || 'Something went wrong',
-        t('assistants.errorMessage') || 'Could not start this assistant.'
+        t('assistants.errorTitle'),
+        t('assistants.errorMessage'),
       );
     }
   }, [createThread, navigation, setActiveThread, t, updateThread]);

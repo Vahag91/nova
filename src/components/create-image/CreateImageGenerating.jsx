@@ -14,7 +14,7 @@ import SvgIcon from '../SvgIcon';
 import LinearGradient from 'react-native-linear-gradient';
 import { useImagesStore } from '../../state/useImagesStore';
 import { normalizeImageUri } from '../../lib/imageUtils';
-import { toLocalPath } from '../../lib/imageDownloader';
+import { saveImageToGallery } from '../../lib/saveImageToGallery';
 import { useTranslation } from 'react-i18next';
 import RateUsService from '../../services/RateUsService';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -176,12 +176,7 @@ export default function CreateImageGenerating({
       } catch (err) {
         // Stop progress animation on error
         progressSequence.stop();
-        const pretty =
-          err?.code === 'restricted_content'
-            ? {
-                message: err?.message || t('createImageGenerating.errors.genericMessage'),
-              }
-            : mapProxyError(err);
+        const pretty = mapProxyError(err, t);
         setError(pretty?.message || t('createImageGenerating.errors.genericMessage'));
         setErrorCode(err?.code || null);
         setStep(STEP.ERROR);
@@ -218,16 +213,31 @@ export default function CreateImageGenerating({
 
   const handleSave = async () => {
     if (!imageUri) return;
-    try {
-      const local = await toLocalPath(imageUri);
-      // Provide only the URL so share targets don't also post a text path
-      await Share.share({ url: local });
-    } catch (err) {
+    const result = await saveImageToGallery(imageUri);
+    if (result.ok) {
       Alert.alert(
-        t('createImageGenerating.alerts.saveFailedTitle'),
-        t('createImageGenerating.alerts.tryAgain')
+        t('createImageGenerating.alerts.savedTitle', { defaultValue: 'Saved' }),
+        t('createImageGenerating.alerts.savedMessage', {
+          defaultValue: 'Image saved to your gallery.',
+        })
       );
+      return;
     }
+    if (result.reason === 'permission-denied') {
+      Alert.alert(
+        t('createImageGenerating.alerts.permissionTitle', {
+          defaultValue: 'Permission needed',
+        }),
+        t('createImageGenerating.alerts.permissionMessage', {
+          defaultValue: 'Allow storage access to save images to your gallery.',
+        })
+      );
+      return;
+    }
+    Alert.alert(
+      t('createImageGenerating.alerts.saveFailedTitle'),
+      t('createImageGenerating.alerts.tryAgain')
+    );
   };
 
   const handleShare = async () => {
@@ -535,11 +545,13 @@ const handleRetry = () => {
                           ]}
                           onPress={() => setReportVisible(true)}
                           hitSlop={10}
-                          accessibilityLabel="Report AI content"
+                          accessibilityLabel={t('reportContent.accessibilityLabel')}
                         >
                           <SvgIcon name="flag" size={22} color="rgba(255,255,255,0.92)" />
                         </Pressable>
-                        <Text style={styles.actionLabel}>Report</Text>
+                        <Text style={styles.actionLabel}>
+                          {t('reportContent.actions.report')}
+                        </Text>
                       </View>
                     </View>
               </View>

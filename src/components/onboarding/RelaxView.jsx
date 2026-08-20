@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Animated, useWindowDimensions, Image } from 're
 import { useTranslation } from 'react-i18next';
 import { PRESETS } from '../../data/presets';
 
-const RelaxView = ({ animationController }) => {
+const RelaxView = ({ animationController, isAnimating, onImageReady }) => {
   const { t } = useTranslation();
   const window = useWindowDimensions();
   const assistantCards = useMemo(() => {
@@ -22,21 +22,23 @@ const RelaxView = ({ animationController }) => {
     outputRange: [0, 0, -window.width, -window.width],
   });
 
-  const fadeIn = animationController.current.interpolate({
-    inputRange: [0, 0.2, 0.4],
-    outputRange: [0, 1, 1],
-  });
-
   return (
     <Animated.View
-      style={[styles.container, { transform: [{ translateX: slideAnim }], opacity: fadeIn }]}
+      renderToHardwareTextureAndroid={isAnimating}
+      style={[styles.container, { transform: [{ translateX: slideAnim }] }]}
     >
       <View style={styles.cardsContainer}>
         {assistantCards.map((card) => (
           <Animated.View key={card.id} style={[styles.card, { transform: [{ rotate: card.rotate }] }]}>
             <View style={styles.cardContent}>
               <View style={styles.imageContainer}>
-                <Image source={card.image} style={styles.humanImage} resizeMode="cover" />
+                <Image
+                  onLoad={() => onImageReady?.(`relax:${card.id}`)}
+                  onError={() => onImageReady?.(`relax:${card.id}`)}
+                  source={card.image}
+                  style={styles.humanImage}
+                  resizeMode="cover"
+                />
               </View>
               <View style={styles.textContent}>
                 <Text style={styles.cardTitle}>{card.title}</Text>

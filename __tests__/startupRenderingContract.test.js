@@ -18,6 +18,9 @@ describe('startup rendering contract', () => {
     expect(app).toContain('StartupLoadingScreen');
     expect(app).not.toContain('const bootReady =');
     expect(app).not.toMatch(/firstLaunch\s*&&\s*deviceIdReady/);
+    expect(app.indexOf('<StatusBar')).toBeLessThan(
+      app.indexOf('{firstLaunch !== null ? ('),
+    );
   });
 
   test('bounds RevenueCat initialization without making it a render gate', () => {

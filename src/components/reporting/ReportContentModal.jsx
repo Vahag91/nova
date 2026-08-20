@@ -8,18 +8,17 @@ import {
   Text,
   View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { submitAiContentReport } from '../../api/reportContent';
 
 const REASON_OPTIONS = [
-  { key: 'sexual', label: 'Sexual or nudity content' },
-  { key: 'violence_self_harm', label: 'Violence or self-harm' },
-  { key: 'hate_harassment', label: 'Hate or harassment' },
-  { key: 'child_safety', label: 'Child safety concern' },
-  { key: 'scam_deceptive', label: 'Scam or deceptive content' },
-  { key: 'other', label: 'Other' },
+  'sexual',
+  'violence_self_harm',
+  'hate_harassment',
+  'child_safety',
+  'scam_deceptive',
+  'other',
 ];
-
-const SUBMIT_ERROR = 'Could not submit report. Please try again.';
 
 export default function ReportContentModal({
   visible,
@@ -28,6 +27,7 @@ export default function ReportContentModal({
   onClose,
   onSubmitted,
 }) {
+  const { t } = useTranslation();
   const [reason, setReason] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -43,7 +43,7 @@ export default function ReportContentModal({
 
   const handleSubmit = async () => {
     if (!reason) {
-      setError('Please choose a reason before submitting.');
+      setError(t('reportContent.errors.reasonRequired'));
       return;
     }
     setSubmitting(true);
@@ -55,8 +55,8 @@ export default function ReportContentModal({
       });
       setSubmitted(true);
       onSubmitted?.();
-    } catch (submissionError) {
-      setError(submissionError?.message || SUBMIT_ERROR);
+    } catch {
+      setError(t('reportContent.errors.submit'));
     } finally {
       setSubmitting(false);
     }
@@ -78,27 +78,27 @@ export default function ReportContentModal({
         <View style={styles.sheet}>
           {submitted ? (
             <View style={styles.confirmation}>
-              <Text style={styles.title}>Thanks. Your report was submitted.</Text>
+              <Text style={styles.title}>{t('reportContent.success.title')}</Text>
               <Text style={styles.subtitle}>
-                We will use reports to improve content safety.
+                {t('reportContent.success.subtitle')}
               </Text>
               <Pressable
                 onPress={handleClose}
                 style={[styles.button, styles.submitButton]}
                 accessibilityRole="button"
               >
-                <Text style={styles.submitText}>Done</Text>
+                <Text style={styles.submitText}>{t('reportContent.actions.done')}</Text>
               </Pressable>
             </View>
           ) : (
             <>
-              <Text style={styles.title}>Report AI content</Text>
+              <Text style={styles.title}>{t('reportContent.title')}</Text>
               <Text style={styles.subtitle}>
-                Tell us what is wrong with this generated content.
+                {t('reportContent.subtitle')}
               </Text>
               {privateDisclosure ? (
                 <Text style={styles.disclosure}>
-                  Submitting sends this reported content for safety review.
+                  {t('reportContent.privateDisclosure')}
                 </Text>
               ) : null}
 
@@ -107,12 +107,12 @@ export default function ReportContentModal({
                 contentContainerStyle={styles.options}
               >
                 {REASON_OPTIONS.map(option => {
-                  const selected = option.key === reason;
+                  const selected = option === reason;
                   return (
                     <Pressable
-                      key={option.key}
+                      key={option}
                       onPress={() => {
-                        setReason(option.key);
+                        setReason(option);
                         setError('');
                       }}
                       style={[styles.reason, selected && styles.reasonSelected]}
@@ -122,13 +122,15 @@ export default function ReportContentModal({
                       <View style={[styles.radio, selected && styles.radioSelected]}>
                         {selected ? <View style={styles.radioDot} /> : null}
                       </View>
-                      <Text style={styles.reasonLabel}>{option.label}</Text>
+                      <Text style={styles.reasonLabel}>
+                        {t(`reportContent.reasons.${option}`)}
+                      </Text>
                     </Pressable>
                   );
                 })}
               </ScrollView>
 
-              {!!error && <Text style={styles.error}>{error || SUBMIT_ERROR}</Text>}
+              {!!error && <Text style={styles.error}>{error}</Text>}
 
               <View style={styles.buttons}>
                 <Pressable
@@ -137,7 +139,7 @@ export default function ReportContentModal({
                   disabled={submitting}
                   accessibilityRole="button"
                 >
-                  <Text style={styles.cancelText}>Cancel</Text>
+                  <Text style={styles.cancelText}>{t('common.cancel')}</Text>
                 </Pressable>
                 <Pressable
                   onPress={handleSubmit}
@@ -152,7 +154,9 @@ export default function ReportContentModal({
                   {submitting ? (
                     <ActivityIndicator size="small" color="#FFFFFF" />
                   ) : (
-                    <Text style={styles.submitText}>Submit Report</Text>
+                    <Text style={styles.submitText}>
+                      {t('reportContent.actions.submit')}
+                    </Text>
                   )}
                 </Pressable>
               </View>

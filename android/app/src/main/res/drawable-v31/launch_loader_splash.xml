@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- API 31+ runs AnimatedVectorDrawable animations on RenderThread. The
+     referenced vector keeps the exact same 288dp canvas and six-dot geometry. -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/launch_loader">
+    <target
+        android:name="loader"
+        android:animation="@animator/launch_loader_rotation" />
+</animated-vector>

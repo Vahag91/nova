@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
+import { useTranslation } from 'react-i18next';
 
 const AlertIcon = ({ tone }) => {
   const color = tone === 'warn' ? '#FFB74D' : tone === 'tip' ? '#4CAF50' : '#64B5F6';
@@ -16,15 +17,21 @@ const AlertIcon = ({ tone }) => {
 };
 
 export const MarkdownBlockquote = ({ node, children }) => {
+  const { t } = useTranslation();
   // Detect [!WARNING], [!NOTE], [!TIP]
   // We look deep into the children to find the text content
   const rawText = String(node?.children?.[0]?.children?.[0]?.content || node?.children?.[0]?.content || '');
   
   let tone = 'note';
-  let title = 'Note';
+  let title = t('chat.markdown.note');
   
-  if (rawText.includes('[!WARNING]') || rawText.includes('⚠')) { tone = 'warn'; title = 'Warning'; }
-  else if (rawText.includes('[!TIP]') || rawText.includes('💡')) { tone = 'tip'; title = 'Tip'; }
+  if (rawText.includes('[!WARNING]') || rawText.includes('⚠')) {
+    tone = 'warn';
+    title = t('chat.markdown.warning');
+  } else if (rawText.includes('[!TIP]') || rawText.includes('💡')) {
+    tone = 'tip';
+    title = t('chat.markdown.tip');
+  }
   
   const borderColor = tone === 'warn' ? '#FFB74D' : tone === 'tip' ? '#4CAF50' : '#42A5F5';
   const bgColor = tone === 'warn' ? '#332200' : tone === 'tip' ? '#002200' : '#111b26';

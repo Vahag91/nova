@@ -11,7 +11,12 @@
     "searchHint": "Type to filter available models",
     "modelLabel": "{{name}} model",
     "selectHint": "Select {{name}} model",
-    "currentlySelected": "Currently selected model"
+    "currentlySelected": "Currently selected model",
+    "genericModel": "{{provider}} model",
+    "badges": {
+      "new": "NEW",
+      "best": "BEST"
+    }
   },
   "models": {
     "gpt-4o": "Most powerful AI model",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Assistants",
+    "defaultTitle": "Assistant",
+    "errorTitle": "Something went wrong",
+    "errorMessage": "Could not start this assistant.",
+    "noAssistants": "No assistants found in this category.",
+    "selectAssistantHint": "Open assistant picker",
     "subtitle": "Curated AI specialists ready for coding, writing, analysis, planning, and more.",
     "searchPlaceholder": "Search assistants…",
     "useAssistant": "Use Assistant",
@@ -259,6 +269,7 @@
     "startChat": "Start chat",
     "startNewChat": "Start a new chat",
     "errorLoadingHistory": "Error loading history",
+    "loading": "Loading history...",
     "renameChat": "Rename chat",
     "enterNewTitle": "Enter a new title",
     "deleteChat": "Delete chat?",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium Active",
-        "subtitle": "Thanks for supporting ChatCloud"
+        "subtitle": "Thanks for supporting Cloud AI"
       },
       "restore": {
         "title": "Restore purchases",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Unable to open this link right now.",
       "restoreSuccessTitle": "Restored",
       "restoreSuccessMessage": "Your purchases have been restored.",
+      "restoreEmptyTitle": "No purchases found",
+      "restoreEmptyMessage": "We could not find an active purchase to restore for this account.",
       "restoreErrorTitle": "Restore failed",
       "restoreErrorMessage": "Unable to restore purchases right now.",
       "resetConfirmTitle": "Reset app data?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Custom"
     },
+    "notEnoughCoinsTitle": "Not enough coins",
+    "notEnoughCoinsMessage": "Your current balance is too low for this image.",
     "modelTaglines": {
       "runwareFluxSchnell": "Fastest model",
       "runwareFluxKrea": "Creative, stylized results",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Could not save",
       "shareFailedTitle": "Could not share",
-      "tryAgain": "Please try again."
+      "tryAgain": "Please try again.",
+      "savedTitle": "Saved",
+      "savedMessage": "Image saved to your gallery.",
+      "permissionTitle": "Permission needed",
+      "permissionMessage": "Allow storage access to save images to your gallery."
     },
     "result": {
       "complete": "All finished"
@@ -498,12 +517,47 @@
       "save": "Save",
       "share": "Share"
     },
+    "alerts": {
+      "savedTitle": "Saved",
+      "savedMessage": "Image saved to your gallery.",
+      "permissionTitle": "Permission needed",
+      "permissionMessage": "Allow storage access to save images to your gallery.",
+      "saveFailedTitle": "Could not save",
+      "tryAgain": "Please try again."
+    },
     "accessibility": {
       "close": "Close",
       "delete": "Delete image",
       "edit": "Edit image",
       "save": "Save image",
       "share": "Share image"
+    }
+  },
+  "reportContent": {
+    "title": "Report AI content",
+    "subtitle": "Tell us what is wrong with this generated content.",
+    "privateDisclosure": "Submitting sends this reported content for safety review.",
+    "accessibilityLabel": "Report AI content",
+    "reasons": {
+      "sexual": "Sexual or nudity content",
+      "violence_self_harm": "Violence or self-harm",
+      "hate_harassment": "Hate or harassment",
+      "child_safety": "Child safety concern",
+      "scam_deceptive": "Scam or deceptive content",
+      "other": "Other"
+    },
+    "errors": {
+      "reasonRequired": "Please choose a reason before submitting.",
+      "submit": "Could not submit report. Please try again."
+    },
+    "success": {
+      "title": "Thanks. Your report was submitted.",
+      "subtitle": "We will use reports to improve content safety."
+    },
+    "actions": {
+      "report": "Report",
+      "submit": "Submit Report",
+      "done": "Done"
     }
   },
   "studioHome": {
@@ -540,7 +594,7 @@
     "careView": {
       "titlePrefix": "Meet",
       "titleHighlight": "Image Studio",
-      "subtitle": "Create & edit images with AI—right inside ChatCloud."
+      "subtitle": "Create & edit images with AI—right inside Cloud AI."
     },
     "relaxView": {
       "title": "Meet Your AI",
@@ -562,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "ENTERPRISE-GRADE AI SOLUTIONS",
       "description": "Empower your business with cutting-edge artificial intelligence technology designed for enterprise professionals and teams.",
       "stats": "Trusted by 500k+ users",
@@ -622,7 +676,18 @@
     "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
   },
   "paywall": {
-    "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Close paywall",
+    "unavailableTitle": "Purchases unavailable",
+    "unavailableMessage": "Android billing is not configured yet.",
+    "restoreEmptyTitle": "No purchases found",
+    "restoreEmptyMessage": "We could not find an active purchase to restore for this account.",
+    "restoreFailedTitle": "Restore failed",
+    "restoreFailedMessage": "Unable to restore purchases right now.",
+    "productsUnavailableTitle": "No plans available",
+    "productsUnavailableMessage": "No Android subscription products are available right now.",
+    "purchaseFailedTitle": "Purchase failed",
+    "purchaseFailedMessage": "Unable to complete this purchase right now.",
     "restore": "Restore",
     "restoreRestoring": "Restoring…",
     "features": {
@@ -671,6 +736,18 @@
     "legal": {
       "terms": "Terms",
       "privacy": "Privacy"
+    },
+    "premium": {
+      "headline": "All premium AI in one plan",
+      "subtitleLine1": "Chat, code, create, and plan",
+      "subtitleLine2": "with advanced models.",
+      "enableTrial": "Enable free trial",
+      "annual": "Annual",
+      "saveBadge": "Save 83%",
+      "year": "year",
+      "week": "week",
+      "termsOfUse": "Terms of Use",
+      "privacyPolicy": "Privacy Policy"
     }
   },
   "chat": {
@@ -715,10 +792,13 @@
     "sendFailed": "Failed to send message. Please try again.",
     "modelNoImageSupport": "The selected model does not support images. Please choose a different model.",
     "voiceStartFailed": "Could not start voice.",
+    "voiceNoSpeechDetected": "No voice was recognized. Please try again.",
     "emptyTitle": "How can I help?",
     "emptySubtitle": "Start a conversation with AI",
     "privateTitle": "Private Chat",
     "privateSubtitle": "This chat will not appear in your chat history",
+    "startPrivateChat": "Start private chat",
+    "endPrivateChat": "End private chat",
     "permissions": {
       "photosTitle": "Photos Permission Needed",
       "photosMessage": "Photo access is required to choose images.",
@@ -763,7 +843,19 @@
       "share": "Share",
       "regenerate": "Regenerate",
       "retryFromHere": "Retry from here",
+      "report": "Report",
       "cancel": "Cancel"
+    },
+    "markdown": {
+      "copy": "Copy",
+      "copied": "Copied",
+      "table": "TABLE",
+      "watchVideo": "Watch Video",
+      "wikipedia": "Wikipedia",
+      "link": "Link",
+      "note": "Note",
+      "warning": "Warning",
+      "tip": "Tip"
     },
     "messageActionTitle": "Message",
     "status": {
@@ -857,12 +949,15 @@
     "ok": "OK",
     "retry": "Retry",
     "cancel": "Cancel",
+    "allow": "Allow",
+    "notNow": "Not now",
+    "openSettings": "Open Settings",
     "close": "Close",
     "save": "Save",
     "tryAgain": "Try Again"
   },
   "rateUs": {
-    "title": "Enjoying ChatCloud?",
+    "title": "Enjoying Cloud AI?",
     "subtitle": "Your feedback helps us improve. Would you mind rating us on the App Store?",
     "rateNow": "Rate Now",
     "maybeLater": "Maybe Later",
@@ -870,6 +965,7 @@
   },
   "oneTimeOffer": {
     "title": "One-Time Offer",
+    "discount": "{{percent}}% OFF",
     "subtitle": "You will not see this offer again.",
     "badgeLine1": "Exclusive",
     "badgeLine2": "One time offer",
@@ -900,7 +996,9 @@
     "restoreSuccessTitle": "Restored",
     "restoreSuccessMessage": "Your purchases have been restored.",
     "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
+    "restoreErrorMessage": "No purchases found to restore.",
+    "unavailableTitle": "Purchases unavailable",
+    "unavailableMessage": "Android billing is not configured yet."
   },
   "rewards": {
     "header": {
@@ -1016,9 +1114,23 @@
           "mythic": "MYTHIC"
         }
       }
+    },
+    "checkIn": {
+      "title": "Claim your daily coins",
+      "subtitle": "Come back every day for a bigger reward.",
+      "cta": "Check in",
+      "claimed": "Claimed! +{{amount}} coins",
+      "later": "Later"
     }
   },
   "app": {
+    "version": "Version {{version}}",
+    "offlineBanner": "You are offline",
+    "launch": {
+      "accessibilityLabel": "Starting Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, ready when you are"
+    },
     "errors": {
       "modelsLoadTitle": "Failed to Load Models",
       "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
@@ -1031,12 +1143,51 @@
       "crashTitle": "Something went wrong.",
       "crashSubtitle": "Please try again.",
       "crashLabel": "App crashed"
+    },
+    "proxyErrors": {
+      "genericTitle": "Something went wrong",
+      "genericMessage": "Please try again.",
+      "rateLimitTitle": "Too many requests",
+      "rateLimitMessage": "We are handling many requests. Please try again in a moment.",
+      "rateLimitRetryAfter": "We are handling many requests. Please retry in about {{seconds}} seconds.",
+      "restrictedTitle": "Restricted Content",
+      "restrictedMessage": "This request was blocked by safety filters.",
+      "insufficientCoinsTitle": "Not enough coins",
+      "insufficientCoinsMessage": "Your current balance is too low for this request.",
+      "imageUnavailableTitle": "Image unavailable",
+      "imageUnavailableMessage": "The generated image file was temporarily unavailable. Please try again.",
+      "authorizationTitle": "Authorization issue",
+      "authorizationMessage": "We could not verify your account. Please try again.",
+      "serverTitle": "Server hiccup",
+      "serverMessage": "Our servers had trouble. Please try again shortly.",
+      "timeoutTitle": "Taking too long",
+      "timeoutMessage": "The request timed out. Please try again.",
+      "networkTitle": "No connection",
+      "networkMessage": "No internet connection. Please check your connection and try again.",
+      "requestTitle": "Request issue",
+      "requestMessage": "Something went wrong with your request. Please try again."
     }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Activate Premium",
+    "activateMessage": "Do you want to activate reviewer premium?",
+    "activateAction": "Activate",
+    "deactivateTitle": "Deactivate Premium",
+    "deactivateMessage": "Do you want to deactivate reviewer premium?",
+    "deactivateAction": "Deactivate"
   },
   "push": {
     "dailyReward": {
       "title": "Daily reward",
       "body": "Don’t miss your daily coins — claim before midnight."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Never miss your daily coins",
+      "body": "We send one reminder a day so your streak stays alive and your coins keep growing. No spam, and you can turn it off any time.",
+      "enable": "Turn on reminders",
+      "skip": "Not now"
     }
   }
 }

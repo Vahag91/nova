@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Yan awoṣe",
+    "searchPlaceholder": "Ṣewadii awọn awoṣe...",
+    "noModelsFound": "Ko si awọn awoṣe ti a rii",
+    "noModelsAvailable": "Ko si awọn awoṣe ti o wa",
+    "currentModel": "Awoṣe lọwọlọwọ: {{name}}. Fọwọ ba lati yi awoṣe pada.",
+    "openHint": "Ṣii akojọ aṣayan awoṣe",
+    "closeLabel": "Pa awoṣe yiyan",
+    "searchLabel": "Awọn awoṣe wiwa",
+    "searchHint": "Tẹ lati ṣe àlẹmọ awọn awoṣe to wa",
+    "modelLabel": "{{name}} awoṣe",
+    "selectHint": "Yan awoṣe {{name}}",
+    "currentlySelected": "Lọwọlọwọ ti a ti yan awoṣe",
+    "genericModel": "{{provider}} awoṣe",
+    "badges": {
+      "new": "TITUN",
+      "best": "DARA ju"
+    }
+  },
+  "models": {
+    "gpt-4o": "Awoṣe AI ti o lagbara julọ",
+    "gpt-4o-mini": "Yara fun lojojumo awọn iṣẹ-ṣiṣe",
+    "gpt-5": "Alagbara julọ gbogbo idi AI",
+    "gpt-5-chat-latest": "Iṣapeye fun iwiregbe ati ibaraẹnisọrọ",
+    "gpt-5-mini": "Yara ati igbẹkẹle GPT-5",
+    "gpt-5.4-nano": "Ina awoṣe fun o rọrun awọn iṣẹ-ṣiṣe",
+    "o4-mini": "Awoṣe ero ero daradara",
+    "gpt-4.1-mini": "Iwapọ, agbara GPT-4.1",
+    "claude-3-haiku": "Yara ati idojukọ Anthropic AI",
+    "claude-3.7-sonnet": "Refaini ero nipa Anthropic",
+    "gemini-2.5-Flash": "Google ká julọ to ti ni ilọsiwaju awoṣe",
+    "gemini-2.5-flash": "Google ká julọ to ti ni ilọsiwaju awoṣe",
+    "gemini-2.0-flash": "Awọn ọna ati kongẹ Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Awoṣe AI ti o lagbara julọ",
+    "fast_everyday": "Yara fun lojojumo awọn iṣẹ-ṣiṣe",
+    "fast_reasoning": "Yara awoṣe pẹlu ti o dara ero",
+    "great_reasoning": "Awoṣe ero to ti ni ilọsiwaju",
+    "coding_reasoning": "To ti ni ilọsiwaju ifaminsi ati ero",
+    "better_coding": "Dara julọ fun ifaminsi ati ero",
+    "best_overall": "Ti o dara ju gbogbo-ni ayika AI awoṣe",
+    "best_google": "Google ká ti o dara ju awoṣe",
+    "best_xai": "xAI ká alagbara julọ awoṣe",
+    "creative_focus": "Nla fun Creative kikọ",
+    "code_helper": "Nla fun iranlọwọ ifaminsi",
+    "chat_focus": "Iṣapeye fun OBROLAN",
+    "long_context": "Nla fun awọn ọrọ igba pipẹ",
+    "budget_friendly": "Isuna-friendly AI awoṣe",
+    "ultra_fast": "Ultra sare awọn idahun",
+    "safe_default": "Ailewu aiyipada yiyan",
+    "multilingual": "Alagbara multilingual support",
+    "vision_strong": "Nla pẹlu awọn aworan ati iran",
+    "data_analysis": "O dara fun itupalẹ data",
+    "structured_tasks": "O dara fun awọn iṣẹ-ṣiṣe ti iṣeto",
+    "everyday_helper": "Lojojumo arannilọwọ awoṣe",
+    "concise_answers": "Awọn idahun kukuru, kukuru",
+    "detailed_answers": "Awọn idahun igbese-nipasẹ-igbesẹ ni kikun",
+    "experimental": "Esiperimenta tókàn-Jẹn awoṣe",
+    "reliable_classic": "Gbẹkẹle Ayebaye awoṣe",
+    "lightweight": "Lightweight, kekere-iye owo awoṣe",
+    "chatty_personal": "Diẹ ore ati ki o ti ara ẹni",
+    "pro_users": "Dara julọ fun awọn olumulo agbara",
+    "research_helper": "O dara fun iwadi ati awọn akọsilẹ",
+    "reasoning_strong": "Awoṣe ero to ti ni ilọsiwaju"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Omiiran"
+  },
+  "navigation": {
+    "chat": "Iwiregbe Tuntun",
+    "history": "Itan",
+    "rewards": "Ojoojumọ Awọn ere",
+    "assistants": "Awọn oluranlọwọ",
+    "imagesStudio": "Image Studio",
+    "settings": "Eto",
+    "recentChats": "to šẹšẹ Chats",
+    "proFeatures": "Pro awọn ẹya ara ẹrọ",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Gba Awọn ẹya ara ẹrọ Pro",
+      "subtitle": "Gbogbo AI Awọn ẹya ara ẹrọ"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "P000",
+    "title": "Image Studio",
+    "subtitle": "Ṣe ipilẹṣẹ, sọ di mimọ, ati ṣe atẹjade awọn ohun-ini wiwo ni aye kan.",
+    "cta": "Ṣii"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Yan awọn aworan",
+    "exitSelectionMode": "Jade ipo yiyan",
+    "selectAll": "Yan Gbogbo",
+    "noImagesYet": "Ko si awọn aworan sibẹsibẹ",
+    "describeImageHint": "Ṣe apejuwe aworan rẹ ni isalẹ ki o tẹ Ṣẹda.",
+    "generatedImagesGallery": "Ti ipilẹṣẹ awọn aworan gallery",
+    "describeImagePlaceholder": "Ṣe apejuwe aworan ti o fẹ…",
+    "deleteConfirmTitle": "Pa Awọn aworan rẹ",
+    "deleteConfirmMessage": "Ṣe o da ọ loju pe o fẹ paarẹ awọn aworan ti o yan bi? Iṣe yii ko le ṣe atunṣe.",
+    "cancel": "Fagilee",
+    "delete": "Paarẹ",
+    "generate": "Ṣẹda",
+    "generating": "Ṣiṣẹda…",
+    "latest": "Titun",
+    "insertToChat": "Fi sii lati iwiregbe",
+    "pleaseWait": "Jọwọ duro…",
+    "processing": "Nṣiṣẹ...",
+    "tapToUploadImage": "Fọwọ ba lati gbe aworan soke",
+    "camera": "Gbe awọn fọto",
+    "library": "Ile-ikawe",
+    "enterPrompt": "Jọwọ tẹ itọsi kan sii fun iran ọrọ-si-aworan",
+    "openInBrowser": "Ṣii ni ẹrọ aṣawakiri",
+    "makeVariations": "Ṣe awọn iyatọ",
+    "deleteAllFromGeneration": "Pa gbogbo rẹ kuro ni iran yii",
+    "imageOptionsTitle": "Awọn aṣayan Aworan",
+    "imageOptionsMessage": "Kini o fẹ lati ṣe pẹlu aworan yii?",
+    "insertMarkdownHeader": "Eyi ni aworan fun:",
+    "variationSuffix": "- iyatọ ti tẹlẹ aworan",
+    "selectedCount": "yan",
+    "selectedCount_one": "yan",
+    "selectedCount_other": "yan",
+    "imageDescriptionInput": "Iṣagbewọle apejuwe aworan",
+    "imageDescriptionHint": "Tẹ apejuwe kan ti aworan ti o fẹ ṣe ina",
+    "openModelSettings": "Ṣii awọn eto awoṣe",
+    "modelSettingsHint": "Fọwọ ba lati yi awoṣe ati eto pada",
+    "openPhotoGallery": "Ṣii aworan aworan",
+    "clearInput": "Ko igbewọle kuro",
+    "generatedImage": "Aworan ti ipilẹṣẹ",
+    "autoSelectedModel": "Ti yan ni aifọwọyi {{model}} fun ipo {{mode}}",
+    "deleteSelectedConfirmTitle": "Pa awọn aworan rẹ",
+    "deleteSelectedConfirmMessage": "Ṣe o da ọ loju pe o fẹ pa awọn aworan rẹ bi? Iṣe yii ko le ṣe atunṣe."
+  },
+  "imageStudio": {
+    "generateImage": "Ṣe ina aworan",
+    "generatingImage": "Ti o npese aworan",
+    "generateImageHint": "Fọwọ ba lati ṣe ipilẹṣẹ aworan ti o da lori apejuwe rẹ",
+    "imageDescriptionInput": "Iṣagbewọle apejuwe aworan",
+    "imageDescriptionHint": "Tẹ apejuwe kan ti aworan ti o fẹ ṣe ina",
+    "openModelSettings": "Ṣii awọn eto awoṣe",
+    "modelSettingsHint": "Fọwọ ba lati yi awoṣe ati eto pada",
+    "openPhotoGallery": "Ṣii aworan aworan",
+    "clearInput": "Ko igbewọle kuro",
+    "generatedImage": "Aworan ti ipilẹṣẹ"
+  },
+  "assistants": {
+    "title": "Awọn oluranlọwọ",
+    "defaultTitle": "Iranlọwọ",
+    "errorTitle": "Nkankan ti ko tọ",
+    "errorMessage": "Ko le bẹrẹ oluranlọwọ yii.",
+    "noAssistants": "Ko si awọn oluranlọwọ ti a rii ni ẹka yii.",
+    "selectAssistantHint": "Ṣii oluranlọwọ oluranlọwọ",
+    "subtitle": "Awọn alamọja AI ti a ti ṣetan fun ifaminsi, kikọ, itupalẹ, igbero, ati diẹ sii.",
+    "searchPlaceholder": "Wa awọn oluranlọwọ…",
+    "useAssistant": "Lo Iranlọwọ",
+    "selectAssistant": "Yan oluranlọwọ",
+    "description": "Apejuwe",
+    "systemPrompt": "Eto Tọ",
+    "chooseModel": "Yan Awoṣe",
+    "categoryAll": "Gbogbo",
+    "categories": {
+      "everyday": "Lojoojumọ",
+      "life": "Igbesi aye",
+      "health": "Ilera",
+      "schoolWork": "Ile-iwe & Iṣẹ",
+      "coding": "Ifaminsi",
+      "creative": "Ṣiṣẹda",
+      "general": "Gbogboogbo"
+    },
+    "presets": {
+      "default": {
+        "name": "Aiyipada Iranlọwọ",
+        "description": "Iranlọwọ iwontunwonsi fun nkan ojoojumọ."
+      },
+      "quick": {
+        "name": "Awọn Idahun Yara",
+        "description": "Awọn idahun kukuru, taara."
+      },
+      "planner": {
+        "name": "Ojoojumọ Alakoso",
+        "description": "Gbero ọjọ rẹ ati awọn ipa ọna."
+      },
+      "recipes": {
+        "name": "Ounjẹ & Ilana",
+        "description": "Kini lati se, pẹlu ohun ti o ni."
+      },
+      "fitness": {
+        "name": "Olukọni Amọdaju",
+        "description": "Awọn iṣesi kekere ati awọn adaṣe ile."
+      },
+      "money": {
+        "name": "Ore owo",
+        "description": "Awọn isuna ti o rọrun ati awọn imọran inawo."
+      },
+      "study": {
+        "name": "Oluranlọwọ Ikẹkọ",
+        "description": "Ṣe alaye ni irọrun. Idanwo mi."
+      },
+      "email": {
+        "name": "Imeeli & Bẹrẹ",
+        "description": "Kọ awọn imeeli ko o ati awọn laini CV."
+      },
+      "translator": {
+        "name": "Onitumọ",
+        "description": "Tumọ + kọ awọn gbolohun ọrọ."
+      },
+      "travel": {
+        "name": "Irin ajo ore",
+        "description": "Awọn ero ti o rọrun & awọn atokọ iṣakojọpọ."
+      },
+      "tech": {
+        "name": "Atilẹyin Imọ-ẹrọ (rọrun)",
+        "description": "Foonu, awọn ohun elo, awọn ipilẹ Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL; DR Akopọ",
+        "description": "Awọn ọta ibọn kukuru + TL ọkan-ila; DR."
+      },
+      "gift": {
+        "name": "Oluwari ebun",
+        "description": "Awọn imọran nipasẹ isuna & awọn anfani."
+      },
+      "party": {
+        "name": "Eto Iṣẹlẹ (Lite)",
+        "description": "Gbero kan kekere keta sare."
+      },
+      "social": {
+        "name": "Social Post Ẹlẹda",
+        "description": "Akọpamọ posts pẹlu awọn aṣayan."
+      },
+      "interview": {
+        "name": "Lodo Ẹlẹsin",
+        "description": "Awọn idahun adaṣe (STAR)."
+      },
+      "homefix": {
+        "name": "Home Fix-It Itọsọna",
+        "description": "Laasigbotitusita DIY ti o rọrun."
+      },
+      "pet": {
+        "name": "Ọsin Itọju Buddy",
+        "description": "Ifunni, rin, ikẹkọ ipilẹ."
+      },
+      "mindful": {
+        "name": "Iṣẹju Ikanju",
+        "description": "Awọn iṣẹju 1-3 iṣẹju isinmi."
+      },
+      "polite": {
+        "name": "Olootu Rewriter",
+        "description": "Tun awọn ọrọ kọ & awọn idahun daradara."
+      }
+    }
+  },
+  "history": {
+    "title": "Itan",
+    "searchPlaceholder": "Ṣewadii awọn iwiregbe…",
+    "newChat": "Iwiregbe Tuntun",
+    "new": "+ Tuntun",
+    "search": "Wa",
+    "clearSearch": "Ko wiwa kuro",
+    "noChatsYet": "Ko si awọn iwiregbe sibẹsibẹ",
+    "noResults": "Ko si awọn iwiregbe sibẹsibẹ",
+    "startFirstConversation": "Bẹrẹ ibaraẹnisọrọ akọkọ rẹ.",
+    "startChat": "Bẹrẹ iwiregbe",
+    "startNewChat": "Bẹrẹ iwiregbe tuntun kan",
+    "errorLoadingHistory": "Aṣiṣe ikojọpọ itan",
+    "loading": "Itan ikojọpọ...",
+    "renameChat": "Fun lorukọ iwiregbe",
+    "enterNewTitle": "Tẹ akọle titun sii",
+    "deleteChat": "Pa iwiregbe rẹ rẹ bi?",
+    "deleteChatMessage": "\"{{title}}\" yoo parẹ.",
+    "rename": "Fun lorukọ mii",
+    "unpin": "Yọ kuro",
+    "pin": "Pin",
+    "untitled": "Ti ko ni akole"
+  },
+  "settings": {
+    "title": "Eto",
+    "model": "Awoṣe",
+    "searchPlaceholder": "Ṣewadii awọn awoṣe…",
+    "temperatureForCurrentModel": "Iwọn otutu fun awoṣe lọwọlọwọ",
+    "customFor": "Aṣa fun {{model}}",
+    "usingDefault": "Lilo aiyipada {{temperature}}",
+    "resetToDefault": "Tunto si aiyipada",
+    "defaultTemperature": "Iwọn otutu aiyipada (pada sẹhin)",
+    "usedByModelsWithoutOverride": "Lo nipasẹ awọn awoṣe laisi ifasilẹ aṣa",
+    "dangerZone": "Agbegbe ewu",
+    "clearAllChatsAndSettings": "Ko gbogbo awọn iwiregbe & eto kuro",
+    "about": "Nipa",
+    "version": "Ẹya {{version}}{{status}}",
+    "versionPremiumSuffix": "· Ere",
+    "privacyPolicy": "Asiri Afihan",
+    "hero": {
+      "label": "Ipese pataki",
+      "title": "Kolopin Wiwọle\n& Awọn ẹya ara ẹrọ Pro",
+      "upgrade": "Igbesoke",
+      "manage": "Ṣakoso eto"
+    },
+    "sections": {
+      "premium": "Ere Eto",
+      "data": "Data olumulo",
+      "support": "Atilẹyin & Ofin"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Gba Ere",
+        "subtitle": "Ṣii awọn irinṣẹ ẹda ailopin"
+      },
+      "premiumActive": {
+        "title": "Ere Iroyin",
+        "subtitle": "O ṣeun fun atilẹyin Cloud AI"
+      },
+      "restore": {
+        "title": "Pada awọn rira pada",
+        "subtitle": "Lo ti o ba yipada awọn ẹrọ"
+      },
+      "history": {
+        "title": "Ṣakoso itan iwiregbe",
+        "subtitle": "Wo ati paarẹ awọn akoko ti o kọja rẹ"
+      },
+      "reset": {
+        "title": "Tun awọn ibaraẹnisọrọ to & awọn ayanfẹ",
+        "subtitle": "Pa gbogbo data ti o fipamọ sori ẹrọ kuro"
+      },
+      "rate": {
+        "title": "Oṣuwọn wa",
+        "error": "Ko le ṣii oju-iwe itaja."
+      },
+      "support": {
+        "title": "Atilẹyin",
+        "subtitle": "Kan si wa lori ayelujara",
+        "error": "Ko le ṣii oju-iwe olubasọrọ."
+      },
+      "privacy": {
+        "title": "Asiri Afihan",
+        "error": "Ko le ṣii eto imulo ipamọ."
+      },
+      "terms": {
+        "title": "Awọn ofin lilo",
+        "error": "Ko le ṣii awọn ofin lilo."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Ko si",
+      "linkUnavailableMessage": "Ko le ṣii ọna asopọ yii ni bayi.",
+      "restoreSuccessTitle": "pada sipo",
+      "restoreSuccessMessage": "Awọn rira rẹ ti jẹ atunṣe.",
+      "restoreEmptyTitle": "Ko si awọn rira ti a rii",
+      "restoreEmptyMessage": "A ko le rii rira lọwọ lati mu pada fun akọọlẹ yii.",
+      "restoreErrorTitle": "Imupadabọ kuna",
+      "restoreErrorMessage": "Ko le mu pada awọn rira pada ni bayi.",
+      "resetConfirmTitle": "Tun data app tunto?",
+      "resetConfirmMessage": "Eyi yọ gbogbo awọn iwiregbe kuro ati awọn ayanfẹ agbegbe.",
+      "resetConfirmCancel": "Fagilee",
+      "resetConfirmCta": "Tunto"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Ṣẹda",
+    "chooseStyle": "Yan Aṣa",
+    "aspectRatio": "Apakan Ipin",
+    "starterPrompts": {
+      "title": "Awọn ibere Ibẹrẹ",
+      "items": [
+        "isise headshot",
+        "igbalode alãye yara",
+        "Tropical eti okun ni Iwọoorun"
+      ]
+    },
+    "promptPlaceholder": "Tẹ ohun ti o fẹ ri…",
+    "promptHint": "Apeere: 'Golden retriever in studio lighting'",
+    "clearText": "Ko ọrọ kuro",
+    "generate": "Ṣẹda",
+    "generating": "Ṣiṣẹda…"
+  },
+  "editImage": {
+    "headerTitle": "Ṣatunkọ",
+    "chooseStyle": "Yan Aṣa",
+    "aspectRatio": "Apakan Ipin",
+    "starterPrompts": {
+      "title": "Awọn ibere Ibẹrẹ",
+      "items": [
+        "atunse ina",
+        "yọ lẹhin",
+        "asọ retouch"
+      ]
+    },
+    "promptPlaceholder": "Ṣe apejuwe awọn atunṣe (aṣayan)",
+    "clearText": "Ko ọrọ kuro",
+    "generate": "Ṣẹda",
+    "generating": "Nbere…",
+    "upload": {
+      "choose": "Yan Fọto",
+      "change": "Yipada",
+      "remove": "Yọ kuro"
+    },
+    "imageUnavailable": {
+      "title": "Aworan ko si",
+      "message": "Ko le wọle si fọto ti o yan. Jọwọ tun yan ati gbiyanju lẹẹkansi."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Cartoons"
+      },
+      "photoreal": {
+        "name": "Photoreal || mobile app olumulo-ni wiwo ọrọ"
+      },
+      "sketch": {
+        "name": "Aworan"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D Apejuwe"
+      },
+      "dark_fantasy": {
+        "name": "Irokuro Dudu"
+      },
+      "vintage_film": {
+        "name": "Ojoun Film"
+      },
+      "pastel": {
+        "name": "Pastel Darapupo"
+      },
+      "neon_glow": {
+        "name": "Neon Glow || mobile app olumulo-ni wiwo ọrọ"
+      },
+      "epic_landscape": {
+        "name": "Apọju Landscape"
+      }
+    },
+    "aspectRatios": {
+      "square": "Onigun mẹrin",
+      "landscape": "Ala-ilẹ",
+      "portrait": "Aworan"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Aṣa"
+    },
+    "notEnoughCoinsTitle": "Ko to eyo",
+    "notEnoughCoinsMessage": "Iwọntunwọnsi lọwọlọwọ rẹ ti lọ silẹ fun aworan yii.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Awoṣe ti o yara ju",
+      "runwareFluxKrea": "Ṣiṣẹda, awọn abajade aṣa",
+      "runwareQwenImage": "Iwontunwonsi, awọn abajade didara ga",
+      "google4": "Ti o dara ju AI image awoṣe",
+      "klingImageO1": "Ga-Iṣakoso image ṣiṣatunkọ",
+      "fluxKontent": "Flux Kontent aifwy fun awọn atunṣe",
+      "runwareProvider": "Didara iwọntunwọnsi pẹlu itankale igbẹkẹle.",
+      "airProvider": "Ogede Nano ṣe afikun ere, ohun orin mimọ.",
+      "googleProvider": "Google ṣe aifwy fun awọn alaye didan.",
+      "klingaiProvider": "KlingAI aifwy fun iṣakoso awọn atunṣe.",
+      "anthropicProvider": "Claude opo gigun ti epo fun awọn iṣesi nuanced.",
+      "default": "Fọwọ ba lati ṣawari awọn ẹrọ ti o wa."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "ara ti o yan",
+    "sheetTitle": "Ṣiṣẹda iran rẹ",
+    "sheetSubtitle": "SIP kukuru ti kofi olupin lakoko ti a dapọ {{style}} sinu itọsẹ naa.",
+    "phases": {
+      "blend": "Idapọ ni {{style}}",
+      "paint": "Kun si nmu",
+      "finish": "Fifi ik pólándì"
+    },
+    "actions": {
+      "cancel": "Fagilee",
+      "retry": "Tun gbiyanju",
+      "close": "Sunmọ"
+    },
+    "errors": {
+      "restrictedTitle": "Awọn akoonu ihamọ",
+      "genericTitle": "Iran kuna",
+      "genericMessage": "Ko le ṣe ipilẹṣẹ aworan."
+    },
+    "alerts": {
+      "saveFailedTitle": "Ko le fipamọ",
+      "shareFailedTitle": "Ko le pin",
+      "tryAgain": "Jọwọ gbiyanju lẹẹkansi.",
+      "savedTitle": "Ti fipamọ",
+      "savedMessage": "Aworan ti o fipamọ si ibi-iṣafihan rẹ.",
+      "permissionTitle": "Ti nilo igbanilaaye",
+      "permissionMessage": "Gba aaye ibi ipamọ laaye lati fi awọn aworan pamọ si ibi iṣafihan rẹ."
+    },
+    "result": {
+      "complete": "Gbogbo pari"
+    },
+    "accessibility": {
+      "close": "Sunmọ"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Paarẹ",
+      "edit": "Ṣatunkọ",
+      "save": "Fipamọ",
+      "share": "Pinpin"
+    },
+    "alerts": {
+      "savedTitle": "Ti fipamọ",
+      "savedMessage": "Aworan ti o fipamọ si ibi-iṣafihan rẹ.",
+      "permissionTitle": "Ti nilo igbanilaaye",
+      "permissionMessage": "Gba aaye ibi ipamọ laaye lati fi awọn aworan pamọ si ibi iṣafihan rẹ.",
+      "saveFailedTitle": "Ko le fipamọ",
+      "tryAgain": "Jọwọ gbiyanju lẹẹkansi."
+    },
+    "accessibility": {
+      "close": "Sunmọ",
+      "delete": "Pa aworan rẹ",
+      "edit": "Ṣatunkọ aworan",
+      "save": "Fi aworan pamọ",
+      "share": "Pin aworan"
+    }
+  },
+  "reportContent": {
+    "title": "Jabo AI akoonu",
+    "subtitle": "Sọ fun wa kini o jẹ aṣiṣe pẹlu akoonu ti ipilẹṣẹ yii.",
+    "privateDisclosure": "Ifisilẹ firanṣẹ akoonu ijabọ yii fun atunyẹwo aabo.",
+    "accessibilityLabel": "Jabo AI akoonu",
+    "reasons": {
+      "sexual": "Ibalopo tabi ihoho akoonu",
+      "violence_self_harm": "Iwa-ipa tabi ipalara ara ẹni",
+      "hate_harassment": "Ikorira tabi tipatipa",
+      "child_safety": "Aabo ọmọde ibakcdun",
+      "scam_deceptive": "Itanjẹ tabi akoonu ẹtan",
+      "other": "Omiiran"
+    },
+    "errors": {
+      "reasonRequired": "Jọwọ yan idi kan ṣaaju fifiranṣẹ.",
+      "submit": "Ko le fi ijabọ silẹ. Jọwọ gbiyanju lẹẹkansi."
+    },
+    "success": {
+      "title": "O ṣeun. A ti fi ijabọ rẹ silẹ.",
+      "subtitle": "A yoo lo awọn ijabọ lati mu aabo akoonu dara si."
+    },
+    "actions": {
+      "report": "Iroyin",
+      "submit": "Fi Iroyin",
+      "done": "Ti ṣe"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Ṣii akojọ aṣayan",
+      "selectImages": "Yan awọn aworan",
+      "exitSelection": "Jade aṣayan",
+      "deleteSelected": "Pa awọn aworan ti o yan",
+      "selectToDelete": "Yan awọn aworan lati parẹ"
+    },
+    "createCard": {
+      "title": "Ṣẹda lati Ọrọ",
+      "subtitle": "Tẹ apejuwe kan",
+      "cta": "Apejuwe & Ina"
+    },
+    "editCard": {
+      "title": "AI Fọto Olootu",
+      "subtitle": "Yipada & mu dara pẹlu AI",
+      "cta": "Ṣatunkọ pẹlu AI"
+    },
+    "gallery": {
+      "title": "Ile aworan",
+      "empty": "Ko si awọn aworan sibẹsibẹ",
+      "selection": {
+        "enter": "Yan awọn aworan",
+        "exit": "Jade aṣayan",
+        "deleteSelected": "Pa awọn aworan ti o yan",
+        "selectForDelete": "Yan awọn aworan lati parẹ"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Pade",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Ṣẹda & satunkọ awọn aworan pẹlu AI — ọtun inu Cloud AI."
+    },
+    "relaxView": {
+      "title": "Pade AI rẹ",
+      "titleHighlight": "Awọn oluranlọwọ",
+      "subtitle": "Awọn amoye AI pataki ti ṣetan lati ṣe iranlọwọ pẹlu awọn iwulo ojoojumọ rẹ",
+      "cards": {
+        "fitness": {
+          "title": "Olukọni Amọdaju",
+          "text": "Awọn iṣesi kekere ati awọn adaṣe ile."
+        },
+        "recipes": {
+          "title": "Ounjẹ & Ilana",
+          "text": "Kini lati se, pẹlu ohun ti o ni."
+        },
+        "travel": {
+          "title": "Irin ajo ore",
+          "text": "Awọn ero ti o rọrun & awọn atokọ iṣakojọpọ."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "Idawọlẹ-GRADE AI OJUTU",
+      "description": "Fi agbara fun iṣowo rẹ pẹlu gige-eti imọ-ẹrọ itetisi atọwọda ti a ṣe apẹrẹ fun awọn alamọja ile-iṣẹ ati awọn ẹgbẹ.",
+      "stats": "Gbẹkẹle nipasẹ awọn olumulo 500k+",
+      "rating": "4.9 / 5",
+      "button": "Bẹrẹ"
+    },
+    "buttons": {
+      "continue": "Tesiwaju",
+      "start": "Jẹ ká bẹrẹ"
+    }
+  },
+  "coinStore": {
+    "title": "Gba Awọn kirediti",
+    "loading": "Nkojọpọ ile itaja owo…",
+    "balanceLabel": "Iwọntunwọnsi rẹ lọwọlọwọ jẹ",
+    "balanceValue": "{{amount}} Awọn Kirẹditi",
+    "history": {
+      "link": "Itan iṣowo",
+      "alertTitle": "Itan",
+      "alertBody": "Itan iṣowo n bọ laipẹ."
+    },
+    "noPacks": "Ko si awọn akopọ owo ti o wa. Ṣayẹwo idanimọ RevenueCat rẹ.",
+    "badges": {
+      "basic": "Ipilẹ Pack",
+      "popular": "Gbajumo julọ",
+      "value": "Iye to dara julọ"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Awọn Kirẹditi",
+      "tokensLabel": "{{credits}} Awọn Kirẹditi",
+      "defaultName": "Pack {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "Lọ Ere",
+      "subtitle": "Unlimited wiwọle & awọn ẹya ara ẹrọ",
+      "cta": "Igbesoke"
+    },
+    "termsText": "Nipa ṣiṣe rira, o gba si wa",
+    "termsLink": "Awọn ofin ti Service",
+    "alerts": {
+      "initErrorTitle": "Aṣiṣe init",
+      "genericMessage": "Nkankan ti ko tọ.",
+      "successTitle": "Aseyori",
+      "successMessage": "Awọn kirediti yoo han Kó.",
+      "purchaseFailedTitle": "rira kuna",
+      "unknownError": "Aṣiṣe aimọ"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Ere beere",
+    "upgrade": "Igbesoke",
+    "modelRequiredMessage": "Awoṣe yii nilo Ere. Igbesoke lati wọle si GPT-5, Grok 4, Claude, ati awọn awoṣe ilọsiwaju diẹ sii.",
+    "assistantsRequiredMessage": "Awọn oluranlọwọ nilo Ere. Igbesoke lati wọle si awọn oluranlọwọ AI pataki fun amọdaju, ifaminsi, kikọ, ati diẹ sii.",
+    "assistantsTitle": "Ere beere",
+    "assistantsMessage": "Awọn oluranlọwọ nilo Ere. Igbesoke lati wọle si awọn oluranlọwọ AI pataki fun amọdaju, ifaminsi, kikọ, ati diẹ sii."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Pa paywall",
+    "unavailableTitle": "Awọn rira ko si",
+    "unavailableMessage": "A ko tunto ìdíyelé Android sibẹsibẹ.",
+    "restoreEmptyTitle": "Ko si awọn rira ti a rii",
+    "restoreEmptyMessage": "A ko le rii rira lọwọ lati mu pada fun akọọlẹ yii.",
+    "restoreFailedTitle": "Imupadabọ kuna",
+    "restoreFailedMessage": "Ko le mu pada awọn rira pada ni bayi.",
+    "productsUnavailableTitle": "Ko si awọn ero to wa",
+    "productsUnavailableMessage": "Ko si awọn ọja ṣiṣe alabapin Android wa ni bayi.",
+    "purchaseFailedTitle": "rira kuna",
+    "purchaseFailedMessage": "Ko le pari rira yii ni bayi.",
+    "restore": "Mu pada",
+    "restoreRestoring": "mimu-pada sipo…",
+    "features": {
+      "create": "Ṣẹda awọn aworan ati awọn fidio",
+      "search": "Ṣewadii wẹẹbu pẹlu AI",
+      "talk": "Sọ nipa ti ara si AI",
+      "imageStudio": "Gba Image Studio {{credits}} kirediti {{period}}",
+      "period": {
+        "weekly": "osẹ-sẹsẹ",
+        "monthly": "oṣooṣu",
+        "yearly": "lododun"
+      }
+    },
+    "freeTrial": {
+      "title": "Idanwo ọfẹ",
+      "subtitle": "Idanwo ọfẹ 3-ọjọ"
+    },
+    "badge": {
+      "bestOffer": "Ti o dara ju ìfilọ"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Odoodun",
+        "only": "Nikan {{price}}",
+        "defaultPrice": "79.99 USD",
+        "defaultIntroPrice": "1.35 USD"
+      },
+      "monthly": {
+        "title": "Oṣooṣu",
+        "subtitle": "Fagilee nigbakugba",
+        "defaultPrice": "19.99 USD"
+      },
+      "weekly": {
+        "title": "Osẹ-ọsẹ",
+        "subtitle": "Fagilee nigbakugba",
+        "defaultPrice": "9.99 USD",
+        "trialThen": "Awọn ọjọ 3 ọfẹ, lẹhinna"
+      }
+    },
+    "frequency": {
+      "perWeek": "fun ọsẹ",
+      "perMonth": "fun osu"
+    },
+    "cta": "Tesiwaju",
+    "ctaFreeTrial": "Gbiyanju O Fun Ọfẹ",
+    "legal": {
+      "terms": "Awọn ofin",
+      "privacy": "Asiri"
+    },
+    "premium": {
+      "headline": "Gbogbo Ere AI ni ero kan",
+      "subtitleLine1": "Wiregbe, koodu, ṣẹda, ati ero",
+      "subtitleLine2": "pẹlu to ti ni ilọsiwaju si dede.",
+      "enableTrial": "Mu idanwo ọfẹ ṣiṣẹ",
+      "annual": "Lododun",
+      "saveBadge": "Fipamọ 83%",
+      "year": "odun",
+      "week": "ose",
+      "termsOfUse": "Awọn ofin lilo",
+      "privacyPolicy": "Ilana Asiri"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Ifiranṣẹ...",
+    "createImages": "Ṣẹda Awọn aworan",
+    "generateAiArtwork": "Ṣẹda iṣẹ ọna AI",
+    "camera": "Gbe awọn fọto",
+    "takeOrSelectPhotos": "Yan awọn fọto",
+    "search": "Wa",
+    "findInformation": "Wa alaye",
+    "findRecentInfo": "Wa alaye to ṣẹṣẹ",
+    "removeImage": "Yọ aworan kuro",
+    "messageInput": "Iṣagbewọle ifiranṣẹ",
+    "clearInput": "Ko igbewọle kuro",
+    "quickActionsLabel": "Awọn iṣe kiakia",
+    "hideQuickActions": "Tọju awọn iṣe iyara",
+    "showQuickActions": "Ṣe afihan awọn iṣe iyara",
+    "startVoiceInput": "Bẹrẹ iṣagbewọle ohun",
+    "sendMessage": "Firanṣẹ ifiranṣẹ",
+    "offline": "Aisinipo",
+    "stop": "Duro",
+    "streaming": "Ṣiṣanwọle…",
+    "closeRecorder": "Agbohunsile sunmọ",
+    "insertTranscript": "Firanṣẹ",
+    "scrollToLatest": "Yi lọ si ifiranṣẹ titun",
+    "copyMessage": "Daakọ ifiranṣẹ",
+    "copyMessageHint": "Daakọ ifiranṣẹ yii si agekuru agekuru",
+    "shareMessage": "Pin ifiranṣẹ",
+    "shareMessageHint": "Pin ifiranṣẹ yii",
+    "regenerateResponse": "Atunse esi",
+    "regenerateResponseHint": "Ṣe ipilẹṣẹ esi tuntun",
+    "copyCode": "Da koodu",
+    "copied": "Ti daakọ",
+    "image": "aworan",
+    "loading": "Nkojọpọ…",
+    "loadingChat": "Nkojọpọ iwiregbe...",
+    "offlineBanner": "O wa offline. A ko le fi awọn ifiranṣẹ ranṣẹ.",
+    "offlineError": "Ko si isopọ Ayelujara. Jọwọ ṣayẹwo asopọ rẹ ki o tun gbiyanju lẹẹkansi.",
+    "imagePickerErrorTitle": "Aṣiṣe oluyan aworan",
+    "imagePickerErrorMessage": "Ko le wọle si awọn fọto rẹ. Jọwọ gbiyanju lẹẹkansi.",
+    "messageTooLong": "Ifiranṣẹ ti gun ju ({{length}}). Idiwọn jẹ {{limit}}.",
+    "sendFailed": "Kuna lati fi ifiranṣẹ ranṣẹ. Jọwọ gbiyanju lẹẹkansi.",
+    "modelNoImageSupport": "Awoṣe ti o yan ko ṣe atilẹyin awọn aworan. Jọwọ yan awoṣe ti o yatọ.",
+    "voiceStartFailed": "Ko le bẹrẹ ohun.",
+    "voiceNoSpeechDetected": "Ko si ohun ti a mọ. Jọwọ gbiyanju lẹẹkansi.",
+    "emptyTitle": "Bawo ni MO ṣe le ṣe iranlọwọ?",
+    "emptySubtitle": "Bẹrẹ ibaraẹnisọrọ pẹlu AI",
+    "privateTitle": "Ikọkọ iwiregbe",
+    "privateSubtitle": "Iwiregbe yii kii yoo han ninu itan iwiregbe rẹ",
+    "startPrivateChat": "Bẹrẹ ikọkọ iwiregbe",
+    "endPrivateChat": "Pari iwiregbe ikọkọ",
+    "permissions": {
+      "photosTitle": "Nilo Gbigbanilaaye Awọn fọto",
+      "photosMessage": "Wiwọle fọto nilo lati yan awọn aworan.",
+      "voiceTitle": "Ti nilo awọn igbanilaaye ohun",
+      "voiceMessage": "Gbohungbohun ati wiwọle ọrọ ni a nilo lati lo ohun."
+    },
+    "activity": {
+      "analyzingImages": "Ṣiṣayẹwo awọn aworan…",
+      "searching": "Ṣiṣawari…",
+      "thinking": "N ronu…"
+    },
+    "webSearch": {
+      "title": "Wiwa wẹẹbu",
+      "subtitle": "Wa alaye to ṣẹṣẹ",
+      "label": "Wiwa wẹẹbu",
+      "enable": "Mu wiwa wẹẹbu ṣiṣẹ",
+      "disable": "Pa wiwa wẹẹbu kuro",
+      "toggleLabel": "Wa lori ayelujara"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Apẹrẹ visuals ni iyara.",
+      "subtitle": "Ṣe ipilẹṣẹ, sọ di mimọ, ati ṣe atẹjade awọn ohun-ini wiwo ni aye kan.",
+      "cta": "Ṣii"
+    },
+    "quickActions": {
+      "createImages": "Ṣẹda Awọn aworan",
+      "openCamera": "Ṣii Kamẹra",
+      "editImage": "Ṣatunkọ Aworan",
+      "startVoice": "Bẹrẹ Voice",
+      "assistants": "Awọn oluranlọwọ"
+    },
+    "listening": "Nfeti…",
+    "startRecording": "Bẹrẹ gbigbasilẹ…",
+    "assistantHeader": {
+      "unavailableTitle": "Iranlọwọ ko si",
+      "unavailableDescription": "A ko le kojọpọ oluranlọwọ yii. Jọwọ gbiyanju lẹẹkansi.",
+      "ready": "Ṣetan lati ṣe iranlọwọ"
+    },
+    "actions": {
+      "copy": "Daakọ",
+      "share": "Pinpin",
+      "regenerate": "Tuntun-pada",
+      "retryFromHere": "Tun gbiyanju lati ibi",
+      "report": "Iroyin",
+      "cancel": "Fagilee"
+    },
+    "markdown": {
+      "copy": "Daakọ",
+      "copied": "Ti daakọ",
+      "table": "TABLE",
+      "watchVideo": "Wo Fidio",
+      "wikipedia": "Wikipedia",
+      "link": "Ọna asopọ",
+      "note": "Akiyesi",
+      "warning": "Ikilo",
+      "tip": "Imọran"
+    },
+    "messageActionTitle": "Ifiranṣẹ",
+    "status": {
+      "sending": "Fifiranṣẹ…",
+      "failed": "O kuna",
+      "sent": "Ti firanṣẹ"
+    },
+    "suggestions": {
+      "writeStory": "Kọ a Creative itan",
+      "writeStorySubtitle": "nipa a ti idan ìrìn",
+      "planTravel": "Gbero a irin-ajo itinerary",
+      "planTravelSubtitle": "fun ohun iyanu isinmi",
+      "explainConcept": "Ṣe alaye ero yii",
+      "explainConceptSubtitle": "ni o rọrun awọn ofin",
+      "planDay": "Gbero ọjọ mi",
+      "planDaySubtitle": "pẹlu ise sise awọn italolobo"
+    },
+    "home": {
+      "eyebrow": "Yan koko kan",
+      "title": "Kini o fẹ ṣe?",
+      "subtitle": "Yan itọsọna kan, lẹhinna bẹrẹ pẹlu itọsi to lagbara.",
+      "pickPromptTitle": "Yan itọka kan lati bẹrẹ",
+      "changeTopic": "Yan koko-ọrọ miiran",
+      "intents": {
+        "summarize": "Ṣe akopọ ọrọ",
+        "summarizeShort": "Ṣe akopọ",
+        "summarizeHint": "Awọn nkan, awọn akọsilẹ, awọn akọsilẹ ohun, awọn okun gigun",
+        "plan": "Ṣe eto kan",
+        "planHint": "Awọn irin ajo, awọn ọna ṣiṣe, awọn isunawo, awọn akoko ipari, awọn ayipada igbesi aye",
+        "brainstorm": "Iji ọpọlọ",
+        "brainstormHint": "Awọn imọran, awọn ipese, awọn orukọ, akoonu, awọn iṣẹ ẹgbẹ",
+        "analyze": "Ṣe itupalẹ data",
+        "analyzeHint": "Inawo, esi, metiriki, isesi, išẹ"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Ṣẹda kukuru oludasile",
+          "founderBriefSubtitle": "Fa awọn ewu akọkọ jade, awọn ipinnu, ati awọn igbesẹ atẹle.",
+          "classNotesTitle": "Sọ awọn akọsilẹ ikẹkọ mi di mimọ",
+          "classNotesSubtitle": "Yipada awọn akọsilẹ ti o ni inira sinu itọsọna ikẹkọ ti o han gbangba.",
+          "meetingHandoffTitle": "Kọ a handoff Lakotan",
+          "meetingHandoffSubtitle": "Wulo lẹhin awọn ipade, awọn ipe, tabi awọn okun inu gigun.",
+          "longArticleTitle": "Ṣe akopọ nkan yii ni kiakia",
+          "longArticleSubtitle": "Di nkan gigun kan sinu awọn ọna gbigbe didasilẹ."
+        },
+        "plan": {
+          "energyResetTitle": "Kọ ipilẹ agbara ọjọ 14 kan",
+          "energyResetSubtitle": "Eto ojulowo fun oorun, ounjẹ, gbigbe, ati idojukọ.",
+          "mealPlanTitle": "Gbero ounjẹ Emi yoo si gangan Cook",
+          "mealPlanSubtitle": "Wulo, ti ifarada, ati da lori ohun ti Mo ni.",
+          "cityMoveTitle": "Gbero gbigbe mi si ilu titun kan",
+          "cityMoveSubtitle": "Pin rẹ sinu aago, isuna, ile, ati awọn iṣẹ ṣiṣe abojuto.",
+          "tripEscapeTitle": "Gbero kan to sese ìparí ona abayo",
+          "tripEscapeSubtitle": "Nkankan dara ju jeneriki itinerary."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Wa hustle ẹgbẹ ti o daju",
+          "sideHustleSubtitle": "Awọn imọran Mo le bẹrẹ lakoko ti n ṣiṣẹ ni kikun akoko.",
+          "brandAngleTitle": "Wa igun ami iyasọtọ ti o ṣe iranti",
+          "brandAngleSubtitle": "Wulo fun awọn ọja, awọn olupilẹṣẹ, awọn ile-iṣẹ, tabi awọn iwe iroyin.",
+          "socialSeriesTitle": "Pilẹ akoonu jara",
+          "socialSeriesSubtitle": "Nkankan dédé to lati dagba olugbo.",
+          "datingIdeasTitle": "Wa soke pẹlu alabapade ero",
+          "datingIdeasSubtitle": "Awọn ọjọ, awọn ẹbun, awọn iyanilẹnu, tabi awọn iṣẹlẹ ti o ni imọran."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Wa ibi ti owo mi ti n jo",
+          "spendingLeaksSubtitle": "Ṣe afihan awọn ilana, awọn aaye alailagbara, ati awọn aṣeyọri ti o rọrun julọ ni akọkọ.",
+          "customerFeedbackTitle": "Yipada esi sinu awọn ayo",
+          "customerFeedbackSubtitle": "Awọn ibeere iṣupọ, awọn ẹdun, iyara, ati ipa.",
+          "habitPatternsTitle": "Aami awọn awoṣe ninu awọn isesi mi",
+          "habitPatternsSubtitle": "Wulo fun awọn adaṣe, oorun, iwe akọọlẹ, tabi awọn akọọlẹ idojukọ.",
+          "metricsStoryTitle": "Ṣe alaye kini awọn nọmba tumọ si",
+          "metricsStorySubtitle": "Ifihan agbara diẹ sii, ariwo iwe kaakiri."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Nṣiṣẹ...",
+    "tapToUploadImage": "Fọwọ ba lati gbe aworan soke"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Nṣiṣẹ...",
+    "camera": "Gbe awọn fọto",
+    "library": "Ile-ikawe"
+  },
+  "common": {
+    "ok": "O DARA",
+    "retry": "Tun gbiyanju",
+    "cancel": "Fagilee",
+    "allow": "Gba laaye",
+    "notNow": "Ko bayi",
+    "openSettings": "Ṣii Eto",
+    "close": "Sunmọ",
+    "save": "Fipamọ",
+    "tryAgain": "Gbiyanju Lẹẹkansi"
+  },
+  "rateUs": {
+    "title": "Ngbadun Cloud AI?",
+    "subtitle": "Idahun rẹ ṣe iranlọwọ fun wa ni ilọsiwaju. Ṣe iwọ yoo nifẹ lati ṣe iwọn wa lori Ile itaja App?",
+    "rateNow": "Oṣuwọn Bayi",
+    "maybeLater": "Boya Nigbamii",
+    "dontAskAgain": "Maṣe Beere Lẹẹkansi"
+  },
+  "oneTimeOffer": {
+    "title": "Ipese Igba Kan",
+    "discount": "{{percent}}% PA",
+    "subtitle": "O yoo ko ri yi ìfilọ lẹẹkansi.",
+    "badgeLine1": "Iyasoto",
+    "badgeLine2": "Ọkan akoko ìfilọ",
+    "upgradeNow": "Igbesoke bayi fun {{price}}",
+    "loadingPrice": "Nkojọpọ...",
+    "termsOfUse": "Awọn ofin lilo",
+    "privacyPolicy": "Asiri Afihan",
+    "accessTitle": "Kolopin wiwọle si",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Wiwọle ailopin si GPT-4",
+      "geminiPro": "Wiwọle si Gemini Pro",
+      "grokInsights": "Lo Grok fun awọn oye tuntun",
+      "priorityAccess": "Wiwọle akọkọ & awọn idahun yiyara"
+    },
+    "bestValue": "Iye to dara julọ",
+    "annualPremium": "Lododun Ere",
+    "oneTimePayment": "Isanwo-akoko kan",
+    "wasPrice": "je",
+    "continue": "Tesiwaju",
+    "restore": "Mu pada",
+    "terms": "Awọn ofin",
+    "privacy": "Asiri",
+    "successTitle": "Aseyori!",
+    "successMessage": "O ṣeun fun rira rẹ! Gbadun iwọle Ere fun awọn oṣu 12 to nbọ.",
+    "errorTitle": "Ti kuna Rara",
+    "errorMessage": "Nkankan ti ko tọ. Jọwọ gbiyanju lẹẹkansi.",
+    "restoreSuccessTitle": "pada sipo",
+    "restoreSuccessMessage": "Awọn rira rẹ ti jẹ atunṣe.",
+    "restoreErrorTitle": "Imupadabọ kuna",
+    "restoreErrorMessage": "Ko si awọn rira ti a rii lati mu pada.",
+    "unavailableTitle": "Awọn rira ko si",
+    "unavailableMessage": "A ko tunto ìdíyelé Android sibẹsibẹ."
+  },
+  "rewards": {
+    "header": {
+      "title": "Awọn ere",
+      "openMenu": "Ṣii akojọ aṣayan",
+      "goBack": "Pada pada"
+    },
+    "pointsHero": {
+      "totalBalance": "Iwontunwonsi lapapọ",
+      "seeYourRewards": "Wo awọn ere rẹ"
+    },
+    "streakTracker": {
+      "title": "Ojoojumọ ṣiṣan",
+      "subtitle": "Jeki o soke! O wa lori ina.",
+      "days": "Awọn ọjọ",
+      "prize": "Ebun",
+      "dayLabel": "Ọjọ {{number}}",
+      "nextReward": "Ẹsan ti o tẹle: {{amount}} ni {{time}}",
+      "coins": "Awọn owó"
+    },
+    "sections": {
+      "availableQuests": "Awọn ibeere to wa",
+      "completedQuests": "Awọn ibeere ti o pari",
+      "availableRewards": "Awọn ere ti o wa",
+      "needsMoreCoins": "Nilo diẹ eyo"
+    },
+    "balances": {
+      "rewardCoins": "Awọn owó ere",
+      "imageCredits": "Awọn kirediti aworan"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 Aworan kirediti",
+        "imageCredits200": "200 Aworan kirediti",
+        "imageCredits600": "600 Aworan kirediti",
+        "weeklyPremium": "Ere osẹ",
+        "secretBox": "Apoti ikoko"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Ohun ijinlẹ ere inu"
+      },
+      "alerts": {
+        "comingSoonTitle": "Nbo laipe",
+        "comingSoonMessage": "Ere yi ko si sibẹsibẹ.",
+        "notEnoughCoinsTitle": "Ko to eyo",
+        "notEnoughCoinsMessage": "O nilo awọn owó ẹsan diẹ sii lati ṣii ere yii.",
+        "errorTitle": "Asise",
+        "couldNotOpenBox": "Ko le ṣii apoti.",
+        "couldNotRedeem": "Ko le ra ere pada. Jọwọ gbiyanju lẹẹkansi.",
+        "mysteryReward": "Ohun ijinlẹ ère"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Lojoojumọ Wọle",
+        "description": "Ṣii app loni lati tọju ṣiṣan rẹ",
+        "message": "Ibeere yii ti pari laifọwọyi nigbati o ṣii app ni ọjọ kọọkan."
+      },
+      "shareFacebook": {
+        "title": "Pin lori Facebook",
+        "description": "Firanṣẹ nipa wa lori Facebook"
+      },
+      "shareTwitter": {
+        "title": "Pin lori Twitter",
+        "description": "Tweet rẹ iriri"
+      },
+      "shareInstagram": {
+        "title": "Pin lori Instagram",
+        "description": "Pin itan kan tabi ifiweranṣẹ"
+      },
+      "shareExperience": {
+        "title": "Pin iriri rẹ",
+        "description": "Sọ fun awọn ọrẹ idi ti o fẹran app naa"
+      },
+      "share": {
+        "genericMessage": "Mo nlo ohun elo AI yii fun iwiregbe ati iran aworan. Ṣayẹwo rẹ: {{url}}",
+        "facebookQuote": "Ṣayẹwo ohun elo AI yii!",
+        "twitterText": "Mo n gbiyanju AI app yii, o dara pupọ.",
+        "instagramMessage": "Ṣayẹwo ohun elo AI yii: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Asise",
+        "errorMessage": "Ko le ṣii oju-iwe itaja."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Ibere Pari",
+        "description": "Ibere pari",
+        "points": "+ {{points}} ojuami",
+        "close": "Sunmọ"
+      },
+      "rewardSuccess": {
+        "error": "Asise",
+        "success": "ASEYORI",
+        "somethingWentWrong": "Nkankan ti ko tọ",
+        "rewardUnlocked": "Ṣii silẹ Ere",
+        "credits": "Awọn kirediti",
+        "close": "Sunmọ",
+        "okay": "O dara"
+      },
+      "secretBox": {
+        "pill": "ASIRI BOX",
+        "rewardUnlocked": "ERE ŠI INU",
+        "shufflingRewards": "ERE DIPA...",
+        "imageCreditsAdded": "Awọn kirẹditi aworan ti a ṣafikun si akọọlẹ rẹ",
+        "continue": "Tesiwaju",
+        "revealing": "Ìfihàn...",
+        "prizeTiers": {
+          "lucky": "ORIRE",
+          "pro": "PRO",
+          "elite": "Gbajumo",
+          "mythic": "ÌRÁNTÍ"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Gba owó ojoojúmọ́ rẹ",
+      "subtitle": "Padà wá lójoojúmọ́ — èrè máa ń pọ̀ sí i.",
+      "cta": "Forúkọsílẹ̀",
+      "claimed": "A ti gbà! +{{amount}} owó",
+      "later": "Nígbà mìíràn"
+    }
+  },
+  "app": {
+    "version": "Ẹya {{version}}",
+    "offlineBanner": "O wa offline",
+    "launch": {
+      "accessibilityLabel": "Bibẹrẹ Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, setan nigbati o ba wa"
+    },
+    "errors": {
+      "modelsLoadTitle": "Ti kuna lati kojọpọ Awọn awoṣe",
+      "modelsLoadMessage": "Ko le fifuye awọn awoṣe AI. Ìfilọlẹ naa yoo lo awọn awoṣe aiyipada. Jọwọ ṣayẹwo asopọ intanẹẹti rẹ.",
+      "modelsLoadTimeout": "Awọn awoṣe ikojọpọ gba gun ju. Ìfilọlẹ naa yoo lo awọn awoṣe aiyipada. Jọwọ gbiyanju lẹẹkansi.",
+      "modelsLoadNetwork": "Ko si isopọ Ayelujara. Ìfilọlẹ naa yoo lo awọn awoṣe aiyipada. Jọwọ ṣayẹwo asopọ rẹ.",
+      "deviceIdTitle": "Aṣiṣe ibẹrẹ",
+      "deviceIdMessage": "Kuna lati pilẹṣẹ ID ẹrọ. Diẹ ninu awọn ẹya le ma ṣiṣẹ ni deede.",
+      "storageTitle": "Aṣiṣe Ibi ipamọ",
+      "storageMessage": "Ko le wọle si ibi ipamọ agbegbe. Diẹ ninu awọn ẹya le ma ṣiṣẹ ni deede.",
+      "crashTitle": "Nkankan ti ko tọ.",
+      "crashSubtitle": "Jọwọ gbiyanju lẹẹkansi.",
+      "crashLabel": "App kọlu"
+    },
+    "proxyErrors": {
+      "genericTitle": "Nkankan ti ko tọ",
+      "genericMessage": "Jọwọ gbiyanju lẹẹkansi.",
+      "rateLimitTitle": "Ọpọlọpọ awọn ibeere",
+      "rateLimitMessage": "A n ṣetọju ọpọlọpọ awọn ibeere. Jọwọ gbiyanju lẹẹkansi ni iṣẹju kan.",
+      "rateLimitRetryAfter": "A n ṣetọju ọpọlọpọ awọn ibeere. Jọwọ tun gbiyanju ni bii {{seconds}} iṣẹju-aaya.",
+      "restrictedTitle": "Awọn akoonu ihamọ",
+      "restrictedMessage": "Ibeere yii jẹ idinamọ nipasẹ awọn asẹ aabo.",
+      "insufficientCoinsTitle": "Ko to eyo",
+      "insufficientCoinsMessage": "Iwọntunwọnsi lọwọlọwọ rẹ ti lọ silẹ fun ibeere yii.",
+      "imageUnavailableTitle": "Aworan ko si",
+      "imageUnavailableMessage": "Faili aworan ti a ṣe ipilẹṣẹ ko si fun igba diẹ. Jọwọ gbiyanju lẹẹkansi.",
+      "authorizationTitle": "Ọrọ aṣẹ",
+      "authorizationMessage": "A ko le jẹrisi akọọlẹ rẹ. Jọwọ gbiyanju lẹẹkansi.",
+      "serverTitle": "Hiccup olupin",
+      "serverMessage": "Awọn olupin wa ni wahala. Jọwọ gbiyanju lẹẹkansi laipẹ.",
+      "timeoutTitle": "Gbigba gun ju",
+      "timeoutMessage": "Ìbéèrè ti pẹ́. Jọwọ gbiyanju lẹẹkansi.",
+      "networkTitle": "Ko si asopọ",
+      "networkMessage": "Ko si isopọ Ayelujara. Jọwọ ṣayẹwo asopọ rẹ ki o tun gbiyanju lẹẹkansi.",
+      "requestTitle": "Ibere ibeere",
+      "requestMessage": "Nkankan ti ko tọ pẹlu ibeere rẹ. Jọwọ gbiyanju lẹẹkansi."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Mu Ere ṣiṣẹ",
+    "activateMessage": "Ṣe o fẹ lati mu Ere aṣayẹwo ṣiṣẹ?",
+    "activateAction": "Mu ṣiṣẹ",
+    "deactivateTitle": "Muu Ere ṣiṣẹ",
+    "deactivateMessage": "Ṣe o fẹ mu maṣiṣẹ Ere aṣayẹwo bi?",
+    "deactivateAction": "Muu ṣiṣẹ"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Ojoojumọ ere",
+      "body": "Maṣe padanu awọn owó ojoojumọ rẹ - beere ṣaaju ọganjọ alẹ."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Máṣe pàdánù owó ojoojúmọ́ rẹ",
+      "body": "A máa ń fi ìránnilétí kan ránṣẹ́ lójúmọ́ kí ìlà rẹ má bàa jáwọ́ àti kí owó rẹ máa pọ̀ sí i. Kò sí spam, o sì lè pa á ní ìgbàkúùgbà.",
+      "enable": "Tan ìránnilétí",
+      "skip": "Kì í ṣe nísinsìnyí"
+    }
+  }
+}

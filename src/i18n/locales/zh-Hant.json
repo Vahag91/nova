@@ -11,7 +11,12 @@
     "searchHint": "輸入以篩選可用模型",
     "modelLabel": "{{name}} 模型",
     "selectHint": "選擇 {{name}} 模型",
-    "currentlySelected": "目前已選取的模型"
+    "currentlySelected": "目前已選取的模型",
+    "genericModel": "{{provider}} 模型",
+    "badges": {
+      "new": "新",
+      "best": "最佳"
+    }
   },
   "models": {
     "gpt-4o": "最強大的 AI 模型",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "助理",
+    "defaultTitle": "助理",
+    "errorTitle": "發生問題",
+    "errorMessage": "無法啟動此助理。",
+    "noAssistants": "此類別中沒有助理。",
+    "selectAssistantHint": "開啟助理選擇器",
     "subtitle": "精選可用於程式撰寫、寫作、分析、規劃等的 AI 專家。",
     "searchPlaceholder": "搜尋助理…",
     "useAssistant": "使用助理",
@@ -259,6 +269,7 @@
     "startChat": "開始聊天",
     "startNewChat": "開始新聊天",
     "errorLoadingHistory": "載入歷史記錄時發生錯誤",
+    "loading": "正在載入歷史記錄...",
     "renameChat": "重新命名聊天",
     "enterNewTitle": "輸入新標題",
     "deleteChat": "要刪除聊天嗎？",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "進階版已啟用",
-        "subtitle": "感謝你支持 ChatCloud"
+        "subtitle": "感謝你支持 Cloud AI"
       },
       "restore": {
         "title": "還原購買",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "目前無法開啟此連結。",
       "restoreSuccessTitle": "已還原",
       "restoreSuccessMessage": "你的購買已還原。",
+      "restoreEmptyTitle": "找不到購買記錄",
+      "restoreEmptyMessage": "找不到此帳戶可還原的有效購買記錄。",
       "restoreErrorTitle": "還原失敗",
       "restoreErrorMessage": "目前無法還原購買。",
       "resetConfirmTitle": "要重設應用程式資料嗎？",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "自訂"
     },
+    "notEnoughCoinsTitle": "金幣不足",
+    "notEnoughCoinsMessage": "您目前的餘額不足以產生此圖片。",
     "modelTaglines": {
       "runwareFluxSchnell": "速度最快的模型",
       "runwareFluxKrea": "創意、風格化的結果",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "無法儲存",
       "shareFailedTitle": "無法分享",
-      "tryAgain": "請再試一次。"
+      "tryAgain": "請再試一次。",
+      "savedTitle": "已儲存",
+      "savedMessage": "圖片已儲存到您的相簿。",
+      "permissionTitle": "需要權限",
+      "permissionMessage": "請允許存取儲存空間，以便將圖片儲存到相簿。"
     },
     "result": {
       "complete": "全部完成"
@@ -498,12 +517,47 @@
       "save": "儲存",
       "share": "分享"
     },
+    "alerts": {
+      "savedTitle": "已儲存",
+      "savedMessage": "圖片已儲存到您的相簿。",
+      "permissionTitle": "需要權限",
+      "permissionMessage": "請允許存取儲存空間，以便將圖片儲存到相簿。",
+      "saveFailedTitle": "無法儲存",
+      "tryAgain": "請再試一次。"
+    },
     "accessibility": {
       "close": "關閉",
       "delete": "刪除圖片",
       "edit": "編輯圖片",
       "save": "儲存圖片",
       "share": "分享圖片"
+    }
+  },
+  "reportContent": {
+    "title": "檢舉 AI 內容",
+    "subtitle": "請告訴我們這則生成內容有什麼問題。",
+    "privateDisclosure": "提交後，被檢舉的內容將送交安全審查。",
+    "accessibilityLabel": "檢舉 AI 內容",
+    "reasons": {
+      "sexual": "色情或裸露內容",
+      "violence_self_harm": "暴力或自殘",
+      "hate_harassment": "仇恨或騷擾",
+      "child_safety": "兒童安全疑慮",
+      "scam_deceptive": "詐騙或欺騙性內容",
+      "other": "其他"
+    },
+    "errors": {
+      "reasonRequired": "提交前請先選擇原因。",
+      "submit": "無法提交檢舉，請再試一次。"
+    },
+    "success": {
+      "title": "謝謝您，您的檢舉已提交。",
+      "subtitle": "我們會利用檢舉來提升內容安全。"
+    },
+    "actions": {
+      "report": "檢舉",
+      "submit": "提交檢舉",
+      "done": "完成"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "認識一下",
       "titleHighlight": "Image Studio",
-      "subtitle": "用 AI 建立與編輯圖片——就在 ChatCloud 裡。",
-      "appName": "ChatCloud"
+      "subtitle": "用 AI 建立與編輯圖片——就在 Cloud AI 裡。"
     },
     "relaxView": {
       "title": "認識你的 AI",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "企業級 AI 解決方案",
       "description": "用為企業與團隊打造的尖端 AI 強化你的業務。",
       "stats": "深受超過 50 萬使用者信賴",
@@ -592,10 +645,10 @@
       "value": "最超值"
     },
     "pack": {
+      "creditsLabel": "{{credits}} 代幣",
       "tokensLabel": "{{credits}} 代幣",
       "defaultName": "方案 {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} 代幣"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "升級為進階版",
@@ -613,8 +666,28 @@
       "unknownError": "未知錯誤"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "需要進階版",
+    "upgrade": "升級",
+    "modelRequiredMessage": "此模型需要進階版。升級即可使用 GPT-5、Grok 4、Claude 等更多進階模型。",
+    "assistantsRequiredMessage": "助理功能需要進階版。升級即可使用健身、程式設計、寫作等專業 AI 助理。",
+    "assistantsTitle": "需要進階版",
+    "assistantsMessage": "助理功能需要進階版。升級即可使用健身、程式設計、寫作等專業 AI 助理。"
+  },
   "paywall": {
     "modelsHeadline": "GPT-5、Grok 4、Veo 3",
+    "close": "關閉付費頁面",
+    "unavailableTitle": "無法購買",
+    "unavailableMessage": "Android 帳款功能尚未設定。",
+    "restoreEmptyTitle": "找不到購買記錄",
+    "restoreEmptyMessage": "找不到此帳戶可還原的有效購買記錄。",
+    "restoreFailedTitle": "還原失敗",
+    "restoreFailedMessage": "目前無法還原購買。",
+    "productsUnavailableTitle": "沒有可用的方案",
+    "productsUnavailableMessage": "目前沒有可用的 Android 訂閱產品。",
+    "purchaseFailedTitle": "購買失敗",
+    "purchaseFailedMessage": "目前無法完成此購買。",
     "restore": "還原",
     "restoreRestoring": "正在還原…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "條款",
       "privacy": "隱私"
+    },
+    "premium": {
+      "headline": "所有高階人工智慧盡在一個計畫中",
+      "subtitleLine1": "聊天、編碼、建立與規劃",
+      "subtitleLine2": "具有先進的模型。",
+      "enableTrial": "啟用免費試用",
+      "annual": "年度",
+      "saveBadge": "節省 83%",
+      "year": "年",
+      "week": "週",
+      "termsOfUse": "使用條款",
+      "privacyPolicy": "隱私權政策"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "重新生成回應",
     "regenerateResponseHint": "生成新的回應",
     "copyCode": "複製程式碼",
+    "copied": "已複製",
     "image": "圖片",
     "loading": "載入中…",
     "loadingChat": "正在載入聊天...",
     "offlineBanner": "你目前為離線狀態，無法傳送訊息。",
+    "offlineError": "沒有網際網路連線。請檢查連線後再試一次。",
     "imagePickerErrorTitle": "圖片選取錯誤",
     "imagePickerErrorMessage": "無法存取你的照片。請重試。",
     "messageTooLong": "訊息太長 ({{length}})。上限為 {{limit}}。",
     "sendFailed": "傳送失敗。",
     "modelNoImageSupport": "所選模型不支援圖像。請選擇其他模型。",
     "voiceStartFailed": "無法開始語音。",
+    "voiceNoSpeechDetected": "未辨識到語音，請再試一次。",
     "emptyTitle": "需要我幫什麼？",
     "emptySubtitle": "開始和 AI 對話吧",
     "privateTitle": "私密聊天",
     "privateSubtitle": "此聊天不會顯示在聊天記錄中",
+    "startPrivateChat": "開始私密聊天",
+    "endPrivateChat": "結束私密聊天",
     "permissions": {
       "photosTitle": "需要相片權限",
       "photosMessage": "若要選擇圖片，需要相片存取權限。",
@@ -753,7 +843,19 @@
       "share": "分享",
       "regenerate": "重新生成",
       "retryFromHere": "從這裡重試",
+      "report": "檢舉",
       "cancel": "取消"
+    },
+    "markdown": {
+      "copy": "複製",
+      "copied": "已複製",
+      "table": "表格",
+      "watchVideo": "觀看影片",
+      "wikipedia": "維基百科",
+      "link": "連結",
+      "note": "附註",
+      "warning": "警告",
+      "tip": "提示"
     },
     "messageActionTitle": "訊息",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "規劃我的一天",
       "planDaySubtitle": "附上提升效率的小技巧"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "選擇一個主題",
       "title": "你想做什麼？",
@@ -846,81 +946,59 @@
     "library": "相簿"
   },
   "common": {
-    "new": "新",
-    "best": "最佳",
-    "cancel": "取消",
-    "save": "儲存",
-    "delete": "刪除",
-    "close": "關閉",
-    "allow": "允許",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "重試",
+    "cancel": "取消",
+    "allow": "允許",
+    "notNow": "暫時不要",
+    "openSettings": "開啟設定",
+    "close": "關閉",
+    "save": "儲存",
+    "tryAgain": "再試一次"
   },
   "rateUs": {
-    "title": "喜歡 ChatCloud 嗎？",
+    "title": "喜歡 Cloud AI 嗎？",
     "subtitle": "您的回饋幫助我們改進。您能在 App Store 上為我們評分嗎？",
     "rateNow": "立即評分",
     "maybeLater": "稍後再說",
     "dontAskAgain": "不再詢問"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "一次性優惠",
+    "discount": "{{percent}}% 折扣",
+    "subtitle": "此優惠不會再次顯示。",
     "badgeLine1": "獨家",
     "badgeLine2": "一次性優惠",
     "upgradeNow": "立即升級 {{price}}",
     "loadingPrice": "載入中...",
     "termsOfUse": "使用條款",
     "privacyPolicy": "隱私政策",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "無限使用",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "無限使用 GPT-4",
+      "geminiPro": "使用 Gemini Pro",
+      "grokInsights": "運用 Grok 獲得全新洞見",
+      "priorityAccess": "優先存取與更快回應"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "最超值",
+    "annualPremium": "年度進階版",
+    "oneTimePayment": "一次性付款",
+    "wasPrice": "原價",
+    "continue": "繼續",
+    "restore": "還原",
+    "terms": "條款",
+    "privacy": "隱私權",
+    "successTitle": "成功！",
+    "successMessage": "感謝您的購買！未來 12 個月盡情享受進階版。",
+    "errorTitle": "購買失敗",
+    "errorMessage": "發生問題，請再試一次。",
+    "restoreSuccessTitle": "已還原",
+    "restoreSuccessMessage": "您的購買已還原。",
+    "restoreErrorTitle": "還原失敗",
+    "restoreErrorMessage": "找不到可還原的購買記錄。",
+    "unavailableTitle": "無法購買",
+    "unavailableMessage": "Android 帳款功能尚未設定。"
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "神話"
         }
       }
+    },
+    "checkIn": {
+      "title": "領取每日金幣",
+      "subtitle": "每天回來，獎勵更豐厚。",
+      "cta": "簽到",
+      "claimed": "已領取！+{{amount}} 金幣",
+      "later": "稍後"
     }
+  },
+  "app": {
+    "version": "版本 {{version}}",
+    "offlineBanner": "您已離線",
+    "launch": {
+      "accessibilityLabel": "正在啟動 Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "隨時待命的 AI"
+    },
+    "errors": {
+      "modelsLoadTitle": "無法載入模型",
+      "modelsLoadMessage": "無法載入 AI 模型。應用程式將使用預設模型。請檢查您的網際網路連線。",
+      "modelsLoadTimeout": "載入模型的時間過長。應用程式將使用預設模型。請再試一次。",
+      "modelsLoadNetwork": "沒有網際網路連線。應用程式將使用預設模型。請檢查您的連線。",
+      "deviceIdTitle": "初始化錯誤",
+      "deviceIdMessage": "無法初始化裝置 ID。部分功能可能無法正常運作。",
+      "storageTitle": "儲存空間錯誤",
+      "storageMessage": "無法存取本機儲存空間。部分功能可能無法正常運作。",
+      "crashTitle": "發生問題。",
+      "crashSubtitle": "請再試一次。",
+      "crashLabel": "應用程式當機"
+    },
+    "proxyErrors": {
+      "genericTitle": "發生問題",
+      "genericMessage": "請再試一次。",
+      "rateLimitTitle": "要求過多",
+      "rateLimitMessage": "目前要求量較大，請稍後再試。",
+      "rateLimitRetryAfter": "目前要求量較大，請在約 {{seconds}} 秒後再試。",
+      "restrictedTitle": "受限制的內容",
+      "restrictedMessage": "此要求已被安全篩選器封鎖。",
+      "insufficientCoinsTitle": "金幣不足",
+      "insufficientCoinsMessage": "您目前的餘額不足以完成此要求。",
+      "imageUnavailableTitle": "圖片無法使用",
+      "imageUnavailableMessage": "產生的圖片檔案暫時無法使用，請再試一次。",
+      "authorizationTitle": "授權問題",
+      "authorizationMessage": "無法驗證您的帳戶，請再試一次。",
+      "serverTitle": "伺服器故障",
+      "serverMessage": "伺服器發生問題，請稍後再試。",
+      "timeoutTitle": "處理時間過長",
+      "timeoutMessage": "要求逾時，請再試一次。",
+      "networkTitle": "沒有連線",
+      "networkMessage": "沒有網際網路連線。請檢查連線後再試一次。",
+      "requestTitle": "要求問題",
+      "requestMessage": "您的要求發生問題，請再試一次。"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "啟用進階版",
+    "activateMessage": "要啟用審查員進階版嗎？",
+    "activateAction": "啟用",
+    "deactivateTitle": "停用進階版",
+    "deactivateMessage": "要停用審查員進階版嗎？",
+    "deactivateAction": "停用"
   },
   "push": {
     "dailyReward": {
       "title": "每日獎勵",
       "body": "別錯過每日金幣 — 請在午夜前領取。"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "別錯過你的每日金幣",
+      "body": "我們每天只發一則提醒，幫你維持連續簽到、讓金幣持續累積。絕無騷擾，隨時可以關閉。",
+      "enable": "開啟提醒",
+      "skip": "暫不開啟"
     }
   }
 }

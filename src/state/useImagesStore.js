@@ -9,6 +9,29 @@ import { v4 as uuidv4 } from 'uuid';
 import { perfEnd, perfStart } from '../lib/perfTrace';
 // Advanced mode helper functions are now handled by createRunwareImages API
 
+let imagesHydrationPromise = null;
+let imagesRepairPromise = null;
+let imagesRepairCompleted = false;
+
+function normalizePersistedJobs(jobs) {
+  return (jobs || []).filter(Boolean).map(j => ({
+    id: j.id,
+    chatId: j.chatId ?? null,
+    prompt: j.prompt || '',
+    model: j.model || 'runware-flux-schnell',
+    mode: j.mode || 'text2img',
+    size: j.size || '1024x1024',
+    n: j.n || 1,
+    status: j.status || 'done',
+    images: Array.isArray(j.images) ? j.images : [],
+    error: j.error || null,
+    createdAt: j.createdAt || Date.now(),
+    updatedAt: j.updatedAt || j.createdAt || Date.now(),
+  })).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+}
+
+const yieldToUi = () => new Promise(resolve => setTimeout(resolve, 0));
+
 // Advanced modes now use createRunwareImages API directly
 
 function buildImageGenerationUserError(error, fallbackMessage) {
@@ -36,65 +59,101 @@ export const useImagesStore = create((set, get) => ({
   hydrated: false,
   
   hydrate: async () => {
-    perfStart('images_store.hydrate');
-    // Clean up corrupted cache files on startup
-    try {
-      await cleanupCorruptedCache();
-    } catch (error) {
-      // Silent cleanup failure
-    }
-    
-    const jobs = await Storage.loadImages();
-    
-    // normalize on load and validate image files
-    const normalized = (jobs || []).filter(Boolean).map(j => ({
-      id: j.id,
-      chatId: j.chatId ?? null,
-      prompt: j.prompt || '',
-      model: j.model || 'runware-flux-schnell',
-      mode: j.mode || 'text2img',
-      size: j.size || '1024x1024',
-      n: j.n || 1,
-      status: j.status || 'done',
-      images: Array.isArray(j.images) ? j.images : [],
-      error: j.error || null,
-      createdAt: j.createdAt || Date.now(),
-      updatedAt: j.updatedAt || j.createdAt || Date.now(),
-    }));
-    
-    // Validate and fix broken image URLs
-    for (const job of normalized) {
-      if (job.images && job.images.length > 0) {
-        for (const img of job.images) {
-          if (img.url && img.url.startsWith('file://')) {
+    if (get().hydrated) return;
+    if (imagesHydrationPromise) return imagesHydrationPromise;
+
+    imagesHydrationPromise = (async () => {
+      perfStart('images_store.hydrate');
+      const normalized = normalizePersistedJobs(await Storage.loadImages());
+      set({ jobs: normalized, hydrated: true });
+      perfEnd('images_store.hydrate', {
+        jobs: normalized.length,
+        images: normalized.reduce(
+          (sum, job) => sum + (job?.images?.length || 0),
+          0,
+        ),
+      });
+
+    })().finally(() => {
+      imagesHydrationPromise = null;
+    });
+
+    return imagesHydrationPromise;
+  },
+
+  repairImageCache: async () => {
+    await get().hydrate();
+    if (imagesRepairCompleted) return;
+    if (imagesRepairPromise) return imagesRepairPromise;
+
+    const sourceJobs = get().jobs;
+    imagesRepairPromise = (async () => {
+      try {
+        await cleanupCorruptedCache();
+      } catch {}
+
+      const repaired = sourceJobs.map(job => ({
+        ...job,
+        images: (job.images || []).map(image => ({ ...image })),
+      }));
+      let checked = 0;
+      let changed = false;
+
+      for (const job of repaired) {
+        for (const image of job.images) {
+          const isLocal = image.url?.startsWith('file://');
+          let localIsValid = !isLocal;
+
+          if (isLocal) {
             try {
-              const filePath = img.url.replace('file://', '');
+              const filePath = image.url.slice('file://'.length);
               const exists = await RNFS.exists(filePath);
-              if (!exists || (await RNFS.stat(filePath)).size === 0) {
-                // File is missing or corrupted, try to re-cache from original URL
-                if (img.originalUrl && /^https?:\/\//i.test(img.originalUrl)) {
-                  const newUrl = await cacheToFile(img.originalUrl);
-                  if (newUrl && newUrl !== img.originalUrl) {
-                    img.url = newUrl;
-                  }
-                }
-              }
-            } catch (error) {
+              localIsValid =
+                exists && Number((await RNFS.stat(filePath)).size) > 0;
+            } catch {
+              localIsValid = false;
             }
           }
+
+          const needsRepair = image.needsCacheRepair || (isLocal && !localIsValid);
+          if (
+            needsRepair &&
+            image.originalUrl &&
+            /^https?:\/\//i.test(image.originalUrl)
+          ) {
+            let recached = image.originalUrl;
+            try {
+              recached = await cacheToFile(image.originalUrl);
+            } catch {}
+            const cacheRestored = recached?.startsWith('file://');
+            image.url = cacheRestored ? recached : image.originalUrl;
+            image.needsCacheRepair = !cacheRestored;
+            changed = true;
+          } else if (localIsValid && image.needsCacheRepair) {
+            delete image.needsCacheRepair;
+            changed = true;
+          }
+
+          checked += 1;
+          if (checked % 6 === 0) await yieldToUi();
         }
       }
-    }
-    
-    normalized.sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
-    set({ jobs: normalized, hydrated: true });
-    
-    // Save the updated jobs with fixed URLs
-    Storage.saveImages(normalized);
-    perfEnd('images_store.hydrate', {
-      jobs: normalized.length,
-      images: normalized.reduce((sum, job) => sum + (job?.images?.length || 0), 0),
+
+      const sameRevision = get().jobs === sourceJobs;
+      if (changed && sameRevision) {
+        set({ jobs: repaired });
+        await Storage.saveImages(repaired);
+      }
+      imagesRepairCompleted =
+        sameRevision &&
+        !repaired.some(job =>
+          (job.images || []).some(image => image.needsCacheRepair),
+        );
+    })().finally(() => {
+      imagesRepairPromise = null;
     });
+
+    return imagesRepairPromise;
   },
 
   // Auto-save helper
@@ -130,6 +189,10 @@ export const useImagesStore = create((set, get) => ({
     outputFormat='JPG',
     outputQuality=95,
   }) => {
+    // Metadata hydration is single-flight and cheap. Finish it before creating
+    // and persisting a charged job so delayed startup work cannot overwrite the
+    // new job or the user's existing gallery.
+    await get().hydrate();
     
     const id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const job = { 
@@ -410,6 +473,7 @@ export const useImagesStore = create((set, get) => ({
 
   // Helper to ingest results from advanced generation modes
   _ingestResults: async (data, { mode, input }) => {
+    await get().hydrate();
     const { jobId, ...restInput } = input || {};
     const id = jobId || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const job = {

@@ -11,7 +11,12 @@
     "searchHint": "Taip untuk tapis model tersedia",
     "modelLabel": "Model {{name}}",
     "selectHint": "Pilih model {{name}}",
-    "currentlySelected": "Sedang dipilih"
+    "currentlySelected": "Sedang dipilih",
+    "genericModel": "Model {{provider}}",
+    "badges": {
+      "new": "BAHARU",
+      "best": "TERBAIK"
+    }
   },
   "models": {
     "gpt-4o": "Model AI paling berkuasa",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Pembantu",
+    "defaultTitle": "Pembantu",
+    "errorTitle": "Sesuatu tidak kena",
+    "errorMessage": "Tidak dapat memulakan pembantu ini.",
+    "noAssistants": "Tiada pembantu ditemui dalam kategori ini.",
+    "selectAssistantHint": "Buka pemilih pembantu",
     "subtitle": "Pembantu AI terpilih untuk pengaturcaraan, penulisan, analisis, perancangan dan banyak lagi.",
     "searchPlaceholder": "Cari pembantu…",
     "useAssistant": "Guna Pembantu",
@@ -254,19 +264,20 @@
     "search": "Cari",
     "clearSearch": "Kosongkan carian",
     "noChatsYet": "Belum ada sembang",
+    "noResults": "Belum ada sembang",
     "startFirstConversation": "Mulakan perbualan pertama anda.",
     "startChat": "Mulakan sembang",
+    "startNewChat": "Mulakan sembang",
     "errorLoadingHistory": "Ralat memuat sejarah",
+    "loading": "Memuatkan sejarah...",
     "renameChat": "Tukar nama sembang",
     "enterNewTitle": "Masukkan nama baharu",
     "deleteChat": "Padam sembang?",
     "deleteChatMessage": "\"{{title}}\" akan dipadam.",
     "rename": "Tukar nama",
     "unpin": "Nyah pin",
-    "pin": "Pin",
-    "untitled": "Tiada tajuk",
-    "noResults": "Belum ada sembang",
-    "startNewChat": "Mulakan sembang"
+    "pin": "Semat",
+    "untitled": "Tiada tajuk"
   },
   "settings": {
     "title": "Tetapan",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium Aktif",
-        "subtitle": "Terima kasih kerana menyokong ChatCloud"
+        "subtitle": "Terima kasih kerana menyokong Cloud AI"
       },
       "restore": {
         "title": "Pulihkan pembelian",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Tidak dapat membuka pautan ini sekarang.",
       "restoreSuccessTitle": "Berjaya dipulihkan",
       "restoreSuccessMessage": "Pembelian anda telah dipulihkan.",
+      "restoreEmptyTitle": "Tiada pembelian ditemui",
+      "restoreEmptyMessage": "Kami tidak menemui pembelian aktif untuk dipulihkan bagi akaun ini.",
       "restoreErrorTitle": "Pulih gagal",
       "restoreErrorMessage": "Tidak dapat memulihkan pembelian sekarang.",
       "resetConfirmTitle": "Tetap semula data aplikasi?",
@@ -372,7 +385,7 @@
     "generating": "Menjana…"
   },
   "editImage": {
-    "headerTitle": "Edit",
+    "headerTitle": "Sunting",
     "chooseStyle": "Pilih gaya",
     "aspectRatio": "Nisbah",
     "starterPrompts": {
@@ -430,7 +443,7 @@
         "name": "Pastel"
       },
       "neon_glow": {
-        "name": "Neon Glow"
+        "name": "Cahaya Neon"
       },
       "epic_landscape": {
         "name": "Lanskap Epik"
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Tersuai"
     },
+    "notEnoughCoinsTitle": "Syiling tidak mencukupi",
+    "notEnoughCoinsMessage": "Baki semasa anda terlalu rendah untuk imej ini.",
     "modelTaglines": {
       "runwareFluxSchnell": "Model paling pantas",
       "runwareFluxKrea": "Hasil kreatif dan bergaya",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Gagal simpan",
       "shareFailedTitle": "Gagal kongsi",
-      "tryAgain": "Sila cuba lagi."
+      "tryAgain": "Sila cuba lagi.",
+      "savedTitle": "Disimpan",
+      "savedMessage": "Imej disimpan ke galeri anda.",
+      "permissionTitle": "Kebenaran diperlukan",
+      "permissionMessage": "Benarkan akses storan untuk menyimpan imej ke galeri anda."
     },
     "result": {
       "complete": "Selesai"
@@ -494,9 +513,17 @@
   "imageViewer": {
     "actions": {
       "delete": "Padam",
-      "edit": "Edit",
+      "edit": "Sunting",
       "save": "Simpan",
       "share": "Kongsi"
+    },
+    "alerts": {
+      "savedTitle": "Disimpan",
+      "savedMessage": "Imej disimpan ke galeri anda.",
+      "permissionTitle": "Kebenaran diperlukan",
+      "permissionMessage": "Benarkan akses storan untuk menyimpan imej ke galeri anda.",
+      "saveFailedTitle": "Tidak dapat menyimpan",
+      "tryAgain": "Sila cuba lagi."
     },
     "accessibility": {
       "close": "Tutup",
@@ -504,6 +531,33 @@
       "edit": "Edit imej",
       "save": "Simpan imej",
       "share": "Kongsi imej"
+    }
+  },
+  "reportContent": {
+    "title": "Laporkan kandungan AI",
+    "subtitle": "Beritahu kami apa yang tidak kena dengan kandungan yang dijana ini.",
+    "privateDisclosure": "Penghantaran akan menghantar kandungan yang dilaporkan ini untuk semakan keselamatan.",
+    "accessibilityLabel": "Laporkan kandungan AI",
+    "reasons": {
+      "sexual": "Kandungan seksual atau berbogel",
+      "violence_self_harm": "Keganasan atau mencederakan diri",
+      "hate_harassment": "Kebencian atau gangguan",
+      "child_safety": "Kebimbangan keselamatan kanak-kanak",
+      "scam_deceptive": "Penipuan atau kandungan mengelirukan",
+      "other": "Lain-lain"
+    },
+    "errors": {
+      "reasonRequired": "Sila pilih sebab sebelum menghantar.",
+      "submit": "Tidak dapat menghantar laporan. Sila cuba lagi."
+    },
+    "success": {
+      "title": "Terima kasih. Laporan anda telah dihantar.",
+      "subtitle": "Kami akan menggunakan laporan untuk meningkatkan keselamatan kandungan."
+    },
+    "actions": {
+      "report": "Laporkan",
+      "submit": "Hantar Laporan",
+      "done": "Selesai"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Kenali",
       "titleHighlight": "Image Studio",
-      "subtitle": "Cipta & edit imej dengan AI — terus dalam ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Cipta & edit imej dengan AI — terus dalam Cloud AI."
     },
     "relaxView": {
       "title": "Temui AI anda",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "SOLUSI AI TAHAP ENTERPRISE",
       "description": "Kuasa perniagaan anda dengan teknologi AI termaju untuk profesional dan pasukan.",
       "stats": "Dipercayai oleh 500k+ pengguna",
@@ -592,10 +645,10 @@
       "value": "Paling Berbaloi"
     },
     "pack": {
+      "creditsLabel": "{{credits}} Credit",
       "tokensLabel": "{{credits}} Credit",
       "defaultName": "Pek {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} Credit"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Jadi Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Ralat tidak diketahui"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Diperlukan",
+    "upgrade": "Naik taraf",
+    "modelRequiredMessage": "Model ini memerlukan Premium. Naik taraf untuk mengakses GPT-5, Grok 4, Claude dan model lebih canggih.",
+    "assistantsRequiredMessage": "Pembantu memerlukan Premium. Naik taraf untuk mengakses pembantu AI khusus untuk kecergasan, pengekodan, penulisan dan banyak lagi.",
+    "assistantsTitle": "Premium Diperlukan",
+    "assistantsMessage": "Pembantu memerlukan Premium. Naik taraf untuk mengakses pembantu AI khusus untuk kecergasan, pengekodan, penulisan dan banyak lagi."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Tutup skrin pembayaran",
+    "unavailableTitle": "Pembelian tidak tersedia",
+    "unavailableMessage": "Pengebilan Android belum dikonfigurasikan.",
+    "restoreEmptyTitle": "Tiada pembelian ditemui",
+    "restoreEmptyMessage": "Kami tidak menemui pembelian aktif untuk dipulihkan bagi akaun ini.",
+    "restoreFailedTitle": "Pemulihan gagal",
+    "restoreFailedMessage": "Tidak dapat memulihkan pembelian sekarang.",
+    "productsUnavailableTitle": "Tiada pelan tersedia",
+    "productsUnavailableMessage": "Tiada produk langganan Android tersedia sekarang.",
+    "purchaseFailedTitle": "Pembelian gagal",
+    "purchaseFailedMessage": "Tidak dapat melengkapkan pembelian ini sekarang.",
     "restore": "Pulihkan",
     "restoreRestoring": "Sedang dipulihkan…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Terma",
       "privacy": "Privasi"
+    },
+    "premium": {
+      "headline": "Semua AI premium dalam satu pelan",
+      "subtitleLine1": "Sembang, kod, buat dan rancang",
+      "subtitleLine2": "dengan model canggih.",
+      "enableTrial": "Dayakan percubaan percuma",
+      "annual": "Tahunan",
+      "saveBadge": "Jimat 83%",
+      "year": "tahun",
+      "week": "minggu",
+      "termsOfUse": "Syarat Penggunaan",
+      "privacyPolicy": "Dasar Privasi"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Jana semula jawapan",
     "regenerateResponseHint": "Jana jawapan baharu",
     "copyCode": "Salin kod",
+    "copied": "Disalin",
     "image": "imej",
     "loading": "Memuatkan…",
     "loadingChat": "Memuatkan sembang...",
     "offlineBanner": "Anda luar talian. Mesej tidak boleh dihantar.",
+    "offlineError": "Tiada sambungan internet. Sila semak sambungan anda dan cuba lagi.",
     "imagePickerErrorTitle": "Ralat pemilih imej",
     "imagePickerErrorMessage": "Tidak dapat akses foto anda. Cuba lagi.",
     "messageTooLong": "Mesej terlalu panjang ({{length}}). Had ialah {{limit}}.",
     "sendFailed": "Gagal dihantar.",
     "modelNoImageSupport": "Model yang dipilih tidak menyokong imej. Sila pilih model lain.",
     "voiceStartFailed": "Tidak dapat mulakan suara.",
+    "voiceNoSpeechDetected": "Tiada suara dikenal pasti. Sila cuba lagi.",
     "emptyTitle": "Nak saya bantu apa?",
     "emptySubtitle": "Mulakan perbualan dengan AI",
     "privateTitle": "Sembang Peribadi",
     "privateSubtitle": "Sembang ini tidak akan muncul dalam sejarah",
+    "startPrivateChat": "Mulakan sembang peribadi",
+    "endPrivateChat": "Tamatkan sembang peribadi",
     "permissions": {
       "photosTitle": "Perlu kebenaran foto",
       "photosMessage": "Akses foto diperlukan untuk pilih imej.",
@@ -753,7 +843,19 @@
       "share": "Kongsi",
       "regenerate": "Jana semula",
       "retryFromHere": "Cuba lagi dari sini",
+      "report": "Laporkan",
       "cancel": "Batal"
+    },
+    "markdown": {
+      "copy": "Salin",
+      "copied": "Disalin",
+      "table": "JADUAL",
+      "watchVideo": "Tonton Video",
+      "wikipedia": "Wikipedia",
+      "link": "Pautan",
+      "note": "Nota",
+      "warning": "Amaran",
+      "tip": "Petua"
     },
     "messageActionTitle": "Mesej",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Rancang hari saya",
       "planDaySubtitle": "dengan tip produktiviti"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Pilih topik",
       "title": "nak buat apa?",
@@ -846,81 +946,59 @@
     "library": "Galeri"
   },
   "common": {
-    "new": "BAHARU",
-    "best": "TERBAIK",
-    "cancel": "Batal",
-    "save": "Simpan",
-    "delete": "Padam",
-    "close": "Tutup",
-    "allow": "Benarkan",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Cuba semula",
+    "cancel": "Batal",
+    "allow": "Benarkan",
+    "notNow": "Bukan sekarang",
+    "openSettings": "Buka Tetapan",
+    "close": "Tutup",
+    "save": "Simpan",
+    "tryAgain": "Cuba Lagi"
   },
   "rateUs": {
-    "title": "Menikmati ChatCloud?",
+    "title": "Menikmati Cloud AI?",
     "subtitle": "Maklum balas anda membantu kami memperbaiki. Bolehkah anda menilai kami di App Store?",
     "rateNow": "Nilaikan sekarang",
     "maybeLater": "Mungkin kemudian",
     "dontAskAgain": "Jangan tanya lagi"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Tawaran Sekali Sahaja",
+    "discount": "DISKAUN {{percent}}%",
+    "subtitle": "Anda tidak akan melihat tawaran ini lagi.",
     "badgeLine1": "Eksklusif",
     "badgeLine2": "Tawaran sekali",
     "upgradeNow": "Naik taraf sekarang untuk {{price}}",
     "loadingPrice": "Memuatkan...",
     "termsOfUse": "Terma Penggunaan",
     "privacyPolicy": "Dasar Privasi",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Akses tanpa had kepada",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Akses tanpa had kepada GPT-4",
+      "geminiPro": "Akses kepada Gemini Pro",
+      "grokInsights": "Gunakan Grok untuk pandangan baharu",
+      "priorityAccess": "Akses keutamaan & respons lebih pantas"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Nilai Terbaik",
+    "annualPremium": "Premium Tahunan",
+    "oneTimePayment": "Bayaran sekali sahaja",
+    "wasPrice": "sebelum ini",
+    "continue": "Teruskan",
+    "restore": "Pulihkan",
+    "terms": "Terma",
+    "privacy": "Privasi",
+    "successTitle": "Berjaya!",
+    "successMessage": "Terima kasih atas pembelian anda! Nikmati akses premium untuk 12 bulan akan datang.",
+    "errorTitle": "Pembelian Gagal",
+    "errorMessage": "Sesuatu tidak kena. Sila cuba lagi.",
+    "restoreSuccessTitle": "Dipulihkan",
+    "restoreSuccessMessage": "Pembelian anda telah dipulihkan.",
+    "restoreErrorTitle": "Pemulihan Gagal",
+    "restoreErrorMessage": "Tiada pembelian ditemui untuk dipulihkan.",
+    "unavailableTitle": "Pembelian tidak tersedia",
+    "unavailableMessage": "Pengebilan Android belum dikonfigurasikan."
   },
   "rewards": {
     "header": {
@@ -1033,15 +1111,83 @@
           "lucky": "BERTUAH",
           "pro": "PRO",
           "elite": "ELIT",
-          "mythic": "MYTHIC"
+          "mythic": "MITOS"
         }
       }
+    },
+    "checkIn": {
+      "title": "Tuntut syiling harian anda",
+      "subtitle": "Kembali setiap hari — ganjaran makin besar.",
+      "cta": "Daftar masuk",
+      "claimed": "Diterima! +{{amount}} syiling",
+      "later": "Nanti"
     }
+  },
+  "app": {
+    "version": "Versi {{version}}",
+    "offlineBanner": "Anda di luar talian",
+    "launch": {
+      "accessibilityLabel": "Memulakan Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, sedia bila-bila masa anda perlukan"
+    },
+    "errors": {
+      "modelsLoadTitle": "Gagal Memuatkan Model",
+      "modelsLoadMessage": "Tidak dapat memuatkan model AI. Aplikasi akan menggunakan model lalai. Sila semak sambungan internet anda.",
+      "modelsLoadTimeout": "Memuatkan model mengambil masa terlalu lama. Aplikasi akan menggunakan model lalai. Sila cuba lagi.",
+      "modelsLoadNetwork": "Tiada sambungan internet. Aplikasi akan menggunakan model lalai. Sila semak sambungan anda.",
+      "deviceIdTitle": "Ralat Pemulaan",
+      "deviceIdMessage": "Gagal memulakan ID peranti. Sesetengah ciri mungkin tidak berfungsi dengan betul.",
+      "storageTitle": "Ralat Storan",
+      "storageMessage": "Tidak dapat mengakses storan setempat. Sesetengah ciri mungkin tidak berfungsi dengan betul.",
+      "crashTitle": "Sesuatu tidak kena.",
+      "crashSubtitle": "Sila cuba lagi.",
+      "crashLabel": "Aplikasi ranap"
+    },
+    "proxyErrors": {
+      "genericTitle": "Sesuatu tidak kena",
+      "genericMessage": "Sila cuba lagi.",
+      "rateLimitTitle": "Terlalu banyak permintaan",
+      "rateLimitMessage": "Kami sedang mengendalikan banyak permintaan. Sila cuba lagi sebentar nanti.",
+      "rateLimitRetryAfter": "Kami sedang mengendalikan banyak permintaan. Sila cuba lagi dalam kira-kira {{seconds}} saat.",
+      "restrictedTitle": "Kandungan terhad",
+      "restrictedMessage": "Permintaan ini disekat oleh penapis keselamatan.",
+      "insufficientCoinsTitle": "Syiling tidak mencukupi",
+      "insufficientCoinsMessage": "Baki semasa anda terlalu rendah untuk permintaan ini.",
+      "imageUnavailableTitle": "Imej tidak tersedia",
+      "imageUnavailableMessage": "Fail imej yang dijana tidak tersedia buat sementara. Sila cuba lagi.",
+      "authorizationTitle": "Masalah kebenaran",
+      "authorizationMessage": "Kami tidak dapat mengesahkan akaun anda. Sila cuba lagi.",
+      "serverTitle": "Gangguan pelayan",
+      "serverMessage": "Pelayan kami menghadapi masalah. Sila cuba lagi sebentar nanti.",
+      "timeoutTitle": "Mengambil masa terlalu lama",
+      "timeoutMessage": "Permintaan tamat masa. Sila cuba lagi.",
+      "networkTitle": "Tiada sambungan",
+      "networkMessage": "Tiada sambungan internet. Sila semak sambungan anda dan cuba lagi.",
+      "requestTitle": "Masalah permintaan",
+      "requestMessage": "Sesuatu tidak kena dengan permintaan anda. Sila cuba lagi."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktifkan Premium",
+    "activateMessage": "Adakah anda mahu mengaktifkan premium penyemak?",
+    "activateAction": "Aktifkan",
+    "deactivateTitle": "Nyahaktifkan Premium",
+    "deactivateMessage": "Adakah anda mahu menyahaktifkan premium penyemak?",
+    "deactivateAction": "Nyahaktifkan"
   },
   "push": {
     "dailyReward": {
       "title": "Ganjaran harian",
       "body": "Jangan terlepas syiling harian anda — tuntut sebelum tengah malam."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Jangan lepaskan syiling harian anda",
+      "body": "Kami menghantar satu peringatan sehari supaya rentetan anda kekal dan syiling terus bertambah. Tiada spam, dan anda boleh mematikannya bila-bila masa.",
+      "enable": "Hidupkan peringatan",
+      "skip": "Bukan sekarang"
     }
   }
 }

@@ -6,12 +6,13 @@ import {
   Modal,
   Image as RNImage,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import { Share } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import { useImagesStore } from '../../state/useImagesStore';
-import { toLocalPath } from '../../lib/imageDownloader';
+import { saveImageToGallery } from '../../lib/saveImageToGallery';
 import SvgIcon from '../SvgIcon';
 import { useTranslation } from 'react-i18next';
 import ReportContentModal from '../reporting/ReportContentModal';
@@ -117,12 +118,30 @@ const ImageViewer = memo(({
   }, [imageUri]);
 
   const handleDownload = useCallback(async () => {
-    try {
-      const local = await toLocalPath(imageUri);
-      // Share only the local URL so targets receive a single attachment
-      await Share.share({ url: local });
-    } catch (e) {}
-  }, [imageUri]);
+    const result = await saveImageToGallery(imageUri);
+    if (result.ok) {
+      Alert.alert(
+        t('imageViewer.alerts.savedTitle', { defaultValue: 'Saved' }),
+        t('imageViewer.alerts.savedMessage', {
+          defaultValue: 'Image saved to your gallery.',
+        }),
+      );
+      return;
+    }
+    if (result.reason === 'permission-denied') {
+      Alert.alert(
+        t('imageViewer.alerts.permissionTitle', { defaultValue: 'Permission needed' }),
+        t('imageViewer.alerts.permissionMessage', {
+          defaultValue: 'Allow storage access to save images to your gallery.',
+        }),
+      );
+      return;
+    }
+    Alert.alert(
+      t('imageViewer.alerts.saveFailedTitle', { defaultValue: 'Could not save' }),
+      t('imageViewer.alerts.tryAgain', { defaultValue: 'Please try again.' }),
+    );
+  }, [imageUri, t]);
 
   if (!visible || !imageUri) return null;
 
@@ -232,11 +251,13 @@ const ImageViewer = memo(({
                   ]}
                   onPress={() => setReportVisible(true)}
                   hitSlop={10}
-                  accessibilityLabel="Report AI content"
+                  accessibilityLabel={t('reportContent.accessibilityLabel')}
                 >
                   <SvgIcon name="flag" size={22} color="rgba(255,255,255,0.92)" />
                 </Pressable>
-                <Text style={styles.actionLabel}>Report</Text>
+                <Text style={styles.actionLabel}>
+                  {t('reportContent.actions.report')}
+                </Text>
               </View>
             </View>
           </View>

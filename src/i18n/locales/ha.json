@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Zaɓi samfurin",
+    "searchPlaceholder": "Bincika samfuran...",
+    "noModelsFound": "Ba a sami samfura ba",
+    "noModelsAvailable": "Babu samfura da akwai",
+    "currentModel": "Samfurin yanzu: {{name}}. Matsa don canza samfuri.",
+    "openHint": "Yana buɗe menu na zaɓin samfuri",
+    "closeLabel": "Rufe mai zaɓin ƙira",
+    "searchLabel": "Samfuran bincike",
+    "searchHint": "Buga don tace samfuran samuwa",
+    "modelLabel": "Samfurin P000 {{name}}",
+    "selectHint": "Zaɓi samfurin {{name}}",
+    "currentlySelected": "A halin yanzu zaɓi samfurin",
+    "genericModel": "Samfurin P000 {{provider}}",
+    "badges": {
+      "new": "SABO",
+      "best": "KYAU"
+    }
+  },
+  "models": {
+    "gpt-4o": "Mafi iko AI model",
+    "gpt-4o-mini": "Yi sauri don ayyukan yau da kullun",
+    "gpt-5": "Mafi ƙarfi duka-manufa AI",
+    "gpt-5-chat-latest": "An inganta don taɗi da tattaunawa",
+    "gpt-5-mini": "Mai sauri kuma abin dogaro GPT-5",
+    "gpt-5.4-nano": "Samfurin haske don ayyuka masu sauƙi",
+    "o4-mini": "Ingantacciyar hanyar tunani",
+    "gpt-4.1-mini": "Karamin, iyawa GPT-4.1",
+    "claude-3-haiku": "Mai sauri da mai da hankali Anthropic AI",
+    "claude-3.7-sonnet": "Tabbataccen tunani ta Anthropic",
+    "gemini-2.5-Flash": "Mafi kyawun samfurin Google",
+    "gemini-2.5-flash": "Mafi kyawun samfurin Google",
+    "gemini-2.0-flash": "Google AI mai sauri kuma daidai"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Mafi iko AI model",
+    "fast_everyday": "Yi sauri don ayyukan yau da kullun",
+    "fast_reasoning": "Samfurin sauri tare da kyakkyawan dalili",
+    "great_reasoning": "Samfurin tunani na ci gaba",
+    "coding_reasoning": "Advanced coding da tunani",
+    "better_coding": "Mafi kyau don yin rikodin da tunani",
+    "best_overall": "Mafi kyawun ƙirar AI mai kewaye",
+    "best_google": "Mafi kyawun samfurin Google",
+    "best_xai": "xAI mafi ƙarfi samfurin",
+    "creative_focus": "Mai girma don rubutun ƙirƙira",
+    "code_helper": "Mai girma don taimakon coding",
+    "chat_focus": "An inganta don yin hira",
+    "long_context": "Mai girma don dogon mahallin",
+    "budget_friendly": "Samfurin AI mai dacewa da kasafin kuɗi",
+    "ultra_fast": "Amsoshi masu saurin gaske",
+    "safe_default": "Zabin tsoho mai aminci",
+    "multilingual": "Ƙarfafan tallafin harsuna da yawa",
+    "vision_strong": "Mai girma tare da hotuna da hangen nesa",
+    "data_analysis": "Yayi kyau don nazarin bayanai",
+    "structured_tasks": "Yana da kyau ga ayyukan da aka tsara",
+    "everyday_helper": "Samfurin mataimaka na yau da kullun",
+    "concise_answers": "Takaitattun amsoshi a takaice",
+    "detailed_answers": "Cikakken amsoshi mataki-mataki",
+    "experimental": "Gwaji samfurin gaba-gen",
+    "reliable_classic": "Amintaccen samfurin gargajiya",
+    "lightweight": "Samfurin mai nauyi, mai rahusa",
+    "chatty_personal": "Ƙarin abokantaka da na sirri",
+    "pro_users": "Mafi kyau ga masu amfani da wutar lantarki",
+    "research_helper": "Yayi kyau don bincike da bayanin kula",
+    "reasoning_strong": "Samfurin tunani na ci gaba"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Dan Adam",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Sauran"
+  },
+  "navigation": {
+    "chat": "Sabuwar Taɗi",
+    "history": "Tarihi",
+    "rewards": "Ladan Kullum",
+    "assistants": "Mataimaka",
+    "imagesStudio": "Image Studio",
+    "settings": "Saituna",
+    "recentChats": "Taɗi na baya-bayan nan",
+    "proFeatures": "Pro fasali",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Sami Siffofin Pro",
+      "subtitle": "Duk Abubuwan AI"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Ƙirƙira, tacewa, da buga kadarorin gani a wuri ɗaya.",
+    "cta": "Bude"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Zaɓi hotuna",
+    "exitSelectionMode": "Fita yanayin zaɓi",
+    "selectAll": "Zaɓi Duk",
+    "noImagesYet": "Babu hotuna tukuna",
+    "describeImageHint": "Bayyana hotonku a ƙasa kuma danna Ƙirƙira.",
+    "generatedImagesGallery": "Tasirin hotuna da aka ƙirƙira",
+    "describeImagePlaceholder": "Bayyana hoton da kuke so…",
+    "deleteConfirmTitle": "Share Hotuna",
+    "deleteConfirmMessage": "Shin kun tabbata kuna son share hotunan da aka zaɓa? Ba za a iya soke wannan aikin ba.",
+    "cancel": "Soke",
+    "delete": "Share",
+    "generate": "Ƙirƙira",
+    "generating": "Ƙirƙirar…",
+    "latest": "Bugawa",
+    "insertToChat": "Saka don yin hira",
+    "pleaseWait": "Da fatan za a jira…",
+    "processing": "Ana aiwatarwa...",
+    "tapToUploadImage": "Matsa don loda hoto",
+    "camera": "Loda Hotuna",
+    "library": "Laburare",
+    "enterPrompt": "Da fatan za a shigar da faɗakarwa don tsara rubutu-zuwa-hoto",
+    "openInBrowser": "Bude a browser",
+    "makeVariations": "Yi bambance-bambance",
+    "deleteAllFromGeneration": "Share duk daga wannan tsarar",
+    "imageOptionsTitle": "Zaɓuɓɓukan Hoto",
+    "imageOptionsMessage": "Me kuke so kuyi da wannan hoton?",
+    "insertMarkdownHeader": "Ga hoton don:",
+    "variationSuffix": "- bambancin hoton da ya gabata",
+    "selectedCount": "zaba",
+    "selectedCount_one": "zaba",
+    "selectedCount_other": "zaba",
+    "imageDescriptionInput": "Shigar da bayanin hoto",
+    "imageDescriptionHint": "Shigar da bayanin hoton da kake son samarwa",
+    "openModelSettings": "Buɗe saitunan ƙira",
+    "modelSettingsHint": "Matsa don canza samfuri da saituna",
+    "openPhotoGallery": "Bude gidan hoton hoto",
+    "clearInput": "Share shigarwar",
+    "generatedImage": "Hoton da aka ƙirƙira",
+    "autoSelectedModel": "Zaɓa ta atomatik {{model}} don yanayin {{mode}}",
+    "deleteSelectedConfirmTitle": "Share hotuna",
+    "deleteSelectedConfirmMessage": "Shin kun tabbata kuna son share hotuna? Ba za a iya soke wannan aikin ba."
+  },
+  "imageStudio": {
+    "generateImage": "Ƙirƙirar hoto",
+    "generatingImage": "Samar da hoto",
+    "generateImageHint": "Matsa don samar da hoto dangane da bayanin ku",
+    "imageDescriptionInput": "Shigar da bayanin hoto",
+    "imageDescriptionHint": "Shigar da bayanin hoton da kake son samarwa",
+    "openModelSettings": "Buɗe saitunan ƙira",
+    "modelSettingsHint": "Matsa don canza samfuri da saituna",
+    "openPhotoGallery": "Bude gidan hoton hoto",
+    "clearInput": "Share shigarwar",
+    "generatedImage": "Hoton da aka ƙirƙira"
+  },
+  "assistants": {
+    "title": "Mataimaka",
+    "defaultTitle": "Mataimaki",
+    "errorTitle": "Wani abu ya faru",
+    "errorMessage": "An kasa fara wannan mataimakin.",
+    "noAssistants": "Babu mataimaka da aka samu a wannan rukunin.",
+    "selectAssistantHint": "Buɗe mataimakin picker",
+    "subtitle": "ƙwararrun ƙwararrun AI waɗanda ke shirye don coding, rubutu, bincike, tsarawa, da ƙari.",
+    "searchPlaceholder": "Nemo mataimakan…",
+    "useAssistant": "Yi amfani da Mataimakin",
+    "selectAssistant": "Zaɓi mataimaki",
+    "description": "Bayani",
+    "systemPrompt": "Tsarin Tsari",
+    "chooseModel": "Zaɓi Samfurin",
+    "categoryAll": "Duka",
+    "categories": {
+      "everyday": "Kullum",
+      "life": "Rayuwa",
+      "health": "Lafiya",
+      "schoolWork": "Makaranta & Aiki",
+      "coding": "Coding",
+      "creative": "Ƙirƙira",
+      "general": "Gabaɗaya"
+    },
+    "presets": {
+      "default": {
+        "name": "Mataimakin Mataimakin",
+        "description": "Daidaitaccen taimako don abubuwan yau da kullun."
+      },
+      "quick": {
+        "name": "Amsoshi masu sauri",
+        "description": "Short, amsoshi kai tsaye."
+      },
+      "planner": {
+        "name": "Mai Tsara Kullum",
+        "description": "Shirya ranaku da ayyukan yau da kullun."
+      },
+      "recipes": {
+        "name": "Abinci & Girke-girke",
+        "description": "Abin da za a dafa, da abin da kuke da shi."
+      },
+      "fitness": {
+        "name": "Kocin motsa jiki",
+        "description": "Ƙananan halaye & motsa jiki na gida."
+      },
+      "money": {
+        "name": "Buddy kudi",
+        "description": "Kasafin kuɗi masu sauƙi & shawarwarin kashe kuɗi."
+      },
+      "study": {
+        "name": "Mai Taimakon Karatu",
+        "description": "Yi bayani a sauƙaƙe. Tambayoyi da ni"
+      },
+      "email": {
+        "name": "Imel & Ci gaba",
+        "description": "Rubuta bayyanannun imel da layukan CV."
+      },
+      "translator": {
+        "name": "Mai fassara",
+        "description": "Fassara + koyar da kalmomi."
+      },
+      "travel": {
+        "name": "Tafiya Buddy",
+        "description": "Sauƙaƙan tsare-tsare & lissafin tattarawa."
+      },
+      "tech": {
+        "name": "Taimakon Fasaha (Mai Sauƙi)",
+        "description": "Waya, apps, Wi-Fi kayan yau da kullun."
+      },
+      "summarizer": {
+        "name": "TL; DR Summarizer",
+        "description": "Gajerun harsasai + TL guda ɗaya; DR."
+      },
+      "gift": {
+        "name": "Mai Neman Kyauta",
+        "description": "Ra'ayoyi ta kasafin kuɗi & bukatu."
+      },
+      "party": {
+        "name": "Mai Shirye-shiryen Taron (Lite)",
+        "description": "Shirya ƙaramin biki da sauri."
+      },
+      "social": {
+        "name": "Social Post Maker",
+        "description": "Daftarin rubutu tare da zaɓuɓɓuka."
+      },
+      "interview": {
+        "name": "Kocin Hira",
+        "description": "Amsoshi Gwada (STAR)."
+      },
+      "homefix": {
+        "name": "Jagorar Gyaran Gida",
+        "description": "Sauƙaƙan matsala na DIY."
+      },
+      "pet": {
+        "name": "Abokin Kula da Dabbobi",
+        "description": "Ciyarwa, yawo, horo na asali."
+      },
+      "mindful": {
+        "name": "Minti Mai Tunani",
+        "description": "Minti 1-3 na kwantar da hankali."
+      },
+      "polite": {
+        "name": "Mai Rubutu Mai ladabi",
+        "description": "Sake rubuta rubutu da amsa da kyau."
+      }
+    }
+  },
+  "history": {
+    "title": "Tarihi",
+    "searchPlaceholder": "Bincika taɗi…",
+    "newChat": "Sabuwar Taɗi",
+    "new": "+ Sabo",
+    "search": "Bincika",
+    "clearSearch": "Share bincike",
+    "noChatsYet": "Babu hira tukuna",
+    "noResults": "Babu hira tukuna",
+    "startFirstConversation": "Fara tattaunawar ku ta farko.",
+    "startChat": "Fara hira",
+    "startNewChat": "Fara sabon hira",
+    "errorLoadingHistory": "Kuskuren loda tarihin",
+    "loading": "Ana loda tarihin...",
+    "renameChat": "Sake suna hira",
+    "enterNewTitle": "Shigar da sabon take",
+    "deleteChat": "Share taɗi?",
+    "deleteChatMessage": "\"{{title}}\" za a goge.",
+    "rename": "Sake suna",
+    "unpin": "Cire",
+    "pin": "Pin",
+    "untitled": "Mara suna"
+  },
+  "settings": {
+    "title": "Saituna",
+    "model": "Samfura",
+    "searchPlaceholder": "Samfuran bincike…",
+    "temperatureForCurrentModel": "Zazzabi don samfurin yanzu",
+    "customFor": "Custom don {{model}}",
+    "usingDefault": "Amfani da tsoho {{temperature}}",
+    "resetToDefault": "Sake saita zuwa tsoho",
+    "defaultTemperature": "Tsohuwar zafin jiki (na baya)",
+    "usedByModelsWithoutOverride": "Ana amfani da samfuri ba tare da ƙetare na al'ada ba",
+    "dangerZone": "Yankin haɗari",
+    "clearAllChatsAndSettings": "Share duk taɗi & saituna",
+    "about": "Game da",
+    "version": "Shafin {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Manufar Keɓantawa",
+    "hero": {
+      "label": "tayi na musamman",
+      "title": "Unlimited Access\n& Siffofin Pro",
+      "upgrade": "Haɓakawa",
+      "manage": "Sarrafa tsari"
+    },
+    "sections": {
+      "premium": "Premium Plan || rubutun mu'amalar mai amfani da wayar hannu",
+      "data": "Bayanan mai amfani",
+      "support": "Taimako & Shari'a"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Samu Premium",
+        "subtitle": "Buɗe kayan aikin ƙirƙira mara iyaka"
+      },
+      "premiumActive": {
+        "title": "Premium Active || rubutun mu'amalar mai amfani da wayar hannu",
+        "subtitle": "Godiya da tallafawa Cloud AI"
+      },
+      "restore": {
+        "title": "Maida sayayya",
+        "subtitle": "Yi amfani idan kun canza na'urori"
+      },
+      "history": {
+        "title": "Sarrafa tarihin taɗi",
+        "subtitle": "Duba ku share zamanku na baya"
+      },
+      "reset": {
+        "title": "Sake saita taɗi & abubuwan da ake so",
+        "subtitle": "Yana share duk bayanan da aka adana akan wannan na'urar"
+      },
+      "rate": {
+        "title": "Rage mu",
+        "error": "An kasa buɗe shafin kantin."
+      },
+      "support": {
+        "title": "Taimako",
+        "subtitle": "Tuntube mu akan layi",
+        "error": "An kasa buɗe shafin tuntuɓar."
+      },
+      "privacy": {
+        "title": "Manufar Keɓantawa",
+        "error": "An kasa buɗe manufar keɓantawa."
+      },
+      "terms": {
+        "title": "Sharuɗɗan Amfani",
+        "error": "Rashin buɗe sharuɗɗan amfani."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Babu",
+      "linkUnavailableMessage": "An kasa buɗe wannan hanyar haɗin gwiwa a yanzu.",
+      "restoreSuccessTitle": "Maidowa",
+      "restoreSuccessMessage": "An dawo da siyayyar ku.",
+      "restoreEmptyTitle": "Ba a sami sayayya ba",
+      "restoreEmptyMessage": "Ba mu iya samun sayayya mai aiki don dawo da wannan asusun ba.",
+      "restoreErrorTitle": "An kasa dawowa",
+      "restoreErrorMessage": "An kasa dawo da sayayya a yanzu.",
+      "resetConfirmTitle": "Sake saita bayanan app?",
+      "resetConfirmMessage": "Wannan yana cire duk taɗi da abubuwan zaɓi na gida.",
+      "resetConfirmCancel": "Soke",
+      "resetConfirmCta": "Sake saiti"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Ƙirƙiri",
+    "chooseStyle": "Zaɓi Salo",
+    "aspectRatio": "Halayen Rabo",
+    "starterPrompts": {
+      "title": "Mai Bugawa",
+      "items": [
+        "studio headshot",
+        "falo na zamani",
+        "bakin teku na wurare masu zafi a faɗuwar rana"
+      ]
+    },
+    "promptPlaceholder": "Buga abin da kuke son gani…",
+    "promptHint": "Misali: 'Golden retriever in studio lighting'",
+    "clearText": "Share rubutu",
+    "generate": "Ƙirƙira",
+    "generating": "Ƙirƙirar…"
+  },
+  "editImage": {
+    "headerTitle": "Gyara",
+    "chooseStyle": "Zaɓi Salo",
+    "aspectRatio": "Halayen Rabo",
+    "starterPrompts": {
+      "title": "Mai Bugawa",
+      "items": [
+        "gyara haske",
+        "cire bango",
+        "sake gyara hoto mai laushi"
+      ]
+    },
+    "promptPlaceholder": "Bayyana gyare-gyare (na zaɓi)",
+    "clearText": "Share rubutu",
+    "generate": "Ƙirƙira",
+    "generating": "Ana nema…",
+    "upload": {
+      "choose": "Zaɓi Hoto",
+      "change": "Canza",
+      "remove": "Cire"
+    },
+    "imageUnavailable": {
+      "title": "Babu hoton",
+      "message": "An kasa samun dama ga hoton da aka zaɓa. Da fatan za a sake zaɓe shi kuma a sake gwadawa."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Cartoon || rubutun mu'amalar mai amfani da wayar hannu"
+      },
+      "photoreal": {
+        "name": "Photoreal || rubutun mu'amalar mai amfani da wayar hannu"
+      },
+      "sketch": {
+        "name": "Zane"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Misalin 3D"
+      },
+      "dark_fantasy": {
+        "name": "Dark Fantasy || rubutun mu'amalar mai amfani da wayar hannu"
+      },
+      "vintage_film": {
+        "name": "Vintage Film || rubutun mu'amalar mai amfani da wayar hannu"
+      },
+      "pastel": {
+        "name": "Pastel Aesthetic || rubutun mu'amalar mai amfani da wayar hannu"
+      },
+      "neon_glow": {
+        "name": "Neon Glow || rubutun mu'amalar mai amfani da wayar hannu"
+      },
+      "epic_landscape": {
+        "name": "Almara Landscape"
+      }
+    },
+    "aspectRatios": {
+      "square": "Dandalin",
+      "landscape": "Tsarin ƙasa",
+      "portrait": "Hoton hoto"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Custom || rubutun mu'amalar mai amfani da wayar hannu"
+    },
+    "notEnoughCoinsTitle": "Bai isa ba tsabar kudi",
+    "notEnoughCoinsMessage": "Ma'aunin ku na yanzu ya yi ƙasa sosai don wannan hoton.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Mafi sauri samfurin",
+      "runwareFluxKrea": "Ƙirƙiri, sakamako mai salo",
+      "runwareQwenImage": "Daidaito, sakamako mai inganci",
+      "google4": "Mafi kyawun samfurin AI",
+      "klingImageO1": "Gyaran hoto mai girma",
+      "fluxKontent": "Flux Kontent an kunna don gyarawa",
+      "runwareProvider": "Daidaitaccen inganci tare da ingantaccen yaduwa.",
+      "airProvider": "Banana Banana yana ƙara wasa, sautin haske.",
+      "googleProvider": "Google yana kunna don cikakkun bayanai masu gogewa.",
+      "klingaiProvider": "KlingAI an kunna don gyare-gyaren sarrafawa.",
+      "anthropicProvider": "Claude bututun mai don yanayi mara kyau.",
+      "default": "Matsa don bincika da akwai injuna."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "salon da kuka zaba",
+    "sheetTitle": "Kirkirar hangen nesa",
+    "sheetSubtitle": "Taƙaitaccen shan kofi na uwar garken yayin da muke haɗa {{style}} cikin hanzari.",
+    "phases": {
+      "blend": "Haɗawa cikin {{style}}",
+      "paint": "Yin zanen wurin",
+      "finish": "Ƙara goge na ƙarshe"
+    },
+    "actions": {
+      "cancel": "Soke",
+      "retry": "Sake gwadawa",
+      "close": "Kusa"
+    },
+    "errors": {
+      "restrictedTitle": "Ƙuntataccen abun ciki",
+      "genericTitle": "Ƙarni ya gaza",
+      "genericMessage": "An kasa haifar da hoto."
+    },
+    "alerts": {
+      "saveFailedTitle": "An kasa ajiyewa",
+      "shareFailedTitle": "An kasa rabawa",
+      "tryAgain": "Da fatan za a sake gwadawa.",
+      "savedTitle": "Ajiye",
+      "savedMessage": "Ajiye hoto a gidan hoton ku.",
+      "permissionTitle": "Ana buƙatar izini",
+      "permissionMessage": "Bada damar ajiya don adana hotuna zuwa hoton hotonku."
+    },
+    "result": {
+      "complete": "An gama duka"
+    },
+    "accessibility": {
+      "close": "Kusa"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Share",
+      "edit": "Gyara",
+      "save": "Ajiye",
+      "share": "Raba"
+    },
+    "alerts": {
+      "savedTitle": "Ajiye",
+      "savedMessage": "Ajiye hoto a gidan hoton ku.",
+      "permissionTitle": "Ana buƙatar izini",
+      "permissionMessage": "Bada damar ajiya don adana hotuna zuwa hoton hotonku.",
+      "saveFailedTitle": "An kasa ajiyewa",
+      "tryAgain": "Da fatan za a sake gwadawa."
+    },
+    "accessibility": {
+      "close": "Kusa",
+      "delete": "Share hoto",
+      "edit": "Gyara hoto",
+      "save": "Ajiye hoto",
+      "share": "Raba hoto"
+    }
+  },
+  "reportContent": {
+    "title": "Rahoton abubuwan AI",
+    "subtitle": "Faɗa mana abin da ke damun wannan abun cikin da aka samar.",
+    "privateDisclosure": "ƙaddamarwa yana aika wannan rahoton da aka ruwaito don nazarin aminci.",
+    "accessibilityLabel": "Rahoton abubuwan AI",
+    "reasons": {
+      "sexual": "Jima'i ko abun ciki na tsiraici",
+      "violence_self_harm": "Tashin hankali ko cutar da kai",
+      "hate_harassment": "Kiyayya ko tsangwama",
+      "child_safety": "Damuwar lafiyar yara",
+      "scam_deceptive": "Zamba ko abun ciki na yaudara",
+      "other": "Sauran"
+    },
+    "errors": {
+      "reasonRequired": "Da fatan za a zaɓi dalili kafin ƙaddamarwa.",
+      "submit": "An kasa ƙaddamar da rahoto. Da fatan za a sake gwadawa."
+    },
+    "success": {
+      "title": "Godiya. An gabatar da rahoton ku.",
+      "subtitle": "Za mu yi amfani da rahotanni don inganta amincin abun ciki."
+    },
+    "actions": {
+      "report": "Rahoton",
+      "submit": "Gabatar da Rahoton",
+      "done": "Anyi"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Buɗe menu",
+      "selectImages": "Zaɓi hotuna",
+      "exitSelection": "Fita zaɓi",
+      "deleteSelected": "Share zaɓaɓɓun hotuna",
+      "selectToDelete": "Zaɓi hotuna don sharewa"
+    },
+    "createCard": {
+      "title": "Ƙirƙiri daga Rubutu",
+      "subtitle": "Rubuta bayanin",
+      "cta": "Bayyana & Ƙirƙira"
+    },
+    "editCard": {
+      "title": "AI Editan Hoto",
+      "subtitle": "Canza & haɓaka tare da AI",
+      "cta": "Gyara tare da AI"
+    },
+    "gallery": {
+      "title": "Gallery || rubutun mu'amalar mai amfani da wayar hannu",
+      "empty": "Babu hotuna tukuna",
+      "selection": {
+        "enter": "Zaɓi hotuna",
+        "exit": "Fita zaɓi",
+        "deleteSelected": "Share zaɓaɓɓun hotuna",
+        "selectForDelete": "Zaɓi hotuna don sharewa"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Haɗu",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Ƙirƙiri & shirya hotuna tare da AI-dama cikin Cloud AI."
+    },
+    "relaxView": {
+      "title": "Haɗu da AI",
+      "titleHighlight": "Mataimaka",
+      "subtitle": "Kwararrun AI na musamman suna shirye don taimakawa tare da bukatun ku na yau da kullun",
+      "cards": {
+        "fitness": {
+          "title": "Kocin motsa jiki",
+          "text": "Ƙananan halaye & motsa jiki na gida."
+        },
+        "recipes": {
+          "title": "Abinci & Girke-girke",
+          "text": "Abin da za a dafa, da abin da kuke da shi."
+        },
+        "travel": {
+          "title": "Tafiya Buddy",
+          "text": "Sauƙaƙan tsare-tsare & lissafin tattarawa."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "MAGANIN SHIGA-GRADE AI",
+      "description": "Ƙaddamar da kasuwancin ku tare da fasaha na fasaha na wucin gadi wanda aka tsara don ƙwararrun masana'antu da ƙungiyoyi.",
+      "stats": "Amintattun masu amfani da 500k+",
+      "rating": "4.9 / 5",
+      "button": "Fara"
+    },
+    "buttons": {
+      "continue": "Ci gaba",
+      "start": "Mu fara"
+    }
+  },
+  "coinStore": {
+    "title": "Samun Kiredit",
+    "loading": "Ana loda kantin tsabar kudi…",
+    "balanceLabel": "Ma'aunin ku na yanzu shine",
+    "balanceValue": "{{amount}} Kyaututtuka",
+    "history": {
+      "link": "Tarihin ciniki",
+      "alertTitle": "Tarihi",
+      "alertBody": "Tarihin ciniki yana nan tafe."
+    },
+    "noPacks": "Babu fakitin tsabar kudin da akwai. Bincika ID na bayarwa na RevenueCat.",
+    "badges": {
+      "basic": "Kunshin asali",
+      "popular": "Mafi shahara",
+      "value": "Mafi Kyau"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Kyaututtuka",
+      "tokensLabel": "{{credits}} Kyaututtuka",
+      "defaultName": "Kunshin {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "Go Premium || rubutun mu'amalar mai amfani da wayar hannu",
+      "subtitle": "Unlimited access & fasali",
+      "cta": "Haɓakawa"
+    },
+    "termsText": "Ta hanyar yin siyayya, kun yarda da mu",
+    "termsLink": "Sharuɗɗan Sabis",
+    "alerts": {
+      "initErrorTitle": "Kuskuren ciki",
+      "genericMessage": "Wani abu ya faru.",
+      "successTitle": "Nasara",
+      "successMessage": "Kiredit zai bayyana nan ba da jimawa ba.",
+      "purchaseFailedTitle": "An kasa siye",
+      "unknownError": "Kuskuren da ba a sani ba"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Ana Bukata Premium",
+    "upgrade": "Haɓakawa",
+    "modelRequiredMessage": "Wannan samfurin yana buƙatar Premium. Haɓaka don samun damar GPT-5, Grok 4, Claude, da ƙarin ƙira.",
+    "assistantsRequiredMessage": "Mataimaka suna buƙatar Premium. Haɓakawa don samun damar samun ƙwararrun mataimakan AI don dacewa, coding, rubutu, da ƙari.",
+    "assistantsTitle": "Ana Bukata Premium",
+    "assistantsMessage": "Mataimaka suna buƙatar Premium. Haɓakawa don samun damar samun ƙwararrun mataimakan AI don dacewa, coding, rubutu, da ƙari."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, P001⟭",
+    "close": "Rufe bangon biyan kuɗi",
+    "unavailableTitle": "Babu siyayya",
+    "unavailableMessage": "Ba a daidaita lissafin Android tukuna.",
+    "restoreEmptyTitle": "Ba a sami sayayya ba",
+    "restoreEmptyMessage": "Ba mu iya samun sayayya mai aiki don dawo da wannan asusun ba.",
+    "restoreFailedTitle": "An kasa dawowa",
+    "restoreFailedMessage": "An kasa dawo da sayayya a yanzu.",
+    "productsUnavailableTitle": "Babu tsare-tsare da akwai",
+    "productsUnavailableMessage": "Babu samfuran biyan kuɗin Android da ke samuwa a yanzu.",
+    "purchaseFailedTitle": "An kasa siye",
+    "purchaseFailedMessage": "An kasa kammala wannan siyan a yanzu.",
+    "restore": "Maida",
+    "restoreRestoring": "Ana dawo da…",
+    "features": {
+      "create": "Ƙirƙiri hotuna da bidiyoyi",
+      "search": "Bincika yanar gizo tare da AI",
+      "talk": "Yi magana ta dabi'a ga AI",
+      "imageStudio": "Sami Image Studio {{credits}} credits {{period}}",
+      "period": {
+        "weekly": "mako-mako",
+        "monthly": "kowane wata",
+        "yearly": "kowace shekara"
+      }
+    },
+    "freeTrial": {
+      "title": "Gwajin kyauta",
+      "subtitle": "Gwajin kyauta na kwanaki 3"
+    },
+    "badge": {
+      "bestOffer": "Mafi kyawun tayi"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Shekara-shekara",
+        "only": "Kawai {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "1.35 US dollar"
+      },
+      "monthly": {
+        "title": "kowane wata",
+        "subtitle": "Soke kowane lokaci",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "mako-mako",
+        "subtitle": "Soke kowane lokaci",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "Kwanaki 3 kyauta, sannan"
+      }
+    },
+    "frequency": {
+      "perWeek": "a kowane mako",
+      "perMonth": "kowane wata"
+    },
+    "cta": "Ci gaba",
+    "ctaFreeTrial": "Gwada Shi Kyauta",
+    "legal": {
+      "terms": "Sharuɗɗan",
+      "privacy": "Keɓantawa"
+    },
+    "premium": {
+      "headline": "All premium AI a cikin tsari ɗaya",
+      "subtitleLine1": "Taɗi, lamba, ƙirƙira, da tsari || wayar hannu app paywall UI",
+      "subtitleLine2": "tare da ci-gaba model.",
+      "enableTrial": "Kunna gwaji kyauta",
+      "annual": "Shekara-shekara",
+      "saveBadge": "Ajiye 83% || wayar hannu app paywall UI",
+      "year": "shekara",
+      "week": "mako",
+      "termsOfUse": "Sharuɗɗan Amfani",
+      "privacyPolicy": "Sirrin Sirri"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Sako...",
+    "createImages": "Ƙirƙiri Hotuna",
+    "generateAiArtwork": "Ƙirƙirar AI zane-zane",
+    "camera": "Loda Hotuna",
+    "takeOrSelectPhotos": "Zaɓi hotuna",
+    "search": "Bincika",
+    "findInformation": "Nemo bayani",
+    "findRecentInfo": "Nemo bayanan kwanan nan",
+    "removeImage": "Cire hoto",
+    "messageInput": "Shigar da saƙo",
+    "clearInput": "Share shigarwar",
+    "quickActionsLabel": "Ayyukan gaggawa",
+    "hideQuickActions": "Boye ayyuka masu sauri",
+    "showQuickActions": "Nuna ayyuka masu sauri",
+    "startVoiceInput": "Fara shigar da murya",
+    "sendMessage": "Aika sako",
+    "offline": "Offline",
+    "stop": "Tsaya",
+    "streaming": "Yawo…",
+    "closeRecorder": "Rufe rikodi",
+    "insertTranscript": "Aika",
+    "scrollToLatest": "Gungura zuwa sabon saƙo",
+    "copyMessage": "Kwafi sako",
+    "copyMessageHint": "Kwafi wannan saƙon zuwa allo",
+    "shareMessage": "Raba sako",
+    "shareMessageHint": "Raba wannan sakon",
+    "regenerateResponse": "Maida martani",
+    "regenerateResponseHint": "Ƙirƙirar sabon amsa",
+    "copyCode": "Kwafi lambar",
+    "copied": "Kwafi",
+    "image": "hoto",
+    "loading": "Ana lodawa…",
+    "loadingChat": "Ana loda hira...",
+    "offlineBanner": "Kuna layi. Ba za a iya aika saƙonni ba.",
+    "offlineError": "Babu haɗin intanet. Da fatan za a duba haɗin ku kuma a sake gwadawa.",
+    "imagePickerErrorTitle": "Kuskuren mai ɗaukar hoto",
+    "imagePickerErrorMessage": "An kasa samun dama ga hotunanku. Da fatan za a sake gwadawa.",
+    "messageTooLong": "Saƙo ya yi tsayi sosai ({{length}}). Iyaka shine {{limit}}.",
+    "sendFailed": "An kasa aika sako. Da fatan za a sake gwadawa.",
+    "modelNoImageSupport": "Samfurin da aka zaɓa baya goyan bayan hotuna. Da fatan za a zaɓi samfurin daban.",
+    "voiceStartFailed": "An kasa fara murya.",
+    "voiceNoSpeechDetected": "Ba a gane murya ba. Da fatan za a sake gwadawa.",
+    "emptyTitle": "Ta yaya zan iya taimaka?",
+    "emptySubtitle": "Fara tattaunawa da AI",
+    "privateTitle": "Hira ta sirri",
+    "privateSubtitle": "Wannan taɗi ba za ta bayyana a tarihin taɗin ku ba",
+    "startPrivateChat": "Fara hira ta sirri",
+    "endPrivateChat": "Ƙare hira ta sirri",
+    "permissions": {
+      "photosTitle": "Ana Bukatar Izinin Hoto",
+      "photosMessage": "Ana buƙatar samun damar hoto don zaɓar hotuna.",
+      "voiceTitle": "Ana Bukatar Izinin Murya",
+      "voiceMessage": "Ana buƙatar damar makirufo da damar magana don amfani da murya."
+    },
+    "activity": {
+      "analyzingImages": "Ana nazarin hotuna…",
+      "searching": "Neman…",
+      "thinking": "Tunani…"
+    },
+    "webSearch": {
+      "title": "Binciken yanar gizo",
+      "subtitle": "Nemo bayanan kwanan nan",
+      "label": "Binciken Yanar Gizo",
+      "enable": "Kunna binciken yanar gizo",
+      "disable": "Kashe binciken yanar gizo",
+      "toggleLabel": "Bincika yanar gizo"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Zane abubuwan gani a cikin sauri.",
+      "subtitle": "Ƙirƙira, tacewa, da buga kadarorin gani a wuri ɗaya.",
+      "cta": "Bude"
+    },
+    "quickActions": {
+      "createImages": "Ƙirƙiri Hotuna",
+      "openCamera": "Buɗe Kamara",
+      "editImage": "Gyara Hoto",
+      "startVoice": "Fara Murya",
+      "assistants": "Mataimaka"
+    },
+    "listening": "Ana saurare…",
+    "startRecording": "Fara rikodi…",
+    "assistantHeader": {
+      "unavailableTitle": "Babu mataimakin",
+      "unavailableDescription": "Ba mu iya loda wannan mataimakin ba. Da fatan za a sake gwadawa.",
+      "ready": "Shirye don taimakawa"
+    },
+    "actions": {
+      "copy": "Kwafi",
+      "share": "Raba",
+      "regenerate": "Sake haɓakawa",
+      "retryFromHere": "Sake gwadawa daga nan",
+      "report": "Rahoton",
+      "cancel": "Soke"
+    },
+    "markdown": {
+      "copy": "Kwafi",
+      "copied": "Kwafi",
+      "table": "TABLE",
+      "watchVideo": "Kalli Bidiyo",
+      "wikipedia": "Wikipedia",
+      "link": "mahada",
+      "note": "Lura",
+      "warning": "Gargadi",
+      "tip": "Tukwici"
+    },
+    "messageActionTitle": "Sako",
+    "status": {
+      "sending": "Ana aikawa…",
+      "failed": "Ba a yi nasara ba",
+      "sent": "An aika"
+    },
+    "suggestions": {
+      "writeStory": "Rubuta labari mai ƙirƙira",
+      "writeStorySubtitle": "game da wani sihiri kasada",
+      "planTravel": "Shirya hanyar tafiya",
+      "planTravelSubtitle": "don hutu mai ban mamaki",
+      "explainConcept": "Bayyana wannan ra'ayi",
+      "explainConceptSubtitle": "a cikin sauki kalmomi",
+      "planDay": "Shirya rana ta",
+      "planDaySubtitle": "tare da shawarwarin yawan aiki"
+    },
+    "home": {
+      "eyebrow": "Zaɓi batu",
+      "title": "Me kuke so kuyi?",
+      "subtitle": "Zaɓi hanya, sannan fara da faɗakarwa mai ƙarfi.",
+      "pickPromptTitle": "Zaɓi faɗakarwa don farawa",
+      "changeTopic": "Zaɓi wani batu",
+      "intents": {
+        "summarize": "Takaitacciyar rubutu",
+        "summarizeShort": "Takaita",
+        "summarizeHint": "Labarai, bayanin kula, memos na murya, dogon zaren",
+        "plan": "Yi shiri",
+        "planHint": "Tafiya, na yau da kullun, kasafin kuɗi, kwanakin ƙarshe, canje-canjen rayuwa",
+        "brainstorm": "Hankali",
+        "brainstormHint": "Ra'ayoyi, tayi, sunaye, abun ciki, ayyukan gefe",
+        "analyze": "Yi nazarin bayanai",
+        "analyzeHint": "Kashewa, martani, awo, halaye, aiki"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Ƙirƙiri taƙaitaccen mai kafa",
+          "founderBriefSubtitle": "Fitar da manyan haɗari, yanke shawara, da matakai na gaba.",
+          "classNotesTitle": "Tsaftace bayanan karatu na",
+          "classNotesSubtitle": "Juya m bayanin kula zuwa bayyananne jagorar nazari.",
+          "meetingHandoffTitle": "Rubuta taƙaitaccen bayani",
+          "meetingHandoffSubtitle": "Mai amfani bayan tarurruka, kira, ko dogon zaren ciki.",
+          "longArticleTitle": "Taƙaita wannan labarin cikin sauri",
+          "longArticleSubtitle": "Matsar da dogon labari zuwa hanyoyin ɗaukar kai kaifi."
+        },
+        "plan": {
+          "energyResetTitle": "Gina sake saitin makamashi na kwanaki 14",
+          "energyResetSubtitle": "Kyakkyawan shiri don barci, abinci, motsi, da mai da hankali.",
+          "mealPlanTitle": "Shirya abinci da gaske zan dafa",
+          "mealPlanSubtitle": "M, mai araha, kuma bisa ga abin da nake da shi.",
+          "cityMoveTitle": "Shirya ƙaura na zuwa sabon birni",
+          "cityMoveSubtitle": "Rarraba shi cikin tsarin lokaci, kasafin kuɗi, gidaje, da ayyukan gudanarwa.",
+          "tripEscapeTitle": "Shirya tserewar karshen mako mai tunawa",
+          "tripEscapeSubtitle": "Wani abu mafi kyau fiye da jeri-jeri."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Nemo haƙiƙanin gudu na gefe",
+          "sideHustleSubtitle": "Ra'ayoyin da zan iya farawa yayin aiki na cikakken lokaci.",
+          "brandAngleTitle": "Nemo kusurwar alamar abin tunawa",
+          "brandAngleSubtitle": "Mai amfani ga samfura, masu ƙirƙira, hukumomi, ko wasiƙun labarai.",
+          "socialSeriesTitle": "Ƙirƙirar jerin abun ciki",
+          "socialSeriesSubtitle": "Wani abu da ya dace don haɓaka masu sauraro.",
+          "datingIdeasTitle": "Ku fito da sabbin dabaru",
+          "datingIdeasSubtitle": "Kwanan wata, kyaututtuka, abubuwan ban mamaki, ko abubuwan da suka ji daɗi."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Nemo inda kuɗina ke zubewa",
+          "spendingLeaksSubtitle": "Nuna alamu, tabo masu rauni, kuma mafi sauƙin nasara da farko.",
+          "customerFeedbackTitle": "Juya martani zuwa abubuwan fifiko",
+          "customerFeedbackSubtitle": "Buƙatun tagulla, gunaguni, gaggawa, da tasiri.",
+          "habitPatternsTitle": "Tabo alamu a cikin halaye na",
+          "habitPatternsSubtitle": "Yana da amfani ga motsa jiki, barci, aikin jarida, ko ma'auni.",
+          "metricsStoryTitle": "Bayyana abin da lambobin ke nufi",
+          "metricsStorySubtitle": "Ƙarin sigina, ƙarancin hayaniyar falle."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Ana aiwatarwa...",
+    "tapToUploadImage": "Matsa don loda hoto"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Ana aiwatarwa...",
+    "camera": "Loda Hotuna",
+    "library": "Laburare"
+  },
+  "common": {
+    "ok": "Yayi",
+    "retry": "Sake gwadawa",
+    "cancel": "Soke",
+    "allow": "Izinin",
+    "notNow": "Ba yanzu ba",
+    "openSettings": "Bude Saituna",
+    "close": "Kusa",
+    "save": "Ajiye",
+    "tryAgain": "Sake gwadawa"
+  },
+  "rateUs": {
+    "title": "Jin daɗin Cloud AI?",
+    "subtitle": "Ra'ayin ku yana taimaka mana ingantawa. Za ku damu da kimar mu akan App Store?",
+    "rateNow": "Rate Yanzu",
+    "maybeLater": "Wataƙila Daga baya",
+    "dontAskAgain": "Kar a sake tambaya"
+  },
+  "oneTimeOffer": {
+    "title": "Bayar Lokaci Daya",
+    "discount": "{{percent}}% KASHE",
+    "subtitle": "Ba za ku sake ganin wannan tayin ba.",
+    "badgeLine1": "Keɓaɓɓe",
+    "badgeLine2": "tayin lokaci guda",
+    "upgradeNow": "Haɓaka yanzu don {{price}}",
+    "loadingPrice": "Ana lodawa...",
+    "termsOfUse": "Sharuɗɗan Amfani",
+    "privacyPolicy": "Manufar Keɓantawa",
+    "accessTitle": "Unlimited damar zuwa",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Unlimited damar zuwa GPT-4",
+      "geminiPro": "Samun dama ga Gemini Pro",
+      "grokInsights": "Yi amfani da Grok don sabbin fahimta",
+      "priorityAccess": "Samun fifiko & amsoshi masu sauri"
+    },
+    "bestValue": "Mafi Kyau",
+    "annualPremium": "Premium na shekara",
+    "oneTimePayment": "Biyan kuɗi na lokaci ɗaya",
+    "wasPrice": "ya kasance",
+    "continue": "Ci gaba",
+    "restore": "Maida",
+    "terms": "Sharuɗɗan",
+    "privacy": "Keɓantawa",
+    "successTitle": "Nasara!",
+    "successMessage": "Na gode da siyan ku! Yi farin ciki da damar samun kuɗi na tsawon watanni 12 masu zuwa.",
+    "errorTitle": "Ba a yi nasarar siyan ba",
+    "errorMessage": "Wani abu ya faru. Da fatan za a sake gwadawa.",
+    "restoreSuccessTitle": "Maidowa",
+    "restoreSuccessMessage": "An dawo da siyayyar ku.",
+    "restoreErrorTitle": "Ba a yi nasarar maidowa ba",
+    "restoreErrorMessage": "Ba a samo siyayya don dawo da su ba.",
+    "unavailableTitle": "Babu siyayya",
+    "unavailableMessage": "Ba a daidaita lissafin Android tukuna."
+  },
+  "rewards": {
+    "header": {
+      "title": "Kyauta",
+      "openMenu": "Buɗe menu",
+      "goBack": "Komawa"
+    },
+    "pointsHero": {
+      "totalBalance": "JAMA'AR MA'AIKI",
+      "seeYourRewards": "Duba ladan ku"
+    },
+    "streakTracker": {
+      "title": "Yau da kullun",
+      "subtitle": "Ci gaba! Kuna cin wuta.",
+      "days": "Kwanaki",
+      "prize": "Kyauta",
+      "dayLabel": "Rana {{number}}",
+      "nextReward": "Kyauta ta gaba: {{amount}} a cikin {{time}}",
+      "coins": "Tsabar kudi"
+    },
+    "sections": {
+      "availableQuests": "Akwai Tambayoyi",
+      "completedQuests": "Kammala Tambayoyi",
+      "availableRewards": "Akwai lada",
+      "needsMoreCoins": "Yana buƙatar ƙarin tsabar kudi"
+    },
+    "balances": {
+      "rewardCoins": "Tsabar kudi",
+      "imageCredits": "Alamar hoto"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "Kyaututtukan Hoto 50",
+        "imageCredits200": "Kyaututtukan Hoto 200",
+        "imageCredits600": "Kiredit na Hoto 600",
+        "weeklyPremium": "Premium Weekly",
+        "secretBox": "Akwatin sirri"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Sakamakon asiri a ciki"
+      },
+      "alerts": {
+        "comingSoonTitle": "Ana zuwa nan ba da jimawa ba",
+        "comingSoonMessage": "Wannan tukuicin bai samu ba tukuna.",
+        "notEnoughCoinsTitle": "Bai isa ba tsabar kudi",
+        "notEnoughCoinsMessage": "Kuna buƙatar ƙarin tsabar kuɗi don buɗe wannan tukuicin.",
+        "errorTitle": "Kuskure",
+        "couldNotOpenBox": "An kasa buɗe akwatin.",
+        "couldNotRedeem": "An kasa fanshi lada. Da fatan za a sake gwadawa.",
+        "mysteryReward": "Ladan Asiri"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Kullum Login",
+        "description": "Bude ƙa'idar yau don ci gaba da gudana",
+        "message": "Ana kammala wannan nema ta atomatik lokacin da ka buɗe app ɗin kowace rana."
+      },
+      "shareFacebook": {
+        "title": "Raba akan Facebook",
+        "description": "Buga game da mu akan Facebook"
+      },
+      "shareTwitter": {
+        "title": "Raba akan Twitter",
+        "description": "Tweet gwaninta"
+      },
+      "shareInstagram": {
+        "title": "Raba akan Instagram",
+        "description": "Raba labari ko rubutu"
+      },
+      "shareExperience": {
+        "title": "Raba kwarewar ku",
+        "description": "Faɗa wa abokai dalilin da yasa kuke son app ɗin"
+      },
+      "share": {
+        "genericMessage": "Ina amfani da wannan AI app don hira da tsara hoto. Duba shi: {{url}}",
+        "facebookQuote": "Duba wannan AI App!",
+        "twitterText": "Ina gwada wannan AI app, yana da kyau sosai.",
+        "instagramMessage": "Duba wannan AI app: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Kuskure",
+        "errorMessage": "An kasa buɗe shafin kantin."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Neman Kammala",
+        "description": "An gama nema",
+        "points": "+ {{points}} maki",
+        "close": "Kusa"
+      },
+      "rewardSuccess": {
+        "error": "KUSKURE",
+        "success": "NASARA",
+        "somethingWentWrong": "Wani abu ya faru",
+        "rewardUnlocked": "An Buɗe Lada",
+        "credits": "Kiredit",
+        "close": "Kusa",
+        "okay": "Lafiya"
+      },
+      "secretBox": {
+        "pill": "SIRRIN BOX",
+        "rewardUnlocked": "LADA BUDE",
+        "shufflingRewards": "KYAUTA KYAUTA...",
+        "imageCreditsAdded": "Hotunan da aka saka a asusunku",
+        "continue": "Ci gaba",
+        "revealing": "Yana bayyana...",
+        "prizeTiers": {
+          "lucky": "MAI SA'A",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "LABARI"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Karɓi tsabar kuɗinka na yau",
+      "subtitle": "Ka dawo kowace rana — lada yana ƙaruwa.",
+      "cta": "Yi rajista",
+      "claimed": "An karɓa! +{{amount}} tsabar kuɗi",
+      "later": "Daga baya"
+    }
+  },
+  "app": {
+    "version": "Sigar {{version}}",
+    "offlineBanner": "Kuna layi",
+    "launch": {
+      "accessibilityLabel": "Fara Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, shirye lokacin da kuke"
+    },
+    "errors": {
+      "modelsLoadTitle": "An kasa Load da Samfura",
+      "modelsLoadMessage": "An kasa loda samfuran AI. Ka'idar za ta yi amfani da ƙira na asali. Da fatan za a duba haɗin intanet ɗin ku.",
+      "modelsLoadTimeout": "Ana loda samfuran sun ɗauki tsayi da yawa. Ka'idar za ta yi amfani da ƙira na asali. Da fatan za a sake gwadawa.",
+      "modelsLoadNetwork": "Babu haɗin intanet. Ka'idar za ta yi amfani da ƙira na asali. Da fatan za a duba haɗin ku.",
+      "deviceIdTitle": "Kuskuren farawa",
+      "deviceIdMessage": "An kasa fara ID na na'ura. Wasu fasalulluka na iya yin aiki daidai.",
+      "storageTitle": "Kuskuren Ajiya",
+      "storageMessage": "An kasa samun damar ma'ajiyar gida. Wasu fasalulluka na iya yin aiki daidai.",
+      "crashTitle": "Wani abu ya faru.",
+      "crashSubtitle": "Da fatan za a sake gwadawa.",
+      "crashLabel": "App ya fadi"
+    },
+    "proxyErrors": {
+      "genericTitle": "Wani abu ya faru",
+      "genericMessage": "Da fatan za a sake gwadawa.",
+      "rateLimitTitle": "Bukatu da yawa",
+      "rateLimitMessage": "Muna gudanar da buƙatu da yawa. Da fatan za a sake gwadawa nan da wani lokaci.",
+      "rateLimitRetryAfter": "Muna gudanar da buƙatu da yawa. Da fatan za a sake gwadawa cikin kusan daƙiƙa {{seconds}}.",
+      "restrictedTitle": "Ƙuntataccen abun ciki",
+      "restrictedMessage": "Matatun tsaro sun toshe wannan buƙatar.",
+      "insufficientCoinsTitle": "Bai isa ba tsabar kudi",
+      "insufficientCoinsMessage": "Ma'aunin ku na yanzu ya yi ƙasa da ƙasa don wannan buƙatar.",
+      "imageUnavailableTitle": "Babu hoton",
+      "imageUnavailableMessage": "Fayil ɗin hoton da aka ƙirƙira bai samu na ɗan lokaci ba. Da fatan za a sake gwadawa.",
+      "authorizationTitle": "Batun izini",
+      "authorizationMessage": "Ba mu iya tabbatar da asusunku ba. Da fatan za a sake gwadawa.",
+      "serverTitle": "Hatsarin uwar garke",
+      "serverMessage": "Sabbin mu sun sami matsala. Da fatan za a sake gwadawa ba da jimawa ba.",
+      "timeoutTitle": "Daukar tsayi da yawa",
+      "timeoutMessage": "Buƙatun ya ƙare. Da fatan za a sake gwadawa.",
+      "networkTitle": "Babu haɗin kai",
+      "networkMessage": "Babu haɗin intanet. Da fatan za a duba haɗin ku kuma a sake gwadawa.",
+      "requestTitle": "Neman fitowar",
+      "requestMessage": "Wani abu yayi kuskure game da buƙatarku. Da fatan za a sake gwadawa."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Kunna Premium",
+    "activateMessage": "Kuna so ku kunna ƙimar mai dubawa?",
+    "activateAction": "Kunna",
+    "deactivateTitle": "Kashe Premium",
+    "deactivateMessage": "Kuna so a kashe ƙimar mai dubawa?",
+    "deactivateAction": "Kashe"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Ladan yau da kullun",
+      "body": "Kada ku rasa tsabar kuɗin ku na yau da kullun - da'awar kafin tsakar dare."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Kada ka rasa tsabar kuɗinka na yau da kullum",
+      "body": "Muna aika tunatarwa sau ɗaya a rana don jerinka ya ci gaba kuma tsabar kuɗinka su ƙaru. Babu spam, kuma za ka iya kashe shi a kowane lokaci.",
+      "enable": "Kunna tunatarwa",
+      "skip": "Ba yanzu ba"
+    }
+  }
+}

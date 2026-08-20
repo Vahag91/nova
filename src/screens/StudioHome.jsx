@@ -81,10 +81,16 @@ export default function StudioHome({ navigation }) {
 
   const jobs = useImagesStore(state => state.jobs);
   const deleteImage = useImagesStore(state => state.deleteImage);
+  const hydrateImages = useImagesStore(state => state.hydrate);
+  const repairImageCache = useImagesStore(state => state.repairImageCache);
 
   const [viewer, setViewer] = useState({ open: false, uri: '', id: null, jobId: null });
   const [isSelectionMode, setIsSelectionMode] = useState(false);
   const [selectedImages, setSelectedImages] = useState(() => new Set());
+
+  useEffect(() => {
+    hydrateImages().then(() => repairImageCache()).catch(() => {});
+  }, [hydrateImages, repairImageCache]);
 
   useEffect(() => {
     const shouldEnableLayoutAnimation =

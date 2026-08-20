@@ -101,7 +101,7 @@ function extractPriceValue(product) {
   return null;
 }
 
-function formatWeeklyEquivalent(product) {
+function formatWeeklyEquivalent(product, locale) {
   const price = extractPriceValue(product);
   const currencyCode = String(
     product?.currencyCode || product?.currency || 'USD',
@@ -119,9 +119,16 @@ function formatWeeklyEquivalent(product) {
   if (!Number.isFinite(value)) {
     return null;
   }
-  // Use currency code (e.g., "USD 1.15") to match RevenueCat's `priceString` format
-  // and avoid symbol-only output like "$1.15".
-  return `${currencyCode} ${value.toFixed(2)}`;
+  try {
+    return new Intl.NumberFormat(locale || undefined, {
+      style: 'currency',
+      currency: currencyCode,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  } catch {
+    return `${currencyCode} ${value.toFixed(2)}`;
+  }
 }
 
 function interpolatePrice(text = '', price = '') {
@@ -227,7 +234,7 @@ export default function PaywallScreen({
   } = useContext(SubscriptionContext) || {};
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { t: tr } = useTranslation();
+  const { t: tr, i18n } = useTranslation();
   const route = useRoute();
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const justPurchasedRef = useRef(false);
@@ -254,26 +261,33 @@ export default function PaywallScreen({
   const pulseAnim = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    try {
-      fetchOfferings && fetchOfferings();
-    } catch {}
+    if (!hasWeekly && !hasYearly) {
+      try {
+        fetchOfferings && fetchOfferings();
+      } catch {}
+    }
+  }, [fetchOfferings, hasWeekly, hasYearly]);
 
-    // Start pulse animation
-    Animated.loop(
+  useEffect(() => {
+    const pulse = Animated.loop(
       Animated.sequence([
         Animated.timing(pulseAnim, {
           toValue: 1.05,
           duration: 1000,
+          isInteraction: false,
           useNativeDriver: true,
         }),
         Animated.timing(pulseAnim, {
           toValue: 1,
           duration: 1000,
+          isInteraction: false,
           useNativeDriver: true,
         }),
       ]),
-    ).start();
-  }, [fetchOfferings, pulseAnim]);
+    );
+    pulse.start();
+    return () => pulse.stop();
+  }, [pulseAnim]);
 
   useEffect(() => {
     setTrialEnabled(false);
@@ -423,13 +437,12 @@ export default function PaywallScreen({
             'We could not find an active purchase to restore for this account.',
         }),
       );
-    } catch (error) {
+    } catch {
       Alert.alert(
         tr('paywall.restoreFailedTitle', { defaultValue: 'Restore failed' }),
-        error?.message ||
-          tr('paywall.restoreFailedMessage', {
-            defaultValue: 'Unable to restore purchases right now.',
-          }),
+        tr('paywall.restoreFailedMessage', {
+          defaultValue: 'Unable to restore purchases right now.',
+        }),
       );
     }
   };
@@ -493,10 +506,9 @@ export default function PaywallScreen({
 
       Alert.alert(
         tr('paywall.purchaseFailedTitle', { defaultValue: 'Purchase failed' }),
-        error?.message ||
-          tr('paywall.purchaseFailedMessage', {
-            defaultValue: 'Unable to complete this purchase right now.',
-          }),
+        tr('paywall.purchaseFailedMessage', {
+          defaultValue: 'Unable to complete this purchase right now.',
+        }),
       );
     } finally {
       setPurchaseLoading(false);
@@ -557,6 +569,7 @@ export default function PaywallScreen({
     : yearlyOnlyTemplate;
   const weeklyEquivalentYearlyPrice = formatWeeklyEquivalent(
     availablePackages?.yearly?.product,
+    i18n?.resolvedLanguage || i18n?.language,
   );
   const yearlyIntro =
     weeklyEquivalentYearlyPrice || tr('paywall.plans.yearly.defaultIntroPrice');
@@ -573,7 +586,7 @@ export default function PaywallScreen({
 
   // Compute Image Studio credits and period for the selected plan
   const imageStudioCredits = useMemo(() => {
-    return selectedPlan === 'yearly' ? '15000' : '400';
+    return selectedPlan === 'yearly' ? '15000' : '600';
   }, [selectedPlan]);
 
   const imageStudioPeriod = useMemo(() => {
@@ -730,7 +743,7 @@ export default function PaywallScreen({
           <GradientText
             style={[styles.title, isCompactHeight && styles.titleCompact]}
           >
-            GPT-5.5, Grok, Gemini
+            {tr('paywall.modelsHeadline')}
           </GradientText>
 
           {/* Features */}

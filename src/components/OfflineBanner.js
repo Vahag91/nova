@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useNetInfo } from '@react-native-community/netinfo';
+import { useTranslation } from 'react-i18next';
 
 export default function OfflineBanner() {
+  const { t } = useTranslation();
   const { isConnected, isInternetReachable } = useNetInfo();
   const offline = isConnected === false || isInternetReachable === false;
 
@@ -11,7 +13,7 @@ export default function OfflineBanner() {
   return (
     <View pointerEvents="none" style={styles.container}>
       <View style={styles.inner}>
-        <Text style={styles.text}>You are offline</Text>
+        <Text style={styles.text}>{t('app.offlineBanner')}</Text>
       </View>
     </View>
   );

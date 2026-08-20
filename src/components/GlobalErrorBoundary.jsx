@@ -19,6 +19,7 @@ class GlobalErrorBoundary extends React.Component {
 
   componentDidCatch(error, info) {
     logException(error, { componentStack: info?.componentStack });
+    this.props.onCatch?.(error, info);
   }
 
   handleReload = () => {

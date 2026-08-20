@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Valige mudel",
+    "searchPlaceholder": "Otsi mudeleid...",
+    "noModelsFound": "Mudeleid ei leitud",
+    "noModelsAvailable": "Mudeleid pole saadaval",
+    "currentModel": "Praegune mudel: {{name}}. Puudutage mudeli muutmiseks.",
+    "openHint": "Avab mudelivaliku menüü",
+    "closeLabel": "Sulgege mudelivalija",
+    "searchLabel": "Otsige mudeleid",
+    "searchHint": "Saadaolevate mudelite filtreerimiseks tippige",
+    "modelLabel": "{{name}} mudel",
+    "selectHint": "Valige {{name}} mudel",
+    "currentlySelected": "Hetkel valitud mudel",
+    "genericModel": "{{provider}} mudel",
+    "badges": {
+      "new": "UUS",
+      "best": "PARIM"
+    }
+  },
+  "models": {
+    "gpt-4o": "Kõige võimsam AI mudel",
+    "gpt-4o-mini": "Kiire igapäevaste toimingute jaoks",
+    "gpt-5": "Kõige võimsam universaalne AI",
+    "gpt-5-chat-latest": "Optimeeritud vestluse ja dialoogi jaoks",
+    "gpt-5-mini": "Kiire ja töökindel GPT-5",
+    "gpt-5.4-nano": "Kerge mudel lihtsate ülesannete jaoks",
+    "o4-mini": "Tõhus arutlusmudel",
+    "gpt-4.1-mini": "Kompaktne, võimekas GPT-4.1",
+    "claude-3-haiku": "Kiire ja keskendunud antropiline AI",
+    "claude-3.7-sonnet": "Anthropicu rafineeritud arutluskäik",
+    "gemini-2.5-Flash": "Google'i kõige arenenum mudel",
+    "gemini-2.5-flash": "Google'i kõige arenenum mudel",
+    "gemini-2.0-flash": "Kiire ja täpne Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Kõige võimsam AI mudel",
+    "fast_everyday": "Kiire igapäevaste toimingute jaoks",
+    "fast_reasoning": "Kiire ja hea põhjendusega mudel",
+    "great_reasoning": "Täiustatud arutlusmudel",
+    "coding_reasoning": "Täiustatud kodeerimine ja arutluskäik",
+    "better_coding": "Parem kodeerimiseks ja arutlemiseks",
+    "best_overall": "Parim universaalne AI mudel",
+    "best_google": "Google'i parim mudel",
+    "best_xai": "xAI võimsaim mudel",
+    "creative_focus": "Suurepärane loominguliseks kirjutamiseks",
+    "code_helper": "Suurepärane abi kodeerimiseks",
+    "chat_focus": "Optimeeritud vestlemiseks",
+    "long_context": "Suurepärane pikkade kontekstide jaoks",
+    "budget_friendly": "Eelarvesõbralik AI mudel",
+    "ultra_fast": "Ülikiired vastused",
+    "safe_default": "Turvaline vaikevalik",
+    "multilingual": "Tugev mitmekeelne tugi",
+    "vision_strong": "Suurepärane piltide ja visiooniga",
+    "data_analysis": "Hea andmeanalüüsiks",
+    "structured_tasks": "Hea struktureeritud ülesannete jaoks",
+    "everyday_helper": "Igapäevase abilise modell",
+    "concise_answers": "Lühikesed, sisutihedad vastused",
+    "detailed_answers": "Üksikasjalikud samm-sammult vastused",
+    "experimental": "Eksperimentaalne järgmise põlvkonna mudel",
+    "reliable_classic": "Usaldusväärne klassikaline mudel",
+    "lightweight": "Kerge, odav mudel",
+    "chatty_personal": "Sõbralikum ja isiklikum",
+    "pro_users": "Parim võimsatele kasutajatele",
+    "research_helper": "Sobib uurimiseks ja märkmete tegemiseks",
+    "reasoning_strong": "Täiustatud arutlusmudel"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Antroopne",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "muud"
+  },
+  "navigation": {
+    "chat": "Uus vestlus",
+    "history": "Ajalugu",
+    "rewards": "Igapäevased preemiad",
+    "assistants": "Assistendid",
+    "imagesStudio": "Image Studio",
+    "settings": "Seaded",
+    "recentChats": "Viimased vestlused",
+    "proFeatures": "Pro funktsioonid",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Hankige Pro funktsioonid",
+      "subtitle": "Kõik AI funktsioonid"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Looge, täpsustage ja avaldage visuaalseid varasid ühes kohas.",
+    "cta": "Avatud"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Valige pildid",
+    "exitSelectionMode": "Välju valikurežiimist",
+    "selectAll": "Valige Kõik",
+    "noImagesYet": "Pilte veel pole",
+    "describeImageHint": "Kirjeldage oma pilti allpool ja puudutage nuppu Genereeri.",
+    "generatedImagesGallery": "Loodud pildigalerii",
+    "describeImagePlaceholder": "Kirjeldage soovitud pilti…",
+    "deleteConfirmTitle": "Kustuta pildid",
+    "deleteConfirmMessage": "Kas soovite kindlasti valitud pildid kustutada? Seda toimingut ei saa tagasi võtta.",
+    "cancel": "Tühista",
+    "delete": "Kustuta",
+    "generate": "Genereeri",
+    "generating": "Loomine…",
+    "latest": "Viimased",
+    "insertToChat": "Sisestage vestluseks",
+    "pleaseWait": "Palun oota…",
+    "processing": "Töötlemine...",
+    "tapToUploadImage": "Pildi üleslaadimiseks puudutage",
+    "camera": "Fotode üleslaadimine",
+    "library": "Raamatukogu",
+    "enterPrompt": "Sisestage viip tekstist pildiks genereerimiseks",
+    "openInBrowser": "Ava brauseris",
+    "makeVariations": "Tehke variatsioone",
+    "deleteAllFromGeneration": "Kustuta kõik sellest põlvkonnast",
+    "imageOptionsTitle": "Pildi valikud",
+    "imageOptionsMessage": "Mida sa selle pildiga teha tahaksid?",
+    "insertMarkdownHeader": "Siin on pilt:",
+    "variationSuffix": "— eelmise pildi variatsioon",
+    "selectedCount": "valitud",
+    "selectedCount_one": "valitud",
+    "selectedCount_other": "valitud",
+    "imageDescriptionInput": "Pildi kirjelduse sisestus",
+    "imageDescriptionHint": "Sisestage genereeritava pildi kirjeldus",
+    "openModelSettings": "Avage mudeli seaded",
+    "modelSettingsHint": "Puudutage mudeli ja seadete muutmiseks",
+    "openPhotoGallery": "Ava pildigalerii",
+    "clearInput": "Tühjenda sisend",
+    "generatedImage": "Loodud pilt",
+    "autoSelectedModel": "Automaatselt valitud {{model}} režiimi {{mode}} jaoks",
+    "deleteSelectedConfirmTitle": "Kustuta pilte",
+    "deleteSelectedConfirmMessage": "Kas soovite kindlasti pilte kustutada? Seda toimingut ei saa tagasi võtta."
+  },
+  "imageStudio": {
+    "generateImage": "Loo pilt",
+    "generatingImage": "Pildi genereerimine",
+    "generateImageHint": "Puudutage, et luua kirjelduse põhjal pilt",
+    "imageDescriptionInput": "Pildi kirjelduse sisestus",
+    "imageDescriptionHint": "Sisestage genereeritava pildi kirjeldus",
+    "openModelSettings": "Avage mudeli seaded",
+    "modelSettingsHint": "Puudutage mudeli ja seadete muutmiseks",
+    "openPhotoGallery": "Ava pildigalerii",
+    "clearInput": "Tühjenda sisend",
+    "generatedImage": "Loodud pilt"
+  },
+  "assistants": {
+    "title": "Assistendid",
+    "defaultTitle": "Assistent",
+    "errorTitle": "Midagi läks valesti",
+    "errorMessage": "Seda assistenti ei saanud käivitada.",
+    "noAssistants": "Selles kategoorias assistente ei leitud.",
+    "selectAssistantHint": "Ava abilise valija",
+    "subtitle": "Kureeritud AI-spetsialistid, kes on valmis kodeerimiseks, kirjutamiseks, analüüsimiseks, planeerimiseks ja muuks.",
+    "searchPlaceholder": "Otsi assistente…",
+    "useAssistant": "Kasutage assistenti",
+    "selectAssistant": "Valige assistent",
+    "description": "Kirjeldus",
+    "systemPrompt": "Süsteemi viip",
+    "chooseModel": "Valige mudel",
+    "categoryAll": "Kõik",
+    "categories": {
+      "everyday": "Igapäevane",
+      "life": "Elu",
+      "health": "Tervis",
+      "schoolWork": "Kool ja töö",
+      "coding": "Kodeerimine",
+      "creative": "Loominguline",
+      "general": "Kindral"
+    },
+    "presets": {
+      "default": {
+        "name": "Vaikimisi assistent",
+        "description": "Tasakaalustatud abi igapäevaste asjade jaoks."
+      },
+      "quick": {
+        "name": "Kiired vastused",
+        "description": "Lühikesed, otsesed vastused."
+      },
+      "planner": {
+        "name": "Päevaplaneerija",
+        "description": "Planeerige oma päevad ja rutiinid."
+      },
+      "recipes": {
+        "name": "Toidud ja retseptid",
+        "description": "Mida süüa teha, sellega, mis sul on."
+      },
+      "fitness": {
+        "name": "Fitnessi treener",
+        "description": "Pisikesed harjumused ja kodused treeningud."
+      },
+      "money": {
+        "name": "Raha sõber",
+        "description": "Lihtsad eelarve- ja kulunõuanded."
+      },
+      "study": {
+        "name": "Õppeabiline",
+        "description": "Selgitage lihtsalt. Küsige minult."
+      },
+      "email": {
+        "name": "Saada meil ja jätka",
+        "description": "Kirjutage selged meilid ja CV read."
+      },
+      "translator": {
+        "name": "Tõlkija",
+        "description": "Tõlkige + õpetage fraase."
+      },
+      "travel": {
+        "name": "Reisisõber",
+        "description": "Lihtsad plaanid ja pakkimisnimekirjad."
+      },
+      "tech": {
+        "name": "Tehniline tugi (lihtne)",
+        "description": "Telefon, rakendused, Wi-Fi põhitõed."
+      },
+      "summarizer": {
+        "name": "TL;DR kokkuvõte",
+        "description": "Lühikesed kuulid + üherealine TL;DR."
+      },
+      "gift": {
+        "name": "Kingituste otsija",
+        "description": "Ideed eelarve ja huvide järgi."
+      },
+      "party": {
+        "name": "Sündmuste plaanija (lihtne)",
+        "description": "Planeerige kiiresti väike pidu."
+      },
+      "social": {
+        "name": "Sotsiaalse postituse tegija",
+        "description": "Valikutega postituste mustandid."
+      },
+      "interview": {
+        "name": "Intervjuu treener",
+        "description": "Harjutage vastuseid (STAR)."
+      },
+      "homefix": {
+        "name": "Kodu parandamise juhend",
+        "description": "Lihtne isetegemise tõrkeotsing."
+      },
+      "pet": {
+        "name": "Lemmikloomade hooldamise sõber",
+        "description": "Söötmine, jalutuskäigud, põhitreening."
+      },
+      "mindful": {
+        "name": "Tähelepanelik minut",
+        "description": "1-3 min rahulikud pausid."
+      },
+      "polite": {
+        "name": "Viisakas ümberkirjutaja",
+        "description": "Kirjutage tekstid ja vastused ilusti ümber."
+      }
+    }
+  },
+  "history": {
+    "title": "Ajalugu",
+    "searchPlaceholder": "Otsi vestlustest…",
+    "newChat": "Uus vestlus",
+    "new": "+ Uus",
+    "search": "Otsi",
+    "clearSearch": "Tühjenda otsing",
+    "noChatsYet": "Vestlusi veel pole",
+    "noResults": "Vestlusi veel pole",
+    "startFirstConversation": "Alustage oma esimest vestlust.",
+    "startChat": "Alusta vestlust",
+    "startNewChat": "Alustage uut vestlust",
+    "errorLoadingHistory": "Viga ajaloo laadimisel",
+    "loading": "Ajaloo laadimine...",
+    "renameChat": "Nimeta vestlus ümber",
+    "enterNewTitle": "Sisestage uus pealkiri",
+    "deleteChat": "Kas kustutada vestlus?",
+    "deleteChatMessage": "\"{{title}}\" kustutatakse.",
+    "rename": "Nimeta ümber",
+    "unpin": "Vabastage",
+    "pin": "Pin",
+    "untitled": "Pealkirjata"
+  },
+  "settings": {
+    "title": "Seaded",
+    "model": "Mudel",
+    "searchPlaceholder": "Otsi mudeleid…",
+    "temperatureForCurrentModel": "Praeguse mudeli temperatuur",
+    "customFor": "Kohandatud {{model}} jaoks",
+    "usingDefault": "Vaikimisi {{temperature}} kasutamine",
+    "resetToDefault": "Lähtestage vaikeseadetele",
+    "defaultTemperature": "Vaiketemperatuur (varu)",
+    "usedByModelsWithoutOverride": "Kasutavad mudelid ilma kohandatud alistamiseta",
+    "dangerZone": "Ohutsoon",
+    "clearAllChatsAndSettings": "Kustutage kõik vestlused ja seaded",
+    "about": "Umbes",
+    "version": "Versioon {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Privaatsuspoliitika",
+    "hero": {
+      "label": "Eripakkumine",
+      "title": "Piiramatu juurdepääs\n& Pro funktsioonid",
+      "upgrade": "Uuendage",
+      "manage": "Halda plaani"
+    },
+    "sections": {
+      "premium": "Premium-pakett",
+      "data": "Kasutajaandmed",
+      "support": "Tugi ja juriidiline teave"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Hankige Premium",
+        "subtitle": "Avage piiramatud loomistööriistad"
+      },
+      "premiumActive": {
+        "title": "Premium Aktiivne",
+        "subtitle": "Täname toetamast Cloud AI"
+      },
+      "restore": {
+        "title": "Taasta ostud",
+        "subtitle": "Kasutage, kui vahetasite seadet"
+      },
+      "history": {
+        "title": "Halda vestluste ajalugu",
+        "subtitle": "Vaadake ja kustutage oma eelmisi seansse"
+      },
+      "reset": {
+        "title": "Vestluste ja eelistuste lähtestamine",
+        "subtitle": "Kustutab kõik sellesse seadmesse salvestatud andmed"
+      },
+      "rate": {
+        "title": "Hinda meid",
+        "error": "Poelehte ei saa avada."
+      },
+      "support": {
+        "title": "Toetus",
+        "subtitle": "Võtke meiega ühendust võrgus",
+        "error": "Kontakti lehte ei saa avada."
+      },
+      "privacy": {
+        "title": "Privaatsuspoliitika",
+        "error": "Privaatsuspoliitikat ei saa avada."
+      },
+      "terms": {
+        "title": "Kasutustingimused",
+        "error": "Kasutustingimusi ei saa avada."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Pole saadaval",
+      "linkUnavailableMessage": "Seda linki ei saa praegu avada.",
+      "restoreSuccessTitle": "Taastatud",
+      "restoreSuccessMessage": "Teie ostud on taastatud.",
+      "restoreEmptyTitle": "Ühtegi ostu ei leitud",
+      "restoreEmptyMessage": "Me ei leidnud selle konto jaoks taastamiseks aktiivset ostu.",
+      "restoreErrorTitle": "Taastamine ebaõnnestus",
+      "restoreErrorMessage": "Praegu ei saa oste taastada.",
+      "resetConfirmTitle": "Kas lähtestada rakenduse andmed?",
+      "resetConfirmMessage": "See eemaldab kõik vestlused ja kohalikud eelistused.",
+      "resetConfirmCancel": "Tühista",
+      "resetConfirmCta": "Lähtesta"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Loo",
+    "chooseStyle": "Valige stiil",
+    "aspectRatio": "Kuvasuhe",
+    "starterPrompts": {
+      "title": "Starter Prompts",
+      "items": [
+        "stuudio peapilt",
+        "kaasaegne elutuba",
+        "troopiline rand päikeseloojangul"
+      ]
+    },
+    "promptPlaceholder": "Sisestage, mida soovite näha…",
+    "promptHint": "Näide: \"Kuldne retriiver stuudiovalgustuses\"",
+    "clearText": "Selge tekst",
+    "generate": "Genereeri",
+    "generating": "Loomine…"
+  },
+  "editImage": {
+    "headerTitle": "Muuda",
+    "chooseStyle": "Valige stiil",
+    "aspectRatio": "Kuvasuhe",
+    "starterPrompts": {
+      "title": "Starter Prompts",
+      "items": [
+        "valgustust parandada",
+        "tausta eemaldamine",
+        "pehme portree retušeerimine"
+      ]
+    },
+    "promptPlaceholder": "Kirjeldage muudatusi (valikuline)",
+    "clearText": "Selge tekst",
+    "generate": "Genereeri",
+    "generating": "Rakendamine…",
+    "upload": {
+      "choose": "Valige Foto",
+      "change": "Muuda",
+      "remove": "Eemalda"
+    },
+    "imageUnavailable": {
+      "title": "Pilt pole saadaval",
+      "message": "Valitud fotole ei pääsenud juurde. Valige see uuesti ja proovige uuesti."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Multikas"
+      },
+      "photoreal": {
+        "name": "Fotoreaalne"
+      },
+      "sketch": {
+        "name": "Sketš"
+      },
+      "cyberpunk": {
+        "name": "Küberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D illustratsioon"
+      },
+      "dark_fantasy": {
+        "name": "Tume fantaasia"
+      },
+      "vintage_film": {
+        "name": "Vintage film"
+      },
+      "pastel": {
+        "name": "Pastelne esteetika"
+      },
+      "neon_glow": {
+        "name": "Neoon sära"
+      },
+      "epic_landscape": {
+        "name": "Eepiline maastik"
+      }
+    },
+    "aspectRatios": {
+      "square": "Ruut",
+      "landscape": "Maastik",
+      "portrait": "Portree"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Kohandatud"
+    },
+    "notEnoughCoinsTitle": "Pole piisavalt münte",
+    "notEnoughCoinsMessage": "Teie praegune saldo on selle pildi jaoks liiga madal.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Kiireim mudel",
+      "runwareFluxKrea": "Loomingulised, stiliseeritud tulemused",
+      "runwareQwenImage": "Tasakaalustatud kvaliteetsed tulemused",
+      "google4": "Parim AI pildimudel",
+      "klingImageO1": "Kõrge kontrolliga pilditöötlus",
+      "fluxKontent": "Flux Kontent on muudatusteks häälestatud",
+      "runwareProvider": "Tasakaalustatud kvaliteet usaldusväärse difusiooniga.",
+      "airProvider": "Nano Banana lisab mängulise ja erksa tooni.",
+      "googleProvider": "Google otsis viimistletud detaile.",
+      "klingaiProvider": "KlingAI on häälestatud kontrollitud muudatuste jaoks.",
+      "anthropicProvider": "Claude torujuhe nüansirikaste meeleolude jaoks.",
+      "default": "Puudutage saadaolevate mootorite uurimiseks."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "teie valitud stiil",
+    "sheetTitle": "Oma visiooni kujundamine",
+    "sheetSubtitle": "Lühike lonks serverikohvi, kui segame {{style}} viipasse.",
+    "phases": {
+      "blend": "Segamine {{style}}",
+      "paint": "Stseeni maalimine",
+      "finish": "Lõpliku poleerimise lisamine"
+    },
+    "actions": {
+      "cancel": "Tühista",
+      "retry": "Proovi uuesti",
+      "close": "Sule"
+    },
+    "errors": {
+      "restrictedTitle": "Piiratud sisu",
+      "genericTitle": "Genereerimine ebaõnnestus",
+      "genericMessage": "Pilti ei saanud luua."
+    },
+    "alerts": {
+      "saveFailedTitle": "Ei saanud salvestada",
+      "shareFailedTitle": "Ei saanud jagada",
+      "tryAgain": "Palun proovi uuesti.",
+      "savedTitle": "Salvestatud",
+      "savedMessage": "Pilt salvestati teie galeriisse.",
+      "permissionTitle": "Vajalik luba",
+      "permissionMessage": "Piltide galeriisse salvestamiseks lubage juurdepääs salvestusruumile."
+    },
+    "result": {
+      "complete": "Kõik lõpetatud"
+    },
+    "accessibility": {
+      "close": "Sule"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Kustuta",
+      "edit": "Muuda",
+      "save": "Salvesta",
+      "share": "Jaga"
+    },
+    "alerts": {
+      "savedTitle": "Salvestatud",
+      "savedMessage": "Pilt salvestati teie galeriisse.",
+      "permissionTitle": "Vajalik luba",
+      "permissionMessage": "Piltide galeriisse salvestamiseks lubage juurdepääs salvestusruumile.",
+      "saveFailedTitle": "Ei saanud salvestada",
+      "tryAgain": "Palun proovi uuesti."
+    },
+    "accessibility": {
+      "close": "Sule",
+      "delete": "Kustuta pilt",
+      "edit": "Redigeeri pilti",
+      "save": "Salvesta pilt",
+      "share": "Jaga pilti"
+    }
+  },
+  "reportContent": {
+    "title": "Teatage tehisintellekti sisust",
+    "subtitle": "Rääkige meile, mis selle loodud sisuga valesti on.",
+    "privateDisclosure": "Esitamisel saadetakse teatatud sisu ohutusülevaatuseks.",
+    "accessibilityLabel": "Teatage tehisintellekti sisust",
+    "reasons": {
+      "sexual": "Seksuaalne või alastusega seotud sisu",
+      "violence_self_harm": "Vägivald või enesevigastamine",
+      "hate_harassment": "Vihkamine või ahistamine",
+      "child_safety": "Mure laste turvalisusega",
+      "scam_deceptive": "Kelmus või petlik sisu",
+      "other": "muud"
+    },
+    "errors": {
+      "reasonRequired": "Enne esitamist valige põhjus.",
+      "submit": "Aruannet ei saanud esitada. Palun proovi uuesti."
+    },
+    "success": {
+      "title": "Aitäh. Teie aruanne esitati.",
+      "subtitle": "Kasutame aruandeid sisu ohutuse parandamiseks."
+    },
+    "actions": {
+      "report": "Teata",
+      "submit": "Esitage aruanne",
+      "done": "Valmis"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Ava menüü",
+      "selectImages": "Valige pildid",
+      "exitSelection": "Välju valikust",
+      "deleteSelected": "Kustutage valitud pildid",
+      "selectToDelete": "Valige kustutatavad pildid"
+    },
+    "createCard": {
+      "title": "Loo tekstist",
+      "subtitle": "Sisestage kirjeldus",
+      "cta": "Kirjelda ja genereeri"
+    },
+    "editCard": {
+      "title": "AI fotoredaktor",
+      "subtitle": "Muutke ja täiustage tehisintellektiga",
+      "cta": "Redigeerige AI-ga"
+    },
+    "gallery": {
+      "title": "Galerii",
+      "empty": "Pilte veel pole",
+      "selection": {
+        "enter": "Valige pildid",
+        "exit": "Välju valikust",
+        "deleteSelected": "Kustutage valitud pildid",
+        "selectForDelete": "Valige kustutatavad pildid"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Saage tuttavaks",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Looge ja redigeerige pilte tehisintellektiga – otse Cloud AI sees."
+    },
+    "relaxView": {
+      "title": "Tutvuge oma AI-ga",
+      "titleHighlight": "Assistendid",
+      "subtitle": "Spetsialiseerunud tehisintellekti eksperdid on valmis aitama teie igapäevaste vajadustega",
+      "cards": {
+        "fitness": {
+          "title": "Fitnessi treener",
+          "text": "Pisikesed harjumused ja kodused treeningud."
+        },
+        "recipes": {
+          "title": "Toidud ja retseptid",
+          "text": "Mida süüa teha, sellega, mis sul on."
+        },
+        "travel": {
+          "title": "Reisisõber",
+          "text": "Lihtsad plaanid ja pakkimisnimekirjad."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ETTEVÕTTE KLASSI AI LAHENDUSED",
+      "description": "Tugevdage oma ettevõtet tipptasemel tehisintellekti tehnoloogiaga, mis on mõeldud ettevõtete professionaalidele ja meeskondadele.",
+      "stats": "Usaldab üle 500 000 kasutaja",
+      "rating": "4,9/5",
+      "button": "Alustage"
+    },
+    "buttons": {
+      "continue": "Jätka",
+      "start": "Alustame"
+    }
+  },
+  "coinStore": {
+    "title": "Hankige krediiti",
+    "loading": "Mündipoe laadimine…",
+    "balanceLabel": "Teie praegune saldo on",
+    "balanceValue": "{{amount}} Krediiti",
+    "history": {
+      "link": "Tehinguajalugu",
+      "alertTitle": "Ajalugu",
+      "alertBody": "Tehingute ajalugu tuleb peagi."
+    },
+    "noPacks": "Mündipakke pole saadaval. Kontrollige oma RevenueCat pakkumise ID-d.",
+    "badges": {
+      "basic": "Põhipakett",
+      "popular": "Kõige populaarsem",
+      "value": "Parim väärtus"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Krediiti",
+      "tokensLabel": "{{credits}} Krediiti",
+      "defaultName": "Pakend {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Minge Premiumile",
+      "subtitle": "Piiramatu juurdepääs ja funktsioonid",
+      "cta": "Uuendage"
+    },
+    "termsText": "Ostes nõustute meiega",
+    "termsLink": "Kasutustingimused",
+    "alerts": {
+      "initErrorTitle": "Algviga",
+      "genericMessage": "Midagi läks valesti.",
+      "successTitle": "Edu",
+      "successMessage": "Autorid ilmuvad peagi.",
+      "purchaseFailedTitle": "Ost ebaõnnestus",
+      "unknownError": "Tundmatu viga"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Nõutav lisatasu",
+    "upgrade": "Uuendage",
+    "modelRequiredMessage": "See mudel nõuab Premium. Täiendage, et pääseda juurde mudelitele GPT-5, Grok 4, Claude ja täiustatud mudelitele.",
+    "assistantsRequiredMessage": "Assistendid nõuavad Premium. Täiendage, et pääseda juurde spetsiaalsetele tehisintellekti abilistele treenimiseks, kodeerimiseks, kirjutamiseks ja muuks.",
+    "assistantsTitle": "Nõutav lisatasu",
+    "assistantsMessage": "Assistendid nõuavad Premium. Täiendage, et pääseda juurde spetsiaalsetele tehisintellekti abilistele treenimiseks, kodeerimiseks, kirjutamiseks ja muuks."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5,5, Grok, Gemini",
+    "close": "Sulgege maksemüür",
+    "unavailableTitle": "Ostud pole saadaval",
+    "unavailableMessage": "Androidi arveldamine pole veel konfigureeritud.",
+    "restoreEmptyTitle": "Ühtegi ostu ei leitud",
+    "restoreEmptyMessage": "Me ei leidnud selle konto jaoks taastamiseks aktiivset ostu.",
+    "restoreFailedTitle": "Taastamine ebaõnnestus",
+    "restoreFailedMessage": "Praegu ei saa oste taastada.",
+    "productsUnavailableTitle": "Plaanid pole saadaval",
+    "productsUnavailableMessage": "Ükski Androidi tellimustoode pole praegu saadaval.",
+    "purchaseFailedTitle": "Ost ebaõnnestus",
+    "purchaseFailedMessage": "Seda ostu ei saa praegu lõpule viia.",
+    "restore": "Taasta",
+    "restoreRestoring": "Taastamine…",
+    "features": {
+      "create": "Looge pilte ja videoid",
+      "search": "Otsige veebist AI abil",
+      "talk": "Rääkige tehisintellektiga loomulikult",
+      "imageStudio": "Hankige Image Studio {{credits}} krediiti {{period}}",
+      "period": {
+        "weekly": "iganädalane",
+        "monthly": "igakuine",
+        "yearly": "igal aastal"
+      }
+    },
+    "freeTrial": {
+      "title": "Tasuta prooviversioon",
+      "subtitle": "3-päevane tasuta prooviperiood"
+    },
+    "badge": {
+      "bestOffer": "Parim pakkumine"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Aastane",
+        "only": "Ainult {{price}}",
+        "defaultPrice": "79,99 USA dollarit",
+        "defaultIntroPrice": "1,35 USD"
+      },
+      "monthly": {
+        "title": "Igakuine",
+        "subtitle": "Tühistage igal ajal",
+        "defaultPrice": "19,99 USA dollarit"
+      },
+      "weekly": {
+        "title": "Iganädalane",
+        "subtitle": "Tühistage igal ajal",
+        "defaultPrice": "9,99 USA dollarit",
+        "trialThen": "3 päeva siis tasuta"
+      }
+    },
+    "frequency": {
+      "perWeek": "nädalas",
+      "perMonth": "kuus"
+    },
+    "cta": "Jätka",
+    "ctaFreeTrial": "Proovige seda tasuta",
+    "legal": {
+      "terms": "Tingimused",
+      "privacy": "Privaatsus"
+    },
+    "premium": {
+      "headline": "Kõik tasuline AI ühes plaanis",
+      "subtitleLine1": "Vestelge, kodeerige, looge ja planeerige",
+      "subtitleLine2": "täiustatud mudelitega.",
+      "enableTrial": "Luba tasuta prooviperiood",
+      "annual": "Aastane",
+      "saveBadge": "Säästke 83%",
+      "year": "aasta",
+      "week": "nädal",
+      "termsOfUse": "Kasutustingimused",
+      "privacyPolicy": "Privaatsuspoliitika"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Sõnum...",
+    "createImages": "Loo pilte",
+    "generateAiArtwork": "Looge AI kunstiteoseid",
+    "camera": "Fotode üleslaadimine",
+    "takeOrSelectPhotos": "Valige fotod",
+    "search": "Otsi",
+    "findInformation": "Otsige teavet",
+    "findRecentInfo": "Otsige värsket teavet",
+    "removeImage": "Eemalda pilt",
+    "messageInput": "Sõnumi sisestus",
+    "clearInput": "Tühjenda sisend",
+    "quickActionsLabel": "Kiired toimingud",
+    "hideQuickActions": "Peida kiired toimingud",
+    "showQuickActions": "Näita kiireid toiminguid",
+    "startVoiceInput": "Käivitage häälsisestus",
+    "sendMessage": "Saada sõnum",
+    "offline": "Võrguühenduseta",
+    "stop": "Peatus",
+    "streaming": "Voogesitus…",
+    "closeRecorder": "Sulgege salvesti",
+    "insertTranscript": "Saada",
+    "scrollToLatest": "Kerige viimase sõnumini",
+    "copyMessage": "Kopeeri sõnum",
+    "copyMessageHint": "Kopeerige see sõnum lõikelauale",
+    "shareMessage": "Jaga sõnumit",
+    "shareMessageHint": "Jaga seda sõnumit",
+    "regenerateResponse": "Regenereerige reaktsioon",
+    "regenerateResponseHint": "Loo uus vastus",
+    "copyCode": "Kopeeri kood",
+    "copied": "Kopeeritud",
+    "image": "pilt",
+    "loading": "Laadimine…",
+    "loadingChat": "Vestluse laadimine...",
+    "offlineBanner": "Olete võrguühenduseta. Sõnumeid ei saa saata.",
+    "offlineError": "Interneti-ühendus puudub. Kontrollige ühendust ja proovige uuesti.",
+    "imagePickerErrorTitle": "Pildivalija viga",
+    "imagePickerErrorMessage": "Teie fotodele ei pääse juurde. Palun proovi uuesti.",
+    "messageTooLong": "Sõnum on liiga pikk ({{length}}). Piirang on {{limit}}.",
+    "sendFailed": "Sõnumi saatmine ebaõnnestus. Palun proovi uuesti.",
+    "modelNoImageSupport": "Valitud mudel ei toeta pilte. Valige mõni muu mudel.",
+    "voiceStartFailed": "Häält ei saanud käivitada.",
+    "voiceNoSpeechDetected": "Ühtegi häält ei tuvastatud. Palun proovi uuesti.",
+    "emptyTitle": "Kuidas ma saan aidata?",
+    "emptySubtitle": "Alustage vestlust tehisintellektiga",
+    "privateTitle": "Privaatvestlus",
+    "privateSubtitle": "Seda vestlust teie vestlusajaloos ei kuvata",
+    "startPrivateChat": "Alusta privaatset vestlust",
+    "endPrivateChat": "Lõpeta privaatne vestlus",
+    "permissions": {
+      "photosTitle": "Vajalik fotode luba",
+      "photosMessage": "Piltide valimiseks on vajalik juurdepääs fotodele.",
+      "voiceTitle": "Vajalikud hääleõigused",
+      "voiceMessage": "Hääle kasutamiseks on vajalik juurdepääs mikrofonile ja kõnele."
+    },
+    "activity": {
+      "analyzingImages": "Piltide analüüsimine…",
+      "searching": "Otsimine…",
+      "thinking": "Mõeldes…"
+    },
+    "webSearch": {
+      "title": "Veebiotsing",
+      "subtitle": "Otsige värsket teavet",
+      "label": "Veebiotsing",
+      "enable": "Luba veebiotsing",
+      "disable": "Keela veebiotsing",
+      "toggleLabel": "Otsige veebist"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Kujunda visuaalid kiiresti.",
+      "subtitle": "Looge, täpsustage ja avaldage visuaalseid varasid ühes kohas.",
+      "cta": "Avatud"
+    },
+    "quickActions": {
+      "createImages": "Loo pilte",
+      "openCamera": "Avage Kaamera",
+      "editImage": "Redigeeri pilti",
+      "startVoice": "Käivitage Voice",
+      "assistants": "Assistendid"
+    },
+    "listening": "Kuulamine…",
+    "startRecording": "Alusta salvestamist…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistent pole saadaval",
+      "unavailableDescription": "Me ei saanud seda assistenti laadida. Palun proovi uuesti.",
+      "ready": "Valmis abistama"
+    },
+    "actions": {
+      "copy": "Kopeeri",
+      "share": "Jaga",
+      "regenerate": "Regenereerida",
+      "retryFromHere": "Proovige siit uuesti",
+      "report": "Teata",
+      "cancel": "Tühista"
+    },
+    "markdown": {
+      "copy": "Kopeeri",
+      "copied": "Kopeeritud",
+      "table": "TABEL",
+      "watchVideo": "Vaata Videot",
+      "wikipedia": "Vikipeedia",
+      "link": "Link",
+      "note": "Märkus",
+      "warning": "Hoiatus",
+      "tip": "Vihje"
+    },
+    "messageActionTitle": "Sõnum",
+    "status": {
+      "sending": "Saatmine…",
+      "failed": "Ebaõnnestunud",
+      "sent": "Saadetud"
+    },
+    "suggestions": {
+      "writeStory": "Kirjutage loominguline lugu",
+      "writeStorySubtitle": "maagilisest seiklusest",
+      "planTravel": "Planeerige reisi marsruut",
+      "planTravelSubtitle": "imeliseks puhkuseks",
+      "explainConcept": "Selgitage seda mõistet",
+      "explainConceptSubtitle": "lihtsas mõttes",
+      "planDay": "Planeeri mu päev",
+      "planDaySubtitle": "tootlikkuse näpunäidetega"
+    },
+    "home": {
+      "eyebrow": "Valige teema",
+      "title": "Mida sa teha tahad?",
+      "subtitle": "Valige suund, seejärel alustage tugeva viipaga.",
+      "pickPromptTitle": "Valige alustamiseks viip",
+      "changeTopic": "Valige mõni muu teema",
+      "intents": {
+        "summarize": "Tehke tekstist kokkuvõte",
+        "summarizeShort": "Tehke kokkuvõte",
+        "summarizeHint": "Artiklid, märkmed, häälmemod, pikad lõimed",
+        "plan": "Tehke plaan",
+        "planHint": "Reisid, rutiinid, eelarved, tähtajad, elumuutused",
+        "brainstorm": "Ajurünnak",
+        "brainstormHint": "Ideed, pakkumised, nimed, sisu, kõrvalprojektid",
+        "analyze": "Analüüsige andmeid",
+        "analyzeHint": "Kulutused, tagasiside, mõõdikud, harjumused, jõudlus"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Looge asutaja lühikirjeldus",
+          "founderBriefSubtitle": "Tõstke välja peamised riskid, otsused ja järgmised sammud.",
+          "classNotesTitle": "Puhastage minu õpimärkmed",
+          "classNotesSubtitle": "Muutke ligikaudsed märkmed selgeks õppejuhendiks.",
+          "meetingHandoffTitle": "Kirjutage üleandmise kokkuvõte",
+          "meetingHandoffSubtitle": "Kasulik pärast koosolekuid, kõnesid või pikki sisemisi lõime.",
+          "longArticleTitle": "Tehke sellest artiklist kiiresti kokkuvõte",
+          "longArticleSubtitle": "Tihendage pikk artikkel teravateks väljavõteteks."
+        },
+        "plan": {
+          "energyResetTitle": "Looge 14-päevane energia lähtestamine",
+          "energyResetSubtitle": "Realistlik plaan magamiseks, toiduks, liikumiseks ja keskendumiseks.",
+          "mealPlanTitle": "Planeerige söögid, mida ma tegelikult valmistan",
+          "mealPlanSubtitle": "Praktiline, taskukohane ja põhineb sellel, mis mul on.",
+          "cityMoveTitle": "Plaan oma kolimist uude linna",
+          "cityMoveSubtitle": "Jagage see ajaskaala, eelarve, eluaseme ja administraatori ülesannete kaupa.",
+          "tripEscapeTitle": "Planeerige meeldejääv nädalavahetuse põgenemine",
+          "tripEscapeSubtitle": "Midagi paremat kui üldine marsruut."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Leidke realistlik kõrvaltung",
+          "sideHustleSubtitle": "Ideid, mida saan alustada täiskohaga töötades.",
+          "brandAngleTitle": "Leidke meeldejääv brändinurk",
+          "brandAngleSubtitle": "Kasulik toodete, loojate, agentuuride või uudiskirjade jaoks.",
+          "socialSeriesTitle": "Mõelge välja sisusari",
+          "socialSeriesSubtitle": "Midagi piisavalt ühtlast, et publikut kasvatada.",
+          "datingIdeasTitle": "Tulge välja värskete ideedega",
+          "datingIdeasSubtitle": "Kuupäevad, kingitused, üllatused või sündmused, mis tunduvad läbimõeldud."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Otsige üles, kuhu mu raha lekib",
+          "spendingLeaksSubtitle": "Näidake mustreid, nõrku kohti ja kõige lihtsam võidab esimesena.",
+          "customerFeedbackTitle": "Muutke tagasiside prioriteetideks",
+          "customerFeedbackSubtitle": "Klastritaotlused, kaebused, kiireloomulisus ja mõju.",
+          "habitPatternsTitle": "Märka mustreid minu harjumustes",
+          "habitPatternsSubtitle": "Kasulik treeningute, magamise, päeviku pidamise või fookuslogide jaoks.",
+          "metricsStoryTitle": "Selgitage, mida numbrid tähendavad",
+          "metricsStorySubtitle": "Rohkem signaali, vähem arvutustabeli müra."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Töötlemine...",
+    "tapToUploadImage": "Pildi üleslaadimiseks puudutage"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Töötlemine...",
+    "camera": "Fotode üleslaadimine",
+    "library": "Raamatukogu"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "Proovi uuesti",
+    "cancel": "Tühista",
+    "allow": "Luba",
+    "notNow": "Mitte praegu",
+    "openSettings": "Avage Seaded",
+    "close": "Sule",
+    "save": "Salvesta",
+    "tryAgain": "Proovige uuesti"
+  },
+  "rateUs": {
+    "title": "Kas teile meeldib Cloud AI?",
+    "subtitle": "Teie tagasiside aitab meil täiustada. Kas soovite meid App Store'is hinnata?",
+    "rateNow": "Hinda kohe",
+    "maybeLater": "Võib-olla Hiljem",
+    "dontAskAgain": "Ära küsi uuesti"
+  },
+  "oneTimeOffer": {
+    "title": "Ühekordne pakkumine",
+    "discount": "{{percent}}% SOODSAMALT",
+    "subtitle": "Te ei näe seda pakkumist enam.",
+    "badgeLine1": "Eksklusiivne",
+    "badgeLine2": "Ühekordne pakkumine",
+    "upgradeNow": "Uuendage kohe {{price}} jaoks",
+    "loadingPrice": "Laadimine...",
+    "termsOfUse": "Kasutustingimused",
+    "privacyPolicy": "Privaatsuspoliitika",
+    "accessTitle": "Piiramatu juurdepääs",
+    "accessSubtitle": "GPT, Gemini ja Grok 4",
+    "features": {
+      "unlimitedGPT4": "Piiramatu juurdepääs numbrile GPT-4",
+      "geminiPro": "Juurdepääs Gemini Pro-le",
+      "grokInsights": "Värske ülevaate saamiseks kasutage Grok",
+      "priorityAccess": "Prioriteetne juurdepääs ja kiiremad vastused"
+    },
+    "bestValue": "Parim väärtus",
+    "annualPremium": "Iga-aastane lisatasu",
+    "oneTimePayment": "Ühekordne makse",
+    "wasPrice": "oli",
+    "continue": "Jätka",
+    "restore": "Taasta",
+    "terms": "Tingimused",
+    "privacy": "Privaatsus",
+    "successTitle": "Edu!",
+    "successMessage": "Täname teid ostu eest! Nautige järgmise 12 kuu jooksul esmaklassilist juurdepääsu.",
+    "errorTitle": "Ost ebaõnnestus",
+    "errorMessage": "Midagi läks valesti. Palun proovi uuesti.",
+    "restoreSuccessTitle": "Taastatud",
+    "restoreSuccessMessage": "Teie ostud on taastatud.",
+    "restoreErrorTitle": "Taastamine ebaõnnestus",
+    "restoreErrorMessage": "Taastatavaid oste ei leitud.",
+    "unavailableTitle": "Ostud pole saadaval",
+    "unavailableMessage": "Androidi arveldamine pole veel konfigureeritud."
+  },
+  "rewards": {
+    "header": {
+      "title": "Preemiad",
+      "openMenu": "Ava menüü",
+      "goBack": "Mine tagasi"
+    },
+    "pointsHero": {
+      "totalBalance": "KOKKUSALD",
+      "seeYourRewards": "Vaadake oma preemiaid"
+    },
+    "streakTracker": {
+      "title": "Daily Streak",
+      "subtitle": "Jätka samamoodi! Sa oled leekides.",
+      "days": "Päevad",
+      "prize": "Auhind",
+      "dayLabel": "päev {{number}}",
+      "nextReward": "Järgmine preemia: {{amount}} jaotises {{time}}",
+      "coins": "Mündid"
+    },
+    "sections": {
+      "availableQuests": "Saadaolevad ülesanded",
+      "completedQuests": "Täidetud ülesanded",
+      "availableRewards": "Saadaolevad preemiad",
+      "needsMoreCoins": "Vajab rohkem münte"
+    },
+    "balances": {
+      "rewardCoins": "Preemia mündid",
+      "imageCredits": "Pildi tiitrid"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 pilditiitrit",
+        "imageCredits200": "200 pilditiitrit",
+        "imageCredits600": "600 pildikrediiti",
+        "weeklyPremium": "Iganädalane lisatasu",
+        "secretBox": "Salakast"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Saladuslikud auhinnad sees"
+      },
+      "alerts": {
+        "comingSoonTitle": "Varsti tulemas",
+        "comingSoonMessage": "See preemia pole veel saadaval.",
+        "notEnoughCoinsTitle": "Pole piisavalt münte",
+        "notEnoughCoinsMessage": "Selle preemia avamiseks vajate rohkem preemiamünte.",
+        "errorTitle": "Viga",
+        "couldNotOpenBox": "Kasti ei saanud avada.",
+        "couldNotRedeem": "Preemiat ei saanud lunastada. Palun proovi uuesti.",
+        "mysteryReward": "Saladuslik tasu"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Igapäevane sisselogimine",
+        "description": "Avage rakendus täna, et hoida oma edu",
+        "message": "See ülesanne täidetakse automaatselt, kui avate rakenduse iga päev."
+      },
+      "shareFacebook": {
+        "title": "Jaga Facebookis",
+        "description": "Postitage meist Facebooki"
+      },
+      "shareTwitter": {
+        "title": "Jaga Twitteris",
+        "description": "Tweet oma kogemusi"
+      },
+      "shareInstagram": {
+        "title": "Jaga Instagramis",
+        "description": "Jaga lugu või postitust"
+      },
+      "shareExperience": {
+        "title": "Jaga oma kogemusi",
+        "description": "Öelge sõpradele, miks teile rakendus meeldib"
+      },
+      "share": {
+        "genericMessage": "Kasutan seda AI-rakendust vestluseks ja piltide loomiseks. Vaata järele: {{url}}",
+        "facebookQuote": "Vaadake seda AI rakendust!",
+        "twitterText": "Proovin seda AI rakendust, see on päris lahe.",
+        "instagramMessage": "Vaadake seda AI rakendust: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Viga",
+        "errorMessage": "Poe lehte ei saanud avada."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Ülesanne lõpetatud",
+        "description": "Ülesanne lõpetatud",
+        "points": "+{{points}} punkti",
+        "close": "Sule"
+      },
+      "rewardSuccess": {
+        "error": "VIGA",
+        "success": "EDU",
+        "somethingWentWrong": "Midagi läks valesti",
+        "rewardUnlocked": "Preemia lukustamata",
+        "credits": "Krediidid",
+        "close": "Sule",
+        "okay": "Olgu"
+      },
+      "secretBox": {
+        "pill": "SALAJAKAS",
+        "rewardUnlocked": "AUHIM AVATUD",
+        "shufflingRewards": "Auhindu segades...",
+        "imageCreditsAdded": "Teie kontole lisatud pildikrediit",
+        "continue": "Jätka",
+        "revealing": "paljastab...",
+        "prizeTiers": {
+          "lucky": "ÕNNE",
+          "pro": "PRO",
+          "elite": "ELIIT",
+          "mythic": "MÜÜTILINE"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Võta oma igapäevased mündid",
+      "subtitle": "Tule iga päev tagasi — tasu kasvab.",
+      "cta": "Registreeri",
+      "claimed": "Saadud! +{{amount}} münti",
+      "later": "Hiljem"
+    }
+  },
+  "app": {
+    "version": "Versioon {{version}}",
+    "offlineBanner": "Olete võrguühenduseta",
+    "launch": {
+      "accessibilityLabel": "Alates Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, valmis, kui olete"
+    },
+    "errors": {
+      "modelsLoadTitle": "Mudelite laadimine ebaõnnestus",
+      "modelsLoadMessage": "AI-mudeleid ei saa laadida. Rakendus kasutab vaikemudeleid. Kontrollige oma Interneti-ühendust.",
+      "modelsLoadTimeout": "Mudelite laadimine võttis liiga kaua aega. Rakendus kasutab vaikemudeleid. Palun proovi uuesti.",
+      "modelsLoadNetwork": "Interneti-ühendus puudub. Rakendus kasutab vaikemudeleid. Palun kontrollige oma ühendust.",
+      "deviceIdTitle": "Initsialiseerimise viga",
+      "deviceIdMessage": "Seadme ID lähtestamine ebaõnnestus. Mõned funktsioonid ei pruugi korralikult töötada.",
+      "storageTitle": "Salvestusviga",
+      "storageMessage": "Kohalikule salvestusruumile ei pääse juurde. Mõned funktsioonid ei pruugi korralikult töötada.",
+      "crashTitle": "Midagi läks valesti.",
+      "crashSubtitle": "Palun proovi uuesti.",
+      "crashLabel": "Rakendus jooksis kokku"
+    },
+    "proxyErrors": {
+      "genericTitle": "Midagi läks valesti",
+      "genericMessage": "Palun proovi uuesti.",
+      "rateLimitTitle": "Liiga palju taotlusi",
+      "rateLimitMessage": "Tegeleme paljude taotlustega. Proovige mõne aja pärast uuesti.",
+      "rateLimitRetryAfter": "Tegeleme paljude taotlustega. Proovige uuesti umbes {{seconds}} sekundi pärast.",
+      "restrictedTitle": "Piiratud sisu",
+      "restrictedMessage": "Turvafiltrid blokeerisid selle taotluse.",
+      "insufficientCoinsTitle": "Pole piisavalt münte",
+      "insufficientCoinsMessage": "Teie praegune saldo on selle taotluse jaoks liiga madal.",
+      "imageUnavailableTitle": "Pilt pole saadaval",
+      "imageUnavailableMessage": "Loodud pildifail ei olnud ajutiselt saadaval. Palun proovi uuesti.",
+      "authorizationTitle": "Autoriseerimise probleem",
+      "authorizationMessage": "Me ei saanud teie kontot kinnitada. Palun proovi uuesti.",
+      "serverTitle": "Serveri luksumine",
+      "serverMessage": "Meie serveritel oli probleeme. Proovige varsti uuesti.",
+      "timeoutTitle": "Liiga kaua aega võtab",
+      "timeoutMessage": "Taotlus aegus. Palun proovi uuesti.",
+      "networkTitle": "Ühendust pole",
+      "networkMessage": "Interneti-ühendus puudub. Kontrollige ühendust ja proovige uuesti.",
+      "requestTitle": "Taotlege probleemi",
+      "requestMessage": "Teie taotlusega läks midagi valesti. Palun proovi uuesti."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktiveerige Premium",
+    "activateMessage": "Kas soovite aktiveerida ülevaataja lisatasu?",
+    "activateAction": "Aktiveerige",
+    "deactivateTitle": "Deaktiveerige Premium",
+    "deactivateMessage": "Kas soovite arvustajate lisatasu desaktiveerida?",
+    "deactivateAction": "Deaktiveeri"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Igapäevane tasu",
+      "body": "Ärge jääge oma igapäevastest müntidest ilma – hankige oma raha enne südaööd."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Ära jää ilma oma igapäevastest müntidest",
+      "body": "Saadame ühe meeldetuletuse päevas, et sinu seeria püsiks ja mündid kasvaksid. Rämpsposti pole ja saad selle igal ajal välja lülitada.",
+      "enable": "Lülita meeldetuletused sisse",
+      "skip": "Mitte praegu"
+    }
+  }
+}

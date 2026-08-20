@@ -13,6 +13,7 @@ import {
   Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useFocusEffect } from '@react-navigation/native';
 import SvgIcon from '../components/SvgIcon';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Reanimated, {
@@ -35,7 +36,7 @@ import { getImageModelPrice } from '../utils/imagePricing';
 import RNFS from 'react-native-fs';
 import { useTranslation } from 'react-i18next';
 import Svg, { Path } from 'react-native-svg';
-import { SubscriptionContext } from '../context/SubscriptionContext';
+import { SubscriptionAccessContext } from '../context/SubscriptionContext';
 import features from '../config/features';
 import { getImageModelsRegistry } from '../config/models';
 import { perfLog } from '../lib/perfTrace';
@@ -44,6 +45,7 @@ import {
   ROOT_DRAWER_ROUTE,
   ROOT_DRAWER_SCREEN_NAMES,
 } from '../navigation/rootNavigation';
+import { runImagePickerSingleFlight } from '../lib/imagePickerSingleFlight';
 
 const STYLES = [
   { id: 'photoreal', name: 'Photoreal', image: require('../../assets/images/createstudio/photoreal.webp'), cost: 3 },
@@ -156,6 +158,25 @@ export default function EditImage({ navigation, route }) {
   const [busy, setBusy] = useState(false);
   const [imageUri, setImageUri] = useState('');
   const [imageReference, setImageReference] = useState('');
+  const [imagePickerActive, setImagePickerActive] = useState(false);
+  const isMountedRef = useRef(true);
+  const isFocusedRef = useRef(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      isFocusedRef.current = true;
+      return () => {
+        isFocusedRef.current = false;
+      };
+    }, []),
+  );
+
+  useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+      isFocusedRef.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     setSelectedModel(defaultModel);
@@ -172,7 +193,7 @@ export default function EditImage({ navigation, route }) {
   }, [returnTo, route?.params?.seedPrompt]);
 
   const headerStyle = useMemo(() => [styles.header, { paddingTop: Math.max(insets.top, 12) + 6 }], [insets.top]);
-  const subscription = useContext(SubscriptionContext);
+  const subscription = useContext(SubscriptionAccessContext);
   const footerInset = Math.max(insets.bottom, 14);
   // Keyboard-aware footer + content
   const keyboard = useAnimatedKeyboard();
@@ -204,27 +225,55 @@ export default function EditImage({ navigation, route }) {
   const selectedSize = useMemo(() => (ASPECTS.find(a => a.key === aspect)?.size || '1024x1024'), [aspect]);
 
   const pickImage = useCallback(async () => {
-    // Request base64 and force a decode/re-encode to bake EXIF orientation into pixels
-    const res = await launchImageLibrary({
-      mediaType: 'photo',
-      selectionLimit: 1,
-      includeBase64: true,
-      includeExtra: true,
-      maxWidth: 1800,
-      maxHeight: 1800,
-      quality: 1,
-    });
-    const asset = res?.assets?.[0];
-    if (asset?.uri) {
-      setImageUri(asset.uri);
-      const mime = asset?.type || 'image/jpeg';
-      if (asset?.base64) {
-        setImageReference(`data:${mime};base64,${asset.base64}`);
-      } else {
-        setImageReference(asset.uri);
+    try {
+      const result = await runImagePickerSingleFlight(async () => {
+        if (isMountedRef.current) {
+          setImagePickerActive(true);
+        }
+        try {
+          return await launchImageLibrary({
+            mediaType: 'photo',
+            selectionLimit: 1,
+            includeBase64: false,
+            maxWidth: 1800,
+            maxHeight: 1800,
+            quality: 1,
+          });
+        } finally {
+          if (isMountedRef.current) {
+            setImagePickerActive(false);
+          }
+        }
+      });
+
+      if (!result.started || !isMountedRef.current || !isFocusedRef.current) {
+        return;
       }
+
+      const response = result.response;
+      if (response?.didCancel) return;
+      if (response?.errorCode || response?.errorMessage) {
+        Alert.alert(
+          t('chat.imagePickerErrorTitle'),
+          t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' }),
+        );
+        return;
+      }
+
+      const assets = Array.isArray(response?.assets) ? response.assets : [];
+      const asset = assets.find(candidate => candidate?.uri);
+      if (!asset?.uri) return;
+
+      setImageUri(asset.uri);
+      setImageReference('');
+    } catch {
+      if (!isMountedRef.current || !isFocusedRef.current) return;
+      Alert.alert(
+        t('chat.imagePickerErrorTitle'),
+        t('chat.imagePickerErrorMessage', { defaultValue: 'Unable to access your photos. Please try again.' }),
+      );
     }
-  }, []);
+  }, [t]);
 
   const ensureReferenceImage = useCallback(async () => {
     if (!imageUri) return '';
@@ -243,7 +292,7 @@ export default function EditImage({ navigation, route }) {
   }, [imageUri, imageReference]);
   const showInsufficientCoinsAlert = useCallback(() => {
     Alert.alert(
-      t('notEnoughCoinsTitle', { defaultValue: 'Not enough coins' }),
+      t('studioCommon.notEnoughCoinsTitle', { defaultValue: 'Not enough coins' }),
       t('studioCommon.notEnoughCoinsMessage', {
         defaultValue: 'Your current balance is too low for this image.',
       }),
@@ -450,7 +499,13 @@ export default function EditImage({ navigation, route }) {
               <View>
                 <Image source={{ uri: imageUri }} style={styles.uploadPreview} resizeMode="cover" />
                 <View style={styles.uploadActions}>
-                  <Pressable style={styles.uploadBtn} onPress={pickImage}><Text style={styles.uploadBtnText}>{t('editImage.upload.change')}</Text></Pressable>
+                  <Pressable
+                    style={[styles.uploadBtn, imagePickerActive && styles.uploadDisabled]}
+                    onPress={pickImage}
+                    disabled={imagePickerActive}
+                  >
+                    <Text style={styles.uploadBtnText}>{t('editImage.upload.change')}</Text>
+                  </Pressable>
                   <Pressable
                     style={styles.uploadBtn}
                     onPress={() => {
@@ -463,7 +518,11 @@ export default function EditImage({ navigation, route }) {
                 </View>
               </View>
             ) : (
-              <Pressable style={styles.uploadEmpty} onPress={pickImage}>
+              <Pressable
+                style={[styles.uploadEmpty, imagePickerActive && styles.uploadDisabled]}
+                onPress={pickImage}
+                disabled={imagePickerActive}
+              >
                 <SvgIcon name="photo" size={24} color={'rgba(255,255,255,0.8)'} />
                 <Text style={styles.uploadEmptyText}>{t('editImage.upload.choose')}</Text>
               </Pressable>
@@ -693,6 +752,7 @@ const styles = StyleSheet.create({
   uploadActions: { flexDirection: 'row', gap: 10, marginTop: 10 },
   uploadBtn: { flex: 1, height: 44, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.1)', alignItems: 'center', justifyContent: 'center' },
   uploadBtnText: { color: '#FFFFFF', fontSize: 14, fontWeight: '700' },
+  uploadDisabled: { opacity: 0.5 },
 
   stylesList: { paddingTop: 4, paddingBottom: 6, gap: 12 },
   styleItem: { width: 140, marginRight: 12, marginBottom: 12, alignItems: 'center' },

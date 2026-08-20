@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Zgjidhni një model",
+    "searchPlaceholder": "Kërko modele...",
+    "noModelsFound": "Nuk u gjetën modele",
+    "noModelsAvailable": "Nuk ka modele të disponueshme",
+    "currentModel": "Modeli aktual: {{name}}. Trokit për të ndryshuar modelin.",
+    "openHint": "Hap menynë e zgjedhjes së modelit",
+    "closeLabel": "Mbyll përzgjedhësin e modelit",
+    "searchLabel": "Kërko modele",
+    "searchHint": "Shkruani për të filtruar modelet e disponueshme",
+    "modelLabel": "Modeli {{name}}",
+    "selectHint": "Zgjidhni modelin {{name}}",
+    "currentlySelected": "Modeli i përzgjedhur aktualisht",
+    "genericModel": "Modeli {{provider}}",
+    "badges": {
+      "new": "E RE",
+      "best": "MË E MIRË"
+    }
+  },
+  "models": {
+    "gpt-4o": "Modeli më i fuqishëm i AI",
+    "gpt-4o-mini": "I shpejtë për detyrat e përditshme",
+    "gpt-5": "Inteligjenca artificiale më e fuqishme për të gjitha qëllimet",
+    "gpt-5-chat-latest": "Optimizuar për bisedë dhe dialog",
+    "gpt-5-mini": "I shpejtë dhe i besueshëm GPT-5",
+    "gpt-5.4-nano": "Model i lehtë për detyra të thjeshta",
+    "o4-mini": "Modeli i arsyetimit efikas",
+    "gpt-4.1-mini": "Kompakt, i aftë GPT-4.1",
+    "claude-3-haiku": "AI Antropike e shpejtë dhe e fokusuar",
+    "claude-3.7-sonnet": "Arsyetimi i rafinuar nga Anthropic",
+    "gemini-2.5-Flash": "Modeli më i avancuar i Google",
+    "gemini-2.5-flash": "Modeli më i avancuar i Google",
+    "gemini-2.0-flash": "AI i shpejtë dhe i saktë i Google"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Modeli më i fuqishëm i AI",
+    "fast_everyday": "I shpejtë për detyrat e përditshme",
+    "fast_reasoning": "Model i shpejtë me arsyetim të mirë",
+    "great_reasoning": "Modeli i avancuar i arsyetimit",
+    "coding_reasoning": "Kodimi dhe arsyetimi i avancuar",
+    "better_coding": "Më mirë për kodim dhe arsyetim",
+    "best_overall": "Modeli më i mirë i gjithanshëm i AI",
+    "best_google": "Modeli më i mirë i Google",
+    "best_xai": "Modeli më i fuqishëm i xAI",
+    "creative_focus": "E shkëlqyeshme për shkrime krijuese",
+    "code_helper": "E shkëlqyeshme për ndihmë në kodim",
+    "chat_focus": "Optimizuar për të biseduar",
+    "long_context": "E shkëlqyeshme për kontekste të gjata",
+    "budget_friendly": "Modeli buxhetor i AI",
+    "ultra_fast": "Përgjigje ultra të shpejta",
+    "safe_default": "Zgjedhja e sigurt e paracaktuar",
+    "multilingual": "Mbështetje e fortë shumëgjuhëshe",
+    "vision_strong": "E shkëlqyeshme me imazhe dhe vizion",
+    "data_analysis": "E mirë për analizën e të dhënave",
+    "structured_tasks": "I mirë për detyra të strukturuara",
+    "everyday_helper": "Modeli i asistentit të përditshëm",
+    "concise_answers": "Përgjigje të shkurtra, koncize",
+    "detailed_answers": "Përgjigje të hollësishme hap pas hapi",
+    "experimental": "Modeli eksperimental i gjeneratës së ardhshme",
+    "reliable_classic": "Model klasik i besueshëm",
+    "lightweight": "Model i lehtë, me kosto të ulët",
+    "chatty_personal": "Më miqësore dhe personale",
+    "pro_users": "Më e mira për përdoruesit e fuqisë",
+    "research_helper": "E mirë për kërkime dhe shënime",
+    "reasoning_strong": "Modeli i avancuar i arsyetimit"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Antropike",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Të tjera"
+  },
+  "navigation": {
+    "chat": "Bisedë e re",
+    "history": "Historia",
+    "rewards": "Shpërblime ditore",
+    "assistants": "Asistentë",
+    "imagesStudio": "Image Studio",
+    "settings": "Cilësimet",
+    "recentChats": "Bisedat e fundit",
+    "proFeatures": "Karakteristikat pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Merrni veçoritë Pro",
+      "subtitle": "Të gjitha tiparet e AI"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Gjeneroni, rafinoni dhe publikoni asete vizuale në një vend.",
+    "cta": "Hapur"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Zgjidhni imazhe",
+    "exitSelectionMode": "Dilni nga modaliteti i përzgjedhjes",
+    "selectAll": "Zgjidhni Të gjitha",
+    "noImagesYet": "Nuk ka ende imazhe",
+    "describeImageHint": "Përshkruani imazhin tuaj më poshtë dhe prekni Generate.",
+    "generatedImagesGallery": "Galeria e imazheve të krijuara",
+    "describeImagePlaceholder": "Përshkruani imazhin që dëshironi…",
+    "deleteConfirmTitle": "Fshi Imazhet",
+    "deleteConfirmMessage": "Jeni i sigurt që dëshironi të fshini imazhet e zgjedhura? Ky veprim nuk mund të zhbëhet.",
+    "cancel": "Anulo",
+    "delete": "Fshije",
+    "generate": "Gjeneroni",
+    "generating": "Po gjenerohet…",
+    "latest": "E fundit",
+    "insertToChat": "Fut në bisedë",
+    "pleaseWait": "Ju lutemi prisni…",
+    "processing": "Po përpunohet...",
+    "tapToUploadImage": "Prekni për të ngarkuar imazhin",
+    "camera": "Ngarko Foto",
+    "library": "Biblioteka",
+    "enterPrompt": "Ju lutemi shkruani një kërkesë për gjenerimin e tekstit në imazh",
+    "openInBrowser": "Hapni në shfletues",
+    "makeVariations": "Bëni variacione",
+    "deleteAllFromGeneration": "Fshijini të gjitha nga ky brez",
+    "imageOptionsTitle": "Opsionet e imazhit",
+    "imageOptionsMessage": "Çfarë do të dëshironit të bënit me këtë imazh?",
+    "insertMarkdownHeader": "Këtu është imazhi për:",
+    "variationSuffix": "- variacion i imazhit të mëparshëm",
+    "selectedCount": "të zgjedhura",
+    "selectedCount_one": "të zgjedhura",
+    "selectedCount_other": "të zgjedhura",
+    "imageDescriptionInput": "Hyrja e përshkrimit të imazhit",
+    "imageDescriptionHint": "Futni një përshkrim të imazhit që dëshironi të gjeneroni",
+    "openModelSettings": "Hap cilësimet e modelit",
+    "modelSettingsHint": "Prekni për të ndryshuar modelin dhe cilësimet",
+    "openPhotoGallery": "Hapni galerinë e fotografive",
+    "clearInput": "Pastro hyrjen",
+    "generatedImage": "Imazhi i krijuar",
+    "autoSelectedModel": "{{model}} e zgjedhur automatikisht për modalitetin {{mode}}",
+    "deleteSelectedConfirmTitle": "Fshi imazhet",
+    "deleteSelectedConfirmMessage": "Jeni i sigurt që dëshironi të fshini imazhet? Ky veprim nuk mund të zhbëhet."
+  },
+  "imageStudio": {
+    "generateImage": "Krijo imazh",
+    "generatingImage": "Gjenerimi i imazhit",
+    "generateImageHint": "Prekni për të krijuar një imazh bazuar në përshkrimin tuaj",
+    "imageDescriptionInput": "Hyrja e përshkrimit të imazhit",
+    "imageDescriptionHint": "Futni një përshkrim të imazhit që dëshironi të gjeneroni",
+    "openModelSettings": "Hap cilësimet e modelit",
+    "modelSettingsHint": "Prekni për të ndryshuar modelin dhe cilësimet",
+    "openPhotoGallery": "Hapni galerinë e fotografive",
+    "clearInput": "Pastro hyrjen",
+    "generatedImage": "Imazhi i krijuar"
+  },
+  "assistants": {
+    "title": "Asistentë",
+    "defaultTitle": "Asistent",
+    "errorTitle": "Diçka shkoi keq",
+    "errorMessage": "Ky asistent nuk mund të nisej.",
+    "noAssistants": "Asnjë ndihmës nuk u gjet në këtë kategori.",
+    "selectAssistantHint": "Hap zgjedhësin e ndihmësit",
+    "subtitle": "Specialistët e kuruar të AI të gatshëm për kodim, shkrim, analizë, planifikim dhe më shumë.",
+    "searchPlaceholder": "Kërko asistentët…",
+    "useAssistant": "Përdorni Asistentin",
+    "selectAssistant": "Zgjidhni asistentin",
+    "description": "Përshkrimi",
+    "systemPrompt": "Prompt i sistemit",
+    "chooseModel": "Zgjidhni Model",
+    "categoryAll": "Të gjitha",
+    "categories": {
+      "everyday": "çdo ditë",
+      "life": "Jeta",
+      "health": "Shëndeti",
+      "schoolWork": "Shkolla & Puna",
+      "coding": "Kodimi",
+      "creative": "Kreative",
+      "general": "Gjeneral"
+    },
+    "presets": {
+      "default": {
+        "name": "Asistenti i parazgjedhur",
+        "description": "Ndihmë e ekuilibruar për gjërat e përditshme."
+      },
+      "quick": {
+        "name": "Përgjigje të shpejta",
+        "description": "Përgjigje të shkurtra, të drejtpërdrejta."
+      },
+      "planner": {
+        "name": "Planifikues ditor",
+        "description": "Planifikoni ditën dhe rutinat tuaja."
+      },
+      "recipes": {
+        "name": "Ushqimi & Receta",
+        "description": "Çfarë të gatuash, me atë që ke."
+      },
+      "fitness": {
+        "name": "Trajneri i fitnesit",
+        "description": "Zakone të vogla dhe stërvitje në shtëpi."
+      },
+      "money": {
+        "name": "Shoku i parave",
+        "description": "Buxhete të thjeshta dhe këshilla për shpenzimet."
+      },
+      "study": {
+        "name": "Ndihmës Studimi",
+        "description": "Shpjegoni thjesht. Më pyet mua."
+      },
+      "email": {
+        "name": "Email & Rezyme",
+        "description": "Shkruani emaile të qarta dhe linja CV."
+      },
+      "translator": {
+        "name": "Përkthyes",
+        "description": "Përktheni + mësoni frazat."
+      },
+      "travel": {
+        "name": "Shoku i udhëtimit",
+        "description": "Plane të thjeshta dhe lista paketimi."
+      },
+      "tech": {
+        "name": "Mbështetje teknike (e thjeshtë)",
+        "description": "Telefoni, aplikacionet, bazat Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL;DR Përmbledhës",
+        "description": "Plumba të shkurtër + TL me një rresht;DR."
+      },
+      "gift": {
+        "name": "Gjetësi i dhuratave",
+        "description": "Idetë sipas buxhetit dhe interesave."
+      },
+      "party": {
+        "name": "Planifikues i ngjarjeve (Lite)",
+        "description": "Planifikoni shpejt një festë të vogël."
+      },
+      "social": {
+        "name": "Krijuesi i postimeve sociale",
+        "description": "Hartoni postimet me opsione."
+      },
+      "interview": {
+        "name": "Intervistë Trajneri",
+        "description": "Praktikoni përgjigjet (STAR)."
+      },
+      "homefix": {
+        "name": "Udhëzues për rregullimin e shtëpisë",
+        "description": "Zgjidhja e thjeshtë e problemeve DIY."
+      },
+      "pet": {
+        "name": "Shoku i kujdesit për kafshët shtëpiake",
+        "description": "Ushqyerja, shëtitjet, trajnimi bazë."
+      },
+      "mindful": {
+        "name": "Minut i ndërgjegjshëm",
+        "description": "1-3 minuta pushime të qeta."
+      },
+      "polite": {
+        "name": "Rishkrues i sjellshëm",
+        "description": "Rishkruaj tekstet dhe përgjigjet bukur."
+      }
+    }
+  },
+  "history": {
+    "title": "Historia",
+    "searchPlaceholder": "Kërko bisedat…",
+    "newChat": "Bisedë e re",
+    "new": "+ E re",
+    "search": "Kërko",
+    "clearSearch": "Pastro kërkimin",
+    "noChatsYet": "Nuk ka ende biseda",
+    "noResults": "Nuk ka ende biseda",
+    "startFirstConversation": "Filloni bisedën tuaj të parë.",
+    "startChat": "Filloni bisedën",
+    "startNewChat": "Filloni një bisedë të re",
+    "errorLoadingHistory": "Gabim gjatë ngarkimit të historikut",
+    "loading": "Po ngarkon historikun...",
+    "renameChat": "Riemërto bisedën",
+    "enterNewTitle": "Futni një titull të ri",
+    "deleteChat": "Të fshihet biseda?",
+    "deleteChatMessage": "\"{{title}}\" do të fshihet.",
+    "rename": "Riemërto",
+    "unpin": "Zhgozhdoni",
+    "pin": "Fikso",
+    "untitled": "Pa titull"
+  },
+  "settings": {
+    "title": "Cilësimet",
+    "model": "Modeli",
+    "searchPlaceholder": "Kërko modele…",
+    "temperatureForCurrentModel": "Temperatura për modelin aktual",
+    "customFor": "Me porosi për {{model}}",
+    "usingDefault": "Përdorimi i parazgjedhur {{temperature}}",
+    "resetToDefault": "Rivendos në parazgjedhje",
+    "defaultTemperature": "Temperatura e paracaktuar (kthim prapa)",
+    "usedByModelsWithoutOverride": "Përdoret nga modelet pa një ndryshim të personalizuar",
+    "dangerZone": "Zona e rrezikut",
+    "clearAllChatsAndSettings": "Pastro të gjitha bisedat dhe cilësimet",
+    "about": "Rreth",
+    "version": "Versioni {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Politika e privatësisë",
+    "hero": {
+      "label": "Ofertë speciale",
+      "title": "Qasje e pakufizuar\nKarakteristikat & Pro",
+      "upgrade": "Përmirëso",
+      "manage": "Menaxhoni planin"
+    },
+    "sections": {
+      "premium": "Plani Premium",
+      "data": "Të dhënat e përdoruesit",
+      "support": "Mbështetje & Ligjore"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Merr Premium",
+        "subtitle": "Zhbllokoni mjetet e pakufizuara të krijimit"
+      },
+      "premiumActive": {
+        "title": "Premium aktiv",
+        "subtitle": "Faleminderit për mbështetjen Cloud AI"
+      },
+      "restore": {
+        "title": "Rivendos blerjet",
+        "subtitle": "Përdoreni nëse keni ndërruar pajisje"
+      },
+      "history": {
+        "title": "Menaxho historikun e bisedave",
+        "subtitle": "Shikoni dhe fshini seancat tuaja të kaluara"
+      },
+      "reset": {
+        "title": "Rivendos bisedat dhe preferencat",
+        "subtitle": "Pastron të gjitha të dhënat e ruajtura në këtë pajisje"
+      },
+      "rate": {
+        "title": "Na vlerësoni",
+        "error": "Faqja e dyqanit nuk mund të hapet."
+      },
+      "support": {
+        "title": "Mbështetje",
+        "subtitle": "Na kontaktoni online",
+        "error": "Faqja e kontaktit nuk mund të hapet."
+      },
+      "privacy": {
+        "title": "Politika e privatësisë",
+        "error": "Nuk mund të hapet politika e privatësisë."
+      },
+      "terms": {
+        "title": "Kushtet e Përdorimit",
+        "error": "Nuk mund të hapen kushtet e përdorimit."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "I padisponueshëm",
+      "linkUnavailableMessage": "Kjo lidhje nuk mund të hapet për momentin.",
+      "restoreSuccessTitle": "Restauruar",
+      "restoreSuccessMessage": "Blerjet tuaja janë restauruar.",
+      "restoreEmptyTitle": "Nuk u gjet asnjë blerje",
+      "restoreEmptyMessage": "Nuk mundëm të gjenim një blerje aktive për të rivendosur për këtë llogari.",
+      "restoreErrorTitle": "Rivendosja dështoi",
+      "restoreErrorMessage": "Blerjet nuk mund të restaurohen për momentin.",
+      "resetConfirmTitle": "Të rivendosen të dhënat e aplikacionit?",
+      "resetConfirmMessage": "Kjo heq të gjitha bisedat dhe preferencat lokale.",
+      "resetConfirmCancel": "Anulo",
+      "resetConfirmCta": "Rivendos"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Krijo",
+    "chooseStyle": "Zgjidhni një stil",
+    "aspectRatio": "Raporti i pamjes",
+    "starterPrompts": {
+      "title": "Kërkesat e fillimit",
+      "items": [
+        "goditje me kokë në studio",
+        "sallon modern",
+        "plazhi tropikal në perëndim të diellit"
+      ]
+    },
+    "promptPlaceholder": "Shkruani atë që dëshironi të shihni…",
+    "promptHint": "Shembull: 'Golden Retriever në ndriçimin e studios'",
+    "clearText": "Pastro tekstin",
+    "generate": "Gjeneroni",
+    "generating": "Po gjenerohet…"
+  },
+  "editImage": {
+    "headerTitle": "Redakto",
+    "chooseStyle": "Zgjidhni një stil",
+    "aspectRatio": "Raporti i pamjes",
+    "starterPrompts": {
+      "title": "Kërkesat e fillimit",
+      "items": [
+        "rregulloni ndriçimin",
+        "hiqni sfondin",
+        "retush i butë i portretit"
+      ]
+    },
+    "promptPlaceholder": "Përshkruani modifikimet (opsionale)",
+    "clearText": "Pastro tekstin",
+    "generate": "Gjeneroni",
+    "generating": "Po aplikon…",
+    "upload": {
+      "choose": "Zgjidhni Foto",
+      "change": "Ndryshimi",
+      "remove": "Hiq"
+    },
+    "imageUnavailable": {
+      "title": "Imazhi i padisponueshëm",
+      "message": "Fotografia e zgjedhur nuk mund të qasej. Zgjidhe sërish dhe provo sërish."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Film vizatimor"
+      },
+      "photoreal": {
+        "name": "Fotoreale"
+      },
+      "sketch": {
+        "name": "Skicë"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Ilustrim 3D"
+      },
+      "dark_fantasy": {
+        "name": "Fantazi e errët"
+      },
+      "vintage_film": {
+        "name": "Film Vintage"
+      },
+      "pastel": {
+        "name": "Estetike pastel"
+      },
+      "neon_glow": {
+        "name": "Shkëlqim neoni"
+      },
+      "epic_landscape": {
+        "name": "Peizazh Epik"
+      }
+    },
+    "aspectRatios": {
+      "square": "Sheshi",
+      "landscape": "Peizazhi",
+      "portrait": "Portret"
+    },
+    "models": {
+      "fluxKontent": "Përmbajtja Fluks",
+      "custom": "Me porosi"
+    },
+    "notEnoughCoinsTitle": "Nuk mjaftojnë monedha",
+    "notEnoughCoinsMessage": "Bilanci juaj aktual është shumë i ulët për këtë imazh.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Modeli më i shpejtë",
+      "runwareFluxKrea": "Rezultate kreative, të stilizuara",
+      "runwareQwenImage": "Rezultate të balancuara dhe me cilësi të lartë",
+      "google4": "Modeli më i mirë i imazhit të AI",
+      "klingImageO1": "Redaktimi i imazhit me kontroll të lartë",
+      "fluxKontent": "Përmbajtja Flux e akorduar për modifikime",
+      "runwareProvider": "Cilësi e ekuilibruar me difuzion të besueshëm.",
+      "airProvider": "Nano Banana shton ton të gjallë dhe të gjallë.",
+      "googleProvider": "Google akordoi për detaje të lëmuara.",
+      "klingaiProvider": "KlingAI është akorduar për modifikime të kontrolluara.",
+      "anthropicProvider": "Claude tubacion për humor të nuancuar.",
+      "default": "Trokit për të eksploruar motorët e disponueshëm."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "stilin tuaj të zgjedhur",
+    "sheetTitle": "Krijimi i vizionit tuaj",
+    "sheetSubtitle": "Gllënjkë e shkurtër e kafesë së serverit ndërsa përziejmë {{style}} në kërkesë.",
+    "phases": {
+      "blend": "Përzierje në {{style}}",
+      "paint": "Pikturimi i skenës",
+      "finish": "Shtimi i lustrimit përfundimtar"
+    },
+    "actions": {
+      "cancel": "Anulo",
+      "retry": "Provo sërish",
+      "close": "Mbylle"
+    },
+    "errors": {
+      "restrictedTitle": "Përmbajtje e kufizuar",
+      "genericTitle": "Gjenerata dështoi",
+      "genericMessage": "Imazhi nuk mund të gjenerohej."
+    },
+    "alerts": {
+      "saveFailedTitle": "Nuk u ruajt dot",
+      "shareFailedTitle": "Nuk mund të shpërndahej",
+      "tryAgain": "Ju lutemi provoni përsëri.",
+      "savedTitle": "U ruajt",
+      "savedMessage": "Imazhi u ruajt në galerinë tuaj.",
+      "permissionTitle": "Nevojitet leje",
+      "permissionMessage": "Lejo qasjen në hapësirën ruajtëse për të ruajtur imazhet në galerinë tuaj."
+    },
+    "result": {
+      "complete": "Të gjitha të përfunduara"
+    },
+    "accessibility": {
+      "close": "Mbylle"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Fshije",
+      "edit": "Redakto",
+      "save": "Ruaj",
+      "share": "Shpërndaje"
+    },
+    "alerts": {
+      "savedTitle": "U ruajt",
+      "savedMessage": "Imazhi u ruajt në galerinë tuaj.",
+      "permissionTitle": "Nevojitet leje",
+      "permissionMessage": "Lejo qasjen në hapësirën ruajtëse për të ruajtur imazhet në galerinë tuaj.",
+      "saveFailedTitle": "Nuk u ruajt dot",
+      "tryAgain": "Ju lutemi provoni përsëri."
+    },
+    "accessibility": {
+      "close": "Mbylle",
+      "delete": "Fshi imazhin",
+      "edit": "Redakto imazhin",
+      "save": "Ruaj imazhin",
+      "share": "Ndani imazhin"
+    }
+  },
+  "reportContent": {
+    "title": "Raportoni përmbajtjen e AI",
+    "subtitle": "Na tregoni se çfarë nuk shkon me këtë përmbajtje të krijuar.",
+    "privateDisclosure": "Dorëzimi e dërgon këtë përmbajtje të raportuar për shqyrtim sigurie.",
+    "accessibilityLabel": "Raportoni përmbajtjen e AI",
+    "reasons": {
+      "sexual": "Përmbajtje seksuale ose lakuriqësi",
+      "violence_self_harm": "Dhunë ose vetëlëndim",
+      "hate_harassment": "Urrejtje apo ngacmim",
+      "child_safety": "Shqetësimi për sigurinë e fëmijëve",
+      "scam_deceptive": "Përmbajtje mashtruese ose mashtruese",
+      "other": "Të tjera"
+    },
+    "errors": {
+      "reasonRequired": "Ju lutemi zgjidhni një arsye përpara se të dërgoni.",
+      "submit": "Raporti nuk mund të dorëzohej. Ju lutemi provoni përsëri."
+    },
+    "success": {
+      "title": "faleminderit. Raporti juaj u dorëzua.",
+      "subtitle": "Ne do të përdorim raportet për të përmirësuar sigurinë e përmbajtjes."
+    },
+    "actions": {
+      "report": "Raportoni",
+      "submit": "Paraqisni raportin",
+      "done": "U krye"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Hap menunë",
+      "selectImages": "Zgjidhni imazhe",
+      "exitSelection": "Dil nga përzgjedhja",
+      "deleteSelected": "Fshini imazhet e zgjedhura",
+      "selectToDelete": "Zgjidhni imazhet për t'i fshirë"
+    },
+    "createCard": {
+      "title": "Krijo nga Teksti",
+      "subtitle": "Shkruani një përshkrim",
+      "cta": "Përshkruani dhe gjeneroni"
+    },
+    "editCard": {
+      "title": "Redaktori i fotografive të AI",
+      "subtitle": "Transformoni dhe përmirësoni me AI",
+      "cta": "Ndrysho me AI"
+    },
+    "gallery": {
+      "title": "Galeria",
+      "empty": "Nuk ka ende imazhe",
+      "selection": {
+        "enter": "Zgjidhni imazhe",
+        "exit": "Dil nga përzgjedhja",
+        "deleteSelected": "Fshini imazhet e zgjedhura",
+        "selectForDelete": "Zgjidhni imazhet për t'i fshirë"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Takohen",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Krijoni dhe modifikoni imazhe me AI - pikërisht brenda Cloud AI."
+    },
+    "relaxView": {
+      "title": "Njihuni me AI tuaj",
+      "titleHighlight": "Asistentë",
+      "subtitle": "Ekspertë të specializuar të AI të gatshëm për të ndihmuar me nevojat tuaja të përditshme",
+      "cards": {
+        "fitness": {
+          "title": "Trajneri i fitnesit",
+          "text": "Zakone të vogla dhe stërvitje në shtëpi."
+        },
+        "recipes": {
+          "title": "Ushqimi & Receta",
+          "text": "Çfarë të gatuash, me atë që ke."
+        },
+        "travel": {
+          "title": "Shoku i udhëtimit",
+          "text": "Plane të thjeshta dhe lista paketimi."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "NDËRMARRJE-GRADE AI SOLUTIONS",
+      "description": "Fuqizoni biznesin tuaj me teknologjinë e fundit të inteligjencës artificiale të krijuar për profesionistët dhe ekipet e ndërmarrjeve.",
+      "stats": "I besuar nga mbi 500 mijë përdorues",
+      "rating": "4.9 / 5",
+      "button": "Filloni"
+    },
+    "buttons": {
+      "continue": "Vazhdoni",
+      "start": "Le të fillojmë"
+    }
+  },
+  "coinStore": {
+    "title": "Merrni kredite",
+    "loading": "Po ngarkohet dyqani i monedhave…",
+    "balanceLabel": "Bilanci juaj aktual është",
+    "balanceValue": "⟬000⟭ Kredite {{amount}}",
+    "history": {
+      "link": "Historia e Transaksioneve",
+      "alertTitle": "Historia",
+      "alertBody": "Historia e transaksioneve vjen së shpejti."
+    },
+    "noPacks": "Nuk ka paketa monedhash në dispozicion. Kontrollo ID-në tënde të ofertës RevenueCat.",
+    "badges": {
+      "basic": "Paketa bazë",
+      "popular": "Më popullorja",
+      "value": "Vlera më e mirë"
+    },
+    "pack": {
+      "creditsLabel": "⟬000⟭ Kredite {{credits}}",
+      "tokensLabel": "⟬000⟭ Kredite {{credits}}",
+      "defaultName": "Paketa {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "Shko Premium",
+      "subtitle": "Qasje dhe veçori të pakufizuara",
+      "cta": "Përmirëso"
+    },
+    "termsText": "Duke bërë një blerje, ju pajtoheni me tonën",
+    "termsLink": "Kushtet e Shërbimit",
+    "alerts": {
+      "initErrorTitle": "Gabim init",
+      "genericMessage": "Diçka shkoi keq.",
+      "successTitle": "Suksese",
+      "successMessage": "Kreditë do të shfaqen së shpejti.",
+      "purchaseFailedTitle": "Blerja dështoi",
+      "unknownError": "Gabim i panjohur"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Kërkohet Premium",
+    "upgrade": "Përmirëso",
+    "modelRequiredMessage": "Ky model kërkon Premium. Përmirëso për të aksesuar GPT-5, Grok 4, Claude dhe modele më të avancuara.",
+    "assistantsRequiredMessage": "Asistentët kërkojnë Premium. Përmirësojeni për të aksesuar asistentët e specializuar të AI për fitnes, kodim, shkrim dhe më shumë.",
+    "assistantsTitle": "Kërkohet Premium",
+    "assistantsMessage": "Asistentët kërkojnë Premium. Përmirësojeni për të aksesuar asistentët e specializuar të AI për fitnes, kodim, shkrim dhe më shumë."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5,5, Grok, Gemini",
+    "close": "Mbyllni murin e pagesës",
+    "unavailableTitle": "Blerjet nuk ofrohen",
+    "unavailableMessage": "Faturimi i Android nuk është konfiguruar ende.",
+    "restoreEmptyTitle": "Nuk u gjet asnjë blerje",
+    "restoreEmptyMessage": "Nuk mundëm të gjenim një blerje aktive për të rivendosur për këtë llogari.",
+    "restoreFailedTitle": "Rivendosja dështoi",
+    "restoreFailedMessage": "Blerjet nuk mund të restaurohen për momentin.",
+    "productsUnavailableTitle": "Nuk ka plane të disponueshme",
+    "productsUnavailableMessage": "Asnjë produkt i abonimit Android nuk ofrohet për momentin.",
+    "purchaseFailedTitle": "Blerja dështoi",
+    "purchaseFailedMessage": "Kjo blerje nuk mund të kryhet për momentin.",
+    "restore": "Rivendos",
+    "restoreRestoring": "Po restaurohet…",
+    "features": {
+      "create": "Krijoni imazhe dhe video",
+      "search": "Kërkoni në ueb me AI",
+      "talk": "Flisni natyrshëm me AI",
+      "imageStudio": "Merr kredite Image Studio {{credits}} {{period}}",
+      "period": {
+        "weekly": "javore",
+        "monthly": "mujore",
+        "yearly": "vjetore"
+      }
+    },
+    "freeTrial": {
+      "title": "Provë falas",
+      "subtitle": "Provë 3-ditore falas"
+    },
+    "badge": {
+      "bestOffer": "Oferta me e mire"
+    },
+    "plans": {
+      "yearly": {
+        "title": "vjetore",
+        "only": "Vetëm {{price}}",
+        "defaultPrice": "79,99 USD",
+        "defaultIntroPrice": "1,35 USD"
+      },
+      "monthly": {
+        "title": "Mujore",
+        "subtitle": "Anulo në çdo kohë",
+        "defaultPrice": "19,99 USD"
+      },
+      "weekly": {
+        "title": "Javore",
+        "subtitle": "Anulo në çdo kohë",
+        "defaultPrice": "9,99 USD",
+        "trialThen": "3 ditë falas, atëherë"
+      }
+    },
+    "frequency": {
+      "perWeek": "në javë",
+      "perMonth": "në muaj"
+    },
+    "cta": "Vazhdoni",
+    "ctaFreeTrial": "Provojeni falas",
+    "legal": {
+      "terms": "Kushtet",
+      "privacy": "Privatësia"
+    },
+    "premium": {
+      "headline": "E gjithë AI premium në një plan",
+      "subtitleLine1": "Bisedoni, kodoni, krijoni dhe planifikoni",
+      "subtitleLine2": "me modele të avancuara.",
+      "enableTrial": "Aktivizo provë falas",
+      "annual": "Vjetore",
+      "saveBadge": "Kurseni 83%",
+      "year": "viti",
+      "week": "javë",
+      "termsOfUse": "Kushtet e Përdorimit",
+      "privacyPolicy": "Politika e privatësisë"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mesazh...",
+    "createImages": "Krijo Imazhe",
+    "generateAiArtwork": "Gjeneroni vepra arti të AI",
+    "camera": "Ngarko Foto",
+    "takeOrSelectPhotos": "Zgjidhni fotot",
+    "search": "Kërko",
+    "findInformation": "Gjeni informacion",
+    "findRecentInfo": "Gjeni informacionin e fundit",
+    "removeImage": "Hiq imazhin",
+    "messageInput": "Hyrja e mesazhit",
+    "clearInput": "Pastro hyrjen",
+    "quickActionsLabel": "Veprime të shpejta",
+    "hideQuickActions": "Fshih veprimet e shpejta",
+    "showQuickActions": "Trego veprime të shpejta",
+    "startVoiceInput": "Nis hyrjen me zë",
+    "sendMessage": "Dërgo mesazh",
+    "offline": "Jashtë linje",
+    "stop": "Ndalo",
+    "streaming": "Transmetimi…",
+    "closeRecorder": "Mbyll regjistruesin",
+    "insertTranscript": "Dërgo",
+    "scrollToLatest": "Shkoni te mesazhi i fundit",
+    "copyMessage": "Kopjo mesazhin",
+    "copyMessageHint": "Kopjojeni këtë mesazh në kujtesën e fragmenteve",
+    "shareMessage": "Ndani mesazhin",
+    "shareMessageHint": "Ndani këtë mesazh",
+    "regenerateResponse": "Rigjeneroni përgjigjen",
+    "regenerateResponseHint": "Gjeneroni një përgjigje të re",
+    "copyCode": "Kopjo kodin",
+    "copied": "E kopjuar",
+    "image": "imazh",
+    "loading": "Po ngarkohet…",
+    "loadingChat": "Biseda po ngarkohet...",
+    "offlineBanner": "Je jashtë linje. Mesazhet nuk mund të dërgohen.",
+    "offlineError": "Nuk ka lidhje interneti. Ju lutemi kontrolloni lidhjen tuaj dhe provoni përsëri.",
+    "imagePickerErrorTitle": "Gabim zgjedhës i imazhit",
+    "imagePickerErrorMessage": "Nuk mund të qasesh në fotot e tua. Ju lutemi provoni përsëri.",
+    "messageTooLong": "Mesazhi shumë i gjatë ({{length}}). Kufiri është {{limit}}.",
+    "sendFailed": "Dërgimi i mesazhit dështoi. Ju lutemi provoni përsëri.",
+    "modelNoImageSupport": "Modeli i zgjedhur nuk mbështet imazhe. Ju lutemi zgjidhni një model tjetër.",
+    "voiceStartFailed": "Zëri nuk mund të nisej.",
+    "voiceNoSpeechDetected": "Asnjë zë nuk u njoh. Ju lutemi provoni përsëri.",
+    "emptyTitle": "Si mund të ndihmoj?",
+    "emptySubtitle": "Filloni një bisedë me AI",
+    "privateTitle": "Bisedë Private",
+    "privateSubtitle": "Kjo bisedë nuk do të shfaqet në historikun tuaj të bisedës",
+    "startPrivateChat": "Filloni bisedën private",
+    "endPrivateChat": "Përfundo bisedën private",
+    "permissions": {
+      "photosTitle": "Nevojitet leje për fotografitë",
+      "photosMessage": "Kërkohet qasja në foto për të zgjedhur imazhet.",
+      "voiceTitle": "Nevojitet leje zanore",
+      "voiceMessage": "Për të përdorur zërin kërkohet qasja e mikrofonit dhe e të folurit."
+    },
+    "activity": {
+      "analyzingImages": "Po analizon imazhet…",
+      "searching": "Po kërkon…",
+      "thinking": "Duke menduar…"
+    },
+    "webSearch": {
+      "title": "Kërkimi në ueb",
+      "subtitle": "Gjeni informacionin e fundit",
+      "label": "Kërkimi në ueb",
+      "enable": "Aktivizo kërkimin në ueb",
+      "disable": "Çaktivizo kërkimin në ueb",
+      "toggleLabel": "Kërkoni në ueb"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Dizajnoni pamjet vizuale me shpejtësi.",
+      "subtitle": "Gjeneroni, rafinoni dhe publikoni asete vizuale në një vend.",
+      "cta": "Hapur"
+    },
+    "quickActions": {
+      "createImages": "Krijo Imazhe",
+      "openCamera": "Hap kamerën",
+      "editImage": "Redakto imazhin",
+      "startVoice": "Fillo Voice",
+      "assistants": "Asistentë"
+    },
+    "listening": "Po dëgjon…",
+    "startRecording": "Filloni regjistrimin…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistenti nuk ofrohet",
+      "unavailableDescription": "Nuk mund ta ngarkonim këtë asistent. Ju lutemi provoni përsëri.",
+      "ready": "Gati për të ndihmuar"
+    },
+    "actions": {
+      "copy": "Kopjo",
+      "share": "Shpërndaje",
+      "regenerate": "Rigjeneroni",
+      "retryFromHere": "Provo sërish nga këtu",
+      "report": "Raportoni",
+      "cancel": "Anulo"
+    },
+    "markdown": {
+      "copy": "Kopjo",
+      "copied": "E kopjuar",
+      "table": "TABELA",
+      "watchVideo": "Shiko Videon",
+      "wikipedia": "Wikipedia",
+      "link": "Lidhje",
+      "note": "Shënim",
+      "warning": "Paralajmërim",
+      "tip": "Këshillë"
+    },
+    "messageActionTitle": "Mesazh",
+    "status": {
+      "sending": "Po dërgohet…",
+      "failed": "Dështoi",
+      "sent": "Dërguar"
+    },
+    "suggestions": {
+      "writeStory": "Shkruani një histori krijuese",
+      "writeStorySubtitle": "për një aventurë magjike",
+      "planTravel": "Planifikoni një itinerar udhëtimi",
+      "planTravelSubtitle": "për një pushim të mrekullueshëm",
+      "explainConcept": "Shpjegoni këtë koncept",
+      "explainConceptSubtitle": "në terma të thjeshtë",
+      "planDay": "Planifiko ditën time",
+      "planDaySubtitle": "me këshilla për produktivitetin"
+    },
+    "home": {
+      "eyebrow": "Zgjidhni një temë",
+      "title": "Çfarë doni të bëni?",
+      "subtitle": "Zgjidhni një drejtim, pastaj filloni me një kërkesë të fortë.",
+      "pickPromptTitle": "Zgjidhni një kërkesë për të filluar",
+      "changeTopic": "Zgjidhni një temë tjetër",
+      "intents": {
+        "summarize": "Përmblidhni tekstin",
+        "summarizeShort": "Përmblidhni",
+        "summarizeHint": "Artikuj, shënime, memo zanore, tema të gjata",
+        "plan": "Bëni një plan",
+        "planHint": "Udhëtimet, rutinat, buxhetet, afatet, ndryshimet e jetës",
+        "brainstorm": "Stuhi mendimesh",
+        "brainstormHint": "Ide, oferta, emra, përmbajtje, projekte anësore",
+        "analyze": "Analizoni të dhënat",
+        "analyzeHint": "Shpenzimet, reagimet, metrikat, zakonet, performanca"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Krijoni një përmbledhje të themeluesit",
+          "founderBriefSubtitle": "Nxirrni rreziqet kryesore, vendimet dhe hapat e ardhshëm.",
+          "classNotesTitle": "Pastroj shënimet e mia të studimit",
+          "classNotesSubtitle": "Kthejini shënimet e përafërta në një udhëzues të qartë studimi.",
+          "meetingHandoffTitle": "Shkruani një përmbledhje të dorëzimit",
+          "meetingHandoffSubtitle": "I dobishëm pas takimeve, telefonatave ose temave të gjata të brendshme.",
+          "longArticleTitle": "Përmblidheni shpejt këtë artikull",
+          "longArticleSubtitle": "Kondensoni një artikull të gjatë në pika të mprehta."
+        },
+        "plan": {
+          "energyResetTitle": "Ndërtoni një rivendosje energjie 14-ditore",
+          "energyResetSubtitle": "Një plan realist për gjumin, ushqimin, lëvizjen dhe fokusin.",
+          "mealPlanTitle": "Planifikoni ushqimet që unë do të gatuaj në të vërtetë",
+          "mealPlanSubtitle": "Praktike, e përballueshme dhe e bazuar në atë që kam.",
+          "cityMoveTitle": "Planifiko lëvizjen time në një qytet të ri",
+          "cityMoveSubtitle": "Ndani atë në afatet kohore, buxhetin, strehimin dhe detyrat e administratorit.",
+          "tripEscapeTitle": "Planifikoni një arratisje të paharrueshme në fundjavë",
+          "tripEscapeSubtitle": "Diçka më e mirë se një itinerar i përgjithshëm."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Gjeni një ngutje anësore realiste",
+          "sideHustleSubtitle": "Idetë që mund t'i filloj duke punuar me kohë të plotë.",
+          "brandAngleTitle": "Gjeni një kënd të paharrueshëm të markës",
+          "brandAngleSubtitle": "I dobishëm për produktet, krijuesit, agjencitë ose gazetat.",
+          "socialSeriesTitle": "Shpik një seri përmbajtjesh",
+          "socialSeriesSubtitle": "Diçka mjaft e qëndrueshme për të rritur një audiencë.",
+          "datingIdeasTitle": "Dilni me ide të reja",
+          "datingIdeasSubtitle": "Data, dhurata, surpriza ose ngjarje që ndihen të menduara."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Gjeni se ku po më rrjedhin paratë",
+          "spendingLeaksSubtitle": "Trego modelet, pikat e dobëta dhe më e lehta fiton fillimisht.",
+          "customerFeedbackTitle": "Kthejeni reagimin në prioritete",
+          "customerFeedbackSubtitle": "Kërkesat e grupit, ankesat, urgjenca dhe ndikimi.",
+          "habitPatternsTitle": "Vendi modele në zakonet e mia",
+          "habitPatternsSubtitle": "I dobishëm për stërvitjet, gjumin, ditarin ose regjistrat e fokusit.",
+          "metricsStoryTitle": "Shpjegoni se çfarë kuptimi kanë numrat",
+          "metricsStorySubtitle": "Më shumë sinjal, më pak zhurmë e tabelës."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Po përpunohet...",
+    "tapToUploadImage": "Prekni për të ngarkuar imazhin"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Po përpunohet...",
+    "camera": "Ngarko Foto",
+    "library": "Biblioteka"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "Provo sërish",
+    "cancel": "Anulo",
+    "allow": "Lejo",
+    "notNow": "Jo tani",
+    "openSettings": "Hapni Cilësimet",
+    "close": "Mbylle",
+    "save": "Ruaj",
+    "tryAgain": "Provo sërish"
+  },
+  "rateUs": {
+    "title": "Të pëlqejnë Cloud AI?",
+    "subtitle": "Komentet tuaja na ndihmojnë të përmirësohemi. Dëshironi të na vlerësoni në App Store?",
+    "rateNow": "Vlerësoni tani",
+    "maybeLater": "Ndoshta Më vonë",
+    "dontAskAgain": "Mos Pyet Përsëri"
+  },
+  "oneTimeOffer": {
+    "title": "Ofertë një herë",
+    "discount": "⟬000⟭% ULJE {{percent}}",
+    "subtitle": "Nuk do ta shihni më këtë ofertë.",
+    "badgeLine1": "Ekskluzive",
+    "badgeLine2": "Ofertë një herë",
+    "upgradeNow": "Përmirëso tani për {{price}}",
+    "loadingPrice": "Po ngarkohet...",
+    "termsOfUse": "Kushtet e Përdorimit",
+    "privacyPolicy": "Politika e privatësisë",
+    "accessTitle": "Qasje e pakufizuar në",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Qasje e pakufizuar në GPT-4",
+      "geminiPro": "Qasje në Gemini Pro",
+      "grokInsights": "Përdorni Grok për njohuri të reja",
+      "priorityAccess": "Qasje me përparësi dhe përgjigje më të shpejta"
+    },
+    "bestValue": "Vlera më e mirë",
+    "annualPremium": "Premium vjetor",
+    "oneTimePayment": "Pagesë një herë",
+    "wasPrice": "ishte",
+    "continue": "Vazhdoni",
+    "restore": "Rivendos",
+    "terms": "Kushtet",
+    "privacy": "Privatësia",
+    "successTitle": "Suksese!",
+    "successMessage": "Faleminderit për blerjen tuaj! Shijo qasjen premium për 12 muajt e ardhshëm.",
+    "errorTitle": "Blerja dështoi",
+    "errorMessage": "Diçka shkoi keq. Ju lutemi provoni përsëri.",
+    "restoreSuccessTitle": "Restauruar",
+    "restoreSuccessMessage": "Blerjet tuaja janë restauruar.",
+    "restoreErrorTitle": "Rivendosja dështoi",
+    "restoreErrorMessage": "Nuk u gjetën blerje për të rivendosur.",
+    "unavailableTitle": "Blerjet nuk ofrohen",
+    "unavailableMessage": "Faturimi i Android nuk është konfiguruar ende."
+  },
+  "rewards": {
+    "header": {
+      "title": "Shpërblime",
+      "openMenu": "Hap menunë",
+      "goBack": "Kthehu prapa"
+    },
+    "pointsHero": {
+      "totalBalance": "BILANCI TOTALI",
+      "seeYourRewards": "Shihni shpërblimet tuaja"
+    },
+    "streakTracker": {
+      "title": "Rrjedha e përditshme",
+      "subtitle": "Vazhdo kështu! Ju jeni në zjarr.",
+      "days": "Ditët",
+      "prize": "Çmimi",
+      "dayLabel": "dita {{number}}",
+      "nextReward": "Shpërblimi tjetër: {{amount}} në {{time}}",
+      "coins": "Monedha"
+    },
+    "sections": {
+      "availableQuests": "Kërkimet e disponueshme",
+      "completedQuests": "Kërkimet e përfunduara",
+      "availableRewards": "Shpërblime të disponueshme",
+      "needsMoreCoins": "Duhen më shumë monedha"
+    },
+    "balances": {
+      "rewardCoins": "Monedha shpërblimi",
+      "imageCredits": "Kreditë e imazhit"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 Kredite imazhi",
+        "imageCredits200": "200 Kredite imazhi",
+        "imageCredits600": "600 kredite imazhi",
+        "weeklyPremium": "Premium javor",
+        "secretBox": "Kuti sekrete"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Shpërblime misterioze brenda"
+      },
+      "alerts": {
+        "comingSoonTitle": "Së shpejti",
+        "comingSoonMessage": "Ky shpërblim nuk është ende i disponueshëm.",
+        "notEnoughCoinsTitle": "Nuk mjaftojnë monedha",
+        "notEnoughCoinsMessage": "Ju nevojiten më shumë monedha shpërblimi për të zhbllokuar këtë shpërblim.",
+        "errorTitle": "Gabim",
+        "couldNotOpenBox": "Kutia nuk mund të hapej.",
+        "couldNotRedeem": "Shpërblimi nuk mund të përdorej. Ju lutemi provoni përsëri.",
+        "mysteryReward": "Shpërblimi i misterit"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Hyrja Ditore",
+        "description": "Hapni aplikacionin sot për të mbajtur brezin tuaj",
+        "message": "Ky kërkim përfundon automatikisht kur hapni aplikacionin çdo ditë."
+      },
+      "shareFacebook": {
+        "title": "Shpërndaje në Facebook",
+        "description": "Posto rreth nesh në Facebook"
+      },
+      "shareTwitter": {
+        "title": "Shpërndaje në Twitter",
+        "description": "Tweetoni përvojën tuaj"
+      },
+      "shareInstagram": {
+        "title": "Shpërndaje në Instagram",
+        "description": "Ndani një histori ose postim"
+      },
+      "shareExperience": {
+        "title": "Ndani përvojën tuaj",
+        "description": "Tregoju miqve pse të pëlqen aplikacioni"
+      },
+      "share": {
+        "genericMessage": "Unë jam duke përdorur këtë aplikacion AI për chat dhe gjenerim imazhesh. Shikoni: {{url}}",
+        "facebookQuote": "Shikoni këtë aplikacion AI!",
+        "twitterText": "Po provoj këtë aplikacion AI, është shumë i lezetshëm.",
+        "instagramMessage": "Shikoni këtë aplikacion të AI: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Gabim",
+        "errorMessage": "Faqja e dyqanit nuk mund të hapej."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Kërkimi i përfunduar",
+        "description": "Kërkimi përfundoi",
+        "points": "+{{points}} pikë",
+        "close": "Mbylle"
+      },
+      "rewardSuccess": {
+        "error": "GABIM",
+        "success": "SUKSES",
+        "somethingWentWrong": "Diçka shkoi keq",
+        "rewardUnlocked": "Shpërblimi u shkyç",
+        "credits": "Kreditë",
+        "close": "Mbylle",
+        "okay": "Në rregull"
+      },
+      "secretBox": {
+        "pill": "KUTI SEKRETE",
+        "rewardUnlocked": "SHPËRBIMI I SHKYÇUR",
+        "shufflingRewards": "PËRDORIMI I SHPËRBLIMEVE...",
+        "imageCreditsAdded": "Kredite imazhi u shtuan në llogarinë tuaj",
+        "continue": "Vazhdoni",
+        "revealing": "Duke zbuluar...",
+        "prizeTiers": {
+          "lucky": "ME FAT",
+          "pro": "PRO",
+          "elite": "ELITA",
+          "mythic": "MITIK"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Merr monedhat e tua ditore",
+      "subtitle": "Kthehu çdo ditë — shpërblimi rritet.",
+      "cta": "Regjistrohu",
+      "claimed": "U mor! +{{amount}} monedha",
+      "later": "Më vonë"
+    }
+  },
+  "app": {
+    "version": "Versioni {{version}}",
+    "offlineBanner": "Ju jeni jashtë linje",
+    "launch": {
+      "accessibilityLabel": "Fillimi Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, gati kur të jeni"
+    },
+    "errors": {
+      "modelsLoadTitle": "Ngarkimi i modeleve dështoi",
+      "modelsLoadMessage": "Modelet e AI nuk mund të ngarkohen. Aplikacioni do të përdorë modelet e paracaktuara. Ju lutemi kontrolloni lidhjen tuaj të internetit.",
+      "modelsLoadTimeout": "Ngarkimi i modeleve zgjati shumë. Aplikacioni do të përdorë modelet e paracaktuara. Ju lutemi provoni përsëri.",
+      "modelsLoadNetwork": "Nuk ka lidhje interneti. Aplikacioni do të përdorë modelet e paracaktuara. Ju lutemi kontrolloni lidhjen tuaj.",
+      "deviceIdTitle": "Gabim inicializimi",
+      "deviceIdMessage": "Inicializimi i ID-së së pajisjes dështoi. Disa veçori mund të mos funksionojnë siç duhet.",
+      "storageTitle": "Gabim në ruajtje",
+      "storageMessage": "Nuk mund të qaset në hapësirën ruajtëse lokale. Disa veçori mund të mos funksionojnë siç duhet.",
+      "crashTitle": "Diçka shkoi keq.",
+      "crashSubtitle": "Ju lutemi provoni përsëri.",
+      "crashLabel": "Aplikacioni u rrëzua"
+    },
+    "proxyErrors": {
+      "genericTitle": "Diçka shkoi keq",
+      "genericMessage": "Ju lutemi provoni përsëri.",
+      "rateLimitTitle": "Shumë kërkesa",
+      "rateLimitMessage": "Ne po trajtojmë shumë kërkesa. Ju lutemi provoni sërish pas një momenti.",
+      "rateLimitRetryAfter": "Ne po trajtojmë shumë kërkesa. Ju lutemi riprovoni për rreth {{seconds}} sekonda.",
+      "restrictedTitle": "Përmbajtje e kufizuar",
+      "restrictedMessage": "Kjo kërkesë u bllokua nga filtrat e sigurisë.",
+      "insufficientCoinsTitle": "Nuk mjaftojnë monedha",
+      "insufficientCoinsMessage": "Bilanci juaj aktual është shumë i ulët për këtë kërkesë.",
+      "imageUnavailableTitle": "Imazhi i padisponueshëm",
+      "imageUnavailableMessage": "Skedari i imazhit i krijuar ishte përkohësisht i padisponueshëm. Ju lutemi provoni përsëri.",
+      "authorizationTitle": "Çështje autorizimi",
+      "authorizationMessage": "Nuk mund ta verifikonim llogarinë tuaj. Ju lutemi provoni përsëri.",
+      "serverTitle": "Problemi i serverit",
+      "serverMessage": "Serverët tanë patën probleme. Ju lutemi provoni sërish së shpejti.",
+      "timeoutTitle": "Duke marrë shumë kohë",
+      "timeoutMessage": "Kërkesa mbaroi. Ju lutemi provoni përsëri.",
+      "networkTitle": "Asnjë lidhje",
+      "networkMessage": "Nuk ka lidhje interneti. Ju lutemi kontrolloni lidhjen tuaj dhe provoni përsëri.",
+      "requestTitle": "Problemi i kërkesës",
+      "requestMessage": "Ndodhi një gabim me kërkesën tuaj. Ju lutemi provoni përsëri."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktivizo Premium",
+    "activateMessage": "Dëshiron të aktivizosh premiumin e recensuesit?",
+    "activateAction": "Aktivizoni",
+    "deactivateTitle": "Çaktivizo Premium",
+    "deactivateMessage": "Dëshiron të çaktivizosh premiumin e rishikuesit?",
+    "deactivateAction": "Çaktivizo"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Shpërblim ditor",
+      "body": "Mos i humbisni monedhat tuaja ditore - pretendoni para mesnatës."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Mos i humb monedhat e tua ditore",
+      "body": "Dërgojmë një kujtesë në ditë që seria jote të vazhdojë dhe monedhat të rriten. Pa spam, dhe mund ta çaktivizosh në çdo kohë.",
+      "enable": "Aktivizo kujtesat",
+      "skip": "Jo tani"
+    }
+  }
+}

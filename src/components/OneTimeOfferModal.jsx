@@ -266,7 +266,6 @@ useEffect(() => {
       if (errorCode !== 'USER_CANCELLED') {
         Alert.alert(
           t('oneTimeOffer.errorTitle', { defaultValue: 'Purchase Failed' }),
-          error?.message ||
           t('oneTimeOffer.errorMessage', {
             defaultValue: 'Something went wrong. Please try again.',
           }),
@@ -305,10 +304,9 @@ useEffect(() => {
           defaultValue: 'Your purchases have been restored.',
         }),
       );
-    } catch (error) {
+    } catch {
       Alert.alert(
         t('oneTimeOffer.restoreErrorTitle', { defaultValue: 'Restore Failed' }),
-        error?.message ||
         t('oneTimeOffer.restoreErrorMessage', {
           defaultValue: 'No purchases found to restore.',
         }),
@@ -406,7 +404,13 @@ useEffect(() => {
         {/* Header */}
         <View style={styles.header}>
           {closeReady ? (
-            <TouchableOpacity onPress={handleClose} activeOpacity={0.8} style={styles.iconCircle}>
+            <TouchableOpacity
+              onPress={handleClose}
+              activeOpacity={0.8}
+              style={styles.iconCircle}
+              accessibilityRole="button"
+              accessibilityLabel={t('common.close')}
+            >
               <CloseIcon color="rgba(255,255,255,0.45)" size={20} />
             </TouchableOpacity>
           ) : (
@@ -468,7 +472,7 @@ useEffect(() => {
 
             {/* 50% OFF Title */}
             <GradientText style={styles.discountTitle} colors={['#A855F7', '#6366F1']}>
-              {discountPercent}% OFF
+              {t('oneTimeOffer.discount', { percent: discountPercent })}
             </GradientText>
 
             {/* Subtitle */}

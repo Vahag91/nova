@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Veldu líkan",
+    "searchPlaceholder": "Leita að gerðum...",
+    "noModelsFound": "Engar gerðir fundust",
+    "noModelsAvailable": "Engar gerðir fáanlegar",
+    "currentModel": "Núverandi gerð: {{name}}. Pikkaðu til að skipta um gerð.",
+    "openHint": "Opnar valmynd fyrir gerða",
+    "closeLabel": "Lokaðu gerðavalsanum",
+    "searchLabel": "Leitaðu að gerðum",
+    "searchHint": "Sláðu inn til að sía tiltækar gerðir",
+    "modelLabel": "{{name}} módel",
+    "selectHint": "Veldu {{name}} gerð",
+    "currentlySelected": "Núverandi valin gerð",
+    "genericModel": "{{provider}} módel",
+    "badges": {
+      "new": "NÝTT",
+      "best": "BESTUR"
+    }
+  },
+  "models": {
+    "gpt-4o": "Öflugasta gervigreind líkanið",
+    "gpt-4o-mini": "Hratt fyrir dagleg verkefni",
+    "gpt-5": "Öflugasta gervigreind til allra nota",
+    "gpt-5-chat-latest": "Fínstillt fyrir spjall og samræður",
+    "gpt-5-mini": "Hratt og áreiðanlegt GPT-5",
+    "gpt-5.4-nano": "Létt líkan fyrir einföld verkefni",
+    "o4-mini": "Skilvirkt rökhugsunarlíkan",
+    "gpt-4.1-mini": "Fyrirferðarlítill, fær GPT-4.1",
+    "claude-3-haiku": "Hröð og einbeitt Anthropic AI",
+    "claude-3.7-sonnet": "Fágaður rökstuðningur hjá Anthropic",
+    "gemini-2.5-Flash": "Fullkomnasta gerð Google",
+    "gemini-2.5-flash": "Fullkomnasta gerð Google",
+    "gemini-2.0-flash": "Fljótleg og nákvæm Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Öflugasta gervigreind líkanið",
+    "fast_everyday": "Hratt fyrir dagleg verkefni",
+    "fast_reasoning": "Hröð gerð með góðum rökum",
+    "great_reasoning": "Háþróað röksemdalíkan",
+    "coding_reasoning": "Ítarleg kóðun og rökstuðningur",
+    "better_coding": "Betra fyrir kóðun og rökstuðning",
+    "best_overall": "Besta alhliða gervigreind líkanið",
+    "best_google": "Besta módel Google",
+    "best_xai": "Öflugasta gerð xAI",
+    "creative_focus": "Frábært fyrir skapandi skrif",
+    "code_helper": "Frábært fyrir kóðahjálp",
+    "chat_focus": "Fínstillt fyrir spjall",
+    "long_context": "Frábært fyrir langt samhengi",
+    "budget_friendly": "Fjárhagsvænt gervigreind líkan",
+    "ultra_fast": "Ofurfljót viðbrögð",
+    "safe_default": "Öruggt sjálfgefið val",
+    "multilingual": "Öflugur fjöltyngdur stuðningur",
+    "vision_strong": "Frábært með myndum og sjón",
+    "data_analysis": "Gott fyrir gagnagreiningu",
+    "structured_tasks": "Gott fyrir skipulögð verkefni",
+    "everyday_helper": "Aðstoðarmódel hversdags",
+    "concise_answers": "Stutt, hnitmiðuð svör",
+    "detailed_answers": "Ítarleg svör skref fyrir skref",
+    "experimental": "Tilraunaverkefni af næstu kynslóð",
+    "reliable_classic": "Áreiðanleg klassísk gerð",
+    "lightweight": "Létt, ódýr gerð",
+    "chatty_personal": "Vinalegri og persónulegri",
+    "pro_users": "Best fyrir stórnotendur",
+    "research_helper": "Gott fyrir rannsóknir og glósur",
+    "reasoning_strong": "Háþróað röksemdalíkan"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Mannrænt",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Annað"
+  },
+  "navigation": {
+    "chat": "Nýtt spjall",
+    "history": "Saga",
+    "rewards": "Dagleg verðlaun",
+    "assistants": "Aðstoðarmenn",
+    "imagesStudio": "Image Studio",
+    "settings": "Stillingar",
+    "recentChats": "Nýleg spjall",
+    "proFeatures": "Pro eiginleikar",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Fáðu Pro eiginleika",
+      "subtitle": "Allir gervigreindir eiginleikar"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Búðu til, fínstilltu og birtu sjónrænar eignir á einum stað.",
+    "cta": "Opið"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Veldu myndir",
+    "exitSelectionMode": "Hætta valstillingu",
+    "selectAll": "Veldu Allt",
+    "noImagesYet": "Engar myndir ennþá",
+    "describeImageHint": "Lýstu myndinni þinni hér að neðan og pikkaðu á Búa til.",
+    "generatedImagesGallery": "Myndasafn",
+    "describeImagePlaceholder": "Lýstu myndinni sem þú vilt…",
+    "deleteConfirmTitle": "Eyða myndum",
+    "deleteConfirmMessage": "Ertu viss um að þú viljir eyða völdum myndum? Ekki er hægt að afturkalla þessa aðgerð.",
+    "cancel": "Hætta við",
+    "delete": "Eyða",
+    "generate": "Mynda",
+    "generating": "Býr til...",
+    "latest": "Nýjasta",
+    "insertToChat": "Settu inn til að spjalla",
+    "pleaseWait": "Vinsamlegast bíddu…",
+    "processing": "Vinnur...",
+    "tapToUploadImage": "Pikkaðu til að hlaða upp mynd",
+    "camera": "Hladdu inn myndum",
+    "library": "Bókasafn",
+    "enterPrompt": "Vinsamlega sláðu inn beiðni um myndgerð texta á mynd",
+    "openInBrowser": "Opna í vafra",
+    "makeVariations": "Gerðu afbrigði",
+    "deleteAllFromGeneration": "Eyða öllu úr þessari kynslóð",
+    "imageOptionsTitle": "Myndvalkostir",
+    "imageOptionsMessage": "Hvað myndir þú vilja gera við þessa mynd?",
+    "insertMarkdownHeader": "Hér er myndin fyrir:",
+    "variationSuffix": "— afbrigði af fyrri mynd",
+    "selectedCount": "valin",
+    "selectedCount_one": "valin",
+    "selectedCount_other": "valin",
+    "imageDescriptionInput": "Inntak myndlýsingar",
+    "imageDescriptionHint": "Sláðu inn lýsingu á myndinni sem þú vilt búa til",
+    "openModelSettings": "Opnaðu módelstillingar",
+    "modelSettingsHint": "Pikkaðu til að breyta gerð og stillingum",
+    "openPhotoGallery": "Opna myndasafn",
+    "clearInput": "Hreinsa inntak",
+    "generatedImage": "Mynduð mynd",
+    "autoSelectedModel": "Sjálfvirkt valið {{model}} fyrir {{mode}} ham",
+    "deleteSelectedConfirmTitle": "Eyða myndum",
+    "deleteSelectedConfirmMessage": "Ertu viss um að þú viljir eyða myndum? Ekki er hægt að afturkalla þessa aðgerð."
+  },
+  "imageStudio": {
+    "generateImage": "Búðu til mynd",
+    "generatingImage": "Býr til mynd",
+    "generateImageHint": "Pikkaðu á til að búa til mynd byggða á lýsingu þinni",
+    "imageDescriptionInput": "Inntak myndlýsingar",
+    "imageDescriptionHint": "Sláðu inn lýsingu á myndinni sem þú vilt búa til",
+    "openModelSettings": "Opnaðu módelstillingar",
+    "modelSettingsHint": "Pikkaðu til að breyta gerð og stillingum",
+    "openPhotoGallery": "Opna myndasafn",
+    "clearInput": "Hreinsa inntak",
+    "generatedImage": "Mynduð mynd"
+  },
+  "assistants": {
+    "title": "Aðstoðarmenn",
+    "defaultTitle": "Aðstoðarmaður",
+    "errorTitle": "Eitthvað fór úrskeiðis",
+    "errorMessage": "Gat ekki ræst þennan aðstoðarmann.",
+    "noAssistants": "Engir aðstoðarmenn fundust í þessum flokki.",
+    "selectAssistantHint": "Opið aðstoðarval",
+    "subtitle": "Sýndar gervigreind sérfræðingar tilbúnir fyrir kóðun, ritun, greiningu, skipulagningu og fleira.",
+    "searchPlaceholder": "Leitaraðstoðarmenn…",
+    "useAssistant": "Notaðu aðstoðarmann",
+    "selectAssistant": "Veldu aðstoðarmann",
+    "description": "Lýsing",
+    "systemPrompt": "Kerfisboð",
+    "chooseModel": "Veldu Model",
+    "categoryAll": "Allt",
+    "categories": {
+      "everyday": "Hversdagslega",
+      "life": "Lífið",
+      "health": "Heilsa",
+      "schoolWork": "Skóli & Vinna",
+      "coding": "Kóðun",
+      "creative": "Skapandi",
+      "general": "Almennt"
+    },
+    "presets": {
+      "default": {
+        "name": "Sjálfgefinn aðstoðarmaður",
+        "description": "Jafnvæg hjálp fyrir daglegt dót."
+      },
+      "quick": {
+        "name": "Fljótleg svör",
+        "description": "Stutt, bein svör."
+      },
+      "planner": {
+        "name": "Daglegur skipuleggjandi",
+        "description": "Skipuleggðu daginn þinn og venjur."
+      },
+      "recipes": {
+        "name": "Máltíðir og uppskriftir",
+        "description": "Hvað á að elda, með því sem þú hefur."
+      },
+      "fitness": {
+        "name": "Líkamsræktarþjálfari",
+        "description": "Örsmáar venjur og heimaæfingar."
+      },
+      "money": {
+        "name": "Peningafélagi",
+        "description": "Einföld fjárhagsáætlun og ráðleggingar um útgjöld."
+      },
+      "study": {
+        "name": "Námshjálpari",
+        "description": "Útskýrðu einfaldlega. Spurðu mig."
+      },
+      "email": {
+        "name": "Tölvupóstur og ferilskrá",
+        "description": "Skrifaðu skýran tölvupóst og ferilskrárlínur."
+      },
+      "translator": {
+        "name": "Þýðandi",
+        "description": "Þýða + kenna orðasambönd."
+      },
+      "travel": {
+        "name": "Ferðafélagi",
+        "description": "Einföld áætlanir og pökkunarlistar."
+      },
+      "tech": {
+        "name": "Tækniaðstoð (einföld)",
+        "description": "Sími, forrit, Wi-Fi grunnatriði."
+      },
+      "summarizer": {
+        "name": "TL;DR Summarizer",
+        "description": "Stuttar byssukúlur + einlínu TL;DR."
+      },
+      "gift": {
+        "name": "Gjafaleit",
+        "description": "Hugmyndir eftir fjárhagsáætlun og hagsmunum."
+      },
+      "party": {
+        "name": "Viðburðaskipuleggjandi (Lite)",
+        "description": "Skipuleggðu litla veislu hratt."
+      },
+      "social": {
+        "name": "Samfélagspóstsframleiðandi",
+        "description": "Drög að færslum með valmöguleikum."
+      },
+      "interview": {
+        "name": "Viðtalsþjálfari",
+        "description": "Æfðu svör (STAR)."
+      },
+      "homefix": {
+        "name": "Leiðbeiningar um að laga það fyrir heimili",
+        "description": "Einföld DIY bilanaleit."
+      },
+      "pet": {
+        "name": "Gæludýraverndarfélagi",
+        "description": "Fóðrun, gönguferðir, grunnþjálfun."
+      },
+      "mindful": {
+        "name": "Mindful Minute",
+        "description": "1-3 mín róleg hlé."
+      },
+      "polite": {
+        "name": "Kurteis endurritari",
+        "description": "Endurskrifaðu texta og svör vel."
+      }
+    }
+  },
+  "history": {
+    "title": "Saga",
+    "searchPlaceholder": "Leita í spjalli...",
+    "newChat": "Nýtt spjall",
+    "new": "+ Nýtt",
+    "search": "Leita",
+    "clearSearch": "Hreinsa leit",
+    "noChatsYet": "Engin spjall ennþá",
+    "noResults": "Engin spjall ennþá",
+    "startFirstConversation": "Byrjaðu fyrsta samtalið þitt.",
+    "startChat": "Byrjaðu spjall",
+    "startNewChat": "Byrjaðu nýtt spjall",
+    "errorLoadingHistory": "Villa við að hlaða feril",
+    "loading": "Hleður feril...",
+    "renameChat": "Endurnefna spjall",
+    "enterNewTitle": "Sláðu inn nýjan titil",
+    "deleteChat": "Eyða spjalli?",
+    "deleteChatMessage": "„{{title}}“ verður eytt.",
+    "rename": "Endurnefna",
+    "unpin": "Losaðu",
+    "pin": "Pinna",
+    "untitled": "Án titils"
+  },
+  "settings": {
+    "title": "Stillingar",
+    "model": "Fyrirmynd",
+    "searchPlaceholder": "Leita að gerðum…",
+    "temperatureForCurrentModel": "Hitastig fyrir núverandi gerð",
+    "customFor": "Sérsniðin fyrir {{model}}",
+    "usingDefault": "Notar sjálfgefið {{temperature}}",
+    "resetToDefault": "Endurstilla í sjálfgefið",
+    "defaultTemperature": "Sjálfgefið hitastig (tilbaka)",
+    "usedByModelsWithoutOverride": "Notað af gerðum án sérsniðinnar hnekkingar",
+    "dangerZone": "Hættusvæði",
+    "clearAllChatsAndSettings": "Hreinsaðu öll spjall og stillingar",
+    "about": "Um",
+    "version": "Útgáfa {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Persónuverndarstefna",
+    "hero": {
+      "label": "Sértilboð",
+      "title": "Ótakmarkaður aðgangur\n& Pro eiginleikar",
+      "upgrade": "Uppfærsla",
+      "manage": "Stjórna áætlun"
+    },
+    "sections": {
+      "premium": "Premium áætlun",
+      "data": "Notendagögn",
+      "support": "Stuðningur og lögfræði"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Fáðu Premium",
+        "subtitle": "Opnaðu ótakmarkað sköpunarverkfæri"
+      },
+      "premiumActive": {
+        "title": "Premium Active",
+        "subtitle": "Takk fyrir að styðja Cloud AI"
+      },
+      "restore": {
+        "title": "Endurheimta kaup",
+        "subtitle": "Notaðu ef þú skiptir um tæki"
+      },
+      "history": {
+        "title": "Stjórna spjallferli",
+        "subtitle": "Skoðaðu og eyddu fyrri fundum þínum"
+      },
+      "reset": {
+        "title": "Endurstilla spjall og kjörstillingar",
+        "subtitle": "Hreinsar öll vistuð gögn á þessu tæki"
+      },
+      "rate": {
+        "title": "Gefðu okkur einkunn",
+        "error": "Ekki tókst að opna verslunarsíðuna."
+      },
+      "support": {
+        "title": "Stuðningur",
+        "subtitle": "Hafðu samband við okkur á netinu",
+        "error": "Ekki tókst að opna tengiliðasíðuna."
+      },
+      "privacy": {
+        "title": "Persónuverndarstefna",
+        "error": "Ekki tókst að opna persónuverndarstefnuna."
+      },
+      "terms": {
+        "title": "Notkunarskilmálar",
+        "error": "Ekki er hægt að opna notkunarskilmálana."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Ekki tiltækt",
+      "linkUnavailableMessage": "Ekki er hægt að opna þennan hlekk núna.",
+      "restoreSuccessTitle": "Endurheimt",
+      "restoreSuccessMessage": "Kaupin þín hafa verið endurheimt.",
+      "restoreEmptyTitle": "Engin kaup fundust",
+      "restoreEmptyMessage": "Við fundum ekki virk kaup til að endurheimta fyrir þennan reikning.",
+      "restoreErrorTitle": "Endurheimt mistókst",
+      "restoreErrorMessage": "Ekki er hægt að endurheimta kaup núna.",
+      "resetConfirmTitle": "Endurstilla forritsgögn?",
+      "resetConfirmMessage": "Þetta fjarlægir öll spjall og staðbundnar óskir.",
+      "resetConfirmCancel": "Hætta við",
+      "resetConfirmCta": "Endurstilla"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Búa til",
+    "chooseStyle": "Veldu stíl",
+    "aspectRatio": "Hlutfall",
+    "starterPrompts": {
+      "title": "Byrjunarboð",
+      "items": [
+        "höfuðmynd stúdíós",
+        "nútíma stofa",
+        "suðræn strönd við sólsetur"
+      ]
+    },
+    "promptPlaceholder": "Sláðu inn það sem þú vilt sjá…",
+    "promptHint": "Dæmi: 'Golden retriever í stúdíólýsingu'",
+    "clearText": "Skýr texti",
+    "generate": "Mynda",
+    "generating": "Býr til..."
+  },
+  "editImage": {
+    "headerTitle": "Breyta",
+    "chooseStyle": "Veldu stíl",
+    "aspectRatio": "Hlutfall",
+    "starterPrompts": {
+      "title": "Byrjunarboð",
+      "items": [
+        "laga lýsingu",
+        "fjarlægja bakgrunn",
+        "mjúk myndlagfæring"
+      ]
+    },
+    "promptPlaceholder": "Lýstu breytingum (valfrjálst)",
+    "clearText": "Skýr texti",
+    "generate": "Mynda",
+    "generating": "Er að sækja um…",
+    "upload": {
+      "choose": "Veldu mynd",
+      "change": "Breyta",
+      "remove": "Fjarlægja"
+    },
+    "imageUnavailable": {
+      "title": "Mynd ekki tiltæk",
+      "message": "Gat ekki fengið aðgang að völdu myndinni. Vinsamlegast veldu það aftur og reyndu aftur."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Teiknimynd"
+      },
+      "photoreal": {
+        "name": "Ljósmynd"
+      },
+      "sketch": {
+        "name": "Skissa"
+      },
+      "cyberpunk": {
+        "name": "Netpönk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D myndskreyting"
+      },
+      "dark_fantasy": {
+        "name": "Dark Fantasy"
+      },
+      "vintage_film": {
+        "name": "Vintage kvikmynd"
+      },
+      "pastel": {
+        "name": "Pastel fagurfræði"
+      },
+      "neon_glow": {
+        "name": "Neon ljóma"
+      },
+      "epic_landscape": {
+        "name": "Epískt landslag"
+      }
+    },
+    "aspectRatios": {
+      "square": "Ferningur",
+      "landscape": "Landslag",
+      "portrait": "Andlitsmynd"
+    },
+    "models": {
+      "fluxKontent": "Flux efni",
+      "custom": "Sérsniðin"
+    },
+    "notEnoughCoinsTitle": "Ekki nóg af myntum",
+    "notEnoughCoinsMessage": "Núverandi staða þín er of lág fyrir þessa mynd.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Hraðasta gerð",
+      "runwareFluxKrea": "Skapandi, stílfærðar niðurstöður",
+      "runwareQwenImage": "Jafnvægi, hágæða árangur",
+      "google4": "Besta gervigreind myndlíkan",
+      "klingImageO1": "Hástýrð myndvinnsla",
+      "fluxKontent": "Flux Kontent stillt fyrir breytingar",
+      "runwareProvider": "Jafnvæg gæði með áreiðanlegri dreifingu.",
+      "airProvider": "Nano Banana bætir við fjörugum, líflegum tón.",
+      "googleProvider": "Google stillti fyrir fágaðar upplýsingar.",
+      "klingaiProvider": "KlingAI stillt fyrir stýrðar breytingar.",
+      "anthropicProvider": "Claude leiðsla fyrir blæbrigði.",
+      "default": "Bankaðu til að kanna tiltækar vélar."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "þinn valdi stíl",
+    "sheetTitle": "Að búa til þína sýn",
+    "sheetSubtitle": "Stutt sopa af þjónakaffi á meðan við blandum {{style}} inn í hvetjunni.",
+    "phases": {
+      "blend": "Innblöndun {{style}}",
+      "paint": "Að mála atriðið",
+      "finish": "Bætir endanlegu pússi við"
+    },
+    "actions": {
+      "cancel": "Hætta við",
+      "retry": "Reyndu aftur",
+      "close": "Loka"
+    },
+    "errors": {
+      "restrictedTitle": "Takmarkað efni",
+      "genericTitle": "Kynslóð mistókst",
+      "genericMessage": "Ekki tókst að búa til mynd."
+    },
+    "alerts": {
+      "saveFailedTitle": "Ekki tókst að vista",
+      "shareFailedTitle": "Gat ekki deilt",
+      "tryAgain": "Vinsamlegast reyndu aftur.",
+      "savedTitle": "Vistað",
+      "savedMessage": "Mynd vistuð í myndasafninu þínu.",
+      "permissionTitle": "Leyfi þarf",
+      "permissionMessage": "Leyfðu geymsluaðgangi til að vista myndir í myndasafninu þínu."
+    },
+    "result": {
+      "complete": "Allt búið"
+    },
+    "accessibility": {
+      "close": "Loka"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Eyða",
+      "edit": "Breyta",
+      "save": "Vista",
+      "share": "Deila"
+    },
+    "alerts": {
+      "savedTitle": "Vistað",
+      "savedMessage": "Mynd vistuð í myndasafninu þínu.",
+      "permissionTitle": "Leyfi þarf",
+      "permissionMessage": "Leyfðu geymsluaðgangi til að vista myndir í myndasafninu þínu.",
+      "saveFailedTitle": "Ekki tókst að vista",
+      "tryAgain": "Vinsamlegast reyndu aftur."
+    },
+    "accessibility": {
+      "close": "Loka",
+      "delete": "Eyða mynd",
+      "edit": "Breyta mynd",
+      "save": "Vista mynd",
+      "share": "Deildu mynd"
+    }
+  },
+  "reportContent": {
+    "title": "Tilkynna gervigreind efni",
+    "subtitle": "Segðu okkur hvað er athugavert við þetta myndaða efni.",
+    "privateDisclosure": "Með því að senda inn er þetta tilkynnta efni sent til öryggisskoðunar.",
+    "accessibilityLabel": "Tilkynna gervigreind efni",
+    "reasons": {
+      "sexual": "Kynferðislegt eða nektarefni",
+      "violence_self_harm": "Ofbeldi eða sjálfsskaða",
+      "hate_harassment": "Hatur eða áreitni",
+      "child_safety": "Barnaöryggi",
+      "scam_deceptive": "Svindl eða villandi efni",
+      "other": "Annað"
+    },
+    "errors": {
+      "reasonRequired": "Vinsamlegast veldu ástæðu áður en þú sendir inn.",
+      "submit": "Gat ekki skilað skýrslu. Vinsamlegast reyndu aftur."
+    },
+    "success": {
+      "title": "Takk. Skýrslan þín var send.",
+      "subtitle": "Við munum nota skýrslur til að bæta öryggi efnis."
+    },
+    "actions": {
+      "report": "Skýrsla",
+      "submit": "Sendu skýrslu",
+      "done": "Búið"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Opna valmynd",
+      "selectImages": "Veldu myndir",
+      "exitSelection": "Hætta vali",
+      "deleteSelected": "Eyða völdum myndum",
+      "selectToDelete": "Veldu myndir til að eyða"
+    },
+    "createCard": {
+      "title": "Búðu til úr texta",
+      "subtitle": "Sláðu inn lýsingu",
+      "cta": "Lýstu og búðu til"
+    },
+    "editCard": {
+      "title": "AI ljósmyndaritill",
+      "subtitle": "Umbreyttu og bættu með gervigreind",
+      "cta": "Breyta með AI"
+    },
+    "gallery": {
+      "title": "Gallerí",
+      "empty": "Engar myndir ennþá",
+      "selection": {
+        "enter": "Veldu myndir",
+        "exit": "Hætta vali",
+        "deleteSelected": "Eyða völdum myndum",
+        "selectForDelete": "Veldu myndir til að eyða"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Hittumst",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Búðu til og breyttu myndum með gervigreind — beint inni í Cloud AI."
+    },
+    "relaxView": {
+      "title": "Kynntu þér gervigreindina þína",
+      "titleHighlight": "Aðstoðarmenn",
+      "subtitle": "Sérhæfðir gervigreindarsérfræðingar tilbúnir til að aðstoða við daglegar þarfir þínar",
+      "cards": {
+        "fitness": {
+          "title": "Líkamsræktarþjálfari",
+          "text": "Örsmáar venjur og heimaæfingar."
+        },
+        "recipes": {
+          "title": "Máltíðir og uppskriftir",
+          "text": "Hvað á að elda, með því sem þú hefur."
+        },
+        "travel": {
+          "title": "Ferðafélagi",
+          "text": "Einföld áætlanir og pökkunarlistar."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "AI LAUSNIR í FYRIRTÆKJA",
+      "description": "Styrktu fyrirtæki þitt með nýjustu gervigreindartækni sem er hönnuð fyrir fagfólk og teymi fyrirtækja.",
+      "stats": "Treyst af 500.000+ notendum",
+      "rating": "4,9/5",
+      "button": "Byrjaðu"
+    },
+    "buttons": {
+      "continue": "Halda áfram",
+      "start": "Við skulum byrja"
+    }
+  },
+  "coinStore": {
+    "title": "Fáðu inneign",
+    "loading": "Hleður myntverslun…",
+    "balanceLabel": "Núverandi staða þín er",
+    "balanceValue": "{{amount}} Inneign",
+    "history": {
+      "link": "Viðskiptasaga",
+      "alertTitle": "Saga",
+      "alertBody": "Færslusaga kemur fljótlega."
+    },
+    "noPacks": "Engir myntpakkar fáanlegir. Athugaðu RevenueCat tilboðsnúmerið þitt.",
+    "badges": {
+      "basic": "Grunnpakki",
+      "popular": "Vinsælast",
+      "value": "Best gildi"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Inneign",
+      "tokensLabel": "{{credits}} Inneign",
+      "defaultName": "Pakki {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "Farðu í Premium",
+      "subtitle": "Ótakmarkaður aðgangur og eiginleikar",
+      "cta": "Uppfærsla"
+    },
+    "termsText": "Með því að gera kaup samþykkir þú okkar",
+    "termsLink": "Þjónustuskilmálar",
+    "alerts": {
+      "initErrorTitle": "Init villa",
+      "genericMessage": "Eitthvað fór úrskeiðis.",
+      "successTitle": "Árangur",
+      "successMessage": "Inneign birtast fljótlega.",
+      "purchaseFailedTitle": "Kaup mistókst",
+      "unknownError": "Óþekkt villa"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium áskilið",
+    "upgrade": "Uppfærsla",
+    "modelRequiredMessage": "Þetta líkan krefst Premium. Uppfærðu til að fá aðgang að GPT-5, Grok 4, Claude og fullkomnari gerðum.",
+    "assistantsRequiredMessage": "Aðstoðarmenn þurfa Premium. Uppfærðu til að fá aðgang að sérhæfðum AI aðstoðarmönnum fyrir líkamsrækt, kóðun, ritun og fleira.",
+    "assistantsTitle": "Premium áskilið",
+    "assistantsMessage": "Aðstoðarmenn þurfa Premium. Uppfærðu til að fá aðgang að sérhæfðum AI aðstoðarmönnum fyrir líkamsrækt, kóðun, ritun og fleira."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Lokaðu greiðsluvegg",
+    "unavailableTitle": "Kaup ekki tiltæk",
+    "unavailableMessage": "Android innheimta er ekki stillt ennþá.",
+    "restoreEmptyTitle": "Engin kaup fundust",
+    "restoreEmptyMessage": "Við fundum ekki virk kaup til að endurheimta fyrir þennan reikning.",
+    "restoreFailedTitle": "Endurheimt mistókst",
+    "restoreFailedMessage": "Ekki er hægt að endurheimta kaup núna.",
+    "productsUnavailableTitle": "Engar áætlanir í boði",
+    "productsUnavailableMessage": "Engar Android áskriftarvörur eru fáanlegar eins og er.",
+    "purchaseFailedTitle": "Kaup mistókst",
+    "purchaseFailedMessage": "Ekki er hægt að ganga frá þessum kaupum eins og er.",
+    "restore": "Endurheimta",
+    "restoreRestoring": "Endurheimtir…",
+    "features": {
+      "create": "Búðu til myndir og myndbönd",
+      "search": "Leitaðu á vefnum með gervigreind",
+      "talk": "Talaðu náttúrulega við gervigreind",
+      "imageStudio": "Fáðu Image Studio {{credits}} inneign {{period}}",
+      "period": {
+        "weekly": "vikulega",
+        "monthly": "mánaðarlega",
+        "yearly": "árlega"
+      }
+    },
+    "freeTrial": {
+      "title": "Ókeypis prufuáskrift",
+      "subtitle": "3 daga ókeypis prufuáskrift"
+    },
+    "badge": {
+      "bestOffer": "Besta tilboðið"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Árlega",
+        "only": "Aðeins {{price}}",
+        "defaultPrice": "USD 79,99",
+        "defaultIntroPrice": "USD 1,35"
+      },
+      "monthly": {
+        "title": "Mánaðarlega",
+        "subtitle": "Hætta við hvenær sem er",
+        "defaultPrice": "USD 19,99"
+      },
+      "weekly": {
+        "title": "Vikulega",
+        "subtitle": "Hætta við hvenær sem er",
+        "defaultPrice": "USD 9,99",
+        "trialThen": "3 dagar ókeypis, þá"
+      }
+    },
+    "frequency": {
+      "perWeek": "á viku",
+      "perMonth": "á mánuði"
+    },
+    "cta": "Halda áfram",
+    "ctaFreeTrial": "Prófaðu það ókeypis",
+    "legal": {
+      "terms": "Skilmálar",
+      "privacy": "Persónuvernd"
+    },
+    "premium": {
+      "headline": "Öll úrvals gervigreind í einni áætlun",
+      "subtitleLine1": "Spjalla, kóða, búa til og skipuleggja",
+      "subtitleLine2": "með háþróuðum gerðum.",
+      "enableTrial": "Virkja ókeypis prufuáskrift",
+      "annual": "Árlegt",
+      "saveBadge": "Sparaðu 83%",
+      "year": "ári",
+      "week": "viku",
+      "termsOfUse": "Notkunarskilmálar",
+      "privacyPolicy": "Persónuverndarstefna"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Skilaboð...",
+    "createImages": "Búðu til myndir",
+    "generateAiArtwork": "Búðu til AI listaverk",
+    "camera": "Hladdu inn myndum",
+    "takeOrSelectPhotos": "Veldu myndir",
+    "search": "Leita",
+    "findInformation": "Finndu upplýsingar",
+    "findRecentInfo": "Finndu nýlegar upplýsingar",
+    "removeImage": "Fjarlægðu mynd",
+    "messageInput": "Inntak skilaboða",
+    "clearInput": "Hreinsa inntak",
+    "quickActionsLabel": "Fljótar aðgerðir",
+    "hideQuickActions": "Fela skjótar aðgerðir",
+    "showQuickActions": "Sýndu skjótar aðgerðir",
+    "startVoiceInput": "Byrjaðu raddinnslátt",
+    "sendMessage": "Sendu skilaboð",
+    "offline": "Ótengdur",
+    "stop": "Hættu",
+    "streaming": "Streymir…",
+    "closeRecorder": "Lokaðu upptökutæki",
+    "insertTranscript": "Senda",
+    "scrollToLatest": "Skrunaðu að nýjustu skilaboðunum",
+    "copyMessage": "Afritaðu skilaboð",
+    "copyMessageHint": "Afritaðu þessi skilaboð á klippiborð",
+    "shareMessage": "Deildu skilaboðum",
+    "shareMessageHint": "Deildu þessum skilaboðum",
+    "regenerateResponse": "Endurnýja svar",
+    "regenerateResponseHint": "Búðu til nýtt svar",
+    "copyCode": "Afritaðu kóða",
+    "copied": "Afritað",
+    "image": "mynd",
+    "loading": "Hleður…",
+    "loadingChat": "Hleður spjall...",
+    "offlineBanner": "Þú ert ekki tengdur. Ekki er hægt að senda skilaboð.",
+    "offlineError": "Engin nettenging. Athugaðu tenginguna þína og reyndu aftur.",
+    "imagePickerErrorTitle": "Villa í myndvali",
+    "imagePickerErrorMessage": "Ekki hægt að nálgast myndirnar þínar. Vinsamlegast reyndu aftur.",
+    "messageTooLong": "Skilaboð of löng ({{length}}). Takmarkið er {{limit}}.",
+    "sendFailed": "Mistókst að senda skilaboð. Vinsamlegast reyndu aftur.",
+    "modelNoImageSupport": "Valin gerð styður ekki myndir. Vinsamlegast veldu aðra gerð.",
+    "voiceStartFailed": "Gat ekki ræst rödd.",
+    "voiceNoSpeechDetected": "Engin rödd þekktist. Vinsamlegast reyndu aftur.",
+    "emptyTitle": "Hvernig get ég hjálpað?",
+    "emptySubtitle": "Byrjaðu samtal við gervigreind",
+    "privateTitle": "Einkaspjall",
+    "privateSubtitle": "Þetta spjall mun ekki birtast í spjallferlinum þínum",
+    "startPrivateChat": "Byrjaðu einkaspjall",
+    "endPrivateChat": "Ljúktu einkaspjalli",
+    "permissions": {
+      "photosTitle": "Myndaleyfi þarf",
+      "photosMessage": "Myndaaðgangur er nauðsynlegur til að velja myndir.",
+      "voiceTitle": "Raddheimildir nauðsynlegar",
+      "voiceMessage": "Hljóðnemi og talaðgangur er nauðsynlegur til að nota rödd."
+    },
+    "activity": {
+      "analyzingImages": "Greinir myndir...",
+      "searching": "Leitar…",
+      "thinking": "Er að hugsa…"
+    },
+    "webSearch": {
+      "title": "Vefleit",
+      "subtitle": "Finndu nýlegar upplýsingar",
+      "label": "Vefleit",
+      "enable": "Virkjaðu vefleit",
+      "disable": "Slökktu á vefleit",
+      "toggleLabel": "Leitaðu á vefnum"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Hannaðu myndefni á hraða.",
+      "subtitle": "Búðu til, fínstilltu og birtu sjónrænar eignir á einum stað.",
+      "cta": "Opið"
+    },
+    "quickActions": {
+      "createImages": "Búðu til myndir",
+      "openCamera": "Opnaðu myndavél",
+      "editImage": "Breyta mynd",
+      "startVoice": "Byrjaðu Voice",
+      "assistants": "Aðstoðarmenn"
+    },
+    "listening": "Hlustar…",
+    "startRecording": "Byrjaðu að taka upp...",
+    "assistantHeader": {
+      "unavailableTitle": "Aðstoðarmaður ekki tiltækur",
+      "unavailableDescription": "Við gátum ekki hlaðið þennan aðstoðarmann. Vinsamlegast reyndu aftur.",
+      "ready": "Tilbúinn að aðstoða"
+    },
+    "actions": {
+      "copy": "Afrita",
+      "share": "Deila",
+      "regenerate": "Endurnýja",
+      "retryFromHere": "Reyndu aftur héðan",
+      "report": "Skýrsla",
+      "cancel": "Hætta við"
+    },
+    "markdown": {
+      "copy": "Afrita",
+      "copied": "Afritað",
+      "table": "BORÐ",
+      "watchVideo": "Horfðu á myndband",
+      "wikipedia": "Wikipedia",
+      "link": "Tengill",
+      "note": "Athugið",
+      "warning": "Viðvörun",
+      "tip": "Ábending"
+    },
+    "messageActionTitle": "Skilaboð",
+    "status": {
+      "sending": "Sendir…",
+      "failed": "Mistókst",
+      "sent": "Sent"
+    },
+    "suggestions": {
+      "writeStory": "Skrifaðu skapandi sögu",
+      "writeStorySubtitle": "um töfrandi ævintýri",
+      "planTravel": "Skipuleggðu ferðaáætlun",
+      "planTravelSubtitle": "fyrir ótrúlegt frí",
+      "explainConcept": "Útskýrðu þetta hugtak",
+      "explainConceptSubtitle": "í einföldu máli",
+      "planDay": "Skipuleggðu daginn minn",
+      "planDaySubtitle": "með ráðleggingum um framleiðni"
+    },
+    "home": {
+      "eyebrow": "Veldu efni",
+      "title": "Hvað viltu gera?",
+      "subtitle": "Veldu stefnu og byrjaðu síðan á sterkri vísbendingu.",
+      "pickPromptTitle": "Veldu hvetja til að byrja",
+      "changeTopic": "Veldu annað efni",
+      "intents": {
+        "summarize": "Dragðu saman texta",
+        "summarizeShort": "Tekið saman",
+        "summarizeHint": "Greinar, minnispunktar, talskýrslur, langir þræðir",
+        "plan": "Gerðu áætlun",
+        "planHint": "Ferðir, venjur, fjárhagsáætlanir, frestir, breytingar á lífinu",
+        "brainstorm": "Hugaflug",
+        "brainstormHint": "Hugmyndir, tilboð, nöfn, efni, hliðarverkefni",
+        "analyze": "Greina gögn",
+        "analyzeHint": "Eyðsla, endurgjöf, mælikvarðar, venjur, árangur"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Búðu til stofnendaskýrslu",
+          "founderBriefSubtitle": "Dragðu út helstu áhættur, ákvarðanir og næstu skref.",
+          "classNotesTitle": "Hreinsaðu námsnóturnar mínar",
+          "classNotesSubtitle": "Breyttu grófum athugasemdum í skýran námsleiðbeiningar.",
+          "meetingHandoffTitle": "Skrifaðu yfirlit yfir afhendingu",
+          "meetingHandoffSubtitle": "Gagnlegt eftir fundi, símtöl eða langa innri þræði.",
+          "longArticleTitle": "Dragðu þessa grein fljótt saman",
+          "longArticleSubtitle": "Þéttu langa grein saman í skarpar greinar."
+        },
+        "plan": {
+          "energyResetTitle": "Búðu til 14 daga orkuendurstillingu",
+          "energyResetSubtitle": "Raunhæf áætlun fyrir svefn, mat, hreyfingu og einbeitingu.",
+          "mealPlanTitle": "Skipuleggðu máltíðir sem ég mun í raun elda",
+          "mealPlanSubtitle": "Hagnýtt, hagkvæmt og byggt á því sem ég hef.",
+          "cityMoveTitle": "Skipuleggðu flutning minn til nýrrar borgar",
+          "cityMoveSubtitle": "Skiptu því í tímalínu, fjárhagsáætlun, húsnæði og stjórnunarverkefni.",
+          "tripEscapeTitle": "Skipuleggðu eftirminnilegt helgarflótta",
+          "tripEscapeSubtitle": "Eitthvað betra en almenn ferðaáætlun."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Finndu raunhæft hliðarþröng",
+          "sideHustleSubtitle": "Hugmyndir sem ég get byrjað á meðan ég er í fullu starfi.",
+          "brandAngleTitle": "Finndu eftirminnilegt vörumerki",
+          "brandAngleSubtitle": "Gagnlegt fyrir vörur, höfunda, auglýsingastofur eða fréttabréf.",
+          "socialSeriesTitle": "Finndu upp efnisröð",
+          "socialSeriesSubtitle": "Eitthvað nógu stöðugt til að fjölga áhorfendum.",
+          "datingIdeasTitle": "Komdu með ferskar hugmyndir",
+          "datingIdeasSubtitle": "Dagsetningar, gjafir, óvæntar uppákomur eða atburðir sem finnst umhugsandi."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Finndu hvar peningarnir mínir leka",
+          "spendingLeaksSubtitle": "Sýndu mynstur, veika bletti og sá auðveldasti vinnur fyrst.",
+          "customerFeedbackTitle": "Breyttu endurgjöf í forgangsröðun",
+          "customerFeedbackSubtitle": "Klasabeiðnir, kvartanir, brýnt og áhrif.",
+          "habitPatternsTitle": "Komdu auga á mynstur í venjum mínum",
+          "habitPatternsSubtitle": "Gagnlegt fyrir æfingar, svefn, dagbók eða fókusskrár.",
+          "metricsStoryTitle": "Útskýrðu hvað tölurnar þýða",
+          "metricsStorySubtitle": "Meira merki, minni hávaði í töflureikni."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Vinnur...",
+    "tapToUploadImage": "Pikkaðu til að hlaða upp mynd"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Vinnur...",
+    "camera": "Hladdu inn myndum",
+    "library": "Bókasafn"
+  },
+  "common": {
+    "ok": "Allt í lagi",
+    "retry": "Reyndu aftur",
+    "cancel": "Hætta við",
+    "allow": "Leyfa",
+    "notNow": "Ekki núna",
+    "openSettings": "Opnaðu Stillingar",
+    "close": "Loka",
+    "save": "Vista",
+    "tryAgain": "Reyndu aftur"
+  },
+  "rateUs": {
+    "title": "Hefurðu gaman af Cloud AI?",
+    "subtitle": "Ábendingar þínar hjálpa okkur að bæta okkur. Værirðu til í að gefa okkur einkunn í App Store?",
+    "rateNow": "Gefðu einkunn núna",
+    "maybeLater": "Kannski Seinna",
+    "dontAskAgain": "Ekki spyrja aftur"
+  },
+  "oneTimeOffer": {
+    "title": "Einstök tilboð",
+    "discount": "{{percent}}% AFSLÁTTUR",
+    "subtitle": "Þú munt ekki sjá þetta tilboð aftur.",
+    "badgeLine1": "Einkarétt",
+    "badgeLine2": "Tilboð í eitt skipti",
+    "upgradeNow": "Uppfærðu núna fyrir {{price}}",
+    "loadingPrice": "Hleður...",
+    "termsOfUse": "Notkunarskilmálar",
+    "privacyPolicy": "Persónuverndarstefna",
+    "accessTitle": "Ótakmarkaður aðgangur að",
+    "accessSubtitle": "GPT, Gemini og Grok 4",
+    "features": {
+      "unlimitedGPT4": "Ótakmarkaður aðgangur að GPT-4",
+      "geminiPro": "Aðgangur að Gemini Pro",
+      "grokInsights": "Notaðu Grok fyrir ferska innsýn",
+      "priorityAccess": "Forgangsaðgangur og hraðari viðbrögð"
+    },
+    "bestValue": "Best gildi",
+    "annualPremium": "Árlegt iðgjald",
+    "oneTimePayment": "Eingreiðslu",
+    "wasPrice": "var",
+    "continue": "Halda áfram",
+    "restore": "Endurheimta",
+    "terms": "Skilmálar",
+    "privacy": "Persónuvernd",
+    "successTitle": "Árangur!",
+    "successMessage": "Þakka þér fyrir kaupin! Njóttu úrvalsaðgangs næstu 12 mánuðina.",
+    "errorTitle": "Kaup mistókst",
+    "errorMessage": "Eitthvað fór úrskeiðis. Vinsamlegast reyndu aftur.",
+    "restoreSuccessTitle": "Endurheimt",
+    "restoreSuccessMessage": "Kaupin þín hafa verið endurheimt.",
+    "restoreErrorTitle": "Endurheimta mistókst",
+    "restoreErrorMessage": "Engin kaup fundust til að endurheimta.",
+    "unavailableTitle": "Kaup ekki tiltæk",
+    "unavailableMessage": "Android innheimta er ekki stillt ennþá."
+  },
+  "rewards": {
+    "header": {
+      "title": "Verðlaun",
+      "openMenu": "Opna valmynd",
+      "goBack": "Farðu til baka"
+    },
+    "pointsHero": {
+      "totalBalance": "HEILDARSTAÐA",
+      "seeYourRewards": "Sjáðu verðlaunin þín"
+    },
+    "streakTracker": {
+      "title": "Dagleg röð",
+      "subtitle": "Haltu áfram! Þú ert í eldi.",
+      "days": "Dagar",
+      "prize": "Verðlaun",
+      "dayLabel": "Dagur {{number}}",
+      "nextReward": "Næsta verðlaun: {{amount}} í {{time}}",
+      "coins": "Mynt"
+    },
+    "sections": {
+      "availableQuests": "Laus verkefni",
+      "completedQuests": "Lokið verkefni",
+      "availableRewards": "Laus verðlaun",
+      "needsMoreCoins": "Þarf fleiri mynt"
+    },
+    "balances": {
+      "rewardCoins": "Verðlaun mynt",
+      "imageCredits": "Myndaeign"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 myndeiningar",
+        "imageCredits200": "200 myndeiningar",
+        "imageCredits600": "600 myndeiningar",
+        "weeklyPremium": "Vikulegt iðgjald",
+        "secretBox": "Leynibox"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Mystery verðlaun inni"
+      },
+      "alerts": {
+        "comingSoonTitle": "Kemur bráðum",
+        "comingSoonMessage": "Þessi verðlaun eru ekki í boði ennþá.",
+        "notEnoughCoinsTitle": "Ekki nóg af myntum",
+        "notEnoughCoinsMessage": "Þú þarft fleiri verðlaunapening til að opna þessi verðlaun.",
+        "errorTitle": "Villa",
+        "couldNotOpenBox": "Gat ekki opnað kassann.",
+        "couldNotRedeem": "Gat ekki innleyst verðlaun. Vinsamlegast reyndu aftur.",
+        "mysteryReward": "Mystery verðlaun"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Dagleg innskráning",
+        "description": "Opnaðu appið í dag til að halda strikinu þínu",
+        "message": "Þessari leit lýkur sjálfkrafa þegar þú opnar forritið á hverjum degi."
+      },
+      "shareFacebook": {
+        "title": "Deildu á Facebook",
+        "description": "Skrifaðu um okkur á Facebook"
+      },
+      "shareTwitter": {
+        "title": "Deildu á Twitter",
+        "description": "Tweet reynslu þína"
+      },
+      "shareInstagram": {
+        "title": "Deildu á Instagram",
+        "description": "Deildu sögu eða færslu"
+      },
+      "shareExperience": {
+        "title": "Deildu reynslu þinni",
+        "description": "Segðu vinum hvers vegna þér líkar við appið"
+      },
+      "share": {
+        "genericMessage": "Ég er að nota þetta gervigreindarforrit til að búa til spjall og mynda. Skoðaðu það: {{url}}",
+        "facebookQuote": "Skoðaðu þetta AI app!",
+        "twitterText": "Ég er að prófa þetta gervigreindarforrit, það er frekar flott.",
+        "instagramMessage": "Skoðaðu þetta gervigreindarforrit: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Villa",
+        "errorMessage": "Gat ekki opnað verslunarsíðuna."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Quest lokið",
+        "description": "Leit lokið",
+        "points": "+{{points}} stig",
+        "close": "Loka"
+      },
+      "rewardSuccess": {
+        "error": "VILLA",
+        "success": "ÁRANGUR",
+        "somethingWentWrong": "Eitthvað fór úrskeiðis",
+        "rewardUnlocked": "Verðlaun ólæst",
+        "credits": "Inneign",
+        "close": "Loka",
+        "okay": "Allt í lagi"
+      },
+      "secretBox": {
+        "pill": "LEYNDAKASSI",
+        "rewardUnlocked": "VERÐLAUN ÓLÆST",
+        "shufflingRewards": "ROKA VERÐUN...",
+        "imageCreditsAdded": "Myndinneign bætt við reikninginn þinn",
+        "continue": "Halda áfram",
+        "revealing": "Afhjúpar...",
+        "prizeTiers": {
+          "lucky": "HEPPINN",
+          "pro": "PRO",
+          "elite": "ELÍTA",
+          "mythic": "GOÐSÖGN"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Sæktu daglegu myntirnar þínar",
+      "subtitle": "Komdu aftur á hverjum degi — verðlaunin vaxa.",
+      "cta": "Skrá mig",
+      "claimed": "Móttekið! +{{amount}} myntir",
+      "later": "Seinna"
+    }
+  },
+  "app": {
+    "version": "Útgáfa {{version}}",
+    "offlineBanner": "Þú ert ótengdur",
+    "launch": {
+      "accessibilityLabel": "Byrjar Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, tilbúinn þegar þú ert"
+    },
+    "errors": {
+      "modelsLoadTitle": "Mistókst að hlaða módel",
+      "modelsLoadMessage": "Ekki er hægt að hlaða gervigreind módel. Forritið mun nota sjálfgefna gerðir. Athugaðu nettenginguna þína.",
+      "modelsLoadTimeout": "Það tók of langan tíma að hlaða módel. Forritið mun nota sjálfgefna gerðir. Vinsamlegast reyndu aftur.",
+      "modelsLoadNetwork": "Engin nettenging. Forritið mun nota sjálfgefna gerðir. Vinsamlegast athugaðu tenginguna þína.",
+      "deviceIdTitle": "Frumstillingarvilla",
+      "deviceIdMessage": "Mistókst að frumstilla auðkenni tækis. Sumir eiginleikar virka kannski ekki rétt.",
+      "storageTitle": "Geymsluvilla",
+      "storageMessage": "Ekki er hægt að fá aðgang að staðbundinni geymslu. Sumir eiginleikar virka kannski ekki rétt.",
+      "crashTitle": "Eitthvað fór úrskeiðis.",
+      "crashSubtitle": "Vinsamlegast reyndu aftur.",
+      "crashLabel": "App hrundi"
+    },
+    "proxyErrors": {
+      "genericTitle": "Eitthvað fór úrskeiðis",
+      "genericMessage": "Vinsamlegast reyndu aftur.",
+      "rateLimitTitle": "Of margar beiðnir",
+      "rateLimitMessage": "Við erum að sinna mörgum beiðnum. Vinsamlegast reyndu aftur eftir augnablik.",
+      "rateLimitRetryAfter": "Við erum að sinna mörgum beiðnum. Vinsamlegast reyndu aftur eftir um {{seconds}} sekúndur.",
+      "restrictedTitle": "Takmarkað efni",
+      "restrictedMessage": "Þessari beiðni var lokað af öryggissíum.",
+      "insufficientCoinsTitle": "Ekki nóg af myntum",
+      "insufficientCoinsMessage": "Núverandi inneign þín er of lág fyrir þessa beiðni.",
+      "imageUnavailableTitle": "Mynd ekki tiltæk",
+      "imageUnavailableMessage": "Myndaskráin sem búin var til var ekki tiltæk í augnablikinu. Vinsamlegast reyndu aftur.",
+      "authorizationTitle": "Útgáfa heimildar",
+      "authorizationMessage": "Við gátum ekki staðfest reikninginn þinn. Vinsamlegast reyndu aftur.",
+      "serverTitle": "Server hiksti",
+      "serverMessage": "Netþjónar okkar áttu í vandræðum. Vinsamlegast reyndu aftur fljótlega.",
+      "timeoutTitle": "Tekur of langan tíma",
+      "timeoutMessage": "Beiðnin rann út. Vinsamlegast reyndu aftur.",
+      "networkTitle": "Engin tenging",
+      "networkMessage": "Engin nettenging. Athugaðu tenginguna þína og reyndu aftur.",
+      "requestTitle": "Óska eftir útgáfu",
+      "requestMessage": "Eitthvað fór úrskeiðis við beiðni þína. Vinsamlegast reyndu aftur."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Virkjaðu Premium",
+    "activateMessage": "Viltu virkja iðgjald gagnrýnenda?",
+    "activateAction": "Virkjaðu",
+    "deactivateTitle": "Slökktu á Premium",
+    "deactivateMessage": "Viltu slökkva á iðgjaldi gagnrýnenda?",
+    "deactivateAction": "Afvirkja"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Dagleg verðlaun",
+      "body": "Ekki missa af daglegu myntunum þínum - fáðu fyrir miðnætti."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Misstu ekki af daglegu myntunum þínum",
+      "body": "Við sendum eina áminningu á dag svo röðin þín haldist og myntin haldi áfram að safnast. Enginn ruslpóstur og þú getur slökkt á því hvenær sem er.",
+      "enable": "Kveikja á áminningum",
+      "skip": "Ekki núna"
+    }
+  }
+}

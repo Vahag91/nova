@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Kies 'n model",
+    "searchPlaceholder": "Soek modelle...",
+    "noModelsFound": "Geen modelle gevind nie",
+    "noModelsAvailable": "Geen modelle beskikbaar nie",
+    "currentModel": "Huidige model: {{name}}. Tik om model te verander.",
+    "openHint": "Maak modelkeusekieslys oop",
+    "closeLabel": "Maak modelkieser toe",
+    "searchLabel": "Soek modelle",
+    "searchHint": "Tik om beskikbare modelle te filter",
+    "modelLabel": "{{name}} model",
+    "selectHint": "Kies {{name}} model",
+    "currentlySelected": "Tans gekose model",
+    "genericModel": "{{provider}} model",
+    "badges": {
+      "new": "NUUT",
+      "best": "BESTE"
+    }
+  },
+  "models": {
+    "gpt-4o": "Die kragtigste KI-model",
+    "gpt-4o-mini": "Vinnig vir alledaagse take",
+    "gpt-5": "Die kragtigste KI vir alle doeleindes",
+    "gpt-5-chat-latest": "Geoptimaliseer vir klets en dialoog",
+    "gpt-5-mini": "Vinnig en betroubaar GPT-5",
+    "gpt-5.4-nano": "Ligte model vir eenvoudige take",
+    "o4-mini": "Doeltreffende redenasiemodel",
+    "gpt-4.1-mini": "Kompak, in staat GPT-4.1",
+    "claude-3-haiku": "Vinnige en gefokusde Antropiese KI",
+    "claude-3.7-sonnet": "Verfynde redenasie deur Anthropic",
+    "gemini-2.5-Flash": "Google se mees gevorderde model",
+    "gemini-2.5-flash": "Google se mees gevorderde model",
+    "gemini-2.0-flash": "Vinnige en presiese Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Die kragtigste KI-model",
+    "fast_everyday": "Vinnig vir alledaagse take",
+    "fast_reasoning": "Vinnige model met goeie redenasie",
+    "great_reasoning": "Gevorderde redenasiemodel",
+    "coding_reasoning": "Gevorderde kodering en redenasie",
+    "better_coding": "Beter vir kodering en redenering",
+    "best_overall": "Beste all-around KI-model",
+    "best_google": "Google se beste model",
+    "best_xai": "xAI se kragtigste model",
+    "creative_focus": "Groot vir kreatiewe skryfwerk",
+    "code_helper": "Ideaal vir koderingshulp",
+    "chat_focus": "Geoptimaliseer vir gesels",
+    "long_context": "Groot vir lang kontekste",
+    "budget_friendly": "Begrotingsvriendelike KI-model",
+    "ultra_fast": "Ultra vinnige reaksies",
+    "safe_default": "Veilige verstek keuse",
+    "multilingual": "Sterk meertalige ondersteuning",
+    "vision_strong": "Wonderlik met beelde en visie",
+    "data_analysis": "Goed vir data-analise",
+    "structured_tasks": "Goed vir gestruktureerde take",
+    "everyday_helper": "Alledaagse assistent-model",
+    "concise_answers": "Kort, bondige antwoorde",
+    "detailed_answers": "Gedetailleerde stap-vir-stap antwoorde",
+    "experimental": "Eksperimentele volgende-gen model",
+    "reliable_classic": "Betroubare klassieke model",
+    "lightweight": "Liggewig, laekoste-model",
+    "chatty_personal": "Meer vriendelik en persoonlik",
+    "pro_users": "Beste vir kraggebruikers",
+    "research_helper": "Goed vir navorsing en notas",
+    "reasoning_strong": "Gevorderde redenasiemodel"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Antropies",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Ander"
+  },
+  "navigation": {
+    "chat": "Nuwe Chat",
+    "history": "Geskiedenis",
+    "rewards": "Daaglikse belonings",
+    "assistants": "Assistente",
+    "imagesStudio": "Image Studio",
+    "settings": "Instellings",
+    "recentChats": "Onlangse geselsies",
+    "proFeatures": "Pro kenmerke",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Kry Pro-kenmerke",
+      "subtitle": "Alle KI-kenmerke"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Genereer, verfyn en publiseer visuele bates op een plek.",
+    "cta": "Maak oop"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Kies beelde",
+    "exitSelectionMode": "Verlaat seleksiemodus",
+    "selectAll": "Kies Alles",
+    "noImagesYet": "Nog geen beelde nie",
+    "describeImageHint": "Beskryf jou prent hieronder en tik Genereer.",
+    "generatedImagesGallery": "Gegenereerde beelde gallery",
+    "describeImagePlaceholder": "Beskryf die prentjie wat jy wil hê...",
+    "deleteConfirmTitle": "Vee prente uit",
+    "deleteConfirmMessage": "Is jy seker jy wil die geselekteerde prente uitvee? Hierdie handeling kan nie ontdoen word nie.",
+    "cancel": "Kanselleer",
+    "delete": "Vee uit",
+    "generate": "Genereer",
+    "generating": "Genereer tans …",
+    "latest": "Nuutste",
+    "insertToChat": "Voeg in om te klets",
+    "pleaseWait": "Wag asseblief...",
+    "processing": "Verwerk tans …",
+    "tapToUploadImage": "Tik om prent op te laai",
+    "camera": "Laai foto's op",
+    "library": "Biblioteek",
+    "enterPrompt": "Voer asseblief 'n versoek vir teks-na-prent-generering in",
+    "openInBrowser": "Maak oop in blaaier",
+    "makeVariations": "Maak variasies",
+    "deleteAllFromGeneration": "Vee alles uit hierdie generasie uit",
+    "imageOptionsTitle": "Beeldopsies",
+    "imageOptionsMessage": "Wat wil jy graag met hierdie prent doen?",
+    "insertMarkdownHeader": "Hier is die beeld vir:",
+    "variationSuffix": "- variasie van vorige beeld",
+    "selectedCount": "gekies",
+    "selectedCount_one": "gekies",
+    "selectedCount_other": "gekies",
+    "imageDescriptionInput": "Beeldbeskrywing-invoer",
+    "imageDescriptionHint": "Voer 'n beskrywing in van die prent wat jy wil genereer",
+    "openModelSettings": "Maak modelinstellings oop",
+    "modelSettingsHint": "Tik om model en instellings te verander",
+    "openPhotoGallery": "Maak fotogalery oop",
+    "clearInput": "Duidelike invoer",
+    "generatedImage": "Gegenereerde beeld",
+    "autoSelectedModel": "Outo-geselekteerde {{model}} vir {{mode}}-modus",
+    "deleteSelectedConfirmTitle": "Vee beelde uit",
+    "deleteSelectedConfirmMessage": "Is jy seker jy wil prente uitvee? Hierdie handeling kan nie ontdoen word nie."
+  },
+  "imageStudio": {
+    "generateImage": "Genereer beeld",
+    "generatingImage": "Genereer beeld",
+    "generateImageHint": "Tik om 'n prent op grond van jou beskrywing te genereer",
+    "imageDescriptionInput": "Beeldbeskrywing-invoer",
+    "imageDescriptionHint": "Voer 'n beskrywing in van die prent wat jy wil genereer",
+    "openModelSettings": "Maak modelinstellings oop",
+    "modelSettingsHint": "Tik om model en instellings te verander",
+    "openPhotoGallery": "Maak fotogalery oop",
+    "clearInput": "Duidelike invoer",
+    "generatedImage": "Gegenereerde beeld"
+  },
+  "assistants": {
+    "title": "Assistente",
+    "defaultTitle": "Assistent",
+    "errorTitle": "Iets het verkeerd geloop",
+    "errorMessage": "Kon nie hierdie assistent begin nie.",
+    "noAssistants": "Geen assistente in hierdie kategorie gevind nie.",
+    "selectAssistantHint": "Maak assistent-kieser oop",
+    "subtitle": "Samegestelde KI-spesialiste gereed vir kodering, skryf, ontleding, beplanning en meer.",
+    "searchPlaceholder": "Soek assistente …",
+    "useAssistant": "Gebruik Assistent",
+    "selectAssistant": "Kies assistent",
+    "description": "Beskrywing",
+    "systemPrompt": "Stelselaanvraag",
+    "chooseModel": "Kies Model",
+    "categoryAll": "Almal",
+    "categories": {
+      "everyday": "Elke dag",
+      "life": "Lewe",
+      "health": "Gesondheid",
+      "schoolWork": "Skool & Werk",
+      "coding": "Kodering",
+      "creative": "Kreatief",
+      "general": "Algemeen"
+    },
+    "presets": {
+      "default": {
+        "name": "Verstek assistent",
+        "description": "Gebalanseerde hulp vir daaglikse goed."
+      },
+      "quick": {
+        "name": "Vinnige antwoorde",
+        "description": "Kort, direkte antwoorde."
+      },
+      "planner": {
+        "name": "Daaglikse beplanner",
+        "description": "Beplan jou dag en roetines."
+      },
+      "recipes": {
+        "name": "Etes & Resepte",
+        "description": "Wat om te kook, met wat jy het."
+      },
+      "fitness": {
+        "name": "Fiksheidsafrigter",
+        "description": "Klein gewoontes en tuisoefeninge."
+      },
+      "money": {
+        "name": "Geld Buddy",
+        "description": "Eenvoudige begrotings en bestedingswenke."
+      },
+      "study": {
+        "name": "Studie Helper",
+        "description": "Verduidelik eenvoudig. Vra my vas."
+      },
+      "email": {
+        "name": "E-pos & CV",
+        "description": "Skryf duidelike e-posse en CV-lyne."
+      },
+      "translator": {
+        "name": "Vertaler",
+        "description": "Vertaal + leer frases."
+      },
+      "travel": {
+        "name": "Reismaat",
+        "description": "Eenvoudige planne en paklyste."
+      },
+      "tech": {
+        "name": "Tegniese ondersteuning (eenvoudig)",
+        "description": "Foon, toepassings, Wi-Fi basiese beginsels."
+      },
+      "summarizer": {
+        "name": "TL;DR Opsomming",
+        "description": "Kort koeëls + eenlyn TL;DR."
+      },
+      "gift": {
+        "name": "Geskenk Finder",
+        "description": "Idees volgens begroting en belangstellings."
+      },
+      "party": {
+        "name": "Gebeurtenisbeplanner (Lite)",
+        "description": "Beplan vinnig 'n klein partytjie."
+      },
+      "social": {
+        "name": "Sosiale Pos Maker",
+        "description": "Konsepplasings met opsies."
+      },
+      "interview": {
+        "name": "Onderhoud Afrigter",
+        "description": "Oefen antwoorde (STER)."
+      },
+      "homefix": {
+        "name": "Tuis Fix-It Guide",
+        "description": "Eenvoudige selfdoen-probleemoplossing."
+      },
+      "pet": {
+        "name": "Troeteldiersorg Buddy",
+        "description": "Voeding, stap, basiese opleiding."
+      },
+      "mindful": {
+        "name": "Bedagsame minuut",
+        "description": "1-3 min rustige pouses."
+      },
+      "polite": {
+        "name": "Beleefde herskrywer",
+        "description": "Herskryf tekste en antwoorde mooi."
+      }
+    }
+  },
+  "history": {
+    "title": "Geskiedenis",
+    "searchPlaceholder": "Soek kletse …",
+    "newChat": "Nuwe Chat",
+    "new": "+ Nuut",
+    "search": "Soek",
+    "clearSearch": "Vee soektog uit",
+    "noChatsYet": "Nog geen kletse nie",
+    "noResults": "Nog geen kletse nie",
+    "startFirstConversation": "Begin jou eerste gesprek.",
+    "startChat": "Begin klets",
+    "startNewChat": "Begin 'n nuwe klets",
+    "errorLoadingHistory": "Kon nie geskiedenis laai nie",
+    "loading": "Laai tans geskiedenis …",
+    "renameChat": "Hernoem klets",
+    "enterNewTitle": "Voer 'n nuwe titel in",
+    "deleteChat": "Vee klets uit?",
+    "deleteChatMessage": "\"{{title}}\" sal uitgevee word.",
+    "rename": "Hernoem",
+    "unpin": "Ontspeld",
+    "pin": "Speld vas",
+    "untitled": "Titelloos"
+  },
+  "settings": {
+    "title": "Instellings",
+    "model": "Model",
+    "searchPlaceholder": "Soek modelle …",
+    "temperatureForCurrentModel": "Temperatuur vir huidige model",
+    "customFor": "Pasgemaak vir {{model}}",
+    "usingDefault": "Gebruik standaard {{temperature}}",
+    "resetToDefault": "Stel terug na verstek",
+    "defaultTemperature": "Verstek temperatuur (terugval)",
+    "usedByModelsWithoutOverride": "Word gebruik deur modelle sonder 'n pasgemaakte oorheersing",
+    "dangerZone": "Gevaarsone",
+    "clearAllChatsAndSettings": "Vee alle kletse en instellings uit",
+    "about": "Oor",
+    "version": "Weergawe {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premie",
+    "privacyPolicy": "Privaatheidsbeleid",
+    "hero": {
+      "label": "Spesiale aanbod",
+      "title": "Onbeperkte toegang\n& Pro kenmerke",
+      "upgrade": "Gradeer op",
+      "manage": "Bestuur plan"
+    },
+    "sections": {
+      "premium": "Premium Plan",
+      "data": "Gebruikersdata",
+      "support": "Ondersteuning & Regs"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Kry Premium",
+        "subtitle": "Ontsluit onbeperkte skeppingsinstrumente"
+      },
+      "premiumActive": {
+        "title": "Premium aktief",
+        "subtitle": "Dankie vir die ondersteuning Cloud AI"
+      },
+      "restore": {
+        "title": "Herstel aankope",
+        "subtitle": "Gebruik as jy van toestelle verander het"
+      },
+      "history": {
+        "title": "Bestuur kletsgeskiedenis",
+        "subtitle": "Bekyk en vee jou vorige sessies uit"
+      },
+      "reset": {
+        "title": "Stel kletse en voorkeure terug",
+        "subtitle": "Vee alle gestoorde data op hierdie toestel uit"
+      },
+      "rate": {
+        "title": "Beoordeel ons",
+        "error": "Kan nie die winkelbladsy oopmaak nie."
+      },
+      "support": {
+        "title": "Ondersteuning",
+        "subtitle": "Kontak ons aanlyn",
+        "error": "Kan nie kontakbladsy oopmaak nie."
+      },
+      "privacy": {
+        "title": "Privaatheidsbeleid",
+        "error": "Kan nie die privaatheidsbeleid oopmaak nie."
+      },
+      "terms": {
+        "title": "Gebruiksvoorwaardes",
+        "error": "Kan nie die gebruiksvoorwaardes oopmaak nie."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Onbeskikbaar",
+      "linkUnavailableMessage": "Kan nie hierdie skakel op die oomblik oopmaak nie.",
+      "restoreSuccessTitle": "Herstel",
+      "restoreSuccessMessage": "Jou aankope is herstel.",
+      "restoreEmptyTitle": "Geen aankope gevind nie",
+      "restoreEmptyMessage": "Ons kon nie 'n aktiewe aankoop vind om vir hierdie rekening terug te stel nie.",
+      "restoreErrorTitle": "Herstel het misluk",
+      "restoreErrorMessage": "Kan nie aankope op die oomblik herstel nie.",
+      "resetConfirmTitle": "Stel programdata terug?",
+      "resetConfirmMessage": "Dit verwyder alle kletse en plaaslike voorkeure.",
+      "resetConfirmCancel": "Kanselleer",
+      "resetConfirmCta": "Stel terug"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Skep",
+    "chooseStyle": "Kies 'n styl",
+    "aspectRatio": "Aspekverhouding",
+    "starterPrompts": {
+      "title": "Aanvangsaanwysings",
+      "items": [
+        "ateljee kopskoot",
+        "moderne sitkamer",
+        "tropiese strand teen sonsondergang"
+      ]
+    },
+    "promptPlaceholder": "Tik wat jy wil sien...",
+    "promptHint": "Voorbeeld: 'Golden retriever in ateljeebeligting'",
+    "clearText": "Duidelike teks",
+    "generate": "Genereer",
+    "generating": "Genereer tans …"
+  },
+  "editImage": {
+    "headerTitle": "Wysig",
+    "chooseStyle": "Kies 'n styl",
+    "aspectRatio": "Aspekverhouding",
+    "starterPrompts": {
+      "title": "Aanvangsaanwysings",
+      "items": [
+        "beligting regmaak",
+        "verwyder agtergrond",
+        "sagte portret retouchering"
+      ]
+    },
+    "promptPlaceholder": "Beskryf wysigings (opsioneel)",
+    "clearText": "Duidelike teks",
+    "generate": "Genereer",
+    "generating": "Pas tans toe …",
+    "upload": {
+      "choose": "Kies Foto",
+      "change": "Verander",
+      "remove": "Verwyder"
+    },
+    "imageUnavailable": {
+      "title": "Prent is nie beskikbaar nie",
+      "message": "Kon nie toegang tot die geselekteerde foto kry nie. Herkies dit asseblief en probeer weer."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Spotprent"
+      },
+      "photoreal": {
+        "name": "Fotoreal"
+      },
+      "sketch": {
+        "name": "Skets"
+      },
+      "cyberpunk": {
+        "name": "Kuberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D illustrasie"
+      },
+      "dark_fantasy": {
+        "name": "Donker fantasie"
+      },
+      "vintage_film": {
+        "name": "Vintage film"
+      },
+      "pastel": {
+        "name": "Pastel Estetiese"
+      },
+      "neon_glow": {
+        "name": "Neon gloei"
+      },
+      "epic_landscape": {
+        "name": "Epiese landskap"
+      }
+    },
+    "aspectRatios": {
+      "square": "Vierkantig",
+      "landscape": "Landskap",
+      "portrait": "Portret"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Pasgemaak"
+    },
+    "notEnoughCoinsTitle": "Nie genoeg munte nie",
+    "notEnoughCoinsMessage": "Jou huidige saldo is te laag vir hierdie prent.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Vinnigste model",
+      "runwareFluxKrea": "Kreatiewe, gestileerde resultate",
+      "runwareQwenImage": "Gebalanseerde resultate van hoë gehalte",
+      "google4": "Beste AI-beeldmodel",
+      "klingImageO1": "Hoëbeheer beeldbewerking",
+      "fluxKontent": "Flux Kontent ingestel vir wysigings",
+      "runwareProvider": "Gebalanseerde kwaliteit met betroubare diffusie.",
+      "airProvider": "Nano Banana voeg speelse, lewendige toon by.",
+      "googleProvider": "Google het ingestel vir gepoleerde besonderhede.",
+      "klingaiProvider": "KlingAI is ingestel vir beheerde wysigings.",
+      "anthropicProvider": "Claude pyplyn vir genuanseerde buie.",
+      "default": "Tik om beskikbare enjins te verken."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "jou gekose styl",
+    "sheetTitle": "Skep jou visie",
+    "sheetSubtitle": "Kort slukkie bedienerkoffie terwyl ons {{style}} in die prompt meng.",
+    "phases": {
+      "blend": "Meng {{style}} in",
+      "paint": "Verf die toneel",
+      "finish": "Voeg finale poetsmiddel by"
+    },
+    "actions": {
+      "cancel": "Kanselleer",
+      "retry": "Probeer weer",
+      "close": "Maak toe"
+    },
+    "errors": {
+      "restrictedTitle": "Beperkte inhoud",
+      "genericTitle": "Generasie het misluk",
+      "genericMessage": "Kon nie prent genereer nie."
+    },
+    "alerts": {
+      "saveFailedTitle": "Kon nie stoor nie",
+      "shareFailedTitle": "Kon nie deel nie",
+      "tryAgain": "Probeer asseblief weer.",
+      "savedTitle": "Gestoor",
+      "savedMessage": "Prent is in jou gallery gestoor.",
+      "permissionTitle": "Toestemming nodig",
+      "permissionMessage": "Laat stoortoegang toe om prente in jou gallery te stoor."
+    },
+    "result": {
+      "complete": "Alles klaar"
+    },
+    "accessibility": {
+      "close": "Maak toe"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Vee uit",
+      "edit": "Wysig",
+      "save": "Stoor",
+      "share": "Deel"
+    },
+    "alerts": {
+      "savedTitle": "Gestoor",
+      "savedMessage": "Prent is in jou gallery gestoor.",
+      "permissionTitle": "Toestemming nodig",
+      "permissionMessage": "Laat stoortoegang toe om prente in jou gallery te stoor.",
+      "saveFailedTitle": "Kon nie stoor nie",
+      "tryAgain": "Probeer asseblief weer."
+    },
+    "accessibility": {
+      "close": "Maak toe",
+      "delete": "Vee prent uit",
+      "edit": "Wysig prent",
+      "save": "Stoor prent",
+      "share": "Deel prent"
+    }
+  },
+  "reportContent": {
+    "title": "Rapporteer KI-inhoud",
+    "subtitle": "Vertel ons wat fout is met hierdie gegenereerde inhoud.",
+    "privateDisclosure": "Die indiening stuur hierdie gerapporteerde inhoud vir veiligheidsoorsig.",
+    "accessibilityLabel": "Rapporteer KI-inhoud",
+    "reasons": {
+      "sexual": "Seksuele of naaktheidsinhoud",
+      "violence_self_harm": "Geweld of selfbesering",
+      "hate_harassment": "Haat of teistering",
+      "child_safety": "Bekommernis oor kinderveiligheid",
+      "scam_deceptive": "Bedrogspul of bedrieglike inhoud",
+      "other": "Ander"
+    },
+    "errors": {
+      "reasonRequired": "Kies asseblief 'n rede voor indiening.",
+      "submit": "Kon nie verslag indien nie. Probeer asseblief weer."
+    },
+    "success": {
+      "title": "Dankie. Jou verslag is ingedien.",
+      "subtitle": "Ons sal verslae gebruik om inhoudveiligheid te verbeter."
+    },
+    "actions": {
+      "report": "Rapporteer",
+      "submit": "Dien verslag in",
+      "done": "Klaar"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Maak spyskaart oop",
+      "selectImages": "Kies beelde",
+      "exitSelection": "Verlaat seleksie",
+      "deleteSelected": "Vee geselekteerde beelde uit",
+      "selectToDelete": "Kies prente om uit te vee"
+    },
+    "createCard": {
+      "title": "Skep uit teks",
+      "subtitle": "Tik 'n beskrywing",
+      "cta": "Beskryf & Genereer"
+    },
+    "editCard": {
+      "title": "AI-fotoredigeerder",
+      "subtitle": "Transformeer en verbeter met AI",
+      "cta": "Redigeer met AI"
+    },
+    "gallery": {
+      "title": "Galery",
+      "empty": "Nog geen beelde nie",
+      "selection": {
+        "enter": "Kies beelde",
+        "exit": "Verlaat seleksie",
+        "deleteSelected": "Vee geselekteerde beelde uit",
+        "selectForDelete": "Kies prente om uit te vee"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Ontmoet",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Skep en wysig beelde met AI—reg binne Cloud AI."
+    },
+    "relaxView": {
+      "title": "Ontmoet jou KI",
+      "titleHighlight": "Assistente",
+      "subtitle": "Gespesialiseerde KI-kundiges wat gereed is om te help met jou daaglikse behoeftes",
+      "cards": {
+        "fitness": {
+          "title": "Fiksheidsafrigter",
+          "text": "Klein gewoontes en tuisoefeninge."
+        },
+        "recipes": {
+          "title": "Etes & Resepte",
+          "text": "Wat om te kook, met wat jy het."
+        },
+        "travel": {
+          "title": "Reismaat",
+          "text": "Eenvoudige planne en paklyste."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ONDERNEMINGSGRAAD KI-OPLOSSINGS",
+      "description": "Bemagtig jou besigheid met die nuutste kunsmatige intelligensie-tegnologie wat ontwerp is vir professionele ondernemings en spanne.",
+      "stats": "Vertrou deur 500 000+ gebruikers",
+      "rating": "4,9 / 5",
+      "button": "Begin"
+    },
+    "buttons": {
+      "continue": "Gaan voort",
+      "start": "Kom ons begin"
+    }
+  },
+  "coinStore": {
+    "title": "Kry krediete",
+    "loading": "Laai tans muntwinkel …",
+    "balanceLabel": "Jou huidige saldo is",
+    "balanceValue": "{{amount}} Krediete",
+    "history": {
+      "link": "Transaksiegeskiedenis",
+      "alertTitle": "Geskiedenis",
+      "alertBody": "Transaksiegeskiedenis kom binnekort."
+    },
+    "noPacks": "Geen muntpakkies beskikbaar nie. Gaan jou RevenueCat-aanbieding-ID na.",
+    "badges": {
+      "basic": "Basiese Pakket",
+      "popular": "Gewildste",
+      "value": "Beste waarde"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Krediete",
+      "tokensLabel": "{{credits}} Krediete",
+      "defaultName": "Pak {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "Gaan Premium",
+      "subtitle": "Onbeperkte toegang en kenmerke",
+      "cta": "Gradeer op"
+    },
+    "termsText": "Deur 'n aankoop te doen, stem jy in tot ons",
+    "termsLink": "Diensbepalings",
+    "alerts": {
+      "initErrorTitle": "Init fout",
+      "genericMessage": "Iets het verkeerd geloop.",
+      "successTitle": "Sukses",
+      "successMessage": "Krediete sal binnekort verskyn.",
+      "purchaseFailedTitle": "Aankoop het misluk",
+      "unknownError": "Onbekende fout"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premie vereis",
+    "upgrade": "Gradeer op",
+    "modelRequiredMessage": "Hierdie model vereis Premium. Gradeer op om toegang te verkry tot GPT-5, Grok 4, Claude, en meer gevorderde modelle.",
+    "assistantsRequiredMessage": "Assistente benodig Premium. Gradeer op om toegang te verkry tot gespesialiseerde AI-assistente vir fiksheid, kodering, skryf en meer.",
+    "assistantsTitle": "Premie vereis",
+    "assistantsMessage": "Assistente benodig Premium. Gradeer op om toegang te verkry tot gespesialiseerde AI-assistente vir fiksheid, kodering, skryf en meer."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Maak betaalmuur toe",
+    "unavailableTitle": "Aankope nie beskikbaar nie",
+    "unavailableMessage": "Android-fakturering is nog nie opgestel nie.",
+    "restoreEmptyTitle": "Geen aankope gevind nie",
+    "restoreEmptyMessage": "Ons kon nie 'n aktiewe aankoop vind om vir hierdie rekening terug te stel nie.",
+    "restoreFailedTitle": "Herstel het misluk",
+    "restoreFailedMessage": "Kan nie aankope op die oomblik herstel nie.",
+    "productsUnavailableTitle": "Geen planne beskikbaar nie",
+    "productsUnavailableMessage": "Geen Android-intekeningprodukte is tans beskikbaar nie.",
+    "purchaseFailedTitle": "Aankoop het misluk",
+    "purchaseFailedMessage": "Kan nie hierdie aankoop op die oomblik voltooi nie.",
+    "restore": "Herstel",
+    "restoreRestoring": "Stel tans terug …",
+    "features": {
+      "create": "Skep beelde en video's",
+      "search": "Soek op die web met AI",
+      "talk": "Praat natuurlik met KI",
+      "imageStudio": "Kry Image Studio {{credits}} krediete {{period}}",
+      "period": {
+        "weekly": "weekliks",
+        "monthly": "maandeliks",
+        "yearly": "jaarliks"
+      }
+    },
+    "freeTrial": {
+      "title": "Gratis proeflopie",
+      "subtitle": "3-dae gratis proeftydperk"
+    },
+    "badge": {
+      "bestOffer": "Beste aanbod"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Jaarliks",
+        "only": "Slegs {{price}}",
+        "defaultPrice": "USD 79,99",
+        "defaultIntroPrice": "USD 1,35"
+      },
+      "monthly": {
+        "title": "Maandeliks",
+        "subtitle": "Kanselleer enige tyd",
+        "defaultPrice": "USD 19,99"
+      },
+      "weekly": {
+        "title": "Weekliks",
+        "subtitle": "Kanselleer enige tyd",
+        "defaultPrice": "USD 9,99",
+        "trialThen": "3 dae gratis, dan"
+      }
+    },
+    "frequency": {
+      "perWeek": "per week",
+      "perMonth": "per maand"
+    },
+    "cta": "Gaan voort",
+    "ctaFreeTrial": "Probeer dit gratis",
+    "legal": {
+      "terms": "Bepalings",
+      "privacy": "Privaatheid"
+    },
+    "premium": {
+      "headline": "Alle premium KI in een plan",
+      "subtitleLine1": "Klets, kodeer, skep en beplan",
+      "subtitleLine2": "met gevorderde modelle.",
+      "enableTrial": "Aktiveer gratis proeflopie",
+      "annual": "Jaarlikse",
+      "saveBadge": "Bespaar 83%",
+      "year": "jaar",
+      "week": "week",
+      "termsOfUse": "Gebruiksvoorwaardes",
+      "privacyPolicy": "Privaatheidsbeleid"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Boodskap...",
+    "createImages": "Skep prente",
+    "generateAiArtwork": "Genereer AI-kunswerk",
+    "camera": "Laai foto's op",
+    "takeOrSelectPhotos": "Kies foto's",
+    "search": "Soek",
+    "findInformation": "Vind inligting",
+    "findRecentInfo": "Vind onlangse inligting",
+    "removeImage": "Verwyder prent",
+    "messageInput": "Boodskapinvoer",
+    "clearInput": "Duidelike invoer",
+    "quickActionsLabel": "Vinnige aksies",
+    "hideQuickActions": "Versteek vinnige aksies",
+    "showQuickActions": "Wys vinnige aksies",
+    "startVoiceInput": "Begin steminvoer",
+    "sendMessage": "Stuur boodskap",
+    "offline": "Vanlyn",
+    "stop": "Stop",
+    "streaming": "Stroom tans …",
+    "closeRecorder": "Maak blokfluit toe",
+    "insertTranscript": "Stuur",
+    "scrollToLatest": "Blaai na nuutste boodskap",
+    "copyMessage": "Kopieer boodskap",
+    "copyMessageHint": "Kopieer hierdie boodskap na knipbord",
+    "shareMessage": "Deel boodskap",
+    "shareMessageHint": "Deel hierdie boodskap",
+    "regenerateResponse": "Regenereer reaksie",
+    "regenerateResponseHint": "Genereer 'n nuwe antwoord",
+    "copyCode": "Kopieer kode",
+    "copied": "Gekopieer",
+    "image": "beeld",
+    "loading": "Laai tans …",
+    "loadingChat": "Laai tans klets …",
+    "offlineBanner": "Jy is vanlyn. Boodskappe kan nie gestuur word nie.",
+    "offlineError": "Geen internet konneksie nie. Gaan asseblief jou verbinding na en probeer weer.",
+    "imagePickerErrorTitle": "Beeldkieserfout",
+    "imagePickerErrorMessage": "Kan nie toegang tot jou foto's kry nie. Probeer asseblief weer.",
+    "messageTooLong": "Boodskap te lank ({{length}}). Limiet is {{limit}}.",
+    "sendFailed": "Kon nie boodskap stuur nie. Probeer asseblief weer.",
+    "modelNoImageSupport": "Die gekose model ondersteun nie beelde nie. Kies asseblief 'n ander model.",
+    "voiceStartFailed": "Kon nie stem begin nie.",
+    "voiceNoSpeechDetected": "Geen stem is herken nie. Probeer asseblief weer.",
+    "emptyTitle": "Hoe kan ek help?",
+    "emptySubtitle": "Begin 'n gesprek met KI",
+    "privateTitle": "Privaat gesels",
+    "privateSubtitle": "Hierdie klets sal nie in jou kletsgeskiedenis verskyn nie",
+    "startPrivateChat": "Begin privaat klets",
+    "endPrivateChat": "Beëindig private klets",
+    "permissions": {
+      "photosTitle": "Foto's Toestemming benodig",
+      "photosMessage": "Fototoegang word vereis om beelde te kies.",
+      "voiceTitle": "Stemtoestemmings benodig",
+      "voiceMessage": "Mikrofoon- en spraaktoegang word vereis om stem te gebruik."
+    },
+    "activity": {
+      "analyzingImages": "Ontleed tans beelde …",
+      "searching": "Soek tans …",
+      "thinking": "Dink…"
+    },
+    "webSearch": {
+      "title": "Websoektog",
+      "subtitle": "Vind onlangse inligting",
+      "label": "Websoektog",
+      "enable": "Aktiveer websoektog",
+      "disable": "Deaktiveer websoektog",
+      "toggleLabel": "Soek op die web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Ontwerp visuele materiaal teen spoed.",
+      "subtitle": "Genereer, verfyn en publiseer visuele bates op een plek.",
+      "cta": "Maak oop"
+    },
+    "quickActions": {
+      "createImages": "Skep prente",
+      "openCamera": "Maak kamera oop",
+      "editImage": "Wysig prent",
+      "startVoice": "Begin Stem",
+      "assistants": "Assistente"
+    },
+    "listening": "Luister tans …",
+    "startRecording": "Begin opneem …",
+    "assistantHeader": {
+      "unavailableTitle": "Assistent nie beskikbaar nie",
+      "unavailableDescription": "Ons kon nie hierdie assistent laai nie. Probeer asseblief weer.",
+      "ready": "Gereed om te help"
+    },
+    "actions": {
+      "copy": "Kopieer",
+      "share": "Deel",
+      "regenerate": "Regenereer",
+      "retryFromHere": "Probeer weer van hier af",
+      "report": "Rapporteer",
+      "cancel": "Kanselleer"
+    },
+    "markdown": {
+      "copy": "Kopieer",
+      "copied": "Gekopieer",
+      "table": "TABEL",
+      "watchVideo": "Kyk Video",
+      "wikipedia": "Wikipedia",
+      "link": "Skakel",
+      "note": "Let wel",
+      "warning": "Waarskuwing",
+      "tip": "Wenk"
+    },
+    "messageActionTitle": "Boodskap",
+    "status": {
+      "sending": "Stuur tans …",
+      "failed": "Misluk",
+      "sent": "Gestuur"
+    },
+    "suggestions": {
+      "writeStory": "Skryf 'n kreatiewe storie",
+      "writeStorySubtitle": "oor 'n magiese avontuur",
+      "planTravel": "Beplan 'n reisplan",
+      "planTravelSubtitle": "vir 'n wonderlike vakansie",
+      "explainConcept": "Verduidelik hierdie konsep",
+      "explainConceptSubtitle": "in eenvoudige terme",
+      "planDay": "Beplan my dag",
+      "planDaySubtitle": "met produktiwiteitswenke"
+    },
+    "home": {
+      "eyebrow": "Kies 'n onderwerp",
+      "title": "Wat wil jy doen?",
+      "subtitle": "Kies 'n rigting en begin dan met 'n sterk aansporing.",
+      "pickPromptTitle": "Kies 'n versoek om te begin",
+      "changeTopic": "Kies 'n ander onderwerp",
+      "intents": {
+        "summarize": "Som teks op",
+        "summarizeShort": "Som op",
+        "summarizeHint": "Artikels, notas, stemmemo's, lang drade",
+        "plan": "Maak 'n plan",
+        "planHint": "Reise, roetines, begrotings, spertye, lewensveranderinge",
+        "brainstorm": "Dinkskrum",
+        "brainstormHint": "Idees, aanbiedinge, name, inhoud, byprojekte",
+        "analyze": "Ontleed data",
+        "analyzeHint": "Besteding, terugvoer, maatstawwe, gewoontes, prestasie"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Skep 'n stigteropdrag",
+          "founderBriefSubtitle": "Trek die hoofrisiko's, besluite en volgende stappe uit.",
+          "classNotesTitle": "Maak my studienotas skoon",
+          "classNotesSubtitle": "Verander rowwe aantekeninge in 'n duidelike studiegids.",
+          "meetingHandoffTitle": "Skryf 'n oorhandigingsopsomming",
+          "meetingHandoffSubtitle": "Nuttig na vergaderings, oproepe of lang interne drade.",
+          "longArticleTitle": "Som hierdie artikel vinnig op",
+          "longArticleSubtitle": "Kondenseer 'n lang artikel in skerp wegneemetes."
+        },
+        "plan": {
+          "energyResetTitle": "Bou 'n 14-dae energie-terugstelling",
+          "energyResetSubtitle": "'n Realistiese plan vir slaap, kos, beweging en fokus.",
+          "mealPlanTitle": "Beplan maaltye wat ek eintlik sal kook",
+          "mealPlanSubtitle": "Prakties, bekostigbaar en gebaseer op wat ek het.",
+          "cityMoveTitle": "Beplan my verhuising na 'n nuwe stad",
+          "cityMoveSubtitle": "Verdeel dit in tydlyn-, begroting-, behuisings- en administrasietake.",
+          "tripEscapeTitle": "Beplan 'n onvergeetlike naweekwegbreek",
+          "tripEscapeSubtitle": "Iets beter as 'n generiese reisplan."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Vind 'n realistiese sydruk",
+          "sideHustleSubtitle": "Idees wat ek kan begin terwyl ek voltyds werk.",
+          "brandAngleTitle": "Vind 'n onvergeetlike handelsmerkhoek",
+          "brandAngleSubtitle": "Nuttig vir produkte, skeppers, agentskappe of nuusbriewe.",
+          "socialSeriesTitle": "Bedink 'n inhoudreeks",
+          "socialSeriesSubtitle": "Iets konsekwent genoeg om 'n gehoor te laat groei.",
+          "datingIdeasTitle": "Kom met vars idees",
+          "datingIdeasSubtitle": "Datums, geskenke, verrassings of gebeurtenisse wat bedagsaam voel."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Vind waar my geld lek",
+          "spendingLeaksSubtitle": "Wys patrone, swak plekke, en die maklikste wen eerste.",
+          "customerFeedbackTitle": "Verander terugvoer in prioriteite",
+          "customerFeedbackSubtitle": "Groepsversoeke, klagtes, dringendheid en impak.",
+          "habitPatternsTitle": "Spot patrone in my gewoontes",
+          "habitPatternsSubtitle": "Nuttig vir oefensessies, slaap, dagboeke of fokuslogboeke.",
+          "metricsStoryTitle": "Verduidelik wat die getalle beteken",
+          "metricsStorySubtitle": "Meer sein, minder sigbladgeraas."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Verwerk tans …",
+    "tapToUploadImage": "Tik om prent op te laai"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Verwerk tans …",
+    "camera": "Laai foto's op",
+    "library": "Biblioteek"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "Probeer weer",
+    "cancel": "Kanselleer",
+    "allow": "Laat toe",
+    "notNow": "Nie nou nie",
+    "openSettings": "Maak Instellings oop",
+    "close": "Maak toe",
+    "save": "Stoor",
+    "tryAgain": "Probeer weer"
+  },
+  "rateUs": {
+    "title": "Geniet jy Cloud AI?",
+    "subtitle": "Jou terugvoer help ons om te verbeter. Sal jy omgee om ons in die App Store te gradeer?",
+    "rateNow": "Beoordeel nou",
+    "maybeLater": "Miskien later",
+    "dontAskAgain": "Moenie weer vra nie"
+  },
+  "oneTimeOffer": {
+    "title": "Eenmalige aanbod",
+    "discount": "{{percent}}% AFSLAG",
+    "subtitle": "Jy sal nie weer hierdie aanbod sien nie.",
+    "badgeLine1": "Eksklusief",
+    "badgeLine2": "Eenmalige aanbod",
+    "upgradeNow": "Gradeer nou op vir {{price}}",
+    "loadingPrice": "Laai tans...",
+    "termsOfUse": "Gebruiksvoorwaardes",
+    "privacyPolicy": "Privaatheidsbeleid",
+    "accessTitle": "Onbeperkte toegang tot",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "Onbeperkte toegang tot GPT-4",
+      "geminiPro": "Toegang tot Gemini Pro",
+      "grokInsights": "Gebruik Grok vir vars insigte",
+      "priorityAccess": "Prioriteittoegang en vinniger antwoorde"
+    },
+    "bestValue": "Beste waarde",
+    "annualPremium": "Jaarlikse Premie",
+    "oneTimePayment": "Eenmalige betaling",
+    "wasPrice": "was",
+    "continue": "Gaan voort",
+    "restore": "Herstel",
+    "terms": "Bepalings",
+    "privacy": "Privaatheid",
+    "successTitle": "Sukses!",
+    "successMessage": "Dankie vir jou aankoop! Geniet premium toegang vir die volgende 12 maande.",
+    "errorTitle": "Aankoop het misluk",
+    "errorMessage": "Iets het verkeerd geloop. Probeer asseblief weer.",
+    "restoreSuccessTitle": "Herstel",
+    "restoreSuccessMessage": "Jou aankope is herstel.",
+    "restoreErrorTitle": "Herstel het misluk",
+    "restoreErrorMessage": "Geen aankope gevind om te herstel nie.",
+    "unavailableTitle": "Aankope nie beskikbaar nie",
+    "unavailableMessage": "Android-fakturering is nog nie opgestel nie."
+  },
+  "rewards": {
+    "header": {
+      "title": "Belonings",
+      "openMenu": "Maak spyskaart oop",
+      "goBack": "Gaan terug"
+    },
+    "pointsHero": {
+      "totalBalance": "TOTALE BALANS",
+      "seeYourRewards": "Sien jou belonings"
+    },
+    "streakTracker": {
+      "title": "Daaglikse Streak",
+      "subtitle": "Hou so aan! Jy is aan die brand.",
+      "days": "Dae",
+      "prize": "Prys",
+      "dayLabel": "Dag {{number}}",
+      "nextReward": "Volgende beloning: {{amount}} in {{time}}",
+      "coins": "Munte"
+    },
+    "sections": {
+      "availableQuests": "Beskikbare take",
+      "completedQuests": "Voltooide take",
+      "availableRewards": "Beskikbare belonings",
+      "needsMoreCoins": "Benodig meer munte"
+    },
+    "balances": {
+      "rewardCoins": "Beloon munte",
+      "imageCredits": "Beeldkrediete"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 beeldkrediete",
+        "imageCredits200": "200 beeldkrediete",
+        "imageCredits600": "600 beeldkrediete",
+        "weeklyPremium": "Weeklikse premie",
+        "secretBox": "Geheime boks"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Geheimsinnige belonings binne"
+      },
+      "alerts": {
+        "comingSoonTitle": "Binnekort beskikbaar",
+        "comingSoonMessage": "Hierdie beloning is nog nie beskikbaar nie.",
+        "notEnoughCoinsTitle": "Nie genoeg munte nie",
+        "notEnoughCoinsMessage": "Jy het meer beloningsmunte nodig om hierdie beloning te ontsluit.",
+        "errorTitle": "Fout",
+        "couldNotOpenBox": "Kon nie boks oopmaak nie.",
+        "couldNotRedeem": "Kon nie beloning los nie. Probeer asseblief weer.",
+        "mysteryReward": "Misterie beloning"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Daaglikse aanmelding",
+        "description": "Maak die toepassing vandag oop om jou streep te behou",
+        "message": "Hierdie soeke word outomaties voltooi wanneer jy die toepassing elke dag oopmaak."
+      },
+      "shareFacebook": {
+        "title": "Deel op Facebook",
+        "description": "Plaas oor ons op Facebook"
+      },
+      "shareTwitter": {
+        "title": "Deel op Twitter",
+        "description": "Tweet jou ervaring"
+      },
+      "shareInstagram": {
+        "title": "Deel op Instagram",
+        "description": "Deel 'n storie of plasing"
+      },
+      "shareExperience": {
+        "title": "Deel jou ervaring",
+        "description": "Vertel vir vriende hoekom jy van die toepassing hou"
+      },
+      "share": {
+        "genericMessage": "Ek gebruik hierdie AI-toepassing vir klets en beeldgenerering. Kyk dit: {{url}}",
+        "facebookQuote": "Kyk na hierdie AI-app!",
+        "twitterText": "Ek probeer hierdie KI-toepassing, dit is nogal gaaf.",
+        "instagramMessage": "Kyk na hierdie KI-toepassing: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Fout",
+        "errorMessage": "Kon nie die winkelbladsy oopmaak nie."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Opdrag voltooi",
+        "description": "Opdrag voltooi",
+        "points": "+{{points}} punte",
+        "close": "Maak toe"
+      },
+      "rewardSuccess": {
+        "error": "FOUT",
+        "success": "SUKSES",
+        "somethingWentWrong": "Iets het verkeerd geloop",
+        "rewardUnlocked": "Beloning ontsluit",
+        "credits": "Krediete",
+        "close": "Maak toe",
+        "okay": "Goed"
+      },
+      "secretBox": {
+        "pill": "GEHEIM BOKS",
+        "rewardUnlocked": "BELONING ONTSLUIT",
+        "shufflingRewards": "SKUFFEL BELONINGS...",
+        "imageCreditsAdded": "Beeldkrediete is by jou rekening gevoeg",
+        "continue": "Gaan voort",
+        "revealing": "Onthullend...",
+        "prizeTiers": {
+          "lucky": "GELUKKIG",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MITIES"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Eis jou daaglikse munte",
+      "subtitle": "Kom elke dag terug vir 'n groter beloning.",
+      "cta": "Teken in",
+      "claimed": "Ontvang! +{{amount}} munte",
+      "later": "Later"
+    }
+  },
+  "app": {
+    "version": "Weergawe {{version}}",
+    "offlineBanner": "Jy is vanlyn",
+    "launch": {
+      "accessibilityLabel": "Begin Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, gereed wanneer jy is"
+    },
+    "errors": {
+      "modelsLoadTitle": "Kon nie modelle laai nie",
+      "modelsLoadMessage": "Kan nie KI-modelle laai nie. Die toepassing sal verstekmodelle gebruik. Gaan asseblief jou internetverbinding na.",
+      "modelsLoadTimeout": "Die laai van modelle het te lank geneem. Die toepassing sal verstekmodelle gebruik. Probeer asseblief weer.",
+      "modelsLoadNetwork": "Geen internet konneksie nie. Die toepassing sal verstekmodelle gebruik. Gaan asseblief jou verbinding na.",
+      "deviceIdTitle": "Inisialiseringsfout",
+      "deviceIdMessage": "Kon nie toestel-ID inisialiseer nie. Sommige kenmerke sal dalk nie reg werk nie.",
+      "storageTitle": "Bergingsfout",
+      "storageMessage": "Kan nie toegang tot plaaslike berging kry nie. Sommige kenmerke sal dalk nie reg werk nie.",
+      "crashTitle": "Iets het verkeerd geloop.",
+      "crashSubtitle": "Probeer asseblief weer.",
+      "crashLabel": "Program het omgeval"
+    },
+    "proxyErrors": {
+      "genericTitle": "Iets het verkeerd geloop",
+      "genericMessage": "Probeer asseblief weer.",
+      "rateLimitTitle": "Te veel versoeke",
+      "rateLimitMessage": "Ons hanteer baie versoeke. Probeer asseblief oor 'n oomblik weer.",
+      "rateLimitRetryAfter": "Ons hanteer baie versoeke. Probeer asseblief weer oor ongeveer {{seconds}} sekondes.",
+      "restrictedTitle": "Beperkte inhoud",
+      "restrictedMessage": "Hierdie versoek is deur veiligheidsfilters geblokkeer.",
+      "insufficientCoinsTitle": "Nie genoeg munte nie",
+      "insufficientCoinsMessage": "Jou huidige saldo is te laag vir hierdie versoek.",
+      "imageUnavailableTitle": "Prent is nie beskikbaar nie",
+      "imageUnavailableMessage": "Die gegenereerde prentlêer was tydelik onbeskikbaar. Probeer asseblief weer.",
+      "authorizationTitle": "Magtigingskwessie",
+      "authorizationMessage": "Ons kon nie jou rekening verifieer nie. Probeer asseblief weer.",
+      "serverTitle": "Bediener haak",
+      "serverMessage": "Ons bedieners het probleme gehad. Probeer asseblief binnekort weer.",
+      "timeoutTitle": "Vat te lank",
+      "timeoutMessage": "Die versoek het uitgetel. Probeer asseblief weer.",
+      "networkTitle": "Geen verbinding nie",
+      "networkMessage": "Geen internet konneksie nie. Gaan asseblief jou verbinding na en probeer weer.",
+      "requestTitle": "Versoek kwessie",
+      "requestMessage": "Iets het verkeerd geloop met jou versoek. Probeer asseblief weer."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktiveer Premium",
+    "activateMessage": "Wil jy resensentpremie aktiveer?",
+    "activateAction": "Aktiveer",
+    "deactivateTitle": "Deaktiveer Premium",
+    "deactivateMessage": "Wil jy beoordelaarpremie deaktiveer?",
+    "deactivateAction": "Deaktiveer"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Daaglikse beloning",
+      "body": "Moenie jou daaglikse munte mis nie - eis voor middernag."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Moet nooit jou daaglikse munte misloop nie",
+      "body": "Ons stuur een herinnering per dag sodat jou reeks aanhou en jou munte bly groei. Geen strooipos nie, en jy kan dit enige tyd afskakel.",
+      "enable": "Skakel herinnerings aan",
+      "skip": "Nie nou nie"
+    }
+  }
+}

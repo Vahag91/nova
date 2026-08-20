@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "0\nএটা মডেল নিৰ্বাচন কৰক",
+    "searchPlaceholder": "অনুসন্ধান মডেল...",
+    "noModelsFound": "কোনো মডেল পোৱা নগ’ল",
+    "noModelsAvailable": "কোনো মডেল উপলব্ধ নহয়",
+    "currentModel": "বৰ্তমানৰ মডেল: {{name}}। মডেল সলনি কৰিবলৈ টেপ কৰক।",
+    "openHint": "নম্বৰত যোগাযোগ কৰিব পাৰে\nমডেল নিৰ্বাচন মেনু খোলে",
+    "closeLabel": "মডেল নিৰ্বাচক বন্ধ কৰক",
+    "searchLabel": "সন্ধান মডেল",
+    "searchHint": "উপলব্ধ মডেলসমূহ ফিল্টাৰ কৰিবলৈ টাইপ কৰক",
+    "modelLabel": "{{name}} মডেল",
+    "selectHint": "{{name}} মডেল নিৰ্বাচন কৰক",
+    "currentlySelected": "বৰ্তমান নিৰ্বাচিত মডেল",
+    "genericModel": "{{provider}} মডেল",
+    "badges": {
+      "new": "0\nNEW",
+      "best": "0\nশ্ৰেষ্ঠ"
+    }
+  },
+  "models": {
+    "gpt-4o": "আটাইতকৈ শক্তিশালী এআই মডেল",
+    "gpt-4o-mini": "দৈনন্দিন কামৰ বাবে দ্ৰুত",
+    "gpt-5": "আটাইতকৈ শক্তিশালী সৰ্বব্যৱহাৰৰ এআই",
+    "gpt-5-chat-latest": "আড্ডা আৰু সংলাপৰ বাবে অনুকূলিত কৰা হৈছে",
+    "gpt-5-mini": "দ্ৰুত আৰু নিৰ্ভৰযোগ্য GPT-5",
+    "gpt-5.4-nano": "সহজ কামৰ বাবে পোহৰৰ আৰ্হি",
+    "o4-mini": "দক্ষ যুক্তিৰ আৰ্হি",
+    "gpt-4.1-mini": "কমপেক্ট, সক্ষম GPT-4.1",
+    "claude-3-haiku": "দ্ৰুত আৰু কেন্দ্ৰীভূত এণ্ট্ৰপিক এআই",
+    "claude-3.7-sonnet": "এন্থ্ৰপিকৰ দ্বাৰা পৰিশোধিত যুক্তি",
+    "gemini-2.5-Flash": "নম্বৰত যোগাযোগ কৰিব পাৰে\nগুগলৰ আটাইতকৈ উন্নত মডেল",
+    "gemini-2.5-flash": "গুগলৰ আটাইতকৈ উন্নত মডেল",
+    "gemini-2.0-flash": "দ্ৰুত আৰু নিখুঁত গুগল এআই"
+  },
+  "modelDescriptions": {
+    "most_powerful": "আটাইতকৈ শক্তিশালী এআই মডেল",
+    "fast_everyday": "দৈনন্দিন কামৰ বাবে দ্ৰুত",
+    "fast_reasoning": "ভাল যুক্তিৰে দ্ৰুত মডেল",
+    "great_reasoning": "উন্নত যুক্তিৰ আৰ্হি",
+    "coding_reasoning": "উন্নত ক'ডিং আৰু যুক্তি",
+    "better_coding": "ক'ডিং আৰু যুক্তিৰ বাবে ভাল",
+    "best_overall": "শ্ৰেষ্ঠ অল-আৰউণ্ড এআই মডেল",
+    "best_google": "গুগলৰ শ্ৰেষ্ঠ মডেল",
+    "best_xai": "xAI ৰ আটাইতকৈ শক্তিশালী মডেল",
+    "creative_focus": "সৃষ্টিশীল লেখাৰ বাবে মহান",
+    "code_helper": "ক'ডিং সহায়ৰ বাবে মহান",
+    "chat_focus": "আড্ডাৰ বাবে অনুকূলিত কৰা হৈছে",
+    "long_context": "দীঘলীয়া প্ৰসংগৰ বাবে গ্ৰেট",
+    "budget_friendly": "বাজেট-বন্ধুত্বপূৰ্ণ এআই মডেল",
+    "ultra_fast": "আল্ট্ৰা ফাষ্ট ৰেচপন্স",
+    "safe_default": "নিৰাপদ অবিকল্পিত পছন্দ",
+    "multilingual": "শক্তিশালী বহুভাষিক সমৰ্থন",
+    "vision_strong": "নম্বৰত যোগাযোগ কৰিব পাৰে\nছবি আৰু দৃষ্টিশক্তিৰ সৈতে মহান",
+    "data_analysis": "তথ্য বিশ্লেষণৰ বাবে ভাল",
+    "structured_tasks": "গাঁথনিগত কামৰ বাবে ভাল",
+    "everyday_helper": "দৈনন্দিন সহায়ক মডেল",
+    "concise_answers": "চুটি, সংক্ষিপ্ত উত্তৰ",
+    "detailed_answers": "বিশদ পদক্ষেপ অনুসৰি উত্তৰ",
+    "experimental": "পৰীক্ষামূলক পৰৱৰ্তী প্ৰজন্মৰ মডেল",
+    "reliable_classic": "নিৰ্ভৰযোগ্য ক্লাছিক মডেল",
+    "lightweight": "লঘু, কম খৰচী মডেল",
+    "chatty_personal": "অধিক বন্ধুত্বপূৰ্ণ আৰু ব্যক্তিগত",
+    "pro_users": "নম্বৰত যোগাযোগ কৰিব পাৰে\nশক্তি ব্যৱহাৰকাৰীৰ বাবে সৰ্বোত্তম",
+    "research_helper": "গৱেষণা আৰু টোকাৰ বাবে ভাল",
+    "reasoning_strong": "উন্নত যুক্তিৰ আৰ্হি"
+  },
+  "providers": {
+    "openai": "⟬পি000⟭",
+    "anthropic": "নম্বৰত যোগাযোগ কৰিব পাৰে\nএন্থ্ৰপিক",
+    "google": "গুগল",
+    "xai": "xAI",
+    "other": "অন্যান্য"
+  },
+  "navigation": {
+    "chat": "নতুন আড্ডা",
+    "history": "ইতিহাস",
+    "rewards": "নম্বৰত যোগাযোগ কৰিব পাৰে\nদৈনিক পুৰস্কাৰ",
+    "assistants": "সহায়কসকল",
+    "imagesStudio": "⟬পি000⟭",
+    "settings": "ছেটিংছ",
+    "recentChats": "শেহতীয়া আড্ডা",
+    "proFeatures": "প্ৰ' বৈশিষ্ট্যসমূহ",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "প্ৰ' বৈশিষ্ট্যসমূহ লাভ কৰক",
+      "subtitle": "সকলো AI বৈশিষ্ট্য"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "⟬পি000⟭",
+    "title": "নম্বৰত যোগাযোগ কৰিব পাৰে\n⟬পি000⟭",
+    "subtitle": "এটা ঠাইত দৃশ্যমান সম্পত্তি সৃষ্টি, পৰিশোধন আৰু প্ৰকাশ কৰা।",
+    "cta": "খোলা"
+  },
+  "imagesStudio": {
+    "title": "⟬পি000⟭",
+    "selectImages": "ছবিসমূহ নিৰ্ব্বাচন কৰক",
+    "exitSelectionMode": "নিৰ্বাচন অৱস্থাৰ পৰা ওলাই যাওক",
+    "selectAll": "সকলো নিৰ্ব্বাচন কৰক",
+    "noImagesYet": "0\nএতিয়াও কোনো ছবি নাই",
+    "describeImageHint": "তলত আপোনাৰ ছবিখনৰ বৰ্ণনা কৰক আৰু সৃষ্টি কৰক টেপ কৰক।",
+    "generatedImagesGallery": "সৃষ্টি কৰা ছবিৰ গেলেৰী",
+    "describeImagePlaceholder": "আপুনি বিচৰা ছবিখনৰ বৰ্ণনা কৰক...",
+    "deleteConfirmTitle": "ছবি মচি পেলাওক",
+    "deleteConfirmMessage": "নম্বৰত যোগাযোগ কৰিব পাৰে\nআপুনি নিশ্চিত নেকি যে আপুনি নিৰ্বাচিত ছবিসমূহ মচি পেলাব বিচাৰে? এই কাৰ্য্য বাতিল কৰিব নোৱাৰি।",
+    "cancel": "বাতিল কৰক",
+    "delete": "মচি পেলাওক",
+    "generate": "সৃষ্টি কৰক",
+    "generating": "জেনেৰেটিং...",
+    "latest": "শেহতীয়া",
+    "insertToChat": "আড্ডা দিবলৈ সন্নিবিষ্ট কৰক",
+    "pleaseWait": "অনুগ্ৰহ কৰি অপেক্ষা কৰক...",
+    "processing": "প্ৰচেছিং...",
+    "tapToUploadImage": "ছবি আপলোড কৰিবলৈ টেপ কৰক",
+    "camera": "ফটো আপলোড কৰক",
+    "library": "লাইব্ৰেৰী",
+    "enterPrompt": "অনুগ্ৰহ কৰি লিখনী-ৰ পৰা ছবিলৈ সৃষ্টিৰ বাবে এটা প্ৰমপ্ট দিয়ক",
+    "openInBrowser": "ব্ৰাউজাৰত খোলক",
+    "makeVariations": "তাৰতম্য কৰক",
+    "deleteAllFromGeneration": "এই প্ৰজন্মৰ পৰা সকলো মচি পেলাওক",
+    "imageOptionsTitle": "ছবিৰ বিকল্পসমূহ",
+    "imageOptionsMessage": "এই ছবিখনৰ সৈতে আপুনি কি কৰিব বিচাৰে?",
+    "insertMarkdownHeader": "ইয়াত ছবিখন আছে:",
+    "variationSuffix": "— পূৰ্বৰ ছবিৰ তাৰতম্য",
+    "selectedCount": "নম্বৰত যোগাযোগ কৰিব পাৰে\nনিৰ্বাচিত কৰা হৈছে",
+    "selectedCount_one": "নিৰ্বাচিত কৰা হৈছে",
+    "selectedCount_other": "নিৰ্বাচিত কৰা হৈছে",
+    "imageDescriptionInput": "ছবিৰ বিৱৰণ ইনপুট",
+    "imageDescriptionHint": "আপুনি সৃষ্টি কৰিব বিচৰা ছবিখনৰ এটা বিৱৰণ দিয়ক",
+    "openModelSettings": "মডেল ছেটিংছ খোলক",
+    "modelSettingsHint": "মডেল আৰু ছেটিংছ সলনি কৰিবলৈ টেপ কৰক",
+    "openPhotoGallery": "ফটো গেলেৰী খোলা",
+    "clearInput": "ইনপুট পৰিষ্কাৰ কৰক",
+    "generatedImage": "সৃষ্টি কৰা ছবি",
+    "autoSelectedModel": "{{mode}} মোডৰ বাবে স্বয়ংক্ৰিয়ভাৱে নিৰ্বাচিত {{model}}",
+    "deleteSelectedConfirmTitle": "ছবি মচি পেলাওক",
+    "deleteSelectedConfirmMessage": "আপুনি নিশ্চিতভাৱে ছবিসমূহ মচি পেলাব বিচাৰেনে? এই কাৰ্য্য বাতিল কৰিব নোৱাৰি।"
+  },
+  "imageStudio": {
+    "generateImage": "ছবি সৃষ্টি কৰক",
+    "generatingImage": "ছবি সৃষ্টি কৰা",
+    "generateImageHint": "আপোনাৰ বিৱৰণৰ ওপৰত ভিত্তি কৰি এটা ছবি সৃষ্টি কৰিবলৈ টেপ কৰক",
+    "imageDescriptionInput": "ছবিৰ বিৱৰণ ইনপুট",
+    "imageDescriptionHint": "আপুনি সৃষ্টি কৰিব বিচৰা ছবিখনৰ এটা বিৱৰণ দিয়ক",
+    "openModelSettings": "মডেল ছেটিংছ খোলক",
+    "modelSettingsHint": "মডেল আৰু ছেটিংছ সলনি কৰিবলৈ টেপ কৰক",
+    "openPhotoGallery": "নম্বৰত যোগাযোগ কৰিব পাৰে\nফটো গেলেৰী খোলা",
+    "clearInput": "ইনপুট পৰিষ্কাৰ কৰক",
+    "generatedImage": "সৃষ্টি কৰা ছবি"
+  },
+  "assistants": {
+    "title": "সহায়কসকল",
+    "defaultTitle": "সহায়ক",
+    "errorTitle": "কিবা এটা ভুল হ’ল",
+    "errorMessage": "এই সহায়ক আৰম্ভ কৰিব পৰা নগ'ল।",
+    "noAssistants": "এই শ্ৰেণীত কোনো সহায়ক পোৱা নগ'ল।",
+    "selectAssistantHint": "সহায়ক পিকাৰ খোলা",
+    "subtitle": "ক'ডিং, লিখা, বিশ্লেষণ, পৰিকল্পনা, আৰু অধিক বাবে সাজু কিউৰেট কৰা AI বিশেষজ্ঞ।",
+    "searchPlaceholder": "নম্বৰত যোগাযোগ কৰিব পাৰে\nসন্ধান সহায়ক...",
+    "useAssistant": "সহায়ক ব্যৱহাৰ কৰক",
+    "selectAssistant": "সহায়ক বাছক",
+    "description": "বিৱৰণ",
+    "systemPrompt": "নম্বৰত যোগাযোগ কৰিব পাৰে\nচিস্টেম প্ৰমপ্ট",
+    "chooseModel": "মডেল বাছক",
+    "categoryAll": "সকলো",
+    "categories": {
+      "everyday": "প্ৰতিদিনে",
+      "life": "জীৱন",
+      "health": "স্বাস্থ্য",
+      "schoolWork": "নম্বৰত যোগাযোগ কৰিব পাৰে\nস্কুল আৰু কৰ্ম",
+      "coding": "ক'ডিং",
+      "creative": "সৃষ্টিশীল",
+      "general": "সাধাৰণ"
+    },
+    "presets": {
+      "default": {
+        "name": "অবিকল্পিত সহায়ক",
+        "description": "দৈনন্দিন বস্তুৰ বাবে সুষম সহায়।"
+      },
+      "quick": {
+        "name": "দ্ৰুত উত্তৰ",
+        "description": "চুটি, প্ৰত্যক্ষ উত্তৰ।"
+      },
+      "planner": {
+        "name": "দৈনিক পৰিকল্পনাকাৰী",
+        "description": "আপোনাৰ দিন আৰু ৰুটিনৰ পৰিকল্পনা কৰক।"
+      },
+      "recipes": {
+        "name": "নম্বৰত যোগাযোগ কৰিব পাৰে\nখাদ্য আৰু ৰেচিপি",
+        "description": "কি ৰান্ধিব, যি আছে তাৰে।"
+      },
+      "fitness": {
+        "name": "ফিটনেছ কোচ",
+        "description": "সৰু সৰু অভ্যাস & ঘৰুৱা ৱৰ্কআউট।"
+      },
+      "money": {
+        "name": "মানি বাড্ডি",
+        "description": "0\nসৰল বাজেট আৰু খৰচৰ টিপছ।"
+      },
+      "study": {
+        "name": "অধ্যয়ন সহায়ক",
+        "description": "সহজভাৱে বুজাই দিয়ক। মোক কুইজ কৰক।"
+      },
+      "email": {
+        "name": "ইমেইল আৰু ৰিজ্যুম",
+        "description": "স্পষ্ট ইমেইল আৰু চিভি লাইন লিখক।"
+      },
+      "translator": {
+        "name": "নম্বৰত যোগাযোগ কৰিব পাৰে\nঅনুবাদক",
+        "description": "বাক্যাংশ অনুবাদ + শিকোৱা।"
+      },
+      "travel": {
+        "name": "ট্ৰেভেল বাডী",
+        "description": "সৰল পৰিকল্পনা আৰু পেকিং তালিকা।"
+      },
+      "tech": {
+        "name": "টেক সমৰ্থন (সৰল)",
+        "description": "ফোন, এপ, ৱাই-ফাইৰ মূল কথা।"
+      },
+      "summarizer": {
+        "name": "টি এল;ডি আৰ সাৰাংশ",
+        "description": "চুটি গুলী + এক শাৰীৰ TL;DR."
+      },
+      "gift": {
+        "name": "উপহাৰ বিচাৰি উলিওৱা",
+        "description": "বাজেট আৰু স্বাৰ্থ অনুসৰি আইডিয়া।"
+      },
+      "party": {
+        "name": "ইভেন্ট প্লেনাৰ (লাইট)",
+        "description": "সৰু পাৰ্টি এটা দ্ৰুতভাৱে পৰিকল্পনা কৰক।"
+      },
+      "social": {
+        "name": "সামাজিক পোষ্ট মেকাৰ",
+        "description": "বিকল্পৰ সৈতে পোষ্টৰ খচৰা।"
+      },
+      "interview": {
+        "name": "সাক্ষাৎকাৰ প্ৰশিক্ষক",
+        "description": "উত্তৰৰ অভ্যাস কৰক (STAR)।"
+      },
+      "homefix": {
+        "name": "হোম ফিক্স-ইট গাইড",
+        "description": "সৰল DIY সমস্যা সমাধান।"
+      },
+      "pet": {
+        "name": "পোহনীয়া জন্তুৰ যত্ন বাডী",
+        "description": "খুৱাই দিয়া, খোজ কঢ়া, মৌলিক প্ৰশিক্ষণ দিয়া।"
+      },
+      "mindful": {
+        "name": "নম্বৰত যোগাযোগ কৰিব পাৰে\nমাইণ্ডফুল মিনিট",
+        "description": "1–3 মিনিট শান্ত বিৰতি।"
+      },
+      "polite": {
+        "name": "ভদ্ৰ পুনৰ লেখক",
+        "description": "লিখা আৰু উত্তৰবোৰ সুন্দৰকৈ পুনৰ লিখা।"
+      }
+    }
+  },
+  "history": {
+    "title": "ইতিহাস",
+    "searchPlaceholder": "অনুসন্ধান আড্ডা...",
+    "newChat": "নতুন আড্ডা",
+    "new": "+ নতুন",
+    "search": "সন্ধান কৰক",
+    "clearSearch": "সন্ধান পৰিষ্কাৰ কৰক",
+    "noChatsYet": "এতিয়াও কোনো আড্ডা নাই",
+    "noResults": "এতিয়াও কোনো আড্ডা নাই",
+    "startFirstConversation": "প্ৰথম কথা-বতৰা আৰম্ভ কৰক।",
+    "startChat": "আড্ডা আৰম্ভ কৰক",
+    "startNewChat": "নতুন আড্ডা আৰম্ভ কৰক",
+    "errorLoadingHistory": "ইতিহাস লোড কৰাত ত্ৰুটি",
+    "loading": "ইতিহাস লোড কৰি আছে...",
+    "renameChat": "আড্ডাৰ নাম সলনি কৰক",
+    "enterNewTitle": "এটা নতুন শিৰোনাম দিয়ক",
+    "deleteChat": "আড্ডা মচি পেলাওক?",
+    "deleteChatMessage": "নম্বৰত যোগাযোগ কৰিব পাৰে\n\"{{title}}\" বাদ দিয়া হ'ব।",
+    "rename": "পুনৰ নামকৰণ কৰক",
+    "unpin": "আনপিন",
+    "pin": "পিন",
+    "untitled": "শিৰোনামহীন"
+  },
+  "settings": {
+    "title": "ছেটিংছ",
+    "model": "মডেল",
+    "searchPlaceholder": "অনুসন্ধান মডেল...",
+    "temperatureForCurrentModel": "বৰ্তমানৰ মডেলৰ বাবে তাপমাত্ৰা",
+    "customFor": "{{model}} ৰ বাবে কাষ্টম",
+    "usingDefault": "নম্বৰত যোগাযোগ কৰিব পাৰে\nঅবিকল্পিত {{temperature}} ব্যৱহাৰ কৰা",
+    "resetToDefault": "অবিকল্পিতলৈ পুনৰায় সেট কৰক",
+    "defaultTemperature": "অবিকল্পিত উষ্ণতা (fallback)",
+    "usedByModelsWithoutOverride": "কাষ্টম অভাৰৰাইড নথকা মডেলসমূহে ব্যৱহাৰ কৰে",
+    "dangerZone": "নম্বৰত যোগাযোগ কৰিব পাৰে\nবিপদৰ অঞ্চল",
+    "clearAllChatsAndSettings": "সকলো আড্ডা আৰু ছেটিংছ পৰিষ্কাৰ কৰক",
+    "about": "সম্পৰ্কে",
+    "version": "সংস্কৰণ {{version}}{{status}}",
+    "versionPremiumSuffix": "· প্ৰিমিয়াম",
+    "privacyPolicy": "গোপনীয়তা নীতি",
+    "hero": {
+      "label": "নম্বৰত যোগাযোগ কৰিব পাৰে\nবিশেষ অফাৰ",
+      "title": "সীমাহীন প্ৰৱেশ\n& Pro বৈশিষ্ট্যসমূহ",
+      "upgrade": "উন্নয়ন কৰক",
+      "manage": "পৰিকল্পনা পৰিচালনা কৰক"
+    },
+    "sections": {
+      "premium": "প্ৰিমিয়াম প্লেন",
+      "data": "ব্যৱহাৰকাৰীৰ তথ্য",
+      "support": "সমৰ্থন আৰু আইনী"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "প্ৰিমিয়াম পাওক",
+        "subtitle": "সীমাহীন সৃষ্টি সঁজুলিসমূহ আনলক কৰক"
+      },
+      "premiumActive": {
+        "title": "প্ৰিমিয়াম এক্টিভ",
+        "subtitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nসমৰ্থন কৰাৰ বাবে ধন্যবাদ Cloud AI"
+      },
+      "restore": {
+        "title": "ক্ৰয়সমূহ পুনৰুদ্ধাৰ কৰক",
+        "subtitle": "যদি আপুনি ডিভাইচসমূহ সলনি কৰিছে তেন্তে ব্যৱহাৰ কৰক"
+      },
+      "history": {
+        "title": "আড্ডাৰ ইতিহাস পৰিচালনা কৰক",
+        "subtitle": "আপোনাৰ অতীতৰ অধিবেশনসমূহ চাওক আৰু মচি পেলাওক"
+      },
+      "reset": {
+        "title": "চেট আৰু পছন্দসমূহ পুনৰায় সেট কৰক",
+        "subtitle": "এই ডিভাইচত সকলো সংৰক্ষিত তথ্য পৰিষ্কাৰ কৰে"
+      },
+      "rate": {
+        "title": "আমাক ৰেটিং দিয়ক",
+        "error": "ষ্ট'ৰ পৃষ্ঠা খোলিব পৰা নাই।"
+      },
+      "support": {
+        "title": "সমৰ্থন",
+        "subtitle": "0\nআমাৰ সৈতে অনলাইনযোগে যোগাযোগ কৰক",
+        "error": "যোগাযোগ পৃষ্ঠা খোলিব পৰা নাই।"
+      },
+      "privacy": {
+        "title": "গোপনীয়তা নীতি",
+        "error": "গোপনীয়তা নীতি খোলিব পৰা নাই।"
+      },
+      "terms": {
+        "title": "ব্যৱহাৰৰ চৰ্তসমূহ",
+        "error": "নম্বৰত যোগাযোগ কৰিব পাৰে\nব্যৱহাৰৰ চৰ্তসমূহ খোলিব পৰা নাই।"
+      }
+    },
+    "capabilities": {
+      "text": "টিএক্সটি",
+      "image": "আই এম জি",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "উপলব্ধ নহয়",
+      "linkUnavailableMessage": "এই লিংকটো এতিয়াই খুলিব পৰা নাই।",
+      "restoreSuccessTitle": "পুনৰুদ্ধাৰ কৰা হৈছে",
+      "restoreSuccessMessage": "আপোনাৰ ক্ৰয়সমূহ পুনৰুদ্ধাৰ কৰা হৈছে।",
+      "restoreEmptyTitle": "কোনো ক্ৰয় পোৱা নগ'ল",
+      "restoreEmptyMessage": "এই একাউণ্টৰ বাবে পুনৰুদ্ধাৰ কৰিবলৈ আমি এটা সক্ৰিয় ক্ৰয় বিচাৰি নাপালোঁ।",
+      "restoreErrorTitle": "পুনৰুদ্ধাৰ বিফল হ'ল",
+      "restoreErrorMessage": "বৰ্তমান ক্ৰয়সমূহ পুনৰুদ্ধাৰ কৰিব পৰা নাই।",
+      "resetConfirmTitle": "এপ ডাটা ৰিছেট কৰক?",
+      "resetConfirmMessage": "ই সকলো আড্ডা আৰু স্থানীয় পছন্দ আঁতৰায়।",
+      "resetConfirmCancel": "বাতিল কৰক",
+      "resetConfirmCta": "ৰিছেট কৰক"
+    }
+  },
+  "createImage": {
+    "headerTitle": "সৃষ্টি কৰক",
+    "chooseStyle": "এটা শৈলী বাছক",
+    "aspectRatio": "দৃষ্টি অনুপাত",
+    "starterPrompts": {
+      "title": "নম্বৰত যোগাযোগ কৰিব পাৰে\nষ্টাৰ্টাৰ প্ৰমপ্টসমূহ",
+      "items": [
+        "ষ্টুডিঅ'ৰ হেডশ্বট",
+        "আধুনিক বহা কোঠা",
+        "সূৰ্যাস্তৰ সময়ত গ্রীষ্মমণ্ডলীয় বিচ"
+      ]
+    },
+    "promptPlaceholder": "আপুনি কি চাব বিচাৰে টাইপ কৰক...",
+    "promptHint": "উদাহৰণ: ‘ষ্টুডিঅ’ লাইটিঙত গোল্ডেন ৰিট্ৰিভাৰ’।",
+    "clearText": "লিখনী পৰিষ্কাৰ কৰক",
+    "generate": "সৃষ্টি কৰক",
+    "generating": "জেনেৰেটিং..."
+  },
+  "editImage": {
+    "headerTitle": "সম্পাদনা কৰক",
+    "chooseStyle": "এটা শৈলী বাছক",
+    "aspectRatio": "দৃষ্টি অনুপাত",
+    "starterPrompts": {
+      "title": "ষ্টাৰ্টাৰ প্ৰমপ্টসমূহ",
+      "items": [
+        "লাইটিং ঠিক কৰা",
+        "পটভূমি আঁতৰাওক",
+        "কোমল প'ৰ্ট্ৰেইট ৰিটাচ"
+      ]
+    },
+    "promptPlaceholder": "সম্পাদনাসমূহৰ বৰ্ণনা কৰক (ঐচ্ছিক)",
+    "clearText": "লিখনী পৰিষ্কাৰ কৰক",
+    "generate": "সৃষ্টি কৰক",
+    "generating": "আবেদন...",
+    "upload": {
+      "choose": "নম্বৰত যোগাযোগ কৰিব পাৰে\nফটো বাছক",
+      "change": "পৰিৱৰ্তন",
+      "remove": "আঁতৰাই পেলাওক"
+    },
+    "imageUnavailable": {
+      "title": "ছবি উপলব্ধ নহয়",
+      "message": "নিৰ্বাচিত ফটোখনত প্ৰৱেশ কৰিব পৰা নগ'ল। অনুগ্ৰহ কৰি ইয়াক পুনৰ নিৰ্বাচন কৰক আৰু পুনৰ চেষ্টা কৰক।"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "এনিমে"
+      },
+      "cartoon": {
+        "name": "কাৰ্টুন"
+      },
+      "photoreal": {
+        "name": "ফটোৰিয়েল"
+      },
+      "sketch": {
+        "name": "স্কেচ্চ"
+      },
+      "cyberpunk": {
+        "name": "চাইবাৰপাংক"
+      },
+      "steampunk": {
+        "name": "নম্বৰত যোগাযোগ কৰিব পাৰে\nষ্টীমপাংক"
+      },
+      "illustration_3d": {
+        "name": "3D চিত্ৰকল্প"
+      },
+      "dark_fantasy": {
+        "name": "ডাৰ্ক ফেণ্টাচি"
+      },
+      "vintage_film": {
+        "name": "ভিনটেজ ফিল্ম"
+      },
+      "pastel": {
+        "name": "নম্বৰত যোগাযোগ কৰিব পাৰে\nপেষ্টেল নান্দনিক"
+      },
+      "neon_glow": {
+        "name": "নিয়ন গ্লো"
+      },
+      "epic_landscape": {
+        "name": "মহাকাব্যিক লেণ্ডস্কেপ"
+      }
+    },
+    "aspectRatios": {
+      "square": "বৰ্গক্ষেত্ৰ",
+      "landscape": "লেণ্ডস্কেপ",
+      "portrait": "প্ৰতিকৃতি"
+    },
+    "models": {
+      "fluxKontent": "নম্বৰত যোগাযোগ কৰিব পাৰে\nফ্লাক্স কন্টেন্ট",
+      "custom": "কাষ্টম"
+    },
+    "notEnoughCoinsTitle": "পৰ্যাপ্ত মুদ্ৰা নহয়",
+    "notEnoughCoinsMessage": "এই ছবিখনৰ বাবে আপোনাৰ বৰ্তমানৰ ভাৰসাম্য অতি কম।",
+    "modelTaglines": {
+      "runwareFluxSchnell": "দ্ৰুততম মডেল",
+      "runwareFluxKrea": "সৃষ্টিশীল, শৈলীকৃত ফলাফল",
+      "runwareQwenImage": "সুষম, উচ্চমানৰ ফলাফল",
+      "google4": "শ্ৰেষ্ঠ এআই ইমেজ মডেল",
+      "klingImageO1": "উচ্চ-নিয়ন্ত্ৰণ ছবি সম্পাদনা",
+      "fluxKontent": "সম্পাদনাৰ বাবে টিউন কৰা হৈছে ফ্লাক্স কনটেণ্ট",
+      "runwareProvider": "নম্বৰত যোগাযোগ কৰিব পাৰে\nনিৰ্ভৰযোগ্য প্ৰসাৰণৰ সৈতে সুষম গুণগত মান।",
+      "airProvider": "নেনো কলে চঞ্চল, প্ৰাঞ্জল সুৰ যোগ কৰে।",
+      "googleProvider": "গুগলে পলিচ কৰা সবিশেষৰ বাবে টিউন কৰিলে।",
+      "klingaiProvider": "KlingAI এ নিয়ন্ত্ৰিত সম্পাদনাৰ বাবে টিউন কৰিছিল।",
+      "anthropicProvider": "Claude সূক্ষ্ম আমেজৰ বাবে পাইপলাইন।",
+      "default": "উপলব্ধ ইঞ্জিনসমূহ অন্বেষণ কৰিবলৈ টেপ কৰক।"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "আপোনাৰ নিৰ্বাচিত শৈলী",
+    "sheetTitle": "আপোনাৰ দৃষ্টিশক্তি ক্ৰাফটিং কৰা",
+    "sheetSubtitle": "0\nআমি প্ৰমপ্টত {{style}} মিহলাই দিওঁতে চাৰ্ভাৰ কফিৰ চমু চুমুক।",
+    "phases": {
+      "blend": "{{style}} ত মিশ্ৰণ",
+      "paint": "দৃশ্যটো অংকন কৰা",
+      "finish": "চূড়ান্ত পলিচ যোগ কৰা"
+    },
+    "actions": {
+      "cancel": "বাতিল কৰক",
+      "retry": "নম্বৰত যোগাযোগ কৰিব পাৰে\nপুনৰ চেষ্টা কৰক",
+      "close": "বন্ধ কৰক"
+    },
+    "errors": {
+      "restrictedTitle": "নিষিদ্ধ বিষয়বস্তু",
+      "genericTitle": "প্ৰজন্ম বিফল হ’ল",
+      "genericMessage": "ছবি সৃষ্টি কৰিব পৰা নগ'ল।"
+    },
+    "alerts": {
+      "saveFailedTitle": "সংৰক্ষণ কৰিব পৰা নগ'ল",
+      "shareFailedTitle": "শ্বেয়াৰ কৰিব নোৱাৰিলে",
+      "tryAgain": "অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+      "savedTitle": "সংৰক্ষণ কৰা হৈছে",
+      "savedMessage": "ছবিখন আপোনাৰ গেলেৰীত সংৰক্ষণ কৰা হৈছে।",
+      "permissionTitle": "অনুমতিৰ প্ৰয়োজন",
+      "permissionMessage": "আপোনাৰ গেলেৰীত ছবিসমূহ সংৰক্ষণ কৰিবলে সংৰক্ষণ অভিগমৰ অনুমতি দিয়ক।"
+    },
+    "result": {
+      "complete": "সকলো শেষ হ’ল"
+    },
+    "accessibility": {
+      "close": "বন্ধ কৰক"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "মচি পেলাওক",
+      "edit": "সম্পাদনা কৰক",
+      "save": "সংৰক্ষণ কৰক",
+      "share": "শ্বেয়াৰ কৰক"
+    },
+    "alerts": {
+      "savedTitle": "সংৰক্ষণ কৰা হৈছে",
+      "savedMessage": "ছবিখন আপোনাৰ গেলেৰীত সংৰক্ষণ কৰা হৈছে।",
+      "permissionTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nঅনুমতিৰ প্ৰয়োজন",
+      "permissionMessage": "আপোনাৰ গেলেৰীত ছবিসমূহ সংৰক্ষণ কৰিবলে সংৰক্ষণ অভিগমৰ অনুমতি দিয়ক।",
+      "saveFailedTitle": "সংৰক্ষণ কৰিব পৰা নগ'ল",
+      "tryAgain": "অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।"
+    },
+    "accessibility": {
+      "close": "বন্ধ কৰক",
+      "delete": "ছবি মচি পেলাওক",
+      "edit": "ছবি সম্পাদনা কৰক",
+      "save": "ছবি সংৰক্ষণ কৰক",
+      "share": "ছবি শ্বেয়াৰ কৰক"
+    }
+  },
+  "reportContent": {
+    "title": "AI বিষয়বস্তুৰ প্ৰতিবেদন কৰক",
+    "subtitle": "এই সৃষ্টি কৰা বিষয়বস্তুৰ কি ভুল আছে কওক।",
+    "privateDisclosure": "জমা দিলে এই প্ৰতিবেদন কৰা বিষয়বস্তু সুৰক্ষা পৰ্যালোচনাৰ বাবে প্ৰেৰণ কৰা হয়।",
+    "accessibilityLabel": "AI বিষয়বস্তুৰ প্ৰতিবেদন কৰক",
+    "reasons": {
+      "sexual": "যৌন বা নগ্নতাৰ বিষয়বস্তু",
+      "violence_self_harm": "হিংসা বা আত্মহত্যা",
+      "hate_harassment": "ঘৃণা বা হাৰাশাস্তি",
+      "child_safety": "শিশুৰ সুৰক্ষাৰ চিন্তা",
+      "scam_deceptive": "কেলেংকাৰী বা প্ৰতাৰণামূলক বিষয়বস্তু",
+      "other": "অন্যান্য"
+    },
+    "errors": {
+      "reasonRequired": "জমা দিয়াৰ আগতে এটা কাৰণ বাছি লওক।",
+      "submit": "নম্বৰত যোগাযোগ কৰিব পাৰে\nপ্ৰতিবেদন জমা দিব পৰা নগ'ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।"
+    },
+    "success": {
+      "title": "ধন্যবাদ। আপোনাৰ ৰিপৰ্ট জমা দিয়া হৈছিল।",
+      "subtitle": "আমি বিষয়বস্তুৰ সুৰক্ষা উন্নত কৰিবলৈ প্ৰতিবেদন ব্যৱহাৰ কৰিম।"
+    },
+    "actions": {
+      "report": "প্ৰতিবেদন",
+      "submit": "প্ৰতিবেদন দাখিল কৰক",
+      "done": "হৈ গ’ল"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "⟬পি000⟭",
+    "accessibility": {
+      "openMenu": "মেনু খোলক",
+      "selectImages": "ছবিসমূহ নিৰ্ব্বাচন কৰক",
+      "exitSelection": "নিৰ্বাচনৰ পৰা ওলাই যাওক",
+      "deleteSelected": "নম্বৰত যোগাযোগ কৰিব পাৰে\nনিৰ্বাচিত ছবিসমূহ মচি পেলাওক",
+      "selectToDelete": "মচি পেলাবলৈ ছবি নিৰ্ব্বাচন কৰক"
+    },
+    "createCard": {
+      "title": "টেক্সটৰ পৰা সৃষ্টি কৰক",
+      "subtitle": "এটা বিৱৰণ টাইপ কৰক",
+      "cta": "নম্বৰত যোগাযোগ কৰিব পাৰে\nবৰ্ণনা আৰু সৃষ্টি কৰক"
+    },
+    "editCard": {
+      "title": "এ আই ফটো সম্পাদক",
+      "subtitle": "AI ৰ সৈতে ৰূপান্তৰ আৰু বৃদ্ধি কৰক",
+      "cta": "AI ৰ সৈতে সম্পাদনা কৰক"
+    },
+    "gallery": {
+      "title": "গেলেৰী",
+      "empty": "এতিয়াও কোনো ছবি নাই",
+      "selection": {
+        "enter": "নম্বৰত যোগাযোগ কৰিব পাৰে\nছবিসমূহ নিৰ্ব্বাচন কৰক",
+        "exit": "নিৰ্বাচনৰ পৰা ওলাই যাওক",
+        "deleteSelected": "নিৰ্বাচিত ছবিসমূহ মচি পেলাওক",
+        "selectForDelete": "মচি পেলাবলৈ ছবি নিৰ্ব্বাচন কৰক"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "লগ হওক",
+      "titleHighlight": "⟬পি000⟭",
+      "subtitle": "AI ৰ সৈতে ছবি সৃষ্টি আৰু সম্পাদনা কৰক—Cloud AIৰ ভিতৰত।"
+    },
+    "relaxView": {
+      "title": "আপোনাৰ এআইক লগ কৰক",
+      "titleHighlight": "সহায়কসকল",
+      "subtitle": "আপোনাৰ দৈনন্দিন প্ৰয়োজনীয়তাত সহায় কৰিবলৈ সাজু বিশেষজ্ঞ AI বিশেষজ্ঞ",
+      "cards": {
+        "fitness": {
+          "title": "নম্বৰত যোগাযোগ কৰিব পাৰে\nফিটনেছ কোচ",
+          "text": "সৰু সৰু অভ্যাস & ঘৰুৱা ৱৰ্কআউট।"
+        },
+        "recipes": {
+          "title": "খাদ্য আৰু ৰেচিপি",
+          "text": "কি ৰান্ধিব, যি আছে তাৰে।"
+        },
+        "travel": {
+          "title": "ট্ৰেভেল বাডী",
+          "text": "সৰল পৰিকল্পনা আৰু পেকিং তালিকা।"
+        }
+      }
+    },
+    "splash": {
+      "title": "⟬পি000⟭",
+      "tagline": "এণ্টাৰপ্ৰাইজ-গ্ৰেড এআই ছলিউচন",
+      "description": "0\nউদ্যোগ পেছাদাৰী আৰু দলৰ বাবে ডিজাইন কৰা অত্যাধুনিক কৃত্ৰিম বুদ্ধিমত্তা প্ৰযুক্তিৰ দ্বাৰা আপোনাৰ ব্যৱসায়ক শক্তিশালী কৰক।",
+      "stats": "500k+ ব্যৱহাৰকাৰীৰ দ্বাৰা বিশ্বাসযোগ্য",
+      "rating": "4.9 / 5",
+      "button": "আৰম্ভ কৰক"
+    },
+    "buttons": {
+      "continue": "আগবাঢ়ি যাওক",
+      "start": "নম্বৰত যোগাযোগ কৰিব পাৰে\nআৰম্ভ কৰোঁ আহক"
+    }
+  },
+  "coinStore": {
+    "title": "ক্ৰেডিট লাভ কৰক",
+    "loading": "লোড ক'ইন দোকান...",
+    "balanceLabel": "আপোনাৰ বৰ্তমানৰ বেলেঞ্চ হৈছে",
+    "balanceValue": "{{amount}} ক্ৰেডিট",
+    "history": {
+      "link": "লেনদেনৰ ইতিহাস",
+      "alertTitle": "ইতিহাস",
+      "alertBody": "অতি সোনকালে আহি আছে লেনদেনৰ ইতিহাস।"
+    },
+    "noPacks": "কোনো মুদ্ৰাৰ পেক উপলব্ধ নহয়। আপোনাৰ RevenueCat অফাৰিং আইডি পৰীক্ষা কৰক।",
+    "badges": {
+      "basic": "বেচিক পেক",
+      "popular": "আটাইতকৈ জনপ্ৰিয়",
+      "value": "শ্ৰেষ্ঠ মূল্য"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} ক্ৰেডিট",
+      "tokensLabel": "{{credits}} ক্ৰেডিট",
+      "defaultName": "পেক {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "প্ৰিমিয়াম যাওক",
+      "subtitle": "সীমাহীন প্ৰৱেশ আৰু বৈশিষ্ট্যসমূহ",
+      "cta": "উন্নয়ন কৰক"
+    },
+    "termsText": "ক্ৰয় কৰি আপুনি আমাৰ...",
+    "termsLink": "নম্বৰত যোগাযোগ কৰিব পাৰে\nসেৱাৰ চৰ্তসমূহ",
+    "alerts": {
+      "initErrorTitle": "Init ত্ৰুটি",
+      "genericMessage": "কিবা এটা ভুল হ’ল।",
+      "successTitle": "সফলতা",
+      "successMessage": "ক্ৰেডিট অতি সোনকালে ওলাব।",
+      "purchaseFailedTitle": "ক্ৰয় বিফল হ’ল",
+      "unknownError": "অজ্ঞাত ভুল"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "প্ৰিমিয়ামৰ প্ৰয়োজন",
+    "upgrade": "উন্নয়ন কৰক",
+    "modelRequiredMessage": "এই মডেলৰ বাবে প্ৰিমিয়ামৰ প্ৰয়োজন। GPT-5, Grok 4, Claude, আৰু অধিক উন্নত মডেলসমূহ অভিগম কৰিবলে উন্নয়ন কৰক।",
+    "assistantsRequiredMessage": "সহায়কসকলৰ বাবে প্ৰিমিয়ামৰ প্ৰয়োজন। ফিটনেছ, ক'ডিং, লিখা, আৰু অধিক বাবে বিশেষ AI সহায়ক অভিগম কৰিবলে উন্নয়ন কৰক।",
+    "assistantsTitle": "প্ৰিমিয়ামৰ প্ৰয়োজন",
+    "assistantsMessage": "সহায়কসকলৰ বাবে প্ৰিমিয়ামৰ প্ৰয়োজন। ফিটনেছ, ক'ডিং, লিখা, আৰু অধিক বাবে বিশেষ AI সহায়ক অভিগম কৰিবলে উন্নয়ন কৰক।"
+  },
+  "paywall": {
+    "modelsHeadline": "⟬পি000⟭-5.5, ⟬পি002⟭, ⟬পি001⟭",
+    "close": "পেৱাল বন্ধ কৰক",
+    "unavailableTitle": "ক্ৰয়সমূহ উপলব্ধ নহয়",
+    "unavailableMessage": "Android বিলিং এতিয়াও কনফিগাৰ কৰা হোৱা নাই।",
+    "restoreEmptyTitle": "কোনো ক্ৰয় পোৱা নগ'ল",
+    "restoreEmptyMessage": "এই একাউণ্টৰ বাবে পুনৰুদ্ধাৰ কৰিবলৈ আমি এটা সক্ৰিয় ক্ৰয় বিচাৰি নাপালোঁ।",
+    "restoreFailedTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nপুনৰুদ্ধাৰ বিফল হ'ল",
+    "restoreFailedMessage": "বৰ্তমান ক্ৰয়সমূহ পুনৰুদ্ধাৰ কৰিব পৰা নাই।",
+    "productsUnavailableTitle": "কোনো পৰিকল্পনা উপলব্ধ নহয়",
+    "productsUnavailableMessage": "বৰ্তমান কোনো এণ্ড্ৰইড চাবস্ক্ৰিপচন প্ৰডাক্ট উপলব্ধ নহয়।",
+    "purchaseFailedTitle": "ক্ৰয় বিফল হ’ল",
+    "purchaseFailedMessage": "এই ক্ৰয় এতিয়াই সম্পূৰ্ণ কৰিব পৰা নাই।",
+    "restore": "পুনৰুদ্ধাৰ কৰক",
+    "restoreRestoring": "পুনৰুদ্ধাৰ কৰা হৈছে...",
+    "features": {
+      "create": "ছবি আৰু ভিডিঅ' তৈয়াৰ কৰক",
+      "search": "AI ৰ সহায়ত ৱেবত সন্ধান কৰক",
+      "talk": "নম্বৰত যোগাযোগ কৰিব পাৰে\nএআইৰ লগত স্বাভাৱিকভাৱে কথা পাতক",
+      "imageStudio": "Image Studio {{credits}} ক্ৰেডিট পাওক {{period}}",
+      "period": {
+        "weekly": "সাপ্তাহিক",
+        "monthly": "মাহেকীয়া",
+        "yearly": "নম্বৰত যোগাযোগ কৰিব পাৰে\nবছৰেকীয়া"
+      }
+    },
+    "freeTrial": {
+      "title": "বিনামূলীয়া পৰীক্ষামূলক",
+      "subtitle": "3 দিনীয়া বিনামূলীয়া পৰীক্ষামূলক"
+    },
+    "badge": {
+      "bestOffer": "বেষ্ট অফাৰ"
+    },
+    "plans": {
+      "yearly": {
+        "title": "বছৰেকীয়া",
+        "only": "মাত্ৰ {{price}}",
+        "defaultPrice": "নম্বৰত যোগাযোগ কৰিব পাৰে\n79.99 মাৰ্কিন ডলাৰ",
+        "defaultIntroPrice": "1.35 মাৰ্কিন ডলাৰ"
+      },
+      "monthly": {
+        "title": "মাহেকীয়া",
+        "subtitle": "যিকোনো সময়তে বাতিল কৰক",
+        "defaultPrice": "19.99 মাৰ্কিন ডলাৰ"
+      },
+      "weekly": {
+        "title": "সাপ্তাহিক",
+        "subtitle": "যিকোনো সময়তে বাতিল কৰক",
+        "defaultPrice": "মাৰ্কিন ডলাৰ 9.99",
+        "trialThen": "3 দিন বিনামূলীয়া, তেন্তে"
+      }
+    },
+    "frequency": {
+      "perWeek": "প্ৰতি সপ্তাহত",
+      "perMonth": "নম্বৰত যোগাযোগ কৰিব পাৰে\nপ্ৰতিমাহে"
+    },
+    "cta": "আগবাঢ়ি যাওক",
+    "ctaFreeTrial": "বিনামূলীয়াকৈ চেষ্টা কৰক",
+    "legal": {
+      "terms": "চৰ্তসমূহ",
+      "privacy": "0\nগোপনীয়তা"
+    },
+    "premium": {
+      "headline": "0\nসকলো প্ৰিমিয়াম এআই এটা প্লেনত",
+      "subtitleLine1": "আড্ডা, ক'ড, সৃষ্টি, আৰু পৰিকল্পনা",
+      "subtitleLine2": "উন্নত মডেলৰ সৈতে।",
+      "enableTrial": "বিনামূলীয়া পৰীক্ষা সক্ষম কৰক",
+      "annual": "বাৰ্ষিক",
+      "saveBadge": "নম্বৰত যোগাযোগ কৰিব পাৰে\n83% ৰাহি কৰক",
+      "year": "বছৰ",
+      "week": "সপ্তাহ",
+      "termsOfUse": "ব্যৱহাৰৰ চৰ্তসমূহ",
+      "privacyPolicy": "গোপনীয়তা নীতি"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "বাৰ্তা...",
+    "createImages": "ছবি সৃষ্টি কৰক",
+    "generateAiArtwork": "AI কলাকৰ্ম সৃষ্টি কৰা",
+    "camera": "ফটো আপলোড কৰক",
+    "takeOrSelectPhotos": "নম্বৰত যোগাযোগ কৰিব পাৰে\nফটো নিৰ্বাচন কৰক",
+    "search": "সন্ধান কৰক",
+    "findInformation": "তথ্য বিচাৰি উলিয়াওক",
+    "findRecentInfo": "শেহতীয়া তথ্য বিচাৰি পাওক",
+    "removeImage": "ছবি আঁতৰাওক",
+    "messageInput": "বাৰ্তা ইনপুট",
+    "clearInput": "ইনপুট পৰিষ্কাৰ কৰক",
+    "quickActionsLabel": "দ্ৰুত কাৰ্য্য",
+    "hideQuickActions": "দ্ৰুত কাৰ্য্য লুকুৱাই ৰাখক",
+    "showQuickActions": "দ্ৰুত কাৰ্য্য দেখুৱাওক",
+    "startVoiceInput": "ভয়েচ ইনপুট আৰম্ভ কৰক",
+    "sendMessage": "বাৰ্তা প্ৰেৰণ কৰক",
+    "offline": "অফলাইন",
+    "stop": "বন্ধ কৰক",
+    "streaming": "স্ট্রিমিং...",
+    "closeRecorder": "ৰেকৰ্ডাৰ বন্ধ কৰক",
+    "insertTranscript": "পঠাওক",
+    "scrollToLatest": "শেহতীয়া বাৰ্তালৈ স্ক্ৰল কৰক",
+    "copyMessage": "বাৰ্তা কপি কৰক",
+    "copyMessageHint": "এই বাৰ্তা ক্লিপবোৰ্ডলৈ কপি কৰক",
+    "shareMessage": "নম্বৰত যোগাযোগ কৰিব পাৰে\nশ্বেয়াৰ বাৰ্তা",
+    "shareMessageHint": "এই বাৰ্তাটো শ্বেয়াৰ কৰক",
+    "regenerateResponse": "সঁহাৰি পুনৰুত্পাদন কৰক",
+    "regenerateResponseHint": "নতুন সঁহাৰি সৃষ্টি কৰক",
+    "copyCode": "ক'ড কপি কৰক",
+    "copied": "কপি কৰা হৈছে",
+    "image": "ছবি",
+    "loading": "লোড হচ্ছে...",
+    "loadingChat": "চ্যাট লোড হচ্ছে...",
+    "offlineBanner": "তুমি অফলাইন হৈ আছা। বাৰ্তা প্ৰেৰণ কৰিব নোৱাৰি।",
+    "offlineError": "ইণ্টাৰনেট সংযোগ নাই। অনুগ্ৰহ কৰি আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
+    "imagePickerErrorTitle": "ইমেজ পিকাৰৰ ত্ৰুটি",
+    "imagePickerErrorMessage": "আপোনাৰ ফটোসমূহত প্ৰৱেশ কৰিব পৰা নাই। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+    "messageTooLong": "বাৰ্তা বহুত দীঘল ({{length}})। সীমা {{limit}}।",
+    "sendFailed": "বাৰ্তা প্ৰেৰণ কৰাত ব্যৰ্থ। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+    "modelNoImageSupport": "নিৰ্বাচিত মডেলে ছবিসমূহ সমৰ্থন নকৰে। অনুগ্ৰহ কৰি বেলেগ মডেল বাছি লওক।",
+    "voiceStartFailed": "কণ্ঠ আৰম্ভ কৰিব পৰা নগ'ল।",
+    "voiceNoSpeechDetected": "কোনো মাত চিনি পোৱা নগ’ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+    "emptyTitle": "মই কেনেকৈ সহায় কৰিব পাৰো?",
+    "emptySubtitle": "এআইৰ সৈতে কথা-বতৰা আৰম্ভ কৰক",
+    "privateTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nব্যক্তিগত আড্ডা",
+    "privateSubtitle": "এই আড্ডা আপোনাৰ আড্ডাৰ ইতিহাসত দেখা নাযায়",
+    "startPrivateChat": "ব্যক্তিগত আড্ডা আৰম্ভ কৰক",
+    "endPrivateChat": "ব্যক্তিগত আড্ডা শেষ কৰক",
+    "permissions": {
+      "photosTitle": "ফটোৰ অনুমতিৰ প্ৰয়োজন",
+      "photosMessage": "ছবি বাছনি কৰিবলৈ ফটোৰ প্ৰৱেশৰ প্ৰয়োজন।",
+      "voiceTitle": "কণ্ঠৰ অনুমতিৰ প্ৰয়োজন",
+      "voiceMessage": "কণ্ঠ ব্যৱহাৰ কৰিবলৈ মাইক্ৰ’ফোন আৰু বাক্যৰ ব্যৱহাৰৰ প্ৰয়োজন।"
+    },
+    "activity": {
+      "analyzingImages": "ছবি বিশ্লেষণ...",
+      "searching": "Searching...",
+      "thinking": "নম্বৰত যোগাযোগ কৰিব পাৰে\nচিন্তা..."
+    },
+    "webSearch": {
+      "title": "ৱেব সন্ধান",
+      "subtitle": "শেহতীয়া তথ্য বিচাৰি পাওক",
+      "label": "ৱেব সন্ধান",
+      "enable": "নম্বৰত যোগাযোগ কৰিব পাৰে\nৱেব সন্ধান সামৰ্থবান কৰক",
+      "disable": "ৱেব সন্ধান নিষ্ক্ৰিয় কৰক",
+      "toggleLabel": "ৱেবত সন্ধান কৰক"
+    },
+    "studioBanner": {
+      "label": "⟬পি000⟭",
+      "title": "গতিৰে ভিজুৱেল ডিজাইন কৰক।",
+      "subtitle": "এটা ঠাইত দৃশ্যমান সম্পত্তি সৃষ্টি, পৰিশোধন আৰু প্ৰকাশ কৰা।",
+      "cta": "নম্বৰত যোগাযোগ কৰিব পাৰে\nখোলা"
+    },
+    "quickActions": {
+      "createImages": "ছবি সৃষ্টি কৰক",
+      "openCamera": "কেমেৰা খোলক",
+      "editImage": "ছবি সম্পাদনা কৰক",
+      "startVoice": "কণ্ঠ আৰম্ভ কৰক",
+      "assistants": "সহায়কসকল"
+    },
+    "listening": "শুনা...",
+    "startRecording": "রেকর্ডিং শুরু...",
+    "assistantHeader": {
+      "unavailableTitle": "সহায়ক উপলব্ধ নহয়",
+      "unavailableDescription": "আমি এই সহায়কজনক লোড কৰিব নোৱাৰিলোঁ৷ অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+      "ready": "নম্বৰত যোগাযোগ কৰিব পাৰে\nসহায় কৰিবলৈ সাজু"
+    },
+    "actions": {
+      "copy": "কপি কৰক",
+      "share": "শ্বেয়াৰ কৰক",
+      "regenerate": "পুনৰুত্পাদন কৰক",
+      "retryFromHere": "ইয়াৰ পৰা পুনৰ চেষ্টা কৰক",
+      "report": "প্ৰতিবেদন",
+      "cancel": "বাতিল কৰক"
+    },
+    "markdown": {
+      "copy": "কপি কৰক",
+      "copied": "কপি কৰা হৈছে",
+      "table": "0\nTABLE",
+      "watchVideo": "Video চাওক",
+      "wikipedia": "ৱিকিপিডিয়া",
+      "link": "লিংক",
+      "note": "বি:দ্ৰ",
+      "warning": "নম্বৰত যোগাযোগ কৰিব পাৰে\nসতৰ্কবাণী",
+      "tip": "টিপচ্"
+    },
+    "messageActionTitle": "বাৰ্তা",
+    "status": {
+      "sending": "Sending...",
+      "failed": "বিফল হ'ল",
+      "sent": "পঠোৱা হৈছে"
+    },
+    "suggestions": {
+      "writeStory": "এটা সৃষ্টিশীল কাহিনী লিখা",
+      "writeStorySubtitle": "এটা যাদুকৰী দুঃসাহসিক অভিযানৰ বিষয়ে",
+      "planTravel": "ভ্ৰমণ ভ্ৰমণসূচীৰ পৰিকল্পনা কৰক",
+      "planTravelSubtitle": "এটা আচৰিত ছুটীৰ বাবে",
+      "explainConcept": "এই ধাৰণাটো বুজাই দিয়া",
+      "explainConceptSubtitle": "সহজ ভাষাত ক’বলৈ গ’লে",
+      "planDay": "মোৰ দিনটোৰ পৰিকল্পনা কৰক",
+      "planDaySubtitle": "উৎপাদনশীলতাৰ টিপছৰ সৈতে"
+    },
+    "home": {
+      "eyebrow": "এটা বিষয় বাছি লওক",
+      "title": "আপুনি কি কৰিব বিচাৰে?",
+      "subtitle": "এটা দিশ বাছক, তাৰ পিছত এটা শক্তিশালী প্ৰমপ্টৰ সৈতে আৰম্ভ কৰক।",
+      "pickPromptTitle": "আৰম্ভ কৰিবলৈ এটা প্ৰমপ্ট বাছক",
+      "changeTopic": "আন এটা বিষয় বাছি লওক",
+      "intents": {
+        "summarize": "পাঠ্যৰ সাৰাংশ লিখা",
+        "summarizeShort": "নম্বৰত যোগাযোগ কৰিব পাৰে\nসাৰাংশ লিখা",
+        "summarizeHint": "লেখা, টোকা, কণ্ঠস্বৰ মেমো, দীঘলীয়া সূতা",
+        "plan": "এটা পৰিকল্পনা কৰক",
+        "planHint": "ভ্ৰমণ, ৰুটিন, বাজেট, সময়সীমা, জীৱনৰ পৰিৱৰ্তন",
+        "brainstorm": "মগজুৰ ধুমুহা",
+        "brainstormHint": "আইডিয়া, অফাৰ, নাম, কন্টেন্ট, পাৰ্শ্ব প্ৰজেক্ট",
+        "analyze": "তথ্য বিশ্লেষণ কৰা",
+        "analyzeHint": "খৰচ, মতামত, মেট্ৰিক, অভ্যাস, কৰ্মক্ষমতা"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "এটা প্ৰতিষ্ঠাপক ব্ৰিফ তৈয়াৰ কৰক",
+          "founderBriefSubtitle": "মূল বিপদ, সিদ্ধান্ত আৰু পৰৱৰ্তী পদক্ষেপসমূহ উলিয়াই আনিব।",
+          "classNotesTitle": "মোৰ অধ্যয়নৰ টোকাবোৰ পৰিষ্কাৰ কৰি লওক",
+          "classNotesSubtitle": "মোটামুটি টোকাবোৰক স্পষ্ট অধ্যয়ন গাইডলৈ ৰূপান্তৰিত কৰক।",
+          "meetingHandoffTitle": "হেণ্ডঅফৰ সাৰাংশ লিখা",
+          "meetingHandoffSubtitle": "মিটিং, কল, বা দীঘলীয়া আভ্যন্তৰীণ থ্ৰেডৰ পিছত উপযোগী।",
+          "longArticleTitle": "এই লেখাটোৰ সাৰাংশ সোনকালে কওক",
+          "longArticleSubtitle": "এটা দীঘলীয়া লেখা চোকা টেক-এৱেত ঘনীভূত কৰক।"
+        },
+        "plan": {
+          "energyResetTitle": "14 দিনৰ শক্তি ৰিছেট নিৰ্মাণ কৰক",
+          "energyResetSubtitle": "টোপনি, খাদ্য, গতি, আৰু মনোযোগৰ বাবে এক বাস্তৱিক পৰিকল্পনা।",
+          "mealPlanTitle": "মই আচলতে ৰান্ধিবলগীয়া খাদ্যৰ পৰিকল্পনা কৰক",
+          "mealPlanSubtitle": "ব্যৱহাৰিক, সুলভ, আৰু মোৰ হাতত যি আছে তাৰ ওপৰত ভিত্তি কৰি।",
+          "cityMoveTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nমোৰ নতুন চহৰলৈ যোৱাৰ পৰিকল্পনা কৰক",
+          "cityMoveSubtitle": "ইয়াক টাইমলাইন, বাজেট, হাউছিং, আৰু এডমিন টাস্কত বিভক্ত কৰক।",
+          "tripEscapeTitle": "এটা স্মৰণীয় ছুটিৰ দিনত পলায়নৰ পৰিকল্পনা কৰক",
+          "tripEscapeSubtitle": "জেনেৰিক ভ্ৰমণসূচীতকৈ ভাল কিবা এটা।"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "এটা বাস্তৱিক কাষৰ হুলস্থুল বিচাৰি উলিয়াওক",
+          "sideHustleSubtitle": "পূৰ্ণকালীন কাম কৰি থাকোঁতে আৰম্ভ কৰিব পৰা ধাৰণা।",
+          "brandAngleTitle": "এটা স্মৰণীয় ব্ৰেণ্ড এংগেল বিচাৰি উলিয়াওক",
+          "brandAngleSubtitle": "পণ্য, সৃষ্টিকৰ্তা, সংস্থা, বা বাতৰি কাকতৰ বাবে উপযোগী।",
+          "socialSeriesTitle": "এটা বিষয়বস্তুৰ শৃংখলা উদ্ভাৱন কৰক",
+          "socialSeriesSubtitle": "দৰ্শকক বৃদ্ধি কৰিব পৰাকৈ যথেষ্ট সামঞ্জস্যপূৰ্ণ কিবা এটা।",
+          "datingIdeasTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nসতেজ ধাৰণা লৈ আহক",
+          "datingIdeasSubtitle": "তাৰিখ, উপহাৰ, আচৰিত বা চিন্তাশীল অনুভৱ কৰা পৰিঘটনা।"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "মোৰ টকা ক’ত লিক হৈছে বিচাৰি উলিয়াওক",
+          "spendingLeaksSubtitle": "প্ৰথমে আৰ্হি, দুৰ্বল স্থান, আৰু আটাইতকৈ সহজ জয়ী দেখুৱাওক।",
+          "customerFeedbackTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nমতামতক অগ্ৰাধিকাৰলৈ ৰূপান্তৰিত কৰক",
+          "customerFeedbackSubtitle": "ক্লাষ্টাৰৰ অনুৰোধ, অভিযোগ, জৰুৰীতা, আৰু প্ৰভাৱ।",
+          "habitPatternsTitle": "মোৰ অভ্যাসত স্পট পেটাৰ্ণ",
+          "habitPatternsSubtitle": "ৱৰ্কআউট, টোপনি, জাৰ্নেলিং, বা ফ'কাচ লগৰ বাবে উপযোগী।",
+          "metricsStoryTitle": "সংখ্যাবোৰৰ অৰ্থ কি বুজাই দিয়া",
+          "metricsStorySubtitle": "অধিক সংকেত, কম স্প্ৰেডশ্বীটৰ শব্দ।"
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "নম্বৰত যোগাযোগ কৰিব পাৰে\n *",
+    "processing": "প্ৰচেছিং...",
+    "tapToUploadImage": "ছবি আপলোড কৰিবলৈ টেপ কৰক"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "প্ৰচেছিং...",
+    "camera": "ফটো আপলোড কৰক",
+    "library": "0\nলাইব্ৰেৰী"
+  },
+  "common": {
+    "ok": "ঠিক আছে",
+    "retry": "পুনৰ চেষ্টা কৰক",
+    "cancel": "বাতিল কৰক",
+    "allow": "অনুমতি দিয়ক",
+    "notNow": "নম্বৰত যোগাযোগ কৰিব পাৰে\nএতিয়া নহয়",
+    "openSettings": "ছেটিংছ খোলক",
+    "close": "বন্ধ কৰক",
+    "save": "সংৰক্ষণ কৰক",
+    "tryAgain": "আকৌ এবাৰ চেষ্টা কৰক"
+  },
+  "rateUs": {
+    "title": "Cloud AI উপভোগ কৰি আছেনে?",
+    "subtitle": "আপোনাৰ মতামতে আমাক উন্নতি কৰাত সহায় কৰে। আপুনি আমাক এপ ষ্ট’ৰত ৰেটিং দিবলৈ আপত্তি কৰিবনে?",
+    "rateNow": "এতিয়াই ৰেটিং দিয়ক",
+    "maybeLater": "হয়তো পিছত",
+    "dontAskAgain": "আকৌ সুধিব নালাগে"
+  },
+  "oneTimeOffer": {
+    "title": "এককালীন অফাৰ",
+    "discount": "{{percent}}% বন্ধ",
+    "subtitle": "এই অফাৰ আপুনি আৰু দেখা নাপাব।",
+    "badgeLine1": "একচেটিয়া",
+    "badgeLine2": "ৱান টাইম অফাৰ",
+    "upgradeNow": "{{price}} ৰ বাবে এতিয়াই উন্নীত কৰক",
+    "loadingPrice": "লোড হচ্ছে...",
+    "termsOfUse": "ব্যৱহাৰৰ চৰ্তসমূহ",
+    "privacyPolicy": "গোপনীয়তা নীতি",
+    "accessTitle": "সীমাহীন প্ৰৱেশৰ...",
+    "accessSubtitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nGPT, Gemini আৰু Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4 লৈ সীমাহীন প্ৰৱেশ",
+      "geminiPro": "Gemini Pro ৰ প্ৰৱেশ",
+      "grokInsights": "সতেজ অন্তৰ্দৃষ্টিৰ বাবে Grok ব্যৱহাৰ কৰক",
+      "priorityAccess": "অগ্ৰাধিকাৰ প্ৰৱেশ আৰু দ্ৰুত সঁহাৰি"
+    },
+    "bestValue": "শ্ৰেষ্ঠ মূল্য",
+    "annualPremium": "বাৰ্ষিক প্ৰিমিয়াম",
+    "oneTimePayment": "এককালীন ধন পৰিশোধ",
+    "wasPrice": "আছিল",
+    "continue": "আগবাঢ়ি যাওক",
+    "restore": "পুনৰুদ্ধাৰ কৰক",
+    "terms": "চৰ্তসমূহ",
+    "privacy": "গোপনীয়তা",
+    "successTitle": "সফলতা!",
+    "successMessage": "আপোনাৰ ক্ৰয়ৰ বাবে ধন্যবাদ! অহা 12 মাহৰ বাবে প্ৰিমিয়াম প্ৰৱেশ উপভোগ কৰক।",
+    "errorTitle": "ক্ৰয় ব্যৰ্থ",
+    "errorMessage": "কিবা এটা ভুল হ’ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+    "restoreSuccessTitle": "পুনৰুদ্ধাৰ কৰা হৈছে",
+    "restoreSuccessMessage": "আপোনাৰ ক্ৰয়সমূহ পুনৰুদ্ধাৰ কৰা হৈছে।",
+    "restoreErrorTitle": "পুনৰুদ্ধাৰ ব্যৰ্থ",
+    "restoreErrorMessage": "নম্বৰত যোগাযোগ কৰিব পাৰে\nপুনৰুদ্ধাৰ কৰিবলৈ কোনো ক্ৰয় পোৱা নগ'ল।",
+    "unavailableTitle": "ক্ৰয়সমূহ উপলব্ধ নহয়",
+    "unavailableMessage": "Android বিলিং এতিয়াও কনফিগাৰ কৰা হোৱা নাই।"
+  },
+  "rewards": {
+    "header": {
+      "title": "পুৰস্কাৰ",
+      "openMenu": "মেনু খোলক",
+      "goBack": "উভতি যাওক"
+    },
+    "pointsHero": {
+      "totalBalance": "মুঠ ভাৰসাম্য",
+      "seeYourRewards": "আপোনাৰ পুৰস্কাৰ চাওক"
+    },
+    "streakTracker": {
+      "title": "দৈনিক ষ্ট্ৰিক",
+      "subtitle": "আগবাঢ়ি যাওক! তই জুইত জাহ গৈছে।",
+      "days": "নম্বৰত যোগাযোগ কৰিব পাৰে\nদিন",
+      "prize": "পুৰস্কাৰ",
+      "dayLabel": "দিন {{number}}",
+      "nextReward": "পৰৱৰ্তী পুৰস্কাৰ: {{amount}} in {{time}}",
+      "coins": "নম্বৰত যোগাযোগ কৰিব পাৰে\nমুদ্ৰা"
+    },
+    "sections": {
+      "availableQuests": "উপলব্ধ Quests",
+      "completedQuests": "সম্পূৰ্ণ কৰা কুৱেষ্ট",
+      "availableRewards": "উপলব্ধ পুৰস্কাৰ",
+      "needsMoreCoins": "আৰু মুদ্ৰাৰ প্ৰয়োজন"
+    },
+    "balances": {
+      "rewardCoins": "পুৰস্কাৰ মুদ্ৰা",
+      "imageCredits": "নম্বৰত যোগাযোগ কৰিব পাৰে\nছবিৰ ক্ৰেডিট"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 টা ছবিৰ ক্ৰেডিট",
+        "imageCredits200": "200 টা ছবিৰ ক্ৰেডিট",
+        "imageCredits600": "600 ছবিৰ ক্ৰেডিট",
+        "weeklyPremium": "সাপ্তাহিক প্ৰিমিয়াম",
+        "secretBox": "গোপন বাকচ"
+      },
+      "rewardDescriptions": {
+        "secretBox": "ভিতৰত ৰহস্যৰ পুৰস্কাৰ"
+      },
+      "alerts": {
+        "comingSoonTitle": "সোনকালে আহি আছে",
+        "comingSoonMessage": "এই পুৰস্কাৰ এতিয়াও পোৱা নাই।",
+        "notEnoughCoinsTitle": "পৰ্যাপ্ত মুদ্ৰা নহয়",
+        "notEnoughCoinsMessage": "নম্বৰত যোগাযোগ কৰিব পাৰে\nএই পুৰস্কাৰ আনলক কৰিবলৈ আপোনাক অধিক পুৰস্কাৰৰ মুদ্ৰাৰ প্ৰয়োজন।",
+        "errorTitle": "ত্ৰুটি",
+        "couldNotOpenBox": "বাকচ খোলিব পৰা নগ'ল।",
+        "couldNotRedeem": "পুৰস্কাৰ মুক্ত কৰিব পৰা নাছিল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+        "mysteryReward": "ৰহস্য পুৰস্কাৰ"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "দৈনিক লগইন",
+        "description": "আপোনাৰ ধাৰা বজাই ৰাখিবলৈ আজিয়েই এপটো খুলিব",
+        "message": "প্ৰতিদিনে এপটো খুলিলে এই অভিযানটো স্বয়ংক্ৰিয়ভাৱে সম্পূৰ্ণ হয়।"
+      },
+      "shareFacebook": {
+        "title": "ফেচবুকত শ্বেয়াৰ কৰক",
+        "description": "আমাৰ বিষয়ে ফেচবুকত পোষ্ট কৰক"
+      },
+      "shareTwitter": {
+        "title": "নম্বৰত যোগাযোগ কৰিব পাৰে\nটুইটাৰত শ্বেয়াৰ কৰক",
+        "description": "0\nআপোনাৰ অভিজ্ঞতা টুইট কৰক"
+      },
+      "shareInstagram": {
+        "title": "ইনষ্টাগ্ৰামত শ্বেয়াৰ কৰক",
+        "description": "এটা কাহিনী বা পোষ্ট শ্বেয়াৰ কৰক"
+      },
+      "shareExperience": {
+        "title": "আপোনাৰ অভিজ্ঞতা শ্বেয়াৰ কৰক",
+        "description": "বন্ধুসকলক কওক কিয় এপটো ভাল লাগে"
+      },
+      "share": {
+        "genericMessage": "নম্বৰত যোগাযোগ কৰিব পাৰে\nএই AI app টো chat & image generation ৰ বাবে ব্যৱহাৰ কৰিছো। চাওকচোন: {{url}}",
+        "facebookQuote": "এই AI App চাওক!",
+        "twitterText": "এই AI এপটো চেষ্টা কৰি আছো, ই যথেষ্ট শীতল।",
+        "instagramMessage": "এই AI এপটো চাওক: {{url}}"
+      },
+      "store": {
+        "errorTitle": "ত্ৰুটি",
+        "errorMessage": "ষ্ট'ৰ পৃষ্ঠা খোলিব পৰা নগ'ল।"
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "কুৱেষ্ট সম্পূৰ্ণ",
+        "description": "কুৱেষ্ট সম্পূৰ্ণ হ’ল",
+        "points": "+{{points}} পইণ্ট",
+        "close": "বন্ধ কৰক"
+      },
+      "rewardSuccess": {
+        "error": "ত্ৰুটি",
+        "success": "সফলতা",
+        "somethingWentWrong": "কিবা এটা ভুল হ’ল",
+        "rewardUnlocked": "পুৰস্কাৰ আনলক কৰা হৈছে",
+        "credits": "ক্ৰেডিট",
+        "close": "বন্ধ কৰক",
+        "okay": "ঠিক আছে"
+      },
+      "secretBox": {
+        "pill": "গোপন বাকচ",
+        "rewardUnlocked": "পুৰস্কাৰ আনলক কৰা হৈছে",
+        "shufflingRewards": "SHUFFLING পুৰস্কাৰ...",
+        "imageCreditsAdded": "নম্বৰত যোগাযোগ কৰিব পাৰে\nআপোনাৰ একাউণ্টত ইমেজ ক্ৰেডিট যোগ কৰা হৈছে",
+        "continue": "আগবাঢ়ি যাওক",
+        "revealing": "প্ৰকাশ...",
+        "prizeTiers": {
+          "lucky": "ভাগ্যৱান",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "মিথিক"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "আপোনাৰ দৈনিক মুদ্ৰা লওক",
+      "subtitle": "প্ৰতিদিনে আহক, পুৰস্কাৰ বাঢ়িব।",
+      "cta": "চেক-ইন",
+      "claimed": "পালে! +{{amount}} মুদ্ৰা",
+      "later": "পিছত"
+    }
+  },
+  "app": {
+    "version": "সংস্কৰণ {{version}}",
+    "offlineBanner": "আপুনি অফলাইন হৈ আছে",
+    "launch": {
+      "accessibilityLabel": "আৰম্ভ Cloud AI",
+      "title": "⟬পি000⟭",
+      "subtitle": "এ আই, যেতিয়া আপুনি থাকিব তেতিয়া সাজু"
+    },
+    "errors": {
+      "modelsLoadTitle": "মডেলসমূহ লোড কৰাত ব্যৰ্থ",
+      "modelsLoadMessage": "AI মডেলসমূহ লোড কৰিবলে অক্ষম। এপটোত ডিফল্ট মডেল ব্যৱহাৰ কৰা হ’ব। অনুগ্ৰহ কৰি আপোনাৰ ইণ্টাৰনেট সংযোগ পৰীক্ষা কৰক।",
+      "modelsLoadTimeout": "মডেল লোড কৰাত বহুত সময় লাগিছিল। এপটোত ডিফল্ট মডেল ব্যৱহাৰ কৰা হ’ব। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+      "modelsLoadNetwork": "ইণ্টাৰনেট সংযোগ নাই। এপটোত ডিফল্ট মডেল ব্যৱহাৰ কৰা হ’ব। অনুগ্ৰহ কৰি আপোনাৰ সংযোগ পৰীক্ষা কৰক।",
+      "deviceIdTitle": "আৰম্ভণিৰ ত্ৰুটি",
+      "deviceIdMessage": "ডিভাইচ ID আৰম্ভ কৰাত ব্যৰ্থ। কিছুমান বৈশিষ্ট্যই সঠিকভাৱে কাম নকৰিবও পাৰে।",
+      "storageTitle": "সংৰক্ষণ ত্ৰুটি",
+      "storageMessage": "স্থানীয় সংৰক্ষণ অভিগম কৰিবলে অক্ষম। কিছুমান বৈশিষ্ট্যই সঠিকভাৱে কাম নকৰিবও পাৰে।",
+      "crashTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nকিবা এটা ভুল হ’ল।",
+      "crashSubtitle": "অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+      "crashLabel": "এপটো ক্ৰেচ হৈ গ’ল"
+    },
+    "proxyErrors": {
+      "genericTitle": "কিবা এটা ভুল হ’ল",
+      "genericMessage": "অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+      "rateLimitTitle": "বহুত বেছি অনুৰোধ",
+      "rateLimitMessage": "আমি বহু অনুৰোধ চম্ভালি আছো। অনুগ্ৰহ কৰি ক্ষন্তেক পিছতে পুনৰ চেষ্টা কৰক।",
+      "rateLimitRetryAfter": "আমি বহু অনুৰোধ চম্ভালি আছো। অনুগ্ৰহ কৰি প্ৰায় {{seconds}} ছেকেণ্ডত পুনৰ চেষ্টা কৰক।",
+      "restrictedTitle": "নিষিদ্ধ বিষয়বস্তু",
+      "restrictedMessage": "এই অনুৰোধ সুৰক্ষা ফিল্টাৰৰ দ্বাৰা বাধা দিয়া হৈছিল।",
+      "insufficientCoinsTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nপৰ্যাপ্ত মুদ্ৰা নহয়",
+      "insufficientCoinsMessage": "এই অনুৰোধৰ বাবে আপোনাৰ বৰ্তমানৰ বেলেঞ্চ অতি কম।",
+      "imageUnavailableTitle": "ছবি উপলব্ধ নহয়",
+      "imageUnavailableMessage": "সৃষ্টি কৰা ছবি ফাইলটো সাময়িকভাৱে উপলব্ধ নাছিল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+      "authorizationTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nঅনুমোদনৰ সমস্যা",
+      "authorizationMessage": "আমি আপোনাৰ একাউণ্টটো পৰীক্ষা কৰিব পৰা নাছিলো। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+      "serverTitle": "চাৰ্ভাৰ হিচকি",
+      "serverMessage": "আমাৰ চাৰ্ভাৰবোৰৰ অসুবিধা হৈছিল। অনুগ্ৰহ কৰি অলপ পিছতে পুনৰ চেষ্টা কৰক।",
+      "timeoutTitle": "বেছি সময় লোৱা",
+      "timeoutMessage": "অনুৰোধৰ সময় শেষ হৈ গ’ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।",
+      "networkTitle": "নম্বৰত যোগাযোগ কৰিব পাৰে\nকোনো সংযোগ নাই",
+      "networkMessage": "ইণ্টাৰনেট সংযোগ নাই। অনুগ্ৰহ কৰি আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
+      "requestTitle": "অনুৰোধৰ ইছ্যু",
+      "requestMessage": "আপোনাৰ অনুৰোধত কিবা এটা ভুল হ’ল। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "প্ৰিমিয়াম সক্ৰিয় কৰক",
+    "activateMessage": "0\nআপুনি পৰ্যালোচক প্ৰিমিয়াম সক্ৰিয় কৰিব বিচাৰেনে?",
+    "activateAction": "সক্ৰিয় কৰক",
+    "deactivateTitle": "প্ৰিমিয়াম নিষ্ক্ৰিয় কৰক",
+    "deactivateMessage": "আপুনি পৰ্যালোচক প্ৰিমিয়াম নিষ্ক্ৰিয় কৰিব বিচাৰেনে?",
+    "deactivateAction": "নিষ্ক্ৰিয় কৰক"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "নম্বৰত যোগাযোগ কৰিব পাৰে\nদৈনিক পুৰস্কাৰ",
+      "body": "দৈনিক মুদ্ৰাবোৰ মিছ নকৰিব — মাজনিশাৰ আগতে দাবী কৰক৷"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "আপোনাৰ দৈনিক মুদ্ৰা হেৰুৱাব নালাগে",
+      "body": "আপোনাৰ ধাৰাবাহিকতা বজাই থাকিবলৈ আৰু মুদ্ৰা বাঢ়ি থাকিবলৈ আমি দিনে এবাৰ মনত পেলাই দিওঁ। কোনো স্পাম নাই, যিকোনো সময়তে বন্ধ কৰিব পাৰে।",
+      "enable": "ৰিমাইণ্ডাৰ অন কৰক",
+      "skip": "এতিয়া নহয়"
+    }
+  }
+}

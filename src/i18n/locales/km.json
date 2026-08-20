@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "ជ្រើសរើសម៉ូដែល",
+    "searchPlaceholder": "ស្វែងរកម៉ូដែល...",
+    "noModelsFound": "រកមិនឃើញម៉ូដែលទេ។",
+    "noModelsAvailable": "មិនមានម៉ូដែលដែលអាចប្រើបានទេ។",
+    "currentModel": "ម៉ូដែលបច្ចុប្បន្ន៖ {{name}}។ ប៉ះដើម្បីផ្លាស់ប្តូរគំរូ។",
+    "openHint": "បើកម៉ឺនុយជ្រើសរើសម៉ូដែល",
+    "closeLabel": "បិទ​ឧបករណ៍​ជ្រើស​ម៉ូដែល",
+    "searchLabel": "ស្វែងរកម៉ូដែល",
+    "searchHint": "វាយបញ្ចូលដើម្បីត្រងម៉ូដែលដែលមាន",
+    "modelLabel": "{{name}} ម៉ូដែល",
+    "selectHint": "ជ្រើសរើសម៉ូដែល {{name}}",
+    "currentlySelected": "ម៉ូដែលដែលបានជ្រើសរើសបច្ចុប្បន្ន",
+    "genericModel": "{{provider}} ម៉ូដែល",
+    "badges": {
+      "new": "ថ្មី",
+      "best": "ល្អបំផុត"
+    }
+  },
+  "models": {
+    "gpt-4o": "ម៉ូដែល AI ដ៏មានឥទ្ធិពលបំផុត។",
+    "gpt-4o-mini": "លឿនសម្រាប់កិច្ចការប្រចាំថ្ងៃ",
+    "gpt-5": "AI គ្រប់គោលបំណងដ៏មានឥទ្ធិពលបំផុត។",
+    "gpt-5-chat-latest": "ធ្វើឱ្យប្រសើរសម្រាប់ការជជែក និងការសន្ទនា",
+    "gpt-5-mini": "លឿន និងអាចទុកចិត្តបាន GPT-5",
+    "gpt-5.4-nano": "គំរូពន្លឺសម្រាប់កិច្ចការសាមញ្ញ",
+    "o4-mini": "គំរូសមហេតុផលប្រកបដោយប្រសិទ្ធភាព",
+    "gpt-4.1-mini": "បង្រួម សមត្ថភាព GPT-4.1",
+    "claude-3-haiku": "Anthropic AI ដែលមានល្បឿនលឿន និងផ្តោតអារម្មណ៍",
+    "claude-3.7-sonnet": "ហេតុផល​ចម្រាញ់​ដោយ Anthropic",
+    "gemini-2.5-Flash": "ម៉ូដែលទំនើបបំផុតរបស់ Google",
+    "gemini-2.5-flash": "ម៉ូដែលទំនើបបំផុតរបស់ Google",
+    "gemini-2.0-flash": "Google AI រហ័ស និងច្បាស់លាស់"
+  },
+  "modelDescriptions": {
+    "most_powerful": "ម៉ូដែល AI ដ៏មានឥទ្ធិពលបំផុត។",
+    "fast_everyday": "លឿនសម្រាប់កិច្ចការប្រចាំថ្ងៃ",
+    "fast_reasoning": "ម៉ូដែលលឿនដោយមានហេតុផលល្អ។",
+    "great_reasoning": "គំរូហេតុផលកម្រិតខ្ពស់",
+    "coding_reasoning": "ការសរសេរកូដកម្រិតខ្ពស់ និងហេតុផល",
+    "better_coding": "កាន់តែប្រសើរសម្រាប់ការសរសេរកូដ និងហេតុផល",
+    "best_overall": "ម៉ូដែល AI ជុំវិញល្អបំផុត",
+    "best_google": "គំរូល្អបំផុតរបស់ Google",
+    "best_xai": "គំរូដ៏មានឥទ្ធិពលបំផុតរបស់ xAI",
+    "creative_focus": "ល្អសម្រាប់ការសរសេរប្រកបដោយភាពច្នៃប្រឌិត",
+    "code_helper": "ល្អសម្រាប់ជំនួយការសរសេរកូដ",
+    "chat_focus": "ប្រសើរឡើងសម្រាប់ការជជែក",
+    "long_context": "ល្អសម្រាប់បរិបទវែង",
+    "budget_friendly": "គំរូ AI ងាយស្រួលប្រើថវិកា",
+    "ultra_fast": "ការឆ្លើយតបលឿនបំផុត។",
+    "safe_default": "ជម្រើសលំនាំដើមសុវត្ថិភាព",
+    "multilingual": "ការគាំទ្រច្រើនភាសាខ្លាំង",
+    "vision_strong": "អស្ចារ្យជាមួយរូបភាព និងចក្ខុវិស័យ",
+    "data_analysis": "ល្អសម្រាប់ការវិភាគទិន្នន័យ",
+    "structured_tasks": "ល្អសម្រាប់កិច្ចការដែលមានរចនាសម្ព័ន្ធ",
+    "everyday_helper": "ម៉ូដែលជំនួយការប្រចាំថ្ងៃ",
+    "concise_answers": "ចម្លើយខ្លី សង្ខេប",
+    "detailed_answers": "ចម្លើយលម្អិតជាជំហាន ៗ",
+    "experimental": "គំរូជំនាន់ក្រោយសាកល្បង",
+    "reliable_classic": "ម៉ូដែលបុរាណដែលអាចទុកចិត្តបាន។",
+    "lightweight": "ម៉ូដែលស្រាល តម្លៃទាប",
+    "chatty_personal": "កាន់តែរួសរាយរាក់ទាក់ និងផ្ទាល់ខ្លួន",
+    "pro_users": "ល្អបំផុតសម្រាប់អ្នកប្រើប្រាស់ថាមពល",
+    "research_helper": "ល្អសម្រាប់ការស្រាវជ្រាវ និងកំណត់ចំណាំ",
+    "reasoning_strong": "គំរូហេតុផលកម្រិតខ្ពស់"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "អនិច្ចារ",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "ផ្សេងៗ"
+  },
+  "navigation": {
+    "chat": "ការជជែកថ្មី។",
+    "history": "ប្រវត្តិសាស្ត្រ",
+    "rewards": "រង្វាន់ប្រចាំថ្ងៃ",
+    "assistants": "ជំនួយការ",
+    "imagesStudio": "Image Studio",
+    "settings": "ការកំណត់",
+    "recentChats": "ការជជែកថ្មីៗ",
+    "proFeatures": "លក្ខណៈពិសេសគាំទ្រ",
+    "pro": "ប្រូ",
+    "proFeaturesCta": {
+      "title": "ទទួលបានមុខងារ Pro",
+      "subtitle": "លក្ខណៈពិសេស AI ទាំងអស់។"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "បង្កើត កែលម្អ និងបោះពុម្ពផ្សាយទ្រព្យសម្បត្តិដែលមើលឃើញនៅកន្លែងតែមួយ។",
+    "cta": "បើក"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "ជ្រើសរើសរូបភាព",
+    "exitSelectionMode": "ចេញពីរបៀបជ្រើសរើស",
+    "selectAll": "ជ្រើសរើសទាំងអស់។",
+    "noImagesYet": "មិនមានរូបភាពនៅឡើយទេ",
+    "describeImageHint": "ពណ៌នារូបភាពរបស់អ្នកខាងក្រោម ហើយចុចលើ បង្កើត។",
+    "generatedImagesGallery": "វិចិត្រសាលរូបភាពដែលបានបង្កើត",
+    "describeImagePlaceholder": "ពិពណ៌នារូបភាពដែលអ្នកចង់បាន...",
+    "deleteConfirmTitle": "លុបរូបភាព",
+    "deleteConfirmMessage": "តើអ្នកប្រាកដថាចង់លុបរូបភាពដែលបានជ្រើសរើសមែនទេ? សកម្មភាពនេះមិនអាចត្រឡប់វិញបានទេ។",
+    "cancel": "បោះបង់",
+    "delete": "លុប",
+    "generate": "បង្កើត",
+    "generating": "កំពុង​បង្កើត...",
+    "latest": "ចុងក្រោយ",
+    "insertToChat": "បញ្ចូលដើម្បីជជែក",
+    "pleaseWait": "សូមរង់ចាំ…",
+    "processing": "កំពុងដំណើរការ...",
+    "tapToUploadImage": "ប៉ះដើម្បីបង្ហោះរូបភាព",
+    "camera": "បង្ហោះរូបថត",
+    "library": "បណ្ណាល័យ",
+    "enterPrompt": "សូមបញ្ចូលប្រអប់បញ្ចូលសម្រាប់ការបង្កើតអត្ថបទទៅរូបភាព",
+    "openInBrowser": "បើកនៅក្នុងកម្មវិធីរុករក",
+    "makeVariations": "ធ្វើឱ្យមានការប្រែប្រួល",
+    "deleteAllFromGeneration": "លុបទាំងអស់ចេញពីជំនាន់នេះ។",
+    "imageOptionsTitle": "ជម្រើសរូបភាព",
+    "imageOptionsMessage": "តើអ្នកចង់ធ្វើអ្វីជាមួយរូបភាពនេះ?",
+    "insertMarkdownHeader": "នេះជារូបភាពសម្រាប់៖",
+    "variationSuffix": "- ការផ្លាស់ប្តូររូបភាពមុន។",
+    "selectedCount": "បានជ្រើសរើស",
+    "selectedCount_one": "បានជ្រើសរើស",
+    "selectedCount_other": "បានជ្រើសរើស",
+    "imageDescriptionInput": "ការបញ្ចូលការពិពណ៌នារូបភាព",
+    "imageDescriptionHint": "បញ្ចូលការពិពណ៌នានៃរូបភាពដែលអ្នកចង់បង្កើត",
+    "openModelSettings": "បើកការកំណត់ម៉ូដែល",
+    "modelSettingsHint": "ប៉ះដើម្បីផ្លាស់ប្តូរម៉ូដែល និងការកំណត់",
+    "openPhotoGallery": "បើកវិចិត្រសាលរូបថត",
+    "clearInput": "ជម្រះការបញ្ចូល",
+    "generatedImage": "រូបភាពដែលបានបង្កើត",
+    "autoSelectedModel": "{{model}}ដែលបានជ្រើសរើសដោយស្វ័យប្រវត្តិសម្រាប់របៀប {{mode}}",
+    "deleteSelectedConfirmTitle": "លុបរូបភាព",
+    "deleteSelectedConfirmMessage": "តើអ្នកប្រាកដថាចង់លុបរូបភាពមែនទេ? សកម្មភាពនេះមិនអាចត្រឡប់វិញបានទេ។"
+  },
+  "imageStudio": {
+    "generateImage": "បង្កើតរូបភាព",
+    "generatingImage": "ការបង្កើតរូបភាព",
+    "generateImageHint": "ប៉ះដើម្បីបង្កើតរូបភាពដោយផ្អែកលើការពិពណ៌នារបស់អ្នក។",
+    "imageDescriptionInput": "ការបញ្ចូលការពិពណ៌នារូបភាព",
+    "imageDescriptionHint": "បញ្ចូលការពិពណ៌នានៃរូបភាពដែលអ្នកចង់បង្កើត",
+    "openModelSettings": "បើកការកំណត់ម៉ូដែល",
+    "modelSettingsHint": "ប៉ះដើម្បីផ្លាស់ប្តូរម៉ូដែល និងការកំណត់",
+    "openPhotoGallery": "បើកវិចិត្រសាលរូបថត",
+    "clearInput": "ជម្រះការបញ្ចូល",
+    "generatedImage": "រូបភាពដែលបានបង្កើត"
+  },
+  "assistants": {
+    "title": "ជំនួយការ",
+    "defaultTitle": "ជំនួយការ",
+    "errorTitle": "មានអ្វីមួយខុសប្រក្រតី",
+    "errorMessage": "មិនអាចចាប់ផ្តើមជំនួយការនេះបានទេ។",
+    "noAssistants": "រកមិនឃើញជំនួយការក្នុងប្រភេទនេះទេ។",
+    "selectAssistantHint": "បើកកម្មវិធីជ្រើសរើសជំនួយ",
+    "subtitle": "អ្នកឯកទេស AI ដែលត្រូវបានជ្រើសរើសរួចរាល់សម្រាប់ការសរសេរកូដ ការសរសេរ ការវិភាគ ការធ្វើផែនការ និងអ្វីៗជាច្រើនទៀត។",
+    "searchPlaceholder": "ជំនួយការស្វែងរក…",
+    "useAssistant": "ប្រើជំនួយការ",
+    "selectAssistant": "ជ្រើសរើសជំនួយការ",
+    "description": "ការពិពណ៌នា",
+    "systemPrompt": "ប្រអប់បញ្ចូលប្រព័ន្ធ",
+    "chooseModel": "ជ្រើសរើសម៉ូដែល",
+    "categoryAll": "ទាំងអស់។",
+    "categories": {
+      "everyday": "ជារៀងរាល់ថ្ងៃ",
+      "life": "ជីវិត",
+      "health": "សុខភាព",
+      "schoolWork": "សាលា និងការងារ",
+      "coding": "ការសរសេរកូដ",
+      "creative": "ច្នៃប្រឌិត",
+      "general": "ទូទៅ"
+    },
+    "presets": {
+      "default": {
+        "name": "ជំនួយការលំនាំដើម",
+        "description": "ជំនួយតុល្យភាពសម្រាប់វត្ថុប្រចាំថ្ងៃ។"
+      },
+      "quick": {
+        "name": "ចម្លើយរហ័ស",
+        "description": "ខ្លីៗ ចម្លើយផ្ទាល់។"
+      },
+      "planner": {
+        "name": "អ្នករៀបចំផែនការប្រចាំថ្ងៃ",
+        "description": "រៀបចំផែនការប្រចាំថ្ងៃ និងទម្លាប់របស់អ្នក។"
+      },
+      "recipes": {
+        "name": "អាហារ និងរូបមន្ត",
+        "description": "អ្វីដែលត្រូវចំអិនជាមួយនឹងអ្វីដែលអ្នកមាន។"
+      },
+      "fitness": {
+        "name": "គ្រូបង្វឹកលំហាត់ប្រាណ",
+        "description": "ទម្លាប់តូចតាច និងការហាត់ប្រាណនៅផ្ទះ។"
+      },
+      "money": {
+        "name": "លុយមិត្ត",
+        "description": "ថវិកាសាមញ្ញ និងគន្លឹះចំណាយ។"
+      },
+      "study": {
+        "name": "ជំនួយការសិក្សា",
+        "description": "ពន្យល់យ៉ាងសាមញ្ញ។ សួរខ្ញុំ។"
+      },
+      "email": {
+        "name": "អ៊ីមែល និងប្រវត្តិរូបសង្ខេប",
+        "description": "សរសេរអ៊ីមែល និង CV ឱ្យបានច្បាស់លាស់។"
+      },
+      "translator": {
+        "name": "អ្នកបកប្រែ",
+        "description": "បកប្រែ + បង្រៀនឃ្លា។"
+      },
+      "travel": {
+        "name": "មិត្តរួមដំណើរ",
+        "description": "ផែនការសាមញ្ញ & បញ្ជីវេចខ្ចប់។"
+      },
+      "tech": {
+        "name": "ជំនួយបច្ចេកទេស (សាមញ្ញ)",
+        "description": "ទូរស័ព្ទ កម្មវិធី មូលដ្ឋាន Wi-Fi ។"
+      },
+      "summarizer": {
+        "name": "TL;DR សង្ខេប",
+        "description": "គ្រាប់កាំភ្លើងខ្លី + មួយជួរ TL;DR."
+      },
+      "gift": {
+        "name": "អ្នកស្វែងរកអំណោយ",
+        "description": "គំនិតតាមថវិកា និងផលប្រយោជន៍។"
+      },
+      "party": {
+        "name": "កម្មវិធីរៀបផែនការព្រឹត្តិការណ៍ (Lite)",
+        "description": "រៀបចំពិធីជប់លៀងតូចមួយឱ្យបានលឿន។"
+      },
+      "social": {
+        "name": "អ្នកបង្កើតប្រៃសណីយ៍សង្គម",
+        "description": "ពង្រាងប្រកាសជាមួយជម្រើស។"
+      },
+      "interview": {
+        "name": "សម្ភាសគ្រូបង្វឹក",
+        "description": "អនុវត្តចម្លើយ (STAR) ។"
+      },
+      "homefix": {
+        "name": "មគ្គុទ្ទេសក៍ជួសជុលវានៅផ្ទះ",
+        "description": "ការដោះស្រាយបញ្ហា DIY សាមញ្ញ។"
+      },
+      "pet": {
+        "name": "មិត្តថែទាំសត្វចិញ្ចឹម",
+        "description": "ការចិញ្ចឹម ការដើរ ការបណ្តុះបណ្តាលជាមូលដ្ឋាន។"
+      },
+      "mindful": {
+        "name": "នាទីចងចាំ",
+        "description": "សម្រាក 1-3 នាទី។"
+      },
+      "polite": {
+        "name": "អ្នកសរសេរឡើងវិញគួរសម",
+        "description": "សរសេរអត្ថបទឡើងវិញ និងឆ្លើយតបបានល្អ។"
+      }
+    }
+  },
+  "history": {
+    "title": "ប្រវត្តិសាស្ត្រ",
+    "searchPlaceholder": "ស្វែងរកការជជែក...",
+    "newChat": "ការជជែកថ្មី។",
+    "new": "+ ថ្មី។",
+    "search": "ស្វែងរក",
+    "clearSearch": "ជម្រះការស្វែងរក",
+    "noChatsYet": "មិនមានការជជែកនៅឡើយទេ",
+    "noResults": "មិនមានការជជែកនៅឡើយទេ",
+    "startFirstConversation": "ចាប់ផ្តើមការសន្ទនាដំបូងរបស់អ្នក។",
+    "startChat": "ចាប់ផ្តើមជជែក",
+    "startNewChat": "ចាប់ផ្តើមការជជែកថ្មី។",
+    "errorLoadingHistory": "កំហុសក្នុងការផ្ទុកប្រវត្តិ",
+    "loading": "កំពុងផ្ទុកប្រវត្តិ...",
+    "renameChat": "ប្តូរឈ្មោះការជជែក",
+    "enterNewTitle": "បញ្ចូលចំណងជើងថ្មី។",
+    "deleteChat": "លុបការជជែក?",
+    "deleteChatMessage": "\"{{title}}\" នឹងត្រូវបានលុប។",
+    "rename": "ប្តូរឈ្មោះ",
+    "unpin": "ដកខ្ទាស់",
+    "pin": "ម្ជុល",
+    "untitled": "គ្មានចំណងជើង"
+  },
+  "settings": {
+    "title": "ការកំណត់",
+    "model": "គំរូ",
+    "searchPlaceholder": "ស្វែងរកម៉ូដែល...",
+    "temperatureForCurrentModel": "សីតុណ្ហភាពសម្រាប់ម៉ូដែលបច្ចុប្បន្ន",
+    "customFor": "ផ្ទាល់ខ្លួនសម្រាប់ {{model}}",
+    "usingDefault": "ប្រើលំនាំដើម {{temperature}}",
+    "resetToDefault": "កំណត់ឡើងវិញទៅលំនាំដើម",
+    "defaultTemperature": "សីតុណ្ហភាពលំនាំដើម (ថយក្រោយ)",
+    "usedByModelsWithoutOverride": "ប្រើដោយម៉ូដែលដោយគ្មានការបដិសេធផ្ទាល់ខ្លួន",
+    "dangerZone": "តំបន់គ្រោះថ្នាក់",
+    "clearAllChatsAndSettings": "សម្អាតការជជែក និងការកំណត់ទាំងអស់។",
+    "about": "អំពី",
+    "version": "កំណែ {{version}}{{status}}",
+    "versionPremiumSuffix": "· បុព្វលាភ",
+    "privacyPolicy": "គោលការណ៍ឯកជនភាព",
+    "hero": {
+      "label": "ការផ្តល់ជូនពិសេស",
+      "title": "ការចូលប្រើគ្មានដែនកំណត់\nលក្ខណៈពិសេស",
+      "upgrade": "ធ្វើឱ្យប្រសើរឡើង",
+      "manage": "គ្រប់គ្រងផែនការ"
+    },
+    "sections": {
+      "premium": "គម្រោងពិសេស",
+      "data": "ទិន្នន័យអ្នកប្រើប្រាស់",
+      "support": "ការគាំទ្រ និងផ្លូវច្បាប់"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "ទទួលបានបុព្វលាភ",
+        "subtitle": "ដោះសោឧបករណ៍បង្កើតគ្មានដែនកំណត់"
+      },
+      "premiumActive": {
+        "title": "សកម្មពិសេស",
+        "subtitle": "អរគុណសម្រាប់ការគាំទ្រ Cloud AI"
+      },
+      "restore": {
+        "title": "ទិញឡើងវិញ",
+        "subtitle": "ប្រើប្រសិនបើអ្នកបានប្តូរឧបករណ៍"
+      },
+      "history": {
+        "title": "គ្រប់គ្រងប្រវត្តិជជែក",
+        "subtitle": "មើល និងលុបវគ្គកន្លងមករបស់អ្នក។"
+      },
+      "reset": {
+        "title": "កំណត់ការជជែក និងចំណូលចិត្តឡើងវិញ",
+        "subtitle": "សម្អាតទិន្នន័យដែលបានរក្សាទុកទាំងអស់នៅលើឧបករណ៍នេះ។"
+      },
+      "rate": {
+        "title": "វាយតម្លៃពួកយើង",
+        "error": "មិនអាចបើកទំព័រហាងបានទេ។"
+      },
+      "support": {
+        "title": "គាំទ្រ",
+        "subtitle": "ទាក់ទងមកយើងតាមអ៊ីនធឺណិត",
+        "error": "មិនអាចបើកទំព័រទំនាក់ទំនងបានទេ។"
+      },
+      "privacy": {
+        "title": "គោលការណ៍ឯកជនភាព",
+        "error": "មិនអាចបើកគោលការណ៍ឯកជនភាពបានទេ។"
+      },
+      "terms": {
+        "title": "ល័ក្ខខ័ណ្ឌនៃការប្រើប្រាស់",
+        "error": "មិនអាចបើកលក្ខខណ្ឌប្រើប្រាស់បានទេ។"
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "វីឌី"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "មិនអាចប្រើបាន",
+      "linkUnavailableMessage": "មិនអាចបើកតំណនេះបានទេឥឡូវនេះ។",
+      "restoreSuccessTitle": "បានស្ដារឡើងវិញ",
+      "restoreSuccessMessage": "ការទិញរបស់អ្នកត្រូវបានស្ដារឡើងវិញ។",
+      "restoreEmptyTitle": "រកមិនឃើញការទិញទេ។",
+      "restoreEmptyMessage": "យើងមិនអាចស្វែងរកការទិញសកម្មដើម្បីស្ដារគណនីនេះបានទេ។",
+      "restoreErrorTitle": "ការស្តារឡើងវិញបានបរាជ័យ",
+      "restoreErrorMessage": "មិន​អាច​ស្ដារ​ការ​ទិញ​ឥឡូវ​នេះ​ទេ។",
+      "resetConfirmTitle": "កំណត់ទិន្នន័យកម្មវិធីឡើងវិញ?",
+      "resetConfirmMessage": "វាដកការជជែក និងចំណូលចិត្តក្នុងតំបន់ចេញទាំងអស់។",
+      "resetConfirmCancel": "បោះបង់",
+      "resetConfirmCta": "កំណត់ឡើងវិញ"
+    }
+  },
+  "createImage": {
+    "headerTitle": "បង្កើត",
+    "chooseStyle": "ជ្រើសរើសរចនាប័ទ្ម",
+    "aspectRatio": "សមាមាត្រ",
+    "starterPrompts": {
+      "title": "ការជម្រុញការចាប់ផ្តើម",
+      "items": [
+        "ស្ទូឌីយោក្បាល",
+        "បន្ទប់ទទួលភ្ញៀវទំនើប",
+        "ឆ្នេរត្រូពិចនៅពេលថ្ងៃលិច"
+      ]
+    },
+    "promptPlaceholder": "វាយបញ្ចូលអ្វីដែលអ្នកចង់ឃើញ…",
+    "promptHint": "ឧទាហរណ៍៖ 'Golden retriever in studio lighting'",
+    "clearText": "ជម្រះអត្ថបទ",
+    "generate": "បង្កើត",
+    "generating": "កំពុង​បង្កើត..."
+  },
+  "editImage": {
+    "headerTitle": "កែសម្រួល",
+    "chooseStyle": "ជ្រើសរើសរចនាប័ទ្ម",
+    "aspectRatio": "សមាមាត្រ",
+    "starterPrompts": {
+      "title": "ការជម្រុញការចាប់ផ្តើម",
+      "items": [
+        "ជួសជុលភ្លើងបំភ្លឺ",
+        "លុបផ្ទៃខាងក្រោយ",
+        "ការកែរូបភាពទន់"
+      ]
+    },
+    "promptPlaceholder": "ពណ៌នាការកែសម្រួល (ជាជម្រើស)",
+    "clearText": "ជម្រះអត្ថបទ",
+    "generate": "បង្កើត",
+    "generating": "កំពុង​អនុវត្ត...",
+    "upload": {
+      "choose": "ជ្រើសរើសរូបថត",
+      "change": "ផ្លាស់ប្តូរ",
+      "remove": "ដកចេញ"
+    },
+    "imageUnavailable": {
+      "title": "រូបភាពមិនអាចប្រើបានទេ។",
+      "message": "មិនអាចចូលប្រើរូបថតដែលបានជ្រើសរើសទេ។ សូមជ្រើសរើសវាឡើងវិញ ហើយព្យាយាមម្តងទៀត។"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "អានី"
+      },
+      "cartoon": {
+        "name": "តុក្កតា"
+      },
+      "photoreal": {
+        "name": "រូបថត"
+      },
+      "sketch": {
+        "name": "គំនូរព្រាង"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "រូបភាព 3D"
+      },
+      "dark_fantasy": {
+        "name": "Dark Fantasy"
+      },
+      "vintage_film": {
+        "name": "ខ្សែភាពយន្តបុរាណ"
+      },
+      "pastel": {
+        "name": "សោភ័ណភាព pastel"
+      },
+      "neon_glow": {
+        "name": "ពន្លឺអ៊ីយូតា"
+      },
+      "epic_landscape": {
+        "name": "ទេសភាព Epic"
+      }
+    },
+    "aspectRatios": {
+      "square": "ការ៉េ",
+      "landscape": "ទេសភាព",
+      "portrait": "រូបបញ្ឈរ"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "ផ្ទាល់ខ្លួន"
+    },
+    "notEnoughCoinsTitle": "កាក់មិនគ្រប់គ្រាន់ទេ។",
+    "notEnoughCoinsMessage": "សមតុល្យបច្ចុប្បន្នរបស់អ្នកទាបពេកសម្រាប់រូបភាពនេះ។",
+    "modelTaglines": {
+      "runwareFluxSchnell": "ម៉ូដែលលឿនបំផុត។",
+      "runwareFluxKrea": "លទ្ធផលប្រកបដោយភាពច្នៃប្រឌិត និងទាន់សម័យ",
+      "runwareQwenImage": "មានតុល្យភាព លទ្ធផលគុណភាពខ្ពស់",
+      "google4": "គំរូរូបភាព AI ល្អបំផុត",
+      "klingImageO1": "ការកែសម្រួលរូបភាពដែលមានការគ្រប់គ្រងខ្ពស់។",
+      "fluxKontent": "Flux Kontent ត្រូវបានកែសម្រួលសម្រាប់ការកែសម្រួល",
+      "runwareProvider": "គុណភាពមានតុល្យភាពជាមួយនឹងការសាយភាយដែលអាចទុកចិត្តបាន។",
+      "airProvider": "Nano Banana បន្ថែមសម្លេងដ៏រស់រវើក។",
+      "googleProvider": "ហ្គូហ្គោល​បាន​សម្រិត​សម្រាំង​សម្រាប់​ព័ត៌មាន​លម្អិត។",
+      "klingaiProvider": "KlingAI លៃតម្រូវសម្រាប់ការកែសម្រួលដែលបានគ្រប់គ្រង។",
+      "anthropicProvider": "Claude បំពង់សម្រាប់អារម្មណ៍មិនល្អ។",
+      "default": "ប៉ះដើម្បីរុករកម៉ាស៊ីនដែលមាន។"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "រចនាប័ទ្មដែលអ្នកបានជ្រើសរើស",
+    "sheetTitle": "បង្កើតចក្ខុវិស័យរបស់អ្នក។",
+    "sheetSubtitle": "ការ​ញ៉ាំ​កាហ្វេ​ម៉ាស៊ីន​បម្រើ​មួយ​រយៈ​ពេល​យើង​លាយ {{style}} ទៅ​ក្នុង​ប្រអប់​បញ្ចូល។",
+    "phases": {
+      "blend": "លាយបញ្ចូលគ្នា {{style}}",
+      "paint": "ការលាបពណ៌កន្លែងកើតហេតុ",
+      "finish": "ការបន្ថែមប៉ូឡូញចុងក្រោយ"
+    },
+    "actions": {
+      "cancel": "បោះបង់",
+      "retry": "ព្យាយាមម្តងទៀត",
+      "close": "បិទ"
+    },
+    "errors": {
+      "restrictedTitle": "មាតិកាដែលបានដាក់កម្រិត",
+      "genericTitle": "ជំនាន់បរាជ័យ",
+      "genericMessage": "មិនអាចបង្កើតរូបភាពបានទេ។"
+    },
+    "alerts": {
+      "saveFailedTitle": "មិនអាចរក្សាទុកបានទេ។",
+      "shareFailedTitle": "មិនអាចចែករំលែកបានទេ។",
+      "tryAgain": "សូមព្យាយាមម្តងទៀត។",
+      "savedTitle": "បានរក្សាទុក",
+      "savedMessage": "រូបភាពត្រូវបានរក្សាទុកក្នុងវិចិត្រសាលរបស់អ្នក។",
+      "permissionTitle": "ត្រូវការការអនុញ្ញាត",
+      "permissionMessage": "អនុញ្ញាតឱ្យចូលប្រើទំហំផ្ទុក ដើម្បីរក្សាទុករូបភាពទៅក្នុងវិចិត្រសាលរបស់អ្នក។"
+    },
+    "result": {
+      "complete": "ទាំងអស់បានបញ្ចប់"
+    },
+    "accessibility": {
+      "close": "បិទ"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "លុប",
+      "edit": "កែសម្រួល",
+      "save": "រក្សាទុក",
+      "share": "ចែករំលែក"
+    },
+    "alerts": {
+      "savedTitle": "បានរក្សាទុក",
+      "savedMessage": "រូបភាពត្រូវបានរក្សាទុកក្នុងវិចិត្រសាលរបស់អ្នក។",
+      "permissionTitle": "ត្រូវការការអនុញ្ញាត",
+      "permissionMessage": "អនុញ្ញាតឱ្យចូលប្រើទំហំផ្ទុក ដើម្បីរក្សាទុករូបភាពទៅក្នុងវិចិត្រសាលរបស់អ្នក។",
+      "saveFailedTitle": "មិនអាចរក្សាទុកបានទេ។",
+      "tryAgain": "សូមព្យាយាមម្តងទៀត។"
+    },
+    "accessibility": {
+      "close": "បិទ",
+      "delete": "លុបរូបភាព",
+      "edit": "កែរូបភាព",
+      "save": "រក្សាទុករូបភាព",
+      "share": "ចែករំលែករូបភាព"
+    }
+  },
+  "reportContent": {
+    "title": "រាយការណ៍មាតិកា AI",
+    "subtitle": "ប្រាប់យើងពីអ្វីដែលខុសជាមួយខ្លឹមសារដែលបានបង្កើតនេះ។",
+    "privateDisclosure": "ការបញ្ជូនបញ្ជូនមាតិកាដែលបានរាយការណ៍នេះសម្រាប់ការត្រួតពិនិត្យសុវត្ថិភាព។",
+    "accessibilityLabel": "រាយការណ៍មាតិកា AI",
+    "reasons": {
+      "sexual": "ខ្លឹមសារផ្លូវភេទ ឬអាក្រាតកាយ",
+      "violence_self_harm": "អំពើហឹង្សាឬការធ្វើបាបខ្លួនឯង",
+      "hate_harassment": "ការស្អប់ឬការបៀតបៀន",
+      "child_safety": "ការព្រួយបារម្ភអំពីសុវត្ថិភាពកុមារ",
+      "scam_deceptive": "ខ្លឹមសារបោកប្រាស់ ឬបោកប្រាស់",
+      "other": "ផ្សេងៗ"
+    },
+    "errors": {
+      "reasonRequired": "សូមជ្រើសរើសហេតុផលមួយមុនពេលដាក់ស្នើ។",
+      "submit": "មិនអាចដាក់របាយការណ៍បានទេ។ សូមព្យាយាមម្តងទៀត។"
+    },
+    "success": {
+      "title": "សូមអរគុណ។ របាយការណ៍របស់អ្នកត្រូវបានដាក់ជូន។",
+      "subtitle": "យើងនឹងប្រើប្រាស់របាយការណ៍ដើម្បីកែលម្អសុវត្ថិភាពខ្លឹមសារ។"
+    },
+    "actions": {
+      "report": "រាយការណ៍",
+      "submit": "បញ្ជូនរបាយការណ៍",
+      "done": "រួចរាល់"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "បើកម៉ឺនុយ",
+      "selectImages": "ជ្រើសរើសរូបភាព",
+      "exitSelection": "ចាកចេញពីការជ្រើសរើស",
+      "deleteSelected": "លុបរូបភាពដែលបានជ្រើសរើស",
+      "selectToDelete": "ជ្រើសរើសរូបភាពដែលត្រូវលុប"
+    },
+    "createCard": {
+      "title": "បង្កើតពីអត្ថបទ",
+      "subtitle": "វាយការពិពណ៌នា",
+      "cta": "ពិពណ៌នា & បង្កើត"
+    },
+    "editCard": {
+      "title": "កម្មវិធីកែរូបថត AI",
+      "subtitle": "ផ្លាស់ប្តូរ និងពង្រឹងជាមួយ AI",
+      "cta": "កែសម្រួលជាមួយ AI"
+    },
+    "gallery": {
+      "title": "វិចិត្រសាល",
+      "empty": "មិនមានរូបភាពនៅឡើយទេ",
+      "selection": {
+        "enter": "ជ្រើសរើសរូបភាព",
+        "exit": "ចាកចេញពីការជ្រើសរើស",
+        "deleteSelected": "លុបរូបភាពដែលបានជ្រើសរើស",
+        "selectForDelete": "ជ្រើសរើសរូបភាពដែលត្រូវលុប"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "ជួប",
+      "titleHighlight": "Image Studio",
+      "subtitle": "បង្កើត និងកែសម្រួលរូបភាពដោយប្រើ AI—ខាងស្ដាំនៅខាងក្នុង Cloud AI។"
+    },
+    "relaxView": {
+      "title": "ជួបជាមួយ AI របស់អ្នក។",
+      "titleHighlight": "ជំនួយការ",
+      "subtitle": "អ្នកជំនាញ AI ឯកទេសត្រៀមខ្លួនជាស្រេចដើម្បីជួយជាមួយនឹងតម្រូវការប្រចាំថ្ងៃរបស់អ្នក។",
+      "cards": {
+        "fitness": {
+          "title": "គ្រូបង្វឹកលំហាត់ប្រាណ",
+          "text": "ទម្លាប់តូចតាច និងការហាត់ប្រាណនៅផ្ទះ។"
+        },
+        "recipes": {
+          "title": "អាហារ និងរូបមន្ត",
+          "text": "អ្វីដែលត្រូវចំអិនជាមួយនឹងអ្វីដែលអ្នកមាន។"
+        },
+        "travel": {
+          "title": "មិត្តរួមដំណើរ",
+          "text": "ផែនការសាមញ្ញ & បញ្ជីវេចខ្ចប់។"
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ដំណោះស្រាយ AI កម្រិតសហគ្រាស",
+      "description": "ផ្តល់អំណាចដល់អាជីវកម្មរបស់អ្នកជាមួយនឹងបច្ចេកវិទ្យាបញ្ញាសិប្បនិមិត្តដ៏ទំនើប ដែលត្រូវបានរចនាឡើងសម្រាប់អ្នកជំនាញសហគ្រាស និងក្រុម។",
+      "stats": "ជឿទុកចិត្តដោយអ្នកប្រើប្រាស់ 500k+",
+      "rating": "៤.៩/៥",
+      "button": "ចាប់ផ្តើម"
+    },
+    "buttons": {
+      "continue": "បន្ត",
+      "start": "តោះចាប់ផ្តើម"
+    }
+  },
+  "coinStore": {
+    "title": "ទទួលបានឥណទាន",
+    "loading": "កំពុងផ្ទុកហាងកាក់...",
+    "balanceLabel": "សមតុល្យបច្ចុប្បន្នរបស់អ្នកគឺ",
+    "balanceValue": "{{amount}} ឥណទាន",
+    "history": {
+      "link": "ប្រវត្តិប្រតិបត្តិការ",
+      "alertTitle": "ប្រវត្តិសាស្ត្រ",
+      "alertBody": "ប្រវត្តិប្រតិបត្តិការនឹងមកដល់ឆាប់ៗនេះ។"
+    },
+    "noPacks": "មិនមានកញ្ចប់កាក់ទេ។ ពិនិត្យលេខសម្គាល់ការផ្តល់ RevenueCat របស់អ្នក។",
+    "badges": {
+      "basic": "កញ្ចប់មូលដ្ឋាន",
+      "popular": "ពេញនិយមបំផុត។",
+      "value": "តម្លៃល្អបំផុត"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} ឥណទាន",
+      "tokensLabel": "{{credits}} ឥណទាន",
+      "defaultName": "កញ្ចប់ {{index}}",
+      "unknownPrice": "ដុល្លារ —"
+    },
+    "premium": {
+      "title": "ទៅ Premium",
+      "subtitle": "ការចូលប្រើគ្មានដែនកំណត់ និងមុខងារ",
+      "cta": "ធ្វើឱ្យប្រសើរឡើង"
+    },
+    "termsText": "តាមរយៈការទិញ អ្នកយល់ព្រមតាមរបស់យើង។",
+    "termsLink": "លក្ខខណ្ឌនៃសេវាកម្ម",
+    "alerts": {
+      "initErrorTitle": "កំហុសឆ្គង",
+      "genericMessage": "មានអ្វីមួយខុសប្រក្រតី។",
+      "successTitle": "ជោគជ័យ",
+      "successMessage": "ឥណទាននឹងបង្ហាញក្នុងពេលឆាប់ៗនេះ។",
+      "purchaseFailedTitle": "ការទិញបានបរាជ័យ",
+      "unknownError": "កំហុសមិនស្គាល់"
+    }
+  },
+  "premium": {
+    "badge": "ប្រូ",
+    "requiredTitle": "ទាមទារបុព្វលាភ",
+    "upgrade": "ធ្វើឱ្យប្រសើរឡើង",
+    "modelRequiredMessage": "ម៉ូដែលនេះទាមទារ Premium។ ដំឡើងកំណែដើម្បីចូលប្រើ GPT-5, Grok 4, Claude និងម៉ូដែលទំនើបជាច្រើនទៀត។",
+    "assistantsRequiredMessage": "ជំនួយការត្រូវការ Premium។ ដំឡើងកំណែដើម្បីចូលប្រើជំនួយការ AI ឯកទេសសម្រាប់សម្បទា ការសរសេរកូដ ការសរសេរ និងច្រើនទៀត។",
+    "assistantsTitle": "ទាមទារបុព្វលាភ",
+    "assistantsMessage": "ជំនួយការត្រូវការ Premium។ ដំឡើងកំណែដើម្បីចូលប្រើជំនួយការ AI ឯកទេសសម្រាប់សម្បទា ការសរសេរកូដ ការសរសេរ និងច្រើនទៀត។"
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "បិទ paywall",
+    "unavailableTitle": "ការ​ទិញ​មិន​អាច​ប្រើ​បាន​",
+    "unavailableMessage": "ការចេញវិក្កយបត្រ Android មិនត្រូវបានកំណត់រចនាសម្ព័ន្ធនៅឡើយទេ។",
+    "restoreEmptyTitle": "រកមិនឃើញការទិញទេ។",
+    "restoreEmptyMessage": "យើងមិនអាចស្វែងរកការទិញសកម្មដើម្បីស្ដារគណនីនេះបានទេ។",
+    "restoreFailedTitle": "ការស្តារឡើងវិញបានបរាជ័យ",
+    "restoreFailedMessage": "មិន​អាច​ស្ដារ​ការ​ទិញ​ឥឡូវ​នេះ​ទេ។",
+    "productsUnavailableTitle": "មិនមានគម្រោងទេ។",
+    "productsUnavailableMessage": "មិនមានផលិតផលជាវ Android ទេឥឡូវនេះ។",
+    "purchaseFailedTitle": "ការទិញបានបរាជ័យ",
+    "purchaseFailedMessage": "មិន​អាច​បញ្ចប់​ការ​ទិញ​នេះ​ឥឡូវ​នេះ​ទេ។",
+    "restore": "ស្តារ",
+    "restoreRestoring": "កំពុងស្ដារ...",
+    "features": {
+      "create": "បង្កើតរូបភាព និងវីដេអូ",
+      "search": "ស្វែងរកគេហទំព័រដោយប្រើ AI",
+      "talk": "និយាយធម្មជាតិជាមួយ AI",
+      "imageStudio": "ទទួលបានក្រេឌីត Image Studio {{credits}} {{period}}",
+      "period": {
+        "weekly": "ប្រចាំសប្តាហ៍",
+        "monthly": "ប្រចាំខែ",
+        "yearly": "ប្រចាំឆ្នាំ"
+      }
+    },
+    "freeTrial": {
+      "title": "ការសាកល្បងឥតគិតថ្លៃ",
+      "subtitle": "ការសាកល្បងឥតគិតថ្លៃរយៈពេល 3 ថ្ងៃ។"
+    },
+    "badge": {
+      "bestOffer": "ការផ្តល់ជូនល្អបំផុត"
+    },
+    "plans": {
+      "yearly": {
+        "title": "ប្រចាំឆ្នាំ",
+        "only": "ត្រឹមតែ {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
+      },
+      "monthly": {
+        "title": "ប្រចាំខែ",
+        "subtitle": "បោះបង់នៅពេលណាក៏បាន",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "ប្រចាំសប្តាហ៍",
+        "subtitle": "បោះបង់នៅពេលណាក៏បាន",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "ឥតគិតថ្លៃ 3 ថ្ងៃបន្ទាប់មក"
+      }
+    },
+    "frequency": {
+      "perWeek": "ក្នុងមួយសប្តាហ៍",
+      "perMonth": "ក្នុងមួយខែ"
+    },
+    "cta": "បន្ត",
+    "ctaFreeTrial": "សាកល្បងវាដោយឥតគិតថ្លៃ",
+    "legal": {
+      "terms": "លក្ខខណ្ឌ",
+      "privacy": "ឯកជនភាព"
+    },
+    "premium": {
+      "headline": "AI ពិសេសទាំងអស់ក្នុងគម្រោងតែមួយ",
+      "subtitleLine1": "ជជែក សរសេរកូដ បង្កើត និងរៀបចំផែនការ",
+      "subtitleLine2": "ជាមួយនឹងម៉ូដែលកម្រិតខ្ពស់។",
+      "enableTrial": "បើកការសាកល្បងឥតគិតថ្លៃ",
+      "annual": "ប្រចាំឆ្នាំ",
+      "saveBadge": "សន្សំ ៨៣%",
+      "year": "ឆ្នាំ",
+      "week": "សប្តាហ៍",
+      "termsOfUse": "លក្ខខណ្ឌប្រើប្រាស់",
+      "privacyPolicy": "គោលការណ៍ឯកជនភាព"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "សារ...",
+    "createImages": "បង្កើតរូបភាព",
+    "generateAiArtwork": "បង្កើតស្នាដៃសិល្បៈ AI",
+    "camera": "បង្ហោះរូបថត",
+    "takeOrSelectPhotos": "ជ្រើសរើសរូបថត",
+    "search": "ស្វែងរក",
+    "findInformation": "ស្វែងរកព័ត៌មាន",
+    "findRecentInfo": "ស្វែងរកព័ត៌មានថ្មីៗ",
+    "removeImage": "លុបរូបភាព",
+    "messageInput": "ការបញ្ចូលសារ",
+    "clearInput": "ជម្រះការបញ្ចូល",
+    "quickActionsLabel": "សកម្មភាពរហ័ស",
+    "hideQuickActions": "លាក់សកម្មភាពរហ័ស",
+    "showQuickActions": "បង្ហាញសកម្មភាពរហ័ស",
+    "startVoiceInput": "ចាប់ផ្តើមការបញ្ចូលសំឡេង",
+    "sendMessage": "ផ្ញើសារ",
+    "offline": "ក្រៅបណ្តាញ",
+    "stop": "ឈប់",
+    "streaming": "ការផ្សាយ…",
+    "closeRecorder": "បិទឧបករណ៍ថតសំឡេង",
+    "insertTranscript": "ផ្ញើ",
+    "scrollToLatest": "រំកិលទៅសារចុងក្រោយ",
+    "copyMessage": "ចម្លងសារ",
+    "copyMessageHint": "ចម្លងសារនេះទៅក្ដារតម្បៀតខ្ទាស់",
+    "shareMessage": "ចែករំលែកសារ",
+    "shareMessageHint": "ចែករំលែកសារនេះ។",
+    "regenerateResponse": "បង្កើតការឆ្លើយតបឡើងវិញ",
+    "regenerateResponseHint": "បង្កើតការឆ្លើយតបថ្មី។",
+    "copyCode": "ចម្លងកូដ",
+    "copied": "ចម្លង",
+    "image": "រូបភាព",
+    "loading": "កំពុង​ផ្ទុក...",
+    "loadingChat": "កំពុងផ្ទុកការជជែក...",
+    "offlineBanner": "អ្នកគ្មានអ៊ីនធឺណិតទេ។ សារមិនអាចផ្ញើបានទេ។",
+    "offlineError": "គ្មានការតភ្ជាប់អ៊ីនធឺណិត។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្តងទៀត។",
+    "imagePickerErrorTitle": "កំហុសក្នុងការជ្រើសរើសរូបភាព",
+    "imagePickerErrorMessage": "មិនអាចចូលប្រើរូបថតរបស់អ្នកបានទេ។ សូមព្យាយាមម្តងទៀត។",
+    "messageTooLong": "សារវែងពេក ({{length}})។ ដែនកំណត់គឺ {{limit}}។",
+    "sendFailed": "បរាជ័យក្នុងការផ្ញើសារ។ សូមព្យាយាមម្តងទៀត។",
+    "modelNoImageSupport": "ម៉ូដែលដែលបានជ្រើសរើសមិនគាំទ្ររូបភាពទេ។ សូមជ្រើសរើសម៉ូដែលផ្សេង។",
+    "voiceStartFailed": "មិនអាចចាប់ផ្តើមសំឡេងបានទេ។",
+    "voiceNoSpeechDetected": "គ្មានសំឡេងត្រូវបានទទួលស្គាល់ទេ។ សូមព្យាយាមម្តងទៀត។",
+    "emptyTitle": "តើខ្ញុំអាចជួយបានដោយរបៀបណា?",
+    "emptySubtitle": "ចាប់ផ្តើមការសន្ទនាជាមួយ AI",
+    "privateTitle": "ការជជែកឯកជន",
+    "privateSubtitle": "ការជជែកនេះនឹងមិនបង្ហាញក្នុងប្រវត្តិជជែករបស់អ្នកទេ។",
+    "startPrivateChat": "ចាប់ផ្តើមការជជែកឯកជន",
+    "endPrivateChat": "បញ្ចប់ការជជែកឯកជន",
+    "permissions": {
+      "photosTitle": "ត្រូវការការអនុញ្ញាតរូបថត",
+      "photosMessage": "ការចូលប្រើរូបថតគឺចាំបាច់ដើម្បីជ្រើសរើសរូបភាព។",
+      "voiceTitle": "ត្រូវការការអនុញ្ញាតជាសំឡេង",
+      "voiceMessage": "ការចូលប្រើមីក្រូហ្វូន និងការនិយាយគឺតម្រូវឱ្យប្រើសំឡេង។"
+    },
+    "activity": {
+      "analyzingImages": "កំពុង​វិភាគ​រូបភាព...",
+      "searching": "កំពុងស្វែងរក...",
+      "thinking": "កំពុងគិត…"
+    },
+    "webSearch": {
+      "title": "ការស្វែងរកតាមអ៊ីនធឺណិត",
+      "subtitle": "ស្វែងរកព័ត៌មានថ្មីៗ",
+      "label": "គេហទំព័រស្វែងរក",
+      "enable": "បើកការស្វែងរកតាមអ៊ីនធឺណិត",
+      "disable": "បិទការស្វែងរកតាមអ៊ីនធឺណិត",
+      "toggleLabel": "ស្វែងរកគេហទំព័រ"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "ការរចនារូបភាពក្នុងល្បឿន។",
+      "subtitle": "បង្កើត កែលម្អ និងបោះពុម្ពផ្សាយទ្រព្យសម្បត្តិដែលមើលឃើញនៅកន្លែងតែមួយ។",
+      "cta": "បើក"
+    },
+    "quickActions": {
+      "createImages": "បង្កើតរូបភាព",
+      "openCamera": "បើកកាមេរ៉ា",
+      "editImage": "កែសម្រួលរូបភាព",
+      "startVoice": "ចាប់ផ្តើមសំឡេង",
+      "assistants": "ជំនួយការ"
+    },
+    "listening": "កំពុងស្តាប់…",
+    "startRecording": "ចាប់ផ្តើមថត…",
+    "assistantHeader": {
+      "unavailableTitle": "ជំនួយការមិនមានទេ។",
+      "unavailableDescription": "យើងមិនអាចផ្ទុកជំនួយការនេះបានទេ។ សូមព្យាយាមម្តងទៀត។",
+      "ready": "ត្រៀមខ្លួនជាស្រេចដើម្បីជួយ"
+    },
+    "actions": {
+      "copy": "ចម្លង",
+      "share": "ចែករំលែក",
+      "regenerate": "បង្កើតឡើងវិញ",
+      "retryFromHere": "ព្យាយាមម្តងទៀតពីទីនេះ",
+      "report": "រាយការណ៍",
+      "cancel": "បោះបង់"
+    },
+    "markdown": {
+      "copy": "ចម្លង",
+      "copied": "ចម្លង",
+      "table": "តារាង",
+      "watchVideo": "មើលវីដេអូ",
+      "wikipedia": "វិគីភីឌា",
+      "link": "តំណភ្ជាប់",
+      "note": "ចំណាំ",
+      "warning": "ការព្រមាន",
+      "tip": "ព័ត៌មានជំនួយ"
+    },
+    "messageActionTitle": "សារ",
+    "status": {
+      "sending": "កំពុងផ្ញើ...",
+      "failed": "បរាជ័យ",
+      "sent": "បានផ្ញើ"
+    },
+    "suggestions": {
+      "writeStory": "សរសេររឿងច្នៃប្រឌិត",
+      "writeStorySubtitle": "អំពីការផ្សងព្រេងវេទមន្ត",
+      "planTravel": "រៀបចំផែនការធ្វើដំណើរ",
+      "planTravelSubtitle": "សម្រាប់វិស្សមកាលដ៏អស្ចារ្យ",
+      "explainConcept": "ពន្យល់ពីគំនិតនេះ។",
+      "explainConceptSubtitle": "នៅក្នុងពាក្យសាមញ្ញ",
+      "planDay": "រៀបចំផែនការថ្ងៃរបស់ខ្ញុំ",
+      "planDaySubtitle": "ជាមួយនឹងការណែនាំអំពីផលិតភាព"
+    },
+    "home": {
+      "eyebrow": "ជ្រើសរើសប្រធានបទ",
+      "title": "តើអ្នកចង់ធ្វើអ្វី?",
+      "subtitle": "ជ្រើសរើសទិសដៅមួយ បន្ទាប់មកចាប់ផ្តើមដោយការជម្រុញខ្លាំង។",
+      "pickPromptTitle": "ជ្រើសរើសការជម្រុញដើម្បីចាប់ផ្តើម",
+      "changeTopic": "ជ្រើសរើសប្រធានបទផ្សេងទៀត។",
+      "intents": {
+        "summarize": "សង្ខេបអត្ថបទ",
+        "summarizeShort": "សង្ខេប",
+        "summarizeHint": "អត្ថបទ កំណត់ចំណាំ អនុសរណៈសំឡេង ខ្សែវែង",
+        "plan": "ធ្វើផែនការ",
+        "planHint": "ដំណើរកំសាន្ត ទម្លាប់ ថវិកា ពេលវេលាកំណត់ ការផ្លាស់ប្តូរជីវិត",
+        "brainstorm": "បំផុសគំនិត",
+        "brainstormHint": "គំនិត ការផ្តល់ជូន ឈ្មោះ ខ្លឹមសារ គម្រោងចំហៀង",
+        "analyze": "វិភាគទិន្នន័យ",
+        "analyzeHint": "ការចំណាយ មតិកែលម្អ មាត្រដ្ឋាន ទម្លាប់ ការអនុវត្ត"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "បង្កើតសង្ខេបអំពីស្ថាបនិក",
+          "founderBriefSubtitle": "ទាញចេញនូវហានិភ័យសំខាន់ៗ ការសម្រេចចិត្ត និងជំហានបន្ទាប់។",
+          "classNotesTitle": "សម្អាតកំណត់ត្រាសិក្សារបស់ខ្ញុំ",
+          "classNotesSubtitle": "បង្វែរកំណត់ចំណាំរដុបទៅជាសៀវភៅណែនាំការសិក្សាច្បាស់លាស់។",
+          "meetingHandoffTitle": "សរសេរសេចក្តីសង្ខេបនៃដៃ",
+          "meetingHandoffSubtitle": "មានប្រយោជន៍បន្ទាប់ពីការប្រជុំ ការហៅទូរសព្ទ ឬខ្សែស្រឡាយខាងក្នុងដ៏វែង។",
+          "longArticleTitle": "សង្ខេបអត្ថបទនេះឱ្យបានរហ័ស",
+          "longArticleSubtitle": "បង្រួម​អត្ថបទ​វែង​មួយ​ទៅ​ក្នុង​ការ​យក​ចេញ​យ៉ាង​ច្បាស់។"
+        },
+        "plan": {
+          "energyResetTitle": "បង្កើតការកំណត់ថាមពលឡើងវិញរយៈពេល 14 ថ្ងៃ។",
+          "energyResetSubtitle": "ផែនការជាក់ស្តែងសម្រាប់ការគេង អាហារ ចលនា និងការផ្តោតអារម្មណ៍។",
+          "mealPlanTitle": "រៀបចំផែនការអាហារដែលខ្ញុំនឹងចំអិន",
+          "mealPlanSubtitle": "ជាក់ស្តែង តម្លៃសមរម្យ និងផ្អែកលើអ្វីដែលខ្ញុំមាន។",
+          "cityMoveTitle": "រៀបចំផែនការផ្លាស់ទីរបស់ខ្ញុំទៅទីក្រុងថ្មី។",
+          "cityMoveSubtitle": "បំបែកវាទៅជាការកំណត់ពេលវេលា ថវិកា លំនៅឋាន និងភារកិច្ចគ្រប់គ្រង។",
+          "tripEscapeTitle": "រៀបចំផែនការរត់គេចចុងសប្តាហ៍ដ៏គួរឱ្យចងចាំ",
+          "tripEscapeSubtitle": "អ្វី​ដែល​ល្អ​ជាង​ការ​ធ្វើ​ដំណើរ​ទូទៅ។"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "ស្វែងរកការប្រញាប់ប្រញាល់ផ្នែកខាងប្រាកដនិយម",
+          "sideHustleSubtitle": "គំនិតដែលខ្ញុំអាចចាប់ផ្តើមនៅពេលធ្វើការពេញម៉ោង។",
+          "brandAngleTitle": "ស្វែងរកមុំម៉ាកដែលអាចបំភ្លេចបាន។",
+          "brandAngleSubtitle": "មានប្រយោជន៍សម្រាប់ផលិតផល អ្នកបង្កើត ភ្នាក់ងារ ឬព្រឹត្តិបត្រ។",
+          "socialSeriesTitle": "បង្កើតស៊េរីមាតិកា",
+          "socialSeriesSubtitle": "អ្វីមួយដែលស្របគ្នាគ្រប់គ្រាន់ដើម្បីបង្កើនទស្សនិកជន។",
+          "datingIdeasTitle": "មកជាមួយគំនិតថ្មីៗ",
+          "datingIdeasSubtitle": "កាលបរិច្ឆេទ អំណោយ ការភ្ញាក់ផ្អើល ឬព្រឹត្តិការណ៍ដែលមានអារម្មណ៍គិតគូរ។"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "រកកន្លែងដែលលុយរបស់ខ្ញុំកំពុងលេចធ្លាយ",
+          "spendingLeaksSubtitle": "បង្ហាញគំរូ ចំណុចខ្សោយ ហើយងាយស្រួលបំផុត ឈ្នះមុន។",
+          "customerFeedbackTitle": "បង្វែរមតិកែលម្អទៅជាអាទិភាព",
+          "customerFeedbackSubtitle": "សំណើជាក្រុម ការតវ៉ា ភាពបន្ទាន់ និងផលប៉ះពាល់។",
+          "habitPatternsTitle": "ចំណុចគំរូនៅក្នុងទម្លាប់របស់ខ្ញុំ",
+          "habitPatternsSubtitle": "មាន​ប្រយោជន៍​សម្រាប់​ការ​ហាត់​ប្រាណ គេង ធ្វើ​កំណត់ហេតុ ឬ​កំណត់​ហេតុ​ផ្ដោត។",
+          "metricsStoryTitle": "ពន្យល់ពីអត្ថន័យនៃលេខ",
+          "metricsStorySubtitle": "សញ្ញាកាន់តែច្រើន សំឡេងរំខានតិចជាងមុន។"
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "កំពុងដំណើរការ...",
+    "tapToUploadImage": "ប៉ះដើម្បីបង្ហោះរូបភាព"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "កំពុងដំណើរការ...",
+    "camera": "បង្ហោះរូបថត",
+    "library": "បណ្ណាល័យ"
+  },
+  "common": {
+    "ok": "យល់ព្រម",
+    "retry": "ព្យាយាមម្តងទៀត",
+    "cancel": "បោះបង់",
+    "allow": "អនុញ្ញាត",
+    "notNow": "មិនមែនឥឡូវនេះទេ។",
+    "openSettings": "បើកការកំណត់",
+    "close": "បិទ",
+    "save": "រក្សាទុក",
+    "tryAgain": "ព្យាយាមម្តងទៀត"
+  },
+  "rateUs": {
+    "title": "រីករាយជាមួយ Cloud AI?",
+    "subtitle": "មតិកែលម្អរបស់អ្នកជួយយើងឱ្យប្រសើរឡើង។ តើអ្នកចង់វាយតម្លៃពួកយើងនៅលើ App Store ទេ?",
+    "rateNow": "វាយតម្លៃឥឡូវនេះ",
+    "maybeLater": "ប្រហែលជាពេលក្រោយ",
+    "dontAskAgain": "កុំសួរម្តងទៀត"
+  },
+  "oneTimeOffer": {
+    "title": "ការផ្តល់ជូនតែម្តង",
+    "discount": "{{percent}}% បិទ",
+    "subtitle": "អ្នកនឹងមិនឃើញការផ្តល់ជូននេះទៀតទេ។",
+    "badgeLine1": "ផ្តាច់មុខ",
+    "badgeLine2": "ការផ្តល់ជូនតែម្តង",
+    "upgradeNow": "ដំឡើងកំណែឥឡូវនេះសម្រាប់ {{price}}",
+    "loadingPrice": "កំពុង​ផ្ទុក...",
+    "termsOfUse": "ល័ក្ខខ័ណ្ឌនៃការប្រើប្រាស់",
+    "privacyPolicy": "គោលការណ៍ឯកជនភាព",
+    "accessTitle": "ការចូលប្រើគ្មានដែនកំណត់",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "ការចូលប្រើគ្មានដែនកំណត់ទៅកាន់ GPT-4",
+      "geminiPro": "ចូលប្រើ Gemini Pro",
+      "grokInsights": "ប្រើប្រាស់ Grok សម្រាប់ការយល់ដឹងថ្មីៗ",
+      "priorityAccess": "ការចូលប្រើជាអាទិភាព & ការឆ្លើយតបលឿនជាងមុន"
+    },
+    "bestValue": "តម្លៃល្អបំផុត",
+    "annualPremium": "បុព្វលាភប្រចាំឆ្នាំ",
+    "oneTimePayment": "ការទូទាត់តែម្តង",
+    "wasPrice": "គឺ",
+    "continue": "បន្ត",
+    "restore": "ស្តារ",
+    "terms": "លក្ខខណ្ឌ",
+    "privacy": "ឯកជនភាព",
+    "successTitle": "ជោគជ័យ!",
+    "successMessage": "សូមអរគុណសម្រាប់ការទិញរបស់អ្នក! សូមរីករាយជាមួយការចូលប្រើប្រាស់បុព្វលាភសម្រាប់រយៈពេល 12 ខែបន្ទាប់។",
+    "errorTitle": "ការទិញបានបរាជ័យ",
+    "errorMessage": "មានអ្វីមួយខុសប្រក្រតី។ សូមព្យាយាមម្តងទៀត។",
+    "restoreSuccessTitle": "បានស្ដារឡើងវិញ",
+    "restoreSuccessMessage": "ការទិញរបស់អ្នកត្រូវបានស្ដារឡើងវិញ។",
+    "restoreErrorTitle": "ការស្តារឡើងវិញបានបរាជ័យ",
+    "restoreErrorMessage": "រកមិនឃើញការទិញដើម្បីស្ដារទេ។",
+    "unavailableTitle": "ការ​ទិញ​មិន​អាច​ប្រើ​បាន​",
+    "unavailableMessage": "ការចេញវិក្កយបត្រ Android មិនត្រូវបានកំណត់រចនាសម្ព័ន្ធនៅឡើយទេ។"
+  },
+  "rewards": {
+    "header": {
+      "title": "រង្វាន់",
+      "openMenu": "បើកម៉ឺនុយ",
+      "goBack": "ត្រឡប់ទៅវិញ។"
+    },
+    "pointsHero": {
+      "totalBalance": "សមតុល្យសរុប",
+      "seeYourRewards": "មើលរង្វាន់របស់អ្នក។"
+    },
+    "streakTracker": {
+      "title": "ការផ្សាយប្រចាំថ្ងៃ",
+      "subtitle": "រក្សា​វា​ឡើង​! អ្នកកំពុងឆេះ។",
+      "days": "ថ្ងៃ",
+      "prize": "រង្វាន់",
+      "dayLabel": "ថ្ងៃ {{number}}",
+      "nextReward": "រង្វាន់បន្ទាប់៖ {{amount}} ក្នុង {{time}}",
+      "coins": "កាក់"
+    },
+    "sections": {
+      "availableQuests": "ដំណើរស្វែងរកដែលមាន",
+      "completedQuests": "ដំណើរស្វែងរកដែលបានបញ្ចប់",
+      "availableRewards": "រង្វាន់ដែលមាន",
+      "needsMoreCoins": "ត្រូវការកាក់បន្ថែម"
+    },
+    "balances": {
+      "rewardCoins": "កាក់រង្វាន់",
+      "imageCredits": "ឥណទានរូបភាព"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 ឥណទានរូបភាព",
+        "imageCredits200": "200 ឥណទានរូបភាព",
+        "imageCredits600": "600 ឥណទានរូបភាព",
+        "weeklyPremium": "បុព្វលាភប្រចាំសប្តាហ៍",
+        "secretBox": "ប្រអប់សម្ងាត់"
+      },
+      "rewardDescriptions": {
+        "secretBox": "រង្វាន់អាថ៌កំបាំងនៅខាងក្នុង"
+      },
+      "alerts": {
+        "comingSoonTitle": "មកដល់ឆាប់ៗនេះ",
+        "comingSoonMessage": "រង្វាន់នេះមិនទាន់មាននៅឡើយទេ។",
+        "notEnoughCoinsTitle": "កាក់មិនគ្រប់គ្រាន់ទេ។",
+        "notEnoughCoinsMessage": "អ្នកត្រូវការកាក់រង្វាន់បន្ថែមទៀតដើម្បីដោះសោរង្វាន់នេះ។",
+        "errorTitle": "កំហុស",
+        "couldNotOpenBox": "មិនអាចបើកប្រអប់បានទេ។",
+        "couldNotRedeem": "មិនអាចប្តូរយករង្វាន់បានទេ។ សូមព្យាយាមម្តងទៀត។",
+        "mysteryReward": "រង្វាន់អាថ៌កំបាំង"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "ការចូលប្រចាំថ្ងៃ",
+        "description": "បើក​កម្មវិធី​ថ្ងៃ​នេះ​ដើម្បី​រក្សា​ការ​តាមដាន​របស់​អ្នក។",
+        "message": "ដំណើរស្វែងរកនេះត្រូវបានបញ្ចប់ដោយស្វ័យប្រវត្តិនៅពេលអ្នកបើកកម្មវិធីជារៀងរាល់ថ្ងៃ។"
+      },
+      "shareFacebook": {
+        "title": "ចែករំលែកនៅលើ Facebook",
+        "description": "ប្រកាសអំពីពួកយើងនៅលើ Facebook"
+      },
+      "shareTwitter": {
+        "title": "ចែករំលែកនៅលើ Twitter",
+        "description": "Tweet បទពិសោធន៍របស់អ្នក។"
+      },
+      "shareInstagram": {
+        "title": "ចែករំលែកនៅលើ Instagram",
+        "description": "ចែករំលែករឿង ឬប្រកាស"
+      },
+      "shareExperience": {
+        "title": "ចែករំលែកបទពិសោធន៍របស់អ្នក។",
+        "description": "ប្រាប់មិត្តភក្តិថាហេតុអ្វីបានជាអ្នកចូលចិត្តកម្មវិធី"
+      },
+      "share": {
+        "genericMessage": "ខ្ញុំកំពុងប្រើកម្មវិធី AI នេះសម្រាប់ការជជែក និងបង្កើតរូបភាព។ ពិនិត្យមើលវា៖ {{url}}",
+        "facebookQuote": "សូមពិនិត្យមើលកម្មវិធី AI នេះ!",
+        "twitterText": "ខ្ញុំកំពុងសាកល្បងកម្មវិធី AI នេះវាឡូយណាស់។",
+        "instagramMessage": "ពិនិត្យមើលកម្មវិធី AI នេះ៖ {{url}}"
+      },
+      "store": {
+        "errorTitle": "កំហុស",
+        "errorMessage": "មិនអាចបើកទំព័រហាងបានទេ។"
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "ដំណើរស្វែងរកបានបញ្ចប់",
+        "description": "ដំណើរស្វែងរកបានបញ្ចប់",
+        "points": "+{{points}}ពិន្ទុ",
+        "close": "បិទ"
+      },
+      "rewardSuccess": {
+        "error": "កំហុស",
+        "success": "ជោគជ័យ",
+        "somethingWentWrong": "មានអ្វីមួយខុសប្រក្រតី",
+        "rewardUnlocked": "រង្វាន់ត្រូវបានដោះសោ",
+        "credits": "ឥណទាន",
+        "close": "បិទ",
+        "okay": "មិនអីទេ។"
+      },
+      "secretBox": {
+        "pill": "ប្រអប់សម្ងាត់",
+        "rewardUnlocked": "រង្វាន់ត្រូវបានដោះសោ",
+        "shufflingRewards": "ការចាប់រង្វាន់...",
+        "imageCreditsAdded": "ក្រេឌីតរូបភាពត្រូវបានបញ្ចូលទៅក្នុងគណនីរបស់អ្នក។",
+        "continue": "បន្ត",
+        "revealing": "បង្ហាញ...",
+        "prizeTiers": {
+          "lucky": "សំណាង",
+          "pro": "ប្រូ",
+          "elite": "អេលីត",
+          "mythic": "ទេវកថា"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "ទទួលកាក់ប្រចាំថ្ងៃរបស់អ្នក",
+      "subtitle": "ត្រឡប់មកវិញរាល់ថ្ងៃ — រង្វាន់កាន់តែច្រើន។",
+      "cta": "ចុះឈ្មោះ",
+      "claimed": "ទទួលបាន! +{{amount}} កាក់",
+      "later": "ពេលក្រោយ"
+    }
+  },
+  "app": {
+    "version": "កំណែ {{version}}",
+    "offlineBanner": "អ្នកគ្មានអ៊ីនធឺណិតទេ។",
+    "launch": {
+      "accessibilityLabel": "ចាប់ផ្តើម Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, ត្រៀមខ្លួនជាស្រេចនៅពេលដែលអ្នកមាន"
+    },
+    "errors": {
+      "modelsLoadTitle": "បានបរាជ័យក្នុងការផ្ទុកម៉ូដែល",
+      "modelsLoadMessage": "មិនអាចផ្ទុកម៉ូដែល AI បានទេ។ កម្មវិធីនឹងប្រើគំរូលំនាំដើម។ សូមពិនិត្យមើលការតភ្ជាប់អ៊ីនធឺណិតរបស់អ្នក។",
+      "modelsLoadTimeout": "ការផ្ទុកម៉ូដែលចំណាយពេលយូរពេក។ កម្មវិធីនឹងប្រើគំរូលំនាំដើម។ សូមព្យាយាមម្តងទៀត។",
+      "modelsLoadNetwork": "គ្មានការតភ្ជាប់អ៊ីនធឺណិត។ កម្មវិធីនឹងប្រើគំរូលំនាំដើម។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក។",
+      "deviceIdTitle": "កំហុសការចាប់ផ្តើម",
+      "deviceIdMessage": "បរាជ័យក្នុងការចាប់ផ្តើមលេខសម្គាល់ឧបករណ៍។ មុខងារមួយចំនួនប្រហែលជាមិនដំណើរការត្រឹមត្រូវ។",
+      "storageTitle": "កំហុសក្នុងការផ្ទុក",
+      "storageMessage": "មិន​អាច​ចូល​ប្រើ​កន្លែង​ផ្ទុក​ក្នុង​មូលដ្ឋាន​បាន​ទេ។ មុខងារមួយចំនួនប្រហែលជាមិនដំណើរការត្រឹមត្រូវ។",
+      "crashTitle": "មានអ្វីមួយខុសប្រក្រតី។",
+      "crashSubtitle": "សូមព្យាយាមម្តងទៀត។",
+      "crashLabel": "កម្មវិធីបានគាំង"
+    },
+    "proxyErrors": {
+      "genericTitle": "មានអ្វីមួយខុសប្រក្រតី",
+      "genericMessage": "សូមព្យាយាមម្តងទៀត។",
+      "rateLimitTitle": "សំណើច្រើនពេក",
+      "rateLimitMessage": "យើងកំពុងដោះស្រាយសំណើជាច្រើន។ សូមព្យាយាមម្តងទៀតក្នុងពេលបន្តិចទៀត។",
+      "rateLimitRetryAfter": "យើងកំពុងដោះស្រាយសំណើជាច្រើន។ សូមព្យាយាមម្តងទៀតក្នុងរយៈពេលប្រហែល {{seconds}} វិនាទី។",
+      "restrictedTitle": "មាតិកាដែលបានដាក់កម្រិត",
+      "restrictedMessage": "សំណើនេះត្រូវបានរារាំងដោយតម្រងសុវត្ថិភាព។",
+      "insufficientCoinsTitle": "កាក់មិនគ្រប់គ្រាន់ទេ។",
+      "insufficientCoinsMessage": "សមតុល្យបច្ចុប្បន្នរបស់អ្នកទាបពេកសម្រាប់សំណើនេះ។",
+      "imageUnavailableTitle": "រូបភាពមិនអាចប្រើបានទេ។",
+      "imageUnavailableMessage": "ឯកសាររូបភាពដែលបានបង្កើតគឺមិនមានជាបណ្តោះអាសន្នទេ។ សូមព្យាយាមម្តងទៀត។",
+      "authorizationTitle": "បញ្ហាការអនុញ្ញាត",
+      "authorizationMessage": "យើងមិនអាចផ្ទៀងផ្ទាត់គណនីរបស់អ្នកបានទេ។ សូមព្យាយាមម្តងទៀត។",
+      "serverTitle": "ម៉ាស៊ីនមេរំខាន",
+      "serverMessage": "ម៉ាស៊ីនមេរបស់យើងមានបញ្ហា។ សូមព្យាយាមម្តងទៀតក្នុងពេលឆាប់ៗនេះ។",
+      "timeoutTitle": "ចំណាយពេលយូរពេក",
+      "timeoutMessage": "សំណើអស់ពេលហើយ។ សូមព្យាយាមម្តងទៀត។",
+      "networkTitle": "គ្មានការតភ្ជាប់",
+      "networkMessage": "គ្មានការតភ្ជាប់អ៊ីនធឺណិត។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្តងទៀត។",
+      "requestTitle": "ស្នើសុំបញ្ហា",
+      "requestMessage": "មានអ្វីមួយខុសជាមួយសំណើរបស់អ្នក។ សូមព្យាយាមម្តងទៀត។"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "បើកដំណើរការ Premium",
+    "activateMessage": "តើ​អ្នក​ចង់​បើក​ដំណើរការ​បុព្វលាភ​អ្នក​ពិនិត្យ​មើល​ដែរ​ឬ​ទេ?",
+    "activateAction": "ធ្វើឱ្យសកម្ម",
+    "deactivateTitle": "បិទដំណើរការ Premium",
+    "deactivateMessage": "តើអ្នកចង់បិទដំណើរការបុព្វលាភអ្នកត្រួតពិនិត្យដែរឬទេ?",
+    "deactivateAction": "អសកម្ម"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "រង្វាន់ប្រចាំថ្ងៃ",
+      "body": "កុំខកខានកាក់ប្រចាំថ្ងៃរបស់អ្នក — ទាមទារមុនពាក់កណ្តាលអធ្រាត្រ។"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "កុំខកខានកាក់ប្រចាំថ្ងៃរបស់អ្នក",
+      "body": "យើងផ្ញើការរំលឹកមួយដងក្នុងមួយថ្ងៃ ដើម្បីឱ្យស៊េរីរបស់អ្នកបន្ត និងកាក់កើនឡើង។ គ្មានសារឥតបានការទេ ហើយអ្នកអាចបិទវានៅពេលណាក៏បាន។",
+      "enable": "បើកការរំលឹក",
+      "skip": "មិនទាន់ទេ"
+    }
+  }
+}

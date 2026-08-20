@@ -1,7 +1,9 @@
 import React, { memo, useState, useRef } from 'react';
 import { Image, Dimensions } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 export const MarkdownImage = memo(({ uri, alt }) => {
+  const { t } = useTranslation();
   const screenW = Dimensions.get('window').width; 
   const H_PAD = 32;
   const IMAGE_MAX_W = 300;
@@ -11,7 +13,7 @@ export const MarkdownImage = memo(({ uri, alt }) => {
   return (
     <Image
       source={{ uri }}
-      accessibilityLabel={alt || 'image'}
+      accessibilityLabel={alt || t('chat.image')}
       resizeMode="contain"
       onLoad={(e) => {
         const s = e?.nativeEvent?.source;

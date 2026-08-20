@@ -1,0 +1,316 @@
+{
+  "global": [
+    "app.launch.title",
+    "chat.markdown.wikipedia",
+    "chat.studioBanner.label",
+    "coinStore.pack.unknownPrice",
+    "common.ok",
+    "imagesStudio.title",
+    "navigation.imagesStudio",
+    "navigation.pro",
+    "onboarding.careView.titleHighlight",
+    "onboarding.splash.title",
+    "oneTimeOffer.accessSubtitle",
+    "paywall.modelsHeadline",
+    "paywall.plans.monthly.defaultPrice",
+    "paywall.plans.weekly.defaultPrice",
+    "paywall.plans.yearly.defaultIntroPrice",
+    "paywall.plans.yearly.defaultPrice",
+    "premium.badge",
+    "providers.anthropic",
+    "providers.google",
+    "providers.openai",
+    "providers.xai",
+    "rewards.modals.secretBox.prizeTiers.elite",
+    "rewards.modals.secretBox.prizeTiers.pro",
+    "settings.capabilities.audio",
+    "settings.capabilities.image",
+    "settings.capabilities.text",
+    "settings.capabilities.video",
+    "settings.versionPremiumSuffix",
+    "sidebarStudioBanner.label",
+    "sidebarStudioBanner.title",
+    "studioCommon.models.fluxKontent",
+    "studioCommon.styles.anime.name",
+    "studioCommon.styles.cartoon.name",
+    "studioCommon.styles.cyberpunk.name",
+    "studioCommon.styles.dark_fantasy.name",
+    "studioCommon.styles.epic_landscape.name",
+    "studioCommon.styles.illustration_3d.name",
+    "studioCommon.styles.neon_glow.name",
+    "studioCommon.styles.pastel.name",
+    "studioCommon.styles.photoreal.name",
+    "studioCommon.styles.sketch.name",
+    "studioCommon.styles.steampunk.name",
+    "studioCommon.styles.vintage_film.name",
+    "studioHome.headerTitle"
+  ],
+  "locales": {
+    "af": [
+      "chat.stop",
+      "modelSelector.genericModel",
+      "modelSelector.modelLabel",
+      "oneTimeOffer.wasPrice",
+      "paywall.frequency.perWeek",
+      "paywall.premium.week",
+      "rewards.checkIn.later",
+      "settings.model",
+      "settings.sections.premium"
+    ],
+    "az": [
+      "chat.markdown.link",
+      "createImage.starterPrompts.items.0",
+      "history.pin",
+      "settings.model",
+      "settings.sections.premium"
+    ],
+    "bs": [
+      "chat.home.intents.brainstorm",
+      "chat.markdown.link",
+      "chat.offline",
+      "createImage.starterPrompts.items.0",
+      "modelSelector.genericModel",
+      "modelSelector.modelLabel",
+      "settings.model"
+    ],
+    "ca": [
+      "assistants.categories.general",
+      "rewards.modals.rewardSuccess.error",
+      "rewards.quests.store.errorTitle",
+      "rewards.rewardsList.alerts.errorTitle",
+      "settings.model"
+    ],
+    "cs": [
+      "chat.home.intents.brainstorm",
+      "chat.markdown.tip",
+      "chat.offline",
+      "settings.model"
+    ],
+    "da": [
+      "app.version",
+      "chat.findInformation",
+      "chat.home.intents.brainstorm",
+      "chat.insertTranscript",
+      "chat.markdown.link",
+      "chat.markdown.tip",
+      "chat.offline",
+      "chat.stop",
+      "history.startChat",
+      "settings.model",
+      "settings.rows.support.title",
+      "settings.version"
+    ],
+    "de": [
+      "app.version",
+      "assistants.categories.coding",
+      "chat.markdown.link",
+      "chat.offline",
+      "coinStore.balanceValue",
+      "coinStore.pack.creditsLabel",
+      "coinStore.pack.tokensLabel",
+      "coinStore.premium.cta",
+      "premium.upgrade",
+      "settings.hero.upgrade",
+      "settings.rows.support.title",
+      "settings.version"
+    ],
+    "es": [
+      "assistants.categories.general",
+      "rewards.modals.rewardSuccess.error",
+      "rewards.quests.store.errorTitle",
+      "rewards.rewardsList.alerts.errorTitle"
+    ],
+    "es-419": [
+      "assistants.categories.general",
+      "rewards.modals.rewardSuccess.error",
+      "rewards.quests.store.errorTitle",
+      "rewards.rewardsList.alerts.errorTitle"
+    ],
+    "es-MX": [
+      "assistants.categories.general",
+      "rewards.modals.rewardSuccess.error",
+      "rewards.quests.store.errorTitle",
+      "rewards.rewardsList.alerts.errorTitle"
+    ],
+    "et": [
+      "chat.markdown.link",
+      "createImage.starterPrompts.title",
+      "editImage.starterPrompts.title",
+      "history.pin",
+      "rewards.streakTracker.title"
+    ],
+    "eu": [
+      "assistants.presets.social.name",
+      "chat.home.intents.brainstorm",
+      "history.pin",
+      "studioHome.editCard.title"
+    ],
+    "fil": [
+      "assistants.presets.fitness.name",
+      "assistants.presets.pet.name",
+      "assistants.presets.social.name",
+      "assistants.presets.summarizer.name",
+      "assistants.presets.tech.name",
+      "assistants.systemPrompt",
+      "chat.home.intents.brainstorm",
+      "chat.markdown.link",
+      "chat.markdown.tip",
+      "chat.offline",
+      "coinStore.alerts.initErrorTitle",
+      "coinStore.badges.basic",
+      "coinStore.pack.defaultName",
+      "createImage.aspectRatio",
+      "editImage.aspectRatio",
+      "editImage.starterPrompts.items.2",
+      "history.pin",
+      "onboarding.relaxView.cards.fitness.title",
+      "onboarding.splash.tagline",
+      "oneTimeOffer.discount",
+      "rewards.modals.rewardSuccess.error",
+      "rewards.modals.rewardSuccess.okay",
+      "rewards.modals.secretBox.pill",
+      "rewards.modals.secretBox.prizeTiers.mythic",
+      "rewards.quests.store.errorTitle",
+      "rewards.rewardsList.alerts.errorTitle",
+      "rewards.rewardsList.rewardTitles.secretBox",
+      "settings.dangerZone",
+      "settings.rows.premiumActive.title",
+      "studioCommon.aspectRatios.landscape",
+      "studioCommon.aspectRatios.square",
+      "studioCommon.models.custom",
+      "studioHome.editCard.title",
+      "studioHome.gallery.title"
+    ],
+    "fr": [
+      "app.version",
+      "assistants.description",
+      "assistants.title",
+      "chat.image",
+      "chat.messageActionTitle",
+      "chat.messagePlaceholder",
+      "chat.quickActions.assistants",
+      "coinStore.pack.defaultName",
+      "navigation.assistants",
+      "onboarding.relaxView.titleHighlight",
+      "rewards.modals.questCompleted.points",
+      "settings.rows.support.title",
+      "settings.version",
+      "studioCommon.aspectRatios.portrait"
+    ],
+    "fr-CA": [
+      "app.version",
+      "assistants.description",
+      "assistants.title",
+      "chat.image",
+      "chat.messageActionTitle",
+      "chat.messagePlaceholder",
+      "chat.quickActions.assistants",
+      "coinStore.pack.defaultName",
+      "navigation.assistants",
+      "onboarding.relaxView.titleHighlight",
+      "rewards.modals.questCompleted.points",
+      "settings.rows.support.title",
+      "settings.version",
+      "studioCommon.aspectRatios.portrait"
+    ],
+    "ha": [
+      "assistants.categories.coding",
+      "assistants.presets.social.name",
+      "chat.markdown.table",
+      "chat.offline",
+      "createImage.starterPrompts.items.0",
+      "history.pin"
+    ],
+    "hr": [
+      "settings.model"
+    ],
+    "hu": [
+      "chat.home.intents.brainstorm",
+      "chat.offline"
+    ],
+    "id": [
+      "settings.model"
+    ],
+    "ig": [
+      "chat.markdown.table",
+      "rewards.modals.rewardSuccess.error",
+      "studioCommon.aspectRatios.square"
+    ],
+    "is": [
+      "assistants.presets.mindful.name",
+      "assistants.presets.summarizer.name",
+      "chat.status.sent",
+      "settings.rows.premiumActive.title"
+    ],
+    "it": [
+      "chat.offline",
+      "chat.stop",
+      "oneTimeOffer.privacy",
+      "paywall.legal.privacy"
+    ],
+    "lo": [
+      "createImage.starterPrompts.items.0"
+    ],
+    "ms": [
+      "settings.model"
+    ],
+    "nb": [
+      "chat.home.intents.brainstorm",
+      "chat.insertTranscript",
+      "history.startChat"
+    ],
+    "nl": [
+      "chat.markdown.tip",
+      "chat.offline",
+      "oneTimeOffer.privacy",
+      "oneTimeOffer.wasPrice",
+      "paywall.frequency.perWeek",
+      "paywall.legal.privacy",
+      "paywall.premium.week",
+      "rewards.checkIn.later",
+      "settings.model"
+    ],
+    "pl": [
+      "chat.markdown.link"
+    ],
+    "pt": [
+      "chat.offline"
+    ],
+    "rm": [
+      "assistants.categories.general",
+      "chat.markdown.link",
+      "paywall.premium.annual",
+      "settings.model"
+    ],
+    "ro": [
+      "chat.markdown.link",
+      "chat.offline",
+      "coinStore.premium.cta",
+      "settings.hero.upgrade",
+      "settings.model"
+    ],
+    "sk": [
+      "chat.markdown.tip",
+      "chat.offline",
+      "settings.model"
+    ],
+    "sl": [
+      "chat.home.intents.brainstorm",
+      "settings.model"
+    ],
+    "sv": [
+      "app.version",
+      "chat.offline",
+      "settings.rows.support.title",
+      "settings.version"
+    ],
+    "uz": [
+      "settings.model"
+    ],
+    "yo": [
+      "chat.markdown.table",
+      "coinStore.pack.defaultName",
+      "history.pin"
+    ]
+  }
+}

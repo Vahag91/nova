@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "ආකෘතියක් තෝරන්න",
+    "searchPlaceholder": "ආකෘති සොයන්න...",
+    "noModelsFound": "ආකෘති හමු නොවීය",
+    "noModelsAvailable": "ආකෘති නොමැත",
+    "currentModel": "වත්මන් ආකෘතිය: {{name}}. ආකෘතිය වෙනස් කිරීමට තට්ටු කරන්න.",
+    "openHint": "ආකෘති තේරීම් මෙනුව විවෘත කරයි",
+    "closeLabel": "ආකෘති තේරීම වසන්න",
+    "searchLabel": "සෙවුම් ආකෘති",
+    "searchHint": "පවතින මාදිලි පෙරීමට ටයිප් කරන්න",
+    "modelLabel": "{{name}} ආකෘතිය",
+    "selectHint": "{{name}} ආකෘතිය තෝරන්න",
+    "currentlySelected": "දැනට තෝරාගත් මාදිලිය",
+    "genericModel": "{{provider}} ආකෘතිය",
+    "badges": {
+      "new": "නව",
+      "best": "හොඳම"
+    }
+  },
+  "models": {
+    "gpt-4o": "වඩාත්ම බලවත් AI ආකෘතිය",
+    "gpt-4o-mini": "එදිනෙදා කාර්යයන් සඳහා වේගවත්",
+    "gpt-5": "වඩාත්ම බලගතු සර්ව අරමුණු AI",
+    "gpt-5-chat-latest": "කතාබස් සහ සංවාද සඳහා ප්‍රශස්ත කර ඇත",
+    "gpt-5-mini": "වේගවත් සහ විශ්වසනීය GPT-5",
+    "gpt-5.4-nano": "සරල කාර්යයන් සඳහා සැහැල්ලු ආකෘතිය",
+    "o4-mini": "කාර්යක්ෂම තර්ක ආකෘතිය",
+    "gpt-4.1-mini": "සංයුක්ත, හැකියාව GPT-4.1",
+    "claude-3-haiku": "වේගවත් සහ නාභිගත මානව AI",
+    "claude-3.7-sonnet": "Anthropic විසින් පිරිපහදු කළ තර්කනය",
+    "gemini-2.5-Flash": "Google හි වඩාත්ම දියුණු මාදිලිය",
+    "gemini-2.5-flash": "Google හි වඩාත්ම දියුණු මාදිලිය",
+    "gemini-2.0-flash": "ඉක්මන් සහ නිවැරදි Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "වඩාත්ම බලවත් AI ආකෘතිය",
+    "fast_everyday": "එදිනෙදා කාර්යයන් සඳහා වේගවත්",
+    "fast_reasoning": "හොඳ තර්කයක් සහිත වේගවත් ආකෘතිය",
+    "great_reasoning": "උසස් තර්ක ආකෘතිය",
+    "coding_reasoning": "උසස් කේතීකරණය සහ තර්කනය",
+    "better_coding": "කේතනය කිරීම සහ තර්ක කිරීම සඳහා වඩා හොඳය",
+    "best_overall": "හොඳම AI ආකෘතිය",
+    "best_google": "Google හි හොඳම ආකෘතිය",
+    "best_xai": "xAI හි බලවත්ම ආකෘතිය",
+    "creative_focus": "නිර්මාණාත්මක ලිවීම සඳහා විශිෂ්ටයි",
+    "code_helper": "කේතීකරණ උදව් සඳහා විශිෂ්ටයි",
+    "chat_focus": "කතාබස් කිරීම සඳහා ප්‍රශස්ත කර ඇත",
+    "long_context": "දිගු සන්දර්භ සඳහා විශිෂ්ටයි",
+    "budget_friendly": "අයවැය-හිතකාමී AI ආකෘතිය",
+    "ultra_fast": "අතිශය වේගවත් ප්‍රතිචාර",
+    "safe_default": "ආරක්ෂිත පෙරනිමි තේරීම",
+    "multilingual": "ශක්තිමත් බහුභාෂා සහාය",
+    "vision_strong": "රූප සහ දර්ශනය සමඟ විශිෂ්ටයි",
+    "data_analysis": "දත්ත විශ්ලේෂණය සඳහා හොඳයි",
+    "structured_tasks": "ව්‍යුහගත කාර්යයන් සඳහා යහපත් වේ",
+    "everyday_helper": "එදිනෙදා සහායක ආකෘතිය",
+    "concise_answers": "කෙටි, සංක්ෂිප්ත පිළිතුරු",
+    "detailed_answers": "සවිස්තරාත්මක පියවරෙන් පියවර පිළිතුරු",
+    "experimental": "පර්යේෂණාත්මක ඊළඟ පරම්පරාවේ ආකෘතිය",
+    "reliable_classic": "විශ්වසනීය සම්භාව්ය ආකෘතිය",
+    "lightweight": "සැහැල්ලු, අඩු වියදම් ආකෘතිය",
+    "chatty_personal": "වඩාත් මිත්රශීලී සහ පෞද්ගලික",
+    "pro_users": "බලශක්ති භාවිතා කරන්නන් සඳහා හොඳම",
+    "research_helper": "පර්යේෂණ සහ සටහන් සඳහා හොඳයි",
+    "reasoning_strong": "උසස් තර්ක ආකෘතිය"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "මානවවාදී",
+    "google": "ගූගල්",
+    "xai": "xAI",
+    "other": "වෙනත්"
+  },
+  "navigation": {
+    "chat": "නව කතාබස්",
+    "history": "ඉතිහාසය",
+    "rewards": "දෛනික ත්‍යාග",
+    "assistants": "සහායකයින්",
+    "imagesStudio": "Image Studio",
+    "settings": "සැකසීම්",
+    "recentChats": "මෑත කතාබස්",
+    "proFeatures": "Pro විශේෂාංග",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Pro විශේෂාංග ලබා ගන්න",
+      "subtitle": "සියලුම AI විශේෂාංග"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "එක් ස්ථානයක දෘශ්‍ය වත්කම් උත්පාදනය කරන්න, පිරිපහදු කරන්න, සහ ප්‍රකාශනය කරන්න.",
+    "cta": "විවෘත කරන්න"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "පින්තූර තෝරන්න",
+    "exitSelectionMode": "තේරීම් මාදිලියෙන් පිටවන්න",
+    "selectAll": "සියල්ල තෝරන්න",
+    "noImagesYet": "තවම පින්තූර නැත",
+    "describeImageHint": "ඔබගේ රූපය පහතින් විස්තර කර උත්පාදනය තට්ටු කරන්න.",
+    "generatedImagesGallery": "ජනනය කරන ලද පින්තූර ගැලරිය",
+    "describeImagePlaceholder": "ඔබට අවශ්‍ය රූපය විස්තර කරන්න...",
+    "deleteConfirmTitle": "පින්තූර මකන්න",
+    "deleteConfirmMessage": "ඔබට තෝරාගත් පින්තූර මකා දැමීමට අවශ්‍ය බව විශ්වාසද? මෙම ක්‍රියාව පසුගමනය කළ නොහැක.",
+    "cancel": "අවලංගු කරන්න",
+    "delete": "මකන්න",
+    "generate": "උත්පාදනය කරන්න",
+    "generating": "උත්පාදනය කරමින්...",
+    "latest": "නවතම",
+    "insertToChat": "කතාබස් කිරීමට ඇතුළු කරන්න",
+    "pleaseWait": "කරුණාකර රැඳී සිටින්න…",
+    "processing": "සකසමින්...",
+    "tapToUploadImage": "රූපය උඩුගත කිරීමට තට්ටු කරන්න",
+    "camera": "ඡායාරූප උඩුගත කරන්න",
+    "library": "පුස්තකාලය",
+    "enterPrompt": "කරුණාකර පෙළ සිට රූපය දක්වා උත්පාදනය සඳහා විමසුමක් ඇතුළත් කරන්න",
+    "openInBrowser": "බ්‍රවුසරයේ විවෘත කරන්න",
+    "makeVariations": "වෙනස්කම් ඇති කරන්න",
+    "deleteAllFromGeneration": "මෙම පරම්පරාවෙන් සියල්ල මකන්න",
+    "imageOptionsTitle": "රූප විකල්ප",
+    "imageOptionsMessage": "ඔබ මෙම රූපය සමඟ කුමක් කිරීමට කැමතිද?",
+    "insertMarkdownHeader": "මෙන්න මේ සඳහා රූපය:",
+    "variationSuffix": "- පෙර රූපයේ විචලනය",
+    "selectedCount": "තෝරාගත්",
+    "selectedCount_one": "තෝරාගත්",
+    "selectedCount_other": "තෝරාගත්",
+    "imageDescriptionInput": "රූප විස්තර ආදානය",
+    "imageDescriptionHint": "ඔබට ජනනය කිරීමට අවශ්‍ය රූපයේ විස්තරයක් ඇතුළත් කරන්න",
+    "openModelSettings": "ආකෘති සැකසුම් විවෘත කරන්න",
+    "modelSettingsHint": "ආකෘතිය සහ සැකසුම් වෙනස් කිරීමට තට්ටු කරන්න",
+    "openPhotoGallery": "ඡායාරූප ගැලරිය විවෘත කරන්න",
+    "clearInput": "පැහැදිලි ආදානය",
+    "generatedImage": "ජනනය කළ රූපය",
+    "autoSelectedModel": "{{mode}} මාදිලිය සඳහා ස්වයංක්‍රීයව තෝරාගත් {{model}}",
+    "deleteSelectedConfirmTitle": "පින්තූර මකන්න",
+    "deleteSelectedConfirmMessage": "ඔබට පින්තූර මැකීමට අවශ්‍ය බව විශ්වාසද? මෙම ක්‍රියාව පසුගමනය කළ නොහැක."
+  },
+  "imageStudio": {
+    "generateImage": "රූපය ජනනය කරන්න",
+    "generatingImage": "රූපය ජනනය කිරීම",
+    "generateImageHint": "ඔබේ විස්තරය මත පදනම්ව රූපයක් උත්පාදනය කිරීමට තට්ටු කරන්න",
+    "imageDescriptionInput": "රූප විස්තර ආදානය",
+    "imageDescriptionHint": "ඔබට ජනනය කිරීමට අවශ්‍ය රූපයේ විස්තරයක් ඇතුළත් කරන්න",
+    "openModelSettings": "ආකෘති සැකසුම් විවෘත කරන්න",
+    "modelSettingsHint": "ආකෘතිය සහ සැකසුම් වෙනස් කිරීමට තට්ටු කරන්න",
+    "openPhotoGallery": "ඡායාරූප ගැලරිය විවෘත කරන්න",
+    "clearInput": "පැහැදිලි ආදානය",
+    "generatedImage": "ජනනය කළ රූපය"
+  },
+  "assistants": {
+    "title": "සහායකයින්",
+    "defaultTitle": "සහකාර",
+    "errorTitle": "යමක් වැරදී ඇත",
+    "errorMessage": "මෙම සහායක ආරම්භ කිරීමට නොහැකි විය.",
+    "noAssistants": "මෙම ප්‍රවර්ගය තුළ සහායකයින් හමු නොවීය.",
+    "selectAssistantHint": "සහකාර පිකර් විවෘත කරන්න",
+    "subtitle": "කේතනය කිරීම, ලිවීම, විශ්ලේෂණය, සැලසුම් කිරීම සහ තවත් බොහෝ දේ සඳහා සුදානම් වූ AI විශේෂඥයින්.",
+    "searchPlaceholder": "සෙවුම් සහකාර…",
+    "useAssistant": "සහකාර භාවිත කරන්න",
+    "selectAssistant": "සහායක තෝරන්න",
+    "description": "විස්තරය",
+    "systemPrompt": "පද්ධති විමසුම",
+    "chooseModel": "ආකෘතිය තෝරන්න",
+    "categoryAll": "සියල්ල",
+    "categories": {
+      "everyday": "හැමදාම",
+      "life": "ජීවිතය",
+      "health": "සෞඛ්යය",
+      "schoolWork": "පාසල සහ වැඩ",
+      "coding": "කේතනය කිරීම",
+      "creative": "නිර්මාණශීලී",
+      "general": "ජෙනරාල්"
+    },
+    "presets": {
+      "default": {
+        "name": "පෙරනිමි සහකාර",
+        "description": "දෛනික දේවල් සඳහා සමබර උපකාර."
+      },
+      "quick": {
+        "name": "ඉක්මන් පිළිතුරු",
+        "description": "කෙටි, සෘජු පිළිතුරු."
+      },
+      "planner": {
+        "name": "දෛනික සැලසුම්කරු",
+        "description": "ඔබේ දවස සහ චර්යාවන් සැලසුම් කරන්න."
+      },
+      "recipes": {
+        "name": "ආහාර සහ වට්ටෝරු",
+        "description": "මොනවද උයන්න ඕන, තියෙන දේ එක්ක."
+      },
+      "fitness": {
+        "name": "යෝග්‍යතා පුහුණුකරු",
+        "description": "කුඩා පුරුදු සහ නිවසේ ව්‍යායාම."
+      },
+      "money": {
+        "name": "සල්ලි යාලුවනේ",
+        "description": "සරල අයවැය සහ වියදම් ඉඟි."
+      },
+      "study": {
+        "name": "අධ්‍යයන සහායකයා",
+        "description": "සරලව පැහැදිලි කරන්න. මගෙන් ප්‍රශ්න කරන්න."
+      },
+      "email": {
+        "name": "ඊමේල් සහ නැවත ආරම්භ කරන්න",
+        "description": "පැහැදිලි ඊමේල් සහ CV රේඛා ලියන්න."
+      },
+      "translator": {
+        "name": "පරිවර්තකයා",
+        "description": "වාක්‍ය ඛණ්ඩ පරිවර්තනය කරන්න + උගන්වන්න."
+      },
+      "travel": {
+        "name": "සංචාරක මිතුරා",
+        "description": "සරල සැලසුම් සහ ඇසුරුම් ලැයිස්තු."
+      },
+      "tech": {
+        "name": "තාක්ෂණික සහාය (සරල)",
+        "description": "දුරකථන, යෙදුම්, Wi-Fi මූලික කරුණු."
+      },
+      "summarizer": {
+        "name": "TL;DR සාරාංශය",
+        "description": "කෙටි උණ්ඩ + තනි පේළි TL;DR."
+      },
+      "gift": {
+        "name": "තෑගි සොයන්නා",
+        "description": "අයවැය සහ රුචිකත්වයන් අනුව අදහස්."
+      },
+      "party": {
+        "name": "සිදුවීම් සැලසුම්කරු (Lite)",
+        "description": "කුඩා සාදයක් ඉක්මනින් සැලසුම් කරන්න."
+      },
+      "social": {
+        "name": "සමාජ තැපැල් සාදන්නා",
+        "description": "විකල්ප සමඟ කෙටුම්පත් තනතුරු."
+      },
+      "interview": {
+        "name": "සම්මුඛ පරීක්ෂණ පුහුණුකරු",
+        "description": "පිළිතුරු පුහුණු කරන්න (STAR)."
+      },
+      "homefix": {
+        "name": "Home Fix-It මාර්ගෝපදේශය",
+        "description": "සරල DIY දෝශ නිරාකරණය."
+      },
+      "pet": {
+        "name": "Pet Care Budy",
+        "description": "පෝෂණය, ඇවිදීම, මූලික පුහුණුව."
+      },
+      "mindful": {
+        "name": "සිහිකල්පනාවෙන් යුත් මිනිත්තුව",
+        "description": "1-3 විනාඩි සන්සුන් විවේකයක්."
+      },
+      "polite": {
+        "name": "ආචාරශීලී නැවත ලියන්නා",
+        "description": "පෙළ සහ පිළිතුරු ලස්සනට නැවත ලියන්න."
+      }
+    }
+  },
+  "history": {
+    "title": "ඉතිහාසය",
+    "searchPlaceholder": "කතාබස් සොයන්න...",
+    "newChat": "නව කතාබස්",
+    "new": "+ අලුත්",
+    "search": "සොයන්න",
+    "clearSearch": "සෙවීම පැහැදිලි කරන්න",
+    "noChatsYet": "තවමත් කතාබස් නැත",
+    "noResults": "තවමත් කතාබස් නැත",
+    "startFirstConversation": "ඔබේ පළමු සංවාදය ආරම්භ කරන්න.",
+    "startChat": "කතාබස් ආරම්භ කරන්න",
+    "startNewChat": "නව කතාබහක් ආරම්භ කරන්න",
+    "errorLoadingHistory": "ඉතිහාසය පූරණය කිරීමේ දෝෂයකි",
+    "loading": "ඉතිහාසය පූරණය කරමින්...",
+    "renameChat": "කතාබස් නැවත නම් කරන්න",
+    "enterNewTitle": "නව මාතෘකාවක් ඇතුළත් කරන්න",
+    "deleteChat": "කතාබස් මකන්නද?",
+    "deleteChatMessage": "\"{{title}}\" මකනු ඇත.",
+    "rename": "නැවත නම් කරන්න",
+    "unpin": "ඇමුණුම ඉවත් කරන්න",
+    "pin": "පින් කරන්න",
+    "untitled": "මාතෘකා රහිත"
+  },
+  "settings": {
+    "title": "සැකසීම්",
+    "model": "ආකෘතිය",
+    "searchPlaceholder": "ආකෘති සොයන්න...",
+    "temperatureForCurrentModel": "වත්මන් ආකෘතිය සඳහා උෂ්ණත්වය",
+    "customFor": "{{model}} සඳහා අභිරුචි",
+    "usingDefault": "පෙරනිමිය භාවිතා කරමින් {{temperature}}",
+    "resetToDefault": "පෙරනිමියට යළි පිහිටුවන්න",
+    "defaultTemperature": "පෙරනිමි උෂ්ණත්වය (පසුබැසීම)",
+    "usedByModelsWithoutOverride": "අභිරුචි ප්‍රතික්ෂේප කිරීමකින් තොරව ආකෘති විසින් භාවිතා කරනු ලැබේ",
+    "dangerZone": "අවදානම් කලාපය",
+    "clearAllChatsAndSettings": "සියලු කතාබස් සහ සැකසුම් හිස් කරන්න",
+    "about": "ගැන",
+    "version": "අනුවාදය {{version}}{{status}}",
+    "versionPremiumSuffix": "· වාරික",
+    "privacyPolicy": "රහස්‍යතා ප්‍රතිපත්තිය",
+    "hero": {
+      "label": "විශේෂ දීමනාවක්",
+      "title": "අසීමිත ප්රවේශය\nසහ Pro විශේෂාංග",
+      "upgrade": "උත්ශ්‍රේණි කරන්න",
+      "manage": "සැලැස්ම කළමනාකරණය කරන්න"
+    },
+    "sections": {
+      "premium": "වාරික සැලැස්ම",
+      "data": "පරිශීලක දත්ත",
+      "support": "සහාය සහ නීතිමය"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "වාරික ලබා ගන්න",
+        "subtitle": "අසීමිත නිර්මාණ මෙවලම් අගුළු හරින්න"
+      },
+      "premiumActive": {
+        "title": "වාරික සක්රීය",
+        "subtitle": "Cloud AI සහය දීම ගැන ස්තුතියි"
+      },
+      "restore": {
+        "title": "මිලදී ගැනීම් ප්‍රතිසාධනය කරන්න",
+        "subtitle": "ඔබ උපාංග මාරු කළේ නම් භාවිතා කරන්න"
+      },
+      "history": {
+        "title": "කතාබස් ඉතිහාසය කළමනාකරණය කරන්න",
+        "subtitle": "ඔබගේ පසුගිය සැසි බලන්න සහ මකන්න"
+      },
+      "reset": {
+        "title": "කතාබස් සහ මනාප යළි පිහිටුවන්න",
+        "subtitle": "මෙම උපාංගයේ ගබඩා කර ඇති සියලුම දත්ත හිස් කරයි"
+      },
+      "rate": {
+        "title": "අපව ශ්‍රේණිගත කරන්න",
+        "error": "ගබඩා පිටුව විවෘත කළ නොහැක."
+      },
+      "support": {
+        "title": "සහාය",
+        "subtitle": "මාර්ගගතව අප අමතන්න",
+        "error": "සම්බන්ධතා පිටුව විවෘත කළ නොහැක."
+      },
+      "privacy": {
+        "title": "රහස්‍යතා ප්‍රතිපත්තිය",
+        "error": "රහස්‍යතා ප්‍රතිපත්තිය විවෘත කළ නොහැක."
+      },
+      "terms": {
+        "title": "භාවිත නියමයන්",
+        "error": "භාවිත නියමයන් විවෘත කළ නොහැක."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "ලබා ගත නොහැක",
+      "linkUnavailableMessage": "මෙම සබැඳිය දැන් විවෘත කළ නොහැක.",
+      "restoreSuccessTitle": "ප්‍රතිෂ්ඨාපනය කළා",
+      "restoreSuccessMessage": "ඔබගේ මිලදී ගැනීම් ප්‍රතිසාධනය කර ඇත.",
+      "restoreEmptyTitle": "මිලදී ගැනීම් කිසිවක් හමු නොවීය",
+      "restoreEmptyMessage": "මෙම ගිණුම සඳහා ප්‍රතිසාධනය කිරීමට සක්‍රිය මිලදී ගැනීමක් අපට සොයාගත නොහැකි විය.",
+      "restoreErrorTitle": "ප්‍රතිසාධනය අසාර්ථක විය",
+      "restoreErrorMessage": "දැන් මිලදී ගැනීම් ප්‍රතිසාධනය කළ නොහැක.",
+      "resetConfirmTitle": "යෙදුම් දත්ත යළි පිහිටුවන්නද?",
+      "resetConfirmMessage": "මෙය සියලු කතාබස් සහ දේශීය මනාපයන් ඉවත් කරයි.",
+      "resetConfirmCancel": "අවලංගු කරන්න",
+      "resetConfirmCta": "යළි පිහිටුවන්න"
+    }
+  },
+  "createImage": {
+    "headerTitle": "නිර්මාණය කරන්න",
+    "chooseStyle": "ශෛලියක් තෝරන්න",
+    "aspectRatio": "දර්ශන අනුපාතය",
+    "starterPrompts": {
+      "title": "ආරම්භක විමසුම්",
+      "items": [
+        "ස්ටුඩියෝ හෙඩ්ෂොට්",
+        "නවීන විසිත්ත කාමරය",
+        "හිරු බැස යන විට නිවර්තන වෙරළ"
+      ]
+    },
+    "promptPlaceholder": "ඔබට දැකීමට අවශ්‍ය දේ ටයිප් කරන්න...",
+    "promptHint": "උදාහරණය: 'ස්ටුඩියෝ ආලෝකකරණයේ ගෝල්ඩන් රිට්‍රීවර්'",
+    "clearText": "පාඨය හිස් කරන්න",
+    "generate": "උත්පාදනය කරන්න",
+    "generating": "උත්පාදනය කරමින්..."
+  },
+  "editImage": {
+    "headerTitle": "සංස්කරණය කරන්න",
+    "chooseStyle": "ශෛලියක් තෝරන්න",
+    "aspectRatio": "දර්ශන අනුපාතය",
+    "starterPrompts": {
+      "title": "ආරම්භක විමසුම්",
+      "items": [
+        "ආලෝකය සවි කරන්න",
+        "පසුබිම ඉවත් කරන්න",
+        "මෘදු ආලේඛ්‍ය ප්‍රතිකර්මය"
+      ]
+    },
+    "promptPlaceholder": "සංස්කරණ විස්තර කරන්න (විකල්ප)",
+    "clearText": "පාඨය හිස් කරන්න",
+    "generate": "උත්පාදනය කරන්න",
+    "generating": "අයදුම් කරමින්...",
+    "upload": {
+      "choose": "ඡායාරූපය තෝරන්න",
+      "change": "වෙනස් කරන්න",
+      "remove": "ඉවත් කරන්න"
+    },
+    "imageUnavailable": {
+      "title": "රූපය නොමැත",
+      "message": "තෝරාගත් ඡායාරූපය වෙත ප්‍රවේශ විය නොහැක. කරුණාකර එය නැවත තෝරා නැවත උත්සාහ කරන්න."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "ඇනිමෙ"
+      },
+      "cartoon": {
+        "name": "කාටූන්"
+      },
+      "photoreal": {
+        "name": "ෆොටෝරියල්"
+      },
+      "sketch": {
+        "name": "ස්කීච්"
+      },
+      "cyberpunk": {
+        "name": "සයිබර්පන්ක්"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D නිදර්ශනය"
+      },
+      "dark_fantasy": {
+        "name": "අඳුරු ෆැන්ටසි"
+      },
+      "vintage_film": {
+        "name": "වින්ටේජ් ෆිල්ම්"
+      },
+      "pastel": {
+        "name": "පැස්ටල් සෞන්දර්යය"
+      },
+      "neon_glow": {
+        "name": "Neon Glow"
+      },
+      "epic_landscape": {
+        "name": "එපික් භූ දර්ශනය"
+      }
+    },
+    "aspectRatios": {
+      "square": "චතුරස්රය",
+      "landscape": "භූ දර්ශනය",
+      "portrait": "පෝට්රේට්"
+    },
+    "models": {
+      "fluxKontent": "Flux Content",
+      "custom": "අභිරුචි"
+    },
+    "notEnoughCoinsTitle": "ප්රමාණවත් තරම් කාසි නැත",
+    "notEnoughCoinsMessage": "ඔබගේ වත්මන් ශේෂය මෙම රූපය සඳහා ඉතා අඩුය.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "වේගවත්ම ආකෘතිය",
+      "runwareFluxKrea": "නිර්මාණශීලී, ශෛලීගත ප්රතිඵල",
+      "runwareQwenImage": "සමබර, උසස් තත්ත්වයේ ප්රතිඵල",
+      "google4": "හොඳම AI රූප ආකෘතිය",
+      "klingImageO1": "අධි පාලන රූප සංස්කරණය",
+      "fluxKontent": "Flux Content සංස්කරණ සඳහා සුසර කර ඇත",
+      "runwareProvider": "විශ්වසනීය විසරණය සමඟ සමබර ගුණාත්මක භාවය.",
+      "airProvider": "නැනෝ කෙසෙල් සෙල්ලක්කාර, විචිත්‍රවත් ස්වරය එක් කරයි.",
+      "googleProvider": "ඔප දැමූ විස්තර සඳහා ගූගල් සුසර කර ඇත.",
+      "klingaiProvider": "KlingAI පාලිත සංස්කරණ සඳහා සුසර කර ඇත.",
+      "anthropicProvider": "සියුම් මනෝභාවයන් සඳහා Claude නල මාර්ගය.",
+      "default": "පවතින එන්ජින් ගවේෂණය කිරීමට තට්ටු කරන්න."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "ඔබ තෝරාගත් ශෛලිය",
+    "sheetTitle": "ඔබේ දැක්ම නිර්මාණය කිරීම",
+    "sheetSubtitle": "අපි ප්‍රේරකයට {{style}} මිශ්‍ර කරන අතරතුර සේවාදායක කෝපි කෙටියෙන් පානය කරන්න.",
+    "phases": {
+      "blend": "{{style}} හි මිශ්‍ර කිරීම",
+      "paint": "දර්ශනය පින්තාරු කිරීම",
+      "finish": "අවසාන ඔප දැමීම"
+    },
+    "actions": {
+      "cancel": "අවලංගු කරන්න",
+      "retry": "නැවත උත්සාහ කරන්න",
+      "close": "වසන්න"
+    },
+    "errors": {
+      "restrictedTitle": "සීමා කළ අන්තර්ගතය",
+      "genericTitle": "පරම්පරාව අසාර්ථකයි",
+      "genericMessage": "රූපය උත්පාදනය කළ නොහැකි විය."
+    },
+    "alerts": {
+      "saveFailedTitle": "සුරැකීමට නොහැකි විය",
+      "shareFailedTitle": "බෙදා ගැනීමට නොහැකි විය",
+      "tryAgain": "කරුණාකර නැවත උත්සාහ කරන්න.",
+      "savedTitle": "සුරකින ලදී",
+      "savedMessage": "රූපය ඔබගේ ගැලරිය වෙත සුරකින ලදී.",
+      "permissionTitle": "අවසරය අවශ්‍යයි",
+      "permissionMessage": "ඔබගේ ගැලරිය වෙත පින්තූර සුරැකීමට ගබඩා ප්‍රවේශයට ඉඩ දෙන්න."
+    },
+    "result": {
+      "complete": "ඔක්කොම ඉවරයි"
+    },
+    "accessibility": {
+      "close": "වසන්න"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "මකන්න",
+      "edit": "සංස්කරණය කරන්න",
+      "save": "සුරකින්න",
+      "share": "බෙදාගන්න"
+    },
+    "alerts": {
+      "savedTitle": "සුරකින ලදී",
+      "savedMessage": "රූපය ඔබගේ ගැලරිය වෙත සුරකින ලදී.",
+      "permissionTitle": "අවසරය අවශ්‍යයි",
+      "permissionMessage": "ඔබගේ ගැලරිය වෙත පින්තූර සුරැකීමට ගබඩා ප්‍රවේශයට ඉඩ දෙන්න.",
+      "saveFailedTitle": "සුරැකීමට නොහැකි විය",
+      "tryAgain": "කරුණාකර නැවත උත්සාහ කරන්න."
+    },
+    "accessibility": {
+      "close": "වසන්න",
+      "delete": "රූපය මකන්න",
+      "edit": "රූපය සංස්කරණය කරන්න",
+      "save": "රූපය සුරකින්න",
+      "share": "රූපය බෙදාගන්න"
+    }
+  },
+  "reportContent": {
+    "title": "AI අන්තර්ගතය වාර්තා කරන්න",
+    "subtitle": "මෙම ජනනය කළ අන්තර්ගතයේ ඇති වරද කුමක්දැයි අපට කියන්න.",
+    "privateDisclosure": "ඉදිරිපත් කිරීම ආරක්ෂිත සමාලෝචනය සඳහා මෙම වාර්තා කළ අන්තර්ගතය යවයි.",
+    "accessibilityLabel": "AI අන්තර්ගතය වාර්තා කරන්න",
+    "reasons": {
+      "sexual": "ලිංගික හෝ නිරුවත් අන්තර්ගතය",
+      "violence_self_harm": "ප්‍රචණ්ඩත්වය හෝ ස්වයං හානිය",
+      "hate_harassment": "වෛරය හෝ හිරිහැර කිරීම",
+      "child_safety": "ළමා ආරක්ෂාව පිළිබඳ සැලකිල්ල",
+      "scam_deceptive": "වංචා හෝ රැවටිලිකාර අන්තර්ගතය",
+      "other": "වෙනත්"
+    },
+    "errors": {
+      "reasonRequired": "කරුණාකර ඉදිරිපත් කිරීමට පෙර හේතුවක් තෝරන්න.",
+      "submit": "වාර්තාව ඉදිරිපත් කිරීමට නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න."
+    },
+    "success": {
+      "title": "ස්තුතියි. ඔබගේ වාර්තාව ඉදිරිපත් කරන ලදී.",
+      "subtitle": "අන්තර්ගත ආරක්ෂාව වැඩි දියුණු කිරීමට අපි වාර්තා භාවිතා කරන්නෙමු."
+    },
+    "actions": {
+      "report": "වාර්තා කරන්න",
+      "submit": "වාර්තාව ඉදිරිපත් කරන්න",
+      "done": "කළා"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "විවෘත මෙනුව",
+      "selectImages": "පින්තූර තෝරන්න",
+      "exitSelection": "තේරීමෙන් පිටවීම",
+      "deleteSelected": "තෝරාගත් පින්තූර මකන්න",
+      "selectToDelete": "මකා දැමීමට පින්තූර තෝරන්න"
+    },
+    "createCard": {
+      "title": "පෙළ වලින් සාදන්න",
+      "subtitle": "විස්තරයක් ටයිප් කරන්න",
+      "cta": "විස්තර කරන්න සහ උත්පාදනය කරන්න"
+    },
+    "editCard": {
+      "title": "AI ඡායාරූප සංස්කාරකය",
+      "subtitle": "AI සමඟින් පරිවර්තනය සහ වැඩිදියුණු කිරීම",
+      "cta": "AI සමඟ සංස්කරණය කරන්න"
+    },
+    "gallery": {
+      "title": "ගැලරිය",
+      "empty": "තවමත් පින්තූර නැත",
+      "selection": {
+        "enter": "පින්තූර තෝරන්න",
+        "exit": "තේරීමෙන් පිටවීම",
+        "deleteSelected": "තෝරාගත් පින්තූර මකන්න",
+        "selectForDelete": "මකා දැමීමට පින්තූර තෝරන්න"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "හමුවන්න",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Cloud AI ඇතුළත AI සමඟ පින්තූර සාදන්න සහ සංස්කරණය කරන්න."
+    },
+    "relaxView": {
+      "title": "ඔබේ AI හමුවන්න",
+      "titleHighlight": "සහායකයින්",
+      "subtitle": "ඔබේ දෛනික අවශ්‍යතා සඳහා උපකාර කිරීමට විශේෂිත AI විශේෂඥයින් සූදානම්",
+      "cards": {
+        "fitness": {
+          "title": "යෝග්‍යතා පුහුණුකරු",
+          "text": "කුඩා පුරුදු සහ නිවසේ ව්‍යායාම."
+        },
+        "recipes": {
+          "title": "ආහාර සහ වට්ටෝරු",
+          "text": "මොනවද උයන්න ඕන, තියෙන දේ එක්ක."
+        },
+        "travel": {
+          "title": "සංචාරක මිතුරා",
+          "text": "සරල සැලසුම් සහ ඇසුරුම් ලැයිස්තු."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ව්යවසාය-ශ්රේණියේ AI විසඳුම්",
+      "description": "ව්‍යවසාය වෘත්තිකයන් සහ කණ්ඩායම් සඳහා නිර්මාණය කර ඇති අති නවීන කෘතිම බුද්ධි තාක්ෂණයෙන් ඔබේ ව්‍යාපාරය සවිබල ගන්වන්න.",
+      "stats": "500k+ පරිශීලකයින් විසින් විශ්වාස කෙරේ",
+      "rating": "4.9 / 5",
+      "button": "ආරම්භ කරන්න"
+    },
+    "buttons": {
+      "continue": "දිගටම කරගෙන යන්න",
+      "start": "අපි පටන් ගනිමු"
+    }
+  },
+  "coinStore": {
+    "title": "ණය ලබා ගන්න",
+    "loading": "කාසි ගබඩාව පූරණය කරමින්...",
+    "balanceLabel": "ඔබගේ වත්මන් ශේෂය වේ",
+    "balanceValue": "{{amount}} ණය",
+    "history": {
+      "link": "ගනුදෙනු ඉතිහාසය",
+      "alertTitle": "ඉතිහාසය",
+      "alertBody": "ගනුදෙනු ඉතිහාසය ළඟදීම පැමිණේ."
+    },
+    "noPacks": "කාසි ඇසුරුම් නොමැත. ඔබේ RevenueCat පිරිනැමීමේ හැඳුනුම්පත පරීක්ෂා කරන්න.",
+    "badges": {
+      "basic": "මූලික පැකේජය",
+      "popular": "වඩාත්ම ජනප්රියයි",
+      "value": "හොඳම වටිනාකම"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} ණය",
+      "tokensLabel": "{{credits}} ණය",
+      "defaultName": "ඇසුරුම {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "Premium යන්න",
+      "subtitle": "අසීමිත ප්රවේශ සහ විශේෂාංග",
+      "cta": "උත්ශ්‍රේණි කරන්න"
+    },
+    "termsText": "මිලදී ගැනීමක් සිදු කිරීමෙන්, ඔබ අපගේ එකඟතාවයට එකඟ වේ",
+    "termsLink": "සේවා කොන්දේසි",
+    "alerts": {
+      "initErrorTitle": "ආරම්භක දෝෂය",
+      "genericMessage": "යමක් වැරදී ඇත.",
+      "successTitle": "සාර්ථකත්වය",
+      "successMessage": "ණය ඉක්මනින් දිස් වනු ඇත.",
+      "purchaseFailedTitle": "මිලදී ගැනීම අසාර්ථක විය",
+      "unknownError": "නොදන්නා දෝෂයකි"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "වාරික අවශ්‍යයි",
+    "upgrade": "උත්ශ්‍රේණි කරන්න",
+    "modelRequiredMessage": "මෙම ආකෘතියට Premium අවශ්‍ය වේ. GPT-5, Grok 4, Claude, සහ වඩාත් උසස් මාදිලි වෙත ප්‍රවේශ වීමට උත්ශ්‍රේණි කරන්න.",
+    "assistantsRequiredMessage": "සහායකයින්ට වාරික අවශ්‍යයි. යෝග්‍යතාවය, කේතීකරණය, ලිවීම සහ තවත් දේ සඳහා විශේෂිත AI සහායකයින් වෙත ප්‍රවේශ වීමට උත්ශ්‍රේණි කරන්න.",
+    "assistantsTitle": "වාරික අවශ්‍යයි",
+    "assistantsMessage": "සහායකයින්ට වාරික අවශ්‍යයි. යෝග්‍යතාවය, කේතීකරණය, ලිවීම සහ තවත් දේ සඳහා විශේෂිත AI සහායකයින් වෙත ප්‍රවේශ වීමට උත්ශ්‍රේණි කරන්න."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "ගෙවුම් පවුර වසන්න",
+    "unavailableTitle": "මිලදී ගැනීම් නොමැත",
+    "unavailableMessage": "Android බිල්පත් තවමත් වින්‍යාස කර නැත.",
+    "restoreEmptyTitle": "මිලදී ගැනීම් කිසිවක් හමු නොවීය",
+    "restoreEmptyMessage": "මෙම ගිණුම සඳහා ප්‍රතිසාධනය කිරීමට සක්‍රිය මිලදී ගැනීමක් අපට සොයාගත නොහැකි විය.",
+    "restoreFailedTitle": "ප්‍රතිසාධනය අසාර්ථක විය",
+    "restoreFailedMessage": "දැන් මිලදී ගැනීම් ප්‍රතිසාධනය කළ නොහැක.",
+    "productsUnavailableTitle": "සැලසුම් නොමැත",
+    "productsUnavailableMessage": "දැන් Android දායකත්ව නිෂ්පාදන කිසිවක් නොමැත.",
+    "purchaseFailedTitle": "මිලදී ගැනීම අසාර්ථක විය",
+    "purchaseFailedMessage": "දැන් මෙම මිලදී ගැනීම සම්පූර්ණ කළ නොහැක.",
+    "restore": "ප්‍රතිෂ්ඨාපනය කරන්න",
+    "restoreRestoring": "ප්‍රතිසාධනය කරමින්...",
+    "features": {
+      "create": "පින්තූර සහ වීඩියෝ සාදන්න",
+      "search": "AI සමඟ වෙබය සොයන්න",
+      "talk": "AI සමඟ ස්වභාවිකව කතා කරන්න",
+      "imageStudio": "Image Studio {{credits}} ණය ලබා ගන්න {{period}}",
+      "period": {
+        "weekly": "සතිපතා",
+        "monthly": "මාසිකව",
+        "yearly": "වාර්ෂිකව"
+      }
+    },
+    "freeTrial": {
+      "title": "නොමිලේ අත්හදා බැලීම",
+      "subtitle": "දින 3ක නොමිලේ අත්හදා බැලීම"
+    },
+    "badge": {
+      "bestOffer": "හොඳම දීමනාව"
+    },
+    "plans": {
+      "yearly": {
+        "title": "වාර්ෂිකව",
+        "only": "{{price}} පමණයි",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
+      },
+      "monthly": {
+        "title": "මාසිකව",
+        "subtitle": "ඕනෑම වේලාවක අවලංගු කරන්න",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "සතිපතා",
+        "subtitle": "ඕනෑම වේලාවක අවලංගු කරන්න",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "දින 3ක් නොමිලේ, එහෙනම්"
+      }
+    },
+    "frequency": {
+      "perWeek": "සතියකට",
+      "perMonth": "මසකට"
+    },
+    "cta": "දිගටම කරගෙන යන්න",
+    "ctaFreeTrial": "එය නොමිලේ උත්සාහ කරන්න",
+    "legal": {
+      "terms": "කොන්දේසි",
+      "privacy": "පෞද්ගලිකත්වය"
+    },
+    "premium": {
+      "headline": "සියලුම වාරික AI එක සැලසුමකින් || ජංගම යෙදුම් paywall UI",
+      "subtitleLine1": "කතාබස් කරන්න, කේත කරන්න, සාදන්න, සහ සැලසුම් කරන්න",
+      "subtitleLine2": "උසස් මාදිලි සමඟ.",
+      "enableTrial": "නොමිලේ අත්හදා බැලීම සබල කරන්න || ජංගම යෙදුම් paywall UI",
+      "annual": "වාර්ෂික",
+      "saveBadge": "83% ඉතිරි කරන්න",
+      "year": "වසර",
+      "week": "සතිය",
+      "termsOfUse": "භාවිත නියමයන් || ජංගම යෙදුම් paywall UI",
+      "privacyPolicy": "රහස්‍යතා ප්‍රතිපත්තිය"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "පණිවිඩය...",
+    "createImages": "රූප සාදන්න",
+    "generateAiArtwork": "AI කලා නිර්මාණ ජනනය කරන්න",
+    "camera": "ඡායාරූප උඩුගත කරන්න",
+    "takeOrSelectPhotos": "ඡායාරූප තෝරන්න",
+    "search": "සොයන්න",
+    "findInformation": "තොරතුරු සොයන්න",
+    "findRecentInfo": "මෑත තොරතුරු සොයන්න",
+    "removeImage": "රූපය ඉවත් කරන්න",
+    "messageInput": "පණිවිඩ ආදානය",
+    "clearInput": "පැහැදිලි ආදානය",
+    "quickActionsLabel": "ඉක්මන් ක්‍රියා",
+    "hideQuickActions": "ඉක්මන් ක්‍රියා සඟවන්න",
+    "showQuickActions": "ඉක්මන් ක්‍රියා පෙන්වන්න",
+    "startVoiceInput": "හඬ ආදානය ආරම්භ කරන්න",
+    "sendMessage": "පණිවිඩයක් යවන්න",
+    "offline": "නොබැඳි",
+    "stop": "නවත්වන්න",
+    "streaming": "ප්‍රවාහය…",
+    "closeRecorder": "රෙකෝඩරය වසන්න",
+    "insertTranscript": "යවන්න",
+    "scrollToLatest": "නවතම පණිවිඩය වෙත අනුචලනය කරන්න",
+    "copyMessage": "පණිවිඩය පිටපත් කරන්න",
+    "copyMessageHint": "මෙම පණිවිඩය පසුරු පුවරුවට පිටපත් කරන්න",
+    "shareMessage": "පණිවිඩය බෙදා ගන්න",
+    "shareMessageHint": "මෙම පණිවිඩය බෙදාගන්න",
+    "regenerateResponse": "ප්‍රතිචාරය පුනර්ජනනය කරන්න",
+    "regenerateResponseHint": "නව ප්‍රතිචාරයක් ජනනය කරන්න",
+    "copyCode": "කේතය පිටපත් කරන්න",
+    "copied": "පිටපත් කර ඇත",
+    "image": "රූපය",
+    "loading": "පූරණය වෙමින්...",
+    "loadingChat": "කතාබස් පූරණය වෙමින්...",
+    "offlineBanner": "ඔබ නොබැඳිය. පණිවිඩ යැවිය නොහැක.",
+    "offlineError": "අන්තර්ජාල සම්බන්ධතාවයක් නොමැත. කරුණාකර ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
+    "imagePickerErrorTitle": "රූප පිකර් දෝෂයකි",
+    "imagePickerErrorMessage": "ඔබගේ ඡායාරූප වෙත ප්‍රවේශ විය නොහැක. කරුණාකර නැවත උත්සාහ කරන්න.",
+    "messageTooLong": "පණිවිඩය දිග වැඩියි ({{length}}). සීමාව {{limit}} වේ.",
+    "sendFailed": "පණිවිඩ යැවීමට අසමත් විය. කරුණාකර නැවත උත්සාහ කරන්න.",
+    "modelNoImageSupport": "තෝරාගත් ආකෘතිය රූප සඳහා සහය නොදක්වයි. කරුණාකර වෙනස් ආකෘතියක් තෝරන්න.",
+    "voiceStartFailed": "හඬ ආරම්භ කිරීමට නොහැකි විය.",
+    "voiceNoSpeechDetected": "හඬක් හඳුනා ගත්තේ නැත. කරුණාකර නැවත උත්සාහ කරන්න.",
+    "emptyTitle": "මට උදව් කළ හැක්කේ කෙසේද?",
+    "emptySubtitle": "AI සමඟ සංවාදයක් ආරම්භ කරන්න",
+    "privateTitle": "පුද්ගලික කතාබස්",
+    "privateSubtitle": "මෙම කතාබස් ඔබගේ කතාබස් ඉතිහාසයේ දිස් නොවනු ඇත",
+    "startPrivateChat": "පුද්ගලික කතාබස් ආරම්භ කරන්න",
+    "endPrivateChat": "පුද්ගලික කතාබස් අවසන් කරන්න",
+    "permissions": {
+      "photosTitle": "ඡායාරූප අවසරය අවශ්‍යයි",
+      "photosMessage": "පින්තූර තේරීමට ඡායාරූප ප්‍රවේශය අවශ්‍ය වේ.",
+      "voiceTitle": "හඬ අවසර අවශ්‍යයි",
+      "voiceMessage": "හඬ භාවිත කිරීමට මයික්‍රෆෝනය සහ කථන ප්‍රවේශය අවශ්‍ය වේ."
+    },
+    "activity": {
+      "analyzingImages": "පින්තූර විශ්ලේෂණය කරමින්...",
+      "searching": "සොයමින්...",
+      "thinking": "සිතමින්..."
+    },
+    "webSearch": {
+      "title": "වෙබ් සෙවුම්",
+      "subtitle": "මෑත තොරතුරු සොයන්න",
+      "label": "වෙබ් සෙවුම්",
+      "enable": "වෙබ් සෙවීම සබල කරන්න",
+      "disable": "වෙබ් සෙවීම අබල කරන්න",
+      "toggleLabel": "වෙබයේ සොයන්න"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "වේගයෙන් දර්ශන නිර්මාණය කරන්න.",
+      "subtitle": "එක් ස්ථානයක දෘශ්‍ය වත්කම් උත්පාදනය කරන්න, පිරිපහදු කරන්න, සහ ප්‍රකාශනය කරන්න.",
+      "cta": "විවෘත කරන්න"
+    },
+    "quickActions": {
+      "createImages": "රූප සාදන්න",
+      "openCamera": "කැමරාව විවෘත කරන්න",
+      "editImage": "රූපය සංස්කරණය කරන්න",
+      "startVoice": "හඬ ආරම්භ කරන්න",
+      "assistants": "සහායකයින්"
+    },
+    "listening": "සවන් දෙමින්...",
+    "startRecording": "පටිගත කිරීම ආරම්භ කරන්න...",
+    "assistantHeader": {
+      "unavailableTitle": "සහායක නොමැත",
+      "unavailableDescription": "අපට මෙම සහායක පූරණය කළ නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න.",
+      "ready": "උදව් කිරීමට සූදානම්"
+    },
+    "actions": {
+      "copy": "පිටපත් කරන්න",
+      "share": "බෙදාගන්න",
+      "regenerate": "නැවත උත්පාදනය කරන්න",
+      "retryFromHere": "මෙතැන් සිට නැවත උත්සාහ කරන්න",
+      "report": "වාර්තා කරන්න",
+      "cancel": "අවලංගු කරන්න"
+    },
+    "markdown": {
+      "copy": "පිටපත් කරන්න",
+      "copied": "පිටපත් කර ඇත",
+      "table": "වගුව",
+      "watchVideo": "වීඩියෝව නරඹන්න",
+      "wikipedia": "විකිපීඩියාව",
+      "link": "සබැඳිය",
+      "note": "සටහන",
+      "warning": "අවවාදයයි",
+      "tip": "ඉඟිය"
+    },
+    "messageActionTitle": "පණිවිඩය",
+    "status": {
+      "sending": "යවමින්...",
+      "failed": "අසාර්ථකයි",
+      "sent": "යවා ඇත"
+    },
+    "suggestions": {
+      "writeStory": "නිර්මාණාත්මක කතාවක් ලියන්න",
+      "writeStorySubtitle": "ඉන්ද්‍රජාලික වික්‍රමය ගැන",
+      "planTravel": "සංචාරක ගමන් සැලැස්මක් සැලසුම් කරන්න",
+      "planTravelSubtitle": "පුදුම නිවාඩුවක් සඳහා",
+      "explainConcept": "මෙම සංකල්පය පැහැදිලි කරන්න",
+      "explainConceptSubtitle": "සරල වචන වලින්",
+      "planDay": "මගේ දවස සැලසුම් කරන්න",
+      "planDaySubtitle": "ඵලදායිතා ඉඟි සමඟ"
+    },
+    "home": {
+      "eyebrow": "මාතෘකාවක් තෝරන්න",
+      "title": "ඔබට කුමක් කිරීමට අවශ්‍යද?",
+      "subtitle": "දිශාවක් තෝරන්න, පසුව ශක්තිමත් විමසුමකින් ආරම්භ කරන්න.",
+      "pickPromptTitle": "ආරම්භ කිරීමට ප්‍රේරකයක් තෝරන්න",
+      "changeTopic": "වෙනත් මාතෘකාවක් තෝරන්න",
+      "intents": {
+        "summarize": "පෙළ සාරාංශ කරන්න",
+        "summarizeShort": "සාරාංශ කරන්න",
+        "summarizeHint": "ලිපි, සටහන්, හඬ මතක සටහන්, දිගු නූල්",
+        "plan": "සැලැස්මක් හදන්න",
+        "planHint": "සංචාර, චර්යාවන්, අයවැය, නියමිත කාලසීමාවන්, ජීවිතයේ වෙනස්කම්",
+        "brainstorm": "මොළ කුණාටුව",
+        "brainstormHint": "අදහස්, දීමනා, නම්, අන්තර්ගතය, පැති ව්‍යාපෘති",
+        "analyze": "දත්ත විශ්ලේෂණය කරන්න",
+        "analyzeHint": "වියදම්, ප්‍රතිපෝෂණ, ප්‍රමිතික, පුරුදු, කාර්ය සාධනය"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "ආරම්භක සංක්ෂිප්තයක් සාදන්න",
+          "founderBriefSubtitle": "ප්‍රධාන අවදානම්, තීරණ සහ ඊළඟ පියවර අදින්න.",
+          "classNotesTitle": "මගේ අධ්‍යයන සටහන් පිරිසිදු කරන්න",
+          "classNotesSubtitle": "රළු සටහන් පැහැදිලි අධ්‍යයන මාර්ගෝපදේශයක් බවට පත් කරන්න.",
+          "meetingHandoffTitle": "භාරදීමේ සාරාංශයක් ලියන්න",
+          "meetingHandoffSubtitle": "රැස්වීම්, ඇමතුම් හෝ දිගු අභ්‍යන්තර නූල්වලින් පසුව ප්‍රයෝජනවත් වේ.",
+          "longArticleTitle": "මෙම ලිපිය ඉක්මනින් සාරාංශ කරන්න",
+          "longArticleSubtitle": "දිගු ලිපියක් තියුණු ලෙස ගෙනයාමට ඝණීකරනය කරන්න."
+        },
+        "plan": {
+          "energyResetTitle": "දින 14ක බලශක්ති යළි පිහිටුවීමක් සාදන්න",
+          "energyResetSubtitle": "නින්ද, ආහාර, චලනය සහ අවධානය සඳහා යථාර්ථවාදී සැලැස්මක්.",
+          "mealPlanTitle": "මම ඇත්තටම උයන්න කෑම සැලසුම් කරන්න",
+          "mealPlanSubtitle": "ප්‍රායෝගික, දැරිය හැකි සහ මා සතුව ඇති දේ මත පදනම්ව.",
+          "cityMoveTitle": "නව නගරයකට මගේ ගමන සැලසුම් කරන්න",
+          "cityMoveSubtitle": "එය කාලරාමුව, අයවැය, නිවාස සහ පරිපාලක කාර්යයන් ලෙස බිඳ දමන්න.",
+          "tripEscapeTitle": "අමතක නොවන සති අන්ත පලා යාමක් සැලසුම් කරන්න",
+          "tripEscapeSubtitle": "සාමාන්‍ය ගමන් විස්තරයකට වඩා හොඳ දෙයක්."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "යථාර්ථවාදී පැති කඩිමුඩියක් සොයා ගන්න",
+          "sideHustleSubtitle": "පූර්ණ කාලීනව වැඩ කරන අතරතුර මට ආරම්භ කළ හැකි අදහස්.",
+          "brandAngleTitle": "අමතක නොවන සන්නාම කෝණයක් සොයා ගන්න",
+          "brandAngleSubtitle": "නිෂ්පාදන, නිර්මාපකයින්, නියෝජිතායතන, හෝ පුවත් ලිපි සඳහා ප්‍රයෝජනවත් වේ.",
+          "socialSeriesTitle": "අන්තර්ගත මාලාවක් නිර්මාණය කරන්න",
+          "socialSeriesSubtitle": "ප්‍රේක්ෂක සංඛ්‍යාව වර්ධනය කිරීමට තරම් ස්ථාවර දෙයක්.",
+          "datingIdeasTitle": "නැවුම් අදහස් ඉදිරිපත් කරන්න",
+          "datingIdeasSubtitle": "දින, තෑගි, විස්මයන්, හෝ කල්පනාකාරී දැනෙන සිදුවීම්."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "මගේ මුදල් කාන්දු වන ස්ථානය සොයා බලන්න",
+          "spendingLeaksSubtitle": "රටා, දුර්වල ස්ථාන සහ පහසුම ජයග්‍රහණ පළමුව පෙන්වන්න.",
+          "customerFeedbackTitle": "ප්‍රතිපෝෂණ ප්‍රමුඛතා බවට පත් කරන්න",
+          "customerFeedbackSubtitle": "පොකුරු ඉල්ලීම්, පැමිණිලි, හදිසිතාව සහ බලපෑම.",
+          "habitPatternsTitle": "මගේ පුරුදු වල පැල්ලම් රටා",
+          "habitPatternsSubtitle": "ව්‍යායාම, නින්ද, ජර්නල කිරීම හෝ නාභිගත ලොග සඳහා ප්‍රයෝජනවත් වේ.",
+          "metricsStoryTitle": "ඉලක්කම් වලින් අදහස් කරන්නේ කුමක්ද යන්න පැහැදිලි කරන්න",
+          "metricsStorySubtitle": "වැඩි සංඥා, අඩු පැතුරුම්පත් ශබ්දය."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "සකසමින්...",
+    "tapToUploadImage": "රූපය උඩුගත කිරීමට තට්ටු කරන්න"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "සකසමින්...",
+    "camera": "ඡායාරූප උඩුගත කරන්න",
+    "library": "පුස්තකාලය"
+  },
+  "common": {
+    "ok": "හරි",
+    "retry": "නැවත උත්සාහ කරන්න",
+    "cancel": "අවලංගු කරන්න",
+    "allow": "ඉඩ දෙන්න",
+    "notNow": "දැන් නැහැ",
+    "openSettings": "විවෘත සැකසුම්",
+    "close": "වසන්න",
+    "save": "සුරකින්න",
+    "tryAgain": "නැවත උත්සාහ කරන්න"
+  },
+  "rateUs": {
+    "title": "Cloud AI භුක්ති විඳිනවාද?",
+    "subtitle": "ඔබගේ ප්‍රතිපෝෂණය අපට වැඩිදියුණු කිරීමට උපකාරී වේ. App Store හි අපව ඇගයීමට ඔබ කැමතිද?",
+    "rateNow": "දැන් අගයන්න",
+    "maybeLater": "සමහර විට පසුව",
+    "dontAskAgain": "නැවත අසන්න එපා"
+  },
+  "oneTimeOffer": {
+    "title": "එක් වරක් පිරිනැමීම",
+    "discount": "{{percent}}% අඩුයි",
+    "subtitle": "ඔබ මෙම පිරිනැමීම නැවත නොදකිනු ඇත.",
+    "badgeLine1": "සුවිශේෂී",
+    "badgeLine2": "එක් වරක් පිරිනැමීම",
+    "upgradeNow": "{{price}} සඳහා දැන් උත්ශ්‍රේණි කරන්න",
+    "loadingPrice": "පූරණය වෙමින්...",
+    "termsOfUse": "භාවිත නියමයන්",
+    "privacyPolicy": "රහස්‍යතා ප්‍රතිපත්තිය",
+    "accessTitle": "වෙත අසීමිත ප්රවේශය",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4 වෙත අසීමිත ප්‍රවේශය",
+      "geminiPro": "Gemini Pro වෙත ප්‍රවේශය",
+      "grokInsights": "නැවුම් තීක්ෂ්ණ බුද්ධිය සඳහා Grok භාවිතා කරන්න",
+      "priorityAccess": "ප්‍රමුඛතා ප්‍රවේශය සහ වේගවත් ප්‍රතිචාර"
+    },
+    "bestValue": "හොඳම වටිනාකම",
+    "annualPremium": "වාර්ෂික වාරිකය",
+    "oneTimePayment": "එක් වරක් ගෙවීම",
+    "wasPrice": "විය",
+    "continue": "දිගටම කරගෙන යන්න",
+    "restore": "ප්‍රතිෂ්ඨාපනය කරන්න",
+    "terms": "කොන්දේසි",
+    "privacy": "පෞද්ගලිකත්වය",
+    "successTitle": "සාර්ථකයි!",
+    "successMessage": "ඔබගේ මිලදී ගැනීම සඳහා ස්තූතියි! ඉදිරි මාස 12 සඳහා වාරික ප්‍රවේශය භුක්ති විඳින්න.",
+    "errorTitle": "මිලදී ගැනීම අසාර්ථක විය",
+    "errorMessage": "යමක් වැරදී ඇත. කරුණාකර නැවත උත්සාහ කරන්න.",
+    "restoreSuccessTitle": "ප්‍රතිෂ්ඨාපනය කළා",
+    "restoreSuccessMessage": "ඔබගේ මිලදී ගැනීම් ප්‍රතිසාධනය කර ඇත.",
+    "restoreErrorTitle": "ප්‍රතිසාධනය අසාර්ථක විය",
+    "restoreErrorMessage": "ප්‍රතිසාධනය සඳහා මිලදී ගැනීම් කිසිවක් හමු නොවීය.",
+    "unavailableTitle": "මිලදී ගැනීම් නොමැත",
+    "unavailableMessage": "Android බිල්පත් තවමත් වින්‍යාස කර නැත."
+  },
+  "rewards": {
+    "header": {
+      "title": "විපාක",
+      "openMenu": "විවෘත මෙනුව",
+      "goBack": "ආපසු යන්න"
+    },
+    "pointsHero": {
+      "totalBalance": "මුළු ශේෂය",
+      "seeYourRewards": "ඔබේ ත්‍යාග බලන්න"
+    },
+    "streakTracker": {
+      "title": "ඩේලි ස්ට්රීක්",
+      "subtitle": "එය දිගටම කරගෙන යන්න! ඔබ ගිනිගෙන ඇත.",
+      "days": "දින",
+      "prize": "ත්යාගය",
+      "dayLabel": "දවස {{number}}",
+      "nextReward": "මීළඟ ත්‍යාගය: {{amount}} in {{time}}",
+      "coins": "කාසි"
+    },
+    "sections": {
+      "availableQuests": "ලබා ගත හැකි Quests",
+      "completedQuests": "සම්පූර්ණ කරන ලද Quests",
+      "availableRewards": "ලබා ගත හැකි ත්‍යාග",
+      "needsMoreCoins": "තව කාසි අවශ්‍යයි"
+    },
+    "balances": {
+      "rewardCoins": "ත්‍යාග කාසි",
+      "imageCredits": "රූප ණය"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "පින්තුර 50ක්",
+        "imageCredits200": "පින්තුර 200ක්",
+        "imageCredits600": "පින්තුර 600ක්",
+        "weeklyPremium": "සතිපතා වාරිකය",
+        "secretBox": "රහස් පෙට්ටිය"
+      },
+      "rewardDescriptions": {
+        "secretBox": "ඇතුළත අභිරහස් විපාක"
+      },
+      "alerts": {
+        "comingSoonTitle": "ළඟදීම එනවා",
+        "comingSoonMessage": "මෙම ත්‍යාගය තවමත් නොමැත.",
+        "notEnoughCoinsTitle": "ප්රමාණවත් තරම් කාසි නැත",
+        "notEnoughCoinsMessage": "මෙම ත්‍යාගය අගුලු හැරීමට ඔබට තවත් ත්‍යාග කාසි අවශ්‍ය වේ.",
+        "errorTitle": "දෝෂයකි",
+        "couldNotOpenBox": "පෙට්ටිය විවෘත කිරීමට නොහැකි විය.",
+        "couldNotRedeem": "ත්‍යාගය මුදා ගැනීමට නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න.",
+        "mysteryReward": "අභිරහස් විපාකය"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "දෛනික පිවිසුම",
+        "description": "ඔබේ ප්‍රවාහය තබා ගැනීමට අද යෙදුම විවෘත කරන්න",
+        "message": "ඔබ සෑම දිනකම යෙදුම විවෘත කරන විට මෙම ගවේෂණය ස්වයංක්‍රීයව සම්පූර්ණ වේ."
+      },
+      "shareFacebook": {
+        "title": "ෆේස්බුක් හි බෙදා ගන්න",
+        "description": "ෆේස්බුක් එකේ අපි ගැන පෝස්ට් කරන්න"
+      },
+      "shareTwitter": {
+        "title": "Twitter හි බෙදාගන්න",
+        "description": "ඔබේ අත්දැකීම් ට්වීට් කරන්න"
+      },
+      "shareInstagram": {
+        "title": "Instagram හි බෙදාගන්න",
+        "description": "කතාවක් හෝ පළ කිරීමක් බෙදා ගන්න"
+      },
+      "shareExperience": {
+        "title": "ඔබේ අත්දැකීම් බෙදාගන්න",
+        "description": "ඔබ යෙදුමට කැමති මන්දැයි මිතුරන්ට කියන්න"
+      },
+      "share": {
+        "genericMessage": "මම කතාබස් සහ රූප උත්පාදනය සඳහා මෙම AI යෙදුම භාවිතා කරමි. එය පරීක්ෂා කරන්න: {{url}}",
+        "facebookQuote": "මෙම AI යෙදුම පරීක්ෂා කරන්න!",
+        "twitterText": "මම මෙම AI යෙදුම උත්සාහ කරමි, එය ඉතා සිසිල් ය.",
+        "instagramMessage": "මෙම AI යෙදුම පරීක්ෂා කරන්න: {{url}}"
+      },
+      "store": {
+        "errorTitle": "දෝෂයකි",
+        "errorMessage": "ගබඩා පිටුව විවෘත කිරීමට නොහැකි විය."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "ගවේෂණය සම්පූර්ණයි",
+        "description": "ගවේෂණය අවසන්",
+        "points": "+{{points}} ලකුණු",
+        "close": "වසන්න"
+      },
+      "rewardSuccess": {
+        "error": "දෝෂයකි",
+        "success": "සාර්ථකයි",
+        "somethingWentWrong": "යමක් වැරදී ඇත",
+        "rewardUnlocked": "ත්‍යාග අගුලු හරින ලදී",
+        "credits": "ණය",
+        "close": "වසන්න",
+        "okay": "හරි"
+      },
+      "secretBox": {
+        "pill": "රහස් පෙට්ටිය",
+        "rewardUnlocked": "රිවෝඩ් අගුළු හරින ලදී",
+        "shufflingRewards": "ත්‍යාග මාරු කරමින්...",
+        "imageCreditsAdded": "ඔබගේ ගිණුමට පින්තූර බැර එකතු කරන ලදී",
+        "continue": "දිගටම කරගෙන යන්න",
+        "revealing": "හෙළිදරව් කරමින්...",
+        "prizeTiers": {
+          "lucky": "වාසනාවන්තයි",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "මිථ්‍යාව"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "ඔබේ දෛනික කාසි ලබාගන්න",
+      "subtitle": "දිනපතා එන්න — ත්‍යාගය වැඩිවේ.",
+      "cta": "ලියාපදිංචිය",
+      "claimed": "ලැබුණා! +{{amount}} කාසි",
+      "later": "පසුව"
+    }
+  },
+  "app": {
+    "version": "අනුවාදය {{version}}",
+    "offlineBanner": "ඔබ නොබැඳිය",
+    "launch": {
+      "accessibilityLabel": "ආරම්භය Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, ඔබ සිටින විට සූදානම්"
+    },
+    "errors": {
+      "modelsLoadTitle": "ආකෘති පූරණය කිරීමට අසමත් විය",
+      "modelsLoadMessage": "AI මාදිලි පූරණය කළ නොහැක. යෙදුම පෙරනිමි මාදිලි භාවිතා කරනු ඇත. කරුණාකර ඔබගේ අන්තර්ජාල සම්බන්ධතාවය පරීක්ෂා කරන්න.",
+      "modelsLoadTimeout": "ආකෘති පූරණය කිරීමට වැඩි කාලයක් ගත විය. යෙදුම පෙරනිමි මාදිලි භාවිතා කරනු ඇත. කරුණාකර නැවත උත්සාහ කරන්න.",
+      "modelsLoadNetwork": "අන්තර්ජාල සම්බන්ධතාවයක් නොමැත. යෙදුම පෙරනිමි මාදිලි භාවිතා කරනු ඇත. කරුණාකර ඔබගේ සම්බන්ධතාවය පරීක්ෂා කරන්න.",
+      "deviceIdTitle": "ආරම්භක දෝෂය",
+      "deviceIdMessage": "උපාංග හැඳුනුම්පත ආරම්භ කිරීමට අසමත් විය. සමහර විශේෂාංග නිවැරදිව ක්‍රියා නොකරනු ඇත.",
+      "storageTitle": "ගබඩා දෝෂය",
+      "storageMessage": "දේශීය ගබඩාවට ප්‍රවේශ විය නොහැක. සමහර විශේෂාංග නිවැරදිව ක්‍රියා නොකරනු ඇත.",
+      "crashTitle": "යමක් වැරදී ඇත.",
+      "crashSubtitle": "කරුණාකර නැවත උත්සාහ කරන්න.",
+      "crashLabel": "යෙදුම බිඳ වැටුණි"
+    },
+    "proxyErrors": {
+      "genericTitle": "යමක් වැරදී ඇත",
+      "genericMessage": "කරුණාකර නැවත උත්සාහ කරන්න.",
+      "rateLimitTitle": "ඉල්ලීම් වැඩියි",
+      "rateLimitMessage": "අපි බොහෝ ඉල්ලීම් ඉටු කරනවා. කරුණාකර මොහොතකින් නැවත උත්සාහ කරන්න.",
+      "rateLimitRetryAfter": "අපි බොහෝ ඉල්ලීම් ඉටු කරනවා. කරුණාකර තත්පර {{seconds}} කින් පමණ නැවත උත්සාහ කරන්න.",
+      "restrictedTitle": "සීමා කළ අන්තර්ගතය",
+      "restrictedMessage": "මෙම ඉල්ලීම ආරක්ෂිත පෙරහන් මගින් අවහිර කර ඇත.",
+      "insufficientCoinsTitle": "ප්රමාණවත් තරම් කාසි නැත",
+      "insufficientCoinsMessage": "මෙම ඉල්ලීම සඳහා ඔබගේ වත්මන් ශේෂය ඉතා අඩුය.",
+      "imageUnavailableTitle": "රූපය නොමැත",
+      "imageUnavailableMessage": "ජනනය කරන ලද රූප ගොනුව තාවකාලිකව නොතිබුණි. කරුණාකර නැවත උත්සාහ කරන්න.",
+      "authorizationTitle": "අවසර දීමේ ගැටලුව",
+      "authorizationMessage": "අපට ඔබගේ ගිණුම සත්‍යාපනය කිරීමට නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න.",
+      "serverTitle": "සර්වර් හික්ප්",
+      "serverMessage": "අපගේ සේවාදායකයන්ට ගැටළු ඇති විය. කරුණාකර ඉක්මනින් නැවත උත්සාහ කරන්න.",
+      "timeoutTitle": "ගොඩක් කල් යනවා",
+      "timeoutMessage": "ඉල්ලීම කල් ඉකුත් විය. කරුණාකර නැවත උත්සාහ කරන්න.",
+      "networkTitle": "සම්බන්ධයක් නැත",
+      "networkMessage": "අන්තර්ජාල සම්බන්ධතාවයක් නොමැත. කරුණාකර ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න.",
+      "requestTitle": "ඉල්ලීම් ප්රශ්නය",
+      "requestMessage": "ඔබගේ ඉල්ලීමෙහි යම් දෙයක් වැරදී ඇත. කරුණාකර නැවත උත්සාහ කරන්න."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "වාරික සක්රිය කරන්න",
+    "activateMessage": "ඔබට සමාලෝචක වාරිකය සක්‍රිය කිරීමට අවශ්‍යද?",
+    "activateAction": "සක්රිය කරන්න",
+    "deactivateTitle": "වාරිකය අක්‍රිය කරන්න",
+    "deactivateMessage": "ඔබට සමාලෝචක වාරිකය අක්‍රිය කිරීමට අවශ්‍යද?",
+    "deactivateAction": "අක්රිය කරන්න"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "දෛනික විපාකය",
+      "body": "ඔබේ දෛනික කාසි අතපසු නොකරන්න - මධ්‍යම රාත්‍රියට පෙර හිමිකම් කියන්න."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "ඔබේ දෛනික කාසි අතපසු කර නොගන්න",
+      "body": "ඔබේ අඛණ්ඩතාව රැකෙන්නටත් කාසි වැඩිවෙන්නටත් අපි දිනකට එක් සිහිකැඳවීමක් යවනවා. ස්පෑම් නැහැ, ඕනෑම වේලාවක නවත්වන්න පුළුවන්.",
+      "enable": "සිහිකැඳවීම් සක්‍රීය කරන්න",
+      "skip": "දැන් නොවේ"
+    }
+  }
+}

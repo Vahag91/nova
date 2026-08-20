@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, Pressable } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Haptic from 'react-native-haptic-feedback';
+import { useTranslation } from 'react-i18next';
 import { colors } from '../../../styles/colors';
 
 // CONFIG: Compact but readable
@@ -62,6 +63,7 @@ const extractTableData = (node) => {
 
 // --- 2. COMPONENT ---
 export const MarkdownTable = ({ node }) => {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const { headers, rows } = useMemo(() => extractTableData(node), [node]);
 
@@ -84,10 +86,10 @@ export const MarkdownTable = ({ node }) => {
     <View style={styles.wrapper}>
       {/* HEADER BAR */}
       <View style={styles.topBar}>
-        <Text style={styles.topBarTitle}>TABLE</Text>
+        <Text style={styles.topBarTitle}>{t('chat.markdown.table')}</Text>
         <Pressable onPress={handleCopy} hitSlop={10}>
           <Text style={[styles.copyText, copied && { color: '#4BB543' }]}>
-            {copied ? 'Copied' : 'Copy'}
+            {copied ? t('chat.markdown.copied') : t('chat.markdown.copy')}
           </Text>
         </Pressable>
       </View>

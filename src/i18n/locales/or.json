@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "ଏକ ମଡେଲ୍ ଚୟନ କରନ୍ତୁ |",
+    "searchPlaceholder": "ସନ୍ଧାନ ମଡେଲଗୁଡିକ ...",
+    "noModelsFound": "କ models ଣସି ମଡେଲ ମିଳିଲା ନାହିଁ |",
+    "noModelsAvailable": "କ models ଣସି ମଡେଲ ଉପଲବ୍ଧ ନାହିଁ |",
+    "currentModel": "ସାମ୍ପ୍ରତିକ ମଡେଲ୍: {{name}} | ମଡେଲ୍ ପରିବର୍ତ୍ତନ କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ |",
+    "openHint": "ମଡେଲ୍ ଚୟନ ମେନୁ ଖୋଲିବ |",
+    "closeLabel": "ମଡେଲ୍ ଚୟନକର୍ତ୍ତା ବନ୍ଦ କରନ୍ତୁ |",
+    "searchLabel": "ମଡେଲଗୁଡିକ ସନ୍ଧାନ କରନ୍ତୁ |",
+    "searchHint": "ଉପଲବ୍ଧ ମଡେଲଗୁଡିକ ଫିଲ୍ଟର୍ କରିବାକୁ ଟାଇପ୍ କରନ୍ତୁ |",
+    "modelLabel": "000P000⟭ ମଡେଲ୍ | {{name}}",
+    "selectHint": "{{name}} ମଡେଲ୍ ଚୟନ କରନ୍ତୁ |",
+    "currentlySelected": "ସମ୍ପ୍ରତି ମନୋନୀତ ମଡେଲ୍ |",
+    "genericModel": "000P000⟭ ମଡେଲ୍ | {{provider}}",
+    "badges": {
+      "new": "ନୂଆ",
+      "best": "ସର୍ବୋତ୍ତମ"
+    }
+  },
+  "models": {
+    "gpt-4o": "ସବୁଠାରୁ ଶକ୍ତିଶାଳୀ AI ମଡେଲ୍ |",
+    "gpt-4o-mini": "ଦ day ନନ୍ଦିନ କାର୍ଯ୍ୟ ପାଇଁ ଶୀଘ୍ର |",
+    "gpt-5": "ସବୁଠାରୁ ଶକ୍ତିଶାଳୀ ସର୍ବ-ଉଦ୍ଦେଶ୍ୟ AI |",
+    "gpt-5-chat-latest": "ଚାଟ୍ ଏବଂ ସଂଳାପ ପାଇଁ ଅପ୍ଟିମାଇଜ୍ |",
+    "gpt-5-mini": "ଦ୍ରୁତ ଏବଂ ନିର୍ଭରଯୋଗ୍ୟ GPT-5 |",
+    "gpt-5.4-nano": "ସରଳ କାର୍ଯ୍ୟ ପାଇଁ ହାଲୁକା ମଡେଲ୍ |",
+    "o4-mini": "ଦକ୍ଷ ଯୁକ୍ତିଯୁକ୍ତ ମଡେଲ୍ |",
+    "gpt-4.1-mini": "କମ୍ପାକ୍ଟ, ସକ୍ଷମ GPT-4.1",
+    "claude-3-haiku": "ଦ୍ରୁତ ଏବଂ କେନ୍ଦ୍ରିତ ଆନ୍ଥ୍ରୋପିକ୍ AI |",
+    "claude-3.7-sonnet": "ଆନ୍ଥ୍ରୋପିକ୍ ଦ୍ୱାରା ବିଶୋଧିତ ଯୁକ୍ତି |",
+    "gemini-2.5-Flash": "ଗୁଗୁଲର ସବୁଠାରୁ ଉନ୍ନତ ମଡେଲ୍ |",
+    "gemini-2.5-flash": "ଗୁଗୁଲର ସବୁଠାରୁ ଉନ୍ନତ ମଡେଲ୍ |",
+    "gemini-2.0-flash": "ଗୁଗୁଲ୍ ଏଇ ଶୀଘ୍ର ଏବଂ ସଠିକ୍ |"
+  },
+  "modelDescriptions": {
+    "most_powerful": "ସବୁଠାରୁ ଶକ୍ତିଶାଳୀ AI ମଡେଲ୍ |",
+    "fast_everyday": "ଦ day ନନ୍ଦିନ କାର୍ଯ୍ୟ ପାଇଁ ଶୀଘ୍ର |",
+    "fast_reasoning": "ଭଲ ଯୁକ୍ତି ସହିତ ଦ୍ରୁତ ମଡେଲ୍ |",
+    "great_reasoning": "ଉନ୍ନତ ଯୁକ୍ତିଯୁକ୍ତ ମଡେଲ୍ |",
+    "coding_reasoning": "ଉନ୍ନତ କୋଡିଂ ଏବଂ ଯୁକ୍ତି |",
+    "better_coding": "କୋଡିଂ ଏବଂ ଯୁକ୍ତି ପାଇଁ ଭଲ |",
+    "best_overall": "ସର୍ବଶ୍ରେଷ୍ଠ ଚାରିଆଡେ AI ମଡେଲ୍ |",
+    "best_google": "ଗୁଗୁଲର ସର୍ବୋତ୍ତମ ମଡେଲ୍ |",
+    "best_xai": "xAI ର ସବୁଠାରୁ ଶକ୍ତିଶାଳୀ ମଡେଲ୍ |",
+    "creative_focus": "ସୃଜନଶୀଳ ଲେଖା ପାଇଁ ଉତ୍ତମ |",
+    "code_helper": "କୋଡିଂ ସହାୟତା ପାଇଁ ବହୁତ ଭଲ |",
+    "chat_focus": "ଚାଟିଂ ପାଇଁ ଅପ୍ଟିମାଇଜ୍ |",
+    "long_context": "ଲମ୍ବା ପ୍ରସଙ୍ଗ ପାଇଁ ଉତ୍ତମ |",
+    "budget_friendly": "ବଜେଟ୍ ଅନୁକୂଳ AI ମଡେଲ୍ |",
+    "ultra_fast": "ଅଲ୍ଟ୍ରା ଦ୍ରୁତ ପ୍ରତିକ୍ରିୟା |",
+    "safe_default": "ନିରାପଦ ଡିଫଲ୍ଟ ପସନ୍ଦ |",
+    "multilingual": "ଶକ୍ତିଶାଳୀ ବହୁଭାଷୀ ସମର୍ଥନ |",
+    "vision_strong": "ପ୍ରତିଛବି ଏବଂ ଦର୍ଶନ ସହିତ ଉତ୍ତମ |",
+    "data_analysis": "ତଥ୍ୟ ବିଶ୍ଳେଷଣ ପାଇଁ ଭଲ |",
+    "structured_tasks": "ସଂରଚନା କାର୍ଯ୍ୟ ପାଇଁ ଭଲ |",
+    "everyday_helper": "ପ୍ରତିଦିନ ସହାୟକ ମଡେଲ |",
+    "concise_answers": "ସଂକ୍ଷିପ୍ତ, ସଂକ୍ଷିପ୍ତ ଉତ୍ତର |",
+    "detailed_answers": "ଷ୍ଟେପ୍-ଷ୍ଟେପ୍ ଉତ୍ତରଗୁଡିକର ବିସ୍ତୃତ ବିବରଣୀ |",
+    "experimental": "ପରୀକ୍ଷାମୂଳକ ପରବର୍ତ୍ତୀ-ଜେନ ମଡେଲ |",
+    "reliable_classic": "ନିର୍ଭରଯୋଗ୍ୟ କ୍ଲାସିକ୍ ମଡେଲ୍ |",
+    "lightweight": "ହାଲୁକା, କମ୍ ମୂଲ୍ୟର ମଡେଲ୍ |",
+    "chatty_personal": "ଅଧିକ ବନ୍ଧୁତ୍ୱପୂର୍ଣ୍ଣ ଏବଂ ବ୍ୟକ୍ତିଗତ |",
+    "pro_users": "ଶକ୍ତି ବ୍ୟବହାରକାରୀଙ୍କ ପାଇଁ ସର୍ବୋତ୍ତମ |",
+    "research_helper": "ଅନୁସନ୍ଧାନ ଏବଂ ଟିପ୍ପଣୀ ପାଇଁ ଭଲ |",
+    "reasoning_strong": "ଉନ୍ନତ ଯୁକ୍ତିଯୁକ୍ତ ମଡେଲ୍ |"
+  },
+  "providers": {
+    "openai": "000P000⟭",
+    "anthropic": "ଆନ୍ଥ୍ରୋପିକ୍ |",
+    "google": "ଗୁଗୁଲ୍",
+    "xai": "xAI",
+    "other": "ଅନ୍ୟମାନେ |"
+  },
+  "navigation": {
+    "chat": "ନୂଆ ଚାଟ୍ |",
+    "history": "ଇତିହାସ",
+    "rewards": "ଦ Daily ନିକ ପୁରସ୍କାର |",
+    "assistants": "ସହାୟକମାନେ",
+    "imagesStudio": "000P000⟭",
+    "settings": "ସେଟିଂସମୂହ",
+    "recentChats": "ସାମ୍ପ୍ରତିକ ଚାଟ୍ |",
+    "proFeatures": "ପ୍ରୋ ବ features ଶିଷ୍ଟ୍ୟଗୁଡିକ",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "ପ୍ରୋ ବ Features ଶିଷ୍ଟ୍ୟଗୁଡିକ ପ୍ରାପ୍ତ କରନ୍ତୁ |",
+      "subtitle": "ସମସ୍ତ AI ବ Features ଶିଷ୍ଟ୍ୟଗୁଡିକ |"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "000P000⟭",
+    "title": "000P000⟭",
+    "subtitle": "ଗୋଟିଏ ସ୍ଥାନରେ ଭିଜୁଆଲ୍ ସମ୍ପତ୍ତି ସୃଷ୍ଟି, ବିଶୋଧନ ଏବଂ ପ୍ରକାଶନ କର |",
+    "cta": "ଖୋଲନ୍ତୁ |"
+  },
+  "imagesStudio": {
+    "title": "000P000⟭",
+    "selectImages": "ପ୍ରତିଛବିଗୁଡିକ ଚୟନ କରନ୍ତୁ |",
+    "exitSelectionMode": "ଚୟନ ମୋଡ୍ ଛାଡନ୍ତୁ |",
+    "selectAll": "ସମସ୍ତ ଚୟନ କରନ୍ତୁ |",
+    "noImagesYet": "ଏପର୍ଯ୍ୟନ୍ତ କ images ଣସି ପ୍ରତିଛବି ନାହିଁ |",
+    "describeImageHint": "ନିମ୍ନରେ ଆପଣଙ୍କର ପ୍ରତିଛବି ବର୍ଣ୍ଣନା କରନ୍ତୁ ଏବଂ ଜେନେରେଟ୍ ଟ୍ୟାପ୍ କରନ୍ତୁ |",
+    "generatedImagesGallery": "ସୃଷ୍ଟି ପ୍ରତିଛବି ଗ୍ୟାଲେରୀ |",
+    "describeImagePlaceholder": "ଆପଣ ଚାହୁଁଥିବା ପ୍ରତିଛବି ବର୍ଣ୍ଣନା କରନ୍ତୁ…",
+    "deleteConfirmTitle": "ପ୍ରତିଛବିଗୁଡିକ ବିଲୋପ କରନ୍ତୁ |",
+    "deleteConfirmMessage": "ଆପଣ ନିଶ୍ଚିତ କି ଆପଣ ମନୋନୀତ ପ୍ରତିଛବିଗୁଡିକ ବିଲୋପ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି? ଏହି କାର୍ଯ୍ୟକୁ ପୂର୍ବବତ୍ କରାଯାଇପାରିବ ନାହିଁ |",
+    "cancel": "ବାତିଲ୍ କରନ୍ତୁ |",
+    "delete": "ବିଲୋପ କରନ୍ତୁ |",
+    "generate": "ସୃଷ୍ଟି କରନ୍ତୁ |",
+    "generating": "ଉତ୍ପାଦନ…",
+    "latest": "ସର୍ବଶେଷ",
+    "insertToChat": "ଚାଟ୍ କରିବାକୁ ସନ୍ନିବେଶ କରନ୍ତୁ |",
+    "pleaseWait": "ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ…",
+    "processing": "ପ୍ରକ୍ରିୟାକରଣ ...",
+    "tapToUploadImage": "ପ୍ରତିଛବି ଅପଲୋଡ୍ କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ |",
+    "camera": "ଫଟୋ ଅପଲୋଡ୍ କରନ୍ତୁ |",
+    "library": "ଲାଇବ୍ରେରୀ |",
+    "enterPrompt": "ଟେକ୍ସଟ୍-ଟୁ-ଇମେଜ୍ ଜେନେରେସନ୍ ପାଇଁ ଦୟାକରି ଏକ ପ୍ରମ୍ପ୍ଟ ପ୍ରବେଶ କରନ୍ତୁ |",
+    "openInBrowser": "ବ୍ରାଉଜରରେ ଖୋଲନ୍ତୁ |",
+    "makeVariations": "ପରିବର୍ତ୍ତନ କର |",
+    "deleteAllFromGeneration": "ଏହି ପି generation ଼ିରୁ ସମସ୍ତ ବିଲୋପ କରନ୍ତୁ |",
+    "imageOptionsTitle": "ପ୍ରତିଛବି ବିକଳ୍ପଗୁଡ଼ିକ",
+    "imageOptionsMessage": "ଏହି ପ୍ରତିଛବି ସହିତ ଆପଣ କ’ଣ କରିବାକୁ ଚାହାଁନ୍ତି?",
+    "insertMarkdownHeader": "ଏଠାରେ ପ୍ରତିଛବି ଅଛି:",
+    "variationSuffix": "- ପୂର୍ବ ପ୍ରତିଛବିର ପରିବର୍ତ୍ତନ |",
+    "selectedCount": "ମନୋନୀତ |",
+    "selectedCount_one": "ମନୋନୀତ |",
+    "selectedCount_other": "ମନୋନୀତ |",
+    "imageDescriptionInput": "ପ୍ରତିଛବି ବର୍ଣ୍ଣନା ଇନପୁଟ୍",
+    "imageDescriptionHint": "ଆପଣ ସୃଷ୍ଟି କରିବାକୁ ଚାହୁଁଥିବା ପ୍ରତିଛବିର ଏକ ବର୍ଣ୍ଣନା ପ୍ରବେଶ କରନ୍ତୁ |",
+    "openModelSettings": "ମଡେଲ୍ ସେଟିଂସମୂହ ଖୋଲନ୍ତୁ |",
+    "modelSettingsHint": "ମଡେଲ୍ ଏବଂ ସେଟିଙ୍ଗ୍ ପରିବର୍ତ୍ତନ କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ |",
+    "openPhotoGallery": "ଫଟୋ ଗ୍ୟାଲେରୀ ଖୋଲନ୍ତୁ |",
+    "clearInput": "ଇନପୁଟ୍ ସଫା କରନ୍ତୁ |",
+    "generatedImage": "ସୃଷ୍ଟି ପ୍ରତିଛବି |",
+    "autoSelectedModel": "{{mode}} ମୋଡ୍ ପାଇଁ ଅଟୋ-ସିଲେକ୍ଟ {{model}} |",
+    "deleteSelectedConfirmTitle": "ପ୍ରତିଛବିଗୁଡିକ ବିଲୋପ କରନ୍ତୁ |",
+    "deleteSelectedConfirmMessage": "ଆପଣ ନିଶ୍ଚିତ କି ଆପଣ ପ୍ରତିଛବିଗୁଡିକ ବିଲୋପ କରିବାକୁ ଚାହୁଁଛନ୍ତି? ଏହି କାର୍ଯ୍ୟକୁ ପୂର୍ବବତ୍ କରାଯାଇପାରିବ ନାହିଁ |"
+  },
+  "imageStudio": {
+    "generateImage": "ପ୍ରତିଛବି ସୃଷ୍ଟି କରନ୍ତୁ |",
+    "generatingImage": "ପ୍ରତିଛବି ସୃଷ୍ଟି କରୁଛି |",
+    "generateImageHint": "ଆପଣଙ୍କର ବର୍ଣ୍ଣନା ଉପରେ ଆଧାର କରି ଏକ ପ୍ରତିଛବି ସୃଷ୍ଟି କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ |",
+    "imageDescriptionInput": "ପ୍ରତିଛବି ବର୍ଣ୍ଣନା ଇନପୁଟ୍",
+    "imageDescriptionHint": "ଆପଣ ସୃଷ୍ଟି କରିବାକୁ ଚାହୁଁଥିବା ପ୍ରତିଛବିର ଏକ ବର୍ଣ୍ଣନା ପ୍ରବେଶ କରନ୍ତୁ |",
+    "openModelSettings": "ମଡେଲ୍ ସେଟିଂସମୂହ ଖୋଲନ୍ତୁ |",
+    "modelSettingsHint": "ମଡେଲ୍ ଏବଂ ସେଟିଙ୍ଗ୍ ପରିବର୍ତ୍ତନ କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ |",
+    "openPhotoGallery": "ଫଟୋ ଗ୍ୟାଲେରୀ ଖୋଲନ୍ତୁ |",
+    "clearInput": "ଇନପୁଟ୍ ସଫା କରନ୍ତୁ |",
+    "generatedImage": "ସୃଷ୍ଟି ପ୍ରତିଛବି |"
+  },
+  "assistants": {
+    "title": "ସହାୟକମାନେ",
+    "defaultTitle": "ସହକାରୀ",
+    "errorTitle": "କିଛି ଭୁଲ୍ ହୋଇଗଲା |",
+    "errorMessage": "ଏହି ସହାୟକ ଆରମ୍ଭ କରିପାରିବ ନାହିଁ |",
+    "noAssistants": "ଏହି ବର୍ଗରେ କ assist ଣସି ସହାୟକକାରୀ ପାଇଲେ ନାହିଁ |",
+    "selectAssistantHint": "ସହକାରୀ ଚୟନକର୍ତ୍ତା ଖୋଲନ୍ତୁ |",
+    "subtitle": "କୋଡିଂ, ଲେଖା, ବିଶ୍ଳେଷଣ, ଯୋଜନା ଏବଂ ଅଧିକ ପାଇଁ ପ୍ରସ୍ତୁତ କ୍ୟୁରେଟେଡ୍ AI ବିଶେଷଜ୍ଞ |",
+    "searchPlaceholder": "ସହାୟକ ସହାୟକ…",
+    "useAssistant": "ସହାୟକ ବ୍ୟବହାର କରନ୍ତୁ |",
+    "selectAssistant": "ସହାୟକ ବାଛନ୍ତୁ |",
+    "description": "ବର୍ଣ୍ଣନା",
+    "systemPrompt": "ସିଷ୍ଟମ୍ ପ୍ରମ୍ପ୍ଟ |",
+    "chooseModel": "ମଡେଲ୍ ବାଛନ୍ତୁ |",
+    "categoryAll": "ସମସ୍ତ",
+    "categories": {
+      "everyday": "ପ୍ରତିଦିନ |",
+      "life": "ଜୀବନ",
+      "health": "ସ୍ୱାସ୍ଥ୍ୟ",
+      "schoolWork": "ବିଦ୍ୟାଳୟ ଏବଂ କାର୍ଯ୍ୟ",
+      "coding": "କୋଡିଂ",
+      "creative": "ସୃଜନଶୀଳ |",
+      "general": "ଜେନେରାଲ୍ |"
+    },
+    "presets": {
+      "default": {
+        "name": "ଡିଫଲ୍ଟ ସହାୟକ",
+        "description": "ଦ daily ନନ୍ଦିନ ସାମଗ୍ରୀ ପାଇଁ ସନ୍ତୁଳିତ ସାହାଯ୍ୟ |"
+      },
+      "quick": {
+        "name": "ଶୀଘ୍ର ଉତ୍ତରଗୁଡିକ |",
+        "description": "ସଂକ୍ଷିପ୍ତ, ପ୍ରତ୍ୟକ୍ଷ ଉତ୍ତର |"
+      },
+      "planner": {
+        "name": "ଦ Daily ନିକ ଯୋଜନାକାରୀ |",
+        "description": "ତୁମର ଦିନ ଏବଂ ରୁଟିନ୍ ଯୋଜନା କର |"
+      },
+      "recipes": {
+        "name": "ଭୋଜନ ଏବଂ ରେସିପି |",
+        "description": "ତୁମର ଯାହା ଅଛି ତାହା ସହିତ କ’ଣ ରାନ୍ଧିବା |"
+      },
+      "fitness": {
+        "name": "ଫିଟନେସ୍ କୋଚ୍",
+        "description": "ଛୋଟ ଅଭ୍ୟାସ ଏବଂ ଘର ବ୍ୟାୟାମ |"
+      },
+      "money": {
+        "name": "ଟଙ୍କା ବନ୍ଧୁ",
+        "description": "ସରଳ ବଜେଟ୍ ଏବଂ ଖର୍ଚ୍ଚ ଟିପ୍ସ |"
+      },
+      "study": {
+        "name": "ଅଧ୍ୟୟନ ସହାୟକ",
+        "description": "ସରଳ ଭାବରେ ବ୍ୟାଖ୍ୟା କର | ମୋତେ ପ୍ରଶ୍ନ କର |"
+      },
+      "email": {
+        "name": "ଇମେଲ୍ ଏବଂ ପୁନ ume କାର୍ଯ୍ୟ ଆରମ୍ଭ କରନ୍ତୁ |",
+        "description": "ସ୍ୱଚ୍ଛ ଇମେଲ ଏବଂ CV ରେଖା ଲେଖନ୍ତୁ |"
+      },
+      "translator": {
+        "name": "ଅନୁବାଦକ",
+        "description": "ଅନୁବାଦ + ବାକ୍ୟାଂଶ ଶିକ୍ଷା ଦିଅ |"
+      },
+      "travel": {
+        "name": "ଭ୍ରମଣ ସାଙ୍ଗ",
+        "description": "ସରଳ ଯୋଜନା ଏବଂ ପ୍ୟାକ୍ ତାଲିକା |"
+      },
+      "tech": {
+        "name": "ଟେକ୍ ସମର୍ଥନ (ସରଳ)",
+        "description": "ଫୋନ୍, ଆପ୍, ୱାଇ-ଫାଇ ମ ics ଳିକ |"
+      },
+      "summarizer": {
+        "name": "TL; DR Summarizer",
+        "description": "ସଂକ୍ଷିପ୍ତ ବୁଲେଟ୍ + ଏକ-ଲାଇନ୍ TL; DR।"
+      },
+      "gift": {
+        "name": "ଉପହାର ସନ୍ଧାନକାରୀ |",
+        "description": "ବଜେଟ୍ ଏବଂ ଆଗ୍ରହ ଅନୁଯାୟୀ ଧାରଣା |"
+      },
+      "party": {
+        "name": "ଇଭେଣ୍ଟ ପ୍ଲାନର୍ (ଲାଇଟ୍)",
+        "description": "ଏକ ଛୋଟ ପାର୍ଟି ଶୀଘ୍ର ଯୋଜନା କରନ୍ତୁ |"
+      },
+      "social": {
+        "name": "ସୋସିଆଲ୍ ପୋଷ୍ଟ ମେକର୍ |",
+        "description": "ବିକଳ୍ପ ସହିତ ପୋଷ୍ଟଗୁଡିକ ଡ୍ରାଫ୍ଟ କରନ୍ତୁ |"
+      },
+      "interview": {
+        "name": "ସାକ୍ଷାତକାର କୋଚ୍",
+        "description": "ଉତ୍ତରଗୁଡିକ ଅଭ୍ୟାସ କରନ୍ତୁ (STAR) |"
+      },
+      "homefix": {
+        "name": "ହୋମ୍ ଫିକ୍ସ-ଏହା ଗାଇଡ୍ |",
+        "description": "ସରଳ DIY ତ୍ରୁଟି ନିବାରଣ |"
+      },
+      "pet": {
+        "name": "ଗୃହପାଳିତ ପଶୁ ଯତ୍ନ",
+        "description": "ଖାଇବା, ଚାଲିବା, ମ basic ଳିକ ତାଲିମ |"
+      },
+      "mindful": {
+        "name": "ମାନସିକ ମିନିଟ୍ |",
+        "description": "Min-min ମିନିଟ୍ ଶାନ୍ତ ବିରତି |"
+      },
+      "polite": {
+        "name": "ଭଦ୍ର ଲେଖକ |",
+        "description": "ପାଠ୍ୟଗୁଡ଼ିକୁ ପୁନ r ଲିଖନ କରନ୍ତୁ ଏବଂ ସୁନ୍ଦର ଭାବରେ ଉତ୍ତର ଦିଅନ୍ତୁ |"
+      }
+    }
+  },
+  "history": {
+    "title": "ଇତିହାସ",
+    "searchPlaceholder": "ଚାଟ୍ ଖୋଜ…",
+    "newChat": "ନୂଆ ଚାଟ୍ |",
+    "new": "+ ନୂତନ",
+    "search": "ସନ୍ଧାନ କର |",
+    "clearSearch": "ସନ୍ଧାନ ସଫା କରନ୍ତୁ |",
+    "noChatsYet": "ଏପର୍ଯ୍ୟନ୍ତ କ chat ଣସି ଚାଟ୍ ନାହିଁ |",
+    "noResults": "ଏପର୍ଯ୍ୟନ୍ତ କ chat ଣସି ଚାଟ୍ ନାହିଁ |",
+    "startFirstConversation": "ତୁମର ପ୍ରଥମ ବାର୍ତ୍ତାଳାପ ଆରମ୍ଭ କର |",
+    "startChat": "ଚାଟ୍ ଆରମ୍ଭ କରନ୍ତୁ |",
+    "startNewChat": "ଏକ ନୂତନ ଚାଟ୍ ଆରମ୍ଭ କରନ୍ତୁ |",
+    "errorLoadingHistory": "ଇତିହାସ ଧାରଣ କରିବାରେ ତ୍ରୁଟି |",
+    "loading": "ଇତିହାସ ଲୋଡିଂ ...",
+    "renameChat": "ଚାଟ୍ ନାମ ପରିବର୍ତ୍ତନ କରନ୍ତୁ |",
+    "enterNewTitle": "ଏକ ନୂତନ ଆଖ୍ୟା ପ୍ରବେଶ କରନ୍ତୁ |",
+    "deleteChat": "ଚାଟ୍ ବିଲୋପ କରିବେ କି?",
+    "deleteChatMessage": "\"{{title}}\" ଡିଲିଟ୍ ହେବ |",
+    "rename": "ନାମ ପରିବର୍ତ୍ତନ କରନ୍ତୁ |",
+    "unpin": "ଅନ୍ପିନ୍ |",
+    "pin": "ପିନ୍ |",
+    "untitled": "ଆଖ୍ୟାବିହୀନ |"
+  },
+  "settings": {
+    "title": "ସେଟିଂସମୂହ",
+    "model": "ମଡେଲ୍ |",
+    "searchPlaceholder": "ସନ୍ଧାନ ମଡେଲଗୁଡିକ…",
+    "temperatureForCurrentModel": "ସାମ୍ପ୍ରତିକ ମଡେଲ ପାଇଁ ତାପମାତ୍ରା |",
+    "customFor": "{{model}} ପାଇଁ କଷ୍ଟମ୍ |",
+    "usingDefault": "ଡିଫଲ୍ଟ {{temperature}} ବ୍ୟବହାର କରି |",
+    "resetToDefault": "ଡିଫଲ୍ଟକୁ ପୁନ et ସେଟ୍ କରନ୍ତୁ |",
+    "defaultTemperature": "ଡିଫଲ୍ଟ ତାପମାତ୍ରା (ପତନ)",
+    "usedByModelsWithoutOverride": "କଷ୍ଟମ୍ ନବଲିଖନ ବିନା ମଡେଲ ଦ୍ୱାରା ବ୍ୟବହୃତ |",
+    "dangerZone": "ବିପଦ ଜୋନ୍ |",
+    "clearAllChatsAndSettings": "ସମସ୍ତ ଚାଟ୍ ଏବଂ ସେଟିଙ୍ଗ୍ ସଫା କରନ୍ତୁ |",
+    "about": "ବିଷୟରେ",
+    "version": "ସଂସ୍କରଣ {{version}}{{status}} |",
+    "versionPremiumSuffix": "· ପ୍ରିମିୟମ୍",
+    "privacyPolicy": "ଗୋପନୀୟତା ନୀତି",
+    "hero": {
+      "label": "ବିଶେଷ ଅଫର |",
+      "title": "ଅସୀମିତ ପ୍ରବେଶ\nଏବଂ ପ୍ରୋ ବ Features ଶିଷ୍ଟ୍ୟଗୁଡିକ",
+      "upgrade": "ନବୀକରଣ କରନ୍ତୁ |",
+      "manage": "ଯୋଜନା ପରିଚାଳନା କରନ୍ତୁ |"
+    },
+    "sections": {
+      "premium": "ପ୍ରିମିୟମ୍ ଯୋଜନା |",
+      "data": "ଉପଯୋଗକର୍ତ୍ତା ତଥ୍ୟ |",
+      "support": "ସମର୍ଥନ ଏବଂ ଆଇନଗତ |"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "ପ୍ରିମିୟମ୍ ପାଆନ୍ତୁ |",
+        "subtitle": "ଅସୀମିତ ସୃଷ୍ଟି ଉପକରଣଗୁଡ଼ିକୁ ଅନଲକ୍ କରନ୍ତୁ |"
+      },
+      "premiumActive": {
+        "title": "ପ୍ରିମିୟମ୍ ଆକ୍ଟିଭ୍ |",
+        "subtitle": "000P000 supporting ସମର୍ଥନ କରିଥିବାରୁ ଧନ୍ୟବାଦ |"
+      },
+      "restore": {
+        "title": "କ୍ରୟଗୁଡିକ ପୁନ ore ସ୍ଥାପନ କରନ୍ତୁ |",
+        "subtitle": "ଯଦି ଆପଣ ଡିଭାଇସ୍ ସୁଇଚ୍ କରନ୍ତି ତେବେ ବ୍ୟବହାର କରନ୍ତୁ |"
+      },
+      "history": {
+        "title": "ଚାଟ୍ ଇତିହାସ ପରିଚାଳନା କରନ୍ତୁ |",
+        "subtitle": "ଆପଣଙ୍କର ଅତୀତ ଅଧିବେଶନଗୁଡିକ ଦେଖନ୍ତୁ ଏବଂ ବିଲୋପ କରନ୍ତୁ |"
+      },
+      "reset": {
+        "title": "ଚାଟ୍ ଏବଂ ପସନ୍ଦଗୁଡିକ ପୁନ Res ସେଟ୍ କରନ୍ତୁ |",
+        "subtitle": "ଏହି ଡିଭାଇସରେ ସମସ୍ତ ଗଚ୍ଛିତ ତଥ୍ୟ ସଫା କରେ |"
+      },
+      "rate": {
+        "title": "ଆମକୁ ମୂଲ୍ୟାଙ୍କନ କର |",
+        "error": "ଷ୍ଟୋର ପୃଷ୍ଠା ଖୋଲିବାକୁ ଅସମର୍ଥ |"
+      },
+      "support": {
+        "title": "ସମର୍ଥନ",
+        "subtitle": "ଅନଲାଇନରେ ଆମ ସହିତ ଯୋଗାଯୋଗ କରନ୍ତୁ |",
+        "error": "ଯୋଗାଯୋଗ ପୃଷ୍ଠା ଖୋଲିବାକୁ ଅସମର୍ଥ |"
+      },
+      "privacy": {
+        "title": "ଗୋପନୀୟତା ନୀତି",
+        "error": "ଗୋପନୀୟତା ନୀତି ଖୋଲିବାକୁ ଅସମର୍ଥ |"
+      },
+      "terms": {
+        "title": "ବ୍ୟବହାର ସର୍ତ୍ତାବଳୀ",
+        "error": "ବ୍ୟବହାର ସର୍ତ୍ତାବଳୀ ଖୋଲିବାକୁ ଅସମର୍ଥ |"
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "ଉପଲବ୍ଧ ନାହିଁ",
+      "linkUnavailableMessage": "ବର୍ତ୍ତମାନ ଏହି ଲିଙ୍କ୍ ଖୋଲିବାକୁ ଅସମର୍ଥ |",
+      "restoreSuccessTitle": "ପୁନ ored ସ୍ଥାପିତ |",
+      "restoreSuccessMessage": "ଆପଣଙ୍କର କ୍ରୟଗୁଡିକ ପୁନ restored ସ୍ଥାପିତ ହୋଇଛି |",
+      "restoreEmptyTitle": "କ No ଣସି କ୍ରୟ ମିଳିଲା ନାହିଁ |",
+      "restoreEmptyMessage": "ଏହି ଖାତା ପାଇଁ ପୁନ restore ସ୍ଥାପନ କରିବାକୁ ଆମେ ଏକ ସକ୍ରିୟ କ୍ରୟ ପାଇଲୁ ନାହିଁ |",
+      "restoreErrorTitle": "ପୁନରୁଦ୍ଧାର ବିଫଳ ହେଲା |",
+      "restoreErrorMessage": "ବର୍ତ୍ତମାନ କ୍ରୟଗୁଡିକ ପୁନ restore ସ୍ଥାପନ କରିବାକୁ ଅସମର୍ଥ |",
+      "resetConfirmTitle": "ଆପ୍ ଡାଟା ପୁନ Res ସେଟ୍ କରିବେ କି?",
+      "resetConfirmMessage": "ଏହା ସମସ୍ତ ଚାଟ୍ ଏବଂ ଲୋକାଲ୍ ପ୍ରିଫରେନ୍ସ ଅପସାରଣ କରେ |",
+      "resetConfirmCancel": "ବାତିଲ୍ କରନ୍ତୁ |",
+      "resetConfirmCta": "ପୁନ et ସେଟ୍ କରନ୍ତୁ |"
+    }
+  },
+  "createImage": {
+    "headerTitle": "ସୃଷ୍ଟି କରନ୍ତୁ |",
+    "chooseStyle": "ଏକ ଶ Style ଳୀ ବାଛନ୍ତୁ |",
+    "aspectRatio": "ଅନୁପାତ ଅନୁପାତ",
+    "starterPrompts": {
+      "title": "ଷ୍ଟାର୍ଟର୍ ପ୍ରମ୍ପ୍ଟସ୍ |",
+      "items": [
+        "ଷ୍ଟୁଡିଓ ହେଡସଟ୍ |",
+        "ଆଧୁନିକ ବାସଗୃହ |",
+        "ସୂର୍ଯ୍ୟାସ୍ତ ସମୟରେ ଟ୍ରପିକାଲ୍ ବେଳାଭୂମି |"
+      ]
+    },
+    "promptPlaceholder": "ଆପଣ ଯାହା ଦେଖିବାକୁ ଚାହୁଁଛନ୍ତି ଟାଇପ୍ କରନ୍ତୁ…",
+    "promptHint": "ଉଦାହରଣ: 'ଷ୍ଟୁଡିଓ ଆଲୋକରେ ସୁବର୍ଣ୍ଣ ପୁନରୁଦ୍ଧାର' |",
+    "clearText": "ପାଠ ସଫା କରନ୍ତୁ |",
+    "generate": "ସୃଷ୍ଟି କରନ୍ତୁ |",
+    "generating": "ଉତ୍ପାଦନ…"
+  },
+  "editImage": {
+    "headerTitle": "ସଂପାଦନା କରନ୍ତୁ |",
+    "chooseStyle": "ଏକ ଶ Style ଳୀ ବାଛନ୍ତୁ |",
+    "aspectRatio": "ଅନୁପାତ ଅନୁପାତ",
+    "starterPrompts": {
+      "title": "ଷ୍ଟାର୍ଟର୍ ପ୍ରମ୍ପ୍ଟସ୍ |",
+      "items": [
+        "ଆଲୋକ ଠିକ୍ କରନ୍ତୁ |",
+        "ପୃଷ୍ଠଭୂମି ଅପସାରଣ କରନ୍ତୁ |",
+        "ମୃଦୁ ଚିତ୍ର"
+      ]
+    },
+    "promptPlaceholder": "ସମ୍ପାଦନା ବର୍ଣ୍ଣନା କରନ୍ତୁ (ବ al କଳ୍ପିକ)",
+    "clearText": "ପାଠ ସଫା କରନ୍ତୁ |",
+    "generate": "ସୃଷ୍ଟି କରନ୍ତୁ |",
+    "generating": "ପ୍ରୟୋଗ…",
+    "upload": {
+      "choose": "ଫଟୋ ବାଛନ୍ତୁ |",
+      "change": "ପରିବର୍ତ୍ତନ କରନ୍ତୁ |",
+      "remove": "ଅପସାରଣ କରନ୍ତୁ |"
+    },
+    "imageUnavailable": {
+      "title": "ପ୍ରତିଛବି ଉପଲବ୍ଧ ନାହିଁ",
+      "message": "ମନୋନୀତ ଫଟୋକୁ ପ୍ରବେଶ କରିପାରିଲା ନାହିଁ | ଦୟାକରି ଏହାକୁ ପୁନ ect ଚୟନ କରନ୍ତୁ ଏବଂ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |"
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "ଆନିମ"
+      },
+      "cartoon": {
+        "name": "କାର୍ଟୁନ୍"
+      },
+      "photoreal": {
+        "name": "ଫୋଟୋରାଲ୍ |"
+      },
+      "sketch": {
+        "name": "ସ୍କେଚ୍ |"
+      },
+      "cyberpunk": {
+        "name": "ସାଇବରପଙ୍କ |"
+      },
+      "steampunk": {
+        "name": "ଷ୍ଟିମ୍ପଙ୍କ |"
+      },
+      "illustration_3d": {
+        "name": "3D ଚିତ୍ର"
+      },
+      "dark_fantasy": {
+        "name": "ଗା ark କଳ୍ପନା |"
+      },
+      "vintage_film": {
+        "name": "ଭିଣ୍ଟେଜ୍ ଫିଲ୍ମ |"
+      },
+      "pastel": {
+        "name": "ପେଷ୍ଟେଲ୍ ଆଷ୍ଟେଟିକ୍ |"
+      },
+      "neon_glow": {
+        "name": "ନିନ୍ ଗ୍ଲୋ |"
+      },
+      "epic_landscape": {
+        "name": "ଏପିକ୍ ଲ୍ୟାଣ୍ଡସ୍କେପ୍ |"
+      }
+    },
+    "aspectRatios": {
+      "square": "ବର୍ଗ",
+      "landscape": "ଲ୍ୟାଣ୍ଡସ୍କେପ୍",
+      "portrait": "ଚିତ୍ର"
+    },
+    "models": {
+      "fluxKontent": "ଫ୍ଲକ୍ସ କଣ୍ଟେଣ୍ଟ |",
+      "custom": "କଷ୍ଟମ୍"
+    },
+    "notEnoughCoinsTitle": "ପର୍ଯ୍ୟାପ୍ତ ମୁଦ୍ରା ନୁହେଁ |",
+    "notEnoughCoinsMessage": "ଏହି ପ୍ରତିଛବି ପାଇଁ ତୁମର ସାମ୍ପ୍ରତିକ ସନ୍ତୁଳନ ବହୁତ କମ୍ ଅଟେ |",
+    "modelTaglines": {
+      "runwareFluxSchnell": "ଦ୍ରୁତତମ ମଡେଲ୍ |",
+      "runwareFluxKrea": "ସୃଜନଶୀଳ, ଷ୍ଟାଇଲାଇଜଡ୍ ଫଳାଫଳ |",
+      "runwareQwenImage": "ସନ୍ତୁଳିତ, ଉଚ୍ଚ-ଗୁଣାତ୍ମକ ଫଳାଫଳ |",
+      "google4": "ସର୍ବୋତ୍ତମ AI ପ୍ରତିଛବି ମଡେଲ୍ |",
+      "klingImageO1": "ଉଚ୍ଚ-ନିୟନ୍ତ୍ରଣ ପ୍ରତିଛବି ସମ୍ପାଦନା |",
+      "fluxKontent": "ସମ୍ପାଦନା ପାଇଁ ଫ୍ଲକ୍ସ କଣ୍ଟେଣ୍ଟ୍ ଟ୍ୟୁନ୍ ହୋଇଛି |",
+      "runwareProvider": "ନିର୍ଭରଯୋଗ୍ୟ ବିସ୍ତାର ସହିତ ସନ୍ତୁଳିତ ଗୁଣ |",
+      "airProvider": "ନାନୋ ବାନା ଖେଳାଳୀ, ଉଜ୍ଜ୍ୱଳ ସ୍ୱର ଯୋଗ କରେ |",
+      "googleProvider": "ପଲିସ୍ ହୋଇଥିବା ସବିଶେଷ ତଥ୍ୟ ପାଇଁ ଗୁଗୁଲ୍ ଟ୍ୟୁନ୍ କରିଛି |",
+      "klingaiProvider": "ନିୟନ୍ତ୍ରିତ ସମ୍ପାଦନା ପାଇଁ KlingAI ଟ୍ୟୁନ୍ ହୋଇଛି |",
+      "anthropicProvider": "ନ୍ୟୁନାନ୍ସ ମୁଡ୍ ପାଇଁ 000P000⟭ ପାଇପଲାଇନ |",
+      "default": "ଉପଲବ୍ଧ ଇଞ୍ଜିନଗୁଡିକ ଅନୁସନ୍ଧାନ କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "ତୁମର ମନୋନୀତ ଶ style ଳୀ",
+    "sheetTitle": "ତୁମର ଦର୍ଶନକୁ ଶିଳ୍ପ କରିବା |",
+    "sheetSubtitle": "ଆମେ ପ୍ରମ୍ପ୍ଟରେ ⟬P000 blend ମିଶ୍ରଣ କରୁଥିବାବେଳେ ସର୍ଭର କଫିର ସଂକ୍ଷିପ୍ତ ସିପ୍ | {{style}}",
+    "phases": {
+      "blend": "{{style}} ରେ ମିଶ୍ରଣ |",
+      "paint": "ଦୃଶ୍ୟ ଚିତ୍ର କରିବା |",
+      "finish": "ଅନ୍ତିମ ପଲିସ୍ ଯୋଗ କରିବା |"
+    },
+    "actions": {
+      "cancel": "ବାତିଲ୍ କରନ୍ତୁ |",
+      "retry": "ପୁନ ry ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "close": "ବନ୍ଦ"
+    },
+    "errors": {
+      "restrictedTitle": "ପ୍ରତିବନ୍ଧିତ ବିଷୟବସ୍ତୁ |",
+      "genericTitle": "ଜେନେରେସନ୍ ବିଫଳ ହେଲା |",
+      "genericMessage": "ପ୍ରତିଛବି ସୃଷ୍ଟି କରିପାରିଲା ନାହିଁ |"
+    },
+    "alerts": {
+      "saveFailedTitle": "ସଞ୍ଚୟ କରିପାରିଲା ନାହିଁ |",
+      "shareFailedTitle": "ଅଂଶୀଦାର କରିପାରିଲା ନାହିଁ |",
+      "tryAgain": "ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "savedTitle": "ସଞ୍ଚୟ ହୋଇଛି |",
+      "savedMessage": "ପ୍ରତିଛବି ଆପଣଙ୍କ ଗ୍ୟାଲେରୀରେ ସେଭ୍ ହୋଇଛି |",
+      "permissionTitle": "ଅନୁମତି ଆବଶ୍ୟକ |",
+      "permissionMessage": "ଆପଣଙ୍କର ଗ୍ୟାଲେରୀରେ ପ୍ରତିଛବିଗୁଡିକ ସଂରକ୍ଷଣ କରିବାକୁ ଷ୍ଟୋରେଜ୍ ପ୍ରବେଶକୁ ଅନୁମତି ଦିଅନ୍ତୁ |"
+    },
+    "result": {
+      "complete": "ସମସ୍ତ ସମାପ୍ତ ହେଲା |"
+    },
+    "accessibility": {
+      "close": "ବନ୍ଦ"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "ବିଲୋପ କରନ୍ତୁ |",
+      "edit": "ସଂପାଦନା କରନ୍ତୁ |",
+      "save": "ସଞ୍ଚୟ କରନ୍ତୁ |",
+      "share": "ଅଂଶୀଦାର କରନ୍ତୁ |"
+    },
+    "alerts": {
+      "savedTitle": "ସଞ୍ଚୟ ହୋଇଛି |",
+      "savedMessage": "ପ୍ରତିଛବି ଆପଣଙ୍କ ଗ୍ୟାଲେରୀରେ ସେଭ୍ ହୋଇଛି |",
+      "permissionTitle": "ଅନୁମତି ଆବଶ୍ୟକ |",
+      "permissionMessage": "ଆପଣଙ୍କର ଗ୍ୟାଲେରୀରେ ପ୍ରତିଛବିଗୁଡିକ ସଂରକ୍ଷଣ କରିବାକୁ ଷ୍ଟୋରେଜ୍ ପ୍ରବେଶକୁ ଅନୁମତି ଦିଅନ୍ତୁ |",
+      "saveFailedTitle": "ସଞ୍ଚୟ କରିପାରିଲା ନାହିଁ |",
+      "tryAgain": "ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |"
+    },
+    "accessibility": {
+      "close": "ବନ୍ଦ",
+      "delete": "ପ୍ରତିଛବି ବିଲୋପ କରନ୍ତୁ |",
+      "edit": "ପ୍ରତିଛବି ସଂପାଦନ କରନ୍ତୁ |",
+      "save": "ପ୍ରତିଛବି ସଞ୍ଚୟ କରନ୍ତୁ |",
+      "share": "ପ୍ରତିଛବି ଅଂଶୀଦାର କରନ୍ତୁ |"
+    }
+  },
+  "reportContent": {
+    "title": "AI ବିଷୟବସ୍ତୁ ରିପୋର୍ଟ କରନ୍ତୁ |",
+    "subtitle": "ଏହି ଉତ୍ପାଦିତ ବିଷୟବସ୍ତୁରେ କ’ଣ ଭୁଲ୍ ଅଛି ଆମକୁ କୁହ |",
+    "privateDisclosure": "ଦାଖଲ କରିବା ଏହି ରିପୋର୍ଟ ହୋଇଥିବା ବିଷୟବସ୍ତୁକୁ ସୁରକ୍ଷା ସମୀକ୍ଷା ପାଇଁ ପଠାଏ |",
+    "accessibilityLabel": "AI ବିଷୟବସ୍ତୁ ରିପୋର୍ଟ କରନ୍ତୁ |",
+    "reasons": {
+      "sexual": "ଯ Sex ନ କିମ୍ବା ନଗ୍ନତା ବିଷୟବସ୍ତୁ |",
+      "violence_self_harm": "ହିଂସା କିମ୍ବା ଆତ୍ମ-କ୍ଷତି |",
+      "hate_harassment": "ଘୃଣା କିମ୍ବା ନିର୍ଯ୍ୟାତନା |",
+      "child_safety": "ଶିଶୁ ସୁରକ୍ଷା ଚିନ୍ତା |",
+      "scam_deceptive": "ସ୍କାମ କିମ୍ବା ପ୍ରତାରଣାକାରୀ ବିଷୟବସ୍ତୁ |",
+      "other": "ଅନ୍ୟମାନେ |"
+    },
+    "errors": {
+      "reasonRequired": "ଦାଖଲ କରିବା ପୂର୍ବରୁ ଦୟାକରି ଏକ କାରଣ ବାଛନ୍ତୁ |",
+      "submit": "ରିପୋର୍ଟ ଦାଖଲ କରିପାରିଲା ନାହିଁ | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |"
+    },
+    "success": {
+      "title": "ଧନ୍ୟବାଦ ତୁମର ରିପୋର୍ଟ ଦାଖଲ ହେଲା |",
+      "subtitle": "ବିଷୟବସ୍ତୁ ନିରାପତ୍ତାକୁ ଉନ୍ନତ କରିବା ପାଇଁ ଆମେ ରିପୋର୍ଟ ବ୍ୟବହାର କରିବୁ |"
+    },
+    "actions": {
+      "report": "ରିପୋର୍ଟ କରନ୍ତୁ |",
+      "submit": "ରିପୋର୍ଟ ଦାଖଲ କରନ୍ତୁ |",
+      "done": "ସମାପ୍ତ"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "000P000⟭",
+    "accessibility": {
+      "openMenu": "ମେନୁ ଖୋଲନ୍ତୁ |",
+      "selectImages": "ପ୍ରତିଛବିଗୁଡିକ ଚୟନ କରନ୍ତୁ |",
+      "exitSelection": "ଚୟନ ଛାଡନ୍ତୁ |",
+      "deleteSelected": "ମନୋନୀତ ପ୍ରତିଛବିଗୁଡିକ ବିଲୋପ କରନ୍ତୁ |",
+      "selectToDelete": "ବିଲୋପ କରିବାକୁ ପ୍ରତିଛବି ଚୟନ କରନ୍ତୁ |"
+    },
+    "createCard": {
+      "title": "ପାଠ୍ୟରୁ ସୃଷ୍ଟି କରନ୍ତୁ |",
+      "subtitle": "ଏକ ବର୍ଣ୍ଣନା ଟାଇପ୍ କରନ୍ତୁ |",
+      "cta": "ବର୍ଣ୍ଣନା ଏବଂ ସୃଷ୍ଟି କରନ୍ତୁ |"
+    },
+    "editCard": {
+      "title": "AI ଫଟୋ ସମ୍ପାଦକ |",
+      "subtitle": "AI ସହିତ ପରିବର୍ତ୍ତନ ଏବଂ ବୃଦ୍ଧି କର |",
+      "cta": "AI ସହିତ ସଂପାଦନ କରନ୍ତୁ |"
+    },
+    "gallery": {
+      "title": "ଗ୍ୟାଲେରୀ",
+      "empty": "ଏପର୍ଯ୍ୟନ୍ତ କ images ଣସି ପ୍ରତିଛବି ନାହିଁ |",
+      "selection": {
+        "enter": "ପ୍ରତିଛବିଗୁଡିକ ଚୟନ କରନ୍ତୁ |",
+        "exit": "ଚୟନ ଛାଡନ୍ତୁ |",
+        "deleteSelected": "ମନୋନୀତ ପ୍ରତିଛବିଗୁଡିକ ବିଲୋପ କରନ୍ତୁ |",
+        "selectForDelete": "ବିଲୋପ କରିବାକୁ ପ୍ରତିଛବି ଚୟନ କରନ୍ତୁ |"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "ସାକ୍ଷାତ",
+      "titleHighlight": "000P000⟭",
+      "subtitle": "AI ସହିତ ପ୍ରତିଛବି ସୃଷ୍ଟି ଏବଂ ସଂପାଦନ କରନ୍ତୁ - ଠିକ୍ Cloud AI ଭିତରେ |"
+    },
+    "relaxView": {
+      "title": "ତୁମର AI କୁ ଭେଟ |",
+      "titleHighlight": "ସହାୟକମାନେ",
+      "subtitle": "ଆପଣଙ୍କ ଦ daily ନନ୍ଦିନ ଆବଶ୍ୟକତା ସହିତ ସାହାଯ୍ୟ କରିବାକୁ ପ୍ରସ୍ତୁତ AI ବିଶେଷଜ୍ଞ |",
+      "cards": {
+        "fitness": {
+          "title": "ଫିଟନେସ୍ କୋଚ୍",
+          "text": "ଛୋଟ ଅଭ୍ୟାସ ଏବଂ ଘର ବ୍ୟାୟାମ |"
+        },
+        "recipes": {
+          "title": "ଭୋଜନ ଏବଂ ରେସିପି |",
+          "text": "ତୁମର ଯାହା ଅଛି ତାହା ସହିତ କ’ଣ ରାନ୍ଧିବା |"
+        },
+        "travel": {
+          "title": "ଭ୍ରମଣ ସାଙ୍ଗ",
+          "text": "ସରଳ ଯୋଜନା ଏବଂ ପ୍ୟାକ୍ ତାଲିକା |"
+        }
+      }
+    },
+    "splash": {
+      "title": "000P000⟭",
+      "tagline": "ଏଣ୍ଟରପ୍ରାଇଜ୍-ଗ୍ରେଡ୍ ଏଇ ସମାଧାନ |",
+      "description": "ଏଣ୍ଟରପ୍ରାଇଜ୍ ପ୍ରଫେସନାଲ୍ ଏବଂ ଦଳମାନଙ୍କ ପାଇଁ ଡିଜାଇନ୍ ହୋଇଥିବା ଅତ୍ୟାଧୁନିକ କୃତ୍ରିମ ବୁଦ୍ଧିମତା ପ୍ରଯୁକ୍ତିବିଦ୍ୟା ସହିତ ଆପଣଙ୍କର ବ୍ୟବସାୟକୁ ସଶକ୍ତ କରନ୍ତୁ |",
+      "stats": "500k + ବ୍ୟବହାରକାରୀଙ୍କ ଦ୍ୱାରା ବିଶ୍ୱସ୍ତ |",
+      "rating": "4.9 / 5",
+      "button": "ଆରମ୍ଭ କର |"
+    },
+    "buttons": {
+      "continue": "ଜାରି ରଖ |",
+      "start": "ଚାଲ ଆରମ୍ଭ କରିବା |"
+    }
+  },
+  "coinStore": {
+    "title": "କ୍ରେଡିଟ୍ ପ୍ରାପ୍ତ କରନ୍ତୁ |",
+    "loading": "ମୁଦ୍ରା ଷ୍ଟୋର ଲୋଡିଂ…",
+    "balanceLabel": "ତୁମର ସାମ୍ପ୍ରତିକ ସନ୍ତୁଳନ ହେଉଛି |",
+    "balanceValue": "000P000⟭ କ୍ରେଡିଟ୍ {{amount}}",
+    "history": {
+      "link": "କାରବାର ଇତିହାସ",
+      "alertTitle": "ଇତିହାସ",
+      "alertBody": "କାରବାର ଇତିହାସ ଶୀଘ୍ର ଆସୁଛି |"
+    },
+    "noPacks": "କ co ଣସି ମୁଦ୍ରା ପ୍ୟାକ୍ ଉପଲବ୍ଧ ନାହିଁ | ଆପଣଙ୍କର RevenueCat ଅଫର୍ id ଯାଞ୍ଚ କରନ୍ତୁ |",
+    "badges": {
+      "basic": "ମ Basic ଳିକ ପ୍ୟାକ୍ |",
+      "popular": "ଅଧିକାଂଶ ଲୋକପ୍ରିୟ",
+      "value": "ସର୍ବୋତ୍ତମ ମୂଲ୍ୟ"
+    },
+    "pack": {
+      "creditsLabel": "000P000⟭ କ୍ରେଡିଟ୍ {{credits}}",
+      "tokensLabel": "000P000⟭ କ୍ରେଡିଟ୍ {{credits}}",
+      "defaultName": "000P000⟭ ପ୍ୟାକ୍ କରନ୍ତୁ | {{index}}",
+      "unknownPrice": "USD -"
+    },
+    "premium": {
+      "title": "ପ୍ରିମିୟମ୍ ଯାଆନ୍ତୁ |",
+      "subtitle": "ଅସୀମିତ ପ୍ରବେଶ ଏବଂ ବ features ଶିଷ୍ଟ୍ୟଗୁଡିକ",
+      "cta": "ନବୀକରଣ କରନ୍ତୁ |"
+    },
+    "termsText": "ଏକ କ୍ରୟ କରି, ତୁମେ ଆମର ସହମତ |",
+    "termsLink": "ସେବା ସର୍ତ୍ତାବଳୀ",
+    "alerts": {
+      "initErrorTitle": "Init ତ୍ରୁଟି |",
+      "genericMessage": "କିଛି ଭୁଲ୍ ହୋଇଗଲା |",
+      "successTitle": "ସଫଳତା |",
+      "successMessage": "କ୍ରେଡିଟ୍ ଶୀଘ୍ର ଦେଖାଯିବ |",
+      "purchaseFailedTitle": "କ୍ରୟ ବିଫଳ ହେଲା |",
+      "unknownError": "ଅଜ୍ଞାତ ତ୍ରୁଟି |"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "ପ୍ରିମିୟମ୍ ଆବଶ୍ୟକ |",
+    "upgrade": "ନବୀକରଣ କରନ୍ତୁ |",
+    "modelRequiredMessage": "ଏହି ମଡେଲ୍ ପ୍ରିମିୟମ୍ ଆବଶ୍ୟକ କରେ | GPT-5, Grok 4, Claude, ଏବଂ ଅଧିକ ଉନ୍ନତ ମଡେଲଗୁଡିକୁ ପ୍ରବେଶ କରିବାକୁ ଅପଗ୍ରେଡ୍ କରନ୍ତୁ |",
+    "assistantsRequiredMessage": "ସହାୟକମାନେ ପ୍ରିମିୟମ୍ ଆବଶ୍ୟକ କରନ୍ତି | ଫିଟନେସ୍, କୋଡିଂ, ଲିଖନ, ଏବଂ ଅଧିକ ପାଇଁ ସ୍ୱତନ୍ତ୍ର AI ସହାୟକମାନଙ୍କୁ ପ୍ରବେଶ କରିବାକୁ ଅପଗ୍ରେଡ୍ କରନ୍ତୁ |",
+    "assistantsTitle": "ପ୍ରିମିୟମ୍ ଆବଶ୍ୟକ |",
+    "assistantsMessage": "ସହାୟକମାନେ ପ୍ରିମିୟମ୍ ଆବଶ୍ୟକ କରନ୍ତି | ଫିଟନେସ୍, କୋଡିଂ, ଲିଖନ, ଏବଂ ଅଧିକ ପାଇଁ ସ୍ୱତନ୍ତ୍ର AI ସହାୟକମାନଙ୍କୁ ପ୍ରବେଶ କରିବାକୁ ଅପଗ୍ରେଡ୍ କରନ୍ତୁ |"
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "ପେୱାଲ୍ ବନ୍ଦ କରନ୍ତୁ |",
+    "unavailableTitle": "କ୍ରୟ ଉପଲବ୍ଧ ନାହିଁ |",
+    "unavailableMessage": "ଆଣ୍ଡ୍ରଏଡ୍ ବିଲିଂ ଏପର୍ଯ୍ୟନ୍ତ ବିନ୍ୟାସ ହୋଇନାହିଁ |",
+    "restoreEmptyTitle": "କ No ଣସି କ୍ରୟ ମିଳିଲା ନାହିଁ |",
+    "restoreEmptyMessage": "ଏହି ଖାତା ପାଇଁ ପୁନ restore ସ୍ଥାପନ କରିବାକୁ ଆମେ ଏକ ସକ୍ରିୟ କ୍ରୟ ପାଇଲୁ ନାହିଁ |",
+    "restoreFailedTitle": "ପୁନରୁଦ୍ଧାର ବିଫଳ ହେଲା |",
+    "restoreFailedMessage": "ବର୍ତ୍ତମାନ କ୍ରୟଗୁଡିକ ପୁନ restore ସ୍ଥାପନ କରିବାକୁ ଅସମର୍ଥ |",
+    "productsUnavailableTitle": "କ plans ଣସି ଯୋଜନା ଉପଲବ୍ଧ ନାହିଁ |",
+    "productsUnavailableMessage": "ବର୍ତ୍ତମାନ କ No ଣସି ଆଣ୍ଡ୍ରଏଡ୍ ସବସ୍କ୍ରିପସନ୍ ଉତ୍ପାଦ ଉପଲବ୍ଧ ନାହିଁ |",
+    "purchaseFailedTitle": "କ୍ରୟ ବିଫଳ ହେଲା |",
+    "purchaseFailedMessage": "ବର୍ତ୍ତମାନ ଏହି କ୍ରୟ ସଂପୂର୍ଣ୍ଣ କରିବାକୁ ଅସମର୍ଥ |",
+    "restore": "ପୁନରୁଦ୍ଧାର କରନ୍ତୁ |",
+    "restoreRestoring": "ପୁନରୁଦ୍ଧାର…",
+    "features": {
+      "create": "ପ୍ରତିଛବି ଏବଂ ଭିଡିଓ ସୃଷ୍ଟି କରନ୍ତୁ |",
+      "search": "AI ସହିତ ୱେବ୍ ସନ୍ଧାନ କରନ୍ତୁ |",
+      "talk": "AI ସହିତ ପ୍ରାକୃତିକ ଭାବରେ କଥାବାର୍ତ୍ତା କରନ୍ତୁ |",
+      "imageStudio": "00P002⟭ {{credits}} କ୍ରେଡିଟ୍ {{period}} ପାଆନ୍ତୁ |",
+      "period": {
+        "weekly": "ସାପ୍ତାହିକ",
+        "monthly": "ମାସିକ",
+        "yearly": "ବାର୍ଷିକ"
+      }
+    },
+    "freeTrial": {
+      "title": "ମାଗଣା ପରୀକ୍ଷା |",
+      "subtitle": "3 ଦିନିଆ ମାଗଣା ପରୀକ୍ଷା |"
+    },
+    "badge": {
+      "bestOffer": "ସର୍ବୋତ୍ତମ ଅଫର୍ |"
+    },
+    "plans": {
+      "yearly": {
+        "title": "ବାର୍ଷିକ |",
+        "only": "କେବଳ {{price}} |",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
+      },
+      "monthly": {
+        "title": "ମାସିକ",
+        "subtitle": "ଯେକ time ଣସି ସମୟରେ ବାତିଲ୍ କରନ୍ତୁ |",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "ସାପ୍ତାହିକ",
+        "subtitle": "ଯେକ time ଣସି ସମୟରେ ବାତିଲ୍ କରନ୍ତୁ |",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 ଦିନ ମାଗଣା, ତା’ପରେ |"
+      }
+    },
+    "frequency": {
+      "perWeek": "ପ୍ରତି ସପ୍ତାହରେ |",
+      "perMonth": "ପ୍ରତି ମାସରେ |"
+    },
+    "cta": "ଜାରି ରଖ |",
+    "ctaFreeTrial": "ଏହାକୁ ମାଗଣାରେ ଚେଷ୍ଟା କରନ୍ତୁ |",
+    "legal": {
+      "terms": "ସର୍ତ୍ତାବଳୀ",
+      "privacy": "ଗୋପନୀୟତା"
+    },
+    "premium": {
+      "headline": "ଗୋଟିଏ ଯୋଜନାରେ ସମସ୍ତ ପ୍ରିମିୟମ୍ AI",
+      "subtitleLine1": "ଚାଟ୍, କୋଡ୍, ସୃଷ୍ଟି ଏବଂ ଯୋଜନା",
+      "subtitleLine2": "ଉନ୍ନତ ମଡେଲ ସହିତ |",
+      "enableTrial": "ମାଗଣା ପରୀକ୍ଷା ସକ୍ଷମ କରନ୍ତୁ",
+      "annual": "ବାର୍ଷିକ",
+      "saveBadge": "83% ସଞ୍ଚୟ କରନ୍ତୁ",
+      "year": "ବର୍ଷ",
+      "week": "ସପ୍ତାହ",
+      "termsOfUse": "ବ୍ୟବହାର ସର୍ତ୍ତାବଳୀ",
+      "privacyPolicy": "ଗୋପନୀୟତା ନୀତି"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "ବାର୍ତ୍ତା ...",
+    "createImages": "ପ୍ରତିଛବି ସୃଷ୍ଟି କରନ୍ତୁ |",
+    "generateAiArtwork": "AI କଳାକୃତି ସୃଷ୍ଟି କରନ୍ତୁ |",
+    "camera": "ଫଟୋ ଅପଲୋଡ୍ କରନ୍ତୁ |",
+    "takeOrSelectPhotos": "ଫଟୋ ଚୟନ କରନ୍ତୁ |",
+    "search": "ସନ୍ଧାନ କର |",
+    "findInformation": "ସୂଚନା ଖୋଜ |",
+    "findRecentInfo": "ସାମ୍ପ୍ରତିକ ସୂଚନା ଖୋଜ |",
+    "removeImage": "ପ୍ରତିଛବି ଅପସାରଣ କରନ୍ତୁ |",
+    "messageInput": "ବାର୍ତ୍ତା ଇନପୁଟ୍",
+    "clearInput": "ଇନପୁଟ୍ ସଫା କରନ୍ତୁ |",
+    "quickActionsLabel": "ଶୀଘ୍ର କାର୍ଯ୍ୟ",
+    "hideQuickActions": "ଶୀଘ୍ର କାର୍ଯ୍ୟ ଲୁଚାନ୍ତୁ |",
+    "showQuickActions": "ଶୀଘ୍ର କାର୍ଯ୍ୟ ଦେଖାନ୍ତୁ |",
+    "startVoiceInput": "ଭଏସ୍ ଇନପୁଟ୍ ଆରମ୍ଭ କରନ୍ତୁ |",
+    "sendMessage": "ବାର୍ତ୍ତା ପଠାନ୍ତୁ |",
+    "offline": "ଅଫଲାଇନ୍ |",
+    "stop": "ବନ୍ଦ କର |",
+    "streaming": "ଷ୍ଟ୍ରିମିଂ…",
+    "closeRecorder": "ରେକର୍ଡର୍ ବନ୍ଦ କରନ୍ତୁ |",
+    "insertTranscript": "ପଠାନ୍ତୁ |",
+    "scrollToLatest": "ସର୍ବଶେଷ ସନ୍ଦେଶକୁ ସ୍କ୍ରୋଲ୍ କରନ୍ତୁ |",
+    "copyMessage": "ବାର୍ତ୍ତା କପି କରନ୍ତୁ |",
+    "copyMessageHint": "ଏହି ସନ୍ଦେଶକୁ କ୍ଲିପବୋର୍ଡରେ କପି କରନ୍ତୁ |",
+    "shareMessage": "ବାର୍ତ୍ତା ଅଂଶୀଦାର କରନ୍ତୁ |",
+    "shareMessageHint": "ଏହି ବାର୍ତ୍ତା ଅଂଶୀଦାର କରନ୍ତୁ |",
+    "regenerateResponse": "ପ୍ରତିକ୍ରିୟା ପୁନ ener ନିର୍ମାଣ କରନ୍ତୁ |",
+    "regenerateResponseHint": "ଏକ ନୂତନ ପ୍ରତିକ୍ରିୟା ସୃଷ୍ଟି କରନ୍ତୁ |",
+    "copyCode": "କୋଡ୍ କପି କରନ୍ତୁ |",
+    "copied": "କପି କରାଯାଇଛି |",
+    "image": "ପ୍ରତିଛବି |",
+    "loading": "ଲୋଡିଂ…",
+    "loadingChat": "ଚାଟ୍ ଲୋଡିଂ ...",
+    "offlineBanner": "ଆପଣ ଅଫଲାଇନରେ ଅଛନ୍ତି | ବାର୍ତ୍ତା ପଠାଯାଇପାରିବ ନାହିଁ |",
+    "offlineError": "କ internet ଣସି ଇଣ୍ଟରନେଟ୍ ସଂଯୋଗ ନାହିଁ | ଦୟାକରି ଆପଣଙ୍କର ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+    "imagePickerErrorTitle": "ପ୍ରତିଛବି ଚୟନକାରୀ ତ୍ରୁଟି |",
+    "imagePickerErrorMessage": "ଆପଣଙ୍କର ଫଟୋ ପ୍ରବେଶ କରିବାକୁ ଅସମର୍ଥ | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+    "messageTooLong": "ବାର୍ତ୍ତା ବହୁତ ଲମ୍ବା ({{length}}) | ସୀମା ହେଉଛି {{limit}} |",
+    "sendFailed": "ବାର୍ତ୍ତା ପଠାଇବାରେ ବିଫଳ | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+    "modelNoImageSupport": "ମନୋନୀତ ମଡେଲ୍ ପ୍ରତିଛବିଗୁଡ଼ିକୁ ସମର୍ଥନ କରେନାହିଁ | ଦୟାକରି ଏକ ଭିନ୍ନ ମଡେଲ୍ ବାଛନ୍ତୁ |",
+    "voiceStartFailed": "ସ୍ୱର ଆରମ୍ଭ କରିପାରିଲା ନାହିଁ |",
+    "voiceNoSpeechDetected": "କ voice ଣସି ସ୍ୱର ଚିହ୍ନିତ ହେଲା ନାହିଁ | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+    "emptyTitle": "ମୁଁ କିପରି ସାହାଯ୍ୟ କରିପାରିବି?",
+    "emptySubtitle": "AI ସହିତ ଏକ ବାର୍ତ୍ତାଳାପ ଆରମ୍ଭ କରନ୍ତୁ |",
+    "privateTitle": "ବ୍ୟକ୍ତିଗତ ଚାଟ୍ |",
+    "privateSubtitle": "ଏହି ଚାଟ୍ ଆପଣଙ୍କ ଚାଟ୍ ଇତିହାସରେ ଦେଖାଯିବ ନାହିଁ |",
+    "startPrivateChat": "ବ୍ୟକ୍ତିଗତ ଚାଟ୍ ଆରମ୍ଭ କରନ୍ତୁ |",
+    "endPrivateChat": "ବ୍ୟକ୍ତିଗତ ଚାଟ୍ ଶେଷ କରନ୍ତୁ |",
+    "permissions": {
+      "photosTitle": "ଫଟୋ ଅନୁମତି ଆବଶ୍ୟକ |",
+      "photosMessage": "ଚିତ୍ର ବାଛିବା ପାଇଁ ଫଟୋ ଆକସେସ୍ ଆବଶ୍ୟକ |",
+      "voiceTitle": "ଭଏସ୍ ଅନୁମତି ଆବଶ୍ୟକ |",
+      "voiceMessage": "ସ୍ୱର ବ୍ୟବହାର କରିବାକୁ ମାଇକ୍ରୋଫୋନ୍ ଏବଂ ବକ୍ତବ୍ୟ ପ୍ରବେଶ ଆବଶ୍ୟକ |"
+    },
+    "activity": {
+      "analyzingImages": "ପ୍ରତିଛବି ବିଶ୍ଳେଷଣ…",
+      "searching": "ଖୋଜୁଛି…",
+      "thinking": "ଭାବୁଛି…"
+    },
+    "webSearch": {
+      "title": "ୱେବ୍ ସନ୍ଧାନ |",
+      "subtitle": "ସାମ୍ପ୍ରତିକ ସୂଚନା ଖୋଜ |",
+      "label": "ୱେବ୍ ସନ୍ଧାନ |",
+      "enable": "ୱେବ୍ ସନ୍ଧାନ ସକ୍ଷମ କରନ୍ତୁ |",
+      "disable": "ୱେବ୍ ସନ୍ଧାନ ଅକ୍ଷମ କରନ୍ତୁ |",
+      "toggleLabel": "ୱେବ୍ ସନ୍ଧାନ କରନ୍ତୁ |"
+    },
+    "studioBanner": {
+      "label": "000P000⟭",
+      "title": "ବେଗରେ ଭିଜୁଆଲ୍ ଡିଜାଇନ୍ କରନ୍ତୁ |",
+      "subtitle": "ଗୋଟିଏ ସ୍ଥାନରେ ଭିଜୁଆଲ୍ ସମ୍ପତ୍ତି ସୃଷ୍ଟି, ବିଶୋଧନ ଏବଂ ପ୍ରକାଶନ କର |",
+      "cta": "ଖୋଲନ୍ତୁ |"
+    },
+    "quickActions": {
+      "createImages": "ପ୍ରତିଛବି ସୃଷ୍ଟି କରନ୍ତୁ |",
+      "openCamera": "କ୍ୟାମେରା ଖୋଲନ୍ତୁ |",
+      "editImage": "ପ୍ରତିଛବି ସଂପାଦନ କରନ୍ତୁ |",
+      "startVoice": "ଭଏସ୍ ଆରମ୍ଭ କରନ୍ତୁ |",
+      "assistants": "ସହାୟକମାନେ"
+    },
+    "listening": "ଶୁଣିବା…",
+    "startRecording": "ରେକର୍ଡିଂ ଆରମ୍ଭ କରନ୍ତୁ…",
+    "assistantHeader": {
+      "unavailableTitle": "ସହକାରୀ ଉପଲବ୍ଧ ନାହିଁ",
+      "unavailableDescription": "ଆମେ ଏହି ସହାୟକ ଲୋଡ୍ କରିପାରିବୁ ନାହିଁ | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "ready": "ସାହାଯ୍ୟ କରିବାକୁ ପ୍ରସ୍ତୁତ |"
+    },
+    "actions": {
+      "copy": "କପି କରନ୍ତୁ |",
+      "share": "ଅଂଶୀଦାର କରନ୍ତୁ |",
+      "regenerate": "ପୁନ ener ନିର୍ମାଣ କରନ୍ତୁ |",
+      "retryFromHere": "ଏଠାରୁ ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "report": "ରିପୋର୍ଟ କରନ୍ତୁ |",
+      "cancel": "ବାତିଲ୍ କରନ୍ତୁ |"
+    },
+    "markdown": {
+      "copy": "କପି କରନ୍ତୁ |",
+      "copied": "କପି କରାଯାଇଛି |",
+      "table": "ଟେବୁଲ୍ |",
+      "watchVideo": "ଭିଡିଓ ଦେଖନ୍ତୁ |",
+      "wikipedia": "ଉଇକିପିଡ଼ିଆ",
+      "link": "ଲିଙ୍କ୍ |",
+      "note": "ଟିପ୍ପଣୀ |",
+      "warning": "ଚେତାବନୀ",
+      "tip": "ଟିପ୍ପଣୀ"
+    },
+    "messageActionTitle": "ବାର୍ତ୍ତା |",
+    "status": {
+      "sending": "ପଠାଉଛି…",
+      "failed": "ବିଫଳ",
+      "sent": "ପଠାଯାଇଛି"
+    },
+    "suggestions": {
+      "writeStory": "ଏକ ସୃଜନଶୀଳ କାହାଣୀ ଲେଖ |",
+      "writeStorySubtitle": "ଏକ ଯାଦୁକରୀ ଦୁ venture ସାହସିକ କାର୍ଯ୍ୟ ବିଷୟରେ |",
+      "planTravel": "ଏକ ଭ୍ରମଣ ମାର୍ଗ ଯୋଜନା କରନ୍ତୁ |",
+      "planTravelSubtitle": "ଏକ ଆଶ୍ଚର୍ଯ୍ୟଜନକ ଛୁଟି ପାଇଁ |",
+      "explainConcept": "ଏହି ଧାରଣାକୁ ବ୍ୟାଖ୍ୟା କର |",
+      "explainConceptSubtitle": "ସରଳ ଶବ୍ଦରେ |",
+      "planDay": "ମୋର ଦିନ ଯୋଜନା କର |",
+      "planDaySubtitle": "ଉତ୍ପାଦକତା ଟିପ୍ସ ସହିତ |"
+    },
+    "home": {
+      "eyebrow": "ଏକ ବିଷୟ ବାଛନ୍ତୁ |",
+      "title": "ଆପଣ କଣ କରିବାକୁ ଚାହୁଁଛନ୍ତି?",
+      "subtitle": "ଏକ ଦିଗ ବାଛନ୍ତୁ, ତାପରେ ଏକ ଶକ୍ତିଶାଳୀ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ |",
+      "pickPromptTitle": "ଆରମ୍ଭ କରିବାକୁ ଏକ ପ୍ରମ୍ପ୍ଟ ବାଛନ୍ତୁ |",
+      "changeTopic": "ଅନ୍ୟ ଏକ ବିଷୟ ବାଛନ୍ତୁ |",
+      "intents": {
+        "summarize": "ପାଠକୁ ସଂକ୍ଷିପ୍ତ କରନ୍ତୁ |",
+        "summarizeShort": "ସଂକ୍ଷେପରେ",
+        "summarizeHint": "ପ୍ରବନ୍ଧ, ଟିପ୍ପଣୀ, ଭଏସ୍ ମେମୋ, ଲମ୍ବା ସୂତ୍ର |",
+        "plan": "ଏକ ଯୋଜନା ପ୍ରସ୍ତୁତ କର |",
+        "planHint": "ଯାତ୍ରା, ରୁଟିନ୍, ବଜେଟ୍, ସମୟସୀମା, ଜୀବନ ପରିବର୍ତ୍ତନ |",
+        "brainstorm": "ମସ୍ତିଷ୍କ orm ଡ",
+        "brainstormHint": "ଧାରଣା, ଅଫର୍, ନାମ, ବିଷୟବସ୍ତୁ, ପାର୍ଶ୍ୱ ପ୍ରୋଜେକ୍ଟ |",
+        "analyze": "ତଥ୍ୟ ବିଶ୍ଳେଷଣ କରନ୍ତୁ |",
+        "analyzeHint": "ଖର୍ଚ୍ଚ, ମତାମତ, ମେଟ୍ରିକ୍, ଅଭ୍ୟାସ, କାର୍ଯ୍ୟଦକ୍ଷତା |"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "ଏକ ପ୍ରତିଷ୍ଠାତା ସଂକ୍ଷିପ୍ତ ସୃଷ୍ଟି କରନ୍ତୁ |",
+          "founderBriefSubtitle": "ମୁଖ୍ୟ ବିପଦ, ନିଷ୍ପତ୍ତି ଏବଂ ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପଗୁଡ଼ିକୁ ଟାଣନ୍ତୁ |",
+          "classNotesTitle": "ମୋର ଅଧ୍ୟୟନ ନୋଟଗୁଡିକ ସଫା କର |",
+          "classNotesSubtitle": "ରୁଗ୍ ନୋଟ୍ଗୁଡ଼ିକୁ ଏକ ସ୍ୱଚ୍ଛ ଅଧ୍ୟୟନ ଗାଇଡ୍ ରେ ପରିଣତ କର |",
+          "meetingHandoffTitle": "ଏକ ହ୍ୟାଣ୍ଡଫ୍ ସାରାଂଶ ଲେଖନ୍ତୁ |",
+          "meetingHandoffSubtitle": "ସଭା, କଲ, କିମ୍ବା ଲମ୍ବା ଆଭ୍ୟନ୍ତରୀଣ ସୂତ୍ର ପରେ ଉପଯୋଗୀ |",
+          "longArticleTitle": "ଏହି ପ୍ରବନ୍ଧକୁ ଶୀଘ୍ର ସଂକ୍ଷିପ୍ତ କରନ୍ତୁ |",
+          "longArticleSubtitle": "ଏକ ଲମ୍ବା ଆର୍ଟିକିଲକୁ ତୀକ୍ଷ୍ଣ ନିଆଯିବାରେ ଘନୀଭୂତ କରନ୍ତୁ |"
+        },
+        "plan": {
+          "energyResetTitle": "ଏକ 14 ଦିନିଆ ଶକ୍ତି ପୁନ et ସେଟ୍ କରନ୍ତୁ |",
+          "energyResetSubtitle": "ଶୋଇବା, ଖାଦ୍ୟ, ଗତି ଏବଂ ଧ୍ୟାନ ପାଇଁ ଏକ ବାସ୍ତବବାଦୀ ଯୋଜନା |",
+          "mealPlanTitle": "ଭୋଜନ ଯୋଜନା କରନ୍ତୁ ମୁଁ ପ୍ରକୃତରେ ରୋଷେଇ କରିବି |",
+          "mealPlanSubtitle": "ପ୍ରାକ୍ଟିକାଲ୍, ସୁଲଭ ଏବଂ ମୋ ପାଖରେ ଯାହା ଅଛି ତାହା ଉପରେ ଆଧାରିତ |",
+          "cityMoveTitle": "ଏକ ନୂତନ ସହରକୁ ଯିବା ପାଇଁ ଯୋଜନା କର |",
+          "cityMoveSubtitle": "ଏହାକୁ ସମୟ ସୀମା, ବଜେଟ୍, ଗୃହ, ଏବଂ ଆଡମିନି ଟାସ୍କରେ ଭାଙ୍ଗନ୍ତୁ |",
+          "tripEscapeTitle": "ଏକ ସ୍ମରଣୀୟ ସପ୍ତାହ ଶେଷ ପଳାୟନ ଯୋଜନା କରନ୍ତୁ |",
+          "tripEscapeSubtitle": "ଏକ ସାଧାରଣ ମାର୍ଗ ଅପେକ୍ଷା କିଛି ଭଲ |"
+        },
+        "brainstorm": {
+          "sideHustleTitle": "ଏକ ବାସ୍ତବବାଦୀ ପାର୍ଶ୍ୱ ହଷ୍ଟେଲ ଖୋଜ |",
+          "sideHustleSubtitle": "ପୂର୍ଣ୍ଣ ସମୟ କାମ କରିବା ସମୟରେ ମୁଁ ଧାରଣା ଆରମ୍ଭ କରିପାରିବି |",
+          "brandAngleTitle": "ଏକ ସ୍ମରଣୀୟ ବ୍ରାଣ୍ଡ କୋଣ ଖୋଜ |",
+          "brandAngleSubtitle": "ଉତ୍ପାଦ, ସୃଷ୍ଟିକର୍ତ୍ତା, ଏଜେନ୍ସି, କିମ୍ବା ସମ୍ବାଦ ଚିଠି ପାଇଁ ଉପଯୋଗୀ |",
+          "socialSeriesTitle": "ଏକ ବିଷୟବସ୍ତୁ ସିରିଜ୍ ଉଦ୍ଭାବନ କରନ୍ତୁ |",
+          "socialSeriesSubtitle": "ଦର୍ଶକ ବ grow ାଇବାକୁ ଯଥେଷ୍ଟ ସ୍ଥିର କିଛି |",
+          "datingIdeasTitle": "ତାଜା ଚିନ୍ତାଧାରା ସହିତ ଆସ |",
+          "datingIdeasSubtitle": "ତାରିଖ, ଉପହାର, ଆଶ୍ଚର୍ଯ୍ୟ, କିମ୍ବା ଘଟଣା ଯାହା ଭାବପ୍ରବଣ ହୁଏ |"
+        },
+        "analyze": {
+          "spendingLeaksTitle": "ମୋର ଟଙ୍କା କେଉଁଠାରେ ଲିକ୍ ହେଉଛି ଖୋଜ |",
+          "spendingLeaksSubtitle": "ପ୍ରଥମେ s ାଞ୍ଚା, ଦୁର୍ବଳ ଦାଗ ଦେଖାନ୍ତୁ, ଏବଂ ସହଜ ବିଜୟ ପ୍ରଥମେ |",
+          "customerFeedbackTitle": "ମତାମତକୁ ପ୍ରାଥମିକତା ରେ ପରିଣତ କର |",
+          "customerFeedbackSubtitle": "କ୍ଲଷ୍ଟର ଅନୁରୋଧ, ଅଭିଯୋଗ, ଜରୁରୀ ଏବଂ ପ୍ରଭାବ |",
+          "habitPatternsTitle": "ମୋ ଅଭ୍ୟାସରେ ସ୍ପଟ୍ s ାଞ୍ଚା |",
+          "habitPatternsSubtitle": "ବ୍ୟାୟାମ, ଶୋଇବା, ସାମ୍ବାଦିକତା, କିମ୍ବା ଫୋକସ୍ ଲଗ୍ ପାଇଁ ଉପଯୋଗୀ |",
+          "metricsStoryTitle": "ସଂଖ୍ୟାଗୁଡ଼ିକର ଅର୍ଥ ବ୍ୟାଖ୍ୟା କର |",
+          "metricsStorySubtitle": "ଅଧିକ ସଙ୍କେତ, କମ୍ ସ୍ପ୍ରେଡସିଟ୍ ଶବ୍ଦ |"
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "ପ୍ରକ୍ରିୟାକରଣ ...",
+    "tapToUploadImage": "ପ୍ରତିଛବି ଅପଲୋଡ୍ କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "ପ୍ରକ୍ରିୟାକରଣ ...",
+    "camera": "ଫଟୋ ଅପଲୋଡ୍ କରନ୍ତୁ |",
+    "library": "ଲାଇବ୍ରେରୀ |"
+  },
+  "common": {
+    "ok": "ଠିକ ଅଛି |",
+    "retry": "ପୁନ ry ଚେଷ୍ଟା କରନ୍ତୁ |",
+    "cancel": "ବାତିଲ୍ କରନ୍ତୁ |",
+    "allow": "ଅନୁମତି ଦିଅନ୍ତୁ |",
+    "notNow": "ବର୍ତ୍ତମାନ ନୁହେଁ |",
+    "openSettings": "ସେଟିଂସମୂହ ଖୋଲନ୍ତୁ |",
+    "close": "ବନ୍ଦ",
+    "save": "ସଞ୍ଚୟ କରନ୍ତୁ |",
+    "tryAgain": "ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |"
+  },
+  "rateUs": {
+    "title": "Cloud AI ଉପଭୋଗ କରୁଛନ୍ତି?",
+    "subtitle": "ଆପଣଙ୍କର ମତାମତ ଆମକୁ ଉନ୍ନତି କରିବାରେ ସାହାଯ୍ୟ କରେ | ଆପଣ ଆପ୍ ଷ୍ଟୋର୍‌ରେ ଆମକୁ ମୂଲ୍ୟାୟନ କରିବାକୁ ମନ ଦେବେ କି?",
+    "rateNow": "ବର୍ତ୍ତମାନ ମୂଲ୍ୟାୟନ କରନ୍ତୁ",
+    "maybeLater": "ବୋଧହୁଏ ପରେ |",
+    "dontAskAgain": "ପୁନର୍ବାର ପଚାରନ୍ତୁ ନାହିଁ |"
+  },
+  "oneTimeOffer": {
+    "title": "ଏକ-ସମୟ ଅଫର୍ |",
+    "discount": "000P000⟭% ବନ୍ଦ | {{percent}}",
+    "subtitle": "ଆପଣ ଏହି ଅଫର୍ ଆଉ ଦେଖିବେ ନାହିଁ |",
+    "badgeLine1": "ଏକ୍ସକ୍ଲୁସିଭ୍ |",
+    "badgeLine2": "ଗୋଟିଏ ଥର ଅଫର୍ |",
+    "upgradeNow": "{{price}} ପାଇଁ ବର୍ତ୍ତମାନ ଅପଗ୍ରେଡ୍ କରନ୍ତୁ |",
+    "loadingPrice": "ଲୋଡିଂ ...",
+    "termsOfUse": "ବ୍ୟବହାର ସର୍ତ୍ତାବଳୀ",
+    "privacyPolicy": "ଗୋପନୀୟତା ନୀତି",
+    "accessTitle": "ପାଇଁ ଅସୀମିତ ପ୍ରବେଶ |",
+    "accessSubtitle": "GPT, Gemini & Grok 4 |",
+    "features": {
+      "unlimitedGPT4": "GPT-4 କୁ ଅସୀମିତ ପ୍ରବେଶ |",
+      "geminiPro": "Gemini Pro କୁ ପ୍ରବେଶ",
+      "grokInsights": "ତାଜା ଅନ୍ତର୍ଦୃଷ୍ଟି ପାଇଁ Grok ବ୍ୟବହାର କରନ୍ତୁ |",
+      "priorityAccess": "ପ୍ରାଥମିକତା ପ୍ରବେଶ ଏବଂ ତୀବ୍ର ପ୍ରତିକ୍ରିୟା |"
+    },
+    "bestValue": "ସର୍ବୋତ୍ତମ ମୂଲ୍ୟ",
+    "annualPremium": "ବାର୍ଷିକ ପ୍ରିମିୟମ୍ |",
+    "oneTimePayment": "ଗୋଟିଏ ଥର ଦେୟ |",
+    "wasPrice": "ଥିଲା |",
+    "continue": "ଜାରି ରଖ |",
+    "restore": "ପୁନରୁଦ୍ଧାର କରନ୍ତୁ |",
+    "terms": "ସର୍ତ୍ତାବଳୀ",
+    "privacy": "ଗୋପନୀୟତା",
+    "successTitle": "ସଫଳତା!",
+    "successMessage": "ତୁମର କ୍ରୟ ପାଇଁ ଧନ୍ୟବାଦ! ପରବର୍ତ୍ତୀ 12 ମାସ ପାଇଁ ପ୍ରିମିୟମ୍ ପ୍ରବେଶ ଉପଭୋଗ କରନ୍ତୁ |",
+    "errorTitle": "କ୍ରୟ ବିଫଳ ହେଲା |",
+    "errorMessage": "କିଛି ଭୁଲ୍ ହୋଇଗଲା | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+    "restoreSuccessTitle": "ପୁନ ored ସ୍ଥାପିତ |",
+    "restoreSuccessMessage": "ଆପଣଙ୍କର କ୍ରୟଗୁଡିକ ପୁନ restored ସ୍ଥାପିତ ହୋଇଛି |",
+    "restoreErrorTitle": "ପୁନରୁଦ୍ଧାର ବିଫଳ ହେଲା |",
+    "restoreErrorMessage": "ପୁନରୁଦ୍ଧାର ପାଇଁ କ No ଣସି କ୍ରୟ ମିଳିଲା ନାହିଁ |",
+    "unavailableTitle": "କ୍ରୟ ଉପଲବ୍ଧ ନାହିଁ |",
+    "unavailableMessage": "ଆଣ୍ଡ୍ରଏଡ୍ ବିଲିଂ ଏପର୍ଯ୍ୟନ୍ତ ବିନ୍ୟାସ ହୋଇନାହିଁ |"
+  },
+  "rewards": {
+    "header": {
+      "title": "ପୁରସ୍କାର",
+      "openMenu": "ମେନୁ ଖୋଲନ୍ତୁ |",
+      "goBack": "ଫେରିଯାଅ |"
+    },
+    "pointsHero": {
+      "totalBalance": "ସମୁଦାୟ ବାଲାନ୍ସ |",
+      "seeYourRewards": "ତୁମର ପୁରସ୍କାର ଦେଖନ୍ତୁ |"
+    },
+    "streakTracker": {
+      "title": "ଦ Daily ନିକ ଷ୍ଟ୍ରକ୍ |",
+      "subtitle": "ଏହାକୁ ରଖ! ତୁମେ ନିଆଁରେ ଜଳୁଛ",
+      "days": "ଦିନଗୁଡିକ",
+      "prize": "ପୁରସ୍କାର",
+      "dayLabel": "ଦିନ {{number}} |",
+      "nextReward": "ପରବର୍ତ୍ତୀ ପୁରସ୍କାର: 00P00⟭ ⟭P001⟭ ରେ | {{amount}} {{time}}",
+      "coins": "ମୁଦ୍ରା |"
+    },
+    "sections": {
+      "availableQuests": "ଉପଲବ୍ଧ ପ୍ରଶ୍ନଗୁଡିକ |",
+      "completedQuests": "ସମାପ୍ତ ପ୍ରଶ୍ନଗୁଡିକ |",
+      "availableRewards": "ଉପଲବ୍ଧ ପୁରସ୍କାର |",
+      "needsMoreCoins": "ଅଧିକ ମୁଦ୍ରା ଦରକାର |"
+    },
+    "balances": {
+      "rewardCoins": "ପୁରସ୍କାର ମୁଦ୍ରା",
+      "imageCredits": "ପ୍ରତିଛବି କ୍ରେଡିଟ୍ |"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 ପ୍ରତିଛବି କ୍ରେଡିଟ୍ |",
+        "imageCredits200": "200 ପ୍ରତିଛବି କ୍ରେଡିଟ୍ |",
+        "imageCredits600": "600 ପ୍ରତିଛବି କ୍ରେଡିଟ୍ |",
+        "weeklyPremium": "ସାପ୍ତାହିକ ପ୍ରିମିୟମ୍ |",
+        "secretBox": "ଗୁପ୍ତ ବାକ୍ସ |"
+      },
+      "rewardDescriptions": {
+        "secretBox": "ଭିତରେ ରହସ୍ୟ ପୁରସ୍କାର |"
+      },
+      "alerts": {
+        "comingSoonTitle": "ଶୀଘ୍ର ଆସୁଛି |",
+        "comingSoonMessage": "ଏହି ପୁରସ୍କାର ଏପର୍ଯ୍ୟନ୍ତ ଉପଲବ୍ଧ ନାହିଁ |",
+        "notEnoughCoinsTitle": "ପର୍ଯ୍ୟାପ୍ତ ମୁଦ୍ରା ନୁହେଁ |",
+        "notEnoughCoinsMessage": "ଏହି ପୁରସ୍କାରକୁ ଖୋଲିବା ପାଇଁ ଆପଣଙ୍କୁ ଅଧିକ ପୁରସ୍କାର ମୁଦ୍ରା ଦରକାର |",
+        "errorTitle": "ତ୍ରୁଟି |",
+        "couldNotOpenBox": "ବାକ୍ସ ଖୋଲିପାରିଲା ନାହିଁ |",
+        "couldNotRedeem": "ପୁରସ୍କାର ମୁକ୍ତ କରିପାରିବ ନାହିଁ | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+        "mysteryReward": "ରହସ୍ୟ ପୁରସ୍କାର"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "ଦ Daily ନିକ ଲଗଇନ୍ |",
+        "description": "ଆପଣଙ୍କର ଷ୍ଟ୍ରାଇକ୍ ରଖିବା ପାଇଁ ଆଜି ଆପ୍ ଖୋଲନ୍ତୁ |",
+        "message": "ଯେତେବେଳେ ଆପଣ ପ୍ରତିଦିନ ଆପ୍ ଖୋଲନ୍ତି ଏହି ଅନୁସନ୍ଧାନ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ସମାପ୍ତ ହୁଏ |"
+      },
+      "shareFacebook": {
+        "title": "ଫେସବୁକରେ ସେୟାର କରନ୍ତୁ |",
+        "description": "ଫେସବୁକରେ ଆମ ବିଷୟରେ ପୋଷ୍ଟ କରନ୍ତୁ |"
+      },
+      "shareTwitter": {
+        "title": "ଟ୍ୱିଟରରେ ସେୟାର କରନ୍ତୁ |",
+        "description": "ତୁମର ଅଭିଜ୍ଞତାକୁ ଟ୍ୱିଟ୍ କର |"
+      },
+      "shareInstagram": {
+        "title": "ଇନଷ୍ଟାଗ୍ରାମରେ ସେୟାର କରନ୍ତୁ |",
+        "description": "ଏକ କାହାଣୀ କିମ୍ବା ପୋଷ୍ଟ ଅଂଶୀଦାର କରନ୍ତୁ |"
+      },
+      "shareExperience": {
+        "title": "ଆପଣଙ୍କର ଅଭିଜ୍ଞତା ଅଂଶୀଦାର କରନ୍ତୁ |",
+        "description": "ଆପଣ କାହିଁକି ଆପ୍ ପସନ୍ଦ କରନ୍ତି ସାଙ୍ଗମାନଙ୍କୁ କୁହନ୍ତୁ |"
+      },
+      "share": {
+        "genericMessage": "ଚାଟ୍ ଏବଂ ଇମେଜ୍ ଜେନେରେସନ୍ ପାଇଁ ମୁଁ ଏହି AI ଆପ୍ ବ୍ୟବହାର କରୁଛି | ଏହାକୁ ଯାଞ୍ଚ କରନ୍ତୁ: 000P000⟭ | {{url}}",
+        "facebookQuote": "ଏହି AI ଆପ୍ ଦେଖନ୍ତୁ!",
+        "twitterText": "ମୁଁ ଏହି AI ଆପ୍ ଚେଷ୍ଟା କରୁଛି, ଏହା ବହୁତ ସୁନ୍ଦର ଅଟେ |",
+        "instagramMessage": "ଏହି AI ଆପ୍ ଦେଖନ୍ତୁ: 000P000⟭ | {{url}}"
+      },
+      "store": {
+        "errorTitle": "ତ୍ରୁଟି |",
+        "errorMessage": "ଷ୍ଟୋର ପୃଷ୍ଠା ଖୋଲିପାରିଲା ନାହିଁ |"
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "ଅନୁସନ୍ଧାନ ସଂପୂର୍ଣ୍ଣ |",
+        "description": "ଅନୁସନ୍ଧାନ ସମାପ୍ତ ହୋଇଛି |",
+        "points": "+ {{points}} ପଏଣ୍ଟ |",
+        "close": "ବନ୍ଦ"
+      },
+      "rewardSuccess": {
+        "error": "ତ୍ରୁଟି",
+        "success": "ସଫଳତା |",
+        "somethingWentWrong": "କିଛି ଭୁଲ୍ ହୋଇଗଲା |",
+        "rewardUnlocked": "ପୁରସ୍କାର ଅନଲକ୍ ହୋଇଛି |",
+        "credits": "କ୍ରେଡିଟ୍",
+        "close": "ବନ୍ଦ",
+        "okay": "ଠିକ ଅଛି |"
+      },
+      "secretBox": {
+        "pill": "ଗୁପ୍ତ ବାକ୍ସ |",
+        "rewardUnlocked": "ପୁରସ୍କାର ଅନାବଶ୍ୟକ |",
+        "shufflingRewards": "ଶଫ୍ଲିଙ୍ଗ୍ ପୁରସ୍କାର ...",
+        "imageCreditsAdded": "ପ୍ରତିଛବି ଖାତା ଆପଣଙ୍କ ଆକାଉଣ୍ଟରେ ଯୋଡା ଯାଇଛି |",
+        "continue": "ଜାରି ରଖ |",
+        "revealing": "ପ୍ରକାଶ ...",
+        "prizeTiers": {
+          "lucky": "ଭାଗ୍ୟ",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "ପୁରାଣ"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "ଆପଣଙ୍କ ଦୈନିକ ମୁଦ୍ରା ନିଅନ୍ତୁ",
+      "subtitle": "ପ୍ରତିଦିନ ଆସନ୍ତୁ — ପୁରସ୍କାର ବଢ଼ିବ।",
+      "cta": "ଚେକ୍-ଇନ୍",
+      "claimed": "ମିଳିଲା! +{{amount}} ମୁଦ୍ରା",
+      "later": "ପରେ"
+    }
+  },
+  "app": {
+    "version": "ସଂସ୍କରଣ {{version}}",
+    "offlineBanner": "ଆପଣ ଅଫଲାଇନରେ ଅଛନ୍ତି |",
+    "launch": {
+      "accessibilityLabel": "Cloud AI ଆରମ୍ଭ",
+      "title": "000P000⟭",
+      "subtitle": "AI, ତୁମେ ଯେତେବେଳେ ପ୍ରସ୍ତୁତ |"
+    },
+    "errors": {
+      "modelsLoadTitle": "ମଡେଲଗୁଡିକ ଲୋଡ୍ କରିବାରେ ବିଫଳ |",
+      "modelsLoadMessage": "AI ମଡେଲଗୁଡିକ ଲୋଡ୍ କରିବାକୁ ଅସମର୍ଥ | ଆପ୍ ଡିଫଲ୍ଟ ମଡେଲ୍ ବ୍ୟବହାର କରିବ | ଦୟାକରି ଆପଣଙ୍କର ଇଣ୍ଟରନେଟ୍ ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ |",
+      "modelsLoadTimeout": "ମଡେଲ ଲୋଡିଂ ବହୁତ ସମୟ ନେଇଥିଲା | ଆପ୍ ଡିଫଲ୍ଟ ମଡେଲ୍ ବ୍ୟବହାର କରିବ | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "modelsLoadNetwork": "କ internet ଣସି ଇଣ୍ଟରନେଟ୍ ସଂଯୋଗ ନାହିଁ | ଆପ୍ ଡିଫଲ୍ଟ ମଡେଲ୍ ବ୍ୟବହାର କରିବ | ଦୟାକରି ଆପଣଙ୍କର ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ |",
+      "deviceIdTitle": "ପ୍ରାରମ୍ଭିକରଣ ତ୍ରୁଟି |",
+      "deviceIdMessage": "ଡିଭାଇସ୍ ID ଆରମ୍ଭ କରିବାରେ ବିଫଳ | କିଛି ବ features ଶିଷ୍ଟ୍ୟ ସଠିକ୍ ଭାବରେ କାମ କରିନପାରେ |",
+      "storageTitle": "ସଂରକ୍ଷଣ ତ୍ରୁଟି |",
+      "storageMessage": "ସ୍ଥାନୀୟ ଷ୍ଟୋରେଜ୍ ପ୍ରବେଶ କରିବାକୁ ଅସମର୍ଥ | କିଛି ବ features ଶିଷ୍ଟ୍ୟ ସଠିକ୍ ଭାବରେ କାମ କରିନପାରେ |",
+      "crashTitle": "କିଛି ଭୁଲ୍ ହୋଇଗଲା |",
+      "crashSubtitle": "ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "crashLabel": "ଆପ୍ କ୍ରାସ୍ ହୋଇଛି |"
+    },
+    "proxyErrors": {
+      "genericTitle": "କିଛି ଭୁଲ୍ ହୋଇଗଲା |",
+      "genericMessage": "ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "rateLimitTitle": "ବହୁତ ଅନୁରୋଧ |",
+      "rateLimitMessage": "ଆମେ ଅନେକ ଅନୁରୋଧ ପରିଚାଳନା କରୁଛୁ | ଦୟାକରି ଏକ ମୁହୂର୍ତ୍ତରେ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "rateLimitRetryAfter": "ଆମେ ଅନେକ ଅନୁରୋଧ ପରିଚାଳନା କରୁଛୁ | ଦୟାକରି ପ୍ରାୟ {{seconds}} ସେକେଣ୍ଡରେ ପୁନ ry ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "restrictedTitle": "ପ୍ରତିବନ୍ଧିତ ବିଷୟବସ୍ତୁ |",
+      "restrictedMessage": "ସୁରକ୍ଷା ଫିଲ୍ଟର ଦ୍ୱାରା ଏହି ଅନୁରୋଧ ଅବରୋଧ କରାଯାଇଥିଲା |",
+      "insufficientCoinsTitle": "ପର୍ଯ୍ୟାପ୍ତ ମୁଦ୍ରା ନୁହେଁ |",
+      "insufficientCoinsMessage": "ଏହି ଅନୁରୋଧ ପାଇଁ ତୁମର ସାମ୍ପ୍ରତିକ ବାଲାନ୍ସ ବହୁତ କମ୍ ଅଟେ |",
+      "imageUnavailableTitle": "ପ୍ରତିଛବି ଉପଲବ୍ଧ ନାହିଁ",
+      "imageUnavailableMessage": "ସୃଷ୍ଟି ହୋଇଥିବା ପ୍ରତିଛବି ଫାଇଲ ସାମୟିକ ଭାବରେ ଉପଲବ୍ଧ ନଥିଲା | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "authorizationTitle": "ପ୍ରାଧିକରଣ ପ୍ରସଙ୍ଗ |",
+      "authorizationMessage": "ଆମେ ଆପଣଙ୍କର ଖାତା ଯାଞ୍ଚ କରିପାରିଲୁ ନାହିଁ | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "serverTitle": "ସର୍ଭର ହାଇକପ୍ |",
+      "serverMessage": "ଆମର ସର୍ଭରଗୁଡ଼ିକରେ ଅସୁବିଧା ହୋଇଥିଲା | ଦୟାକରି ଶୀଘ୍ର ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "timeoutTitle": "ବହୁତ ସମୟ ନେଉଛି |",
+      "timeoutMessage": "ଅନୁରୋଧ ସମୟ ସମାପ୍ତ ହୋଇଛି | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "networkTitle": "କ connection ଣସି ସଂଯୋଗ ନାହିଁ |",
+      "networkMessage": "କ internet ଣସି ଇଣ୍ଟରନେଟ୍ ସଂଯୋଗ ନାହିଁ | ଦୟାକରି ଆପଣଙ୍କର ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |",
+      "requestTitle": "ଅନୁରୋଧ ଇସୁ |",
+      "requestMessage": "ଆପଣଙ୍କ ଅନୁରୋଧରେ କିଛି ଭୁଲ ହୋଇଗଲା | ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "ପ୍ରିମିୟମ୍ ସକ୍ରିୟ କରନ୍ତୁ |",
+    "activateMessage": "ଆପଣ ସମୀକ୍ଷକ ପ୍ରିମିୟମକୁ ସକ୍ରିୟ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?",
+    "activateAction": "ସକ୍ରିୟ କରନ୍ତୁ |",
+    "deactivateTitle": "ପ୍ରିମିୟମ୍ ନିଷ୍କ୍ରିୟ କରନ୍ତୁ |",
+    "deactivateMessage": "ଆପଣ ସମୀକ୍ଷକ ପ୍ରିମିୟମକୁ ନିଷ୍କ୍ରିୟ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?",
+    "deactivateAction": "ନିଷ୍କ୍ରିୟ କରନ୍ତୁ |"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "ଦ Daily ନିକ ପୁରସ୍କାର |",
+      "body": "ଆପଣଙ୍କର ଦ daily ନନ୍ଦିନ ମୁଦ୍ରା ହରାନ୍ତୁ ନାହିଁ - ମଧ୍ୟରାତ୍ରି ପୂର୍ବରୁ ଦାବି କରନ୍ତୁ |"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "ଆପଣଙ୍କ ଦୈନିକ ମୁଦ୍ରା ହରାନ୍ତୁ ନାହିଁ",
+      "body": "ଆପଣଙ୍କ ଷ୍ଟ୍ରିକ୍ ବଜାୟ ରହିବା ଏବଂ ମୁଦ୍ରା ବଢ଼ିବା ପାଇଁ ଆମେ ଦିନକୁ ଥରେ ମନେ ପକାଇଥାଉ। କୌଣସି ସ୍ପାମ୍ ନାହିଁ, ଆପଣ ଯେକୌଣସି ସମୟରେ ବନ୍ଦ କରିପାରିବେ।",
+      "enable": "ରିମାଇଣ୍ଡର ଚାଲୁ କରନ୍ତୁ",
+      "skip": "ବର୍ତ୍ତମାନ ନୁହେଁ"
+    }
+  }
+}

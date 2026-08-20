@@ -12,15 +12,15 @@ const paywallSource = fs.readFileSync(
 const localesDirectory = path.join(__dirname, '..', 'src', 'i18n', 'locales');
 
 describe('paywall close gate', () => {
-  test('delays the close button every time the paywall opens', () => {
-    expect(shouldDelayPaywallClose({ firstLaunchPaywall: true })).toBe(true);
-    expect(shouldDelayPaywallClose({ firstLaunchPaywall: false })).toBe(true);
-    expect(shouldDelayPaywallClose({})).toBe(true);
-    expect(shouldDelayPaywallClose(null)).toBe(true);
+  test('keeps the close button immediately available', () => {
+    expect(shouldDelayPaywallClose({ firstLaunchPaywall: true })).toBe(false);
+    expect(shouldDelayPaywallClose({ firstLaunchPaywall: false })).toBe(false);
+    expect(shouldDelayPaywallClose({})).toBe(false);
+    expect(shouldDelayPaywallClose(null)).toBe(false);
   });
 
-  test('uses an 8 second close lock', () => {
-    expect(PAYWALL_CLOSE_LOCK_MS).toBe(8000);
+  test('does not impose a close lock', () => {
+    expect(PAYWALL_CLOSE_LOCK_MS).toBe(0);
   });
 
   test('does not render a countdown indicator while close is locked', () => {

@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Pasirinkite modelį",
+    "searchPlaceholder": "Ieškoti modelių...",
+    "noModelsFound": "Modelių nerasta",
+    "noModelsAvailable": "Nėra modelių",
+    "currentModel": "Dabartinis modelis: {{name}}. Bakstelėkite, kad pakeistumėte modelį.",
+    "openHint": "Atidaromas modelio pasirinkimo meniu",
+    "closeLabel": "Uždarykite modelio parinkiklį",
+    "searchLabel": "Ieškoti modelių",
+    "searchHint": "Įveskite, kad filtruotumėte galimus modelius",
+    "modelLabel": "{{name}} modelis",
+    "selectHint": "Pasirinkite {{name}} modelį",
+    "currentlySelected": "Šiuo metu pasirinktas modelis",
+    "genericModel": "{{provider}} modelis",
+    "badges": {
+      "new": "NAUJIENA",
+      "best": "GERIAUSIAS"
+    }
+  },
+  "models": {
+    "gpt-4o": "Galingiausias AI modelis",
+    "gpt-4o-mini": "Greitai atlieka kasdienes užduotis",
+    "gpt-5": "Galingiausias universalus AI",
+    "gpt-5-chat-latest": "Optimizuotas pokalbiams ir dialogams",
+    "gpt-5-mini": "Greitas ir patikimas GPT-5",
+    "gpt-5.4-nano": "Lengvas modelis paprastoms užduotims atlikti",
+    "o4-mini": "Efektyvus samprotavimo modelis",
+    "gpt-4.1-mini": "Kompaktiškas, galintis GPT-4.1",
+    "claude-3-haiku": "Greitas ir sutelktas antropinis AI",
+    "claude-3.7-sonnet": "Rafinuotas Anthropic samprotavimas",
+    "gemini-2.5-Flash": "Pažangiausias „Google“ modelis",
+    "gemini-2.5-flash": "Pažangiausias „Google“ modelis",
+    "gemini-2.0-flash": "Greitas ir tikslus Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Galingiausias AI modelis",
+    "fast_everyday": "Greitai atlieka kasdienes užduotis",
+    "fast_reasoning": "Greitas modelis su gerais motyvais",
+    "great_reasoning": "Išplėstinis samprotavimo modelis",
+    "coding_reasoning": "Išplėstinis kodavimas ir samprotavimas",
+    "better_coding": "Geriau koduoti ir samprotauti",
+    "best_overall": "Geriausias universalus AI modelis",
+    "best_google": "Geriausias Google modelis",
+    "best_xai": "Galingiausias xAI modelis",
+    "creative_focus": "Puikiai tinka kūrybiniam rašymui",
+    "code_helper": "Puikiai tinka kodavimo pagalbai",
+    "chat_focus": "Optimizuotas pokalbiams",
+    "long_context": "Puikiai tinka ilgiems kontekstams",
+    "budget_friendly": "Biudžetą tausojantis AI modelis",
+    "ultra_fast": "Itin greiti atsakymai",
+    "safe_default": "Saugus numatytasis pasirinkimas",
+    "multilingual": "Stiprus daugiakalbis palaikymas",
+    "vision_strong": "Puikiai su vaizdais ir vizija",
+    "data_analysis": "Tinka duomenų analizei",
+    "structured_tasks": "Tinka struktūrinėms užduotims",
+    "everyday_helper": "Kasdienio asistento modelis",
+    "concise_answers": "Trumpi, glausti atsakymai",
+    "detailed_answers": "Išsamūs žingsnis po žingsnio atsakymai",
+    "experimental": "Eksperimentinis naujos kartos modelis",
+    "reliable_classic": "Patikimas klasikinis modelis",
+    "lightweight": "Lengvas, pigus modelis",
+    "chatty_personal": "Draugiškesnis ir asmeniškesnis",
+    "pro_users": "Geriausiai tinka patyrusiems vartotojams",
+    "research_helper": "Tinka tyrimams ir užrašams",
+    "reasoning_strong": "Išplėstinis samprotavimo modelis"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Antropinis",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Kita"
+  },
+  "navigation": {
+    "chat": "Naujas pokalbis",
+    "history": "Istorija",
+    "rewards": "Dienos apdovanojimai",
+    "assistants": "Asistentai",
+    "imagesStudio": "Image Studio",
+    "settings": "Nustatymai",
+    "recentChats": "Naujausi pokalbiai",
+    "proFeatures": "Pro funkcijos",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Gaukite „Pro“ funkcijas",
+      "subtitle": "Visos AI funkcijos"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Generuokite, tobulinkite ir skelbkite vaizdinius išteklius vienoje vietoje.",
+    "cta": "Atidaryti"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Pasirinkite vaizdus",
+    "exitSelectionMode": "Išeikite iš pasirinkimo režimo",
+    "selectAll": "Pasirinkite Viskas",
+    "noImagesYet": "Dar nėra vaizdų",
+    "describeImageHint": "Toliau aprašykite savo vaizdą ir bakstelėkite Generuoti.",
+    "generatedImagesGallery": "Sukurta vaizdų galerija",
+    "describeImagePlaceholder": "Apibūdinkite norimą vaizdą…",
+    "deleteConfirmTitle": "Ištrinti vaizdus",
+    "deleteConfirmMessage": "Ar tikrai norite ištrinti pasirinktus vaizdus? Šio veiksmo anuliuoti negalima.",
+    "cancel": "Atšaukti",
+    "delete": "Ištrinti",
+    "generate": "Generuoti",
+    "generating": "Generuojama…",
+    "latest": "Naujausias",
+    "insertToChat": "Įdėkite pokalbiui",
+    "pleaseWait": "Prašome palaukti…",
+    "processing": "Apdorojama...",
+    "tapToUploadImage": "Palieskite, kad įkeltumėte vaizdą",
+    "camera": "Įkelti nuotraukas",
+    "library": "biblioteka",
+    "enterPrompt": "Įveskite teksto į vaizdą generavimo raginimą",
+    "openInBrowser": "Atidaryti naršyklėje",
+    "makeVariations": "Padarykite variantus",
+    "deleteAllFromGeneration": "Ištrinti viską iš šios kartos",
+    "imageOptionsTitle": "Vaizdo parinktys",
+    "imageOptionsMessage": "Ką norėtumėte padaryti su šiuo vaizdu?",
+    "insertMarkdownHeader": "Čia yra paveikslėlis:",
+    "variationSuffix": "- ankstesnio vaizdo variantas",
+    "selectedCount": "pasirinktas",
+    "selectedCount_one": "pasirinktas",
+    "selectedCount_other": "pasirinktas",
+    "imageDescriptionInput": "Vaizdo aprašymo įvestis",
+    "imageDescriptionHint": "Įveskite vaizdo, kurį norite sugeneruoti, aprašymą",
+    "openModelSettings": "Atidarykite modelio nustatymus",
+    "modelSettingsHint": "Bakstelėkite, kad pakeistumėte modelį ir nustatymus",
+    "openPhotoGallery": "Atidaryti nuotraukų galeriją",
+    "clearInput": "Išvalyti įvestį",
+    "generatedImage": "Sukurtas vaizdas",
+    "autoSelectedModel": "Automatiškai pasirinktas {{model}} režimui {{mode}}",
+    "deleteSelectedConfirmTitle": "Ištrinti vaizdus",
+    "deleteSelectedConfirmMessage": "Ar tikrai norite ištrinti vaizdus? Šio veiksmo anuliuoti negalima."
+  },
+  "imageStudio": {
+    "generateImage": "Sukurti vaizdą",
+    "generatingImage": "Vaizdo generavimas",
+    "generateImageHint": "Bakstelėkite, kad sukurtumėte vaizdą pagal savo aprašymą",
+    "imageDescriptionInput": "Vaizdo aprašymo įvestis",
+    "imageDescriptionHint": "Įveskite vaizdo, kurį norite sugeneruoti, aprašymą",
+    "openModelSettings": "Atidarykite modelio nustatymus",
+    "modelSettingsHint": "Bakstelėkite, kad pakeistumėte modelį ir nustatymus",
+    "openPhotoGallery": "Atidaryti nuotraukų galeriją",
+    "clearInput": "Išvalyti įvestį",
+    "generatedImage": "Sukurtas vaizdas"
+  },
+  "assistants": {
+    "title": "Asistentai",
+    "defaultTitle": "Padėjėjas",
+    "errorTitle": "Kažkas nutiko",
+    "errorMessage": "Nepavyko paleisti šio asistento.",
+    "noAssistants": "Šioje kategorijoje padėjėjų nerasta.",
+    "selectAssistantHint": "Atidarykite pagalbinį rinkiklį",
+    "subtitle": "Kuruojami dirbtinio intelekto specialistai, pasiruošę koduoti, rašyti, analizuoti, planuoti ir kt.",
+    "searchPlaceholder": "Paieškos pagalbininkai…",
+    "useAssistant": "Naudokite asistentą",
+    "selectAssistant": "Pasirinkite asistentą",
+    "description": "Aprašymas",
+    "systemPrompt": "Sistemos raginimas",
+    "chooseModel": "Pasirinkite Modelį",
+    "categoryAll": "Visi",
+    "categories": {
+      "everyday": "Kasdien",
+      "life": "Gyvenimas",
+      "health": "Sveikata",
+      "schoolWork": "Mokykla ir darbas",
+      "coding": "Kodavimas",
+      "creative": "Kūrybingas",
+      "general": "Generolas"
+    },
+    "presets": {
+      "default": {
+        "name": "Numatytasis asistentas",
+        "description": "Subalansuota pagalba kasdieniams reikalams."
+      },
+      "quick": {
+        "name": "Greiti atsakymai",
+        "description": "Trumpi, tiesūs atsakymai."
+      },
+      "planner": {
+        "name": "Dienos planuotojas",
+        "description": "Suplanuokite savo dieną ir rutiną."
+      },
+      "recipes": {
+        "name": "Maistas ir receptai",
+        "description": "Ką gaminti, su tuo, ką turi."
+      },
+      "fitness": {
+        "name": "Fitneso treneris",
+        "description": "Maži įpročiai ir treniruotės namuose."
+      },
+      "money": {
+        "name": "Pinigų bičiulis",
+        "description": "Paprasti biudžetai ir išlaidų patarimai."
+      },
+      "study": {
+        "name": "Studijų pagalbininkas",
+        "description": "Paaiškinkite paprastai. Apklausk mane."
+      },
+      "email": {
+        "name": "El. paštas ir Tęsti",
+        "description": "Rašykite aiškius el. laiškus ir CV eilutes."
+      },
+      "translator": {
+        "name": "Vertėjas",
+        "description": "Versti + mokyti frazes."
+      },
+      "travel": {
+        "name": "Kelionės draugas",
+        "description": "Paprasti planai ir pakavimo sąrašai."
+      },
+      "tech": {
+        "name": "Techninė pagalba (paprasta)",
+        "description": "Telefonas, programos, „Wi-Fi“ pagrindai."
+      },
+      "summarizer": {
+        "name": "TL;DR suvestinė",
+        "description": "Trumpos kulkos + vienos linijos TL;DR."
+      },
+      "gift": {
+        "name": "Dovanų ieškiklis",
+        "description": "Idėjos pagal biudžetą ir interesus."
+      },
+      "party": {
+        "name": "Renginių planavimo priemonė (paprastoji)",
+        "description": "Greitai suplanuokite nedidelį vakarėlį."
+      },
+      "social": {
+        "name": "Socialinių įrašų kūrėjas",
+        "description": "Įrašų juodraštis su parinktimis."
+      },
+      "interview": {
+        "name": "Interviu treneris",
+        "description": "Praktikuokite atsakymus (STAR)."
+      },
+      "homefix": {
+        "name": "Pataisymo namuose vadovas",
+        "description": "Paprastas „pasidaryk pats“ trikčių šalinimas."
+      },
+      "pet": {
+        "name": "Gyvūnų priežiūros draugas",
+        "description": "Maitinimas, pasivaikščiojimai, bazinės treniruotės."
+      },
+      "mindful": {
+        "name": "Sąmoninga minutė",
+        "description": "1-3 min ramios pertraukėlės."
+      },
+      "polite": {
+        "name": "Mandagus perrašytojas",
+        "description": "Gražiai perrašykite tekstus ir atsakymus."
+      }
+    }
+  },
+  "history": {
+    "title": "Istorija",
+    "searchPlaceholder": "Ieškoti pokalbių…",
+    "newChat": "Naujas pokalbis",
+    "new": "+ Naujas",
+    "search": "Ieškoti",
+    "clearSearch": "Išvalyti paiešką",
+    "noChatsYet": "Dar nėra pokalbių",
+    "noResults": "Dar nėra pokalbių",
+    "startFirstConversation": "Pradėkite pirmąjį pokalbį.",
+    "startChat": "Pradėti pokalbį",
+    "startNewChat": "Pradėkite naują pokalbį",
+    "errorLoadingHistory": "Įkeliant istoriją įvyko klaida",
+    "loading": "Įkeliama istorija...",
+    "renameChat": "Pervardyti pokalbį",
+    "enterNewTitle": "Įveskite naują pavadinimą",
+    "deleteChat": "Ištrinti pokalbį?",
+    "deleteChatMessage": "„{{title}}“ bus ištrintas.",
+    "rename": "Pervardyti",
+    "unpin": "Atsegti",
+    "pin": "Smeigtukas",
+    "untitled": "Be pavadinimo"
+  },
+  "settings": {
+    "title": "Nustatymai",
+    "model": "Modelis",
+    "searchPlaceholder": "Ieškoti modelių…",
+    "temperatureForCurrentModel": "Dabartinio modelio temperatūra",
+    "customFor": "Pritaikyta {{model}}",
+    "usingDefault": "Naudojamas numatytasis {{temperature}}",
+    "resetToDefault": "Iš naujo nustatyti numatytuosius",
+    "defaultTemperature": "Numatytoji temperatūra (atsarginė)",
+    "usedByModelsWithoutOverride": "Naudojamas modeliuose be pasirinktinio nepaisymo",
+    "dangerZone": "Pavojaus zona",
+    "clearAllChatsAndSettings": "Išvalyti visus pokalbius ir nustatymus",
+    "about": "Apie",
+    "version": "Versija {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Privatumo politika",
+    "hero": {
+      "label": "Specialus pasiūlymas",
+      "title": "Neribota prieiga\n& Pro funkcijos",
+      "upgrade": "Atnaujinti",
+      "manage": "Tvarkyti planą"
+    },
+    "sections": {
+      "premium": "Premium planas",
+      "data": "Vartotojo duomenys",
+      "support": "Pagalba ir teisė"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Gaukite Premium",
+        "subtitle": "Atrakinkite neribotą kūrimo įrankių skaičių"
+      },
+      "premiumActive": {
+        "title": "Premium aktyvus",
+        "subtitle": "Ačiū už palaikymą Cloud AI"
+      },
+      "restore": {
+        "title": "Atkurti pirkinius",
+        "subtitle": "Naudokite, jei perjungėte įrenginius"
+      },
+      "history": {
+        "title": "Tvarkyti pokalbių istoriją",
+        "subtitle": "Peržiūrėkite ir ištrinkite ankstesnius seansus"
+      },
+      "reset": {
+        "title": "Iš naujo nustatyti pokalbius ir nuostatas",
+        "subtitle": "Išvalomi visi šiame įrenginyje saugomi duomenys"
+      },
+      "rate": {
+        "title": "Įvertink mus",
+        "error": "Nepavyko atidaryti parduotuvės puslapio."
+      },
+      "support": {
+        "title": "Palaikymas",
+        "subtitle": "Susisiekite su mumis internetu",
+        "error": "Nepavyko atidaryti kontaktinio puslapio."
+      },
+      "privacy": {
+        "title": "Privatumo politika",
+        "error": "Nepavyko atidaryti privatumo politikos."
+      },
+      "terms": {
+        "title": "Naudojimo sąlygos",
+        "error": "Nepavyko atidaryti naudojimo sąlygų."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Nepasiekiamas",
+      "linkUnavailableMessage": "Šiuo metu negalima atidaryti šios nuorodos.",
+      "restoreSuccessTitle": "Atkurta",
+      "restoreSuccessMessage": "Jūsų pirkiniai buvo atkurti.",
+      "restoreEmptyTitle": "Pirkinių nerasta",
+      "restoreEmptyMessage": "Nepavyko rasti aktyvaus pirkinio, kurį būtų galima atkurti šioje paskyroje.",
+      "restoreErrorTitle": "Atkurti nepavyko",
+      "restoreErrorMessage": "Šiuo metu negalima atkurti pirkinių.",
+      "resetConfirmTitle": "Iš naujo nustatyti programos duomenis?",
+      "resetConfirmMessage": "Tai pašalina visus pokalbius ir vietines nuostatas.",
+      "resetConfirmCancel": "Atšaukti",
+      "resetConfirmCta": "Nustatyti iš naujo"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Sukurti",
+    "chooseStyle": "Pasirinkite stilių",
+    "aspectRatio": "Krašto santykis",
+    "starterPrompts": {
+      "title": "Pradedančiųjų raginimai",
+      "items": [
+        "studijos galva",
+        "moderni svetainė",
+        "atogrąžų paplūdimys saulėlydžio metu"
+      ]
+    },
+    "promptPlaceholder": "Įveskite tai, ką norite pamatyti…",
+    "promptHint": "Pavyzdys: „Auksinis retriveris studijos apšvietime“",
+    "clearText": "Aiškus tekstas",
+    "generate": "Generuoti",
+    "generating": "Generuojama…"
+  },
+  "editImage": {
+    "headerTitle": "Redaguoti",
+    "chooseStyle": "Pasirinkite stilių",
+    "aspectRatio": "Krašto santykis",
+    "starterPrompts": {
+      "title": "Pradedančiųjų raginimai",
+      "items": [
+        "sutvarkyti apšvietimą",
+        "pašalinti foną",
+        "minkštas portretų retušavimas"
+      ]
+    },
+    "promptPlaceholder": "Aprašyti pakeitimus (neprivaloma)",
+    "clearText": "Aiškus tekstas",
+    "generate": "Generuoti",
+    "generating": "Taikoma…",
+    "upload": {
+      "choose": "Pasirinkite Nuotrauka",
+      "change": "Keisti",
+      "remove": "Pašalinti"
+    },
+    "imageUnavailable": {
+      "title": "Vaizdas nepasiekiamas",
+      "message": "Nepavyko pasiekti pasirinktos nuotraukos. Pasirinkite iš naujo ir bandykite dar kartą."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Animacinis filmas"
+      },
+      "photoreal": {
+        "name": "Fotorealinis"
+      },
+      "sketch": {
+        "name": "Eskizas"
+      },
+      "cyberpunk": {
+        "name": "Kiberpankas"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D iliustracija"
+      },
+      "dark_fantasy": {
+        "name": "Tamsioji fantazija"
+      },
+      "vintage_film": {
+        "name": "Senovinis filmas"
+      },
+      "pastel": {
+        "name": "Pastelinė estetika"
+      },
+      "neon_glow": {
+        "name": "Neoninis švytėjimas"
+      },
+      "epic_landscape": {
+        "name": "Epas peizažas"
+      }
+    },
+    "aspectRatios": {
+      "square": "Kvadratas",
+      "landscape": "Peizažas",
+      "portrait": "Portretas"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontentas",
+      "custom": "Pasirinktinis"
+    },
+    "notEnoughCoinsTitle": "Nepakanka monetų",
+    "notEnoughCoinsMessage": "Dabartinis jūsų balansas yra per mažas šiam vaizdui.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Greičiausias modelis",
+      "runwareFluxKrea": "Kūrybiški, stilizuoti rezultatai",
+      "runwareQwenImage": "Subalansuoti, kokybiški rezultatai",
+      "google4": "Geriausias AI vaizdo modelis",
+      "klingImageO1": "Aukštos kokybės vaizdo redagavimas",
+      "fluxKontent": "„Flux Kontent“ pritaikytas redagavimui",
+      "runwareProvider": "Subalansuota kokybė su patikima difuzija.",
+      "airProvider": "Nano Banana suteikia žaismingą, ryškų atspalvį.",
+      "googleProvider": "„Google“ sureguliavo detales.",
+      "klingaiProvider": "KlingAI pritaikytas kontroliuojamiems redagavimui.",
+      "anthropicProvider": "Claude vamzdynas niuansuotoms nuotaikoms.",
+      "default": "Palieskite, kad peržiūrėtumėte galimus variklius."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "jūsų pasirinktas stilius",
+    "sheetTitle": "Savo vizijos kūrimas",
+    "sheetSubtitle": "Trumpam gurkšnokite serverio kavą, kol sumaišome {{style}} į raginimą.",
+    "phases": {
+      "blend": "Maišymas {{style}}",
+      "paint": "Scenos tapyba",
+      "finish": "Pridedamas galutinis poliravimas"
+    },
+    "actions": {
+      "cancel": "Atšaukti",
+      "retry": "Bandykite dar kartą",
+      "close": "Uždaryti"
+    },
+    "errors": {
+      "restrictedTitle": "Ribotas turinys",
+      "genericTitle": "Nepavyko generuoti",
+      "genericMessage": "Nepavyko sugeneruoti vaizdo."
+    },
+    "alerts": {
+      "saveFailedTitle": "Nepavyko išsaugoti",
+      "shareFailedTitle": "Nepavyko bendrinti",
+      "tryAgain": "Bandykite dar kartą.",
+      "savedTitle": "Išsaugota",
+      "savedMessage": "Vaizdas išsaugotas jūsų galerijoje.",
+      "permissionTitle": "Reikalingas leidimas",
+      "permissionMessage": "Suteikite prieigą prie saugyklos, kad galėtumėte išsaugoti vaizdus savo galerijoje."
+    },
+    "result": {
+      "complete": "Viskas baigta"
+    },
+    "accessibility": {
+      "close": "Uždaryti"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Ištrinti",
+      "edit": "Redaguoti",
+      "save": "Išsaugoti",
+      "share": "Dalintis"
+    },
+    "alerts": {
+      "savedTitle": "Išsaugota",
+      "savedMessage": "Vaizdas išsaugotas jūsų galerijoje.",
+      "permissionTitle": "Reikalingas leidimas",
+      "permissionMessage": "Suteikite prieigą prie saugyklos, kad galėtumėte išsaugoti vaizdus savo galerijoje.",
+      "saveFailedTitle": "Nepavyko išsaugoti",
+      "tryAgain": "Bandykite dar kartą."
+    },
+    "accessibility": {
+      "close": "Uždaryti",
+      "delete": "Ištrinti vaizdą",
+      "edit": "Redaguoti vaizdą",
+      "save": "Išsaugoti vaizdą",
+      "share": "Bendrinti vaizdą"
+    }
+  },
+  "reportContent": {
+    "title": "Pranešti apie AI turinį",
+    "subtitle": "Pasakykite mums, kas negerai su šiuo sugeneruotu turiniu.",
+    "privateDisclosure": "Pateikus šį turinį, apie kurį pranešta, siunčiamas saugos peržiūrai.",
+    "accessibilityLabel": "Pranešti apie AI turinį",
+    "reasons": {
+      "sexual": "Seksualinis arba nuogybių turinys",
+      "violence_self_harm": "Smurtas arba savęs žalojimas",
+      "hate_harassment": "Neapykanta arba priekabiavimas",
+      "child_safety": "Vaiko saugumo susirūpinimas",
+      "scam_deceptive": "Afera arba apgaulingas turinys",
+      "other": "Kita"
+    },
+    "errors": {
+      "reasonRequired": "Prieš pateikdami pasirinkite priežastį.",
+      "submit": "Nepavyko pateikti ataskaitos. Bandykite dar kartą."
+    },
+    "success": {
+      "title": "Ačiū. Jūsų ataskaita buvo pateikta.",
+      "subtitle": "Naudosime ataskaitas, kad pagerintume turinio saugą."
+    },
+    "actions": {
+      "report": "Pranešimas",
+      "submit": "Pateikti ataskaitą",
+      "done": "Atlikta"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Atidaryti meniu",
+      "selectImages": "Pasirinkite vaizdus",
+      "exitSelection": "Išeiti iš pasirinkimo",
+      "deleteSelected": "Ištrinti pasirinktus vaizdus",
+      "selectToDelete": "Pasirinkite vaizdus, kuriuos norite ištrinti"
+    },
+    "createCard": {
+      "title": "Sukurti iš teksto",
+      "subtitle": "Įveskite aprašymą",
+      "cta": "Apibūdinkite ir generuokite"
+    },
+    "editCard": {
+      "title": "AI nuotraukų redaktorius",
+      "subtitle": "Keiskite ir patobulinkite naudodami AI",
+      "cta": "Redaguoti naudojant AI"
+    },
+    "gallery": {
+      "title": "Galerija",
+      "empty": "Dar nėra vaizdų",
+      "selection": {
+        "enter": "Pasirinkite vaizdus",
+        "exit": "Išeiti iš pasirinkimo",
+        "deleteSelected": "Ištrinti pasirinktus vaizdus",
+        "selectForDelete": "Pasirinkite vaizdus, kuriuos norite ištrinti"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Susipažink",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Kurkite ir redaguokite vaizdus naudodami AI – tiesiai Cloud AI."
+    },
+    "relaxView": {
+      "title": "Susipažinkite su savo AI",
+      "titleHighlight": "Asistentai",
+      "subtitle": "Specializuoti AI ekspertai pasiruošę padėti patenkinti jūsų kasdienius poreikius",
+      "cards": {
+        "fitness": {
+          "title": "Fitneso treneris",
+          "text": "Maži įpročiai ir treniruotės namuose."
+        },
+        "recipes": {
+          "title": "Maistas ir receptai",
+          "text": "Ką gaminti, su tuo, ką turi."
+        },
+        "travel": {
+          "title": "Kelionės draugas",
+          "text": "Paprasti planai ir pakavimo sąrašai."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ĮMONĖS KLIENTO DI SPRENDIMAI",
+      "description": "Įgalinkite savo verslą naudodami pažangiausias dirbtinio intelekto technologijas, skirtas įmonių profesionalams ir komandoms.",
+      "stats": "Pasitiki daugiau nei 500 000 vartotojų",
+      "rating": "4,9 / 5",
+      "button": "Pradėkite"
+    },
+    "buttons": {
+      "continue": "Tęsti",
+      "start": "Pradėkime"
+    }
+  },
+  "coinStore": {
+    "title": "Gaukite kreditus",
+    "loading": "Įkeliama monetų parduotuvė…",
+    "balanceLabel": "Jūsų dabartinis likutis yra",
+    "balanceValue": "{{amount}} kreditai",
+    "history": {
+      "link": "Sandorių istorija",
+      "alertTitle": "Istorija",
+      "alertBody": "Sandorių istorija netrukus pasirodys."
+    },
+    "noPacks": "Nėra monetų pakuočių. Patikrinkite savo RevenueCat pasiūlymo ID.",
+    "badges": {
+      "basic": "Pagrindinis paketas",
+      "popular": "Populiariausias",
+      "value": "Geriausia vertė"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} kreditai",
+      "tokensLabel": "{{credits}} kreditai",
+      "defaultName": "Pakuotė {{index}}",
+      "unknownPrice": "USD –"
+    },
+    "premium": {
+      "title": "Eikite į „Premium“.",
+      "subtitle": "Neribota prieiga ir funkcijos",
+      "cta": "Atnaujinti"
+    },
+    "termsText": "Pirkdami sutinkate su mūsų",
+    "termsLink": "Paslaugų teikimo sąlygos",
+    "alerts": {
+      "initErrorTitle": "Pradinė klaida",
+      "genericMessage": "Kažkas nutiko.",
+      "successTitle": "Sėkmės",
+      "successMessage": "Netrukus pasirodys kreditai.",
+      "purchaseFailedTitle": "Pirkimas nepavyko",
+      "unknownError": "Nežinoma klaida"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Reikalinga priemoka",
+    "upgrade": "Atnaujinti",
+    "modelRequiredMessage": "Šiam modeliui reikalinga „Premium“. Atnaujinkite, kad galėtumėte pasiekti GPT-5, Grok 4, Claude ir daugiau pažangių modelių.",
+    "assistantsRequiredMessage": "Asistentams reikalinga „Premium“. Naujovinkite, kad galėtumėte pasiekti specializuotus AI padėjėjus, skirtus kūno rengybai, kodavimui, rašymui ir kt.",
+    "assistantsTitle": "Reikalinga priemoka",
+    "assistantsMessage": "Asistentams reikalinga „Premium“. Naujovinkite, kad galėtumėte pasiekti specializuotus AI padėjėjus, skirtus kūno rengybai, kodavimui, rašymui ir kt."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5,5, Grok, Gemini",
+    "close": "Uždarykite mokėjimo sieną",
+    "unavailableTitle": "Pirkiniai nepasiekiami",
+    "unavailableMessage": "„Android“ atsiskaitymas dar nesukonfigūruotas.",
+    "restoreEmptyTitle": "Pirkinių nerasta",
+    "restoreEmptyMessage": "Nepavyko rasti aktyvaus pirkinio, kurį būtų galima atkurti šioje paskyroje.",
+    "restoreFailedTitle": "Atkurti nepavyko",
+    "restoreFailedMessage": "Šiuo metu negalima atkurti pirkinių.",
+    "productsUnavailableTitle": "Nėra jokių planų",
+    "productsUnavailableMessage": "Šiuo metu nepasiekiami jokie „Android“ prenumeratos produktai.",
+    "purchaseFailedTitle": "Pirkimas nepavyko",
+    "purchaseFailedMessage": "Šiuo metu negalima užbaigti šio pirkimo.",
+    "restore": "Atkurti",
+    "restoreRestoring": "Atkuriama…",
+    "features": {
+      "create": "Kurkite vaizdus ir vaizdo įrašus",
+      "search": "Ieškokite internete naudodami AI",
+      "talk": "Natūraliai pasikalbėkite su AI",
+      "imageStudio": "Gaukite Image Studio {{credits}} kreditų {{period}}",
+      "period": {
+        "weekly": "kas savaitę",
+        "monthly": "kas mėnesį",
+        "yearly": "kasmet"
+      }
+    },
+    "freeTrial": {
+      "title": "Nemokamas bandomasis laikotarpis",
+      "subtitle": "3 dienų nemokama bandomoji versija"
+    },
+    "badge": {
+      "bestOffer": "Geriausias pasiūlymas"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Kasmet",
+        "only": "Tik {{price}}",
+        "defaultPrice": "79,99 USD",
+        "defaultIntroPrice": "1,35 USD"
+      },
+      "monthly": {
+        "title": "Kas mėnesį",
+        "subtitle": "Atšaukti bet kada",
+        "defaultPrice": "19,99 USD"
+      },
+      "weekly": {
+        "title": "Kas savaitę",
+        "subtitle": "Atšaukti bet kada",
+        "defaultPrice": "9,99 USD",
+        "trialThen": "Tada 3 dienos nemokamai"
+      }
+    },
+    "frequency": {
+      "perWeek": "per savaitę",
+      "perMonth": "per mėnesį"
+    },
+    "cta": "Tęsti",
+    "ctaFreeTrial": "Išbandykite nemokamai",
+    "legal": {
+      "terms": "Sąlygos",
+      "privacy": "Privatumas"
+    },
+    "premium": {
+      "headline": "Visas aukščiausios kokybės AI viename plane",
+      "subtitleLine1": "Kalbėkitės, koduokite, kurkite ir planuokite",
+      "subtitleLine2": "su pažangiais modeliais.",
+      "enableTrial": "Įgalinti nemokamą bandomąją versiją",
+      "annual": "Metinis",
+      "saveBadge": "Sutaupykite 83 %",
+      "year": "metai",
+      "week": "savaitė",
+      "termsOfUse": "Naudojimo sąlygos",
+      "privacyPolicy": "Privatumo politika"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Pranešimas...",
+    "createImages": "Kurti vaizdus",
+    "generateAiArtwork": "Sukurkite AI meno kūrinius",
+    "camera": "Įkelti nuotraukas",
+    "takeOrSelectPhotos": "Pasirinkite nuotraukas",
+    "search": "Ieškoti",
+    "findInformation": "Raskite informaciją",
+    "findRecentInfo": "Raskite naujausią informaciją",
+    "removeImage": "Pašalinti vaizdą",
+    "messageInput": "Pranešimo įvedimas",
+    "clearInput": "Išvalyti įvestį",
+    "quickActionsLabel": "Greiti veiksmai",
+    "hideQuickActions": "Slėpti greitus veiksmus",
+    "showQuickActions": "Rodyti greitus veiksmus",
+    "startVoiceInput": "Pradėti balso įvestį",
+    "sendMessage": "Siųsti žinutę",
+    "offline": "Neprisijungus",
+    "stop": "Sustok",
+    "streaming": "Srautas…",
+    "closeRecorder": "Uždarykite įrašymo įrenginį",
+    "insertTranscript": "Siųsti",
+    "scrollToLatest": "Slinkite iki naujausio pranešimo",
+    "copyMessage": "Nukopijuokite pranešimą",
+    "copyMessageHint": "Nukopijuokite šį pranešimą į mainų sritį",
+    "shareMessage": "Pasidalinti žinute",
+    "shareMessageHint": "Pasidalinkite šia žinute",
+    "regenerateResponse": "Regeneruoti atsaką",
+    "regenerateResponseHint": "Sugeneruokite naują atsakymą",
+    "copyCode": "Nukopijuokite kodą",
+    "copied": "Nukopijuota",
+    "image": "vaizdas",
+    "loading": "Įkeliama…",
+    "loadingChat": "Įkeliamas pokalbis...",
+    "offlineBanner": "Esate neprisijungęs. Žinučių išsiųsti negalima.",
+    "offlineError": "Nėra interneto ryšio. Patikrinkite ryšį ir bandykite dar kartą.",
+    "imagePickerErrorTitle": "Vaizdo rinkiklio klaida",
+    "imagePickerErrorMessage": "Nepavyko pasiekti jūsų nuotraukų. Bandykite dar kartą.",
+    "messageTooLong": "Pranešimas per ilgas ({{length}}). Riba yra {{limit}}.",
+    "sendFailed": "Nepavyko išsiųsti pranešimo. Bandykite dar kartą.",
+    "modelNoImageSupport": "Pasirinktas modelis nepalaiko vaizdų. Pasirinkite kitą modelį.",
+    "voiceStartFailed": "Nepavyko pradėti balso.",
+    "voiceNoSpeechDetected": "Balso neatpažino. Bandykite dar kartą.",
+    "emptyTitle": "Kaip galiu padėti?",
+    "emptySubtitle": "Pradėkite pokalbį su AI",
+    "privateTitle": "Privatus pokalbis",
+    "privateSubtitle": "Šis pokalbis nebus rodomas jūsų pokalbių istorijoje",
+    "startPrivateChat": "Pradėkite privatų pokalbį",
+    "endPrivateChat": "Baigti privatų pokalbį",
+    "permissions": {
+      "photosTitle": "Reikalingas nuotraukų leidimas",
+      "photosMessage": "Norint pasirinkti vaizdus, reikalinga prieiga prie nuotraukų.",
+      "voiceTitle": "Reikalingi balso leidimai",
+      "voiceMessage": "Norint naudoti balsą, reikalinga prieiga prie mikrofono ir kalbos."
+    },
+    "activity": {
+      "analyzingImages": "Analizuojami vaizdai…",
+      "searching": "Ieškoma…",
+      "thinking": "Galvoju…"
+    },
+    "webSearch": {
+      "title": "Interneto paieška",
+      "subtitle": "Raskite naujausią informaciją",
+      "label": "Interneto paieška",
+      "enable": "Įgalinti žiniatinklio paiešką",
+      "disable": "Išjungti žiniatinklio paiešką",
+      "toggleLabel": "Ieškokite internete"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Greitai kurkite vaizdinius elementus.",
+      "subtitle": "Generuokite, tobulinkite ir skelbkite vaizdinius išteklius vienoje vietoje.",
+      "cta": "Atidaryti"
+    },
+    "quickActions": {
+      "createImages": "Kurti vaizdus",
+      "openCamera": "Atidarykite Kamera",
+      "editImage": "Redaguoti vaizdą",
+      "startVoice": "Pradėti Voice",
+      "assistants": "Asistentai"
+    },
+    "listening": "Klausoma…",
+    "startRecording": "Pradėti įrašymą…",
+    "assistantHeader": {
+      "unavailableTitle": "Padėjėjas nepasiekiamas",
+      "unavailableDescription": "Nepavyko įkelti šio asistento. Bandykite dar kartą.",
+      "ready": "Pasiruošę padėti"
+    },
+    "actions": {
+      "copy": "Kopijuoti",
+      "share": "Dalintis",
+      "regenerate": "Regeneruoti",
+      "retryFromHere": "Bandykite dar kartą iš čia",
+      "report": "Pranešimas",
+      "cancel": "Atšaukti"
+    },
+    "markdown": {
+      "copy": "Kopijuoti",
+      "copied": "Nukopijuota",
+      "table": "LENTELĖ",
+      "watchVideo": "Žiūrėti Video",
+      "wikipedia": "Vikipedija",
+      "link": "Nuoroda",
+      "note": "Pastaba",
+      "warning": "Įspėjimas",
+      "tip": "Patarimas"
+    },
+    "messageActionTitle": "Pranešimas",
+    "status": {
+      "sending": "Siunčiama…",
+      "failed": "Nepavyko",
+      "sent": "Išsiųsta"
+    },
+    "suggestions": {
+      "writeStory": "Parašykite kūrybinę istoriją",
+      "writeStorySubtitle": "apie magišką nuotykį",
+      "planTravel": "Suplanuokite kelionės maršrutą",
+      "planTravelSubtitle": "nuostabioms atostogoms",
+      "explainConcept": "Paaiškinkite šią sąvoką",
+      "explainConceptSubtitle": "paprastais žodžiais",
+      "planDay": "Planuok mano dieną",
+      "planDaySubtitle": "su produktyvumo patarimais"
+    },
+    "home": {
+      "eyebrow": "Pasirinkite temą",
+      "title": "Ką tu nori veikti?",
+      "subtitle": "Pasirinkite kryptį, tada pradėkite nuo stipraus raginimo.",
+      "pickPromptTitle": "Pasirinkite raginimą pradėti",
+      "changeTopic": "Pasirinkite kitą temą",
+      "intents": {
+        "summarize": "Apibendrinkite tekstą",
+        "summarizeShort": "Apibendrinti",
+        "summarizeHint": "Straipsniai, pastabos, balso atmintinės, ilgos gijos",
+        "plan": "Sudarykite planą",
+        "planHint": "Kelionės, rutina, biudžetai, terminai, gyvenimo pokyčiai",
+        "brainstorm": "Protų šturmas",
+        "brainstormHint": "Idėjos, pasiūlymai, pavadinimai, turinys, šalutiniai projektai",
+        "analyze": "Analizuoti duomenis",
+        "analyzeHint": "Išlaidos, atsiliepimai, metrika, įpročiai, našumas"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Sukurkite steigėjo santrauką",
+          "founderBriefSubtitle": "Išskirkite pagrindines rizikas, sprendimus ir tolesnius veiksmus.",
+          "classNotesTitle": "Išvalykite mano studijų užrašus",
+          "classNotesSubtitle": "Apytikslius užrašus paverskite aiškiu studijų vadovu.",
+          "meetingHandoffTitle": "Parašykite perdavimo santrauką",
+          "meetingHandoffSubtitle": "Naudinga po susitikimų, skambučių ar ilgų vidinių gijų.",
+          "longArticleTitle": "Greitai apibendrinkite šį straipsnį",
+          "longArticleSubtitle": "Sutraukite ilgą straipsnį į aštrius ištraukimus."
+        },
+        "plan": {
+          "energyResetTitle": "Sukurkite 14 dienų energijos atstatymą",
+          "energyResetSubtitle": "Realus miego, maisto, judėjimo ir dėmesio planas.",
+          "mealPlanTitle": "Suplanuokite patiekalus, kuriuos iš tikrųjų gaminsiu",
+          "mealPlanSubtitle": "Praktiška, prieinama ir pagrįsta tuo, ką turiu.",
+          "cityMoveTitle": "Suplanuokite savo persikėlimą į naują miestą",
+          "cityMoveSubtitle": "Padalinkite jį į laiko juostą, biudžetą, būstą ir administratoriaus užduotis.",
+          "tripEscapeTitle": "Suplanuokite įsimintiną savaitgalio pabėgimą",
+          "tripEscapeSubtitle": "Kažkas geriau nei bendras maršrutas."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Raskite tikrovišką šoninį šurmulį",
+          "sideHustleSubtitle": "Idėjos, kurias galiu pradėti dirbdamas visu etatu.",
+          "brandAngleTitle": "Raskite įsimintiną prekės ženklo kampą",
+          "brandAngleSubtitle": "Naudinga produktams, kūrėjams, agentūroms ar informaciniams biuleteniams.",
+          "socialSeriesTitle": "Sugalvokite turinio seriją",
+          "socialSeriesSubtitle": "Kažkas pakankamai nuoseklaus, kad padidintų auditoriją.",
+          "datingIdeasTitle": "Pasisemkite naujų idėjų",
+          "datingIdeasSubtitle": "Pasimatymai, dovanos, staigmenos ar įvykiai, kurie jaučiasi apgalvoti."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Raskite, kur nuteka mano pinigai",
+          "spendingLeaksSubtitle": "Parodykite modelius, silpnąsias vietas ir lengviausia laimi pirmiausia.",
+          "customerFeedbackTitle": "Grįžtamąjį ryšį paverskite prioritetais",
+          "customerFeedbackSubtitle": "Klasterio užklausos, skundai, skubumas ir poveikis.",
+          "habitPatternsTitle": "Pastebėkite modelius mano įpročiuose",
+          "habitPatternsSubtitle": "Naudinga treniruotėms, miegui, žurnalų rašymui ar fokusavimo žurnalams.",
+          "metricsStoryTitle": "Paaiškinkite, ką reiškia skaičiai",
+          "metricsStorySubtitle": "Daugiau signalo, mažiau skaičiuoklės triukšmo."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Apdorojama...",
+    "tapToUploadImage": "Palieskite, kad įkeltumėte vaizdą"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Apdorojama...",
+    "camera": "Įkelti nuotraukas",
+    "library": "biblioteka"
+  },
+  "common": {
+    "ok": "Gerai",
+    "retry": "Bandykite dar kartą",
+    "cancel": "Atšaukti",
+    "allow": "Leisti",
+    "notNow": "Ne dabar",
+    "openSettings": "Atidarykite Nustatymai",
+    "close": "Uždaryti",
+    "save": "Išsaugoti",
+    "tryAgain": "Bandyk dar kartą"
+  },
+  "rateUs": {
+    "title": "Mėgaukitės Cloud AI?",
+    "subtitle": "Jūsų atsiliepimai padeda mums tobulėti. Ar norėtumėte įvertinti mus „App Store“?",
+    "rateNow": "Įvertink dabar",
+    "maybeLater": "Gal vėliau",
+    "dontAskAgain": "Daugiau neklausk"
+  },
+  "oneTimeOffer": {
+    "title": "Vienkartinis pasiūlymas",
+    "discount": "{{percent}}% NUOLAIDA",
+    "subtitle": "Daugiau šio pasiūlymo nematysite.",
+    "badgeLine1": "Išskirtinis",
+    "badgeLine2": "Vienkartinis pasiūlymas",
+    "upgradeNow": "Atnaujinkite dabar į {{price}}",
+    "loadingPrice": "Įkeliama...",
+    "termsOfUse": "Naudojimo sąlygos",
+    "privacyPolicy": "Privatumo politika",
+    "accessTitle": "Neribota prieiga prie",
+    "accessSubtitle": "GPT, Gemini ir Grok 4",
+    "features": {
+      "unlimitedGPT4": "Neribota prieiga prie GPT-4",
+      "geminiPro": "Prieiga prie Gemini Pro",
+      "grokInsights": "Norėdami gauti naujų įžvalgų, naudokite Grok",
+      "priorityAccess": "Prioritetinė prieiga ir greitesni atsakymai"
+    },
+    "bestValue": "Geriausia vertė",
+    "annualPremium": "Metinė premija",
+    "oneTimePayment": "Vienkartinis mokėjimas",
+    "wasPrice": "buvo",
+    "continue": "Tęsti",
+    "restore": "Atkurti",
+    "terms": "Sąlygos",
+    "privacy": "Privatumas",
+    "successTitle": "Sėkmės!",
+    "successMessage": "Dėkojame už pirkinį! Mėgaukitės aukščiausios kokybės prieiga ateinančius 12 mėnesių.",
+    "errorTitle": "Pirkimas nepavyko",
+    "errorMessage": "Kažkas nutiko. Bandykite dar kartą.",
+    "restoreSuccessTitle": "Atkurta",
+    "restoreSuccessMessage": "Jūsų pirkiniai buvo atkurti.",
+    "restoreErrorTitle": "Atkurti nepavyko",
+    "restoreErrorMessage": "Nerasta jokių pirkinių, kuriuos būtų galima atkurti.",
+    "unavailableTitle": "Pirkiniai nepasiekiami",
+    "unavailableMessage": "„Android“ atsiskaitymas dar nesukonfigūruotas."
+  },
+  "rewards": {
+    "header": {
+      "title": "Apdovanojimai",
+      "openMenu": "Atidaryti meniu",
+      "goBack": "Grįžk atgal"
+    },
+    "pointsHero": {
+      "totalBalance": "BENDRAS BALANSAS",
+      "seeYourRewards": "Pamatykite savo atlygį"
+    },
+    "streakTracker": {
+      "title": "Dienos serija",
+      "subtitle": "Taip ir toliau! Tu dega.",
+      "days": "Dienos",
+      "prize": "Prizas",
+      "dayLabel": "Diena {{number}}",
+      "nextReward": "Kitas apdovanojimas: {{amount}} {{time}}",
+      "coins": "Monetos"
+    },
+    "sections": {
+      "availableQuests": "Galimos užduotys",
+      "completedQuests": "Atliktos užduotys",
+      "availableRewards": "Galimi apdovanojimai",
+      "needsMoreCoins": "Reikia daugiau monetų"
+    },
+    "balances": {
+      "rewardCoins": "Atlygio monetos",
+      "imageCredits": "Vaizdo kreditai"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 vaizdo kreditų",
+        "imageCredits200": "200 vaizdo kreditų",
+        "imageCredits600": "600 vaizdo kreditų",
+        "weeklyPremium": "Savaitės priemoka",
+        "secretBox": "Paslaptinga dėžutė"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Paslaptingas apdovanojimas viduje"
+      },
+      "alerts": {
+        "comingSoonTitle": "Netrukus",
+        "comingSoonMessage": "Šis atlygis dar nepasiekiamas.",
+        "notEnoughCoinsTitle": "Nepakanka monetų",
+        "notEnoughCoinsMessage": "Jums reikia daugiau atlygio monetų, kad atrakintumėte šį atlygį.",
+        "errorTitle": "Klaida",
+        "couldNotOpenBox": "Nepavyko atidaryti dėžutės.",
+        "couldNotRedeem": "Nepavyko išpirkti premijos. Bandykite dar kartą.",
+        "mysteryReward": "Paslaptingas apdovanojimas"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Kasdienis prisijungimas",
+        "description": "Atidarykite programą šiandien, kad išlaikytumėte sėkmingą rezultatą",
+        "message": "Ši užduotis baigiama automatiškai, kai kiekvieną dieną atidarote programą."
+      },
+      "shareFacebook": {
+        "title": "Dalintis Facebook",
+        "description": "Paskelbkite apie mus Facebook"
+      },
+      "shareTwitter": {
+        "title": "Bendrinti Twitter",
+        "description": "Parašykite savo patirtį „Twitter“."
+      },
+      "shareInstagram": {
+        "title": "Pasidalinkite Instagram",
+        "description": "Pasidalykite istorija ar įrašu"
+      },
+      "shareExperience": {
+        "title": "Pasidalinkite savo patirtimi",
+        "description": "Pasakykite draugams, kodėl jums patinka programa"
+      },
+      "share": {
+        "genericMessage": "Naudoju šią AI programą pokalbiams ir vaizdams kurti. Patikrinkite: {{url}}",
+        "facebookQuote": "Patikrinkite šią AI programą!",
+        "twitterText": "Bandau šią AI programą, ji gana šauni.",
+        "instagramMessage": "Patikrinkite šią AI programą: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Klaida",
+        "errorMessage": "Nepavyko atidaryti parduotuvės puslapio."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Užduotis baigta",
+        "description": "Užduotis baigta",
+        "points": "+{{points}} taškų",
+        "close": "Uždaryti"
+      },
+      "rewardSuccess": {
+        "error": "KLAIDA",
+        "success": "SĖKMĖS",
+        "somethingWentWrong": "Kažkas nutiko",
+        "rewardUnlocked": "Apdovanojimas atrakintas",
+        "credits": "Kreditai",
+        "close": "Uždaryti",
+        "okay": "Gerai"
+      },
+      "secretBox": {
+        "pill": "SLAPTŲ DĖŽĖ",
+        "rewardUnlocked": "ATLIEKAS ATRAKINTAS",
+        "shufflingRewards": "MAIŠYMAS APDOVANOJIMAS...",
+        "imageCreditsAdded": "Vaizdo kreditai pridėti prie jūsų paskyros",
+        "continue": "Tęsti",
+        "revealing": "Atskleidžiama...",
+        "prizeTiers": {
+          "lucky": "LAIMĖ",
+          "pro": "PRO",
+          "elite": "ELITAS",
+          "mythic": "MITAS"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Atsiimkite kasdienes monetas",
+      "subtitle": "Grįžkite kasdien — atlygis auga.",
+      "cta": "Registruotis",
+      "claimed": "Gauta! +{{amount}} monetų",
+      "later": "Vėliau"
+    }
+  },
+  "app": {
+    "version": "Versija {{version}}",
+    "offlineBanner": "Esate neprisijungęs",
+    "launch": {
+      "accessibilityLabel": "Nuo Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, pasiruošę, kai būsite"
+    },
+    "errors": {
+      "modelsLoadTitle": "Nepavyko įkelti modelių",
+      "modelsLoadMessage": "Nepavyko įkelti AI modelių. Programa naudos numatytuosius modelius. Patikrinkite interneto ryšį.",
+      "modelsLoadTimeout": "Modelių įkėlimas užtruko per ilgai. Programa naudos numatytuosius modelius. Bandykite dar kartą.",
+      "modelsLoadNetwork": "Nėra interneto ryšio. Programa naudos numatytuosius modelius. Patikrinkite ryšį.",
+      "deviceIdTitle": "Inicijavimo klaida",
+      "deviceIdMessage": "Nepavyko inicijuoti įrenginio ID. Kai kurios funkcijos gali neveikti tinkamai.",
+      "storageTitle": "Saugyklos klaida",
+      "storageMessage": "Nepavyko pasiekti vietinės saugyklos. Kai kurios funkcijos gali neveikti tinkamai.",
+      "crashTitle": "Kažkas nutiko.",
+      "crashSubtitle": "Bandykite dar kartą.",
+      "crashLabel": "Programėlė sugedo"
+    },
+    "proxyErrors": {
+      "genericTitle": "Kažkas nutiko",
+      "genericMessage": "Bandykite dar kartą.",
+      "rateLimitTitle": "Per daug prašymų",
+      "rateLimitMessage": "Apdorojame daugybę užklausų. Po akimirkos bandykite dar kartą.",
+      "rateLimitRetryAfter": "Apdorojame daugybę užklausų. Bandykite dar kartą po maždaug {{seconds}} sekundžių.",
+      "restrictedTitle": "Ribotas turinys",
+      "restrictedMessage": "Šią užklausą užblokavo saugos filtrai.",
+      "insufficientCoinsTitle": "Nepakanka monetų",
+      "insufficientCoinsMessage": "Jūsų dabartinis likutis per mažas šiai užklausai.",
+      "imageUnavailableTitle": "Vaizdas nepasiekiamas",
+      "imageUnavailableMessage": "Sukurtas vaizdo failas laikinai nepasiekiamas. Bandykite dar kartą.",
+      "authorizationTitle": "Leidimo problema",
+      "authorizationMessage": "Nepavyko patvirtinti jūsų paskyros. Bandykite dar kartą.",
+      "serverTitle": "Serverio žagsėjimas",
+      "serverMessage": "Mūsų serveriai turėjo problemų. Netrukus bandykite dar kartą.",
+      "timeoutTitle": "Užtrunka per ilgai",
+      "timeoutMessage": "Baigėsi užklausos skirtasis laikas. Bandykite dar kartą.",
+      "networkTitle": "Nėra ryšio",
+      "networkMessage": "Nėra interneto ryšio. Patikrinkite ryšį ir bandykite dar kartą.",
+      "requestTitle": "Prašyti problemos",
+      "requestMessage": "Kažkas nepavyko su jūsų užklausa. Bandykite dar kartą."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Suaktyvinkite „Premium“.",
+    "activateMessage": "Ar norite suaktyvinti apžvalgininko premiją?",
+    "activateAction": "Suaktyvinti",
+    "deactivateTitle": "Išjunkite „Premium“.",
+    "deactivateMessage": "Ar norite išjungti recenzento premiją?",
+    "deactivateAction": "Išjungti"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Dienos atlygis",
+      "body": "Nepraleiskite savo kasdienių monetų – atsiimkite iki vidurnakčio."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Nepraleiskite kasdienių monetų",
+      "body": "Siunčiame vieną priminimą per dieną, kad jūsų serija nenutrūktų, o monetų daugėtų. Jokio šlamšto, išjungti galite bet kada.",
+      "enable": "Įjungti priminimus",
+      "skip": "Ne dabar"
+    }
+  }
+}

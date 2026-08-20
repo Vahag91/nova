@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Үлгіні таңдаңыз",
+    "searchPlaceholder": "Үлгілерді іздеу...",
+    "noModelsFound": "Ешбір үлгі табылмады",
+    "noModelsAvailable": "Модельдер жоқ",
+    "currentModel": "Ағымдағы үлгі: {{name}}. Үлгіні өзгерту үшін түртіңіз.",
+    "openHint": "Үлгі таңдау мәзірін ашады",
+    "closeLabel": "Үлгі таңдау құралын жабыңыз",
+    "searchLabel": "Модельдерді іздеу",
+    "searchHint": "Қол жетімді үлгілерді сүзу үшін теріңіз",
+    "modelLabel": "{{name}} үлгісі",
+    "selectHint": "{{name}} үлгісін таңдаңыз",
+    "currentlySelected": "Қазіргі таңда таңдалған үлгі",
+    "genericModel": "{{provider}} үлгісі",
+    "badges": {
+      "new": "ЖАҢА",
+      "best": "ЖАҚСЫ"
+    }
+  },
+  "models": {
+    "gpt-4o": "Ең қуатты AI моделі",
+    "gpt-4o-mini": "Күнделікті тапсырмалар үшін жылдам",
+    "gpt-5": "Ең қуатты әмбебап AI",
+    "gpt-5-chat-latest": "Сөйлесу және диалог үшін оңтайландырылған",
+    "gpt-5-mini": "Жылдам және сенімді GPT-5",
+    "gpt-5.4-nano": "Қарапайым тапсырмаларға арналған жеңіл модель",
+    "o4-mini": "Тиімді пайымдау моделі",
+    "gpt-4.1-mini": "Ықшам, қабілетті GPT-4.1",
+    "claude-3-haiku": "Жылдам және бағытталған антропикалық AI",
+    "claude-3.7-sonnet": "Антропиктің нақтыланған пайымдаулары",
+    "gemini-2.5-Flash": "Google-дың ең озық үлгісі",
+    "gemini-2.5-flash": "Google-дың ең озық үлгісі",
+    "gemini-2.0-flash": "Жылдам және нақты Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Ең қуатты AI моделі",
+    "fast_everyday": "Күнделікті тапсырмалар үшін жылдам",
+    "fast_reasoning": "Жақсы дәлелі бар жылдам модель",
+    "great_reasoning": "Жетілдірілген ойлау моделі",
+    "coding_reasoning": "Жетілдірілген кодтау және дәлелдеу",
+    "better_coding": "Кодтау және дәлелдеу үшін жақсырақ",
+    "best_overall": "Ең жақсы AI моделі",
+    "best_google": "Google-дың ең жақсы үлгісі",
+    "best_xai": "xAI ең қуатты моделі",
+    "creative_focus": "Шығармашылық жазу үшін тамаша",
+    "code_helper": "Кодтау көмегі үшін тамаша",
+    "chat_focus": "Сөйлесу үшін оңтайландырылған",
+    "long_context": "Ұзақ контексттер үшін тамаша",
+    "budget_friendly": "Бюджетке қолайлы AI моделі",
+    "ultra_fast": "Өте жылдам жауаптар",
+    "safe_default": "Қауіпсіз әдепкі таңдау",
+    "multilingual": "Күшті көптілді қолдау",
+    "vision_strong": "Кескіндер мен көзқараспен тамаша",
+    "data_analysis": "Деректерді талдау үшін жақсы",
+    "structured_tasks": "Құрылымдық тапсырмалар үшін жақсы",
+    "everyday_helper": "Күнделікті көмекші үлгісі",
+    "concise_answers": "Қысқа, нақты жауаптар",
+    "detailed_answers": "Егжей-тегжейлі қадамдық жауаптар",
+    "experimental": "Эксперименттік келесі ұрпақ үлгісі",
+    "reliable_classic": "Сенімді классикалық модель",
+    "lightweight": "Жеңіл, арзан модель",
+    "chatty_personal": "Неғұрлым мейірімді және жеке",
+    "pro_users": "Қуатты пайдаланушылар үшін ең жақсы",
+    "research_helper": "Зерттеулер мен жазбалар үшін жақсы",
+    "reasoning_strong": "Жетілдірілген ойлау моделі"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Антропикалық",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Басқа"
+  },
+  "navigation": {
+    "chat": "Жаңа чат",
+    "history": "Тарих",
+    "rewards": "Күнделікті сыйақылар",
+    "assistants": "Көмекшілер",
+    "imagesStudio": "Image Studio",
+    "settings": "Параметрлер",
+    "recentChats": "Соңғы чаттар",
+    "proFeatures": "Pro мүмкіндіктері",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Pro мүмкіндіктерін алыңыз",
+      "subtitle": "Барлық AI мүмкіндіктері"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Көрнекі активтерді бір жерде жасаңыз, нақтылаңыз және жариялаңыз.",
+    "cta": "Ашық"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Суреттерді таңдаңыз",
+    "exitSelectionMode": "Таңдау режимінен шығу",
+    "selectAll": "Барлығын таңдаңыз",
+    "noImagesYet": "Әлі суреттер жоқ",
+    "describeImageHint": "Төмендегі суретті сипаттап, Жасау түймесін түртіңіз.",
+    "generatedImagesGallery": "Жасалған суреттер галереясы",
+    "describeImagePlaceholder": "Қалаған суретті сипаттаңыз...",
+    "deleteConfirmTitle": "Суреттерді жою",
+    "deleteConfirmMessage": "Таңдалған кескіндерді шынымен жойғыңыз келе ме? Бұл әрекетті қайтару мүмкін емес.",
+    "cancel": "Болдырмау",
+    "delete": "Жою",
+    "generate": "Жасау",
+    "generating": "Жасалуда…",
+    "latest": "Соңғы",
+    "insertToChat": "Чатқа енгізіңіз",
+    "pleaseWait": "Күте тұрыңыз…",
+    "processing": "Өңдеуде...",
+    "tapToUploadImage": "Кескінді жүктеп салу үшін түртіңіз",
+    "camera": "Фотосуреттерді жүктеп салу",
+    "library": "Кітапхана",
+    "enterPrompt": "Мәтінді кескінге айналдыруға шақыруды енгізіңіз",
+    "openInBrowser": "Браузерде ашыңыз",
+    "makeVariations": "Вариациялар жасаңыз",
+    "deleteAllFromGeneration": "Осы ұрпақтан барлығын жойыңыз",
+    "imageOptionsTitle": "Кескін опциялары",
+    "imageOptionsMessage": "Бұл суретпен не істегіңіз келеді?",
+    "insertMarkdownHeader": "Мына сурет:",
+    "variationSuffix": "— алдыңғы суреттің өзгеруі",
+    "selectedCount": "таңдалған",
+    "selectedCount_one": "таңдалған",
+    "selectedCount_other": "таңдалған",
+    "imageDescriptionInput": "Кескін сипаттамасын енгізу",
+    "imageDescriptionHint": "Жасалғыңыз келетін кескіннің сипаттамасын енгізіңіз",
+    "openModelSettings": "Үлгі параметрлерін ашыңыз",
+    "modelSettingsHint": "Үлгі мен параметрлерді өзгерту үшін түртіңіз",
+    "openPhotoGallery": "Фотогалереяны ашыңыз",
+    "clearInput": "Енгізуді өшіру",
+    "generatedImage": "Жасалған сурет",
+    "autoSelectedModel": "{{mode}} режимі үшін автоматты түрде таңдалған {{model}}",
+    "deleteSelectedConfirmTitle": "Суреттерді жою",
+    "deleteSelectedConfirmMessage": "Суреттерді шынымен жойғыңыз келе ме? Бұл әрекетті қайтару мүмкін емес."
+  },
+  "imageStudio": {
+    "generateImage": "Кескінді жасау",
+    "generatingImage": "Кескінді құру",
+    "generateImageHint": "Сипаттамаға негізделген кескін жасау үшін түртіңіз",
+    "imageDescriptionInput": "Кескін сипаттамасын енгізу",
+    "imageDescriptionHint": "Жасалғыңыз келетін кескіннің сипаттамасын енгізіңіз",
+    "openModelSettings": "Үлгі параметрлерін ашыңыз",
+    "modelSettingsHint": "Үлгі мен параметрлерді өзгерту үшін түртіңіз",
+    "openPhotoGallery": "Фотогалереяны ашыңыз",
+    "clearInput": "Енгізуді өшіру",
+    "generatedImage": "Жасалған сурет"
+  },
+  "assistants": {
+    "title": "Көмекшілер",
+    "defaultTitle": "Көмекші",
+    "errorTitle": "Бірдеңе дұрыс болмады",
+    "errorMessage": "Бұл көмекшіні іске қосу мүмкін болмады.",
+    "noAssistants": "Бұл санатта көмекшілер табылмады.",
+    "selectAssistantHint": "Көмекші таңдау құралын ашыңыз",
+    "subtitle": "Кодтауға, жазуға, талдауға, жоспарлауға және т.б. дайын AI мамандары.",
+    "searchPlaceholder": "Іздеу көмекшілері…",
+    "useAssistant": "Assistant қолданбасын пайдаланыңыз",
+    "selectAssistant": "Көмекшіні таңдаңыз",
+    "description": "Сипаттама",
+    "systemPrompt": "Жүйе шақыруы",
+    "chooseModel": "Модельді таңдаңыз",
+    "categoryAll": "Барлығы",
+    "categories": {
+      "everyday": "Күнделікті",
+      "life": "Өмір",
+      "health": "Денсаулық",
+      "schoolWork": "Мектеп және жұмыс",
+      "coding": "Кодтау",
+      "creative": "Шығармашылық",
+      "general": "Жалпы"
+    },
+    "presets": {
+      "default": {
+        "name": "Әдепкі көмекші",
+        "description": "Күнделікті заттарға теңдестірілген көмек."
+      },
+      "quick": {
+        "name": "Жылдам жауаптар",
+        "description": "Қысқа, тікелей жауаптар."
+      },
+      "planner": {
+        "name": "Күнделікті жоспарлаушы",
+        "description": "Күніңізді және тәртіпті жоспарлаңыз."
+      },
+      "recipes": {
+        "name": "Тағамдар мен рецепттер",
+        "description": "Не пісіру керек, сізде бар нәрсемен."
+      },
+      "fitness": {
+        "name": "Фитнес жаттықтырушы",
+        "description": "Кішкентай әдеттер және үй жаттығулары."
+      },
+      "money": {
+        "name": "Ақша досым",
+        "description": "Қарапайым бюджеттер және шығындар туралы кеңестер."
+      },
+      "study": {
+        "name": "Оқу көмекшісі",
+        "description": "Қарапайым түсіндіріңіз. Маған сұрақ қой."
+      },
+      "email": {
+        "name": "Электрондық пошта және түйіндеме",
+        "description": "Анық электрондық пошталар мен түйіндеме жолдарын жазыңыз."
+      },
+      "translator": {
+        "name": "Аудармашы",
+        "description": "Аудару + сөз тіркестерін үйрету."
+      },
+      "travel": {
+        "name": "Саяхат жолдасы",
+        "description": "Қарапайым жоспарлар мен орау тізімдері."
+      },
+      "tech": {
+        "name": "Техникалық қолдау (қарапайым)",
+        "description": "Телефон, қолданбалар, Wi-Fi негіздері."
+      },
+      "summarizer": {
+        "name": "TL; DR қорытындылаушы",
+        "description": "Қысқа оқтар + бір жолды TL;DR."
+      },
+      "gift": {
+        "name": "Сыйлық іздеуші",
+        "description": "Бюджет пен қызығушылық бойынша идеялар."
+      },
+      "party": {
+        "name": "Оқиғаларды жоспарлаушы (қарапайым)",
+        "description": "Шағын кешті жылдам жоспарлаңыз."
+      },
+      "social": {
+        "name": "Әлеуметтік пост жасаушы",
+        "description": "Опциялары бар жазбалар жобасы."
+      },
+      "interview": {
+        "name": "Сұхбат жаттықтырушы",
+        "description": "Жаттығу жауаптары (STAR)."
+      },
+      "homefix": {
+        "name": "Үйде жөндеуге арналған нұсқаулық",
+        "description": "Қарапайым DIY ақауларын жою."
+      },
+      "pet": {
+        "name": "Үй жануарларын күту досы",
+        "description": "Тамақтандыру, серуендеу, негізгі жаттығулар."
+      },
+      "mindful": {
+        "name": "Ойлы минут",
+        "description": "1-3 мин тыныштық үзілістері."
+      },
+      "polite": {
+        "name": "Әдепті қайта жазушы",
+        "description": "Мәтіндер мен жауаптарды қайта жазыңыз."
+      }
+    }
+  },
+  "history": {
+    "title": "Тарих",
+    "searchPlaceholder": "Чаттарды іздеу…",
+    "newChat": "Жаңа чат",
+    "new": "+ Жаңа",
+    "search": "Іздеу",
+    "clearSearch": "Іздеуді тазалау",
+    "noChatsYet": "Әзірге чаттар жоқ",
+    "noResults": "Әзірге чаттар жоқ",
+    "startFirstConversation": "Алғашқы әңгімеңізді бастаңыз.",
+    "startChat": "Чатты бастау",
+    "startNewChat": "Жаңа чатты бастаңыз",
+    "errorLoadingHistory": "Тарихты жүктеу қатесі",
+    "loading": "Тарих жүктелуде...",
+    "renameChat": "Чаттың атын өзгерту",
+    "enterNewTitle": "Жаңа тақырып енгізіңіз",
+    "deleteChat": "Чатты жою керек пе?",
+    "deleteChatMessage": "\"{{title}}\" жойылады.",
+    "rename": "Атын өзгерту",
+    "unpin": "Бекіту",
+    "pin": "Бекіту",
+    "untitled": "Атаусыз"
+  },
+  "settings": {
+    "title": "Параметрлер",
+    "model": "Үлгі",
+    "searchPlaceholder": "Үлгілерді іздеу…",
+    "temperatureForCurrentModel": "Ағымдағы үлгіге арналған температура",
+    "customFor": "{{model}} үшін арнаулы",
+    "usingDefault": "Әдепкі {{temperature}} пайдалану",
+    "resetToDefault": "Әдепкіге қайта орнату",
+    "defaultTemperature": "Әдепкі температура (қайтару)",
+    "usedByModelsWithoutOverride": "Теңшелетін қайта анықтаусыз үлгілерде пайдаланылады",
+    "dangerZone": "Қауіпті аймақ",
+    "clearAllChatsAndSettings": "Барлық чаттар мен параметрлерді өшіріңіз",
+    "about": "туралы",
+    "version": "Нұсқа {{version}}{{status}}",
+    "versionPremiumSuffix": "· Премиум",
+    "privacyPolicy": "Құпиялық саясаты",
+    "hero": {
+      "label": "Арнайы ұсыныс",
+      "title": "Шексіз қол жеткізу\n& Pro мүмкіндіктері",
+      "upgrade": "Жаңарту",
+      "manage": "Жоспарды басқару"
+    },
+    "sections": {
+      "premium": "Премиум жоспар",
+      "data": "Пайдаланушы деректері",
+      "support": "Қолдау және заң"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Premium алыңыз",
+        "subtitle": "Шектеусіз жасау құралдарының құлпын ашыңыз"
+      },
+      "premiumActive": {
+        "title": "Премиум белсенді",
+        "subtitle": "Қолдау көрсеткеніңіз үшін рахмет Cloud AI"
+      },
+      "restore": {
+        "title": "Сатып алуларды қалпына келтіріңіз",
+        "subtitle": "Құрылғыларды ауыстырсаңыз пайдаланыңыз"
+      },
+      "history": {
+        "title": "Чат тарихын басқару",
+        "subtitle": "Өткен сеанстарды көру және жою"
+      },
+      "reset": {
+        "title": "Чаттарды және теңшелімдерді қалпына келтіріңіз",
+        "subtitle": "Осы құрылғыдағы барлық сақталған деректерді өшіреді"
+      },
+      "rate": {
+        "title": "Бізге баға беріңіз",
+        "error": "Дүкен бетін ашу мүмкін емес."
+      },
+      "support": {
+        "title": "Қолдау",
+        "subtitle": "Бізбен онлайн байланысыңыз",
+        "error": "Контакт бетін ашу мүмкін емес."
+      },
+      "privacy": {
+        "title": "Құпиялық саясаты",
+        "error": "Құпиялық саясатын ашу мүмкін емес."
+      },
+      "terms": {
+        "title": "Пайдалану шарттары",
+        "error": "Пайдалану шарттарын ашу мүмкін емес."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Қолжетімсіз",
+      "linkUnavailableMessage": "Дәл қазір бұл сілтемені ашу мүмкін емес.",
+      "restoreSuccessTitle": "Қалпына келтірілді",
+      "restoreSuccessMessage": "Сатып алуларыңыз қалпына келтірілді.",
+      "restoreEmptyTitle": "Сатып алулар табылмады",
+      "restoreEmptyMessage": "Бұл есептік жазба үшін қалпына келтіру үшін белсенді сатып алу табылмады.",
+      "restoreErrorTitle": "Қалпына келтіру сәтсіз аяқталды",
+      "restoreErrorMessage": "Дәл қазір сатып алуларды қалпына келтіру мүмкін емес.",
+      "resetConfirmTitle": "Қолданба деректерін қалпына келтіру керек пе?",
+      "resetConfirmMessage": "Бұл барлық чаттар мен жергілікті теңшелімдерді жояды.",
+      "resetConfirmCancel": "Болдырмау",
+      "resetConfirmCta": "Қалпына келтіру"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Жасау",
+    "chooseStyle": "Стиль таңдаңыз",
+    "aspectRatio": "Аспект қатынасы",
+    "starterPrompts": {
+      "title": "Бастауышқа шақырулар",
+      "items": [
+        "студияның бас суреті",
+        "заманауи қонақ бөлмесі",
+        "күн батқандағы тропикалық жағажай"
+      ]
+    },
+    "promptPlaceholder": "Көргіңіз келетін нәрсені теріңіз…",
+    "promptHint": "Мысал: «Студия жарығында алтын ретривер»",
+    "clearText": "Мәтінді тазалау",
+    "generate": "Жасау",
+    "generating": "Жасалуда…"
+  },
+  "editImage": {
+    "headerTitle": "Өңдеу",
+    "chooseStyle": "Стиль таңдаңыз",
+    "aspectRatio": "Аспект қатынасы",
+    "starterPrompts": {
+      "title": "Бастауышқа шақырулар",
+      "items": [
+        "жарықтандыруды түзету",
+        "фонды жою",
+        "жұмсақ портреттік ретуш"
+      ]
+    },
+    "promptPlaceholder": "Өңдеулерді сипаттау (міндетті емес)",
+    "clearText": "Мәтінді тазалау",
+    "generate": "Жасау",
+    "generating": "Қолданылуда…",
+    "upload": {
+      "choose": "Фотосуретті таңдаңыз",
+      "change": "Өзгерту",
+      "remove": "Жою"
+    },
+    "imageUnavailable": {
+      "title": "Сурет қолжетімді емес",
+      "message": "Таңдалған фотосуретке кіру мүмкін болмады. Оны қайта таңдап, әрекетті қайталаңыз."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Аниме"
+      },
+      "cartoon": {
+        "name": "Мультфильм"
+      },
+      "photoreal": {
+        "name": "Фотореал"
+      },
+      "sketch": {
+        "name": "Эскиз"
+      },
+      "cyberpunk": {
+        "name": "Киберпанк"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D иллюстрация"
+      },
+      "dark_fantasy": {
+        "name": "Қараңғы фантастика"
+      },
+      "vintage_film": {
+        "name": "Винтаж фильмі"
+      },
+      "pastel": {
+        "name": "Пастелді эстетика"
+      },
+      "neon_glow": {
+        "name": "Неон жарқылы"
+      },
+      "epic_landscape": {
+        "name": "Эпикалық пейзаж"
+      }
+    },
+    "aspectRatios": {
+      "square": "Шаршы",
+      "landscape": "Пейзаж",
+      "portrait": "Портрет"
+    },
+    "models": {
+      "fluxKontent": "Флюс мазмұны",
+      "custom": "Арнаулы"
+    },
+    "notEnoughCoinsTitle": "Тиындар жеткіліксіз",
+    "notEnoughCoinsMessage": "Бұл сурет үшін ағымдағы балансыңыз тым төмен.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Ең жылдам модель",
+      "runwareFluxKrea": "Шығармашылық, стильдендірілген нәтижелер",
+      "runwareQwenImage": "Теңгерімді, жоғары сапалы нәтижелер",
+      "google4": "Ең жақсы AI кескін үлгісі",
+      "klingImageO1": "Жоғары басқарылатын кескінді өңдеу",
+      "fluxKontent": "Flux Kontent өңдеуге бейімделген",
+      "runwareProvider": "Сенімді диффузиямен теңдестірілген сапа.",
+      "airProvider": "Nano Banana ойнақы, жарқын реңк қосады.",
+      "googleProvider": "Google егжей-тегжейлі мәліметтер алу үшін бапталды.",
+      "klingaiProvider": "KlingAI басқарылатын өңдеулер үшін бапталған.",
+      "anthropicProvider": "Claude нюансты көңіл-күйге арналған құбыр.",
+      "default": "Қолжетімді қозғалтқыштарды зерттеу үшін түртіңіз."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "сіз таңдаған стиль",
+    "sheetTitle": "Өз көзқарасыңызды құру",
+    "sheetSubtitle": "Хабарламаға {{style}} араластырып жатқанда, серверлік кофені қысқаша жұтым.",
+    "phases": {
+      "blend": "{{style}} ішінде араластыру",
+      "paint": "Сахнаны бояу",
+      "finish": "Соңғы лак қосу"
+    },
+    "actions": {
+      "cancel": "Болдырмау",
+      "retry": "Қайталап көріңіз",
+      "close": "Жабу"
+    },
+    "errors": {
+      "restrictedTitle": "Шектеулі мазмұн",
+      "genericTitle": "Жасау сәтсіз аяқталды",
+      "genericMessage": "Кескінді жасау мүмкін емес."
+    },
+    "alerts": {
+      "saveFailedTitle": "Сақтау мүмкін болмады",
+      "shareFailedTitle": "Бөлісу мүмкін болмады",
+      "tryAgain": "Қайталап көріңіз.",
+      "savedTitle": "Сақталды",
+      "savedMessage": "Кескін галереяңызға сақталды.",
+      "permissionTitle": "Рұқсат қажет",
+      "permissionMessage": "Суреттерді галереяға сақтау үшін жадқа кіруге рұқсат беріңіз."
+    },
+    "result": {
+      "complete": "Барлығы аяқталды"
+    },
+    "accessibility": {
+      "close": "Жабу"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Жою",
+      "edit": "Өңдеу",
+      "save": "Сақтау",
+      "share": "Бөлісу"
+    },
+    "alerts": {
+      "savedTitle": "Сақталды",
+      "savedMessage": "Кескін галереяңызға сақталды.",
+      "permissionTitle": "Рұқсат қажет",
+      "permissionMessage": "Суреттерді галереяға сақтау үшін жадқа кіруге рұқсат беріңіз.",
+      "saveFailedTitle": "Сақтау мүмкін болмады",
+      "tryAgain": "Қайталап көріңіз."
+    },
+    "accessibility": {
+      "close": "Жабу",
+      "delete": "Кескінді жою",
+      "edit": "Кескінді өңдеу",
+      "save": "Суретті сақтау",
+      "share": "Суретті бөлісу"
+    }
+  },
+  "reportContent": {
+    "title": "AI мазмұны туралы хабарлау",
+    "subtitle": "Бұл жасалған мазмұнда не дұрыс емес екенін айтыңыз.",
+    "privateDisclosure": "Жіберу бұл хабарланған мазмұнды қауіпсіздікті тексеруге жібереді.",
+    "accessibilityLabel": "AI мазмұны туралы хабарлау",
+    "reasons": {
+      "sexual": "Сексуалдық немесе жалаңаштық мазмұн",
+      "violence_self_harm": "Зорлық-зомбылық немесе өзіне зиян келтіру",
+      "hate_harassment": "Жек көру немесе қудалау",
+      "child_safety": "Балалардың қауіпсіздігі туралы алаңдаушылық",
+      "scam_deceptive": "Алаяқтық немесе алдамшы мазмұн",
+      "other": "Басқа"
+    },
+    "errors": {
+      "reasonRequired": "Жібермес бұрын себебін таңдаңыз.",
+      "submit": "Есепті жіберу мүмкін болмады. Қайталап көріңіз."
+    },
+    "success": {
+      "title": "рахмет. Сіздің баяндамаңыз жіберілді.",
+      "subtitle": "Біз мазмұн қауіпсіздігін жақсарту үшін есептерді қолданамыз."
+    },
+    "actions": {
+      "report": "Есеп беру",
+      "submit": "Есепті жіберу",
+      "done": "Дайын"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Мәзірді ашу",
+      "selectImages": "Суреттерді таңдаңыз",
+      "exitSelection": "Таңдаудан шығу",
+      "deleteSelected": "Таңдалған кескіндерді жою",
+      "selectToDelete": "Жойылатын кескіндерді таңдаңыз"
+    },
+    "createCard": {
+      "title": "Мәтіннен жасау",
+      "subtitle": "Сипаттаманы теріңіз",
+      "cta": "Сипаттау және жасау"
+    },
+    "editCard": {
+      "title": "AI фото редакторы",
+      "subtitle": "AI көмегімен түрлендіру және жақсарту",
+      "cta": "AI көмегімен өңдеу"
+    },
+    "gallery": {
+      "title": "Галерея",
+      "empty": "Әлі суреттер жоқ",
+      "selection": {
+        "enter": "Суреттерді таңдаңыз",
+        "exit": "Таңдаудан шығу",
+        "deleteSelected": "Таңдалған кескіндерді жою",
+        "selectForDelete": "Жойылатын кескіндерді таңдаңыз"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Танысу",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Cloud AI ішінде AI көмегімен кескіндерді жасаңыз және өңдеңіз."
+    },
+    "relaxView": {
+      "title": "AI-мен танысыңыз",
+      "titleHighlight": "Көмекшілер",
+      "subtitle": "Мамандандырылған AI сарапшылары сіздің күнделікті қажеттіліктеріңізге көмектесуге дайын",
+      "cards": {
+        "fitness": {
+          "title": "Фитнес жаттықтырушы",
+          "text": "Кішкентай әдеттер және үй жаттығулары."
+        },
+        "recipes": {
+          "title": "Тағамдар мен рецепттер",
+          "text": "Не пісіру керек, сізде бар нәрсемен."
+        },
+        "travel": {
+          "title": "Саяхат жолдасы",
+          "text": "Қарапайым жоспарлар мен орау тізімдері."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "КӘСІПКЕРЛІК ДЕҢГЕЙДЕГІ AI ШЕШІМДЕРІ",
+      "description": "Кәсіпорын мамандары мен командаларына арналған жасанды интеллекттің озық технологиясымен бизнесіңізді кеңейтіңіз.",
+      "stats": "500 мыңнан астам пайдаланушы сенімді",
+      "rating": "4,9 / 5",
+      "button": "Жұмысты бастау"
+    },
+    "buttons": {
+      "continue": "Жалғастыру",
+      "start": "бастайық"
+    }
+  },
+  "coinStore": {
+    "title": "Несие алу",
+    "loading": "Тиын дүкені жүктелуде…",
+    "balanceLabel": "Сіздің ағымдағы балансыңыз",
+    "balanceValue": "{{amount}} Несиелер",
+    "history": {
+      "link": "Транзакция тарихы",
+      "alertTitle": "Тарих",
+      "alertBody": "Жақында транзакция тарихы шығады."
+    },
+    "noPacks": "Тиын пакеттері жоқ. RevenueCat ұсыныс идентификаторын тексеріңіз.",
+    "badges": {
+      "basic": "Негізгі бума",
+      "popular": "Ең танымал",
+      "value": "Ең жақсы мән"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Несиелер",
+      "tokensLabel": "{{credits}} Несиелер",
+      "defaultName": "Пакет {{index}}",
+      "unknownPrice": "АҚШ доллары —"
+    },
+    "premium": {
+      "title": "Премиумға өтіңіз",
+      "subtitle": "Шексіз қол жеткізу және мүмкіндіктер",
+      "cta": "Жаңарту"
+    },
+    "termsText": "Сатып алу арқылы сіз біздің келісімімізбен келісесіз",
+    "termsLink": "Қызмет көрсету шарттары",
+    "alerts": {
+      "initErrorTitle": "Бастау қатесі",
+      "genericMessage": "Бірдеңе дұрыс болмады.",
+      "successTitle": "Сәттілік",
+      "successMessage": "Несиелер жақын арада пайда болады.",
+      "purchaseFailedTitle": "Сатып алу сәтсіз аяқталды",
+      "unknownError": "Белгісіз қате"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Премиум қажет",
+    "upgrade": "Жаңарту",
+    "modelRequiredMessage": "Бұл модельге Premium қажет. GPT-5, Grok 4, Claude және басқа жетілдірілген үлгілерге қол жеткізу үшін жаңартыңыз.",
+    "assistantsRequiredMessage": "Көмекшілерге Premium қажет. Фитнес, кодтау, жазу және т.б. үшін мамандандырылған AI көмекшілеріне қол жеткізу үшін жаңартыңыз.",
+    "assistantsTitle": "Премиум қажет",
+    "assistantsMessage": "Көмекшілерге Premium қажет. Фитнес, кодтау, жазу және т.б. үшін мамандандырылған AI көмекшілеріне қол жеткізу үшін жаңартыңыз."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Төлем қабырғасын жабу",
+    "unavailableTitle": "Сатып алулар қолжетімсіз",
+    "unavailableMessage": "Android төлемі әлі конфигурацияланбаған.",
+    "restoreEmptyTitle": "Сатып алулар табылмады",
+    "restoreEmptyMessage": "Бұл есептік жазба үшін қалпына келтіру үшін белсенді сатып алу табылмады.",
+    "restoreFailedTitle": "Қалпына келтіру сәтсіз аяқталды",
+    "restoreFailedMessage": "Дәл қазір сатып алуларды қалпына келтіру мүмкін емес.",
+    "productsUnavailableTitle": "Жоспарлар жоқ",
+    "productsUnavailableMessage": "Дәл қазір ешқандай Android жазылым өнімдері қолжетімді емес.",
+    "purchaseFailedTitle": "Сатып алу сәтсіз аяқталды",
+    "purchaseFailedMessage": "Бұл сатып алуды дәл қазір аяқтау мүмкін емес.",
+    "restore": "Қалпына келтіру",
+    "restoreRestoring": "Қалпына келтірілуде…",
+    "features": {
+      "create": "Суреттер мен бейнелерді жасаңыз",
+      "search": "AI көмегімен интернеттен іздеңіз",
+      "talk": "AI-мен табиғи түрде сөйлесіңіз",
+      "imageStudio": "Image Studio {{credits}} кредиттерін {{period}} алыңыз",
+      "period": {
+        "weekly": "апта сайын",
+        "monthly": "ай сайын",
+        "yearly": "жыл сайын"
+      }
+    },
+    "freeTrial": {
+      "title": "Тегін сынақ нұсқасы",
+      "subtitle": "3 күндік тегін сынақ нұсқасы"
+    },
+    "badge": {
+      "bestOffer": "Ең жақсы ұсыныс"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Жыл сайын",
+        "only": "Тек {{price}}",
+        "defaultPrice": "79,99 АҚШ доллары",
+        "defaultIntroPrice": "1,35 АҚШ доллары"
+      },
+      "monthly": {
+        "title": "Ай сайын",
+        "subtitle": "Кез келген уақытта бас тарту",
+        "defaultPrice": "19,99 АҚШ доллары"
+      },
+      "weekly": {
+        "title": "Апта сайын",
+        "subtitle": "Кез келген уақытта бас тарту",
+        "defaultPrice": "9,99 АҚШ доллары",
+        "trialThen": "Содан кейін 3 күн тегін"
+      }
+    },
+    "frequency": {
+      "perWeek": "аптасына",
+      "perMonth": "айына"
+    },
+    "cta": "Жалғастыру",
+    "ctaFreeTrial": "Оны тегін көріңіз",
+    "legal": {
+      "terms": "Шарттар",
+      "privacy": "Құпиялық"
+    },
+    "premium": {
+      "headline": "Барлық премиум AI бір жоспарда",
+      "subtitleLine1": "Чат, код, жасау және жоспарлау",
+      "subtitleLine2": "жетілдірілген үлгілерімен.",
+      "enableTrial": "Тегін сынақ нұсқасын қосу",
+      "annual": "Жылдық",
+      "saveBadge": "83%",
+      "year": "жыл",
+      "week": "апта",
+      "termsOfUse": "Пайдалану шарттары",
+      "privacyPolicy": "Құпиялық саясаты"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Хабарлама...",
+    "createImages": "Суреттер жасау",
+    "generateAiArtwork": "AI өнер туындысын жасаңыз",
+    "camera": "Фотосуреттерді жүктеп салу",
+    "takeOrSelectPhotos": "Фотосуреттерді таңдаңыз",
+    "search": "Іздеу",
+    "findInformation": "Ақпаратты табыңыз",
+    "findRecentInfo": "Соңғы ақпаратты табыңыз",
+    "removeImage": "Кескінді жою",
+    "messageInput": "Хабарлама енгізу",
+    "clearInput": "Енгізуді өшіру",
+    "quickActionsLabel": "Жылдам әрекеттер",
+    "hideQuickActions": "Жылдам әрекеттерді жасыру",
+    "showQuickActions": "Жылдам әрекеттерді көрсету",
+    "startVoiceInput": "Дауыстық енгізуді бастаңыз",
+    "sendMessage": "Хабарлама жіберу",
+    "offline": "Офлайн",
+    "stop": "Тоқта",
+    "streaming": "Ағында…",
+    "closeRecorder": "Диктофонды жабыңыз",
+    "insertTranscript": "Жіберу",
+    "scrollToLatest": "Соңғы хабарға жылжыңыз",
+    "copyMessage": "Хабарламаны көшіру",
+    "copyMessageHint": "Бұл хабарды алмасу буферіне көшіріңіз",
+    "shareMessage": "Хабарды бөлісу",
+    "shareMessageHint": "Осы хабарды бөлісіңіз",
+    "regenerateResponse": "Жауапты қалпына келтіру",
+    "regenerateResponseHint": "Жаңа жауап жасаңыз",
+    "copyCode": "Кодты көшіру",
+    "copied": "Көшірілген",
+    "image": "сурет",
+    "loading": "Жүктелуде…",
+    "loadingChat": "Чат жүктелуде...",
+    "offlineBanner": "Сіз офлайнсыз. Хабарларды жіберу мүмкін емес.",
+    "offlineError": "Интернет байланысы жоқ. Байланысты тексеріп, әрекетті қайталаңыз.",
+    "imagePickerErrorTitle": "Кескінді таңдау қатесі",
+    "imagePickerErrorMessage": "Фотосуреттерге қол жеткізу мүмкін емес. Қайталап көріңіз.",
+    "messageTooLong": "Хабар тым ұзын ({{length}}). Шектеу – {{limit}}.",
+    "sendFailed": "Хабарды жіберу мүмкін болмады. Қайталап көріңіз.",
+    "modelNoImageSupport": "Таңдалған үлгі кескіндерді қолдамайды. Басқа үлгіні таңдаңыз.",
+    "voiceStartFailed": "Дауысты бастау мүмкін болмады.",
+    "voiceNoSpeechDetected": "Ешбір дауыс танылмады. Қайталап көріңіз.",
+    "emptyTitle": "Қалай көмектесе аламын?",
+    "emptySubtitle": "AI-мен сөйлесуді бастаңыз",
+    "privateTitle": "Жеке чат",
+    "privateSubtitle": "Бұл чат чат тарихыңызда көрсетілмейді",
+    "startPrivateChat": "Жеке чатты бастаңыз",
+    "endPrivateChat": "Жеке чатты аяқтау",
+    "permissions": {
+      "photosTitle": "Фотосуреттерге рұқсат қажет",
+      "photosMessage": "Суреттерді таңдау үшін фотосуретке рұқсат қажет.",
+      "voiceTitle": "Дауыс рұқсаттары қажет",
+      "voiceMessage": "Дауысты пайдалану үшін микрофон мен сөйлеуге рұқсат қажет."
+    },
+    "activity": {
+      "analyzingImages": "Суреттер талдануда…",
+      "searching": "Іздеуде…",
+      "thinking": "Ойлану…"
+    },
+    "webSearch": {
+      "title": "Веб іздеу",
+      "subtitle": "Соңғы ақпаратты табыңыз",
+      "label": "Веб-іздеу",
+      "enable": "Веб іздеуді қосыңыз",
+      "disable": "Веб іздеуді өшіріңіз",
+      "toggleLabel": "Интернеттен іздеу"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Жылдамдықпен көрнекі дизайн жасаңыз.",
+      "subtitle": "Көрнекі активтерді бір жерде жасаңыз, нақтылаңыз және жариялаңыз.",
+      "cta": "Ашық"
+    },
+    "quickActions": {
+      "createImages": "Суреттер жасау",
+      "openCamera": "Камераны ашыңыз",
+      "editImage": "Кескінді өңдеу",
+      "startVoice": "Voice қолданбасын іске қосыңыз",
+      "assistants": "Көмекшілер"
+    },
+    "listening": "Тыңдалуда...",
+    "startRecording": "Жазуды бастау…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistant қолжетімді емес",
+      "unavailableDescription": "Бұл көмекшіні жүктей алмадық. Қайталап көріңіз.",
+      "ready": "Көмектесуге дайын"
+    },
+    "actions": {
+      "copy": "Көшіру",
+      "share": "Бөлісу",
+      "regenerate": "Қайта жасау",
+      "retryFromHere": "Осы жерден қайталап көріңіз",
+      "report": "Есеп беру",
+      "cancel": "Болдырмау"
+    },
+    "markdown": {
+      "copy": "Көшіру",
+      "copied": "Көшірілген",
+      "table": "КЕСТЕ",
+      "watchVideo": "Бейне көру",
+      "wikipedia": "Wikipedia",
+      "link": "Сілтеме",
+      "note": "Ескерту",
+      "warning": "Ескерту",
+      "tip": "Кеңес"
+    },
+    "messageActionTitle": "Хабарлама",
+    "status": {
+      "sending": "Жіберілуде…",
+      "failed": "Сәтсіз",
+      "sent": "Жіберілді"
+    },
+    "suggestions": {
+      "writeStory": "Шығармашылық әңгіме жазыңыз",
+      "writeStorySubtitle": "сиқырлы шытырман оқиға туралы",
+      "planTravel": "Саяхат маршрутын жоспарлаңыз",
+      "planTravelSubtitle": "таңғажайып демалыс үшін",
+      "explainConcept": "Осы ұғымды түсіндіріңіз",
+      "explainConceptSubtitle": "қарапайым тілмен айтқанда",
+      "planDay": "Менің күнімді жоспарлаңыз",
+      "planDaySubtitle": "өнімділік туралы кеңестермен"
+    },
+    "home": {
+      "eyebrow": "Тақырыпты таңдаңыз",
+      "title": "Сіз не істегіңіз келеді?",
+      "subtitle": "Бағытты таңдаңыз, содан кейін күшті шақырудан бастаңыз.",
+      "pickPromptTitle": "Бастау үшін шақыруды таңдаңыз",
+      "changeTopic": "Басқа тақырыпты таңдаңыз",
+      "intents": {
+        "summarize": "Мәтінді қорытындылау",
+        "summarizeShort": "Қорытындылау",
+        "summarizeHint": "Мақалалар, жазбалар, дауыстық жазбалар, ұзын жіптер",
+        "plan": "Жоспар жасаңыз",
+        "planHint": "Сапарлар, жоспарлар, бюджеттер, мерзімдер, өмірдегі өзгерістер",
+        "brainstorm": "Миға шабуыл",
+        "brainstormHint": "Идеялар, ұсыныстар, атаулар, мазмұн, қосалқы жобалар",
+        "analyze": "Деректерді талдау",
+        "analyzeHint": "Шығындар, кері байланыс, көрсеткіштер, әдеттер, өнімділік"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Құрылтайшының қысқаша анықтамасын жасаңыз",
+          "founderBriefSubtitle": "Негізгі тәуекелдерді, шешімдерді және келесі қадамдарды шығарыңыз.",
+          "classNotesTitle": "Менің оқу жазбаларымды тазалаңыз",
+          "classNotesSubtitle": "Дөрекі жазбаларды нақты оқу нұсқаулығына айналдырыңыз.",
+          "meetingHandoffTitle": "Өткізу туралы қорытынды жазыңыз",
+          "meetingHandoffSubtitle": "Кездесулерден, қоңыраулардан немесе ұзақ ішкі ағындардан кейін пайдалы.",
+          "longArticleTitle": "Осы мақаланы жылдам қорытындылаңыз",
+          "longArticleSubtitle": "Ұзын мақаланы қысқаша мазмұндаңыз."
+        },
+        "plan": {
+          "energyResetTitle": "14 күндік қуатты қалпына келтіруді жасаңыз",
+          "energyResetSubtitle": "Ұйқыға, тамақтануға, қозғалысқа және назар аударуға арналған нақты жоспар.",
+          "mealPlanTitle": "Мен шынымен дайындайтын тағамдарды жоспарлаңыз",
+          "mealPlanSubtitle": "Практикалық, қолжетімді және менде бар нәрсеге негізделген.",
+          "cityMoveTitle": "Менің жаңа қалаға көшуді жоспарлаңыз",
+          "cityMoveSubtitle": "Оны уақыт кестесіне, бюджетке, тұрғын үйге және әкімші тапсырмаларына бөліңіз.",
+          "tripEscapeTitle": "Демалыс күндері есте қаларлық демалысты жоспарлаңыз",
+          "tripEscapeSubtitle": "Жалпы маршруттан жақсы нәрсе."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Шынайы жанкүйерді табыңыз",
+          "sideHustleSubtitle": "Толық жұмыс уақытында бастауға болатын идеялар.",
+          "brandAngleTitle": "Есте қалатын бренд бұрышын табыңыз",
+          "brandAngleSubtitle": "Өнімдер, жасаушылар, агенттіктер немесе ақпараттық бюллетеньдер үшін пайдалы.",
+          "socialSeriesTitle": "Мазмұн сериясын ойлап табыңыз",
+          "socialSeriesSubtitle": "Аудиторияны көбейту үшін жеткілікті тұрақты нәрсе.",
+          "datingIdeasTitle": "Жаңа идеялармен келіңіз",
+          "datingIdeasSubtitle": "Күндер, сыйлықтар, тосынсыйлар немесе ойландыратын оқиғалар."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Менің ақшам қайда ағып жатқанын табыңыз",
+          "spendingLeaksSubtitle": "Үлгілерді, әлсіз жерлерді көрсетіңіз және ең оңайы алдымен жеңеді.",
+          "customerFeedbackTitle": "Кері байланысты басымдыққа айналдырыңыз",
+          "customerFeedbackSubtitle": "Кластер сұраулары, шағымдары, жеделдігі және әсері.",
+          "habitPatternsTitle": "Менің әдеттерімде үлгілерді анықтаңыз",
+          "habitPatternsSubtitle": "Жаттығулар, ұйқы, күнделік немесе фокус журналдары үшін пайдалы.",
+          "metricsStoryTitle": "Сандардың нені білдіретінін түсіндіріңіз",
+          "metricsStorySubtitle": "Сигнал көбірек, электрондық кесте шуы аз."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Өңдеуде...",
+    "tapToUploadImage": "Кескінді жүктеп салу үшін түртіңіз"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Өңдеуде...",
+    "camera": "Фотосуреттерді жүктеп салу",
+    "library": "Кітапхана"
+  },
+  "common": {
+    "ok": "Жарайды",
+    "retry": "Қайталап көріңіз",
+    "cancel": "Болдырмау",
+    "allow": "Рұқсат етіңіз",
+    "notNow": "Қазір емес",
+    "openSettings": "Параметрлерді ашыңыз",
+    "close": "Жабу",
+    "save": "Сақтау",
+    "tryAgain": "Қайталап көріңіз"
+  },
+  "rateUs": {
+    "title": "Cloud AI ұнай ма?",
+    "subtitle": "Сіздің пікіріңіз жақсартуға көмектеседі. Бізді App Store дүкенінде бағалауға қарсы боласыз ба?",
+    "rateNow": "Қазір бағалаңыз",
+    "maybeLater": "Мүмкін Кейінірек",
+    "dontAskAgain": "Қайта сұрамаңыз"
+  },
+  "oneTimeOffer": {
+    "title": "Бір реттік ұсыныс",
+    "discount": "{{percent}}% ЖЕҢІЛДІК",
+    "subtitle": "Бұл ұсынысты енді көрмейсіз.",
+    "badgeLine1": "Эксклюзивті",
+    "badgeLine2": "Бір реттік ұсыныс",
+    "upgradeNow": "{{price}} үшін қазір жаңартыңыз",
+    "loadingPrice": "Жүктелуде...",
+    "termsOfUse": "Пайдалану шарттары",
+    "privacyPolicy": "Құпиялық саясаты",
+    "accessTitle": "шектеусіз қол жеткізу",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4 шектеусіз қол жеткізу",
+      "geminiPro": "Gemini Pro қолданбасына кіру",
+      "grokInsights": "Жаңа түсініктер үшін Grok пайдаланыңыз",
+      "priorityAccess": "Басымдық қолжетімділік және жылдамырақ жауаптар"
+    },
+    "bestValue": "Ең жақсы мән",
+    "annualPremium": "Жылдық премиум",
+    "oneTimePayment": "Бір реттік төлем",
+    "wasPrice": "болды",
+    "continue": "Жалғастыру",
+    "restore": "Қалпына келтіру",
+    "terms": "Шарттар",
+    "privacy": "Құпиялық",
+    "successTitle": "Сәттілік!",
+    "successMessage": "Сатып алғаныңыз үшін рахмет! Келесі 12 айда премиум қолжетімділікті пайдаланыңыз.",
+    "errorTitle": "Сатып алу сәтсіз аяқталды",
+    "errorMessage": "Бірдеңе дұрыс болмады. Қайталап көріңіз.",
+    "restoreSuccessTitle": "Қалпына келтірілді",
+    "restoreSuccessMessage": "Сатып алуларыңыз қалпына келтірілді.",
+    "restoreErrorTitle": "Қалпына келтіру сәтсіз аяқталды",
+    "restoreErrorMessage": "Қалпына келтіру үшін сатып алулар табылмады.",
+    "unavailableTitle": "Сатып алулар қолжетімсіз",
+    "unavailableMessage": "Android төлемі әлі конфигурацияланбаған."
+  },
+  "rewards": {
+    "header": {
+      "title": "Сыйлықтар",
+      "openMenu": "Мәзірді ашу",
+      "goBack": "Артқа қайту"
+    },
+    "pointsHero": {
+      "totalBalance": "ЖАЛПЫ БАЛАНС",
+      "seeYourRewards": "Сыйлықтарыңызды қараңыз"
+    },
+    "streakTracker": {
+      "title": "Күнделікті стриак",
+      "subtitle": "Жалғастырыңыз! Сіз жанып жатырсыз.",
+      "days": "Күндер",
+      "prize": "Жүлде",
+      "dayLabel": "Күн {{number}}",
+      "nextReward": "Келесі сыйлық: {{amount}}, {{time}}",
+      "coins": "Монеталар"
+    },
+    "sections": {
+      "availableQuests": "Қолжетімді квесттер",
+      "completedQuests": "Аяқталған квесттер",
+      "availableRewards": "Қолжетімді сыйақылар",
+      "needsMoreCoins": "Көбірек монета қажет"
+    },
+    "balances": {
+      "rewardCoins": "Монеталарды марапаттау",
+      "imageCredits": "Сурет несиелері"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 сурет несиесі",
+        "imageCredits200": "200 сурет несиесі",
+        "imageCredits600": "600 сурет несиесі",
+        "weeklyPremium": "Апталық премиум",
+        "secretBox": "Құпия жәшік"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Ішіндегі жұмбақ сыйлар"
+      },
+      "alerts": {
+        "comingSoonTitle": "Жақында",
+        "comingSoonMessage": "Бұл сыйлық әлі қолжетімді емес.",
+        "notEnoughCoinsTitle": "Тиындар жеткіліксіз",
+        "notEnoughCoinsMessage": "Бұл сыйлықтың құлпын ашу үшін сізге көбірек сыйақы тиындары қажет.",
+        "errorTitle": "Қате",
+        "couldNotOpenBox": "Қорапты ашу мүмкін болмады.",
+        "couldNotRedeem": "Сыйақыны қайтару мүмкін болмады. Қайталап көріңіз.",
+        "mysteryReward": "Жұмбақ сыйлық"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Күнделікті кіру",
+        "description": "Жолыңызды сақтау үшін қолданбаны бүгін ашыңыз",
+        "message": "Бұл квест күн сайын қолданбаны ашқанда автоматты түрде аяқталады."
+      },
+      "shareFacebook": {
+        "title": "Facebook желісінде бөлісу",
+        "description": "Біз туралы Facebook-те жариялаңыз"
+      },
+      "shareTwitter": {
+        "title": "Twitter-де бөлісіңіз",
+        "description": "Өз тәжірибеңізді твиттерге жазыңыз"
+      },
+      "shareInstagram": {
+        "title": "Instagram желісінде бөлісіңіз",
+        "description": "Сюжетті немесе жазбаны бөлісіңіз"
+      },
+      "shareExperience": {
+        "title": "Тәжірибеңізбен бөлісіңіз",
+        "description": "Достарыңызға қолданбаны не үшін ұнататыныңызды айтыңыз"
+      },
+      "share": {
+        "genericMessage": "Мен бұл AI қолданбасын сөйлесу және кескін жасау үшін пайдаланамын. Қарап көріңіз: {{url}}",
+        "facebookQuote": "Осы AI қолданбасын тексеріңіз!",
+        "twitterText": "Мен бұл AI қолданбасын қолданып жатырмын, бұл өте керемет.",
+        "instagramMessage": "Мына AI қолданбасын қараңыз: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Қате",
+        "errorMessage": "Дүкен бетін ашу мүмкін болмады."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Квест аяқталды",
+        "description": "Квест аяқталды",
+        "points": "+{{points}} ұпай",
+        "close": "Жабу"
+      },
+      "rewardSuccess": {
+        "error": "ҚАТЕ",
+        "success": "ТАБЫС",
+        "somethingWentWrong": "Бірдеңе дұрыс болмады",
+        "rewardUnlocked": "Сыйлық құлпы ашылды",
+        "credits": "Несиелер",
+        "close": "Жабу",
+        "okay": "Жарайды"
+      },
+      "secretBox": {
+        "pill": "ҚҰПИЯ ЖӘшік",
+        "rewardUnlocked": "СЫЙЛЫҚ АШЫЛДЫ",
+        "shufflingRewards": "СЫЙЛЫҚТАРДЫ АРАСТАУ...",
+        "imageCreditsAdded": "Есептік жазбаңызға кескін кредиттері қосылды",
+        "continue": "Жалғастыру",
+        "revealing": "Ашылуда...",
+        "prizeTiers": {
+          "lucky": "БАҚЫТТЫ",
+          "pro": "PRO",
+          "elite": "ЭЛИТА",
+          "mythic": "МИФ"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Күнделікті монеталарыңызды алыңыз",
+      "subtitle": "Күн сайын кіріңіз — сыйлық артады.",
+      "cta": "Тіркелу",
+      "claimed": "Алынды! +{{amount}} монета",
+      "later": "Кейінірек"
+    }
+  },
+  "app": {
+    "version": "Нұсқа {{version}}",
+    "offlineBanner": "Сіз желіден тыссыз",
+    "launch": {
+      "accessibilityLabel": "Басталуы Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, дайын болғанда дайын"
+    },
+    "errors": {
+      "modelsLoadTitle": "Үлгілерді жүктеу сәтсіз аяқталды",
+      "modelsLoadMessage": "AI үлгілерін жүктеу мүмкін емес. Қолданба әдепкі үлгілерді пайдаланады. Интернет байланысын тексеріңіз.",
+      "modelsLoadTimeout": "Үлгілерді жүктеу тым ұзаққа созылды. Қолданба әдепкі үлгілерді пайдаланады. Қайталап көріңіз.",
+      "modelsLoadNetwork": "Интернет байланысы жоқ. Қолданба әдепкі үлгілерді пайдаланады. Байланысты тексеріңіз.",
+      "deviceIdTitle": "Инициализация қатесі",
+      "deviceIdMessage": "Құрылғы идентификаторын инициализациялау сәтсіз аяқталды. Кейбір мүмкіндіктер дұрыс жұмыс істемеуі мүмкін.",
+      "storageTitle": "Сақтау қатесі",
+      "storageMessage": "Жергілікті жадқа кіру мүмкін емес. Кейбір мүмкіндіктер дұрыс жұмыс істемеуі мүмкін.",
+      "crashTitle": "Бірдеңе дұрыс болмады.",
+      "crashSubtitle": "Қайталап көріңіз.",
+      "crashLabel": "Қолданба бұзылды"
+    },
+    "proxyErrors": {
+      "genericTitle": "Бірдеңе дұрыс болмады",
+      "genericMessage": "Қайталап көріңіз.",
+      "rateLimitTitle": "Тым көп сұраулар",
+      "rateLimitMessage": "Біз көптеген өтініштерді қарастырамыз. Біраз уақыттан кейін қайталап көріңіз.",
+      "rateLimitRetryAfter": "Біз көптеген өтініштерді қарастырамыз. Шамамен {{seconds}} секундтан кейін қайталап көріңіз.",
+      "restrictedTitle": "Шектеулі мазмұн",
+      "restrictedMessage": "Бұл сұрау қауіпсіздік сүзгілері арқылы бұғатталды.",
+      "insufficientCoinsTitle": "Тиындар жеткіліксіз",
+      "insufficientCoinsMessage": "Сіздің ағымдағы балансыңыз бұл сұрау үшін тым төмен.",
+      "imageUnavailableTitle": "Сурет қолжетімді емес",
+      "imageUnavailableMessage": "Жасалған кескін файлы уақытша қолжетімсіз болды. Қайталап көріңіз.",
+      "authorizationTitle": "Рұқсат беру мәселесі",
+      "authorizationMessage": "Есептік жазбаңызды растай алмадық. Қайталап көріңіз.",
+      "serverTitle": "Сервердің ақауы",
+      "serverMessage": "Біздің серверлерде қиындықтар болды. Жақында қайталап көріңіз.",
+      "timeoutTitle": "Тым ұзақ уақыт алу",
+      "timeoutMessage": "Сұрау уақыты аяқталды. Қайталап көріңіз.",
+      "networkTitle": "Байланыс жоқ",
+      "networkMessage": "Интернет байланысы жоқ. Байланысты тексеріп, әрекетті қайталаңыз.",
+      "requestTitle": "Мәселе сұрау",
+      "requestMessage": "Сұрауыңызда бірдеңе дұрыс болмады. Қайталап көріңіз."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Премиумды іске қосыңыз",
+    "activateMessage": "Рецензент премиумын іске қосқыңыз келе ме?",
+    "activateAction": "Іске қосу",
+    "deactivateTitle": "Премиумды өшіру",
+    "deactivateMessage": "Рецензент премиумын өшіргіңіз келе ме?",
+    "deactivateAction": "Өшіру"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Күнделікті сыйақы",
+      "body": "Күнделікті монеталарды жіберіп алмаңыз - түн ортасына дейін талап етіңіз."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Күнделікті монеталарыңызды жіберіп алмаңыз",
+      "body": "Сериясыңыз үзілмеуі және монеталарыңыз көбеюі үшін күніне бір еске салу жібереміз. Спам жоқ, кез келген уақытта өшіре аласыз.",
+      "enable": "Еске салуларды қосу",
+      "skip": "Қазір емес"
+    }
+  }
+}

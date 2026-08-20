@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Selecciona un modelo",
+    "searchPlaceholder": "Buscar modelos...",
+    "noModelsFound": "No se encontraron modelos",
+    "noModelsAvailable": "No hay modelos disponibles",
+    "currentModel": "Modelo actual: {{name}}. Toque para cambiar de modelo.",
+    "openHint": "Abre el menú de selección de modelo.",
+    "closeLabel": "Cerrar selector de modelo",
+    "searchLabel": "Buscar modelos",
+    "searchHint": "Escriba para filtrar los modelos disponibles",
+    "modelLabel": "modelo {{name}}",
+    "selectHint": "Seleccione el modelo {{name}}",
+    "currentlySelected": "Modelo actualmente seleccionado",
+    "genericModel": "modelo {{provider}}",
+    "badges": {
+      "new": "NUEVO",
+      "best": "MEJOR"
+    }
+  },
+  "models": {
+    "gpt-4o": "El modelo de IA más potente",
+    "gpt-4o-mini": "Rápido para las tareas diarias",
+    "gpt-5": "El modelo versátil más potente",
+    "gpt-5-chat-latest": "Optimizado para chat y diálogo.",
+    "gpt-5-mini": "Rápido y confiable GPT-5",
+    "gpt-5.4-nano": "Modelo ligero para tareas sencillas.",
+    "o4-mini": "Modelo de razonamiento eficiente",
+    "gpt-4.1-mini": "Compacto y capaz GPT-4.1",
+    "claude-3-haiku": "IA antrópica rápida y enfocada",
+    "claude-3.7-sonnet": "Razonamiento refinado por Anthropic",
+    "gemini-2.5-Flash": "El modelo más avanzado de Google",
+    "gemini-2.5-flash": "El modelo más avanzado de Google",
+    "gemini-2.0-flash": "IA de Google rápida y precisa"
+  },
+  "modelDescriptions": {
+    "most_powerful": "El modelo de IA más potente",
+    "fast_everyday": "Rápido para las tareas diarias",
+    "fast_reasoning": "Modelo rápido con buen razonamiento.",
+    "great_reasoning": "Modelo de razonamiento avanzado",
+    "coding_reasoning": "Codificación y razonamiento avanzados.",
+    "better_coding": "Mejor para codificar y razonar",
+    "best_overall": "El mejor modelo de IA completo",
+    "best_google": "El mejor modelo de Google",
+    "best_xai": "El modelo más potente de xAI",
+    "creative_focus": "Genial para la escritura creativa",
+    "code_helper": "Genial para ayuda con la codificación",
+    "chat_focus": "Optimizado para chatear",
+    "long_context": "Genial para contextos largos",
+    "budget_friendly": "Modelo de IA económico",
+    "ultra_fast": "Respuestas ultrarrápidas",
+    "safe_default": "Opción predeterminada segura",
+    "multilingual": "Fuerte soporte multilingüe",
+    "vision_strong": "Genial con imágenes y visión.",
+    "data_analysis": "Bueno para el análisis de datos.",
+    "structured_tasks": "Bueno para tareas estructuradas",
+    "everyday_helper": "Modelo de asistente diario",
+    "concise_answers": "Respuestas cortas y concisas",
+    "detailed_answers": "Respuestas detalladas paso a paso",
+    "experimental": "Modelo experimental de próxima generación",
+    "reliable_classic": "Modelo clásico confiable",
+    "lightweight": "Modelo ligero y económico.",
+    "chatty_personal": "Más amigable y personal",
+    "pro_users": "Lo mejor para usuarios avanzados",
+    "research_helper": "Bueno para investigaciones y notas.",
+    "reasoning_strong": "Modelo de razonamiento avanzado"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "antrópico",
+    "google": "google",
+    "xai": "xAI",
+    "other": "Otro"
+  },
+  "navigation": {
+    "chat": "Nuevo chat",
+    "history": "Historia",
+    "rewards": "Recompensas diarias",
+    "assistants": "Asistentes",
+    "imagesStudio": "Image Studio",
+    "settings": "Configuración",
+    "recentChats": "Chats recientes",
+    "proFeatures": "Funciones profesionales",
+    "pro": "PROFESIONAL",
+    "proFeaturesCta": {
+      "title": "Obtenga funciones profesionales",
+      "subtitle": "Todas las funciones de IA"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Genere, refine y publique recursos visuales en un solo lugar.",
+    "cta": "Abierto"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Seleccionar imágenes",
+    "exitSelectionMode": "Salir del modo de selección",
+    "selectAll": "Seleccionar todo",
+    "noImagesYet": "Aún no hay imágenes",
+    "describeImageHint": "Describe tu imagen a continuación y toca Generar.",
+    "generatedImagesGallery": "Galería de imágenes generadas",
+    "describeImagePlaceholder": "Describe la imagen que deseas...",
+    "deleteConfirmTitle": "Eliminar imágenes",
+    "deleteConfirmMessage": "¿Estás seguro de que deseas eliminar las imágenes seleccionadas? Esta acción no se puede deshacer.",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "generate": "generar",
+    "generating": "Generando…",
+    "latest": "Lo último",
+    "insertToChat": "Insertar para chatear",
+    "pleaseWait": "Por favor espera...",
+    "processing": "Procesando...",
+    "tapToUploadImage": "Toca para subir la imagen",
+    "camera": "Subir fotos",
+    "library": "Biblioteca",
+    "enterPrompt": "Ingrese un mensaje para la generación de texto a imagen",
+    "openInBrowser": "Abrir en el navegador",
+    "makeVariations": "hacer variaciones",
+    "deleteAllFromGeneration": "Eliminar todo de esta generación",
+    "imageOptionsTitle": "Opciones de imagen",
+    "imageOptionsMessage": "¿Qué te gustaría hacer con esta imagen?",
+    "insertMarkdownHeader": "Aquí está la imagen de:",
+    "variationSuffix": "— variación de la imagen anterior",
+    "selectedCount": "seleccionado",
+    "selectedCount_one": "seleccionado",
+    "selectedCount_other": "seleccionado",
+    "imageDescriptionInput": "Entrada de descripción de imagen",
+    "imageDescriptionHint": "Ingresa una descripción de la imagen que deseas generar",
+    "openModelSettings": "Abrir configuración del modelo",
+    "modelSettingsHint": "Toque para cambiar el modelo y la configuración",
+    "openPhotoGallery": "Abrir galería de fotos",
+    "clearInput": "Borrar entrada",
+    "generatedImage": "Imagen generada",
+    "autoSelectedModel": "{{model}} seleccionado automáticamente para el modo {{mode}}",
+    "deleteSelectedConfirmTitle": "Eliminar imágenes",
+    "deleteSelectedConfirmMessage": "¿Estás seguro de que deseas eliminar imágenes? Esta acción no se puede deshacer."
+  },
+  "imageStudio": {
+    "generateImage": "Generar imagen",
+    "generatingImage": "Generando imagen",
+    "generateImageHint": "Toca para generar una imagen basada en tu descripción.",
+    "imageDescriptionInput": "Entrada de descripción de imagen",
+    "imageDescriptionHint": "Ingresa una descripción de la imagen que deseas generar",
+    "openModelSettings": "Abrir configuración del modelo",
+    "modelSettingsHint": "Toque para cambiar el modelo y la configuración",
+    "openPhotoGallery": "Abrir galería de fotos",
+    "clearInput": "Borrar entrada",
+    "generatedImage": "Imagen generada"
+  },
+  "assistants": {
+    "title": "Asistentes",
+    "defaultTitle": "Asistente",
+    "errorTitle": "algo salió mal",
+    "errorMessage": "No se pudo iniciar este asistente.",
+    "noAssistants": "No se encontraron asistentes en esta categoría.",
+    "selectAssistantHint": "Selector de asistente abierto",
+    "subtitle": "Especialistas en IA seleccionados y listos para codificar, escribir, analizar, planificar y más.",
+    "searchPlaceholder": "Asistentes de búsqueda…",
+    "useAssistant": "Usar asistente",
+    "selectAssistant": "Elige asistente",
+    "description": "Descripción",
+    "systemPrompt": "Aviso del sistema",
+    "chooseModel": "Elige modelo",
+    "categoryAll": "Todos",
+    "categories": {
+      "everyday": "todos los dias",
+      "life": "vida",
+      "health": "Salud",
+      "schoolWork": "Escuela y trabajo",
+      "coding": "Codificación",
+      "creative": "creativo",
+      "general": "generales"
+    },
+    "presets": {
+      "default": {
+        "name": "Asistente predeterminado",
+        "description": "Ayuda equilibrada para las cosas diarias."
+      },
+      "quick": {
+        "name": "Respuestas rápidas",
+        "description": "Respuestas cortas y directas."
+      },
+      "planner": {
+        "name": "Planificador diario",
+        "description": "Planifica tu día y tus rutinas."
+      },
+      "recipes": {
+        "name": "Comidas y recetas",
+        "description": "Qué cocinar, con lo que tienes."
+      },
+      "fitness": {
+        "name": "Entrenador físico",
+        "description": "Pequeños hábitos y entrenamientos en casa."
+      },
+      "money": {
+        "name": "amigo del dinero",
+        "description": "Presupuestos sencillos y consejos de gastos."
+      },
+      "study": {
+        "name": "Ayudante de estudio",
+        "description": "Explique simplemente. Pregúntame."
+      },
+      "email": {
+        "name": "Correo electrónico y currículum",
+        "description": "Escriba correos electrónicos y líneas de CV claros."
+      },
+      "translator": {
+        "name": "Traductor",
+        "description": "Traducir + enseñar frases."
+      },
+      "travel": {
+        "name": "Compañero de viaje",
+        "description": "Planes simples y listas de empaque."
+      },
+      "tech": {
+        "name": "Soporte técnico (sencillo)",
+        "description": "Teléfono, aplicaciones, conceptos básicos de Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL;DR Resumen",
+        "description": "Viñetas cortas + TL;DR de una línea."
+      },
+      "gift": {
+        "name": "Buscador de regalos",
+        "description": "Ideas por presupuesto e intereses."
+      },
+      "party": {
+        "name": "Planificador de eventos (Lite)",
+        "description": "Planifica una pequeña fiesta rápidamente."
+      },
+      "social": {
+        "name": "Creador de publicaciones sociales",
+        "description": "Borradores de publicaciones con opciones."
+      },
+      "interview": {
+        "name": "Entrenador de entrevistas",
+        "description": "Respuestas de práctica (STAR)."
+      },
+      "homefix": {
+        "name": "Guía de reparación del hogar",
+        "description": "Solución de problemas sencilla de bricolaje."
+      },
+      "pet": {
+        "name": "Compañero de cuidado de mascotas",
+        "description": "Alimentación, paseos, entrenamiento básico."
+      },
+      "mindful": {
+        "name": "Minuto Consciente",
+        "description": "Descansos para la calma de 1 a 3 minutos."
+      },
+      "polite": {
+        "name": "Reescritor educado",
+        "description": "Reescribe bien los textos y las respuestas."
+      }
+    }
+  },
+  "history": {
+    "title": "Historia",
+    "searchPlaceholder": "Buscar chats…",
+    "newChat": "Nuevo chat",
+    "new": "+ Nuevo",
+    "search": "Buscar",
+    "clearSearch": "Borrar búsqueda",
+    "noChatsYet": "Aún no hay chats",
+    "noResults": "Aún no hay chats",
+    "startFirstConversation": "Inicie su primera conversación.",
+    "startChat": "Iniciar chat",
+    "startNewChat": "Iniciar un nuevo chat",
+    "errorLoadingHistory": "Error al cargar el historial",
+    "loading": "Cargando historial...",
+    "renameChat": "Cambiar el nombre del chat",
+    "enterNewTitle": "Introduzca un nuevo título",
+    "deleteChat": "¿Eliminar chat?",
+    "deleteChatMessage": "\"{{title}}\" se eliminará.",
+    "rename": "Cambiar nombre",
+    "unpin": "Desanclar",
+    "pin": "Alfiler",
+    "untitled": "Sin título"
+  },
+  "settings": {
+    "title": "Configuración",
+    "model": "modelo",
+    "searchPlaceholder": "Buscar modelos…",
+    "temperatureForCurrentModel": "Temperatura para el modelo actual",
+    "customFor": "Personalizado para {{model}}",
+    "usingDefault": "Usando el valor predeterminado {{temperature}}",
+    "resetToDefault": "Restablecer los valores predeterminados",
+    "defaultTemperature": "Temperatura predeterminada (alternativa)",
+    "usedByModelsWithoutOverride": "Utilizado por modelos sin anulación personalizada",
+    "dangerZone": "Zona de peligro",
+    "clearAllChatsAndSettings": "Borrar todos los chats y configuraciones",
+    "about": "Acerca de",
+    "version": "Versión {{version}}{{status}}",
+    "versionPremiumSuffix": "· Prémium",
+    "privacyPolicy": "Política de privacidad",
+    "hero": {
+      "label": "oferta especial",
+      "title": "Acceso ilimitado\ny funciones profesionales",
+      "upgrade": "Actualizar",
+      "manage": "Administrar plan"
+    },
+    "sections": {
+      "premium": "Plan Premium",
+      "data": "Datos de usuario",
+      "support": "Soporte y Legal"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Obtener prima",
+        "subtitle": "Desbloquea herramientas de creación ilimitadas"
+      },
+      "premiumActive": {
+        "title": "Premium Activo",
+        "subtitle": "Gracias por apoyar Cloud AI"
+      },
+      "restore": {
+        "title": "Restaurar compras",
+        "subtitle": "Úselo si cambió de dispositivo"
+      },
+      "history": {
+        "title": "Administrar el historial de chat",
+        "subtitle": "Ver y eliminar tus sesiones pasadas"
+      },
+      "reset": {
+        "title": "Restablecer chats y preferencias",
+        "subtitle": "Borra todos los datos almacenados en este dispositivo"
+      },
+      "rate": {
+        "title": "Califícanos",
+        "error": "No se puede abrir la página de la tienda."
+      },
+      "support": {
+        "title": "Soporte",
+        "subtitle": "Contáctenos en línea",
+        "error": "No se puede abrir la página de contacto."
+      },
+      "privacy": {
+        "title": "Política de privacidad",
+        "error": "No se puede abrir la política de privacidad."
+      },
+      "terms": {
+        "title": "Términos de uso",
+        "error": "No se pueden abrir los términos de uso."
+      }
+    },
+    "capabilities": {
+      "text": "texto",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "No disponible",
+      "linkUnavailableMessage": "No se puede abrir este enlace en este momento.",
+      "restoreSuccessTitle": "Restaurado",
+      "restoreSuccessMessage": "Tus compras han sido restauradas.",
+      "restoreEmptyTitle": "No se encontraron compras",
+      "restoreEmptyMessage": "No pudimos encontrar una compra activa para restaurar para esta cuenta.",
+      "restoreErrorTitle": "Restauración fallida",
+      "restoreErrorMessage": "No se pueden restaurar las compras en este momento.",
+      "resetConfirmTitle": "¿Restablecer datos de la aplicación?",
+      "resetConfirmMessage": "Esto elimina todos los chats y preferencias locales.",
+      "resetConfirmCancel": "Cancelar",
+      "resetConfirmCta": "Reiniciar"
+    }
+  },
+  "createImage": {
+    "headerTitle": "crear",
+    "chooseStyle": "Elige un estilo",
+    "aspectRatio": "Relación de aspecto",
+    "starterPrompts": {
+      "title": "Indicaciones iniciales",
+      "items": [
+        "tiro en la cabeza de estudio",
+        "sala de estar moderna",
+        "playa tropical al atardecer"
+      ]
+    },
+    "promptPlaceholder": "Escribe lo que quieras ver...",
+    "promptHint": "Ejemplo: 'Golden retriever en iluminación de estudio'",
+    "clearText": "Borrar texto",
+    "generate": "generar",
+    "generating": "Generando…"
+  },
+  "editImage": {
+    "headerTitle": "Editar",
+    "chooseStyle": "Elige un estilo",
+    "aspectRatio": "Relación de aspecto",
+    "starterPrompts": {
+      "title": "Indicaciones iniciales",
+      "items": [
+        "arreglar la iluminación",
+        "eliminar fondo",
+        "retoque de retrato suave"
+      ]
+    },
+    "promptPlaceholder": "Describir las ediciones (opcional)",
+    "clearText": "Borrar texto",
+    "generate": "generar",
+    "generating": "Aplicando…",
+    "upload": {
+      "choose": "Elige foto",
+      "change": "Cambiar",
+      "remove": "Quitar"
+    },
+    "imageUnavailable": {
+      "title": "Imagen no disponible",
+      "message": "No se pudo acceder a la foto seleccionada. Vuelve a seleccionarlo e inténtalo de nuevo."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "animado"
+      },
+      "cartoon": {
+        "name": "dibujos animados"
+      },
+      "photoreal": {
+        "name": "Fotorrealista"
+      },
+      "sketch": {
+        "name": "bosquejo"
+      },
+      "cyberpunk": {
+        "name": "ciberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "Ilustración 3D"
+      },
+      "dark_fantasy": {
+        "name": "Fantasía oscura"
+      },
+      "vintage_film": {
+        "name": "Película antigua"
+      },
+      "pastel": {
+        "name": "Estética Pastel"
+      },
+      "neon_glow": {
+        "name": "Resplandor de neón"
+      },
+      "epic_landscape": {
+        "name": "Paisaje épico"
+      }
+    },
+    "aspectRatios": {
+      "square": "cuadrado",
+      "landscape": "paisaje",
+      "portrait": "retrato"
+    },
+    "models": {
+      "fluxKontent": "Contenido de flujo",
+      "custom": "personalizado"
+    },
+    "notEnoughCoinsTitle": "No hay suficientes monedas",
+    "notEnoughCoinsMessage": "Su saldo actual es demasiado bajo para esta imagen.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "modelo más rápido",
+      "runwareFluxKrea": "Resultados creativos y estilizados",
+      "runwareQwenImage": "Resultados equilibrados y de alta calidad.",
+      "google4": "Mejor modelo de imagen AI",
+      "klingImageO1": "Edición de imágenes de alto control",
+      "fluxKontent": "Flux Kontent ajustado para ediciones",
+      "runwareProvider": "Calidad equilibrada con difusión fiable.",
+      "airProvider": "Nano Banana añade un tono vívido y divertido.",
+      "googleProvider": "Google sintonizado para detalles pulidos.",
+      "klingaiProvider": "KlingAI sintonizado para ediciones controladas.",
+      "anthropicProvider": "Claude canalización para estados de ánimo matizados.",
+      "default": "Toque para explorar los motores disponibles."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "tu estilo elegido",
+    "sheetTitle": "Elaborando tu visión",
+    "sheetSubtitle": "Breve sorbo de café servido mientras mezclamos {{style}} en el mensaje.",
+    "phases": {
+      "blend": "Mezclando {{style}}",
+      "paint": "pintando la escena",
+      "finish": "Agregar esmalte final"
+    },
+    "actions": {
+      "cancel": "Cancelar",
+      "retry": "Reintentar",
+      "close": "Cerrar"
+    },
+    "errors": {
+      "restrictedTitle": "Contenido restringido",
+      "genericTitle": "Generación fallida",
+      "genericMessage": "No se pudo generar la imagen."
+    },
+    "alerts": {
+      "saveFailedTitle": "No se pudo guardar",
+      "shareFailedTitle": "No se pudo compartir",
+      "tryAgain": "Por favor inténtalo de nuevo.",
+      "savedTitle": "Guardado",
+      "savedMessage": "Imagen guardada en tu galería.",
+      "permissionTitle": "Permiso necesario",
+      "permissionMessage": "Permita el acceso al almacenamiento para guardar imágenes en su galería."
+    },
+    "result": {
+      "complete": "todo terminado"
+    },
+    "accessibility": {
+      "close": "Cerrar"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Eliminar",
+      "edit": "Editar",
+      "save": "Guardar",
+      "share": "Compartir"
+    },
+    "alerts": {
+      "savedTitle": "Guardado",
+      "savedMessage": "Imagen guardada en tu galería.",
+      "permissionTitle": "Permiso necesario",
+      "permissionMessage": "Permita el acceso al almacenamiento para guardar imágenes en su galería.",
+      "saveFailedTitle": "No se pudo guardar",
+      "tryAgain": "Por favor inténtalo de nuevo."
+    },
+    "accessibility": {
+      "close": "Cerrar",
+      "delete": "Eliminar imagen",
+      "edit": "Editar imagen",
+      "save": "Guardar imagen",
+      "share": "Compartir imagen"
+    }
+  },
+  "reportContent": {
+    "title": "Informar contenido de IA",
+    "subtitle": "Cuéntanos qué hay de malo en este contenido generado.",
+    "privateDisclosure": "Al enviarlo, se envía este contenido reportado para su revisión de seguridad.",
+    "accessibilityLabel": "Informar contenido de IA",
+    "reasons": {
+      "sexual": "Contenido sexual o desnudez",
+      "violence_self_harm": "Violencia o autolesión",
+      "hate_harassment": "Odio o acoso",
+      "child_safety": "Preocupación por la seguridad infantil",
+      "scam_deceptive": "Estafa o contenido engañoso",
+      "other": "Otro"
+    },
+    "errors": {
+      "reasonRequired": "Por favor elija un motivo antes de enviar.",
+      "submit": "No se pudo enviar el informe. Por favor inténtalo de nuevo."
+    },
+    "success": {
+      "title": "Gracias. Su informe fue enviado.",
+      "subtitle": "Usaremos informes para mejorar la seguridad del contenido."
+    },
+    "actions": {
+      "report": "Informe",
+      "submit": "Enviar informe",
+      "done": "hecho"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "abrir menú",
+      "selectImages": "Seleccionar imágenes",
+      "exitSelection": "Salir de la selección",
+      "deleteSelected": "Eliminar imágenes seleccionadas",
+      "selectToDelete": "Seleccionar imágenes para eliminar"
+    },
+    "createCard": {
+      "title": "Crear a partir de texto",
+      "subtitle": "Escribe una descripción",
+      "cta": "Describir y generar"
+    },
+    "editCard": {
+      "title": "Editor de fotos con IA",
+      "subtitle": "Transforma y mejora con IA",
+      "cta": "Editar con IA"
+    },
+    "gallery": {
+      "title": "Galería",
+      "empty": "Aún no hay imágenes",
+      "selection": {
+        "enter": "Seleccionar imágenes",
+        "exit": "Salir de la selección",
+        "deleteSelected": "Eliminar imágenes seleccionadas",
+        "selectForDelete": "Seleccionar imágenes para eliminar"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "conocer",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Crea y edita imágenes con IA, justo dentro de Cloud AI."
+    },
+    "relaxView": {
+      "title": "Conozca su IA",
+      "titleHighlight": "Asistentes",
+      "subtitle": "Expertos especializados en IA listos para ayudarle con sus necesidades diarias",
+      "cards": {
+        "fitness": {
+          "title": "Entrenador físico",
+          "text": "Pequeños hábitos y entrenamientos en casa."
+        },
+        "recipes": {
+          "title": "Comidas y recetas",
+          "text": "Qué cocinar, con lo que tienes."
+        },
+        "travel": {
+          "title": "Compañero de viaje",
+          "text": "Planes simples y listas de empaque."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "SOLUCIONES DE IA DE GRADO EMPRESARIAL",
+      "description": "Potencia tu negocio con tecnología de inteligencia artificial de vanguardia diseñada para profesionales y equipos empresariales.",
+      "stats": "Con la confianza de más de 500.000 usuarios",
+      "rating": "4.9 / 5",
+      "button": "Empezar"
+    },
+    "buttons": {
+      "continue": "Continuar",
+      "start": "empecemos"
+    }
+  },
+  "coinStore": {
+    "title": "Obtener créditos",
+    "loading": "Cargando tienda de monedas…",
+    "balanceLabel": "Su saldo actual es",
+    "balanceValue": "{{amount}} Créditos",
+    "history": {
+      "link": "Historial de transacciones",
+      "alertTitle": "Historia",
+      "alertBody": "El historial de transacciones estará disponible pronto."
+    },
+    "noPacks": "No hay paquetes de monedas disponibles. Verifique su identificación de oferta RevenueCat.",
+    "badges": {
+      "basic": "Paquete Básico",
+      "popular": "Más Popular",
+      "value": "Mejor valor"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Créditos",
+      "tokensLabel": "{{credits}} Créditos",
+      "defaultName": "Paquete {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Ir Premium",
+      "subtitle": "Acceso ilimitado y funciones",
+      "cta": "Actualizar"
+    },
+    "termsText": "Al realizar una compra, aceptas nuestra",
+    "termsLink": "Términos de servicio",
+    "alerts": {
+      "initErrorTitle": "error de inicio",
+      "genericMessage": "Algo salió mal.",
+      "successTitle": "Éxito",
+      "successMessage": "Los créditos aparecerán en breve.",
+      "purchaseFailedTitle": "Compra fallida",
+      "unknownError": "Error desconocido"
+    }
+  },
+  "premium": {
+    "badge": "PROFESIONAL",
+    "requiredTitle": "Prima requerida",
+    "upgrade": "Actualizar",
+    "modelRequiredMessage": "Este modelo requiere Premium. Actualice para acceder a GPT-5, Grok 4, Claude y modelos más avanzados.",
+    "assistantsRequiredMessage": "Los asistentes requieren Premium. Actualice para acceder a asistentes de IA especializados en fitness, codificación, escritura y más.",
+    "assistantsTitle": "Prima requerida",
+    "assistantsMessage": "Los asistentes requieren Premium. Actualice para acceder a asistentes de IA especializados en fitness, codificación, escritura y más."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Cerrar muro de pago",
+    "unavailableTitle": "Compras no disponibles",
+    "unavailableMessage": "La facturación de Android aún no está configurada.",
+    "restoreEmptyTitle": "No se encontraron compras",
+    "restoreEmptyMessage": "No pudimos encontrar una compra activa para restaurar para esta cuenta.",
+    "restoreFailedTitle": "Restauración fallida",
+    "restoreFailedMessage": "No se pueden restaurar las compras en este momento.",
+    "productsUnavailableTitle": "No hay planes disponibles",
+    "productsUnavailableMessage": "No hay productos de suscripción de Android disponibles en este momento.",
+    "purchaseFailedTitle": "Compra fallida",
+    "purchaseFailedMessage": "No se puede completar esta compra en este momento.",
+    "restore": "Restaurar",
+    "restoreRestoring": "Restaurando…",
+    "features": {
+      "create": "Crea imágenes y vídeos.",
+      "search": "Busque en la web con IA",
+      "talk": "Habla naturalmente con la IA",
+      "imageStudio": "Obtenga Image Studio {{credits}} créditos {{period}}",
+      "period": {
+        "weekly": "semanal",
+        "monthly": "mensual",
+        "yearly": "anualmente"
+      }
+    },
+    "freeTrial": {
+      "title": "Prueba gratuita",
+      "subtitle": "Prueba gratuita de 3 días"
+    },
+    "badge": {
+      "bestOffer": "Mejor oferta"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Anual",
+        "only": "Sólo {{price}}",
+        "defaultPrice": "79,99 dólares",
+        "defaultIntroPrice": "1,35 dólares"
+      },
+      "monthly": {
+        "title": "Mensual",
+        "subtitle": "Cancelar en cualquier momento",
+        "defaultPrice": "19,99 dólares"
+      },
+      "weekly": {
+        "title": "Semanal",
+        "subtitle": "Cancelar en cualquier momento",
+        "defaultPrice": "9,99 dólares",
+        "trialThen": "3 días gratis, luego"
+      }
+    },
+    "frequency": {
+      "perWeek": "por semana",
+      "perMonth": "por mes"
+    },
+    "cta": "Continuar",
+    "ctaFreeTrial": "Pruébalo gratis",
+    "legal": {
+      "terms": "Términos",
+      "privacy": "Privacidad"
+    },
+    "premium": {
+      "headline": "Toda la IA premium en un solo plan",
+      "subtitleLine1": "Chatea, codifica, crea y planifica",
+      "subtitleLine2": "con modelos avanzados.",
+      "enableTrial": "Habilitar prueba gratuita",
+      "annual": "Anual",
+      "saveBadge": "Ahorre 83%",
+      "year": "año",
+      "week": "semana",
+      "termsOfUse": "Términos de uso",
+      "privacyPolicy": "Política de privacidad"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mensaje...",
+    "createImages": "Crear imágenes",
+    "generateAiArtwork": "Generar ilustraciones de IA",
+    "camera": "Subir fotos",
+    "takeOrSelectPhotos": "Seleccionar fotos",
+    "search": "Buscar",
+    "findInformation": "encontrar información",
+    "findRecentInfo": "Encuentra información reciente",
+    "removeImage": "Quitar imagen",
+    "messageInput": "Entrada de mensaje",
+    "clearInput": "Borrar entrada",
+    "quickActionsLabel": "Acciones rápidas",
+    "hideQuickActions": "Ocultar acciones rápidas",
+    "showQuickActions": "Mostrar acciones rápidas",
+    "startVoiceInput": "Iniciar entrada de voz",
+    "sendMessage": "enviar mensaje",
+    "offline": "Sin conexión",
+    "stop": "Detener",
+    "streaming": "Transmitiendo…",
+    "closeRecorder": "Cerrar grabadora",
+    "insertTranscript": "enviar",
+    "scrollToLatest": "Desplácese hasta el último mensaje",
+    "copyMessage": "Copiar mensaje",
+    "copyMessageHint": "Copia este mensaje al portapapeles",
+    "shareMessage": "compartir mensaje",
+    "shareMessageHint": "Comparte este mensaje",
+    "regenerateResponse": "Regenerar respuesta",
+    "regenerateResponseHint": "Generar una nueva respuesta",
+    "copyCode": "Copiar código",
+    "copied": "Copiado",
+    "image": "imagen",
+    "loading": "Cargando…",
+    "loadingChat": "Cargando conversación...",
+    "offlineBanner": "Estás desconectado. No se pueden enviar mensajes.",
+    "offlineError": "Sin conexión a Internet. Por favor verifique su conexión e inténtelo nuevamente.",
+    "imagePickerErrorTitle": "Error en el selector de imágenes",
+    "imagePickerErrorMessage": "No se puede acceder a tus fotos. Por favor inténtalo de nuevo.",
+    "messageTooLong": "Mensaje demasiado largo ({{length}}). El límite es {{limit}}.",
+    "sendFailed": "No se pudo enviar el mensaje. Por favor inténtalo de nuevo.",
+    "modelNoImageSupport": "El modelo seleccionado no admite imágenes. Por favor elige un modelo diferente.",
+    "voiceStartFailed": "No se pudo iniciar la voz.",
+    "voiceNoSpeechDetected": "No se reconoció ninguna voz. Por favor inténtalo de nuevo.",
+    "emptyTitle": "¿Cómo puedo ayudar?",
+    "emptySubtitle": "Iniciar una conversación con IA",
+    "privateTitle": "Chat Privado",
+    "privateSubtitle": "Este chat no aparecerá en tu historial de chat.",
+    "startPrivateChat": "Iniciar chat privado",
+    "endPrivateChat": "Finalizar chat privado",
+    "permissions": {
+      "photosTitle": "Fotos Se necesita permiso",
+      "photosMessage": "Se requiere acceso a la foto para elegir imágenes.",
+      "voiceTitle": "Permisos de voz necesarios",
+      "voiceMessage": "Se requiere acceso al micrófono y a la voz para utilizar la voz."
+    },
+    "activity": {
+      "analyzingImages": "Analizando imágenes…",
+      "searching": "Buscando…",
+      "thinking": "Pensando…"
+    },
+    "webSearch": {
+      "title": "búsqueda web",
+      "subtitle": "Encuentra información reciente",
+      "label": "Búsqueda web",
+      "enable": "Habilitar búsqueda web",
+      "disable": "Desactivar la búsqueda web",
+      "toggleLabel": "buscar en la web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Diseñe imágenes a gran velocidad.",
+      "subtitle": "Genere, refine y publique recursos visuales en un solo lugar.",
+      "cta": "Abierto"
+    },
+    "quickActions": {
+      "createImages": "Crear imágenes",
+      "openCamera": "Abrir cámara",
+      "editImage": "Editar imagen",
+      "startVoice": "Iniciar voz",
+      "assistants": "Asistentes"
+    },
+    "listening": "Escuchando…",
+    "startRecording": "Comience a grabar…",
+    "assistantHeader": {
+      "unavailableTitle": "Asistente no disponible",
+      "unavailableDescription": "No pudimos cargar este asistente. Por favor inténtalo de nuevo.",
+      "ready": "Listo para ayudar"
+    },
+    "actions": {
+      "copy": "Copiar",
+      "share": "Compartir",
+      "regenerate": "regenerar",
+      "retryFromHere": "Vuelva a intentarlo desde aquí",
+      "report": "Informe",
+      "cancel": "Cancelar"
+    },
+    "markdown": {
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "table": "MESA",
+      "watchVideo": "Ver vídeo",
+      "wikipedia": "Wikipedia",
+      "link": "Enlace",
+      "note": "Nota",
+      "warning": "Advertencia",
+      "tip": "consejo"
+    },
+    "messageActionTitle": "Mensaje",
+    "status": {
+      "sending": "Enviando…",
+      "failed": "Fallido",
+      "sent": "Enviado"
+    },
+    "suggestions": {
+      "writeStory": "Escribe una historia creativa.",
+      "writeStorySubtitle": "sobre una aventura mágica",
+      "planTravel": "Planificar un itinerario de viaje",
+      "planTravelSubtitle": "para unas vacaciones increíbles",
+      "explainConcept": "Explica este concepto",
+      "explainConceptSubtitle": "en términos simples",
+      "planDay": "planificar mi día",
+      "planDaySubtitle": "con consejos de productividad"
+    },
+    "home": {
+      "eyebrow": "Elige un tema",
+      "title": "¿Qué quieres hacer?",
+      "subtitle": "Elija una dirección y luego comience con una indicación fuerte.",
+      "pickPromptTitle": "Elija un mensaje para comenzar",
+      "changeTopic": "Elige otro tema",
+      "intents": {
+        "summarize": "Resumir texto",
+        "summarizeShort": "resumir",
+        "summarizeHint": "Artículos, notas, notas de voz, hilos largos.",
+        "plan": "hacer un plan",
+        "planHint": "Viajes, rutinas, presupuestos, plazos, cambios de vida.",
+        "brainstorm": "Lluvia de ideas",
+        "brainstormHint": "Ideas, ofertas, nombres, contenidos, proyectos paralelos.",
+        "analyze": "Analizar datos",
+        "analyzeHint": "Gasto, retroalimentación, métricas, hábitos, desempeño."
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Crear un resumen del fundador",
+          "founderBriefSubtitle": "Extraiga los principales riesgos, decisiones y próximos pasos.",
+          "classNotesTitle": "Limpiar mis notas de estudio.",
+          "classNotesSubtitle": "Convierta notas aproximadas en una guía de estudio clara.",
+          "meetingHandoffTitle": "Escribe un resumen de transferencia",
+          "meetingHandoffSubtitle": "Útil después de reuniones, llamadas o hilos internos largos.",
+          "longArticleTitle": "Resume este artículo rápidamente",
+          "longArticleSubtitle": "Condense un artículo extenso en conclusiones interesantes."
+        },
+        "plan": {
+          "energyResetTitle": "Construya un reinicio de energía de 14 días",
+          "energyResetSubtitle": "Un plan realista para dormir, comer, moverse y concentrarse.",
+          "mealPlanTitle": "Planificar comidas que realmente cocinaré",
+          "mealPlanSubtitle": "Práctico, asequible y basado en lo que tengo.",
+          "cityMoveTitle": "Planificar mi mudanza a una nueva ciudad",
+          "cityMoveSubtitle": "Divídalo en cronograma, presupuesto, alojamiento y tareas administrativas.",
+          "tripEscapeTitle": "Planifique una escapada de fin de semana memorable",
+          "tripEscapeSubtitle": "Algo mejor que un itinerario genérico."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Encuentra un negocio paralelo realista",
+          "sideHustleSubtitle": "Ideas que puedo comenzar mientras trabajo a tiempo completo.",
+          "brandAngleTitle": "Encuentre un ángulo de marca memorable",
+          "brandAngleSubtitle": "Útil para productos, creadores, agencias o boletines.",
+          "socialSeriesTitle": "Inventar una serie de contenidos",
+          "socialSeriesSubtitle": "Algo lo suficientemente consistente como para hacer crecer una audiencia.",
+          "datingIdeasTitle": "Piensa en nuevas ideas",
+          "datingIdeasSubtitle": "Fechas, regalos, sorpresas o eventos que te hacen pensar."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Encuentra dónde se está escapando mi dinero",
+          "spendingLeaksSubtitle": "Muestre primero los patrones, los puntos débiles y las victorias más fáciles.",
+          "customerFeedbackTitle": "Convierta los comentarios en prioridades",
+          "customerFeedbackSubtitle": "Solicitudes, quejas, urgencia e impacto del cluster.",
+          "habitPatternsTitle": "Detectar patrones en mis hábitos",
+          "habitPatternsSubtitle": "Útil para entrenamientos, sueño, diario o registros de concentración.",
+          "metricsStoryTitle": "Explica qué significan los números.",
+          "metricsStorySubtitle": "Más señal, menos ruido de hoja de cálculo."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Procesando...",
+    "tapToUploadImage": "Toca para subir la imagen"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Procesando...",
+    "camera": "Subir fotos",
+    "library": "Biblioteca"
+  },
+  "common": {
+    "ok": "bien",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "allow": "Permitir",
+    "notNow": "Ahora no",
+    "openSettings": "Abrir configuración",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "tryAgain": "Inténtalo de nuevo"
+  },
+  "rateUs": {
+    "title": "¿Disfrutando Cloud AI?",
+    "subtitle": "Tus comentarios nos ayudan a mejorar. ¿Te importaría calificarnos en la App Store?",
+    "rateNow": "Califica ahora",
+    "maybeLater": "Quizás más tarde",
+    "dontAskAgain": "No vuelvas a preguntar"
+  },
+  "oneTimeOffer": {
+    "title": "Oferta única",
+    "discount": "{{percent}}% DE DESCUENTO",
+    "subtitle": "No volverás a ver esta oferta.",
+    "badgeLine1": "Exclusivo",
+    "badgeLine2": "oferta única",
+    "upgradeNow": "Actualice ahora por {{price}}",
+    "loadingPrice": "Cargando...",
+    "termsOfUse": "Términos de uso",
+    "privacyPolicy": "Política de privacidad",
+    "accessTitle": "Acceso ilimitado a",
+    "accessSubtitle": "GPT, Gemini y Grok 4",
+    "features": {
+      "unlimitedGPT4": "Acceso ilimitado a GPT-4",
+      "geminiPro": "Acceso a Gemini Pro",
+      "grokInsights": "Utilice Grok para obtener información nueva",
+      "priorityAccess": "Acceso prioritario y respuestas más rápidas"
+    },
+    "bestValue": "Mejor valor",
+    "annualPremium": "Prima anual",
+    "oneTimePayment": "Pago único",
+    "wasPrice": "era",
+    "continue": "Continuar",
+    "restore": "Restaurar",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "successTitle": "¡Éxito!",
+    "successMessage": "¡Gracias por tu compra! Disfrute de acceso premium durante los próximos 12 meses.",
+    "errorTitle": "Compra fallida",
+    "errorMessage": "Algo salió mal. Por favor inténtalo de nuevo.",
+    "restoreSuccessTitle": "Restaurado",
+    "restoreSuccessMessage": "Tus compras han sido restauradas.",
+    "restoreErrorTitle": "Restauración fallida",
+    "restoreErrorMessage": "No se encontraron compras para restaurar.",
+    "unavailableTitle": "Compras no disponibles",
+    "unavailableMessage": "La facturación de Android aún no está configurada."
+  },
+  "rewards": {
+    "header": {
+      "title": "Recompensas",
+      "openMenu": "abrir menú",
+      "goBack": "volver"
+    },
+    "pointsHero": {
+      "totalBalance": "SALDO TOTAL",
+      "seeYourRewards": "Ver tus recompensas"
+    },
+    "streakTracker": {
+      "title": "Racha diaria",
+      "subtitle": "¡Sigue así! Estás en llamas.",
+      "days": "dias",
+      "prize": "Premio",
+      "dayLabel": "Día {{number}}",
+      "nextReward": "Próxima recompensa: {{amount}} en {{time}}",
+      "coins": "monedas"
+    },
+    "sections": {
+      "availableQuests": "Misiones disponibles",
+      "completedQuests": "Misiones completadas",
+      "availableRewards": "Recompensas disponibles",
+      "needsMoreCoins": "Necesita más monedas"
+    },
+    "balances": {
+      "rewardCoins": "monedas de recompensa",
+      "imageCredits": "Créditos de imagen"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 créditos de imagen",
+        "imageCredits200": "200 créditos de imagen",
+        "imageCredits600": "600 créditos de imagen",
+        "weeklyPremium": "Prima Semanal",
+        "secretBox": "Caja Secreta"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Recompensas misteriosas en el interior"
+      },
+      "alerts": {
+        "comingSoonTitle": "Próximamente",
+        "comingSoonMessage": "Esta recompensa aún no está disponible.",
+        "notEnoughCoinsTitle": "No hay suficientes monedas",
+        "notEnoughCoinsMessage": "Necesitas más monedas de recompensa para desbloquear esta recompensa.",
+        "errorTitle": "error",
+        "couldNotOpenBox": "No se pudo abrir la caja.",
+        "couldNotRedeem": "No se pudo canjear la recompensa. Por favor inténtalo de nuevo.",
+        "mysteryReward": "Recompensa misteriosa"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Inicio de sesión diario",
+        "description": "Abre la aplicación hoy para mantener tu racha",
+        "message": "Esta misión se completa automáticamente cuando abres la aplicación todos los días."
+      },
+      "shareFacebook": {
+        "title": "Compartir en Facebook",
+        "description": "Publicar sobre nosotros en Facebook"
+      },
+      "shareTwitter": {
+        "title": "Compartir en Twitter",
+        "description": "Tuitea tu experiencia"
+      },
+      "shareInstagram": {
+        "title": "Compartir en Instagram",
+        "description": "Comparte una historia o publicación"
+      },
+      "shareExperience": {
+        "title": "Comparte tu experiencia",
+        "description": "Dile a tus amigos por qué te gusta la aplicación"
+      },
+      "share": {
+        "genericMessage": "Estoy usando esta aplicación de inteligencia artificial para chatear y generar imágenes. Compruébalo: {{url}}",
+        "facebookQuote": "¡Mira esta aplicación de IA!",
+        "twitterText": "Estoy probando esta aplicación de IA, es genial.",
+        "instagramMessage": "Mira esta aplicación de IA: {{url}}"
+      },
+      "store": {
+        "errorTitle": "error",
+        "errorMessage": "No se pudo abrir la página de la tienda."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Misión completada",
+        "description": "Misión completada",
+        "points": "+{{points}} puntos",
+        "close": "Cerrar"
+      },
+      "rewardSuccess": {
+        "error": "ERROR",
+        "success": "ÉXITO",
+        "somethingWentWrong": "algo salió mal",
+        "rewardUnlocked": "Recompensa desbloqueada",
+        "credits": "Créditos",
+        "close": "Cerrar",
+        "okay": "Está bien"
+      },
+      "secretBox": {
+        "pill": "CAJA SECRETA",
+        "rewardUnlocked": "RECOMPENSA DESBLOQUEADA",
+        "shufflingRewards": "BARAJAR LAS RECOMPENSAS...",
+        "imageCreditsAdded": "Créditos de imagen agregados a su cuenta",
+        "continue": "Continuar",
+        "revealing": "Revelando...",
+        "prizeTiers": {
+          "lucky": "AFORTUNADO",
+          "pro": "PROFESIONAL",
+          "elite": "ÉLITE",
+          "mythic": "MÍTICO"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Reclama tus monedas diarias",
+      "subtitle": "Vuelve cada día para una recompensa mayor.",
+      "cta": "Registrarme",
+      "claimed": "¡Recibido! +{{amount}} monedas",
+      "later": "Más tarde"
+    }
+  },
+  "app": {
+    "version": "Versión {{version}}",
+    "offlineBanner": "Estás desconectado",
+    "launch": {
+      "accessibilityLabel": "Iniciando Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "IA, lista cuando tú lo estés"
+    },
+    "errors": {
+      "modelsLoadTitle": "No se pudieron cargar los modelos",
+      "modelsLoadMessage": "No se pueden cargar modelos de IA. La aplicación utilizará modelos predeterminados. Por favor verifique su conexión a Internet.",
+      "modelsLoadTimeout": "La carga de modelos tardó demasiado. La aplicación utilizará modelos predeterminados. Por favor inténtalo de nuevo.",
+      "modelsLoadNetwork": "Sin conexión a Internet. La aplicación utilizará modelos predeterminados. Por favor verifique su conexión.",
+      "deviceIdTitle": "Error de inicialización",
+      "deviceIdMessage": "No se pudo inicializar la ID del dispositivo. Es posible que algunas funciones no funcionen correctamente.",
+      "storageTitle": "Error de almacenamiento",
+      "storageMessage": "No se puede acceder al almacenamiento local. Es posible que algunas funciones no funcionen correctamente.",
+      "crashTitle": "Algo salió mal.",
+      "crashSubtitle": "Por favor inténtalo de nuevo.",
+      "crashLabel": "La aplicación falló"
+    },
+    "proxyErrors": {
+      "genericTitle": "algo salió mal",
+      "genericMessage": "Por favor inténtalo de nuevo.",
+      "rateLimitTitle": "Demasiadas solicitudes",
+      "rateLimitMessage": "Estamos atendiendo muchas solicitudes. Inténtelo de nuevo en un momento.",
+      "rateLimitRetryAfter": "Estamos atendiendo muchas solicitudes. Vuelva a intentarlo en aproximadamente {{seconds}} segundos.",
+      "restrictedTitle": "Contenido restringido",
+      "restrictedMessage": "Esta solicitud fue bloqueada por filtros de seguridad.",
+      "insufficientCoinsTitle": "No hay suficientes monedas",
+      "insufficientCoinsMessage": "Su saldo actual es demasiado bajo para esta solicitud.",
+      "imageUnavailableTitle": "Imagen no disponible",
+      "imageUnavailableMessage": "El archivo de imagen generado no estuvo disponible temporalmente. Por favor inténtalo de nuevo.",
+      "authorizationTitle": "Problema de autorización",
+      "authorizationMessage": "No pudimos verificar su cuenta. Por favor inténtalo de nuevo.",
+      "serverTitle": "Problema en el servidor",
+      "serverMessage": "Nuestros servidores tuvieron problemas. Inténtelo de nuevo en breve.",
+      "timeoutTitle": "Tomando demasiado tiempo",
+      "timeoutMessage": "La solicitud expiró. Por favor inténtalo de nuevo.",
+      "networkTitle": "Sin conexión",
+      "networkMessage": "Sin conexión a Internet. Por favor verifique su conexión e inténtelo nuevamente.",
+      "requestTitle": "Solicitar problema",
+      "requestMessage": "Algo salió mal con tu solicitud. Por favor inténtalo de nuevo."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Activar prima",
+    "activateMessage": "¿Quieres activar Reviewer Premium?",
+    "activateAction": "Activar",
+    "deactivateTitle": "Desactivar prima",
+    "deactivateMessage": "¿Quieres desactivar la prima de revisor?",
+    "deactivateAction": "Desactivar"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Recompensa diaria",
+      "body": "No te pierdas tus monedas diarias: recógelas antes de la medianoche."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "No te pierdas tus monedas diarias",
+      "body": "Enviamos un recordatorio al día para que tu racha siga viva y tus monedas sigan creciendo. Sin spam y puedes desactivarlo cuando quieras.",
+      "enable": "Activar recordatorios",
+      "skip": "Ahora no"
+    }
+  }
+}

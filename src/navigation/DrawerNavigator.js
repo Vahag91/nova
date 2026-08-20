@@ -27,15 +27,6 @@ import Animated, {
   FadeInDown,
 } from 'react-native-reanimated';
 
-import Chat from '../screens/Chat';
-import History from '../screens/HistorySimple';
-import Assistants from '../screens/Assistants';
-import Settings from '../screens/Settings.jsx';
-import StudioHome from '../screens/StudioHome.jsx';
-import CreateImage from '../screens/CreateImage.jsx';
-import EditImage from '../screens/EditImage.jsx';
-import PaywallScreen from '../components/PaywallScreen';
-import OneTimeOfferScreen from '../screens/OneTimeOfferScreen';
 import ModelSelector from '../components/ModelSelector';
 import SvgIcon from '../components/SvgIcon';
 import AndroidNavigationMenu from './AndroidNavigationMenu';
@@ -47,7 +38,7 @@ import { useTranslation } from 'react-i18next';
 import { PRESETS, PRESET_AVATARS } from '../data/presets';
 import NetInfo from '@react-native-community/netinfo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { SubscriptionContext } from '../context/SubscriptionContext';
+import { SubscriptionAccessContext } from '../context/SubscriptionContext';
 import {
   navigationRef,
   isNavigationReadyRef,
@@ -55,16 +46,43 @@ import {
   ROOT_DRAWER_SCREEN_NAMES,
 } from './rootNavigation';
 import { ONE_TIME_OFFER_KEY } from '../constants/storageKeys';
-import { ONE_TIME_OFFER_PAYWALL_ENABLED } from '../constants/featureFlags';
+import {
+  ONE_TIME_OFFER_PAYWALL_ENABLED,
+  PIXEL_PAYWALL_ENABLED,
+} from '../constants/featureFlags';
 
 const Drawer = createDrawerNavigator();
 const RootStack = createNativeStackNavigator();
+
+const getChatScreen = () => require('../screens/Chat').default;
+const getHistoryScreen = () => require('../screens/HistorySimple').default;
+const getAssistantsScreen = () => require('../screens/Assistants').default;
+const getSettingsScreen = () => require('../screens/Settings.jsx').default;
+const getStudioHomeScreen = () => require('../screens/StudioHome.jsx').default;
+const getCreateImageScreen = () => require('../screens/CreateImage.jsx').default;
+const getEditImageScreen = () => require('../screens/EditImage.jsx').default;
+const getOneTimeOfferScreen = () =>
+  require('../screens/OneTimeOfferScreen').default;
+const getLaunchScreenPreview = () =>
+  require('../screens/LaunchScreenPreview').default;
+const getRewardsStack = () => require('./RewardsStack').default;
+
+function getActivePaywallScreen() {
+  return PIXEL_PAYWALL_ENABLED
+    ? require('../components/PremiumPaywallScreen').default
+    : require('../components/PaywallScreen').default;
+}
 
 function normalizeAndroidMenuRoute(routeName) {
   if (!routeName) return 'Chat';
 
   if (['Studio', 'CreateImage', 'EditImage'].includes(routeName)) {
     return 'Studio';
+  }
+
+  // Rewards is a nested stack, so getCurrentRoute() reports the inner screen.
+  if (['RewardsHome', 'RewardsList'].includes(routeName)) {
+    return 'Rewards';
   }
 
   return routeName;
@@ -125,15 +143,17 @@ function ChatHeaderCenter() {
   const isAssistantChat = !!(systemText && !isPrivate && preset);
 
   const assistants = useMemo(
-    () => PRESETS.map(p => ({
-      id: p.id,
-      name: t(`assistants.presets.${p.id}.name`, { defaultValue: p.name }),
-      desc: t(`assistants.presets.${p.id}.description`, { defaultValue: p.description }),
-      avatar: p.avatar,
-      system: p.system,
-      suggestedModel: p.suggestedModel,
-    })),
-    [t]
+    () => isAssistantChat
+      ? PRESETS.map(p => ({
+          id: p.id,
+          name: t(`assistants.presets.${p.id}.name`, { defaultValue: p.name }),
+          desc: t(`assistants.presets.${p.id}.description`, { defaultValue: p.description }),
+          avatar: p.avatar,
+          system: p.system,
+          suggestedModel: p.suggestedModel,
+        }))
+      : [],
+    [isAssistantChat, t]
   );
 
   const triggerScale = useSharedValue(1);
@@ -205,8 +225,8 @@ function ChatHeaderCenter() {
       navigation.navigate('Chat');
     } catch (error) {
       Alert.alert(
-        t('assistants.errorTitle') || 'Something went wrong',
-        t('assistants.errorMessage') || 'Could not start this assistant.'
+        t('assistants.errorTitle'),
+        t('assistants.errorMessage'),
       );
     }
   }, [closeSheet, systemText, createThread, updateThread, setActiveThread, navigation, t]);
@@ -314,7 +334,7 @@ function ChatHeaderCenter() {
   const translatedName = currentPresetId
     ? t(`assistants.presets.${currentPresetId}.name`, { defaultValue: preset?.name })
     : null;
-  const displayName = translatedName || activeThread?.title || t('assistants.defaultTitle', 'Assistant');
+  const displayName = translatedName || activeThread?.title || t('assistants.defaultTitle');
 
   return (
     <>
@@ -324,11 +344,11 @@ function ChatHeaderCenter() {
           onPress={openSheet}
           accessibilityRole="button"
           accessibilityLabel={displayName}
-          accessibilityHint={t('assistants.selectAssistantHint', 'Open assistant picker')}
+          accessibilityHint={t('assistants.selectAssistantHint')}
         >
           <Image source={assistantPhoto} style={styles.headerPillAvatar} resizeMode="cover" />
           <Text style={styles.headerPillText} numberOfLines={1} ellipsizeMode="tail">
-            {displayName || (activeThread?.title || t('assistants.defaultTitle', 'Assistant'))}
+            {displayName || (activeThread?.title || t('assistants.defaultTitle'))}
           </Text>
           {isOffline && (
             <Animated.View style={[styles.offlineIndicator, offlineStyle]}>
@@ -401,6 +421,7 @@ function ChatHeaderCenter() {
 
 // Header right component for private chat button
 function ChatHeaderRight() {
+  const { t } = useTranslation();
   const isPrivate = useThreadsStore(s => s.privateActive);
   const startPrivate = useThreadsStore(s => s.startPrivate);
   const endPrivate = useThreadsStore.getState().endPrivate;
@@ -410,7 +431,7 @@ function ChatHeaderRight() {
     if (isPrivate) {
       endPrivate();
     } else {
-      startPrivate(model);
+      startPrivate(model, t('chat.privateTitle'));
     }
   };
 
@@ -419,6 +440,10 @@ function ChatHeaderRight() {
       style={[styles.headerButton, isPrivate ? styles.headerButtonActive : styles.headerButtonNeutral]}
       onPress={handlePrivateChat}
       activeOpacity={0.85}
+      accessibilityRole="button"
+      accessibilityLabel={
+        isPrivate ? t('chat.endPrivateChat') : t('chat.startPrivateChat')
+      }
     >
       <SvgIcon
         name="lock"
@@ -454,6 +479,7 @@ function HistoryHeaderRight({ navigation }) {
 }
 
 function PaywallRouteScreen({ navigation, route }) {
+  const ActivePaywallScreen = getActivePaywallScreen();
   const returnTo = route?.params?.returnTo;
 
   const goBackSafe = useCallback(() => {
@@ -475,7 +501,7 @@ function PaywallRouteScreen({ navigation, route }) {
   }, [navigation, returnTo]);
 
   return (
-    <PaywallScreen
+    <ActivePaywallScreen
       onClose={goBackSafe}
       onRestore={() => {}}
     />
@@ -514,7 +540,7 @@ function MainDrawerNavigator() {
     >
       <Drawer.Screen
         name="Chat"
-        component={Chat}
+        getComponent={getChatScreen}
         options={{
           headerTitle: () => <ChatHeaderCenter />,
           headerRight: () => <ChatHeaderRight />,
@@ -523,16 +549,24 @@ function MainDrawerNavigator() {
       />
       <Drawer.Screen
         name="History"
-        component={History}
+        getComponent={getHistoryScreen}
         options={({ navigation }) => ({
           headerTitle: t('navigation.history'),
           headerRight: () => <HistoryHeaderRight navigation={navigation} />,
         })}
       />
-      <Drawer.Screen name="Assistants" component={Assistants} options={{ title: t('navigation.assistants') }} />
+      <Drawer.Screen name="Assistants" getComponent={getAssistantsScreen} options={{ title: t('navigation.assistants') }} />
+      <Drawer.Screen
+        name="Rewards"
+        getComponent={getRewardsStack}
+        options={{
+          headerShown: false,
+          title: t('navigation.rewards'),
+        }}
+      />
       <Drawer.Screen
         name="Settings"
-        component={Settings}
+        getComponent={getSettingsScreen}
         options={{
           title: t('navigation.settings'),
           headerTitleStyle: {
@@ -544,7 +578,7 @@ function MainDrawerNavigator() {
       />
       <Drawer.Screen
         name="Studio"
-        component={StudioHome}
+        getComponent={getStudioHomeScreen}
         options={{
           headerShown: false,
           title: t('navigation.imagesStudio') || 'Image Studio',
@@ -555,11 +589,12 @@ function MainDrawerNavigator() {
 }
 
 export default function DrawerNavigator({
+  onInitialScreenReady,
   onNavigationReady,
   initialLaunchScreen = null,
   initialLaunchParams = undefined,
 }) {
-  const subscription = useContext(SubscriptionContext);
+  const subscription = useContext(SubscriptionAccessContext);
   const isPremium = !!subscription?.isPremium;
   const subscriptionReady = !!subscription?.subscriptionReady;
   const threadsHydrated = useThreadsStore(s => s.hydrated);
@@ -568,16 +603,29 @@ export default function DrawerNavigator({
   const [oneTimeOfferChecked, setOneTimeOfferChecked] = useState(!ONE_TIME_OFFER_PAYWALL_ENABLED);
   const [currentRouteName, setCurrentRouteName] = useState(null);
   const [androidMenuVisible, setAndroidMenuVisible] = useState(false);
+  const initialScreenReadyReportedRef = useRef(false);
   const currentMenuRoute = useMemo(
     () => normalizeAndroidMenuRoute(currentRouteName),
     [currentRouteName]
   );
 
   useEffect(() => {
+    const paywallIsCoveringStartup =
+      initialLaunchScreen === 'PaywallScreen' &&
+      (!navReady || currentRouteName === 'PaywallScreen');
+    if (paywallIsCoveringStartup) {
+      return;
+    }
     if (!threadsHydrated) {
       hydrateThreads();
     }
-  }, [hydrateThreads, threadsHydrated]);
+  }, [
+    currentRouteName,
+    hydrateThreads,
+    initialLaunchScreen,
+    navReady,
+    threadsHydrated,
+  ]);
 
   useEffect(() => {
     if (!ONE_TIME_OFFER_PAYWALL_ENABLED) return;
@@ -624,12 +672,22 @@ export default function DrawerNavigator({
     setAndroidMenuVisible(false);
   }, [androidMenuVisible]);
 
+  const reportInitialScreenReady = useCallback(() => {
+    if (initialScreenReadyReportedRef.current) return;
+    initialScreenReadyReportedRef.current = true;
+    onInitialScreenReady?.();
+  }, [onInitialScreenReady]);
+
   const dispatchAndroidMenuNavigation = useCallback((routeName, params) => {
     if (!navigationRef?.isReady?.()) {
       return;
     }
 
-    if (routeName === 'PaywallScreen' || routeName === 'OneTimeOfferScreen') {
+    if (
+      routeName === 'PaywallScreen' ||
+      routeName === 'OneTimeOfferScreen' ||
+      routeName === 'LaunchScreenPreview'
+    ) {
       navigationRef.navigate(routeName, params);
       return;
     }
@@ -681,9 +739,9 @@ export default function DrawerNavigator({
   const androidMenuContextValue = useMemo(() => ({
     openMenu: openAndroidMenu,
     closeMenu: closeAndroidMenu,
-    reportScreenReady: () => {},
+    reportScreenReady: reportInitialScreenReady,
     isAvailable: true,
-  }), [closeAndroidMenu, openAndroidMenu]);
+  }), [closeAndroidMenu, openAndroidMenu, reportInitialScreenReady]);
 
   return (
     <AndroidNavigationMenuProvider value={androidMenuContextValue}>
@@ -707,14 +765,14 @@ export default function DrawerNavigator({
             headerShown: false,
             animation: 'default',
             contentStyle: {
-              backgroundColor: '#0B0B0E',
+              backgroundColor: '#0A0A0A',
             },
           }}
         >
           <RootStack.Screen name={ROOT_DRAWER_ROUTE} component={MainDrawerNavigator} />
           <RootStack.Screen
             name="CreateImage"
-            component={CreateImage}
+            getComponent={getCreateImageScreen}
             options={{
               animation: 'slide_from_right',
               presentation: 'card',
@@ -722,7 +780,7 @@ export default function DrawerNavigator({
           />
           <RootStack.Screen
             name="EditImage"
-            component={EditImage}
+            getComponent={getEditImageScreen}
             options={{
               animation: 'slide_from_right',
               presentation: 'card',
@@ -732,7 +790,10 @@ export default function DrawerNavigator({
             name="PaywallScreen"
             component={PaywallRouteScreen}
             options={{
-              animation: 'fade_from_bottom',
+              // PremiumPaywallScreen owns its native-driver transition. A
+              // second stack fade doubles full-screen compositing and makes
+              // dismissals look like a flip on slower devices.
+              animation: 'none',
               presentation: 'transparentModal',
               contentStyle: {
                 backgroundColor: 'transparent',
@@ -744,10 +805,18 @@ export default function DrawerNavigator({
           />
           <RootStack.Screen
             name="OneTimeOfferScreen"
-            component={OneTimeOfferScreen}
+            getComponent={getOneTimeOfferScreen}
             options={{
               animation: 'fade_from_bottom',
               presentation: 'transparentModal',
+            }}
+          />
+          <RootStack.Screen
+            name="LaunchScreenPreview"
+            getComponent={getLaunchScreenPreview}
+            options={{
+              animation: 'slide_from_right',
+              presentation: 'card',
             }}
           />
         </RootStack.Navigator>

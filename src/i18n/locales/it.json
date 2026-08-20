@@ -11,7 +11,12 @@
     "searchHint": "Digita per filtrare i modelli disponibili",
     "modelLabel": "Modello {{name}}",
     "selectHint": "Seleziona il modello {{name}}",
-    "currentlySelected": "Attualmente selezionato"
+    "currentlySelected": "Attualmente selezionato",
+    "genericModel": "Modello {{provider}}",
+    "badges": {
+      "new": "NUOVO",
+      "best": "MIGLIORE"
+    }
   },
   "models": {
     "gpt-4o": "Modello di IA più potente",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Assistenti",
+    "defaultTitle": "Assistente",
+    "errorTitle": "Qualcosa è andato storto",
+    "errorMessage": "Impossibile avviare questo assistente.",
+    "noAssistants": "Nessun assistente trovato in questa categoria.",
+    "selectAssistantHint": "Apri il selettore degli assistenti",
     "subtitle": "Specialisti IA selezionati per codice, scrittura, analisi, pianificazione e altro.",
     "searchPlaceholder": "Cerca assistenti…",
     "useAssistant": "Usa assistente",
@@ -254,9 +264,12 @@
     "search": "Cerca",
     "clearSearch": "Pulisci ricerca",
     "noChatsYet": "Ancora nessuna chat",
+    "noResults": "Ancora nessuna chat",
     "startFirstConversation": "Inizia la tua prima conversazione.",
     "startChat": "Avvia chat",
+    "startNewChat": "Avvia chat",
     "errorLoadingHistory": "Errore nel caricamento della cronologia",
+    "loading": "Caricamento della cronologia...",
     "renameChat": "Rinomina chat",
     "enterNewTitle": "Inserisci un nuovo titolo",
     "deleteChat": "Eliminare la chat?",
@@ -264,9 +277,7 @@
     "rename": "Rinomina",
     "unpin": "Sblocca",
     "pin": "Blocca",
-    "untitled": "Senza titolo",
-    "noResults": "Ancora nessuna chat",
-    "startNewChat": "Avvia chat"
+    "untitled": "Senza titolo"
   },
   "settings": {
     "title": "Impostazioni",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium attivo",
-        "subtitle": "Grazie per il supporto a ChatCloud"
+        "subtitle": "Grazie per il supporto a Cloud AI"
       },
       "restore": {
         "title": "Ripristina acquisti",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Impossibile aprire questo link ora.",
       "restoreSuccessTitle": "Ripristinato",
       "restoreSuccessMessage": "I tuoi acquisti sono stati ripristinati.",
+      "restoreEmptyTitle": "Nessun acquisto trovato",
+      "restoreEmptyMessage": "Non abbiamo trovato un acquisto attivo da ripristinare per questo account.",
       "restoreErrorTitle": "Ripristino non riuscito",
       "restoreErrorMessage": "Impossibile ripristinare gli acquisti ora.",
       "resetConfirmTitle": "Reimpostare i dati dell’app?",
@@ -403,7 +416,7 @@
         "name": "Anime"
       },
       "cartoon": {
-        "name": "Cartoon"
+        "name": "Cartone animato"
       },
       "photoreal": {
         "name": "Fotorealistico"
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Personalizzato"
     },
+    "notEnoughCoinsTitle": "Monete insufficienti",
+    "notEnoughCoinsMessage": "Il tuo saldo attuale è troppo basso per questa immagine.",
     "modelTaglines": {
       "runwareFluxSchnell": "Modello più veloce",
       "runwareFluxKrea": "Creativo e stilizzato",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Impossibile salvare",
       "shareFailedTitle": "Impossibile condividere",
-      "tryAgain": "Riprova."
+      "tryAgain": "Riprova.",
+      "savedTitle": "Salvata",
+      "savedMessage": "Immagine salvata nella tua galleria.",
+      "permissionTitle": "Autorizzazione necessaria",
+      "permissionMessage": "Consenti l'accesso all'archiviazione per salvare le immagini nella galleria."
     },
     "result": {
       "complete": "Completato"
@@ -498,12 +517,47 @@
       "save": "Salva",
       "share": "Condividi"
     },
+    "alerts": {
+      "savedTitle": "Salvata",
+      "savedMessage": "Immagine salvata nella tua galleria.",
+      "permissionTitle": "Autorizzazione necessaria",
+      "permissionMessage": "Consenti l'accesso all'archiviazione per salvare le immagini nella galleria.",
+      "saveFailedTitle": "Impossibile salvare",
+      "tryAgain": "Riprova."
+    },
     "accessibility": {
       "close": "Chiudi",
       "delete": "Elimina immagine",
       "edit": "Modifica immagine",
       "save": "Salva immagine",
       "share": "Condividi immagine"
+    }
+  },
+  "reportContent": {
+    "title": "Segnala contenuto IA",
+    "subtitle": "Dicci cosa c'è che non va in questo contenuto generato.",
+    "privateDisclosure": "L'invio trasmette questo contenuto segnalato per una revisione di sicurezza.",
+    "accessibilityLabel": "Segnala contenuto IA",
+    "reasons": {
+      "sexual": "Contenuto sessuale o nudità",
+      "violence_self_harm": "Violenza o autolesionismo",
+      "hate_harassment": "Odio o molestie",
+      "child_safety": "Problema di sicurezza dei minori",
+      "scam_deceptive": "Truffa o contenuto ingannevole",
+      "other": "Altro"
+    },
+    "errors": {
+      "reasonRequired": "Scegli un motivo prima di inviare.",
+      "submit": "Impossibile inviare la segnalazione. Riprova."
+    },
+    "success": {
+      "title": "Grazie. La tua segnalazione è stata inviata.",
+      "subtitle": "Useremo le segnalazioni per migliorare la sicurezza dei contenuti."
+    },
+    "actions": {
+      "report": "Segnala",
+      "submit": "Invia segnalazione",
+      "done": "Fine"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Scopri",
       "titleHighlight": "Image Studio",
-      "subtitle": "Crea e modifica immagini con l’IA — direttamente in ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Crea e modifica immagini con l’IA — direttamente in Cloud AI."
     },
     "relaxView": {
       "title": "Conosci la tua IA",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "SOLUZIONI IA DI LIVELLO ENTERPRISE",
       "description": "Potenzia il tuo business con tecnologie di intelligenza artificiale all’avanguardia.",
       "stats": "Scelto da oltre 500k utenti",
@@ -592,10 +645,10 @@
       "value": "Miglior valore"
     },
     "pack": {
+      "creditsLabel": "{{credits}} token",
       "tokensLabel": "{{credits}} token",
       "defaultName": "Pacchetto {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} token"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Passa a Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Errore sconosciuto"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Richiesto",
+    "upgrade": "Aggiorna",
+    "modelRequiredMessage": "Questo modello richiede Premium. Aggiorna per accedere a GPT-5, Grok 4, Claude e altri modelli avanzati.",
+    "assistantsRequiredMessage": "Gli assistenti richiedono Premium. Aggiorna per accedere ad assistenti IA specializzati per fitness, programmazione, scrittura e altro.",
+    "assistantsTitle": "Premium Richiesto",
+    "assistantsMessage": "Gli assistenti richiedono Premium. Aggiorna per accedere ad assistenti IA specializzati per fitness, programmazione, scrittura e altro."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Chiudi il paywall",
+    "unavailableTitle": "Acquisti non disponibili",
+    "unavailableMessage": "La fatturazione Android non è ancora configurata.",
+    "restoreEmptyTitle": "Nessun acquisto trovato",
+    "restoreEmptyMessage": "Non abbiamo trovato un acquisto attivo da ripristinare per questo account.",
+    "restoreFailedTitle": "Ripristino non riuscito",
+    "restoreFailedMessage": "Impossibile ripristinare gli acquisti al momento.",
+    "productsUnavailableTitle": "Nessun piano disponibile",
+    "productsUnavailableMessage": "Al momento non sono disponibili abbonamenti Android.",
+    "purchaseFailedTitle": "Acquisto non riuscito",
+    "purchaseFailedMessage": "Impossibile completare questo acquisto al momento.",
     "restore": "Ripristina",
     "restoreRestoring": "Ripristino…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Termini",
       "privacy": "Privacy"
+    },
+    "premium": {
+      "headline": "Tutta l'intelligenza artificiale premium in un unico piano",
+      "subtitleLine1": "Chatta, programma, crea e pianifica",
+      "subtitleLine2": "con modelli avanzati.",
+      "enableTrial": "Abilita la prova gratuita",
+      "annual": "Annuale",
+      "saveBadge": "Risparmia l'83%",
+      "year": "anno",
+      "week": "settimana",
+      "termsOfUse": "Condizioni d'uso",
+      "privacyPolicy": "Informativa sulla privacy"
     }
   },
   "chat": {
@@ -695,22 +780,25 @@
     "regenerateResponse": "Rigenera risposta",
     "regenerateResponseHint": "Genera una nuova risposta",
     "copyCode": "Copia codice",
-    "copied": "Copied",
+    "copied": "Copiato",
     "image": "immagine",
     "loading": "Caricamento…",
     "loadingChat": "Caricamento chat...",
     "offlineBanner": "Sei offline. I messaggi non possono essere inviati.",
-    "offlineError": "No internet connection. Please check your connection and try again.",
+    "offlineError": "Nessuna connessione a Internet. Controlla la connessione e riprova.",
     "imagePickerErrorTitle": "Errore selezione immagine",
     "imagePickerErrorMessage": "Impossibile accedere alle tue foto. Riprova.",
     "messageTooLong": "Messaggio troppo lungo ({{length}}). Il limite è {{limit}}.",
     "sendFailed": "Invio non riuscito.",
     "modelNoImageSupport": "Il modello selezionato non supporta le immagini. Scegli un modello diverso.",
     "voiceStartFailed": "Impossibile avviare la voce.",
+    "voiceNoSpeechDetected": "Nessuna voce riconosciuta. Riprova.",
     "emptyTitle": "Come posso aiutarti?",
     "emptySubtitle": "Inizia una conversazione con l’IA",
     "privateTitle": "Chat privata",
     "privateSubtitle": "Questa chat non apparirà nella cronologia",
+    "startPrivateChat": "Avvia chat privata",
+    "endPrivateChat": "Termina chat privata",
     "permissions": {
       "photosTitle": "Autorizzazione foto necessaria",
       "photosMessage": "L’accesso alle foto è necessario per scegliere le immagini.",
@@ -755,7 +843,19 @@
       "share": "Condividi",
       "regenerate": "Rigenera",
       "retryFromHere": "Riprova da qui",
+      "report": "Segnala",
       "cancel": "Annulla"
+    },
+    "markdown": {
+      "copy": "Copia",
+      "copied": "Copiato",
+      "table": "TABELLA",
+      "watchVideo": "Guarda il video",
+      "wikipedia": "Wikipedia",
+      "link": "Collegamento",
+      "note": "Nota",
+      "warning": "Avviso",
+      "tip": "Suggerimento"
     },
     "messageActionTitle": "Messaggio",
     "status": {
@@ -846,35 +946,26 @@
     "library": "Libreria"
   },
   "common": {
-    "new": "NUOVO",
-    "best": "MIGLIORE",
-    "cancel": "Annulla",
-    "save": "Salva",
-    "delete": "Elimina",
-    "close": "Chiudi",
-    "allow": "Consenti",
     "ok": "OK",
     "retry": "Riprova",
+    "cancel": "Annulla",
+    "allow": "Consenti",
+    "notNow": "Non ora",
+    "openSettings": "Apri Impostazioni",
+    "close": "Chiudi",
+    "save": "Salva",
     "tryAgain": "Riprova"
   },
   "rateUs": {
-    "title": "Ti piace ChatCloud?",
+    "title": "Ti piace Cloud AI?",
     "subtitle": "Il tuo feedback ci aiuta a migliorare. Potresti valutarci sull'App Store?",
     "rateNow": "Valuta ora",
     "maybeLater": "Forse più tardi",
     "dontAskAgain": "Non chiedere più"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Richiesto",
-    "upgrade": "Aggiorna",
-    "modelRequiredMessage": "Questo modello richiede Premium. Aggiorna per accedere a GPT-5, Grok 4, Claude e altri modelli avanzati.",
-    "assistantsRequiredMessage": "Gli assistenti richiedono Premium. Aggiorna per accedere ad assistenti IA specializzati per fitness, programmazione, scrittura e altro.",
-    "assistantsTitle": "Premium Richiesto",
-    "assistantsMessage": "Gli assistenti richiedono Premium. Aggiorna per accedere ad assistenti IA specializzati per fitness, programmazione, scrittura e altro."
-  },
   "oneTimeOffer": {
     "title": "Offerta Una Tantum",
+    "discount": "{{percent}}% DI SCONTO",
     "subtitle": "Non vedrai più questa offerta.",
     "badgeLine1": "Esclusivo",
     "badgeLine2": "Offerta unica",
@@ -905,22 +996,9 @@
     "restoreSuccessTitle": "Ripristinato",
     "restoreSuccessMessage": "I tuoi acquisti sono stati ripristinati.",
     "restoreErrorTitle": "Ripristino Fallito",
-    "restoreErrorMessage": "Nessun acquisto trovato da ripristinare."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Errore nel Caricamento dei Modelli",
-      "modelsLoadMessage": "Impossibile caricare i modelli IA. L'app utilizzerà modelli predefiniti. Controlla la connessione Internet.",
-      "modelsLoadTimeout": "Il caricamento dei modelli ha richiesto troppo tempo. L'app utilizzerà modelli predefiniti. Riprova.",
-      "modelsLoadNetwork": "Nessuna connessione Internet. L'app utilizzerà modelli predefiniti. Controlla la connessione.",
-      "deviceIdTitle": "Errore di Inizializzazione",
-      "deviceIdMessage": "Impossibile inizializzare l'ID del dispositivo. Alcune funzionalità potrebbero non funzionare correttamente.",
-      "storageTitle": "Errore di Archiviazione",
-      "storageMessage": "Impossibile accedere all'archiviazione locale. Alcune funzionalità potrebbero non funzionare correttamente.",
-      "crashTitle": "Qualcosa è andato storto.",
-      "crashSubtitle": "Riprova.",
-      "crashLabel": "App bloccata"
-    }
+    "restoreErrorMessage": "Nessun acquisto trovato da ripristinare.",
+    "unavailableTitle": "Acquisti non disponibili",
+    "unavailableMessage": "La fatturazione Android non è ancora configurata."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MITICO"
         }
       }
+    },
+    "checkIn": {
+      "title": "Ritira le monete di oggi",
+      "subtitle": "Torna ogni giorno: la ricompensa cresce.",
+      "cta": "Ritira",
+      "claimed": "Ricevuto! +{{amount}} monete",
+      "later": "Più tardi"
     }
+  },
+  "app": {
+    "version": "Versione {{version}}",
+    "offlineBanner": "Sei offline",
+    "launch": {
+      "accessibilityLabel": "Avvio di Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "L'IA, pronta quando lo sei tu"
+    },
+    "errors": {
+      "modelsLoadTitle": "Errore nel Caricamento dei Modelli",
+      "modelsLoadMessage": "Impossibile caricare i modelli IA. L'app utilizzerà modelli predefiniti. Controlla la connessione Internet.",
+      "modelsLoadTimeout": "Il caricamento dei modelli ha richiesto troppo tempo. L'app utilizzerà modelli predefiniti. Riprova.",
+      "modelsLoadNetwork": "Nessuna connessione Internet. L'app utilizzerà modelli predefiniti. Controlla la connessione.",
+      "deviceIdTitle": "Errore di Inizializzazione",
+      "deviceIdMessage": "Impossibile inizializzare l'ID del dispositivo. Alcune funzionalità potrebbero non funzionare correttamente.",
+      "storageTitle": "Errore di Archiviazione",
+      "storageMessage": "Impossibile accedere all'archiviazione locale. Alcune funzionalità potrebbero non funzionare correttamente.",
+      "crashTitle": "Qualcosa è andato storto.",
+      "crashSubtitle": "Riprova.",
+      "crashLabel": "App bloccata"
+    },
+    "proxyErrors": {
+      "genericTitle": "Qualcosa è andato storto",
+      "genericMessage": "Riprova.",
+      "rateLimitTitle": "Troppe richieste",
+      "rateLimitMessage": "Stiamo gestendo molte richieste. Riprova tra un momento.",
+      "rateLimitRetryAfter": "Stiamo gestendo molte richieste. Riprova tra circa {{seconds}} secondi.",
+      "restrictedTitle": "Contenuto soggetto a restrizioni",
+      "restrictedMessage": "Questa richiesta è stata bloccata dai filtri di sicurezza.",
+      "insufficientCoinsTitle": "Monete insufficienti",
+      "insufficientCoinsMessage": "Il tuo saldo attuale è troppo basso per questa richiesta.",
+      "imageUnavailableTitle": "Immagine non disponibile",
+      "imageUnavailableMessage": "Il file dell'immagine generata era temporaneamente non disponibile. Riprova.",
+      "authorizationTitle": "Problema di autorizzazione",
+      "authorizationMessage": "Non siamo riusciti a verificare il tuo account. Riprova.",
+      "serverTitle": "Problema del server",
+      "serverMessage": "I nostri server hanno riscontrato un problema. Riprova a breve.",
+      "timeoutTitle": "Ci sta mettendo troppo",
+      "timeoutMessage": "La richiesta è scaduta. Riprova.",
+      "networkTitle": "Nessuna connessione",
+      "networkMessage": "Nessuna connessione a Internet. Controlla la connessione e riprova.",
+      "requestTitle": "Problema con la richiesta",
+      "requestMessage": "Qualcosa è andato storto con la tua richiesta. Riprova."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Attiva Premium",
+    "activateMessage": "Vuoi attivare il premium per revisori?",
+    "activateAction": "Attiva",
+    "deactivateTitle": "Disattiva Premium",
+    "deactivateMessage": "Vuoi disattivare il premium per revisori?",
+    "deactivateAction": "Disattiva"
   },
   "push": {
     "dailyReward": {
       "title": "Ricompensa giornaliera",
       "body": "Non perdere le monete giornaliere — riscattale prima di mezzanotte."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Non perdere le tue monete giornaliere",
+      "body": "Inviamo un promemoria al giorno per mantenere viva la tua serie e far crescere le monete. Niente spam, puoi disattivarlo quando vuoi.",
+      "enable": "Attiva i promemoria",
+      "skip": "Non ora"
     }
   }
 }

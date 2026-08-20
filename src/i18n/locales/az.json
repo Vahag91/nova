@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Model seçin",
+    "searchPlaceholder": "Modelləri axtarın...",
+    "noModelsFound": "Model tapılmadı",
+    "noModelsAvailable": "Model yoxdur",
+    "currentModel": "Cari model: {{name}}. Modeli dəyişmək üçün toxunun.",
+    "openHint": "Model seçimi menyusunu açır",
+    "closeLabel": "Model seçicisini bağlayın",
+    "searchLabel": "Modelləri axtarın",
+    "searchHint": "Mövcud modelləri filtrləmək üçün yazın",
+    "modelLabel": "{{name}} modeli",
+    "selectHint": "{{name}} modelini seçin",
+    "currentlySelected": "Hal-hazırda seçilmiş model",
+    "genericModel": "{{provider}} modeli",
+    "badges": {
+      "new": "YENİ",
+      "best": "YAXŞI"
+    }
+  },
+  "models": {
+    "gpt-4o": "Ən güclü AI modeli",
+    "gpt-4o-mini": "Gündəlik işlər üçün sürətli",
+    "gpt-5": "Ən güclü hərtərəfli AI",
+    "gpt-5-chat-latest": "Söhbət və dialoq üçün optimallaşdırılıb",
+    "gpt-5-mini": "Sürətli və etibarlı GPT-5",
+    "gpt-5.4-nano": "Sadə tapşırıqlar üçün yüngül model",
+    "o4-mini": "Effektiv əsaslandırma modeli",
+    "gpt-4.1-mini": "Yığcam, bacarıqlı GPT-4.1",
+    "claude-3-haiku": "Sürətli və diqqətli Antropik AI",
+    "claude-3.7-sonnet": "Anthropic tərəfindən təmizlənmiş əsaslandırma",
+    "gemini-2.5-Flash": "Google-un ən qabaqcıl modeli",
+    "gemini-2.5-flash": "Google-un ən qabaqcıl modeli",
+    "gemini-2.0-flash": "Sürətli və dəqiq Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Ən güclü AI modeli",
+    "fast_everyday": "Gündəlik işlər üçün sürətli",
+    "fast_reasoning": "Yaxşı əsaslandırma ilə sürətli model",
+    "great_reasoning": "Qabaqcıl əsaslandırma modeli",
+    "coding_reasoning": "Qabaqcıl kodlaşdırma və əsaslandırma",
+    "better_coding": "Kodlaşdırma və əsaslandırma üçün daha yaxşıdır",
+    "best_overall": "Ən yaxşı AI modeli",
+    "best_google": "Google-un ən yaxşı modeli",
+    "best_xai": "xAI-nin ən güclü modeli",
+    "creative_focus": "Yaradıcı yazı üçün əladır",
+    "code_helper": "Kodlaşdırma yardımı üçün əladır",
+    "chat_focus": "Söhbət üçün optimallaşdırılıb",
+    "long_context": "Uzun kontekstlər üçün əladır",
+    "budget_friendly": "Büdcəyə uyğun AI modeli",
+    "ultra_fast": "Ultra sürətli cavablar",
+    "safe_default": "Təhlükəsiz defolt seçim",
+    "multilingual": "Güclü çoxdilli dəstək",
+    "vision_strong": "Şəkillər və görmə ilə əla",
+    "data_analysis": "Məlumatların təhlili üçün yaxşıdır",
+    "structured_tasks": "Strukturlaşdırılmış tapşırıqlar üçün yaxşıdır",
+    "everyday_helper": "Gündəlik köməkçi modeli",
+    "concise_answers": "Qısa, qısa cavablar",
+    "detailed_answers": "Ətraflı addım-addım cavablar",
+    "experimental": "Eksperimental yeni nəsil model",
+    "reliable_classic": "Etibarlı klassik model",
+    "lightweight": "Yüngül, ucuz model",
+    "chatty_personal": "Daha mehriban və şəxsi",
+    "pro_users": "Güc istifadəçiləri üçün ən yaxşısı",
+    "research_helper": "Tədqiqat və qeydlər üçün yaxşıdır",
+    "reasoning_strong": "Qabaqcıl əsaslandırma modeli"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "antropik",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Digər"
+  },
+  "navigation": {
+    "chat": "Yeni Söhbət",
+    "history": "Tarix",
+    "rewards": "Gündəlik Mükafatlar",
+    "assistants": "Köməkçilər",
+    "imagesStudio": "Image Studio",
+    "settings": "Parametrlər",
+    "recentChats": "Son Söhbətlər",
+    "proFeatures": "Pro xüsusiyyətləri",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Pro xüsusiyyətləri əldə edin",
+      "subtitle": "Bütün AI Xüsusiyyətləri"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Vizual aktivləri bir yerdə yaradın, təkmilləşdirin və dərc edin.",
+    "cta": "Açıq"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Şəkilləri seçin",
+    "exitSelectionMode": "Seçim rejimindən çıxın",
+    "selectAll": "Hamısını seçin",
+    "noImagesYet": "Hələ şəkil yoxdur",
+    "describeImageHint": "Şəkilinizi aşağıda təsvir edin və Yarat klikləyin.",
+    "generatedImagesGallery": "Yaradılmış şəkillər qalereyası",
+    "describeImagePlaceholder": "İstədiyiniz şəkli təsvir edin...",
+    "deleteConfirmTitle": "Şəkilləri Sil",
+    "deleteConfirmMessage": "Seçilmiş şəkilləri silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz.",
+    "cancel": "Ləğv et",
+    "delete": "Sil",
+    "generate": "Yaratmaq",
+    "generating": "Yaradılır...",
+    "latest": "Ən son",
+    "insertToChat": "Söhbət üçün daxil edin",
+    "pleaseWait": "Zəhmət olmasa gözləyin...",
+    "processing": "Emal edilir...",
+    "tapToUploadImage": "Şəkli yükləmək üçün toxunun",
+    "camera": "Şəkilləri Yükləyin",
+    "library": "Kitabxana",
+    "enterPrompt": "Lütfən, mətndən şəkilə generasiya üçün sorğu daxil edin",
+    "openInBrowser": "Brauzerdə açın",
+    "makeVariations": "Variasiyalar edin",
+    "deleteAllFromGeneration": "Bu nəsildən hamısını silin",
+    "imageOptionsTitle": "Şəkil Seçimləri",
+    "imageOptionsMessage": "Bu görüntü ilə nə etmək istərdiniz?",
+    "insertMarkdownHeader": "Bunun üçün görüntü:",
+    "variationSuffix": "- əvvəlki şəklin dəyişməsi",
+    "selectedCount": "seçilmişdir",
+    "selectedCount_one": "seçilmişdir",
+    "selectedCount_other": "seçilmişdir",
+    "imageDescriptionInput": "Şəkil təsvirinin daxil edilməsi",
+    "imageDescriptionHint": "Yaratmaq istədiyiniz şəklin təsvirini daxil edin",
+    "openModelSettings": "Model parametrlərini açın",
+    "modelSettingsHint": "Modeli və parametrləri dəyişmək üçün toxunun",
+    "openPhotoGallery": "Foto qalereya açın",
+    "clearInput": "Daxiletməni silin",
+    "generatedImage": "Yaradılmış şəkil",
+    "autoSelectedModel": "{{mode}} rejimi üçün avtomatik seçilmiş {{model}}",
+    "deleteSelectedConfirmTitle": "Şəkilləri silin",
+    "deleteSelectedConfirmMessage": "Şəkilləri silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz."
+  },
+  "imageStudio": {
+    "generateImage": "Şəkil yaradın",
+    "generatingImage": "Təsvirin yaradılması",
+    "generateImageHint": "Təsvirinizə əsasən şəkil yaratmaq üçün toxunun",
+    "imageDescriptionInput": "Şəkil təsvirinin daxil edilməsi",
+    "imageDescriptionHint": "Yaratmaq istədiyiniz şəklin təsvirini daxil edin",
+    "openModelSettings": "Model parametrlərini açın",
+    "modelSettingsHint": "Modeli və parametrləri dəyişmək üçün toxunun",
+    "openPhotoGallery": "Foto qalereya açın",
+    "clearInput": "Daxiletməni silin",
+    "generatedImage": "Yaradılmış şəkil"
+  },
+  "assistants": {
+    "title": "Köməkçilər",
+    "defaultTitle": "köməkçi",
+    "errorTitle": "Nəsə xəta baş verdi",
+    "errorMessage": "Bu köməkçini işə salmaq mümkün olmadı.",
+    "noAssistants": "Bu kateqoriyada heç bir köməkçi tapılmadı.",
+    "selectAssistantHint": "Köməkçi seçicisini açın",
+    "subtitle": "Kodlaşdırma, yazma, təhlil, planlaşdırma və s. üçün hazır olan AI mütəxəssisləri.",
+    "searchPlaceholder": "Axtarış köməkçiləri...",
+    "useAssistant": "Assistentdən istifadə edin",
+    "selectAssistant": "Köməkçi seçin",
+    "description": "Təsvir",
+    "systemPrompt": "Sistem Soruşu",
+    "chooseModel": "Model seçin",
+    "categoryAll": "Hamısı",
+    "categories": {
+      "everyday": "Hər gün",
+      "life": "Həyat",
+      "health": "Sağlamlıq",
+      "schoolWork": "Məktəb və İş",
+      "coding": "Kodlaşdırma",
+      "creative": "Yaradıcı",
+      "general": "Ümumi"
+    },
+    "presets": {
+      "default": {
+        "name": "Defolt köməkçi",
+        "description": "Gündəlik işlər üçün balanslaşdırılmış yardım."
+      },
+      "quick": {
+        "name": "Tez Cavablar",
+        "description": "Qısa, birbaşa cavablar."
+      },
+      "planner": {
+        "name": "Gündəlik Planlayıcı",
+        "description": "Gününüzü və rutinlərinizi planlaşdırın."
+      },
+      "recipes": {
+        "name": "Yeməklər və Reseptlər",
+        "description": "Nə bişirmək lazımdır, nə ilə."
+      },
+      "fitness": {
+        "name": "Fitness məşqçisi",
+        "description": "Kiçik vərdişlər və evdə məşqlər."
+      },
+      "money": {
+        "name": "Pul Dostum",
+        "description": "Sadə büdcələr və xərcləmə məsləhətləri."
+      },
+      "study": {
+        "name": "Təhsil Köməkçisi",
+        "description": "Sadə izah edin. Məni yoxlayın."
+      },
+      "email": {
+        "name": "E-poçt və CV",
+        "description": "Aydın e-poçtlar və CV xətləri yazın."
+      },
+      "translator": {
+        "name": "Tərcüməçi",
+        "description": "Tərcümə edin + ifadələri öyrədin."
+      },
+      "travel": {
+        "name": "Səyahət Dostu",
+        "description": "Sadə planlar və qablaşdırma siyahıları."
+      },
+      "tech": {
+        "name": "Texniki Dəstək (Sadə)",
+        "description": "Telefon, proqramlar, Wi-Fi əsasları."
+      },
+      "summarizer": {
+        "name": "TL; DR xülasəsi",
+        "description": "Qısa güllələr + bir sətirli TL;DR."
+      },
+      "gift": {
+        "name": "Hədiyyə Axtarışı",
+        "description": "Büdcə və maraqlara görə ideyalar."
+      },
+      "party": {
+        "name": "Tədbir Planlayıcısı (Lite)",
+        "description": "Kiçik bir partiyanı tez planlaşdırın."
+      },
+      "social": {
+        "name": "Sosial Post Maker",
+        "description": "Seçimləri olan yazılar."
+      },
+      "interview": {
+        "name": "Müsahibə məşqçisi",
+        "description": "Təcrübə cavabları (STAR)."
+      },
+      "homefix": {
+        "name": "Evdə Düzəltmə Bələdçisi",
+        "description": "Sadə DIY problemlərin aradan qaldırılması."
+      },
+      "pet": {
+        "name": "Heyvanlara Qulluq Dostu",
+        "description": "Qidalanma, gəzinti, əsas məşq."
+      },
+      "mindful": {
+        "name": "Diqqətli dəqiqə",
+        "description": "1-3 dəqiqəlik sakitlik fasilələri."
+      },
+      "polite": {
+        "name": "Nəzakətli Rewriter",
+        "description": "Mətnləri və cavabları gözəl şəkildə yenidən yazın."
+      }
+    }
+  },
+  "history": {
+    "title": "Tarix",
+    "searchPlaceholder": "Söhbətləri axtarın...",
+    "newChat": "Yeni Söhbət",
+    "new": "+ Yeni",
+    "search": "Axtar",
+    "clearSearch": "Axtarışı təmizləyin",
+    "noChatsYet": "Hələ söhbət yoxdur",
+    "noResults": "Hələ söhbət yoxdur",
+    "startFirstConversation": "İlk söhbətinizə başlayın.",
+    "startChat": "Söhbətə başlayın",
+    "startNewChat": "Yeni söhbətə başlayın",
+    "errorLoadingHistory": "Tarixçəni yükləmə xətası",
+    "loading": "Tarixçə yüklənir...",
+    "renameChat": "Söhbətin adını dəyişdirin",
+    "enterNewTitle": "Yeni başlıq daxil edin",
+    "deleteChat": "Söhbət silinsin?",
+    "deleteChatMessage": "\"{{title}}\" silinəcək.",
+    "rename": "Adını dəyişdirin",
+    "unpin": "Sancağı çıxarın",
+    "pin": "Pin",
+    "untitled": "Başlıqsız"
+  },
+  "settings": {
+    "title": "Parametrlər",
+    "model": "Model",
+    "searchPlaceholder": "Modelləri axtarın...",
+    "temperatureForCurrentModel": "Cari model üçün temperatur",
+    "customFor": "{{model}} üçün fərdi",
+    "usingDefault": "Defolt {{temperature}} istifadə",
+    "resetToDefault": "Standarta sıfırlayın",
+    "defaultTemperature": "Defolt temperatur (geri qayıtma)",
+    "usedByModelsWithoutOverride": "Xüsusi ləğv edilmədən modellər tərəfindən istifadə olunur",
+    "dangerZone": "Təhlükəli zona",
+    "clearAllChatsAndSettings": "Bütün söhbətləri və parametrləri silin",
+    "about": "Haqqında",
+    "version": "Versiya {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Məxfilik Siyasəti",
+    "hero": {
+      "label": "Xüsusi təklif",
+      "title": "Limitsiz Giriş\n& Pro Xüsusiyyətləri",
+      "upgrade": "Təkmilləşdirin",
+      "manage": "Planı idarə edin"
+    },
+    "sections": {
+      "premium": "Premium Plan",
+      "data": "İstifadəçi Məlumatı",
+      "support": "Dəstək və Hüquq"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Premium əldə edin",
+        "subtitle": "Limitsiz yaratma alətlərinin kilidini açın"
+      },
+      "premiumActive": {
+        "title": "Premium Aktiv",
+        "subtitle": "Cloud AI dəstəklədiyiniz üçün təşəkkür edirik"
+      },
+      "restore": {
+        "title": "Satınalmaları bərpa edin",
+        "subtitle": "Cihazları dəyişmisinizsə istifadə edin"
+      },
+      "history": {
+        "title": "Söhbət tarixçəsini idarə edin",
+        "subtitle": "Keçmiş sessiyalarınıza baxın və silin"
+      },
+      "reset": {
+        "title": "Söhbətləri və tərcihləri sıfırlayın",
+        "subtitle": "Bu cihazda saxlanan bütün məlumatları təmizləyir"
+      },
+      "rate": {
+        "title": "Bizi qiymətləndirin",
+        "error": "Mağaza səhifəsini açmaq mümkün deyil."
+      },
+      "support": {
+        "title": "Dəstək",
+        "subtitle": "Bizimlə onlayn əlaqə saxlayın",
+        "error": "Əlaqə səhifəsini açmaq mümkün deyil."
+      },
+      "privacy": {
+        "title": "Məxfilik Siyasəti",
+        "error": "Məxfilik siyasətini açmaq mümkün deyil."
+      },
+      "terms": {
+        "title": "İstifadə şərtləri",
+        "error": "İstifadə şərtlərini açmaq mümkün deyil."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Əlçatan deyil",
+      "linkUnavailableMessage": "Bu linki hazırda açmaq mümkün deyil.",
+      "restoreSuccessTitle": "Bərpa olundu",
+      "restoreSuccessMessage": "Satınalmalarınız bərpa edildi.",
+      "restoreEmptyTitle": "Heç bir alış tapılmadı",
+      "restoreEmptyMessage": "Bu hesab üçün bərpa etmək üçün aktiv alış tapa bilmədik.",
+      "restoreErrorTitle": "Bərpa edilmədi",
+      "restoreErrorMessage": "Hazırda alışları bərpa etmək mümkün deyil.",
+      "resetConfirmTitle": "Tətbiq datası sıfırlansın?",
+      "resetConfirmMessage": "Bu, bütün söhbətləri və yerli seçimləri silir.",
+      "resetConfirmCancel": "Ləğv et",
+      "resetConfirmCta": "Sıfırlayın"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Yaradın",
+    "chooseStyle": "Stil seçin",
+    "aspectRatio": "Aspekt nisbəti",
+    "starterPrompts": {
+      "title": "Başlanğıc Tələbləri",
+      "items": [
+        "studio headshot",
+        "müasir qonaq otağı",
+        "gün batımında tropik çimərlik"
+      ]
+    },
+    "promptPlaceholder": "Görmək istədiyinizi yazın...",
+    "promptHint": "Nümunə: 'Studiya işıqlandırmasında qızıl retriever'",
+    "clearText": "Mətni təmizləyin",
+    "generate": "Yaratmaq",
+    "generating": "Yaradılır..."
+  },
+  "editImage": {
+    "headerTitle": "Redaktə et",
+    "chooseStyle": "Stil seçin",
+    "aspectRatio": "Aspekt nisbəti",
+    "starterPrompts": {
+      "title": "Başlanğıc Tələbləri",
+      "items": [
+        "işıqlandırmanı düzəldin",
+        "fonu silin",
+        "yumşaq portret rötuşu"
+      ]
+    },
+    "promptPlaceholder": "Redaktələri təsvir edin (isteğe bağlı)",
+    "clearText": "Mətni təmizləyin",
+    "generate": "Yaratmaq",
+    "generating": "Tətbiq edilir...",
+    "upload": {
+      "choose": "Şəkil seçin",
+      "change": "Dəyişmək",
+      "remove": "Sil"
+    },
+    "imageUnavailable": {
+      "title": "Şəkil əlçatan deyil",
+      "message": "Seçilmiş fotoya daxil olmaq mümkün olmadı. Lütfən, onu yenidən seçin və yenidən cəhd edin."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Cizgi filmi"
+      },
+      "photoreal": {
+        "name": "Fotoreal"
+      },
+      "sketch": {
+        "name": "Eskiz"
+      },
+      "cyberpunk": {
+        "name": "Kiberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D İllüstrasiya"
+      },
+      "dark_fantasy": {
+        "name": "Qara Fantaziya"
+      },
+      "vintage_film": {
+        "name": "Vintage film"
+      },
+      "pastel": {
+        "name": "Pastel Estetik"
+      },
+      "neon_glow": {
+        "name": "Neon Parıltı"
+      },
+      "epic_landscape": {
+        "name": "Epik mənzərə"
+      }
+    },
+    "aspectRatios": {
+      "square": "Kvadrat",
+      "landscape": "Mənzərə",
+      "portrait": "Portret"
+    },
+    "models": {
+      "fluxKontent": "Flux məzmunu",
+      "custom": "Xüsusi"
+    },
+    "notEnoughCoinsTitle": "Kifayət qədər pul yoxdur",
+    "notEnoughCoinsMessage": "Cari balansınız bu şəkil üçün çox aşağıdır.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Ən sürətli model",
+      "runwareFluxKrea": "Yaradıcı, stilizə edilmiş nəticələr",
+      "runwareQwenImage": "Balanslaşdırılmış, yüksək keyfiyyətli nəticələr",
+      "google4": "Ən yaxşı AI görüntü modeli",
+      "klingImageO1": "Yüksək nəzarətli şəkil redaktəsi",
+      "fluxKontent": "Flux Kontent redaktələrə uyğunlaşdırılıb",
+      "runwareProvider": "Etibarlı diffuziya ilə balanslaşdırılmış keyfiyyət.",
+      "airProvider": "Nano Banana oynaq, canlı ton əlavə edir.",
+      "googleProvider": "Google cilalanmış detallar üçün köklənib.",
+      "klingaiProvider": "KlingAI idarə olunan redaktələrə uyğunlaşdırılıb.",
+      "anthropicProvider": "Nüanslı əhval-ruhiyyə üçün Claude boru kəməri.",
+      "default": "Mövcud mühərrikləri araşdırmaq üçün toxunun."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "seçdiyiniz stil",
+    "sheetTitle": "Vizyonunuzun hazırlanması",
+    "sheetSubtitle": "Biz {{style}}-u sorğuya qarışdırarkən server qəhvəsindən qısa qurtum içək.",
+    "phases": {
+      "blend": "{{style}} ilə qarışdırma",
+      "paint": "Səhnənin rənglənməsi",
+      "finish": "Son cila əlavə edilməsi"
+    },
+    "actions": {
+      "cancel": "Ləğv et",
+      "retry": "Yenidən cəhd edin",
+      "close": "Bağlayın"
+    },
+    "errors": {
+      "restrictedTitle": "Məhdud Məzmun",
+      "genericTitle": "Nəsil uğursuz oldu",
+      "genericMessage": "Şəkil yaratmaq mümkün olmadı."
+    },
+    "alerts": {
+      "saveFailedTitle": "Saxlamaq mümkün olmadı",
+      "shareFailedTitle": "Paylaşmaq mümkün olmadı",
+      "tryAgain": "Yenidən cəhd edin.",
+      "savedTitle": "Saxlandı",
+      "savedMessage": "Şəkil qalereyanızda saxlanıldı.",
+      "permissionTitle": "İcazə lazımdır",
+      "permissionMessage": "Şəkilləri qalereyanızda saxlamaq üçün yaddaşa girişə icazə verin."
+    },
+    "result": {
+      "complete": "Hamısı bitdi"
+    },
+    "accessibility": {
+      "close": "Bağlayın"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Sil",
+      "edit": "Redaktə et",
+      "save": "Saxla",
+      "share": "Paylaşın"
+    },
+    "alerts": {
+      "savedTitle": "Saxlandı",
+      "savedMessage": "Şəkil qalereyanızda saxlanıldı.",
+      "permissionTitle": "İcazə lazımdır",
+      "permissionMessage": "Şəkilləri qalereyanızda saxlamaq üçün yaddaşa girişə icazə verin.",
+      "saveFailedTitle": "Saxlamaq mümkün olmadı",
+      "tryAgain": "Yenidən cəhd edin."
+    },
+    "accessibility": {
+      "close": "Bağlayın",
+      "delete": "Şəkli silin",
+      "edit": "Şəkli redaktə edin",
+      "save": "Şəkli yadda saxlayın",
+      "share": "Şəkil paylaşın"
+    }
+  },
+  "reportContent": {
+    "title": "AI məzmununu bildirin",
+    "subtitle": "Bu yaradılan məzmunda nəyin səhv olduğunu bizə deyin.",
+    "privateDisclosure": "Göndərmə bu bildirilən məzmunu təhlükəsizlik yoxlaması üçün göndərir.",
+    "accessibilityLabel": "AI məzmununu bildirin",
+    "reasons": {
+      "sexual": "Seksual və ya çılpaqlıq məzmunu",
+      "violence_self_harm": "Zorakılıq və ya özünə zərər vermə",
+      "hate_harassment": "Nifrət və ya təcavüz",
+      "child_safety": "Uşaq təhlükəsizliyi narahatlığı",
+      "scam_deceptive": "Fırıldaq və ya aldadıcı məzmun",
+      "other": "Digər"
+    },
+    "errors": {
+      "reasonRequired": "Təqdim etməzdən əvvəl səbəb seçin.",
+      "submit": "Hesabatı təqdim etmək mümkün olmadı. Yenidən cəhd edin."
+    },
+    "success": {
+      "title": "təşəkkürlər. Hesabatınız təqdim edildi.",
+      "subtitle": "Məzmun təhlükəsizliyini artırmaq üçün hesabatlardan istifadə edəcəyik."
+    },
+    "actions": {
+      "report": "Hesabat",
+      "submit": "Hesabatı Göndər",
+      "done": "Bitdi"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Menyu açın",
+      "selectImages": "Şəkilləri seçin",
+      "exitSelection": "Seçimdən çıxın",
+      "deleteSelected": "Seçilmiş şəkilləri silin",
+      "selectToDelete": "Silmək üçün şəkilləri seçin"
+    },
+    "createCard": {
+      "title": "Mətndən yaradın",
+      "subtitle": "Təsvir yazın",
+      "cta": "Təsvir et və yarat"
+    },
+    "editCard": {
+      "title": "AI Foto Redaktoru",
+      "subtitle": "AI ilə çevirin və təkmilləşdirin",
+      "cta": "AI ilə redaktə edin"
+    },
+    "gallery": {
+      "title": "Qalereya",
+      "empty": "Hələ şəkil yoxdur",
+      "selection": {
+        "enter": "Şəkilləri seçin",
+        "exit": "Seçimdən çıxın",
+        "deleteSelected": "Seçilmiş şəkilləri silin",
+        "selectForDelete": "Silmək üçün şəkilləri seçin"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Tanış",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Süni intellektlə şəkillər yaradın və redaktə edin – düz Cloud AI daxilində."
+    },
+    "relaxView": {
+      "title": "AI ilə tanış olun",
+      "titleHighlight": "Köməkçilər",
+      "subtitle": "İxtisaslaşmış AI mütəxəssisləri gündəlik ehtiyaclarınıza kömək etməyə hazırdır",
+      "cards": {
+        "fitness": {
+          "title": "Fitness məşqçisi",
+          "text": "Kiçik vərdişlər və evdə məşqlər."
+        },
+        "recipes": {
+          "title": "Yeməklər və Reseptlər",
+          "text": "Nə bişirmək lazımdır, nə ilə."
+        },
+        "travel": {
+          "title": "Səyahət Dostu",
+          "text": "Sadə planlar və qablaşdırma siyahıları."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "MÜƏSSİSƏ SƏVİYYƏTLİ AI HƏLLLƏRİ",
+      "description": "Müəssisə peşəkarları və komandalar üçün nəzərdə tutulmuş qabaqcıl süni intellekt texnologiyası ilə biznesinizi gücləndirin.",
+      "stats": "500k+ istifadəçi tərəfindən etibarlıdır",
+      "rating": "4.9 / 5",
+      "button": "Başlayın"
+    },
+    "buttons": {
+      "continue": "Davam et",
+      "start": "başlayaq"
+    }
+  },
+  "coinStore": {
+    "title": "Kredit alın",
+    "loading": "Sikkə mağazası yüklənir...",
+    "balanceLabel": "Cari balansınız",
+    "balanceValue": "{{amount}} Kreditlər",
+    "history": {
+      "link": "Əməliyyat Tarixçəsi",
+      "alertTitle": "Tarix",
+      "alertBody": "Tranzaksiya tarixçəsi tezliklə gələcək."
+    },
+    "noPacks": "Sikkə paketləri mövcud deyil. RevenueCat təklif id-nizi yoxlayın.",
+    "badges": {
+      "basic": "Əsas Paket",
+      "popular": "Ən Populyar",
+      "value": "Ən Yaxşı Dəyər"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Kreditlər",
+      "tokensLabel": "{{credits}} Kreditlər",
+      "defaultName": "Paket {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Premium gedin",
+      "subtitle": "Limitsiz giriş və xüsusiyyətlər",
+      "cta": "Təkmilləşdirin"
+    },
+    "termsText": "Alış-veriş etməklə bizimlə razılaşırsınız",
+    "termsLink": "Xidmət Şərtləri",
+    "alerts": {
+      "initErrorTitle": "Başlama xətası",
+      "genericMessage": "Nəsə xəta baş verdi.",
+      "successTitle": "Uğur",
+      "successMessage": "Kreditlər tezliklə görünəcək.",
+      "purchaseFailedTitle": "Alış alınmadı",
+      "unknownError": "Naməlum xəta"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Tələb olunur",
+    "upgrade": "Təkmilləşdirin",
+    "modelRequiredMessage": "Bu model Premium tələb edir. GPT-5, Grok 4, Claude və daha təkmil modellərə daxil olmaq üçün təkmilləşdirin.",
+    "assistantsRequiredMessage": "Assistentlər Premium tələb edir. Fitnes, kodlaşdırma, yazı və s. üçün ixtisaslaşmış süni intellekt köməkçilərinə daxil olmaq üçün təkmilləşdirin.",
+    "assistantsTitle": "Premium Tələb olunur",
+    "assistantsMessage": "Assistentlər Premium tələb edir. Fitnes, kodlaşdırma, yazı və s. üçün ixtisaslaşmış süni intellekt köməkçilərinə daxil olmaq üçün təkmilləşdirin."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Ödəniş divarını bağlayın",
+    "unavailableTitle": "Satınalmalar əlçatan deyil",
+    "unavailableMessage": "Android faktura hələ konfiqurasiya edilməyib.",
+    "restoreEmptyTitle": "Heç bir alış tapılmadı",
+    "restoreEmptyMessage": "Bu hesab üçün bərpa etmək üçün aktiv alış tapa bilmədik.",
+    "restoreFailedTitle": "Bərpa edilmədi",
+    "restoreFailedMessage": "Hazırda alışları bərpa etmək mümkün deyil.",
+    "productsUnavailableTitle": "Plan yoxdur",
+    "productsUnavailableMessage": "Hazırda heç bir Android abunə məhsulu mövcud deyil.",
+    "purchaseFailedTitle": "Alış alınmadı",
+    "purchaseFailedMessage": "Bu alışı hazırda tamamlamaq mümkün deyil.",
+    "restore": "Bərpa et",
+    "restoreRestoring": "Bərpa olunur...",
+    "features": {
+      "create": "Şəkillər və videolar yaradın",
+      "search": "AI ilə internetdə axtarış edin",
+      "talk": "AI ilə təbii danışın",
+      "imageStudio": "Image Studio {{credits}} kreditləri {{period}} əldə edin",
+      "period": {
+        "weekly": "həftəlik",
+        "monthly": "aylıq",
+        "yearly": "illik"
+      }
+    },
+    "freeTrial": {
+      "title": "Pulsuz sınaq",
+      "subtitle": "3 günlük pulsuz sınaq"
+    },
+    "badge": {
+      "bestOffer": "Ən yaxşı təklif"
+    },
+    "plans": {
+      "yearly": {
+        "title": "İllik",
+        "only": "Yalnız {{price}}",
+        "defaultPrice": "79,99 ABŞ dolları",
+        "defaultIntroPrice": "1,35 USD"
+      },
+      "monthly": {
+        "title": "Aylıq",
+        "subtitle": "İstənilən vaxt ləğv edin",
+        "defaultPrice": "19,99 ABŞ dolları"
+      },
+      "weekly": {
+        "title": "Həftəlik",
+        "subtitle": "İstənilən vaxt ləğv edin",
+        "defaultPrice": "9,99 ABŞ dolları",
+        "trialThen": "Onda 3 gün pulsuz"
+      }
+    },
+    "frequency": {
+      "perWeek": "həftədə",
+      "perMonth": "ayda"
+    },
+    "cta": "Davam et",
+    "ctaFreeTrial": "Pulsuz cəhd edin",
+    "legal": {
+      "terms": "Şərtlər",
+      "privacy": "Məxfilik"
+    },
+    "premium": {
+      "headline": "Bütün premium AI bir planda",
+      "subtitleLine1": "Söhbət edin, kodlayın, yaradın və planlaşdırın",
+      "subtitleLine2": "qabaqcıl modellərlə.",
+      "enableTrial": "Pulsuz sınaq versiyasını aktivləşdirin",
+      "annual": "İllik",
+      "saveBadge": "83% qənaət edin",
+      "year": "il",
+      "week": "həftə",
+      "termsOfUse": "İstifadə Şərtləri",
+      "privacyPolicy": "Məxfilik Siyasəti"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mesaj...",
+    "createImages": "Şəkillər yaradın",
+    "generateAiArtwork": "AI sənət əsəri yaradın",
+    "camera": "Şəkilləri Yükləyin",
+    "takeOrSelectPhotos": "Şəkilləri seçin",
+    "search": "Axtar",
+    "findInformation": "Məlumat tapın",
+    "findRecentInfo": "Ən son məlumatları tapın",
+    "removeImage": "Şəkli silin",
+    "messageInput": "Mesaj girişi",
+    "clearInput": "Daxiletməni silin",
+    "quickActionsLabel": "Sürətli hərəkətlər",
+    "hideQuickActions": "Sürətli hərəkətləri gizlədin",
+    "showQuickActions": "Sürətli hərəkətləri göstərin",
+    "startVoiceInput": "Səs daxil etməyə başlayın",
+    "sendMessage": "Mesaj göndər",
+    "offline": "Oflayn",
+    "stop": "Dayan",
+    "streaming": "Yayımlanır...",
+    "closeRecorder": "Rekordatoru bağlayın",
+    "insertTranscript": "Göndər",
+    "scrollToLatest": "Ən son mesaja sürüşdürün",
+    "copyMessage": "Mesajı kopyalayın",
+    "copyMessageHint": "Bu mesajı panoya kopyalayın",
+    "shareMessage": "Mesaj paylaşın",
+    "shareMessageHint": "Bu mesajı paylaşın",
+    "regenerateResponse": "Cavabın bərpası",
+    "regenerateResponseHint": "Yeni cavab yaradın",
+    "copyCode": "Kodu kopyalayın",
+    "copied": "Kopyalandı",
+    "image": "şəkil",
+    "loading": "Yüklənir...",
+    "loadingChat": "Söhbət yüklənir...",
+    "offlineBanner": "Siz oflaynsınız. Mesajlar göndərilə bilməz.",
+    "offlineError": "İnternet bağlantısı yoxdur. Bağlantınızı yoxlayın və yenidən cəhd edin.",
+    "imagePickerErrorTitle": "Şəkil seçici xətası",
+    "imagePickerErrorMessage": "Fotolarınıza daxil olmaq mümkün deyil. Yenidən cəhd edin.",
+    "messageTooLong": "Mesaj çox uzundur ({{length}}). Limit {{limit}}-dir.",
+    "sendFailed": "Mesaj göndərmək alınmadı. Yenidən cəhd edin.",
+    "modelNoImageSupport": "Seçilmiş model şəkilləri dəstəkləmir. Fərqli model seçin.",
+    "voiceStartFailed": "Səsi başlamaq mümkün olmadı.",
+    "voiceNoSpeechDetected": "Heç bir səs tanınmadı. Yenidən cəhd edin.",
+    "emptyTitle": "Mən necə kömək edə bilərəm?",
+    "emptySubtitle": "AI ilə söhbətə başlayın",
+    "privateTitle": "Şəxsi Söhbət",
+    "privateSubtitle": "Bu söhbət söhbət tarixçənizdə görünməyəcək",
+    "startPrivateChat": "Şəxsi söhbətə başlayın",
+    "endPrivateChat": "Şəxsi söhbəti bitirin",
+    "permissions": {
+      "photosTitle": "Fotoşəkillərə icazə lazımdır",
+      "photosMessage": "Şəkilləri seçmək üçün foto giriş tələb olunur.",
+      "voiceTitle": "Səs İcazələri Tələb olunur",
+      "voiceMessage": "Səsdən istifadə etmək üçün mikrofon və nitq girişi tələb olunur."
+    },
+    "activity": {
+      "analyzingImages": "Şəkillər təhlil edilir...",
+      "searching": "Axtarılır...",
+      "thinking": "Düşünür..."
+    },
+    "webSearch": {
+      "title": "Veb axtarışı",
+      "subtitle": "Ən son məlumatları tapın",
+      "label": "Veb Axtarış",
+      "enable": "Veb axtarışını aktivləşdirin",
+      "disable": "Veb axtarışını deaktiv edin",
+      "toggleLabel": "Vebdə axtarın"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Sürətlə vizual dizayn edin.",
+      "subtitle": "Vizual aktivləri bir yerdə yaradın, təkmilləşdirin və dərc edin.",
+      "cta": "Açıq"
+    },
+    "quickActions": {
+      "createImages": "Şəkillər yaradın",
+      "openCamera": "Kameranı açın",
+      "editImage": "Şəkili redaktə edin",
+      "startVoice": "Səsi başladın",
+      "assistants": "Köməkçilər"
+    },
+    "listening": "Dinlənir...",
+    "startRecording": "Yazmağa başlayın...",
+    "assistantHeader": {
+      "unavailableTitle": "Assistent əlçatan deyil",
+      "unavailableDescription": "Bu köməkçini yükləyə bilmədik. Yenidən cəhd edin.",
+      "ready": "Kömək etməyə hazırdır"
+    },
+    "actions": {
+      "copy": "Kopyalayın",
+      "share": "Paylaşın",
+      "regenerate": "Yenidən canlandırmaq",
+      "retryFromHere": "Buradan yenidən cəhd edin",
+      "report": "Hesabat",
+      "cancel": "Ləğv et"
+    },
+    "markdown": {
+      "copy": "Kopyalayın",
+      "copied": "Kopyalandı",
+      "table": "CƏDVƏL",
+      "watchVideo": "Videoya baxın",
+      "wikipedia": "Vikipediya",
+      "link": "Link",
+      "note": "Qeyd",
+      "warning": "Xəbərdarlıq",
+      "tip": "İpucu"
+    },
+    "messageActionTitle": "Mesaj",
+    "status": {
+      "sending": "Göndərilir...",
+      "failed": "Uğursuz oldu",
+      "sent": "Göndərildi"
+    },
+    "suggestions": {
+      "writeStory": "Yaradıcı hekayə yazın",
+      "writeStorySubtitle": "sehrli macəra haqqında",
+      "planTravel": "Səyahət marşrutu planlaşdırın",
+      "planTravelSubtitle": "heyrətamiz bir tətil üçün",
+      "explainConcept": "Bu anlayışı izah edin",
+      "explainConceptSubtitle": "sadə dillə desək",
+      "planDay": "Günümü planlaşdır",
+      "planDaySubtitle": "məhsuldarlıq məsləhətləri ilə"
+    },
+    "home": {
+      "eyebrow": "Mövzu seçin",
+      "title": "nə etmək istəyirsən?",
+      "subtitle": "İstiqamət seçin, sonra güclü bir göstərişlə başlayın.",
+      "pickPromptTitle": "Başlamaq üçün əmr seçin",
+      "changeTopic": "Başqa mövzu seçin",
+      "intents": {
+        "summarize": "Mətni ümumiləşdirin",
+        "summarizeShort": "Ümumiləşdirin",
+        "summarizeHint": "Məqalələr, qeydlər, səsli qeydlər, uzun mövzular",
+        "plan": "Plan qurun",
+        "planHint": "Səfərlər, rutinlər, büdcələr, son tarixlər, həyat dəyişiklikləri",
+        "brainstorm": "Beyin fırtınası",
+        "brainstormHint": "İdeyalar, təkliflər, adlar, məzmun, yan layihələr",
+        "analyze": "Məlumatları təhlil edin",
+        "analyzeHint": "Xərclər, rəylər, ölçülər, vərdişlər, performans"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Təsisçi haqqında qısa məlumat yaradın",
+          "founderBriefSubtitle": "Əsas riskləri, qərarları və növbəti addımları çıxarın.",
+          "classNotesTitle": "Tədris qeydlərimi təmizləyin",
+          "classNotesSubtitle": "Kobud qeydləri aydın öyrənmə bələdçisinə çevirin.",
+          "meetingHandoffTitle": "Təqdimat xülasəsini yazın",
+          "meetingHandoffSubtitle": "Görüşlər, zənglər və ya uzun daxili mövzulardan sonra faydalıdır.",
+          "longArticleTitle": "Bu məqaləni tez yekunlaşdırın",
+          "longArticleSubtitle": "Uzun məqaləni kəskin fikirlərə çevirin."
+        },
+        "plan": {
+          "energyResetTitle": "14 günlük enerji sıfırlaması qurun",
+          "energyResetSubtitle": "Yuxu, yemək, hərəkət və diqqət üçün real plan.",
+          "mealPlanTitle": "Mən həqiqətən bişirəcəyim yeməkləri planlaşdırın",
+          "mealPlanSubtitle": "Praktik, sərfəli və məndə olanlara əsaslanır.",
+          "cityMoveTitle": "Yeni bir şəhərə köçməyi planlaşdırın",
+          "cityMoveSubtitle": "Onu vaxt qrafiki, büdcə, mənzil və admin tapşırıqlarına bölün.",
+          "tripEscapeTitle": "Unudulmaz bir həftə sonu qaçışı planlaşdırın",
+          "tripEscapeSubtitle": "Ümumi marşrutdan daha yaxşı bir şey."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Həqiqi bir yan təlaş tapın",
+          "sideHustleSubtitle": "Tam zamanlı işləyərkən başlaya biləcəyim fikirlər.",
+          "brandAngleTitle": "Unudulmaz brend bucağı tapın",
+          "brandAngleSubtitle": "Məhsullar, yaradıcılar, agentliklər və ya xəbər bülletenləri üçün faydalıdır.",
+          "socialSeriesTitle": "Məzmun seriyası icad edin",
+          "socialSeriesSubtitle": "Tamaşaçı artırmaq üçün kifayət qədər ardıcıl bir şey.",
+          "datingIdeasTitle": "Təzə fikirlərlə gəlin",
+          "datingIdeasSubtitle": "Tarixlər, hədiyyələr, sürprizlər və ya düşüncəli hiss edən hadisələr."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Pulumun hara sızdığını tapın",
+          "spendingLeaksSubtitle": "Nümunələri, zəif nöqtələri göstərin və ilk növbədə ən asan qalib gəlir.",
+          "customerFeedbackTitle": "Rəyi prioritetlərə çevirin",
+          "customerFeedbackSubtitle": "Klaster sorğuları, şikayətlər, təcililik və təsir.",
+          "habitPatternsTitle": "Vərdişlərimdə nümunələri qeyd edin",
+          "habitPatternsSubtitle": "Məşqlər, yuxu, jurnal və ya diqqət qeydləri üçün faydalıdır.",
+          "metricsStoryTitle": "Rəqəmlərin nə demək olduğunu izah edin",
+          "metricsStorySubtitle": "Daha çox siqnal, daha az cədvəl səsi."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Emal edilir...",
+    "tapToUploadImage": "Şəkli yükləmək üçün toxunun"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Emal edilir...",
+    "camera": "Şəkilləri Yükləyin",
+    "library": "Kitabxana"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "Yenidən cəhd edin",
+    "cancel": "Ləğv et",
+    "allow": "İcazə verin",
+    "notNow": "İndi yox",
+    "openSettings": "Parametrləri açın",
+    "close": "Bağlayın",
+    "save": "Saxla",
+    "tryAgain": "Yenidən cəhd edin"
+  },
+  "rateUs": {
+    "title": "Cloud AI zövq alırsınız?",
+    "subtitle": "Rəyiniz təkmilləşdirməmizə kömək edir. Bizi App Store-da qiymətləndirə bilərsinizmi?",
+    "rateNow": "İndi Qiymətləndirin",
+    "maybeLater": "Bəlkə sonra",
+    "dontAskAgain": "Bir daha soruşma"
+  },
+  "oneTimeOffer": {
+    "title": "Birdəfəlik Təklif",
+    "discount": "{{percent}}% ENDİRİM",
+    "subtitle": "Bu təklifi bir daha görməyəcəksiniz.",
+    "badgeLine1": "Eksklüziv",
+    "badgeLine2": "Birdəfəlik təklif",
+    "upgradeNow": "{{price}} üçün indi təkmilləşdirin",
+    "loadingPrice": "Yüklənir...",
+    "termsOfUse": "İstifadə şərtləri",
+    "privacyPolicy": "Məxfilik Siyasəti",
+    "accessTitle": "Limitsiz giriş",
+    "accessSubtitle": "GPT, Gemini & Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4-ə məhdudiyyətsiz giriş",
+      "geminiPro": "Gemini Pro-a giriş",
+      "grokInsights": "Təzə anlayışlar üçün Grok istifadə edin",
+      "priorityAccess": "Prioritet giriş və daha sürətli cavablar"
+    },
+    "bestValue": "Ən Yaxşı Dəyər",
+    "annualPremium": "İllik Premium",
+    "oneTimePayment": "Birdəfəlik ödəniş",
+    "wasPrice": "idi",
+    "continue": "Davam et",
+    "restore": "Bərpa et",
+    "terms": "Şərtlər",
+    "privacy": "Məxfilik",
+    "successTitle": "Uğurlar!",
+    "successMessage": "Satın aldığınız üçün təşəkkür edirik! Növbəti 12 ay ərzində premium girişdən həzz alın.",
+    "errorTitle": "Satınalma alınmadı",
+    "errorMessage": "Nəsə xəta baş verdi. Yenidən cəhd edin.",
+    "restoreSuccessTitle": "Bərpa olundu",
+    "restoreSuccessMessage": "Satınalmalarınız bərpa edildi.",
+    "restoreErrorTitle": "Bərpa edilmədi",
+    "restoreErrorMessage": "Bərpa etmək üçün heç bir alış tapılmadı.",
+    "unavailableTitle": "Satınalmalar əlçatan deyil",
+    "unavailableMessage": "Android faktura hələ konfiqurasiya edilməyib."
+  },
+  "rewards": {
+    "header": {
+      "title": "Mükafatlar",
+      "openMenu": "Menyu açın",
+      "goBack": "Geri qayıt"
+    },
+    "pointsHero": {
+      "totalBalance": "ÜMUMİ BALANS",
+      "seeYourRewards": "Mükafatlarınıza baxın"
+    },
+    "streakTracker": {
+      "title": "Gündəlik Streak",
+      "subtitle": "Davam et! yanırsan.",
+      "days": "Günlər",
+      "prize": "Mükafat",
+      "dayLabel": "Gün {{number}}",
+      "nextReward": "Növbəti mükafat: {{amount}} {{time}}-də",
+      "coins": "sikkələr"
+    },
+    "sections": {
+      "availableQuests": "Mövcud Tapşırıqlar",
+      "completedQuests": "Tamamlanmış Tapşırıqlar",
+      "availableRewards": "Mövcud mükafatlar",
+      "needsMoreCoins": "Daha çox sikkə lazımdır"
+    },
+    "balances": {
+      "rewardCoins": "Mükafat sikkələr",
+      "imageCredits": "Şəkil kreditləri"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 Şəkil krediti",
+        "imageCredits200": "200 Şəkil krediti",
+        "imageCredits600": "600 Şəkil Krediti",
+        "weeklyPremium": "Həftəlik Premium",
+        "secretBox": "Gizli Qutu"
+      },
+      "rewardDescriptions": {
+        "secretBox": "İçəridəki sirr mükafatları"
+      },
+      "alerts": {
+        "comingSoonTitle": "Tezliklə",
+        "comingSoonMessage": "Bu mükafat hələ mövcud deyil.",
+        "notEnoughCoinsTitle": "Kifayət qədər pul yoxdur",
+        "notEnoughCoinsMessage": "Bu mükafatı açmaq üçün sizə daha çox mükafat sikkələri lazımdır.",
+        "errorTitle": "Xəta",
+        "couldNotOpenBox": "Qutunu açmaq mümkün olmadı.",
+        "couldNotRedeem": "Mükafatı geri almaq mümkün olmadı. Yenidən cəhd edin.",
+        "mysteryReward": "Sirli Mükafat"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Gündəlik Giriş",
+        "description": "Zərərinizi saxlamaq üçün proqramı bu gün açın",
+        "message": "Proqramı hər gün açdığınız zaman bu axtarış avtomatik olaraq tamamlanır."
+      },
+      "shareFacebook": {
+        "title": "Facebookda paylaş",
+        "description": "Facebook-da haqqımızda yazın"
+      },
+      "shareTwitter": {
+        "title": "Twitter-də paylaşın",
+        "description": "Təcrübənizi tvit edin"
+      },
+      "shareInstagram": {
+        "title": "Instagramda paylaşın",
+        "description": "Hekayə və ya yazı paylaşın"
+      },
+      "shareExperience": {
+        "title": "Təcrübənizi paylaşın",
+        "description": "Tətbiqi niyə bəyəndiyinizi dostlarınıza deyin"
+      },
+      "share": {
+        "genericMessage": "Mən söhbət və görüntü yaratmaq üçün bu AI tətbiqindən istifadə edirəm. Yoxlayın: {{url}}",
+        "facebookQuote": "Bu AI Tətbiqinə baxın!",
+        "twitterText": "Mən bu AI tətbiqini sınayıram, olduqca gözəldir.",
+        "instagramMessage": "Bu AI proqramına baxın: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Xəta",
+        "errorMessage": "Mağaza səhifəsini açmaq mümkün olmadı."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Tapşırıq tamamlandı",
+        "description": "Axtarış tamamlandı",
+        "points": "+{{points}} xal",
+        "close": "Bağlayın"
+      },
+      "rewardSuccess": {
+        "error": "XƏTA",
+        "success": "UĞUR",
+        "somethingWentWrong": "Nəsə xəta baş verdi",
+        "rewardUnlocked": "Mükafat Açıldı",
+        "credits": "Kreditlər",
+        "close": "Bağlayın",
+        "okay": "tamam"
+      },
+      "secretBox": {
+        "pill": "GİZLİ QUTU",
+        "rewardUnlocked": "MÜKAFAT QİLİDİ AÇILDI",
+        "shufflingRewards": "MÜKAFATLARI KARIŞTIRIR...",
+        "imageCreditsAdded": "Şəkil kreditləri hesabınıza əlavə edildi",
+        "continue": "Davam et",
+        "revealing": "Aşkar edilir...",
+        "prizeTiers": {
+          "lucky": "BAXTLI",
+          "pro": "PRO",
+          "elite": "ELITA",
+          "mythic": "MİFİK"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Gündəlik sikkələrinizi alın",
+      "subtitle": "Hər gün gəlin, mükafat artır.",
+      "cta": "Qeydiyyat",
+      "claimed": "Alındı! +{{amount}} sikkə",
+      "later": "Sonra"
+    }
+  },
+  "app": {
+    "version": "Versiya {{version}}",
+    "offlineBanner": "Siz oflaynsınız",
+    "launch": {
+      "accessibilityLabel": "Cloud AI başlayır",
+      "title": "CLOUD AI",
+      "subtitle": "AI, sən olanda hazırdır"
+    },
+    "errors": {
+      "modelsLoadTitle": "Modelləri Yükləmək alınmadı",
+      "modelsLoadMessage": "AI modellərini yükləmək mümkün deyil. Proqram standart modellərdən istifadə edəcək. Zəhmət olmasa internet bağlantınızı yoxlayın.",
+      "modelsLoadTimeout": "Modellərin yüklənməsi çox uzun çəkdi. Proqram standart modellərdən istifadə edəcək. Yenidən cəhd edin.",
+      "modelsLoadNetwork": "İnternet bağlantısı yoxdur. Proqram standart modellərdən istifadə edəcək. Bağlantınızı yoxlayın.",
+      "deviceIdTitle": "Başlama Xətası",
+      "deviceIdMessage": "Cihaz ID-sini işə salmaq alınmadı. Bəzi funksiyalar düzgün işləməyə bilər.",
+      "storageTitle": "Saxlama xətası",
+      "storageMessage": "Yerli yaddaşa daxil olmaq mümkün deyil. Bəzi funksiyalar düzgün işləməyə bilər.",
+      "crashTitle": "Nəsə xəta baş verdi.",
+      "crashSubtitle": "Yenidən cəhd edin.",
+      "crashLabel": "Tətbiq qəzaya uğradı"
+    },
+    "proxyErrors": {
+      "genericTitle": "Nəsə xəta baş verdi",
+      "genericMessage": "Yenidən cəhd edin.",
+      "rateLimitTitle": "Həddindən artıq sorğu",
+      "rateLimitMessage": "Çoxlu müraciətlərə baxırıq. Lütfən, bir az sonra yenidən cəhd edin.",
+      "rateLimitRetryAfter": "Çoxlu müraciətlərə baxırıq. Təxminən {{seconds}} saniyə ərzində yenidən cəhd edin.",
+      "restrictedTitle": "Məhdud Məzmun",
+      "restrictedMessage": "Bu sorğu təhlükəsizlik filtrləri tərəfindən bloklandı.",
+      "insufficientCoinsTitle": "Kifayət qədər pul yoxdur",
+      "insufficientCoinsMessage": "Cari balansınız bu sorğu üçün çox azdır.",
+      "imageUnavailableTitle": "Şəkil əlçatan deyil",
+      "imageUnavailableMessage": "Yaradılmış şəkil faylı müvəqqəti olaraq əlçatan deyildi. Yenidən cəhd edin.",
+      "authorizationTitle": "Avtorizasiya məsələsi",
+      "authorizationMessage": "Hesabınızı doğrulaya bilmədik. Yenidən cəhd edin.",
+      "serverTitle": "Server hıçqırıq",
+      "serverMessage": "Serverlərimizdə problem var idi. Lütfən, tezliklə yenidən cəhd edin.",
+      "timeoutTitle": "Çox uzun çəkir",
+      "timeoutMessage": "Sorğunun vaxtı bitdi. Yenidən cəhd edin.",
+      "networkTitle": "Bağlantı yoxdur",
+      "networkMessage": "İnternet bağlantısı yoxdur. Bağlantınızı yoxlayın və yenidən cəhd edin.",
+      "requestTitle": "Sorğu məsələsi",
+      "requestMessage": "Sorğunuzda xəta baş verdi. Yenidən cəhd edin."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Premiumu aktivləşdirin",
+    "activateMessage": "Rəyçi mükafatını aktivləşdirmək istəyirsiniz?",
+    "activateAction": "Aktivləşdirin",
+    "deactivateTitle": "Premiumu deaktiv edin",
+    "deactivateMessage": "Rəyçi mükafatını deaktiv etmək istəyirsiniz?",
+    "deactivateAction": "Deaktiv edin"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Gündəlik mükafat",
+      "body": "Gündəlik pullarınızı qaçırmayın - gecə yarısından əvvəl tələb edin."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Gündəlik sikkələrinizi qaçırmayın",
+      "body": "Seriyanız davam etsin və sikkələriniz artsın deyə gündə bir xatırlatma göndəririk. Spam yoxdur, istədiyiniz vaxt söndürə bilərsiniz.",
+      "enable": "Xatırlatmaları aktivləşdir",
+      "skip": "İndi yox"
+    }
+  }
+}

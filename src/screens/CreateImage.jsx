@@ -34,7 +34,7 @@ import { getModelVisuals } from '../utils/modelVisuals';
 import { getImageModelPrice } from '../utils/imagePricing';
 import { useTranslation } from 'react-i18next';
 import Svg, { Path } from 'react-native-svg';
-import { SubscriptionContext } from '../context/SubscriptionContext';
+import { SubscriptionAccessContext } from '../context/SubscriptionContext';
 import features from '../config/features';
 import { getImageModelsRegistry } from '../config/models';
 import { perfLog } from '../lib/perfTrace';
@@ -247,7 +247,7 @@ export default function CreateImage({ navigation, route }) {
     transform: [{ translateY: kTranslate.value + kGap.value }],
   }));
 
-  const subscription = useContext(SubscriptionContext);
+  const subscription = useContext(SubscriptionAccessContext);
   const footerInset = Math.max(insets.bottom, 14);
   const footerStyle = useMemo(
     () => [styles.footer, { paddingBottom: footerInset }],
@@ -278,7 +278,7 @@ export default function CreateImage({ navigation, route }) {
   );
   const showInsufficientCoinsAlert = useCallback(() => {
     Alert.alert(
-      t('notEnoughCoinsTitle', { defaultValue: 'Not enough coins' }),
+      t('studioCommon.notEnoughCoinsTitle', { defaultValue: 'Not enough coins' }),
       t('studioCommon.notEnoughCoinsMessage', {
         defaultValue: 'Your current balance is too low for this image.',
       }),

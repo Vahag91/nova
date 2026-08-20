@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Modelni tanlang",
+    "searchPlaceholder": "Modellarni qidirish...",
+    "noModelsFound": "Hech qanday model topilmadi",
+    "noModelsAvailable": "Hech qanday model mavjud emas",
+    "currentModel": "Joriy model: {{name}}. Modelni oʻzgartirish uchun bosing.",
+    "openHint": "Model tanlash menyusini ochadi",
+    "closeLabel": "Model selektorini yoping",
+    "searchLabel": "Modellarni qidirish",
+    "searchHint": "Mavjud modellarni filtrlash uchun kiriting",
+    "modelLabel": "{{name}} modeli",
+    "selectHint": "{{name}} modelini tanlang",
+    "currentlySelected": "Hozirda tanlangan model",
+    "genericModel": "{{provider}} modeli",
+    "badges": {
+      "new": "YANGI",
+      "best": "YAXSHI"
+    }
+  },
+  "models": {
+    "gpt-4o": "Eng kuchli AI modeli",
+    "gpt-4o-mini": "Kundalik vazifalar uchun tezkor",
+    "gpt-5": "Eng kuchli universal AI",
+    "gpt-5-chat-latest": "Suhbat va dialog uchun optimallashtirilgan",
+    "gpt-5-mini": "Tez va ishonchli GPT-5",
+    "gpt-5.4-nano": "Oddiy vazifalar uchun engil model",
+    "o4-mini": "Samarali fikrlash modeli",
+    "gpt-4.1-mini": "Yilni, qobiliyatli GPT-4.1",
+    "claude-3-haiku": "Tez va maqsadli antropik AI",
+    "claude-3.7-sonnet": "Anthropic tomonidan nozik fikrlash",
+    "gemini-2.5-Flash": "Googlening eng ilg'or modeli",
+    "gemini-2.5-flash": "Googlening eng ilg'or modeli",
+    "gemini-2.0-flash": "Tez va aniq Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Eng kuchli AI modeli",
+    "fast_everyday": "Kundalik vazifalar uchun tezkor",
+    "fast_reasoning": "Yaxshi fikrga ega tezkor model",
+    "great_reasoning": "Murakkab fikrlash modeli",
+    "coding_reasoning": "Murakkab kodlash va fikrlash",
+    "better_coding": "Kodlash va fikr yuritish uchun yaxshiroqdir",
+    "best_overall": "Eng yaxshi AI modeli",
+    "best_google": "Googlening eng yaxshi modeli",
+    "best_xai": "xAI ning eng kuchli modeli",
+    "creative_focus": "Ijodiy yozish uchun ajoyib",
+    "code_helper": "Kodlash yordami uchun ajoyib",
+    "chat_focus": "Suhbat uchun optimallashtirilgan",
+    "long_context": "Uzoq kontekstlar uchun juda yaxshi",
+    "budget_friendly": "Byudjetga qulay AI modeli",
+    "ultra_fast": "Ultra tezkor javoblar",
+    "safe_default": "Xavfsiz standart tanlov",
+    "multilingual": "Kuchli ko'p tilli yordam",
+    "vision_strong": "Tasvirlar va ko'rish bilan ajoyib",
+    "data_analysis": "Ma'lumotlarni tahlil qilish uchun yaxshi",
+    "structured_tasks": "Strukturaviy vazifalar uchun yaxshi",
+    "everyday_helper": "Kundalik yordamchi modeli",
+    "concise_answers": "Qisqa, aniq javoblar",
+    "detailed_answers": "Bosqichma-bosqich batafsil javoblar",
+    "experimental": "Eksperimental keyingi avlod modeli",
+    "reliable_classic": "Ishonchli klassik model",
+    "lightweight": "Yengil, arzon model",
+    "chatty_personal": "Ko'proq samimiy va shaxsiy",
+    "pro_users": "Kuchli foydalanuvchilar uchun eng yaxshisi",
+    "research_helper": "Tadqiqot va eslatmalar uchun yaxshi",
+    "reasoning_strong": "Murakkab fikrlash modeli"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Antropik",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Boshqa"
+  },
+  "navigation": {
+    "chat": "Yangi chat",
+    "history": "Tarix",
+    "rewards": "Kundalik mukofotlar",
+    "assistants": "Yordamchilar",
+    "imagesStudio": "Image Studio",
+    "settings": "Sozlamalar",
+    "recentChats": "Oxirgi suhbatlar",
+    "proFeatures": "Pro xususiyatlari",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Pro xususiyatlariga ega bo'ling",
+      "subtitle": "Barcha AI xususiyatlari"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Vizual aktivlarni bir joyda yarating, takomil qiling va nashr eting.",
+    "cta": "Ochiq"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Rasmlarni tanlang",
+    "exitSelectionMode": "Tanlash rejimidan chiqish",
+    "selectAll": "Hammasini tanlang",
+    "noImagesYet": "Hali rasm yo'q",
+    "describeImageHint": "Quyida rasmingizni tasvirlab bering va “Yaratish” tugmasini bosing.",
+    "generatedImagesGallery": "Yaratilgan rasmlar galereyasi",
+    "describeImagePlaceholder": "O'zingiz xohlagan rasmni tavsiflang ...",
+    "deleteConfirmTitle": "Rasmlarni o'chirish",
+    "deleteConfirmMessage": "Tanlangan rasmlarni oʻchirib tashlamoqchimisiz? Bu amalni ortga qaytarib bo‘lmaydi.",
+    "cancel": "Bekor qilish",
+    "delete": "Oʻchirish",
+    "generate": "Yaratish",
+    "generating": "Yaratilmoqda…",
+    "latest": "Oxirgi",
+    "insertToChat": "Suhbatga kiriting",
+    "pleaseWait": "Iltimos, kuting…",
+    "processing": "Qayta ishlanmoqda...",
+    "tapToUploadImage": "Rasmni yuklash uchun bosing",
+    "camera": "Rasmlarni yuklash",
+    "library": "Kutubxona",
+    "enterPrompt": "Iltimos, matndan rasmga yaratish uchun taklif kiriting",
+    "openInBrowser": "Brauzerda oching",
+    "makeVariations": "Variantlarni yarating",
+    "deleteAllFromGeneration": "Bu avloddan hammasini oʻchirib tashlang",
+    "imageOptionsTitle": "Rasm parametrlari",
+    "imageOptionsMessage": "Ushbu rasm bilan nima qilishni xohlaysiz?",
+    "insertMarkdownHeader": "Mana rasm:",
+    "variationSuffix": "- oldingi rasmning o'zgarishi",
+    "selectedCount": "tanlangan",
+    "selectedCount_one": "tanlangan",
+    "selectedCount_other": "tanlangan",
+    "imageDescriptionInput": "Rasm tavsifini kiritish",
+    "imageDescriptionHint": "Yaratmoqchi bo'lgan rasmning tavsifini kiriting",
+    "openModelSettings": "Model sozlamalarini oching",
+    "modelSettingsHint": "Model va sozlamalarni o'zgartirish uchun bosing",
+    "openPhotoGallery": "Fotogalereyani oching",
+    "clearInput": "Kirishni tozalash",
+    "generatedImage": "Yaratilgan rasm",
+    "autoSelectedModel": "{{mode}} rejimi uchun avtomatik tanlangan {{model}}",
+    "deleteSelectedConfirmTitle": "Rasmlarni o'chirish",
+    "deleteSelectedConfirmMessage": "Haqiqatan ham rasmlarni oʻchirib tashlamoqchimisiz? Bu amalni ortga qaytarib bo‘lmaydi."
+  },
+  "imageStudio": {
+    "generateImage": "Tasvir yaratish",
+    "generatingImage": "Tasvir yaratish",
+    "generateImageHint": "Tavsifingiz asosida rasm yaratish uchun bosing",
+    "imageDescriptionInput": "Rasm tavsifini kiritish",
+    "imageDescriptionHint": "Yaratmoqchi bo'lgan rasmning tavsifini kiriting",
+    "openModelSettings": "Model sozlamalarini oching",
+    "modelSettingsHint": "Model va sozlamalarni o'zgartirish uchun bosing",
+    "openPhotoGallery": "Fotogalereyani oching",
+    "clearInput": "Kirishni tozalash",
+    "generatedImage": "Yaratilgan rasm"
+  },
+  "assistants": {
+    "title": "Yordamchilar",
+    "defaultTitle": "Yordamchi",
+    "errorTitle": "Nimadir xato ketdi",
+    "errorMessage": "Bu yordamchini ishga tushirib boʻlmadi.",
+    "noAssistants": "Ushbu turkumda hech qanday yordamchi topilmadi.",
+    "selectAssistantHint": "Yordamchi tanlovchini oching",
+    "subtitle": "Kodlash, yozish, tahlil qilish, rejalashtirish va boshqalarga tayyor AI mutaxassislari.",
+    "searchPlaceholder": "Qidiruv yordamchilari…",
+    "useAssistant": "Assistentdan foydalaning",
+    "selectAssistant": "Yordamchini tanlang",
+    "description": "Tavsif",
+    "systemPrompt": "Tizim so'rovi",
+    "chooseModel": "Modelni tanlang",
+    "categoryAll": "Hammasi",
+    "categories": {
+      "everyday": "Har kuni",
+      "life": "Hayot",
+      "health": "Salomatlik",
+      "schoolWork": "Maktab va ish",
+      "coding": "Kodlash",
+      "creative": "Ijodiy",
+      "general": "Umumiy"
+    },
+    "presets": {
+      "default": {
+        "name": "Standart yordamchi",
+        "description": "Kundalik narsalar uchun muvozanatli yordam."
+      },
+      "quick": {
+        "name": "Tez javoblar",
+        "description": "Qisqa, to'g'ridan-to'g'ri javoblar."
+      },
+      "planner": {
+        "name": "Kundalik rejalashtiruvchi",
+        "description": "Kuningizni va tartiblaringizni rejalashtiring."
+      },
+      "recipes": {
+        "name": "Ovqatlar va retseptlar",
+        "description": "Nima pishirish kerak, nima bilan."
+      },
+      "fitness": {
+        "name": "Fitnes murabbiyi",
+        "description": "Kichik odatlar va uy mashqlari."
+      },
+      "money": {
+        "name": "Pul Do'stim",
+        "description": "Oddiy byudjetlar va sarflash bo'yicha maslahatlar."
+      },
+      "study": {
+        "name": "O'quv yordamchisi",
+        "description": "Oddiy tushuntiring. Menga savol bering."
+      },
+      "email": {
+        "name": "Elektron pochta va rezyume",
+        "description": "Aniq elektron pochta xabarlari va CV qatorlarini yozing."
+      },
+      "translator": {
+        "name": "Tarjimon",
+        "description": "Tarjima + iboralarni o'rgatish."
+      },
+      "travel": {
+        "name": "Sayohat Do'stim",
+        "description": "Oddiy rejalar va paketlar ro'yxati."
+      },
+      "tech": {
+        "name": "Texnik yordam (oddiy)",
+        "description": "Telefon, ilovalar, Wi-Fi asoslari."
+      },
+      "summarizer": {
+        "name": "TL; DR xulosasi",
+        "description": "Qisqa o'qlar + bir qatorli TL;DR."
+      },
+      "gift": {
+        "name": "Sovg'a qidiruvchisi",
+        "description": "Byudjet va manfaatlar bo'yicha g'oyalar."
+      },
+      "party": {
+        "name": "Tadbirni rejalashtiruvchi (Lite)",
+        "description": "Kichkina ziyofatni tezda rejalashtiring."
+      },
+      "social": {
+        "name": "Ijtimoiy postlar yaratuvchisi",
+        "description": "Variantlar bilan qoralama postlar."
+      },
+      "interview": {
+        "name": "Intervyu murabbiyi",
+        "description": "Amaliy javoblar (STAR)."
+      },
+      "homefix": {
+        "name": "Uyda tuzatish bo'yicha qo'llanma",
+        "description": "Oddiy DIY muammolarni bartaraf etish."
+      },
+      "pet": {
+        "name": "Uy hayvonlarini parvarish qilish bo'yicha do'st",
+        "description": "Oziqlantirish, yurish, asosiy mashg'ulotlar."
+      },
+      "mindful": {
+        "name": "Aqlli daqiqa",
+        "description": "1-3 daqiqalik tinch tanaffuslar."
+      },
+      "polite": {
+        "name": "Muloyim qayta yozuvchi",
+        "description": "Matnlarni va javoblarni chiroyli tarzda qayta yozing."
+      }
+    }
+  },
+  "history": {
+    "title": "Tarix",
+    "searchPlaceholder": "Chatlarni qidirish…",
+    "newChat": "Yangi chat",
+    "new": "+ Yangi",
+    "search": "Qidiruv",
+    "clearSearch": "Qidiruvni tozalash",
+    "noChatsYet": "Hozircha chatlar yo‘q",
+    "noResults": "Hozircha chatlar yo‘q",
+    "startFirstConversation": "Birinchi suhbatni boshlang.",
+    "startChat": "Suhbatni boshlang",
+    "startNewChat": "Yangi chat boshlang",
+    "errorLoadingHistory": "Tarixni yuklashda xatolik yuz berdi",
+    "loading": "Tarix yuklanmoqda...",
+    "renameChat": "Chat nomini o'zgartiring",
+    "enterNewTitle": "Yangi sarlavha kiriting",
+    "deleteChat": "Chat oʻchirilsinmi?",
+    "deleteChatMessage": "\"{{title}}\" o'chiriladi.",
+    "rename": "Nomini o'zgartirish",
+    "unpin": "Yechish",
+    "pin": "Qadash",
+    "untitled": "Sarlavhasiz"
+  },
+  "settings": {
+    "title": "Sozlamalar",
+    "model": "Model",
+    "searchPlaceholder": "Modellarni qidirish…",
+    "temperatureForCurrentModel": "Joriy model uchun harorat",
+    "customFor": "{{model}} uchun moslashtirilgan",
+    "usingDefault": "Standart {{temperature}}dan foydalanish",
+    "resetToDefault": "Standart holatga qaytarish",
+    "defaultTemperature": "Standart harorat (qayta)",
+    "usedByModelsWithoutOverride": "Maxsus bekor qilinmagan modellar tomonidan qo'llaniladi",
+    "dangerZone": "Xavfli zona",
+    "clearAllChatsAndSettings": "Barcha suhbatlar va sozlamalarni tozalang",
+    "about": "Haqida",
+    "version": "Versiya {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Maxfiylik siyosati",
+    "hero": {
+      "label": "Maxsus taklif",
+      "title": "Cheksiz kirish\n& Pro xususiyatlari",
+      "upgrade": "Yangilash",
+      "manage": "Rejani boshqarish"
+    },
+    "sections": {
+      "premium": "Premium tarif rejasi",
+      "data": "Foydalanuvchi ma'lumotlari",
+      "support": "Yordam va yuridik"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Premium oling",
+        "subtitle": "Cheksiz yaratish vositalarini qulfdan chiqaring"
+      },
+      "premiumActive": {
+        "title": "Premium faol",
+        "subtitle": "Qo'llab-quvvatlaganingiz uchun tashakkur Cloud AI"
+      },
+      "restore": {
+        "title": "Xaridlarni tiklash",
+        "subtitle": "Qurilmalarni almashtirgan bo'lsangiz foydalaning"
+      },
+      "history": {
+        "title": "Chat tarixini boshqarish",
+        "subtitle": "Oʻtgan seanslaringizni koʻring va oʻchiring"
+      },
+      "reset": {
+        "title": "Chat va sozlamalarni tiklash",
+        "subtitle": "Ushbu qurilmada saqlangan barcha maʼlumotlarni tozalaydi"
+      },
+      "rate": {
+        "title": "Bizga baho bering",
+        "error": "Doʻkon sahifasini ochib boʻlmadi."
+      },
+      "support": {
+        "title": "Qo'llab-quvvatlash",
+        "subtitle": "Biz bilan onlayn bog'laning",
+        "error": "Kontakt sahifasini ochib bo‘lmadi."
+      },
+      "privacy": {
+        "title": "Maxfiylik siyosati",
+        "error": "Maxfiylik siyosatini ochib bo'lmadi."
+      },
+      "terms": {
+        "title": "Foydalanish shartlari",
+        "error": "Foydalanish shartlarini ochib bo'lmadi."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Mavjud emas",
+      "linkUnavailableMessage": "Bu havolani hozir ochib bo‘lmadi.",
+      "restoreSuccessTitle": "Qayta tiklandi",
+      "restoreSuccessMessage": "Xaridlaringiz tiklandi.",
+      "restoreEmptyTitle": "Hech qanday xarid topilmadi",
+      "restoreEmptyMessage": "Bu hisob uchun tiklanadigan faol xarid topilmadi.",
+      "restoreErrorTitle": "Qayta tiklash amalga oshmadi",
+      "restoreErrorMessage": "Hozir xaridlarni tiklab bo‘lmaydi.",
+      "resetConfirmTitle": "Ilova maʼlumotlari qayta tiklansinmi?",
+      "resetConfirmMessage": "Bu barcha chatlar va mahalliy sozlamalarni olib tashlaydi.",
+      "resetConfirmCancel": "Bekor qilish",
+      "resetConfirmCta": "Qayta tiklash"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Yaratish",
+    "chooseStyle": "Uslubni tanlang",
+    "aspectRatio": "Aspekt nisbati",
+    "starterPrompts": {
+      "title": "Boshlovchi ko'rsatmalari",
+      "items": [
+        "studio bosh surati",
+        "zamonaviy yashash xonasi",
+        "quyosh botganda tropik plyaj"
+      ]
+    },
+    "promptPlaceholder": "Koʻrmoqchi boʻlgan narsani yozing…",
+    "promptHint": "Misol: \"Studiya yoritgichidagi oltin retriver\"",
+    "clearText": "Matnni tozalash",
+    "generate": "Yaratish",
+    "generating": "Yaratilmoqda…"
+  },
+  "editImage": {
+    "headerTitle": "Tahrirlash",
+    "chooseStyle": "Uslubni tanlang",
+    "aspectRatio": "Aspekt nisbati",
+    "starterPrompts": {
+      "title": "Boshlovchi ko'rsatmalari",
+      "items": [
+        "yoritishni tuzatish",
+        "fonni olib tashlash",
+        "yumshoq portret retush"
+      ]
+    },
+    "promptPlaceholder": "Tahrirlarni tavsiflash (ixtiyoriy)",
+    "clearText": "Matnni tozalash",
+    "generate": "Yaratish",
+    "generating": "Murojaat qilinmoqda…",
+    "upload": {
+      "choose": "Rasmni tanlang",
+      "change": "O'zgartirish",
+      "remove": "O'chirish"
+    },
+    "imageUnavailable": {
+      "title": "Rasm mavjud emas",
+      "message": "Tanlangan suratga kira olmadi. Iltimos, uni qayta tanlang va qaytadan urining."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Multfilm"
+      },
+      "photoreal": {
+        "name": "Fotoreal"
+      },
+      "sketch": {
+        "name": "Eskiz"
+      },
+      "cyberpunk": {
+        "name": "Kiberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D tasvir"
+      },
+      "dark_fantasy": {
+        "name": "Qorong'u fantaziya"
+      },
+      "vintage_film": {
+        "name": "Vintage film"
+      },
+      "pastel": {
+        "name": "Pastel estetikasi"
+      },
+      "neon_glow": {
+        "name": "Neon porlashi"
+      },
+      "epic_landscape": {
+        "name": "Epik manzara"
+      }
+    },
+    "aspectRatios": {
+      "square": "Kvadrat",
+      "landscape": "Peyzaj",
+      "portrait": "Portret"
+    },
+    "models": {
+      "fluxKontent": "Flux tarkibi",
+      "custom": "Maxsus"
+    },
+    "notEnoughCoinsTitle": "Tangalar yetarli emas",
+    "notEnoughCoinsMessage": "Joriy balansingiz bu rasm uchun juda kam.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Eng tez model",
+      "runwareFluxKrea": "Ijodiy, stilize qilingan natijalar",
+      "runwareQwenImage": "Balansli, yuqori sifatli natijalar",
+      "google4": "Eng yaxshi AI tasvir modeli",
+      "klingImageO1": "Yuqori nazoratli tasvirni tahrirlash",
+      "fluxKontent": "Flux Kontent tahrirlash uchun sozlangan",
+      "runwareProvider": "Ishonchli diffuziya bilan muvozanatli sifat.",
+      "airProvider": "Nano Banana o'ynoqi, yorqin ohang qo'shadi.",
+      "googleProvider": "Google jilolangan tafsilotlar uchun sozlangan.",
+      "klingaiProvider": "KlingAI boshqariladigan tahrirlar uchun sozlangan.",
+      "anthropicProvider": "Claude nozik kayfiyat uchun quvur liniyasi.",
+      "default": "Mavjud dvigatellar bilan tanishish uchun bosing."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "siz tanlagan uslub",
+    "sheetTitle": "Vizyoningizni yaratish",
+    "sheetSubtitle": "Tezkorga {{style}} aralashtirilayotganda server qahvasidan qisqa qultum.",
+    "phases": {
+      "blend": "{{style}} ichida aralashtirish",
+      "paint": "Sahnani bo'yash",
+      "finish": "Yakuniy jilo qo'shish"
+    },
+    "actions": {
+      "cancel": "Bekor qilish",
+      "retry": "Qayta urinish",
+      "close": "Yopish"
+    },
+    "errors": {
+      "restrictedTitle": "Cheklangan kontent",
+      "genericTitle": "Yaratish amalga oshmadi",
+      "genericMessage": "Tasvir yaratib bo‘lmadi."
+    },
+    "alerts": {
+      "saveFailedTitle": "Saqlab boʻlmadi",
+      "shareFailedTitle": "Ulashish imkonsiz",
+      "tryAgain": "Iltimos, qayta urinib koʻring.",
+      "savedTitle": "Saqlangan",
+      "savedMessage": "Rasm galereyangizga saqlandi.",
+      "permissionTitle": "Ruxsat kerak",
+      "permissionMessage": "Rasmlarni galereyangizga saqlash uchun xotiradan foydalanishga ruxsat bering."
+    },
+    "result": {
+      "complete": "Hammasi tugadi"
+    },
+    "accessibility": {
+      "close": "Yopish"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Oʻchirish",
+      "edit": "Tahrirlash",
+      "save": "Saqlash",
+      "share": "Ulashish"
+    },
+    "alerts": {
+      "savedTitle": "Saqlangan",
+      "savedMessage": "Rasm galereyangizga saqlandi.",
+      "permissionTitle": "Ruxsat kerak",
+      "permissionMessage": "Rasmlarni galereyangizga saqlash uchun xotiradan foydalanishga ruxsat bering.",
+      "saveFailedTitle": "Saqlab boʻlmadi",
+      "tryAgain": "Iltimos, qayta urinib koʻring."
+    },
+    "accessibility": {
+      "close": "Yopish",
+      "delete": "Rasmni o'chirish",
+      "edit": "Rasmni tahrirlash",
+      "save": "Rasmni saqlang",
+      "share": "Rasmni ulashish"
+    }
+  },
+  "reportContent": {
+    "title": "AI tarkibi haqida xabar bering",
+    "subtitle": "Ushbu yaratilgan kontentda nima noto'g'ri ekanligini bizga ayting.",
+    "privateDisclosure": "Yuborilganda bu xabar qilingan kontent xavfsizlik tekshiruvi uchun yuboriladi.",
+    "accessibilityLabel": "AI tarkibi haqida xabar bering",
+    "reasons": {
+      "sexual": "Jinsiy yoki yalang'ochlik mazmuni",
+      "violence_self_harm": "Zo'ravonlik yoki o'ziga zarar etkazish",
+      "hate_harassment": "Nafrat yoki haqorat",
+      "child_safety": "Bolalar xavfsizligi tashvishi",
+      "scam_deceptive": "Firibgar yoki aldamchi kontent",
+      "other": "Boshqa"
+    },
+    "errors": {
+      "reasonRequired": "Yuborishdan oldin sababni tanlang.",
+      "submit": "Hisobot yuborilmadi. Iltimos, qayta urinib koʻring."
+    },
+    "success": {
+      "title": "rahmat. Hisobotingiz yuborildi.",
+      "subtitle": "Kontent xavfsizligini yaxshilash uchun hisobotlardan foydalanamiz."
+    },
+    "actions": {
+      "report": "Hisobot",
+      "submit": "Hisobotni yuborish",
+      "done": "Bajarildi"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Menyuni oching",
+      "selectImages": "Rasmlarni tanlang",
+      "exitSelection": "Tanlovdan chiqish",
+      "deleteSelected": "Tanlangan rasmlarni o'chirish",
+      "selectToDelete": "O'chirish uchun rasmlarni tanlang"
+    },
+    "createCard": {
+      "title": "Matndan yaratish",
+      "subtitle": "Tavsifni kiriting",
+      "cta": "Ta'riflang va yarating"
+    },
+    "editCard": {
+      "title": "AI foto muharriri",
+      "subtitle": "AI bilan o'zgartiring va yaxshilang",
+      "cta": "AI bilan tahrirlash"
+    },
+    "gallery": {
+      "title": "Galereya",
+      "empty": "Hali rasm yo'q",
+      "selection": {
+        "enter": "Rasmlarni tanlang",
+        "exit": "Tanlovdan chiqish",
+        "deleteSelected": "Tanlangan rasmlarni o'chirish",
+        "selectForDelete": "O'chirish uchun rasmlarni tanlang"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Tanishish",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Cloud AI ichida AI yordamida tasvirlarni yarating va tahrirlang."
+    },
+    "relaxView": {
+      "title": "AI bilan tanishing",
+      "titleHighlight": "Yordamchilar",
+      "subtitle": "Ixtisoslashgan AI mutaxassislari kundalik ehtiyojlaringizni qondirishga tayyor",
+      "cards": {
+        "fitness": {
+          "title": "Fitnes murabbiyi",
+          "text": "Kichik odatlar va uy mashqlari."
+        },
+        "recipes": {
+          "title": "Ovqatlar va retseptlar",
+          "text": "Nima pishirish kerak, nima bilan."
+        },
+        "travel": {
+          "title": "Sayohat Do'stim",
+          "text": "Oddiy rejalar va paketlar ro'yxati."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "Korxona darajasidagi sun’iy intellekt yechimlari",
+      "description": "Korxona mutaxassislari va jamoalari uchun mo'ljallangan zamonaviy sun'iy intellekt texnologiyasi bilan biznesingizni kengaytiring.",
+      "stats": "500 mingdan ortiq foydalanuvchi tomonidan ishonchli",
+      "rating": "4,9 / 5",
+      "button": "Boshlash"
+    },
+    "buttons": {
+      "continue": "Davom eting",
+      "start": "Boshlaylik"
+    }
+  },
+  "coinStore": {
+    "title": "Kredit olish",
+    "loading": "Tangalar doʻkoni yuklanmoqda…",
+    "balanceLabel": "Sizning joriy balansingiz",
+    "balanceValue": "{{amount}} Kreditlar",
+    "history": {
+      "link": "Tranzaksiya tarixi",
+      "alertTitle": "Tarix",
+      "alertBody": "Tranzaksiya tarixi tez orada chiqadi."
+    },
+    "noPacks": "Tangalar toʻplami mavjud emas. RevenueCat taklif identifikatorini tekshiring.",
+    "badges": {
+      "basic": "Asosiy to'plam",
+      "popular": "Eng mashhur",
+      "value": "Eng yaxshi qiymat"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Kreditlar",
+      "tokensLabel": "{{credits}} Kreditlar",
+      "defaultName": "Paket {{index}}",
+      "unknownPrice": "AQSH dollari —"
+    },
+    "premium": {
+      "title": "Premiumga o'ting",
+      "subtitle": "Cheksiz kirish va xususiyatlar",
+      "cta": "Yangilash"
+    },
+    "termsText": "Xarid qilish orqali siz bizning kelishuvimizga rozilik bildirasiz",
+    "termsLink": "Xizmat shartlari",
+    "alerts": {
+      "initErrorTitle": "Boshlash xatosi",
+      "genericMessage": "Nimadir xato ketdi.",
+      "successTitle": "Muvaffaqiyat",
+      "successMessage": "Kreditlar tez orada paydo bo'ladi.",
+      "purchaseFailedTitle": "Xarid amalga oshmadi",
+      "unknownError": "Noma'lum xato"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium talab qilinadi",
+    "upgrade": "Yangilash",
+    "modelRequiredMessage": "Ushbu modelga Premium talab qilinadi. GPT-5, Grok 4, Claude va boshqa ilgʻor modellarga kirish uchun yangilang.",
+    "assistantsRequiredMessage": "Assistentlarga Premium kerak. Fitnes, kodlash, yozish va boshqalar uchun ixtisoslashgan AI yordamchilaridan foydalanish uchun yangilang.",
+    "assistantsTitle": "Premium talab qilinadi",
+    "assistantsMessage": "Assistentlarga Premium kerak. Fitnes, kodlash, yozish va boshqalar uchun ixtisoslashgan AI yordamchilaridan foydalanish uchun yangilang."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Toʻlov devorini yopish",
+    "unavailableTitle": "Xaridlar mavjud emas",
+    "unavailableMessage": "Android billing hali sozlanmagan.",
+    "restoreEmptyTitle": "Hech qanday xarid topilmadi",
+    "restoreEmptyMessage": "Bu hisob uchun tiklanadigan faol xarid topilmadi.",
+    "restoreFailedTitle": "Qayta tiklash amalga oshmadi",
+    "restoreFailedMessage": "Hozir xaridlarni tiklab bo‘lmaydi.",
+    "productsUnavailableTitle": "Hech qanday reja mavjud emas",
+    "productsUnavailableMessage": "Hozirda Android obuna mahsulotlari mavjud emas.",
+    "purchaseFailedTitle": "Xarid amalga oshmadi",
+    "purchaseFailedMessage": "Bu xaridni hozir yakunlab bo‘lmaydi.",
+    "restore": "Qayta tiklash",
+    "restoreRestoring": "Qayta tiklanmoqda…",
+    "features": {
+      "create": "Rasmlar va videolar yarating",
+      "search": "AI yordamida Internetda qidiring",
+      "talk": "AI bilan tabiiy ravishda gaplashing",
+      "imageStudio": "Image Studio {{credits}} kredit {{period}} oling",
+      "period": {
+        "weekly": "haftalik",
+        "monthly": "oylik",
+        "yearly": "yillik"
+      }
+    },
+    "freeTrial": {
+      "title": "Bepul sinov",
+      "subtitle": "3 kunlik bepul sinov"
+    },
+    "badge": {
+      "bestOffer": "Eng yaxshi taklif"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Yillik",
+        "only": "Faqat {{price}}",
+        "defaultPrice": "79,99 AQSh dollari",
+        "defaultIntroPrice": "1,35 AQSh dollari"
+      },
+      "monthly": {
+        "title": "Oylik",
+        "subtitle": "Istalgan vaqtda bekor qiling",
+        "defaultPrice": "19,99 AQSh dollari"
+      },
+      "weekly": {
+        "title": "Haftalik",
+        "subtitle": "Istalgan vaqtda bekor qiling",
+        "defaultPrice": "9,99 AQSh dollari",
+        "trialThen": "Keyin 3 kun bepul"
+      }
+    },
+    "frequency": {
+      "perWeek": "haftasiga",
+      "perMonth": "oyiga"
+    },
+    "cta": "Davom eting",
+    "ctaFreeTrial": "Bepul sinab ko'ring",
+    "legal": {
+      "terms": "Shartlar",
+      "privacy": "Maxfiylik"
+    },
+    "premium": {
+      "headline": "Barcha premium AI bitta rejada",
+      "subtitleLine1": "Chat, kodlash, yaratish va rejalashtirish",
+      "subtitleLine2": "ilg'or modellar bilan.",
+      "enableTrial": "Bepul sinovni yoqish",
+      "annual": "Yillik",
+      "saveBadge": "83%",
+      "year": "yil",
+      "week": "hafta",
+      "termsOfUse": "Foydalanish shartlari",
+      "privacyPolicy": "Maxfiylik siyosati"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Xabar...",
+    "createImages": "Tasvirlar yaratish",
+    "generateAiArtwork": "AI sanʼat asarini yarating",
+    "camera": "Rasmlarni yuklash",
+    "takeOrSelectPhotos": "Rasmlarni tanlang",
+    "search": "Qidiruv",
+    "findInformation": "Ma'lumot toping",
+    "findRecentInfo": "Oxirgi ma'lumotlarni toping",
+    "removeImage": "Rasmni o'chirish",
+    "messageInput": "Xabar kiritish",
+    "clearInput": "Kirishni tozalash",
+    "quickActionsLabel": "Tezkor harakatlar",
+    "hideQuickActions": "Tez amallarni yashirish",
+    "showQuickActions": "Tez harakatlarni ko'rsatish",
+    "startVoiceInput": "Ovozli kiritishni boshlang",
+    "sendMessage": "Xabar yuborish",
+    "offline": "Oflayn",
+    "stop": "To'xtang",
+    "streaming": "Oqim qilinmoqda…",
+    "closeRecorder": "Yopish yozuvchisi",
+    "insertTranscript": "Yuborish",
+    "scrollToLatest": "Oxirgi xabarga oʻting",
+    "copyMessage": "Xabarni nusxalash",
+    "copyMessageHint": "Ushbu xabarni vaqtinchalik xotiraga nusxalash",
+    "shareMessage": "Xabarni ulashish",
+    "shareMessageHint": "Ushbu xabarni baham ko'ring",
+    "regenerateResponse": "Javobni qayta tiklash",
+    "regenerateResponseHint": "Yangi javob yarating",
+    "copyCode": "Kodni nusxalash",
+    "copied": "Ko‘chirildi",
+    "image": "tasvir",
+    "loading": "Yuklanmoqda…",
+    "loadingChat": "Chat yuklanmoqda...",
+    "offlineBanner": "Siz oflaynsiz. Xabarlarni yuborish imkonsiz.",
+    "offlineError": "Internet aloqasi yo'q. Iltimos, ulanishingizni tekshiring va qaytadan urining.",
+    "imagePickerErrorTitle": "Rasm tanlashda xato",
+    "imagePickerErrorMessage": "Suratlaringizga kirish imkoni yo‘q. Iltimos, qayta urinib koʻring.",
+    "messageTooLong": "Xabar juda uzun ({{length}}). Cheklov - {{limit}}.",
+    "sendFailed": "Xabar yuborilmadi. Iltimos, qayta urinib koʻring.",
+    "modelNoImageSupport": "Tanlangan model tasvirlarni qo'llab-quvvatlamaydi. Boshqa modelni tanlang.",
+    "voiceStartFailed": "Ovoz boshlanmadi.",
+    "voiceNoSpeechDetected": "Hech qanday ovoz tanimadi. Iltimos, qayta urinib koʻring.",
+    "emptyTitle": "Qanday yordam bera olaman?",
+    "emptySubtitle": "AI bilan suhbatni boshlang",
+    "privateTitle": "Shaxsiy chat",
+    "privateSubtitle": "Bu chat chat tarixingizda ko‘rinmaydi",
+    "startPrivateChat": "Shaxsiy suhbatni boshlang",
+    "endPrivateChat": "Shaxsiy suhbatni tugatish",
+    "permissions": {
+      "photosTitle": "Rasmlarga ruxsat kerak",
+      "photosMessage": "Tasvirlarni tanlash uchun fotosuratga kirish talab qilinadi.",
+      "voiceTitle": "Ovozli ruxsatlar kerak",
+      "voiceMessage": "Ovozdan foydalanish uchun mikrofon va nutqqa kirish talab qilinadi."
+    },
+    "activity": {
+      "analyzingImages": "Tasvirlar tahlil qilinmoqda…",
+      "searching": "Qidirilmoqda…",
+      "thinking": "O‘ylash…"
+    },
+    "webSearch": {
+      "title": "Veb-qidiruv",
+      "subtitle": "Oxirgi ma'lumotlarni toping",
+      "label": "Veb-qidiruv",
+      "enable": "Veb-qidiruvni yoqish",
+      "disable": "Veb-qidiruvni o'chirib qo'ying",
+      "toggleLabel": "Internetda qidiring"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Vizual dizaynni tezlikda.",
+      "subtitle": "Vizual aktivlarni bir joyda yarating, takomil qiling va nashr eting.",
+      "cta": "Ochiq"
+    },
+    "quickActions": {
+      "createImages": "Tasvirlar yaratish",
+      "openCamera": "Kamerani oching",
+      "editImage": "Rasmni tahrirlash",
+      "startVoice": "Voice-ni ishga tushirish",
+      "assistants": "Yordamchilar"
+    },
+    "listening": "Tinglanmoqda…",
+    "startRecording": "Yozishni boshlash…",
+    "assistantHeader": {
+      "unavailableTitle": "Assistent mavjud emas",
+      "unavailableDescription": "Bu yordamchini yuklay olmadik. Iltimos, qayta urinib koʻring.",
+      "ready": "Yordam berishga tayyor"
+    },
+    "actions": {
+      "copy": "Nusxalash",
+      "share": "Ulashish",
+      "regenerate": "Qayta tiklash",
+      "retryFromHere": "Bu yerdan qayta urinib ko'ring",
+      "report": "Hisobot",
+      "cancel": "Bekor qilish"
+    },
+    "markdown": {
+      "copy": "Nusxalash",
+      "copied": "Ko‘chirildi",
+      "table": "JADVAL",
+      "watchVideo": "Videoni tomosha qiling",
+      "wikipedia": "Vikipediya",
+      "link": "Havola",
+      "note": "Eslatma",
+      "warning": "Ogohlantirish",
+      "tip": "Maslahat"
+    },
+    "messageActionTitle": "Xabar",
+    "status": {
+      "sending": "Yuborilmoqda…",
+      "failed": "Muvaffaqiyatsiz",
+      "sent": "Yuborildi"
+    },
+    "suggestions": {
+      "writeStory": "Ijodiy hikoya yozing",
+      "writeStorySubtitle": "sehrli sarguzasht haqida",
+      "planTravel": "Sayohat marshrutini rejalashtiring",
+      "planTravelSubtitle": "ajoyib dam olish uchun",
+      "explainConcept": "Ushbu tushunchani tushuntiring",
+      "explainConceptSubtitle": "oddiy so'zlar bilan aytganda",
+      "planDay": "Kunimni rejalashtir",
+      "planDaySubtitle": "unumdorlik bo'yicha maslahatlar bilan"
+    },
+    "home": {
+      "eyebrow": "Mavzuni tanlang",
+      "title": "Nima qilishni xohlaysiz?",
+      "subtitle": "Yo'nalishni tanlang, so'ngra kuchli taklif bilan boshlang.",
+      "pickPromptTitle": "Boshlash uchun taklifni tanlang",
+      "changeTopic": "Boshqa mavzuni tanlang",
+      "intents": {
+        "summarize": "Matnni umumlashtirish",
+        "summarizeShort": "Xulosa qiling",
+        "summarizeHint": "Maqolalar, eslatmalar, ovozli eslatmalar, uzun mavzular",
+        "plan": "Reja tuzing",
+        "planHint": "Safarlar, tartiblar, byudjetlar, muddatlar, hayotdagi o'zgarishlar",
+        "brainstorm": "Aqliy hujum",
+        "brainstormHint": "G'oyalar, takliflar, nomlar, mazmun, yon loyihalar",
+        "analyze": "Ma'lumotlarni tahlil qilish",
+        "analyzeHint": "Xarajatlar, fikr-mulohazalar, ko'rsatkichlar, odatlar, ishlash"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Ta'sischilar haqida qisqacha ma'lumot yarating",
+          "founderBriefSubtitle": "Asosiy xavflarni, qarorlarni va keyingi qadamlarni chiqarib tashlang.",
+          "classNotesTitle": "O'quv yozuvlarimni tozalang",
+          "classNotesSubtitle": "Qo'pol eslatmalarni aniq o'quv qo'llanmasiga aylantiring.",
+          "meetingHandoffTitle": "O'tkazish haqida xulosa yozing",
+          "meetingHandoffSubtitle": "Uchrashuvlar, qo'ng'iroqlar yoki uzoq ichki mavzulardan keyin foydalidir.",
+          "longArticleTitle": "Ushbu maqolani tezda umumlashtiring",
+          "longArticleSubtitle": "Uzoq maqolani o'tkir xulosalarga aylantiring."
+        },
+        "plan": {
+          "energyResetTitle": "14 kunlik energiyani tiklashni yarating",
+          "energyResetSubtitle": "Uyqu, ovqatlanish, harakat va diqqatni jamlash uchun haqiqiy reja.",
+          "mealPlanTitle": "Men aslida pishiradigan ovqatlarni rejalashtiring",
+          "mealPlanSubtitle": "Amaliy, hamyonbop va menda bor narsaga asoslangan.",
+          "cityMoveTitle": "Yangi shaharga ko'chib o'tishimni rejalashtiring",
+          "cityMoveSubtitle": "Uni vaqt jadvali, byudjet, turar joy va administrator vazifalariga ajrating.",
+          "tripEscapeTitle": "Dam olish kunlarida unutilmas qochishni rejalashtiring",
+          "tripEscapeSubtitle": "Umumiy marshrutdan yaxshiroq narsa."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Haqiqiy yon shovqinni toping",
+          "sideHustleSubtitle": "To'liq vaqtda ishlayotganimda boshlashim mumkin bo'lgan g'oyalar.",
+          "brandAngleTitle": "Esda qolarli brend burchagini toping",
+          "brandAngleSubtitle": "Mahsulotlar, ijodkorlar, agentliklar yoki axborot byulletenlari uchun foydali.",
+          "socialSeriesTitle": "Kontent seriyasini ixtiro qiling",
+          "socialSeriesSubtitle": "Tomoshabinlarni ko'paytirish uchun etarlicha izchil narsa.",
+          "datingIdeasTitle": "Yangi g'oyalarni o'ylab toping",
+          "datingIdeasSubtitle": "Xurmolar, sovg'alar, kutilmagan hodisalar yoki o'ychan his qiladigan voqealar."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Mening pulim qayerga oqayotganini toping",
+          "spendingLeaksSubtitle": "Naqshlarni, zaif nuqtalarni ko'rsating va birinchi navbatda eng oson g'alaba qozonadi.",
+          "customerFeedbackTitle": "Fikr-mulohazalarni ustuvorliklarga aylantiring",
+          "customerFeedbackSubtitle": "Klaster so'rovlari, shikoyatlar, shoshilinchlik va ta'sir.",
+          "habitPatternsTitle": "Mening odatlarimdagi naqshlarni aniqlang",
+          "habitPatternsSubtitle": "Mashqlar, uyqu, jurnallar yoki fokus jurnallari uchun foydalidir.",
+          "metricsStoryTitle": "Raqamlar nimani anglatishini tushuntiring",
+          "metricsStorySubtitle": "Ko'proq signal, kamroq elektron jadval shovqini."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Qayta ishlanmoqda...",
+    "tapToUploadImage": "Rasmni yuklash uchun bosing"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Qayta ishlanmoqda...",
+    "camera": "Rasmlarni yuklash",
+    "library": "Kutubxona"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "Qayta urinish",
+    "cancel": "Bekor qilish",
+    "allow": "Ruxsat bering",
+    "notNow": "Hozir emas",
+    "openSettings": "Sozlamalarni oching",
+    "close": "Yopish",
+    "save": "Saqlash",
+    "tryAgain": "Qayta urinib ko'ring"
+  },
+  "rateUs": {
+    "title": "Cloud AI yoqyapsizmi?",
+    "subtitle": "Sizning fikr-mulohazalaringiz bizni yaxshilashga yordam beradi. Bizni App Store do'konida baholaysizmi?",
+    "rateNow": "Hozir baholang",
+    "maybeLater": "Balki keyinroq",
+    "dontAskAgain": "Qayta so'ramang"
+  },
+  "oneTimeOffer": {
+    "title": "Bir martalik taklif",
+    "discount": "{{percent}}% chegirma",
+    "subtitle": "Bu taklifni boshqa ko'rmaysiz.",
+    "badgeLine1": "Eksklyuziv",
+    "badgeLine2": "Bir martalik taklif",
+    "upgradeNow": "{{price}} uchun hozir yangilang",
+    "loadingPrice": "Yuklanmoqda...",
+    "termsOfUse": "Foydalanish shartlari",
+    "privacyPolicy": "Maxfiylik siyosati",
+    "accessTitle": "Cheksiz kirish",
+    "accessSubtitle": "GPT, Gemini va Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4 ga cheksiz kirish",
+      "geminiPro": "Gemini Pro-ga kirish",
+      "grokInsights": "Yangi tushunchalar uchun Grok foydalaning",
+      "priorityAccess": "Ustuvor kirish va tezroq javoblar"
+    },
+    "bestValue": "Eng yaxshi qiymat",
+    "annualPremium": "Yillik Premium",
+    "oneTimePayment": "Bir martalik to'lov",
+    "wasPrice": "edi",
+    "continue": "Davom eting",
+    "restore": "Qayta tiklash",
+    "terms": "Shartlar",
+    "privacy": "Maxfiylik",
+    "successTitle": "Muvaffaqiyat!",
+    "successMessage": "Xaridingiz uchun rahmat! Keyingi 12 oy davomida premium ruxsatdan bahramand bo'ling.",
+    "errorTitle": "Xarid amalga oshmadi",
+    "errorMessage": "Nimadir xato ketdi. Iltimos, qayta urinib koʻring.",
+    "restoreSuccessTitle": "Qayta tiklandi",
+    "restoreSuccessMessage": "Xaridlaringiz tiklandi.",
+    "restoreErrorTitle": "Qayta tiklash amalga oshmadi",
+    "restoreErrorMessage": "Qayta tiklanadigan xaridlar topilmadi.",
+    "unavailableTitle": "Xaridlar mavjud emas",
+    "unavailableMessage": "Android billing hali sozlanmagan."
+  },
+  "rewards": {
+    "header": {
+      "title": "Mukofotlar",
+      "openMenu": "Menyuni oching",
+      "goBack": "Orqaga qayt"
+    },
+    "pointsHero": {
+      "totalBalance": "UMUMIY BALANS",
+      "seeYourRewards": "Mukofotlaringizni ko'ring"
+    },
+    "streakTracker": {
+      "title": "Kunlik chiziq",
+      "subtitle": "Davom eting! Siz olovdasiz.",
+      "days": "kunlar",
+      "prize": "Mukofot",
+      "dayLabel": "Kun {{number}}",
+      "nextReward": "Keyingi mukofot: {{amount}} da {{time}}",
+      "coins": "Tangalar"
+    },
+    "sections": {
+      "availableQuests": "Mavjud kvestlar",
+      "completedQuests": "Tugallangan topshiriqlar",
+      "availableRewards": "Mavjud mukofotlar",
+      "needsMoreCoins": "Ko'proq tangalar kerak"
+    },
+    "balances": {
+      "rewardCoins": "Tangalarni mukofotlash",
+      "imageCredits": "Rasm kreditlari"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 ta rasm krediti",
+        "imageCredits200": "200 ta rasm krediti",
+        "imageCredits600": "600 ta rasm krediti",
+        "weeklyPremium": "Haftalik Premium",
+        "secretBox": "Yashirin quti"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Ichkarida sirli mukofotlar"
+      },
+      "alerts": {
+        "comingSoonTitle": "Tez orada",
+        "comingSoonMessage": "Bu mukofot hali mavjud emas.",
+        "notEnoughCoinsTitle": "Tangalar yetarli emas",
+        "notEnoughCoinsMessage": "Bu mukofotni ochish uchun sizga koʻproq mukofot tangalari kerak boʻladi.",
+        "errorTitle": "Xato",
+        "couldNotOpenBox": "Qutini ochib bo'lmadi.",
+        "couldNotRedeem": "Mukofotni qaytarib bo‘lmadi. Iltimos, qayta urinib koʻring.",
+        "mysteryReward": "Sirli mukofot"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Kundalik kirish",
+        "description": "O'z seriyangizni saqlab qolish uchun ilovani bugun oching",
+        "message": "Ushbu topshiriq har kuni ilovani ochganingizda avtomatik ravishda yakunlanadi."
+      },
+      "shareFacebook": {
+        "title": "Facebookda ulashing",
+        "description": "Facebookda biz haqimizda post qoldiring"
+      },
+      "shareTwitter": {
+        "title": "Twitterda ulashing",
+        "description": "Tajribangizni tvit qiling"
+      },
+      "shareInstagram": {
+        "title": "Instagramda baham ko'ring",
+        "description": "Hikoya yoki postni baham ko'ring"
+      },
+      "shareExperience": {
+        "title": "Tajribangizni baham ko'ring",
+        "description": "Do'stlaringizga ilovani nima uchun yoqtirganingizni ayting"
+      },
+      "share": {
+        "genericMessage": "Men ushbu AI ilovasidan suhbat va tasvir yaratish uchun foydalanmoqdaman. Buni tekshiring: {{url}}",
+        "facebookQuote": "Ushbu AI ilovasini ko'rib chiqing!",
+        "twitterText": "Men ushbu AI ilovasini sinab ko'ryapman, bu juda zo'r.",
+        "instagramMessage": "Ushbu AI ilovasini ko'rib chiqing: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Xato",
+        "errorMessage": "Do‘kon sahifasini ochib bo‘lmadi."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Kvest tugallandi",
+        "description": "Kvest tugallandi",
+        "points": "+{{points}} ball",
+        "close": "Yopish"
+      },
+      "rewardSuccess": {
+        "error": "XATO",
+        "success": "MUVAFFAQIYAT",
+        "somethingWentWrong": "Nimadir xato ketdi",
+        "rewardUnlocked": "Mukofot ochildi",
+        "credits": "Kreditlar",
+        "close": "Yopish",
+        "okay": "Mayli"
+      },
+      "secretBox": {
+        "pill": "SECRET QUTI",
+        "rewardUnlocked": "MUQOFI OCHILDI",
+        "shufflingRewards": "MUKOFOTLAR ARASHIB...",
+        "imageCreditsAdded": "Hisobingizga rasm kreditlari qo'shildi",
+        "continue": "Davom eting",
+        "revealing": "Oshkor qilinmoqda...",
+        "prizeTiers": {
+          "lucky": "Omad",
+          "pro": "PRO",
+          "elite": "ELITA",
+          "mythic": "MIFIC"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Kundalik tangalaringizni oling",
+      "subtitle": "Har kuni keling — mukofot ortadi.",
+      "cta": "Belgilash",
+      "claimed": "Olindi! +{{amount}} tanga",
+      "later": "Keyinroq"
+    }
+  },
+  "app": {
+    "version": "Versiya {{version}}",
+    "offlineBanner": "Siz oflaynsiz",
+    "launch": {
+      "accessibilityLabel": "Boshlanishi Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, tayyor bo'lganda"
+    },
+    "errors": {
+      "modelsLoadTitle": "Modellarni yuklab bo‘lmadi",
+      "modelsLoadMessage": "AI modellarini yuklab bo‘lmadi. Ilova standart modellardan foydalanadi. Internet ulanishingizni tekshiring.",
+      "modelsLoadTimeout": "Modellarni yuklash juda uzoq davom etdi. Ilova standart modellardan foydalanadi. Iltimos, qayta urinib koʻring.",
+      "modelsLoadNetwork": "Internet aloqasi yo'q. Ilova standart modellardan foydalanadi. Iltimos, ulanishingizni tekshiring.",
+      "deviceIdTitle": "Initializatsiya xatosi",
+      "deviceIdMessage": "Qurilma identifikatorini ishga tushirib bo‘lmadi. Ba'zi xususiyatlar to'g'ri ishlamasligi mumkin.",
+      "storageTitle": "Saqlash xatosi",
+      "storageMessage": "Mahalliy xotiraga kirish imkoni yo‘q. Ba'zi xususiyatlar to'g'ri ishlamasligi mumkin.",
+      "crashTitle": "Nimadir xato ketdi.",
+      "crashSubtitle": "Iltimos, qayta urinib koʻring.",
+      "crashLabel": "Ilova ishdan chiqdi"
+    },
+    "proxyErrors": {
+      "genericTitle": "Nimadir xato ketdi",
+      "genericMessage": "Iltimos, qayta urinib koʻring.",
+      "rateLimitTitle": "Juda koʻp soʻrovlar",
+      "rateLimitMessage": "Biz ko'plab so'rovlarni ko'rib chiqamiz. Birozdan keyin qayta urinib ko‘ring.",
+      "rateLimitRetryAfter": "Biz ko'plab so'rovlarni ko'rib chiqamiz. Taxminan {{seconds}} soniyadan keyin qayta urinib ko'ring.",
+      "restrictedTitle": "Cheklangan kontent",
+      "restrictedMessage": "Bu soʻrov xavfsizlik filtrlari tomonidan bloklangan.",
+      "insufficientCoinsTitle": "Tangalar yetarli emas",
+      "insufficientCoinsMessage": "Sizning joriy balansingiz bu so‘rov uchun juda kam.",
+      "imageUnavailableTitle": "Rasm mavjud emas",
+      "imageUnavailableMessage": "Yaratilgan rasm fayli vaqtincha mavjud emas edi. Iltimos, qayta urinib koʻring.",
+      "authorizationTitle": "Avtorizatsiya masalasi",
+      "authorizationMessage": "Hisobingizni tasdiqlay olmadik. Iltimos, qayta urinib koʻring.",
+      "serverTitle": "Server hiqichoq",
+      "serverMessage": "Bizning serverlarimiz muammoga duch keldi. Tez orada qayta urinib koʻring.",
+      "timeoutTitle": "Juda uzoq davom etmoqda",
+      "timeoutMessage": "So‘rov muddati tugadi. Iltimos, qayta urinib koʻring.",
+      "networkTitle": "Ulanish yo‘q",
+      "networkMessage": "Internet aloqasi yo'q. Iltimos, ulanishingizni tekshiring va qaytadan urining.",
+      "requestTitle": "Muammoni so'rash",
+      "requestMessage": "So‘rovingizda nimadir xato ketdi. Iltimos, qayta urinib koʻring."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Premiumni faollashtiring",
+    "activateMessage": "Sharhlovchi premiumini faollashtirmoqchimisiz?",
+    "activateAction": "Faollashtirish",
+    "deactivateTitle": "Premiumni o'chirib qo'ying",
+    "deactivateMessage": "Sharhlovchi premiumini faolsizlantirmoqchimisiz?",
+    "deactivateAction": "Faolsizlantirish"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Kundalik mukofot",
+      "body": "Kundalik tangalaringizni o'tkazib yubormang - yarim tungacha da'vo qiling."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Kundalik tangalaringizni o'tkazib yubormang",
+      "body": "Seriyangiz uzilmasligi va tangalaringiz ko'payishi uchun kuniga bitta eslatma yuboramiz. Spam yo'q, istalgan vaqtda o'chirishingiz mumkin.",
+      "enable": "Eslatmalarni yoqish",
+      "skip": "Hozir emas"
+    }
+  }
+}

@@ -6,6 +6,17 @@ import { isPremiumModel, FREE_MODEL } from '../config/premium';
 
 const SETTINGS_V2 = 'settings.v2';
 const SETTINGS_V1 = 'settings.v1'; // legacy (global temperature only)
+let settingsHydrationPromise = null;
+const SETTINGS_HYDRATION_LIVENESS_MS = 2500;
+
+function modelRegistriesEqual(left, right) {
+  if (left === right) return true;
+  try {
+    return JSON.stringify(left) === JSON.stringify(right);
+  } catch {
+    return false;
+  }
+}
 
 export const useSettingsStore = create((set, get) => ({
   hydrated: false,
@@ -72,16 +83,23 @@ export const useSettingsStore = create((set, get) => ({
   // registry
   setModels: (incoming) => {
     const nextModels = buildModelRegistry(incoming);
-    set({ models: nextModels });
+    const modelsChanged = !modelRegistriesEqual(get().models, nextModels);
+    if (modelsChanged) {
+      set({ models: nextModels });
+    }
 
     // If current model is missing (e.g., removed upstream), fall back gracefully.
     const cur = get().model;
+    let modelChanged = false;
     if (!nextModels?.[cur]) {
       const fallback =
         nextModels?.[FREE_MODEL]
           ? FREE_MODEL
           : (Object.keys(nextModels).find(k => nextModels?.[k]?.kind === 'chat') || Object.keys(nextModels)[0] || FREE_MODEL);
       set({ model: fallback });
+      modelChanged = true;
+    }
+    if (modelsChanged || modelChanged) {
       get().save();
     }
   },
@@ -98,18 +116,8 @@ export const useSettingsStore = create((set, get) => ({
       const { fetchModels } = await import('../api/models'); // you already call MODELS_URL elsewhere
       const incoming = await fetchModels();
       if (incoming && Object.keys(incoming).length > 0) {
-        const nextModels = buildModelRegistry(incoming);
-        set({ models: nextModels });
-
-        // guard current selection
-        const cur = get().model;
-        if (!nextModels[cur]) {
-          const fallback =
-            nextModels?.[FREE_MODEL]
-              ? FREE_MODEL
-              : (Object.keys(nextModels).find(k => nextModels?.[k]?.kind === 'chat') || Object.keys(nextModels)[0] || FREE_MODEL);
-          set({ model: fallback });
-        }
+        get().setModels(incoming);
+        await get().save();
         return true;
       }
     } catch {}
@@ -127,47 +135,69 @@ export const useSettingsStore = create((set, get) => ({
 
   // ---------- persistence ----------
   save: async () => {
-    const { model, temperature, perModelTemp } = get();
+    const { model, temperature, perModelTemp, models } = get();
     try {
       await AsyncStorage.setItem(
         SETTINGS_V2,
-        JSON.stringify({ model, temperature, perModelTemp })
+        JSON.stringify({ model, temperature, perModelTemp, models })
       );
     } catch {}
   },
 
   hydrate: async () => {
-    try {
-      // v2 first (has perModelTemp)
-      const raw2 = await AsyncStorage.getItem(SETTINGS_V2);
-      if (raw2) {
-        const data = JSON.parse(raw2);
-        set({
-          model: data.model ?? 'gpt-5.4-nano',
-          temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
-          perModelTemp: data.perModelTemp || {},
-        });
-        set({ hydrated: true });
-        return;
+    if (get().hydrated) return;
+    if (settingsHydrationPromise) return settingsHydrationPromise;
+
+    settingsHydrationPromise = (async () => {
+      let abandoned = false;
+      const fallbackId = setTimeout(() => {
+        abandoned = true;
+        if (!get().hydrated) set({ hydrated: true });
+      }, SETTINGS_HYDRATION_LIVENESS_MS);
+      try {
+        // v2 first (has perModelTemp)
+        const raw2 = await AsyncStorage.getItem(SETTINGS_V2);
+        if (abandoned) return;
+        if (raw2) {
+          const data = JSON.parse(raw2);
+          set({
+            model: data.model ?? 'gpt-5.4-nano',
+            temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
+            perModelTemp: data.perModelTemp || {},
+            models: data.models
+              ? buildModelRegistry(data.models)
+              : DEFAULT_MODELS,
+            hydrated: true,
+          });
+          return;
+        }
+
+        // migrate from v1 (only temperature + model)
+        const raw1 = await AsyncStorage.getItem(SETTINGS_V1);
+        if (abandoned) return;
+        if (raw1) {
+          const data = JSON.parse(raw1);
+          set({
+            model: data.model ?? 'gpt-5.4-nano',
+            temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
+            perModelTemp: {},
+          });
+          await get().save(); // write as v2
+          set({ hydrated: true });
+          return;
+        }
+      } catch {
+      } finally {
+        clearTimeout(fallbackId);
       }
 
-      // migrate from v1 (only temperature + model)
-      const raw1 = await AsyncStorage.getItem(SETTINGS_V1);
-      if (raw1) {
-        const data = JSON.parse(raw1);
-        set({
-          model: data.model ?? 'gpt-5.4-nano',
-          temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
-          perModelTemp: {},
-        });
-        await get().save(); // write as v2
-        set({ hydrated: true });
-        return;
-      }
-    } catch {}
+      // fresh install defaults
+      if (!abandoned) set({ hydrated: true });
+    })().finally(() => {
+      settingsHydrationPromise = null;
+    });
 
-    // fresh install defaults
-    set({ hydrated: true });
+    return settingsHydrationPromise;
   },
 
   // Danger zone

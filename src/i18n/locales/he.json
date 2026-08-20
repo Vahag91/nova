@@ -11,7 +11,12 @@
     "searchHint": "הקלד כדי לסנן מודלים זמינים",
     "modelLabel": "מודל {{name}}",
     "selectHint": "בחר מודל {{name}}",
-    "currentlySelected": "נבחר כעת"
+    "currentlySelected": "נבחר כעת",
+    "genericModel": "מודל {{provider}}",
+    "badges": {
+      "new": "חדש",
+      "best": "הטוב ביותר"
+    }
   },
   "models": {
     "gpt-4o": "מודל ה-AI החזק ביותר",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "עוזרים",
+    "defaultTitle": "עוזר",
+    "errorTitle": "משהו השתבש",
+    "errorMessage": "לא ניתן להפעיל את העוזר הזה.",
+    "noAssistants": "אין עוזרים בקטגוריה זו.",
+    "selectAssistantHint": "פתיחת בורר העוזרים",
     "subtitle": "עוזרי AI שנבחרו בקפידה לקוד, כתיבה, ניתוח, תכנון ועוד.",
     "searchPlaceholder": "חפש עוזרים…",
     "useAssistant": "השתמש בעוזר",
@@ -254,9 +264,12 @@
     "search": "חיפוש",
     "clearSearch": "נקה חיפוש",
     "noChatsYet": "אין צ'אטים עדיין",
+    "noResults": "אין צ'אטים עדיין",
     "startFirstConversation": "התחל את השיחה הראשונה שלך.",
     "startChat": "התחל צ'אט",
+    "startNewChat": "התחל צ'אט",
     "errorLoadingHistory": "שגיאה בטעינת ההיסטוריה",
+    "loading": "טוען היסטוריה...",
     "renameChat": "שנה שם לצ'אט",
     "enterNewTitle": "הכנס כותרת חדשה",
     "deleteChat": "למחוק צ'אט?",
@@ -264,9 +277,7 @@
     "rename": "שנה שם",
     "unpin": "בטל נעיצה",
     "pin": "נעץ",
-    "untitled": "ללא כותרת",
-    "noResults": "אין צ'אטים עדיין",
-    "startNewChat": "התחל צ'אט"
+    "untitled": "ללא כותרת"
   },
   "settings": {
     "title": "הגדרות",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "פרימיום פעיל",
-        "subtitle": "תודה שתמכת ב-ChatCloud"
+        "subtitle": "תודה שתמכת ב-Cloud AI"
       },
       "restore": {
         "title": "שחזר רכישות",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "לא ניתן לפתוח קישור זה כרגע.",
       "restoreSuccessTitle": "שוחזר",
       "restoreSuccessMessage": "הרכישות שלך שוחזרו.",
+      "restoreEmptyTitle": "לא נמצאו רכישות",
+      "restoreEmptyMessage": "לא מצאנו רכישה פעילה לשחזור עבור חשבון זה.",
       "restoreErrorTitle": "שחזור נכשל",
       "restoreErrorMessage": "לא הצלחנו לשחזר את הרכישות כעת.",
       "resetConfirmTitle": "לאפס את נתוני האפליקציה?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "מותאם"
     },
+    "notEnoughCoinsTitle": "אין מספיק מטבעות",
+    "notEnoughCoinsMessage": "היתרה הנוכחית שלך נמוכה מדי לתמונה זו.",
     "modelTaglines": {
       "runwareFluxSchnell": "המודל המהיר ביותר",
       "runwareFluxKrea": "תוצאות יצירתיות ומעוצבות",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "שמירה נכשלה",
       "shareFailedTitle": "שיתוף נכשל",
-      "tryAgain": "נא לנסות שוב."
+      "tryAgain": "נא לנסות שוב.",
+      "savedTitle": "נשמר",
+      "savedMessage": "התמונה נשמרה בגלריה שלך.",
+      "permissionTitle": "נדרשת הרשאה",
+      "permissionMessage": "אפשרו גישה לאחסון כדי לשמור תמונות בגלריה."
     },
     "result": {
       "complete": "הכל הושלם"
@@ -498,12 +517,47 @@
       "save": "שמור",
       "share": "שתף"
     },
+    "alerts": {
+      "savedTitle": "נשמר",
+      "savedMessage": "התמונה נשמרה בגלריה שלך.",
+      "permissionTitle": "נדרשת הרשאה",
+      "permissionMessage": "אפשרו גישה לאחסון כדי לשמור תמונות בגלריה.",
+      "saveFailedTitle": "לא ניתן לשמור",
+      "tryAgain": "נסו שוב."
+    },
     "accessibility": {
       "close": "סגור",
       "delete": "מחק תמונה",
       "edit": "ערוך תמונה",
       "save": "שמור תמונה",
       "share": "שתף תמונה"
+    }
+  },
+  "reportContent": {
+    "title": "דיווח על תוכן AI",
+    "subtitle": "ספרו לנו מה הבעיה בתוכן שנוצר.",
+    "privateDisclosure": "השליחה מעבירה את התוכן המדווח לבדיקת בטיחות.",
+    "accessibilityLabel": "דיווח על תוכן AI",
+    "reasons": {
+      "sexual": "תוכן מיני או עירום",
+      "violence_self_harm": "אלימות או פגיעה עצמית",
+      "hate_harassment": "שנאה או הטרדה",
+      "child_safety": "חשש לבטיחות ילדים",
+      "scam_deceptive": "הונאה או תוכן מטעה",
+      "other": "אחר"
+    },
+    "errors": {
+      "reasonRequired": "בחרו סיבה לפני השליחה.",
+      "submit": "לא ניתן לשלוח את הדיווח. נסו שוב."
+    },
+    "success": {
+      "title": "תודה. הדיווח שלך נשלח.",
+      "subtitle": "נשתמש בדיווחים כדי לשפר את בטיחות התוכן."
+    },
+    "actions": {
+      "report": "דיווח",
+      "submit": "שליחת דיווח",
+      "done": "סיום"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "הכירו את",
       "titleHighlight": "Image Studio",
-      "subtitle": "צרו וערכו תמונות באמצעות AI — ישירות בתוך ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "צרו וערכו תמונות באמצעות AI — ישירות בתוך Cloud AI."
     },
     "relaxView": {
       "title": "הכירו את ה-AI שלכם",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "פתרונות AI לארגונים",
       "description": "העצימו את העסק שלכם עם AI מתקדם שתוכנן למקצוענים ולצוותים.",
       "stats": "500K+ משתמשים סומכים עלינו",
@@ -592,10 +645,10 @@
       "value": "המשתלמת ביותר"
     },
     "pack": {
+      "creditsLabel": "{{credits}} מטבעות",
       "tokensLabel": "{{credits}} מטבעות",
       "defaultName": "חבילה {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} מטבעות"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "עברו לפרימיום",
@@ -613,8 +666,28 @@
       "unknownError": "שגיאה לא ידועה"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "נדרש פרימיום",
+    "upgrade": "שדרוג",
+    "modelRequiredMessage": "מודל זה דורש פרימיום. שדרגו כדי לקבל גישה ל-GPT-5, Grok 4, Claude ומודלים מתקדמים נוספים.",
+    "assistantsRequiredMessage": "עוזרים דורשים פרימיום. שדרגו כדי לקבל גישה לעוזרי AI מתמחים לכושר, תכנות, כתיבה ועוד.",
+    "assistantsTitle": "נדרש פרימיום",
+    "assistantsMessage": "עוזרים דורשים פרימיום. שדרגו כדי לקבל גישה לעוזרי AI מתמחים לכושר, תכנות, כתיבה ועוד."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, ‏Grok 4, ‏Veo 3",
+    "close": "סגירת מסך התשלום",
+    "unavailableTitle": "רכישות אינן זמינות",
+    "unavailableMessage": "החיוב ב-Android עדיין לא הוגדר.",
+    "restoreEmptyTitle": "לא נמצאו רכישות",
+    "restoreEmptyMessage": "לא מצאנו רכישה פעילה לשחזור עבור חשבון זה.",
+    "restoreFailedTitle": "השחזור נכשל",
+    "restoreFailedMessage": "לא ניתן לשחזר רכישות כרגע.",
+    "productsUnavailableTitle": "אין תוכניות זמינות",
+    "productsUnavailableMessage": "אין כרגע מוצרי מינוי זמינים ל-Android.",
+    "purchaseFailedTitle": "הרכישה נכשלה",
+    "purchaseFailedMessage": "לא ניתן להשלים את הרכישה כרגע.",
     "restore": "שחזר",
     "restoreRestoring": "משחזר…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "תנאים",
       "privacy": "פרטיות"
+    },
+    "premium": {
+      "headline": "כל AI פרימיום בתוכנית אחת",
+      "subtitleLine1": "צ'אט, קוד, צור ותכנן",
+      "subtitleLine2": "עם דגמים מתקדמים.",
+      "enableTrial": "אפשר ניסיון חינם",
+      "annual": "שנתי",
+      "saveBadge": "חיסכון של 83%",
+      "year": "שנה",
+      "week": "שבוע",
+      "termsOfUse": "תנאי שימוש",
+      "privacyPolicy": "מדיניות פרטיות"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "צור תשובה מחדש",
     "regenerateResponseHint": "צור תשובה חדשה",
     "copyCode": "העתק קוד",
+    "copied": "הועתק",
     "image": "תמונה",
     "loading": "טוען…",
     "loadingChat": "טוען צ'אט...",
     "offlineBanner": "אתה לא מחובר. אי אפשר לשלוח הודעות.",
+    "offlineError": "אין חיבור לאינטרנט. בדקו את החיבור ונסו שוב.",
     "imagePickerErrorTitle": "שגיאת בחירת תמונה",
     "imagePickerErrorMessage": "לא ניתן לגשת לתמונות שלך. נסה שוב.",
     "messageTooLong": "הודעה ארוכה מדי ({{length}}). המגבלה היא {{limit}}.",
     "sendFailed": "שליחה נכשלה.",
     "modelNoImageSupport": "המודל שנבחר אינו תומך בתמונות. אנא בחר מודל אחר.",
     "voiceStartFailed": "לא ניתן להתחיל קול.",
+    "voiceNoSpeechDetected": "לא זוהה קול. נסו שוב.",
     "emptyTitle": "איך אפשר לעזור?",
     "emptySubtitle": "התחל שיחה עם ה-AI",
     "privateTitle": "צ'אט פרטי",
     "privateSubtitle": "צ'אט זה לא יופיע בהיסטוריה שלך",
+    "startPrivateChat": "התחלת צ'אט פרטי",
+    "endPrivateChat": "סיום צ'אט פרטי",
     "permissions": {
       "photosTitle": "נדרשת הרשאה לתמונות",
       "photosMessage": "יש לאפשר גישה לתמונות כדי לבחור.",
@@ -753,7 +843,19 @@
       "share": "שתף",
       "regenerate": "צור מחדש",
       "retryFromHere": "נסה שוב מכאן",
+      "report": "דיווח",
       "cancel": "בטל"
+    },
+    "markdown": {
+      "copy": "העתקה",
+      "copied": "הועתק",
+      "table": "טבלה",
+      "watchVideo": "צפייה בסרטון",
+      "wikipedia": "ויקיפדיה",
+      "link": "קישור",
+      "note": "הערה",
+      "warning": "אזהרה",
+      "tip": "טיפ"
     },
     "messageActionTitle": "הודעה",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "תכנן את היום שלי",
       "planDaySubtitle": "עם טיפים לפרודקטיביות"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "בחר נושא",
       "title": "מה אתה רוצה לעשות?",
@@ -846,81 +946,59 @@
     "library": "ספרייה"
   },
   "common": {
-    "new": "חדש",
-    "best": "הכי טוב",
-    "cancel": "בטל",
-    "save": "שמור",
-    "delete": "מחק",
-    "close": "סגור",
-    "allow": "אפשר",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "ניסיון חוזר",
+    "cancel": "בטל",
+    "allow": "אפשר",
+    "notNow": "לא עכשיו",
+    "openSettings": "פתיחת הגדרות",
+    "close": "סגור",
+    "save": "שמור",
+    "tryAgain": "נסו שוב"
   },
   "rateUs": {
-    "title": "האם אתה נהנה מ-ChatCloud?",
+    "title": "האם אתה נהנה מ-Cloud AI?",
     "subtitle": "המשוב שלך עוזר לנו להשתפר. האם תוכל לדרג אותנו ב-App Store?",
     "rateNow": "דרג עכשיו",
     "maybeLater": "אולי מאוחר יותר",
     "dontAskAgain": "אל תשאל שוב"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "הצעה חד-פעמית",
+    "discount": "{{percent}}% הנחה",
+    "subtitle": "לא תראו את ההצעה הזו שוב.",
     "badgeLine1": "בלעדי",
     "badgeLine2": "הצעה חד פעמית",
     "upgradeNow": "שדרג עכשיו עבור {{price}}",
     "loadingPrice": "טוען...",
     "termsOfUse": "תנאי שימוש",
     "privacyPolicy": "מדיניות פרטיות",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "גישה בלתי מוגבלת אל",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "גישה בלתי מוגבלת ל-GPT-4",
+      "geminiPro": "גישה ל-Gemini Pro",
+      "grokInsights": "השתמשו ב-Grok לתובנות חדשות",
+      "priorityAccess": "גישה מועדפת ותגובות מהירות יותר"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "המשתלם ביותר",
+    "annualPremium": "פרימיום שנתי",
+    "oneTimePayment": "תשלום חד-פעמי",
+    "wasPrice": "במקום",
+    "continue": "המשך",
+    "restore": "שחזור",
+    "terms": "תנאים",
+    "privacy": "פרטיות",
+    "successTitle": "הצלחה!",
+    "successMessage": "תודה על הרכישה! תיהנו מגישת פרימיום ב-12 החודשים הקרובים.",
+    "errorTitle": "הרכישה נכשלה",
+    "errorMessage": "משהו השתבש. נסו שוב.",
+    "restoreSuccessTitle": "שוחזר",
+    "restoreSuccessMessage": "הרכישות שלך שוחזרו.",
+    "restoreErrorTitle": "השחזור נכשל",
+    "restoreErrorMessage": "לא נמצאו רכישות לשחזור.",
+    "unavailableTitle": "רכישות אינן זמינות",
+    "unavailableMessage": "החיוב ב-Android עדיין לא הוגדר."
   },
   "rewards": {
     "header": {
@@ -1033,15 +1111,83 @@
           "lucky": "מזל",
           "pro": "PRO",
           "elite": "ELITE",
-          "mythic": "MYTHIC"
+          "mythic": "מיתיקה"
         }
       }
+    },
+    "checkIn": {
+      "title": "אספו את המטבעות היומיים",
+      "subtitle": "חזרו כל יום - הפרס גדל.",
+      "cta": "צ׳ק-אין",
+      "claimed": "נאסף! +{{amount}} מטבעות",
+      "later": "אחר כך"
     }
+  },
+  "app": {
+    "version": "גרסה {{version}}",
+    "offlineBanner": "אין חיבור לאינטרנט",
+    "launch": {
+      "accessibilityLabel": "מפעיל את Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI זמין בכל רגע"
+    },
+    "errors": {
+      "modelsLoadTitle": "טעינת המודלים נכשלה",
+      "modelsLoadMessage": "לא ניתן לטעון את מודלי ה-AI. האפליקציה תשתמש במודלים ברירת המחדל. בדקו את חיבור האינטרנט.",
+      "modelsLoadTimeout": "טעינת המודלים ארכה זמן רב מדי. האפליקציה תשתמש במודלים ברירת המחדל. נסו שוב.",
+      "modelsLoadNetwork": "אין חיבור לאינטרנט. האפליקציה תשתמש במודלים ברירת המחדל. בדקו את החיבור.",
+      "deviceIdTitle": "שגיאת אתחול",
+      "deviceIdMessage": "אתחול מזהה המכשיר נכשל. ייתכן שחלק מהתכונות לא יפעלו כראוי.",
+      "storageTitle": "שגיאת אחסון",
+      "storageMessage": "לא ניתן לגשת לאחסון המקומי. ייתכן שחלק מהתכונות לא יפעלו כראוי.",
+      "crashTitle": "משהו השתבש.",
+      "crashSubtitle": "נסו שוב.",
+      "crashLabel": "האפליקציה קרסה"
+    },
+    "proxyErrors": {
+      "genericTitle": "משהו השתבש",
+      "genericMessage": "נסו שוב.",
+      "rateLimitTitle": "יותר מדי בקשות",
+      "rateLimitMessage": "אנחנו מטפלים בבקשות רבות כרגע. נסו שוב בעוד רגע.",
+      "rateLimitRetryAfter": "אנחנו מטפלים בבקשות רבות כרגע. נסו שוב בעוד כ-{{seconds}} שניות.",
+      "restrictedTitle": "תוכן מוגבל",
+      "restrictedMessage": "הבקשה נחסמה על ידי מסנני הבטיחות.",
+      "insufficientCoinsTitle": "אין מספיק מטבעות",
+      "insufficientCoinsMessage": "היתרה הנוכחית שלך נמוכה מדי לבקשה זו.",
+      "imageUnavailableTitle": "התמונה אינה זמינה",
+      "imageUnavailableMessage": "קובץ התמונה שנוצר אינו זמין באופן זמני. נסו שוב.",
+      "authorizationTitle": "בעיית הרשאה",
+      "authorizationMessage": "לא הצלחנו לאמת את החשבון שלך. נסו שוב.",
+      "serverTitle": "תקלת שרת",
+      "serverMessage": "השרתים שלנו נתקלו בבעיה. נסו שוב בקרוב.",
+      "timeoutTitle": "זה לוקח יותר מדי זמן",
+      "timeoutMessage": "תם הזמן הקצוב לבקשה. נסו שוב.",
+      "networkTitle": "אין חיבור",
+      "networkMessage": "אין חיבור לאינטרנט. בדקו את החיבור ונסו שוב.",
+      "requestTitle": "בעיה בבקשה",
+      "requestMessage": "משהו השתבש בבקשה שלך. נסו שוב."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "הפעלת פרימיום",
+    "activateMessage": "להפעיל פרימיום לבודקים?",
+    "activateAction": "הפעלה",
+    "deactivateTitle": "השבתת פרימיום",
+    "deactivateMessage": "להשבית פרימיום לבודקים?",
+    "deactivateAction": "השבתה"
   },
   "push": {
     "dailyReward": {
       "title": "פרס יומי",
       "body": "אל תפספס את המטבעות היומיים שלך — אסוף אותם לפני חצות."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "אל תפספסו את המטבעות היומיים",
+      "body": "אנחנו שולחים תזכורת אחת ביום כדי שהרצף יישמר והמטבעות ימשיכו להצטבר. ללא ספאם, ואפשר לכבות בכל רגע.",
+      "enable": "הפעלת תזכורות",
+      "skip": "לא עכשיו"
     }
   }
 }

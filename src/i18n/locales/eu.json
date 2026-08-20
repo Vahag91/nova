@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Aukeratu eredu bat",
+    "searchPlaceholder": "Bilatu ereduak...",
+    "noModelsFound": "Ez da modelorik aurkitu",
+    "noModelsAvailable": "Ez dago modelorik eskuragarri",
+    "currentModel": "Egungo eredua: {{name}}. Ukitu eredua aldatzeko.",
+    "openHint": "Modelo hautatzeko menua irekitzen du",
+    "closeLabel": "Itxi eredu-hautatzailea",
+    "searchLabel": "Bilatu ereduak",
+    "searchHint": "Idatzi eskuragarri dauden modeloak iragazteko",
+    "modelLabel": "{{name}} eredua",
+    "selectHint": "Hautatu {{name}} eredua",
+    "currentlySelected": "Une honetan aukeratutako eredua",
+    "genericModel": "{{provider}} eredua",
+    "badges": {
+      "new": "BERRIA",
+      "best": "ONENA"
+    }
+  },
+  "models": {
+    "gpt-4o": "AI eredu indartsuena",
+    "gpt-4o-mini": "Azkar eguneroko zereginetarako",
+    "gpt-5": "Erabilera guztietako AI indartsuena",
+    "gpt-5-chat-latest": "Txaterako eta elkarrizketarako optimizatuta",
+    "gpt-5-mini": "Azkarra eta fidagarria GPT-5",
+    "gpt-5.4-nano": "Eredu arina zeregin errazetarako",
+    "o4-mini": "Arrazoiketa-eredu eraginkorra",
+    "gpt-4.1-mini": "Trinkoa, gai GPT-4.1",
+    "claude-3-haiku": "AI antropiko azkarra eta bideratua",
+    "claude-3.7-sonnet": "Anthropic-en arrazoiketa findua",
+    "gemini-2.5-Flash": "Googleren eredurik aurreratuena",
+    "gemini-2.5-flash": "Googleren eredurik aurreratuena",
+    "gemini-2.0-flash": "Google AI azkarra eta zehatza"
+  },
+  "modelDescriptions": {
+    "most_powerful": "AI eredu indartsuena",
+    "fast_everyday": "Azkar eguneroko zereginetarako",
+    "fast_reasoning": "Eredu azkarra arrazoibide onarekin",
+    "great_reasoning": "Arrazoiketa-eredu aurreratua",
+    "coding_reasoning": "Kodeketa eta arrazoiketa aurreratua",
+    "better_coding": "Kodetzeko eta arrazoitzeko hobe",
+    "best_overall": "AI eredurik onena",
+    "best_google": "Googleren modelorik onena",
+    "best_xai": "xAIren modelorik indartsuena",
+    "creative_focus": "Sormen-idazketarako bikaina",
+    "code_helper": "Kodetzeko laguntza bikaina",
+    "chat_focus": "Txateatzeko optimizatua",
+    "long_context": "Testuinguru luzeetarako aproposa",
+    "budget_friendly": "Aurrekontua errespetatzen duen AI eredua",
+    "ultra_fast": "Erantzun ultra azkarrak",
+    "safe_default": "Aukera lehenetsi segurua",
+    "multilingual": "Laguntza eleaniztun sendoa",
+    "vision_strong": "Bikaina irudiekin eta ikusmenarekin",
+    "data_analysis": "Datuak aztertzeko egokia",
+    "structured_tasks": "Egituratutako zereginetarako egokia",
+    "everyday_helper": "Eguneroko laguntzaile eredua",
+    "concise_answers": "Erantzun laburrak eta zehatzak",
+    "detailed_answers": "Urratsez urratseko erantzun zehatzak",
+    "experimental": "Hurrengo belaunaldiko eredu esperimentala",
+    "reliable_classic": "Eredu klasiko fidagarria",
+    "lightweight": "Eredu arina eta kostu baxua",
+    "chatty_personal": "Jatorragoa eta pertsonalagoa",
+    "pro_users": "Erabiltzaile boteretsuentzako onena",
+    "research_helper": "Ikerketa eta oharrak egiteko egokia",
+    "reasoning_strong": "Arrazoiketa-eredu aurreratua"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Antropikoa",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Bestela"
+  },
+  "navigation": {
+    "chat": "Txat berria",
+    "history": "Historia",
+    "rewards": "Eguneko Sariak",
+    "assistants": "Laguntzaileak",
+    "imagesStudio": "Image Studio",
+    "settings": "Ezarpenak",
+    "recentChats": "Azken txatak",
+    "proFeatures": "Pro ezaugarriak",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Lortu Pro Ezaugarriak",
+      "subtitle": "AI Ezaugarri guztiak"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Sortu, findu eta argitaratu ikusizko aktiboak leku bakarrean.",
+    "cta": "Ireki"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Aukeratu irudiak",
+    "exitSelectionMode": "Irten hautaketa modutik",
+    "selectAll": "Hautatu Guztiak",
+    "noImagesYet": "Oraindik ez dago irudirik",
+    "describeImageHint": "Deskribatu zure irudia behean eta sakatu Sortu.",
+    "generatedImagesGallery": "Sortutako irudien galeria",
+    "describeImagePlaceholder": "Deskribatu nahi duzun irudia...",
+    "deleteConfirmTitle": "Ezabatu Irudiak",
+    "deleteConfirmMessage": "Ziur hautatutako irudiak ezabatu nahi dituzula? Ekintza hau ezin da desegin.",
+    "cancel": "Utzi",
+    "delete": "Ezabatu",
+    "generate": "Sortu",
+    "generating": "Sortzen…",
+    "latest": "Azkena",
+    "insertToChat": "Txertatu txateatzeko",
+    "pleaseWait": "Mesedez, itxaron...",
+    "processing": "Prozesatzen...",
+    "tapToUploadImage": "Sakatu irudia kargatzeko",
+    "camera": "Kargatu argazkiak",
+    "library": "Liburutegia",
+    "enterPrompt": "Mesedez, idatzi testutik irudira sortzeko gonbita",
+    "openInBrowser": "Ireki arakatzailean",
+    "makeVariations": "Egin aldaerak",
+    "deleteAllFromGeneration": "Ezabatu belaunaldi honetako guztiak",
+    "imageOptionsTitle": "Irudi-aukerak",
+    "imageOptionsMessage": "Zer egin nahiko zenuke irudi honekin?",
+    "insertMarkdownHeader": "Hona hemen irudia:",
+    "variationSuffix": "— Aurreko irudiaren aldakuntza",
+    "selectedCount": "hautatua",
+    "selectedCount_one": "hautatua",
+    "selectedCount_other": "hautatua",
+    "imageDescriptionInput": "Irudiaren deskribapena sarrera",
+    "imageDescriptionHint": "Sartu sortu nahi duzun irudiaren deskribapena",
+    "openModelSettings": "Ireki ereduaren ezarpenak",
+    "modelSettingsHint": "Ukitu eredua eta ezarpenak aldatzeko",
+    "openPhotoGallery": "Ireki argazki galeria",
+    "clearInput": "Garbitu sarrera",
+    "generatedImage": "Sortutako irudia",
+    "autoSelectedModel": "{{model}} automatikoki hautatu da {{mode}} modurako",
+    "deleteSelectedConfirmTitle": "Ezabatu irudiak",
+    "deleteSelectedConfirmMessage": "Ziur irudiak ezabatu nahi dituzula? Ekintza hau ezin da desegin."
+  },
+  "imageStudio": {
+    "generateImage": "Sortu irudia",
+    "generatingImage": "Irudia sortzea",
+    "generateImageHint": "Sakatu zure deskribapenean oinarritutako irudi bat sortzeko",
+    "imageDescriptionInput": "Irudiaren deskribapena sarrera",
+    "imageDescriptionHint": "Sartu sortu nahi duzun irudiaren deskribapena",
+    "openModelSettings": "Ireki ereduaren ezarpenak",
+    "modelSettingsHint": "Ukitu eredua eta ezarpenak aldatzeko",
+    "openPhotoGallery": "Ireki argazki galeria",
+    "clearInput": "Garbitu sarrera",
+    "generatedImage": "Sortutako irudia"
+  },
+  "assistants": {
+    "title": "Laguntzaileak",
+    "defaultTitle": "Laguntzailea",
+    "errorTitle": "Zerbait gaizki joan da",
+    "errorMessage": "Ezin izan da hasi laguntzailea.",
+    "noAssistants": "Ez da laguntzailerik aurkitu kategoria honetan.",
+    "selectAssistantHint": "Ireki laguntzaile-hautatzailea",
+    "subtitle": "Kodeketa, idazketa, analisia, plangintza eta abar egiteko prest dauden AI espezialistak.",
+    "searchPlaceholder": "Bilaketa-laguntzaileak…",
+    "useAssistant": "Erabili Laguntzailea",
+    "selectAssistant": "Aukeratu laguntzailea",
+    "description": "Deskribapena",
+    "systemPrompt": "Sistemaren gonbita",
+    "chooseModel": "Aukeratu Eredua",
+    "categoryAll": "Denak",
+    "categories": {
+      "everyday": "Egunerokoa",
+      "life": "Bizitza",
+      "health": "Osasuna",
+      "schoolWork": "Eskola eta Lana",
+      "coding": "Kodetzea",
+      "creative": "Sortzailea",
+      "general": "Orokorra"
+    },
+    "presets": {
+      "default": {
+        "name": "Laguntzailea lehenetsia",
+        "description": "Eguneroko gauzetarako laguntza orekatua."
+      },
+      "quick": {
+        "name": "Erantzun azkarrak",
+        "description": "Erantzun laburrak eta zuzenak."
+      },
+      "planner": {
+        "name": "Eguneko Planifikatzailea",
+        "description": "Antolatu zure eguna eta errutinak."
+      },
+      "recipes": {
+        "name": "Otorduak eta Errezetak",
+        "description": "Zer sukaldatu, duzunarekin."
+      },
+      "fitness": {
+        "name": "Fitness entrenatzailea",
+        "description": "Ohitura txikiak eta etxeko entrenamenduak."
+      },
+      "money": {
+        "name": "Diru laguna",
+        "description": "Aurrekontu sinpleak eta gastu-aholkuak."
+      },
+      "study": {
+        "name": "Ikasketa Laguntzailea",
+        "description": "Azaldu besterik gabe. Galdetu iezadazu."
+      },
+      "email": {
+        "name": "Posta elektronikoa eta curriculuma",
+        "description": "Idatzi mezu elektroniko argiak eta CV lerroak."
+      },
+      "translator": {
+        "name": "Itzultzailea",
+        "description": "Itzuli + irakatsi esaldiak."
+      },
+      "travel": {
+        "name": "Bidaia Laguna",
+        "description": "Plan sinpleak eta pakete-zerrendak."
+      },
+      "tech": {
+        "name": "Laguntza teknikoa (erraza)",
+        "description": "Telefonoa, aplikazioak, Wi-Fiaren oinarriak."
+      },
+      "summarizer": {
+        "name": "TL;DR Laburpena",
+        "description": "Bala laburrak + lerro bateko TL;DR."
+      },
+      "gift": {
+        "name": "Opari bilatzailea",
+        "description": "Ideiak aurrekontuaren eta interesen arabera."
+      },
+      "party": {
+        "name": "Gertaeren Antolatzailea (Lite)",
+        "description": "Antolatu festa txiki bat azkar."
+      },
+      "social": {
+        "name": "Social Post Maker",
+        "description": "Aukerak dituzten mezuen zirriborroak."
+      },
+      "interview": {
+        "name": "Elkarrizketa entrenatzailea",
+        "description": "Praktikatu erantzunak (IZARRA)."
+      },
+      "homefix": {
+        "name": "Hasiera Fix-It Gida",
+        "description": "DIY arazoak konpontzeko sinplea."
+      },
+      "pet": {
+        "name": "Maskotak zaintzeko laguna",
+        "description": "Elikadura, ibilaldiak, oinarrizko prestakuntza."
+      },
+      "mindful": {
+        "name": "Minutu Kontuan izan",
+        "description": "1-3 minutuko atsedenaldi lasaia."
+      },
+      "polite": {
+        "name": "Berridazle adeitsua",
+        "description": "Berridatzi testuak eta erantzunak ondo."
+      }
+    }
+  },
+  "history": {
+    "title": "Historia",
+    "searchPlaceholder": "Bilatu txatak…",
+    "newChat": "Txat berria",
+    "new": "+ Berria",
+    "search": "Bilatu",
+    "clearSearch": "Garbitu bilaketa",
+    "noChatsYet": "Oraindik ez dago txatarik",
+    "noResults": "Oraindik ez dago txatarik",
+    "startFirstConversation": "Hasi zure lehen elkarrizketa.",
+    "startChat": "Hasi berriketa",
+    "startNewChat": "Hasi berriketa berri bat",
+    "errorLoadingHistory": "Errore bat gertatu da historia kargatzean",
+    "loading": "Historia kargatzen...",
+    "renameChat": "Berriendatu txata",
+    "enterNewTitle": "Idatzi izenburu berri bat",
+    "deleteChat": "Txata ezabatu?",
+    "deleteChatMessage": "\"{{title}}\" ezabatu egingo da.",
+    "rename": "Aldatu izena",
+    "unpin": "Ainguratu",
+    "pin": "Pin",
+    "untitled": "Izenbururik gabe"
+  },
+  "settings": {
+    "title": "Ezarpenak",
+    "model": "Eredua",
+    "searchPlaceholder": "Bilatu ereduak…",
+    "temperatureForCurrentModel": "Egungo modelorako tenperatura",
+    "customFor": "Pertsonalizatua {{model}}",
+    "usingDefault": "{{temperature}} lehenetsia erabiliz",
+    "resetToDefault": "Berrezarri lehenespenera",
+    "defaultTemperature": "Tenperatura lehenetsia (erresistentzia)",
+    "usedByModelsWithoutOverride": "Ezaugarri pertsonalizaturik gabeko modeloek erabiltzen dute",
+    "dangerZone": "Arrisku eremua",
+    "clearAllChatsAndSettings": "Garbitu txat eta ezarpen guztiak",
+    "about": "Buruz",
+    "version": "{{version}}{{status}} bertsioa",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Pribatutasun-politika",
+    "hero": {
+      "label": "Eskaintza berezia",
+      "title": "Sarbide mugagabea\n& Pro Ezaugarriak",
+      "upgrade": "Berritu",
+      "manage": "Kudeatu plana"
+    },
+    "sections": {
+      "premium": "Premium Plana",
+      "data": "Erabiltzailearen datuak",
+      "support": "Laguntza eta legala"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Lortu Premium",
+        "subtitle": "Desblokeatu mugarik gabeko sorkuntza tresnak"
+      },
+      "premiumActive": {
+        "title": "Premium Aktiboa",
+        "subtitle": "Eskerrik asko Cloud AI laguntzeagatik"
+      },
+      "restore": {
+        "title": "Berrezarri erosketak",
+        "subtitle": "Erabili gailuz aldatu baduzu"
+      },
+      "history": {
+        "title": "Kudeatu txat-historia",
+        "subtitle": "Ikusi eta ezabatu iraganeko saioak"
+      },
+      "reset": {
+        "title": "Berrezarri txatak eta hobespenak",
+        "subtitle": "Gailu honetan gordetako datu guztiak garbitzen ditu"
+      },
+      "rate": {
+        "title": "Baloratu gaitzazu",
+        "error": "Ezin da denda orria ireki."
+      },
+      "support": {
+        "title": "Laguntza",
+        "subtitle": "Jarri gurekin harremanetan sarean",
+        "error": "Ezin da ireki kontaktuen orria."
+      },
+      "privacy": {
+        "title": "Pribatutasun-politika",
+        "error": "Ezin da pribatutasun-politika ireki."
+      },
+      "terms": {
+        "title": "Erabilera-baldintzak",
+        "error": "Ezin dira ireki erabilera-baldintzak."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Ez dago erabilgarri",
+      "linkUnavailableMessage": "Ezin da esteka hau ireki une honetan.",
+      "restoreSuccessTitle": "Zaharberritua",
+      "restoreSuccessMessage": "Zure erosketak leheneratu dira.",
+      "restoreEmptyTitle": "Ez da erosketarik aurkitu",
+      "restoreEmptyMessage": "Ezin izan dugu aurkitu kontu honetarako leheneratzeko erosketa aktiborik.",
+      "restoreErrorTitle": "Berreskuratu huts egin du",
+      "restoreErrorMessage": "Ezin dira erosketak leheneratu une honetan.",
+      "resetConfirmTitle": "Aplikazioaren datuak berrezarri?",
+      "resetConfirmMessage": "Honek txat eta tokiko hobespen guztiak kentzen ditu.",
+      "resetConfirmCancel": "Utzi",
+      "resetConfirmCta": "Berrezarri"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Sortu",
+    "chooseStyle": "Aukeratu Estilo bat",
+    "aspectRatio": "Aspektu-erlazioa",
+    "starterPrompts": {
+      "title": "Hasierako abisuak",
+      "items": [
+        "estudioko buruko argazkia",
+        "egongela modernoa",
+        "hondartza tropikala ilunabarrean"
+      ]
+    },
+    "promptPlaceholder": "Idatzi ikusi nahi duzuna…",
+    "promptHint": "Adibidea: \"Golden Retriever estudioko argiztapenean\"",
+    "clearText": "Testu garbia",
+    "generate": "Sortu",
+    "generating": "Sortzen…"
+  },
+  "editImage": {
+    "headerTitle": "Editatu",
+    "chooseStyle": "Aukeratu Estilo bat",
+    "aspectRatio": "Aspektu-erlazioa",
+    "starterPrompts": {
+      "title": "Hasierako abisuak",
+      "items": [
+        "argiztapena konpondu",
+        "kendu atzeko planoa",
+        "erretratu leuna ukitzea"
+      ]
+    },
+    "promptPlaceholder": "Deskribatu aldaketak (aukerakoa)",
+    "clearText": "Testu garbia",
+    "generate": "Sortu",
+    "generating": "Aplikatzen…",
+    "upload": {
+      "choose": "Aukeratu Argazkia",
+      "change": "Aldatu",
+      "remove": "Kendu"
+    },
+    "imageUnavailable": {
+      "title": "Irudia ez dago erabilgarri",
+      "message": "Ezin izan da hautatutako argazkia atzitu. Mesedez, berriro hautatu eta saiatu berriro."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Animea"
+      },
+      "cartoon": {
+        "name": "Marrazki bizidunak"
+      },
+      "photoreal": {
+        "name": "Fotoreala"
+      },
+      "sketch": {
+        "name": "Zirriborroa"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D Ilustrazioa"
+      },
+      "dark_fantasy": {
+        "name": "Fantasia Iluna"
+      },
+      "vintage_film": {
+        "name": "Vintage Filma"
+      },
+      "pastel": {
+        "name": "Pastel Estetika"
+      },
+      "neon_glow": {
+        "name": "Neon Glow"
+      },
+      "epic_landscape": {
+        "name": "Paisaia epikoa"
+      }
+    },
+    "aspectRatios": {
+      "square": "Plaza",
+      "landscape": "Paisaia",
+      "portrait": "Erretratua"
+    },
+    "models": {
+      "fluxKontent": "Flux Kontent",
+      "custom": "Pertsonalizatua"
+    },
+    "notEnoughCoinsTitle": "Txanpon nahikorik ez",
+    "notEnoughCoinsMessage": "Uneko saldoa baxuegia da irudi honetarako.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Eredurik azkarrena",
+      "runwareFluxKrea": "Emaitza sortzaile eta estilizatuak",
+      "runwareQwenImage": "Emaitza orekatuak eta kalitate handikoak",
+      "google4": "AI irudi eredu onena",
+      "klingImageO1": "Kontrol handiko irudien edizioa",
+      "fluxKontent": "Flux Kontent aldaketetarako sintonizatuta",
+      "runwareProvider": "Kalitate orekatua difusio fidagarriarekin.",
+      "airProvider": "Nano Bananak tonu ludiko eta bizia gehitzen du.",
+      "googleProvider": "Google-k xehetasun leunduetarako sintonizatu du.",
+      "klingaiProvider": "KlingAI kontrolatutako edizioetarako sintonizatu da.",
+      "anthropicProvider": "Claude ñabardura-aldarteetarako kanalizazioa.",
+      "default": "Ukitu erabilgarri dauden motorrak arakatzeko."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "aukeratu duzun estiloa",
+    "sheetTitle": "Zure ikuspegia lantzen",
+    "sheetSubtitle": "Zerbitzariko kafeari trago laburra {{style}} gonbidapenean nahasten dugun bitartean.",
+    "phases": {
+      "blend": "{{style}} nahasten",
+      "paint": "Eszena margotzea",
+      "finish": "Azken leuna gehitzea"
+    },
+    "actions": {
+      "cancel": "Utzi",
+      "retry": "Saiatu berriro",
+      "close": "Itxi"
+    },
+    "errors": {
+      "restrictedTitle": "Edukia mugatua",
+      "genericTitle": "Belaunaldiak huts egin du",
+      "genericMessage": "Ezin izan da irudia sortu."
+    },
+    "alerts": {
+      "saveFailedTitle": "Ezin izan da gorde",
+      "shareFailedTitle": "Ezin izan da partekatu",
+      "tryAgain": "Mesedez, saiatu berriro.",
+      "savedTitle": "Gorde",
+      "savedMessage": "Irudia zure galerian gorde da.",
+      "permissionTitle": "Baimena behar da",
+      "permissionMessage": "Eman biltegiratzeko sarbidea irudiak galerian gordetzeko."
+    },
+    "result": {
+      "complete": "Dena bukatuta"
+    },
+    "accessibility": {
+      "close": "Itxi"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Ezabatu",
+      "edit": "Editatu",
+      "save": "Gorde",
+      "share": "Partekatu"
+    },
+    "alerts": {
+      "savedTitle": "Gordetuta",
+      "savedMessage": "Irudia zure galerian gorde da.",
+      "permissionTitle": "Baimena behar da",
+      "permissionMessage": "Eman biltegiratzeko sarbidea irudiak galerian gordetzeko.",
+      "saveFailedTitle": "Ezin izan da gorde",
+      "tryAgain": "Mesedez, saiatu berriro."
+    },
+    "accessibility": {
+      "close": "Itxi",
+      "delete": "Ezabatu irudia",
+      "edit": "Editatu irudia",
+      "save": "Gorde irudia",
+      "share": "Partekatu irudia"
+    }
+  },
+  "reportContent": {
+    "title": "Salatu AI edukia",
+    "subtitle": "Esaiguzu zer gaizki dagoen sortutako eduki honekin.",
+    "privateDisclosure": "Bidaltzeak jakinarazitako eduki hau segurtasuna berrikusteko bidaltzen du.",
+    "accessibilityLabel": "Salatu AI edukia",
+    "reasons": {
+      "sexual": "Sexu- edo biluztasun-edukia",
+      "violence_self_harm": "Indarkeria edo autokaltea",
+      "hate_harassment": "Gorrotoa edo jazarpena",
+      "child_safety": "Haurren segurtasunaren kezka",
+      "scam_deceptive": "Iruzurra edo eduki engainagarria",
+      "other": "Bestela"
+    },
+    "errors": {
+      "reasonRequired": "Mesedez, aukeratu arrazoi bat bidali aurretik.",
+      "submit": "Ezin izan da txostena bidali. Mesedez, saiatu berriro."
+    },
+    "success": {
+      "title": "Eskerrik asko. Zure txostena bidali da.",
+      "subtitle": "Txostenak erabiliko ditugu edukien segurtasuna hobetzeko."
+    },
+    "actions": {
+      "report": "Txostena",
+      "submit": "Txostena aurkeztu",
+      "done": "Eginda"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Ireki menua",
+      "selectImages": "Aukeratu irudiak",
+      "exitSelection": "Irten aukeraketa",
+      "deleteSelected": "Ezabatu hautatutako irudiak",
+      "selectToDelete": "Hautatu ezabatzeko irudiak"
+    },
+    "createCard": {
+      "title": "Sortu Testutik",
+      "subtitle": "Idatzi deskribapen bat",
+      "cta": "Deskribatu & Sortu"
+    },
+    "editCard": {
+      "title": "AI Photo Editor",
+      "subtitle": "Eraldatu eta hobetu AI-rekin",
+      "cta": "Editatu AI-rekin"
+    },
+    "gallery": {
+      "title": "Galeria",
+      "empty": "Oraindik ez dago irudirik",
+      "selection": {
+        "enter": "Aukeratu irudiak",
+        "exit": "Irten aukeraketa",
+        "deleteSelected": "Ezabatu hautatutako irudiak",
+        "selectForDelete": "Hautatu ezabatzeko irudiak"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Ezagutu",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Sortu eta editatu irudiak AI-rekin, bertan Cloud AI."
+    },
+    "relaxView": {
+      "title": "Ezagutu zure AI",
+      "titleHighlight": "Laguntzaileak",
+      "subtitle": "AI aditu espezializatuak zure eguneroko beharretan laguntzeko prest",
+      "cards": {
+        "fitness": {
+          "title": "Fitness entrenatzailea",
+          "text": "Ohitura txikiak eta etxeko entrenamenduak."
+        },
+        "recipes": {
+          "title": "Otorduak eta Errezetak",
+          "text": "Zer sukaldatu, duzunarekin."
+        },
+        "travel": {
+          "title": "Bidaia Laguna",
+          "text": "Plan sinpleak eta pakete-zerrendak."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ENPRESA-MAILAKO AI SOLUZIOAK",
+      "description": "Ahaldu zure negozioa enpresetako profesionalentzat eta taldeentzat diseinatutako adimen artifizialaren puntako teknologiarekin.",
+      "stats": "500.000 erabiltzaile baino gehiagok fidatzen dute",
+      "rating": "4,9 / 5",
+      "button": "Hasi"
+    },
+    "buttons": {
+      "continue": "Jarraitu",
+      "start": "Has gaitezen"
+    }
+  },
+  "coinStore": {
+    "title": "Lortu kredituak",
+    "loading": "Txanpon-denda kargatzen…",
+    "balanceLabel": "Zure egungo saldoa da",
+    "balanceValue": "{{amount}} Kredituak",
+    "history": {
+      "link": "Transakzioen Historia",
+      "alertTitle": "Historia",
+      "alertBody": "Laster izango da transakzioen historia."
+    },
+    "noPacks": "Ez dago txanpon paketerik eskuragarri. Egiaztatu zure RevenueCat eskaintzaren id.",
+    "badges": {
+      "basic": "Oinarrizko paketea",
+      "popular": "Ezagunenak",
+      "value": "Balio onena"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Kredituak",
+      "tokensLabel": "{{credits}} Kredituak",
+      "defaultName": "Paketa {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Joan Premium",
+      "subtitle": "Sarbide eta funtzio mugagabeak",
+      "cta": "Berritu"
+    },
+    "termsText": "Erosketa bat eginez, gurea onartzen duzu",
+    "termsLink": "Zerbitzu-baldintzak",
+    "alerts": {
+      "initErrorTitle": "Hasierako errorea",
+      "genericMessage": "Zerbait gaizki joan da.",
+      "successTitle": "Arrakasta",
+      "successMessage": "Kredituak laster agertuko dira.",
+      "purchaseFailedTitle": "Erosketak huts egin du",
+      "unknownError": "Errore ezezaguna"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Beharrezkoa",
+    "upgrade": "Berritu",
+    "modelRequiredMessage": "Eredu honek Premium behar du. Berritu GPT-5, Grok 4, Claude eta eredu aurreratuagoetara sartzeko.",
+    "assistantsRequiredMessage": "Laguntzaileek Premium behar dute. Bertsio-berritu AI laguntzaile espezializatuetara sartzeko, fitness, kodeketa, idazketa eta abar.",
+    "assistantsTitle": "Premium Beharrezkoa",
+    "assistantsMessage": "Laguntzaileek Premium behar dute. Bertsio-berritu AI laguntzaile espezializatuetara sartzeko, fitness, kodeketa, idazketa eta abar."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Itxi paywall",
+    "unavailableTitle": "Erosketak ez daude erabilgarri",
+    "unavailableMessage": "Android fakturazioa ez dago oraindik konfiguratuta.",
+    "restoreEmptyTitle": "Ez da erosketarik aurkitu",
+    "restoreEmptyMessage": "Ezin izan dugu aurkitu kontu honetarako leheneratzeko erosketa aktiborik.",
+    "restoreFailedTitle": "Berreskuratu huts egin du",
+    "restoreFailedMessage": "Ezin dira erosketak leheneratu une honetan.",
+    "productsUnavailableTitle": "Ez dago planik eskuragarri",
+    "productsUnavailableMessage": "Une honetan ez dago Android harpidetza produkturik erabilgarri.",
+    "purchaseFailedTitle": "Erosketak huts egin du",
+    "purchaseFailedMessage": "Ezin da erosketa osatu une honetan.",
+    "restore": "Berreskuratu",
+    "restoreRestoring": "Leheneratzen…",
+    "features": {
+      "create": "Sortu irudiak eta bideoak",
+      "search": "Bilatu sarean AIarekin",
+      "talk": "Hitz egin modu naturalean AIrekin",
+      "imageStudio": "Lortu Image Studio {{credits}} kredituak {{period}}",
+      "period": {
+        "weekly": "astero",
+        "monthly": "hilero",
+        "yearly": "urtero"
+      }
+    },
+    "freeTrial": {
+      "title": "Doako proba",
+      "subtitle": "3 eguneko doako proba"
+    },
+    "badge": {
+      "bestOffer": "Eskaintza onena"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Urtero",
+        "only": "Bakarrik {{price}}",
+        "defaultPrice": "79,99 USD",
+        "defaultIntroPrice": "1,35 USD"
+      },
+      "monthly": {
+        "title": "Hilerokoa",
+        "subtitle": "Utzi edonoiz",
+        "defaultPrice": "19,99 USD"
+      },
+      "weekly": {
+        "title": "Asterokoa",
+        "subtitle": "Utzi edonoiz",
+        "defaultPrice": "9,99 USD",
+        "trialThen": "3 egun doan, orduan"
+      }
+    },
+    "frequency": {
+      "perWeek": "astean",
+      "perMonth": "hilean"
+    },
+    "cta": "Jarraitu",
+    "ctaFreeTrial": "Probatu Doan",
+    "legal": {
+      "terms": "Baldintzak",
+      "privacy": "Pribatutasuna"
+    },
+    "premium": {
+      "headline": "Premium AI guztia plan bakarrean",
+      "subtitleLine1": "Txateatu, kodetu, sortu eta planifikatu",
+      "subtitleLine2": "eredu aurreratuekin.",
+      "enableTrial": "Gaitu doako proba",
+      "annual": "Urtekoa",
+      "saveBadge": "Aurreztu %83",
+      "year": "urtea",
+      "week": "astea",
+      "termsOfUse": "Erabilera-baldintzak",
+      "privacyPolicy": "Pribatutasun politika"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mezua...",
+    "createImages": "Sortu Irudiak",
+    "generateAiArtwork": "Sortu AI artelanak",
+    "camera": "Kargatu argazkiak",
+    "takeOrSelectPhotos": "Aukeratu argazkiak",
+    "search": "Bilatu",
+    "findInformation": "Bilatu informazioa",
+    "findRecentInfo": "Aurkitu azken informazioa",
+    "removeImage": "Kendu irudia",
+    "messageInput": "Mezuaren sarrera",
+    "clearInput": "Garbitu sarrera",
+    "quickActionsLabel": "Ekintza azkarrak",
+    "hideQuickActions": "Ezkutatu ekintza azkarrak",
+    "showQuickActions": "Erakutsi ekintza azkarrak",
+    "startVoiceInput": "Hasi ahots bidezko idazketa",
+    "sendMessage": "Bidali mezua",
+    "offline": "Lineaz kanpo",
+    "stop": "Gelditu",
+    "streaming": "Erreproduzitzen…",
+    "closeRecorder": "Itxi grabagailua",
+    "insertTranscript": "Bidali",
+    "scrollToLatest": "Joan azken mezura",
+    "copyMessage": "Kopiatu mezua",
+    "copyMessageHint": "Kopiatu mezu hau arbelean",
+    "shareMessage": "Partekatu mezua",
+    "shareMessageHint": "Partekatu mezu hau",
+    "regenerateResponse": "Birsortu erantzuna",
+    "regenerateResponseHint": "Sortu erantzun berri bat",
+    "copyCode": "Kopiatu kodea",
+    "copied": "Kopiatua",
+    "image": "irudia",
+    "loading": "Kargatzen…",
+    "loadingChat": "Txata kargatzen...",
+    "offlineBanner": "Lineaz kanpo zaude. Ezin dira mezuak bidali.",
+    "offlineError": "Ez dago Interneteko konexiorik. Mesedez, egiaztatu zure konexioa eta saiatu berriro.",
+    "imagePickerErrorTitle": "Irudi-hautatzailearen errorea",
+    "imagePickerErrorMessage": "Ezin dira atzitu zure argazkiak. Mesedez, saiatu berriro.",
+    "messageTooLong": "Mezua luzeegia ({{length}}). Muga {{limit}} da.",
+    "sendFailed": "Ezin izan da mezua bidali. Mesedez, saiatu berriro.",
+    "modelNoImageSupport": "Hautatutako ereduak ez ditu irudiak onartzen. Mesedez, aukeratu beste eredu bat.",
+    "voiceStartFailed": "Ezin izan da ahotsa hasi.",
+    "voiceNoSpeechDetected": "Ez zen ahotsik ezagutu. Mesedez, saiatu berriro.",
+    "emptyTitle": "Nola lagundu dezaket?",
+    "emptySubtitle": "Hasi elkarrizketa bat AI-rekin",
+    "privateTitle": "Txat pribatua",
+    "privateSubtitle": "Txat hau ez da zure txat historian agertuko",
+    "startPrivateChat": "Hasi txat pribatua",
+    "endPrivateChat": "Amaitu txat pribatua",
+    "permissions": {
+      "photosTitle": "Argazkiak Baimena Beharrezkoa",
+      "photosMessage": "Argazkietarako sarbidea behar da irudiak aukeratzeko.",
+      "voiceTitle": "Ahots-baimenak behar dira",
+      "voiceMessage": "Ahotsa erabiltzeko, mikrofonoa eta ahotsa atzitzea beharrezkoa da."
+    },
+    "activity": {
+      "analyzingImages": "Irudiak aztertzen…",
+      "searching": "Bilatzen…",
+      "thinking": "Pentsatzen…"
+    },
+    "webSearch": {
+      "title": "Web bilaketa",
+      "subtitle": "Aurkitu azken informazioa",
+      "label": "Web Bilaketa",
+      "enable": "Gaitu web bilaketa",
+      "disable": "Desgaitu web bilaketa",
+      "toggleLabel": "Bilatu sarean"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Diseina ezazu bisualak abiaduran.",
+      "subtitle": "Sortu, findu eta argitaratu ikusizko aktiboak leku bakarrean.",
+      "cta": "Ireki"
+    },
+    "quickActions": {
+      "createImages": "Sortu Irudiak",
+      "openCamera": "Ireki Kamera",
+      "editImage": "Editatu Irudia",
+      "startVoice": "Hasi Voice",
+      "assistants": "Laguntzaileak"
+    },
+    "listening": "Entzuten...",
+    "startRecording": "Hasi grabatzen…",
+    "assistantHeader": {
+      "unavailableTitle": "Laguntzailea ez dago erabilgarri",
+      "unavailableDescription": "Ezin izan dugu kargatu laguntzailea. Mesedez, saiatu berriro.",
+      "ready": "Laguntzeko prest"
+    },
+    "actions": {
+      "copy": "Kopiatu",
+      "share": "Partekatu",
+      "regenerate": "Birsortu",
+      "retryFromHere": "Saiatu berriro hemendik",
+      "report": "Txostena",
+      "cancel": "Utzi"
+    },
+    "markdown": {
+      "copy": "Kopiatu",
+      "copied": "Kopiatua",
+      "table": "TAULA",
+      "watchVideo": "Ikusi bideoa",
+      "wikipedia": "Wikipedia",
+      "link": "Esteka",
+      "note": "Oharra",
+      "warning": "Abisua",
+      "tip": "Aholkua"
+    },
+    "messageActionTitle": "Mezua",
+    "status": {
+      "sending": "Bidaltzen…",
+      "failed": "Huts egin du",
+      "sent": "Bidali"
+    },
+    "suggestions": {
+      "writeStory": "Sormenezko istorio bat idatzi",
+      "writeStorySubtitle": "abentura magiko bati buruz",
+      "planTravel": "Planifikatu bidaia-ibilbidea",
+      "planTravelSubtitle": "opor harrigarri baterako",
+      "explainConcept": "Azaldu kontzeptu hau",
+      "explainConceptSubtitle": "termino sinpleetan",
+      "planDay": "Antolatu nire eguna",
+      "planDaySubtitle": "produktibitate aholkuekin"
+    },
+    "home": {
+      "eyebrow": "Aukeratu gai bat",
+      "title": "Zer egin nahi duzu?",
+      "subtitle": "Aukeratu norabide bat, eta hasi gonbita indartsu batekin.",
+      "pickPromptTitle": "Aukeratu gonbita hasteko",
+      "changeTopic": "Aukeratu beste gai bat",
+      "intents": {
+        "summarize": "Testua laburtzea",
+        "summarizeShort": "Laburtu",
+        "summarizeHint": "Artikuluak, oharrak, ahots-oharrak, hari luzeak",
+        "plan": "Egin plan bat",
+        "planHint": "Bidaiak, errutinak, aurrekontuak, epeak, bizitza aldaketak",
+        "brainstorm": "Brainstorm",
+        "brainstormHint": "Ideiak, eskaintzak, izenak, edukiak, alboko proiektuak",
+        "analyze": "Datuak aztertu",
+        "analyzeHint": "Gastua, iritzia, neurketak, ohiturak, errendimendua"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Sortu sortzailearen laburpena",
+          "founderBriefSubtitle": "Arrisku nagusiak, erabakiak eta hurrengo urratsak atera.",
+          "classNotesTitle": "Garbitu nire ikasketa oharrak",
+          "classNotesSubtitle": "Bihurtu ohar zakarrak ikasketa-gida argi batean.",
+          "meetingHandoffTitle": "Idatzi eskualdaketaren laburpena",
+          "meetingHandoffSubtitle": "Bileren, deien edo barne-hari luzeen ostean erabilgarria.",
+          "longArticleTitle": "Laburtu artikulu hau azkar",
+          "longArticleSubtitle": "Artikulu luze bat laburbildu zorrotzetan."
+        },
+        "plan": {
+          "energyResetTitle": "Eraiki 14 eguneko energia berrezartzea",
+          "energyResetSubtitle": "Lo egiteko, elikadurarako, mugimendurako eta arretarako plan errealista.",
+          "mealPlanTitle": "Planifikatu otorduak benetan prestatuko ditudan",
+          "mealPlanSubtitle": "Praktikoa, merkean eta dudanean oinarrituta.",
+          "cityMoveTitle": "Planifikatu nire mugitzea hiri berri batera",
+          "cityMoveSubtitle": "Banatu denbora-lerroa, aurrekontua, etxebizitza eta administrazio-zereginetan.",
+          "tripEscapeTitle": "Antolatu asteburuko ihesaldi gogoangarri bat",
+          "tripEscapeSubtitle": "Ibilbide generiko bat baino zerbait hobea."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Aurkitu alboko zalaparta errealista bat",
+          "sideHustleSubtitle": "Lanaldi osoan lanean hasi ahal izango ditudan ideiak.",
+          "brandAngleTitle": "Aurkitu marka angelu gogoangarria",
+          "brandAngleSubtitle": "Produktu, sortzaile, agentzi edo buletinetarako erabilgarria.",
+          "socialSeriesTitle": "Asmatu eduki serie bat",
+          "socialSeriesSubtitle": "Publikoa hazteko nahikoa koherentea den zerbait.",
+          "datingIdeasTitle": "Etorri ideia freskoekin",
+          "datingIdeasSubtitle": "Datak, opariak, sorpresak edo pentsakor sentitzen diren ekitaldiak."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Aurkitu nire dirua nondik isurtzen ari den",
+          "spendingLeaksSubtitle": "Erakutsi ereduak, puntu ahulak eta garaipen errazenak lehenik.",
+          "customerFeedbackTitle": "Bihurtu iritzia lehentasunetan",
+          "customerFeedbackSubtitle": "Kluster eskaerak, kexak, urgentzia eta eragina.",
+          "habitPatternsTitle": "Aurkitu ereduak nire ohituretan",
+          "habitPatternsSubtitle": "Entrenamenduetarako, lo egiteko, egunkarietarako edo fokatze-erregistroetarako erabilgarria.",
+          "metricsStoryTitle": "Azaldu zer esan nahi duten zenbakiek",
+          "metricsStorySubtitle": "Seinale gehiago, kalkulu-orriko zarata gutxiago."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Prozesatzen...",
+    "tapToUploadImage": "Sakatu irudia kargatzeko"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Prozesatzen...",
+    "camera": "Kargatu argazkiak",
+    "library": "Liburutegia"
+  },
+  "common": {
+    "ok": "Ados",
+    "retry": "Saiatu berriro",
+    "cancel": "Utzi",
+    "allow": "Baimendu",
+    "notNow": "Orain ez",
+    "openSettings": "Ireki Ezarpenak",
+    "close": "Itxi",
+    "save": "Gorde",
+    "tryAgain": "Saiatu berriro"
+  },
+  "rateUs": {
+    "title": "Cloud AI gozatzen?",
+    "subtitle": "Zure iritziak hobetzen laguntzen digu. Gustatuko litzaizuke App Store-n baloratzea?",
+    "rateNow": "Baloratu orain",
+    "maybeLater": "Agian Geroago",
+    "dontAskAgain": "Ez galdetu berriro"
+  },
+  "oneTimeOffer": {
+    "title": "Behin-behineko eskaintza",
+    "discount": "{{percent}}% DESKONTUA",
+    "subtitle": "Ez duzu eskaintza hau berriro ikusiko.",
+    "badgeLine1": "Esklusiboa",
+    "badgeLine2": "Behin-behineko eskaintza",
+    "upgradeNow": "Berritu orain {{price}}",
+    "loadingPrice": "Kargatzen...",
+    "termsOfUse": "Erabilera-baldintzak",
+    "privacyPolicy": "Pribatutasun-politika",
+    "accessTitle": "Sarbide mugagabea",
+    "accessSubtitle": "GPT, Gemini eta Grok 4",
+    "features": {
+      "unlimitedGPT4": "Sarbide mugagabea GPT-4",
+      "geminiPro": "Sarbidea Gemini Pro",
+      "grokInsights": "Erabili Grok informazio freskorako",
+      "priorityAccess": "Lehentasunezko sarbidea eta erantzun azkarragoak"
+    },
+    "bestValue": "Balio onena",
+    "annualPremium": "Urteko Prima",
+    "oneTimePayment": "Ordainketa bakarra",
+    "wasPrice": "zen",
+    "continue": "Jarraitu",
+    "restore": "Berreskuratu",
+    "terms": "Baldintzak",
+    "privacy": "Pribatutasuna",
+    "successTitle": "Arrakasta!",
+    "successMessage": "Eskerrik asko erosketagatik! Gozatu premium sarbidea datozen 12 hilabeteetan.",
+    "errorTitle": "Erosketak huts egin du",
+    "errorMessage": "Zerbait gaizki joan da. Mesedez, saiatu berriro.",
+    "restoreSuccessTitle": "Zaharberritua",
+    "restoreSuccessMessage": "Zure erosketak leheneratu dira.",
+    "restoreErrorTitle": "Berrezarri huts egin du",
+    "restoreErrorMessage": "Ez da aurkitu leheneratzeko erosketarik.",
+    "unavailableTitle": "Erosketak ez daude erabilgarri",
+    "unavailableMessage": "Android fakturazioa ez dago oraindik konfiguratuta."
+  },
+  "rewards": {
+    "header": {
+      "title": "Sariak",
+      "openMenu": "Ireki menua",
+      "goBack": "Atzera egin"
+    },
+    "pointsHero": {
+      "totalBalance": "GUZTIRA SALDOA",
+      "seeYourRewards": "Ikusi zure sariak"
+    },
+    "streakTracker": {
+      "title": "Eguneko Marra",
+      "subtitle": "Jarrai horrela! Sutan zaude.",
+      "days": "Egunak",
+      "prize": "Saria",
+      "dayLabel": "Eguna {{number}}",
+      "nextReward": "Hurrengo saria: {{amount}} {{time}}",
+      "coins": "Txanponak"
+    },
+    "sections": {
+      "availableQuests": "Eskuragarri dauden bilaketak",
+      "completedQuests": "Egindako bilaketak",
+      "availableRewards": "Eskuragarri dauden sariak",
+      "needsMoreCoins": "Txanpon gehiago behar ditu"
+    },
+    "balances": {
+      "rewardCoins": "Sari txanponak",
+      "imageCredits": "Irudi-kredituak"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 irudi-kreditu",
+        "imageCredits200": "200 irudi-kreditu",
+        "imageCredits600": "600 irudi-kreditu",
+        "weeklyPremium": "Asteko Premium",
+        "secretBox": "Kutxa sekretua"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Misteriozko sariak barruan"
+      },
+      "alerts": {
+        "comingSoonTitle": "Laster",
+        "comingSoonMessage": "Sari hau oraindik ez dago erabilgarri.",
+        "notEnoughCoinsTitle": "Txanpon nahikorik ez",
+        "notEnoughCoinsMessage": "Sari-txanpon gehiago behar dituzu sari hau desblokeatzeko.",
+        "errorTitle": "Errorea",
+        "couldNotOpenBox": "Ezin izan da kutxa ireki.",
+        "couldNotRedeem": "Ezin izan da saria trukatu. Mesedez, saiatu berriro.",
+        "mysteryReward": "Misterioaren saria"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Eguneko saioa",
+        "description": "Ireki aplikazioa gaur zure marka mantentzeko",
+        "message": "Bilaketa hau automatikoki betetzen da aplikazioa egunero irekitzen duzunean."
+      },
+      "shareFacebook": {
+        "title": "Partekatu Facebook-en",
+        "description": "Bidali guri buruz Facebook-en"
+      },
+      "shareTwitter": {
+        "title": "Partekatu Twitter-en",
+        "description": "Txiokatu zure esperientzia"
+      },
+      "shareInstagram": {
+        "title": "Partekatu Instagramen",
+        "description": "Partekatu istorio edo argitalpen bat"
+      },
+      "shareExperience": {
+        "title": "Partekatu zure esperientzia",
+        "description": "Esan lagunei zergatik gustatzen zaizun aplikazioa"
+      },
+      "share": {
+        "genericMessage": "AI aplikazio hau erabiltzen ari naiz txat eta irudiak sortzeko. Begira ezazu: {{url}}",
+        "facebookQuote": "Begiratu AI aplikazio hau!",
+        "twitterText": "AI aplikazio hau probatzen ari naiz, oso polita da.",
+        "instagramMessage": "Begiratu AI aplikazio hau: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Errorea",
+        "errorMessage": "Ezin izan da denda orria ireki."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Bilaketa amaituta",
+        "description": "Bilaketa amaitu da",
+        "points": "+{{points}} puntu",
+        "close": "Itxi"
+      },
+      "rewardSuccess": {
+        "error": "ERROREA",
+        "success": "ARRAKASTA",
+        "somethingWentWrong": "Zerbait gaizki joan da",
+        "rewardUnlocked": "Saria desblokeatua",
+        "credits": "Kredituak",
+        "close": "Itxi",
+        "okay": "Ados"
+      },
+      "secretBox": {
+        "pill": "KUTXA SEKRETUA",
+        "rewardUnlocked": "SARIA DESBLOKETUTA",
+        "shufflingRewards": "SARIAK NAHAZEN...",
+        "imageCreditsAdded": "Irudi-kredituak gehitu dira zure kontuan",
+        "continue": "Jarraitu",
+        "revealing": "Agerrarazten...",
+        "prizeTiers": {
+          "lucky": "ZORTEA",
+          "pro": "PRO",
+          "elite": "ELITEA",
+          "mythic": "MITIKOA"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Jaso zure eguneroko txanponak",
+      "subtitle": "Itzuli egunero: saria handitzen doa.",
+      "cta": "Erregistratu",
+      "claimed": "Jasota! +{{amount}} txanpon",
+      "later": "Geroago"
+    }
+  },
+  "app": {
+    "version": "{{version}} bertsioa",
+    "offlineBanner": "Lineaz kanpo zaude",
+    "launch": {
+      "accessibilityLabel": "Cloud AI hasita",
+      "title": "CLOUD AI",
+      "subtitle": "AI, prest zaudenean"
+    },
+    "errors": {
+      "modelsLoadTitle": "Ezin izan dira ereduak kargatu",
+      "modelsLoadMessage": "Ezin dira AI ereduak kargatu. Aplikazioak eredu lehenetsiak erabiliko ditu. Mesedez, egiaztatu zure Interneteko konexioa.",
+      "modelsLoadTimeout": "Ereduak kargatzeko denbora gehiegi behar izan da. Aplikazioak eredu lehenetsiak erabiliko ditu. Mesedez, saiatu berriro.",
+      "modelsLoadNetwork": "Ez dago Interneteko konexiorik. Aplikazioak eredu lehenetsiak erabiliko ditu. Mesedez, egiaztatu zure konexioa.",
+      "deviceIdTitle": "Hasierako errorea",
+      "deviceIdMessage": "Ezin izan da hasieratu gailuaren IDa. Baliteke eginbide batzuk behar bezala ez funtzionatzea.",
+      "storageTitle": "Biltegiratze-errorea",
+      "storageMessage": "Ezin da tokiko biltegian sartu. Baliteke eginbide batzuk behar bezala ez funtzionatzea.",
+      "crashTitle": "Zerbait gaizki joan da.",
+      "crashSubtitle": "Mesedez, saiatu berriro.",
+      "crashLabel": "Aplikazioa huts egin du"
+    },
+    "proxyErrors": {
+      "genericTitle": "Zerbait gaizki joan da",
+      "genericMessage": "Mesedez, saiatu berriro.",
+      "rateLimitTitle": "Eskaera gehiegi",
+      "rateLimitMessage": "Eskaera asko kudeatzen ari gara. Mesedez, saiatu berriro une batean.",
+      "rateLimitRetryAfter": "Eskaera asko kudeatzen ari gara. Saiatu berriro {{seconds}} segundo barru.",
+      "restrictedTitle": "Edukia mugatua",
+      "restrictedMessage": "Eskaera hau segurtasun-iragazkiek blokeatu dute.",
+      "insufficientCoinsTitle": "Txanpon nahikorik ez",
+      "insufficientCoinsMessage": "Zure egungo saldoa baxuegia da eskaera honetarako.",
+      "imageUnavailableTitle": "Irudia ez dago erabilgarri",
+      "imageUnavailableMessage": "Sortutako irudi-fitxategia ez zegoen aldi baterako erabilgarri. Mesedez, saiatu berriro.",
+      "authorizationTitle": "Baimen-arazoa",
+      "authorizationMessage": "Ezin izan dugu egiaztatu zure kontua. Mesedez, saiatu berriro.",
+      "serverTitle": "Zerbitzariaren akatsa",
+      "serverMessage": "Gure zerbitzariek arazoak izan zituzten. Saiatu berriro laster.",
+      "timeoutTitle": "Luzeegia hartzen",
+      "timeoutMessage": "Eskaerak denbora-muga gainditu du. Mesedez, saiatu berriro.",
+      "networkTitle": "Ez dago konexiorik",
+      "networkMessage": "Ez dago Interneteko konexiorik. Mesedez, egiaztatu zure konexioa eta saiatu berriro.",
+      "requestTitle": "Eskatu arazoa",
+      "requestMessage": "Arazoren bat izan da zure eskaerarekin. Mesedez, saiatu berriro."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Aktibatu Premium",
+    "activateMessage": "Ebaluatzaile-prima aktibatu nahi duzu?",
+    "activateAction": "Aktibatu",
+    "deactivateTitle": "Desaktibatu Premium",
+    "deactivateMessage": "Ebaluatzaileen premium desaktibatu nahi duzu?",
+    "deactivateAction": "Desaktibatu"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Eguneko saria",
+      "body": "Ez galdu eguneroko txanponak - erreklamatu gauerdia baino lehen."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Ez galdu zure eguneroko txanponak",
+      "body": "Egunean behin gogorarazpen bat bidaltzen dugu zure bolada bizirik jarrai dezan eta txanponak handitzen joan daitezen. Spamik ez, eta nahi duzunean itzal dezakezu.",
+      "enable": "Aktibatu gogorarazpenak",
+      "skip": "Orain ez"
+    }
+  }
+}

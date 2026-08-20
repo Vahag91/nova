@@ -27,7 +27,13 @@ const COLORS = {
   gold: '#FFD700',
 };
 
-const SplashView = ({ onNextClick, animationController, isAnimating = false }) => {
+const SplashView = ({
+  onNextClick,
+  animationController,
+  isAnimating = false,
+  interactionEnabled = true,
+  onCriticalImageReady,
+}) => {
   const { t } = useTranslation();
   const { width, height } = useWindowDimensions();
   const insets = useSafeAreaInsets();
@@ -41,15 +47,19 @@ const SplashView = ({ onNextClick, animationController, isAnimating = false }) =
   const contentMax = Math.min(520, width - 40);
 
   return (
-    <Animated.View style={{ flex: 1, transform: [{ translateY: splashTranslateY }] }}>
+    <Animated.View
+      renderToHardwareTextureAndroid={isAnimating}
+      style={{ flex: 1, transform: [{ translateY: splashTranslateY }] }}>
       <ScrollView
         alwaysBounceVertical={false}
         contentContainerStyle={[styles.scrollContent, { paddingTop: Math.max(24, insets.top + 8) }]}
       >
         <View style={styles.logoContainer}>
           <Image
+            onLoad={onCriticalImageReady}
+            onError={onCriticalImageReady}
             source={require('../../../assets/icons/appiconsvg.png')}
-            style={[styles.appIcon, { width: isSmall ? 84 : 96, height: isSmall ? 84 : 96 }]}
+            style={[styles.appIcon, { width: isSmall ? 108 : 124, height: isSmall ? 108 : 124 }]}
             resizeMode="contain"
           />
         </View>
@@ -103,13 +113,13 @@ const SplashView = ({ onNextClick, animationController, isAnimating = false }) =
                 {
                   paddingHorizontal: isSmall ? 32 : 48,
                   height: isSmall ? 52 : 56,
-                  opacity: isAnimating ? 0.6 : 1,
+                  opacity: isAnimating || !interactionEnabled ? 0.6 : 1,
                 },
               ]}
               android_ripple={{ color: 'rgba(82,82,224,0.18)' }}
               touchOpacity={0.6}
-              onPress={isAnimating ? undefined : onNextClick}
-              disabled={isAnimating}
+              onPress={isAnimating || !interactionEnabled ? undefined : onNextClick}
+              disabled={isAnimating || !interactionEnabled}
             >
               <Text style={[styles.buttonText, { fontSize: isSmall ? 16 : 17 }]}>{t('onboarding.splash.button')}</Text>
             </MyPressable>

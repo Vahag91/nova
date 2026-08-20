@@ -5,8 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function DaySeparator({ date, text, system = false }) {
   const { i18n } = useTranslation();
-  const lang = (i18n?.language || 'en').split('-')[0];
-  const locale = lang === 'ja' ? 'ja-JP' : 'en-US';
+  const locale = i18n?.resolvedLanguage || i18n?.language || 'en';
 
   const label = text || new Date(date).toLocaleDateString(locale, {
     weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',

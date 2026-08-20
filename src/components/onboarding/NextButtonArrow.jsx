@@ -1,67 +1,48 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, Text, Animated } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import MyPressable from './MyPressable';
 
-const NextButtonArrow = ({ onBtnPress, animationController, isAnimating = false }) => {
-  // 0 = Splash, 1 = RelaxView, 2 = CareView
-  const [phase, setPhase] = useState(0);
-  const listenerId = useRef(undefined);
-  const { t } = useTranslation();
-  
-  // Animation values for smooth transitions
-  const textOpacity = useRef(new Animated.Value(1)).current;
-  const textScale = useRef(new Animated.Value(1)).current;
+const AnimatedLabel = ({ children }) => {
+  const entrance = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // read the animated value and map to a phase; no visual animations here
-    listenerId.current = animationController.current.addListener(({ value }) => {
-      const newPhase = value >= 0.4 ? 2 : value >= 0.2 ? 1 : 0;
-      
-      if (newPhase !== phase) {
-        // Animate text transition when phase changes
-        Animated.sequence([
-          Animated.parallel([
-            Animated.timing(textOpacity, {
-              toValue: 0,
-              duration: 150,
-              useNativeDriver: true,
-            }),
-            Animated.timing(textScale, {
-              toValue: 0.8,
-              duration: 150,
-              useNativeDriver: true,
-            }),
-          ]),
-          Animated.parallel([
-            Animated.timing(textOpacity, {
-              toValue: 1,
-              duration: 150,
-              useNativeDriver: true,
-            }),
-            Animated.timing(textScale, {
-              toValue: 1,
-              duration: 150,
-              useNativeDriver: true,
-            }),
-          ]),
-        ]).start();
-        
-        setPhase(newPhase);
-      }
+    const animation = Animated.timing(entrance, {
+      toValue: 1,
+      duration: 220,
+      useNativeDriver: true,
     });
-    return () => {
-      if (listenerId.current !== undefined) {
-        animationController.current.removeListener(listenerId.current);
-      }
-    };
-  }, [animationController, phase, textOpacity, textScale]);
+    animation.start();
+    return () => animation.stop();
+  }, [entrance]);
 
-  const isCircle = phase === 0;
+  return (
+    <Animated.Text
+      style={[
+        styles.label,
+        {
+          opacity: entrance,
+          transform: [
+            {
+              scale: entrance.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0.9, 1],
+              }),
+            },
+          ],
+        },
+      ]}>
+      {children}
+    </Animated.Text>
+  );
+};
+
+const NextButtonArrow = ({ onBtnPress, phase, isAnimating = false }) => {
+  const { t } = useTranslation();
+
   const continueLabel = t('onboarding.buttons.continue', { defaultValue: 'Continue' });
   const startLabel = t('onboarding.buttons.start', { defaultValue: "Let's start" });
   const label = phase === 2 ? startLabel : phase === 1 ? continueLabel : null;
-  const width = phase === 2 ? 220 : phase === 1 ? 160 : 58;
 
   // Only render when we have a label
   if (!label) {
@@ -76,27 +57,14 @@ const NextButtonArrow = ({ onBtnPress, animationController, isAnimating = false 
         accessibilityRole="button"
         accessibilityLabel={label}
         style={[
-          styles.container, 
-          { 
-            width, 
-            borderRadius: isCircle ? 29 : 16,
-            opacity: isAnimating ? 0.5 : 1,
-          }
+          styles.container,
+          phase === 2 ? styles.startButton : styles.continueButton,
+          isAnimating && styles.disabled,
         ]}
         disabled={isAnimating}
       >
         <View style={styles.centered}>
-          <Animated.Text 
-            style={[
-              styles.label,
-              {
-                opacity: textOpacity,
-                transform: [{ scale: textScale }],
-              }
-            ]}
-          >
-            {label}
-          </Animated.Text>
+          <AnimatedLabel key={phase}>{label}</AnimatedLabel>
         </View>
       </MyPressable>
     </View>
@@ -119,6 +87,16 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 8 },
     elevation: 8,
+    borderRadius: 16,
+  },
+  continueButton: {
+    width: 160,
+  },
+  startButton: {
+    width: 220,
+  },
+  disabled: {
+    opacity: 0.5,
   },
   centered: {
     alignItems: 'center',

@@ -11,7 +11,12 @@
     "searchHint": "利用可能なモデルを絞り込むには入力してください",
     "modelLabel": "{{name}} モデル",
     "selectHint": "{{name}} モデルを選択",
-    "currentlySelected": "現在選択中のモデル"
+    "currentlySelected": "現在選択中のモデル",
+    "genericModel": "{{provider}} モデル",
+    "badges": {
+      "new": "新着",
+      "best": "ベスト"
+    }
   },
   "models": {
     "gpt-4o": "最も強力なAIモデル",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "アシスタント",
+    "defaultTitle": "アシスタント",
+    "errorTitle": "問題が発生しました",
+    "errorMessage": "このアシスタントを開始できませんでした。",
+    "noAssistants": "このカテゴリにはアシスタントがありません。",
+    "selectAssistantHint": "アシスタント選択を開く",
     "subtitle": "コード作成・文章作成・分析・計画などにすぐ使えるAIスペシャリスト。",
     "searchPlaceholder": "アシスタントを検索…",
     "useAssistant": "アシスタントを使う",
@@ -254,9 +264,12 @@
     "search": "検索",
     "clearSearch": "検索をクリア",
     "noChatsYet": "まだチャットがありません",
+    "noResults": "まだチャットがありません",
     "startFirstConversation": "最初の会話を始めましょう。",
     "startChat": "チャットを開始",
+    "startNewChat": "チャットを開始",
     "errorLoadingHistory": "履歴の読み込み中にエラーが発生しました",
+    "loading": "履歴を読み込んでいます...",
     "renameChat": "チャット名を変更",
     "enterNewTitle": "新しいタイトルを入力",
     "deleteChat": "チャットを削除しますか？",
@@ -264,9 +277,7 @@
     "rename": "名前を変更",
     "unpin": "ピン留めを外す",
     "pin": "ピン留め",
-    "untitled": "無題",
-    "noResults": "まだチャットがありません",
-    "startNewChat": "チャットを開始"
+    "untitled": "無題"
   },
   "settings": {
     "title": "設定",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "プレミアム有効",
-        "subtitle": "ChatCloud をご利用いただきありがとうございます"
+        "subtitle": "Cloud AI をご利用いただきありがとうございます"
       },
       "restore": {
         "title": "購入を復元",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "今はこのリンクを開けません。",
       "restoreSuccessTitle": "復元しました",
       "restoreSuccessMessage": "購入が復元されました。",
+      "restoreEmptyTitle": "購入が見つかりません",
+      "restoreEmptyMessage": "このアカウントで復元できる有効な購入が見つかりませんでした。",
       "restoreErrorTitle": "復元に失敗しました",
       "restoreErrorMessage": "今は購入を復元できません。",
       "resetConfirmTitle": "アプリデータをリセットしますか？",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "カスタム"
     },
+    "notEnoughCoinsTitle": "コインが不足しています",
+    "notEnoughCoinsMessage": "現在の残高では、この画像を生成できません。",
     "modelTaglines": {
       "runwareFluxSchnell": "最速のモデル",
       "runwareFluxKrea": "クリエイティブでスタイリッシュな結果",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "保存できませんでした",
       "shareFailedTitle": "共有できませんでした",
-      "tryAgain": "もう一度お試しください。"
+      "tryAgain": "もう一度お試しください。",
+      "savedTitle": "保存しました",
+      "savedMessage": "画像をギャラリーに保存しました。",
+      "permissionTitle": "権限が必要です",
+      "permissionMessage": "画像をギャラリーに保存するには、ストレージへのアクセスを許可してください。"
     },
     "result": {
       "complete": "完了しました"
@@ -498,12 +517,47 @@
       "save": "保存",
       "share": "共有"
     },
+    "alerts": {
+      "savedTitle": "保存しました",
+      "savedMessage": "画像をギャラリーに保存しました。",
+      "permissionTitle": "権限が必要です",
+      "permissionMessage": "画像をギャラリーに保存するには、ストレージへのアクセスを許可してください。",
+      "saveFailedTitle": "保存できませんでした",
+      "tryAgain": "もう一度お試しください。"
+    },
     "accessibility": {
       "close": "閉じる",
       "delete": "画像を削除",
       "edit": "画像を編集",
       "save": "画像を保存",
       "share": "画像を共有"
+    }
+  },
+  "reportContent": {
+    "title": "AI コンテンツを報告",
+    "subtitle": "この生成コンテンツの問題点をお知らせください。",
+    "privateDisclosure": "送信すると、報告されたコンテンツが安全性審査のために送られます。",
+    "accessibilityLabel": "AI コンテンツを報告",
+    "reasons": {
+      "sexual": "性的なコンテンツまたはヌード",
+      "violence_self_harm": "暴力または自傷行為",
+      "hate_harassment": "ヘイトまたは嫌がらせ",
+      "child_safety": "児童の安全に関する懸念",
+      "scam_deceptive": "詐欺または欺瞞的なコンテンツ",
+      "other": "その他"
+    },
+    "errors": {
+      "reasonRequired": "送信する前に理由を選択してください。",
+      "submit": "報告を送信できませんでした。もう一度お試しください。"
+    },
+    "success": {
+      "title": "ありがとうございます。報告を送信しました。",
+      "subtitle": "報告はコンテンツの安全性向上に役立てられます。"
+    },
+    "actions": {
+      "report": "報告",
+      "submit": "報告を送信",
+      "done": "完了"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "紹介",
       "titleHighlight": "Image Studio",
-      "subtitle": "AIで画像を作成・編集 — ChatCloud 内で完結します。",
-      "appName": "ChatCloud"
+      "subtitle": "AIで画像を作成・編集 — Cloud AI 内で完結します。"
     },
     "relaxView": {
       "title": "あなたのAIを紹介",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "エンタープライズ向けAIソリューション",
       "description": "ビジネスやチーム向けに設計された最先端のAIであなたの組織を強化します。",
       "stats": "50万ユーザー以上からの信頼",
@@ -592,10 +645,10 @@
       "value": "最もお得"
     },
     "pack": {
+      "creditsLabel": "{{credits}} トークン",
       "tokensLabel": "{{credits}} トークン",
       "defaultName": "パック {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} トークン"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "プレミアムに移行",
@@ -624,6 +677,17 @@
   },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "ペイウォールを閉じる",
+    "unavailableTitle": "購入を利用できません",
+    "unavailableMessage": "Android の課金がまだ設定されていません。",
+    "restoreEmptyTitle": "購入が見つかりません",
+    "restoreEmptyMessage": "このアカウントで復元できる有効な購入が見つかりませんでした。",
+    "restoreFailedTitle": "復元に失敗しました",
+    "restoreFailedMessage": "現在、購入を復元できません。",
+    "productsUnavailableTitle": "利用できるプランがありません",
+    "productsUnavailableMessage": "現在利用できる Android のサブスクリプション商品はありません。",
+    "purchaseFailedTitle": "購入に失敗しました",
+    "purchaseFailedMessage": "現在、この購入を完了できません。",
     "restore": "復元",
     "restoreRestoring": "復元中…",
     "features": {
@@ -672,55 +736,18 @@
     "legal": {
       "terms": "利用規約",
       "privacy": "プライバシー"
-    }
-  },
-  "oneTimeOffer": {
-    "title": "ワンタイムオファー",
-    "subtitle": "このオファーは二度と表示されません。",
-    "badgeLine1": "限定",
-    "badgeLine2": "ワンタイムオファー",
-    "upgradeNow": "今すぐアップグレード {{price}}",
-    "loadingPrice": "読み込み中...",
-    "termsOfUse": "利用規約",
-    "privacyPolicy": "プライバシーポリシー",
-    "accessTitle": "無制限アクセス",
-    "accessSubtitle": "GPT、Gemini、Grok 4",
-    "features": {
-      "unlimitedGPT4": "GPT-4への無制限アクセス",
-      "geminiPro": "Gemini Proへのアクセス",
-      "grokInsights": "最新のインサイトを得るためにGrokを活用",
-      "priorityAccess": "優先アクセスとより高速な応答"
     },
-    "bestValue": "最高の価値",
-    "annualPremium": "年間プレミアム",
-    "oneTimePayment": "一回限りの支払い",
-    "wasPrice": "以前の価格",
-    "continue": "続ける",
-    "restore": "復元",
-    "terms": "利用規約",
-    "privacy": "プライバシー",
-    "successTitle": "成功！",
-    "successMessage": "ご購入ありがとうございます！これですべてのプレミアム機能への生涯アクセスが可能になりました。",
-    "errorTitle": "購入に失敗しました",
-    "errorMessage": "問題が発生しました。もう一度お試しください。",
-    "restoreSuccessTitle": "復元しました",
-    "restoreSuccessMessage": "購入が復元されました。",
-    "restoreErrorTitle": "復元に失敗しました",
-    "restoreErrorMessage": "復元する購入が見つかりませんでした。"
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "モデルの読み込みに失敗しました",
-      "modelsLoadMessage": "AIモデルを読み込めませんでした。アプリはデフォルトモデルを使用します。インターネット接続を確認してください。",
-      "modelsLoadTimeout": "モデルの読み込みに時間がかかりすぎました。アプリはデフォルトモデルを使用します。もう一度お試しください。",
-      "modelsLoadNetwork": "インターネット接続がありません。アプリはデフォルトモデルを使用します。接続を確認してください。",
-      "deviceIdTitle": "初期化エラー",
-      "deviceIdMessage": "デバイスIDの初期化に失敗しました。一部の機能が正しく動作しない可能性があります。",
-      "storageTitle": "ストレージエラー",
-      "storageMessage": "ローカルストレージにアクセスできませんでした。一部の機能が正しく動作しない可能性があります。",
-      "crashTitle": "問題が発生しました。",
-      "crashSubtitle": "もう一度お試しください。",
-      "crashLabel": "アプリがクラッシュしました"
+    "premium": {
+      "headline": "すべてのプレミアム AI を 1 つのプランに",
+      "subtitleLine1": "チャット、コーディング、作成、計画",
+      "subtitleLine2": "先進的なモデルを搭載。",
+      "enableTrial": "無料トライアルを有効にする",
+      "annual": "毎年恒例",
+      "saveBadge": "83% 節約",
+      "year": "年",
+      "week": "週",
+      "termsOfUse": "利用規約",
+      "privacyPolicy": "プライバシー ポリシー"
     }
   },
   "chat": {
@@ -765,10 +792,13 @@
     "sendFailed": "送信に失敗しました。",
     "modelNoImageSupport": "選択したモデルは画像をサポートしていません。別のモデルを選択してください。",
     "voiceStartFailed": "音声を開始できませんでした。",
+    "voiceNoSpeechDetected": "音声を認識できませんでした。もう一度お試しください。",
     "emptyTitle": "どうお手伝いしましょう？",
     "emptySubtitle": "AIとの会話を始めましょう",
     "privateTitle": "プライベートチャット",
     "privateSubtitle": "このチャットは履歴に表示されません",
+    "startPrivateChat": "プライベートチャットを開始",
+    "endPrivateChat": "プライベートチャットを終了",
     "permissions": {
       "photosTitle": "写真へのアクセスが必要です",
       "photosMessage": "画像を選択するには写真へのアクセスが必要です。",
@@ -813,7 +843,19 @@
       "share": "共有",
       "regenerate": "再生成",
       "retryFromHere": "ここから再試行",
+      "report": "報告",
       "cancel": "キャンセル"
+    },
+    "markdown": {
+      "copy": "コピー",
+      "copied": "コピーしました",
+      "table": "表",
+      "watchVideo": "動画を見る",
+      "wikipedia": "Wikipedia",
+      "link": "リンク",
+      "note": "メモ",
+      "warning": "警告",
+      "tip": "ヒント"
     },
     "messageActionTitle": "メッセージ",
     "status": {
@@ -904,23 +946,59 @@
     "library": "ライブラリ"
   },
   "common": {
-    "new": "新着",
-    "best": "ベスト",
-    "cancel": "キャンセル",
-    "save": "保存",
-    "delete": "削除",
-    "close": "閉じる",
-    "allow": "許可",
     "ok": "OK",
     "retry": "再試行",
+    "cancel": "キャンセル",
+    "allow": "許可",
+    "notNow": "後で",
+    "openSettings": "設定を開く",
+    "close": "閉じる",
+    "save": "保存",
     "tryAgain": "もう一度試す"
   },
   "rateUs": {
-    "title": "ChatCloudをお楽しみですか？",
+    "title": "Cloud AIをお楽しみですか？",
     "subtitle": "フィードバックは改善に役立ちます。App Storeで評価していただけますか？",
     "rateNow": "今すぐ評価",
     "maybeLater": "後で",
     "dontAskAgain": "再度尋ねない"
+  },
+  "oneTimeOffer": {
+    "title": "ワンタイムオファー",
+    "discount": "{{percent}}% オフ",
+    "subtitle": "このオファーは二度と表示されません。",
+    "badgeLine1": "限定",
+    "badgeLine2": "ワンタイムオファー",
+    "upgradeNow": "今すぐアップグレード {{price}}",
+    "loadingPrice": "読み込み中...",
+    "termsOfUse": "利用規約",
+    "privacyPolicy": "プライバシーポリシー",
+    "accessTitle": "無制限アクセス",
+    "accessSubtitle": "GPT、Gemini、Grok 4",
+    "features": {
+      "unlimitedGPT4": "GPT-4への無制限アクセス",
+      "geminiPro": "Gemini Proへのアクセス",
+      "grokInsights": "最新のインサイトを得るためにGrokを活用",
+      "priorityAccess": "優先アクセスとより高速な応答"
+    },
+    "bestValue": "最高の価値",
+    "annualPremium": "年間プレミアム",
+    "oneTimePayment": "一回限りの支払い",
+    "wasPrice": "以前の価格",
+    "continue": "続ける",
+    "restore": "復元",
+    "terms": "利用規約",
+    "privacy": "プライバシー",
+    "successTitle": "成功！",
+    "successMessage": "ご購入ありがとうございます！これですべてのプレミアム機能への生涯アクセスが可能になりました。",
+    "errorTitle": "購入に失敗しました",
+    "errorMessage": "問題が発生しました。もう一度お試しください。",
+    "restoreSuccessTitle": "復元しました",
+    "restoreSuccessMessage": "購入が復元されました。",
+    "restoreErrorTitle": "復元に失敗しました",
+    "restoreErrorMessage": "復元する購入が見つかりませんでした。",
+    "unavailableTitle": "購入を利用できません",
+    "unavailableMessage": "Android の課金がまだ設定されていません。"
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "ミシック"
         }
       }
+    },
+    "checkIn": {
+      "title": "毎日のコインを受け取る",
+      "subtitle": "毎日来るほど報酬が増えます。",
+      "cta": "受け取る",
+      "claimed": "受け取りました！+{{amount}} コイン",
+      "later": "後で"
     }
+  },
+  "app": {
+    "version": "バージョン {{version}}",
+    "offlineBanner": "オフラインです",
+    "launch": {
+      "accessibilityLabel": "Cloud AI を起動しています",
+      "title": "CLOUD AI",
+      "subtitle": "いつでも使える AI"
+    },
+    "errors": {
+      "modelsLoadTitle": "モデルの読み込みに失敗しました",
+      "modelsLoadMessage": "AIモデルを読み込めませんでした。アプリはデフォルトモデルを使用します。インターネット接続を確認してください。",
+      "modelsLoadTimeout": "モデルの読み込みに時間がかかりすぎました。アプリはデフォルトモデルを使用します。もう一度お試しください。",
+      "modelsLoadNetwork": "インターネット接続がありません。アプリはデフォルトモデルを使用します。接続を確認してください。",
+      "deviceIdTitle": "初期化エラー",
+      "deviceIdMessage": "デバイスIDの初期化に失敗しました。一部の機能が正しく動作しない可能性があります。",
+      "storageTitle": "ストレージエラー",
+      "storageMessage": "ローカルストレージにアクセスできませんでした。一部の機能が正しく動作しない可能性があります。",
+      "crashTitle": "問題が発生しました。",
+      "crashSubtitle": "もう一度お試しください。",
+      "crashLabel": "アプリがクラッシュしました"
+    },
+    "proxyErrors": {
+      "genericTitle": "問題が発生しました",
+      "genericMessage": "もう一度お試しください。",
+      "rateLimitTitle": "リクエストが多すぎます",
+      "rateLimitMessage": "現在リクエストが集中しています。しばらくしてから、もう一度お試しください。",
+      "rateLimitRetryAfter": "現在リクエストが集中しています。約 {{seconds}} 秒後に、もう一度お試しください。",
+      "restrictedTitle": "制限されたコンテンツ",
+      "restrictedMessage": "このリクエストは安全フィルターによってブロックされました。",
+      "insufficientCoinsTitle": "コインが不足しています",
+      "insufficientCoinsMessage": "現在の残高では、このリクエストを実行できません。",
+      "imageUnavailableTitle": "画像を利用できません",
+      "imageUnavailableMessage": "生成された画像ファイルを一時的に利用できませんでした。もう一度お試しください。",
+      "authorizationTitle": "認証の問題",
+      "authorizationMessage": "アカウントを確認できませんでした。もう一度お試しください。",
+      "serverTitle": "サーバーエラー",
+      "serverMessage": "サーバーで問題が発生しました。しばらくしてから、もう一度お試しください。",
+      "timeoutTitle": "時間がかかっています",
+      "timeoutMessage": "リクエストがタイムアウトしました。もう一度お試しください。",
+      "networkTitle": "接続がありません",
+      "networkMessage": "インターネットに接続されていません。接続を確認してから、もう一度お試しください。",
+      "requestTitle": "リクエストの問題",
+      "requestMessage": "リクエストの処理中に問題が発生しました。もう一度お試しください。"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "プレミアムを有効化",
+    "activateMessage": "レビュアープレミアムを有効にしますか？",
+    "activateAction": "有効にする",
+    "deactivateTitle": "プレミアムを無効化",
+    "deactivateMessage": "レビュアープレミアムを無効にしますか？",
+    "deactivateAction": "無効にする"
   },
   "push": {
     "dailyReward": {
       "title": "デイリー報酬",
       "body": "毎日のコインをお見逃しなく — 深夜0時前に受け取ってください。"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "毎日のコインをお見逃しなく",
+      "body": "連続記録が途切れず、コインが増え続けるよう、1日1回だけお知らせします。迷惑な通知はありません。いつでもオフにできます。",
+      "enable": "リマインダーをオンにする",
+      "skip": "後で"
     }
   }
 }

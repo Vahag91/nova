@@ -1,7 +1,9 @@
 const BILLING_UNAVAILABLE_MARKERS = [
   'BILLING_UNAVAILABLE',
+  'SERVICE_UNAVAILABLE',
   'Billing service unavailable',
   'Billing is not available',
+  'Billing is unavailable. Will retry',
   'PurchaseNotAllowedError',
 ];
 
@@ -12,7 +14,7 @@ export function shouldSuppressRevenueCatLog(level, message) {
   const normalizedMessage = String(message || '');
 
   return (
-    normalizedLevel === 'ERROR' &&
+    (normalizedLevel === 'ERROR' || normalizedLevel === 'WARN') &&
     BILLING_UNAVAILABLE_MARKERS.some(marker => normalizedMessage.includes(marker))
   );
 }

@@ -73,3 +73,10 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Local scratch: device pulls, video-audit frames, adb dumps.
+/tmp/
+
+# Generated translation handoff (npm run i18n:prepare-manual).
+/translations/manual/pending/
+/translations/manual/reference/

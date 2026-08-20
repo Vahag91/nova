@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect, useCallback, memo, useRef, useContext } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, ScrollView, Modal, useWindowDimensions, Keyboard } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, ScrollView, Modal, Dimensions, Keyboard } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, interpolate, Extrapolation } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 // --- NEW IMPORT ---
@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
-import { SubscriptionContext } from '../../context/SubscriptionContext';
+import { SubscriptionAccessContext } from '../../context/SubscriptionContext';
 import { setPendingPremiumAction } from '../../state/premiumActions';
 import { resolvePremiumStatus } from '../../lib/resolvePremiumStatus';
 import { perfCancel, perfEnd, perfLog, perfStart } from '../../lib/perfTrace';
@@ -66,9 +66,10 @@ function TestInput({
   maxLength = 4000, minInputHeight = 40, maxInputHeight = 140,
   forceCollapsed = false, isRecording = false,
   webSearchEnabled = false,
+  imagePickerActive = false,
 }) {
   const { t } = useTranslation();
-  const subscription = useContext(SubscriptionContext);
+  const subscription = useContext(SubscriptionAccessContext);
   
   // Safe area for bottom padding (home bar)
   const insets = useSafeAreaInsets();
@@ -114,7 +115,11 @@ function TestInput({
   const openedFromKeyboardRef = useRef(false);
   const refocusAfterCloseRef = useRef(false);
   const [anchor, setAnchor] = useState(null);
-  const win = useWindowDimensions();
+  // Android can report a new window height while the IME animates. Subscribing
+  // the entire input tree with a live dimension hook makes every icon/menu node
+  // render during that animation. Menu geometry only needs live dimensions
+  // while the menu exists.
+  const [menuViewport, setMenuViewport] = useState(() => Dimensions.get('window'));
   const [inputHeight, setInputHeight] = useState(minInputHeight);
   const [isExpanded, setIsExpanded] = useState(false);
   const lastLoggedInputHeightRef = useRef(minInputHeight);
@@ -278,6 +283,7 @@ function TestInput({
   const openMenuNow = useCallback(() => {
     if (menuOpenRef.current) return;
     clearMenuTimers();
+    setMenuViewport(Dimensions.get('window'));
     menuOpenRef.current = true;
     setMenuOpen(true);
     setRenderMenu(true);
@@ -349,7 +355,15 @@ function TestInput({
   useEffect(() => {
     if (!menuOpen) return;
     requestAnimationFrame(measureAnchor);
-  }, [menuOpen, measureAnchor, win.height, win.width]);
+  }, [menuOpen, measureAnchor, menuViewport.height, menuViewport.width]);
+
+  useEffect(() => {
+    if (!renderMenu) return undefined;
+    const dimensionSubscription = Dimensions.addEventListener('change', ({ window }) => {
+      if (menuOpenRef.current && window) setMenuViewport(window);
+    });
+    return () => dimensionSubscription?.remove?.();
+  }, [renderMenu]);
 
   useEffect(() => {
     return () => clearMenuTimers();
@@ -382,9 +396,10 @@ function TestInput({
   }, [clearMenuTimers, closeActionsImmediately, openMenuNow]);
 
   const handleCameraActionPress = useCallback(() => {
+    if (imagePickerActive) return;
     closeActionsImmediately();
     requestAnimationFrame(() => safe(onOpenCameraPress));
-  }, [closeActionsImmediately, onOpenCameraPress, safe]);
+  }, [closeActionsImmediately, imagePickerActive, onOpenCameraPress, safe]);
 
   const handleCreateImagesActionPress = useCallback(() => {
     closeActionsImmediately();
@@ -449,18 +464,18 @@ function TestInput({
             </Animated.View>
 
             {anchor && (() => {
-              const menuWidth = Math.min(win.width - 16, 360);
+              const menuWidth = Math.min(menuViewport.width - 16, 360);
               const halfMenuWidth = menuWidth / 2;
               const fallbackBottom = (MENU_ITEM_HEIGHT * 3 + 2) + 36 - 64;
               const gap = 12;
-              const hasAnchorY = typeof anchor.y === 'number' && Number.isFinite(anchor.y) && anchor.y > 0 && anchor.y < win.height;
-              const bottomOffset = hasAnchorY ? Math.max(8, win.height - anchor.y + gap) : fallbackBottom;
+              const hasAnchorY = typeof anchor.y === 'number' && Number.isFinite(anchor.y) && anchor.y > 0 && anchor.y < menuViewport.height;
+              const bottomOffset = hasAnchorY ? Math.max(8, menuViewport.height - anchor.y + gap) : fallbackBottom;
               return (
                 <Animated.View
                   pointerEvents={menuOpen ? 'box-none' : 'none'}
                   style={[styles.popoverContainer, popoverAnimatedStyle, {
                   bottom: bottomOffset,
-                  left: Math.max(8, Math.min(anchor.x + anchor.width / 2 - halfMenuWidth, win.width - menuWidth - 8)),
+                  left: Math.max(8, Math.min(anchor.x + anchor.width / 2 - halfMenuWidth, menuViewport.width - menuWidth - 8)),
                   width: menuWidth,
                 }]}>
                   <View style={styles.menuBox}>
@@ -484,8 +499,9 @@ function TestInput({
 
                     <Animated.View style={menuItem2Style}>
                       <TouchableOpacity
-                        style={styles.menuItem}
+                        style={[styles.menuItem, imagePickerActive && styles.disabledBtn]}
                         onPress={handleCameraActionPress}
+                        disabled={imagePickerActive}
                         accessibilityRole="button"
                         accessibilityLabel={t('chat.camera')}
                         activeOpacity={0.9}
@@ -771,6 +787,7 @@ const areEqual = (prev, next) => {
   if (prev.forceCollapsed !== next.forceCollapsed) return false;
   if (prev.isRecording !== next.isRecording) return false;
   if (prev.webSearchEnabled !== next.webSearchEnabled) return false;
+  if (prev.imagePickerActive !== next.imagePickerActive) return false;
   if (prev.maxLength !== next.maxLength) return false;
   const pA = Array.isArray(prev.attachments) ? prev.attachments : [];
   const nA = Array.isArray(next.attachments) ? next.attachments : [];

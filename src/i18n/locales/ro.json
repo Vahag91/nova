@@ -11,7 +11,12 @@
     "searchHint": "Scrie pentru a filtra modelele disponibile",
     "modelLabel": "Model {{name}}",
     "selectHint": "Selectează modelul {{name}}",
-    "currentlySelected": "Selectat în prezent"
+    "currentlySelected": "Selectat în prezent",
+    "genericModel": "Model {{provider}}",
+    "badges": {
+      "new": "NOU",
+      "best": "CEL MAI BUN"
+    }
   },
   "models": {
     "gpt-4o": "Cel mai puternic model de AI",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Asistenți",
+    "defaultTitle": "Asistent",
+    "errorTitle": "Ceva n-a mers bine",
+    "errorMessage": "Acest asistent nu a putut fi pornit.",
+    "noAssistants": "Nu s-au găsit asistenți în această categorie.",
+    "selectAssistantHint": "Deschide selectorul de asistenți",
     "subtitle": "Specialiști AI selectați pentru codare, scriere, analiză, planificare și multe altele.",
     "searchPlaceholder": "Caută asistenți…",
     "useAssistant": "Folosește asistentul",
@@ -161,7 +171,7 @@
       "schoolWork": "Școală și muncă",
       "coding": "Programare",
       "creative": "Creativ",
-      "general": "General"
+      "general": "general"
     },
     "presets": {
       "default": {
@@ -197,7 +207,7 @@
         "description": "Scrie emailuri și fraze de CV clare."
       },
       "translator": {
-        "name": "Translator",
+        "name": "Traducător",
         "description": "Tradu și învață expresii."
       },
       "travel": {
@@ -259,6 +269,7 @@
     "startChat": "Începe chat",
     "startNewChat": "Începe chat nou",
     "errorLoadingHistory": "Eroare la încărcarea istoricului",
+    "loading": "Se încarcă istoricul...",
     "renameChat": "Redenumește chatul",
     "enterNewTitle": "Introdu un titlu nou",
     "deleteChat": "Ștergi chatul?",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium activ",
-        "subtitle": "Mulțumim că susții ChatCloud"
+        "subtitle": "Mulțumim că susții Cloud AI"
       },
       "restore": {
         "title": "Restaurează cumpărări",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Nu se poate deschide acest link acum.",
       "restoreSuccessTitle": "Restaurat",
       "restoreSuccessMessage": "Cumpărăturile tale au fost restaurate.",
+      "restoreEmptyTitle": "Nu s-au găsit achiziții",
+      "restoreEmptyMessage": "Nu am găsit nicio achiziție activă de restaurat pentru acest cont.",
       "restoreErrorTitle": "Restaurare eșuată",
       "restoreErrorMessage": "Nu se pot restaura cumpărăturile acum.",
       "resetConfirmTitle": "Resetezi datele aplicației?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Personalizat"
     },
+    "notEnoughCoinsTitle": "Monede insuficiente",
+    "notEnoughCoinsMessage": "Soldul tău actual este prea mic pentru această imagine.",
     "modelTaglines": {
       "runwareFluxSchnell": "Cel mai rapid model",
       "runwareFluxKrea": "Rezultate creative și stilizate",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Nu s-a putut salva",
       "shareFailedTitle": "Nu s-a putut partaja",
-      "tryAgain": "Încearcă din nou."
+      "tryAgain": "Încearcă din nou.",
+      "savedTitle": "Salvată",
+      "savedMessage": "Imaginea a fost salvată în galerie.",
+      "permissionTitle": "Permisiune necesară",
+      "permissionMessage": "Permite accesul la stocare pentru a salva imaginile în galerie."
     },
     "result": {
       "complete": "Gata"
@@ -498,12 +517,47 @@
       "save": "Salvează",
       "share": "Partajează"
     },
+    "alerts": {
+      "savedTitle": "Salvată",
+      "savedMessage": "Imaginea a fost salvată în galerie.",
+      "permissionTitle": "Permisiune necesară",
+      "permissionMessage": "Permite accesul la stocare pentru a salva imaginile în galerie.",
+      "saveFailedTitle": "Nu s-a putut salva",
+      "tryAgain": "Încearcă din nou."
+    },
     "accessibility": {
       "close": "Închide",
       "delete": "Șterge imaginea",
       "edit": "Editează imaginea",
       "save": "Salvează imaginea",
       "share": "Partajează imaginea"
+    }
+  },
+  "reportContent": {
+    "title": "Raportează conținut AI",
+    "subtitle": "Spune-ne ce este în neregulă cu acest conținut generat.",
+    "privateDisclosure": "Prin trimitere, acest conținut raportat este transmis pentru o verificare de siguranță.",
+    "accessibilityLabel": "Raportează conținut AI",
+    "reasons": {
+      "sexual": "Conținut sexual sau nuditate",
+      "violence_self_harm": "Violență sau autovătămare",
+      "hate_harassment": "Ură sau hărțuire",
+      "child_safety": "Îngrijorare privind siguranța copiilor",
+      "scam_deceptive": "Înșelătorie sau conținut înșelător",
+      "other": "Altele"
+    },
+    "errors": {
+      "reasonRequired": "Alege un motiv înainte de a trimite.",
+      "submit": "Raportul nu a putut fi trimis. Încearcă din nou."
+    },
+    "success": {
+      "title": "Mulțumim. Raportul tău a fost trimis.",
+      "subtitle": "Vom folosi rapoartele pentru a îmbunătăți siguranța conținutului."
+    },
+    "actions": {
+      "report": "Raportează",
+      "submit": "Trimite raportul",
+      "done": "Gata"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Fă cunoștință cu",
       "titleHighlight": "Image Studio",
-      "subtitle": "Creează și editează imagini cu AI — direct în ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Creează și editează imagini cu AI — direct în Cloud AI."
     },
     "relaxView": {
       "title": "Cunoaște-ți AI-ul",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "SOLUȚII AI PENTRU COMPANII",
       "description": "Dezvoltă-ți afacerea cu inteligență artificială de ultimă generație pentru profesioniști și echipe.",
       "stats": "De încredere pentru 500k+ utilizatori",
@@ -592,10 +645,10 @@
       "value": "Cel mai bun raport calitate/preț"
     },
     "pack": {
+      "creditsLabel": "{{credits}} jetoane",
       "tokensLabel": "{{credits}} jetoane",
       "defaultName": "Pachet {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} jetoane"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Treci la Premium",
@@ -613,8 +666,28 @@
       "unknownError": "Eroare necunoscută"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Necesită Premium",
+    "upgrade": "Fă upgrade",
+    "modelRequiredMessage": "Acest model necesită Premium. Fă upgrade pentru a accesa GPT-5, Grok 4, Claude și alte modele avansate.",
+    "assistantsRequiredMessage": "Asistenții necesită Premium. Fă upgrade pentru a accesa asistenți AI specializați în fitness, programare, scriere și altele.",
+    "assistantsTitle": "Necesită Premium",
+    "assistantsMessage": "Asistenții necesită Premium. Fă upgrade pentru a accesa asistenți AI specializați în fitness, programare, scriere și altele."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Închide ecranul de plată",
+    "unavailableTitle": "Achizițiile nu sunt disponibile",
+    "unavailableMessage": "Facturarea Android nu este încă configurată.",
+    "restoreEmptyTitle": "Nu s-au găsit achiziții",
+    "restoreEmptyMessage": "Nu am găsit nicio achiziție activă de restaurat pentru acest cont.",
+    "restoreFailedTitle": "Restaurare eșuată",
+    "restoreFailedMessage": "Achizițiile nu pot fi restaurate acum.",
+    "productsUnavailableTitle": "Niciun plan disponibil",
+    "productsUnavailableMessage": "Momentan nu sunt disponibile abonamente Android.",
+    "purchaseFailedTitle": "Achiziție eșuată",
+    "purchaseFailedMessage": "Această achiziție nu poate fi finalizată acum.",
     "restore": "Restaurează",
     "restoreRestoring": "Se restaurează…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Termeni",
       "privacy": "Confidențialitate"
+    },
+    "premium": {
+      "headline": "Toate AI premium într-un singur plan",
+      "subtitleLine1": "Conversați, codificați, creați și planificați",
+      "subtitleLine2": "cu modele avansate.",
+      "enableTrial": "Activați versiunea de încercare gratuită",
+      "annual": "Anual",
+      "saveBadge": "Economisiți 83%",
+      "year": "anul",
+      "week": "saptamana",
+      "termsOfUse": "Condiții de utilizare",
+      "privacyPolicy": "Politica de confidențialitate"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Generează din nou răspunsul",
     "regenerateResponseHint": "Creează un răspuns nou",
     "copyCode": "Copiază codul",
+    "copied": "Copiat",
     "image": "imagine",
     "loading": "Se încarcă…",
     "loadingChat": "Se încarcă chatul...",
     "offlineBanner": "Ești offline. Nu se pot trimite mesaje.",
+    "offlineError": "Nu există conexiune la internet. Verifică conexiunea și încearcă din nou.",
     "imagePickerErrorTitle": "Eroare la selectarea imaginii",
     "imagePickerErrorMessage": "Nu s-a putut accesa galeria. Încearcă din nou.",
     "messageTooLong": "Mesaj prea lung ({{length}}). Limita este {{limit}}.",
     "sendFailed": "Trimitere eșuată.",
     "modelNoImageSupport": "Modelul selectat nu suportă imagini. Vă rugăm să alegeți un alt model.",
     "voiceStartFailed": "Nu s-a putut porni vocea.",
+    "voiceNoSpeechDetected": "Nu s-a recunoscut nicio voce. Încearcă din nou.",
     "emptyTitle": "Cu ce te pot ajuta?",
     "emptySubtitle": "Începe o conversație cu AI",
     "privateTitle": "Chat privat",
     "privateSubtitle": "Acest chat nu va apărea în istoric",
+    "startPrivateChat": "Începe o conversație privată",
+    "endPrivateChat": "Încheie conversația privată",
     "permissions": {
       "photosTitle": "Este necesară permisiunea pentru poze",
       "photosMessage": "Ai nevoie de acces la poze pentru a selecta imagini.",
@@ -753,7 +843,19 @@
       "share": "Partajează",
       "regenerate": "Generează din nou",
       "retryFromHere": "Încearcă din nou de aici",
+      "report": "Raportează",
       "cancel": "Anulează"
+    },
+    "markdown": {
+      "copy": "Copiază",
+      "copied": "Copiat",
+      "table": "TABEL",
+      "watchVideo": "Vezi videoclipul",
+      "wikipedia": "Wikipedia",
+      "link": "Link",
+      "note": "Notă",
+      "warning": "Avertisment",
+      "tip": "Sfat"
     },
     "messageActionTitle": "Mesaj",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Planifică-mi ziua",
       "planDaySubtitle": "cu sfaturi de productivitate"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Alegeți un subiect",
       "title": "Ce vrei sa faci?",
@@ -846,81 +946,59 @@
     "library": "Bibliotecă"
   },
   "common": {
-    "new": "NOU",
-    "best": "CEL MAI BUN",
-    "cancel": "Anulează",
-    "save": "Salvează",
-    "delete": "Șterge",
-    "close": "Închide",
-    "allow": "Permite",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Reîncearcă",
+    "cancel": "Anulează",
+    "allow": "Permite",
+    "notNow": "Nu acum",
+    "openSettings": "Deschide setările",
+    "close": "Închide",
+    "save": "Salvează",
+    "tryAgain": "Încearcă din nou"
   },
   "rateUs": {
-    "title": "Vă bucurați de ChatCloud?",
+    "title": "Vă bucurați de Cloud AI?",
     "subtitle": "Feedback-ul dvs. ne ajută să ne îmbunătățim. Ne-ați putea evalua în App Store?",
     "rateNow": "Evaluează acum",
     "maybeLater": "Poate mai târziu",
     "dontAskAgain": "Nu mai întreba"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Ofertă unică",
+    "discount": "{{percent}}% REDUCERE",
+    "subtitle": "Nu vei mai vedea această ofertă.",
     "badgeLine1": "Exclusiv",
     "badgeLine2": "Ofertă unică",
     "upgradeNow": "Actualizează acum pentru {{price}}",
     "loadingPrice": "Se încarcă...",
     "termsOfUse": "Termeni de utilizare",
     "privacyPolicy": "Politica de confidențialitate",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Acces nelimitat la",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Acces nelimitat la GPT-4",
+      "geminiPro": "Acces la Gemini Pro",
+      "grokInsights": "Folosește Grok pentru perspective noi",
+      "priorityAccess": "Acces prioritar și răspunsuri mai rapide"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Cea mai bună valoare",
+    "annualPremium": "Premium anual",
+    "oneTimePayment": "Plată unică",
+    "wasPrice": "înainte",
+    "continue": "Continuă",
+    "restore": "Restaurează",
+    "terms": "Termeni",
+    "privacy": "Confidențialitate",
+    "successTitle": "Succes!",
+    "successMessage": "Mulțumim pentru achiziție! Bucură-te de acces premium în următoarele 12 luni.",
+    "errorTitle": "Achiziție eșuată",
+    "errorMessage": "Ceva n-a mers bine. Încearcă din nou.",
+    "restoreSuccessTitle": "Restaurat",
+    "restoreSuccessMessage": "Achizițiile tale au fost restaurate.",
+    "restoreErrorTitle": "Restaurare eșuată",
+    "restoreErrorMessage": "Nu s-au găsit achiziții de restaurat.",
+    "unavailableTitle": "Achizițiile nu sunt disponibile",
+    "unavailableMessage": "Facturarea Android nu este încă configurată."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "MITIC"
         }
       }
+    },
+    "checkIn": {
+      "title": "Revendică-ți monedele zilnice",
+      "subtitle": "Revino în fiecare zi — recompensa crește.",
+      "cta": "Înregistrează-mă",
+      "claimed": "Primit! +{{amount}} monede",
+      "later": "Mai târziu"
     }
+  },
+  "app": {
+    "version": "Versiunea {{version}}",
+    "offlineBanner": "Ești offline",
+    "launch": {
+      "accessibilityLabel": "Se pornește Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, pregătit oricând ai nevoie"
+    },
+    "errors": {
+      "modelsLoadTitle": "Modelele nu au putut fi încărcate",
+      "modelsLoadMessage": "Modelele AI nu pot fi încărcate. Aplicația va folosi modelele implicite. Verifică conexiunea la internet.",
+      "modelsLoadTimeout": "Încărcarea modelelor a durat prea mult. Aplicația va folosi modelele implicite. Încearcă din nou.",
+      "modelsLoadNetwork": "Nu există conexiune la internet. Aplicația va folosi modelele implicite. Verifică conexiunea.",
+      "deviceIdTitle": "Eroare de inițializare",
+      "deviceIdMessage": "ID-ul dispozitivului nu a putut fi inițializat. Este posibil ca unele funcții să nu funcționeze corect.",
+      "storageTitle": "Eroare de stocare",
+      "storageMessage": "Stocarea locală nu poate fi accesată. Este posibil ca unele funcții să nu funcționeze corect.",
+      "crashTitle": "Ceva n-a mers bine.",
+      "crashSubtitle": "Încearcă din nou.",
+      "crashLabel": "Aplicația s-a blocat"
+    },
+    "proxyErrors": {
+      "genericTitle": "Ceva n-a mers bine",
+      "genericMessage": "Încearcă din nou.",
+      "rateLimitTitle": "Prea multe solicitări",
+      "rateLimitMessage": "Gestionăm multe solicitări. Încearcă din nou peste puțin timp.",
+      "rateLimitRetryAfter": "Gestionăm multe solicitări. Încearcă din nou peste aproximativ {{seconds}} secunde.",
+      "restrictedTitle": "Conținut restricționat",
+      "restrictedMessage": "Această solicitare a fost blocată de filtrele de siguranță.",
+      "insufficientCoinsTitle": "Monede insuficiente",
+      "insufficientCoinsMessage": "Soldul tău actual este prea mic pentru această solicitare.",
+      "imageUnavailableTitle": "Imagine indisponibilă",
+      "imageUnavailableMessage": "Fișierul imaginii generate a fost temporar indisponibil. Încearcă din nou.",
+      "authorizationTitle": "Problemă de autorizare",
+      "authorizationMessage": "Nu am putut verifica contul tău. Încearcă din nou.",
+      "serverTitle": "Problemă de server",
+      "serverMessage": "Serverele noastre au întâmpinat o problemă. Încearcă din nou în curând.",
+      "timeoutTitle": "Durează prea mult",
+      "timeoutMessage": "Solicitarea a expirat. Încearcă din nou.",
+      "networkTitle": "Fără conexiune",
+      "networkMessage": "Nu există conexiune la internet. Verifică conexiunea și încearcă din nou.",
+      "requestTitle": "Problemă cu solicitarea",
+      "requestMessage": "Ceva n-a mers bine cu solicitarea ta. Încearcă din nou."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Activează Premium",
+    "activateMessage": "Vrei să activezi premiumul pentru recenzori?",
+    "activateAction": "Activează",
+    "deactivateTitle": "Dezactivează Premium",
+    "deactivateMessage": "Vrei să dezactivezi premiumul pentru recenzori?",
+    "deactivateAction": "Dezactivează"
   },
   "push": {
     "dailyReward": {
       "title": "Recompensă zilnică",
       "body": "Nu rata monedele zilnice — revendică-le înainte de miezul nopții."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Nu rata monedele tale zilnice",
+      "body": "Trimitem o singură notificare pe zi, ca seria ta să continue și monedele să crească. Fără spam și o poți dezactiva oricând.",
+      "enable": "Activează memento-urile",
+      "skip": "Nu acum"
     }
   }
 }

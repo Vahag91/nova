@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Pumili ng modelo",
+    "searchPlaceholder": "Maghanap ng mga modelo...",
+    "noModelsFound": "Walang nakitang mga modelo",
+    "noModelsAvailable": "Walang available na mga modelo",
+    "currentModel": "Kasalukuyang modelo: {{name}}. I-tap para baguhin ang modelo.",
+    "openHint": "Binubuksan ang menu ng pagpili ng modelo",
+    "closeLabel": "Isara ang tagapili ng modelo",
+    "searchLabel": "Maghanap ng mga modelo",
+    "searchHint": "Mag-type para i-filter ang mga available na modelo",
+    "modelLabel": "{{name}} modelo",
+    "selectHint": "Piliin ang {{name}} modelo",
+    "currentlySelected": "Kasalukuyang napiling modelo",
+    "genericModel": "{{provider}} modelo",
+    "badges": {
+      "new": "BAGO",
+      "best": "Pinakamahusay"
+    }
+  },
+  "models": {
+    "gpt-4o": "Pinakamakapangyarihang modelo ng AI",
+    "gpt-4o-mini": "Mabilis para sa pang-araw-araw na gawain",
+    "gpt-5": "Pinakamakapangyarihang all-purpose AI",
+    "gpt-5-chat-latest": "Na-optimize para sa chat at dialogue",
+    "gpt-5-mini": "Mabilis at maaasahan GPT-5",
+    "gpt-5.4-nano": "Banayad na modelo para sa mga simpleng gawain",
+    "o4-mini": "Mahusay na modelo ng pangangatwiran",
+    "gpt-4.1-mini": "Compact, kayang GPT-4.1",
+    "claude-3-haiku": "Mabilis at nakatutok na Anthropic AI",
+    "claude-3.7-sonnet": "Pinong pangangatwiran ni Anthropic",
+    "gemini-2.5-Flash": "Pinaka advanced na modelo ng Google",
+    "gemini-2.5-flash": "Pinaka advanced na modelo ng Google",
+    "gemini-2.0-flash": "Mabilis at tumpak na Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Pinakamakapangyarihang modelo ng AI",
+    "fast_everyday": "Mabilis para sa pang-araw-araw na gawain",
+    "fast_reasoning": "Mabilis na modelo na may magandang pangangatwiran",
+    "great_reasoning": "Advanced na modelo ng pangangatwiran",
+    "coding_reasoning": "Advanced na coding at pangangatwiran",
+    "better_coding": "Mas mahusay para sa coding at pangangatwiran",
+    "best_overall": "Pinakamahusay na all-around AI model",
+    "best_google": "Pinakamahusay na modelo ng Google",
+    "best_xai": "Ang pinakamakapangyarihang modelo ng xAI",
+    "creative_focus": "Mahusay para sa malikhaing pagsulat",
+    "code_helper": "Mahusay para sa tulong sa coding",
+    "chat_focus": "Na-optimize para sa pakikipag-chat",
+    "long_context": "Mahusay para sa mahabang konteksto",
+    "budget_friendly": "Budget-friendly na modelo ng AI",
+    "ultra_fast": "Mga napakabilis na tugon",
+    "safe_default": "Ligtas na default na pagpipilian",
+    "multilingual": "Malakas na suporta sa maraming wika",
+    "vision_strong": "Mahusay sa mga imahe at pangitain",
+    "data_analysis": "Mabuti para sa pagsusuri ng data",
+    "structured_tasks": "Mabuti para sa mga nakabalangkas na gawain",
+    "everyday_helper": "Araw-araw na assistant model",
+    "concise_answers": "Maikli, maigsi na mga sagot",
+    "detailed_answers": "Detalyadong hakbang-hakbang na mga sagot",
+    "experimental": "Pang-eksperimentong next-gen na modelo",
+    "reliable_classic": "Maaasahang klasikong modelo",
+    "lightweight": "Magaan, murang modelo",
+    "chatty_personal": "Mas palakaibigan at personal",
+    "pro_users": "Pinakamahusay para sa mga power user",
+    "research_helper": "Mahusay para sa pananaliksik at mga tala",
+    "reasoning_strong": "Advanced na modelo ng pangangatwiran"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Antropiko",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Iba pa"
+  },
+  "navigation": {
+    "chat": "Bagong Chat",
+    "history": "Kasaysayan",
+    "rewards": "Pang-araw-araw na Gantimpala",
+    "assistants": "Mga katulong",
+    "imagesStudio": "Image Studio",
+    "settings": "Mga setting",
+    "recentChats": "Mga Kamakailang Chat",
+    "proFeatures": "Mga tampok na pro",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Kumuha ng Mga Pro Feature",
+      "subtitle": "Lahat ng Mga Tampok ng AI"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Bumuo, pinuhin, at mag-publish ng mga visual na asset sa isang lugar.",
+    "cta": "Bukas"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Pumili ng mga larawan",
+    "exitSelectionMode": "Lumabas sa selection mode",
+    "selectAll": "Piliin ang Lahat",
+    "noImagesYet": "Wala pang mga larawan",
+    "describeImageHint": "Ilarawan ang iyong larawan sa ibaba at i-tap ang Bumuo.",
+    "generatedImagesGallery": "Mga nabuong gallery ng larawan",
+    "describeImagePlaceholder": "Ilarawan ang larawang gusto mo...",
+    "deleteConfirmTitle": "Tanggalin ang mga Larawan",
+    "deleteConfirmMessage": "Sigurado ka bang gusto mong tanggalin ang mga napiling larawan? Ang pagkilos na ito ay hindi maaaring i-undo.",
+    "cancel": "Kanselahin",
+    "delete": "Tanggalin",
+    "generate": "Bumuo",
+    "generating": "Binubuo…",
+    "latest": "Pinakabago",
+    "insertToChat": "Ipasok upang makipag-chat",
+    "pleaseWait": "Mangyaring maghintay…",
+    "processing": "Pinoproseso...",
+    "tapToUploadImage": "I-tap para mag-upload ng larawan",
+    "camera": "Mag-upload ng Mga Larawan",
+    "library": "Aklatan",
+    "enterPrompt": "Mangyaring magpasok ng prompt para sa pagbuo ng text-to-image",
+    "openInBrowser": "Buksan sa browser",
+    "makeVariations": "Gumawa ng mga pagkakaiba-iba",
+    "deleteAllFromGeneration": "Tanggalin ang lahat sa henerasyong ito",
+    "imageOptionsTitle": "Mga Pagpipilian sa Larawan",
+    "imageOptionsMessage": "Ano ang gusto mong gawin sa larawang ito?",
+    "insertMarkdownHeader": "Narito ang larawan para sa:",
+    "variationSuffix": "— pagkakaiba-iba ng nakaraang larawan",
+    "selectedCount": "pinili",
+    "selectedCount_one": "pinili",
+    "selectedCount_other": "pinili",
+    "imageDescriptionInput": "Input ng paglalarawan ng larawan",
+    "imageDescriptionHint": "Maglagay ng paglalarawan ng larawang gusto mong buuin",
+    "openModelSettings": "Buksan ang mga setting ng modelo",
+    "modelSettingsHint": "I-tap para baguhin ang modelo at mga setting",
+    "openPhotoGallery": "Buksan ang gallery ng larawan",
+    "clearInput": "I-clear ang input",
+    "generatedImage": "nabuong larawan",
+    "autoSelectedModel": "Auto-selected {{model}} para sa {{mode}} mode",
+    "deleteSelectedConfirmTitle": "Tanggalin ang mga larawan",
+    "deleteSelectedConfirmMessage": "Sigurado ka bang gusto mong tanggalin ang mga larawan? Ang pagkilos na ito ay hindi maaaring i-undo."
+  },
+  "imageStudio": {
+    "generateImage": "Bumuo ng larawan",
+    "generatingImage": "Pagbuo ng imahe",
+    "generateImageHint": "I-tap para bumuo ng larawan batay sa iyong paglalarawan",
+    "imageDescriptionInput": "Input ng paglalarawan ng larawan",
+    "imageDescriptionHint": "Maglagay ng paglalarawan ng larawang gusto mong buuin",
+    "openModelSettings": "Buksan ang mga setting ng modelo",
+    "modelSettingsHint": "I-tap para baguhin ang modelo at mga setting",
+    "openPhotoGallery": "Buksan ang gallery ng larawan",
+    "clearInput": "I-clear ang input",
+    "generatedImage": "nabuong larawan"
+  },
+  "assistants": {
+    "title": "Mga katulong",
+    "defaultTitle": "Katulong",
+    "errorTitle": "Nagkaproblema",
+    "errorMessage": "Hindi masimulan ang assistant na ito.",
+    "noAssistants": "Walang nakitang katulong sa kategoryang ito.",
+    "selectAssistantHint": "Buksan ang assistant picker",
+    "subtitle": "Ang mga curated AI specialist ay handa na para sa coding, pagsulat, pagsusuri, pagpaplano, at higit pa.",
+    "searchPlaceholder": "Mga katulong sa paghahanap...",
+    "useAssistant": "Gamitin ang Assistant",
+    "selectAssistant": "Pumili ng katulong",
+    "description": "Paglalarawan",
+    "systemPrompt": "System Prompt",
+    "chooseModel": "Pumili ng Modelo",
+    "categoryAll": "Lahat",
+    "categories": {
+      "everyday": "Araw-araw",
+      "life": "Buhay",
+      "health": "Kalusugan",
+      "schoolWork": "Paaralan at Trabaho",
+      "coding": "Pag-coding",
+      "creative": "Malikhain",
+      "general": "Heneral"
+    },
+    "presets": {
+      "default": {
+        "name": "Default na Assistant",
+        "description": "Balanseng tulong para sa pang-araw-araw na bagay."
+      },
+      "quick": {
+        "name": "Mga Mabilisang Sagot",
+        "description": "Maikli, direktang mga sagot."
+      },
+      "planner": {
+        "name": "Pang-araw-araw na Plano",
+        "description": "Planuhin ang iyong araw at mga gawain."
+      },
+      "recipes": {
+        "name": "Mga Pagkain at Recipe",
+        "description": "Kung ano ang lutuin, kung ano ang mayroon ka."
+      },
+      "fitness": {
+        "name": "Fitness Coach",
+        "description": "Mga maliliit na gawi at pag-eehersisyo sa bahay."
+      },
+      "money": {
+        "name": "Pera Buddy",
+        "description": "Mga simpleng badyet at tip sa paggastos."
+      },
+      "study": {
+        "name": "Katulong sa Pag-aaral",
+        "description": "Ipaliwanag nang simple. Pagsusulit sa akin."
+      },
+      "email": {
+        "name": "Email at Resume",
+        "description": "Sumulat ng malinaw na mga email at mga linya ng CV."
+      },
+      "translator": {
+        "name": "Tagasalin",
+        "description": "Magsalin + magturo ng mga parirala."
+      },
+      "travel": {
+        "name": "Paglalakbay Buddy",
+        "description": "Mga simpleng plano at listahan ng pag-iimpake."
+      },
+      "tech": {
+        "name": "Tech Support (Simple)",
+        "description": "Telepono, apps, mga pangunahing kaalaman sa Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL;DR Summarizer",
+        "description": "Maikling bala + isang linyang TL;DR."
+      },
+      "gift": {
+        "name": "Tagahanap ng Regalo",
+        "description": "Mga ideya ayon sa badyet at interes."
+      },
+      "party": {
+        "name": "Tagaplano ng Kaganapan (Lite)",
+        "description": "Magplano ng isang maliit na partido nang mabilis."
+      },
+      "social": {
+        "name": "Social Post Maker",
+        "description": "Draft post na may mga opsyon."
+      },
+      "interview": {
+        "name": "Panayam Coach",
+        "description": "Mga sagot sa pagsasanay (STAR)."
+      },
+      "homefix": {
+        "name": "Gabay sa Pag-aayos sa Bahay",
+        "description": "Simpleng DIY troubleshooting."
+      },
+      "pet": {
+        "name": "Pet Care Buddy",
+        "description": "Pagpapakain, paglalakad, pangunahing pagsasanay."
+      },
+      "mindful": {
+        "name": "Mindful Minuto",
+        "description": "1–3 min na mahinahon na pahinga."
+      },
+      "polite": {
+        "name": "Magalang na Rewriter",
+        "description": "Isulat muli ang mga teksto at mga tugon nang maayos."
+      }
+    }
+  },
+  "history": {
+    "title": "Kasaysayan",
+    "searchPlaceholder": "Maghanap ng mga chat…",
+    "newChat": "Bagong Chat",
+    "new": "+ Bago",
+    "search": "Maghanap",
+    "clearSearch": "I-clear ang paghahanap",
+    "noChatsYet": "Wala pang chat",
+    "noResults": "Wala pang chat",
+    "startFirstConversation": "Simulan ang iyong unang pag-uusap.",
+    "startChat": "Simulan ang chat",
+    "startNewChat": "Magsimula ng bagong chat",
+    "errorLoadingHistory": "Error sa paglo-load ng history",
+    "loading": "Nilo-load ang history...",
+    "renameChat": "Palitan ang pangalan ng chat",
+    "enterNewTitle": "Maglagay ng bagong pamagat",
+    "deleteChat": "Tanggalin ang chat?",
+    "deleteChatMessage": "Ang \"{{title}}\" ay tatanggalin.",
+    "rename": "Palitan ang pangalan",
+    "unpin": "I-unpin",
+    "pin": "Pin",
+    "untitled": "Walang pamagat"
+  },
+  "settings": {
+    "title": "Mga setting",
+    "model": "modelo",
+    "searchPlaceholder": "Maghanap ng mga modelo...",
+    "temperatureForCurrentModel": "Temperatura para sa kasalukuyang modelo",
+    "customFor": "Custom para sa {{model}}",
+    "usingDefault": "Ginagamit ang default na {{temperature}}",
+    "resetToDefault": "I-reset sa default",
+    "defaultTemperature": "Default na temperatura (fallback)",
+    "usedByModelsWithoutOverride": "Ginagamit ng mga modelong walang custom na override",
+    "dangerZone": "Danger zone",
+    "clearAllChatsAndSettings": "I-clear ang lahat ng chat at setting",
+    "about": "Tungkol sa",
+    "version": "Bersyon {{version}}{{status}}",
+    "versionPremiumSuffix": "· Premium",
+    "privacyPolicy": "Patakaran sa Privacy",
+    "hero": {
+      "label": "Espesyal na alok",
+      "title": "Walang limitasyong Access\n& Mga Tampok na Pro",
+      "upgrade": "Mag-upgrade",
+      "manage": "Pamahalaan ang plano"
+    },
+    "sections": {
+      "premium": "Premium na Plano",
+      "data": "Data ng Gumagamit",
+      "support": "Suporta at Legal"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Kumuha ng Premium",
+        "subtitle": "I-unlock ang walang limitasyong mga tool sa paggawa"
+      },
+      "premiumActive": {
+        "title": "Premium Active",
+        "subtitle": "Salamat sa pagsuporta Cloud AI"
+      },
+      "restore": {
+        "title": "Ibalik ang mga binili",
+        "subtitle": "Gamitin kung lumipat ka ng mga device"
+      },
+      "history": {
+        "title": "Pamahalaan ang kasaysayan ng chat",
+        "subtitle": "Tingnan at tanggalin ang iyong mga nakaraang session"
+      },
+      "reset": {
+        "title": "I-reset ang mga chat at kagustuhan",
+        "subtitle": "Tinatanggal ang lahat ng nakaimbak na data sa device na ito"
+      },
+      "rate": {
+        "title": "I-rate kami",
+        "error": "Hindi mabuksan ang page ng store."
+      },
+      "support": {
+        "title": "Suporta",
+        "subtitle": "Makipag-ugnayan sa amin online",
+        "error": "Hindi mabuksan ang pahina ng contact."
+      },
+      "privacy": {
+        "title": "Patakaran sa Privacy",
+        "error": "Hindi mabuksan ang patakaran sa privacy."
+      },
+      "terms": {
+        "title": "Mga Tuntunin sa Paggamit",
+        "error": "Hindi mabuksan ang mga tuntunin ng paggamit."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Hindi available",
+      "linkUnavailableMessage": "Hindi mabuksan ang link na ito sa ngayon.",
+      "restoreSuccessTitle": "Ibinalik",
+      "restoreSuccessMessage": "Ang iyong mga binili ay naibalik.",
+      "restoreEmptyTitle": "Walang nakitang mga pagbili",
+      "restoreEmptyMessage": "Hindi kami makahanap ng aktibong pagbili na ire-restore para sa account na ito.",
+      "restoreErrorTitle": "Nabigo ang pag-restore",
+      "restoreErrorMessage": "Hindi ma-restore ang mga binili sa ngayon.",
+      "resetConfirmTitle": "I-reset ang data ng app?",
+      "resetConfirmMessage": "Inaalis nito ang lahat ng mga chat at lokal na kagustuhan.",
+      "resetConfirmCancel": "Kanselahin",
+      "resetConfirmCta": "I-reset"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Lumikha",
+    "chooseStyle": "Pumili ng Estilo",
+    "aspectRatio": "Aspect Ratio",
+    "starterPrompts": {
+      "title": "Mga Starter Prompt",
+      "items": [
+        "headshot ng studio",
+        "modernong sala",
+        "tropikal na beach sa paglubog ng araw"
+      ]
+    },
+    "promptPlaceholder": "I-type ang gusto mong makita...",
+    "promptHint": "Halimbawa: 'Golden retriever sa studio lighting'",
+    "clearText": "I-clear ang text",
+    "generate": "Bumuo",
+    "generating": "Binubuo…"
+  },
+  "editImage": {
+    "headerTitle": "I-edit",
+    "chooseStyle": "Pumili ng Estilo",
+    "aspectRatio": "Aspect Ratio",
+    "starterPrompts": {
+      "title": "Mga Starter Prompt",
+      "items": [
+        "ayusin ang ilaw",
+        "alisin ang background",
+        "soft portrait retouch"
+      ]
+    },
+    "promptPlaceholder": "Ilarawan ang mga pag-edit (opsyonal)",
+    "clearText": "I-clear ang text",
+    "generate": "Bumuo",
+    "generating": "Inilalapat…",
+    "upload": {
+      "choose": "Pumili ng Larawan",
+      "change": "Baguhin",
+      "remove": "Alisin"
+    },
+    "imageUnavailable": {
+      "title": "Hindi available ang larawan",
+      "message": "Hindi ma-access ang napiling larawan. Mangyaring muling piliin ito at subukang muli."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Anime"
+      },
+      "cartoon": {
+        "name": "Cartoon"
+      },
+      "photoreal": {
+        "name": "Photoreal"
+      },
+      "sketch": {
+        "name": "Sketch"
+      },
+      "cyberpunk": {
+        "name": "Cyberpunk"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D na Ilustrasyon"
+      },
+      "dark_fantasy": {
+        "name": "Madilim na Pantasya"
+      },
+      "vintage_film": {
+        "name": "Vintage na Pelikula"
+      },
+      "pastel": {
+        "name": "Pastel Aesthetic"
+      },
+      "neon_glow": {
+        "name": "Neon Glow"
+      },
+      "epic_landscape": {
+        "name": "Epic Landscape"
+      }
+    },
+    "aspectRatios": {
+      "square": "Square",
+      "landscape": "Landscape",
+      "portrait": "Larawan"
+    },
+    "models": {
+      "fluxKontent": "Nilalaman ng Flux",
+      "custom": "Custom"
+    },
+    "notEnoughCoinsTitle": "Hindi sapat ang mga barya",
+    "notEnoughCoinsMessage": "Masyadong mababa ang iyong kasalukuyang balanse para sa larawang ito.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Pinakamabilis na modelo",
+      "runwareFluxKrea": "Malikhain, naka-istilong resulta",
+      "runwareQwenImage": "Balanseng, mataas na kalidad na mga resulta",
+      "google4": "Pinakamahusay na modelo ng imahe ng AI",
+      "klingImageO1": "High-control na pag-edit ng imahe",
+      "fluxKontent": "Nakatutok ang Flux Content para sa mga pag-edit",
+      "runwareProvider": "Balanseng kalidad na may maaasahang pagsasabog.",
+      "airProvider": "Nagdaragdag ang Nano Banana ng mapaglaro, matingkad na tono.",
+      "googleProvider": "Nakatutok ang Google para sa mga pinakintab na detalye.",
+      "klingaiProvider": "Nakatutok ang KlingAI para sa mga kinokontrol na pag-edit.",
+      "anthropicProvider": "Claude pipeline para sa nuanced moods.",
+      "default": "I-tap para i-explore ang mga available na engine."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "iyong napiling istilo",
+    "sheetTitle": "Paglikha ng iyong paningin",
+    "sheetSubtitle": "Maikling higop ng server coffee habang pinagsasama namin ang {{style}} sa prompt.",
+    "phases": {
+      "blend": "Pinagsasama sa {{style}}",
+      "paint": "Pagpipinta ng eksena",
+      "finish": "Pagdaragdag ng panghuling polish"
+    },
+    "actions": {
+      "cancel": "Kanselahin",
+      "retry": "Subukan muli",
+      "close": "Isara"
+    },
+    "errors": {
+      "restrictedTitle": "Pinaghihigpitang Nilalaman",
+      "genericTitle": "Nabigo ang henerasyon",
+      "genericMessage": "Hindi makabuo ng larawan."
+    },
+    "alerts": {
+      "saveFailedTitle": "Hindi makapag-save",
+      "shareFailedTitle": "Hindi maibahagi",
+      "tryAgain": "Pakisubukang muli.",
+      "savedTitle": "Nai-save",
+      "savedMessage": "Na-save ang larawan sa iyong gallery.",
+      "permissionTitle": "Kailangan ng pahintulot",
+      "permissionMessage": "Payagan ang access sa storage na mag-save ng mga larawan sa iyong gallery."
+    },
+    "result": {
+      "complete": "Tapos na lahat"
+    },
+    "accessibility": {
+      "close": "Isara"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Tanggalin",
+      "edit": "I-edit",
+      "save": "I-save",
+      "share": "Ibahagi"
+    },
+    "alerts": {
+      "savedTitle": "Nai-save",
+      "savedMessage": "Na-save ang larawan sa iyong gallery.",
+      "permissionTitle": "Kailangan ng pahintulot",
+      "permissionMessage": "Payagan ang access sa storage na mag-save ng mga larawan sa iyong gallery.",
+      "saveFailedTitle": "Hindi makapag-save",
+      "tryAgain": "Pakisubukang muli."
+    },
+    "accessibility": {
+      "close": "Isara",
+      "delete": "Tanggalin ang larawan",
+      "edit": "I-edit ang larawan",
+      "save": "I-save ang larawan",
+      "share": "Ibahagi ang larawan"
+    }
+  },
+  "reportContent": {
+    "title": "Iulat ang nilalaman ng AI",
+    "subtitle": "Sabihin sa amin kung ano ang mali sa nabuong nilalamang ito.",
+    "privateDisclosure": "Ang pagsusumite ay nagpapadala ng iniulat na nilalaman para sa pagsusuri sa kaligtasan.",
+    "accessibilityLabel": "Iulat ang nilalaman ng AI",
+    "reasons": {
+      "sexual": "Sekswal o kahubaran na nilalaman",
+      "violence_self_harm": "Karahasan o pananakit sa sarili",
+      "hate_harassment": "Poot o panliligalig",
+      "child_safety": "Alalahanin sa kaligtasan ng bata",
+      "scam_deceptive": "Scam o mapanlinlang na nilalaman",
+      "other": "Iba pa"
+    },
+    "errors": {
+      "reasonRequired": "Mangyaring pumili ng dahilan bago isumite.",
+      "submit": "Hindi makapagsumite ng ulat. Pakisubukang muli."
+    },
+    "success": {
+      "title": "Salamat. Naisumite ang iyong ulat.",
+      "subtitle": "Gagamit kami ng mga ulat upang mapabuti ang kaligtasan ng nilalaman."
+    },
+    "actions": {
+      "report": "Ulat",
+      "submit": "Isumite ang Ulat",
+      "done": "Tapos na"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Buksan ang menu",
+      "selectImages": "Pumili ng mga larawan",
+      "exitSelection": "Lumabas sa pagpili",
+      "deleteSelected": "Tanggalin ang mga napiling larawan",
+      "selectToDelete": "Pumili ng mga larawang tatanggalin"
+    },
+    "createCard": {
+      "title": "Lumikha mula sa Teksto",
+      "subtitle": "Mag-type ng paglalarawan",
+      "cta": "Ilarawan at Bumuo"
+    },
+    "editCard": {
+      "title": "AI Photo Editor",
+      "subtitle": "Magbago at magpahusay gamit ang AI",
+      "cta": "I-edit gamit ang AI"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "empty": "Wala pang mga larawan",
+      "selection": {
+        "enter": "Pumili ng mga larawan",
+        "exit": "Lumabas sa pagpili",
+        "deleteSelected": "Tanggalin ang mga napiling larawan",
+        "selectForDelete": "Pumili ng mga larawang tatanggalin"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Magkita",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Gumawa at mag-edit ng mga larawan gamit ang AI—sa loob mismo Cloud AI."
+    },
+    "relaxView": {
+      "title": "Kilalanin ang Iyong AI",
+      "titleHighlight": "Mga katulong",
+      "subtitle": "Ang mga dalubhasang eksperto sa AI ay handang tumulong sa iyong pang-araw-araw na pangangailangan",
+      "cards": {
+        "fitness": {
+          "title": "Fitness Coach",
+          "text": "Mga maliliit na gawi at pag-eehersisyo sa bahay."
+        },
+        "recipes": {
+          "title": "Mga Pagkain at Recipe",
+          "text": "Kung ano ang lutuin, kung ano ang mayroon ka."
+        },
+        "travel": {
+          "title": "Paglalakbay Buddy",
+          "text": "Mga simpleng plano at listahan ng pag-iimpake."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "ENTERPRISE-GRADE AI SOLUTIONS",
+      "description": "Palakasin ang iyong negosyo gamit ang makabagong teknolohiya ng artificial intelligence na idinisenyo para sa mga propesyonal sa negosyo at mga team.",
+      "stats": "Pinagkakatiwalaan ng 500k+ user",
+      "rating": "4.9 / 5",
+      "button": "Magsimula"
+    },
+    "buttons": {
+      "continue": "Magpatuloy",
+      "start": "Magsimula na tayo"
+    }
+  },
+  "coinStore": {
+    "title": "Kumuha ng Mga Kredito",
+    "loading": "Nilo-load ang tindahan ng barya...",
+    "balanceLabel": "Ang iyong kasalukuyang balanse ay",
+    "balanceValue": "{{amount}} Mga Credit",
+    "history": {
+      "link": "Kasaysayan ng Transaksyon",
+      "alertTitle": "Kasaysayan",
+      "alertBody": "Malapit na ang history ng transaksyon."
+    },
+    "noPacks": "Walang available na coin pack. Tingnan ang iyong RevenueCat offer id.",
+    "badges": {
+      "basic": "Basic Pack",
+      "popular": "Pinakasikat",
+      "value": "Pinakamahusay na Halaga"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Mga Credit",
+      "tokensLabel": "{{credits}} Mga Credit",
+      "defaultName": "Pack {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Pumunta sa Premium",
+      "subtitle": "Walang limitasyong pag-access at mga tampok",
+      "cta": "Mag-upgrade"
+    },
+    "termsText": "Sa pamamagitan ng pagbili, sumasang-ayon ka sa aming",
+    "termsLink": "Mga Tuntunin ng Serbisyo",
+    "alerts": {
+      "initErrorTitle": "Init error",
+      "genericMessage": "Nagkaproblema.",
+      "successTitle": "Tagumpay",
+      "successMessage": "Lalabas sa lalong madaling panahon ang mga kredito.",
+      "purchaseFailedTitle": "Nabigo ang pagbili",
+      "unknownError": "Hindi kilalang error"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Kinakailangan ang Premium",
+    "upgrade": "Mag-upgrade",
+    "modelRequiredMessage": "Nangangailangan ang modelong ito ng Premium. Mag-upgrade para ma-access ang GPT-5, Grok 4, Claude, at mas advanced na mga modelo.",
+    "assistantsRequiredMessage": "Ang mga katulong ay nangangailangan ng Premium. Mag-upgrade para ma-access ang mga dalubhasang AI assistant para sa fitness, coding, pagsusulat, at higit pa.",
+    "assistantsTitle": "Kinakailangan ang Premium",
+    "assistantsMessage": "Ang mga katulong ay nangangailangan ng Premium. Mag-upgrade para ma-access ang mga dalubhasang AI assistant para sa fitness, coding, pagsusulat, at higit pa."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "Isara ang paywall",
+    "unavailableTitle": "Hindi available ang mga pagbili",
+    "unavailableMessage": "Hindi pa naka-configure ang pagsingil sa Android.",
+    "restoreEmptyTitle": "Walang nakitang mga pagbili",
+    "restoreEmptyMessage": "Hindi kami makahanap ng aktibong pagbili na ire-restore para sa account na ito.",
+    "restoreFailedTitle": "Nabigo ang pag-restore",
+    "restoreFailedMessage": "Hindi ma-restore ang mga binili sa ngayon.",
+    "productsUnavailableTitle": "Walang available na mga plano",
+    "productsUnavailableMessage": "Walang available na mga produkto ng subscription sa Android ngayon.",
+    "purchaseFailedTitle": "Nabigo ang pagbili",
+    "purchaseFailedMessage": "Hindi makumpleto ang pagbiling ito sa ngayon.",
+    "restore": "Ibalik",
+    "restoreRestoring": "Nire-restore…",
+    "features": {
+      "create": "Lumikha ng mga larawan at video",
+      "search": "Maghanap sa web gamit ang AI",
+      "talk": "Natural na makipag-usap sa AI",
+      "imageStudio": "Makakuha ng Image Studio {{credits}} credits {{period}}",
+      "period": {
+        "weekly": "lingguhan",
+        "monthly": "buwanan",
+        "yearly": "taun-taon"
+      }
+    },
+    "freeTrial": {
+      "title": "Libreng pagsubok",
+      "subtitle": "3 araw na libreng pagsubok"
+    },
+    "badge": {
+      "bestOffer": "Pinakamahusay na alok"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Taon-taon",
+        "only": "{{price}} lang",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
+      },
+      "monthly": {
+        "title": "Buwan-buwan",
+        "subtitle": "Kanselahin anumang oras",
+        "defaultPrice": "USD 19.99"
+      },
+      "weekly": {
+        "title": "Linggu-linggo",
+        "subtitle": "Kanselahin anumang oras",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 araw na libre, pagkatapos"
+      }
+    },
+    "frequency": {
+      "perWeek": "kada linggo",
+      "perMonth": "bawat buwan"
+    },
+    "cta": "Magpatuloy",
+    "ctaFreeTrial": "Subukan Ito nang Libre",
+    "legal": {
+      "terms": "Mga tuntunin",
+      "privacy": "Pagkapribado"
+    },
+    "premium": {
+      "headline": "Lahat ng premium AI sa isang plan",
+      "subtitleLine1": "Makipag-chat, code, gumawa, at magplano",
+      "subtitleLine2": "na may mga advanced na modelo.",
+      "enableTrial": "Paganahin ang libreng pagsubok",
+      "annual": "Taunang",
+      "saveBadge": "Makatipid ng 83%",
+      "year": "taon",
+      "week": "linggo",
+      "termsOfUse": "Mga Tuntunin ng Paggamit",
+      "privacyPolicy": "Patakaran sa Privacy"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Mensahe...",
+    "createImages": "Lumikha ng mga Larawan",
+    "generateAiArtwork": "Bumuo ng AI artwork",
+    "camera": "Mag-upload ng Mga Larawan",
+    "takeOrSelectPhotos": "Pumili ng mga larawan",
+    "search": "Maghanap",
+    "findInformation": "Maghanap ng impormasyon",
+    "findRecentInfo": "Maghanap ng kamakailang impormasyon",
+    "removeImage": "Alisin ang larawan",
+    "messageInput": "Input ng mensahe",
+    "clearInput": "I-clear ang input",
+    "quickActionsLabel": "Mabilis na pagkilos",
+    "hideQuickActions": "Itago ang mga mabilisang pagkilos",
+    "showQuickActions": "Magpakita ng mabilis na pagkilos",
+    "startVoiceInput": "Simulan ang voice input",
+    "sendMessage": "Magpadala ng mensahe",
+    "offline": "Offline",
+    "stop": "Tumigil ka",
+    "streaming": "Nag-stream...",
+    "closeRecorder": "Isara ang recorder",
+    "insertTranscript": "Ipadala",
+    "scrollToLatest": "Mag-scroll sa pinakabagong mensahe",
+    "copyMessage": "Kopyahin ang mensahe",
+    "copyMessageHint": "Kopyahin ang mensaheng ito sa clipboard",
+    "shareMessage": "Ibahagi ang mensahe",
+    "shareMessageHint": "Ibahagi ang mensaheng ito",
+    "regenerateResponse": "I-regenerate ang tugon",
+    "regenerateResponseHint": "Bumuo ng bagong tugon",
+    "copyCode": "Kopyahin ang code",
+    "copied": "Kinopya",
+    "image": "larawan",
+    "loading": "Naglo-load…",
+    "loadingChat": "Nilo-load ang chat...",
+    "offlineBanner": "Offline ka. Hindi maipadala ang mga mensahe.",
+    "offlineError": "Walang koneksyon sa internet. Pakisuri ang iyong koneksyon at subukang muli.",
+    "imagePickerErrorTitle": "Error sa picker ng larawan",
+    "imagePickerErrorMessage": "Hindi ma-access ang iyong mga larawan. Pakisubukang muli.",
+    "messageTooLong": "Masyadong mahaba ang mensahe ({{length}}). Ang limitasyon ay {{limit}}.",
+    "sendFailed": "Nabigong magpadala ng mensahe. Pakisubukang muli.",
+    "modelNoImageSupport": "Hindi sinusuportahan ng napiling modelo ang mga larawan. Mangyaring pumili ng ibang modelo.",
+    "voiceStartFailed": "Hindi masimulan ang boses.",
+    "voiceNoSpeechDetected": "Walang nakilalang boses. Pakisubukang muli.",
+    "emptyTitle": "Paano ako makakatulong?",
+    "emptySubtitle": "Magsimula ng pakikipag-usap sa AI",
+    "privateTitle": "Pribadong Chat",
+    "privateSubtitle": "Ang chat na ito ay hindi lilitaw sa iyong kasaysayan ng chat",
+    "startPrivateChat": "Magsimula ng pribadong chat",
+    "endPrivateChat": "Tapusin ang pribadong chat",
+    "permissions": {
+      "photosTitle": "Kailangan ng Pahintulot sa Mga Larawan",
+      "photosMessage": "Kinakailangan ang pag-access sa larawan upang pumili ng mga larawan.",
+      "voiceTitle": "Kailangan ng Mga Pahintulot sa Boses",
+      "voiceMessage": "Kinakailangan ang microphone at speech access para magamit ang boses."
+    },
+    "activity": {
+      "analyzingImages": "Sinusuri ang mga larawan...",
+      "searching": "Naghahanap…",
+      "thinking": "Iniisip…"
+    },
+    "webSearch": {
+      "title": "Paghahanap sa web",
+      "subtitle": "Maghanap ng kamakailang impormasyon",
+      "label": "Paghahanap sa Web",
+      "enable": "Paganahin ang paghahanap sa web",
+      "disable": "Huwag paganahin ang paghahanap sa web",
+      "toggleLabel": "Maghanap sa web"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Magdisenyo ng mga visual sa bilis.",
+      "subtitle": "Bumuo, pinuhin, at mag-publish ng mga visual na asset sa isang lugar.",
+      "cta": "Bukas"
+    },
+    "quickActions": {
+      "createImages": "Lumikha ng mga Larawan",
+      "openCamera": "Buksan ang Camera",
+      "editImage": "I-edit ang Larawan",
+      "startVoice": "Simulan ang Voice",
+      "assistants": "Mga katulong"
+    },
+    "listening": "Nakikinig…",
+    "startRecording": "Simulan ang pagre-record…",
+    "assistantHeader": {
+      "unavailableTitle": "Hindi available ang assistant",
+      "unavailableDescription": "Hindi namin ma-load ang assistant na ito. Pakisubukang muli.",
+      "ready": "Handang tumulong"
+    },
+    "actions": {
+      "copy": "Kopyahin",
+      "share": "Ibahagi",
+      "regenerate": "Magbagong-buhay",
+      "retryFromHere": "Subukan muli mula dito",
+      "report": "Ulat",
+      "cancel": "Kanselahin"
+    },
+    "markdown": {
+      "copy": "Kopyahin",
+      "copied": "Kinopya",
+      "table": "TALAAN",
+      "watchVideo": "Manood ng Video",
+      "wikipedia": "Wikipedia",
+      "link": "Link",
+      "note": "Tandaan",
+      "warning": "Babala",
+      "tip": "Tip"
+    },
+    "messageActionTitle": "Mensahe",
+    "status": {
+      "sending": "Ipinapadala…",
+      "failed": "Nabigo",
+      "sent": "Ipinadala"
+    },
+    "suggestions": {
+      "writeStory": "Sumulat ng isang malikhaing kuwento",
+      "writeStorySubtitle": "tungkol sa isang mahiwagang pakikipagsapalaran",
+      "planTravel": "Magplano ng itinerary sa paglalakbay",
+      "planTravelSubtitle": "para sa isang kamangha-manghang bakasyon",
+      "explainConcept": "Ipaliwanag ang konseptong ito",
+      "explainConceptSubtitle": "sa simpleng salita",
+      "planDay": "Planuhin ang aking araw",
+      "planDaySubtitle": "na may mga tip sa pagiging produktibo"
+    },
+    "home": {
+      "eyebrow": "Pumili ng paksa",
+      "title": "Ano ang gusto mong gawin?",
+      "subtitle": "Pumili ng direksyon, pagkatapos ay magsimula sa isang malakas na prompt.",
+      "pickPromptTitle": "Pumili ng prompt para magsimula",
+      "changeTopic": "Pumili ng ibang paksa",
+      "intents": {
+        "summarize": "Ibuod ang teksto",
+        "summarizeShort": "ibuod",
+        "summarizeHint": "Mga artikulo, tala, voice memo, mahabang thread",
+        "plan": "Gumawa ng plano",
+        "planHint": "Mga biyahe, gawain, badyet, deadline, pagbabago sa buhay",
+        "brainstorm": "Brainstorm",
+        "brainstormHint": "Mga ideya, alok, pangalan, nilalaman, mga side project",
+        "analyze": "Pag-aralan ang datos",
+        "analyzeHint": "Paggastos, feedback, sukatan, gawi, pagganap"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Gumawa ng founder brief",
+          "founderBriefSubtitle": "Hilahin ang mga pangunahing panganib, desisyon, at mga susunod na hakbang.",
+          "classNotesTitle": "Linisin mo ang study notes ko",
+          "classNotesSubtitle": "Gawing malinaw na gabay sa pag-aaral ang mga magaspang na tala.",
+          "meetingHandoffTitle": "Sumulat ng buod ng handoff",
+          "meetingHandoffSubtitle": "Kapaki-pakinabang pagkatapos ng mga pagpupulong, tawag, o mahabang panloob na mga thread.",
+          "longArticleTitle": "Buod nang mabilis ang artikulong ito",
+          "longArticleSubtitle": "I-condense ang isang mahabang artikulo sa matalim na takeaways."
+        },
+        "plan": {
+          "energyResetTitle": "Bumuo ng 14 na araw na pag-reset ng enerhiya",
+          "energyResetSubtitle": "Isang makatotohanang plano para sa pagtulog, pagkain, paggalaw, at pagtuon.",
+          "mealPlanTitle": "Magplano ng mga pagkain na lulutuin ko talaga",
+          "mealPlanSubtitle": "Praktikal, abot-kaya, at batay sa kung ano ang mayroon ako.",
+          "cityMoveTitle": "Planuhin ang aking paglipat sa isang bagong lungsod",
+          "cityMoveSubtitle": "Hatiin ito sa timeline, badyet, pabahay, at mga gawain ng admin.",
+          "tripEscapeTitle": "Magplano ng di malilimutang pagtakas sa katapusan ng linggo",
+          "tripEscapeSubtitle": "Isang bagay na mas mahusay kaysa sa isang generic na itinerary."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Maghanap ng makatotohanang side hustle",
+          "sideHustleSubtitle": "Mga ideya na maaari kong simulan habang nagtatrabaho nang full-time.",
+          "brandAngleTitle": "Maghanap ng hindi malilimutang anggulo ng tatak",
+          "brandAngleSubtitle": "Kapaki-pakinabang para sa mga produkto, tagalikha, ahensya, o newsletter.",
+          "socialSeriesTitle": "Mag-imbento ng isang serye ng nilalaman",
+          "socialSeriesSubtitle": "Isang bagay na sapat na pare-pareho upang lumaki ang isang madla.",
+          "datingIdeasTitle": "Magkaroon ng mga sariwang ideya",
+          "datingIdeasSubtitle": "Mga petsa, regalo, sorpresa, o mga kaganapan na maalalahanin."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Hanapin kung saan tumatagas ang pera ko",
+          "spendingLeaksSubtitle": "Ipakita muna ang mga pattern, mahinang lugar, at ang pinakamadaling panalo.",
+          "customerFeedbackTitle": "Gawing priyoridad ang feedback",
+          "customerFeedbackSubtitle": "Cluster na kahilingan, reklamo, apurahan, at epekto.",
+          "habitPatternsTitle": "Spot patterns sa gawi ko",
+          "habitPatternsSubtitle": "Kapaki-pakinabang para sa pag-eehersisyo, pagtulog, pag-journal, o focus log.",
+          "metricsStoryTitle": "Ipaliwanag kung ano ang ibig sabihin ng mga numero",
+          "metricsStorySubtitle": "Mas maraming signal, mas kaunting ingay sa spreadsheet."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Pinoproseso...",
+    "tapToUploadImage": "I-tap para mag-upload ng larawan"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Pinoproseso...",
+    "camera": "Mag-upload ng Mga Larawan",
+    "library": "Aklatan"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "Subukan muli",
+    "cancel": "Kanselahin",
+    "allow": "Payagan",
+    "notNow": "Hindi ngayon",
+    "openSettings": "Buksan ang Mga Setting",
+    "close": "Isara",
+    "save": "I-save",
+    "tryAgain": "Subukan Muli"
+  },
+  "rateUs": {
+    "title": "Tinatangkilik ang Cloud AI?",
+    "subtitle": "Ang iyong feedback ay nakakatulong sa amin na mapabuti. Gusto mo bang i-rate kami sa App Store?",
+    "rateNow": "I-rate Ngayon",
+    "maybeLater": "Baka Mamaya",
+    "dontAskAgain": "Huwag Magtanong Muli"
+  },
+  "oneTimeOffer": {
+    "title": "Isang-Beses na Alok",
+    "discount": "{{percent}}% OFF",
+    "subtitle": "Hindi mo na makikita ang alok na ito.",
+    "badgeLine1": "Eksklusibo",
+    "badgeLine2": "Isang beses na alok",
+    "upgradeNow": "Mag-upgrade ngayon para sa {{price}}",
+    "loadingPrice": "Naglo-load...",
+    "termsOfUse": "Mga Tuntunin sa Paggamit",
+    "privacyPolicy": "Patakaran sa Privacy",
+    "accessTitle": "Walang limitasyong pag-access sa",
+    "accessSubtitle": "GPT, Gemini at Grok 4",
+    "features": {
+      "unlimitedGPT4": "Walang limitasyong access sa GPT-4",
+      "geminiPro": "Access sa Gemini Pro",
+      "grokInsights": "Gamitin ang Grok para sa mga bagong insight",
+      "priorityAccess": "Priyoridad na pag-access at mas mabilis na mga tugon"
+    },
+    "bestValue": "Pinakamahusay na Halaga",
+    "annualPremium": "Taunang Premium",
+    "oneTimePayment": "Isang beses na pagbabayad",
+    "wasPrice": "ay",
+    "continue": "Magpatuloy",
+    "restore": "Ibalik",
+    "terms": "Mga tuntunin",
+    "privacy": "Pagkapribado",
+    "successTitle": "Tagumpay!",
+    "successMessage": "Salamat sa iyong pagbili! I-enjoy ang premium na access para sa susunod na 12 buwan.",
+    "errorTitle": "Nabigo ang Pagbili",
+    "errorMessage": "Nagkaproblema. Pakisubukang muli.",
+    "restoreSuccessTitle": "Ibinalik",
+    "restoreSuccessMessage": "Ang iyong mga binili ay naibalik.",
+    "restoreErrorTitle": "Nabigo ang Pag-restore",
+    "restoreErrorMessage": "Walang nakitang mga pagbili para i-restore.",
+    "unavailableTitle": "Hindi available ang mga pagbili",
+    "unavailableMessage": "Hindi pa naka-configure ang pagsingil sa Android."
+  },
+  "rewards": {
+    "header": {
+      "title": "Mga gantimpala",
+      "openMenu": "Buksan ang menu",
+      "goBack": "Bumalik ka"
+    },
+    "pointsHero": {
+      "totalBalance": "KABUUANG BALANSE",
+      "seeYourRewards": "Tingnan ang iyong mga gantimpala"
+    },
+    "streakTracker": {
+      "title": "Araw-araw na Streak",
+      "subtitle": "Ipagpatuloy mo yan! Nasusunog ka.",
+      "days": "Mga araw",
+      "prize": "premyo",
+      "dayLabel": "Araw {{number}}",
+      "nextReward": "Susunod na reward: {{amount}} sa {{time}}",
+      "coins": "mga barya"
+    },
+    "sections": {
+      "availableQuests": "Mga Magagamit na Quest",
+      "completedQuests": "Mga Nakumpletong Quest",
+      "availableRewards": "Mga available na reward",
+      "needsMoreCoins": "Kailangan ng mas maraming barya"
+    },
+    "balances": {
+      "rewardCoins": "Gantimpala ang mga barya",
+      "imageCredits": "Mga kredito sa larawan"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 Mga Kredito sa Larawan",
+        "imageCredits200": "200 Mga Kredito sa Larawan",
+        "imageCredits600": "600 Mga Kredito sa Larawan",
+        "weeklyPremium": "Lingguhang Premium",
+        "secretBox": "Secret Box"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Mga gantimpala ng misteryo sa loob"
+      },
+      "alerts": {
+        "comingSoonTitle": "Paparating na",
+        "comingSoonMessage": "Hindi pa available ang reward na ito.",
+        "notEnoughCoinsTitle": "Hindi sapat ang mga barya",
+        "notEnoughCoinsMessage": "Kailangan mo ng higit pang reward coin para ma-unlock ang reward na ito.",
+        "errorTitle": "Error",
+        "couldNotOpenBox": "Hindi mabuksan ang kahon.",
+        "couldNotRedeem": "Hindi ma-redeem ang reward. Pakisubukang muli.",
+        "mysteryReward": "Misteryosong Gantimpala"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Araw-araw na Pag-login",
+        "description": "Buksan ang app ngayon para mapanatili ang iyong streak",
+        "message": "Ang paghahanap na ito ay awtomatikong nakumpleto kapag binuksan mo ang app bawat araw."
+      },
+      "shareFacebook": {
+        "title": "Ibahagi sa Facebook",
+        "description": "Mag-post tungkol sa amin sa Facebook"
+      },
+      "shareTwitter": {
+        "title": "Ibahagi sa Twitter",
+        "description": "I-tweet ang iyong karanasan"
+      },
+      "shareInstagram": {
+        "title": "Ibahagi sa Instagram",
+        "description": "Magbahagi ng kwento o post"
+      },
+      "shareExperience": {
+        "title": "Ibahagi ang iyong karanasan",
+        "description": "Sabihin sa mga kaibigan kung bakit gusto mo ang app"
+      },
+      "share": {
+        "genericMessage": "Ginagamit ko ang AI app na ito para sa chat at pagbuo ng larawan. Tingnan ito: {{url}}",
+        "facebookQuote": "Tingnan ang AI App na ito!",
+        "twitterText": "Sinusubukan ko ang AI app na ito, medyo cool.",
+        "instagramMessage": "Tingnan ang AI app na ito: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Error",
+        "errorMessage": "Hindi mabuksan ang page ng store."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Kumpleto na ang Quest",
+        "description": "Nakumpleto ang paghahanap",
+        "points": "+{{points}} puntos",
+        "close": "Isara"
+      },
+      "rewardSuccess": {
+        "error": "ERROR",
+        "success": "TAGUMPAY",
+        "somethingWentWrong": "Nagkaproblema",
+        "rewardUnlocked": "Na-unlock ang Gantimpala",
+        "credits": "Mga kredito",
+        "close": "Isara",
+        "okay": "Okay"
+      },
+      "secretBox": {
+        "pill": "SECRET BOX",
+        "rewardUnlocked": "NA-UNLOCK ANG REWARD",
+        "shufflingRewards": "PAG-SHUFFLING NG MGA REWARD...",
+        "imageCreditsAdded": "Idinagdag ang mga kredito ng larawan sa iyong account",
+        "continue": "Magpatuloy",
+        "revealing": "Nagbubunyag...",
+        "prizeTiers": {
+          "lucky": "SWERTE",
+          "pro": "PRO",
+          "elite": "ELITE",
+          "mythic": "MYTHIC"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Kunin ang iyong araw-araw na barya",
+      "subtitle": "Bumalik araw-araw — lumalaki ang gantimpala.",
+      "cta": "Mag-check in",
+      "claimed": "Natanggap! +{{amount}} barya",
+      "later": "Mamaya"
+    }
+  },
+  "app": {
+    "version": "Bersyon {{version}}",
+    "offlineBanner": "Offline ka",
+    "launch": {
+      "accessibilityLabel": "Simula Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, handa kapag handa ka na"
+    },
+    "errors": {
+      "modelsLoadTitle": "Nabigong Mag-load ng Mga Modelo",
+      "modelsLoadMessage": "Hindi ma-load ang mga modelo ng AI. Gagamit ang app ng mga default na modelo. Pakisuri ang iyong koneksyon sa internet.",
+      "modelsLoadTimeout": "Masyadong matagal ang pag-load ng mga modelo. Gagamit ang app ng mga default na modelo. Pakisubukang muli.",
+      "modelsLoadNetwork": "Walang koneksyon sa internet. Gagamit ang app ng mga default na modelo. Pakisuri ang iyong koneksyon.",
+      "deviceIdTitle": "Error sa Pagsisimula",
+      "deviceIdMessage": "Nabigong simulan ang device ID. Maaaring hindi gumana nang tama ang ilang feature.",
+      "storageTitle": "Error sa Storage",
+      "storageMessage": "Hindi ma-access ang lokal na storage. Maaaring hindi gumana nang tama ang ilang feature.",
+      "crashTitle": "Nagkaproblema.",
+      "crashSubtitle": "Pakisubukang muli.",
+      "crashLabel": "Nag-crash ang app"
+    },
+    "proxyErrors": {
+      "genericTitle": "Nagkaproblema",
+      "genericMessage": "Pakisubukang muli.",
+      "rateLimitTitle": "Masyadong maraming kahilingan",
+      "rateLimitMessage": "Kami ay humahawak ng maraming mga kahilingan. Pakisubukang muli sa ilang sandali.",
+      "rateLimitRetryAfter": "Kami ay humahawak ng maraming mga kahilingan. Pakisubukang muli sa humigit-kumulang {{seconds}} segundo.",
+      "restrictedTitle": "Pinaghihigpitang Nilalaman",
+      "restrictedMessage": "Ang kahilingang ito ay na-block ng mga filter ng kaligtasan.",
+      "insufficientCoinsTitle": "Hindi sapat ang mga barya",
+      "insufficientCoinsMessage": "Masyadong mababa ang iyong kasalukuyang balanse para sa kahilingang ito.",
+      "imageUnavailableTitle": "Hindi available ang larawan",
+      "imageUnavailableMessage": "Pansamantalang hindi available ang nabuong file ng imahe. Pakisubukang muli.",
+      "authorizationTitle": "Isyu sa pahintulot",
+      "authorizationMessage": "Hindi namin ma-verify ang iyong account. Pakisubukang muli.",
+      "serverTitle": "Hiccup ng server",
+      "serverMessage": "Nagkaproblema ang aming mga server. Pakisubukang muli sa ilang sandali.",
+      "timeoutTitle": "Masyadong matagal",
+      "timeoutMessage": "Nag-time out ang kahilingan. Pakisubukang muli.",
+      "networkTitle": "Walang koneksyon",
+      "networkMessage": "Walang koneksyon sa internet. Pakisuri ang iyong koneksyon at subukang muli.",
+      "requestTitle": "Humiling ng isyu",
+      "requestMessage": "Nagkaproblema sa iyong kahilingan. Pakisubukang muli."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "I-activate ang Premium",
+    "activateMessage": "Gusto mo bang i-activate ang reviewer premium?",
+    "activateAction": "I-activate",
+    "deactivateTitle": "I-deactivate ang Premium",
+    "deactivateMessage": "Gusto mo bang i-deactivate ang reviewer premium?",
+    "deactivateAction": "I-deactivate"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Araw-araw na gantimpala",
+      "body": "Huwag palampasin ang iyong pang-araw-araw na mga barya — i-claim bago maghatinggabi."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Huwag palampasin ang iyong araw-araw na barya",
+      "body": "Nagpapadala kami ng isang paalala bawat araw para manatiling buhay ang iyong streak at lumago ang iyong barya. Walang spam, at puwede mong i-off anumang oras.",
+      "enable": "I-on ang mga paalala",
+      "skip": "Hindi ngayon"
+    }
+  }
+}

@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "یک مدل انتخاب کنید",
+    "searchPlaceholder": "جستجوی مدل های ...",
+    "noModelsFound": "هیچ مدلی پیدا نشد",
+    "noModelsAvailable": "هیچ مدلی موجود نیست",
+    "currentModel": "مدل فعلی: {{name}}. برای تغییر مدل ضربه بزنید.",
+    "openHint": "منوی انتخاب مدل را باز می کند",
+    "closeLabel": "انتخابگر مدل را ببندید",
+    "searchLabel": "جستجوی مدل ها",
+    "searchHint": "تایپ کنید تا مدل های موجود را فیلتر کنید",
+    "modelLabel": "مدل P000 {{name}}",
+    "selectHint": "مدل {{name}} را انتخاب کنید",
+    "currentlySelected": "مدل در حال حاضر انتخاب شده است",
+    "genericModel": "مدل P000 {{provider}}",
+    "badges": {
+      "new": "جدید",
+      "best": "بهترین"
+    }
+  },
+  "models": {
+    "gpt-4o": "قدرتمندترین مدل هوش مصنوعی",
+    "gpt-4o-mini": "سریع برای کارهای روزمره",
+    "gpt-5": "قدرتمندترین هوش مصنوعی همه منظوره",
+    "gpt-5-chat-latest": "برای چت و گفتگو بهینه شده است",
+    "gpt-5-mini": "سریع و قابل اعتماد GPT-5",
+    "gpt-5.4-nano": "مدل سبک برای کارهای ساده",
+    "o4-mini": "مدل استدلال کارآمد",
+    "gpt-4.1-mini": "جمع و جور، با قابلیت GPT-4.1",
+    "claude-3-haiku": "هوش مصنوعی آنتروپیک سریع و متمرکز",
+    "claude-3.7-sonnet": "استدلال پالایش شده توسط آنتروپیک",
+    "gemini-2.5-Flash": "پیشرفته ترین مدل گوگل",
+    "gemini-2.5-flash": "پیشرفته ترین مدل گوگل",
+    "gemini-2.0-flash": "هوش مصنوعی سریع و دقیق گوگل"
+  },
+  "modelDescriptions": {
+    "most_powerful": "قدرتمندترین مدل هوش مصنوعی",
+    "fast_everyday": "سریع برای کارهای روزمره",
+    "fast_reasoning": "مدل سریع با استدلال خوب",
+    "great_reasoning": "مدل استدلال پیشرفته",
+    "coding_reasoning": "کدنویسی و استدلال پیشرفته",
+    "better_coding": "برای کدنویسی و استدلال بهتر است",
+    "best_overall": "بهترین مدل هوش مصنوعی همه جانبه",
+    "best_google": "بهترین مدل گوگل",
+    "best_xai": "قدرتمندترین مدل xAI",
+    "creative_focus": "برای نوشتن خلاقانه عالی است",
+    "code_helper": "برای کمک به کدنویسی عالی است",
+    "chat_focus": "برای چت بهینه شده است",
+    "long_context": "برای زمینه های طولانی عالی است",
+    "budget_friendly": "مدل هوش مصنوعی مقرون به صرفه",
+    "ultra_fast": "پاسخ های فوق العاده سریع",
+    "safe_default": "انتخاب پیش فرض ایمن",
+    "multilingual": "پشتیبانی قوی چند زبانه",
+    "vision_strong": "با تصاویر و دید عالی است",
+    "data_analysis": "برای تجزیه و تحلیل داده ها خوب است",
+    "structured_tasks": "برای کارهای ساختاریافته خوب است",
+    "everyday_helper": "مدل دستیار روزمره",
+    "concise_answers": "پاسخ های کوتاه و مختصر",
+    "detailed_answers": "پاسخ های گام به گام دقیق",
+    "experimental": "مدل آزمایشی نسل بعدی",
+    "reliable_classic": "مدل کلاسیک قابل اعتماد",
+    "lightweight": "مدل سبک و کم هزینه",
+    "chatty_personal": "دوستانه تر و شخصی تر",
+    "pro_users": "بهترین برای کاربران قدرتمند",
+    "research_helper": "برای تحقیق و یادداشت خوب است",
+    "reasoning_strong": "مدل استدلال پیشرفته"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "آنتروپیک",
+    "google": "گوگل",
+    "xai": "xAI",
+    "other": "دیگر"
+  },
+  "navigation": {
+    "chat": "چت جدید",
+    "history": "تاریخچه",
+    "rewards": "جوایز روزانه",
+    "assistants": "دستیاران",
+    "imagesStudio": "Image Studio",
+    "settings": "تنظیمات",
+    "recentChats": "چت های اخیر",
+    "proFeatures": "ویژگی های حرفه ای",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "ویژگی های حرفه ای را دریافت کنید",
+      "subtitle": "تمام ویژگی های هوش مصنوعی"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "دارایی های بصری را در یک مکان تولید، اصلاح و منتشر کنید.",
+    "cta": "باز کنید"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "تصاویر را انتخاب کنید",
+    "exitSelectionMode": "خروج از حالت انتخاب",
+    "selectAll": "همه را انتخاب کنید",
+    "noImagesYet": "هنوز هیچ تصویری وجود ندارد",
+    "describeImageHint": "تصویر خود را در زیر توضیح دهید و روی Generate ضربه بزنید.",
+    "generatedImagesGallery": "گالری تصاویر تولید شده",
+    "describeImagePlaceholder": "تصویر مورد نظر خود را شرح دهید…",
+    "deleteConfirmTitle": "حذف تصاویر",
+    "deleteConfirmMessage": "آیا مطمئن هستید که می خواهید تصاویر انتخاب شده را حذف کنید؟ این عمل قابل لغو نیست.",
+    "cancel": "لغو کنید",
+    "delete": "حذف کنید",
+    "generate": "ایجاد کنید",
+    "generating": "در حال تولید…",
+    "latest": "آخرین",
+    "insertToChat": "درج برای چت",
+    "pleaseWait": "لطفا صبر کنید…",
+    "processing": "در حال پردازش...",
+    "tapToUploadImage": "برای آپلود تصویر ضربه بزنید",
+    "camera": "آپلود عکس",
+    "library": "کتابخانه",
+    "enterPrompt": "لطفاً یک درخواست برای تولید متن به تصویر وارد کنید",
+    "openInBrowser": "در مرورگر باز کنید",
+    "makeVariations": "تغییرات ایجاد کنید",
+    "deleteAllFromGeneration": "همه را از این نسل حذف کنید",
+    "imageOptionsTitle": "گزینه های تصویر",
+    "imageOptionsMessage": "دوست دارید با این تصویر چه کار کنید؟",
+    "insertMarkdownHeader": "در اینجا تصویر برای:",
+    "variationSuffix": "- تنوع تصویر قبلی",
+    "selectedCount": "انتخاب شده است",
+    "selectedCount_one": "انتخاب شده است",
+    "selectedCount_other": "انتخاب شده است",
+    "imageDescriptionInput": "ورودی توضیحات تصویر",
+    "imageDescriptionHint": "شرح تصویری را که می خواهید ایجاد کنید وارد کنید",
+    "openModelSettings": "تنظیمات مدل را باز کنید",
+    "modelSettingsHint": "برای تغییر مدل و تنظیمات ضربه بزنید",
+    "openPhotoGallery": "گالری عکس را باز کنید",
+    "clearInput": "ورودی را پاک کنید",
+    "generatedImage": "تصویر تولید شده",
+    "autoSelectedModel": "انتخاب خودکار {{model}} برای حالت {{mode}}",
+    "deleteSelectedConfirmTitle": "حذف تصاویر",
+    "deleteSelectedConfirmMessage": "آیا مطمئن هستید که می خواهید تصاویر را حذف کنید؟ این عمل قابل لغو نیست."
+  },
+  "imageStudio": {
+    "generateImage": "ایجاد تصویر",
+    "generatingImage": "تولید تصویر",
+    "generateImageHint": "برای ایجاد یک تصویر بر اساس توضیحات خود ضربه بزنید",
+    "imageDescriptionInput": "ورودی توضیحات تصویر",
+    "imageDescriptionHint": "شرح تصویری را که می خواهید ایجاد کنید وارد کنید",
+    "openModelSettings": "تنظیمات مدل را باز کنید",
+    "modelSettingsHint": "برای تغییر مدل و تنظیمات ضربه بزنید",
+    "openPhotoGallery": "گالری عکس را باز کنید",
+    "clearInput": "ورودی را پاک کنید",
+    "generatedImage": "تصویر تولید شده"
+  },
+  "assistants": {
+    "title": "دستیاران",
+    "defaultTitle": "دستیار",
+    "errorTitle": "مشکلی پیش آمد",
+    "errorMessage": "این دستیار راه اندازی نشد.",
+    "noAssistants": "هیچ دستیار در این دسته یافت نشد.",
+    "selectAssistantHint": "انتخابگر دستیار را باز کنید",
+    "subtitle": "متخصصان هوش مصنوعی انتخاب شده برای کدنویسی، نوشتن، تجزیه و تحلیل، برنامه ریزی و موارد دیگر آماده هستند.",
+    "searchPlaceholder": "دستیاران جستجو…",
+    "useAssistant": "از دستیار استفاده کنید",
+    "selectAssistant": "دستیار را انتخاب کنید",
+    "description": "توضیحات",
+    "systemPrompt": "اعلان سیستم",
+    "chooseModel": "مدل را انتخاب کنید",
+    "categoryAll": "همه",
+    "categories": {
+      "everyday": "هر روز",
+      "life": "زندگی",
+      "health": "سلامتی",
+      "schoolWork": "مدرسه و کار",
+      "coding": "کد نویسی",
+      "creative": "خلاق",
+      "general": "ژنرال"
+    },
+    "presets": {
+      "default": {
+        "name": "دستیار پیش فرض",
+        "description": "کمک متعادل برای امور روزانه."
+      },
+      "quick": {
+        "name": "پاسخ های سریع",
+        "description": "پاسخ های کوتاه و مستقیم"
+      },
+      "planner": {
+        "name": "برنامه ریز روزانه",
+        "description": "روز و روال خود را برنامه ریزی کنید."
+      },
+      "recipes": {
+        "name": "وعده های غذایی و دستور العمل ها",
+        "description": "با چیزی که داری چی بپزی"
+      },
+      "fitness": {
+        "name": "مربی تناسب اندام",
+        "description": "عادات کوچک و تمرینات خانگی"
+      },
+      "money": {
+        "name": "رفیق پول",
+        "description": "بودجه های ساده و نکات خرج کردن."
+      },
+      "study": {
+        "name": "یاور مطالعه",
+        "description": "ساده توضیح دهید. من را امتحان کن"
+      },
+      "email": {
+        "name": "ایمیل و رزومه",
+        "description": "ایمیل ها و خطوط CV را واضح بنویسید."
+      },
+      "translator": {
+        "name": "مترجم",
+        "description": "ترجمه + آموزش عبارات."
+      },
+      "travel": {
+        "name": "رفیق سفر",
+        "description": "برنامه های ساده و لیست بسته بندی"
+      },
+      "tech": {
+        "name": "پشتیبانی فنی (ساده)",
+        "description": "تلفن، برنامه ها، اصول اولیه Wi-Fi."
+      },
+      "summarizer": {
+        "name": "خلاصه‌ساز سریع",
+        "description": "گلوله های کوتاه + یک خط TL;DR."
+      },
+      "gift": {
+        "name": "هدیه یاب",
+        "description": "ایده ها بر اساس بودجه و علایق"
+      },
+      "party": {
+        "name": "برنامه ریز رویداد (Lite)",
+        "description": "یک مهمانی کوچک را سریع برنامه ریزی کنید."
+      },
+      "social": {
+        "name": "ایجاد پست اجتماعی",
+        "description": "پیش نویس پست ها با گزینه ها"
+      },
+      "interview": {
+        "name": "مربی مصاحبه",
+        "description": "پاسخ های تمرینی (STAR)."
+      },
+      "homefix": {
+        "name": "راهنمای تعمیرات خانه",
+        "description": "عیب یابی ساده DIY."
+      },
+      "pet": {
+        "name": "رفیق مراقبت از حیوان خانگی",
+        "description": "تغذیه، پیاده روی، آموزش اولیه."
+      },
+      "mindful": {
+        "name": "دقیقه هوشیار",
+        "description": "1-3 دقیقه استراحت آرام"
+      },
+      "polite": {
+        "name": "بازنویس مودب",
+        "description": "متن ها و پاسخ ها را به خوبی بازنویسی کنید."
+      }
+    }
+  },
+  "history": {
+    "title": "تاریخچه",
+    "searchPlaceholder": "جستجوی چت…",
+    "newChat": "چت جدید",
+    "new": "+ جدید",
+    "search": "جستجو کنید",
+    "clearSearch": "جستجو را پاک کنید",
+    "noChatsYet": "هنوز چت وجود ندارد",
+    "noResults": "هنوز چت وجود ندارد",
+    "startFirstConversation": "اولین مکالمه خود را شروع کنید.",
+    "startChat": "چت را شروع کنید",
+    "startNewChat": "یک چت جدید شروع کنید",
+    "errorLoadingHistory": "خطا در بارگیری تاریخچه",
+    "loading": "در حال بارگیری تاریخچه...",
+    "renameChat": "تغییر نام چت",
+    "enterNewTitle": "عنوان جدیدی وارد کنید",
+    "deleteChat": "چت حذف شود؟",
+    "deleteChatMessage": "\"{{title}}\" حذف خواهد شد.",
+    "rename": "تغییر نام دهید",
+    "unpin": "پین را بردارید",
+    "pin": "سنجاق",
+    "untitled": "بدون عنوان"
+  },
+  "settings": {
+    "title": "تنظیمات",
+    "model": "مدل",
+    "searchPlaceholder": "جستجوی مدل…",
+    "temperatureForCurrentModel": "دما برای مدل فعلی",
+    "customFor": "سفارشی برای {{model}}",
+    "usingDefault": "استفاده از {{temperature}} پیش‌فرض",
+    "resetToDefault": "به حالت پیش فرض بازنشانی کنید",
+    "defaultTemperature": "دمای پیش‌فرض (معادل)",
+    "usedByModelsWithoutOverride": "توسط مدل های بدون لغو سفارشی استفاده می شود",
+    "dangerZone": "منطقه خطر",
+    "clearAllChatsAndSettings": "تمام چت ها و تنظیمات را پاک کنید",
+    "about": "درباره",
+    "version": "نسخه {{version}}{{status}}",
+    "versionPremiumSuffix": "· حق بیمه",
+    "privacyPolicy": "سیاست حفظ حریم خصوصی",
+    "hero": {
+      "label": "پیشنهاد ویژه",
+      "title": "دسترسی نامحدود\nویژگی های & Pro",
+      "upgrade": "ارتقا دهید",
+      "manage": "برنامه را مدیریت کنید"
+    },
+    "sections": {
+      "premium": "طرح حق بیمه",
+      "data": "داده های کاربر",
+      "support": "پشتیبانی و حقوقی"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "حق بیمه را دریافت کنید",
+        "subtitle": "ابزارهای ایجاد نامحدود را باز کنید"
+      },
+      "premiumActive": {
+        "title": "پرمیوم فعال است",
+        "subtitle": "با تشکر از حمایت Cloud AI"
+      },
+      "restore": {
+        "title": "بازیابی خریدها",
+        "subtitle": "در صورت تعویض دستگاه استفاده کنید"
+      },
+      "history": {
+        "title": "مدیریت تاریخچه چت",
+        "subtitle": "جلسات گذشته خود را مشاهده و حذف کنید"
+      },
+      "reset": {
+        "title": "بازنشانی چت ها و تنظیمات برگزیده",
+        "subtitle": "تمام داده های ذخیره شده در این دستگاه را پاک می کند"
+      },
+      "rate": {
+        "title": "به ما امتیاز دهید",
+        "error": "صفحه فروشگاه باز نمی شود."
+      },
+      "support": {
+        "title": "پشتیبانی کنید",
+        "subtitle": "آنلاین با ما تماس بگیرید",
+        "error": "صفحه تماس باز نمی شود."
+      },
+      "privacy": {
+        "title": "سیاست حفظ حریم خصوصی",
+        "error": "سیاست حفظ حریم خصوصی باز نمی شود."
+      },
+      "terms": {
+        "title": "شرایط استفاده",
+        "error": "باز کردن شرایط استفاده ممکن نیست."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "در دسترس نیست",
+      "linkUnavailableMessage": "در حال حاضر این پیوند باز نمی شود.",
+      "restoreSuccessTitle": "بازسازی شد",
+      "restoreSuccessMessage": "خریدهای شما بازیابی شده است.",
+      "restoreEmptyTitle": "هیچ خریدی پیدا نشد",
+      "restoreEmptyMessage": "ما نتوانستیم خرید فعالی برای بازیابی برای این حساب پیدا کنیم.",
+      "restoreErrorTitle": "بازیابی انجام نشد",
+      "restoreErrorMessage": "در حال حاضر امکان بازیابی خریدها وجود ندارد.",
+      "resetConfirmTitle": "داده های برنامه بازنشانی شود؟",
+      "resetConfirmMessage": "این همه چت ها و تنظیمات محلی را حذف می کند.",
+      "resetConfirmCancel": "لغو کنید",
+      "resetConfirmCta": "بازنشانی کنید"
+    }
+  },
+  "createImage": {
+    "headerTitle": "ایجاد کنید",
+    "chooseStyle": "یک سبک را انتخاب کنید",
+    "aspectRatio": "نسبت تصویر",
+    "starterPrompts": {
+      "title": "درخواست های شروع کننده",
+      "items": [
+        "هد شات استودیویی",
+        "اتاق نشیمن مدرن",
+        "ساحل گرمسیری در غروب آفتاب"
+      ]
+    },
+    "promptPlaceholder": "آنچه را که می خواهید ببینید تایپ کنید…",
+    "promptHint": "مثال: \"گلدن رتریور در نورپردازی استودیو\"",
+    "clearText": "متن را پاک کنید",
+    "generate": "ایجاد کنید",
+    "generating": "در حال تولید…"
+  },
+  "editImage": {
+    "headerTitle": "ویرایش کنید",
+    "chooseStyle": "یک سبک را انتخاب کنید",
+    "aspectRatio": "نسبت تصویر",
+    "starterPrompts": {
+      "title": "درخواست های شروع کننده",
+      "items": [
+        "رفع روشنایی",
+        "حذف پس زمینه",
+        "روتوش نرم پرتره"
+      ]
+    },
+    "promptPlaceholder": "شرح ویرایش ها (اختیاری)",
+    "clearText": "متن را پاک کنید",
+    "generate": "ایجاد کنید",
+    "generating": "در حال اعمال…",
+    "upload": {
+      "choose": "عکس را انتخاب کنید",
+      "change": "تغییر دهید",
+      "remove": "حذف کنید"
+    },
+    "imageUnavailable": {
+      "title": "تصویر در دسترس نیست",
+      "message": "دسترسی به عکس انتخابی امکان پذیر نیست. لطفاً آن را دوباره انتخاب کنید و دوباره امتحان کنید."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "انیمه"
+      },
+      "cartoon": {
+        "name": "کارتون"
+      },
+      "photoreal": {
+        "name": "عکس واقعی"
+      },
+      "sketch": {
+        "name": "طرح"
+      },
+      "cyberpunk": {
+        "name": "سایبرپانک"
+      },
+      "steampunk": {
+        "name": "استیمپانک"
+      },
+      "illustration_3d": {
+        "name": "تصویرسازی سه بعدی"
+      },
+      "dark_fantasy": {
+        "name": "فانتزی تاریک"
+      },
+      "vintage_film": {
+        "name": "فیلم قدیمی"
+      },
+      "pastel": {
+        "name": "زیبایی پاستلی"
+      },
+      "neon_glow": {
+        "name": "درخشش نئون"
+      },
+      "epic_landscape": {
+        "name": "منظره حماسی"
+      }
+    },
+    "aspectRatios": {
+      "square": "مربع",
+      "landscape": "چشم انداز",
+      "portrait": "پرتره"
+    },
+    "models": {
+      "fluxKontent": "شار محتوا",
+      "custom": "سفارشی"
+    },
+    "notEnoughCoinsTitle": "سکه کافی نیست",
+    "notEnoughCoinsMessage": "موجودی فعلی شما برای این تصویر بسیار کم است.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "سریعترین مدل",
+      "runwareFluxKrea": "نتایج خلاقانه و سبک",
+      "runwareQwenImage": "نتایج متعادل و با کیفیت بالا",
+      "google4": "بهترین مدل تصویر هوش مصنوعی",
+      "klingImageO1": "ویرایش تصویر با کنترل بالا",
+      "fluxKontent": "Flux Content برای ویرایش تنظیم شده است",
+      "runwareProvider": "کیفیت متعادل با انتشار قابل اعتماد.",
+      "airProvider": "نانو موز لحن بازیگوش و زنده می بخشد.",
+      "googleProvider": "گوگل برای جزئیات دقیق تنظیم شده است.",
+      "klingaiProvider": "KlingAI برای ویرایش های کنترل شده تنظیم شده است.",
+      "anthropicProvider": "خط لوله Claude برای خلق و خوی متفاوت.",
+      "default": "برای کاوش موتورهای موجود، ضربه بزنید."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "سبک انتخابی شما",
+    "sheetTitle": "ایجاد چشم انداز شما",
+    "sheetSubtitle": "جرعه کوتاهی از قهوه سرور را در حالی که {{style}} را با فرمان ترکیب می کنیم.",
+    "phases": {
+      "blend": "ترکیب در {{style}}",
+      "paint": "نقاشی صحنه",
+      "finish": "افزودن پولیش نهایی"
+    },
+    "actions": {
+      "cancel": "لغو کنید",
+      "retry": "دوباره امتحان کنید",
+      "close": "بستن"
+    },
+    "errors": {
+      "restrictedTitle": "محتوای محدود شده",
+      "genericTitle": "نسل شکست خورد",
+      "genericMessage": "تصویر تولید نشد."
+    },
+    "alerts": {
+      "saveFailedTitle": "ذخیره نشد",
+      "shareFailedTitle": "امکان اشتراک گذاری وجود ندارد",
+      "tryAgain": "لطفا دوباره امتحان کنید.",
+      "savedTitle": "ذخیره شد",
+      "savedMessage": "تصویر در گالری شما ذخیره شد.",
+      "permissionTitle": "مجوز لازم است",
+      "permissionMessage": "اجازه دسترسی به فضای ذخیره سازی برای ذخیره تصاویر در گالری شما."
+    },
+    "result": {
+      "complete": "همه چیز تمام شد"
+    },
+    "accessibility": {
+      "close": "بستن"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "حذف کنید",
+      "edit": "ویرایش کنید",
+      "save": "ذخیره کنید",
+      "share": "به اشتراک بگذارید"
+    },
+    "alerts": {
+      "savedTitle": "ذخیره شد",
+      "savedMessage": "تصویر در گالری شما ذخیره شد.",
+      "permissionTitle": "مجوز لازم است",
+      "permissionMessage": "اجازه دسترسی به فضای ذخیره سازی برای ذخیره تصاویر در گالری شما.",
+      "saveFailedTitle": "ذخیره نشد",
+      "tryAgain": "لطفا دوباره امتحان کنید."
+    },
+    "accessibility": {
+      "close": "بستن",
+      "delete": "حذف تصویر",
+      "edit": "ویرایش تصویر",
+      "save": "ذخیره تصویر",
+      "share": "تصویر را به اشتراک بگذارید"
+    }
+  },
+  "reportContent": {
+    "title": "گزارش محتوای هوش مصنوعی",
+    "subtitle": "به ما بگویید چه مشکلی با این محتوای تولید شده وجود دارد.",
+    "privateDisclosure": "ارسال این محتوای گزارش شده را برای بررسی ایمنی ارسال می کند.",
+    "accessibilityLabel": "گزارش محتوای هوش مصنوعی",
+    "reasons": {
+      "sexual": "محتوای جنسی یا برهنگی",
+      "violence_self_harm": "خشونت یا خودآزاری",
+      "hate_harassment": "نفرت یا آزار و اذیت",
+      "child_safety": "نگرانی ایمنی کودک",
+      "scam_deceptive": "کلاهبرداری یا محتوای فریبنده",
+      "other": "دیگر"
+    },
+    "errors": {
+      "reasonRequired": "لطفاً قبل از ارسال یک دلیل انتخاب کنید.",
+      "submit": "گزارش ارسال نشد لطفا دوباره امتحان کنید."
+    },
+    "success": {
+      "title": "با تشکر گزارش شما ارسال شد",
+      "subtitle": "ما از گزارش ها برای بهبود ایمنی محتوا استفاده خواهیم کرد."
+    },
+    "actions": {
+      "report": "گزارش دهید",
+      "submit": "ارسال گزارش",
+      "done": "انجام شد"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "منو را باز کنید",
+      "selectImages": "تصاویر را انتخاب کنید",
+      "exitSelection": "خروج از انتخاب",
+      "deleteSelected": "حذف تصاویر انتخاب شده",
+      "selectToDelete": "تصاویر را برای حذف انتخاب کنید"
+    },
+    "createCard": {
+      "title": "ایجاد از متن",
+      "subtitle": "یک توضیح تایپ کنید",
+      "cta": "توصیف و تولید"
+    },
+    "editCard": {
+      "title": "ویرایشگر عکس هوش مصنوعی",
+      "subtitle": "با هوش مصنوعی تغییر و ارتقا دهید",
+      "cta": "با هوش مصنوعی ویرایش کنید"
+    },
+    "gallery": {
+      "title": "گالری",
+      "empty": "هنوز هیچ تصویری وجود ندارد",
+      "selection": {
+        "enter": "تصاویر را انتخاب کنید",
+        "exit": "خروج از انتخاب",
+        "deleteSelected": "حذف تصاویر انتخاب شده",
+        "selectForDelete": "تصاویر را برای حذف انتخاب کنید"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "ملاقات کنید",
+      "titleHighlight": "Image Studio",
+      "subtitle": "درست در داخل Cloud AI، تصاویر را با هوش مصنوعی ایجاد و ویرایش کنید."
+    },
+    "relaxView": {
+      "title": "با هوش مصنوعی خود آشنا شوید",
+      "titleHighlight": "دستیاران",
+      "subtitle": "کارشناسان تخصصی هوش مصنوعی آماده کمک به نیازهای روزانه شما هستند",
+      "cards": {
+        "fitness": {
+          "title": "مربی تناسب اندام",
+          "text": "عادات کوچک و تمرینات خانگی"
+        },
+        "recipes": {
+          "title": "وعده های غذایی و دستور العمل ها",
+          "text": "با چیزی که داری چی بپزی"
+        },
+        "travel": {
+          "title": "رفیق سفر",
+          "text": "برنامه های ساده و لیست بسته بندی"
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "راه حل های هوش مصنوعی درجه سازمانی",
+      "description": "کسب و کار خود را با فناوری هوش مصنوعی پیشرفته که برای حرفه ای ها و تیم های سازمانی طراحی شده است، تقویت کنید.",
+      "stats": "مورد اعتماد بیش از 500 هزار کاربر",
+      "rating": "4.9 / 5",
+      "button": "شروع کنید"
+    },
+    "buttons": {
+      "continue": "ادامه دهید",
+      "start": "بیایید شروع کنیم"
+    }
+  },
+  "coinStore": {
+    "title": "اعتبار دریافت کنید",
+    "loading": "در حال بارگیری فروشگاه سکه…",
+    "balanceLabel": "موجودی فعلی شما است",
+    "balanceValue": "{{amount}} اعتبار",
+    "history": {
+      "link": "تاریخچه معاملات",
+      "alertTitle": "تاریخچه",
+      "alertBody": "تاریخچه معاملات به زودی ارائه می شود."
+    },
+    "noPacks": "هیچ بسته سکه ای موجود نیست. شناسه پیشنهادی RevenueCat خود را بررسی کنید.",
+    "badges": {
+      "basic": "بسته پایه",
+      "popular": "محبوب ترین",
+      "value": "بهترین ارزش"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} اعتبار",
+      "tokensLabel": "{{credits}} اعتبار",
+      "defaultName": "بسته {{index}}",
+      "unknownPrice": "دلار آمریکا —"
+    },
+    "premium": {
+      "title": "برو پریمیوم",
+      "subtitle": "دسترسی و ویژگی های نامحدود",
+      "cta": "ارتقا دهید"
+    },
+    "termsText": "با خرید، با ما موافقت می کنید",
+    "termsLink": "شرایط خدمات",
+    "alerts": {
+      "initErrorTitle": "خطای شروع",
+      "genericMessage": "مشکلی پیش آمد.",
+      "successTitle": "موفقیت",
+      "successMessage": "اعتبار به زودی ظاهر می شود.",
+      "purchaseFailedTitle": "خرید ناموفق بود",
+      "unknownError": "خطای ناشناخته"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "حق بیمه مورد نیاز است",
+    "upgrade": "ارتقا دهید",
+    "modelRequiredMessage": "این مدل به Premium نیاز دارد. برای دسترسی به GPT-5، Grok 4، Claude، و مدل‌های پیشرفته‌تر ارتقا دهید.",
+    "assistantsRequiredMessage": "دستیارها به Premium نیاز دارند. برای دسترسی به دستیاران تخصصی هوش مصنوعی برای تناسب اندام، کدنویسی، نوشتن و غیره ارتقا دهید.",
+    "assistantsTitle": "حق بیمه مورد نیاز است",
+    "assistantsMessage": "دستیارها به Premium نیاز دارند. برای دسترسی به دستیاران تخصصی هوش مصنوعی برای تناسب اندام، کدنویسی، نوشتن و غیره ارتقا دهید."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5، Grok، Gemini",
+    "close": "دیوار پرداخت را ببندید",
+    "unavailableTitle": "خریدها در دسترس نیستند",
+    "unavailableMessage": "صورت‌حساب Android هنوز پیکربندی نشده است.",
+    "restoreEmptyTitle": "هیچ خریدی پیدا نشد",
+    "restoreEmptyMessage": "ما نتوانستیم خرید فعالی برای بازیابی برای این حساب پیدا کنیم.",
+    "restoreFailedTitle": "بازیابی انجام نشد",
+    "restoreFailedMessage": "در حال حاضر امکان بازیابی خریدها وجود ندارد.",
+    "productsUnavailableTitle": "هیچ طرحی در دسترس نیست",
+    "productsUnavailableMessage": "هیچ محصول اشتراک Android در حال حاضر در دسترس نیست.",
+    "purchaseFailedTitle": "خرید ناموفق بود",
+    "purchaseFailedMessage": "در حال حاضر امکان تکمیل این خرید وجود ندارد.",
+    "restore": "بازیابی کنید",
+    "restoreRestoring": "در حال بازیابی…",
+    "features": {
+      "create": "ایجاد تصاویر و فیلم ها",
+      "search": "با هوش مصنوعی در وب جستجو کنید",
+      "talk": "به طور طبیعی با هوش مصنوعی صحبت کنید",
+      "imageStudio": "اعتبار Image Studio {{credits}} {{period}} دریافت کنید",
+      "period": {
+        "weekly": "هفتگی",
+        "monthly": "ماهانه",
+        "yearly": "سالانه"
+      }
+    },
+    "freeTrial": {
+      "title": "آزمایشی رایگان",
+      "subtitle": "آزمایشی رایگان 3 روزه"
+    },
+    "badge": {
+      "bestOffer": "بهترین پیشنهاد"
+    },
+    "plans": {
+      "yearly": {
+        "title": "سالانه",
+        "only": "فقط {{price}}",
+        "defaultPrice": "79.99 دلار آمریکا",
+        "defaultIntroPrice": "1.35 دلار آمریکا"
+      },
+      "monthly": {
+        "title": "ماهانه",
+        "subtitle": "هر زمان خواستید لغو کنید",
+        "defaultPrice": "19.99 دلار آمریکا"
+      },
+      "weekly": {
+        "title": "هفتگی",
+        "subtitle": "هر زمان خواستید لغو کنید",
+        "defaultPrice": "9.99 دلار آمریکا",
+        "trialThen": "پس از آن 3 روز رایگان است"
+      }
+    },
+    "frequency": {
+      "perWeek": "در هفته",
+      "perMonth": "در هر ماه"
+    },
+    "cta": "ادامه دهید",
+    "ctaFreeTrial": "آن را به صورت رایگان امتحان کنید",
+    "legal": {
+      "terms": "شرایط",
+      "privacy": "حریم خصوصی"
+    },
+    "premium": {
+      "headline": "تمام هوش مصنوعی برتر در یک طرح",
+      "subtitleLine1": "چت، کدنویسی، ایجاد و برنامه ریزی",
+      "subtitleLine2": "با مدل های پیشرفته",
+      "enableTrial": "فعال کردن نسخه آزمایشی رایگان",
+      "annual": "سالانه",
+      "saveBadge": "صرفه جویی 83%",
+      "year": "سال",
+      "week": "هفته",
+      "termsOfUse": "شرایط استفاده",
+      "privacyPolicy": "سیاست حفظ حریم خصوصی"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "پیام...",
+    "createImages": "ایجاد تصاویر",
+    "generateAiArtwork": "تولید آثار هنری هوش مصنوعی",
+    "camera": "آپلود عکس",
+    "takeOrSelectPhotos": "عکس ها را انتخاب کنید",
+    "search": "جستجو کنید",
+    "findInformation": "اطلاعات پیدا کنید",
+    "findRecentInfo": "اطلاعات اخیر را پیدا کنید",
+    "removeImage": "حذف تصویر",
+    "messageInput": "ورودی پیام",
+    "clearInput": "ورودی را پاک کنید",
+    "quickActionsLabel": "اقدامات سریع",
+    "hideQuickActions": "اقدامات سریع را پنهان کنید",
+    "showQuickActions": "نمایش اقدامات سریع",
+    "startVoiceInput": "ورودی صوتی را شروع کنید",
+    "sendMessage": "ارسال پیام",
+    "offline": "آفلاین",
+    "stop": "توقف کنید",
+    "streaming": "پخش جریانی…",
+    "closeRecorder": "ضبط کننده را ببندید",
+    "insertTranscript": "ارسال کنید",
+    "scrollToLatest": "به آخرین پیام بروید",
+    "copyMessage": "کپی پیام",
+    "copyMessageHint": "این پیام را در کلیپ بورد کپی کنید",
+    "shareMessage": "پیام را به اشتراک بگذارید",
+    "shareMessageHint": "این پیام را به اشتراک بگذارید",
+    "regenerateResponse": "پاسخ را بازسازی کنید",
+    "regenerateResponseHint": "یک پاسخ جدید ایجاد کنید",
+    "copyCode": "کد را کپی کنید",
+    "copied": "کپی شده است",
+    "image": "تصویر",
+    "loading": "در حال بارگیری…",
+    "loadingChat": "در حال بارگیری چت...",
+    "offlineBanner": "شما آفلاین هستید. پیام ها قابل ارسال نیستند.",
+    "offlineError": "بدون اتصال به اینترنت لطفاً اتصال خود را بررسی کنید و دوباره امتحان کنید.",
+    "imagePickerErrorTitle": "خطای انتخابگر تصویر",
+    "imagePickerErrorMessage": "دسترسی به عکس های شما امکان پذیر نیست. لطفا دوباره امتحان کنید.",
+    "messageTooLong": "پیام خیلی طولانی است ({{length}}). محدودیت {{limit}} است.",
+    "sendFailed": "پیام ارسال نشد. لطفا دوباره امتحان کنید.",
+    "modelNoImageSupport": "مدل انتخاب شده از تصاویر پشتیبانی نمی کند. لطفا مدل دیگری را انتخاب کنید",
+    "voiceStartFailed": "صدا شروع نشد.",
+    "voiceNoSpeechDetected": "هیچ صدایی شناسایی نشد. لطفا دوباره امتحان کنید.",
+    "emptyTitle": "چگونه می توانم کمک کنم؟",
+    "emptySubtitle": "مکالمه را با هوش مصنوعی شروع کنید",
+    "privateTitle": "چت خصوصی",
+    "privateSubtitle": "این گپ در تاریخچه چت شما ظاهر نمی شود",
+    "startPrivateChat": "چت خصوصی را شروع کنید",
+    "endPrivateChat": "پایان چت خصوصی",
+    "permissions": {
+      "photosTitle": "مجوز عکس ها مورد نیاز است",
+      "photosMessage": "دسترسی به عکس برای انتخاب تصاویر مورد نیاز است.",
+      "voiceTitle": "مجوزهای صوتی مورد نیاز است",
+      "voiceMessage": "برای استفاده از صدا، دسترسی به میکروفون و گفتار لازم است."
+    },
+    "activity": {
+      "analyzingImages": "تجزیه و تحلیل تصاویر…",
+      "searching": "در حال جستجو…",
+      "thinking": "فکر کردن…"
+    },
+    "webSearch": {
+      "title": "جستجوی وب",
+      "subtitle": "اطلاعات اخیر را پیدا کنید",
+      "label": "جستجوی وب",
+      "enable": "فعال کردن جستجوی وب",
+      "disable": "غیرفعال کردن جستجوی وب",
+      "toggleLabel": "جستجو در وب"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "طراحی تصاویر با سرعت",
+      "subtitle": "دارایی های بصری را در یک مکان تولید، اصلاح و منتشر کنید.",
+      "cta": "باز کنید"
+    },
+    "quickActions": {
+      "createImages": "ایجاد تصاویر",
+      "openCamera": "دوربین را باز کنید",
+      "editImage": "ویرایش تصویر",
+      "startVoice": "شروع صدا",
+      "assistants": "دستیاران"
+    },
+    "listening": "گوش دادن…",
+    "startRecording": "شروع ضبط…",
+    "assistantHeader": {
+      "unavailableTitle": "دستیار در دسترس نیست",
+      "unavailableDescription": "ما نتوانستیم این دستیار را بارگیری کنیم. لطفا دوباره امتحان کنید.",
+      "ready": "آماده برای کمک"
+    },
+    "actions": {
+      "copy": "کپی کنید",
+      "share": "به اشتراک بگذارید",
+      "regenerate": "بازسازی کنید",
+      "retryFromHere": "از اینجا دوباره امتحان کنید",
+      "report": "گزارش دهید",
+      "cancel": "لغو کنید"
+    },
+    "markdown": {
+      "copy": "کپی کنید",
+      "copied": "کپی شده است",
+      "table": "جدول",
+      "watchVideo": "تماشای ویدیو",
+      "wikipedia": "ویکی پدیا",
+      "link": "پیوند",
+      "note": "توجه داشته باشید",
+      "warning": "هشدار",
+      "tip": "نکته"
+    },
+    "messageActionTitle": "پیام",
+    "status": {
+      "sending": "در حال ارسال…",
+      "failed": "شکست خورد",
+      "sent": "ارسال شد"
+    },
+    "suggestions": {
+      "writeStory": "یک داستان خلاقانه بنویسید",
+      "writeStorySubtitle": "در مورد یک ماجراجویی جادویی",
+      "planTravel": "برنامه سفر را برنامه ریزی کنید",
+      "planTravelSubtitle": "برای یک تعطیلات شگفت انگیز",
+      "explainConcept": "این مفهوم را توضیح دهید",
+      "explainConceptSubtitle": "به زبان ساده",
+      "planDay": "برای روزم برنامه ریزی کن",
+      "planDaySubtitle": "با نکات بهره وری"
+    },
+    "home": {
+      "eyebrow": "موضوعی را انتخاب کنید",
+      "title": "میخوای چیکار کنی؟",
+      "subtitle": "جهتی را انتخاب کنید، سپس با یک اعلان قوی شروع کنید.",
+      "pickPromptTitle": "یک اعلان برای شروع انتخاب کنید",
+      "changeTopic": "موضوع دیگری را انتخاب کنید",
+      "intents": {
+        "summarize": "خلاصه کردن متن",
+        "summarizeShort": "خلاصه کنید",
+        "summarizeHint": "مقالات، یادداشت ها، یادداشت های صوتی، موضوعات طولانی",
+        "plan": "برنامه ریزی کنید",
+        "planHint": "سفرها، روال ها، بودجه ها، ضرب الاجل ها، تغییرات زندگی",
+        "brainstorm": "طوفان فکری",
+        "brainstormHint": "ایده ها، پیشنهادات، نام ها، محتوا، پروژه های جانبی",
+        "analyze": "تجزیه و تحلیل داده ها",
+        "analyzeHint": "هزینه، بازخورد، معیارها، عادات، عملکرد"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "یک خلاصه موسس ایجاد کنید",
+          "founderBriefSubtitle": "خطرات اصلی، تصمیمات و مراحل بعدی را بیرون بکشید.",
+          "classNotesTitle": "یادداشت های مطالعه ام را پاک کنید",
+          "classNotesSubtitle": "یادداشت های خشن را به یک راهنمای مطالعه روشن تبدیل کنید.",
+          "meetingHandoffTitle": "خلاصه ای از دست دادن بنویسید",
+          "meetingHandoffSubtitle": "پس از جلسات، تماس ها یا موضوعات داخلی طولانی مفید است.",
+          "longArticleTitle": "این مقاله را سریعاً خلاصه کنید",
+          "longArticleSubtitle": "یک مقاله طولانی را به صورت تیز و تیز متراکم کنید."
+        },
+        "plan": {
+          "energyResetTitle": "یک تنظیم مجدد انرژی 14 روزه ایجاد کنید",
+          "energyResetSubtitle": "یک برنامه واقعی برای خواب، غذا، حرکت و تمرکز.",
+          "mealPlanTitle": "غذاهایی را برنامه ریزی کنید که من واقعاً درست خواهم کرد",
+          "mealPlanSubtitle": "عملی، مقرون به صرفه و بر اساس آنچه من دارم.",
+          "cityMoveTitle": "برای نقل مکان به یک شهر جدید برنامه ریزی کنید",
+          "cityMoveSubtitle": "آن را به جدول زمانی، بودجه، مسکن و وظایف مدیریت تقسیم کنید.",
+          "tripEscapeTitle": "یک فرار به یاد ماندنی آخر هفته را برنامه ریزی کنید",
+          "tripEscapeSubtitle": "چیزی بهتر از یک برنامه سفر عمومی."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "یک شلوغی جانبی واقع بینانه پیدا کنید",
+          "sideHustleSubtitle": "ایده هایی که می توانم در حین کار تمام وقت شروع کنم.",
+          "brandAngleTitle": "یک زاویه برند به یاد ماندنی پیدا کنید",
+          "brandAngleSubtitle": "برای محصولات، سازندگان، آژانس‌ها یا خبرنامه‌ها مفید است.",
+          "socialSeriesTitle": "یک سری محتوا اختراع کنید",
+          "socialSeriesSubtitle": "چیزی که به اندازه کافی سازگار باشد تا مخاطبان را افزایش دهد.",
+          "datingIdeasTitle": "با ایده های جدید بیایید",
+          "datingIdeasSubtitle": "قرارها، هدایا، سورپرایزها، یا رویدادهایی که فکر می کنند."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "پیدا کنید که پول من کجا نشتی دارد",
+          "spendingLeaksSubtitle": "ابتدا الگوها، نقاط ضعف را نشان دهید و ساده ترین برنده است.",
+          "customerFeedbackTitle": "بازخورد را به اولویت تبدیل کنید",
+          "customerFeedbackSubtitle": "درخواست‌ها، شکایات، فوریت‌ها و تأثیرات خوشه‌ای.",
+          "habitPatternsTitle": "الگوها را در عادات من مشاهده کنید",
+          "habitPatternsSubtitle": "مفید برای تمرین، خواب، ژورنال، یا گزارش های تمرکز.",
+          "metricsStoryTitle": "معنی اعداد را توضیح دهید",
+          "metricsStorySubtitle": "سیگنال بیشتر، نویز صفحه گسترده کمتر."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "در حال پردازش...",
+    "tapToUploadImage": "برای آپلود تصویر ضربه بزنید"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "در حال پردازش...",
+    "camera": "آپلود عکس",
+    "library": "کتابخانه"
+  },
+  "common": {
+    "ok": "باشه",
+    "retry": "دوباره امتحان کنید",
+    "cancel": "لغو کنید",
+    "allow": "اجازه دهید",
+    "notNow": "الان نه",
+    "openSettings": "تنظیمات را باز کنید",
+    "close": "بستن",
+    "save": "ذخیره کنید",
+    "tryAgain": "دوباره امتحان کنید"
+  },
+  "rateUs": {
+    "title": "از Cloud AI لذت می برید؟",
+    "subtitle": "نظرات شما به ما کمک می کند تا بهتر شویم. آیا مایلید به ما در اپ استور امتیاز دهید؟",
+    "rateNow": "اکنون امتیاز دهید",
+    "maybeLater": "شاید بعدا",
+    "dontAskAgain": "دوباره نپرس"
+  },
+  "oneTimeOffer": {
+    "title": "پیشنهاد یکبار مصرف",
+    "discount": "⟬000⟭% تخفیف {{percent}}",
+    "subtitle": "دیگر این پیشنهاد را نخواهید دید.",
+    "badgeLine1": "انحصاری",
+    "badgeLine2": "پیشنهاد یکباره",
+    "upgradeNow": "اکنون برای {{price}} ارتقا دهید",
+    "loadingPrice": "در حال بارگیری...",
+    "termsOfUse": "شرایط استفاده",
+    "privacyPolicy": "سیاست حفظ حریم خصوصی",
+    "accessTitle": "دسترسی نامحدود به",
+    "accessSubtitle": "GPT، Gemini و Grok 4",
+    "features": {
+      "unlimitedGPT4": "دسترسی نامحدود به GPT-4",
+      "geminiPro": "دسترسی به Gemini Pro",
+      "grokInsights": "از Grok برای بینش تازه استفاده کنید",
+      "priorityAccess": "دسترسی اولویت‌دار و پاسخ‌های سریع‌تر"
+    },
+    "bestValue": "بهترین ارزش",
+    "annualPremium": "حق بیمه سالانه",
+    "oneTimePayment": "پرداخت یکباره",
+    "wasPrice": "بود",
+    "continue": "ادامه دهید",
+    "restore": "بازیابی کنید",
+    "terms": "شرایط",
+    "privacy": "حریم خصوصی",
+    "successTitle": "موفقیت!",
+    "successMessage": "از خرید شما متشکریم برای 12 ماه آینده از دسترسی ممتاز لذت ببرید.",
+    "errorTitle": "خرید ناموفق بود",
+    "errorMessage": "مشکلی پیش آمد. لطفا دوباره امتحان کنید.",
+    "restoreSuccessTitle": "بازسازی شد",
+    "restoreSuccessMessage": "خریدهای شما بازیابی شده است.",
+    "restoreErrorTitle": "بازیابی انجام نشد",
+    "restoreErrorMessage": "هیچ خریدی برای بازیابی یافت نشد.",
+    "unavailableTitle": "خریدها در دسترس نیستند",
+    "unavailableMessage": "صورت‌حساب Android هنوز پیکربندی نشده است."
+  },
+  "rewards": {
+    "header": {
+      "title": "پاداش",
+      "openMenu": "منو را باز کنید",
+      "goBack": "به عقب برگرد"
+    },
+    "pointsHero": {
+      "totalBalance": "موجودی کل",
+      "seeYourRewards": "پاداش های خود را ببینید"
+    },
+    "streakTracker": {
+      "title": "خط روزانه",
+      "subtitle": "ادامه بده! شما در آتش هستید.",
+      "days": "روزها",
+      "prize": "جایزه",
+      "dayLabel": "روز {{number}}",
+      "nextReward": "پاداش بعدی: {{amount}} در {{time}}",
+      "coins": "سکه"
+    },
+    "sections": {
+      "availableQuests": "ماموریت های موجود",
+      "completedQuests": "ماموریت های تکمیل شده",
+      "availableRewards": "جوایز موجود",
+      "needsMoreCoins": "به سکه های بیشتری نیاز دارد"
+    },
+    "balances": {
+      "rewardCoins": "سکه های پاداش",
+      "imageCredits": "اعتبار تصویر"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 اعتبار تصویر",
+        "imageCredits200": "200 اعتبار تصویر",
+        "imageCredits600": "600 اعتبار تصویر",
+        "weeklyPremium": "حق بیمه هفتگی",
+        "secretBox": "جعبه مخفی"
+      },
+      "rewardDescriptions": {
+        "secretBox": "پاداش های اسرارآمیز درون"
+      },
+      "alerts": {
+        "comingSoonTitle": "به زودی",
+        "comingSoonMessage": "این جایزه هنوز در دسترس نیست.",
+        "notEnoughCoinsTitle": "سکه کافی نیست",
+        "notEnoughCoinsMessage": "برای باز کردن قفل این پاداش به سکه های پاداش بیشتری نیاز دارید.",
+        "errorTitle": "خطا",
+        "couldNotOpenBox": "جعبه باز نشد",
+        "couldNotRedeem": "پاداش بازخرید نشد. لطفا دوباره امتحان کنید.",
+        "mysteryReward": "پاداش رمز و راز"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "ورود روزانه",
+        "description": "امروز برنامه را باز کنید تا خط خود را حفظ کنید",
+        "message": "هنگامی که هر روز برنامه را باز می کنید، این تلاش به طور خودکار تکمیل می شود."
+      },
+      "shareFacebook": {
+        "title": "در فیسبوک به اشتراک بگذارید",
+        "description": "درباره ما در فیس بوک پست کنید"
+      },
+      "shareTwitter": {
+        "title": "در توییتر به اشتراک بگذارید",
+        "description": "تجربه خود را توییت کنید"
+      },
+      "shareInstagram": {
+        "title": "در اینستاگرام به اشتراک بگذارید",
+        "description": "یک داستان یا پست را به اشتراک بگذارید"
+      },
+      "shareExperience": {
+        "title": "تجربه خود را به اشتراک بگذارید",
+        "description": "به دوستان بگویید چرا برنامه را دوست دارید"
+      },
+      "share": {
+        "genericMessage": "من از این برنامه هوش مصنوعی برای چت و تولید تصویر استفاده می کنم. آن را بررسی کنید: {{url}}",
+        "facebookQuote": "این برنامه هوش مصنوعی را بررسی کنید!",
+        "twitterText": "من این برنامه هوش مصنوعی را امتحان می کنم، بسیار جالب است.",
+        "instagramMessage": "این برنامه هوش مصنوعی را بررسی کنید: {{url}}"
+      },
+      "store": {
+        "errorTitle": "خطا",
+        "errorMessage": "صفحه فروشگاه باز نشد."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "تلاش کامل شد",
+        "description": "تلاش تکمیل شد",
+        "points": "+{{points}} امتیاز",
+        "close": "بستن"
+      },
+      "rewardSuccess": {
+        "error": "خطا",
+        "success": "موفقیت",
+        "somethingWentWrong": "مشکلی پیش آمد",
+        "rewardUnlocked": "قفل پاداش باز شد",
+        "credits": "اعتبارات",
+        "close": "بستن",
+        "okay": "باشه"
+      },
+      "secretBox": {
+        "pill": "جعبه مخفی",
+        "rewardUnlocked": "پاداش باز شد",
+        "shufflingRewards": "جوایز به هم ریخته...",
+        "imageCreditsAdded": "اعتبار تصویر به حساب شما اضافه شد",
+        "continue": "ادامه دهید",
+        "revealing": "فاش کردن...",
+        "prizeTiers": {
+          "lucky": "خوش شانس",
+          "pro": "PRO",
+          "elite": "نخبگان",
+          "mythic": "اسطوره"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "سکه‌های روزانه‌تان را دریافت کنید",
+      "subtitle": "هر روز بیایید تا پاداش بیشتر شود.",
+      "cta": "ثبت حضور",
+      "claimed": "دریافت شد! +{{amount}} سکه",
+      "later": "بعداً"
+    }
+  },
+  "app": {
+    "version": "نسخه {{version}}",
+    "offlineBanner": "شما آفلاین هستید",
+    "launch": {
+      "accessibilityLabel": "شروع Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "هوش مصنوعی، وقتی آماده باشید"
+    },
+    "errors": {
+      "modelsLoadTitle": "مدل‌ها بارگیری نشد",
+      "modelsLoadMessage": "مدل‌های هوش مصنوعی بارگیری نمی‌شوند. این برنامه از مدل های پیش فرض استفاده می کند. لطفا اتصال اینترنت خود را بررسی کنید.",
+      "modelsLoadTimeout": "بارگیری مدل ها خیلی طول کشید. این برنامه از مدل های پیش فرض استفاده می کند. لطفا دوباره امتحان کنید.",
+      "modelsLoadNetwork": "بدون اتصال به اینترنت این برنامه از مدل های پیش فرض استفاده می کند. لطفا اتصال خود را بررسی کنید.",
+      "deviceIdTitle": "خطای مقداردهی اولیه",
+      "deviceIdMessage": "شناسه دستگاه راه اندازی نشد. برخی از ویژگی ها ممکن است به درستی کار نکنند.",
+      "storageTitle": "خطای ذخیره سازی",
+      "storageMessage": "دسترسی به حافظه محلی ممکن نیست. برخی از ویژگی ها ممکن است به درستی کار نکنند.",
+      "crashTitle": "مشکلی پیش آمد.",
+      "crashSubtitle": "لطفا دوباره امتحان کنید.",
+      "crashLabel": "برنامه خراب شد"
+    },
+    "proxyErrors": {
+      "genericTitle": "مشکلی پیش آمد",
+      "genericMessage": "لطفا دوباره امتحان کنید.",
+      "rateLimitTitle": "درخواست های خیلی زیاد",
+      "rateLimitMessage": "ما در حال رسیدگی به درخواست های زیادی هستیم. لطفاً چند لحظه دیگر دوباره امتحان کنید.",
+      "rateLimitRetryAfter": "ما در حال رسیدگی به درخواست های زیادی هستیم. لطفاً در حدود {{seconds}} ثانیه دوباره امتحان کنید.",
+      "restrictedTitle": "محتوای محدود شده",
+      "restrictedMessage": "این درخواست توسط فیلترهای ایمنی مسدود شد.",
+      "insufficientCoinsTitle": "سکه کافی نیست",
+      "insufficientCoinsMessage": "موجودی فعلی شما برای این درخواست بسیار کم است.",
+      "imageUnavailableTitle": "تصویر در دسترس نیست",
+      "imageUnavailableMessage": "فایل تصویری ایجاد شده موقتاً در دسترس نبود. لطفا دوباره امتحان کنید.",
+      "authorizationTitle": "موضوع مجوز",
+      "authorizationMessage": "ما نتوانستیم حساب شما را تأیید کنیم. لطفا دوباره امتحان کنید.",
+      "serverTitle": "مشکل سرور",
+      "serverMessage": "سرورهای ما مشکل داشتند. لطفاً به زودی دوباره امتحان کنید.",
+      "timeoutTitle": "طولانی شدن",
+      "timeoutMessage": "زمان درخواست به پایان رسید. لطفا دوباره امتحان کنید.",
+      "networkTitle": "بدون اتصال",
+      "networkMessage": "بدون اتصال به اینترنت لطفاً اتصال خود را بررسی کنید و دوباره امتحان کنید.",
+      "requestTitle": "مشکل درخواست",
+      "requestMessage": "مشکلی در درخواست شما پیش آمد. لطفا دوباره امتحان کنید."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Premium را فعال کنید",
+    "activateMessage": "آیا می خواهید حق بیمه بازبینی را فعال کنید؟",
+    "activateAction": "فعال کنید",
+    "deactivateTitle": "Premium را غیرفعال کنید",
+    "deactivateMessage": "آیا می خواهید حق بیمه بازبین را غیرفعال کنید؟",
+    "deactivateAction": "غیر فعال کردن"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "پاداش روزانه",
+      "body": "سکه های روزانه خود را از دست ندهید - قبل از نیمه شب ادعا کنید."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "سکه‌های روزانه‌تان را از دست ندهید",
+      "body": "روزی یک یادآوری می‌فرستیم تا زنجیره‌تان قطع نشود و سکه‌هایتان بیشتر شود. بدون هرزنامه، و هر زمان بخواهید می‌توانید خاموشش کنید.",
+      "enable": "فعال‌سازی یادآوری‌ها",
+      "skip": "الان نه"
+    }
+  }
+}

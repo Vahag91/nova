@@ -27,6 +27,7 @@ const LINKS = {
   privacy: 'https://aicloudsolutions.app/privacy/chatcloud',
   terms: 'https://aicloudsolutions.app/terms',
   support: 'https://aicloudsolutions.app/contact',
+  subscriptions: 'https://play.google.com/store/account/subscriptions',
 };
 
 function Section({ title, children }) {
@@ -200,10 +201,10 @@ export default function Settings() {
           }),
         );
       }
-    } catch (error) {
+    } catch {
       Alert.alert(
         t('settings.alerts.restoreErrorTitle'),
-        error?.message || t('settings.alerts.restoreErrorMessage'),
+        t('settings.alerts.restoreErrorMessage'),
       );
     } finally {
       setRestoring(false);

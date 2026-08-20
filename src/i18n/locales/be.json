@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "Выберыце мадэль",
+    "searchPlaceholder": "Пошук мадэляў...",
+    "noModelsFound": "Мадэлі не знойдзены",
+    "noModelsAvailable": "Няма даступных мадэляў",
+    "currentModel": "Бягучая мадэль: {{name}}. Націсніце, каб змяніць мадэль.",
+    "openHint": "Адкрывае меню выбару мадэлі",
+    "closeLabel": "Закрыць выбар мадэляў",
+    "searchLabel": "Пошук мадэляў",
+    "searchHint": "Увядзіце, каб адфільтраваць даступныя мадэлі",
+    "modelLabel": "Мадэль {{name}}",
+    "selectHint": "Выберыце мадэль {{name}}",
+    "currentlySelected": "Выбраная мадэль",
+    "genericModel": "Мадэль {{provider}}",
+    "badges": {
+      "new": "НОВЫ",
+      "best": "ЛЕПШЫ"
+    }
+  },
+  "models": {
+    "gpt-4o": "Самая магутная мадэль штучнага інтэлекту",
+    "gpt-4o-mini": "Хуткі для штодзённых задач",
+    "gpt-5": "Самы магутны універсальны штучны інтэлект",
+    "gpt-5-chat-latest": "Аптымізаваны для чата і дыялогу",
+    "gpt-5-mini": "Хуткі і надзейны GPT-5",
+    "gpt-5.4-nano": "Лёгкая мадэль для простых задач",
+    "o4-mini": "Мадэль эфектыўнага развагі",
+    "gpt-4.1-mini": "Кампактны, здольны GPT-4.1",
+    "claude-3-haiku": "Хуткі і мэтанакіраваны антропны штучны інтэлект",
+    "claude-3.7-sonnet": "Вытанчаныя развагі ад Anthropic",
+    "gemini-2.5-Flash": "Самая перадавая мадэль Google",
+    "gemini-2.5-flash": "Самая перадавая мадэль Google",
+    "gemini-2.0-flash": "Хуткі і дакладны Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "Самая магутная мадэль штучнага інтэлекту",
+    "fast_everyday": "Хуткі для штодзённых задач",
+    "fast_reasoning": "Хуткая мадэль з добрай аргументацыяй",
+    "great_reasoning": "Пашыраная мадэль разважанняў",
+    "coding_reasoning": "Пашыранае кадзіраванне і развагі",
+    "better_coding": "Лепш для кадавання і разважанняў",
+    "best_overall": "Лепшая ўніверсальная мадэль штучнага інтэлекту",
+    "best_google": "Лепшая мадэль Google",
+    "best_xai": "Самая магутная мадэль xAI",
+    "creative_focus": "Выдатна падыходзіць для творчага пісьма",
+    "code_helper": "Выдатна падыходзіць для дапамогі ў кадаванні",
+    "chat_focus": "Аптымізаваны для чата",
+    "long_context": "Выдатна падыходзіць для працяглых кантэкстаў",
+    "budget_friendly": "Бюджэтная мадэль штучнага інтэлекту",
+    "ultra_fast": "Звышхуткія адказы",
+    "safe_default": "Бяспечны выбар па змаўчанні",
+    "multilingual": "Моцная шматмоўная падтрымка",
+    "vision_strong": "Выдатна з выявамі і бачаннем",
+    "data_analysis": "Добра падыходзіць для аналізу даных",
+    "structured_tasks": "Добра падыходзіць для структураваных задач",
+    "everyday_helper": "Мадэль памочніка на кожны дзень",
+    "concise_answers": "Кароткія, лаканічныя адказы",
+    "detailed_answers": "Падрабязныя пакрокавыя адказы",
+    "experimental": "Эксперыментальная мадэль наступнага пакалення",
+    "reliable_classic": "Надзейная класічная мадэль",
+    "lightweight": "Лёгкая, недарагая мадэль",
+    "chatty_personal": "Больш прыязны і асабісты",
+    "pro_users": "Лепшае для вопытных карыстальнікаў",
+    "research_helper": "Добра для даследаванняў і нататак",
+    "reasoning_strong": "Пашыраная мадэль разважанняў"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "Антропны",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "Іншае"
+  },
+  "navigation": {
+    "chat": "Новы чат",
+    "history": "Гісторыя",
+    "rewards": "Штодзённыя ўзнагароды",
+    "assistants": "Памочнікі",
+    "imagesStudio": "Image Studio",
+    "settings": "Налады",
+    "recentChats": "Апошнія чаты",
+    "proFeatures": "Прафесійныя функцыі",
+    "pro": "PRO",
+    "proFeaturesCta": {
+      "title": "Атрымаць Pro функцыі",
+      "subtitle": "Усе функцыі штучнага інтэлекту"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "Стварайце, удасканальвайце і публікуйце візуальныя актывы ў адным месцы.",
+    "cta": "Адкрыты"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "Выберыце выявы",
+    "exitSelectionMode": "Выйсці з рэжыму выбару",
+    "selectAll": "Выбраць усе",
+    "noImagesYet": "Выяваў пакуль няма",
+    "describeImageHint": "Апішыце сваю выяву ніжэй і націсніце \"Стварыць\".",
+    "generatedImagesGallery": "Створаная галерэя малюнкаў",
+    "describeImagePlaceholder": "Апішыце малюнак, які вы хочаце...",
+    "deleteConfirmTitle": "Выдаліць выявы",
+    "deleteConfirmMessage": "Вы ўпэўнены, што хочаце выдаліць выбраныя выявы? Гэта дзеянне нельга адмяніць.",
+    "cancel": "Адмяніць",
+    "delete": "Выдаліць",
+    "generate": "Генераваць",
+    "generating": "Стварэнне...",
+    "latest": "Апошні",
+    "insertToChat": "Устаўце ў чат",
+    "pleaseWait": "Калі ласка, пачакайце...",
+    "processing": "Апрацоўка...",
+    "tapToUploadImage": "Націсніце, каб загрузіць выяву",
+    "camera": "Загрузіць фота",
+    "library": "Бібліятэка",
+    "enterPrompt": "Калі ласка, увядзіце запыт для генерацыі тэксту ў малюнак",
+    "openInBrowser": "Адкрыць у браўзеры",
+    "makeVariations": "Рабіце варыяцыі",
+    "deleteAllFromGeneration": "Выдаліць усё з гэтага пакалення",
+    "imageOptionsTitle": "Параметры выявы",
+    "imageOptionsMessage": "Што б вы хацелі зрабіць з гэтай выявай?",
+    "insertMarkdownHeader": "Вось малюнак для:",
+    "variationSuffix": "— варыяцыя папярэдняга малюнка",
+    "selectedCount": "выбраны",
+    "selectedCount_one": "выбраны",
+    "selectedCount_other": "выбраны",
+    "imageDescriptionInput": "Увод апісання выявы",
+    "imageDescriptionHint": "Увядзіце апісанне выявы, якую вы хочаце стварыць",
+    "openModelSettings": "Адкрыйце налады мадэлі",
+    "modelSettingsHint": "Націсніце, каб змяніць мадэль і налады",
+    "openPhotoGallery": "Адкрыць фотагалерэю",
+    "clearInput": "Ачысціць увод",
+    "generatedImage": "Згенераваны малюнак",
+    "autoSelectedModel": "Аўтаматычны выбар {{model}} для рэжыму {{mode}}",
+    "deleteSelectedConfirmTitle": "Выдаліць выявы",
+    "deleteSelectedConfirmMessage": "Вы ўпэўнены, што хочаце выдаліць выявы? Гэта дзеянне нельга адмяніць."
+  },
+  "imageStudio": {
+    "generateImage": "Стварыце малюнак",
+    "generatingImage": "Стварэнне выявы",
+    "generateImageHint": "Націсніце, каб стварыць малюнак на аснове вашага апісання",
+    "imageDescriptionInput": "Увод апісання выявы",
+    "imageDescriptionHint": "Увядзіце апісанне выявы, якую вы хочаце стварыць",
+    "openModelSettings": "Адкрыйце налады мадэлі",
+    "modelSettingsHint": "Націсніце, каб змяніць мадэль і налады",
+    "openPhotoGallery": "Адкрыць фотагалерэю",
+    "clearInput": "Ачысціць увод",
+    "generatedImage": "Згенераваны малюнак"
+  },
+  "assistants": {
+    "title": "Памочнікі",
+    "defaultTitle": "Памочнік",
+    "errorTitle": "Нешта пайшло не так",
+    "errorMessage": "Не ўдалося запусціць гэтага памочніка.",
+    "noAssistants": "У гэтай катэгорыі памочнікаў не знойдзена.",
+    "selectAssistantHint": "Адкрыць сродак выбару памочніка",
+    "subtitle": "Падабраныя спецыялісты па штучным інтэлекту гатовы да кадавання, напісання, аналізу, планавання і многага іншага.",
+    "searchPlaceholder": "Памочнікі пошуку…",
+    "useAssistant": "Выкарыстоўвайце Памочніка",
+    "selectAssistant": "Выберыце памочніка",
+    "description": "Апісанне",
+    "systemPrompt": "Сістэмная падказка",
+    "chooseModel": "Выберыце мадэль",
+    "categoryAll": "Усе",
+    "categories": {
+      "everyday": "Штодня",
+      "life": "жыццё",
+      "health": "Здароўе",
+      "schoolWork": "Школа і праца",
+      "coding": "Кадзіраванне",
+      "creative": "Творчы",
+      "general": "Генерал"
+    },
+    "presets": {
+      "default": {
+        "name": "Памочнік па змаўчанні",
+        "description": "Збалансаваная дапамога ў штодзённых справах."
+      },
+      "quick": {
+        "name": "Хуткія адказы",
+        "description": "Кароткія, прамыя адказы."
+      },
+      "planner": {
+        "name": "Штодзённы планавальнік",
+        "description": "Плануйце свой дзень і распарадак дня."
+      },
+      "recipes": {
+        "name": "Стравы і рэцэпты",
+        "description": "Што прыгатаваць, з таго, што ёсць."
+      },
+      "fitness": {
+        "name": "Трэнер па фітнесу",
+        "description": "Малюсенькія звычкі і хатнія трэніроўкі."
+      },
+      "money": {
+        "name": "Грашовы прыяцель",
+        "description": "Простыя бюджэты і парады па выдатках."
+      },
+      "study": {
+        "name": "Даследаванне Helper",
+        "description": "Тлумачу проста. Апытайце мяне."
+      },
+      "email": {
+        "name": "Электронная пошта і рэзюмэ",
+        "description": "Пішыце выразныя электронныя лісты і радкі рэзюмэ."
+      },
+      "translator": {
+        "name": "Перакладчык",
+        "description": "Перакладаць + вучыць фразы."
+      },
+      "travel": {
+        "name": "Спадарожнік у падарожжах",
+        "description": "Простыя планы і ўпаковачныя спісы."
+      },
+      "tech": {
+        "name": "Тэхнічная падтрымка (простая)",
+        "description": "Тэлефон, праграмы, асновы Wi-Fi."
+      },
+      "summarizer": {
+        "name": "TL;DR Падсумаванне",
+        "description": "Кароткія кулі + аднарадковы TL;DR."
+      },
+      "gift": {
+        "name": "Шукальнік падарункаў",
+        "description": "Ідэі па бюджэце і інтарэсам."
+      },
+      "party": {
+        "name": "Планавальнік мерапрыемстваў (Lite)",
+        "description": "Хутка сплануйце невялікую вечарыну."
+      },
+      "social": {
+        "name": "Стваральнік сацыяльных паведамленняў",
+        "description": "Чарнавікі паведамленняў з опцыямі."
+      },
+      "interview": {
+        "name": "Інтэрв'ю з трэнерам",
+        "description": "Практыка адказаў (STAR)."
+      },
+      "homefix": {
+        "name": "Кіраўніцтва па рамонце дома",
+        "description": "Простае ліквідацыю непаладак сваімі рукамі."
+      },
+      "pet": {
+        "name": "Клопат пра гадаванцаў",
+        "description": "Кармленне, прагулкі, базавая дрэсіроўка."
+      },
+      "mindful": {
+        "name": "Уважлівая хвілінка",
+        "description": "Спакойны перапынак 1–3 хвіліны."
+      },
+      "polite": {
+        "name": "Ветлівы перапісчык",
+        "description": "Перапісвайце тэксты і адказвайце прыгожа."
+      }
+    }
+  },
+  "history": {
+    "title": "Гісторыя",
+    "searchPlaceholder": "Пошук у чатах…",
+    "newChat": "Новы чат",
+    "new": "+ Новае",
+    "search": "Пошук",
+    "clearSearch": "Выразны пошук",
+    "noChatsYet": "Чатаў пакуль няма",
+    "noResults": "Чатаў пакуль няма",
+    "startFirstConversation": "Пачніце сваю першую размову.",
+    "startChat": "Пачаць чат",
+    "startNewChat": "Пачаць новы чат",
+    "errorLoadingHistory": "Памылка загрузкі гісторыі",
+    "loading": "Загрузка гісторыі...",
+    "renameChat": "Перайменаваць чат",
+    "enterNewTitle": "Увядзіце новую назву",
+    "deleteChat": "Выдаліць чат?",
+    "deleteChatMessage": "\"{{title}}\" будзе выдалены.",
+    "rename": "Перайменаваць",
+    "unpin": "Адмацаваць",
+    "pin": "Замацаваць",
+    "untitled": "Без назвы"
+  },
+  "settings": {
+    "title": "Налады",
+    "model": "мадэль",
+    "searchPlaceholder": "Пошук мадэляў…",
+    "temperatureForCurrentModel": "Тэмпература для бягучай мадэлі",
+    "customFor": "Індывідуальны для {{model}}",
+    "usingDefault": "Выкарыстоўваецца стандартны {{temperature}}",
+    "resetToDefault": "Скід па змаўчанні",
+    "defaultTemperature": "Тэмпература па змаўчанні (рэзервы)",
+    "usedByModelsWithoutOverride": "Выкарыстоўваецца мадэлямі без карыстацкага перавызначэння",
+    "dangerZone": "Небяспечная зона",
+    "clearAllChatsAndSettings": "Выдаліць усе чаты і налады",
+    "about": "Аб",
+    "version": "Версія {{version}}{{status}}",
+    "versionPremiumSuffix": "· Прэміум",
+    "privacyPolicy": "Палітыка прыватнасці",
+    "hero": {
+      "label": "Спецыяльная прапанова",
+      "title": "Неабмежаваны доступ\n& Pro Асаблівасці",
+      "upgrade": "Абнаўленне",
+      "manage": "Кіраваць планам"
+    },
+    "sections": {
+      "premium": "Прэміум план",
+      "data": "Даныя карыстальніка",
+      "support": "Падтрымка і права"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "Атрымаць Прэміум",
+        "subtitle": "Адкрыйце неабмежаваную колькасць інструментаў для стварэння"
+      },
+      "premiumActive": {
+        "title": "Прэміум Актыўны",
+        "subtitle": "Дзякуй за падтрымку Cloud AI"
+      },
+      "restore": {
+        "title": "Аднавіць пакупкі",
+        "subtitle": "Выкарыстоўвайце, калі вы пераключылі прылады"
+      },
+      "history": {
+        "title": "Кіраванне гісторыяй чатаў",
+        "subtitle": "Прагляд і выдаленне вашых мінулых заняткаў"
+      },
+      "reset": {
+        "title": "Скінуць чаты і налады",
+        "subtitle": "Ачышчае ўсе захаваныя даныя на гэтай прыладзе"
+      },
+      "rate": {
+        "title": "Ацаніце нас",
+        "error": "Немагчыма адкрыць старонку крамы."
+      },
+      "support": {
+        "title": "Падтрымка",
+        "subtitle": "Звяжыцеся з намі онлайн",
+        "error": "Немагчыма адкрыць старонку кантактаў."
+      },
+      "privacy": {
+        "title": "Палітыка прыватнасці",
+        "error": "Немагчыма адкрыць палітыку прыватнасці."
+      },
+      "terms": {
+        "title": "Умовы выкарыстання",
+        "error": "Немагчыма адкрыць умовы выкарыстання."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "Недаступны",
+      "linkUnavailableMessage": "Зараз немагчыма адкрыць гэтую спасылку.",
+      "restoreSuccessTitle": "Адноўлены",
+      "restoreSuccessMessage": "Вашы пакупкі былі адноўлены.",
+      "restoreEmptyTitle": "Пакупак не знойдзена",
+      "restoreEmptyMessage": "Мы не змаглі знайсці актыўную куплю для аднаўлення для гэтага ўліковага запісу.",
+      "restoreErrorTitle": "Не атрымалася аднавіць",
+      "restoreErrorMessage": "Зараз немагчыма аднавіць пакупкі.",
+      "resetConfirmTitle": "Скінуць даныя праграмы?",
+      "resetConfirmMessage": "Гэта выдаляе ўсе чаты і мясцовыя налады.",
+      "resetConfirmCancel": "Адмяніць",
+      "resetConfirmCta": "Скінуць"
+    }
+  },
+  "createImage": {
+    "headerTitle": "Ствараць",
+    "chooseStyle": "Выберыце стыль",
+    "aspectRatio": "Суадносіны бакоў",
+    "starterPrompts": {
+      "title": "Падказкі для пачаткоўцаў",
+      "items": [
+        "здымак у студыі",
+        "сучасная гасцёўня",
+        "трапічны пляж на заходзе"
+      ]
+    },
+    "promptPlaceholder": "Увядзіце тое, што хочаце бачыць...",
+    "promptHint": "Прыклад: «Залацісты рэтрывер у студыйным асвятленні»",
+    "clearText": "Чысты тэкст",
+    "generate": "Генераваць",
+    "generating": "Стварэнне..."
+  },
+  "editImage": {
+    "headerTitle": "Рэдагаваць",
+    "chooseStyle": "Выберыце стыль",
+    "aspectRatio": "Суадносіны бакоў",
+    "starterPrompts": {
+      "title": "Падказкі для пачаткоўцаў",
+      "items": [
+        "выправіць асвятленне",
+        "выдаліць фон",
+        "мяккая партрэтная рэтуш"
+      ]
+    },
+    "promptPlaceholder": "Апішыце праўкі (неабавязкова)",
+    "clearText": "Чысты тэкст",
+    "generate": "Генераваць",
+    "generating": "Прымяненне...",
+    "upload": {
+      "choose": "Выберыце фота",
+      "change": "Змена",
+      "remove": "Выдаліць"
+    },
+    "imageUnavailable": {
+      "title": "Відарыс недаступны",
+      "message": "Немагчыма атрымаць доступ да выбранага фота. Выберыце яго яшчэ раз і паўтарыце спробу."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "Анімэ"
+      },
+      "cartoon": {
+        "name": "Мультфільм"
+      },
+      "photoreal": {
+        "name": "Фотарэалістычны"
+      },
+      "sketch": {
+        "name": "Эскіз"
+      },
+      "cyberpunk": {
+        "name": "Кіберпанк"
+      },
+      "steampunk": {
+        "name": "Стымпанк"
+      },
+      "illustration_3d": {
+        "name": "3D ілюстрацыя"
+      },
+      "dark_fantasy": {
+        "name": "Цёмная фантазія"
+      },
+      "vintage_film": {
+        "name": "Вінтажны фільм"
+      },
+      "pastel": {
+        "name": "Пастэльная эстэтыка"
+      },
+      "neon_glow": {
+        "name": "Неонавае ззянне"
+      },
+      "epic_landscape": {
+        "name": "Эпічны пейзаж"
+      }
+    },
+    "aspectRatios": {
+      "square": "квадратны",
+      "landscape": "Пейзаж",
+      "portrait": "Партрэт"
+    },
+    "models": {
+      "fluxKontent": "Кантэнт Flux",
+      "custom": "Прыстасаваныя"
+    },
+    "notEnoughCoinsTitle": "Не хапае манет",
+    "notEnoughCoinsMessage": "Ваш бягучы баланс занадта нізкі для гэтай выявы.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "Самая хуткая мадэль",
+      "runwareFluxKrea": "Крэатыўныя, стылізаваныя вынікі",
+      "runwareQwenImage": "Збалансаваныя, якасныя вынікі",
+      "google4": "Лепшая мадэль малюнка AI",
+      "klingImageO1": "Рэдагаванне малюнкаў з высокім кантролем",
+      "fluxKontent": "Кантэнт Flux настроены на рэдагаванне",
+      "runwareProvider": "Збалансаваная якасць з надзейнай дыфузіяй.",
+      "airProvider": "Nano Banana дадае гуллівы, яркі тон.",
+      "googleProvider": "Google настроены на вытанчаныя дэталі.",
+      "klingaiProvider": "KlingAI настроены на кантраляваныя праўкі.",
+      "anthropicProvider": "Канвеер Claude для нюансіраваных настрояў.",
+      "default": "Націсніце, каб азнаёміцца з даступнымі рухавікамі."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "абраны стыль",
+    "sheetTitle": "Сфарміруйце сваё бачанне",
+    "sheetSubtitle": "Кароткі глыток сервернай кавы, пакуль мы змешваем {{style}} у падказку.",
+    "phases": {
+      "blend": "Змешванне {{style}}",
+      "paint": "Размалёўка сцэны",
+      "finish": "Даданне канчатковай паліроўкі"
+    },
+    "actions": {
+      "cancel": "Адмяніць",
+      "retry": "Паўтарыць",
+      "close": "Блізка"
+    },
+    "errors": {
+      "restrictedTitle": "Абмежаваны кантэнт",
+      "genericTitle": "Збой генерацыі",
+      "genericMessage": "Не ўдалося стварыць выяву."
+    },
+    "alerts": {
+      "saveFailedTitle": "Не атрымалася захаваць",
+      "shareFailedTitle": "Не атрымалася падзяліцца",
+      "tryAgain": "Калі ласка, паспрабуйце яшчэ раз.",
+      "savedTitle": "Захавана",
+      "savedMessage": "Выява захавана ў вашу галерэю.",
+      "permissionTitle": "Патрабуецца дазвол",
+      "permissionMessage": "Дазвольце доступ да сховішча, каб захоўваць выявы ў вашай галерэі."
+    },
+    "result": {
+      "complete": "Усё скончана"
+    },
+    "accessibility": {
+      "close": "Блізка"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "Выдаліць",
+      "edit": "Рэдагаваць",
+      "save": "Захаваць",
+      "share": "Падзяліцеся"
+    },
+    "alerts": {
+      "savedTitle": "Захавана",
+      "savedMessage": "Выява захавана ў вашу галерэю.",
+      "permissionTitle": "Патрабуецца дазвол",
+      "permissionMessage": "Дазвольце доступ да сховішча, каб захоўваць выявы ў вашай галерэі.",
+      "saveFailedTitle": "Не атрымалася захаваць",
+      "tryAgain": "Калі ласка, паспрабуйце яшчэ раз."
+    },
+    "accessibility": {
+      "close": "Блізка",
+      "delete": "Выдаліць малюнак",
+      "edit": "Рэдагаваць малюнак",
+      "save": "Захаваць малюнак",
+      "share": "Падзяліцеся выявай"
+    }
+  },
+  "reportContent": {
+    "title": "Паведаміць аб змесціве AI",
+    "subtitle": "Раскажыце нам, што не так з гэтым створаным кантэнтам.",
+    "privateDisclosure": "Адпраўка адпраўляе гэтае змесціва на праверку бяспекі.",
+    "accessibilityLabel": "Паведаміць аб змесціве AI",
+    "reasons": {
+      "sexual": "Змесціва сексуальнага характару або галізны",
+      "violence_self_harm": "Гвалт або самапашкоджанне",
+      "hate_harassment": "Нянавісць або пераслед",
+      "child_safety": "Занепакоенасць бяспекай дзяцей",
+      "scam_deceptive": "Махлярства або падманны кантэнт",
+      "other": "Іншае"
+    },
+    "errors": {
+      "reasonRequired": "Перад адпраўкай выберыце прычыну.",
+      "submit": "Не атрымалася адправіць справаздачу. Калі ласка, паспрабуйце яшчэ раз."
+    },
+    "success": {
+      "title": "дзякуй Ваша справаздача была адпраўлена.",
+      "subtitle": "Мы будзем выкарыстоўваць справаздачы для павышэння бяспекі кантэнту."
+    },
+    "actions": {
+      "report": "Справаздача",
+      "submit": "Адправіць справаздачу",
+      "done": "Гатова"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "Адкрыць меню",
+      "selectImages": "Выберыце выявы",
+      "exitSelection": "Выйсці з выбару",
+      "deleteSelected": "Выдаліць выбраныя выявы",
+      "selectToDelete": "Выберыце выявы для выдалення"
+    },
+    "createCard": {
+      "title": "Стварыць з тэксту",
+      "subtitle": "Увядзіце апісанне",
+      "cta": "Апісаць і стварыць"
+    },
+    "editCard": {
+      "title": "Фотарэдактар AI",
+      "subtitle": "Пераўтварайце і паляпшайце з дапамогай штучнага інтэлекту",
+      "cta": "Рэдагаваць з дапамогай штучнага інтэлекту"
+    },
+    "gallery": {
+      "title": "Галерэя",
+      "empty": "Выяваў пакуль няма",
+      "selection": {
+        "enter": "Выберыце выявы",
+        "exit": "Выйсці з выбару",
+        "deleteSelected": "Выдаліць выбраныя выявы",
+        "selectForDelete": "Выберыце выявы для выдалення"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "Знаёмцеся",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Стварайце і рэдагуйце выявы з дапамогай штучнага інтэлекту - прама ў Cloud AI."
+    },
+    "relaxView": {
+      "title": "Знаёмцеся са сваім штучным інтэлектам",
+      "titleHighlight": "Памочнікі",
+      "subtitle": "Спецыялізаваныя эксперты па штучным інтэлекту гатовыя дапамагчы з вашымі штодзённымі патрэбамі",
+      "cards": {
+        "fitness": {
+          "title": "Трэнер па фітнесу",
+          "text": "Малюсенькія звычкі і хатнія трэніроўкі."
+        },
+        "recipes": {
+          "title": "Стравы і рэцэпты",
+          "text": "Што прыгатаваць, з таго, што ёсць."
+        },
+        "travel": {
+          "title": "Спадарожнік у падарожжах",
+          "text": "Простыя планы і ўпаковачныя спісы."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "РАШЭННІ ПРАДПРЫЕМСТВАЛЬНАГА ШІ",
+      "description": "Пашырце магчымасці вашага бізнесу з дапамогай перадавых тэхналогій штучнага інтэлекту, прызначаных для карпаратыўных спецыялістаў і каманд.",
+      "stats": "Каму давяраюць больш за 500 тысяч карыстальнікаў",
+      "rating": "4,9 / 5",
+      "button": "Пачніце"
+    },
+    "buttons": {
+      "continue": "Працягнуць",
+      "start": "Пачнем"
+    }
+  },
+  "coinStore": {
+    "title": "Атрымаць крэдыты",
+    "loading": "Загрузка крамы манет…",
+    "balanceLabel": "Ваш бягучы баланс",
+    "balanceValue": "{{amount}} Крэдыты",
+    "history": {
+      "link": "Гісторыя транзакцый",
+      "alertTitle": "Гісторыя",
+      "alertBody": "Хутка з'явіцца гісторыя транзакцый."
+    },
+    "noPacks": "Пакетаў манет няма. Праверце свой ідэнтыфікатар прапановы RevenueCat.",
+    "badges": {
+      "basic": "Базавы пакет",
+      "popular": "Самы папулярны",
+      "value": "Лепшае значэнне"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} Крэдыты",
+      "tokensLabel": "{{credits}} Крэдыты",
+      "defaultName": "Пакет {{index}}",
+      "unknownPrice": "USD —"
+    },
+    "premium": {
+      "title": "Перайсці на прэміум",
+      "subtitle": "Неабмежаваны доступ і магчымасці",
+      "cta": "Абнаўленне"
+    },
+    "termsText": "Робячы куплю, вы згаджаецеся з нашымі",
+    "termsLink": "Умовы абслугоўвання",
+    "alerts": {
+      "initErrorTitle": "Памылка ініцыялізацыі",
+      "genericMessage": "Нешта пайшло не так.",
+      "successTitle": "Поспех",
+      "successMessage": "Крэдыты з'явяцца ў бліжэйшы час.",
+      "purchaseFailedTitle": "Купля не атрымалася",
+      "unknownError": "Невядомая памылка"
+    }
+  },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Патрабуецца прэміум",
+    "upgrade": "Абнаўленне",
+    "modelRequiredMessage": "Для гэтай мадэлі патрабуецца Premium. Абнавіце, каб атрымаць доступ да GPT-5, Grok 4, Claude і больш дасканалых мадэляў.",
+    "assistantsRequiredMessage": "Памочнікам патрабуецца Premium. Абнавіце, каб атрымаць доступ да спецыялізаваных памочнікаў штучнага інтэлекту для фітнесу, кадавання, пісьма і іншага.",
+    "assistantsTitle": "Патрабуецца прэміум",
+    "assistantsMessage": "Памочнікам патрабуецца Premium. Абнавіце, каб атрымаць доступ да спецыялізаваных памочнікаў штучнага інтэлекту для фітнесу, кадавання, пісьма і іншага."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5,5, Grok, Gemini",
+    "close": "Зачыніць аплатную сцяну",
+    "unavailableTitle": "Пакупкі недаступныя",
+    "unavailableMessage": "Android білінг яшчэ не наладжаны.",
+    "restoreEmptyTitle": "Пакупак не знойдзена",
+    "restoreEmptyMessage": "Мы не змаглі знайсці актыўную куплю для аднаўлення для гэтага ўліковага запісу.",
+    "restoreFailedTitle": "Не атрымалася аднавіць",
+    "restoreFailedMessage": "Зараз немагчыма аднавіць пакупкі.",
+    "productsUnavailableTitle": "Няма даступных планаў",
+    "productsUnavailableMessage": "Прадукты па падпісцы Android зараз недаступныя.",
+    "purchaseFailedTitle": "Купля не атрымалася",
+    "purchaseFailedMessage": "Немагчыма завяршыць гэтую куплю зараз.",
+    "restore": "Аднавіць",
+    "restoreRestoring": "Аднаўленне...",
+    "features": {
+      "create": "Стварэнне малюнкаў і відэа",
+      "search": "Шукайце ў Інтэрнэце з дапамогай штучнага інтэлекту",
+      "talk": "Размаўляйце са штучным інтэлектам натуральна",
+      "imageStudio": "Атрымайце крэдыты Image Studio {{credits}} {{period}}",
+      "period": {
+        "weekly": "штотыдзень",
+        "monthly": "штомесяц",
+        "yearly": "штогод"
+      }
+    },
+    "freeTrial": {
+      "title": "Бясплатная пробная версія",
+      "subtitle": "3-дзённая бясплатная пробная версія"
+    },
+    "badge": {
+      "bestOffer": "Лепшая прапанова"
+    },
+    "plans": {
+      "yearly": {
+        "title": "Штогод",
+        "only": "Толькі {{price}}",
+        "defaultPrice": "79,99 долараў ЗША",
+        "defaultIntroPrice": "1,35 даляра ЗША"
+      },
+      "monthly": {
+        "title": "Штомесяц",
+        "subtitle": "Адмяніць у любы час",
+        "defaultPrice": "19,99 долараў ЗША"
+      },
+      "weekly": {
+        "title": "Штотыдзень",
+        "subtitle": "Адмяніць у любы час",
+        "defaultPrice": "9,99 долараў ЗША",
+        "trialThen": "Тады 3 дні бясплатна"
+      }
+    },
+    "frequency": {
+      "perWeek": "у тыдзень",
+      "perMonth": "у месяц"
+    },
+    "cta": "Працягнуць",
+    "ctaFreeTrial": "Паспрабуйце гэта бясплатна",
+    "legal": {
+      "terms": "Умовы",
+      "privacy": "Прыватнасць"
+    },
+    "premium": {
+      "headline": "Увесь прэміум ІІ у адным плане",
+      "subtitleLine1": "Размаўляйце ў чаце, кодуйце, стварайце і плануйце",
+      "subtitleLine2": "з прасунутымі мадэлямі.",
+      "enableTrial": "Уключыць бясплатную пробную версію",
+      "annual": "Гадавы",
+      "saveBadge": "Зэканомце 83%",
+      "year": "год",
+      "week": "тыдзень",
+      "termsOfUse": "Умовы выкарыстання",
+      "privacyPolicy": "Палітыка прыватнасці"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "Паведамленне...",
+    "createImages": "Стварэнне малюнкаў",
+    "generateAiArtwork": "Стварыце ілюстрацыі штучнага інтэлекту",
+    "camera": "Загрузіць фота",
+    "takeOrSelectPhotos": "Выберыце фатаграфіі",
+    "search": "Пошук",
+    "findInformation": "Знайсці інфармацыю",
+    "findRecentInfo": "Знайсці апошнюю інфармацыю",
+    "removeImage": "Выдаліць выяву",
+    "messageInput": "Увод паведамлення",
+    "clearInput": "Ачысціць увод",
+    "quickActionsLabel": "Хуткія дзеянні",
+    "hideQuickActions": "Схаваць хуткія дзеянні",
+    "showQuickActions": "Паказаць хуткія дзеянні",
+    "startVoiceInput": "Пачаць галасавы ўвод",
+    "sendMessage": "Адправіць паведамленне",
+    "offline": "У аўтаномным рэжыме",
+    "stop": "Стоп",
+    "streaming": "Паток...",
+    "closeRecorder": "Зачыніць дыктафон",
+    "insertTranscript": "Адправіць",
+    "scrollToLatest": "Пракруціць да апошняга паведамлення",
+    "copyMessage": "Скапіраваць паведамленне",
+    "copyMessageHint": "Скапіруйце гэта паведамленне ў буфер абмену",
+    "shareMessage": "Абагуліць паведамленне",
+    "shareMessageHint": "Падзяліцеся гэтым паведамленнем",
+    "regenerateResponse": "Аднавіць адказ",
+    "regenerateResponseHint": "Стварыце новы адказ",
+    "copyCode": "Скапіруйце код",
+    "copied": "Скапіравана",
+    "image": "малюнак",
+    "loading": "Загрузка...",
+    "loadingChat": "Загрузка чата...",
+    "offlineBanner": "Вы па-за сеткай. Немагчыма адправіць паведамленні.",
+    "offlineError": "Няма падключэння да інтэрнэту. Калі ласка, праверце падключэнне і паўтарыце спробу.",
+    "imagePickerErrorTitle": "Памылка выбару выявы",
+    "imagePickerErrorMessage": "Немагчыма атрымаць доступ да вашых фатаграфій. Калі ласка, паспрабуйце яшчэ раз.",
+    "messageTooLong": "Паведамленне занадта доўгае ({{length}}). Ліміт {{limit}}.",
+    "sendFailed": "Не ўдалося адправіць паведамленне. Калі ласка, паспрабуйце яшчэ раз.",
+    "modelNoImageSupport": "Выбраная мадэль не падтрымлівае выявы. Выберыце іншую мадэль.",
+    "voiceStartFailed": "Не ўдалося запусціць голас.",
+    "voiceNoSpeechDetected": "Ніводнага голасу не распазналі. Калі ласка, паспрабуйце яшчэ раз.",
+    "emptyTitle": "Чым я магу дапамагчы?",
+    "emptySubtitle": "Пачніце размову з ІІ",
+    "privateTitle": "Прыватны чат",
+    "privateSubtitle": "Гэты чат не будзе адлюстроўвацца ў вашай гісторыі чатаў",
+    "startPrivateChat": "Пачніце прыватны чат",
+    "endPrivateChat": "Скончыць прыватны чат",
+    "permissions": {
+      "photosTitle": "Патрабуецца дазвол на фота",
+      "photosMessage": "Для выбару малюнкаў патрабуецца доступ да фатаграфій.",
+      "voiceTitle": "Патрэбны галасавыя дазволы",
+      "voiceMessage": "Для выкарыстання голасу патрабуецца доступ да мікрафона і маўлення."
+    },
+    "activity": {
+      "analyzingImages": "Аналіз малюнкаў…",
+      "searching": "Пошук...",
+      "thinking": "Думаючы…"
+    },
+    "webSearch": {
+      "title": "Інтэрнэт-пошук",
+      "subtitle": "Знайсці апошнюю інфармацыю",
+      "label": "Інтэрнэт-пошук",
+      "enable": "Уключыць вэб-пошук",
+      "disable": "Адключыць вэб-пошук",
+      "toggleLabel": "Пошук у інтэрнэце"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "Дызайн візуальных эфектаў на хуткасці.",
+      "subtitle": "Стварайце, удасканальвайце і публікуйце візуальныя актывы ў адным месцы.",
+      "cta": "Адкрыты"
+    },
+    "quickActions": {
+      "createImages": "Стварэнне малюнкаў",
+      "openCamera": "Адкрыйце камеру",
+      "editImage": "Рэдагаваць малюнак",
+      "startVoice": "Запусціце Voice",
+      "assistants": "Памочнікі"
+    },
+    "listening": "Праслухоўванне...",
+    "startRecording": "Пачаць запіс…",
+    "assistantHeader": {
+      "unavailableTitle": "Памочнік недаступны",
+      "unavailableDescription": "Не ўдалося загрузіць гэтага памочніка. Калі ласка, паспрабуйце яшчэ раз.",
+      "ready": "Гатовы дапамагчы"
+    },
+    "actions": {
+      "copy": "Копія",
+      "share": "Падзяліцеся",
+      "regenerate": "Рэгенераваць",
+      "retryFromHere": "Паўтарыце спробу адсюль",
+      "report": "Справаздача",
+      "cancel": "Адмяніць"
+    },
+    "markdown": {
+      "copy": "Копія",
+      "copied": "Скапіравана",
+      "table": "СТОЛ",
+      "watchVideo": "Глядзець відэа",
+      "wikipedia": "Вікіпедыя",
+      "link": "Спасылка",
+      "note": "Заўвага",
+      "warning": "Папярэджанне",
+      "tip": "Парада"
+    },
+    "messageActionTitle": "паведамленне",
+    "status": {
+      "sending": "Адпраўка…",
+      "failed": "Не атрымалася",
+      "sent": "Адпраўлена"
+    },
+    "suggestions": {
+      "writeStory": "Напісаць творчае апавяданне",
+      "writeStorySubtitle": "пра чароўную прыгоду",
+      "planTravel": "Сплануйце маршрут падарожжа",
+      "planTravelSubtitle": "для дзіўнага адпачынку",
+      "explainConcept": "Растлумачце гэта паняцце",
+      "explainConceptSubtitle": "простымі словамі",
+      "planDay": "Спланаваць мой дзень",
+      "planDaySubtitle": "з парадамі па прадукцыйнасці"
+    },
+    "home": {
+      "eyebrow": "Выберыце тэму",
+      "title": "Што ты хочаш рабіць?",
+      "subtitle": "Выберыце кірунак і пачніце з моцнай падказкі.",
+      "pickPromptTitle": "Каб пачаць, абярыце падказку",
+      "changeTopic": "Выберыце іншую тэму",
+      "intents": {
+        "summarize": "Канспектаваць тэкст",
+        "summarizeShort": "Падвядзіце вынікі",
+        "summarizeHint": "Артыкулы, нататкі, галасавыя нататкі, доўгія тэмы",
+        "plan": "Складзіце план",
+        "planHint": "Паездкі, будні, бюджэты, тэрміны, змены ў жыцці",
+        "brainstorm": "Мазгавы штурм",
+        "brainstormHint": "Ідэі, прапановы, імёны, кантэнт, сайд-праекты",
+        "analyze": "Аналіз дадзеных",
+        "analyzeHint": "Выдаткі, зваротная сувязь, паказчыкі, звычкі, прадукцыйнасць"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "Стварыце брыф заснавальніка",
+          "founderBriefSubtitle": "Вылучыце асноўныя рызыкі, рашэнні і наступныя крокі.",
+          "classNotesTitle": "Прыбярыце свае канспекты",
+          "classNotesSubtitle": "Ператварыце грубыя нататкі ў зразумелы навучальны дапаможнік.",
+          "meetingHandoffTitle": "Напішыце рэзюмэ перадачы",
+          "meetingHandoffSubtitle": "Карысна пасля сустрэч, званкоў або доўгіх унутраных размоў.",
+          "longArticleTitle": "Хутка абагульніце гэты артыкул",
+          "longArticleSubtitle": "Згарніце доўгі артыкул у рэзкія высновы."
+        },
+        "plan": {
+          "energyResetTitle": "Стварыце 14-дзённы скід энергіі",
+          "energyResetSubtitle": "Рэалістычны план сну, ежы, руху і канцэнтрацыі.",
+          "mealPlanTitle": "Сплануйце стравы, якія я буду рыхтаваць",
+          "mealPlanSubtitle": "Практычны, даступны і заснаваны на тым, што ў мяне ёсць.",
+          "cityMoveTitle": "Спланаваць мой пераезд у новы горад",
+          "cityMoveSubtitle": "Раздзяліце яго на графік, бюджэт, жыллё і задачы адміністратара.",
+          "tripEscapeTitle": "Сплануйце незабыўныя ўцёкі на выхадныя",
+          "tripEscapeSubtitle": "Нешта лепшае, чым агульны маршрут."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "Знайдзіце рэалістычную пабочную мітусню",
+          "sideHustleSubtitle": "Ідэі, якія я магу пачаць, працуючы поўны працоўны дзень.",
+          "brandAngleTitle": "Знайдзіце запамінальны ракурс брэнда",
+          "brandAngleSubtitle": "Карысна для прадуктаў, стваральнікаў, агенцтваў або інфармацыйных бюлетэняў.",
+          "socialSeriesTitle": "Прыдумайце серыю кантэнту",
+          "socialSeriesSubtitle": "Нешта дастаткова паслядоўнае, каб павялічыць аўдыторыю.",
+          "datingIdeasTitle": "Прыдумайце свежыя ідэі",
+          "datingIdeasSubtitle": "Даты, падарункі, сюрпрызы або падзеі, якія адчуваюць сябе ўдумлівымі."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "Знайдзі, куды ўцякаюць мае грошы",
+          "spendingLeaksSubtitle": "Пакажыце заканамернасці, слабыя месцы, і першы выйграе самы просты.",
+          "customerFeedbackTitle": "Ператварыце зваротную сувязь у прыярытэты",
+          "customerFeedbackSubtitle": "Кластарныя запыты, скаргі, тэрміновасць і ўплыў.",
+          "habitPatternsTitle": "Знайдзі заканамернасці ў маіх звычках",
+          "habitPatternsSubtitle": "Карысна для трэніровак, сну, вядзення дзённікаў або журналаў канцэнтрацыі.",
+          "metricsStoryTitle": "Растлумачце, што азначаюць лічбы",
+          "metricsStorySubtitle": "Больш сігналу, менш шуму электроннай табліцы."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "Апрацоўка...",
+    "tapToUploadImage": "Націсніце, каб загрузіць выяву"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "Апрацоўка...",
+    "camera": "Загрузіць фота",
+    "library": "Бібліятэка"
+  },
+  "common": {
+    "ok": "добра",
+    "retry": "Паўтарыць",
+    "cancel": "Адмяніць",
+    "allow": "Дазволіць",
+    "notNow": "Не цяпер",
+    "openSettings": "Адкрыйце Налады",
+    "close": "Блізка",
+    "save": "Захаваць",
+    "tryAgain": "Паспрабуйце яшчэ раз"
+  },
+  "rateUs": {
+    "title": "Вам падабаецца Cloud AI?",
+    "subtitle": "Ваш водгук дапамагае нам палепшыць. Ці не супраць паставіць нам рэйтынг у App Store?",
+    "rateNow": "Ацаніце зараз",
+    "maybeLater": "Магчыма, пазней",
+    "dontAskAgain": "Не пытайся зноў"
+  },
+  "oneTimeOffer": {
+    "title": "Аднаразовая прапанова",
+    "discount": "{{percent}}% ЗНІЖКА",
+    "subtitle": "Вы больш не ўбачыце гэтую прапанову.",
+    "badgeLine1": "Эксклюзіў",
+    "badgeLine2": "Аднаразовая прапанова",
+    "upgradeNow": "Абнавіце зараз за {{price}}",
+    "loadingPrice": "Загрузка...",
+    "termsOfUse": "Умовы выкарыстання",
+    "privacyPolicy": "Палітыка прыватнасці",
+    "accessTitle": "Неабмежаваны доступ да",
+    "accessSubtitle": "GPT, Gemini і Grok 4",
+    "features": {
+      "unlimitedGPT4": "Неабмежаваны доступ да GPT-4",
+      "geminiPro": "Доступ да Gemini Pro",
+      "grokInsights": "Выкарыстоўвайце Grok, каб атрымаць свежыя ідэі",
+      "priorityAccess": "Прыярытэтны доступ і больш хуткія адказы"
+    },
+    "bestValue": "Лепшае значэнне",
+    "annualPremium": "Гадавая прэмія",
+    "oneTimePayment": "Аднаразовая выплата",
+    "wasPrice": "быў",
+    "continue": "Працягнуць",
+    "restore": "Аднавіць",
+    "terms": "Умовы",
+    "privacy": "Прыватнасць",
+    "successTitle": "поспехаў!",
+    "successMessage": "Дзякуй за пакупку! Атрымлівайце асалоду ад прэміум-доступу на працягу наступных 12 месяцаў.",
+    "errorTitle": "Купля не атрымалася",
+    "errorMessage": "Нешта пайшло не так. Калі ласка, паспрабуйце яшчэ раз.",
+    "restoreSuccessTitle": "Адноўлены",
+    "restoreSuccessMessage": "Вашы пакупкі былі адноўлены.",
+    "restoreErrorTitle": "Збой аднаўлення",
+    "restoreErrorMessage": "Пакупак для аднаўлення не знойдзена.",
+    "unavailableTitle": "Пакупкі недаступныя",
+    "unavailableMessage": "Android білінг яшчэ не наладжаны."
+  },
+  "rewards": {
+    "header": {
+      "title": "Узнагароды",
+      "openMenu": "Адкрыць меню",
+      "goBack": "Ідзі назад"
+    },
+    "pointsHero": {
+      "totalBalance": "АГУЛЬНЫ БАЛАНС",
+      "seeYourRewards": "Глядзіце свае ўзнагароды"
+    },
+    "streakTracker": {
+      "title": "Штодзённая серыя",
+      "subtitle": "Так трымаць! Вы гарыце.",
+      "days": "дзён",
+      "prize": "Прэмія",
+      "dayLabel": "Дзень {{number}}",
+      "nextReward": "Наступная ўзнагарода: {{amount}} у {{time}}",
+      "coins": "Манеты"
+    },
+    "sections": {
+      "availableQuests": "Даступныя квэсты",
+      "completedQuests": "Выкананыя квэсты",
+      "availableRewards": "Даступныя ўзнагароды",
+      "needsMoreCoins": "Трэба больш манет"
+    },
+    "balances": {
+      "rewardCoins": "Узнагародныя манеты",
+      "imageCredits": "Аўтары выявы"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 аўтараў малюнкаў",
+        "imageCredits200": "200 аўтараў малюнкаў",
+        "imageCredits600": "600 аўтараў малюнкаў",
+        "weeklyPremium": "Штотыднёвая прэмія",
+        "secretBox": "Сакрэтная скрынка"
+      },
+      "rewardDescriptions": {
+        "secretBox": "Таямнічыя ўзнагароды ўнутры"
+      },
+      "alerts": {
+        "comingSoonTitle": "Хутка будзе",
+        "comingSoonMessage": "Гэтая ўзнагарода пакуль недаступная.",
+        "notEnoughCoinsTitle": "Не хапае манет",
+        "notEnoughCoinsMessage": "Каб разблакіраваць гэту ўзнагароду, вам трэба больш узнагародных манет.",
+        "errorTitle": "Памылка",
+        "couldNotOpenBox": "Немагчыма адкрыць скрыню.",
+        "couldNotRedeem": "Не ўдалося атрымаць узнагароду. Калі ласка, паспрабуйце яшчэ раз.",
+        "mysteryReward": "Таямнічая ўзнагарода"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "Штодзённы ўваход",
+        "description": "Адкрыйце праграму сёння, каб захаваць сваю серыю",
+        "message": "Гэты квэст выконваецца аўтаматычна, калі вы кожны дзень адкрываеце праграму."
+      },
+      "shareFacebook": {
+        "title": "Падзяліцеся на Facebook",
+        "description": "Публікуйце пра нас на Facebook"
+      },
+      "shareTwitter": {
+        "title": "Падзяліцеся ў Twitter",
+        "description": "Твіт ваш вопыт"
+      },
+      "shareInstagram": {
+        "title": "Падзяліцеся ў Instagram",
+        "description": "Падзяліцеся гісторыяй або публікацыяй"
+      },
+      "shareExperience": {
+        "title": "Падзяліцеся сваім вопытам",
+        "description": "Раскажыце сябрам, чаму вам падабаецца праграма"
+      },
+      "share": {
+        "genericMessage": "Я выкарыстоўваю гэта дадатак AI для чатаў і стварэння малюнкаў. Праверце: {{url}}",
+        "facebookQuote": "Праверце гэта дадатак AI!",
+        "twitterText": "Я спрабую гэта дадатак AI, гэта вельмі крута.",
+        "instagramMessage": "Праверце гэта дадатак AI: {{url}}"
+      },
+      "store": {
+        "errorTitle": "Памылка",
+        "errorMessage": "Немагчыма адкрыць старонку крамы."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "Заданне выканана",
+        "description": "Заданне выканана",
+        "points": "+{{points}} балаў",
+        "close": "Блізка"
+      },
+      "rewardSuccess": {
+        "error": "ПАМЫЛКА",
+        "success": "ПОСПЕХ",
+        "somethingWentWrong": "Нешта пайшло не так",
+        "rewardUnlocked": "Узнагарода разблакіравана",
+        "credits": "Крэдыты",
+        "close": "Блізка",
+        "okay": "Добра"
+      },
+      "secretBox": {
+        "pill": "САКРЭТНАЯ СКРЫНЯ",
+        "rewardUnlocked": "УЗНАГАРОД РАЗБЛАКІРАВАНЫ",
+        "shufflingRewards": "ПЕРАТАСУВАННЕ ЎЗНАГАРОДЗЕЙ...",
+        "imageCreditsAdded": "Крэдыты выявы дададзены ў ваш уліковы запіс",
+        "continue": "Працягнуць",
+        "revealing": "Выяўленне...",
+        "prizeTiers": {
+          "lucky": "ШЧАСЦІЛА",
+          "pro": "PRO",
+          "elite": "ЭЛІТА",
+          "mythic": "МІФІЧНЫ"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "Забярыце штодзённыя манеты",
+      "subtitle": "Заходзьце штодня — узнагарода расце.",
+      "cta": "Адзначыцца",
+      "claimed": "Атрымана! +{{amount}} манет",
+      "later": "Пазней"
+    }
+  },
+  "app": {
+    "version": "Версія {{version}}",
+    "offlineBanner": "Вы па-за сеткай",
+    "launch": {
+      "accessibilityLabel": "Пачынаючы з Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, гатовы, калі будзеш"
+    },
+    "errors": {
+      "modelsLoadTitle": "Не ўдалося загрузіць мадэлі",
+      "modelsLoadMessage": "Немагчыма загрузіць мадэлі AI. Праграма будзе выкарыстоўваць мадэлі па змаўчанні. Праверце падключэнне да інтэрнэту.",
+      "modelsLoadTimeout": "Загрузка мадэляў заняла занадта шмат часу. Праграма будзе выкарыстоўваць мадэлі па змаўчанні. Калі ласка, паспрабуйце яшчэ раз.",
+      "modelsLoadNetwork": "Няма падключэння да інтэрнэту. Праграма будзе выкарыстоўваць мадэлі па змаўчанні. Праверце падключэнне.",
+      "deviceIdTitle": "Памылка ініцыялізацыі",
+      "deviceIdMessage": "Не ўдалося ініцыялізаваць ідэнтыфікатар прылады. Некаторыя функцыі могуць працаваць некарэктна.",
+      "storageTitle": "Памылка захоўвання",
+      "storageMessage": "Немагчыма атрымаць доступ да лакальнага сховішча. Некаторыя функцыі могуць працаваць некарэктна.",
+      "crashTitle": "Нешта пайшло не так.",
+      "crashSubtitle": "Калі ласка, паспрабуйце яшчэ раз.",
+      "crashLabel": "Праграма выйшла з ладу"
+    },
+    "proxyErrors": {
+      "genericTitle": "Нешта пайшло не так",
+      "genericMessage": "Калі ласка, паспрабуйце яшчэ раз.",
+      "rateLimitTitle": "Занадта шмат запытаў",
+      "rateLimitMessage": "Мы разглядаем шмат запытаў. Паўтарыце спробу праз імгненне.",
+      "rateLimitRetryAfter": "Мы разглядаем шмат запытаў. Паўтарыце спробу прыкладна праз {{seconds}} секунд.",
+      "restrictedTitle": "Абмежаваны кантэнт",
+      "restrictedMessage": "Гэты запыт быў заблакаваны фільтрамі бяспекі.",
+      "insufficientCoinsTitle": "Не хапае манет",
+      "insufficientCoinsMessage": "Ваш бягучы баланс занадта нізкі для гэтага запыту.",
+      "imageUnavailableTitle": "Відарыс недаступны",
+      "imageUnavailableMessage": "Створаны файл выявы быў часова недаступны. Калі ласка, паспрабуйце яшчэ раз.",
+      "authorizationTitle": "Праблема аўтарызацыі",
+      "authorizationMessage": "Мы не змаглі праверыць ваш уліковы запіс. Калі ласка, паспрабуйце яшчэ раз.",
+      "serverTitle": "Ікаўка сервера",
+      "serverMessage": "На нашых серверах былі праблемы. Калі ласка, паўтарыце спробу ў бліжэйшы час.",
+      "timeoutTitle": "Занадта доўга",
+      "timeoutMessage": "Час чакання запыту скончыўся. Калі ласка, паспрабуйце яшчэ раз.",
+      "networkTitle": "Няма сувязі",
+      "networkMessage": "Няма падключэння да інтэрнэту. Калі ласка, праверце падключэнне і паўтарыце спробу.",
+      "requestTitle": "Выпуск запыту",
+      "requestMessage": "Нешта пайшло не так з вашым запытам. Калі ласка, паспрабуйце яшчэ раз."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Актывуйце Premium",
+    "activateMessage": "Хочаце актываваць прэміум-рэцэнзент?",
+    "activateAction": "Актываваць",
+    "deactivateTitle": "Адключыце Premium",
+    "deactivateMessage": "Вы хочаце адключыць прэмію рэцэнзента?",
+    "deactivateAction": "Дэактываваць"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "Штодзённая ўзнагарода",
+      "body": "Не прапусціце свае штодзённыя манеты - запатрабавайце да поўначы."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Не прапусціце штодзённыя манеты",
+      "body": "Мы дасылаем адно нагадванне на дзень, каб ваша серыя не перарывалася, а манеты множыліся. Ніякага спаму, адключыць можна ў любы час.",
+      "enable": "Уключыць нагадванні",
+      "skip": "Не зараз"
+    }
+  }
+}

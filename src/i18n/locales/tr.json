@@ -11,7 +11,12 @@
     "searchHint": "Mevcut modelleri filtrelemek için yaz",
     "modelLabel": "{{name}} modeli",
     "selectHint": "{{name}} modelini seç",
-    "currentlySelected": "Şu anda seçili"
+    "currentlySelected": "Şu anda seçili",
+    "genericModel": "{{provider}} modeli",
+    "badges": {
+      "new": "YENİ",
+      "best": "EN İYİ"
+    }
   },
   "models": {
     "gpt-4o": "En güçlü yapay zeka modeli",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Asistanlar",
+    "defaultTitle": "Asistan",
+    "errorTitle": "Bir sorun oluştu",
+    "errorMessage": "Bu asistan başlatılamadı.",
+    "noAssistants": "Bu kategoride asistan bulunamadı.",
+    "selectAssistantHint": "Asistan seçiciyi aç",
     "subtitle": "Kod yazma, yazı yazma, analiz, planlama ve daha fazlası için seçilmiş yapay zeka asistanları.",
     "searchPlaceholder": "Asistan ara…",
     "useAssistant": "Asistanı kullan",
@@ -259,6 +269,7 @@
     "startChat": "Sohbet başlat",
     "startNewChat": "Yeni sohbet başlat",
     "errorLoadingHistory": "Geçmiş yüklenirken hata oluştu",
+    "loading": "Geçmiş yükleniyor...",
     "renameChat": "Sohbeti yeniden adlandır",
     "enterNewTitle": "Yeni başlık gir",
     "deleteChat": "Sohbet silinsin mi?",
@@ -270,7 +281,7 @@
   },
   "settings": {
     "title": "Ayarlar",
-    "model": "Model",
+    "model": "Modeli",
     "searchPlaceholder": "Modelleri ara…",
     "temperatureForCurrentModel": "Geçerli model için sıcaklık",
     "customFor": "{{model}} için özel",
@@ -291,7 +302,7 @@
       "manage": "Planı yönet"
     },
     "sections": {
-      "premium": "Premium Plan",
+      "premium": "Prim Planı",
       "data": "Kullanıcı Verisi",
       "support": "Destek & Hukuki"
     },
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium aktif",
-        "subtitle": "ChatCloud’u desteklediğin için teşekkürler"
+        "subtitle": "Cloud AI’u desteklediğin için teşekkürler"
       },
       "restore": {
         "title": "Satın alımları geri yükle",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Bu bağlantı şu anda açılamıyor.",
       "restoreSuccessTitle": "Geri yüklendi",
       "restoreSuccessMessage": "Satın alımların geri yüklendi.",
+      "restoreEmptyTitle": "Satın alma bulunamadı",
+      "restoreEmptyMessage": "Bu hesap için geri yüklenecek etkin bir satın alma bulamadık.",
       "restoreErrorTitle": "Geri yükleme başarısız",
       "restoreErrorMessage": "Satın alımlar şu anda geri yüklenemedi.",
       "resetConfirmTitle": "Uygulama verileri sıfırlansın mı?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Özel"
     },
+    "notEnoughCoinsTitle": "Yeterli jeton yok",
+    "notEnoughCoinsMessage": "Mevcut bakiyeniz bu görsel için çok düşük.",
     "modelTaglines": {
       "runwareFluxSchnell": "En hızlı model",
       "runwareFluxKrea": "Yaratıcı ve şık sonuçlar",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Kaydedilemedi",
       "shareFailedTitle": "Paylaşılamadı",
-      "tryAgain": "Lütfen tekrar dene."
+      "tryAgain": "Lütfen tekrar dene.",
+      "savedTitle": "Kaydedildi",
+      "savedMessage": "Görsel galerinize kaydedildi.",
+      "permissionTitle": "İzin gerekli",
+      "permissionMessage": "Görselleri galerinize kaydetmek için depolama erişimine izin verin."
     },
     "result": {
       "complete": "Hepsi tamam"
@@ -498,12 +517,47 @@
       "save": "Kaydet",
       "share": "Paylaş"
     },
+    "alerts": {
+      "savedTitle": "Kaydedildi",
+      "savedMessage": "Görsel galerinize kaydedildi.",
+      "permissionTitle": "İzin gerekli",
+      "permissionMessage": "Görselleri galerinize kaydetmek için depolama erişimine izin verin.",
+      "saveFailedTitle": "Kaydedilemedi",
+      "tryAgain": "Lütfen tekrar deneyin."
+    },
     "accessibility": {
       "close": "Kapat",
       "delete": "Görüntüyü sil",
       "edit": "Görüntüyü düzenle",
       "save": "Görüntüyü kaydet",
       "share": "Görüntüyü paylaş"
+    }
+  },
+  "reportContent": {
+    "title": "Yapay zeka içeriğini bildir",
+    "subtitle": "Bu oluşturulan içerikte neyin yanlış olduğunu bize bildirin.",
+    "privateDisclosure": "Gönderdiğinizde, bildirilen bu içerik güvenlik incelemesine iletilir.",
+    "accessibilityLabel": "Yapay zeka içeriğini bildir",
+    "reasons": {
+      "sexual": "Cinsel içerik veya çıplaklık",
+      "violence_self_harm": "Şiddet veya kendine zarar verme",
+      "hate_harassment": "Nefret veya taciz",
+      "child_safety": "Çocuk güvenliği endişesi",
+      "scam_deceptive": "Dolandırıcılık veya yanıltıcı içerik",
+      "other": "Diğer"
+    },
+    "errors": {
+      "reasonRequired": "Göndermeden önce lütfen bir neden seçin.",
+      "submit": "Bildirim gönderilemedi. Lütfen tekrar deneyin."
+    },
+    "success": {
+      "title": "Teşekkürler. Bildiriminiz gönderildi.",
+      "subtitle": "Bildirimleri içerik güvenliğini iyileştirmek için kullanacağız."
+    },
+    "actions": {
+      "report": "Bildir",
+      "submit": "Bildirimi Gönder",
+      "done": "Bitti"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Tanış",
       "titleHighlight": "Image Studio",
-      "subtitle": "Yapay zeka ile görüntü oluştur ve düzenle — doğrudan ChatCloud içinde.",
-      "appName": "ChatCloud"
+      "subtitle": "Yapay zeka ile görüntü oluştur ve düzenle — doğrudan Cloud AI içinde."
     },
     "relaxView": {
       "title": "Yapay zekanla tanış",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "Kurumsal Düzey Yapay Zeka Çözümleri",
       "description": "Kurumsal profesyoneller ve ekipler için tasarlanmış ileri yapay zeka teknolojisiyle işini güçlendir.",
       "stats": "500 binden fazla kullanıcı tarafından güveniliyor",
@@ -592,10 +645,10 @@
       "value": "En İyi Fiyat"
     },
     "pack": {
+      "creditsLabel": "{{credits}} Jeton",
       "tokensLabel": "{{credits}} Jeton",
       "defaultName": "Paket {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} Jeton"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Premium’a geç",
@@ -613,8 +666,28 @@
       "unknownError": "Bilinmeyen hata"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium Gerekli",
+    "upgrade": "Yükselt",
+    "modelRequiredMessage": "Bu model Premium gerektirir. GPT-5, Grok 4, Claude ve daha gelişmiş modellere erişmek için yükseltin.",
+    "assistantsRequiredMessage": "Asistanlar Premium gerektirir. Fitness, kodlama, yazma ve daha fazlası için özel yapay zeka asistanlarına erişmek üzere yükseltin.",
+    "assistantsTitle": "Premium Gerekli",
+    "assistantsMessage": "Asistanlar Premium gerektirir. Fitness, kodlama, yazma ve daha fazlası için özel yapay zeka asistanlarına erişmek üzere yükseltin."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Ödeme ekranını kapat",
+    "unavailableTitle": "Satın alma kullanılamıyor",
+    "unavailableMessage": "Android faturalandırması henüz yapılandırılmadı.",
+    "restoreEmptyTitle": "Satın alma bulunamadı",
+    "restoreEmptyMessage": "Bu hesap için geri yüklenecek etkin bir satın alma bulamadık.",
+    "restoreFailedTitle": "Geri yükleme başarısız",
+    "restoreFailedMessage": "Satın almalar şu anda geri yüklenemiyor.",
+    "productsUnavailableTitle": "Kullanılabilir plan yok",
+    "productsUnavailableMessage": "Şu anda kullanılabilir Android abonelik ürünü yok.",
+    "purchaseFailedTitle": "Satın alma başarısız",
+    "purchaseFailedMessage": "Bu satın alma şu anda tamamlanamıyor.",
     "restore": "Geri yükle",
     "restoreRestoring": "Geri yükleniyor…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Şartlar",
       "privacy": "Gizlilik"
+    },
+    "premium": {
+      "headline": "Tüm premium yapay zeka tek planda",
+      "subtitleLine1": "Sohbet edin, kodlayın, yaratın ve planlayın",
+      "subtitleLine2": "Gelişmiş modellerle.",
+      "enableTrial": "Ücretsiz denemeyi etkinleştir",
+      "annual": "Yıllık",
+      "saveBadge": "%83 tasarruf edin",
+      "year": "yıl",
+      "week": "hafta",
+      "termsOfUse": "Kullanım Koşulları",
+      "privacyPolicy": "Gizlilik Politikası"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Yanıtı yeniden üret",
     "regenerateResponseHint": "Yeni bir yanıt üret",
     "copyCode": "Kodu kopyala",
+    "copied": "Kopyalandı",
     "image": "görüntü",
     "loading": "Yükleniyor…",
     "loadingChat": "Sohbet yükleniyor...",
     "offlineBanner": "Çevrimdışısın. Mesajlar gönderilemiyor.",
+    "offlineError": "İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
     "imagePickerErrorTitle": "Görüntü seçici hatası",
     "imagePickerErrorMessage": "Fotoğraflarına erişilemedi. Lütfen tekrar dene.",
     "messageTooLong": "Mesaj çok uzun ({{length}}). Sınır {{limit}}.",
     "sendFailed": "Gönderilemedi.",
     "modelNoImageSupport": "Seçilen model görüntüleri desteklemiyor. Lütfen farklı bir model seçin.",
     "voiceStartFailed": "Sesli giriş başlatılamadı.",
+    "voiceNoSpeechDetected": "Ses algılanamadı. Lütfen tekrar deneyin.",
     "emptyTitle": "Nasıl yardımcı olabilirim?",
     "emptySubtitle": "Yapay zeka ile bir sohbet başlat",
     "privateTitle": "Özel Sohbet",
     "privateSubtitle": "Bu sohbet sohbet geçmişinde görünmeyecek",
+    "startPrivateChat": "Gizli sohbet başlat",
+    "endPrivateChat": "Gizli sohbeti bitir",
     "permissions": {
       "photosTitle": "Fotoğraflar için izin gerekli",
       "photosMessage": "Görüntü seçmek için fotoğraf erişimi gerekli.",
@@ -753,7 +843,19 @@
       "share": "Paylaş",
       "regenerate": "Yeniden üret",
       "retryFromHere": "Buradan tekrar dene",
+      "report": "Bildir",
       "cancel": "İptal"
+    },
+    "markdown": {
+      "copy": "Kopyala",
+      "copied": "Kopyalandı",
+      "table": "TABLO",
+      "watchVideo": "Videoyu İzle",
+      "wikipedia": "Vikipedi",
+      "link": "Bağlantı",
+      "note": "Not",
+      "warning": "Uyarı",
+      "tip": "İpucu"
     },
     "messageActionTitle": "Mesaj",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Günümü planla",
       "planDaySubtitle": "verimlilik ipuçlarıyla"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Bir konu seçin",
       "title": "Ne yapmak istiyorsun?",
@@ -846,81 +946,59 @@
     "library": "Galeri"
   },
   "common": {
-    "new": "YENİ",
-    "best": "EN İYİ",
-    "cancel": "İptal",
-    "save": "Kaydet",
-    "delete": "Sil",
-    "close": "Kapat",
-    "allow": "İzin ver",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Yeniden dene",
+    "cancel": "İptal",
+    "allow": "İzin ver",
+    "notNow": "Şimdi değil",
+    "openSettings": "Ayarları Aç",
+    "close": "Kapat",
+    "save": "Kaydet",
+    "tryAgain": "Tekrar Dene"
   },
   "rateUs": {
-    "title": "ChatCloud'u beğendiniz mi?",
+    "title": "Cloud AI'u beğendiniz mi?",
     "subtitle": "Geri bildiriminiz iyileştirmemize yardımcı olur. Bizi App Store'da değerlendirebilir misiniz?",
     "rateNow": "Şimdi değerlendir",
     "maybeLater": "Belki sonra",
     "dontAskAgain": "Tekrar sorma"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Tek Seferlik Teklif",
+    "discount": "%{{percent}} İNDİRİM",
+    "subtitle": "Bu teklifi bir daha görmeyeceksiniz.",
     "badgeLine1": "Özel",
     "badgeLine2": "Tek seferlik teklif",
     "upgradeNow": "Şimdi yükselt {{price}}",
     "loadingPrice": "Yükleniyor...",
     "termsOfUse": "Kullanım Koşulları",
     "privacyPolicy": "Gizlilik Politikası",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Sınırsız erişim",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "GPT-4'e sınırsız erişim",
+      "geminiPro": "Gemini Pro erişimi",
+      "grokInsights": "Yeni içgörüler için Grok'u kullanın",
+      "priorityAccess": "Öncelikli erişim ve daha hızlı yanıtlar"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "En Avantajlı",
+    "annualPremium": "Yıllık Premium",
+    "oneTimePayment": "Tek seferlik ödeme",
+    "wasPrice": "önceki fiyat",
+    "continue": "Devam et",
+    "restore": "Geri yükle",
+    "terms": "Koşullar",
+    "privacy": "Gizlilik",
+    "successTitle": "Başarılı!",
+    "successMessage": "Satın aldığınız için teşekkürler! Önümüzdeki 12 ay boyunca premium erişimin keyfini çıkarın.",
+    "errorTitle": "Satın Alma Başarısız",
+    "errorMessage": "Bir sorun oluştu. Lütfen tekrar deneyin.",
+    "restoreSuccessTitle": "Geri yüklendi",
+    "restoreSuccessMessage": "Satın almalarınız geri yüklendi.",
+    "restoreErrorTitle": "Geri Yükleme Başarısız",
+    "restoreErrorMessage": "Geri yüklenecek satın alma bulunamadı.",
+    "unavailableTitle": "Satın alma kullanılamıyor",
+    "unavailableMessage": "Android faturalandırması henüz yapılandırılmadı."
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "EFSANEVİ"
         }
       }
+    },
+    "checkIn": {
+      "title": "Günlük coinlerini al",
+      "subtitle": "Her gün gel, ödül büyüsün.",
+      "cta": "Giriş yap",
+      "claimed": "Alındı! +{{amount}} coin",
+      "later": "Daha sonra"
     }
+  },
+  "app": {
+    "version": "Sürüm {{version}}",
+    "offlineBanner": "Çevrimdışısınız",
+    "launch": {
+      "accessibilityLabel": "Cloud AI başlatılıyor",
+      "title": "CLOUD AI",
+      "subtitle": "Yapay zeka, her an hazır"
+    },
+    "errors": {
+      "modelsLoadTitle": "Modeller Yüklenemedi",
+      "modelsLoadMessage": "Yapay zeka modelleri yüklenemiyor. Uygulama varsayılan modelleri kullanacak. Lütfen internet bağlantınızı kontrol edin.",
+      "modelsLoadTimeout": "Modellerin yüklenmesi çok uzun sürdü. Uygulama varsayılan modelleri kullanacak. Lütfen tekrar deneyin.",
+      "modelsLoadNetwork": "İnternet bağlantısı yok. Uygulama varsayılan modelleri kullanacak. Lütfen bağlantınızı kontrol edin.",
+      "deviceIdTitle": "Başlatma Hatası",
+      "deviceIdMessage": "Cihaz kimliği başlatılamadı. Bazı özellikler düzgün çalışmayabilir.",
+      "storageTitle": "Depolama Hatası",
+      "storageMessage": "Yerel depolamaya erişilemiyor. Bazı özellikler düzgün çalışmayabilir.",
+      "crashTitle": "Bir sorun oluştu.",
+      "crashSubtitle": "Lütfen tekrar deneyin.",
+      "crashLabel": "Uygulama çöktü"
+    },
+    "proxyErrors": {
+      "genericTitle": "Bir sorun oluştu",
+      "genericMessage": "Lütfen tekrar deneyin.",
+      "rateLimitTitle": "Çok fazla istek",
+      "rateLimitMessage": "Şu anda çok sayıda istek işliyoruz. Lütfen birazdan tekrar deneyin.",
+      "rateLimitRetryAfter": "Şu anda çok sayıda istek işliyoruz. Lütfen yaklaşık {{seconds}} saniye sonra tekrar deneyin.",
+      "restrictedTitle": "Kısıtlanmış içerik",
+      "restrictedMessage": "Bu istek güvenlik filtreleri tarafından engellendi.",
+      "insufficientCoinsTitle": "Yeterli jeton yok",
+      "insufficientCoinsMessage": "Mevcut bakiyeniz bu istek için çok düşük.",
+      "imageUnavailableTitle": "Görsel kullanılamıyor",
+      "imageUnavailableMessage": "Oluşturulan görsel dosyası geçici olarak kullanılamıyor. Lütfen tekrar deneyin.",
+      "authorizationTitle": "Yetkilendirme sorunu",
+      "authorizationMessage": "Hesabınızı doğrulayamadık. Lütfen tekrar deneyin.",
+      "serverTitle": "Sunucu hatası",
+      "serverMessage": "Sunucularımızda bir sorun oluştu. Lütfen kısa süre sonra tekrar deneyin.",
+      "timeoutTitle": "Çok uzun sürüyor",
+      "timeoutMessage": "İstek zaman aşımına uğradı. Lütfen tekrar deneyin.",
+      "networkTitle": "Bağlantı yok",
+      "networkMessage": "İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+      "requestTitle": "İstek sorunu",
+      "requestMessage": "İsteğinizde bir sorun oluştu. Lütfen tekrar deneyin."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Premium'u Etkinleştir",
+    "activateMessage": "İnceleyici premium'u etkinleştirmek istiyor musunuz?",
+    "activateAction": "Etkinleştir",
+    "deactivateTitle": "Premium'u Devre Dışı Bırak",
+    "deactivateMessage": "İnceleyici premium'u devre dışı bırakmak istiyor musunuz?",
+    "deactivateAction": "Devre dışı bırak"
   },
   "push": {
     "dailyReward": {
       "title": "Günlük ödül",
       "body": "Günlük coin’lerini kaçırma — gece yarısından önce al."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Günlük coinlerini kaçırma",
+      "body": "Serin devam etsin ve coinlerin artmaya devam etsin diye günde bir hatırlatma gönderiyoruz. Spam yok, istediğin zaman kapatabilirsin.",
+      "enable": "Hatırlatmaları aç",
+      "skip": "Şimdi değil"
     }
   }
 }

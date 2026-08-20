@@ -4,9 +4,11 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import Haptic from 'react-native-haptic-feedback';
 import SyntaxHighlighter from 'react-native-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { useTranslation } from 'react-i18next';
 import { colors } from '../../../styles/colors';
 
 const CodeBlock = ({ language, content }) => {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -39,7 +41,9 @@ const CodeBlock = ({ language, content }) => {
       <View style={styles.header}>
         <Text style={styles.language}>{langDisplay}</Text>
         <Pressable onPress={handleCopy} hitSlop={12} style={({ pressed }) => [styles.copyBtn, pressed && { opacity: 0.6 }]}>
-          <Text style={[styles.copyText, copied && styles.copyTextSuccess]}>{copied ? 'Copied' : 'Copy'}</Text>
+          <Text style={[styles.copyText, copied && styles.copyTextSuccess]}>
+            {copied ? t('chat.markdown.copied') : t('chat.markdown.copy')}
+          </Text>
         </Pressable>
       </View>
 

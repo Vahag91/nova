@@ -11,7 +11,12 @@
     "searchHint": "Введіть текст для фільтрації моделей",
     "modelLabel": "Модель {{name}}",
     "selectHint": "Виберіть модель {{name}}",
-    "currentlySelected": "Зараз обрана"
+    "currentlySelected": "Зараз обрана",
+    "genericModel": "Модель {{provider}}",
+    "badges": {
+      "new": "НОВА",
+      "best": "НАЙКРАЩА"
+    }
   },
   "models": {
     "gpt-4o": "Найпотужніша модель ШІ",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Асистенти",
+    "defaultTitle": "Асистент",
+    "errorTitle": "Щось пішло не так",
+    "errorMessage": "Не вдалося запустити цього асистента.",
+    "noAssistants": "У цій категорії немає асистентів.",
+    "selectAssistantHint": "Відкрити вибір асистента",
     "subtitle": "Кураторовані спеціалісти AI для кодування, письма, аналізу, планування і більше.",
     "searchPlaceholder": "Шукати асистентів…",
     "useAssistant": "Використати асистента",
@@ -259,6 +269,7 @@
     "startChat": "Почати чат",
     "startNewChat": "Почати новий чат",
     "errorLoadingHistory": "Помилка завантаження історії",
+    "loading": "Завантаження історії...",
     "renameChat": "Перейменувати чат",
     "enterNewTitle": "Введіть нову назву",
     "deleteChat": "Видалити чат?",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Преміум активний",
-        "subtitle": "Дякуємо за підтримку ChatCloud"
+        "subtitle": "Дякуємо за підтримку Cloud AI"
       },
       "restore": {
         "title": "Відновити покупки",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Не можна відкрити це посилання зараз.",
       "restoreSuccessTitle": "Відновлено",
       "restoreSuccessMessage": "Ваші покупки відновлено.",
+      "restoreEmptyTitle": "Покупок не знайдено",
+      "restoreEmptyMessage": "Ми не знайшли активної покупки для відновлення в цьому обліковому записі.",
       "restoreErrorTitle": "Не вдалося відновити",
       "restoreErrorMessage": "Не можна відновити покупки зараз.",
       "resetConfirmTitle": "Скинути дані застосунку?",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Налаштований"
     },
+    "notEnoughCoinsTitle": "Недостатньо монет",
+    "notEnoughCoinsMessage": "Вашого поточного балансу недостатньо для цього зображення.",
     "modelTaglines": {
       "runwareFluxSchnell": "Найшвидша модель",
       "runwareFluxKrea": "Креативні, стилізовані результати",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Не вдалося зберегти",
       "shareFailedTitle": "Не вдалося поділитися",
-      "tryAgain": "Спробуйте ще раз."
+      "tryAgain": "Спробуйте ще раз.",
+      "savedTitle": "Збережено",
+      "savedMessage": "Зображення збережено у вашій галереї.",
+      "permissionTitle": "Потрібен дозвіл",
+      "permissionMessage": "Надайте доступ до сховища, щоб зберігати зображення в галереї."
     },
     "result": {
       "complete": "Готово"
@@ -498,12 +517,47 @@
       "save": "Зберегти",
       "share": "Поділитися"
     },
+    "alerts": {
+      "savedTitle": "Збережено",
+      "savedMessage": "Зображення збережено у вашій галереї.",
+      "permissionTitle": "Потрібен дозвіл",
+      "permissionMessage": "Надайте доступ до сховища, щоб зберігати зображення в галереї.",
+      "saveFailedTitle": "Не вдалося зберегти",
+      "tryAgain": "Спробуйте ще раз."
+    },
     "accessibility": {
       "close": "Закрити",
       "delete": "Видалити зображення",
       "edit": "Редагувати зображення",
       "save": "Зберегти зображення",
       "share": "Поділитися зображенням"
+    }
+  },
+  "reportContent": {
+    "title": "Поскаржитися на вміст ШІ",
+    "subtitle": "Розкажіть, що не так із цим згенерованим вмістом.",
+    "privateDisclosure": "Після надсилання цей вміст буде передано на перевірку безпеки.",
+    "accessibilityLabel": "Поскаржитися на вміст ШІ",
+    "reasons": {
+      "sexual": "Сексуальний вміст або оголеність",
+      "violence_self_harm": "Насильство або самоушкодження",
+      "hate_harassment": "Ненависть або переслідування",
+      "child_safety": "Загроза безпеці дітей",
+      "scam_deceptive": "Шахрайство або оманливий вміст",
+      "other": "Інше"
+    },
+    "errors": {
+      "reasonRequired": "Перш ніж надсилати, виберіть причину.",
+      "submit": "Не вдалося надіслати скаргу. Спробуйте ще раз."
+    },
+    "success": {
+      "title": "Дякуємо. Вашу скаргу надіслано.",
+      "subtitle": "Ми використовуватимемо скарги для покращення безпеки вмісту."
+    },
+    "actions": {
+      "report": "Поскаржитися",
+      "submit": "Надіслати скаргу",
+      "done": "Готово"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Знайомтесь:",
       "titleHighlight": "Image Studio",
-      "subtitle": "Створюйте та редагуйте зображення за допомогою ШІ — прямо в ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Створюйте та редагуйте зображення за допомогою ШІ — прямо в Cloud AI."
     },
     "relaxView": {
       "title": "Знайомтесь зі своєю ШІ",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "БІЗНЕС-КЛАС AI-РІШЕННЯ",
       "description": "Підсиліть свій бізнес передовою штучною інтелекту, створеною для професіоналів і команд.",
       "stats": "Довіряють понад 500 тисяч користувачів",
@@ -592,10 +645,10 @@
       "value": "Найкраща ціна"
     },
     "pack": {
+      "creditsLabel": "{{credits}} токенів",
       "tokensLabel": "{{credits}} токенів",
       "defaultName": "Пакет {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} токенів"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Перейти на Преміум",
@@ -613,8 +666,28 @@
       "unknownError": "Невідома помилка"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Потрібен преміум",
+    "upgrade": "Покращити",
+    "modelRequiredMessage": "Ця модель потребує преміуму. Покращте план, щоб отримати доступ до GPT-5, Grok 4, Claude та інших передових моделей.",
+    "assistantsRequiredMessage": "Асистенти потребують преміуму. Покращте план, щоб отримати доступ до спеціалізованих ШІ-асистентів для фітнесу, програмування, письма тощо.",
+    "assistantsTitle": "Потрібен преміум",
+    "assistantsMessage": "Асистенти потребують преміуму. Покращте план, щоб отримати доступ до спеціалізованих ШІ-асистентів для фітнесу, програмування, письма тощо."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Закрити екран оплати",
+    "unavailableTitle": "Покупки недоступні",
+    "unavailableMessage": "Оплату для Android ще не налаштовано.",
+    "restoreEmptyTitle": "Покупок не знайдено",
+    "restoreEmptyMessage": "Ми не знайшли активної покупки для відновлення в цьому обліковому записі.",
+    "restoreFailedTitle": "Помилка відновлення",
+    "restoreFailedMessage": "Наразі не вдається відновити покупки.",
+    "productsUnavailableTitle": "Немає доступних планів",
+    "productsUnavailableMessage": "Наразі немає доступних продуктів підписки для Android.",
+    "purchaseFailedTitle": "Помилка покупки",
+    "purchaseFailedMessage": "Наразі не вдається завершити цю покупку.",
     "restore": "Відновити",
     "restoreRestoring": "Відновлення…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Умови",
       "privacy": "Конфіденційність"
+    },
+    "premium": {
+      "headline": "Увесь преміальний ШІ в одному плані",
+      "subtitleLine1": "Спілкуйтеся, кодуйте, створюйте та плануйте",
+      "subtitleLine2": "з просунутими моделями.",
+      "enableTrial": "Увімкнути безкоштовну пробну версію",
+      "annual": "Річний",
+      "saveBadge": "Знижка 83%",
+      "year": "рік",
+      "week": "тиждень",
+      "termsOfUse": "Умови використання",
+      "privacyPolicy": "Політика конфіденційності"
     }
   },
   "chat": {
@@ -695,20 +780,25 @@
     "regenerateResponse": "Генерувати відповідь заново",
     "regenerateResponseHint": "Створити нову відповідь",
     "copyCode": "Копіювати код",
+    "copied": "Скопійовано",
     "image": "зображення",
     "loading": "Завантаження…",
     "loadingChat": "Завантаження чату…",
     "offlineBanner": "Ви офлайн. Повідомлення не можна надіслати.",
+    "offlineError": "Немає з'єднання з інтернетом. Перевірте з'єднання та спробуйте ще раз.",
     "imagePickerErrorTitle": "Помилка вибору зображення",
     "imagePickerErrorMessage": "Не вдалося отримати доступ до фото. Спробуйте ще раз.",
     "messageTooLong": "Повідомлення занадто довге ({{length}}). Ліміт – {{limit}}.",
     "sendFailed": "Надсилання не вдалося.",
     "modelNoImageSupport": "Вибрана модель не підтримує зображення. Будь ласка, виберіть іншу модель.",
     "voiceStartFailed": "Не вдалося розпочати голос.",
+    "voiceNoSpeechDetected": "Голос не розпізнано. Спробуйте ще раз.",
     "emptyTitle": "Чим можу допомогти?",
     "emptySubtitle": "Розпочніть розмову з ШІ",
     "privateTitle": "Приватний чат",
     "privateSubtitle": "Цей чат не з’явиться в історії",
+    "startPrivateChat": "Почати приватний чат",
+    "endPrivateChat": "Завершити приватний чат",
     "permissions": {
       "photosTitle": "Потрібен доступ до фото",
       "photosMessage": "Необхідний доступ до фото, щоб вибрати зображення.",
@@ -753,7 +843,19 @@
       "share": "Поділитися",
       "regenerate": "Генерувати знову",
       "retryFromHere": "Спробувати з цього місця",
+      "report": "Поскаржитися",
       "cancel": "Скасувати"
+    },
+    "markdown": {
+      "copy": "Копіювати",
+      "copied": "Скопійовано",
+      "table": "ТАБЛИЦЯ",
+      "watchVideo": "Переглянути відео",
+      "wikipedia": "Вікіпедія",
+      "link": "Посилання",
+      "note": "Примітка",
+      "warning": "Попередження",
+      "tip": "Порада"
     },
     "messageActionTitle": "Повідомлення",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Запланувати мій день",
       "planDaySubtitle": "з порадами щодо продуктивності"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Виберіть тему",
       "title": "що ти хочеш робити",
@@ -846,81 +946,59 @@
     "library": "Бібліотека"
   },
   "common": {
-    "new": "НОВЕ",
-    "best": "НАЙКРАЩЕ",
-    "cancel": "Скасувати",
-    "save": "Зберегти",
-    "delete": "Видалити",
-    "close": "Закрити",
-    "allow": "Дозволити",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Повторити",
+    "cancel": "Скасувати",
+    "allow": "Дозволити",
+    "notNow": "Не зараз",
+    "openSettings": "Відкрити налаштування",
+    "close": "Закрити",
+    "save": "Зберегти",
+    "tryAgain": "Спробувати ще раз"
   },
   "rateUs": {
-    "title": "Вам подобається ChatCloud?",
+    "title": "Вам подобається Cloud AI?",
     "subtitle": "Ваш відгук допомагає нам покращуватися. Чи могли б ви оцінити нас у App Store?",
     "rateNow": "Оцінити зараз",
     "maybeLater": "Можливо пізніше",
     "dontAskAgain": "Більше не питати"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Одноразова пропозиція",
+    "discount": "ЗНИЖКА {{percent}}%",
+    "subtitle": "Ви більше не побачите цю пропозицію.",
     "badgeLine1": "Ексклюзивна",
     "badgeLine2": "Одноразова пропозиція",
     "upgradeNow": "Оновити зараз за {{price}}",
     "loadingPrice": "Завантаження...",
     "termsOfUse": "Умови використання",
     "privacyPolicy": "Політика конфіденційності",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Необмежений доступ до",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Необмежений доступ до GPT-4",
+      "geminiPro": "Доступ до Gemini Pro",
+      "grokInsights": "Використовуйте Grok для нових ідей",
+      "priorityAccess": "Пріоритетний доступ і швидші відповіді"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
-    "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
-    "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "bestValue": "Найвигідніше",
+    "annualPremium": "Річний преміум",
+    "oneTimePayment": "Одноразовий платіж",
+    "wasPrice": "було",
+    "continue": "Продовжити",
+    "restore": "Відновити",
+    "terms": "Умови",
+    "privacy": "Конфіденційність",
+    "successTitle": "Успіх!",
+    "successMessage": "Дякуємо за покупку! Насолоджуйтеся преміум-доступом протягом наступних 12 місяців.",
+    "errorTitle": "Помилка покупки",
+    "errorMessage": "Щось пішло не так. Спробуйте ще раз.",
+    "restoreSuccessTitle": "Відновлено",
+    "restoreSuccessMessage": "Ваші покупки відновлено.",
+    "restoreErrorTitle": "Помилка відновлення",
+    "restoreErrorMessage": "Покупок для відновлення не знайдено.",
+    "unavailableTitle": "Покупки недоступні",
+    "unavailableMessage": "Оплату для Android ще не налаштовано."
   },
   "rewards": {
     "header": {
@@ -1033,15 +1111,83 @@
           "lucky": "УДАЧА",
           "pro": "PRO",
           "elite": "ELITE",
-          "mythic": "MYTHIC"
+          "mythic": "МІФІЧНИЙ"
         }
       }
+    },
+    "checkIn": {
+      "title": "Заберіть щоденні монети",
+      "subtitle": "Заходьте щодня — нагорода зростає.",
+      "cta": "Забрати",
+      "claimed": "Отримано! +{{amount}} монет",
+      "later": "Пізніше"
     }
+  },
+  "app": {
+    "version": "Версія {{version}}",
+    "offlineBanner": "Ви офлайн",
+    "launch": {
+      "accessibilityLabel": "Запуск Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "ШІ, готовий будь-якої миті"
+    },
+    "errors": {
+      "modelsLoadTitle": "Не вдалося завантажити моделі",
+      "modelsLoadMessage": "Не вдається завантажити моделі ШІ. Додаток використовуватиме стандартні моделі. Перевірте з'єднання з інтернетом.",
+      "modelsLoadTimeout": "Завантаження моделей тривало надто довго. Додаток використовуватиме стандартні моделі. Спробуйте ще раз.",
+      "modelsLoadNetwork": "Немає з'єднання з інтернетом. Додаток використовуватиме стандартні моделі. Перевірте з'єднання.",
+      "deviceIdTitle": "Помилка ініціалізації",
+      "deviceIdMessage": "Не вдалося ініціалізувати ідентифікатор пристрою. Деякі функції можуть працювати некоректно.",
+      "storageTitle": "Помилка сховища",
+      "storageMessage": "Немає доступу до локального сховища. Деякі функції можуть працювати некоректно.",
+      "crashTitle": "Щось пішло не так.",
+      "crashSubtitle": "Спробуйте ще раз.",
+      "crashLabel": "Додаток аварійно завершив роботу"
+    },
+    "proxyErrors": {
+      "genericTitle": "Щось пішло не так",
+      "genericMessage": "Спробуйте ще раз.",
+      "rateLimitTitle": "Забагато запитів",
+      "rateLimitMessage": "Ми обробляємо багато запитів. Спробуйте ще раз за хвилину.",
+      "rateLimitRetryAfter": "Ми обробляємо багато запитів. Повторіть спробу приблизно через {{seconds}} с.",
+      "restrictedTitle": "Обмежений вміст",
+      "restrictedMessage": "Цей запит заблоковано фільтрами безпеки.",
+      "insufficientCoinsTitle": "Недостатньо монет",
+      "insufficientCoinsMessage": "Вашого поточного балансу недостатньо для цього запиту.",
+      "imageUnavailableTitle": "Зображення недоступне",
+      "imageUnavailableMessage": "Файл згенерованого зображення тимчасово недоступний. Спробуйте ще раз.",
+      "authorizationTitle": "Проблема авторизації",
+      "authorizationMessage": "Не вдалося підтвердити ваш обліковий запис. Спробуйте ще раз.",
+      "serverTitle": "Збій сервера",
+      "serverMessage": "На наших серверах виникла проблема. Спробуйте трохи пізніше.",
+      "timeoutTitle": "Це триває надто довго",
+      "timeoutMessage": "Час очікування запиту минув. Спробуйте ще раз.",
+      "networkTitle": "Немає з'єднання",
+      "networkMessage": "Немає з'єднання з інтернетом. Перевірте з'єднання та спробуйте ще раз.",
+      "requestTitle": "Проблема із запитом",
+      "requestMessage": "Із вашим запитом щось пішло не так. Спробуйте ще раз."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Активувати преміум",
+    "activateMessage": "Активувати преміум для рецензентів?",
+    "activateAction": "Активувати",
+    "deactivateTitle": "Деактивувати преміум",
+    "deactivateMessage": "Деактивувати преміум для рецензентів?",
+    "deactivateAction": "Деактивувати"
   },
   "push": {
     "dailyReward": {
       "title": "Щоденна винагорода",
       "body": "Не пропусти щоденні монети — забери їх до опівночі."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Не пропустіть щоденні монети",
+      "body": "Ми надсилаємо одне нагадування на день, щоб ваша серія не перервалася, а монети зростали. Жодного спаму, вимкнути можна будь-коли.",
+      "enable": "Увімкнути нагадування",
+      "skip": "Не зараз"
     }
   }
 }

@@ -11,7 +11,12 @@
     "searchHint": "输入以筛选可用模型",
     "modelLabel": "{{name}} 模型",
     "selectHint": "选择 {{name}} 模型",
-    "currentlySelected": "当前已选择的模型"
+    "currentlySelected": "当前已选择的模型",
+    "genericModel": "{{provider}} 模型",
+    "badges": {
+      "new": "新",
+      "best": "最佳"
+    }
   },
   "models": {
     "gpt-4o": "最强大的 AI 模型",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "助手",
+    "defaultTitle": "助手",
+    "errorTitle": "出现问题",
+    "errorMessage": "无法启动此助手。",
+    "noAssistants": "此分类下暂无助手。",
+    "selectAssistantHint": "打开助手选择器",
     "subtitle": "精选可用于编程、写作、分析、规划等的 AI 专家。",
     "searchPlaceholder": "搜索助手…",
     "useAssistant": "使用助手",
@@ -259,6 +269,7 @@
     "startChat": "开始聊天",
     "startNewChat": "开始新聊天",
     "errorLoadingHistory": "加载历史记录时出错",
+    "loading": "正在加载历史记录...",
     "renameChat": "重命名聊天",
     "enterNewTitle": "输入新标题",
     "deleteChat": "删除聊天？",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "高级版已激活",
-        "subtitle": "感谢你支持 ChatCloud"
+        "subtitle": "感谢你支持 Cloud AI"
       },
       "restore": {
         "title": "恢复购买",
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "现在无法打开此链接。",
       "restoreSuccessTitle": "已恢复",
       "restoreSuccessMessage": "你的购买已恢复。",
+      "restoreEmptyTitle": "未找到购买记录",
+      "restoreEmptyMessage": "未找到此账户可恢复的有效购买记录。",
       "restoreErrorTitle": "恢复失败",
       "restoreErrorMessage": "现在无法恢复购买。",
       "resetConfirmTitle": "重置应用数据？",
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "自定义"
     },
+    "notEnoughCoinsTitle": "金币不足",
+    "notEnoughCoinsMessage": "您当前的余额不足以生成此图片。",
     "modelTaglines": {
       "runwareFluxSchnell": "速度最快的模型",
       "runwareFluxKrea": "富有创意、风格化的效果",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "无法保存",
       "shareFailedTitle": "无法分享",
-      "tryAgain": "请再试一次。"
+      "tryAgain": "请再试一次。",
+      "savedTitle": "已保存",
+      "savedMessage": "图片已保存到相册。",
+      "permissionTitle": "需要权限",
+      "permissionMessage": "请允许访问存储空间，以便将图片保存到相册。"
     },
     "result": {
       "complete": "全部完成"
@@ -498,12 +517,47 @@
       "save": "保存",
       "share": "分享"
     },
+    "alerts": {
+      "savedTitle": "已保存",
+      "savedMessage": "图片已保存到相册。",
+      "permissionTitle": "需要权限",
+      "permissionMessage": "请允许访问存储空间，以便将图片保存到相册。",
+      "saveFailedTitle": "无法保存",
+      "tryAgain": "请重试。"
+    },
     "accessibility": {
       "close": "关闭",
       "delete": "删除图片",
       "edit": "编辑图片",
       "save": "保存图片",
       "share": "分享图片"
+    }
+  },
+  "reportContent": {
+    "title": "举报 AI 内容",
+    "subtitle": "请告诉我们这条生成内容存在什么问题。",
+    "privateDisclosure": "提交后，被举报的内容将被发送以进行安全审核。",
+    "accessibilityLabel": "举报 AI 内容",
+    "reasons": {
+      "sexual": "色情或裸露内容",
+      "violence_self_harm": "暴力或自残",
+      "hate_harassment": "仇恨或骚扰",
+      "child_safety": "儿童安全问题",
+      "scam_deceptive": "诈骗或欺骗性内容",
+      "other": "其他"
+    },
+    "errors": {
+      "reasonRequired": "提交前请先选择原因。",
+      "submit": "无法提交举报，请重试。"
+    },
+    "success": {
+      "title": "感谢您，举报已提交。",
+      "subtitle": "我们将利用举报来提升内容安全。"
+    },
+    "actions": {
+      "report": "举报",
+      "submit": "提交举报",
+      "done": "完成"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "认识一下",
       "titleHighlight": "Image Studio",
-      "subtitle": "在 ChatCloud 内就能用 AI 创建和编辑图片。",
-      "appName": "ChatCloud"
+      "subtitle": "在 Cloud AI 内就能用 AI 创建和编辑图片。"
     },
     "relaxView": {
       "title": "认识你的 AI",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "企业级 AI 解决方案",
       "description": "用为企业和团队打造的尖端 AI 赋能你的业务。",
       "stats": "已获得 50 万+ 用户信任",
@@ -613,8 +666,28 @@
       "unknownError": "未知错误"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "需要高级版",
+    "upgrade": "升级",
+    "modelRequiredMessage": "此模型需要高级版。升级以访问 GPT-5、Grok 4、Claude 和其他高级模型。",
+    "assistantsRequiredMessage": "助手需要高级版。升级以访问专业的 AI 助手，用于健身、编程、写作等。",
+    "assistantsTitle": "需要高级版",
+    "assistantsMessage": "助手需要高级版。升级以访问专业的 AI 助手，用于健身、编程、写作等。"
+  },
   "paywall": {
     "modelsHeadline": "GPT-5、Grok 4、Veo 3",
+    "close": "关闭付费页面",
+    "unavailableTitle": "无法购买",
+    "unavailableMessage": "Android 结算功能尚未配置。",
+    "restoreEmptyTitle": "未找到购买记录",
+    "restoreEmptyMessage": "未找到此账户可恢复的有效购买记录。",
+    "restoreFailedTitle": "恢复失败",
+    "restoreFailedMessage": "当前无法恢复购买。",
+    "productsUnavailableTitle": "暂无可用方案",
+    "productsUnavailableMessage": "当前没有可用的 Android 订阅产品。",
+    "purchaseFailedTitle": "购买失败",
+    "purchaseFailedMessage": "当前无法完成此购买。",
     "restore": "恢复",
     "restoreRestoring": "正在恢复…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "条款",
       "privacy": "隐私"
+    },
+    "premium": {
+      "headline": "所有高级人工智能尽在一个计划中",
+      "subtitleLine1": "聊天、编码、创建和计划",
+      "subtitleLine2": "具有先进的模型。",
+      "enableTrial": "启用免费试用",
+      "annual": "年度",
+      "saveBadge": "节省 83%",
+      "year": "年",
+      "week": "周",
+      "termsOfUse": "使用条款",
+      "privacyPolicy": "隐私政策"
     }
   },
   "chat": {
@@ -707,10 +792,13 @@
     "sendFailed": "发送失败。",
     "modelNoImageSupport": "所选模型不支持图像。请选择其他模型。",
     "voiceStartFailed": "无法开始语音。",
+    "voiceNoSpeechDetected": "未识别到语音，请重试。",
     "emptyTitle": "我能帮你做什么？",
     "emptySubtitle": "开始与 AI 对话",
     "privateTitle": "私密聊天",
     "privateSubtitle": "此聊天不会出现在聊天记录中",
+    "startPrivateChat": "开始私密聊天",
+    "endPrivateChat": "结束私密聊天",
     "permissions": {
       "photosTitle": "需要照片权限",
       "photosMessage": "选择图片需要访问你的照片。",
@@ -755,7 +843,19 @@
       "share": "分享",
       "regenerate": "重新生成",
       "retryFromHere": "从这里重试",
+      "report": "举报",
       "cancel": "取消"
+    },
+    "markdown": {
+      "copy": "复制",
+      "copied": "已复制",
+      "table": "表格",
+      "watchVideo": "观看视频",
+      "wikipedia": "维基百科",
+      "link": "链接",
+      "note": "注释",
+      "warning": "警告",
+      "tip": "提示"
     },
     "messageActionTitle": "消息",
     "status": {
@@ -846,35 +946,26 @@
     "library": "图库"
   },
   "common": {
-    "new": "新",
-    "best": "最佳",
-    "cancel": "取消",
-    "save": "保存",
-    "delete": "删除",
-    "close": "关闭",
-    "allow": "允许",
     "ok": "确定",
     "retry": "重试",
+    "cancel": "取消",
+    "allow": "允许",
+    "notNow": "暂不",
+    "openSettings": "打开设置",
+    "close": "关闭",
+    "save": "保存",
     "tryAgain": "重试"
   },
   "rateUs": {
-    "title": "喜欢 ChatCloud 吗？",
+    "title": "喜欢 Cloud AI 吗？",
     "subtitle": "您的反馈帮助我们改进。您能在 App Store 上为我们评分吗？",
     "rateNow": "立即评分",
     "maybeLater": "稍后再说",
     "dontAskAgain": "不再询问"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "需要高级版",
-    "upgrade": "升级",
-    "modelRequiredMessage": "此模型需要高级版。升级以访问 GPT-5、Grok 4、Claude 和其他高级模型。",
-    "assistantsRequiredMessage": "助手需要高级版。升级以访问专业的 AI 助手，用于健身、编程、写作等。",
-    "assistantsTitle": "需要高级版",
-    "assistantsMessage": "助手需要高级版。升级以访问专业的 AI 助手，用于健身、编程、写作等。"
-  },
   "oneTimeOffer": {
     "title": "一次性优惠",
+    "discount": "{{percent}}% 折扣",
     "subtitle": "您不会再看到此优惠。",
     "badgeLine1": "独家",
     "badgeLine2": "一次性优惠",
@@ -905,22 +996,9 @@
     "restoreSuccessTitle": "已恢复",
     "restoreSuccessMessage": "您的购买已恢复。",
     "restoreErrorTitle": "恢复失败",
-    "restoreErrorMessage": "未找到要恢复的购买记录。"
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "加载模型失败",
-      "modelsLoadMessage": "无法加载 AI 模型。应用将使用默认模型。请检查你的网络连接。",
-      "modelsLoadTimeout": "加载模型时间过长。应用将使用默认模型。请重试。",
-      "modelsLoadNetwork": "无网络连接。应用将使用默认模型。请检查你的连接。",
-      "deviceIdTitle": "初始化错误",
-      "deviceIdMessage": "无法初始化设备 ID。某些功能可能无法正常工作。",
-      "storageTitle": "存储错误",
-      "storageMessage": "无法访问本地存储。某些功能可能无法正常工作。",
-      "crashTitle": "出现问题。",
-      "crashSubtitle": "请重试。",
-      "crashLabel": "应用崩溃"
-    }
+    "restoreErrorMessage": "未找到要恢复的购买记录。",
+    "unavailableTitle": "无法购买",
+    "unavailableMessage": "Android 结算功能尚未配置。"
   },
   "rewards": {
     "header": {
@@ -1036,12 +1114,80 @@
           "mythic": "神话"
         }
       }
+    },
+    "checkIn": {
+      "title": "领取每日金币",
+      "subtitle": "每天回来，奖励更丰厚。",
+      "cta": "签到",
+      "claimed": "已领取！+{{amount}} 金币",
+      "later": "稍后"
     }
+  },
+  "app": {
+    "version": "版本 {{version}}",
+    "offlineBanner": "您已离线",
+    "launch": {
+      "accessibilityLabel": "正在启动 Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "随时待命的 AI"
+    },
+    "errors": {
+      "modelsLoadTitle": "加载模型失败",
+      "modelsLoadMessage": "无法加载 AI 模型。应用将使用默认模型。请检查你的网络连接。",
+      "modelsLoadTimeout": "加载模型时间过长。应用将使用默认模型。请重试。",
+      "modelsLoadNetwork": "无网络连接。应用将使用默认模型。请检查你的连接。",
+      "deviceIdTitle": "初始化错误",
+      "deviceIdMessage": "无法初始化设备 ID。某些功能可能无法正常工作。",
+      "storageTitle": "存储错误",
+      "storageMessage": "无法访问本地存储。某些功能可能无法正常工作。",
+      "crashTitle": "出现问题。",
+      "crashSubtitle": "请重试。",
+      "crashLabel": "应用崩溃"
+    },
+    "proxyErrors": {
+      "genericTitle": "出现问题",
+      "genericMessage": "请重试。",
+      "rateLimitTitle": "请求过多",
+      "rateLimitMessage": "当前请求量较大，请稍后重试。",
+      "rateLimitRetryAfter": "当前请求量较大，请在约 {{seconds}} 秒后重试。",
+      "restrictedTitle": "受限内容",
+      "restrictedMessage": "此请求已被安全过滤器拦截。",
+      "insufficientCoinsTitle": "金币不足",
+      "insufficientCoinsMessage": "您当前的余额不足以完成此请求。",
+      "imageUnavailableTitle": "图片不可用",
+      "imageUnavailableMessage": "生成的图片文件暂时不可用，请重试。",
+      "authorizationTitle": "授权问题",
+      "authorizationMessage": "无法验证您的账户，请重试。",
+      "serverTitle": "服务器故障",
+      "serverMessage": "服务器出现问题，请稍后重试。",
+      "timeoutTitle": "耗时过长",
+      "timeoutMessage": "请求超时，请重试。",
+      "networkTitle": "无网络连接",
+      "networkMessage": "无网络连接。请检查网络后重试。",
+      "requestTitle": "请求问题",
+      "requestMessage": "您的请求出现问题，请重试。"
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "激活高级版",
+    "activateMessage": "要激活审核员高级版吗？",
+    "activateAction": "激活",
+    "deactivateTitle": "停用高级版",
+    "deactivateMessage": "要停用审核员高级版吗？",
+    "deactivateAction": "停用"
   },
   "push": {
     "dailyReward": {
       "title": "每日奖励",
       "body": "别错过每日金币 — 请在午夜前领取。"
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "别错过你的每日金币",
+      "body": "我们每天只发一条提醒，帮你保持连续签到、让金币不断累积。绝无骚扰，随时可以关闭。",
+      "enable": "开启提醒",
+      "skip": "暂不开启"
     }
   }
 }

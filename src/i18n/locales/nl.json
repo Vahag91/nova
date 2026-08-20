@@ -11,7 +11,12 @@
     "searchHint": "Typ om beschikbare modellen te filteren",
     "modelLabel": "{{name}}-model",
     "selectHint": "Selecteer {{name}}-model",
-    "currentlySelected": "Momenteel geselecteerd"
+    "currentlySelected": "Momenteel geselecteerd",
+    "genericModel": "{{provider}}-model",
+    "badges": {
+      "new": "NIEUW",
+      "best": "BESTE"
+    }
   },
   "models": {
     "gpt-4o": "Meest krachtige AI-model",
@@ -146,6 +151,11 @@
   },
   "assistants": {
     "title": "Assistenten",
+    "defaultTitle": "Assistent",
+    "errorTitle": "Er is iets misgegaan",
+    "errorMessage": "Deze assistent kon niet worden gestart.",
+    "noAssistants": "Geen assistenten gevonden in deze categorie.",
+    "selectAssistantHint": "Assistentkiezer openen",
     "subtitle": "Gespecialiseerde AI-hulpen voor coderen, schrijven, analyse, planning en meer.",
     "searchPlaceholder": "Assistenten zoeken…",
     "useAssistant": "Assistent gebruiken",
@@ -254,9 +264,12 @@
     "search": "Zoeken",
     "clearSearch": "Zoekopdracht wissen",
     "noChatsYet": "Nog geen chats",
+    "noResults": "Nog geen chats",
     "startFirstConversation": "Begin je eerste gesprek.",
     "startChat": "Chat starten",
+    "startNewChat": "Chat starten",
     "errorLoadingHistory": "Fout bij laden van geschiedenis",
+    "loading": "Geschiedenis laden...",
     "renameChat": "Chat hernoemen",
     "enterNewTitle": "Voer een nieuwe titel in",
     "deleteChat": "Chat verwijderen?",
@@ -264,9 +277,7 @@
     "rename": "Hernoemen",
     "unpin": "Losmaken",
     "pin": "Vastmaken",
-    "untitled": "Zonder titel",
-    "noResults": "Nog geen chats",
-    "startNewChat": "Chat starten"
+    "untitled": "Zonder titel"
   },
   "settings": {
     "title": "Instellingen",
@@ -302,7 +313,7 @@
       },
       "premiumActive": {
         "title": "Premium actief",
-        "subtitle": "Bedankt voor het steunen van ChatCloud"
+        "subtitle": "Bedankt voor het steunen van Cloud AI"
       },
       "restore": {
         "title": "Aankopen herstellen",
@@ -321,7 +332,7 @@
         "error": "Kan de store-pagina niet openen."
       },
       "support": {
-        "title": "Support",
+        "title": "Ondersteuning",
         "subtitle": "Neem online contact op",
         "error": "Kan de contactpagina niet openen."
       },
@@ -345,6 +356,8 @@
       "linkUnavailableMessage": "Deze link kan nu niet worden geopend.",
       "restoreSuccessTitle": "Hersteld",
       "restoreSuccessMessage": "Je aankopen zijn hersteld.",
+      "restoreEmptyTitle": "Geen aankopen gevonden",
+      "restoreEmptyMessage": "We hebben geen actieve aankoop gevonden om te herstellen voor dit account.",
       "restoreErrorTitle": "Herstellen mislukt",
       "restoreErrorMessage": "Aankopen kunnen nu niet worden hersteld.",
       "resetConfirmTitle": "App-gegevens resetten?",
@@ -403,7 +416,7 @@
         "name": "Anime"
       },
       "cartoon": {
-        "name": "Cartoon"
+        "name": "Tekenfilm"
       },
       "photoreal": {
         "name": "Fotorealistisch"
@@ -445,6 +458,8 @@
       "fluxKontent": "Flux Kontent",
       "custom": "Aangepast"
     },
+    "notEnoughCoinsTitle": "Niet genoeg munten",
+    "notEnoughCoinsMessage": "Je huidige saldo is te laag voor deze afbeelding.",
     "modelTaglines": {
       "runwareFluxSchnell": "Snelste model",
       "runwareFluxKrea": "Creatief en gestileerd",
@@ -482,7 +497,11 @@
     "alerts": {
       "saveFailedTitle": "Kon niet opslaan",
       "shareFailedTitle": "Kon niet delen",
-      "tryAgain": "Probeer het opnieuw."
+      "tryAgain": "Probeer het opnieuw.",
+      "savedTitle": "Opgeslagen",
+      "savedMessage": "Afbeelding opgeslagen in je galerij.",
+      "permissionTitle": "Toestemming vereist",
+      "permissionMessage": "Sta opslagtoegang toe om afbeeldingen in je galerij op te slaan."
     },
     "result": {
       "complete": "Klaar"
@@ -498,12 +517,47 @@
       "save": "Opslaan",
       "share": "Delen"
     },
+    "alerts": {
+      "savedTitle": "Opgeslagen",
+      "savedMessage": "Afbeelding opgeslagen in je galerij.",
+      "permissionTitle": "Toestemming vereist",
+      "permissionMessage": "Sta opslagtoegang toe om afbeeldingen in je galerij op te slaan.",
+      "saveFailedTitle": "Opslaan niet mogelijk",
+      "tryAgain": "Probeer het opnieuw."
+    },
     "accessibility": {
       "close": "Sluiten",
       "delete": "Afbeelding verwijderen",
       "edit": "Afbeelding bewerken",
       "save": "Afbeelding opslaan",
       "share": "Afbeelding delen"
+    }
+  },
+  "reportContent": {
+    "title": "AI-inhoud rapporteren",
+    "subtitle": "Vertel ons wat er mis is met deze gegenereerde inhoud.",
+    "privateDisclosure": "Door te verzenden wordt deze gerapporteerde inhoud ter veiligheidscontrole doorgestuurd.",
+    "accessibilityLabel": "AI-inhoud rapporteren",
+    "reasons": {
+      "sexual": "Seksuele inhoud of naaktheid",
+      "violence_self_harm": "Geweld of zelfbeschadiging",
+      "hate_harassment": "Haat of intimidatie",
+      "child_safety": "Zorg over kinderveiligheid",
+      "scam_deceptive": "Oplichting of misleidende inhoud",
+      "other": "Anders"
+    },
+    "errors": {
+      "reasonRequired": "Kies een reden voordat je verzendt.",
+      "submit": "Rapport kon niet worden verzonden. Probeer het opnieuw."
+    },
+    "success": {
+      "title": "Bedankt. Je rapport is verzonden.",
+      "subtitle": "We gebruiken rapporten om de veiligheid van inhoud te verbeteren."
+    },
+    "actions": {
+      "report": "Rapporteren",
+      "submit": "Rapport verzenden",
+      "done": "Klaar"
     }
   },
   "studioHome": {
@@ -540,8 +594,7 @@
     "careView": {
       "titlePrefix": "Maak kennis met",
       "titleHighlight": "Image Studio",
-      "subtitle": "Maak en bewerk afbeeldingen met AI — gewoon in ChatCloud.",
-      "appName": "ChatCloud"
+      "subtitle": "Maak en bewerk afbeeldingen met AI — gewoon in Cloud AI."
     },
     "relaxView": {
       "title": "Maak kennis met je AI",
@@ -563,7 +616,7 @@
       }
     },
     "splash": {
-      "title": "CHAT CLOUD",
+      "title": "CLOUD AI",
       "tagline": "AI-OPLOSSINGEN OP ENTERPRISE-NIVEAU",
       "description": "Geef je bedrijf kracht met AI-technologie voor teams en professionals.",
       "stats": "Vertrouwd door 500k+ gebruikers",
@@ -592,10 +645,10 @@
       "value": "Beste waarde"
     },
     "pack": {
+      "creditsLabel": "{{credits}} credits",
       "tokensLabel": "{{credits}} credits",
       "defaultName": "Pakket {{index}}",
-      "unknownPrice": "USD —",
-      "creditsLabel": "{{credits}} credits"
+      "unknownPrice": "USD —"
     },
     "premium": {
       "title": "Premium worden",
@@ -613,8 +666,28 @@
       "unknownError": "Onbekende fout"
     }
   },
+  "premium": {
+    "badge": "PRO",
+    "requiredTitle": "Premium vereist",
+    "upgrade": "Upgraden",
+    "modelRequiredMessage": "Dit model vereist Premium. Upgrade voor toegang tot GPT-5, Grok 4, Claude en meer geavanceerde modellen.",
+    "assistantsRequiredMessage": "Assistenten vereisen Premium. Upgrade voor toegang tot gespecialiseerde AI-assistenten voor fitness, programmeren, schrijven en meer.",
+    "assistantsTitle": "Premium vereist",
+    "assistantsMessage": "Assistenten vereisen Premium. Upgrade voor toegang tot gespecialiseerde AI-assistenten voor fitness, programmeren, schrijven en meer."
+  },
   "paywall": {
     "modelsHeadline": "GPT-5, Grok 4, Veo 3",
+    "close": "Betaalscherm sluiten",
+    "unavailableTitle": "Aankopen niet beschikbaar",
+    "unavailableMessage": "Android-facturering is nog niet geconfigureerd.",
+    "restoreEmptyTitle": "Geen aankopen gevonden",
+    "restoreEmptyMessage": "We hebben geen actieve aankoop gevonden om te herstellen voor dit account.",
+    "restoreFailedTitle": "Herstellen mislukt",
+    "restoreFailedMessage": "Aankopen kunnen momenteel niet worden hersteld.",
+    "productsUnavailableTitle": "Geen abonnementen beschikbaar",
+    "productsUnavailableMessage": "Er zijn momenteel geen Android-abonnementen beschikbaar.",
+    "purchaseFailedTitle": "Aankoop mislukt",
+    "purchaseFailedMessage": "Deze aankoop kan momenteel niet worden voltooid.",
     "restore": "Herstellen",
     "restoreRestoring": "Bezig met herstellen…",
     "features": {
@@ -663,6 +736,18 @@
     "legal": {
       "terms": "Voorwaarden",
       "privacy": "Privacy"
+    },
+    "premium": {
+      "headline": "Alle premium AI in één plan",
+      "subtitleLine1": "Chat, codeer, creëer en plan",
+      "subtitleLine2": "met geavanceerde modellen.",
+      "enableTrial": "Gratis proefversie inschakelen",
+      "annual": "Jaarlijks",
+      "saveBadge": "Bespaar 83%",
+      "year": "jaar",
+      "week": "week",
+      "termsOfUse": "Gebruiksvoorwaarden",
+      "privacyPolicy": "Privacybeleid"
     }
   },
   "chat": {
@@ -683,7 +768,7 @@
     "startVoiceInput": "Spraakinvoer starten",
     "sendMessage": "Bericht verzenden",
     "offline": "Offline",
-    "stop": "Stop",
+    "stop": "Houd op",
     "streaming": "Bezig met streamen…",
     "closeRecorder": "Recorder sluiten",
     "insertTranscript": "Verzenden",
@@ -695,20 +780,25 @@
     "regenerateResponse": "Antwoord opnieuw genereren",
     "regenerateResponseHint": "Nieuw antwoord genereren",
     "copyCode": "Code kopiëren",
+    "copied": "Gekopieerd",
     "image": "afbeelding",
     "loading": "Laden…",
     "loadingChat": "Chat laden...",
     "offlineBanner": "Je bent offline. Berichten kunnen niet worden verzonden.",
+    "offlineError": "Geen internetverbinding. Controleer je verbinding en probeer het opnieuw.",
     "imagePickerErrorTitle": "Afbeelding kiezen mislukt",
     "imagePickerErrorMessage": "Kon je foto’s niet openen. Probeer opnieuw.",
     "messageTooLong": "Bericht te lang ({{length}}). Limiet is {{limit}}.",
     "sendFailed": "Verzenden mislukt.",
     "modelNoImageSupport": "Het geselecteerde model ondersteunt geen afbeeldingen. Kies een ander model.",
     "voiceStartFailed": "Kon spraak niet starten.",
+    "voiceNoSpeechDetected": "Er is geen stem herkend. Probeer het opnieuw.",
     "emptyTitle": "Waarmee kan ik helpen?",
     "emptySubtitle": "Begin een gesprek met AI",
     "privateTitle": "Privéchat",
     "privateSubtitle": "Deze chat verschijnt niet in je geschiedenis",
+    "startPrivateChat": "Privéchat starten",
+    "endPrivateChat": "Privéchat beëindigen",
     "permissions": {
       "photosTitle": "Toegang tot foto’s vereist",
       "photosMessage": "Fototoegang is nodig om afbeeldingen te kiezen.",
@@ -753,7 +843,19 @@
       "share": "Delen",
       "regenerate": "Opnieuw genereren",
       "retryFromHere": "Vanaf hier opnieuw proberen",
+      "report": "Rapporteren",
       "cancel": "Annuleren"
+    },
+    "markdown": {
+      "copy": "Kopiëren",
+      "copied": "Gekopieerd",
+      "table": "TABEL",
+      "watchVideo": "Video bekijken",
+      "wikipedia": "Wikipedia",
+      "link": "Koppeling",
+      "note": "Opmerking",
+      "warning": "Waarschuwing",
+      "tip": "Tip"
     },
     "messageActionTitle": "Bericht",
     "status": {
@@ -771,8 +873,6 @@
       "planDay": "Dag plannen",
       "planDaySubtitle": "met productiviteitstips"
     },
-    "copied": "Copied",
-    "offlineError": "No internet connection. Please check your connection and try again.",
     "home": {
       "eyebrow": "Kies een onderwerp",
       "title": "Wat wil je doen?",
@@ -846,81 +946,59 @@
     "library": "Bibliotheek"
   },
   "common": {
-    "new": "NIEUW",
-    "best": "BESTE",
-    "cancel": "Annuleren",
-    "save": "Opslaan",
-    "delete": "Verwijderen",
-    "close": "Sluiten",
-    "allow": "Toestaan",
     "ok": "OK",
-    "retry": "Retry",
-    "tryAgain": "Try Again"
+    "retry": "Opnieuw proberen",
+    "cancel": "Annuleren",
+    "allow": "Toestaan",
+    "notNow": "Niet nu",
+    "openSettings": "Instellingen openen",
+    "close": "Sluiten",
+    "save": "Opslaan",
+    "tryAgain": "Probeer opnieuw"
   },
   "rateUs": {
-    "title": "Geniet je van ChatCloud?",
+    "title": "Geniet je van Cloud AI?",
     "subtitle": "Je feedback helpt ons verbeteren. Zou je ons kunnen beoordelen in de App Store?",
     "rateNow": "Nu beoordelen",
     "maybeLater": "Misschien later",
     "dontAskAgain": "Niet meer vragen"
   },
-  "premium": {
-    "badge": "PRO",
-    "requiredTitle": "Premium Required",
-    "upgrade": "Upgrade",
-    "modelRequiredMessage": "This model requires Premium. Upgrade to access GPT-5, Grok 4, Claude, and more advanced models.",
-    "assistantsRequiredMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more.",
-    "assistantsTitle": "Premium Required",
-    "assistantsMessage": "Assistants require Premium. Upgrade to access specialized AI assistants for fitness, coding, writing, and more."
-  },
   "oneTimeOffer": {
-    "title": "One-Time Offer",
-    "subtitle": "You will not see this offer again.",
+    "title": "Eenmalige aanbieding",
+    "discount": "{{percent}}% KORTING",
+    "subtitle": "Je ziet deze aanbieding niet nog een keer.",
     "badgeLine1": "Exclusief",
     "badgeLine2": "Eenmalige aanbieding",
     "upgradeNow": "Nu upgraden voor {{price}}",
     "loadingPrice": "Laden...",
     "termsOfUse": "Gebruiksvoorwaarden",
     "privacyPolicy": "Privacybeleid",
-    "accessTitle": "Unlimited access to",
+    "accessTitle": "Onbeperkte toegang tot",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited access to GPT-4",
-      "geminiPro": "Access to Gemini Pro",
-      "grokInsights": "Utilize Grok for fresh insights",
-      "priorityAccess": "Priority access & faster responses"
+      "unlimitedGPT4": "Onbeperkte toegang tot GPT-4",
+      "geminiPro": "Toegang tot Gemini Pro",
+      "grokInsights": "Gebruik Grok voor frisse inzichten",
+      "priorityAccess": "Prioriteitstoegang en snellere reacties"
     },
-    "bestValue": "Best Value",
-    "annualPremium": "Annual Premium",
-    "oneTimePayment": "One-time payment",
+    "bestValue": "Beste deal",
+    "annualPremium": "Jaarlijks Premium",
+    "oneTimePayment": "Eenmalige betaling",
     "wasPrice": "was",
-    "continue": "Continue",
-    "restore": "Restore",
-    "terms": "Terms",
+    "continue": "Doorgaan",
+    "restore": "Herstellen",
+    "terms": "Voorwaarden",
     "privacy": "Privacy",
-    "successTitle": "Success!",
-    "successMessage": "Thank you for your purchase! Enjoy premium access for the next 12 months.",
-    "errorTitle": "Purchase Failed",
-    "errorMessage": "Something went wrong. Please try again.",
-    "restoreSuccessTitle": "Restored",
-    "restoreSuccessMessage": "Your purchases have been restored.",
-    "restoreErrorTitle": "Restore Failed",
-    "restoreErrorMessage": "No purchases found to restore."
-  },
-  "app": {
-    "errors": {
-      "modelsLoadTitle": "Failed to Load Models",
-      "modelsLoadMessage": "Unable to load AI models. The app will use default models. Please check your internet connection.",
-      "modelsLoadTimeout": "Loading models took too long. The app will use default models. Please try again.",
-      "modelsLoadNetwork": "No internet connection. The app will use default models. Please check your connection.",
-      "deviceIdTitle": "Initialization Error",
-      "deviceIdMessage": "Failed to initialize device ID. Some features may not work correctly.",
-      "storageTitle": "Storage Error",
-      "storageMessage": "Unable to access local storage. Some features may not work correctly.",
-      "crashTitle": "Something went wrong.",
-      "crashSubtitle": "Please try again.",
-      "crashLabel": "App crashed"
-    }
+    "successTitle": "Gelukt!",
+    "successMessage": "Bedankt voor je aankoop! Geniet de komende 12 maanden van premium toegang.",
+    "errorTitle": "Aankoop mislukt",
+    "errorMessage": "Er is iets misgegaan. Probeer het opnieuw.",
+    "restoreSuccessTitle": "Hersteld",
+    "restoreSuccessMessage": "Je aankopen zijn hersteld.",
+    "restoreErrorTitle": "Herstellen mislukt",
+    "restoreErrorMessage": "Geen aankopen gevonden om te herstellen.",
+    "unavailableTitle": "Aankopen niet beschikbaar",
+    "unavailableMessage": "Android-facturering is nog niet geconfigureerd."
   },
   "rewards": {
     "header": {
@@ -1018,7 +1096,7 @@
         "success": "SUCCES",
         "somethingWentWrong": "Er is iets misgegaan",
         "rewardUnlocked": "Beloning ontgrendeld",
-        "credits": "Credits",
+        "credits": "Kredieten",
         "close": "Sluiten",
         "okay": "Oké"
       },
@@ -1036,12 +1114,80 @@
           "mythic": "MYTHISCH"
         }
       }
+    },
+    "checkIn": {
+      "title": "Haal je dagelijkse munten op",
+      "subtitle": "Kom elke dag terug voor een grotere beloning.",
+      "cta": "Inchecken",
+      "claimed": "Ontvangen! +{{amount}} munten",
+      "later": "Later"
     }
+  },
+  "app": {
+    "version": "Versie {{version}}",
+    "offlineBanner": "Je bent offline",
+    "launch": {
+      "accessibilityLabel": "Cloud AI wordt gestart",
+      "title": "CLOUD AI",
+      "subtitle": "AI, klaar wanneer jij dat bent"
+    },
+    "errors": {
+      "modelsLoadTitle": "Modellen laden mislukt",
+      "modelsLoadMessage": "AI-modellen kunnen niet worden geladen. De app gebruikt standaardmodellen. Controleer je internetverbinding.",
+      "modelsLoadTimeout": "Het laden van de modellen duurde te lang. De app gebruikt standaardmodellen. Probeer het opnieuw.",
+      "modelsLoadNetwork": "Geen internetverbinding. De app gebruikt standaardmodellen. Controleer je verbinding.",
+      "deviceIdTitle": "Initialisatiefout",
+      "deviceIdMessage": "Apparaat-ID kon niet worden geïnitialiseerd. Sommige functies werken mogelijk niet correct.",
+      "storageTitle": "Opslagfout",
+      "storageMessage": "Geen toegang tot lokale opslag. Sommige functies werken mogelijk niet correct.",
+      "crashTitle": "Er is iets misgegaan.",
+      "crashSubtitle": "Probeer het opnieuw.",
+      "crashLabel": "App gecrasht"
+    },
+    "proxyErrors": {
+      "genericTitle": "Er is iets misgegaan",
+      "genericMessage": "Probeer het opnieuw.",
+      "rateLimitTitle": "Te veel verzoeken",
+      "rateLimitMessage": "We verwerken veel verzoeken. Probeer het over een ogenblik opnieuw.",
+      "rateLimitRetryAfter": "We verwerken veel verzoeken. Probeer het over ongeveer {{seconds}} seconden opnieuw.",
+      "restrictedTitle": "Beperkte inhoud",
+      "restrictedMessage": "Dit verzoek is geblokkeerd door veiligheidsfilters.",
+      "insufficientCoinsTitle": "Niet genoeg munten",
+      "insufficientCoinsMessage": "Je huidige saldo is te laag voor dit verzoek.",
+      "imageUnavailableTitle": "Afbeelding niet beschikbaar",
+      "imageUnavailableMessage": "Het gegenereerde afbeeldingsbestand was tijdelijk niet beschikbaar. Probeer het opnieuw.",
+      "authorizationTitle": "Autorisatieprobleem",
+      "authorizationMessage": "We konden je account niet verifiëren. Probeer het opnieuw.",
+      "serverTitle": "Serverstoring",
+      "serverMessage": "Onze servers hadden een probleem. Probeer het binnenkort opnieuw.",
+      "timeoutTitle": "Duurt te lang",
+      "timeoutMessage": "Het verzoek is verlopen. Probeer het opnieuw.",
+      "networkTitle": "Geen verbinding",
+      "networkMessage": "Geen internetverbinding. Controleer je verbinding en probeer het opnieuw.",
+      "requestTitle": "Probleem met verzoek",
+      "requestMessage": "Er is iets misgegaan met je verzoek. Probeer het opnieuw."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "Premium activeren",
+    "activateMessage": "Wil je reviewer-premium activeren?",
+    "activateAction": "Activeren",
+    "deactivateTitle": "Premium deactiveren",
+    "deactivateMessage": "Wil je reviewer-premium deactiveren?",
+    "deactivateAction": "Deactiveren"
   },
   "push": {
     "dailyReward": {
       "title": "Dagelijkse beloning",
       "body": "Mis je dagelijkse munten niet — claim ze vóór middernacht."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "Mis nooit je dagelijkse munten",
+      "body": "We sturen één herinnering per dag zodat je reeks blijft lopen en je munten blijven groeien. Geen spam, en je kunt het altijd uitzetten.",
+      "enable": "Herinneringen aanzetten",
+      "skip": "Niet nu"
     }
   }
 }

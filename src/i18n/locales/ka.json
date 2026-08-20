@@ -1,0 +1,1193 @@
+{
+  "modelSelector": {
+    "title": "აირჩიეთ მოდელი",
+    "searchPlaceholder": "მოძებნეთ მოდელები...",
+    "noModelsFound": "მოდელები ვერ მოიძებნა",
+    "noModelsAvailable": "მოდელები არ არის ხელმისაწვდომი",
+    "currentModel": "ამჟამინდელი მოდელი: {{name}}. შეეხეთ მოდელის შესაცვლელად.",
+    "openHint": "ხსნის მოდელის შერჩევის მენიუს",
+    "closeLabel": "დახურეთ მოდელის ამომრჩევი",
+    "searchLabel": "მოძებნეთ მოდელები",
+    "searchHint": "აკრიფეთ ხელმისაწვდომი მოდელების გასაფილტრად",
+    "modelLabel": "{{name}} მოდელი",
+    "selectHint": "აირჩიეთ {{name}} მოდელი",
+    "currentlySelected": "ამჟამად შერჩეული მოდელი",
+    "genericModel": "{{provider}} მოდელი",
+    "badges": {
+      "new": "ახალი",
+      "best": "საუკეთესო"
+    }
+  },
+  "models": {
+    "gpt-4o": "ყველაზე ძლიერი AI მოდელი",
+    "gpt-4o-mini": "სწრაფი ყოველდღიური დავალებებისთვის",
+    "gpt-5": "ყველაზე ძლიერი ყველა დანიშნულების AI",
+    "gpt-5-chat-latest": "ოპტიმიზებულია ჩატისა და დიალოგისთვის",
+    "gpt-5-mini": "სწრაფი და საიმედო GPT-5",
+    "gpt-5.4-nano": "მსუბუქი მოდელი მარტივი ამოცანებისთვის",
+    "o4-mini": "ეფექტური მსჯელობის მოდელი",
+    "gpt-4.1-mini": "კომპაქტური, შეუძლია GPT-4.1",
+    "claude-3-haiku": "სწრაფი და ორიენტირებული Anthropic AI",
+    "claude-3.7-sonnet": "დახვეწილი მსჯელობა Anthropic-ის მიერ",
+    "gemini-2.5-Flash": "Google-ის ყველაზე მოწინავე მოდელი",
+    "gemini-2.5-flash": "Google-ის ყველაზე მოწინავე მოდელი",
+    "gemini-2.0-flash": "სწრაფი და ზუსტი Google AI"
+  },
+  "modelDescriptions": {
+    "most_powerful": "ყველაზე ძლიერი AI მოდელი",
+    "fast_everyday": "სწრაფი ყოველდღიური დავალებებისთვის",
+    "fast_reasoning": "სწრაფი მოდელი კარგი დასაბუთებით",
+    "great_reasoning": "გაფართოებული მსჯელობის მოდელი",
+    "coding_reasoning": "გაფართოებული კოდირება და მსჯელობა",
+    "better_coding": "უკეთესია კოდირებისთვის და მსჯელობისთვის",
+    "best_overall": "საუკეთესო AI მოდელი",
+    "best_google": "Google-ის საუკეთესო მოდელი",
+    "best_xai": "xAI-ს ყველაზე ძლიერი მოდელი",
+    "creative_focus": "შესანიშნავია შემოქმედებითი წერისთვის",
+    "code_helper": "შესანიშნავია კოდირების დახმარებისთვის",
+    "chat_focus": "ოპტიმიზებულია ჩატისთვის",
+    "long_context": "შესანიშნავია გრძელი კონტექსტებისთვის",
+    "budget_friendly": "საბიუჯეტო AI მოდელი",
+    "ultra_fast": "ულტრა სწრაფი პასუხები",
+    "safe_default": "ნაგულისხმევი უსაფრთხო არჩევანი",
+    "multilingual": "ძლიერი მრავალენოვანი მხარდაჭერა",
+    "vision_strong": "შესანიშნავია სურათებით და ხედვით",
+    "data_analysis": "კარგია მონაცემთა ანალიზისთვის",
+    "structured_tasks": "კარგია სტრუქტურირებული ამოცანებისთვის",
+    "everyday_helper": "ყოველდღიური ასისტენტის მოდელი",
+    "concise_answers": "მოკლე, ლაკონური პასუხები",
+    "detailed_answers": "დეტალური ნაბიჯ-ნაბიჯ პასუხები",
+    "experimental": "შემდეგი თაობის ექსპერიმენტული მოდელი",
+    "reliable_classic": "საიმედო კლასიკური მოდელი",
+    "lightweight": "მსუბუქი, იაფი მოდელი",
+    "chatty_personal": "უფრო მეგობრული და პირადი",
+    "pro_users": "საუკეთესოა ძლიერი მომხმარებლებისთვის",
+    "research_helper": "კარგია კვლევისა და შენიშვნებისთვის",
+    "reasoning_strong": "გაფართოებული მსჯელობის მოდელი"
+  },
+  "providers": {
+    "openai": "OpenAI",
+    "anthropic": "ანთროპიული",
+    "google": "Google",
+    "xai": "xAI",
+    "other": "სხვა"
+  },
+  "navigation": {
+    "chat": "ახალი ჩატი",
+    "history": "ისტორია",
+    "rewards": "ყოველდღიური ჯილდოები",
+    "assistants": "ასისტენტები",
+    "imagesStudio": "Image Studio",
+    "settings": "პარამეტრები",
+    "recentChats": "ბოლო ჩეთები",
+    "proFeatures": "პრო ფუნქციები",
+    "pro": "პროფ",
+    "proFeaturesCta": {
+      "title": "მიიღეთ პრო ფუნქციები",
+      "subtitle": "ყველა AI ფუნქცია"
+    }
+  },
+  "sidebarStudioBanner": {
+    "label": "Image Studio",
+    "title": "Image Studio",
+    "subtitle": "შექმენით, დახვეწეთ და გამოაქვეყნეთ ვიზუალური აქტივები ერთ ადგილას.",
+    "cta": "გახსენით"
+  },
+  "imagesStudio": {
+    "title": "Image Studio",
+    "selectImages": "აირჩიეთ სურათები",
+    "exitSelectionMode": "შერჩევის რეჟიმიდან გასვლა",
+    "selectAll": "აირჩიეთ ყველა",
+    "noImagesYet": "სურათები ჯერ არ არის",
+    "describeImageHint": "აღწერეთ თქვენი სურათი ქვემოთ და შეეხეთ გენერირებას.",
+    "generatedImagesGallery": "გენერირებული სურათების გალერეა",
+    "describeImagePlaceholder": "აღწერეთ თქვენთვის სასურველი სურათი…",
+    "deleteConfirmTitle": "სურათების წაშლა",
+    "deleteConfirmMessage": "დარწმუნებული ხართ, რომ გსურთ არჩეული სურათების წაშლა? ამ მოქმედების გაუქმება შეუძლებელია.",
+    "cancel": "გაუქმება",
+    "delete": "წაშლა",
+    "generate": "გენერირება",
+    "generating": "გენერირება…",
+    "latest": "უახლესი",
+    "insertToChat": "ჩასმა ჩატში",
+    "pleaseWait": "გთხოვთ დაელოდოთ…",
+    "processing": "დამუშავება...",
+    "tapToUploadImage": "შეეხეთ სურათის ასატვირთად",
+    "camera": "ფოტოების ატვირთვა",
+    "library": "ბიბლიოთეკა",
+    "enterPrompt": "გთხოვთ, შეიყვანოთ მოთხოვნა ტექსტიდან სურათზე გენერირებისთვის",
+    "openInBrowser": "გახსენით ბრაუზერში",
+    "makeVariations": "გააკეთე ვარიაციები",
+    "deleteAllFromGeneration": "წაშალეთ ყველაფერი ამ თაობიდან",
+    "imageOptionsTitle": "სურათის პარამეტრები",
+    "imageOptionsMessage": "რის გაკეთებას ისურვებდით ამ სურათთან?",
+    "insertMarkdownHeader": "აქ არის სურათი ამისთვის:",
+    "variationSuffix": "- წინა სურათის ვარიაცია",
+    "selectedCount": "შერჩეული",
+    "selectedCount_one": "შერჩეული",
+    "selectedCount_other": "შერჩეული",
+    "imageDescriptionInput": "სურათის აღწერილობის შეყვანა",
+    "imageDescriptionHint": "შეიყვანეთ სურათის აღწერა, რომლის გენერირებაც გსურთ",
+    "openModelSettings": "გახსენით მოდელის პარამეტრები",
+    "modelSettingsHint": "შეეხეთ მოდელისა და პარამეტრების შესაცვლელად",
+    "openPhotoGallery": "გახსენით ფოტო გალერეა",
+    "clearInput": "შეყვანის გასუფთავება",
+    "generatedImage": "გენერირებული სურათი",
+    "autoSelectedModel": "ავტომატურად არჩეულია {{model}} {{mode}} რეჟიმისთვის",
+    "deleteSelectedConfirmTitle": "სურათების წაშლა",
+    "deleteSelectedConfirmMessage": "დარწმუნებული ხართ, რომ გსურთ სურათების წაშლა? ამ მოქმედების გაუქმება შეუძლებელია."
+  },
+  "imageStudio": {
+    "generateImage": "სურათის გენერირება",
+    "generatingImage": "სურათის გენერირება",
+    "generateImageHint": "შეეხეთ თქვენი აღწერილობის მიხედვით გამოსახულების შესაქმნელად",
+    "imageDescriptionInput": "სურათის აღწერილობის შეყვანა",
+    "imageDescriptionHint": "შეიყვანეთ სურათის აღწერა, რომლის გენერირებაც გსურთ",
+    "openModelSettings": "გახსენით მოდელის პარამეტრები",
+    "modelSettingsHint": "შეეხეთ მოდელისა და პარამეტრების შესაცვლელად",
+    "openPhotoGallery": "გახსენით ფოტო გალერეა",
+    "clearInput": "შეყვანის გასუფთავება",
+    "generatedImage": "გენერირებული სურათი"
+  },
+  "assistants": {
+    "title": "ასისტენტები",
+    "defaultTitle": "ასისტენტი",
+    "errorTitle": "რაღაც შეფერხდა",
+    "errorMessage": "ამ ასისტენტის დაწყება ვერ მოხერხდა.",
+    "noAssistants": "ამ კატეგორიაში ასისტენტები ვერ მოიძებნა.",
+    "selectAssistantHint": "ასისტენტის ამომრჩევის გახსნა",
+    "subtitle": "კურირებული AI სპეციალისტები მზად არიან კოდირებისთვის, წერისთვის, ანალიზისთვის, დაგეგმვისთვის და სხვა.",
+    "searchPlaceholder": "ასისტენტების ძიება…",
+    "useAssistant": "გამოიყენეთ ასისტენტი",
+    "selectAssistant": "აირჩიეთ ასისტენტი",
+    "description": "აღწერა",
+    "systemPrompt": "სისტემის მოთხოვნა",
+    "chooseModel": "აირჩიეთ მოდელი",
+    "categoryAll": "ყველა",
+    "categories": {
+      "everyday": "ყოველდღე",
+      "life": "ცხოვრება",
+      "health": "ჯანმრთელობა",
+      "schoolWork": "სკოლა და სამუშაო",
+      "coding": "კოდირება",
+      "creative": "კრეატიული",
+      "general": "გენერალი"
+    },
+    "presets": {
+      "default": {
+        "name": "ნაგულისხმევი ასისტენტი",
+        "description": "დაბალანსებული დახმარება ყოველდღიური ნივთებისთვის."
+      },
+      "quick": {
+        "name": "სწრაფი პასუხები",
+        "description": "მოკლე, პირდაპირი პასუხები."
+      },
+      "planner": {
+        "name": "ყოველდღიური დამგეგმავი",
+        "description": "დაგეგმეთ თქვენი დღე და რუტინა."
+      },
+      "recipes": {
+        "name": "კერძები და რეცეპტები",
+        "description": "რა მოამზადო, რაც გაქვს."
+      },
+      "fitness": {
+        "name": "ფიტნეს მწვრთნელი",
+        "description": "მცირე ჩვევები და საშინაო ვარჯიშები."
+      },
+      "money": {
+        "name": "ფული ბადი",
+        "description": "მარტივი ბიუჯეტი და ხარჯვის რჩევები."
+      },
+      "study": {
+        "name": "სასწავლო დამხმარე",
+        "description": "მარტივად ამიხსენი. გამომაკითხე."
+      },
+      "email": {
+        "name": "ელფოსტა და რეზიუმე",
+        "description": "დაწერეთ მკაფიო ელ.წერილები და CV ხაზები."
+      },
+      "translator": {
+        "name": "მთარგმნელი",
+        "description": "თარგმნეთ + ასწავლეთ ფრაზები."
+      },
+      "travel": {
+        "name": "მოგზაურობა ბადი",
+        "description": "მარტივი გეგმები და შეფუთვის სიები."
+      },
+      "tech": {
+        "name": "ტექნიკური მხარდაჭერა (მარტივი)",
+        "description": "ტელეფონი, აპლიკაციები, Wi-Fi საფუძვლები."
+      },
+      "summarizer": {
+        "name": "TL;DR შემაჯამებელი",
+        "description": "მოკლე ტყვიები + ერთი ხაზი TL;DR."
+      },
+      "gift": {
+        "name": "საჩუქრების მაძიებელი",
+        "description": "იდეები ბიუჯეტისა და ინტერესების მიხედვით."
+      },
+      "party": {
+        "name": "ღონისძიების დამგეგმავი (Lite)",
+        "description": "დაგეგმეთ პატარა წვეულება სწრაფად."
+      },
+      "social": {
+        "name": "სოციალური პოსტის შემქმნელი",
+        "description": "შეადგინეთ პოსტები ვარიანტებით."
+      },
+      "interview": {
+        "name": "ინტერვიუს მწვრთნელი",
+        "description": "სავარჯიშო პასუხები (STAR)."
+      },
+      "homefix": {
+        "name": "მთავარი Fix-It გზამკვლევი",
+        "description": "მარტივი წვრილმანი პრობლემების მოგვარება."
+      },
+      "pet": {
+        "name": "შინაური ცხოველების მოვლა ბადი",
+        "description": "კვება, სეირნობა, ძირითადი ვარჯიში."
+      },
+      "mindful": {
+        "name": "გონებამახვილი წუთი",
+        "description": "1-3 წუთი მშვიდი შესვენებები."
+      },
+      "polite": {
+        "name": "თავაზიანი გადამწერი",
+        "description": "ლამაზად გადაწერეთ ტექსტები და პასუხები."
+      }
+    }
+  },
+  "history": {
+    "title": "ისტორია",
+    "searchPlaceholder": "ჩეთებში ძიება…",
+    "newChat": "ახალი ჩატი",
+    "new": "+ ახალი",
+    "search": "ძიება",
+    "clearSearch": "ძიების გასუფთავება",
+    "noChatsYet": "ჯერ არ არის ჩატი",
+    "noResults": "ჯერ არ არის ჩატი",
+    "startFirstConversation": "დაიწყეთ თქვენი პირველი საუბარი.",
+    "startChat": "დაიწყეთ ჩატი",
+    "startNewChat": "დაიწყეთ ახალი ჩატი",
+    "errorLoadingHistory": "შეცდომა ისტორიის ჩატვირთვისას",
+    "loading": "იტვირთება ისტორია...",
+    "renameChat": "გადარქმევა ჩატი",
+    "enterNewTitle": "შეიყვანეთ ახალი სათაური",
+    "deleteChat": "წაშალოთ ჩატი?",
+    "deleteChatMessage": "\"{{title}}\" წაიშლება.",
+    "rename": "გადარქმევა",
+    "unpin": "ჩამაგრების მოხსნა",
+    "pin": "პინი",
+    "untitled": "უსათაურო"
+  },
+  "settings": {
+    "title": "პარამეტრები",
+    "model": "მოდელი",
+    "searchPlaceholder": "მოძებნეთ მოდელები…",
+    "temperatureForCurrentModel": "ტემპერატურა მიმდინარე მოდელისთვის",
+    "customFor": "მორგებული {{model}}",
+    "usingDefault": "ნაგულისხმევი {{temperature}} გამოყენება",
+    "resetToDefault": "ნაგულისხმევად გადატვირთვა",
+    "defaultTemperature": "ნაგულისხმევი ტემპერატურა (შებრუნებული)",
+    "usedByModelsWithoutOverride": "გამოიყენება მოდელების მიერ მორგებული გადაფარვის გარეშე",
+    "dangerZone": "საფრთხის ზონა",
+    "clearAllChatsAndSettings": "გაასუფთავეთ ყველა ჩატი და პარამეტრი",
+    "about": "შესახებ",
+    "version": "ვერსია {{version}}{{status}}",
+    "versionPremiumSuffix": "· პრემიუმი",
+    "privacyPolicy": "კონფიდენციალურობის პოლიტიკა",
+    "hero": {
+      "label": "სპეციალური შეთავაზება",
+      "title": "შეუზღუდავი წვდომა\n& Pro მახასიათებლები",
+      "upgrade": "განახლება",
+      "manage": "გეგმის მართვა"
+    },
+    "sections": {
+      "premium": "პრემიუმ გეგმა",
+      "data": "მომხმარებლის მონაცემები",
+      "support": "მხარდაჭერა და იურიდიული"
+    },
+    "rows": {
+      "getPremium": {
+        "title": "მიიღეთ Premium",
+        "subtitle": "გახსენით შეუზღუდავი შექმნის ხელსაწყოები"
+      },
+      "premiumActive": {
+        "title": "პრემიუმ აქტიური",
+        "subtitle": "მადლობა Cloud AI მხარდაჭერისთვის"
+      },
+      "restore": {
+        "title": "შესყიდვების აღდგენა",
+        "subtitle": "გამოიყენეთ თუ შეცვალეთ მოწყობილობები"
+      },
+      "history": {
+        "title": "ჩეთის ისტორიის მართვა",
+        "subtitle": "თქვენი წარსული სესიების ნახვა და წაშლა"
+      },
+      "reset": {
+        "title": "ჩეთებისა და პრეფერენციების გადატვირთვა",
+        "subtitle": "ასუფთავებს ყველა შენახულ მონაცემს ამ მოწყობილობაზე"
+      },
+      "rate": {
+        "title": "შეგვიფასეთ",
+        "error": "მაღაზიის გვერდის გახსნა შეუძლებელია."
+      },
+      "support": {
+        "title": "მხარდაჭერა",
+        "subtitle": "დაგვიკავშირდით ონლაინ",
+        "error": "საკონტაქტო გვერდის გახსნა შეუძლებელია."
+      },
+      "privacy": {
+        "title": "კონფიდენციალურობის პოლიტიკა",
+        "error": "კონფიდენციალურობის პოლიტიკის გახსნა შეუძლებელია."
+      },
+      "terms": {
+        "title": "გამოყენების პირობები",
+        "error": "გამოყენების პირობების გახსნა შეუძლებელია."
+      }
+    },
+    "capabilities": {
+      "text": "TXT",
+      "image": "IMG",
+      "audio": "AUD",
+      "video": "VID"
+    },
+    "alerts": {
+      "linkUnavailableTitle": "მიუწვდომელია",
+      "linkUnavailableMessage": "ამ ბმულის გახსნა ამჟამად შეუძლებელია.",
+      "restoreSuccessTitle": "აღდგენილია",
+      "restoreSuccessMessage": "თქვენი შესყიდვები აღდგენილია.",
+      "restoreEmptyTitle": "შესყიდვები ვერ მოიძებნა",
+      "restoreEmptyMessage": "ჩვენ ვერ ვიპოვნეთ აქტიური შესყიდვა აღსადგენად ამ ანგარიშისთვის.",
+      "restoreErrorTitle": "აღდგენა ვერ მოხერხდა",
+      "restoreErrorMessage": "შესყიდვების აღდგენა ამჟამად შეუძლებელია.",
+      "resetConfirmTitle": "გსურთ აპის მონაცემების გადაყენება?",
+      "resetConfirmMessage": "ეს წაშლის ყველა ჩატს და ადგილობრივ პარამეტრებს.",
+      "resetConfirmCancel": "გაუქმება",
+      "resetConfirmCta": "გადატვირთვა"
+    }
+  },
+  "createImage": {
+    "headerTitle": "შექმნა",
+    "chooseStyle": "აირჩიეთ სტილი",
+    "aspectRatio": "ასპექტის თანაფარდობა",
+    "starterPrompts": {
+      "title": "დამწყების მოთხოვნა",
+      "items": [
+        "სტუდიის headshot",
+        "თანამედროვე მისაღები ოთახი",
+        "ტროპიკული სანაპირო მზის ჩასვლისას"
+      ]
+    },
+    "promptPlaceholder": "ჩაწერეთ ის, რისი ნახვაც გსურთ…",
+    "promptHint": "მაგალითი: 'ოქროს რეტრივერი სტუდიის განათებაში'",
+    "clearText": "ტექსტის გასუფთავება",
+    "generate": "გენერირება",
+    "generating": "გენერირება…"
+  },
+  "editImage": {
+    "headerTitle": "რედაქტირება",
+    "chooseStyle": "აირჩიეთ სტილი",
+    "aspectRatio": "ასპექტის თანაფარდობა",
+    "starterPrompts": {
+      "title": "დამწყების მოთხოვნა",
+      "items": [
+        "განათების დაფიქსირება",
+        "ფონის წაშლა",
+        "რბილი პორტრეტის რეტუში"
+      ]
+    },
+    "promptPlaceholder": "რედაქტირების აღწერა (სურვილისამებრ)",
+    "clearText": "ტექსტის გასუფთავება",
+    "generate": "გენერირება",
+    "generating": "მიმდინარეობს განაცხადი…",
+    "upload": {
+      "choose": "აირჩიეთ ფოტო",
+      "change": "შეცვლა",
+      "remove": "ამოღება"
+    },
+    "imageUnavailable": {
+      "title": "სურათი მიუწვდომელია",
+      "message": "არჩეულ ფოტოზე წვდომა ვერ მოხერხდა. გთხოვთ, ხელახლა აირჩიოთ და სცადოთ ხელახლა."
+    }
+  },
+  "studioCommon": {
+    "styles": {
+      "anime": {
+        "name": "ანიმე"
+      },
+      "cartoon": {
+        "name": "მულტფილმი"
+      },
+      "photoreal": {
+        "name": "ფოტორეალური"
+      },
+      "sketch": {
+        "name": "ესკიზი"
+      },
+      "cyberpunk": {
+        "name": "კიბერპანკი"
+      },
+      "steampunk": {
+        "name": "Steampunk"
+      },
+      "illustration_3d": {
+        "name": "3D ილუსტრაცია"
+      },
+      "dark_fantasy": {
+        "name": "ბნელი ფანტაზია"
+      },
+      "vintage_film": {
+        "name": "ვინტაჟური ფილმი"
+      },
+      "pastel": {
+        "name": "პასტელი ესთეტიკა"
+      },
+      "neon_glow": {
+        "name": "ნეონის ბრწყინვალება"
+      },
+      "epic_landscape": {
+        "name": "ეპიკური პეიზაჟი"
+      }
+    },
+    "aspectRatios": {
+      "square": "მოედანი",
+      "landscape": "პეიზაჟი",
+      "portrait": "პორტრეტი"
+    },
+    "models": {
+      "fluxKontent": "ფლუქსის კონტენტი",
+      "custom": "საბაჟო"
+    },
+    "notEnoughCoinsTitle": "არ არის საკმარისი მონეტები",
+    "notEnoughCoinsMessage": "თქვენი მიმდინარე ბალანსი ძალიან დაბალია ამ სურათისთვის.",
+    "modelTaglines": {
+      "runwareFluxSchnell": "უსწრაფესი მოდელი",
+      "runwareFluxKrea": "კრეატიული, სტილიზებული შედეგები",
+      "runwareQwenImage": "დაბალანსებული, მაღალი ხარისხის შედეგი",
+      "google4": "საუკეთესო AI გამოსახულების მოდელი",
+      "klingImageO1": "მაღალი კონტროლის გამოსახულების რედაქტირება",
+      "fluxKontent": "Flux Content მორგებულია რედაქტირებისთვის",
+      "runwareProvider": "დაბალანსებული ხარისხი საიმედო დიფუზიით.",
+      "airProvider": "Nano Banana მატებს მხიარულ, ნათელ ტონს.",
+      "googleProvider": "Google მოწესრიგებული იყო გაპრიალებული დეტალებისთვის.",
+      "klingaiProvider": "KlingAI მორგებულია კონტროლირებადი რედაქტირებისთვის.",
+      "anthropicProvider": "Claude მილსადენი ნიუანსირებული განწყობისთვის.",
+      "default": "შეეხეთ ხელმისაწვდომი ძრავების შესასწავლად."
+    }
+  },
+  "createImageGenerating": {
+    "stylePlaceholder": "თქვენ მიერ არჩეული სტილი",
+    "sheetTitle": "თქვენი ხედვის შემუშავება",
+    "sheetSubtitle": "სერვერის ყავის მოკლე ყლუპი, სანამ {{style}} აურიეთ მოთხოვნაში.",
+    "phases": {
+      "blend": "შერევა {{style}}",
+      "paint": "სცენის დახატვა",
+      "finish": "საბოლოო ლაქის დამატება"
+    },
+    "actions": {
+      "cancel": "გაუქმება",
+      "retry": "ხელახლა სცადეთ",
+      "close": "დახურვა"
+    },
+    "errors": {
+      "restrictedTitle": "შეზღუდული კონტენტი",
+      "genericTitle": "თაობა ვერ მოხერხდა",
+      "genericMessage": "სურათის გენერირება ვერ მოხერხდა."
+    },
+    "alerts": {
+      "saveFailedTitle": "შენახვა ვერ მოხერხდა",
+      "shareFailedTitle": "გაზიარება ვერ მოხერხდა",
+      "tryAgain": "გთხოვთ, სცადოთ ხელახლა.",
+      "savedTitle": "შენახულია",
+      "savedMessage": "სურათი შენახულია თქვენს გალერეაში.",
+      "permissionTitle": "საჭიროა ნებართვა",
+      "permissionMessage": "დაუშვით მეხსიერებაზე წვდომა სურათების თქვენს გალერეაში შესანახად."
+    },
+    "result": {
+      "complete": "ყველაფერი დასრულდა"
+    },
+    "accessibility": {
+      "close": "დახურვა"
+    }
+  },
+  "imageViewer": {
+    "actions": {
+      "delete": "წაშლა",
+      "edit": "რედაქტირება",
+      "save": "შენახვა",
+      "share": "გააზიარეთ"
+    },
+    "alerts": {
+      "savedTitle": "შენახულია",
+      "savedMessage": "სურათი შენახულია თქვენს გალერეაში.",
+      "permissionTitle": "საჭიროა ნებართვა",
+      "permissionMessage": "დაუშვით მეხსიერებაზე წვდომა სურათების თქვენს გალერეაში შესანახად.",
+      "saveFailedTitle": "შენახვა ვერ მოხერხდა",
+      "tryAgain": "გთხოვთ, სცადოთ ხელახლა."
+    },
+    "accessibility": {
+      "close": "დახურვა",
+      "delete": "სურათის წაშლა",
+      "edit": "სურათის რედაქტირება",
+      "save": "სურათის შენახვა",
+      "share": "სურათის გაზიარება"
+    }
+  },
+  "reportContent": {
+    "title": "შეატყობინეთ AI კონტენტს",
+    "subtitle": "გვითხარით, რისი ბრალია ეს გენერირებული კონტენტი.",
+    "privateDisclosure": "გაგზავნა აგზავნის ამ მოხსენებულ კონტენტს უსაფრთხოების განსახილველად.",
+    "accessibilityLabel": "შეატყობინეთ AI კონტენტს",
+    "reasons": {
+      "sexual": "სექსუალური ან სიშიშვლის შინაარსი",
+      "violence_self_harm": "ძალადობა ან თვითდაზიანება",
+      "hate_harassment": "სიძულვილი ან შევიწროება",
+      "child_safety": "ბავშვთა უსაფრთხოების შეშფოთება",
+      "scam_deceptive": "თაღლითური ან მატყუარა შინაარსი",
+      "other": "სხვა"
+    },
+    "errors": {
+      "reasonRequired": "გთხოვთ, აირჩიოთ მიზეზი გაგზავნამდე.",
+      "submit": "ანგარიშის გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
+    },
+    "success": {
+      "title": "მადლობა. თქვენი ანგარიში გაგზავნილია.",
+      "subtitle": "ჩვენ გამოვიყენებთ ანგარიშებს კონტენტის უსაფრთხოების გასაუმჯობესებლად."
+    },
+    "actions": {
+      "report": "მოხსენება",
+      "submit": "ანგარიშის გაგზავნა",
+      "done": "შესრულებულია"
+    }
+  },
+  "studioHome": {
+    "headerTitle": "Image Studio",
+    "accessibility": {
+      "openMenu": "მენიუს გახსნა",
+      "selectImages": "აირჩიეთ სურათები",
+      "exitSelection": "არჩევიდან გასვლა",
+      "deleteSelected": "არჩეული სურათების წაშლა",
+      "selectToDelete": "აირჩიეთ სურათები წასაშლელად"
+    },
+    "createCard": {
+      "title": "შექმენით ტექსტიდან",
+      "subtitle": "ჩაწერეთ აღწერა",
+      "cta": "აღწერა და გენერირება"
+    },
+    "editCard": {
+      "title": "AI ფოტო რედაქტორი",
+      "subtitle": "ტრანსფორმაცია და გაძლიერება AI-ით",
+      "cta": "რედაქტირება AI-ით"
+    },
+    "gallery": {
+      "title": "გალერეა",
+      "empty": "სურათები ჯერ არ არის",
+      "selection": {
+        "enter": "აირჩიეთ სურათები",
+        "exit": "არჩევიდან გასვლა",
+        "deleteSelected": "არჩეული სურათების წაშლა",
+        "selectForDelete": "აირჩიეთ სურათები წასაშლელად"
+      }
+    }
+  },
+  "onboarding": {
+    "careView": {
+      "titlePrefix": "შეხვდით",
+      "titleHighlight": "Image Studio",
+      "subtitle": "შექმენით და დაარედაქტირეთ სურათები ხელოვნური ინტელექტის გამოყენებით — Cloud AI-ში."
+    },
+    "relaxView": {
+      "title": "გაიცანით თქვენი AI",
+      "titleHighlight": "ასისტენტები",
+      "subtitle": "ხელოვნური ინტელექტის სპეციალიზებული ექსპერტები მზად არიან დაგეხმაროთ თქვენს ყოველდღიურ საჭიროებებში",
+      "cards": {
+        "fitness": {
+          "title": "ფიტნეს მწვრთნელი",
+          "text": "მცირე ჩვევები და საშინაო ვარჯიშები."
+        },
+        "recipes": {
+          "title": "კერძები და რეცეპტები",
+          "text": "რა მოამზადო, რაც გაქვს."
+        },
+        "travel": {
+          "title": "მოგზაურობა ბადი",
+          "text": "მარტივი გეგმები და შეფუთვის სიები."
+        }
+      }
+    },
+    "splash": {
+      "title": "CLOUD AI",
+      "tagline": "საწარმოო დონის AI გადაწყვეტილებები",
+      "description": "გააძლიერეთ თქვენი ბიზნესი უახლესი ხელოვნური ინტელექტის ტექნოლოგიით, რომელიც შექმნილია საწარმოს პროფესიონალებისა და გუნდებისთვის.",
+      "stats": "სანდოა 500 ათასი+ მომხმარებლის მიერ",
+      "rating": "4.9 / 5",
+      "button": "დაიწყეთ"
+    },
+    "buttons": {
+      "continue": "განაგრძეთ",
+      "start": "დავიწყოთ"
+    }
+  },
+  "coinStore": {
+    "title": "მიიღეთ კრედიტები",
+    "loading": "მონეტების მაღაზიის ჩატვირთვა…",
+    "balanceLabel": "თქვენი მიმდინარე ბალანსი არის",
+    "balanceValue": "{{amount}} კრედიტი",
+    "history": {
+      "link": "ტრანზაქციის ისტორია",
+      "alertTitle": "ისტორია",
+      "alertBody": "ტრანზაქციის ისტორია მალე მოვა."
+    },
+    "noPacks": "არ არის ხელმისაწვდომი მონეტების პაკეტები. შეამოწმეთ თქვენი RevenueCat შეთავაზების ID.",
+    "badges": {
+      "basic": "ძირითადი პაკეტი",
+      "popular": "ყველაზე პოპულარული",
+      "value": "საუკეთესო ღირებულება"
+    },
+    "pack": {
+      "creditsLabel": "{{credits}} კრედიტი",
+      "tokensLabel": "{{credits}} კრედიტი",
+      "defaultName": "შეფუთვა {{index}}",
+      "unknownPrice": "აშშ დოლარი -"
+    },
+    "premium": {
+      "title": "გადადით პრემიუმზე",
+      "subtitle": "შეუზღუდავი წვდომა და ფუნქციები",
+      "cta": "განახლება"
+    },
+    "termsText": "შეძენით თქვენ ეთანხმებით ჩვენს",
+    "termsLink": "მომსახურების პირობები",
+    "alerts": {
+      "initErrorTitle": "დაწყების შეცდომა",
+      "genericMessage": "რაღაც შეფერხდა.",
+      "successTitle": "წარმატებები",
+      "successMessage": "კრედიტები მალე გამოჩნდება.",
+      "purchaseFailedTitle": "შესყიდვა ვერ მოხერხდა",
+      "unknownError": "უცნობი შეცდომა"
+    }
+  },
+  "premium": {
+    "badge": "პროფ",
+    "requiredTitle": "საჭიროა პრემია",
+    "upgrade": "განახლება",
+    "modelRequiredMessage": "ეს მოდელი მოითხოვს პრემიუმს. განაახლეთ GPT-5, Grok 4, Claude და უფრო მოწინავე მოდელებზე წვდომისთვის.",
+    "assistantsRequiredMessage": "ასისტენტებს სჭირდებათ Premium. განაახლეთ წვდომა სპეციალიზებულ AI ასისტენტებზე ფიტნესის, კოდირების, წერის და სხვა საკითხებში.",
+    "assistantsTitle": "საჭიროა პრემია",
+    "assistantsMessage": "ასისტენტებს სჭირდებათ Premium. განაახლეთ წვდომა სპეციალიზებულ AI ასისტენტებზე ფიტნესის, კოდირების, წერის და სხვა საკითხებში."
+  },
+  "paywall": {
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
+    "close": "დახურეთ paywall",
+    "unavailableTitle": "შესყიდვები მიუწვდომელია",
+    "unavailableMessage": "Android ბილინგი ჯერ არ არის კონფიგურირებული.",
+    "restoreEmptyTitle": "შესყიდვები ვერ მოიძებნა",
+    "restoreEmptyMessage": "ჩვენ ვერ ვიპოვნეთ აქტიური შესყიდვა აღსადგენად ამ ანგარიშისთვის.",
+    "restoreFailedTitle": "აღდგენა ვერ მოხერხდა",
+    "restoreFailedMessage": "შესყიდვების აღდგენა ამჟამად შეუძლებელია.",
+    "productsUnavailableTitle": "გეგმები არ არის ხელმისაწვდომი",
+    "productsUnavailableMessage": "Android-ის გამოწერის პროდუქტები ამჟამად არ არის ხელმისაწვდომი.",
+    "purchaseFailedTitle": "შესყიდვა ვერ მოხერხდა",
+    "purchaseFailedMessage": "ამ შესყიდვის დასრულება ამჟამად შეუძლებელია.",
+    "restore": "აღდგენა",
+    "restoreRestoring": "მიმდინარეობს აღდგენა…",
+    "features": {
+      "create": "შექმენით სურათები და ვიდეო",
+      "search": "მოძებნეთ ინტერნეტში ხელოვნური ინტელექტის გამოყენებით",
+      "talk": "ესაუბრეთ ბუნებრივად AI-ს",
+      "imageStudio": "მიიღეთ Image Studio {{credits}} კრედიტი {{period}}",
+      "period": {
+        "weekly": "ყოველკვირეული",
+        "monthly": "ყოველთვიურად",
+        "yearly": "ყოველწლიურად"
+      }
+    },
+    "freeTrial": {
+      "title": "უფასო საცდელი",
+      "subtitle": "3 დღიანი უფასო საცდელი ვერსია"
+    },
+    "badge": {
+      "bestOffer": "საუკეთესო შეთავაზება"
+    },
+    "plans": {
+      "yearly": {
+        "title": "ყოველწლიურად",
+        "only": "მხოლოდ ⟬000⟭ {{price}}",
+        "defaultPrice": "79,99 აშშ დოლარი",
+        "defaultIntroPrice": "1,35 აშშ დოლარი"
+      },
+      "monthly": {
+        "title": "ყოველთვიური",
+        "subtitle": "გააუქმეთ ნებისმიერ დროს",
+        "defaultPrice": "19,99 აშშ დოლარი"
+      },
+      "weekly": {
+        "title": "ყოველკვირეული",
+        "subtitle": "გააუქმეთ ნებისმიერ დროს",
+        "defaultPrice": "9,99 აშშ დოლარი",
+        "trialThen": "მაშინ 3 დღე უფასოა"
+      }
+    },
+    "frequency": {
+      "perWeek": "კვირაში",
+      "perMonth": "თვეში"
+    },
+    "cta": "განაგრძეთ",
+    "ctaFreeTrial": "სცადეთ უფასოდ",
+    "legal": {
+      "terms": "პირობები",
+      "privacy": "კონფიდენციალურობა"
+    },
+    "premium": {
+      "headline": "ყველა პრემიუმ AI ერთ გეგმაში",
+      "subtitleLine1": "ჩატი, კოდირება, შექმნა და დაგეგმვა",
+      "subtitleLine2": "მოწინავე მოდელებით.",
+      "enableTrial": "ჩართეთ უფასო საცდელი",
+      "annual": "წლიური",
+      "saveBadge": "დაზოგეთ 83%",
+      "year": "წელი",
+      "week": "კვირა",
+      "termsOfUse": "გამოყენების პირობები",
+      "privacyPolicy": "კონფიდენციალურობის პოლიტიკა"
+    }
+  },
+  "chat": {
+    "messagePlaceholder": "შეტყობინება...",
+    "createImages": "სურათების შექმნა",
+    "generateAiArtwork": "შექმენით AI ნამუშევრები",
+    "camera": "ფოტოების ატვირთვა",
+    "takeOrSelectPhotos": "აირჩიეთ ფოტოები",
+    "search": "ძიება",
+    "findInformation": "მოიძიეთ ინფორმაცია",
+    "findRecentInfo": "იპოვეთ უახლესი ინფორმაცია",
+    "removeImage": "სურათის ამოღება",
+    "messageInput": "შეტყობინების შეყვანა",
+    "clearInput": "შეყვანის გასუფთავება",
+    "quickActionsLabel": "სწრაფი მოქმედებები",
+    "hideQuickActions": "დამალეთ სწრაფი მოქმედებები",
+    "showQuickActions": "სწრაფი მოქმედებების ჩვენება",
+    "startVoiceInput": "ხმოვანი შეყვანის დაწყება",
+    "sendMessage": "შეტყობინების გაგზავნა",
+    "offline": "ხაზგარეშე",
+    "stop": "გაჩერდი",
+    "streaming": "სტრიმინგი…",
+    "closeRecorder": "ჩამწერის დახურვა",
+    "insertTranscript": "გაგზავნა",
+    "scrollToLatest": "გადადით უახლეს შეტყობინებაზე",
+    "copyMessage": "შეტყობინების კოპირება",
+    "copyMessageHint": "დააკოპირეთ ეს შეტყობინება ბუფერში",
+    "shareMessage": "გააზიარეთ შეტყობინება",
+    "shareMessageHint": "გააზიარეთ ეს შეტყობინება",
+    "regenerateResponse": "პასუხის რეგენერაცია",
+    "regenerateResponseHint": "ახალი პასუხის გენერირება",
+    "copyCode": "დააკოპირეთ კოდი",
+    "copied": "კოპირებულია",
+    "image": "გამოსახულება",
+    "loading": "იტვირთება…",
+    "loadingChat": "ჩატი იტვირთება...",
+    "offlineBanner": "თქვენ ხაზგარეშე ხართ. შეტყობინებების გაგზავნა შეუძლებელია.",
+    "offlineError": "ინტერნეტთან კავშირი არ არის. გთხოვთ, შეამოწმოთ თქვენი კავშირი და სცადოთ ხელახლა.",
+    "imagePickerErrorTitle": "სურათის ამომრჩევის შეცდომა",
+    "imagePickerErrorMessage": "თქვენს ფოტოებზე წვდომა შეუძლებელია. გთხოვთ, სცადოთ ხელახლა.",
+    "messageTooLong": "შეტყობინება ძალიან გრძელია ({{length}}). ლიმიტი არის {{limit}}.",
+    "sendFailed": "შეტყობინების გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა.",
+    "modelNoImageSupport": "არჩეულ მოდელს არ აქვს სურათების მხარდაჭერა. გთხოვთ, აირჩიოთ სხვა მოდელი.",
+    "voiceStartFailed": "ხმის გაშვება ვერ მოხერხდა.",
+    "voiceNoSpeechDetected": "ხმა არ ამოიცნო. გთხოვთ, სცადოთ ხელახლა.",
+    "emptyTitle": "როგორ შემიძლია დახმარება?",
+    "emptySubtitle": "დაიწყეთ საუბარი AI-სთან",
+    "privateTitle": "პირადი ჩატი",
+    "privateSubtitle": "ეს ჩატი არ გამოჩნდება თქვენი ჩატის ისტორიაში",
+    "startPrivateChat": "დაიწყეთ პირადი ჩატი",
+    "endPrivateChat": "დაასრულეთ პირადი ჩატი",
+    "permissions": {
+      "photosTitle": "ფოტოების ნებართვა საჭიროა",
+      "photosMessage": "სურათების ასარჩევად საჭიროა ფოტოზე წვდომა.",
+      "voiceTitle": "საჭიროა ხმოვანი ნებართვები",
+      "voiceMessage": "ხმის გამოსაყენებლად საჭიროა მიკროფონისა და მეტყველების წვდომა."
+    },
+    "activity": {
+      "analyzingImages": "მიმდინარეობს სურათების ანალიზი…",
+      "searching": "ძიება…",
+      "thinking": "ფიქრი…"
+    },
+    "webSearch": {
+      "title": "ვებ ძიება",
+      "subtitle": "იპოვეთ უახლესი ინფორმაცია",
+      "label": "ვებ ძიება",
+      "enable": "ჩართეთ ვებ ძიება",
+      "disable": "გამორთეთ ვებ ძიება",
+      "toggleLabel": "მოძებნეთ ინტერნეტში"
+    },
+    "studioBanner": {
+      "label": "Image Studio",
+      "title": "შეიმუშავეთ ვიზუალი სიჩქარით.",
+      "subtitle": "შექმენით, დახვეწეთ და გამოაქვეყნეთ ვიზუალური აქტივები ერთ ადგილას.",
+      "cta": "გახსენით"
+    },
+    "quickActions": {
+      "createImages": "სურათების შექმნა",
+      "openCamera": "გახსენით კამერა",
+      "editImage": "სურათის რედაქტირება",
+      "startVoice": "ხმის დაწყება",
+      "assistants": "ასისტენტები"
+    },
+    "listening": "მოსმენა…",
+    "startRecording": "ჩაწერის დაწყება…",
+    "assistantHeader": {
+      "unavailableTitle": "ასისტენტი მიუწვდომელია",
+      "unavailableDescription": "ამ ასისტენტის ჩატვირთვა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა.",
+      "ready": "მზადაა დასახმარებლად"
+    },
+    "actions": {
+      "copy": "კოპირება",
+      "share": "გააზიარეთ",
+      "regenerate": "რეგენერაცია",
+      "retryFromHere": "ხელახლა სცადეთ აქედან",
+      "report": "მოხსენება",
+      "cancel": "გაუქმება"
+    },
+    "markdown": {
+      "copy": "კოპირება",
+      "copied": "კოპირებულია",
+      "table": "მაგიდა",
+      "watchVideo": "ნახეთ ვიდეო",
+      "wikipedia": "ვიკიპედია",
+      "link": "ბმული",
+      "note": "შენიშვნა",
+      "warning": "გაფრთხილება",
+      "tip": "რჩევა"
+    },
+    "messageActionTitle": "შეტყობინება",
+    "status": {
+      "sending": "იგზავნება…",
+      "failed": "ვერ მოხერხდა",
+      "sent": "გაგზავნილი"
+    },
+    "suggestions": {
+      "writeStory": "დაწერეთ შემოქმედებითი ამბავი",
+      "writeStorySubtitle": "ჯადოსნური თავგადასავლის შესახებ",
+      "planTravel": "დაგეგმეთ მოგზაურობის მარშრუტი",
+      "planTravelSubtitle": "საოცარი დასვენებისთვის",
+      "explainConcept": "ახსენით ეს კონცეფცია",
+      "explainConceptSubtitle": "მარტივი სიტყვებით",
+      "planDay": "დაგეგმე ჩემი დღე",
+      "planDaySubtitle": "პროდუქტიულობის რჩევებით"
+    },
+    "home": {
+      "eyebrow": "აირჩიეთ თემა",
+      "title": "რისი გაკეთება გინდა?",
+      "subtitle": "აირჩიეთ მიმართულება, შემდეგ დაიწყეთ ძლიერი მოწოდებით.",
+      "pickPromptTitle": "აირჩიეთ მოთხოვნა დასაწყებად",
+      "changeTopic": "აირჩიე სხვა თემა",
+      "intents": {
+        "summarize": "ტექსტის შეჯამება",
+        "summarizeShort": "შეაჯამეთ",
+        "summarizeHint": "სტატიები, შენიშვნები, ხმოვანი შენიშვნები, გრძელი ძაფები",
+        "plan": "შეადგინე გეგმა",
+        "planHint": "მოგზაურობები, რუტინები, ბიუჯეტი, ვადები, ცხოვრებისეული ცვლილებები",
+        "brainstorm": "ტვინის შტორმი",
+        "brainstormHint": "იდეები, შეთავაზებები, სახელები, შინაარსი, გვერდითი პროექტები",
+        "analyze": "გაანალიზეთ მონაცემები",
+        "analyzeHint": "ხარჯვა, უკუკავშირი, მეტრიკა, ჩვევები, შესრულება"
+      },
+      "prompts": {
+        "summarize": {
+          "founderBriefTitle": "შექმენით დამფუძნებლის მოკლე შინაარსი",
+          "founderBriefSubtitle": "ამოიღეთ ძირითადი რისკები, გადაწყვეტილებები და შემდეგი ნაბიჯები.",
+          "classNotesTitle": "გაასუფთავე ჩემი სასწავლო ჩანაწერები",
+          "classNotesSubtitle": "გადააქციეთ უხეში შენიშვნები მკაფიო სასწავლო სახელმძღვანელოდ.",
+          "meetingHandoffTitle": "დაწერეთ გადაცემის რეზიუმე",
+          "meetingHandoffSubtitle": "სასარგებლოა შეხვედრების, ზარების ან ხანგრძლივი შიდა თემების შემდეგ.",
+          "longArticleTitle": "სწრაფად შეაჯამეთ ეს სტატია",
+          "longArticleSubtitle": "გრძელი სტატიის კონდენსაცია მკვეთრ წაღებებად."
+        },
+        "plan": {
+          "energyResetTitle": "შექმენით 14-დღიანი ენერგიის გადატვირთვა",
+          "energyResetSubtitle": "ძილის, კვების, მოძრაობისა და ფოკუსირების რეალისტური გეგმა.",
+          "mealPlanTitle": "დაგეგმეთ კერძები, რომლებსაც ნამდვილად მოვამზადებ",
+          "mealPlanSubtitle": "პრაქტიკული, ხელმისაწვდომი და იმის მიხედვით, რაც მაქვს.",
+          "cityMoveTitle": "დაგეგმე ჩემი გადასვლა ახალ ქალაქში",
+          "cityMoveSubtitle": "დაყავით ის ქრონოლოგიის, ბიუჯეტის, საცხოვრებლისა და ადმინისტრატორის ამოცანებად.",
+          "tripEscapeTitle": "დაგეგმეთ დასამახსოვრებელი შაბათ-კვირა გაქცევა",
+          "tripEscapeSubtitle": "რაღაც უკეთესი ვიდრე ზოგადი მარშრუტი."
+        },
+        "brainstorm": {
+          "sideHustleTitle": "იპოვეთ რეალისტური გვერდითი აურზაური",
+          "sideHustleSubtitle": "იდეები, რომელთა დაწყება შემიძლია სრულ განაკვეთზე მუშაობისას.",
+          "brandAngleTitle": "იპოვეთ დასამახსოვრებელი ბრენდის კუთხე",
+          "brandAngleSubtitle": "სასარგებლოა პროდუქტებისთვის, შემქმნელებისთვის, სააგენტოებისთვის ან გაზეთებისთვის.",
+          "socialSeriesTitle": "გამოიგონეთ შინაარსის სერია",
+          "socialSeriesSubtitle": "რაღაც თანმიმდევრული, რომ გაიზარდოს აუდიტორია.",
+          "datingIdeasTitle": "მოიფიქრეთ ახალი იდეები",
+          "datingIdeasSubtitle": "თარიღები, საჩუქრები, სიურპრიზები ან მოვლენები, რომლებიც დამაფიქრებელია."
+        },
+        "analyze": {
+          "spendingLeaksTitle": "იპოვე სად გადის ჩემი ფული",
+          "spendingLeaksSubtitle": "აჩვენე შაბლონები, სუსტი ადგილები და პირველი იმარჯვებს.",
+          "customerFeedbackTitle": "უკუკავშირი გადააქციე პრიორიტეტებად",
+          "customerFeedbackSubtitle": "კლასტერული მოთხოვნები, საჩივრები, გადაუდებლობა და გავლენა.",
+          "habitPatternsTitle": "დააფიქსირე ნიმუშები ჩემს ჩვევებში",
+          "habitPatternsSubtitle": "სასარგებლოა ვარჯიშისთვის, ძილისთვის, დღიურის წერისთვის ან ფოკუსირების ჟურნალებისთვის.",
+          "metricsStoryTitle": "ახსენით, რას ნიშნავს რიცხვები",
+          "metricsStorySubtitle": "მეტი სიგნალი, ნაკლები ელცხრილის ხმაური."
+        }
+      }
+    }
+  },
+  "imageUpload": {
+    "required": "*",
+    "processing": "დამუშავება...",
+    "tapToUploadImage": "შეეხეთ სურათის ასატვირთად"
+  },
+  "imageGridSelector": {
+    "required": "*",
+    "processing": "დამუშავება...",
+    "camera": "ფოტოების ატვირთვა",
+    "library": "ბიბლიოთეკა"
+  },
+  "common": {
+    "ok": "OK",
+    "retry": "ხელახლა სცადეთ",
+    "cancel": "გაუქმება",
+    "allow": "დაშვება",
+    "notNow": "ახლა არა",
+    "openSettings": "გახსენით პარამეტრები",
+    "close": "დახურვა",
+    "save": "შენახვა",
+    "tryAgain": "სცადეთ ისევ"
+  },
+  "rateUs": {
+    "title": "მოგწონთ Cloud AI?",
+    "subtitle": "თქვენი გამოხმაურება გვეხმარება გაუმჯობესებაში. არ გსურთ შეგვიფასოთ App Store-ზე?",
+    "rateNow": "შეაფასეთ ახლა",
+    "maybeLater": "შესაძლოა მოგვიანებით",
+    "dontAskAgain": "აღარ იკითხო"
+  },
+  "oneTimeOffer": {
+    "title": "ერთჯერადი შეთავაზება",
+    "discount": "⟬000⟭% ფასდაკლება {{percent}}",
+    "subtitle": "ამ შეთავაზებას აღარ ნახავთ.",
+    "badgeLine1": "ექსკლუზივი",
+    "badgeLine2": "ერთჯერადი შეთავაზება",
+    "upgradeNow": "განაახლეთ ახლა {{price}}",
+    "loadingPrice": "იტვირთება...",
+    "termsOfUse": "გამოყენების პირობები",
+    "privacyPolicy": "კონფიდენციალურობის პოლიტიკა",
+    "accessTitle": "შეუზღუდავი წვდომა",
+    "accessSubtitle": "GPT, Gemini და Grok 4",
+    "features": {
+      "unlimitedGPT4": "შეუზღუდავი წვდომა GPT-4-ზე",
+      "geminiPro": "Gemini Pro-ზე წვდომა",
+      "grokInsights": "გამოიყენეთ Grok ახალი ინფორმაციის მისაღებად",
+      "priorityAccess": "პრიორიტეტული წვდომა და უფრო სწრაფი პასუხები"
+    },
+    "bestValue": "საუკეთესო ღირებულება",
+    "annualPremium": "წლიური პრემიუმი",
+    "oneTimePayment": "ერთჯერადი გადახდა",
+    "wasPrice": "იყო",
+    "continue": "განაგრძეთ",
+    "restore": "აღდგენა",
+    "terms": "პირობები",
+    "privacy": "კონფიდენციალურობა",
+    "successTitle": "წარმატებები!",
+    "successMessage": "გმადლობთ შესყიდვისთვის! ისარგებლეთ პრემიუმ წვდომით მომდევნო 12 თვის განმავლობაში.",
+    "errorTitle": "შესყიდვა ვერ მოხერხდა",
+    "errorMessage": "რაღაც შეფერხდა. გთხოვთ, სცადოთ ხელახლა.",
+    "restoreSuccessTitle": "აღდგენილია",
+    "restoreSuccessMessage": "თქვენი შესყიდვები აღდგენილია.",
+    "restoreErrorTitle": "აღდგენა ვერ მოხერხდა",
+    "restoreErrorMessage": "აღსადგენად შესყიდვები ვერ მოიძებნა.",
+    "unavailableTitle": "შესყიდვები მიუწვდომელია",
+    "unavailableMessage": "Android ბილინგი ჯერ არ არის კონფიგურირებული."
+  },
+  "rewards": {
+    "header": {
+      "title": "ჯილდოები",
+      "openMenu": "მენიუს გახსნა",
+      "goBack": "დაბრუნდი"
+    },
+    "pointsHero": {
+      "totalBalance": "სულ ბალანსი",
+      "seeYourRewards": "ნახეთ თქვენი ჯილდოები"
+    },
+    "streakTracker": {
+      "title": "ყოველდღიური სტრიქონი",
+      "subtitle": "ასე გააგრძელე! შენ ცეცხლში ხარ.",
+      "days": "დღეები",
+      "prize": "პრიზი",
+      "dayLabel": "დღე {{number}}",
+      "nextReward": "შემდეგი ჯილდო: {{amount}} {{time}}-ში",
+      "coins": "მონეტები"
+    },
+    "sections": {
+      "availableQuests": "ხელმისაწვდომი ქვესტი",
+      "completedQuests": "დასრულებული სტუმარი",
+      "availableRewards": "ხელმისაწვდომი ჯილდოები",
+      "needsMoreCoins": "სჭირდება მეტი მონეტა"
+    },
+    "balances": {
+      "rewardCoins": "ჯილდოს მონეტები",
+      "imageCredits": "გამოსახულების კრედიტები"
+    },
+    "rewardsList": {
+      "rewardTitles": {
+        "imageCredits50": "50 გამოსახულების კრედიტი",
+        "imageCredits200": "200 გამოსახულების კრედიტი",
+        "imageCredits600": "600 გამოსახულების კრედიტი",
+        "weeklyPremium": "ყოველკვირეული პრემიუმი",
+        "secretBox": "საიდუმლო ყუთი"
+      },
+      "rewardDescriptions": {
+        "secretBox": "საიდუმლო ჯილდოები შიგნით"
+      },
+      "alerts": {
+        "comingSoonTitle": "მალე მოვა",
+        "comingSoonMessage": "ეს ჯილდო ჯერ არ არის ხელმისაწვდომი.",
+        "notEnoughCoinsTitle": "არ არის საკმარისი მონეტები",
+        "notEnoughCoinsMessage": "ამ ჯილდოს განსაბლოკად გჭირდებათ მეტი ჯილდოს მონეტა.",
+        "errorTitle": "შეცდომა",
+        "couldNotOpenBox": "ყუთი ვერ გაიხსნა.",
+        "couldNotRedeem": "ჯილდოს გამოყენება ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა.",
+        "mysteryReward": "საიდუმლო ჯილდო"
+      }
+    },
+    "quests": {
+      "dailyLogin": {
+        "title": "ყოველდღიური შესვლა",
+        "description": "გახსენით აპი დღეს თქვენი სტრიქის შესანარჩუნებლად",
+        "message": "ეს ქვესტი ავტომატურად სრულდება, როდესაც აპს ყოველდღე გახსნით."
+      },
+      "shareFacebook": {
+        "title": "გააზიარეთ Facebook-ზე",
+        "description": "გამოაქვეყნეთ ჩვენს შესახებ Facebook-ზე"
+      },
+      "shareTwitter": {
+        "title": "გააზიარეთ Twitter-ზე",
+        "description": "დაწერეთ თქვენი გამოცდილება"
+      },
+      "shareInstagram": {
+        "title": "გააზიარეთ ინსტაგრამზე",
+        "description": "გააზიარეთ ამბავი ან პოსტი"
+      },
+      "shareExperience": {
+        "title": "გაუზიარეთ თქვენი გამოცდილება",
+        "description": "უთხარით მეგობრებს, რატომ მოგწონთ აპლიკაცია"
+      },
+      "share": {
+        "genericMessage": "მე ვიყენებ ამ AI აპს ჩატისა და სურათების შესაქმნელად. შეამოწმეთ: {{url}}",
+        "facebookQuote": "შეამოწმეთ ეს AI აპლიკაცია!",
+        "twitterText": "მე ვცდი ამ AI აპლიკაციას, ძალიან მაგარია.",
+        "instagramMessage": "შეამოწმეთ ეს AI აპლიკაცია: {{url}}"
+      },
+      "store": {
+        "errorTitle": "შეცდომა",
+        "errorMessage": "მაღაზიის გვერდის გახსნა ვერ მოხერხდა."
+      }
+    },
+    "modals": {
+      "questCompleted": {
+        "title": "ქვესტი დასრულებულია",
+        "description": "ქვესტი დასრულდა",
+        "points": "+{{points}} ქულა",
+        "close": "დახურვა"
+      },
+      "rewardSuccess": {
+        "error": "შეცდომა",
+        "success": "წარმატება",
+        "somethingWentWrong": "რაღაც შეფერხდა",
+        "rewardUnlocked": "ჯილდო განბლოკილია",
+        "credits": "კრედიტები",
+        "close": "დახურვა",
+        "okay": "კარგი"
+      },
+      "secretBox": {
+        "pill": "საიდუმლო ყუთი",
+        "rewardUnlocked": "ჯილდო განბლოკილია",
+        "shufflingRewards": "ჯილდოების შერწყმა...",
+        "imageCreditsAdded": "სურათის კრედიტები დაემატა თქვენს ანგარიშს",
+        "continue": "განაგრძეთ",
+        "revealing": "გამოვლენა...",
+        "prizeTiers": {
+          "lucky": "იღბლიანი",
+          "pro": "პროფ",
+          "elite": "ელიტა",
+          "mythic": "მითიური"
+        }
+      }
+    },
+    "checkIn": {
+      "title": "აიღეთ ყოველდღიური მონეტები",
+      "subtitle": "დაბრუნდით ყოველდღე — ჯილდო იზრდება.",
+      "cta": "მონიშვნა",
+      "claimed": "მიღებულია! +{{amount}} მონეტა",
+      "later": "მოგვიანებით"
+    }
+  },
+  "app": {
+    "version": "ვერსია {{version}}",
+    "offlineBanner": "თქვენ ხაზგარეშე ხართ",
+    "launch": {
+      "accessibilityLabel": "საწყისი Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, მზად არის, როცა ხარ"
+    },
+    "errors": {
+      "modelsLoadTitle": "მოდელების ჩატვირთვა ვერ მოხერხდა",
+      "modelsLoadMessage": "AI მოდელების ჩატვირთვა შეუძლებელია. აპლიკაცია გამოიყენებს ნაგულისხმევ მოდელებს. გთხოვთ, შეამოწმოთ თქვენი ინტერნეტ კავშირი.",
+      "modelsLoadTimeout": "მოდელების ჩატვირთვას ძალიან დიდი დრო დასჭირდა. აპლიკაცია გამოიყენებს ნაგულისხმევ მოდელებს. გთხოვთ, სცადოთ ხელახლა.",
+      "modelsLoadNetwork": "ინტერნეტთან კავშირი არ არის. აპლიკაცია გამოიყენებს ნაგულისხმევ მოდელებს. გთხოვთ, შეამოწმოთ თქვენი კავშირი.",
+      "deviceIdTitle": "ინიციალიზაციის შეცდომა",
+      "deviceIdMessage": "მოწყობილობის ID-ის ინიციალიზაცია ვერ მოხერხდა. ზოგიერთი ფუნქცია შეიძლება არ იმუშაოს სწორად.",
+      "storageTitle": "შენახვის შეცდომა",
+      "storageMessage": "ადგილობრივ მეხსიერებაზე წვდომა შეუძლებელია. ზოგიერთი ფუნქცია შეიძლება არ იმუშაოს სწორად.",
+      "crashTitle": "რაღაც შეფერხდა.",
+      "crashSubtitle": "გთხოვთ, სცადოთ ხელახლა.",
+      "crashLabel": "აპლიკაცია გატეხილია"
+    },
+    "proxyErrors": {
+      "genericTitle": "რაღაც შეფერხდა",
+      "genericMessage": "გთხოვთ, სცადოთ ხელახლა.",
+      "rateLimitTitle": "ძალიან ბევრი მოთხოვნა",
+      "rateLimitMessage": "ბევრ მოთხოვნას ვამუშავებთ. გთხოვთ, სცადოთ ხელახლა ცოტა ხანში.",
+      "rateLimitRetryAfter": "ბევრ მოთხოვნას ვამუშავებთ. გთხოვთ, ხელახლა სცადოთ დაახლოებით {{seconds}} წამში.",
+      "restrictedTitle": "შეზღუდული კონტენტი",
+      "restrictedMessage": "ეს მოთხოვნა დაბლოკილია უსაფრთხოების ფილტრებით.",
+      "insufficientCoinsTitle": "არ არის საკმარისი მონეტები",
+      "insufficientCoinsMessage": "თქვენი მიმდინარე ბალანსი ძალიან დაბალია ამ მოთხოვნისთვის.",
+      "imageUnavailableTitle": "სურათი მიუწვდომელია",
+      "imageUnavailableMessage": "გენერირებული სურათის ფაილი დროებით მიუწვდომელი იყო. გთხოვთ, სცადოთ ხელახლა.",
+      "authorizationTitle": "ავტორიზაციის საკითხი",
+      "authorizationMessage": "თქვენი ანგარიშის დადასტურება ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა.",
+      "serverTitle": "სერვერის შეფერხება",
+      "serverMessage": "ჩვენს სერვერებს პრობლემები ჰქონდათ. გთხოვთ, სცადოთ ხელახლა მალე.",
+      "timeoutTitle": "ძალიან დიდი დრო სჭირდება",
+      "timeoutMessage": "მოთხოვნის დრო ამოიწურა. გთხოვთ, სცადოთ ხელახლა.",
+      "networkTitle": "არანაირი კავშირი",
+      "networkMessage": "ინტერნეტთან კავშირი არ არის. გთხოვთ, შეამოწმოთ თქვენი კავშირი და სცადოთ ხელახლა.",
+      "requestTitle": "მოთხოვნის საკითხი",
+      "requestMessage": "შეფერხება მოხდა თქვენს მოთხოვნასთან დაკავშირებით. გთხოვთ, სცადოთ ხელახლა."
+    }
+  },
+  "reviewerPremium": {
+    "activateTitle": "პრემიუმის გააქტიურება",
+    "activateMessage": "გსურთ გაააქტიუროთ მიმომხილველი პრემიუმი?",
+    "activateAction": "გააქტიურება",
+    "deactivateTitle": "გამორთეთ Premium",
+    "deactivateMessage": "გსურთ გამორთოთ მიმომხილველი პრემიუმი?",
+    "deactivateAction": "დეაქტივაცია"
+  },
+  "push": {
+    "dailyReward": {
+      "title": "ყოველდღიური ჯილდო",
+      "body": "არ გამოტოვოთ თქვენი ყოველდღიური მონეტები - მოითხოვეთ შუაღამემდე."
+    }
+  },
+  "notifications": {
+    "priming": {
+      "title": "არ გამოტოვოთ ყოველდღიური მონეტები",
+      "body": "დღეში ერთ შეხსენებას გიგზავნით, რომ თქვენი სერია არ შეწყდეს და მონეტები იზრდებოდეს. სპამის გარეშე და ნებისმიერ დროს შეგიძლიათ გამორთოთ.",
+      "enable": "შეხსენებების ჩართვა",
+      "skip": "ახლა არა"
+    }
+  }
+}
