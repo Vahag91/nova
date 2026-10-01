@@ -1,8 +1,10 @@
 // Premium configuration
 // Defines which models and features require premium
 
+import { DEFAULT_CHAT_MODEL } from './models';
+
 // The ONLY free model - all others require premium
-export const FREE_MODEL = 'gpt-5.4-nano';
+export const FREE_MODEL = DEFAULT_CHAT_MODEL;
 
 // Check if a model requires premium
 export function isPremiumModel(modelKey) {

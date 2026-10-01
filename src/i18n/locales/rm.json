@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Cuntinuar",
+        "tryItFree": "Empruvar gratuitamain",
+        "back": "Enavos"
+      },
+      "valueDemo": {
+        "title": "Nus vulain che ti emprovias Cloud AI gratuitamain",
+        "workspaceLabel": "SPAZI DA LAVUR D'IA",
+        "userPromptLabel": "DUMONDA DA L'UTILISADER",
+        "aiTypingLabel": "L'IA SCRIVA",
+        "prompt": "Scriva ina resposta curtascha ad in client davart ina furniziun retardada.",
+        "response": "Chau, grazia per tia pazienza. Tia furniziun po sa retardar in pau. Jau ta tegn al current.",
+        "cards": {
+          "doc": {
+            "title": "Resumaziun dal document",
+            "detail": "Datoteca da 12 paginas → 5 puncts principals"
+          },
+          "reply": {
+            "title": "Resposta scritta",
+            "detail": "Tun curtaschaivel e professiunal"
+          },
+          "translation": {
+            "title": "Translaziun pronta",
+            "detail": "Englais → spagnol"
+          }
+        },
+        "subtitle": "Scriver, resumar, translatar e scannar documents en in unic spazi da lavur d'IA."
+      },
+      "goals": {
+        "title": "Per tge dovras ti agid?",
+        "subtitle": "Tscherna 1–3 finamiras. Nus creain tes spazi da lavur d'IA.",
+        "emptyCta": "Tscherna almain 1 finamira",
+        "items": {
+          "workFaster": {
+            "title": "Lavurar pli spert",
+            "subtitle": "E-mails, respostas, incumbensas"
+          },
+          "writeBetter": {
+            "title": "Scriver meglier",
+            "subtitle": "Adattar il tun, rescriver, meglierar"
+          },
+          "understandDocuments": {
+            "title": "Chapir documents",
+            "subtitle": "Resumaziuns, scans, puncts principals"
+          },
+          "learnAnything": {
+            "title": "Emprender tut",
+            "subtitle": "Declerar temas cleramain"
+          },
+          "createContent": {
+            "title": "Crear cuntegn",
+            "subtitle": "Posts, legendas, ideas"
+          },
+          "planBusiness": {
+            "title": "Planisar l'affar",
+            "subtitle": "Ideas, strategia, automaziun"
+          },
+          "personalClarity": {
+            "title": "Clerezza persunala",
+            "subtitle": "Decisiuns, disas, patratgs"
+          },
+          "askBigQuestions": {
+            "title": "Dumandar tut",
+            "subtitle": "Futur, senn, IA, vita"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Tes assistent d'IA vegn creà",
+        "readyTitle": "Tes assistent d'IA è pront",
+        "subtitle": "Tes assistent è configurà. L'access da prova vegn activà ussa.",
+        "trialTitle": "Prova da 3 dis",
+        "trialActivating": "vegn activà",
+        "trialEnabled": "activà",
+        "steps": {
+          "0": "Preparar tes assistent",
+          "1": "Persunalisar las respostas",
+          "2": "Segirar l'access",
+          "3": "Terminar la configuraziun"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Descoperă",
       "titleHighlight": "Studio de imagini",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Continuă",
       "start": "Să începem"
+    },
+    "v3": {
+      "intent": {
+        "overline": "FASCHAI TES",
+        "title": "Cun tge duai Cloud AI ta gidar?",
+        "cta": "Cuntinuar"
+      },
+      "goals": {
+        "ask": "Chattar respostas",
+        "write": "Scriver meglier",
+        "create": "Crear maletgs",
+        "plan": "Planisar mes di"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "CHATTAR RESPOSTAS",
+          "title": "Chattar pli spert clerezza",
+          "subtitle": "Dumonda a moda natirala. Retschaiva ina resposta clera e pass proxims utils.",
+          "beat1": "Chapir",
+          "beat2": "Decider",
+          "beat3": "Ir vinavant"
+        },
+        "write": {
+          "focus": "SCRIVER MEGLIER",
+          "title": "Transfurmar patratgs en pleds",
+          "subtitle": "Passa d'ina idea criva ad in text che tuna sco ti.",
+          "beat1": "Furmar",
+          "beat2": "Perfezziunar",
+          "beat3": "Cundivider"
+        },
+        "create": {
+          "focus": "CREAR MALETGS",
+          "title": "Dar vita ad ideas",
+          "subtitle": "Descriva quai che ti t'imaginas, alura creescha e perfezzionescha en paucas secundas.",
+          "beat1": "S'imaginar",
+          "beat2": "Crear",
+          "beat3": "Perfezziunar"
+        },
+        "plan": {
+          "focus": "PLANISAR MES DI",
+          "title": "Far plaz per quai che quinta",
+          "subtitle": "Transfurma ina glista plain lavur en in plan ruassaivel che ti pos suandar.",
+          "beat1": "Priorisar",
+          "beat2": "Organisar",
+          "beat3": "Cumenzar"
+        }
+      },
+      "proof": {
+        "overline": "TUT EN IN LIEU",
+        "title": "In lieu. Dapli pussaivladads.",
+        "subtitle": "Passa da la dumonda a la creaziun senza midar tranter apps.",
+        "item1": {
+          "title": "Dumonda tut",
+          "subtitle": "Models avanzads per respostas cleras ed utilas"
+        },
+        "item2": {
+          "title": "Crear maletgs",
+          "subtitle": "Transfurmar in'idea en insatge che ti pos vesair"
+        },
+        "item3": {
+          "title": "Retschaiver agid d'experts",
+          "subtitle": "Assistents per la lavur e la vita quotidiana"
+        }
+      },
+      "controls": {
+        "back": "Enavos",
+        "continue": "Cuntinuar",
+        "finish": "Scuvrir Premium"
+      }
     }
   },
   "coinStore": {
@@ -731,8 +883,8 @@
       "perWeek": "pe săptămână",
       "perMonth": "pe lună"
     },
-    "cta": "Continuă",
-    "ctaFreeTrial": "Încearcă gratuit",
+    "cta": "Cuntinuar",
+    "ctaFreeTrial": "Empruvar gratuitamain",
     "legal": {
       "terms": "Termeni",
       "privacy": "Confidențialitate"
@@ -748,6 +900,36 @@
       "week": "emna",
       "termsOfUse": "Cundiziuns d'utilisaziun",
       "privacyPolicy": "Politica da privacy"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Debloccar tut las funcziuns premium",
+        "subtitle": "Ves exactamain tge che capita e cura.",
+        "todayTitle": "Oz",
+        "todayBody": "Deblochescha tut las funcziuns premium. Ussa na stos ti pajar nagut.",
+        "checkTitle": "En 2 dis — regurdientscha",
+        "checkBody": "Nus ta tramettain ina notificaziun che tia prova va prest a fin.",
+        "billingTitle": "En 3 dis",
+        "billingBody": "La facturaziun cumenza automaticamain, nun che ti annulleschias avant.",
+        "badge": "3 DIS GRATUIT",
+        "cardNote": "Suenter la prova gratuita",
+        "noPayment": "Nagin pajament ussa",
+        "cta": "Cumenza mia prova gratuita da 3 dis",
+        "renewalTerms": "3 dis gratuit, lura {{price}} / {{period}}. Sa renovescha automaticamain fin che ti annulleschas."
+      },
+      "annual": {
+        "headline": "Deblochescha in onn da Cloud AI",
+        "subtitle": "In plan per chat, maletgs ed agid AI spezialisà.",
+        "todayTitle": "Oz — premium cumenza",
+        "todayBody": "Deblochescha immediatamain tut las funcziuns AI premium.",
+        "billingTitle": "Facturà annualmain",
+        "billingBody": "{{price}} ta dat access per in onn entir.",
+        "renewalTitle": "Sa renovescha mintg'onn",
+        "renewalBody": "Annullescha da tut temp en Google Play avant la data da renovaziun.",
+        "cta": "Cuntinuar",
+        "renewalTerms": "{{price}} / {{period}}. Sa renovescha automaticamain fin che ti annulleschas."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Se analizează imaginile…",
       "searching": "Se caută…",
-      "thinking": "Se analizează…"
+      "thinking": "Se analizează…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Căutare pe web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Mai multe informații utile, mai puțin zgomot în tabele."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Retira tes daners dal di",
       "subtitle": "Turna mintga di — il premi crescha.",
-      "cta": "S'annunziar",
+      "cta": "Retirar",
       "claimed": "Retschavì! +{{amount}} daners",
       "later": "Pli tard"
     }

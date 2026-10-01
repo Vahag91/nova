@@ -586,7 +586,7 @@ export default function EditImage({ navigation, route }) {
             contentContainerStyle={styles.chipsList}
             initialNumToRender={6}
             windowSize={3}
-            removeClippedSubviews
+            removeClippedSubviews={false}
           />
 
           <Text style={[styles.sectionLabel, styles.mt6]}>{t('editImage.aspectRatio')}</Text>

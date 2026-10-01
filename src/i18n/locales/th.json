@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "ดำเนินการต่อ",
+        "tryItFree": "ทดลองใช้ฟรี",
+        "back": "กลับ"
+      },
+      "valueDemo": {
+        "title": "เราอยากให้คุณลองใช้ Cloud AI ฟรี",
+        "workspaceLabel": "พื้นที่ทำงาน AI",
+        "userPromptLabel": "ข้อความแจ้งผู้ใช้",
+        "aiTypingLabel": "AI พิมพ์",
+        "prompt": "เขียนตอบกลับลูกค้าอย่างสุภาพเกี่ยวกับการจัดส่งล่าช้า",
+        "response": "สวัสดี ขอบคุณสำหรับความอดทนของคุณ การจัดส่งของคุณอาจล่าช้าเล็กน้อย ฉันจะแจ้งให้คุณทราบ",
+        "cards": {
+          "doc": {
+            "title": "สรุปเอกสาร",
+            "detail": "ไฟล์ 12 หน้า → 5 ประเด็นสำคัญ"
+          },
+          "reply": {
+            "title": "ร่างคำตอบแล้ว",
+            "detail": "น้ำเสียงสุภาพและเป็นมืออาชีพ"
+          },
+          "translation": {
+            "title": "การแปลพร้อมแล้ว",
+            "detail": "อังกฤษ → สเปน"
+          }
+        },
+        "subtitle": "เขียน สรุป แปล และสแกนเอกสารในพื้นที่ทำงาน AI เดียว"
+      },
+      "goals": {
+        "title": "คุณต้องการความช่วยเหลือในเรื่องใด?",
+        "subtitle": "เลือก 1–3 ประตู เราจะสร้างพื้นที่ทำงาน AI ของคุณ",
+        "emptyCta": "เลือกอย่างน้อย 1 เป้าหมาย",
+        "items": {
+          "workFaster": {
+            "title": "ทำงานเร็วขึ้น",
+            "subtitle": "อีเมล การตอบกลับ งาน"
+          },
+          "writeBetter": {
+            "title": "เขียนได้ดีขึ้น",
+            "subtitle": "แก้ไขโทน เขียนใหม่ ปรับปรุง"
+          },
+          "understandDocuments": {
+            "title": "ทำความเข้าใจเอกสาร",
+            "subtitle": "สรุปผลสแกนประเด็นสำคัญ"
+          },
+          "learnAnything": {
+            "title": "เรียนรู้อะไรก็ได้",
+            "subtitle": "อธิบายหัวข้อให้ชัดเจน"
+          },
+          "createContent": {
+            "title": "สร้างเนื้อหา",
+            "subtitle": "โพสต์ คำบรรยาย ไอเดีย"
+          },
+          "planBusiness": {
+            "title": "วางแผนธุรกิจ",
+            "subtitle": "ไอเดีย กลยุทธ์ ระบบอัตโนมัติ"
+          },
+          "personalClarity": {
+            "title": "ความชัดเจนส่วนบุคคล",
+            "subtitle": "การตัดสินใจ นิสัย ความคิด"
+          },
+          "askBigQuestions": {
+            "title": "ถามคำถามอะไรก็ได้",
+            "subtitle": "อนาคต ความหมาย AI ชีวิต"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "การสร้างผู้ช่วย AI ของคุณ",
+        "readyTitle": "ผู้ช่วย AI ของคุณพร้อมแล้ว",
+        "subtitle": "ผู้ช่วยของคุณได้รับการกำหนดค่าแล้ว การเข้าถึงแบบทดลองใช้กำลังเปิดอยู่ในขณะนี้",
+        "trialTitle": "ทดลองใช้ 3 วัน",
+        "trialActivating": "กำลังเปิดใช้งาน",
+        "trialEnabled": "เปิดใช้งาน",
+        "steps": {
+          "0": "เตรียมผู้ช่วยของคุณ",
+          "1": "การปรับเปลี่ยนคำตอบในแบบของคุณ",
+          "2": "การรักษาความปลอดภัยการเข้าถึง",
+          "3": "สิ้นสุดการตั้งค่า"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "ทำความรู้จัก",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "ดำเนินการต่อ",
       "start": "เริ่มกันเลย"
+    },
+    "v3": {
+      "intent": {
+        "overline": "ทำให้มันเป็นของคุณ",
+        "title": "Cloud AI จะช่วยคุณทำอะไรได้บ้าง?",
+        "cta": "ดำเนินการต่อ"
+      },
+      "goals": {
+        "ask": "ค้นหาคำตอบ",
+        "write": "เขียนได้ดีขึ้น",
+        "create": "สร้างภาพ",
+        "plan": "วางแผนวันของฉัน"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ค้นหาคำตอบ",
+          "title": "พบความชัดเจนได้เร็วขึ้น",
+          "subtitle": "ถามอย่างเป็นธรรมชาติ ได้คำตอบที่ชัดเจนและขั้นตอนต่อไปที่เป็นประโยชน์",
+          "beat1": "เข้าใจ",
+          "beat2": "ตัดสินใจ",
+          "beat3": "ก้าวไปข้างหน้า"
+        },
+        "write": {
+          "focus": "เขียนได้ดีขึ้น",
+          "title": "เปลี่ยนความคิดให้เป็นคำพูด",
+          "subtitle": "เปลี่ยนจากแนวคิดคร่าวๆ มาสู่การเขียนที่ดูเหมือนคุณ",
+          "beat1": "รูปร่าง",
+          "beat2": "ปรับแต่ง",
+          "beat3": "แบ่งปัน"
+        },
+        "create": {
+          "focus": "สร้างภาพ",
+          "title": "นำความคิดมาสู่ชีวิต",
+          "subtitle": "อธิบายสิ่งที่คุณจินตนาการ จากนั้นสร้างและปรับแต่งภายในไม่กี่วินาที",
+          "beat1": "ลองนึกภาพ",
+          "beat2": "สร้าง",
+          "beat3": "สมบูรณ์แบบ"
+        },
+        "plan": {
+          "focus": "วางแผนวันของฉัน",
+          "title": "สร้างพื้นที่สำหรับสิ่งที่สำคัญ",
+          "subtitle": "เปลี่ยนรายการยุ่งๆ ให้กลายเป็นแผนการสงบที่คุณสามารถทำตามได้จริงๆ",
+          "beat1": "จัดลำดับความสำคัญ",
+          "beat2": "จัดระเบียบ",
+          "beat3": "เริ่มต้น"
+        }
+      },
+      "proof": {
+        "overline": "ทั้งหมดในที่เดียว",
+        "title": "ที่เดียว. ความเป็นไปได้มากขึ้น",
+        "subtitle": "ย้ายจากคำถามไปสู่การสร้างสรรค์โดยไม่ต้องสลับระหว่างแอป",
+        "item1": {
+          "title": "ถามอะไรก็ได้",
+          "subtitle": "โมเดลขั้นสูงเพื่อคำตอบที่ชัดเจนและมีประโยชน์"
+        },
+        "item2": {
+          "title": "สร้างภาพ",
+          "subtitle": "เปลี่ยนความคิดให้กลายเป็นสิ่งที่คุณมองเห็นได้"
+        },
+        "item3": {
+          "title": "รับความช่วยเหลือจากผู้เชี่ยวชาญ",
+          "subtitle": "ตัวช่วยในการทำงานและชีวิตประจำวัน"
+        }
+      },
+      "controls": {
+        "back": "กลับ",
+        "continue": "ดำเนินการต่อ",
+        "finish": "สำรวจระดับพรีเมียม"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "สัปดาห์",
       "termsOfUse": "เงื่อนไขการใช้งาน",
       "privacyPolicy": "นโยบายความเป็นส่วนตัว"
+    },
+    "v3": {
+      "eyebrow": "คลาวด์ AI พรีเมี่ยม",
+      "trial": {
+        "headline": "ปลดล็อคคุณสมบัติพิเศษทั้งหมด",
+        "subtitle": "ดูว่าเกิดอะไรขึ้นและเมื่อใด",
+        "todayTitle": "วันนี้",
+        "todayBody": "ปลดล็อคทุกฟีเจอร์ระดับพรีเมียม ไม่มีการชำระเงินที่ครบกำหนดในขณะนี้",
+        "checkTitle": "อีก 2 วัน — คำเตือน",
+        "checkBody": "เราจะส่งการแจ้งเตือนว่าช่วงทดลองใช้ของคุณกำลังจะสิ้นสุดเร็วๆ นี้",
+        "billingTitle": "อีก 3 วัน",
+        "billingBody": "การเรียกเก็บเงินจะเริ่มโดยอัตโนมัติ เว้นแต่คุณจะยกเลิกก่อนหน้านี้",
+        "badge": "ฟรี 3 วัน",
+        "cardNote": "หลังจากทดลองใช้ฟรี",
+        "noPayment": "ไม่มีการชำระเงินครบกำหนดในขณะนี้",
+        "cta": "เริ่มทดลองใช้ฟรี 3 วันของฉัน",
+        "renewalTerms": "ฟรี 3 วัน จากนั้นใช้ {{price}} / {{period}} ต่ออายุอัตโนมัติจนกว่าจะยกเลิก"
+      },
+      "annual": {
+        "headline": "ปลดล็อคหนึ่งปีของ Cloud AI",
+        "subtitle": "แผนเดียวสำหรับการแชท รูปภาพ และความช่วยเหลือจากผู้เชี่ยวชาญ AI",
+        "todayTitle": "วันนี้ — เริ่มระดับพรีเมียม",
+        "todayBody": "ปลดล็อกฟีเจอร์ AI ระดับพรีเมียมทันที",
+        "billingTitle": "เรียกเก็บเงินเป็นรายปี",
+        "billingBody": "{{price}} ให้คุณเข้าถึงได้หนึ่งปีเต็ม",
+        "renewalTitle": "ต่ออายุทุกปี",
+        "renewalBody": "ยกเลิกได้ตลอดเวลาใน Google Play ก่อนวันต่ออายุของคุณ",
+        "cta": "ดำเนินการต่อ",
+        "renewalTerms": "{{price}} / {{period}}. ต่ออายุอัตโนมัติจนกว่าจะยกเลิก"
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "กำลังวิเคราะห์ภาพ…",
       "searching": "กำลังค้นหา…",
-      "thinking": "กำลังคิด…"
+      "thinking": "กำลังคิด…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "ค้นเว็บ",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "สัญญาณมากขึ้น สัญญาณรบกวนจากสเปรดชีตน้อยลง"
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "รับเหรียญประจำวัน",
       "subtitle": "กลับมาทุกวันเพื่อรางวัลที่มากขึ้น",
-      "cta": "เช็คอิน",
+      "cta": "รับเลย",
       "claimed": "รับแล้ว! +{{amount}} เหรียญ",
       "later": "ไว้ก่อน"
     }

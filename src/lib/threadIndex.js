@@ -1,6 +1,7 @@
 import { betterPreview, firstUserPreview, summaryPreview } from './format';
+import { DEFAULT_CHAT_MODEL } from '../config/models';
 
-const DEFAULT_MODEL = 'gpt-5.4-nano';
+const DEFAULT_MODEL = DEFAULT_CHAT_MODEL;
 
 export function hasRenderableMessages(messages) {
   return Array.isArray(messages)

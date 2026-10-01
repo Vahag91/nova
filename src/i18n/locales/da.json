@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Fortsæt",
+        "tryItFree": "Prøv gratis",
+        "back": "Tilbage"
+      },
+      "valueDemo": {
+        "title": "Vi vil have dig til at prøve Cloud AI gratis",
+        "workspaceLabel": "AI-ARBEJDSPLADS",
+        "userPromptLabel": "BRUGERPROMPT",
+        "aiTypingLabel": "AI-TYPNING",
+        "prompt": "Skriv et høfligt svar til en klient om en forsinket levering.",
+        "response": "Hej, tak for din tålmodighed. Din levering kan blive lidt forsinket. Jeg holder dig opdateret.",
+        "cards": {
+          "doc": {
+            "title": "Dokumentoversigt",
+            "detail": "12-siders fil → 5 nøglepunkter"
+          },
+          "reply": {
+            "title": "Svar udarbejdet",
+            "detail": "Høflig, professionel tone"
+          },
+          "translation": {
+            "title": "Oversættelse klar",
+            "detail": "Engelsk → Spansk"
+          }
+        },
+        "subtitle": "Skriv, opsummer, oversæt og scan dokumenter i ét AI-arbejdsområde."
+      },
+      "goals": {
+        "title": "Hvad har du brug for hjælp til?",
+        "subtitle": "Vælg 1-3 mål. Vi bygger dit AI-arbejdsområde.",
+        "emptyCta": "Vælg mindst 1 mål",
+        "items": {
+          "workFaster": {
+            "title": "Arbejd hurtigere",
+            "subtitle": "E-mails, svar, opgaver"
+          },
+          "writeBetter": {
+            "title": "Skriv bedre",
+            "subtitle": "Ret tone, omskriv, forbedre"
+          },
+          "understandDocuments": {
+            "title": "Forstå dokumenter",
+            "subtitle": "Resuméer, scanninger, nøglepunkter"
+          },
+          "learnAnything": {
+            "title": "Lær hvad som helst",
+            "subtitle": "Forklar emner tydeligt"
+          },
+          "createContent": {
+            "title": "Opret indhold",
+            "subtitle": "Opslag, billedtekster, idéer"
+          },
+          "planBusiness": {
+            "title": "Planlæg forretning",
+            "subtitle": "Idéer, strategi, automatisering"
+          },
+          "personalClarity": {
+            "title": "Personlig klarhed",
+            "subtitle": "Beslutninger, vaner, tanker"
+          },
+          "askBigQuestions": {
+            "title": "Stil alle spørgsmål",
+            "subtitle": "Fremtid, mening, AI, livet"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Oprettelse af din AI-assistent",
+        "readyTitle": "Din AI-assistent er klar",
+        "subtitle": "Din assistent er konfigureret. Prøveadgang aktiveres nu.",
+        "trialTitle": "3 dages prøveperiode",
+        "trialActivating": "aktiveres",
+        "trialEnabled": "aktiveret",
+        "steps": {
+          "0": "Forbereder din assistent",
+          "1": "Tilpasning af svar",
+          "2": "Sikring af adgang",
+          "3": "Afslutter opsætning"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Mød",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Fortsæt",
       "start": "Lad os starte"
+    },
+    "v3": {
+      "intent": {
+        "overline": "GØR DET DIN",
+        "title": "Hvad skal Cloud AI hjælpe dig med at gøre?",
+        "cta": "Fortsæt"
+      },
+      "goals": {
+        "ask": "Find svar",
+        "write": "Skriv bedre",
+        "create": "Opret billeder",
+        "plan": "Planlæg min dag"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "FIND SVAR",
+          "title": "Find klarhed hurtigere",
+          "subtitle": "Spørg naturligt. Få et klart svar og nyttige næste skridt.",
+          "beat1": "Forstå",
+          "beat2": "Beslut dig",
+          "beat3": "Gå fremad"
+        },
+        "write": {
+          "focus": "SKRIV BEDRE",
+          "title": "Gør tanker til ord",
+          "subtitle": "Gå fra en grov idé til at skrive, der lyder som dig.",
+          "beat1": "Form",
+          "beat2": "Forfin",
+          "beat3": "Del"
+        },
+        "create": {
+          "focus": "OPRET BILLEDER",
+          "title": "Bring ideer ud i livet",
+          "subtitle": "Beskriv, hvad du forestiller dig, og opret og forfin det derefter på få sekunder.",
+          "beat1": "Forestil dig",
+          "beat2": "Opret",
+          "beat3": "Perfekt"
+        },
+        "plan": {
+          "focus": "PLANLÆG MIN DAG",
+          "title": "Giv plads til det, der betyder noget",
+          "subtitle": "Gør en travl liste til en rolig plan, du rent faktisk kan følge.",
+          "beat1": "Prioriter",
+          "beat2": "Organiser",
+          "beat3": "Begynd"
+        }
+      },
+      "proof": {
+        "overline": "ALT PÅ ET STED",
+        "title": "Ét sted. Flere muligheder.",
+        "subtitle": "Flyt fra spørgsmål til oprettelse uden at skifte mellem apps.",
+        "item1": {
+          "title": "Spørg hvad som helst",
+          "subtitle": "Avancerede modeller til klare, brugbare svar"
+        },
+        "item2": {
+          "title": "Opret billeder",
+          "subtitle": "Gør en idé til noget, du kan se"
+        },
+        "item3": {
+          "title": "Få eksperthjælp",
+          "subtitle": "Assistenter til arbejde og hverdag"
+        }
+      },
+      "controls": {
+        "back": "Tilbage",
+        "continue": "Fortsæt",
+        "finish": "Udforsk premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "uge",
       "termsOfUse": "Vilkår for brug",
       "privacyPolicy": "Privatlivspolitik"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Lås op for alle premium-funktioner",
+        "subtitle": "Se præcis, hvad der sker og hvornår.",
+        "todayTitle": "I dag",
+        "todayBody": "Lås op for alle premium-funktioner. Der skal ikke betales nu.",
+        "checkTitle": "Om 2 dage — Påmindelse",
+        "checkBody": "Vi sender dig en meddelelse om, at din prøveperiode snart udløber.",
+        "billingTitle": "Om 3 dage",
+        "billingBody": "Fakturering starter automatisk, medmindre du annullerer når som helst før.",
+        "badge": "3 DAGE GRATIS",
+        "cardNote": "Efter den gratis prøveperiode",
+        "noPayment": "Der skal ikke betales nu",
+        "cta": "Start min 3-dages gratis prøveperiode",
+        "renewalTerms": "3 dage gratis, derefter {{price}} / {{period}}. Fornyes automatisk indtil annullering."
+      },
+      "annual": {
+        "headline": "Lås op for et år med Cloud AI",
+        "subtitle": "Én plan for chat, billeder og ekspert AI-hjælp.",
+        "todayTitle": "I dag - præmien starter",
+        "todayBody": "Lås op for alle premium AI-funktioner med det samme.",
+        "billingTitle": "Faktureres årligt",
+        "billingBody": "{{price}} giver dig et helt års adgang.",
+        "renewalTitle": "Fornyes årligt",
+        "renewalBody": "Annuller når som helst i Google Play før din fornyelsesdato.",
+        "cta": "Fortsæt",
+        "renewalTerms": "{{price}} / {{period}}. Fornyes automatisk indtil annullering."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analyserer billeder…",
       "searching": "Søger…",
-      "thinking": "Tænker…"
+      "thinking": "Tænker…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Web-søgning",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Mere signal, mindre regnearksstøj."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Hent dine daglige mønter",
       "subtitle": "Kom tilbage hver dag — belønningen vokser.",
-      "cta": "Tjek ind",
+      "cta": "Hent",
       "claimed": "Modtaget! +{{amount}} mønter",
       "later": "Senere"
     }

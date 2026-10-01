@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Continuer",
+        "tryItFree": "Essayer gratuitement",
+        "back": "Retour"
+      },
+      "valueDemo": {
+        "title": "Nous souhaitons que vous essayiez Cloud AI gratuitement",
+        "workspaceLabel": "ESPACE DE TRAVAIL IA",
+        "userPromptLabel": "INVITE UTILISATEUR",
+        "aiTypingLabel": "SAISIE AI",
+        "prompt": "Écrivez une réponse polie à un client concernant un retard de livraison.",
+        "response": "Bonjour, merci pour votre patience. Votre livraison peut être légèrement retardée. Je vous tiendrai au courant.",
+        "cards": {
+          "doc": {
+            "title": "Résumé du document",
+            "detail": "Dossier de 12 pages → 5 points clés"
+          },
+          "reply": {
+            "title": "Réponse rédigée",
+            "detail": "Ton poli et professionnel"
+          },
+          "translation": {
+            "title": "Traduction prête",
+            "detail": "anglais → espagnol"
+          }
+        },
+        "subtitle": "Rédigez, résumez, traduisez et numérisez des documents dans un seul espace de travail IA."
+      },
+      "goals": {
+        "title": "Pour quoi avez-vous besoin d'aide ?",
+        "subtitle": "Choisissez 1 à 3 objectifs. Nous créerons votre espace de travail IA.",
+        "emptyCta": "Choisissez au moins 1 objectif",
+        "items": {
+          "workFaster": {
+            "title": "Travaillez plus vite",
+            "subtitle": "E-mails, réponses, tâches"
+          },
+          "writeBetter": {
+            "title": "Mieux écrire",
+            "subtitle": "Corriger le ton, réécrire, améliorer"
+          },
+          "understandDocuments": {
+            "title": "Comprendre les documents",
+            "subtitle": "Résumés, analyses, points clés"
+          },
+          "learnAnything": {
+            "title": "Apprenez n'importe quoi",
+            "subtitle": "Expliquez clairement les sujets"
+          },
+          "createContent": {
+            "title": "Créer du contenu",
+            "subtitle": "Publications, légendes, idées"
+          },
+          "planBusiness": {
+            "title": "Planifier une activité",
+            "subtitle": "Idées, stratégie, automatisation"
+          },
+          "personalClarity": {
+            "title": "Clarté personnelle",
+            "subtitle": "Décisions, habitudes, pensées"
+          },
+          "askBigQuestions": {
+            "title": "Posez des questions",
+            "subtitle": "Futur, sens, IA, vie"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Créer votre assistant IA",
+        "readyTitle": "Votre assistant IA est prêt",
+        "subtitle": "Votre assistant est configuré. L'accès à l'essai est désormais activé.",
+        "trialTitle": "Essai de 3 jours",
+        "trialActivating": "activation",
+        "trialEnabled": "activé",
+        "steps": {
+          "0": "Préparer votre assistant",
+          "1": "Personnalisation des réponses",
+          "2": "Sécuriser l'accès",
+          "3": "Terminer la configuration"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Découvrez",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Continuer",
       "start": "C'est parti"
+    },
+    "v3": {
+      "intent": {
+        "overline": "FAITES-LE VOTRE",
+        "title": "Qu'est-ce que Cloud AI devrait vous aider ?",
+        "cta": "Continuer"
+      },
+      "goals": {
+        "ask": "Trouver des réponses",
+        "write": "Mieux écrire",
+        "create": "Créer des images",
+        "plan": "Planifier ma journée"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "TROUVEZ DES RÉPONSES",
+          "title": "Trouvez la clarté plus rapidement",
+          "subtitle": "Demandez naturellement. Obtenez une réponse claire et les prochaines étapes utiles.",
+          "beat1": "Comprendre",
+          "beat2": "Décider",
+          "beat3": "Avancer"
+        },
+        "write": {
+          "focus": "MIEUX ÉCRIRE",
+          "title": "Transformez vos pensées en mots",
+          "subtitle": "Passez d’une idée approximative à une écriture qui vous ressemble.",
+          "beat1": "Forme",
+          "beat2": "Affiner",
+          "beat3": "Partager"
+        },
+        "create": {
+          "focus": "CRÉER DES IMAGES",
+          "title": "Donnez vie aux idées",
+          "subtitle": "Décrivez ce que vous imaginez, puis créez et affinez-le en quelques secondes.",
+          "beat1": "Imaginez",
+          "beat2": "Créer",
+          "beat3": "Parfait"
+        },
+        "plan": {
+          "focus": "PLANIFIER MA JOURNÉE",
+          "title": "Faites de la place pour ce qui compte",
+          "subtitle": "Transformez une liste chargée en un plan calme que vous pouvez réellement suivre.",
+          "beat1": "Prioriser",
+          "beat2": "Organiser",
+          "beat3": "Commencer"
+        }
+      },
+      "proof": {
+        "overline": "TOUT EN UN SEUL ENDROIT",
+        "title": "Un seul endroit. Plus de possibilités.",
+        "subtitle": "Passez de la question à la création sans basculer entre les applications.",
+        "item1": {
+          "title": "Demandez n'importe quoi",
+          "subtitle": "Des modèles avancés pour des réponses claires et utiles"
+        },
+        "item2": {
+          "title": "Créer des images",
+          "subtitle": "Transformez une idée en quelque chose que vous pouvez voir"
+        },
+        "item3": {
+          "title": "Obtenez l'aide d'un expert",
+          "subtitle": "Assistants pour le travail et la vie quotidienne"
+        }
+      },
+      "controls": {
+        "back": "Retour",
+        "continue": "Continuer",
+        "finish": "Explorez la prime"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "semaine",
       "termsOfUse": "Conditions d'utilisation",
       "privacyPolicy": "Politique de confidentialité"
+    },
+    "v3": {
+      "eyebrow": "CLOUD IA PREMIUM",
+      "trial": {
+        "headline": "Débloquez toutes les fonctionnalités premium",
+        "subtitle": "Voyez exactement ce qui se passe et quand.",
+        "todayTitle": "Aujourd'hui",
+        "todayBody": "Débloquez toutes les fonctionnalités premium. Aucun paiement n'est dû pour le moment.",
+        "checkTitle": "Dans 2 jours — Rappel",
+        "checkBody": "Nous vous enverrons une notification vous informant que votre essai se termine bientôt.",
+        "billingTitle": "Dans 3 jours",
+        "billingBody": "La facturation démarre automatiquement, sauf si vous l'annulez à tout moment auparavant.",
+        "badge": "3 JOURS GRATUITS",
+        "cardNote": "Après l'essai gratuit",
+        "noPayment": "Aucun paiement dû maintenant",
+        "cta": "Commencez mon essai gratuit de 3 jours",
+        "renewalTerms": "3 jours gratuits, puis {{price}} / {{period}}. Se renouvelle automatiquement jusqu'à annulation."
+      },
+      "annual": {
+        "headline": "Débloquez un an de Cloud AI",
+        "subtitle": "Un seul plan pour le chat, les images et l'aide d'experts en IA.",
+        "todayTitle": "Aujourd'hui : la prime commence",
+        "todayBody": "Débloquez immédiatement toutes les fonctionnalités d’IA premium.",
+        "billingTitle": "Facturé annuellement",
+        "billingBody": "{{price}} vous offre une année complète d'accès.",
+        "renewalTitle": "Se renouvelle chaque année",
+        "renewalBody": "Annulez à tout moment dans Google Play avant votre date de renouvellement.",
+        "cta": "Continuer",
+        "renewalTerms": "{{price}} / {{period}}. Se renouvelle automatiquement jusqu'à annulation."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analyse des images…",
       "searching": "Recherche…",
-      "thinking": "Réflexion…"
+      "thinking": "Réflexion…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Recherche web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Plus de signal, moins de bruit de feuille de calcul."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Récupérez vos pièces du jour",
       "subtitle": "Revenez chaque jour, la récompense augmente.",
-      "cta": "Valider",
+      "cta": "Récupérer",
       "claimed": "Reçu ! +{{amount}} pièces",
       "later": "Plus tard"
     }

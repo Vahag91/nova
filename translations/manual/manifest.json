@@ -1,0 +1,158 @@
+{
+  "generatedAt": "2026-07-12T07:04:46.712Z",
+  "englishMessageCount": 810,
+  "locales": {
+    "nl": {
+      "missingMessages": 101,
+      "obsoleteKeys": 4
+    },
+    "ca": {
+      "missingMessages": 101,
+      "obsoleteKeys": 4
+    },
+    "da": {
+      "missingMessages": 101,
+      "obsoleteKeys": 4
+    },
+    "el": {
+      "missingMessages": 101,
+      "obsoleteKeys": 4
+    },
+    "fi": {
+      "missingMessages": 101,
+      "obsoleteKeys": 4
+    },
+    "nb": {
+      "missingMessages": 101,
+      "obsoleteKeys": 4
+    },
+    "sv": {
+      "missingMessages": 101,
+      "obsoleteKeys": 4
+    },
+    "af": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "sq": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "am": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "hy": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "az": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "bn": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "eu": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "be": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "bg": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "my": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "et": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "fil": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "gl": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "ka": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "gu": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "is": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "kn": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "kk": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "km": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "ky": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "lo": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "lv": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "lt": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "mk": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "ml": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "mr": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "mn": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "ne": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "fa": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "pa": {
+      "missingMessages": 3,
+      "obsoleteKeys": 0
+    },
+    "rm": {
+      "missingMessages": 810,
+      "obsoleteKeys": 0
+    }
+  }
+}

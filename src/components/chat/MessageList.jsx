@@ -2,7 +2,7 @@ import React, {
   useMemo, useRef, useCallback, memo, useEffect, useState,
   forwardRef, useImperativeHandle
 } from 'react';
-import { View, StyleSheet, FlatList, Platform, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Reanimated, { FadeInDown, FadeOutDown } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
@@ -373,7 +373,7 @@ const MessageListCore = function MessageList({
           onContentSizeChange={onContentSizeChange}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="interactive"
-          removeClippedSubviews={Platform.OS === 'android'}
+          removeClippedSubviews={false}
           initialNumToRender={12}
           windowSize={9}
           maxToRenderPerBatch={12}

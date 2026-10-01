@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Tęsti",
+        "tryItFree": "Išbandykite nemokamai",
+        "back": "Atgal"
+      },
+      "valueDemo": {
+        "title": "Norime, kad išmėgintumėte Cloud AI nemokamai",
+        "workspaceLabel": "DI DARBO VIETA",
+        "userPromptLabel": "VARTOTOJO RAŠYMAS",
+        "aiTypingLabel": "AI ĮVEDIMAS",
+        "prompt": "Parašykite mandagų atsakymą klientui apie pavėluotą pristatymą.",
+        "response": "Sveiki, dėkojame už kantrybę. Jūsų pristatymas gali šiek tiek vėluoti. Aš jus informuosiu.",
+        "cards": {
+          "doc": {
+            "title": "Dokumento santrauka",
+            "detail": "12 puslapių failas → 5 pagrindiniai punktai"
+          },
+          "reply": {
+            "title": "Atsakymas parengtas",
+            "detail": "Mandagus, profesionalus tonas"
+          },
+          "translation": {
+            "title": "Vertimas paruoštas",
+            "detail": "anglų → ispanų"
+          }
+        },
+        "subtitle": "Rašykite, apibendrinkite, verskite ir nuskaitykite dokumentus vienoje DI darbo erdvėje."
+      },
+      "goals": {
+        "title": "Dėl ko jums reikia pagalbos?",
+        "subtitle": "Pasirinkite 1–3 įvarčius. Sukursime jūsų AI darbo vietą.",
+        "emptyCta": "Pasirinkite bent 1 tikslą",
+        "items": {
+          "workFaster": {
+            "title": "Dirbkite greičiau",
+            "subtitle": "El. laiškai, atsakymai, užduotys"
+          },
+          "writeBetter": {
+            "title": "Rašyk geriau",
+            "subtitle": "Pataisykite toną, perrašykite, patobulinkite"
+          },
+          "understandDocuments": {
+            "title": "Supraskite dokumentus",
+            "subtitle": "Santraukos, nuskaitymai, pagrindiniai dalykai"
+          },
+          "learnAnything": {
+            "title": "Sužinokite bet ką",
+            "subtitle": "Aiškiai paaiškinkite temas"
+          },
+          "createContent": {
+            "title": "Kurkite turinį",
+            "subtitle": "Įrašai, antraštės, idėjos"
+          },
+          "planBusiness": {
+            "title": "Planuokite verslą",
+            "subtitle": "Idėjos, strategija, automatizavimas"
+          },
+          "personalClarity": {
+            "title": "Asmeninis aiškumas",
+            "subtitle": "Sprendimai, įpročiai, mintys"
+          },
+          "askBigQuestions": {
+            "title": "Užduokite klausimų",
+            "subtitle": "Ateitis, prasmė, AI, gyvenimas"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "AI asistento kūrimas",
+        "readyTitle": "Jūsų AI padėjėjas pasiruošęs",
+        "subtitle": "Jūsų asistentas sukonfigūruotas. Bandomoji prieiga dabar įjungta.",
+        "trialTitle": "3 dienų bandomasis laikotarpis",
+        "trialActivating": "aktyvinimas",
+        "trialEnabled": "įjungtas",
+        "steps": {
+          "0": "Padėjėjo paruošimas",
+          "1": "Atsakymų suasmeninimas",
+          "2": "Prieigos apsauga",
+          "3": "Sąrankos užbaigimas"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Susipažink",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Tęsti",
       "start": "Pradėkime"
+    },
+    "v3": {
+      "intent": {
+        "overline": "PADARYKITE SAVO",
+        "title": "Ką turėtų padėti „Cloud AI“?",
+        "cta": "Tęsti"
+      },
+      "goals": {
+        "ask": "Raskite atsakymus",
+        "write": "Rašyk geriau",
+        "create": "Kurti vaizdus",
+        "plan": "Planuok mano dieną"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "RASTI ATSAKYMUS",
+          "title": "Greičiau raskite aiškumo",
+          "subtitle": "Klauskite natūraliai. Gaukite aiškų atsakymą ir naudingus tolesnius veiksmus.",
+          "beat1": "Suprask",
+          "beat2": "Nuspręskite",
+          "beat3": "Judėti pirmyn"
+        },
+        "write": {
+          "focus": "RAŠYK GERIAU",
+          "title": "Paverskite mintis žodžiais",
+          "subtitle": "Nuo grubios idėjos pereikite prie rašymo, kuris skamba kaip jūs.",
+          "beat1": "Forma",
+          "beat2": "Patikslinti",
+          "beat3": "Dalintis"
+        },
+        "create": {
+          "focus": "KURTI VAIZDUS",
+          "title": "Atgaivinkite idėjas",
+          "subtitle": "Apibūdinkite tai, ką įsivaizduojate, tada sukurkite ir patobulinkite tai per kelias sekundes.",
+          "beat1": "Įsivaizduok",
+          "beat2": "Sukurti",
+          "beat3": "Tobulas"
+        },
+        "plan": {
+          "focus": "PLANUOK MANO DIENĄ",
+          "title": "Atraskite vietos tam, kas svarbu",
+          "subtitle": "Paverskite užimtų sąrašą ramiu planu, kurio iš tikrųjų galite laikytis.",
+          "beat1": "Suteikite pirmenybę",
+          "beat2": "Organizuoti",
+          "beat3": "Pradėkite"
+        }
+      },
+      "proof": {
+        "overline": "VISKAS VIENOJE",
+        "title": "Viena vieta. Daugiau galimybių.",
+        "subtitle": "Pereikite nuo klausimo prie kūrimo neperjungdami programų.",
+        "item1": {
+          "title": "Paklausk bet ko",
+          "subtitle": "Pažangūs modeliai aiškiems ir naudingiems atsakymams"
+        },
+        "item2": {
+          "title": "Kurti vaizdus",
+          "subtitle": "Paverskite idėją tuo, ką galite pamatyti"
+        },
+        "item3": {
+          "title": "Gaukite ekspertų pagalbos",
+          "subtitle": "Asistentai darbui ir kasdieniam gyvenimui"
+        }
+      },
+      "controls": {
+        "back": "Atgal",
+        "continue": "Tęsti",
+        "finish": "Ištirkite premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "savaitė",
       "termsOfUse": "Naudojimo sąlygos",
       "privacyPolicy": "Privatumo politika"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Atrakinkite visas aukščiausios kokybės funkcijas",
+        "subtitle": "Pažiūrėkite, kas tiksliai vyksta ir kada.",
+        "todayTitle": "Šiandien",
+        "todayBody": "Atrakinkite visas aukščiausios kokybės funkcijas. Dabar mokėti nereikia.",
+        "checkTitle": "Po 2 dienų – priminimas",
+        "checkBody": "Atsiųsime jums pranešimą, kad jūsų bandomasis laikotarpis netrukus baigsis.",
+        "billingTitle": "Per 3 dienas",
+        "billingBody": "Atsiskaitymas prasideda automatiškai, nebent atšauksite bet kada anksčiau.",
+        "badge": "3 DIENOS NEMOKAMAI",
+        "cardNote": "Po nemokamo bandymo",
+        "noPayment": "Dabar nereikia mokėti",
+        "cta": "Pradėkite mano 3 dienų nemokamą bandomąją versiją",
+        "renewalTerms": "3 dienos nemokamai, tada {{price}} / {{period}}. Automatiškai atnaujinama iki atšaukimo."
+      },
+      "annual": {
+        "headline": "Atraskite „Cloud AI“ metus",
+        "subtitle": "Vienas pokalbių, vaizdų ir ekspertų AI pagalbos planas.",
+        "todayTitle": "Šiandien – prasideda premium",
+        "todayBody": "Nedelsdami atrakinkite visas aukščiausios kokybės dirbtinio intelekto funkcijas.",
+        "billingTitle": "Atsiskaitoma kasmet",
+        "billingBody": "{{price}} suteikia prieigą prie vienerių metų.",
+        "renewalTitle": "Kasmet atnaujinama",
+        "renewalBody": "Atšaukite bet kuriuo metu Google Play iki atnaujinimo datos.",
+        "cta": "Tęsti",
+        "renewalTerms": "{{price}} / {{period}}. Automatiškai atnaujinama iki atšaukimo."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analizuojami vaizdai…",
       "searching": "Ieškoma…",
-      "thinking": "Galvoju…"
+      "thinking": "Galvoju…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Interneto paieška",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Daugiau signalo, mažiau skaičiuoklės triukšmo."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Atsiimkite kasdienes monetas",
       "subtitle": "Grįžkite kasdien — atlygis auga.",
-      "cta": "Registruotis",
+      "cta": "Atsiimti",
       "claimed": "Gauta! +{{amount}} monetų",
       "later": "Vėliau"
     }

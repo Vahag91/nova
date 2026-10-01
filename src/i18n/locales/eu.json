@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Jarraitu",
+        "tryItFree": "Probatu Doan",
+        "back": "Itzuli"
+      },
+      "valueDemo": {
+        "title": "Cloud AI doan probatu nahi dugu",
+        "workspaceLabel": "AI LAN GUNEA",
+        "userPromptLabel": "ERABILTZAILEAREN GESTIOA",
+        "aiTypingLabel": "AI IDAKETA",
+        "prompt": "Idatzi erantzun adeitsu bat bezero bati entrega atzeratu bati buruz.",
+        "response": "Kaixo, eskerrik asko zure pazientziagatik. Baliteke zure entrega pixka bat atzeratzea. Eguneratu egingo zaitut.",
+        "cards": {
+          "doc": {
+            "title": "Dokumentuaren laburpena",
+            "detail": "12 orrialdeko fitxategia → 5 gako"
+          },
+          "reply": {
+            "title": "Erantzuna idatzita",
+            "detail": "Tonu adeitsua eta profesionala"
+          },
+          "translation": {
+            "title": "Itzulpena prest",
+            "detail": "Ingelesa → Gaztelania"
+          }
+        },
+        "subtitle": "Idatzi, laburtu, itzuli eta eskaneatu dokumentuak AA laneko espazio bakarrean."
+      },
+      "goals": {
+        "title": "Zertarako behar duzu laguntza?",
+        "subtitle": "Aukeratu 1-3 helburu. Zure AI lan-eremua eraikiko dugu.",
+        "emptyCta": "Aukeratu gutxienez helburu bat",
+        "items": {
+          "workFaster": {
+            "title": "Lan egin azkarrago",
+            "subtitle": "Mezu elektronikoak, erantzunak, zereginak"
+          },
+          "writeBetter": {
+            "title": "Hobeto idatzi",
+            "subtitle": "Tonua konpondu, berridatzi, hobetu"
+          },
+          "understandDocuments": {
+            "title": "Dokumentuak ulertu",
+            "subtitle": "Laburpenak, eskaneatzea, funtsezko puntuak"
+          },
+          "learnAnything": {
+            "title": "Ikasi ezer",
+            "subtitle": "Azaldu gaiak argi"
+          },
+          "createContent": {
+            "title": "Sortu edukia",
+            "subtitle": "Argitalpenak, azalpenak, ideiak"
+          },
+          "planBusiness": {
+            "title": "Planifikatu negozioa",
+            "subtitle": "Ideiak, estrategia, automatizazioa"
+          },
+          "personalClarity": {
+            "title": "Argitasun pertsonala",
+            "subtitle": "Erabakiak, ohiturak, pentsamenduak"
+          },
+          "askBigQuestions": {
+            "title": "Egin edozein galdera",
+            "subtitle": "Etorkizuna, esanahia, AI, bizitza"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Zure AI laguntzailea sortzen",
+        "readyTitle": "Zure AI laguntzailea prest dago",
+        "subtitle": "Zure laguntzailea konfiguratuta dago. Probako sarbidea aktibatuta dago.",
+        "trialTitle": "3 eguneko proba",
+        "trialActivating": "aktibatzen",
+        "trialEnabled": "gaituta",
+        "steps": {
+          "0": "Zure laguntzailea prestatzen",
+          "1": "Erantzunak pertsonalizatzea",
+          "2": "Sarbidea ziurtatzen",
+          "3": "Konfigurazioa amaitzen"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Ezagutu",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Jarraitu",
       "start": "Has gaitezen"
+    },
+    "v3": {
+      "intent": {
+        "overline": "EGIN ZUREA",
+        "title": "Zertan lagundu behar dizu Cloud AI?",
+        "cta": "Jarraitu"
+      },
+      "goals": {
+        "ask": "Bilatu erantzunak",
+        "write": "Hobeto idatzi",
+        "create": "Sortu irudiak",
+        "plan": "Antolatu nire eguna"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ERANTZUNAK BILATU",
+          "title": "Aurkitu argitasuna azkarrago",
+          "subtitle": "Galdetu naturaltasunez. Lortu erantzun argia eta hurrengo urrats erabilgarriak.",
+          "beat1": "Ulertu",
+          "beat2": "Erabaki",
+          "beat3": "Aurrera egin"
+        },
+        "write": {
+          "focus": "IDATZI HOBETO",
+          "title": "Bihurtu pentsamenduak hitz",
+          "subtitle": "Ideia zakar batetik zure antza duen idazkera pasa.",
+          "beat1": "Forma",
+          "beat2": "Finatu",
+          "beat3": "Partekatu"
+        },
+        "create": {
+          "focus": "IRUDIAK SORTU",
+          "title": "Eman ideiak bizia",
+          "subtitle": "Deskribatu imajinatzen duzuna, gero sortu eta hobetu segundotan.",
+          "beat1": "Imajinatu",
+          "beat2": "Sortu",
+          "beat3": "Perfektua"
+        },
+        "plan": {
+          "focus": "PLANIFICATU NIRE EGUNA",
+          "title": "Egin lekua garrantzia duenari",
+          "subtitle": "Bihurtu lanpetuta zerrenda bat benetan jarraitu dezakezun plan lasai batean.",
+          "beat1": "Lehenetsi",
+          "beat2": "Antolatu",
+          "beat3": "Hasi"
+        }
+      },
+      "proof": {
+        "overline": "GUZTIAK LEKU BATEAN",
+        "title": "Leku bat. Aukera gehiago.",
+        "subtitle": "Joan galderatik sorrerara, aplikazio batetik bestera aldatu gabe.",
+        "item1": {
+          "title": "Edozer galdetu",
+          "subtitle": "Eredu aurreratuak erantzun argi eta erabilgarriak lortzeko"
+        },
+        "item2": {
+          "title": "Sortu irudiak",
+          "subtitle": "Bihurtu ideia bat ikus dezakezun zerbait"
+        },
+        "item3": {
+          "title": "Eskuratu adituen laguntza",
+          "subtitle": "Lanerako eta eguneroko bizitzarako laguntzaileak"
+        }
+      },
+      "controls": {
+        "back": "Itzuli",
+        "continue": "Jarraitu",
+        "finish": "Arakatu premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "astea",
       "termsOfUse": "Erabilera-baldintzak",
       "privacyPolicy": "Pribatutasun politika"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Desblokeatu premium eginbide guztiak",
+        "subtitle": "Ikusi zehazki zer eta noiz gertatzen den.",
+        "todayTitle": "Gaur",
+        "todayBody": "Desblokeatu premium eginbide guztiak. Orain ez da ordainketarik egin behar.",
+        "checkTitle": "2 egun barru — Oroigarria",
+        "checkBody": "Zure proba laster amaituko dela dioen jakinarazpena bidaliko dizugu.",
+        "billingTitle": "3 egun barru",
+        "billingBody": "Fakturazioa automatikoki hasiko da, aurretik bertan behera uzten ez baduzu.",
+        "badge": "3 EGUN DOAN",
+        "cardNote": "Doako probaren ostean",
+        "noPayment": "Ez dago ordainketarik orain",
+        "cta": "Hasi Nire 3 eguneko Doako Proba",
+        "renewalTerms": "3 egun doan, gero {{price}} / {{period}}. Automatikoki berritzen da bertan behera utzi arte."
+      },
+      "annual": {
+        "headline": "Desblokeatu urtebeteko Cloud AI",
+        "subtitle": "Txat, irudi eta adituen AI laguntzarako plan bat.",
+        "todayTitle": "Gaur - premium hasten da",
+        "todayBody": "Desblokeatu premium AI funtzio guztiak berehala.",
+        "billingTitle": "Urtero fakturatua",
+        "billingBody": "{{price}}-k urtebeteko sarbidea ematen dizu.",
+        "renewalTitle": "Urtero berritzen da",
+        "renewalBody": "Utzi edozein unetan Google Play berritze data baino lehen.",
+        "cta": "Jarraitu",
+        "renewalTerms": "{{price}} / {{period}}. Automatikoki berritzen da bertan behera utzi arte."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Irudiak aztertzen…",
       "searching": "Bilatzen…",
-      "thinking": "Pentsatzen…"
+      "thinking": "Pentsatzen…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Web bilaketa",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Seinale gehiago, kalkulu-orriko zarata gutxiago."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Jaso zure eguneroko txanponak",
       "subtitle": "Itzuli egunero: saria handitzen doa.",
-      "cta": "Erregistratu",
+      "cta": "Jaso",
       "claimed": "Jasota! +{{amount}} txanpon",
       "later": "Geroago"
     }

@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Halda áfram",
+        "tryItFree": "Prófaðu það ókeypis",
+        "back": "Til baka"
+      },
+      "valueDemo": {
+        "title": "Við viljum að þú prófir Cloud AI ókeypis",
+        "workspaceLabel": "AI vinnusvæði",
+        "userPromptLabel": "NOTANDA TILKYNNING",
+        "aiTypingLabel": "AI VÉLAGANGUR",
+        "prompt": "Skrifaðu kurteislegt svar til viðskiptavinar um seinkun á afhendingu.",
+        "response": "Hæ, takk fyrir þolinmæðina. Afhending þín gæti seinkað aðeins. Ég mun halda þér uppfærðum.",
+        "cards": {
+          "doc": {
+            "title": "Skjalasamantekt",
+            "detail": "12 blaðsíðna skrá → 5 lykilatriði"
+          },
+          "reply": {
+            "title": "Svar tilbúið",
+            "detail": "Kurteis, fagmannlegur tónn"
+          },
+          "translation": {
+            "title": "Þýðing tilbúin",
+            "detail": "Enska → Spænska"
+          }
+        },
+        "subtitle": "Skrifaðu, taktu saman, þýddu og skannaðu skjöl í einu gervigreindarvinnusvæði."
+      },
+      "goals": {
+        "title": "Hvað þarftu hjálp við?",
+        "subtitle": "Veldu 1–3 mörk. Við munum byggja AI vinnusvæðið þitt.",
+        "emptyCta": "Veldu að minnsta kosti 1 markmið",
+        "items": {
+          "workFaster": {
+            "title": "Vinna hraðar",
+            "subtitle": "Tölvupóstar, svör, verkefni"
+          },
+          "writeBetter": {
+            "title": "Skrifaðu betur",
+            "subtitle": "Lagaðu tón, endurskrifaðu, bættu"
+          },
+          "understandDocuments": {
+            "title": "Skilja skjöl",
+            "subtitle": "Samantektir, skannar, lykilatriði"
+          },
+          "learnAnything": {
+            "title": "Lærðu hvað sem er",
+            "subtitle": "Útskýrðu efni skýrt"
+          },
+          "createContent": {
+            "title": "Búðu til efni",
+            "subtitle": "Færslur, myndatextar, hugmyndir"
+          },
+          "planBusiness": {
+            "title": "Skipuleggðu viðskipti",
+            "subtitle": "Hugmyndir, stefna, sjálfvirkni"
+          },
+          "personalClarity": {
+            "title": "Persónuleg skýrleiki",
+            "subtitle": "Ákvarðanir, venjur, hugsanir"
+          },
+          "askBigQuestions": {
+            "title": "Spyrðu hvers kyns spurninga",
+            "subtitle": "Framtíð, merking, gervigreind, lífið"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Að búa til AI aðstoðarmanninn þinn",
+        "readyTitle": "AI aðstoðarmaðurinn þinn er tilbúinn",
+        "subtitle": "Aðstoðarmaðurinn þinn er stilltur. Nú er verið að kveikja á prufuaðgangi.",
+        "trialTitle": "3 daga prufa",
+        "trialActivating": "virkjar",
+        "trialEnabled": "virkt",
+        "steps": {
+          "0": "Að undirbúa aðstoðarmanninn þinn",
+          "1": "Sérsníða svör",
+          "2": "Að tryggja aðgang",
+          "3": "Að klára uppsetningu"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Hittumst",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Halda áfram",
       "start": "Við skulum byrja"
+    },
+    "v3": {
+      "intent": {
+        "overline": "GERÐU ÞÍN AÐ ÞÍN",
+        "title": "Hvað ætti Cloud AI að hjálpa þér að gera?",
+        "cta": "Halda áfram"
+      },
+      "goals": {
+        "ask": "Finndu svör",
+        "write": "Skrifaðu betur",
+        "create": "Búðu til myndir",
+        "plan": "Skipuleggðu daginn minn"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "FINNA SVAR",
+          "title": "Finndu skýrleika hraðar",
+          "subtitle": "Spurðu náttúrulega. Fáðu skýrt svar og gagnleg næstu skref.",
+          "beat1": "Skil",
+          "beat2": "Ákveða",
+          "beat3": "Farðu áfram"
+        },
+        "write": {
+          "focus": "SKRIFA BETUR",
+          "title": "Breyttu hugsunum í orð",
+          "subtitle": "Farðu úr grófri hugmynd yfir í að skrifa sem hljómar eins og þú.",
+          "beat1": "Lögun",
+          "beat2": "Betrumbæta",
+          "beat3": "Deila"
+        },
+        "create": {
+          "focus": "BÚA TIL MYNDIR",
+          "title": "Láttu hugmyndir koma lífi",
+          "subtitle": "Lýstu því sem þú ímyndar þér, búðu til og fínstilltu það á nokkrum sekúndum.",
+          "beat1": "Ímyndaðu þér",
+          "beat2": "Búa til",
+          "beat3": "Fullkomið"
+        },
+        "plan": {
+          "focus": "Skipuleggðu daginn minn",
+          "title": "Gerðu pláss fyrir það sem skiptir máli",
+          "subtitle": "Breyttu uppteknum lista í rólega áætlun sem þú getur raunverulega fylgt.",
+          "beat1": "Forgangsraða",
+          "beat2": "Skipuleggja",
+          "beat3": "Byrjaðu"
+        }
+      },
+      "proof": {
+        "overline": "ALLT Á EINUM STAÐ",
+        "title": "Einn staður. Fleiri möguleikar.",
+        "subtitle": "Farðu frá spurningu til sköpunar án þess að skipta á milli forrita.",
+        "item1": {
+          "title": "Spurðu hvað sem er",
+          "subtitle": "Háþróuð líkön fyrir skýr, gagnleg svör"
+        },
+        "item2": {
+          "title": "Búðu til myndir",
+          "subtitle": "Breyttu hugmynd í eitthvað sem þú getur séð"
+        },
+        "item3": {
+          "title": "Fáðu sérfræðihjálp",
+          "subtitle": "Aðstoðarmenn fyrir vinnu og daglegt líf"
+        }
+      },
+      "controls": {
+        "back": "Til baka",
+        "continue": "Halda áfram",
+        "finish": "Kannaðu úrvals"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "viku",
       "termsOfUse": "Notkunarskilmálar",
       "privacyPolicy": "Persónuverndarstefna"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Opnaðu alla úrvals eiginleika",
+        "subtitle": "Sjáðu nákvæmlega hvað gerist og hvenær.",
+        "todayTitle": "Í dag",
+        "todayBody": "Opnaðu alla úrvals eiginleika. Engin greiðsla er á gjalddaga núna.",
+        "checkTitle": "Eftir 2 daga — Áminning",
+        "checkBody": "Við munum senda þér tilkynningu um að prufuáskriftinni þinni lýkur fljótlega.",
+        "billingTitle": "Eftir 3 daga",
+        "billingBody": "Innheimta byrjar sjálfkrafa nema þú hættir við hvenær sem er áður.",
+        "badge": "3 DAGAR FRÍTT",
+        "cardNote": "Eftir ókeypis prufuáskriftina",
+        "noPayment": "Engin greiðsla á gjalddaga núna",
+        "cta": "Byrjaðu 3 daga ókeypis prufuáskriftina mína",
+        "renewalTerms": "3 dagar ókeypis, síðan {{price}} / {{period}}. Endurnýjast sjálfkrafa þar til hætt er við."
+      },
+      "annual": {
+        "headline": "Opnaðu ár af Cloud AI",
+        "subtitle": "Ein áætlun fyrir spjall, myndir og sérfræðihjálp.",
+        "todayTitle": "Í dag - iðgjald byrjar",
+        "todayBody": "Opnaðu strax alla úrvals AI eiginleika.",
+        "billingTitle": "Innheimt árlega",
+        "billingBody": "{{price}} gefur þér aðgang í eitt heilt ár.",
+        "renewalTitle": "Endurnýjast árlega",
+        "renewalBody": "Afbókaðu hvenær sem er í Google Play fyrir endurnýjunardaginn þinn.",
+        "cta": "Halda áfram",
+        "renewalTerms": "{{price}} / {{period}}. Endurnýjast sjálfkrafa þar til hætt er við."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Greinir myndir...",
       "searching": "Leitar…",
-      "thinking": "Er að hugsa…"
+      "thinking": "Er að hugsa…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Vefleit",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Meira merki, minni hávaði í töflureikni."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Sæktu daglegu myntirnar þínar",
       "subtitle": "Komdu aftur á hverjum degi — verðlaunin vaxa.",
-      "cta": "Skrá mig",
+      "cta": "Sækja",
       "claimed": "Móttekið! +{{amount}} myntir",
       "later": "Seinna"
     }

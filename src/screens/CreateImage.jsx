@@ -560,7 +560,7 @@ export default function CreateImage({ navigation, route }) {
             contentContainerStyle={styles.chipsList}
             initialNumToRender={6}
             windowSize={3}
-            removeClippedSubviews
+            removeClippedSubviews={false}
           />
 
           {/* Prompt (moved below advanced) */}

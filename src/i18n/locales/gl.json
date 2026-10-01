@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Continuar",
+        "tryItFree": "Probao de balde",
+        "back": "De volta"
+      },
+      "valueDemo": {
+        "title": "Queremos que probes Cloud AI de balde",
+        "workspaceLabel": "ESPAZO DE TRABALLO AI",
+        "userPromptLabel": "SOLICITUDE DE USUARIO",
+        "aiTypingLabel": "ESCRITURA AI",
+        "prompt": "Escribe unha resposta educada a un cliente sobre unha entrega atrasada.",
+        "response": "Ola, grazas pola túa paciencia. A túa entrega pode atrasarse un pouco. Vou mantervos informado.",
+        "cards": {
+          "doc": {
+            "title": "Resumo do documento",
+            "detail": "Ficheiro de 12 páxinas → 5 puntos clave"
+          },
+          "reply": {
+            "title": "Resposta redactada",
+            "detail": "Ton educado e profesional"
+          },
+          "translation": {
+            "title": "Tradución lista",
+            "detail": "inglés → español"
+          }
+        },
+        "subtitle": "Escribe, resume, traduce e escanea documentos nun único espazo de traballo de IA."
+      },
+      "goals": {
+        "title": "Para que necesitas axuda?",
+        "subtitle": "Escolle 1–3 obxectivos. Crearemos o teu espazo de traballo de IA.",
+        "emptyCta": "Escolle polo menos 1 obxectivo",
+        "items": {
+          "workFaster": {
+            "title": "Traballa máis rápido",
+            "subtitle": "Correos electrónicos, respostas, tarefas"
+          },
+          "writeBetter": {
+            "title": "Escribe mellor",
+            "subtitle": "Corrixir o ton, reescribir, mellorar"
+          },
+          "understandDocuments": {
+            "title": "Comprender documentos",
+            "subtitle": "Resumos, escaneos, puntos clave"
+          },
+          "learnAnything": {
+            "title": "Aprende calquera cousa",
+            "subtitle": "Explica os temas con claridade"
+          },
+          "createContent": {
+            "title": "Crear contido",
+            "subtitle": "Publicacións, lendas, ideas"
+          },
+          "planBusiness": {
+            "title": "Planificar o negocio",
+            "subtitle": "Ideas, estratexia, automatización"
+          },
+          "personalClarity": {
+            "title": "Claridade persoal",
+            "subtitle": "Decisións, hábitos, pensamentos"
+          },
+          "askBigQuestions": {
+            "title": "Fai calquera dúbida",
+            "subtitle": "Futuro, significado, IA, vida"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Creando o teu asistente de IA",
+        "readyTitle": "O teu asistente de IA está listo",
+        "subtitle": "O teu asistente está configurado. O acceso de proba está activado agora.",
+        "trialTitle": "Proba de 3 días",
+        "trialActivating": "activando",
+        "trialEnabled": "habilitado",
+        "steps": {
+          "0": "Preparando o teu asistente",
+          "1": "Personalización de respostas",
+          "2": "Acceso seguro",
+          "3": "Rematando a configuración"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Coñece",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Continuar",
       "start": "Imos comezar"
+    },
+    "v3": {
+      "intent": {
+        "overline": "FAI TUO",
+        "title": "En que debería axudarche a Cloud AI?",
+        "cta": "Continuar"
+      },
+      "goals": {
+        "ask": "Atopar respostas",
+        "write": "Escribe mellor",
+        "create": "Crea imaxes",
+        "plan": "Planifica o meu día"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "BUSCAR RESPOSTAS",
+          "title": "Atopa claridade máis rápido",
+          "subtitle": "Pregunta con naturalidade. Obtén unha resposta clara e os seguintes pasos útiles.",
+          "beat1": "Entender",
+          "beat2": "Decídete",
+          "beat3": "Avanza"
+        },
+        "write": {
+          "focus": "ESCRIBE MELLOR",
+          "title": "Transforma os pensamentos en palabras",
+          "subtitle": "Pasa dunha idea aproximada a unha escritura que che soa.",
+          "beat1": "Forma",
+          "beat2": "Refinar",
+          "beat3": "Compartir"
+        },
+        "create": {
+          "focus": "CREAR IMAXES",
+          "title": "Da vida ás ideas",
+          "subtitle": "Describe o que imaxinas, despois créao e perfínao en segundos.",
+          "beat1": "Imaxina",
+          "beat2": "Crear",
+          "beat3": "Perfecto"
+        },
+        "plan": {
+          "focus": "PLANIFICA O MEU DÍA",
+          "title": "Fai espazo para o que importa",
+          "subtitle": "Converte unha lista ocupada nun plan tranquilo que podes seguir.",
+          "beat1": "Priorizar",
+          "beat2": "Organizar",
+          "beat3": "Comeza"
+        }
+      },
+      "proof": {
+        "overline": "TODO EN UN LUGAR",
+        "title": "Un lugar. Máis posibilidades.",
+        "subtitle": "Pasa da pregunta á creación sen cambiar de aplicación.",
+        "item1": {
+          "title": "Pregunta calquera cousa",
+          "subtitle": "Modelos avanzados para respostas claras e útiles"
+        },
+        "item2": {
+          "title": "Crea imaxes",
+          "subtitle": "Converte unha idea en algo que podes ver"
+        },
+        "item3": {
+          "title": "Obtén axuda de expertos",
+          "subtitle": "Axudantes para o traballo e a vida cotiá"
+        }
+      },
+      "controls": {
+        "back": "De volta",
+        "continue": "Continuar",
+        "finish": "Explora Premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "semana",
       "termsOfUse": "Condicións de uso",
       "privacyPolicy": "Política de privacidade"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Desbloquea todas as funcións premium",
+        "subtitle": "Vexa exactamente o que pasa e cando.",
+        "todayTitle": "Hoxe",
+        "todayBody": "Desbloquea todas as funcións premium. Non hai ningún pago agora.",
+        "checkTitle": "En 2 días — Recordatorio",
+        "checkBody": "Enviarémosche unha notificación de que a túa proba rematará en breve.",
+        "billingTitle": "En 3 días",
+        "billingBody": "A facturación comeza automaticamente a non ser que canceles antes.",
+        "badge": "3 DÍAS GRATIS",
+        "cardNote": "Despois da proba gratuíta",
+        "noPayment": "Non hai pago agora",
+        "cta": "Comeza a miña proba gratuíta de 3 días",
+        "renewalTerms": "3 días gratis, despois {{price}} / {{period}}. Renovación automática ata que se cancele."
+      },
+      "annual": {
+        "headline": "Desbloquea un ano de Cloud AI",
+        "subtitle": "Un plan para chat, imaxes e axuda experta en intelixencia artificial.",
+        "todayTitle": "Hoxe, comeza o premio",
+        "todayBody": "Desbloquea todas as funcións premium de IA inmediatamente.",
+        "billingTitle": "Facturado anualmente",
+        "billingBody": "{{price}} ofrécelle un ano completo de acceso.",
+        "renewalTitle": "Renovase anualmente",
+        "renewalBody": "Cancela en calquera momento en Google Play antes da túa data de renovación.",
+        "cta": "Continuar",
+        "renewalTerms": "{{price}} / {{period}}. Renovación automática ata que se cancele."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analizando imaxes...",
       "searching": "Buscando…",
-      "thinking": "Pensando…"
+      "thinking": "Pensando…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Busca na web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Máis sinal, menos ruído da folla de cálculo."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Recolle as túas moedas diarias",
       "subtitle": "Volve cada día: a recompensa medra.",
-      "cta": "Rexistrarme",
+      "cta": "Recoller",
       "claimed": "Recibido! +{{amount}} moedas",
       "later": "Máis tarde"
     }

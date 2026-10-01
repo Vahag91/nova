@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "جاری رکھیں",
+        "tryItFree": "اسے مفت میں آزمائیں۔",
+        "back": "پیچھے"
+      },
+      "valueDemo": {
+        "title": "ہم چاہتے ہیں کہ آپ Cloud AI مفت میں آزمائیں۔",
+        "workspaceLabel": "AI ورکسپیس",
+        "userPromptLabel": "یوزر پرامپٹ",
+        "aiTypingLabel": "AI ٹائپنگ",
+        "prompt": "تاخیر سے ترسیل کے بارے میں کلائنٹ کو شائستہ جواب لکھیں۔",
+        "response": "ہیلو، آپ کے صبر کا شکریہ۔ آپ کی ترسیل میں تھوڑی تاخیر ہو سکتی ہے۔ میں آپ کو اپ ڈیٹ کرتا رہوں گا۔",
+        "cards": {
+          "doc": {
+            "title": "دستاویز کا خلاصہ",
+            "detail": "12 صفحات پر مشتمل فائل → 5 کلیدی نکات"
+          },
+          "reply": {
+            "title": "جواب تیار",
+            "detail": "شائستہ، پیشہ ورانہ لہجہ"
+          },
+          "translation": {
+            "title": "ترجمہ تیار ہے۔",
+            "detail": "انگریزی → ہسپانوی"
+          }
+        },
+        "subtitle": "ایک AI ورک اسپیس میں لکھیں، خلاصہ کریں، ترجمہ کریں اور دستاویزات اسکین کریں۔"
+      },
+      "goals": {
+        "title": "آپ کو کس چیز میں مدد کی ضرورت ہے؟",
+        "subtitle": "1–3 گول منتخب کریں۔ ہم آپ کی AI ورک اسپیس بنائیں گے۔",
+        "emptyCta": "کم از کم 1 گول منتخب کریں۔",
+        "items": {
+          "workFaster": {
+            "title": "تیزی سے کام کریں۔",
+            "subtitle": "ای میلز، جوابات، کام"
+          },
+          "writeBetter": {
+            "title": "بہتر لکھیں۔",
+            "subtitle": "لہجہ درست کریں، دوبارہ لکھیں، بہتر کریں۔"
+          },
+          "understandDocuments": {
+            "title": "دستاویزات کو سمجھیں۔",
+            "subtitle": "خلاصے، اسکین، اہم نکات"
+          },
+          "learnAnything": {
+            "title": "کچھ بھی سیکھیں۔",
+            "subtitle": "موضوعات کو واضح طور پر بیان کریں۔"
+          },
+          "createContent": {
+            "title": "مواد تخلیق کریں۔",
+            "subtitle": "پوسٹس، کیپشن، آئیڈیاز"
+          },
+          "planBusiness": {
+            "title": "کاروبار کی منصوبہ بندی کریں۔",
+            "subtitle": "آئیڈیاز، حکمت عملی، آٹومیشن"
+          },
+          "personalClarity": {
+            "title": "ذاتی وضاحت",
+            "subtitle": "فیصلے، عادات، خیالات"
+          },
+          "askBigQuestions": {
+            "title": "کوئی سوال پوچھیں۔",
+            "subtitle": "مستقبل، معنی، AI، زندگی"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "اپنا AI اسسٹنٹ بنانا",
+        "readyTitle": "آپ کا AI اسسٹنٹ تیار ہے۔",
+        "subtitle": "آپ کا اسسٹنٹ کنفیگر ہو گیا ہے۔ آزمائشی رسائی اب آن ہو رہی ہے۔",
+        "trialTitle": "3 دن کی آزمائش",
+        "trialActivating": "چالو کرنا",
+        "trialEnabled": "فعال",
+        "steps": {
+          "0": "آپ کے اسسٹنٹ کو تیار کرنا",
+          "1": "جوابات کو ذاتی بنانا",
+          "2": "محفوظ رسائی",
+          "3": "سیٹ اپ ختم ہو رہا ہے۔"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "۔\nملنا",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "جاری رکھیں",
       "start": "۔\nآئیے شروع کرتے ہیں۔"
+    },
+    "v3": {
+      "intent": {
+        "overline": "اسے اپنا بنائیں",
+        "title": "Cloud AI کو آپ کی کیا مدد کرنی چاہئے؟",
+        "cta": "۔\nجاری رکھیں"
+      },
+      "goals": {
+        "ask": "جوابات تلاش کریں۔",
+        "write": "بہتر لکھیں۔",
+        "create": "۔\nتصاویر بنائیں",
+        "plan": "میرے دن کا منصوبہ بنائیں"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "جوابات تلاش کریں۔",
+          "title": "تیزی سے وضاحت تلاش کریں۔",
+          "subtitle": "قدرتی طور پر پوچھیں۔ واضح جواب اور مفید اگلے اقدامات حاصل کریں۔",
+          "beat1": "سمجھیں۔",
+          "beat2": "فیصلہ کریں۔",
+          "beat3": "۔\nآگے بڑھیں۔"
+        },
+        "write": {
+          "focus": "بہتر لکھیں۔",
+          "title": "۔\nخیالات کو الفاظ میں بدل دیں۔",
+          "subtitle": "۔\nکسی موٹے خیال سے لکھنے کی طرف جائیں جو آپ کی طرح لگتا ہے۔",
+          "beat1": "۔\nشکل",
+          "beat2": "سدھارنا",
+          "beat3": "۔\nشیئر کریں۔"
+        },
+        "create": {
+          "focus": "تصاویر بنائیں",
+          "title": "خیالات کو زندہ کریں۔",
+          "subtitle": "آپ جو تصور کرتے ہیں اسے بیان کریں، پھر اسے سیکنڈوں میں بنائیں اور بہتر کریں۔",
+          "beat1": "تصور کریں۔",
+          "beat2": "بنائیں",
+          "beat3": "کامل"
+        },
+        "plan": {
+          "focus": "۔\nمیرے دن کا منصوبہ بنائیں",
+          "title": "اہم چیزوں کے لئے جگہ بنائیں",
+          "subtitle": "مصروف فہرست کو ایک پرسکون منصوبے میں تبدیل کریں جس پر آپ عمل کر سکتے ہیں۔",
+          "beat1": "ترجیح دیں۔",
+          "beat2": "۔\nمنظم کریں۔",
+          "beat3": "شروع کریں"
+        }
+      },
+      "proof": {
+        "overline": "سب ایک ہی جگہ پر",
+        "title": "ایک جگہ۔ مزید امکانات۔",
+        "subtitle": "ایپس کے درمیان سوئچ کیے بغیر سوال سے تخلیق کی طرف بڑھیں۔",
+        "item1": {
+          "title": "کچھ بھی پوچھو",
+          "subtitle": "واضح، مفید جوابات کے لیے جدید ماڈل"
+        },
+        "item2": {
+          "title": "تصاویر بنائیں",
+          "subtitle": "کسی خیال کو کسی ایسی چیز میں تبدیل کریں جسے آپ دیکھ سکتے ہیں۔"
+        },
+        "item3": {
+          "title": "ماہر کی مدد حاصل کریں۔",
+          "subtitle": "کام اور روزمرہ کی زندگی کے لیے معاون"
+        }
+      },
+      "controls": {
+        "back": "پیچھے",
+        "continue": "جاری رکھیں",
+        "finish": "۔\nپریمیم دریافت کریں۔"
+      }
     }
   },
   "coinStore": {
@@ -679,14 +831,14 @@
     "modelsHeadline": "GPT-5.5، Grok، Gemini",
     "close": "پے وال بند کریں۔",
     "unavailableTitle": "خریداریاں دستیاب نہیں ہیں۔",
-    "unavailableMessage": "۔\nAndroid بلنگ ابھی تک کنفیگر نہیں ہوئی ہے۔",
+    "unavailableMessage": "Android بلنگ ابھی تک کنفیگر نہیں ہوئی ہے۔",
     "restoreEmptyTitle": "کوئی خریداری نہیں ملی",
-    "restoreEmptyMessage": "۔\nہم اس اکاؤنٹ کو بحال کرنے کے لیے ایک فعال خریداری نہیں ڈھونڈ سکے۔",
-    "restoreFailedTitle": "۔\nبحالی ناکام ہوگئی",
+    "restoreEmptyMessage": "ہم اس اکاؤنٹ کو بحال کرنے کے لیے ایک فعال خریداری نہیں ڈھونڈ سکے۔",
+    "restoreFailedTitle": "بحالی ناکام ہوگئی",
     "restoreFailedMessage": "ابھی خریداریوں کو بحال کرنے سے قاصر ہے۔",
     "productsUnavailableTitle": "کوئی منصوبہ دستیاب نہیں ہے۔",
     "productsUnavailableMessage": "ابھی کوئی Android سبسکرپشن پروڈکٹس دستیاب نہیں ہیں۔",
-    "purchaseFailedTitle": "۔\nخریداری ناکام ہو گئی۔",
+    "purchaseFailedTitle": "خریداری ناکام ہو گئی۔",
     "purchaseFailedMessage": "اس خریداری کو ابھی مکمل کرنے سے قاصر ہے۔",
     "restore": "بحال کریں۔",
     "restoreRestoring": "۔\nبحال ہو رہا ہے…",
@@ -694,7 +846,7 @@
       "create": "تصاویر اور ویڈیوز بنائیں",
       "search": "۔\nAI کے ساتھ ویب پر تلاش کریں۔",
       "talk": "۔\nAI سے قدرتی طور پر بات کریں۔",
-      "imageStudio": "۔\nImage Studio {{credits}} کریڈٹس {{period}} حاصل کریں",
+      "imageStudio": "Image Studio {{credits}} کریڈٹس {{period}} حاصل کریں",
       "period": {
         "weekly": "ہفتہ وار",
         "monthly": "۔\nماہانہ",
@@ -712,7 +864,7 @@
       "yearly": {
         "title": "سالانہ",
         "only": "۔\nصرف {{price}}",
-        "defaultPrice": "۔\nUSD 79.99",
+        "defaultPrice": "USD 79.99",
         "defaultIntroPrice": "۔\nUSD 1.35"
       },
       "monthly": {
@@ -723,7 +875,7 @@
       "weekly": {
         "title": "ہفتہ وار",
         "subtitle": "کسی بھی وقت منسوخ کریں۔",
-        "defaultPrice": "۔\nUSD 9.99",
+        "defaultPrice": "USD 9.99",
         "trialThen": "3 دن مفت، پھر"
       }
     },
@@ -743,11 +895,41 @@
       "subtitleLine2": "۔\nجدید ماڈلز کے ساتھ۔",
       "enableTrial": "مفت آزمائش کو فعال کریں",
       "annual": "سالانہ",
-      "saveBadge": "۔\n83% بچائیں",
+      "saveBadge": "83% بچائیں",
       "year": "سال",
       "week": "ہفتہ",
       "termsOfUse": "استعمال کی شرائط",
       "privacyPolicy": "رازداری کی پالیسی"
+    },
+    "v3": {
+      "eyebrow": "کلاؤڈ AI پریمیم",
+      "trial": {
+        "headline": "تمام پریمیم خصوصیات کو غیر مقفل کریں۔",
+        "subtitle": "بالکل دیکھیں کیا ہوتا ہے اور کب ہوتا ہے۔",
+        "todayTitle": "آج",
+        "todayBody": "ہر پریمیم فیچر کو غیر مقفل کریں۔ اب کوئی ادائیگی باقی نہیں ہے۔",
+        "checkTitle": "2 دنوں میں — یاد دہانی",
+        "checkBody": "ہم آپ کو ایک اطلاع بھیجیں گے کہ آپ کا ٹرائل جلد ختم ہو رہا ہے۔",
+        "billingTitle": "3 دنوں میں",
+        "billingBody": "بلنگ خود بخود شروع ہو جاتی ہے الا یہ کہ آپ پہلے کسی بھی وقت منسوخ کر دیں۔",
+        "badge": "3 دن مفت",
+        "cardNote": "مفت آزمائش کے بعد",
+        "noPayment": "ابھی کوئی ادائیگی نہیں ہے۔",
+        "cta": "میرا 3 دن کا مفت ٹرائل شروع کریں۔",
+        "renewalTerms": "3 دن مفت، پھر {{price}} / {{period}}۔ منسوخ ہونے تک خودکار تجدید ہوتی ہے۔"
+      },
+      "annual": {
+        "headline": "کلاؤڈ AI کے ایک سال کو غیر مقفل کریں۔",
+        "subtitle": "چیٹ، تصاویر، اور ماہر AI مدد کے لیے ایک منصوبہ۔",
+        "todayTitle": "آج - پریمیم شروع ہوتا ہے۔",
+        "todayBody": "ہر پریمیم AI فیچر کو فوری طور پر غیر مقفل کریں۔",
+        "billingTitle": "سالانہ بل کیا جاتا ہے۔",
+        "billingBody": "{{price}} آپ کو پورے ایک سال تک رسائی فراہم کرتا ہے۔",
+        "renewalTitle": "سالانہ تجدید",
+        "renewalBody": "اپنی تجدید کی تاریخ سے پہلے کسی بھی وقت Google Play میں منسوخ کریں۔",
+        "cta": "جاری رکھیں",
+        "renewalTerms": "{{price}} / {{period}}۔ منسوخ ہونے تک خودکار تجدید ہوتی ہے۔"
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "تصاویر کا تجزیہ کیا جا رہا ہے…",
       "searching": "۔\nتلاش کر رہا ہے…",
-      "thinking": "۔\nسوچ رہا ہے…"
+      "thinking": "۔\nسوچ رہا ہے…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "۔\nویب تلاش",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "۔\nزیادہ سگنل، کم اسپریڈشیٹ شور۔"
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -947,7 +1148,7 @@
   },
   "common": {
     "ok": "ٹھیک ہے",
-    "retry": "۔\nدوبارہ کوشش کریں۔",
+    "retry": "دوبارہ کوشش کریں۔",
     "cancel": "منسوخ کریں۔",
     "allow": "اجازت دیں۔",
     "notNow": "۔\nابھی نہیں۔",
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "اپنے روزانہ سکے حاصل کریں",
       "subtitle": "ہر روز آئیں — انعام بڑھتا جائے گا۔",
-      "cta": "حاضری لگائیں",
+      "cta": "حاصل کریں",
       "claimed": "مل گئے! +{{amount}} سکے",
       "later": "بعد میں"
     }

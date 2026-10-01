@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Endelea",
+        "tryItFree": "Ijaribu Bila Malipo",
+        "back": "Nyuma"
+      },
+      "valueDemo": {
+        "title": "Tunataka ujaribu Cloud AI bila malipo",
+        "workspaceLabel": "AI NAFASI KAZI",
+        "userPromptLabel": "MAELEZO YA MTUMIAJI",
+        "aiTypingLabel": "KUANDIKA KWA AI",
+        "prompt": "Mwandikie mteja jibu la heshima kuhusu uwasilishaji uliochelewa.",
+        "response": "Jambo, asante kwa subira yako. Uwasilishaji wako unaweza kuchelewa kidogo. Nitawafahamisha.",
+        "cards": {
+          "doc": {
+            "title": "Muhtasari wa Hati",
+            "detail": "Faili ya kurasa 12 → Pointi 5 muhimu"
+          },
+          "reply": {
+            "title": "Jibu limeandaliwa",
+            "detail": "Sauti ya heshima na kitaalamu"
+          },
+          "translation": {
+            "title": "Tafsiri Tayari",
+            "detail": "Kiingereza → Kihispania"
+          }
+        },
+        "subtitle": "Andika, fupisha, tafsiri na uchanganue hati katika eneo moja la kazi la AI."
+      },
+      "goals": {
+        "title": "Unahitaji msaada gani?",
+        "subtitle": "Chagua bao 1-3. Tutaunda nafasi yako ya kazi ya AI.",
+        "emptyCta": "Chagua angalau bao 1",
+        "items": {
+          "workFaster": {
+            "title": "Fanya kazi haraka zaidi",
+            "subtitle": "Barua pepe, majibu, kazi"
+          },
+          "writeBetter": {
+            "title": "Andika vizuri zaidi",
+            "subtitle": "Rekebisha sauti, andika upya, boresha"
+          },
+          "understandDocuments": {
+            "title": "Fahamu hati",
+            "subtitle": "Muhtasari, skanisho, vidokezo muhimu"
+          },
+          "learnAnything": {
+            "title": "Jifunze chochote",
+            "subtitle": "Eleza mada kwa uwazi"
+          },
+          "createContent": {
+            "title": "Unda maudhui",
+            "subtitle": "Machapisho, manukuu, mawazo"
+          },
+          "planBusiness": {
+            "title": "Panga biashara",
+            "subtitle": "Mawazo, mkakati, otomatiki"
+          },
+          "personalClarity": {
+            "title": "Uwazi wa kibinafsi",
+            "subtitle": "Maamuzi, tabia, mawazo"
+          },
+          "askBigQuestions": {
+            "title": "Uliza maswali yoyote",
+            "subtitle": "Wakati ujao, maana, AI, maisha"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Inaunda msaidizi wako wa AI",
+        "readyTitle": "Mratibu wako wa AI yuko tayari",
+        "subtitle": "Mratibu wako amesanidiwa. Ufikiaji wa majaribio unawashwa sasa.",
+        "trialTitle": "Jaribio la siku 3",
+        "trialActivating": "inawasha",
+        "trialEnabled": "imewashwa",
+        "steps": {
+          "0": "Inatayarisha msaidizi wako",
+          "1": "Kubinafsisha majibu",
+          "2": "Inalinda ufikiaji",
+          "3": "Inamaliza usanidi"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Kutana",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Endelea",
       "start": "Hebu tuanze"
+    },
+    "v3": {
+      "intent": {
+        "overline": "FANYA YAKO",
+        "title": "Cloud AI inapaswa kukusaidia kufanya nini?",
+        "cta": "Endelea"
+      },
+      "goals": {
+        "ask": "Tafuta majibu",
+        "write": "Andika vizuri zaidi",
+        "create": "Unda picha",
+        "plan": "Panga siku yangu"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "TAFUTA MAJIBU",
+          "title": "Pata uwazi kwa haraka zaidi",
+          "subtitle": "Uliza kwa kawaida. Pata jibu wazi na hatua muhimu zinazofuata.",
+          "beat1": "Elewa",
+          "beat2": "Amua",
+          "beat3": "Songa mbele"
+        },
+        "write": {
+          "focus": "ANDIKA VIZURI",
+          "title": "Badilisha mawazo kuwa maneno",
+          "subtitle": "Toka kutoka kwa wazo gumu hadi uandishi unaosikika kama wewe.",
+          "beat1": "Umbo",
+          "beat2": "Safisha",
+          "beat3": "Shiriki"
+        },
+        "create": {
+          "focus": "TENGENEZA PICHA",
+          "title": "Lete mawazo maishani",
+          "subtitle": "Eleza unachofikiria, kisha uunde na ukiboresha kwa sekunde.",
+          "beat1": "Fikiria",
+          "beat2": "Unda",
+          "beat3": "Kamilifu"
+        },
+        "plan": {
+          "focus": "PANGA SIKU YANGU",
+          "title": "Tengeneza nafasi kwa mambo muhimu",
+          "subtitle": "Geuza orodha yenye shughuli nyingi kuwa mpango tulivu ambao unaweza kufuata.",
+          "beat1": "Weka kipaumbele",
+          "beat2": "Panga",
+          "beat3": "Anza"
+        }
+      },
+      "proof": {
+        "overline": "YOTE KATIKA SEHEMU MOJA",
+        "title": "Sehemu moja. Uwezekano zaidi.",
+        "subtitle": "Sogeza kutoka swali hadi uundaji bila kubadili kati ya programu.",
+        "item1": {
+          "title": "Uliza chochote",
+          "subtitle": "Mifano ya hali ya juu kwa majibu wazi na muhimu"
+        },
+        "item2": {
+          "title": "Unda picha",
+          "subtitle": "Geuza wazo kuwa kitu unachoweza kuona"
+        },
+        "item3": {
+          "title": "Pata usaidizi wa kitaalam",
+          "subtitle": "Wasaidizi wa kazi na maisha ya kila siku"
+        }
+      },
+      "controls": {
+        "back": "Nyuma",
+        "continue": "Endelea",
+        "finish": "Gundua malipo yanayolipiwa"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "wiki",
       "termsOfUse": "Masharti ya Matumizi",
       "privacyPolicy": "Sera ya Faragha || programu ya simu paywall UI"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Fungua vipengele vyote vinavyolipiwa",
+        "subtitle": "Angalia hasa nini kinatokea na wakati.",
+        "todayTitle": "Leo",
+        "todayBody": "Fungua kila kipengele kinacholipiwa. Hakuna malipo yanayostahili sasa.",
+        "checkTitle": "Baada ya siku 2 - Kikumbusho",
+        "checkBody": "Tutakutumia arifa kwamba toleo lako la kujaribu litakwisha hivi karibuni.",
+        "billingTitle": "Baada ya siku 3",
+        "billingBody": "Malipo huanza kiotomatiki isipokuwa ughairi wakati wowote hapo awali.",
+        "badge": "SIKU 3 BILA MALIPO",
+        "cardNote": "Baada ya jaribio la bure",
+        "noPayment": "Hakuna Malipo Yanayodaiwa Sasa",
+        "cta": "Anza Jaribio Langu la Siku 3 Bila Malipo",
+        "renewalTerms": "Siku 3 bila malipo, kisha {{price}} / {{period}}. Husasisha kiotomatiki hadi kughairiwa."
+      },
+      "annual": {
+        "headline": "Fungua mwaka wa Cloud AI",
+        "subtitle": "Mpango mmoja wa gumzo, picha, na usaidizi wa kitaalam wa AI.",
+        "todayTitle": "Leo - malipo yanaanza",
+        "todayBody": "Fungua kila kipengele cha AI cha kwanza mara moja.",
+        "billingTitle": "Hutozwa kila mwaka",
+        "billingBody": "{{price}} hukupa mwaka mmoja kamili wa ufikiaji.",
+        "renewalTitle": "Husasishwa kila mwaka",
+        "renewalBody": "Ghairi wakati wowote katika Google Play kabla ya tarehe yako ya kusasishwa.",
+        "cta": "Endelea",
+        "renewalTerms": "{{price}} / {{period}}. Husasisha kiotomatiki hadi kughairiwa."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Inachanganua picha...",
       "searching": "Inatafuta...",
-      "thinking": "Kufikiri..."
+      "thinking": "Kufikiri...",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Utafutaji wa wavuti",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Ishara zaidi, kelele kidogo ya lahajedwali."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Chukua sarafu zako za kila siku",
       "subtitle": "Rudi kila siku — zawadi inaongezeka.",
-      "cta": "Jisajili",
+      "cta": "Chukua",
       "claimed": "Imepokelewa! +{{amount}} sarafu",
       "later": "Baadaye"
     }

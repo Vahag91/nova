@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "متابعة",
+        "tryItFree": "جرّبه مجانًا",
+        "back": "العودة"
+      },
+      "valueDemo": {
+        "title": "نريد منك تجربة Cloud AI مجانًا",
+        "workspaceLabel": "مساحة عمل الذكاء الاصطناعي",
+        "userPromptLabel": "مطالبة المستخدم",
+        "aiTypingLabel": "الكتابة بالذكاء الاصطناعي",
+        "prompt": "اكتب ردًا مهذبًا للعميل بشأن تأخر التسليم.",
+        "response": "مرحبًا، شكرًا على سعة صدرك. قد يتأخر تسليمك قليلاً. سأبقيك على اطلاع.",
+        "cards": {
+          "doc": {
+            "title": "ملخص الوثيقة",
+            "detail": "ملف مكون من 12 صفحة → 5 نقاط رئيسية"
+          },
+          "reply": {
+            "title": "تمت صياغة الرد",
+            "detail": "نبرة مهذبة ومهنية"
+          },
+          "translation": {
+            "title": "الترجمة جاهزة",
+            "detail": "الإنجليزية → الإسبانية"
+          }
+        },
+        "subtitle": "اكتب ولخّص وترجم وامسح المستندات ضوئيًا في مساحة عمل ذكاء اصطناعي واحدة."
+      },
+      "goals": {
+        "title": "ما الذي تحتاج للمساعدة فيه؟",
+        "subtitle": "اختر 1-3 أهداف. سنقوم ببناء مساحة عمل الذكاء الاصطناعي الخاصة بك.",
+        "emptyCta": "اختر هدفًا واحدًا على الأقل",
+        "items": {
+          "workFaster": {
+            "title": "العمل بشكل أسرع",
+            "subtitle": "رسائل البريد الإلكتروني والردود والمهام"
+          },
+          "writeBetter": {
+            "title": "اكتب بشكل أفضل",
+            "subtitle": "إصلاح النغمة وإعادة الكتابة والتحسين"
+          },
+          "understandDocuments": {
+            "title": "فهم المستندات",
+            "subtitle": "الملخصات، والمسح، والنقاط الرئيسية"
+          },
+          "learnAnything": {
+            "title": "تعلم أي شيء",
+            "subtitle": "اشرح المواضيع بوضوح"
+          },
+          "createContent": {
+            "title": "إنشاء المحتوى",
+            "subtitle": "منشورات، تعليقات، أفكار"
+          },
+          "planBusiness": {
+            "title": "تخطيط الأعمال",
+            "subtitle": "الأفكار والاستراتيجية والأتمتة"
+          },
+          "personalClarity": {
+            "title": "الوضوح الشخصي",
+            "subtitle": "القرارات والعادات والأفكار"
+          },
+          "askBigQuestions": {
+            "title": "اطرح أية أسئلة",
+            "subtitle": "المستقبل، المعنى، الذكاء الاصطناعي، الحياة"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "إنشاء مساعد الذكاء الاصطناعي الخاص بك",
+        "readyTitle": "مساعد الذكاء الاصطناعي الخاص بك جاهز",
+        "subtitle": "تم تكوين المساعد الخاص بك. يتم تشغيل الوصول التجريبي الآن.",
+        "trialTitle": "محاكمة لمدة 3 أيام",
+        "trialActivating": "التفعيل",
+        "trialEnabled": "ممكّن",
+        "steps": {
+          "0": "إعداد مساعدك",
+          "1": "تخصيص الاستجابات",
+          "2": "تأمين الوصول",
+          "3": "الانتهاء من الإعداد"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "تعرّف على",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "متابعة",
       "start": "لنبدأ"
+    },
+    "v3": {
+      "intent": {
+        "overline": "اجعلها ملكك",
+        "title": "ما الذي يجب أن يساعدك Cloud AI في فعله؟",
+        "cta": "متابعة"
+      },
+      "goals": {
+        "ask": "العثور على إجابات",
+        "write": "اكتب بشكل أفضل",
+        "create": "إنشاء الصور",
+        "plan": "خطط ليومي"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ابحث عن الإجابات",
+          "title": "العثور على الوضوح بشكل أسرع",
+          "subtitle": "اسأل بشكل طبيعي. احصل على إجابة واضحة وخطوات تالية مفيدة.",
+          "beat1": "افهم",
+          "beat2": "قرر",
+          "beat3": "المضي قدما"
+        },
+        "write": {
+          "focus": "اكتب بشكل أفضل",
+          "title": "تحويل الأفكار إلى كلمات",
+          "subtitle": "انتقل من فكرة تقريبية إلى الكتابة التي تبدو مثلك.",
+          "beat1": "الشكل",
+          "beat2": "صقل",
+          "beat3": "شارك"
+        },
+        "create": {
+          "focus": "إنشاء صور",
+          "title": "جلب الأفكار إلى الحياة",
+          "subtitle": "قم بوصف ما تتخيله، ثم قم بإنشائه وتحسينه في ثوانٍ.",
+          "beat1": "تخيل",
+          "beat2": "إنشاء",
+          "beat3": "مثالي"
+        },
+        "plan": {
+          "focus": "خطط ليومي",
+          "title": "إفساح المجال لما يهم",
+          "subtitle": "قم بتحويل قائمة مزدحمة إلى خطة هادئة يمكنك اتباعها بالفعل.",
+          "beat1": "تحديد الأولويات",
+          "beat2": "تنظيم",
+          "beat3": "ابدأ"
+        }
+      },
+      "proof": {
+        "overline": "كل ذلك في مكان واحد",
+        "title": "مكان واحد. المزيد من الاحتمالات.",
+        "subtitle": "انتقل من السؤال إلى الإبداع دون التبديل بين التطبيقات.",
+        "item1": {
+          "title": "اسأل أي شيء",
+          "subtitle": "نماذج متقدمة للحصول على إجابات واضحة ومفيدة"
+        },
+        "item2": {
+          "title": "إنشاء الصور",
+          "subtitle": "تحويل الفكرة إلى شيء يمكنك رؤيته"
+        },
+        "item3": {
+          "title": "احصل على مساعدة الخبراء",
+          "subtitle": "مساعدين للعمل والحياة اليومية"
+        }
+      },
+      "controls": {
+        "back": "العودة",
+        "continue": "متابعة",
+        "finish": "اكتشف قسط"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "الاسبوع",
       "termsOfUse": "شروط الاستخدام",
       "privacyPolicy": "سياسة الخصوصية"
+    },
+    "v3": {
+      "eyebrow": "سحابة الذكاء الاصطناعي بريميوم",
+      "trial": {
+        "headline": "فتح جميع الميزات المتميزة",
+        "subtitle": "انظر بالضبط ماذا يحدث ومتى.",
+        "todayTitle": "اليوم",
+        "todayBody": "فتح كل ميزة متميزة. لا يوجد دفع مستحق الآن.",
+        "checkTitle": "في يومين – تذكير",
+        "checkBody": "سنرسل إليك إشعارًا بأن الفترة التجريبية الخاصة بك ستنتهي قريبًا.",
+        "billingTitle": "في 3 أيام",
+        "billingBody": "تبدأ عملية الفوترة تلقائيًا ما لم تقم بالإلغاء في أي وقت قبل ذلك.",
+        "badge": "3 أيام مجانية",
+        "cardNote": "بعد التجربة المجانية",
+        "noPayment": "لا يوجد دفع مستحق الآن",
+        "cta": "ابدأ تجربتي المجانية لمدة 3 أيام",
+        "renewalTerms": "3 أيام مجانًا، ثم {{price}} / {{period}}. التجديد التلقائي حتى يتم إلغاؤه."
+      },
+      "annual": {
+        "headline": "افتح عامًا من Cloud AI",
+        "subtitle": "خطة واحدة للدردشة والصور ومساعدة خبراء الذكاء الاصطناعي.",
+        "todayTitle": "اليوم - يبدأ قسط التأمين",
+        "todayBody": "افتح كل ميزات الذكاء الاصطناعي المتميزة على الفور.",
+        "billingTitle": "يتم إصدار الفاتورة سنويًا",
+        "billingBody": "يمنحك {{price}} سنة كاملة من الوصول.",
+        "renewalTitle": "يتجدد سنويا",
+        "renewalBody": "قم بالإلغاء في أي وقت في Google Play قبل تاريخ التجديد.",
+        "cta": "متابعة",
+        "renewalTerms": "{{price}} / {{period}}. التجديد التلقائي حتى يتم إلغاؤه."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "جارٍ تحليل الصور…",
       "searching": "جارٍ البحث…",
-      "thinking": "جارٍ التفكير…"
+      "thinking": "جارٍ التفكير…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "بحث الويب",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "إشارة أكثر، ضوضاء أقل في جدول البيانات."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "احصل على عملاتك اليومية",
       "subtitle": "عد كل يوم لتزداد المكافأة.",
-      "cta": "تسجيل الحضور",
+      "cta": "استلام",
       "claimed": "تم الاستلام! +{{amount}} عملة",
       "later": "لاحقًا"
     }

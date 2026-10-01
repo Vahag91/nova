@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Nastavi",
+        "tryItFree": "Isprobaj besplatno",
+        "back": "natrag"
+      },
+      "valueDemo": {
+        "title": "Želimo da isprobate Cloud AI besplatno",
+        "workspaceLabel": "AI RADNI PROSTOR",
+        "userPromptLabel": "KORISNIČKI PROMPT",
+        "aiTypingLabel": "AI TIPANJE",
+        "prompt": "Napišite ljubazan odgovor klijentu o odgođenoj isporuci.",
+        "response": "Bok, hvala na strpljenju. Vaša isporuka može malo kasniti. Obavještavat ću vas.",
+        "cards": {
+          "doc": {
+            "title": "Sažetak dokumenta",
+            "detail": "Datoteka od 12 stranica → 5 ključnih točaka"
+          },
+          "reply": {
+            "title": "Odgovor sastavljen",
+            "detail": "Pristojan, profesionalan ton"
+          },
+          "translation": {
+            "title": "Prijevod spreman",
+            "detail": "engleski → španjolski"
+          }
+        },
+        "subtitle": "Pišite, sažimajte, prevodite i skenirajte dokumente u jednom AI radnom prostoru."
+      },
+      "goals": {
+        "title": "Oko čega vam je potrebna pomoć?",
+        "subtitle": "Odaberite 1–3 gola. Izgradit ćemo vaš AI radni prostor.",
+        "emptyCta": "Odaberite barem 1 cilj",
+        "items": {
+          "workFaster": {
+            "title": "Radite brže",
+            "subtitle": "E-pošta, odgovori, zadaci"
+          },
+          "writeBetter": {
+            "title": "Napiši bolje",
+            "subtitle": "Popravite ton, prepišite, poboljšajte"
+          },
+          "understandDocuments": {
+            "title": "Razumjeti dokumente",
+            "subtitle": "Sažeci, skenovi, ključne točke"
+          },
+          "learnAnything": {
+            "title": "Nauči bilo što",
+            "subtitle": "Jasno objasnite teme"
+          },
+          "createContent": {
+            "title": "Stvorite sadržaj",
+            "subtitle": "Objave, opisi, ideje"
+          },
+          "planBusiness": {
+            "title": "Planirajte posao",
+            "subtitle": "Ideje, strategija, automatizacija"
+          },
+          "personalClarity": {
+            "title": "Osobna jasnoća",
+            "subtitle": "Odluke, navike, razmišljanja"
+          },
+          "askBigQuestions": {
+            "title": "Postavite sva pitanja",
+            "subtitle": "Budućnost, smisao, AI, život"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Stvaranje vašeg AI pomoćnika",
+        "readyTitle": "Vaš AI asistent je spreman",
+        "subtitle": "Vaš pomoćnik je konfiguriran. Probni pristup se sada uključuje.",
+        "trialTitle": "3 dana probe",
+        "trialActivating": "aktiviranje",
+        "trialEnabled": "omogućeno",
+        "steps": {
+          "0": "Priprema vašeg pomoćnika",
+          "1": "Personaliziranje odgovora",
+          "2": "Osiguravanje pristupa",
+          "3": "Dovršavanje postavljanja"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Upoznaj",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Nastavi",
       "start": "Krenimo"
+    },
+    "v3": {
+      "intent": {
+        "overline": "NEKA BUDE SVOJ",
+        "title": "U čemu bi vam Cloud AI trebao pomoći?",
+        "cta": "nastavi"
+      },
+      "goals": {
+        "ask": "Pronađite odgovore",
+        "write": "Napiši bolje",
+        "create": "Stvorite slike",
+        "plan": "Isplaniraj dan"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "PRONAĐITE ODGOVORE",
+          "title": "Brže pronađite jasnoću",
+          "subtitle": "Pitajte prirodno. Dobijte jasan odgovor i korisne sljedeće korake.",
+          "beat1": "razumjeti",
+          "beat2": "odlučiti",
+          "beat3": "Kreni naprijed"
+        },
+        "write": {
+          "focus": "PIŠI BOLJE",
+          "title": "Pretvorite misli u riječi",
+          "subtitle": "Prijeđite s grube ideje na pisanje koje zvuči poput vas.",
+          "beat1": "oblik",
+          "beat2": "Pročistiti",
+          "beat3": "Podijelite"
+        },
+        "create": {
+          "focus": "STVARAJTE SLIKE",
+          "title": "Oživite ideje",
+          "subtitle": "Opišite što zamislite, a zatim to stvorite i doradite u nekoliko sekundi.",
+          "beat1": "Zamislite",
+          "beat2": "Stvorite",
+          "beat3": "savršeno"
+        },
+        "plan": {
+          "focus": "PLANIRAJ MOJ DAN",
+          "title": "Napravite mjesta za ono što je važno",
+          "subtitle": "Pretvorite popis zauzetih poslova u miran plan koji zapravo možete slijediti.",
+          "beat1": "Postavite prioritete",
+          "beat2": "Organizirajte se",
+          "beat3": "Počnite"
+        }
+      },
+      "proof": {
+        "overline": "SVE NA JEDNOM MJESTU",
+        "title": "Jedno mjesto. Više mogućnosti.",
+        "subtitle": "Prijeđite s pitanja na stvaranje bez prebacivanja između aplikacija.",
+        "item1": {
+          "title": "Pitajte bilo što",
+          "subtitle": "Napredni modeli za jasne, korisne odgovore"
+        },
+        "item2": {
+          "title": "Stvorite slike",
+          "subtitle": "Pretvorite ideju u nešto što možete vidjeti"
+        },
+        "item3": {
+          "title": "Zatražite stručnu pomoć",
+          "subtitle": "Pomoćnici za rad i svakodnevni život"
+        }
+      },
+      "controls": {
+        "back": "natrag",
+        "continue": "nastavi",
+        "finish": "Istražite premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "tjedan",
       "termsOfUse": "Uvjeti korištenja",
       "privacyPolicy": "Politika privatnosti"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Otključajte sve premium značajke",
+        "subtitle": "Pogledajte točno što se događa i kada.",
+        "todayTitle": "Danas",
+        "todayBody": "Otključajte svaku premium značajku. Trenutno nema plaćanja.",
+        "checkTitle": "Za 2 dana — Podsjetnik",
+        "checkBody": "Poslat ćemo vam obavijest da vaše probno razdoblje uskoro završava.",
+        "billingTitle": "Za 3 dana",
+        "billingBody": "Naplata počinje automatski osim ako ne otkažete bilo kada prije.",
+        "badge": "3 DANA BESPLATNO",
+        "cardNote": "Nakon besplatne probe",
+        "noPayment": "Sada nema plaćanja",
+        "cta": "Započni moju 3-dnevnu besplatnu probu",
+        "renewalTerms": "3 dana besplatno, zatim {{price}} / {{period}}. Automatski se obnavlja do otkazivanja."
+      },
+      "annual": {
+        "headline": "Otključajte godinu dana Cloud AI-ja",
+        "subtitle": "Jedan plan za chat, slike i stručnu AI pomoć.",
+        "todayTitle": "Danas — počinje premium",
+        "todayBody": "Odmah otključajte svaku premium AI značajku.",
+        "billingTitle": "Naplaćuje se godišnje",
+        "billingBody": "{{price}} vam daje jednu punu godinu pristupa.",
+        "renewalTitle": "Obnavlja se godišnje",
+        "renewalBody": "Otkažite bilo kada u Google Play prije datuma obnove.",
+        "cta": "Nastavi",
+        "renewalTerms": "{{price}} / {{period}}. Automatski se obnavlja do otkazivanja."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analiziram slike…",
       "searching": "Pretražujem…",
-      "thinking": "Razmišljam…"
+      "thinking": "Razmišljam…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Web pretraživanje",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Više signala, manje šuma proračunske tablice."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Preuzmite dnevne novčiće",
       "subtitle": "Vraćajte se svaki dan — nagrada raste.",
-      "cta": "Prijavi se",
+      "cta": "Preuzmi",
       "claimed": "Primljeno! +{{amount}} novčića",
       "later": "Kasnije"
     }

@@ -1,5 +1,6 @@
+import { IMAGE_STUDIO_ENABLED } from '../../constants/featureFlags';
 import React, { useMemo, useState, useEffect, useCallback, memo, useRef, useContext } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, ScrollView, Modal, Dimensions, Keyboard } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, ScrollView, Modal, Dimensions, Keyboard, ActivityIndicator } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, interpolate, Extrapolation } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 // --- NEW IMPORT ---
@@ -11,6 +12,12 @@ import { SubscriptionAccessContext } from '../../context/SubscriptionContext';
 import { setPendingPremiumAction } from '../../state/premiumActions';
 import { resolvePremiumStatus } from '../../lib/resolvePremiumStatus';
 import { perfCancel, perfEnd, perfLog, perfStart } from '../../lib/perfTrace';
+import {
+  formatFileSize,
+  isAttachmentReady,
+  isDocumentAttachment,
+  isImageAttachment,
+} from '../../lib/documentAttachments';
 
 const noop = () => { };
 
@@ -49,6 +56,11 @@ const CameraIcon = ({ color = "#00BCD4", size = 24 }) => (
     <Path d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z" />
   </Svg>
 );
+const FileIcon = ({ color = "#5AC8FA", size = 24 }) => (
+  <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
+    <Path d="M240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h280l240 240v480q0 33-23.5 56.5T680-80H240Zm240-520h200L480-800v200ZM240-160h440v-360H400v-280H240v640Zm80-120h280v-80H320v80Zm0-160h280v-80H320v80Z" />
+  </Svg>
+);
 const ExploreIcon = ({ color = "#FF9800", size = 24 }) => (
   <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
     <Path d="m300-300 280-80 80-280-280 80-80 280Zm180-120q-25 0-42.5-17.5T420-480q0-25 17.5-42.5T480-540q25 0 42.5 17.5T540-480q0 25-17.5 42.5T480-420Zm0 340q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Zm0-320Z" />
@@ -59,14 +71,15 @@ function TestInput({
   value, onChange, onSend, onStop,
   streaming, offline = false,
   placeholder,
-  onCreateImagesPress = noop, onOpenCameraPress = noop, onSearchPress = noop, onClipboardPress = noop,
+  onCreateImagesPress = noop, onOpenCameraPress = noop, onOpenFilePress = noop, onSearchPress = noop, onClipboardPress = noop,
   onMicPress = noop, onMicHoldStart = noop, onMicHoldEnd = noop,
   navigation,
-  attachments = [], onRemoveAttachment = noop,
-  maxLength = 4000, minInputHeight = 40, maxInputHeight = 140,
+  attachments = [], onRemoveAttachment = noop, onRetryAttachment = noop,
+  maxLength = 4000, counterLimit = maxLength, minInputHeight = 40, maxInputHeight = 140,
   forceCollapsed = false, isRecording = false,
   webSearchEnabled = false,
   imagePickerActive = false,
+  documentPickerActive = false,
 }) {
   const { t } = useTranslation();
   const subscription = useContext(SubscriptionAccessContext);
@@ -90,6 +103,21 @@ function TestInput({
     } catch (error) {
     }
   }, [navigation, onSearchPress, subscription]);
+
+  const handleDocumentPress = useCallback(async () => {
+    if (await resolvePremiumStatus(subscription)) {
+      onOpenFilePress();
+      return;
+    }
+    setPendingPremiumAction(() => {
+      try {
+        onOpenFilePress();
+      } catch {}
+    });
+    try {
+      navigation?.navigate('PaywallScreen', { returnTo: 'Chat' });
+    } catch {}
+  }, [navigation, onOpenFilePress, subscription]);
 
   const safe = useCallback((fn, ...args) => {
     if (typeof fn !== 'function') return;
@@ -153,11 +181,24 @@ function TestInput({
     });
   }, [webSearchEnabled, webSearchTextVisible]);
 
+  const imageAttachments = useMemo(
+    () => (Array.isArray(attachments) ? attachments.filter(isImageAttachment) : []),
+    [attachments],
+  );
+  const documentAttachments = useMemo(
+    () => (Array.isArray(attachments) ? attachments.filter(isDocumentAttachment) : []),
+    [attachments],
+  );
+  const attachmentsReady = useMemo(
+    () => (Array.isArray(attachments) ? attachments.every(isAttachmentReady) : true),
+    [attachments],
+  );
+
   const canSend = useMemo(() => {
     const hasText = !!(value && value.trim().length > 0);
-    const hasImages = attachments?.length > 0;
-    return !streaming && !offline && (hasText || hasImages);
-  }, [streaming, offline, value, attachments]);
+    const hasAttachments = attachments?.length > 0;
+    return !streaming && !offline && attachmentsReady && (hasText || hasAttachments);
+  }, [streaming, offline, value, attachments, attachmentsReady]);
 
   const useLatoForInput = useMemo(() => {
     const text = value ?? '';
@@ -167,7 +208,10 @@ function TestInput({
     return true;
   }, [value]);
 
-  const showCounter = useMemo(() => value && value.length >= Math.max(0, maxLength - 300), [value, maxLength]);
+  const showCounter = useMemo(
+    () => value && value.length >= Math.max(0, counterLimit - 300),
+    [counterLimit, value],
+  );
 
   const backdropAnimatedStyle = useAnimatedStyle(() => ({
     opacity: isOpen.value,
@@ -195,6 +239,7 @@ function TestInput({
   const menuItem1Style = useMenuItemStyle(0);
   const menuItem2Style = useMenuItemStyle(1);
   const menuItem3Style = useMenuItemStyle(2);
+  const menuItem4Style = useMenuItemStyle(3);
 
   const popoverAnimatedStyle = useAnimatedStyle(() => ({
     opacity: isOpen.value,
@@ -411,6 +456,12 @@ function TestInput({
     requestAnimationFrame(() => safe(handleWebSearchPress));
   }, [closeActionsImmediately, handleWebSearchPress, safe]);
 
+  const handleDocumentActionPress = useCallback(() => {
+    if (documentPickerActive) return;
+    closeActionsImmediately();
+    requestAnimationFrame(() => safe(handleDocumentPress));
+  }, [closeActionsImmediately, documentPickerActive, handleDocumentPress, safe]);
+
   useEffect(() => {
     if (forceCollapsed && menuOpenRef.current) {
       closeActionsImmediately();
@@ -466,7 +517,7 @@ function TestInput({
             {anchor && (() => {
               const menuWidth = Math.min(menuViewport.width - 16, 360);
               const halfMenuWidth = menuWidth / 2;
-              const fallbackBottom = (MENU_ITEM_HEIGHT * 3 + 2) + 36 - 64;
+              const fallbackBottom = (MENU_ITEM_HEIGHT * 4 + 2) + 36 - 64;
               const gap = 12;
               const hasAnchorY = typeof anchor.y === 'number' && Number.isFinite(anchor.y) && anchor.y > 0 && anchor.y < menuViewport.height;
               const bottomOffset = hasAnchorY ? Math.max(8, menuViewport.height - anchor.y + gap) : fallbackBottom;
@@ -479,6 +530,7 @@ function TestInput({
                   width: menuWidth,
                 }]}>
                   <View style={styles.menuBox}>
+                    {IMAGE_STUDIO_ENABLED ? (
                     <Animated.View style={menuItem1Style}>
                       <TouchableOpacity
                         style={styles.menuItem}
@@ -496,6 +548,7 @@ function TestInput({
                         </View>
                       </TouchableOpacity>
                     </Animated.View>
+                    ) : null}
 
                     <Animated.View style={menuItem2Style}>
                       <TouchableOpacity
@@ -517,6 +570,29 @@ function TestInput({
                     </Animated.View>
 
                     <Animated.View style={menuItem3Style}>
+                      <TouchableOpacity
+                        style={[styles.menuItem, documentPickerActive && styles.disabledBtn]}
+                        onPress={handleDocumentActionPress}
+                        disabled={documentPickerActive}
+                        accessibilityRole="button"
+                        accessibilityLabel={t('chat.files.upload', { defaultValue: 'Upload file' })}
+                        activeOpacity={0.9}
+                      >
+                        <View style={[styles.menuIconContainer, styles.iconBlue]}>
+                          <FileIcon color="#5AC8FA" size={28} />
+                        </View>
+                        <View style={styles.menuTextContainer}>
+                          <Text style={styles.menuLabel} numberOfLines={1}>
+                            {t('chat.files.upload', { defaultValue: 'Upload file' })}
+                          </Text>
+                          <Text style={styles.menuSubLabel} numberOfLines={1}>
+                            {t('chat.files.supportedTypes', { defaultValue: 'PDF, DOCX, TXT or CSV' })}
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    </Animated.View>
+
+                    <Animated.View style={menuItem4Style}>
                       <TouchableOpacity
                         style={[styles.menuItem, styles.menuItemLast]}
                         onPress={handleWebSearchActionPress}
@@ -542,9 +618,9 @@ function TestInput({
       )}
 
       <View style={styles.inputContainer}>
-        {Array.isArray(attachments) && attachments.filter(a => a && typeof a.uri === 'string' && a.uri.length > 0).length > 0 && (
+        {imageAttachments.length > 0 && (
           <ScrollView horizontal style={styles.thumbRow} contentContainerStyle={{ paddingVertical: 2 }} showsHorizontalScrollIndicator={false}>
-            {attachments
+            {imageAttachments
               .filter(a => a && typeof a.uri === 'string' && a.uri.length > 0)
               .map((a, idx) => (
                 <View key={a.id || `${a.uri}-${idx}`} style={styles.thumbWrap}>
@@ -554,6 +630,67 @@ function TestInput({
                   </TouchableOpacity>
                 </View>
               ))}
+          </ScrollView>
+        )}
+
+        {documentAttachments.length > 0 && (
+          <ScrollView
+            horizontal
+            style={styles.documentRow}
+            contentContainerStyle={styles.documentRowContent}
+            showsHorizontalScrollIndicator={false}
+          >
+            {documentAttachments.map((attachment, index) => {
+              const busy = attachment.status === 'queued' || attachment.status === 'uploading' || attachment.status === 'processing';
+              const failed = attachment.status === 'error';
+              const secondary = failed
+                ? t('chat.files.failed', { defaultValue: 'Upload failed' })
+                : busy
+                  ? `${Math.round((attachment.progress || 0) * 100)}%`
+                  : formatFileSize(attachment.size);
+              return (
+                <View
+                  key={attachment.id || `${attachment.name}-${index}`}
+                  style={[styles.documentChip, failed && styles.documentChipFailed]}
+                >
+                  <View style={styles.documentIconWrap}>
+                    {busy ? (
+                      <ActivityIndicator size="small" color="#5AC8FA" />
+                    ) : (
+                      <FileIcon color={failed ? '#FF6B6B' : '#5AC8FA'} size={20} />
+                    )}
+                  </View>
+                  <View style={styles.documentTextWrap}>
+                    <Text style={styles.documentName} numberOfLines={1}>{attachment.name}</Text>
+                    {!!secondary && (
+                      <Text style={[styles.documentMeta, failed && styles.documentMetaFailed]} numberOfLines={1}>
+                        {secondary}
+                      </Text>
+                    )}
+                  </View>
+                  {failed && !!attachment.uri && (
+                    <TouchableOpacity
+                      onPress={() => safe(onRetryAttachment, attachment, index)}
+                      accessibilityLabel={t('chat.files.retry', { defaultValue: 'Retry upload' })}
+                      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                      style={styles.documentRetry}
+                    >
+                      <Text style={styles.documentRetryText}>
+                        {t('chat.files.retryShort', { defaultValue: 'Retry' })}
+                      </Text>
+                    </TouchableOpacity>
+                  )}
+                  <TouchableOpacity
+                    onPress={() => safe(onRemoveAttachment, attachment, index)}
+                    accessibilityLabel={t('chat.files.remove', { defaultValue: 'Remove file' })}
+                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                    style={styles.documentRemove}
+                  >
+                    <Text style={styles.documentRemoveText}>✕</Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
           </ScrollView>
         )}
 
@@ -664,7 +801,7 @@ function TestInput({
 
         <View style={styles.metaRow}>
           {showCounter && !streaming ? (
-            <Text style={styles.metaCounter}>{(value || '').length}/{maxLength}</Text>
+            <Text style={styles.metaCounter}>{(value || '').length}/{counterLimit}</Text>
           ) : null}
         </View>
       </View>
@@ -706,6 +843,7 @@ const styles = StyleSheet.create({
   iconViolet: {},
   iconCyan: {},
   iconOrange: {},
+  iconBlue: {},
   menuTextContainer: { flex: 1 },
   menuLabel: { color: '#E0E0E0', fontSize: 17, fontWeight: '600', fontFamily: 'Lato-BoldItalic', marginBottom: 3 },
   menuSubLabel: { color: '#A0A0A0', fontSize: 14, fontFamily: 'Lato-Regular' },
@@ -722,6 +860,30 @@ const styles = StyleSheet.create({
   thumb: { width: '100%', height: '100%', borderRadius: 9 },
   thumbRemove: { position: 'absolute', top: -6, right: -6, backgroundColor: '#000000CC', width: 18, height: 18, borderRadius: 9, alignItems: 'center', justifyContent: 'center' },
   thumbRemoveText: { color: '#fff', fontSize: 11, fontWeight: '700' },
+  documentRow: { marginBottom: 8 },
+  documentRowContent: { gap: 8, paddingVertical: 2 },
+  documentChip: {
+    width: 220,
+    minHeight: 54,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 14,
+    backgroundColor: '#262628',
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+  },
+  documentChipFailed: { borderColor: 'rgba(255,107,107,0.6)' },
+  documentIconWrap: { width: 28, alignItems: 'center', justifyContent: 'center' },
+  documentTextWrap: { flex: 1, marginLeft: 8, marginRight: 8 },
+  documentName: { color: '#FFFFFF', fontSize: 13, fontFamily: 'Lato-Bold' },
+  documentMeta: { color: colors.textSecondary, fontSize: 11, marginTop: 2, fontFamily: 'Lato-Regular' },
+  documentMetaFailed: { color: '#FF8A8A' },
+  documentRetry: { minHeight: 28, justifyContent: 'center', paddingHorizontal: 6 },
+  documentRetryText: { color: '#5AC8FA', fontSize: 11, fontFamily: 'Lato-Bold' },
+  documentRemove: { width: 24, height: 24, alignItems: 'center', justifyContent: 'center' },
+  documentRemoveText: { color: '#FFFFFF', fontSize: 12, fontWeight: '700' },
 
   inputArea: { marginBottom: 8 },
   input: {
@@ -788,12 +950,16 @@ const areEqual = (prev, next) => {
   if (prev.isRecording !== next.isRecording) return false;
   if (prev.webSearchEnabled !== next.webSearchEnabled) return false;
   if (prev.imagePickerActive !== next.imagePickerActive) return false;
+  if (prev.documentPickerActive !== next.documentPickerActive) return false;
   if (prev.maxLength !== next.maxLength) return false;
+  if (prev.counterLimit !== next.counterLimit) return false;
   const pA = Array.isArray(prev.attachments) ? prev.attachments : [];
   const nA = Array.isArray(next.attachments) ? next.attachments : [];
   if (pA.length !== nA.length) return false;
   for (let i = 0; i < pA.length; i++) {
     if (pA[i]?.id !== nA[i]?.id) return false;
+    if (pA[i]?.status !== nA[i]?.status) return false;
+    if (pA[i]?.progress !== nA[i]?.progress) return false;
   }
   return true;
 };

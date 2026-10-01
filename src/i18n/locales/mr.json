@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "चालू ठेवा",
+        "tryItFree": "विनामूल्य वापरून पहा",
+        "back": "मागे"
+      },
+      "valueDemo": {
+        "title": "तुम्ही Cloud AI विनामूल्य वापरून पहावे अशी आमची इच्छा आहे",
+        "workspaceLabel": "एआय वर्कस्पेस",
+        "userPromptLabel": "वापरकर्ता प्रॉम्प्ट",
+        "aiTypingLabel": "एआय टायपिंग",
+        "prompt": "विलंबित वितरणाबद्दल क्लायंटला विनम्र उत्तर लिहा.",
+        "response": "हाय, तुमच्या संयमासाठी धन्यवाद. तुमच्या डिलिव्हरीला थोडा विलंब होऊ शकतो. मी तुम्हाला अपडेट ठेवेन.",
+        "cards": {
+          "doc": {
+            "title": "दस्तऐवज सारांश",
+            "detail": "12-पृष्ठ फाइल → 5 मुख्य मुद्दे"
+          },
+          "reply": {
+            "title": "उत्तर तयार",
+            "detail": "नम्र, व्यावसायिक शैली"
+          },
+          "translation": {
+            "title": "भाषांतर तयार आहे",
+            "detail": "इंग्रजी → स्पॅनिश"
+          }
+        },
+        "subtitle": "एका AI वर्कस्पेसमध्ये लिहा, सारांश करा, भाषांतर करा आणि दस्तऐवज स्कॅन करा."
+      },
+      "goals": {
+        "title": "तुम्हाला कशासाठी मदत हवी आहे?",
+        "subtitle": "1-3 गोल निवडा. आम्ही तुमचे AI कार्यक्षेत्र तयार करू.",
+        "emptyCta": "किमान 1 गोल निवडा",
+        "items": {
+          "workFaster": {
+            "title": "जलद कार्य करा",
+            "subtitle": "ईमेल, प्रत्युत्तरे, कार्ये"
+          },
+          "writeBetter": {
+            "title": "चांगले लिहा",
+            "subtitle": "टोन निश्चित करा, पुन्हा लिहा, सुधारा"
+          },
+          "understandDocuments": {
+            "title": "कागदपत्रे समजून घ्या",
+            "subtitle": "सारांश, स्कॅन, मुख्य मुद्दे"
+          },
+          "learnAnything": {
+            "title": "काहीही शिका",
+            "subtitle": "विषय स्पष्टपणे स्पष्ट करा"
+          },
+          "createContent": {
+            "title": "सामग्री तयार करा",
+            "subtitle": "पोस्ट, कॅप्शन, कल्पना"
+          },
+          "planBusiness": {
+            "title": "व्यवसायाची योजना करा",
+            "subtitle": "कल्पना, धोरण, ऑटोमेशन"
+          },
+          "personalClarity": {
+            "title": "वैयक्तिक स्पष्टता",
+            "subtitle": "निर्णय, सवयी, विचार"
+          },
+          "askBigQuestions": {
+            "title": "कोणतेही प्रश्न विचारा",
+            "subtitle": "भविष्य, अर्थ, AI, जीवन"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "तुमचा AI सहाय्यक तयार करत आहे",
+        "readyTitle": "तुमचा AI सहाय्यक तयार आहे",
+        "subtitle": "तुमचा सहाय्यक कॉन्फिगर केला आहे. चाचणी प्रवेश आता चालू आहे.",
+        "trialTitle": "3 दिवसांची चाचणी",
+        "trialActivating": "सक्रिय करत आहे",
+        "trialEnabled": "सक्षम",
+        "steps": {
+          "0": "तुमचा सहाय्यक तयार करत आहे",
+          "1": "प्रतिसाद वैयक्तिकृत करणे",
+          "2": "प्रवेश सुरक्षित करत आहे",
+          "3": "सेटअप पूर्ण करत आहे"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "भेटा",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "चालू ठेवा",
       "start": "चला सुरुवात करूया"
+    },
+    "v3": {
+      "intent": {
+        "overline": "ते तुमचे बनवा",
+        "title": "क्लाउड एआयने तुम्हाला काय मदत करावी?",
+        "cta": "चालू ठेवा"
+      },
+      "goals": {
+        "ask": "उत्तरे शोधा",
+        "write": "चांगले लिहा",
+        "create": "प्रतिमा तयार करा",
+        "plan": "माझ्या दिवसाची योजना करा"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "उत्तरे शोधा",
+          "title": "जलद स्पष्टता शोधा",
+          "subtitle": "स्वाभाविकपणे विचारा. स्पष्ट उत्तर आणि उपयुक्त पुढील पायऱ्या मिळवा.",
+          "beat1": "समजून घ्या",
+          "beat2": "ठरवा",
+          "beat3": "पुढे जा"
+        },
+        "write": {
+          "focus": "अधिक चांगले लिहा",
+          "title": "विचारांचे शब्दात रुपांतर करा",
+          "subtitle": "ढोबळ कल्पनेतून तुमच्यासारखे वाटेल असे लेखन करा.",
+          "beat1": "आकार",
+          "beat2": "परिष्कृत करा",
+          "beat3": "शेअर करा"
+        },
+        "create": {
+          "focus": "प्रतिमा तयार करा",
+          "title": "कल्पना जिवंत करा",
+          "subtitle": "तुम्ही काय कल्पना करता ते वर्णन करा, नंतर ते काही सेकंदात तयार करा आणि परिष्कृत करा.",
+          "beat1": "कल्पना करा",
+          "beat2": "तयार करा",
+          "beat3": "परफेक्ट"
+        },
+        "plan": {
+          "focus": "माझ्या दिवसाची योजना करा",
+          "title": "महत्त्वाच्या गोष्टींसाठी जागा तयार करा",
+          "subtitle": "व्यस्त सूचीला एका शांत योजनेत बदला ज्याचे तुम्ही प्रत्यक्षात अनुसरण करू शकता.",
+          "beat1": "प्राधान्य द्या",
+          "beat2": "आयोजित करा",
+          "beat3": "सुरुवात करा"
+        }
+      },
+      "proof": {
+        "overline": "सर्व एकाच ठिकाणी",
+        "title": "एक जागा. अधिक शक्यता.",
+        "subtitle": "ॲप्स दरम्यान स्विच न करता प्रश्नापासून निर्मितीकडे जा.",
+        "item1": {
+          "title": "काहीही विचारा",
+          "subtitle": "स्पष्ट, उपयुक्त उत्तरांसाठी प्रगत मॉडेल"
+        },
+        "item2": {
+          "title": "प्रतिमा तयार करा",
+          "subtitle": "एखाद्या कल्पनेला तुम्ही पाहू शकता अशा गोष्टीमध्ये बदला"
+        },
+        "item3": {
+          "title": "तज्ञांची मदत घ्या",
+          "subtitle": "कामासाठी आणि दैनंदिन जीवनासाठी सहाय्यक"
+        }
+      },
+      "controls": {
+        "back": "मागे",
+        "continue": "चालू ठेवा",
+        "finish": "प्रीमियम एक्सप्लोर करा"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "आठवडा",
       "termsOfUse": "वापराच्या अटी",
       "privacyPolicy": "गोपनीयता धोरण"
+    },
+    "v3": {
+      "eyebrow": "क्लाउड एआय प्रीमियम",
+      "trial": {
+        "headline": "सर्व प्रीमियम वैशिष्ट्ये अनलॉक करा",
+        "subtitle": "बघा नक्की काय आणि कधी.",
+        "todayTitle": "आज",
+        "todayBody": "प्रत्येक प्रीमियम वैशिष्ट्य अनलॉक करा. आता कोणतेही पेमेंट बाकी नाही.",
+        "checkTitle": "2 दिवसांत — स्मरणपत्र",
+        "checkBody": "तुमची चाचणी लवकरच संपत असल्याची सूचना आम्ही तुम्हाला पाठवू.",
+        "billingTitle": "3 दिवसात",
+        "billingBody": "तुम्ही आधी कधीही रद्द न केल्यास बिलिंग आपोआप सुरू होते.",
+        "badge": "3 दिवस मोफत",
+        "cardNote": "मोफत चाचणी नंतर",
+        "noPayment": "आता देय नाही",
+        "cta": "माझी 3-दिवसांची विनामूल्य चाचणी सुरू करा",
+        "renewalTerms": "3 दिवस विनामूल्य, नंतर {{price}} / {{period}}. रद्द होईपर्यंत स्वयं-नूतनीकरण."
+      },
+      "annual": {
+        "headline": "क्लाउड AI चे वर्ष अनलॉक करा",
+        "subtitle": "चॅट, प्रतिमा आणि तज्ञ AI मदतीसाठी एक योजना.",
+        "todayTitle": "आज — प्रीमियम सुरू होत आहे",
+        "todayBody": "प्रत्येक प्रीमियम AI वैशिष्ट्य त्वरित अनलॉक करा.",
+        "billingTitle": "दरवर्षी बिल केले जाते",
+        "billingBody": "{{price}} तुम्हाला पूर्ण वर्षाचा प्रवेश देते.",
+        "renewalTitle": "दरवर्षी नूतनीकरण होते",
+        "renewalBody": "तुमच्या नूतनीकरणाच्या तारखेपूर्वी Google Play मध्ये कधीही रद्द करा.",
+        "cta": "चालू ठेवा",
+        "renewalTerms": "{{price}} / {{period}}. रद्द होईपर्यंत स्वयं-नूतनीकरण."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "प्रतिमांचे विश्लेषण करत आहे...",
       "searching": "शोधत आहे...",
-      "thinking": "विचार करत आहे…"
+      "thinking": "विचार करत आहे…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "वेब शोध",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "अधिक सिग्नल, कमी स्प्रेडशीट आवाज."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "तुमची रोजची नाणी घ्या",
       "subtitle": "दररोज या — बक्षीस वाढत जाईल.",
-      "cta": "चेक-इन",
+      "cta": "मिळवा",
       "claimed": "मिळाले! +{{amount}} नाणी",
       "later": "नंतर"
     }

@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { Storage } from '../lib/storage';
 import { throttledSave } from '../lib/throttledSave';
 import { buildThreadIndexEntry, sortThreadIndex } from '../lib/threadIndex';
+import { DEFAULT_CHAT_MODEL } from '../config/models';
 import { newThread } from './types';
 
 const DEFAULT_THREAD_TITLE = 'assistant';
@@ -180,7 +181,7 @@ export const useThreadsStore = create((set, get) => ({
     return threadBodiesHydrationPromise;
   },
 
-  createThread: ({ title = DEFAULT_THREAD_TITLE, model = 'gpt-5.4-nano', system = null } = {}) => {
+  createThread: ({ title = DEFAULT_THREAD_TITLE, model = DEFAULT_CHAT_MODEL, system = null } = {}) => {
     const normalizedTitle = normalizeThreadTitle(title);
     const thread = newThread({ title: normalizedTitle, model, system });
 
@@ -210,6 +211,34 @@ export const useThreadsStore = create((set, get) => ({
       };
       const next = upsertThreadRecord(state, nextThread);
       Storage.saveThread(next.thread);
+      return {
+        threadIndex: next.threadIndex,
+        threadsById: next.threadsById,
+      };
+    });
+  },
+
+  updateMessage: (threadId, messageId, updater) => {
+    set(state => {
+      const current = state.threadsById?.[threadId];
+      if (!current) return {};
+
+      const messages = [...(current.messages || [])];
+      const messageIndex = messages.findIndex(message => message.id === messageId);
+      if (messageIndex < 0) return {};
+
+      const previous = messages[messageIndex];
+      const patch = typeof updater === 'function' ? updater(previous) : updater;
+      if (!patch) return {};
+
+      messages[messageIndex] = { ...previous, ...patch };
+      const nextThread = {
+        ...current,
+        messages,
+        updatedAt: Date.now(),
+      };
+      const next = upsertThreadRecord(state, nextThread);
+      throttledSave.queueSave(threadId, next.thread);
       return {
         threadIndex: next.threadIndex,
         threadsById: next.threadsById,
@@ -385,6 +414,44 @@ export const useThreadsStore = create((set, get) => ({
         privateThread: {
           ...thread,
           messages: [...(thread.messages || []), message],
+          updatedAt: Date.now(),
+        },
+      };
+    });
+  },
+
+  updatePrivateMessage: (messageId, updater) => {
+    set(state => {
+      const thread = state.privateThread;
+      if (!state.privateActive || !thread) return {};
+
+      const messages = [...(thread.messages || [])];
+      const messageIndex = messages.findIndex(message => message.id === messageId);
+      if (messageIndex < 0) return {};
+
+      const previous = messages[messageIndex];
+      const patch = typeof updater === 'function' ? updater(previous) : updater;
+      if (!patch) return {};
+
+      messages[messageIndex] = { ...previous, ...patch };
+      return {
+        privateThread: {
+          ...thread,
+          messages,
+          updatedAt: Date.now(),
+        },
+      };
+    });
+  },
+
+  removePrivateMessage: (messageId) => {
+    set(state => {
+      const thread = state.privateThread;
+      if (!state.privateActive || !thread) return {};
+      return {
+        privateThread: {
+          ...thread,
+          messages: (thread.messages || []).filter(message => message.id !== messageId),
           updatedAt: Date.now(),
         },
       };

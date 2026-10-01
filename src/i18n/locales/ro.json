@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Continuă",
+        "tryItFree": "Încearcă gratuit",
+        "back": "Înapoi"
+      },
+      "valueDemo": {
+        "title": "Vrem să încercați Cloud AI gratuit",
+        "workspaceLabel": "SPAȚIU DE LUCRU AI",
+        "userPromptLabel": "SOLICITATE UTILIZATOR",
+        "aiTypingLabel": "IA SCRIE",
+        "prompt": "Scrieți un răspuns politicos unui client despre o livrare întârziată.",
+        "response": "Bună, mulțumesc pentru răbdare. Livrarea dvs. poate fi ușor întârziată. te voi tine la curent.",
+        "cards": {
+          "doc": {
+            "title": "Rezumatul documentului",
+            "detail": "Fișier de 12 pagini → 5 puncte cheie"
+          },
+          "reply": {
+            "title": "Răspuns redactat",
+            "detail": "Ton politicos și profesional"
+          },
+          "translation": {
+            "title": "Traducere gata",
+            "detail": "engleză → spaniolă"
+          }
+        },
+        "subtitle": "Scrie, rezumă, traduce și scanează documente într-un singur spațiu de lucru AI."
+      },
+      "goals": {
+        "title": "Cu ce ai nevoie de ajutor?",
+        "subtitle": "Alegeți 1–3 obiective. Vă vom construi spațiul de lucru AI.",
+        "emptyCta": "Alegeți cel puțin un obiectiv",
+        "items": {
+          "workFaster": {
+            "title": "Lucrează mai repede",
+            "subtitle": "E-mailuri, răspunsuri, sarcini"
+          },
+          "writeBetter": {
+            "title": "Scrie mai bine",
+            "subtitle": "Remediați tonul, rescrieți, îmbunătățiți"
+          },
+          "understandDocuments": {
+            "title": "Înțelegeți documentele",
+            "subtitle": "Rezumate, scanări, puncte cheie"
+          },
+          "learnAnything": {
+            "title": "Învață orice",
+            "subtitle": "Explicați subiectele clar"
+          },
+          "createContent": {
+            "title": "Creați conținut",
+            "subtitle": "Postări, descrieri, idei"
+          },
+          "planBusiness": {
+            "title": "Planifică afaceri",
+            "subtitle": "Idei, strategie, automatizare"
+          },
+          "personalClarity": {
+            "title": "Claritate personală",
+            "subtitle": "Decizii, obiceiuri, gânduri"
+          },
+          "askBigQuestions": {
+            "title": "Pune orice întrebări",
+            "subtitle": "Viitorul, sensul, AI, viața"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Se creează asistentul AI",
+        "readyTitle": "Asistentul AI este gata",
+        "subtitle": "Asistentul dvs. este configurat. Accesul de probă se activează acum.",
+        "trialTitle": "Probă de 3 zile",
+        "trialActivating": "se activează",
+        "trialEnabled": "activat",
+        "steps": {
+          "0": "Vă pregătesc asistentul",
+          "1": "Personalizarea răspunsurilor",
+          "2": "Securizarea accesului",
+          "3": "Se termină configurarea"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Fă cunoștință cu",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Continuă",
       "start": "Să începem"
+    },
+    "v3": {
+      "intent": {
+        "overline": "FĂ-O AL TĂU",
+        "title": "Ce ar trebui să vă ajute Cloud AI?",
+        "cta": "Continuă"
+      },
+      "goals": {
+        "ask": "Găsiți răspunsuri",
+        "write": "Scrie mai bine",
+        "create": "Creați imagini",
+        "plan": "Planifică-mi ziua"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "GĂSIȚI RĂSPUNSURI",
+          "title": "Găsiți claritate mai repede",
+          "subtitle": "Întreabă natural. Obțineți un răspuns clar și următorii pași utili.",
+          "beat1": "Înțelege",
+          "beat2": "Hotărăște",
+          "beat3": "Înaintați"
+        },
+        "write": {
+          "focus": "SCRIE MAI BUN",
+          "title": "Transformă gândurile în cuvinte",
+          "subtitle": "Treci de la o idee grosieră la o scriere care sună ca tine.",
+          "beat1": "Formă",
+          "beat2": "Rafinați",
+          "beat3": "Distribuie"
+        },
+        "create": {
+          "focus": "CREAȚI IMAGINI",
+          "title": "Dă viață ideilor",
+          "subtitle": "Descrieți ceea ce vă imaginați, apoi creați-l și perfecționați-l în câteva secunde.",
+          "beat1": "Imaginați-vă",
+          "beat2": "Creați",
+          "beat3": "Rafinează"
+        },
+        "plan": {
+          "focus": "PLANIFICAȚI-M ZIUA",
+          "title": "Faceți spațiu pentru ceea ce contează",
+          "subtitle": "Transformă o listă ocupată într-un plan calm pe care îl poți urma cu adevărat.",
+          "beat1": "Prioritizează",
+          "beat2": "Organizați",
+          "beat3": "Începe"
+        }
+      },
+      "proof": {
+        "overline": "TOATE ÎN UN SINGUR LOC",
+        "title": "Un loc. Mai multe posibilități.",
+        "subtitle": "Treceți de la întrebare la creare fără a comuta între aplicații.",
+        "item1": {
+          "title": "Întreabă orice",
+          "subtitle": "Modele avansate pentru răspunsuri clare și utile"
+        },
+        "item2": {
+          "title": "Creați imagini",
+          "subtitle": "Transformă o idee în ceva ce poți vedea"
+        },
+        "item3": {
+          "title": "Obțineți ajutor de la experți",
+          "subtitle": "Asistenți pentru muncă și viața de zi cu zi"
+        }
+      },
+      "controls": {
+        "back": "Înapoi",
+        "continue": "Continuă",
+        "finish": "Explorați premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "saptamana",
       "termsOfUse": "Condiții de utilizare",
       "privacyPolicy": "Politica de confidențialitate"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Deblocați toate funcțiile premium",
+        "subtitle": "Vezi exact ce se întâmplă și când.",
+        "todayTitle": "Astăzi",
+        "todayBody": "Deblocați fiecare funcție premium. Nu se datorează nicio plată acum.",
+        "checkTitle": "În 2 zile — Memento",
+        "checkBody": "Vă vom trimite o notificare că perioada de încercare se încheie în curând.",
+        "billingTitle": "În 3 zile",
+        "billingBody": "Facturarea începe automat, cu excepția cazului în care anulați oricând înainte.",
+        "badge": "3 ZILE GRATUITE",
+        "cardNote": "După proba gratuită",
+        "noPayment": "Nicio plată datorată acum",
+        "cta": "Începeți încercarea mea gratuită de 3 zile",
+        "renewalTerms": "3 zile gratuite, apoi {{price}} / {{period}}. Se reînnoiește automat până la anulare."
+      },
+      "annual": {
+        "headline": "Deblocați un an de Cloud AI",
+        "subtitle": "Un plan pentru chat, imagini și ajutor expert AI.",
+        "todayTitle": "Astăzi — începe premium",
+        "todayBody": "Deblocați imediat fiecare funcție premium AI.",
+        "billingTitle": "Facturat anual",
+        "billingBody": "{{price}} vă oferă un an întreg de acces.",
+        "renewalTitle": "Se reînnoiește anual",
+        "renewalBody": "Anulați oricând în Google Play înainte de data de reînnoire.",
+        "cta": "Continuă",
+        "renewalTerms": "{{price}} / {{period}}. Se reînnoiește automat până la anulare."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Se analizează imaginile…",
       "searching": "Se caută…",
-      "thinking": "Se gândește…"
+      "thinking": "Se gândește…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Căutare web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Mai mult semnal, mai puțin zgomot din foaia de calcul."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Revendică-ți monedele zilnice",
       "subtitle": "Revino în fiecare zi — recompensa crește.",
-      "cta": "Înregistrează-mă",
+      "cta": "Revendică",
       "claimed": "Primit! +{{amount}} monede",
       "later": "Mai târziu"
     }

@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Davom eting",
+        "tryItFree": "Bepul sinab ko'ring",
+        "back": "Orqaga"
+      },
+      "valueDemo": {
+        "title": "Cloud AI-ni bepul sinab ko'rishingizni xohlaymiz",
+        "workspaceLabel": "AI ish maydoni",
+        "userPromptLabel": "FOYDALANUVCHI SAVDO",
+        "aiTypingLabel": "SUN’IY INTELLEKT YOZMOQDA",
+        "prompt": "Kechiktirilgan yetkazib berish haqida mijozga xushmuomalalik bilan javob yozing.",
+        "response": "Salom, sabringiz uchun rahmat. Yetkazib berishingiz biroz kechikishi mumkin. Men sizni yangilab turaman.",
+        "cards": {
+          "doc": {
+            "title": "Hujjat xulosasi",
+            "detail": "12 sahifali fayl → 5 ta asosiy nuqta"
+          },
+          "reply": {
+            "title": "Javob tayyorlandi",
+            "detail": "Xushmuomala, professional ohang"
+          },
+          "translation": {
+            "title": "Tarjima tayyor",
+            "detail": "Inglizcha → ispancha"
+          }
+        },
+        "subtitle": "Bitta AI ish maydonida yozing, qisqacha bayon qiling, tarjima qiling va hujjatlarni skanerlang."
+      },
+      "goals": {
+        "title": "Sizga nimada yordam kerak?",
+        "subtitle": "1–3 ta golni tanlang. Biz sizning AI ish joyingizni quramiz.",
+        "emptyCta": "Kamida 1 ta maqsadni tanlang",
+        "items": {
+          "workFaster": {
+            "title": "Tezroq ishlang",
+            "subtitle": "Elektron pochta xabarlari, javoblar, vazifalar"
+          },
+          "writeBetter": {
+            "title": "Yaxshiroq yozing",
+            "subtitle": "Ohangni tuzatish, qayta yozish, yaxshilash"
+          },
+          "understandDocuments": {
+            "title": "Hujjatlarni tushunish",
+            "subtitle": "Xulosa, skanerlar, asosiy fikrlar"
+          },
+          "learnAnything": {
+            "title": "Hamma narsani oʻrganing",
+            "subtitle": "Mavzularni aniq tushuntiring"
+          },
+          "createContent": {
+            "title": "Kontent yarating",
+            "subtitle": "Postlar, izohlar, g‘oyalar"
+          },
+          "planBusiness": {
+            "title": "Biznesni rejalashtirish",
+            "subtitle": "G'oyalar, strategiya, avtomatlashtirish"
+          },
+          "personalClarity": {
+            "title": "Shaxsiy aniqlik",
+            "subtitle": "Qarorlar, odatlar, fikrlar"
+          },
+          "askBigQuestions": {
+            "title": "Har qanday savol bering",
+            "subtitle": "Kelajak, ma'no, AI, hayot"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "AI yordamchisi yaratilmoqda",
+        "readyTitle": "Sizning AI yordamchingiz tayyor",
+        "subtitle": "Sizning yordamchingiz sozlangan. Sinov uchun ruxsat hozir yoqilmoqda.",
+        "trialTitle": "3 kunlik sinov",
+        "trialActivating": "faollashtirilmoqda",
+        "trialEnabled": "yoqilgan",
+        "steps": {
+          "0": "Assistent tayyorlanmoqda",
+          "1": "Javoblarni moslashtirish",
+          "2": "Kirish himoyasi",
+          "3": "Oʻrnatish tugallanmoqda"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Tanishish",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Davom eting",
       "start": "Boshlaylik"
+    },
+    "v3": {
+      "intent": {
+        "overline": "BUNI O'ZINGIZI QILING",
+        "title": "Cloud AI sizga nima yordam berishi kerak?",
+        "cta": "Davom eting"
+      },
+      "goals": {
+        "ask": "Javoblarni toping",
+        "write": "Yaxshiroq yozing",
+        "create": "Tasvirlar yaratish",
+        "plan": "Kunimni rejalashtir"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "JAVOBLARNI TOPISH",
+          "title": "Aniqlikni tezroq toping",
+          "subtitle": "Tabiiyki, so'rang. Aniq javob va foydali keyingi qadamlarni oling.",
+          "beat1": "Tushunmoq",
+          "beat2": "Qaror qiling",
+          "beat3": "Oldinga harakatlaning"
+        },
+        "write": {
+          "focus": "YAXSHI YAZING",
+          "title": "Fikrlarni so'zlarga aylantiring",
+          "subtitle": "Qo'pol fikrdan o'zingizga o'xshagan yozishga o'ting.",
+          "beat1": "Shakl",
+          "beat2": "Tozalash",
+          "beat3": "Ulashish"
+        },
+        "create": {
+          "focus": "TASVIRLAR YARATING",
+          "title": "G'oyalarni hayotga olib keling",
+          "subtitle": "Tasavvur qilgan narsangizni tasvirlab bering, keyin uni bir necha soniya ichida yarating va aniqlang.",
+          "beat1": "Tasavvur qiling",
+          "beat2": "Yaratish",
+          "beat3": "Mukammal"
+        },
+        "plan": {
+          "focus": "KUNIMNI REJAJLAYOR",
+          "title": "Muhim narsalarga joy ajrating",
+          "subtitle": "Band bo'lgan ro'yxatni siz amalda bajarishingiz mumkin bo'lgan xotirjam rejaga aylantiring.",
+          "beat1": "Ustuvorlik",
+          "beat2": "Tashkil eting",
+          "beat3": "Boshlash"
+        }
+      },
+      "proof": {
+        "overline": "HAMMA BIR YERDA",
+        "title": "Bir joy. Ko'proq imkoniyatlar.",
+        "subtitle": "Ilovalar o'rtasida almashmasdan savoldan yaratishga o'ting.",
+        "item1": {
+          "title": "Har qanday narsani so'rang",
+          "subtitle": "Aniq, foydali javoblar uchun ilg'or modellar"
+        },
+        "item2": {
+          "title": "Tasvirlar yaratish",
+          "subtitle": "Fikrni ko'rishingiz mumkin bo'lgan narsaga aylantiring"
+        },
+        "item3": {
+          "title": "Mutaxassis yordamini oling",
+          "subtitle": "Ish va kundalik hayot uchun yordamchilar"
+        }
+      },
+      "controls": {
+        "back": "Orqaga",
+        "continue": "Davom eting",
+        "finish": "Premium bilan tanishing"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "hafta",
       "termsOfUse": "Foydalanish shartlari",
       "privacyPolicy": "Maxfiylik siyosati"
+    },
+    "v3": {
+      "eyebrow": "Cloud AI PREMIUM",
+      "trial": {
+        "headline": "Barcha premium funksiyalarni qulfdan chiqaring",
+        "subtitle": "Qachon va nima sodir bo'lishini aniq ko'ring.",
+        "todayTitle": "Bugun",
+        "todayBody": "Har bir premium funksiyani oching. Hozir hech qanday to'lov kerak emas.",
+        "checkTitle": "2 kundan keyin — Eslatma",
+        "checkBody": "Tez orada sinov muddati tugashi haqida sizga bildirishnoma yuboramiz.",
+        "billingTitle": "3 kundan keyin",
+        "billingBody": "Agar avval bekor qilmasangiz, hisob-kitob avtomatik tarzda boshlanadi.",
+        "badge": "3 KUN BEPUL",
+        "cardNote": "Bepul sinovdan keyin",
+        "noPayment": "Hozir toʻlov yoʻq",
+        "cta": "Mening 3 kunlik bepul sinov muddatimni boshlang",
+        "renewalTerms": "3 kun bepul, keyin {{price}} / {{period}}. Bekor qilinmaguncha avtomatik yangilanadi."
+      },
+      "annual": {
+        "headline": "Bir yillik Cloud AI qulfini oching",
+        "subtitle": "Suhbat, tasvirlar va ekspert AI yordami uchun bitta reja.",
+        "todayTitle": "Bugun - premium boshlanadi",
+        "todayBody": "Har bir premium AI funksiyasini darhol oching.",
+        "billingTitle": "Yillik hisob-kitob qilinadi",
+        "billingBody": "{{price}} sizga bir yil to‘liq kirish imkoniyatini beradi.",
+        "renewalTitle": "Har yili yangilanadi",
+        "renewalBody": "Istalgan vaqtda yangilanish sanasidan oldin Google Play da bekor qiling.",
+        "cta": "Davom eting",
+        "renewalTerms": "{{price}} / {{period}}. Bekor qilinmaguncha avtomatik yangilanadi."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Tasvirlar tahlil qilinmoqda…",
       "searching": "Qidirilmoqda…",
-      "thinking": "O‘ylash…"
+      "thinking": "O‘ylash…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Veb-qidiruv",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Ko'proq signal, kamroq elektron jadval shovqini."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Kundalik tangalaringizni oling",
       "subtitle": "Har kuni keling — mukofot ortadi.",
-      "cta": "Belgilash",
+      "cta": "Olish",
       "claimed": "Olindi! +{{amount}} tanga",
       "later": "Keyinroq"
     }

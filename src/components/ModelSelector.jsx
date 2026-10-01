@@ -34,9 +34,6 @@ import Animated, {
   withSpring,
   withSequence,
   Easing,
-  runOnJS,
-  FadeIn,
-  FadeInDown,
 } from 'react-native-reanimated';
 
 export default function ModelSelector() {
@@ -57,10 +54,6 @@ export default function ModelSelector() {
   const [isOffline, setIsOffline] = useState(false);
 
   // reanimated shared values
-  const overlay = useSharedValue(0);       // 0..1
-  const dropY = useSharedValue(-36);       // translateY
-  const sheetScale = useSharedValue(0.985);
-  const sheetProgress = useSharedValue(0); // 0..1 (use for opacity / content)
   const rotateArrow = useSharedValue(0);   // 0 closed, 1 open
   const triggerScale = useSharedValue(1);  // trigger micro-bounce
   const offlineOpacity = useSharedValue(0);
@@ -163,8 +156,20 @@ export default function ModelSelector() {
     const idx = sectionsRef.current.findIndex(
       r => r.type === 'row' && r.key === modelKey,
     );
-    if (idx >= 0) setTimeout(() => listRef.current?.scrollToIndex({ index: idx, animated: true, viewPosition: 0.5 }), 60);
+    if (idx >= 0) {
+      listRef.current?.scrollToIndex({
+        index: idx,
+        animated: false,
+        viewPosition: 0.5,
+      });
+    }
   }, [modelKey]);
+
+  React.useEffect(() => {
+    if (!open || sections.length === 0) return undefined;
+    const timer = setTimeout(scrollToSelected, 120);
+    return () => clearTimeout(timer);
+  }, [open, scrollToSelected, sections.length]);
 
   const runOpen = useCallback(() => {
     perfStart('chat.model_selector');
@@ -175,17 +180,10 @@ export default function ModelSelector() {
     );
 
     setOpen(true);
-    // animate in
-    overlay.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.cubic) });
-    dropY.value = withSpring(0, { damping: 14, stiffness: 160, mass: 0.9 });
-    sheetScale.value = withTiming(1, { duration: 220, easing: Easing.out(Easing.cubic) });
-    sheetProgress.value = withTiming(1, { duration: 180, easing: Easing.out(Easing.cubic) }, (finished) => {
-      if (finished) runOnJS(scrollToSelected)();
-    });
     rotateArrow.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.cubic) });
 
     Haptic.trigger('selection');
-  }, [overlay, dropY, sheetScale, sheetProgress, rotateArrow, triggerScale, scrollToSelected]);
+  }, [rotateArrow, triggerScale]);
 
   const runClose = useCallback(() => {
     perfEnd('chat.model_selector', {
@@ -193,15 +191,9 @@ export default function ModelSelector() {
       selectedModel: modelKey,
     });
     setSearchQuery('');
-    // animate out
-    overlay.value = withTiming(0, { duration: 160, easing: Easing.in(Easing.cubic) }, (finished) => {
-      if (finished) runOnJS(setOpen)(false);
-    });
-    dropY.value = withTiming(-36, { duration: 200, easing: Easing.in(Easing.cubic) });
-    sheetScale.value = withTiming(0.985, { duration: 180, easing: Easing.in(Easing.cubic) });
-    sheetProgress.value = withTiming(0, { duration: 140, easing: Easing.in(Easing.cubic) });
+    setOpen(false);
     rotateArrow.value = withTiming(0, { duration: 160, easing: Easing.in(Easing.cubic) });
-  }, [modelKey, overlay, dropY, sheetScale, sheetProgress, rotateArrow]);
+  }, [modelKey, rotateArrow]);
 
   // —— Animated styles ——
   const triggerStyle = useAnimatedStyle(() => ({
@@ -215,15 +207,6 @@ export default function ModelSelector() {
 
   const arrowStyle = useAnimatedStyle(() => ({
     transform: [{ rotate: `${rotateArrow.value * 180}deg` }],
-  }));
-
-  const overlayStyle = useAnimatedStyle(() => ({
-    opacity: overlay.value,
-  }));
-
-  const panelStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: dropY.value }, { scale: sheetScale.value }],
-    opacity: sheetProgress.value,
   }));
 
   // —— render —— //
@@ -266,25 +249,24 @@ export default function ModelSelector() {
   const renderItem = ({ item, index }) => {
     if (item.type === 'empty') {
       return (
-        <Animated.View entering={FadeIn.duration(180)}>
+        <View>
           <View style={styles.emptyState}>
             <Text style={styles.emptyIcon}>🔍</Text>
             <Text style={styles.emptyTitle}>{t('modelSelector.noModelsFound')}</Text>
             <Text style={styles.emptyMessage}>{item.message}</Text>
           </View>
-        </Animated.View>
+        </View>
       );
     }
 
     if (item.type === 'header') {
       return (
-        <Animated.View
+        <View
           key={item.id}
-          entering={FadeInDown.delay(index * 30).duration(180)}
           style={styles.sectionHeader}
         >
           <Text style={styles.sectionTitle}>{t(`providers.${item.title.toLowerCase()}`, { defaultValue: item.title })}</Text>
-        </Animated.View>
+        </View>
       );
     }
 
@@ -293,7 +275,7 @@ export default function ModelSelector() {
     const showDivider = next && next.type === 'row';
 
     return (
-      <Animated.View entering={FadeInDown.delay(index * 40).duration(220)}>
+      <View>
         <Pressable
           onPress={() => {
             handleSelectModel(item);
@@ -311,7 +293,7 @@ export default function ModelSelector() {
         >
           <SvgIcon name={item.icon} size={22} color={colors.textSecondary} />
 
-          <View style={{ flex: 1 }}>
+          <View style={styles.modelTextColumn}>
             <View style={styles.titleBar}>
               <View style={styles.titleLeft}>
                 <Text numberOfLines={1} style={[styles.rowTitle, selected && styles.rowTitleSel]}>
@@ -377,11 +359,11 @@ export default function ModelSelector() {
         </Pressable>
 
         {showDivider && <View style={styles.divider} />}
-      </Animated.View>
+      </View>
     );
   };
 
-  const keyExtractor = it => (it.type === 'header' ? it.id : it.key);
+  const keyExtractor = it => (it.type === 'row' ? it.key : it.id);
 
   return (
     <>
@@ -417,21 +399,20 @@ export default function ModelSelector() {
 
       {/* Modal */}
       {open ? (
-      <Modal transparent visible statusBarTranslucent animationType="none" onRequestClose={runClose}>
+      <Modal transparent visible statusBarTranslucent animationType="fade" onRequestClose={runClose}>
         {/* Overlay */}
-        <Animated.View style={[styles.overlay, overlayStyle]}>
+        <View style={styles.overlay}>
           <Pressable style={StyleSheet.absoluteFill} onPress={runClose} />
-        </Animated.View>
+        </View>
 
         {/* Panel (top drop) */}
-        <Animated.View
+        <View
           style={[
             styles.panel,
             {
               marginTop: insets.top + 56,
               maxHeight: Math.min(Dimensions.get('window').height * 0.7, 468),
             },
-            panelStyle,
           ]}
           accessibilityRole="menu"
           accessibilityViewIsModal
@@ -456,11 +437,11 @@ export default function ModelSelector() {
             keyboardShouldPersistTaps="handled"
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 8 }}
-            removeClippedSubviews
+            removeClippedSubviews={false}
             initialNumToRender={12}
             windowSize={10}
           />
-        </Animated.View>
+        </View>
       </Modal>
       ) : null}
     </>
@@ -505,16 +486,16 @@ function getModelDescription(key, info, t) {
 
 function descriptionFor(key, info, t) {
   const map = {
-    'gpt-5': 'Most powerful all-purpose AI',
-    'gpt-5-chat-latest': 'Optimized for chat and dialogue',
-    'gpt-5-mini': 'Fast and reliable GPT-5',
-    'gpt-5.4-nano': 'Light model for simple tasks',
-    'o4-mini': 'Efficient reasoning model',
-    'gpt-4.1-mini': 'Compact, capable GPT-4.1',
-    'claude-3-haiku': 'Fast and focused Anthropic AI',
-    'claude-3.7-sonnet': 'Refined reasoning by Anthropic',
-    'gemini-2.5-Flash': "Google's most advanced model",
-    'gemini-2.0-flash': 'Quick and precise Google AI'
+    'gpt-5.6-sol': 'Most powerful GPT-5.6 model',
+    'gpt-5.6-terra': 'Balanced GPT-5.6 model',
+    'gpt-5.6-luna': 'Fast model for everyday tasks',
+    'claude-fable-5': 'Fast and creative Anthropic AI',
+    'claude-sonnet-5': 'Advanced Anthropic model',
+    'gemini-3.7-flash': 'Fast Google AI model',
+    'gemini-3.1-pro-preview': "Google's advanced Pro model",
+    'grok-4.6': "xAI's newest displayed model",
+    'deepseek-v4-pro': 'Advanced DeepSeek model',
+    'deepseek-v4-flash': 'Fast DeepSeek model',
   };
   
   return map[key] || t('modelSelector.genericModel', {
@@ -558,17 +539,14 @@ const MODEL_DESCRIPTION_PRESETS = {
 
 function labelsFor(key, t) {
   const map = {
-    'gpt-5': ['NEW', 'BEST'],
-    'gpt-5-chat-latest': ['NEW', 'BEST'],
-    'gpt-5-mini': ['NEW'],
-    'gpt-5.4-nano': ['NEW'],
-    'o4-mini': ['NEW'],
-    'gpt-4.1-mini': [],
-    'claude-3.7-sonnet': ['NEW'],
-    'grok-4': ['NEW'],
-    'gemini-2.5-flash': ['NEW'],
-    'gemini-2.0-flash': ['NEW'],
-
+    'gpt-5.6-sol': ['NEW', 'BEST'],
+    'gpt-5.6-terra': ['NEW'],
+    'gpt-5.6-luna': ['NEW'],
+    'claude-sonnet-5': ['NEW'],
+    'grok-4.6': ['NEW'],
+    'gemini-3.7-flash': ['NEW'],
+    'gemini-3.1-pro-preview': ['NEW'],
+    'deepseek-v4-pro': ['NEW'],
   };
 
   return map[key] || [];
@@ -706,11 +684,12 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   cardRowPressed: { backgroundColor: '#1A1A1D', transform: [{ scale: 0.98 }] },
+  modelTextColumn: { flex: 1, minWidth: 0 },
 
   divider: { height: StyleSheet.hairlineWidth, backgroundColor: '#2D2D30', marginLeft: 43, marginRight: 7 },
 
   titleBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 2 },
-  titleLeft: { flexDirection: 'row', alignItems: 'center', gap: 7, flex: 1, flexShrink: 1 },
+  titleLeft: { flexDirection: 'row', alignItems: 'center', gap: 7, flex: 1, flexShrink: 1, minWidth: 0 },
   rowTitle: { fontSize: 14, fontWeight: '700', color: colors.text, flexShrink: 1 },
   rowTitleSel: { color: colors.primary },
   rowDesc: { fontSize: 12, color: colors.textSecondary },

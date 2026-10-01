@@ -1,3 +1,4 @@
+import { IMAGE_STUDIO_ENABLED } from '../constants/featureFlags';
 import React, { useEffect, useMemo, useRef, useState, useCallback, useContext } from 'react';
 import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert, Platform, InteractionManager } from 'react-native';
 import Reanimated, { useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
@@ -5,6 +6,14 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { useFocusEffect } from '@react-navigation/native';
 import NetInfo from '@react-native-community/netinfo';
 import { launchImageLibrary } from 'react-native-image-picker';
+import RNFS from 'react-native-fs';
+import {
+  errorCodes as documentPickerErrorCodes,
+  isErrorWithCode as isDocumentPickerError,
+  keepLocalCopy,
+  pick as pickDocuments,
+  types as documentTypes,
+} from '@react-native-documents/picker';
 import Svg, { Path } from 'react-native-svg';
 
 // --- KEYBOARD CONTROLLER IMPORTS ---
@@ -34,6 +43,7 @@ import { useVoiceInput } from '../hooks/useVoiceInput';
 import { useTranslation } from 'react-i18next';
 import { SubscriptionAccessContext } from '../context/SubscriptionContext';
 import { isPremiumModel, FREE_MODEL } from '../config/premium';
+import { normalizeChatModelKey } from '../config/models';
 import { setPendingPremiumAction } from '../state/premiumActions';
 import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
 
@@ -46,8 +56,53 @@ import { plainTextFromMarkdown } from '../lib/plainTextFromMarkdown';
 import { perfEnd, perfLog, perfStart } from '../lib/perfTrace';
 import { runImagePickerSingleFlight } from '../lib/imagePickerSingleFlight';
 import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
+import { processDocument } from '../api/processDocument';
+import {
+  FREE_MESSAGE_CHAR_LIMIT,
+  LARGE_PASTE_ATTACHMENT_THRESHOLD,
+  PREMIUM_PASTE_CAPTURE_CHAR_LIMIT,
+  getChatTokenBudget,
+  getMessageCharLimit,
+} from '../config/chatLimits';
+import {
+  isDocumentAttachment,
+  isImageAttachment,
+  sanitizeDocumentName,
+  toPersistedAttachment,
+  validatePickedDocument,
+} from '../lib/documentAttachments';
 
 const STARTUP_DECORATIVE_MEDIA_DELAY_MS = 240;
+const LARGE_PASTE_DELTA_THRESHOLD = 1000;
+const DOCUMENT_PICK_TYPES = [
+  documentTypes.pdf,
+  documentTypes.docx,
+  documentTypes.plainText,
+  'text/csv',
+  'text/comma-separated-values',
+];
+
+function makeAttachmentId(prefix = 'attachment') {
+  return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function fileUriToPath(uri) {
+  const raw = String(uri || '');
+  if (!raw.startsWith('file://')) return raw;
+  try {
+    return decodeURIComponent(raw.slice('file://'.length));
+  } catch {
+    return raw.slice('file://'.length);
+  }
+}
+
+async function removeTemporaryFile(uri) {
+  const path = fileUriToPath(uri);
+  if (!path) return;
+  try {
+    if (await RNFS.exists(path)) await RNFS.unlink(path);
+  } catch {}
+}
 
 function mergeVoiceTranscript(base, chunk) {
   const left = String(base || '').trim();
@@ -108,6 +163,7 @@ export default function Chat({ navigation }) {
   const createThread = useThreadsStore(s => s.createThread);
   const setActiveThread = useThreadsStore(s => s.setActiveThread);
   const addMessage = useThreadsStore(s => s.addMessage);
+  const updateMessage = useThreadsStore(s => s.updateMessage);
   const removeMessage = useThreadsStore(s => s.removeMessage);
   const updateLastAssistantContent = useThreadsStore(s => s.updateLastAssistantContent);
   const forceSaveThread = useThreadsStore(s => s.forceSaveThread);
@@ -119,6 +175,8 @@ export default function Chat({ navigation }) {
   const privateThread = useThreadsStore(s => s.privateThread);
   const endPrivate = useThreadsStore(s => s.endPrivate);
   const addPrivateMessage = useThreadsStore(s => s.addPrivateMessage);
+  const updatePrivateMessage = useThreadsStore(s => s.updatePrivateMessage);
+  const removePrivateMessage = useThreadsStore(s => s.removePrivateMessage);
   const updateLastAssistantContentPrivate = useThreadsStore(s => s.updateLastAssistantContentPrivate);
 
   // Settings
@@ -152,14 +210,22 @@ export default function Chat({ navigation }) {
 
   // Model selection
   const pinnedModel = !!(activeThread?.meta && activeThread?.meta?.pinnedModel);
-  const activeModelKey = pinnedModel
+  const storedActiveModelKey = pinnedModel
     ? (activeThread?.model || globalModel)
     : (globalModel || activeThread?.model);
+  const activeModelKey = normalizeChatModelKey(storedActiveModelKey);
   const activeModelCaps = modelsMap?.[activeModelKey]?.caps || {};
+  const activeModelContext = modelsMap?.[activeModelKey]?.context;
+  const messageCharLimit = getMessageCharLimit(isPremium);
+  const nativeInputCharLimit = isPremium
+    ? PREMIUM_PASTE_CAPTURE_CHAR_LIMIT
+    : FREE_MESSAGE_CHAR_LIMIT;
+  const chatTokenBudget = getChatTokenBudget(isPremium, activeModelContext);
 
   const [input, setInput] = useState('');
   const [attachments, setAttachments] = useState([]);
   const [imagePickerActive, setImagePickerActive] = useState(false);
+  const [documentPickerActive, setDocumentPickerActive] = useState(false);
   const [error, setError] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [offline, setOffline] = useState(false);
@@ -258,12 +324,13 @@ export default function Chat({ navigation }) {
     () => activeModelKey,
     [activeModelKey]
   );
-  const requestModelKey = useMemo(
-    () => (webSearchNext ? 'gpt-5.2' : resolvedActiveModel),
-    [webSearchNext, resolvedActiveModel]
-  );
+  const requestModelKey = resolvedActiveModel;
   const successfulMessagesRef = useRef(0); 
   const abortRef = useRef(null);
+  const documentUploadsRef = useRef(new Map());
+  const composerAttachmentsRef = useRef([]);
+  const largePasteBusyRef = useRef(false);
+  const documentSendBusyRef = useRef(false);
   const appStateRef = useRef(AppState.currentState);
   const isMountedRef = useRef(true);
   const isFocusedRef = useRef(false);
@@ -280,9 +347,26 @@ export default function Chat({ navigation }) {
   );
 
   useEffect(() => {
+    composerAttachmentsRef.current = attachments;
+  }, [attachments]);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    const activeUploads = documentUploadsRef.current;
+    const composerAttachments = composerAttachmentsRef;
     return () => {
       isMountedRef.current = false;
       isFocusedRef.current = false;
+      for (const upload of activeUploads.values()) {
+        try { upload.abort?.(); } catch {}
+        removeTemporaryFile(upload.localUri);
+      }
+      activeUploads.clear();
+      for (const attachment of composerAttachments.current) {
+        if (isDocumentAttachment(attachment) && attachment?.uri) {
+          removeTemporaryFile(attachment.uri);
+        }
+      }
       if (startupReadyFrameRef.current !== null) {
         cancelAnimationFrame(startupReadyFrameRef.current);
       }
@@ -596,7 +680,14 @@ export default function Chat({ navigation }) {
       .filter(a => a?.uri && a?.type)
       .map((a, idx) => ({
         id: `${Date.now()}_${idx}_${Math.random().toString(36).slice(2, 7)}`,
-        uri: a.uri, type: a.type, base64: a.base64 || null,
+        kind: 'image',
+        status: 'ready',
+        uri: a.uri,
+        type: a.type,
+        mimeType: a.type,
+        name: a.fileName || `photo-${idx + 1}`,
+        size: Number.isFinite(a.fileSize) ? a.fileSize : null,
+        base64: a.base64 || null,
       }));
     if (!normalized.length) return;
     setAttachments(prev => {
@@ -606,6 +697,255 @@ export default function Chat({ navigation }) {
       return merged;
     });
   }, []);
+
+  const updateAttachment = useCallback((attachmentId, updater) => {
+    setAttachments(prev => prev.map(attachment => {
+      if (attachment.id !== attachmentId) return attachment;
+      const patch = typeof updater === 'function' ? updater(attachment) : updater;
+      return patch ? { ...attachment, ...patch } : attachment;
+    }));
+  }, []);
+
+  const uploadDocumentAttachment = useCallback(async attachment => {
+    const abortController = new AbortController();
+    documentUploadsRef.current.set(attachment.id, {
+      abort: () => abortController.abort(),
+      localUri: attachment.uri,
+    });
+
+    let completed = false;
+    try {
+      updateAttachment(attachment.id, { status: 'uploading', progress: 0, error: null });
+      const deviceId = await ensureDeviceId();
+      if (abortController.signal.aborted) {
+        const abortedError = new Error('Document upload cancelled.');
+        abortedError.code = 'ABORTED';
+        throw abortedError;
+      }
+
+      const request = processDocument({
+        file: attachment,
+        deviceId,
+        signal: abortController.signal,
+        onProgress: uploadProgress => {
+          if (!isMountedRef.current) return;
+          updateAttachment(attachment.id, {
+            status: uploadProgress >= 1 ? 'processing' : 'uploading',
+            progress: uploadProgress,
+          });
+        },
+      });
+      documentUploadsRef.current.set(attachment.id, {
+        abort: request.abort,
+        localUri: attachment.uri,
+      });
+
+      const processed = await request.promise;
+      completed = true;
+      const readyAttachment = {
+        ...attachment,
+        ...processed,
+        status: 'ready',
+        progress: 1,
+        uri: null,
+        error: null,
+      };
+      if (isMountedRef.current) {
+        updateAttachment(attachment.id, readyAttachment);
+      }
+      return readyAttachment;
+    } catch (uploadError) {
+      if (uploadError?.code !== 'ABORTED' && !abortController.signal.aborted && isMountedRef.current) {
+        updateAttachment(attachment.id, {
+          status: 'error',
+          error: uploadError?.message || t('chat.files.failed', { defaultValue: 'Upload failed' }),
+        });
+      }
+      throw uploadError;
+    } finally {
+      documentUploadsRef.current.delete(attachment.id);
+      if (completed) removeTemporaryFile(attachment.uri);
+    }
+  }, [t, updateAttachment]);
+
+  const onOpenFilePress = useCallback(async () => {
+    if (documentPickerActive) return;
+    setDocumentPickerActive(true);
+    try {
+      let picked = [];
+      try {
+        picked = await pickDocuments({
+          type: DOCUMENT_PICK_TYPES,
+          allowMultiSelection: true,
+          allowVirtualFiles: false,
+          mode: 'import',
+        });
+      } catch (pickerError) {
+        if (
+          isDocumentPickerError(pickerError)
+          && pickerError.code === documentPickerErrorCodes.OPERATION_CANCELED
+        ) {
+          return;
+        }
+        Alert.alert(
+          t('chat.files.pickerErrorTitle', { defaultValue: 'Unable to open files' }),
+          t('chat.files.pickerErrorMessage', { defaultValue: 'Please try selecting the document again.' }),
+        );
+        return;
+      }
+
+      // Android may briefly pause the activity while its system file manager is
+      // open. The picker result is still valid as long as this screen is mounted.
+      if (!isMountedRef.current || !picked.length) return;
+
+      const accepted = [];
+      const simulatedAttachments = [...attachments];
+      let firstValidationError = null;
+
+      for (const file of picked) {
+        const validation = validatePickedDocument(file, simulatedAttachments);
+        if (!validation.ok) {
+          firstValidationError ||= validation;
+          continue;
+        }
+        const id = makeAttachmentId('document');
+        const attachment = {
+          id,
+          kind: 'document',
+          status: 'selected',
+          progress: 0,
+          source: 'file',
+          ...validation.value,
+        };
+        accepted.push(attachment);
+        simulatedAttachments.push(attachment);
+      }
+
+      if (firstValidationError) {
+        const message = firstValidationError.code === 'too_many_files'
+          ? t('chat.files.tooMany', { defaultValue: 'You can attach up to 3 documents per message.' })
+          : firstValidationError.code === 'file_too_large'
+            ? t('chat.files.tooLarge', { defaultValue: 'Each document must be 10 MB or smaller.' })
+            : firstValidationError.code === 'empty_file'
+              ? t('chat.files.empty', { defaultValue: 'The selected document is empty.' })
+              : t('chat.files.unsupported', { defaultValue: 'Use a PDF, DOCX, TXT or CSV file.' });
+        Alert.alert(t('chat.files.invalidTitle', { defaultValue: 'File not supported' }), message);
+      }
+
+      if (!accepted.length) return;
+
+      let copyResults = [];
+      try {
+        copyResults = await keepLocalCopy({
+          destination: 'cachesDirectory',
+          files: accepted.map(attachment => ({
+            uri: attachment.uri,
+            fileName: sanitizeDocumentName(`${attachment.id}-${attachment.name}`),
+          })),
+        });
+      } catch {}
+
+      const localAttachments = accepted.flatMap((attachment, index) => {
+        const copyResult = copyResults[index];
+        if (
+          copyResult?.status !== 'success'
+          || typeof copyResult.localUri !== 'string'
+          || !copyResult.localUri
+        ) {
+          return [];
+        }
+        return [{ ...attachment, uri: copyResult.localUri }];
+      });
+
+      if (localAttachments.length !== accepted.length && isMountedRef.current) {
+        Alert.alert(
+          t('chat.files.pickerErrorTitle', { defaultValue: 'Unable to open files' }),
+          t('chat.files.pickerErrorMessage', {
+            defaultValue: 'The selected file could not be read. Try choosing it again from Downloads.',
+          }),
+        );
+      }
+
+      if (!localAttachments.length) return;
+      if (isMountedRef.current) {
+        setAttachments(prev => [...prev, ...localAttachments]);
+      } else {
+        localAttachments.forEach(attachment => removeTemporaryFile(attachment.uri));
+      }
+    } finally {
+      if (isMountedRef.current) setDocumentPickerActive(false);
+    }
+  }, [attachments, documentPickerActive, t]);
+
+  const createPastedTextAttachment = useCallback(async text => {
+    if (largePasteBusyRef.current) return;
+    const validation = validatePickedDocument(
+      { name: 'Pasted text.txt', type: 'text/plain', size: text.length, uri: 'pending' },
+      attachments,
+    );
+    if (!validation.ok) {
+      setInput(text.slice(0, messageCharLimit));
+      Alert.alert(
+        t('chat.files.invalidTitle', { defaultValue: 'Cannot attach pasted text' }),
+        t('chat.files.tooMany', { defaultValue: 'You can attach up to 3 documents per message.' }),
+      );
+      return;
+    }
+
+    largePasteBusyRef.current = true;
+    const id = makeAttachmentId('paste');
+    const name = `Pasted text ${new Date().toISOString().slice(0, 10)}.txt`;
+    const path = `${RNFS.CachesDirectoryPath}/${id}.txt`;
+    const uri = `file://${path}`;
+    try {
+      await RNFS.writeFile(path, text, 'utf8');
+      const stat = await RNFS.stat(path);
+      const attachment = {
+        id,
+        kind: 'document',
+        status: 'selected',
+        progress: 0,
+        source: 'paste',
+        name,
+        mimeType: 'text/plain',
+        type: 'text/plain',
+        size: Number(stat.size) || text.length,
+        uri,
+      };
+      if (!isMountedRef.current) {
+        removeTemporaryFile(uri);
+        return;
+      }
+      setInput('');
+      setAttachments(prev => [...prev, attachment]);
+    } catch {
+      if (isMountedRef.current) {
+        setInput(text.slice(0, messageCharLimit));
+        Alert.alert(
+          t('chat.files.pasteFailedTitle', { defaultValue: 'Could not attach pasted text' }),
+          t('chat.files.pasteFailedMessage', { defaultValue: 'Your text was kept in the message box.' }),
+        );
+      }
+      removeTemporaryFile(uri);
+    } finally {
+      largePasteBusyRef.current = false;
+    }
+  }, [attachments, messageCharLimit, t]);
+
+  const handleInputChange = useCallback(nextValue => {
+    const next = String(nextValue || '');
+    const addedCharacters = next.length - input.length;
+    if (
+      isPremium
+      && next.length > LARGE_PASTE_ATTACHMENT_THRESHOLD
+      && addedCharacters >= LARGE_PASTE_DELTA_THRESHOLD
+      && !largePasteBusyRef.current
+    ) {
+      createPastedTextAttachment(next);
+      return;
+    }
+    setInput(next);
+  }, [createPastedTextAttachment, input.length, isPremium]);
 
   const onOpenCameraPress = useCallback(async () => {
     try {
@@ -664,6 +1004,7 @@ export default function Chat({ navigation }) {
   }, [addMessage, addPrivateMessage, activeThreadIdForInsert, isPrivate]);
 
   const handleCreateImagesPress = useCallback(() => {
+    if (!IMAGE_STUDIO_ENABLED) return;
     setInsertToChatCallback(onInsertImagesMarkdown);
     try {
       navigation.navigate('Studio');
@@ -814,6 +1155,7 @@ export default function Chat({ navigation }) {
   ]);
 
   const handleEditImagePress = useCallback(() => {
+    if (!IMAGE_STUDIO_ENABLED) return;
     setInsertToChatCallback(onInsertImagesMarkdown);
     try {
       navigation.navigate('EditImage', {
@@ -853,8 +1195,21 @@ export default function Chat({ navigation }) {
   }, [handleAssistantsPress, handleCreateImagesPress, handleEditImagePress, handleMicPress, onOpenCameraPress]);
 
   const onRemoveAttachment = useCallback((att) => {
+    const activeUpload = documentUploadsRef.current.get(att?.id);
+    if (activeUpload) {
+      try { activeUpload.abort?.(); } catch {}
+      documentUploadsRef.current.delete(att.id);
+    }
+    if (isDocumentAttachment(att)) {
+      removeTemporaryFile(activeUpload?.localUri || att?.uri);
+    }
     setAttachments(prev => prev.filter(a => a.id !== att.id));
   }, []);
+
+  const onRetryAttachment = useCallback(att => {
+    if (!isDocumentAttachment(att) || att.status !== 'error' || !att.uri) return;
+    uploadDocumentAttachment(att).catch(() => {});
+  }, [uploadDocumentAttachment]);
 
   // ==== Send flow ====
   async function onSend(overrideText) {
@@ -865,15 +1220,23 @@ export default function Chat({ navigation }) {
     if (streaming) {
       return;
     }
+    if (documentSendBusyRef.current) {
+      return;
+    }
 
     setError('');
     const textRaw = typeof overrideText === 'string' ? overrideText : input;
     const text = (textRaw || '').trim();
     const hasText = !!text;
-    const hasImages = attachments.length > 0;
+    let sendAttachments = [...attachments];
+    let imageAttachments = sendAttachments.filter(isImageAttachment);
+    let documentAttachments = sendAttachments.filter(isDocumentAttachment);
+    const hasImages = imageAttachments.length > 0;
+    const hasDocuments = documentAttachments.length > 0;
+    const hasAttachments = hasImages || hasDocuments;
     const perfKey = `chat.send.${Date.now()}`;
 
-    if (!hasText && !hasImages) {
+    if (!hasText && !hasAttachments) {
       return;
     }
     if (!activeThread) {
@@ -887,30 +1250,46 @@ export default function Chat({ navigation }) {
       return;
     }
 
-    const MAX_CHARS = 16000;
-    if (text.length > MAX_CHARS) {
-      setError(t('chat.messageTooLong', { length: text.length, limit: MAX_CHARS }));
+    if (text.length > messageCharLimit) {
+      setError(t('chat.messageTooLong', { length: text.length, limit: messageCharLimit }));
       return;
     }
 
     const previousInput = input;
-    const previousAttachments = [...attachments];
+    let previousAttachments = [...attachments];
 
     const mmParts = [
       ...(hasText ? [{ type: 'text', text }] : []),
-      ...attachments.filter(a => a.base64 && a.type).map(a => ({
+      ...imageAttachments.filter(a => a.base64 && a.type).map(a => ({
         type: 'image_url', image_url: { url: `data:${a.type};base64,${a.base64}` }
       })),
     ];
-    const mUser = { role: 'user', content: mmParts.length ? mmParts : text };
+    let persistedDocuments = documentAttachments
+      .map(toPersistedAttachment)
+      .filter(Boolean);
+    let mUser = {
+      role: 'user',
+      content: mmParts.length ? mmParts : text,
+      ...(persistedDocuments.length ? { attachments: persistedDocuments } : {}),
+    };
 
-    const mdImages = attachments.map(a => `![photo](${a.uri})`).join('\n');
+    const mdImages = imageAttachments.map(a => `![photo](${a.uri})`).join('\n');
     const displayMd = [mdImages, text].filter(Boolean).join('\n\n');
-    const u = newUserMessage(displayMd); u.mm = mmParts;
+    const u = newUserMessage(displayMd);
+    u.mm = mmParts;
+    u.attachments = persistedDocuments;
 
     let assistantId = null;
     let assistantAdded = false;
     let composerCleared = false;
+    let documentsReadyForChat = !hasDocuments;
+    let uploadCancelled = false;
+    const throwIfDocumentSendCancelled = () => {
+      if (!uploadCancelled) return;
+      const cancelledError = new Error('Document upload cancelled.');
+      cancelledError.code = 'ABORTED';
+      throw cancelledError;
+    };
 
     try {
       perfStart(perfKey, {
@@ -925,8 +1304,10 @@ export default function Chat({ navigation }) {
       assistantId = a.id;
       
       try {
-        const initialActivity = hasImages
-          ? t('chat.activity.analyzingImages', { defaultValue: 'Analyzing images…' })
+        const initialActivity = hasDocuments
+          ? t('chat.activity.analyzingDocuments', { defaultValue: 'Analyzing documents…' })
+          : hasImages
+            ? t('chat.activity.analyzingImages', { defaultValue: 'Analyzing images…' })
           : (webSearchNext
             ? t('chat.activity.searching', { defaultValue: 'Searching…' })
             : t('chat.activity.thinking', { defaultValue: 'Thinking…' }));
@@ -944,13 +1325,72 @@ export default function Chat({ navigation }) {
       setForceCollapseInput(true);
       composerCleared = true;
 
+      if (hasDocuments) {
+        // Match the normal chat flow: show the sent message and assistant
+        // activity immediately, while document processing continues safely
+        // before the model request is started.
+        setStreaming(true);
+        documentSendBusyRef.current = true;
+        abortRef.current = {
+          abort: () => {
+            uploadCancelled = true;
+            for (const upload of documentUploadsRef.current.values()) {
+              try { upload.abort?.(); } catch {}
+            }
+          },
+        };
+
+        const documentsToUpload = documentAttachments.filter(
+          attachment => attachment.status !== 'ready' && !!attachment.uri,
+        );
+        for (const attachment of documentsToUpload) {
+          const uploaded = await uploadDocumentAttachment(attachment);
+          sendAttachments = sendAttachments.map(current => (
+            current.id === attachment.id ? uploaded : current
+          ));
+          previousAttachments = [...sendAttachments];
+        }
+
+        throwIfDocumentSendCancelled();
+
+        imageAttachments = sendAttachments.filter(isImageAttachment);
+        documentAttachments = sendAttachments.filter(isDocumentAttachment);
+        if (!documentAttachments.every(attachment => attachment.status === 'ready')) {
+          throw new Error(t('chat.files.waitUntilReady', {
+            defaultValue: 'Please wait for your documents to finish uploading.',
+          }));
+        }
+
+        persistedDocuments = documentAttachments
+          .map(toPersistedAttachment)
+          .filter(Boolean);
+        mUser = {
+          role: 'user',
+          content: mmParts.length ? mmParts : text,
+          ...(persistedDocuments.length ? { attachments: persistedDocuments } : {}),
+        };
+        if (isPrivate) {
+          updatePrivateMessage(u.id, { attachments: persistedDocuments });
+        } else {
+          updateMessage(activeThread.id, u.id, { attachments: persistedDocuments });
+        }
+        documentsReadyForChat = true;
+        documentSendBusyRef.current = false;
+      }
+
       const threadMessages = activeThread.messages || [];
       const threadForContext = { ...activeThread, messages: [...threadMessages, mUser] };
       await ensureSummaryIfNeeded(threadForContext, isPrivate ? undefined : setThreadSummary);
-      const payload = buildPayload({ thread: threadForContext, newMsg: mUser, tokenCap: 6000 });
+      throwIfDocumentSendCancelled();
+      const payload = buildPayload({
+        thread: threadForContext,
+        newMsg: mUser,
+        tokenCap: chatTokenBudget,
+      });
 
       setStreaming(true);
       const deviceId = await ensureDeviceId();
+      throwIfDocumentSendCancelled();
       const controller = new AbortController(); abortRef.current = controller;
 
       streamChat({
@@ -1043,6 +1483,9 @@ export default function Chat({ navigation }) {
         },
       });
     } catch (err) {
+      const wasCancelled = err?.code === 'ABORTED';
+      const documentPreparationFailed = hasDocuments && !documentsReadyForChat;
+      documentSendBusyRef.current = false;
       perfEnd(perfKey, {
         status: 'caught_error',
         assistantId,
@@ -1050,13 +1493,18 @@ export default function Chat({ navigation }) {
       });
       if (assistantAdded && assistantId) {
         if (isPrivate) {
-          updateLastAssistantContentPrivate(() => t('chat.sendFailed', { defaultValue: 'Failed to send.' }));
+          if (documentPreparationFailed || wasCancelled) removePrivateMessage(assistantId);
+          else updateLastAssistantContentPrivate(() => t('chat.sendFailed', { defaultValue: 'Failed to send.' }));
         } else if (activeThread?.id) {
           removeMessage(activeThread.id, assistantId);
         }
         clearStream(assistantId);
       }
-      if (composerCleared) {
+      if (documentPreparationFailed) {
+        if (isPrivate) removePrivateMessage(u.id);
+        else if (activeThread?.id) removeMessage(activeThread.id, u.id);
+      }
+      if (composerCleared && !(wasCancelled && documentsReadyForChat)) {
         setInput(previousInput);
         setAttachments(previousAttachments);
         setForceCollapseInput(false);
@@ -1064,8 +1512,14 @@ export default function Chat({ navigation }) {
       setStreaming(false);
       abortRef.current = null;
       setStreamingMsgId(null);
-      const pretty = mapProxyError(err, t);
-      setError(pretty.message || t('chat.sendFailed', { defaultValue: 'Failed to send message. Please try again.' }));
+      if (!wasCancelled) {
+        const pretty = mapProxyError(err, t);
+        setError(
+          (documentPreparationFailed && err?.message)
+          || pretty.message
+          || t('chat.sendFailed', { defaultValue: 'Failed to send message. Please try again.' }),
+        );
+      }
     }
   }
 
@@ -1241,7 +1695,7 @@ export default function Chat({ navigation }) {
                         <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
                       </>
                     ) : (
-                      showKeyboardHelpers ? (
+                      showKeyboardHelpers && IMAGE_STUDIO_ENABLED ? (
                         <Reanimated.View style={bannerStyle}>
                           <CreativeStudioBanner
                             ref={bannerMediaRef}
@@ -1280,12 +1734,14 @@ export default function Chat({ navigation }) {
             </Reanimated.View>
             <TestInput
               value={input}
-              onChange={setInput}
+              onChange={handleInputChange}
               onSend={onSend}
               onStop={onStop}
               onCreateImagesPress={handleCreateImagesPress}
               onOpenCameraPress={onOpenCameraPress}
+              onOpenFilePress={onOpenFilePress}
               imagePickerActive={imagePickerActive}
+              documentPickerActive={documentPickerActive}
               onSearchPress={() => {
                 setWebSearchNext(v => !v);
               }}
@@ -1294,9 +1750,11 @@ export default function Chat({ navigation }) {
               onMicPress={handleMicPress}
               streaming={streaming}
               offline={offline}
-              maxLength={16000}
+              maxLength={nativeInputCharLimit}
+              counterLimit={messageCharLimit}
               attachments={attachments}
               onRemoveAttachment={onRemoveAttachment}
+              onRetryAttachment={onRetryAttachment}
               forceCollapsed={forceCollapseInput || isRecording}
               isRecording={isRecording}
               navigation={navigation}

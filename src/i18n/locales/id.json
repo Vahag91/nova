@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Lanjutkan",
+        "tryItFree": "Coba gratis",
+        "back": "Kembali"
+      },
+      "valueDemo": {
+        "title": "Kami ingin Anda mencoba Cloud AI secara gratis",
+        "workspaceLabel": "RUANG KERJA AI",
+        "userPromptLabel": "PERINTAH PENGGUNA",
+        "aiTypingLabel": "MENGETIK AI",
+        "prompt": "Tulis balasan sopan kepada klien tentang keterlambatan pengiriman.",
+        "response": "Hai, terima kasih atas kesabaran Anda. Pengiriman Anda mungkin sedikit tertunda. Saya akan terus mengabari Anda.",
+        "cards": {
+          "doc": {
+            "title": "Ringkasan Dokumen",
+            "detail": "File 12 halaman → 5 poin penting"
+          },
+          "reply": {
+            "title": "Balasan Disusun",
+            "detail": "Nada sopan dan profesional"
+          },
+          "translation": {
+            "title": "Terjemahan Siap",
+            "detail": "Bahasa Inggris → Bahasa Spanyol"
+          }
+        },
+        "subtitle": "Tulis, rangkum, terjemahkan, dan pindai dokumen dalam satu ruang kerja AI."
+      },
+      "goals": {
+        "title": "Bantuan apa yang Anda perlukan?",
+        "subtitle": "Pilih 1–3 gol. Kami akan membangun ruang kerja AI Anda.",
+        "emptyCta": "Pilih setidaknya 1 sasaran",
+        "items": {
+          "workFaster": {
+            "title": "Bekerja lebih cepat",
+            "subtitle": "Email, balasan, tugas"
+          },
+          "writeBetter": {
+            "title": "Menulis lebih baik",
+            "subtitle": "Perbaiki nada, tulis ulang, tingkatkan"
+          },
+          "understandDocuments": {
+            "title": "Memahami dokumen",
+            "subtitle": "Ringkasan, pindaian, poin-poin penting"
+          },
+          "learnAnything": {
+            "title": "Pelajari apa saja",
+            "subtitle": "Jelaskan topik dengan jelas"
+          },
+          "createContent": {
+            "title": "Buat konten",
+            "subtitle": "Postingan, keterangan, ide"
+          },
+          "planBusiness": {
+            "title": "Rencanakan bisnis",
+            "subtitle": "Ide, strategi, otomatisasi"
+          },
+          "personalClarity": {
+            "title": "Kejelasan pribadi",
+            "subtitle": "Keputusan, kebiasaan, pemikiran"
+          },
+          "askBigQuestions": {
+            "title": "Ajukan pertanyaan apa pun",
+            "subtitle": "Masa depan, makna, AI, kehidupan"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Membuat asisten AI Anda",
+        "readyTitle": "Asisten AI Anda sudah siap",
+        "subtitle": "Asisten Anda sudah dikonfigurasi. Akses uji coba sedang diaktifkan sekarang.",
+        "trialTitle": "Uji coba 3 hari",
+        "trialActivating": "aktif",
+        "trialEnabled": "diaktifkan",
+        "steps": {
+          "0": "Mempersiapkan asisten Anda",
+          "1": "Personalisasi respons",
+          "2": "Mengamankan akses",
+          "3": "Menyelesaikan pengaturan"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Kenalan dengan",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Lanjutkan",
       "start": "Mulai"
+    },
+    "v3": {
+      "intent": {
+        "overline": "JADIKAN ITU MILIK ANDA",
+        "title": "Cloud AI dapat membantu Anda melakukan apa?",
+        "cta": "Lanjutkan"
+      },
+      "goals": {
+        "ask": "Temukan jawaban",
+        "write": "Menulis lebih baik",
+        "create": "Buat gambar",
+        "plan": "Rencanakan hariku"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "TEMUKAN JAWABAN",
+          "title": "Temukan kejelasan lebih cepat",
+          "subtitle": "Tanyakan secara alami. Dapatkan jawaban yang jelas dan langkah selanjutnya yang berguna.",
+          "beat1": "Mengerti",
+          "beat2": "Putuskan",
+          "beat3": "Bergerak maju"
+        },
+        "write": {
+          "focus": "MENULIS LEBIH BAIK",
+          "title": "Ubah pikiran menjadi kata-kata",
+          "subtitle": "Mulai dari ide kasar hingga tulisan yang terdengar seperti Anda.",
+          "beat1": "Bentuk",
+          "beat2": "Sempurnakan",
+          "beat3": "Bagikan"
+        },
+        "create": {
+          "focus": "BUAT GAMBAR",
+          "title": "Wujudkan ide menjadi kenyataan",
+          "subtitle": "Jelaskan apa yang Anda bayangkan, lalu ciptakan dan sempurnakan dalam hitungan detik.",
+          "beat1": "Bayangkan",
+          "beat2": "Buat",
+          "beat3": "Sempurna"
+        },
+        "plan": {
+          "focus": "RENCANAKAN HARI SAYA",
+          "title": "Beri ruang untuk hal-hal yang penting",
+          "subtitle": "Ubah daftar sibuk menjadi rencana tenang yang benar-benar bisa Anda ikuti.",
+          "beat1": "Prioritaskan",
+          "beat2": "Atur",
+          "beat3": "Mulai"
+        }
+      },
+      "proof": {
+        "overline": "SEMUA DALAM SATU TEMPAT",
+        "title": "Satu tempat. Lebih banyak kemungkinan.",
+        "subtitle": "Beralih dari pertanyaan ke kreasi tanpa beralih antar aplikasi.",
+        "item1": {
+          "title": "Tanyakan apa saja",
+          "subtitle": "Model tingkat lanjut untuk jawaban yang jelas dan bermanfaat"
+        },
+        "item2": {
+          "title": "Buat gambar",
+          "subtitle": "Ubah ide menjadi sesuatu yang dapat Anda lihat"
+        },
+        "item3": {
+          "title": "Dapatkan bantuan ahli",
+          "subtitle": "Asisten untuk pekerjaan dan kehidupan sehari-hari"
+        }
+      },
+      "controls": {
+        "back": "Kembali",
+        "continue": "Lanjutkan",
+        "finish": "Jelajahi premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "minggu",
       "termsOfUse": "Ketentuan Penggunaan",
       "privacyPolicy": "Kebijakan Privasi"
+    },
+    "v3": {
+      "eyebrow": "PREMIUM AI CLOUD",
+      "trial": {
+        "headline": "Buka kunci semua fitur premium",
+        "subtitle": "Lihat secara pasti apa yang terjadi dan kapan.",
+        "todayTitle": "Hari ini",
+        "todayBody": "Buka kunci setiap fitur premium. Tidak ada pembayaran yang harus dibayar sekarang.",
+        "checkTitle": "Dalam 2 hari — Pengingat",
+        "checkBody": "Kami akan mengirimkan pemberitahuan bahwa uji coba Anda akan segera berakhir.",
+        "billingTitle": "Dalam 3 hari",
+        "billingBody": "Penagihan dimulai secara otomatis kecuali Anda membatalkannya kapan saja sebelumnya.",
+        "badge": "GRATIS 3 HARI",
+        "cardNote": "Setelah uji coba gratis",
+        "noPayment": "Tidak Ada Pembayaran Jatuh Tempo Sekarang",
+        "cta": "Mulai Uji Coba Gratis 3 Hari Saya",
+        "renewalTerms": "Gratis 3 hari, lalu {{price}} / {{period}}. Perpanjangan otomatis hingga dibatalkan."
+      },
+      "annual": {
+        "headline": "Buka satu tahun Cloud AI",
+        "subtitle": "Satu paket untuk obrolan, gambar, dan bantuan ahli AI.",
+        "todayTitle": "Hari ini — premium dimulai",
+        "todayBody": "Segera buka kunci setiap fitur AI premium.",
+        "billingTitle": "Ditagih setiap tahun",
+        "billingBody": "{{price}} memberi Anda akses satu tahun penuh.",
+        "renewalTitle": "Diperbarui setiap tahun",
+        "renewalBody": "Batalkan kapan saja di Google Play sebelum tanggal perpanjangan Anda.",
+        "cta": "Lanjutkan",
+        "renewalTerms": "{{price}} / {{period}}. Perpanjangan otomatis hingga dibatalkan."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Menganalisis gambar…",
       "searching": "Mencari…",
-      "thinking": "Berpikir…"
+      "thinking": "Berpikir…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Pencarian web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Lebih banyak sinyal, lebih sedikit noise pada spreadsheet."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Ambil koin harian Anda",
       "subtitle": "Kembalilah setiap hari, hadiahnya makin besar.",
-      "cta": "Check-in",
+      "cta": "Ambil",
       "claimed": "Diterima! +{{amount}} koin",
       "later": "Nanti"
     }

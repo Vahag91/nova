@@ -4,19 +4,17 @@
 
 const CHAT_MODEL_PRICES = {
   // Free models
-  'gpt-5.4-nano': 0,
+  'gpt-5.6-luna': 0,
   // Premium models - could add pricing here later
-  'gpt-5': 0,
-  'gpt-5-chat-latest': 0,
-  'gpt-5-mini': 0,
-  'o4-mini': 0,
-  'gpt-4.1-mini': 0,
-  'claude-3-haiku': 0,
-  'claude-3.7-sonnet': 0,
-  'gemini-2.5-Flash': 0,
-  'gemini-2.5-flash': 0,
-  'gemini-2.0-flash': 0,
-  'grok-4': 0,
+  'gpt-5.6-sol': 0,
+  'gpt-5.6-terra': 0,
+  'claude-fable-5': 0,
+  'claude-sonnet-5': 0,
+  'gemini-3.7-flash': 0,
+  'gemini-3.1-pro-preview': 0,
+  'grok-4.6': 0,
+  'deepseek-v4-pro': 0,
+  'deepseek-v4-flash': 0,
 };
 
 const DEFAULT_CHAT_MODEL_COST = 0;

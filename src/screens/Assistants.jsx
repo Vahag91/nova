@@ -12,6 +12,7 @@ import { setPendingPremiumAction } from '../state/premiumActions';
 import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
 import { perfLog } from '../lib/perfTrace';
 import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
+import { DEFAULT_CHAT_MODEL } from '../config/models';
 
 const HEADER_VIDEOS = [
   require('../../assets/video/fitness.mp4'),
@@ -64,7 +65,7 @@ export default function Assistants({ navigation }) {
   const startAssistantPreset = useCallback(async (preset) => {
     try {
       try { Haptic.trigger('impactLight'); } catch {}
-      const model = 'gpt-5.4-nano';
+      const model = preset?.suggestedModel || DEFAULT_CHAT_MODEL;
       const title = preset?.name || t('assistants.defaultTitle');
       const sys = typeof preset?.system === 'string' ? preset.system : '';
 
@@ -199,7 +200,12 @@ export default function Assistants({ navigation }) {
               backgroundColor: tag.bg,
               borderColor: tag.border,
             }, styles.tagAndroid]}>
-              <Text style={[styles.tagText, { color: tag.fg }]}>{labelForCategory(item.category)}</Text>
+              <Text
+                numberOfLines={1}
+                style={[styles.tagText, { color: tag.fg }]}
+              >
+                {labelForCategory(item.category)}
+              </Text>
             </View>
           );
         })() : null}
@@ -301,7 +307,7 @@ export default function Assistants({ navigation }) {
             </Text>
           </View>
         )}
-        removeClippedSubviews
+        removeClippedSubviews={false}
         initialNumToRender={4}
         maxToRenderPerBatch={4}
         updateCellsBatchingPeriod={50}
@@ -392,10 +398,10 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     resizeMode: 'cover',
   },
-  cardBody: { flex: 1 },
+  cardBody: { flex: 1, minWidth: 0 },
   cardTitle: { fontSize: 17, fontWeight: '700', color: 'rgba(249,250,251,0.95)', fontFamily: 'Lato-Bold' },
   cardDesc: { fontSize: 13, color: '#9CA3AF', marginTop: 6, fontFamily: 'Lato-Regular' },
-  tag: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, alignSelf: 'flex-start', borderWidth: 1,
+  tag: { maxWidth: '36%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, alignSelf: 'flex-start', borderWidth: 1,
     shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.15, shadowRadius: 2, elevation: 2 },
   tagAndroid: {
     shadowOpacity: 0,

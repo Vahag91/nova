@@ -1,3 +1,4 @@
+/* global globalThis */
 // lib/payloadBuilder.js
 
 const estTok = (s = '') => Math.ceil((s.length || 0) / 4);
@@ -6,12 +7,21 @@ const estTok = (s = '') => Math.ceil((s.length || 0) / 4);
 const IMAGE_MEMORY_LOOKBACK = (typeof globalThis !== 'undefined' && globalThis.IMAGE_MEMORY_LOOKBACK) || 12; // Keep image context for last pairs
 
 function countMsgTokens(m) {
+  const documentTokens = (Array.isArray(m?.attachments) ? m.attachments : [])
+    .filter(attachment => attachment?.kind === 'document')
+    .reduce((total, attachment) => {
+      const extractedChars = Number(attachment?.extractedChars);
+      return total + (Number.isFinite(extractedChars) && extractedChars > 0
+        ? Math.ceil(extractedChars / 4)
+        : 150);
+    }, 0);
+
   if (Array.isArray(m.content)) {
     const text = m.content.filter(p => p.type === 'text').map(p => p.text).join('\n');
     const imgs = m.content.filter(p => p.type === 'image_url').length;
-    return estTok(text) + imgs * 150;
+    return estTok(text) + imgs * 150 + documentTokens;
   }
-  return estTok(m.content || '');
+  return estTok(m.content || '') + documentTokens;
 }
 
 function trimSummaryToBudget(summaryText, budgetTokens){

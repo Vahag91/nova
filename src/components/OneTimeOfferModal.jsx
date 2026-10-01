@@ -1,3 +1,4 @@
+import { IMAGE_STUDIO_ENABLED } from '../constants/featureFlags';
 import React, {
   useCallback,
   useContext,
@@ -324,15 +325,19 @@ useEffect(() => {
 
   const features = useMemo(
     () => [
-      {
-        icon: 'imageStudio',
-        text: t('paywall.features.imageStudio', {
-          defaultValue: 'Get Image Studio {{credits}} credits {{period}}',
-        }),
-        color: '#F19E39',
-        credits: '15000',
-        period: t('paywall.features.period.yearly', { defaultValue: 'yearly' }),
-      },
+      ...(IMAGE_STUDIO_ENABLED
+        ? [
+            {
+              icon: 'imageStudio',
+              text: t('paywall.features.imageStudio', {
+                defaultValue: 'Get Image Studio {{credits}} credits {{period}}',
+              }),
+              color: '#F19E39',
+              credits: '15000',
+              period: t('paywall.features.period.yearly', { defaultValue: 'yearly' }),
+            },
+          ]
+        : []),
       {
         icon: 'search',
         text: t('paywall.features.search', {

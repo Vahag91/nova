@@ -19,6 +19,7 @@ import StreamingText from './StreamingText';
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { plainTextFromMarkdown } from '../../lib/plainTextFromMarkdown';
+import { formatFileSize, isDocumentAttachment } from '../../lib/documentAttachments';
 
 // --- image helpers (stable, no global regex side-effects) ---
 const IMG_TAG_RE = /!\[[^\]]*\]\(([^)]+)\)/; // non-global: safe for .test()
@@ -140,6 +141,41 @@ function PureImagesBlock({ uris, alignRight }) {
           resizeMode="cover"
         />
       ))}
+    </View>
+  );
+}
+
+function DocumentAttachmentsBlock({ attachments, onLongPress }) {
+  const documents = (Array.isArray(attachments) ? attachments : [])
+    .filter(isDocumentAttachment);
+  if (!documents.length) return null;
+
+  return (
+    <View style={styles.sentDocuments}>
+      {documents.map((document, index) => {
+        const meta = [
+          String(document.mimeType || '').includes('pdf') ? 'PDF' : null,
+          formatFileSize(document.size),
+        ].filter(Boolean).join(' · ');
+        return (
+          <Pressable
+            key={document.id || `${document.name}-${index}`}
+            onLongPress={onLongPress}
+            delayLongPress={180}
+            style={({ pressed }) => [styles.sentDocumentChip, pressed && styles.actionButtonPressed]}
+          >
+            <View style={styles.sentDocumentIcon}>
+              <Text style={styles.sentDocumentIconText}>DOC</Text>
+            </View>
+            <View style={styles.sentDocumentText}>
+              <Text style={styles.sentDocumentName} numberOfLines={1}>
+                {document.name || 'Document'}
+              </Text>
+              {!!meta && <Text style={styles.sentDocumentMeta}>{meta}</Text>}
+            </View>
+          </Pressable>
+        );
+      })}
     </View>
   );
 }
@@ -281,11 +317,16 @@ const MessageBubbleImpl = function MessageBubble({
               const uris = extractImageUrisAll(content);
               const leftover = stripImageMd(content);
               const plainUserText = isPlainUserText(content);
+              const hasDocuments = (message.attachments || []).some(isDocumentAttachment);
+              const documentsBlock = hasDocuments
+                ? <DocumentAttachmentsBlock attachments={message.attachments} onLongPress={showSheet} />
+                : null;
 
               // Pure image(s) → no bubble, just images
               if (uris.length && isImagesOnly(content)) {
                 return (
                   <View style={{ gap: 8, alignItems: 'flex-end' }}>
+                    {documentsBlock}
                     {uris.map((u, i) => (
                       <View key={`${u}-${i}`} style={{ alignSelf: 'flex-end' }}>
                         <FitImage uri={u} />
@@ -299,6 +340,7 @@ const MessageBubbleImpl = function MessageBubble({
               if (uris.length && leftover) {
                 return (
                   <View style={{ gap: 8, alignItems: 'flex-end' }}>
+                    {documentsBlock}
                     {uris.map((u, i) => (
                       <View key={`${u}-${i}`} style={{ alignSelf: 'flex-end' }}>
                         <FitImage uri={u} />
@@ -342,8 +384,12 @@ const MessageBubbleImpl = function MessageBubble({
                 );
               }
 
+              if (!content.trim() && hasDocuments) {
+                return documentsBlock;
+              }
+
               // Text-only → your existing bubble
-              return (
+              const textBubble = (
                 <TouchableOpacity
                   activeOpacity={0.92}
                   onPress={Keyboard.dismiss}
@@ -379,6 +425,12 @@ const MessageBubbleImpl = function MessageBubble({
                   </View>
                 </TouchableOpacity>
               );
+              return hasDocuments ? (
+                <View style={{ gap: 8, alignItems: 'flex-end' }}>
+                  {documentsBlock}
+                  {textBubble}
+                </View>
+              ) : textBubble;
             })()
           : // ASSISTANT SIDE (unified)
             (() => {
@@ -658,6 +710,31 @@ const styles = StyleSheet.create({
     opacity: 0.6,
     transform: [{ scale: 0.96 }],
   },
+  sentDocuments: { gap: 6, alignItems: 'flex-end', maxWidth: 280 },
+  sentDocumentChip: {
+    width: 250,
+    minHeight: 58,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surfaceElevated,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+  },
+  sentDocumentIcon: {
+    width: 34,
+    height: 34,
+    borderRadius: 9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(90,200,250,0.15)',
+  },
+  sentDocumentIconText: { color: '#5AC8FA', fontSize: 9, fontWeight: '800' },
+  sentDocumentText: { flex: 1, marginLeft: 10 },
+  sentDocumentName: { color: colors.text, fontSize: 13, fontWeight: '600' },
+  sentDocumentMeta: { color: colors.textSecondary, fontSize: 11, marginTop: 2 },
 
   failedRow: { marginTop: 6, alignSelf: 'flex-end' },
   retryChip: {
@@ -684,6 +761,20 @@ const MessageBubble = memo(MessageBubbleImpl, (prev, next) => {
 
   // If content changed, re-render
   if (prevMsg?.content !== nextMsg?.content) return false;
+
+  const prevAttachments = Array.isArray(prevMsg?.attachments) ? prevMsg.attachments : [];
+  const nextAttachments = Array.isArray(nextMsg?.attachments) ? nextMsg.attachments : [];
+  if (prevAttachments.length !== nextAttachments.length) return false;
+  for (let index = 0; index < prevAttachments.length; index += 1) {
+    const previous = prevAttachments[index];
+    const current = nextAttachments[index];
+    if (
+      previous?.id !== current?.id
+      || previous?.name !== current?.name
+      || previous?.size !== current?.size
+      || previous?.status !== current?.status
+    ) return false;
+  }
 
   // Check if streaming state changed for THIS specific message
   const prevIsStreaming =

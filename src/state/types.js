@@ -1,3 +1,5 @@
+import { DEFAULT_CHAT_MODEL } from '../config/models';
+
 // Message supports future modalities
 export const newUserMessage = (text) => ({
   id: `msg_${Date.now()}_${Math.random().toString(36).slice(2,8)}`,
@@ -31,7 +33,7 @@ export const newSystemMessage = (text) => ({
   createdAt: Date.now(),
 });
 
-export const newThread = ({title='Cloud AI assistant', model='gpt-5.4-nano', system=null} = {}) => ({
+export const newThread = ({title='Cloud AI assistant', model=DEFAULT_CHAT_MODEL, system=null} = {}) => ({
   id: `thr_${Date.now()}_${Math.random().toString(36).slice(2,8)}`,
   title,
   createdAt: Date.now(),

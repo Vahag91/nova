@@ -1,7 +1,11 @@
 // src/state/useSettingsStore.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
-import DEFAULT_MODELS, { buildModelRegistry } from '../config/models';
+import DEFAULT_MODELS, {
+  DEFAULT_CHAT_MODEL,
+  buildModelRegistry,
+  normalizeChatModelKey,
+} from '../config/models';
 import { isPremiumModel, FREE_MODEL } from '../config/premium';
 
 const SETTINGS_V2 = 'settings.v2';
@@ -22,7 +26,7 @@ export const useSettingsStore = create((set, get) => ({
   hydrated: false,
 
   // current selection
-  model: 'gpt-5.4-nano',
+  model: DEFAULT_CHAT_MODEL,
   
   // Performance monitoring
   _debug: {
@@ -44,7 +48,7 @@ export const useSettingsStore = create((set, get) => ({
   setModel: (model) => {
     // Validate premium - if free user tries to set premium model, reset to free model
     // Note: This check happens at the component level too, but this is a safety net
-    set({ model });
+    set({ model: normalizeChatModelKey(model) });
     get().save();
   },
   
@@ -89,9 +93,12 @@ export const useSettingsStore = create((set, get) => ({
     }
 
     // If current model is missing (e.g., removed upstream), fall back gracefully.
-    const cur = get().model;
+    const cur = normalizeChatModelKey(get().model);
     let modelChanged = false;
-    if (!nextModels?.[cur]) {
+    if (cur !== get().model && nextModels?.[cur]) {
+      set({ model: cur });
+      modelChanged = true;
+    } else if (!nextModels?.[cur]) {
       const fallback =
         nextModels?.[FREE_MODEL]
           ? FREE_MODEL
@@ -161,7 +168,7 @@ export const useSettingsStore = create((set, get) => ({
         if (raw2) {
           const data = JSON.parse(raw2);
           set({
-            model: data.model ?? 'gpt-5.4-nano',
+            model: normalizeChatModelKey(data.model),
             temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
             perModelTemp: data.perModelTemp || {},
             models: data.models
@@ -178,7 +185,7 @@ export const useSettingsStore = create((set, get) => ({
         if (raw1) {
           const data = JSON.parse(raw1);
           set({
-            model: data.model ?? 'gpt-5.4-nano',
+            model: normalizeChatModelKey(data.model),
             temperature: typeof data.temperature === 'number' ? data.temperature : 0.7,
             perModelTemp: {},
           });
@@ -207,7 +214,7 @@ export const useSettingsStore = create((set, get) => ({
       await AsyncStorage.removeItem(SETTINGS_V1);
     } catch {}
     set({
-      model: 'gpt-5.4-nano',
+      model: DEFAULT_CHAT_MODEL,
       temperature: 0.7,
       perModelTemp: {},
       // keep models as-is

@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "ສືບຕໍ່",
+        "tryItFree": "ລອງໃຊ້ມັນຟຣີ",
+        "back": "ກັບຄືນໄປບ່ອນ"
+      },
+      "valueDemo": {
+        "title": "ພວກເຮົາຕ້ອງການໃຫ້ທ່ານລອງໃຊ້ Cloud AI ໄດ້ຟຣີ",
+        "workspaceLabel": "AI ບ່ອນເຮັດວຽກ",
+        "userPromptLabel": "ການເຕືອນຜູ້ໃຊ້",
+        "aiTypingLabel": "AI ກຳລັງພິມ",
+        "prompt": "ຂຽນການຕອບກັບທີ່ສຸພາບໃຫ້ກັບລູກຄ້າກ່ຽວກັບການຈັດສົ່ງທີ່ຊັກຊ້າ.",
+        "response": "ສະບາຍດີ, ຂອບໃຈສຳລັບຄວາມອົດທົນຂອງເຈົ້າ. ການຈັດສົ່ງຂອງທ່ານອາດຈະຊັກຊ້າເລັກນ້ອຍ. ຂ້ອຍຈະອັບເດດເຈົ້າ.",
+        "cards": {
+          "doc": {
+            "title": "ເອກະສານສະຫຼຸບ",
+            "detail": "ໄຟລ໌ 12 ໜ້າ → 5 ຈຸດສຳຄັນ"
+          },
+          "reply": {
+            "title": "ຮ່າງຄຳຕອບແລ້ວ",
+            "detail": "ໂທນສຸພາບ ແລະເປັນມືອາຊີບ"
+          },
+          "translation": {
+            "title": "ການແປພ້ອມແລ້ວ",
+            "detail": "ອັງກິດ → ແອສປາໂຍນ"
+          }
+        },
+        "subtitle": "ຂຽນ, ສະຫຼຸບ, ແປ, ແລະສະແກນເອກະສານໃນພື້ນທີ່ເຮັດວຽກ AI ດຽວ."
+      },
+      "goals": {
+        "title": "ເຈົ້າຕ້ອງການຄວາມຊ່ວຍເຫຼືອຫຍັງ?",
+        "subtitle": "ເລືອກ 1-3 ເປົ້າໝາຍ. ພວກເຮົາຈະສ້າງພື້ນທີ່ເຮັດວຽກ AI ຂອງທ່ານ.",
+        "emptyCta": "ເລືອກຢ່າງໜ້ອຍ 1 ເປົ້າໝາຍ",
+        "items": {
+          "workFaster": {
+            "title": "ເຮັດວຽກໄວຂຶ້ນ",
+            "subtitle": "ອີເມວ, ຕອບກັບ, ວຽກງານ"
+          },
+          "writeBetter": {
+            "title": "ຂຽນດີກວ່າ",
+            "subtitle": "ແກ້ໄຂໂຕນ, ຂຽນຄືນໃຫມ່, ປັບປຸງ"
+          },
+          "understandDocuments": {
+            "title": "ເຂົ້າໃຈເອກະສານ",
+            "subtitle": "ສະຫຼຸບ, ສະແກນ, ຈຸດສໍາຄັນ"
+          },
+          "learnAnything": {
+            "title": "ຮຽນຮູ້ຫຍັງ",
+            "subtitle": "ອະທິບາຍຫົວຂໍ້ຢ່າງຊັດເຈນ"
+          },
+          "createContent": {
+            "title": "ສ້າງເນື້ອຫາ",
+            "subtitle": "ໂພສ, ຄຳບັນຍາຍ, ໄອເດຍ"
+          },
+          "planBusiness": {
+            "title": "ວາງແຜນທຸລະກິດ",
+            "subtitle": "ແນວຄວາມຄິດ, ຍຸດທະສາດ, ອັດຕະໂນມັດ"
+          },
+          "personalClarity": {
+            "title": "ຄວາມຊັດເຈນສ່ວນຕົວ",
+            "subtitle": "ການຕັດສິນໃຈ, ນິໄສ, ຄວາມຄິດ"
+          },
+          "askBigQuestions": {
+            "title": "ຖາມຄໍາຖາມໃດໆ",
+            "subtitle": "ອະນາຄົດ, ຄວາມຫມາຍ, AI, ຊີວິດ"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "ການສ້າງຜູ້ຊ່ວຍ AI ຂອງທ່ານ",
+        "readyTitle": "ຜູ້ຊ່ວຍ AI ຂອງທ່ານພ້ອມແລ້ວ",
+        "subtitle": "ຜູ້ຊ່ວຍຂອງທ່ານຖືກຕັ້ງຄ່າແລ້ວ. ຕອນນີ້ເປີດການເຂົ້າເຖິງການທົດລອງໃຊ້.",
+        "trialTitle": "ການທົດລອງ 3 ມື້",
+        "trialActivating": "ກຳລັງເປີດໃຊ້",
+        "trialEnabled": "ເປີດໃຊ້ງານແລ້ວ",
+        "steps": {
+          "0": "ການກະກຽມຜູ້ຊ່ວຍຂອງທ່ານ",
+          "1": "ການປັບແຕ່ງຄຳຕອບສ່ວນຕົວ",
+          "2": "ການຮັກສາຄວາມປອດໄພການເຂົ້າເຖິງ",
+          "3": "ກຳລັງສຳເລັດການຕັ້ງຄ່າ"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "ພົບກັນ",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "ສືບຕໍ່",
       "start": "ໃຫ້ເລີ່ມຕົ້ນ"
+    },
+    "v3": {
+      "intent": {
+        "overline": "ເຮັດໃຫ້ມັນເປັນຂອງເຈົ້າ",
+        "title": "Cloud AI ຄວນຊ່ວຍເຈົ້າເຮັດຫຍັງ?",
+        "cta": "ສືບຕໍ່"
+      },
+      "goals": {
+        "ask": "ຊອກຫາຄໍາຕອບ",
+        "write": "ຂຽນດີກວ່າ",
+        "create": "ສ້າງຮູບພາບ",
+        "plan": "ວາງແຜນມື້ຂອງຂ້ອຍ"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ຊອກຫາຄໍາຕອບ",
+          "title": "ຊອກຫາຄວາມຊັດເຈນໄດ້ໄວຂຶ້ນ",
+          "subtitle": "ຖາມແບບທໍາມະຊາດ. ໄດ້ຮັບຄໍາຕອບທີ່ຊັດເຈນແລະຂັ້ນຕອນຕໍ່ໄປທີ່ເປັນປະໂຫຍດ.",
+          "beat1": "ເຂົ້າໃຈ",
+          "beat2": "ຕັດສິນໃຈ",
+          "beat3": "ກ້າວໄປຂ້າງຫນ້າ"
+        },
+        "write": {
+          "focus": "ຂຽນດີກວ່າ",
+          "title": "ປ່ຽນຄວາມຄິດເປັນຄໍາເວົ້າ",
+          "subtitle": "ໄປ​ຈາກ​ຄວາມ​ຄິດ​ທີ່​ຫຍາບ​ຄາຍ​ກັບ​ການ​ຂຽນ​ທີ່​ຄ້າຍ​ຄື​ທ່ານ​.",
+          "beat1": "ຮູບຮ່າງ",
+          "beat2": "ປັບປຸງ",
+          "beat3": "ແບ່ງປັນ"
+        },
+        "create": {
+          "focus": "ສ້າງຮູບພາບ",
+          "title": "ເອົາແນວຄວາມຄິດໄປສູ່ຊີວິດ",
+          "subtitle": "ອະທິບາຍສິ່ງທີ່ທ່ານຈິນຕະນາການ, ຈາກນັ້ນສ້າງ ແລະປັບປຸງມັນພາຍໃນວິນາທີ.",
+          "beat1": "ຈິນຕະນາການ",
+          "beat2": "ສ້າງ",
+          "beat3": "ສົມບູນແບບ"
+        },
+        "plan": {
+          "focus": "ວາງແຜນມື້ຂອງຂ້ອຍ",
+          "title": "ສ້າງພື້ນທີ່ສໍາລັບສິ່ງທີ່ສໍາຄັນ",
+          "subtitle": "ປ່ຽນລາຍການທີ່ຫຍຸ້ງໆເປັນແຜນສະຫງົບທີ່ເຈົ້າສາມາດປະຕິບັດຕາມໄດ້.",
+          "beat1": "ຈັດລໍາດັບຄວາມສໍາຄັນ",
+          "beat2": "ຈັດຕັ້ງ",
+          "beat3": "ເລີ່ມຕົ້ນ"
+        }
+      },
+      "proof": {
+        "overline": "ທັງໝົດໃນບ່ອນດຽວ",
+        "title": "ສະຖານທີ່ຫນຶ່ງ. ຄວາມເປັນໄປໄດ້ຫຼາຍຂຶ້ນ.",
+        "subtitle": "ຍ້າຍຈາກຄໍາຖາມໄປຫາການສ້າງໂດຍບໍ່ມີການປ່ຽນລະຫວ່າງແອັບຯ.",
+        "item1": {
+          "title": "ຖາມຫຍັງ",
+          "subtitle": "ຮູບແບບຂັ້ນສູງສໍາລັບຄໍາຕອບທີ່ຊັດເຈນ, ເປັນປະໂຫຍດ"
+        },
+        "item2": {
+          "title": "ສ້າງຮູບພາບ",
+          "subtitle": "ປ່ຽນຄວາມຄິດເປັນບາງສິ່ງບາງຢ່າງທີ່ເຈົ້າສາມາດເຫັນໄດ້"
+        },
+        "item3": {
+          "title": "ຂໍຄວາມຊ່ວຍເຫຼືອຈາກຜູ້ຊ່ຽວຊານ",
+          "subtitle": "ຜູ້ຊ່ວຍສໍາລັບການເຮັດວຽກແລະຊີວິດປະຈໍາວັນ"
+        }
+      },
+      "controls": {
+        "back": "ກັບຄືນໄປບ່ອນ",
+        "continue": "ສືບຕໍ່",
+        "finish": "ສຳຫຼວດພຣີມຽມ"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "ອາທິດ",
       "termsOfUse": "ເງື່ອນໄຂການນຳໃຊ້",
       "privacyPolicy": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ"
+    },
+    "v3": {
+      "eyebrow": "Cloud AI PREMIUM",
+      "trial": {
+        "headline": "ປົດລັອກຄຸນສົມບັດພຣີມຽມທັງໝົດ",
+        "subtitle": "ເບິ່ງຢ່າງແນ່ນອນວ່າມີຫຍັງເກີດຂຶ້ນແລະເວລາໃດ.",
+        "todayTitle": "ມື້ນີ້",
+        "todayBody": "ປົດລັອກທຸກຄຸນສົມບັດພຣີມຽມ. ບໍ່​ມີ​ການ​ຈ່າຍ​ເງິນ​ແມ່ນ​ກໍາ​ນົດ​ໃນ​ປັດ​ຈຸ​ບັນ​.",
+        "checkTitle": "ໃນ 2 ມື້ — ເຕືອນ",
+        "checkBody": "ພວກເຮົາຈະສົ່ງແຈ້ງການໃຫ້ທ່ານວ່າການທົດລອງໃຊ້ຂອງທ່ານຈະສິ້ນສຸດໃນໄວໆນີ້.",
+        "billingTitle": "ໃນ 3 ມື້",
+        "billingBody": "ການເອີ້ນເກັບເງິນເລີ່ມຕົ້ນອັດຕະໂນມັດເວັ້ນເສຍແຕ່ວ່າທ່ານຍົກເລີກທຸກເວລາກ່ອນ.",
+        "badge": "3 ມື້ຟຣີ",
+        "cardNote": "ຫຼັງ​ຈາກ​ການ​ທົດ​ລອງ​ຟຣີ​",
+        "noPayment": "ບໍ່ມີການຈ່າຍເງິນທີ່ຕ້ອງຈ່າຍໃນປັດຈຸບັນ",
+        "cta": "ເລີ່ມການທົດລອງໃຊ້ຟຣີ 3 ມື້ຂອງຂ້ອຍ",
+        "renewalTerms": "ຟຣີ 3 ມື້, ຈາກນັ້ນ {{price}} / {{period}}. ຕໍ່ອາຍຸອັດຕະໂນມັດຈົນກວ່າຈະຖືກຍົກເລີກ."
+      },
+      "annual": {
+        "headline": "ປົດລັອກປີຂອງ Cloud AI",
+        "subtitle": "ແຜນການຫນຶ່ງສໍາລັບການສົນທະນາ, ຮູບພາບ, ແລະການຊ່ວຍເຫຼືອຂອງຜູ້ຊ່ຽວຊານ AI.",
+        "todayTitle": "ມື້ນີ້ — ພິເສດເລີ່ມຕົ້ນ",
+        "todayBody": "ປົດລັອກທຸກຄຸນສົມບັດ AI ລະດັບພຣີມຽມທັນທີ.",
+        "billingTitle": "ຮຽກເກັບປະຈໍາປີ",
+        "billingBody": "{{price}} ໃຫ້ທ່ານເຂົ້າເຖິງໜຶ່ງປີເຕັມ.",
+        "renewalTitle": "ຕໍ່​ອາ​ຍຸ​ປະ​ຈໍາ​ປີ​",
+        "renewalBody": "ຍົກເລີກໄດ້ທຸກເວລາໃນ Google Play ກ່ອນວັນຕໍ່ອາຍຸຂອງທ່ານ.",
+        "cta": "ສືບຕໍ່",
+        "renewalTerms": "{{price}} / {{period}}. ຕໍ່ອາຍຸອັດຕະໂນມັດຈົນກວ່າຈະຖືກຍົກເລີກ."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "ກຳລັງວິເຄາະຮູບພາບ...",
       "searching": "ກຳລັງຊອກຫາ...",
-      "thinking": "ຄິດ..."
+      "thinking": "ຄິດ...",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "ຄົ້ນຫາເວັບ",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "ສັນຍານຫຼາຍຂຶ້ນ, ມີສຽງລົບກວນໜ້ອຍລົງ."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "ຮັບຫຼຽນປະຈຳວັນຂອງທ່ານ",
       "subtitle": "ກັບມາທຸກມື້ — ລາງວັນເພີ່ມຂຶ້ນ.",
-      "cta": "ເຊັກອິນ",
+      "cta": "ຮັບເອົາ",
       "claimed": "ໄດ້ຮັບແລ້ວ! +{{amount}} ຫຼຽນ",
       "later": "ພາຍຫຼັງ"
     }

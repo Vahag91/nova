@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "ادامه دهید",
+        "tryItFree": "آن را به صورت رایگان امتحان کنید",
+        "back": "برگشت"
+      },
+      "valueDemo": {
+        "title": "ما از شما می خواهیم که Cloud AI را به صورت رایگان امتحان کنید",
+        "workspaceLabel": "فضای کاری هوش مصنوعی",
+        "userPromptLabel": "درخواست کاربر",
+        "aiTypingLabel": "تایپ AI",
+        "prompt": "یک پاسخ مودبانه به مشتری در مورد تاخیر در تحویل بنویسید.",
+        "response": "سلام، از شکیبایی شما متشکرم. ممکن است تحویل شما کمی تاخیر داشته باشد. من شما را در جریان خواهم گذاشت",
+        "cards": {
+          "doc": {
+            "title": "خلاصه سند",
+            "detail": "فایل 12 صفحه ای → 5 نکته کلیدی"
+          },
+          "reply": {
+            "title": "پاسخ آماده شد",
+            "detail": "لحن مؤدبانه و حرفه‌ای"
+          },
+          "translation": {
+            "title": "ترجمه آماده است",
+            "detail": "انگلیسی → اسپانیایی"
+          }
+        },
+        "subtitle": "در یک فضای کاری هوش مصنوعی بنویسید، خلاصه کنید، ترجمه کنید و اسناد را اسکن کنید."
+      },
+      "goals": {
+        "title": "برای چه چیزی به کمک نیاز دارید؟",
+        "subtitle": "1-3 گل را انتخاب کنید. ما فضای کاری هوش مصنوعی شما را می سازیم.",
+        "emptyCta": "حداقل 1 هدف را انتخاب کنید",
+        "items": {
+          "workFaster": {
+            "title": "سریعتر کار کنید",
+            "subtitle": "ایمیل ها، پاسخ ها، وظایف"
+          },
+          "writeBetter": {
+            "title": "بهتر بنویس",
+            "subtitle": "صدا را اصلاح کنید، بازنویسی کنید، بهبود دهید"
+          },
+          "understandDocuments": {
+            "title": "اسناد را درک کنید",
+            "subtitle": "خلاصه، اسکن، نکات کلیدی"
+          },
+          "learnAnything": {
+            "title": "هر چیزی را یاد بگیرید",
+            "subtitle": "موضوعات را به وضوح توضیح دهید"
+          },
+          "createContent": {
+            "title": "محتوا ایجاد کنید",
+            "subtitle": "پست‌ها، عنوان‌ها، ایده‌ها"
+          },
+          "planBusiness": {
+            "title": "برای کسب و کار برنامه ریزی کنید",
+            "subtitle": "ایده ها، استراتژی، اتوماسیون"
+          },
+          "personalClarity": {
+            "title": "وضوح شخصی",
+            "subtitle": "تصمیمات، عادات، افکار"
+          },
+          "askBigQuestions": {
+            "title": "هر گونه سوالی بپرسید",
+            "subtitle": "آینده، معنا، هوش مصنوعی، زندگی"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "ایجاد دستیار هوش مصنوعی شما",
+        "readyTitle": "دستیار هوش مصنوعی شما آماده است",
+        "subtitle": "دستیار شما پیکربندی شده است. دسترسی آزمایشی در حال حاضر روشن است.",
+        "trialTitle": "آزمایشی 3 روزه",
+        "trialActivating": "فعال می شود",
+        "trialEnabled": "فعال شد",
+        "steps": {
+          "0": "در حال آماده کردن دستیار شما",
+          "1": "شخصی سازی پاسخ ها",
+          "2": "ایمن کردن دسترسی",
+          "3": "در حال تکمیل راه‌اندازی"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "ملاقات کنید",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "ادامه دهید",
       "start": "بیایید شروع کنیم"
+    },
+    "v3": {
+      "intent": {
+        "overline": "آن را از آن خود کنید",
+        "title": "هوش مصنوعی ابری باید چه کمکی به شما کند؟",
+        "cta": "ادامه دهید"
+      },
+      "goals": {
+        "ask": "پاسخ ها را بیابید",
+        "write": "بهتر بنویس",
+        "create": "ایجاد تصاویر",
+        "plan": "برای روزم برنامه ریزی کن"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "یافتن پاسخ",
+          "title": "وضوح را سریعتر پیدا کنید",
+          "subtitle": "طبیعی بپرس پاسخ روشن و مراحل بعدی مفید را دریافت کنید.",
+          "beat1": "درک کنید",
+          "beat2": "تصمیم بگیرید",
+          "beat3": "به جلو حرکت کنید"
+        },
+        "write": {
+          "focus": "بهتر بنویس",
+          "title": "افکار را به کلمات تبدیل کنید",
+          "subtitle": "از یک ایده خشن به نوشتنی بروید که شبیه شماست.",
+          "beat1": "شکل",
+          "beat2": "پالایش کنید",
+          "beat3": "به اشتراک بگذارید"
+        },
+        "create": {
+          "focus": "ایجاد تصاویر",
+          "title": "ایده ها را زنده کنید",
+          "subtitle": "آنچه را که تصور می کنید توصیف کنید، سپس آن را در چند ثانیه ایجاد و اصلاح کنید.",
+          "beat1": "تصور کنید",
+          "beat2": "ایجاد کنید",
+          "beat3": "عالی"
+        },
+        "plan": {
+          "focus": "برای روزم برنامه ریزی کن",
+          "title": "برای چیزهایی که اهمیت دارد فضا ایجاد کنید",
+          "subtitle": "یک لیست شلوغ را به یک برنامه آرام تبدیل کنید که واقعاً می توانید دنبال کنید.",
+          "beat1": "اولویت بندی کنید",
+          "beat2": "سازماندهی کنید",
+          "beat3": "شروع کنید"
+        }
+      },
+      "proof": {
+        "overline": "همه در یک مکان",
+        "title": "یک مکان. امکانات بیشتر",
+        "subtitle": "بدون جابه‌جایی بین برنامه‌ها، از سؤالی به ایجادی دیگر بروید.",
+        "item1": {
+          "title": "هر چیزی بپرس",
+          "subtitle": "مدل های پیشرفته برای پاسخ های واضح و مفید"
+        },
+        "item2": {
+          "title": "ایجاد تصاویر",
+          "subtitle": "یک ایده را به چیزی که می توانید ببینید تبدیل کنید"
+        },
+        "item3": {
+          "title": "از متخصص کمک بگیرید",
+          "subtitle": "دستیار برای کار و زندگی روزمره"
+        }
+      },
+      "controls": {
+        "back": "برگشت",
+        "continue": "ادامه دهید",
+        "finish": "حق بیمه را کاوش کنید"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "هفته",
       "termsOfUse": "شرایط استفاده",
       "privacyPolicy": "سیاست حفظ حریم خصوصی"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "قفل تمام ویژگی های ممتاز را باز کنید",
+        "subtitle": "ببینید دقیقا چه اتفاقی می افتد و چه زمانی.",
+        "todayTitle": "امروز",
+        "todayBody": "قفل هر ویژگی ممتاز را باز کنید. اکنون پرداختی وجود ندارد.",
+        "checkTitle": "در 2 روز - یادآوری",
+        "checkBody": "ما به شما اعلانی ارسال می کنیم که دوره آزمایشی شما به زودی به پایان می رسد.",
+        "billingTitle": "در 3 روز",
+        "billingBody": "صورت‌حساب به‌طور خودکار شروع می‌شود، مگر اینکه قبلاً آن را لغو کنید.",
+        "badge": "3 روز رایگان",
+        "cardNote": "پس از آزمایش رایگان",
+        "noPayment": "بدون پرداخت در حال حاضر",
+        "cta": "آزمایشی رایگان 3 روزه من را شروع کنید",
+        "renewalTerms": "3 روز رایگان، سپس {{price}} / {{period}}. تمدید خودکار تا زمان لغو."
+      },
+      "annual": {
+        "headline": "یک سال هوش مصنوعی Cloud را باز کنید",
+        "subtitle": "یک طرح برای چت، تصاویر و کمک متخصصان هوش مصنوعی.",
+        "todayTitle": "امروز - حق بیمه شروع می شود",
+        "todayBody": "فورا قفل هر ویژگی برتر هوش مصنوعی را باز کنید.",
+        "billingTitle": "سالانه صورتحساب می شود",
+        "billingBody": "{{price}} یک سال کامل دسترسی به شما می دهد.",
+        "renewalTitle": "سالانه تمدید می شود",
+        "renewalBody": "هر زمان که خواستید در Google Play قبل از تاریخ تمدید لغو کنید.",
+        "cta": "ادامه دهید",
+        "renewalTerms": "{{price}} / {{period}}. تمدید خودکار تا زمان لغو."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "تجزیه و تحلیل تصاویر…",
       "searching": "در حال جستجو…",
-      "thinking": "فکر کردن…"
+      "thinking": "فکر کردن…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "جستجوی وب",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "سیگنال بیشتر، نویز صفحه گسترده کمتر."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "سکه‌های روزانه‌تان را دریافت کنید",
       "subtitle": "هر روز بیایید تا پاداش بیشتر شود.",
-      "cta": "ثبت حضور",
+      "cta": "دریافت",
       "claimed": "دریافت شد! +{{amount}} سکه",
       "later": "بعداً"
     }

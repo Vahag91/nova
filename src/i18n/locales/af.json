@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Gaan voort",
+        "tryItFree": "Probeer dit gratis",
+        "back": "Terug"
+      },
+      "valueDemo": {
+        "title": "Ons wil hê jy moet Cloud AI gratis probeer",
+        "workspaceLabel": "KI WERKRUIMTE",
+        "userPromptLabel": "GEBRUIKERSPRAAK",
+        "aiTypingLabel": "KI TIK",
+        "prompt": "Skryf 'n beleefde antwoord aan 'n kliënt oor 'n vertraagde aflewering.",
+        "response": "Hallo, dankie vir jou geduld. Jou aflewering kan effens vertraag word. Ek sal jou op hoogte hou.",
+        "cards": {
+          "doc": {
+            "title": "Dokumentopsomming",
+            "detail": "12-bladsy lêer → 5 sleutelpunte"
+          },
+          "reply": {
+            "title": "Antwoord opgestel",
+            "detail": "Beleefde, professionele toon"
+          },
+          "translation": {
+            "title": "Vertaling gereed",
+            "detail": "Engels → Spaans"
+          }
+        },
+        "subtitle": "Skryf, som op, vertaal en skandeer dokumente in een KI-werkruimte."
+      },
+      "goals": {
+        "title": "Waarmee het jy hulp nodig?",
+        "subtitle": "Kies 1–3 doele. Ons sal jou KI-werkspasie bou.",
+        "emptyCta": "Kies ten minste 1 doelwit",
+        "items": {
+          "workFaster": {
+            "title": "Werk vinniger",
+            "subtitle": "E-posse, antwoorde, take"
+          },
+          "writeBetter": {
+            "title": "Skryf beter",
+            "subtitle": "Maak toon reg, herskryf, verbeter"
+          },
+          "understandDocuments": {
+            "title": "Verstaan dokumente",
+            "subtitle": "Opsommings, skanderings, sleutelpunte"
+          },
+          "learnAnything": {
+            "title": "Leer enigiets",
+            "subtitle": "Verduidelik onderwerpe duidelik"
+          },
+          "createContent": {
+            "title": "Skep inhoud",
+            "subtitle": "Plasings, byskrifte, idees"
+          },
+          "planBusiness": {
+            "title": "Beplan besigheid",
+            "subtitle": "Idees, strategie, outomatisering"
+          },
+          "personalClarity": {
+            "title": "Persoonlike duidelikheid",
+            "subtitle": "Besluite, gewoontes, gedagtes"
+          },
+          "askBigQuestions": {
+            "title": "Vra enige vrae",
+            "subtitle": "Toekoms, betekenis, KI, lewe"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Skep jou KI-assistent",
+        "readyTitle": "Jou KI-assistent is gereed",
+        "subtitle": "Jou assistent is gekonfigureer. Proeftoegang word nou aangeskakel.",
+        "trialTitle": "3 dae verhoor",
+        "trialActivating": "aktiveer",
+        "trialEnabled": "aangeskakel",
+        "steps": {
+          "0": "Berei jou assistent voor",
+          "1": "Personalisering van antwoorde",
+          "2": "Beveiliging van toegang",
+          "3": "Afronding van opstelling"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Ontmoet",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Gaan voort",
       "start": "Kom ons begin"
+    },
+    "v3": {
+      "intent": {
+        "overline": "MAAK DIT JOUNE",
+        "title": "Wat moet Cloud AI jou help om te doen?",
+        "cta": "Gaan voort"
+      },
+      "goals": {
+        "ask": "Vind antwoorde",
+        "write": "Skryf beter",
+        "create": "Skep beelde",
+        "plan": "Beplan my dag"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "VIND ANTWOORDE",
+          "title": "Vind vinniger duidelikheid",
+          "subtitle": "Vra natuurlik. Kry 'n duidelike antwoord en nuttige volgende stappe.",
+          "beat1": "Verstaan",
+          "beat2": "Besluit",
+          "beat3": "Beweeg vorentoe"
+        },
+        "write": {
+          "focus": "SKRYF BETER",
+          "title": "Verander gedagtes in woorde",
+          "subtitle": "Gaan van 'n rowwe idee na skryfwerk wat soos jy klink.",
+          "beat1": "Vorm",
+          "beat2": "Verfyn",
+          "beat3": "Deel"
+        },
+        "create": {
+          "focus": "SKEP BEELDE",
+          "title": "Bring idees tot lewe",
+          "subtitle": "Beskryf wat jy jou voorstel, skep en verfyn dit dan binne sekondes.",
+          "beat1": "Stel jou voor",
+          "beat2": "Skep",
+          "beat3": "Perfek"
+        },
+        "plan": {
+          "focus": "BEPLAN MY DAG",
+          "title": "Maak ruimte vir dit wat saak maak",
+          "subtitle": "Verander 'n besige lys in 'n kalm plan wat jy eintlik kan volg.",
+          "beat1": "Prioritiseer",
+          "beat2": "Organiseer",
+          "beat3": "Gaan voort"
+        }
+      },
+      "proof": {
+        "overline": "ALMAL OP EEN PLEK",
+        "title": "Een plek. Meer moontlikhede.",
+        "subtitle": "Beweeg van vraag na skepping sonder om tussen toepassings te wissel.",
+        "item1": {
+          "title": "Vra enigiets",
+          "subtitle": "Gevorderde modelle vir duidelike, nuttige antwoorde"
+        },
+        "item2": {
+          "title": "Skep beelde",
+          "subtitle": "Verander 'n idee in iets wat jy kan sien"
+        },
+        "item3": {
+          "title": "Kry deskundige hulp",
+          "subtitle": "Assistente vir werk en alledaagse lewe"
+        }
+      },
+      "controls": {
+        "back": "Terug",
+        "continue": "Gaan voort",
+        "finish": "Verken premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "week",
       "termsOfUse": "Gebruiksvoorwaardes",
       "privacyPolicy": "Privaatheidsbeleid"
+    },
+    "v3": {
+      "eyebrow": "WOLK AI PREMIUM",
+      "trial": {
+        "headline": "Ontsluit alle premium kenmerke",
+        "subtitle": "Kyk presies wat gebeur en wanneer.",
+        "todayTitle": "Vandag",
+        "todayBody": "Ontsluit elke premium kenmerk. Geen betaling is nou verskuldig nie.",
+        "checkTitle": "Oor 2 dae — Herinnering",
+        "checkBody": "Ons sal vir jou 'n kennisgewing stuur dat jou proeflopie binnekort eindig.",
+        "billingTitle": "Oor 3 dae",
+        "billingBody": "Fakturering begin outomaties tensy jy enige tyd vantevore kanselleer.",
+        "badge": "3 DAE GRATIS",
+        "cardNote": "Na die gratis proeflopie",
+        "noPayment": "Geen betaling nou verskuldig nie",
+        "cta": "Begin my 3-dae gratis proeftydperk",
+        "renewalTerms": "3 dae gratis, dan {{price}} / {{period}}. Hernu outomaties totdat dit gekanselleer word."
+      },
+      "annual": {
+        "headline": "Ontsluit 'n jaar van Cloud AI",
+        "subtitle": "Een plan vir klets, beelde en kundige KI-hulp.",
+        "todayTitle": "Vandag - premie begin",
+        "todayBody": "Ontsluit onmiddellik elke premium AI-funksie.",
+        "billingTitle": "Jaarliks gefaktureer",
+        "billingBody": "{{price}} gee jou een volle jaar se toegang.",
+        "renewalTitle": "Hernu jaarliks",
+        "renewalBody": "Kanselleer enige tyd in Google Play voor jou hernuwingsdatum.",
+        "cta": "Gaan voort",
+        "renewalTerms": "{{price}} / {{period}}. Hernu outomaties totdat dit gekanselleer word."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Ontleed tans beelde …",
       "searching": "Soek tans …",
-      "thinking": "Dink…"
+      "thinking": "Dink…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Websoektog",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Meer sein, minder sigbladgeraas."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Eis jou daaglikse munte",
       "subtitle": "Kom elke dag terug vir 'n groter beloning.",
-      "cta": "Teken in",
+      "cta": "Eis op",
       "claimed": "Ontvang! +{{amount}} munte",
       "later": "Later"
     }

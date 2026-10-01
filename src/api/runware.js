@@ -1,3 +1,4 @@
+import { IMAGE_STUDIO_ENABLED } from '../constants/featureFlags';
 import { IMAGES_RUNWARE_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
 
 /**
@@ -33,6 +34,9 @@ export async function createRunwareImages({
   deviceId,
   jobId,
 }) {
+  if (!IMAGE_STUDIO_ENABLED) {
+    throw new Error('Image generation is currently unavailable.');
+  }
   // For advanced modes, prompt might be optional
   if (!prompt || !prompt.trim()) {
     if (mode === 'text2img') {

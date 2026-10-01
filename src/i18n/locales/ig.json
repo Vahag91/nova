@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Gaa n'ihu",
+        "tryItFree": "Gbalịa ya n'efu",
+        "back": "Azu"
+      },
+      "valueDemo": {
+        "title": "Anyị chọrọ ka ị nwaa Cloud AI n'efu",
+        "workspaceLabel": "AI ỌRỤ",
+        "userPromptLabel": "NTỤZIAKA ONYE ỌRỤ",
+        "aiTypingLabel": "AI NA-EDE",
+        "prompt": "Dee nzaghachi nke ọma nye onye ahịa gbasara nnyefe egbu oge.",
+        "response": "Ndewo, daalụ maka ndidi gị. Enwere ike ịbịarute obere oge nnyefe gị. Aga m emelite gị.",
+        "cards": {
+          "doc": {
+            "title": "Nchịkọta akwụkwọ",
+            "detail": "faịlụ nwere ibe 12 → isi isi ise"
+          },
+          "reply": {
+            "title": "Edepụtala nzaghachi",
+            "detail": "Ụda nkwanye ùgwù na nke ọkachamara"
+          },
+          "translation": {
+            "title": "Ntụgharị asụsụ dị njikere",
+            "detail": "Bekee → Spanish"
+          }
+        },
+        "subtitle": "Dee, chịkọta, sụgharịa, ma nyochaa akwụkwọ n'otu ebe ọrụ AI."
+      },
+      "goals": {
+        "title": "Kedu ihe ịchọrọ enyemaka na?",
+        "subtitle": "Họrọ ihe mgbaru ọsọ 1–3. Anyị ga-ewu ebe ọrụ AI gị.",
+        "emptyCta": "Họrọ opekata mpe ihe mgbaru ọsọ 1",
+        "items": {
+          "workFaster": {
+            "title": "Na-arụ ọrụ ngwa ngwa",
+            "subtitle": "Email, nzaghachi, ọrụ"
+          },
+          "writeBetter": {
+            "title": "Dee nke ọma",
+            "subtitle": "Dezie ụda, degharịa, kwalite"
+          },
+          "understandDocuments": {
+            "title": "Ghọta akwụkwọ",
+            "subtitle": "Nchịkọta, nyocha, isi ihe"
+          },
+          "learnAnything": {
+            "title": "Mụta ihe ọ bụla",
+            "subtitle": "Kọwaa isiokwu nke ọma"
+          },
+          "createContent": {
+            "title": "Mepụta ọdịnaya",
+            "subtitle": "Ozi, nkọwa foto, echiche"
+          },
+          "planBusiness": {
+            "title": "Atụmatụ azụmahịa",
+            "subtitle": "Echiche, atụmatụ, akpaaka"
+          },
+          "personalClarity": {
+            "title": "idoanya nkeonwe",
+            "subtitle": "Mkpebi, omume, echiche"
+          },
+          "askBigQuestions": {
+            "title": "Jụọ ajụjụ ọ bụla",
+            "subtitle": "Ọdịnihu, pụtara, AI, ndụ"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Mepụta onye enyemaka AI gị",
+        "readyTitle": "Onye enyemaka AI gị adịla njikere",
+        "subtitle": "A haziri onye inyeaka gị. Nweta nnwale na-agbanye ugbu a.",
+        "trialTitle": "Nnwale ụbọchị 3",
+        "trialActivating": "na-arụ ọrụ",
+        "trialEnabled": "agbanyere",
+        "steps": {
+          "0": "Na-akwado onye enyemaka gị",
+          "1": "Nzaghachi ahaziri onwe ya",
+          "2": "na-echekwa ohere",
+          "3": "Nhazi mmecha"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Zute",
       "titleHighlight": "P000 ⟭",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Gaa n'ihu",
       "start": "Ka anyị bido"
+    },
+    "v3": {
+      "intent": {
+        "overline": "Mee ya nke gị",
+        "title": "Kedu ihe Cloud AI kwesịrị inyere gị aka ime?",
+        "cta": "Gaa n'ihu"
+      },
+      "goals": {
+        "ask": "Chọta azịza",
+        "write": "Dee nke ọma",
+        "create": "Mepụta onyonyo",
+        "plan": "Kwadebe ụbọchị m"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "Chọta azịza",
+          "title": "Chọta idoanya ngwa ngwa",
+          "subtitle": "Jụọ onwe gị. Nweta azịza doro anya yana usoro ndị ọzọ bara uru.",
+          "beat1": "Ghọta",
+          "beat2": "Kpebie",
+          "beat3": "Gaba n'ihu"
+        },
+        "write": {
+          "focus": "Dee nke ọma",
+          "title": "Tụgharịa echiche ka ọ bụrụ okwu",
+          "subtitle": "Gaa site n'echiche siri ike gaa n'ide ihe dị ka gị.",
+          "beat1": "Ụdị",
+          "beat2": "Mechaa",
+          "beat3": "Kekọrịta"
+        },
+        "create": {
+          "focus": "Mepụta onyonyo",
+          "title": "Weta echiche na ndụ",
+          "subtitle": "Kọwaa ihe ị chere, wee mepụta ma mezie ya na sekọnd.",
+          "beat1": "Kere",
+          "beat2": "Mepụta",
+          "beat3": "Zuru oke"
+        },
+        "plan": {
+          "focus": "hazie ụbọchị m",
+          "title": "Nye ohere maka ihe dị mkpa",
+          "subtitle": "Tụgharịa ndepụta ọrụ n'aka ka ọ bụrụ atụmatụ dị jụụ ị nwere ike ịgbaso.",
+          "beat1": "Nye ụzọ",
+          "beat2": "Hazie",
+          "beat3": "Malite"
+        }
+      },
+      "proof": {
+        "overline": "NIILE N'OTU Ebe",
+        "title": "Otu ebe. Ohere ndị ọzọ.",
+        "subtitle": "Bugharịa site na ajụjụ gaa na okike na-agbanyeghi n'etiti ngwa.",
+        "item1": {
+          "title": "Jụọ ihe ọ bụla",
+          "subtitle": "Ụdị dị elu maka azịza doro anya, bara uru"
+        },
+        "item2": {
+          "title": "Mepụta onyonyo",
+          "subtitle": "Tụgharịa echiche ka ọ bụrụ ihe ị ga-ahụ"
+        },
+        "item3": {
+          "title": "Nweta enyemaka ọkachamara",
+          "subtitle": "Ndị enyemaka maka ọrụ na ndụ kwa ụbọchị"
+        }
+      },
+      "controls": {
+        "back": "Azu",
+        "continue": "Gaa n'ihu",
+        "finish": "Nyochaa adịchaghị"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "izu",
       "termsOfUse": "Usoro ojiji",
       "privacyPolicy": "Amụma nzuzo"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Mepee atụmatụ adịchaghị",
+        "subtitle": "Hụ kpọmkwem ihe na-eme na mgbe.",
+        "todayTitle": "Taa",
+        "todayBody": "Mepee atụmatụ ọ bụla adịchaghị. Enweghị ụgwọ akwụghị ụgwọ ugbu a.",
+        "checkTitle": "N'ime ụbọchị 2 - Ncheta",
+        "checkBody": "Anyị ga-ezitere gị ọkwa na ikpe gị na-akwụsị n'oge adịghị anya.",
+        "billingTitle": "N'ime ụbọchị 3",
+        "billingBody": "Ịgba ụgwọ na-amalite ozugbo ọ gwụla ma ị kagbuo oge ọ bụla mbụ.",
+        "badge": "ỤBỌCHỊ 3 n'efu",
+        "cardNote": "Mgbe free ikpe",
+        "noPayment": "Enweghị ụgwọ akwụ ụgwọ ugbu a",
+        "cta": "Bido Ọnwụnwa m nke abalị atọ n'efu",
+        "renewalTerms": "Ụbọchị 3 n'efu, wee {{price}} / {{period}}. Na-emegharị onwe ya ruo mgbe akagbuo."
+      },
+      "annual": {
+        "headline": "Mepee otu afọ Cloud AI",
+        "subtitle": "Otu atụmatụ maka nkata, onyonyo na enyemaka AI ọkachamara.",
+        "todayTitle": "Taa - adịchaghị amalite",
+        "todayBody": "Mepee atụmatụ AI ọ bụla adịchaghị ozugbo.",
+        "billingTitle": "A na-akwụ ụgwọ kwa afọ",
+        "billingBody": "{{price}} na-enye gị ohere ịnweta otu afọ zuru ezu.",
+        "renewalTitle": "Na-emelite kwa afọ",
+        "renewalBody": "Kagbuo oge ọ bụla na Google Play tupu ụbọchị mmeghari gị.",
+        "cta": "Gaa n'ihu",
+        "renewalTerms": "{{price}} / {{period}}. Na-emegharị onwe ya ruo mgbe akagbuo."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Na-enyocha onyonyo…",
       "searching": "Na-achọ…",
-      "thinking": "Na-eche…"
+      "thinking": "Na-eche…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Ọchụchọ webụ",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Mgbama ama karịa, mkpọtụ mpempe akwụkwọ pere mpe."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Nweta mkpụrụ ego gị nke ụbọchị",
       "subtitle": "Lọghachi kwa ụbọchị — ụgwọ ọrụ na-abawanye.",
-      "cta": "Debanye aha",
+      "cta": "Nweta",
       "claimed": "Enwetara! +{{amount}} mkpụrụ ego",
       "later": "Emesịa"
     }

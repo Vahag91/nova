@@ -3,7 +3,6 @@ import React, { useEffect, useState, useCallback } from 'react';
 import {
   Animated,
   AppState,
-  Image,
   View,
   Platform,
   InteractionManager,
@@ -39,7 +38,7 @@ import {
   ONE_TIME_OFFER_KEY,
   NOTIFICATION_PRIMING_KEY,
 } from './src/constants/storageKeys';
-import { PIXEL_PAYWALL_ENABLED } from './src/constants/featureFlags';
+import { PIXEL_PAYWALL_ENABLED, REWARDS_ENABLED } from './src/constants/featureFlags';
 import {
   consumePendingNotificationNav,
   setPendingNotificationNav,
@@ -57,7 +56,6 @@ import DailyCheckInModal from './src/components/rewards/DailyCheckInModal';
 
 const CHECK_IN_SHOWN_KEY = '@dailyCheckInShownOn';
 const STARTUP_FADE_MS = 180;
-const PAYWALL_HERO_FALLBACK_MS = 1500;
 
 function releaseNativeStartupSplash() {
   if (Platform.OS !== 'android') return;
@@ -137,11 +135,9 @@ export default function App() {
   const [launchSurfaceReady, setLaunchSurfaceReady] = useState(false);
   const [mainAppReady, setMainAppReady] = useState(false);
   const [startupOverlayVisible, setStartupOverlayVisible] = useState(true);
-  const [subscriptionWarmupReady, setSubscriptionWarmupReady] = useState(false);
   const [initialPaywallRequested, setInitialPaywallRequested] = useState(false);
   const [initialPaywallVisible, setInitialPaywallVisible] = useState(false);
   const [initialPaywallPresented, setInitialPaywallPresented] = useState(false);
-  const [paywallHeroReady, setPaywallHeroReady] = useState(false);
   const [paywallSurfacePresented, setPaywallSurfacePresented] = useState(false);
   const [navigationReady, setNavigationReady] = useState(false);
   const [initialLaunchScreen, setInitialLaunchScreen] = useState(null);
@@ -196,29 +192,18 @@ export default function App() {
 
   useEffect(() => {
     if (!initialPaywallRequested || initialPaywallVisible) return undefined;
-
-    if (paywallHeroReady) {
-      setInitialPaywallVisible(true);
-      return undefined;
-    }
-
-    // Local assets normally decode during onboarding. Keep a bounded fallback
-    // so an OEM image callback failure cannot trap the user on the final scene.
-    const timeoutId = setTimeout(() => {
-      setPaywallHeroReady(true);
-    }, PAYWALL_HERO_FALLBACK_MS);
-    return () => clearTimeout(timeoutId);
-  }, [initialPaywallRequested, initialPaywallVisible, paywallHeroReady]);
+    setInitialPaywallVisible(true);
+    return undefined;
+  }, [initialPaywallRequested, initialPaywallVisible]);
 
   useEffect(() => {
     if (
       initialPaywallVisible &&
-      paywallHeroReady &&
       paywallSurfacePresented
     ) {
       setInitialPaywallPresented(true);
     }
-  }, [initialPaywallVisible, paywallHeroReady, paywallSurfacePresented]);
+  }, [initialPaywallVisible, paywallSurfacePresented]);
 
   const loadModels = useCallback(async () => {
     const netInfo = await NetInfo.fetch();
@@ -268,6 +253,7 @@ export default function App() {
           'hasLaunched',
         ]);
         const values = Object.fromEntries(entries);
+        if (__DEV__) return true; // TEMP: preview onboarding
         const completed = values[ONBOARDING_KEY];
         if (completed === 'true') return false;
 
@@ -332,6 +318,10 @@ export default function App() {
     if (firstLaunch !== false || !mainAppReady || notificationChoiceMade) {
       return undefined;
     }
+    if (!REWARDS_ENABLED) {
+      setNotificationChoiceMade(true);
+      return undefined;
+    }
 
     const task = InteractionManager.runAfterInteractions(() => {
       runStartupTask(
@@ -388,6 +378,7 @@ export default function App() {
   // nobody found it, and the claim used to happen silently on launch.
   useEffect(() => {
     if (
+      !REWARDS_ENABLED ||
       firstLaunch !== false ||
       !mainAppReady ||
       !navigationReady ||
@@ -433,6 +424,7 @@ export default function App() {
     const before = useRewardsStore.getState().points;
     try {
       recordRewardActivity();
+      cancelTodayDailyRewardReminder();
     } catch (error) {
       logStartupFailure(error, { context: 'dailyCheckIn' });
     }
@@ -449,6 +441,7 @@ export default function App() {
   // Deferred behind the startup gates so it never competes with first paint.
   useEffect(() => {
     if (
+      !REWARDS_ENABLED ||
       firstLaunch !== false ||
       !mainAppReady ||
       !rewardsHydrated ||
@@ -620,6 +613,7 @@ export default function App() {
 
     if (PIXEL_PAYWALL_ENABLED) {
       setInitialPaywallRequested(true);
+      setInitialPaywallVisible(true);
     } else {
       // Keep the original navigator-hosted paywall as a complete one-switch
       // fallback, including the first-launch path.
@@ -679,14 +673,6 @@ export default function App() {
     });
   }, [startupContentReady]);
 
-  const handleSubscriptionWarmup = useCallback(() => {
-    setSubscriptionWarmupReady(true);
-  }, []);
-
-  const handlePaywallHeroReady = useCallback(() => {
-    setPaywallHeroReady(true);
-  }, []);
-
   const handlePaywallSurfacePresented = useCallback(() => {
     setPaywallSurfacePresented(true);
   }, []);
@@ -722,31 +708,22 @@ export default function App() {
                 <KeyboardProvider statusBarTranslucent>
                   <GestureHandlerRootView style={styles.appRoot}>
                     <OfflineBanner />
-                    <NotificationPrimingModal
-                      visible={primingVisible}
-                      onEnable={handleEnableNotifications}
-                      onSkip={handleSkipNotifications}
-                    />
-                    <DailyCheckInModal
-                      visible={checkInVisible}
-                      currentStreak={rewardsCurrentStreak}
-                      claimed={checkInClaimed}
-                      claimedAmount={checkInAmount}
-                      onCheckIn={handleCheckIn}
-                      onClose={handleCheckInClose}
-                    />
-                    {firstLaunch &&
-                    (subscriptionWarmupReady || initialPaywallRequested) &&
-                    !paywallHeroReady ? (
-                      <Image
-                        pointerEvents="none"
-                        fadeDuration={0}
-                        resizeMethod="resize"
-                        resizeMode="cover"
-                        onLoad={handlePaywallHeroReady}
-                        source={require('./assets/images/paywall/PaywallGirls.webp')}
-                        style={styles.paywallImagePreload}
-                      />
+                    {REWARDS_ENABLED ? (
+                      <>
+                        <NotificationPrimingModal
+                          visible={primingVisible}
+                          onEnable={handleEnableNotifications}
+                          onSkip={handleSkipNotifications}
+                        />
+                        <DailyCheckInModal
+                          visible={checkInVisible}
+                          currentStreak={rewardsCurrentStreak}
+                          claimed={checkInClaimed}
+                          claimedAmount={checkInAmount}
+                          onCheckIn={handleCheckIn}
+                          onClose={handleCheckInClose}
+                        />
+                      </>
                     ) : null}
                     {shouldMountMainApp ? (
                       <DeferredDrawerNavigator
@@ -762,7 +739,6 @@ export default function App() {
                         <DeferredIntroductionAnimationScreen
                           onComplete={handleOnboardingComplete}
                           onReady={handleLaunchSurfaceReady}
-                          onSubscriptionWarmup={handleSubscriptionWarmup}
                         />
                       </View>
                     ) : null}
@@ -816,11 +792,5 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     zIndex: 20,
     backgroundColor: 'transparent',
-  },
-  paywallImagePreload: {
-    ...StyleSheet.absoluteFillObject,
-    width: '100%',
-    height: '104%',
-    opacity: 0,
   },
 });

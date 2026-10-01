@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Kontynuuj",
+        "tryItFree": "Wypróbuj za darmo",
+        "back": "Powrót"
+      },
+      "valueDemo": {
+        "title": "Chcemy, abyś wypróbował Cloud AI za darmo",
+        "workspaceLabel": "PRZESTRZEŃ ROBOCZA AI",
+        "userPromptLabel": "KOMUNIKAT UŻYTKOWNIKA",
+        "aiTypingLabel": "PISANIE AI",
+        "prompt": "Napisz uprzejmą odpowiedź do klienta w sprawie opóźnionej dostawy.",
+        "response": "Cześć, dziękuję za cierpliwość. Twoja dostawa może być nieco opóźniona. Będę Cię na bieżąco informować.",
+        "cards": {
+          "doc": {
+            "title": "Podsumowanie dokumentu",
+            "detail": "12-stronicowy plik → 5 kluczowych punktów"
+          },
+          "reply": {
+            "title": "Odpowiedź przygotowana",
+            "detail": "Uprzejmy, profesjonalny ton"
+          },
+          "translation": {
+            "title": "Tłumaczenie gotowe",
+            "detail": "Angielski → Hiszpański"
+          }
+        },
+        "subtitle": "Pisz, streszczaj, tłumacz i skanuj dokumenty w jednej przestrzeni roboczej AI."
+      },
+      "goals": {
+        "title": "W czym potrzebujesz pomocy?",
+        "subtitle": "Wybierz 1–3 cele. Zbudujemy Twoją przestrzeń roboczą AI.",
+        "emptyCta": "Wybierz co najmniej 1 cel",
+        "items": {
+          "workFaster": {
+            "title": "Pracuj szybciej",
+            "subtitle": "E-maile, odpowiedzi, zadania"
+          },
+          "writeBetter": {
+            "title": "Napisz lepiej",
+            "subtitle": "Napraw ton, przepisz, ulepsz"
+          },
+          "understandDocuments": {
+            "title": "Zrozum dokumenty",
+            "subtitle": "Podsumowania, skany, najważniejsze punkty"
+          },
+          "learnAnything": {
+            "title": "Dowiedz się wszystkiego",
+            "subtitle": "Wyjaśnij jasno tematy"
+          },
+          "createContent": {
+            "title": "Twórz treści",
+            "subtitle": "Posty, podpisy, pomysły"
+          },
+          "planBusiness": {
+            "title": "Zaplanuj biznes",
+            "subtitle": "Pomysły, strategia, automatyzacja"
+          },
+          "personalClarity": {
+            "title": "Jasność osobista",
+            "subtitle": "Decyzje, nawyki, myśli"
+          },
+          "askBigQuestions": {
+            "title": "Zadawaj pytania",
+            "subtitle": "Przyszłość, znaczenie, AI, życie"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Tworzenie asystenta AI",
+        "readyTitle": "Twój asystent AI jest gotowy",
+        "subtitle": "Twój asystent został skonfigurowany. Dostęp próbny właśnie się włącza.",
+        "trialTitle": "3-dniowy okres próbny",
+        "trialActivating": "aktywacja",
+        "trialEnabled": "włączone",
+        "steps": {
+          "0": "Przygotowanie asystenta",
+          "1": "Personalizacja odpowiedzi",
+          "2": "Zabezpieczenie dostępu",
+          "3": "Zakończenie konfiguracji"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Poznaj",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Kontynuuj",
       "start": "Zaczynamy"
+    },
+    "v3": {
+      "intent": {
+        "overline": "ZRÓB TO SWOJE",
+        "title": "W czym Cloud AI powinna Ci pomóc?",
+        "cta": "Kontynuuj"
+      },
+      "goals": {
+        "ask": "Znajdź odpowiedzi",
+        "write": "Napisz lepiej",
+        "create": "Twórz obrazy",
+        "plan": "Zaplanuj mój dzień"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ZNAJDŹ ODPOWIEDZI",
+          "title": "Znajdź przejrzystość szybciej",
+          "subtitle": "Zapytaj naturalnie. Uzyskaj jasną odpowiedź i przydatne dalsze kroki.",
+          "beat1": "Zrozum",
+          "beat2": "Zdecyduj",
+          "beat3": "Ruszaj do przodu"
+        },
+        "write": {
+          "focus": "PISZ LEPIEJ",
+          "title": "Zamień myśli w słowa",
+          "subtitle": "Przejdź od szorstkiego pomysłu do napisania, który brzmi jak ty.",
+          "beat1": "Kształt",
+          "beat2": "Udoskonalaj",
+          "beat3": "Udostępnij"
+        },
+        "create": {
+          "focus": "TWORZENIE OBRAZÓW",
+          "title": "Wcielaj pomysły w życie",
+          "subtitle": "Opisz, co sobie wyobrażasz, a następnie utwórz i udoskonalaj to w ciągu kilku sekund.",
+          "beat1": "Wyobraź sobie",
+          "beat2": "Utwórz",
+          "beat3": "Idealny"
+        },
+        "plan": {
+          "focus": "ZAPLANUJ MÓJ DZIEŃ",
+          "title": "Zrób przestrzeń na to, co ważne",
+          "subtitle": "Zamień zajętą listę w spokojny plan, którego możesz faktycznie przestrzegać.",
+          "beat1": "Ustal priorytety",
+          "beat2": "Organizuj",
+          "beat3": "Rozpocznij"
+        }
+      },
+      "proof": {
+        "overline": "WSZYSTKO W JEDNYM MIEJSCU",
+        "title": "Jedno miejsce. Więcej możliwości.",
+        "subtitle": "Przejdź od pytania do tworzenia bez przełączania między aplikacjami.",
+        "item1": {
+          "title": "Zapytaj o cokolwiek",
+          "subtitle": "Zaawansowane modele zapewniające jasne i przydatne odpowiedzi"
+        },
+        "item2": {
+          "title": "Twórz obrazy",
+          "subtitle": "Zamień pomysł w coś, co możesz zobaczyć"
+        },
+        "item3": {
+          "title": "Uzyskaj pomoc eksperta",
+          "subtitle": "Asystenci w pracy i życiu codziennym"
+        }
+      },
+      "controls": {
+        "back": "Powrót",
+        "continue": "Kontynuuj",
+        "finish": "Poznaj premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "tydzień",
       "termsOfUse": "Warunki korzystania",
       "privacyPolicy": "Polityka prywatności"
+    },
+    "v3": {
+      "eyebrow": "PREMIA W CHMURZE AI",
+      "trial": {
+        "headline": "Odblokuj wszystkie funkcje premium",
+        "subtitle": "Zobacz dokładnie, co się stanie i kiedy.",
+        "todayTitle": "Dzisiaj",
+        "todayBody": "Odblokuj wszystkie funkcje premium. Żadna płatność nie jest teraz należna.",
+        "checkTitle": "Za 2 dni — Przypomnienie",
+        "checkBody": "Wyślemy Ci powiadomienie, że Twój okres próbny wkrótce się zakończy.",
+        "billingTitle": "Za 3 dni",
+        "billingBody": "Rozliczenia rozpoczynają się automatycznie, chyba że anulujesz wcześniej.",
+        "badge": "3 DNI ZA DARMO",
+        "cardNote": "Po bezpłatnym okresie próbnym",
+        "noPayment": "Brak płatności w tej chwili",
+        "cta": "Rozpocznij mój 3-dniowy bezpłatny okres próbny",
+        "renewalTerms": "3 dni za darmo, następnie {{price}} / {{period}}. Automatyczne odnawianie do momentu anulowania."
+      },
+      "annual": {
+        "headline": "Odblokuj rok Cloud AI",
+        "subtitle": "Jeden plan obejmujący czat, obrazy i pomoc ekspertów w zakresie sztucznej inteligencji.",
+        "todayTitle": "Dziś — startuje premium",
+        "todayBody": "Natychmiast odblokuj wszystkie funkcje premium AI.",
+        "billingTitle": "Rozliczane corocznie",
+        "billingBody": "{{price}} zapewnia pełny rok dostępu.",
+        "renewalTitle": "Odnawia się co roku",
+        "renewalBody": "Anuluj w dowolnym momencie w Google Play przed datą odnowienia.",
+        "cta": "Kontynuuj",
+        "renewalTerms": "{{price}} / {{period}}. Automatyczne odnawianie do momentu anulowania."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analizowanie obrazów…",
       "searching": "Wyszukiwanie…",
-      "thinking": "Myślenie…"
+      "thinking": "Myślenie…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Wyszukiwanie w sieci",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Więcej sygnału, mniej szumów w arkuszach kalkulacyjnych."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {

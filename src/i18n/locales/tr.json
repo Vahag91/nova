@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Devam et",
+        "tryItFree": "Ücretsiz dene",
+        "back": "Geri"
+      },
+      "valueDemo": {
+        "title": "Cloud AI'yi ücretsiz denemenizi istiyoruz",
+        "workspaceLabel": "Yapay Zeka ÇALIŞMA ALANI",
+        "userPromptLabel": "KULLANICI İSTEMİ",
+        "aiTypingLabel": "AI YAZIMI",
+        "prompt": "Müşteriye teslimatın gecikmesi hakkında kibar bir yanıt yazın.",
+        "response": "Merhaba, sabrınız için teşekkürler. Teslimatınız biraz gecikebilir. Seni güncel tutacağım.",
+        "cards": {
+          "doc": {
+            "title": "Belge Özeti",
+            "detail": "12 sayfalık dosya → 5 önemli nokta"
+          },
+          "reply": {
+            "title": "Yanıt hazırlandı",
+            "detail": "Kibar, profesyonel bir ton"
+          },
+          "translation": {
+            "title": "Çeviri Hazır",
+            "detail": "İngilizce → İspanyolca"
+          }
+        },
+        "subtitle": "Tek bir yapay zekâ çalışma alanında yazın, özetleyin, çevirin ve belgeleri tarayın."
+      },
+      "goals": {
+        "title": "Hangi konuda yardıma ihtiyacınız var?",
+        "subtitle": "1-3 hedef seçin. Yapay zeka çalışma alanınızı oluşturacağız.",
+        "emptyCta": "En az 1 hedef seçin",
+        "items": {
+          "workFaster": {
+            "title": "Daha hızlı çalışın",
+            "subtitle": "E-postalar, yanıtlar, görevler"
+          },
+          "writeBetter": {
+            "title": "Daha iyi yaz",
+            "subtitle": "Tonu düzeltin, yeniden yazın, iyileştirin"
+          },
+          "understandDocuments": {
+            "title": "Belgeleri anlayın",
+            "subtitle": "Özetler, taramalar, önemli noktalar"
+          },
+          "learnAnything": {
+            "title": "Her şeyi öğren",
+            "subtitle": "Konuları net bir şekilde açıklayın"
+          },
+          "createContent": {
+            "title": "İçerik oluştur",
+            "subtitle": "Gönderiler, açıklamalar, fikirler"
+          },
+          "planBusiness": {
+            "title": "İş planlama",
+            "subtitle": "Fikirler, strateji, otomasyon"
+          },
+          "personalClarity": {
+            "title": "Kişisel netlik",
+            "subtitle": "Kararlar, alışkanlıklar, düşünceler"
+          },
+          "askBigQuestions": {
+            "title": "Soru sorun",
+            "subtitle": "Gelecek, anlam, yapay zeka, yaşam"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Yapay zeka asistanınızı oluşturma",
+        "readyTitle": "Yapay zeka asistanınız hazır",
+        "subtitle": "Asistanınız yapılandırıldı. Deneme erişimi şu anda açılıyor.",
+        "trialTitle": "3 günlük deneme",
+        "trialActivating": "etkinleştiriliyor",
+        "trialEnabled": "etkin",
+        "steps": {
+          "0": "Asistanınızı hazırlıyoruz",
+          "1": "Yanıtları kişiselleştirme",
+          "2": "Erişimin güvenliği sağlanıyor",
+          "3": "Sonlandırma kurulumu"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Tanış",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Devam et",
       "start": "Hadi başlayalım"
+    },
+    "v3": {
+      "intent": {
+        "overline": "SİZİN YAPIN",
+        "title": "Cloud AI size ne yapmanıza yardımcı olmalı?",
+        "cta": "Devam et"
+      },
+      "goals": {
+        "ask": "Yanıtları bulun",
+        "write": "Daha iyi yaz",
+        "create": "Resimler oluşturun",
+        "plan": "Günümü planla"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "CEVAPLARI BUL",
+          "title": "Netliği daha hızlı bulun",
+          "subtitle": "Doğal olarak sor. Net bir yanıt alın ve sonraki faydalı adımları öğrenin.",
+          "beat1": "Anla",
+          "beat2": "Karar ver",
+          "beat3": "İleri git"
+        },
+        "write": {
+          "focus": "DAHA İYİ YAZIN",
+          "title": "Düşünceleri kelimelere dönüştürün",
+          "subtitle": "Kaba bir fikirden size benzeyen bir yazıya geçin.",
+          "beat1": "Şekil",
+          "beat2": "Hassaslaştır",
+          "beat3": "Paylaş"
+        },
+        "create": {
+          "focus": "GÖRÜNTÜLER OLUŞTURUN",
+          "title": "Fikirleri hayata geçirin",
+          "subtitle": "Hayal ettiğiniz şeyi tanımlayın, ardından saniyeler içinde yaratın ve iyileştirin.",
+          "beat1": "Hayal et",
+          "beat2": "Oluştur",
+          "beat3": "Mükemmel"
+        },
+        "plan": {
+          "focus": "GÜNÜMÜ PLANLA",
+          "title": "Önemli olana yer açın",
+          "subtitle": "Yoğun bir listeyi gerçekten takip edebileceğiniz sakin bir plana dönüştürün.",
+          "beat1": "Önceliklendir",
+          "beat2": "Organize et",
+          "beat3": "Başla"
+        }
+      },
+      "proof": {
+        "overline": "HEPSİ BİR YERDE",
+        "title": "Tek bir yer. Daha fazla olasılık.",
+        "subtitle": "Uygulamalar arasında geçiş yapmadan sorudan oluşturmaya geçin.",
+        "item1": {
+          "title": "Herhangi bir şey sor",
+          "subtitle": "Açık ve faydalı yanıtlar için gelişmiş modeller"
+        },
+        "item2": {
+          "title": "Resimler oluşturun",
+          "subtitle": "Bir fikri görebileceğiniz bir şeye dönüştürün"
+        },
+        "item3": {
+          "title": "Uzman yardımı alın",
+          "subtitle": "İş ve günlük yaşam için asistanlar"
+        }
+      },
+      "controls": {
+        "back": "Geri",
+        "continue": "Devam et",
+        "finish": "Premium'u keşfedin"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "hafta",
       "termsOfUse": "Kullanım Koşulları",
       "privacyPolicy": "Gizlilik Politikası"
+    },
+    "v3": {
+      "eyebrow": "BULUT AI PREMIUM",
+      "trial": {
+        "headline": "Tüm premium özelliklerin kilidini açın",
+        "subtitle": "Tam olarak ne olacağını ve ne zaman olacağını görün.",
+        "todayTitle": "Bugün",
+        "todayBody": "Tüm premium özelliklerin kilidini açın. Şu anda herhangi bir ödeme yapılması gerekmiyor.",
+        "checkTitle": "2 gün içinde — Hatırlatma",
+        "checkBody": "Deneme sürenizin yakında sona ereceğine dair size bir bildirim göndereceğiz.",
+        "billingTitle": "3 gün içinde",
+        "billingBody": "Daha önce herhangi bir iptal etmediğiniz sürece faturalandırma otomatik olarak başlar.",
+        "badge": "3 GÜN ÜCRETSİZ",
+        "cardNote": "Ücretsiz denemeden sonra",
+        "noPayment": "Şu Anda Ödeme Yok",
+        "cta": "3 Günlük Ücretsiz Denememi Başlat",
+        "renewalTerms": "3 gün ücretsiz, ardından {{price}} / {{period}}. İptal edilene kadar otomatik olarak yenilenir."
+      },
+      "annual": {
+        "headline": "Bir yıllık Cloud AI'nın kilidini açın",
+        "subtitle": "Sohbet, görseller ve uzman yapay zeka yardımı için tek plan.",
+        "todayTitle": "Bugün — premium başlıyor",
+        "todayBody": "Tüm premium AI özelliklerinin kilidini anında açın.",
+        "billingTitle": "Yıllık olarak faturalandırılır",
+        "billingBody": "{{price}} size bir yıllık tam erişim sağlar.",
+        "renewalTitle": "Her yıl yenilenir",
+        "renewalBody": "Yenileme tarihinizden önce Google Play'de istediğiniz zaman iptal edin.",
+        "cta": "Devam et",
+        "renewalTerms": "{{price}} / {{period}}. İptal edilene kadar otomatik olarak yenilenir."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Görüntüler analiz ediliyor…",
       "searching": "Aranıyor…",
-      "thinking": "Düşünüyor…"
+      "thinking": "Düşünüyor…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Web araması",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Daha fazla sinyal, daha az elektronik tablo gürültüsü."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Günlük coinlerini al",
       "subtitle": "Her gün gel, ödül büyüsün.",
-      "cta": "Giriş yap",
+      "cta": "Al",
       "claimed": "Alındı! +{{amount}} coin",
       "later": "Daha sonra"
     }

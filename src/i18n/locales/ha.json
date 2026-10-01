@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Ci gaba",
+        "tryItFree": "Gwada Shi Kyauta",
+        "back": "Baya"
+      },
+      "valueDemo": {
+        "title": "Muna son ku gwada Cloud AI kyauta",
+        "workspaceLabel": "AI WURIN AIKI",
+        "userPromptLabel": "MAI KYAUTA",
+        "aiTypingLabel": "AI NA RUBUTAWA",
+        "prompt": "Rubuta amsa cikin ladabi ga abokin ciniki game da jinkirin bayarwa.",
+        "response": "Hi, na gode da haƙurin ku. Ana iya ɗan jinkirta isar da ku. Zan ci gaba da sabunta ku.",
+        "cards": {
+          "doc": {
+            "title": "Takaitaccen Takaddun Shaida",
+            "detail": "Fayil mai shafi 12 → maki 5 masu mahimmanci"
+          },
+          "reply": {
+            "title": "An shirya amsa",
+            "detail": "Sautin ladabi da ƙwarewa"
+          },
+          "translation": {
+            "title": "Shirye Shirye",
+            "detail": "Turanci → Sifen"
+          }
+        },
+        "subtitle": "Rubuta, taƙaita, fassara, kuma duba takardu a cikin wurin aiki na AI guda."
+      },
+      "goals": {
+        "title": "Me kuke buƙatar taimako da shi?",
+        "subtitle": "Zaɓi burin 1-3. Za mu gina filin aikin ku na AI.",
+        "emptyCta": "Zaɓi aƙalla manufa 1",
+        "items": {
+          "workFaster": {
+            "title": "Yi aiki da sauri",
+            "subtitle": "Imel, amsoshi, ayyuka"
+          },
+          "writeBetter": {
+            "title": "Rubuta mafi kyau",
+            "subtitle": "Gyara sautin, sake rubutawa, ingantawa"
+          },
+          "understandDocuments": {
+            "title": "Fahimtar takardu",
+            "subtitle": "Takaitattun bayanai, dubawa, mahimman bayanai"
+          },
+          "learnAnything": {
+            "title": "Koyi komai",
+            "subtitle": "Bayyana batutuwa a sarari"
+          },
+          "createContent": {
+            "title": "Ƙirƙiri abun ciki",
+            "subtitle": "Saƙonni, bayanan hoto, ra'ayoyi"
+          },
+          "planBusiness": {
+            "title": "Shirye-shiryen kasuwanci",
+            "subtitle": "Ra'ayoyi, dabarun, aiki da kai"
+          },
+          "personalClarity": {
+            "title": "Tsabtace sirri",
+            "subtitle": "Yanke shawara, halaye, tunani"
+          },
+          "askBigQuestions": {
+            "title": "Yi kowace tambaya",
+            "subtitle": "Gaba, ma'ana, AI, rayuwa"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Ƙirƙirar mataimaki na AI",
+        "readyTitle": "Mataimakin ku AI ya shirya",
+        "subtitle": "An saita mataimakin ku. Ana kunna damar gwaji yanzu.",
+        "trialTitle": "gwajin kwanaki 3",
+        "trialActivating": "yana kunnawa",
+        "trialEnabled": "an kunna",
+        "steps": {
+          "0": "Ana shirya mataimakin ku",
+          "1": "Keɓance martani",
+          "2": "Tabbatar samun dama",
+          "3": "Ƙarshen saitin"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Haɗu",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Ci gaba",
       "start": "Mu fara"
+    },
+    "v3": {
+      "intent": {
+        "overline": "SANAR DA NAKU",
+        "title": "Menene ya kamata Cloud AI ya taimaka muku ku yi?",
+        "cta": "Ci gaba"
+      },
+      "goals": {
+        "ask": "Nemo amsoshi",
+        "write": "Rubuta mafi kyau",
+        "create": "Ƙirƙiri hotuna",
+        "plan": "Shirya rana ta"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "NEMO AMSA",
+          "title": "Nemo tsabta da sauri",
+          "subtitle": "Tambayi a zahiri. Sami cikakkiyar amsa da matakai na gaba masu amfani.",
+          "beat1": "fahimta",
+          "beat2": "Yanke shawara",
+          "beat3": "Matsa gaba"
+        },
+        "write": {
+          "focus": "KYAU RUBUTU",
+          "title": "Juya tunani zuwa kalmomi",
+          "subtitle": "Tafi daga m ra'ayi zuwa rubuta cewa sauti kamar ku.",
+          "beat1": "Siffar",
+          "beat2": "Tace",
+          "beat3": "Raba"
+        },
+        "create": {
+          "focus": "Ƙirƙiri Hotuna",
+          "title": "Kawo ra'ayoyi zuwa rayuwa",
+          "subtitle": "Bayyana abin da kuke tsammani, sannan ƙirƙira ku tace shi cikin daƙiƙa.",
+          "beat1": "Ka yi tunanin",
+          "beat2": "Ƙirƙiri",
+          "beat3": "Cikakke"
+        },
+        "plan": {
+          "focus": "SHIRYA RANA TA",
+          "title": "Yi sarari don abin da ke da mahimmanci",
+          "subtitle": "Juya lissafin aiki zuwa tsarin kwanciyar hankali da gaske zaku iya bi.",
+          "beat1": "Ba da fifiko",
+          "beat2": "Tsara",
+          "beat3": "Fara"
+        }
+      },
+      "proof": {
+        "overline": "DUK A WURI DAYA",
+        "title": "Wuri daya. Ƙarin dama.",
+        "subtitle": "Matsar daga tambaya zuwa ƙirƙira ba tare da canzawa tsakanin apps ba.",
+        "item1": {
+          "title": "Tambayi komai",
+          "subtitle": "Nagartattun samfura don bayyanannun amsoshi masu amfani"
+        },
+        "item2": {
+          "title": "Ƙirƙiri hotuna",
+          "subtitle": "Juya ra'ayi zuwa wani abu da kuke iya gani"
+        },
+        "item3": {
+          "title": "Sami taimakon ƙwararru",
+          "subtitle": "Mataimakan aiki da rayuwar yau da kullun"
+        }
+      },
+      "controls": {
+        "back": "Baya",
+        "continue": "Ci gaba",
+        "finish": "Bincika ƙima"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "mako",
       "termsOfUse": "Sharuɗɗan Amfani",
       "privacyPolicy": "Sirrin Sirri"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Buɗe duk fasalulluka masu ƙima",
+        "subtitle": "Dubi ainihin abin da ya faru da lokacin.",
+        "todayTitle": "Yau",
+        "todayBody": "Buɗe kowane fasalin ƙima. Babu biyan kuɗi yanzu.",
+        "checkTitle": "A cikin kwanaki 2 - Tunatarwa",
+        "checkBody": "Za mu aiko muku da sanarwa cewa gwajin ku yana ƙarewa nan ba da jimawa ba.",
+        "billingTitle": "A cikin kwanaki 3",
+        "billingBody": "Lissafin kuɗi yana farawa ta atomatik sai dai idan kun soke kowane lokaci kafin.",
+        "badge": "KWANA 3 KYAUTA",
+        "cardNote": "Bayan gwajin kyauta",
+        "noPayment": "Babu Biya Zuwa Yanzu",
+        "cta": "Fara Gwaji na Kyauta na Kwana 3",
+        "renewalTerms": "Kwanaki 3 kyauta, sannan {{price}}/{{period}}. Sabuntawa ta atomatik har sai an soke."
+      },
+      "annual": {
+        "headline": "Buɗe shekara ta Cloud AI",
+        "subtitle": "Tsari ɗaya don taɗi, hotuna, da taimakon ƙwararrun AI.",
+        "todayTitle": "Yau - premium yana farawa",
+        "todayBody": "Buɗe kowane fasalin AI mai ƙima nan da nan.",
+        "billingTitle": "Ana biya duk shekara",
+        "billingBody": "{{price}} yana ba ku cikakken damar shiga shekara guda.",
+        "renewalTitle": "Yana sabuntawa kowace shekara",
+        "renewalBody": "Soke kowane lokaci a cikin Google Play kafin kwanan wata sabunta ku.",
+        "cta": "Ci gaba",
+        "renewalTerms": "{{price}}/{{period}}. Sabuntawa ta atomatik har sai an soke."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Ana nazarin hotuna…",
       "searching": "Neman…",
-      "thinking": "Tunani…"
+      "thinking": "Tunani…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Binciken yanar gizo",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Ƙarin sigina, ƙarancin hayaniyar falle."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Karɓi tsabar kuɗinka na yau",
       "subtitle": "Ka dawo kowace rana — lada yana ƙaruwa.",
-      "cta": "Yi rajista",
+      "cta": "Karɓa",
       "claimed": "An karɓa! +{{amount}} tsabar kuɗi",
       "later": "Daga baya"
     }

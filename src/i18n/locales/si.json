@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "දිගටම කරගෙන යන්න",
+        "tryItFree": "එය නොමිලේ උත්සාහ කරන්න",
+        "back": "ආපසු"
+      },
+      "valueDemo": {
+        "title": "අපි ඔබට Cloud AI නොමිලේ උත්සාහ කිරීමට අවශ්‍යයි",
+        "workspaceLabel": "AI වැඩ අවකාශය",
+        "userPromptLabel": "පරිශීලක විමසුම",
+        "aiTypingLabel": "AI ටයිප් කිරීම",
+        "prompt": "ප්‍රමාද වූ භාරදීමක් ගැන සේවාදායකයකුට ආචාරශීලී පිළිතුරක් ලියන්න.",
+        "response": "ආයුබෝවන්, ඔබේ ඉවසීමට ස්තූතියි. ඔබේ භාරදීම තරමක් ප්‍රමාද විය හැක. මම ඔබව යාවත්කාලීනව තබමි.",
+        "cards": {
+          "doc": {
+            "title": "ලේඛන සාරාංශය",
+            "detail": "පිටු 12 ගොනුව → ප්‍රධාන කරුණු 5ක්"
+          },
+          "reply": {
+            "title": "පිළිතුර සකස් කර ඇත",
+            "detail": "ආචාරශීලී, වෘත්තීය ස්වරය"
+          },
+          "translation": {
+            "title": "පරිවර්තනය සූදානම්",
+            "detail": "ඉංග්‍රීසි → ස්පාඤ්ඤ"
+          }
+        },
+        "subtitle": "එක් AI වැඩබිමක තුළ ලියන්න, සාරාංශ කරන්න, පරිවර්තනය කරන්න සහ ලේඛන ස්කෑන් කරන්න."
+      },
+      "goals": {
+        "title": "ඔබට උදව් අවශ්‍ය කුමක්ද?",
+        "subtitle": "ඉලක්ක 1-3ක් තෝරන්න. අපි ඔබේ AI වැඩබිම ගොඩනඟන්නෙමු.",
+        "emptyCta": "අවම වශයෙන් ඉලක්ක 1ක් තෝරන්න",
+        "items": {
+          "workFaster": {
+            "title": "වේගයෙන් වැඩ කරන්න",
+            "subtitle": "ඊමේල්, පිළිතුරු, කාර්යයන්"
+          },
+          "writeBetter": {
+            "title": "වඩා හොඳින් ලියන්න",
+            "subtitle": "ස්වරය නිවැරදි කරන්න, නැවත ලියන්න, වැඩි දියුණු කරන්න"
+          },
+          "understandDocuments": {
+            "title": "ලේඛන තේරුම් ගන්න",
+            "subtitle": "සාරාංශ, ස්කෑන්, ප්රධාන කරුණු"
+          },
+          "learnAnything": {
+            "title": "ඕනෑම දෙයක් ඉගෙන ගන්න",
+            "subtitle": "මාතෘකා පැහැදිලිව පැහැදිලි කරන්න"
+          },
+          "createContent": {
+            "title": "අන්තර්ගතය සාදන්න",
+            "subtitle": "පළ කිරීම්, සිරස්තල, අදහස්"
+          },
+          "planBusiness": {
+            "title": "ව්‍යාපාර සැලසුම් කරන්න",
+            "subtitle": "අදහස්, උපාය, ස්වයංක්‍රීයකරණය"
+          },
+          "personalClarity": {
+            "title": "පුද්ගලික පැහැදිලිකම",
+            "subtitle": "තීරණ, පුරුදු, සිතුවිලි"
+          },
+          "askBigQuestions": {
+            "title": "ඕනෑම ප්‍රශ්නයක් අසන්න",
+            "subtitle": "අනාගතය, අර්ථය, AI, ජීවිතය"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "ඔබේ AI සහායක නිර්මාණය කිරීම",
+        "readyTitle": "ඔබේ AI සහායක සූදානම්",
+        "subtitle": "ඔබේ සහායක වින්‍යාස කර ඇත. අත්හදා බැලීමේ ප්‍රවේශය දැන් ක්‍රියාත්මකයි.",
+        "trialTitle": "දින 3 ක අත්හදා බැලීම",
+        "trialActivating": "සක්රිය කරමින්",
+        "trialEnabled": "සබල කර ඇත",
+        "steps": {
+          "0": "ඔබේ සහායක සූදානම් කරමින්",
+          "1": "ප්‍රතිචාර පුද්ගලීකරණය කිරීම",
+          "2": "ප්‍රවේශය සුරක්ෂිත කිරීම",
+          "3": "පිහිටුවීම අවසන් කිරීම"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "හමුවන්න",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "දිගටම කරගෙන යන්න",
       "start": "අපි පටන් ගනිමු"
+    },
+    "v3": {
+      "intent": {
+        "overline": "එය ඔබේ කරගන්න",
+        "title": "Cloud AI ඔබට උපකාර කළ යුත්තේ කුමක්ද?",
+        "cta": "දිගටම කරගෙන යන්න"
+      },
+      "goals": {
+        "ask": "පිළිතුරු සොයන්න",
+        "write": "වඩා හොඳින් ලියන්න",
+        "create": "රූප සාදන්න",
+        "plan": "මගේ දවස සැලසුම් කරන්න"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "පිළිතුරු සොයන්න",
+          "title": "පැහැදිලි බව ඉක්මනින් සොයා ගන්න",
+          "subtitle": "ස්වභාවිකව අසන්න. පැහැදිලි පිළිතුරක් සහ ප්රයෝජනවත් ඊළඟ පියවර ලබා ගන්න.",
+          "beat1": "තේරුම් ගන්න",
+          "beat2": "තීරණය කරන්න",
+          "beat3": "ඉදිරියට යන්න"
+        },
+        "write": {
+          "focus": "වඩා හොඳින් ලියන්න",
+          "title": "සිතුවිලි වචන බවට පත් කරන්න",
+          "subtitle": "දළ අදහසක සිට ඔබ මෙන් පෙනෙන ලිවීමට යන්න.",
+          "beat1": "හැඩය",
+          "beat2": "පිරිපහදු කරන්න",
+          "beat3": "බෙදාගන්න"
+        },
+        "create": {
+          "focus": "රූප සාදන්න",
+          "title": "අදහස් ජීවිතයට ගෙන එන්න",
+          "subtitle": "ඔබ සිතන දේ විස්තර කරන්න, ඉන්පසු තත්පර කිහිපයකින් එය නිර්මාණය කර පිරිපහදු කරන්න.",
+          "beat1": "සිතන්න",
+          "beat2": "නිර්මාණය කරන්න",
+          "beat3": "පරිපූර්ණයි"
+        },
+        "plan": {
+          "focus": "මගේ දවස සැලසුම් කරන්න",
+          "title": "වැදගත් දේ සඳහා ඉඩක් වෙන් කරන්න",
+          "subtitle": "කාර්යබහුල ලැයිස්තුවක් ඔබට සැබවින්ම අනුගමනය කළ හැකි සන්සුන් සැලැස්මක් බවට පත් කරන්න.",
+          "beat1": "ප්‍රමුඛත්වය දෙන්න",
+          "beat2": "සංවිධානය කරන්න",
+          "beat3": "ආරම්භ කරන්න"
+        }
+      },
+      "proof": {
+        "overline": "සියල්ල එක තැනකින්",
+        "title": "එක තැනක්. තවත් හැකියාවන්.",
+        "subtitle": "යෙදුම් අතර මාරුවකින් තොරව ප්‍රශ්නයේ සිට නිර්මාණයට යන්න.",
+        "item1": {
+          "title": "ඕන දෙයක් අහන්න",
+          "subtitle": "පැහැදිලි, ප්‍රයෝජනවත් පිළිතුරු සඳහා උසස් මාදිලි"
+        },
+        "item2": {
+          "title": "රූප සාදන්න",
+          "subtitle": "අදහසක් ඔබට පෙනෙන දෙයක් බවට පත් කරන්න"
+        },
+        "item3": {
+          "title": "විශේෂඥ සහාය ලබා ගන්න",
+          "subtitle": "වැඩ සහ එදිනෙදා ජීවිතය සඳහා සහායකයින්"
+        }
+      },
+      "controls": {
+        "back": "ආපසු",
+        "continue": "දිගටම කරගෙන යන්න",
+        "finish": "වාරික ගවේෂණය කරන්න"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "සතිය",
       "termsOfUse": "භාවිත නියමයන් || ජංගම යෙදුම් paywall UI",
       "privacyPolicy": "රහස්‍යතා ප්‍රතිපත්තිය"
+    },
+    "v3": {
+      "eyebrow": "Cloud AI වාරිකය",
+      "trial": {
+        "headline": "සියලුම වාරික විශේෂාංග අගුළු හරින්න",
+        "subtitle": "සිදුවන්නේ කුමක්ද සහ කවදාද යන්න හරියටම බලන්න.",
+        "todayTitle": "අද",
+        "todayBody": "සෑම වාරික විශේෂාංගයක්ම අගුළු හරින්න. දැන් ගෙවීමක් නැත.",
+        "checkTitle": "දින 2කින් - මතක් කිරීම",
+        "checkBody": "ඔබගේ අත්හදා බැලීම ඉක්මනින් අවසන් වන බවට අපි ඔබට දැනුම්දීමක් එවන්නම්.",
+        "billingTitle": "දින 3 කින්",
+        "billingBody": "ඔබ පෙර ඕනෑම වේලාවක අවලංගු නොකළහොත් බිල්පත් ස්වයංක්‍රීයව ආරම්භ වේ.",
+        "badge": "දින 3ක් නොමිලේ",
+        "cardNote": "නොමිලේ අත්හදා බැලීමෙන් පසුව",
+        "noPayment": "දැන් ගෙවීමක් නැත",
+        "cta": "මගේ දින 3 නොමිලේ අත්හදා බැලීම අරඹන්න",
+        "renewalTerms": "දින 3ක් නොමිලේ, පසුව {{price}} / {{period}}. අවලංගු කරන තෙක් ස්වයංක්‍රීයව අලුත් වේ."
+      },
+      "annual": {
+        "headline": "Cloud AI හි වසරක් අගුළු හරින්න",
+        "subtitle": "කතාබස්, රූප, සහ විශේෂඥ AI උදවු සඳහා එක් සැලසුමක්.",
+        "todayTitle": "අද - වාරිකය ආරම්භ වේ",
+        "todayBody": "සෑම වාරික AI විශේෂාංගයක්ම වහාම අගුළු හරින්න.",
+        "billingTitle": "වාර්ෂිකව බිල්පත් කරනු ලැබේ",
+        "billingBody": "{{price}} ඔබට සම්පූර්ණ වසරක ප්‍රවේශයක් ලබා දෙයි.",
+        "renewalTitle": "වාර්ෂිකව අලුත් කරයි",
+        "renewalBody": "ඔබගේ අලුත් කිරීමේ දිනයට පෙර Google Play හි ඕනෑම වේලාවක අවලංගු කරන්න.",
+        "cta": "දිගටම කරගෙන යන්න",
+        "renewalTerms": "{{price}} / {{period}}. අවලංගු කරන තෙක් ස්වයංක්‍රීයව අලුත් වේ."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "පින්තූර විශ්ලේෂණය කරමින්...",
       "searching": "සොයමින්...",
-      "thinking": "සිතමින්..."
+      "thinking": "සිතමින්...",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "වෙබ් සෙවුම්",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "වැඩි සංඥා, අඩු පැතුරුම්පත් ශබ්දය."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "ඔබේ දෛනික කාසි ලබාගන්න",
       "subtitle": "දිනපතා එන්න — ත්‍යාගය වැඩිවේ.",
-      "cta": "ලියාපදිංචිය",
+      "cta": "ලබාගන්න",
       "claimed": "ලැබුණා! +{{amount}} කාසි",
       "later": "පසුව"
     }

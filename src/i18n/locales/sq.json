@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Vazhdoni",
+        "tryItFree": "Provojeni falas",
+        "back": "Mbrapa"
+      },
+      "valueDemo": {
+        "title": "Ne dëshirojmë që ju të provoni Cloud AI falas",
+        "workspaceLabel": "HAPËSIRA E PUNËS AI",
+        "userPromptLabel": "KËRKESA E PËRDORËSVE",
+        "aiTypingLabel": "AI SHTYP",
+        "prompt": "Shkruani një përgjigje të sjellshme për një klient për një dërgesë të vonuar.",
+        "response": "Përshëndetje, faleminderit për durimin tuaj. Dorëzimi juaj mund të vonohet pak. Unë do t'ju mbaj të përditësuar.",
+        "cards": {
+          "doc": {
+            "title": "Përmbledhje e dokumentit",
+            "detail": "Skedar me 12 faqe → 5 pika kyçe"
+          },
+          "reply": {
+            "title": "Përgjigja u hartua",
+            "detail": "Ton i sjellshëm dhe profesional"
+          },
+          "translation": {
+            "title": "Përkthimi gati",
+            "detail": "Anglisht → Spanjisht"
+          }
+        },
+        "subtitle": "Shkruani, përmblidhni, përktheni dhe skanoni dokumente në një hapësirë pune AI."
+      },
+      "goals": {
+        "title": "Për çfarë keni nevojë për ndihmë?",
+        "subtitle": "Zgjidhni 1–3 gola. Ne do të ndërtojmë hapësirën tuaj të punës të AI.",
+        "emptyCta": "Zgjidhni të paktën 1 gol",
+        "items": {
+          "workFaster": {
+            "title": "Punoni më shpejt",
+            "subtitle": "Email, përgjigje, detyra"
+          },
+          "writeBetter": {
+            "title": "Shkruaj më mirë",
+            "subtitle": "Rregulloni tonin, rishkruani, përmirësoni"
+          },
+          "understandDocuments": {
+            "title": "Kuptoni dokumentet",
+            "subtitle": "Përmbledhje, skanime, pika kyçe"
+          },
+          "learnAnything": {
+            "title": "Mësoni çdo gjë",
+            "subtitle": "Shpjegoni qartë temat"
+          },
+          "createContent": {
+            "title": "Krijo përmbajtje",
+            "subtitle": "Postime, mbishkrime, ide"
+          },
+          "planBusiness": {
+            "title": "Planifikoni biznesin",
+            "subtitle": "Ide, strategji, automatizim"
+          },
+          "personalClarity": {
+            "title": "Qartësia personale",
+            "subtitle": "Vendimet, zakonet, mendimet"
+          },
+          "askBigQuestions": {
+            "title": "Bëni çdo pyetje",
+            "subtitle": "E ardhmja, kuptimi, AI, jeta"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Krijimi i asistentit tuaj të AI",
+        "readyTitle": "Ndihmësi juaj i AI është gati",
+        "subtitle": "Ndihmësi juaj është konfiguruar. Qasja provë po aktivizohet tani.",
+        "trialTitle": "3 ditë provë",
+        "trialActivating": "po aktivizohet",
+        "trialEnabled": "i aktivizuar",
+        "steps": {
+          "0": "Përgatitja e ndihmësit tuaj",
+          "1": "Personalizimi i përgjigjeve",
+          "2": "Sigurimi i aksesit",
+          "3": "Përfundimi i konfigurimit"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Takohen",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Vazhdoni",
       "start": "Le të fillojmë"
+    },
+    "v3": {
+      "intent": {
+        "overline": "BËNI TË JUAJT",
+        "title": "Çfarë duhet t'ju ndihmojë të bëni Cloud AI?",
+        "cta": "Vazhdoni"
+      },
+      "goals": {
+        "ask": "Gjeni përgjigje",
+        "write": "Shkruaj më mirë",
+        "create": "Krijo imazhe",
+        "plan": "Planifiko ditën time"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "GJENI PËRGJIGJE",
+          "title": "Gjeni qartësinë më shpejt",
+          "subtitle": "Pyetni natyrshëm. Merrni një përgjigje të qartë dhe hapat e ardhshëm të dobishëm.",
+          "beat1": "Kuptoni",
+          "beat2": "Vendosni",
+          "beat3": "Ecni përpara"
+        },
+        "write": {
+          "focus": "SHKRUAN MË MIRË",
+          "title": "Shndërrojini mendimet në fjalë",
+          "subtitle": "Kaloni nga një ide e përafërt tek shkrimi që tingëllon si ju.",
+          "beat1": "Forma",
+          "beat2": "Përsosin",
+          "beat3": "Shpërndaje"
+        },
+        "create": {
+          "focus": "KRIJONI Imazhe",
+          "title": "Jepni idetë në jetë",
+          "subtitle": "Përshkruani atë që imagjinoni, më pas krijoni dhe përsojeni atë në sekonda.",
+          "beat1": "Imagjinoni",
+          "beat2": "Krijo",
+          "beat3": "Perfekte"
+        },
+        "plan": {
+          "focus": "PLANIFIKONI DITËN TIME",
+          "title": "Bëni hapësirë për atë që ka rëndësi",
+          "subtitle": "Kthejeni një listë të zënë në një plan të qetë që mund ta ndiqni.",
+          "beat1": "Prioritet",
+          "beat2": "Organizoni",
+          "beat3": "Filloni"
+        }
+      },
+      "proof": {
+        "overline": "TË GJITHA NË NJË VEND",
+        "title": "Një vend. Më shumë mundësi.",
+        "subtitle": "Lëvizni nga pyetja në krijim pa kaluar ndërmjet aplikacioneve.",
+        "item1": {
+          "title": "Pyetni ndonjë gjë",
+          "subtitle": "Modele të avancuara për përgjigje të qarta dhe të dobishme"
+        },
+        "item2": {
+          "title": "Krijo imazhe",
+          "subtitle": "Kthejeni një ide në diçka që mund ta shihni"
+        },
+        "item3": {
+          "title": "Merrni ndihmë nga ekspertët",
+          "subtitle": "Asistentë për punë dhe përditshmëri"
+        }
+      },
+      "controls": {
+        "back": "Mbrapa",
+        "continue": "Vazhdoni",
+        "finish": "Eksploroni premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "javë",
       "termsOfUse": "Kushtet e Përdorimit",
       "privacyPolicy": "Politika e privatësisë"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Zhbllokoni të gjitha veçoritë premium",
+        "subtitle": "Shihni saktësisht se çfarë ndodh dhe kur.",
+        "todayTitle": "Sot",
+        "todayBody": "Zhbllokoni çdo veçori premium. Nuk ka pagesë tani.",
+        "checkTitle": "Në 2 ditë — Përkujtesë",
+        "checkBody": "Ne do t'ju dërgojmë një njoftim se prova juaj do të përfundojë së shpejti.",
+        "billingTitle": "Në 3 ditë",
+        "billingBody": "Faturimi fillon automatikisht nëse nuk e anuloni në çdo kohë më parë.",
+        "badge": "3 DITE FALAS",
+        "cardNote": "Pas provës falas",
+        "noPayment": "Nuk ka pagesë tani",
+        "cta": "Fillo provën time 3-ditore falas",
+        "renewalTerms": "3 ditë falas, më pas {{price}} / {{period}}. Rinovohet automatikisht derisa të anulohet."
+      },
+      "annual": {
+        "headline": "Zhbllokoni një vit të Cloud AI",
+        "subtitle": "Një plan për bisedën, imazhet dhe ndihmën e ekspertëve të AI.",
+        "todayTitle": "Sot - fillon premium",
+        "todayBody": "Zhbllokoni menjëherë çdo veçori premium të AI.",
+        "billingTitle": "Faturohet çdo vit",
+        "billingBody": "{{price}} ju jep një vit të plotë akses.",
+        "renewalTitle": "Rinovohet çdo vit",
+        "renewalBody": "Anulo në çdo kohë në Google Play përpara datës së rinovimit.",
+        "cta": "Vazhdoni",
+        "renewalTerms": "{{price}} / {{period}}. Rinovohet automatikisht derisa të anulohet."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Po analizon imazhet…",
       "searching": "Po kërkon…",
-      "thinking": "Duke menduar…"
+      "thinking": "Duke menduar…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Kërkimi në ueb",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Më shumë sinjal, më pak zhurmë e tabelës."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Merr monedhat e tua ditore",
       "subtitle": "Kthehu çdo ditë — shpërblimi rritet.",
-      "cta": "Regjistrohu",
+      "cta": "Merr",
       "claimed": "U mor! +{{amount}} monedha",
       "later": "Më vonë"
     }

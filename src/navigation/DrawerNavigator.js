@@ -1,3 +1,4 @@
+import { IMAGE_STUDIO_ENABLED, REWARDS_ENABLED } from '../constants/featureFlags';
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -23,8 +24,6 @@ import Animated, {
   withSpring,
   withSequence,
   Easing,
-  runOnJS,
-  FadeInDown,
 } from 'react-native-reanimated';
 
 import ModelSelector from '../components/ModelSelector';
@@ -36,6 +35,7 @@ import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
 import { useTranslation } from 'react-i18next';
 import { PRESETS, PRESET_AVATARS } from '../data/presets';
+import { DEFAULT_CHAT_MODEL } from '../config/models';
 import NetInfo from '@react-native-community/netinfo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SubscriptionAccessContext } from '../context/SubscriptionContext';
@@ -155,13 +155,10 @@ function ChatHeaderCenter() {
       : [],
     [isAssistantChat, t]
   );
+  const currentPresetId = preset?.id || null;
 
   const triggerScale = useSharedValue(1);
   const rotateArrow = useSharedValue(0);
-  const overlayProgress = useSharedValue(0);
-  const dropY = useSharedValue(-36);
-  const sheetScale = useSharedValue(0.985);
-  const sheetOpacity = useSharedValue(0);
 
   const triggerStyle = useAnimatedStyle(() => ({
     transform: [{ scale: triggerScale.value }],
@@ -169,14 +166,6 @@ function ChatHeaderCenter() {
   const arrowStyle = useAnimatedStyle(() => ({
     transform: [{ rotate: `${rotateArrow.value * 180}deg` }],
   }));
-  const overlayStyle = useAnimatedStyle(() => ({
-    opacity: overlayProgress.value,
-  }));
-  const panelStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: dropY.value }, { scale: sheetScale.value }],
-    opacity: sheetOpacity.value,
-  }));
-
   const openSheet = useCallback(() => {
     try { Haptic.trigger('selection'); } catch {}
     triggerScale.value = withSequence(
@@ -184,22 +173,13 @@ function ChatHeaderCenter() {
       withSpring(1, { damping: 12, stiffness: 280 })
     );
     setSheetOpen(true);
-    overlayProgress.value = withTiming(1, { duration: 220, easing: Easing.out(Easing.cubic) });
-    dropY.value = withSpring(0, { damping: 14, stiffness: 160, mass: 0.9 });
-    sheetScale.value = withTiming(1, { duration: 220, easing: Easing.out(Easing.cubic) });
-    sheetOpacity.value = withTiming(1, { duration: 180, easing: Easing.out(Easing.cubic) });
     rotateArrow.value = withTiming(1, { duration: 200, easing: Easing.out(Easing.cubic) });
-  }, [dropY, overlayProgress, rotateArrow, sheetOpacity, sheetScale, triggerScale]);
+  }, [rotateArrow, triggerScale]);
 
   const closeSheet = useCallback(() => {
-    overlayProgress.value = withTiming(0, { duration: 180, easing: Easing.in(Easing.cubic) }, (finished) => {
-      if (finished) runOnJS(setSheetOpen)(false);
-    });
-    dropY.value = withTiming(-36, { duration: 200, easing: Easing.in(Easing.cubic) });
-    sheetScale.value = withTiming(0.985, { duration: 200, easing: Easing.in(Easing.cubic) });
-    sheetOpacity.value = withTiming(0, { duration: 160, easing: Easing.in(Easing.cubic) });
+    setSheetOpen(false);
     rotateArrow.value = withTiming(0, { duration: 180, easing: Easing.in(Easing.cubic) });
-  }, [dropY, overlayProgress, rotateArrow, sheetOpacity, sheetScale]);
+  }, [rotateArrow]);
 
   const handleSelectAssistant = useCallback((choice) => {
     closeSheet();
@@ -207,7 +187,7 @@ function ChatHeaderCenter() {
     try { Haptic.trigger('impactLight'); } catch {}
 
     try {
-      const modelKey = 'gpt-5.4-nano';
+      const modelKey = choice?.suggestedModel || DEFAULT_CHAT_MODEL;
       const title = t(`assistants.presets.${choice.id}.name`, { defaultValue: choice.name });
       const sys = typeof choice.system === 'string' ? choice.system : '';
       const nextThread = createThread({ title, model: modelKey, system: sys });
@@ -241,10 +221,10 @@ function ChatHeaderCenter() {
       const timer = setTimeout(() => {
         listRef.current?.scrollToIndex({
           index: idx,
-          animated: true,
+          animated: false,
           viewPosition: 0.5,
         });
-      }, 80);
+      }, 120);
       return () => clearTimeout(timer);
     }
   }, [sheetOpen, assistants, currentPresetId, isAssistantChat]);
@@ -252,18 +232,14 @@ function ChatHeaderCenter() {
   useEffect(() => {
     if (!isAssistantChat && sheetOpen) {
       setSheetOpen(false);
-      overlayProgress.value = 0;
-      sheetOpacity.value = 0;
       rotateArrow.value = 0;
     }
-  }, [isAssistantChat, sheetOpen, overlayProgress, rotateArrow, sheetOpacity]);
+  }, [isAssistantChat, sheetOpen, rotateArrow]);
 
-  const currentPresetId = preset?.id || null;
-
-  const renderItem = useCallback(({ item, index }) => {
+  const renderItem = useCallback(({ item }) => {
     const selected = item.id === currentPresetId;
     return (
-      <Animated.View entering={FadeInDown.delay(index * 30).duration(200)}>
+      <View>
         <Pressable
           onPress={() => handleSelectAssistant(item)}
           android_ripple={{ color: '#1A1A1D' }}
@@ -284,7 +260,7 @@ function ChatHeaderCenter() {
           </View>
           {selected ? <SvgIcon name="check" size={18} color={colors.primary} /> : null}
         </Pressable>
-      </Animated.View>
+      </View>
     );
   }, [currentPresetId, handleSelectAssistant]);
 
@@ -364,24 +340,22 @@ function ChatHeaderCenter() {
       <Modal
         transparent
         visible={sheetOpen}
-        animationType="none"
+        animationType="fade"
         statusBarTranslucent
         onRequestClose={closeSheet}
       >
-        <Animated.View style={[styles.sheetOverlay, overlayStyle]}>
+        <View style={styles.sheetOverlay}>
           <Pressable style={StyleSheet.absoluteFill} onPress={closeSheet} />
-        </Animated.View>
+        </View>
 
-        <Animated.View
+        <View
           style={[
             styles.sheetPanel,
             {
               marginTop: insets.top + 56,
               maxHeight: Math.min(Dimensions.get('window').height * 0.7, 468),
             },
-            panelStyle,
           ]}
-          accessibilityRole="dialog"
           accessibilityViewIsModal
           importantForAccessibility="yes"
         >
@@ -412,8 +386,9 @@ function ChatHeaderCenter() {
                 });
               });
             }}
+            removeClippedSubviews={false}
           />
-        </Animated.View>
+        </View>
       </Modal>
     </>
   );
@@ -556,14 +531,16 @@ function MainDrawerNavigator() {
         })}
       />
       <Drawer.Screen name="Assistants" getComponent={getAssistantsScreen} options={{ title: t('navigation.assistants') }} />
-      <Drawer.Screen
-        name="Rewards"
-        getComponent={getRewardsStack}
-        options={{
-          headerShown: false,
-          title: t('navigation.rewards'),
-        }}
-      />
+      {REWARDS_ENABLED ? (
+        <Drawer.Screen
+          name="Rewards"
+          getComponent={getRewardsStack}
+          options={{
+            headerShown: false,
+            title: t('navigation.rewards'),
+          }}
+        />
+      ) : null}
       <Drawer.Screen
         name="Settings"
         getComponent={getSettingsScreen}
@@ -576,14 +553,16 @@ function MainDrawerNavigator() {
           },
         }}
       />
-      <Drawer.Screen
-        name="Studio"
-        getComponent={getStudioHomeScreen}
-        options={{
-          headerShown: false,
-          title: t('navigation.imagesStudio') || 'Image Studio',
-        }}
-      />
+      {IMAGE_STUDIO_ENABLED ? (
+        <Drawer.Screen
+          name="Studio"
+          getComponent={getStudioHomeScreen}
+          options={{
+            headerShown: false,
+            title: t('navigation.imagesStudio') || 'Image Studio',
+          }}
+        />
+      ) : null}
     </Drawer.Navigator>
   );
 }
@@ -770,22 +749,26 @@ export default function DrawerNavigator({
           }}
         >
           <RootStack.Screen name={ROOT_DRAWER_ROUTE} component={MainDrawerNavigator} />
-          <RootStack.Screen
-            name="CreateImage"
-            getComponent={getCreateImageScreen}
-            options={{
-              animation: 'slide_from_right',
-              presentation: 'card',
-            }}
-          />
-          <RootStack.Screen
-            name="EditImage"
-            getComponent={getEditImageScreen}
-            options={{
-              animation: 'slide_from_right',
-              presentation: 'card',
-            }}
-          />
+          {IMAGE_STUDIO_ENABLED ? (
+            <>
+              <RootStack.Screen
+                name="CreateImage"
+                getComponent={getCreateImageScreen}
+                options={{
+                  animation: 'slide_from_right',
+                  presentation: 'card',
+                }}
+              />
+              <RootStack.Screen
+                name="EditImage"
+                getComponent={getEditImageScreen}
+                options={{
+                  animation: 'slide_from_right',
+                  presentation: 'card',
+                }}
+              />
+            </>
+          ) : null}
           <RootStack.Screen
             name="PaywallScreen"
             component={PaywallRouteScreen}
@@ -962,6 +945,7 @@ const styles = StyleSheet.create({
   },
   sheetRowText: {
     flex: 1,
+    minWidth: 0,
     gap: 3,
   },
   sheetRowTitle: {

@@ -1,3 +1,4 @@
+import { IMAGE_STUDIO_ENABLED, REWARDS_ENABLED } from '../constants/featureFlags';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Alert,
@@ -311,12 +312,14 @@ export default function AndroidNavigationMenu({
               </View>
             ) : null}
 
-            <SidebarCreativeStudioBanner
-              compact={isCompactHeight}
-              onPress={() => handleMenuItemPress('Studio', 'studio_banner')}
-              style={styles.sidebarBanner}
-              playVideo={visible}
-            />
+            {IMAGE_STUDIO_ENABLED ? (
+              <SidebarCreativeStudioBanner
+                compact={isCompactHeight}
+                onPress={() => handleMenuItemPress('Studio', 'studio_banner')}
+                style={styles.sidebarBanner}
+                playVideo={visible}
+              />
+            ) : null}
 
             <View style={styles.mainNav}>
               <MenuItem
@@ -337,19 +340,23 @@ export default function AndroidNavigationMenu({
                 label={t('navigation.assistants')}
                 onPress={() => handleMenuItemPress('Assistants')}
               />
-              <MenuItem
-                active={activeRouteName === 'Studio'}
-                icon="studio"
-                label={t('navigation.imagesStudio')}
-                onPress={() => handleMenuItemPress('Studio')}
-              />
-              <MenuItem
-                highlight
-                active={activeRouteName === 'Rewards'}
-                icon="coin"
-                label={t('navigation.rewards')}
-                onPress={() => handleMenuItemPress('Rewards')}
-              />
+              {IMAGE_STUDIO_ENABLED ? (
+                <MenuItem
+                  active={activeRouteName === 'Studio'}
+                  icon="studio"
+                  label={t('navigation.imagesStudio')}
+                  onPress={() => handleMenuItemPress('Studio')}
+                />
+              ) : null}
+              {REWARDS_ENABLED ? (
+                <MenuItem
+                  highlight
+                  active={activeRouteName === 'Rewards'}
+                  icon="coin"
+                  label={t('navigation.rewards')}
+                  onPress={() => handleMenuItemPress('Rewards')}
+                />
+              ) : null}
               <MenuItem
                 active={activeRouteName === 'Settings'}
                 icon="settings"

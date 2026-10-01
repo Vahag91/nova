@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Tesiwaju",
+        "tryItFree": "Gbiyanju O Fun Ọfẹ",
+        "back": "Pada"
+      },
+      "valueDemo": {
+        "title": "A fẹ ki o gbiyanju Cloud AI fun ọfẹ",
+        "workspaceLabel": "ÀAYÈ IṢẸ́ AI",
+        "userPromptLabel": "Olumulo PROMPT",
+        "aiTypingLabel": "AI N TẸ̀WÉ",
+        "prompt": "Kọ esi towotowo si alabara kan nipa ifijiṣẹ idaduro.",
+        "response": "Hi, o ṣeun fun sũru rẹ. Ifijiṣẹ rẹ le jẹ idaduro diẹ. Emi yoo pa ọ imudojuiwọn.",
+        "cards": {
+          "doc": {
+            "title": "Akopọ iwe",
+            "detail": "faili oju-iwe 12 → Awọn aaye bọtini 5"
+          },
+          "reply": {
+            "title": "Ìdáhùn ti ṣetán",
+            "detail": "Ohùn ọlọ́wọ̀ àti alámọ̀dájú"
+          },
+          "translation": {
+            "title": "Ṣetan Itumọ",
+            "detail": "English → Sipania"
+          }
+        },
+        "subtitle": "Kọ, ṣe àkópọ̀, túmọ̀, kí o sì ṣàyẹ̀wò àwọn ìwé nínú àyè iṣẹ́ AI kan."
+      },
+      "goals": {
+        "title": "Kini o nilo iranlọwọ pẹlu?",
+        "subtitle": "Yan awọn ibi-afẹde 1–3. A yoo kọ aaye iṣẹ AI rẹ.",
+        "emptyCta": "Yan o kere ju ibi-afẹde kan",
+        "items": {
+          "workFaster": {
+            "title": "Ṣiṣẹ yiyara",
+            "subtitle": "Awọn imeeli, awọn idahun, awọn iṣẹ ṣiṣe"
+          },
+          "writeBetter": {
+            "title": "Kọ dara julọ",
+            "subtitle": "Ṣe atunṣe ohun orin, tun kọ, ilọsiwaju"
+          },
+          "understandDocuments": {
+            "title": "Loye awọn iwe aṣẹ",
+            "subtitle": "Awọn akojọpọ, awọn ọlọjẹ, awọn aaye bọtini"
+          },
+          "learnAnything": {
+            "title": "Kọ ẹkọ ohunkohun",
+            "subtitle": "Ṣe alaye awọn koko-ọrọ ni kedere"
+          },
+          "createContent": {
+            "title": "Ṣẹda akoonu",
+            "subtitle": "Àwọn ìfiránṣẹ́, àkọlé, èrò"
+          },
+          "planBusiness": {
+            "title": "Eto iṣowo",
+            "subtitle": "Awọn imọran, ilana, adaṣe"
+          },
+          "personalClarity": {
+            "title": "Ti ara ẹni wípé",
+            "subtitle": "Awọn ipinnu, awọn iṣesi, awọn ero"
+          },
+          "askBigQuestions": {
+            "title": "Beere ibeere eyikeyi",
+            "subtitle": "ojo iwaju, itumo, AI, aye"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Ṣiṣẹda oluranlọwọ AI rẹ",
+        "readyTitle": "Iranlọwọ AI rẹ ti ṣetan",
+        "subtitle": "Iranlọwọ rẹ ti wa ni tunto. Wiwọle idanwo ti wa ni titan ni bayi.",
+        "trialTitle": "3 ọjọ iwadii",
+        "trialActivating": "ṣiṣẹ",
+        "trialEnabled": "ṣiṣẹ",
+        "steps": {
+          "0": "Ngbaradi oluranlọwọ rẹ",
+          "1": "Awọn idahun ti ara ẹni",
+          "2": "ni aabo wiwọle",
+          "3": "Ṣiṣeto ipari"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Pade",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Tesiwaju",
       "start": "Jẹ ká bẹrẹ"
+    },
+    "v3": {
+      "intent": {
+        "overline": "ṢE RẸ",
+        "title": "Kini o yẹ ki Cloud AI ṣe iranlọwọ fun ọ lati ṣe?",
+        "cta": "Tesiwaju"
+      },
+      "goals": {
+        "ask": "Wa awọn idahun",
+        "write": "Kọ dara julọ",
+        "create": "Ṣẹda awọn aworan",
+        "plan": "Gbero ọjọ mi"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "WÁ ÌDÁHÙN",
+          "title": "Wa wípé yiyara",
+          "subtitle": "Beere nipa ti ara. Gba idahun ti o ye ki o wulo awọn igbesẹ atẹle.",
+          "beat1": "Loye",
+          "beat2": "Pinnu",
+          "beat3": "Gbe siwaju"
+        },
+        "write": {
+          "focus": "KỌ DARA",
+          "title": "Yipada awọn ero sinu ọrọ",
+          "subtitle": "Lọ lati imọran ti o ni inira si kikọ ti o dabi iwọ.",
+          "beat1": "Apẹrẹ",
+          "beat2": "Refaini",
+          "beat3": "Pinpin"
+        },
+        "create": {
+          "focus": "Ṣẹda awọn aworan",
+          "title": "Mu awọn ero si aye",
+          "subtitle": "Ṣe apejuwe ohun ti o fojuinu, lẹhinna ṣẹda ati sọ di mimọ ni iṣẹju-aaya.",
+          "beat1": "Fojuinu",
+          "beat2": "Ṣẹda",
+          "beat3": "Pipe"
+        },
+        "plan": {
+          "focus": "ETO OJO MI",
+          "title": "Ṣe aaye fun ohun ti o ṣe pataki",
+          "subtitle": "Yipada atokọ ti o nšišẹ sinu ero idakẹjẹ ti o le tẹle ni otitọ.",
+          "beat1": "Ṣọṣaaju",
+          "beat2": "Ṣeto",
+          "beat3": "Bẹrẹ"
+        }
+      },
+      "proof": {
+        "overline": "GBOGBO IN KAN",
+        "title": "Ibi kan. Awọn iṣeeṣe diẹ sii.",
+        "subtitle": "Gbe lati ibeere lọ si ẹda laisi yi pada laarin awọn ohun elo.",
+        "item1": {
+          "title": "Beere ohunkohun",
+          "subtitle": "To ti ni ilọsiwaju si dede fun ko o, wulo idahun"
+        },
+        "item2": {
+          "title": "Ṣẹda awọn aworan",
+          "subtitle": "Yi ero sinu nkan ti o le rii"
+        },
+        "item3": {
+          "title": "Gba iranlọwọ amoye",
+          "subtitle": "Awọn oluranlọwọ fun iṣẹ ati igbesi aye ojoojumọ"
+        }
+      },
+      "controls": {
+        "back": "Pada",
+        "continue": "Tesiwaju",
+        "finish": "Ye Ere"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "ose",
       "termsOfUse": "Awọn ofin lilo",
       "privacyPolicy": "Ilana Asiri"
+    },
+    "v3": {
+      "eyebrow": "Awọsanma AI Ere",
+      "trial": {
+        "headline": "Šii gbogbo awọn ẹya ara ẹrọ Ere",
+        "subtitle": "Wo gangan ohun ti o ṣẹlẹ ati nigbawo.",
+        "todayTitle": "Loni",
+        "todayBody": "Ṣii gbogbo ẹya-ara Ere. Ko si owo sisan ni bayi.",
+        "checkTitle": "Ni awọn ọjọ 2 - Olurannileti",
+        "checkBody": "A yoo fi ifitonileti kan ranṣẹ si ọ pe idanwo rẹ yoo pari laipẹ.",
+        "billingTitle": "Ni awọn ọjọ 3",
+        "billingBody": "Idiyele bẹrẹ laifọwọyi ayafi ti o ba fagile nigbakugba.",
+        "badge": "3 ỌJỌ ỌFẸ",
+        "cardNote": "Lẹhin idanwo ọfẹ",
+        "noPayment": "Ko si Isanwo Nitori Bayi",
+        "cta": "Bẹrẹ Idanwo Ọfẹ Ọjọ mẹta Mi",
+        "renewalTerms": "3 ọjọ ọfẹ, lẹhinna {{price}} / {{period}}. Awọn isọdọtun aifọwọyi titi ti paarẹ."
+      },
+      "annual": {
+        "headline": "Ṣii ọdun kan ti Cloud AI",
+        "subtitle": "Eto kan fun iwiregbe, awọn aworan, ati iranlọwọ AI amoye.",
+        "todayTitle": "Loni - Ere bẹrẹ",
+        "todayBody": "Ṣii silẹ gbogbo ẹya AI Ere lẹsẹkẹsẹ.",
+        "billingTitle": "Billed lododun",
+        "billingBody": "{{price}} fun ọ ni iwọle ni kikun ọdun kan.",
+        "renewalTitle": "Tuntun lodoodun",
+        "renewalBody": "Fagilee nigbakugba ni Google Play ṣaaju ọjọ isọdọtun rẹ.",
+        "cta": "Tesiwaju",
+        "renewalTerms": "{{price}} / {{period}}. Awọn isọdọtun aifọwọyi titi ti paarẹ."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Ṣiṣayẹwo awọn aworan…",
       "searching": "Ṣiṣawari…",
-      "thinking": "N ronu…"
+      "thinking": "N ronu…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Wiwa wẹẹbu",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Ifihan agbara diẹ sii, ariwo iwe kaakiri."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Gba owó ojoojúmọ́ rẹ",
       "subtitle": "Padà wá lójoojúmọ́ — èrè máa ń pọ̀ sí i.",
-      "cta": "Forúkọsílẹ̀",
+      "cta": "Gbà",
       "claimed": "A ti gbà! +{{amount}} owó",
       "later": "Nígbà mìíràn"
     }

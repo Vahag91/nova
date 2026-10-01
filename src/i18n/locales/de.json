@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Weiter",
+        "tryItFree": "Kostenlos testen",
+        "back": "Zurück"
+      },
+      "valueDemo": {
+        "title": "Wir möchten, dass Sie Cloud AI kostenlos testen",
+        "workspaceLabel": "KI-ARBEITSBEREICH",
+        "userPromptLabel": "BENUTZERAUFFORDERUNG",
+        "aiTypingLabel": "KI-TYPIERUNG",
+        "prompt": "Schreiben Sie einem Kunden eine höfliche Antwort auf eine verspätete Lieferung.",
+        "response": "Hallo, vielen Dank für Ihre Geduld. Ihre Lieferung kann sich etwas verzögern. Ich halte Sie auf dem Laufenden.",
+        "cards": {
+          "doc": {
+            "title": "Dokumentzusammenfassung",
+            "detail": "12-seitige Datei → 5 wichtige Punkte"
+          },
+          "reply": {
+            "title": "Antwort entworfen",
+            "detail": "Höflicher, professioneller Ton"
+          },
+          "translation": {
+            "title": "Übersetzung bereit",
+            "detail": "Englisch → Spanisch"
+          }
+        },
+        "subtitle": "Schreiben, zusammenfassen, übersetzen und Dokumente scannen – in einem KI-Arbeitsbereich."
+      },
+      "goals": {
+        "title": "Wobei benötigen Sie Hilfe?",
+        "subtitle": "Wählen Sie 1–3 Ziele. Wir bauen Ihren KI-Arbeitsbereich.",
+        "emptyCta": "Wählen Sie mindestens 1 Ziel",
+        "items": {
+          "workFaster": {
+            "title": "Arbeiten Sie schneller",
+            "subtitle": "E-Mails, Antworten, Aufgaben"
+          },
+          "writeBetter": {
+            "title": "Besser schreiben",
+            "subtitle": "Ton korrigieren, neu schreiben, verbessern"
+          },
+          "understandDocuments": {
+            "title": "Dokumente verstehen",
+            "subtitle": "Zusammenfassungen, Scans, wichtige Punkte"
+          },
+          "learnAnything": {
+            "title": "Lerne alles",
+            "subtitle": "Erklären Sie Themen klar und deutlich"
+          },
+          "createContent": {
+            "title": "Inhalte erstellen",
+            "subtitle": "Beiträge, Bildunterschriften, Ideen"
+          },
+          "planBusiness": {
+            "title": "Planen Sie Ihr Geschäft",
+            "subtitle": "Ideen, Strategie, Automatisierung"
+          },
+          "personalClarity": {
+            "title": "Persönliche Klarheit",
+            "subtitle": "Entscheidungen, Gewohnheiten, Gedanken"
+          },
+          "askBigQuestions": {
+            "title": "Stellen Sie Fragen",
+            "subtitle": "Zukunft, Bedeutung, KI, Leben"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Erstellen Sie Ihren KI-Assistenten",
+        "readyTitle": "Ihr KI-Assistent ist bereit",
+        "subtitle": "Ihr Assistent ist konfiguriert. Der Testzugang wird jetzt aktiviert.",
+        "trialTitle": "3 Tage Testversion",
+        "trialActivating": "wird aktiviert",
+        "trialEnabled": "aktiviert",
+        "steps": {
+          "0": "Bereiten Sie Ihren Assistenten vor",
+          "1": "Antworten personalisieren",
+          "2": "Zugriff sichern",
+          "3": "Einrichtung wird abgeschlossen"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Lerne kennen:",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Weiter",
       "start": "Los geht's"
+    },
+    "v3": {
+      "intent": {
+        "overline": "AUF DICH ZUGESCHNITTEN",
+        "title": "Wobei soll Cloud AI dir helfen?",
+        "cta": "Weiter"
+      },
+      "goals": {
+        "ask": "Antworten finden",
+        "write": "Besser schreiben",
+        "create": "Bilder erstellen",
+        "plan": "Meinen Tag planen"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ANTWORTEN FINDEN",
+          "title": "Schneller Klarheit finden",
+          "subtitle": "Frag einfach. Erhalte eine klare Antwort und hilfreiche nächste Schritte.",
+          "beat1": "Verstehen",
+          "beat2": "Entscheiden",
+          "beat3": "Weiterkommen"
+        },
+        "write": {
+          "focus": "BESSER SCHREIBEN",
+          "title": "Gedanken in Worte verwandeln",
+          "subtitle": "Mach aus einer ersten Idee einen Text, der nach dir klingt.",
+          "beat1": "Formen",
+          "beat2": "Verfeinern",
+          "beat3": "Teilen"
+        },
+        "create": {
+          "focus": "BILDER ERSTELLEN",
+          "title": "Ideen zum Leben erwecken",
+          "subtitle": "Beschreibe deine Vorstellung und erstelle und verfeinere sie in Sekunden.",
+          "beat1": "Vorstellen",
+          "beat2": "Erstellen",
+          "beat3": "Verfeinern"
+        },
+        "plan": {
+          "focus": "PLANE MEINEN TAG",
+          "title": "Raum für das Wesentliche schaffen",
+          "subtitle": "Mach aus einer vollen Liste einen klaren Plan, dem du wirklich folgen kannst.",
+          "beat1": "Priorisieren",
+          "beat2": "Organisieren",
+          "beat3": "Beginnen"
+        }
+      },
+      "proof": {
+        "overline": "ALLES AN EINEM ORT",
+        "title": "Ein Ort. Mehr Möglichkeiten.",
+        "subtitle": "Vom Fragen zum Erstellen – ohne ständig die App zu wechseln.",
+        "item1": {
+          "title": "Alles fragen",
+          "subtitle": "Erweiterte Modelle für klare, nützliche Antworten"
+        },
+        "item2": {
+          "title": "Bilder erstellen",
+          "subtitle": "Verwandle eine Idee in etwas Sichtbares"
+        },
+        "item3": {
+          "title": "Kompetente Hilfe erhalten",
+          "subtitle": "Assistenten für Beruf und Alltag"
+        }
+      },
+      "controls": {
+        "back": "Zurück",
+        "continue": "Weiter",
+        "finish": "Premium entdecken"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "Woche",
       "termsOfUse": "Nutzungsbedingungen",
       "privacyPolicy": "Datenschutzrichtlinie"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Schalten Sie alle Premium-Funktionen frei",
+        "subtitle": "Sehen Sie genau, was wann passiert.",
+        "todayTitle": "Heute",
+        "todayBody": "Schalten Sie alle Premium-Funktionen frei. Derzeit ist keine Zahlung fällig.",
+        "checkTitle": "In 2 Tagen – Erinnerung",
+        "checkBody": "Wir senden Ihnen eine Benachrichtigung, dass Ihre Testversion bald endet.",
+        "billingTitle": "In 3 Tagen",
+        "billingBody": "Die Abrechnung beginnt automatisch, sofern Sie nicht vorher kündigen.",
+        "badge": "3 TAGE KOSTENLOS",
+        "cardNote": "Nach der kostenlosen Testversion",
+        "noPayment": "Derzeit ist keine Zahlung fällig",
+        "cta": "Starten Sie meine 3-tägige kostenlose Testversion",
+        "renewalTerms": "3 Tage kostenlos, dann {{price}} / {{period}}. Automatische Verlängerung bis zur Kündigung."
+      },
+      "annual": {
+        "headline": "Schalten Sie ein Jahr Cloud AI frei",
+        "subtitle": "Ein Plan für Chat, Bilder und professionelle KI-Hilfe.",
+        "todayTitle": "Heute beginnt die Prämie",
+        "todayBody": "Schalten Sie alle Premium-KI-Funktionen sofort frei.",
+        "billingTitle": "Jährliche Abrechnung",
+        "billingBody": "Mit {{price}} erhalten Sie ein ganzes Jahr Zugriff.",
+        "renewalTitle": "Wird jährlich erneuert",
+        "renewalBody": "Sie können jederzeit vor Ihrem Verlängerungsdatum in Google Play kündigen.",
+        "cta": "Fortfahren",
+        "renewalTerms": "{{price}} / {{period}}. Automatische Verlängerung bis zur Kündigung."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Bilder werden analysiert…",
       "searching": "Suchen…",
-      "thinking": "Nachdenken…"
+      "thinking": "Nachdenken…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Websuche",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Mehr Signal, weniger Tabellenrauschen."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Hol dir deine täglichen Münzen",
       "subtitle": "Komm jeden Tag wieder - die Belohnung wächst.",
-      "cta": "Einchecken",
+      "cta": "Einlösen",
       "claimed": "Erhalten! +{{amount}} Münzen",
       "later": "Später"
     }

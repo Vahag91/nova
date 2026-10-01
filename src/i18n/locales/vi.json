@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Tiếp tục",
+        "tryItFree": "Dùng thử miễn phí",
+        "back": "Quay lại"
+      },
+      "valueDemo": {
+        "title": "Chúng tôi muốn bạn dùng thử Cloud AI miễn phí",
+        "workspaceLabel": "KHÔNG GIAN LÀM VIỆC AI",
+        "userPromptLabel": "NHẮC NHỞ NGƯỜI DÙNG",
+        "aiTypingLabel": "GÕ AI",
+        "prompt": "Viết câu trả lời lịch sự cho khách hàng về việc giao hàng bị trì hoãn.",
+        "response": "Xin chào, cảm ơn vì sự kiên nhẫn của bạn. Việc giao hàng của bạn có thể bị chậm trễ một chút. Tôi sẽ cập nhật cho bạn.",
+        "cards": {
+          "doc": {
+            "title": "Tóm tắt tài liệu",
+            "detail": "File 12 trang → 5 điểm chính"
+          },
+          "reply": {
+            "title": "Đã soạn câu trả lời",
+            "detail": "Giọng văn lịch sự, chuyên nghiệp"
+          },
+          "translation": {
+            "title": "Đã sẵn sàng dịch",
+            "detail": "Tiếng Anh → Tiếng Tây Ban Nha"
+          }
+        },
+        "subtitle": "Viết, tóm tắt, dịch và quét tài liệu trong một không gian làm việc AI duy nhất."
+      },
+      "goals": {
+        "title": "Bạn cần trợ giúp về vấn đề gì?",
+        "subtitle": "Chọn 1–3 bàn thắng. Chúng tôi sẽ xây dựng không gian làm việc AI của bạn.",
+        "emptyCta": "Chọn ít nhất 1 mục tiêu",
+        "items": {
+          "workFaster": {
+            "title": "Làm việc nhanh hơn",
+            "subtitle": "Email, trả lời, nhiệm vụ"
+          },
+          "writeBetter": {
+            "title": "Viết tốt hơn",
+            "subtitle": "Sửa âm, viết lại, cải thiện"
+          },
+          "understandDocuments": {
+            "title": "Hiểu tài liệu",
+            "subtitle": "Tóm tắt, quét, điểm chính"
+          },
+          "learnAnything": {
+            "title": "Học bất cứ điều gì",
+            "subtitle": "Giải thích chủ đề rõ ràng"
+          },
+          "createContent": {
+            "title": "Tạo nội dung",
+            "subtitle": "Bài đăng, chú thích, ý tưởng"
+          },
+          "planBusiness": {
+            "title": "Lập kế hoạch kinh doanh",
+            "subtitle": "Ý tưởng, chiến lược, tự động hóa"
+          },
+          "personalClarity": {
+            "title": "Sự rõ ràng cá nhân",
+            "subtitle": "Quyết định, thói quen, suy nghĩ"
+          },
+          "askBigQuestions": {
+            "title": "Đặt bất kỳ câu hỏi nào",
+            "subtitle": "Tương lai, ý nghĩa, AI, cuộc sống"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Tạo trợ lý AI của bạn",
+        "readyTitle": "Trợ lý AI của bạn đã sẵn sàng",
+        "subtitle": "Trợ lý của bạn đã được định cấu hình. Quyền truy cập dùng thử hiện đang được bật.",
+        "trialTitle": "3 ngày dùng thử",
+        "trialActivating": "đang kích hoạt",
+        "trialEnabled": "đã bật",
+        "steps": {
+          "0": "Chuẩn bị trợ lý của bạn",
+          "1": "Cá nhân hóa phản hồi",
+          "2": "Bảo mật quyền truy cập",
+          "3": "Hoàn tất thiết lập"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Làm quen với",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Tiếp tục",
       "start": "Bắt đầu thôi"
+    },
+    "v3": {
+      "intent": {
+        "overline": "BIẾN NÓ CỦA BẠN",
+        "title": "Cloud AI nên giúp bạn làm gì?",
+        "cta": "Tiếp tục"
+      },
+      "goals": {
+        "ask": "Tìm câu trả lời",
+        "write": "Viết tốt hơn",
+        "create": "Tạo hình ảnh",
+        "plan": "Lên kế hoạch cho ngày của tôi"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "TÌM CÂU TRẢ LỜI",
+          "title": "Tìm sự rõ ràng nhanh hơn",
+          "subtitle": "Hỏi một cách tự nhiên. Nhận câu trả lời rõ ràng và các bước tiếp theo hữu ích.",
+          "beat1": "Hiểu",
+          "beat2": "Quyết định",
+          "beat3": "Tiến về phía trước"
+        },
+        "write": {
+          "focus": "VIẾT TỐT HƠN",
+          "title": "Biến suy nghĩ thành lời nói",
+          "subtitle": "Đi từ một ý tưởng thô sơ đến cách viết có vẻ giống bạn.",
+          "beat1": "hình dạng",
+          "beat2": "Tinh chỉnh",
+          "beat3": "Chia sẻ"
+        },
+        "create": {
+          "focus": "TẠO HÌNH ẢNH",
+          "title": "Mang ý tưởng vào cuộc sống",
+          "subtitle": "Mô tả những gì bạn tưởng tượng, sau đó tạo và tinh chỉnh nó trong vài giây.",
+          "beat1": "Hãy tưởng tượng",
+          "beat2": "Tạo",
+          "beat3": "hoàn hảo"
+        },
+        "plan": {
+          "focus": "KẾ HOẠCH NGÀY CỦA TÔI",
+          "title": "Dành không gian cho những gì quan trọng",
+          "subtitle": "Biến một danh sách bận rộn thành một kế hoạch bình tĩnh mà bạn có thể thực sự làm theo.",
+          "beat1": "Ưu tiên",
+          "beat2": "tổ chức",
+          "beat3": "Bắt đầu"
+        }
+      },
+      "proof": {
+        "overline": "TẤT CẢ Ở MỘT NƠI",
+        "title": "Một nơi. Nhiều khả năng hơn.",
+        "subtitle": "Chuyển từ câu hỏi sang sáng tạo mà không cần chuyển đổi giữa các ứng dụng.",
+        "item1": {
+          "title": "Hỏi bất cứ điều gì",
+          "subtitle": "Mô hình nâng cao cho câu trả lời rõ ràng, hữu ích"
+        },
+        "item2": {
+          "title": "Tạo hình ảnh",
+          "subtitle": "Biến ý tưởng thành thứ bạn có thể nhìn thấy"
+        },
+        "item3": {
+          "title": "Nhận trợ giúp từ chuyên gia",
+          "subtitle": "Trợ lý cho công việc và cuộc sống hàng ngày"
+        }
+      },
+      "controls": {
+        "back": "Quay lại",
+        "continue": "Tiếp tục",
+        "finish": "Khám phá cao cấp"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "tuần",
       "termsOfUse": "Điều khoản sử dụng",
       "privacyPolicy": "Chính sách bảo mật"
+    },
+    "v3": {
+      "eyebrow": "CAO CẤP AI ĐÁM MÂY",
+      "trial": {
+        "headline": "Mở khóa tất cả các tính năng cao cấp",
+        "subtitle": "Xem chính xác những gì xảy ra và khi nào.",
+        "todayTitle": "hôm nay",
+        "todayBody": "Mở khóa mọi tính năng cao cấp. Bây giờ không có khoản thanh toán nào đến hạn.",
+        "checkTitle": "Sau 2 ngày — Lời nhắc",
+        "checkBody": "Chúng tôi sẽ gửi cho bạn thông báo rằng thời gian dùng thử của bạn sắp kết thúc.",
+        "billingTitle": "Trong 3 ngày nữa",
+        "billingBody": "Việc thanh toán sẽ tự động bắt đầu trừ khi bạn hủy bất kỳ lúc nào trước đó.",
+        "badge": "3 NGÀY MIỄN PHÍ",
+        "cardNote": "Sau khi dùng thử miễn phí",
+        "noPayment": "Không có khoản thanh toán nào đến hạn ngay bây giờ",
+        "cta": "Bắt đầu dùng thử miễn phí 3 ngày của tôi",
+        "renewalTerms": "Miễn phí 3 ngày thì {{price}}/{{period}}. Tự động gia hạn cho đến khi bị hủy."
+      },
+      "annual": {
+        "headline": "Mở khóa một năm của Cloud AI",
+        "subtitle": "Một kế hoạch dành cho trò chuyện, hình ảnh và sự trợ giúp của chuyên gia AI.",
+        "todayTitle": "Hôm nay — phí bảo hiểm bắt đầu",
+        "todayBody": "Mở khóa mọi tính năng AI cao cấp ngay lập tức.",
+        "billingTitle": "Thanh toán hàng năm",
+        "billingBody": "{{price}} cung cấp cho bạn một năm truy cập.",
+        "renewalTitle": "Gia hạn hàng năm",
+        "renewalBody": "Hủy bất cứ lúc nào trong Google Play trước ngày gia hạn của bạn.",
+        "cta": "Tiếp tục",
+        "renewalTerms": "{{price}} / {{period}}. Tự động gia hạn cho đến khi bị hủy."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Đang phân tích hình…",
       "searching": "Đang tìm kiếm…",
-      "thinking": "Đang suy nghĩ…"
+      "thinking": "Đang suy nghĩ…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Tìm web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Nhiều tín hiệu hơn, bảng tính ít nhiễu hơn."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Nhận xu hằng ngày",
       "subtitle": "Quay lại mỗi ngày để nhận thưởng lớn hơn.",
-      "cta": "Điểm danh",
+      "cta": "Nhận",
       "claimed": "Đã nhận! +{{amount}} xu",
       "later": "Để sau"
     }

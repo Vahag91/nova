@@ -1,3 +1,4 @@
+import { IMAGE_STUDIO_ENABLED } from '../constants/featureFlags';
 // SubscriptionScreen.js
 import React, {
   useCallback,
@@ -750,6 +751,7 @@ export default function PaywallScreen({
           <View
             style={[styles.features, isCompactHeight && styles.featuresCompact]}
           >
+            {IMAGE_STUDIO_ENABLED ? (
             <View style={styles.featureRow}>
               <CreateImagesVideosIcon color="#F19E39" size={20} />
               {(() => {
@@ -803,6 +805,7 @@ export default function PaywallScreen({
                 );
               })()}
             </View>
+            ) : null}
             <View style={styles.featureRow}>
               <SearchWebIcon color="#5985E1" size={20} />
               <Text style={[styles.featureText, t.textPrimary]}>

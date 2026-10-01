@@ -65,6 +65,7 @@ export const PointsHero = ({ points = 0, onSeeRewardsPress }) => {
       </View>
 
       {/* ==== BUTTON BELOW ==== */}
+      {onSeeRewardsPress ? (
       <View style={styles.buttonWrapper}>
         <Pressable
           onPress={onSeeRewardsPress}
@@ -78,6 +79,7 @@ export const PointsHero = ({ points = 0, onSeeRewardsPress }) => {
           <Text style={styles.buttonText}>{t('rewards.pointsHero.seeYourRewards')}</Text>
         </Pressable>
       </View>
+      ) : null}
 
     </View>
   );

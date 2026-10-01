@@ -97,6 +97,48 @@ describe('rewards feature wiring', () => {
     );
   });
 
+  test("claiming today's reward immediately cancels today's reminder", () => {
+    const appSource = read('App.js');
+    const rewardsSource = read('src/screens/Rewards.jsx');
+
+    const checkInStart = appSource.indexOf('const handleCheckIn = useCallback');
+    const checkInEnd = appSource.indexOf('const handleCheckInClose', checkInStart);
+    expect(checkInStart).toBeGreaterThan(-1);
+    expect(appSource.slice(checkInStart, checkInEnd)).toContain(
+      'cancelTodayDailyRewardReminder()',
+    );
+
+    const questClaimStart = rewardsSource.indexOf(
+      "if (quest.id === 'daily-login')",
+    );
+    const questClaimEnd = rewardsSource.indexOf(
+      "if (quest.id === 'share-facebook')",
+      questClaimStart,
+    );
+    const questClaimSource = rewardsSource.slice(
+      questClaimStart,
+      questClaimEnd,
+    );
+
+    expect(questClaimStart).toBeGreaterThan(-1);
+    expect(questClaimSource).toContain('recordActivity()');
+    expect(questClaimSource).toContain('cancelTodayDailyRewardReminder()');
+    expect(questClaimSource.indexOf('recordActivity()')).toBeLessThan(
+      questClaimSource.indexOf('cancelTodayDailyRewardReminder()'),
+    );
+  });
+
+  test('daily check-in closes only after its claim animation completes', () => {
+    const modalSource = read('src/components/rewards/DailyCheckInModal.jsx');
+
+    expect(modalSource).toContain(
+      'const CLAIM_AUTO_CLOSE_MS = CLAIM_SPIN_MS + CLAIM_HOLD_MS',
+    );
+    expect(modalSource).toContain('if (!visible || !claimed) return undefined');
+    expect(modalSource).toContain('() => onClose?.()');
+    expect(modalSource).not.toContain("t('common.close'");
+  });
+
   test('Rewards is reachable from navigation', () => {
     expect(read('src/navigation/DrawerNavigator.js')).toContain('name="Rewards"');
     expect(read('src/navigation/AndroidNavigationMenu.jsx')).toContain(

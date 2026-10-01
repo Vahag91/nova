@@ -626,6 +626,158 @@
     "buttons": {
       "continue": "Continue",
       "start": "Let's start"
+    },
+    "v3": {
+      "intent": {
+        "overline": "MAKE IT YOURS",
+        "title": "What should Cloud AI help you do?",
+        "cta": "Continue"
+      },
+      "goals": {
+        "ask": "Find answers",
+        "write": "Write better",
+        "create": "Create images",
+        "plan": "Plan my day"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "FIND ANSWERS",
+          "title": "Find clarity faster",
+          "subtitle": "Ask naturally. Get a clear answer and useful next steps.",
+          "beat1": "Understand",
+          "beat2": "Decide",
+          "beat3": "Move forward"
+        },
+        "write": {
+          "focus": "WRITE BETTER",
+          "title": "Turn thoughts into words",
+          "subtitle": "Go from a rough idea to writing that sounds like you.",
+          "beat1": "Shape",
+          "beat2": "Refine",
+          "beat3": "Share"
+        },
+        "create": {
+          "focus": "CREATE IMAGES",
+          "title": "Bring ideas to life",
+          "subtitle": "Describe what you imagine, then create and refine it in seconds.",
+          "beat1": "Imagine",
+          "beat2": "Create",
+          "beat3": "Perfect"
+        },
+        "plan": {
+          "focus": "PLAN MY DAY",
+          "title": "Make space for what matters",
+          "subtitle": "Turn a busy list into a calm plan you can actually follow.",
+          "beat1": "Prioritize",
+          "beat2": "Organize",
+          "beat3": "Begin"
+        }
+      },
+      "proof": {
+        "overline": "ALL IN ONE PLACE",
+        "title": "One place. More possibilities.",
+        "subtitle": "Move from question to creation without switching between apps.",
+        "item1": {
+          "title": "Ask anything",
+          "subtitle": "Advanced models for clear, useful answers"
+        },
+        "item2": {
+          "title": "Create images",
+          "subtitle": "Turn an idea into something you can see"
+        },
+        "item3": {
+          "title": "Get expert help",
+          "subtitle": "Assistants for work and everyday life"
+        }
+      },
+      "controls": {
+        "back": "Back",
+        "continue": "Continue",
+        "finish": "Explore premium"
+      }
+    },
+    "v4": {
+      "common": {
+        "continue": "Continue",
+        "tryItFree": "Try It For Free",
+        "back": "Back"
+      },
+      "valueDemo": {
+        "title": "We Want You To Try Cloud AI For Free",
+        "subtitle": "Write, summarize, translate, and scan documents in one AI workspace.",
+        "workspaceLabel": "AI WORKSPACE",
+        "userPromptLabel": "USER PROMPT",
+        "aiTypingLabel": "AI TYPING",
+        "prompt": "Write a polite reply to a client about a delayed delivery.",
+        "response": "Hi, thanks for your patience. Your delivery may be slightly delayed. I’ll keep you updated.",
+        "cards": {
+          "doc": {
+            "title": "Document Summary",
+            "detail": "12-page file → 5 key points"
+          },
+          "reply": {
+            "title": "Reply Drafted",
+            "detail": "Polite, professional tone"
+          },
+          "translation": {
+            "title": "Translation Ready",
+            "detail": "English → Spanish"
+          }
+        }
+      },
+      "goals": {
+        "title": "What do you need help with?",
+        "subtitle": "Choose 1–3 goals. We’ll build your AI workspace.",
+        "emptyCta": "Choose at least 1 goal",
+        "items": {
+          "workFaster": {
+            "title": "Work faster",
+            "subtitle": "Emails, replies, tasks"
+          },
+          "writeBetter": {
+            "title": "Write better",
+            "subtitle": "Fix tone, rewrite, improve"
+          },
+          "understandDocuments": {
+            "title": "Understand documents",
+            "subtitle": "Summaries, scans, key points"
+          },
+          "learnAnything": {
+            "title": "Learn anything",
+            "subtitle": "Explain topics clearly"
+          },
+          "createContent": {
+            "title": "Create content",
+            "subtitle": "Posts, captions, ideas"
+          },
+          "planBusiness": {
+            "title": "Plan business",
+            "subtitle": "Ideas, strategy, automation"
+          },
+          "personalClarity": {
+            "title": "Personal clarity",
+            "subtitle": "Decisions, habits, thoughts"
+          },
+          "askBigQuestions": {
+            "title": "Ask any questions",
+            "subtitle": "Future, meaning, AI, life"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Creating your AI assistant",
+        "readyTitle": "Your AI assistant is ready",
+        "subtitle": "Your assistant is configured. Trial access is turning on now.",
+        "trialTitle": "3-day trial",
+        "trialActivating": "activating",
+        "trialEnabled": "enabled",
+        "steps": {
+          "0": "Preparing your assistant",
+          "1": "Personalizing responses",
+          "2": "Securing access",
+          "3": "Finishing setup"
+        }
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "week",
       "termsOfUse": "Terms of Use",
       "privacyPolicy": "Privacy Policy"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Unlock all premium features",
+        "subtitle": "See exactly what happens and when.",
+        "todayTitle": "Today",
+        "todayBody": "Unlock every premium feature. No payment is due now.",
+        "checkTitle": "In 2 days — Reminder",
+        "checkBody": "We'll send you a notification that your trial is ending soon.",
+        "billingTitle": "In 3 days",
+        "billingBody": "Billing starts automatically unless you cancel anytime before.",
+        "badge": "3 DAYS FREE",
+        "cardNote": "After the free trial",
+        "noPayment": "No Payment Due Now",
+        "cta": "Start My 3-Day Free Trial",
+        "renewalTerms": "3 days free, then {{price}} / {{period}}. Auto-renews until canceled."
+      },
+      "annual": {
+        "headline": "Unlock a year of Cloud AI",
+        "subtitle": "One plan for chat, images, and expert AI help.",
+        "todayTitle": "Today — premium starts",
+        "todayBody": "Unlock every premium AI feature immediately.",
+        "billingTitle": "Billed annually",
+        "billingBody": "{{price}} gives you one full year of access.",
+        "renewalTitle": "Renews yearly",
+        "renewalBody": "Cancel anytime in Google Play before your renewal date.",
+        "cta": "Continue",
+        "renewalTerms": "{{price}} / {{period}}. Auto-renews until canceled."
+      }
     }
   },
   "chat": {
@@ -807,8 +989,27 @@
     },
     "activity": {
       "analyzingImages": "Analyzing images…",
+      "analyzingDocuments": "Analyzing documents…",
       "searching": "Searching…",
       "thinking": "Thinking…"
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     },
     "webSearch": {
       "title": "Web search",
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Claim your daily coins",
       "subtitle": "Come back every day for a bigger reward.",
-      "cta": "Check in",
+      "cta": "Claim",
       "claimed": "Claimed! +{{amount}} coins",
       "later": "Later"
     }

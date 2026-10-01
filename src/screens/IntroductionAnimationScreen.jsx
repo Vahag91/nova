@@ -1,6 +1,7 @@
 // src/screens/IntroductionAnimationScreen.tsx (or .js)
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
+  Dimensions,
   StyleSheet,
   View,
   useWindowDimensions,
@@ -16,11 +17,28 @@ import {
   TopBackSkipView,
   CenterNextButton,
 } from '../components/onboarding';
+import {
+  IntentView,
+  JourneyFooter,
+  JourneyHeader,
+  OutcomeView,
+  ProofView,
+} from '../components/onboarding/v2';
+import { WorkspaceOnboardingFlow } from '../components/onboarding/v4';
 
 const SCREEN_TRANSITION_MS = 900;
 const SKIP_TRANSITION_MS = 760;
 
-const IntroductionAnimationScreen = ({
+// Rollback switch. Every earlier onboarding remains intact below and its
+// components are intentionally untouched:
+//   'v4' - workspace flow (value demo -> goals -> setup), then the paywall
+//   'v3' - editorial flow (intent -> outcome -> proof)
+//   anything else - the original splash/relax/care flow
+export const ONBOARDING_EXPERIENCE_VERSION = 'v4';
+const USE_WORKSPACE_ONBOARDING = ONBOARDING_EXPERIENCE_VERSION === 'v4';
+const USE_EDITORIAL_ONBOARDING = ONBOARDING_EXPERIENCE_VERSION === 'v3';
+
+const LegacyIntroductionAnimationScreen = ({
   onComplete,
   onReady,
   onSubscriptionWarmup,
@@ -34,6 +52,14 @@ const IntroductionAnimationScreen = ({
   const [initialBackgroundReady, setInitialBackgroundReady] = useState(false);
   const [initialHeroReady, setInitialHeroReady] = useState(false);
   const [initialLayoutReady, setInitialLayoutReady] = useState(false);
+  // The scenes container is an absoluteFill of a full-bleed overlay, which is
+  // taller than useWindowDimensions() reports: the app draws under the
+  // navigation bar. Offsetting by window.height therefore left the next scene
+  // peeking over the CTA by exactly the nav bar height, so measure instead.
+  const [sceneOffset, setSceneOffset] = useState(
+    () => Dimensions.get('screen').height,
+  );
+  const [selectedGoal, setSelectedGoal] = useState(null);
   const [step, setStep] = useState(0);
   const transitionLockedRef = useRef(false);
   const isMountedRef = useRef(true);
@@ -46,9 +72,7 @@ const IntroductionAnimationScreen = ({
   const animationController = useRef(new Animated.Value(0));
   const stepRef = useRef(0);
   const criticalSceneReady =
-    initialBackgroundReady &&
-    initialHeroReady &&
-    initialLayoutReady;
+    initialBackgroundReady && initialHeroReady && initialLayoutReady;
   const initialSceneReady =
     criticalSceneReady && secondaryScenesMounted && secondaryImagesReady;
 
@@ -64,6 +88,10 @@ const IntroductionAnimationScreen = ({
 
   useEffect(() => {
     if (!secondaryScenesMounted || secondaryImagesReady) return undefined;
+    if (USE_EDITORIAL_ONBOARDING) {
+      setSecondaryImagesReady(true);
+      return undefined;
+    }
     const timeoutId = setTimeout(() => {
       if (isMountedRef.current) setSecondaryImagesReady(true);
     }, 1200);
@@ -120,20 +148,13 @@ const IntroductionAnimationScreen = ({
   const handleSecondaryImageReady = useCallback(imageKey => {
     if (secondaryImagesReadyRef.current.has(imageKey)) return;
     secondaryImagesReadyRef.current.add(imageKey);
-    if (
-      secondaryImagesReadyRef.current.size >= 5 &&
-      isMountedRef.current
-    ) {
+    if (secondaryImagesReadyRef.current.size >= 5 && isMountedRef.current) {
       setSecondaryImagesReady(true);
     }
   }, []);
 
   useEffect(() => {
-    if (
-      !onReady ||
-      !initialSceneReady ||
-      initialReadyReportedRef.current
-    ) {
+    if (!onReady || !initialSceneReady || initialReadyReportedRef.current) {
       return undefined;
     }
 
@@ -150,10 +171,7 @@ const IntroductionAnimationScreen = ({
         initialReadyFrameRef.current = null;
       }
     };
-  }, [
-    initialSceneReady,
-    onReady,
-  ]);
+  }, [initialSceneReady, onReady]);
 
   useEffect(() => {
     if (!isCompleting) return undefined;
@@ -174,19 +192,22 @@ const IntroductionAnimationScreen = ({
 
   const relaxTranslateY = animationController.current.interpolate({
     inputRange: [0, 0.2, 0.4, 0.6, 0.8],
-    outputRange: [window.height, 0, 0, 0, 0],
+    outputRange: [sceneOffset, 0, 0, 0, 0],
   });
 
-  const playAnimation = useCallback((toValue, duration = SCREEN_TRANSITION_MS) => {
-    return new Promise(resolve => {
-      Animated.timing(animationController.current, {
-        toValue,
-        duration,
-        easing: Easing.bezier(0.4, 0.0, 0.2, 1.0),
-        useNativeDriver: true,
-      }).start(({ finished }) => resolve(finished));
-    });
-  }, []);
+  const playAnimation = useCallback(
+    (toValue, duration = SCREEN_TRANSITION_MS) => {
+      return new Promise(resolve => {
+        Animated.timing(animationController.current, {
+          toValue,
+          duration,
+          easing: Easing.bezier(0.4, 0.0, 0.2, 1.0),
+          useNativeDriver: true,
+        }).start(({ finished }) => resolve(finished));
+      });
+    },
+    [],
+  );
 
   const beginTransition = useCallback(
     (toValue, nextStep, duration = SCREEN_TRANSITION_MS) => {
@@ -206,7 +227,7 @@ const IntroductionAnimationScreen = ({
           transitionLockedRef.current = false;
         });
     },
-    [playAnimation]
+    [playAnimation],
   );
 
   const onNextClick = useCallback(async () => {
@@ -242,7 +263,14 @@ const IntroductionAnimationScreen = ({
   }, [beginTransition]);
 
   return (
-    <View onLayout={() => setInitialLayoutReady(true)} style={styles.bg}>
+    <View
+      onLayout={event => {
+        setInitialLayoutReady(true);
+        const measured = event?.nativeEvent?.layout?.height;
+        if (measured > 0) setSceneOffset(measured);
+      }}
+      style={styles.bg}
+    >
       <ImageBackground
         onLoad={() => setInitialBackgroundReady(true)}
         onError={() => setInitialBackgroundReady(true)}
@@ -251,11 +279,25 @@ const IntroductionAnimationScreen = ({
         imageStyle={styles.bgImage}
       >
         <View style={styles.overlay} pointerEvents="box-none">
-          <SplashView
-            {...{ onNextClick, animationController, isAnimating }}
-            interactionEnabled={initialSceneReady}
-            onCriticalImageReady={() => setInitialHeroReady(true)}
-          />
+          {USE_EDITORIAL_ONBOARDING ? (
+            <IntentView
+              {...{
+                onNextClick,
+                animationController,
+                isAnimating,
+                selectedGoal,
+              }}
+              interactionEnabled={initialSceneReady}
+              onCriticalImageReady={() => setInitialHeroReady(true)}
+              onSelectGoal={setSelectedGoal}
+            />
+          ) : (
+            <SplashView
+              {...{ onNextClick, animationController, isAnimating }}
+              interactionEnabled={initialSceneReady}
+              onCriticalImageReady={() => setInitialHeroReady(true)}
+            />
+          )}
           <Animated.View
             renderToHardwareTextureAndroid={isAnimating}
             style={[
@@ -265,22 +307,58 @@ const IntroductionAnimationScreen = ({
             pointerEvents="box-none"
           >
             {secondaryScenesMounted ? (
-              <>
-                <RelaxView
-                  animationController={animationController}
-                  isAnimating={isAnimating}
-                  onImageReady={handleSecondaryImageReady}
-                />
-                <CareView
-                  animationController={animationController}
-                  isAnimating={isAnimating}
-                  onImageReady={handleSecondaryImageReady}
-                />
-              </>
+              USE_EDITORIAL_ONBOARDING ? (
+                <>
+                  <OutcomeView
+                    animationController={animationController}
+                    isAnimating={isAnimating}
+                    selectedGoal={selectedGoal}
+                  />
+                  <ProofView
+                    animationController={animationController}
+                    isAnimating={isAnimating}
+                  />
+                </>
+              ) : (
+                <>
+                  <RelaxView
+                    animationController={animationController}
+                    isAnimating={isAnimating}
+                    onImageReady={handleSecondaryImageReady}
+                  />
+                  <CareView
+                    animationController={animationController}
+                    isAnimating={isAnimating}
+                    onImageReady={handleSecondaryImageReady}
+                  />
+                </>
+              )
             ) : null}
           </Animated.View>
-          <TopBackSkipView {...{ onBackClick, onSkipClick, animationController, isAnimating }} />
-          <CenterNextButton {...{ onNextClick, animationController, isAnimating, step }} />
+          {USE_EDITORIAL_ONBOARDING ? (
+            <>
+              <JourneyHeader
+                {...{ onBackClick, animationController, isAnimating }}
+              />
+              <JourneyFooter
+                {...{ onNextClick, animationController, isAnimating, step }}
+              />
+            </>
+          ) : (
+            <>
+              <TopBackSkipView
+                {...{
+                  onBackClick,
+                  onSkipClick,
+                  animationController,
+                  isAnimating,
+                }}
+              />
+              <CenterNextButton
+                {...{ onNextClick, animationController, isAnimating, step }}
+              />
+            </>
+          )}
         </View>
       </ImageBackground>
     </View>
@@ -302,5 +380,31 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
 });
+
+/**
+ * The workspace flow owns its own readiness, warmup and step transitions, so it
+ * replaces the scene machinery above rather than plugging into it. It ends on
+ * the setup screen: `onComplete` hands control back to App, which presents the
+ * existing premium paywall.
+ */
+const WorkspaceIntroductionScreen = ({
+  onComplete,
+  onReady,
+  onSubscriptionWarmup,
+}) => (
+  <WorkspaceOnboardingFlow
+    colorScheme="dark"
+    onFinish={onComplete}
+    onReady={onReady}
+    onSubscriptionWarmup={onSubscriptionWarmup}
+  />
+);
+
+const IntroductionAnimationScreen = props =>
+  USE_WORKSPACE_ONBOARDING ? (
+    <WorkspaceIntroductionScreen {...props} />
+  ) : (
+    <LegacyIntroductionAnimationScreen {...props} />
+  );
 
 export default IntroductionAnimationScreen;

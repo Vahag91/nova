@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Magpatuloy",
+        "tryItFree": "Subukan Ito nang Libre",
+        "back": "Bumalik"
+      },
+      "valueDemo": {
+        "title": "Gusto naming subukan mo ang Cloud AI nang libre",
+        "workspaceLabel": "ESPASYO NG TRABAHO NG AI",
+        "userPromptLabel": "UTOS NG GUMAGAMIT",
+        "aiTypingLabel": "NAGSUSULAT ANG AI",
+        "prompt": "Sumulat ng magalang na tugon sa isang kliyente tungkol sa isang naantalang paghahatid.",
+        "response": "Kumusta, salamat sa iyong pasensya. Maaaring bahagyang maantala ang iyong paghahatid. Papanatilihin kitang updated.",
+        "cards": {
+          "doc": {
+            "title": "Buod ng Dokumento",
+            "detail": "12-pahinang file → 5 pangunahing punto"
+          },
+          "reply": {
+            "title": "Nakabalangkas na Tugon",
+            "detail": "Magalang at propesyonal na tono"
+          },
+          "translation": {
+            "title": "Handa na ang Pagsasalin",
+            "detail": "Ingles → Espanyol"
+          }
+        },
+        "subtitle": "Magsulat, magbuod, magsalin, at mag-scan ng mga dokumento sa isang AI workspace."
+      },
+      "goals": {
+        "title": "Ano ang kailangan mo ng tulong?",
+        "subtitle": "Pumili ng 1–3 layunin. Bubuo kami ng iyong AI workspace.",
+        "emptyCta": "Pumili ng hindi bababa sa 1 layunin",
+        "items": {
+          "workFaster": {
+            "title": "Gumana nang mas mabilis",
+            "subtitle": "Mga email, tugon, gawain"
+          },
+          "writeBetter": {
+            "title": "Sumulat ng mas mahusay",
+            "subtitle": "Ayusin ang tono, muling isulat, pagbutihin"
+          },
+          "understandDocuments": {
+            "title": "Unawain ang mga dokumento",
+            "subtitle": "Mga buod, pag-scan, mga pangunahing punto"
+          },
+          "learnAnything": {
+            "title": "Matuto ng kahit ano",
+            "subtitle": "Ipaliwanag nang malinaw ang mga paksa"
+          },
+          "createContent": {
+            "title": "Lumikha ng nilalaman",
+            "subtitle": "Mga post, caption, ideya"
+          },
+          "planBusiness": {
+            "title": "Magplano ng negosyo",
+            "subtitle": "Mga ideya, diskarte, automation"
+          },
+          "personalClarity": {
+            "title": "Personal na kalinawan",
+            "subtitle": "Mga desisyon, gawi, iniisip"
+          },
+          "askBigQuestions": {
+            "title": "Magtanong ng anumang mga katanungan",
+            "subtitle": "Kinabukasan, kahulugan, AI, buhay"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Ginagawa ang iyong AI assistant",
+        "readyTitle": "Handa na ang iyong AI assistant",
+        "subtitle": "Naka-configure ang iyong assistant. Naka-on na ngayon ang pag-access sa pagsubok.",
+        "trialTitle": "3 araw na pagsubok",
+        "trialActivating": "ina-activate",
+        "trialEnabled": "pinagana",
+        "steps": {
+          "0": "Inihahanda ang iyong assistant",
+          "1": "Pag-personalize ng mga tugon",
+          "2": "Sinisiguro ang pag-access",
+          "3": "Tinatapos ang pag-setup"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Magkita",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Magpatuloy",
       "start": "Magsimula na tayo"
+    },
+    "v3": {
+      "intent": {
+        "overline": "GAWIN MO NA",
+        "title": "Ano ang dapat mong tulungan ng Cloud AI na gawin?",
+        "cta": "Magpatuloy"
+      },
+      "goals": {
+        "ask": "Maghanap ng mga sagot",
+        "write": "Sumulat ng mas mahusay",
+        "create": "Lumikha ng mga larawan",
+        "plan": "Planuhin ang aking araw"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "HANAPIN ANG MGA SAGOT",
+          "title": "Maghanap ng kalinawan nang mas mabilis",
+          "subtitle": "Magtanong ng natural. Kumuha ng malinaw na sagot at kapaki-pakinabang na mga susunod na hakbang.",
+          "beat1": "Intindihin",
+          "beat2": "Magpasya",
+          "beat3": "Sumulong"
+        },
+        "write": {
+          "focus": "MAGSULAT NG MAS MAGANDA",
+          "title": "Gawing salita ang mga saloobin",
+          "subtitle": "Mula sa isang magaspang na ideya tungo sa pagsusulat na parang ikaw.",
+          "beat1": "Hugis",
+          "beat2": "Pinuhin",
+          "beat3": "Ibahagi"
+        },
+        "create": {
+          "focus": "GUMAWA NG MGA LARAWAN",
+          "title": "Buhayin ang mga ideya",
+          "subtitle": "Ilarawan kung ano ang iniisip mo, pagkatapos ay gawin at pinuhin ito sa ilang segundo.",
+          "beat1": "Isipin",
+          "beat2": "Lumikha",
+          "beat3": "Perpekto"
+        },
+        "plan": {
+          "focus": "PLANO MY DAY",
+          "title": "Gumawa ng espasyo para sa kung ano ang mahalaga",
+          "subtitle": "Gawing kalmadong plano ang isang abalang listahan na maaari mong talagang sundin.",
+          "beat1": "Unahin",
+          "beat2": "Ayusin",
+          "beat3": "Magsimula"
+        }
+      },
+      "proof": {
+        "overline": "LAHAT SA ISANG LUGAR",
+        "title": "Isang lugar. Higit pang mga posibilidad.",
+        "subtitle": "Lumipat mula sa tanong patungo sa paggawa nang hindi nagpapalipat-lipat sa pagitan ng mga app.",
+        "item1": {
+          "title": "Magtanong ng kahit ano",
+          "subtitle": "Mga advanced na modelo para sa malinaw, kapaki-pakinabang na mga sagot"
+        },
+        "item2": {
+          "title": "Lumikha ng mga larawan",
+          "subtitle": "Gawing isang bagay na makikita mo ang isang ideya"
+        },
+        "item3": {
+          "title": "Humingi ng tulong ng eksperto",
+          "subtitle": "Mga katulong para sa trabaho at pang-araw-araw na buhay"
+        }
+      },
+      "controls": {
+        "back": "Bumalik",
+        "continue": "Magpatuloy",
+        "finish": "I-explore ang premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "linggo",
       "termsOfUse": "Mga Tuntunin ng Paggamit",
       "privacyPolicy": "Patakaran sa Privacy"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "I-unlock ang lahat ng mga premium na feature",
+        "subtitle": "Tingnan nang eksakto kung ano ang mangyayari at kailan.",
+        "todayTitle": "Ngayong araw",
+        "todayBody": "I-unlock ang bawat premium na feature. Walang babayaran ngayon.",
+        "checkTitle": "Sa loob ng 2 araw — Paalala",
+        "checkBody": "Padadalhan ka namin ng notification na malapit nang matapos ang iyong pagsubok.",
+        "billingTitle": "Sa loob ng 3 araw",
+        "billingBody": "Awtomatikong magsisimula ang pagsingil maliban kung magkakansela ka anumang oras bago.",
+        "badge": "LIBRENG 3 ARAW",
+        "cardNote": "Pagkatapos ng libreng pagsubok",
+        "noPayment": "Walang Babayaran Ngayon",
+        "cta": "Simulan ang Aking 3-Araw na Libreng Pagsubok",
+        "renewalTerms": "3 araw na libre, pagkatapos ay {{price}} / {{period}}. Auto-renew hanggang makansela."
+      },
+      "annual": {
+        "headline": "I-unlock ang isang taon ng Cloud AI",
+        "subtitle": "Isang plano para sa chat, mga larawan, at tulong ng ekspertong AI.",
+        "todayTitle": "Ngayon — magsisimula ang premium",
+        "todayBody": "I-unlock kaagad ang bawat premium na feature ng AI.",
+        "billingTitle": "Sinisingil taun-taon",
+        "billingBody": "Binibigyan ka ng {{price}} ng isang buong taon ng access.",
+        "renewalTitle": "Nagre-renew taun-taon",
+        "renewalBody": "Kanselahin anumang oras sa Google Play bago ang iyong petsa ng pag-renew.",
+        "cta": "Magpatuloy",
+        "renewalTerms": "{{price}} / {{period}}. Auto-renew hanggang makansela."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Sinusuri ang mga larawan...",
       "searching": "Naghahanap…",
-      "thinking": "Iniisip…"
+      "thinking": "Iniisip…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Paghahanap sa web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Mas maraming signal, mas kaunting ingay sa spreadsheet."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Kunin ang iyong araw-araw na barya",
       "subtitle": "Bumalik araw-araw — lumalaki ang gantimpala.",
-      "cta": "Mag-check in",
+      "cta": "Kunin",
       "claimed": "Natanggap! +{{amount}} barya",
       "later": "Mamaya"
     }

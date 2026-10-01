@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "ଜାରି ରଖ |",
+        "tryItFree": "ଏହାକୁ ମାଗଣାରେ ଚେଷ୍ଟା କରନ୍ତୁ |",
+        "back": "ପଛକୁ"
+      },
+      "valueDemo": {
+        "title": "ଆମେ ଚାହୁଁ ଯେ ଆପଣ ମାଗଣାରେ Cloud AI ଚେଷ୍ଟା କରନ୍ତୁ |",
+        "workspaceLabel": "AI କାର୍ଯ୍ୟକ୍ଷେତ୍ର |",
+        "userPromptLabel": "USER PROMPT |",
+        "aiTypingLabel": "AI ଟାଇପିଂ |",
+        "prompt": "ବିଳମ୍ବିତ ବିତରଣ ବିଷୟରେ ଏକ ଗ୍ରାହକଙ୍କୁ ଏକ ଭଦ୍ର ଉତ୍ତର ଲେଖ |",
+        "response": "ହାଏ, ତୁମର ଧ patience ର୍ଯ୍ୟ ପାଇଁ ଧନ୍ୟବାଦ | ଆପଣଙ୍କର ବିତରଣ ସାମାନ୍ୟ ବିଳମ୍ବ ହୋଇପାରେ | ମୁଁ ତୁମକୁ ଅପଡେଟ୍ ରଖିବି |",
+        "cards": {
+          "doc": {
+            "title": "ଡକ୍ୟୁମେଣ୍ଟ୍ ସାରାଂଶ |",
+            "detail": "12 ପୃଷ୍ଠାର ଫାଇଲ → 5 କି ପଏଣ୍ଟ |"
+          },
+          "reply": {
+            "title": "ଉତ୍ତର ପ୍ରସ୍ତୁତ",
+            "detail": "ଭଦ୍ର, ବୃତ୍ତିଗତ ସ୍ୱର"
+          },
+          "translation": {
+            "title": "ଅନୁବାଦ ପ୍ରସ୍ତୁତ |",
+            "detail": "ଇଂରାଜୀ → ସ୍ପାନିସ୍ |"
+          }
+        },
+        "subtitle": "ଗୋଟିଏ AI ୱାର୍କସ୍ପେସରେ ଲେଖନ୍ତୁ, ସାରାଂଶ କରନ୍ତୁ, ଅନୁବାଦ କରନ୍ତୁ ଏବଂ ଡକ୍ୟୁମେଣ୍ଟ ସ୍କାନ କରନ୍ତୁ।"
+      },
+      "goals": {
+        "title": "ଆପଣ କ’ଣ ସାହାଯ୍ୟ ଆବଶ୍ୟକ କରନ୍ତି?",
+        "subtitle": "goals ଗୋଲ୍ ବାଛନ୍ତୁ | ଆମେ ଆପଣଙ୍କର AI କାର୍ଯ୍ୟକ୍ଷେତ୍ର ନିର୍ମାଣ କରିବୁ |",
+        "emptyCta": "ଅତିକମରେ 1 ଲକ୍ଷ୍ୟ ବାଛନ୍ତୁ |",
+        "items": {
+          "workFaster": {
+            "title": "ଶୀଘ୍ର କାମ କରନ୍ତୁ |",
+            "subtitle": "ଇମେଲ, ଉତ୍ତର, କାର୍ଯ୍ୟ |"
+          },
+          "writeBetter": {
+            "title": "ଭଲ ଲେଖନ୍ତୁ |",
+            "subtitle": "ସ୍ୱର ସ୍ଥିର କରନ୍ତୁ, ପୁନ r ଲିଖନ କରନ୍ତୁ, ଉନ୍ନତି କରନ୍ତୁ |"
+          },
+          "understandDocuments": {
+            "title": "ଡକ୍ୟୁମେଣ୍ଟଗୁଡିକ ବୁ .ନ୍ତୁ |",
+            "subtitle": "ସାରାଂଶ, ସ୍କାନ୍, ପ୍ରମୁଖ ବିନ୍ଦୁ |"
+          },
+          "learnAnything": {
+            "title": "କିଛି ଶିଖନ୍ତୁ |",
+            "subtitle": "ବିଷୟଗୁଡିକ ସ୍ପଷ୍ଟ ଭାବରେ ବ୍ୟାଖ୍ୟା କର |"
+          },
+          "createContent": {
+            "title": "ବିଷୟବସ୍ତୁ ସୃଷ୍ଟି କରନ୍ତୁ |",
+            "subtitle": "ପୋଷ୍ଟ, କ୍ୟାପସନ, ଧାରଣା"
+          },
+          "planBusiness": {
+            "title": "ବ୍ୟବସାୟ ଯୋଜନା କରନ୍ତୁ |",
+            "subtitle": "ଧାରଣା, ରଣନୀତି, ସ୍ୱୟଂଚାଳିତ |"
+          },
+          "personalClarity": {
+            "title": "ବ୍ୟକ୍ତିଗତ ସ୍ୱଚ୍ଛତା |",
+            "subtitle": "ନିଷ୍ପତ୍ତି, ଅଭ୍ୟାସ, ଚିନ୍ତାଧାରା |"
+          },
+          "askBigQuestions": {
+            "title": "କ any ଣସି ପ୍ରଶ୍ନ ପଚାର |",
+            "subtitle": "ଭବିଷ୍ୟତ, ଅର୍ଥ, AI, ଜୀବନ |"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "ଆପଣଙ୍କର AI ସହାୟକ ସୃଷ୍ଟି କରିବା |",
+        "readyTitle": "ଆପଣଙ୍କର AI ସହାୟକ ପ୍ରସ୍ତୁତ |",
+        "subtitle": "ଆପଣଙ୍କର ସହାୟକ ବିନ୍ୟାସିତ ହୋଇଛି | ବର୍ତ୍ତମାନ ପରୀକ୍ଷା ପ୍ରବେଶ ଅନ୍ ଅଛି |",
+        "trialTitle": "3 ଦିନ ପରୀକ୍ଷା |",
+        "trialActivating": "ସକ୍ରିୟ କରୁଛି |",
+        "trialEnabled": "ସକ୍ଷମ ହୋଇଛି |",
+        "steps": {
+          "0": "ତୁମର ସହାୟକ ପ୍ରସ୍ତୁତ କରୁଛି |",
+          "1": "ପ୍ରତିକ୍ରିୟାଗୁଡ଼ିକୁ ବ୍ୟକ୍ତିଗତ କରିବା |",
+          "2": "ଆକ୍ସେସ୍ ସୁରକ୍ଷିତ |",
+          "3": "ସେଟଅପ୍ ସମାପ୍ତ କରୁଛି |"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "ସାକ୍ଷାତ",
       "titleHighlight": "000P000⟭",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "ଜାରି ରଖ |",
       "start": "ଚାଲ ଆରମ୍ଭ କରିବା |"
+    },
+    "v3": {
+      "intent": {
+        "overline": "ଏହାକୁ ତୁମର କର |",
+        "title": "କ୍ଲାଉଡ୍ AI ଆପଣଙ୍କୁ କ’ଣ ସାହାଯ୍ୟ କରିବ?",
+        "cta": "ଜାରି ରଖ |"
+      },
+      "goals": {
+        "ask": "ଉତ୍ତର ଖୋଜ |",
+        "write": "ଭଲ ଲେଖନ୍ତୁ |",
+        "create": "ପ୍ରତିଛବି ସୃଷ୍ଟି କରନ୍ତୁ |",
+        "plan": "ମୋର ଦିନ ଯୋଜନା କର |"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ଉତ୍ତର ଖୋଜ |",
+          "title": "ଶୀଘ୍ର ସ୍ୱଚ୍ଛତା ଖୋଜ |",
+          "subtitle": "ସ୍ୱାଭାବିକ ଭାବରେ ପଚାର | ଏକ ସ୍ପଷ୍ଟ ଉତ୍ତର ଏବଂ ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପଗୁଡ଼ିକ ଉପଯୋଗୀ |",
+          "beat1": "ବୁ .ନ୍ତୁ |",
+          "beat2": "ନିଷ୍ପତ୍ତି ନିଅ |",
+          "beat3": "ଆଗକୁ ବ Move ନ୍ତୁ |"
+        },
+        "write": {
+          "focus": "ଭଲ ଲେଖନ୍ତୁ |",
+          "title": "ଚିନ୍ତାଧାରାକୁ ଶବ୍ଦରେ ପରିଣତ କର |",
+          "subtitle": "ତୁମ ପରି ଶବ୍ଦ ଲେଖିବାକୁ ଏକ କଠିନ ଚିନ୍ତାଧାରାରୁ ଯାଅ |",
+          "beat1": "ଆକୃତି |",
+          "beat2": "ବିଶୋଧନ କର |",
+          "beat3": "ଅଂଶୀଦାର କରନ୍ତୁ |"
+        },
+        "create": {
+          "focus": "ପ୍ରତିଛବିଗୁଡିକ ସୃଷ୍ଟି କରନ୍ତୁ |",
+          "title": "ଧାରଣାକୁ ଜୀବନରେ ଆଣ |",
+          "subtitle": "ଆପଣ କ’ଣ କଳ୍ପନା କରୁଛନ୍ତି ତାହା ବର୍ଣ୍ଣନା କରନ୍ତୁ, ତାପରେ ଏହାକୁ ସୃଷ୍ଟି କରନ୍ତୁ ଏବଂ ସେକେଣ୍ଡରେ ବିଶୋଧନ କରନ୍ତୁ |",
+          "beat1": "କଳ୍ପନା କରନ୍ତୁ |",
+          "beat2": "ସୃଷ୍ଟି କରନ୍ତୁ |",
+          "beat3": "ପରଫେକ୍ଟ"
+        },
+        "plan": {
+          "focus": "ମୋର ଦିନ ଯୋଜନା କରନ୍ତୁ |",
+          "title": "ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ବିଷୟ ପାଇଁ ସ୍ଥାନ ପ୍ରସ୍ତୁତ କରନ୍ତୁ |",
+          "subtitle": "ଏକ ବ୍ୟସ୍ତ ତାଲିକାକୁ ଏକ ଶାନ୍ତ ଯୋଜନାରେ ପରିଣତ କର ଯାହାକୁ ଆପଣ ପ୍ରକୃତରେ ଅନୁସରଣ କରିପାରିବେ |",
+          "beat1": "ପ୍ରାଥମିକତା ଦିଅନ୍ତୁ |",
+          "beat2": "ସଂଗଠିତ କର |",
+          "beat3": "ଆରମ୍ଭ କରନ୍ତୁ |"
+        }
+      },
+      "proof": {
+        "overline": "ସମସ୍ତ ଗୋଟିଏ ସ୍ଥାନରେ |",
+        "title": "ଗୋଟିଏ ସ୍ଥାନ | ଅଧିକ ସମ୍ଭାବନା |",
+        "subtitle": "ଆପ୍ସ ମଧ୍ୟରେ ପରିବର୍ତ୍ତନ ନକରି ପ୍ରଶ୍ନରୁ ସୃଷ୍ଟି ପର୍ଯ୍ୟନ୍ତ ଯାଆନ୍ତୁ |",
+        "item1": {
+          "title": "କିଛି ପଚାର |",
+          "subtitle": "ସ୍ୱଚ୍ଛ, ଉପଯୋଗୀ ଉତ୍ତର ପାଇଁ ଉନ୍ନତ ମଡେଲ |"
+        },
+        "item2": {
+          "title": "ପ୍ରତିଛବି ସୃଷ୍ଟି କରନ୍ତୁ |",
+          "subtitle": "ଏକ ଧାରଣାକୁ ତୁମେ ଦେଖୁଥିବା ଜିନିଷରେ ପରିଣତ କର |"
+        },
+        "item3": {
+          "title": "ବିଶେଷଜ୍ଞ ସହାୟତା ପ୍ରାପ୍ତ କରନ୍ତୁ |",
+          "subtitle": "କାର୍ଯ୍ୟ ଏବଂ ଦ day ନନ୍ଦିନ ଜୀବନ ପାଇଁ ସହାୟକକାରୀ |"
+        }
+      },
+      "controls": {
+        "back": "ପଛକୁ",
+        "continue": "ଜାରି ରଖ |",
+        "finish": "ପ୍ରିମିୟମ୍ ଏକ୍ସପ୍ଲୋର୍ କରନ୍ତୁ |"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "ସପ୍ତାହ",
       "termsOfUse": "ବ୍ୟବହାର ସର୍ତ୍ତାବଳୀ",
       "privacyPolicy": "ଗୋପନୀୟତା ନୀତି"
+    },
+    "v3": {
+      "eyebrow": "କ୍ଲାଉଡ୍ AI ପ୍ରିମିୟମ୍ |",
+      "trial": {
+        "headline": "ସମସ୍ତ ପ୍ରିମିୟମ୍ ବ features ଶିଷ୍ଟ୍ୟଗୁଡିକୁ ଅନଲକ୍ କରନ୍ତୁ |",
+        "subtitle": "କ’ଣ ହୁଏ ଏବଂ କେବେ ଠିକ୍ ଦେଖନ୍ତୁ |",
+        "todayTitle": "ଆଜି |",
+        "todayBody": "ପ୍ରତ୍ୟେକ ପ୍ରିମିୟମ୍ ବ feature ଶିଷ୍ଟ୍ୟକୁ ଅନଲକ୍ କରନ୍ତୁ | ବର୍ତ୍ତମାନ କ payment ଣସି ଦେୟ ଦେବାର ନାହିଁ |",
+        "checkTitle": "2 ଦିନରେ - ସ୍ମାରକ |",
+        "checkBody": "ଆମେ ଆପଣଙ୍କୁ ଏକ ବିଜ୍ଞପ୍ତି ପଠାଇବୁ ଯେ ଆପଣଙ୍କର ପରୀକ୍ଷା ଶୀଘ୍ର ସମାପ୍ତ ହେବ |",
+        "billingTitle": "3 ଦିନରେ |",
+        "billingBody": "ଯଦି ଆପଣ ପୂର୍ବରୁ ଯେକ time ଣସି ସମୟରେ ବାତିଲ୍ ନକରନ୍ତି ତେବେ ବିଲିଂ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଆରମ୍ଭ ହୁଏ |",
+        "badge": "3 ଦିନ ମାଗଣା |",
+        "cardNote": "ମାଗଣା ପରୀକ୍ଷା ପରେ |",
+        "noPayment": "ବର୍ତ୍ତମାନ ଦେୟ ନାହିଁ |",
+        "cta": "ମୋର 3 ଦିନିଆ ମାଗଣା ପରୀକ୍ଷା ଆରମ୍ଭ କରନ୍ତୁ |",
+        "renewalTerms": "3 ଦିନ ମାଗଣା, ତାପରେ {{price}} / {{period}} | ବାତିଲ ହେବା ପର୍ଯ୍ୟନ୍ତ ଅଟୋ-ରିନ୍ୟୁ କରେ |"
+      },
+      "annual": {
+        "headline": "କ୍ଲାଉଡ୍ AI ର ଏକ ବର୍ଷକୁ ଅନଲକ୍ କରନ୍ତୁ |",
+        "subtitle": "ଚାଟ୍, ପ୍ରତିଛବି ଏବଂ ବିଶେଷଜ୍ଞ AI ସହାୟତା ପାଇଁ ଗୋଟିଏ ଯୋଜନା |",
+        "todayTitle": "ଆଜି - ପ୍ରିମିୟମ୍ ଆରମ୍ଭ |",
+        "todayBody": "ପ୍ରତ୍ୟେକ ପ୍ରିମିୟମ୍ AI ବ feature ଶିଷ୍ଟ୍ୟକୁ ତୁରନ୍ତ ଅନଲକ୍ କରନ୍ତୁ |",
+        "billingTitle": "ପ୍ରତିବର୍ଷ ବିଲ୍ କରାଯାଏ |",
+        "billingBody": "{{price}} ଆପଣଙ୍କୁ ଏକ ପୂର୍ଣ୍ଣ ବର୍ଷର ପ୍ରବେଶ ପ୍ରଦାନ କରେ |",
+        "renewalTitle": "ବାର୍ଷିକ ନବୀକରଣ କରନ୍ତୁ |",
+        "renewalBody": "ଆପଣଙ୍କର ନବୀକରଣ ତାରିଖ ପୂର୍ବରୁ Google Play ରେ ଯେକ time ଣସି ସମୟରେ ବାତିଲ୍ କରନ୍ତୁ |",
+        "cta": "ଜାରି ରଖ |",
+        "renewalTerms": "{{price}} / {{period}} | ବାତିଲ ହେବା ପର୍ଯ୍ୟନ୍ତ ଅଟୋ-ରିନ୍ୟୁ କରେ |"
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "ପ୍ରତିଛବି ବିଶ୍ଳେଷଣ…",
       "searching": "ଖୋଜୁଛି…",
-      "thinking": "ଭାବୁଛି…"
+      "thinking": "ଭାବୁଛି…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "ୱେବ୍ ସନ୍ଧାନ |",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "ଅଧିକ ସଙ୍କେତ, କମ୍ ସ୍ପ୍ରେଡସିଟ୍ ଶବ୍ଦ |"
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "ଆପଣଙ୍କ ଦୈନିକ ମୁଦ୍ରା ନିଅନ୍ତୁ",
       "subtitle": "ପ୍ରତିଦିନ ଆସନ୍ତୁ — ପୁରସ୍କାର ବଢ଼ିବ।",
-      "cta": "ଚେକ୍-ଇନ୍",
+      "cta": "ନିଅନ୍ତୁ",
       "claimed": "ମିଳିଲା! +{{amount}} ମୁଦ୍ରା",
       "later": "ପରେ"
     }

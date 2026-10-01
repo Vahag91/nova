@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "ਜਾਰੀ ਰੱਖੋ",
+        "tryItFree": "ਇਸਨੂੰ ਮੁਫ਼ਤ ਵਿੱਚ ਅਜ਼ਮਾਓ",
+        "back": "ਪਿੱਛੇ"
+      },
+      "valueDemo": {
+        "title": "ਅਸੀਂ ਚਾਹੁੰਦੇ ਹਾਂ ਕਿ ਤੁਸੀਂ Cloud AI ਨੂੰ ਮੁਫ਼ਤ ਵਿੱਚ ਅਜ਼ਮਾਓ",
+        "workspaceLabel": "ਏਆਈ ਵਰਕਸਪੇਸ",
+        "userPromptLabel": "ਉਪਭੋਗਤਾ ਪ੍ਰੋਂਪਟ",
+        "aiTypingLabel": "AI ਟਾਈਪਿੰਗ",
+        "prompt": "ਦੇਰੀ ਨਾਲ ਡਿਲੀਵਰੀ ਬਾਰੇ ਇੱਕ ਗਾਹਕ ਨੂੰ ਇੱਕ ਨਰਮ ਜਵਾਬ ਲਿਖੋ।",
+        "response": "ਹੈਲੋ, ਤੁਹਾਡੇ ਧੀਰਜ ਲਈ ਧੰਨਵਾਦ। ਤੁਹਾਡੀ ਡਿਲੀਵਰੀ ਵਿੱਚ ਥੋੜ੍ਹੀ ਦੇਰੀ ਹੋ ਸਕਦੀ ਹੈ। ਮੈਂ ਤੁਹਾਨੂੰ ਅੱਪਡੇਟ ਰੱਖਾਂਗਾ।",
+        "cards": {
+          "doc": {
+            "title": "ਦਸਤਾਵੇਜ਼ ਸੰਖੇਪ",
+            "detail": "12-ਪੰਨਿਆਂ ਦੀ ਫ਼ਾਈਲ → 5 ਮੁੱਖ ਨੁਕਤੇ"
+          },
+          "reply": {
+            "title": "ਜਵਾਬ ਤਿਆਰ",
+            "detail": "ਨਿਮਰ, ਪੇਸ਼ੇਵਰ ਲਹਿਜ਼ਾ"
+          },
+          "translation": {
+            "title": "ਅਨੁਵਾਦ ਤਿਆਰ ਹੈ",
+            "detail": "ਅੰਗਰੇਜ਼ੀ → ਸਪੈਨਿਸ਼"
+          }
+        },
+        "subtitle": "ਇੱਕ AI ਵਰਕਸਪੇਸ ਵਿੱਚ ਲਿਖੋ, ਸਾਰ ਬਣਾਓ, ਅਨੁਵਾਦ ਕਰੋ ਅਤੇ ਦਸਤਾਵੇਜ਼ ਸਕੈਨ ਕਰੋ।"
+      },
+      "goals": {
+        "title": "ਤੁਹਾਨੂੰ ਕਿਸ ਲਈ ਮਦਦ ਦੀ ਲੋੜ ਹੈ?",
+        "subtitle": "1–3 ਗੋਲ ਚੁਣੋ। ਅਸੀਂ ਤੁਹਾਡਾ AI ਵਰਕਸਪੇਸ ਬਣਾਵਾਂਗੇ।",
+        "emptyCta": "ਘੱਟੋ-ਘੱਟ 1 ਟੀਚਾ ਚੁਣੋ",
+        "items": {
+          "workFaster": {
+            "title": "ਤੇਜ਼ੀ ਨਾਲ ਕੰਮ ਕਰੋ",
+            "subtitle": "ਈਮੇਲ, ਜਵਾਬ, ਕਾਰਜ"
+          },
+          "writeBetter": {
+            "title": "ਬਿਹਤਰ ਲਿਖੋ",
+            "subtitle": "ਟੋਨ ਫਿਕਸ ਕਰੋ, ਦੁਬਾਰਾ ਲਿਖੋ, ਸੁਧਾਰ ਕਰੋ"
+          },
+          "understandDocuments": {
+            "title": "ਦਸਤਾਵੇਜ਼ਾਂ ਨੂੰ ਸਮਝੋ",
+            "subtitle": "ਸੰਖੇਪ, ਸਕੈਨ, ਮੁੱਖ ਨੁਕਤੇ"
+          },
+          "learnAnything": {
+            "title": "ਕੁਝ ਵੀ ਸਿੱਖੋ",
+            "subtitle": "ਵਿਸ਼ਿਆਂ ਨੂੰ ਸਪਸ਼ਟ ਰੂਪ ਵਿੱਚ ਸਮਝਾਓ"
+          },
+          "createContent": {
+            "title": "ਸਮੱਗਰੀ ਬਣਾਓ",
+            "subtitle": "ਪੋਸਟਾਂ, ਕੈਪਸ਼ਨ, ਵਿਚਾਰ"
+          },
+          "planBusiness": {
+            "title": "ਕਾਰੋਬਾਰ ਦੀ ਯੋਜਨਾ ਬਣਾਓ",
+            "subtitle": "ਵਿਚਾਰ, ਰਣਨੀਤੀ, ਆਟੋਮੇਸ਼ਨ"
+          },
+          "personalClarity": {
+            "title": "ਨਿੱਜੀ ਸਪਸ਼ਟਤਾ",
+            "subtitle": "ਫੈਸਲੇ, ਆਦਤਾਂ, ਵਿਚਾਰ"
+          },
+          "askBigQuestions": {
+            "title": "ਕੋਈ ਸਵਾਲ ਪੁੱਛੋ",
+            "subtitle": "ਭਵਿੱਖ, ਅਰਥ, ਏਆਈ, ਜੀਵਨ"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "ਤੁਹਾਡਾ AI ਸਹਾਇਕ ਬਣਾਉਣਾ",
+        "readyTitle": "ਤੁਹਾਡਾ AI ਸਹਾਇਕ ਤਿਆਰ ਹੈ",
+        "subtitle": "ਤੁਹਾਡੇ ਸਹਾਇਕ ਦੀ ਸੰਰਚਨਾ ਕੀਤੀ ਗਈ ਹੈ। ਪਰਖ ਪਹੁੰਚ ਹੁਣ ਚਾਲੂ ਹੋ ਰਹੀ ਹੈ।",
+        "trialTitle": "3 ਦਿਨਾਂ ਦੀ ਪਰਖ",
+        "trialActivating": "ਸਰਗਰਮ ਹੋ ਰਿਹਾ ਹੈ",
+        "trialEnabled": "ਸਮਰਥਿਤ",
+        "steps": {
+          "0": "ਤੁਹਾਡੇ ਸਹਾਇਕ ਨੂੰ ਤਿਆਰ ਕਰਨਾ",
+          "1": "ਜਵਾਬਾਂ ਨੂੰ ਵਿਅਕਤੀਗਤ ਬਣਾਉਣਾ",
+          "2": "ਸੁਰੱਖਿਅਤ ਪਹੁੰਚ",
+          "3": "ਸੈੱਟਅੱਪ ਨੂੰ ਪੂਰਾ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "ਮਿਲੋ",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "ਜਾਰੀ ਰੱਖੋ",
       "start": "ਚਲੋ ਸ਼ੁਰੂ ਕਰੀਏ"
+    },
+    "v3": {
+      "intent": {
+        "overline": "ਹੈ\nਇਸਨੂੰ ਆਪਣਾ ਬਣਾਓ",
+        "title": "ਹੈ\nCloud AI ਤੁਹਾਡੀ ਕੀ ਮਦਦ ਕਰੇ?",
+        "cta": "ਹੈ\nਜਾਰੀ ਰੱਖੋ"
+      },
+      "goals": {
+        "ask": "ਹੈ\nਜਵਾਬ ਲੱਭੋ",
+        "write": "ਹੈ\nਬਿਹਤਰ ਲਿਖੋ",
+        "create": "ਹੈ\nਚਿੱਤਰ ਬਣਾਓ",
+        "plan": "ਹੈ\nਮੇਰੇ ਦਿਨ ਦੀ ਯੋਜਨਾ ਬਣਾਓ"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ਹੈ\nਜਵਾਬ ਲੱਭੋ",
+          "title": "ਹੈ\nਤੇਜ਼ੀ ਨਾਲ ਸਪਸ਼ਟਤਾ ਲੱਭੋ",
+          "subtitle": "ਕੁਦਰਤੀ ਤੌਰ 'ਤੇ ਪੁੱਛੋ. ਇੱਕ ਸਪਸ਼ਟ ਜਵਾਬ ਅਤੇ ਉਪਯੋਗੀ ਅਗਲੇ ਕਦਮ ਪ੍ਰਾਪਤ ਕਰੋ।",
+          "beat1": "ਹੈ\nਸਮਝੋ",
+          "beat2": "ਫੈਸਲਾ ਕਰੋ",
+          "beat3": "ਹੈ\nਅੱਗੇ ਵਧੋ"
+        },
+        "write": {
+          "focus": "ਹੈ\nਬਿਹਤਰ ਲਿਖੋ",
+          "title": "ਵਿਚਾਰਾਂ ਨੂੰ ਸ਼ਬਦਾਂ ਵਿੱਚ ਬਦਲੋ",
+          "subtitle": "ਹੈ\nਇੱਕ ਮੋਟੇ ਵਿਚਾਰ ਤੋਂ ਲਿਖਣ ਲਈ ਜਾਓ ਜੋ ਤੁਹਾਡੇ ਵਰਗਾ ਲੱਗਦਾ ਹੈ।",
+          "beat1": "ਆਕਾਰ",
+          "beat2": "ਹੈ\nਰਿਫਾਇਨ",
+          "beat3": "ਸ਼ੇਅਰ ਕਰੋ"
+        },
+        "create": {
+          "focus": "ਚਿੱਤਰ ਬਣਾਓ",
+          "title": "ਹੈ\nਵਿਚਾਰਾਂ ਨੂੰ ਜੀਵਨ ਵਿੱਚ ਲਿਆਓ",
+          "subtitle": "ਵਰਣਨ ਕਰੋ ਜੋ ਤੁਸੀਂ ਕਲਪਨਾ ਕਰਦੇ ਹੋ, ਫਿਰ ਇਸਨੂੰ ਸਕਿੰਟਾਂ ਵਿੱਚ ਬਣਾਓ ਅਤੇ ਸੁਧਾਰੋ।",
+          "beat1": "ਹੈ\nਕਲਪਨਾ ਕਰੋ",
+          "beat2": "ਹੈ\nਬਣਾਓ",
+          "beat3": "ਹੈ\nਸੰਪੂਰਣ"
+        },
+        "plan": {
+          "focus": "ਹੈ\nਮੇਰੇ ਦਿਨ ਦੀ ਯੋਜਨਾ ਬਣਾਓ",
+          "title": "ਹੈ\nਮਹੱਤਵਪੂਰਨ ਚੀਜ਼ਾਂ ਲਈ ਜਗ੍ਹਾ ਬਣਾਓ",
+          "subtitle": "ਹੈ\nਇੱਕ ਵਿਅਸਤ ਸੂਚੀ ਨੂੰ ਇੱਕ ਸ਼ਾਂਤ ਯੋਜਨਾ ਵਿੱਚ ਬਦਲੋ ਜਿਸਦੀ ਤੁਸੀਂ ਅਸਲ ਵਿੱਚ ਪਾਲਣਾ ਕਰ ਸਕਦੇ ਹੋ।",
+          "beat1": "ਹੈ\nਤਰਜੀਹ ਦਿਓ",
+          "beat2": "ਸੰਗਠਿਤ ਕਰੋ",
+          "beat3": "ਹੈ\nਸ਼ੁਰੂ ਕਰੋ"
+        }
+      },
+      "proof": {
+        "overline": "ਹੈ\nਸਾਰੇ ਇੱਕ ਥਾਂ 'ਤੇ",
+        "title": "ਹੈ\nਇੱਕ ਥਾਂ। ਹੋਰ ਸੰਭਾਵਨਾਵਾਂ।",
+        "subtitle": "ਹੈ\nਐਪਾਂ ਵਿਚਕਾਰ ਅਦਲਾ-ਬਦਲੀ ਕੀਤੇ ਬਿਨਾਂ ਸਵਾਲ ਤੋਂ ਰਚਨਾ ਵੱਲ ਜਾਓ।",
+        "item1": {
+          "title": "ਹੈ\nਕੁਝ ਵੀ ਪੁੱਛੋ",
+          "subtitle": "ਹੈ\nਸਪਸ਼ਟ, ਉਪਯੋਗੀ ਜਵਾਬਾਂ ਲਈ ਉੱਨਤ ਮਾਡਲ"
+        },
+        "item2": {
+          "title": "ਹੈ\nਚਿੱਤਰ ਬਣਾਓ",
+          "subtitle": "ਹੈ\nਕਿਸੇ ਵਿਚਾਰ ਨੂੰ ਉਸ ਚੀਜ਼ ਵਿੱਚ ਬਦਲੋ ਜੋ ਤੁਸੀਂ ਦੇਖ ਸਕਦੇ ਹੋ"
+        },
+        "item3": {
+          "title": "ਹੈ\nਮਾਹਰ ਦੀ ਮਦਦ ਲਵੋ",
+          "subtitle": "ਕੰਮ ਅਤੇ ਰੋਜ਼ਾਨਾ ਜੀਵਨ ਲਈ ਸਹਾਇਕ"
+        }
+      },
+      "controls": {
+        "back": "ਹੈ\nਪਿੱਛੇ",
+        "continue": "ਹੈ\nਜਾਰੀ ਰੱਖੋ",
+        "finish": "ਹੈ\nਪ੍ਰੀਮੀਅਮ ਦੀ ਪੜਚੋਲ ਕਰੋ"
+      }
     }
   },
   "coinStore": {
@@ -738,16 +890,46 @@
       "privacy": "ਗੋਪਨੀਯਤਾ"
     },
     "premium": {
-      "headline": "ਹੈ\nਇੱਕ ਪਲਾਨ ਵਿੱਚ ਸਾਰੇ ਪ੍ਰੀਮੀਅਮ AI",
-      "subtitleLine1": "ਹੈ\nਚੈਟ ਕਰੋ, ਕੋਡ ਬਣਾਓ, ਬਣਾਓ ਅਤੇ ਯੋਜਨਾ ਬਣਾਓ",
+      "headline": "ਇੱਕ ਪਲਾਨ ਵਿੱਚ ਸਾਰੇ ਪ੍ਰੀਮੀਅਮ AI",
+      "subtitleLine1": "ਚੈਟ ਕਰੋ, ਕੋਡ ਬਣਾਓ, ਬਣਾਓ ਅਤੇ ਯੋਜਨਾ ਬਣਾਓ",
       "subtitleLine2": "ਹੈ\nਉੱਨਤ ਮਾਡਲਾਂ ਦੇ ਨਾਲ.",
-      "enableTrial": "ਹੈ\nਮੁਫਤ ਅਜ਼ਮਾਇਸ਼ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ",
-      "annual": "ਹੈ\nਸਲਾਨਾ",
-      "saveBadge": "ਹੈ\n83% ਬਚਾਓ",
-      "year": "ਹੈ\nਸਾਲ",
-      "week": "ਹੈ\nਹਫ਼ਤਾ",
-      "termsOfUse": "ਹੈ\nਵਰਤੋਂ ਦੀਆਂ ਸ਼ਰਤਾਂ",
+      "enableTrial": "ਮੁਫਤ ਅਜ਼ਮਾਇਸ਼ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ",
+      "annual": "ਸਲਾਨਾ",
+      "saveBadge": "83% ਬਚਾਓ",
+      "year": "ਸਾਲ",
+      "week": "ਹਫ਼ਤਾ",
+      "termsOfUse": "ਵਰਤੋਂ ਦੀਆਂ ਸ਼ਰਤਾਂ",
       "privacyPolicy": "ਗੋਪਨੀਯਤਾ ਨੀਤੀ"
+    },
+    "v3": {
+      "eyebrow": "ਕਲਾਊਡ ਏਆਈ ਪ੍ਰੀਮੀਅਮ",
+      "trial": {
+        "headline": "ਸਾਰੀਆਂ ਪ੍ਰੀਮੀਅਮ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਨੂੰ ਅਨਲੌਕ ਕਰੋ",
+        "subtitle": "ਦੇਖੋ ਕਿ ਕੀ ਹੁੰਦਾ ਹੈ ਅਤੇ ਕਦੋਂ ਹੁੰਦਾ ਹੈ।",
+        "todayTitle": "ਅੱਜ",
+        "todayBody": "ਹਰ ਪ੍ਰੀਮੀਅਮ ਵਿਸ਼ੇਸ਼ਤਾ ਨੂੰ ਅਨਲੌਕ ਕਰੋ। ਹੁਣ ਕੋਈ ਭੁਗਤਾਨ ਬਕਾਇਆ ਨਹੀਂ ਹੈ।",
+        "checkTitle": "2 ਦਿਨਾਂ ਵਿੱਚ — ਰੀਮਾਈਂਡਰ",
+        "checkBody": "ਅਸੀਂ ਤੁਹਾਨੂੰ ਇੱਕ ਸੂਚਨਾ ਭੇਜਾਂਗੇ ਕਿ ਤੁਹਾਡੀ ਪਰਖ ਜਲਦੀ ਹੀ ਖਤਮ ਹੋ ਰਹੀ ਹੈ।",
+        "billingTitle": "3 ਦਿਨਾਂ ਵਿੱਚ",
+        "billingBody": "ਬਿਲਿੰਗ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ ਜੇਕਰ ਤੁਸੀਂ ਪਹਿਲਾਂ ਕਿਸੇ ਵੀ ਸਮੇਂ ਰੱਦ ਨਹੀਂ ਕਰਦੇ ਹੋ।",
+        "badge": "3 ਦਿਨ ਮੁਫ਼ਤ",
+        "cardNote": "ਮੁਫ਼ਤ ਅਜ਼ਮਾਇਸ਼ ਦੇ ਬਾਅਦ",
+        "noPayment": "ਹੁਣ ਕੋਈ ਭੁਗਤਾਨ ਬਕਾਇਆ ਨਹੀਂ ਹੈ",
+        "cta": "ਮੇਰੀ 3-ਦਿਨ ਦੀ ਮੁਫ਼ਤ ਅਜ਼ਮਾਇਸ਼ ਸ਼ੁਰੂ ਕਰੋ",
+        "renewalTerms": "3 ਦਿਨ ਮੁਫ਼ਤ, ਫਿਰ {{price}} / {{period}}। ਰੱਦ ਹੋਣ ਤੱਕ ਸਵੈ-ਨਵੀਨੀਕਰਨ।"
+      },
+      "annual": {
+        "headline": "ਕਲਾਉਡ AI ਦੇ ਇੱਕ ਸਾਲ ਨੂੰ ਅਨਲੌਕ ਕਰੋ",
+        "subtitle": "ਚੈਟ, ਚਿੱਤਰ, ਅਤੇ ਮਾਹਰ AI ਮਦਦ ਲਈ ਇੱਕ ਯੋਜਨਾ।",
+        "todayTitle": "ਅੱਜ - ਪ੍ਰੀਮੀਅਮ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ",
+        "todayBody": "ਹਰ ਪ੍ਰੀਮੀਅਮ AI ਵਿਸ਼ੇਸ਼ਤਾ ਨੂੰ ਤੁਰੰਤ ਅਨਲੌਕ ਕਰੋ।",
+        "billingTitle": "ਸਾਲਾਨਾ ਬਿਲ ਕੀਤਾ ਜਾਂਦਾ ਹੈ",
+        "billingBody": "{{price}} ਤੁਹਾਨੂੰ ਇੱਕ ਪੂਰੇ ਸਾਲ ਤੱਕ ਪਹੁੰਚ ਦਿੰਦਾ ਹੈ।",
+        "renewalTitle": "ਸਾਲਾਨਾ ਨਵੀਨੀਕਰਨ",
+        "renewalBody": "ਆਪਣੀ ਨਵਿਆਉਣ ਦੀ ਮਿਤੀ ਤੋਂ ਪਹਿਲਾਂ ਕਿਸੇ ਵੀ ਸਮੇਂ Google Play ਵਿੱਚ ਰੱਦ ਕਰੋ।",
+        "cta": "ਜਾਰੀ ਰੱਖੋ",
+        "renewalTerms": "{{price}} / {{period}}। ਰੱਦ ਹੋਣ ਤੱਕ ਸਵੈ-ਨਵੀਨੀਕਰਨ।"
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "ਚਿੱਤਰਾਂ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
       "searching": "ਖੋਜ ਰਿਹਾ ਹੈ...",
-      "thinking": "ਸੋਚ ਰਿਹਾ ਹੈ..."
+      "thinking": "ਸੋਚ ਰਿਹਾ ਹੈ...",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "ਵੈੱਬ ਖੋਜ",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "ਜ਼ਿਆਦਾ ਸਿਗਨਲ, ਘੱਟ ਸਪ੍ਰੈਡਸ਼ੀਟ ਸ਼ੋਰ।"
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "ਆਪਣੇ ਰੋਜ਼ਾਨਾ ਸਿੱਕੇ ਲਓ",
       "subtitle": "ਹਰ ਰੋਜ਼ ਆਓ — ਇਨਾਮ ਵਧਦਾ ਜਾਵੇਗਾ।",
-      "cta": "ਚੈੱਕ-ਇਨ",
+      "cta": "ਪ੍ਰਾਪਤ ਕਰੋ",
       "claimed": "ਮਿਲ ਗਏ! +{{amount}} ਸਿੱਕੇ",
       "later": "ਬਾਅਦ ਵਿੱਚ"
     }

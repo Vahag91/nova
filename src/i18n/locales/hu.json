@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Folytatás",
+        "tryItFree": "Próbáld ki ingyen",
+        "back": "Vissza"
+      },
+      "valueDemo": {
+        "title": "Szeretnénk, ha ingyenesen kipróbálná a Cloud AI-t",
+        "workspaceLabel": "AI MUNKATERÜLET",
+        "userPromptLabel": "FELHASZNÁLÓI PROMPT",
+        "aiTypingLabel": "A MESTERSÉGES INTELLIGENCIA GÉPEL",
+        "prompt": "Írjon udvarias választ az ügyfélnek a késedelmes kézbesítésről.",
+        "response": "Szia! Köszönjük türelmét. Kissé késhet a szállítás. folyamatosan frissítem.",
+        "cards": {
+          "doc": {
+            "title": "Dokumentum összefoglaló",
+            "detail": "12 oldalas fájl → 5 kulcspont"
+          },
+          "reply": {
+            "title": "Válasz megfogalmazva",
+            "detail": "Udvarias, professzionális hangnem"
+          },
+          "translation": {
+            "title": "Fordítás kész",
+            "detail": "angol → spanyol"
+          }
+        },
+        "subtitle": "Írjon, foglaljon össze, fordítson és szkenneljen dokumentumokat egyetlen AI-munkaterületen."
+      },
+      "goals": {
+        "title": "Miben van szüksége segítségre?",
+        "subtitle": "Válasszon 1–3 gólt. Megépítjük az AI munkaterületét.",
+        "emptyCta": "Válasszon ki legalább 1 célt",
+        "items": {
+          "workFaster": {
+            "title": "Dolgozzon gyorsabban",
+            "subtitle": "E-mailek, válaszok, feladatok"
+          },
+          "writeBetter": {
+            "title": "Írj jobban",
+            "subtitle": "Hangjavítás, átírás, javítás"
+          },
+          "understandDocuments": {
+            "title": "A dokumentumok megértése",
+            "subtitle": "Összegzések, szkennelések, kulcspontok"
+          },
+          "learnAnything": {
+            "title": "Tanuljon meg bármit",
+            "subtitle": "Világosan magyarázza el a témákat"
+          },
+          "createContent": {
+            "title": "Tartalom létrehozása",
+            "subtitle": "Bejegyzések, képaláírások, ötletek"
+          },
+          "planBusiness": {
+            "title": "Tervezze meg az üzletet",
+            "subtitle": "Ötletek, stratégia, automatizálás"
+          },
+          "personalClarity": {
+            "title": "Személyes egyértelműség",
+            "subtitle": "Döntések, szokások, gondolatok"
+          },
+          "askBigQuestions": {
+            "title": "Tegye fel kérdéseit",
+            "subtitle": "Jövő, jelentés, mesterséges intelligencia, élet"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "AI-asszisztens létrehozása",
+        "readyTitle": "Az AI-asszisztens készen áll",
+        "subtitle": "Az asszisztens konfigurálva van. A próbaverziós hozzáférés most be van kapcsolva.",
+        "trialTitle": "3 napos próba",
+        "trialActivating": "aktiválása",
+        "trialEnabled": "engedélyezve",
+        "steps": {
+          "0": "Az asszisztens felkészítése",
+          "1": "A válaszok személyre szabása",
+          "2": "A hozzáférés biztosítása",
+          "3": "Beállítás befejezése"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Ismerd meg",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Folytatás",
       "start": "Kezdjük el"
+    },
+    "v3": {
+      "intent": {
+        "overline": "TEGYE A TIÉDÉT",
+        "title": "Miben segíthet a Cloud AI?",
+        "cta": "Folytatás"
+      },
+      "goals": {
+        "ask": "Keressen válaszokat",
+        "write": "Írj jobban",
+        "create": "Hozzon létre képeket",
+        "plan": "Tervezd meg a napomat"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "VÁLASZOK KERESÉSE",
+          "title": "Találja meg gyorsabban a tisztaságot",
+          "subtitle": "Kérdezz természetesen. Kapjon egyértelmű választ és hasznos további lépéseket.",
+          "beat1": "Értsd",
+          "beat2": "Döntse el",
+          "beat3": "Lépj előre"
+        },
+        "write": {
+          "focus": "ÍRJ JOBBAN",
+          "title": "Váltsd szavakká a gondolatokat",
+          "subtitle": "Egy durva ötlettől térj át olyan írásra, amely úgy hangzik, mint te.",
+          "beat1": "Alakzat",
+          "beat2": "Finomítás",
+          "beat3": "Megosztás"
+        },
+        "create": {
+          "focus": "KÉPEK LÉTREHOZÁSA",
+          "title": "Keltse életre az ötleteket",
+          "subtitle": "Írja le, amit elképzel, majd másodpercek alatt hozza létre és finomítsa.",
+          "beat1": "Képzeld",
+          "beat2": "Létrehozása",
+          "beat3": "Tökéletes"
+        },
+        "plan": {
+          "focus": "TERVEZZE MEG A NAPomat",
+          "title": "Hagyjon helyet annak, ami számít",
+          "subtitle": "Változtass egy elfoglalt listát egy nyugodt tervvé, amelyet valóban követhetsz.",
+          "beat1": "Prioritás",
+          "beat2": "Szervezd meg",
+          "beat3": "Kezdje"
+        }
+      },
+      "proof": {
+        "overline": "MINDEN EGY HELYEN",
+        "title": "Egy hely. Több lehetőség.",
+        "subtitle": "Váltson kérdésről alkotásra anélkül, hogy az alkalmazások között váltana.",
+        "item1": {
+          "title": "Kérdezz bármit",
+          "subtitle": "Fejlett modellek az egyértelmű, hasznos válaszokért"
+        },
+        "item2": {
+          "title": "Hozzon létre képeket",
+          "subtitle": "Változtass egy ötletet olyasmivé, amit láthatsz"
+        },
+        "item3": {
+          "title": "Kérjen szakértői segítséget",
+          "subtitle": "Asszisztensek a munkához és a mindennapi élethez"
+        }
+      },
+      "controls": {
+        "back": "Vissza",
+        "continue": "Folytatás",
+        "finish": "Fedezze fel a prémiumot"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "hét",
       "termsOfUse": "Felhasználási feltételek",
       "privacyPolicy": "Adatvédelmi szabályzat"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Oldja fel az összes prémium funkciót",
+        "subtitle": "Nézze meg pontosan, mi történik és mikor.",
+        "todayTitle": "Ma",
+        "todayBody": "Oldja fel az összes prémium funkciót. Most nem esedékes fizetés.",
+        "checkTitle": "2 napon belül — Emlékeztető",
+        "checkBody": "Értesítést küldünk Önnek arról, hogy próbaidőszaka hamarosan lejár.",
+        "billingTitle": "3 nap múlva",
+        "billingBody": "A számlázás automatikusan elindul, hacsak korábban nem mondja le.",
+        "badge": "3 NAP INGYENES",
+        "cardNote": "Az ingyenes próbaidőszak után",
+        "noPayment": "Most nincs esedékes fizetés",
+        "cta": "Indítsa el a 3 napos ingyenes próbaverziómat",
+        "renewalTerms": "3 nap ingyenes, utána {{price}} / {{period}}. Lemondásig automatikusan megújul."
+      },
+      "annual": {
+        "headline": "Nyisd meg a Cloud AI egy évét",
+        "subtitle": "Egy terv a csevegéshez, a képekhez és a szakértői mesterséges intelligencia segítségéhez.",
+        "todayTitle": "Ma – prémium indul",
+        "todayBody": "Azonnal oldja fel az összes prémium AI-funkciót.",
+        "billingTitle": "Évente számlázva",
+        "billingBody": "A {{price}} egy teljes év hozzáférést biztosít.",
+        "renewalTitle": "Évente megújul",
+        "renewalBody": "Bármikor lemondhatja a Google Play szolgáltatást a megújítási dátum előtt.",
+        "cta": "Folytatás",
+        "renewalTerms": "{{price}} / {{period}}. Lemondásig automatikusan megújul."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Képek elemzése…",
       "searching": "Keresés…",
-      "thinking": "Gondolkodás…"
+      "thinking": "Gondolkodás…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Webes keresés",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Több jel, kevesebb táblázatzaj."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Vedd át a napi érméidet",
       "subtitle": "Térj vissza mindennap — nő a jutalom.",
-      "cta": "Bejelentkezés",
+      "cta": "Átvétel",
       "claimed": "Megkaptad! +{{amount}} érme",
       "later": "Később"
     }

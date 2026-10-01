@@ -55,7 +55,7 @@ const getIconFromQuestId = (questId) => {
   return idToIconMap[questId] || 'share';
 };
 
-export const QuestCard = ({ quest, onPress }) => {
+export const QuestCard = ({ quest, actionLabel, onPress }) => {
   const { t } = useTranslation();
   
   if (!quest) return null;
@@ -79,7 +79,12 @@ export const QuestCard = ({ quest, onPress }) => {
 
   const translationKey = getQuestTranslationKey(quest.id);
   const localizedTitle = t(`rewards.quests.${translationKey}.title`, { defaultValue: quest.title });
-  const localizedDescription = t(`rewards.quests.${translationKey}.description`, { defaultValue: quest.description });
+  const localizedDescription =
+    quest.id === 'daily-login'
+      ? t('rewards.checkIn.subtitle')
+      : t(`rewards.quests.${translationKey}.description`, {
+          defaultValue: quest.description,
+        });
 
   return (
     <Pressable
@@ -108,6 +113,16 @@ export const QuestCard = ({ quest, onPress }) => {
 
       {/* RIGHT: POINTS */}
       <View style={styles.rewardBadge}>
+        {actionLabel ? (
+          <Text
+            adjustsFontSizeToFit
+            minimumFontScale={0.72}
+            numberOfLines={1}
+            style={styles.actionText}
+          >
+            {actionLabel}
+          </Text>
+        ) : null}
         <View style={styles.rewardIconBg}>
           <View style={styles.rewardDot} />
         </View>
@@ -212,6 +227,14 @@ const styles = StyleSheet.create({
   rewardText: {
     marginLeft: 6,
     fontSize: 14,
+    fontWeight: '700',
+    fontFamily: 'Lato-Bold',
+    color: '#FFFFFF',
+  },
+  actionText: {
+    maxWidth: 62,
+    marginRight: 7,
+    fontSize: 12,
     fontWeight: '700',
     fontFamily: 'Lato-Bold',
     color: '#FFFFFF',

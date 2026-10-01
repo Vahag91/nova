@@ -18,7 +18,6 @@ import { redeemReward } from '../../lib/rewardsSupabase';
 import { ensureDeviceId } from '../../lib/deviceId';
 import { createSbWithDevice, fetchBalanceByDevice } from '../../lib/supabaseDevice';
 import { RewardSuccessModal } from './RewardSuccessModal';
-import { SecretBoxModal } from './SecretBoxModal';
 
 export default function RewardsList() {
   const { t } = useTranslation();
@@ -27,7 +26,6 @@ export default function RewardsList() {
     { id: 'image-credits-50', title: t('rewards.rewardsList.rewardTitles.imageCredits50'), description: '', cost: 500, credits: 50, icon: 'coin', iconBg: '#2A2A2A', iconColor: '#FBBF24' },
     { id: 'image-credits-200', title: t('rewards.rewardsList.rewardTitles.imageCredits200'), description: '', cost: 1500, credits: 200, icon: 'coin', iconBg: '#2A2A2A', iconColor: '#FBBF24' },
     { id: 'image-credits-600', title: t('rewards.rewardsList.rewardTitles.imageCredits600'), description: '', cost: 4000, credits: 600, icon: 'coin', iconBg: '#2A2A2A', iconColor: '#FBBF24' },
-    { id: 'secret-box', title: t('rewards.rewardsList.rewardTitles.secretBox'), description: t('rewards.rewardsList.rewardDescriptions.secretBox'), cost: 10000, icon: 'diamond', iconBg: '#2A2A2A', iconColor: '#10B981',type: 'secret-box', },
   ];
   const rewardCoins = useRewardsStore(s => s.points);          // ✅ reward coins (local)
 
@@ -36,14 +34,6 @@ export default function RewardsList() {
 
   const [redeemingId, setRedeemingId] = useState(null);
   const [modal, setModal] = useState(null); // { type: 'success' | 'error', reward?, credits?, error? }
-  
-  // NEW: Secret Box Specific State
-  const [secretBoxState, setSecretBoxState] = useState({
-    visible: false,
-    isSpinning: false,
-    finalResult: null, // { label: 'Lucky 1K', credits: 1000 }
-  });
-
   // refresh ONLY backend image credits on focus
   const refreshImageCredits = useCallback(async () => {
     try {
@@ -72,10 +62,7 @@ export default function RewardsList() {
       return;
     }
   
-    const isSecretBox = reward?.id === 'secret-box';
-  
-    // "Coming soon" rewards (no credits AND not secret-box)
-    if (!reward?.credits && !isSecretBox) {
+    if (!reward?.credits) {
       Alert.alert(t('rewards.rewardsList.alerts.comingSoonTitle'), t('rewards.rewardsList.alerts.comingSoonMessage'));
       return;
     }
@@ -88,59 +75,6 @@ export default function RewardsList() {
   
     setRedeemingId(reward.id);
 
-    // --- CASE A: SECRET BOX FLOW ---
-    if (isSecretBox) {
-      // 1. Open Modal Immediately & Start Spinning
-      setSecretBoxState({
-        visible: true,
-        isSpinning: true,
-        finalResult: null
-      });
-
-      try {
-        // 2. Call API
-        const res = await redeemReward(reward.id, { cost: reward.cost });
-        
-
-        if (!res || res.ok !== true) {
-          throw new Error(res?.message || res?.error || t('rewards.rewardsList.alerts.couldNotOpenBox'));
-        }
-
-        // 3. Update Local Balance
-        const current = useRewardsStore.getState().points;
-        useRewardsStore.getState().setPoints(Math.max(0, current - reward.cost));
-
-        // ✅ update backend image credits from response (or refresh)
-        if (typeof res?.balance === 'number') {
-          setImageCredits(res.balance);
-        } else {
-          refreshImageCredits();
-        }
-
-        // 4. Update Result and Stop Spinning
-        // Ensure we wait at least 2 seconds so the user sees the spin animation
-        setTimeout(() => {
-          setSecretBoxState(prev => ({
-            ...prev,
-            isSpinning: false, // This triggers the slow-down logic in modal
-            finalResult: {
-              credits: res.granted, // The actual credits won
-              label: res.prizeLabel || res?.fullResponse?.prizeLabel || t('rewards.rewardsList.alerts.mysteryReward')
-            }
-          }));
-        }, 2000); // Minimum spin time
-
-      } catch (err) {
-        // Handle Error (Close box, show error alert)
-        setSecretBoxState({ visible: false, isSpinning: false, finalResult: null });
-        Alert.alert(t('rewards.rewardsList.alerts.errorTitle'), t('rewards.rewardsList.alerts.couldNotOpenBox'));
-      } finally {
-        setRedeemingId(null);
-      }
-      return; 
-    }
-
-    // --- CASE B: REGULAR REWARD FLOW (Existing Code) ---
     try {
       // Edge function knows what to do based on rewardId
       const res = await redeemReward(reward.id, { cost: reward.cost });
@@ -174,8 +108,6 @@ export default function RewardsList() {
         type: 'success',
         reward,
         credits: granted,
-        isSecretBox: false,
-        prizeLabel: null,
       });
     } catch (err) {
       setModal({
@@ -292,17 +224,7 @@ export default function RewardsList() {
         reward={modal?.type === 'success' ? modal.reward : null}
         credits={modal?.type === 'success' ? modal.credits : null}
         error={modal?.type === 'error' ? modal.error : null}
-        isSecretBox={modal?.type === 'success' ? modal.isSecretBox : false}
-        prizeLabel={modal?.type === 'success' ? modal.prizeLabel : null}
         onClose={() => setModal(null)}
-      />
-
-      {/* NEW MODAL for Secret Box */}
-      <SecretBoxModal 
-        visible={secretBoxState.visible}
-        isSpinning={secretBoxState.isSpinning}
-        finalResult={secretBoxState.finalResult}
-        onClose={() => setSecretBoxState({ visible: false, isSpinning: false, finalResult: null })}
       />
     </View>
   );

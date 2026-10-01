@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Turpināt",
+        "tryItFree": "Izmēģiniet to bez maksas",
+        "back": "Atpakaļ"
+      },
+      "valueDemo": {
+        "title": "Mēs vēlamies, lai jūs bez maksas izmēģinātu Cloud AI",
+        "workspaceLabel": "AI DARBA VIETA",
+        "userPromptLabel": "LIETOTĀJA UZVADĪBA",
+        "aiTypingLabel": "AI IEVADĪŠANA",
+        "prompt": "Uzrakstiet klientam pieklājīgu atbildi par piegādes aizkavēšanos.",
+        "response": "Sveiki, paldies par pacietību. Jūsu piegāde var nedaudz aizkavēties. Es jūs informēšu.",
+        "cards": {
+          "doc": {
+            "title": "Dokumenta kopsavilkums",
+            "detail": "12 lappušu fails → 5 galvenie punkti"
+          },
+          "reply": {
+            "title": "Atbilde sagatavota",
+            "detail": "Pieklājīgs, profesionāls tonis"
+          },
+          "translation": {
+            "title": "Tulkošanai gatavs",
+            "detail": "angļu → spāņu"
+          }
+        },
+        "subtitle": "Rakstiet, apkopojiet, tulkojiet un skenējiet dokumentus vienā MI darbvietā."
+      },
+      "goals": {
+        "title": "Ar ko jums nepieciešama palīdzība?",
+        "subtitle": "Izvēlieties 1–3 vārtus. Mēs izveidosim jūsu AI darbvietu.",
+        "emptyCta": "Izvēlieties vismaz 1 mērķi",
+        "items": {
+          "workFaster": {
+            "title": "Strādājiet ātrāk",
+            "subtitle": "E-pasti, atbildes, uzdevumi"
+          },
+          "writeBetter": {
+            "title": "Raksti labāk",
+            "subtitle": "Labot toni, pārrakstīt, uzlabot"
+          },
+          "understandDocuments": {
+            "title": "Izprotiet dokumentus",
+            "subtitle": "Kopsavilkumi, skenējumi, galvenie punkti"
+          },
+          "learnAnything": {
+            "title": "Uzziniet jebko",
+            "subtitle": "Skaidri izskaidrojiet tēmas"
+          },
+          "createContent": {
+            "title": "Izveidojiet saturu",
+            "subtitle": "Ieraksti, paraksti, idejas"
+          },
+          "planBusiness": {
+            "title": "Plānojiet uzņēmējdarbību",
+            "subtitle": "Idejas, stratēģija, automatizācija"
+          },
+          "personalClarity": {
+            "title": "Personiskā skaidrība",
+            "subtitle": "Lēmumi, ieradumi, domas"
+          },
+          "askBigQuestions": {
+            "title": "Uzdodiet visus jautājumus",
+            "subtitle": "Nākotne, nozīme, AI, dzīve"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "AI palīga izveide",
+        "readyTitle": "Jūsu AI palīgs ir gatavs",
+        "subtitle": "Jūsu palīgs ir konfigurēts. Pašlaik tiek ieslēgta izmēģinājuma piekļuve.",
+        "trialTitle": "3 dienu izmēģinājums",
+        "trialActivating": "tiek aktivizēts",
+        "trialEnabled": "iespējots",
+        "steps": {
+          "0": "Asistenta sagatavošana",
+          "1": "Atbilžu personalizēšana",
+          "2": "Piekļuves nodrošināšana",
+          "3": "Pabeigšanas iestatīšana"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Iepazīstieties",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Turpināt",
       "start": "Sāksim"
+    },
+    "v3": {
+      "intent": {
+        "overline": "PADORI TO SAVU",
+        "title": "Ko jums vajadzētu palīdzēt Cloud AI?",
+        "cta": "Turpināt"
+      },
+      "goals": {
+        "ask": "Atrodi atbildes",
+        "write": "Raksti labāk",
+        "create": "Izveidojiet attēlus",
+        "plan": "Plāno manu dienu"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ATRAST ATBILDES",
+          "title": "Ātrāk atrodiet skaidrību",
+          "subtitle": "Jautājiet dabiski. Saņemiet skaidru atbildi un noderīgas nākamās darbības.",
+          "beat1": "Saprast",
+          "beat2": "Izlemiet",
+          "beat3": "Virzieties uz priekšu"
+        },
+        "write": {
+          "focus": "RAKSTI LABĀK",
+          "title": "Pārvērtiet domas vārdos",
+          "subtitle": "Pārejiet no aptuvenas idejas uz rakstīšanu, kas izklausās pēc jums.",
+          "beat1": "Forma",
+          "beat2": "Precizējiet",
+          "beat3": "Dalīties"
+        },
+        "create": {
+          "focus": "IZVEIDOT ATTĒLU",
+          "title": "Atdzīviniet idejas",
+          "subtitle": "Aprakstiet to, ko iztēlojaties, pēc tam izveidojiet un uzlabojiet to dažu sekunžu laikā.",
+          "beat1": "Iedomājies",
+          "beat2": "Izveidot",
+          "beat3": "Perfekti"
+        },
+        "plan": {
+          "focus": "PLĀNO MANU DIENU",
+          "title": "Atbrīvojiet vietu svarīgākajam",
+          "subtitle": "Pārvērtiet aizņemto sarakstu par mierīgu plānu, kuru jūs patiešām varat ievērot.",
+          "beat1": "Noteikt prioritāti",
+          "beat2": "Organizēt",
+          "beat3": "Sāciet"
+        }
+      },
+      "proof": {
+        "overline": "VISS VIENĀ VIETĀ",
+        "title": "Viena vieta. Vairāk iespēju.",
+        "subtitle": "Pārejiet no jautājuma uz izveidi, nepārslēdzoties starp lietotnēm.",
+        "item1": {
+          "title": "Jautājiet jebko",
+          "subtitle": "Uzlaboti modeļi skaidrām, noderīgām atbildēm"
+        },
+        "item2": {
+          "title": "Izveidojiet attēlus",
+          "subtitle": "Pārvērtiet ideju par kaut ko, ko jūs varat redzēt"
+        },
+        "item3": {
+          "title": "Saņemiet ekspertu palīdzību",
+          "subtitle": "Asistenti darbā un ikdienā"
+        }
+      },
+      "controls": {
+        "back": "Atpakaļ",
+        "continue": "Turpināt",
+        "finish": "Izpētiet premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "nedēļa",
       "termsOfUse": "Lietošanas noteikumi",
       "privacyPolicy": "Privātuma politika"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Atbloķējiet visas augstākās kvalitātes funkcijas",
+        "subtitle": "Uzziniet, kas tieši notiek un kad.",
+        "todayTitle": "Šodien",
+        "todayBody": "Atbloķējiet katru premium funkciju. Tagad maksājums nav jāveic.",
+        "checkTitle": "Pēc 2 dienām — atgādinājums",
+        "checkBody": "Mēs nosūtīsim jums paziņojumu, ka jūsu izmēģinājuma periods drīz beigsies.",
+        "billingTitle": "Pēc 3 dienām",
+        "billingBody": "Norēķini sākas automātiski, ja vien iepriekš neatcelsit.",
+        "badge": "3 DIENAS BEZMAKSAS",
+        "cardNote": "Pēc bezmaksas izmēģinājuma",
+        "noPayment": "Tagad nav jāmaksā",
+        "cta": "Sāciet manu 3 dienu bezmaksas izmēģinājuma versiju",
+        "renewalTerms": "3 dienas bez maksas, pēc tam {{price}} / {{period}}. Automātiski tiek atjaunots līdz atcelšanai."
+      },
+      "annual": {
+        "headline": "Atveriet Cloud AI gadu",
+        "subtitle": "Viens plāns tērzēšanai, attēliem un ekspertu AI palīdzībai.",
+        "todayTitle": "Šodien — sākas premium",
+        "todayBody": "Nekavējoties atbloķējiet katru augstākās klases AI funkciju.",
+        "billingTitle": "Rēķini tiek iekasēti katru gadu",
+        "billingBody": "{{price}} nodrošina piekļuvi vienam pilnam gadam.",
+        "renewalTitle": "Atjaunojas katru gadu",
+        "renewalBody": "Atceliet jebkurā laikā Google Play pirms atjaunošanas datuma.",
+        "cta": "Turpināt",
+        "renewalTerms": "{{price}} / {{period}}. Automātiski tiek atjaunots līdz atcelšanai."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Notiek attēlu analīze…",
       "searching": "Notiek meklēšana…",
-      "thinking": "Domājot…"
+      "thinking": "Domājot…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Meklēšana tīmeklī",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Vairāk signāla, mazāk izklājlapas trokšņu."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Saņem savas ikdienas monētas",
       "subtitle": "Atgriezies katru dienu — balva aug.",
-      "cta": "Reģistrēties",
+      "cta": "Saņemt",
       "claimed": "Saņemts! +{{amount}} monētas",
       "later": "Vēlāk"
     }

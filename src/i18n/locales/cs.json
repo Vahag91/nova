@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Pokračovat",
+        "tryItFree": "Vyzkoušet zdarma",
+        "back": "Zpět"
+      },
+      "valueDemo": {
+        "title": "Chceme, abyste si Cloud AI zdarma vyzkoušeli",
+        "workspaceLabel": "PRACOVNÍ PROSTOR AI",
+        "userPromptLabel": "UŽIVATELSKÁ VÝZVA",
+        "aiTypingLabel": "AI TYPOVÁNÍ",
+        "prompt": "Napište klientovi zdvořilou odpověď na zpožděné doručení.",
+        "response": "Ahoj, děkujeme za trpělivost. Vaše doručení se může mírně zpozdit. Budu vás průběžně informovat.",
+        "cards": {
+          "doc": {
+            "title": "Shrnutí dokumentu",
+            "detail": "12stránkový soubor → 5 klíčových bodů"
+          },
+          "reply": {
+            "title": "Odpověď připravena",
+            "detail": "Zdvořilý, profesionální tón"
+          },
+          "translation": {
+            "title": "Překlad připraven",
+            "detail": "Angličtina → Španělština"
+          }
+        },
+        "subtitle": "Pište, shrnujte, překládejte a skenujte dokumenty v jednom AI pracovním prostoru."
+      },
+      "goals": {
+        "title": "S čím potřebujete pomoc?",
+        "subtitle": "Vyberte 1–3 cíle. Vybudujeme váš pracovní prostor AI.",
+        "emptyCta": "Vyberte alespoň 1 cíl",
+        "items": {
+          "workFaster": {
+            "title": "Pracujte rychleji",
+            "subtitle": "E-maily, odpovědi, úkoly"
+          },
+          "writeBetter": {
+            "title": "Pište lépe",
+            "subtitle": "Opravit tón, přepsat, zlepšit"
+          },
+          "understandDocuments": {
+            "title": "Porozumět dokumentům",
+            "subtitle": "Shrnutí, skeny, klíčové body"
+          },
+          "learnAnything": {
+            "title": "Naučte se cokoliv",
+            "subtitle": "Jasně vysvětlete témata"
+          },
+          "createContent": {
+            "title": "Vytvořte obsah",
+            "subtitle": "Příspěvky, popisky, nápady"
+          },
+          "planBusiness": {
+            "title": "Plán podnikání",
+            "subtitle": "Nápady, strategie, automatizace"
+          },
+          "personalClarity": {
+            "title": "Osobní jasnost",
+            "subtitle": "Rozhodnutí, zvyky, myšlenky"
+          },
+          "askBigQuestions": {
+            "title": "Zeptejte se na jakékoli otázky",
+            "subtitle": "Budoucnost, smysl, AI, život"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Vytvoření vašeho asistenta AI",
+        "readyTitle": "Váš asistent AI je připraven",
+        "subtitle": "Váš asistent je nakonfigurován. Zkušební přístup se nyní zapíná.",
+        "trialTitle": "3denní zkušební verze",
+        "trialActivating": "se aktivuje",
+        "trialEnabled": "povoleno",
+        "steps": {
+          "0": "Příprava asistenta",
+          "1": "Přizpůsobení odpovědí",
+          "2": "Zabezpečení přístupu",
+          "3": "Dokončení nastavení"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Seznamte se s",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Pokračovat",
       "start": "Začněme"
+    },
+    "v3": {
+      "intent": {
+        "overline": "UDĚLEJTE SI TO SVÉ",
+        "title": "S čím by vám měla cloudová AI pomoci?",
+        "cta": "Pokračovat"
+      },
+      "goals": {
+        "ask": "Najděte odpovědi",
+        "write": "Pište lépe",
+        "create": "Vytvářejte obrázky",
+        "plan": "Naplánujte si můj den"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "NAJÍT ODPOVĚDI",
+          "title": "Najděte jasnost rychleji",
+          "subtitle": "Ptejte se přirozeně. Získejte jasnou odpověď a užitečné další kroky.",
+          "beat1": "Pochopte",
+          "beat2": "Rozhodněte se",
+          "beat3": "Posuňte se vpřed"
+        },
+        "write": {
+          "focus": "PIŠTE LÉPE",
+          "title": "Proměňte myšlenky ve slova",
+          "subtitle": "Přejděte od hrubé myšlenky k psaní, které zní jako vy.",
+          "beat1": "Tvar",
+          "beat2": "Upřesnit",
+          "beat3": "Sdílejte"
+        },
+        "create": {
+          "focus": "VYTVOŘTE OBRÁZKY",
+          "title": "Oživte nápady",
+          "subtitle": "Popište, co si představujete, a poté to během několika sekund vytvořte a upřesněte.",
+          "beat1": "Představte si",
+          "beat2": "Vytvořit",
+          "beat3": "Perfektní"
+        },
+        "plan": {
+          "focus": "PLÁNOVAT SI DEN",
+          "title": "Udělejte si prostor pro to, na čem záleží",
+          "subtitle": "Proměňte nabitý seznam v klidný plán, který můžete skutečně následovat.",
+          "beat1": "Upřednostnit",
+          "beat2": "Uspořádat",
+          "beat3": "Začněte"
+        }
+      },
+      "proof": {
+        "overline": "VŠE NA JEDNOM MÍSTĚ",
+        "title": "Jedno místo. Více možností.",
+        "subtitle": "Přejděte od otázky k tvorbě, aniž byste přepínali mezi aplikacemi.",
+        "item1": {
+          "title": "Zeptejte se na cokoliv",
+          "subtitle": "Pokročilé modely pro jasné a užitečné odpovědi"
+        },
+        "item2": {
+          "title": "Vytvářejte obrázky",
+          "subtitle": "Proměňte nápad v něco, co můžete vidět"
+        },
+        "item3": {
+          "title": "Získejte odbornou pomoc",
+          "subtitle": "Asistenti pro práci i běžný život"
+        }
+      },
+      "controls": {
+        "back": "Zpět",
+        "continue": "Pokračovat",
+        "finish": "Prozkoumat prémiové"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "týden",
       "termsOfUse": "Podmínky použití",
       "privacyPolicy": "Zásady ochrany osobních údajů"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Odemkněte všechny prémiové funkce",
+        "subtitle": "Podívejte se, co přesně se stane a kdy.",
+        "todayTitle": "dnes",
+        "todayBody": "Odemkněte všechny prémiové funkce. Nyní není splatná žádná platba.",
+        "checkTitle": "Za 2 dny — Připomenutí",
+        "checkBody": "Zašleme vám oznámení, že vaše zkušební období brzy skončí.",
+        "billingTitle": "Za 3 dny",
+        "billingBody": "Účtování se spustí automaticky, pokud jej nezrušíte kdykoli předtím.",
+        "badge": "3 DNY ZDARMA",
+        "cardNote": "Po bezplatné zkušební verzi",
+        "noPayment": "Nyní není splatná žádná platba",
+        "cta": "Spusťte moji 3denní bezplatnou zkušební verzi",
+        "renewalTerms": "3 dny zdarma, poté {{price}} / {{period}}. Automaticky se obnovuje do zrušení."
+      },
+      "annual": {
+        "headline": "Odemkněte rok cloudové AI",
+        "subtitle": "Jeden plán pro chat, obrázky a odbornou AI pomoc.",
+        "todayTitle": "Dnes — prémie začíná",
+        "todayBody": "Okamžitě odemkněte všechny prémiové funkce umělé inteligence.",
+        "billingTitle": "Účtováno ročně",
+        "billingBody": "{{price}} vám poskytuje jeden celý rok přístupu.",
+        "renewalTitle": "Obnovuje se ročně",
+        "renewalBody": "Zrušte kdykoli v Google Play před datem obnovení.",
+        "cta": "Pokračovat",
+        "renewalTerms": "{{price}} / {{period}}. Automaticky se obnovuje do zrušení."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analyzuji obrázky…",
       "searching": "Vyhledávám…",
-      "thinking": "Přemýšlím…"
+      "thinking": "Přemýšlím…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Webové hledání",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Více signálu, méně tabulkového šumu."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Vyzvedněte si denní mince",
       "subtitle": "Vracejte se každý den, odměna roste.",
-      "cta": "Přihlásit se",
+      "cta": "Vyzvednout",
       "claimed": "Získáno! +{{amount}} mincí",
       "later": "Později"
     }

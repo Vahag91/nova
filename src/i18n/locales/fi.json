@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Jatka",
+        "tryItFree": "Kokeile ilmaiseksi",
+        "back": "Takaisin"
+      },
+      "valueDemo": {
+        "title": "Haluamme sinun kokeilevan Cloud AI:ta ilmaiseksi",
+        "workspaceLabel": "AI TYÖTILA",
+        "userPromptLabel": "KÄYTTÄJÄN KEHOTE",
+        "aiTypingLabel": "TEKOÄLY KIRJOITTAA",
+        "prompt": "Kirjoita asiakkaalle kohtelias vastaus viivästyneestä toimituksesta.",
+        "response": "Hei, kiitos kärsivällisyydestäsi. Toimituksesi saattaa viivästyä hieman. Pidän sinut ajan tasalla.",
+        "cards": {
+          "doc": {
+            "title": "Asiakirjan yhteenveto",
+            "detail": "12-sivuinen tiedosto → 5 avainkohtaa"
+          },
+          "reply": {
+            "title": "Vastaus laadittu",
+            "detail": "Kohtelias, ammattimainen sävy"
+          },
+          "translation": {
+            "title": "Käännös valmis",
+            "detail": "englanti → espanja"
+          }
+        },
+        "subtitle": "Kirjoita, tiivistä, käännä ja skannaa asiakirjoja yhdessä tekoälytyötilassa."
+      },
+      "goals": {
+        "title": "Mihin tarvitset apua?",
+        "subtitle": "Valitse 1–3 maalia. Rakennamme tekoälytyötilasi.",
+        "emptyCta": "Valitse vähintään yksi tavoite",
+        "items": {
+          "workFaster": {
+            "title": "Työskentele nopeammin",
+            "subtitle": "Sähköpostit, vastaukset, tehtävät"
+          },
+          "writeBetter": {
+            "title": "Kirjoita paremmin",
+            "subtitle": "Korjaa sävy, kirjoita uudelleen, paranna"
+          },
+          "understandDocuments": {
+            "title": "Ymmärrä asiakirjoja",
+            "subtitle": "Yhteenvedot, skannaukset, avainkohdat"
+          },
+          "learnAnything": {
+            "title": "Opi mitä tahansa",
+            "subtitle": "Selitä aiheet selkeästi"
+          },
+          "createContent": {
+            "title": "Luo sisältöä",
+            "subtitle": "Julkaisut, kuvatekstit, ideat"
+          },
+          "planBusiness": {
+            "title": "Suunnittele liiketoimintaa",
+            "subtitle": "Ideat, strategia, automaatio"
+          },
+          "personalClarity": {
+            "title": "Henkilökohtainen selkeys",
+            "subtitle": "Päätökset, tavat, ajatukset"
+          },
+          "askBigQuestions": {
+            "title": "Esitä kysymyksiä",
+            "subtitle": "Tulevaisuus, merkitys, tekoäly, elämä"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "AI-avustajan luominen",
+        "readyTitle": "AI-avustajasi on valmis",
+        "subtitle": "Avustajasi on määritetty. Kokeilukäyttö otetaan nyt käyttöön.",
+        "trialTitle": "3 päivän kokeilu",
+        "trialActivating": "aktivoituu",
+        "trialEnabled": "käytössä",
+        "steps": {
+          "0": "Valmistelee avustajaasi",
+          "1": "Vastausten personointi",
+          "2": "Pääsyn turvaaminen",
+          "3": "Asennuksen viimeistely"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Tutustu",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Jatka",
       "start": "Aloitetaan"
+    },
+    "v3": {
+      "intent": {
+        "overline": "TEE SE OMASI",
+        "title": "Mitä Cloud AI:n pitäisi auttaa sinua tekemään?",
+        "cta": "Jatka"
+      },
+      "goals": {
+        "ask": "Etsi vastauksia",
+        "write": "Kirjoita paremmin",
+        "create": "Luo kuvia",
+        "plan": "Suunnittele päiväni"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "ETSI VASTAUKSIA",
+          "title": "Löydä selkeys nopeammin",
+          "subtitle": "Kysy luonnollisesti. Saat selkeän vastauksen ja hyödylliset seuraavat vaiheet.",
+          "beat1": "Ymmärrä",
+          "beat2": "Päätä",
+          "beat3": "Siirry eteenpäin"
+        },
+        "write": {
+          "focus": "KIRJOITA PAREMPI",
+          "title": "Muuta ajatukset sanoiksi",
+          "subtitle": "Siirry karkeasta ideasta kirjoittamiseen, joka kuulostaa sinulta.",
+          "beat1": "Muoto",
+          "beat2": "Tarkenna",
+          "beat3": "Jaa"
+        },
+        "create": {
+          "focus": "LUO KUVIA",
+          "title": "Herätä ideat eloon",
+          "subtitle": "Kuvaile mitä kuvittelet ja luo ja tarkenna se sekunneissa.",
+          "beat1": "Kuvittele",
+          "beat2": "Luo",
+          "beat3": "Täydellinen"
+        },
+        "plan": {
+          "focus": "SUUNNITTELE PÄIVÄNI",
+          "title": "Jätä tilaa tärkeille asioille",
+          "subtitle": "Muuta kiireinen lista rauhalliseksi suunnitelmaksi, jota voit todella seurata.",
+          "beat1": "Priorisoi",
+          "beat2": "Järjestä",
+          "beat3": "Aloita"
+        }
+      },
+      "proof": {
+        "overline": "KAIKKI YHDESSÄ PAIKASSA",
+        "title": "Yksi paikka. Lisää mahdollisuuksia.",
+        "subtitle": "Siirry kysymyksestä luomiseen vaihtamatta sovellusten välillä.",
+        "item1": {
+          "title": "Kysy mitä tahansa",
+          "subtitle": "Edistyneet mallit selkeisiin ja hyödyllisiin kysymyksiin"
+        },
+        "item2": {
+          "title": "Luo kuvia",
+          "subtitle": "Muuta idea joksikin, jonka voit nähdä"
+        },
+        "item3": {
+          "title": "Hanki asiantuntija-apua",
+          "subtitle": "Avustajat työhön ja arkeen"
+        }
+      },
+      "controls": {
+        "back": "Takaisin",
+        "continue": "Jatka",
+        "finish": "Tutustu premiumiin"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "viikko",
       "termsOfUse": "Käyttöehdot",
       "privacyPolicy": "Tietosuojakäytäntö"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Avaa kaikki premium-ominaisuudet",
+        "subtitle": "Katso tarkalleen mitä tapahtuu ja milloin.",
+        "todayTitle": "Tänään",
+        "todayBody": "Avaa kaikki premium-ominaisuudet. Maksua ei ole maksettu nyt.",
+        "checkTitle": "2 päivän kuluttua — Muistutus",
+        "checkBody": "Lähetämme sinulle ilmoituksen, että kokeilujaksosi päättyy pian.",
+        "billingTitle": "3 päivässä",
+        "billingBody": "Laskutus alkaa automaattisesti, ellet peruuta sitä milloin tahansa aiemmin.",
+        "badge": "3 PÄIVÄÄ ILMAISEKSI",
+        "cardNote": "Ilmaisen kokeilun jälkeen",
+        "noPayment": "Ei maksua nyt",
+        "cta": "Aloita 3 päivän ilmainen kokeilujaksoni",
+        "renewalTerms": "3 päivää ilmaiseksi, sitten {{price}} / {{period}}. Uusiutuu automaattisesti, kunnes se peruutetaan."
+      },
+      "annual": {
+        "headline": "Avaa vuosi Cloud AI:ta",
+        "subtitle": "Yksi suunnitelma chatille, kuville ja asiantuntija-avulle.",
+        "todayTitle": "Tänään – premium alkaa",
+        "todayBody": "Avaa kaikki premium-AI-ominaisuudet välittömästi.",
+        "billingTitle": "Laskutetaan vuosittain",
+        "billingBody": "{{price}} tarjoaa yhden kokonaisen vuoden käyttöoikeuden.",
+        "renewalTitle": "Uusitaan vuosittain",
+        "renewalBody": "Peruuta milloin tahansa Google Play:ssä ennen uusimispäivää.",
+        "cta": "Jatka",
+        "renewalTerms": "{{price}} / {{period}}. Uusiutuu automaattisesti, kunnes se peruutetaan."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analysoidaan kuvia…",
       "searching": "Haetaan…",
-      "thinking": "Ajatellaan…"
+      "thinking": "Ajatellaan…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Verkkohaku",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Enemmän signaalia, vähemmän laskentataulukon kohinaa."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Lunasta päivittäiset kolikkosi",
       "subtitle": "Palaa joka päivä — palkinto kasvaa.",
-      "cta": "Kirjaudu sisään",
+      "cta": "Lunasta",
       "claimed": "Saatu! +{{amount}} kolikkoa",
       "later": "Myöhemmin"
     }

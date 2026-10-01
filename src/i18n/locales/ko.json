@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "계속하기",
+        "tryItFree": "무료로 체험하기",
+        "back": "뒤로"
+      },
+      "valueDemo": {
+        "title": "Cloud AI를 무료로 사용해 보세요.",
+        "workspaceLabel": "AI 작업 공간",
+        "userPromptLabel": "사용자 프롬프트",
+        "aiTypingLabel": "AI 타이핑",
+        "prompt": "배송 지연에 대해 고객에게 정중하게 답장을 작성하세요.",
+        "response": "안녕하세요. 기다려주셔서 감사합니다. 배송이 다소 지연될 수 있습니다. 계속해서 소식을 전해드리겠습니다.",
+        "cards": {
+          "doc": {
+            "title": "문서 요약",
+            "detail": "12페이지 파일 → 핵심 포인트 5개"
+          },
+          "reply": {
+            "title": "답장 작성 완료",
+            "detail": "정중하고 전문적인 어조"
+          },
+          "translation": {
+            "title": "번역 준비 완료",
+            "detail": "영어 → 스페인어"
+          }
+        },
+        "subtitle": "하나의 AI 워크스페이스에서 작성, 요약, 번역, 문서 스캔까지 한 번에."
+      },
+      "goals": {
+        "title": "무엇에 도움이 필요합니까?",
+        "subtitle": "1~3개의 목표를 선택하세요. 귀하의 AI 작업 공간을 구축해 드립니다.",
+        "emptyCta": "목표를 1개 이상 선택하세요.",
+        "items": {
+          "workFaster": {
+            "title": "더 빠르게 작업하세요",
+            "subtitle": "이메일, 답장, 작업"
+          },
+          "writeBetter": {
+            "title": "더 잘 쓰기",
+            "subtitle": "톤 수정, 재작성, 개선"
+          },
+          "understandDocuments": {
+            "title": "문서 이해",
+            "subtitle": "요약, 스캔, 요점"
+          },
+          "learnAnything": {
+            "title": "무엇이든 배워보세요",
+            "subtitle": "주제를 명확하게 설명하세요."
+          },
+          "createContent": {
+            "title": "콘텐츠 제작",
+            "subtitle": "게시물, 캡션, 아이디어"
+          },
+          "planBusiness": {
+            "title": "기획 사업",
+            "subtitle": "아이디어, 전략, 자동화"
+          },
+          "personalClarity": {
+            "title": "개인적인 명확성",
+            "subtitle": "결정, 습관, 생각"
+          },
+          "askBigQuestions": {
+            "title": "궁금한 점은 무엇이든 물어보세요",
+            "subtitle": "미래, 의미, AI, 생명"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "AI 도우미 만들기",
+        "readyTitle": "AI 비서가 준비되었습니다",
+        "subtitle": "어시스턴트가 구성되었습니다. 현재 평가판 액세스가 활성화되었습니다.",
+        "trialTitle": "3일 체험판",
+        "trialActivating": "활성화 중",
+        "trialEnabled": "활성화됨",
+        "steps": {
+          "0": "어시스턴트 준비하기",
+          "1": "응답 개인화",
+          "2": "접근권한 확보",
+          "3": "설정 마무리"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "소개합니다",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "계속하기",
       "start": "시작하기"
+    },
+    "v3": {
+      "intent": {
+        "overline": "당신의 것으로 만드세요",
+        "title": "Cloud AI가 무엇을 도와주어야 할까요?",
+        "cta": "계속"
+      },
+      "goals": {
+        "ask": "답변 찾기",
+        "write": "더 잘 쓰기",
+        "create": "이미지 생성",
+        "plan": "나의 하루를 계획해보세요"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "답변 찾기",
+          "title": "더 빠르게 명확성을 찾으세요",
+          "subtitle": "자연스럽게 물어보세요. 명확한 답변과 유용한 다음 단계를 알아보세요.",
+          "beat1": "이해하다",
+          "beat2": "결정하다",
+          "beat3": "앞으로 나아가다"
+        },
+        "write": {
+          "focus": "더 나은 글쓰기",
+          "title": "생각을 말로 바꾸세요",
+          "subtitle": "대략적인 아이디어에서 당신과 비슷한 글쓰기로 나아가세요.",
+          "beat1": "모양",
+          "beat2": "구체화",
+          "beat3": "공유"
+        },
+        "create": {
+          "focus": "이미지 만들기",
+          "title": "아이디어에 생명을 불어넣으세요",
+          "subtitle": "상상하는 것을 설명하고 몇 초 만에 만들고 개선하세요.",
+          "beat1": "상상해 보세요",
+          "beat2": "만들기",
+          "beat3": "완벽하다"
+        },
+        "plan": {
+          "focus": "나의 하루를 계획하세요",
+          "title": "중요한 내용을 위한 공간을 확보하세요",
+          "subtitle": "바쁜 목록을 실제로 따를 수 있는 차분한 계획으로 바꾸세요.",
+          "beat1": "우선순위",
+          "beat2": "정리",
+          "beat3": "시작"
+        }
+      },
+      "proof": {
+        "overline": "한 곳에서 모두",
+        "title": "한 곳. 더 많은 가능성.",
+        "subtitle": "앱 간 전환 없이 질문에서 생성으로 이동하세요.",
+        "item1": {
+          "title": "무엇이든 물어보세요",
+          "subtitle": "명확하고 유용한 답변을 위한 고급 모델"
+        },
+        "item2": {
+          "title": "이미지 생성",
+          "subtitle": "아이디어를 눈에 보이는 것으로 바꾸세요"
+        },
+        "item3": {
+          "title": "전문가의 도움 받기",
+          "subtitle": "업무 및 일상생활 보조자"
+        }
+      },
+      "controls": {
+        "back": "뒤로",
+        "continue": "계속",
+        "finish": "프리미엄 살펴보기"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "주",
       "termsOfUse": "이용약관",
       "privacyPolicy": "개인 정보 보호 정책"
+    },
+    "v3": {
+      "eyebrow": "클라우드 AI 프리미엄",
+      "trial": {
+        "headline": "모든 프리미엄 기능 잠금 해제",
+        "subtitle": "무슨 일이 언제 일어나는지 정확히 확인하세요.",
+        "todayTitle": "오늘",
+        "todayBody": "모든 프리미엄 기능을 잠금 해제하세요. 지금은 결제 기한이 없습니다.",
+        "checkTitle": "2일 후 — 알림",
+        "checkBody": "평가판이 곧 종료된다는 알림을 보내드리겠습니다.",
+        "billingTitle": "3일 후",
+        "billingBody": "이전에 취소하지 않으면 자동으로 청구가 시작됩니다.",
+        "badge": "3일 무료",
+        "cardNote": "무료 평가판 이후",
+        "noPayment": "지금 지불 기한이 없습니다",
+        "cta": "3일 무료 평가판 시작",
+        "renewalTerms": "3일 무료 체험 후 {{price}} / {{period}}. 취소할 때까지 자동 갱신됩니다."
+      },
+      "annual": {
+        "headline": "1년 간의 Cloud AI 잠금 해제",
+        "subtitle": "채팅, 이미지, 전문 AI 지원을 위한 하나의 플랜입니다.",
+        "todayTitle": "오늘 — 프리미엄 시작",
+        "todayBody": "모든 프리미엄 AI 기능을 즉시 잠금 해제하세요.",
+        "billingTitle": "매년 청구됨",
+        "billingBody": "{{price}}는 1년 동안 액세스할 수 있는 권한을 제공합니다.",
+        "renewalTitle": "매년 갱신",
+        "renewalBody": "갱신 날짜 이전에 Google Play에서 언제든지 취소하세요.",
+        "cta": "계속",
+        "renewalTerms": "{{price}} / {{period}}. 취소할 때까지 자동 갱신됩니다."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "이미지 분석 중…",
       "searching": "검색 중…",
-      "thinking": "생각 중…"
+      "thinking": "생각 중…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "웹 검색",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "더 많은 신호, 더 적은 스프레드시트 노이즈."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "매일 코인 받기",
       "subtitle": "매일 방문할수록 보상이 커집니다.",
-      "cta": "출석하기",
+      "cta": "받기",
       "claimed": "받았습니다! +{{amount}} 코인",
       "later": "나중에"
     }

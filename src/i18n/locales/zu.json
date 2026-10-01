@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Qhubeka",
+        "tryItFree": "Izame Mahhala",
+        "back": "Emuva"
+      },
+      "valueDemo": {
+        "title": "Sifuna ukuthi uzame i-Cloud AI mahhala",
+        "workspaceLabel": "AI INDAWO YOMSEBENZI",
+        "userPromptLabel": "UMBIKO WOMSEBENZISI",
+        "aiTypingLabel": "I-AI TYPING",
+        "prompt": "Bhala impendulo enesizotha kuklayenti mayelana nokubambezeleka kokulethwa.",
+        "response": "Sawubona, ngiyabonga ngokubekezela kwakho. Ukulethwa kwakho kungase kubambezeleke kancane. Ngizokugcina unolwazi.",
+        "cards": {
+          "doc": {
+            "title": "Isifinyezo Sedokhumenti",
+            "detail": "ifayela elinamakhasi ayi-12 → amaphuzu abalulekile ama-5"
+          },
+          "reply": {
+            "title": "Impendulo ilungisiwe",
+            "detail": "Ithoni enenhlonipho, yobungcweti"
+          },
+          "translation": {
+            "title": "Ukuhumusha Sekulungile",
+            "detail": "IsiNgisi → iSpanishi"
+          }
+        },
+        "subtitle": "Bhala, fingqa, humusha, futhi uskene amadokhumenti endaweni eyodwa yokusebenza ye-AI."
+      },
+      "goals": {
+        "title": "Yini odinga usizo ngayo?",
+        "subtitle": "Khetha amagoli angu-1–3. Sizokwakha indawo yakho yokusebenza ye-AI.",
+        "emptyCta": "Khetha okungenani igoli elingu-1",
+        "items": {
+          "workFaster": {
+            "title": "Sebenza ngokushesha",
+            "subtitle": "Ama-imeyili, izimpendulo, imisebenzi"
+          },
+          "writeBetter": {
+            "title": "Bhala kangcono",
+            "subtitle": "Lungisa ithoni, bhala kabusha, thuthukisa"
+          },
+          "understandDocuments": {
+            "title": "Qonda amadokhumenti",
+            "subtitle": "Izifinyezo, izikena, amaphuzu abalulekile"
+          },
+          "learnAnything": {
+            "title": "Funda noma yini",
+            "subtitle": "Chaza izihloko ngokucacile"
+          },
+          "createContent": {
+            "title": "Dala okuqukethwe",
+            "subtitle": "Okuthunyelwe, amagama-ncazelo, imibono"
+          },
+          "planBusiness": {
+            "title": "Hlela ibhizinisi",
+            "subtitle": "Imibono, isu, okuzenzakalelayo"
+          },
+          "personalClarity": {
+            "title": "Ukucaca komuntu siqu",
+            "subtitle": "Izinqumo, imikhuba, imicabango"
+          },
+          "askBigQuestions": {
+            "title": "Buza noma yimiphi imibuzo",
+            "subtitle": "Ikusasa, okusho, i-AI, impilo"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Idala umsizi wakho we-AI",
+        "readyTitle": "Umsizi wakho we-AI usulungile",
+        "subtitle": "Umsizi wakho ulungisiwe. Ukufinyelela kwesilingo kuvuliwe manje.",
+        "trialTitle": "Isivivinyo sezinsuku ezi-3",
+        "trialActivating": "iyasebenza",
+        "trialEnabled": "inikwe amandla",
+        "steps": {
+          "0": "Ilungiselela umsizi wakho",
+          "1": "Izimpendulo ezenzelwe wena",
+          "2": "Ivikela ukufinyelela",
+          "3": "Iqedela ukusetha"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Hlanganani",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Qhubeka",
       "start": "Ake siqale"
+    },
+    "v3": {
+      "intent": {
+        "overline": "YENZE EYAKHO",
+        "title": "Yini okufanele i-Cloud AI ikusize ukuthi uyenze?",
+        "cta": "Qhubeka"
+      },
+      "goals": {
+        "ask": "Thola izimpendulo",
+        "write": "Bhala kangcono",
+        "create": "Dala izithombe",
+        "plan": "Hlela usuku lwami"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "THOLA IZIMPENDULO",
+          "title": "Thola ukucaca ngokushesha",
+          "subtitle": "Buza ngokuzenzakalelayo. Thola impendulo ecacile nezinyathelo ezilandelayo eziwusizo.",
+          "beat1": "Qonda",
+          "beat2": "Nquma",
+          "beat3": "Qhubekela phambili"
+        },
+        "write": {
+          "focus": "BHALA NGCONO",
+          "title": "Guqula imicabango ube ngamagama",
+          "subtitle": "Ukusuka embonweni onzima uye ekubhaleni okuzwakala sengathi nguwe.",
+          "beat1": "Isimo",
+          "beat2": "Hlunga",
+          "beat3": "Yabelana"
+        },
+        "create": {
+          "focus": "DALA IZITHOMBE",
+          "title": "Letha imibono ekuphileni",
+          "subtitle": "Chaza ukuthi yini oyicabangayo, bese uyakudala futhi ukucwengisise ngemizuzwana.",
+          "beat1": "Cabanga nje",
+          "beat2": "Dala",
+          "beat3": "Iphelele"
+        },
+        "plan": {
+          "focus": "HLELA USUKU LWAMI",
+          "title": "Yenza isikhala salokho okubalulekile",
+          "subtitle": "Guqula uhlu olumatasa lube uhlelo oluzolile ongakwazi ukululandela.",
+          "beat1": "Beka kuqala",
+          "beat2": "Hlela",
+          "beat3": "Qala"
+        }
+      },
+      "proof": {
+        "overline": "KONKE ENDAWENI EYODWA",
+        "title": "Indawo eyodwa. Amathuba amaningi.",
+        "subtitle": "Susa embuzweni uye ekudaleni ngaphandle kokushintsha phakathi kwezinhlelo zokusebenza.",
+        "item1": {
+          "title": "Buza noma yini",
+          "subtitle": "Amamodeli athuthukile ezimpendulo ezicacile, eziwusizo"
+        },
+        "item2": {
+          "title": "Dala izithombe",
+          "subtitle": "Guqula umbono ube yinto oyibonayo"
+        },
+        "item3": {
+          "title": "Thola usizo lochwepheshe",
+          "subtitle": "Abasizi bomsebenzi nempilo yansuku zonke"
+        }
+      },
+      "controls": {
+        "back": "Emuva",
+        "continue": "Qhubeka",
+        "finish": "Hlola i-premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "isonto",
       "termsOfUse": "Imigomo Yokusebenzisa",
       "privacyPolicy": "Inqubomgomo Yemfihlo"
+    },
+    "v3": {
+      "eyebrow": "I-CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Vula zonke izici ze-premium",
+        "subtitle": "Bona kahle ukuthi kwenzekani futhi nini.",
+        "todayTitle": "Namuhla",
+        "todayBody": "Vula zonke izici ze-premium. Ayikho inkokhelo okufanele ikhokhe manje.",
+        "checkTitle": "Ezinsukwini ezi-2 - Isikhumbuzi",
+        "checkBody": "Sizokuthumelela isaziso sokuthi isilingo sakho siyaphela maduzane.",
+        "billingTitle": "Ezinsukwini ezi-3",
+        "billingBody": "Inkokhelo iqala ngokuzenzakalelayo ngaphandle kokuthi ukhansele noma nini ngaphambili.",
+        "badge": "IZINSUKU EZINGU-3 MAHHALA",
+        "cardNote": "Ngemva kwesivivinyo samahhala",
+        "noPayment": "Ayikho Inkokhelo Efuneka Manje",
+        "cta": "Qala Isivivinyo Sami Sezinsuku Ezi-3 Samahhala",
+        "renewalTerms": "Izinsuku ezi-3 mahhala, bese {{price}} / {{period}}. Ivuselelwa ngokuzenzakalelayo ize ikhanseliwe."
+      },
+      "annual": {
+        "headline": "Vula unyaka we-Cloud AI",
+        "subtitle": "Uhlelo olulodwa lwengxoxo, izithombe, nosizo lwe-AI yochwepheshe.",
+        "todayTitle": "Namuhla - i-premium iyaqala",
+        "todayBody": "Vula zonke izici ze-AI ze-premium ngokushesha.",
+        "billingTitle": "Ikhokhiswa minyaka yonke",
+        "billingBody": "I-{{price}} ikunikeza unyaka owodwa ogcwele wokufinyelela.",
+        "renewalTitle": "Ivuselelwa minyaka yonke",
+        "renewalBody": "Khansela noma nini ku-Google Play ngaphambi kwedethi yakho yokuvuselela.",
+        "cta": "Qhubeka",
+        "renewalTerms": "I-{{price}} / {{period}}. Ivuselelwa ngokuzenzakalelayo ize ikhanseliwe."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Ihlaziya izithombe...",
       "searching": "Iyasesha...",
-      "thinking": "Iyacabanga..."
+      "thinking": "Iyacabanga...",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Usesho lwewebhu",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Isiginali eyengeziwe, umsindo omncane wesipredishithi."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Thatha izinhlamvu zemali zakho zansuku zonke",
       "subtitle": "Buya nsuku zonke — umklomelo uyakhula.",
-      "cta": "Ngena",
+      "cta": "Thatha",
       "claimed": "Kutholakele! +{{amount}} izinhlamvu",
       "later": "Emuva kwesikhathi"
     }

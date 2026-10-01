@@ -9,6 +9,7 @@ describe('onboarding performance and handoff contract', () => {
   const centerButton = read('src/components/onboarding/CenterNextButton.jsx');
   const nextButton = read('src/components/onboarding/NextButtonArrow.jsx');
   const app = read('App.js');
+  const paywall = read('src/components/PremiumPaywallScreen.jsx');
 
   test('keeps transition frames off the JavaScript thread', () => {
     expect(intro).toContain('useNativeDriver: true');
@@ -29,14 +30,19 @@ describe('onboarding performance and handoff contract', () => {
     expect(app).toContain('!initialPaywallPresented');
   });
 
-  test('never exposes a detached paywall hero during onboarding startup', () => {
+  test('hands off without blocking on a detached paywall hero preloader', () => {
     expect(app).not.toContain('styles.firstLaunchHero');
-    expect(app).toContain('styles.paywallImagePreload');
-    expect(app).toContain('opacity: 0');
+    expect(app).not.toContain('styles.paywallImagePreload');
+    expect(app).not.toContain('handlePaywallHeroReady');
+    expect(paywall).toContain('const HERO_IMAGE =');
+    expect(paywall).toContain('source={HERO_IMAGE}');
+    expect(paywall).toContain('cloud-ai-intelligence-hero-v2-optimized.jpg');
+    expect(paywall).toContain('resizeMethod="resize"');
+    expect(paywall).toContain('useState(USE_TIMELINE_PAYWALL)');
+    expect(app).toContain('setInitialPaywallVisible(true)');
+    expect(paywall).toContain("accent: '#0ABAB5'");
     expect(intro).toContain("backgroundColor: '#0A0A0A'");
     expect(app).toContain('styles.fullscreenOverlay');
-    expect(app).toContain('onLoad={handlePaywallHeroReady}');
-    expect(app).toContain('paywallHeroReady &&');
   });
 
   test('keeps the branded launch overlay until onboarding has painted', () => {

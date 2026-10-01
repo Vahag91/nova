@@ -1,3 +1,4 @@
+import { IMAGE_STUDIO_ENABLED } from '../../constants/featureFlags';
 import { Text, Pressable, StyleSheet, ScrollView } from 'react-native';
 import React, { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -94,6 +95,8 @@ const SuggestionCards = ({
       ? list.filter(
           (item, index) =>
             item &&
+            (IMAGE_STUDIO_ENABLED ||
+              (item.id !== 'create-images' && item.id !== 'edit-image')) &&
             typeof item.icon === 'string' &&
             (typeof item.id === 'string' || (item.id = `sugg_${index}`)),
         )

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
 
@@ -131,7 +130,9 @@ function protectText(value) {
   let protectedText = value;
   const replacements = [];
   const protect = match => {
-    const token = `⟬P${String(replacements.length).padStart(3, '0')}⟭`;
+    // Plain ASCII sentinels survive transliteration-heavy translation engines
+    // more reliably than bracketed Unicode placeholders.
+    const token = `ZXQPROTECT${String(replacements.length).padStart(3, '0')}QXZ`;
     replacements.push([token, match]);
     return token;
   };
@@ -148,9 +149,7 @@ function protectText(value) {
 function restoreText(value, replacements) {
   let restored = value;
   for (const [token, original] of replacements) {
-    const number = token.match(/\d+/)?.[0];
-    const flexibleToken = `⟬\\s*P\\s*${number}\\s*⟭`;
-    restored = restored.replace(new RegExp(flexibleToken, 'g'), original);
+    restored = restored.replaceAll(token, original);
   }
   return restored.trim();
 }
@@ -264,7 +263,7 @@ async function generateLocale(locale, targetLanguage, english) {
     return;
   }
 
-  const output = structuredClone(english);
+  const output = JSON.parse(JSON.stringify(english));
   const existing = fs.existsSync(outputPath)
     ? JSON.parse(fs.readFileSync(outputPath, 'utf8'))
     : null;
@@ -307,7 +306,7 @@ async function main() {
   const locales = requested.length > 0
     ? requested
     : process.argv.includes('--sync-existing')
-      ? Object.keys(EXISTING_TARGETS)
+      ? Object.keys(targetMap)
       : Object.keys(TARGETS);
   const english = JSON.parse(fs.readFileSync(ENGLISH_PATH, 'utf8'));
 

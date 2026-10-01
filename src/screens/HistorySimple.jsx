@@ -352,7 +352,7 @@ const renderItem = ({ item: thread }) => {
         renderItem={renderItem}
         renderSectionHeader={renderSectionHeader}
         stickySectionHeadersEnabled
-        removeClippedSubviews
+        removeClippedSubviews={false}
         initialNumToRender={8}
         maxToRenderPerBatch={6}
         windowSize={5}

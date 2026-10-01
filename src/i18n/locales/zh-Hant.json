@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "繼續",
+        "tryItFree": "免費試用",
+        "back": "返回"
+      },
+      "valueDemo": {
+        "title": "我們希望您免費試用 Cloud AI",
+        "workspaceLabel": "人工智慧工作空間",
+        "userPromptLabel": "使用者提示",
+        "aiTypingLabel": "人工智慧打字",
+        "prompt": "寫一封關於延遲交貨的禮貌回覆給客戶。",
+        "response": "您好，感謝您的耐心等待。您的交貨可能會稍微延遲。我會及時通知您最新情況。",
+        "cards": {
+          "doc": {
+            "title": "文件摘要",
+            "detail": "12頁文件→5個要點"
+          },
+          "reply": {
+            "title": "回覆已草擬",
+            "detail": "禮貌、專業的語氣"
+          },
+          "translation": {
+            "title": "翻譯就緒",
+            "detail": "英語 → 西班牙語"
+          }
+        },
+        "subtitle": "在一個 AI 工作區中寫作、摘要、翻譯和掃描文件。"
+      },
+      "goals": {
+        "title": "您需要什麼協助？",
+        "subtitle": "選擇 1-3 個目標。我們將為您建立人工智慧工作空間。",
+        "emptyCta": "至少選擇 1 個目標",
+        "items": {
+          "workFaster": {
+            "title": "工作更快",
+            "subtitle": "電子郵件、回覆、任務"
+          },
+          "writeBetter": {
+            "title": "寫得更好",
+            "subtitle": "修復語氣、重寫、改進"
+          },
+          "understandDocuments": {
+            "title": "看懂文檔",
+            "subtitle": "總結、掃描、重點"
+          },
+          "learnAnything": {
+            "title": "學點什麼",
+            "subtitle": "清楚解釋主題"
+          },
+          "createContent": {
+            "title": "創建內容",
+            "subtitle": "貼文、圖說、創意"
+          },
+          "planBusiness": {
+            "title": "企劃生意",
+            "subtitle": "想法、策略、自動化"
+          },
+          "personalClarity": {
+            "title": "個人清晰度",
+            "subtitle": "決定、習慣、想法"
+          },
+          "askBigQuestions": {
+            "title": "有問題請問",
+            "subtitle": "未來、意義、AI、生活"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "創建你的人工智慧助手",
+        "readyTitle": "你的AI助理已準備好",
+        "subtitle": "您的助理已配置完成。試用訪問現已開啟。",
+        "trialTitle": "3天試用",
+        "trialActivating": "激活",
+        "trialEnabled": "已啟用",
+        "steps": {
+          "0": "準備你的助手",
+          "1": "個人化回复",
+          "2": "保護訪問",
+          "3": "正在完成設定"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "認識一下",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "繼續",
       "start": "開始使用"
+    },
+    "v3": {
+      "intent": {
+        "overline": "讓它成為你的",
+        "title": "雲AI應該幫助您做什麼？",
+        "cta": "繼續"
+      },
+      "goals": {
+        "ask": "尋找答案",
+        "write": "寫得更好",
+        "create": "創建圖像",
+        "plan": "計劃我的一天"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "尋找答案",
+          "title": "更快地找到清晰度",
+          "subtitle": "自然地問。獲得明確的答案和有用的後續步驟。",
+          "beat1": "了解",
+          "beat2": "決定",
+          "beat3": "前進"
+        },
+        "write": {
+          "focus": "寫得更好",
+          "title": "將想法轉化為言語",
+          "subtitle": "從一個粗略的想法到寫出聽起來像你的作品。",
+          "beat1": "形狀",
+          "beat2": "精煉",
+          "beat3": "分享"
+        },
+        "create": {
+          "focus": "創建圖像",
+          "title": "將想法變為現實",
+          "subtitle": "描述您的想像，然後在幾秒鐘內創建並完善它。",
+          "beat1": "想像一下",
+          "beat2": "創建",
+          "beat3": "完美"
+        },
+        "plan": {
+          "focus": "計劃我的一天",
+          "title": "為重要的事情騰出空間",
+          "subtitle": "將繁忙的清單變成您可以實際遵循的冷靜計劃。",
+          "beat1": "確定優先順序",
+          "beat2": "整理",
+          "beat3": "開始"
+        }
+      },
+      "proof": {
+        "overline": "一切都在一處",
+        "title": "一處。更多的可能性。",
+        "subtitle": "從問題轉移到創作，無需在應用程式之間切換。",
+        "item1": {
+          "title": "詢問任何事情",
+          "subtitle": "先進的模型提供清晰、有用的答案"
+        },
+        "item2": {
+          "title": "創建圖像",
+          "subtitle": "將想法變成你看得見的東西"
+        },
+        "item3": {
+          "title": "獲得專家協助",
+          "subtitle": "工作、生活的得力助手"
+        }
+      },
+      "controls": {
+        "back": "返回",
+        "continue": "繼續",
+        "finish": "探索優質"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "週",
       "termsOfUse": "使用條款",
       "privacyPolicy": "隱私權政策"
+    },
+    "v3": {
+      "eyebrow": "雲端人工智慧高階版",
+      "trial": {
+        "headline": "解鎖所有高級功能",
+        "subtitle": "確切地了解發生了什麼以及何時發生。",
+        "todayTitle": "今天",
+        "todayBody": "解鎖所有高級功能。現在無需付款。",
+        "checkTitle": "2 天後 — 提醒",
+        "checkBody": "我們將向您發送通知，告知您試用即將結束。",
+        "billingTitle": "3天內",
+        "billingBody": "除非您之前取消，否則計費將自動開始。",
+        "badge": "3 天免費",
+        "cardNote": "免費試用後",
+        "noPayment": "現在沒有到期付款",
+        "cta": "開始 3 天免費試用",
+        "renewalTerms": "3 天免費，然後是 {{price}} / {{period}}。自動續訂直至取消。"
+      },
+      "annual": {
+        "headline": "解鎖一年的雲端人工智慧",
+        "subtitle": "包含聊天、圖像和專家 AI 幫助的計劃。",
+        "todayTitle": "今天 — 保費開始",
+        "todayBody": "立即解鎖所有高級人工智慧功能。",
+        "billingTitle": "按年計費",
+        "billingBody": "{{price}} 為您提供一整年的存取權限。",
+        "renewalTitle": "每年續訂",
+        "renewalBody": "在續約日期之前隨時在 Google Play 中取消。",
+        "cta": "繼續",
+        "renewalTerms": "{{price}} / {{period}}。自動續訂直至取消。"
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "正在分析圖片…",
       "searching": "正在搜尋…",
-      "thinking": "正在思考…"
+      "thinking": "正在思考…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "網頁搜尋",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "更多訊號，更少電子表格雜訊。"
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "領取每日金幣",
       "subtitle": "每天回來，獎勵更豐厚。",
-      "cta": "簽到",
+      "cta": "領取",
       "claimed": "已領取！+{{amount}} 金幣",
       "later": "稍後"
     }

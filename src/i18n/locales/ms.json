@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Teruskan",
+        "tryItFree": "Cuba secara percuma",
+        "back": "belakang"
+      },
+      "valueDemo": {
+        "title": "Kami mahu anda mencuba Cloud AI secara percuma",
+        "workspaceLabel": "RUANG KERJA AI",
+        "userPromptLabel": "PROMPT PENGGUNA",
+        "aiTypingLabel": "MENAIP AI",
+        "prompt": "Tulis balasan sopan kepada pelanggan tentang penghantaran yang tertunda.",
+        "response": "Hai, terima kasih atas kesabaran anda. Penghantaran anda mungkin sedikit tertangguh. Saya akan memastikan anda dikemas kini.",
+        "cards": {
+          "doc": {
+            "title": "Ringkasan Dokumen",
+            "detail": "Fail 12 halaman → 5 perkara utama"
+          },
+          "reply": {
+            "title": "Balasan Disediakan",
+            "detail": "Nada sopan dan profesional"
+          },
+          "translation": {
+            "title": "Terjemahan Sedia",
+            "detail": "Bahasa Inggeris → Bahasa Sepanyol"
+          }
+        },
+        "subtitle": "Tulis, ringkaskan, terjemah dan imbas dokumen dalam satu ruang kerja AI."
+      },
+      "goals": {
+        "title": "Apa yang anda perlukan bantuan?",
+        "subtitle": "Pilih 1–3 gol. Kami akan membina ruang kerja AI anda.",
+        "emptyCta": "Pilih sekurang-kurangnya 1 matlamat",
+        "items": {
+          "workFaster": {
+            "title": "Bekerja lebih cepat",
+            "subtitle": "E-mel, balasan, tugasan"
+          },
+          "writeBetter": {
+            "title": "Tulis lebih baik",
+            "subtitle": "Betulkan nada, tulis semula, perbaiki"
+          },
+          "understandDocuments": {
+            "title": "Fahami dokumen",
+            "subtitle": "Ringkasan, imbasan, perkara utama"
+          },
+          "learnAnything": {
+            "title": "Ketahui apa sahaja",
+            "subtitle": "Terangkan topik dengan jelas"
+          },
+          "createContent": {
+            "title": "Cipta kandungan",
+            "subtitle": "Siaran, kapsyen, idea"
+          },
+          "planBusiness": {
+            "title": "Rancang perniagaan",
+            "subtitle": "Idea, strategi, automasi"
+          },
+          "personalClarity": {
+            "title": "Kejelasan peribadi",
+            "subtitle": "Keputusan, tabiat, pemikiran"
+          },
+          "askBigQuestions": {
+            "title": "Tanya sebarang soalan",
+            "subtitle": "Masa depan, makna, AI, kehidupan"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "Mencipta pembantu AI anda",
+        "readyTitle": "Pembantu AI anda sudah sedia",
+        "subtitle": "Pembantu anda telah dikonfigurasikan. Akses percubaan dihidupkan sekarang.",
+        "trialTitle": "3 hari percubaan",
+        "trialActivating": "mengaktifkan",
+        "trialEnabled": "didayakan",
+        "steps": {
+          "0": "Menyediakan pembantu anda",
+          "1": "Memperibadikan respons",
+          "2": "Melindungi akses",
+          "3": "Menamatkan persediaan"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Kenali",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Teruskan",
       "start": "Mari mulakan"
+    },
+    "v3": {
+      "intent": {
+        "overline": "JADI MILIK ANDA",
+        "title": "Apakah yang perlu Cloud AI bantu anda lakukan?",
+        "cta": "teruskan"
+      },
+      "goals": {
+        "ask": "Cari jawapan",
+        "write": "Tulis lebih baik",
+        "create": "Cipta imej",
+        "plan": "Rancang hari saya"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "CARI JAWAPAN",
+          "title": "Cari kejelasan lebih cepat",
+          "subtitle": "Tanya secara semula jadi. Dapatkan jawapan yang jelas dan langkah seterusnya yang berguna.",
+          "beat1": "faham",
+          "beat2": "buat keputusan",
+          "beat3": "Bergerak ke hadapan"
+        },
+        "write": {
+          "focus": "MENULIS LEBIH BAIK",
+          "title": "Tukar fikiran menjadi kata-kata",
+          "subtitle": "Pergi daripada idea yang kasar kepada penulisan yang kelihatan seperti anda.",
+          "beat1": "bentuk",
+          "beat2": "Perhalusi",
+          "beat3": "Kongsi"
+        },
+        "create": {
+          "focus": "BUAT IMEJ",
+          "title": "Hidupkan idea",
+          "subtitle": "Terangkan perkara yang anda bayangkan, kemudian buat dan perhalusinya dalam beberapa saat.",
+          "beat1": "Bayangkan",
+          "beat2": "Buat",
+          "beat3": "Sempurna"
+        },
+        "plan": {
+          "focus": "RANCANGKAN HARI SAYA",
+          "title": "Buat ruang untuk perkara yang penting",
+          "subtitle": "Tukar senarai sibuk menjadi pelan yang tenang yang sebenarnya boleh anda ikuti.",
+          "beat1": "Utamakan",
+          "beat2": "menyusun",
+          "beat3": "Mulakan"
+        }
+      },
+      "proof": {
+        "overline": "SEMUA DALAM SATU TEMPAT",
+        "title": "Satu tempat. Lebih banyak kemungkinan.",
+        "subtitle": "Beralih dari soalan ke penciptaan tanpa bertukar antara apl.",
+        "item1": {
+          "title": "Tanya apa sahaja",
+          "subtitle": "Model lanjutan untuk jawapan yang jelas dan berguna"
+        },
+        "item2": {
+          "title": "Cipta imej",
+          "subtitle": "Tukar idea kepada sesuatu yang anda boleh lihat"
+        },
+        "item3": {
+          "title": "Dapatkan bantuan pakar",
+          "subtitle": "Pembantu untuk kerja dan kehidupan seharian"
+        }
+      },
+      "controls": {
+        "back": "belakang",
+        "continue": "teruskan",
+        "finish": "Terokai premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "minggu",
       "termsOfUse": "Syarat Penggunaan",
       "privacyPolicy": "Dasar Privasi"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Buka kunci semua ciri premium",
+        "subtitle": "Lihat dengan tepat apa yang berlaku dan bila.",
+        "todayTitle": "Hari ini",
+        "todayBody": "Buka kunci setiap ciri premium. Tiada bayaran perlu dibayar sekarang.",
+        "checkTitle": "Dalam 2 hari — Peringatan",
+        "checkBody": "Kami akan menghantar pemberitahuan kepada anda bahawa percubaan anda akan tamat tidak lama lagi.",
+        "billingTitle": "Dalam 3 hari",
+        "billingBody": "Pengebilan bermula secara automatik melainkan anda membatalkan pada bila-bila masa sebelum ini.",
+        "badge": "3 HARI PERCUMA",
+        "cardNote": "Selepas percubaan percuma",
+        "noPayment": "Tiada Pembayaran Tertunggak Sekarang",
+        "cta": "Mulakan Percubaan Percuma 3 Hari Saya",
+        "renewalTerms": "3 hari percuma, kemudian {{price}} / {{period}}. Autobaharui sehingga dibatalkan."
+      },
+      "annual": {
+        "headline": "Buka kunci tahun Cloud AI",
+        "subtitle": "Satu pelan untuk sembang, imej dan bantuan AI pakar.",
+        "todayTitle": "Hari ini — premium bermula",
+        "todayBody": "Buka kunci setiap ciri AI premium dengan segera.",
+        "billingTitle": "Dibilkan setiap tahun",
+        "billingBody": "{{price}} memberi anda satu tahun penuh akses.",
+        "renewalTitle": "Dibaharui setiap tahun",
+        "renewalBody": "Batalkan pada bila-bila masa dalam Google Play sebelum tarikh pembaharuan anda.",
+        "cta": "Teruskan",
+        "renewalTerms": "{{price}} / {{period}}. Autobaharui sehingga dibatalkan."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Menganalisis imej…",
       "searching": "Mencari…",
-      "thinking": "Berfikir…"
+      "thinking": "Berfikir…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Carian web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Lebih banyak isyarat, kurang bunyi hamparan."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Tuntut syiling harian anda",
       "subtitle": "Kembali setiap hari — ganjaran makin besar.",
-      "cta": "Daftar masuk",
+      "cta": "Tuntut",
       "claimed": "Diterima! +{{amount}} syiling",
       "later": "Nanti"
     }

@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "ቀጥል",
+        "tryItFree": "በነጻ ይሞክሩት።",
+        "back": "ተመለስ"
+      },
+      "valueDemo": {
+        "title": "Cloud AI በነጻ እንዲሞክሩ እንፈልጋለን",
+        "workspaceLabel": "AI የስራ ቦታ",
+        "userPromptLabel": "የተጠቃሚ ጥያቄ",
+        "aiTypingLabel": "AI መተየብ",
+        "prompt": "ስለ ዘገየ ማድረስ ለደንበኛ ጨዋነት ያለው ምላሽ ይጻፉ።",
+        "response": "ሰላም፣ ስለ ትዕግስትዎ እናመሰግናለን። ማድረስዎ በትንሹ ሊዘገይ ይችላል። አዘምነዋለሁ።",
+        "cards": {
+          "doc": {
+            "title": "የሰነድ ማጠቃለያ",
+            "detail": "ባለ 12 ገጽ ፋይል → 5 ቁልፍ ነጥቦች"
+          },
+          "reply": {
+            "title": "መልስ ተዘጋጅቷል",
+            "detail": "ትሁት፣ ሙያዊ ቃና"
+          },
+          "translation": {
+            "title": "ትርጉም ዝግጁ",
+            "detail": "እንግሊዝኛ → ስፓኒሽ"
+          }
+        },
+        "subtitle": "በአንድ የAI የስራ ቦታ ውስጥ ይጻፉ፣ ያጠቃልሉ፣ ይተርጉሙ እና ሰነዶችን ይቃኙ።"
+      },
+      "goals": {
+        "title": "በምን እርዳታ ይፈልጋሉ?",
+        "subtitle": "1-3 ግቦችን ይምረጡ። የእርስዎን AI የስራ ቦታ እንገነባለን።",
+        "emptyCta": "ቢያንስ 1 ግብ ይምረጡ",
+        "items": {
+          "workFaster": {
+            "title": "በፍጥነት ይስሩ",
+            "subtitle": "ኢሜይሎች፣ ምላሾች፣ ተግባራት"
+          },
+          "writeBetter": {
+            "title": "በተሻለ ሁኔታ ይፃፉ",
+            "subtitle": "ድምጽን አስተካክል፣ እንደገና ፃፍ፣ አሻሽል።"
+          },
+          "understandDocuments": {
+            "title": "ሰነዶችን ይረዱ",
+            "subtitle": "ማጠቃለያዎች፣ ቅኝቶች፣ ቁልፍ ነጥቦች"
+          },
+          "learnAnything": {
+            "title": "ማንኛውንም ነገር ተማር",
+            "subtitle": "ርዕሶችን በግልጽ አስረዳ"
+          },
+          "createContent": {
+            "title": "ይዘት ይፍጠሩ",
+            "subtitle": "ልጥፎች፣ መግለጫ ጽሑፎች፣ ሀሳቦች"
+          },
+          "planBusiness": {
+            "title": "እቅድ ንግድ",
+            "subtitle": "ሀሳቦች፣ ስትራቴጂ፣ አውቶማቲክ"
+          },
+          "personalClarity": {
+            "title": "የግል ግልጽነት",
+            "subtitle": "ውሳኔዎች, ልምዶች, ሀሳቦች"
+          },
+          "askBigQuestions": {
+            "title": "ማንኛውንም ጥያቄ ይጠይቁ",
+            "subtitle": "ወደፊት፣ ትርጉም፣ AI፣ ሕይወት"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "የእርስዎን AI ረዳት በመፍጠር ላይ",
+        "readyTitle": "የእርስዎ AI ረዳት ዝግጁ ነው።",
+        "subtitle": "የእርስዎ ረዳት ተዋቅሯል። የሙከራ መዳረሻ አሁን በርቶ ነው።",
+        "trialTitle": "የ 3 ቀናት ሙከራ",
+        "trialActivating": "በማግበር ላይ",
+        "trialEnabled": "ነቅቷል።",
+        "steps": {
+          "0": "ረዳትዎን በማዘጋጀት ላይ",
+          "1": "ምላሾችን ግላዊ ማድረግ",
+          "2": "መዳረሻን በማስጠበቅ ላይ",
+          "3": "ማዋቀሩን በማጠናቀቅ ላይ"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "ተገናኙ",
       "titleHighlight": "ፒ 000",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "ቀጥል",
       "start": "እንጀምር"
+    },
+    "v3": {
+      "intent": {
+        "overline": "ያንተ ያድርጉት",
+        "title": "Cloud AI ምን ሊረዳዎት ይገባል?",
+        "cta": "ቀጥል"
+      },
+      "goals": {
+        "ask": "መልሶችን ያግኙ",
+        "write": "በተሻለ ሁኔታ ይፃፉ",
+        "create": "ምስሎችን ይፍጠሩ",
+        "plan": "ቀኔን ያቅዱ"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "መልሶችን ያግኙ",
+          "title": "ግልጽነትን በፍጥነት ያግኙ",
+          "subtitle": "በተፈጥሮ ይጠይቁ። ግልፅ መልስ እና ጠቃሚ ቀጣይ እርምጃዎችን ያግኙ።",
+          "beat1": "ተረዳ",
+          "beat2": "ይወስኑ",
+          "beat3": "ወደፊት ሂድ"
+        },
+        "write": {
+          "focus": "በተሻለ ሁኔታ ጻፍ",
+          "title": "ሀሳቦችን ወደ ቃላት ይለውጡ",
+          "subtitle": "ከአስቸጋሪ ሀሳብ ወደ እርስዎ የሚመስል ወደመፃፍ ይሂዱ።",
+          "beat1": "ቅርጽ",
+          "beat2": "አጣራ",
+          "beat3": "አጋራ"
+        },
+        "create": {
+          "focus": "ምስሎችን ፍጠር",
+          "title": "ሀሳቦችን ወደ ሕይወት አምጡ",
+          "subtitle": "ያሰቡትን ይግለጹ፣ ከዚያ ፈጥረው በሰከንዶች ውስጥ አጥራው።",
+          "beat1": "አስቡት",
+          "beat2": "ፍጠር",
+          "beat3": "ፍጹም"
+        },
+        "plan": {
+          "focus": "ቀኔን አቅድ",
+          "title": "ለጉዳዩ ቦታ ይስጡ",
+          "subtitle": "የተጨናነቀ ዝርዝርን ወደ የተረጋጋ እቅድ ቀይር።",
+          "beat1": "ቅድሚያ ስጥ",
+          "beat2": "አደራጅ",
+          "beat3": "ጀምር"
+        }
+      },
+      "proof": {
+        "overline": "ሁሉም በአንድ ቦታ",
+        "title": "አንድ ቦታ. ተጨማሪ እድሎች።",
+        "subtitle": "በመተግበሪያዎች መካከል ሳይቀይሩ ከጥያቄ ወደ ፈጠራ ይሂዱ።",
+        "item1": {
+          "title": "ማንኛውንም ነገር ይጠይቁ",
+          "subtitle": "ግልጽ ፣ ጠቃሚ መልሶች ለማግኘት የላቀ ሞዴሎች"
+        },
+        "item2": {
+          "title": "ምስሎችን ይፍጠሩ",
+          "subtitle": "አንድን ሀሳብ ወደሚያዩት ነገር ይለውጡት።"
+        },
+        "item3": {
+          "title": "የባለሙያ እርዳታ ያግኙ",
+          "subtitle": "ለሥራ እና ለዕለት ተዕለት ኑሮ ረዳቶች"
+        }
+      },
+      "controls": {
+        "back": "ተመለስ",
+        "continue": "ቀጥል",
+        "finish": "ፕሪሚየምን ያስሱ"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "ሳምንት",
       "termsOfUse": "የአጠቃቀም ውል",
       "privacyPolicy": "የግላዊነት ፖሊሲ"
+    },
+    "v3": {
+      "eyebrow": "Cloud AI ፕሪሚየም",
+      "trial": {
+        "headline": "ሁሉንም ዋና ባህሪያት ይክፈቱ",
+        "subtitle": "በትክክል ምን እና መቼ እንደሚከሰት ይመልከቱ።",
+        "todayTitle": "ዛሬ",
+        "todayBody": "እያንዳንዱን ፕሪሚየም ባህሪ ይክፈቱ። አሁን ምንም ክፍያ የለም።",
+        "checkTitle": "በ 2 ቀናት ውስጥ - አስታዋሽ",
+        "checkBody": "ሙከራዎ በቅርቡ እንደሚያበቃ ማሳወቂያ እንልክልዎታለን።",
+        "billingTitle": "በ 3 ቀናት ውስጥ",
+        "billingBody": "ከዚህ በፊት በማንኛውም ጊዜ ካልሰረዙ በስተቀር ክፍያ በራስ-ሰር ይጀምራል።",
+        "badge": "3 ቀናት በነጻ",
+        "cardNote": "ከነፃ ሙከራ በኋላ",
+        "noPayment": "አሁን ምንም ክፍያ የለም።",
+        "cta": "የእኔን የ3-ቀን ነጻ ሙከራ ጀምር",
+        "renewalTerms": "3 ቀናት ነጻ፣ ከዚያ {{price}}/{{period}}። እስኪሰረዝ ድረስ በራስ-ሰር ይታደሳል።"
+      },
+      "annual": {
+        "headline": "የ Cloud AI አንድ ዓመት ይክፈቱ",
+        "subtitle": "አንድ እቅድ ለውይይት፣ ምስሎች እና የኤክስፐርት AI እገዛ።",
+        "todayTitle": "ዛሬ - ፕሪሚየም ይጀምራል",
+        "todayBody": "እያንዳንዱን ፕሪሚየም AI ባህሪ ወዲያውኑ ይክፈቱ።",
+        "billingTitle": "በየአመቱ የሚከፈል",
+        "billingBody": "{{price}} የአንድ ሙሉ አመት መዳረሻ ይሰጥዎታል።",
+        "renewalTitle": "በየአመቱ ይታደሳል",
+        "renewalBody": "ከዕድሳት ቀንዎ በፊት በማንኛውም ጊዜ በGoogle Play ይሰርዙ።",
+        "cta": "ቀጥል",
+        "renewalTerms": "{{price}} / {{period}}. እስኪሰረዝ ድረስ በራስ-ሰር ይታደሳል።"
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "ምስሎችን በመተንተን ላይ…",
       "searching": "በመፈለግ ላይ…",
-      "thinking": "በማሰብ…"
+      "thinking": "በማሰብ…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "የድር ፍለጋ",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "ተጨማሪ ምልክት፣ ያነሰ የተመን ሉህ ጫጫታ።"
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "የዕለት ሳንቲሞችዎን ይውሰዱ",
       "subtitle": "በየቀኑ ይመለሱ፤ ሽልማቱ ይጨምራል።",
-      "cta": "ይመዝገቡ",
+      "cta": "ይውሰዱ",
       "claimed": "ተቀብለዋል! +{{amount}} ሳንቲም",
       "later": "በኋላ"
     }

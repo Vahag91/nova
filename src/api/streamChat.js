@@ -1,7 +1,8 @@
 import { CHAT_PROXY_URL, SUPABASE_ANON_KEY } from '../config/endpoints';
+import { DEFAULT_CHAT_MODEL } from '../config/models';
 import { SSEClient } from '../lib/SSEClient';
 
-const DEFAULT_FALLBACK_MODEL = 'gpt-5.4-nano';
+const DEFAULT_FALLBACK_MODEL = DEFAULT_CHAT_MODEL;
 const logStream = () => {};
 
 export function streamChat({
@@ -34,16 +35,31 @@ export function streamChat({
 
   // Map to OpenAI-style content parts (vision ready)
   const outMessages = messages.map((m) => {
-    if (Array.isArray(m.content)) return { role: m.role, content: m.content };
+    const documentAttachments = (Array.isArray(m.attachments) ? m.attachments : [])
+      .filter(attachment => attachment?.kind === 'document' && attachment?.id)
+      .map(attachment => ({
+        id: String(attachment.id),
+        kind: 'document',
+        name: attachment.name,
+        mimeType: attachment.mimeType,
+        size: Number.isFinite(attachment.size) ? attachment.size : null,
+      }));
+    const withDocuments = message => documentAttachments.length
+      ? { ...message, attachments: documentAttachments }
+      : message;
+
+    if (Array.isArray(m.content)) {
+      return withDocuments({ role: m.role, content: m.content });
+    }
 
     if (Array.isArray(m.imageUrls) && m.imageUrls.length) {
       const parts = [];
       if (m.content) parts.push({ type: 'text', text: m.content });
       for (const url of m.imageUrls) parts.push({ type: 'image_url', image_url: { url } });
-      return { role: m.role, content: parts };
+      return withDocuments({ role: m.role, content: parts });
     }
 
-    return { role: m.role, content: m.content ?? '' };
+    return withDocuments({ role: m.role, content: m.content ?? '' });
   });
 
   const body = {

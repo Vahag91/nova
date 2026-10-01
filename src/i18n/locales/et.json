@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Jätka",
+        "tryItFree": "Proovige seda tasuta",
+        "back": "Tagasi"
+      },
+      "valueDemo": {
+        "title": "Soovime, et prooviksite Cloud AI-d tasuta",
+        "workspaceLabel": "AI TÖÖRUUM",
+        "userPromptLabel": "KASUTAJA VIIPA",
+        "aiTypingLabel": "AI TÜPPIMINE",
+        "prompt": "Kirjutage kliendile viisakas vastus tarne hilinemise kohta.",
+        "response": "Tere, täname kannatlikkuse eest. Teie tarne võib veidi viibida. Hoian teid kursis.",
+        "cards": {
+          "doc": {
+            "title": "Dokumendi kokkuvõte",
+            "detail": "12-leheküljeline fail → 5 põhipunkti"
+          },
+          "reply": {
+            "title": "Vastus koostatud",
+            "detail": "Viisakas, professionaalne toon"
+          },
+          "translation": {
+            "title": "Tõlge on valmis",
+            "detail": "inglise → hispaania keel"
+          }
+        },
+        "subtitle": "Kirjuta, tee kokkuvõtteid, tõlgi ja skanni dokumente ühes AI tööruumis."
+      },
+      "goals": {
+        "title": "Milles vajate abi?",
+        "subtitle": "Valige 1–3 väravat. Ehitame teie tehisintellekti tööruumi.",
+        "emptyCta": "Valige vähemalt 1 eesmärk",
+        "items": {
+          "workFaster": {
+            "title": "Töötage kiiremini",
+            "subtitle": "Meilid, vastused, ülesanded"
+          },
+          "writeBetter": {
+            "title": "Kirjuta parem",
+            "subtitle": "Tooni parandamine, ümberkirjutamine, täiustamine"
+          },
+          "understandDocuments": {
+            "title": "Saate dokumentidest aru",
+            "subtitle": "Kokkuvõtted, skaneeringud, põhipunktid"
+          },
+          "learnAnything": {
+            "title": "Õppige kõike",
+            "subtitle": "Selgitage teemad selgelt"
+          },
+          "createContent": {
+            "title": "Looge sisu",
+            "subtitle": "Postitused, pildiallkirjad, ideed"
+          },
+          "planBusiness": {
+            "title": "Planeerige äri",
+            "subtitle": "Ideed, strateegia, automatiseerimine"
+          },
+          "personalClarity": {
+            "title": "Isiklik selgus",
+            "subtitle": "Otsused, harjumused, mõtted"
+          },
+          "askBigQuestions": {
+            "title": "Esitage küsimusi",
+            "subtitle": "Tulevik, tähendus, AI, elu"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "AI-assistendi loomine",
+        "readyTitle": "Teie AI-assistent on valmis",
+        "subtitle": "Teie assistent on konfigureeritud. Prooviversioon juurdepääs on praegu sisse lülitatud.",
+        "trialTitle": "3-päevane prooviperiood",
+        "trialActivating": "aktiveeritakse",
+        "trialEnabled": "on lubatud",
+        "steps": {
+          "0": "Abilise ettevalmistamine",
+          "1": "Vastuste isikupärastamine",
+          "2": "Juurdepääsu kindlustamine",
+          "3": "Seadistuse lõpetamine"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Saage tuttavaks",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Jätka",
       "start": "Alustame"
+    },
+    "v3": {
+      "intent": {
+        "overline": "TEHA SEE OMA",
+        "title": "Mida peaks Cloud AI aitama teil teha?",
+        "cta": "Jätka"
+      },
+      "goals": {
+        "ask": "Otsige vastuseid",
+        "write": "Kirjuta parem",
+        "create": "Loo pilte",
+        "plan": "Planeeri mu päev"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "LEIA VASTUSED",
+          "title": "Otsige selgust kiiremini",
+          "subtitle": "Küsi loomulikult. Hankige selge vastus ja kasulikud järgmised sammud.",
+          "beat1": "Saage aru",
+          "beat2": "Otsustage",
+          "beat3": "Liigu edasi"
+        },
+        "write": {
+          "focus": "KIRJUTA PAREMINI",
+          "title": "Muutke mõtted sõnadeks",
+          "subtitle": "Minge umbkaudselt ideelt kirjutama, mis kõlab nagu teie.",
+          "beat1": "Kuju",
+          "beat2": "Täpsusta",
+          "beat3": "Jaga"
+        },
+        "create": {
+          "focus": "LOO PILTID",
+          "title": "Viige ideid ellu",
+          "subtitle": "Kirjeldage seda, mida ette kujutate, seejärel looge ja viimistlege seda sekunditega.",
+          "beat1": "Kujutage ette",
+          "beat2": "Loo",
+          "beat3": "Täiuslik"
+        },
+        "plan": {
+          "focus": "PLANEERI MINU PÄEV",
+          "title": "Tehke ruumi sellele, mis on oluline",
+          "subtitle": "Muutke hõivatud nimekiri rahulikuks plaaniks, mida saate tegelikult järgida.",
+          "beat1": "Esikohale seada",
+          "beat2": "Korraldada",
+          "beat3": "Alusta"
+        }
+      },
+      "proof": {
+        "overline": "KÕIK ÜHES KOHAS",
+        "title": "Üks koht. Rohkem võimalusi.",
+        "subtitle": "Liikuge küsimuselt loomingu juurde ilma rakendusi vahetamata.",
+        "item1": {
+          "title": "Küsi ükskõik mida",
+          "subtitle": "Täiustatud mudelid selgete ja kasulike vastuste jaoks"
+        },
+        "item2": {
+          "title": "Loo pilte",
+          "subtitle": "Muutke idee millekski, mida näete"
+        },
+        "item3": {
+          "title": "Hankige asjatundlikku abi",
+          "subtitle": "Assistendid tööl ja igapäevaelus"
+        }
+      },
+      "controls": {
+        "back": "Tagasi",
+        "continue": "Jätka",
+        "finish": "Avastage lisatasu"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "nädal",
       "termsOfUse": "Kasutustingimused",
       "privacyPolicy": "Privaatsuspoliitika"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Avage kõik esmaklassilised funktsioonid",
+        "subtitle": "Vaadake täpselt, mis ja millal juhtub.",
+        "todayTitle": "Täna",
+        "todayBody": "Avage kõik esmaklassilised funktsioonid. Praegu ei pea makset tegema.",
+        "checkTitle": "2 päeva pärast – meeldetuletus",
+        "checkBody": "Saadame teile teate, et teie prooviperiood lõpeb peagi.",
+        "billingTitle": "3 päeva pärast",
+        "billingBody": "Arveldamine algab automaatselt, kui te tellimust varem ei tühista.",
+        "badge": "3 PÄEVA TASUTA",
+        "cardNote": "Pärast tasuta prooviperioodi",
+        "noPayment": "Praegu pole maksetähtaega",
+        "cta": "Alusta minu 3-päevast tasuta prooviperioodi",
+        "renewalTerms": "3 päeva tasuta, seejärel {{price}} / {{period}}. Uueneb automaatselt kuni tühistamiseni."
+      },
+      "annual": {
+        "headline": "Avage Cloud AI aasta",
+        "subtitle": "Üks vestluse, piltide ja asjatundliku AI-abi plaan.",
+        "todayTitle": "Täna – lisatasu algab",
+        "todayBody": "Avage kohe kõik esmaklassilised AI funktsioonid.",
+        "billingTitle": "Arveldatakse igal aastal",
+        "billingBody": "{{price}} annab teile ühe aasta pikkuse juurdepääsu.",
+        "renewalTitle": "Uueneb igal aastal",
+        "renewalBody": "Tühistage Google Play-s igal ajal enne uuendamiskuupäeva.",
+        "cta": "Jätka",
+        "renewalTerms": "{{price}} / {{period}}. Uueneb automaatselt kuni tühistamiseni."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Piltide analüüsimine…",
       "searching": "Otsimine…",
-      "thinking": "Mõeldes…"
+      "thinking": "Mõeldes…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Veebiotsing",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Rohkem signaali, vähem arvutustabeli müra."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Võta oma igapäevased mündid",
       "subtitle": "Tule iga päev tagasi — tasu kasvab.",
-      "cta": "Registreeri",
+      "cta": "Võta vastu",
       "claimed": "Saadud! +{{amount}} münti",
       "later": "Hiljem"
     }

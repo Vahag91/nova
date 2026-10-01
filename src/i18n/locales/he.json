@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "המשך",
+        "tryItFree": "נסה בחינם",
+        "back": "חזרה"
+      },
+      "valueDemo": {
+        "title": "אנחנו רוצים שתנסה Cloud AI בחינם",
+        "workspaceLabel": "סביבת עבודה של בינה מלאכותית",
+        "userPromptLabel": "הנחיה למשתמש",
+        "aiTypingLabel": "בינה מלאכותית מקלידה",
+        "prompt": "כתוב תשובה מנומסת ללקוח על איחור במשלוח.",
+        "response": "היי, תודה על הסבלנות. המשלוח שלך עשוי להתעכב מעט. אעדכן אותך.",
+        "cards": {
+          "doc": {
+            "title": "סיכום מסמך",
+            "detail": "קובץ בן 12 עמודים → 5 נקודות מפתח"
+          },
+          "reply": {
+            "title": "התשובה נוסחה",
+            "detail": "טון מנומס ומקצועי"
+          },
+          "translation": {
+            "title": "תרגום מוכן",
+            "detail": "אנגלית ← ספרדית"
+          }
+        },
+        "subtitle": "כתבו, סכמו, תרגמו וסרקו מסמכים בסביבת עבודה אחת של AI."
+      },
+      "goals": {
+        "title": "במה אתה צריך עזרה?",
+        "subtitle": "בחרו 1-3 שערים. אנו נבנה את סביבת העבודה שלך בינה מלאכותית.",
+        "emptyCta": "בחר יעד אחד לפחות",
+        "items": {
+          "workFaster": {
+            "title": "עבוד מהר יותר",
+            "subtitle": "מיילים, תשובות, משימות"
+          },
+          "writeBetter": {
+            "title": "תכתוב יותר טוב",
+            "subtitle": "תקן את הטון, שכתוב, שפר"
+          },
+          "understandDocuments": {
+            "title": "הבן מסמכים",
+            "subtitle": "סיכומים, סריקות, נקודות מפתח"
+          },
+          "learnAnything": {
+            "title": "למד הכל",
+            "subtitle": "הסבירו נושאים בצורה ברורה"
+          },
+          "createContent": {
+            "title": "צור תוכן",
+            "subtitle": "פוסטים, כיתובים, רעיונות"
+          },
+          "planBusiness": {
+            "title": "תכנן עסקים",
+            "subtitle": "רעיונות, אסטרטגיה, אוטומציה"
+          },
+          "personalClarity": {
+            "title": "בהירות אישית",
+            "subtitle": "החלטות, הרגלים, מחשבות"
+          },
+          "askBigQuestions": {
+            "title": "שאל כל שאלה",
+            "subtitle": "עתיד, משמעות, בינה מלאכותית, חיים"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "יצירת עוזר הבינה המלאכותית שלך",
+        "readyTitle": "עוזר הבינה המלאכותית שלך מוכן",
+        "subtitle": "העוזר שלך מוגדר. גישת ניסיון מופעלת כעת.",
+        "trialTitle": "3 ימי ניסיון",
+        "trialActivating": "מופעל",
+        "trialEnabled": "מופעל",
+        "steps": {
+          "0": "מכין את העוזר שלך",
+          "1": "התאמה אישית של תגובות",
+          "2": "אבטחת גישה",
+          "3": "מסיים את ההגדרה"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "הכירו את",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "המשך",
       "start": "בואו נתחיל"
+    },
+    "v3": {
+      "intent": {
+        "overline": "הפוך אותו לשלך",
+        "title": "מה ענן AI אמור לעזור לך לעשות?",
+        "cta": "המשך"
+      },
+      "goals": {
+        "ask": "מצא תשובות",
+        "write": "תכתוב יותר טוב",
+        "create": "צור תמונות",
+        "plan": "לתכנן את היום שלי"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "מצא תשובות",
+          "title": "מצא בהירות מהר יותר",
+          "subtitle": "תשאל בטבעיות. קבל תשובה ברורה וצעדים שימושיים הבאים.",
+          "beat1": "תבין",
+          "beat2": "תחליט",
+          "beat3": "התקדם"
+        },
+        "write": {
+          "focus": "תכתוב טוב יותר",
+          "title": "הפוך מחשבות למילים",
+          "subtitle": "עבור מרעיון גס לכתיבה שנשמעת כמוך.",
+          "beat1": "צורה",
+          "beat2": "עידן",
+          "beat3": "שתף"
+        },
+        "create": {
+          "focus": "צור תמונות",
+          "title": "הביאו רעיונות לחיים",
+          "subtitle": "תאר את מה שאתה מדמיין, ואז צור וחדד אותו בשניות.",
+          "beat1": "תאר לעצמך",
+          "beat2": "צור",
+          "beat3": "מושלם"
+        },
+        "plan": {
+          "focus": "תכנן את היום שלי",
+          "title": "פנה מקום למה שחשוב",
+          "subtitle": "הפוך רשימה עמוסה לתוכנית רגועה שאתה באמת יכול לעקוב אחריה.",
+          "beat1": "תעדוף",
+          "beat2": "ארגן",
+          "beat3": "תתחיל"
+        }
+      },
+      "proof": {
+        "overline": "הכל במקום אחד",
+        "title": "מקום אחד. עוד אפשרויות.",
+        "subtitle": "מעבר משאלה ליצירה מבלי לעבור בין אפליקציות.",
+        "item1": {
+          "title": "תשאל כל דבר",
+          "subtitle": "מודלים מתקדמים לתשובות ברורות ושימושיות"
+        },
+        "item2": {
+          "title": "צור תמונות",
+          "subtitle": "הפוך רעיון למשהו שאתה יכול לראות"
+        },
+        "item3": {
+          "title": "קבל עזרה של מומחה",
+          "subtitle": "עוזרים לעבודה וחיי היום יום"
+        }
+      },
+      "controls": {
+        "back": "חזרה",
+        "continue": "המשך",
+        "finish": "גלה פרימיום"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "שבוע",
       "termsOfUse": "תנאי שימוש",
       "privacyPolicy": "מדיניות פרטיות"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "בטל את הנעילה של כל תכונות הפרימיום",
+        "subtitle": "ראה בדיוק מה קורה ומתי.",
+        "todayTitle": "היום",
+        "todayBody": "בטל את הנעילה של כל תכונת פרימיום. אין תשלום כעת.",
+        "checkTitle": "בעוד יומיים - תזכורת",
+        "checkBody": "נשלח לך הודעה שגרסת הניסיון שלך מסתיימת בקרוב.",
+        "billingTitle": "בעוד 3 ימים",
+        "billingBody": "החיוב מתחיל באופן אוטומטי אלא אם כן תבטל בכל עת קודם לכן.",
+        "badge": "3 ימים בחינם",
+        "cardNote": "לאחר ניסיון חינם",
+        "noPayment": "אין תשלום כעת",
+        "cta": "התחל את תקופת הניסיון בחינם ל-3 ימים",
+        "renewalTerms": "3 ימים בחינם, ואז {{price}} / {{period}}. מתחדש אוטומטית עד לביטול."
+      },
+      "annual": {
+        "headline": "פתח שנה של Cloud AI",
+        "subtitle": "תוכנית אחת לצ'אט, תמונות ועזרה מומחית בבינה מלאכותית.",
+        "todayTitle": "היום - הפרימיום מתחיל",
+        "todayBody": "בטל את הנעילה של כל תכונת AI פרימיום באופן מיידי.",
+        "billingTitle": "מחויב מדי שנה",
+        "billingBody": "{{price}} נותן לך שנה שלמה של גישה.",
+        "renewalTitle": "מתחדש מדי שנה",
+        "renewalBody": "בטל בכל עת ב-Google Play לפני תאריך החידוש שלך.",
+        "cta": "המשך",
+        "renewalTerms": "{{price}} / {{period}}. מתחדש אוטומטית עד לביטול."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "מנתח תמונות…",
       "searching": "מחפש…",
-      "thinking": "חושב…"
+      "thinking": "חושב…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "חיפוש ברשת",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "יותר אות, פחות רעש בגיליון אלקטרוני."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "אספו את המטבעות היומיים",
       "subtitle": "חזרו כל יום - הפרס גדל.",
-      "cta": "צ׳ק-אין",
+      "cta": "לאסוף",
       "claimed": "נאסף! +{{amount}} מטבעות",
       "later": "אחר כך"
     }

@@ -1,28 +1,28 @@
 # Google Play — Default store listing (English US)
 
-## Title (25/30)
+## Title (28/30)
 
-Cloud AI: Smart Assistant
+Cloud AI: Chat & Deep Search
 
-## Short description (76/80)
+## Short description (78/80)
 
-Cloud AI chat assistant with AI images, photo editing, writing & voice input
+AI chat assistant for writing, translation, summaries, document scans & voice
 
 ## Full description
 
-Cloud AI is an AI chat app, AI assistant, AI chatbot, and AI image generator built for productivity, creativity, and everyday help. If you want a modern AI assistant with more tools in one app, Cloud AI gives you AI chat, AI writing, AI image creation, AI photo editing, voice input, and built-in assistants powered by advanced AI models.
+Cloud AI is an AI chat app and AI assistant built for productivity, learning, and everyday help. If you want a modern AI assistant with more tools in one app, Cloud AI gives you AI chat, AI writing, translation, summaries, document scanning, voice input, and built-in assistants powered by advanced AI models.
 
-Cloud AI helps you chat with AI, write faster, translate text, summarize content, generate AI images, edit photos, and get help with daily tasks. If you are looking for an all-in-one AI app, Cloud AI brings AI chat and powerful AI tools together in one simple mobile app.
+Cloud AI helps you chat with AI, write faster, translate text, summarize content, understand documents, and get help with daily tasks. If you are looking for an all-in-one AI app, Cloud AI brings AI chat and powerful AI tools together in one simple mobile app.
 
 🔹 Key Features:
 • Cloud AI chat assistant for questions, ideas, writing, planning, and daily help
 • AI chatbot powered by advanced AI models
 • Fast AI chat experience for quick answers and smart suggestions
-• AI image generator for text-to-image creation
-• AI photo editor and AI image editor for transforming photos with prompts
 • Voice input for hands-free AI chat
 • AI writer for emails, messages, captions, and rewritten text
 • AI translator and AI summarizer for clearer communication
+• Document scanning: upload PDF, DOCX, TXT, or CSV files and ask questions about them
+• Photo understanding: attach a photo and ask the AI about what it sees
 • Built-in AI assistants for study, travel, recipes, fitness, writing, and more
 • Web search for recent information inside AI chat
 • Private chat mode and saved chat history
@@ -36,17 +36,19 @@ Use Cloud AI as your AI writer for emails, notes, captions, and daily writing. R
 🌍 AI Translator and Study Helper
 Cloud AI works as an AI translator, study helper, and explanation tool. Translate text, practice languages, simplify complex topics, and get step-by-step help with learning. AI chat makes studying, understanding, and communicating faster and easier.
 
-🖼 AI Image Generator and AI Photo Editor
-Create visuals with an AI image generator and edit photos with an AI photo editor inside Cloud AI. Turn text into images, restyle pictures, improve visuals, and use prompts to transform your content. Whether you need text-to-image generation, AI image editing, or AI art creation, Cloud AI gives you AI chat and creative image tools in one app.
+📄 Documents and Photos
+Upload a document and get a summary, key points, or answers about its contents. Attach a photo to ask the AI what it shows, extract text, or get an explanation. Everything stays inside one AI chat.
 
 🎯 Built-In AI Assistants
 Choose ready-made AI assistants for writing, translation, recipes, travel, planning, fitness, study, social posts, resumes, and more. Each AI assistant is designed to make AI chat faster and more useful for real tasks.
 
 Why choose Cloud AI?
-• Cloud AI chat, AI assistant, and AI chatbot in one app
+• AI chat, AI assistant, and AI chatbot in one app
 • Powered by advanced AI models
-• AI image generator and AI photo editor in the same app
 • Voice input, private chat, and saved chat history
-• Fast help for writing, translation, summaries, creativity, and productivity
+• Document and photo understanding in the same chat
+• Fast help for writing, translation, summaries, learning, and productivity
 
-Download Cloud AI to get AI chat, AI writing, AI image generation, AI photo editing, and smart AI assistant tools in one app.
+Cloud AI does not generate or edit images. Every response can be reported from inside the app.
+
+Download Cloud AI to get AI chat, AI writing, translation, summaries, and smart AI assistant tools in one app.

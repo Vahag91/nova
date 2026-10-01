@@ -352,3 +352,9 @@ entrypoint = "./functions/chat-proxy/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/chat-proxy/*.html" ]
+
+[functions.chat-proxy-glm-test]
+enabled = true
+verify_jwt = true
+import_map = "./functions/chat-proxy-glm-test/deno.json"
+entrypoint = "./functions/chat-proxy-glm-test/index.ts"

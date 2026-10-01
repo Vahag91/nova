@@ -1,17 +1,15 @@
+import { IMAGE_STUDIO_ENABLED } from '../constants/featureFlags';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   View,
   ScrollView,
   Text,
   StyleSheet,
-  AppState,
   Share,
   Linking,
-  Alert,
   Platform,
   Pressable,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 import { colors } from '../styles/colors';
 import { PointsHero } from '../components/rewards/PointsHero';
@@ -22,6 +20,7 @@ import { QuestCompletedModal } from '../components/rewards/QuestCompletedModal';
 import { useRewardsStore } from '../state/useRewardsStore';
 import { useNavigation } from '@react-navigation/native';
 import { getDailyLoginRewardForStreakDay } from '../lib/rewardsSchedule';
+import { cancelTodayDailyRewardReminder } from '../notifications/dailyRewardNotifications';
 
 const IOS_APP_ID = '6753916530';
 const ANDROID_PACKAGE_NAME = 'com.aicloudsolutions.cloud';
@@ -30,7 +29,6 @@ const APP_SHARE_URL = Platform.select({
   android: `https://play.google.com/store/apps/details?id=${ANDROID_PACKAGE_NAME}`,
   default: `https://play.google.com/store/apps/details?id=${ANDROID_PACKAGE_NAME}`,
 });
-const DAILY_MODAL_KEY = 'rewards-daily-login-modal-day';
 
 // Use local day key to align with rewards store
 function toDayKey(date = new Date()) {
@@ -63,27 +61,15 @@ export default function RewardsScreen() {
 
   const [modalReward, setModalReward] = useState(null);
 
-  // 1) Wait for hydration, then reset quests and record activity
+  // Keep the quest catalog healthy without silently claiming the daily reward.
   useEffect(() => {
     if (!hydrated) return;
 
     resetQuestsIfMissing();
-    const timer = setTimeout(() => {
-      recordActivity();
-    }, 100);
+  }, [hydrated, resetQuestsIfMissing]);
 
-    return () => clearTimeout(timer);
-  }, [hydrated, recordActivity, resetQuestsIfMissing]);
-
-  // 2) Re-run recordActivity when app comes to foreground (streak)
-  useEffect(() => {
-    const sub = AppState.addEventListener('change', state => {
-      if (state === 'active') recordActivity();
-    });
-    return () => sub.remove();
-  }, [recordActivity]);
-
-  // 3) Auto-popup completion modals (daily has priority)
+  // Share quests may complete outside this screen, so surface those once.
+  // Daily rewards only show a completion modal after an explicit Claim tap.
   useEffect(() => {
     if (!hydrated) return;
     if (modalReward) return;
@@ -91,20 +77,7 @@ export default function RewardsScreen() {
     const timer = setTimeout(() => {
       (async () => {
         try {
-          const today = toDayKey();
-          const storedDay = await AsyncStorage.getItem(DAILY_MODAL_KEY);
-
-          // Read from the store to avoid stale closures around `quests` while hydration/recordActivity runs.
           const latestQuests = useRewardsStore.getState().quests || [];
-
-          const dailyQuest = latestQuests.find(
-            q => q.id === 'daily-login' && q.status === 'completed'
-          );
-
-          if (dailyQuest && isCompletedToday(dailyQuest) && storedDay !== today) {
-            setModalReward(prev => prev || dailyQuest);
-            return;
-          }
 
           const otherUnnotified = latestQuests.find(
             q =>
@@ -228,10 +201,15 @@ export default function RewardsScreen() {
 
     try {
       if (quest.id === 'daily-login') {
-        Alert.alert(
-          t('rewards.quests.dailyLogin.title'),
-          t('rewards.quests.dailyLogin.message')
-        );
+        recordActivity();
+        const claimedQuest = useRewardsStore
+          .getState()
+          .quests?.find(item => item.id === 'daily-login');
+
+        if (isCompletedToday(claimedQuest)) {
+          cancelTodayDailyRewardReminder();
+          setModalReward(claimedQuest);
+        }
         return;
       }
 
@@ -254,12 +232,7 @@ export default function RewardsScreen() {
   const handleCloseModal = async () => {
     try {
       if (modalReward) {
-        if (modalReward.id === 'daily-login') {
-          const today = toDayKey();
-          await AsyncStorage.setItem(DAILY_MODAL_KEY, today);
-        } else {
-          markQuestAsNotified(modalReward.id);
-        }
+        markQuestAsNotified(modalReward.id);
       }
     } catch (e) {
       // Modal close persist error
@@ -279,7 +252,9 @@ export default function RewardsScreen() {
         >
           <PointsHero
             points={rewardCoins}
-            onSeeRewardsPress={() => navigation.navigate('RewardsList')}
+            onSeeRewardsPress={
+              IMAGE_STUDIO_ENABLED ? () => navigation.navigate('RewardsList') : undefined
+            }
           />
 
           <StreakTracker currentDay={currentStreak} days={streakData} />
@@ -290,7 +265,16 @@ export default function RewardsScreen() {
             </View>
             <View style={styles.cardStack}>
               {questBuckets.available.map(quest => (
-                <QuestCard key={quest.id} quest={quest} onPress={handleQuestPress} />
+                <QuestCard
+                  key={quest.id}
+                  quest={quest}
+                  actionLabel={
+                    quest.id === 'daily-login'
+                      ? t('rewards.checkIn.cta')
+                      : undefined
+                  }
+                  onPress={handleQuestPress}
+                />
               ))}
             </View>
           </View>

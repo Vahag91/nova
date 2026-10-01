@@ -591,6 +591,89 @@
     }
   },
   "onboarding": {
+    "v4": {
+      "common": {
+        "continue": "Continua",
+        "tryItFree": "Prova-ho gratis",
+        "back": "Enrere"
+      },
+      "valueDemo": {
+        "title": "Volem que proveu Cloud AI de forma gratuïta",
+        "workspaceLabel": "ESPAI DE TREBALL AI",
+        "userPromptLabel": "SOLICITUD DE L'USUARI",
+        "aiTypingLabel": "ESCRIPCIÓ AI",
+        "prompt": "Escriu una resposta educada a un client sobre un lliurament retardat.",
+        "response": "Hola, gràcies per la vostra paciència. El vostre lliurament pot ser lleugerament retardat. Et mantindré informat.",
+        "cards": {
+          "doc": {
+            "title": "Resum del document",
+            "detail": "Fitxer de 12 pàgines → 5 punts clau"
+          },
+          "reply": {
+            "title": "Resposta redactada",
+            "detail": "To educat i professional"
+          },
+          "translation": {
+            "title": "A punt per a la traducció",
+            "detail": "Anglès → Castellà"
+          }
+        },
+        "subtitle": "Escriu, resumeix, tradueix i escaneja documents en un sol espai de treball d'IA."
+      },
+      "goals": {
+        "title": "Amb què necessites ajuda?",
+        "subtitle": "Trieu 1–3 objectius. Construirem el vostre espai de treball d'IA.",
+        "emptyCta": "Trieu almenys 1 objectiu",
+        "items": {
+          "workFaster": {
+            "title": "Treballeu més ràpid",
+            "subtitle": "Correus electrònics, respostes, tasques"
+          },
+          "writeBetter": {
+            "title": "Escriu millor",
+            "subtitle": "Arreglar el to, reescriure, millorar"
+          },
+          "understandDocuments": {
+            "title": "Comprendre documents",
+            "subtitle": "Resums, exploracions, punts clau"
+          },
+          "learnAnything": {
+            "title": "Apreneu qualsevol cosa",
+            "subtitle": "Explica els temes amb claredat"
+          },
+          "createContent": {
+            "title": "Crea contingut",
+            "subtitle": "Publicacions, peus de foto, idees"
+          },
+          "planBusiness": {
+            "title": "Planifica el negoci",
+            "subtitle": "Idees, estratègia, automatització"
+          },
+          "personalClarity": {
+            "title": "Claredat personal",
+            "subtitle": "Decisions, hàbits, pensaments"
+          },
+          "askBigQuestions": {
+            "title": "Fes qualsevol pregunta",
+            "subtitle": "Futur, significat, IA, vida"
+          }
+        }
+      },
+      "workspace": {
+        "preparingTitle": "S'està creant el vostre assistent d'IA",
+        "readyTitle": "El teu assistent d'IA està preparat",
+        "subtitle": "El vostre assistent està configurat. L'accés de prova s'està activant ara.",
+        "trialTitle": "Prova de 3 dies",
+        "trialActivating": "s'està activant",
+        "trialEnabled": "habilitat",
+        "steps": {
+          "0": "S'està preparant el teu assistent",
+          "1": "Personalització de respostes",
+          "2": "Accés segur",
+          "3": "S'està acabant la configuració"
+        }
+      }
+    },
     "careView": {
       "titlePrefix": "Coneix",
       "titleHighlight": "Image Studio",
@@ -626,6 +709,75 @@
     "buttons": {
       "continue": "Continua",
       "start": "Comencem"
+    },
+    "v3": {
+      "intent": {
+        "overline": "FES-LO TEU",
+        "title": "Què us hauria d'ajudar a fer la Cloud AI?",
+        "cta": "Continua"
+      },
+      "goals": {
+        "ask": "Troba respostes",
+        "write": "Escriu millor",
+        "create": "Crea imatges",
+        "plan": "Planifica el meu dia"
+      },
+      "outcome": {
+        "ask": {
+          "focus": "TROBAR RESPOSTES",
+          "title": "Trobeu claredat més ràpidament",
+          "subtitle": "Pregunta amb naturalitat. Obteniu una resposta clara i els propers passos útils.",
+          "beat1": "Entendre",
+          "beat2": "Decideix",
+          "beat3": "Avançar"
+        },
+        "write": {
+          "focus": "ESCRIU MILLOR",
+          "title": "Converteix els pensaments en paraules",
+          "subtitle": "Passeu d'una idea aproximada a una escriptura que us soni.",
+          "beat1": "Forma",
+          "beat2": "Refinar",
+          "beat3": "Comparteix"
+        },
+        "create": {
+          "focus": "CREAR IMATGES",
+          "title": "Donar vida a les idees",
+          "subtitle": "Descriu el que t'imagines, després crea'l i perfecciona'l en segons.",
+          "beat1": "Imagina't",
+          "beat2": "Crear",
+          "beat3": "Perfecte"
+        },
+        "plan": {
+          "focus": "PLANIFICAR EL MEU DIA",
+          "title": "Fes espai per al que importa",
+          "subtitle": "Converteix una llista ocupada en un pla tranquil que puguis seguir.",
+          "beat1": "Prioritzar",
+          "beat2": "Organitzar",
+          "beat3": "Comença"
+        }
+      },
+      "proof": {
+        "overline": "TOT EN UN LLOC",
+        "title": "Un lloc. Més possibilitats.",
+        "subtitle": "Passeu de la pregunta a la creació sense canviar d'aplicació.",
+        "item1": {
+          "title": "Pregunta qualsevol cosa",
+          "subtitle": "Models avançats per a respostes clares i útils"
+        },
+        "item2": {
+          "title": "Crea imatges",
+          "subtitle": "Converteix una idea en alguna cosa que puguis veure"
+        },
+        "item3": {
+          "title": "Obteniu ajuda d'experts",
+          "subtitle": "Ajudants per a la feina i la vida quotidiana"
+        }
+      },
+      "controls": {
+        "back": "Enrere",
+        "continue": "Continua",
+        "finish": "Exploreu Premium"
+      }
     }
   },
   "coinStore": {
@@ -748,6 +900,36 @@
       "week": "setmana",
       "termsOfUse": "Condicions d'ús",
       "privacyPolicy": "Política de privadesa"
+    },
+    "v3": {
+      "eyebrow": "CLOUD AI PREMIUM",
+      "trial": {
+        "headline": "Desbloqueja totes les funcions premium",
+        "subtitle": "Veure exactament què passa i quan.",
+        "todayTitle": "Avui",
+        "todayBody": "Desbloqueja totes les funcions premium. Ara no s'ha de pagar cap pagament.",
+        "checkTitle": "En 2 dies — Recordatori",
+        "checkBody": "T'enviarem una notificació que la teva prova finalitzarà aviat.",
+        "billingTitle": "En 3 dies",
+        "billingBody": "La facturació s'inicia automàticament tret que la cancel·leu abans.",
+        "badge": "3 DIES GRATIS",
+        "cardNote": "Després de la prova gratuïta",
+        "noPayment": "No s'ha de pagar ara",
+        "cta": "Comença la meva prova gratuïta de 3 dies",
+        "renewalTerms": "3 dies gratuïts, després {{price}} / {{period}}. Es renova automàticament fins que es cancel·li."
+      },
+      "annual": {
+        "headline": "Desbloqueja un any d'IA al núvol",
+        "subtitle": "Un pla per a xat, imatges i ajuda experta en IA.",
+        "todayTitle": "Avui: comença el premium",
+        "todayBody": "Desbloqueja totes les funcions d'IA premium immediatament.",
+        "billingTitle": "Facturat anualment",
+        "billingBody": "{{price}} us ofereix un any complet d'accés.",
+        "renewalTitle": "Es renova anualment",
+        "renewalBody": "Cancel·la en qualsevol moment a Google Play abans de la data de renovació.",
+        "cta": "Continua",
+        "renewalTerms": "{{price}} / {{period}}. Es renova automàticament fins que es cancel·li."
+      }
     }
   },
   "chat": {
@@ -808,7 +990,8 @@
     "activity": {
       "analyzingImages": "Analitzant imatges…",
       "searching": "Cercant…",
-      "thinking": "Pensant…"
+      "thinking": "Pensant…",
+      "analyzingDocuments": "Analyzing documents…"
     },
     "webSearch": {
       "title": "Cerca web",
@@ -932,6 +1115,24 @@
           "metricsStorySubtitle": "Més senyal, menys soroll del full de càlcul."
         }
       }
+    },
+    "files": {
+      "upload": "Upload file",
+      "supportedTypes": "PDF, DOCX, TXT or CSV",
+      "failed": "Upload failed",
+      "retry": "Retry upload",
+      "retryShort": "Retry",
+      "remove": "Remove file",
+      "pickerErrorTitle": "Unable to open files",
+      "pickerErrorMessage": "Please try selecting the document again.",
+      "tooMany": "You can attach up to 3 documents per message.",
+      "tooLarge": "Each document must be 10 MB or smaller.",
+      "empty": "The selected document is empty.",
+      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
+      "invalidTitle": "File not supported",
+      "pasteFailedTitle": "Could not attach pasted text",
+      "pasteFailedMessage": "Your text was kept in the message box.",
+      "waitUntilReady": "Please wait for your documents to finish uploading."
     }
   },
   "imageUpload": {
@@ -1118,7 +1319,7 @@
     "checkIn": {
       "title": "Reclama les teves monedes diàries",
       "subtitle": "Torna cada dia: la recompensa creix.",
-      "cta": "Registra'm",
+      "cta": "Reclamar",
       "claimed": "Rebut! +{{amount}} monedes",
       "later": "Més tard"
     }
