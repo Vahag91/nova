@@ -186,7 +186,7 @@ describe('onboarding performance and handoff contract', () => {
 
   test('keeps the banner layout ready while deferring its native video player', () => {
     const chat = read('src/screens/Chat.js');
-    const banner = read('src/components/chat/CreativeStudioBanner.jsx');
+    const banner = read('src/components/chat/AssistantsBanner.jsx');
 
     expect(chat).toContain('playVideo={decorativeMediaReady && !keyboardVisible}');
     expect(chat).toContain('STARTUP_DECORATIVE_MEDIA_DELAY_MS = 240');

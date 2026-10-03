@@ -2,25 +2,25 @@
   "modelSelector": {
     "title": "ایک ماڈل منتخب کریں۔",
     "searchPlaceholder": "ماڈلز تلاش کریں...",
-    "noModelsFound": "۔\nکوئی ماڈل نہیں ملا",
+    "noModelsFound": "کوئی ماڈل نہیں ملا",
     "noModelsAvailable": "کوئی ماڈل دستیاب نہیں ہے۔",
     "currentModel": "موجودہ ماڈل: {{name}}۔ ماڈل تبدیل کرنے کے لیے تھپتھپائیں۔",
-    "openHint": "۔\nماڈل سلیکشن مینو کھولتا ہے۔",
+    "openHint": "ماڈل سلیکشن مینو کھولتا ہے۔",
     "closeLabel": "ماڈل سلیکٹر بند کریں۔",
     "searchLabel": "ماڈلز تلاش کریں۔",
     "searchHint": "دستیاب ماڈلز کو فلٹر کرنے کے لیے ٹائپ کریں۔",
-    "modelLabel": "{{name}} ماڈل",
-    "selectHint": "{{name}} ماڈل منتخب کریں۔",
+    "modelLabel": "‏{{name}} ماڈل",
+    "selectHint": "‏{{name}} ماڈل منتخب کریں۔",
     "currentlySelected": "فی الحال منتخب ماڈل",
-    "genericModel": "۔\n{{provider}} ماڈل",
+    "genericModel": "‏{{provider}} ماڈل",
     "badges": {
       "new": "نیا",
-      "best": "۔\nبہترین"
+      "best": "بہترین"
     }
   },
   "models": {
-    "gpt-4o": "۔\nسب سے طاقتور AI ماڈل",
-    "gpt-4o-mini": "۔\nروزمرہ کے کاموں کے لیے تیز",
+    "gpt-4o": "سب سے طاقتور AI ماڈل",
+    "gpt-4o-mini": "روزمرہ کے کاموں کے لیے تیز",
     "gpt-5": "سب سے زیادہ طاقتور ہمہ مقصدی AI",
     "gpt-5-chat-latest": "چیٹ اور مکالمے کے لیے موزوں ہے۔",
     "gpt-5-mini": "تیز اور قابل اعتماد GPT-5",
@@ -28,68 +28,79 @@
     "o4-mini": "موثر استدلال کا ماڈل",
     "gpt-4.1-mini": "کومپیکٹ، قابل GPT-4.1",
     "claude-3-haiku": "تیز اور مرکوز انتھروپک AI",
-    "claude-3.7-sonnet": "Anthropic کی طرف سے بہتر استدلال",
-    "gemini-2.5-Flash": "۔\nگوگل کا جدید ترین ماڈل",
+    "claude-3.7-sonnet": "‏Anthropic کی طرف سے بہتر استدلال",
+    "gemini-2.5-Flash": "گوگل کا جدید ترین ماڈل",
     "gemini-2.5-flash": "گوگل کا جدید ترین ماڈل",
     "gemini-2.0-flash": "فوری اور عین مطابق Google AI"
   },
   "modelDescriptions": {
     "most_powerful": "سب سے طاقتور AI ماڈل",
-    "fast_everyday": "۔\nروزمرہ کے کاموں کے لیے تیز",
+    "fast_everyday": "روزمرہ کے کاموں کے لیے تیز",
     "fast_reasoning": "اچھی استدلال کے ساتھ تیز ماڈل",
     "great_reasoning": "جدید استدلال کا ماڈل",
     "coding_reasoning": "اعلی درجے کی کوڈنگ اور استدلال",
     "better_coding": "کوڈنگ اور استدلال کے لیے بہتر ہے۔",
     "best_overall": "سب سے بہترین AI ماڈل",
     "best_google": "گوگل کا بہترین ماڈل",
-    "best_xai": "xAI کا سب سے طاقتور ماڈل",
+    "best_xai": "‏xAI کا سب سے طاقتور ماڈل",
     "creative_focus": "تخلیقی تحریر کے لیے بہت اچھا",
     "code_helper": "کوڈنگ کی مدد کے لیے بہت اچھا ہے۔",
     "chat_focus": "چیٹنگ کے لیے موزوں ہے۔",
     "long_context": "طویل سیاق و سباق کے لیے بہت اچھا",
     "budget_friendly": "بجٹ کے موافق AI ماڈل",
-    "ultra_fast": "۔\nانتہائی تیز جوابات",
+    "ultra_fast": "انتہائی تیز جوابات",
     "safe_default": "محفوظ ڈیفالٹ انتخاب",
-    "multilingual": "۔\nمضبوط کثیر لسانی حمایت",
-    "vision_strong": "۔\nتصاویر اور وژن کے ساتھ بہت اچھا",
+    "multilingual": "مضبوط کثیر لسانی حمایت",
+    "vision_strong": "تصاویر اور وژن کے ساتھ بہت اچھا",
     "data_analysis": "ڈیٹا کے تجزیہ کے لیے اچھا ہے۔",
     "structured_tasks": "ساختی کاموں کے لیے اچھا ہے۔",
     "everyday_helper": "روزانہ اسسٹنٹ ماڈل",
-    "concise_answers": "۔\nمختصر، جامع جوابات",
+    "concise_answers": "مختصر، جامع جوابات",
     "detailed_answers": "تفصیلی مرحلہ وار جوابات",
     "experimental": "تجرباتی اگلی نسل کا ماڈل",
-    "reliable_classic": "۔\nقابل اعتماد کلاسک ماڈل",
+    "reliable_classic": "قابل اعتماد کلاسک ماڈل",
     "lightweight": "ہلکا پھلکا، کم قیمت والا ماڈل",
-    "chatty_personal": "۔\nزیادہ دوستانہ اور ذاتی",
-    "pro_users": "۔\nبجلی استعمال کرنے والوں کے لیے بہترین",
-    "research_helper": "۔\nتحقیق اور نوٹس کے لیے اچھا ہے۔",
-    "reasoning_strong": "جدید استدلال کا ماڈل"
+    "chatty_personal": "زیادہ دوستانہ اور ذاتی",
+    "pro_users": "بجلی استعمال کرنے والوں کے لیے بہترین",
+    "research_helper": "تحقیق اور نوٹس کے لیے اچھا ہے۔",
+    "reasoning_strong": "جدید استدلال کا ماڈل",
+    "gpt56_sol": "سب سے طاقتور GPT-5.6 ماڈل",
+    "gpt56_terra": "متوازن GPT-5.6 ماڈل",
+    "gpt56_luna": "روزمرہ کاموں کے لیے تیز ماڈل",
+    "claude_fable": "‏Anthropic کا تیز اور تخلیقی AI",
+    "claude_sonnet": "‏Anthropic کا جدید ماڈل",
+    "gemini_flash": "‏Google کا تیز AI ماڈل",
+    "gemini_pro": "‏Google کا جدید Pro ماڈل",
+    "grok_latest": "‏xAI کا تازہ ترین ماڈل",
+    "deepseek_pro": "جدید DeepSeek ماڈل",
+    "deepseek_flash": "تیز DeepSeek ماڈل"
   },
   "providers": {
-    "openai": "۔\nOpenAI",
-    "anthropic": "۔\nبشری",
+    "openai": "OpenAI",
+    "anthropic": "بشری",
     "google": "گوگل",
-    "xai": "۔\nxAI",
-    "other": "۔\nدیگر"
+    "xai": "xAI",
+    "other": "دیگر",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "نئی چیٹ",
-    "history": "۔\nتاریخ",
-    "rewards": "۔\nروزانہ انعامات",
-    "assistants": "۔\nمعاونین",
+    "history": "تاریخ",
+    "rewards": "روزانہ انعامات",
+    "assistants": "معاونین",
     "imagesStudio": "Image Studio",
-    "settings": "۔\nترتیبات",
-    "recentChats": "۔\nحالیہ چیٹس",
+    "settings": "ترتیبات",
+    "recentChats": "حالیہ چیٹس",
     "proFeatures": "پرو خصوصیات",
     "pro": "پی آر او",
     "proFeaturesCta": {
-      "title": "۔\nپرو خصوصیات حاصل کریں۔",
+      "title": "پرو خصوصیات حاصل کریں۔",
       "subtitle": "تمام AI خصوصیات"
     }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
-    "title": "۔\nImage Studio",
+    "title": "Image Studio",
     "subtitle": "ایک جگہ پر بصری اثاثے بنائیں، بہتر کریں اور شائع کریں۔",
     "cta": "کھولیں۔"
   },
@@ -100,21 +111,21 @@
     "selectAll": "سبھی کو منتخب کریں۔",
     "noImagesYet": "ابھی تک کوئی تصاویر نہیں ہیں۔",
     "describeImageHint": "نیچے اپنی تصویر کی وضاحت کریں اور جنریٹ پر ٹیپ کریں۔",
-    "generatedImagesGallery": "۔\nتیار کردہ تصاویر کی گیلری",
+    "generatedImagesGallery": "تیار کردہ تصاویر کی گیلری",
     "describeImagePlaceholder": "اپنی مطلوبہ تصویر کی وضاحت کریں…",
     "deleteConfirmTitle": "تصاویر کو حذف کریں۔",
-    "deleteConfirmMessage": "۔\nکیا آپ واقعی منتخب کردہ تصاویر کو حذف کرنا چاہتے ہیں؟ اس کارروائی کو کالعدم نہیں کیا جا سکتا۔",
+    "deleteConfirmMessage": "کیا آپ واقعی منتخب کردہ تصاویر کو حذف کرنا چاہتے ہیں؟ اس کارروائی کو کالعدم نہیں کیا جا سکتا۔",
     "cancel": "منسوخ کریں۔",
     "delete": "حذف کریں۔",
     "generate": "پیدا کریں۔",
     "generating": "پیدا ہو رہا ہے…",
     "latest": "تازہ ترین",
     "insertToChat": "چیٹ کرنے کے لیے داخل کریں۔",
-    "pleaseWait": "۔\nبراہ کرم انتظار کریں…",
+    "pleaseWait": "براہ کرم انتظار کریں…",
     "processing": "پروسیسنگ...",
-    "tapToUploadImage": "۔\nتصویر اپ لوڈ کرنے کے لیے تھپتھپائیں۔",
-    "camera": "۔\nتصاویر اپ لوڈ کریں۔",
-    "library": "۔\nلائبریری",
+    "tapToUploadImage": "تصویر اپ لوڈ کرنے کے لیے تھپتھپائیں۔",
+    "camera": "تصاویر اپ لوڈ کریں۔",
+    "library": "لائبریری",
     "enterPrompt": "براہ کرم متن سے تصویر بنانے کے لیے ایک اشارہ درج کریں۔",
     "openInBrowser": "براؤزر میں کھولیں۔",
     "makeVariations": "تغیرات بنائیں",
@@ -123,17 +134,17 @@
     "imageOptionsMessage": "آپ اس تصویر کے ساتھ کیا کرنا چاہیں گے؟",
     "insertMarkdownHeader": "یہاں کے لیے تصویر ہے:",
     "variationSuffix": "- پچھلی تصویر کا تغیر",
-    "selectedCount": "۔\nمنتخب",
+    "selectedCount": "منتخب",
     "selectedCount_one": "منتخب",
     "selectedCount_other": "منتخب",
     "imageDescriptionInput": "تصویر کی تفصیل کا ان پٹ",
-    "imageDescriptionHint": "۔\nجس تصویر کو آپ بنانا چاہتے ہیں اس کی تفصیل درج کریں۔",
+    "imageDescriptionHint": "جس تصویر کو آپ بنانا چاہتے ہیں اس کی تفصیل درج کریں۔",
     "openModelSettings": "ماڈل کی ترتیبات کھولیں۔",
     "modelSettingsHint": "ماڈل اور سیٹنگز کو تبدیل کرنے کے لیے تھپتھپائیں۔",
     "openPhotoGallery": "فوٹو گیلری کھولیں۔",
     "clearInput": "ان پٹ صاف کریں۔",
     "generatedImage": "تیار کردہ تصویر",
-    "autoSelectedModel": "{{mode}} موڈ کے لیے خودکار طور پر منتخب کردہ {{model}}",
+    "autoSelectedModel": "‏{{mode}} موڈ کے لیے خودکار طور پر منتخب کردہ {{model}}",
     "deleteSelectedConfirmTitle": "تصاویر کو حذف کریں۔",
     "deleteSelectedConfirmMessage": "کیا آپ واقعی تصاویر کو حذف کرنا چاہتے ہیں؟ اس کارروائی کو کالعدم نہیں کیا جا سکتا۔"
   },
@@ -142,52 +153,52 @@
     "generatingImage": "تصویر تیار کی جا رہی ہے۔",
     "generateImageHint": "اپنی تفصیل کی بنیاد پر تصویر بنانے کے لیے تھپتھپائیں۔",
     "imageDescriptionInput": "تصویر کی تفصیل کا ان پٹ",
-    "imageDescriptionHint": "۔\nجس تصویر کو آپ بنانا چاہتے ہیں اس کی تفصیل درج کریں۔",
+    "imageDescriptionHint": "جس تصویر کو آپ بنانا چاہتے ہیں اس کی تفصیل درج کریں۔",
     "openModelSettings": "ماڈل کی ترتیبات کھولیں۔",
-    "modelSettingsHint": "۔\nماڈل اور سیٹنگز کو تبدیل کرنے کے لیے تھپتھپائیں۔",
-    "openPhotoGallery": "۔\nفوٹو گیلری کھولیں۔",
+    "modelSettingsHint": "ماڈل اور سیٹنگز کو تبدیل کرنے کے لیے تھپتھپائیں۔",
+    "openPhotoGallery": "فوٹو گیلری کھولیں۔",
     "clearInput": "ان پٹ صاف کریں۔",
     "generatedImage": "تیار کردہ تصویر"
   },
   "assistants": {
     "title": "معاونین",
-    "defaultTitle": "۔\nاسسٹنٹ",
+    "defaultTitle": "اسسٹنٹ",
     "errorTitle": "کچھ غلط ہو گیا۔",
     "errorMessage": "اس اسسٹنٹ کو شروع نہیں کیا جا سکا۔",
-    "noAssistants": "۔\nاس زمرے میں کوئی معاون نہیں ملا۔",
+    "noAssistants": "اس زمرے میں کوئی معاون نہیں ملا۔",
     "selectAssistantHint": "اسسٹنٹ چنندہ کھولیں۔",
-    "subtitle": "۔\nتیار کردہ AI ماہرین کوڈنگ، تحریر، تجزیہ، منصوبہ بندی اور مزید کے لیے تیار ہیں۔",
-    "searchPlaceholder": "۔\nمعاونین تلاش کریں…",
-    "useAssistant": "۔\nاسسٹنٹ استعمال کریں۔",
+    "subtitle": "تیار کردہ AI ماہرین کوڈنگ، تحریر، تجزیہ، منصوبہ بندی اور مزید کے لیے تیار ہیں۔",
+    "searchPlaceholder": "معاونین تلاش کریں…",
+    "useAssistant": "اسسٹنٹ استعمال کریں۔",
     "selectAssistant": "اسسٹنٹ کا انتخاب کریں۔",
-    "description": "۔\nتفصیل",
-    "systemPrompt": "۔\nسسٹم پرامپٹ",
+    "description": "تفصیل",
+    "systemPrompt": "سسٹم پرامپٹ",
     "chooseModel": "ماڈل کا انتخاب کریں۔",
-    "categoryAll": "۔\nتمام",
+    "categoryAll": "تمام",
     "categories": {
-      "everyday": "۔\nہر روز",
+      "everyday": "ہر روز",
       "life": "زندگی",
-      "health": "۔\nصحت",
-      "schoolWork": "۔\nاسکول اور کام",
-      "coding": "۔\nکوڈنگ",
+      "health": "صحت",
+      "schoolWork": "اسکول اور کام",
+      "coding": "کوڈنگ",
       "creative": "تخلیقی",
-      "general": "۔\nجنرل"
+      "general": "جنرل"
     },
     "presets": {
       "default": {
-        "name": "۔\nڈیفالٹ اسسٹنٹ",
+        "name": "ڈیفالٹ اسسٹنٹ",
         "description": "روزانہ کی چیزوں کے لیے متوازن مدد۔"
       },
       "quick": {
         "name": "فوری جوابات",
-        "description": "۔\nمختصر، براہ راست جوابات۔"
+        "description": "مختصر، براہ راست جوابات۔"
       },
       "planner": {
         "name": "روزانہ منصوبہ ساز",
         "description": "اپنے دن اور معمولات کی منصوبہ بندی کریں۔"
       },
       "recipes": {
-        "name": "۔\nکھانا اور ترکیبیں۔",
+        "name": "کھانا اور ترکیبیں۔",
         "description": "آپ کے پاس جو کچھ ہے اس کے ساتھ کیا پکانا ہے۔"
       },
       "fitness": {
@@ -200,14 +211,14 @@
       },
       "study": {
         "name": "مطالعہ مددگار",
-        "description": "۔\nسادگی سے سمجھائیں۔ مجھ سے کوئز کریں۔"
+        "description": "سادگی سے سمجھائیں۔ مجھ سے کوئز کریں۔"
       },
       "email": {
         "name": "ای میل اور دوبارہ شروع کریں۔",
         "description": "واضح ای میلز اور CV لائنیں لکھیں۔"
       },
       "translator": {
-        "name": "۔\nمترجم",
+        "name": "مترجم",
         "description": "ترجمہ کریں + جملے سکھائیں۔"
       },
       "travel": {
@@ -219,16 +230,16 @@
         "description": "فون، ایپس، وائی فائی کی بنیادی باتیں۔"
       },
       "summarizer": {
-        "name": "TL؛ DR سمریزر",
-        "description": "۔\nمختصر گولیاں + ایک لائن TL؛ DR."
+        "name": "‏TL؛ DR سمریزر",
+        "description": "مختصر گولیاں + ایک لائن TL؛ DR."
       },
       "gift": {
         "name": "گفٹ فائنڈر",
-        "description": "۔\nبجٹ اور دلچسپی کے لحاظ سے خیالات۔"
+        "description": "بجٹ اور دلچسپی کے لحاظ سے خیالات۔"
       },
       "party": {
-        "name": "۔\nایونٹ پلانر (لائٹ)",
-        "description": "۔\nجلدی سے ایک چھوٹی پارٹی کا منصوبہ بنائیں۔"
+        "name": "ایونٹ پلانر (لائٹ)",
+        "description": "جلدی سے ایک چھوٹی پارٹی کا منصوبہ بنائیں۔"
       },
       "social": {
         "name": "سوشل پوسٹ میکر",
@@ -247,7 +258,7 @@
         "description": "کھانا کھلانا، چہل قدمی، بنیادی تربیت۔"
       },
       "mindful": {
-        "name": "۔\nمائنڈفل منٹ",
+        "name": "مائنڈفل منٹ",
         "description": "1-3 منٹ کے پرسکون وقفے"
       },
       "polite": {
@@ -257,7 +268,7 @@
     }
   },
   "history": {
-    "title": "۔\nتاریخ",
+    "title": "تاریخ",
     "searchPlaceholder": "چیٹس تلاش کریں…",
     "newChat": "نئی چیٹ",
     "new": "+ نیا",
@@ -270,50 +281,50 @@
     "startNewChat": "ایک نئی چیٹ شروع کریں۔",
     "errorLoadingHistory": "تاریخ لوڈ کرنے میں خرابی۔",
     "loading": "تاریخ لوڈ ہو رہی ہے...",
-    "renameChat": "۔\nچیٹ کا نام تبدیل کریں۔",
+    "renameChat": "چیٹ کا نام تبدیل کریں۔",
     "enterNewTitle": "ایک نیا عنوان درج کریں۔",
-    "deleteChat": "۔\nچیٹ حذف کریں؟",
-    "deleteChatMessage": "۔\n\"{{title}}\" کو حذف کر دیا جائے گا۔",
+    "deleteChat": "چیٹ حذف کریں؟",
+    "deleteChatMessage": "‏\"{{title}}\" کو حذف کر دیا جائے گا۔",
     "rename": "نام تبدیل کریں۔",
     "unpin": "پن کھول دیں۔",
     "pin": "پن",
-    "untitled": "۔\nبلا عنوان"
+    "untitled": "بلا عنوان"
   },
   "settings": {
     "title": "ترتیبات",
     "model": "ماڈل",
-    "searchPlaceholder": "۔\nماڈلز تلاش کریں…",
+    "searchPlaceholder": "ماڈلز تلاش کریں…",
     "temperatureForCurrentModel": "موجودہ ماڈل کے لیے درجہ حرارت",
-    "customFor": "۔\n{{model}} کے لیے حسب ضرورت",
-    "usingDefault": "۔\nڈیفالٹ {{temperature}} استعمال کرنا",
-    "resetToDefault": "۔\nڈیفالٹ پر ری سیٹ کریں۔",
+    "customFor": "‏{{model}} کے لیے حسب ضرورت",
+    "usingDefault": "ڈیفالٹ {{temperature}} استعمال کرنا",
+    "resetToDefault": "ڈیفالٹ پر ری سیٹ کریں۔",
     "defaultTemperature": "پہلے سے طے شدہ درجہ حرارت (فال بیک)",
-    "usedByModelsWithoutOverride": "۔\nحسب ضرورت اوور رائڈ کے بغیر ماڈلز کے ذریعہ استعمال کیا جاتا ہے۔",
-    "dangerZone": "۔\nخطرہ زون",
+    "usedByModelsWithoutOverride": "حسب ضرورت اوور رائڈ کے بغیر ماڈلز کے ذریعہ استعمال کیا جاتا ہے۔",
+    "dangerZone": "خطرہ زون",
     "clearAllChatsAndSettings": "تمام چیٹس اور ترتیبات کو صاف کریں۔",
-    "about": "۔\nکے بارے میں",
-    "version": "۔\nورژن {{version}}{{status}}",
+    "about": "کے بارے میں",
+    "version": "ورژن {{version}}{{status}}",
     "versionPremiumSuffix": "· پریمیم",
-    "privacyPolicy": "۔\nرازداری کی پالیسی",
+    "privacyPolicy": "رازداری کی پالیسی",
     "hero": {
-      "label": "۔\nخصوصی پیشکش",
-      "title": "۔\nلامحدود رسائی\nاور پرو خصوصیات",
+      "label": "خصوصی پیشکش",
+      "title": "لامحدود رسائی\nاور پرو خصوصیات",
       "upgrade": "اپ گریڈ کریں۔",
-      "manage": "۔\nپلان کا انتظام کریں۔"
+      "manage": "پلان کا انتظام کریں۔"
     },
     "sections": {
-      "premium": "۔\nپریمیم پلان",
+      "premium": "پریمیم پلان",
       "data": "صارف کا ڈیٹا",
       "support": "سپورٹ اور قانونی"
     },
     "rows": {
       "getPremium": {
-        "title": "۔\nپریمیم حاصل کریں۔",
+        "title": "پریمیم حاصل کریں۔",
         "subtitle": "تخلیق کے لامحدود ٹولز کو غیر مقفل کریں۔"
       },
       "premiumActive": {
         "title": "پریمیم ایکٹو",
-        "subtitle": "۔\nسپورٹ کرنے کا شکریہ Cloud AI"
+        "subtitle": "سپورٹ کرنے کا شکریہ Cloud AI"
       },
       "restore": {
         "title": "خریداریوں کو بحال کریں۔",
@@ -328,21 +339,21 @@
         "subtitle": "اس آلہ پر تمام ذخیرہ شدہ ڈیٹا کو صاف کرتا ہے۔"
       },
       "rate": {
-        "title": "۔\nہمیں درجہ دیں۔",
+        "title": "ہمیں درجہ دیں۔",
         "error": "اسٹور کا صفحہ کھولنے سے قاصر۔"
       },
       "support": {
-        "title": "۔\nحمایت",
+        "title": "حمایت",
         "subtitle": "ہم سے آن لائن رابطہ کریں۔",
         "error": "رابطہ صفحہ کھولنے سے قاصر۔"
       },
       "privacy": {
-        "title": "۔\nرازداری کی پالیسی",
+        "title": "رازداری کی پالیسی",
         "error": "رازداری کی پالیسی کھولنے سے قاصر۔"
       },
       "terms": {
         "title": "استعمال کی شرائط",
-        "error": "۔\nاستعمال کی شرائط کو کھولنے سے قاصر ہے۔"
+        "error": "استعمال کی شرائط کو کھولنے سے قاصر ہے۔"
       }
     },
     "capabilities": {
@@ -354,11 +365,11 @@
     "alerts": {
       "linkUnavailableTitle": "دستیاب نہیں۔",
       "linkUnavailableMessage": "ابھی اس لنک کو کھولنے سے قاصر ہے۔",
-      "restoreSuccessTitle": "۔\nبحال",
+      "restoreSuccessTitle": "بحال",
       "restoreSuccessMessage": "آپ کی خریداریاں بحال کر دی گئی ہیں۔",
-      "restoreEmptyTitle": "۔\nکوئی خریداری نہیں ملی",
-      "restoreEmptyMessage": "۔\nہم اس اکاؤنٹ کو بحال کرنے کے لیے ایک فعال خریداری نہیں ڈھونڈ سکے۔",
-      "restoreErrorTitle": "۔\nبحالی ناکام ہوگئی",
+      "restoreEmptyTitle": "کوئی خریداری نہیں ملی",
+      "restoreEmptyMessage": "ہم اس اکاؤنٹ کو بحال کرنے کے لیے ایک فعال خریداری نہیں ڈھونڈ سکے۔",
+      "restoreErrorTitle": "بحالی ناکام ہوگئی",
       "restoreErrorMessage": "ابھی خریداریوں کو بحال کرنے سے قاصر ہے۔",
       "resetConfirmTitle": "ایپ ڈیٹا ری سیٹ کریں؟",
       "resetConfirmMessage": "یہ تمام چیٹس اور مقامی ترجیحات کو ہٹا دیتا ہے۔",
@@ -371,14 +382,14 @@
     "chooseStyle": "ایک انداز منتخب کریں۔",
     "aspectRatio": "پہلو کا تناسب",
     "starterPrompts": {
-      "title": "۔\nسٹارٹر پرامپٹس",
+      "title": "سٹارٹر پرامپٹس",
       "items": [
         "سٹوڈیو ہیڈ شاٹ",
         "جدید رہنے کے کمرے",
         "غروب آفتاب کے وقت اشنکٹبندیی ساحل"
       ]
     },
-    "promptPlaceholder": "۔\nآپ جو دیکھنا چاہتے ہیں اسے ٹائپ کریں…",
+    "promptPlaceholder": "آپ جو دیکھنا چاہتے ہیں اسے ٹائپ کریں…",
     "promptHint": "مثال: 'سٹوڈیو لائٹنگ میں گولڈن ریٹریور'",
     "clearText": "متن صاف کریں۔",
     "generate": "پیدا کریں۔",
@@ -397,96 +408,96 @@
       ]
     },
     "promptPlaceholder": "ترامیم کی وضاحت کریں (اختیاری)",
-    "clearText": "۔\nمتن صاف کریں۔",
+    "clearText": "متن صاف کریں۔",
     "generate": "پیدا کریں۔",
-    "generating": "۔\nدرخواست دے رہا ہے…",
+    "generating": "درخواست دے رہا ہے…",
     "upload": {
-      "choose": "۔\nتصویر کا انتخاب کریں۔",
+      "choose": "تصویر کا انتخاب کریں۔",
       "change": "تبدیلی",
       "remove": "ہٹا دیں۔"
     },
     "imageUnavailable": {
       "title": "تصویر دستیاب نہیں ہے۔",
-      "message": "۔\nمنتخب تصویر تک رسائی نہیں ہو سکی۔ براہ کرم اسے دوبارہ منتخب کریں اور دوبارہ کوشش کریں۔"
+      "message": "منتخب تصویر تک رسائی نہیں ہو سکی۔ براہ کرم اسے دوبارہ منتخب کریں اور دوبارہ کوشش کریں۔"
     }
   },
   "studioCommon": {
     "styles": {
       "anime": {
-        "name": "anime"
+        "name": "اینیمے"
       },
       "cartoon": {
         "name": "کارٹون"
       },
       "photoreal": {
-        "name": "۔\nفوٹوریل"
+        "name": "فوٹوریل"
       },
       "sketch": {
         "name": "خاکہ"
       },
       "cyberpunk": {
-        "name": "۔\nسائبرپنک"
+        "name": "سائبرپنک"
       },
       "steampunk": {
-        "name": "۔\nسٹیمپنک"
+        "name": "سٹیمپنک"
       },
       "illustration_3d": {
-        "name": "۔\n3D عکاسی"
+        "name": "‏3D عکاسی"
       },
       "dark_fantasy": {
         "name": "ڈارک فینٹسی"
       },
       "vintage_film": {
-        "name": "۔\nونٹیج فلم"
+        "name": "ونٹیج فلم"
       },
       "pastel": {
-        "name": "۔\nپیسٹل جمالیاتی"
+        "name": "پیسٹل جمالیاتی"
       },
       "neon_glow": {
         "name": "نیین گلو"
       },
       "epic_landscape": {
-        "name": "۔\nایپک لینڈ سکیپ"
+        "name": "ایپک لینڈ سکیپ"
       }
     },
     "aspectRatios": {
-      "square": "۔\nمربع",
+      "square": "مربع",
       "landscape": "زمین کی تزئین کی",
-      "portrait": "۔\nپورٹریٹ"
+      "portrait": "پورٹریٹ"
     },
     "models": {
-      "fluxKontent": "۔\nفلوکس کانٹینٹ",
-      "custom": "۔\nحسب ضرورت"
+      "fluxKontent": "فلوکس کانٹینٹ",
+      "custom": "حسب ضرورت"
     },
     "notEnoughCoinsTitle": "کافی سکے نہیں ہیں۔",
-    "notEnoughCoinsMessage": "۔\nاس تصویر کے لیے آپ کا موجودہ بیلنس بہت کم ہے۔",
+    "notEnoughCoinsMessage": "اس تصویر کے لیے آپ کا موجودہ بیلنس بہت کم ہے۔",
     "modelTaglines": {
-      "runwareFluxSchnell": "۔\nتیز ترین ماڈل",
+      "runwareFluxSchnell": "تیز ترین ماڈل",
       "runwareFluxKrea": "تخلیقی، انداز کے نتائج",
       "runwareQwenImage": "متوازن، اعلیٰ معیار کے نتائج",
-      "google4": "۔\nبہترین AI امیج ماڈل",
+      "google4": "بہترین AI امیج ماڈل",
       "klingImageO1": "ہائی کنٹرول امیج ایڈیٹنگ",
-      "fluxKontent": "Flux Kontent ترمیم کے لیے تیار کیا گیا ہے۔",
-      "runwareProvider": "۔\nقابل اعتماد بازی کے ساتھ متوازن معیار۔",
+      "fluxKontent": "‏Flux Kontent ترمیم کے لیے تیار کیا گیا ہے۔",
+      "runwareProvider": "قابل اعتماد بازی کے ساتھ متوازن معیار۔",
       "airProvider": "نینو کیلا چنچل، وشد لہجے کا اضافہ کرتا ہے۔",
       "googleProvider": "گوگل نے پالش تفصیلات کے لیے تیار کیا۔",
-      "klingaiProvider": "KlingAI نے کنٹرول شدہ ترمیم کے لیے تیار کیا ہے۔",
+      "klingaiProvider": "‏KlingAI نے کنٹرول شدہ ترمیم کے لیے تیار کیا ہے۔",
       "anthropicProvider": "نازک مزاج کے لیے Claude پائپ لائن۔",
       "default": "دستیاب انجنوں کو دریافت کرنے کے لیے تھپتھپائیں۔"
     }
   },
   "createImageGenerating": {
     "stylePlaceholder": "آپ کا منتخب انداز",
-    "sheetTitle": "۔\nاپنے وژن کو تیار کرنا",
+    "sheetTitle": "اپنے وژن کو تیار کرنا",
     "sheetSubtitle": "سرور کافی کا مختصر گھونٹ جب ہم پرامپٹ میں {{style}} ملاتے ہیں۔",
     "phases": {
-      "blend": "{{style}} میں ملاوٹ",
-      "paint": "۔\nمنظر کو پینٹ کرنا",
+      "blend": "‏{{style}} میں ملاوٹ",
+      "paint": "منظر کو پینٹ کرنا",
       "finish": "حتمی پولش شامل کرنا"
     },
     "actions": {
       "cancel": "منسوخ کریں۔",
-      "retry": "۔\nدوبارہ کوشش کریں۔",
+      "retry": "دوبارہ کوشش کریں۔",
       "close": "بند"
     },
     "errors": {
@@ -497,11 +508,11 @@
     "alerts": {
       "saveFailedTitle": "بچا نہیں سکا",
       "shareFailedTitle": "اشتراک نہیں ہو سکا",
-      "tryAgain": "۔\nبراہ کرم دوبارہ کوشش کریں۔",
+      "tryAgain": "براہ کرم دوبارہ کوشش کریں۔",
       "savedTitle": "محفوظ کیا گیا۔",
-      "savedMessage": "۔\nتصویر آپ کی گیلری میں محفوظ ہو گئی۔",
-      "permissionTitle": "۔\nاجازت درکار ہے۔",
-      "permissionMessage": "۔\nاپنی گیلری میں تصاویر محفوظ کرنے کے لیے اسٹوریج تک رسائی کی اجازت دیں۔"
+      "savedMessage": "تصویر آپ کی گیلری میں محفوظ ہو گئی۔",
+      "permissionTitle": "اجازت درکار ہے۔",
+      "permissionMessage": "اپنی گیلری میں تصاویر محفوظ کرنے کے لیے اسٹوریج تک رسائی کی اجازت دیں۔"
     },
     "result": {
       "complete": "سب ختم"
@@ -520,13 +531,13 @@
     "alerts": {
       "savedTitle": "محفوظ کیا گیا۔",
       "savedMessage": "تصویر آپ کی گیلری میں محفوظ ہو گئی۔",
-      "permissionTitle": "۔\nاجازت درکار ہے۔",
+      "permissionTitle": "اجازت درکار ہے۔",
       "permissionMessage": "اپنی گیلری میں تصاویر محفوظ کرنے کے لیے اسٹوریج تک رسائی کی اجازت دیں۔",
       "saveFailedTitle": "بچا نہیں سکا",
       "tryAgain": "براہ کرم دوبارہ کوشش کریں۔"
     },
     "accessibility": {
-      "close": "۔\nبند",
+      "close": "بند",
       "delete": "تصویر کو حذف کریں۔",
       "edit": "تصویر میں ترمیم کریں۔",
       "save": "تصویر محفوظ کریں۔",
@@ -534,21 +545,21 @@
     }
   },
   "reportContent": {
-    "title": "AI مواد کی اطلاع دیں۔",
+    "title": "‏AI مواد کی اطلاع دیں۔",
     "subtitle": "ہمیں بتائیں کہ اس تیار کردہ مواد میں کیا غلط ہے۔",
     "privateDisclosure": "جمع کروانے سے یہ اطلاع شدہ مواد حفاظتی جائزہ کے لیے بھیج دیا جاتا ہے۔",
-    "accessibilityLabel": "AI مواد کی اطلاع دیں۔",
+    "accessibilityLabel": "‏AI مواد کی اطلاع دیں۔",
     "reasons": {
       "sexual": "جنسی یا عریانی مواد",
       "violence_self_harm": "تشدد یا خود کو نقصان پہنچانا",
       "hate_harassment": "نفرت یا ہراساں کرنا",
       "child_safety": "بچوں کی حفاظت کی فکر",
-      "scam_deceptive": "۔\nدھوکہ دہی یا گمراہ کن مواد",
+      "scam_deceptive": "دھوکہ دہی یا گمراہ کن مواد",
       "other": "دیگر"
     },
     "errors": {
-      "reasonRequired": "۔\nبراہ کرم جمع کرانے سے پہلے ایک وجہ منتخب کریں۔",
-      "submit": "۔\nرپورٹ پیش نہیں کر سکے۔ براہ کرم دوبارہ کوشش کریں۔"
+      "reasonRequired": "براہ کرم جمع کرانے سے پہلے ایک وجہ منتخب کریں۔",
+      "submit": "رپورٹ پیش نہیں کر سکے۔ براہ کرم دوبارہ کوشش کریں۔"
     },
     "success": {
       "title": "شکریہ آپ کی رپورٹ جمع کرائی گئی۔",
@@ -556,37 +567,37 @@
     },
     "actions": {
       "report": "رپورٹ",
-      "submit": "۔\nرپورٹ جمع کروائیں۔",
+      "submit": "رپورٹ جمع کروائیں۔",
       "done": "ہو گیا"
     }
   },
   "studioHome": {
     "headerTitle": "Image Studio",
     "accessibility": {
-      "openMenu": "۔\nمینو کھولیں۔",
+      "openMenu": "مینو کھولیں۔",
       "selectImages": "تصاویر منتخب کریں۔",
-      "exitSelection": "۔\nانتخاب سے باہر نکلیں۔",
-      "deleteSelected": "۔\nمنتخب کردہ تصاویر کو حذف کریں۔",
-      "selectToDelete": "۔\nحذف کرنے کے لیے تصاویر منتخب کریں۔"
+      "exitSelection": "انتخاب سے باہر نکلیں۔",
+      "deleteSelected": "منتخب کردہ تصاویر کو حذف کریں۔",
+      "selectToDelete": "حذف کرنے کے لیے تصاویر منتخب کریں۔"
     },
     "createCard": {
       "title": "متن سے تخلیق کریں۔",
-      "subtitle": "۔\nایک تفصیل ٹائپ کریں۔",
-      "cta": "۔\nبیان کریں اور پیدا کریں۔"
+      "subtitle": "ایک تفصیل ٹائپ کریں۔",
+      "cta": "بیان کریں اور پیدا کریں۔"
     },
     "editCard": {
       "title": "اے آئی فوٹو ایڈیٹر",
-      "subtitle": "۔\nAI کے ساتھ تبدیلی اور اضافہ کریں۔",
-      "cta": "۔\nAI کے ساتھ ترمیم کریں۔"
+      "subtitle": "‏AI کے ساتھ تبدیلی اور اضافہ کریں۔",
+      "cta": "‏AI کے ساتھ ترمیم کریں۔"
     },
     "gallery": {
       "title": "گیلری",
-      "empty": "۔\nابھی تک کوئی تصاویر نہیں ہیں۔",
+      "empty": "ابھی تک کوئی تصاویر نہیں ہیں۔",
       "selection": {
-        "enter": "۔\nتصاویر منتخب کریں۔",
-        "exit": "۔\nانتخاب سے باہر نکلیں۔",
+        "enter": "تصاویر منتخب کریں۔",
+        "exit": "انتخاب سے باہر نکلیں۔",
         "deleteSelected": "منتخب کردہ تصاویر کو حذف کریں۔",
-        "selectForDelete": "۔\nحذف کرنے کے لیے تصاویر منتخب کریں۔"
+        "selectForDelete": "حذف کرنے کے لیے تصاویر منتخب کریں۔"
       }
     }
   },
@@ -599,9 +610,9 @@
       },
       "valueDemo": {
         "title": "ہم چاہتے ہیں کہ آپ Cloud AI مفت میں آزمائیں۔",
-        "workspaceLabel": "AI ورکسپیس",
+        "workspaceLabel": "‏AI ورکسپیس",
         "userPromptLabel": "یوزر پرامپٹ",
-        "aiTypingLabel": "AI ٹائپنگ",
+        "aiTypingLabel": "‏AI ٹائپنگ",
         "prompt": "تاخیر سے ترسیل کے بارے میں کلائنٹ کو شائستہ جواب لکھیں۔",
         "response": "ہیلو، آپ کے صبر کا شکریہ۔ آپ کی ترسیل میں تھوڑی تاخیر ہو سکتی ہے۔ میں آپ کو اپ ڈیٹ کرتا رہوں گا۔",
         "cards": {
@@ -675,17 +686,17 @@
       }
     },
     "careView": {
-      "titlePrefix": "۔\nملنا",
+      "titlePrefix": "ملنا",
       "titleHighlight": "Image Studio",
-      "subtitle": "AI کے ساتھ تصاویر بنائیں اور ان میں ترمیم کریں — بالکل Cloud AI کے اندر۔"
+      "subtitle": "‏AI کے ساتھ تصاویر بنائیں اور ان میں ترمیم کریں — بالکل Cloud AI کے اندر۔"
     },
     "relaxView": {
-      "title": "۔\nاپنے AI سے ملو",
+      "title": "اپنے AI سے ملو",
       "titleHighlight": "معاونین",
       "subtitle": "خصوصی AI ماہرین آپ کی روزمرہ کی ضروریات میں مدد کے لیے تیار ہیں۔",
       "cards": {
         "fitness": {
-          "title": "۔\nفٹنس کوچ",
+          "title": "فٹنس کوچ",
           "text": "چھوٹی عادات اور گھریلو ورزش۔"
         },
         "recipes": {
@@ -700,26 +711,26 @@
     },
     "splash": {
       "title": "CLOUD AI",
-      "tagline": "۔\nانٹرپرائز گریڈ AI سلوشنز",
+      "tagline": "انٹرپرائز گریڈ AI سلوشنز",
       "description": "انٹرپرائز پروفیشنلز اور ٹیموں کے لیے ڈیزائن کی گئی جدید مصنوعی ذہانت کی ٹیکنالوجی کے ساتھ اپنے کاروبار کو بااختیار بنائیں۔",
-      "stats": "500k+ صارفین کے ذریعے قابل اعتماد",
-      "rating": "۔\n4.9/5",
+      "stats": "‏500k+ صارفین کے ذریعے قابل اعتماد",
+      "rating": "4.9/5",
       "button": "شروع کریں"
     },
     "buttons": {
       "continue": "جاری رکھیں",
-      "start": "۔\nآئیے شروع کرتے ہیں۔"
+      "start": "آئیے شروع کرتے ہیں۔"
     },
     "v3": {
       "intent": {
         "overline": "اسے اپنا بنائیں",
-        "title": "Cloud AI کو آپ کی کیا مدد کرنی چاہئے؟",
-        "cta": "۔\nجاری رکھیں"
+        "title": "‏Cloud AI کو آپ کی کیا مدد کرنی چاہئے؟",
+        "cta": "جاری رکھیں"
       },
       "goals": {
         "ask": "جوابات تلاش کریں۔",
         "write": "بہتر لکھیں۔",
-        "create": "۔\nتصاویر بنائیں",
+        "create": "تصاویر بنائیں",
         "plan": "میرے دن کا منصوبہ بنائیں"
       },
       "outcome": {
@@ -729,15 +740,15 @@
           "subtitle": "قدرتی طور پر پوچھیں۔ واضح جواب اور مفید اگلے اقدامات حاصل کریں۔",
           "beat1": "سمجھیں۔",
           "beat2": "فیصلہ کریں۔",
-          "beat3": "۔\nآگے بڑھیں۔"
+          "beat3": "آگے بڑھیں۔"
         },
         "write": {
           "focus": "بہتر لکھیں۔",
-          "title": "۔\nخیالات کو الفاظ میں بدل دیں۔",
-          "subtitle": "۔\nکسی موٹے خیال سے لکھنے کی طرف جائیں جو آپ کی طرح لگتا ہے۔",
-          "beat1": "۔\nشکل",
+          "title": "خیالات کو الفاظ میں بدل دیں۔",
+          "subtitle": "کسی موٹے خیال سے لکھنے کی طرف جائیں جو آپ کی طرح لگتا ہے۔",
+          "beat1": "شکل",
           "beat2": "سدھارنا",
-          "beat3": "۔\nشیئر کریں۔"
+          "beat3": "شیئر کریں۔"
         },
         "create": {
           "focus": "تصاویر بنائیں",
@@ -748,11 +759,11 @@
           "beat3": "کامل"
         },
         "plan": {
-          "focus": "۔\nمیرے دن کا منصوبہ بنائیں",
+          "focus": "میرے دن کا منصوبہ بنائیں",
           "title": "اہم چیزوں کے لئے جگہ بنائیں",
           "subtitle": "مصروف فہرست کو ایک پرسکون منصوبے میں تبدیل کریں جس پر آپ عمل کر سکتے ہیں۔",
           "beat1": "ترجیح دیں۔",
-          "beat2": "۔\nمنظم کریں۔",
+          "beat2": "منظم کریں۔",
           "beat3": "شروع کریں"
         }
       },
@@ -776,7 +787,19 @@
       "controls": {
         "back": "پیچھے",
         "continue": "جاری رکھیں",
-        "finish": "۔\nپریمیم دریافت کریں۔"
+        "finish": "پریمیم دریافت کریں۔"
+      },
+      "trial": {
+        "priceLine": "اس کے بعد {{price}} سالانہ۔ کسی بھی وقت منسوخ کریں۔",
+        "title": "ہم چاہتے ہیں کہ آپ Cloud AI مفت آزمائیں۔",
+        "demoAsk": "میرے خاکے کو سائبر پنک پوسٹر میں بدل دو",
+        "demoReply": "چار انداز، چند سیکنڈ میں تیار۔",
+        "noPayment": "ابھی کوئی ادائیگی نہیں",
+        "cta": "$0.00 میں آزمائیں"
+      },
+      "reminder": {
+        "title": "آپ کی مفت آزمائش ختم ہونے سے پہلے ہم آپ کو یاد دلائیں گے",
+        "note": "کسی بھی چارج سے کافی پہلے آپ کو اطلاع مل جائے گی، تاکہ کچھ بھی اچانک نہ ہو۔"
       }
     }
   },
@@ -784,21 +807,21 @@
     "title": "کریڈٹ حاصل کریں۔",
     "loading": "سکے کی دکان لوڈ ہو رہی ہے…",
     "balanceLabel": "آپ کا موجودہ بیلنس ہے۔",
-    "balanceValue": "{{amount}} کریڈٹس",
+    "balanceValue": "‏{{amount}} کریڈٹس",
     "history": {
       "link": "لین دین کی تاریخ",
       "alertTitle": "تاریخ",
-      "alertBody": "۔\nلین دین کی تاریخ جلد آرہی ہے۔"
+      "alertBody": "لین دین کی تاریخ جلد آرہی ہے۔"
     },
     "noPacks": "کوئی کوائن پیک دستیاب نہیں ہے۔ اپنی RevenueCat پیشکش کی آئی ڈی چیک کریں۔",
     "badges": {
-      "basic": "۔\nبنیادی پیک",
-      "popular": "۔\nسب سے زیادہ مقبول",
-      "value": "۔\nبہترین قدر"
+      "basic": "بنیادی پیک",
+      "popular": "سب سے زیادہ مقبول",
+      "value": "بہترین قدر"
     },
     "pack": {
-      "creditsLabel": "{{credits}} کریڈٹس",
-      "tokensLabel": "{{credits}} کریڈٹس",
+      "creditsLabel": "‏{{credits}} کریڈٹس",
+      "tokensLabel": "‏{{credits}} کریڈٹس",
       "defaultName": "پیک {{index}}",
       "unknownPrice": "USD -"
     },
@@ -808,12 +831,12 @@
       "cta": "اپ گریڈ کریں۔"
     },
     "termsText": "خریداری کرکے، آپ ہماری بات سے اتفاق کرتے ہیں۔",
-    "termsLink": "۔\nسروس کی شرائط",
+    "termsLink": "سروس کی شرائط",
     "alerts": {
       "initErrorTitle": "ابتدائی غلطی",
       "genericMessage": "کچھ غلط ہو گیا۔",
       "successTitle": "کامیابی",
-      "successMessage": "۔\nکریڈٹ جلد ہی ظاہر ہوں گے۔",
+      "successMessage": "کریڈٹ جلد ہی ظاہر ہوں گے۔",
       "purchaseFailedTitle": "خریداری ناکام ہو گئی۔",
       "unknownError": "نامعلوم خرابی۔"
     }
@@ -828,10 +851,10 @@
     "assistantsMessage": "معاونین کو پریمیم درکار ہے۔ فٹنس، کوڈنگ، تحریر، اور مزید کے لیے خصوصی AI معاونین تک رسائی حاصل کرنے کے لیے اپ گریڈ کریں۔"
   },
   "paywall": {
-    "modelsHeadline": "GPT-5.5، Grok، Gemini",
+    "modelsHeadline": "‏GPT-5.5، Grok، Gemini",
     "close": "پے وال بند کریں۔",
     "unavailableTitle": "خریداریاں دستیاب نہیں ہیں۔",
-    "unavailableMessage": "Android بلنگ ابھی تک کنفیگر نہیں ہوئی ہے۔",
+    "unavailableMessage": "‏Android بلنگ ابھی تک کنفیگر نہیں ہوئی ہے۔",
     "restoreEmptyTitle": "کوئی خریداری نہیں ملی",
     "restoreEmptyMessage": "ہم اس اکاؤنٹ کو بحال کرنے کے لیے ایک فعال خریداری نہیں ڈھونڈ سکے۔",
     "restoreFailedTitle": "بحالی ناکام ہوگئی",
@@ -841,36 +864,36 @@
     "purchaseFailedTitle": "خریداری ناکام ہو گئی۔",
     "purchaseFailedMessage": "اس خریداری کو ابھی مکمل کرنے سے قاصر ہے۔",
     "restore": "بحال کریں۔",
-    "restoreRestoring": "۔\nبحال ہو رہا ہے…",
+    "restoreRestoring": "بحال ہو رہا ہے…",
     "features": {
       "create": "تصاویر اور ویڈیوز بنائیں",
-      "search": "۔\nAI کے ساتھ ویب پر تلاش کریں۔",
-      "talk": "۔\nAI سے قدرتی طور پر بات کریں۔",
-      "imageStudio": "Image Studio {{credits}} کریڈٹس {{period}} حاصل کریں",
+      "search": "‏AI کے ساتھ ویب پر تلاش کریں۔",
+      "talk": "‏AI سے قدرتی طور پر بات کریں۔",
+      "imageStudio": "‏Image Studio {{credits}} کریڈٹس {{period}} حاصل کریں",
       "period": {
         "weekly": "ہفتہ وار",
-        "monthly": "۔\nماہانہ",
-        "yearly": "۔\nسالانہ"
+        "monthly": "ماہانہ",
+        "yearly": "سالانہ"
       }
     },
     "freeTrial": {
       "title": "مفت آزمائش",
-      "subtitle": "۔\n3 دن کی مفت آزمائش"
+      "subtitle": "3 دن کی مفت آزمائش"
     },
     "badge": {
-      "bestOffer": "۔\nبہترین پیشکش"
+      "bestOffer": "بہترین پیشکش"
     },
     "plans": {
       "yearly": {
         "title": "سالانہ",
-        "only": "۔\nصرف {{price}}",
+        "only": "صرف {{price}}",
         "defaultPrice": "USD 79.99",
-        "defaultIntroPrice": "۔\nUSD 1.35"
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
         "title": "ماہانہ",
-        "subtitle": "۔\nکسی بھی وقت منسوخ کریں۔",
-        "defaultPrice": "۔\nUSD 19.99"
+        "subtitle": "کسی بھی وقت منسوخ کریں۔",
+        "defaultPrice": "USD 19.99"
       },
       "weekly": {
         "title": "ہفتہ وار",
@@ -881,7 +904,7 @@
     },
     "frequency": {
       "perWeek": "فی ہفتہ",
-      "perMonth": "۔\nفی مہینہ"
+      "perMonth": "فی مہینہ"
     },
     "cta": "جاری رکھیں",
     "ctaFreeTrial": "اسے مفت میں آزمائیں۔",
@@ -892,7 +915,7 @@
     "premium": {
       "headline": "تمام پریمیم AI ایک پلان میں",
       "subtitleLine1": "چیٹ کریں، کوڈ بنائیں، بنائیں اور منصوبہ بنائیں",
-      "subtitleLine2": "۔\nجدید ماڈلز کے ساتھ۔",
+      "subtitleLine2": "جدید ماڈلز کے ساتھ۔",
       "enableTrial": "مفت آزمائش کو فعال کریں",
       "annual": "سالانہ",
       "saveBadge": "83% بچائیں",
@@ -924,31 +947,31 @@
         "todayTitle": "آج - پریمیم شروع ہوتا ہے۔",
         "todayBody": "ہر پریمیم AI فیچر کو فوری طور پر غیر مقفل کریں۔",
         "billingTitle": "سالانہ بل کیا جاتا ہے۔",
-        "billingBody": "{{price}} آپ کو پورے ایک سال تک رسائی فراہم کرتا ہے۔",
+        "billingBody": "‏{{price}} آپ کو پورے ایک سال تک رسائی فراہم کرتا ہے۔",
         "renewalTitle": "سالانہ تجدید",
         "renewalBody": "اپنی تجدید کی تاریخ سے پہلے کسی بھی وقت Google Play میں منسوخ کریں۔",
         "cta": "جاری رکھیں",
-        "renewalTerms": "{{price}} / {{period}}۔ منسوخ ہونے تک خودکار تجدید ہوتی ہے۔"
+        "renewalTerms": "‏{{price}} / {{period}}۔ منسوخ ہونے تک خودکار تجدید ہوتی ہے۔"
       }
     }
   },
   "chat": {
     "messagePlaceholder": "پیغام...",
-    "createImages": "۔\nتصاویر بنائیں",
-    "generateAiArtwork": "AI آرٹ ورک تیار کریں۔",
+    "createImages": "تصاویر بنائیں",
+    "generateAiArtwork": "‏AI آرٹ ورک تیار کریں۔",
     "camera": "تصاویر اپ لوڈ کریں۔",
-    "takeOrSelectPhotos": "۔\nفوٹو منتخب کریں۔",
+    "takeOrSelectPhotos": "فوٹو منتخب کریں۔",
     "search": "تلاش کریں۔",
     "findInformation": "معلومات تلاش کریں۔",
     "findRecentInfo": "حالیہ معلومات تلاش کریں۔",
     "removeImage": "تصویر کو ہٹا دیں۔",
     "messageInput": "پیغام ان پٹ",
     "clearInput": "ان پٹ صاف کریں۔",
-    "quickActionsLabel": "۔\nفوری اقدامات",
+    "quickActionsLabel": "فوری اقدامات",
     "hideQuickActions": "فوری اقدامات چھپائیں۔",
-    "showQuickActions": "۔\nفوری اقدامات دکھائیں۔",
-    "startVoiceInput": "۔\nصوتی ان پٹ شروع کریں۔",
-    "sendMessage": "۔\nپیغام بھیجیں۔",
+    "showQuickActions": "فوری اقدامات دکھائیں۔",
+    "startVoiceInput": "صوتی ان پٹ شروع کریں۔",
+    "sendMessage": "پیغام بھیجیں۔",
     "offline": "آف لائن",
     "stop": "رک جاؤ",
     "streaming": "سلسلہ بندی…",
@@ -957,11 +980,11 @@
     "scrollToLatest": "تازہ ترین پیغام تک سکرول کریں۔",
     "copyMessage": "پیغام کاپی کریں۔",
     "copyMessageHint": "اس پیغام کو کلپ بورڈ پر کاپی کریں۔",
-    "shareMessage": "۔\nپیغام شیئر کریں۔",
+    "shareMessage": "پیغام شیئر کریں۔",
     "shareMessageHint": "اس پیغام کو شیئر کریں۔",
     "regenerateResponse": "ردعمل کو دوبارہ تخلیق کریں۔",
     "regenerateResponseHint": "ایک نیا جواب تیار کریں۔",
-    "copyCode": "۔\nکوڈ کاپی کریں۔",
+    "copyCode": "کوڈ کاپی کریں۔",
     "copied": "کاپی",
     "image": "تصویر",
     "loading": "لوڈ ہو رہا ہے…",
@@ -974,52 +997,52 @@
     "sendFailed": "پیغام بھیجنے میں ناکام۔ براہ کرم دوبارہ کوشش کریں۔",
     "modelNoImageSupport": "منتخب کردہ ماڈل تصاویر کو سپورٹ نہیں کرتا ہے۔ براہ کرم ایک مختلف ماڈل منتخب کریں۔",
     "voiceStartFailed": "آواز شروع نہیں ہو سکی۔",
-    "voiceNoSpeechDetected": "۔\nکوئی آواز نہیں پہچانی گئی۔ براہ کرم دوبارہ کوشش کریں۔",
+    "voiceNoSpeechDetected": "کوئی آواز نہیں پہچانی گئی۔ براہ کرم دوبارہ کوشش کریں۔",
     "emptyTitle": "میں کس طرح مدد کر سکتا ہوں؟",
-    "emptySubtitle": "۔\nAI کے ساتھ بات چیت شروع کریں۔",
-    "privateTitle": "۔\nپرائیویٹ چیٹ",
+    "emptySubtitle": "‏AI کے ساتھ بات چیت شروع کریں۔",
+    "privateTitle": "پرائیویٹ چیٹ",
     "privateSubtitle": "یہ چیٹ آپ کی چیٹ کی سرگزشت میں ظاہر نہیں ہوگی۔",
     "startPrivateChat": "نجی چیٹ شروع کریں۔",
     "endPrivateChat": "نجی چیٹ ختم کریں۔",
     "permissions": {
-      "photosTitle": "۔\nتصاویر کی اجازت درکار ہے۔",
+      "photosTitle": "تصاویر کی اجازت درکار ہے۔",
       "photosMessage": "تصاویر کو منتخب کرنے کے لیے تصویر تک رسائی درکار ہے۔",
       "voiceTitle": "صوتی اجازتوں کی ضرورت ہے۔",
-      "voiceMessage": "۔\nآواز استعمال کرنے کے لیے مائیکروفون اور تقریر تک رسائی درکار ہے۔"
+      "voiceMessage": "آواز استعمال کرنے کے لیے مائیکروفون اور تقریر تک رسائی درکار ہے۔"
     },
     "activity": {
       "analyzingImages": "تصاویر کا تجزیہ کیا جا رہا ہے…",
-      "searching": "۔\nتلاش کر رہا ہے…",
-      "thinking": "۔\nسوچ رہا ہے…",
-      "analyzingDocuments": "Analyzing documents…"
+      "searching": "تلاش کر رہا ہے…",
+      "thinking": "سوچ رہا ہے…",
+      "analyzingDocuments": "دستاویزات کا تجزیہ ہو رہا ہے…"
     },
     "webSearch": {
-      "title": "۔\nویب تلاش",
+      "title": "ویب تلاش",
       "subtitle": "حالیہ معلومات تلاش کریں۔",
-      "label": "۔\nویب تلاش",
-      "enable": "۔\nویب تلاش کو فعال کریں۔",
+      "label": "ویب تلاش",
+      "enable": "ویب تلاش کو فعال کریں۔",
       "disable": "ویب تلاش کو غیر فعال کریں۔",
-      "toggleLabel": "۔\nویب پر تلاش کریں۔"
+      "toggleLabel": "ویب پر تلاش کریں۔"
     },
     "studioBanner": {
-      "label": "۔\nImage Studio",
+      "label": "Image Studio",
       "title": "رفتار سے بصری ڈیزائن کریں۔",
-      "subtitle": "۔\nایک جگہ پر بصری اثاثے بنائیں، بہتر کریں اور شائع کریں۔",
-      "cta": "۔\nکھولیں۔"
+      "subtitle": "ایک جگہ پر بصری اثاثے بنائیں، بہتر کریں اور شائع کریں۔",
+      "cta": "کھولیں۔"
     },
     "quickActions": {
-      "createImages": "۔\nتصاویر بنائیں",
+      "createImages": "تصاویر بنائیں",
       "openCamera": "کیمرہ کھولیں۔",
-      "editImage": "۔\nتصویر میں ترمیم کریں۔",
-      "startVoice": "۔\nآواز شروع کریں۔",
+      "editImage": "تصویر میں ترمیم کریں۔",
+      "startVoice": "آواز شروع کریں۔",
       "assistants": "معاونین"
     },
     "listening": "سن رہا ہے…",
-    "startRecording": "۔\nریکارڈنگ شروع کریں…",
+    "startRecording": "ریکارڈنگ شروع کریں…",
     "assistantHeader": {
       "unavailableTitle": "اسسٹنٹ دستیاب نہیں ہے۔",
       "unavailableDescription": "ہم اس اسسٹنٹ کو لوڈ نہیں کر سکے۔ براہ کرم دوبارہ کوشش کریں۔",
-      "ready": "۔\nمدد کے لیے تیار ہیں۔"
+      "ready": "مدد کے لیے تیار ہیں۔"
     },
     "actions": {
       "copy": "کاپی",
@@ -1030,14 +1053,14 @@
       "cancel": "منسوخ کریں۔"
     },
     "markdown": {
-      "copy": "۔\nکاپی",
+      "copy": "کاپی",
       "copied": "کاپی",
       "table": "ٹیبل",
       "watchVideo": "ویڈیو دیکھیں",
-      "wikipedia": "۔\nویکیپیڈیا",
+      "wikipedia": "ویکیپیڈیا",
       "link": "لنک",
       "note": "نوٹ",
-      "warning": "۔\nوارننگ",
+      "warning": "وارننگ",
       "tip": "ٹپ"
     },
     "messageActionTitle": "پیغام",
@@ -1048,11 +1071,11 @@
     },
     "suggestions": {
       "writeStory": "ایک تخلیقی کہانی لکھیں۔",
-      "writeStorySubtitle": "۔\nایک جادوئی مہم جوئی کے بارے میں",
+      "writeStorySubtitle": "ایک جادوئی مہم جوئی کے بارے میں",
       "planTravel": "سفری سفر کا منصوبہ بنائیں",
-      "planTravelSubtitle": "۔\nایک حیرت انگیز چھٹی کے لئے",
-      "explainConcept": "۔\nاس تصور کی وضاحت کریں۔",
-      "explainConceptSubtitle": "۔\nسادہ الفاظ میں",
+      "planTravelSubtitle": "ایک حیرت انگیز چھٹی کے لئے",
+      "explainConcept": "اس تصور کی وضاحت کریں۔",
+      "explainConceptSubtitle": "سادہ الفاظ میں",
       "planDay": "میرے دن کا منصوبہ بنائیں",
       "planDaySubtitle": "پیداواری تجاویز کے ساتھ"
     },
@@ -1064,11 +1087,11 @@
       "changeTopic": "دوسرا موضوع منتخب کریں۔",
       "intents": {
         "summarize": "متن کا خلاصہ کریں۔",
-        "summarizeShort": "۔\nخلاصہ کریں۔",
+        "summarizeShort": "خلاصہ کریں۔",
         "summarizeHint": "مضامین، نوٹس، وائس میمو، لمبے دھاگے۔",
         "plan": "ایک منصوبہ بنائیں",
         "planHint": "دورے، معمولات، بجٹ، آخری تاریخ، زندگی میں تبدیلیاں",
-        "brainstorm": "۔\nدماغی طوفان",
+        "brainstorm": "دماغی طوفان",
         "brainstormHint": "آئیڈیاز، پیشکش، نام، مواد، سائیڈ پروجیکٹس",
         "analyze": "ڈیٹا کا تجزیہ کریں۔",
         "analyzeHint": "خرچ، تاثرات، میٹرکس، عادات، کارکردگی"
@@ -1086,63 +1109,70 @@
         },
         "plan": {
           "energyResetTitle": "14 دن کی انرجی ری سیٹ بنائیں",
-          "energyResetSubtitle": "۔\nنیند، خوراک، نقل و حرکت اور توجہ کے لیے ایک حقیقت پسندانہ منصوبہ۔",
+          "energyResetSubtitle": "نیند، خوراک، نقل و حرکت اور توجہ کے لیے ایک حقیقت پسندانہ منصوبہ۔",
           "mealPlanTitle": "کھانے کا منصوبہ بنائیں میں اصل میں پکاؤں گا۔",
-          "mealPlanSubtitle": "۔\nعملی، سستی، اور میرے پاس جو کچھ ہے اس کی بنیاد پر۔",
-          "cityMoveTitle": "۔\nمیرے نئے شہر جانے کا منصوبہ بنائیں",
+          "mealPlanSubtitle": "عملی، سستی، اور میرے پاس جو کچھ ہے اس کی بنیاد پر۔",
+          "cityMoveTitle": "میرے نئے شہر جانے کا منصوبہ بنائیں",
           "cityMoveSubtitle": "اسے ٹائم لائن، بجٹ، ہاؤسنگ اور ایڈمن کے کاموں میں تقسیم کریں۔",
           "tripEscapeTitle": "ہفتے کے آخر میں ایک یادگار فرار کا منصوبہ بنائیں",
           "tripEscapeSubtitle": "ایک عام سفر نامہ سے بہتر کچھ۔"
         },
         "brainstorm": {
-          "sideHustleTitle": "۔\nایک حقیقت پسندانہ پہلو تلاش کریں۔",
+          "sideHustleTitle": "ایک حقیقت پسندانہ پہلو تلاش کریں۔",
           "sideHustleSubtitle": "ایسے خیالات جو میں کل وقتی کام کرتے ہوئے شروع کر سکتا ہوں۔",
           "brandAngleTitle": "ایک یادگار برانڈ زاویہ تلاش کریں۔",
-          "brandAngleSubtitle": "۔\nمصنوعات، تخلیق کاروں، ایجنسیوں، یا نیوز لیٹرز کے لیے مفید ہے۔",
+          "brandAngleSubtitle": "مصنوعات، تخلیق کاروں، ایجنسیوں، یا نیوز لیٹرز کے لیے مفید ہے۔",
           "socialSeriesTitle": "مواد کی سیریز ایجاد کریں۔",
-          "socialSeriesSubtitle": "۔\nسامعین کو بڑھانے کے لیے کافی یکساں چیز۔",
-          "datingIdeasTitle": "۔\nتازہ خیالات کے ساتھ آئیں",
-          "datingIdeasSubtitle": "۔\nتاریخیں، تحائف، حیرت، یا واقعات جو سوچ سمجھ کر محسوس کرتے ہیں۔"
+          "socialSeriesSubtitle": "سامعین کو بڑھانے کے لیے کافی یکساں چیز۔",
+          "datingIdeasTitle": "تازہ خیالات کے ساتھ آئیں",
+          "datingIdeasSubtitle": "تاریخیں، تحائف، حیرت، یا واقعات جو سوچ سمجھ کر محسوس کرتے ہیں۔"
         },
         "analyze": {
           "spendingLeaksTitle": "تلاش کریں کہ میرا پیسہ کہاں سے نکل رہا ہے۔",
-          "spendingLeaksSubtitle": "۔\nپیٹرن، کمزور مقامات اور سب سے آسان جیت پہلے دکھائیں۔",
-          "customerFeedbackTitle": "۔\nرائے کو ترجیحات میں تبدیل کریں۔",
+          "spendingLeaksSubtitle": "پیٹرن، کمزور مقامات اور سب سے آسان جیت پہلے دکھائیں۔",
+          "customerFeedbackTitle": "رائے کو ترجیحات میں تبدیل کریں۔",
           "customerFeedbackSubtitle": "کلسٹر کی درخواستیں، شکایات، عجلت، اور اثر۔",
-          "habitPatternsTitle": "۔\nمیری عادات میں اسپاٹ پیٹرن",
-          "habitPatternsSubtitle": "۔\nورزش، نیند، جرنلنگ، یا فوکس لاگ کے لیے مفید ہے۔",
+          "habitPatternsTitle": "میری عادات میں اسپاٹ پیٹرن",
+          "habitPatternsSubtitle": "ورزش، نیند، جرنلنگ، یا فوکس لاگ کے لیے مفید ہے۔",
           "metricsStoryTitle": "وضاحت کریں کہ نمبروں کا کیا مطلب ہے۔",
-          "metricsStorySubtitle": "۔\nزیادہ سگنل، کم اسپریڈشیٹ شور۔"
+          "metricsStorySubtitle": "زیادہ سگنل، کم اسپریڈشیٹ شور۔"
         }
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "فائل اپ لوڈ کریں",
+      "supportedTypes": "‏PDF، DOCX، TXT یا CSV فائلیں",
+      "failed": "اپ لوڈ ناکام ہو گیا",
+      "retry": "دوبارہ اپ لوڈ کریں",
+      "retryShort": "دوبارہ کوشش کریں",
+      "remove": "فائل ہٹائیں",
+      "pickerErrorTitle": "فائلیں نہیں کھل سکیں",
+      "pickerErrorMessage": "براہ کرم دستاویز دوبارہ منتخب کرنے کی کوشش کریں۔",
+      "tooMany": "آپ ہر پیغام میں زیادہ سے زیادہ 3 دستاویزات منسلک کر سکتے ہیں۔",
+      "tooLarge": "ہر دستاویز 10 MB یا اس سے کم ہونی چاہیے۔",
+      "empty": "منتخب کردہ دستاویز خالی ہے۔",
+      "unsupported": "‏PDF، DOCX، TXT یا CSV فائل استعمال کریں۔",
+      "invalidTitle": "فائل سپورٹ نہیں ہوتی",
+      "pasteFailedTitle": "پیسٹ کیا گیا متن منسلک نہیں ہو سکا",
+      "pasteFailedMessage": "آپ کا متن پیغام کے خانے میں محفوظ رہا۔",
+      "waitUntilReady": "براہ کرم اپنی دستاویزات کے اپ لوڈ مکمل ہونے کا انتظار کریں۔",
+      "encrypted": "یہ PDF پاس ورڈ سے محفوظ ہے۔ ان لاک شدہ کاپی اپ لوڈ کریں۔",
+      "unsupportedDocument": "یہ فائل پڑھی نہیں جا سکتی یا اس کا مواد سپورٹ نہیں ہوتا۔ PDF، DOCX، TXT یا CSV فائل استعمال کریں۔",
+      "tooManyPages": "اس PDF کو زیادہ سے زیادہ 100 صفحات والی فائلوں میں تقسیم کریں۔",
+      "noReadableText": "کوئی قابلِ مطالعہ متن نہیں ملا۔ اسکین شدہ PDF فائلوں کے لیے OCR ضروری ہے؛ متن پر مبنی کاپی اپ لوڈ کریں۔",
+      "pastedTextName": "پیسٹ کیا گیا متن",
+      "badge": "DOC",
+      "untitled": "دستاویز"
     }
   },
   "imageUpload": {
-    "required": "۔\n *",
-    "processing": "۔\nپروسیسنگ...",
+    "required": " *",
+    "processing": "پروسیسنگ...",
     "tapToUploadImage": "تصویر اپ لوڈ کرنے کے لیے تھپتھپائیں۔"
   },
   "imageGridSelector": {
-    "required": "۔\n *",
-    "processing": "۔\nپروسیسنگ...",
+    "required": " *",
+    "processing": "پروسیسنگ...",
     "camera": "تصاویر اپ لوڈ کریں۔",
     "library": "لائبریری"
   },
@@ -1151,36 +1181,36 @@
     "retry": "دوبارہ کوشش کریں۔",
     "cancel": "منسوخ کریں۔",
     "allow": "اجازت دیں۔",
-    "notNow": "۔\nابھی نہیں۔",
+    "notNow": "ابھی نہیں۔",
     "openSettings": "ترتیبات کھولیں۔",
     "close": "بند",
     "save": "محفوظ کریں۔",
     "tryAgain": "دوبارہ کوشش کریں۔"
   },
   "rateUs": {
-    "title": "Cloud AI سے لطف اندوز ہو رہے ہیں؟",
+    "title": "‏Cloud AI سے لطف اندوز ہو رہے ہیں؟",
     "subtitle": "آپ کے تاثرات ہمیں بہتر بنانے میں مدد کرتے ہیں۔ کیا آپ ہمیں ایپ اسٹور پر درجہ بندی کرنے پر اعتراض کریں گے؟",
-    "rateNow": "۔\nابھی درجہ بندی کریں۔",
+    "rateNow": "ابھی درجہ بندی کریں۔",
     "maybeLater": "شاید بعد میں",
-    "dontAskAgain": "۔\nدوبارہ مت پوچھو"
+    "dontAskAgain": "دوبارہ مت پوچھو"
   },
   "oneTimeOffer": {
-    "title": "۔\nایک بار کی پیشکش",
-    "discount": "۔\n{{percent}}% چھوٹ",
+    "title": "ایک بار کی پیشکش",
+    "discount": "‏{{percent}}% چھوٹ",
     "subtitle": "آپ کو یہ پیشکش دوبارہ نظر نہیں آئے گی۔",
     "badgeLine1": "خصوصی",
     "badgeLine2": "ایک بار کی پیشکش",
-    "upgradeNow": "{{price}} کے لیے ابھی اپ گریڈ کریں",
+    "upgradeNow": "‏{{price}} کے لیے ابھی اپ گریڈ کریں",
     "loadingPrice": "لوڈ ہو رہا ہے...",
     "termsOfUse": "استعمال کی شرائط",
     "privacyPolicy": "رازداری کی پالیسی",
     "accessTitle": "تک لامحدود رسائی",
-    "accessSubtitle": "۔\nGPT، Gemini اور Grok 4",
+    "accessSubtitle": "‏GPT، Gemini اور Grok 4",
     "features": {
-      "unlimitedGPT4": "GPT-4 تک لامحدود رسائی",
-      "geminiPro": "Gemini پرو تک رسائی",
+      "unlimitedGPT4": "‏GPT-4 تک لامحدود رسائی",
+      "geminiPro": "‏Gemini پرو تک رسائی",
       "grokInsights": "تازہ بصیرت کے لیے Grok استعمال کریں۔",
-      "priorityAccess": "۔\nترجیحی رسائی اور تیز تر جوابات"
+      "priorityAccess": "ترجیحی رسائی اور تیز تر جوابات"
     },
     "bestValue": "بہترین قدر",
     "annualPremium": "سالانہ پریمیم",
@@ -1194,58 +1224,58 @@
     "successMessage": "آپ کی خریداری کے لئے آپ کا شکریہ! اگلے 12 مہینوں تک پریمیم رسائی کا لطف اٹھائیں۔",
     "errorTitle": "خریداری ناکام ہو گئی۔",
     "errorMessage": "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
-    "restoreSuccessTitle": "۔\nبحال",
+    "restoreSuccessTitle": "بحال",
     "restoreSuccessMessage": "آپ کی خریداریاں بحال کر دی گئی ہیں۔",
-    "restoreErrorTitle": "۔\nبحال کرنا ناکام ہو گیا۔",
-    "restoreErrorMessage": "۔\nبحال کرنے کے لیے کوئی خریداری نہیں ملی۔",
+    "restoreErrorTitle": "بحال کرنا ناکام ہو گیا۔",
+    "restoreErrorMessage": "بحال کرنے کے لیے کوئی خریداری نہیں ملی۔",
     "unavailableTitle": "خریداریاں دستیاب نہیں ہیں۔",
-    "unavailableMessage": "Android بلنگ ابھی تک کنفیگر نہیں ہوئی ہے۔"
+    "unavailableMessage": "‏Android بلنگ ابھی تک کنفیگر نہیں ہوئی ہے۔"
   },
   "rewards": {
     "header": {
       "title": "انعامات",
-      "openMenu": "۔\nمینو کھولیں۔",
+      "openMenu": "مینو کھولیں۔",
       "goBack": "واپس جاؤ"
     },
     "pointsHero": {
       "totalBalance": "کل بیلنس",
-      "seeYourRewards": "۔\nاپنے انعامات دیکھیں"
+      "seeYourRewards": "اپنے انعامات دیکھیں"
     },
     "streakTracker": {
       "title": "ڈیلی اسٹریک",
-      "subtitle": "۔\nاسے جاری رکھیں! آپ کو آگ لگ گئی ہے۔",
-      "days": "۔\nدن",
-      "prize": "۔\nانعام",
+      "subtitle": "اسے جاری رکھیں! آپ کو آگ لگ گئی ہے۔",
+      "days": "دن",
+      "prize": "انعام",
       "dayLabel": "دن {{number}}",
-      "nextReward": "۔\nاگلا انعام: {{amount}} {{time}} میں",
-      "coins": "۔\nسکے"
+      "nextReward": "اگلا انعام: {{amount}} {{time}} میں",
+      "coins": "سکے"
     },
     "sections": {
       "availableQuests": "دستیاب سوالات",
-      "completedQuests": "۔\nمکمل سوالات",
-      "availableRewards": "۔\nدستیاب انعامات",
+      "completedQuests": "مکمل سوالات",
+      "availableRewards": "دستیاب انعامات",
       "needsMoreCoins": "مزید سکوں کی ضرورت ہے۔"
     },
     "balances": {
-      "rewardCoins": "۔\nانعامی سکے",
-      "imageCredits": "۔\nتصویری کریڈٹس"
+      "rewardCoins": "انعامی سکے",
+      "imageCredits": "تصویری کریڈٹس"
     },
     "rewardsList": {
       "rewardTitles": {
-        "imageCredits50": "۔\n50 تصویری کریڈٹس",
+        "imageCredits50": "50 تصویری کریڈٹس",
         "imageCredits200": "200 تصویری کریڈٹس",
-        "imageCredits600": "۔\n600 تصویری کریڈٹس",
-        "weeklyPremium": "۔\nہفتہ وار پریمیم",
+        "imageCredits600": "600 تصویری کریڈٹس",
+        "weeklyPremium": "ہفتہ وار پریمیم",
         "secretBox": "خفیہ خانہ"
       },
       "rewardDescriptions": {
         "secretBox": "اسرار انعامات اندر"
       },
       "alerts": {
-        "comingSoonTitle": "۔\nجلد آرہا ہے۔",
+        "comingSoonTitle": "جلد آرہا ہے۔",
         "comingSoonMessage": "یہ انعام ابھی دستیاب نہیں ہے۔",
         "notEnoughCoinsTitle": "کافی سکے نہیں ہیں۔",
-        "notEnoughCoinsMessage": "۔\nاس انعام کو غیر مقفل کرنے کے لیے آپ کو مزید انعامی سکوں کی ضرورت ہے۔",
+        "notEnoughCoinsMessage": "اس انعام کو غیر مقفل کرنے کے لیے آپ کو مزید انعامی سکوں کی ضرورت ہے۔",
         "errorTitle": "خرابی",
         "couldNotOpenBox": "باکس نہیں کھول سکا۔",
         "couldNotRedeem": "انعام کو بھنایا نہیں جا سکا۔ براہ کرم دوبارہ کوشش کریں۔",
@@ -1256,26 +1286,26 @@
       "dailyLogin": {
         "title": "روزانہ لاگ ان",
         "description": "اپنا سلسلہ برقرار رکھنے کے لیے آج ہی ایپ کھولیں۔",
-        "message": "۔\nجب آپ ہر روز ایپ کھولتے ہیں تو یہ تلاش خود بخود مکمل ہو جاتی ہے۔"
+        "message": "جب آپ ہر روز ایپ کھولتے ہیں تو یہ تلاش خود بخود مکمل ہو جاتی ہے۔"
       },
       "shareFacebook": {
         "title": "فیس بک پر شیئر کریں۔",
-        "description": "۔\nفیس بک پر ہمارے بارے میں پوسٹ کریں۔"
+        "description": "فیس بک پر ہمارے بارے میں پوسٹ کریں۔"
       },
       "shareTwitter": {
-        "title": "۔\nٹویٹر پر شیئر کریں۔",
+        "title": "ٹویٹر پر شیئر کریں۔",
         "description": "اپنے تجربے کو ٹویٹ کریں۔"
       },
       "shareInstagram": {
         "title": "انسٹاگرام پر شیئر کریں۔",
-        "description": "۔\nایک کہانی یا پوسٹ شیئر کریں۔"
+        "description": "ایک کہانی یا پوسٹ شیئر کریں۔"
       },
       "shareExperience": {
         "title": "اپنا تجربہ شیئر کریں۔",
         "description": "دوستوں کو بتائیں کہ آپ کو ایپ کیوں پسند ہے۔"
       },
       "share": {
-        "genericMessage": "۔\nمیں یہ AI ایپ چیٹ اور امیج جنریشن کے لیے استعمال کر رہا ہوں۔ اسے چیک کریں: {{url}}",
+        "genericMessage": "میں یہ AI ایپ چیٹ اور امیج جنریشن کے لیے استعمال کر رہا ہوں۔ اسے چیک کریں: {{url}}",
         "facebookQuote": "اس AI ایپ کو چیک کریں!",
         "twitterText": "میں اس AI ایپ کو آزما رہا ہوں، یہ بہت عمدہ ہے۔",
         "instagramMessage": "اس AI ایپ کو دیکھیں: {{url}}"
@@ -1288,13 +1318,13 @@
     "modals": {
       "questCompleted": {
         "title": "کویسٹ مکمل",
-        "description": "۔\nجستجو مکمل ہو گئی۔",
-        "points": "+{{points}} پوائنٹس",
-        "close": "۔\nبند"
+        "description": "جستجو مکمل ہو گئی۔",
+        "points": "‏+{{points}} پوائنٹس",
+        "close": "بند"
       },
       "rewardSuccess": {
-        "error": "۔\nغلطی",
-        "success": "۔\nکامیابی",
+        "error": "غلطی",
+        "success": "کامیابی",
         "somethingWentWrong": "کچھ غلط ہو گیا۔",
         "rewardUnlocked": "انعام غیر مقفل",
         "credits": "کریڈٹس",
@@ -1305,12 +1335,12 @@
         "pill": "خفیہ خانہ",
         "rewardUnlocked": "انعام غیر مقفل",
         "shufflingRewards": "بدلتے ہوئے انعامات...",
-        "imageCreditsAdded": "۔\nآپ کے اکاؤنٹ میں تصویری کریڈٹس شامل کر دیے گئے۔",
+        "imageCreditsAdded": "آپ کے اکاؤنٹ میں تصویری کریڈٹس شامل کر دیے گئے۔",
         "continue": "جاری رکھیں",
         "revealing": "انکشاف کر رہا ہے...",
         "prizeTiers": {
           "lucky": "خوش قسمت",
-          "pro": "۔\nپی آر او",
+          "pro": "پی آر او",
           "elite": "ایلیٹ",
           "mythic": "افسانوی"
         }
@@ -1322,6 +1352,10 @@
       "cta": "حاصل کریں",
       "claimed": "مل گئے! +{{amount}} سکے",
       "later": "بعد میں"
+    },
+    "button": {
+      "title": "انعامات",
+      "subtitle": "روزانہ بونس اور فوائد"
     }
   },
   "app": {
@@ -1330,56 +1364,57 @@
     "launch": {
       "accessibilityLabel": "شروع ہو رہا ہے Cloud AI",
       "title": "CLOUD AI",
-      "subtitle": "AI، جب آپ ہوں تو تیار ہوں۔"
+      "subtitle": "‏AI، جب آپ ہوں تو تیار ہوں۔",
+      "closePreview": "لانچ اسکرین کا پیش منظر بند کریں"
     },
     "errors": {
       "modelsLoadTitle": "ماڈلز لوڈ کرنے میں ناکام",
-      "modelsLoadMessage": "AI ماڈلز لوڈ کرنے سے قاصر۔ ایپ ڈیفالٹ ماڈل استعمال کرے گی۔ براہ کرم اپنا انٹرنیٹ کنکشن چیک کریں۔",
+      "modelsLoadMessage": "‏AI ماڈلز لوڈ کرنے سے قاصر۔ ایپ ڈیفالٹ ماڈل استعمال کرے گی۔ براہ کرم اپنا انٹرنیٹ کنکشن چیک کریں۔",
       "modelsLoadTimeout": "ماڈل لوڈ ہونے میں کافی وقت لگا۔ ایپ ڈیفالٹ ماڈل استعمال کرے گی۔ براہ کرم دوبارہ کوشش کریں۔",
       "modelsLoadNetwork": "انٹرنیٹ کنکشن نہیں ہے۔ ایپ ڈیفالٹ ماڈل استعمال کرے گی۔ براہ کرم اپنا کنکشن چیک کریں۔",
       "deviceIdTitle": "ابتدا میں خرابی",
-      "deviceIdMessage": "۔\nآلہ ID شروع کرنے میں ناکام۔ ہو سکتا ہے کہ کچھ خصوصیات ٹھیک سے کام نہ کریں۔",
+      "deviceIdMessage": "آلہ ID شروع کرنے میں ناکام۔ ہو سکتا ہے کہ کچھ خصوصیات ٹھیک سے کام نہ کریں۔",
       "storageTitle": "اسٹوریج کی خرابی۔",
-      "storageMessage": "۔\nمقامی اسٹوریج تک رسائی حاصل کرنے سے قاصر۔ ہو سکتا ہے کہ کچھ خصوصیات ٹھیک سے کام نہ کریں۔",
-      "crashTitle": "۔\nکچھ غلط ہو گیا۔",
+      "storageMessage": "مقامی اسٹوریج تک رسائی حاصل کرنے سے قاصر۔ ہو سکتا ہے کہ کچھ خصوصیات ٹھیک سے کام نہ کریں۔",
+      "crashTitle": "کچھ غلط ہو گیا۔",
       "crashSubtitle": "براہ کرم دوبارہ کوشش کریں۔",
       "crashLabel": "ایپ کریش ہو گئی۔"
     },
     "proxyErrors": {
       "genericTitle": "کچھ غلط ہو گیا۔",
-      "genericMessage": "۔\nبراہ کرم دوبارہ کوشش کریں۔",
+      "genericMessage": "براہ کرم دوبارہ کوشش کریں۔",
       "rateLimitTitle": "بہت زیادہ درخواستیں",
       "rateLimitMessage": "ہم بہت سی درخواستوں کو سنبھال رہے ہیں۔ براہ کرم ایک لمحے میں دوبارہ کوشش کریں۔",
-      "rateLimitRetryAfter": "۔\nہم بہت سی درخواستوں کو سنبھال رہے ہیں۔ براہ کرم تقریبا {{seconds}} سیکنڈ میں دوبارہ کوشش کریں۔",
+      "rateLimitRetryAfter": "ہم بہت سی درخواستوں کو سنبھال رہے ہیں۔ براہ کرم تقریبا {{seconds}} سیکنڈ میں دوبارہ کوشش کریں۔",
       "restrictedTitle": "محدود مواد",
-      "restrictedMessage": "۔\nاس درخواست کو حفاظتی فلٹرز کے ذریعے مسدود کر دیا گیا تھا۔",
-      "insufficientCoinsTitle": "۔\nکافی سکے نہیں ہیں۔",
-      "insufficientCoinsMessage": "۔\nاس درخواست کے لیے آپ کا موجودہ بیلنس بہت کم ہے۔",
+      "restrictedMessage": "اس درخواست کو حفاظتی فلٹرز کے ذریعے مسدود کر دیا گیا تھا۔",
+      "insufficientCoinsTitle": "کافی سکے نہیں ہیں۔",
+      "insufficientCoinsMessage": "اس درخواست کے لیے آپ کا موجودہ بیلنس بہت کم ہے۔",
       "imageUnavailableTitle": "تصویر دستیاب نہیں ہے۔",
-      "imageUnavailableMessage": "۔\nتخلیق کردہ تصویری فائل عارضی طور پر دستیاب نہیں تھی۔ براہ کرم دوبارہ کوشش کریں۔",
-      "authorizationTitle": "۔\nاجازت کا مسئلہ",
+      "imageUnavailableMessage": "تخلیق کردہ تصویری فائل عارضی طور پر دستیاب نہیں تھی۔ براہ کرم دوبارہ کوشش کریں۔",
+      "authorizationTitle": "اجازت کا مسئلہ",
       "authorizationMessage": "ہم آپ کے اکاؤنٹ کی تصدیق نہیں کر سکے۔ براہ کرم دوبارہ کوشش کریں۔",
-      "serverTitle": "۔\nسرور کی ہچکی",
-      "serverMessage": "۔\nہمارے سرورز کو پریشانی تھی۔ براہ کرم جلد ہی دوبارہ کوشش کریں۔",
+      "serverTitle": "سرور کی ہچکی",
+      "serverMessage": "ہمارے سرورز کو پریشانی تھی۔ براہ کرم جلد ہی دوبارہ کوشش کریں۔",
       "timeoutTitle": "بہت زیادہ وقت لگ رہا ہے۔",
-      "timeoutMessage": "۔\nدرخواست کا وقت ختم ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
-      "networkTitle": "۔\nکوئی تعلق نہیں۔",
-      "networkMessage": "۔\nانٹرنیٹ کنکشن نہیں ہے۔ براہ کرم اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
+      "timeoutMessage": "درخواست کا وقت ختم ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
+      "networkTitle": "کوئی تعلق نہیں۔",
+      "networkMessage": "انٹرنیٹ کنکشن نہیں ہے۔ براہ کرم اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
       "requestTitle": "درخواست کا مسئلہ",
-      "requestMessage": "۔\nآپ کی درخواست میں کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔"
+      "requestMessage": "آپ کی درخواست میں کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔"
     }
   },
   "reviewerPremium": {
-    "activateTitle": "۔\nپریمیم کو چالو کریں۔",
+    "activateTitle": "پریمیم کو چالو کریں۔",
     "activateMessage": "کیا آپ جائزہ لینے والے پریمیم کو چالو کرنا چاہتے ہیں؟",
     "activateAction": "چالو کریں۔",
-    "deactivateTitle": "۔\nپریمیم کو غیر فعال کریں۔",
+    "deactivateTitle": "پریمیم کو غیر فعال کریں۔",
     "deactivateMessage": "کیا آپ جائزہ لینے والے پریمیم کو غیر فعال کرنا چاہتے ہیں؟",
     "deactivateAction": "غیر فعال کریں۔"
   },
   "push": {
     "dailyReward": {
-      "title": "۔\nروزانہ اجر",
+      "title": "روزانہ اجر",
       "body": "اپنے یومیہ سکے مت چھوڑیں - آدھی رات سے پہلے دعوی کریں۔"
     }
   },
@@ -1389,6 +1424,194 @@
       "body": "ہم دن میں ایک بار یاد دہانی بھیجتے ہیں تاکہ آپ کا سلسلہ برقرار رہے اور سکے بڑھتے رہیں۔ کوئی اسپام نہیں، اور آپ اسے کسی بھی وقت بند کر سکتے ہیں۔",
       "enable": "یاد دہانیاں آن کریں",
       "skip": "ابھی نہیں"
+    }
+  },
+  "workspace": {
+    "documents": "دستاویزات",
+    "videos": "ویڈیو خلاصے",
+    "summary": "خلاصہ",
+    "details": "تفصیلات",
+    "sources": "ماخذ",
+    "youtube": "YouTube",
+    "upload": "اپ لوڈ",
+    "transcript": "ٹرانسکرپٹ",
+    "concise": "مختصر اور جامع",
+    "detailed": "مکمل تصویر",
+    "errors": {
+      "NETWORK": "اپنا انٹرنیٹ کنکشن چیک کریں اور دوبارہ کوشش کریں۔ آپ کے منتخب کردہ ماخذ ابھی بھی یہیں ہیں۔",
+      "TIMEOUT": "اس ماخذ میں بہت زیادہ وقت لگ گیا۔ مختصر ویڈیو یا چھوٹی دستاویز آزمائیں۔",
+      "NOT_CONFIGURED": "ماخذ کا تجزیہ ابھی دستیاب نہیں۔ براہ کرم بعد میں دوبارہ کوشش کریں۔",
+      "VIDEO_NOT_CONFIGURED": "براہ راست ویڈیو تجزیہ ابھی دستیاب نہیں۔ آپ پھر بھی پیسٹ کیے گئے ٹرانسکرپٹ کا خلاصہ بنا سکتے ہیں۔",
+      "DOCUMENT_EXPIRED": "ایک ماخذ کی میعاد ختم ہو گئی ہے۔ اصل دستاویز دوبارہ منتخب کریں۔",
+      "SOURCE_UNAVAILABLE": "اس ماخذ کا تجزیہ نہیں ہو سکا۔ کوئی اور فائل یا پیسٹ کیا گیا ٹرانسکرپٹ آزمائیں۔",
+      "TOO_MANY_PAGES": "اس PDF میں بہت زیادہ صفحات ہیں۔ اسے زیادہ سے زیادہ 100 صفحات والی فائلوں میں تقسیم کریں۔",
+      "INVALID_VIDEO": "‏20 MB تک کی درست MP4 یا WebM ویڈیو منتخب کریں۔ ہم پہلے 10 منٹ کا تجزیہ کرتے ہیں۔",
+      "INVALID_DOCUMENTS": "اپنی دستاویزات دوبارہ منتخب کریں اور دوبارہ کوشش کریں۔",
+      "CLIENT_ID_REQUIRED": "ایپ دوبارہ شروع کریں اور دوبارہ کوشش کریں۔",
+      "RATE_LIMITED": "آپ آج کی تجزیے کی حد تک پہنچ گئے ہیں۔ براہ کرم کل دوبارہ کوشش کریں۔",
+      "INVALID_RESULT": "تجزیہ نامکمل رہا۔ براہ کرم دوبارہ کوشش کریں۔",
+      "FILE_TOO_LARGE": "یہ فائل بہت بڑی ہے۔ دستاویزات 10 MB تک اور ویڈیو کلپس 20 MB تک سپورٹ ہوتے ہیں۔",
+      "NO_READABLE_TEXT": "کوئی قابلِ مطالعہ متن نہیں ملا۔ متن پر مبنی PDF استعمال کریں یا متن پیسٹ کریں؛ اسکین شدہ PDFs کے لیے OCR ضروری ہے۔",
+      "ANALYSIS_FAILED": "ماخذ کا تجزیہ نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔",
+      "SOURCES_TOO_LARGE": "یہ دستاویزات ایک ساتھ تجزیے کے لیے بہت بڑی ہیں۔ ان کا الگ الگ یا چھوٹے گروپوں میں خلاصہ بنائیں۔",
+      "ENCRYPTED_DOCUMENT": "یہ PDF پاس ورڈ سے محفوظ ہے۔ ان لاک شدہ کاپی اپ لوڈ کریں۔",
+      "UNSUPPORTED_DOCUMENT": "یہ فائل پڑھی نہیں جا سکتی یا اس کا مواد سپورٹ نہیں ہوتا۔ PDF، DOCX، TXT یا CSV فائل استعمال کریں۔",
+      "SERVICE_BUSY": "تجزیے کی سروس مصروف ہے۔ براہ کرم تھوڑی دیر میں دوبارہ کوشش کریں۔",
+      "PROVIDER_UNAVAILABLE": "‏AI سروس عارضی طور پر دستیاب نہیں۔ براہ کرم تھوڑی دیر میں دوبارہ کوشش کریں۔",
+      "DAILY_LIMIT": "آپ آج کی ماخذ تجزیے کی حد تک پہنچ گئے ہیں۔ آپ کے محفوظ خلاصے دستیاب رہیں گے۔",
+      "ALREADY_PROCESSING": "ایک تجزیہ پہلے سے جاری ہے۔ نیا شروع کرنے سے پہلے نیچے اس کی پیش رفت چیک کریں۔",
+      "JOB_PENDING": "آپ کا تجزیہ ابھی جاری ہے۔ اسے حاصل کرنے کے لیے نیچے “پیش رفت چیک کریں” استعمال کریں۔",
+      "JOB_NOT_FOUND": "یہ تجزیہ نہیں ملا یا اس کی میعاد ختم ہو گئی ہے۔ اگر آپ نے ابھی اپ لوڈ کیا ہے تو تھوڑا انتظار کریں اور دوبارہ چیک کریں۔",
+      "WORKSPACE_KEY_REQUIRED": "آپ کی ماخذ لائبریری ان لاک نہیں ہو سکی۔ ایپ دوبارہ شروع کریں اور دوبارہ کوشش کریں۔",
+      "NO_SPEECH": "کوئی واضح گفتگو ٹرانسکرائب نہیں ہو سکی۔ صاف سنائی دینے والی گفتگو کی ویڈیو آزمائیں یا اس کا ٹرانسکرپٹ پیسٹ کریں۔",
+      "VIDEO_TOO_LONG": "زیادہ سے زیادہ 10 منٹ لمبی ویڈیو منتخب کریں۔"
+    },
+    "invalidUrl": "درست https:// YouTube ویڈیو لنک درج کریں۔",
+    "invalidTranscript": "40 سے 120,000 حروف کے درمیان ٹرانسکرپٹ پیسٹ کریں۔",
+    "chooseFirst": "پہلے ایک ماخذ منتخب کریں۔",
+    "uploading": "اپ لوڈ ہو رہا ہے: {{name}}",
+    "extracting": "آپ کی دستاویز پڑھی جا رہی ہے…",
+    "analyzing": "اہم باتیں تلاش کی جا رہی ہیں…",
+    "chatError": "یہ ماخذ چیٹ میں نہیں کھل سکا۔ براہ کرم دوبارہ کوشش کریں۔",
+    "shareError": "یہ خلاصہ شیئر نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔",
+    "removeTitle": "محفوظ خلاصہ ہٹائیں؟",
+    "removeBody": "اس سے خلاصہ اس ڈیوائس سے ہٹ جائے گا۔ آپ کی چیٹس برقرار رہیں گی۔ اپ لوڈ شدہ ماخذ کا متن اپنی موجودہ مدتِ برقراری کے مطابق رکھا جاتا ہے۔",
+    "remove": "ہٹائیں",
+    "removeError": "یہ خلاصہ ہٹایا نہیں جا سکا۔ براہ کرم دوبارہ کوشش کریں۔",
+    "summarizeVideo": "خلاصہ حاصل کریں",
+    "chooseDocuments": "اپنی دستاویزات شامل کریں",
+    "videoSubtitle": "بولے گئے مواد کو اہم خیالات، ابواب اور جوابات میں بدلیں۔",
+    "documentSubtitle": "اپنی فائلوں کی اہم باتیں تلاش کریں۔ چیٹ میں سوال پوچھیں۔",
+    "newAnalysis": "نیا خلاصہ",
+    "savedBrief": "آپ کا خلاصہ",
+    "documentCoverage": "نکالے گئے متن پر مبنی۔ ممکن ہے تصاویر اور اسکین شدہ صفحات شامل نہ ہوں۔",
+    "transcriptCoverage": "فراہم کردہ ٹرانسکرپٹ پر مبنی۔ ویڈیو کے بصری مواد کا تجزیہ نہیں کیا گیا۔",
+    "videoCoverage": "ویڈیو کا AI تجزیہ۔ ابواب تخمینی ہیں؛ اہم تفصیلات اصل سے ملا کر دیکھیں۔",
+    "extractionLimit": "ایک دستاویز متن نکالنے کی حد تک پہنچ گئی۔ ممکن ہے یہ خلاصہ پوری اصل فائل کا احاطہ نہ کرے۔",
+    "saveError": "یہ خلاصہ محفوظ نہیں ہو سکا۔ یہ اسکرین کھلی رکھیں اور دوبارہ کوشش کریں، یا اس کی کاپی شیئر کریں۔",
+    "retrySave": "دوبارہ محفوظ کریں",
+    "chapters": "ابواب",
+    "actions": "کرنے کے کام",
+    "noSections": "اس ماخذ میں کوئی اضافی حصے نہیں ملے۔",
+    "linkError": "ویڈیو نہیں کھل سکی۔",
+    "videoEvidence": "ویڈیو کے ٹائم اسٹیمپس تخمینی ہیں۔ ٹرانسکرپٹ کے خلاصے فراہم کردہ متن کو بیان کرتے ہیں اور بصری مواد کا تجزیہ نہیں کرتے۔",
+    "documentEvidence": "نیچے دیے گئے اقتباسات نکالے گئے متن سے ملائے گئے ہیں۔ اصل صفحہ نمبر صرف دستیاب ہونے پر دکھائے جاتے ہیں۔",
+    "noEvidence": "اس خلاصے کے لیے کوئی تصدیق شدہ متنی اقتباسات دستیاب نہیں۔",
+    "coverage": "احاطہ اور حدود",
+    "sourceExpires": "ماخذ کی دستیابی کی آخری تاریخ:",
+    "localOnly": "خلاصے اس ڈیوائس پر محفوظ ہوتے ہیں۔ بیک اپ رکھنے کے لیے ایک کاپی شیئر کریں۔",
+    "continueChat": "اس کے بارے میں پوچھیں",
+    "chatContext": "چیٹ اس محفوظ خلاصے اور دستیاب دستاویزی حوالوں کے ساتھ شروع ہوتی ہے۔ ویڈیو کا خلاصہ مکمل ٹرانسکرپٹ نہیں ہے۔",
+    "share": "خلاصہ شیئر کریں",
+    "videoLink": "‏YouTube ویڈیو لنک",
+    "publicOnly": "صرف پبلک ویڈیوز۔ پرائیویٹ، اَن لسٹڈ، لائیو اور محدود ویڈیوز شاید دستیاب نہ ہوں۔",
+    "transcriptHint": "ٹرانسکرپٹ یا سب ٹائٹلز پیسٹ کریں۔ ابواب کے لیے ٹائم اسٹیمپس شامل کریں۔",
+    "textOnly": "صرف متن؛ بصری مواد کا تجزیہ نہیں ہوتا۔",
+    "clip": "ویڈیو شامل کریں",
+    "videoLimits": "‏MP4، MOV، WebM · زیادہ سے زیادہ 20 MB",
+    "docLimits": "‏PDF، Word، TXT، CSV · 3 فائلیں · ہر ایک 10 MB",
+    "openingFiles": "فائلیں کھل رہی ہیں…",
+    "chooseFiles": "فائلیں شامل کریں",
+    "removeFile": "‏{{name}} ہٹائیں",
+    "depth": "اپنی پسند کے مطابق",
+    "processingNotice": "آپ کی فائل AI پروسیسنگ کے لیے اپ لوڈ کی جاتی ہے۔",
+    "cancel": "منسوخ کریں",
+    "analyzeDocuments": "خلاصہ حاصل کریں",
+    "library": "سنبھال کر رکھنے کے قابل",
+    "search": "خلاصے تلاش کریں",
+    "loadError": "محفوظ خلاصے لوڈ نہیں ہو سکے۔ آپ کا موجودہ ڈیٹا تبدیل نہیں کیا گیا۔",
+    "retry": "دوبارہ کوشش کریں",
+    "emptyLibrary": "آپ کے خلاصے یہاں دکھائی دیں گے، دوبارہ دیکھنے یا چیٹ میں گفتگو کے لیے تیار۔",
+    "removeBrief": "‏{{name}} ہٹائیں",
+    "audioCoverage": "گفتگو کا خلاصہ · بصری مواد کا تجزیہ نہیں ہوتا۔ نام اور اعداد ریکارڈنگ سے ملا کر دیکھیں۔",
+    "uploadTitle": "شروع کرنے کے لیے فائلیں منتخب کریں",
+    "videoLimitsV2": "‏MP4 / WebM · 20 MB · 10 منٹ\nصرف بولا گیا مواد",
+    "noSearchResults": "کوئی خلاصہ نہیں ملا۔ کوئی اور تلاش آزمائیں۔",
+    "clearSearch": "تلاش صاف کریں",
+    "keyPoints": "اہم نکات",
+    "chatContextShort": "کچھ جاننا چاہتے ہیں؟ مزید سوال پوچھیں۔",
+    "openingChat": "چیٹ کھل رہی ہے…",
+    "uploadVideo": "ویڈیو اپ لوڈ کریں",
+    "pasteTranscript": "ٹرانسکرپٹ پیسٹ کریں",
+    "heroVideoLabel": "ویڈیو انٹیلیجنس",
+    "heroDocumentLabel": "دستاویز انٹیلیجنس",
+    "heroVideoTitle": "کم دیکھیں۔\nزیادہ جانیں۔",
+    "heroDocumentTitle": "آپ کی فائلیں۔\nواضح جوابات۔",
+    "heroVideoDescription": "بولے گئے مواد کو سنبھال کر رکھنے کے قابل خلاصے میں بدلیں۔",
+    "heroDocumentDescription": "اہم باتیں دریافت کریں۔ نکات جوڑیں۔ کچھ بھی پوچھیں۔",
+    "heroIdeas": "اہم خیالات",
+    "heroFollowUps": "‏AI سے پوچھیں",
+    "heroSummarize": "خلاصہ کریں",
+    "heroCompare": "موازنہ کریں",
+    "summaryReady": "آپ کا نچوڑ",
+    "savedOnDevice": "اس ڈیوائس پر محفوظ",
+    "notSavedYet": "محفوظ کرنے کے لیے تیار",
+    "atAGlance": "مجموعی تصویر",
+    "addSource": "اپنا ماخذ شامل کریں",
+    "quickDescription": "صرف اہم جھلکیاں",
+    "detailedDescription": "تفصیلات کی گنجائش",
+    "chooseVideo": "ویڈیو شامل کریں",
+    "studioLabel": "تھوڑی مزید وضاحت۔",
+    "studioDocumentTitle": "بڑے خیالات۔\nکم پڑھائی۔",
+    "studioVideoTitle": "کم دیکھیں۔\nزیادہ سیکھیں۔",
+    "studioDocumentDescription": "ڈھیروں صفحات سے آپ کے اگلے شاندار خیال تک۔",
+    "studioVideoDescription": "اچھے حصے سنبھال کر رکھیں۔ بولے گئے الفاظ کو ایسی چیز میں بدلیں جس پر آپ دوبارہ آ سکیں۔",
+    "studioVideoDescriptionV3": "پوری کہانی دیکھیں۔ مناظر اور بولے گئے الفاظ کو ایسے خیالات میں بدلیں جن پر آپ دوبارہ آ سکیں۔",
+    "videoLimitsV3": "‏MP4 / WebM · 20 MB · پہلے 10 منٹ · آواز اور بصری مواد",
+    "videoCoverageV3": "آواز اور بصری مناظر · زیادہ سے زیادہ پہلے 10 منٹ۔ ابواب تخمینی ہیں؛ تیز حرکات رہ سکتی ہیں۔",
+    "videoChatMenu": "مناظر، گفتگو اور اہم لمحات سمجھیں",
+    "analyzingVideo": "آپ کی ویڈیو دیکھی جا رہی ہے…",
+    "uploadingVideo": "ویڈیو اپ لوڈ ہو رہی ہے… {{percent}}%",
+    "videoCancelled": "ویڈیو کا تجزیہ روک دیا گیا۔",
+    "videoSourceNeeded": "پبلک YouTube لنک پیسٹ کریں، یا + → ویڈیو اپ لوڈ کریں پر ٹیپ کریں۔ پھر اپنا سوال بھیجیں۔",
+    "localOnlyV2": "خلاصے اس ڈیوائس پر محفوظ ہوتے ہیں۔ تجزیے کا نتیجہ بھی زیادہ سے زیادہ 7 دن تک تجزیہ سرور پر رکھا جاتا ہے تاکہ اسے حاصل کیا جا سکے، پھر حذف کر دیا جاتا ہے۔ بیک اپ رکھنے کے لیے ایک کاپی شیئر کریں۔",
+    "leavePrivateTitle": "نجی چیٹ چھوڑیں؟",
+    "leavePrivateBody": "اس خلاصے کے بارے میں پوچھنے سے آپ کی نجی چیٹ ختم ہو جائے گی اور نئی گفتگو آپ کی سرگزشت میں محفوظ ہو جائے گی۔",
+    "leavePrivateConfirm": "جاری رکھیں",
+    "documentPages": "‏{{total}} میں سے {{extracted}} صفحات پر متن ملا۔",
+    "documentPartialText": "کچھ صفحات میں نکالے جانے کے قابل متن نہیں ہے۔ تصاویر اور اسکینز نہیں پڑھے جاتے۔",
+    "documentTruncated": "اس دستاویز کا صرف ابتدائی حصہ نکالا گیا۔ ممکن ہے خلاصے میں بعد کا مواد شامل نہ ہو۔",
+    "sourceUnavailable": "اس قسم کا ماخذ عارضی طور پر دستیاب نہیں۔ نیچے دستیاب کوئی اور ان پٹ آزمائیں۔",
+    "accepted": "آپ کے ماخذ کا تجزیہ ہو رہا ہے۔ آپ یہ اسکرین چھوڑ کر بعد میں پیش رفت چیک کر سکتے ہیں۔",
+    "checkingProgress": "آپ کا محفوظ تجزیہ چیک کیا جا رہا ہے…",
+    "pendingError": "زیرِ التوا تجزیے لوڈ نہیں ہو سکے۔ نیا شروع کرنے سے پہلے ایپ دوبارہ شروع کریں۔",
+    "pendingAnalysis": "زیرِ التوا تجزیہ",
+    "resumeHint": "قبول ہونے کے بعد، اسکرین چھوڑنے پر بھی تجزیہ جاری رہتا ہے۔ اسے دوبارہ شروع کیے بغیر نتیجہ یہاں حاصل کریں۔",
+    "checkProgress": "پیش رفت چیک کریں",
+    "cancelAnalysis": "تجزیہ منسوخ کریں",
+    "demoNotice": "مقامی ڈیمو · نمونہ مواد · کوئی ماخذ اپ لوڈ نہیں ہوا",
+    "publicVideoCoverage": "پبلک YouTube ویڈیوز · پہلے 10 منٹ۔ پرائیویٹ، لائیو اور محدود ویڈیوز شاید دستیاب نہ ہوں۔",
+    "sourceUnavailableLibrary": "اس قسم کا ماخذ عارضی طور پر دستیاب نہیں۔ آپ پھر بھی اپنے محفوظ خلاصے کھول سکتے ہیں۔",
+    "stopWaiting": "انتظار ختم کریں",
+    "previewSample": "پیش منظر نمونہ · مقامی ڈیمو",
+    "pickVideoError": "ایک MP4 یا WebM کلپ منتخب کریں، زیادہ سے زیادہ 20 MB اور 10 منٹ۔",
+    "pickDocumentsError": "زیادہ سے زیادہ تین PDF، DOCX، TXT یا CSV دستاویزات منتخب کریں، ہر ایک 10 MB تک۔",
+    "videoErrors": {
+      "ONE_VIDEO": "ایک وقت میں ایک ویڈیو منتخب کریں یا ایک YouTube لنک پیسٹ کریں۔",
+      "VIDEO_MIXED_SOURCES": "ویڈیو کو تصاویر اور دستاویزات سے الگ بھیجیں۔",
+      "VIDEO_QUESTION_TOO_LONG": "ویڈیو کے بارے میں اپنا سوال 4,000 حروف سے کم رکھیں۔",
+      "INVALID_VIDEO": "‏20 MB تک کی MP4 یا WebM ویڈیو منتخب کریں۔",
+      "FILE_TOO_LARGE": "‏20 MB تک کی ویڈیو منتخب کریں۔",
+      "SOURCE_UNAVAILABLE": "ہم اس ویڈیو تک رسائی حاصل نہیں کر سکے۔ پبلک YouTube ویڈیو آزمائیں یا MP4 یا WebM فائل اپ لوڈ کریں۔",
+      "INVALID_RESULT": "ویڈیو کا تجزیہ نامکمل رہا۔ براہ کرم دوبارہ کوشش کریں۔",
+      "NETWORK": "کنکشن منقطع ہو گیا۔ دوبارہ کوشش کرنے سے پہلے “ویڈیو خلاصے” میں نتیجہ چیک کریں۔",
+      "TIMEOUT": "ویڈیو کے تجزیے میں بہت زیادہ وقت لگ گیا۔ چھوٹا کلپ آزمائیں۔",
+      "JOB_PENDING": "آپ کی ویڈیو ابھی پروسیس ہو رہی ہے۔ اس کی پیش رفت چیک کرنے کے لیے “ویڈیو خلاصے” کھولیں۔",
+      "DAILY_LIMIT": "آپ آج کی ویڈیو اور دستاویز تجزیے کی حد تک پہنچ گئے ہیں۔ براہ کرم کل دوبارہ کوشش کریں۔",
+      "ALREADY_PROCESSING": "ایک تجزیہ پہلے سے جاری ہے۔ اس کی پیش رفت چیک کرنے کے لیے “ویڈیو خلاصے” کھولیں۔",
+      "SERVICE_BUSY": "ویڈیو تجزیہ مصروف ہے۔ براہ کرم تھوڑی دیر میں دوبارہ کوشش کریں۔",
+      "PROVIDER_UNAVAILABLE": "ویڈیو تجزیہ عارضی طور پر دستیاب نہیں۔ براہ کرم تھوڑی دیر میں دوبارہ کوشش کریں۔",
+      "NOT_CONFIGURED": "ویڈیو تجزیہ عارضی طور پر دستیاب نہیں۔ براہ کرم بعد میں دوبارہ کوشش کریں۔",
+      "VIDEO_NOT_CONFIGURED": "ویڈیو تجزیہ عارضی طور پر دستیاب نہیں۔ براہ کرم بعد میں دوبارہ کوشش کریں۔",
+      "SAVE_FAILED": "آپ کا خلاصہ تیار ہے، لیکن آپ کی لائبریری میں محفوظ نہیں ہو سکا۔ یہ چیٹ رکھیں یا خلاصہ کاپی کر لیں۔"
+    },
+    "markdown": {
+      "summary": "خلاصہ",
+      "keyTakeaways": "اہم نکات",
+      "details": "تفصیلات",
+      "actionItems": "کرنے کے کام",
+      "sourceExcerpts": "ماخذ سے اقتباسات",
+      "coverageNotes": "احاطے سے متعلق نوٹس"
     }
   }
 }

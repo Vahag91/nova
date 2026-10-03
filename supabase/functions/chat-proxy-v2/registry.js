@@ -1,4 +1,4 @@
-const LUNA_MODEL = "gpt-5.6-luna";
+const LUNA_MODEL = "gpt-6-luna";
 
 function chatModel({
   provider,

@@ -80,3 +80,6 @@ yarn-error.log
 # Generated translation handoff (npm run i18n:prepare-manual).
 /translations/manual/pending/
 /translations/manual/reference/
+
+# Local Android build/install logs.
+/android/*.log

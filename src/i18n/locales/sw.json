@@ -26,7 +26,7 @@
     "gpt-5-mini": "Haraka na ya kuaminika GPT-5",
     "gpt-5.4-nano": "Mfano wa mwanga kwa kazi rahisi",
     "o4-mini": "Mfano mzuri wa hoja",
-    "gpt-4.1-mini": "Compact, uwezo GPT-4.1",
+    "gpt-4.1-mini": "GPT-4.1 ndogo na yenye uwezo",
     "claude-3-haiku": "Anthropic AI ya haraka na yenye umakini",
     "claude-3.7-sonnet": "Hoja iliyoboreshwa na Anthropic",
     "gemini-2.5-Flash": "Muundo wa hali ya juu zaidi wa Google",
@@ -55,7 +55,7 @@
     "data_analysis": "Nzuri kwa uchambuzi wa data",
     "structured_tasks": "Nzuri kwa kazi zilizopangwa",
     "everyday_helper": "Mfano wa msaidizi wa kila siku",
-    "concise_answers": "Majibu mafupi, mafupi",
+    "concise_answers": "Majibu mafupi na ya moja kwa moja",
     "detailed_answers": "Majibu ya kina hatua kwa hatua",
     "experimental": "Mfano wa majaribio wa kizazi kijacho",
     "reliable_classic": "Mfano wa kuaminika wa classic",
@@ -63,14 +63,25 @@
     "chatty_personal": "Kirafiki zaidi na kibinafsi",
     "pro_users": "Bora kwa watumiaji wa nishati",
     "research_helper": "Nzuri kwa utafiti na maelezo",
-    "reasoning_strong": "Mfano wa juu wa hoja"
+    "reasoning_strong": "Mfano wa juu wa hoja",
+    "gpt56_sol": "Muundo wa GPT-5.6 wenye nguvu zaidi",
+    "gpt56_terra": "Muundo wa GPT-5.6 uliosawazishwa",
+    "gpt56_luna": "Muundo wa haraka kwa kazi za kila siku",
+    "claude_fable": "AI ya Anthropic ya haraka na bunifu",
+    "claude_sonnet": "Muundo wa hali ya juu wa Anthropic",
+    "gemini_flash": "Muundo wa AI wa haraka wa Google",
+    "gemini_pro": "Muundo wa Pro wa hali ya juu wa Google",
+    "grok_latest": "Muundo mpya zaidi wa xAI",
+    "deepseek_pro": "Muundo wa hali ya juu wa DeepSeek",
+    "deepseek_flash": "Muundo wa haraka wa DeepSeek"
   },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
     "google": "Google",
     "xai": "xAI",
-    "other": "Nyingine"
+    "other": "Nyingine",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Gumzo Mpya",
@@ -227,7 +238,7 @@
         "description": "Mawazo kwa bajeti na maslahi."
       },
       "party": {
-        "name": "Mpangaji wa Tukio (Lite)",
+        "name": "Mpangaji wa Tukio (rahisi)",
         "description": "Panga karamu ndogo haraka."
       },
       "social": {
@@ -243,7 +254,7 @@
         "description": "Utatuzi rahisi wa DIY."
       },
       "pet": {
-        "name": "Pet Care Buddy || maandishi ya kiolesura cha mtumiaji wa programu ya simu",
+        "name": "Rafiki wa Utunzaji wa Wanyama Vipenzi",
         "description": "Kulisha, matembezi, mafunzo ya msingi."
       },
       "mindful": {
@@ -312,7 +323,7 @@
         "subtitle": "Fungua zana za uundaji zisizo na kikomo"
       },
       "premiumActive": {
-        "title": "Premium Active || maandishi ya kiolesura cha mtumiaji wa programu ya simu",
+        "title": "Premium Inatumika",
         "subtitle": "Asante kwa kuunga mkono Cloud AI"
       },
       "restore": {
@@ -440,7 +451,7 @@
         "name": "Filamu ya zamani"
       },
       "pastel": {
-        "name": "Aesthetic ya Pastel"
+        "name": "Mtindo wa Rangi Laini"
       },
       "neon_glow": {
         "name": "Mwangaza wa Neon"
@@ -777,6 +788,18 @@
         "back": "Nyuma",
         "continue": "Endelea",
         "finish": "Gundua malipo yanayolipiwa"
+      },
+      "trial": {
+        "priceLine": "Kisha {{price}} kwa mwaka. Ghairi wakati wowote.",
+        "title": "Tunataka ujaribu Cloud AI bila malipo.",
+        "demoAsk": "Geuza mchoro wangu kuwa bango la mtindo wa cyberpunk",
+        "demoReply": "Mitindo minne, tayari kwa sekunde chache.",
+        "noPayment": "Hakuna malipo sasa",
+        "cta": "Jaribu kwa $0.00"
+      },
+      "reminder": {
+        "title": "Tutakukumbusha kabla jaribio lako la bure halijaisha",
+        "note": "Utapokea arifa mapema kabla ya malipo yoyote, ili jambo lolote lisikushtue."
       }
     }
   },
@@ -899,7 +922,7 @@
       "year": "mwaka",
       "week": "wiki",
       "termsOfUse": "Masharti ya Matumizi",
-      "privacyPolicy": "Sera ya Faragha || programu ya simu paywall UI"
+      "privacyPolicy": "Sera ya Faragha"
     },
     "v3": {
       "eyebrow": "CLOUD AI PREMIUM",
@@ -991,7 +1014,7 @@
       "analyzingImages": "Inachanganua picha...",
       "searching": "Inatafuta...",
       "thinking": "Kufikiri...",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "Inachambua hati…"
     },
     "webSearch": {
       "title": "Utafutaji wa wavuti",
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Pakia faili",
+      "supportedTypes": "PDF, DOCX, TXT au CSV",
+      "failed": "Imeshindwa kupakia",
+      "retry": "Jaribu kupakia tena",
+      "retryShort": "Jaribu tena",
+      "remove": "Ondoa faili",
+      "pickerErrorTitle": "Imeshindwa kufungua faili",
+      "pickerErrorMessage": "Tafadhali jaribu kuchagua hati tena.",
+      "tooMany": "Unaweza kuambatisha hadi hati 3 kwa kila ujumbe.",
+      "tooLarge": "Kila hati lazima iwe 10 MB au chini ya hapo.",
+      "empty": "Hati uliyochagua haina kitu.",
+      "unsupported": "Tumia faili ya PDF, DOCX, TXT au CSV.",
+      "invalidTitle": "Faili haitumiki",
+      "pasteFailedTitle": "Imeshindwa kuambatisha maandishi uliyobandika",
+      "pasteFailedMessage": "Maandishi yako yamebaki kwenye kisanduku cha ujumbe.",
+      "waitUntilReady": "Tafadhali subiri hati zako zimalize kupakiwa.",
+      "encrypted": "PDF hii imelindwa kwa nenosiri. Pakia nakala isiyofungwa.",
+      "unsupportedDocument": "Faili hii haisomeki au maudhui yake hayatumiki. Tumia faili ya PDF, DOCX, TXT au CSV.",
+      "tooManyPages": "Gawanya PDF hii kuwa faili za hadi kurasa 100.",
+      "noReadableText": "Hakuna maandishi yanayosomeka yaliyopatikana. PDF zilizochanganuliwa zinahitaji OCR; pakia nakala yenye maandishi.",
+      "pastedTextName": "Maandishi yaliyobandikwa",
+      "badge": "HATI",
+      "untitled": "Hati"
     }
   },
   "imageUpload": {
@@ -1322,6 +1352,10 @@
       "cta": "Chukua",
       "claimed": "Imepokelewa! +{{amount}} sarafu",
       "later": "Baadaye"
+    },
+    "button": {
+      "title": "Zawadi",
+      "subtitle": "Bonasi na manufaa ya kila siku"
     }
   },
   "app": {
@@ -1330,7 +1364,8 @@
     "launch": {
       "accessibilityLabel": "Inaanza Cloud AI",
       "title": "CLOUD AI",
-      "subtitle": "AI, tayari wakati uko"
+      "subtitle": "AI, tayari wakati uko",
+      "closePreview": "Funga onyesho la skrini ya kufungua programu"
     },
     "errors": {
       "modelsLoadTitle": "Imeshindwa Kupakia Miundo",
@@ -1389,6 +1424,194 @@
       "body": "Tunatuma ukumbusho mmoja kwa siku ili mfululizo wako uendelee na sarafu zako ziongezeke. Hakuna taka, na unaweza kuzima wakati wowote.",
       "enable": "Washa vikumbusho",
       "skip": "Si sasa"
+    }
+  },
+  "workspace": {
+    "documents": "Hati",
+    "videos": "Muhtasari wa video",
+    "summary": "Muhtasari",
+    "details": "Maelezo",
+    "sources": "Vyanzo",
+    "youtube": "YouTube",
+    "upload": "Pakia",
+    "transcript": "Nakala",
+    "concise": "Kwa ufupi",
+    "detailed": "Picha kamili",
+    "errors": {
+      "NETWORK": "Angalia muunganisho wako wa intaneti kisha ujaribu tena. Vyanzo ulivyochagua bado viko hapa.",
+      "TIMEOUT": "Chanzo hiki kimechukua muda mrefu mno. Jaribu video fupi zaidi au hati ndogo zaidi.",
+      "NOT_CONFIGURED": "Uchambuzi wa vyanzo bado haupatikani. Tafadhali jaribu tena baadaye.",
+      "VIDEO_NOT_CONFIGURED": "Uchambuzi wa moja kwa moja wa video bado haupatikani. Bado unaweza kufupisha nakala uliyobandika.",
+      "DOCUMENT_EXPIRED": "Muda wa mojawapo ya vyanzo umeisha. Chagua hati asili tena.",
+      "SOURCE_UNAVAILABLE": "Chanzo hiki hakikuweza kuchambuliwa. Jaribu faili nyingine au nakala uliyobandika.",
+      "TOO_MANY_PAGES": "PDF hii ina kurasa nyingi mno. Igawanye kuwa faili za hadi kurasa 100 kila moja.",
+      "INVALID_VIDEO": "Chagua video ya MP4 au WebM inayosomeka, hadi 20 MB. Tunachambua dakika 10 za kwanza.",
+      "INVALID_DOCUMENTS": "Chagua hati zako tena kisha ujaribu tena.",
+      "CLIENT_ID_REQUIRED": "Zima na uwashe programu upya kisha ujaribu tena.",
+      "RATE_LIMITED": "Umefikia kikomo cha uchambuzi cha leo. Tafadhali jaribu tena kesho.",
+      "INVALID_RESULT": "Uchambuzi haukukamilika. Tafadhali jaribu tena.",
+      "FILE_TOO_LARGE": "Faili hii ni kubwa mno. Hati zinaruhusiwa hadi 10 MB; klipu za video hadi 20 MB.",
+      "NO_READABLE_TEXT": "Hakuna maandishi yanayosomeka yaliyopatikana. Tumia PDF yenye maandishi au bandika maandishi; PDF zilizochanganuliwa zinahitaji OCR.",
+      "ANALYSIS_FAILED": "Chanzo hakikuweza kuchambuliwa. Tafadhali jaribu tena.",
+      "SOURCES_TOO_LARGE": "Hati hizi ni kubwa mno kuchambuliwa pamoja. Zifupishe kila moja peke yake au katika vikundi vidogo.",
+      "ENCRYPTED_DOCUMENT": "PDF hii imelindwa kwa nenosiri. Pakia nakala isiyofungwa.",
+      "UNSUPPORTED_DOCUMENT": "Faili hii haisomeki au maudhui yake hayatumiki. Tumia faili ya PDF, DOCX, TXT au CSV.",
+      "SERVICE_BUSY": "Huduma ya uchambuzi ina shughuli nyingi. Tafadhali jaribu tena baada ya muda mfupi.",
+      "PROVIDER_UNAVAILABLE": "Huduma ya AI haipatikani kwa muda. Tafadhali jaribu tena baada ya muda mfupi.",
+      "DAILY_LIMIT": "Umefikia kikomo cha leo cha uchambuzi wa vyanzo. Muhtasari wako uliohifadhiwa bado unapatikana.",
+      "ALREADY_PROCESSING": "Uchambuzi tayari unaendelea. Angalia maendeleo yake hapa chini kabla ya kuanza mwingine.",
+      "JOB_PENDING": "Uchambuzi wako bado unachakatwa. Tumia Angalia maendeleo hapa chini ili kuupata.",
+      "JOB_NOT_FOUND": "Uchambuzi huu haukupatikana au muda wake umeisha. Ikiwa umeupakia sasa hivi, subiri kidogo kisha uangalie tena.",
+      "WORKSPACE_KEY_REQUIRED": "Imeshindwa kufungua maktaba yako ya vyanzo. Zima na uwashe programu upya kisha ujaribu tena.",
+      "NO_SPEECH": "Hakuna usemi wazi ulioweza kunakiliwa. Jaribu video yenye usemi unaosikika au bandika nakala yake.",
+      "VIDEO_TOO_LONG": "Chagua video isiyozidi dakika 10."
+    },
+    "invalidUrl": "Weka kiungo halali cha video ya YouTube kinachoanza na https://.",
+    "invalidTranscript": "Bandika nakala yenye herufi kati ya 40 na 120,000.",
+    "chooseFirst": "Chagua chanzo kwanza.",
+    "uploading": "Inapakia {{name}}",
+    "extracting": "Inasoma hati yako…",
+    "analyzing": "Inatafuta mambo muhimu…",
+    "chatError": "Imeshindwa kufungua chanzo hiki kwenye gumzo. Tafadhali jaribu tena.",
+    "shareError": "Imeshindwa kushiriki muhtasari huu. Tafadhali jaribu tena.",
+    "removeTitle": "Ungependa kuondoa muhtasari uliohifadhiwa?",
+    "removeBody": "Hii huondoa muhtasari kwenye kifaa hiki. Gumzo zako zitabaki. Maandishi ya chanzo yaliyopakiwa hufuata muda wake wa kuhifadhiwa uliopo.",
+    "remove": "Ondoa",
+    "removeError": "Imeshindwa kuondoa muhtasari huu. Tafadhali jaribu tena.",
+    "summarizeVideo": "Pata muhtasari",
+    "chooseDocuments": "Ongeza hati zako",
+    "videoSubtitle": "Geuza maudhui yanayozungumzwa kuwa mawazo makuu, sura na majibu.",
+    "documentSubtitle": "Pata mambo muhimu katika faili zako. Uliza maswali kwenye gumzo.",
+    "newAnalysis": "Muhtasari mpya",
+    "savedBrief": "MUHTASARI WAKO",
+    "documentCoverage": "Umetokana na maandishi yaliyotolewa. Picha na kurasa zilizochanganuliwa huenda zisijumuishwe.",
+    "transcriptCoverage": "Umetokana na nakala iliyotolewa. Vipengele vya kuona vya video havikuchambuliwa.",
+    "videoCoverage": "Uchambuzi wa AI wa video. Sura ni za kukadiria; hakiki maelezo muhimu kwa kulinganisha na asili.",
+    "extractionLimit": "Hati moja imefikia kikomo cha kutoa maandishi. Muhtasari huu huenda usihusishe faili asili yote.",
+    "saveError": "Muhtasari huu haukuweza kuhifadhiwa. Acha skrini hii wazi kisha ujaribu tena, au shiriki nakala.",
+    "retrySave": "Jaribu kuhifadhi tena",
+    "chapters": "Sura",
+    "actions": "Hatua za kuchukua",
+    "noSections": "Hakuna sehemu za ziada zilizotambuliwa katika chanzo hiki.",
+    "linkError": "Imeshindwa kufungua video.",
+    "videoEvidence": "Nyakati za video ni za kukadiria. Muhtasari wa nakala hueleza maandishi yaliyotolewa na hauchambui vipengele vya kuona.",
+    "documentEvidence": "Vifungu vilivyo hapa chini vimelinganishwa na maandishi yaliyotolewa. Namba asili za kurasa huonyeshwa tu zinapopatikana.",
+    "noEvidence": "Hakuna vifungu vya maandishi vilivyothibitishwa kwa muhtasari huu.",
+    "coverage": "Upeo na vikwazo",
+    "sourceExpires": "Chanzo kinapatikana hadi",
+    "localOnly": "Muhtasari huhifadhiwa kwenye kifaa hiki. Shiriki nakala ili kuwa na hifadhi rudufu.",
+    "continueChat": "Uliza kuhusu hili",
+    "chatContext": "Gumzo huanza na muhtasari huu uliohifadhiwa pamoja na marejeleo yoyote ya hati yanayopatikana. Muhtasari wa video si nakala kamili.",
+    "share": "Shiriki muhtasari",
+    "videoLink": "Kiungo cha video ya YouTube",
+    "publicOnly": "Video za umma pekee. Video za faragha, zisizoorodheshwa, za moja kwa moja na zilizozuiliwa huenda zisipatikane.",
+    "transcriptHint": "Bandika nakala au manukuu. Jumuisha nyakati ili kupata sura.",
+    "textOnly": "Maandishi pekee; vipengele vya kuona havichambuliwi.",
+    "clip": "Ongeza video",
+    "videoLimits": "MP4, MOV, WebM · hadi 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · faili 3 · 10 MB kila moja",
+    "openingFiles": "Inafungua faili…",
+    "chooseFiles": "Ongeza faili",
+    "removeFile": "Ondoa {{name}}",
+    "depth": "Ifanye iwe yako",
+    "processingNotice": "Faili yako inapakiwa ili ichakatwe na AI.",
+    "cancel": "Ghairi",
+    "analyzeDocuments": "Pata muhtasari",
+    "library": "Hazina yako",
+    "search": "Tafuta muhtasari",
+    "loadError": "Muhtasari uliohifadhiwa haukuweza kupakiwa. Data yako iliyopo haijabadilishwa.",
+    "retry": "Jaribu tena",
+    "emptyLibrary": "Muhtasari wako utaonekana hapa, tayari kurejelewa au kujadiliwa kwenye gumzo.",
+    "removeBrief": "Ondoa {{name}}",
+    "audioCoverage": "Muhtasari wa usemi · Vipengele vya kuona havichambuliwi. Hakiki majina na namba kwa kulinganisha na rekodi.",
+    "uploadTitle": "Chagua faili ili kuanza",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · dak 10\nMaudhui yanayozungumzwa pekee",
+    "noSearchResults": "Hakuna muhtasari uliopatikana. Jaribu kutafuta kwa njia nyingine.",
+    "clearSearch": "Futa utafutaji",
+    "keyPoints": "Mambo muhimu",
+    "chatContextShort": "Una swali? Uliza zaidi.",
+    "openingChat": "Inafungua gumzo…",
+    "uploadVideo": "Pakia video",
+    "pasteTranscript": "Bandika nakala",
+    "heroVideoLabel": "UCHAMBUZI WA VIDEO",
+    "heroDocumentLabel": "UCHAMBUZI WA HATI",
+    "heroVideoTitle": "Tazama kidogo.\nJua zaidi.",
+    "heroDocumentTitle": "Faili zako.\nMajibu wazi.",
+    "heroVideoDescription": "Geuza maudhui yanayozungumzwa kuwa muhtasari wa kuhifadhi.",
+    "heroDocumentDescription": "Gundua mambo muhimu. Unganisha mawazo. Uliza chochote.",
+    "heroIdeas": "Mawazo makuu",
+    "heroFollowUps": "Uliza AI",
+    "heroSummarize": "Fupisha",
+    "heroCompare": "Linganisha",
+    "summaryReady": "Kiini chake",
+    "savedOnDevice": "Imehifadhiwa kwenye kifaa hiki",
+    "notSavedYet": "Tayari kuhifadhiwa",
+    "atAGlance": "Kwa jumla",
+    "addSource": "Ongeza chanzo chako",
+    "quickDescription": "Mambo makuu tu",
+    "detailedDescription": "Nafasi ya maelezo zaidi",
+    "chooseVideo": "Ongeza video",
+    "studioLabel": "Uwazi zaidi kidogo.",
+    "studioDocumentTitle": "Mawazo makubwa.\nUsomaji mdogo.",
+    "studioVideoTitle": "Tazama kidogo.\nPata mengi zaidi.",
+    "studioDocumentDescription": "Kutoka kurasa lukuki hadi wazo lako jipya linalong’aa.",
+    "studioVideoDescription": "Baki na sehemu bora. Geuza maneno yanayozungumzwa kuwa kitu unachoweza kurudia.",
+    "studioVideoDescriptionV3": "Ona hadithi nzima. Geuza matukio na maneno yanayozungumzwa kuwa mawazo unayoweza kurudia.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Dakika 10 za kwanza · Usemi na picha",
+    "videoCoverageV3": "Usemi na matukio ya kuona · Hadi dakika 10 za kwanza. Sura ni za kukadiria; matendo ya haraka yanaweza kukosekana.",
+    "videoChatMenu": "Elewa matukio, usemi na nyakati muhimu",
+    "analyzingVideo": "Inatazama video yako…",
+    "uploadingVideo": "Inapakia video… {{percent}}%",
+    "videoCancelled": "Uchambuzi wa video umesimamishwa.",
+    "videoSourceNeeded": "Bandika kiungo cha umma cha YouTube, au gusa + → Pakia video. Kisha tuma swali lako.",
+    "localOnlyV2": "Muhtasari huhifadhiwa kwenye kifaa hiki. Matokeo ya uchambuzi pia huwekwa kwenye seva ya uchambuzi kwa hadi siku 7 ili yaweze kupatikana, kisha hufutwa. Shiriki nakala ili kuwa na hifadhi rudufu.",
+    "leavePrivateTitle": "Ungependa kuondoka kwenye gumzo la faragha?",
+    "leavePrivateBody": "Kuuliza kuhusu muhtasari huu kutamaliza gumzo lako la faragha na kuhifadhi mazungumzo mapya kwenye historia yako.",
+    "leavePrivateConfirm": "Endelea",
+    "documentPages": "Maandishi yamepatikana kwenye kurasa {{extracted}} kati ya {{total}}.",
+    "documentPartialText": "Baadhi ya kurasa hazina maandishi yanayoweza kutolewa. Picha na kurasa zilizochanganuliwa hazisomwi.",
+    "documentTruncated": "Ni mwanzo tu wa hati hii uliotolewa. Muhtasari unaweza kukosa maudhui ya sehemu za baadaye.",
+    "sourceUnavailable": "Aina hii ya chanzo haipatikani kwa muda. Jaribu chaguo jingine linalopatikana hapa chini.",
+    "accepted": "Inachambua chanzo chako. Unaweza kuondoka kwenye skrini hii na kuangalia maendeleo baadaye.",
+    "checkingProgress": "Inaangalia uchambuzi wako uliohifadhiwa…",
+    "pendingError": "Imeshindwa kupakia uchambuzi unaosubiri. Zima na uwashe programu upya kabla ya kuanza mwingine.",
+    "pendingAnalysis": "UCHAMBUZI UNAOSUBIRI",
+    "resumeHint": "Ukishakubaliwa, uchambuzi huendelea hata ukiondoka kwenye skrini. Pata matokeo hapa bila kuuanza upya.",
+    "checkProgress": "Angalia maendeleo",
+    "cancelAnalysis": "Ghairi uchambuzi",
+    "demoNotice": "Onyesho la ndani · maudhui ya mfano · hakuna chanzo kilichopakiwa",
+    "publicVideoCoverage": "Video za umma za YouTube · Dakika 10 za kwanza. Video za faragha, za moja kwa moja na zilizozuiliwa huenda zisipatikane.",
+    "sourceUnavailableLibrary": "Aina hii ya chanzo haipatikani kwa muda. Bado unaweza kufungua muhtasari wako uliohifadhiwa.",
+    "stopWaiting": "Acha kusubiri",
+    "previewSample": "Sampuli ya onyesho · onyesho la ndani",
+    "pickVideoError": "Chagua klipu moja ya MP4 au WebM, hadi 20 MB na dakika 10.",
+    "pickDocumentsError": "Chagua hadi hati tatu za PDF, DOCX, TXT au CSV, hadi 10 MB kila moja.",
+    "videoErrors": {
+      "ONE_VIDEO": "Chagua video moja au bandika kiungo kimoja cha YouTube kwa wakati mmoja.",
+      "VIDEO_MIXED_SOURCES": "Tuma video peke yake, bila picha wala hati.",
+      "VIDEO_QUESTION_TOO_LONG": "Swali lako kuhusu video lisizidi herufi 4,000.",
+      "INVALID_VIDEO": "Chagua video ya MP4 au WebM, hadi 20 MB.",
+      "FILE_TOO_LARGE": "Chagua video ya hadi 20 MB.",
+      "SOURCE_UNAVAILABLE": "Hatukuweza kufikia video hii. Jaribu video ya umma ya YouTube au pakia faili ya MP4 au WebM.",
+      "INVALID_RESULT": "Uchambuzi wa video haukukamilika. Tafadhali jaribu tena.",
+      "NETWORK": "Muunganisho umekatika. Angalia matokeo katika Muhtasari wa video kabla ya kujaribu tena.",
+      "TIMEOUT": "Video ilichukua muda mrefu mno kuchambuliwa. Jaribu klipu fupi zaidi.",
+      "JOB_PENDING": "Video yako bado inachakatwa. Fungua Muhtasari wa video ili kuangalia maendeleo yake.",
+      "DAILY_LIMIT": "Umefikia kikomo cha leo cha uchambuzi wa video na hati. Tafadhali jaribu tena kesho.",
+      "ALREADY_PROCESSING": "Uchambuzi tayari unaendelea. Fungua Muhtasari wa video ili kuangalia maendeleo yake.",
+      "SERVICE_BUSY": "Uchambuzi wa video una shughuli nyingi. Tafadhali jaribu tena baada ya muda mfupi.",
+      "PROVIDER_UNAVAILABLE": "Uchambuzi wa video haupatikani kwa muda. Tafadhali jaribu tena baada ya muda mfupi.",
+      "NOT_CONFIGURED": "Uchambuzi wa video haupatikani kwa muda. Tafadhali jaribu tena baadaye.",
+      "VIDEO_NOT_CONFIGURED": "Uchambuzi wa video haupatikani kwa muda. Tafadhali jaribu tena baadaye.",
+      "SAVE_FAILED": "Muhtasari wako uko tayari, lakini haukuweza kuhifadhiwa kwenye maktaba yako. Baki na gumzo hili au nakili muhtasari."
+    },
+    "markdown": {
+      "summary": "Muhtasari",
+      "keyTakeaways": "Mambo muhimu",
+      "details": "Maelezo",
+      "actionItems": "Hatua za kuchukua",
+      "sourceExcerpts": "Vifungu vya chanzo",
+      "coverageNotes": "Maelezo kuhusu upeo"
     }
   }
 }

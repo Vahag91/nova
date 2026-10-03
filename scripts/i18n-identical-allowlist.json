@@ -1,23 +1,6 @@
 {
   "global": [
     "app.launch.title",
-    "chat.activity.analyzingDocuments",
-    "chat.files.empty",
-    "chat.files.failed",
-    "chat.files.invalidTitle",
-    "chat.files.pasteFailedMessage",
-    "chat.files.pasteFailedTitle",
-    "chat.files.pickerErrorMessage",
-    "chat.files.pickerErrorTitle",
-    "chat.files.remove",
-    "chat.files.retry",
-    "chat.files.retryShort",
-    "chat.files.supportedTypes",
-    "chat.files.tooLarge",
-    "chat.files.tooMany",
-    "chat.files.unsupported",
-    "chat.files.upload",
-    "chat.files.waitUntilReady",
     "chat.markdown.wikipedia",
     "chat.studioBanner.label",
     "coinStore.pack.unknownPrice",
@@ -61,7 +44,10 @@
     "studioCommon.styles.sketch.name",
     "studioCommon.styles.steampunk.name",
     "studioCommon.styles.vintage_film.name",
-    "studioHome.headerTitle"
+    "studioHome.headerTitle",
+    "providers.deepseek",
+    "workspace.youtube",
+    "chat.files.badge"
   ],
   "locales": {
     "af": [
@@ -96,7 +82,8 @@
       "rewards.modals.rewardSuccess.error",
       "rewards.quests.store.errorTitle",
       "rewards.rewardsList.alerts.errorTitle",
-      "settings.model"
+      "settings.model",
+      "workspace.documents"
     ],
     "cs": [
       "chat.home.intents.brainstorm",
@@ -116,7 +103,9 @@
       "history.startChat",
       "settings.model",
       "settings.rows.support.title",
-      "settings.version"
+      "settings.version",
+      "workspace.upload",
+      "workspace.uploadVideo"
     ],
     "de": [
       "app.version",
@@ -130,7 +119,9 @@
       "premium.upgrade",
       "settings.hero.upgrade",
       "settings.rows.support.title",
-      "settings.version"
+      "settings.version",
+      "workspace.details",
+      "workspace.markdown.details"
     ],
     "es": [
       "assistants.categories.general",
@@ -213,7 +204,9 @@
       "rewards.modals.questCompleted.points",
       "settings.rows.support.title",
       "settings.version",
-      "studioCommon.aspectRatios.portrait"
+      "studioCommon.aspectRatios.portrait",
+      "workspace.documents",
+      "workspace.sources"
     ],
     "fr-CA": [
       "app.version",
@@ -229,7 +222,9 @@
       "rewards.modals.questCompleted.points",
       "settings.rows.support.title",
       "settings.version",
-      "studioCommon.aspectRatios.portrait"
+      "studioCommon.aspectRatios.portrait",
+      "workspace.documents",
+      "workspace.sources"
     ],
     "ha": [
       "assistants.categories.coding",
@@ -286,7 +281,9 @@
       "paywall.legal.privacy",
       "paywall.premium.week",
       "rewards.checkIn.later",
-      "settings.model"
+      "settings.model",
+      "workspace.details",
+      "workspace.markdown.details"
     ],
     "pl": [
       "chat.markdown.link"
@@ -298,7 +295,10 @@
       "assistants.categories.general",
       "chat.markdown.link",
       "paywall.premium.annual",
-      "settings.model"
+      "settings.model",
+      "workspace.documents",
+      "rewards.modals.rewardSuccess.credits",
+      "chat.files.untitled"
     ],
     "ro": [
       "chat.markdown.link",
@@ -329,6 +329,12 @@
       "chat.markdown.table",
       "coinStore.pack.defaultName",
       "history.pin"
+    ],
+    "as": [
+      "onboarding.v3.intent.overline"
+    ],
+    "sr-Latn": [
+      "settings.model"
     ]
   }
 }

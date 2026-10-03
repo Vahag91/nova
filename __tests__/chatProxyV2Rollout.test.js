@@ -27,7 +27,7 @@ describe('chat-proxy-v2 app rollout', () => {
     expect(Object.keys(DEFAULT_CHAT_MODELS).sort())
       .toEqual(Object.keys(V2_MODELS).sort());
     expect(Object.values(V2_MODELS).every(
-      model => model.upstreamModel === DEFAULT_CHAT_MODEL,
+      model => model.upstreamModel === 'gpt-6-luna',
     )).toBe(true);
   });
 
@@ -46,7 +46,7 @@ describe('chat-proxy-v2 app rollout', () => {
     });
 
     expect(registry['gpt-5.4-nano']).toBeUndefined();
-    expect(registry['gpt-5.6-sol'].display.description).toBeTruthy();
+    expect(registry['gpt-5.6-sol'].display.descriptionKey).toBe('gpt56_sol');
     expect(Object.keys(registry).filter(key => registry[key]?.kind === 'chat'))
       .toEqual(Object.keys(DEFAULT_CHAT_MODELS));
   });

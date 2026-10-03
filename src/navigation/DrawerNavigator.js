@@ -1,4 +1,5 @@
 import { IMAGE_STUDIO_ENABLED, REWARDS_ENABLED } from '../constants/featureFlags';
+import { useSourceWorkspaceAvailability } from '../state/useSourceWorkspaceAvailability';
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -34,6 +35,7 @@ import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
 import { useTranslation } from 'react-i18next';
+import { useWorkspaceTranslation } from '../i18n/useWorkspaceTranslation';
 import { PRESETS, PRESET_AVATARS } from '../data/presets';
 import { DEFAULT_CHAT_MODEL } from '../config/models';
 import NetInfo from '@react-native-community/netinfo';
@@ -56,6 +58,7 @@ const RootStack = createNativeStackNavigator();
 
 const getChatScreen = () => require('../screens/Chat').default;
 const getHistoryScreen = () => require('../screens/HistorySimple').default;
+const getSourceWorkspaceScreen = () => require('../screens/SourceWorkspace').default;
 const getAssistantsScreen = () => require('../screens/Assistants').default;
 const getSettingsScreen = () => require('../screens/Settings.jsx').default;
 const getStudioHomeScreen = () => require('../screens/StudioHome.jsx').default;
@@ -484,7 +487,10 @@ function PaywallRouteScreen({ navigation, route }) {
 }
 
 function MainDrawerNavigator() {
+  const documentsEnabled = useSourceWorkspaceAvailability('document');
+  const videosEnabled = useSourceWorkspaceAvailability('video');
   const { t } = useTranslation();
+  const { c } = useWorkspaceTranslation();
   
   return (
     <Drawer.Navigator
@@ -531,6 +537,8 @@ function MainDrawerNavigator() {
         })}
       />
       <Drawer.Screen name="Assistants" getComponent={getAssistantsScreen} options={{ title: t('navigation.assistants') }} />
+      {documentsEnabled && <Drawer.Screen name="Documents" getComponent={getSourceWorkspaceScreen} options={{ title: c('documents', 'Documents') }} />}
+      {videosEnabled && <Drawer.Screen name="VideoSummaries" getComponent={getSourceWorkspaceScreen} options={{ title: c('videos', 'Video summaries') }} />}
       {REWARDS_ENABLED ? (
         <Drawer.Screen
           name="Rewards"

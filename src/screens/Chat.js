@@ -1,4 +1,5 @@
 import { IMAGE_STUDIO_ENABLED } from '../constants/featureFlags';
+import { useSourceWorkspaceAvailability } from '../state/useSourceWorkspaceAvailability';
 import React, { useEffect, useMemo, useRef, useState, useCallback, useContext } from 'react';
 import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert, Platform, InteractionManager } from 'react-native';
 import Reanimated, { useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
@@ -12,7 +13,6 @@ import {
   isErrorWithCode as isDocumentPickerError,
   keepLocalCopy,
   pick as pickDocuments,
-  types as documentTypes,
 } from '@react-native-documents/picker';
 import Svg, { Path } from 'react-native-svg';
 
@@ -28,6 +28,7 @@ import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { newUserMessage, newAssistantMessage } from '../state/types';
 import { streamChat } from '../api/streamChat';
+import { regenerateReply } from '../lib/regenerateReply';
 import { ensureDeviceId } from '../lib/deviceId';
 import { mapProxyError } from '../lib/errors';
 import MessageList from '../components/chat/MessageList';
@@ -48,7 +49,7 @@ import { setPendingPremiumAction } from '../state/premiumActions';
 import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
 
 import { ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
-import CreativeStudioBanner from '../components/chat/CreativeStudioBanner';
+import AssistantsBanner from '../components/chat/AssistantsBanner';
 import RateUsService from '../services/RateUsService';
 import ChatToast from '../components/chat/ChatToast';
 import ReportContentModal from '../components/reporting/ReportContentModal';
@@ -57,10 +58,20 @@ import { perfEnd, perfLog, perfStart } from '../lib/perfTrace';
 import { runImagePickerSingleFlight } from '../lib/imagePickerSingleFlight';
 import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
 import { processDocument } from '../api/processDocument';
+import { documentUploadError } from '../lib/documentCoverage';
+import WorkspaceShortcuts from '../components/workspace/WorkspaceShortcuts';
+import { useSourceCapabilities } from '../state/useSourceWorkspaceAvailability';
+import { supportsSourceWorkspace } from '../lib/sourceWorkspaceAvailability';
+import { useWorkspaceTranslation } from '../i18n/useWorkspaceTranslation';
+import { getChatVideoSource, asksForVideoWithoutSource, videoErrors } from '../lib/videoChat';
+import { analyzeChatVideo } from '../lib/analyzeChatVideo';
+import { pickChatVideo } from '../lib/pickChatVideo';
+import { summaryLabels, summaryMarkdown, workspaceChatContext } from '../lib/workspace';
 import {
   FREE_MESSAGE_CHAR_LIMIT,
   LARGE_PASTE_ATTACHMENT_THRESHOLD,
   PREMIUM_PASTE_CAPTURE_CHAR_LIMIT,
+  SUPPORTED_DOCUMENT_MIME_TYPES,
   getChatTokenBudget,
   getMessageCharLimit,
 } from '../config/chatLimits';
@@ -74,13 +85,7 @@ import {
 
 const STARTUP_DECORATIVE_MEDIA_DELAY_MS = 240;
 const LARGE_PASTE_DELTA_THRESHOLD = 1000;
-const DOCUMENT_PICK_TYPES = [
-  documentTypes.pdf,
-  documentTypes.docx,
-  documentTypes.plainText,
-  'text/csv',
-  'text/comma-separated-values',
-];
+const DOCUMENT_PICK_TYPES = SUPPORTED_DOCUMENT_MIME_TYPES;
 
 function makeAttachmentId(prefix = 'attachment') {
   return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
@@ -125,6 +130,7 @@ function mergeVoiceTranscript(base, chunk) {
 }
 
 export default function Chat({ navigation }) {
+  const sourceWorkspaceEnabled = useSourceWorkspaceAvailability();
   const { t, i18n } = useTranslation();
   const { reportScreenReady } = useAndroidNavigationMenu();
   const subscription = useContext(SubscriptionAccessContext);
@@ -226,6 +232,16 @@ export default function Chat({ navigation }) {
   const [attachments, setAttachments] = useState([]);
   const [imagePickerActive, setImagePickerActive] = useState(false);
   const [documentPickerActive, setDocumentPickerActive] = useState(false);
+  const [videoPickerActive, setVideoPickerActive] = useState(false);
+  const videoPickerLock = useRef(false);
+  const videoSendRef = useRef(null);
+  const sourceCapabilities = useSourceCapabilities();
+  const { c: videoCopy, i18n: videoLanguage } = useWorkspaceTranslation();
+  // Chat's video errors keep their own keys: the workspace screen words the same codes differently.
+  const videoErrorText = (code, fallbackCode = code) => {
+    const known = videoErrors[code] ? code : fallbackCode;
+    return videoCopy(`videoErrors.${known}`, videoErrors[known]);
+  };
   const [error, setError] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [offline, setOffline] = useState(false);
@@ -327,6 +343,7 @@ export default function Chat({ navigation }) {
   const requestModelKey = resolvedActiveModel;
   const successfulMessagesRef = useRef(0); 
   const abortRef = useRef(null);
+  const regenerationRef = useRef(null);
   const documentUploadsRef = useRef(new Map());
   const composerAttachmentsRef = useRef([]);
   const largePasteBusyRef = useRef(false);
@@ -362,8 +379,9 @@ export default function Chat({ navigation }) {
         removeTemporaryFile(upload.localUri);
       }
       activeUploads.clear();
+      videoSendRef.current?.abort();
       for (const attachment of composerAttachments.current) {
-        if (isDocumentAttachment(attachment) && attachment?.uri) {
+        if ((isDocumentAttachment(attachment) || attachment.kind === 'video') && attachment?.uri) {
           removeTemporaryFile(attachment.uri);
         }
       }
@@ -755,6 +773,7 @@ export default function Chat({ navigation }) {
       }
       return readyAttachment;
     } catch (uploadError) {
+      uploadError.message = documentUploadError(uploadError, t);
       if (uploadError?.code !== 'ABORTED' && !abortController.signal.aborted && isMountedRef.current) {
         updateAttachment(attachment.id, {
           status: 'error',
@@ -894,7 +913,7 @@ export default function Chat({ navigation }) {
 
     largePasteBusyRef.current = true;
     const id = makeAttachmentId('paste');
-    const name = `Pasted text ${new Date().toISOString().slice(0, 10)}.txt`;
+    const name = `${sanitizeDocumentName(t('chat.files.pastedTextName', { defaultValue: 'Pasted text' }), 'Pasted text')} ${new Date().toISOString().slice(0, 10)}.txt`;
     const path = `${RNFS.CachesDirectoryPath}/${id}.txt`;
     const uri = `file://${path}`;
     try {
@@ -1200,7 +1219,7 @@ export default function Chat({ navigation }) {
       try { activeUpload.abort?.(); } catch {}
       documentUploadsRef.current.delete(att.id);
     }
-    if (isDocumentAttachment(att)) {
+    if (isDocumentAttachment(att) || att.kind === 'video') {
       removeTemporaryFile(activeUpload?.localUri || att?.uri);
     }
     setAttachments(prev => prev.filter(a => a.id !== att.id));
@@ -1212,7 +1231,88 @@ export default function Chat({ navigation }) {
   }, [uploadDocumentAttachment]);
 
   // ==== Send flow ====
+  async function onOpenVideoPress() {
+    if (videoPickerLock.current || streaming || documentPickerActive || imagePickerActive) return;
+    if (attachments.length) {
+      setError(videoErrorText('VIDEO_MIXED_SOURCES'));
+      return;
+    }
+    videoPickerLock.current = true;
+    setVideoPickerActive(true);
+    try {
+      const file = await pickChatVideo();
+      if (!file) return;
+      if (!isMountedRef.current) { await removeTemporaryFile(file.uri); return; }
+      setAttachments(previous => [...previous, file]);
+    } catch (err) {
+      if (isDocumentPickerError(err) && err.code === documentPickerErrorCodes.OPERATION_CANCELED) return;
+      if (isMountedRef.current) setError(videoErrorText(err.code, 'INVALID_VIDEO'));
+    } finally {
+      videoPickerLock.current = false;
+      if (isMountedRef.current) setVideoPickerActive(false);
+    }
+  }
+
+  async function onSendVideo(source, text) {
+    if (videoSendRef.current || !activeThread) return;
+    const threadId = activeThread.id;
+    const controller = new AbortController();
+    videoSendRef.current = controller;
+    abortRef.current = controller;
+    const user = newUserMessage(text || source.file?.name || source.url);
+    user.meta = { videoSummarySource: true };
+    const assistant = newAssistantMessage();
+    assistant.meta = { model: 'gemini-3.7-flash', videoSummary: true, activity: videoCopy('analyzingVideo', 'Watching your video…') };
+    const update = (id, patch) => isPrivate ? updatePrivateMessage(id, patch) : updateMessage(threadId, id, patch);
+    if (isPrivate) { addPrivateMessage(user); addPrivateMessage(assistant); }
+    else { addMessage(threadId, user); addMessage(threadId, assistant); }
+    setInput('');
+    setAttachments([]);
+    setStreaming(true);
+    setStreamingMsgId(assistant.id);
+    setForceCollapseInput(true);
+    setError('');
+    requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
+    let keepVideoCopy = false;
+    try {
+      const { record, saveFailed } = await analyzeChatVideo({
+        source: { ...source, language: videoLanguage.resolvedLanguage || videoLanguage.language || 'en' },
+        privateMode: isPrivate,
+        signal: controller.signal,
+        onProgress: uploadProgress => {
+          if (!controller.signal.aborted) update(assistant.id, { meta: { ...assistant.meta, activity: uploadProgress < 1 ? videoCopy('uploadingVideo', 'Uploading video… {{percent}}%', { percent: Math.round(uploadProgress * 100) }) : videoCopy('analyzingVideo', 'Watching your video…') } });
+        },
+      });
+      if (controller.signal.aborted) return;
+      update(user.id, { attachments: record.documents });
+      const coverage = videoCopy('videoCoverageV3', 'Speech & visual scenes · First 10 minutes at most. Chapters are approximate; fast actions may be missed.');
+      update(assistant.id, { content: `${summaryMarkdown(record.result, summaryLabels(videoCopy))}\n\n_${coverage}_`, meta: { ...assistant.meta, activity: null, workspaceId: record.id, videoContext: workspaceChatContext(record), videoDocuments: record.documents } });
+      if (!isPrivate) {
+        try { await forceSaveThread(threadId, { throwOnError: true }); }
+        catch { if (isMountedRef.current) setError(videoErrorText('SAVE_FAILED')); }
+      }
+      if (saveFailed && isMountedRef.current) setError(videoErrorText('SAVE_FAILED'));
+    } catch (err) {
+      const message = controller.signal.aborted
+        ? videoCopy('videoCancelled', 'Video analysis stopped.')
+        : videoErrorText(err.code, 'SOURCE_UNAVAILABLE');
+      update(assistant.id, { content: message, meta: { ...assistant.meta, activity: null } });
+      if (isMountedRef.current && !controller.signal.aborted) {
+        setError(message);
+        setInput(text);
+        if (source.file) { keepVideoCopy = true; setAttachments([source.file]); }
+      }
+      if (!isPrivate) forceSaveThread(threadId);
+    } finally {
+      videoSendRef.current = null;
+      if (abortRef.current === controller) abortRef.current = null;
+      if (isMountedRef.current) { setStreaming(false); setStreamingMsgId(null); }
+      if (source.file && !keepVideoCopy) await removeTemporaryFile(source.file.uri);
+    }
+  }
+
   async function onSend(overrideText) {
+    if (regenerationRef.current || videoSendRef.current || videoPickerLock.current) return;
     if (offline) {
       setError(t('chat.offlineError', { defaultValue: 'No internet connection. Please check your connection and try again.' }));
       return;
@@ -1227,6 +1327,21 @@ export default function Chat({ navigation }) {
     setError('');
     const textRaw = typeof overrideText === 'string' ? overrideText : input;
     const text = (textRaw || '').trim();
+    let videoSource;
+    try { videoSource = getChatVideoSource(text, attachments); }
+    catch (err) { setError(videoErrorText(err.code, 'SOURCE_UNAVAILABLE')); return; }
+    if (videoSource) {
+      if (!supportsSourceWorkspace(sourceCapabilities, videoSource.type)) {
+        setError(videoErrorText('VIDEO_NOT_CONFIGURED'));
+        return;
+      }
+      await onSendVideo(videoSource, text);
+      return;
+    }
+    if (!attachments.length && asksForVideoWithoutSource(text) && !(activeThread?.messages || []).some(m => m.meta?.videoSummary) && !activeThread?.meta?.workspaceType) {
+      setError(videoCopy('videoSourceNeeded', 'Paste a public YouTube link, or tap + → Upload video. Then send your question.'));
+      return;
+    }
     const hasText = !!text;
     let sendAttachments = [...attachments];
     let imageAttachments = sendAttachments.filter(isImageAttachment);
@@ -1311,7 +1426,7 @@ export default function Chat({ navigation }) {
           : (webSearchNext
             ? t('chat.activity.searching', { defaultValue: 'Searching…' })
             : t('chat.activity.thinking', { defaultValue: 'Thinking…' }));
-        a.meta = { ...(a.meta || {}), activity: initialActivity, model: requestModelKey };
+        a.meta = { ...(a.meta || {}), activity: initialActivity, model: requestModelKey, allowWebSearch: webSearchNext };
       } catch { }
 
       if (isPrivate) { addPrivateMessage(u); addPrivateMessage(a); }
@@ -1524,6 +1639,11 @@ export default function Chat({ navigation }) {
   }
 
   function onStop() {
+    if (videoSendRef.current) { videoSendRef.current.abort(); return; }
+    if (regenerationRef.current) {
+      regenerationRef.current.abort();
+      return;
+    }
     perfLog('chat.stop_triggered', {
       streamingActive: !!abortRef.current,
       streamingMsgId,
@@ -1562,9 +1682,52 @@ export default function Chat({ navigation }) {
       messageId: message?.id,
       role: message?.role,
     });
-    const raw = message?.content || '';
-    const isAssistant = message?.role === 'assistant';
-    setInput(isAssistant ? plainTextFromMarkdown(raw) : raw);
+    if (streaming || abortRef.current || documentSendBusyRef.current || regenerationRef.current) return;
+    if (message?.role !== 'assistant') {
+      setInput(message?.content || '');
+      return;
+    }
+    if (offline) {
+      setError(t('chat.offlineError', { defaultValue: 'No internet connection. Please check your connection and try again.' }));
+      return;
+    }
+    const threadId = activeThread?.id;
+    if (!threadId) return;
+    const messageId = message.id;
+    const allowWebSearch = isPremium && !!(webSearchNext || message.meta?.allowWebSearch);
+    setError('');
+    clearStream(messageId);
+    setStreamingMsgId(messageId);
+    setStreaming(true);
+    const operation = regenerateReply({
+      thread: activeThread, messageId, tokenCap: chatTokenBudget,
+      model: requestModelKey, allowWebSearch, ensureDeviceId, streamChat,
+      onToken: chunk => appendStream(messageId, chunk),
+      onCommit: content => {
+        const patch = current => ({
+          content, meta: { ...current.meta, model: requestModelKey, allowWebSearch },
+        });
+        if (isPrivate) updatePrivateMessage(messageId, patch);
+        else {
+          updateMessage(threadId, messageId, patch);
+          setThreadSummary(threadId, '', { summaryLastMsgCount: 0 });
+          forceSaveThread(threadId);
+        }
+      },
+      onError: err => {
+        const pretty = mapProxyError(err, t);
+        setError(pretty.message || t('chat.sendFailed', { defaultValue: 'Failed to send message. Please try again.' }));
+      },
+      onFinish: () => {
+        clearStream(messageId);
+        regenerationRef.current = null;
+        abortRef.current = null;
+        setStreamingMsgId(null);
+        setStreaming(false);
+      },
+    });
+    regenerationRef.current = operation;
+    abortRef.current = operation;
   }
 
   const handleReportAssistantResponse = useCallback(({ message, prompt }) => {
@@ -1695,11 +1858,11 @@ export default function Chat({ navigation }) {
                         <Text style={styles.emptyStateSubtitle}>{t('chat.privateSubtitle')}</Text>
                       </>
                     ) : (
-                      showKeyboardHelpers && IMAGE_STUDIO_ENABLED ? (
+                      showKeyboardHelpers ? (
                         <Reanimated.View style={bannerStyle}>
-                          <CreativeStudioBanner
+                          <AssistantsBanner
                             ref={bannerMediaRef}
-                            onPress={handleCreateImagesPress}
+                            onPress={handleAssistantsPress}
                             paused={showVoiceOverlay || isRecording}
                             playVideo={decorativeMediaReady && !keyboardVisible}
                           />
@@ -1724,6 +1887,12 @@ export default function Chat({ navigation }) {
           )}
 
           <View>
+            {sourceWorkspaceEnabled && !isPrivate && !streaming && !keyboardVisible && (
+              <WorkspaceShortcuts navigation={navigation} documents={[
+                ...attachments.filter(a => a.kind === 'document' && a.status === 'ready'),
+                ...(activeThread?.messages || []).flatMap(m => m.attachments || []).filter(a => a.kind === 'document').slice(-3),
+              ]} />
+            )}
             <Reanimated.View style={suggestionStyle}>
               {showKeyboardHelpers && (
                 <SuggestionCards
@@ -1740,6 +1909,9 @@ export default function Chat({ navigation }) {
               onCreateImagesPress={handleCreateImagesPress}
               onOpenCameraPress={onOpenCameraPress}
               onOpenFilePress={onOpenFilePress}
+              onOpenVideoPress={onOpenVideoPress}
+              videoEnabled={supportsSourceWorkspace(sourceCapabilities, 'upload')}
+              videoPickerActive={videoPickerActive}
               imagePickerActive={imagePickerActive}
               documentPickerActive={documentPickerActive}
               onSearchPress={() => {

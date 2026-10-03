@@ -27,8 +27,8 @@
     "gpt-5.4-nano": "Model lev per incumbensas simplas",
     "o4-mini": "Model da raschunar effizient",
     "gpt-4.1-mini": "GPT-4.1 cumpact e pussant",
-    "claude-3-haiku": "IA svelta e focussada da Anthropic",
-    "claude-3.7-sonnet": "Raschunar rafinà da Anthropic",
+    "claude-3-haiku": "IA svelta e focussada d'Anthropic",
+    "claude-3.7-sonnet": "Raschunar rafinà d'Anthropic",
     "gemini-2.5-Flash": "Il pli avanzà model da Google",
     "gemini-2.5-flash": "Il pli avanzà model da Google",
     "gemini-2.0-flash": "IA svelta e precisa da Google"
@@ -63,14 +63,25 @@
     "chatty_personal": "Pli amiaivel e persunal",
     "pro_users": "Il meglier per utilisaders profis",
     "research_helper": "Bun per retschertgas e notizias",
-    "reasoning_strong": "Model avanzà da raschunar"
+    "reasoning_strong": "Model avanzà da raschunar",
+    "gpt56_sol": "Il pli pussant model GPT-5.6",
+    "gpt56_terra": "Model GPT-5.6 equilibrà",
+    "gpt56_luna": "Model svelt per incumbensas da mintgadi",
+    "claude_fable": "IA svelta e creativa d'Anthropic",
+    "claude_sonnet": "Model avanzà d'Anthropic",
+    "gemini_flash": "Model d'IA svelt da Google",
+    "gemini_pro": "Il model Pro avanzà da Google",
+    "grok_latest": "Il model il pli nov da xAI",
+    "deepseek_pro": "Model DeepSeek avanzà",
+    "deepseek_flash": "Model DeepSeek svelt"
   },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
     "google": "Google",
     "xai": "xAI",
-    "other": "Auters"
+    "other": "Auters",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Nov chat",
@@ -83,7 +94,7 @@
     "proFeatures": "Funcziuns Pro",
     "pro": "PRO",
     "proFeaturesCta": {
-      "title": "Obtegna funcziuns Pro",
+      "title": "Obtegnair funcziuns Pro",
       "subtitle": "Tut las funcziuns d'IA"
     }
   },
@@ -156,7 +167,7 @@
     "errorMessage": "Impussibel da lantschar quest assistent.",
     "noAssistants": "Chattà nagins assistents en questa categoria.",
     "selectAssistantHint": "Avrir la tscherna d'assistents",
-    "subtitle": "Spezialists d'IA curads, pronts per programmar, scriver, analisar, planisar e dapli.",
+    "subtitle": "Spezialists d'IA tschernids cun premura, pronts per programmar, scriver, analisar, planisar e dapli.",
     "searchPlaceholder": "Tschertgar assistents…",
     "useAssistant": "Utilisar l'assistent",
     "selectAssistant": "Tscherner in assistent",
@@ -257,92 +268,92 @@
     }
   },
   "history": {
-    "title": "Istoric",
-    "searchPlaceholder": "Caută în chat-uri…",
-    "newChat": "Chat nou",
-    "new": "+ Nou",
-    "search": "Caută",
-    "clearSearch": "Șterge căutarea",
-    "noChatsYet": "Nu există încă chat-uri",
-    "noResults": "Nu există încă chat-uri",
-    "startFirstConversation": "Începe prima conversație.",
-    "startChat": "Începe un chat",
-    "startNewChat": "Începe un chat nou",
-    "errorLoadingHistory": "Eroare la încărcarea istoricului",
-    "loading": "Se încarcă istoricul...",
-    "renameChat": "Redenumește chat-ul",
-    "enterNewTitle": "Introdu un titlu nou",
-    "deleteChat": "Ștergi chat-ul?",
-    "deleteChatMessage": "„{{title}}” va fi șters.",
-    "rename": "Redenumește",
-    "unpin": "Anulează fixarea",
-    "pin": "Fixează",
-    "untitled": "Fără titlu"
+    "title": "Cronologia",
+    "searchPlaceholder": "Tschertgar chats…",
+    "newChat": "Nov chat",
+    "new": "+ Nov",
+    "search": "Tschertgar",
+    "clearSearch": "Stizzar la tschertga",
+    "noChatsYet": "Anc nagins chats",
+    "noResults": "Anc nagins chats",
+    "startFirstConversation": "Cumenza tia emprima conversaziun.",
+    "startChat": "Cumenzar in chat",
+    "startNewChat": "Cumenzar in nov chat",
+    "errorLoadingHistory": "Sbagl cun chargiar la cronologia",
+    "loading": "Chargiar la cronologia...",
+    "renameChat": "Renumnar il chat",
+    "enterNewTitle": "Endatescha in nov titel",
+    "deleteChat": "Stizzar il chat?",
+    "deleteChatMessage": "«{{title}}» vegn stizzà.",
+    "rename": "Renumnar",
+    "unpin": "Betg pli fixar",
+    "pin": "Fixar",
+    "untitled": "Senza titel"
   },
   "settings": {
-    "title": "Setări",
+    "title": "Parameters",
     "model": "Model",
-    "searchPlaceholder": "Caută modele…",
-    "temperatureForCurrentModel": "Temperatura modelului curent",
-    "customFor": "Personalizată pentru {{model}}",
-    "usingDefault": "Se folosește valoarea implicită {{temperature}}",
-    "resetToDefault": "Restabilește valoarea implicită",
-    "defaultTemperature": "Temperatură implicită (de rezervă)",
-    "usedByModelsWithoutOverride": "Folosită de modelele fără o setare personalizată",
-    "dangerZone": "Zonă periculoasă",
-    "clearAllChatsAndSettings": "Șterge toate chat-urile și setările",
-    "about": "Despre aplicație",
-    "version": "Versiunea {{version}}{{status}}",
+    "searchPlaceholder": "Tschertgar models…",
+    "temperatureForCurrentModel": "Temperatura per il model actual",
+    "customFor": "Persunalisà per {{model}}",
+    "usingDefault": "Utilisescha la valur da standard {{temperature}}",
+    "resetToDefault": "Restaurar la valur da standard",
+    "defaultTemperature": "Temperatura da standard (substituziun)",
+    "usedByModelsWithoutOverride": "Vegn utilisada da models senza parameter persunalisà",
+    "dangerZone": "Zona da privel",
+    "clearAllChatsAndSettings": "Stizzar tut ils chats e parameters",
+    "about": "Davart l'app",
+    "version": "Versiun {{version}}{{status}}",
     "versionPremiumSuffix": " · Premium",
-    "privacyPolicy": "Politica de confidențialitate",
+    "privacyPolicy": "Decleraziun da protecziun da datas",
     "hero": {
-      "label": "Ofertă specială",
-      "title": "Acces nelimitat\nși funcții Pro",
-      "upgrade": "Treci la Pro",
-      "manage": "Gestionează abonamentul"
+      "label": "Offerta speziala",
+      "title": "Access illimità\ne funcziuns Pro",
+      "upgrade": "Midar a Premium",
+      "manage": "Administrar il plan"
     },
     "sections": {
       "premium": "Plan Premium",
-      "data": "Datele utilizatorului",
-      "support": "Asistență și informații juridice"
+      "data": "Datas da l'utilisader",
+      "support": "Sustegn ed infurmaziuns giuridicas"
     },
     "rows": {
       "getPremium": {
-        "title": "Obține Premium",
-        "subtitle": "Deblochează instrumente de creație nelimitate"
+        "title": "Obtegnair Premium",
+        "subtitle": "Deblochescha utensils da creaziun illimitads"
       },
       "premiumActive": {
         "title": "Premium activ",
-        "subtitle": "Îți mulțumim că susții Cloud AI"
+        "subtitle": "Grazia che ti sustegnas Cloud AI"
       },
       "restore": {
-        "title": "Restaurează achizițiile",
-        "subtitle": "Folosește această opțiune dacă ai schimbat dispozitivul"
+        "title": "Restaurar las cumpras",
+        "subtitle": "Utilisescha quai sche ti has midà l'apparat"
       },
       "history": {
-        "title": "Gestionează istoricul chat-urilor",
-        "subtitle": "Vezi și șterge sesiunile anterioare"
+        "title": "Administrar la cronologia dals chats",
+        "subtitle": "Guardar e stizzar tias sessiuns precedentas"
       },
       "reset": {
-        "title": "Resetează chat-urile și preferințele",
-        "subtitle": "Șterge toate datele salvate pe acest dispozitiv"
+        "title": "Reinizialisar chats e preferenzas",
+        "subtitle": "Stizza tut las datas memorisadas sin quest apparat"
       },
       "rate": {
-        "title": "Evaluează-ne",
-        "error": "Pagina magazinului nu a putut fi deschisă."
+        "title": "Valitescha nus",
+        "error": "Impussibel d'avrir la pagina en la butia d'apps."
       },
       "support": {
-        "title": "Asistență",
-        "subtitle": "Contactează-ne online",
-        "error": "Pagina de contact nu a putut fi deschisă."
+        "title": "Sustegn",
+        "subtitle": "Contactescha nus en l'internet",
+        "error": "Impussibel d'avrir la pagina da contact."
       },
       "privacy": {
-        "title": "Politica de confidențialitate",
-        "error": "Politica de confidențialitate nu a putut fi deschisă."
+        "title": "Decleraziun da protecziun da datas",
+        "error": "Impussibel d'avrir la decleraziun da protecziun da datas."
       },
       "terms": {
-        "title": "Termeni de utilizare",
-        "error": "Termenii de utilizare nu au putut fi deschiși."
+        "title": "Cundiziuns d'utilisaziun",
+        "error": "Impussibel d'avrir las cundiziuns d'utilisaziun."
       }
     },
     "capabilities": {
@@ -352,62 +363,62 @@
       "video": "VID"
     },
     "alerts": {
-      "linkUnavailableTitle": "Indisponibil",
-      "linkUnavailableMessage": "Acest link nu poate fi deschis momentan.",
-      "restoreSuccessTitle": "Restaurat",
-      "restoreSuccessMessage": "Achizițiile tale au fost restaurate.",
-      "restoreEmptyTitle": "Nu s-au găsit achiziții",
-      "restoreEmptyMessage": "Nu am găsit nicio achiziție activă care să poată fi restaurată pentru acest cont.",
-      "restoreErrorTitle": "Restaurarea a eșuat",
-      "restoreErrorMessage": "Achizițiile nu pot fi restaurate momentan.",
-      "resetConfirmTitle": "Resetezi datele aplicației?",
-      "resetConfirmMessage": "Aceasta va elimina toate chat-urile și preferințele locale.",
-      "resetConfirmCancel": "Anulează",
-      "resetConfirmCta": "Resetează"
+      "linkUnavailableTitle": "Betg disponibel",
+      "linkUnavailableMessage": "Impussibel d'avrir quest link en quest mument.",
+      "restoreSuccessTitle": "Restaurà",
+      "restoreSuccessMessage": "Tias cumpras èn vegnidas restauradas.",
+      "restoreEmptyTitle": "Chattà naginas cumpras",
+      "restoreEmptyMessage": "Nus n'avain chattà naginas cumpras activas da restaurar per quest conto.",
+      "restoreErrorTitle": "La restauraziun n'è betg reussida",
+      "restoreErrorMessage": "Impussibel da restaurar las cumpras en quest mument.",
+      "resetConfirmTitle": "Reinizialisar las datas da l'app?",
+      "resetConfirmMessage": "Uschia vegnan allontanads tut ils chats e las preferenzas localas.",
+      "resetConfirmCancel": "Interrumper",
+      "resetConfirmCta": "Reinizialisar"
     }
   },
   "createImage": {
-    "headerTitle": "Creează",
-    "chooseStyle": "Alege un stil",
-    "aspectRatio": "Raport de aspect",
+    "headerTitle": "Crear",
+    "chooseStyle": "Tscherna in stil",
+    "aspectRatio": "Format dal maletg",
     "starterPrompts": {
-      "title": "Idei de început",
+      "title": "Ideas per cumenzar",
       "items": [
-        "portret de studio",
-        "living modern",
-        "plajă tropicală la apus"
+        "portret da studio",
+        "stiva moderna",
+        "riva tropicala al tramunt dal sulegl"
       ]
     },
-    "promptPlaceholder": "Descrie ce vrei să vezi…",
-    "promptHint": "Exemplu: „Golden retriever în lumină de studio”",
-    "clearText": "Șterge textul",
-    "generate": "Generează",
-    "generating": "Se generează…"
+    "promptPlaceholder": "Descriva quai che ti vuls vesair…",
+    "promptHint": "Exempel: «Golden retriever en glisch da studio»",
+    "clearText": "Stizzar il text",
+    "generate": "Generar",
+    "generating": "Generar…"
   },
   "editImage": {
-    "headerTitle": "Editează",
-    "chooseStyle": "Alege un stil",
-    "aspectRatio": "Raport de aspect",
+    "headerTitle": "Modifitgar",
+    "chooseStyle": "Tscherna in stil",
+    "aspectRatio": "Format dal maletg",
     "starterPrompts": {
-      "title": "Idei de început",
+      "title": "Ideas per cumenzar",
       "items": [
-        "corectează iluminarea",
-        "elimină fundalul",
-        "retușare delicată de portret"
+        "curreger la glisch",
+        "allontanar il fund",
+        "retusch fin dal portret"
       ]
     },
-    "promptPlaceholder": "Descrie modificările (opțional)",
-    "clearText": "Șterge textul",
-    "generate": "Generează",
-    "generating": "Se aplică…",
+    "promptPlaceholder": "Descriva las midadas (facultativ)",
+    "clearText": "Stizzar il text",
+    "generate": "Generar",
+    "generating": "Applitgar…",
     "upload": {
-      "choose": "Alege fotografia",
-      "change": "Schimbă",
-      "remove": "Elimină"
+      "choose": "Tscherner ina fotografia",
+      "change": "Midar",
+      "remove": "Allontanar"
     },
     "imageUnavailable": {
-      "title": "Imagine indisponibilă",
-      "message": "Fotografia selectată nu a putut fi accesată. Selecteaz-o din nou și încearcă iar."
+      "title": "Maletg betg disponibel",
+      "message": "Impussibel d'acceder a la fotografia tschernida. Tscherna la per plaschair danovamain ed emprova anc ina giada."
     }
   },
   "studioCommon": {
@@ -416,13 +427,13 @@
         "name": "Anime"
       },
       "cartoon": {
-        "name": "Desen animat"
+        "name": "Cumic"
       },
       "photoreal": {
-        "name": "Fotorealist"
+        "name": "Fotorealistic"
       },
       "sketch": {
-        "name": "Schiță"
+        "name": "Skizza"
       },
       "cyberpunk": {
         "name": "Cyberpunk"
@@ -431,162 +442,162 @@
         "name": "Steampunk"
       },
       "illustration_3d": {
-        "name": "Ilustrație 3D"
+        "name": "Illustraziun 3D"
       },
       "dark_fantasy": {
-        "name": "Fantezie întunecată"
+        "name": "Fantasia stgira"
       },
       "vintage_film": {
-        "name": "Film vintage"
+        "name": "Film retro"
       },
       "pastel": {
-        "name": "Estetică pastelată"
+        "name": "Estetica pastel"
       },
       "neon_glow": {
-        "name": "Strălucire neon"
+        "name": "Glisch da neon"
       },
       "epic_landscape": {
-        "name": "Peisaj epic"
+        "name": "Cuntrada epica"
       }
     },
     "aspectRatios": {
-      "square": "Pătrat",
-      "landscape": "Peisaj",
-      "portrait": "Portret"
+      "square": "Quadrat",
+      "landscape": "Orizontal",
+      "portrait": "Vertical"
     },
     "models": {
       "fluxKontent": "Flux Kontent",
-      "custom": "Personalizat"
+      "custom": "Persunalisà"
     },
-    "notEnoughCoinsTitle": "Nu ai suficiente monede",
-    "notEnoughCoinsMessage": "Soldul tău actual este prea mic pentru această imagine.",
+    "notEnoughCoinsTitle": "Betg avunda munaidas",
+    "notEnoughCoinsMessage": "Tes saldo actual è memia bass per quest maletg.",
     "modelTaglines": {
-      "runwareFluxSchnell": "Cel mai rapid model",
-      "runwareFluxKrea": "Rezultate creative și stilizate",
-      "runwareQwenImage": "Rezultate echilibrate, de înaltă calitate",
-      "google4": "Cel mai bun model AI pentru imagini",
-      "klingImageO1": "Editare de imagini cu control avansat",
-      "fluxKontent": "Flux Kontent optimizat pentru editare",
-      "runwareProvider": "Calitate echilibrată și generare fiabilă.",
-      "airProvider": "Nano Banana adaugă un stil jucăuș și culori vii.",
-      "googleProvider": "Google este optimizat pentru detalii rafinate.",
-      "klingaiProvider": "KlingAI este optimizat pentru editări controlate.",
-      "anthropicProvider": "Flux Claude pentru atmosfere și nuanțe subtile.",
-      "default": "Atinge pentru a explora motoarele disponibile."
+      "runwareFluxSchnell": "Il model il pli svelt",
+      "runwareFluxKrea": "Resultats creativs e stilisads",
+      "runwareQwenImage": "Resultats equilibrads e da buna qualitad",
+      "google4": "Il meglier model d'IA per maletgs",
+      "klingImageO1": "Modificaziun da maletgs cun controlla precisa",
+      "fluxKontent": "Flux Kontent optimà per modificaziuns",
+      "runwareProvider": "Qualitad equilibrada cun diffusiun fidabla.",
+      "airProvider": "Nano Banana porta in tun legher e vivid.",
+      "googleProvider": "Google optimà per detagls rafinads.",
+      "klingaiProvider": "KlingAI optimà per modificaziuns controlladas.",
+      "anthropicProvider": "Process da Claude per atmosferas finas.",
+      "default": "Smatga per scuvrir ils motors disponibels."
     }
   },
   "createImageGenerating": {
-    "stylePlaceholder": "stilul ales",
-    "sheetTitle": "Îți transformăm ideea în imagine",
-    "sheetSubtitle": "O scurtă pauză cât timp serverele integrează stilul {{style}} în descriere.",
+    "stylePlaceholder": "il stil tschernì",
+    "sheetTitle": "Tia visiun prenda furma",
+    "sheetSubtitle": "Ina curta pausa da cafè per il server, entant che nus integrain {{style}} en il prompt.",
     "phases": {
-      "blend": "Se aplică stilul {{style}}",
-      "paint": "Se creează scena",
-      "finish": "Se adaugă ultimele detalii"
+      "blend": "{{style}} vegn integrà",
+      "paint": "La scena vegn pitturada",
+      "finish": "Ils ultims detagls vegnan agiuntads"
     },
     "actions": {
-      "cancel": "Anulează",
-      "retry": "Încearcă din nou",
-      "close": "Închide"
+      "cancel": "Interrumper",
+      "retry": "Empruvar danovamain",
+      "close": "Serrar"
     },
     "errors": {
-      "restrictedTitle": "Conținut restricționat",
-      "genericTitle": "Generarea a eșuat",
-      "genericMessage": "Imaginea nu a putut fi generată."
+      "restrictedTitle": "Cuntegn restrenschì",
+      "genericTitle": "La generaziun n'è betg reussida",
+      "genericMessage": "Impussibel da generar il maletg."
     },
     "alerts": {
-      "saveFailedTitle": "Nu s-a putut salva",
-      "shareFailedTitle": "Nu s-a putut distribui",
-      "tryAgain": "Încearcă din nou.",
-      "savedTitle": "Salvat",
-      "savedMessage": "Imaginea a fost salvată în galerie.",
-      "permissionTitle": "Este necesară permisiunea",
-      "permissionMessage": "Permite accesul la stocare pentru a salva imaginile în galerie."
+      "saveFailedTitle": "Impussibel da memorisar",
+      "shareFailedTitle": "Impussibel da cundivider",
+      "tryAgain": "Emprova per plaschair anc ina giada.",
+      "savedTitle": "Memorisà",
+      "savedMessage": "Il maletg è vegnì memorisà en tia galaria.",
+      "permissionTitle": "Permissiun necessaria",
+      "permissionMessage": "Permetta l'access a la memoria per memorisar maletgs en tia galaria."
     },
     "result": {
-      "complete": "Totul este gata"
+      "complete": "Tut è pront"
     },
     "accessibility": {
-      "close": "Închide"
+      "close": "Serrar"
     }
   },
   "imageViewer": {
     "actions": {
-      "delete": "Șterge",
-      "edit": "Editează",
-      "save": "Salvează",
-      "share": "Distribuie"
+      "delete": "Stizzar",
+      "edit": "Modifitgar",
+      "save": "Memorisar",
+      "share": "Cundivider"
     },
     "alerts": {
-      "savedTitle": "Salvat",
-      "savedMessage": "Imaginea a fost salvată în galerie.",
-      "permissionTitle": "Este necesară permisiunea",
-      "permissionMessage": "Permite accesul la stocare pentru a salva imaginile în galerie.",
-      "saveFailedTitle": "Nu s-a putut salva",
-      "tryAgain": "Încearcă din nou."
+      "savedTitle": "Memorisà",
+      "savedMessage": "Il maletg è vegnì memorisà en tia galaria.",
+      "permissionTitle": "Permissiun necessaria",
+      "permissionMessage": "Permetta l'access a la memoria per memorisar maletgs en tia galaria.",
+      "saveFailedTitle": "Impussibel da memorisar",
+      "tryAgain": "Emprova per plaschair anc ina giada."
     },
     "accessibility": {
-      "close": "Închide",
-      "delete": "Șterge imaginea",
-      "edit": "Editează imaginea",
-      "save": "Salvează imaginea",
-      "share": "Distribuie imaginea"
+      "close": "Serrar",
+      "delete": "Stizzar il maletg",
+      "edit": "Modifitgar il maletg",
+      "save": "Memorisar il maletg",
+      "share": "Cundivider il maletg"
     }
   },
   "reportContent": {
-    "title": "Raportează conținutul AI",
-    "subtitle": "Spune-ne ce este în neregulă cu acest conținut generat.",
-    "privateDisclosure": "Prin trimitere, conținutul raportat va fi analizat din motive de siguranță.",
-    "accessibilityLabel": "Raportează conținutul AI",
+    "title": "Annunziar cuntegn d'IA",
+    "subtitle": "Di a nus tge che n'è betg en urden cun quest cuntegn generà.",
+    "privateDisclosure": "Cun trametter vegn il cuntegn annunzià controllà per motivs da segirezza.",
+    "accessibilityLabel": "Annunziar cuntegn d'IA",
     "reasons": {
-      "sexual": "Conținut sexual sau nuditate",
-      "violence_self_harm": "Violență sau autovătămare",
-      "hate_harassment": "Ura sau hărțuire",
-      "child_safety": "Problemă privind siguranța copiilor",
-      "scam_deceptive": "Înșelătorie sau conținut înșelător",
-      "other": "Altele"
+      "sexual": "Cuntegn sexual u nivadad",
+      "violence_self_harm": "Violenza u autolesiun",
+      "hate_harassment": "Odi u mulestaziun",
+      "child_safety": "Privel per la segirezza d'uffants",
+      "scam_deceptive": "Engion u cuntegn che maina en errur",
+      "other": "Auter"
     },
     "errors": {
-      "reasonRequired": "Alege un motiv înainte de trimitere.",
-      "submit": "Raportul nu a putut fi trimis. Încearcă din nou."
+      "reasonRequired": "Tscherna per plaschair in motiv avant che trametter.",
+      "submit": "Impussibel da trametter l'annunzia. Emprova per plaschair anc ina giada."
     },
     "success": {
-      "title": "Mulțumim. Raportul tău a fost trimis.",
-      "subtitle": "Vom folosi rapoartele pentru a îmbunătăți siguranța conținutului."
+      "title": "Grazia. Tia annunzia è vegnida tramessa.",
+      "subtitle": "Nus utilisain las annunzias per meglierar la segirezza dal cuntegn."
     },
     "actions": {
-      "report": "Raportează",
-      "submit": "Trimite raportul",
-      "done": "Gata"
+      "report": "Annunziar",
+      "submit": "Trametter l'annunzia",
+      "done": "Fatg"
     }
   },
   "studioHome": {
-    "headerTitle": "Studio de imagini",
+    "headerTitle": "Image Studio",
     "accessibility": {
-      "openMenu": "Deschide meniul",
-      "selectImages": "Selectează imaginile",
-      "exitSelection": "Ieși din selectare",
-      "deleteSelected": "Șterge imaginile selectate",
-      "selectToDelete": "Selectează imaginile de șters"
+      "openMenu": "Avrir il menu",
+      "selectImages": "Tscherner maletgs",
+      "exitSelection": "Bandunar la tscherna",
+      "deleteSelected": "Stizzar ils maletgs tschernids",
+      "selectToDelete": "Tscherner maletgs per stizzar"
     },
     "createCard": {
-      "title": "Creează din text",
-      "subtitle": "Introdu o descriere",
-      "cta": "Descrie și generează"
+      "title": "Crear ord text",
+      "subtitle": "Endatescha ina descripziun",
+      "cta": "Descriver e generar"
     },
     "editCard": {
-      "title": "Editor foto AI",
-      "subtitle": "Transformă și îmbunătățește cu AI",
-      "cta": "Editează cu AI"
+      "title": "Editur da fotos cun IA",
+      "subtitle": "Transfurmar e meglierar cun IA",
+      "cta": "Modifitgar cun IA"
     },
     "gallery": {
-      "title": "Galerie",
-      "empty": "Nu există încă imagini",
+      "title": "Galaria",
+      "empty": "Anc nagins maletgs",
       "selection": {
-        "enter": "Selectează imaginile",
-        "exit": "Ieși din selectare",
-        "deleteSelected": "Șterge imaginile selectate",
-        "selectForDelete": "Selectează imaginile de șters"
+        "enter": "Tscherner maletgs",
+        "exit": "Bandunar la tscherna",
+        "deleteSelected": "Stizzar ils maletgs tschernids",
+        "selectForDelete": "Tscherner maletgs per stizzar"
       }
     }
   },
@@ -602,7 +613,7 @@
         "workspaceLabel": "SPAZI DA LAVUR D'IA",
         "userPromptLabel": "DUMONDA DA L'UTILISADER",
         "aiTypingLabel": "L'IA SCRIVA",
-        "prompt": "Scriva ina resposta curtascha ad in client davart ina furniziun retardada.",
+        "prompt": "Scriva ina resposta curtaschaivla ad in client davart ina furniziun retardada.",
         "response": "Chau, grazia per tia pazienza. Tia furniziun po sa retardar in pau. Jau ta tegn al current.",
         "cards": {
           "doc": {
@@ -675,44 +686,44 @@
       }
     },
     "careView": {
-      "titlePrefix": "Descoperă",
-      "titleHighlight": "Studio de imagini",
-      "subtitle": "Creează și editează imagini cu AI direct în Cloud AI."
+      "titlePrefix": "Scuvra",
+      "titleHighlight": "Image Studio",
+      "subtitle": "Creescha e modifitgescha maletgs cun IA — directamain en Cloud AI."
     },
     "relaxView": {
-      "title": "Descoperă asistenții",
-      "titleHighlight": "Asistenți",
-      "subtitle": "Experți AI specializați, gata să te ajute în activitățile zilnice",
+      "title": "Scuvra tes",
+      "titleHighlight": "assistents d'IA",
+      "subtitle": "Spezialists d'IA, pronts da ta gidar en tes mintgadi",
       "cards": {
         "fitness": {
-          "title": "Antrenor de fitness",
-          "text": "Obiceiuri simple și antrenamente acasă."
+          "title": "Trenader da fitness",
+          "text": "Pitschnas disas e trenament a chasa."
         },
         "recipes": {
-          "title": "Mese și rețete",
-          "text": "Ce să gătești cu ingredientele pe care le ai."
+          "title": "Tratgas e retschetas",
+          "text": "Tge cuschinar, cun quai che ti has."
         },
         "travel": {
-          "title": "Asistent de călătorie",
-          "text": "Planuri simple și liste pentru bagaje."
+          "title": "Cumpogn da viadi",
+          "text": "Plans simpels e glistas da fardel."
         }
       }
     },
     "splash": {
       "title": "CLOUD AI",
-      "tagline": "SOLUȚII AI PENTRU COMPANII",
-      "description": "Dezvoltă-ți afacerea cu tehnologie AI de ultimă generație, creată pentru profesioniști și echipe.",
-      "stats": "Apreciat de peste 500.000 de utilizatori",
+      "tagline": "SOLUZIUNS D'IA PER INTERPRESAS",
+      "description": "Rinforza tia interpresa cun tecnologia d'intelligenza artifiziala da punta, concepida per professiunists e squadras.",
+      "stats": "Passa 500’000 utilisaders sa fidan da nus",
       "rating": "4,9 / 5",
-      "button": "Începe"
+      "button": "Cumenzar"
     },
     "buttons": {
-      "continue": "Continuă",
-      "start": "Să începem"
+      "continue": "Cuntinuar",
+      "start": "Cumenzain"
     },
     "v3": {
       "intent": {
-        "overline": "FASCHAI TES",
+        "overline": "SCO CHE TI VULS",
         "title": "Cun tge duai Cloud AI ta gidar?",
         "cta": "Cuntinuar"
       },
@@ -736,16 +747,16 @@
           "title": "Transfurmar patratgs en pleds",
           "subtitle": "Passa d'ina idea criva ad in text che tuna sco ti.",
           "beat1": "Furmar",
-          "beat2": "Perfezziunar",
+          "beat2": "Perfecziunar",
           "beat3": "Cundivider"
         },
         "create": {
           "focus": "CREAR MALETGS",
           "title": "Dar vita ad ideas",
-          "subtitle": "Descriva quai che ti t'imaginas, alura creescha e perfezzionescha en paucas secundas.",
+          "subtitle": "Descriva quai che ti t'imaginas, lura creescha e perfecziunescha en paucas secundas.",
           "beat1": "S'imaginar",
           "beat2": "Crear",
-          "beat3": "Perfezziunar"
+          "beat3": "Perfecziunar"
         },
         "plan": {
           "focus": "PLANISAR MES DI",
@@ -777,121 +788,133 @@
         "back": "Enavos",
         "continue": "Cuntinuar",
         "finish": "Scuvrir Premium"
+      },
+      "trial": {
+        "priceLine": "Lura {{price}} per onn. Ti pos annullar da tut temp.",
+        "title": "Nus ta envidain dad empruvar Cloud AI gratuitamain.",
+        "demoAsk": "Fa da mia skizza in placat cyberpunk",
+        "demoReply": "Quatter stils, pronts en paucas secundas.",
+        "noPayment": "Nagin pajament ussa",
+        "cta": "Empruvar per $0.00"
+      },
+      "reminder": {
+        "title": "Nus ta avisain avant che tia prova gratuita finescha",
+        "note": "Ti retschaivas in avis ditg avant che insatge vegn debità, uschia na vegns ti betg surprendì."
       }
     }
   },
   "coinStore": {
-    "title": "Obține credite",
-    "loading": "Se încarcă magazinul de credite…",
-    "balanceLabel": "Soldul tău actual este",
-    "balanceValue": "{{amount}} credite",
+    "title": "Obtegnair credits",
+    "loading": "Chargiar la butia da munaidas…",
+    "balanceLabel": "Tes saldo actual è",
+    "balanceValue": "{{amount}} credits",
     "history": {
-      "link": "Istoricul tranzacțiilor",
-      "alertTitle": "Istoric",
-      "alertBody": "Istoricul tranzacțiilor va fi disponibil în curând."
+      "link": "Cronologia da las transacziuns",
+      "alertTitle": "Cronologia",
+      "alertBody": "La cronologia da las transacziuns è prest disponibla."
     },
-    "noPacks": "Nu există pachete de credite disponibile. Verifică ID-ul ofertei RevenueCat.",
+    "noPacks": "Nagins pachets da munaidas disponibels. Controllescha l'ID da l'offerta RevenueCat.",
     "badges": {
-      "basic": "Pachet de bază",
-      "popular": "Cel mai popular",
-      "value": "Cel mai avantajos"
+      "basic": "Pachet da basa",
+      "popular": "Il pli popular",
+      "value": "Il meglier pretsch"
     },
     "pack": {
-      "creditsLabel": "{{credits}} credite",
-      "tokensLabel": "{{credits}} credite",
-      "defaultName": "Pachetul {{index}}",
+      "creditsLabel": "{{credits}} credits",
+      "tokensLabel": "{{credits}} credits",
+      "defaultName": "Pachet {{index}}",
       "unknownPrice": "USD —"
     },
     "premium": {
-      "title": "Treci la Premium",
-      "subtitle": "Acces și funcții nelimitate",
-      "cta": "Treci la Pro"
+      "title": "Midar a Premium",
+      "subtitle": "Access e funcziuns illimitads",
+      "cta": "Midar a Premium"
     },
-    "termsText": "Prin efectuarea unei achiziții, ești de acord cu",
-    "termsLink": "Termenii serviciului",
+    "termsText": "Cun far ina cumpra acceptas ti nossas",
+    "termsLink": "Cundiziuns da servetsch",
     "alerts": {
-      "initErrorTitle": "Eroare de inițializare",
-      "genericMessage": "Ceva nu a funcționat.",
-      "successTitle": "Succes",
-      "successMessage": "Creditele vor apărea în scurt timp.",
-      "purchaseFailedTitle": "Achiziția a eșuat",
-      "unknownError": "Eroare necunoscută"
+      "initErrorTitle": "Sbagl d'inizialisaziun",
+      "genericMessage": "Igl è succedì in sbagl.",
+      "successTitle": "Reussì",
+      "successMessage": "Ils credits cumparan en curt.",
+      "purchaseFailedTitle": "La cumpra n'è betg reussida",
+      "unknownError": "Sbagl nunenconuschent"
     }
   },
   "premium": {
     "badge": "PRO",
-    "requiredTitle": "Este necesar Premium",
-    "upgrade": "Treci la Pro",
-    "modelRequiredMessage": "Acest model necesită Premium. Treci la Premium pentru acces la GPT-5, Grok 4, Claude și alte modele avansate.",
-    "assistantsRequiredMessage": "Asistenții necesită Premium. Treci la Premium pentru acces la asistenți AI specializați în fitness, programare, scriere și multe altele.",
-    "assistantsTitle": "Este necesar Premium",
-    "assistantsMessage": "Asistenții necesită Premium. Treci la Premium pentru acces la asistenți AI specializați în fitness, programare, scriere și multe altele."
+    "requiredTitle": "Premium necessari",
+    "upgrade": "Midar a Premium",
+    "modelRequiredMessage": "Quest model dovra Premium. Mida a Premium per avair access a GPT-5, Grok 4, Claude ed ulteriurs models avanzads.",
+    "assistantsRequiredMessage": "Ils assistents dovran Premium. Mida a Premium per avair access ad assistents d'IA spezialisads per fitness, programmar, scriver e dapli.",
+    "assistantsTitle": "Premium necessari",
+    "assistantsMessage": "Ils assistents dovran Premium. Mida a Premium per avair access ad assistents d'IA spezialisads per fitness, programmar, scriver e dapli."
   },
   "paywall": {
     "modelsHeadline": "GPT-5.5, Grok, Gemini",
-    "close": "Închide ecranul de abonare",
-    "unavailableTitle": "Achizițiile nu sunt disponibile",
-    "unavailableMessage": "Facturarea Android nu este configurată încă.",
-    "restoreEmptyTitle": "Nu s-au găsit achiziții",
-    "restoreEmptyMessage": "Nu am găsit nicio achiziție activă care să poată fi restaurată pentru acest cont.",
-    "restoreFailedTitle": "Restaurarea a eșuat",
-    "restoreFailedMessage": "Achizițiile nu pot fi restaurate momentan.",
-    "productsUnavailableTitle": "Nu există planuri disponibile",
-    "productsUnavailableMessage": "Momentan nu există produse de abonament Android disponibile.",
-    "purchaseFailedTitle": "Achiziția a eșuat",
-    "purchaseFailedMessage": "Această achiziție nu poate fi finalizată momentan.",
-    "restore": "Restaurează",
-    "restoreRestoring": "Se restaurează…",
+    "close": "Serrar la pagina d'abunament",
+    "unavailableTitle": "Cumpras betg disponiblas",
+    "unavailableMessage": "La facturaziun d'Android n'è anc betg configurada.",
+    "restoreEmptyTitle": "Chattà naginas cumpras",
+    "restoreEmptyMessage": "Nus n'avain chattà naginas cumpras activas da restaurar per quest conto.",
+    "restoreFailedTitle": "La restauraziun n'è betg reussida",
+    "restoreFailedMessage": "Impussibel da restaurar las cumpras en quest mument.",
+    "productsUnavailableTitle": "Nagins plans disponibels",
+    "productsUnavailableMessage": "En quest mument n'èn nagins abunaments d'Android disponibels.",
+    "purchaseFailedTitle": "La cumpra n'è betg reussida",
+    "purchaseFailedMessage": "Impussibel da terminar questa cumpra en quest mument.",
+    "restore": "Restaurar",
+    "restoreRestoring": "Restaurar…",
     "features": {
-      "create": "Creează imagini și videoclipuri",
-      "search": "Caută pe web cu AI",
-      "talk": "Vorbește natural cu AI",
-      "imageStudio": "Primești {{credits}} credite pentru Studio de imagini {{period}}",
+      "create": "Crear maletgs e videos",
+      "search": "Tschertgar en il web cun IA",
+      "talk": "Discurrer natiralmain cun l'IA",
+      "imageStudio": "Survegnir {{credits}} credits per Image Studio {{period}}",
       "period": {
-        "weekly": "săptămânal",
-        "monthly": "lunar",
-        "yearly": "anual"
+        "weekly": "mintg'emna",
+        "monthly": "mintga mais",
+        "yearly": "mintg'onn"
       }
     },
     "freeTrial": {
-      "title": "Perioadă de probă gratuită",
-      "subtitle": "Probă gratuită de 3 zile"
+      "title": "Prova gratuita",
+      "subtitle": "Prova gratuita da 3 dis"
     },
     "badge": {
-      "bestOffer": "Cea mai bună ofertă"
+      "bestOffer": "La meglra offerta"
     },
     "plans": {
       "yearly": {
-        "title": "Anual",
-        "only": "Doar {{price}}",
-        "defaultPrice": "79,99 USD",
-        "defaultIntroPrice": "1,35 USD"
+        "title": "Annual",
+        "only": "Mo {{price}}",
+        "defaultPrice": "USD 79.99",
+        "defaultIntroPrice": "USD 1.35"
       },
       "monthly": {
-        "title": "Lunar",
-        "subtitle": "Anulezi oricând",
-        "defaultPrice": "19,99 USD"
+        "title": "Mensil",
+        "subtitle": "Annullar da tut temp",
+        "defaultPrice": "USD 19.99"
       },
       "weekly": {
-        "title": "Săptămânal",
-        "subtitle": "Anulezi oricând",
-        "defaultPrice": "9,99 USD",
-        "trialThen": "3 zile gratuit, apoi"
+        "title": "Emnil",
+        "subtitle": "Annullar da tut temp",
+        "defaultPrice": "USD 9.99",
+        "trialThen": "3 dis gratuit, lura"
       }
     },
     "frequency": {
-      "perWeek": "pe săptămână",
-      "perMonth": "pe lună"
+      "perWeek": "per emna",
+      "perMonth": "per mais"
     },
     "cta": "Cuntinuar",
     "ctaFreeTrial": "Empruvar gratuitamain",
     "legal": {
-      "terms": "Termeni",
-      "privacy": "Confidențialitate"
+      "terms": "Cundiziuns",
+      "privacy": "Protecziun da datas"
     },
     "premium": {
       "headline": "Tut l'IA premium en in plan",
-      "subtitleLine1": "Discuta, codescha, creescha e planisescha",
+      "subtitleLine1": "Discuta, programmescha, creescha e planisescha",
       "subtitleLine2": "cun models avanzads.",
       "enableTrial": "Activar la prova gratuita",
       "annual": "Annual",
@@ -899,13 +922,13 @@
       "year": "onn",
       "week": "emna",
       "termsOfUse": "Cundiziuns d'utilisaziun",
-      "privacyPolicy": "Politica da privacy"
+      "privacyPolicy": "Decleraziun da protecziun da datas"
     },
     "v3": {
       "eyebrow": "CLOUD AI PREMIUM",
       "trial": {
         "headline": "Debloccar tut las funcziuns premium",
-        "subtitle": "Ves exactamain tge che capita e cura.",
+        "subtitle": "Vesa exactamain tge che capita e cura.",
         "todayTitle": "Oz",
         "todayBody": "Deblochescha tut las funcziuns premium. Ussa na stos ti pajar nagut.",
         "checkTitle": "En 2 dis — regurdientscha",
@@ -920,9 +943,9 @@
       },
       "annual": {
         "headline": "Deblochescha in onn da Cloud AI",
-        "subtitle": "In plan per chat, maletgs ed agid AI spezialisà.",
+        "subtitle": "In plan per chat, maletgs ed agid spezialisà d'IA.",
         "todayTitle": "Oz — premium cumenza",
-        "todayBody": "Deblochescha immediatamain tut las funcziuns AI premium.",
+        "todayBody": "Deblochescha immediatamain tut las funcziuns premium d'IA.",
         "billingTitle": "Facturà annualmain",
         "billingBody": "{{price}} ta dat access per in onn entir.",
         "renewalTitle": "Sa renovescha mintg'onn",
@@ -933,462 +956,662 @@
     }
   },
   "chat": {
-    "messagePlaceholder": "Mesaj...",
-    "createImages": "Creează imagini",
-    "generateAiArtwork": "Generează artă cu AI",
-    "camera": "Încarcă fotografii",
-    "takeOrSelectPhotos": "Selectează fotografii",
-    "search": "Caută",
-    "findInformation": "Găsește informații",
-    "findRecentInfo": "Găsește informații recente",
-    "removeImage": "Elimină imaginea",
-    "messageInput": "Câmp pentru mesaj",
-    "clearInput": "Șterge textul introdus",
-    "quickActionsLabel": "Acțiuni rapide",
-    "hideQuickActions": "Ascunde acțiunile rapide",
-    "showQuickActions": "Afișează acțiunile rapide",
-    "startVoiceInput": "Pornește introducerea vocală",
-    "sendMessage": "Trimite mesajul",
-    "offline": "Fără conexiune",
-    "stop": "Oprește",
-    "streaming": "Se generează răspunsul…",
-    "closeRecorder": "Închide înregistrarea",
-    "insertTranscript": "Trimite",
-    "scrollToLatest": "Mergi la cel mai recent mesaj",
-    "copyMessage": "Copiază mesajul",
-    "copyMessageHint": "Copiază acest mesaj în clipboard",
-    "shareMessage": "Distribuie mesajul",
-    "shareMessageHint": "Distribuie acest mesaj",
-    "regenerateResponse": "Generează din nou răspunsul",
-    "regenerateResponseHint": "Generează un răspuns nou",
-    "copyCode": "Copiază codul",
-    "copied": "Copiat",
-    "image": "imagine",
-    "loading": "Se încarcă…",
-    "loadingChat": "Se încarcă chat-ul...",
-    "offlineBanner": "Nu ai conexiune la internet. Mesajele nu pot fi trimise.",
-    "offlineError": "Nu există conexiune la internet. Verifică conexiunea și încearcă din nou.",
-    "imagePickerErrorTitle": "Eroare la selectarea imaginii",
-    "imagePickerErrorMessage": "Fotografiile tale nu au putut fi accesate. Încearcă din nou.",
-    "messageTooLong": "Mesajul este prea lung ({{length}}). Limita este {{limit}}.",
-    "sendFailed": "Mesajul nu a putut fi trimis. Încearcă din nou.",
-    "modelNoImageSupport": "Modelul selectat nu acceptă imagini. Alege un alt model.",
-    "voiceStartFailed": "Introducerea vocală nu a putut fi pornită.",
-    "voiceNoSpeechDetected": "Nu a fost detectată nicio voce. Încearcă din nou.",
-    "emptyTitle": "Cu ce te pot ajuta?",
-    "emptySubtitle": "Începe o conversație cu AI",
+    "messagePlaceholder": "Messadi...",
+    "createImages": "Crear maletgs",
+    "generateAiArtwork": "Generar art cun IA",
+    "camera": "Chargiar si fotografias",
+    "takeOrSelectPhotos": "Tscherner fotografias",
+    "search": "Tschertgar",
+    "findInformation": "Chattar infurmaziuns",
+    "findRecentInfo": "Chattar infurmaziuns actualas",
+    "removeImage": "Allontanar il maletg",
+    "messageInput": "Champ da messadi",
+    "clearInput": "Stizzar l'endataziun",
+    "quickActionsLabel": "Acziuns sveltas",
+    "hideQuickActions": "Zuppentar las acziuns sveltas",
+    "showQuickActions": "Mussar las acziuns sveltas",
+    "startVoiceInput": "Cumenzar l'endataziun vocala",
+    "sendMessage": "Trametter il messadi",
+    "offline": "Senza connexiun",
+    "stop": "Fermar",
+    "streaming": "Generar la resposta…",
+    "closeRecorder": "Serrar la registraziun",
+    "insertTranscript": "Trametter",
+    "scrollToLatest": "Ir al messadi il pli nov",
+    "copyMessage": "Copiar il messadi",
+    "copyMessageHint": "Copiar quest messadi en la memoria intermediara",
+    "shareMessage": "Cundivider il messadi",
+    "shareMessageHint": "Cundivider quest messadi",
+    "regenerateResponse": "Generar danovamain la resposta",
+    "regenerateResponseHint": "Generar ina nova resposta",
+    "copyCode": "Copiar il code",
+    "copied": "Copià",
+    "image": "maletg",
+    "loading": "Chargiar…",
+    "loadingChat": "Chargiar il chat...",
+    "offlineBanner": "Nagina connexiun a l'internet. Ils messadis na pon betg vegnir tramess.",
+    "offlineError": "Nagina connexiun a l'internet. Controllescha per plaschair tia connexiun ed emprova anc ina giada.",
+    "imagePickerErrorTitle": "Sbagl tar la tscherna da maletgs",
+    "imagePickerErrorMessage": "Impussibel d'acceder a tias fotografias. Emprova per plaschair anc ina giada.",
+    "messageTooLong": "Il messadi è memia lung ({{length}}). La limita è {{limit}}.",
+    "sendFailed": "Il messadi n'ha betg pudì vegnir tramess. Emprova per plaschair anc ina giada.",
+    "modelNoImageSupport": "Il model tschernì na sustegna betg maletgs. Tscherna per plaschair in auter model.",
+    "voiceStartFailed": "Impussibel da cumenzar l'endataziun vocala.",
+    "voiceNoSpeechDetected": "Nagina vusch n'è vegnida renconuschida. Emprova per plaschair anc ina giada.",
+    "emptyTitle": "Co poss jau gidar?",
+    "emptySubtitle": "Cumenza ina conversaziun cun l'IA",
     "privateTitle": "Chat privat",
-    "privateSubtitle": "Acest chat nu va apărea în istoricul conversațiilor",
-    "startPrivateChat": "Începe un chat privat",
-    "endPrivateChat": "Încheie chat-ul privat",
+    "privateSubtitle": "Quest chat na cumpara betg en tia cronologia dals chats",
+    "startPrivateChat": "Cumenzar in chat privat",
+    "endPrivateChat": "Terminar il chat privat",
     "permissions": {
-      "photosTitle": "Este necesară permisiunea pentru fotografii",
-      "photosMessage": "Accesul la fotografii este necesar pentru a selecta imagini.",
-      "voiceTitle": "Sunt necesare permisiuni pentru voce",
-      "voiceMessage": "Accesul la microfon și recunoașterea vocală sunt necesare pentru folosirea vocii."
+      "photosTitle": "Access a las fotografias necessari",
+      "photosMessage": "L'access a las fotografias è necessari per tscherner maletgs.",
+      "voiceTitle": "Permissiuns per la vusch necessarias",
+      "voiceMessage": "Per utilisar la vusch è l'access al microfon ed a la renconuschientscha vocala necessari."
     },
     "activity": {
-      "analyzingImages": "Se analizează imaginile…",
-      "searching": "Se caută…",
-      "thinking": "Se analizează…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingImages": "Ils maletgs vegnan analisads…",
+      "searching": "Tschertgar…",
+      "thinking": "Patertgar…",
+      "analyzingDocuments": "Ils documents vegnan analisads…"
     },
     "webSearch": {
-      "title": "Căutare pe web",
-      "subtitle": "Găsește informații recente",
-      "label": "Căutare pe web",
-      "enable": "Activează căutarea pe web",
-      "disable": "Dezactivează căutarea pe web",
-      "toggleLabel": "Caută pe web"
+      "title": "Tschertga en il web",
+      "subtitle": "Chattar infurmaziuns actualas",
+      "label": "Tschertga en il web",
+      "enable": "Activar la tschertga en il web",
+      "disable": "Deactivar la tschertga en il web",
+      "toggleLabel": "Tschertgar en il web"
     },
     "studioBanner": {
-      "label": "Studio de imagini",
-      "title": "Creează rapid materiale vizuale.",
-      "subtitle": "Generează, perfecționează și publică materiale vizuale într-un singur loc.",
-      "cta": "Deschide"
+      "label": "Image Studio",
+      "title": "Creescha svelt material visual.",
+      "subtitle": "Generescha, rafinescha e publitgescha material visual en in lieu.",
+      "cta": "Avrir"
     },
     "quickActions": {
-      "createImages": "Creează imagini",
-      "openCamera": "Deschide camera",
-      "editImage": "Editează imaginea",
-      "startVoice": "Pornește vocea",
-      "assistants": "Asistenți"
+      "createImages": "Crear maletgs",
+      "openCamera": "Avrir la camera",
+      "editImage": "Modifitgar in maletg",
+      "startVoice": "Endataziun vocala",
+      "assistants": "Assistents"
     },
-    "listening": "Ascult…",
-    "startRecording": "Pornește înregistrarea…",
+    "listening": "Tadlar…",
+    "startRecording": "Cumenzar la registraziun…",
     "assistantHeader": {
-      "unavailableTitle": "Asistent indisponibil",
-      "unavailableDescription": "Acest asistent nu a putut fi încărcat. Încearcă din nou.",
-      "ready": "Gata să te ajute"
+      "unavailableTitle": "Assistent betg disponibel",
+      "unavailableDescription": "Nus n'avain betg pudì chargiar quest assistent. Emprova per plaschair anc ina giada.",
+      "ready": "Pront da gidar"
     },
     "actions": {
-      "copy": "Copiază",
-      "share": "Distribuie",
-      "regenerate": "Generează din nou",
-      "retryFromHere": "Reîncearcă de aici",
-      "report": "Raportează",
-      "cancel": "Anulează"
+      "copy": "Copiar",
+      "share": "Cundivider",
+      "regenerate": "Generar danovamain",
+      "retryFromHere": "Empruvar danovamain a partir da qua",
+      "report": "Annunziar",
+      "cancel": "Interrumper"
     },
     "markdown": {
-      "copy": "Copiază",
-      "copied": "Copiat",
-      "table": "TABEL",
-      "watchVideo": "Urmărește videoclipul",
+      "copy": "Copiar",
+      "copied": "Copià",
+      "table": "TABELLA",
+      "watchVideo": "Guardar il video",
       "wikipedia": "Wikipedia",
       "link": "Link",
-      "note": "Notă",
-      "warning": "Avertisment",
-      "tip": "Sfat"
+      "note": "Remartga",
+      "warning": "Avertiment",
+      "tip": "Cussegl"
     },
-    "messageActionTitle": "Mesaj",
+    "messageActionTitle": "Messadi",
     "status": {
-      "sending": "Se trimite…",
-      "failed": "Eșuat",
-      "sent": "Trimis"
+      "sending": "Trametter…",
+      "failed": "Betg reussì",
+      "sent": "Tramess"
     },
     "suggestions": {
-      "writeStory": "Scrie o poveste creativă",
-      "writeStorySubtitle": "despre o aventură magică",
-      "planTravel": "Planifică un itinerar de călătorie",
-      "planTravelSubtitle": "pentru o vacanță de neuitat",
-      "explainConcept": "Explică acest concept",
-      "explainConceptSubtitle": "în cuvinte simple",
-      "planDay": "Planifică-mi ziua",
-      "planDaySubtitle": "cu sfaturi pentru productivitate"
+      "writeStory": "Scriva ina istorgia creativa",
+      "writeStorySubtitle": "davart in'aventura magica",
+      "planTravel": "Planisescha in itinerari da viadi",
+      "planTravelSubtitle": "per vacanzas extraordinarias",
+      "explainConcept": "Explitga quest concept",
+      "explainConceptSubtitle": "cun pleds simpels",
+      "planDay": "Planisescha mes di",
+      "planDaySubtitle": "cun cussegls per la productivitad"
     },
     "home": {
-      "eyebrow": "Alege un subiect",
-      "title": "Ce vrei să faci?",
-      "subtitle": "Alege o direcție, apoi începe cu o solicitare clară.",
-      "pickPromptTitle": "Alege o sugestie pentru început",
-      "changeTopic": "Alege alt subiect",
+      "eyebrow": "Tscherna in tema",
+      "title": "Tge vuls ti far?",
+      "subtitle": "Tscherna ina direcziun e cumenza lura cun in bun prompt.",
+      "pickPromptTitle": "Tscherna in prompt per cumenzar",
+      "changeTopic": "Tscherna in auter tema",
       "intents": {
-        "summarize": "Rezumă un text",
-        "summarizeShort": "Rezumă",
-        "summarizeHint": "Articole, notițe, înregistrări vocale și conversații lungi",
-        "plan": "Creează un plan",
-        "planHint": "Călătorii, rutine, bugete, termene-limită și schimbări importante",
-        "brainstorm": "Generează idei",
-        "brainstormHint": "Idei, oferte, nume, conținut și proiecte secundare",
-        "analyze": "Analizează date",
-        "analyzeHint": "Cheltuieli, feedback, indicatori, obiceiuri și performanță"
+        "summarize": "Resumar in text",
+        "summarizeShort": "Resumar",
+        "summarizeHint": "Artitgels, notizias, memos vocals, lungas discussiuns",
+        "plan": "Far in plan",
+        "planHint": "Viadis, rutinas, budgets, termins, midadas en la vita",
+        "brainstorm": "Rimnar ideas",
+        "brainstormHint": "Ideas, offertas, nums, cuntegns, projects supplementars",
+        "analyze": "Analisar datas",
+        "analyzeHint": "Expensas, reacziuns, indicaturs, disas, prestaziun"
       },
       "prompts": {
         "summarize": {
-          "founderBriefTitle": "Creează un rezumat pentru fondator",
-          "founderBriefSubtitle": "Evidențiază riscurile principale, deciziile și pașii următori.",
-          "classNotesTitle": "Organizează-mi notițele de studiu",
-          "classNotesSubtitle": "Transformă notițele neordonate într-un ghid clar de studiu.",
-          "meetingHandoffTitle": "Scrie un rezumat de predare",
-          "meetingHandoffSubtitle": "Util după ședințe, apeluri sau conversații interne lungi.",
-          "longArticleTitle": "Rezumă rapid acest articol",
-          "longArticleSubtitle": "Transformă un articol lung în concluzii clare și concise."
+          "founderBriefTitle": "Scriva ina resumaziun per fundaturs",
+          "founderBriefSubtitle": "Mussa ils ristgs principals, las decisiuns ed ils proxims pass.",
+          "classNotesTitle": "Fa urden en mias notizias da studi",
+          "classNotesSubtitle": "Transfurma notizias crivas en in guid da studi cler.",
+          "meetingHandoffTitle": "Scriva ina resumaziun per la surdada",
+          "meetingHandoffSubtitle": "Util suenter sesidas, telefonadas u lungas discussiuns internas.",
+          "longArticleTitle": "Resumescha svelt quest artitgel",
+          "longArticleSubtitle": "Concentrescha in artitgel lung en puncts principals precis."
         },
         "plan": {
-          "energyResetTitle": "Creează un plan de revitalizare pentru 14 zile",
-          "energyResetSubtitle": "Un plan realist pentru somn, alimentație, mișcare și concentrare.",
-          "mealPlanTitle": "Planifică mese pe care chiar le voi găti",
-          "mealPlanSubtitle": "Practice, accesibile și bazate pe ingredientele pe care le am.",
-          "cityMoveTitle": "Planifică-mi mutarea într-un oraș nou",
-          "cityMoveSubtitle": "Împarte planul în calendar, buget, locuință și sarcini administrative.",
-          "tripEscapeTitle": "Planifică o escapadă memorabilă de weekend",
-          "tripEscapeSubtitle": "Ceva mai bun decât un itinerar obișnuit."
+          "energyResetTitle": "Fa in plan da 14 dis per novas energias",
+          "energyResetSubtitle": "In plan realistic per il sien, la nutriziun, il moviment e la concentraziun.",
+          "mealPlanTitle": "Planisescha tratgas che jau cuschin propi",
+          "mealPlanSubtitle": "Pratic, bunmartgà e basà sin quai che jau hai.",
+          "cityMoveTitle": "Planisescha mia midada en ina nova citad",
+          "cityMoveSubtitle": "Divida tut en plan da temp, budget, abitaziun e lavurs administrativas.",
+          "tripEscapeTitle": "Planisescha in fin d'emna memorabel",
+          "tripEscapeSubtitle": "Insatge meglier ch'in itinerari da standard."
         },
         "brainstorm": {
-          "sideHustleTitle": "Găsește o sursă realistă de venit suplimentar",
-          "sideHustleSubtitle": "Idei pe care le pot începe în timp ce lucrez cu normă întreagă.",
-          "brandAngleTitle": "Găsește o direcție memorabilă pentru brand",
-          "brandAngleSubtitle": "Utilă pentru produse, creatori, agenții sau newslettere.",
-          "socialSeriesTitle": "Creează o serie de conținut",
-          "socialSeriesSubtitle": "Un concept suficient de consecvent pentru a dezvolta o audiență.",
-          "datingIdeasTitle": "Propune idei noi",
-          "datingIdeasSubtitle": "Întâlniri, cadouri, surprize sau evenimente cu adevărat speciale."
+          "sideHustleTitle": "Chatta in guadogn supplementar realistic",
+          "sideHustleSubtitle": "Ideas che jau poss cumenzar sper ina plazza a temp cumplain.",
+          "brandAngleTitle": "Chatta in'idea da marca memorabla",
+          "brandAngleSubtitle": "Util per products, creaturs, agenturas u fegls d'infurmaziun.",
+          "socialSeriesTitle": "Inventa ina seria da cuntegns",
+          "socialSeriesSubtitle": "Insatge avunda regular per rimnar in public.",
+          "datingIdeasTitle": "Chatta novas ideas",
+          "datingIdeasSubtitle": "Rendez-vous, regals, surpraisas u eveniments plain attenziun."
         },
         "analyze": {
-          "spendingLeaksTitle": "Descoperă unde îmi pierd banii",
-          "spendingLeaksSubtitle": "Arată tiparele, punctele slabe și cele mai ușoare îmbunătățiri.",
-          "customerFeedbackTitle": "Transformă feedbackul în priorități",
-          "customerFeedbackSubtitle": "Grupează cererile și reclamațiile după urgență și impact.",
-          "habitPatternsTitle": "Identifică tipare în obiceiurile mele",
-          "habitPatternsSubtitle": "Util pentru antrenamente, somn, jurnal sau monitorizarea concentrării.",
-          "metricsStoryTitle": "Explică ce înseamnă cifrele",
-          "metricsStorySubtitle": "Mai multe informații utile, mai puțin zgomot în tabele."
+          "spendingLeaksTitle": "Chatta nua che mes daners svaneschan",
+          "spendingLeaksSubtitle": "Mussa musters, puncts flaivels e l'emprim las meglieraziuns las pli simplas.",
+          "customerFeedbackTitle": "Transfurma reacziuns en prioritads",
+          "customerFeedbackSubtitle": "Gruppescha giavischs, reclamaziuns, urgenza ed effect.",
+          "habitPatternsTitle": "Chatta musters en mias disas",
+          "habitPatternsSubtitle": "Util per trenaments, sien, diari u protocols da concentraziun.",
+          "metricsStoryTitle": "Explitga tge che las cifras muntan",
+          "metricsStorySubtitle": "Dapli essenzial, main canera da tabellas."
         }
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Chargiar si ina datoteca",
+      "supportedTypes": "PDF, DOCX, TXT u CSV",
+      "failed": "Chargiar si n'è betg reussì",
+      "retry": "Chargiar si danovamain",
+      "retryShort": "Danovamain",
+      "remove": "Allontanar la datoteca",
+      "pickerErrorTitle": "Impussibel d'avrir las datotecas",
+      "pickerErrorMessage": "Emprova per plaschair da tscherner danovamain il document.",
+      "tooMany": "Ti pos agiuntar fin a 3 documents per messadi.",
+      "tooLarge": "Mintga document sto avair 10 MB u main.",
+      "empty": "Il document tschernì è vid.",
+      "unsupported": "Prenda ina datoteca PDF, DOCX, TXT u CSV.",
+      "invalidTitle": "Datoteca betg sustegnida",
+      "pasteFailedTitle": "Impussibel d'agiuntar il text encollà",
+      "pasteFailedMessage": "Tes text è restà en il champ da messadi.",
+      "waitUntilReady": "Spetga per plaschair fin che tes documents èn chargiads si.",
+      "encrypted": "Quest PDF è protegì cun in pled-clav. Chargia si ina copia senza pled-clav.",
+      "unsupportedDocument": "Questa datoteca n'è betg legibla u ses cuntegn na vegn betg sustegnì. Prenda ina datoteca PDF, DOCX, TXT u CSV.",
+      "tooManyPages": "Quest PDF sto vegnir dividì en datotecas da maximalmain 100 paginas.",
+      "noReadableText": "I n'è vegnì chattà nagin text legibel. PDFs scannads dovran OCR; chargia si ina copia cun text.",
+      "pastedTextName": "Text encollà",
+      "badge": "DOC",
+      "untitled": "Document"
     }
   },
   "imageUpload": {
     "required": " *",
-    "processing": "Se procesează...",
-    "tapToUploadImage": "Atinge pentru a încărca o imagine"
+    "processing": "Elavurar...",
+    "tapToUploadImage": "Smatga per chargiar si in maletg"
   },
   "imageGridSelector": {
     "required": " *",
-    "processing": "Se procesează...",
-    "camera": "Încarcă fotografii",
-    "library": "Bibliotecă"
+    "processing": "Elavurar...",
+    "camera": "Chargiar si fotografias",
+    "library": "Biblioteca"
   },
   "common": {
     "ok": "OK",
-    "retry": "Încearcă din nou",
-    "cancel": "Anulează",
-    "allow": "Permite",
-    "notNow": "Nu acum",
-    "openSettings": "Deschide setările",
-    "close": "Închide",
-    "save": "Salvează",
-    "tryAgain": "Încearcă din nou"
+    "retry": "Empruvar danovamain",
+    "cancel": "Interrumper",
+    "allow": "Permetter",
+    "notNow": "Betg ussa",
+    "openSettings": "Avrir ils parameters",
+    "close": "Serrar",
+    "save": "Memorisar",
+    "tryAgain": "Empruvar anc ina giada"
   },
   "rateUs": {
-    "title": "Îți place Cloud AI?",
-    "subtitle": "Feedbackul tău ne ajută să îmbunătățim aplicația. Ne poți acorda o evaluare în App Store?",
-    "rateNow": "Evaluează acum",
-    "maybeLater": "Poate mai târziu",
-    "dontAskAgain": "Nu mai întreba"
+    "title": "Ta plai Cloud AI?",
+    "subtitle": "Tia opiniun ans gida da meglierar l'app. Vuls ti ans dar ina valitaziun en l'App Store?",
+    "rateNow": "Valitar ussa",
+    "maybeLater": "Forsa pli tard",
+    "dontAskAgain": "Betg pli dumandar"
   },
   "oneTimeOffer": {
-    "title": "Ofertă unică",
-    "discount": "REDUCERE {{percent}}%",
-    "subtitle": "Această ofertă nu va mai apărea.",
+    "title": "Offerta unica",
+    "discount": "{{percent}}% RABAT",
+    "subtitle": "Ti na vegns betg pli a vesair questa offerta.",
     "badgeLine1": "Exclusiv",
-    "badgeLine2": "Ofertă unică",
-    "upgradeNow": "Treci la Premium acum pentru {{price}}",
-    "loadingPrice": "Se încarcă...",
-    "termsOfUse": "Termeni de utilizare",
-    "privacyPolicy": "Politica de confidențialitate",
-    "accessTitle": "Acces nelimitat la",
-    "accessSubtitle": "GPT, Gemini și Grok 4",
+    "badgeLine2": "Offerta unica",
+    "upgradeNow": "Midar ussa a Premium per {{price}}",
+    "loadingPrice": "Chargiar...",
+    "termsOfUse": "Cundiziuns d'utilisaziun",
+    "privacyPolicy": "Decleraziun da protecziun da datas",
+    "accessTitle": "Access illimità a",
+    "accessSubtitle": "GPT, Gemini e Grok 4",
     "features": {
-      "unlimitedGPT4": "Acces nelimitat la GPT-4",
-      "geminiPro": "Acces la Gemini Pro",
-      "grokInsights": "Folosește Grok pentru informații actuale",
-      "priorityAccess": "Acces prioritar și răspunsuri mai rapide"
+      "unlimitedGPT4": "Access illimità a GPT-4",
+      "geminiPro": "Access a Gemini Pro",
+      "grokInsights": "Utilisescha Grok per novas perspectivas",
+      "priorityAccess": "Access prioritar e respostas pli sveltas"
     },
-    "bestValue": "Cel mai avantajos",
-    "annualPremium": "Premium anual",
-    "oneTimePayment": "Plată unică",
-    "wasPrice": "în loc de",
-    "continue": "Continuă",
-    "restore": "Restaurează",
-    "terms": "Termeni",
-    "privacy": "Confidențialitate",
-    "successTitle": "Succes!",
-    "successMessage": "Îți mulțumim pentru achiziție! Bucură-te de acces Premium în următoarele 12 luni.",
-    "errorTitle": "Achiziția a eșuat",
-    "errorMessage": "Ceva nu a funcționat. Încearcă din nou.",
-    "restoreSuccessTitle": "Restaurat",
-    "restoreSuccessMessage": "Achizițiile tale au fost restaurate.",
-    "restoreErrorTitle": "Restaurarea a eșuat",
-    "restoreErrorMessage": "Nu s-au găsit achiziții de restaurat.",
-    "unavailableTitle": "Achizițiile nu sunt disponibile",
-    "unavailableMessage": "Facturarea Android nu este configurată încă."
+    "bestValue": "Il meglier pretsch",
+    "annualPremium": "Premium annual",
+    "oneTimePayment": "Pajament unic",
+    "wasPrice": "avant",
+    "continue": "Cuntinuar",
+    "restore": "Restaurar",
+    "terms": "Cundiziuns",
+    "privacy": "Protecziun da datas",
+    "successTitle": "Reussì!",
+    "successMessage": "Grazia fitg per tia cumpra! Gauda l'access Premium durant ils proxims 12 mais.",
+    "errorTitle": "La cumpra n'è betg reussida",
+    "errorMessage": "Igl è succedì in sbagl. Emprova per plaschair anc ina giada.",
+    "restoreSuccessTitle": "Restaurà",
+    "restoreSuccessMessage": "Tias cumpras èn vegnidas restauradas.",
+    "restoreErrorTitle": "La restauraziun n'è betg reussida",
+    "restoreErrorMessage": "Chattà naginas cumpras da restaurar.",
+    "unavailableTitle": "Cumpras betg disponiblas",
+    "unavailableMessage": "La facturaziun d'Android n'è anc betg configurada."
   },
   "rewards": {
     "header": {
-      "title": "Recompense",
-      "openMenu": "Deschide meniul",
-      "goBack": "Înapoi"
+      "title": "Recumpensas",
+      "openMenu": "Avrir il menu",
+      "goBack": "Enavos"
     },
     "pointsHero": {
-      "totalBalance": "SOLD TOTAL",
-      "seeYourRewards": "Vezi recompensele"
+      "totalBalance": "SALDO TOTAL",
+      "seeYourRewards": "Guardar tias recumpensas"
     },
     "streakTracker": {
-      "title": "Serie zilnică",
-      "subtitle": "Continuă tot așa! Te descurci excelent.",
-      "days": "Zile",
-      "prize": "Premiu",
-      "dayLabel": "Ziua {{number}}",
-      "nextReward": "Următoarea recompensă: {{amount}} peste {{time}}",
-      "coins": "Monede"
+      "title": "Seria dal di",
+      "subtitle": "Fa vinavant uschia! Ti es en plaina furma.",
+      "days": "Dis",
+      "prize": "Premi",
+      "dayLabel": "Di {{number}}",
+      "nextReward": "Proxima recumpensa: {{amount}} en {{time}}",
+      "coins": "Munaidas"
     },
     "sections": {
-      "availableQuests": "Misiuni disponibile",
-      "completedQuests": "Misiuni finalizate",
-      "availableRewards": "Recompense disponibile",
-      "needsMoreCoins": "Necesită mai multe monede"
+      "availableQuests": "Missiuns disponiblas",
+      "completedQuests": "Missiuns accumplidas",
+      "availableRewards": "Recumpensas disponiblas",
+      "needsMoreCoins": "Dovra dapli munaidas"
     },
     "balances": {
-      "rewardCoins": "Monede de recompensă",
-      "imageCredits": "Credite pentru imagini"
+      "rewardCoins": "Munaidas da recumpensa",
+      "imageCredits": "Credits per maletgs"
     },
     "rewardsList": {
       "rewardTitles": {
-        "imageCredits50": "50 de credite pentru imagini",
-        "imageCredits200": "200 de credite pentru imagini",
-        "imageCredits600": "600 de credite pentru imagini",
-        "weeklyPremium": "Premium săptămânal",
-        "secretBox": "Cutie secretă"
+        "imageCredits50": "50 credits per maletgs",
+        "imageCredits200": "200 credits per maletgs",
+        "imageCredits600": "600 credits per maletgs",
+        "weeklyPremium": "Premium per ina emna",
+        "secretBox": "Stgatla secreta"
       },
       "rewardDescriptions": {
-        "secretBox": "Conține recompense-surpriză"
+        "secretBox": "Cuntegna recumpensas misteriusas"
       },
       "alerts": {
-        "comingSoonTitle": "În curând",
-        "comingSoonMessage": "Această recompensă nu este disponibilă încă.",
-        "notEnoughCoinsTitle": "Nu ai suficiente monede",
-        "notEnoughCoinsMessage": "Ai nevoie de mai multe monede de recompensă pentru a debloca această recompensă.",
-        "errorTitle": "Eroare",
-        "couldNotOpenBox": "Cutia nu a putut fi deschisă.",
-        "couldNotRedeem": "Recompensa nu a putut fi revendicată. Încearcă din nou.",
-        "mysteryReward": "Recompensă-surpriză"
+        "comingSoonTitle": "Prest disponibel",
+        "comingSoonMessage": "Questa recumpensa n'è anc betg disponibla.",
+        "notEnoughCoinsTitle": "Betg avunda munaidas",
+        "notEnoughCoinsMessage": "Ti dovras dapli munaidas da recumpensa per debloccar questa recumpensa.",
+        "errorTitle": "Sbagl",
+        "couldNotOpenBox": "Impussibel d'avrir la stgatla.",
+        "couldNotRedeem": "Impussibel da far valair la recumpensa. Emprova per plaschair anc ina giada.",
+        "mysteryReward": "Recumpensa misteriusa"
       }
     },
     "quests": {
       "dailyLogin": {
-        "title": "Conectare zilnică",
-        "description": "Deschide aplicația astăzi pentru a-ți păstra seria",
-        "message": "Această misiune este finalizată automat când deschizi aplicația în fiecare zi."
+        "title": "Visita quotidiana",
+        "description": "Avra oz l'app per mantegnair tia seria",
+        "message": "Questa missiun vegn accumplida automaticamain, sche ti avras l'app mintga di."
       },
       "shareFacebook": {
-        "title": "Distribuie pe Facebook",
-        "description": "Publică despre noi pe Facebook"
+        "title": "Cundivider sin Facebook",
+        "description": "Publitgescha insatge davart nus sin Facebook"
       },
       "shareTwitter": {
-        "title": "Distribuie pe Twitter",
-        "description": "Scrie pe Twitter despre experiența ta"
+        "title": "Cundivider sin Twitter",
+        "description": "Raquinta tia experientscha sin Twitter"
       },
       "shareInstagram": {
-        "title": "Distribuie pe Instagram",
-        "description": "Distribuie o poveste sau o postare"
+        "title": "Cundivider sin Instagram",
+        "description": "Cundivida ina istorgia u ina publicaziun"
       },
       "shareExperience": {
-        "title": "Împărtășește-ți experiența",
-        "description": "Spune-le prietenilor de ce îți place aplicația"
+        "title": "Cundivider tia experientscha",
+        "description": "Di a tes amis pertge che l'app ta plai"
       },
       "share": {
-        "genericMessage": "Folosesc această aplicație AI pentru chat și generarea de imagini. Încearc-o: {{url}}",
-        "facebookQuote": "Încearcă această aplicație AI!",
-        "twitterText": "Încerc această aplicație AI și este foarte interesantă.",
-        "instagramMessage": "Încearcă această aplicație AI: {{url}}"
+        "genericMessage": "Jau utilisesch quest'app d'IA per chattar e generar maletgs. Guarda qua: {{url}}",
+        "facebookQuote": "Guarda quest'app d'IA!",
+        "twitterText": "Jau emprov quest'app d'IA, ella è propi fantastica.",
+        "instagramMessage": "Guarda quest'app d'IA: {{url}}"
       },
       "store": {
-        "errorTitle": "Eroare",
-        "errorMessage": "Pagina magazinului nu a putut fi deschisă."
+        "errorTitle": "Sbagl",
+        "errorMessage": "Impussibel d'avrir la pagina en la butia d'apps."
       }
     },
     "modals": {
       "questCompleted": {
-        "title": "Misiune finalizată",
-        "description": "Misiune finalizată",
-        "points": "+{{points}} puncte",
-        "close": "Închide"
+        "title": "Missiun accumplida",
+        "description": "La missiun è accumplida",
+        "points": "+{{points}} puncts",
+        "close": "Serrar"
       },
       "rewardSuccess": {
-        "error": "EROARE",
-        "success": "SUCCES",
-        "somethingWentWrong": "Ceva nu a funcționat",
-        "rewardUnlocked": "Recompensă deblocată",
-        "credits": "Credite",
-        "close": "Închide",
-        "okay": "Bine"
+        "error": "SBAGL",
+        "success": "REUSSÌ",
+        "somethingWentWrong": "Igl è succedì in sbagl",
+        "rewardUnlocked": "Recumpensa debloccada",
+        "credits": "Credits",
+        "close": "Serrar",
+        "okay": "OK"
       },
       "secretBox": {
-        "pill": "CUTIE SECRETĂ",
-        "rewardUnlocked": "RECOMPENSĂ DEBLOCATĂ",
-        "shufflingRewards": "SE AMESTECĂ RECOMPENSELE...",
-        "imageCreditsAdded": "Creditele pentru imagini au fost adăugate în cont",
-        "continue": "Continuă",
-        "revealing": "Se dezvăluie...",
+        "pill": "STGATLA SECRETA",
+        "rewardUnlocked": "RECUMPENSA DEBLOCCADA",
+        "shufflingRewards": "MASCHADAR LAS RECUMPENSAS...",
+        "imageCreditsAdded": "Credits per maletgs agiuntads a tes conto",
+        "continue": "Cuntinuar",
+        "revealing": "Palesar...",
         "prizeTiers": {
-          "lucky": "NOROCOS",
+          "lucky": "FORTUNÀ",
           "pro": "PRO",
-          "elite": "ELITĂ",
+          "elite": "ELITA",
           "mythic": "MITIC"
         }
       }
     },
     "checkIn": {
-      "title": "Retira tes daners dal di",
+      "title": "Retira tias munaidas dal di",
       "subtitle": "Turna mintga di — il premi crescha.",
       "cta": "Retirar",
-      "claimed": "Retschavì! +{{amount}} daners",
+      "claimed": "Retschavì! +{{amount}} munaidas",
       "later": "Pli tard"
+    },
+    "button": {
+      "title": "Recumpensas",
+      "subtitle": "Bonus ed avantatgs dal di"
     }
   },
   "app": {
-    "version": "Versiunea {{version}}",
-    "offlineBanner": "Nu ai conexiune la internet",
+    "version": "Versiun {{version}}",
+    "offlineBanner": "Ti es senza connexiun",
     "launch": {
-      "accessibilityLabel": "Se pornește Cloud AI",
+      "accessibilityLabel": "Cloud AI vegn lantschà",
       "title": "CLOUD AI",
-      "subtitle": "AI, gata când ești și tu"
+      "subtitle": "IA, pronta cura che ti vuls",
+      "closePreview": "Serrar la prevista dal visur da partenza"
     },
     "errors": {
-      "modelsLoadTitle": "Modelele nu au putut fi încărcate",
-      "modelsLoadMessage": "Modelele AI nu au putut fi încărcate. Aplicația va folosi modelele implicite. Verifică conexiunea la internet.",
-      "modelsLoadTimeout": "Încărcarea modelelor a durat prea mult. Aplicația va folosi modelele implicite. Încearcă din nou.",
-      "modelsLoadNetwork": "Nu există conexiune la internet. Aplicația va folosi modelele implicite. Verifică conexiunea.",
-      "deviceIdTitle": "Eroare de inițializare",
-      "deviceIdMessage": "ID-ul dispozitivului nu a putut fi inițializat. Este posibil ca unele funcții să nu funcționeze corect.",
-      "storageTitle": "Eroare de stocare",
-      "storageMessage": "Stocarea locală nu a putut fi accesată. Este posibil ca unele funcții să nu funcționeze corect.",
-      "crashTitle": "Ceva nu a funcționat.",
-      "crashSubtitle": "Încearcă din nou.",
-      "crashLabel": "Aplicația s-a închis neașteptat"
+      "modelsLoadTitle": "Impussibel da chargiar ils models",
+      "modelsLoadMessage": "Impussibel da chargiar ils models d'IA. L'app utilisescha ils models da standard. Controllescha per plaschair tia connexiun a l'internet.",
+      "modelsLoadTimeout": "Il chargiar dals models ha durà memia ditg. L'app utilisescha ils models da standard. Emprova per plaschair anc ina giada.",
+      "modelsLoadNetwork": "Nagina connexiun a l'internet. L'app utilisescha ils models da standard. Controllescha per plaschair tia connexiun.",
+      "deviceIdTitle": "Sbagl d'inizialisaziun",
+      "deviceIdMessage": "Impussibel d'inizialisar l'ID da l'apparat. Intginas funcziuns na funcziunan eventualmain betg correctamain.",
+      "storageTitle": "Sbagl da la memoria",
+      "storageMessage": "Impussibel d'acceder a la memoria locala. Intginas funcziuns na funcziunan eventualmain betg correctamain.",
+      "crashTitle": "Igl è succedì in sbagl.",
+      "crashSubtitle": "Emprova per plaschair anc ina giada.",
+      "crashLabel": "L'app è sa serrada nunspetgadamain"
     },
     "proxyErrors": {
-      "genericTitle": "Ceva nu a funcționat",
-      "genericMessage": "Încearcă din nou.",
-      "rateLimitTitle": "Prea multe solicitări",
-      "rateLimitMessage": "Procesăm multe solicitări. Încearcă din nou peste câteva momente.",
-      "rateLimitRetryAfter": "Procesăm multe solicitări. Încearcă din nou peste aproximativ {{seconds}} secunde.",
-      "restrictedTitle": "Conținut restricționat",
-      "restrictedMessage": "Această solicitare a fost blocată de filtrele de siguranță.",
-      "insufficientCoinsTitle": "Nu ai suficiente monede",
-      "insufficientCoinsMessage": "Soldul tău actual este prea mic pentru această solicitare.",
-      "imageUnavailableTitle": "Imagine indisponibilă",
-      "imageUnavailableMessage": "Fișierul imaginii generate este temporar indisponibil. Încearcă din nou.",
-      "authorizationTitle": "Problemă de autorizare",
-      "authorizationMessage": "Contul tău nu a putut fi verificat. Încearcă din nou.",
-      "serverTitle": "Problemă temporară a serverului",
-      "serverMessage": "Serverele noastre au întâmpinat o problemă. Încearcă din nou în scurt timp.",
-      "timeoutTitle": "Durează prea mult",
-      "timeoutMessage": "Solicitarea a expirat. Încearcă din nou.",
-      "networkTitle": "Fără conexiune",
-      "networkMessage": "Nu există conexiune la internet. Verifică conexiunea și încearcă din nou.",
-      "requestTitle": "Problemă cu solicitarea",
-      "requestMessage": "A apărut o problemă cu solicitarea ta. Încearcă din nou."
+      "genericTitle": "Igl è succedì in sbagl",
+      "genericMessage": "Emprova per plaschair anc ina giada.",
+      "rateLimitTitle": "Memia bleras dumondas",
+      "rateLimitMessage": "Nus elavurain fitg bleras dumondas. Emprova per plaschair en in mument anc ina giada.",
+      "rateLimitRetryAfter": "Nus elavurain fitg bleras dumondas. Emprova per plaschair anc ina giada en circa {{seconds}} secundas.",
+      "restrictedTitle": "Cuntegn restrenschì",
+      "restrictedMessage": "Questa dumonda è vegnida bloccada dals filters da segirezza.",
+      "insufficientCoinsTitle": "Betg avunda munaidas",
+      "insufficientCoinsMessage": "Tes saldo actual è memia bass per questa dumonda.",
+      "imageUnavailableTitle": "Maletg betg disponibel",
+      "imageUnavailableMessage": "La datoteca dal maletg generà n'era temporarmain betg disponibla. Emprova per plaschair anc ina giada.",
+      "authorizationTitle": "Problem d'autorisaziun",
+      "authorizationMessage": "Nus n'avain betg pudì verifitgar tes conto. Emprova per plaschair anc ina giada.",
+      "serverTitle": "Pitschen problem dal server",
+      "serverMessage": "Noss servers han gì problems. Emprova per plaschair en curt anc ina giada.",
+      "timeoutTitle": "Quai dura memia ditg",
+      "timeoutMessage": "Il temp per la dumonda è scadì. Emprova per plaschair anc ina giada.",
+      "networkTitle": "Nagina connexiun",
+      "networkMessage": "Nagina connexiun a l'internet. Controllescha per plaschair tia connexiun ed emprova anc ina giada.",
+      "requestTitle": "Problem cun la dumonda",
+      "requestMessage": "Igl è succedì in sbagl cun tia dumonda. Emprova per plaschair anc ina giada."
     }
   },
   "reviewerPremium": {
-    "activateTitle": "Activează Premium",
-    "activateMessage": "Vrei să activezi Premium pentru recenzent?",
-    "activateAction": "Activează",
-    "deactivateTitle": "Dezactivează Premium",
-    "deactivateMessage": "Vrei să dezactivezi Premium pentru recenzent?",
-    "deactivateAction": "Dezactivează"
+    "activateTitle": "Activar Premium",
+    "activateMessage": "Vuls ti activar Premium per recensents?",
+    "activateAction": "Activar",
+    "deactivateTitle": "Deactivar Premium",
+    "deactivateMessage": "Vuls ti deactivar Premium per recensents?",
+    "deactivateAction": "Deactivar"
   },
   "push": {
     "dailyReward": {
-      "title": "Recompensă zilnică",
-      "body": "Nu rata monedele zilnice — revendică-le înainte de miezul nopții."
+      "title": "Recumpensa dal di",
+      "body": "Tias munaidas dal di ta spetgan — retira las avant mesanotg."
     }
   },
   "notifications": {
     "priming": {
-      "title": "Na perda betg tes daners dal di",
-      "body": "Nus trametain ina regurdientscha per di, uschè che tia seria resta viva e tes daners creschan vinavant. Nagin spam, e ti pos deactivar quai da mintga mument.",
+      "title": "Na perda mai tias munaidas dal di",
+      "body": "Nus ta tramettain ina regurdientscha per di, uschia che tia seria resta en vita e tias munaidas creschan vinavant. Nagin spam, e ti pos deactivar las regurdientschas da tut temp.",
       "enable": "Activar las regurdientschas",
       "skip": "Betg ussa"
+    }
+  },
+  "workspace": {
+    "documents": "Documents",
+    "videos": "Resumaziuns da videos",
+    "summary": "Resumaziun",
+    "details": "Detagls",
+    "sources": "Funtaunas",
+    "youtube": "YouTube",
+    "upload": "Chargiar si",
+    "transcript": "Transcripziun",
+    "concise": "Curt e concis",
+    "detailed": "Il maletg cumplet",
+    "errors": {
+      "NETWORK": "Controllescha tia connexiun a l'internet ed emprova anc ina giada. Las funtaunas tschernidas èn anc qua.",
+      "TIMEOUT": "Questa funtauna ha durà memia ditg. Emprova in video pli curt u in document pli pitschen.",
+      "NOT_CONFIGURED": "L'analisa da funtaunas n'è anc betg disponibla. Emprova pli tard anc ina giada.",
+      "VIDEO_NOT_CONFIGURED": "L'analisa directa da videos n'è anc betg disponibla. Ti pos dentant resumar ina transcripziun encollada.",
+      "DOCUMENT_EXPIRED": "Ina funtauna è scadida. Tscherna danovamain il document original.",
+      "SOURCE_UNAVAILABLE": "Questa funtauna n'ha betg pudì vegnir analisada. Emprova in'autra datoteca u ina transcripziun encollada.",
+      "TOO_MANY_PAGES": "Quest PDF ha memia bleras paginas. El sto vegnir dividì en datotecas da maximalmain 100 paginas mintgina.",
+      "INVALID_VIDEO": "Tscherna in video MP4 u WebM legibel da maximalmain 20 MB. Nus analisain las emprimas 10 minutas.",
+      "INVALID_DOCUMENTS": "Tscherna danovamain tes documents ed emprova anc ina giada.",
+      "CLIENT_ID_REQUIRED": "Lantscha danovamain l'app ed emprova anc ina giada.",
+      "RATE_LIMITED": "Ti has cuntanschì la limita d'analisas per oz. Emprova damaun anc ina giada.",
+      "INVALID_RESULT": "L'analisa è stada incumpletta. Emprova anc ina giada.",
+      "FILE_TOO_LARGE": "Questa datoteca è memia gronda. Documents pon avair maximalmain 10 MB, clips da video maximalmain 20 MB.",
+      "NO_READABLE_TEXT": "I n'è vegnì chattà nagin text legibel. Prenda in PDF cun text u encolla il text; PDFs scannads dovran OCR.",
+      "ANALYSIS_FAILED": "La funtauna n'ha betg pudì vegnir analisada. Emprova anc ina giada.",
+      "SOURCES_TOO_LARGE": "Quests documents èn memia gronds per vegnir analisads ensemen. Fa resumaziuns separadas u en gruppas pli pitschnas.",
+      "ENCRYPTED_DOCUMENT": "Quest PDF è protegì cun in pled-clav. Chargia si ina copia senza pled-clav.",
+      "UNSUPPORTED_DOCUMENT": "Questa datoteca n'è betg legibla u ses cuntegn na vegn betg sustegnì. Prenda ina datoteca PDF, DOCX, TXT u CSV.",
+      "SERVICE_BUSY": "Il servetsch d'analisa è occupà. Emprova en curt anc ina giada.",
+      "PROVIDER_UNAVAILABLE": "Il servetsch d'IA n'è temporarmain betg disponibel. Emprova en curt anc ina giada.",
+      "DAILY_LIMIT": "Ti has cuntanschì la limita d'analisas da funtaunas per oz. Tias resumaziuns memorisadas restan disponiblas.",
+      "ALREADY_PROCESSING": "Ina analisa è gia en lavur. Controllescha ses progress sutvart avant che cumenzar ina nova.",
+      "JOB_PENDING": "Tia analisa vegn anc elavurada. Smatga sutvart «Controllar il progress» per la retschaiver.",
+      "JOB_NOT_FOUND": "Questa analisa n'è betg vegnida chattada u è scadida. Sche ti l'has gist chargiada si, spetga in mument e controllescha anc ina giada.",
+      "WORKSPACE_KEY_REQUIRED": "Impussibel da debloccar tia biblioteca da funtaunas. Lantscha danovamain l'app ed emprova anc ina giada.",
+      "NO_SPEECH": "I n'ha betg pudì vegnir transcrit in discurs cler. Emprova in video cun discurs bain audibel u encolla sia transcripziun.",
+      "VIDEO_TOO_LONG": "Tscherna in video da maximalmain 10 minutas."
+    },
+    "invalidUrl": "Endatescha in link https:// valid ad in video da YouTube.",
+    "invalidTranscript": "Encolla ina transcripziun tranter 40 e 120’000 caracters.",
+    "chooseFirst": "Tscherna l'emprim ina funtauna.",
+    "uploading": "{{name}} vegn chargià si",
+    "extracting": "Tes document vegn legì…",
+    "analyzing": "Nus tschertgain il meglier…",
+    "chatError": "Impussibel d'avrir questa funtauna en il chat. Emprova anc ina giada.",
+    "shareError": "Impussibel da cundivider questa resumaziun. Emprova anc ina giada.",
+    "removeTitle": "Allontanar la resumaziun memorisada?",
+    "removeBody": "Uschia vegn la resumaziun allontanada da quest apparat. Tes chats restan. Il text da la funtauna chargià si suonda ses temp da conservaziun existent.",
+    "remove": "Allontanar",
+    "removeError": "Impussibel d'allontanar questa resumaziun. Emprova anc ina giada.",
+    "summarizeVideo": "Survegnir la resumaziun",
+    "chooseDocuments": "Agiunta tes documents",
+    "videoSubtitle": "Transfurmescha cuntegn discurrì en ideas principalas, chapitels e respostas.",
+    "documentSubtitle": "Chatta l'essenzial en tias datotecas. Fa dumondas en il chat.",
+    "newAnalysis": "Nova resumaziun",
+    "savedBrief": "TIA RESUMAZIUN",
+    "documentCoverage": "Sa basa sin il text extratg. Maletgs e paginas scannadas èn eventualmain betg inclus.",
+    "transcriptCoverage": "Sa basa sin la transcripziun furnida. Ils elements visuals dal video n'èn betg vegnids analisads.",
+    "videoCoverage": "Analisa dal video cun IA. Ils chapitels èn approximativs; controllescha detagls impurtants cun l'original.",
+    "extractionLimit": "In document ha cuntanschì la limita d'extracziun da text. Questa resumaziun na cuvra eventualmain betg l'entira datoteca originala.",
+    "saveError": "Questa resumaziun n'ha betg pudì vegnir memorisada. Lascha avert quest visur ed emprova anc ina giada u cundivida ina copia.",
+    "retrySave": "Memorisar danovamain",
+    "chapters": "Chapitels",
+    "actions": "Acziuns da far",
+    "noSections": "En questa funtauna n'èn vegnidas identifitgadas naginas ulteriuras secziuns.",
+    "linkError": "Impussibel d'avrir il video.",
+    "videoEvidence": "Las indicaziuns da temp dal video èn approximativas. Resumaziuns da transcripziuns descrivan il text furnì e n'analiseschan betg elements visuals.",
+    "documentEvidence": "Ils extracts sutvart vegnan cumparegliads cun il text extratg. Ils numers da pagina originals vegnan mussads mo sch'els èn disponibels.",
+    "noEvidence": "Per questa resumaziun n'èn nagins extracts da text verifitgads disponibels.",
+    "coverage": "Cuvrida e limitaziuns",
+    "sourceExpires": "Funtauna disponibla fin",
+    "localOnly": "Resumaziuns vegnan memorisadas sin quest apparat. Cundivida ina copia per avair ina copia da segirezza.",
+    "continueChat": "Dumandar davart quai",
+    "chatContext": "Il chat cumenza cun questa resumaziun memorisada e cun las referenzas da documents disponiblas. Ina resumaziun da video n'è betg ina transcripziun cumpletta.",
+    "share": "Cundivider la resumaziun",
+    "videoLink": "Link dal video da YouTube",
+    "publicOnly": "Mo videos publics. Videos privats, betg listads, live e restrenschids èn eventualmain betg disponibels.",
+    "transcriptHint": "Encolla la transcripziun u ils suttitels. Agiunta indicaziuns da temp per survegnir chapitels.",
+    "textOnly": "Mo text; elements visuals na vegnan betg analisads.",
+    "clip": "Agiuntar in video",
+    "videoLimits": "MP4, MOV, WebM · fin a 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · 3 datotecas · 10 MB mintgina",
+    "openingFiles": "Las datotecas vegnan avertas…",
+    "chooseFiles": "Agiuntar datotecas",
+    "removeFile": "Allontanar {{name}}",
+    "depth": "Sco che ti vuls",
+    "processingNotice": "Tia datoteca vegn chargiada si per l'elavuraziun cun IA.",
+    "cancel": "Interrumper",
+    "analyzeDocuments": "Survegnir la resumaziun",
+    "library": "Da tegnair",
+    "search": "Tschertgar resumaziuns",
+    "loadError": "Las resumaziuns memorisadas n'han betg pudì vegnir chargiadas. Tias datas existentas n'èn betg vegnidas remplazzadas.",
+    "retry": "Empruvar danovamain",
+    "emptyLibrary": "Tias resumaziuns cumparan qua, prontas per vegnir legidas danovamain u discutadas en il chat.",
+    "removeBrief": "Allontanar {{name}}",
+    "audioCoverage": "Resumaziun dal discurs · Elements visuals na vegnan betg analisads. Controllescha nums e numers cun la registraziun.",
+    "uploadTitle": "Tscherna datotecas per cumenzar",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · 10 min\nMo cuntegn discurrì",
+    "noSearchResults": "Chattà naginas resumaziuns. Emprova in'autra tschertga.",
+    "clearSearch": "Stizzar la tschertga",
+    "keyPoints": "Puncts principals",
+    "chatContextShort": "Vuls ti savair dapli? Fa ina dumonda supplementara.",
+    "openingChat": "Il chat vegn avert…",
+    "uploadVideo": "Chargiar si in video",
+    "pasteTranscript": "Encollar la transcripziun",
+    "heroVideoLabel": "INTELLIGENZA DA VIDEO",
+    "heroDocumentLabel": "INTELLIGENZA DA DOCUMENTS",
+    "heroVideoTitle": "Main guardar.\nDapli savair.",
+    "heroDocumentTitle": "Tias datotecas.\nRespostas cleras.",
+    "heroVideoDescription": "Transfurmescha cuntegn discurrì en ina resumaziun che vala la paina da tegnair.",
+    "heroDocumentDescription": "Scuvra l'essenzial. Collia ils puncts. Dumonda tut.",
+    "heroIdeas": "Ideas principalas",
+    "heroFollowUps": "Dumandar l'IA",
+    "heroSummarize": "Resumar",
+    "heroCompare": "Cumparegliar",
+    "summaryReady": "Tia conclusiun",
+    "savedOnDevice": "Memorisà sin quest apparat",
+    "notSavedYet": "Pront per memorisar",
+    "atAGlance": "La survista",
+    "addSource": "Agiuntar tia funtauna",
+    "quickDescription": "Mo l'essenzial",
+    "detailedDescription": "Plaz per ils detagls",
+    "chooseVideo": "Agiuntar in video",
+    "studioLabel": "In pau dapli cleritad.",
+    "studioDocumentTitle": "Grondas ideas.\nMain leger.",
+    "studioVideoTitle": "Main guardar.\nDapli emprender.",
+    "studioDocumentDescription": "Da bleras paginas a tia proxima idea geniala.",
+    "studioVideoDescription": "Tegna il meglier. Transfurmescha pleds discurrids en insatge, tar il qual ti pos turnar.",
+    "studioVideoDescriptionV3": "Vesa l'entira istorgia. Transfurmescha scenas e pleds discurrids en ideas, tar las qualas ti pos turnar.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Emprimas 10 min · Discurs e maletgs",
+    "videoCoverageV3": "Discurs e scenas visualas · Maximalmain las emprimas 10 minutas. Ils chapitels èn approximativs; acziuns sveltas pon vegnir survesas.",
+    "videoChatMenu": "Chapir scenas, discurs e muments impurtants",
+    "analyzingVideo": "Nus guardain tes video…",
+    "uploadingVideo": "Il video vegn chargià si… {{percent}} %",
+    "videoCancelled": "Analisa dal video interrutta.",
+    "videoSourceNeeded": "Encolla in link public da YouTube u smatga + → Chargiar si in video. Lura fa tia dumonda.",
+    "localOnlyV2": "Resumaziuns vegnan memorisadas sin quest apparat. Il resultat da l'analisa vegn era conservà sin il server d'analisa fin 7 dis, per ch'el possia vegnir retschavì, e lura vegn el stizzà. Cundivida ina copia per avair ina copia da segirezza.",
+    "leavePrivateTitle": "Bandunar il chat privat?",
+    "leavePrivateBody": "Sche ti dumondas davart questa resumaziun, finescha tes chat privat e la nova conversaziun vegn memorisada en tia cronologia.",
+    "leavePrivateConfirm": "Cuntinuar",
+    "documentPages": "Text chattà sin {{extracted}} da {{total}} paginas.",
+    "documentPartialText": "Intginas paginas n'han nagin text extractabel. Maletgs e scans na vegnan betg legids.",
+    "documentTruncated": "Mo il cumenzament da quest document è vegnì extratg. La resumaziun na cuntegna eventualmain betg il cuntegn che suonda.",
+    "sourceUnavailable": "Quest tip da funtauna n'è temporarmain betg disponibel. Emprova ina da las opziuns disponiblas sutvart.",
+    "accepted": "Tia funtauna vegn analisada. Ti pos bandunar quest visur e controllar il progress pli tard.",
+    "checkingProgress": "Tia analisa memorisada vegn controllada…",
+    "pendingError": "Impussibel da chargiar las analisas pendentas. Lantscha danovamain l'app avant che cumenzar ina nova.",
+    "pendingAnalysis": "ANALISA PENDENTA",
+    "resumeHint": "Suenter l'acceptaziun cuntinuescha l'analisa, er sche ti bandunas il visur. Ti pos retschaiver qua il resultat senza la cumenzar danovamain.",
+    "checkProgress": "Controllar il progress",
+    "cancelAnalysis": "Interrumper l'analisa",
+    "demoNotice": "Demo locala · cuntegn d'exempel · nagina funtauna chargiada si",
+    "publicVideoCoverage": "Videos publics da YouTube · Emprimas 10 minutas. Videos privats, live e restrenschids èn eventualmain betg disponibels.",
+    "sourceUnavailableLibrary": "Quest tip da funtauna n'è temporarmain betg disponibel. Ti pos tuttina avrir tias resumaziuns memorisadas.",
+    "stopWaiting": "Betg pli spetgar",
+    "previewSample": "Exempel da prevista · demo locala",
+    "pickVideoError": "Tscherna in clip MP4 u WebM da maximalmain 20 MB e 10 minutas.",
+    "pickDocumentsError": "Tscherna fin a trais documents PDF, DOCX, TXT u CSV da maximalmain 10 MB mintgin.",
+    "videoErrors": {
+      "ONE_VIDEO": "Tscherna mo in video u encolla mo in link da YouTube a la giada.",
+      "VIDEO_MIXED_SOURCES": "Il video sto vegnir tramess separadamain da maletgs e documents.",
+      "VIDEO_QUESTION_TOO_LONG": "Tia dumonda davart il video sto avair main che 4’000 caracters.",
+      "INVALID_VIDEO": "Tscherna in video MP4 u WebM da maximalmain 20 MB.",
+      "FILE_TOO_LARGE": "Tscherna in video da maximalmain 20 MB.",
+      "SOURCE_UNAVAILABLE": "Nus n'avain betg pudì acceder a quest video. Emprova in video public da YouTube u chargia si ina datoteca MP4 u WebM.",
+      "INVALID_RESULT": "L'analisa dal video è stada incumpletta. Emprova anc ina giada.",
+      "NETWORK": "Connexiun interrutta. Controllescha en Resumaziuns da videos il resultat avant che empruvar anc ina giada.",
+      "TIMEOUT": "L'analisa dal video ha durà memia ditg. Emprova in clip pli curt.",
+      "JOB_PENDING": "Tes video vegn anc elavurà. Avra Resumaziuns da videos per controllar ses progress.",
+      "DAILY_LIMIT": "Ti has cuntanschì la limita d'analisas da videos e documents per oz. Emprova damaun anc ina giada.",
+      "ALREADY_PROCESSING": "Ina analisa è gia en lavur. Avra Resumaziuns da videos per controllar ses progress.",
+      "SERVICE_BUSY": "L'analisa da videos è occupada. Emprova en curt anc ina giada.",
+      "PROVIDER_UNAVAILABLE": "L'analisa da videos n'è temporarmain betg disponibla. Emprova en curt anc ina giada.",
+      "NOT_CONFIGURED": "L'analisa da videos n'è temporarmain betg disponibla. Emprova pli tard anc ina giada.",
+      "VIDEO_NOT_CONFIGURED": "L'analisa da videos n'è temporarmain betg disponibla. Emprova pli tard anc ina giada.",
+      "SAVE_FAILED": "Tia resumaziun è pronta, ma n'ha betg pudì vegnir memorisada en tia biblioteca. Tegna quest chat u fa ina copia da la resumaziun."
+    },
+    "markdown": {
+      "summary": "Resumaziun",
+      "keyTakeaways": "Puncts principals",
+      "details": "Detagls",
+      "actionItems": "Acziuns da far",
+      "sourceExcerpts": "Extracts da la funtauna",
+      "coverageNotes": "Remartgas davart la cuvrida"
     }
   }
 }

@@ -2,6 +2,7 @@ import {
   DOCUMENT_PROCESS_URL,
   SUPABASE_ANON_KEY,
 } from '../config/endpoints';
+import { documentCoverage } from '../lib/documentCoverage';
 
 function normalizeResponse(payload, fallback) {
   const raw = payload?.attachment || payload?.document || payload;
@@ -15,17 +16,37 @@ function normalizeResponse(payload, fallback) {
 
   return {
     remoteId: String(remoteId),
-    name: raw?.name || fallback.name,
+    // Keep the picker label: Android multipart transport may encode or truncate
+    // the server-side filename. The server ID remains the document identity.
+    name: fallback.name || raw?.name,
     mimeType: raw?.mimeType || raw?.mime_type || fallback.mimeType,
     size: Number.isFinite(responseSize) ? responseSize : fallback.size,
     extractedChars: Number.isFinite(extractedChars) ? extractedChars : null,
+    truncated: raw?.truncated === true,
+    expiresAt: typeof raw?.expiresAt === 'string' ? raw.expiresAt : null,
+    ...documentCoverage(raw),
   };
 }
 
 export function processDocument({ file, deviceId, signal, onProgress }) {
   let xhr = null;
+  let rejectPending;
+  let settled = false;
+  const abort = () => {
+    if (settled) return;
+    try { xhr?.abort(); } catch {}
+    rejectPending?.(Object.assign(new Error('Document upload cancelled.'), { code: 'ABORTED' }));
+  };
 
   const promise = new Promise((resolve, reject) => {
+    const finish = (error, value) => {
+      if (settled) return;
+      settled = true;
+      signal?.removeEventListener('abort', abort);
+      if (error) reject(error); else resolve(value);
+    };
+    rejectPending = error => finish(error);
+    if (signal?.aborted) { abort(); return; }
     xhr = new XMLHttpRequest();
     xhr.open('POST', DOCUMENT_PROCESS_URL);
     xhr.timeout = 90_000;
@@ -39,12 +60,12 @@ export function processDocument({ file, deviceId, signal, onProgress }) {
       onProgress?.(Math.max(0, Math.min(1, event.loaded / event.total)));
     };
 
-    xhr.onerror = () => reject(new Error('Document upload failed.'));
-    xhr.ontimeout = () => reject(new Error('Document processing timed out.'));
+    xhr.onerror = () => finish(Object.assign(new Error('Document upload failed.'), { code: 'NETWORK' }));
+    xhr.ontimeout = () => finish(Object.assign(new Error('Document processing timed out.'), { code: 'TIMEOUT' }));
     xhr.onabort = () => {
       const error = new Error('Document upload cancelled.');
       error.code = 'ABORTED';
-      reject(error);
+      finish(error);
     };
     xhr.onload = () => {
       let payload = null;
@@ -58,14 +79,14 @@ export function processDocument({ file, deviceId, signal, onProgress }) {
         );
         error.status = xhr.status;
         error.code = payload?.code || 'DOCUMENT_UPLOAD_FAILED';
-        reject(error);
+        finish(error);
         return;
       }
 
       try {
-        resolve(normalizeResponse(payload, file));
+        finish(null, normalizeResponse(payload, file));
       } catch (error) {
-        reject(error);
+        finish(error);
       }
     };
 
@@ -75,19 +96,9 @@ export function processDocument({ file, deviceId, signal, onProgress }) {
       name: file.name,
       type: file.mimeType,
     });
-    xhr.send(form);
+    signal?.addEventListener('abort', abort, { once: true });
+    try { xhr.send(form); } catch (error) { finish(error); }
   });
-
-  const abort = () => {
-    try {
-      xhr?.abort();
-    } catch {}
-  };
-
-  if (signal) {
-    if (signal.aborted) abort();
-    else signal.addEventListener('abort', abort, { once: true });
-  }
 
   return { promise, abort };
 }

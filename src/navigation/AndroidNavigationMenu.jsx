@@ -1,4 +1,5 @@
 import { IMAGE_STUDIO_ENABLED, REWARDS_ENABLED } from '../constants/featureFlags';
+import { useSourceWorkspaceAvailability } from '../state/useSourceWorkspaceAvailability';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Alert,
@@ -22,9 +23,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
+import { useWorkspaceTranslation } from '../i18n/useWorkspaceTranslation';
 
 import SvgIcon from '../components/SvgIcon';
-import SidebarCreativeStudioBanner from '../components/navigation/SidebarCreativeStudioBanner';
+import SidebarAssistantsBanner from '../components/navigation/SidebarAssistantsBanner';
 import SidebarProFeaturesButton from '../components/navigation/SidebarProFeaturesButton';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useThreadsStore } from '../state/useThreadsStore';
@@ -79,6 +81,9 @@ export default function AndroidNavigationMenu({
   onNavigateThread,
 }) {
   const { t } = useTranslation();
+  const { c } = useWorkspaceTranslation();
+  const documentsEnabled = useSourceWorkspaceAvailability('document');
+  const videosEnabled = useSourceWorkspaceAvailability('video');
   const insets = useSafeAreaInsets();
   const { height: screenHeight } = useWindowDimensions();
   const topInset = insets.top;
@@ -312,16 +317,26 @@ export default function AndroidNavigationMenu({
               </View>
             ) : null}
 
-            {IMAGE_STUDIO_ENABLED ? (
-              <SidebarCreativeStudioBanner
-                compact={isCompactHeight}
-                onPress={() => handleMenuItemPress('Studio', 'studio_banner')}
-                style={styles.sidebarBanner}
-                playVideo={visible}
-              />
-            ) : null}
+            <SidebarAssistantsBanner
+              compact={isCompactHeight}
+              onPress={() => handleMenuItemPress('Assistants', 'assistants_banner')}
+              style={styles.sidebarBanner}
+              playVideo={visible}
+            />
 
             <View style={styles.mainNav}>
+              {documentsEnabled && <MenuItem
+                active={activeRouteName === 'Documents'}
+                icon="workspace-document"
+                label={c('documents', 'Documents')}
+                onPress={() => handleMenuItemPress('Documents')}
+              />}
+              {videosEnabled && <MenuItem
+                active={activeRouteName === 'VideoSummaries'}
+                icon="workspace-video"
+                label={c('videos', 'Video summaries')}
+                onPress={() => handleMenuItemPress('VideoSummaries')}
+              />}
               <MenuItem
                 active={activeRouteName === 'Chat'}
                 icon="newchat"

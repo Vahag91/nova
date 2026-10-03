@@ -191,11 +191,17 @@ export const Storage = {
       await AsyncStorage.removeItem(KEY_THREADS);
     } catch {}
   },
-  async saveThread(thread) {
+  async saveThread(thread, { throwOnError = false } = {}) {
     try {
       const normalized = normalizeThreadRecord(thread);
       const indexEntry = buildThreadIndexEntry(normalized);
-      const currentIndex = await loadThreadIndexOnly();
+      let currentIndex;
+      if (throwOnError) {
+        const rawIndex = await AsyncStorage.getItem(KEY_THREAD_INDEX);
+        const parsedIndex = rawIndex ? JSON.parse(rawIndex) : [];
+        if (!Array.isArray(parsedIndex)) throw new Error('Invalid chat index');
+        currentIndex = compactThreadIndex(parsedIndex);
+      } else currentIndex = await loadThreadIndexOnly();
       const nextIndex = compactThreadIndex([
         ...currentIndex.filter(entry => entry.id !== normalized.id),
         indexEntry,
@@ -215,7 +221,7 @@ export const Storage = {
         [threadRecordKey(normalized.id), JSON.stringify(normalized)],
       ]);
       await AsyncStorage.removeItem(KEY_THREADS);
-    } catch {}
+    } catch (error) { if (throwOnError) throw error; }
   },
   async replaceThread(thread) {
     await this.saveThread(thread);

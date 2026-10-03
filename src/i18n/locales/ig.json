@@ -27,16 +27,16 @@
     "gpt-5.4-nano": "Ụdị ọkụ maka ọrụ dị mfe",
     "o4-mini": "Ụdị ntụgharị uche dị mma",
     "gpt-4.1-mini": "Kọmpat, ike GPT-4.1",
-    "claude-3-haiku": "Ngwa ngwa na lekwasịrị anya Anthropic AI",
+    "claude-3-haiku": "Anthropic AI dị ngwa ngwa ma lekwasị anya",
     "claude-3.7-sonnet": "Echiche a nụchara anụcha nke Anthropic",
     "gemini-2.5-Flash": "Ihe nlereanya Google kachasị elu",
     "gemini-2.5-flash": "Ihe nlereanya Google kachasị elu",
-    "gemini-2.0-flash": "Ngwa ngwa na nkenke Google AI"
+    "gemini-2.0-flash": "Google AI dị ngwa ngwa ma ziri ezi"
   },
   "modelDescriptions": {
     "most_powerful": "Ihe nlereanya AI kachasị ike",
     "fast_everyday": "Ngwa ngwa maka ọrụ kwa ụbọchị",
-    "fast_reasoning": "Ụdị ngwa ngwa nwere ezi echiche",
+    "fast_reasoning": "Ụdị dị ngwa ngwa nwere ezi echiche",
     "great_reasoning": "Ụdị echiche dị elu",
     "coding_reasoning": "Ntinye koodu na echiche dị elu",
     "better_coding": "Ọ ka mma maka itinye koodu na ntụgharị uche",
@@ -48,7 +48,7 @@
     "chat_focus": "Ebuliri maka ịkparịta ụka",
     "long_context": "Ezigbo maka nkọwa ogologo oge",
     "budget_friendly": "Ụdị mmefu ego na-amasị AI",
-    "ultra_fast": "Nzaghachi ngwa ngwa ngwa ngwa",
+    "ultra_fast": "Nzaghachi dị ngwa ngwa nke ukwuu",
     "safe_default": "Nhọrọ ndabara echekwara",
     "multilingual": "Nkwado siri ike nke ọtụtụ asụsụ",
     "vision_strong": "Ọ dị mma na onyonyo na ọhụụ",
@@ -63,21 +63,32 @@
     "chatty_personal": "Ndị ọzọ enyi na enyi",
     "pro_users": "Kachasị mma maka ndị ọrụ ike",
     "research_helper": "Ọ dị mma maka nyocha na ndetu",
-    "reasoning_strong": "Ụdị echiche dị elu"
+    "reasoning_strong": "Ụdị echiche dị elu",
+    "gpt56_sol": "Ụdị GPT-5.6 kachasị ike",
+    "gpt56_terra": "Ụdị GPT-5.6 dabara adaba",
+    "gpt56_luna": "Ụdị dị ngwa maka ọrụ kwa ụbọchị",
+    "claude_fable": "AI Anthropic dị ngwa ma nwee ike okike",
+    "claude_sonnet": "Ụdị Anthropic dị elu",
+    "gemini_flash": "Ụdị AI Google dị ngwa",
+    "gemini_pro": "Ụdị Pro dị elu nke Google",
+    "grok_latest": "Ụdị kacha ọhụrụ nke xAI",
+    "deepseek_pro": "Ụdị DeepSeek dị elu",
+    "deepseek_flash": "Ụdị DeepSeek dị ngwa"
   },
   "providers": {
-    "openai": "P000 ⟭",
+    "openai": "OpenAI",
     "anthropic": "Anthropic",
     "google": "Google",
     "xai": "xAI",
-    "other": "Ndị ọzọ"
+    "other": "Ndị ọzọ",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Mkparịta ụka ọhụrụ",
     "history": "Akụkọ ihe mere eme",
     "rewards": "Ụgwọ ọrụ kwa ụbọchị",
     "assistants": "Ndị enyemaka",
-    "imagesStudio": "P000 ⟭",
+    "imagesStudio": "Image Studio",
     "settings": "Ntọala",
     "recentChats": "Mkparịta ụka na nso nso a",
     "proFeatures": "Atụmatụ Pro",
@@ -88,13 +99,13 @@
     }
   },
   "sidebarStudioBanner": {
-    "label": "P000 ⟭",
-    "title": "P000 ⟭",
+    "label": "Image Studio",
+    "title": "Image Studio",
     "subtitle": "Mepụta, megharịa ma bipụta akụrụngwa a na-ahụ anya n'otu ebe.",
     "cta": "Mepee"
   },
   "imagesStudio": {
-    "title": "P000 ⟭",
+    "title": "Image Studio",
     "selectImages": "Họrọ onyonyo",
     "exitSelectionMode": "Wepụ ụdị nhọrọ",
     "selectAll": "Họrọ Ha niile",
@@ -115,7 +126,7 @@
     "tapToUploadImage": "Pịa iji bulite onyonyo",
     "camera": "Bulite Foto",
     "library": "Ụlọ akwụkwọ",
-    "enterPrompt": "Biko tinye ngwa ngwa maka ọgbọ ederede gaa na onyonyo",
+    "enterPrompt": "Biko tinye ntụziaka maka imepụta onyonyo site na ederede",
     "openInBrowser": "Mepee na ihe nchọgharị",
     "makeVariations": "Mee mgbanwe dị iche iche",
     "deleteAllFromGeneration": "Hichapụ ihe niile n'ọgbọ a",
@@ -161,7 +172,7 @@
     "useAssistant": "Jiri ihe enyemaka",
     "selectAssistant": "Họrọ onye inyeaka",
     "description": "Nkọwa",
-    "systemPrompt": "Ngwa ngwa sistemụ",
+    "systemPrompt": "Ntụziaka sistemụ",
     "chooseModel": "Họrọ Ụdị",
     "categoryAll": "Ha niile",
     "categories": {
@@ -227,11 +238,11 @@
         "description": "Echiche site na mmefu ego & mmasị."
       },
       "party": {
-        "name": "Onye nhazi mmemme (Lite)",
+        "name": "Onye nhazi mmemme (dị mfe)",
         "description": "Hazie obere oriri ngwa ngwa."
       },
       "social": {
-        "name": "Onye mere Post Social",
+        "name": "Onye na-ede ozi soshal midia",
         "description": "Ederede posts nwere nhọrọ."
       },
       "interview": {
@@ -243,8 +254,8 @@
         "description": "Nchọpụta nsogbu DIY dị mfe."
       },
       "pet": {
-        "name": "Pet Care enyi",
-        "description": "Nri, ije ije, ọzụzụ bụ isi."
+        "name": "Enyi nlekọta anụ ụlọ",
+        "description": "Nri, ije, ọzụzụ bụ isi."
       },
       "mindful": {
         "name": "Nkeji na-eche echiche",
@@ -369,9 +380,9 @@
   "createImage": {
     "headerTitle": "Mepụta",
     "chooseStyle": "Họrọ Ụdị",
-    "aspectRatio": "Akụkụ akụkụ",
+    "aspectRatio": "Oke obosara na ogologo",
     "starterPrompts": {
-      "title": "Mmalite mmalite",
+      "title": "Ntụziaka mmalite",
       "items": [
         "isi ihe nkiri studio",
         "ime ụlọ ọgbara ọhụrụ",
@@ -379,7 +390,7 @@
       ]
     },
     "promptPlaceholder": "Pịnye ihe ị chọrọ ịhụ…",
-    "promptHint": "Ọmụmaatụ: 'Golden retriever na studio ọkụ'",
+    "promptHint": "Ọmụmaatụ: 'Nkịta nwere ajị ọlaedo n'ìhè ụlọ foto'",
     "clearText": "Kpochapụ ederede",
     "generate": "Mepụta",
     "generating": "Na-emepụta…"
@@ -387,9 +398,9 @@
   "editImage": {
     "headerTitle": "Dezie",
     "chooseStyle": "Họrọ Ụdị",
-    "aspectRatio": "Akụkụ akụkụ",
+    "aspectRatio": "Oke obosara na ogologo",
     "starterPrompts": {
-      "title": "Mmalite mmalite",
+      "title": "Ntụziaka mmalite",
       "items": [
         "dozie ọkụ",
         "wepụ ndabere",
@@ -440,17 +451,17 @@
         "name": "Ihe nkiri Vintage"
       },
       "pastel": {
-        "name": "Pastel Aesthetic || ederede interface onye ọrụ ngwa mkpanaka"
+        "name": "Ụcha nro mara mma"
       },
       "neon_glow": {
-        "name": "Neon Glow || ederede interface onye ọrụ ngwa mkpanaka"
+        "name": "Ìhè neon na-enwu"
       },
       "epic_landscape": {
         "name": "Epic Landscap"
       }
     },
     "aspectRatios": {
-      "square": "Square",
+      "square": "Akụkụ anọ",
       "landscape": "Okirikiri ala",
       "portrait": "Eserese"
     },
@@ -468,7 +479,7 @@
       "klingImageO1": "Ndezi onyonyo dị elu",
       "fluxKontent": "Flux Kontent na-ekiri maka ndezigharị",
       "runwareProvider": "Ogo ziri ezi na mgbasa ozi a pụrụ ịdabere na ya.",
-      "airProvider": "Banana Banana na-agbakwunye egwu egwu, ụda doro anya.",
+      "airProvider": "Nano Banana na-agbakwunye ụda egwuregwu dị ndụ.",
       "googleProvider": "Google na-ege ntị maka nkọwa chara acha.",
       "klingaiProvider": "KlingAI na-ege ntị maka ndezi a na-achịkwa.",
       "anthropicProvider": "Claude pipeline maka ọnọdụ adịghị mma.",
@@ -478,7 +489,7 @@
   "createImageGenerating": {
     "stylePlaceholder": "ị họọrọ style",
     "sheetTitle": "Ịmepụta ọhụụ gị",
-    "sheetSubtitle": "Ntụ oyi nke kọfị sava ka anyị na-agwakọta {{style}} n'ime ngwa ngwa.",
+    "sheetSubtitle": "Sava na-aṅụ obere kọfị ka anyị na-agwakọta {{style}} n'ime ntụziaka.",
     "phases": {
       "blend": "Ngwakọta na {{style}}",
       "paint": "Na-ese ihe nkiri ahụ",
@@ -561,7 +572,7 @@
     }
   },
   "studioHome": {
-    "headerTitle": "P000 ⟭",
+    "headerTitle": "Image Studio",
     "accessibility": {
       "openMenu": "Mepee menu",
       "selectImages": "Họrọ onyonyo",
@@ -607,7 +618,7 @@
         "cards": {
           "doc": {
             "title": "Nchịkọta akwụkwọ",
-            "detail": "faịlụ nwere ibe 12 → isi isi ise"
+            "detail": "Faịlụ ibe 12 → isi ihe 5"
           },
           "reply": {
             "title": "Edepụtala nzaghachi",
@@ -626,7 +637,7 @@
         "emptyCta": "Họrọ opekata mpe ihe mgbaru ọsọ 1",
         "items": {
           "workFaster": {
-            "title": "Na-arụ ọrụ ngwa ngwa",
+            "title": "Rụọ ọrụ ngwa ngwa",
             "subtitle": "Email, nzaghachi, ọrụ"
           },
           "writeBetter": {
@@ -676,7 +687,7 @@
     },
     "careView": {
       "titlePrefix": "Zute",
-      "titleHighlight": "P000 ⟭",
+      "titleHighlight": "Image Studio",
       "subtitle": "Jiri AI mepụta & dezie onyonyo - ozugbo n'ime Cloud AI."
     },
     "relaxView": {
@@ -699,8 +710,8 @@
       }
     },
     "splash": {
-      "title": "P000 ⟭",
-      "tagline": "ENTERPRISE-GRADE AI Solutions",
+      "title": "CLOUD AI",
+      "tagline": "NGWỌTA AI DỊ ELU MAKA ỤLỌ ỌRỤ",
       "description": "Kwado azụmahịa gị site na teknụzụ ọgụgụ isi dị mkpụmkpụ emebere maka ndị ọkachamara ụlọ ọrụ na ndị otu.",
       "stats": "Ndị ọrụ 500k+ tụkwasịrị obi",
       "rating": "4.9 / 5",
@@ -777,6 +788,18 @@
         "back": "Azu",
         "continue": "Gaa n'ihu",
         "finish": "Nyochaa adịchaghị"
+      },
+      "trial": {
+        "priceLine": "Mgbe ahụ {{price}} kwa afọ. Kagbuo oge ọ bụla.",
+        "title": "Anyị chọrọ ka ị nwalee Cloud AI n'efu.",
+        "demoAsk": "Mee ka eserese m bụrụ akwụkwọ mmado cyberpunk",
+        "demoReply": "Ụdị anọ, dị njikere n'ime sekọnd ole na ole.",
+        "noPayment": "Ọ dịghị ụgwọ ị ga-akwụ ugbu a",
+        "cta": "Nwalee maka $0.00"
+      },
+      "reminder": {
+        "title": "Anyị ga-echetara gị tupu nnwale efu gị agwụ",
+        "note": "Ọkwa ga-erute gị tupu e bọọ gị ụgwọ ọ bụla, ka ihe ọ bụla ghara iju gị anya."
       }
     }
   },
@@ -890,7 +913,7 @@
       "privacy": "Nzuzo"
     },
     "premium": {
-      "headline": "All premium AI n'otu atụmatụ",
+      "headline": "AI Premium niile n'otu atụmatụ",
       "subtitleLine1": "Kpaa nkata, koodu, mepụta na atụmatụ",
       "subtitleLine2": "na elu ụdị.",
       "enableTrial": "Kwado nnwale efu",
@@ -970,7 +993,7 @@
     "offlineError": "Enweghị njikọ ịntanetị. Biko lelee njikọ gị wee nwaa ọzọ.",
     "imagePickerErrorTitle": "Njehie ịhọpụta ihe onyonyo",
     "imagePickerErrorMessage": "Enweghị ike ịnweta foto gị. Biko nwaa ọzọ.",
-    "messageTooLong": "Ozi ogologo ogologo ({{length}}). Oke bụ {{limit}}.",
+    "messageTooLong": "Ozi ahụ dị ogologo nke ukwuu ({{length}}). Oke bụ {{limit}}.",
     "sendFailed": "izipu ozi agaghị. Biko nwaa ọzọ.",
     "modelNoImageSupport": "Ụdị ahọpụtara anaghị akwado onyonyo. Biko họrọ ụdị dị iche.",
     "voiceStartFailed": "Enweghị ike ịmalite olu.",
@@ -982,7 +1005,7 @@
     "startPrivateChat": "Bido nkata nzuzo",
     "endPrivateChat": "Kwụsị nkata nzuzo",
     "permissions": {
-      "photosTitle": "Achọrọ ikike ikike foto",
+      "photosTitle": "Achọrọ ikike foto",
       "photosMessage": "Achọrọ ohere foto ka ịhọrọ onyonyo.",
       "voiceTitle": "Achọrọ ikikere olu",
       "voiceMessage": "Achọrọ igwe okwu na ohere okwu iji jiri olu."
@@ -991,7 +1014,7 @@
       "analyzingImages": "Na-enyocha onyonyo…",
       "searching": "Na-achọ…",
       "thinking": "Na-eche…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "Na-enyocha akwụkwọ…"
     },
     "webSearch": {
       "title": "Ọchụchọ webụ",
@@ -1002,7 +1025,7 @@
       "toggleLabel": "Chọọ webụ"
     },
     "studioBanner": {
-      "label": "P000 ⟭",
+      "label": "Image Studio",
       "title": "Chepụta visuals na ọsọ.",
       "subtitle": "Mepụta, megharịa ma bipụta akụrụngwa a na-ahụ anya n'otu ebe.",
       "cta": "Mepee"
@@ -1032,7 +1055,7 @@
     "markdown": {
       "copy": "Detuo",
       "copied": "Eṅomiri",
-      "table": "TABLE",
+      "table": "TEBỤL",
       "watchVideo": "Lelee vidiyo",
       "wikipedia": "Wikipedia",
       "link": "Njikọ",
@@ -1059,13 +1082,13 @@
     "home": {
       "eyebrow": "Họrọ isiokwu",
       "title": "Kedu ihe ị chọrọ ime?",
-      "subtitle": "Họrọ ntụzịaka, wee malite jiri ngwa ngwa siri ike.",
-      "pickPromptTitle": "Họrọ ngwa ngwa ka ịmalite",
+      "subtitle": "Họrọ ụzọ, wee jiri ntụziaka siri ike malite.",
+      "pickPromptTitle": "Họrọ ntụziaka ka ịmalite",
       "changeTopic": "Họrọ isiokwu ọzọ",
       "intents": {
         "summarize": "Chịkọta ederede",
         "summarizeShort": "Nchịkọta",
-        "summarizeHint": "Edemede, ndetu, ndetu olu, eri ogologo",
+        "summarizeHint": "Edemede, ndetu, ozi olu, mkparịta ụka dị ogologo",
         "plan": "Mee atụmatụ",
         "planHint": "Njem, usoro ihe omume, mmefu ego, oge imecha, mgbanwe ndụ",
         "brainstorm": "Ụbụrụ",
@@ -1079,9 +1102,9 @@
           "founderBriefSubtitle": "Wepụta ihe egwu ndị bụ isi, mkpebi na usoro ndị ọzọ.",
           "classNotesTitle": "Hichaa ndetu ihe ọmụmụ m",
           "classNotesSubtitle": "Tụgharịa ndetu ndị siri ike ka ọ bụrụ ntuziaka ọmụmụ doro anya.",
-          "meetingHandoffTitle": "Dee nchịkọta aka aka",
+          "meetingHandoffTitle": "Dee nchịkọta nnyefe ọrụ",
           "meetingHandoffSubtitle": "Ọ bara uru mgbe nzukọ gasịrị, oku, ma ọ bụ ogologo eriri ime.",
-          "longArticleTitle": "Kọwaa akụkọ a ngwa ngwa",
+          "longArticleTitle": "Chịkọta edemede a ngwa ngwa",
           "longArticleSubtitle": "Gwakọta akụkọ dị ogologo ka ọ bụrụ ebe a na-ewepụ nkọ."
         },
         "plan": {
@@ -1097,7 +1120,7 @@
         "brainstorm": {
           "sideHustleTitle": "Chọta ezigbo ngagharị n'akụkụ",
           "sideHustleSubtitle": "Echiche m nwere ike ịmalite mgbe m na-arụ ọrụ oge niile.",
-          "brandAngleTitle": "Chọta akụkụ ika na-agaghị echefu echefu",
+          "brandAngleTitle": "Chọta ụzọ ika ndị mmadụ agaghị echefu",
           "brandAngleSubtitle": "Ọ bara uru maka ngwaahịa, ndị okike, ụlọ ọrụ ma ọ bụ akwụkwọ akụkọ.",
           "socialSeriesTitle": "Chepụta usoro ọdịnaya",
           "socialSeriesSubtitle": "Ihe na-agbanwe agbanwe iji too ndị na-ege ntị.",
@@ -1108,7 +1131,7 @@
           "spendingLeaksTitle": "Chọta ebe ego m na-agbapụta",
           "spendingLeaksSubtitle": "Gosi ụkpụrụ, ntụpọ adịghị ike, yana mmeri kachasị mfe na mbụ.",
           "customerFeedbackTitle": "Tụgharịa nzaghachi ka ọ bụrụ ihe kacha mkpa",
-          "customerFeedbackSubtitle": "Arịrịọ ụyọkọ, mkpesa, ngwa ngwa na mmetụta.",
+          "customerFeedbackSubtitle": "Hazie arịrịọ, mkpesa, ịdị mkpa na mmetụta n'ìgwè.",
           "habitPatternsTitle": "Chọpụta ụkpụrụ na omume m",
           "habitPatternsSubtitle": "Ọ bara uru maka mgbatị ahụ, ihi ụra, idekọ akụkọ, ma ọ bụ ndekọ elekwasị anya.",
           "metricsStoryTitle": "Kọwaa ihe ọnụọgụgụ pụtara",
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Bulite faịlụ",
+      "supportedTypes": "PDF, DOCX, TXT ma ọ bụ CSV",
+      "failed": "Mbulite agaghị nke ọma",
+      "retry": "Bulite ọzọ",
+      "retryShort": "Gbalịa ọzọ",
+      "remove": "Wepu faịlụ",
+      "pickerErrorTitle": "Enweghị ike imepe faịlụ",
+      "pickerErrorMessage": "Biko gbalịa ịhọrọ akwụkwọ ahụ ọzọ.",
+      "tooMany": "Ị nwere ike itinye ihe ruru akwụkwọ 3 n'otu ozi.",
+      "tooLarge": "Akwụkwọ ọ bụla ga-abụrịrị 10 MB ma ọ bụ obere karịa.",
+      "empty": "Ọ dịghị ihe dị n'akwụkwọ ahụ ị họrọ.",
+      "unsupported": "Jiri faịlụ PDF, DOCX, TXT ma ọ bụ CSV.",
+      "invalidTitle": "Anaghị akwado faịlụ a",
+      "pasteFailedTitle": "Enweghị ike itinye ederede ahụ e mapadoro",
+      "pasteFailedMessage": "Ederede gị ka dị n'igbe ozi.",
+      "waitUntilReady": "Biko chere ka akwụkwọ gị bulitechaa.",
+      "encrypted": "E jiri okwuntughe chekwaa PDF a. Bulite mbipụta a na-akpọchighị akpọchi.",
+      "unsupportedDocument": "Enweghị ike ịgụ faịlụ a ma ọ bụ na anaghị akwado ihe dị n'ime ya. Jiri faịlụ PDF, DOCX, TXT ma ọ bụ CSV.",
+      "tooManyPages": "Kewaa PDF a ka ọ bụrụ faịlụ nwere ihe ruru ibe 100.",
+      "noReadableText": "Ahụghị ederede a na-agụ agụ. PDF ndị e sikanara chọrọ OCR; bulite mbipụta nwere ederede.",
+      "pastedTextName": "Ederede e mapadoro",
+      "badge": "DOC",
+      "untitled": "Akwụkwọ"
     }
   },
   "imageUpload": {
@@ -1180,7 +1210,7 @@
       "unlimitedGPT4": "Nweta GPT-4 na-akparaghị ókè",
       "geminiPro": "Nweta Gemini Pro",
       "grokInsights": "Jiri Grok maka nghọta ọhụrụ",
-      "priorityAccess": "Nweta ụzọ na nzaghachi ngwa ngwa"
+      "priorityAccess": "Ohere mbụ & nzaghachi ngwa ngwa karịa"
     },
     "bestValue": "Uru kacha mma",
     "annualPremium": "Premium afọ",
@@ -1293,7 +1323,7 @@
         "close": "Mechie"
       },
       "rewardSuccess": {
-        "error": "ERROR",
+        "error": "NJEHIE",
         "success": "Ọganihu",
         "somethingWentWrong": "Ọ nwere ihe adịghị mma",
         "rewardUnlocked": "Akpọchiela ụgwọ ọrụ",
@@ -1322,6 +1352,10 @@
       "cta": "Nweta",
       "claimed": "Enwetara! +{{amount}} mkpụrụ ego",
       "later": "Emesịa"
+    },
+    "button": {
+      "title": "Ụgwọ ọrụ",
+      "subtitle": "Onyinye na uru kwa ụbọchị"
     }
   },
   "app": {
@@ -1329,11 +1363,12 @@
     "offlineBanner": "Ị nọghị n'ịntanetị",
     "launch": {
       "accessibilityLabel": "Bido Cloud AI",
-      "title": "P000 ⟭",
-      "subtitle": "AI, dị njikere mgbe ịnọ"
+      "title": "CLOUD AI",
+      "subtitle": "AI, dị njikere mgbe ịnọ",
+      "closePreview": "Mechie nlele ihuenyo mmalite"
     },
     "errors": {
-      "modelsLoadTitle": "Ibu Ibu Model agaghị",
+      "modelsLoadTitle": "Enweghị ike ibu ụdị",
       "modelsLoadMessage": "Enweghị ike ibunye ụdị AI. Ngwa ahụ ga-eji ụdị ndabara. Biko lelee njikọ ịntanetị gị.",
       "modelsLoadTimeout": "Ụdị nbudata were ogologo oge. Ngwa ahụ ga-eji ụdị ndabara. Biko nwaa ọzọ.",
       "modelsLoadNetwork": "Enweghị njikọ ịntanetị. Ngwa ahụ ga-eji ụdị ndabara. Biko lelee njikọ gị.",
@@ -1386,9 +1421,197 @@
   "notifications": {
     "priming": {
       "title": "Atụfụla mkpụrụ ego gị kwa ụbọchị",
-      "body": "Anyị na-eziga ncheta otu ugboro n'ụbọchị ka usoro gị dịrị ndụ ma mkpụrụ ego gị na-abawanye. Enweghị spam, ị nwekwara ike ịgbanyụ ya mgbe ọ bụla.",
+      "body": "Anyị na-eziga ncheta otu ugboro n'ụbọchị ka usoro gị dịrị ndụ ma mkpụrụ ego gị na-abawanye. Anyị agaghị ezigara gị ozi efu, ị nwekwara ike ịgbanyụ ya mgbe ọ bụla.",
       "enable": "Gbanye ncheta",
       "skip": "Ọ bụghị ugbu a"
+    }
+  },
+  "workspace": {
+    "documents": "Akwụkwọ",
+    "videos": "Nchịkọta vidiyo",
+    "summary": "Nchịkọta",
+    "details": "Nkọwa",
+    "sources": "Isi mmalite",
+    "youtube": "YouTube",
+    "upload": "Bulite",
+    "transcript": "Ederede okwu",
+    "concise": "Na nkenke",
+    "detailed": "Nkọwa zuru oke",
+    "errors": {
+      "NETWORK": "Lelee njikọ ịntanetị gị wee nwaa ọzọ. Isi mmalite ndị ị họrọ ka nọ ebe a.",
+      "TIMEOUT": "Isi mmalite a were ogologo oge. Nwaa vidiyo dị mkpụmkpụ ma ọ bụ akwụkwọ pere mpe.",
+      "NOT_CONFIGURED": "Nyocha isi mmalite adịbeghị. Biko nwaa ọzọ ma emechaa.",
+      "VIDEO_NOT_CONFIGURED": "Nyocha vidiyo ozugbo adịbeghị. Ị ka nwere ike ịchịkọta ederede okwu e mapadoro.",
+      "DOCUMENT_EXPIRED": "Oge otu isi mmalite agwụla. Họrọ akwụkwọ mbụ ahụ ọzọ.",
+      "SOURCE_UNAVAILABLE": "Enweghị ike inyocha isi mmalite a. Nwaa faịlụ ọzọ ma ọ bụ ederede okwu e mapadoro.",
+      "TOO_MANY_PAGES": "PDF a nwere ibe karịrị akarị. Kewaa ya ka ọ bụrụ faịlụ nwere ihe ruru ibe 100 nke ọ bụla.",
+      "INVALID_VIDEO": "Họrọ vidiyo MP4 ma ọ bụ WebM a na-agụ agụ, ruo 20 MB. Anyị na-enyocha nkeji 10 mbụ.",
+      "INVALID_DOCUMENTS": "Họrọ akwụkwọ gị ọzọ wee nwaa ọzọ.",
+      "CLIENT_ID_REQUIRED": "Malitegharịa ngwa ahụ wee nwaa ọzọ.",
+      "RATE_LIMITED": "Ị ruola oke nyocha nke taa. Biko nwaa ọzọ echi.",
+      "INVALID_RESULT": "Nyocha ahụ ezughị oke. Biko nwaa ọzọ.",
+      "FILE_TOO_LARGE": "Faịlụ a buru oke ibu. Akwụkwọ nwere ike iru 10 MB; vidiyo mkpụmkpụ nwere ike iru 20 MB.",
+      "NO_READABLE_TEXT": "Ahụghị ederede a na-agụ agụ. Jiri PDF nwere ederede ma ọ bụ mapado ederede ahụ; PDF ndị e sikanara chọrọ OCR.",
+      "ANALYSIS_FAILED": "Enweghị ike inyocha isi mmalite ahụ. Biko nwaa ọzọ.",
+      "SOURCES_TOO_LARGE": "Akwụkwọ ndị a buru oke ibu inyocha ọnụ. Chịkọta ha otu otu ma ọ bụ n'obere otu.",
+      "ENCRYPTED_DOCUMENT": "E jiri okwuntughe chekwaa PDF a. Bulite mbipụta a na-akpọchighị akpọchi.",
+      "UNSUPPORTED_DOCUMENT": "Enweghị ike ịgụ faịlụ a ma ọ bụ na anaghị akwado ihe dị n'ime ya. Jiri faịlụ PDF, DOCX, TXT ma ọ bụ CSV.",
+      "SERVICE_BUSY": "Ọrụ nyocha nwere ọtụtụ ihe ọ na-eme ugbu a. Biko nwaa ọzọ n'oge na-adịghị anya.",
+      "PROVIDER_UNAVAILABLE": "Ọrụ AI adịghị ugbu a nwa oge. Biko nwaa ọzọ n'oge na-adịghị anya.",
+      "DAILY_LIMIT": "Ị ruola oke nyocha isi mmalite nke taa. Nchịkọta gị echekwara ka dị.",
+      "ALREADY_PROCESSING": "Otu nyocha na-aga n'ihu ugbu a. Lelee ọganihu ya n'okpuru tupu ịmalite ọzọ.",
+      "JOB_PENDING": "A ka na-arụ ọrụ na nyocha gị. Jiri Lelee ọganihu n'okpuru iji nweta ya.",
+      "JOB_NOT_FOUND": "Ahụghị nyocha a ma ọ bụ na oge ya agwụla. Ọ bụrụ na ị ka bulitere ya, chere ntakịrị wee lelee ọzọ.",
+      "WORKSPACE_KEY_REQUIRED": "Enweghị ike imeghe ọba isi mmalite gị. Malitegharịa ngwa ahụ wee nwaa ọzọ.",
+      "NO_SPEECH": "Enweghị ike ide okwu doro anya. Nwaa vidiyo nwere okwu a na-anụ nke ọma ma ọ bụ mapado ederede okwu ya.",
+      "VIDEO_TOO_LONG": "Họrọ vidiyo nke ogologo ya na-agafeghị nkeji 10."
+    },
+    "invalidUrl": "Tinye njikọ vidiyo YouTube https:// ziri ezi.",
+    "invalidTranscript": "Mapado ederede okwu nwere mkpụrụedemede dị n'etiti 40 na 120,000.",
+    "chooseFirst": "Buru ụzọ họrọ isi mmalite.",
+    "uploading": "Na-ebulite {{name}}",
+    "extracting": "Na-agụ akwụkwọ gị…",
+    "analyzing": "Na-achọta ihe ndị dị mkpa…",
+    "chatError": "Enweghị ike imepe isi mmalite a na nkata. Biko nwaa ọzọ.",
+    "shareError": "Enweghị ike ịkekọrịta nchịkọta a. Biko nwaa ọzọ.",
+    "removeTitle": "Wepu nchịkọta echekwara?",
+    "removeBody": "Nke a na-ewepụ nchịkọta ahụ na ngwaọrụ a. Nkata gị ga-anọgide. Ederede isi mmalite e bulitere na-agbaso oge nchekwa ya dị ugbu a.",
+    "remove": "Wepu",
+    "removeError": "Enweghị ike iwepu nchịkọta a. Biko nwaa ọzọ.",
+    "summarizeVideo": "Nweta nchịkọta",
+    "chooseDocuments": "Tinye akwụkwọ gị",
+    "videoSubtitle": "Mee ka okwu e kwuru bụrụ isi echiche, isiakwụkwọ na azịza.",
+    "documentSubtitle": "Chọta ihe ndị bụ isi na faịlụ gị. Jụọ ajụjụ na nkata.",
+    "newAnalysis": "Nchịkọta ọhụrụ",
+    "savedBrief": "NCHỊKỌTA GỊ",
+    "documentCoverage": "Dabere na ederede e wepụtara. Ọ nwere ike ọ gaghị agụnye onyonyo na ibe e sikanara.",
+    "transcriptCoverage": "Dabere na ederede okwu e nyere. E nyochaghị ihe a na-ahụ anya na vidiyo ahụ.",
+    "videoCoverage": "Nyocha AI nke vidiyo ahụ. Isiakwụkwọ adịghị kpọmkwem; lelee nkọwa ndị dị mkpa na nke mbụ ya.",
+    "extractionLimit": "Otu akwụkwọ ruru oke mwepụta ederede. Nchịkọta a nwere ike ọ gaghị ekpuchi faịlụ mbụ ahụ niile.",
+    "saveError": "Enweghị ike ichekwa nchịkọta a. Hapụ ihuenyo a ka ọ ghere oghe wee nwaa ọzọ, ma ọ bụ kekọrịta otu mbipụta.",
+    "retrySave": "Gbalịa ichekwa ọzọ",
+    "chapters": "Isiakwụkwọ",
+    "actions": "Ihe a ga-eme",
+    "noSections": "Achọpụtaghị akụkụ ndị ọzọ n'isi mmalite a.",
+    "linkError": "Enweghị ike imepe vidiyo ahụ.",
+    "videoEvidence": "Oge e dere na vidiyo adịghị kpọmkwem. Nchịkọta ederede okwu na-akọwa ederede e nyere, ọ naghị enyocha ihe a na-ahụ anya.",
+    "documentEvidence": "E jiri ederede e wepụtara tụnyere mpụrụ ndị dị n'okpuru. A na-egosi nọmba ibe mbụ naanị mgbe ha dị.",
+    "noEvidence": "Enweghị mpụrụ ederede a kwadoro maka nchịkọta a.",
+    "coverage": "Ihe e kpuchiri na oke ya",
+    "sourceExpires": "Isi mmalite dị ruo",
+    "localOnly": "A na-echekwa nchịkọta na ngwaọrụ a. Kekọrịta otu mbipụta ka i nwee ndabere.",
+    "continueChat": "Jụọ maka nke a",
+    "chatContext": "Nkata na-amalite na nchịkọta a echekwara na ntụaka akwụkwọ ọ bụla dị. Nchịkọta vidiyo abụghị ederede okwu zuru ezu.",
+    "share": "Kekọrịta nchịkọta",
+    "videoLink": "Njikọ vidiyo YouTube",
+    "publicOnly": "Naanị vidiyo ọha. Vidiyo nzuzo, ndị a na-edepụtaghị, ndị na-aga ozugbo na ndị a machibidoro nwere ike ọ gaghị adị.",
+    "transcriptHint": "Mapado ederede okwu ma ọ bụ ederede ndepụta n'okpuru. Tinye oge maka isiakwụkwọ.",
+    "textOnly": "Naanị ederede; a naghị enyocha ihe a na-ahụ anya.",
+    "clip": "Tinye vidiyo",
+    "videoLimits": "MP4, MOV, WebM · ruo 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · faịlụ 3 · 10 MB nke ọ bụla",
+    "openingFiles": "Na-emepe faịlụ…",
+    "chooseFiles": "Tinye faịlụ",
+    "removeFile": "Wepu {{name}}",
+    "depth": "Mee ka ọ bụrụ nke gị",
+    "processingNotice": "A na-ebulite faịlụ gị ka AI hazie ya.",
+    "cancel": "Kagbuo",
+    "analyzeDocuments": "Nweta nchịkọta",
+    "library": "Ihe kwesịrị ichekwa",
+    "search": "Chọọ nchịkọta",
+    "loadError": "Enweghị ike ibunye nchịkọta echekwara. E dochighị data gị dị adị.",
+    "retry": "Gbalịa ọzọ",
+    "emptyLibrary": "Nchịkọta gị ga-apụta ebe a, dị njikere ka i lelee ha ọzọ ma ọ bụ kparịta ha na nkata.",
+    "removeBrief": "Wepu {{name}}",
+    "audioCoverage": "Nchịkọta okwu · A naghị enyocha ihe a na-ahụ anya. Jiri ndekọ ahụ lelee aha na nọmba.",
+    "uploadTitle": "Họrọ faịlụ ka ịmalite",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · nkeji 10\nNaanị okwu e kwuru",
+    "noSearchResults": "Ahụghị nchịkọta ọ bụla. Nwaa ọchụchọ dị iche.",
+    "clearSearch": "Kpochapụ ọchụchọ",
+    "keyPoints": "Isi ihe ndị dị mkpa",
+    "chatContextShort": "Ị chọrọ ịmata ihe ọzọ? Jụọ ajụjụ ọzọ.",
+    "openingChat": "Na-emepe nkata…",
+    "uploadVideo": "Bulite vidiyo",
+    "pasteTranscript": "Mapado ederede okwu",
+    "heroVideoLabel": "NYOCHA VIDIYO",
+    "heroDocumentLabel": "NYOCHA AKWỤKWỌ",
+    "heroVideoTitle": "Lelee obere.\nMata karịa.",
+    "heroDocumentTitle": "Faịlụ gị.\nAzịza doro anya.",
+    "heroVideoDescription": "Mee ka okwu e kwuru bụrụ nchịkọta kwesịrị ichekwa.",
+    "heroDocumentDescription": "Chọpụta ihe ndị bụ isi. Jikọọ echiche. Jụọ ihe ọ bụla.",
+    "heroIdeas": "Isi echiche",
+    "heroFollowUps": "Jụọ AI",
+    "heroSummarize": "Chịkọta",
+    "heroCompare": "Tụnyere",
+    "summaryReady": "Ihe ị ga-eburu",
+    "savedOnDevice": "Echekwara na ngwaọrụ a",
+    "notSavedYet": "Dị njikere ichekwa",
+    "atAGlance": "N'otu anya",
+    "addSource": "Tinye isi mmalite gị",
+    "quickDescription": "Naanị isi ihe",
+    "detailedDescription": "Ohere maka nkọwa",
+    "chooseVideo": "Tinye vidiyo",
+    "studioLabel": "Nghọta doro anya karịa.",
+    "studioDocumentTitle": "Nnukwu echiche.\nỊgụ obere.",
+    "studioVideoTitle": "Lelee obere.\nNweta karịa.",
+    "studioDocumentDescription": "Site n'ọtụtụ ibe ruo n'echiche ọhụrụ gị na-esote.",
+    "studioVideoDescription": "Dowe akụkụ ndị kacha mma. Mee ka okwu e kwuru bụrụ ihe ị nwere ike ịlaghachi na ya.",
+    "studioVideoDescriptionV3": "Hụ akụkọ ahụ niile. Mee ka ihe nkiri na okwu e kwuru bụrụ echiche ị nwere ike ịlaghachi na ha.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Nkeji 10 mbụ · Okwu na ihe a na-ahụ",
+    "videoCoverageV3": "Okwu na ihe nkiri a na-ahụ anya · Naanị nkeji 10 mbụ kacha. Isiakwụkwọ adịghị kpọmkwem; omume ndị na-eme ngwa ngwa nwere ike ifu.",
+    "videoChatMenu": "Ghọta ihe nkiri, okwu na oge ndị dị mkpa",
+    "analyzingVideo": "Na-ekiri vidiyo gị…",
+    "uploadingVideo": "Na-ebulite vidiyo… {{percent}}%",
+    "videoCancelled": "Nyocha vidiyo akwụsịla.",
+    "videoSourceNeeded": "Mapado njikọ YouTube ọha, ma ọ bụ pịa + → Bulite vidiyo. Mgbe ahụ zipu ajụjụ gị.",
+    "localOnlyV2": "A na-echekwa nchịkọta na ngwaọrụ a. A na-edowekwa nsonaazụ nyocha ahụ na sava nyocha ruo ụbọchị 7 ka e wee nweta ya, mgbe ahụ a hichapụ ya. Kekọrịta otu mbipụta ka i nwee ndabere.",
+    "leavePrivateTitle": "Hapụ nkata nzuzo?",
+    "leavePrivateBody": "Ịjụ maka nchịkọta a ga-akwụsị nkata nzuzo gị ma chekwaa mkparịta ụka ọhụrụ ahụ n'akụkọ nkata gị.",
+    "leavePrivateConfirm": "Gaa n'ihu",
+    "documentPages": "Ahụrụ ederede na ibe {{extracted}} n'ime {{total}}.",
+    "documentPartialText": "Ụfọdụ ibe enweghị ederede a pụrụ iwepụta. A naghị agụ onyonyo na ibe e sikanara.",
+    "documentTruncated": "Naanị mmalite akwụkwọ a ka e wepụtara. Nchịkọta ahụ nwere ike ịhapụ ihe dị n'akụkụ ndị na-esote.",
+    "sourceUnavailable": "Ụdị isi mmalite a adịghị ugbu a nwa oge. Nwaa nhọrọ ọzọ dị n'okpuru.",
+    "accepted": "Na-enyocha isi mmalite gị. Ị nwere ike ịhapụ ihuenyo a wee lelee ọganihu ma emechaa.",
+    "checkingProgress": "Na-elele nyocha gị echekwara…",
+    "pendingError": "Enweghị ike ibunye nyocha ndị na-echere. Malitegharịa ngwa ahụ tupu ịmalite ọzọ.",
+    "pendingAnalysis": "NYOCHA NA-ECHERE",
+    "resumeHint": "Ozugbo a nabatara ya, nyocha na-aga n'ihu ọ bụrụgodị na ị hapụ ihuenyo ahụ. Nweta nsonaazụ ya ebe a n'amaliteghị ya ọzọ.",
+    "checkProgress": "Lelee ọganihu",
+    "cancelAnalysis": "Kagbuo nyocha",
+    "demoNotice": "Ngosi mpaghara · ọdịnaya ihe atụ · e bulitebeghị isi mmalite ọ bụla",
+    "publicVideoCoverage": "Vidiyo YouTube ọha · Nkeji 10 mbụ. Vidiyo nzuzo, ndị na-aga ozugbo na ndị a machibidoro nwere ike ọ gaghị adị.",
+    "sourceUnavailableLibrary": "Ụdị isi mmalite a adịghị ugbu a nwa oge. Ị ka nwere ike imepe nchịkọta gị echekwara.",
+    "stopWaiting": "Kwụsị ichere",
+    "previewSample": "Ihe atụ nlele · ngosi mpaghara",
+    "pickVideoError": "Họrọ otu vidiyo MP4 ma ọ bụ WebM, ruo 20 MB na nkeji 10.",
+    "pickDocumentsError": "Họrọ ihe ruru akwụkwọ atọ PDF, DOCX, TXT ma ọ bụ CSV, ruo 10 MB nke ọ bụla.",
+    "videoErrors": {
+      "ONE_VIDEO": "Họrọ otu vidiyo ma ọ bụ mapado otu njikọ YouTube n'otu oge.",
+      "VIDEO_MIXED_SOURCES": "Zipu vidiyo ahụ iche, na-enweghị onyonyo ma ọ bụ akwụkwọ.",
+      "VIDEO_QUESTION_TOO_LONG": "Mee ka ajụjụ vidiyo gị ghara ịgafe mkpụrụedemede 4,000.",
+      "INVALID_VIDEO": "Họrọ vidiyo MP4 ma ọ bụ WebM, ruo 20 MB.",
+      "FILE_TOO_LARGE": "Họrọ vidiyo ruo 20 MB.",
+      "SOURCE_UNAVAILABLE": "Anyị enweghị ike ịnweta vidiyo a. Nwaa vidiyo YouTube ọha ma ọ bụ bulite faịlụ MP4 ma ọ bụ WebM.",
+      "INVALID_RESULT": "Nyocha vidiyo ahụ ezughị oke. Biko nwaa ọzọ.",
+      "NETWORK": "Njikọ kwụsịrị. Lelee Nchịkọta vidiyo maka nsonaazụ tupu ị nwaa ọzọ.",
+      "TIMEOUT": "Vidiyo ahụ were ogologo oge inyocha. Nwaa vidiyo dị mkpụmkpụ karịa.",
+      "JOB_PENDING": "A ka na-arụ ọrụ na vidiyo gị. Mepee Nchịkọta vidiyo iji lelee ọganihu ya.",
+      "DAILY_LIMIT": "Ị ruola oke nyocha vidiyo na akwụkwọ nke taa. Biko nwaa ọzọ echi.",
+      "ALREADY_PROCESSING": "Otu nyocha na-aga n'ihu ugbu a. Mepee Nchịkọta vidiyo iji lelee ọganihu ya.",
+      "SERVICE_BUSY": "Nyocha vidiyo nwere ọtụtụ ọrụ ugbu a. Biko nwaa ọzọ n'oge na-adịghị anya.",
+      "PROVIDER_UNAVAILABLE": "Nyocha vidiyo adịghị ugbu a nwa oge. Biko nwaa ọzọ n'oge na-adịghị anya.",
+      "NOT_CONFIGURED": "Nyocha vidiyo adịghị ugbu a nwa oge. Biko nwaa ọzọ ma emechaa.",
+      "VIDEO_NOT_CONFIGURED": "Nyocha vidiyo adịghị ugbu a nwa oge. Biko nwaa ọzọ ma emechaa.",
+      "SAVE_FAILED": "Nchịkọta gị adịla njikere, mana enweghị ike ichekwa ya n'ọba gị. Dowe nkata a ma ọ bụ detuo nchịkọta ahụ."
+    },
+    "markdown": {
+      "summary": "Nchịkọta",
+      "keyTakeaways": "Isi ihe ndị dị mkpa",
+      "details": "Nkọwa",
+      "actionItems": "Ihe a ga-eme",
+      "sourceExcerpts": "Mpụrụ isi mmalite",
+      "coverageNotes": "Ndetu gbasara ihe e kpuchiri"
     }
   }
 }

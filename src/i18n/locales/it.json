@@ -63,14 +63,25 @@
     "chatty_personal": "Più amichevole e personale",
     "pro_users": "Migliore per utenti avanzati",
     "research_helper": "Buono per ricerca e note",
-    "reasoning_strong": "Modello di ragionamento avanzato"
+    "reasoning_strong": "Modello di ragionamento avanzato",
+    "gpt56_sol": "Il modello GPT-5.6 più potente",
+    "gpt56_terra": "Modello GPT-5.6 bilanciato",
+    "gpt56_luna": "Modello veloce per le attività quotidiane",
+    "claude_fable": "IA di Anthropic veloce e creativa",
+    "claude_sonnet": "Modello avanzato di Anthropic",
+    "gemini_flash": "Modello IA veloce di Google",
+    "gemini_pro": "Modello Pro avanzato di Google",
+    "grok_latest": "Il modello più recente di xAI",
+    "deepseek_pro": "Modello DeepSeek avanzato",
+    "deepseek_flash": "Modello DeepSeek veloce"
   },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
     "google": "Google",
     "xai": "xAI",
-    "other": "Altro"
+    "other": "Altro",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Nuova chat",
@@ -191,7 +202,7 @@
         "description": "Cosa cucinare con ciò che hai."
       },
       "fitness": {
-        "name": "Coach fitness",
+        "name": "Allenatore personale",
         "description": "Mini abitudini e allenamenti a casa."
       },
       "money": {
@@ -231,7 +242,7 @@
         "description": "Organizza velocemente una piccola festa."
       },
       "social": {
-        "name": "Creatore post social",
+        "name": "Creatore di post social",
         "description": "Scrivi post con varianti."
       },
       "interview": {
@@ -434,7 +445,7 @@
         "name": "Illustrazione 3D"
       },
       "dark_fantasy": {
-        "name": "Dark fantasy"
+        "name": "Fantasy oscuro"
       },
       "vintage_film": {
         "name": "Film vintage"
@@ -685,7 +696,7 @@
       "subtitle": "Assistenti IA specializzati pronti ad aiutarti nella vita quotidiana",
       "cards": {
         "fitness": {
-          "title": "Coach fitness",
+          "title": "Allenatore personale",
           "text": "Piccole abitudini e allenamenti a casa."
         },
         "recipes": {
@@ -777,6 +788,18 @@
         "back": "Indietro",
         "continue": "Continua",
         "finish": "Esplora premium"
+      },
+      "trial": {
+        "priceLine": "Poi {{price}} all’anno. Disdici quando vuoi.",
+        "title": "Vogliamo che tu provi Cloud AI gratis.",
+        "demoAsk": "Trasforma il mio schizzo in un poster cyberpunk",
+        "demoReply": "Quattro stili, pronti in pochi secondi.",
+        "noPayment": "Nessun pagamento dovuto ora",
+        "cta": "Prova a $0.00"
+      },
+      "reminder": {
+        "title": "Ti avviseremo prima che la prova gratuita finisca",
+        "note": "Riceverai un avviso con largo anticipo rispetto a qualsiasi addebito, così niente ti coglierà di sorpresa."
       }
     }
   },
@@ -991,7 +1014,7 @@
       "analyzingImages": "Analisi immagini…",
       "searching": "Ricerca…",
       "thinking": "Elaborazione…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "Analisi dei documenti…"
     },
     "webSearch": {
       "title": "Ricerca web",
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Carica file",
+      "supportedTypes": "PDF, DOCX, TXT o CSV",
+      "failed": "Caricamento non riuscito",
+      "retry": "Riprova il caricamento",
+      "retryShort": "Riprova",
+      "remove": "Rimuovi file",
+      "pickerErrorTitle": "Impossibile aprire i file",
+      "pickerErrorMessage": "Prova a selezionare di nuovo il documento.",
+      "tooMany": "Puoi allegare fino a 3 documenti per messaggio.",
+      "tooLarge": "Ogni documento deve essere di massimo 10 MB.",
+      "empty": "Il documento selezionato è vuoto.",
+      "unsupported": "Usa un file PDF, DOCX, TXT o CSV.",
+      "invalidTitle": "File non supportato",
+      "pasteFailedTitle": "Impossibile allegare il testo incollato",
+      "pasteFailedMessage": "Il testo è rimasto nella casella del messaggio.",
+      "waitUntilReady": "Attendi il completamento del caricamento dei documenti.",
+      "encrypted": "Questo PDF è protetto da password. Carica una copia sbloccata.",
+      "unsupportedDocument": "Questo file è illeggibile o il suo contenuto non è supportato. Usa un file PDF, DOCX, TXT o CSV.",
+      "tooManyPages": "Dividi questo PDF in file di massimo 100 pagine.",
+      "noReadableText": "Nessun testo leggibile trovato. I PDF scansionati richiedono l’OCR; carica una copia con testo selezionabile.",
+      "pastedTextName": "Testo incollato",
+      "badge": "DOC",
+      "untitled": "Documento"
     }
   },
   "imageUpload": {
@@ -1322,6 +1352,10 @@
       "cta": "Riscuoti",
       "claimed": "Ricevuto! +{{amount}} monete",
       "later": "Più tardi"
+    },
+    "button": {
+      "title": "Ricompense",
+      "subtitle": "Bonus e vantaggi giornalieri"
     }
   },
   "app": {
@@ -1330,7 +1364,8 @@
     "launch": {
       "accessibilityLabel": "Avvio di Cloud AI",
       "title": "CLOUD AI",
-      "subtitle": "L'IA, pronta quando lo sei tu"
+      "subtitle": "L'IA, pronta quando lo sei tu",
+      "closePreview": "Chiudi l’anteprima della schermata di avvio"
     },
     "errors": {
       "modelsLoadTitle": "Errore nel Caricamento dei Modelli",
@@ -1389,6 +1424,194 @@
       "body": "Inviamo un promemoria al giorno per mantenere viva la tua serie e far crescere le monete. Niente spam, puoi disattivarlo quando vuoi.",
       "enable": "Attiva i promemoria",
       "skip": "Non ora"
+    }
+  },
+  "workspace": {
+    "documents": "Documenti",
+    "videos": "Riassunti video",
+    "summary": "Riepilogo",
+    "details": "Dettagli",
+    "sources": "Fonti",
+    "youtube": "YouTube",
+    "upload": "Carica",
+    "transcript": "Trascrizione",
+    "concise": "Breve e chiaro",
+    "detailed": "Il quadro completo",
+    "errors": {
+      "NETWORK": "Controlla la connessione a Internet e riprova. Le fonti selezionate sono ancora qui.",
+      "TIMEOUT": "Questa fonte ha richiesto troppo tempo. Prova un video più breve o un documento più piccolo.",
+      "NOT_CONFIGURED": "L’analisi delle fonti non è ancora disponibile. Riprova più tardi.",
+      "VIDEO_NOT_CONFIGURED": "L’analisi diretta dei video non è ancora disponibile. Puoi comunque riassumere una trascrizione incollata.",
+      "DOCUMENT_EXPIRED": "Una fonte è scaduta. Seleziona di nuovo il documento originale.",
+      "SOURCE_UNAVAILABLE": "Impossibile analizzare questa fonte. Prova un altro file o una trascrizione incollata.",
+      "TOO_MANY_PAGES": "Questo PDF ha troppe pagine. Dividilo in file di massimo 100 pagine ciascuno.",
+      "INVALID_VIDEO": "Scegli un video MP4 o WebM leggibile, fino a 20 MB. Analizziamo i primi 10 minuti.",
+      "INVALID_DOCUMENTS": "Seleziona di nuovo i documenti e riprova.",
+      "CLIENT_ID_REQUIRED": "Riavvia l’app e riprova.",
+      "RATE_LIMITED": "Hai raggiunto il limite di analisi di oggi. Riprova domani.",
+      "INVALID_RESULT": "L’analisi è incompleta. Riprova.",
+      "FILE_TOO_LARGE": "Questo file è troppo grande. I documenti possono arrivare a 10 MB, le clip video a 20 MB.",
+      "NO_READABLE_TEXT": "Nessun testo leggibile trovato. Usa un PDF con testo selezionabile o incolla il testo; i PDF scansionati richiedono l’OCR.",
+      "ANALYSIS_FAILED": "Impossibile analizzare la fonte. Riprova.",
+      "SOURCES_TOO_LARGE": "Questi documenti sono troppo grandi per essere analizzati insieme. Riassumili separatamente o in gruppi più piccoli.",
+      "ENCRYPTED_DOCUMENT": "Questo PDF è protetto da password. Carica una copia sbloccata.",
+      "UNSUPPORTED_DOCUMENT": "Questo file è illeggibile o il suo contenuto non è supportato. Usa un file PDF, DOCX, TXT o CSV.",
+      "SERVICE_BUSY": "Il servizio di analisi è occupato. Riprova tra poco.",
+      "PROVIDER_UNAVAILABLE": "Il servizio di IA non è temporaneamente disponibile. Riprova tra poco.",
+      "DAILY_LIMIT": "Hai raggiunto il limite di analisi delle fonti di oggi. I riepiloghi salvati restano disponibili.",
+      "ALREADY_PROCESSING": "Un’analisi è già in corso. Controllane l’avanzamento qui sotto prima di avviarne un’altra.",
+      "JOB_PENDING": "L’analisi è ancora in elaborazione. Usa «Controlla avanzamento» qui sotto per recuperarla.",
+      "JOB_NOT_FOUND": "Questa analisi non è stata trovata o è scaduta. Se l’hai appena caricata, attendi un momento e controlla di nuovo.",
+      "WORKSPACE_KEY_REQUIRED": "Impossibile sbloccare la tua libreria di fonti. Riavvia l’app e riprova.",
+      "NO_SPEECH": "Non è stato possibile trascrivere un parlato chiaro. Prova un video con voci udibili o incolla la sua trascrizione.",
+      "VIDEO_TOO_LONG": "Scegli un video di massimo 10 minuti."
+    },
+    "invalidUrl": "Inserisci un link https:// valido a un video YouTube.",
+    "invalidTranscript": "Incolla una trascrizione tra 40 e 120.000 caratteri.",
+    "chooseFirst": "Scegli prima una fonte.",
+    "uploading": "Caricamento di {{name}}",
+    "extracting": "Lettura del documento…",
+    "analyzing": "Cerchiamo il meglio…",
+    "chatError": "Impossibile aprire questa fonte in chat. Riprova.",
+    "shareError": "Impossibile condividere questo riepilogo. Riprova.",
+    "removeTitle": "Rimuovere il riepilogo salvato?",
+    "removeBody": "Il riepilogo verrà rimosso da questo dispositivo. Le tue chat restano. Il testo della fonte caricata segue il periodo di conservazione già previsto.",
+    "remove": "Rimuovi",
+    "removeError": "Impossibile rimuovere questo riepilogo. Riprova.",
+    "summarizeVideo": "Ottieni riepilogo",
+    "chooseDocuments": "Aggiungi i tuoi documenti",
+    "videoSubtitle": "Trasforma i contenuti parlati in idee chiave, capitoli e risposte.",
+    "documentSubtitle": "Trova l’essenziale nei tuoi file. Fai domande in chat.",
+    "newAnalysis": "Nuovo riepilogo",
+    "savedBrief": "IL TUO RIEPILOGO",
+    "documentCoverage": "Basato sul testo estratto. Immagini e pagine scansionate potrebbero non essere incluse.",
+    "transcriptCoverage": "Basato sulla trascrizione fornita. Le immagini del video non sono state analizzate.",
+    "videoCoverage": "Analisi IA del video. I capitoli sono approssimativi; verifica i dettagli importanti sull’originale.",
+    "extractionLimit": "Un documento ha raggiunto il limite di estrazione del testo. Questo riepilogo potrebbe non coprire l’intero file originale.",
+    "saveError": "Impossibile salvare questo riepilogo. Tieni aperta questa schermata e riprova, oppure condividine una copia.",
+    "retrySave": "Riprova a salvare",
+    "chapters": "Capitoli",
+    "actions": "Azioni da fare",
+    "noSections": "In questa fonte non sono state individuate altre sezioni.",
+    "linkError": "Impossibile aprire il video.",
+    "videoEvidence": "I timestamp del video sono approssimativi. I riepiloghi delle trascrizioni descrivono il testo fornito e non analizzano le immagini.",
+    "documentEvidence": "Gli estratti qui sotto sono confrontati con il testo estratto. I numeri di pagina originali sono mostrati solo se disponibili.",
+    "noEvidence": "Nessun estratto di testo verificato disponibile per questo riepilogo.",
+    "coverage": "Copertura e limiti",
+    "sourceExpires": "Fonte disponibile fino al",
+    "localOnly": "I riepiloghi sono salvati su questo dispositivo. Condividine una copia per avere un backup.",
+    "continueChat": "Fai una domanda",
+    "chatContext": "La chat parte da questo riepilogo salvato e dagli eventuali riferimenti ai documenti disponibili. Un riepilogo video non è una trascrizione completa.",
+    "share": "Condividi riepilogo",
+    "videoLink": "Link al video YouTube",
+    "publicOnly": "Solo video pubblici. I video privati, non in elenco, in diretta e con restrizioni potrebbero non essere disponibili.",
+    "transcriptHint": "Incolla la trascrizione o i sottotitoli. Includi i timestamp per ottenere i capitoli.",
+    "textOnly": "Solo testo; le immagini non vengono analizzate.",
+    "clip": "Aggiungi un video",
+    "videoLimits": "MP4, MOV, WebM · fino a 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · 3 file · 10 MB ciascuno",
+    "openingFiles": "Apertura dei file…",
+    "chooseFiles": "Aggiungi file",
+    "removeFile": "Rimuovi {{name}}",
+    "depth": "Su misura per te",
+    "processingNotice": "Il tuo file viene caricato per l’elaborazione con l’IA.",
+    "cancel": "Annulla",
+    "analyzeDocuments": "Ottieni riepilogo",
+    "library": "Da conservare",
+    "search": "Cerca riepiloghi",
+    "loadError": "Impossibile caricare i riepiloghi salvati. I dati esistenti non sono stati sostituiti.",
+    "retry": "Riprova",
+    "emptyLibrary": "I tuoi riepiloghi appariranno qui, pronti da rivedere o da discutere in chat.",
+    "removeBrief": "Rimuovi {{name}}",
+    "audioCoverage": "Riepilogo del parlato · Le immagini non vengono analizzate. Verifica nomi e numeri con la registrazione.",
+    "uploadTitle": "Scegli i file per iniziare",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · 10 min\nSolo contenuti parlati",
+    "noSearchResults": "Nessun riepilogo trovato. Prova un’altra ricerca.",
+    "clearSearch": "Pulisci ricerca",
+    "keyPoints": "Punti chiave",
+    "chatContextShort": "Ti incuriosisce qualcosa? Fai un’altra domanda.",
+    "openingChat": "Apertura della chat…",
+    "uploadVideo": "Carica video",
+    "pasteTranscript": "Incolla trascrizione",
+    "heroVideoLabel": "INTELLIGENZA VIDEO",
+    "heroDocumentLabel": "INTELLIGENZA DOCUMENTALE",
+    "heroVideoTitle": "Meno da guardare.\nPiù da sapere.",
+    "heroDocumentTitle": "I tuoi file.\nRisposte chiare.",
+    "heroVideoDescription": "Trasforma i contenuti parlati in un riepilogo da conservare.",
+    "heroDocumentDescription": "Scopri l’essenziale. Unisci i puntini. Chiedi qualsiasi cosa.",
+    "heroIdeas": "Idee chiave",
+    "heroFollowUps": "Chiedi all’IA",
+    "heroSummarize": "Riassumi",
+    "heroCompare": "Confronta",
+    "summaryReady": "In sintesi",
+    "savedOnDevice": "Salvato su questo dispositivo",
+    "notSavedYet": "Pronto da salvare",
+    "atAGlance": "Il quadro generale",
+    "addSource": "Aggiungi la tua fonte",
+    "quickDescription": "Solo i punti salienti",
+    "detailedDescription": "Spazio ai dettagli",
+    "chooseVideo": "Aggiungi un video",
+    "studioLabel": "Un po’ più di chiarezza.",
+    "studioDocumentTitle": "Grandi idee.\nMeno lettura.",
+    "studioVideoTitle": "Guarda meno.\nImpara di più.",
+    "studioDocumentDescription": "Da pagine e pagine alla tua prossima illuminazione.",
+    "studioVideoDescription": "Tieni il meglio. Trasforma le parole in qualcosa a cui tornare.",
+    "studioVideoDescriptionV3": "Guarda tutta la storia. Trasforma scene e parole in idee a cui tornare.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Primi 10 min · Parlato e immagini",
+    "videoCoverageV3": "Parlato e scene visive · Al massimo i primi 10 minuti. I capitoli sono approssimativi; le azioni rapide potrebbero sfuggire.",
+    "videoChatMenu": "Comprendi scene, parlato e momenti chiave",
+    "analyzingVideo": "Stiamo guardando il tuo video…",
+    "uploadingVideo": "Caricamento video… {{percent}}%",
+    "videoCancelled": "Analisi video interrotta.",
+    "videoSourceNeeded": "Incolla un link YouTube pubblico o tocca + → Carica video. Poi invia la tua domanda.",
+    "localOnlyV2": "I riepiloghi sono salvati su questo dispositivo. Il risultato dell’analisi viene conservato anche sul server di analisi per un massimo di 7 giorni per poterlo recuperare, poi viene eliminato. Condividine una copia per avere un backup.",
+    "leavePrivateTitle": "Uscire dalla chat privata?",
+    "leavePrivateBody": "Fare domande su questo riepilogo chiude la chat privata e salva la nuova conversazione nella cronologia.",
+    "leavePrivateConfirm": "Continua",
+    "documentPages": "Testo trovato in {{extracted}} pagine su {{total}}.",
+    "documentPartialText": "Alcune pagine non contengono testo estraibile. Immagini e scansioni non vengono lette.",
+    "documentTruncated": "È stato estratto solo l’inizio di questo documento. Il riepilogo potrebbe non includere i contenuti successivi.",
+    "sourceUnavailable": "Questo tipo di fonte non è temporaneamente disponibile. Prova una delle opzioni disponibili qui sotto.",
+    "accepted": "Analisi della fonte in corso. Puoi lasciare questa schermata e controllare l’avanzamento più tardi.",
+    "checkingProgress": "Controllo dell’analisi salvata…",
+    "pendingError": "Impossibile caricare le analisi in sospeso. Riavvia l’app prima di avviarne un’altra.",
+    "pendingAnalysis": "ANALISI IN SOSPESO",
+    "resumeHint": "Una volta accettata, l’analisi continua anche se lasci la schermata. Recupera qui il risultato senza ricominciare.",
+    "checkProgress": "Controlla avanzamento",
+    "cancelAnalysis": "Annulla analisi",
+    "demoNotice": "Demo locale · contenuto di esempio · nessuna fonte caricata",
+    "publicVideoCoverage": "Video YouTube pubblici · Primi 10 minuti. I video privati, in diretta e con restrizioni potrebbero non essere disponibili.",
+    "sourceUnavailableLibrary": "Questo tipo di fonte non è temporaneamente disponibile. Puoi comunque aprire i riepiloghi salvati.",
+    "stopWaiting": "Smetti di attendere",
+    "previewSample": "Anteprima di esempio · demo locale",
+    "pickVideoError": "Scegli una sola clip MP4 o WebM, fino a 20 MB e 10 minuti.",
+    "pickDocumentsError": "Scegli fino a tre documenti PDF, DOCX, TXT o CSV, fino a 10 MB ciascuno.",
+    "videoErrors": {
+      "ONE_VIDEO": "Scegli un solo video o incolla un solo link YouTube alla volta.",
+      "VIDEO_MIXED_SOURCES": "Invia il video separatamente da immagini e documenti.",
+      "VIDEO_QUESTION_TOO_LONG": "La domanda sul video deve restare sotto i 4.000 caratteri.",
+      "INVALID_VIDEO": "Scegli un video MP4 o WebM, fino a 20 MB.",
+      "FILE_TOO_LARGE": "Scegli un video fino a 20 MB.",
+      "SOURCE_UNAVAILABLE": "Non siamo riusciti ad accedere a questo video. Prova un video YouTube pubblico o carica un file MP4 o WebM.",
+      "INVALID_RESULT": "L’analisi del video è incompleta. Riprova.",
+      "NETWORK": "Connessione interrotta. Controlla Riassunti video per il risultato prima di riprovare.",
+      "TIMEOUT": "L’analisi del video ha richiesto troppo tempo. Prova una clip più breve.",
+      "JOB_PENDING": "Il tuo video è ancora in elaborazione. Apri Riassunti video per controllarne l’avanzamento.",
+      "DAILY_LIMIT": "Hai raggiunto il limite di oggi per l’analisi di video e documenti. Riprova domani.",
+      "ALREADY_PROCESSING": "Un’analisi è già in corso. Apri Riassunti video per controllarne l’avanzamento.",
+      "SERVICE_BUSY": "L’analisi video è sovraccarica. Riprova tra poco.",
+      "PROVIDER_UNAVAILABLE": "L’analisi video non è temporaneamente disponibile. Riprova tra poco.",
+      "NOT_CONFIGURED": "L’analisi video non è temporaneamente disponibile. Riprova più tardi.",
+      "VIDEO_NOT_CONFIGURED": "L’analisi video non è temporaneamente disponibile. Riprova più tardi.",
+      "SAVE_FAILED": "Il riepilogo è pronto, ma non è stato possibile salvarlo nella libreria. Mantieni questa chat o copia il riepilogo."
+    },
+    "markdown": {
+      "summary": "Riepilogo",
+      "keyTakeaways": "Punti chiave",
+      "details": "Dettagli",
+      "actionItems": "Azioni da fare",
+      "sourceExcerpts": "Estratti della fonte",
+      "coverageNotes": "Note sulla copertura"
     }
   }
 }

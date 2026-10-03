@@ -4,6 +4,7 @@ import {
   SUPPORTED_DOCUMENT_EXTENSIONS,
   SUPPORTED_DOCUMENT_MIME_TYPES,
 } from '../config/chatLimits';
+import { documentCoverage } from './documentCoverage';
 
 const MIME_BY_EXTENSION = Object.freeze({
   pdf: 'application/pdf',
@@ -103,6 +104,7 @@ export function toPersistedAttachment(attachment) {
     extractedChars: Number.isFinite(attachment.extractedChars)
       ? attachment.extractedChars
       : null,
+    ...documentCoverage(attachment),
   };
 }
 

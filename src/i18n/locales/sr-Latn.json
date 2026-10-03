@@ -4,29 +4,29 @@
     "searchPlaceholder": "Traži modele...",
     "noModelsFound": "Nije pronađen nijedan model",
     "noModelsAvailable": "Nema dostupnih modela",
-    "currentModel": "Тренутни модел: ⟬П000⟭. Додирните да бисте променили модел. {{name}}",
+    "currentModel": "Trenutni model: {{name}}. Dodirnite da biste promenili model.",
     "openHint": "Otvara meni za izbor modela",
     "closeLabel": "Zatvorite birač modela",
     "searchLabel": "Pretraga modela",
     "searchHint": "Unesite da biste filtrirali dostupne modele",
-    "modelLabel": "⟬П000⟭ модел {{name}}",
-    "selectHint": "Изаберите модел ⟬П000⟭ {{name}}",
+    "modelLabel": "Model {{name}}",
+    "selectHint": "Izaberite model {{name}}",
     "currentlySelected": "Trenutno odabrani model",
-    "genericModel": "⟬П000⟭ модел {{provider}}",
+    "genericModel": "Model {{provider}}",
     "badges": {
       "new": "NOVO",
-      "best": "БЕСТ"
+      "best": "NAJBOLJI"
     }
   },
   "models": {
     "gpt-4o": "Najmoćniji AI model",
     "gpt-4o-mini": "Brz za svakodnevne zadatke",
-    "gpt-5": "Најмоћнији АИ за све намене",
+    "gpt-5": "Najmoćniji AI za sve namene",
     "gpt-5-chat-latest": "Optimizovano za ćaskanje i dijalog",
-    "gpt-5-mini": "Brz i pouzdan ⟬P000⟭-5",
+    "gpt-5-mini": "Brz i pouzdan GPT-5",
     "gpt-5.4-nano": "Lagani model za jednostavne zadatke",
     "o4-mini": "Efikasan model rasuđivanja",
-    "gpt-4.1-mini": "Kompaktan, sposoban ⟬P000⟭-4.1",
+    "gpt-4.1-mini": "Kompaktan, sposoban GPT-4.1",
     "claude-3-haiku": "Brza i fokusirana antropska AI",
     "claude-3.7-sonnet": "Rafinirano rezonovanje Antropika",
     "gemini-2.5-Flash": "Google-ov najnapredniji model",
@@ -63,21 +63,32 @@
     "chatty_personal": "Više prijateljski i ličnije",
     "pro_users": "Najbolje za napredne korisnike",
     "research_helper": "Dobro za istraživanje i beleške",
-    "reasoning_strong": "Model naprednog rezonovanja"
+    "reasoning_strong": "Model naprednog rezonovanja",
+    "gpt56_sol": "Najmoćniji GPT-5.6 model",
+    "gpt56_terra": "Uravnotežen GPT-5.6 model",
+    "gpt56_luna": "Brz model za svakodnevne zadatke",
+    "claude_fable": "Brz i kreativan Anthropic AI",
+    "claude_sonnet": "Napredni Anthropic model",
+    "gemini_flash": "Brz Google AI model",
+    "gemini_pro": "Napredni Google Pro model",
+    "grok_latest": "Najnoviji xAI model",
+    "deepseek_pro": "Napredni DeepSeek model",
+    "deepseek_flash": "Brz DeepSeek model"
   },
   "providers": {
-    "openai": "⟬P000⟭",
+    "openai": "OpenAI",
     "anthropic": "Antropski",
     "google": "Google",
     "xai": "kAI",
-    "other": "Ostalo"
+    "other": "Ostalo",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Novo ćaskanje",
     "history": "Istorija",
     "rewards": "Dnevne nagrade",
     "assistants": "pomoćnici",
-    "imagesStudio": "⟬P000⟭",
+    "imagesStudio": "Image Studio",
     "settings": "Podešavanja",
     "recentChats": "Nedavna ćaskanja",
     "proFeatures": "Pro karakteristike",
@@ -88,13 +99,13 @@
     }
   },
   "sidebarStudioBanner": {
-    "label": "⟬P000⟭",
-    "title": "⟬P000⟭",
+    "label": "Image Studio",
+    "title": "Image Studio",
     "subtitle": "Generišite, precizirajte i objavite vizuelna sredstva na jednom mestu.",
     "cta": "Otvori"
   },
   "imagesStudio": {
-    "title": "⟬P000⟭",
+    "title": "Image Studio",
     "selectImages": "Izaberite slike",
     "exitSelectionMode": "Izađite iz režima izbora",
     "selectAll": "Izaberite Sve",
@@ -106,14 +117,14 @@
     "deleteConfirmMessage": "Da li ste sigurni da želite da izbrišete izabrane slike? Ova radnja se ne može opozvati.",
     "cancel": "Otkaži",
     "delete": "Izbriši",
-    "generate": "Генерате",
+    "generate": "Generiši",
     "generating": "Generisanje…",
     "latest": "Najnovije",
     "insertToChat": "Umetnite u ćaskanje",
     "pleaseWait": "Molimo sačekajte…",
     "processing": "Obrada...",
     "tapToUploadImage": "Dodirnite da biste otpremili sliku",
-    "camera": "Уплоад Пхотос",
+    "camera": "Otpremi fotografije",
     "library": "Biblioteka",
     "enterPrompt": "Unesite upit za generisanje teksta u sliku",
     "openInBrowser": "Otvorite u pretraživaču",
@@ -133,7 +144,7 @@
     "openPhotoGallery": "Otvorite galeriju fotografija",
     "clearInput": "Obriši unos",
     "generatedImage": "Generisana slika",
-    "autoSelectedModel": "Аутоматски изабран ⟬П000⟭ за режим ⟬П001⟭ {{mode}} {{model}}",
+    "autoSelectedModel": "Automatski izabran {{model}} za režim {{mode}}",
     "deleteSelectedConfirmTitle": "Izbrišite slike",
     "deleteSelectedConfirmMessage": "Da li ste sigurni da želite da izbrišete slike? Ova radnja se ne može opozvati."
   },
@@ -195,11 +206,11 @@
         "description": "Male navike i vežbe kod kuće."
       },
       "money": {
-        "name": "Monei Buddi",
+        "name": "Finansijski pomoćnik",
         "description": "Jednostavni budžeti i saveti za potrošnju."
       },
       "study": {
-        "name": "Studi Helper",
+        "name": "Pomoćnik za učenje",
         "description": "Objasnite jednostavno. Ispitaj me."
       },
       "email": {
@@ -211,7 +222,7 @@
         "description": "Prevedite + naučite fraze."
       },
       "travel": {
-        "name": "Travel Buddi",
+        "name": "Pomoćnik za putovanja",
         "description": "Jednostavni planovi i liste za pakovanje."
       },
       "tech": {
@@ -219,7 +230,7 @@
         "description": "Telefon, aplikacije, Vi-Fi osnove."
       },
       "summarizer": {
-        "name": "ТЛ;ДР Суммаризер",
+        "name": "TL;DR rezime",
         "description": "Kratki meci + jednolinijski TL; DR."
       },
       "gift": {
@@ -227,11 +238,11 @@
         "description": "Ideje prema budžetu i interesima."
       },
       "party": {
-        "name": "Planer događaja (Lite)",
+        "name": "Planer događaja (osnovni)",
         "description": "Brzo isplanirajte malu zabavu."
       },
       "social": {
-        "name": "Социал Пост Макер",
+        "name": "Kreator objava za mreže",
         "description": "Nacrti postova sa opcijama."
       },
       "interview": {
@@ -239,19 +250,19 @@
         "description": "Vežbajte odgovore (STAR)."
       },
       "homefix": {
-        "name": "Home Fik-It Guide",
+        "name": "Vodič za kućne popravke",
         "description": "Jednostavno „uradi sam“ rešavanje problema."
       },
       "pet": {
-        "name": "Pet Care Buddi",
+        "name": "Pomoćnik za negu ljubimaca",
         "description": "Hranjenje, šetnje, osnovna obuka."
       },
       "mindful": {
-        "name": "Миндфул Минуте",
+        "name": "Minut svesnosti",
         "description": "1-3 min mirne pauze."
       },
       "polite": {
-        "name": "Polite Revriter",
+        "name": "Učtivi prepravljač teksta",
         "description": "Prepišite tekstove i odgovore lepo."
       }
     }
@@ -273,26 +284,26 @@
     "renameChat": "Preimenujte ćaskanje",
     "enterNewTitle": "Unesite novi naslov",
     "deleteChat": "Izbrisati ćaskanje?",
-    "deleteChatMessage": "„⟬П000⟭“ ће бити избрисано. {{title}}",
+    "deleteChatMessage": "„{{title}}“ će biti izbrisano.",
     "rename": "Preimenuj",
     "unpin": "Otkvači",
-    "pin": "Пин",
-    "untitled": "Унтитлед"
+    "pin": "Zakači",
+    "untitled": "Bez naslova"
   },
   "settings": {
     "title": "Podešavanja",
-    "model": "Модел",
+    "model": "Model",
     "searchPlaceholder": "Traži modele…",
     "temperatureForCurrentModel": "Temperatura za trenutni model",
-    "customFor": "Прилагођено за ⟬П000⟭ {{model}}",
-    "usingDefault": "Коришћење подразумеваног ⟬П000⟭ {{temperature}}",
+    "customFor": "Prilagođeno za {{model}}",
+    "usingDefault": "Koristi se podrazumevana vrednost {{temperature}}",
     "resetToDefault": "Resetujte na podrazumevane vrednosti",
     "defaultTemperature": "Podrazumevana temperatura (zamena)",
     "usedByModelsWithoutOverride": "Koriste ga modeli bez prilagođene zamene",
     "dangerZone": "Opasna zona",
     "clearAllChatsAndSettings": "Obrišite sva ćaskanja i podešavanja",
-    "about": "Абоут",
-    "version": "Верзија ⟬П000⟭⟬П001⟭ {{status}} {{version}}",
+    "about": "O aplikaciji",
+    "version": "Verzija {{version}}{{status}}",
     "versionPremiumSuffix": "· Premium",
     "privacyPolicy": "Politika privatnosti",
     "hero": {
@@ -312,8 +323,8 @@
         "subtitle": "Otključajte neograničene alate za kreiranje"
       },
       "premiumActive": {
-        "title": "Премиум Ацтиве",
-        "subtitle": "Hvala na podršci ⟬P000⟭"
+        "title": "Premium je aktivan",
+        "subtitle": "Hvala što podržavate Cloud AI"
       },
       "restore": {
         "title": "Vratite kupovine",
@@ -354,7 +365,7 @@
     "alerts": {
       "linkUnavailableTitle": "Nedostupno",
       "linkUnavailableMessage": "Trenutno nije moguće otvoriti ovu vezu.",
-      "restoreSuccessTitle": "Ресторед",
+      "restoreSuccessTitle": "Vraćeno",
       "restoreSuccessMessage": "Vaše kupovine su vraćene.",
       "restoreEmptyTitle": "Nije pronađena nijedna kupovina",
       "restoreEmptyMessage": "Nismo mogli da pronađemo aktivnu kupovinu za vraćanje za ovaj nalog.",
@@ -369,9 +380,9 @@
   "createImage": {
     "headerTitle": "Kreiraj",
     "chooseStyle": "Izaberite stil",
-    "aspectRatio": "Аспецт Ратио",
+    "aspectRatio": "Odnos stranica",
     "starterPrompts": {
-      "title": "Стартер Промптс",
+      "title": "Početni upiti",
       "items": [
         "студио хеадсхот",
         "moderna dnevna soba",
@@ -381,15 +392,15 @@
     "promptPlaceholder": "Otkucajte šta želite da vidite…",
     "promptHint": "Primer: 'Zlatni retriver u studijskom osvetljenju'",
     "clearText": "Obriši tekst",
-    "generate": "Генерате",
+    "generate": "Generiši",
     "generating": "Generisanje…"
   },
   "editImage": {
     "headerTitle": "Uredi",
     "chooseStyle": "Izaberite stil",
-    "aspectRatio": "Аспецт Ратио",
+    "aspectRatio": "Odnos stranica",
     "starterPrompts": {
-      "title": "Стартер Промптс",
+      "title": "Početni upiti",
       "items": [
         "popraviti osvetljenje",
         "uklonite pozadinu",
@@ -398,7 +409,7 @@
     },
     "promptPlaceholder": "Opišite izmene (opciono)",
     "clearText": "Obriši tekst",
-    "generate": "Генерате",
+    "generate": "Generiši",
     "generating": "Primenjuje se…",
     "upload": {
       "choose": "Izaberite Fotografija",
@@ -419,7 +430,7 @@
         "name": "Crtani film"
       },
       "photoreal": {
-        "name": "Пхотореал"
+        "name": "Fotorealistično"
       },
       "sketch": {
         "name": "Skica"
@@ -434,19 +445,19 @@
         "name": "3D Ilustracija"
       },
       "dark_fantasy": {
-        "name": "Dark Fantasi"
+        "name": "Mračna fantastika"
       },
       "vintage_film": {
-        "name": "Винтаге Филм"
+        "name": "Retro film"
       },
       "pastel": {
         "name": "Pastelna estetika"
       },
       "neon_glow": {
-        "name": "Neon Glov"
+        "name": "Neonski sjaj"
       },
       "epic_landscape": {
-        "name": "Епиц Ландсцапе"
+        "name": "Epski pejzaž"
       }
     },
     "aspectRatios": {
@@ -455,8 +466,8 @@
       "portrait": "Portret"
     },
     "models": {
-      "fluxKontent": "Fluk Kontent",
-      "custom": "Цустом"
+      "fluxKontent": "Flux Kontent",
+      "custom": "Prilagođeni"
     },
     "notEnoughCoinsTitle": "Nema dovoljno novčića",
     "notEnoughCoinsMessage": "Vaše trenutno stanje je prenisko za ovu sliku.",
@@ -466,21 +477,21 @@
       "runwareQwenImage": "Izbalansirani, visokokvalitetni rezultati",
       "google4": "Najbolji AI model slike",
       "klingImageO1": "Uređivanje slika visoke kontrole",
-      "fluxKontent": "Fluk Kontent je podešen za izmene",
+      "fluxKontent": "Flux Kontent je podešen za izmene",
       "runwareProvider": "Uravnotežen kvalitet sa pouzdanom difuzijom.",
       "airProvider": "Nano Banana dodaje razigran, živopisan ton.",
       "googleProvider": "Gugl je tražio uglađene detalje.",
       "klingaiProvider": "KlingAI podešen za kontrolisane izmene.",
-      "anthropicProvider": "⟬P000⟭ cevovod za nijansirana raspoloženja.",
+      "anthropicProvider": "Claude cevovod za nijansirana raspoloženja.",
       "default": "Dodirnite da biste istražili dostupne mašine."
     }
   },
   "createImageGenerating": {
     "stylePlaceholder": "vaš odabrani stil",
     "sheetTitle": "Kreiranje vaše vizije",
-    "sheetSubtitle": "Кратак гутљај кафе са сервера док мешамо ⟬П000⟭ у упит. {{style}}",
+    "sheetSubtitle": "Kratak gutljaj serverske kafe dok uklapamo {{style}} u upit.",
     "phases": {
-      "blend": "мешање у ⟬П000⟭ {{style}}",
+      "blend": "Uklapamo {{style}}",
       "paint": "Slikanje scene",
       "finish": "Dodavanje završnog laka"
     },
@@ -515,7 +526,7 @@
       "delete": "Izbriši",
       "edit": "Uredi",
       "save": "Sačuvaj",
-      "share": "Схаре"
+      "share": "Podeli"
     },
     "alerts": {
       "savedTitle": "Sačuvano",
@@ -561,7 +572,7 @@
     }
   },
   "studioHome": {
-    "headerTitle": "⟬P000⟭",
+    "headerTitle": "Image Studio",
     "accessibility": {
       "openMenu": "Otvorite meni",
       "selectImages": "Izaberite slike",
@@ -575,7 +586,7 @@
       "cta": "Opišite i generišite"
     },
     "editCard": {
-      "title": "АИ Пхото Едитор",
+      "title": "AI uređivač fotografija",
       "subtitle": "Transformišite i poboljšajte pomoću veštačke inteligencije",
       "cta": "Uredite pomoću AI"
     },
@@ -676,8 +687,8 @@
     },
     "careView": {
       "titlePrefix": "Upoznajte",
-      "titleHighlight": "⟬P000⟭",
-      "subtitle": "Kreirajte i uređujte slike pomoću veštačke inteligencije—pravo unutar ⟬P000⟭."
+      "titleHighlight": "Image Studio",
+      "subtitle": "Kreirajte i uređujte slike pomoću veštačke inteligencije—direktno u aplikaciji Cloud AI."
     },
     "relaxView": {
       "title": "Upoznajte svoju veštačku inteligenciju",
@@ -693,13 +704,13 @@
           "text": "Šta da kuvate, sa onim što imate."
         },
         "travel": {
-          "title": "Travel Buddi",
+          "title": "Pomoćnik za putovanja",
           "text": "Jednostavni planovi i liste za pakovanje."
         }
       }
     },
     "splash": {
-      "title": "⟬P000⟭",
+      "title": "CLOUD AI",
       "tagline": "AI REŠENjA ZA PREDUZEĆE",
       "description": "Osnažite svoje poslovanje najsavremenijom tehnologijom veštačke inteligencije dizajniranom za poslovne profesionalce i timove.",
       "stats": "Veruje više od 500 hiljada korisnika",
@@ -777,29 +788,41 @@
         "back": "Nazad",
         "continue": "Nastavi",
         "finish": "Istražite premium"
+      },
+      "trial": {
+        "priceLine": "Zatim {{price}} godišnje. Otkažite bilo kada.",
+        "title": "Želimo da besplatno isprobate Cloud AI.",
+        "demoAsk": "Pretvori moju skicu u sajberpank poster",
+        "demoReply": "Četiri stila, gotova za nekoliko sekundi.",
+        "noPayment": "Sada ne plaćate ništa",
+        "cta": "Isprobajte za $0.00"
+      },
+      "reminder": {
+        "title": "Podsetićemo vas pre nego što se besplatni probni period završi",
+        "note": "Obaveštenje stiže mnogo pre bilo kakve naplate, tako da vas ništa neće iznenaditi."
       }
     }
   },
   "coinStore": {
-    "title": "Гет Цредитс",
+    "title": "Nabavite kredite",
     "loading": "Učitavanje prodavnice novčića…",
     "balanceLabel": "Vaše trenutno stanje je",
-    "balanceValue": "⟬П000⟭ Кредити {{amount}}",
+    "balanceValue": "{{amount}} kredita",
     "history": {
       "link": "Istorija transakcija",
       "alertTitle": "Istorija",
       "alertBody": "Istorija transakcija stiže uskoro."
     },
-    "noPacks": "Nema dostupnih paketa novčića. Proverite svoj ID ponude ⟬P000⟭.",
+    "noPacks": "Nema dostupnih paketa novčića. Proverite ID ponude u servisu RevenueCat.",
     "badges": {
       "basic": "Osnovni paket",
       "popular": "Najpopularniji",
       "value": "Najbolja vrednost"
     },
     "pack": {
-      "creditsLabel": "⟬П000⟭ Кредити {{credits}}",
-      "tokensLabel": "⟬П000⟭ Кредити {{credits}}",
-      "defaultName": "Паковање ⟬П000⟭ {{index}}",
+      "creditsLabel": "{{credits}} kredita",
+      "tokensLabel": "{{credits}} kredita",
+      "defaultName": "Paket {{index}}",
       "unknownPrice": "USD —"
     },
     "premium": {
@@ -810,7 +833,7 @@
     "termsText": "Kupovinom prihvatate naše",
     "termsLink": "Uslovi korišćenja usluge",
     "alerts": {
-      "initErrorTitle": "Инит еррор",
+      "initErrorTitle": "Greška pri pokretanju",
       "genericMessage": "Nešto je pošlo po zlu.",
       "successTitle": "Uspeh",
       "successMessage": "Krediti će se uskoro pojaviti.",
@@ -822,13 +845,13 @@
     "badge": "PRO",
     "requiredTitle": "Premijum je obavezan",
     "upgrade": "Nadogradite",
-    "modelRequiredMessage": "Ovaj model zahteva Premium. Nadogradite da biste pristupili ⟬P000⟭-5, ⟬P002⟭ 4, ⟬P001⟭ i naprednijim modelima.",
+    "modelRequiredMessage": "Ovaj model zahteva Premium. Nadogradite za pristup GPT-5, Grok 4, Claude i drugim naprednim modelima.",
     "assistantsRequiredMessage": "Pomoćnicima je potreban Premium. Nadogradite da biste pristupili specijalizovanim AI pomoćnicima za fitnes, kodiranje, pisanje i još mnogo toga.",
     "assistantsTitle": "Premijum je obavezan",
     "assistantsMessage": "Pomoćnicima je potreban Premium. Nadogradite da biste pristupili specijalizovanim AI pomoćnicima za fitnes, kodiranje, pisanje i još mnogo toga."
   },
   "paywall": {
-    "modelsHeadline": "⟬P000⟭-5,5, ⟬P002⟭, ⟬P001⟭",
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
     "close": "Zatvorite paivall",
     "unavailableTitle": "Kupovine su nedostupne",
     "unavailableMessage": "Android obračun još nije konfigurisan.",
@@ -840,13 +863,13 @@
     "productsUnavailableMessage": "Trenutno nema dostupnih proizvoda sa Android pretplatom.",
     "purchaseFailedTitle": "Kupovina nije uspela",
     "purchaseFailedMessage": "Trenutno nije moguće završiti ovu kupovinu.",
-    "restore": "Ресторе",
+    "restore": "Vrati kupovine",
     "restoreRestoring": "Vraćanje…",
     "features": {
       "create": "Kreirajte slike i video zapise",
       "search": "Pretražujte veb pomoću veštačke inteligencije",
       "talk": "Razgovarajte prirodno sa AI",
-      "imageStudio": "Добијте ⟬П002⟭ ⟬П000⟭ кредите ⟬П001⟭ {{credits}} {{period}}",
+      "imageStudio": "Dobijte {{credits}} kredita za Image Studio {{period}}",
       "period": {
         "weekly": "nedeljno",
         "monthly": "mesečno",
@@ -863,7 +886,7 @@
     "plans": {
       "yearly": {
         "title": "Godišnje",
-        "only": "Само ⟬П000⟭ {{price}}",
+        "only": "Samo {{price}}",
         "defaultPrice": "USD 79,99",
         "defaultIntroPrice": "1,35 USD"
       },
@@ -936,7 +959,7 @@
     "messagePlaceholder": "Poruka...",
     "createImages": "Kreirajte slike",
     "generateAiArtwork": "Generišite AI umetnička dela",
-    "camera": "Уплоад Пхотос",
+    "camera": "Otpremi fotografije",
     "takeOrSelectPhotos": "Izaberite fotografije",
     "search": "Traži",
     "findInformation": "Pronađite informacije",
@@ -949,7 +972,7 @@
     "showQuickActions": "Prikaži brze radnje",
     "startVoiceInput": "Pokrenite glasovni unos",
     "sendMessage": "Pošalji poruku",
-    "offline": "Оффлине",
+    "offline": "Van mreže",
     "stop": "Stani",
     "streaming": "Strimuje se…",
     "closeRecorder": "Zatvorite diktafon",
@@ -970,7 +993,7 @@
     "offlineError": "Nema internet veze. Proverite svoju vezu i pokušajte ponovo.",
     "imagePickerErrorTitle": "Greška birača slika",
     "imagePickerErrorMessage": "Nije moguće pristupiti vašim fotografijama. Pokušajte ponovo.",
-    "messageTooLong": "Порука предугачка (⟬П000⟭). Ограничење је ⟬П001⟭. {{length}} {{limit}}",
+    "messageTooLong": "Poruka je predugačka ({{length}}). Ograničenje je {{limit}}.",
     "sendFailed": "Slanje poruke nije uspelo. Pokušajte ponovo.",
     "modelNoImageSupport": "Izabrani model ne podržava slike. Molimo izaberite drugi model.",
     "voiceStartFailed": "Nije moguće pokrenuti glas.",
@@ -991,7 +1014,7 @@
       "analyzingImages": "Analiziranje slika…",
       "searching": "Traženje…",
       "thinking": "Razmišljajući…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "Analiziramo dokumente…"
     },
     "webSearch": {
       "title": "Veb pretraga",
@@ -1002,7 +1025,7 @@
       "toggleLabel": "Pretražite veb"
     },
     "studioBanner": {
-      "label": "⟬P000⟭",
+      "label": "Image Studio",
       "title": "Dizajnirajte vizuelne elemente na brzinu.",
       "subtitle": "Generišite, precizirajte i objavite vizuelna sredstva na jednom mestu.",
       "cta": "Otvori"
@@ -1011,7 +1034,7 @@
       "createImages": "Kreirajte slike",
       "openCamera": "Otvorite kameru",
       "editImage": "Uredi sliku",
-      "startVoice": "Старт Воице",
+      "startVoice": "Glasovni unos",
       "assistants": "pomoćnici"
     },
     "listening": "slušam…",
@@ -1023,7 +1046,7 @@
     },
     "actions": {
       "copy": "Kopiraj",
-      "share": "Схаре",
+      "share": "Podeli",
       "regenerate": "Regenerisati",
       "retryFromHere": "Pokušajte ponovo odavde",
       "report": "Izveštaj",
@@ -1032,10 +1055,10 @@
     "markdown": {
       "copy": "Kopiraj",
       "copied": "Kopirano",
-      "table": "ТАБЛЕ",
+      "table": "TABELA",
       "watchVideo": "Pogledajte video",
       "wikipedia": "Vikipedia",
-      "link": "Линк",
+      "link": "Veza",
       "note": "Napomena",
       "warning": "Upozorenje",
       "tip": "Savet"
@@ -1068,7 +1091,7 @@
         "summarizeHint": "Članci, beleške, glasovne beleške, dugačke teme",
         "plan": "Napravite plan",
         "planHint": "Putovanja, rutine, budžeti, rokovi, životne promene",
-        "brainstorm": "Браинсторм",
+        "brainstorm": "Osmislite ideje",
         "brainstormHint": "Ideje, ponude, imena, sadržaj, sporedni projekti",
         "analyze": "Analizirajte podatke",
         "analyzeHint": "Potrošnja, povratne informacije, metrika, navike, učinak"
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Otpremi fajl",
+      "supportedTypes": "Fajlovi PDF, DOCX, TXT ili CSV",
+      "failed": "Otpremanje nije uspelo",
+      "retry": "Ponovi otpremanje",
+      "retryShort": "Pokušajte ponovo",
+      "remove": "Ukloni fajl",
+      "pickerErrorTitle": "Nije moguće otvoriti fajlove",
+      "pickerErrorMessage": "Pokušajte ponovo da izaberete dokument.",
+      "tooMany": "Uz jednu poruku možete priložiti najviše 3 dokumenta.",
+      "tooLarge": "Svaki dokument mora imati najviše 10 MB.",
+      "empty": "Izabrani dokument je prazan.",
+      "unsupported": "Koristite PDF, DOCX, TXT ili CSV fajl.",
+      "invalidTitle": "Fajl nije podržan",
+      "pasteFailedTitle": "Nije moguće priložiti nalepljeni tekst",
+      "pasteFailedMessage": "Vaš tekst je sačuvan u polju za poruku.",
+      "waitUntilReady": "Sačekajte da se dokumenti otpreme.",
+      "encrypted": "Ovaj PDF je zaštićen lozinkom. Otpremite otključanu kopiju.",
+      "unsupportedDocument": "Ovaj fajl nije čitljiv ili njegov sadržaj nije podržan. Koristite PDF, DOCX, TXT ili CSV fajl.",
+      "tooManyPages": "Podelite ovaj PDF na fajlove od najviše 100 stranica.",
+      "noReadableText": "Nije pronađen čitljiv tekst. Skeniranim PDF fajlovima je potreban OCR; otpremite kopiju sa tekstom.",
+      "pastedTextName": "Nalepljeni tekst",
+      "badge": "DOK",
+      "untitled": "Dokument"
     }
   },
   "imageUpload": {
@@ -1143,7 +1173,7 @@
   "imageGridSelector": {
     "required": "*",
     "processing": "Obrada...",
-    "camera": "Уплоад Пхотос",
+    "camera": "Otpremi fotografije",
     "library": "Biblioteka"
   },
   "common": {
@@ -1158,7 +1188,7 @@
     "tryAgain": "Pokušajte ponovo"
   },
   "rateUs": {
-    "title": "Uživate u ⟬P000⟭?",
+    "title": "Sviđa vam se Cloud AI?",
     "subtitle": "Vaše povratne informacije nam pomažu da poboljšamo. Da li biste mogli da nas ocenite u App Store-u?",
     "rateNow": "Rate Nov",
     "maybeLater": "Možda kasnije",
@@ -1166,20 +1196,20 @@
   },
   "oneTimeOffer": {
     "title": "Jednokratna ponuda",
-    "discount": "⟬П000⟭% ОФФ {{percent}}",
+    "discount": "{{percent}}% POPUSTA",
     "subtitle": "Ovu ponudu više nećete videti.",
     "badgeLine1": "Ekskluzivno",
     "badgeLine2": "Jednokratna ponuda",
-    "upgradeNow": "Надоградите сада за ⟬П000⟭ {{price}}",
+    "upgradeNow": "Nadogradite sada za {{price}}",
     "loadingPrice": "Učitavanje...",
     "termsOfUse": "Uslovi korišćenja",
     "privacyPolicy": "Politika privatnosti",
     "accessTitle": "Neograničen pristup",
-    "accessSubtitle": "⟬P000⟭, ⟬P001⟭ & ⟬P002⟭ 4",
+    "accessSubtitle": "Modeli GPT, Gemini i Grok 4",
     "features": {
-      "unlimitedGPT4": "Neograničen pristup ⟬P000⟭-4",
-      "geminiPro": "Pristup ⟬P000⟭ Pro",
-      "grokInsights": "Koristite ⟬P000⟭ za nove uvide",
+      "unlimitedGPT4": "Neograničen pristup modelu GPT-4",
+      "geminiPro": "Pristup modelu Gemini Pro",
+      "grokInsights": "Koristite Grok za nove uvide",
       "priorityAccess": "Prioritetni pristup i brži odgovori"
     },
     "bestValue": "Najbolja vrednost",
@@ -1187,14 +1217,14 @@
     "oneTimePayment": "Jednokratna isplata",
     "wasPrice": "bio",
     "continue": "Nastavi",
-    "restore": "Ресторе",
+    "restore": "Vrati kupovine",
     "terms": "Uslovi",
     "privacy": "Privatnost",
     "successTitle": "Uspeh!",
     "successMessage": "Hvala vam na kupovini! Uživajte u premijum pristupu narednih 12 meseci.",
     "errorTitle": "Kupovina nije uspela",
     "errorMessage": "Nešto je pošlo po zlu. Pokušajte ponovo.",
-    "restoreSuccessTitle": "Ресторед",
+    "restoreSuccessTitle": "Vraćeno",
     "restoreSuccessMessage": "Vaše kupovine su vraćene.",
     "restoreErrorTitle": "Vraćanje nije uspelo",
     "restoreErrorMessage": "Nije pronađena nijedna kupovina za vraćanje.",
@@ -1208,16 +1238,16 @@
       "goBack": "Idi nazad"
     },
     "pointsHero": {
-      "totalBalance": "ТОТАЛ БАЛАНЦЕ",
+      "totalBalance": "UKUPNO STANJE",
       "seeYourRewards": "Pogledajte svoje nagrade"
     },
     "streakTracker": {
-      "title": "Daili Streak",
+      "title": "Dnevni niz",
       "subtitle": "Samo tako nastavi! Ti si u plamenu.",
       "days": "Dani",
       "prize": "Nagrada",
-      "dayLabel": "Дан ⟬П000⟭ {{number}}",
-      "nextReward": "Следећа награда: ⟬П000⟭ у ⟬П001⟭ {{amount}} {{time}}",
+      "dayLabel": "Dan {{number}}",
+      "nextReward": "Sledeća nagrada: {{amount}} za {{time}}",
       "coins": "Kovanice"
     },
     "sections": {
@@ -1232,9 +1262,9 @@
     },
     "rewardsList": {
       "rewardTitles": {
-        "imageCredits50": "50 Имаге Цредитс",
-        "imageCredits200": "200 Имаге Цредитс",
-        "imageCredits600": "600 Имаге Цредитс",
+        "imageCredits50": "50 kredita za slike",
+        "imageCredits200": "200 kredita za slike",
+        "imageCredits600": "600 kredita za slike",
         "weeklyPremium": "Veekli Premium",
         "secretBox": "Secret Bok"
       },
@@ -1254,7 +1284,7 @@
     },
     "quests": {
       "dailyLogin": {
-        "title": "Daili Login",
+        "title": "Dnevna prijava",
         "description": "Otvorite aplikaciju danas da zadržite svoj niz",
         "message": "Ova potraga se automatski završava kada otvorite aplikaciju svakog dana."
       },
@@ -1275,10 +1305,10 @@
         "description": "Recite prijateljima zašto vam se sviđa aplikacija"
       },
       "share": {
-        "genericMessage": "Користим ову АИ апликацију за ћаскање и генерисање слика. Погледајте: ⟬П000⟭ {{url}}",
+        "genericMessage": "Koristim ovu AI aplikaciju za ćaskanje i generisanje slika. Pogledajte: {{url}}",
         "facebookQuote": "Pogledajte ovu AI aplikaciju!",
         "twitterText": "Pokušavam ovu AI aplikaciju, prilično je kul.",
-        "instagramMessage": "Погледајте ову АИ апликацију: ⟬П000⟭ {{url}}"
+        "instagramMessage": "Pogledajte ovu AI aplikaciju: {{url}}"
       },
       "store": {
         "errorTitle": "Greška",
@@ -1287,9 +1317,9 @@
     },
     "modals": {
       "questCompleted": {
-        "title": "Kuest Complete",
+        "title": "Zadatak završen",
         "description": "Potraga je završena",
-        "points": "+⟬П000⟭ поена {{points}}",
+        "points": "+{{points}} poena",
         "close": "Zatvori"
       },
       "rewardSuccess": {
@@ -1297,7 +1327,7 @@
         "success": "USPEHA",
         "somethingWentWrong": "Nešto je pošlo po zlu",
         "rewardUnlocked": "Nagrada je otključana",
-        "credits": "Цредитс",
+        "credits": "Krediti",
         "close": "Zatvori",
         "okay": "U redu"
       },
@@ -1322,15 +1352,20 @@
       "cta": "Preuzmi",
       "claimed": "Primljeno! +{{amount}} novčića",
       "later": "Kasnije"
+    },
+    "button": {
+      "title": "Nagrade",
+      "subtitle": "Dnevni bonusi i pogodnosti"
     }
   },
   "app": {
-    "version": "Верзија ⟬П000⟭ {{version}}",
+    "version": "Verzija {{version}}",
     "offlineBanner": "Vi ste van mreže",
     "launch": {
-      "accessibilityLabel": "Počevši od ⟬P000⟭",
-      "title": "⟬P000⟭",
-      "subtitle": "AI, spreman kad budeš"
+      "accessibilityLabel": "Pokretanje aplikacije Cloud AI",
+      "title": "CLOUD AI",
+      "subtitle": "AI, spreman kad budeš",
+      "closePreview": "Zatvori pregled početnog ekrana"
     },
     "errors": {
       "modelsLoadTitle": "Učitavanje modela nije uspelo",
@@ -1350,7 +1385,7 @@
       "genericMessage": "Pokušajte ponovo.",
       "rateLimitTitle": "Previše zahteva",
       "rateLimitMessage": "Obrađujemo mnoge zahteve. Pokušajte ponovo za trenutak.",
-      "rateLimitRetryAfter": "Обрађујемо многе захтеве. Покушајте поново за око ⟬П000⟭ секунди. {{seconds}}",
+      "rateLimitRetryAfter": "Obrađujemo mnogo zahteva. Pokušajte ponovo za oko {{seconds}} sekundi.",
       "restrictedTitle": "Ograničeni sadržaj",
       "restrictedMessage": "Ovaj zahtev je blokiran sigurnosnim filterima.",
       "insufficientCoinsTitle": "Nema dovoljno novčića",
@@ -1389,6 +1424,194 @@
       "body": "Šaljemo jedan podsetnik dnevno da vaš niz ostane aktivan, a novčići rastu. Bez neželjene pošte, možete ga isključiti bilo kada.",
       "enable": "Uključi podsetnike",
       "skip": "Ne sada"
+    }
+  },
+  "workspace": {
+    "documents": "Dokumenti",
+    "videos": "Video rezimei",
+    "summary": "Rezime",
+    "details": "Detalji",
+    "sources": "Izvori",
+    "youtube": "YouTube",
+    "upload": "Otpremanje",
+    "transcript": "Transkript",
+    "concise": "Kratko i jasno",
+    "detailed": "Cela slika",
+    "errors": {
+      "NETWORK": "Proverite internet vezu i pokušajte ponovo. Izabrani izvori su i dalje tu.",
+      "TIMEOUT": "Obrada ovog izvora je predugo trajala. Probajte kraći video ili manji dokument.",
+      "NOT_CONFIGURED": "Analiza izvora još nije dostupna. Pokušajte ponovo kasnije.",
+      "VIDEO_NOT_CONFIGURED": "Direktna analiza videa još nije dostupna. I dalje možete napraviti rezime nalepljenog transkripta.",
+      "DOCUMENT_EXPIRED": "Jedan izvor je istekao. Ponovo izaberite originalni dokument.",
+      "SOURCE_UNAVAILABLE": "Ovaj izvor nije moguće analizirati. Probajte drugi fajl ili nalepite transkript.",
+      "TOO_MANY_PAGES": "Ovaj PDF ima previše stranica. Podelite ga na fajlove od najviše 100 stranica.",
+      "INVALID_VIDEO": "Izaberite čitljiv MP4 ili WebM video, do 20 MB. Analiziramo prvih 10 minuta.",
+      "INVALID_DOCUMENTS": "Ponovo izaberite dokumente i pokušajte opet.",
+      "CLIENT_ID_REQUIRED": "Ponovo pokrenite aplikaciju i pokušajte ponovo.",
+      "RATE_LIMITED": "Dostigli ste današnje ograničenje analiza. Pokušajte ponovo sutra.",
+      "INVALID_RESULT": "Analiza nije dovršena. Pokušajte ponovo.",
+      "FILE_TOO_LARGE": "Ovaj fajl je prevelik. Dokumenti mogu imati do 10 MB, a video snimci do 20 MB.",
+      "NO_READABLE_TEXT": "Nije pronađen čitljiv tekst. Koristite PDF sa tekstom ili nalepite tekst; skeniranim PDF fajlovima je potreban OCR.",
+      "ANALYSIS_FAILED": "Izvor nije moguće analizirati. Pokušajte ponovo.",
+      "SOURCES_TOO_LARGE": "Ovi dokumenti su preveliki za zajedničku analizu. Napravite rezimee posebno ili u manjim grupama.",
+      "ENCRYPTED_DOCUMENT": "Ovaj PDF je zaštićen lozinkom. Otpremite otključanu kopiju.",
+      "UNSUPPORTED_DOCUMENT": "Ovaj fajl nije čitljiv ili njegov sadržaj nije podržan. Koristite PDF, DOCX, TXT ili CSV fajl.",
+      "SERVICE_BUSY": "Usluga analize je zauzeta. Pokušajte ponovo uskoro.",
+      "PROVIDER_UNAVAILABLE": "AI usluga je privremeno nedostupna. Pokušajte ponovo uskoro.",
+      "DAILY_LIMIT": "Dostigli ste današnje ograničenje za analizu izvora. Sačuvani rezimei su i dalje dostupni.",
+      "ALREADY_PROCESSING": "Analiza je već u toku. Proverite njen napredak ispod pre nego što pokrenete novu.",
+      "JOB_PENDING": "Analiza se još obrađuje. Dodirnite „Proveri napredak“ ispod da biste preuzeli rezultat.",
+      "JOB_NOT_FOUND": "Ova analiza nije pronađena ili je istekla. Ako ste je upravo otpremili, sačekajte trenutak i proverite ponovo.",
+      "WORKSPACE_KEY_REQUIRED": "Nije moguće otključati biblioteku izvora. Ponovo pokrenite aplikaciju i pokušajte ponovo.",
+      "NO_SPEECH": "Nije bilo moguće transkribovati jasan govor. Probajte video sa razgovetnim govorom ili nalepite njegov transkript.",
+      "VIDEO_TOO_LONG": "Izaberite video dužine do 10 minuta."
+    },
+    "invalidUrl": "Unesite važeći https:// link do YouTube videa.",
+    "invalidTranscript": "Nalepite transkript dužine između 40 i 120.000 znakova.",
+    "chooseFirst": "Prvo izaberite izvor.",
+    "uploading": "Otpremanje: {{name}}",
+    "extracting": "Čitamo vaš dokument…",
+    "analyzing": "Tražimo ono najbolje…",
+    "chatError": "Nije moguće otvoriti ovaj izvor u ćaskanju. Pokušajte ponovo.",
+    "shareError": "Nije moguće podeliti ovaj rezime. Pokušajte ponovo.",
+    "removeTitle": "Ukloniti sačuvani rezime?",
+    "removeBody": "Ovim se rezime uklanja sa ovog uređaja. Vaša ćaskanja ostaju. Za otpremljeni tekst izvora važi postojeći rok čuvanja.",
+    "remove": "Ukloni",
+    "removeError": "Nije moguće ukloniti ovaj rezime. Pokušajte ponovo.",
+    "summarizeVideo": "Napravi rezime",
+    "chooseDocuments": "Dodajte dokumente",
+    "videoSubtitle": "Pretvorite izgovoreni sadržaj u ključne ideje, poglavlja i odgovore.",
+    "documentSubtitle": "Pronađite suštinu u svojim fajlovima. Postavljajte pitanja u ćaskanju.",
+    "newAnalysis": "Novi rezime",
+    "savedBrief": "VAŠ REZIME",
+    "documentCoverage": "Na osnovu izdvojenog teksta. Slike i skenirane stranice možda nisu obuhvaćene.",
+    "transcriptCoverage": "Na osnovu priloženog transkripta. Vizuelni sadržaj videa nije analiziran.",
+    "videoCoverage": "AI analiza videa. Poglavlja su približna; proverite važne detalje u originalu.",
+    "extractionLimit": "Jedan dokument je dostigao ograničenje za izdvajanje teksta. Ovaj rezime možda ne obuhvata ceo originalni fajl.",
+    "saveError": "Ovaj rezime nije moguće sačuvati. Ostavite ovaj ekran otvoren i pokušajte ponovo ili podelite kopiju.",
+    "retrySave": "Ponovo sačuvaj",
+    "chapters": "Poglavlja",
+    "actions": "Zadaci",
+    "noSections": "U ovom izvoru nisu pronađeni dodatni odeljci.",
+    "linkError": "Nije moguće otvoriti video.",
+    "videoEvidence": "Vremenske oznake videa su približne. Rezimei transkripta opisuju priloženi tekst i ne analiziraju vizuelni sadržaj.",
+    "documentEvidence": "Izvodi ispod su upoređeni sa izdvojenim tekstom. Originalni brojevi stranica prikazuju se samo kada su dostupni.",
+    "noEvidence": "Za ovaj rezime nema proverenih izvoda iz teksta.",
+    "coverage": "Obuhvat i ograničenja",
+    "sourceExpires": "Izvor je dostupan do",
+    "localOnly": "Rezimei se čuvaju na ovom uređaju. Podelite kopiju da biste imali rezervnu.",
+    "continueChat": "Pitaj o ovome",
+    "chatContext": "Ćaskanje počinje ovim sačuvanim rezimeom i dostupnim referencama na dokumente. Rezime videa nije potpun transkript.",
+    "share": "Podeli rezime",
+    "videoLink": "Link do YouTube videa",
+    "publicOnly": "Samo javni video snimci. Privatni, nenavedeni, video snimci uživo i ograničeni video snimci možda neće biti dostupni.",
+    "transcriptHint": "Nalepite transkript ili titlove. Dodajte vremenske oznake za poglavlja.",
+    "textOnly": "Samo tekst; vizuelni sadržaj se ne analizira.",
+    "clip": "Dodaj video",
+    "videoLimits": "MP4, MOV, WebM video · do 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · 3 fajla · do 10 MB svaki",
+    "openingFiles": "Otvaramo fajlove…",
+    "chooseFiles": "Dodaj fajlove",
+    "removeFile": "Ukloni {{name}}",
+    "depth": "Prilagodite po svom ukusu",
+    "processingNotice": "Vaš fajl se otprema radi AI obrade.",
+    "cancel": "Otkaži",
+    "analyzeDocuments": "Napravi rezime",
+    "library": "Vredno čuvanja",
+    "search": "Pretraži rezimee",
+    "loadError": "Sačuvane rezimee nije moguće učitati. Vaši postojeći podaci nisu zamenjeni.",
+    "retry": "Pokušajte ponovo",
+    "emptyLibrary": "Vaši rezimei će se pojaviti ovde, spremni da ih ponovo pogledate ili o njima razgovarate u ćaskanju.",
+    "removeBrief": "Ukloni {{name}}",
+    "audioCoverage": "Rezime govora · Vizuelni sadržaj se ne analizira. Proverite imena i brojeve u snimku.",
+    "uploadTitle": "Izaberite fajlove da biste počeli",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · 10 min\nSamo govor",
+    "noSearchResults": "Nisu pronađeni rezimei. Probajte drugu pretragu.",
+    "clearSearch": "Obriši pretragu",
+    "keyPoints": "Ključni zaključci",
+    "chatContextShort": "Zanima vas nešto? Postavite dodatno pitanje.",
+    "openingChat": "Otvaramo ćaskanje…",
+    "uploadVideo": "Otpremi video",
+    "pasteTranscript": "Nalepi transkript",
+    "heroVideoLabel": "AI ANALIZA VIDEA",
+    "heroDocumentLabel": "AI ANALIZA DOKUMENATA",
+    "heroVideoTitle": "Manje gledanja.\nViše znanja.",
+    "heroDocumentTitle": "Vaši fajlovi.\nJasni odgovori.",
+    "heroVideoDescription": "Pretvorite izgovoreni sadržaj u rezime vredan čuvanja.",
+    "heroDocumentDescription": "Otkrijte suštinu. Povežite činjenice. Pitajte bilo šta.",
+    "heroIdeas": "Ključne ideje",
+    "heroFollowUps": "Pitaj AI",
+    "heroSummarize": "Sažmi",
+    "heroCompare": "Uporedi",
+    "summaryReady": "Ono najvažnije",
+    "savedOnDevice": "Sačuvano na ovom uređaju",
+    "notSavedYet": "Spremno za čuvanje",
+    "atAGlance": "Opšta slika",
+    "addSource": "Dodajte izvor",
+    "quickDescription": "Samo ono najvažnije",
+    "detailedDescription": "Sa prostorom za detalje",
+    "chooseVideo": "Dodaj video",
+    "studioLabel": "Malo više jasnoće.",
+    "studioDocumentTitle": "Velike ideje.\nManje čitanja.",
+    "studioVideoTitle": "Gledajte manje.\nNaučite više.",
+    "studioDocumentDescription": "Od gomile stranica do vaše sledeće sjajne ideje.",
+    "studioVideoDescription": "Zadržite najbolje delove. Pretvorite izgovorene reči u nešto čemu se možete vratiti.",
+    "studioVideoDescriptionV3": "Vidite celu priču. Pretvorite scene i izgovorene reči u ideje kojima se možete vratiti.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Prvih 10 min · Govor i slika",
+    "videoCoverageV3": "Govor i vizuelne scene · Najviše prvih 10 minuta. Poglavlja su približna; brze radnje mogu biti propuštene.",
+    "videoChatMenu": "Razumite scene, govor i ključne trenutke",
+    "analyzingVideo": "Gledamo vaš video…",
+    "uploadingVideo": "Otpremanje videa… {{percent}}%",
+    "videoCancelled": "Analiza videa je zaustavljena.",
+    "videoSourceNeeded": "Nalepite link do javnog YouTube videa ili dodirnite + → Otpremi video. Zatim pošaljite pitanje.",
+    "localOnlyV2": "Rezimei se čuvaju na ovom uređaju. Rezultat analize se takođe čuva na serveru za analizu do 7 dana kako bi mogao da se preuzme, a zatim se briše. Podelite kopiju da biste imali rezervnu.",
+    "leavePrivateTitle": "Napustiti privatno ćaskanje?",
+    "leavePrivateBody": "Ako postavite pitanje o ovom rezimeu, privatno ćaskanje će se završiti, a novi razgovor će biti sačuvan u istoriji.",
+    "leavePrivateConfirm": "Nastavi",
+    "documentPages": "Tekst je pronađen na {{extracted}} od {{total}} stranica.",
+    "documentPartialText": "Neke stranice nemaju tekst koji se može izdvojiti. Slike i skenovi se ne čitaju.",
+    "documentTruncated": "Izdvojen je samo početak ovog dokumenta. Rezime možda ne obuhvata kasniji sadržaj.",
+    "sourceUnavailable": "Ovaj tip izvora je privremeno nedostupan. Probajte neki od dostupnih unosa ispod.",
+    "accepted": "Analiziramo vaš izvor. Možete napustiti ovaj ekran i kasnije proveriti napredak.",
+    "checkingProgress": "Proveravamo vašu sačuvanu analizu…",
+    "pendingError": "Nije moguće učitati analize na čekanju. Ponovo pokrenite aplikaciju pre nego što pokrenete novu.",
+    "pendingAnalysis": "ANALIZA NA ČEKANJU",
+    "resumeHint": "Kada je prihvaćena, analiza se nastavlja i ako napustite ekran. Preuzmite rezultat ovde bez ponovnog pokretanja.",
+    "checkProgress": "Proveri napredak",
+    "cancelAnalysis": "Otkaži analizu",
+    "demoNotice": "Lokalni demo · primer sadržaja · nijedan izvor nije otpremljen",
+    "publicVideoCoverage": "Javni YouTube video snimci · Prvih 10 minuta. Privatni, video snimci uživo i ograničeni video snimci možda neće biti dostupni.",
+    "sourceUnavailableLibrary": "Ovaj tip izvora je privremeno nedostupan. I dalje možete otvoriti sačuvane rezimee.",
+    "stopWaiting": "Ne čekaj više",
+    "previewSample": "Primer za pregled · lokalni demo",
+    "pickVideoError": "Izaberite jedan MP4 ili WebM snimak, do 20 MB i 10 minuta.",
+    "pickDocumentsError": "Izaberite najviše tri PDF, DOCX, TXT ili CSV dokumenta, do 10 MB svaki.",
+    "videoErrors": {
+      "ONE_VIDEO": "Izaberite jedan video ili nalepite jedan YouTube link odjednom.",
+      "VIDEO_MIXED_SOURCES": "Pošaljite video odvojeno od slika i dokumenata.",
+      "VIDEO_QUESTION_TOO_LONG": "Pitanje o videu treba da ima manje od 4.000 znakova.",
+      "INVALID_VIDEO": "Izaberite MP4 ili WebM video, do 20 MB.",
+      "FILE_TOO_LARGE": "Izaberite video do 20 MB.",
+      "SOURCE_UNAVAILABLE": "Nismo mogli da pristupimo ovom videu. Probajte javni YouTube video ili otpremite MP4 ili WebM fajl.",
+      "INVALID_RESULT": "Analiza videa nije dovršena. Pokušajte ponovo.",
+      "NETWORK": "Veza je prekinuta. Proverite rezultat u odeljku „Video rezimei“ pre nego što pokušate ponovo.",
+      "TIMEOUT": "Analiza videa je predugo trajala. Probajte kraći snimak.",
+      "JOB_PENDING": "Vaš video se još obrađuje. Otvorite „Video rezimei“ da biste proverili napredak.",
+      "DAILY_LIMIT": "Dostigli ste današnje ograničenje za analizu videa i dokumenata. Pokušajte ponovo sutra.",
+      "ALREADY_PROCESSING": "Analiza je već u toku. Otvorite „Video rezimei“ da biste proverili napredak.",
+      "SERVICE_BUSY": "Analiza videa je zauzeta. Pokušajte ponovo uskoro.",
+      "PROVIDER_UNAVAILABLE": "Analiza videa je privremeno nedostupna. Pokušajte ponovo uskoro.",
+      "NOT_CONFIGURED": "Analiza videa je privremeno nedostupna. Pokušajte ponovo kasnije.",
+      "VIDEO_NOT_CONFIGURED": "Analiza videa je privremeno nedostupna. Pokušajte ponovo kasnije.",
+      "SAVE_FAILED": "Vaš rezime je spreman, ali nije mogao da se sačuva u biblioteku. Zadržite ovo ćaskanje ili kopirajte rezime."
+    },
+    "markdown": {
+      "summary": "Rezime",
+      "keyTakeaways": "Ključni zaključci",
+      "details": "Detalji",
+      "actionItems": "Zadaci",
+      "sourceExcerpts": "Izvodi iz izvora",
+      "coverageNotes": "Napomene o obuhvatu"
     }
   }
 }

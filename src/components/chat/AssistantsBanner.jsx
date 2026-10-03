@@ -7,7 +7,7 @@ import HeroVideo from '../navigation/HeroVideo';
 
 const BACKGROUND_VIDEO = require('../../../assets/video/backgroundVideo.mp4');
 
-const CreativeStudioBanner = forwardRef(({
+const AssistantsBanner = forwardRef(({
   onPress,
   style,
   paused = false,
@@ -38,6 +38,9 @@ const CreativeStudioBanner = forwardRef(({
         ]}
         android_ripple={{ color: '#ffffff20' }}
         onPress={onPress}
+        accessibilityRole="button"
+        accessibilityLabel={t('assistants.selectAssistant')}
+        testID="chat-assistants-banner"
       >
         <View style={styles.inner}>
           {playVideo ? (
@@ -55,20 +58,18 @@ const CreativeStudioBanner = forwardRef(({
           <View style={styles.content}>
             <View style={styles.textBlock}>
               <Text style={styles.label}>
-                {t('chat.studioBanner.label', { defaultValue: 'Image Studio' }).toUpperCase()}
+                CLOUD AI
               </Text>
               <Text style={styles.title}>
-                {t('chat.studioBanner.title', { defaultValue: 'Design visuals at speed.' })}
+                {t('assistants.title')}
               </Text>
               <Text style={styles.subtitle}>
-                {t('chat.studioBanner.subtitle', {
-                  defaultValue: 'Generate, refine, and publish visual assets in one place.',
-                })}
+                {t('assistants.subtitle')}
               </Text>
             </View>
             <View style={styles.cta}>
               <Text style={styles.ctaText}>
-                {t('chat.studioBanner.cta', { defaultValue: 'Open' })}
+                {t('assistants.selectAssistant')}
               </Text>
               <View style={styles.ctaIcon}>
                 <Text style={styles.ctaIconText}>{'>'}</Text>
@@ -170,9 +171,10 @@ const styles = StyleSheet.create({
 });
 
 export default memo(
-  CreativeStudioBanner,
+  AssistantsBanner,
   (prevProps, nextProps) =>
     prevProps.paused === nextProps.paused &&
     prevProps.playVideo === nextProps.playVideo &&
-    prevProps.style === nextProps.style,
+    prevProps.style === nextProps.style &&
+    prevProps.onPress === nextProps.onPress,
 );

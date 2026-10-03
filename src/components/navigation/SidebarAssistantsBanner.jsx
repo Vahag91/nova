@@ -6,7 +6,7 @@ import HeroVideo from './HeroVideo';
 
 const DRAWER_BANNER_IMAGE = require('../../../assets/images/createstudio/banana.png');
 
-const SidebarCreativeStudioBanner = ({
+const SidebarAssistantsBanner = ({
   onPress,
   style,
   restartKey,
@@ -24,10 +24,13 @@ const SidebarCreativeStudioBanner = ({
       ]}
       android_ripple={{ color: '#ffffff20' }}
       onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={t('assistants.selectAssistant')}
+      testID="sidebar-assistants-banner"
     >
       <View style={[styles.inner, compact && styles.innerCompact]}>
         {playVideo ? (
-          <HeroVideo style={styles.heroVideo} restartKey={restartKey} />
+          <HeroVideo style={styles.heroVideo} restartKey={restartKey} enforceAspectRatio={false} />
         ) : (
           <Image
             source={DRAWER_BANNER_IMAGE}
@@ -39,16 +42,16 @@ const SidebarCreativeStudioBanner = ({
         <View style={[styles.content, compact && styles.contentCompact]}>
           <View style={[styles.textColumn, compact && styles.textColumnCompact]}>
             <Text style={[styles.label, compact && styles.labelCompact]}>
-              {t('sidebarStudioBanner.label', { defaultValue: 'Studio' }).toUpperCase()}
+              {t('assistants.title').toUpperCase()}
             </Text>
             <Text style={[styles.subtitle, compact && styles.subtitleCompact]} numberOfLines={compact ? 2 : 3}>
-              {t('sidebarStudioBanner.subtitle', { defaultValue: 'Generate, refine, and publish visual assets in one place.' })}
+              {t('assistants.subtitle')}
             </Text>
           </View>
           <View style={styles.ctaRow}>
             <View style={[styles.cta, compact && styles.ctaCompact]}>
               <Text style={[styles.ctaLabel, compact && styles.ctaLabelCompact]}>
-                {t('sidebarStudioBanner.cta', { defaultValue: 'Open' })}
+                {t('assistants.selectAssistant')}
               </Text>
             </View>
           </View>
@@ -103,12 +106,12 @@ const styles = StyleSheet.create({
   textColumn: {
     flex: 1,
     gap: 8,
-    maxWidth: '68%',
+    maxWidth: '100%',
     marginTop: 8,
   },
   textColumnCompact: {
     gap: 6,
-    maxWidth: '72%',
+    maxWidth: '100%',
     marginTop: 6,
   },
   label: {
@@ -134,7 +137,7 @@ const styles = StyleSheet.create({
     color: 'rgba(209,213,219,0.92)',
     fontFamily: 'Lato-Regular',
     lineHeight: 16,
-    maxWidth: '80%',
+    maxWidth: '100%',
   },
   subtitleCompact: {
     fontSize: 11,
@@ -169,4 +172,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SidebarCreativeStudioBanner;
+export default SidebarAssistantsBanner;

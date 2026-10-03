@@ -26,7 +26,7 @@
     "gpt-5-mini": "Mabilis at maaasahan GPT-5",
     "gpt-5.4-nano": "Banayad na modelo para sa mga simpleng gawain",
     "o4-mini": "Mahusay na modelo ng pangangatwiran",
-    "gpt-4.1-mini": "Compact, kayang GPT-4.1",
+    "gpt-4.1-mini": "Maliit pero mahusay na GPT-4.1",
     "claude-3-haiku": "Mabilis at nakatutok na Anthropic AI",
     "claude-3.7-sonnet": "Pinong pangangatwiran ni Anthropic",
     "gemini-2.5-Flash": "Pinaka advanced na modelo ng Google",
@@ -38,9 +38,9 @@
     "fast_everyday": "Mabilis para sa pang-araw-araw na gawain",
     "fast_reasoning": "Mabilis na modelo na may magandang pangangatwiran",
     "great_reasoning": "Advanced na modelo ng pangangatwiran",
-    "coding_reasoning": "Advanced na coding at pangangatwiran",
+    "coding_reasoning": "Mahusay sa pag-code at pangangatwiran",
     "better_coding": "Mas mahusay para sa coding at pangangatwiran",
-    "best_overall": "Pinakamahusay na all-around AI model",
+    "best_overall": "Pinakamahusay na pangkalahatang modelo ng AI",
     "best_google": "Pinakamahusay na modelo ng Google",
     "best_xai": "Ang pinakamakapangyarihang modelo ng xAI",
     "creative_focus": "Mahusay para sa malikhaing pagsulat",
@@ -54,7 +54,7 @@
     "vision_strong": "Mahusay sa mga imahe at pangitain",
     "data_analysis": "Mabuti para sa pagsusuri ng data",
     "structured_tasks": "Mabuti para sa mga nakabalangkas na gawain",
-    "everyday_helper": "Araw-araw na assistant model",
+    "everyday_helper": "Modelong katulong sa araw-araw",
     "concise_answers": "Maikli, maigsi na mga sagot",
     "detailed_answers": "Detalyadong hakbang-hakbang na mga sagot",
     "experimental": "Pang-eksperimentong next-gen na modelo",
@@ -63,14 +63,25 @@
     "chatty_personal": "Mas palakaibigan at personal",
     "pro_users": "Pinakamahusay para sa mga power user",
     "research_helper": "Mahusay para sa pananaliksik at mga tala",
-    "reasoning_strong": "Advanced na modelo ng pangangatwiran"
+    "reasoning_strong": "Advanced na modelo ng pangangatwiran",
+    "gpt56_sol": "Pinakamalakas na modelo ng GPT-5.6",
+    "gpt56_terra": "Balanseng modelo ng GPT-5.6",
+    "gpt56_luna": "Mabilis na modelo para sa pang-araw-araw na gawain",
+    "claude_fable": "Mabilis at malikhaing AI ng Anthropic",
+    "claude_sonnet": "Advanced na modelo ng Anthropic",
+    "gemini_flash": "Mabilis na modelo ng AI ng Google",
+    "gemini_pro": "Advanced na Pro na modelo ng Google",
+    "grok_latest": "Pinakabagong modelo ng xAI",
+    "deepseek_pro": "Advanced na modelo ng DeepSeek",
+    "deepseek_flash": "Mabilis na modelo ng DeepSeek"
   },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Antropiko",
     "google": "Google",
     "xai": "xAI",
-    "other": "Iba pa"
+    "other": "Iba pa",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Bagong Chat",
@@ -96,7 +107,7 @@
   "imagesStudio": {
     "title": "Image Studio",
     "selectImages": "Pumili ng mga larawan",
-    "exitSelectionMode": "Lumabas sa selection mode",
+    "exitSelectionMode": "Lumabas sa mode ng pagpili",
     "selectAll": "Piliin ang Lahat",
     "noImagesYet": "Wala pang mga larawan",
     "describeImageHint": "Ilarawan ang iyong larawan sa ibaba at i-tap ang Bumuo.",
@@ -133,7 +144,7 @@
     "openPhotoGallery": "Buksan ang gallery ng larawan",
     "clearInput": "I-clear ang input",
     "generatedImage": "nabuong larawan",
-    "autoSelectedModel": "Auto-selected {{model}} para sa {{mode}} mode",
+    "autoSelectedModel": "Awtomatikong pinili ang {{model}} para sa mode na {{mode}}",
     "deleteSelectedConfirmTitle": "Tanggalin ang mga larawan",
     "deleteSelectedConfirmMessage": "Sigurado ka bang gusto mong tanggalin ang mga larawan? Ang pagkilos na ito ay hindi maaaring i-undo."
   },
@@ -155,13 +166,13 @@
     "errorTitle": "Nagkaproblema",
     "errorMessage": "Hindi masimulan ang assistant na ito.",
     "noAssistants": "Walang nakitang katulong sa kategoryang ito.",
-    "selectAssistantHint": "Buksan ang assistant picker",
+    "selectAssistantHint": "Buksan ang pagpili ng katulong",
     "subtitle": "Ang mga curated AI specialist ay handa na para sa coding, pagsulat, pagsusuri, pagpaplano, at higit pa.",
     "searchPlaceholder": "Mga katulong sa paghahanap...",
     "useAssistant": "Gamitin ang Assistant",
     "selectAssistant": "Pumili ng katulong",
     "description": "Paglalarawan",
-    "systemPrompt": "System Prompt",
+    "systemPrompt": "Tagubilin sa System",
     "chooseModel": "Pumili ng Modelo",
     "categoryAll": "Lahat",
     "categories": {
@@ -175,7 +186,7 @@
     },
     "presets": {
       "default": {
-        "name": "Default na Assistant",
+        "name": "Karaniwang Katulong",
         "description": "Balanseng tulong para sa pang-araw-araw na bagay."
       },
       "quick": {
@@ -191,7 +202,7 @@
         "description": "Kung ano ang lutuin, kung ano ang mayroon ka."
       },
       "fitness": {
-        "name": "Fitness Coach",
+        "name": "Coach sa Ehersisyo",
         "description": "Mga maliliit na gawi at pag-eehersisyo sa bahay."
       },
       "money": {
@@ -215,11 +226,11 @@
         "description": "Mga simpleng plano at listahan ng pag-iimpake."
       },
       "tech": {
-        "name": "Tech Support (Simple)",
+        "name": "Tulong sa Tech (Madali)",
         "description": "Telepono, apps, mga pangunahing kaalaman sa Wi-Fi."
       },
       "summarizer": {
-        "name": "TL;DR Summarizer",
+        "name": "TL;DR na Tagabuod",
         "description": "Maikling bala + isang linyang TL;DR."
       },
       "gift": {
@@ -227,11 +238,11 @@
         "description": "Mga ideya ayon sa badyet at interes."
       },
       "party": {
-        "name": "Tagaplano ng Kaganapan (Lite)",
+        "name": "Tagaplano ng Kaganapan (payak)",
         "description": "Magplano ng isang maliit na partido nang mabilis."
       },
       "social": {
-        "name": "Social Post Maker",
+        "name": "Tagagawa ng Social Post",
         "description": "Draft post na may mga opsyon."
       },
       "interview": {
@@ -243,7 +254,7 @@
         "description": "Simpleng DIY troubleshooting."
       },
       "pet": {
-        "name": "Pet Care Buddy",
+        "name": "Buddy sa Pag-aalaga ng Hayop",
         "description": "Pagpapakain, paglalakad, pangunahing pagsasanay."
       },
       "mindful": {
@@ -268,7 +279,7 @@
     "startFirstConversation": "Simulan ang iyong unang pag-uusap.",
     "startChat": "Simulan ang chat",
     "startNewChat": "Magsimula ng bagong chat",
-    "errorLoadingHistory": "Error sa paglo-load ng history",
+    "errorLoadingHistory": "Hindi ma-load ang kasaysayan",
     "loading": "Nilo-load ang history...",
     "renameChat": "Palitan ang pangalan ng chat",
     "enterNewTitle": "Maglagay ng bagong pamagat",
@@ -276,7 +287,7 @@
     "deleteChatMessage": "Ang \"{{title}}\" ay tatanggalin.",
     "rename": "Palitan ang pangalan",
     "unpin": "I-unpin",
-    "pin": "Pin",
+    "pin": "I-pin",
     "untitled": "Walang pamagat"
   },
   "settings": {
@@ -287,9 +298,9 @@
     "customFor": "Custom para sa {{model}}",
     "usingDefault": "Ginagamit ang default na {{temperature}}",
     "resetToDefault": "I-reset sa default",
-    "defaultTemperature": "Default na temperatura (fallback)",
+    "defaultTemperature": "Default na temperatura (panghalili)",
     "usedByModelsWithoutOverride": "Ginagamit ng mga modelong walang custom na override",
-    "dangerZone": "Danger zone",
+    "dangerZone": "Mapanganib na bahagi",
     "clearAllChatsAndSettings": "I-clear ang lahat ng chat at setting",
     "about": "Tungkol sa",
     "version": "Bersyon {{version}}{{status}}",
@@ -312,7 +323,7 @@
         "subtitle": "I-unlock ang walang limitasyong mga tool sa paggawa"
       },
       "premiumActive": {
-        "title": "Premium Active",
+        "title": "Aktibo ang Premium",
         "subtitle": "Salamat sa pagsuporta Cloud AI"
       },
       "restore": {
@@ -379,7 +390,7 @@
       ]
     },
     "promptPlaceholder": "I-type ang gusto mong makita...",
-    "promptHint": "Halimbawa: 'Golden retriever sa studio lighting'",
+    "promptHint": "Halimbawa: 'Golden retriever sa ilaw ng studio'",
     "clearText": "I-clear ang text",
     "generate": "Bumuo",
     "generating": "Binubuo…"
@@ -393,7 +404,7 @@
       "items": [
         "ayusin ang ilaw",
         "alisin ang background",
-        "soft portrait retouch"
+        "banayad na pag-retoke ng portrait"
       ]
     },
     "promptPlaceholder": "Ilarawan ang mga pag-edit (opsyonal)",
@@ -450,8 +461,8 @@
       }
     },
     "aspectRatios": {
-      "square": "Square",
-      "landscape": "Landscape",
+      "square": "Parisukat",
+      "landscape": "Pahiga",
       "portrait": "Larawan"
     },
     "models": {
@@ -471,7 +482,7 @@
       "airProvider": "Nagdaragdag ang Nano Banana ng mapaglaro, matingkad na tono.",
       "googleProvider": "Nakatutok ang Google para sa mga pinakintab na detalye.",
       "klingaiProvider": "Nakatutok ang KlingAI para sa mga kinokontrol na pag-edit.",
-      "anthropicProvider": "Claude pipeline para sa nuanced moods.",
+      "anthropicProvider": "Daloy ng Claude para sa mga pinong damdamin.",
       "default": "I-tap para i-explore ang mga available na engine."
     }
   },
@@ -575,7 +586,7 @@
       "cta": "Ilarawan at Bumuo"
     },
     "editCard": {
-      "title": "AI Photo Editor",
+      "title": "AI Editor ng Larawan",
       "subtitle": "Magbago at magpahusay gamit ang AI",
       "cta": "I-edit gamit ang AI"
     },
@@ -685,7 +696,7 @@
       "subtitle": "Ang mga dalubhasang eksperto sa AI ay handang tumulong sa iyong pang-araw-araw na pangangailangan",
       "cards": {
         "fitness": {
-          "title": "Fitness Coach",
+          "title": "Coach sa Ehersisyo",
           "text": "Mga maliliit na gawi at pag-eehersisyo sa bahay."
         },
         "recipes": {
@@ -700,7 +711,7 @@
     },
     "splash": {
       "title": "CLOUD AI",
-      "tagline": "ENTERPRISE-GRADE AI SOLUTIONS",
+      "tagline": "MGA AI SOLUSYON PARA SA MALALAKING NEGOSYO",
       "description": "Palakasin ang iyong negosyo gamit ang makabagong teknolohiya ng artificial intelligence na idinisenyo para sa mga propesyonal sa negosyo at mga team.",
       "stats": "Pinagkakatiwalaan ng 500k+ user",
       "rating": "4.9 / 5",
@@ -777,6 +788,18 @@
         "back": "Bumalik",
         "continue": "Magpatuloy",
         "finish": "I-explore ang premium"
+      },
+      "trial": {
+        "priceLine": "Pagkatapos, {{price}} kada taon. Kanselahin anumang oras.",
+        "title": "Gusto naming subukan mo ang Cloud AI nang libre.",
+        "demoAsk": "Gawing cyberpunk na poster ang sketch ko",
+        "demoReply": "Apat na istilo, handa sa loob ng ilang segundo.",
+        "noPayment": "Walang babayaran ngayon",
+        "cta": "Subukan sa halagang $0.00"
+      },
+      "reminder": {
+        "title": "Paaalalahanan ka namin bago matapos ang iyong libreng pagsubok",
+        "note": "Makakatanggap ka ng paalala bago pa may singilin, kaya walang sorpresa."
       }
     }
   },
@@ -792,14 +815,14 @@
     },
     "noPacks": "Walang available na coin pack. Tingnan ang iyong RevenueCat offer id.",
     "badges": {
-      "basic": "Basic Pack",
+      "basic": "Pangunahing Pakete",
       "popular": "Pinakasikat",
       "value": "Pinakamahusay na Halaga"
     },
     "pack": {
       "creditsLabel": "{{credits}} Mga Credit",
       "tokensLabel": "{{credits}} Mga Credit",
-      "defaultName": "Pack {{index}}",
+      "defaultName": "Pakete {{index}}",
       "unknownPrice": "USD —"
     },
     "premium": {
@@ -810,7 +833,7 @@
     "termsText": "Sa pamamagitan ng pagbili, sumasang-ayon ka sa aming",
     "termsLink": "Mga Tuntunin ng Serbisyo",
     "alerts": {
-      "initErrorTitle": "Init error",
+      "initErrorTitle": "Error sa pagsisimula",
       "genericMessage": "Nagkaproblema.",
       "successTitle": "Tagumpay",
       "successMessage": "Lalabas sa lalong madaling panahon ang mga kredito.",
@@ -947,7 +970,7 @@
     "quickActionsLabel": "Mabilis na pagkilos",
     "hideQuickActions": "Itago ang mga mabilisang pagkilos",
     "showQuickActions": "Magpakita ng mabilis na pagkilos",
-    "startVoiceInput": "Simulan ang voice input",
+    "startVoiceInput": "Simulan ang pagsasalita",
     "sendMessage": "Magpadala ng mensahe",
     "offline": "Offline",
     "stop": "Tumigil ka",
@@ -968,7 +991,7 @@
     "loadingChat": "Nilo-load ang chat...",
     "offlineBanner": "Offline ka. Hindi maipadala ang mga mensahe.",
     "offlineError": "Walang koneksyon sa internet. Pakisuri ang iyong koneksyon at subukang muli.",
-    "imagePickerErrorTitle": "Error sa picker ng larawan",
+    "imagePickerErrorTitle": "Error sa pagpili ng larawan",
     "imagePickerErrorMessage": "Hindi ma-access ang iyong mga larawan. Pakisubukang muli.",
     "messageTooLong": "Masyadong mahaba ang mensahe ({{length}}). Ang limitasyon ay {{limit}}.",
     "sendFailed": "Nabigong magpadala ng mensahe. Pakisubukang muli.",
@@ -991,7 +1014,7 @@
       "analyzingImages": "Sinusuri ang mga larawan...",
       "searching": "Naghahanap…",
       "thinking": "Iniisip…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "Sinusuri ang mga dokumento…"
     },
     "webSearch": {
       "title": "Paghahanap sa web",
@@ -1068,16 +1091,16 @@
         "summarizeHint": "Mga artikulo, tala, voice memo, mahabang thread",
         "plan": "Gumawa ng plano",
         "planHint": "Mga biyahe, gawain, badyet, deadline, pagbabago sa buhay",
-        "brainstorm": "Brainstorm",
+        "brainstorm": "Mag-brainstorm",
         "brainstormHint": "Mga ideya, alok, pangalan, nilalaman, mga side project",
         "analyze": "Pag-aralan ang datos",
         "analyzeHint": "Paggastos, feedback, sukatan, gawi, pagganap"
       },
       "prompts": {
         "summarize": {
-          "founderBriefTitle": "Gumawa ng founder brief",
+          "founderBriefTitle": "Gumawa ng buod para sa tagapagtatag",
           "founderBriefSubtitle": "Hilahin ang mga pangunahing panganib, desisyon, at mga susunod na hakbang.",
-          "classNotesTitle": "Linisin mo ang study notes ko",
+          "classNotesTitle": "Ayusin ang mga tala ko sa pag-aaral",
           "classNotesSubtitle": "Gawing malinaw na gabay sa pag-aaral ang mga magaspang na tala.",
           "meetingHandoffTitle": "Sumulat ng buod ng handoff",
           "meetingHandoffSubtitle": "Kapaki-pakinabang pagkatapos ng mga pagpupulong, tawag, o mahabang panloob na mga thread.",
@@ -1095,7 +1118,7 @@
           "tripEscapeSubtitle": "Isang bagay na mas mahusay kaysa sa isang generic na itinerary."
         },
         "brainstorm": {
-          "sideHustleTitle": "Maghanap ng makatotohanang side hustle",
+          "sideHustleTitle": "Maghanap ng makatotohanang dagdag-kita",
           "sideHustleSubtitle": "Mga ideya na maaari kong simulan habang nagtatrabaho nang full-time.",
           "brandAngleTitle": "Maghanap ng hindi malilimutang anggulo ng tatak",
           "brandAngleSubtitle": "Kapaki-pakinabang para sa mga produkto, tagalikha, ahensya, o newsletter.",
@@ -1109,7 +1132,7 @@
           "spendingLeaksSubtitle": "Ipakita muna ang mga pattern, mahinang lugar, at ang pinakamadaling panalo.",
           "customerFeedbackTitle": "Gawing priyoridad ang feedback",
           "customerFeedbackSubtitle": "Cluster na kahilingan, reklamo, apurahan, at epekto.",
-          "habitPatternsTitle": "Spot patterns sa gawi ko",
+          "habitPatternsTitle": "Tuklasin ang takbo ng mga gawi ko",
           "habitPatternsSubtitle": "Kapaki-pakinabang para sa pag-eehersisyo, pagtulog, pag-journal, o focus log.",
           "metricsStoryTitle": "Ipaliwanag kung ano ang ibig sabihin ng mga numero",
           "metricsStorySubtitle": "Mas maraming signal, mas kaunting ingay sa spreadsheet."
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Mag-upload ng file",
+      "supportedTypes": "PDF, DOCX, TXT o CSV",
+      "failed": "Hindi na-upload",
+      "retry": "Subukang i-upload muli",
+      "retryShort": "Subukan muli",
+      "remove": "Alisin ang file",
+      "pickerErrorTitle": "Hindi mabuksan ang mga file",
+      "pickerErrorMessage": "Pakisubukang piliin muli ang dokumento.",
+      "tooMany": "Hanggang 3 dokumento ang puwede mong ilakip sa bawat mensahe.",
+      "tooLarge": "Dapat 10 MB o mas maliit ang bawat dokumento.",
+      "empty": "Walang laman ang napiling dokumento.",
+      "unsupported": "Gumamit ng PDF, DOCX, TXT o CSV na file.",
+      "invalidTitle": "Hindi suportado ang file",
+      "pasteFailedTitle": "Hindi mailakip ang na-paste na teksto",
+      "pasteFailedMessage": "Nanatili ang iyong teksto sa kahon ng mensahe.",
+      "waitUntilReady": "Pakihintay na matapos ma-upload ang iyong mga dokumento.",
+      "encrypted": "Protektado ng password ang PDF na ito. Mag-upload ng kopyang hindi naka-lock.",
+      "unsupportedDocument": "Hindi mabasa ang file na ito o hindi suportado ang nilalaman nito. Gumamit ng PDF, DOCX, TXT o CSV na file.",
+      "tooManyPages": "Hatiin ang PDF na ito sa mga file na may hanggang 100 pahina.",
+      "noReadableText": "Walang nakitang nababasang teksto. Kailangan ng OCR ang mga na-scan na PDF; mag-upload ng kopyang may nababasang teksto.",
+      "pastedTextName": "Na-paste na teksto",
+      "badge": "DOK",
+      "untitled": "Dokumento"
     }
   },
   "imageUpload": {
@@ -1177,7 +1207,7 @@
     "accessTitle": "Walang limitasyong pag-access sa",
     "accessSubtitle": "GPT, Gemini at Grok 4",
     "features": {
-      "unlimitedGPT4": "Walang limitasyong access sa GPT-4",
+      "unlimitedGPT4": "Walang limitasyong paggamit ng GPT-4",
       "geminiPro": "Access sa Gemini Pro",
       "grokInsights": "Gamitin ang Grok para sa mga bagong insight",
       "priorityAccess": "Priyoridad na pag-access at mas mabilis na mga tugon"
@@ -1236,7 +1266,7 @@
         "imageCredits200": "200 Mga Kredito sa Larawan",
         "imageCredits600": "600 Mga Kredito sa Larawan",
         "weeklyPremium": "Lingguhang Premium",
-        "secretBox": "Secret Box"
+        "secretBox": "Sikretong Kahon"
       },
       "rewardDescriptions": {
         "secretBox": "Mga gantimpala ng misteryo sa loob"
@@ -1299,10 +1329,10 @@
         "rewardUnlocked": "Na-unlock ang Gantimpala",
         "credits": "Mga kredito",
         "close": "Isara",
-        "okay": "Okay"
+        "okay": "Sige"
       },
       "secretBox": {
-        "pill": "SECRET BOX",
+        "pill": "SIKRETONG KAHON",
         "rewardUnlocked": "NA-UNLOCK ANG REWARD",
         "shufflingRewards": "PAG-SHUFFLING NG MGA REWARD...",
         "imageCreditsAdded": "Idinagdag ang mga kredito ng larawan sa iyong account",
@@ -1322,6 +1352,10 @@
       "cta": "Kunin",
       "claimed": "Natanggap! +{{amount}} barya",
       "later": "Mamaya"
+    },
+    "button": {
+      "title": "Mga Gantimpala",
+      "subtitle": "Araw-araw na bonus at pribilehiyo"
     }
   },
   "app": {
@@ -1330,7 +1364,8 @@
     "launch": {
       "accessibilityLabel": "Simula Cloud AI",
       "title": "CLOUD AI",
-      "subtitle": "AI, handa kapag handa ka na"
+      "subtitle": "AI, handa kapag handa ka na",
+      "closePreview": "Isara ang preview ng panimulang screen"
     },
     "errors": {
       "modelsLoadTitle": "Nabigong Mag-load ng Mga Modelo",
@@ -1339,7 +1374,7 @@
       "modelsLoadNetwork": "Walang koneksyon sa internet. Gagamit ang app ng mga default na modelo. Pakisuri ang iyong koneksyon.",
       "deviceIdTitle": "Error sa Pagsisimula",
       "deviceIdMessage": "Nabigong simulan ang device ID. Maaaring hindi gumana nang tama ang ilang feature.",
-      "storageTitle": "Error sa Storage",
+      "storageTitle": "Error sa Imbakan",
       "storageMessage": "Hindi ma-access ang lokal na storage. Maaaring hindi gumana nang tama ang ilang feature.",
       "crashTitle": "Nagkaproblema.",
       "crashSubtitle": "Pakisubukang muli.",
@@ -1359,10 +1394,10 @@
       "imageUnavailableMessage": "Pansamantalang hindi available ang nabuong file ng imahe. Pakisubukang muli.",
       "authorizationTitle": "Isyu sa pahintulot",
       "authorizationMessage": "Hindi namin ma-verify ang iyong account. Pakisubukang muli.",
-      "serverTitle": "Hiccup ng server",
+      "serverTitle": "Nagka-aberya ang server",
       "serverMessage": "Nagkaproblema ang aming mga server. Pakisubukang muli sa ilang sandali.",
       "timeoutTitle": "Masyadong matagal",
-      "timeoutMessage": "Nag-time out ang kahilingan. Pakisubukang muli.",
+      "timeoutMessage": "Masyadong natagalan ang kahilingan. Pakisubukang muli.",
       "networkTitle": "Walang koneksyon",
       "networkMessage": "Walang koneksyon sa internet. Pakisuri ang iyong koneksyon at subukang muli.",
       "requestTitle": "Humiling ng isyu",
@@ -1389,6 +1424,194 @@
       "body": "Nagpapadala kami ng isang paalala bawat araw para manatiling buhay ang iyong streak at lumago ang iyong barya. Walang spam, at puwede mong i-off anumang oras.",
       "enable": "I-on ang mga paalala",
       "skip": "Hindi ngayon"
+    }
+  },
+  "workspace": {
+    "documents": "Mga Dokumento",
+    "videos": "Mga buod ng video",
+    "summary": "Buod",
+    "details": "Mga Detalye",
+    "sources": "Mga Pinagmulan",
+    "youtube": "YouTube",
+    "upload": "Mag-upload",
+    "transcript": "Transkripsyon",
+    "concise": "Maikli at malinaw",
+    "detailed": "Buong larawan",
+    "errors": {
+      "NETWORK": "Tingnan ang iyong koneksyon sa internet at subukan muli. Nandito pa rin ang mga napili mong pinagmulan.",
+      "TIMEOUT": "Masyadong natagalan ang pinagmulang ito. Subukan ang mas maikling video o mas maliit na dokumento.",
+      "NOT_CONFIGURED": "Hindi pa magagamit ang pagsusuri ng pinagmulan. Pakisubukan muli mamaya.",
+      "VIDEO_NOT_CONFIGURED": "Hindi pa magagamit ang direktang pagsusuri ng video. Puwede mo pa ring ibuod ang na-paste na transkripsyon.",
+      "DOCUMENT_EXPIRED": "Nag-expire na ang isang pinagmulan. Piliin muli ang orihinal na dokumento.",
+      "SOURCE_UNAVAILABLE": "Hindi masuri ang pinagmulang ito. Subukan ang ibang file o isang na-paste na transkripsyon.",
+      "TOO_MANY_PAGES": "Masyadong maraming pahina ang PDF na ito. Hatiin ito sa mga file na may hanggang 100 pahina bawat isa.",
+      "INVALID_VIDEO": "Pumili ng nababasang MP4 o WebM na video, hanggang 20 MB. Ang unang 10 minuto ang sinusuri namin.",
+      "INVALID_DOCUMENTS": "Piliin muli ang iyong mga dokumento at subukan ulit.",
+      "CLIENT_ID_REQUIRED": "I-restart ang app at subukan muli.",
+      "RATE_LIMITED": "Naabot mo na ang limitasyon ng pagsusuri para sa araw na ito. Pakisubukan muli bukas.",
+      "INVALID_RESULT": "Hindi kumpleto ang pagsusuri. Pakisubukan muli.",
+      "FILE_TOO_LARGE": "Masyadong malaki ang file na ito. Hanggang 10 MB ang mga dokumento; hanggang 20 MB ang mga video clip.",
+      "NO_READABLE_TEXT": "Walang nakitang nababasang teksto. Gumamit ng PDF na may nababasang teksto o i-paste ang teksto; kailangan ng OCR ang mga na-scan na PDF.",
+      "ANALYSIS_FAILED": "Hindi masuri ang pinagmulan. Pakisubukan muli.",
+      "SOURCES_TOO_LARGE": "Masyadong malaki ang mga dokumentong ito para masuri nang sabay. Ibuod ang mga ito nang hiwalay o sa mas maliliit na grupo.",
+      "ENCRYPTED_DOCUMENT": "Protektado ng password ang PDF na ito. Mag-upload ng kopyang hindi naka-lock.",
+      "UNSUPPORTED_DOCUMENT": "Hindi mabasa ang file na ito o hindi suportado ang nilalaman nito. Gumamit ng PDF, DOCX, TXT o CSV na file.",
+      "SERVICE_BUSY": "Abala ang serbisyo ng pagsusuri. Pakisubukan muli maya-maya.",
+      "PROVIDER_UNAVAILABLE": "Pansamantalang hindi magagamit ang serbisyo ng AI. Pakisubukan muli maya-maya.",
+      "DAILY_LIMIT": "Naabot mo na ang limitasyon ng pagsusuri ng pinagmulan para sa araw na ito. Magagamit pa rin ang iyong mga naka-save na buod.",
+      "ALREADY_PROCESSING": "May pagsusuring tumatakbo na. Tingnan ang progreso nito sa ibaba bago magsimula ng bago.",
+      "JOB_PENDING": "Pinoproseso pa ang iyong pagsusuri. Gamitin ang Tingnan ang progreso sa ibaba para makuha ito.",
+      "JOB_NOT_FOUND": "Hindi nakita o nag-expire na ang pagsusuring ito. Kung kaka-upload mo lang, maghintay sandali at tingnan muli.",
+      "WORKSPACE_KEY_REQUIRED": "Hindi ma-unlock ang iyong aklatan ng mga pinagmulan. I-restart ang app at subukan muli.",
+      "NO_SPEECH": "Walang malinaw na pananalitang ma-transcribe. Subukan ang video na may naririnig na pananalita o i-paste ang transkripsyon nito.",
+      "VIDEO_TOO_LONG": "Pumili ng video na hanggang 10 minuto ang haba."
+    },
+    "invalidUrl": "Maglagay ng wastong https:// na link ng YouTube video.",
+    "invalidTranscript": "Mag-paste ng transkripsyon na may 40 hanggang 120,000 karakter.",
+    "chooseFirst": "Pumili muna ng pinagmulan.",
+    "uploading": "Ina-upload ang {{name}}",
+    "extracting": "Binabasa ang iyong dokumento…",
+    "analyzing": "Hinahanap ang mahahalagang bahagi…",
+    "chatError": "Hindi mabuksan ang pinagmulang ito sa chat. Pakisubukan muli.",
+    "shareError": "Hindi maibahagi ang buod na ito. Pakisubukan muli.",
+    "removeTitle": "Alisin ang naka-save na buod?",
+    "removeBody": "Aalisin nito ang buod sa device na ito. Mananatili ang iyong mga chat. Susundin ng na-upload na teksto ng pinagmulan ang kasalukuyang panahon ng pag-iimbak nito.",
+    "remove": "Alisin",
+    "removeError": "Hindi maalis ang buod na ito. Pakisubukan muli.",
+    "summarizeVideo": "Kunin ang buod",
+    "chooseDocuments": "Idagdag ang iyong mga dokumento",
+    "videoSubtitle": "Gawing mahahalagang ideya, kabanata at sagot ang mga sinabi sa video.",
+    "documentSubtitle": "Hanapin ang mahahalaga sa iyong mga file. Magtanong sa chat.",
+    "newAnalysis": "Bagong buod",
+    "savedBrief": "IYONG BUOD",
+    "documentCoverage": "Batay sa nakuhang teksto. Maaaring hindi kasama ang mga larawan at na-scan na pahina.",
+    "transcriptCoverage": "Batay sa ibinigay na transkripsyon. Hindi sinuri ang mga visual ng video.",
+    "videoCoverage": "Pagsusuri ng AI sa video. Tantiya lang ang mga kabanata; ihambing ang mahahalagang detalye sa orihinal.",
+    "extractionLimit": "Naabot ng isang dokumento ang limitasyon sa pagkuha ng teksto. Maaaring hindi saklaw ng buod na ito ang buong orihinal na file.",
+    "saveError": "Hindi ma-save ang buod na ito. Panatilihing bukas ang screen na ito at subukan muli, o magbahagi ng kopya.",
+    "retrySave": "Subukang i-save muli",
+    "chapters": "Mga Kabanata",
+    "actions": "Mga dapat gawin",
+    "noSections": "Walang natukoy na karagdagang seksyon sa pinagmulang ito.",
+    "linkError": "Hindi mabuksan ang video.",
+    "videoEvidence": "Tantiya lang ang mga timestamp ng video. Inilalarawan ng mga buod ng transkripsyon ang ibinigay na teksto at hindi nito sinusuri ang mga visual.",
+    "documentEvidence": "Itinutugma ang mga sipi sa ibaba sa nakuhang teksto. Ipinapakita lang ang orihinal na numero ng pahina kapag mayroon.",
+    "noEvidence": "Walang beripikadong sipi ng teksto para sa buod na ito.",
+    "coverage": "Saklaw at limitasyon",
+    "sourceExpires": "Magagamit ang pinagmulan hanggang",
+    "localOnly": "Naka-save ang mga buod sa device na ito. Magbahagi ng kopya para may backup ka.",
+    "continueChat": "Magtanong tungkol dito",
+    "chatContext": "Magsisimula ang chat sa naka-save na buod na ito at sa anumang magagamit na sanggunian ng dokumento. Hindi buong transkripsyon ang buod ng video.",
+    "share": "Ibahagi ang buod",
+    "videoLink": "Link ng YouTube video",
+    "publicOnly": "Mga pampublikong video lang. Maaaring hindi magamit ang mga pribado, unlisted, live at restricted na video.",
+    "transcriptHint": "I-paste ang transkripsyon o subtitle. Isama ang mga timestamp para sa mga kabanata.",
+    "textOnly": "Teksto lang; hindi sinusuri ang mga visual.",
+    "clip": "Magdagdag ng video",
+    "videoLimits": "MP4, MOV, WebM · hanggang 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · 3 file · 10 MB bawat isa",
+    "openingFiles": "Binubuksan ang mga file…",
+    "chooseFiles": "Magdagdag ng mga file",
+    "removeFile": "Alisin ang {{name}}",
+    "depth": "Iayon sa iyo",
+    "processingNotice": "Ina-upload ang iyong file para iproseso ng AI.",
+    "cancel": "Kanselahin",
+    "analyzeDocuments": "Kunin ang buod",
+    "library": "Sulit itago",
+    "search": "Maghanap ng buod",
+    "loadError": "Hindi ma-load ang mga naka-save na buod. Hindi napalitan ang iyong kasalukuyang data.",
+    "retry": "Subukan muli",
+    "emptyLibrary": "Dito lalabas ang iyong mga buod, handang balikan o pag-usapan sa chat.",
+    "removeBrief": "Alisin ang {{name}}",
+    "audioCoverage": "Buod ng pananalita · Hindi sinusuri ang mga visual. Ihambing ang mga pangalan at numero sa recording.",
+    "uploadTitle": "Pumili ng mga file para magsimula",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · 10 min\nPananalita lang",
+    "noSearchResults": "Walang nakitang buod. Sumubok ng ibang paghahanap.",
+    "clearSearch": "I-clear ang paghahanap",
+    "keyPoints": "Mahahalagang punto",
+    "chatContextShort": "May gusto ka pang malaman? Magtanong pa.",
+    "openingChat": "Binubuksan ang chat…",
+    "uploadVideo": "Mag-upload ng video",
+    "pasteTranscript": "I-paste ang transkripsyon",
+    "heroVideoLabel": "TALINO SA VIDEO",
+    "heroDocumentLabel": "TALINO SA DOKUMENTO",
+    "heroVideoTitle": "Mas kaunting panonood.\nMas maraming alam.",
+    "heroDocumentTitle": "Iyong mga file.\nMalinaw na sagot.",
+    "heroVideoDescription": "Gawing buod na sulit itago ang mga sinabi sa video.",
+    "heroDocumentDescription": "Tuklasin ang mahalaga. Pagdugtungin ang mga ideya. Magtanong ng kahit ano.",
+    "heroIdeas": "Pangunahing ideya",
+    "heroFollowUps": "Tanungin ang AI",
+    "heroSummarize": "Ibuod",
+    "heroCompare": "Ihambing",
+    "summaryReady": "Ang mahalaga",
+    "savedOnDevice": "Naka-save sa device na ito",
+    "notSavedYet": "Handa nang i-save",
+    "atAGlance": "Ang kabuuan",
+    "addSource": "Idagdag ang iyong pinagmulan",
+    "quickDescription": "Mahahalagang punto lang",
+    "detailedDescription": "May puwang para sa detalye",
+    "chooseVideo": "Magdagdag ng video",
+    "studioLabel": "Kaunting dagdag na linaw.",
+    "studioDocumentTitle": "Malalaking ideya.\nMas kaunting basa.",
+    "studioVideoTitle": "Mas kaunting panonood.\nMas maraming makukuha.",
+    "studioDocumentDescription": "Mula sa napakaraming pahina hanggang sa susunod mong magandang ideya.",
+    "studioVideoDescription": "Itago ang magagandang bahagi. Gawing mababalikan mo ang mga sinabi sa video.",
+    "studioVideoDescriptionV3": "Makita ang buong kuwento. Gawing mga ideyang mababalikan mo ang mga eksena at sinabi sa video.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Unang 10 min · Pananalita at visual",
+    "videoCoverageV3": "Pananalita at mga eksena · Hanggang unang 10 minuto lang. Tantiya lang ang mga kabanata; maaaring hindi mapansin ang mabibilis na kilos.",
+    "videoChatMenu": "Unawain ang mga eksena, pananalita at mahahalagang sandali",
+    "analyzingVideo": "Pinapanood ang iyong video…",
+    "uploadingVideo": "Ina-upload ang video… {{percent}}%",
+    "videoCancelled": "Itinigil ang pagsusuri ng video.",
+    "videoSourceNeeded": "Mag-paste ng pampublikong link ng YouTube, o i-tap ang + → Mag-upload ng video. Pagkatapos, ipadala ang iyong tanong.",
+    "localOnlyV2": "Naka-save ang mga buod sa device na ito. Itinatabi rin ang resulta ng pagsusuri sa server ng pagsusuri nang hanggang 7 araw para makuha ito, at pagkatapos ay buburahin. Magbahagi ng kopya para may backup ka.",
+    "leavePrivateTitle": "Umalis sa pribadong chat?",
+    "leavePrivateBody": "Kapag nagtanong ka tungkol sa buod na ito, matatapos ang iyong pribadong chat at mase-save ang bagong pag-uusap sa iyong kasaysayan.",
+    "leavePrivateConfirm": "Magpatuloy",
+    "documentPages": "May nakitang teksto sa {{extracted}} sa {{total}} pahina.",
+    "documentPartialText": "May mga pahinang walang makukuhang teksto. Hindi binabasa ang mga larawan at scan.",
+    "documentTruncated": "Ang simula lang ng dokumentong ito ang nakuha. Maaaring hindi maisama sa buod ang mga susunod na bahagi.",
+    "sourceUnavailable": "Pansamantalang hindi magagamit ang ganitong uri ng pinagmulan. Subukan ang ibang opsyon sa ibaba.",
+    "accepted": "Sinusuri ang iyong pinagmulan. Puwede mong iwan ang screen na ito at tingnan ang progreso mamaya.",
+    "checkingProgress": "Tinitingnan ang iyong naka-save na pagsusuri…",
+    "pendingError": "Hindi ma-load ang mga nakabinbing pagsusuri. I-restart ang app bago magsimula ng bago.",
+    "pendingAnalysis": "NAKABINBING PAGSUSURI",
+    "resumeHint": "Kapag natanggap na, magpapatuloy ang pagsusuri kahit umalis ka sa screen. Kunin dito ang resulta nang hindi ito inuulit.",
+    "checkProgress": "Tingnan ang progreso",
+    "cancelAnalysis": "Kanselahin ang pagsusuri",
+    "demoNotice": "Lokal na demo · halimbawang nilalaman · walang na-upload na pinagmulan",
+    "publicVideoCoverage": "Mga pampublikong YouTube video · Unang 10 minuto. Maaaring hindi magamit ang mga pribado, live at restricted na video.",
+    "sourceUnavailableLibrary": "Pansamantalang hindi magagamit ang ganitong uri ng pinagmulan. Puwede mo pa ring buksan ang iyong mga naka-save na buod.",
+    "stopWaiting": "Itigil ang paghihintay",
+    "previewSample": "Halimbawang preview · lokal na demo",
+    "pickVideoError": "Pumili ng isang MP4 o WebM na clip, hanggang 20 MB at 10 minuto.",
+    "pickDocumentsError": "Pumili ng hanggang tatlong PDF, DOCX, TXT o CSV na dokumento, hanggang 10 MB bawat isa.",
+    "videoErrors": {
+      "ONE_VIDEO": "Pumili ng isang video o mag-paste ng isang link ng YouTube sa bawat pagkakataon.",
+      "VIDEO_MIXED_SOURCES": "Ipadala ang video nang hiwalay sa mga larawan at dokumento.",
+      "VIDEO_QUESTION_TOO_LONG": "Panatilihing mas mababa sa 4,000 karakter ang iyong tanong tungkol sa video.",
+      "INVALID_VIDEO": "Pumili ng MP4 o WebM na video, hanggang 20 MB.",
+      "FILE_TOO_LARGE": "Pumili ng video na hanggang 20 MB.",
+      "SOURCE_UNAVAILABLE": "Hindi namin ma-access ang video na ito. Subukan ang isang pampublikong YouTube video o mag-upload ng MP4 o WebM na file.",
+      "INVALID_RESULT": "Hindi kumpleto ang pagsusuri ng video. Pakisubukan muli.",
+      "NETWORK": "Naputol ang koneksyon. Tingnan ang Mga buod ng video para sa resulta bago sumubok muli.",
+      "TIMEOUT": "Masyadong natagalan ang pagsusuri ng video. Subukan ang mas maikling clip.",
+      "JOB_PENDING": "Pinoproseso pa ang iyong video. Buksan ang Mga buod ng video para tingnan ang progreso nito.",
+      "DAILY_LIMIT": "Naabot mo na ang limitasyon ng pagsusuri ng video at dokumento para sa araw na ito. Pakisubukan muli bukas.",
+      "ALREADY_PROCESSING": "May pagsusuring tumatakbo na. Buksan ang Mga buod ng video para tingnan ang progreso nito.",
+      "SERVICE_BUSY": "Abala ang pagsusuri ng video. Pakisubukan muli maya-maya.",
+      "PROVIDER_UNAVAILABLE": "Pansamantalang hindi magagamit ang pagsusuri ng video. Pakisubukan muli maya-maya.",
+      "NOT_CONFIGURED": "Pansamantalang hindi magagamit ang pagsusuri ng video. Pakisubukan muli mamaya.",
+      "VIDEO_NOT_CONFIGURED": "Pansamantalang hindi magagamit ang pagsusuri ng video. Pakisubukan muli mamaya.",
+      "SAVE_FAILED": "Handa na ang iyong buod, pero hindi ito ma-save sa iyong aklatan. Panatilihin ang chat na ito o kopyahin ang buod."
+    },
+    "markdown": {
+      "summary": "Buod",
+      "keyTakeaways": "Mahahalagang punto",
+      "details": "Mga Detalye",
+      "actionItems": "Mga dapat gawin",
+      "sourceExcerpts": "Mga sipi mula sa pinagmulan",
+      "coverageNotes": "Mga tala sa saklaw"
     }
   }
 }

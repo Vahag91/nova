@@ -16,6 +16,11 @@ export const SUPPORTED_DOCUMENT_EXTENSIONS = Object.freeze([
   'csv',
 ]);
 
+// Mirrors MAX_DOCUMENT_CONTEXT_CHARS in supabase/functions/chat-proxy-v2: the
+// combined document text a single chat request can carry. Used only to disclose
+// the cut to the user and the model; the proxy still enforces it.
+export const CHAT_DOCUMENT_CONTEXT_CHARS = 48000;
+
 export const SUPPORTED_DOCUMENT_MIME_TYPES = Object.freeze([
   'application/pdf',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',

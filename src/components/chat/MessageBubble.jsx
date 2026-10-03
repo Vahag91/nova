@@ -146,6 +146,7 @@ function PureImagesBlock({ uris, alignRight }) {
 }
 
 function DocumentAttachmentsBlock({ attachments, onLongPress }) {
+  const { t } = useTranslation();
   const documents = (Array.isArray(attachments) ? attachments : [])
     .filter(isDocumentAttachment);
   if (!documents.length) return null;
@@ -165,11 +166,11 @@ function DocumentAttachmentsBlock({ attachments, onLongPress }) {
             style={({ pressed }) => [styles.sentDocumentChip, pressed && styles.actionButtonPressed]}
           >
             <View style={styles.sentDocumentIcon}>
-              <Text style={styles.sentDocumentIconText}>DOC</Text>
+              <Text style={styles.sentDocumentIconText}>{t('chat.files.badge', { defaultValue: 'DOC' })}</Text>
             </View>
             <View style={styles.sentDocumentText}>
               <Text style={styles.sentDocumentName} numberOfLines={1}>
-                {document.name || 'Document'}
+                {document.name || t('chat.files.untitled', { defaultValue: 'Document' })}
               </Text>
               {!!meta && <Text style={styles.sentDocumentMeta}>{meta}</Text>}
             </View>
@@ -317,7 +318,7 @@ const MessageBubbleImpl = function MessageBubble({
               const uris = extractImageUrisAll(content);
               const leftover = stripImageMd(content);
               const plainUserText = isPlainUserText(content);
-              const hasDocuments = (message.attachments || []).some(isDocumentAttachment);
+              const hasDocuments = !message.meta?.videoSummarySource && (message.attachments || []).some(isDocumentAttachment);
               const documentsBlock = hasDocuments
                 ? <DocumentAttachmentsBlock attachments={message.attachments} onLongPress={showSheet} />
                 : null;
@@ -455,8 +456,9 @@ const MessageBubbleImpl = function MessageBubble({
                   <View style={styles.assistantContentShell}>
                     <View style={styles.assistantContentBase}>
                       <StreamingText
+                        key={isStreamingThis ? 'streaming' : 'saved'}
                         messageId={message.id}
-                        base={baseContent}
+                        base={isStreamingThis ? '' : baseContent}
                         streaming={isStreamingThis}
                         activityText={message?.meta?.activity}
                         selectionResetToken={selectionResetToken}

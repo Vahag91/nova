@@ -29,7 +29,7 @@ export const throttledSave = {
       saveTimer = setTimeout(flushQueue, SAVE_INTERVAL_MS);
     }
   },
-  immediateSave: (threadId, threadData) => {
+  immediateSave: (threadId, threadData, options) => {
     // Clear any pending throttled save for this thread
     saveQueue.delete(threadId);
     if (saveTimer && saveQueue.size === 0) {
@@ -38,9 +38,7 @@ export const throttledSave = {
     }
 
     // Perform immediate save
-    Storage.saveThread(threadData)
-      .catch(error => {
-      });
+    return Storage.saveThread(threadData, options);
   },
   // For testing/debugging
   _getQueueSize: () => saveQueue.size,

@@ -25,7 +25,7 @@
     "gpt-5-chat-latest": "Iṣapeye fun iwiregbe ati ibaraẹnisọrọ",
     "gpt-5-mini": "Yara ati igbẹkẹle GPT-5",
     "gpt-5.4-nano": "Ina awoṣe fun o rọrun awọn iṣẹ-ṣiṣe",
-    "o4-mini": "Awoṣe ero ero daradara",
+    "o4-mini": "Àwòṣe ìrònú tó múná dóko",
     "gpt-4.1-mini": "Iwapọ, agbara GPT-4.1",
     "claude-3-haiku": "Yara ati idojukọ Anthropic AI",
     "claude-3.7-sonnet": "Refaini ero nipa Anthropic",
@@ -50,12 +50,12 @@
     "budget_friendly": "Isuna-friendly AI awoṣe",
     "ultra_fast": "Ultra sare awọn idahun",
     "safe_default": "Ailewu aiyipada yiyan",
-    "multilingual": "Alagbara multilingual support",
+    "multilingual": "Atilẹyin to lagbara fun ọpọlọpọ ede",
     "vision_strong": "Nla pẹlu awọn aworan ati iran",
     "data_analysis": "O dara fun itupalẹ data",
     "structured_tasks": "O dara fun awọn iṣẹ-ṣiṣe ti iṣeto",
     "everyday_helper": "Lojojumo arannilọwọ awoṣe",
-    "concise_answers": "Awọn idahun kukuru, kukuru",
+    "concise_answers": "Àwọn ìdáhùn kúkúrú àti ṣókí",
     "detailed_answers": "Awọn idahun igbese-nipasẹ-igbesẹ ni kikun",
     "experimental": "Esiperimenta tókàn-Jẹn awoṣe",
     "reliable_classic": "Gbẹkẹle Ayebaye awoṣe",
@@ -63,14 +63,25 @@
     "chatty_personal": "Diẹ ore ati ki o ti ara ẹni",
     "pro_users": "Dara julọ fun awọn olumulo agbara",
     "research_helper": "O dara fun iwadi ati awọn akọsilẹ",
-    "reasoning_strong": "Awoṣe ero to ti ni ilọsiwaju"
+    "reasoning_strong": "Awoṣe ero to ti ni ilọsiwaju",
+    "gpt56_sol": "Àwòṣe GPT-5.6 tó lágbára jùlọ",
+    "gpt56_terra": "Àwòṣe GPT-5.6 oníwọ̀ntúnwọ̀nsì",
+    "gpt56_luna": "Àwòṣe tó yára fún iṣẹ́ ojoojúmọ́",
+    "claude_fable": "AI Anthropic tó yára tó sì ní ìṣẹ̀dá",
+    "claude_sonnet": "Àwòṣe Anthropic onípele gíga",
+    "gemini_flash": "Àwòṣe AI Google tó yára",
+    "gemini_pro": "Àwòṣe Pro onípele gíga ti Google",
+    "grok_latest": "Àwòṣe tuntun jùlọ ti xAI",
+    "deepseek_pro": "Àwòṣe DeepSeek onípele gíga",
+    "deepseek_flash": "Àwòṣe DeepSeek tó yára"
   },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Anthropic",
     "google": "Google",
     "xai": "xAI",
-    "other": "Omiiran"
+    "other": "Omiiran",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Iwiregbe Tuntun",
@@ -130,7 +141,7 @@
     "imageDescriptionHint": "Tẹ apejuwe kan ti aworan ti o fẹ ṣe ina",
     "openModelSettings": "Ṣii awọn eto awoṣe",
     "modelSettingsHint": "Fọwọ ba lati yi awoṣe ati eto pada",
-    "openPhotoGallery": "Ṣii aworan aworan",
+    "openPhotoGallery": "Ṣí àkójọ fọ́tò",
     "clearInput": "Ko igbewọle kuro",
     "generatedImage": "Aworan ti ipilẹṣẹ",
     "autoSelectedModel": "Ti yan ni aifọwọyi {{model}} fun ipo {{mode}}",
@@ -145,7 +156,7 @@
     "imageDescriptionHint": "Tẹ apejuwe kan ti aworan ti o fẹ ṣe ina",
     "openModelSettings": "Ṣii awọn eto awoṣe",
     "modelSettingsHint": "Fọwọ ba lati yi awoṣe ati eto pada",
-    "openPhotoGallery": "Ṣii aworan aworan",
+    "openPhotoGallery": "Ṣí àkójọ fọ́tò",
     "clearInput": "Ko igbewọle kuro",
     "generatedImage": "Aworan ti ipilẹṣẹ"
   },
@@ -155,7 +166,7 @@
     "errorTitle": "Nkankan ti ko tọ",
     "errorMessage": "Ko le bẹrẹ oluranlọwọ yii.",
     "noAssistants": "Ko si awọn oluranlọwọ ti a rii ni ẹka yii.",
-    "selectAssistantHint": "Ṣii oluranlọwọ oluranlọwọ",
+    "selectAssistantHint": "Ṣí ibi yíyan olùrànlọ́wọ́",
     "subtitle": "Awọn alamọja AI ti a ti ṣetan fun ifaminsi, kikọ, itupalẹ, igbero, ati diẹ sii.",
     "searchPlaceholder": "Wa awọn oluranlọwọ…",
     "useAssistant": "Lo Iranlọwọ",
@@ -227,11 +238,11 @@
         "description": "Awọn imọran nipasẹ isuna & awọn anfani."
       },
       "party": {
-        "name": "Eto Iṣẹlẹ (Lite)",
+        "name": "Eto Iṣẹlẹ (rọrùn)",
         "description": "Gbero kan kekere keta sare."
       },
       "social": {
-        "name": "Social Post Ẹlẹda",
+        "name": "Oluṣẹda Ifiweranṣẹ Awujọ",
         "description": "Akọpamọ posts pẹlu awọn aṣayan."
       },
       "interview": {
@@ -239,7 +250,7 @@
         "description": "Awọn idahun adaṣe (STAR)."
       },
       "homefix": {
-        "name": "Home Fix-It Itọsọna",
+        "name": "Itọsọna Atunṣe Ile",
         "description": "Laasigbotitusita DIY ti o rọrun."
       },
       "pet": {
@@ -276,7 +287,7 @@
     "deleteChatMessage": "\"{{title}}\" yoo parẹ.",
     "rename": "Fun lorukọ mii",
     "unpin": "Yọ kuro",
-    "pin": "Pin",
+    "pin": "Gbé sí òkè",
     "untitled": "Ti ko ni akole"
   },
   "settings": {
@@ -379,7 +390,7 @@
       ]
     },
     "promptPlaceholder": "Tẹ ohun ti o fẹ ri…",
-    "promptHint": "Apeere: 'Golden retriever in studio lighting'",
+    "promptHint": "Àpẹẹrẹ: 'Ajá onírun wúrà nínú ìmọ́lẹ̀ sítúdíò'",
     "clearText": "Ko ọrọ kuro",
     "generate": "Ṣẹda",
     "generating": "Ṣiṣẹda…"
@@ -419,7 +430,7 @@
         "name": "Cartoons"
       },
       "photoreal": {
-        "name": "Photoreal || mobile app olumulo-ni wiwo ọrọ"
+        "name": "Bí fọ́tò gidi"
       },
       "sketch": {
         "name": "Aworan"
@@ -443,7 +454,7 @@
         "name": "Pastel Darapupo"
       },
       "neon_glow": {
-        "name": "Neon Glow || mobile app olumulo-ni wiwo ọrọ"
+        "name": "Ìmọ́lẹ̀ neon"
       },
       "epic_landscape": {
         "name": "Apọju Landscape"
@@ -777,6 +788,18 @@
         "back": "Pada",
         "continue": "Tesiwaju",
         "finish": "Ye Ere"
+      },
+      "trial": {
+        "priceLine": "Lẹ́yìn náà, {{price}} lọ́dún. Fagilé nígbàkígbà.",
+        "title": "A fẹ́ kí o gbìyànjú Cloud AI lọ́fẹ̀ẹ́.",
+        "demoAsk": "Sọ àwòrán tí mo yà di pósítà cyberpunk",
+        "demoReply": "Àṣà mẹ́rin, wọ́n ti ṣetán láàárín ìṣẹ́jú-àáyá díẹ̀.",
+        "noPayment": "Kò sí ìsanwó báyìí",
+        "cta": "Gbìyànjú fún $0.00"
+      },
+      "reminder": {
+        "title": "A ó rán ọ létí kí ìdánwò ọ̀fẹ́ rẹ tó parí",
+        "note": "Ìkìlọ̀ máa dé ọ́ ní ìṣáájú kí a tó gba owó kankan, kí ohunkóhun má bàa yà ọ́ lẹ́nu."
       }
     }
   },
@@ -799,7 +822,7 @@
     "pack": {
       "creditsLabel": "{{credits}} Awọn Kirẹditi",
       "tokensLabel": "{{credits}} Awọn Kirẹditi",
-      "defaultName": "Pack {{index}}",
+      "defaultName": "Àpò {{index}}",
       "unknownPrice": "USD -"
     },
     "premium": {
@@ -956,7 +979,7 @@
     "insertTranscript": "Firanṣẹ",
     "scrollToLatest": "Yi lọ si ifiranṣẹ titun",
     "copyMessage": "Daakọ ifiranṣẹ",
-    "copyMessageHint": "Daakọ ifiranṣẹ yii si agekuru agekuru",
+    "copyMessageHint": "Ṣe àdàkọ ìfiránṣẹ́ yìí sí pátákó àdàkọ",
     "shareMessage": "Pin ifiranṣẹ",
     "shareMessageHint": "Pin ifiranṣẹ yii",
     "regenerateResponse": "Atunse esi",
@@ -991,7 +1014,7 @@
       "analyzingImages": "Ṣiṣayẹwo awọn aworan…",
       "searching": "Ṣiṣawari…",
       "thinking": "N ronu…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "Ń ṣe ìtúpalẹ̀ àwọn ìwé…"
     },
     "webSearch": {
       "title": "Wiwa wẹẹbu",
@@ -1032,7 +1055,7 @@
     "markdown": {
       "copy": "Daakọ",
       "copied": "Ti daakọ",
-      "table": "TABLE",
+      "table": "TÁBÌLÌ",
       "watchVideo": "Wo Fidio",
       "wikipedia": "Wikipedia",
       "link": "Ọna asopọ",
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Gbé fáìlì sókè",
+      "supportedTypes": "PDF, DOCX, TXT tàbí CSV",
+      "failed": "Gbígbé sókè kùnà",
+      "retry": "Tún gbé e sókè",
+      "retryShort": "Tún gbìyànjú",
+      "remove": "Yọ fáìlì kúrò",
+      "pickerErrorTitle": "Kò lè ṣí àwọn fáìlì",
+      "pickerErrorMessage": "Jọ̀ọ́ gbìyànjú láti yan ìwé náà lẹ́ẹ̀kan sí i.",
+      "tooMany": "O lè so ìwé tó 3 mọ́ ìfiránṣẹ́ kọ̀ọ̀kan.",
+      "tooLarge": "Ìwé kọ̀ọ̀kan gbọ́dọ̀ jẹ́ 10 MB tàbí kéré sí i.",
+      "empty": "Ìwé tí o yàn ṣófo.",
+      "unsupported": "Lo fáìlì PDF, DOCX, TXT tàbí CSV.",
+      "invalidTitle": "A kò ṣe àtìlẹ́yìn fún fáìlì yìí",
+      "pasteFailedTitle": "Kò lè so ọ̀rọ̀ tí o lẹ̀ mọ́ ọn",
+      "pasteFailedMessage": "Ọ̀rọ̀ rẹ ṣì wà nínú àpótí ìfiránṣẹ́.",
+      "waitUntilReady": "Jọ̀ọ́ dúró kí gbígbé àwọn ìwé rẹ sókè parí.",
+      "encrypted": "PDF yìí ní ọ̀rọ̀ aṣínà. Gbé ẹ̀dà tí kò ní títìpa sókè.",
+      "unsupportedDocument": "Fáìlì yìí kò ṣeé kà tàbí a kò ṣe àtìlẹ́yìn fún àkóónú rẹ̀. Lo fáìlì PDF, DOCX, TXT tàbí CSV.",
+      "tooManyPages": "Pín PDF yìí sí àwọn fáìlì tí kò ju ojú-ìwé 100 lọ.",
+      "noReadableText": "A kò rí ọ̀rọ̀ tó ṣeé kà. PDF tí a ṣe sìkáànù rẹ̀ nílò OCR; gbé ẹ̀dà tó ní ọ̀rọ̀ sókè.",
+      "pastedTextName": "Ọ̀rọ̀ tí a lẹ̀",
+      "badge": "ÌWÉ",
+      "untitled": "Ìwé"
     }
   },
   "imageUpload": {
@@ -1205,7 +1235,7 @@
     "header": {
       "title": "Awọn ere",
       "openMenu": "Ṣii akojọ aṣayan",
-      "goBack": "Pada pada"
+      "goBack": "Padà sẹ́yìn"
     },
     "pointsHero": {
       "totalBalance": "Iwontunwonsi lapapọ",
@@ -1322,6 +1352,10 @@
       "cta": "Gbà",
       "claimed": "A ti gbà! +{{amount}} owó",
       "later": "Nígbà mìíràn"
+    },
+    "button": {
+      "title": "Àwọn èrè",
+      "subtitle": "Ẹ̀bùn àti àǹfààní ojoojúmọ́"
     }
   },
   "app": {
@@ -1330,7 +1364,8 @@
     "launch": {
       "accessibilityLabel": "Bibẹrẹ Cloud AI",
       "title": "CLOUD AI",
-      "subtitle": "AI, setan nigbati o ba wa"
+      "subtitle": "AI, setan nigbati o ba wa",
+      "closePreview": "Pa ìfihàn ojú-ìbẹ̀rẹ̀ dé"
     },
     "errors": {
       "modelsLoadTitle": "Ti kuna lati kojọpọ Awọn awoṣe",
@@ -1389,6 +1424,194 @@
       "body": "A máa ń fi ìránnilétí kan ránṣẹ́ lójúmọ́ kí ìlà rẹ má bàa jáwọ́ àti kí owó rẹ máa pọ̀ sí i. Kò sí spam, o sì lè pa á ní ìgbàkúùgbà.",
       "enable": "Tan ìránnilétí",
       "skip": "Kì í ṣe nísinsìnyí"
+    }
+  },
+  "workspace": {
+    "documents": "Àwọn ìwé",
+    "videos": "Àkópọ̀ fídíò",
+    "summary": "Àkópọ̀",
+    "details": "Àlàyé",
+    "sources": "Àwọn orísun",
+    "youtube": "YouTube",
+    "upload": "Gbé sókè",
+    "transcript": "Àkọsílẹ̀ ọ̀rọ̀",
+    "concise": "Ní ṣókí",
+    "detailed": "Ní ẹ̀kúnrẹ́rẹ́",
+    "errors": {
+      "NETWORK": "Ṣàyẹ̀wò ìsopọ̀ ìntánẹ́ẹ̀tì rẹ kí o sì tún gbìyànjú. Àwọn orísun tí o yàn ṣì wà níbí.",
+      "TIMEOUT": "Orísun yìí pẹ́ jù. Gbìyànjú fídíò tó kúrú sí i tàbí ìwé tó kéré sí i.",
+      "NOT_CONFIGURED": "Ìtúpalẹ̀ orísun kò tíì sí. Jọ̀ọ́ tún gbìyànjú nígbà míì.",
+      "VIDEO_NOT_CONFIGURED": "Ìtúpalẹ̀ fídíò tààrà kò tíì sí. O ṣì lè ṣe àkópọ̀ àkọsílẹ̀ ọ̀rọ̀ tí o lẹ̀.",
+      "DOCUMENT_EXPIRED": "Orísun kan ti dópin. Tún yan ìwé ojúlówó náà.",
+      "SOURCE_UNAVAILABLE": "A kò lè ṣe ìtúpalẹ̀ orísun yìí. Gbìyànjú fáìlì mìíràn tàbí àkọsílẹ̀ ọ̀rọ̀ tí o lẹ̀.",
+      "TOO_MANY_PAGES": "PDF yìí ní ojú-ìwé tó pọ̀ jù. Pín in sí àwọn fáìlì tí ọ̀kọ̀ọ̀kan kò ju ojú-ìwé 100 lọ.",
+      "INVALID_VIDEO": "Yan fídíò MP4 tàbí WebM tó ṣeé kà, tí kò ju 20 MB lọ. A máa ń ṣe ìtúpalẹ̀ ìṣẹ́jú 10 àkọ́kọ́.",
+      "INVALID_DOCUMENTS": "Tún yan àwọn ìwé rẹ kí o sì gbìyànjú lẹ́ẹ̀kan sí i.",
+      "CLIENT_ID_REQUIRED": "Tún ìfilọ́lẹ̀ náà bẹ̀rẹ̀ kí o sì gbìyànjú lẹ́ẹ̀kan sí i.",
+      "RATE_LIMITED": "O ti dé òpin ìtúpalẹ̀ ti òní. Jọ̀ọ́ tún gbìyànjú lọ́la.",
+      "INVALID_RESULT": "Ìtúpalẹ̀ náà kò pé. Jọ̀ọ́ tún gbìyànjú.",
+      "FILE_TOO_LARGE": "Fáìlì yìí tóbi jù. Àwọn ìwé lè tó 10 MB; àwọn fídíò kékeré lè tó 20 MB.",
+      "NO_READABLE_TEXT": "A kò rí ọ̀rọ̀ tó ṣeé kà. Lo PDF tó ní ọ̀rọ̀ tàbí lẹ ọ̀rọ̀ náà; PDF tí a ṣe sìkáànù rẹ̀ nílò OCR.",
+      "ANALYSIS_FAILED": "A kò lè ṣe ìtúpalẹ̀ orísun náà. Jọ̀ọ́ tún gbìyànjú.",
+      "SOURCES_TOO_LARGE": "Àwọn ìwé wọ̀nyí tóbi jù láti ṣe ìtúpalẹ̀ wọn pọ̀. Ṣe àkópọ̀ wọn lọ́tọ̀ọ̀tọ̀ tàbí ní àwùjọ kéékèèké.",
+      "ENCRYPTED_DOCUMENT": "PDF yìí ní ọ̀rọ̀ aṣínà. Gbé ẹ̀dà tí kò ní títìpa sókè.",
+      "UNSUPPORTED_DOCUMENT": "Fáìlì yìí kò ṣeé kà tàbí a kò ṣe àtìlẹ́yìn fún àkóónú rẹ̀. Lo fáìlì PDF, DOCX, TXT tàbí CSV.",
+      "SERVICE_BUSY": "Iṣẹ́ ìtúpalẹ̀ dí lọ́wọ́ báyìí. Jọ̀ọ́ tún gbìyànjú láìpẹ́.",
+      "PROVIDER_UNAVAILABLE": "Iṣẹ́ AI kò sí fún ìgbà díẹ̀. Jọ̀ọ́ tún gbìyànjú láìpẹ́.",
+      "DAILY_LIMIT": "O ti dé òpin ìtúpalẹ̀ orísun ti òní. Àwọn àkópọ̀ tí o fi pamọ́ ṣì wà.",
+      "ALREADY_PROCESSING": "Ìtúpalẹ̀ kan ti ń lọ lọ́wọ́. Ṣàyẹ̀wò ìlọsíwájú rẹ̀ nísàlẹ̀ kí o tó bẹ̀rẹ̀ òmíràn.",
+      "JOB_PENDING": "Ìtúpalẹ̀ rẹ ṣì ń lọ lọ́wọ́. Lo Ṣàyẹ̀wò ìlọsíwájú nísàlẹ̀ láti gbà á.",
+      "JOB_NOT_FOUND": "A kò rí ìtúpalẹ̀ yìí tàbí àkókò rẹ̀ ti dópin. Tí o bá ṣẹ̀ṣẹ̀ gbé e sókè, dúró díẹ̀ kí o sì tún ṣàyẹ̀wò.",
+      "WORKSPACE_KEY_REQUIRED": "Kò lè ṣí ilé-ìkàwé orísun rẹ. Tún ìfilọ́lẹ̀ náà bẹ̀rẹ̀ kí o sì gbìyànjú lẹ́ẹ̀kan sí i.",
+      "NO_SPEECH": "A kò lè kọ ọ̀rọ̀ tó ṣe kedere sílẹ̀. Gbìyànjú fídíò tí ọ̀rọ̀ rẹ̀ ń dún ketekete tàbí lẹ àkọsílẹ̀ ọ̀rọ̀ rẹ̀.",
+      "VIDEO_TOO_LONG": "Yan fídíò tí gígùn rẹ̀ kò ju ìṣẹ́jú 10 lọ."
+    },
+    "invalidUrl": "Tẹ ọ̀nà àsopọ̀ fídíò YouTube https:// tó tọ́ sí i.",
+    "invalidTranscript": "Lẹ àkọsílẹ̀ ọ̀rọ̀ tí ó ní láàárín lẹ́tà 40 sí 120,000.",
+    "chooseFirst": "Kọ́kọ́ yan orísun kan.",
+    "uploading": "Ń gbé {{name}} sókè",
+    "extracting": "Ń ka ìwé rẹ…",
+    "analyzing": "Ń wá àwọn kókó pàtàkì…",
+    "chatError": "Kò lè ṣí orísun yìí nínú iwiregbe. Jọ̀ọ́ tún gbìyànjú.",
+    "shareError": "Kò lè pín àkópọ̀ yìí. Jọ̀ọ́ tún gbìyànjú.",
+    "removeTitle": "Yọ àkópọ̀ tí a fi pamọ́ kúrò?",
+    "removeBody": "Èyí yóò yọ àkópọ̀ náà kúrò lórí ẹ̀rọ yìí. Àwọn iwiregbe rẹ yóò wà. Ọ̀rọ̀ orísun tí a gbé sókè ń tẹ̀lé àkókò ìpamọ́ rẹ̀ tó wà tẹ́lẹ̀.",
+    "remove": "Yọ kúrò",
+    "removeError": "Kò lè yọ àkópọ̀ yìí kúrò. Jọ̀ọ́ tún gbìyànjú.",
+    "summarizeVideo": "Gba àkópọ̀",
+    "chooseDocuments": "Fi àwọn ìwé rẹ kún un",
+    "videoSubtitle": "Sọ ọ̀rọ̀ sísọ di àwọn kókó èrò, orí àti ìdáhùn.",
+    "documentSubtitle": "Wá àwọn kókó pàtàkì nínú àwọn fáìlì rẹ. Béèrè ìbéèrè nínú iwiregbe.",
+    "newAnalysis": "Àkópọ̀ tuntun",
+    "savedBrief": "ÀKÓPỌ̀ RẸ",
+    "documentCoverage": "Ó dá lórí ọ̀rọ̀ tí a yọ jáde. Àwọn àwòrán àti ojú-ìwé tí a ṣe sìkáànù rẹ̀ lè má wà nínú rẹ̀.",
+    "transcriptCoverage": "Ó dá lórí àkọsílẹ̀ ọ̀rọ̀ tí a pèsè. A kò ṣe ìtúpalẹ̀ àwọn ohun tí a ń rí nínú fídíò.",
+    "videoCoverage": "Ìtúpalẹ̀ AI ti fídíò náà. Àwọn orí jẹ́ àfojúdíwọ̀n; ṣàyẹ̀wò àwọn àlàyé pàtàkì pẹ̀lú ojúlówó rẹ̀.",
+    "extractionLimit": "Ìwé kan ti dé òpin yíyọ ọ̀rọ̀ jáde. Àkópọ̀ yìí lè má bo gbogbo fáìlì ojúlówó náà.",
+    "saveError": "A kò lè fi àkópọ̀ yìí pamọ́. Má ṣe pa ojú-ìwé yìí dé, kí o sì tún gbìyànjú, tàbí pín ẹ̀dà kan.",
+    "retrySave": "Tún gbìyànjú láti fi pamọ́",
+    "chapters": "Àwọn orí",
+    "actions": "Àwọn ìgbésẹ̀ láti gbé",
+    "noSections": "A kò rí àwọn apá mìíràn nínú orísun yìí.",
+    "linkError": "Kò lè ṣí fídíò náà.",
+    "videoEvidence": "Àwọn àkókò inú fídíò jẹ́ àfojúdíwọ̀n. Àkópọ̀ àkọsílẹ̀ ọ̀rọ̀ ń ṣàpèjúwe ọ̀rọ̀ tí a pèsè, kò sì ṣe ìtúpalẹ̀ àwọn ohun tí a ń rí.",
+    "documentEvidence": "A ti fi àwọn àyọkà nísàlẹ̀ wé ọ̀rọ̀ tí a yọ jáde. Nọ́mbà ojú-ìwé ojúlówó máa ń hàn kìkì tí wọ́n bá wà.",
+    "noEvidence": "Kò sí àyọkà ọ̀rọ̀ tí a ti fìdí rẹ̀ múlẹ̀ fún àkópọ̀ yìí.",
+    "coverage": "Ohun tí ó bò àti ààlà rẹ̀",
+    "sourceExpires": "Orísun wà títí di",
+    "localOnly": "A máa ń fi àwọn àkópọ̀ pamọ́ sórí ẹ̀rọ yìí. Pín ẹ̀dà kan láti ní ẹ̀dà ìpamọ́.",
+    "continueChat": "Béèrè nípa èyí",
+    "chatContext": "Iwiregbe yóò bẹ̀rẹ̀ pẹ̀lú àkópọ̀ tí a fi pamọ́ yìí àti àwọn ìtọ́kasí ìwé tó bá wà. Àkópọ̀ fídíò kì í ṣe àkọsílẹ̀ ọ̀rọ̀ tó pé.",
+    "share": "Pín àkópọ̀",
+    "videoLink": "Ọ̀nà àsopọ̀ fídíò YouTube",
+    "publicOnly": "Àwọn fídíò gbangba nìkan. Àwọn fídíò àdáni, èyí tí a kò ṣe àkójọ rẹ̀ sí gbangba, ìgbéjáde tààrà àti èyí tí a ti ká lọ́wọ́ lè má ṣeé rí.",
+    "transcriptHint": "Lẹ àkọsílẹ̀ ọ̀rọ̀ tàbí àwọn àkọlé-ìsàlẹ̀. Fi àwọn àkókò kún un fún àwọn orí.",
+    "textOnly": "Ọ̀rọ̀ nìkan; a kò ṣe ìtúpalẹ̀ àwọn ohun tí a ń rí.",
+    "clip": "Fi fídíò kún un",
+    "videoLimits": "MP4, MOV, WebM · tó 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · fáìlì 3 · 10 MB ọ̀kọ̀ọ̀kan",
+    "openingFiles": "Ń ṣí àwọn fáìlì…",
+    "chooseFiles": "Fi àwọn fáìlì kún un",
+    "removeFile": "Yọ {{name}} kúrò",
+    "depth": "Ṣe é bí o ṣe fẹ́",
+    "processingNotice": "A ń gbé fáìlì rẹ sókè kí AI lè ṣiṣẹ́ lé e lórí.",
+    "cancel": "Fagilé",
+    "analyzeDocuments": "Gba àkópọ̀",
+    "library": "Ìṣúra rẹ",
+    "search": "Wá àwọn àkópọ̀",
+    "loadError": "A kò lè ṣí àwọn àkópọ̀ tí a fi pamọ́. A kò rọ́pò dátà rẹ tó wà tẹ́lẹ̀.",
+    "retry": "Tún gbìyànjú",
+    "emptyLibrary": "Àwọn àkópọ̀ rẹ yóò hàn níbí, wọn yóò ṣetán fún ọ láti tún wò tàbí jíròrò nínú iwiregbe.",
+    "removeBrief": "Yọ {{name}} kúrò",
+    "audioCoverage": "Àkópọ̀ ọ̀rọ̀ sísọ · A kò ṣe ìtúpalẹ̀ àwọn ohun tí a ń rí. Ṣàyẹ̀wò orúkọ àti nọ́mbà pẹ̀lú ohùn tí a gbà sílẹ̀.",
+    "uploadTitle": "Yan àwọn fáìlì láti bẹ̀rẹ̀",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · ìṣẹ́jú 10\nỌ̀rọ̀ sísọ nìkan",
+    "noSearchResults": "A kò rí àkópọ̀ kankan. Gbìyànjú ìwádìí mìíràn.",
+    "clearSearch": "Ko wíwá kúrò",
+    "keyPoints": "Àwọn kókó pàtàkì",
+    "chatContextShort": "Ṣé ohun kan wù ọ́ láti mọ̀? Béèrè sí i.",
+    "openingChat": "Ń ṣí iwiregbe…",
+    "uploadVideo": "Gbé fídíò sókè",
+    "pasteTranscript": "Lẹ àkọsílẹ̀ ọ̀rọ̀",
+    "heroVideoLabel": "ÌTÚPALẸ̀ FÍDÍÒ",
+    "heroDocumentLabel": "ÌTÚPALẸ̀ ÌWÉ",
+    "heroVideoTitle": "Wíwò díẹ̀.\nÌmọ̀ púpọ̀.",
+    "heroDocumentTitle": "Àwọn fáìlì rẹ.\nÌdáhùn tó ṣe kedere.",
+    "heroVideoDescription": "Sọ ọ̀rọ̀ sísọ di àkópọ̀ tó yẹ ní pípamọ́.",
+    "heroDocumentDescription": "Ṣàwárí àwọn kókó pàtàkì. So àwọn èrò pọ̀. Béèrè ohunkóhun.",
+    "heroIdeas": "Àwọn kókó èrò",
+    "heroFollowUps": "Béèrè lọ́wọ́ AI",
+    "heroSummarize": "Ṣe àkópọ̀",
+    "heroCompare": "Ṣe àfiwé",
+    "summaryReady": "Ohun tí o rí kọ́",
+    "savedOnDevice": "Ti fi pamọ́ sórí ẹ̀rọ yìí",
+    "notSavedYet": "Ó ṣetán láti fi pamọ́",
+    "atAGlance": "Lápapọ̀",
+    "addSource": "Fi orísun rẹ kún un",
+    "quickDescription": "Àwọn kókó pàtàkì nìkan",
+    "detailedDescription": "Àyè fún àlàyé",
+    "chooseVideo": "Fi fídíò kún un",
+    "studioLabel": "Ìmọ́lẹ̀ díẹ̀ sí i.",
+    "studioDocumentTitle": "Èrò ńlá.\nKíkà díẹ̀.",
+    "studioVideoTitle": "Wò díẹ̀.\nKọ́ púpọ̀.",
+    "studioDocumentDescription": "Láti ọ̀pọ̀lọpọ̀ ojú-ìwé sí èrò tuntun tí yóò là ọ́ lójú.",
+    "studioVideoDescription": "Pa àwọn apá tó dára mọ́. Sọ ọ̀rọ̀ sísọ di nǹkan tí o lè padà sí.",
+    "studioVideoDescriptionV3": "Wo gbogbo ìtàn náà. Sọ àwọn ìran àti ọ̀rọ̀ sísọ di èrò tí o lè padà sí.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Ìṣẹ́jú 10 àkọ́kọ́ · Ọ̀rọ̀ àti àwòrán",
+    "videoCoverageV3": "Ọ̀rọ̀ sísọ àti àwọn ìran tí a ń rí · Ìṣẹ́jú 10 àkọ́kọ́ ní púpọ̀ jùlọ. Àwọn orí jẹ́ àfojúdíwọ̀n; a lè má rí àwọn ìṣe tó yára.",
+    "videoChatMenu": "Lóye àwọn ìran, ọ̀rọ̀ sísọ àti àwọn àkókò pàtàkì",
+    "analyzingVideo": "Ń wo fídíò rẹ…",
+    "uploadingVideo": "Ń gbé fídíò sókè… {{percent}}%",
+    "videoCancelled": "Ìtúpalẹ̀ fídíò ti dúró.",
+    "videoSourceNeeded": "Lẹ ọ̀nà àsopọ̀ YouTube gbangba, tàbí tẹ + → Gbé fídíò sókè. Lẹ́yìn náà, fi ìbéèrè rẹ ránṣẹ́.",
+    "localOnlyV2": "A máa ń fi àwọn àkópọ̀ pamọ́ sórí ẹ̀rọ yìí. A tún máa ń pa àbájáde ìtúpalẹ̀ mọ́ sórí olùpín ìtúpalẹ̀ fún ọjọ́ 7 ní púpọ̀ jùlọ kí ó lè ṣeé gbà, lẹ́yìn náà a ó pa á rẹ́. Pín ẹ̀dà kan láti ní ẹ̀dà ìpamọ́.",
+    "leavePrivateTitle": "Kúrò nínú iwiregbe ìkọ̀kọ̀?",
+    "leavePrivateBody": "Bíbéèrè nípa àkópọ̀ yìí yóò parí iwiregbe ìkọ̀kọ̀ rẹ, yóò sì fi ìjíròrò tuntun náà pamọ́ sínú ìtàn rẹ.",
+    "leavePrivateConfirm": "Tẹ̀síwájú",
+    "documentPages": "A rí ọ̀rọ̀ lórí ojú-ìwé {{extracted}} nínú {{total}}.",
+    "documentPartialText": "Àwọn ojú-ìwé kan kò ní ọ̀rọ̀ tí a lè yọ jáde. A kò ka àwọn àwòrán àti ohun tí a ṣe sìkáànù rẹ̀.",
+    "documentTruncated": "Ìbẹ̀rẹ̀ ìwé yìí nìkan ni a yọ jáde. Àkópọ̀ náà lè fo àwọn àkóónú tó wà lẹ́yìn.",
+    "sourceUnavailable": "Irú orísun yìí kò sí fún ìgbà díẹ̀. Gbìyànjú àṣàyàn mìíràn tó wà nísàlẹ̀.",
+    "accepted": "Ń ṣe ìtúpalẹ̀ orísun rẹ. O lè fi ojú-ìwé yìí sílẹ̀ kí o sì ṣàyẹ̀wò ìlọsíwájú nígbà míì.",
+    "checkingProgress": "Ń ṣàyẹ̀wò ìtúpalẹ̀ rẹ tí a fi pamọ́…",
+    "pendingError": "Kò lè ṣí àwọn ìtúpalẹ̀ tó ń dúró. Tún ìfilọ́lẹ̀ náà bẹ̀rẹ̀ kí o tó bẹ̀rẹ̀ òmíràn.",
+    "pendingAnalysis": "ÌTÚPALẸ̀ TÓ Ń DÚRÓ",
+    "resumeHint": "Ní kété tí a bá ti gbà á, ìtúpalẹ̀ yóò máa bá a lọ bí o tilẹ̀ fi ojú-ìwé náà sílẹ̀. Gba àbájáde níbí láìtún bẹ̀rẹ̀ rẹ̀.",
+    "checkProgress": "Ṣàyẹ̀wò ìlọsíwájú",
+    "cancelAnalysis": "Fagilé ìtúpalẹ̀",
+    "demoNotice": "Àfihàn inú ẹ̀rọ · àkóónú àpẹẹrẹ · kò sí orísun tí a gbé sókè",
+    "publicVideoCoverage": "Àwọn fídíò YouTube gbangba · Ìṣẹ́jú 10 àkọ́kọ́. Àwọn fídíò àdáni, ìgbéjáde tààrà àti èyí tí a ti ká lọ́wọ́ lè má ṣeé rí.",
+    "sourceUnavailableLibrary": "Irú orísun yìí kò sí fún ìgbà díẹ̀. O ṣì lè ṣí àwọn àkópọ̀ rẹ tí a fi pamọ́.",
+    "stopWaiting": "Dẹ́kun dídúró",
+    "previewSample": "Àpẹẹrẹ àwòtẹ́lẹ̀ · àfihàn inú ẹ̀rọ",
+    "pickVideoError": "Yan fídíò MP4 tàbí WebM kan, tí kò ju 20 MB àti ìṣẹ́jú 10 lọ.",
+    "pickDocumentsError": "Yan ìwé PDF, DOCX, TXT tàbí CSV tí kò ju mẹ́ta lọ, tí ọ̀kọ̀ọ̀kan kò ju 10 MB lọ.",
+    "videoErrors": {
+      "ONE_VIDEO": "Yan fídíò kan tàbí lẹ ọ̀nà àsopọ̀ YouTube kan ní àkókò kan.",
+      "VIDEO_MIXED_SOURCES": "Fi fídíò náà ránṣẹ́ lọ́tọ̀, láìsí àwọn àwòrán àti ìwé.",
+      "VIDEO_QUESTION_TOO_LONG": "Jẹ́ kí ìbéèrè fídíò rẹ kéré sí lẹ́tà 4,000.",
+      "INVALID_VIDEO": "Yan fídíò MP4 tàbí WebM, tí kò ju 20 MB lọ.",
+      "FILE_TOO_LARGE": "Yan fídíò tí kò ju 20 MB lọ.",
+      "SOURCE_UNAVAILABLE": "A kò lè wọlé sí fídíò yìí. Gbìyànjú fídíò YouTube gbangba tàbí gbé fáìlì MP4 tàbí WebM sókè.",
+      "INVALID_RESULT": "Ìtúpalẹ̀ fídíò náà kò pé. Jọ̀ọ́ tún gbìyànjú.",
+      "NETWORK": "Ìsopọ̀ já. Ṣàyẹ̀wò Àkópọ̀ fídíò fún àbájáde kí o tó tún gbìyànjú.",
+      "TIMEOUT": "Ìtúpalẹ̀ fídíò náà pẹ́ jù. Gbìyànjú fídíò tó kúrú sí i.",
+      "JOB_PENDING": "Fídíò rẹ ṣì ń lọ lọ́wọ́. Ṣí Àkópọ̀ fídíò láti ṣàyẹ̀wò ìlọsíwájú rẹ̀.",
+      "DAILY_LIMIT": "O ti dé òpin ìtúpalẹ̀ fídíò àti ìwé ti òní. Jọ̀ọ́ tún gbìyànjú lọ́la.",
+      "ALREADY_PROCESSING": "Ìtúpalẹ̀ kan ti ń lọ lọ́wọ́. Ṣí Àkópọ̀ fídíò láti ṣàyẹ̀wò ìlọsíwájú rẹ̀.",
+      "SERVICE_BUSY": "Ìtúpalẹ̀ fídíò dí lọ́wọ́ báyìí. Jọ̀ọ́ tún gbìyànjú láìpẹ́.",
+      "PROVIDER_UNAVAILABLE": "Ìtúpalẹ̀ fídíò kò sí fún ìgbà díẹ̀. Jọ̀ọ́ tún gbìyànjú láìpẹ́.",
+      "NOT_CONFIGURED": "Ìtúpalẹ̀ fídíò kò sí fún ìgbà díẹ̀. Jọ̀ọ́ tún gbìyànjú nígbà míì.",
+      "VIDEO_NOT_CONFIGURED": "Ìtúpalẹ̀ fídíò kò sí fún ìgbà díẹ̀. Jọ̀ọ́ tún gbìyànjú nígbà míì.",
+      "SAVE_FAILED": "Àkópọ̀ rẹ ti ṣetán, ṣùgbọ́n a kò lè fi pamọ́ sínú ilé-ìkàwé rẹ. Pa iwiregbe yìí mọ́ tàbí ṣe ẹ̀dà àkópọ̀ náà."
+    },
+    "markdown": {
+      "summary": "Àkópọ̀",
+      "keyTakeaways": "Àwọn kókó pàtàkì",
+      "details": "Àlàyé",
+      "actionItems": "Àwọn ìgbésẹ̀ láti gbé",
+      "sourceExcerpts": "Àwọn àyọkà orísun",
+      "coverageNotes": "Àkíyèsí nípa ohun tí ó bò"
     }
   }
 }

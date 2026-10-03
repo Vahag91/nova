@@ -21,6 +21,10 @@ import Svg, {
 export default function SvgIcon({ name, size = 16, color = '#666', style }) {
   const renderIcon = () => {
     switch (name) {
+      case 'workspace-document':
+        return <Svg width={size} height={size} viewBox="0 0 24 24" fill="none"><Path d="M14 3H5v18h14V8l-5-5Zm0 0v5h5M8 12h8M8 16h6" stroke={color} strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" /></Svg>;
+      case 'workspace-video':
+        return <Svg width={size} height={size} viewBox="0 0 24 24" fill="none"><Rect x={3} y={4} width={18} height={16} rx={4} stroke={color} strokeWidth={1.7} /><Path d="m10 8 6 4-6 4V8Z" fill={color} /></Svg>;
       case 'layout':
         return (
           <Svg width={size} height={size} viewBox="0 -960 960 960" fill="none">

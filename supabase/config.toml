@@ -358,3 +358,21 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/chat-proxy-glm-test/deno.json"
 entrypoint = "./functions/chat-proxy-glm-test/index.ts"
+
+[functions.source-analyze]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/source-analyze/index.ts"
+import_map = "./functions/source-analyze/deno.json"
+
+[functions.document-process]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/document-process/index.ts"
+import_map = "./functions/document-process/deno.json"
+
+[functions.document-process-canary]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/document-process/index.ts"
+import_map = "./functions/document-process/deno.json"

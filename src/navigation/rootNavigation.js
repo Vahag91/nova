@@ -7,6 +7,8 @@ export const ROOT_DRAWER_SCREEN_NAMES = new Set([
   'Chat',
   'History',
   'Assistants',
+  'Documents',
+  'VideoSummaries',
   'Settings',
   'Studio',
 ]);

@@ -1,14 +1,14 @@
 {
   "modelSelector": {
     "title": "Selecione um modelo",
-    "searchPlaceholder": "Pesquisar modelos...",
+    "searchPlaceholder": "Pesquisar modelos…",
     "noModelsFound": "Nenhum modelo encontrado",
     "noModelsAvailable": "Nenhum modelo disponível",
     "currentModel": "Modelo atual: {{name}}. Toque para alterar o modelo.",
     "openHint": "Abre o menu de seleção de modelo",
     "closeLabel": "Fechar seletor de modelo",
     "searchLabel": "Pesquisar modelos",
-    "searchHint": "Digite para filtrar os modelos disponíveis",
+    "searchHint": "Escreva para filtrar os modelos disponíveis",
     "modelLabel": "Modelo {{name}}",
     "selectHint": "Selecione o modelo {{name}}",
     "currentlySelected": "Modelo atualmente selecionado",
@@ -20,350 +20,361 @@
   },
   "models": {
     "gpt-4o": "Modelo de IA mais poderoso",
-    "gpt-4o-mini": "Rápido para tarefas diárias",
+    "gpt-4o-mini": "Rápido para tarefas do dia a dia",
     "gpt-5": "IA mais poderosa e versátil",
-    "gpt-5-chat-latest": "Otimizado para bate-papo e diálogo",
-    "gpt-5-mini": "Rápido e confiável GPT-5",
+    "gpt-5-chat-latest": "Otimizado para chat e diálogo",
+    "gpt-5-mini": "GPT-5 rápido e fiável",
     "gpt-5.4-nano": "Modelo leve para tarefas simples",
     "o4-mini": "Modelo de raciocínio eficiente",
-    "gpt-4.1-mini": "Compacto, capaz GPT-4.1",
-    "claude-3-haiku": "IA antrópica rápida e focada",
+    "gpt-4.1-mini": "GPT-4.1 compacto e capaz",
+    "claude-3-haiku": "IA da Anthropic rápida e focada",
     "claude-3.7-sonnet": "Raciocínio refinado da Anthropic",
-    "gemini-2.5-Flash": "O modelo mais avançado do Google",
-    "gemini-2.5-flash": "O modelo mais avançado do Google",
-    "gemini-2.0-flash": "IA do Google rápida e precisa"
+    "gemini-2.5-Flash": "O modelo mais avançado da Google",
+    "gemini-2.5-flash": "O modelo mais avançado da Google",
+    "gemini-2.0-flash": "IA da Google rápida e precisa"
   },
   "modelDescriptions": {
     "most_powerful": "Modelo de IA mais poderoso",
-    "fast_everyday": "Rápido para tarefas diárias",
+    "fast_everyday": "Rápido para tarefas do dia a dia",
     "fast_reasoning": "Modelo rápido com bom raciocínio",
     "great_reasoning": "Modelo de raciocínio avançado",
-    "coding_reasoning": "Codificação e raciocínio avançados",
-    "better_coding": "Melhor para codificação e raciocínio",
+    "coding_reasoning": "Programação e raciocínio avançados",
+    "better_coding": "Melhor para programação e raciocínio",
     "best_overall": "Melhor modelo de IA versátil",
-    "best_google": "O melhor modelo do Google",
-    "best_xai": "O modelo mais poderoso do xAI",
-    "creative_focus": "Ótimo para escrita criativa",
-    "code_helper": "Ótimo para ajuda de codificação",
-    "chat_focus": "Otimizado para bate-papo",
-    "long_context": "Ótimo para contextos longos",
-    "budget_friendly": "Modelo de IA econômico",
+    "best_google": "O melhor modelo da Google",
+    "best_xai": "O modelo mais poderoso da xAI",
+    "creative_focus": "Excelente para escrita criativa",
+    "code_helper": "Excelente para ajudar a programar",
+    "chat_focus": "Otimizado para conversar",
+    "long_context": "Excelente para contextos longos",
+    "budget_friendly": "Modelo de IA económico",
     "ultra_fast": "Respostas ultrarrápidas",
-    "safe_default": "Escolha padrão segura",
-    "multilingual": "Forte suporte multilíngue",
-    "vision_strong": "Ótimo com imagens e visão",
+    "safe_default": "Escolha predefinida segura",
+    "multilingual": "Suporte multilingue robusto",
+    "vision_strong": "Excelente com imagens e visão",
     "data_analysis": "Bom para análise de dados",
     "structured_tasks": "Bom para tarefas estruturadas",
-    "everyday_helper": "Modelo assistente diário",
+    "everyday_helper": "Modelo assistente para o dia a dia",
     "concise_answers": "Respostas curtas e concisas",
     "detailed_answers": "Respostas detalhadas passo a passo",
     "experimental": "Modelo experimental de próxima geração",
-    "reliable_classic": "Modelo clássico confiável",
+    "reliable_classic": "Modelo clássico fiável",
     "lightweight": "Modelo leve e de baixo custo",
-    "chatty_personal": "Mais amigável e pessoal",
-    "pro_users": "Melhor para usuários avançados",
-    "research_helper": "Bom para pesquisas e anotações",
-    "reasoning_strong": "Modelo de raciocínio avançado"
+    "chatty_personal": "Mais simpático e pessoal",
+    "pro_users": "Melhor para utilizadores avançados",
+    "research_helper": "Bom para pesquisa e notas",
+    "reasoning_strong": "Modelo de raciocínio avançado",
+    "gpt56_sol": "O modelo GPT-5.6 mais poderoso",
+    "gpt56_terra": "Modelo GPT-5.6 equilibrado",
+    "gpt56_luna": "Modelo rápido para tarefas do dia a dia",
+    "claude_fable": "IA da Anthropic rápida e criativa",
+    "claude_sonnet": "Modelo avançado da Anthropic",
+    "gemini_flash": "Modelo de IA rápido da Google",
+    "gemini_pro": "Modelo Pro avançado da Google",
+    "grok_latest": "O modelo mais recente da xAI",
+    "deepseek_pro": "Modelo avançado da DeepSeek",
+    "deepseek_flash": "Modelo rápido da DeepSeek"
   },
   "providers": {
     "openai": "OpenAI",
-    "anthropic": "Antrópico",
+    "anthropic": "Anthropic",
     "google": "Google",
     "xai": "xAI",
-    "other": "Outro"
+    "other": "Outro",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
-    "chat": "Novo bate-papo",
-    "history": "História",
-    "rewards": "Recompensas Diárias",
+    "chat": "Novo chat",
+    "history": "Histórico",
+    "rewards": "Recompensas diárias",
     "assistants": "Assistentes",
     "imagesStudio": "Image Studio",
-    "settings": "Configurações",
-    "recentChats": "Bate-papos recentes",
-    "proFeatures": "Recursos profissionais",
-    "pro": "PRÓ",
+    "settings": "Definições",
+    "recentChats": "Chats recentes",
+    "proFeatures": "Funcionalidades Pro",
+    "pro": "PRO",
     "proFeaturesCta": {
-      "title": "Obtenha recursos profissionais",
-      "subtitle": "Todos os recursos de IA"
+      "title": "Obter funcionalidades Pro",
+      "subtitle": "Todas as funcionalidades de IA"
     }
   },
   "sidebarStudioBanner": {
     "label": "Image Studio",
     "title": "Image Studio",
-    "subtitle": "Gere, refine e publique ativos visuais em um só lugar.",
+    "subtitle": "Gere, aperfeiçoe e publique conteúdos visuais num só lugar.",
     "cta": "Abrir"
   },
   "imagesStudio": {
     "title": "Image Studio",
-    "selectImages": "Selecione imagens",
+    "selectImages": "Selecionar imagens",
     "exitSelectionMode": "Sair do modo de seleção",
     "selectAll": "Selecionar tudo",
     "noImagesYet": "Ainda não há imagens",
-    "describeImageHint": "Descreva sua imagem abaixo e toque em Gerar.",
+    "describeImageHint": "Descreva a sua imagem abaixo e toque em Gerar.",
     "generatedImagesGallery": "Galeria de imagens geradas",
-    "describeImagePlaceholder": "Descreva a imagem que você deseja…",
-    "deleteConfirmTitle": "Excluir imagens",
-    "deleteConfirmMessage": "Tem certeza de que deseja excluir as imagens selecionadas? Esta ação não pode ser desfeita.",
+    "describeImagePlaceholder": "Descreva a imagem que pretende…",
+    "deleteConfirmTitle": "Eliminar imagens",
+    "deleteConfirmMessage": "Tem a certeza de que pretende eliminar as imagens selecionadas? Esta ação não pode ser anulada.",
     "cancel": "Cancelar",
-    "delete": "Excluir",
+    "delete": "Eliminar",
     "generate": "Gerar",
-    "generating": "Gerando…",
+    "generating": "A gerar…",
     "latest": "Mais recente",
-    "insertToChat": "Inserir para conversar",
-    "pleaseWait": "Por favor, espere…",
-    "processing": "Processando...",
-    "tapToUploadImage": "Toque para fazer upload da imagem",
+    "insertToChat": "Inserir no chat",
+    "pleaseWait": "Aguarde…",
+    "processing": "A processar…",
+    "tapToUploadImage": "Toque para carregar uma imagem",
     "camera": "Carregar fotos",
     "library": "Biblioteca",
-    "enterPrompt": "Insira um prompt para geração de texto para imagem",
+    "enterPrompt": "Introduza uma descrição para gerar uma imagem a partir de texto",
     "openInBrowser": "Abrir no navegador",
-    "makeVariations": "Faça variações",
-    "deleteAllFromGeneration": "Exclua tudo desta geração",
+    "makeVariations": "Criar variações",
+    "deleteAllFromGeneration": "Eliminar tudo desta geração",
     "imageOptionsTitle": "Opções de imagem",
-    "imageOptionsMessage": "O que você gostaria de fazer com esta imagem?",
+    "imageOptionsMessage": "O que pretende fazer com esta imagem?",
     "insertMarkdownHeader": "Aqui está a imagem para:",
     "variationSuffix": "— variação da imagem anterior",
-    "selectedCount": "selecionado",
-    "selectedCount_one": "selecionado",
-    "selectedCount_other": "selecionado",
-    "imageDescriptionInput": "Entrada de descrição da imagem",
-    "imageDescriptionHint": "Insira uma descrição da imagem que você deseja gerar",
-    "openModelSettings": "Abrir configurações do modelo",
-    "modelSettingsHint": "Toque para alterar o modelo e as configurações",
+    "selectedCount": "selecionadas",
+    "selectedCount_one": "selecionada",
+    "selectedCount_other": "selecionadas",
+    "imageDescriptionInput": "Campo de descrição da imagem",
+    "imageDescriptionHint": "Introduza uma descrição da imagem que pretende gerar",
+    "openModelSettings": "Abrir definições do modelo",
+    "modelSettingsHint": "Toque para alterar o modelo e as definições",
     "openPhotoGallery": "Abrir galeria de fotos",
-    "clearInput": "Limpar entrada",
+    "clearInput": "Limpar campo",
     "generatedImage": "Imagem gerada",
     "autoSelectedModel": "{{model}} selecionado automaticamente para o modo {{mode}}",
-    "deleteSelectedConfirmTitle": "Excluir imagens",
-    "deleteSelectedConfirmMessage": "Tem certeza de que deseja excluir imagens? Esta ação não pode ser desfeita."
+    "deleteSelectedConfirmTitle": "Eliminar imagens",
+    "deleteSelectedConfirmMessage": "Tem a certeza de que pretende eliminar as imagens? Esta ação não pode ser anulada."
   },
   "imageStudio": {
     "generateImage": "Gerar imagem",
-    "generatingImage": "Gerando imagem",
+    "generatingImage": "A gerar imagem",
     "generateImageHint": "Toque para gerar uma imagem com base na sua descrição",
-    "imageDescriptionInput": "Entrada de descrição da imagem",
-    "imageDescriptionHint": "Insira uma descrição da imagem que você deseja gerar",
-    "openModelSettings": "Abrir configurações do modelo",
-    "modelSettingsHint": "Toque para alterar o modelo e as configurações",
+    "imageDescriptionInput": "Campo de descrição da imagem",
+    "imageDescriptionHint": "Introduza uma descrição da imagem que pretende gerar",
+    "openModelSettings": "Abrir definições do modelo",
+    "modelSettingsHint": "Toque para alterar o modelo e as definições",
     "openPhotoGallery": "Abrir galeria de fotos",
-    "clearInput": "Limpar entrada",
+    "clearInput": "Limpar campo",
     "generatedImage": "Imagem gerada"
   },
   "assistants": {
     "title": "Assistentes",
     "defaultTitle": "Assistente",
-    "errorTitle": "Algo deu errado",
+    "errorTitle": "Algo correu mal",
     "errorMessage": "Não foi possível iniciar este assistente.",
     "noAssistants": "Nenhum assistente encontrado nesta categoria.",
     "selectAssistantHint": "Abrir seletor de assistente",
-    "subtitle": "Especialistas em IA selecionados e prontos para codificação, redação, análise, planejamento e muito mais.",
-    "searchPlaceholder": "Assistentes de pesquisa…",
-    "useAssistant": "Usar o Assistente",
-    "selectAssistant": "Escolha assistente",
+    "subtitle": "Especialistas de IA selecionados, prontos para programação, escrita, análise, planeamento e muito mais.",
+    "searchPlaceholder": "Pesquisar assistentes…",
+    "useAssistant": "Utilizar assistente",
+    "selectAssistant": "Escolher assistente",
     "description": "Descrição",
-    "systemPrompt": "Alerta do sistema",
-    "chooseModel": "Escolha o modelo",
+    "systemPrompt": "Instruções do sistema",
+    "chooseModel": "Escolher modelo",
     "categoryAll": "Todos",
     "categories": {
-      "everyday": "Todos os dias",
+      "everyday": "Dia a dia",
       "life": "Vida",
       "health": "Saúde",
-      "schoolWork": "Escola e Trabalho",
-      "coding": "Codificação",
+      "schoolWork": "Escola e trabalho",
+      "coding": "Programação",
       "creative": "Criativo",
       "general": "Geral"
     },
     "presets": {
       "default": {
-        "name": "Assistente padrão",
-        "description": "Ajuda equilibrada para coisas diárias."
+        "name": "Assistente predefinido",
+        "description": "Ajuda equilibrada para o dia a dia."
       },
       "quick": {
         "name": "Respostas rápidas",
         "description": "Respostas curtas e diretas."
       },
       "planner": {
-        "name": "Planejador Diário",
-        "description": "Planeje seu dia e rotinas."
+        "name": "Planeador diário",
+        "description": "Planeie o seu dia e as suas rotinas."
       },
       "recipes": {
-        "name": "Refeições e Receitas",
-        "description": "O que cozinhar, com o que você tem."
+        "name": "Refeições e receitas",
+        "description": "O que cozinhar com o que tem."
       },
       "fitness": {
         "name": "Preparador físico",
         "description": "Pequenos hábitos e exercícios em casa."
       },
       "money": {
-        "name": "Amigo do dinheiro",
+        "name": "Amigo das finanças",
         "description": "Orçamentos simples e dicas de gastos."
       },
       "study": {
         "name": "Ajudante de estudo",
-        "description": "Explique de forma simples. Faça um teste comigo."
+        "description": "Explicações simples e testes rápidos."
       },
       "email": {
         "name": "E-mail e currículo",
-        "description": "Escreva e-mails e linhas de currículo claros."
+        "description": "Escreva e-mails claros e frases para o currículo."
       },
       "translator": {
         "name": "Tradutor",
-        "description": "Traduzir + ensinar frases."
+        "description": "Traduzir + ensinar expressões."
       },
       "travel": {
-        "name": "Amigo de viagem",
-        "description": "Planos simples e listas de embalagem."
+        "name": "Companheiro de viagem",
+        "description": "Planos simples e listas para a mala."
       },
       "tech": {
-        "name": "Suporte Técnico (Simples)",
-        "description": "Telefone, aplicativos, noções básicas de Wi-Fi."
+        "name": "Apoio técnico (simples)",
+        "description": "Telemóvel, apps, noções básicas de Wi-Fi."
       },
       "summarizer": {
-        "name": "Resumidor TL;DR",
-        "description": "Marcadores curtos + TL;DR de uma linha."
+        "name": "Resumos TL;DR",
+        "description": "Tópicos curtos + TL;DR numa linha."
       },
       "gift": {
-        "name": "Localizador de presentes",
+        "name": "Ideias para presentes",
         "description": "Ideias por orçamento e interesses."
       },
       "party": {
-        "name": "Planejador de eventos (Lite)",
-        "description": "Planeje uma pequena festa rapidamente."
+        "name": "Planeador de eventos (básico)",
+        "description": "Planeie uma pequena festa rapidamente."
       },
       "social": {
-        "name": "Criador de postagens sociais",
-        "description": "Rascunhos de postagens com opções."
+        "name": "Criador de publicações sociais",
+        "description": "Rascunhos de publicações com opções."
       },
       "interview": {
-        "name": "Treinador de entrevista",
+        "name": "Treinador de entrevistas",
         "description": "Pratique respostas (STAR)."
       },
       "homefix": {
-        "name": "Guia de conserto doméstico",
-        "description": "Solução simples de problemas DIY."
+        "name": "Guia de reparações em casa",
+        "description": "Bricolage e resolução simples de problemas."
       },
       "pet": {
-        "name": "Amigo de cuidados com animais de estimação",
-        "description": "Alimentação, caminhadas, treinamento básico."
+        "name": "Amigo dos animais",
+        "description": "Alimentação, passeios, treino básico."
       },
       "mindful": {
-        "name": "Minuto Consciente",
-        "description": "Intervalos calmos de 1–3 minutos."
+        "name": "Minuto de atenção plena",
+        "description": "Pausas calmas de 1–3 minutos."
       },
       "polite": {
-        "name": "Reescritor educado",
-        "description": "Reescreva textos e respostas muito bem."
+        "name": "Reescrita cordial",
+        "description": "Reescreva textos e respostas com simpatia."
       }
     }
   },
   "history": {
-    "title": "História",
-    "searchPlaceholder": "Pesquisar bate-papos…",
-    "newChat": "Novo bate-papo",
+    "title": "Histórico",
+    "searchPlaceholder": "Pesquisar chats…",
+    "newChat": "Novo chat",
     "new": "+ Novo",
     "search": "Pesquisar",
     "clearSearch": "Limpar pesquisa",
-    "noChatsYet": "Ainda não há bate-papos",
-    "noResults": "Ainda não há bate-papos",
-    "startFirstConversation": "Comece sua primeira conversa.",
-    "startChat": "Iniciar bate-papo",
-    "startNewChat": "Iniciar um novo bate-papo",
+    "noChatsYet": "Ainda não há chats",
+    "noResults": "Ainda não há chats",
+    "startFirstConversation": "Comece a sua primeira conversa.",
+    "startChat": "Iniciar chat",
+    "startNewChat": "Iniciar um novo chat",
     "errorLoadingHistory": "Erro ao carregar o histórico",
-    "loading": "Carregando histórico...",
-    "renameChat": "Renomear bate-papo",
-    "enterNewTitle": "Insira um novo título",
-    "deleteChat": "Excluir bate-papo?",
-    "deleteChatMessage": "\"{{title}}\" será excluído.",
-    "rename": "Renomear",
-    "unpin": "Liberar",
+    "loading": "A carregar o histórico…",
+    "renameChat": "Mudar o nome do chat",
+    "enterNewTitle": "Introduza um novo título",
+    "deleteChat": "Eliminar chat?",
+    "deleteChatMessage": "«{{title}}» será eliminado.",
+    "rename": "Mudar o nome",
+    "unpin": "Desafixar",
     "pin": "Fixar",
     "untitled": "Sem título"
   },
   "settings": {
-    "title": "Configurações",
+    "title": "Definições",
     "model": "Modelo",
     "searchPlaceholder": "Pesquisar modelos…",
-    "temperatureForCurrentModel": "Temperatura para o modelo atual",
-    "customFor": "Personalizado para {{model}}",
-    "usingDefault": "Usando o padrão {{temperature}}",
-    "resetToDefault": "Redefinir para o padrão",
-    "defaultTemperature": "Temperatura padrão (substituição)",
-    "usedByModelsWithoutOverride": "Usado por modelos sem substituição personalizada",
+    "temperatureForCurrentModel": "Temperatura do modelo atual",
+    "customFor": "Personalizada para {{model}}",
+    "usingDefault": "A usar o valor predefinido {{temperature}}",
+    "resetToDefault": "Repor predefinição",
+    "defaultTemperature": "Temperatura predefinida (alternativa)",
+    "usedByModelsWithoutOverride": "Utilizada pelos modelos sem valor personalizado",
     "dangerZone": "Zona de perigo",
-    "clearAllChatsAndSettings": "Limpar todos os bate-papos e configurações",
-    "about": "Sobre",
+    "clearAllChatsAndSettings": "Limpar todos os chats e definições",
+    "about": "Acerca de",
     "version": "Versão {{version}}{{status}}",
-    "versionPremiumSuffix": "· Prémio",
-    "privacyPolicy": "Política de Privacidade",
+    "versionPremiumSuffix": " · Premium",
+    "privacyPolicy": "Política de privacidade",
     "hero": {
       "label": "Oferta especial",
-      "title": "Acesso Ilimitado\ne recursos profissionais",
-      "upgrade": "Atualizar",
-      "manage": "Gerenciar plano"
+      "title": "Acesso ilimitado\ne funcionalidades Pro",
+      "upgrade": "Fazer upgrade",
+      "manage": "Gerir plano"
     },
     "sections": {
       "premium": "Plano Premium",
-      "data": "Dados do usuário",
-      "support": "Suporte e Jurídico"
+      "data": "Dados do utilizador",
+      "support": "Apoio e informações legais"
     },
     "rows": {
       "getPremium": {
-        "title": "Seja Premium",
+        "title": "Obter Premium",
         "subtitle": "Desbloqueie ferramentas de criação ilimitadas"
       },
       "premiumActive": {
-        "title": "Prêmio Ativo",
-        "subtitle": "Obrigado por apoiar Cloud AI"
+        "title": "Premium ativo",
+        "subtitle": "Obrigado por apoiar o Cloud AI"
       },
       "restore": {
         "title": "Restaurar compras",
-        "subtitle": "Use se você trocou de dispositivo"
+        "subtitle": "Utilize se mudou de dispositivo"
       },
       "history": {
-        "title": "Gerenciar histórico de bate-papo",
-        "subtitle": "Visualize e exclua suas sessões anteriores"
+        "title": "Gerir histórico de chats",
+        "subtitle": "Veja e elimine as suas sessões anteriores"
       },
       "reset": {
-        "title": "Redefinir bate-papos e preferências",
-        "subtitle": "Limpa todos os dados armazenados neste dispositivo"
+        "title": "Repor chats e preferências",
+        "subtitle": "Limpa todos os dados guardados neste dispositivo"
       },
       "rate": {
         "title": "Avalie-nos",
         "error": "Não foi possível abrir a página da loja."
       },
       "support": {
-        "title": "Suporte",
-        "subtitle": "Contate-nos on-line",
-        "error": "Não foi possível abrir a página de contato."
+        "title": "Apoio",
+        "subtitle": "Contacte-nos online",
+        "error": "Não foi possível abrir a página de contacto."
       },
       "privacy": {
-        "title": "Política de Privacidade",
+        "title": "Política de privacidade",
         "error": "Não foi possível abrir a política de privacidade."
       },
       "terms": {
-        "title": "Termos de Uso",
-        "error": "Não foi possível abrir os termos de uso."
+        "title": "Termos de utilização",
+        "error": "Não foi possível abrir os termos de utilização."
       }
     },
     "capabilities": {
-      "text": "Texto",
-      "image": "imagem",
+      "text": "TXT",
+      "image": "IMG",
       "audio": "AUD",
-      "video": "VÍDEO"
+      "video": "VID"
     },
     "alerts": {
       "linkUnavailableTitle": "Indisponível",
-      "linkUnavailableMessage": "Não é possível abrir este link no momento.",
+      "linkUnavailableMessage": "Não é possível abrir esta ligação neste momento.",
       "restoreSuccessTitle": "Restaurado",
-      "restoreSuccessMessage": "Suas compras foram restauradas.",
+      "restoreSuccessMessage": "As suas compras foram restauradas.",
       "restoreEmptyTitle": "Nenhuma compra encontrada",
       "restoreEmptyMessage": "Não foi possível encontrar uma compra ativa para restaurar nesta conta.",
-      "restoreErrorTitle": "Falha na restauração",
-      "restoreErrorMessage": "Não é possível restaurar as compras no momento.",
-      "resetConfirmTitle": "Redefinir dados do aplicativo?",
-      "resetConfirmMessage": "Isso remove todos os bate-papos e preferências locais.",
+      "restoreErrorTitle": "Falha ao restaurar",
+      "restoreErrorMessage": "Não é possível restaurar as compras neste momento.",
+      "resetConfirmTitle": "Repor os dados da app?",
+      "resetConfirmMessage": "Isto remove todos os chats e preferências locais.",
       "resetConfirmCancel": "Cancelar",
-      "resetConfirmCta": "Redefinir"
+      "resetConfirmCta": "Repor"
     }
   },
   "createImage": {
@@ -371,43 +382,43 @@
     "chooseStyle": "Escolha um estilo",
     "aspectRatio": "Proporção",
     "starterPrompts": {
-      "title": "Solicitações iniciais",
+      "title": "Sugestões para começar",
       "items": [
         "foto de estúdio",
         "sala de estar moderna",
         "praia tropical ao pôr do sol"
       ]
     },
-    "promptPlaceholder": "Digite o que você quer ver…",
-    "promptHint": "Exemplo: 'Golden retriever em iluminação de estúdio'",
+    "promptPlaceholder": "Escreva o que quer ver…",
+    "promptHint": "Exemplo: «Golden retriever com iluminação de estúdio»",
     "clearText": "Limpar texto",
     "generate": "Gerar",
-    "generating": "Gerando…"
+    "generating": "A gerar…"
   },
   "editImage": {
     "headerTitle": "Editar",
     "chooseStyle": "Escolha um estilo",
     "aspectRatio": "Proporção",
     "starterPrompts": {
-      "title": "Solicitações iniciais",
+      "title": "Sugestões para começar",
       "items": [
         "consertar iluminação",
         "remover fundo",
         "retoque suave de retrato"
       ]
     },
-    "promptPlaceholder": "Descrever as edições (opcional)",
+    "promptPlaceholder": "Descreva as alterações (opcional)",
     "clearText": "Limpar texto",
     "generate": "Gerar",
-    "generating": "Aplicando…",
+    "generating": "A aplicar…",
     "upload": {
-      "choose": "Escolha a foto",
-      "change": "Mudança",
+      "choose": "Escolher foto",
+      "change": "Alterar",
       "remove": "Remover"
     },
     "imageUnavailable": {
       "title": "Imagem indisponível",
-      "message": "Não foi possível acessar a foto selecionada. Selecione-o novamente e tente novamente."
+      "message": "Não foi possível aceder à foto selecionada. Selecione-a novamente e tente outra vez."
     }
   },
   "studioCommon": {
@@ -419,13 +430,13 @@
         "name": "Desenho animado"
       },
       "photoreal": {
-        "name": "Fotorreal"
+        "name": "Fotorrealista"
       },
       "sketch": {
         "name": "Esboço"
       },
       "cyberpunk": {
-        "name": "Ciberpunk"
+        "name": "Cyberpunk"
       },
       "steampunk": {
         "name": "Steampunk"
@@ -434,16 +445,16 @@
         "name": "Ilustração 3D"
       },
       "dark_fantasy": {
-        "name": "Fantasia Negra"
+        "name": "Fantasia sombria"
       },
       "vintage_film": {
-        "name": "Filme antigo"
+        "name": "Filme vintage"
       },
       "pastel": {
-        "name": "Estética Pastel"
+        "name": "Estética pastel"
       },
       "neon_glow": {
-        "name": "Brilho de néon"
+        "name": "Brilho néon"
       },
       "epic_landscape": {
         "name": "Paisagem épica"
@@ -455,34 +466,34 @@
       "portrait": "Retrato"
     },
     "models": {
-      "fluxKontent": "Conteúdo de fluxo",
+      "fluxKontent": "Flux Kontent",
       "custom": "Personalizado"
     },
-    "notEnoughCoinsTitle": "Não há moedas suficientes",
-    "notEnoughCoinsMessage": "Seu saldo atual é muito baixo para esta imagem.",
+    "notEnoughCoinsTitle": "Moedas insuficientes",
+    "notEnoughCoinsMessage": "O seu saldo atual é demasiado baixo para esta imagem.",
     "modelTaglines": {
       "runwareFluxSchnell": "Modelo mais rápido",
       "runwareFluxKrea": "Resultados criativos e estilizados",
       "runwareQwenImage": "Resultados equilibrados e de alta qualidade",
-      "google4": "Melhor modelo de imagem de IA",
-      "klingImageO1": "Edição de imagens de alto controle",
+      "google4": "Melhor modelo de imagem com IA",
+      "klingImageO1": "Edição de imagens com elevado controlo",
       "fluxKontent": "Flux Kontent ajustado para edições",
-      "runwareProvider": "Qualidade equilibrada com difusão confiável.",
-      "airProvider": "Nano Banana adiciona um tom divertido e vívido.",
-      "googleProvider": "O Google está atento a detalhes sofisticados.",
+      "runwareProvider": "Qualidade equilibrada com difusão fiável.",
+      "airProvider": "Nano Banana acrescenta um tom divertido e vívido.",
+      "googleProvider": "Google ajustado para detalhes refinados.",
       "klingaiProvider": "KlingAI ajustado para edições controladas.",
-      "anthropicProvider": "Pipeline Claude para humores diferenciados.",
-      "default": "Toque para explorar os mecanismos disponíveis."
+      "anthropicProvider": "Pipeline do Claude para ambientes cheios de nuances.",
+      "default": "Toque para explorar os motores disponíveis."
     }
   },
   "createImageGenerating": {
-    "stylePlaceholder": "seu estilo escolhido",
-    "sheetTitle": "Elaborando sua visão",
-    "sheetSubtitle": "Um breve gole de café do servidor enquanto misturamos {{style}} no prompt.",
+    "stylePlaceholder": "o estilo que escolheu",
+    "sheetTitle": "A dar forma à sua visão",
+    "sheetSubtitle": "Um gole rápido de café do servidor enquanto juntamos {{style}} ao pedido.",
     "phases": {
-      "blend": "Misturando-se {{style}}",
-      "paint": "Pintando a cena",
-      "finish": "Adicionando polimento final"
+      "blend": "A incorporar {{style}}",
+      "paint": "A pintar a cena",
+      "finish": "A dar os últimos retoques"
     },
     "actions": {
       "cancel": "Cancelar",
@@ -495,16 +506,16 @@
       "genericMessage": "Não foi possível gerar a imagem."
     },
     "alerts": {
-      "saveFailedTitle": "Não foi possível salvar",
-      "shareFailedTitle": "Não foi possível compartilhar",
-      "tryAgain": "Por favor, tente novamente.",
-      "savedTitle": "Salvo",
-      "savedMessage": "Imagem salva em sua galeria.",
+      "saveFailedTitle": "Não foi possível guardar",
+      "shareFailedTitle": "Não foi possível partilhar",
+      "tryAgain": "Tente novamente.",
+      "savedTitle": "Guardado",
+      "savedMessage": "Imagem guardada na sua galeria.",
       "permissionTitle": "Permissão necessária",
-      "permissionMessage": "Permita acesso ao armazenamento para salvar imagens em sua galeria."
+      "permissionMessage": "Permita o acesso ao armazenamento para guardar imagens na sua galeria."
     },
     "result": {
-      "complete": "Tudo terminado"
+      "complete": "Tudo pronto"
     },
     "accessibility": {
       "close": "Fechar"
@@ -512,51 +523,51 @@
   },
   "imageViewer": {
     "actions": {
-      "delete": "Excluir",
+      "delete": "Eliminar",
       "edit": "Editar",
-      "save": "Salvar",
-      "share": "Compartilhar"
+      "save": "Guardar",
+      "share": "Partilhar"
     },
     "alerts": {
-      "savedTitle": "Salvo",
-      "savedMessage": "Imagem salva em sua galeria.",
+      "savedTitle": "Guardado",
+      "savedMessage": "Imagem guardada na sua galeria.",
       "permissionTitle": "Permissão necessária",
-      "permissionMessage": "Permita acesso ao armazenamento para salvar imagens em sua galeria.",
-      "saveFailedTitle": "Não foi possível salvar",
-      "tryAgain": "Por favor, tente novamente."
+      "permissionMessage": "Permita o acesso ao armazenamento para guardar imagens na sua galeria.",
+      "saveFailedTitle": "Não foi possível guardar",
+      "tryAgain": "Tente novamente."
     },
     "accessibility": {
       "close": "Fechar",
-      "delete": "Excluir imagem",
+      "delete": "Eliminar imagem",
       "edit": "Editar imagem",
-      "save": "Salvar imagem",
-      "share": "Compartilhar imagem"
+      "save": "Guardar imagem",
+      "share": "Partilhar imagem"
     }
   },
   "reportContent": {
     "title": "Denunciar conteúdo de IA",
-    "subtitle": "Diga-nos o que há de errado com este conteúdo gerado.",
-    "privateDisclosure": "O envio envia esse conteúdo denunciado para análise de segurança.",
+    "subtitle": "Diga-nos o que está errado neste conteúdo gerado.",
+    "privateDisclosure": "Ao submeter, este conteúdo denunciado é enviado para revisão de segurança.",
     "accessibilityLabel": "Denunciar conteúdo de IA",
     "reasons": {
       "sexual": "Conteúdo sexual ou de nudez",
       "violence_self_harm": "Violência ou automutilação",
       "hate_harassment": "Ódio ou assédio",
       "child_safety": "Preocupação com a segurança infantil",
-      "scam_deceptive": "Golpe ou conteúdo enganoso",
+      "scam_deceptive": "Burla ou conteúdo enganador",
       "other": "Outro"
     },
     "errors": {
       "reasonRequired": "Escolha um motivo antes de enviar.",
-      "submit": "Não foi possível enviar o relatório. Por favor, tente novamente."
+      "submit": "Não foi possível enviar a denúncia. Tente novamente."
     },
     "success": {
-      "title": "Obrigado. Seu relatório foi enviado.",
-      "subtitle": "Usaremos relatórios para melhorar a segurança do conteúdo."
+      "title": "Obrigado. A sua denúncia foi enviada.",
+      "subtitle": "Vamos utilizar as denúncias para melhorar a segurança dos conteúdos."
     },
     "actions": {
-      "report": "Relatório",
-      "submit": "Enviar relatório",
+      "report": "Denunciar",
+      "submit": "Enviar denúncia",
       "done": "Concluído"
     }
   },
@@ -564,29 +575,29 @@
     "headerTitle": "Image Studio",
     "accessibility": {
       "openMenu": "Abrir menu",
-      "selectImages": "Selecione imagens",
+      "selectImages": "Selecionar imagens",
       "exitSelection": "Sair da seleção",
-      "deleteSelected": "Excluir imagens selecionadas",
-      "selectToDelete": "Selecione imagens para excluir"
+      "deleteSelected": "Eliminar imagens selecionadas",
+      "selectToDelete": "Selecionar imagens para eliminar"
     },
     "createCard": {
       "title": "Criar a partir de texto",
-      "subtitle": "Digite uma descrição",
+      "subtitle": "Escreva uma descrição",
       "cta": "Descrever e gerar"
     },
     "editCard": {
       "title": "Editor de fotos com IA",
-      "subtitle": "Transforme e aprimore com IA",
-      "cta": "Edite com IA"
+      "subtitle": "Transforme e melhore com IA",
+      "cta": "Editar com IA"
     },
     "gallery": {
       "title": "Galeria",
       "empty": "Ainda não há imagens",
       "selection": {
-        "enter": "Selecione imagens",
+        "enter": "Selecionar imagens",
         "exit": "Sair da seleção",
-        "deleteSelected": "Excluir imagens selecionadas",
-        "selectForDelete": "Selecione imagens para excluir"
+        "deleteSelected": "Eliminar imagens selecionadas",
+        "selectForDelete": "Selecionar imagens para eliminar"
       }
     }
   },
@@ -594,20 +605,20 @@
     "v4": {
       "common": {
         "continue": "Continuar",
-        "tryItFree": "Experimente gratuitamente",
+        "tryItFree": "Experimentar grátis",
         "back": "Voltar"
       },
       "valueDemo": {
-        "title": "Queremos que você experimente o Cloud AI gratuitamente",
-        "workspaceLabel": "ESPAÇO DE TRABALHO IA",
-        "userPromptLabel": "PROMPT DO UTILIZADOR",
-        "aiTypingLabel": "DIGITAÇÃO AI",
+        "title": "Queremos que experimente o Cloud AI gratuitamente",
+        "workspaceLabel": "ESPAÇO DE TRABALHO COM IA",
+        "userPromptLabel": "PEDIDO DO UTILIZADOR",
+        "aiTypingLabel": "IA A ESCREVER",
         "prompt": "Escreva uma resposta educada a um cliente sobre um atraso na entrega.",
-        "response": "Olá, obrigado pela sua paciência. A sua entrega pode atrasar um pouco. Vou mantê-lo atualizado.",
+        "response": "Olá, obrigado pela sua paciência. A sua entrega pode atrasar um pouco. Vou mantê-lo informado.",
         "cards": {
           "doc": {
             "title": "Resumo do documento",
-            "detail": "Arquivo de 12 páginas → 5 pontos principais"
+            "detail": "Ficheiro de 12 páginas → 5 pontos principais"
           },
           "reply": {
             "title": "Resposta redigida",
@@ -621,25 +632,25 @@
         "subtitle": "Escreva, resuma, traduza e digitalize documentos num único espaço de trabalho com IA."
       },
       "goals": {
-        "title": "Com o que precisa de ajuda?",
-        "subtitle": "Escolha 1 a 3 objetivos. Construiremos o seu espaço de trabalho de IA.",
+        "title": "Em que precisa de ajuda?",
+        "subtitle": "Escolha 1 a 3 objetivos. Vamos criar o seu espaço de trabalho com IA.",
         "emptyCta": "Escolha pelo menos 1 objetivo",
         "items": {
           "workFaster": {
-            "title": "Trabalhar mais rápido",
-            "subtitle": "Emails, respostas, tarefas"
+            "title": "Trabalhar mais depressa",
+            "subtitle": "E-mails, respostas, tarefas"
           },
           "writeBetter": {
-            "title": "Escreva melhor",
+            "title": "Escrever melhor",
             "subtitle": "Corrigir o tom, reescrever, melhorar"
           },
           "understandDocuments": {
             "title": "Compreender documentos",
-            "subtitle": "Resumos, varrimentos, pontos-chave"
+            "subtitle": "Resumos, digitalizações, pontos-chave"
           },
           "learnAnything": {
-            "title": "Aprenda qualquer coisa",
-            "subtitle": "Explique os temas com clareza"
+            "title": "Aprender de tudo",
+            "subtitle": "Explicar temas com clareza"
           },
           "createContent": {
             "title": "Criar conteúdo",
@@ -654,57 +665,57 @@
             "subtitle": "Decisões, hábitos, pensamentos"
           },
           "askBigQuestions": {
-            "title": "Faça qualquer pergunta",
+            "title": "Fazer qualquer pergunta",
             "subtitle": "Futuro, significado, IA, vida"
           }
         }
       },
       "workspace": {
-        "preparingTitle": "Criar o seu assistente de IA",
+        "preparingTitle": "A criar o seu assistente de IA",
         "readyTitle": "O seu assistente de IA está pronto",
-        "subtitle": "O seu assistente está configurado. O acesso de teste está agora ativado.",
-        "trialTitle": "Teste de 3 dias",
-        "trialActivating": "ativando",
+        "subtitle": "O seu assistente está configurado. O acesso experimental está a ser ativado.",
+        "trialTitle": "Período experimental de 3 dias",
+        "trialActivating": "a ativar",
         "trialEnabled": "ativado",
         "steps": {
-          "0": "Preparar o seu assistente",
-          "1": "Personalizar respostas",
-          "2": "Proteger o acesso",
-          "3": "A concluir configuração"
+          "0": "A preparar o seu assistente",
+          "1": "A personalizar respostas",
+          "2": "A proteger o acesso",
+          "3": "A concluir a configuração"
         }
       }
     },
     "careView": {
       "titlePrefix": "Conheça",
       "titleHighlight": "Image Studio",
-      "subtitle": "Crie e edite imagens com IA – diretamente no Cloud AI."
+      "subtitle": "Crie e edite imagens com IA — diretamente no Cloud AI."
     },
     "relaxView": {
-      "title": "Conheça sua IA",
-      "titleHighlight": "Assistentes",
-      "subtitle": "Especialistas especializados em IA prontos para ajudar com suas necessidades diárias",
+      "title": "Conheça os seus",
+      "titleHighlight": "assistentes de IA",
+      "subtitle": "Especialistas em IA prontos para ajudar no seu dia a dia",
       "cards": {
         "fitness": {
           "title": "Preparador físico",
           "text": "Pequenos hábitos e exercícios em casa."
         },
         "recipes": {
-          "title": "Refeições e Receitas",
-          "text": "O que cozinhar, com o que você tem."
+          "title": "Refeições e receitas",
+          "text": "O que cozinhar com o que tem."
         },
         "travel": {
-          "title": "Amigo de viagem",
-          "text": "Planos simples e listas de embalagem."
+          "title": "Companheiro de viagem",
+          "text": "Planos simples e listas para a mala."
         }
       }
     },
     "splash": {
       "title": "CLOUD AI",
       "tagline": "SOLUÇÕES DE IA DE NÍVEL EMPRESARIAL",
-      "description": "Capacite sua empresa com tecnologia de inteligência artificial de ponta projetada para profissionais e equipes empresariais.",
-      "stats": "Aprovado por mais de 500 mil usuários",
+      "description": "Potencie a sua empresa com tecnologia de inteligência artificial de ponta, concebida para profissionais e equipas empresariais.",
+      "stats": "A escolha de mais de 500 mil utilizadores",
       "rating": "4,9 / 5",
-      "button": "Comece"
+      "button": "Começar"
     },
     "buttons": {
       "continue": "Continuar",
@@ -712,171 +723,183 @@
     },
     "v3": {
       "intent": {
-        "overline": "FAÇA SEU",
-        "title": "O que a Cloud AI deve ajudar você a fazer?",
+        "overline": "À SUA MEDIDA",
+        "title": "Em que é que o Cloud AI o pode ajudar?",
         "cta": "Continuar"
       },
       "goals": {
-        "ask": "Encontre respostas",
-        "write": "Escreva melhor",
-        "create": "Crie imagens",
-        "plan": "Planeje meu dia"
+        "ask": "Encontrar respostas",
+        "write": "Escrever melhor",
+        "create": "Criar imagens",
+        "plan": "Planear o meu dia"
       },
       "outcome": {
         "ask": {
-          "focus": "ENCONTRE RESPOSTAS",
-          "title": "Encontre clareza mais rapidamente",
-          "subtitle": "Pergunte naturalmente. Obtenha uma resposta clara e os próximos passos úteis.",
-          "beat1": "Entenda",
+          "focus": "ENCONTRAR RESPOSTAS",
+          "title": "Encontre clareza mais depressa",
+          "subtitle": "Pergunte com naturalidade. Obtenha uma resposta clara e próximos passos úteis.",
+          "beat1": "Compreender",
           "beat2": "Decidir",
-          "beat3": "Seguir em frente"
+          "beat3": "Avançar"
         },
         "write": {
-          "focus": "ESCREVA MELHOR",
+          "focus": "ESCREVER MELHOR",
           "title": "Transforme pensamentos em palavras",
-          "subtitle": "Vá de uma ideia aproximada para uma escrita que soe como você.",
-          "beat1": "Forma",
+          "subtitle": "Passe de uma ideia vaga a um texto com a sua voz.",
+          "beat1": "Estruturar",
           "beat2": "Refinar",
-          "beat3": "Compartilhar"
+          "beat3": "Partilhar"
         },
         "create": {
           "focus": "CRIAR IMAGENS",
           "title": "Dê vida às ideias",
-          "subtitle": "Descreva o que você imagina e crie e refine em segundos.",
+          "subtitle": "Descreva o que imagina e depois crie e aperfeiçoe em segundos.",
           "beat1": "Imaginar",
           "beat2": "Criar",
-          "beat3": "Perfeito"
+          "beat3": "Aperfeiçoar"
         },
         "plan": {
-          "focus": "PLANEJE MEU DIA",
-          "title": "Abra espaço para o que importa",
-          "subtitle": "Transforme uma lista ocupada em um plano calmo que você possa realmente seguir.",
+          "focus": "PLANEAR O MEU DIA",
+          "title": "Dê espaço ao que importa",
+          "subtitle": "Transforme uma lista sobrecarregada num plano tranquilo que consegue mesmo seguir.",
           "beat1": "Priorizar",
           "beat2": "Organizar",
           "beat3": "Começar"
         }
       },
       "proof": {
-        "overline": "TUDO EM UM LUGAR",
-        "title": "Um lugar. Mais possibilidades.",
-        "subtitle": "Passe da pergunta à criação sem alternar entre aplicativos.",
+        "overline": "TUDO NUM SÓ LUGAR",
+        "title": "Um só lugar. Mais possibilidades.",
+        "subtitle": "Passe da pergunta à criação sem alternar entre apps.",
         "item1": {
-          "title": "Pergunte qualquer coisa",
+          "title": "Pergunte o que quiser",
           "subtitle": "Modelos avançados para respostas claras e úteis"
         },
         "item2": {
           "title": "Crie imagens",
-          "subtitle": "Transforme uma ideia em algo que você possa ver"
+          "subtitle": "Transforme uma ideia em algo que pode ver"
         },
         "item3": {
           "title": "Obtenha ajuda especializada",
-          "subtitle": "Assistentes para o trabalho e a vida cotidiana"
+          "subtitle": "Assistentes para o trabalho e o dia a dia"
         }
       },
       "controls": {
         "back": "Voltar",
         "continue": "Continuar",
-        "finish": "Explorar premium"
+        "finish": "Explorar o Premium"
+      },
+      "trial": {
+        "priceLine": "Depois, {{price}} por ano. Cancele quando quiser.",
+        "title": "Queremos que experimente o Cloud AI gratuitamente.",
+        "demoAsk": "Transforma o meu esboço num póster cyberpunk",
+        "demoReply": "Quatro estilos, prontos em segundos.",
+        "noPayment": "Nada a pagar agora",
+        "cta": "Experimente por $0.00"
+      },
+      "reminder": {
+        "title": "Vamos avisá-lo antes de o seu período experimental terminar",
+        "note": "Recebe um aviso bem antes de qualquer cobrança, para que nada o apanhe de surpresa."
       }
     }
   },
   "coinStore": {
-    "title": "Obtenha créditos",
-    "loading": "Carregando loja de moedas…",
-    "balanceLabel": "Seu saldo atual é",
-    "balanceValue": "{{amount}} Créditos",
+    "title": "Obter créditos",
+    "loading": "A carregar a loja de moedas…",
+    "balanceLabel": "O seu saldo atual é",
+    "balanceValue": "{{amount}} créditos",
     "history": {
       "link": "Histórico de transações",
-      "alertTitle": "História",
+      "alertTitle": "Histórico",
       "alertBody": "O histórico de transações estará disponível em breve."
     },
-    "noPacks": "Nenhum pacote de moedas disponível. Verifique seu ID de oferta RevenueCat.",
+    "noPacks": "Nenhum pacote de moedas disponível. Verifique o ID da oferta RevenueCat.",
     "badges": {
-      "basic": "Pacote Básico",
-      "popular": "Mais populares",
-      "value": "Melhor valor"
+      "basic": "Pacote básico",
+      "popular": "Mais popular",
+      "value": "Mais vantajoso"
     },
     "pack": {
-      "creditsLabel": "{{credits}} Créditos",
-      "tokensLabel": "{{credits}} Créditos",
+      "creditsLabel": "{{credits}} créditos",
+      "tokensLabel": "{{credits}} créditos",
       "defaultName": "Pacote {{index}}",
       "unknownPrice": "USD —"
     },
     "premium": {
-      "title": "Torne-se Premium",
-      "subtitle": "Acesso e recursos ilimitados",
-      "cta": "Atualizar"
+      "title": "Passe a Premium",
+      "subtitle": "Acesso e funcionalidades ilimitados",
+      "cta": "Fazer upgrade"
     },
-    "termsText": "Ao fazer uma compra, você concorda com nossos",
-    "termsLink": "Termos de Serviço",
+    "termsText": "Ao efetuar uma compra, concorda com os nossos",
+    "termsLink": "Termos de serviço",
     "alerts": {
       "initErrorTitle": "Erro de inicialização",
-      "genericMessage": "Algo deu errado.",
+      "genericMessage": "Algo correu mal.",
       "successTitle": "Sucesso",
-      "successMessage": "Os créditos aparecerão em breve.",
+      "successMessage": "Os créditos vão aparecer em breve.",
       "purchaseFailedTitle": "Falha na compra",
       "unknownError": "Erro desconhecido"
     }
   },
   "premium": {
-    "badge": "PRÓ",
-    "requiredTitle": "Prémio obrigatório",
-    "upgrade": "Atualizar",
-    "modelRequiredMessage": "Este modelo requer Premium. Atualize para acessar GPT-5, Grok 4, Claude e modelos mais avançados.",
-    "assistantsRequiredMessage": "Assistentes exigem Premium. Atualize para acessar assistentes de IA especializados para preparação física, codificação, redação e muito mais.",
-    "assistantsTitle": "Prémio obrigatório",
-    "assistantsMessage": "Assistentes exigem Premium. Atualize para acessar assistentes de IA especializados para preparação física, codificação, redação e muito mais."
+    "badge": "PRO",
+    "requiredTitle": "É necessário Premium",
+    "upgrade": "Fazer upgrade",
+    "modelRequiredMessage": "Este modelo requer Premium. Faça upgrade para aceder ao GPT-5, Grok 4, Claude e a modelos mais avançados.",
+    "assistantsRequiredMessage": "Os assistentes requerem Premium. Faça upgrade para aceder a assistentes de IA especializados em exercício físico, programação, escrita e muito mais.",
+    "assistantsTitle": "É necessário Premium",
+    "assistantsMessage": "Os assistentes requerem Premium. Faça upgrade para aceder a assistentes de IA especializados em exercício físico, programação, escrita e muito mais."
   },
   "paywall": {
     "modelsHeadline": "GPT-5.5, Grok, Gemini",
-    "close": "Fechar acesso pago",
+    "close": "Fechar ecrã de subscrição",
     "unavailableTitle": "Compras indisponíveis",
-    "unavailableMessage": "O faturamento do Android ainda não está configurado.",
+    "unavailableMessage": "A faturação do Android ainda não está configurada.",
     "restoreEmptyTitle": "Nenhuma compra encontrada",
     "restoreEmptyMessage": "Não foi possível encontrar uma compra ativa para restaurar nesta conta.",
-    "restoreFailedTitle": "Falha na restauração",
-    "restoreFailedMessage": "Não é possível restaurar as compras no momento.",
+    "restoreFailedTitle": "Falha ao restaurar",
+    "restoreFailedMessage": "Não é possível restaurar as compras neste momento.",
     "productsUnavailableTitle": "Nenhum plano disponível",
-    "productsUnavailableMessage": "Nenhum produto de assinatura Android está disponível no momento.",
+    "productsUnavailableMessage": "Não há produtos de subscrição Android disponíveis neste momento.",
     "purchaseFailedTitle": "Falha na compra",
-    "purchaseFailedMessage": "Não é possível concluir esta compra no momento.",
+    "purchaseFailedMessage": "Não é possível concluir esta compra neste momento.",
     "restore": "Restaurar",
-    "restoreRestoring": "Restaurando…",
+    "restoreRestoring": "A restaurar…",
     "features": {
       "create": "Crie imagens e vídeos",
       "search": "Pesquise na web com IA",
       "talk": "Fale naturalmente com a IA",
-      "imageStudio": "Obtenha créditos Image Studio {{credits}} {{period}}",
+      "imageStudio": "Receba {{credits}} créditos do Image Studio {{period}}",
       "period": {
-        "weekly": "semanalmente",
-        "monthly": "mensalmente",
-        "yearly": "anualmente"
+        "weekly": "por semana",
+        "monthly": "por mês",
+        "yearly": "por ano"
       }
     },
     "freeTrial": {
-      "title": "Teste grátis",
-      "subtitle": "Teste gratuito de 3 dias"
+      "title": "Período experimental grátis",
+      "subtitle": "3 dias grátis"
     },
     "badge": {
       "bestOffer": "Melhor oferta"
     },
     "plans": {
       "yearly": {
-        "title": "Anualmente",
+        "title": "Anual",
         "only": "Apenas {{price}}",
-        "defaultPrice": "US$ 79,99",
-        "defaultIntroPrice": "US$ 1,35"
+        "defaultPrice": "79,99 US$",
+        "defaultIntroPrice": "1,35 US$"
       },
       "monthly": {
-        "title": "Mensalmente",
-        "subtitle": "Cancele a qualquer momento",
-        "defaultPrice": "US$ 19,99"
+        "title": "Mensal",
+        "subtitle": "Cancele quando quiser",
+        "defaultPrice": "19,99 US$"
       },
       "weekly": {
-        "title": "Semanalmente",
-        "subtitle": "Cancele a qualquer momento",
-        "defaultPrice": "US$ 9,99",
-        "trialThen": "3 dias grátis, então"
+        "title": "Semanal",
+        "subtitle": "Cancele quando quiser",
+        "defaultPrice": "9,99 US$",
+        "trialThen": "3 dias grátis, depois"
       }
     },
     "frequency": {
@@ -884,156 +907,156 @@
       "perMonth": "por mês"
     },
     "cta": "Continuar",
-    "ctaFreeTrial": "Experimente gratuitamente",
+    "ctaFreeTrial": "Experimentar grátis",
     "legal": {
       "terms": "Termos",
       "privacy": "Privacidade"
     },
     "premium": {
-      "headline": "Toda IA premium em um plano",
-      "subtitleLine1": "Converse, codifique, crie e planeje",
+      "headline": "Toda a IA premium num só plano",
+      "subtitleLine1": "Converse, programe, crie e planeie",
       "subtitleLine2": "com modelos avançados.",
-      "enableTrial": "Ative o teste gratuito",
+      "enableTrial": "Ativar período experimental grátis",
       "annual": "Anual",
-      "saveBadge": "Economize 83%",
+      "saveBadge": "Poupe 83%",
       "year": "ano",
       "week": "semana",
-      "termsOfUse": "Termos de Uso",
-      "privacyPolicy": "Política de Privacidade"
+      "termsOfUse": "Termos de utilização",
+      "privacyPolicy": "Política de privacidade"
     },
     "v3": {
-      "eyebrow": "NUVEM AI PREMIUM",
+      "eyebrow": "CLOUD AI PREMIUM",
       "trial": {
-        "headline": "Desbloqueie todos os recursos premium",
+        "headline": "Desbloqueie todas as funcionalidades premium",
         "subtitle": "Veja exatamente o que acontece e quando.",
         "todayTitle": "Hoje",
-        "todayBody": "Desbloqueie todos os recursos premium. Nenhum pagamento é devido agora.",
+        "todayBody": "Desbloqueie todas as funcionalidades premium. Não tem nada a pagar agora.",
         "checkTitle": "Em 2 dias — Lembrete",
-        "checkBody": "Enviaremos uma notificação a informar que o seu teste terminará em breve.",
+        "checkBody": "Vamos enviar-lhe uma notificação a avisar que o seu período experimental está quase a terminar.",
         "billingTitle": "Em 3 dias",
         "billingBody": "A cobrança começa automaticamente, a menos que cancele antes.",
         "badge": "3 DIAS GRÁTIS",
-        "cardNote": "Após o teste gratuito",
-        "noPayment": "Nenhum pagamento devido agora",
-        "cta": "Comece meu teste gratuito de 3 dias",
-        "renewalTerms": "3 dias grátis, depois {{price}} / {{period}}. Renova automaticamente até ser cancelado."
+        "cardNote": "Após o período experimental gratuito",
+        "noPayment": "Nada a pagar agora",
+        "cta": "Começar os meus 3 dias grátis",
+        "renewalTerms": "3 dias grátis, depois {{price}} / {{period}}. Renova automaticamente até cancelar."
       },
       "annual": {
         "headline": "Desbloqueie um ano de Cloud AI",
-        "subtitle": "Um plano para bate-papo, imagens e ajuda especializada em IA.",
-        "todayTitle": "Hoje – começa o prêmio",
-        "todayBody": "Desbloqueie todos os recursos premium de IA imediatamente.",
+        "subtitle": "Um plano para chat, imagens e ajuda especializada de IA.",
+        "todayTitle": "Hoje — começa o Premium",
+        "todayBody": "Desbloqueie de imediato todas as funcionalidades premium de IA.",
         "billingTitle": "Faturado anualmente",
-        "billingBody": "{{price}} oferece um ano completo de acesso.",
+        "billingBody": "{{price}} dá-lhe um ano completo de acesso.",
         "renewalTitle": "Renova anualmente",
-        "renewalBody": "Cancele a qualquer momento em Google Play antes da data de renovação.",
+        "renewalBody": "Cancele quando quiser no Google Play antes da data de renovação.",
         "cta": "Continuar",
-        "renewalTerms": "{{price}} / {{period}}. Renova automaticamente até ser cancelado."
+        "renewalTerms": "{{price}} / {{period}}. Renova automaticamente até cancelar."
       }
     }
   },
   "chat": {
-    "messagePlaceholder": "Mensagem...",
+    "messagePlaceholder": "Mensagem…",
     "createImages": "Criar imagens",
-    "generateAiArtwork": "Gere arte de IA",
+    "generateAiArtwork": "Gerar arte com IA",
     "camera": "Carregar fotos",
-    "takeOrSelectPhotos": "Selecione fotos",
+    "takeOrSelectPhotos": "Selecionar fotos",
     "search": "Pesquisar",
-    "findInformation": "Encontre informações",
-    "findRecentInfo": "Encontre informações recentes",
+    "findInformation": "Encontrar informações",
+    "findRecentInfo": "Encontrar informações recentes",
     "removeImage": "Remover imagem",
-    "messageInput": "Entrada de mensagem",
-    "clearInput": "Limpar entrada",
+    "messageInput": "Campo de mensagem",
+    "clearInput": "Limpar campo",
     "quickActionsLabel": "Ações rápidas",
     "hideQuickActions": "Ocultar ações rápidas",
     "showQuickActions": "Mostrar ações rápidas",
     "startVoiceInput": "Iniciar entrada de voz",
     "sendMessage": "Enviar mensagem",
-    "offline": "Off-line",
-    "stop": "Pare",
-    "streaming": "Transmissão…",
+    "offline": "Sem ligação",
+    "stop": "Parar",
+    "streaming": "A transmitir…",
     "closeRecorder": "Fechar gravador",
     "insertTranscript": "Enviar",
-    "scrollToLatest": "Role até a última mensagem",
+    "scrollToLatest": "Deslocar até à última mensagem",
     "copyMessage": "Copiar mensagem",
-    "copyMessageHint": "Copie esta mensagem para a área de transferência",
-    "shareMessage": "Compartilhar mensagem",
-    "shareMessageHint": "Compartilhe esta mensagem",
+    "copyMessageHint": "Copiar esta mensagem para a área de transferência",
+    "shareMessage": "Partilhar mensagem",
+    "shareMessageHint": "Partilhar esta mensagem",
     "regenerateResponse": "Regenerar resposta",
     "regenerateResponseHint": "Gerar uma nova resposta",
     "copyCode": "Copiar código",
     "copied": "Copiado",
     "image": "imagem",
-    "loading": "Carregando…",
-    "loadingChat": "Carregando bate-papo...",
-    "offlineBanner": "Você está off-line. As mensagens não podem ser enviadas.",
-    "offlineError": "Sem conexão com a internet. Verifique sua conexão e tente novamente.",
+    "loading": "A carregar…",
+    "loadingChat": "A carregar o chat…",
+    "offlineBanner": "Está offline. Não é possível enviar mensagens.",
+    "offlineError": "Sem ligação à internet. Verifique a sua ligação e tente novamente.",
     "imagePickerErrorTitle": "Erro no seletor de imagens",
-    "imagePickerErrorMessage": "Não foi possível acessar suas fotos. Por favor, tente novamente.",
-    "messageTooLong": "Mensagem muito longa ({{length}}). O limite é {{limit}}.",
-    "sendFailed": "Falha ao enviar mensagem. Por favor, tente novamente.",
+    "imagePickerErrorMessage": "Não foi possível aceder às suas fotos. Tente novamente.",
+    "messageTooLong": "Mensagem demasiado longa ({{length}}). O limite é {{limit}}.",
+    "sendFailed": "Falha ao enviar a mensagem. Tente novamente.",
     "modelNoImageSupport": "O modelo selecionado não suporta imagens. Escolha um modelo diferente.",
     "voiceStartFailed": "Não foi possível iniciar a voz.",
-    "voiceNoSpeechDetected": "Nenhuma voz foi reconhecida. Por favor, tente novamente.",
+    "voiceNoSpeechDetected": "Não foi reconhecida nenhuma voz. Tente novamente.",
     "emptyTitle": "Como posso ajudar?",
-    "emptySubtitle": "Inicie uma conversa com IA",
-    "privateTitle": "Bate-papo privado",
-    "privateSubtitle": "Este bate-papo não aparecerá no seu histórico de bate-papo",
-    "startPrivateChat": "Iniciar bate-papo privado",
-    "endPrivateChat": "Encerrar bate-papo privado",
+    "emptySubtitle": "Inicie uma conversa com a IA",
+    "privateTitle": "Chat privado",
+    "privateSubtitle": "Este chat não vai aparecer no seu histórico de chats",
+    "startPrivateChat": "Iniciar chat privado",
+    "endPrivateChat": "Terminar chat privado",
     "permissions": {
-      "photosTitle": "É necessária permissão para fotos",
-      "photosMessage": "O acesso à foto é necessário para escolher as imagens.",
-      "voiceTitle": "Permissões de voz necessárias",
-      "voiceMessage": "É necessário acesso ao microfone e à fala para usar a voz."
+      "photosTitle": "É necessária permissão para aceder às fotos",
+      "photosMessage": "É necessário acesso às fotos para escolher imagens.",
+      "voiceTitle": "São necessárias permissões de voz",
+      "voiceMessage": "É necessário acesso ao microfone e ao reconhecimento de voz para utilizar a voz."
     },
     "activity": {
-      "analyzingImages": "Analisando imagens…",
-      "searching": "Procurando…",
-      "thinking": "Pensando…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingImages": "A analisar imagens…",
+      "searching": "A pesquisar…",
+      "thinking": "A pensar…",
+      "analyzingDocuments": "A analisar documentos…"
     },
     "webSearch": {
       "title": "Pesquisa na web",
-      "subtitle": "Encontre informações recentes",
-      "label": "Pesquisa na Web",
+      "subtitle": "Encontrar informações recentes",
+      "label": "Pesquisa na web",
       "enable": "Ativar pesquisa na web",
       "disable": "Desativar pesquisa na web",
-      "toggleLabel": "Pesquise na web"
+      "toggleLabel": "Pesquisar na web"
     },
     "studioBanner": {
       "label": "Image Studio",
-      "title": "Crie recursos visuais rapidamente.",
-      "subtitle": "Gere, refine e publique ativos visuais em um só lugar.",
+      "title": "Crie conteúdos visuais rapidamente.",
+      "subtitle": "Gere, aperfeiçoe e publique conteúdos visuais num só lugar.",
       "cta": "Abrir"
     },
     "quickActions": {
       "createImages": "Criar imagens",
-      "openCamera": "Abrir câmera",
+      "openCamera": "Abrir câmara",
       "editImage": "Editar imagem",
       "startVoice": "Iniciar voz",
       "assistants": "Assistentes"
     },
-    "listening": "Ouvindo…",
-    "startRecording": "Comece a gravar…",
+    "listening": "A ouvir…",
+    "startRecording": "Começar a gravar…",
     "assistantHeader": {
       "unavailableTitle": "Assistente indisponível",
-      "unavailableDescription": "Não foi possível carregar este assistente. Por favor, tente novamente.",
+      "unavailableDescription": "Não foi possível carregar este assistente. Tente novamente.",
       "ready": "Pronto para ajudar"
     },
     "actions": {
       "copy": "Copiar",
-      "share": "Compartilhar",
+      "share": "Partilhar",
       "regenerate": "Regenerar",
-      "retryFromHere": "Tente novamente daqui",
-      "report": "Relatório",
+      "retryFromHere": "Tentar novamente a partir daqui",
+      "report": "Denunciar",
       "cancel": "Cancelar"
     },
     "markdown": {
       "copy": "Copiar",
       "copied": "Copiado",
       "table": "TABELA",
-      "watchVideo": "Assistir ao vídeo",
+      "watchVideo": "Ver vídeo",
       "wikipedia": "Wikipédia",
       "link": "Ligação",
       "note": "Nota",
@@ -1042,107 +1065,114 @@
     },
     "messageActionTitle": "Mensagem",
     "status": {
-      "sending": "Enviando…",
-      "failed": "Falha",
+      "sending": "A enviar…",
+      "failed": "Falhou",
       "sent": "Enviado"
     },
     "suggestions": {
       "writeStory": "Escreva uma história criativa",
       "writeStorySubtitle": "sobre uma aventura mágica",
-      "planTravel": "Planeje um itinerário de viagem",
+      "planTravel": "Planeie um itinerário de viagem",
       "planTravelSubtitle": "para umas férias incríveis",
       "explainConcept": "Explique este conceito",
       "explainConceptSubtitle": "em termos simples",
-      "planDay": "Planeje meu dia",
+      "planDay": "Planeie o meu dia",
       "planDaySubtitle": "com dicas de produtividade"
     },
     "home": {
-      "eyebrow": "Escolha um tópico",
-      "title": "O que você quer fazer?",
-      "subtitle": "Escolha uma direção e comece com um aviso forte.",
-      "pickPromptTitle": "Escolha um prompt para começar",
-      "changeTopic": "Escolha outro tópico",
+      "eyebrow": "Escolha um tema",
+      "title": "O que quer fazer?",
+      "subtitle": "Escolha uma direção e comece com um bom pedido.",
+      "pickPromptTitle": "Escolha uma sugestão para começar",
+      "changeTopic": "Escolha outro tema",
       "intents": {
-        "summarize": "Resuma o texto",
+        "summarize": "Resumir texto",
         "summarizeShort": "Resumir",
-        "summarizeHint": "Artigos, notas, notas de voz, tópicos longos",
-        "plan": "Faça um plano",
+        "summarizeHint": "Artigos, notas, notas de voz, conversas longas",
+        "plan": "Fazer um plano",
         "planHint": "Viagens, rotinas, orçamentos, prazos, mudanças de vida",
-        "brainstorm": "Brainstorming",
+        "brainstorm": "Gerar ideias",
         "brainstormHint": "Ideias, ofertas, nomes, conteúdo, projetos paralelos",
         "analyze": "Analisar dados",
         "analyzeHint": "Gastos, feedback, métricas, hábitos, desempenho"
       },
       "prompts": {
         "summarize": {
-          "founderBriefTitle": "Crie um briefing do fundador",
-          "founderBriefSubtitle": "Retire os principais riscos, decisões e próximos passos.",
-          "classNotesTitle": "Limpe minhas anotações de estudo",
-          "classNotesSubtitle": "Transforme notas aproximadas em um guia de estudo claro.",
-          "meetingHandoffTitle": "Escreva um resumo da transferência",
-          "meetingHandoffSubtitle": "Útil após reuniões, ligações ou longas conversas internas.",
+          "founderBriefTitle": "Crie um resumo para o fundador",
+          "founderBriefSubtitle": "Destaque os principais riscos, decisões e próximos passos.",
+          "classNotesTitle": "Organize os meus apontamentos",
+          "classNotesSubtitle": "Transforme apontamentos soltos num guia de estudo claro.",
+          "meetingHandoffTitle": "Escreva um resumo para passagem de pasta",
+          "meetingHandoffSubtitle": "Útil depois de reuniões, chamadas ou longas conversas internas.",
           "longArticleTitle": "Resuma este artigo rapidamente",
-          "longArticleSubtitle": "Condense um longo artigo em conclusões precisas."
+          "longArticleSubtitle": "Condense um artigo longo em conclusões claras."
         },
         "plan": {
-          "energyResetTitle": "Crie uma redefinição de energia de 14 dias",
+          "energyResetTitle": "Crie um plano de 14 dias para recuperar energia",
           "energyResetSubtitle": "Um plano realista para sono, alimentação, movimento e concentração.",
-          "mealPlanTitle": "Planeje refeições que eu realmente cozinharei",
-          "mealPlanSubtitle": "Prático, acessível e baseado no que tenho.",
-          "cityMoveTitle": "Planejar minha mudança para uma nova cidade",
-          "cityMoveSubtitle": "Divida-o em cronograma, orçamento, habitação e tarefas administrativas.",
-          "tripEscapeTitle": "Planeje uma escapadela de fim de semana memorável",
-          "tripEscapeSubtitle": "Algo melhor que um itinerário genérico."
+          "mealPlanTitle": "Planeie refeições que vou mesmo cozinhar",
+          "mealPlanSubtitle": "Práticas, acessíveis e baseadas no que tenho.",
+          "cityMoveTitle": "Planeie a minha mudança para uma nova cidade",
+          "cityMoveSubtitle": "Divida-a em calendário, orçamento, habitação e tarefas administrativas.",
+          "tripEscapeTitle": "Planeie uma escapadinha de fim de semana memorável",
+          "tripEscapeSubtitle": "Algo melhor do que um itinerário genérico."
         },
         "brainstorm": {
-          "sideHustleTitle": "Encontre uma agitação lateral realista",
-          "sideHustleSubtitle": "Idéias que posso começar enquanto trabalho em tempo integral.",
+          "sideHustleTitle": "Encontre uma fonte de rendimento extra realista",
+          "sideHustleSubtitle": "Ideias que posso começar enquanto trabalho a tempo inteiro.",
           "brandAngleTitle": "Encontre um ângulo de marca memorável",
-          "brandAngleSubtitle": "Útil para produtos, criadores, agências ou boletins informativos.",
-          "socialSeriesTitle": "Invente uma série de conteúdo",
-          "socialSeriesSubtitle": "Algo consistente o suficiente para aumentar o público.",
-          "datingIdeasTitle": "Tenha ideias novas",
-          "datingIdeasSubtitle": "Datas, presentes, surpresas ou eventos que pareçam atenciosos."
+          "brandAngleSubtitle": "Útil para produtos, criadores, agências ou newsletters.",
+          "socialSeriesTitle": "Invente uma série de conteúdos",
+          "socialSeriesSubtitle": "Algo consistente o suficiente para fazer crescer uma audiência.",
+          "datingIdeasTitle": "Sugira ideias novas",
+          "datingIdeasSubtitle": "Encontros, presentes, surpresas ou eventos que mostrem atenção."
         },
         "analyze": {
-          "spendingLeaksTitle": "Descubra onde meu dinheiro está vazando",
-          "spendingLeaksSubtitle": "Mostre padrões, pontos fracos e as vitórias mais fáceis primeiro.",
+          "spendingLeaksTitle": "Descubra para onde está a fugir o meu dinheiro",
+          "spendingLeaksSubtitle": "Mostre padrões, pontos fracos e os ganhos mais fáceis primeiro.",
           "customerFeedbackTitle": "Transforme feedback em prioridades",
-          "customerFeedbackSubtitle": "Solicitações de cluster, reclamações, urgência e impacto.",
-          "habitPatternsTitle": "Identifique padrões em meus hábitos",
-          "habitPatternsSubtitle": "Útil para treinos, sono, registro no diário ou registros de foco.",
+          "customerFeedbackSubtitle": "Agrupe pedidos, reclamações, urgência e impacto.",
+          "habitPatternsTitle": "Identifique padrões nos meus hábitos",
+          "habitPatternsSubtitle": "Útil para treinos, sono, diário ou registos de concentração.",
           "metricsStoryTitle": "Explique o que os números significam",
-          "metricsStorySubtitle": "Mais sinal, menos ruído na planilha."
+          "metricsStorySubtitle": "Mais sinal, menos ruído de folha de cálculo."
         }
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Carregar ficheiro",
+      "supportedTypes": "PDF, DOCX, TXT ou CSV",
+      "failed": "Falha ao carregar",
+      "retry": "Tentar carregar novamente",
+      "retryShort": "Tentar novamente",
+      "remove": "Remover ficheiro",
+      "pickerErrorTitle": "Não foi possível abrir os ficheiros",
+      "pickerErrorMessage": "Tente selecionar o documento novamente.",
+      "tooMany": "Pode anexar até 3 documentos por mensagem.",
+      "tooLarge": "Cada documento deve ter 10 MB ou menos.",
+      "empty": "O documento selecionado está vazio.",
+      "unsupported": "Utilize um ficheiro PDF, DOCX, TXT ou CSV.",
+      "invalidTitle": "Ficheiro não suportado",
+      "pasteFailedTitle": "Não foi possível anexar o texto colado",
+      "pasteFailedMessage": "O seu texto foi mantido na caixa de mensagem.",
+      "waitUntilReady": "Aguarde que os seus documentos acabem de carregar.",
+      "encrypted": "Este PDF está protegido por palavra-passe. Carregue uma cópia desbloqueada.",
+      "unsupportedDocument": "Este ficheiro está ilegível ou o seu conteúdo não é suportado. Utilize um ficheiro PDF, DOCX, TXT ou CSV.",
+      "tooManyPages": "Divida este PDF em ficheiros com até 100 páginas.",
+      "noReadableText": "Não foi encontrado texto legível. Os PDF digitalizados precisam de OCR; carregue uma cópia com texto.",
+      "pastedTextName": "Texto colado",
+      "badge": "DOC",
+      "untitled": "Documento"
     }
   },
   "imageUpload": {
     "required": "*",
-    "processing": "Processando...",
-    "tapToUploadImage": "Toque para fazer upload da imagem"
+    "processing": "A processar…",
+    "tapToUploadImage": "Toque para carregar uma imagem"
   },
   "imageGridSelector": {
     "required": "*",
-    "processing": "Processando...",
+    "processing": "A processar…",
     "camera": "Carregar fotos",
     "library": "Biblioteca"
   },
@@ -1152,70 +1182,70 @@
     "cancel": "Cancelar",
     "allow": "Permitir",
     "notNow": "Agora não",
-    "openSettings": "Abra Configurações",
+    "openSettings": "Abrir definições",
     "close": "Fechar",
-    "save": "Salvar",
-    "tryAgain": "Tente novamente"
+    "save": "Guardar",
+    "tryAgain": "Tentar novamente"
   },
   "rateUs": {
-    "title": "Gostando de Cloud AI?",
-    "subtitle": "Seu feedback nos ajuda a melhorar. Você se importaria de nos avaliar na App Store?",
-    "rateNow": "Avalie agora",
+    "title": "Está a gostar do Cloud AI?",
+    "subtitle": "A sua opinião ajuda-nos a melhorar. Importa-se de nos avaliar na App Store?",
+    "rateNow": "Avaliar agora",
     "maybeLater": "Talvez mais tarde",
-    "dontAskAgain": "Não pergunte novamente"
+    "dontAskAgain": "Não perguntar novamente"
   },
   "oneTimeOffer": {
     "title": "Oferta única",
     "discount": "{{percent}}% DE DESCONTO",
-    "subtitle": "Você não verá esta oferta novamente.",
+    "subtitle": "Não voltará a ver esta oferta.",
     "badgeLine1": "Exclusivo",
     "badgeLine2": "Oferta única",
-    "upgradeNow": "Atualize agora para {{price}}",
-    "loadingPrice": "Carregando...",
-    "termsOfUse": "Termos de Uso",
-    "privacyPolicy": "Política de Privacidade",
+    "upgradeNow": "Faça upgrade agora por {{price}}",
+    "loadingPrice": "A carregar…",
+    "termsOfUse": "Termos de utilização",
+    "privacyPolicy": "Política de privacidade",
     "accessTitle": "Acesso ilimitado a",
     "accessSubtitle": "GPT, Gemini e Grok 4",
     "features": {
-      "unlimitedGPT4": "Acesso ilimitado a GPT-4",
+      "unlimitedGPT4": "Acesso ilimitado ao GPT-4",
       "geminiPro": "Acesso ao Gemini Pro",
-      "grokInsights": "Utilize Grok para novos insights",
+      "grokInsights": "Utilize o Grok para obter novas perspetivas",
       "priorityAccess": "Acesso prioritário e respostas mais rápidas"
     },
-    "bestValue": "Melhor valor",
-    "annualPremium": "Prêmio Anual",
+    "bestValue": "Mais vantajoso",
+    "annualPremium": "Premium anual",
     "oneTimePayment": "Pagamento único",
-    "wasPrice": "foi",
+    "wasPrice": "antes",
     "continue": "Continuar",
     "restore": "Restaurar",
     "terms": "Termos",
     "privacy": "Privacidade",
     "successTitle": "Sucesso!",
-    "successMessage": "Obrigado pela sua compra! Aproveite o acesso premium pelos próximos 12 meses.",
+    "successMessage": "Obrigado pela sua compra! Aproveite o acesso premium durante os próximos 12 meses.",
     "errorTitle": "Falha na compra",
-    "errorMessage": "Algo deu errado. Por favor, tente novamente.",
+    "errorMessage": "Algo correu mal. Tente novamente.",
     "restoreSuccessTitle": "Restaurado",
-    "restoreSuccessMessage": "Suas compras foram restauradas.",
-    "restoreErrorTitle": "Falha na restauração",
-    "restoreErrorMessage": "Nenhuma compra encontrada para restaurar.",
+    "restoreSuccessMessage": "As suas compras foram restauradas.",
+    "restoreErrorTitle": "Falha ao restaurar",
+    "restoreErrorMessage": "Não foram encontradas compras para restaurar.",
     "unavailableTitle": "Compras indisponíveis",
-    "unavailableMessage": "O faturamento do Android ainda não está configurado."
+    "unavailableMessage": "A faturação do Android ainda não está configurada."
   },
   "rewards": {
     "header": {
       "title": "Recompensas",
       "openMenu": "Abrir menu",
-      "goBack": "Volte"
+      "goBack": "Voltar"
     },
     "pointsHero": {
       "totalBalance": "SALDO TOTAL",
-      "seeYourRewards": "Veja suas recompensas"
+      "seeYourRewards": "Ver as suas recompensas"
     },
     "streakTracker": {
-      "title": "Sequência Diária",
-      "subtitle": "Continue assim! Você está pegando fogo.",
+      "title": "Sequência diária",
+      "subtitle": "Continue assim! Está imparável.",
       "days": "Dias",
-      "prize": "Prêmio",
+      "prize": "Prémio",
       "dayLabel": "Dia {{number}}",
       "nextReward": "Próxima recompensa: {{amount}} em {{time}}",
       "coins": "Moedas"
@@ -1228,57 +1258,57 @@
     },
     "balances": {
       "rewardCoins": "Moedas de recompensa",
-      "imageCredits": "Créditos da imagem"
+      "imageCredits": "Créditos de imagem"
     },
     "rewardsList": {
       "rewardTitles": {
         "imageCredits50": "50 créditos de imagem",
         "imageCredits200": "200 créditos de imagem",
         "imageCredits600": "600 créditos de imagem",
-        "weeklyPremium": "Prêmio Semanal",
-        "secretBox": "Caixa Secreta"
+        "weeklyPremium": "Premium semanal",
+        "secretBox": "Caixa secreta"
       },
       "rewardDescriptions": {
-        "secretBox": "Recompensas misteriosas dentro"
+        "secretBox": "Recompensas misteriosas lá dentro"
       },
       "alerts": {
         "comingSoonTitle": "Em breve",
         "comingSoonMessage": "Esta recompensa ainda não está disponível.",
-        "notEnoughCoinsTitle": "Não há moedas suficientes",
-        "notEnoughCoinsMessage": "Você precisa de mais moedas de recompensa para desbloquear esta recompensa.",
+        "notEnoughCoinsTitle": "Moedas insuficientes",
+        "notEnoughCoinsMessage": "Precisa de mais moedas de recompensa para desbloquear esta recompensa.",
         "errorTitle": "Erro",
         "couldNotOpenBox": "Não foi possível abrir a caixa.",
-        "couldNotRedeem": "Não foi possível resgatar a recompensa. Por favor, tente novamente.",
-        "mysteryReward": "Recompensa Misteriosa"
+        "couldNotRedeem": "Não foi possível resgatar a recompensa. Tente novamente.",
+        "mysteryReward": "Recompensa misteriosa"
       }
     },
     "quests": {
       "dailyLogin": {
-        "title": "Login diário",
-        "description": "Abra o aplicativo hoje para manter sua sequência",
-        "message": "Esta missão é concluída automaticamente quando você abre o aplicativo todos os dias."
+        "title": "Entrada diária",
+        "description": "Abra a app hoje para manter a sua sequência",
+        "message": "Esta missão é concluída automaticamente quando abre a app todos os dias."
       },
       "shareFacebook": {
-        "title": "Compartilhe no Facebook",
-        "description": "Poste sobre nós no Facebook"
+        "title": "Partilhar no Facebook",
+        "description": "Publique sobre nós no Facebook"
       },
       "shareTwitter": {
-        "title": "Compartilhe no Twitter",
-        "description": "Tweet sua experiência"
+        "title": "Partilhar no Twitter",
+        "description": "Partilhe a sua experiência num tweet"
       },
       "shareInstagram": {
-        "title": "Compartilhe no Instagram",
-        "description": "Compartilhe uma história ou postagem"
+        "title": "Partilhar no Instagram",
+        "description": "Partilhe uma história ou publicação"
       },
       "shareExperience": {
-        "title": "Compartilhe sua experiência",
-        "description": "Conte aos amigos por que você gosta do aplicativo"
+        "title": "Partilhe a sua experiência",
+        "description": "Diga aos seus amigos porque gosta da app"
       },
       "share": {
-        "genericMessage": "Estou usando este aplicativo de IA para geração de bate-papo e imagens. Confira: {{url}}",
-        "facebookQuote": "Confira este aplicativo de IA!",
-        "twitterText": "Estou testando este aplicativo de IA, é muito legal.",
-        "instagramMessage": "Confira este aplicativo de IA: {{url}}"
+        "genericMessage": "Estou a usar esta app de IA para conversar e gerar imagens. Experimenta: {{url}}",
+        "facebookQuote": "Experimenta esta app de IA!",
+        "twitterText": "Estou a experimentar esta app de IA e é mesmo fixe.",
+        "instagramMessage": "Experimenta esta app de IA: {{url}}"
       },
       "store": {
         "errorTitle": "Erro",
@@ -1295,92 +1325,97 @@
       "rewardSuccess": {
         "error": "ERRO",
         "success": "SUCESSO",
-        "somethingWentWrong": "Algo deu errado",
+        "somethingWentWrong": "Algo correu mal",
         "rewardUnlocked": "Recompensa desbloqueada",
         "credits": "Créditos",
         "close": "Fechar",
-        "okay": "Ok"
+        "okay": "OK"
       },
       "secretBox": {
         "pill": "CAIXA SECRETA",
         "rewardUnlocked": "RECOMPENSA DESBLOQUEADA",
-        "shufflingRewards": "EMBALHANDO RECOMPENSAS...",
+        "shufflingRewards": "A BARALHAR RECOMPENSAS…",
         "imageCreditsAdded": "Créditos de imagem adicionados à sua conta",
         "continue": "Continuar",
-        "revealing": "Revelando...",
+        "revealing": "A revelar…",
         "prizeTiers": {
           "lucky": "SORTE",
-          "pro": "PRÓ",
+          "pro": "PRO",
           "elite": "ELITE",
           "mythic": "MÍTICO"
         }
       }
     },
     "checkIn": {
-      "title": "Resgate as suas moedas diárias",
-      "subtitle": "Volte todos os dias - a recompensa aumenta.",
-      "cta": "Resgatar",
+      "title": "Receba as suas moedas diárias",
+      "subtitle": "Volte todos os dias para ganhar uma recompensa maior.",
+      "cta": "Receber",
       "claimed": "Recebido! +{{amount}} moedas",
       "later": "Mais tarde"
+    },
+    "button": {
+      "title": "Recompensas",
+      "subtitle": "Bónus diários e vantagens"
     }
   },
   "app": {
     "version": "Versão {{version}}",
-    "offlineBanner": "Você está off-line",
+    "offlineBanner": "Está offline",
     "launch": {
-      "accessibilityLabel": "Iniciando Cloud AI",
+      "accessibilityLabel": "A iniciar o Cloud AI",
       "title": "CLOUD AI",
-      "subtitle": "IA, pronto quando você estiver"
+      "subtitle": "IA, pronta quando precisar",
+      "closePreview": "Fechar pré-visualização do ecrã inicial"
     },
     "errors": {
-      "modelsLoadTitle": "Falha ao carregar modelos",
-      "modelsLoadMessage": "Não foi possível carregar modelos de IA. O aplicativo usará modelos padrão. Verifique sua conexão com a Internet.",
-      "modelsLoadTimeout": "O carregamento dos modelos demorou muito. O aplicativo usará modelos padrão. Por favor, tente novamente.",
-      "modelsLoadNetwork": "Sem conexão com a internet. O aplicativo usará modelos padrão. Por favor, verifique sua conexão.",
+      "modelsLoadTitle": "Falha ao carregar os modelos",
+      "modelsLoadMessage": "Não foi possível carregar os modelos de IA. A app vai utilizar os modelos predefinidos. Verifique a sua ligação à internet.",
+      "modelsLoadTimeout": "O carregamento dos modelos demorou demasiado. A app vai utilizar os modelos predefinidos. Tente novamente.",
+      "modelsLoadNetwork": "Sem ligação à internet. A app vai utilizar os modelos predefinidos. Verifique a sua ligação.",
       "deviceIdTitle": "Erro de inicialização",
-      "deviceIdMessage": "Falha ao inicializar o ID do dispositivo. Alguns recursos podem não funcionar corretamente.",
+      "deviceIdMessage": "Falha ao inicializar o ID do dispositivo. Algumas funcionalidades podem não funcionar corretamente.",
       "storageTitle": "Erro de armazenamento",
-      "storageMessage": "Não é possível acessar o armazenamento local. Alguns recursos podem não funcionar corretamente.",
-      "crashTitle": "Algo deu errado.",
-      "crashSubtitle": "Por favor, tente novamente.",
-      "crashLabel": "O aplicativo travou"
+      "storageMessage": "Não é possível aceder ao armazenamento local. Algumas funcionalidades podem não funcionar corretamente.",
+      "crashTitle": "Algo correu mal.",
+      "crashSubtitle": "Tente novamente.",
+      "crashLabel": "A app deixou de funcionar"
     },
     "proxyErrors": {
-      "genericTitle": "Algo deu errado",
-      "genericMessage": "Por favor, tente novamente.",
-      "rateLimitTitle": "Muitos pedidos",
-      "rateLimitMessage": "Estamos atendendo a muitos pedidos. Por favor, tente novamente em alguns instantes.",
-      "rateLimitRetryAfter": "Estamos atendendo a muitos pedidos. Tente novamente em cerca de {{seconds}} segundos.",
+      "genericTitle": "Algo correu mal",
+      "genericMessage": "Tente novamente.",
+      "rateLimitTitle": "Demasiados pedidos",
+      "rateLimitMessage": "Estamos a receber muitos pedidos. Tente novamente daqui a pouco.",
+      "rateLimitRetryAfter": "Estamos a receber muitos pedidos. Tente novamente daqui a cerca de {{seconds}} segundos.",
       "restrictedTitle": "Conteúdo restrito",
-      "restrictedMessage": "Esta solicitação foi bloqueada por filtros de segurança.",
-      "insufficientCoinsTitle": "Não há moedas suficientes",
-      "insufficientCoinsMessage": "Seu saldo atual é muito baixo para esta solicitação.",
+      "restrictedMessage": "Este pedido foi bloqueado pelos filtros de segurança.",
+      "insufficientCoinsTitle": "Moedas insuficientes",
+      "insufficientCoinsMessage": "O seu saldo atual é demasiado baixo para este pedido.",
       "imageUnavailableTitle": "Imagem indisponível",
-      "imageUnavailableMessage": "O arquivo de imagem gerado estava temporariamente indisponível. Por favor, tente novamente.",
+      "imageUnavailableMessage": "O ficheiro da imagem gerada esteve temporariamente indisponível. Tente novamente.",
       "authorizationTitle": "Problema de autorização",
-      "authorizationMessage": "Não foi possível verificar sua conta. Por favor, tente novamente.",
-      "serverTitle": "Soluço no servidor",
-      "serverMessage": "Nossos servidores tiveram problemas. Por favor, tente novamente em breve.",
-      "timeoutTitle": "Demorando muito",
-      "timeoutMessage": "A solicitação expirou. Por favor, tente novamente.",
-      "networkTitle": "Sem conexão",
-      "networkMessage": "Sem conexão com a internet. Verifique sua conexão e tente novamente.",
-      "requestTitle": "Solicitar problema",
-      "requestMessage": "Algo deu errado com sua solicitação. Por favor, tente novamente."
+      "authorizationMessage": "Não foi possível verificar a sua conta. Tente novamente.",
+      "serverTitle": "Pequena falha no servidor",
+      "serverMessage": "Os nossos servidores tiveram um problema. Tente novamente daqui a pouco.",
+      "timeoutTitle": "Está a demorar demasiado",
+      "timeoutMessage": "O pedido excedeu o tempo limite. Tente novamente.",
+      "networkTitle": "Sem ligação",
+      "networkMessage": "Sem ligação à internet. Verifique a sua ligação e tente novamente.",
+      "requestTitle": "Problema no pedido",
+      "requestMessage": "Algo correu mal com o seu pedido. Tente novamente."
     }
   },
   "reviewerPremium": {
     "activateTitle": "Ativar Premium",
-    "activateMessage": "Você deseja ativar o revisor premium?",
+    "activateMessage": "Pretende ativar o Premium de revisor?",
     "activateAction": "Ativar",
     "deactivateTitle": "Desativar Premium",
-    "deactivateMessage": "Deseja desativar o revisor premium?",
+    "deactivateMessage": "Pretende desativar o Premium de revisor?",
     "deactivateAction": "Desativar"
   },
   "push": {
     "dailyReward": {
       "title": "Recompensa diária",
-      "body": "Não perca suas moedas diárias – resgate antes da meia-noite."
+      "body": "Não perca as suas moedas diárias — receba-as antes da meia-noite."
     }
   },
   "notifications": {
@@ -1389,6 +1424,194 @@
       "body": "Enviamos um lembrete por dia para manter a sua sequência viva e as suas moedas a crescer. Sem spam, e pode desativar quando quiser.",
       "enable": "Ativar lembretes",
       "skip": "Agora não"
+    }
+  },
+  "workspace": {
+    "documents": "Documentos",
+    "videos": "Resumos de vídeo",
+    "summary": "Resumo",
+    "details": "Detalhes",
+    "sources": "Fontes",
+    "youtube": "YouTube",
+    "upload": "Carregar",
+    "transcript": "Transcrição",
+    "concise": "Curto e direto",
+    "detailed": "O quadro completo",
+    "errors": {
+      "NETWORK": "Verifique a sua ligação à internet e tente novamente. As fontes selecionadas continuam aqui.",
+      "TIMEOUT": "Esta fonte demorou demasiado. Experimente um vídeo mais curto ou um documento mais pequeno.",
+      "NOT_CONFIGURED": "A análise de fontes ainda não está disponível. Tente novamente mais tarde.",
+      "VIDEO_NOT_CONFIGURED": "A análise direta de vídeo ainda não está disponível. Pode resumir uma transcrição colada.",
+      "DOCUMENT_EXPIRED": "Uma fonte expirou. Selecione novamente o documento original.",
+      "SOURCE_UNAVAILABLE": "Não foi possível analisar esta fonte. Experimente outro ficheiro ou cole uma transcrição.",
+      "TOO_MANY_PAGES": "Este PDF tem demasiadas páginas. Divida-o em ficheiros com até 100 páginas cada.",
+      "INVALID_VIDEO": "Escolha um vídeo MP4 ou WebM legível, com até 20 MB. Analisamos os primeiros 10 minutos.",
+      "INVALID_DOCUMENTS": "Selecione novamente os seus documentos e tente outra vez.",
+      "CLIENT_ID_REQUIRED": "Reinicie a app e tente novamente.",
+      "RATE_LIMITED": "Atingiu o limite de análises de hoje. Tente novamente amanhã.",
+      "INVALID_RESULT": "A análise ficou incompleta. Tente novamente.",
+      "FILE_TOO_LARGE": "Este ficheiro é demasiado grande. Os documentos suportam até 10 MB; os clipes de vídeo, até 20 MB.",
+      "NO_READABLE_TEXT": "Não foi encontrado texto legível. Utilize um PDF com texto ou cole o texto; os PDF digitalizados precisam de OCR.",
+      "ANALYSIS_FAILED": "Não foi possível analisar a fonte. Tente novamente.",
+      "SOURCES_TOO_LARGE": "Estes documentos são demasiado grandes para serem analisados em conjunto. Resuma-os separadamente ou em grupos mais pequenos.",
+      "ENCRYPTED_DOCUMENT": "Este PDF está protegido por palavra-passe. Carregue uma cópia desbloqueada.",
+      "UNSUPPORTED_DOCUMENT": "Este ficheiro está ilegível ou o seu conteúdo não é suportado. Utilize um ficheiro PDF, DOCX, TXT ou CSV.",
+      "SERVICE_BUSY": "O serviço de análise está ocupado. Tente novamente daqui a pouco.",
+      "PROVIDER_UNAVAILABLE": "O serviço de IA está temporariamente indisponível. Tente novamente daqui a pouco.",
+      "DAILY_LIMIT": "Atingiu o limite de análises de fontes de hoje. Os seus resumos guardados continuam disponíveis.",
+      "ALREADY_PROCESSING": "Já existe uma análise em curso. Verifique o progresso abaixo antes de iniciar outra.",
+      "JOB_PENDING": "A sua análise ainda está a ser processada. Utilize Verificar progresso abaixo para a obter.",
+      "JOB_NOT_FOUND": "Esta análise não foi encontrada ou expirou. Se acabou de a carregar, aguarde um momento e verifique novamente.",
+      "WORKSPACE_KEY_REQUIRED": "Não foi possível desbloquear a sua biblioteca de fontes. Reinicie a app e tente novamente.",
+      "NO_SPEECH": "Não foi possível transcrever nenhuma fala clara. Experimente um vídeo com fala audível ou cole a respetiva transcrição.",
+      "VIDEO_TOO_LONG": "Escolha um vídeo com até 10 minutos."
+    },
+    "invalidUrl": "Introduza uma ligação https:// válida para um vídeo do YouTube.",
+    "invalidTranscript": "Cole uma transcrição com 40 a 120 000 carateres.",
+    "chooseFirst": "Primeiro, escolha uma fonte.",
+    "uploading": "A carregar {{name}}",
+    "extracting": "A ler o seu documento…",
+    "analyzing": "A procurar o que interessa…",
+    "chatError": "Não foi possível abrir esta fonte no chat. Tente novamente.",
+    "shareError": "Não foi possível partilhar este resumo. Tente novamente.",
+    "removeTitle": "Remover resumo guardado?",
+    "removeBody": "O resumo será removido deste dispositivo. Os seus chats mantêm-se. O texto da fonte carregada segue o período de retenção em vigor.",
+    "remove": "Remover",
+    "removeError": "Não foi possível remover este resumo. Tente novamente.",
+    "summarizeVideo": "Obter resumo",
+    "chooseDocuments": "Adicione os seus documentos",
+    "videoSubtitle": "Transforme conteúdo falado em ideias principais, capítulos e respostas.",
+    "documentSubtitle": "Encontre o essencial nos seus ficheiros. Faça perguntas no chat.",
+    "newAnalysis": "Novo resumo",
+    "savedBrief": "O SEU RESUMO",
+    "documentCoverage": "Com base no texto extraído. As imagens e as páginas digitalizadas podem não estar incluídas.",
+    "transcriptCoverage": "Com base na transcrição fornecida. As imagens do vídeo não foram analisadas.",
+    "videoCoverage": "Análise do vídeo por IA. Os capítulos são aproximados; confirme os detalhes importantes no original.",
+    "extractionLimit": "Um documento atingiu o limite de extração de texto. Este resumo pode não abranger o ficheiro original completo.",
+    "saveError": "Não foi possível guardar este resumo. Mantenha este ecrã aberto e tente novamente, ou partilhe uma cópia.",
+    "retrySave": "Tentar guardar novamente",
+    "chapters": "Capítulos",
+    "actions": "Próximos passos",
+    "noSections": "Não foram identificadas outras secções nesta fonte.",
+    "linkError": "Não foi possível abrir o vídeo.",
+    "videoEvidence": "As marcas de tempo do vídeo são aproximadas. Os resumos de transcrições descrevem o texto fornecido e não analisam imagens.",
+    "documentEvidence": "Os excertos abaixo são comparados com o texto extraído. Os números de página originais só são apresentados quando disponíveis.",
+    "noEvidence": "Não existem excertos de texto verificados para este resumo.",
+    "coverage": "Cobertura e limitações",
+    "sourceExpires": "Fonte disponível até",
+    "localOnly": "Os resumos são guardados neste dispositivo. Partilhe uma cópia para ter uma cópia de segurança.",
+    "continueChat": "Perguntar sobre isto",
+    "chatContext": "O chat começa com este resumo guardado e as referências de documentos disponíveis. Um resumo de vídeo não é uma transcrição completa.",
+    "share": "Partilhar resumo",
+    "videoLink": "Ligação do vídeo do YouTube",
+    "publicOnly": "Apenas vídeos públicos. Os vídeos privados, não listados, em direto e restritos podem não estar disponíveis.",
+    "transcriptHint": "Cole a transcrição ou as legendas. Inclua marcas de tempo para obter capítulos.",
+    "textOnly": "Apenas texto; as imagens não são analisadas.",
+    "clip": "Adicionar vídeo",
+    "videoLimits": "MP4, MOV, WebM · até 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · 3 ficheiros · 10 MB cada",
+    "openingFiles": "A abrir ficheiros…",
+    "chooseFiles": "Adicionar ficheiros",
+    "removeFile": "Remover {{name}}",
+    "depth": "À sua medida",
+    "processingNotice": "O seu ficheiro é carregado para processamento por IA.",
+    "cancel": "Cancelar",
+    "analyzeDocuments": "Obter resumo",
+    "library": "Vale a pena guardar",
+    "search": "Pesquisar resumos",
+    "loadError": "Não foi possível carregar os resumos guardados. Os seus dados existentes não foram substituídos.",
+    "retry": "Tentar novamente",
+    "emptyLibrary": "Os seus resumos vão aparecer aqui, prontos para rever ou discutir no chat.",
+    "removeBrief": "Remover {{name}}",
+    "audioCoverage": "Resumo da fala · As imagens não são analisadas. Confirme nomes e números na gravação.",
+    "uploadTitle": "Escolha ficheiros para começar",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · 10 min\nApenas conteúdo falado",
+    "noSearchResults": "Nenhum resumo encontrado. Experimente outra pesquisa.",
+    "clearSearch": "Limpar pesquisa",
+    "keyPoints": "Principais conclusões",
+    "chatContextShort": "Ficou com curiosidade? Faça outra pergunta.",
+    "openingChat": "A abrir o chat…",
+    "uploadVideo": "Carregar vídeo",
+    "pasteTranscript": "Colar transcrição",
+    "heroVideoLabel": "INTELIGÊNCIA DE VÍDEO",
+    "heroDocumentLabel": "INTELIGÊNCIA DE DOCUMENTOS",
+    "heroVideoTitle": "Veja menos.\nSaiba mais.",
+    "heroDocumentTitle": "Os seus ficheiros.\nRespostas claras.",
+    "heroVideoDescription": "Transforme conteúdo falado num resumo que vale a pena guardar.",
+    "heroDocumentDescription": "Descubra o essencial. Ligue os pontos. Pergunte o que quiser.",
+    "heroIdeas": "Ideias principais",
+    "heroFollowUps": "Pergunte à IA",
+    "heroSummarize": "Resumir",
+    "heroCompare": "Comparar",
+    "summaryReady": "O essencial",
+    "savedOnDevice": "Guardado neste dispositivo",
+    "notSavedYet": "Pronto a guardar",
+    "atAGlance": "Visão geral",
+    "addSource": "Adicione a sua fonte",
+    "quickDescription": "Só os destaques",
+    "detailedDescription": "Com todos os pormenores",
+    "chooseVideo": "Adicionar vídeo",
+    "studioLabel": "Um pouco mais de clareza.",
+    "studioDocumentTitle": "Grandes ideias.\nMenos leitura.",
+    "studioVideoTitle": "Veja menos.\nRetenha mais.",
+    "studioDocumentDescription": "De um monte de páginas até à sua próxima grande ideia.",
+    "studioVideoDescription": "Fique com o melhor. Transforme o que foi dito em algo a que pode voltar.",
+    "studioVideoDescriptionV3": "Veja a história completa. Transforme cenas e falas em ideias a que pode voltar.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Primeiros 10 min · Fala e imagem",
+    "videoCoverageV3": "Fala e cenas visuais · No máximo, os primeiros 10 minutos. Os capítulos são aproximados; as ações rápidas podem escapar.",
+    "videoChatMenu": "Compreenda cenas, falas e momentos-chave",
+    "analyzingVideo": "A ver o seu vídeo…",
+    "uploadingVideo": "A carregar vídeo… {{percent}}%",
+    "videoCancelled": "Análise do vídeo interrompida.",
+    "videoSourceNeeded": "Cole uma ligação pública do YouTube ou toque em + → Carregar vídeo. Depois, envie a sua pergunta.",
+    "localOnlyV2": "Os resumos são guardados neste dispositivo. O resultado da análise também fica no servidor de análise até 7 dias para poder ser obtido e, depois, é eliminado. Partilhe uma cópia para ter uma cópia de segurança.",
+    "leavePrivateTitle": "Sair do chat privado?",
+    "leavePrivateBody": "Perguntar sobre este resumo termina o seu chat privado e guarda a nova conversa no seu histórico.",
+    "leavePrivateConfirm": "Continuar",
+    "documentPages": "Texto encontrado em {{extracted}} de {{total}} páginas.",
+    "documentPartialText": "Algumas páginas não têm texto extraível. As imagens e digitalizações não são lidas.",
+    "documentTruncated": "Só foi extraído o início deste documento. O resumo pode não incluir o conteúdo posterior.",
+    "sourceUnavailable": "Este tipo de fonte está temporariamente indisponível. Experimente uma das opções disponíveis abaixo.",
+    "accepted": "A analisar a sua fonte. Pode sair deste ecrã e verificar o progresso mais tarde.",
+    "checkingProgress": "A verificar a sua análise guardada…",
+    "pendingError": "Não foi possível carregar as análises pendentes. Reinicie a app antes de iniciar outra.",
+    "pendingAnalysis": "ANÁLISE PENDENTE",
+    "resumeHint": "Depois de aceite, a análise continua mesmo que saia do ecrã. Obtenha aqui o resultado sem ter de começar de novo.",
+    "checkProgress": "Verificar progresso",
+    "cancelAnalysis": "Cancelar análise",
+    "demoNotice": "Demonstração local · conteúdo de exemplo · nenhuma fonte carregada",
+    "publicVideoCoverage": "Vídeos públicos do YouTube · Primeiros 10 minutos. Os vídeos privados, em direto e restritos podem não estar disponíveis.",
+    "sourceUnavailableLibrary": "Este tipo de fonte está temporariamente indisponível. Pode continuar a abrir os seus resumos guardados.",
+    "stopWaiting": "Deixar de esperar",
+    "previewSample": "Exemplo de pré-visualização · demonstração local",
+    "pickVideoError": "Escolha um clipe MP4 ou WebM, com até 20 MB e 10 minutos.",
+    "pickDocumentsError": "Escolha até três documentos PDF, DOCX, TXT ou CSV, com até 10 MB cada.",
+    "videoErrors": {
+      "ONE_VIDEO": "Escolha um vídeo ou cole uma ligação do YouTube de cada vez.",
+      "VIDEO_MIXED_SOURCES": "Envie o vídeo separadamente das imagens e dos documentos.",
+      "VIDEO_QUESTION_TOO_LONG": "A sua pergunta sobre o vídeo deve ter menos de 4000 carateres.",
+      "INVALID_VIDEO": "Escolha um vídeo MP4 ou WebM com até 20 MB.",
+      "FILE_TOO_LARGE": "Escolha um vídeo com até 20 MB.",
+      "SOURCE_UNAVAILABLE": "Não conseguimos aceder a este vídeo. Experimente um vídeo público do YouTube ou carregue um ficheiro MP4 ou WebM.",
+      "INVALID_RESULT": "A análise do vídeo ficou incompleta. Tente novamente.",
+      "NETWORK": "A ligação foi interrompida. Procure o resultado em Resumos de vídeo antes de tentar novamente.",
+      "TIMEOUT": "A análise do vídeo demorou demasiado. Experimente um clipe mais curto.",
+      "JOB_PENDING": "O seu vídeo ainda está a ser processado. Abra Resumos de vídeo para verificar o progresso.",
+      "DAILY_LIMIT": "Atingiu o limite de análises de vídeos e documentos de hoje. Tente novamente amanhã.",
+      "ALREADY_PROCESSING": "Já existe uma análise em curso. Abra Resumos de vídeo para verificar o progresso.",
+      "SERVICE_BUSY": "A análise de vídeo está ocupada. Tente novamente daqui a pouco.",
+      "PROVIDER_UNAVAILABLE": "A análise de vídeo está temporariamente indisponível. Tente novamente daqui a pouco.",
+      "NOT_CONFIGURED": "A análise de vídeo está temporariamente indisponível. Tente novamente mais tarde.",
+      "VIDEO_NOT_CONFIGURED": "A análise de vídeo está temporariamente indisponível. Tente novamente mais tarde.",
+      "SAVE_FAILED": "O seu resumo está pronto, mas não foi possível guardá-lo na sua biblioteca. Mantenha este chat ou copie o resumo."
+    },
+    "markdown": {
+      "summary": "Resumo",
+      "keyTakeaways": "Principais conclusões",
+      "details": "Detalhes",
+      "actionItems": "Próximos passos",
+      "sourceExcerpts": "Excertos da fonte",
+      "coverageNotes": "Notas de cobertura"
     }
   }
 }

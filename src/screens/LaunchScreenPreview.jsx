@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { StyleSheet, View, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 
 import StartupLoadingScreen from './StartupLoadingScreen';
 import SvgIcon from '../components/SvgIcon';
@@ -12,6 +13,7 @@ import { ROOT_DRAWER_ROUTE } from '../navigation/rootNavigation';
 export default function LaunchScreenPreview() {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   const exitPreview = useCallback(() => {
     if (navigation.canGoBack()) {
@@ -29,7 +31,7 @@ export default function LaunchScreenPreview() {
         onPress={exitPreview}
         hitSlop={12}
         accessibilityRole="button"
-        accessibilityLabel="Close launch screen preview"
+        accessibilityLabel={t('app.launch.closePreview', { defaultValue: 'Close launch screen preview' })}
         style={[styles.closeButton, { top: insets.top + 12 }]}
       >
         <SvgIcon name="back-bold" size={22} color="#FFFFFF" />

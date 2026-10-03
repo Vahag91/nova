@@ -1,4 +1,6 @@
 import { IMAGE_STUDIO_ENABLED } from '../../constants/featureFlags';
+import SvgIcon from '../SvgIcon';
+import { useWorkspaceTranslation } from '../../i18n/useWorkspaceTranslation';
 import React, { useMemo, useState, useEffect, useCallback, memo, useRef, useContext } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Image, ScrollView, Modal, Dimensions, Keyboard, ActivityIndicator } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing, interpolate, Extrapolation } from 'react-native-reanimated';
@@ -80,8 +82,10 @@ function TestInput({
   webSearchEnabled = false,
   imagePickerActive = false,
   documentPickerActive = false,
+  onOpenVideoPress = noop, videoEnabled = false, videoPickerActive = false,
 }) {
   const { t } = useTranslation();
+  const { c } = useWorkspaceTranslation();
   const subscription = useContext(SubscriptionAccessContext);
   
   // Safe area for bottom padding (home bar)
@@ -186,7 +190,7 @@ function TestInput({
     [attachments],
   );
   const documentAttachments = useMemo(
-    () => (Array.isArray(attachments) ? attachments.filter(isDocumentAttachment) : []),
+    () => (Array.isArray(attachments) ? attachments.filter(a => isDocumentAttachment(a) || a.kind === 'video') : []),
     [attachments],
   );
   const attachmentsReady = useMemo(
@@ -593,6 +597,24 @@ function TestInput({
                     </Animated.View>
 
                     <Animated.View style={menuItem4Style}>
+                      {videoEnabled && (
+                        <TouchableOpacity
+                          testID="chat-upload-video"
+                          style={[styles.menuItem, videoPickerActive && styles.disabledBtn]}
+                          disabled={videoPickerActive || streaming}
+                          onPress={() => { closeActionsImmediately(); requestAnimationFrame(() => safe(onOpenVideoPress)); }}
+                          accessibilityRole="button"
+                          accessibilityLabel={c('uploadVideo', 'Upload video')}
+                        >
+                          <View style={[styles.menuIconContainer, styles.iconViolet]}>
+                            <SvgIcon name="workspace-video" size={28} color="#D1BDEB" />
+                          </View>
+                          <View style={styles.menuTextContainer}>
+                            <Text style={styles.menuLabel}>{c('uploadVideo', 'Upload video')}</Text>
+                            <Text style={styles.menuSubLabel}>{c('videoChatMenu', 'Understand scenes, speech & key moments')}</Text>
+                          </View>
+                        </TouchableOpacity>
+                      )}
                       <TouchableOpacity
                         style={[styles.menuItem, styles.menuItemLast]}
                         onPress={handleWebSearchActionPress}
@@ -657,7 +679,9 @@ function TestInput({
                     {busy ? (
                       <ActivityIndicator size="small" color="#5AC8FA" />
                     ) : (
-                      <FileIcon color={failed ? '#FF6B6B' : '#5AC8FA'} size={20} />
+                      attachment.kind === 'video'
+                        ? <SvgIcon name="workspace-video" color="#D1BDEB" size={22} />
+                        : <FileIcon color={failed ? '#FF6B6B' : '#5AC8FA'} size={20} />
                     )}
                   </View>
                   <View style={styles.documentTextWrap}>
@@ -951,6 +975,7 @@ const areEqual = (prev, next) => {
   if (prev.webSearchEnabled !== next.webSearchEnabled) return false;
   if (prev.imagePickerActive !== next.imagePickerActive) return false;
   if (prev.documentPickerActive !== next.documentPickerActive) return false;
+  if (prev.videoPickerActive !== next.videoPickerActive || prev.videoEnabled !== next.videoEnabled || prev.onOpenVideoPress !== next.onOpenVideoPress) return false;
   if (prev.maxLength !== next.maxLength) return false;
   if (prev.counterLimit !== next.counterLimit) return false;
   const pA = Array.isArray(prev.attachments) ? prev.attachments : [];

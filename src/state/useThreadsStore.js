@@ -492,9 +492,9 @@ export const useThreadsStore = create((set, get) => ({
     });
   },
 
-  forceSaveThread: (threadId) => {
+  forceSaveThread: (threadId, options) => {
     const thread = get().threadsById?.[threadId];
-    if (thread) throttledSave.immediateSave(threadId, thread);
+    if (thread) return throttledSave.immediateSave(threadId, thread, options);
   },
 
   setThreadSummary: (threadId, summary, metaPatch) => set(state => {

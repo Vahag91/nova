@@ -4,7 +4,7 @@
     "searchPlaceholder": "ሞዴሎችን ፈልግ...",
     "noModelsFound": "ምንም ሞዴሎች አልተገኙም።",
     "noModelsAvailable": "ምንም ሞዴሎች የሉም",
-    "currentModel": "የአሁኑ ሞዴል: {{name}}. ሞዴል ለመቀየር መታ ያድርጉ።",
+    "currentModel": "የአሁኑ ሞዴል፦ {{name}}። ሞዴሉን ለመቀየር መታ ያድርጉ።",
     "openHint": "የሞዴል ምርጫ ምናሌን ይከፍታል።",
     "closeLabel": "ሞዴል መራጭን ዝጋ",
     "searchLabel": "ሞዴሎችን ይፈልጉ",
@@ -63,14 +63,25 @@
     "chatty_personal": "የበለጠ ተግባቢ እና ግላዊ",
     "pro_users": "ለኃይል ተጠቃሚዎች ምርጥ",
     "research_helper": "ለምርምር እና ማስታወሻዎች ጥሩ",
-    "reasoning_strong": "የላቀ የማመዛዘን ሞዴል"
+    "reasoning_strong": "የላቀ የማመዛዘን ሞዴል",
+    "gpt56_sol": "እጅግ ኃይለኛው የGPT-5.6 ሞዴል",
+    "gpt56_terra": "ሚዛናዊ የGPT-5.6 ሞዴል",
+    "gpt56_luna": "ለዕለት ተዕለት ተግባራት ፈጣን ሞዴል",
+    "claude_fable": "ፈጣን እና ፈጠራ የተሞላ የAnthropic AI",
+    "claude_sonnet": "የላቀ የAnthropic ሞዴል",
+    "gemini_flash": "ፈጣን የGoogle AI ሞዴል",
+    "gemini_pro": "የGoogle የላቀ Pro ሞዴል",
+    "grok_latest": "የxAI አዲሱ ሞዴል",
+    "deepseek_pro": "የላቀ የDeepSeek ሞዴል",
+    "deepseek_flash": "ፈጣን የDeepSeek ሞዴል"
   },
   "providers": {
     "openai": "ፒ 000",
     "anthropic": "አንትሮፖኒክ",
     "google": "ጎግል",
     "xai": "xAI",
-    "other": "ሌላ"
+    "other": "ሌላ",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "አዲስ ውይይት",
@@ -428,7 +439,7 @@
         "name": "ሳይበርፐንክ"
       },
       "steampunk": {
-        "name": "Steampunk"
+        "name": "ስቲምፓንክ"
       },
       "illustration_3d": {
         "name": "3D ምሳሌ"
@@ -440,13 +451,13 @@
         "name": "ቪንቴጅ ፊልም"
       },
       "pastel": {
-        "name": "pastel Aesthetic"
+        "name": "ለስላሳ ቀለማት ውበት"
       },
       "neon_glow": {
         "name": "ኒዮን ፍካት"
       },
       "epic_landscape": {
-        "name": "Epic Landscape"
+        "name": "ግዙፍ መልክዓ ምድር"
       }
     },
     "aspectRatios": {
@@ -777,6 +788,18 @@
         "back": "ተመለስ",
         "continue": "ቀጥል",
         "finish": "ፕሪሚየምን ያስሱ"
+      },
+      "trial": {
+        "priceLine": "ከዚያ በዓመት {{price}}። በማንኛውም ጊዜ ይሰርዙ።",
+        "title": "Cloud AIን በነፃ እንዲሞክሩት እንፈልጋለን።",
+        "demoAsk": "ንድፌን ወደ ሳይበርፓንክ ፖስተር ቀይረው",
+        "demoReply": "አራት ቅጦች፣ በሰከንዶች ውስጥ ዝግጁ።",
+        "noPayment": "አሁን ምንም ክፍያ የለም",
+        "cta": "በ$0.00 ይሞክሩ"
+      },
+      "reminder": {
+        "title": "ነፃ ሙከራዎ ከማብቃቱ በፊት እናስታውስዎታለን",
+        "note": "ምንም ክፍያ ከመፈጸሙ ቀደም ብሎ ማሳሰቢያ ይደርስዎታል፤ ስለዚህ ምንም ነገር በድንገት አያስደንቅዎትም።"
       }
     }
   },
@@ -863,7 +886,7 @@
     "plans": {
       "yearly": {
         "title": "በየአመቱ",
-        "only": "⟬P000 ብቻ {{price}}",
+        "only": "{{price}} ብቻ",
         "defaultPrice": "79.99 የአሜሪካ ዶላር",
         "defaultIntroPrice": "1.35 የአሜሪካ ዶላር"
       },
@@ -991,7 +1014,7 @@
       "analyzingImages": "ምስሎችን በመተንተን ላይ…",
       "searching": "በመፈለግ ላይ…",
       "thinking": "በማሰብ…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "ሰነዶችን በመተንተን ላይ…"
     },
     "webSearch": {
       "title": "የድር ፍለጋ",
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "ፋይል ይስቀሉ",
+      "supportedTypes": "የPDF፣ DOCX፣ TXT ወይም CSV ፋይሎች",
+      "failed": "መስቀል አልተሳካም",
+      "retry": "እንደገና ይስቀሉ",
+      "retryShort": "እንደገና ይሞክሩ",
+      "remove": "ፋይሉን አስወግድ",
+      "pickerErrorTitle": "ፋይሎችን መክፈት አልተቻለም",
+      "pickerErrorMessage": "እባክዎ ሰነዱን እንደገና ለመምረጥ ይሞክሩ።",
+      "tooMany": "በአንድ መልእክት እስከ 3 ሰነዶች ማያያዝ ይችላሉ።",
+      "tooLarge": "እያንዳንዱ ሰነድ 10 MB ወይም ከዚያ በታች መሆን አለበት።",
+      "empty": "የተመረጠው ሰነድ ባዶ ነው።",
+      "unsupported": "የPDF፣ DOCX፣ TXT ወይም CSV ፋይል ይጠቀሙ።",
+      "invalidTitle": "ፋይሉ አይደገፍም",
+      "pasteFailedTitle": "የተለጠፈውን ጽሑፍ ማያያዝ አልተቻለም",
+      "pasteFailedMessage": "ጽሑፍዎ በመልእክት ሳጥኑ ውስጥ ተቀምጧል።",
+      "waitUntilReady": "እባክዎ ሰነዶችዎ ተሰቅለው እስኪያልቁ ድረስ ይጠብቁ።",
+      "encrypted": "ይህ PDF በይለፍ ቃል የተጠበቀ ነው። ያልተቆለፈ ቅጂ ይስቀሉ።",
+      "unsupportedDocument": "ይህ ፋይል ሊነበብ አይችልም ወይም ይዘቱ አይደገፍም። የPDF፣ DOCX፣ TXT ወይም CSV ፋይል ይጠቀሙ።",
+      "tooManyPages": "ይህን PDF እያንዳንዳቸው እስከ 100 ገጾች ወዳሏቸው ፋይሎች ይከፋፍሉት።",
+      "noReadableText": "ሊነበብ የሚችል ጽሑፍ አልተገኘም። የተቃኙ PDFዎች OCR ያስፈልጋቸዋል፤ ጽሑፍ ያለው ቅጂ ይስቀሉ።",
+      "pastedTextName": "የተለጠፈ ጽሑፍ",
+      "badge": "ሰነድ",
+      "untitled": "ሰነድ"
     }
   },
   "imageUpload": {
@@ -1264,7 +1294,7 @@
       },
       "shareTwitter": {
         "title": "በትዊተር ላይ አጋራ",
-        "description": "የእርስዎን ልምድ Tweet"
+        "description": "ልምድዎን ትዊት ያድርጉ"
       },
       "shareInstagram": {
         "title": "ኢንስታግራም ላይ አጋራ",
@@ -1322,6 +1352,10 @@
       "cta": "ይውሰዱ",
       "claimed": "ተቀብለዋል! +{{amount}} ሳንቲም",
       "later": "በኋላ"
+    },
+    "button": {
+      "title": "ሽልማቶች",
+      "subtitle": "ዕለታዊ ጉርሻዎች እና ጥቅሞች"
     }
   },
   "app": {
@@ -1330,7 +1364,8 @@
     "launch": {
       "accessibilityLabel": "በመጀመር ላይ Cloud AI",
       "title": "ፒ 000",
-      "subtitle": "AI፣ እርስዎ ሲሆኑ ዝግጁ ናቸው።"
+      "subtitle": "AI፣ እርስዎ ሲሆኑ ዝግጁ ናቸው።",
+      "closePreview": "የመክፈቻ ማያ ቅድመ እይታን ዝጋ"
     },
     "errors": {
       "modelsLoadTitle": "ሞዴሎችን መጫን አልተሳካም።",
@@ -1389,6 +1424,194 @@
       "body": "ተከታታይነትዎ እንዲቀጥል እና ሳንቲሞችዎ እንዲጨምሩ በቀን አንድ ማስታወሻ እንልካለን። አላስፈላጊ መልእክት የለም፣ በማንኛውም ጊዜ ማጥፋት ይችላሉ።",
       "enable": "ማስታወሻዎችን አብራ",
       "skip": "አሁን አይደለም"
+    }
+  },
+  "workspace": {
+    "documents": "ሰነዶች",
+    "videos": "የቪዲዮ ማጠቃለያዎች",
+    "summary": "ማጠቃለያ",
+    "details": "ዝርዝሮች",
+    "sources": "ምንጮች",
+    "youtube": "YouTube",
+    "upload": "ስቀል",
+    "transcript": "ግልባጭ",
+    "concise": "አጭር እና ግልጽ",
+    "detailed": "የተሟላ ምስል",
+    "errors": {
+      "NETWORK": "የበይነመረብ ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ። የመረጧቸው ምንጮች አሁንም እዚህ አሉ።",
+      "TIMEOUT": "ይህ ምንጭ በጣም ረጅም ጊዜ ወስዷል። አጠር ያለ ቪዲዮ ወይም አነስ ያለ ሰነድ ይሞክሩ።",
+      "NOT_CONFIGURED": "የምንጭ ትንተና ገና አይገኝም። እባክዎ ቆይተው እንደገና ይሞክሩ።",
+      "VIDEO_NOT_CONFIGURED": "ቀጥተኛ የቪዲዮ ትንተና ገና አይገኝም። አሁንም የተለጠፈ ግልባጭ ማጠቃለል ይችላሉ።",
+      "DOCUMENT_EXPIRED": "የአንድ ምንጭ ጊዜ አልፎበታል። ዋናውን ሰነድ እንደገና ይምረጡ።",
+      "SOURCE_UNAVAILABLE": "ይህን ምንጭ መተንተን አልተቻለም። ሌላ ፋይል ወይም የተለጠፈ ግልባጭ ይሞክሩ።",
+      "TOO_MANY_PAGES": "ይህ PDF በጣም ብዙ ገጾች አሉት። እያንዳንዳቸው እስከ 100 ገጾች ወዳሏቸው ፋይሎች ይከፋፍሉት።",
+      "INVALID_VIDEO": "ሊነበብ የሚችል የMP4 ወይም WebM ቪዲዮ ይምረጡ፣ እስከ 20 MB። የመጀመሪያዎቹን 10 ደቂቃዎች እንተነትናለን።",
+      "INVALID_DOCUMENTS": "ሰነዶችዎን እንደገና ይምረጡ እና ይሞክሩ።",
+      "CLIENT_ID_REQUIRED": "መተግበሪያውን እንደገና ያስጀምሩ እና ይሞክሩ።",
+      "RATE_LIMITED": "የዛሬውን የትንተና ገደብ ደርሰዋል። እባክዎ ነገ እንደገና ይሞክሩ።",
+      "INVALID_RESULT": "ትንተናው አልተጠናቀቀም። እባክዎ እንደገና ይሞክሩ።",
+      "FILE_TOO_LARGE": "ይህ ፋይል በጣም ትልቅ ነው። ሰነዶች እስከ 10 MB፣ የቪዲዮ ክሊፖች ደግሞ እስከ 20 MB ይደገፋሉ።",
+      "NO_READABLE_TEXT": "ሊነበብ የሚችል ጽሑፍ አልተገኘም። ጽሑፍ ያለው PDF ይጠቀሙ ወይም ጽሑፉን ይለጥፉ፤ የተቃኙ PDFዎች OCR ያስፈልጋቸዋል።",
+      "ANALYSIS_FAILED": "ምንጩን መተንተን አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
+      "SOURCES_TOO_LARGE": "እነዚህ ሰነዶች በአንድ ላይ ለመተንተን በጣም ትልቅ ናቸው። ለየብቻ ወይም በትናንሽ ቡድኖች ያጠቃልሏቸው።",
+      "ENCRYPTED_DOCUMENT": "ይህ PDF በይለፍ ቃል የተጠበቀ ነው። ያልተቆለፈ ቅጂ ይስቀሉ።",
+      "UNSUPPORTED_DOCUMENT": "ይህ ፋይል ሊነበብ አይችልም ወይም ይዘቱ አይደገፍም። የPDF፣ DOCX፣ TXT ወይም CSV ፋይል ይጠቀሙ።",
+      "SERVICE_BUSY": "የትንተና አገልግሎቱ ተጨናንቋል። እባክዎ ትንሽ ቆይተው እንደገና ይሞክሩ።",
+      "PROVIDER_UNAVAILABLE": "የAI አገልግሎቱ ለጊዜው አይገኝም። እባክዎ ትንሽ ቆይተው እንደገና ይሞክሩ።",
+      "DAILY_LIMIT": "የዛሬውን የምንጭ ትንተና ገደብ ደርሰዋል። የተቀመጡ ማጠቃለያዎችዎ አሁንም ይገኛሉ።",
+      "ALREADY_PROCESSING": "አንድ ትንተና አስቀድሞ በሂደት ላይ ነው። ሌላ ከመጀመርዎ በፊት ከታች ሂደቱን ይመልከቱ።",
+      "JOB_PENDING": "ትንተናዎ አሁንም በሂደት ላይ ነው። ውጤቱን ለማግኘት ከታች ያለውን «ሂደቱን ይመልከቱ» ይጠቀሙ።",
+      "JOB_NOT_FOUND": "ይህ ትንተና አልተገኘም ወይም ጊዜው አልፎበታል። አሁን ገና ከሰቀሉት ትንሽ ቆይተው እንደገና ይመልከቱ።",
+      "WORKSPACE_KEY_REQUIRED": "የምንጭ ቤተ መፃህፍትዎን መክፈት አልተቻለም። መተግበሪያውን እንደገና ያስጀምሩ እና ይሞክሩ።",
+      "NO_SPEECH": "ግልጽ ንግግር ወደ ጽሑፍ መገልበጥ አልተቻለም። የሚሰማ ንግግር ያለው ቪዲዮ ይሞክሩ ወይም ግልባጩን ይለጥፉ።",
+      "VIDEO_TOO_LONG": "ርዝመቱ እስከ 10 ደቂቃ የሆነ ቪዲዮ ይምረጡ።"
+    },
+    "invalidUrl": "ትክክለኛ የhttps:// YouTube ቪዲዮ ሊንክ ያስገቡ።",
+    "invalidTranscript": "ከ40 እስከ 120,000 ቁምፊዎች ያለው ግልባጭ ይለጥፉ።",
+    "chooseFirst": "መጀመሪያ ምንጭ ይምረጡ።",
+    "uploading": "{{name}} በመስቀል ላይ",
+    "extracting": "ሰነድዎን በማንበብ ላይ…",
+    "analyzing": "ዋና ዋናዎቹን በመፈለግ ላይ…",
+    "chatError": "ይህን ምንጭ በውይይት ውስጥ መክፈት አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
+    "shareError": "ይህን ማጠቃለያ ማጋራት አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
+    "removeTitle": "የተቀመጠው ማጠቃለያ ይወገድ?",
+    "removeBody": "ይህ ማጠቃለያውን ከዚህ መሣሪያ ያስወግዳል። ውይይቶችዎ ይቆያሉ። የተሰቀለው የምንጭ ጽሑፍ ነባሩን የማቆያ ጊዜውን ይከተላል።",
+    "remove": "አስወግድ",
+    "removeError": "ይህን ማጠቃለያ ማስወገድ አልተቻለም። እባክዎ እንደገና ይሞክሩ።",
+    "summarizeVideo": "ማጠቃለያ ያግኙ",
+    "chooseDocuments": "ሰነዶችዎን ያክሉ",
+    "videoSubtitle": "የንግግር ይዘትን ወደ ቁልፍ ሐሳቦች፣ ምዕራፎች እና መልሶች ይለውጡ።",
+    "documentSubtitle": "በፋይሎችዎ ውስጥ ዋና ዋናዎቹን ያግኙ። በውይይት ጥያቄዎችን ይጠይቁ።",
+    "newAnalysis": "አዲስ ማጠቃለያ",
+    "savedBrief": "የእርስዎ ማጠቃለያ",
+    "documentCoverage": "በወጣው ጽሑፍ ላይ የተመሠረተ። ምስሎች እና የተቃኙ ገጾች ላይካተቱ ይችላሉ።",
+    "transcriptCoverage": "በቀረበው ግልባጭ ላይ የተመሠረተ። የቪዲዮው ምስላዊ ይዘት አልተተነተነም።",
+    "videoCoverage": "የቪዲዮው የAI ትንተና። ምዕራፎቹ ግምታዊ ናቸው፤ አስፈላጊ ዝርዝሮችን ከዋናው ጋር ያረጋግጡ።",
+    "extractionLimit": "አንድ ሰነድ የጽሑፍ ማውጫ ገደቡ ላይ ደርሷል። ይህ ማጠቃለያ ሙሉውን ዋና ፋይል ላይሸፍን ይችላል።",
+    "saveError": "ይህን ማጠቃለያ ማስቀመጥ አልተቻለም። ይህን ማያ ክፍት አድርገው እንደገና ይሞክሩ፣ ወይም ቅጂ ያጋሩ።",
+    "retrySave": "እንደገና ለማስቀመጥ ይሞክሩ",
+    "chapters": "ምዕራፎች",
+    "actions": "የሚወሰዱ እርምጃዎች",
+    "noSections": "በዚህ ምንጭ ውስጥ ተጨማሪ ክፍሎች አልተለዩም።",
+    "linkError": "ቪዲዮውን መክፈት አልተቻለም።",
+    "videoEvidence": "የቪዲዮ የጊዜ ማህተሞች ግምታዊ ናቸው። የግልባጭ ማጠቃለያዎች የቀረበውን ጽሑፍ ይገልጻሉ፤ ምስላዊ ይዘትን አይተነትኑም።",
+    "documentEvidence": "ከታች ያሉት ቅንጭቦች ከወጣው ጽሑፍ ጋር ተዛምደዋል። የዋናው ገጽ ቁጥሮች የሚታዩት ሲገኙ ብቻ ነው።",
+    "noEvidence": "ለዚህ ማጠቃለያ የተረጋገጡ የጽሑፍ ቅንጭቦች የሉም።",
+    "coverage": "ሽፋን እና ገደቦች",
+    "sourceExpires": "ምንጩ የሚገኘው እስከ",
+    "localOnly": "ማጠቃለያዎች በዚህ መሣሪያ ላይ ይቀመጣሉ። ምትኬ እንዲኖርዎ ቅጂ ያጋሩ።",
+    "continueChat": "ስለዚህ ይጠይቁ",
+    "chatContext": "ውይይቱ በዚህ የተቀመጠ ማጠቃለያ እና በሚገኙ የሰነድ ማጣቀሻዎች ይጀምራል። የቪዲዮ ማጠቃለያ ሙሉ ግልባጭ አይደለም።",
+    "share": "ማጠቃለያውን አጋራ",
+    "videoLink": "የYouTube ቪዲዮ ሊንክ",
+    "publicOnly": "ይፋዊ ቪዲዮዎች ብቻ። የግል፣ ያልተዘረዘሩ፣ የቀጥታ ስርጭት እና የተገደቡ ቪዲዮዎች ላይገኙ ይችላሉ።",
+    "transcriptHint": "ግልባጩን ወይም የንዑስ ርዕስ ጽሑፉን ይለጥፉ። ለምዕራፎች የጊዜ ማህተሞችን ያካትቱ።",
+    "textOnly": "ጽሑፍ ብቻ፤ ምስላዊ ይዘት አይተነተንም።",
+    "clip": "ቪዲዮ ያክሉ",
+    "videoLimits": "MP4፣ MOV፣ WebM ቪዲዮ · እስከ 20 MB",
+    "docLimits": "PDF፣ Word፣ TXT፣ CSV · 3 ፋይሎች · እያንዳንዳቸው 10 MB",
+    "openingFiles": "ፋይሎችን በመክፈት ላይ…",
+    "chooseFiles": "ፋይሎችን ያክሉ",
+    "removeFile": "{{name}}ን አስወግድ",
+    "depth": "የእርስዎ ያድርጉት",
+    "processingNotice": "ፋይልዎ በAI እንዲሠራ ይሰቀላል።",
+    "cancel": "ሰርዝ",
+    "analyzeDocuments": "ማጠቃለያ ያግኙ",
+    "library": "ሊያቆዩት የሚገባ",
+    "search": "ማጠቃለያዎችን ይፈልጉ",
+    "loadError": "የተቀመጡ ማጠቃለያዎችን መጫን አልተቻለም። ያለው ውሂብዎ አልተተካም።",
+    "retry": "እንደገና ይሞክሩ",
+    "emptyLibrary": "ማጠቃለያዎችዎ እዚህ ይታያሉ፤ እንደገና ለማየት ወይም በውይይት ለመወያየት ዝግጁ ይሆናሉ።",
+    "removeBrief": "{{name}}ን አስወግድ",
+    "audioCoverage": "የንግግር ማጠቃለያ · ምስላዊ ይዘት አይተነተንም። ስሞችን እና ቁጥሮችን ከቀረጻው ጋር ያረጋግጡ።",
+    "uploadTitle": "ለመጀመር ፋይሎችን ይምረጡ",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · 10 ደቂቃ\nየንግግር ይዘት ብቻ",
+    "noSearchResults": "ምንም ማጠቃለያ አልተገኘም። የተለየ ፍለጋ ይሞክሩ።",
+    "clearSearch": "ፍለጋን አጽዳ",
+    "keyPoints": "ቁልፍ ነጥቦች",
+    "chatContextShort": "ማወቅ የሚፈልጉት ነገር አለ? ተጨማሪ ጥያቄ ይጠይቁ።",
+    "openingChat": "ውይይቱን በመክፈት ላይ…",
+    "uploadVideo": "ቪዲዮ ይስቀሉ",
+    "pasteTranscript": "ግልባጭ ይለጥፉ",
+    "heroVideoLabel": "የቪዲዮ ትንተና",
+    "heroDocumentLabel": "የሰነድ ትንተና",
+    "heroVideoTitle": "ያነሰ መመልከት።\nየበለጠ ማወቅ።",
+    "heroDocumentTitle": "ፋይሎችዎ።\nግልጽ መልሶች።",
+    "heroVideoDescription": "የንግግር ይዘትን ሊያቆዩት ወደሚገባ ማጠቃለያ ይለውጡ።",
+    "heroDocumentDescription": "ዋና ዋናዎቹን ያግኙ። ነጥቦቹን ያገናኙ። ማንኛውንም ይጠይቁ።",
+    "heroIdeas": "ቁልፍ ሐሳቦች",
+    "heroFollowUps": "AIን ይጠይቁ",
+    "heroSummarize": "አጠቃልል",
+    "heroCompare": "አወዳድር",
+    "summaryReady": "ዋናው ቁም ነገር",
+    "savedOnDevice": "በዚህ መሣሪያ ላይ ተቀምጧል",
+    "notSavedYet": "ለማስቀመጥ ዝግጁ",
+    "atAGlance": "አጠቃላይ ገጽታ",
+    "addSource": "ምንጭዎን ያክሉ",
+    "quickDescription": "ዋና ዋናዎቹ ብቻ",
+    "detailedDescription": "ለዝርዝሮች በቂ ቦታ",
+    "chooseVideo": "ቪዲዮ ያክሉ",
+    "studioLabel": "ትንሽ ተጨማሪ ግልጽነት።",
+    "studioDocumentTitle": "ትልቅ ሐሳቦች።\nያነሰ ንባብ።",
+    "studioVideoTitle": "ያነሰ ይመልከቱ።\nብዙ ይማሩ።",
+    "studioDocumentDescription": "ከብዙ ገጾች ወደ ቀጣዩ «አገኘሁት!» ቅጽበትዎ።",
+    "studioVideoDescription": "ጥሩዎቹን ክፍሎች ያቆዩ። የተነገሩ ቃላትን ተመልሰው ሊያዩት ወደሚችሉት ነገር ይለውጡ።",
+    "studioVideoDescriptionV3": "ሙሉውን ታሪክ ይመልከቱ። ትዕይንቶችን እና የተነገሩ ቃላትን ተመልሰው ሊያዩአቸው ወደሚችሉ ሐሳቦች ይለውጡ።",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · የመጀመሪያዎቹ 10 ደቂቃዎች · ንግግር እና ምስል",
+    "videoCoverageV3": "ንግግር እና ምስላዊ ትዕይንቶች · ቢበዛ የመጀመሪያዎቹ 10 ደቂቃዎች። ምዕራፎቹ ግምታዊ ናቸው፤ ፈጣን ድርጊቶች ሊያመልጡ ይችላሉ።",
+    "videoChatMenu": "ትዕይንቶችን፣ ንግግርን እና ቁልፍ ቅጽበቶችን ይረዱ",
+    "analyzingVideo": "ቪዲዮዎን በመመልከት ላይ…",
+    "uploadingVideo": "ቪዲዮ በመስቀል ላይ… {{percent}}%",
+    "videoCancelled": "የቪዲዮ ትንተና ቆሟል።",
+    "videoSourceNeeded": "ይፋዊ የYouTube ሊንክ ይለጥፉ፣ ወይም + → ቪዲዮ ይስቀሉ የሚለውን ይንኩ። ከዚያ ጥያቄዎን ይላኩ።",
+    "localOnlyV2": "ማጠቃለያዎች በዚህ መሣሪያ ላይ ይቀመጣሉ። የትንተናው ውጤት መልሶ እንዲገኝ በትንተና አገልጋዩ ላይም እስከ 7 ቀናት ድረስ ይቆያል፣ ከዚያም ይሰረዛል። ምትኬ እንዲኖርዎ ቅጂ ያጋሩ።",
+    "leavePrivateTitle": "ከግል ውይይቱ ይውጡ?",
+    "leavePrivateBody": "ስለዚህ ማጠቃለያ መጠየቅ የግል ውይይትዎን ያበቃል፤ አዲሱን ውይይትም በታሪክዎ ውስጥ ያስቀምጣል።",
+    "leavePrivateConfirm": "ቀጥል",
+    "documentPages": "ከ{{total}} ገጾች ውስጥ በ{{extracted}} ገጾች ላይ ጽሑፍ ተገኝቷል።",
+    "documentPartialText": "አንዳንድ ገጾች ሊወጣ የሚችል ጽሑፍ የላቸውም። ምስሎች እና ቅኝቶች አይነበቡም።",
+    "documentTruncated": "የወጣው የዚህ ሰነድ መጀመሪያ ክፍል ብቻ ነው። ማጠቃለያው የኋለኛውን ይዘት ሊያመልጠው ይችላል።",
+    "sourceUnavailable": "ይህ የምንጭ ዓይነት ለጊዜው አይገኝም። ከታች ካሉት አማራጮች ሌላውን ይሞክሩ።",
+    "accepted": "ምንጭዎን በመተንተን ላይ። ይህን ማያ ትተው ሂደቱን በኋላ መመልከት ይችላሉ።",
+    "checkingProgress": "የተቀመጠ ትንተናዎን በማረጋገጥ ላይ…",
+    "pendingError": "በመጠባበቅ ላይ ያሉ ትንተናዎችን መጫን አልተቻለም። ሌላ ከመጀመርዎ በፊት መተግበሪያውን እንደገና ያስጀምሩ።",
+    "pendingAnalysis": "በመጠባበቅ ላይ ያለ ትንተና",
+    "resumeHint": "አንዴ ከተቀበለ በኋላ ማያውን ቢለቁም ትንተናው ይቀጥላል። እንደገና ሳይጀምሩ ውጤቱን እዚህ ያግኙ።",
+    "checkProgress": "ሂደቱን ይመልከቱ",
+    "cancelAnalysis": "ትንተናውን ሰርዝ",
+    "demoNotice": "የአካባቢ ማሳያ · የናሙና ይዘት · ምንም ምንጭ አልተሰቀለም",
+    "publicVideoCoverage": "ይፋዊ የYouTube ቪዲዮዎች · የመጀመሪያዎቹ 10 ደቂቃዎች። የግል፣ የቀጥታ ስርጭት እና የተገደቡ ቪዲዮዎች ላይገኙ ይችላሉ።",
+    "sourceUnavailableLibrary": "ይህ የምንጭ ዓይነት ለጊዜው አይገኝም። የተቀመጡ ማጠቃለያዎችዎን አሁንም መክፈት ይችላሉ።",
+    "stopWaiting": "መጠበቅ አቁም",
+    "previewSample": "የቅድመ እይታ ናሙና · የአካባቢ ማሳያ",
+    "pickVideoError": "አንድ የMP4 ወይም WebM ክሊፕ ይምረጡ፣ እስከ 20 MB እና 10 ደቂቃ።",
+    "pickDocumentsError": "እስከ ሦስት የPDF፣ DOCX፣ TXT ወይም CSV ሰነዶችን ይምረጡ፣ እያንዳንዳቸው እስከ 10 MB።",
+    "videoErrors": {
+      "ONE_VIDEO": "በአንድ ጊዜ አንድ ቪዲዮ ይምረጡ ወይም አንድ የYouTube ሊንክ ይለጥፉ።",
+      "VIDEO_MIXED_SOURCES": "ቪዲዮውን ከምስሎች እና ከሰነዶች ለይተው ይላኩ።",
+      "VIDEO_QUESTION_TOO_LONG": "የቪዲዮ ጥያቄዎ ከ4,000 ቁምፊዎች በታች ይሁን።",
+      "INVALID_VIDEO": "የMP4 ወይም WebM ቪዲዮ ይምረጡ፣ እስከ 20 MB።",
+      "FILE_TOO_LARGE": "እስከ 20 MB የሆነ ቪዲዮ ይምረጡ።",
+      "SOURCE_UNAVAILABLE": "ይህን ቪዲዮ ማግኘት አልቻልንም። ይፋዊ የYouTube ቪዲዮ ይሞክሩ ወይም የMP4 ወይም WebM ፋይል ይስቀሉ።",
+      "INVALID_RESULT": "የቪዲዮ ትንተናው አልተጠናቀቀም። እባክዎ እንደገና ይሞክሩ።",
+      "NETWORK": "ግንኙነቱ ተቋርጧል። እንደገና ከመሞከርዎ በፊት ውጤቱን በ«የቪዲዮ ማጠቃለያዎች» ውስጥ ይመልከቱ።",
+      "TIMEOUT": "ቪዲዮውን መተንተን በጣም ረጅም ጊዜ ወስዷል። አጠር ያለ ክሊፕ ይሞክሩ።",
+      "JOB_PENDING": "ቪዲዮዎ አሁንም በሂደት ላይ ነው። ሂደቱን ለማየት «የቪዲዮ ማጠቃለያዎች»ን ይክፈቱ።",
+      "DAILY_LIMIT": "የዛሬውን የቪዲዮ እና የሰነድ ትንተና ገደብ ደርሰዋል። እባክዎ ነገ እንደገና ይሞክሩ።",
+      "ALREADY_PROCESSING": "አንድ ትንተና አስቀድሞ በሂደት ላይ ነው። ሂደቱን ለማየት «የቪዲዮ ማጠቃለያዎች»ን ይክፈቱ።",
+      "SERVICE_BUSY": "የቪዲዮ ትንተና ተጨናንቋል። እባክዎ ትንሽ ቆይተው እንደገና ይሞክሩ።",
+      "PROVIDER_UNAVAILABLE": "የቪዲዮ ትንተና ለጊዜው አይገኝም። እባክዎ ትንሽ ቆይተው እንደገና ይሞክሩ።",
+      "NOT_CONFIGURED": "የቪዲዮ ትንተና ለጊዜው አይገኝም። እባክዎ ቆይተው እንደገና ይሞክሩ።",
+      "VIDEO_NOT_CONFIGURED": "የቪዲዮ ትንተና ለጊዜው አይገኝም። እባክዎ ቆይተው እንደገና ይሞክሩ።",
+      "SAVE_FAILED": "ማጠቃለያዎ ዝግጁ ነው፣ ነገር ግን ወደ ቤተ መፃህፍትዎ ማስቀመጥ አልተቻለም። ይህን ውይይት ያቆዩ ወይም ማጠቃለያውን ይቅዱ።"
+    },
+    "markdown": {
+      "summary": "ማጠቃለያ",
+      "keyTakeaways": "ቁልፍ ነጥቦች",
+      "details": "ዝርዝሮች",
+      "actionItems": "የሚወሰዱ እርምጃዎች",
+      "sourceExcerpts": "ከምንጩ የተወሰዱ ቅንጭቦች",
+      "coverageNotes": "የሽፋን ማስታወሻዎች"
     }
   }
 }

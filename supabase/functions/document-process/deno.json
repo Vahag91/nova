@@ -1,0 +1,9 @@
+{
+  "compilerOptions": { "checkJs": false, "strict": false },
+  "imports": {
+    "unpdf": "npm:unpdf@1.8.1",
+    "pdf-lib": "npm:pdf-lib@1.17.1",
+    "fflate": "npm:fflate@0.8.2",
+    "saxes": "npm:saxes@6.0.0"
+  }
+}

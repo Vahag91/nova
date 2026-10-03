@@ -38,7 +38,7 @@
     "fast_everyday": "Yi sauri don ayyukan yau da kullun",
     "fast_reasoning": "Samfurin sauri tare da kyakkyawan dalili",
     "great_reasoning": "Samfurin tunani na ci gaba",
-    "coding_reasoning": "Advanced coding da tunani",
+    "coding_reasoning": "Rubutun lamba da tunani na ci gaba",
     "better_coding": "Mafi kyau don yin rikodin da tunani",
     "best_overall": "Mafi kyawun ƙirar AI mai kewaye",
     "best_google": "Mafi kyawun samfurin Google",
@@ -63,14 +63,25 @@
     "chatty_personal": "Ƙarin abokantaka da na sirri",
     "pro_users": "Mafi kyau ga masu amfani da wutar lantarki",
     "research_helper": "Yayi kyau don bincike da bayanin kula",
-    "reasoning_strong": "Samfurin tunani na ci gaba"
+    "reasoning_strong": "Samfurin tunani na ci gaba",
+    "gpt56_sol": "Samfurin GPT-5.6 mafi ƙarfi",
+    "gpt56_terra": "Samfurin GPT-5.6 mai daidaito",
+    "gpt56_luna": "Samfuri mai sauri don ayyukan yau da kullum",
+    "claude_fable": "AI na Anthropic mai sauri da ƙirƙira",
+    "claude_sonnet": "Samfurin Anthropic na zamani",
+    "gemini_flash": "Samfurin AI na Google mai sauri",
+    "gemini_pro": "Samfurin Pro na Google na zamani",
+    "grok_latest": "Sabon samfurin xAI",
+    "deepseek_pro": "Samfurin DeepSeek na zamani",
+    "deepseek_flash": "Samfurin DeepSeek mai sauri"
   },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "Dan Adam",
     "google": "Google",
     "xai": "xAI",
-    "other": "Sauran"
+    "other": "Sauran",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Sabuwar Taɗi",
@@ -156,7 +167,7 @@
     "errorMessage": "An kasa fara wannan mataimakin.",
     "noAssistants": "Babu mataimaka da aka samu a wannan rukunin.",
     "selectAssistantHint": "Buɗe mataimakin picker",
-    "subtitle": "ƙwararrun ƙwararrun AI waɗanda ke shirye don coding, rubutu, bincike, tsarawa, da ƙari.",
+    "subtitle": "Zaɓaɓɓun ƙwararrun AI waɗanda ke shirye don rubuta lamba, rubutu, bincike, tsarawa, da ƙari.",
     "searchPlaceholder": "Nemo mataimakan…",
     "useAssistant": "Yi amfani da Mataimakin",
     "selectAssistant": "Zaɓi mataimaki",
@@ -169,13 +180,13 @@
       "life": "Rayuwa",
       "health": "Lafiya",
       "schoolWork": "Makaranta & Aiki",
-      "coding": "Coding",
+      "coding": "Rubutun lamba",
       "creative": "Ƙirƙira",
       "general": "Gabaɗaya"
     },
     "presets": {
       "default": {
-        "name": "Mataimakin Mataimakin",
+        "name": "Mataimaki na asali",
         "description": "Daidaitaccen taimako don abubuwan yau da kullun."
       },
       "quick": {
@@ -227,11 +238,11 @@
         "description": "Ra'ayoyi ta kasafin kuɗi & bukatu."
       },
       "party": {
-        "name": "Mai Shirye-shiryen Taron (Lite)",
+        "name": "Mai Shirye-shiryen Taron (sauƙaƙe)",
         "description": "Shirya ƙaramin biki da sauri."
       },
       "social": {
-        "name": "Social Post Maker",
+        "name": "Mai rubuta saƙonnin sada zumunta",
         "description": "Daftarin rubutu tare da zaɓuɓɓuka."
       },
       "interview": {
@@ -276,7 +287,7 @@
     "deleteChatMessage": "\"{{title}}\" za a goge.",
     "rename": "Sake suna",
     "unpin": "Cire",
-    "pin": "Pin",
+    "pin": "Liƙa",
     "untitled": "Mara suna"
   },
   "settings": {
@@ -297,12 +308,12 @@
     "privacyPolicy": "Manufar Keɓantawa",
     "hero": {
       "label": "tayi na musamman",
-      "title": "Unlimited Access\n& Siffofin Pro",
+      "title": "Samun dama mara iyaka\n& Siffofin Pro",
       "upgrade": "Haɓakawa",
       "manage": "Sarrafa tsari"
     },
     "sections": {
-      "premium": "Premium Plan || rubutun mu'amalar mai amfani da wayar hannu",
+      "premium": "Tsarin Premium",
       "data": "Bayanan mai amfani",
       "support": "Taimako & Shari'a"
     },
@@ -312,7 +323,7 @@
         "subtitle": "Buɗe kayan aikin ƙirƙira mara iyaka"
       },
       "premiumActive": {
-        "title": "Premium Active || rubutun mu'amalar mai amfani da wayar hannu",
+        "title": "Premium yana aiki",
         "subtitle": "Godiya da tallafawa Cloud AI"
       },
       "restore": {
@@ -373,13 +384,13 @@
     "starterPrompts": {
       "title": "Mai Bugawa",
       "items": [
-        "studio headshot",
+        "hoton fuska a studio",
         "falo na zamani",
         "bakin teku na wurare masu zafi a faɗuwar rana"
       ]
     },
     "promptPlaceholder": "Buga abin da kuke son gani…",
-    "promptHint": "Misali: 'Golden retriever in studio lighting'",
+    "promptHint": "Misali: 'Kare mai gashin zinariya a hasken situdiyo'",
     "clearText": "Share rubutu",
     "generate": "Ƙirƙira",
     "generating": "Ƙirƙirar…"
@@ -416,10 +427,10 @@
         "name": "Anime"
       },
       "cartoon": {
-        "name": "Cartoon || rubutun mu'amalar mai amfani da wayar hannu"
+        "name": "Zanen ban dariya"
       },
       "photoreal": {
-        "name": "Photoreal || rubutun mu'amalar mai amfani da wayar hannu"
+        "name": "Kamar hoto na gaske"
       },
       "sketch": {
         "name": "Zane"
@@ -434,16 +445,16 @@
         "name": "Misalin 3D"
       },
       "dark_fantasy": {
-        "name": "Dark Fantasy || rubutun mu'amalar mai amfani da wayar hannu"
+        "name": "Tatsuniya mai duhu"
       },
       "vintage_film": {
-        "name": "Vintage Film || rubutun mu'amalar mai amfani da wayar hannu"
+        "name": "Tsohon fim"
       },
       "pastel": {
-        "name": "Pastel Aesthetic || rubutun mu'amalar mai amfani da wayar hannu"
+        "name": "Launuka masu laushi"
       },
       "neon_glow": {
-        "name": "Neon Glow || rubutun mu'amalar mai amfani da wayar hannu"
+        "name": "Hasken neon"
       },
       "epic_landscape": {
         "name": "Almara Landscape"
@@ -456,7 +467,7 @@
     },
     "models": {
       "fluxKontent": "Flux Kontent",
-      "custom": "Custom || rubutun mu'amalar mai amfani da wayar hannu"
+      "custom": "Na musamman"
     },
     "notEnoughCoinsTitle": "Bai isa ba tsabar kudi",
     "notEnoughCoinsMessage": "Ma'aunin ku na yanzu ya yi ƙasa sosai don wannan hoton.",
@@ -468,7 +479,7 @@
       "klingImageO1": "Gyaran hoto mai girma",
       "fluxKontent": "Flux Kontent an kunna don gyarawa",
       "runwareProvider": "Daidaitaccen inganci tare da ingantaccen yaduwa.",
-      "airProvider": "Banana Banana yana ƙara wasa, sautin haske.",
+      "airProvider": "Nano Banana yana ƙara salo mai nishaɗi da armashi.",
       "googleProvider": "Google yana kunna don cikakkun bayanai masu gogewa.",
       "klingaiProvider": "KlingAI an kunna don gyare-gyaren sarrafawa.",
       "anthropicProvider": "Claude bututun mai don yanayi mara kyau.",
@@ -580,7 +591,7 @@
       "cta": "Gyara tare da AI"
     },
     "gallery": {
-      "title": "Gallery || rubutun mu'amalar mai amfani da wayar hannu",
+      "title": "Gidan hotuna",
       "empty": "Babu hotuna tukuna",
       "selection": {
         "enter": "Zaɓi hotuna",
@@ -614,7 +625,7 @@
             "detail": "Sautin ladabi da ƙwarewa"
           },
           "translation": {
-            "title": "Shirye Shirye",
+            "title": "Fassara ta shirya",
             "detail": "Turanci → Sifen"
           }
         },
@@ -777,6 +788,18 @@
         "back": "Baya",
         "continue": "Ci gaba",
         "finish": "Bincika ƙima"
+      },
+      "trial": {
+        "priceLine": "Sannan {{price}} a kowace shekara. Soke kowane lokaci.",
+        "title": "Muna so ku gwada Cloud AI kyauta.",
+        "demoAsk": "Mayar da zanena ya zama fosta irin na cyberpunk",
+        "demoReply": "Salo huɗu, a shirye cikin daƙiƙoƙi.",
+        "noPayment": "Babu biyan kuɗi yanzu",
+        "cta": "Gwada kan $0.00"
+      },
+      "reminder": {
+        "title": "Za mu tunatar da ku kafin gwajin kyautarku ya ƙare",
+        "note": "Za ku sami sanarwa tun kafin a caje ku komai, don kada wani abu ya ba ku mamaki."
       }
     }
   },
@@ -803,8 +826,8 @@
       "unknownPrice": "USD -"
     },
     "premium": {
-      "title": "Go Premium || rubutun mu'amalar mai amfani da wayar hannu",
-      "subtitle": "Unlimited access & fasali",
+      "title": "Shiga Premium",
+      "subtitle": "Samun dama mara iyaka & fasali",
       "cta": "Haɓakawa"
     },
     "termsText": "Ta hanyar yin siyayya, kun yarda da mu",
@@ -828,7 +851,7 @@
     "assistantsMessage": "Mataimaka suna buƙatar Premium. Haɓakawa don samun damar samun ƙwararrun mataimakan AI don dacewa, coding, rubutu, da ƙari."
   },
   "paywall": {
-    "modelsHeadline": "GPT-5.5, Grok, P001⟭",
+    "modelsHeadline": "GPT-5.5, Grok, Gemini",
     "close": "Rufe bangon biyan kuɗi",
     "unavailableTitle": "Babu siyayya",
     "unavailableMessage": "Ba a daidaita lissafin Android tukuna.",
@@ -890,12 +913,12 @@
       "privacy": "Keɓantawa"
     },
     "premium": {
-      "headline": "All premium AI a cikin tsari ɗaya",
-      "subtitleLine1": "Taɗi, lamba, ƙirƙira, da tsari || wayar hannu app paywall UI",
+      "headline": "Duk AI na Premium a cikin tsari ɗaya",
+      "subtitleLine1": "Taɗi, rubuta lamba, ƙirƙira, da tsarawa",
       "subtitleLine2": "tare da ci-gaba model.",
       "enableTrial": "Kunna gwaji kyauta",
       "annual": "Shekara-shekara",
-      "saveBadge": "Ajiye 83% || wayar hannu app paywall UI",
+      "saveBadge": "Ajiye 83%",
       "year": "shekara",
       "week": "mako",
       "termsOfUse": "Sharuɗɗan Amfani",
@@ -949,7 +972,7 @@
     "showQuickActions": "Nuna ayyuka masu sauri",
     "startVoiceInput": "Fara shigar da murya",
     "sendMessage": "Aika sako",
-    "offline": "Offline",
+    "offline": "Ba a kan layi",
     "stop": "Tsaya",
     "streaming": "Yawo…",
     "closeRecorder": "Rufe rikodi",
@@ -991,7 +1014,7 @@
       "analyzingImages": "Ana nazarin hotuna…",
       "searching": "Neman…",
       "thinking": "Tunani…",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "Ana nazarin takardu…"
     },
     "webSearch": {
       "title": "Binciken yanar gizo",
@@ -1032,7 +1055,7 @@
     "markdown": {
       "copy": "Kwafi",
       "copied": "Kwafi",
-      "table": "TABLE",
+      "table": "TEBUR",
       "watchVideo": "Kalli Bidiyo",
       "wikipedia": "Wikipedia",
       "link": "mahada",
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Loda fayil",
+      "supportedTypes": "PDF, DOCX, TXT ko CSV",
+      "failed": "Lodawa ta kasa",
+      "retry": "Sake lodawa",
+      "retryShort": "Sake gwadawa",
+      "remove": "Cire fayil",
+      "pickerErrorTitle": "An kasa buɗe fayiloli",
+      "pickerErrorMessage": "Da fatan za a sake zaɓar takardar.",
+      "tooMany": "Za ku iya haɗa har takardu 3 a kowane saƙo.",
+      "tooLarge": "Kowace takarda dole ta zama 10 MB ko ƙasa da haka.",
+      "empty": "Takardar da aka zaɓa babu komai a cikinta.",
+      "unsupported": "Yi amfani da fayil na PDF, DOCX, TXT ko CSV.",
+      "invalidTitle": "Ba a goyon bayan fayil ɗin",
+      "pasteFailedTitle": "An kasa haɗa rubutun da aka liƙa",
+      "pasteFailedMessage": "Rubutunku yana nan a cikin akwatin saƙo.",
+      "waitUntilReady": "Da fatan za a jira har takardunku su gama lodawa.",
+      "encrypted": "Wannan PDF yana da kariyar kalmar sirri. Loda kwafin da ba a kulle ba.",
+      "unsupportedDocument": "Ba za a iya karanta wannan fayil ba ko kuma ba a goyon bayan abin da ke cikinsa. Yi amfani da fayil na PDF, DOCX, TXT ko CSV.",
+      "tooManyPages": "Raba wannan PDF zuwa fayiloli masu shafuka har 100.",
+      "noReadableText": "Ba a sami rubutun da za a iya karantawa ba. PDF da aka sikana yana buƙatar OCR; loda kwafin da ke da rubutu.",
+      "pastedTextName": "Rubutun da aka liƙa",
+      "badge": "DOC",
+      "untitled": "Takarda"
     }
   },
   "imageUpload": {
@@ -1177,7 +1207,7 @@
     "accessTitle": "Unlimited damar zuwa",
     "accessSubtitle": "GPT, Gemini & Grok 4",
     "features": {
-      "unlimitedGPT4": "Unlimited damar zuwa GPT-4",
+      "unlimitedGPT4": "Samun dama ga GPT-4 mara iyaka",
       "geminiPro": "Samun dama ga Gemini Pro",
       "grokInsights": "Yi amfani da Grok don sabbin fahimta",
       "priorityAccess": "Samun fifiko & amsoshi masu sauri"
@@ -1304,7 +1334,7 @@
       "secretBox": {
         "pill": "SIRRIN BOX",
         "rewardUnlocked": "LADA BUDE",
-        "shufflingRewards": "KYAUTA KYAUTA...",
+        "shufflingRewards": "ANA GAURAYA KYAUTUKA...",
         "imageCreditsAdded": "Hotunan da aka saka a asusunku",
         "continue": "Ci gaba",
         "revealing": "Yana bayyana...",
@@ -1322,6 +1352,10 @@
       "cta": "Karɓa",
       "claimed": "An karɓa! +{{amount}} tsabar kuɗi",
       "later": "Daga baya"
+    },
+    "button": {
+      "title": "Kyauta",
+      "subtitle": "Garaɓasa da fa'idodi na kullum"
     }
   },
   "app": {
@@ -1330,7 +1364,8 @@
     "launch": {
       "accessibilityLabel": "Fara Cloud AI",
       "title": "CLOUD AI",
-      "subtitle": "AI, shirye lokacin da kuke"
+      "subtitle": "AI, shirye lokacin da kuke",
+      "closePreview": "Rufe samfotin allon farawa"
     },
     "errors": {
       "modelsLoadTitle": "An kasa Load da Samfura",
@@ -1389,6 +1424,194 @@
       "body": "Muna aika tunatarwa sau ɗaya a rana don jerinka ya ci gaba kuma tsabar kuɗinka su ƙaru. Babu spam, kuma za ka iya kashe shi a kowane lokaci.",
       "enable": "Kunna tunatarwa",
       "skip": "Ba yanzu ba"
+    }
+  },
+  "workspace": {
+    "documents": "Takardu",
+    "videos": "Taƙaitattun bidiyo",
+    "summary": "Taƙaitawa",
+    "details": "Cikakkun bayanai",
+    "sources": "Tushen bayanai",
+    "youtube": "YouTube",
+    "upload": "Loda",
+    "transcript": "Rubutun magana",
+    "concise": "A taƙaice",
+    "detailed": "Cikakken hoto",
+    "errors": {
+      "NETWORK": "Duba haɗin intanet ɗinku kuma ku sake gwadawa. Tushen bayanan da kuka zaɓa suna nan har yanzu.",
+      "TIMEOUT": "Wannan tushe ya ɗauki lokaci mai tsawo. Gwada gajeren bidiyo ko ƙaramar takarda.",
+      "NOT_CONFIGURED": "Nazarin tushe bai samu ba tukuna. Da fatan za a sake gwadawa daga baya.",
+      "VIDEO_NOT_CONFIGURED": "Nazarin bidiyo kai tsaye bai samu ba tukuna. Har yanzu za ku iya taƙaita rubutun magana da aka liƙa.",
+      "DOCUMENT_EXPIRED": "Wani tushe ya ƙare. Sake zaɓar ainihin takardar.",
+      "SOURCE_UNAVAILABLE": "Ba a iya nazarin wannan tushe ba. Gwada wani fayil ko rubutun magana da aka liƙa.",
+      "TOO_MANY_PAGES": "Wannan PDF yana da shafuka da yawa. Raba shi zuwa fayiloli masu shafuka har 100 kowanne.",
+      "INVALID_VIDEO": "Zaɓi bidiyon MP4 ko WebM da ake iya karantawa, har 20 MB. Muna nazarin mintuna 10 na farko.",
+      "INVALID_DOCUMENTS": "Sake zaɓar takardunku kuma ku sake gwadawa.",
+      "CLIENT_ID_REQUIRED": "Sake kunna manhajar kuma ku sake gwadawa.",
+      "RATE_LIMITED": "Kun kai iyakar nazari na yau. Da fatan za a sake gwadawa gobe.",
+      "INVALID_RESULT": "Nazarin bai cika ba. Da fatan za a sake gwadawa.",
+      "FILE_TOO_LARGE": "Wannan fayil ya yi girma da yawa. Takardu suna karɓar har 10 MB; guntun bidiyo har 20 MB.",
+      "NO_READABLE_TEXT": "Ba a sami rubutun da za a iya karantawa ba. Yi amfani da PDF mai rubutu ko liƙa rubutun; PDF da aka sikana yana buƙatar OCR.",
+      "ANALYSIS_FAILED": "Ba a iya nazarin tushen ba. Da fatan za a sake gwadawa.",
+      "SOURCES_TOO_LARGE": "Waɗannan takardu sun yi girma da yawa don a yi nazarinsu tare. Taƙaita su daban-daban ko a ƙananan rukunoni.",
+      "ENCRYPTED_DOCUMENT": "Wannan PDF yana da kariyar kalmar sirri. Loda kwafin da ba a kulle ba.",
+      "UNSUPPORTED_DOCUMENT": "Ba za a iya karanta wannan fayil ba ko kuma ba a goyon bayan abin da ke cikinsa. Yi amfani da fayil na PDF, DOCX, TXT ko CSV.",
+      "SERVICE_BUSY": "Sabis ɗin nazari yana da cunkoso. Da fatan za a sake gwadawa nan ba da jimawa ba.",
+      "PROVIDER_UNAVAILABLE": "Sabis ɗin AI ba ya samuwa na ɗan lokaci. Da fatan za a sake gwadawa nan ba da jimawa ba.",
+      "DAILY_LIMIT": "Kun kai iyakar nazarin tushe na yau. Taƙaitawarku da aka ajiye suna nan har yanzu.",
+      "ALREADY_PROCESSING": "Akwai nazarin da ke gudana. Duba ci gabansa a ƙasa kafin ku fara wani.",
+      "JOB_PENDING": "Har yanzu ana sarrafa nazarinku. Yi amfani da Duba ci gaba a ƙasa don samo shi.",
+      "JOB_NOT_FOUND": "Ba a sami wannan nazari ba ko kuma lokacinsa ya ƙare. Idan yanzu kuka loda shi, ku jira ɗan lokaci sannan ku sake dubawa.",
+      "WORKSPACE_KEY_REQUIRED": "An kasa buɗe laburaren tushen bayananku. Sake kunna manhajar kuma ku sake gwadawa.",
+      "NO_SPEECH": "Ba a iya rubuta wata magana bayyananniya ba. Gwada bidiyo mai maganar da ake ji ko liƙa rubutun maganarsa.",
+      "VIDEO_TOO_LONG": "Zaɓi bidiyon da bai wuce mintuna 10 ba."
+    },
+    "invalidUrl": "Shigar da ingantacciyar hanyar haɗin bidiyon YouTube mai https://.",
+    "invalidTranscript": "Liƙa rubutun magana mai haruffa tsakanin 40 da 120,000.",
+    "chooseFirst": "Da farko zaɓi tushe.",
+    "uploading": "Ana loda {{name}}",
+    "extracting": "Ana karanta takardarku…",
+    "analyzing": "Ana neman muhimman abubuwa…",
+    "chatError": "An kasa buɗe wannan tushe a cikin taɗi. Da fatan za a sake gwadawa.",
+    "shareError": "An kasa raba wannan taƙaitawa. Da fatan za a sake gwadawa.",
+    "removeTitle": "A cire taƙaitawar da aka ajiye?",
+    "removeBody": "Wannan zai cire taƙaitawar daga wannan na'urar. Taɗinku za su kasance. Rubutun tushen da aka loda yana bin lokacin ajiyarsa na yanzu.",
+    "remove": "Cire",
+    "removeError": "An kasa cire wannan taƙaitawa. Da fatan za a sake gwadawa.",
+    "summarizeVideo": "Samu taƙaitawa",
+    "chooseDocuments": "Ƙara takardunku",
+    "videoSubtitle": "Mayar da abubuwan da aka faɗa su zama muhimman ra'ayoyi, babuka da amsoshi.",
+    "documentSubtitle": "Nemo muhimman abubuwa a cikin fayilolinku. Yi tambayoyi a cikin taɗi.",
+    "newAnalysis": "Sabuwar taƙaitawa",
+    "savedBrief": "TAƘAITAWARKU",
+    "documentCoverage": "Bisa ga rubutun da aka ciro. Ƙila ba a haɗa hotuna da shafukan da aka sikana ba.",
+    "transcriptCoverage": "Bisa ga rubutun maganar da aka bayar. Ba a yi nazarin hotunan bidiyon ba.",
+    "videoCoverage": "Nazarin AI na bidiyon. Babukan na kimanin ne; tabbatar da muhimman bayanai da ainihin bidiyon.",
+    "extractionLimit": "Wata takarda ta kai iyakar ciro rubutu. Ƙila wannan taƙaitawa ba ta ƙunshi dukkan ainihin fayil ɗin ba.",
+    "saveError": "Ba a iya ajiye wannan taƙaitawa ba. Bar wannan allon a buɗe ku sake gwadawa, ko raba kwafi.",
+    "retrySave": "Sake gwada ajiyewa",
+    "chapters": "Babuka",
+    "actions": "Matakan da za a ɗauka",
+    "noSections": "Ba a gano ƙarin sassa a cikin wannan tushe ba.",
+    "linkError": "An kasa buɗe bidiyon.",
+    "videoEvidence": "Lokutan bidiyo na kimanin ne. Taƙaitawar rubutun magana tana bayyana rubutun da aka bayar ne kawai, ba ta nazarin hotuna.",
+    "documentEvidence": "An daidaita guntattakin da ke ƙasa da rubutun da aka ciro. Ana nuna lambobin shafukan asali ne kawai idan akwai su.",
+    "noEvidence": "Babu tabbatattun guntattakin rubutu don wannan taƙaitawa.",
+    "coverage": "Abin da aka rufe da iyakoki",
+    "sourceExpires": "Tushen yana samuwa har zuwa",
+    "localOnly": "Ana ajiye taƙaitawa a wannan na'urar. Raba kwafi don samun madadin.",
+    "continueChat": "Yi tambaya akan wannan",
+    "chatContext": "Taɗi yana farawa da wannan taƙaitawar da aka ajiye da duk wani bayanin takarda da ke akwai. Taƙaitawar bidiyo ba cikakken rubutun magana ba ce.",
+    "share": "Raba taƙaitawa",
+    "videoLink": "Hanyar haɗin bidiyon YouTube",
+    "publicOnly": "Bidiyoyin jama'a kawai. Ƙila bidiyoyi na sirri, waɗanda ba a jera ba, kai tsaye da waɗanda aka taƙaita ba za su samu ba.",
+    "transcriptHint": "Liƙa rubutun magana ko rubutun fassara. Haɗa lokuta don samun babuka.",
+    "textOnly": "Rubutu kawai; ba a nazarin hotuna.",
+    "clip": "Ƙara bidiyo",
+    "videoLimits": "MP4, MOV, WebM · har 20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · fayiloli 3 · 10 MB kowanne",
+    "openingFiles": "Ana buɗe fayiloli…",
+    "chooseFiles": "Ƙara fayiloli",
+    "removeFile": "Cire {{name}}",
+    "depth": "Mayar da shi naku",
+    "processingNotice": "Ana loda fayil ɗinku don AI ya sarrafa shi.",
+    "cancel": "Soke",
+    "analyzeDocuments": "Samu taƙaitawa",
+    "library": "Taskarku",
+    "search": "Bincika taƙaitawa",
+    "loadError": "Ba a iya loda taƙaitawar da aka ajiye ba. Ba a maye gurbin bayananku na yanzu ba.",
+    "retry": "Sake gwadawa",
+    "emptyLibrary": "Taƙaitawarku za su bayyana a nan, a shirye don sake dubawa ko tattaunawa a cikin taɗi.",
+    "removeBrief": "Cire {{name}}",
+    "audioCoverage": "Taƙaitawar magana · Ba a nazarin hotuna. Tabbatar da sunaye da lambobi da rikodin.",
+    "uploadTitle": "Zaɓi fayiloli don farawa",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · minti 10\nAbin da aka faɗa kawai",
+    "noSearchResults": "Ba a sami taƙaitawa ba. Gwada wani bincike daban.",
+    "clearSearch": "Share bincike",
+    "keyPoints": "Muhimman abubuwa",
+    "chatContextShort": "Kuna son sanin wani abu? Yi ƙarin tambaya.",
+    "openingChat": "Ana buɗe taɗi…",
+    "uploadVideo": "Loda bidiyo",
+    "pasteTranscript": "Liƙa rubutun magana",
+    "heroVideoLabel": "NAZARIN BIDIYO",
+    "heroDocumentLabel": "NAZARIN TAKARDU",
+    "heroVideoTitle": "Rage kallo.\nƘara sani.",
+    "heroDocumentTitle": "Fayilolinku.\nAmsoshi bayyanannu.",
+    "heroVideoDescription": "Mayar da abin da aka faɗa ya zama taƙaitawa mai cancantar ajiyewa.",
+    "heroDocumentDescription": "Gano muhimman abubuwa. Haɗa ra'ayoyi. Tambayi komai.",
+    "heroIdeas": "Muhimman ra'ayoyi",
+    "heroFollowUps": "Tambayi AI",
+    "heroSummarize": "Taƙaita",
+    "heroCompare": "Kwatanta",
+    "summaryReady": "Abin da kuka samu",
+    "savedOnDevice": "An ajiye a wannan na'urar",
+    "notSavedYet": "A shirye don ajiyewa",
+    "atAGlance": "Babban hoto",
+    "addSource": "Ƙara tushenku",
+    "quickDescription": "Muhimman abubuwa kawai",
+    "detailedDescription": "Wuri don cikakkun bayanai",
+    "chooseVideo": "Ƙara bidiyo",
+    "studioLabel": "Ɗan ƙarin haske.",
+    "studioDocumentTitle": "Manyan ra'ayoyi.\nƘaramin karatu.",
+    "studioVideoTitle": "Rage kallo.\nƘara fahimta.",
+    "studioDocumentDescription": "Daga shafuka masu ɗimbin yawa zuwa sabuwar fahimtarku ta gaba.",
+    "studioVideoDescription": "Riƙe sassa masu kyau. Mayar da kalmomin da aka faɗa su zama abin da za ku iya komawa gare shi.",
+    "studioVideoDescriptionV3": "Ga dukan labarin. Mayar da fage da kalmomin da aka faɗa su zama ra'ayoyin da za ku iya komawa gare su.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Mintuna 10 na farko · Magana da hotuna",
+    "videoCoverageV3": "Magana da fagen gani · Mintuna 10 na farko a mafi yawa. Babuka na kimanin ne; ƙila a rasa abubuwan da suka faru da sauri.",
+    "videoChatMenu": "Fahimci fage, magana da muhimman lokuta",
+    "analyzingVideo": "Ana kallon bidiyonku…",
+    "uploadingVideo": "Ana loda bidiyo… {{percent}}%",
+    "videoCancelled": "An dakatar da nazarin bidiyo.",
+    "videoSourceNeeded": "Liƙa hanyar haɗin YouTube na jama'a, ko matsa + → Loda bidiyo. Sannan ku aika tambayarku.",
+    "localOnlyV2": "Ana ajiye taƙaitawa a wannan na'urar. Ana kuma adana sakamakon nazarin a sabar nazari har kwanaki 7 don a iya samo shi, sannan a goge shi. Raba kwafi don samun madadin.",
+    "leavePrivateTitle": "Bar hira ta sirri?",
+    "leavePrivateBody": "Yin tambaya game da wannan taƙaitawa zai kawo ƙarshen hirarku ta sirri kuma ya ajiye sabuwar tattaunawar a tarihinku.",
+    "leavePrivateConfirm": "Ci gaba",
+    "documentPages": "An sami rubutu a shafuka {{extracted}} cikin {{total}}.",
+    "documentPartialText": "Wasu shafuka ba su da rubutun da za a iya ciro. Ba a karanta hotuna da shafukan da aka sikana.",
+    "documentTruncated": "Farkon wannan takarda kawai aka ciro. Ƙila taƙaitawar ta rasa abubuwan da ke gaba.",
+    "sourceUnavailable": "Wannan nau'in tushe ba ya samuwa na ɗan lokaci. Gwada wani zaɓi da ke akwai a ƙasa.",
+    "accepted": "Ana nazarin tushenku. Za ku iya barin wannan allon ku duba ci gaba daga baya.",
+    "checkingProgress": "Ana duba nazarinku da aka ajiye…",
+    "pendingError": "An kasa loda nazarin da ke jira. Sake kunna manhajar kafin ku fara wani.",
+    "pendingAnalysis": "NAZARI MAI JIRA",
+    "resumeHint": "Da zarar an karɓa, nazari yana ci gaba ko da kun bar allon. Samo sakamakon a nan ba tare da sake farawa ba.",
+    "checkProgress": "Duba ci gaba",
+    "cancelAnalysis": "Soke nazari",
+    "demoNotice": "Nunin gida · abun ciki na misali · ba a loda tushe ba",
+    "publicVideoCoverage": "Bidiyoyin YouTube na jama'a · Mintuna 10 na farko. Ƙila bidiyoyi na sirri, kai tsaye da waɗanda aka taƙaita ba za su samu ba.",
+    "sourceUnavailableLibrary": "Wannan nau'in tushe ba ya samuwa na ɗan lokaci. Har yanzu za ku iya buɗe taƙaitawarku da aka ajiye.",
+    "stopWaiting": "Daina jira",
+    "previewSample": "Misalin samfoti · nunin gida",
+    "pickVideoError": "Zaɓi guntun bidiyo ɗaya na MP4 ko WebM, har 20 MB da mintuna 10.",
+    "pickDocumentsError": "Zaɓi har takardu uku na PDF, DOCX, TXT ko CSV, har 10 MB kowacce.",
+    "videoErrors": {
+      "ONE_VIDEO": "Zaɓi bidiyo ɗaya ko liƙa hanyar haɗin YouTube ɗaya a lokaci guda.",
+      "VIDEO_MIXED_SOURCES": "Aika bidiyon daban, ba tare da hotuna da takardu ba.",
+      "VIDEO_QUESTION_TOO_LONG": "Kada tambayarku game da bidiyo ta wuce haruffa 4,000.",
+      "INVALID_VIDEO": "Zaɓi bidiyon MP4 ko WebM, har 20 MB.",
+      "FILE_TOO_LARGE": "Zaɓi bidiyo har 20 MB.",
+      "SOURCE_UNAVAILABLE": "Ba mu iya samun damar wannan bidiyo ba. Gwada bidiyon YouTube na jama'a ko loda fayil na MP4 ko WebM.",
+      "INVALID_RESULT": "Nazarin bidiyon bai cika ba. Da fatan za a sake gwadawa.",
+      "NETWORK": "Haɗin ya katse. Duba Taƙaitattun bidiyo don sakamakon kafin ku sake gwadawa.",
+      "TIMEOUT": "Nazarin bidiyon ya ɗauki lokaci mai tsawo. Gwada guntun bidiyo mafi gajarta.",
+      "JOB_PENDING": "Har yanzu ana sarrafa bidiyonku. Buɗe Taƙaitattun bidiyo don duba ci gabansa.",
+      "DAILY_LIMIT": "Kun kai iyakar nazarin bidiyo da takardu na yau. Da fatan za a sake gwadawa gobe.",
+      "ALREADY_PROCESSING": "Akwai nazarin da ke gudana. Buɗe Taƙaitattun bidiyo don duba ci gabansa.",
+      "SERVICE_BUSY": "Nazarin bidiyo yana da cunkoso. Da fatan za a sake gwadawa nan ba da jimawa ba.",
+      "PROVIDER_UNAVAILABLE": "Nazarin bidiyo ba ya samuwa na ɗan lokaci. Da fatan za a sake gwadawa nan ba da jimawa ba.",
+      "NOT_CONFIGURED": "Nazarin bidiyo ba ya samuwa na ɗan lokaci. Da fatan za a sake gwadawa daga baya.",
+      "VIDEO_NOT_CONFIGURED": "Nazarin bidiyo ba ya samuwa na ɗan lokaci. Da fatan za a sake gwadawa daga baya.",
+      "SAVE_FAILED": "Taƙaitawarku ta shirya, amma ba a iya ajiye ta a laburarenku ba. Riƙe wannan taɗi ko kwafi taƙaitawar."
+    },
+    "markdown": {
+      "summary": "Taƙaitawa",
+      "keyTakeaways": "Muhimman abubuwa",
+      "details": "Cikakkun bayanai",
+      "actionItems": "Matakan da za a ɗauka",
+      "sourceExcerpts": "Guntattakin tushe",
+      "coverageNotes": "Bayanan abin da aka rufe"
     }
   }
 }

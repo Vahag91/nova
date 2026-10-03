@@ -186,6 +186,39 @@ function buildRecencyContext(thread, maxChars = 700) {
 
 // Build payload: global rules + persona/default + trimmed summary (+ optional tiny recency) + new message
 export function buildPayload({ thread, newMsg, keepRecent = 40, tokenCap = 6000 }) {
+  // Video analyses sent in ordinary chat need the same durable source context
+  // as workspace conversations, even after their original turns are trimmed.
+  const videoMessage = [...(thread?.messages || [])].reverse().find(message => message.role === 'assistant' && message.meta?.videoContext);
+  if (videoMessage) {
+    thread = { ...thread, meta: { ...thread.meta, workspaceContext: videoMessage.meta.videoContext, workspaceDocuments: videoMessage.meta.videoDocuments || [] } };
+  }
+  // Keep the source brief available after ordinary recency trimming. It is user
+  // reference material, never a system instruction, and cannot displace the question.
+  if (thread?.meta?.workspaceContext) {
+    // Expired source IDs in earlier turns also reach the document hydrator.
+    // Only workspace threads are affected; preserve ordinary chat behavior.
+    const available = doc => !doc.expiresAt || Date.parse(doc.expiresAt) > Date.now();
+    thread = { ...thread, messages: (thread.messages || []).map(message => ({
+      ...message, attachments: (message.attachments || []).filter(available),
+    })) };
+    const reference = String(thread.meta.workspaceContext);
+    const bounded = reference.slice(0, 8000);
+    const context = `${bounded}${reference.length > bounded.length ? '\n[Saved brief shortened for chat; open the workspace for the complete brief.]' : ''}`;
+    const attachments = (newMsg.attachments || []).filter(available);
+    for (const document of thread.meta.workspaceDocuments || []) {
+      if (attachments.length >= 3) break;
+      if (!available(document)) continue;
+      if (!attachments.some(a => a.id === document.id)) attachments.push(document);
+    }
+    newMsg = {
+      ...newMsg,
+      attachments,
+      content: [
+        { type: 'text', text: `Reference for this conversation:\n${context}\n\nCurrent request follows:` },
+        ...(Array.isArray(newMsg.content) ? newMsg.content : [{ type: 'text', text: newMsg.content || '' }]),
+      ],
+    };
+  }
   const DEFAULT_SYSTEM = "You are a concise, helpful assistant. Prefer facts over speculation. If unsure, say so briefly. Use provided context faithfully.";
 
   const assistantName = (thread?.title || '').trim();

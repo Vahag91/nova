@@ -20,7 +20,7 @@
   },
   "models": {
     "gpt-4o": "Imodeli ye-AI enamandla kakhulu",
-    "gpt-4o-mini": "Fast for imisebenzi yansuku zonke",
+    "gpt-4o-mini": "Isheshayo yemisebenzi yansuku zonke",
     "gpt-5": "I-AI enamandla kakhulu yenhloso yonke",
     "gpt-5-chat-latest": "Ilungiselelwe ingxoxo nengxoxo",
     "gpt-5-mini": "Kuyashesha futhi kuthembekile GPT-5",
@@ -35,7 +35,7 @@
   },
   "modelDescriptions": {
     "most_powerful": "Imodeli ye-AI enamandla kakhulu",
-    "fast_everyday": "Fast for imisebenzi yansuku zonke",
+    "fast_everyday": "Isheshayo yemisebenzi yansuku zonke",
     "fast_reasoning": "Imodeli esheshayo enengqondo enhle",
     "great_reasoning": "Imodeli yokucabanga ethuthukisiwe",
     "coding_reasoning": "Ukubhala amakhodi okuthuthukile nokucabanga",
@@ -63,14 +63,25 @@
     "chatty_personal": "Ubungane obuningi futhi siqu",
     "pro_users": "Kuhle kakhulu kubasebenzisi bamandla",
     "research_helper": "Ilungele ucwaningo namanothi",
-    "reasoning_strong": "Imodeli yokucabanga ethuthukisiwe"
+    "reasoning_strong": "Imodeli yokucabanga ethuthukisiwe",
+    "gpt56_sol": "Imodeli ye-GPT-5.6 enamandla kakhulu",
+    "gpt56_terra": "Imodeli ye-GPT-5.6 elinganiselayo",
+    "gpt56_luna": "Imodeli esheshayo yemisebenzi yansuku zonke",
+    "claude_fable": "I-AI ye-Anthropic esheshayo nenobuciko",
+    "claude_sonnet": "Imodeli ye-Anthropic ethuthukisiwe",
+    "gemini_flash": "Imodeli ye-AI ye-Google esheshayo",
+    "gemini_pro": "Imodeli ye-Pro ethuthukisiwe ye-Google",
+    "grok_latest": "Imodeli entsha kakhulu ye-xAI",
+    "deepseek_pro": "Imodeli ye-DeepSeek ethuthukisiwe",
+    "deepseek_flash": "Imodeli ye-DeepSeek esheshayo"
   },
   "providers": {
     "openai": "OpenAI",
     "anthropic": "I-Anthropic",
     "google": "Google",
     "xai": "xAI",
-    "other": "Okunye"
+    "other": "Okunye",
+    "deepseek": "DeepSeek"
   },
   "navigation": {
     "chat": "Ingxoxo Entsha",
@@ -211,7 +222,7 @@
         "description": "Humusha + fundisa imishwana."
       },
       "travel": {
-        "name": "Travel Buddy || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "name": "Umngane Wohambo",
         "description": "Izinhlelo ezilula nohlu lokupakisha."
       },
       "tech": {
@@ -227,11 +238,11 @@
         "description": "Imibono ngebhajethi nezithakazelo."
       },
       "party": {
-        "name": "Umhleli Womcimbi (Lite)",
+        "name": "Umhleli Womcimbi (elula)",
         "description": "Hlela iphathi encane ngokushesha."
       },
       "social": {
-        "name": "I-Social Post Maker",
+        "name": "Umbhali Wokuthunyelwe Kwezokuxhumana",
         "description": "Okuthunyelwe okusalungiswa ngezinketho."
       },
       "interview": {
@@ -239,11 +250,11 @@
         "description": "Prakthiza izimpendulo (STAR)."
       },
       "homefix": {
-        "name": "I-Home Fix-It Guide",
+        "name": "Umhlahlandlela Wokulungisa Ekhaya",
         "description": "Ukuxazulula inkinga okulula kwe-DIY."
       },
       "pet": {
-        "name": "Umngane Wokunakekela Izilwane Ezifuywayo || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "name": "Umngane Wokunakekela Izilwane Ezifuywayo",
         "description": "Ukondla, ukuhamba, ukuqeqeshwa okuyisisekelo."
       },
       "mindful": {
@@ -373,7 +384,7 @@
     "starterPrompts": {
       "title": "I-Starter Prompts",
       "items": [
-        "isithombe se-studio || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "isithombe sobuso se-studio",
         "igumbi lokuphumula lesimanje",
         "ibhishi elishisayo ekushoneni kwelanga"
       ]
@@ -575,7 +586,7 @@
       "cta": "Chaza futhi Ukhiqize"
     },
     "editCard": {
-      "title": "I-AI Photo Editor",
+      "title": "Isihleli Sezithombe se-AI",
       "subtitle": "Guqula futhi uthuthukise nge-AI",
       "cta": "Hlela nge-AI"
     },
@@ -693,14 +704,14 @@
           "text": "Ongakupheka, ngalokho onakho."
         },
         "travel": {
-          "title": "Travel Buddy || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+          "title": "Umngane Wohambo",
           "text": "Izinhlelo ezilula nohlu lokupakisha."
         }
       }
     },
     "splash": {
       "title": "CLOUD AI",
-      "tagline": "ENTERPRISE-grade AI SOLUTIONS",
+      "tagline": "IZIXAZULULO ZE-AI EZISEZINGENI LEBHIZINISI",
       "description": "Nika ibhizinisi lakho amandla ngobuchwepheshe be-intelligence bokwenziwa obusezingeni eliphezulu obudizayinelwe ochwepheshe bebhizinisi namaqembu.",
       "stats": "Ithenjwa ngabasebenzisi abangu-500k+",
       "rating": "4.9 / 5",
@@ -777,6 +788,18 @@
         "back": "Emuva",
         "continue": "Qhubeka",
         "finish": "Hlola i-premium"
+      },
+      "trial": {
+        "priceLine": "Bese kuba ngu-{{price}} ngonyaka. Khansela noma nini.",
+        "title": "Sifuna uzame i-Cloud AI mahhala.",
+        "demoAsk": "Shintsha umdwebo wami ube yiphosta ye-cyberpunk",
+        "demoReply": "Izitayela ezine, zilungile ngemizuzwana.",
+        "noPayment": "Akukho nkokhelo manje",
+        "cta": "Zama nge-$0.00"
+      },
+      "reminder": {
+        "title": "Sizokukhumbuza ngaphambi kokuthi isivivinyo sakho samahhala siphele",
+        "note": "Uzothola isexwayiso kusenesikhathi ngaphambi kokuthi ukhokhiswe noma yini, ukuze kungabikho okukumangazayo."
       }
     }
   },
@@ -991,7 +1014,7 @@
       "analyzingImages": "Ihlaziya izithombe...",
       "searching": "Iyasesha...",
       "thinking": "Iyacabanga...",
-      "analyzingDocuments": "Analyzing documents…"
+      "analyzingDocuments": "Ihlaziya amadokhumenti…"
     },
     "webSearch": {
       "title": "Usesho lwewebhu",
@@ -1117,22 +1140,29 @@
       }
     },
     "files": {
-      "upload": "Upload file",
-      "supportedTypes": "PDF, DOCX, TXT or CSV",
-      "failed": "Upload failed",
-      "retry": "Retry upload",
-      "retryShort": "Retry",
-      "remove": "Remove file",
-      "pickerErrorTitle": "Unable to open files",
-      "pickerErrorMessage": "Please try selecting the document again.",
-      "tooMany": "You can attach up to 3 documents per message.",
-      "tooLarge": "Each document must be 10 MB or smaller.",
-      "empty": "The selected document is empty.",
-      "unsupported": "Use a PDF, DOCX, TXT or CSV file.",
-      "invalidTitle": "File not supported",
-      "pasteFailedTitle": "Could not attach pasted text",
-      "pasteFailedMessage": "Your text was kept in the message box.",
-      "waitUntilReady": "Please wait for your documents to finish uploading."
+      "upload": "Layisha ifayela",
+      "supportedTypes": "PDF, DOCX, TXT noma CSV",
+      "failed": "Ukulayisha kuhlulekile",
+      "retry": "Zama ukulayisha futhi",
+      "retryShort": "Zama futhi",
+      "remove": "Susa ifayela",
+      "pickerErrorTitle": "Ayikwazi ukuvula amafayela",
+      "pickerErrorMessage": "Sicela uzame ukukhetha idokhumenti futhi.",
+      "tooMany": "Ungaxhuma amadokhumenti afika ku-3 emlayezweni ngamunye.",
+      "tooLarge": "Idokhumenti ngayinye kufanele ibe ngu-10 MB noma ngaphansi.",
+      "empty": "Idokhumenti ekhethiwe ayinalutho.",
+      "unsupported": "Sebenzisa ifayela le-PDF, DOCX, TXT noma CSV.",
+      "invalidTitle": "Ifayela alisekelwe",
+      "pasteFailedTitle": "Ayikwazanga ukuxhuma umbhalo onamathiselwe",
+      "pasteFailedMessage": "Umbhalo wakho ugcinwe ebhokisini lomlayezo.",
+      "waitUntilReady": "Sicela ulinde amadokhumenti akho aqede ukulayishwa.",
+      "encrypted": "Le PDF ivikelwe ngephasiwedi. Layisha ikhophi engakhiyiwe.",
+      "unsupportedDocument": "Leli fayela alifundeki noma okuqukethwe kwalo akusekelwe. Sebenzisa ifayela le-PDF, DOCX, TXT noma CSV.",
+      "tooManyPages": "Hlukanisa le PDF ibe amafayela anamakhasi afika ku-100.",
+      "noReadableText": "Awukho umbhalo ofundekayo otholakele. Ama-PDF askeniwe adinga i-OCR; layisha ikhophi enombhalo.",
+      "pastedTextName": "Umbhalo onamathiselwe",
+      "badge": "DOC",
+      "untitled": "Idokhumenti"
     }
   },
   "imageUpload": {
@@ -1232,9 +1262,9 @@
     },
     "rewardsList": {
       "rewardTitles": {
-        "imageCredits50": "50 Izikweletu Zezithombe || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "imageCredits50": "Amakhredithi ezithombe angama-50",
         "imageCredits200": "Amakhredithi ezithombe angama-200",
-        "imageCredits600": "Amakhredithi Ezithombe angu-600 || umbhalo wesixhumi esibonakalayo sohlelo lokusebenza lweselula",
+        "imageCredits600": "Amakhredithi ezithombe angama-600",
         "weeklyPremium": "I-Premium yamasonto onke",
         "secretBox": "Ibhokisi Eliyimfihlo"
       },
@@ -1322,6 +1352,10 @@
       "cta": "Thatha",
       "claimed": "Kutholakele! +{{amount}} izinhlamvu",
       "later": "Emuva kwesikhathi"
+    },
+    "button": {
+      "title": "Imivuzo",
+      "subtitle": "Amabhonasi nezinzuzo zansuku zonke"
     }
   },
   "app": {
@@ -1330,7 +1364,8 @@
     "launch": {
       "accessibilityLabel": "Iqala Cloud AI",
       "title": "CLOUD AI",
-      "subtitle": "I-AI, ilungile uma usulungile"
+      "subtitle": "I-AI, ilungile uma usulungile",
+      "closePreview": "Vala ukubuka kuqala kwesikrini sokuqalisa"
     },
     "errors": {
       "modelsLoadTitle": "Yehlulekile Ukulayisha Amamodeli",
@@ -1389,6 +1424,194 @@
       "body": "Sithumela isikhumbuzi esisodwa ngosuku ukuze uchungechunge lwakho luqhubeke futhi izinhlamvu zemali zande. Awukho ugaxekile, futhi ungayivala noma nini.",
       "enable": "Vula izikhumbuzi",
       "skip": "Hhayi manje"
+    }
+  },
+  "workspace": {
+    "documents": "Amadokhumenti",
+    "videos": "Izifinyezo zevidiyo",
+    "summary": "Isifinyezo",
+    "details": "Imininingwane",
+    "sources": "Imithombo",
+    "youtube": "YouTube",
+    "upload": "Layisha",
+    "transcript": "Umbhalo wenkulumo",
+    "concise": "Kafushane",
+    "detailed": "Isithombe esiphelele",
+    "errors": {
+      "NETWORK": "Hlola uxhumano lwakho lwe-inthanethi bese uzama futhi. Imithombo oyikhethile isekhona lapha.",
+      "TIMEOUT": "Lo mthombo uthathe isikhathi eside kakhulu. Zama ividiyo emfushane noma idokhumenti encane.",
+      "NOT_CONFIGURED": "Ukuhlaziywa kwemithombo akukatholakali. Sicela uzame futhi emuva kwesikhathi.",
+      "VIDEO_NOT_CONFIGURED": "Ukuhlaziywa okuqondile kwevidiyo akukatholakali. Usengakwazi ukufingqa umbhalo wenkulumo onamathiselwe.",
+      "DOCUMENT_EXPIRED": "Omunye wemithombo uphelelwe yisikhathi. Khetha idokhumenti yoqobo futhi.",
+      "SOURCE_UNAVAILABLE": "Lo mthombo awukwazanga ukuhlaziywa. Zama elinye ifayela noma umbhalo wenkulumo onamathiselwe.",
+      "TOO_MANY_PAGES": "Le PDF inamakhasi amaningi kakhulu. Yihlukanise ibe amafayela anamakhasi afika ku-100 ngalinye.",
+      "INVALID_VIDEO": "Khetha ividiyo ye-MP4 noma ye-WebM efundekayo, efika ku-20 MB. Sihlaziya imizuzu yokuqala eyi-10.",
+      "INVALID_DOCUMENTS": "Khetha amadokhumenti akho futhi bese uzama kabusha.",
+      "CLIENT_ID_REQUIRED": "Qala kabusha uhlelo lokusebenza bese uzama futhi.",
+      "RATE_LIMITED": "Ufinyelele umkhawulo wokuhlaziya wanamuhla. Sicela uzame futhi kusasa.",
+      "INVALID_RESULT": "Ukuhlaziya bekungaphelele. Sicela uzame futhi.",
+      "FILE_TOO_LARGE": "Leli fayela likhulu kakhulu. Amadokhumenti angafika ku-10 MB; iziqeshana zevidiyo zingafika ku-20 MB.",
+      "NO_READABLE_TEXT": "Awukho umbhalo ofundekayo otholakele. Sebenzisa i-PDF enombhalo noma unamathisele umbhalo; ama-PDF askeniwe adinga i-OCR.",
+      "ANALYSIS_FAILED": "Umthombo awukwazanga ukuhlaziywa. Sicela uzame futhi.",
+      "SOURCES_TOO_LARGE": "Lawa madokhumenti makhulu kakhulu ukuthi ahlaziywe ndawonye. Wafingqe ngamunye noma ngamaqembu amancane.",
+      "ENCRYPTED_DOCUMENT": "Le PDF ivikelwe ngephasiwedi. Layisha ikhophi engakhiyiwe.",
+      "UNSUPPORTED_DOCUMENT": "Leli fayela alifundeki noma okuqukethwe kwalo akusekelwe. Sebenzisa ifayela le-PDF, DOCX, TXT noma CSV.",
+      "SERVICE_BUSY": "Isevisi yokuhlaziya imatasa. Sicela uzame futhi maduze.",
+      "PROVIDER_UNAVAILABLE": "Isevisi ye-AI ayitholakali okwesikhashana. Sicela uzame futhi maduze.",
+      "DAILY_LIMIT": "Ufinyelele umkhawulo wanamuhla wokuhlaziya imithombo. Izifinyezo zakho ezilondoloziwe zisatholakala.",
+      "ALREADY_PROCESSING": "Kukhona ukuhlaziya okusaqhubeka. Hlola inqubekela phambili yakho ngezansi ngaphambi kokuqala okunye.",
+      "JOB_PENDING": "Ukuhlaziya kwakho kusacutshungulwa. Sebenzisa okuthi Hlola inqubekela phambili ngezansi ukuze ukuthole.",
+      "JOB_NOT_FOUND": "Lokhu kuhlaziya akutholakalanga noma kuphelelwe yisikhathi. Uma usanda kukulayisha, linda kancane bese uhlola futhi.",
+      "WORKSPACE_KEY_REQUIRED": "Ayikwazanga ukuvula umtapowolwazi wemithombo yakho. Qala kabusha uhlelo lokusebenza bese uzama futhi.",
+      "NO_SPEECH": "Ayikho inkulumo ecacile ekwazile ukubhalwa. Zama ividiyo enenkulumo ezwakalayo noma unamathisele umbhalo wenkulumo yayo.",
+      "VIDEO_TOO_LONG": "Khetha ividiyo engadluli imizuzu eyi-10."
+    },
+    "invalidUrl": "Faka isixhumanisi sevidiyo ye-YouTube esivumelekile esiqala nge-https://.",
+    "invalidTranscript": "Namathisela umbhalo wenkulumo onezinhlamvu eziphakathi kuka-40 no-120 000.",
+    "chooseFirst": "Khetha umthombo kuqala.",
+    "uploading": "Ilayisha {{name}}",
+    "extracting": "Ifunda idokhumenti yakho…",
+    "analyzing": "Ithola okubalulekile…",
+    "chatError": "Ayikwazanga ukuvula lo mthombo engxoxweni. Sicela uzame futhi.",
+    "shareError": "Ayikwazanga ukwabelana ngalesi sifinyezo. Sicela uzame futhi.",
+    "removeTitle": "Susa isifinyezo esilondoloziwe?",
+    "removeBody": "Lokhu kususa isifinyezo kule divayisi. Izingxoxo zakho zihlala zikhona. Umbhalo womthombo olayishiwe ulandela isikhathi sawo sokugcinwa esivele sikhona.",
+    "remove": "Susa",
+    "removeError": "Ayikwazanga ukususa lesi sifinyezo. Sicela uzame futhi.",
+    "summarizeVideo": "Thola isifinyezo",
+    "chooseDocuments": "Engeza amadokhumenti akho",
+    "videoSubtitle": "Phendula okukhulunywayo kube yimibono ebalulekile, izahluko nezimpendulo.",
+    "documentSubtitle": "Thola okubalulekile emafayeleni akho. Buza imibuzo engxoxweni.",
+    "newAnalysis": "Isifinyezo esisha",
+    "savedBrief": "ISIFINYEZO SAKHO",
+    "documentCoverage": "Kusekelwe embhalweni okhishiwe. Izithombe namakhasi askeniwe kungenzeka angafakwanga.",
+    "transcriptCoverage": "Kusekelwe embhalweni wenkulumo onikeziwe. Okubonakalayo kwevidiyo akuhlaziywanga.",
+    "videoCoverage": "Ukuhlaziya kwe-AI kwevidiyo. Izahluko zilinganiselwa; qinisekisa imininingwane ebalulekile uqhathanisa nevidiyo yoqobo.",
+    "extractionLimit": "Enye idokhumenti ifinyelele umkhawulo wokukhipha umbhalo. Lesi sifinyezo kungenzeka singalimboni lonke ifayela loqobo.",
+    "saveError": "Lesi sifinyezo asikwazanga ukulondolozwa. Shiya lesi sikrini sivuliwe bese uzama futhi, noma wabelane ngekhophi.",
+    "retrySave": "Zama ukulondoloza futhi",
+    "chapters": "Izahluko",
+    "actions": "Izinyathelo okufanele zithathwe",
+    "noSections": "Azikho izigaba ezengeziwe ezitholakele kulo mthombo.",
+    "linkError": "Ayikwazanga ukuvula ividiyo.",
+    "videoEvidence": "Izikhathi zevidiyo zilinganiselwa. Izifinyezo zombhalo wenkulumo zichaza umbhalo onikeziwe futhi azihlaziyi okubonakalayo.",
+    "documentEvidence": "Izingcaphuno ezingezansi ziqhathaniswe nombhalo okhishiwe. Izinombolo zamakhasi oqobo ziboniswa kuphela uma zitholakala.",
+    "noEvidence": "Azikho izingcaphuno zombhalo eziqinisekisiwe zalesi sifinyezo.",
+    "coverage": "Okuhlanganisiwe nemikhawulo",
+    "sourceExpires": "Umthombo uyatholakala kuze kube",
+    "localOnly": "Izifinyezo zilondolozwa kule divayisi. Yabelana ngekhophi ukuze ube nesipele.",
+    "continueChat": "Buza ngalokhu",
+    "chatContext": "Ingxoxo iqala ngalesi sifinyezo esilondoloziwe kanye nanoma yiziphi izinkomba zedokhumenti ezitholakalayo. Isifinyezo sevidiyo akusiwona umbhalo wenkulumo ophelele.",
+    "share": "Yabelana ngesifinyezo",
+    "videoLink": "Isixhumanisi sevidiyo ye-YouTube",
+    "publicOnly": "Amavidiyo omphakathi kuphela. Amavidiyo angasese, angafakwanga ohlwini, abukhoma nakhawulelwe kungenzeka angatholakali.",
+    "transcriptHint": "Namathisela umbhalo wenkulumo noma imibhalo engezansi. Faka izikhathi ukuze uthole izahluko.",
+    "textOnly": "Umbhalo kuphela; okubonakalayo akuhlaziywa.",
+    "clip": "Engeza ividiyo",
+    "videoLimits": "MP4, MOV, WebM · kufika ku-20 MB",
+    "docLimits": "PDF, Word, TXT, CSV · amafayela angu-3 · 10 MB ngalinye",
+    "openingFiles": "Ivula amafayela…",
+    "chooseFiles": "Engeza amafayela",
+    "removeFile": "Susa {{name}}",
+    "depth": "Kwenze kube ngokwakho",
+    "processingNotice": "Ifayela lakho lilayishwa ukuze licutshungulwe yi-AI.",
+    "cancel": "Khansela",
+    "analyzeDocuments": "Thola isifinyezo",
+    "library": "Ingcebo yakho",
+    "search": "Sesha izifinyezo",
+    "loadError": "Izifinyezo ezilondoloziwe azikwazanga ukulayishwa. Idatha yakho ekhona ayishintshwanga.",
+    "retry": "Zama futhi",
+    "emptyLibrary": "Izifinyezo zakho zizovela lapha, zilungele ukuthi uziphinde uzibuke noma uxoxe ngazo engxoxweni.",
+    "removeBrief": "Susa {{name}}",
+    "audioCoverage": "Isifinyezo senkulumo · Okubonakalayo akuhlaziywa. Qinisekisa amagama nezinombolo uqhathanisa nokuqoshiwe.",
+    "uploadTitle": "Khetha amafayela ukuze uqale",
+    "videoLimitsV2": "MP4 / WebM · 20 MB · imiz. 10\nOkukhulunywayo kuphela",
+    "noSearchResults": "Azikho izifinyezo ezitholakele. Zama ukusesha okuhlukile.",
+    "clearSearch": "Sula ukusesha",
+    "keyPoints": "Amaphuzu abalulekile",
+    "chatContextShort": "Kukhona ofuna ukukwazi? Buza umbuzo olandelayo.",
+    "openingChat": "Ivula ingxoxo…",
+    "uploadVideo": "Layisha ividiyo",
+    "pasteTranscript": "Namathisela umbhalo wenkulumo",
+    "heroVideoLabel": "UKUHLAZIYA AMAVIDIYO",
+    "heroDocumentLabel": "UKUHLAZIYA AMADOKHUMENTI",
+    "heroVideoTitle": "Buka kancane.\nWazi kakhulu.",
+    "heroDocumentTitle": "Amafayela akho.\nIzimpendulo ezicacile.",
+    "heroVideoDescription": "Phendula okukhulunywayo kube yisifinyezo okufanele usigcine.",
+    "heroDocumentDescription": "Thola okubalulekile. Xhumanisa imibono. Buza noma yini.",
+    "heroIdeas": "Imibono ebalulekile",
+    "heroFollowUps": "Buza i-AI",
+    "heroSummarize": "Fingqa",
+    "heroCompare": "Qhathanisa",
+    "summaryReady": "Okutholile",
+    "savedOnDevice": "Kulondolozwe kule divayisi",
+    "notSavedYet": "Kulungele ukulondolozwa",
+    "atAGlance": "Isithombe esibanzi",
+    "addSource": "Engeza umthombo wakho",
+    "quickDescription": "Okubalulekile kuphela",
+    "detailedDescription": "Indawo yemininingwane",
+    "chooseVideo": "Engeza ividiyo",
+    "studioLabel": "Ukucaca okwengeziwe kancane.",
+    "studioDocumentTitle": "Imibono emikhulu.\nUkufunda okuncane.",
+    "studioVideoTitle": "Buka kancane.\nThola okuningi.",
+    "studioDocumentDescription": "Kusuka emakhasini amaningi kuya emcabangweni wakho omusha okhanyayo.",
+    "studioVideoDescription": "Gcina izingxenye ezinhle. Phendula amagama akhulunywayo abe yinto ongabuyela kuyo.",
+    "studioVideoDescriptionV3": "Bona yonke indaba. Phendula izigcawu namagama akhulunywayo abe yimibono ongabuyela kuyo.",
+    "videoLimitsV3": "MP4 / WebM · 20 MB · Imizuzu yokuqala eyi-10 · Inkulumo nokubonakalayo",
+    "videoCoverageV3": "Inkulumo nezigcawu ezibonakalayo · Imizuzu yokuqala eyi-10 kuphela. Izahluko zilinganiselwa; izenzo ezisheshayo zingase zigejwe.",
+    "videoChatMenu": "Qonda izigcawu, inkulumo nezikhathi ezibalulekile",
+    "analyzingVideo": "Ibuka ividiyo yakho…",
+    "uploadingVideo": "Ilayisha ividiyo… {{percent}}%",
+    "videoCancelled": "Ukuhlaziya ividiyo kumisiwe.",
+    "videoSourceNeeded": "Namathisela isixhumanisi se-YouTube somphakathi, noma uthephe + → Layisha ividiyo. Bese uthumela umbuzo wakho.",
+    "localOnlyV2": "Izifinyezo zilondolozwa kule divayisi. Umphumela wokuhlaziya nawo ugcinwa kuseva yokuhlaziya kuze kube izinsuku ezi-7 ukuze ukwazi ukuwuthola, bese uyasuswa. Yabelana ngekhophi ukuze ube nesipele.",
+    "leavePrivateTitle": "Phuma engxoxweni yangasese?",
+    "leavePrivateBody": "Ukubuza ngalesi sifinyezo kuqeda ingxoxo yakho yangasese futhi kulondoloze ingxoxo entsha emlandweni wakho.",
+    "leavePrivateConfirm": "Qhubeka",
+    "documentPages": "Umbhalo utholakale emakhasini angu-{{extracted}} kwangu-{{total}}.",
+    "documentPartialText": "Amanye amakhasi awanawo umbhalo ongakhishwa. Izithombe nokuskeniwe akufundwa.",
+    "documentTruncated": "Kukhishwe ukuqala kwale dokhumenti kuphela. Isifinyezo singase siphuthelwe okuqukethwe okulandelayo.",
+    "sourceUnavailable": "Lolu hlobo lomthombo alutholakali okwesikhashana. Zama okunye okukhethwayo okutholakalayo ngezansi.",
+    "accepted": "Ihlaziya umthombo wakho. Ungaphuma kulesi sikrini bese uhlola inqubekela phambili kamuva.",
+    "checkingProgress": "Ihlola ukuhlaziya kwakho okulondoloziwe…",
+    "pendingError": "Ayikwazanga ukulayisha ukuhlaziya okulindile. Qala kabusha uhlelo lokusebenza ngaphambi kokuqala okunye.",
+    "pendingAnalysis": "UKUHLAZIYA OKULINDILE",
+    "resumeHint": "Uma sekwamukelwe, ukuhlaziya kuyaqhubeka noma uphuma esikrinini. Thola umphumela lapha ngaphandle kokukuqala kabusha.",
+    "checkProgress": "Hlola inqubekela phambili",
+    "cancelAnalysis": "Khansela ukuhlaziya",
+    "demoNotice": "Idemo yasendaweni · okuqukethwe kwesampula · akukho mthombo olayishiwe",
+    "publicVideoCoverage": "Amavidiyo e-YouTube omphakathi · Imizuzu yokuqala eyi-10. Amavidiyo angasese, abukhoma nakhawulelwe kungenzeka angatholakali.",
+    "sourceUnavailableLibrary": "Lolu hlobo lomthombo alutholakali okwesikhashana. Usengavula izifinyezo zakho ezilondoloziwe.",
+    "stopWaiting": "Yeka ukulinda",
+    "previewSample": "Isampula yokubuka kuqala · idemo yasendaweni",
+    "pickVideoError": "Khetha isiqeshana esisodwa se-MP4 noma se-WebM, esifika ku-20 MB nemizuzu eyi-10.",
+    "pickDocumentsError": "Khetha amadokhumenti e-PDF, DOCX, TXT noma CSV afika kwamathathu, ngayinye ifike ku-10 MB.",
+    "videoErrors": {
+      "ONE_VIDEO": "Khetha ividiyo eyodwa noma unamathisele isixhumanisi esisodwa se-YouTube ngesikhathi.",
+      "VIDEO_MIXED_SOURCES": "Thumela ividiyo ngokwehlukana nezithombe namadokhumenti.",
+      "VIDEO_QUESTION_TOO_LONG": "Umbuzo wakho wevidiyo kufanele ube ngaphansi kwezinhlamvu ezi-4 000.",
+      "INVALID_VIDEO": "Khetha ividiyo ye-MP4 noma ye-WebM, efika ku-20 MB.",
+      "FILE_TOO_LARGE": "Khetha ividiyo efika ku-20 MB.",
+      "SOURCE_UNAVAILABLE": "Asikwazanga ukufinyelela le vidiyo. Zama ividiyo ye-YouTube yomphakathi noma ulayishe ifayela le-MP4 noma le-WebM.",
+      "INVALID_RESULT": "Ukuhlaziya ividiyo bekungaphelele. Sicela uzame futhi.",
+      "NETWORK": "Uxhumano luphazamisekile. Hlola Izifinyezo zevidiyo ukuze uthole umphumela ngaphambi kokuzama futhi.",
+      "TIMEOUT": "Ividiyo ithathe isikhathi eside kakhulu ukuhlaziywa. Zama isiqeshana esifushane.",
+      "JOB_PENDING": "Ividiyo yakho isacutshungulwa. Vula Izifinyezo zevidiyo ukuze uhlole inqubekela phambili yayo.",
+      "DAILY_LIMIT": "Ufinyelele umkhawulo wanamuhla wokuhlaziya amavidiyo namadokhumenti. Sicela uzame futhi kusasa.",
+      "ALREADY_PROCESSING": "Kukhona ukuhlaziya okusaqhubeka. Vula Izifinyezo zevidiyo ukuze uhlole inqubekela phambili yakho.",
+      "SERVICE_BUSY": "Ukuhlaziya ividiyo kumatasa. Sicela uzame futhi maduze.",
+      "PROVIDER_UNAVAILABLE": "Ukuhlaziya ividiyo akutholakali okwesikhashana. Sicela uzame futhi maduze.",
+      "NOT_CONFIGURED": "Ukuhlaziya ividiyo akutholakali okwesikhashana. Sicela uzame futhi emuva kwesikhathi.",
+      "VIDEO_NOT_CONFIGURED": "Ukuhlaziya ividiyo akutholakali okwesikhashana. Sicela uzame futhi emuva kwesikhathi.",
+      "SAVE_FAILED": "Isifinyezo sakho silungile, kodwa asikwazanga ukulondolozwa kumtapowolwazi wakho. Gcina le ngxoxo noma ukopishe isifinyezo."
+    },
+    "markdown": {
+      "summary": "Isifinyezo",
+      "keyTakeaways": "Amaphuzu abalulekile",
+      "details": "Imininingwane",
+      "actionItems": "Izinyathelo okufanele zithathwe",
+      "sourceExcerpts": "Izingcaphuno zomthombo",
+      "coverageNotes": "Amanothi ngokuhlanganisiwe"
     }
   }
 }

@@ -1,0 +1,10 @@
+{
+  "project_id": "lkpmzvrveyocaodaixss",
+  "function": "document-process",
+  "downloadedVersion": 6,
+  "downloadedOn": "2026-10-03",
+  "method": "Supabase Management MCP get_edge_function",
+  "verify_jwt": true,
+  "deployedBundleSha256": "f0a377690650d58e1a847690c9d03d6462ac01b96c78459d8522078ef4363091",
+  "originalSource": "recovered-v6.ts"
+}

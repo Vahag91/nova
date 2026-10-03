@@ -4,6 +4,7 @@ import { openaiChatStream } from "./providers/openai.js";
 import { anthropicChatStream } from "./providers/anthropic.js";
 import { googleChatStream } from "./providers/google.js";
 import { xaiChatStream } from "./providers/xai.js";
+import { moderateLatestUserTurn, withSafetySystemMessage } from "./safety.ts";
 
 // The function remains deployed, but all chat requests are stopped.
 // Change this to false and redeploy when the app is active again.
@@ -430,7 +431,7 @@ async function hydrateDocumentMessages(body, req) {
   return { ...body, messages: hydratedMessages };
 }
 
-const UPSTREAM_CHAT_MODEL = "gpt-5.6-luna";
+const UPSTREAM_CHAT_MODEL = "gpt-6-luna";
 const EMERGENCY_GLM_MODEL = "@cf/zai-org/glm-5.3-flash";
 const EMERGENCY_MAX_OUTPUT_TOKENS = 1200;
 
@@ -781,6 +782,19 @@ Deno.serve(async (req) => {
       status: 400,
       headers: CORS_HEADERS,
     });
+  }
+
+  // Content safety: block clearly restricted requests before any provider is
+  // contacted, and make sure every request carries the safety policy.
+  if (model.kind === "chat") {
+    const verdict = await moderateLatestUserTurn(body, Deno.env.get("OPENAI_API_KEY"), req.signal);
+    if (verdict.blocked) {
+      return sseError("restricted_content", "This request was blocked by safety filters.", 400, {
+        retryable: false,
+        categories: verdict.categories,
+      });
+    }
+    body = withSafetySystemMessage(body);
   }
 
   let routedBody = limitMessagesForEconomy(body);

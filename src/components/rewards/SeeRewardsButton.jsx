@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import SvgIcon from '../SvgIcon';
 
 export const SeeRewardsButton = ({ onPress }) => {
+  const { t } = useTranslation();
   return (
     <Pressable
       onPress={onPress}
@@ -19,8 +21,8 @@ export const SeeRewardsButton = ({ onPress }) => {
           </View>
 
           <View>
-            <Text style={styles.title}>Rewards</Text>
-            <Text style={styles.subtitle}>Daily bonuses & perks</Text>
+            <Text style={styles.title}>{t('rewards.button.title', { defaultValue: 'Rewards' })}</Text>
+            <Text style={styles.subtitle}>{t('rewards.button.subtitle', { defaultValue: 'Daily bonuses & perks' })}</Text>
           </View>
         </View>
 
