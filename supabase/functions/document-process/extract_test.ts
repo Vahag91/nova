@@ -2,28 +2,29 @@ import {
   extractDocument,
   MAX_EXTRACTED_CHARS,
   MAX_FILE_BYTES,
+  MAX_PDF_PAGES,
 } from "./extract.ts";
 import { handler } from "./index.ts";
 import { strToU8, zipSync } from "fflate";
 import { PDFDocument, StandardFonts } from "pdf-lib";
 
-Deno.test("100-page boundary accepted and long PDF text discloses the character cut", async () => {
+Deno.test("300-page boundary accepted and long PDF text discloses the character cut", async () => {
   const source = await PDFDocument.load(await fixture("150-pages.pdf"));
   const hundred = await PDFDocument.create();
   for (
     const page of await hundred.copyPages(
       source,
-      Array.from({ length: 100 }, (_, i) => i),
+      Array.from({ length: MAX_PDF_PAGES }, (_, i) => i % 150),
     )
   ) hundred.addPage(page);
   const accepted = await extractDocument(await hundred.save(), "hundred.pdf");
   assert(
-    accepted.pageCount === 100 && accepted.extractedPages === 100 &&
+    accepted.pageCount === MAX_PDF_PAGES && accepted.extractedPages === MAX_PDF_PAGES &&
       !accepted.truncated,
   );
   const long = await PDFDocument.create(), page = long.addPage([612, 792]);
   const font = await long.embedFont(StandardFonts.Helvetica);
-  page.drawText("A".repeat(200010), { x: 40, y: 700, size: 1, font });
+  page.drawText("A".repeat(MAX_EXTRACTED_CHARS + 10), { x: 40, y: 700, size: 1, font });
   const cut = await extractDocument(await long.save(), "long.pdf");
   assert(cut.truncated && cut.text.length === MAX_EXTRACTED_CHARS);
 });
@@ -122,7 +123,7 @@ Deno.test("PDF: encrypted, 150 pages, blank and mixed text/image pages", async (
     "ENCRYPTED_DOCUMENT",
   );
   await rejects(
-    extractDocument(await fixture("150-pages.pdf"), "150-pages.pdf"),
+    extractDocument(await tooManyPages(), "over.pdf"),
     "TOO_MANY_PAGES",
   );
   await rejects(
@@ -232,7 +233,7 @@ Deno.test("CSV: comma/semicolon/tab delimiters, quoted fields, escaped quotes an
     );
   }
 });
-Deno.test("10 MB exactly accepted/truncated; one byte over rejected", async () => {
+Deno.test("25 MB exactly accepted/truncated; one byte over rejected", async () => {
   const bytes = new Uint8Array(MAX_FILE_BYTES).fill(65);
   const result = await extractDocument(bytes, "max.txt");
   assert(result.truncated && result.text.length === MAX_EXTRACTED_CHARS);
@@ -292,7 +293,9 @@ Deno.test("HTTP contract: raw-device hash, seven-day expiry, names, coverage and
       "TOO_MANY_PAGES",
     ]]
   ) {
-    const r = await upload(await fixture(file), file);
+    const r = await upload(file === "150-pages.pdf" ? await tooManyPages() : await fixture(file), file);
     assert(r.status === 422 && (await r.json()).code === code);
   }
 });
+
+async function tooManyPages() { const pdf=await PDFDocument.create();for(let i=0;i<=MAX_PDF_PAGES;i++)pdf.addPage([300,300]);return pdf.save(); }

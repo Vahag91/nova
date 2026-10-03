@@ -64,12 +64,12 @@ const EDITORIAL = {
   background: '#05070A',
   surface: 'rgba(255,255,255,0.055)',
   border: 'rgba(255,255,255,0.16)',
-  accent: '#0ABAB5',
-  accentSoft: 'rgba(10,186,181,0.14)',
+  accent: '#F05A28',
+  accentSoft: 'rgba(240,90,40,0.14)',
   // Older dormant styles still reference these names. Mapping them to the
   // same three-color system keeps rollback code intact without adding colors.
-  violet: '#0ABAB5',
-  violetSoft: 'rgba(10,186,181,0.14)',
+  violet: '#F05A28',
+  violetSoft: 'rgba(240,90,40,0.14)',
   cream: '#FFFFFF',
   onCream: '#05070A',
   title: '#FFFFFF',
@@ -1056,8 +1056,8 @@ function PremiumPaywallContent({
         <LinearGradient
           pointerEvents="none"
           colors={[
-            'rgba(10,186,181,0.07)',
-            'rgba(10,186,181,0.018)',
+            'rgba(240,90,40,0.07)',
+            'rgba(240,90,40,0.018)',
             EDITORIAL.background,
           ]}
           locations={[0, 0.3, 0.7]}
@@ -1829,7 +1829,7 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34,
     borderRadius: 17,
-    backgroundColor: 'rgba(10,186,181,0.34)',
+    backgroundColor: 'rgba(240,90,40,0.34)',
   },
   billingTimelineDot: {
     width: 34,
@@ -1852,7 +1852,7 @@ const styles = StyleSheet.create({
     width: 6,
     marginVertical: -1,
     borderRadius: 3,
-    backgroundColor: 'rgba(10,186,181,0.34)',
+    backgroundColor: 'rgba(240,90,40,0.34)',
   },
   billingTimelineTail: {
     flex: 1,
@@ -2165,8 +2165,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(44,229,216,0.24)',
-    backgroundColor: 'rgba(34,211,199,0.07)',
+    borderColor: 'rgba(240,90,40,0.24)',
+    backgroundColor: 'rgba(240,90,40,0.07)',
   },
   v2CreditsNumber: {
     color: EDITORIAL.title,
@@ -2197,8 +2197,8 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     borderRadius: 17,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(25,213,208,0.38)',
-    backgroundColor: 'rgba(25,213,208,0.09)',
+    borderColor: 'rgba(240,90,40,0.38)',
+    backgroundColor: 'rgba(240,90,40,0.09)',
   },
   imageStudioText: {
     flexShrink: 1,

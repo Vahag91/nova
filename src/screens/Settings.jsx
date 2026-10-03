@@ -8,12 +8,14 @@ import {
   Linking,
   Alert,
   ActivityIndicator,
+  I18nManager,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
-import SvgIcon from '../components/SvgIcon';
+import Icon from '../components/ui/Icon';
+import { colors } from '../styles/colors';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
 import { useThreadsStore } from '../state/useThreadsStore';
@@ -33,37 +35,39 @@ const LINKS = {
 function Section({ title, children }) {
   return (
     <View style={styles.section}>
-      <Text style={styles.sectionTitle}>{title.toUpperCase()}</Text>
+      <Text style={styles.sectionTitle}>{title}</Text>
       <View style={styles.card}>{children}</View>
     </View>
   );
 }
 
-function SettingRow({ icon, iconBg, title, subtitle, onPress, disabled, isLast, trailing }) {
+function SettingRow({ icon, danger, title, subtitle, onPress, disabled, isLast, trailing }) {
   return (
     <>
       <Pressable
         onPress={onPress}
         disabled={disabled}
+        accessibilityRole="button"
         style={({ pressed }) => [
           styles.row,
           pressed && styles.rowPressed,
           disabled && styles.rowDisabled,
         ]}
       >
-        <View style={styles.rowLeft}>
-          <View style={styles.rowIcon}>{icon}</View>
-          <View style={styles.rowTextWrap}>
-            <Text style={styles.rowTitle}>{title}</Text>
-            {subtitle ? <Text style={styles.rowSubtitle}>{subtitle}</Text> : null}
-          </View>
+        <View style={styles.rowIcon}>
+          <Icon name={icon} size={20} color={danger ? colors.error : colors.text} />
+        </View>
+        <View style={styles.rowTextWrap}>
+          <Text style={styles.rowTitle}>{title}</Text>
+          {subtitle ? <Text style={styles.rowSubtitle}>{subtitle}</Text> : null}
         </View>
         {trailing || (
-          <SvgIcon
-            name="chevron-left"
-            size={16}
-            color="rgba(255,255,255,0.45)"
-            style={styles.rowChevron}
+          <Icon
+            name="chevron-right"
+            size={18}
+            color={colors.textMuted}
+            strokeWidth={2}
+            style={I18nManager.isRTL ? styles.rowChevronRtl : null}
           />
         )}
       </Pressable>
@@ -254,8 +258,7 @@ export default function Settings() {
           key: 'premium',
           title: t('settings.rows.getPremium.title'),
           subtitle: t('settings.rows.getPremium.subtitle'),
-          icon: <SvgIcon name="stars" size={22} color="#FCD34D" />,
-          iconBg: '#2B1A3D',
+          icon: 'crown',
           onPress: handleUpgrade,
         });
       }
@@ -265,11 +268,10 @@ export default function Settings() {
         key: 'restore',
         title: t('settings.rows.restore.title'),
         subtitle: t('settings.rows.restore.subtitle'),
-        icon: <SvgIcon name="repeat" size={22} color="#60A5FA" />,
-        iconBg: '#16263D',
+        icon: 'restore',
         onPress: handleRestore,
         trailing: restoring ? (
-          <ActivityIndicator size="small" color="#FFFFFF" />
+          <ActivityIndicator size="small" color={colors.primary} />
         ) : undefined,
         disabled: restoring,
       });
@@ -291,30 +293,26 @@ export default function Settings() {
       {
         key: 'rate',
         title: t('settings.rows.rate.title'),
-        icon: <SvgIcon name="diamond" size={20} color="#FB923C" />,
-        iconBg: '#321F14',
+        icon: 'star',
         onPress: handleRateUs,
       },
       {
         key: 'support',
         title: t('settings.rows.support.title'),
         subtitle: t('settings.rows.support.subtitle'),
-        icon: <SvgIcon name="assistants" size={20} color="#34D399" />,
-        iconBg: '#0F2E24',
+        icon: 'support',
         onPress: () => openUrlSafe(LINKS.support, t('settings.rows.support.error')),
       },
       {
         key: 'privacy',
         title: t('settings.rows.privacy.title'),
-        icon: <SvgIcon name="lock" size={20} color="#93C5FD" />,
-        iconBg: '#162742',
+        icon: 'shield',
         onPress: () => openUrlSafe(LINKS.privacy, t('settings.rows.privacy.error')),
       },
       {
         key: 'terms',
         title: t('settings.rows.terms.title'),
-        icon: <SvgIcon name="globe-grid" size={20} color="#C4B5FD" />,
-        iconBg: '#261A35',
+        icon: 'terms',
         onPress: () => openUrlSafe(LINKS.terms, t('settings.rows.terms.error')),
       },
     ],
@@ -327,16 +325,15 @@ export default function Settings() {
         key: 'history',
         title: t('settings.rows.history.title'),
         subtitle: t('settings.rows.history.subtitle'),
-        icon: <SvgIcon name="tasks" size={20} color="#5EEAD4" />,
-        iconBg: '#0F2F32',
+        icon: 'history',
         onPress: () => navigation.navigate('History'),
       },
       {
         key: 'reset',
         title: t('settings.rows.reset.title'),
         subtitle: t('settings.rows.reset.subtitle'),
-        icon: <SvgIcon name="trash" size={20} color="#FB7185" />,
-        iconBg: '#381621',
+        icon: 'trash',
+        danger: true,
         onPress: handleClearData,
       },
     ],
@@ -373,7 +370,7 @@ export default function Settings() {
       <SettingRow
         key={item.key}
         icon={item.icon}
-        iconBg={item.iconBg}
+        danger={item.danger}
         title={item.title}
         subtitle={item.subtitle}
         onPress={wrapSettingPress(item.key, item.onPress)}
@@ -424,7 +421,10 @@ export default function Settings() {
   );
 }
 
-const PAGE_BACKGROUND = '#000000'; // match Chat screen background
+const PAGE_BACKGROUND = colors.background;
+const ROW_ICON = 40;
+const ROW_GAP = 14;
+const ROW_PADDING = 12;
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
@@ -436,73 +436,66 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 16,
-    paddingTop: 48,
-    gap: 32,
+    paddingTop: 8,
+    gap: 24,
   },
   section: {
-    gap: 10,
+    gap: 8,
   },
   sectionTitle: {
-    color: 'rgba(255,255,255,0.55)',
-    fontSize: 11,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 1.4,
-    paddingLeft: 4,
+    color: colors.textMuted,
+    fontSize: 13,
+    lineHeight: 18,
+    paddingStart: 4,
   },
   card: {
-    backgroundColor: 'rgba(255,255,255,0.03)',
-    borderRadius: 22,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    backgroundColor: colors.surface,
+    borderRadius: 18,
     overflow: 'hidden',
   },
   row: {
     minHeight: 64,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 6,
+    gap: ROW_GAP,
+    paddingHorizontal: ROW_PADDING,
     paddingVertical: 12,
   },
   rowPressed: {
-    opacity: 0.6,
+    backgroundColor: colors.surfaceElevated,
   },
   rowDisabled: {
     opacity: 0.5,
   },
-  rowLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-    gap: 12,
-  },
   rowIcon: {
-    width: 44,
-    height: 44,
+    width: ROW_ICON,
+    height: ROW_ICON,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: colors.surfaceInset,
   },
   rowTextWrap: {
     flex: 1,
-    gap: 2,
+    minWidth: 0,
+    gap: 1,
   },
   rowTitle: {
-    color: '#F5F7FF',
+    color: colors.text,
     fontSize: 16,
-    fontWeight: '700',
+    lineHeight: 22,
   },
   rowSubtitle: {
-    color: 'rgba(255,255,255,0.55)',
-    fontSize: 13,
+    color: colors.textSecondary,
+    fontSize: 14,
+    lineHeight: 19,
   },
-  rowChevron: {
-    transform: [{ rotate: '180deg' }],
+  rowChevronRtl: {
+    transform: [{ scaleX: -1 }],
   },
   rowDivider: {
     height: StyleSheet.hairlineWidth,
-    backgroundColor: 'rgba(255,255,255,0.08)',
-    marginLeft: 60,
-    marginRight: 12,
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    marginStart: ROW_PADDING + ROW_ICON + ROW_GAP,
   },
 });

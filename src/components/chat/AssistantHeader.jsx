@@ -10,15 +10,9 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
     description: t('chat.assistantHeader.unavailableDescription', { defaultValue: 'We couldn’t load this assistant. Please try again.' }),
   };
 
-  const iconGradients = [
-    { from: '#6366F1', to: '#7C3AED' }, // indigo → purple
-    { from: '#0EA5E9', to: '#06B6D4' }, // sky → cyan
-    { from: '#10B981', to: '#16A34A' }, // emerald → green
-    { from: '#F43F5E', to: '#DB2777' }, // rose → pink
-    { from: '#F59E0B', to: '#EA580C' }, // amber → orange
-  ];
-
-  const defaultGradient = iconGradients[0];
+  // Source conversations use the summary and standard chat composer, not a preset persona.
+  const hasMessages = thread?.messages?.some(m => m.role !== 'system');
+  if (thread?.meta?.workspaceId || (showOnlyWhenEmpty && hasMessages)) return null;
 
   // Resolve assistant persona text (prefer thread.system, fallback to a system message)
   const systemText = thread?.system || thread?.messages?.find(m => m.role === 'system')?.content || '';
@@ -39,18 +33,6 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
       </View>
     );
   }
-
-  // Count user/assistant messages (exclude system messages)
-  const hasMessages = thread?.messages?.filter(m => m.role !== 'system').length > 0;
-  
-  // If showOnlyWhenEmpty is true, hide after first message
-  if (showOnlyWhenEmpty && hasMessages) return null;
-
-  // Use the same gradient system as Assistants screen
-  // Find the preset index to get the same gradient and photo
-  const presetIndex = PRESETS.findIndex(p => p.id === preset.id);
-  const gradient =
-    iconGradients[(presetIndex >= 0 ? presetIndex : 0) % iconGradients.length] || defaultGradient;
 
   const titleText = preset.id
     ? t(`assistants.presets.${preset.id}.name`, { defaultValue: preset.name })
@@ -79,7 +61,7 @@ export default function AssistantHeader({ thread, showOnlyWhenEmpty = false }) {
       
       {/* Status indicator */}
       <View style={styles.statusRow}>
-        <View style={[styles.statusDot, { backgroundColor: gradient.from }]} />
+        <View style={styles.statusDot} />
         <Text style={styles.statusText}>{t('chat.assistantHeader.ready', { defaultValue: 'Ready to assist' })}</Text>
       </View>
     </View>
@@ -94,50 +76,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     paddingVertical: 40,
   },
-  iconWrap: {
-    width: 80,
-    height: 80,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 24,
-    position: 'relative',
-    shadowColor: 'rgba(99,102,241,0.6)',
-    shadowOpacity: 0.5,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 6,
-  },
-  iconContent: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   assistantPhoto: {
-    width: 140,
-    height: 140,
-    borderRadius: 80,
-    marginBottom: 24,
-  },
-  iconEmoji: {
-    fontSize: 32,
-    color: '#FFFFFF',
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
-    fontWeight: '700',
+    lineHeight: 30,
+    fontWeight: '500',
     color: colors.text,
     textAlign: 'center',
-    marginBottom: 12,
-    fontFamily: 'Lato-Bold',
-    letterSpacing: -0.5,
+    marginBottom: 8,
+    letterSpacing: -0.2,
   },
   description: {
     fontSize: 16,
     color: colors.textSecondary,
     textAlign: 'center',
-    lineHeight: 24,
-    marginBottom: 24,
-    fontFamily: 'Lato-Regular',
+    lineHeight: 22,
+    marginBottom: 20,
     paddingHorizontal: 16,
   },
   statusRow: {
@@ -150,11 +109,10 @@ const styles = StyleSheet.create({
     height: 8,
     borderRadius: 4,
     marginRight: 8,
+    backgroundColor: colors.primary,
   },
   statusText: {
     fontSize: 14,
     color: colors.textSecondary,
-    fontFamily: 'Lato-Regular',
-    fontWeight: '500',
   },
 });

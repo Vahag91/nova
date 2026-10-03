@@ -4,7 +4,9 @@ import MarkdownContent from './MarkdownContent';
 import { subscribeStream, getStream } from '../../lib/streamingBuffer';
 import { colors } from '../../styles/colors';
 
-const CURSOR_CHAR = ' ▋'; 
+const CURSOR_CHAR = ' ▋';
+// Markdown parsing/layout is much heavier than moving a native animation.
+const TEXT_UPDATE_INTERVAL_MS = 50; 
 
 function StreamingText({
   messageId,
@@ -39,7 +41,7 @@ function StreamingText({
 
   const stopLoop = useCallback((reason) => {
     if (!loopRef.current) return;
-    cancelAnimationFrame(loopRef.current);
+    clearTimeout(loopRef.current);
     loopRef.current = null;
     accumulatedTimeRef.current = 0;
     cursorTimerRef.current = 0;
@@ -76,7 +78,7 @@ function StreamingText({
         if (distance > 800) charsToAdd = Math.max(charsToAdd, 8);
         else if (distance > 400) charsToAdd = Math.max(charsToAdd, 6);
         else if (distance > 100) charsToAdd = Math.max(charsToAdd, 3);
-        else charsToAdd = 1;
+        else charsToAdd = Math.max(charsToAdd, 1);
       } else {
         if (distance > 1200) charsToAdd = Math.max(charsToAdd, 32);
         else if (distance > 600) charsToAdd = Math.max(charsToAdd, 24);
@@ -107,7 +109,7 @@ function StreamingText({
       }
     }
 
-    loopRef.current = requestAnimationFrame(tick);
+    loopRef.current = setTimeout(tick, TEXT_UPDATE_INTERVAL_MS);
   }, [stopLoop]);
 
   const startLoop = useCallback((reason) => {
@@ -115,7 +117,7 @@ function StreamingText({
     lastFrameRef.current = Date.now();
     accumulatedTimeRef.current = 0;
     cursorTimerRef.current = 0;
-    loopRef.current = requestAnimationFrame(tick);
+    loopRef.current = setTimeout(tick, TEXT_UPDATE_INTERVAL_MS);
   }, [tick]);
 
   // Reset internal state when message changes.
@@ -177,8 +179,8 @@ function StreamingText({
     if (!showSkeleton) return;
     const loop = Animated.loop(
       Animated.sequence([
-        Animated.timing(pulseAnim, { toValue: 1, duration: 800, useNativeDriver: true }),
-        Animated.timing(pulseAnim, { toValue: 0, duration: 800, useNativeDriver: true }),
+        Animated.timing(pulseAnim, { toValue: 1, duration: 800, useNativeDriver: true, isInteraction: false }),
+        Animated.timing(pulseAnim, { toValue: 0, duration: 800, useNativeDriver: true, isInteraction: false }),
       ])
     );
     loop.start();
@@ -222,8 +224,7 @@ const styles = StyleSheet.create({
   activityText: {
     color: colors.textSecondary,
     fontSize: 14,
-    fontFamily: 'Lato-Regular',
-    fontWeight: '600',
+    fontWeight: '500',
   },
 });
 

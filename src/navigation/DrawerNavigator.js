@@ -34,6 +34,7 @@ import { AndroidNavigationMenuProvider, useAndroidNavigationMenu } from './Andro
 import { useThreadsStore } from '../state/useThreadsStore';
 import { useSettingsStore } from '../state/useSettingsStore';
 import { colors } from '../styles/colors';
+import { graphite } from '../styles/graphite';
 import { useTranslation } from 'react-i18next';
 import { useWorkspaceTranslation } from '../i18n/useWorkspaceTranslation';
 import { PRESETS, PRESET_AVATARS } from '../data/presets';
@@ -102,14 +103,20 @@ function isSameDay(timestampA, timestampB) {
   );
 }
 
+// Without this the drawer renders its own toggle on the trailing side.
+const renderNoHeaderRight = () => null;
+
 function AndroidMenuButton() {
   const { openMenu } = useAndroidNavigationMenu();
+  const { t } = useTranslation();
 
   return (
     <TouchableOpacity
-      style={[styles.headerButton, styles.headerButtonNeutral]}
+      style={styles.headerButtonFlat}
       activeOpacity={0.85}
       onPress={openMenu}
+      accessibilityRole="button"
+      accessibilityLabel={t('rewards.header.openMenu')}
     >
       <SvgIcon name="menu" size={24} color={colors.text} />
     </TouchableOpacity>
@@ -415,7 +422,7 @@ function ChatHeaderRight() {
 
   return (
     <TouchableOpacity
-      style={[styles.headerButton, isPrivate ? styles.headerButtonActive : styles.headerButtonNeutral]}
+      style={[styles.headerButtonFlat, isPrivate && styles.headerButtonFlatActive]}
       onPress={handlePrivateChat}
       activeOpacity={0.85}
       accessibilityRole="button"
@@ -447,9 +454,11 @@ function HistoryHeaderRight({ navigation }) {
 
   return (
     <TouchableOpacity
-      style={styles.historyNewChatButton}
+      style={styles.headerButtonFlat}
       onPress={handleNewChat}
       activeOpacity={0.85}
+      accessibilityRole="button"
+      accessibilityLabel={t('history.newChat')}
     >
       <SvgIcon name="newchat" size={24} color={colors.text} />
     </TouchableOpacity>
@@ -499,15 +508,13 @@ function MainDrawerNavigator() {
       screenOptions={{
         lazy: true,
         headerLeft: () => <AndroidMenuButton />,
-        headerStyle: {
-          backgroundColor: '#000000',
-          borderBottomWidth: 0,
-        },
+        headerRight: renderNoHeaderRight,
+        headerStyle: styles.chatHeader,
+        headerShadowVisible: false,
+        headerLeftContainerStyle: styles.chatHeaderLeft,
+        headerRightContainerStyle: styles.chatHeaderRight,
         headerTintColor: colors.text,
-        headerTitleStyle: {
-          color: colors.text,
-          fontFamily: 'Lato-Bold',
-        },
+        headerTitleStyle: styles.headerTitle,
         drawerStyle: {
           backgroundColor: colors.background,
           width: 280,
@@ -552,14 +559,7 @@ function MainDrawerNavigator() {
       <Drawer.Screen
         name="Settings"
         getComponent={getSettingsScreen}
-        options={{
-          title: t('navigation.settings'),
-          headerTitleStyle: {
-            color: colors.text,
-            fontFamily: 'Lato-Black',
-            fontSize: 24,
-          },
-        }}
+        options={{ title: t('navigation.settings') }}
       />
       {IMAGE_STUDIO_ENABLED ? (
         <Drawer.Screen
@@ -838,6 +838,34 @@ const styles = StyleSheet.create({
   headerButtonNeutral: {
     backgroundColor: colors.surface,
   },
+  chatHeader: {
+    backgroundColor: graphite.bg,
+    borderBottomWidth: 0,
+    elevation: 0,
+  },
+  chatHeaderLeft: {
+    paddingStart: 16,
+  },
+  chatHeaderRight: {
+    paddingEnd: 16,
+  },
+  headerTitle: {
+    color: colors.text,
+    fontSize: 20,
+    fontWeight: '500',
+    letterSpacing: -0.2,
+  },
+  headerButtonFlat: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: graphite.card,
+  },
+  headerButtonFlatActive: {
+    backgroundColor: graphite.accent,
+  },
   headerButtonActive: {
     backgroundColor: colors.primary,
   },
@@ -850,22 +878,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     flexDirection: 'row',
     alignItems: 'center',
-    elevation: 3,
   },
   headerPillAvatar: {
     width: 32,
     height: 32,
     borderRadius: 16,
     marginRight: 10,
-    borderWidth: 2,
-    borderColor: colors.primary + '20',
   },
   headerPillText: {
-    fontSize: 17,
-    fontWeight: '600',
+    fontSize: 15,
+    fontWeight: '500',
     color: colors.text,
-    fontFamily: 'Lato-SemiBold',
-    letterSpacing: 0.2,
     flexShrink: 1,
   },
   headerPillChevronWrap: {
@@ -890,31 +913,24 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '90%',
     maxWidth: 308,
-    backgroundColor: '#0D0D0F',
+    backgroundColor: colors.surface,
     borderRadius: 22,
     overflow: 'hidden',
     borderWidth: 0,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 18 },
-    shadowRadius: 29,
-    shadowOpacity: 0.32,
-    elevation: 22,
   },
   sheetHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 18,
-    paddingTop: 14,
-    paddingBottom: 11,
-    backgroundColor: '#0D0D0F',
+    paddingTop: 16,
+    paddingBottom: 10,
+    backgroundColor: colors.surface,
   },
   sheetTitle: {
-    fontSize: 13,
-    fontWeight: '800',
+    fontSize: 16,
+    fontWeight: '500',
     color: colors.text,
-    letterSpacing: 0.2,
-    fontFamily: 'Lato-Bold',
   },
   sheetClose: {
     fontSize: 16,
@@ -935,16 +951,10 @@ const styles = StyleSheet.create({
     borderRadius: 11,
   },
   sheetRowPressed: {
-    backgroundColor: '#1A1A1D',
-    transform: [{ scale: 0.98 }],
+    backgroundColor: colors.surfaceElevated,
   },
   sheetRowSelected: {
-    backgroundColor: '#1A1A1D',
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 7,
-    shadowOpacity: 0.1,
-    elevation: 4,
+    backgroundColor: colors.surfaceElevated,
   },
   sheetRowAvatar: {
     width: 40,
@@ -957,18 +967,17 @@ const styles = StyleSheet.create({
     gap: 3,
   },
   sheetRowTitle: {
-    fontSize: 14,
-    fontWeight: '700',
+    fontSize: 15,
+    fontWeight: '500',
     color: colors.text,
-    fontFamily: 'Lato-SemiBold',
   },
   sheetRowTitleSelected: {
     color: colors.primary,
   },
   sheetRowDesc: {
-    fontSize: 12,
+    fontSize: 13,
+    lineHeight: 18,
     color: colors.textSecondary,
-    fontFamily: 'Lato-Regular',
   },
   sheetRowDescSelected: {
     color: colors.text,

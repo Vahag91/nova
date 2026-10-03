@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import { Text, Linking, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { colors } from '../../../styles/colors';
 import { userStyles, assistantStyles } from './markdownStyles';
 
 export const MarkdownLink = ({ node, children, isUser }) => {
@@ -47,7 +46,7 @@ export const MarkdownLink = ({ node, children, isUser }) => {
   }, [textContent, isWiki, parsed, t]);
 
   const baseStyle = isUser ? userStyles.link : assistantStyles.link;
-  const linkColor = isUser ? '#FFFFFF' : colors.primary;
+  const linkColor = isUser ? '#FFFFFF' : '#F05A28';
 
   if (isWiki) {
     return (

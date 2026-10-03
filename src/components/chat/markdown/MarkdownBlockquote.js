@@ -2,9 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { useTranslation } from 'react-i18next';
+import { graphite } from '../../../styles/graphite';
 
 const AlertIcon = ({ tone }) => {
-  const color = tone === 'warn' ? '#FFB74D' : tone === 'tip' ? '#4CAF50' : '#64B5F6';
+  const color = tone === 'warn' ? graphite.accent : graphite.textSecondary;
   const path = tone === 'warn' 
     ? "M12 2L1 21h22L12 2zm1 17h-2v-2h2v2zm0-4h-2v-4h2v4z" 
     : "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z";
@@ -33,14 +34,13 @@ export const MarkdownBlockquote = ({ node, children }) => {
     title = t('chat.markdown.tip');
   }
   
-  const borderColor = tone === 'warn' ? '#FFB74D' : tone === 'tip' ? '#4CAF50' : '#42A5F5';
-  const bgColor = tone === 'warn' ? '#332200' : tone === 'tip' ? '#002200' : '#111b26';
+  const titleColor = tone === 'warn' ? graphite.accent : graphite.text;
 
   return (
-    <View style={[styles.container, { borderLeftColor: borderColor, backgroundColor: bgColor }]}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <AlertIcon tone={tone} />
-        <Text style={[styles.title, { color: borderColor }]}>{title}</Text>
+        <Text style={[styles.title, { color: titleColor }]}>{title}</Text>
       </View>
       <View>{children}</View>
     </View>
@@ -49,10 +49,12 @@ export const MarkdownBlockquote = ({ node, children }) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderLeftWidth: 4,
-    padding: 12,
-    borderRadius: 8,
+    padding: 14,
+    // The last paragraph inside brings its own bottom margin.
+    paddingBottom: 2,
+    borderRadius: 16,
     marginVertical: 12,
+    backgroundColor: graphite.card,
   },
   header: { flexDirection: 'row', alignItems: 'center', marginBottom: 6 },
   title: { fontWeight: 'bold', fontSize: 14, marginBottom: 2 },

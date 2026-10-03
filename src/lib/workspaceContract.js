@@ -20,6 +20,7 @@ export function validateWorkspaceResult(raw) {
     sections: list(raw.sections || [], section => ({
       title: string(section?.title, 500),
       body: string(section?.body),
+      ...(section?.timestampChecked === true ? { timestampChecked: true } : {}),
       startSeconds: section?.startSeconds == null ? null : section.startSeconds,
     })),
     actions: list(raw.actions || [], value => string(value)),
@@ -50,6 +51,8 @@ export function validateWorkspaceResult(raw) {
         ? coverage.extractedChars
         : 0,
     possibleExtractionLimit: coverage.possibleExtractionLimit === true,
+    ...(coverage.chaptersChecked === true ? { chaptersChecked: true } : {}),
+    ...(coverage.actionsReviewed === true ? { actionsReviewed: true } : {}),
     ...(Number.isFinite(coverage.maxVideoSeconds) &&
     coverage.maxVideoSeconds > 0
       ? { maxVideoSeconds: coverage.maxVideoSeconds }
@@ -59,6 +62,12 @@ export function validateWorkspaceResult(raw) {
       ? { durationSeconds: coverage.durationSeconds }
       : {}),
   };
+  if (raw.videoSource !== undefined) {
+    const v = raw.videoSource;
+    if (!v || !/^[0-9a-f-]{36}$/i.test(v.jobId || '') || !['upload', 'youtube'].includes(v.type) || !Number.isFinite(Date.parse(v.expiresAt))) throw invalid();
+    result.videoSource = { jobId: v.jobId, type: v.type, expiresAt: v.expiresAt };
+  }
+  if (raw.answer !== undefined) result.answer = string(raw.answer, 20000);
   if (raw.sourceDocuments !== undefined)
     result.sourceDocuments = list(
       raw.sourceDocuments,

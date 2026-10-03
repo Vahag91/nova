@@ -1,6 +1,7 @@
+import { documentQuestionSource } from '../lib/workspaceChat';
 import { IMAGE_STUDIO_ENABLED } from '../constants/featureFlags';
 import { useSourceWorkspaceAvailability } from '../state/useSourceWorkspaceAvailability';
-import React, { useEffect, useMemo, useRef, useState, useCallback, useContext } from 'react';
+import React, { useEffect, useMemo, useRef, useState, useCallback, useContext, useLayoutEffect } from 'react';
 import { View, Text, StyleSheet, AppState, TouchableWithoutFeedback, Keyboard, Alert, Platform, InteractionManager } from 'react-native';
 import Reanimated, { useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
 import { useHeaderHeight } from '@react-navigation/elements';
@@ -50,6 +51,7 @@ import { resolvePremiumStatus } from '../lib/resolvePremiumStatus';
 
 import { ensureMicAndSpeech, promptOpenSettings } from '../lib/permissions';
 import AssistantsBanner from '../components/chat/AssistantsBanner';
+import { graphite } from '../styles/graphite';
 import RateUsService from '../services/RateUsService';
 import ChatToast from '../components/chat/ChatToast';
 import ReportContentModal from '../components/reporting/ReportContentModal';
@@ -63,8 +65,8 @@ import WorkspaceShortcuts from '../components/workspace/WorkspaceShortcuts';
 import { useSourceCapabilities } from '../state/useSourceWorkspaceAvailability';
 import { supportsSourceWorkspace } from '../lib/sourceWorkspaceAvailability';
 import { useWorkspaceTranslation } from '../i18n/useWorkspaceTranslation';
-import { getChatVideoSource, asksForVideoWithoutSource, videoErrors } from '../lib/videoChat';
-import { analyzeChatVideo } from '../lib/analyzeChatVideo';
+import { getChatVideoSource, videoQuestionSource, asksForVideoWithoutSource, videoErrors } from '../lib/videoChat';
+import { analyzeChatVideo, askSourceQuestion } from '../lib/analyzeChatVideo';
 import { pickChatVideo } from '../lib/pickChatVideo';
 import { summaryLabels, summaryMarkdown, workspaceChatContext } from '../lib/workspace';
 import {
@@ -239,6 +241,7 @@ export default function Chat({ navigation }) {
   const { c: videoCopy, i18n: videoLanguage } = useWorkspaceTranslation();
   // Chat's video errors keep their own keys: the workspace screen words the same codes differently.
   const videoErrorText = (code, fallbackCode = code) => {
+    if (code === 'VIDEO_SOURCE_EXPIRED' || code === 'JOB_NOT_FOUND') return videoCopy('videoSourceNeeded', 'Paste a public YouTube link, or tap + → Upload video. Then send your question.');
     const known = videoErrors[code] ? code : fallbackCode;
     return videoCopy(`videoErrors.${known}`, videoErrors[known]);
   };
@@ -844,10 +847,10 @@ export default function Chat({ navigation }) {
         const message = firstValidationError.code === 'too_many_files'
           ? t('chat.files.tooMany', { defaultValue: 'You can attach up to 3 documents per message.' })
           : firstValidationError.code === 'file_too_large'
-            ? t('chat.files.tooLarge', { defaultValue: 'Each document must be 10 MB or smaller.' })
+            ? t('chat.files.tooLarge', { defaultValue: 'Each document must be 25 MB or smaller.' })
             : firstValidationError.code === 'empty_file'
               ? t('chat.files.empty', { defaultValue: 'The selected document is empty.' })
-              : t('chat.files.unsupported', { defaultValue: 'Use a PDF, DOCX, TXT or CSV file.' });
+              : t('chat.files.unsupported', { defaultValue: 'Use a PDF, DOCX, XLSX, PPTX, ODT, TXT, CSV, TSV, MD or JSON file.' });
         Alert.alert(t('chat.files.invalidTitle', { defaultValue: 'File not supported' }), message);
       }
 
@@ -1210,8 +1213,23 @@ export default function Chat({ navigation }) {
       handleMicPress();
       return;
     }
+    if (id === 'documents') {
+      navigation.navigate('Documents', {
+        seedDocuments: attachments.filter(a => a.kind === 'document' && a.status === 'ready'),
+        seedId: String(Date.now()),
+      });
+      return;
+    }
+    if (id === 'video-summaries') {
+      navigation.navigate('VideoSummaries');
+      return;
+    }
+    if (id === 'history') {
+      navigation.navigate('History');
+      return;
+    }
     setInput(suggestion?.title || '');
-  }, [handleAssistantsPress, handleCreateImagesPress, handleEditImagePress, handleMicPress, onOpenCameraPress]);
+  }, [attachments, handleAssistantsPress, handleCreateImagesPress, handleEditImagePress, handleMicPress, navigation, onOpenCameraPress]);
 
   const onRemoveAttachment = useCallback((att) => {
     const activeUpload = documentUploadsRef.current.get(att?.id);
@@ -1253,8 +1271,9 @@ export default function Chat({ navigation }) {
     }
   }
 
-  async function onSendVideo(source, text) {
+  async function onSendVideo(source, text, retryRequest) {
     if (videoSendRef.current || !activeThread) return;
+    const documentQuestion = source.type === 'document';
     const threadId = activeThread.id;
     const controller = new AbortController();
     videoSendRef.current = controller;
@@ -1262,7 +1281,7 @@ export default function Chat({ navigation }) {
     const user = newUserMessage(text || source.file?.name || source.url);
     user.meta = { videoSummarySource: true };
     const assistant = newAssistantMessage();
-    assistant.meta = { model: 'gemini-3.7-flash', videoSummary: true, activity: videoCopy('analyzingVideo', 'Watching your video…') };
+    assistant.meta = { model: documentQuestion ? 'gpt-6-luna' : 'gemini-3.5-flash-lite', videoSummary: !documentQuestion, videoQuestion: !!source.sourceJobId, documentQuestion, activity: documentQuestion ? t('chat.activity.analyzingDocuments', { defaultValue: 'Analyzing documents…' }) : videoCopy('analyzingVideo', 'Watching your video…') };
     const update = (id, patch) => isPrivate ? updatePrivateMessage(id, patch) : updateMessage(threadId, id, patch);
     if (isPrivate) { addPrivateMessage(user); addPrivateMessage(assistant); }
     else { addMessage(threadId, user); addMessage(threadId, assistant); }
@@ -1275,6 +1294,13 @@ export default function Chat({ navigation }) {
     requestAnimationFrame(() => messageListRef.current?.scrollToBottom(true));
     let keepVideoCopy = false;
     try {
+      if (source.sourceJobId || documentQuestion) {
+        const answer = await askSourceQuestion({ source: retryRequest?.source || { ...source, language: videoLanguage.resolvedLanguage || videoLanguage.language || 'en' }, requestId: retryRequest?.requestId, signal: controller.signal, onRequestReady: request => { assistant.meta.videoQuestionRequest = request; update(assistant.id, { meta: { ...assistant.meta } }); } });
+        if (controller.signal.aborted) return;
+        update(assistant.id, { content: answer.answer || answer.overview, meta: { ...assistant.meta, activity: null, videoSource: answer.videoSource } });
+        if (!isPrivate) { try { await forceSaveThread(threadId, { throwOnError: true }); } catch { setError(videoErrorText('SAVE_FAILED')); } }
+        return;
+      }
       const { record, saveFailed } = await analyzeChatVideo({
         source: { ...source, language: videoLanguage.resolvedLanguage || videoLanguage.language || 'en' },
         privateMode: isPrivate,
@@ -1285,8 +1311,8 @@ export default function Chat({ navigation }) {
       });
       if (controller.signal.aborted) return;
       update(user.id, { attachments: record.documents });
-      const coverage = videoCopy('videoCoverageV3', 'Speech & visual scenes · First 10 minutes at most. Chapters are approximate; fast actions may be missed.');
-      update(assistant.id, { content: `${summaryMarkdown(record.result, summaryLabels(videoCopy))}\n\n_${coverage}_`, meta: { ...assistant.meta, activity: null, workspaceId: record.id, videoContext: workspaceChatContext(record), videoDocuments: record.documents } });
+      const coverage = record.result.coverage?.chaptersChecked ? videoCopy('chatContextShort', 'Curious about something? Ask a follow-up.') : videoCopy('videoCoverageV3', 'Speech & visual scenes. Chapters are approximate; fast actions may be missed.');
+      update(assistant.id, { content: `${summaryMarkdown(record.result, summaryLabels(videoCopy))}\n\n_${coverage}_`, meta: { ...assistant.meta, activity: null, workspaceId: record.id, videoSource: record.result.videoSource, videoContext: workspaceChatContext(record), videoDocuments: record.documents } });
       if (!isPrivate) {
         try { await forceSaveThread(threadId, { throwOnError: true }); }
         catch { if (isMountedRef.current) setError(videoErrorText('SAVE_FAILED')); }
@@ -1294,8 +1320,10 @@ export default function Chat({ navigation }) {
       if (saveFailed && isMountedRef.current) setError(videoErrorText('SAVE_FAILED'));
     } catch (err) {
       const message = controller.signal.aborted
-        ? videoCopy('videoCancelled', 'Video analysis stopped.')
-        : videoErrorText(err.code, 'SOURCE_UNAVAILABLE');
+        ? (documentQuestion ? t('chat.stop', { defaultValue: 'Stop' }) : videoCopy('videoCancelled', 'Video analysis stopped.'))
+        : documentQuestion ? videoCopy(`errors.${['DOCUMENT_EXPIRED','SOURCES_TOO_LARGE','DAILY_LIMIT','SERVICE_BUSY'].includes(err.code) ? err.code : 'ANALYSIS_FAILED'}`, 'Could not answer this question. Please try again.')
+        : videoErrorText(source.sourceJobId && ['NETWORK', 'JOB_PENDING', 'ALREADY_PROCESSING'].includes(err.code) ? 'SERVICE_BUSY' : err.code, 'SOURCE_UNAVAILABLE');
+      if (err.terminal || controller.signal.aborted) delete assistant.meta.videoQuestionRequest;
       update(assistant.id, { content: message, meta: { ...assistant.meta, activity: null } });
       if (isMountedRef.current && !controller.signal.aborted) {
         setError(message);
@@ -1337,6 +1365,12 @@ export default function Chat({ navigation }) {
       }
       await onSendVideo(videoSource, text);
       return;
+    }
+    if (!attachments.length && text) {
+      try {
+        const questionSource = videoQuestionSource(activeThread, text) || documentQuestionSource(activeThread, text);
+        if (questionSource) { await onSendVideo(questionSource, text); return; }
+      } catch (err) { setError(activeThread?.meta?.workspaceType === 'document' ? (err.code === 'QUESTION_TOO_LONG' ? t('chat.messageTooLong', { length: err.length, limit: 4000 }) : videoCopy('errors.DOCUMENT_EXPIRED', 'Select the original document again.')) : videoErrorText(err.code, 'SOURCE_UNAVAILABLE')); return; }
     }
     if (!attachments.length && asksForVideoWithoutSource(text) && !(activeThread?.messages || []).some(m => m.meta?.videoSummary) && !activeThread?.meta?.workspaceType) {
       setError(videoCopy('videoSourceNeeded', 'Paste a public YouTube link, or tap + → Upload video. Then send your question.'));
@@ -1693,6 +1727,14 @@ export default function Chat({ navigation }) {
     }
     const threadId = activeThread?.id;
     if (!threadId) return;
+    if (message.meta?.videoQuestion || message.meta?.documentQuestion) {
+      const index = activeThread.messages.findIndex(m => m.id === message.id);
+      const question = activeThread.messages.slice(0, index).reverse().find(m => m.role === 'user')?.content;
+      try {
+        const source = message.meta.documentQuestion ? documentQuestionSource(activeThread, question) : videoQuestionSource(activeThread, question);
+        if (source) { void onSendVideo(source, question, message.meta.videoQuestionRequest); return; }
+      } catch (err) { setError(videoErrorText(err.code, 'SOURCE_UNAVAILABLE')); return; }
+    }
     const messageId = message.id;
     const allowWebSearch = isPremium && !!(webSearchNext || message.meta?.allowWebSearch);
     setError('');
@@ -1729,6 +1771,11 @@ export default function Chat({ navigation }) {
     regenerationRef.current = operation;
     abortRef.current = operation;
   }
+
+  // Stable list action; invoke the latest committed chat state.
+  const retryHandlerRef = useRef(onRetryFromHere);
+  useLayoutEffect(() => { retryHandlerRef.current = onRetryFromHere; });
+  const retryFromList = useCallback(message => retryHandlerRef.current(message), []);
 
   const handleReportAssistantResponse = useCallback(({ message, prompt }) => {
     if (!message || message.role !== 'assistant') return;
@@ -1805,7 +1852,7 @@ export default function Chat({ navigation }) {
         messages={messagesNoSystem}
         streaming={streaming}
         streamingMessageId={streamingMsgId}
-        onRetryFromHere={onRetryFromHere}
+        onRetryFromHere={retryFromList}
         onToast={showToast}
         threadKey={activeThread.id}
         contentContainerStyle={styles.messageListContent}
@@ -1887,7 +1934,7 @@ export default function Chat({ navigation }) {
           )}
 
           <View>
-            {sourceWorkspaceEnabled && !isPrivate && !streaming && !keyboardVisible && (
+            {sourceWorkspaceEnabled && !showQuickSuggestions && !isPrivate && !streaming && !keyboardVisible && (
               <WorkspaceShortcuts navigation={navigation} documents={[
                 ...attachments.filter(a => a.kind === 'document' && a.status === 'ready'),
                 ...(activeThread?.messages || []).flatMap(m => m.attachments || []).filter(a => a.kind === 'document').slice(-3),
@@ -1895,10 +1942,15 @@ export default function Chat({ navigation }) {
             )}
             <Reanimated.View style={suggestionStyle}>
               {showKeyboardHelpers && (
-                <SuggestionCards
-                  onSuggestionPress={handleQuickSuggestionPress}
-                  imagePickerActive={imagePickerActive}
-                />
+                <View style={styles.homePrompt}>
+                  <View style={styles.homePromptCopy}>
+                    <Text style={styles.homePromptTitle}>{t('chat.emptyTitle')}</Text>
+                  </View>
+                  <SuggestionCards
+                    onSuggestionPress={handleQuickSuggestionPress}
+                    imagePickerActive={imagePickerActive}
+                  />
+                </View>
               )}
             </Reanimated.View>
             <TestInput
@@ -1960,7 +2012,11 @@ export default function Chat({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#0A0A0A' },
+  container: { flex: 1, backgroundColor: graphite.bg },
+  homePrompt: { paddingHorizontal: 16, paddingBottom: 12, gap: 12 },
+  homePromptCopy: { gap: 4 },
+  homePromptTitle: { color: graphite.text, fontSize: 20, lineHeight: 26, fontWeight: '500', textAlign: 'center', letterSpacing: -0.2 },
+  homePromptText: { color: graphite.textSecondary, fontSize: 16, lineHeight: 22 },
   flex1: { flex: 1 },
   loadingCenter: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   loadingHint: { color: colors.textSecondary },

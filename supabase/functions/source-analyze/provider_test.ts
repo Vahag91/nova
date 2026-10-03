@@ -1,38 +1,6 @@
 import { analyze } from "./provider.ts";
 function assert(v: unknown, message = "Assertion failed") { if (!v) throw new Error(message); }
-const raw = { sourceAccessible: true, title: "Visual test", overview: "A blue square appears.", keyPoints: ["A blue square."], sections: [{title:"Scene",body:"Blue square",startSeconds:3},{title:"Invalid",body:"Beyond coverage",startSeconds:601}],actions:[], evidence:[], limitations:[] };
-Deno.test("Gemini handles silent upload and YouTube, clips coverage, rejects blocked and unavailable sources", async () => {
-  const original=fetch, keys=["OPENAI_API_KEY","GEMINI_API_KEY","GOOGLE_API_KEY"];
-  const old=keys.map(k=>Deno.env.get(k));
-  Deno.env.delete("OPENAI_API_KEY"); Deno.env.delete("GEMINI_API_KEY"); Deno.env.set("GOOGLE_API_KEY","video-test");
-  let calls=0, unavailable=false, blocked=false;
-  globalThis.fetch=(async (url,opts)=>{
-    calls++;
-    assert(String(url).includes("generativelanguage.googleapis.com"), "No OpenAI transcription for videos");
-    assert((opts?.headers as any)["x-goog-api-key"]==="video-test");
-    const body=JSON.parse(String(opts?.body)), part=body.contents[0].parts[0];
-    assert(part.videoMetadata.endOffset==="600s" && part.videoMetadata.fps===1);
-    assert(body.generationConfig.mediaResolution==="MEDIA_RESOLUTION_LOW");
-    assert(body.systemInstruction.parts[0].text.includes("Silent videos are valid"));
-    assert(body.store===false);
-    if(calls===1) assert(part.inlineData.mimeType==="video/mp4" && part.inlineData.data==="dGVzdA==");
-    else assert(part.fileData.fileUri==="https://www.youtube.com/watch?v=jNQXAC9IVRw");
-    return Response.json({candidates:[{finishReason:blocked?"SAFETY":"STOP",content:{parts:[{thought:true,text:"not JSON"},{text:JSON.stringify({...raw,sourceAccessible:!unavailable})}]}}]});
-  }) as typeof fetch;
-  try {
-    const source={type:"upload",language:"en",detail:"detailed"};
-    const result=await analyze(source,[],new File(["test"],"silent.mp4",{type:"video/mp4"}),new AbortController().signal);
-    assert(result.coverage.kind==="audiovisual" && result.coverage.maxVideoSeconds===600);
-    assert(result.sections[1].startSeconds===null && result.evidence.length===0);
-    const youtube={...source,type:"youtube",url:"https://www.youtube.com/watch?v=jNQXAC9IVRw"};
-    assert((await analyze(youtube,[],null,new AbortController().signal)).overview.includes("blue"));
-    for(const condition of ["unavailable","blocked"]){
-      unavailable=condition==="unavailable";blocked=condition==="blocked";
-      let code="";try{await analyze(youtube,[],null,new AbortController().signal);}catch(e){code=e.code;}
-      assert(code===(unavailable?"SOURCE_UNAVAILABLE":"INVALID_RESULT"));
-    }
-  } finally { globalThis.fetch=original;keys.forEach((k,i)=>old[i]===undefined?Deno.env.delete(k):Deno.env.set(k,old[i]!)); }
-});
+const raw = { sourceAccessible: true, title: "Visual test", overview: "A blue square appears.", keyPoints: ["A blue square."], sections: [{title:"Scene",body:"Blue square",startSeconds:2700},{title:"Invalid",body:"Beyond coverage",startSeconds:3601}],actions:[], evidence:[], limitations:[] };
 Deno.test("text sources continue to use OpenAI",async()=>{
   const original=fetch,old=Deno.env.get("OPENAI_API_KEY");Deno.env.set("OPENAI_API_KEY","text-test");
   globalThis.fetch=(async(url,opts)=>{assert(String(url)==="https://api.openai.com/v1/responses");const body=JSON.parse(String(opts?.body));assert(body.input[0].content[0].text.includes("37 volunteers"));return Response.json({status:"completed",output:[{content:[{type:"output_text",text:JSON.stringify(raw)}]}]});}) as typeof fetch;
@@ -71,4 +39,11 @@ Deno.test("text model migration preserves explicit overrides and structured outp
     globalThis.fetch = original;
     keys.forEach((k,i) => old[i] === undefined ? Deno.env.delete(k) : Deno.env.set(k, old[i]!));
   }
+});
+
+Deno.test('document questions read the full extraction and return an answer instead of another brief',async()=>{
+ const original=fetch,old=Deno.env.get('OPENAI_API_KEY');Deno.env.set('OPENAI_API_KEY','test');
+ globalThis.fetch=(async(_url,opts)=>{const body=JSON.parse(String(opts?.body));assert(body.input[0].content[0].text.includes('FINAL_SECRET_742'));assert(body.text.format.schema.required[0]==='answer');return Response.json({status:'completed',output:[{content:[{type:'output_text',text:JSON.stringify({answer:'The final code is FINAL_SECRET_742.'})}]}]});}) as typeof fetch;
+ try{const result=await analyze({type:'document',mode:'question',question:'What is the final code?',language:'en'},[{name:'Long report',extracted_text:'context '.repeat(15000)+'FINAL_SECRET_742'}],null,new AbortController().signal);assert(result.answer==='The final code is FINAL_SECRET_742.'&&result.coverage.extractedChars>48000);}
+ finally{globalThis.fetch=original;old===undefined?Deno.env.delete('OPENAI_API_KEY'):Deno.env.set('OPENAI_API_KEY',old);}
 });

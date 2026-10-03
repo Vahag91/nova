@@ -11,7 +11,6 @@ import Reanimated, {
   Easing,
   cancelAnimation,
 } from 'react-native-reanimated';
-import Svg, { Defs, LinearGradient, Stop, Rect } from 'react-native-svg';
 import SvgIcon from '../SvgIcon';
 import { colors } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
@@ -301,17 +300,6 @@ function VoiceOverlay({ visible, isRecording, transcript, volume = 0, onInsert, 
   return (
     <Reanimated.View style={[styles.wrap, wrapAnimatedStyle]} pointerEvents="auto">
       <Reanimated.View style={[styles.sheet, { maxHeight: screenH * 0.92 }, sheetAnimatedStyle]}>
-        <Svg pointerEvents="none" style={StyleSheet.absoluteFill}>
-          <Defs>
-            <LinearGradient id="voice_overlay_grad" x1="0" y1="0" x2="0" y2="1">
-              <Stop offset="0" stopColor="#0B0B0BCC" />
-              <Stop offset="0.55" stopColor="#0B0B0BB3" />
-              <Stop offset="1" stopColor="#0B1220CC" />
-            </LinearGradient>
-          </Defs>
-          <Rect x={0} y={0} width="100%" height="100%" fill="url(#voice_overlay_grad)" />
-        </Svg>
-
         <View style={styles.handle} />
 
         <TouchableOpacity
@@ -390,6 +378,9 @@ function VoiceOverlay({ visible, isRecording, transcript, volume = 0, onInsert, 
 
 export default memo(VoiceOverlay);
 
+const VOICE_GREY = '#2D2D31';
+const VOICE_ACCENT = '#F05A28';
+
 const styles = StyleSheet.create({
   wrap: { 
     position: 'absolute', 
@@ -402,7 +393,7 @@ const styles = StyleSheet.create({
     zIndex: 1000 
   },
   sheet: { 
-    backgroundColor: '#111213', 
+    backgroundColor: VOICE_GREY, 
     borderTopLeftRadius: 32, 
     borderTopRightRadius: 32, 
     paddingTop: 18, 
@@ -410,8 +401,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20, 
     minHeight: 380, 
     overflow: 'hidden', 
-    borderTopWidth: 1, 
-    borderColor: '#3B82F633', 
     alignSelf: 'stretch' 
   },
   handle: { 
@@ -419,7 +408,7 @@ const styles = StyleSheet.create({
     width: 56, 
     height: 6, 
     borderRadius: 3, 
-    backgroundColor: '#2A2A2A', 
+    backgroundColor: '#4A4A50', 
     marginBottom: 12 
   },
   closeBtn: { 
@@ -490,11 +479,11 @@ const styles = StyleSheet.create({
     width: 75, 
     height: 75, 
     borderRadius: 50, 
-    backgroundColor: '#2563EBCC', 
+    backgroundColor: VOICE_ACCENT, 
     alignItems: 'center', 
     justifyContent: 'center', 
     marginBottom: 18, 
-    shadowColor: '#3B82F6', 
+    shadowColor: VOICE_ACCENT, 
     shadowOffset: { width: 0, height: 0 }, 
     flexShrink: 0 
   },
@@ -521,30 +510,25 @@ const styles = StyleSheet.create({
     width: 4, 
     marginHorizontal: 2.5, 
     borderRadius: 2, 
-    backgroundColor: '#60A5FA',
+    backgroundColor: VOICE_ACCENT,
     minHeight: 10 // Ensure minimum height
   },
   footer: {
     paddingTop: 14,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#1A2234',
+    borderTopColor: 'rgba(255,255,255,0.1)',
   },
   insertBtn: { 
     alignSelf: 'stretch', 
-    backgroundColor: colors.primary, 
+    backgroundColor: VOICE_ACCENT, 
     paddingHorizontal: 24, 
     paddingVertical: 16, 
     borderRadius: 16, 
     marginTop: 0, 
     marginHorizontal: 20, 
-    shadowColor: 'rgba(59,130,246,0.5)', 
-    shadowOffset: { width: 0, height: 0 }, 
-    shadowOpacity: 1, 
-    shadowRadius: 12 
   },
   insertDisabled: { 
     opacity: 0.45,
-    backgroundColor: '#2D4F8F',
   },
   insertText: { 
     color: '#FFFFFF', 

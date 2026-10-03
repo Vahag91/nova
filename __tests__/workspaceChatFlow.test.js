@@ -5,7 +5,7 @@ jest.mock('../src/lib/storage', () => ({ Storage: {
   saveThread: jest.fn().mockResolvedValue(),
 } }));
 jest.mock('../src/state/useSettingsStore', () => ({ useSettingsStore: { getState: () => ({ model: 'test-model' }) } }));
-import { openWorkspaceChat, WORKSPACE_CHAT_SYSTEM } from '../src/lib/workspaceChat';
+import { openWorkspaceChat, WORKSPACE_CHAT_SYSTEM, documentQuestionSource } from '../src/lib/workspaceChat';
 import { workspaceChatContext } from '../src/lib/workspace';
 import { useThreadsStore } from '../src/state/useThreadsStore';
 import { throttledSave } from '../src/lib/throttledSave';
@@ -86,4 +86,12 @@ test('document coverage note states the exact chat cut so later sections are dec
   expect(small).toContain('300 characters extracted');
   expect(small).not.toContain('NOT available');
   expect(documentCoverageNote({ type: 'youtube', documents: [] })).toBe('');
+});
+
+test('document questions use owned source IDs, not the saved summary or the 48k chat excerpt',()=>{
+ const thread={meta:{workspaceType:'document',workspaceDocuments:[{id:'source-id',expiresAt:'2099-01-01'}]},messages:[{role:'assistant',content:'Saved summary'}]};
+ expect(documentQuestionSource(thread,'What does the final section say?')).toMatchObject({type:'document',mode:'question',documentIds:['source-id'],question:'What does the final section say?'});
+ expect(documentQuestionSource({meta:{workspaceType:'transcript'}},'What?')).toBeNull();
+ expect(()=>documentQuestionSource({...thread,meta:{...thread.meta,workspaceDocuments:[{id:'source-id',expiresAt:'2000-01-01'}]}},'Who?')).toThrow();
+ expect(()=>documentQuestionSource(thread,'x'.repeat(4001))).toThrow();
 });

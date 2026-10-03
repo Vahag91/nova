@@ -49,7 +49,7 @@ export function processDocument({ file, deviceId, signal, onProgress }) {
     if (signal?.aborted) { abort(); return; }
     xhr = new XMLHttpRequest();
     xhr.open('POST', DOCUMENT_PROCESS_URL);
-    xhr.timeout = 90_000;
+    xhr.timeout = 140_000;
     xhr.setRequestHeader('Authorization', `Bearer ${SUPABASE_ANON_KEY}`);
     xhr.setRequestHeader('apikey', SUPABASE_ANON_KEY);
     xhr.setRequestHeader('x-client-id', String(deviceId));

@@ -1,4 +1,5 @@
 import React, {
+  memo,
   useCallback,
   useContext,
   useEffect,
@@ -7,7 +8,6 @@ import React, {
   useState,
 } from 'react';
 import {
-  ActivityIndicator,
   Alert,
   Keyboard,
   Linking,
@@ -63,7 +63,7 @@ import {
   MAX_VIDEO_BYTES,
   normalizeYouTubeUrl,
   summaryLabels,
-  summaryMarkdown,
+  summaryPlainText,
   timestampUrl,
   usableDocuments,
 } from '../lib/workspace';
@@ -71,11 +71,11 @@ import { createWorkspaceDemo } from '../lib/workspaceDemo';
 import { openWorkspaceChat } from '../lib/workspaceChat';
 import { useAndroidNavigationMenu } from '../navigation/AndroidNavigationMenuContext';
 import { colors } from '../styles/colors';
-import { SUPPORTED_DOCUMENT_MIME_TYPES } from '../config/chatLimits';
+import { SUPPORTED_DOCUMENT_MIME_TYPES, MAX_DOCUMENT_SIZE_BYTES } from '../config/chatLimits';
 import SvgIcon from '../components/SvgIcon';
 import {
   WorkspaceHero,
-  WorkspaceProcessing,
+  WorkspacePendingCard,
   WorkspaceResultMark,
   workspaceThemes,
 } from '../components/workspace/WorkspaceVisuals';
@@ -84,7 +84,7 @@ const WorkspaceTheme = React.createContext(workspaceThemes.document);
 
 const errors = {
   ENCRYPTED_DOCUMENT: 'This PDF is password-protected. Upload an unlocked copy.',
-  UNSUPPORTED_DOCUMENT: 'This file is unreadable or its contents are unsupported. Use a PDF, DOCX, TXT or CSV file.',
+  UNSUPPORTED_DOCUMENT: 'This file is unreadable or its contents are unsupported. Use a PDF, DOCX, XLSX, PPTX, ODT, TXT, CSV, TSV, MD or JSON file.',
   NETWORK:
     'Check your internet connection and try again. Your selected sources are still here.',
   TIMEOUT:
@@ -97,16 +97,16 @@ const errors = {
   SOURCE_UNAVAILABLE:
     'This source could not be analyzed. Try another file or a pasted transcript.',
   TOO_MANY_PAGES:
-    'This PDF has too many pages. Split it into files of up to 100 pages each.',
+    'This PDF has too many pages. Split it into files of up to 300 pages each.',
   INVALID_VIDEO:
-    'Choose a readable MP4 or WebM video, up to 20 MB. We analyze the first 10 minutes.',
+    'Choose a readable MP4 or WebM video.',
   INVALID_DOCUMENTS: 'Select your documents again and retry.',
   CLIENT_ID_REQUIRED: 'Restart the app and try again.',
   RATE_LIMITED:
     'You have reached today’s analysis limit. Please try again tomorrow.',
   INVALID_RESULT: 'The analysis was incomplete. Please try again.',
   FILE_TOO_LARGE:
-    'This file is too large. Documents support up to 10 MB; video clips support up to 20 MB.',
+    'This file is too large. Choose a smaller file.',
   SOURCES_TOO_LARGE:
     'These documents are too large to analyze together. Summarize them separately or in smaller groups.',
   NO_READABLE_TEXT:
@@ -127,8 +127,18 @@ const errors = {
     'Could not unlock your source library. Restart the app and try again.',
   NO_SPEECH:
     'No clear speech could be transcribed. Try a video with audible speech or paste its transcript.',
-  VIDEO_TOO_LONG: 'Choose a video up to 10 minutes long.',
+  VIDEO_TOO_LONG: 'This video is too long. Choose a shorter video.',
 };
+
+// File names taken from content URIs can arrive percent-encoded.
+function readableLabel(label) {
+  if (typeof label !== 'string' || !/%[0-9A-Fa-f]{2}/.test(label)) return label;
+  try {
+    return decodeURIComponent(label);
+  } catch {
+    return label;
+  }
+}
 
 async function cleanCopies(files) {
   for (const file of files) {
@@ -138,6 +148,8 @@ async function cleanCopies(files) {
     } catch {}
   }
 }
+
+const DISABLED_FILL = [colors.surface, colors.surface];
 
 function Button({ children, onPress, secondary, disabled, testID, icon }) {
   const theme = useContext(WorkspaceTheme);
@@ -154,14 +166,14 @@ function Button({ children, onPress, secondary, disabled, testID, icon }) {
           styles.secondary,
           { borderColor: theme.border, backgroundColor: theme.panel },
         ],
-        disabled && styles.dim,
+        disabled && secondary && styles.dim,
         pressed && { transform: [{ scale: 0.98 }], opacity: 0.85 },
       ]}
     >
       {!secondary && (
         <LinearGradient
           pointerEvents="none"
-          colors={disabled ? ['#252A36', '#20242E'] : theme.gradient}
+          colors={disabled ? DISABLED_FILL : theme.gradient}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={[StyleSheet.absoluteFill, { borderRadius: 18 }]}
@@ -171,14 +183,14 @@ function Button({ children, onPress, secondary, disabled, testID, icon }) {
         <SvgIcon
           name={icon}
           size={20}
-          color={secondary ? theme.accent : disabled ? '#969394' : '#29231F'}
+          color={secondary ? theme.accent : disabled ? colors.textMuted : '#FFFFFF'}
         />
       )}
       <Text
         style={[
           styles.buttonText,
           {
-            color: secondary ? theme.accent : disabled ? '#969394' : '#29231F',
+            color: secondary ? theme.accent : disabled ? colors.textMuted : '#FFFFFF',
           },
         ]}
       >
@@ -197,7 +209,15 @@ export default function SourceWorkspace({ navigation, route }) {
   const { reportScreenReady } = useAndroidNavigationMenu();
   const subscription = useContext(SubscriptionAccessContext);
   const records = useWorkspaceStore(s => s.records);
-  const pendingJobs = useWorkspaceJobs(s => s.jobs);
+  const allPendingJobs = useWorkspaceJobs(s => s.jobs);
+  const pendingJobs = useMemo(
+    () => allPendingJobs.filter(job =>
+      video
+        ? ['upload', 'youtube', 'transcript'].includes(job.type)
+        : job.type === 'document',
+    ),
+    [allPendingJobs, video],
+  );
   const pendingError = useWorkspaceJobs(s => s.error);
   const capabilities = useSourceCapabilities();
   const storeError = useWorkspaceStore(s => s.error);
@@ -369,7 +389,7 @@ export default function SourceWorkspace({ navigation, route }) {
         if (
           !Number.isFinite(file.size) ||
           file.size <= 0 ||
-          file.size > (video ? MAX_VIDEO_BYTES : 10 * 1024 * 1024)
+          file.size > (video ? MAX_VIDEO_BYTES : MAX_DOCUMENT_SIZE_BYTES)
         )
           throw Object.assign(new Error(), { code: 'FILE_TOO_LARGE' });
       }
@@ -393,8 +413,8 @@ export default function SourceWorkspace({ navigation, route }) {
               : 'pickDocumentsError',
             errors[err.code] ||
               (video
-                ? 'Choose one MP4 or WebM clip, up to 20 MB and 10 minutes.'
-                : 'Choose up to three PDF, DOCX, TXT or CSV documents, up to 10 MB each.'),
+                ? 'Choose an MP4 or WebM video.'
+                : 'Choose up to three PDF, DOCX, XLSX, PPTX, ODT, TXT, CSV, TSV, MD or JSON documents, up to 25 MB each.'),
           ),
         );
     } finally {
@@ -416,6 +436,8 @@ export default function SourceWorkspace({ navigation, route }) {
     Keyboard.dismiss();
     if (controller.current || picking) return;
     if (!(await requirePremium())) return;
+    // Entitlement resolution is asynchronous; a second tap may have started work.
+    if (controller.current || picking) return;
     if (!sourceAvailable) {
       setError(
         c(
@@ -589,13 +611,13 @@ export default function SourceWorkspace({ navigation, route }) {
       if (
         pendingJob &&
         (err.terminal ||
-          [
+          (!err.accepted && [
             'NOT_CONFIGURED',
             'VIDEO_NOT_CONFIGURED',
             'WORKSPACE_KEY_REQUIRED',
             'REQUEST_ID_REQUIRED',
-          ].includes(err.code) ||
-          (err.status && ![404, 408, 500, 502, 503, 504].includes(err.status)))
+          ].includes(err.code)) ||
+          (!err.accepted && err.status && ![404, 408, 500, 502, 503, 504].includes(err.status)))
       )
         await useWorkspaceJobs
           .getState()
@@ -644,6 +666,7 @@ export default function SourceWorkspace({ navigation, route }) {
         return;
       }
       const result = await waitForSourceJob(options);
+      if (aborter.signal.aborted || !mounted.current) return;
       const record = validateWorkspaceRecord({
         ...job,
         result,
@@ -736,7 +759,7 @@ export default function SourceWorkspace({ navigation, route }) {
     try {
       await Share.share({
         title: active.result.title,
-        message: `${summaryMarkdown(active.result, summaryLabels(c))}\n\n${active.sourceLabel}`,
+        message: `${summaryPlainText(active.result, summaryLabels(c))}\n\n${active.sourceLabel}`,
       });
     } catch {
       setError(
@@ -744,7 +767,7 @@ export default function SourceWorkspace({ navigation, route }) {
       );
     }
   }
-  function removeRecord(record) {
+  const removeRecord = useCallback(record => {
     Alert.alert(
       c('removeTitle', 'Remove saved brief?'),
       c(
@@ -775,7 +798,14 @@ export default function SourceWorkspace({ navigation, route }) {
         },
       ],
     );
-  }
+  }, [active?.id, c, t]);
+
+  const openRecord = useCallback(record => {
+    setActive(record);
+    setTab('summary');
+    setError('');
+    setSaveFailed(false);
+  }, []);
 
   const result = active?.result;
   const hasSource =
@@ -819,34 +849,16 @@ export default function SourceWorkspace({ navigation, route }) {
           {!active &&
             !busy &&
             pendingJobs.map(job => (
-              <View key={job.id} style={styles.card}>
-                <Text style={styles.eyebrow}>
-                  {c('pendingAnalysis', 'PENDING ANALYSIS')}
-                </Text>
-                <Text style={styles.fileName}>{job.sourceLabel}</Text>
-                <Text style={styles.caption}>
-                  {c(
-                    'resumeHint',
-                    'Once accepted, analysis continues if you leave the screen. Retrieve the result here without starting it again.',
-                  )}
-                </Text>
-                <Button
-                  secondary
-                  disabled={busy}
-                  testID={`workspace-resume-${job.id}`}
-                  onPress={() => resumeJob(job)}
-                >
-                  {c('checkProgress', 'Check progress')}
-                </Button>
-                <Button
-                  secondary
-                  disabled={busy}
-                  testID={`workspace-cancel-${job.id}`}
-                  onPress={() => resumeJob(job, true)}
-                >
-                  {c('cancelAnalysis', 'Cancel analysis')}
-                </Button>
-              </View>
+              <WorkspacePendingCard
+                key={job.id}
+                video={video}
+                title={readableLabel(job.sourceLabel)}
+                status={c('pendingAnalysis', 'PENDING ANALYSIS')}
+                actions={[
+                  { testID: `workspace-resume-${job.id}`, label: c('checkProgress', 'Check progress'), onPress: () => resumeJob(job), disabled: busy },
+                  { testID: `workspace-cancel-${job.id}`, label: c('cancelAnalysis', 'Cancel analysis'), onPress: () => resumeJob(job, true), secondary: true, disabled: busy },
+                ]}
+              />
             ))}
           {active ? (
             <>
@@ -889,11 +901,6 @@ export default function SourceWorkspace({ navigation, route }) {
                       <Text style={[styles.eyebrow, { color: theme.accent }]}>
                         {c('summaryReady', 'READY TO EXPLORE')}
                       </Text>
-                      <Text style={styles.caption}>
-                        {saveFailed
-                          ? c('notSavedYet', 'Ready to save')
-                          : c('savedOnDevice', 'Saved on this device')}
-                      </Text>
                     </View>
                   </View>
                   <Text accessibilityRole="header" style={styles.title}>
@@ -909,7 +916,7 @@ export default function SourceWorkspace({ navigation, route }) {
                       style={[styles.caption, styles.grow]}
                       numberOfLines={2}
                     >
-                      {active.sourceLabel}
+                      {readableLabel(active.sourceLabel)}
                     </Text>
                   </View>
                 </LinearGradient>
@@ -918,37 +925,6 @@ export default function SourceWorkspace({ navigation, route }) {
                     {c('demoNotice', 'Local demo · sample content · no source uploaded')}
                   </Text>
                 )}
-                <Text
-                  style={[
-                    styles.coverage,
-                    { backgroundColor: theme.panel, color: theme.accent },
-                  ]}
-                >
-                  {active.type === 'document'
-                    ? c(
-                        'documentCoverage',
-                        'Based on extracted text. Images and scanned pages may not be included.',
-                        {
-                          count: (
-                            result.coverage?.extractedChars || 0
-                          ).toLocaleString(),
-                        },
-                      )
-                    : result.coverage?.kind === 'transcribed_audio'
-                    ? c(
-                        'audioCoverage',
-                        'Speech summary · Visuals are not analyzed. Check names and numbers against the recording.',
-                      )
-                    : active.type === 'transcript'
-                    ? c(
-                        'transcriptCoverage',
-                        'Based on the supplied transcript. Video visuals were not analyzed.',
-                      )
-                    : c(
-                        'videoCoverageV3',
-                        'Speech & visual scenes · First 10 minutes at most. Chapters are approximate; fast actions may be missed.',
-                      )}
-                </Text>
                 {result.coverage?.possibleExtractionLimit && (
                   <Text style={styles.error}>
                     {c(
@@ -1059,7 +1035,7 @@ export default function SourceWorkspace({ navigation, route }) {
                     ))}
                     {!!result.actions?.length && (
                       <Text style={styles.sectionTitle}>
-                        {c('actions', 'Action items')}
+                        {c('actions', 'Next steps')}
                       </Text>
                     )}
                     {result.actions?.map((action, index) => (
@@ -1115,17 +1091,6 @@ export default function SourceWorkspace({ navigation, route }) {
                 )}
                 {tab === 'sources' && (
                   <>
-                    <Text style={styles.body}>
-                      {video
-                        ? c(
-                            'videoEvidence',
-                            'Video timestamps are approximate. Transcript summaries describe the supplied text and do not analyze visuals.',
-                          )
-                        : c(
-                            'documentEvidence',
-                            'Excerpts below are matched against extracted text. Original page numbers are shown only when available.',
-                          )}
-                    </Text>
                     {result.evidence?.map((evidence, index) => (
                       <View style={styles.quote} key={index}>
                         <Text selectable style={styles.body}>
@@ -1147,6 +1112,39 @@ export default function SourceWorkspace({ navigation, route }) {
                     <Text style={styles.sectionTitle}>
                       {c('coverage', 'Coverage & limitations')}
                     </Text>
+                    <Text
+                      style={[
+                        styles.coverage,
+                        { backgroundColor: theme.panel, color: colors.textSecondary },
+                      ]}
+                    >
+                      {active.type === 'document'
+                        ? c(
+                            'documentCoverage',
+                            'Based on extracted text. Images and scanned pages may not be included.',
+                            {
+                              count: (
+                                result.coverage?.extractedChars || 0
+                              ).toLocaleString(),
+                            },
+                          )
+                        : result.coverage?.kind === 'transcribed_audio'
+                        ? c(
+                            'audioCoverage',
+                            'Speech summary · Visuals are not analyzed. Check names and numbers against the recording.',
+                          )
+                        : active.type === 'transcript'
+                        ? c(
+                            'transcriptCoverage',
+                            'Based on the supplied transcript. Video visuals were not analyzed.',
+                          )
+                        : result.coverage?.chaptersChecked
+                        ? c('chatContextShort', 'Curious about something? Ask a follow-up.')
+                        : c(
+                            'videoCoverageV3',
+                            'Speech & visual scenes. Chapters are approximate; fast actions may be missed.',
+                          )}
+                    </Text>
                     {result.limitations?.map((note, index) => (
                       <Text selectable style={styles.body} key={index}>
                         • {note}
@@ -1164,12 +1162,6 @@ export default function SourceWorkspace({ navigation, route }) {
                           : ''}
                       </Text>
                     ))}
-                    <Text style={styles.caption}>
-                      {c(
-                        'localOnlyV2',
-                        'Briefs are saved on this device. The analysis result is also kept on the analysis server for up to 7 days so it can be retrieved, then deleted. Share a copy to keep a backup.',
-                      )}
-                    </Text>
                   </>
                 )}
               </View>
@@ -1241,12 +1233,6 @@ export default function SourceWorkspace({ navigation, route }) {
                     accessibilityLabel={c('videoLink', 'YouTube video link')}
                     maxLength={2048}
                   />
-                  <Text style={styles.caption}>
-                    {c(
-                      'publicVideoCoverage',
-                      'Public YouTube videos · First 10 minutes. Private, live and restricted videos may be unavailable.',
-                    )}
-                  </Text>
                 </>
               )}
               {video && mode === 'transcript' && (
@@ -1266,10 +1252,11 @@ export default function SourceWorkspace({ navigation, route }) {
                     placeholderTextColor={colors.textSecondary}
                     accessibilityLabel={c('transcript', 'Transcript')}
                   />
-                  <Text style={styles.caption}>
-                    {transcript.length.toLocaleString()} / 120,000 ·{' '}
-                    {c('textOnly', 'Text only; visuals are not analyzed.')}
-                  </Text>
+                  {transcript.length >= 108000 && (
+                    <Text style={styles.caption}>
+                      {transcript.length.toLocaleString()} / 120,000
+                    </Text>
+                  )}
                 </>
               )}
               {!sourceAvailable && (
@@ -1304,17 +1291,6 @@ export default function SourceWorkspace({ navigation, route }) {
                         ? c('chooseVideo', 'Choose video')
                         : c('chooseFiles', 'Choose files')}
                     </Button>
-                    <Text style={[styles.caption, styles.centered]}>
-                      {video
-                        ? c(
-                            'videoLimitsV3',
-                            'MP4 / WebM · 20 MB · First 10 min · Speech & visuals',
-                          )
-                        : c(
-                            'docLimits',
-                            'PDF, Word, TXT, CSV · 3 files · 10 MB each',
-                          )}
-                    </Text>
                   </View>
                   {files.map(file => (
                     <View
@@ -1345,9 +1321,11 @@ export default function SourceWorkspace({ navigation, route }) {
                         <Text numberOfLines={2} style={styles.fileName}>
                           {file.name}
                         </Text>
-                        <Text style={styles.caption}>
-                          {formatFileSize(file.size)}
-                        </Text>
+                        {!video && (
+                          <Text style={styles.caption}>
+                            {formatFileSize(file.size)}
+                          </Text>
+                        )}
                       </View>
                       <Pressable
                         accessibilityRole="button"
@@ -1431,27 +1409,13 @@ export default function SourceWorkspace({ navigation, route }) {
                 ))}
               </View>
               {busy ? (
-                <View
-                  accessibilityLiveRegion="polite"
-                  style={[
-                    styles.processing,
-                    { backgroundColor: theme.panel, borderColor: theme.border },
-                  ]}
-                >
-                  <WorkspaceProcessing video={video} />
-                  <ActivityIndicator color={theme.accent} size="small" />
-                  <Text style={styles.body}>
-                    {phase}
-                    {progress !== null ? ` ${Math.round(progress * 100)}%` : ''}
-                  </Text>
-                  <Button
-                    secondary
-                    testID="workspace-cancel"
-                    onPress={() => controller.current?.abort()}
-                  >
-                    {c('stopWaiting', 'Stop waiting')}
-                  </Button>
-                </View>
+                <WorkspacePendingCard
+                  video={video}
+                  title={phase}
+                  status={c('analyzing', 'Building your source brief…')}
+                  progress={progress}
+                  actions={[{ testID: 'workspace-cancel', label: c('stopWaiting', 'Stop waiting'), onPress: () => controller.current?.abort(), secondary: true }]}
+                />
               ) : (
                 <Button
                   testID="workspace-analyze"
@@ -1470,12 +1434,6 @@ export default function SourceWorkspace({ navigation, route }) {
                   →
                 </Button>
               )}
-              <Text style={[styles.caption, styles.centered]}>
-                {c(
-                  'processingNotice',
-                  'Files are sent securely for AI processing. Check important details against the original.',
-                )}
-              </Text>
             </View>
           )}
           {!active && (
@@ -1558,67 +1516,7 @@ export default function SourceWorkspace({ navigation, route }) {
                   </Text>
                 </View>
               )}
-              {visibleRecords.map(record => (
-                <View
-                  key={record.id}
-                  style={[styles.libraryRow, { borderColor: theme.border }]}
-                >
-                  <Pressable
-                    testID={`workspace-record-${record.id}`}
-                    accessibilityRole="button"
-                    disabled={busy}
-                    style={styles.libraryOpen}
-                    onPress={() => {
-                      setActive(record);
-                      setTab('summary');
-                      setError('');
-                      setSaveFailed(false);
-                    }}
-                  >
-                    <View
-                      style={[
-                        styles.fileIcon,
-                        { backgroundColor: theme.panel },
-                      ]}
-                    >
-                      <SvgIcon
-                        name={
-                          record.type === 'document'
-                            ? 'workspace-document'
-                            : 'workspace-video'
-                        }
-                        size={20}
-                        color={theme.accent}
-                      />
-                    </View>
-                    <View style={styles.grow}>
-                      <Text numberOfLines={2} style={styles.fileName}>
-                        {record.result.title}
-                      </Text>
-                      <Text numberOfLines={1} style={styles.caption}>
-                        {record.sourceLabel}
-                      </Text>
-                      <Text style={styles.caption}>
-                        {new Date(record.createdAt).toLocaleDateString()}
-                      </Text>
-                    </View>
-                  </Pressable>
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel={c('removeBrief', 'Remove {{name}}', {
-                      name: record.result.title,
-                    })}
-                    style={styles.remove}
-                    onPress={() => removeRecord(record)}
-                  >
-                    <SvgIcon
-                      name="trash"
-                      size={18}
-                      color={colors.textSecondary}
-                    />
-                  </Pressable>
-                </View>
-              ))}
+              <WorkspaceLibrary records={visibleRecords} theme={theme} busy={busy} c={c} onOpen={openRecord} onRemove={removeRecord} />
               {typeof __DEV__ !== 'undefined' && __DEV__ && !busy && (
                 <Button
                   secondary
@@ -1639,12 +1537,6 @@ export default function SourceWorkspace({ navigation, route }) {
             ]}
           >
             <View style={styles.dockContent}>
-              <Text style={[styles.caption, styles.centered]}>
-                {c(
-                  'chatContextShort',
-                  'Ask questions with this summary and available source text.',
-                )}
-              </Text>
               <Button
                 testID="workspace-chat"
                 disabled={openingChat}
@@ -1664,7 +1556,7 @@ export default function SourceWorkspace({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#0D0D0E' },
+  screen: { flex: 1, backgroundColor: colors.background },
   composer: { gap: 14, paddingHorizontal: 2, paddingVertical: 6 },
   content: {
     paddingHorizontal: 16,
@@ -1678,23 +1570,23 @@ const styles = StyleSheet.create({
   eyebrow: {
     color: colors.textSecondary,
     fontSize: 11,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     letterSpacing: 1.2,
   },
   hero: {
     color: colors.text,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     fontSize: 28,
     lineHeight: 36,
   },
   subtitle: {
     color: colors.textSecondary,
-    fontFamily: 'Lato-Regular',
+    fontWeight: '400',
     fontSize: 15,
     lineHeight: 23,
   },
   card: {
-    backgroundColor: '#19181B',
+    backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.08)',
     borderRadius: 24,
@@ -1707,7 +1599,7 @@ const styles = StyleSheet.create({
     padding: 18,
     borderWidth: 1,
     borderRadius: 22,
-    backgroundColor: '#19181B',
+    backgroundColor: colors.surface,
     gap: 12,
   },
   resultToolbar: {
@@ -1728,25 +1620,25 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 23,
     lineHeight: 30,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     color: colors.text,
   },
   caption: {
     color: colors.textSecondary,
-    fontFamily: 'Lato-Regular',
+    fontWeight: '400',
     fontSize: 13,
     lineHeight: 20,
   },
   body: {
     color: colors.text,
-    fontFamily: 'Lato-Regular',
+    fontWeight: '400',
     fontSize: 16,
     lineHeight: 25,
   },
   sectionTitle: {
     color: colors.text,
     fontSize: 16,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     lineHeight: 23,
   },
   button: {
@@ -1756,13 +1648,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 22,
     flexDirection: 'row',
     gap: 8,
-    backgroundColor: '#252328',
+    backgroundColor: colors.surface,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonText: {
     color: '#FFFFFF',
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     fontSize: 15,
     textAlign: 'center',
     flexShrink: 1,
@@ -1780,12 +1672,12 @@ const styles = StyleSheet.create({
     gap: 4,
     padding: 4,
     borderRadius: 24,
-    backgroundColor: '#19181B',
+    backgroundColor: colors.surface,
   },
   tab: {
     flexGrow: 1,
     flexBasis: 80,
-    paddingHorizontal: 10,
+    paddingHorizontal: 6,
     paddingVertical: 10,
     minHeight: 44,
     justifyContent: 'center',
@@ -1793,26 +1685,26 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   tabActive: {
-    backgroundColor: '#244267',
+    backgroundColor: colors.surfaceElevated,
   },
   tabText: {
     color: colors.textSecondary,
-    fontSize: 14,
+    fontSize: 13,
     lineHeight: 20,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     textAlign: 'center',
   },
-  tabTextActive: { color: '#F5F8FF' },
+  tabTextActive: { color: '#FFFFFF' },
   input: {
-    backgroundColor: '#19181B',
+    backgroundColor: colors.surface,
     borderWidth: 1,
-    borderColor: '#3C363F',
+    borderColor: colors.surfaceElevated,
     borderRadius: 18,
     padding: 14,
     minHeight: 50,
     color: colors.text,
     fontSize: 16,
-    fontFamily: 'Lato-Regular',
+    fontWeight: '400',
   },
   transcript: { minHeight: 180, maxHeight: 300 },
   stepHeader: { flexDirection: 'row', alignItems: 'center', gap: 10 },
@@ -1823,7 +1715,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  stepNumber: { fontSize: 11, fontFamily: 'Lato-Bold' },
+  stepNumber: { fontSize: 11, fontWeight: '500' },
   dropArea: {
     padding: 16,
     gap: 12,
@@ -1841,7 +1733,7 @@ const styles = StyleSheet.create({
   formatLabel: {
     fontSize: 10,
     lineHeight: 15,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     letterSpacing: 0.4,
   },
   depthOptions: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
@@ -1852,8 +1744,8 @@ const styles = StyleSheet.create({
     padding: 13,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#302D32',
-    backgroundColor: '#19181B',
+    borderColor: 'transparent',
+    backgroundColor: colors.surface,
   },
   depthHeading: {
     flexDirection: 'row',
@@ -1863,23 +1755,23 @@ const styles = StyleSheet.create({
   },
   depthTitle: {
     flex: 1,
-    fontSize: 14,
-    lineHeight: 20,
-    fontFamily: 'Lato-Bold',
-    color: '#E8E2DB',
+    fontSize: 15,
+    lineHeight: 21,
+    fontWeight: '500',
+    color: '#FFFFFF',
   },
   depthCaption: {
-    fontSize: 11,
-    lineHeight: 16,
-    fontFamily: 'Lato-Regular',
-    color: '#A8A0A3',
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '400',
+    color: colors.textSecondary,
   },
   radioDot: {
     width: 16,
     height: 16,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#667086',
+    borderColor: colors.textMuted,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1888,14 +1780,14 @@ const styles = StyleSheet.create({
     color: colors.text,
     fontSize: 18,
     lineHeight: 26,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     textAlign: 'center',
   },
   centered: { textAlign: 'center' },
   sourceIcon: {
     width: 64,
     height: 64,
-    backgroundColor: '#242426',
+    backgroundColor: colors.surfaceInset,
     borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center',
@@ -1913,7 +1805,7 @@ const styles = StyleSheet.create({
     color: colors.text,
     fontSize: 16,
     lineHeight: 22,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
   },
   remove: {
     minHeight: 44,
@@ -1929,21 +1821,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  processing: {
-    borderWidth: 1,
-    gap: 14,
-    alignItems: 'stretch',
-    padding: 16,
-    borderRadius: 18,
-    backgroundColor: colors.surface,
-  },
   error: {
     color: '#FFB4AB',
     backgroundColor: 'rgba(239,68,68,0.1)',
     padding: 14,
     borderRadius: 12,
     lineHeight: 22,
-    fontFamily: 'Lato-Regular',
+    fontWeight: '400',
   },
   coverage: {
     color: colors.textSecondary,
@@ -1952,14 +1836,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     fontSize: 12,
     lineHeight: 20,
-    fontFamily: 'Lato-Regular',
+    fontWeight: '400',
   },
   point: {
     flexDirection: 'row',
     gap: 12,
     padding: 14,
     borderRadius: 18,
-    backgroundColor: '#111722',
+    backgroundColor: colors.surface,
   },
   pointNumber: {
     fontSize: 13,
@@ -1969,7 +1853,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: colors.textSecondary,
     lineHeight: 30,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
   },
   section: {
     gap: 8,
@@ -1979,7 +1863,7 @@ const styles = StyleSheet.create({
   },
   timestamp: {
     color: colors.text,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
     paddingVertical: 8,
     fontSize: 14,
   },
@@ -2002,7 +1886,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flexDirection: 'row',
     padding: 12,
-    backgroundColor: '#19181B',
+    backgroundColor: colors.surface,
     borderRadius: 20,
     alignItems: 'center',
     gap: 4,
@@ -2020,7 +1904,7 @@ const styles = StyleSheet.create({
     paddingStart: 16,
     paddingEnd: 4,
     borderRadius: 26,
-    backgroundColor: '#141B29',
+    backgroundColor: colors.surface,
     gap: 10,
   },
   searchInput: {
@@ -2028,7 +1912,7 @@ const styles = StyleSheet.create({
     minHeight: 48,
     paddingVertical: 12,
     fontSize: 15,
-    fontFamily: 'Lato-Regular',
+    fontWeight: '400',
     color: colors.text,
   },
   emptyLibrary: {
@@ -2037,21 +1921,82 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
     gap: 14,
-    backgroundColor: '#19181B',
+    backgroundColor: colors.surface,
   },
   empty: {
     flex: 1,
     color: colors.textSecondary,
     lineHeight: 22,
     fontSize: 14,
-    fontFamily: 'Lato-Regular',
+    fontWeight: '400',
   },
   chatDock: {
     paddingTop: 12,
     paddingHorizontal: 16,
-    backgroundColor: '#141315',
+    backgroundColor: colors.background,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: colors.border,
   },
   dockContent: { width: '100%', maxWidth: 648, alignSelf: 'center', gap: 10 },
+});
+
+const WorkspaceLibrary = memo(function WorkspaceLibrary({ records, theme, busy, c, onOpen, onRemove }) {
+  return <>
+              {records.map(record => (
+                <View
+                  key={record.id}
+                  style={[styles.libraryRow, { borderColor: theme.border }]}
+                >
+                  <Pressable
+                    testID={`workspace-record-${record.id}`}
+                    accessibilityRole="button"
+                    disabled={busy}
+                    style={styles.libraryOpen}
+                    onPress={() => onOpen(record)}
+                  >
+                    <View
+                      style={[
+                        styles.fileIcon,
+                        { backgroundColor: theme.panel },
+                      ]}
+                    >
+                      <SvgIcon
+                        name={
+                          record.type === 'document'
+                            ? 'workspace-document'
+                            : 'workspace-video'
+                        }
+                        size={20}
+                        color={theme.accent}
+                      />
+                    </View>
+                    <View style={styles.grow}>
+                      <Text numberOfLines={2} style={styles.fileName}>
+                        {record.result.title}
+                      </Text>
+                      <Text numberOfLines={1} style={styles.caption}>
+                        {readableLabel(record.sourceLabel)}
+                      </Text>
+                      <Text style={styles.caption}>
+                        {new Date(record.createdAt).toLocaleDateString()}
+                      </Text>
+                    </View>
+                  </Pressable>
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={c('removeBrief', 'Remove {{name}}', {
+                      name: record.result.title,
+                    })}
+                    style={styles.remove}
+                    onPress={() => onRemove(record)}
+                  >
+                    <SvgIcon
+                      name="trash"
+                      size={18}
+                      color={colors.textSecondary}
+                    />
+                  </Pressable>
+                </View>
+              ))}
+  </>;
 });

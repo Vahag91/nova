@@ -217,6 +217,18 @@ Physical verification on the Xiaomi 21091116AG (Android 12) with the rebuilt rel
 
 ## Re-check after the follow-up work — 2026-10-03
 
+### One-hour video coverage — 2026-10-03
+
+Production source-analyze v7 requests the first 3600 seconds for uploads and YouTube, retains chapters through 3600 seconds, advertises videoSeconds=3600, and labels follow-up source references with the one-hour coverage. Flash-Lite, the 20 MB upload guard, quotas and document processing limits are unchanged. The app no longer displays routine duration/MB video labels; the video file list omits byte size. Duration and size labels were removed from the relevant workspace strings in all 86 catalogs.
+
+Canary and production analyzed a synthetic 3605-second clip: blue through minute 45, green up to one hour, yellow after one hour. Both returned blue and green and excluded yellow, proving coverage beyond ten minutes and clipping at one hour. Production completed in 12.842 seconds. Reported transition timestamps were inaccurate (300/500 seconds rather than 2700); this test verifies coverage, not chapter timing accuracy. Five Deno tests and 48 focused app tests passed; public YouTube passed. The existing 105-second provider deadline remains; this is not a guarantee that every complex hour-long video finishes before timeout. Logs and rollback snapshot are in tmp/hour-video-qa/.
+
+### Video model switch to Flash-Lite — 2026-10-03
+
+Deployed source-analyze v6 with Gemini 3.5 Flash-Lite for video. The default and explicit old gemini-3.7-flash override map to gemini-3.5-flash-lite; other custom overrides remain respected. Only provider.ts model selection changed. GPT-6 Luna text analysis, quotas, 600-second clipping, 20 MB uploads, ownership and job behavior remain unchanged.
+
+Five Deno tests passed. Canary live tests passed silent visuals, spoken tutorial, public YouTube, follow-up chat, idempotency and a 605-second cutoff fixture. Production upload/YouTube checks and follow-up chat passed; fixtures completed in approximately 4–7 seconds, not a general latency guarantee. Evidence: tmp/flash-lite-qa/production-upload.log and production-youtube.log. Rollback bundle: tmp/flash-lite-qa/before.json.
+
 ### GPT-6 Luna backend migration — 2026-10-03
 
 Production `chat-proxy-v2` v12 and `source-analyze` v5 now route the former GPT-5.6 Luna workloads to `gpt-6-luna`. Old client model IDs remain accepted. Source text defaults and an explicit `SOURCE_TEXT_MODEL=gpt-5.6-luna` migrate; other custom overrides remain respected. Gemini video, legacy `chat-proxy` (GPT-5.4 Nano), paywalls and quotas are unchanged. Server logs confirm GPT-6 Luna completions in production.
@@ -252,3 +264,39 @@ Validation: `npm run i18n:audit:strict` PASS (86/86, 0 errors), 325 Jest tests i
 Build note: Gradle marked `createBundleReleaseJsAndAssets` up to date after catalog-only edits and shipped a stale JavaScript bundle. Force it when catalogs change: `./gradlew :app:createBundleReleaseJsAndAssets --rerun :app:assembleRelease`.
 
 Known limits: translations were produced with an LLM against each catalog's existing terminology, then validated for placeholders, line breaks, script and leftover English. They have not had native-speaker review; Romansh, Basque, Odia and the African catalogs are the ones most worth a native check. The older v3 onboarding screens (not used by the shipping v4 flow) still build one title from two separately translated halves.
+
+## Source-backed video questions and output checks — 2026-10-03
+
+Production source-analyze v9 retains uploaded videos privately through the Gemini Files API (48-hour expiry), while YouTube references use the existing seven-day job retention. The app sends owned source job IDs for subsequent video questions, with bounded conversation context; the provider receives the original video. Private file references are stripped from responses and saved chat documents. Expired/legacy uploads require adding the source again; they do not silently fall back to a summary. Question retries retain their job ID and exact request, and questions do not create duplicate library summaries.
+
+A separate source pass reviews explicit tasks/procedure steps, including tasks mentioned in Details, for the Next steps section. Promotional buttons are excluded. Up to nine chapter proposals are checked against short source clips at two frames per second; uncertain, out-of-window or failed checks hide the time while retaining the text. This reduces false precision, but is not frame-perfect timestamp verification. New result metadata remains compatible with older saved records. The UI uses the existing summary tabs and chat composer.
+
+Validation: 341 Jest tests in 59 suites; eight Deno provider/handler tests; Deno type check; Android release assembly. Staging covered silent scenes, meeting owners/deadlines, a tutorial checklist, paywall content with no invented tasks, unavailable answers, YouTube follow-up, and a 3605-second synthetic video (content after minute 45 included, analysis capped at one hour, 72.8 seconds runtime). Production smoke passed original-upload follow-up, cross-secret ownership rejection, private-reference redaction and idempotent retry. Evidence: tmp/deep-video-*.log and tmp/video-value-deep-*.json. The existing 105-second worker deadline remains; the synthetic hour fixture does not guarantee all complex hour-long videos finish. Additional source passes increase provider usage.
+
+Device verification limitation: no physical phone was attached. Two installed Android emulator images stalled/offlined before accepting shell/install commands, including after an ADB restart and software-renderer retry. Final on-screen verification of this build remains pending. Test-signed APK: tmp/deep-video-test.apk. The temporary test emulators were stopped.
+
+## Document expansion and complete-extraction questions — 2026-10-03
+
+Production: document-process v8, source-analyze v10 (JWT verification enabled). App build remains a local test build, not a Play release.
+
+Added XLSX, PPTX, ODT, Markdown, TSV and JSON alongside PDF, DOCX, TXT and CSV. XLSX preserves workbook/sheet order, names, hidden status, cell addresses, shared/inline strings, common date/percentage formats and cached-formula caveats; unsupported/custom formatting remains explicitly labelled rather than guessed. Formulas and macros are never executed. PPTX follows presentation relationships rather than filename order and includes speaker notes. ODT text and tables omit annotations/tracked-deletion content. PDF extraction now retains explicit page boundaries and blank-page indicators. ZIP/XML limits, external-relationship rejection and streaming upload bounds apply.
+
+Document summaries prioritize genre-specific facts, obligations, deadlines, qualifications and differences across files. Questions opened from a Documents summary use the full stored extraction through source-analyze mode=question, rather than the main chat proxy's 48,000-character excerpt. Ordinary document attachments in general chat still use the existing chat excerpt path. The new questions preserve exact request IDs for retry, use existing ownership/quota controls, and do not duplicate library summaries. Expired source references require selecting the original file again. The preset header no longer incorrectly displays Assistant unavailable for source conversations.
+
+Existing limits: 10 MB/file, 3 documents/request, 100 PDF pages, up to 200,000 extracted characters/file, seven-day source retention, combined input-token guard and existing daily source-analysis quotas. Scanned/image-only pages, diagrams/charts, embedded media and legacy binary .doc/.xls/.ppt formats are not newly supported. No OCR or formula recalculation is claimed. Saved libraries remain local to the device.
+
+Verification: 352 app tests across 59 suites, plus two source-header render tests; 16 document extraction tests and nine source-analysis tests; 86-locale audit passed. Staging and production checks covered all six new formats, existing PDF/DOCX, owner/deadline extraction from speaker notes, cached-formula warnings, wrong-device rejection, idempotent retry, conflicting plan comparison and a correct answer beyond character 140,000 despite an incorrect older chat summary. Logs: tmp/doc-upgrade-*.log. Test APK: tmp/document-video-upgrade-test.apk.
+
+Reference checks: Office Open XML sheet/string and slide relationship documentation at https://learn.microsoft.com/en-us/office/open-xml/presentation/how-to-get-all-the-text-in-all-slides-in-a-presentation and https://learn.microsoft.com/en-us/office/open-xml/spreadsheet/working-with-the-shared-string-table ; strict structured answers follow https://developers.openai.com/api/docs/guides/structured-outputs .
+
+### Pending device test — remind the owner after the document work
+
+The owner explicitly requested deferring physical-device testing and a reminder after document improvements. Next session: install the latest combined test APK; import a PDF, DOCX, XLSX and PPTX; verify summary/Details/Next steps, speaker notes, source quotes, file sharing and a late-document follow-up. Then test video upload and YouTube summaries, checked/hidden chapter times, next steps, original-video questions, retry/cancel, and expiry/re-upload behavior. Verify regular chat, old saved libraries and paywall behavior as regressions. Physical on-screen verification is pending, not a production-readiness guarantee.
+
+## Increased capacity — 2026-10-03
+
+Document uploads increased from 10 to 25 MiB, PDF pages from 100 to 300, stored extraction from 200,000 to 500,000 UTF-16 code units, and video uploads from 20 to 50 MiB. Production document-process v9 and source-analyze v11 are deployed, with validated database constraints widened by raise_document_capacity. Source-analyze was deployed first to accept larger extracted text before the document processor produced it. Picker checks, post-copy file validation, capability response and all 86 catalogs were updated together. Upload client deadlines are now 140 seconds; parsing/model/worker and input-token protections remain in effect. Three files per request, one-hour video coverage, retention, quotas, paywalls and ordinary-chat excerpt length are unchanged.
+
+Tests: full 354-test app suite plus two new upload-boundary tests; focused upload regression suite; 16 extractor and nine source-analyzer tests; locale audit. Staging accepted exactly 25 MiB TXT with a truthful 500,000-character cutoff, read all 300 PDF pages, rejected 301 pages and a one-byte oversized document, answered from character 499,974, analyzed a valid synthetic MP4 padded to exactly 50 MiB, and rejected a one-byte oversized video. These are boundary and regression tests, not proof that every complex file below the caps meets runtime deadlines. Evidence: tmp/limits-*.log. Physical testing is still deferred at the owner's request.
+
+Production verification also passed the full raised-limit suite, including the 50 MiB video and one-byte oversized rejection. Release assembly and signature verification passed. Latest test APK: tmp/document-video-higher-limits-test.apk. This supersedes the earlier lower-limit APK for the pending device test.

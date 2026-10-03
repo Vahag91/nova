@@ -35,7 +35,7 @@ function requestSource({
         method === 'POST' ? '' : `?id=${encodeURIComponent(requestId)}`
       }`,
     );
-    xhr.timeout = method === 'POST' ? 115000 : 15000;
+    xhr.timeout = method === 'POST' ? 140000 : 15000;
     xhr.setRequestHeader('Authorization', `Bearer ${SUPABASE_ANON_KEY}`);
     xhr.setRequestHeader('apikey', SUPABASE_ANON_KEY);
     xhr.setRequestHeader('x-client-id', deviceId);
@@ -151,5 +151,11 @@ export async function analyzeSource(options) {
   const job = validateSourceJob(response?.job);
   if (job.id !== options.requestId) throw invalid();
   options.onAccepted?.(job);
-  return waitForSourceJob(options, job);
+  try {
+    return await waitForSourceJob(options, job);
+  } catch (error) {
+    // The paid job already exists. A failed poll must not discard its recovery ID.
+    error.accepted = true;
+    throw error;
+  }
 }

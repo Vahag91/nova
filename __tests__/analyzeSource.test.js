@@ -33,3 +33,17 @@ test('malformed success responses do not become saved briefs', async () => {
   Object.assign(requests[0], { status: 200, responseText: '{"result":{}}' }); requests[0].onload();
   await expect(promise).rejects.toMatchObject({ code: 'INVALID_RESULT' });
 });
+
+test('a failed status poll preserves the fact that the paid job was accepted', async () => {
+  jest.useFakeTimers();
+  try {
+    const promise = analyzeSource({ source: {type:'transcript'}, deviceId:'test',requestId:'job-one' });
+    const rejected = expect(promise).rejects.toMatchObject({status:429,accepted:true});
+    Object.assign(requests[0], {status:202,responseText:JSON.stringify({job:{id:'job-one',status:'processing'}})});
+    requests[0].onload();
+    await jest.advanceTimersByTimeAsync(2000);
+    Object.assign(requests[1], {status:429,responseText:JSON.stringify({code:'SERVICE_BUSY'})});
+    requests[1].onload();
+    await rejected;
+  } finally {jest.useRealTimers();}
+});

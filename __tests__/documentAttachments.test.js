@@ -98,3 +98,14 @@ describe('premium chat limits', () => {
     expect(getChatTokenBudget(false, 200_000)).toBe(6_000);
   });
 });
+
+test.each(['xlsx','pptx','odt','md','tsv','json'])('new %s documents are accepted in the shared chat/workspace picker', extension=>{
+ expect(validatePickedDocument({name:'report.'+extension,type:'application/octet-stream',size:800,uri:'content://report'})).toMatchObject({ok:true,value:{name:'report.'+extension}});
+});
+test.each(['xls','ppt','exe','zip'])('unsupported %s extensions remain rejected', extension=>{expect(validatePickedDocument({name:'report.'+extension,type:'application/octet-stream',size:800})).toMatchObject({ok:false,code:'unsupported_type'});});
+
+test('25 MB document boundary accepts files above the former cap and rejects one byte over',()=>{
+ const file={name:'report.pdf',type:'application/pdf',uri:'content://report',size:25*1024*1024};
+ expect(MAX_DOCUMENT_SIZE_BYTES).toBe(25*1024*1024);expect(validatePickedDocument(file).ok).toBe(true);
+ expect(validatePickedDocument({...file,size:file.size+1})).toMatchObject({ok:false,code:'file_too_large'});
+});

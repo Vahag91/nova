@@ -326,7 +326,7 @@ const renderItem = ({ item: thread }) => {
       }}
     >
       <View style={styles.searchWrap}>
-        <SvgIcon name="search" size={18} color="#888888" style={styles.searchIcon} />
+        <SvgIcon name="search" size={18} color={colors.textMuted} style={styles.searchIcon} />
         <TextInput
           value={q}
           onChangeText={(text) => {
@@ -341,7 +341,7 @@ const renderItem = ({ item: thread }) => {
         />
         {q?.length > 0 && (
           <TouchableOpacity onPress={() => setQ('')} accessibilityLabel={t('history.clearSearch')} style={{ paddingLeft: 8 }}>
-            <SvgIcon name="clear" size={18} color="#888888" />
+            <SvgIcon name="clear" size={18} color={colors.textMuted} />
           </TouchableOpacity>
         )}
       </View>
@@ -426,13 +426,13 @@ const styles = StyleSheet.create({
   searchWrap: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: 20,
-    marginTop: 16,
+    marginHorizontal: 16,
+    marginTop: 8,
     marginBottom: 8,
-    backgroundColor: '#1C1C1E',
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    backgroundColor: colors.surface,
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    minHeight: 46,
   },
   searchIcon: { marginRight: 8 },
   search:{ flex: 1, fontSize: 16, color: colors.text, padding: 0 },
@@ -447,10 +447,8 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 13,
-    fontWeight: '700',
-    color: colors.textSecondary,
-    textTransform: 'uppercase',
-    letterSpacing: 0.6,
+    lineHeight: 18,
+    color: colors.textMuted,
   },
   row:{ 
     paddingHorizontal: 16, 
@@ -459,21 +457,21 @@ const styles = StyleSheet.create({
   },
   rowCard: {
     backgroundColor: colors.surface,
-    borderRadius: 12,
+    borderRadius: 16,
     paddingHorizontal: 16,
     paddingVertical: 14,
   },
   rowContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   rowMain:{ flex: 1, marginRight: 16 },
-  topic:{ fontSize: 17, fontWeight: '500', color: colors.text, lineHeight: 22 },
+  topic:{ fontSize: 16, color: colors.text, lineHeight: 22 },
 
   rowRight: { alignItems: 'flex-end', minWidth: 80 },
   time:{ fontSize: 13, color: colors.textMuted },
 
   emptyWrap:{ flexGrow:1, justifyContent:'center', alignItems:'center', padding:24 },
   empty:{ alignItems:'center' },
-  emptyTitle:{ fontSize:18, fontWeight:'700', color: colors.text },
-  startBtn:{ backgroundColor: colors.primary, paddingHorizontal: 20, paddingVertical: 12, borderRadius: 10, marginTop: 16 },
+  emptyTitle:{ fontSize:18, fontWeight:'500', color: colors.text },
+  startBtn:{ backgroundColor: colors.primary, paddingHorizontal: 20, paddingVertical: 12, borderRadius: 14, marginTop: 16 },
   startBtnText:{ color: colors.buttonText, fontWeight:'600', fontSize: 16 },
 
   // Right actions (Delete)
@@ -491,7 +489,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF3B30',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 12, // match rowCard radius
+    borderRadius: 16, // match rowCard radius
   },
   actionContentCol: {
     flexDirection: 'column',
@@ -517,21 +515,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingVertical: 18,
+    paddingHorizontal: 18,
     borderRadius: 54,
     gap: 10,
     alignSelf: 'center',
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
   },
   newChatButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: '700',
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
   },
 });

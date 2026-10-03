@@ -280,7 +280,7 @@ export default function ModelSelector() {
           onPress={() => {
             handleSelectModel(item);
           }}
-          android_ripple={{ color: '#1A1A1D' }}
+          android_ripple={{ color: colors.surfaceElevated }}
           style={({ pressed }) => [
             styles.cardRow,
             selected && styles.cardRowSelected,
@@ -571,15 +571,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     alignSelf: 'flex-start',
-    backgroundColor: colors.surface,
+    backgroundColor: '#2D2D31',
     borderRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
   },
-  triggerText: { maxWidth: 144, fontSize: 13, fontWeight: '700', color: colors.text },
+  triggerText: { maxWidth: 144, fontSize: 14, fontWeight: '500', color: colors.text },
   triggerCoinPill: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -590,7 +585,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
   },
-  arrowContainer: { backgroundColor: colors.surface, borderRadius: 9, padding: 2 },
+  arrowContainer: { borderRadius: 9, padding: 2 },
   offlineIndicator: {
     marginLeft: 6,
     justifyContent: 'center',
@@ -611,29 +606,23 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '90%',
     maxWidth: 308,
-    backgroundColor: '#0D0D0F',
+    backgroundColor: colors.surface,
     borderTopLeftRadius: 22,
     borderTopRightRadius: 22,
     borderBottomLeftRadius: 22,
     borderBottomRightRadius: 22,
     overflow: 'hidden',
     borderWidth: 0,
-    // shadow
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 18 },
-    shadowRadius: 29,
-    shadowOpacity: 0.32,
-    elevation: 22,
   },
   panelHeader: {
     paddingHorizontal: 18,
-    paddingTop: 14,
-    paddingBottom: 11,
+    paddingTop: 16,
+    paddingBottom: 10,
     borderBottomWidth: 0,
-    backgroundColor: '#0D0D0F',
+    backgroundColor: colors.surface,
   },
    panelHeaderRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-   panelTitle: { fontSize: 13, fontWeight: '800', color: colors.text, letterSpacing: 0.2 },
+   panelTitle: { fontSize: 16, fontWeight: '500', color: colors.text },
   close: { fontSize: 16, color: colors.text },
 
   /* search */
@@ -642,25 +631,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 14,
     marginVertical: 11,
-    paddingHorizontal: 11,
-    paddingVertical: 7,
-    backgroundColor: '#1A1A1D',
-    borderRadius: 11,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    backgroundColor: colors.surfaceInset,
+    borderRadius: 12,
     borderWidth: 0,
   },
   searchIcon: { fontSize: 14, color: colors.textSecondary, marginRight: 7 },
-  searchInput: { flex: 1, fontSize: 13, color: colors.text, paddingVertical: 4 },
+  searchInput: { flex: 1, fontSize: 15, color: colors.text, paddingVertical: 4 },
   clearButton: { padding: 4 },
   clearIcon: { fontSize: 13, color: colors.textSecondary },
 
   /* section header */
   sectionHeader: {
     paddingHorizontal: 14, paddingTop: 11, paddingBottom: 5,
-    backgroundColor: '#0D0D0F', flexDirection: 'row', alignItems: 'center', gap: 7,
+    backgroundColor: colors.surface, flexDirection: 'row', alignItems: 'center', gap: 7,
   },
   sectionTitle: {
-    fontSize: 10, fontWeight: '800', letterSpacing: 0.5,
-    color: colors.textSecondary, textTransform: 'uppercase',
+    fontSize: 12, lineHeight: 16,
+    color: colors.textMuted,
   },
 
   /* row card */
@@ -676,23 +665,18 @@ const styles = StyleSheet.create({
     borderRadius: 11,
   },
   cardRowSelected: {
-    backgroundColor: '#1A1A1D',
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 7,
-    shadowOpacity: 0.1,
-    elevation: 4,
+    backgroundColor: colors.surfaceElevated,
   },
-  cardRowPressed: { backgroundColor: '#1A1A1D', transform: [{ scale: 0.98 }] },
+  cardRowPressed: { backgroundColor: colors.surfaceElevated },
   modelTextColumn: { flex: 1, minWidth: 0 },
 
-  divider: { height: StyleSheet.hairlineWidth, backgroundColor: '#2D2D30', marginLeft: 43, marginRight: 7 },
+  divider: { height: StyleSheet.hairlineWidth, backgroundColor: 'rgba(255,255,255,0.08)', marginLeft: 43, marginRight: 7 },
 
   titleBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 2 },
   titleLeft: { flexDirection: 'row', alignItems: 'center', gap: 7, flex: 1, flexShrink: 1, minWidth: 0 },
-  rowTitle: { fontSize: 14, fontWeight: '700', color: colors.text, flexShrink: 1 },
+  rowTitle: { fontSize: 15, fontWeight: '500', color: colors.text, flexShrink: 1 },
   rowTitleSel: { color: colors.primary },
-  rowDesc: { fontSize: 12, color: colors.textSecondary },
+  rowDesc: { fontSize: 13, lineHeight: 18, color: colors.textSecondary },
   rowDescSel: { color: colors.text },
   rowRight: {
     flexDirection: 'row',
@@ -714,24 +698,13 @@ const styles = StyleSheet.create({
   badgeWrap: { flexDirection: 'row', gap: 5, flexShrink: 0 },
   badge: {
     paddingHorizontal: 9, paddingVertical: 3, borderRadius: 999,
-    backgroundColor: colors.surfaceElevated, borderWidth: 1, borderColor: colors.border,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowRadius: 2, shadowOpacity: 0.1, elevation: 2,
+    backgroundColor: colors.surfaceInset,
   },
-  badgeNew: { 
-    backgroundColor: colors.primary, 
-    borderWidth: 0,
-    shadowColor: colors.primary, 
-    shadowOpacity: 0.2 
-  },
-  badgeBest: { 
-    backgroundColor: '#6366F1', 
-    borderWidth: 0,
-    shadowColor: '#6366F1', 
-    shadowOpacity: 0.2 
-  },
-  badgeText: { fontSize: 9, fontWeight: '800', textTransform: 'uppercase', color: colors.textSecondary, letterSpacing: 0.5 },
+  badgeNew: { backgroundColor: colors.primary },
+  badgeBest: { backgroundColor: colors.surfaceInset },
+  badgeText: { fontSize: 10, fontWeight: '600', textTransform: 'uppercase', color: colors.textSecondary, letterSpacing: 0.4 },
   badgeTextNew: { color: '#FFFFFF' },
-  badgeTextBest: { color: '#FFFFFF' },
+  badgeTextBest: { color: colors.textSecondary },
   badgePremium: { 
     paddingHorizontal: 6, 
     paddingVertical: 2, 

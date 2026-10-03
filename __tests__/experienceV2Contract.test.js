@@ -111,7 +111,7 @@ describe('onboarding and paywall experience contract', () => {
 
   test('uses a serious three-color paywall with only essential purchase information', () => {
     expect(paywallSource).toContain("background: '#05070A'");
-    expect(paywallSource).toContain("accent: '#0ABAB5'");
+    expect(paywallSource).toContain("accent: '#F05A28'");
     expect(paywallSource).toContain("title: '#FFFFFF'");
     expect(paywallSource).toContain('<TimelinePlanCard');
     expect(paywallSource).toContain(

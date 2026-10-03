@@ -50,7 +50,7 @@ const AssistantsBanner = forwardRef(({
               source={BACKGROUND_VIDEO}
               restartKey={restartKey}
               enforceAspectRatio={false}
-              paused={paused}
+              paused={paused || !isFocused}
               placeholderColor="#0B1020"
             />
           ) : null}

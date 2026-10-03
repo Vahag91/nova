@@ -1,9 +1,10 @@
 // Shared source-workspace contracts. Keep private source material out of system prompts.
+import { plainTextFromMarkdown } from './plainTextFromMarkdown';
 import { CHAT_DOCUMENT_CONTEXT_CHARS } from '../config/chatLimits';
 
 export const WORKSPACE_STORAGE_KEY = 'source_workspace_v1';
 export const MAX_TRANSCRIPT_CHARS = 120000;
-export const MAX_VIDEO_BYTES = 20 * 1024 * 1024;
+export const MAX_VIDEO_BYTES = 50 * 1024 * 1024;
 
 export function normalizeYouTubeUrl(value) {
   try {
@@ -61,6 +62,11 @@ export function summaryMarkdown(result, labels = SUMMARY_LABELS) {
     result.evidence?.length ? `## ${labels.sourceExcerpts}\n${result.evidence.map(e => `> ${e.quote}\n\n${e.sourceName || ''}`).join('\n\n')}` : '',
     result.limitations?.length ? `## ${labels.coverageNotes}\n${result.limitations.map(p => `- ${p}`).join('\n')}` : '',
   ].filter(Boolean).join('\n\n');
+}
+
+// Native share targets receive plain text, not a Markdown document.
+export function summaryPlainText(result, labels = SUMMARY_LABELS) {
+  return plainTextFromMarkdown(summaryMarkdown(result, labels)).replace(/^- /gm, '• ');
 }
 
 // States exactly how much of each document reaches chat, so a question about a

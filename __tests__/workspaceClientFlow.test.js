@@ -156,6 +156,36 @@ const change = async (id, value) => {
   });
 };
 
+test.each(['Documents', 'VideoSummaries'])('pending jobs stay in their own %s workspace', async name => {
+  const jobs = ['document', 'upload', 'youtube', 'transcript'].map(type => ({
+    id: type + '-pending', type, documents: [], sourceLabel: type + ' source',
+  }));
+  useWorkspaceJobs.setState({ jobs, hydrated: true });
+  await mount(name);
+  for (const job of jobs) {
+    const visible = name === 'Documents' ? job.type === 'document' : job.type !== 'document';
+    expect(screen.root.findAllByProps({ testID: 'workspace-resume-' + job.id }).length > 0).toBe(visible);
+    expect(screen.root.findAllByProps({ testID: 'workspace-cancel-' + job.id }).length > 0).toBe(visible);
+  }
+});
+
+test('a pending document does not block starting a video', async () => {
+  useWorkspaceJobs.setState({ jobs: [{ id: 'doc-pending', type: 'document', documents: [], sourceLabel: 'Document' }], hydrated: true });
+  await mount('VideoSummaries');
+  await press('workspace-mode-youtube');
+  await change('workspace-url', 'https://www.youtube.com/watch?v=jNQXAC9IVRw');
+  expect(screen.root.findAllByProps({ testID: 'workspace-analyze' }).find(n => typeof n.props.onPress === 'function').props.disabled).toBeFalsy();
+});
+
+test('a pending video does not block starting a document', async () => {
+  useWorkspaceJobs.setState({ jobs: [{ id: 'video-pending', type: 'upload', documents: [], sourceLabel: 'Video' }], hydrated: true });
+  pick.mockResolvedValue([{ name: 'Notes.txt', size: 281, type: 'text/plain', uri: 'content://notes' }]);
+  keepLocalCopy.mockResolvedValue([{ status: 'success', localUri: 'file:///cache/notes.txt' }]);
+  await mount('Documents');
+  await press('workspace-pick');
+  expect(screen.root.findAllByProps({ testID: 'workspace-analyze' }).find(n => typeof n.props.onPress === 'function').props.disabled).toBeFalsy();
+});
+
 test('document import → upload → analysis → saved brief → share → chat → reopen preserves readable source names', async () => {
   pick.mockResolvedValue([
     {
@@ -225,6 +255,10 @@ test('document import → upload → analysis → saved brief → share → chat
       message: expect.stringContaining(result.overview),
     }),
   );
+  const sharedText = Share.share.mock.calls.at(-1)[0].message;
+  expect(sharedText).not.toMatch(/^#{1,6} /m);
+  expect(sharedText).not.toMatch(/^- /m);
+  expect(sharedText).toContain('• ');
   await press('workspace-chat');
   expect(openWorkspaceChat).toHaveBeenCalledWith(
     expect.objectContaining({ id: record.id, result: record.result }),
@@ -350,7 +384,8 @@ test.each(['youtube', 'transcript', 'upload'])(
     await press('workspace-result-details');
     expect(text()).toContain('00:45');
     await press('workspace-result-sources');
-    expect(text()).toContain('kept on the analysis server for up to 7 days');
+    expect(text()).not.toContain('kept on the analysis server for up to 7 days');
+    expect(text()).toContain('Coverage & limitations');
     expect(text()).toContain('No verified text excerpts');
     expect(useWorkspaceStore.getState().records[0].type).toBe(type);
   },
@@ -447,6 +482,35 @@ test('pending metadata must be saved before a paid analysis is submitted', async
   expect(requests).toHaveLength(0);
   expect(useWorkspaceJobs.getState().jobs).toHaveLength(0);
   expect(text()).toContain('could not be analyzed');
+});
+
+test('rapid repeated taps submit only one paid analysis', async () => {
+  await mount('VideoSummaries');
+  await press('workspace-mode-youtube');
+  await change('workspace-url', 'https://youtu.be/abcdefghijk');
+  await act(async () => {
+    const action = screen.root.findAllByProps({testID:'workspace-analyze'}).find(n => typeof n.props.onPress === 'function').props.onPress;
+    action();
+    action();
+  });
+  expect(requests.filter(r => r.method === 'POST')).toHaveLength(1);
+  await respond(requests[0], 200, {result});
+});
+
+test('a transient poll rejection keeps the pending card for recovery', async () => {
+  await mount('VideoSummaries');
+  await press('workspace-mode-youtube');
+  await change('workspace-url', 'https://youtu.be/abcdefghijk');
+  await start();
+  const id = requests[0].headers['x-request-id'];
+  jest.useFakeTimers();
+  try {
+    await respond(requests[0], 202, {job:{id,status:'processing'}});
+    await act(async () => { await jest.advanceTimersByTimeAsync(2000); });
+    await respond(requests[1], 429, {code:'SERVICE_BUSY'});
+    expect(useWorkspaceJobs.getState().jobs[0].id).toBe(id);
+    expect(screen.root.findAllByProps({testID:'workspace-resume-'+id}).length).toBeGreaterThan(0);
+  } finally {jest.useRealTimers();}
 });
 
 test('unavailable provider rejects before acceptance and does not leave an unresolvable pending job', async () => {

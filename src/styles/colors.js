@@ -1,51 +1,54 @@
-// Dark Theme Color Palette
+// App palette: black background, flat grey surfaces, one orange accent.
+// Every value is a plain 6-digit hex because some callers append an alpha
+// suffix (for example `colors.primary + '20'`).
 export const colors = {
   // Background colors
-  background: '#0a0a0a',           // Main app background
-  surface: '#1a1a1a',             // Card/surface background
-  surfaceElevated: '#2a2a2a',     // Elevated surfaces
-  
+  background: '#000000',          // Main app background
+  surface: '#2D2D31',             // Card/surface background
+  surfaceElevated: '#39393E',     // Raised surfaces, card header strips
+  surfaceInset: '#232326',        // Buttons and tiles that sit inside a card
+
   // Text colors
   text: '#ffffff',                // Primary text
-  textSecondary: '#a0a0a0',       // Secondary text
-  textMuted: '#666666',           // Muted text
-  
+  textSecondary: '#A6A6AB',       // Secondary text
+  textMuted: '#8E8E93',           // Muted text
+
   // Border colors
-  border: '#333333',              // Default borders
-  borderLight: '#404040',         // Light borders
-  borderDark: '#1a1a1a',          // Dark borders
-  
+  border: '#39393E',              // Default borders
+  borderLight: '#4A4A50',         // Light borders
+  borderDark: '#232326',          // Dark borders
+
   // Accent colors
-  primary: '#3b82f6',             // Blue accent
-  primaryDark: '#2563eb',         // Darker blue
-  accent: '#3b82f6',              // Main accent (cyan/blue)
+  primary: '#F05A28',             // The single accent
+  primaryDark: '#D94E20',         // Pressed accent
+  accent: '#F05A28',              // Same accent, legacy name
   success: '#10b981',             // Green
-  warning: '#f59e0b',             // Orange
+  warning: '#f59e0b',             // Amber
   error: '#ef4444',               // Red
-  
+
   // Message bubble colors
-  userBubble: '#2a2a2a',          // User message background (dark grey)
-  assistantBubble: '#2a2a2a',     // Assistant message background
+  userBubble: '#F05A28',          // User message background
+  assistantBubble: '#2D2D31',     // Assistant message background
   userText: '#ffffff',            // User message text
   assistantText: '#ffffff',       // Assistant message text
-  
+
   // Input colors
-  inputBackground: '#1a1a1a',     // Input field background
-  inputBorder: '#333333',         // Input field border
+  inputBackground: '#2D2D31',     // Input field background
+  inputBorder: '#39393E',         // Input field border
   inputText: '#ffffff',           // Input text
-  placeholder: '#666666',         // Placeholder text
-  
+  placeholder: '#96969C',         // Placeholder text
+
   // Button colors
-  buttonPrimary: '#3b82f6',       // Primary button
-  buttonSecondary: '#2a2a2a',     // Secondary button
+  buttonPrimary: '#F05A28',       // Primary button
+  buttonSecondary: '#2D2D31',     // Secondary button
   buttonText: '#ffffff',          // Button text
-  
+
   // Header colors
-  headerBackground: '#1a1a1a',    // Header background
-  headerBorder: '#333333',        // Header border
-  
+  headerBackground: '#000000',    // Header background
+  headerBorder: '#39393E',        // Header border
+
   // Private mode colors
-  privateBackground: '#1a1a1a',   // Private mode background
-  privateBorder: '#333333',       // Private mode border
-  privateText: '#a0a0a0',         // Private mode text
+  privateBackground: '#2D2D31',   // Private mode background
+  privateBorder: '#39393E',       // Private mode border
+  privateText: '#A6A6AB',         // Private mode text
 };

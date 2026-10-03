@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import {
   AccessibilityInfo,
   Animated,
   AppState,
   Easing,
+  Pressable,
   StyleSheet,
   Text,
   View,
@@ -12,27 +13,23 @@ import { useIsFocused } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import SvgIcon from '../SvgIcon';
 
+// Both workspaces share the app palette: flat grey panels, one orange accent.
+// `gradient` and `hero` stay arrays because callers pass them to a gradient
+// view; equal stops render as a flat fill.
+const flatTheme = {
+  accent: '#F05A28',
+  secondary: '#A6A6AB',
+  gradient: ['#F05A28', '#F05A28'],
+  hero: ['#2D2D31', '#2D2D31', '#2D2D31'],
+  panel: '#2D2D31',
+  border: 'transparent',
+  selection: '#39393E',
+  glow: '#F05A28',
+};
+
 export const workspaceThemes = {
-  document: {
-    accent: '#F4D8AA',
-    secondary: '#D7C4EE',
-    gradient: ['#F4DDBB', '#E8C8A4'],
-    hero: ['#302A24', '#24211E', '#1C1B19'],
-    panel: '#28241F',
-    border: '#42382E',
-    selection: '#493B30',
-    glow: '#248AF5',
-  },
-  video: {
-    accent: '#D6C9EE',
-    secondary: '#F4D8AA',
-    gradient: ['#E0D1F4', '#C3B0E1'],
-    hero: ['#2C2733', '#24212B', '#1B191F'],
-    panel: '#27232E',
-    border: '#40364D',
-    selection: '#44384F',
-    glow: '#A66AFF',
-  },
+  document: flatTheme,
+  video: flatTheme,
 };
 
 // Decorative motion stops off-screen, in the background and for reduced motion.
@@ -92,7 +89,7 @@ function useAmbientMotion() {
   return value;
 }
 
-export function WorkspaceHero({ video, c }) {
+export const WorkspaceHero = memo(function WorkspaceHero({ video, c }) {
   const motion = useAmbientMotion();
   return (
     <View style={styles.studioHero}>
@@ -153,7 +150,7 @@ export function WorkspaceHero({ video, c }) {
       </View>
     </View>
   );
-}
+});
 
 export function WorkspaceProcessing({ video }) {
   const theme = workspaceThemes[video ? 'video' : 'document'];
@@ -189,6 +186,61 @@ export function WorkspaceProcessing({ video }) {
   );
 }
 
+export function WorkspacePendingCard({ video, title, status, progress, actions }) {
+  const theme = workspaceThemes[video ? 'video' : 'document'];
+  const motion = useAmbientMotion();
+  return (
+    <View style={pendingStyles.card}>
+      <View style={pendingStyles.row}>
+        <Animated.View
+          accessible={false}
+          style={[pendingStyles.icon, {
+            opacity: motion.interpolate({ inputRange: [0, 1], outputRange: [0.65, 1] }),
+            transform: [{ scale: motion.interpolate({ inputRange: [0, 1], outputRange: [0.96, 1.04] }) }],
+          }]}
+        >
+          <SvgIcon name={video ? 'workspace-video' : 'workspace-document'} size={22} color={theme.accent} />
+        </Animated.View>
+        <View style={pendingStyles.copy}>
+          <Text style={pendingStyles.status} numberOfLines={2}>{status}</Text>
+          {!!title && <Text style={pendingStyles.title} numberOfLines={2}>{title}</Text>}
+        </View>
+        {progress != null && <Text style={pendingStyles.percent}>{Math.round(progress * 100)}%</Text>}
+      </View>
+      <Animated.View
+        accessible={false}
+        style={[pendingStyles.track, { opacity: motion.interpolate({ inputRange: [0, 1], outputRange: [0.3, 0.75] }) }]}
+      />
+      <View style={pendingStyles.actions}>
+        {actions.map(({ label, onPress, testID, secondary, disabled }) => (
+          <Pressable key={testID} testID={testID} onPress={onPress} disabled={disabled}
+            accessibilityRole="button" accessibilityState={{ disabled: !!disabled }}
+            style={({ pressed }) => [pendingStyles.action, !secondary && pendingStyles.primary, { opacity: disabled ? 0.45 : pressed ? 0.7 : 1 }]}
+          >
+            <Text style={[pendingStyles.actionText, secondary && pendingStyles.secondaryText]}>{label}</Text>
+          </Pressable>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+const pendingStyles = StyleSheet.create({
+  card: { backgroundColor: '#2D2D31', borderRadius: 20, padding: 14, marginVertical: 6, gap: 10 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  icon: { width: 42, height: 42, borderRadius: 14, backgroundColor: '#F05A281A', alignItems: 'center', justifyContent: 'center' },
+  copy: { flex: 1, gap: 4 },
+  status: { color: '#A6A6AB', fontSize: 11, fontWeight: '600', letterSpacing: 0.4 },
+  title: { color: '#FFFFFF', fontSize: 15, fontWeight: '600', lineHeight: 21 },
+  percent: { color: '#F05A28', fontSize: 13, fontWeight: '600' },
+  track: { height: 2, borderRadius: 1, backgroundColor: '#F05A28' },
+  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  action: { minHeight: 44, paddingHorizontal: 14, paddingVertical: 10, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
+  primary: { backgroundColor: '#F05A2824' },
+  actionText: { color: '#F05A28', fontWeight: '600', fontSize: 13 },
+  secondaryText: { color: '#A6A6AB' },
+});
+
 export function WorkspaceResultMark({ video }) {
   const theme = workspaceThemes[video ? 'video' : 'document'];
   return (
@@ -199,7 +251,7 @@ export function WorkspaceResultMark({ video }) {
       <SvgIcon
         name={video ? 'workspace-video' : 'workspace-document'}
         size={24}
-        color="#29231F"
+        color="#FFFFFF"
       />
     </View>
   );

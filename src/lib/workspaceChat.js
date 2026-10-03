@@ -22,6 +22,7 @@ export async function openWorkspaceChat(record, navigation, { confirmLeavePrivat
   const existing = Object.values(current.threadsById).find(thread => thread.meta?.workspaceId === record.id);
   current.endPrivate();
   if (existing) {
+    current.updateThread(existing.id, { meta: { ...existing.meta, workspaceVideoSource: record.result.videoSource || existing.meta?.workspaceVideoSource || null } });
     await current.forceSaveThread(existing.id, { throwOnError: true });
     current.setActiveThread(existing.id);
   } else {
@@ -37,11 +38,21 @@ export async function openWorkspaceChat(record, navigation, { confirmLeavePrivat
     current.updateThread(thread.id, { messages: [user, assistant], meta: {
       workspaceId: record.id,
       workspaceContext: workspaceChatContext(record),
-      workspaceDocuments: usableDocuments(record),
+      workspaceDocuments: record.type === 'document' ? record.documents : usableDocuments(record),
       workspaceType: record.type,
+      workspaceVideoSource: record.result.videoSource || null,
     } });
     await useThreadsStore.getState().forceSaveThread(thread.id, { throwOnError: true });
   }
   navigation.navigate('Chat');
   return true;
+}
+
+// Workspace questions read the complete stored extraction through source-analyze.
+export function documentQuestionSource(thread, question) {
+  if (thread?.meta?.workspaceType !== 'document' || !question?.trim()) return null;
+  const documents = thread.meta.workspaceDocuments || [];
+  if (!documents.length || documents.some(d => d.expiresAt && Date.parse(d.expiresAt) <= Date.now())) throw Object.assign(new Error(), { code: 'DOCUMENT_EXPIRED' });
+  if (question.length > 4000) throw Object.assign(new Error(), { code: 'QUESTION_TOO_LONG', length: question.length });
+  return { type: 'document', mode: 'question', documentIds: documents.map(d => d.remoteId || d.id), question, conversation: (thread.messages || []).filter(m => ['user', 'assistant'].includes(m.role)).slice(-6).map(m => ({ role: m.role, content: String(m.content || '').slice(0,2000) })) };
 }

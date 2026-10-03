@@ -20,8 +20,8 @@ export const videoErrors = {
   ONE_VIDEO: 'Choose one video or paste one YouTube link at a time.',
   VIDEO_MIXED_SOURCES: 'Send the video separately from images and documents.',
   VIDEO_QUESTION_TOO_LONG: 'Keep your video question under 4,000 characters.',
-  INVALID_VIDEO: 'Choose an MP4 or WebM video, up to 20 MB.',
-  FILE_TOO_LARGE: 'Choose a video up to 20 MB.',
+  INVALID_VIDEO: 'Choose an MP4 or WebM video.',
+  FILE_TOO_LARGE: 'This video file is too large. Choose a smaller file.',
   SOURCE_UNAVAILABLE: 'We could not access this video. Try a public YouTube video or upload an MP4 or WebM file.',
   INVALID_RESULT: 'The video analysis was incomplete. Please try again.',
   NETWORK: 'Connection interrupted. Check Video summaries for the result before trying again.',
@@ -35,3 +35,17 @@ export const videoErrors = {
   VIDEO_NOT_CONFIGURED: 'Video analysis is temporarily unavailable. Please try again later.',
   SAVE_FAILED: 'Your summary is ready, but could not be saved to your library. Keep this chat or copy the summary.',
 };
+
+export function videoQuestionSource(thread, question) {
+  if (!question?.trim()) return null;
+  const messages = thread?.messages || [];
+  const latest = [...messages].reverse().find(m => m.meta?.videoSource || (m.meta?.videoSummary && !m.meta?.videoQuestion));
+  const reference = latest ? latest.meta.videoSource : thread?.meta?.workspaceVideoSource;
+  if (!reference) {
+    if (latest || ['upload', 'youtube'].includes(thread?.meta?.workspaceType)) throw Object.assign(new Error(), { code: 'VIDEO_SOURCE_EXPIRED' });
+    return null;
+  }
+  if (question.length > 4000) throw Object.assign(new Error(), { code: 'VIDEO_QUESTION_TOO_LONG' });
+  if (Date.parse(reference.expiresAt) <= Date.now()) throw Object.assign(new Error(), { code: 'VIDEO_SOURCE_EXPIRED' });
+  return { type: reference.type, sourceJobId: reference.jobId, question, detail: 'concise', conversation: messages.filter(m => ['user', 'assistant'].includes(m.role)).slice(-6).map(m => ({ role: m.role, content: String(m.content || '').slice(0, 2000) })) };
+}

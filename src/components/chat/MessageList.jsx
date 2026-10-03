@@ -277,9 +277,7 @@ const MessageListCore = function MessageList({
 
   // Use ref to access data without causing re-renders
   const dataRef = useRef(data);
-  useEffect(() => {
-    dataRef.current = data;
-  }, [data]);
+  dataRef.current = data;
 
   
   const renderItem = useCallback(({ item, index }) => {
@@ -328,9 +326,8 @@ const MessageListCore = function MessageList({
           streamingMessageId={streamingMessageId}
           selectionResetToken={selectionResetToken}
           onActionPressIn={onActionPressIn}
-          onReport={role === 'assistant'
-            ? () => onReport?.({ message: item, prompt: previousUserMessage?.content || '' })
-            : undefined}
+          onReport={role === 'assistant' ? onReport : undefined}
+          reportPrompt={previousUserMessage?.content || ''}
         />
       );
     } catch {
@@ -441,17 +438,10 @@ const styles = StyleSheet.create({
   },
   jumpButton: {
     backgroundColor: colors.surfaceElevated,
-    borderColor: colors.border,
-    borderWidth: 1,
-        padding: 6,
+    padding: 8,
     borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 6,
   },
   arrowIcon: {
     alignSelf: 'center',
@@ -459,26 +449,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const MessageList = memo(forwardRef(MessageListCore), (prev, next) => {
-  if (prev.messages.length !== next.messages.length) return false;
-  if (prev.streaming !== next.streaming) return false;
-  if (prev.streamingMessageId !== next.streamingMessageId) return false;
-  if (prev.onRetryFromHere !== next.onRetryFromHere) return false;
-  if (prev.onActionPressIn !== next.onActionPressIn) return false;
-  if (prev.threadKey !== next.threadKey) return false;
-  if (prev.selectionResetToken !== next.selectionResetToken) return false;
-
-  const pLast = prev.messages[prev.messages.length - 1]?.id;
-  const nLast = next.messages[next.messages.length - 1]?.id;
-  if (pLast !== nLast) return false;
-
-  for (let i = 0; i < prev.messages.length; i++) {
-    if (prev.messages[i]?.id !== next.messages[i]?.id ||
-        prev.messages[i]?.content !== next.messages[i]?.content) {
-      return false;
-    }
-  }
-  return true;
-});
-
+// Store message arrays are immutable; avoid scanning history on each keystroke.
+const MessageList = memo(forwardRef(MessageListCore));
 export default MessageList;

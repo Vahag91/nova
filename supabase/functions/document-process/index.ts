@@ -83,11 +83,21 @@ export async function handler(req: Request, insert = insertDocument) {
   }
   const length = Number(req.headers.get("content-length"));
   if (length > MAX_FILE_BYTES + 1024 * 1024) {
-    return fail("FILE_TOO_LARGE", "Documents must be 10 MB or smaller.", 413);
+    return fail("FILE_TOO_LARGE", "Documents must be 25 MB or smaller.", 413);
   }
   let form: FormData;
   try {
-    form = await req.formData();
+    if (!req.body) return fail("INVALID_FORM_DATA", "The upload body is invalid.", 400);
+    const reader = req.body.getReader(), chunks: Uint8Array[] = []; let total = 0;
+    try {
+      while (true) {
+        const { value, done } = await reader.read(); if (done) break;
+        total += value.length;
+        if (total > MAX_FILE_BYTES + 1024 * 1024) { await reader.cancel(); return fail("FILE_TOO_LARGE", "Documents must be 25 MB or smaller.", 413); }
+        chunks.push(value);
+      }
+    } finally { reader.releaseLock(); }
+    form = await new Response(new Blob(chunks as BlobPart[]), { headers: { 'Content-Type': req.headers.get('content-type') || '' } }).formData();
   } catch {
     return fail("INVALID_FORM_DATA", "The upload body is invalid.", 400);
   }
@@ -96,7 +106,7 @@ export async function handler(req: Request, insert = insertDocument) {
     return fail("FILE_REQUIRED", "A document file is required.", 400);
   }
   if (file.size > MAX_FILE_BYTES) {
-    return fail("FILE_TOO_LARGE", "Documents must be 10 MB or smaller.", 413);
+    return fail("FILE_TOO_LARGE", "Documents must be 25 MB or smaller.", 413);
   }
   try {
     const extracted = await extractDocument(
@@ -148,3 +158,4 @@ export async function handler(req: Request, insert = insertDocument) {
   }
 }
 if (import.meta.main) Deno.serve((req) => handler(req));
+

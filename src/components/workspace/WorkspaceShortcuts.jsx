@@ -3,6 +3,7 @@ import { View, Text, Pressable, StyleSheet } from 'react-native';
 import SvgIcon from '../SvgIcon';
 import { useWorkspaceTranslation } from '../../i18n/useWorkspaceTranslation';
 import { useSourceWorkspaceAvailability } from '../../state/useSourceWorkspaceAvailability';
+import { graphite } from '../../styles/graphite';
 
 export default function WorkspaceShortcuts({ navigation, documents = [] }) {
   const { c } = useWorkspaceTranslation();
@@ -13,11 +14,7 @@ export default function WorkspaceShortcuts({ navigation, documents = [] }) {
       {documentsEnabled && (
         <Pressable
           accessibilityRole="button"
-          style={({ pressed }) => [
-            styles.button,
-            styles.documents,
-            pressed && styles.pressed,
-          ]}
+          style={({ pressed }) => [styles.button, pressed && styles.pressed]}
           onPress={() =>
             navigation.navigate('Documents', {
               seedDocuments: documents,
@@ -25,21 +22,17 @@ export default function WorkspaceShortcuts({ navigation, documents = [] }) {
             })
           }
         >
-          <SvgIcon name="workspace-document" size={22} color="#E9C99E" />
+          <SvgIcon name="workspace-document" size={18} color={graphite.accent} />
           <Text style={styles.text}>{c('documents', 'Documents')}</Text>
         </Pressable>
       )}
       {videosEnabled && (
         <Pressable
           accessibilityRole="button"
-          style={({ pressed }) => [
-            styles.button,
-            styles.video,
-            pressed && styles.pressed,
-          ]}
+          style={({ pressed }) => [styles.button, pressed && styles.pressed]}
           onPress={() => navigation.navigate('VideoSummaries')}
         >
-          <SvgIcon name="workspace-video" size={22} color="#D1BDEB" />
+          <SvgIcon name="workspace-video" size={18} color={graphite.accent} />
           <Text style={styles.text}>{c('videos', 'Video summaries')}</Text>
         </Pressable>
       )}
@@ -50,32 +43,25 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingHorizontal: 12,
-    gap: 12,
-    paddingVertical: 4,
+    paddingHorizontal: 16,
+    gap: 8,
+    paddingBottom: 8,
   },
   button: {
-    minHeight: 50,
+    minHeight: 40,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    paddingHorizontal: 11,
-    paddingVertical: 8,
-    borderRadius: 18,
-    backgroundColor: '#0E0E0F',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.12)',
+    gap: 8,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    backgroundColor: graphite.card,
     flexShrink: 1,
   },
-  documents: { backgroundColor: '#29241F', borderColor: '#4A3D2D' },
-  video: { backgroundColor: '#28222E', borderColor: '#473650' },
-  art: { width: 28, height: 32 },
-  pressed: { transform: [{ scale: 0.97 }], opacity: 0.8 },
+  pressed: { backgroundColor: graphite.pressed },
   text: {
-    color: '#F9FAFB',
-    fontSize: 14,
-    fontFamily: 'Lato-Bold',
-    letterSpacing: 0.35,
+    color: graphite.text,
+    fontSize: 15,
+    lineHeight: 20,
     flexShrink: 1,
   },
 });

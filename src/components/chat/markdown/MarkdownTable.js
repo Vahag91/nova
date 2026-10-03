@@ -3,7 +3,6 @@ import { View, Text, ScrollView, StyleSheet, Pressable } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Haptic from 'react-native-haptic-feedback';
 import { useTranslation } from 'react-i18next';
-import { colors } from '../../../styles/colors';
 
 // CONFIG: Compact but readable
 const COL_WIDTH = 120; 
@@ -71,7 +70,7 @@ export const MarkdownTable = ({ node }) => {
 
   // Calculate Width
   const columnCount = Math.max(headers.length, rows[0]?.length || 0);
-  const tableWidth = Math.max(columnCount * COL_WIDTH, 300);
+  const tableWidth = columnCount * COL_WIDTH;
 
   const handleCopy = () => {
     const headerStr = headers.join(' | ');
@@ -104,12 +103,12 @@ export const MarkdownTable = ({ node }) => {
         // Prevents parent from stealing touch
         onStartShouldSetResponder={() => true}
       >
-        <View style={[styles.tableContainer, { width: tableWidth }]}>
+        <View style={[styles.tableContainer, { minWidth: tableWidth }]}>
           
           {/* Table Header */}
           <View style={styles.headerRow}>
             {headers.map((headerText, i) => (
-              <View key={`h-${i}`} style={styles.cell}>
+              <View key={`h-${i}`} style={[styles.cell, i === headers.length - 1 && styles.cellLast]}>
                 <Text style={styles.headerText}>{headerText}</Text>
               </View>
             ))}
@@ -125,7 +124,7 @@ export const MarkdownTable = ({ node }) => {
               ]}
             >
               {row.map((cellText, cellIndex) => (
-                <View key={`c-${rowIndex}-${cellIndex}`} style={styles.cell}>
+                <View key={`c-${rowIndex}-${cellIndex}`} style={[styles.cell, cellIndex === row.length - 1 && styles.cellLast]}>
                   <Text style={styles.cellText}>{cellText}</Text>
                 </View>
               ))}
@@ -147,13 +146,16 @@ export const TableCell = ({ children }) => <View>{children}</View>;
 
 export default TableWrapper;
 
+const GREY_CARD = '#2D2D31';
+const GREY_HEADER = '#39393E';
+const HAIRLINE = 'rgba(255,255,255,0.08)';
+const ACCENT = '#F05A28';
+
 const styles = StyleSheet.create({
   wrapper: {
     marginVertical: 12,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#333',
-    backgroundColor: '#1E1E1E',
+    borderRadius: 16,
+    backgroundColor: GREY_CARD,
     overflow: 'hidden',
     width: '100%',
   },
@@ -161,38 +163,37 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 12,
-    paddingVertical: 6,
-    backgroundColor: '#252526',
-    borderBottomWidth: 1,
-    borderBottomColor: '#333',
+    paddingVertical: 8,
+    backgroundColor: GREY_HEADER,
   },
   topBarTitle: {
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: '700',
-    color: '#666',
+    color: '#A6A6AB',
     letterSpacing: 0.5,
   },
   copyText: {
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: '600',
-    color: colors.primary,
+    color: ACCENT,
   },
   tableContainer: {
     flexDirection: 'column',
+    flexGrow: 1,
   },
   
   // ROWS
   headerRow: {
     flexDirection: 'row',
-    backgroundColor: '#2D2D2D', // Distinct header color
-    borderBottomWidth: 2,
-    borderBottomColor: '#444',
+    backgroundColor: GREY_HEADER,
+    borderBottomWidth: 1,
+    borderBottomColor: HAIRLINE,
     minHeight: MIN_ROW_HEIGHT,
   },
   row: {
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderBottomColor: '#2A2A2A',
+    borderBottomColor: HAIRLINE,
     minHeight: MIN_ROW_HEIGHT,
   },
   rowEven: { backgroundColor: 'transparent' },
@@ -200,13 +201,17 @@ const styles = StyleSheet.create({
 
   // CELLS
   cell: {
-    width: COL_WIDTH,
+    flex: 1,
+    minWidth: COL_WIDTH,
     paddingHorizontal: 8,
     paddingVertical: 8,
     borderRightWidth: 1,
-    borderRightColor: '#2A2A2A',
+    borderRightColor: HAIRLINE,
     justifyContent: 'center',
     alignItems: 'flex-start', // Text aligns left
+  },
+  cellLast: {
+    borderRightWidth: 0,
   },
 
   // TEXT

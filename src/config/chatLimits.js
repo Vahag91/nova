@@ -4,7 +4,7 @@ export const LARGE_PASTE_ATTACHMENT_THRESHOLD = 20_000;
 export const PREMIUM_PASTE_CAPTURE_CHAR_LIMIT = 250_000;
 
 export const MAX_DOCUMENTS_PER_MESSAGE = 3;
-export const MAX_DOCUMENT_SIZE_BYTES = 10 * 1024 * 1024;
+export const MAX_DOCUMENT_SIZE_BYTES = 25 * 1024 * 1024;
 
 export const FREE_CHAT_TOKEN_BUDGET = 6_000;
 export const PREMIUM_CHAT_TOKEN_BUDGET = 20_000;
@@ -14,6 +14,7 @@ export const SUPPORTED_DOCUMENT_EXTENSIONS = Object.freeze([
   'docx',
   'txt',
   'csv',
+  'xlsx', 'pptx', 'odt', 'md', 'tsv', 'json',
 ]);
 
 // Mirrors MAX_DOCUMENT_CONTEXT_CHARS in supabase/functions/chat-proxy-v2: the
@@ -26,6 +27,14 @@ export const SUPPORTED_DOCUMENT_MIME_TYPES = Object.freeze([
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   'text/plain',
   'text/csv',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  'application/vnd.oasis.opendocument.text',
+  'text/markdown',
+  'text/x-markdown',
+  'application/zip',
+  'text/tab-separated-values',
+  'application/json',
   'text/comma-separated-values',
   'application/csv',
   'application/vnd.ms-excel',

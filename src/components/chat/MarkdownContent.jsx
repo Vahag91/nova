@@ -10,7 +10,6 @@ import { MarkdownLink } from './markdown/MarkdownLink';
 import TableWrapper, { TableRow, TableCell } from './markdown/MarkdownTable';
 import { MarkdownImage } from './markdown/MarkdownImage';
 import { MarkdownList, MarkdownListItem } from './markdown/MarkdownList';
-import { colors } from '../../styles/colors';
 
 function preprocess(md) {
   let s = String(md || '');
@@ -84,7 +83,7 @@ function MarkdownContentImpl({
       selectable
         ? {
             selectable: true,
-            selectionColor: colors.primary,
+            selectionColor: '#F05A28',
             suppressHighlighting: true,
           }
         : null,
@@ -168,7 +167,7 @@ function MarkdownContentImpl({
         return uri ? <MarkdownImage key={node.key} uri={uri} alt={node?.attributes?.alt} /> : null;
       },
       paragraph: (node, children) => (
-        <View key={node.key} style={styles.paragraph}>
+        <View key={node.key} style={[styles.paragraph, isUser && node.index > 0 && { marginTop: 8 }]}>
           <Text style={styles.body} {...(selectableTextProps || {})}>
             {children}
           </Text>

@@ -70,19 +70,13 @@ const styles = StyleSheet.create({
   },
   toast: {
     backgroundColor: colors.surfaceElevated,
-    borderColor: colors.border,
-    borderWidth: 1,
     borderRadius: 999,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.22,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 6 },
+    paddingHorizontal: 16,
+    paddingVertical: 9,
   },
   text: {
     color: colors.text,
-    fontSize: 13,
-    fontWeight: '600',
+    fontSize: 14,
+    fontWeight: '500',
   },
 });

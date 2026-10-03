@@ -6,6 +6,7 @@ import { useThreadsStore } from '../state/useThreadsStore';
 import { useTranslation } from 'react-i18next';
 import { useIsFocused } from '@react-navigation/native';
 import HeroVideo from '../components/navigation/HeroVideo';
+import { colors as palette } from '../styles/colors';
 import { SubscriptionAccessContext } from '../context/SubscriptionContext';
 import { isAssistantsPremium } from '../config/premium';
 import { setPendingPremiumAction } from '../state/premiumActions';
@@ -115,25 +116,6 @@ export default function Assistants({ navigation }) {
     startAssistantPreset(preset);
   }, [navigation, startAssistantPreset, subscription]);
 
-  function getTagColors(category) {
-    switch (category) {
-      case 'Everyday':
-        return { fg: '#FFFFFF', bg: '#0EA5E9', border: 'rgba(56,189,248,0.4)' };
-      case 'Life':
-        return { fg: '#FFFFFF', bg: '#D946EF', border: 'rgba(232,121,249,0.4)' };
-      case 'Health':
-        return { fg: '#FFFFFF', bg: '#10B981', border: 'rgba(52,211,153,0.4)' };
-      case 'School & Work':
-        return { fg: '#000000', bg: '#F59E0B', border: 'rgba(251,191,36,0.4)' };
-      case 'Coding':
-        return { fg: '#FFFFFF', bg: '#6366F1', border: 'rgba(129,140,248,0.4)' };
-      case 'Creative':
-        return { fg: '#FFFFFF', bg: '#8B5CF6', border: 'rgba(167,139,250,0.4)' };
-      default:
-        return { fg: '#FFFFFF', bg: '#64748B', border: 'rgba(148,163,184,0.4)' };
-    }
-  }
-
   const categories = useMemo(() => {
     const set = new Set((PRESETS || []).map(p => p.category || 'General'));
     return ['All', ...Array.from(set)];
@@ -178,12 +160,12 @@ export default function Assistants({ navigation }) {
   const renderPreset = useCallback(({ item, index }) => (
     <TouchableOpacity
       key={item?.id || item?.name || String(index)}
-      style={[styles.card, styles.cardAndroid]}
-      activeOpacity={0.9}
+      style={styles.card}
+      activeOpacity={0.8}
       onPress={() => handleUsePreset(item)}
     >
       <View style={styles.cardRow}>
-        <View style={[styles.iconWrap, styles.iconWrapAndroid]}>
+        <View style={styles.iconWrap}>
           <Image
             source={item.avatar}
             style={styles.iconPhoto}
@@ -193,22 +175,13 @@ export default function Assistants({ navigation }) {
           <Text style={styles.cardTitle}>{t(`assistants.presets.${item.id}.name`, { defaultValue: item.name })}</Text>
           <Text style={styles.cardDesc}>{t(`assistants.presets.${item.id}.description`, { defaultValue: item.description })}</Text>
         </View>
-        {item?.category ? (() => {
-          const tag = getTagColors(item.category);
-          return (
-            <View style={[styles.tag, {
-              backgroundColor: tag.bg,
-              borderColor: tag.border,
-            }, styles.tagAndroid]}>
-              <Text
-                numberOfLines={1}
-                style={[styles.tagText, { color: tag.fg }]}
-              >
-                {labelForCategory(item.category)}
-              </Text>
-            </View>
-          );
-        })() : null}
+        {item?.category ? (
+          <View style={styles.tag}>
+            <Text numberOfLines={1} style={styles.tagText}>
+              {labelForCategory(item.category)}
+            </Text>
+          </View>
+        ) : null}
       </View>
     </TouchableOpacity>
   ), [handleUsePreset, labelForCategory, t]);
@@ -243,27 +216,22 @@ export default function Assistants({ navigation }) {
       >
         {categories.map(cat => {
           const isActive = cat === selectedCategory;
-          const colors = cat !== 'All' ? getTagColors(cat) : null;
           return (
             <TouchableOpacity
               key={cat}
-              style={[
-                styles.categoryChip,
-                styles.categoryChipAndroid,
-                isActive && colors && {
-                  backgroundColor: colors.bg,
-                  borderColor: colors.border,
-                },
-                isActive && !colors && styles.categoryChipActive
-              ]}
+              style={[styles.categoryChip, isActive && styles.categoryChipActive]}
+              activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityState={{ selected: isActive }}
               onPress={() => setSelectedCategory(cat)}
               onPressIn={() => perfLog('assistants.category.press', { category: cat })}
             >
-              <Text style={[
-                styles.categoryChipText,
-                isActive && colors && { color: colors.fg },
-                isActive && !colors && styles.categoryChipTextActive
-              ]} numberOfLines={1}>{labelForCategory(cat)}</Text>
+              <Text
+                style={[styles.categoryChipText, isActive && styles.categoryChipTextActive]}
+                numberOfLines={1}
+              >
+                {labelForCategory(cat)}
+              </Text>
             </TouchableOpacity>
           );
         })}
@@ -334,8 +302,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 26,
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: 'rgba(148,163,184,0.18)',
     backgroundColor: '#10121C',
     position: 'relative',
     minHeight: 190,
@@ -346,77 +312,58 @@ const styles = StyleSheet.create({
   headerContent: { paddingHorizontal: 24, paddingVertical: 26, gap: 10 },
   headerTitle: { fontSize: 26, fontWeight: '700', color: '#F9FAFB', fontFamily: 'Lato-Bold', letterSpacing: 0.3 },
   headerSubtitle: { fontSize: 15, color: 'rgba(229,231,235,0.92)', lineHeight: 22, fontFamily: 'Lato-Regular' },
-  categoryBar: { paddingVertical: 12, paddingHorizontal: 4, gap: 8, alignItems: 'center' },
+  categoryBar: { paddingTop: 4, paddingBottom: 16, gap: 8, alignItems: 'center' },
   categoryChip: {
-    paddingHorizontal: 16, paddingVertical: 8, borderRadius: 999,
-    borderWidth: 1, borderColor: '#2B2F40', marginRight: 8, marginBottom: 8,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 2, elevation: 2,
+    minHeight: 40,
+    justifyContent: 'center',
+    paddingHorizontal: 14,
+    borderRadius: 12,
+    backgroundColor: palette.surface,
   },
-  categoryChipAndroid: {
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    elevation: 0,
-  },
-  categoryChipActive: { backgroundColor: '#1F2937', borderColor: '#3B82F6' },
-  categoryChipText: { color: '#9CA3AF', fontSize: 13, fontWeight: '700', textAlign: 'center', fontFamily: 'Lato-Bold', letterSpacing: 0.3 },
-  categoryChipTextActive: { color: '#F9FAFB' },
+  categoryChipActive: { backgroundColor: palette.primary },
+  categoryChipText: { color: '#E4E4E6', fontSize: 15, lineHeight: 20, textAlign: 'center' },
+  categoryChipTextActive: { color: '#FFFFFF', fontWeight: '500' },
   card: {
-    backgroundColor: '#12141D', borderWidth: 1, borderColor: '#2B2F40', borderRadius: 18,
-    paddingVertical: 22, paddingHorizontal: 18, marginBottom: 14, minHeight: 100,
-    shadowColor: 'rgba(0,0,0,0.6)', shadowOffset: { width: 0, height: 12 }, shadowOpacity: 0.35, shadowRadius: 22,
-    elevation: 8, overflow: 'hidden', position: 'relative',
-  },
-  cardAndroid: {
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    elevation: 0,
+    backgroundColor: palette.surface,
+    borderRadius: 18,
+    padding: 14,
+    marginBottom: 10,
   },
   cardRow: { flexDirection: 'row', alignItems: 'center' },
   iconWrap: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
     overflow: 'hidden',
-    marginRight: 18,
-    shadowColor: 'rgba(15,23,42,0.6)',
-    shadowOpacity: 0.5,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
-    backgroundColor: '#0F172A',
-    borderWidth: 2,
-    borderColor: 'rgba(255,255,255,0.18)',
-  },
-  iconWrapAndroid: {
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    elevation: 0,
+    marginRight: 14,
+    backgroundColor: palette.surfaceInset,
   },
   iconPhoto: {
     width: '100%',
     height: '100%',
-    borderRadius: 32,
+    borderRadius: 28,
     resizeMode: 'cover',
   },
   cardBody: { flex: 1, minWidth: 0 },
-  cardTitle: { fontSize: 17, fontWeight: '700', color: 'rgba(249,250,251,0.95)', fontFamily: 'Lato-Bold' },
-  cardDesc: { fontSize: 13, color: '#9CA3AF', marginTop: 6, fontFamily: 'Lato-Regular' },
-  tag: { maxWidth: '36%', paddingHorizontal: 10, paddingVertical: 5, borderRadius: 999, alignSelf: 'flex-start', borderWidth: 1,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.15, shadowRadius: 2, elevation: 2 },
-  tagAndroid: {
-    shadowOpacity: 0,
-    shadowRadius: 0,
-    elevation: 0,
+  cardTitle: { fontSize: 16, lineHeight: 22, fontWeight: '500', color: '#FFFFFF' },
+  cardDesc: { fontSize: 14, lineHeight: 19, color: palette.textSecondary, marginTop: 2 },
+  tag: {
+    maxWidth: '36%',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 999,
+    alignSelf: 'flex-start',
+    marginStart: 8,
+    backgroundColor: palette.surfaceInset,
   },
-  tagText: { fontSize: 9, fontWeight: '800', fontFamily: 'Lato-Bold', letterSpacing: 0.4, textTransform: 'uppercase' },
+  tagText: { fontSize: 11, lineHeight: 14, color: palette.textSecondary },
   emptyState: {
     padding: 24,
     alignItems: 'center',
   },
   emptyStateText: {
     fontSize: 14,
-    color: '#9CA3AF',
-    fontFamily: 'Lato-Regular',
+    color: palette.textSecondary,
     textAlign: 'center',
   },
 });

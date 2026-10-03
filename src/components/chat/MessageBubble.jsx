@@ -195,6 +195,7 @@ const MessageBubbleImpl = function MessageBubble({
   selectionResetToken,
   onActionPressIn,
   onReport,
+  reportPrompt,
 }) {
   const { t } = useTranslation();
   const capsuleRadius = 22;
@@ -276,7 +277,7 @@ const MessageBubbleImpl = function MessageBubble({
   };
 
   const onReportContent = () => {
-    onReport?.(message);
+    onReport?.({ message, prompt: reportPrompt || '' });
   };
 
   const showSheet = () => {
@@ -358,7 +359,6 @@ const MessageBubbleImpl = function MessageBubble({
                       styles.bubble,
                       styles.user,
                       cornerStyle,
-                      isPlainUserText(leftover) && styles.userPlainBubble,
                     ]}
                   >
                     {isPlainUserText(leftover) ? (
@@ -402,7 +402,6 @@ const MessageBubbleImpl = function MessageBubble({
                       styles.bubble,
                       styles.user,
                       cornerStyle,
-                      plainUserText && styles.userPlainBubble,
                     ]}
                   >
                     {plainUserText ? (
@@ -592,6 +591,9 @@ const MessageBubbleImpl = function MessageBubble({
   );
 };
 
+// Sent messages and sent files use the app's single accent.
+const USER_BUBBLE = '#F05A28';
+
 const styles = StyleSheet.create({
   wrap: {
     paddingHorizontal: 16,
@@ -611,26 +613,17 @@ const styles = StyleSheet.create({
   // text bubble
   bubble: {
     maxWidth: '100%',
-    paddingHorizontal: 12,
-    borderWidth: 1,
-    borderColor: colors.border,
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowRadius: 2,
-    shadowOffset: { width: 0, height: 1 },
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     flexShrink: 1,
   },
   user: {
-    backgroundColor: colors.userBubble,
-    borderColor: colors.userBubble,
-  },
-  userPlainBubble: {
-    paddingVertical: 10,
+    backgroundColor: USER_BUBBLE,
   },
   userPlainText: {
     color: '#FFFFFF',
     fontSize: 16,
-    lineHeight: 22,
+    lineHeight: 23,
     includeFontPadding: false,
   },
 
@@ -673,10 +666,10 @@ const styles = StyleSheet.create({
 
   actionRow: { flexDirection: 'row' },
   actionRowAssistant: {
-    marginLeft: 4,
+    marginLeft: 0,
     marginRight: 0,
-    marginTop: -10,
-    gap: 12,
+    marginTop: -8,
+    gap: 14,
     alignSelf: 'flex-start',
   },
   actionRowUser: {
@@ -704,9 +697,9 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   actionButtonText: {
-    color: colors.textSecondary,
+    color: '#8E8E93',
     fontSize: 11,
-    fontWeight: '600',
+    lineHeight: 14,
   },
   actionButtonPressed: {
     opacity: 0.6,
@@ -719,9 +712,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 16,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surfaceElevated,
+    backgroundColor: USER_BUBBLE,
     paddingHorizontal: 10,
     paddingVertical: 8,
   },
@@ -731,12 +722,12 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(90,200,250,0.15)',
+    backgroundColor: 'rgba(255,255,255,0.18)',
   },
-  sentDocumentIconText: { color: '#5AC8FA', fontSize: 9, fontWeight: '800' },
+  sentDocumentIconText: { color: '#FFFFFF', fontSize: 9, fontWeight: '800' },
   sentDocumentText: { flex: 1, marginLeft: 10 },
-  sentDocumentName: { color: colors.text, fontSize: 13, fontWeight: '600' },
-  sentDocumentMeta: { color: colors.textSecondary, fontSize: 11, marginTop: 2 },
+  sentDocumentName: { color: '#FFFFFF', fontSize: 13, fontWeight: '600' },
+  sentDocumentMeta: { color: 'rgba(255,255,255,0.82)', fontSize: 11, marginTop: 2 },
 
   failedRow: { marginTop: 6, alignSelf: 'flex-end' },
   retryChip: {
@@ -793,6 +784,11 @@ const MessageBubble = memo(MessageBubbleImpl, (prev, next) => {
   if (prev.showMeta !== next.showMeta) return false;
   if (prev.selectionResetToken !== next.selectionResetToken) return false;
   if (prev.onReport !== next.onReport) return false;
+  if (prev.reportPrompt !== next.reportPrompt) return false;
+  if (prev.onRetryFromHere !== next.onRetryFromHere) return false;
+  if (prev.onToast !== next.onToast) return false;
+  if (prev.onActionPressIn !== next.onActionPressIn) return false;
+  if (prevMsg?.meta !== nextMsg?.meta || prevMsg?.status !== nextMsg?.status) return false;
 
   // For streaming prop and streamingMessageId: only re-render if THIS message is affected
   // Check if THIS message was/is streaming

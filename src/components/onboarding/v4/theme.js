@@ -16,23 +16,26 @@ export const FONT = {
   bold: 'Lato-Bold',
 };
 
+// The app's single orange accent. Key names are kept from the earlier teal
+// palette because other modules import them.
 export const BRAND = {
-  tiffany: '#0ABAB5',
-  tiffanyBright: '#3CDDD6',
-  graphite: [14, 31, 31],
-  deepTitle: '#024947',
-  button: '#03736F',
-  accentLight: '#047672',
-  deepTeal: [6, 127, 123],
+  tiffany: '#F05A28',
+  tiffanyBright: '#F05A28',
+  graphite: [20, 20, 22],
+  deepTitle: '#B8400F',
+  button: '#F05A28',
+  accentLight: '#D94E20',
+  deepTeal: [217, 78, 32],
 };
 
-// Accent per goal card.
+// Every goal card highlights in the app's single accent. The keys stay
+// because goal definitions refer to them by name.
 export const GOAL_ACCENT = {
-  orange: '#FF9433',
-  red: '#FF5E54',
-  yellow: '#FFCC45',
-  cyan: '#40C7FF',
-  purple: '#1ABAB5',
+  orange: BRAND.tiffany,
+  red: BRAND.tiffany,
+  yellow: BRAND.tiffany,
+  cyan: BRAND.tiffany,
+  purple: BRAND.tiffany,
 };
 
 const DEMO_ACCENT = {
@@ -43,10 +46,10 @@ const DEMO_ACCENT = {
     translation: '#1677A8',
   },
   dark: {
-    doc: '#FFB45C',
-    img: '#AA9CFF',
-    reply: '#AA9CFF',
-    translation: '#63C2F2',
+    doc: BRAND.tiffany,
+    img: BRAND.tiffany,
+    reply: BRAND.tiffany,
+    translation: BRAND.tiffany,
   },
 };
 
@@ -68,7 +71,7 @@ export function useOnboardingTheme(forcedScheme) {
       mutedText: isDark ? rgba(255, 255, 255, 0.42) : rgba(...BRAND.graphite, 0.5),
       titleColor: isDark ? BRAND.tiffanyBright : BRAND.deepTitle,
       titleGradient: isDark
-        ? [BRAND.tiffanyBright, BRAND.tiffany, rgba(255, 255, 255, 0.92)]
+        ? [BRAND.tiffany, BRAND.tiffany, BRAND.tiffany]
         : [BRAND.deepTitle, BRAND.deepTitle],
       cardFill: isDark
         ? [rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)]
@@ -76,10 +79,8 @@ export function useOnboardingTheme(forcedScheme) {
       cardSolid: isDark ? rgba(255, 255, 255, 0.05) : '#FFFFFF',
       cardStroke: isDark ? rgba(255, 255, 255, 0.16) : rgba(2, 73, 71, 0.14),
       bubbleFill: isDark ? rgba(255, 255, 255, 0.05) : '#F4F8F8',
-      buttonFill: isDark
-        ? [rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.18)]
-        : [BRAND.button, BRAND.button],
-      buttonSolid: isDark ? rgba(255, 255, 255, 0.24) : BRAND.button,
+      buttonFill: [BRAND.button, BRAND.button],
+      buttonSolid: BRAND.button,
       accent: isDark ? BRAND.tiffany : BRAND.accentLight,
       demoAccent: isDark ? DEMO_ACCENT.dark : DEMO_ACCENT.light,
       controlFill: isDark ? rgba(255, 255, 255, 0.075) : rgba(255, 255, 255, 0.88),

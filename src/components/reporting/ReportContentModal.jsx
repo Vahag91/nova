@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.62)',
   },
   sheet: {
-    backgroundColor: '#15151C',
+    backgroundColor: '#2D2D31',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     borderWidth: 1,
@@ -200,8 +200,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   disclosure: {
-    color: '#F7C46C',
-    backgroundColor: 'rgba(247,196,108,0.12)',
+    color: '#A6A6AB',
+    backgroundColor: '#232326',
     borderRadius: 10,
     paddingHorizontal: 12,
     paddingVertical: 9,
@@ -224,11 +224,11 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.09)',
-    backgroundColor: 'rgba(255,255,255,0.03)',
+    backgroundColor: '#232326',
   },
   reasonSelected: {
-    borderColor: '#8B5CF6',
-    backgroundColor: 'rgba(139,92,246,0.16)',
+    borderColor: '#F05A28',
+    backgroundColor: '#39393E',
   },
   radio: {
     width: 18,
@@ -240,13 +240,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   radioSelected: {
-    borderColor: '#A78BFA',
+    borderColor: '#F05A28',
   },
   radioDot: {
     width: 9,
     height: 9,
     borderRadius: 5,
-    backgroundColor: '#A78BFA',
+    backgroundColor: '#F05A28',
   },
   reasonLabel: {
     color: '#FFFFFF',
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   submitButton: {
-    backgroundColor: '#8B5CF6',
+    backgroundColor: '#F05A28',
   },
   submitText: {
     color: '#FFFFFF',

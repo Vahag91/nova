@@ -3,9 +3,9 @@ import { PDFDocument } from "pdf-lib";
 import { Unzip, UnzipInflate } from "fflate";
 import { SaxesParser } from "saxes";
 
-export const MAX_FILE_BYTES = 10 * 1024 * 1024;
-export const MAX_EXTRACTED_CHARS = 200000;
-export const MAX_PDF_PAGES = 100;
+export const MAX_FILE_BYTES = 25 * 1024 * 1024;
+export const MAX_EXTRACTED_CHARS = 500000;
+export const MAX_PDF_PAGES = 300;
 const MAX_EXPANDED_BYTES = 50 * 1024 * 1024;
 const MIME = {
   pdf: "application/pdf",
@@ -13,6 +13,10 @@ const MIME = {
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
   txt: "text/plain",
   csv: "text/csv",
+  md: "text/markdown", tsv: "text/tab-separated-values", json: "application/json",
+  xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  odt: "application/vnd.oasis.opendocument.text",
 };
 export class DocumentError extends Error {
   constructor(public code: string, message: string, public status = 422) {
@@ -22,7 +26,7 @@ export class DocumentError extends Error {
 const unsupported = () =>
   new DocumentError(
     "UNSUPPORTED_DOCUMENT",
-    "Use a readable PDF, DOCX, TXT or CSV file.",
+    "Use a readable PDF, DOCX, XLSX, PPTX, ODT, TXT, CSV, TSV, MD or JSON file.",
   );
 const clean = (text: string) =>
   text.replace(/\r\n?/g, "\n").replace(/\n{4,}/g, "\n\n\n").trim();
@@ -54,7 +58,7 @@ export function decodeText(bytes: Uint8Array): string {
   return text.replace(/^\ufeff/, "");
 }
 
-function zipParts(bytes: Uint8Array): Map<string, Uint8Array> {
+function zipParts(bytes: Uint8Array, required = "word/document.xml", include = /^word\/(document|header\d*|footer\d*|footnotes|endnotes)\.xml$/): Map<string, Uint8Array> {
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   let end = -1;
   for (let i = bytes.length - 22; i >= Math.max(0, bytes.length - 65557); i--) {
@@ -92,7 +96,7 @@ function zipParts(bytes: Uint8Array): Map<string, Uint8Array> {
     offset = nameEnd + view.getUint16(offset + 30, true) +
       view.getUint16(offset + 32, true);
   }
-  if (offset !== end || !expected.has("word/document.xml")) throw unsupported();
+  if (offset !== end || !expected.has(required)) throw unsupported();
   const parts = new Map<string, Uint8Array>();
   let total = 0, failure: Error | null = null;
   const unzip = new Unzip((file) => {
@@ -103,9 +107,7 @@ function zipParts(bytes: Uint8Array): Map<string, Uint8Array> {
     }
     // Only textual Word parts are inflated. Images/macros are never executed/read.
     if (
-      !/^word\/(document|header\d*|footer\d*|footnotes|endnotes)\.xml$/.test(
-        file.name,
-      )
+      !include.test(file.name)
     ) return;
     const chunks: Uint8Array[] = [];
     let length = 0;
@@ -149,7 +151,7 @@ function zipParts(bytes: Uint8Array): Map<string, Uint8Array> {
   } catch {
     throw unsupported();
   }
-  if (!parts.has("word/document.xml")) throw unsupported();
+  if (!parts.has(required)) throw unsupported();
   return parts;
 }
 
@@ -289,7 +291,7 @@ async function extractPdf(bytes: Uint8Array) {
   if (pageCount > MAX_PDF_PAGES) {
     throw new DocumentError(
       "TOO_MANY_PAGES",
-      "Split this PDF into files of up to 100 pages.",
+      "Split this PDF into files of up to 300 pages.",
     );
   }
   if (!pageCount) {
@@ -333,7 +335,7 @@ async function extractPdf(bytes: Uint8Array) {
       }
       text = clean(text);
       if (!text) empty++;
-      pages.push(text);
+      pages.push(`[Page ${i}]\n${text || "[No extractable text on this page]"}`);
       page.cleanup();
     }
   } finally {
@@ -341,7 +343,7 @@ async function extractPdf(bytes: Uint8Array) {
     await pdf.loadingTask.destroy();
   }
   return {
-    text: pages.join("\n\n"),
+    text: empty === pageCount ? "" : pages.join("\n\n"),
     pageCount,
     extractedPages: pageCount - empty,
     partialText: empty > 0,
@@ -352,7 +354,7 @@ export async function extractDocument(bytes: Uint8Array, filename: string) {
   if (bytes.length > MAX_FILE_BYTES) {
     throw new DocumentError(
       "FILE_TOO_LARGE",
-      "Documents must be 10 MB or smaller.",
+      "Documents must be 25 MB or smaller.",
       413,
     );
   }
@@ -374,12 +376,15 @@ export async function extractDocument(bytes: Uint8Array, filename: string) {
     extension = "pdf";
     value = await extractPdf(bytes);
   } else if (starts(bytes, [0x50, 0x4b])) {
-    extension = "docx";
-    value = { text: extractDocx(bytes) };
+    if (extension === "xlsx") value = { text: extractXlsx(bytes) };
+    else if (extension === "pptx") value = { text: extractPptx(bytes) };
+    else if (extension === "odt") value = { text: extractOdt(bytes) };
+    else { extension = "docx"; value = { text: extractDocx(bytes) }; }
   } else {
-    if (!["txt", "csv"].includes(extension || "")) throw unsupported();
+    if (!["txt", "csv", "tsv", "md", "json"].includes(extension || "")) throw unsupported();
     const decoded = decodeText(bytes);
-    value = { text: extension === "csv" ? extractCsv(decoded) : decoded };
+    if (extension === "json") { try { JSON.parse(decoded); } catch { throw unsupported(); } }
+    value = { text: extension === "csv" ? extractCsv(decoded) : extension === "tsv" ? parseRows(decoded, "\t").map(row => row.map(c => JSON.stringify(c)).join(" | ")).join("\n") : decoded };
   }
   const text = clean(value.text);
   if (!text) {
@@ -398,4 +403,158 @@ export async function extractDocument(bytes: Uint8Array, filename: string) {
     truncated: end < text.length,
     partialText: value.partialText === true,
   };
+}
+
+// Parse XML without executing entities, relationships or embedded content.
+function xmlRead(xml: string, open: (tag: any) => void, text: (value: string) => void, close: (tag: any) => void) {
+  if (/<!DOCTYPE|<!ENTITY/i.test(xml)) throw unsupported();
+  const parser = new SaxesParser({ xmlns: true });
+  let depth = 0;
+  parser.on('opentag', tag => { if (++depth > 100) throw unsupported(); open(tag); });
+  parser.on('text', text);
+  parser.on('closetag', tag => { close(tag); depth--; });
+  try { parser.write(xml).close(); } catch { throw unsupported(); }
+}
+const attribute = (tag: any, name: string): string => {
+  const a: any = Object.values(tag.attributes).find((a: any) => a.name === name || (name === "r:id" && a.local === "id" && /\/relationships$/.test(a.uri)));
+  return a?.value || '';
+};
+const partText = (parts: Map<string, Uint8Array>, name: string) => {
+  const bytes = parts.get(name); if (!bytes) throw unsupported(); return decodeText(bytes);
+};
+function relationships(parts: Map<string, Uint8Array>, owner: string) {
+  const slash = owner.lastIndexOf('/'), base = owner.slice(0, slash + 1);
+  const name = base + '_rels/' + owner.slice(slash + 1) + '.rels';
+  const map = new Map<string, string>();
+  if (!parts.has(name)) return map;
+  xmlRead(partText(parts, name), tag => {
+    if (tag.local !== 'Relationship' || attribute(tag, 'TargetMode') === 'External') return;
+    const target = attribute(tag, 'Target');
+    if (!target || /[\\?#]|^[a-z]+:/i.test(target)) return;
+    const resolved = new URL(target, 'https://package.invalid/' + owner);
+    if (resolved.origin !== 'https://package.invalid') return;
+    map.set(attribute(tag, 'Id'), decodeURIComponent(resolved.pathname.slice(1)));
+  }, () => {}, () => {});
+  return map;
+}
+function drawingText(xml: string) {
+  const out: string[] = []; let inText = false, skip = 0;
+  xmlRead(xml, tag => {
+    if (tag.local === 'fld') skip++;
+    if (tag.local === 't' && /drawingml/.test(tag.uri)) inText = true;
+    if (tag.local === 'br') out.push('\n');
+  }, value => { if (inText && !skip) out.push(value); }, tag => {
+    if (tag.local === 't') inText = false;
+    if (tag.local === 'fld') skip--;
+    if (tag.local === 'p') out.push('\n');
+    if (tag.local === 'tc') out.push('\t');
+  });
+  return clean(out.join(''));
+}
+function extractPptx(bytes: Uint8Array) {
+  const parts = zipParts(bytes, 'ppt/presentation.xml', /^ppt\/(presentation\.xml|_rels\/presentation\.xml\.rels|slides\/(slide\d+\.xml|_rels\/slide\d+\.xml\.rels)|notesSlides\/notesSlide\d+\.xml)$/);
+  const refs = relationships(parts, 'ppt/presentation.xml'), slides: string[] = [];
+  xmlRead(partText(parts, 'ppt/presentation.xml'), tag => {
+    if (tag.local === 'sldId') { const path = refs.get(attribute(tag, 'r:id')); if (!path || !/^ppt\/slides\/slide\d+\.xml$/.test(path)) throw unsupported(); slides.push(path); }
+  }, () => {}, () => {});
+  if (!slides.length || slides.length > 500) throw unsupported();
+  let readable = 0;
+  const text = slides.map((path, i) => {
+    const body = drawingText(partText(parts, path));
+    const notesPath = [...relationships(parts, path).values()].find(p => /^ppt\/notesSlides\/notesSlide\d+\.xml$/.test(p));
+    const notes = notesPath ? drawingText(partText(parts, notesPath)) : '';
+    if (body || notes) readable++;
+    return `[Slide ${i + 1}]\n${body || '[No slide text]'}${notes ? '\n[Speaker notes]\n' + notes : ''}`;
+  }).join('\n\n');
+  return readable ? '[Extraction: slide text and speaker notes only. Images, charts, animations and embedded media are not interpreted.]\n' + text : '';
+}
+function extractOdt(bytes: Uint8Array) {
+  const parts = zipParts(bytes, 'content.xml', /^(content\.xml|mimetype)$/);
+  if (partText(parts, 'mimetype').trim() !== MIME.odt) throw unsupported();
+  const out: string[] = []; let textDepth = 0, skip = 0;
+  xmlRead(partText(parts, 'content.xml'), tag => {
+    if (tag.local === 'tracked-changes' || tag.local === 'annotation') skip++;
+    if (['p', 'h'].includes(tag.local)) textDepth++;
+    if (tag.local === 's' && textDepth && !skip) out.push(' '.repeat(Math.min(100, Number(attribute(tag, 'text:c')) || 1)));
+    if (tag.local === 'tab' && !skip) out.push('\t');
+    if (tag.local === 'line-break' && !skip) out.push('\n');
+  }, value => { if (textDepth && !skip) out.push(value); }, tag => {
+    if (tag.local === 'tracked-changes' || tag.local === 'annotation') skip--;
+    if (['p', 'h'].includes(tag.local)) { textDepth--; if (!skip) out.push('\n'); }
+    if (tag.local === 'table-cell' && !skip) out.push('\t');
+  });
+  return clean(out.join(''));
+}
+function extractXlsx(bytes: Uint8Array) {
+  const parts = zipParts(bytes, 'xl/workbook.xml', /^xl\/(workbook\.xml|_rels\/workbook\.xml\.rels|sharedStrings\.xml|styles\.xml|worksheets\/sheet\d+\.xml)$/);
+  const shared: string[] = [], formats = new Map<number, string>(), styles: number[] = [];
+  let item = '', inText = false, phonetic = 0;
+  if (parts.has('xl/sharedStrings.xml')) xmlRead(partText(parts, 'xl/sharedStrings.xml'), tag => {
+    if (tag.local === 'si') item = '';
+    if (tag.local === 'rPh') phonetic++;
+    if (tag.local === 't') inText = true;
+  }, value => { if (inText && !phonetic) item += value; }, tag => {
+    if (tag.local === 't') inText = false;
+    if (tag.local === 'rPh') phonetic--;
+    if (tag.local === 'si') shared.push(item);
+  });
+  let cellStyles = false;
+  if (parts.has('xl/styles.xml')) xmlRead(partText(parts, 'xl/styles.xml'), tag => {
+    if (tag.local === 'numFmt') formats.set(Number(attribute(tag, 'numFmtId')), attribute(tag, 'formatCode'));
+    if (tag.local === 'cellXfs') cellStyles = true;
+    if (tag.local === 'xf' && cellStyles) styles.push(Number(attribute(tag, 'numFmtId')));
+  }, () => {}, tag => { if (tag.local === 'cellXfs') cellStyles = false; });
+  const refs = relationships(parts, 'xl/workbook.xml'), sheets: any[] = []; let date1904 = false;
+  xmlRead(partText(parts, 'xl/workbook.xml'), tag => {
+    if (tag.local === 'workbookPr') date1904 = ['1','true'].includes(attribute(tag, 'date1904'));
+    if (tag.local === 'sheet') {
+      const path = refs.get(attribute(tag, 'r:id'));
+      if (!path || !/^xl\/worksheets\/sheet\d+\.xml$/.test(path)) throw unsupported();
+      sheets.push({ path, name: attribute(tag, 'name'), state: attribute(tag, 'state') });
+    }
+  }, () => {}, () => {});
+  if (!sheets.length || sheets.length > 200) throw unsupported();
+  const out: string[] = []; let count = 0, chars = 0, cut = false;
+  for (const sheet of sheets) {
+    if (cut) break;
+    out.push(`[Sheet ${JSON.stringify(sheet.name)}${sheet.state && sheet.state !== 'visible' ? '; hidden' : ''}]`);
+    let cell: any = null, capture = '';
+    xmlRead(partText(parts, sheet.path), tag => {
+      if (tag.local === 'c') cell = { address: attribute(tag, 'r'), type: attribute(tag, 't'), style: Number(attribute(tag, 's')), value: '', formula: '', hasFormula: false, inline: '' };
+      if (cell && tag.local === 'f') cell.hasFormula = true;
+      if (cell && ['v','f','t'].includes(tag.local)) capture = tag.local;
+    }, value => { if (cell && capture) cell[capture === 'v' ? 'value' : capture === 'f' ? 'formula' : 'inline'] += value; }, tag => {
+      if (['v','f','t'].includes(tag.local)) capture = '';
+      if (tag.local !== 'c' || !cell) return;
+      if (cut) { cell = null; return; }
+      let value = cell.value;
+      if (cell.type === 's') {
+        const index = Number(value); if (!/^\d+$/.test(value) || !Number.isInteger(index) || shared[index] === undefined) throw unsupported(); value = shared[index];
+      } else if (cell.type === 'inlineStr') value = cell.inline;
+      else if (cell.type === 'b') value = value === '1' ? 'TRUE' : value === '0' ? 'FALSE' : value;
+      const style = styles[cell.style] || 0, format = formats.get(style) || '';
+      if (value && (!cell.type || cell.type === 'n') && Number.isFinite(Number(value))) {
+        if (style === 9 || style === 10) value = `${Number((Number(value) * 100).toPrecision(15))}%`;
+        else if (style >= 14 && style <= 22) {
+          const n = Number(value);
+          if (!date1904 && n >= 60 && n < 61) value = '1900-02-29 (Excel calendar anomaly)';
+          else {
+            const epoch = Date.UTC(date1904 ? 1904 : 1899, date1904 ? 0 : 11, date1904 ? 1 : 31);
+            const date = new Date(epoch + (n - (!date1904 && n >= 60 ? 1 : 0)) * 86400000);
+            if (Number.isFinite(date.getTime())) value = style >= 18 && style <= 21 ? date.toISOString().slice(11,19) : style === 22 ? date.toISOString().replace(/Z$/, "") + " (local spreadsheet date/time)" : date.toISOString().slice(0,10);
+          }
+        } else if ([5,6,7,8,41,42,43,44].includes(style)) value += " [currency/accounting format; currency symbol not reliably extracted]";
+        else if (format) value += ` [number format: ${format}; raw numeric value]`;
+      }
+      if (cell.hasFormula) value = value ? `${value} [cached formula result; may be stale]` : '[Formula has no saved result; not calculated]';
+      if (cell.type === 'e') value = `[Spreadsheet error: ${value}]`;
+      if (value) { const line = `${cell.address || '?'}: ${JSON.stringify(value)}`; out.push(line); chars += line.length; count++; }
+      if (chars > MAX_EXTRACTED_CHARS || count >= 100000) cut = true;
+      cell = null;
+    });
+  }
+  if (!count) return '';
+  // Force the shared storage boundary to disclose any early extraction cutoff.
+  const text = '[Extraction: stored cell values with sheet names and cell addresses. Formulas are not recalculated. Charts, images and macros are not read. Hidden sheets are labelled.]\n' + out.join('\n');
+  return cut && text.length <= MAX_EXTRACTED_CHARS ? text + '\n[Additional cells omitted]'.repeat(Math.ceil((MAX_EXTRACTED_CHARS + 1 - text.length) / 26) + 1) : text;
 }

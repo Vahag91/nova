@@ -9,6 +9,7 @@ import Svg, { Path } from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors } from '../../styles/colors';
+import { graphite } from '../../styles/graphite';
 import { useTranslation } from 'react-i18next';
 import { SubscriptionAccessContext } from '../../context/SubscriptionContext';
 import { setPendingPremiumAction } from '../../state/premiumActions';
@@ -25,7 +26,7 @@ const noop = () => { };
 
 const SendIcon = ({ color, size = 24 }) => (
   <Svg height={size} width={size} viewBox="0 -960 960 960" fill={color}>
-    <Path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" />
+    <Path d="M120-160v-240l320-80-320-80v-240l760 320-760 320Z" />
   </Svg>
 );
 const MicIcon = ({ color, size = 24 }) => (
@@ -544,7 +545,7 @@ function TestInput({
                         activeOpacity={0.9}
                       >
                         <View style={[styles.menuIconContainer, styles.iconViolet]}>
-                          <PaletteIcon color="#8A2BE2" size={28} />
+                          <PaletteIcon color="#FFFFFF" size={22} />
                         </View>
                         <View style={styles.menuTextContainer}>
                           <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.createImages')}</Text>
@@ -564,7 +565,7 @@ function TestInput({
                         activeOpacity={0.9}
                       >
                         <View style={[styles.menuIconContainer, styles.iconCyan]}>
-                          <CameraIcon color="#00BCD4" size={28} />
+                          <CameraIcon color="#FFFFFF" size={22} />
                         </View>
                         <View style={styles.menuTextContainer}>
                           <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.camera')}</Text>
@@ -583,14 +584,14 @@ function TestInput({
                         activeOpacity={0.9}
                       >
                         <View style={[styles.menuIconContainer, styles.iconBlue]}>
-                          <FileIcon color="#5AC8FA" size={28} />
+                          <FileIcon color="#FFFFFF" size={22} />
                         </View>
                         <View style={styles.menuTextContainer}>
                           <Text style={styles.menuLabel} numberOfLines={1}>
                             {t('chat.files.upload', { defaultValue: 'Upload file' })}
                           </Text>
                           <Text style={styles.menuSubLabel} numberOfLines={1}>
-                            {t('chat.files.supportedTypes', { defaultValue: 'PDF, DOCX, TXT or CSV' })}
+                            {t('chat.files.supportedTypes', { defaultValue: 'PDF, DOCX, XLSX, PPTX, ODT, TXT, CSV, TSV, MD or JSON' })}
                           </Text>
                         </View>
                       </TouchableOpacity>
@@ -607,7 +608,7 @@ function TestInput({
                           accessibilityLabel={c('uploadVideo', 'Upload video')}
                         >
                           <View style={[styles.menuIconContainer, styles.iconViolet]}>
-                            <SvgIcon name="workspace-video" size={28} color="#D1BDEB" />
+                            <SvgIcon name="workspace-video" size={22} color="#FFFFFF" />
                           </View>
                           <View style={styles.menuTextContainer}>
                             <Text style={styles.menuLabel}>{c('uploadVideo', 'Upload video')}</Text>
@@ -623,7 +624,7 @@ function TestInput({
                         activeOpacity={0.9}
                       >
                         <View style={[styles.menuIconContainer, styles.iconOrange]}>
-                          <ExploreIcon color="#FF9800" size={28} />
+                          <ExploreIcon color="#FFFFFF" size={22} />
                         </View>
                         <View style={styles.menuTextContainer}>
                           <Text style={styles.menuLabel} numberOfLines={1}>{t('chat.webSearch.title', { defaultValue: 'Web search' })}</Text>
@@ -677,11 +678,11 @@ function TestInput({
                 >
                   <View style={styles.documentIconWrap}>
                     {busy ? (
-                      <ActivityIndicator size="small" color="#5AC8FA" />
+                      <ActivityIndicator size="small" color={graphite.accent} />
                     ) : (
                       attachment.kind === 'video'
-                        ? <SvgIcon name="workspace-video" color="#D1BDEB" size={22} />
-                        : <FileIcon color={failed ? '#FF6B6B' : '#5AC8FA'} size={20} />
+                        ? <SvgIcon name="workspace-video" color="#FFFFFF" size={20} />
+                        : <FileIcon color={failed ? '#FF6B6B' : '#FFFFFF'} size={20} />
                     )}
                   </View>
                   <View style={styles.documentTextWrap}>
@@ -724,7 +725,7 @@ function TestInput({
             value={value}
             onChangeText={onChange}
             placeholder={t('chat.messagePlaceholder')}
-            placeholderTextColor={colors.placeholder}
+            placeholderTextColor={graphite.placeholder}
             style={[styles.input, useLatoForInput && styles.inputLato, { maxHeight: maxInputHeight }]}
             editable={!streaming && !offline && !isRecording}
             multiline
@@ -732,7 +733,7 @@ function TestInput({
             maxLength={maxLength}
             autoCorrect
             autoCapitalize="sentences"
-            selectionColor={colors.primary}
+            selectionColor={graphite.accent}
             underlineColorAndroid="transparent"
             textAlignVertical={isExpanded ? 'top' : 'center'}
             accessibilityLabel={t('chat.messageInput')}
@@ -778,7 +779,7 @@ function TestInput({
               accessibilityLabel={webSearchEnabled ? t('chat.webSearch.disable', { defaultValue: 'Disable web search' }) : t('chat.webSearch.enable', { defaultValue: 'Enable web search' })}
             >
               <ExploreIcon
-                color={webSearchEnabled ? "#007AFF" : "#FFFFFF"}
+                color={webSearchEnabled ? graphite.accent : "#FFFFFF"}
                 size={18}
               />
               {webSearchEnabled && (
@@ -813,11 +814,11 @@ function TestInput({
                 });
                 handleSend();
               }} disabled={!canSend || offline || isRecording} accessibilityRole="button" accessibilityLabel={offline ? t('chat.offline') : t('chat.sendMessage')}>
-                <SendIcon color={canSend && !isRecording ? '#FFFFFF' : '#000000'} size={23} />
+                <SendIcon color={graphite.onAccent} size={20} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity style={styles.stopButton} onPress={handleStop} accessibilityRole="button" accessibilityLabel={t('chat.stop')}>
-                <StopIcon color="#000000" size={34} />
+                <StopIcon color={graphite.onAccent} size={30} />
               </TouchableOpacity>
             )}
           </View>
@@ -836,47 +837,40 @@ function TestInput({
 const THUMB = 48;
 
 const styles = StyleSheet.create({
-  wrapper: { backgroundColor: '#000000', paddingHorizontal: 12, paddingTop: 8, position: 'relative' },
+  wrapper: { backgroundColor: graphite.bg, paddingHorizontal: 12, paddingTop: 0, position: 'relative' },
   modalRoot: { flex: 1 },
-  backdrop: { backgroundColor: 'rgba(0,0,0,0.2)', zIndex: 998 },
+  backdrop: { backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 998 },
   popoverContainer: { position: 'absolute', zIndex: 1000, elevation: 50, padding: 12 },
   menuBox: {
-    backgroundColor: 'rgba(10, 9, 9, 0.75)',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.15)',
-    borderRadius: 24,
+    backgroundColor: graphite.card,
+    borderRadius: 22,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOpacity: 0.8,
-    shadowRadius: 30,
-    shadowOffset: { width: 0, height: 10 },
-    elevation: 20,
-    padding: 10
+    padding: 8
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 7,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
     backgroundColor: 'transparent',
-    borderRadius: 18,
-    marginBottom: 4
+    borderRadius: 16,
+    marginBottom: 2
   },
   menuItemLast: { marginBottom: 0 },
-  menuIconContainer: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center', marginRight: 20 },
+  menuIconContainer: { width: 42, height: 42, borderRadius: 12, backgroundColor: graphite.inset, alignItems: 'center', justifyContent: 'center', marginRight: 14 },
   iconViolet: {},
   iconCyan: {},
   iconOrange: {},
   iconBlue: {},
   menuTextContainer: { flex: 1 },
-  menuLabel: { color: '#E0E0E0', fontSize: 17, fontWeight: '600', fontFamily: 'Lato-BoldItalic', marginBottom: 3 },
-  menuSubLabel: { color: '#A0A0A0', fontSize: 14, fontFamily: 'Lato-Regular' },
+  menuLabel: { color: '#FFFFFF', fontSize: 16, lineHeight: 22, fontWeight: '500' },
+  menuSubLabel: { color: graphite.textSecondary, fontSize: 14, lineHeight: 19 },
 
   inputContainer: {
-    backgroundColor: '#1e1e1e',
+    backgroundColor: graphite.card,
     paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 24, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 8
+    paddingHorizontal: 14,
+    borderRadius: 28,
   },
 
   thumbRow: { marginBottom: 8 },
@@ -892,20 +886,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: 14,
-    backgroundColor: '#262628',
-    paddingHorizontal: 10,
+    borderColor: 'transparent',
+    borderRadius: 16,
+    backgroundColor: graphite.cardHeader,
+    paddingHorizontal: 8,
     paddingVertical: 8,
   },
   documentChipFailed: { borderColor: 'rgba(255,107,107,0.6)' },
-  documentIconWrap: { width: 28, alignItems: 'center', justifyContent: 'center' },
+  documentIconWrap: { width: 38, height: 38, borderRadius: 10, backgroundColor: graphite.inset, alignItems: 'center', justifyContent: 'center' },
   documentTextWrap: { flex: 1, marginLeft: 8, marginRight: 8 },
-  documentName: { color: '#FFFFFF', fontSize: 13, fontFamily: 'Lato-Bold' },
-  documentMeta: { color: colors.textSecondary, fontSize: 11, marginTop: 2, fontFamily: 'Lato-Regular' },
+  documentName: { color: '#FFFFFF', fontSize: 14, fontWeight: '500' },
+  documentMeta: { color: colors.textSecondary, fontSize: 12, marginTop: 1 },
   documentMetaFailed: { color: '#FF8A8A' },
   documentRetry: { minHeight: 28, justifyContent: 'center', paddingHorizontal: 6 },
-  documentRetryText: { color: '#5AC8FA', fontSize: 11, fontFamily: 'Lato-Bold' },
+  documentRetryText: { color: graphite.accent, fontSize: 11, fontFamily: 'Lato-Bold' },
   documentRemove: { width: 24, height: 24, alignItems: 'center', justifyContent: 'center' },
   documentRemoveText: { color: '#FFFFFF', fontSize: 12, fontWeight: '700' },
 
@@ -913,35 +907,33 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 16,
     color: colors.text,
-    paddingHorizontal: 0,
+    paddingHorizontal: 2,
     paddingVertical: 8,
     paddingRight: 14,
     textAlignVertical: 'top',
     includeFontPadding: false,
     minHeight: 40
   },
-  inputLato: {
-    fontFamily: 'Lato-Regular',
-  },
+  inputLato: {},
 
   iconsRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 0 },
   leftControls: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   rightControls: { flexDirection: 'row', alignItems: 'center', gap: 8 },
 
-  plusButton: { backgroundColor: '#2C2C2E', width: 32, height: 32, borderRadius: 16, justifyContent: 'center', alignItems: 'center' },
+  plusButton: { backgroundColor: graphite.inset, width: 38, height: 38, borderRadius: 19, justifyContent: 'center', alignItems: 'center' },
   webSearchToggle: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#2C2C2E',
-    minWidth: 32,
-    height: 32,
-    paddingHorizontal: 8,
-    borderRadius: 16,
+    backgroundColor: graphite.inset,
+    minWidth: 38,
+    height: 38,
+    paddingHorizontal: 10,
+    borderRadius: 19,
     marginLeft: 4,
     justifyContent: 'center'
   },
   webSearchText: {
-    color: '#007AFF',
+    color: graphite.accent,
     fontSize: 12,
     fontFamily: 'Lato-Regular',
     marginLeft: 6
@@ -951,17 +943,17 @@ const styles = StyleSheet.create({
   iconButton: { padding: 6 },
   iconDisabled: { opacity: 0.5 },
 
-  micButton: { width: 32, height: 32, borderRadius: 16, backgroundColor: '#1F1F1F', borderWidth: 1, borderColor: colors.border, justifyContent: 'center', alignItems: 'center' },
+  micButton: { width: 38, height: 38, borderRadius: 19, backgroundColor: graphite.inset, justifyContent: 'center', alignItems: 'center' },
   testButton: { width: 28, height: 28, borderRadius: 14, backgroundColor: '#1F1F1F', borderWidth: 1, borderColor: '#FF6B6B', justifyContent: 'center', alignItems: 'center', marginRight: 4 },
 
-  sendButton: { width: 38, height: 38, borderRadius: 24, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
-  sendButtonActive: { width: 38, height: 38, borderRadius: 24, backgroundColor: '#007AFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
-  sendButtonDisabled: { backgroundColor: '#FFFFFF', opacity: 0.5 },
+  sendButton: { width: 40, height: 40, borderRadius: 20, backgroundColor: graphite.accent, justifyContent: 'center', alignItems: 'center', marginLeft: 0 },
+  sendButtonActive: { width: 40, height: 40, borderRadius: 20, backgroundColor: graphite.accent, justifyContent: 'center', alignItems: 'center', marginLeft: 0 },
+  sendButtonDisabled: { opacity: 0.45 },
 
-  stopButton: { width: 38, height: 38, borderRadius: 24, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
+  stopButton: { width: 40, height: 40, borderRadius: 20, backgroundColor: graphite.accent, justifyContent: 'center', alignItems: 'center', marginLeft: 0 },
 
   metaRow: { alignItems: 'flex-end' },
-  metaStreaming: { fontSize: 11, color: colors.primary, fontFamily: 'Lato-Regular' },
+  metaStreaming: { fontSize: 11, color: graphite.accent, fontFamily: 'Lato-Regular' },
   metaRecording: { fontSize: 11, color: '#EA4335', fontFamily: 'Lato-Regular' },
   metaCounter: { fontSize: 11, color: colors.textSecondary, fontFamily: 'Lato-Regular' },
 });

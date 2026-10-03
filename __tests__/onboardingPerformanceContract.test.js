@@ -40,7 +40,7 @@ describe('onboarding performance and handoff contract', () => {
     expect(paywall).toContain('resizeMethod="resize"');
     expect(paywall).toContain('useState(USE_TIMELINE_PAYWALL)');
     expect(app).toContain('setInitialPaywallVisible(true)');
-    expect(paywall).toContain("accent: '#0ABAB5'");
+    expect(paywall).toContain("accent: '#F05A28'");
     expect(intro).toContain("backgroundColor: '#0A0A0A'");
     expect(app).toContain('styles.fullscreenOverlay');
   });

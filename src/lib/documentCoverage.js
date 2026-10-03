@@ -27,8 +27,8 @@ export function documentCoverageNotes(doc, copy) {
 
 const documentErrors = {
   ENCRYPTED_DOCUMENT: ['encrypted', 'This PDF is password-protected. Upload an unlocked copy.'],
-  UNSUPPORTED_DOCUMENT: ['unsupportedDocument', 'This file is unreadable or its contents are unsupported. Use a PDF, DOCX, TXT or CSV file.'],
-  TOO_MANY_PAGES: ['tooManyPages', 'Split this PDF into files of up to 100 pages.'],
+  UNSUPPORTED_DOCUMENT: ['unsupportedDocument', 'This file is unreadable or its contents are unsupported. Use a PDF, DOCX, XLSX, PPTX, ODT, TXT, CSV, TSV, MD or JSON file.'],
+  TOO_MANY_PAGES: ['tooManyPages', 'Split this PDF into files of up to 300 pages.'],
   NO_READABLE_TEXT: ['noReadableText', 'No readable text was found. Scanned PDFs need OCR; upload a text-based copy.'],
 };
 export function documentUploadError(error, t) {

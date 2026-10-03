@@ -11,6 +11,12 @@ const MIME_BY_EXTENSION = Object.freeze({
   docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   txt: 'text/plain',
   csv: 'text/csv',
+  xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  odt: 'application/vnd.oasis.opendocument.text',
+  md: 'text/markdown',
+  tsv: 'text/tab-separated-values',
+  json: 'application/json',
 });
 
 export function getFileExtension(name = '') {

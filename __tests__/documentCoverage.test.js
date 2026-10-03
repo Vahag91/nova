@@ -48,5 +48,5 @@ test('chat errors are mapped by code and never prefer unsafe provider wording', 
   const t = (key, options) => options.defaultValue;
   expect(documentUploadError({ code: 'ENCRYPTED_DOCUMENT', message: 'raw parser content' }, t)).toContain('password-protected');
   expect(documentUploadError({ code: 'UNSUPPORTED_DOCUMENT' }, t)).toContain('unsupported');
-  expect(documentUploadError({ code: 'TOO_MANY_PAGES' }, t)).toContain('100 pages');
+  expect(documentUploadError({ code: 'TOO_MANY_PAGES' }, t)).toContain('300 pages');
 });

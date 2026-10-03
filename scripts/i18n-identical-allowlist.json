@@ -1,5 +1,7 @@
 {
   "global": [
+    "workspace.videoLimits",
+    "workspace.videoLimitsV2",
     "app.launch.title",
     "chat.markdown.wikipedia",
     "chat.studioBanner.label",

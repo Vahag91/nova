@@ -1,4 +1,4 @@
-import { getChatVideoSource, asksForVideoWithoutSource } from '../src/lib/videoChat';
+import { getChatVideoSource, asksForVideoWithoutSource, videoQuestionSource } from '../src/lib/videoChat';
 import { validateSource } from '../supabase/functions/source-analyze/contracts';
 import { buildPayload } from '../src/lib/payloadBuilder';
 test('video requests preserve questions and canonicalize URLs', () => {
@@ -28,4 +28,18 @@ test('ordinary chat retains video context after recency trimming and drops expir
   expect(JSON.stringify(payload)).toContain('A blue rectangle');
   expect(JSON.stringify(payload)).not.toContain('expired-video');
   expect(payload.filter(m=>m.role==='system').some(m=>JSON.stringify(m).includes('blue rectangle'))).toBe(false);
+});
+
+const videoRef = {type:'upload',jobId:'d57a9b51-57da-411c-8608-b79757fbdb5a',expiresAt:'2099-01-01'};
+test('follow-up routes to original video with bounded conversation', () => {
+ const thread={messages:[{role:'assistant',content:'summary',meta:{videoSummary:true,videoSource:videoRef}},...Array.from({length:8},()=>({role:'user',content:'x'.repeat(3000)}))]};
+ expect(videoQuestionSource(thread,'Who owns it?')).toMatchObject({sourceJobId:videoRef.jobId,type:'upload',question:'Who owns it?'});
+ expect(videoQuestionSource(thread,'Who?').conversation).toHaveLength(6);
+ expect(videoQuestionSource(thread,'Who?').conversation[0].content).toHaveLength(2000);
+ expect(videoQuestionSource({meta:{workspaceVideoSource:videoRef},messages:[]},'Who?').sourceJobId).toBe(videoRef.jobId);
+});
+test('legacy or expired videos never silently fall back to summary chat',()=>{
+ expect(()=>videoQuestionSource({messages:[{meta:{videoSummary:true}}]},'Who?')).toThrow();
+ expect(()=>videoQuestionSource({meta:{workspaceVideoSource:{...videoRef,expiresAt:'2000-01-01'}}},'Who?')).toThrow();
+ expect(videoQuestionSource({messages:[]},'Hello')).toBeNull();
 });

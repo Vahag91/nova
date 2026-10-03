@@ -3,7 +3,6 @@ import { useSourceWorkspaceAvailability } from '../state/useSourceWorkspaceAvail
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Alert,
-  Dimensions,
   Image,
   Modal,
   Pressable,
@@ -25,47 +24,30 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useWorkspaceTranslation } from '../i18n/useWorkspaceTranslation';
 
-import SvgIcon from '../components/SvgIcon';
+import Icon from '../components/ui/Icon';
 import SidebarAssistantsBanner from '../components/navigation/SidebarAssistantsBanner';
 import SidebarProFeaturesButton from '../components/navigation/SidebarProFeaturesButton';
 import { SubscriptionContext } from '../context/SubscriptionContext';
 import { useThreadsStore } from '../state/useThreadsStore';
 import { colors } from '../styles/colors';
 import { APP_VERSION } from '../config/appInfo';
-// Matches the coin accent used on the rewards screen.
-const REWARDS_ACCENT = '#FBBF24';
-
-function MenuItem({ active, icon, label, onPress, highlight }) {
+function MenuItem({ active, icon, label, onPress }) {
   return (
     <TouchableOpacity
-      style={[
-        styles.menuItem,
-        highlight && styles.menuItemHighlight,
-        active &&
-          (highlight ? styles.menuItemHighlightActive : styles.menuItemActive),
-      ]}
+      style={[styles.menuItem, active && styles.menuItemActive]}
       onPress={onPress}
-      activeOpacity={0.82}
+      activeOpacity={0.7}
+      accessibilityRole="button"
+      accessibilityState={{ selected: !!active }}
     >
-      <View style={styles.iconContainer}>
-        <SvgIcon
-          name={icon}
-          size={18}
-          color={
-            highlight
-              ? REWARDS_ACCENT
-              : active
-                ? colors.text
-                : colors.textSecondary
-          }
-        />
-      </View>
+      <Icon
+        name={icon}
+        size={22}
+        color={active ? colors.primary : colors.textSecondary}
+      />
       <Text
-        style={[
-          styles.menuLabel,
-          active && styles.menuLabelActive,
-          highlight && styles.menuLabelHighlight,
-        ]}
+        style={[styles.menuLabel, active && styles.menuLabelActive]}
+        numberOfLines={1}
       >
         {label}
       </Text>
@@ -87,16 +69,10 @@ export default function AndroidNavigationMenu({
   const insets = useSafeAreaInsets();
   const { height: screenHeight } = useWindowDimensions();
   const topInset = insets.top;
-  // This drawer lives in a Modal, which statusBarTranslucent pushes edge-to-edge.
-  // Below API 35 the main window still fits the navigation bar, so the provider
-  // reports bottom: 0 and the footer would sit under the system buttons. Fall
-  // back to the screen/window delta, which is the system bar height.
-  const bottomInset = React.useMemo(() => {
-    if (insets.bottom > 0) return insets.bottom;
-    const fullHeight = Dimensions.get('screen').height;
-    const delta = Math.round(fullHeight - screenHeight);
-    return delta > 0 && delta < 200 ? delta : 0;
-  }, [insets.bottom, screenHeight]);
+  // Edge-to-edge is off, so below API 35 the Modal window already stops above
+  // the navigation bar and the provider correctly reports 0; on API 35+ the
+  // system forces edge-to-edge and reports the real inset.
+  const bottomInset = insets.bottom;
   const isCompactHeight = screenHeight <= 700;
   const subscription = useContext(SubscriptionContext);
   const isPremium = !!subscription?.isPremium;
@@ -325,49 +301,48 @@ export default function AndroidNavigationMenu({
             />
 
             <View style={styles.mainNav}>
+              <MenuItem
+                active={activeRouteName === 'Chat'}
+                icon="chat"
+                label={t('navigation.chat')}
+                onPress={handleNewChatPress}
+              />
               {documentsEnabled && <MenuItem
                 active={activeRouteName === 'Documents'}
-                icon="workspace-document"
+                icon="documents"
                 label={c('documents', 'Documents')}
                 onPress={() => handleMenuItemPress('Documents')}
               />}
               {videosEnabled && <MenuItem
                 active={activeRouteName === 'VideoSummaries'}
-                icon="workspace-video"
+                icon="video"
                 label={c('videos', 'Video summaries')}
                 onPress={() => handleMenuItemPress('VideoSummaries')}
               />}
               <MenuItem
-                active={activeRouteName === 'Chat'}
-                icon="newchat"
-                label={t('navigation.chat')}
-                onPress={handleNewChatPress}
-              />
-              <MenuItem
                 active={activeRouteName === 'History'}
-                icon="layout"
+                icon="history"
                 label={t('navigation.history')}
                 onPress={() => handleMenuItemPress('History')}
               />
               <MenuItem
                 active={activeRouteName === 'Assistants'}
-                icon="quill"
+                icon="assistants"
                 label={t('navigation.assistants')}
                 onPress={() => handleMenuItemPress('Assistants')}
               />
               {IMAGE_STUDIO_ENABLED ? (
                 <MenuItem
                   active={activeRouteName === 'Studio'}
-                  icon="studio"
+                  icon="image"
                   label={t('navigation.imagesStudio')}
                   onPress={() => handleMenuItemPress('Studio')}
                 />
               ) : null}
               {REWARDS_ENABLED ? (
                 <MenuItem
-                  highlight
                   active={activeRouteName === 'Rewards'}
-                  icon="coin"
+                  icon="star"
                   label={t('navigation.rewards')}
                   onPress={() => handleMenuItemPress('Rewards')}
                 />
@@ -419,9 +394,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: PANEL_WIDTH,
-    backgroundColor: '#050507',
+    backgroundColor: colors.background,
     borderRightWidth: 1,
-    borderRightColor: 'rgba(255,255,255,0.06)',
+    borderRightColor: 'rgba(255,255,255,0.08)',
     paddingHorizontal: 16,
     elevation: 16,
     shadowColor: '#000',
@@ -456,94 +431,77 @@ const styles = StyleSheet.create({
     height: 44,
   },
   logoText: {
-    fontSize: 24,
-    fontFamily: 'Lato-Bold',
+    fontSize: 22,
+    lineHeight: 28,
+    fontWeight: '600',
     color: colors.text,
-    marginLeft: 6,
-    letterSpacing: 1.4,
+    marginLeft: 8,
+    letterSpacing: -0.2,
   },
   recentChatsSection: {
-    marginTop: 36,
+    marginTop: 28,
   },
   recentChatsTitle: {
-    fontSize: 12,
-    fontFamily: 'Lato-Bold',
-    color: colors.textSecondary,
-    letterSpacing: 1,
-    textTransform: 'uppercase',
+    fontSize: 13,
+    lineHeight: 18,
+    color: colors.textMuted,
     paddingHorizontal: 12,
-    marginBottom: 8,
-  },
-  recentChatItem: {
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 10,
     marginBottom: 4,
   },
+  recentChatItem: {
+    minHeight: 40,
+    justifyContent: 'center',
+    paddingHorizontal: 12,
+    borderRadius: 12,
+  },
   recentChatItemActive: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: colors.surface,
   },
   recentChatText: {
-    fontSize: 13,
+    fontSize: 15,
+    lineHeight: 20,
     color: colors.textSecondary,
-    fontFamily: 'Lato-Regular',
   },
   recentChatTextActive: {
     color: colors.text,
-    fontFamily: 'Lato-Bold',
   },
   sidebarBanner: {
     marginTop: 10,
   },
   mainNav: {
-    marginTop: 10,
+    marginTop: 12,
+    gap: 2,
   },
   menuItem: {
+    minHeight: 50,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
+    gap: 14,
     paddingHorizontal: 12,
-    borderRadius: 12,
+    borderRadius: 14,
   },
   menuItemActive: {
-    backgroundColor: 'rgba(59,130,246,0.15)',
-  },
-  menuItemHighlight: {
-    backgroundColor: 'rgba(251,191,36,0.12)',
-  },
-  menuItemHighlightActive: {
-    backgroundColor: 'rgba(251,191,36,0.22)',
-  },
-  iconContainer: {
-    width: 28,
-    height: 28,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 14,
+    backgroundColor: colors.surface,
   },
   menuLabel: {
-    fontSize: 15,
-    color: colors.textSecondary,
-    fontFamily: 'Lato-Regular',
+    flex: 1,
+    fontSize: 16,
+    lineHeight: 22,
+    color: '#E4E4E6',
   },
   menuLabelActive: {
     color: colors.text,
-    fontFamily: 'Lato-Bold',
-  },
-  menuLabelHighlight: {
-    color: REWARDS_ACCENT,
-    fontFamily: 'Lato-Bold',
+    fontWeight: '500',
   },
   versionWrap: {
     marginTop: 16,
     alignItems: 'flex-start',
     marginBottom: 12,
-    paddingLeft: 4,
+    paddingLeft: 12,
   },
   versionText: {
-    color: 'rgba(148,163,184,0.7)',
+    color: colors.textMuted,
     fontSize: 13,
-    fontFamily: 'Lato-Regular',
     textAlign: 'left',
   },
 });

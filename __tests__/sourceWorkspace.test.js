@@ -97,3 +97,7 @@ describe('review fixes', () => {
     expect(estimateTokens('')).toBe(0);
   });
 });
+
+test('video picker and server share the raised 50 MB boundary',()=>{
+ const client=require('../src/lib/workspace');const server=require('../supabase/functions/source-analyze/contracts');expect(client.MAX_VIDEO_BYTES).toBe(50*1024*1024);expect(client.MAX_VIDEO_BYTES).toBe(server.MAX_VIDEO_BYTES);
+});

@@ -5,7 +5,7 @@ import Haptic from 'react-native-haptic-feedback';
 import SyntaxHighlighter from 'react-native-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useTranslation } from 'react-i18next';
-import { colors } from '../../../styles/colors';
+import { graphite } from '../../../styles/graphite';
 
 const CodeBlock = ({ language, content }) => {
   const { t } = useTranslation();
@@ -66,17 +66,10 @@ const CodeBlock = ({ language, content }) => {
 const styles = StyleSheet.create({
   container: {
     marginVertical: 16,
-    borderRadius: 12,
+    borderRadius: 16,
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#333',
-    backgroundColor: '#1E1E1E',
+    backgroundColor: graphite.card,
     width: '100%',
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
   },
   header: {
     flexDirection: 'row',
@@ -84,9 +77,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 10,
-    backgroundColor: '#2D2D2D',
-    borderBottomWidth: 1,
-    borderBottomColor: '#333',
+    backgroundColor: graphite.cardHeader,
   },
   language: {
     color: '#A9A9A9',
@@ -98,7 +89,7 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   copyText: {
-    color: colors.primary,
+    color: graphite.accent,
     fontSize: 12,
     fontWeight: '600',
   },
@@ -108,7 +99,7 @@ const styles = StyleSheet.create({
   highlighter: {
     padding: 16,
     margin: 0,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: graphite.card,
   },
 });
 
